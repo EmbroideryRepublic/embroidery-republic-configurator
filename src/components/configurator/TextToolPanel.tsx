@@ -114,7 +114,7 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
         <p className="text-xs text-amber-600">Für diese Ansicht ist kein Druckbereich definiert.</p>
       )}
       <p className="text-xs text-gray-400">
-        Nach dem Hinzufügen wechselt die Ansicht automatisch zu „Design" – dort lassen sich
+        Nach dem Hinzufügen wechselt die Ansicht automatisch zu „Design“ – dort lassen sich
         Schriftart, Größe, Farbe, Fett/Kursiv, Ausrichtung u.v.m. anpassen.
       </p>
     </div>

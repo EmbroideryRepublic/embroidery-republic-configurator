@@ -62,20 +62,24 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
   // spürbar hinterherhinken und wirkte wie "ein Zeichen zu spät". Die
   // eigentliche (teure) Aktualisierung wird jetzt um 200ms entprellt.
   const [textDraft, setTextDraft] = useState(selected?.type === 'text' ? selected.content : '');
+  const [lastSyncedId, setLastSyncedId] = useState(selected?.id);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isRemovingBg, setIsRemovingBg] = useState(false);
   const [bgError, setBgError] = useState<string | null>(null);
 
-  useEffect(() => {
+  // Nur beim Wechsel des ausgewählten Elements synchronisieren, nicht bei
+  // jeder Content-Änderung (sonst würde der eigene Entwurf während des
+  // Tippens durch den noch nicht aktualisierten Store-Wert überschrieben).
+  // Bewusst als Zustandsanpassung während des Renderns statt als Effekt
+  // umgesetzt (von React empfohlenes Muster für "State bei Prop-Wechsel
+  // zurücksetzen") – dadurch entfällt die exhaustive-deps-Problematik
+  // strukturell, ohne die Warnung unterdrücken zu müssen.
+  if (selected?.id !== lastSyncedId) {
+    setLastSyncedId(selected?.id);
     if (selected?.type === 'text') {
       setTextDraft(selected.content);
     }
-    // Nur beim Wechsel des ausgewählten Elements synchronisieren, nicht
-    // bei jeder Content-Änderung (sonst würde der eigene Entwurf während
-    // des Tippens durch den noch nicht aktualisierten Store-Wert
-    // überschrieben).
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selected?.id]);
+  }
 
   if (!selected) {
     return (

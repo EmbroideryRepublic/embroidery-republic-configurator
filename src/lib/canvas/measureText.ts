@@ -31,7 +31,7 @@ export function measureTextPx(
 
   try {
     // Lazy require, damit Konva nicht versehentlich serverseitig geladen wird.
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    // eslint-disable-next-line
     const KonvaModule = require('konva');
     const Konva = KonvaModule.default ?? KonvaModule;
     const measurer = new Konva.Text({

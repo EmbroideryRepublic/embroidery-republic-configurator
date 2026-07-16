@@ -101,8 +101,7 @@ export function ConfiguratorPrototype() {
       setProduct(DEFAULT_PRODUCT.id);
       setColor(DEFAULT_PRODUCT.colors[0].id);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isHydrated]);
+  }, [isHydrated, productId, setProduct, setColor]);
 
   const product = getProduct(productId ?? '') ?? DEFAULT_PRODUCT;
 

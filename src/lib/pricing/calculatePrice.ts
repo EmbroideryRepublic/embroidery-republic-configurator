@@ -81,7 +81,7 @@ export const QUANTITY_TIERS: QuantityTier[] = [
 ];
 
 function getTierForQuantity(quantity: number): QuantityTier {
-  let current = QUANTITY_TIERS[0];
+  let current: QuantityTier = { minQuantity: 0, baseDiscountPercent: 0, veredelungDiscountPercent: 0 };
   for (const tier of QUANTITY_TIERS) {
     if (quantity >= tier.minQuantity) current = tier;
   }

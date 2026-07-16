@@ -38,6 +38,9 @@ const ConfiguratorCanvas = dynamic(
 );
 
 const DEFAULT_PRODUCT = PRODUCTS[0];
+if (!DEFAULT_PRODUCT) {
+  throw new Error('PRODUCTS ist leer – mindestens ein Produkt muss konfiguriert sein.');
+}
 const ZOOM_STEP = 0.25;
 const ZOOM_MIN = 0.5;
 const ZOOM_MAX = 2.5;
@@ -99,7 +102,8 @@ export function ConfiguratorPrototype() {
     if (!isHydrated) return;
     if (!productId) {
       setProduct(DEFAULT_PRODUCT.id);
-      setColor(DEFAULT_PRODUCT.colors[0].id);
+      const firstColor = DEFAULT_PRODUCT.colors[0];
+      if (firstColor) setColor(firstColor.id);
     }
   }, [isHydrated, productId, setProduct, setColor]);
 
@@ -207,13 +211,13 @@ export function ConfiguratorPrototype() {
         return;
       }
 
-      const arrowDeltas: Record<string, [number, number]> = {
+      const arrowDeltas: Record<'ArrowUp' | 'ArrowDown' | 'ArrowLeft' | 'ArrowRight', [number, number]> = {
         ArrowUp: [0, -1],
         ArrowDown: [0, 1],
         ArrowLeft: [-1, 0],
         ArrowRight: [1, 0],
       };
-      if (e.key in arrowDeltas) {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.preventDefault();
         const el = elements.find((el) => el.id === selectedElementId);
         const area = printAreas.find((a) => a.view === activeView);
@@ -239,7 +243,8 @@ export function ConfiguratorPrototype() {
 
   const currentPrintArea = printAreas.find((area) => area.view === activeView) ?? null;
   const currentColor = product.colors.find((c) => c.id === colorId) ?? product.colors[0];
-  const currentImageUrl = currentColor.images[activeView];
+  const currentImages = currentColor?.images ?? { front: '', back: '', sleeve_left: '', sleeve_right: '' };
+  const currentImageUrl = currentImages[activeView];
 
   const progressStep = quantity === 0
     ? 0
@@ -300,7 +305,7 @@ export function ConfiguratorPrototype() {
             <ProductDetails product={product} />
 
             <div className="flex w-full max-w-[780px] flex-col items-start gap-3 lg:flex-row">
-              <ViewSwitcher imageUrls={currentColor.images} hasSleeves={product.hasSleeves ?? true} />
+              <ViewSwitcher imageUrls={currentImages} hasSleeves={product.hasSleeves ?? true} />
 
               <div className="flex flex-1 flex-col items-center gap-2">
                 <CanvasToolbar
@@ -349,7 +354,7 @@ export function ConfiguratorPrototype() {
       {isCompareOpen && <CompareModal onClose={handleCloseCompare} />}
       {isPreviewOpen && (
         <LargePreviewModal
-          imageUrls={currentColor.images}
+          imageUrls={currentImages}
           printAreas={printAreas}
           hasSleeves={product.hasSleeves ?? true}
           onClose={() => setIsPreviewOpen(false)}

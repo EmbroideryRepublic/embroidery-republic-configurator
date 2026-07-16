@@ -139,11 +139,22 @@ const COLOR_META: Record<string, { name: string; hex: string }> = {
  * @param anchorColorId Farb-ID der tatsächlich fotografierten Farbe
  * @param extraColorIds weitere, programmatisch eingefärbte Farb-IDs
  */
+/** Wirft einen klaren Fehler, falls eine Farb-ID nicht in COLOR_META
+ *  hinterlegt ist – das wäre ein Tippfehler in der Konfiguration, der
+ *  früh auffallen soll, statt still eine kaputte Farbe zu erzeugen. */
+function getColorMeta(id: string): { name: string; hex: string } {
+  const meta = COLOR_META[id];
+  if (!meta) {
+    throw new Error(`Unbekannte Farb-ID "${id}" – bitte in COLOR_META ergänzen.`);
+  }
+  return meta;
+}
+
 function realPhotoColorSet(folder: string, anchorColorId: string, extraColorIds: string[]): ProductColorConfig[] {
   const anchor: ProductColorConfig = {
     id: anchorColorId,
-    name: COLOR_META[anchorColorId].name,
-    hex: COLOR_META[anchorColorId].hex,
+    name: getColorMeta(anchorColorId).name,
+    hex: getColorMeta(anchorColorId).hex,
     images: {
       front: `/products/${folder}/front.webp`,
       back: `/products/${folder}/back.webp`,
@@ -154,8 +165,8 @@ function realPhotoColorSet(folder: string, anchorColorId: string, extraColorIds:
 
   const extras: ProductColorConfig[] = extraColorIds.map((id) => ({
     id,
-    name: COLOR_META[id].name,
-    hex: COLOR_META[id].hex,
+    name: getColorMeta(id).name,
+    hex: getColorMeta(id).hex,
     images: {
       front: `/products/${folder}-${id}/front.webp`,
       back: `/products/${folder}-${id}/back.webp`,
@@ -446,7 +457,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
 ];
 
-export const TEST_PRODUCT_ID = PRODUCTS[0].id;
+export const TEST_PRODUCT_ID = PRODUCTS[0]?.id ?? '';
 
 export function getProduct(productId: string): ProductConfig | undefined {
   return PRODUCTS.find((p) => p.id === productId);

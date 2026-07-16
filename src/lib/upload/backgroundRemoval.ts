@@ -70,7 +70,7 @@ export async function removeSimpleBackground(dataUrl: string): Promise<string> {
   if (!maskCtx) return dataUrl;
   const maskImageData = maskCtx.createImageData(workW, workH);
   for (let i = 0; i < alphaMask.length; i++) {
-    maskImageData.data[i * 4 + 3] = alphaMask[i];
+    maskImageData.data[i * 4 + 3] = alphaMask[i] ?? 0;
   }
   maskCtx.putImageData(maskImageData, 0, 0);
 
@@ -100,15 +100,15 @@ export async function removeSimpleBackground(dataUrl: string): Promise<string> {
   // Hintergrund an jeder weichen Kante zurück (z.B. ein rosa Rand um ein
   // rotes Logo, das vorher auf Weiß lag).
   for (let i = 0; i < fullW * fullH; i++) {
-    const a = maskUpscaleData.data[i * 4 + 3];
+    const a = maskUpscaleData.data[i * 4 + 3] ?? 0;
     outData.data[i * 4 + 3] = a;
 
     if (a > 0 && a < 250) {
       const alphaFrac = a / 255;
       const o = i * 4;
-      const r = outData.data[o];
-      const g = outData.data[o + 1];
-      const b = outData.data[o + 2];
+      const r = outData.data[o] ?? 0;
+      const g = outData.data[o + 1] ?? 0;
+      const b = outData.data[o + 2] ?? 0;
       // F = (C - (1-alpha)*B) / alpha  – löst die Alpha-Überblend-Formel
       // nach der reinen Vordergrundfarbe F auf.
       outData.data[o] = clampByte((r - (1 - alphaFrac) * backgroundColor[0]) / alphaFrac);
@@ -134,14 +134,20 @@ function estimateBackgroundColor(imageData: ImageData): [number, number, number]
   for (let x = 0; x < width; x += step) {
     for (const y of [0, height - 1]) {
       const o = (y * width + x) * 4;
-      r += data[o]; g += data[o + 1]; b += data[o + 2]; count++;
+      r += data[o] ?? 0;
+      g += data[o + 1] ?? 0;
+      b += data[o + 2] ?? 0;
+      count++;
     }
   }
   const stepY = Math.max(1, Math.floor(height / 40));
   for (let y = 0; y < height; y += stepY) {
     for (const x of [0, width - 1]) {
       const o = (y * width + x) * 4;
-      r += data[o]; g += data[o + 1]; b += data[o + 2]; count++;
+      r += data[o] ?? 0;
+      g += data[o + 1] ?? 0;
+      b += data[o + 2] ?? 0;
+      count++;
     }
   }
   return count > 0 ? [r / count, g / count, b / count] : [255, 255, 255];
@@ -187,11 +193,11 @@ function computeBackgroundAlphaMask(imageData: ImageData): Uint8ClampedArray {
 
   function colorAt(idx: number): [number, number, number] {
     const o = idx * 4;
-    return [data[o], data[o + 1], data[o + 2]];
+    return [data[o] ?? 0, data[o + 1] ?? 0, data[o + 2] ?? 0];
   }
 
   while (qHead < qTail) {
-    const idx = queue[qHead++];
+    const idx = queue[qHead++] ?? 0;
     const x = idx % width;
     const y = (idx / width) | 0;
     const [r, g, b] = colorAt(idx);
@@ -227,7 +233,7 @@ function computeBackgroundAlphaMask(imageData: ImageData): Uint8ClampedArray {
 
 /** Schätzt eine sinnvolle Toleranz aus der Farbstreuung der Randpixel. */
 function estimateBorderTolerance(data: Uint8ClampedArray, width: number, height: number): number {
-  const samples: number[][] = [];
+  const samples: [number, number, number][] = [];
   const step = Math.max(1, Math.floor(width / 60));
   for (let x = 0; x < width; x += step) {
     samples.push(pixelAt(data, width, x, 0));
@@ -239,7 +245,7 @@ function estimateBorderTolerance(data: Uint8ClampedArray, width: number, height:
     samples.push(pixelAt(data, width, width - 1, y));
   }
 
-  const avg = [0, 0, 0];
+  const avg: [number, number, number] = [0, 0, 0];
   for (const s of samples) {
     avg[0] += s[0];
     avg[1] += s[1];
@@ -260,9 +266,9 @@ function estimateBorderTolerance(data: Uint8ClampedArray, width: number, height:
   return Math.min(60, Math.max(14, maxDiff * 1.4));
 }
 
-function pixelAt(data: Uint8ClampedArray, width: number, x: number, y: number): number[] {
+function pixelAt(data: Uint8ClampedArray, width: number, x: number, y: number): [number, number, number] {
   const o = (y * width + x) * 4;
-  return [data[o], data[o + 1], data[o + 2]];
+  return [data[o] ?? 0, data[o + 1] ?? 0, data[o + 2] ?? 0];
 }
 
 /**
@@ -275,17 +281,17 @@ function despeckle(alpha: Uint8ClampedArray, width: number, height: number) {
   for (let y = 1; y < height - 1; y++) {
     for (let x = 1; x < width - 1; x++) {
       const idx = y * width + x;
-      const isTransparent = copy[idx] < 128;
+      const isTransparent = (copy[idx] ?? 0) < 128;
       let sameCount = 0;
       const neighbors = [idx - 1, idx + 1, idx - width, idx + width];
       for (const nIdx of neighbors) {
-        const nIsTransparent = copy[nIdx] < 128;
+        const nIsTransparent = (copy[nIdx] ?? 0) < 128;
         if (nIsTransparent === isTransparent) sameCount++;
       }
       // Steht ein Pixel isoliert (keiner der 4 Nachbarn stimmt überein),
       // an den Nachbar-Mehrheitswert angleichen.
       if (sameCount === 0) {
-        alpha[idx] = copy[idx - 1];
+        alpha[idx] = copy[idx - 1] ?? 0;
       }
     }
   }

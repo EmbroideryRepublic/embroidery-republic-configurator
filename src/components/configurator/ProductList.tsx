@@ -39,7 +39,8 @@ export const ProductList = memo(function ProductList() {
     const next = PRODUCTS.find((p) => p.id === id);
     if (!next) return;
     setProduct(next.id);
-    setColor(next.colors[0].id);
+    const firstColor = next.colors[0];
+    if (firstColor) setColor(firstColor.id);
     resetSizeQuantities();
   }
 
@@ -145,8 +146,15 @@ export const ProductList = memo(function ProductList() {
                 )}
               >
                 <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-md bg-white ring-1 ring-black/5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.colors[0].images.front} alt={p.name} loading="lazy" className="h-full w-full object-contain" />
+                  {(() => {
+                    const firstColor = p.colors[0];
+                    return (
+                      firstColor && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={firstColor.images.front} alt={p.name} loading="lazy" className="h-full w-full object-contain" />
+                      )
+                    );
+                  })()}
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-brand">{p.name}</span>

@@ -11,8 +11,9 @@ interface CompareModalProps {
 }
 
 export function CompareModal({ onClose }: CompareModalProps) {
-  const [leftId, setLeftId] = useState<string>(PRODUCTS[0].id);
-  const [rightId, setRightId] = useState<string>(PRODUCTS[1]?.id ?? PRODUCTS[0].id);
+  const firstProductId = PRODUCTS[0]?.id ?? '';
+  const [leftId, setLeftId] = useState<string>(firstProductId);
+  const [rightId, setRightId] = useState<string>(PRODUCTS[1]?.id ?? firstProductId);
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   const currency = useCurrencyStore((s) => s.currency);
@@ -70,20 +71,23 @@ export function CompareModal({ onClose }: CompareModalProps) {
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-4">
-          {[left, right].map((p, i) => (
-            <div key={i} className="flex flex-col items-center rounded-lg bg-cream/60 p-3">
-              {p && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={p.colors[0].images.front}
-                  alt={p.name}
-                  loading="lazy"
-                  className="h-32 w-full object-contain"
-                />
-              )}
-              <p className="mt-1 text-sm font-medium text-brand">{p?.name}</p>
-            </div>
-          ))}
+          {[left, right].map((p, i) => {
+            const firstColor = p?.colors[0];
+            return (
+              <div key={i} className="flex flex-col items-center rounded-lg bg-cream/60 p-3">
+                {firstColor && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={firstColor.images.front}
+                    alt={p?.name ?? ''}
+                    loading="lazy"
+                    className="h-32 w-full object-contain"
+                  />
+                )}
+                <p className="mt-1 text-sm font-medium text-brand">{p?.name}</p>
+              </div>
+            );
+          })}
         </div>
 
         <table className="mt-4 w-full text-sm">

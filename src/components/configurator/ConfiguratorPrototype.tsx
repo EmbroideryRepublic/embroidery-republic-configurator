@@ -20,7 +20,7 @@ import { CompareModal } from './CompareModal';
 import { LargePreviewModal } from './LargePreviewModal';
 import { getPrintAreas } from '@/config/printAreas';
 import { getPricingRules } from '@/config/pricingRules';
-import { PRODUCTS, getProduct } from '@/config/products';
+import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
@@ -37,10 +37,22 @@ const ConfiguratorCanvas = dynamic(
   }
 );
 
-const DEFAULT_PRODUCT = PRODUCTS[0];
-if (!DEFAULT_PRODUCT) {
-  throw new Error('PRODUCTS ist leer – mindestens ein Produkt muss konfiguriert sein.');
+// Wichtig: Als Funktion mit explizitem Rückgabetyp `ProductConfig` (statt
+// eines Guards direkt auf einer Modul-Konstante) implementiert. TypeScript
+// trägt Narrowing von Modul-Level-Konstanten NICHT in später definierte,
+// verschachtelte Funktionen (Komponenten-Body, Closures, useEffect-Callbacks)
+// hinein – dort gilt wieder der deklarierte Typ `ProductConfig | undefined`.
+// Der explizite Rückgabetyp hier sorgt dafür, dass DEFAULT_PRODUCT überall im
+// Modul strukturell als `ProductConfig` (nie `undefined`) bekannt ist.
+function getDefaultProduct(): ProductConfig {
+  const product = PRODUCTS[0];
+  if (!product) {
+    throw new Error('PRODUCTS ist leer – mindestens ein Produkt muss konfiguriert sein.');
+  }
+  return product;
 }
+
+const DEFAULT_PRODUCT = getDefaultProduct();
 const ZOOM_STEP = 0.25;
 const ZOOM_MIN = 0.5;
 const ZOOM_MAX = 2.5;
@@ -109,6 +121,14 @@ export function ConfiguratorPrototype() {
 
   const product = getProduct(productId ?? '') ?? DEFAULT_PRODUCT;
 
+  // Aktuellen activeView-Wert per Ref verfügbar machen, OHNE ihn als
+  // Dependency in den untenstehenden Effekt aufzunehmen – der Effekt soll
+  // nur bei Produkt-/Methodenwechsel neu laden, nicht bei jedem simplen
+  // Ansichtswechsel (Vorderseite/Rückseite). Der Ref wird bei jedem Render
+  // aktuell gehalten, das ist ein sicheres, von React unterstütztes Muster.
+  const activeViewRef = useRef(activeView);
+  activeViewRef.current = activeView;
+
   // Druckbereiche und Preisregeln neu laden, sobald sich Produkt oder
   // Veredelungsart ändern. Bestehendes Design wird NICHT verworfen, sondern
   // an die neuen Druckbereiche angepasst (syncElementsToPrintAreas).
@@ -131,7 +151,7 @@ export function ConfiguratorPrototype() {
         // einer Ärmel-Ansicht war, gäbe es sonst eine aktive Ansicht, die
         // für dieses Produkt gar nicht existiert.
         const hasSleeves = product.hasSleeves ?? true;
-        if (!hasSleeves && (activeView === 'sleeve_left' || activeView === 'sleeve_right')) {
+        if (!hasSleeves && (activeViewRef.current === 'sleeve_left' || activeViewRef.current === 'sleeve_right')) {
           setActiveView('front');
         }
 
@@ -148,7 +168,7 @@ export function ConfiguratorPrototype() {
     return () => {
       isMounted = false;
     };
-  }, [isHydrated, productId, printMethod, syncElementsToPrintAreas]);
+  }, [isHydrated, productId, printMethod, syncElementsToPrintAreas, setActiveView, product.hasSleeves]);
 
   // Preis live neu berechnen – einzige Stelle, die calculatePrice aufruft.
   useEffect(() => {

@@ -102,7 +102,8 @@ export function measureInkCoverageRatio(
   const { data } = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
   let inkPixels = 0;
   for (let i = 3; i < data.length; i += 4) {
-    if (data[i] > 40) inkPixels++; // Alpha-Kanal: gerendertes Glyphen-Pixel
+    const alpha = data[i] ?? 0; // Alpha-Kanal: gerendertes Glyphen-Pixel
+    if (alpha > 40) inkPixels++;
   }
   const totalPixels = canvasWidth * canvasHeight;
   const ratio = totalPixels > 0 ? inkPixels / totalPixels : FALLBACK_RATIO;

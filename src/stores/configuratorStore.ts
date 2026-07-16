@@ -250,7 +250,11 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           const index = state.elements.findIndex((el) => el.id === id);
           if (index === -1 || index === state.elements.length - 1) return state;
           const elements = [...state.elements];
-          [elements[index], elements[index + 1]] = [elements[index + 1], elements[index]];
+          const current = elements[index];
+          const next = elements[index + 1];
+          if (!current || !next) return state;
+          elements[index] = next;
+          elements[index + 1] = current;
           return { history: snapshot(state), future: [], elements };
         }),
 
@@ -259,7 +263,11 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           const index = state.elements.findIndex((el) => el.id === id);
           if (index <= 0) return state;
           const elements = [...state.elements];
-          [elements[index], elements[index - 1]] = [elements[index - 1], elements[index]];
+          const current = elements[index];
+          const previous = elements[index - 1];
+          if (!current || !previous) return state;
+          elements[index] = previous;
+          elements[index - 1] = current;
           return { history: snapshot(state), future: [], elements };
         }),
 
@@ -338,6 +346,7 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
         } else if (
           nextElements.some((el, i) => {
             const orig = state.elements[i];
+            if (!orig) return true;
             return el.widthCm !== orig.widthCm || el.xCm !== orig.xCm || el.yCm !== orig.yCm;
           })
         ) {
@@ -355,8 +364,8 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
 
       undo: () =>
         set((state) => {
-          if (state.history.length === 0) return state;
           const previous = state.history[state.history.length - 1];
+          if (!previous) return state;
           return {
             elements: previous,
             history: state.history.slice(0, -1),
@@ -367,8 +376,8 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
 
       redo: () =>
         set((state) => {
-          if (state.future.length === 0) return state;
           const next = state.future[state.future.length - 1];
+          if (!next) return state;
           return {
             elements: next,
             future: state.future.slice(0, -1),

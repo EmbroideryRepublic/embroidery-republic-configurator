@@ -65,11 +65,11 @@ export async function estimateLogoStitches(dataUrl: string, widthCm: number, hei
 
     function isFilled(x: number, y: number): boolean {
       const i = (y * width + x) * 4;
-      const alpha = data[i + 3];
+      const alpha = data[i + 3] ?? 0;
       if (alpha < 40) return false;
-      const r = data[i];
-      const g = data[i + 1];
-      const b = data[i + 2];
+      const r = data[i] ?? 0;
+      const g = data[i + 1] ?? 0;
+      const b = data[i + 2] ?? 0;
       return !(r > 240 && g > 240 && b > 240);
     }
 

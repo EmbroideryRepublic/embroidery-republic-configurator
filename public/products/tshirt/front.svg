@@ -1,0 +1,6 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="600" fill="#f5f5f5"/>
+  <path d="M175,110 L120,150 Q100,220 110,280 L155,270 Q150,200 165,150 L165,540 Q250,565 335,540 L335,150 Q350,200 345,270 L390,280 Q400,220 380,150 L325,110 Q290,135 250,135 Q210,135 175,110 Z" fill="#1a1a1a"/>
+  <path d="M212,112 Q250,150 288,112 Q288,128 250,148 Q212,128 212,112 Z" fill="#0d0d0d"/>
+  <text x="250" y="590" text-anchor="middle" font-size="14" fill="#999" font-family="sans-serif">Vorderseite (Platzhalter)</text>
+</svg>

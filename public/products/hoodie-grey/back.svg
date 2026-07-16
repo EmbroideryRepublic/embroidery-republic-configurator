@@ -1,0 +1,14 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="600" fill="#f5f5f5"/>
+  <!-- Kapuze (von hinten geschlossen) -->
+  <path d="M170,70 Q250,30 330,70 L340,140 Q250,120 160,140 Z" fill="#7a7d80"/>
+  <!-- Körper -->
+  <path d="M160,140 Q250,120 340,140 L360,540 Q250,572 140,540 Z" fill="#7a7d80"/>
+  <!-- Linker Ärmel -->
+  <path d="M160,140 L70,180 Q55,320 90,420 L150,400 Q135,270 160,140 Z" fill="#7a7d80"/>
+  <!-- Rechter Ärmel -->
+  <path d="M340,140 L430,180 Q445,320 410,420 L350,400 Q365,270 340,140 Z" fill="#7a7d80"/>
+  <!-- Mittelnaht -->
+  <line x1="250" y1="140" x2="250" y2="540" stroke="#2a2a2a" stroke-width="2"/>
+  <text x="250" y="590" text-anchor="middle" font-size="14" fill="#999" font-family="sans-serif">Rückseite (Platzhalter)</text>
+</svg>

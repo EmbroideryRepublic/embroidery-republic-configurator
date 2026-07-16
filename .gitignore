@@ -1,0 +1,16 @@
+# Dependencies
+/node_modules
+
+# Next.js build output
+/.next/
+/out/
+
+# Env-Dateien mit Zugangsdaten niemals committen
+.env.local
+.env*.local
+
+# Betriebssystem
+.DS_Store
+
+# Logs
+npm-debug.log*

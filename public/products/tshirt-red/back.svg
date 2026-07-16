@@ -1,0 +1,6 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="600" fill="#f5f5f5"/>
+  <path d="M175,110 L120,150 Q100,220 110,280 L155,270 Q150,200 165,150 L165,540 Q250,565 335,540 L335,150 Q350,200 345,270 L390,280 Q400,220 380,150 L325,110 Q290,128 250,128 Q210,128 175,110 Z" fill="#a4222f"/>
+  <path d="M220,115 Q250,132 280,115 Q280,124 250,138 Q220,124 220,115 Z" fill="#5a1219"/>
+  <text x="250" y="590" text-anchor="middle" font-size="14" fill="#999" font-family="sans-serif">Rückseite (Platzhalter)</text>
+</svg>

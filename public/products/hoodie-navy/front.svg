@@ -1,0 +1,17 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="600" fill="#f5f5f5"/>
+  <!-- Kapuze -->
+  <path d="M170,70 Q250,20 330,70 L340,140 Q250,110 160,140 Z" fill="#1b2a4a"/>
+  <!-- Körper -->
+  <path d="M160,140 Q250,110 340,140 L360,540 Q250,570 140,540 Z" fill="#1b2a4a"/>
+  <!-- Linker Ärmel -->
+  <path d="M160,140 L70,180 Q55,320 90,420 L150,400 Q135,270 160,140 Z" fill="#1b2a4a"/>
+  <!-- Rechter Ärmel -->
+  <path d="M340,140 L430,180 Q445,320 410,420 L350,400 Q365,270 340,140 Z" fill="#1b2a4a"/>
+  <!-- Kordeln -->
+  <line x1="230" y1="150" x2="225" y2="220" stroke="#0a101d" stroke-width="4"/>
+  <line x1="270" y1="150" x2="275" y2="220" stroke="#0a101d" stroke-width="4"/>
+  <!-- Kangaroo-Tasche -->
+  <path d="M190,380 Q250,360 310,380 L305,450 Q250,468 195,450 Z" fill="#0e1728" stroke="#0a101d" stroke-width="2"/>
+  <text x="250" y="590" text-anchor="middle" font-size="14" fill="#999" font-family="sans-serif">Vorderseite (Platzhalter)</text>
+</svg>

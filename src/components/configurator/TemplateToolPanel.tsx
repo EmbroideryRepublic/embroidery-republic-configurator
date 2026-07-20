@@ -7,11 +7,13 @@ import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import { AVAILABLE_FONTS } from '@/config/fonts';
 import type { PrintArea, PrintView, TextElement } from '@/types';
+import { useLanguageStore, translate } from '@/stores/languageStore';
+import type { TranslationKey } from '@/lib/i18n/translations';
 
 interface Template {
   id: string;
-  label: string;
-  description: string;
+  labelKey: TranslationKey;
+  descriptionKey: TranslationKey;
   icon: typeof Type;
   view: PrintView;
   fontSizeRatio: number;
@@ -23,8 +25,8 @@ interface Template {
 const TEMPLATES: Template[] = [
   {
     id: 'brand-chest',
-    label: 'Firmenname – Brust',
-    description: 'Dezent, mittig auf der Brust',
+    labelKey: 'template_brand_chest_label',
+    descriptionKey: 'template_brand_chest_desc',
     icon: Type,
     view: 'front',
     fontSizeRatio: 0.28,
@@ -34,8 +36,8 @@ const TEMPLATES: Template[] = [
   },
   {
     id: 'slogan-back',
-    label: 'Slogan – Rückendruck',
-    description: 'Groß und auffällig auf dem Rücken',
+    labelKey: 'template_slogan_back_label',
+    descriptionKey: 'template_slogan_back_desc',
     icon: Sparkles,
     view: 'back',
     fontSizeRatio: 0.5,
@@ -45,8 +47,8 @@ const TEMPLATES: Template[] = [
   },
   {
     id: 'jersey-number',
-    label: 'Trikot-Nummer',
-    description: 'Groß, fett, sportlich – Rückseite',
+    labelKey: 'template_jersey_number_label',
+    descriptionKey: 'template_jersey_number_desc',
     icon: Trophy,
     view: 'back',
     fontSizeRatio: 0.85,
@@ -56,8 +58,8 @@ const TEMPLATES: Template[] = [
   },
   {
     id: 'team-name',
-    label: 'Team-/Vorname',
-    description: 'Klein, dezent auf der Brust',
+    labelKey: 'template_team_name_label',
+    descriptionKey: 'template_team_name_desc',
     icon: Users,
     view: 'front',
     fontSizeRatio: 0.18,
@@ -76,6 +78,8 @@ export function TemplateToolPanel({ printAreas, onApplied }: TemplateToolPanelPr
   const addElement = useConfiguratorStore((s) => s.addElement);
   const setActiveView = useConfiguratorStore((s) => s.setActiveView);
   const setSelectedElementId = useConfiguratorStore((s) => s.setSelectedElementId);
+  const language = useLanguageStore((s) => s.language);
+  const t = (key: TranslationKey) => translate(key, language);
 
   function applyTemplate(template: Template) {
     const area = printAreas.find((a) => a.view === template.view);
@@ -131,9 +135,7 @@ export function TemplateToolPanel({ printAreas, onApplied }: TemplateToolPanelPr
 
   return (
     <div className="space-y-2">
-      <p className="text-xs text-brand/50">
-        Vorlage anklicken, dann euren eigenen Text eintragen (Position &amp; Größe sind schon passend gesetzt).
-      </p>
+      <p className="text-xs text-brand/50">{t('template_hint')}</p>
       <div className="grid grid-cols-2 gap-2">
         {TEMPLATES.map((template) => {
           const Icon = template.icon;
@@ -147,8 +149,8 @@ export function TemplateToolPanel({ printAreas, onApplied }: TemplateToolPanelPr
               className="flex flex-col items-start gap-1 rounded-lg border border-gold/20 bg-white p-2.5 text-left transition-colors hover:border-gold hover:bg-gold-light/20 disabled:cursor-not-allowed disabled:opacity-30"
             >
               <Icon className="h-4 w-4 text-gold-dark" />
-              <span className="text-xs font-medium text-brand">{template.label}</span>
-              <span className="text-[10px] text-brand/50">{template.description}</span>
+              <span className="text-xs font-medium text-brand">{t(template.labelKey)}</span>
+              <span className="text-[10px] text-brand/50">{t(template.descriptionKey)}</span>
             </button>
           );
         })}

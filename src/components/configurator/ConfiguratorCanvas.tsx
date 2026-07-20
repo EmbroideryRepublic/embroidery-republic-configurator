@@ -1,59 +1,31 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { Stage, Layer, Image as KonvaImage, Text as KonvaText, Rect, Transformer, Group } from 'react-konva';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Stage, Layer, Image as KonvaImage, Text as KonvaText, Rect, Circle, Transformer, Group } from 'react-konva';
 import useImage from 'use-image';
 import Konva from 'konva';
 import type { ConfigElement, LogoElement, PrintArea, PrintView, TextElement } from '@/types';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
-import { getScaleFactors, type PixelRect, type ScaleFactors } from '@/lib/canvas/cmConversion';
-import { isNearSeam, overlapsExclusionZone } from '@/lib/canvas/bounds';
+import { getScaleFactors, elementToPixelRect, type PixelRect, type ScaleFactors } from '@/lib/canvas/cmConversion';
+import { getContainRect, computeAreaPx } from '@/lib/canvas/containRect';
+import { isNearSeam, overlapsExclusionZone, pushOutOfExclusionZones } from '@/lib/canvas/bounds';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateLogoStitches, estimateTextStitches } from '@/lib/embroidery/estimateStitches';
-import { CANVAS_WIDTH, CANVAS_HEIGHT } from '@/config/products';
+import { CANVAS_WIDTH, CANVAS_HEIGHT, type ProductConfig } from '@/config/products';
 
-/**
- * Berechnet die tatsächlich sichtbare Bild-Fläche innerhalb der Canvas,
- * OHNE das Seitenverhältnis zu verzerren ("contain"-Fit, mittig zentriert).
- *
- * BUGFIX: Vorher wurde jedes Produktbild zwangsweise auf exakt
- * CANVAS_WIDTH×CANVAS_HEIGHT gestreckt – bei Bildern mit anderem
- * Seitenverhältnis sah das Kleidungsstück dadurch "gestaucht" oder "fett"
- * aus. Jetzt wird das Bild proportional skaliert und zentriert; die
- * Druckbereiche (siehe unten) werden relativ zu DIESER Fläche berechnet,
- * nicht mehr relativ zur vollen Canvas – funktioniert dadurch automatisch
- * korrekt für jedes Bildformat, ohne die Druckbereichs-Prozentwerte je
- * Bildquelle von Hand anpassen zu müssen.
- */
-function getContainRect(
-  naturalWidth: number,
-  naturalHeight: number,
-  canvasWidth: number,
-  canvasHeight: number,
-  garmentHeightFraction = 1,
-  targetGarmentFraction = 0.74
-): PixelRect {
-  // Statt das GESAMTE Bild in die Leinwand einzupassen (wodurch
-  // Produkte mit unterschiedlich viel Leerraum im Foto unterschiedlich
-  // groß/klein wirken), wird die Skalierung anhand der tatsächlich
-  // vermessenen Kleidungsstück-Fläche berechnet – das Kleidungsstück
-  // selbst nimmt dadurch bei jedem Produkt einen ähnlichen Anteil der
-  // Leinwandhöhe ein (targetGarmentFraction), unabhängig davon, wie eng
-  // oder großzügig das jeweilige Foto zugeschnitten ist.
-  const garmentHeightPx = naturalHeight * garmentHeightFraction;
-  const scaleForGarmentHeight = (targetGarmentFraction * canvasHeight) / garmentHeightPx;
-  const scaleForCanvasWidth = canvasWidth / naturalWidth;
-  const scale = Math.min(scaleForGarmentHeight, scaleForCanvasWidth);
-  const width = naturalWidth * scale;
-  const height = naturalHeight * scale;
-  return {
-    x: (canvasWidth - width) / 2,
-    y: (canvasHeight - height) / 2,
-    width,
-    height,
-  };
-}
+/** Platz für die seitlichen/unteren Maß-Lineale (Linie + cm-Beschriftung),
+ *  in CSS-Pixeln – bewusst klein gehalten, damit die Leinwand selbst kaum
+ *  kleiner wird. */
+const RULER_TRACK_PX = 34;
+
+/** Sicherheitsabstand beim Herausschieben aus einer Sperrzone (Kragen,
+ *  Knöpfe, Reißverschluss) – deutlich kleiner als der äußere Nahtabstand
+ *  (seamMarginCm), da es hier nur um kleine Hardware-Objekte geht, aber
+ *  groß genug, dass ein herausgeschobenes Motiv sichtbaren Luftraum hat
+ *  statt nur hauchdünn (rechnerisch korrekt, optisch aber wie
+ *  überlappend wirkend) daneben zu landen. */
+const EXCLUSION_ZONE_MARGIN_CM = 0.5;
 
 interface ConfiguratorCanvasProps {
   productImageUrl: string;
@@ -66,6 +38,10 @@ interface ConfiguratorCanvasProps {
    *  der zuletzt im Editor aktiven Ansicht gezeigt, unabhängig davon,
    *  welche Ansicht in der Großansicht gerade ausgewählt ist. */
   viewOverride?: PrintView;
+  /** Für die Live-Maßlineale (Breite/Höhe je Größe an den Seiten der
+   *  Leinwand) – ohne dieses Prop (z.B. in der Großansicht) werden einfach
+   *  keine Lineale gezeichnet. */
+  product?: ProductConfig;
 }
 
 export function ConfiguratorCanvas({
@@ -74,6 +50,7 @@ export function ConfiguratorCanvas({
   zoom = 1,
   hideGuides = false,
   viewOverride,
+  product,
 }: ConfiguratorCanvasProps) {
   const [productImage] = useImage(productImageUrl);
   const storeActiveView = useConfiguratorStore((s) => s.activeView);
@@ -83,6 +60,8 @@ export function ConfiguratorCanvas({
   const setSelectedElementId = useConfiguratorStore((s) => s.setSelectedElementId);
   const updateElement = useConfiguratorStore((s) => s.updateElement);
   const commitElement = useConfiguratorStore((s) => s.commitElement);
+  const sizeQuantities = useConfiguratorStore((s) => s.sizeQuantities);
+  const previewSize = useConfiguratorStore((s) => s.previewSize);
 
   const [isAreaHovered, setIsAreaHovered] = useState(false);
   // Hilfslinien: zeigen an, wenn ein gezogenes Element mittig im
@@ -143,24 +122,29 @@ export function ConfiguratorCanvas({
   // Tatsächlich sichtbare (unverzerrte) Bildfläche innerhalb der Canvas.
   // Solange das Bild noch lädt, wird die volle Canvas als Fallback
   // angenommen (verhindert kurzzeitiges Springen der Druckbereiche).
-  const imageRect: PixelRect = productImage
-    ? getContainRect(
-        productImage.naturalWidth,
-        productImage.naturalHeight,
-        CANVAS_WIDTH,
-        CANVAS_HEIGHT,
-        printArea ? printArea.heightPercent / 100 : 1
-      )
-    : { x: 0, y: 0, width: CANVAS_WIDTH, height: CANVAS_HEIGHT };
+  // ALS useMemo (statt bei jedem Render neu berechnet), da der
+  // Sperrzonen-Sanitize-Effekt weiter unten imageRect/areaPx als
+  // Abhängigkeit braucht – ohne Memoisierung wäre das bei jedem Render
+  // ein neues Objekt und der Effekt liefe unnötig auf jedem Tastenanschlag
+  // o.ä. erneut.
+  const imageRect: PixelRect = useMemo(
+    () =>
+      productImage
+        ? getContainRect(
+            productImage.naturalWidth,
+            productImage.naturalHeight,
+            CANVAS_WIDTH,
+            CANVAS_HEIGHT,
+            printArea ? printArea.heightPercent / 100 : 1
+          )
+        : { x: 0, y: 0, width: CANVAS_WIDTH, height: CANVAS_HEIGHT },
+    [productImage, printArea]
+  );
 
-  const areaPx: PixelRect | null = printArea
-    ? {
-        x: imageRect.x + (printArea.xPercent / 100) * imageRect.width,
-        y: imageRect.y + (printArea.yPercent / 100) * imageRect.height,
-        width: (printArea.widthPercent / 100) * imageRect.width,
-        height: (printArea.heightPercent / 100) * imageRect.height,
-      }
-    : null;
+  const areaPx: PixelRect | null = useMemo(
+    () => (printArea ? computeAreaPx(imageRect, printArea) : null),
+    [imageRect, printArea]
+  );
 
   const scaleFactors = printArea && areaPx ? getScaleFactors(areaPx, printArea) : null;
   const seamMarginPx = scaleFactors && printArea ? printArea.seamMarginCm * scaleFactors.pxPerCmX : 0;
@@ -169,6 +153,53 @@ export function ConfiguratorCanvas({
   // (skalierte) Konva-Koordinaten korrekt ins logische Koordinatensystem
   // umgerechnet werden können, in dem areaPx/widthPx berechnet sind.
   const stageScale = scale * zoom;
+
+  // Live-Maßlineale: zeigen Breite/Höhe der aktuell "im Fokus" stehenden
+  // Größe an den Seiten der Leinwand. "Im Fokus" = gerade im Größenfeld
+  // gehoverte/fokussierte Größe (previewSize), sonst die erste Größe mit
+  // eingetragener Stückzahl, sonst als sinnvoller Standard 'M' bzw. die
+  // mittlere verfügbare Größe.
+  const sizeRow = useMemo(() => {
+    const measurements = product?.sizeGuide?.measurements;
+    if (!measurements || measurements.length === 0) return null;
+    const activeSize = previewSize ?? Object.keys(sizeQuantities).find((s) => (sizeQuantities[s] ?? 0) > 0) ?? null;
+    if (activeSize) {
+      const found = measurements.find((m) => m.size === activeSize);
+      if (found) return found;
+    }
+    return measurements.find((m) => m.size === 'M') ?? measurements[Math.floor(measurements.length / 2)];
+  }, [product, sizeQuantities, previewSize]);
+
+  const rulerPxPerCm = scaleFactors?.pxPerCmX ?? null;
+  const heightRulerPx = sizeRow && rulerPxPerCm ? sizeRow.hoeheCm * rulerPxPerCm * stageScale : null;
+  const widthRulerPx = sizeRow && rulerPxPerCm ? sizeRow.breiteCm * rulerPxPerCm * stageScale : null;
+  const hasRulers = !hideGuides && !!sizeRow && heightRulerPx !== null && widthRulerPx !== null;
+
+  // Neue Elemente (Upload, Text, Vorlage, Duplikat, Einfügen, Positions-
+  // Presets) starten alle standardmäßig MITTIG im Druckbereich – bei
+  // Reißverschluss-Produkten liegt das exakt auf der Sperrzone. Statt
+  // jede einzelne Erzeugungsstelle einzeln zu korrigieren, fängt dieser
+  // Effekt jede Überlappung mit Kragen/Reißverschluss zentral ab, sobald
+  // ein Element in der aktiven Ansicht erscheint oder sich der Druckbereich
+  // ändert (Produkt-/Methodenwechsel). updateElement statt commitElement,
+  // damit diese automatische Korrektur keinen eigenen Undo-Schritt erzeugt.
+  useEffect(() => {
+    if (!areaPx || !scaleFactors) return;
+    const zonesPx = computeExclusionZonesPx(printArea, imageRect);
+    if (zonesPx.length === 0) return;
+
+    const zoneMarginPx = EXCLUSION_ZONE_MARGIN_CM * scaleFactors.pxPerCmX;
+    for (const el of viewElements) {
+      const rectPx = elementToPixelRect(areaPx, scaleFactors, el);
+      if (!zonesPx.some((zone) => overlapsExclusionZone(rectPx, zone))) continue;
+      const pushed = pushOutOfExclusionZones(rectPx, areaPx, zonesPx, zoneMarginPx);
+      if (pushed.x === rectPx.x && pushed.y === rectPx.y) continue;
+      updateElement(el.id, {
+        xCm: (pushed.x - areaPx.x) / scaleFactors.pxPerCmX,
+        yCm: (pushed.y - areaPx.y) / scaleFactors.pxPerCmY,
+      });
+    }
+  }, [viewElements, areaPx, scaleFactors, printArea, imageRect, updateElement]);
 
   // Prüft, ob der Mittelpunkt eines gezogenen Elements nah genug am
   // Mittelpunkt des Druckbereichs liegt, um eine Hilfslinie einzublenden.
@@ -186,12 +217,39 @@ export function ConfiguratorCanvas({
   }
 
   return (
-    <div
-      ref={containerRef}
-      className="flex w-full max-w-[700px] justify-center overflow-auto rounded-lg"
-      style={{ maxHeight: zoom > 1 ? CANVAS_HEIGHT * scale + 20 : undefined }}
-    >
-      <Stage
+    <div className="flex w-full max-w-[700px] flex-col items-center">
+      <div className="flex w-full flex-row items-start justify-center">
+        {hasRulers && sizeRow && heightRulerPx !== null && (
+          <div
+            className="relative flex-shrink-0"
+            style={{ width: RULER_TRACK_PX, height: CANVAS_HEIGHT * scale * zoom }}
+          >
+            <span className="absolute left-1/2 top-0 -translate-x-1/2 text-[9px] font-semibold uppercase tracking-wide text-gold-dark/70">
+              {sizeRow.size}
+            </span>
+            <div
+              className="absolute flex flex-col items-center"
+              style={{ left: RULER_TRACK_PX - 16, top: imageRect.y * stageScale, height: heightRulerPx, width: 16 }}
+            >
+              <span className="h-0 w-2.5 border-t border-gold-dark/70" />
+              <div className="w-0 flex-1 border-l border-dashed border-gold-dark/60" />
+              <span className="h-0 w-2.5 border-b border-gold-dark/70" />
+              <span
+                className="absolute left-1/2 top-1/2 whitespace-nowrap text-[10px] font-medium text-gold-dark"
+                style={{ transform: 'translate(-50%, -50%) rotate(-90deg)' }}
+              >
+                {sizeRow.hoeheCm} cm
+              </span>
+            </div>
+          </div>
+        )}
+
+        <div
+          ref={containerRef}
+          className="flex w-full max-w-[700px] justify-center overflow-auto rounded-lg"
+          style={{ maxHeight: zoom > 1 ? CANVAS_HEIGHT * scale + 20 : undefined }}
+        >
+          <Stage
         width={CANVAS_WIDTH * scale * zoom}
         height={CANVAS_HEIGHT * scale * zoom}
         scaleX={scale * zoom}
@@ -254,10 +312,32 @@ export function ConfiguratorCanvas({
                 />
               )}
 
-              {/* Sperrzonen (z.B. Knopfleiste, Reißverschluss) – kein Motiv
-                  darf hier platziert werden. Schraffiert + roter Rahmen,
-                  klar vom normalen Druckbereich unterscheidbar. */}
+              {/* Sperrzonen (z.B. Kragen-Innenkante, Knöpfe, Reißverschluss) –
+                  kein Motiv darf hier platziert werden. Schraffiert + roter
+                  Rahmen, klar vom normalen Druckbereich unterscheidbar.
+                  Kreisförmige Zonen (Knöpfe) werden als echter Kreis
+                  gezeichnet statt als quadratische Box, damit keine "toten
+                  Ecken" um das runde Objekt herum optisch gesperrt wirken. */}
               {printArea?.exclusionZones?.map((zone, i) => {
+                if (zone.shape === 'circle') {
+                  const centerX = imageRect.x + (zone.xPercent / 100) * imageRect.width;
+                  const centerY = imageRect.y + (zone.yPercent / 100) * imageRect.height;
+                  const radiusPx = (zone.radiusPercent / 100) * imageRect.height;
+                  return (
+                    <Circle
+                      key={i}
+                      x={centerX}
+                      y={centerY}
+                      radius={radiusPx}
+                      fill="rgba(220,38,38,0.15)"
+                      stroke="rgba(220,38,38,0.5)"
+                      strokeWidth={1}
+                      dash={[3, 2]}
+                      listening={false}
+                    />
+                  );
+                }
+
                 const zonePx = {
                   x: imageRect.x + (zone.xPercent / 100) * imageRect.width,
                   y: imageRect.y + (zone.yPercent / 100) * imageRect.height,
@@ -358,8 +438,41 @@ export function ConfiguratorCanvas({
                 />
               )
             )}
-        </Layer>
-      </Stage>
+          </Layer>
+          </Stage>
+        </div>
+      </div>
+
+      {hasRulers && sizeRow && widthRulerPx !== null && (
+        <div
+          className="relative"
+          style={{ width: CANVAS_WIDTH * stageScale + RULER_TRACK_PX, height: RULER_TRACK_PX }}
+        >
+          <div
+            className="absolute flex flex-row items-center"
+            style={{
+              left: RULER_TRACK_PX + imageRect.x * stageScale + (imageRect.width * stageScale - widthRulerPx) / 2,
+              top: 4,
+              width: widthRulerPx,
+              height: 14,
+            }}
+          >
+            <span className="h-2.5 w-0 border-l border-gold-dark/70" />
+            <div className="h-0 flex-1 border-t border-dashed border-gold-dark/60" />
+            <span className="h-2.5 w-0 border-r border-gold-dark/70" />
+          </div>
+          <span
+            className="absolute whitespace-nowrap text-[10px] font-medium text-gold-dark"
+            style={{
+              left: RULER_TRACK_PX + imageRect.x * stageScale + (imageRect.width * stageScale) / 2,
+              top: 18,
+              transform: 'translateX(-50%)',
+            }}
+          >
+            {sizeRow.breiteCm} cm
+          </span>
+        </div>
+      )}
     </div>
   );
 }
@@ -368,14 +481,37 @@ export function ConfiguratorCanvas({
 // Gemeinsame Geometrie-Helfer für Logo- und Text-Knoten
 // ---------------------------------------------------------------
 
-interface GeometryProps {
-  areaPx: PixelRect;
-  scaleFactors: ScaleFactors;
-  element: Pick<ConfigElement, 'xCm' | 'yCm' | 'widthCm' | 'heightCm'>;
+/** Rechnet die Sperrzonen eines Druckbereichs (Kragen, Reißverschluss, …)
+ *  einmalig in Pixel-Rechtecke um – Grundlage sowohl für die Zeichnung
+ *  (roter Schraffur-Rahmen) als auch für die Warnung UND die harte
+ *  Zieh-/Skalier-Begrenzung, damit alle drei garantiert dieselbe Fläche
+ *  meinen. */
+function computeExclusionZonesPx(printArea: PrintArea | null, imageRect: PixelRect): PixelRect[] {
+  if (!printArea?.exclusionZones) return [];
+  return printArea.exclusionZones.map((zone) => {
+    if (zone.shape === 'circle') {
+      const centerX = imageRect.x + (zone.xPercent / 100) * imageRect.width;
+      const centerY = imageRect.y + (zone.yPercent / 100) * imageRect.height;
+      const radiusPx = (zone.radiusPercent / 100) * imageRect.height;
+      // Für Kollision/Herausschieben genügt die quadratische Bounding-Box
+      // des Kreises – Knöpfe sind klein genug, dass die minimale
+      // Übergenauigkeit an den vier Ecken praktisch nicht ins Gewicht
+      // fällt, erspart dafür ein eigenes Kreis-Rechteck-Kollisionssystem.
+      return { x: centerX - radiusPx, y: centerY - radiusPx, width: radiusPx * 2, height: radiusPx * 2 };
+    }
+    return {
+      x: imageRect.x + (zone.xPercent / 100) * imageRect.width,
+      y: imageRect.y + (zone.yPercent / 100) * imageRect.height,
+      width: (zone.widthPercent / 100) * imageRect.width,
+      height: (zone.heightPercent / 100) * imageRect.height,
+    };
+  });
 }
 
 /** Kombiniert Nahtabstand- und Sperrzonen-Prüfung (Knopfleiste,
- *  Reißverschluss) zu einem einzigen "außerhalb erlaubt"-Ergebnis. */
+ *  Reißverschluss) zu einem einzigen "außerhalb erlaubt"-Ergebnis. Dient
+ *  nur noch der optischen Warnung (roter Rahmen) – die eigentliche
+ *  Verhinderung der Platzierung übernimmt pushOutOfExclusionZones. */
 function checkOutOfBounds(
   rect: { x: number; y: number; width: number; height: number },
   areaPx: PixelRect,
@@ -385,25 +521,7 @@ function checkOutOfBounds(
 ): boolean {
   const nearSeam = isNearSeam(rect, areaPx, seamMarginPx);
   if (nearSeam) return true;
-  if (!printArea?.exclusionZones) return false;
-  return printArea.exclusionZones.some((zone) => {
-    const zonePx = {
-      x: imageRect.x + (zone.xPercent / 100) * imageRect.width,
-      y: imageRect.y + (zone.yPercent / 100) * imageRect.height,
-      width: (zone.widthPercent / 100) * imageRect.width,
-      height: (zone.heightPercent / 100) * imageRect.height,
-    };
-    return overlapsExclusionZone(rect, zonePx);
-  });
-}
-
-function toPixelRect({ areaPx, scaleFactors, element }: GeometryProps) {
-  return {
-    x: areaPx.x + element.xCm * scaleFactors.pxPerCmX,
-    y: areaPx.y + element.yCm * scaleFactors.pxPerCmY,
-    width: element.widthCm * scaleFactors.pxPerCmX,
-    height: element.heightCm * scaleFactors.pxPerCmY,
-  };
+  return computeExclusionZonesPx(printArea, imageRect).some((zone) => overlapsExclusionZone(rect, zone));
 }
 
 function clampDragPosition(
@@ -411,7 +529,9 @@ function clampDragPosition(
   areaPx: PixelRect,
   widthPx: number,
   heightPx: number,
-  stageScale: number
+  stageScale: number,
+  exclusionZonesPx: PixelRect[],
+  zoneMarginPx: number
 ) {
   // WICHTIG – eigentliche Ursache des "kann nur nach rechts, nicht nach
   // links"-Bugs: dragBoundFunc liefert die Position in ABSOLUTEN
@@ -433,7 +553,16 @@ function clampDragPosition(
   const clampedLogicalX = maxX >= areaPx.x ? Math.min(Math.max(logicalPos.x, areaPx.x), maxX) : areaPx.x + (areaPx.width - widthPx) / 2;
   const clampedLogicalY = maxY >= areaPx.y ? Math.min(Math.max(logicalPos.y, areaPx.y), maxY) : areaPx.y + (areaPx.height - heightPx) / 2;
 
-  return { x: clampedLogicalX * stageScale, y: clampedLogicalY * stageScale };
+  // Harte Sperre: ein Motiv darf technisch gar nicht auf Kragen/
+  // Reißverschluss abgelegt werden, nicht nur eine Warnung dafür anzeigen.
+  const pushed = pushOutOfExclusionZones(
+    { x: clampedLogicalX, y: clampedLogicalY, width: widthPx, height: heightPx },
+    areaPx,
+    exclusionZonesPx,
+    zoneMarginPx
+  );
+
+  return { x: pushed.x * stageScale, y: pushed.y * stageScale };
 }
 
 /** Wie clampDragPosition, aber für zentrumsbasiert positionierte Knoten
@@ -444,7 +573,9 @@ function clampDragPositionCentered(
   areaPx: PixelRect,
   widthPx: number,
   heightPx: number,
-  stageScale: number
+  stageScale: number,
+  exclusionZonesPx: PixelRect[],
+  zoneMarginPx: number
 ) {
   const logicalPos = { x: pos.x / stageScale, y: pos.y / stageScale };
 
@@ -457,7 +588,14 @@ function clampDragPositionCentered(
   const clampedLogicalX = Math.min(Math.max(logicalPos.x, Math.min(minX, maxX)), Math.max(minX, maxX));
   const clampedLogicalY = Math.min(Math.max(logicalPos.y, Math.min(minY, maxY)), Math.max(minY, maxY));
 
-  return { x: clampedLogicalX * stageScale, y: clampedLogicalY * stageScale };
+  const pushed = pushOutOfExclusionZones(
+    { x: clampedLogicalX - halfW, y: clampedLogicalY - halfH, width: widthPx, height: heightPx },
+    areaPx,
+    exclusionZonesPx,
+    zoneMarginPx
+  );
+
+  return { x: (pushed.x + halfW) * stageScale, y: (pushed.y + halfH) * stageScale };
 }
 
 // ---------------------------------------------------------------
@@ -508,7 +646,9 @@ function LogoNode({
     }
   }, [isSelected]);
 
-  const { x: xPx, y: yPx, width: widthPx, height: heightPx } = toPixelRect({ areaPx, scaleFactors, element });
+  const { x: xPx, y: yPx, width: widthPx, height: heightPx } = elementToPixelRect(areaPx, scaleFactors, element);
+  const exclusionZonesPx = useMemo(() => computeExclusionZonesPx(printArea, imageRect), [printArea, imageRect]);
+  const zoneMarginPx = EXCLUSION_ZONE_MARGIN_CM * scaleFactors.pxPerCmX;
 
   return (
     <>
@@ -527,7 +667,7 @@ function LogoNode({
         strokeWidth={element.isOutOfBounds ? 3 : 0}
         onClick={onSelect}
         onTap={onSelect}
-        dragBoundFunc={(pos) => clampDragPosition(pos, areaPx, widthPx, heightPx, stageScale)}
+        dragBoundFunc={(pos) => clampDragPosition(pos, areaPx, widthPx, heightPx, stageScale, exclusionZonesPx, zoneMarginPx)}
         onDragMove={(e: Konva.KonvaEventObject<DragEvent>) => {
           const node = e.target;
           const nearSeam = checkOutOfBounds(
@@ -571,8 +711,18 @@ function LogoNode({
             }
           }
 
-          const nearSeam = checkOutOfBounds(
+          // Nach dem Skalieren kann das Motiv (auch ohne eigenes Zutun beim
+          // Ziehen) neu in eine Sperrzone hineinragen – deshalb auch hier
+          // aus Kragen/Reißverschluss herausschieben, nicht nur beim Drag.
+          const pushed = pushOutOfExclusionZones(
             { x: node.x(), y: node.y(), width: newWidthPx, height: newHeightPx },
+            areaPx,
+            exclusionZonesPx,
+            zoneMarginPx
+          );
+
+          const nearSeam = checkOutOfBounds(
+            { x: pushed.x, y: pushed.y, width: newWidthPx, height: newHeightPx },
             areaPx,
             seamMarginPx,
             printArea,
@@ -585,8 +735,8 @@ function LogoNode({
           onCommit({
             widthCm: newWidthCm,
             heightCm: newHeightCm,
-            xCm: (node.x() - areaPx.x) / scaleFactors.pxPerCmX,
-            yCm: (node.y() - areaPx.y) / scaleFactors.pxPerCmY,
+            xCm: (pushed.x - areaPx.x) / scaleFactors.pxPerCmX,
+            yCm: (pushed.y - areaPx.y) / scaleFactors.pxPerCmY,
             rotationDeg: node.rotation(),
             isOutOfBounds: nearSeam,
           });
@@ -673,7 +823,9 @@ function TextNode({
     }
   }, [isSelected]);
 
-  const { x: xPx, y: yPx, width: widthPx, height: heightPx } = toPixelRect({ areaPx, scaleFactors, element });
+  const { x: xPx, y: yPx, width: widthPx, height: heightPx } = elementToPixelRect(areaPx, scaleFactors, element);
+  const exclusionZonesPx = useMemo(() => computeExclusionZonesPx(printArea, imageRect), [printArea, imageRect]);
+  const zoneMarginPx = EXCLUSION_ZONE_MARGIN_CM * scaleFactors.pxPerCmX;
 
   const fontStyle = [element.bold ? 'bold' : '', element.italic ? 'italic' : ''].filter(Boolean).join(' ') || 'normal';
 
@@ -716,7 +868,7 @@ function TextNode({
         strokeWidth={element.isOutOfBounds ? 1 : (element.hasOutline ?? false) ? 0.8 : 0}
         onClick={onSelect}
         onTap={onSelect}
-        dragBoundFunc={(pos) => clampDragPositionCentered(pos, areaPx, widthPx, heightPx, stageScale)}
+        dragBoundFunc={(pos) => clampDragPositionCentered(pos, areaPx, widthPx, heightPx, stageScale, exclusionZonesPx, zoneMarginPx)}
         onDragMove={(e: Konva.KonvaEventObject<DragEvent>) => {
           const node = e.target;
           const cornerX = node.x() - widthPx / 2;
@@ -763,8 +915,19 @@ function TextNode({
           const newWidthPx = box.widthCm * scaleFactors.pxPerCmX;
           const newHeightPx = box.heightCm * scaleFactors.pxPerCmY;
 
-          const newX = oldCenterX - newWidthPx / 2;
-          const newY = oldCenterY - newHeightPx / 2;
+          const rawX = oldCenterX - newWidthPx / 2;
+          const rawY = oldCenterY - newHeightPx / 2;
+
+          // Wie bei LogoNode: nach dem Skalieren aus einer neu entstandenen
+          // Überlappung mit Kragen/Reißverschluss herausschieben.
+          const pushed = pushOutOfExclusionZones(
+            { x: rawX, y: rawY, width: newWidthPx, height: newHeightPx },
+            areaPx,
+            exclusionZonesPx,
+            zoneMarginPx
+          );
+          const newX = pushed.x;
+          const newY = pushed.y;
 
           const nearSeam = checkOutOfBounds(
             { x: newX, y: newY, width: newWidthPx, height: newHeightPx },

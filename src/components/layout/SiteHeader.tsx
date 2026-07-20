@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShoppingCart, User, Scale } from 'lucide-react';
+import { ShoppingCart, Scale } from 'lucide-react';
 import { useCartStore, getCartItemCount } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, type Currency } from '@/stores/currencyStore';
@@ -97,13 +97,10 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
             </button>
           )}
 
-          <button
-            type="button"
-            className="hidden items-center gap-1.5 text-sm text-brand/70 hover:text-gold-dark sm:flex"
-          >
-            <User className="h-4 w-4" />
-            {t('nav_account')}
-          </button>
+          {/* Kein Kundenkonto: Embroidery Republic bestellt bewusst ohne
+              Registrierung (B2B, Rechnung/Anfrage). Ein toter „Mein Konto"-
+              Button hätte Kund:innen ein nicht existierendes Login-System
+              suggeriert – daher bewusst entfernt. */}
 
           <button
             type="button"

@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import type { ProductConfig } from '@/config/products';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
+import { useLanguageStore, translate } from '@/stores/languageStore';
 
 interface ColorSizeSelectorProps {
   product: ProductConfig;
@@ -11,6 +12,8 @@ interface ColorSizeSelectorProps {
 export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
   const colorId = useConfiguratorStore((s) => s.colorId);
   const setColor = useConfiguratorStore((s) => s.setColor);
+  const language = useLanguageStore((s) => s.language);
+  const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
   return (
     <div className="flex w-full flex-wrap items-center justify-between gap-4 rounded-xl border border-gold/20 bg-white px-4 py-3 shadow-elegant">
@@ -21,7 +24,7 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
       </div>
 
       <div className="flex items-center gap-2">
-        <span className="text-xs text-brand/40">Farbe</span>
+        <span className="text-xs text-brand/40">{t('color_label')}</span>
         <div className="flex gap-1.5">
           {product.colors.map((color) => (
             <button

@@ -70,8 +70,10 @@ const EMBROIDERY_PRICING_RULES: PricingRule[] = [
   { id: 'emb-stitches', ruleType: 'per_1000_stitches', price: 1.4, label: 'Stichpreis (1,40 € / 1.000 Stiche)', isActive: true },
 ];
 
+/** Asynchrone Signatur beibehalten (spätere DB-Anbindung = reiner
+ *  Implementierungstausch), aber ohne die frühere künstliche 100ms-
+ *  Wartezeit – sie verzögerte nur die erste Preisberechnung. */
 export async function getPricingRules(printMethod: PrintMethod): Promise<PricingRule[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
   const source = printMethod === 'embroidery' ? EMBROIDERY_PRICING_RULES : DTF_PRICING_RULES;
   return source.filter((rule) => rule.isActive);
 }

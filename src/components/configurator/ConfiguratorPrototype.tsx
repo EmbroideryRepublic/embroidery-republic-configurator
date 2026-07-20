@@ -270,9 +270,9 @@ export function ConfiguratorPrototype() {
     ? 0
     : elements.length === 0
       ? 1
-      : elements.some((el) => !el.isOutOfBounds)
-        ? 2
-        : 3;
+      : elements.every((el) => !el.isOutOfBounds)
+        ? 3
+        : 2;
 
   if (!isHydrated) {
     return (
@@ -348,7 +348,7 @@ export function ConfiguratorPrototype() {
                   {isLoadingContext ? (
                     <CanvasSkeleton />
                   ) : (
-                    <ConfiguratorCanvas productImageUrl={currentImageUrl} printArea={currentPrintArea} zoom={zoom} />
+                    <ConfiguratorCanvas productImageUrl={currentImageUrl} printArea={currentPrintArea} zoom={zoom} product={product} />
                   )}
                 </div>
 

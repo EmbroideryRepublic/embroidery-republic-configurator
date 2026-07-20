@@ -1,4 +1,4 @@
-import type { PrintArea } from '@/types';
+import type { ConfigElement, PrintArea } from '@/types';
 
 export interface PixelRect {
   x: number;
@@ -31,4 +31,25 @@ export function pxToCm(px: number, pxPerCm: number): number {
 
 export function cmToPx(cm: number, pxPerCm: number): number {
   return cm * pxPerCm;
+}
+
+/**
+ * Wandelt die in cm gespeicherte Position/Größe eines Elements in einen
+ * Pixel-Rect innerhalb des Druckbereichs um. Bewusst als eigenständige,
+ * exportierte Funktion (statt privat im Editor), damit der Browser-Editor
+ * (ConfiguratorCanvas.tsx) und das serverseitige Druckvorschau-Rendering
+ * (src/lib/rendering/) exakt dieselbe Umrechnung verwenden und geometrisch
+ * niemals auseinanderdriften.
+ */
+export function elementToPixelRect(
+  areaPx: PixelRect,
+  scaleFactors: ScaleFactors,
+  element: Pick<ConfigElement, 'xCm' | 'yCm' | 'widthCm' | 'heightCm'>
+): PixelRect {
+  return {
+    x: areaPx.x + element.xCm * scaleFactors.pxPerCmX,
+    y: areaPx.y + element.yCm * scaleFactors.pxPerCmY,
+    width: element.widthCm * scaleFactors.pxPerCmX,
+    height: element.heightCm * scaleFactors.pxPerCmY,
+  };
 }

@@ -1,0 +1,7 @@
+{
+  "//": "Nur für Node-Skripte (tsx). Next kompiliert JSX selbst mit dem automatischen Runtime; die Haupt-tsconfig steht daher auf 'preserve'. Für tsx muss das Runtime explizit gesetzt werden, sonst schlagen die React-E-Mail-Templates mit 'React is not defined' fehl.",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
+}

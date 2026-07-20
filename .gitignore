@@ -14,3 +14,14 @@
 
 # Logs
 npm-debug.log*
+
+# TypeScript-Build-Cache
+tsconfig.tsbuildinfo
+
+# Lokale Entwicklungs-Logs
+*.log
+.next-dev.log
+
+# Temporaere Analyse-Artefakte (Debug-Screenshots, Wegwerf-Skripte)
+_tmp_*
+scripts/_tmp_*

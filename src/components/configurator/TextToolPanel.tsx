@@ -7,6 +7,7 @@ import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import type { PrintArea, TextElement } from '@/types';
+import { useLanguageStore, translate } from '@/stores/languageStore';
 
 interface TextToolPanelProps {
   printArea: PrintArea | null;
@@ -21,6 +22,8 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
   const activeView = useConfiguratorStore((s) => s.activeView);
   const addElement = useConfiguratorStore((s) => s.addElement);
   const setSelectedElementId = useConfiguratorStore((s) => s.setSelectedElementId);
+  const language = useLanguageStore((s) => s.language);
+  const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
   function handleAdd() {
     const content = value.trim();
@@ -98,7 +101,7 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleAdd();
           }}
-          placeholder="Text eingeben …"
+          placeholder={t('text_tool_placeholder')}
           className="flex-1 rounded border border-gray-300 px-2 py-1.5 text-sm"
         />
         <button
@@ -107,15 +110,14 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
           disabled={!value.trim() || !printArea}
           className="rounded bg-gold px-3 py-1.5 text-sm text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
         >
-          Hinzufügen
+          {t('text_tool_add_button')}
         </button>
       </div>
       {!printArea && (
-        <p className="text-xs text-amber-600">Für diese Ansicht ist kein Druckbereich definiert.</p>
+        <p className="text-xs text-amber-600">{t('text_tool_no_print_area')}</p>
       )}
       <p className="text-xs text-gray-400">
-        Nach dem Hinzufügen wechselt die Ansicht automatisch zu „Design“ – dort lassen sich
-        Schriftart, Größe, Farbe, Fett/Kursiv, Ausrichtung u.v.m. anpassen.
+        {t('text_tool_hint')}
       </p>
     </div>
   );

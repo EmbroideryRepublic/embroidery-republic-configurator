@@ -11,7 +11,7 @@ export function createClient() {
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
       cookies: {
         getAll() {
@@ -35,13 +35,16 @@ export function createClient() {
 }
 
 /**
- * Admin-Client mit service_role-Key – NUR serverseitig verwenden
- * (z.B. für Admin-Bereich, PDF-Erstellung, Bestellungen lesen).
+ * Admin-Client mit Secret Key – NUR serverseitig verwenden (z.B. für
+ * Admin-Bereich, Storage-Uploads in orders.ts, Bestellungen lesen).
+ * Löst seit Sommer 2025 den alten "service_role"-Key ab (gleiche
+ * vollen Rechte, RLS wird umgangen – Format "sb_secret_...", siehe
+ * https://supabase.com/docs/guides/getting-started/migrating-to-new-api-keys).
  * Niemals in Client Components importieren!
  */
 export function createAdminClient() {
   return createSupabaseAdminClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
+    process.env.SUPABASE_SECRET_KEY!
   );
 }

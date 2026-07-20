@@ -16,6 +16,7 @@ interface ConfiguratorActions {
   setSizeQuantity: (size: string, quantity: number) => void;
   resetSizeQuantities: () => void;
   setActiveView: (view: PrintView) => void;
+  setPreviewSize: (size: string | null) => void;
 
   addElement: (element: ConfigElement) => void;
   /** Laufende, häufige Änderungen (z.B. während des Ziehens) – NICHT in der
@@ -86,6 +87,7 @@ const initialState: ConfiguratorState = {
   elements: [],
   unitPrice: 0,
   totalPrice: 0,
+  previewSize: null,
 };
 
 function snapshot(state: { history: ConfigElement[][]; elements: ConfigElement[] }) {
@@ -103,7 +105,7 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
       // passt Position/Größe an bzw. entfernt nicht mehr passende Elemente.
       setPrintMethod: (printMethod) => set({ printMethod, selectedElementId: null }),
 
-      setProduct: (productId) => set({ productId, selectedElementId: null }),
+      setProduct: (productId) => set({ productId, selectedElementId: null, previewSize: null }),
       setColor: (colorId) => set({ colorId }),
       setSizeQuantity: (size, quantity) =>
         set((state) => {
@@ -117,6 +119,7 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
         }),
       resetSizeQuantities: () => set({ sizeQuantities: {} }),
       setActiveView: (activeView) => set({ activeView, selectedElementId: null }),
+      setPreviewSize: (previewSize) => set({ previewSize }),
 
       addElement: (element) =>
         set((state) => ({

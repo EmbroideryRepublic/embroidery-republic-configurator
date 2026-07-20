@@ -1,87 +1,256 @@
+import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { TodoNote, Todo } from '@/components/legal/TodoNote';
+import { COMPANY } from '@/config/company';
 
-export const metadata = { title: 'Datenschutz | Bekleidungskonfigurator' };
+export const metadata = { title: 'Datenschutz' };
+
+function Section({ n, title, children }: { n: number; title: string; children: ReactNode }) {
+  return (
+    <section className="space-y-2">
+      <h2 className="font-medium text-brand">
+        {n}. {title}
+      </h2>
+      <div className="space-y-2">{children}</div>
+    </section>
+  );
+}
 
 export default function DatenschutzPage() {
   return (
-    <main className="mx-auto max-w-2xl px-4 py-10 text-sm text-gray-700">
-      <Link href="/" className="text-xs text-brand-accent hover:underline">
+    <main className="mx-auto max-w-2xl px-4 py-10 text-sm leading-relaxed text-brand/70">
+      <Link href="/" className="text-xs text-gold-dark hover:underline">
         ← Zurück zum Konfigurator
       </Link>
 
-      <h1 className="mb-4 mt-4 text-xl font-semibold text-brand">Datenschutzerklärung</h1>
+      <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Datenschutzerklärung</h1>
+      <p className="mb-6 text-xs text-brand/50">Stand: Juli 2026</p>
 
-      <div className="mb-6 rounded-lg border border-amber-300 bg-amber-50 p-3 text-xs text-amber-800">
-        <strong>Platzhalter-Vorlage.</strong> Diese Seite zeigt die für eine DSGVO-Datenschutzerklärung
-        übliche Gliederung, aber keine rechtsverbindlichen Inhalte. Was tatsächlich hier stehen
-        muss, hängt davon ab, welche Dienste ihr final einsetzt (Hosting-Anbieter, Supabase-Region,
-        Analyse-/Marketing-Tools, Cookie-Einsatz o.ä.) – das kann ich als KI nicht rechtssicher für
-        euch festlegen. Bitte von einer:einem Datenschutzbeauftragten oder Anwält:in prüfen/erstellen
-        lassen, bevor die Seite live geht.
-      </div>
+      <TodoNote>
+        Noch zu ergänzen: Hosting-Anbieter samt Serverstandort (Ziffer 4) sowie die Region des
+        Datenbank- und Speicher-Dienstes (Ziffer 5). Eine datenschutzrechtliche Prüfung vor dem
+        Go-live wird empfohlen.
+      </TodoNote>
 
-      <section className="space-y-4">
-        <div>
-          <h2 className="font-medium text-brand">1. Verantwortlicher</h2>
+      <div className="space-y-6">
+        <Section n={1} title="Verantwortlicher">
+          <p>
+            Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der
+            Datenschutz-Grundverordnung (DSGVO) ist:
+          </p>
           <p>
             Embroidery Republic Germany
             <br />
-            [Anschrift, Kontaktdaten – siehe Impressum]
+            Ihsan Uzun &amp; Enes Malkoc GbR
+            <br />
+            Ingendorferweg 81, 50829 Köln, Deutschland
+            <br />
+            Telefon: {COMPANY.phone}
+            <br />
+            E-Mail:{' '}
+            <a href={COMPANY.emailHref} className="text-gold-dark hover:underline">
+              {COMPANY.email}
+            </a>
           </p>
-        </div>
-
-        <div>
-          <h2 className="font-medium text-brand">2. Welche Daten wir verarbeiten</h2>
           <p>
-            Im Rahmen der Konfigurator-Nutzung und Anfrageerstellung werden voraussichtlich
-            verarbeitet: Name, Firma, E-Mail-Adresse, Telefonnummer, Nachricht, sowie die von dir
-            erstellte Produktkonfiguration (Design, Farbe, Größe, Menge) und hochgeladene
-            Logo-Dateien. [Nach finaler technischer Umsetzung – insbesondere Supabase-Anbindung –
-            konkretisieren.]
+            Ein Datenschutzbeauftragter ist gesetzlich nicht bestellt, da die Voraussetzungen des
+            § 38 BDSG nicht vorliegen.
           </p>
-        </div>
+        </Section>
 
-        <div>
-          <h2 className="font-medium text-brand">3. Zweck der Verarbeitung</h2>
-          <p>[z.B. Bearbeitung deiner Anfrage/Bestellung, Kontaktaufnahme, Vertragserfüllung.]</p>
-        </div>
-
-        <div>
-          <h2 className="font-medium text-brand">4. Rechtsgrundlage</h2>
-          <p>[z.B. Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung/vorvertragliche Maßnahmen).]</p>
-        </div>
-
-        <div>
-          <h2 className="font-medium text-brand">5. Hosting &amp; Auftragsverarbeiter</h2>
+        <Section n={2} title="Grundsätze">
           <p>
-            [Hosting-Anbieter, Supabase (Datenbank/Storage) und weitere eingesetzte Dienstleister
-            mit Standort und Auftragsverarbeitungsvertrag benennen.]
+            Wir verarbeiten personenbezogene Daten ausschließlich im Rahmen der gesetzlichen
+            Vorschriften und nur soweit dies zur Bereitstellung der Website, zur Beantwortung von
+            Anfragen und zur Abwicklung von Aufträgen erforderlich ist.
           </p>
-        </div>
-
-        <div>
-          <h2 className="font-medium text-brand">6. Speicherdauer</h2>
-          <p>[Konkrete Löschfristen festlegen.]</p>
-        </div>
-
-        <div>
-          <h2 className="font-medium text-brand">7. Deine Rechte</h2>
           <p>
-            Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
-            Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung deiner Daten. Wende dich
-            dazu an die oben genannten Kontaktdaten.
+            <strong className="font-medium text-brand">
+              Wir setzen kein Tracking, keine Analyse-Werkzeuge, keine Werbe-Netzwerke und keine
+              Social-Media-Plugins ein.
+            </strong>{' '}
+            Es findet kein Profiling und keine automatisierte Entscheidungsfindung statt. Ein
+            Cookie-Banner ist daher nicht erforderlich (siehe Ziffer 6).
           </p>
-        </div>
+        </Section>
 
-        <div>
-          <h2 className="font-medium text-brand">8. Cookies &amp; Tracking</h2>
+        <Section n={3} title="Aufruf der Website">
           <p>
-            [Falls Analyse-/Marketing-Cookies eingesetzt werden: Art, Zweck und
-            Einwilligungsmechanismus (Cookie-Banner) beschreiben. Aktuell setzt der Konfigurator
-            selbst keine Tracking-Cookies.]
+            Beim Aufruf dieser Website werden durch unseren Hosting-Anbieter technisch notwendige
+            Verbindungsdaten in Server-Logfiles verarbeitet (insbesondere IP-Adresse, Datum und
+            Uhrzeit, aufgerufene Ressource, übertragene Datenmenge, Browsertyp und Betriebssystem).
           </p>
-        </div>
-      </section>
+          <p>
+            Diese Verarbeitung ist zur sicheren und stabilen Bereitstellung der Website erforderlich.
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren Betrieb).
+          </p>
+          <p>
+            Sämtliche Schriftarten werden lokal von unserem Server ausgeliefert. Es besteht{' '}
+            <strong className="font-medium text-brand">keine Verbindung zu Google Fonts</strong> oder
+            anderen externen Anbietern beim Seitenaufruf.
+          </p>
+        </Section>
+
+        <Section n={4} title="Hosting">
+          <p>
+            Die Website wird bei einem externen Dienstleister gehostet. Anbieter und Serverstandort:{' '}
+            <Todo>Hosting-Anbieter und Serverstandort ergänzen</Todo>
+          </p>
+          <p>
+            Mit dem Anbieter besteht ein Vertrag über die Auftragsverarbeitung nach Art. 28 DSGVO.
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+        </Section>
+
+        <Section n={5} title="Datenbank und Dateispeicher (Supabase)">
+          <p>
+            Bestelldaten, Anfragedaten sowie hochgeladene Motivdateien und erzeugte Produktionsunterlagen
+            speichern wir in einer Datenbank und einem Dateispeicher des Anbieters Supabase, Inc., 970
+            Folsom St, San Francisco, CA 94107, USA.
+          </p>
+          <p>
+            Region des eingesetzten Projekts: <Todo>Region/Serverstandort des Supabase-Projekts ergänzen</Todo>
+          </p>
+          <p>
+            Mit Supabase besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO. Soweit eine
+            Verarbeitung außerhalb der EU bzw. des EWR stattfindet, erfolgt diese auf Grundlage der
+            EU-Standardvertragsklauseln nach Art. 46 Abs. 2 lit. c DSGVO. Rechtsgrundlage der
+            Speicherung ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bzw. vorvertragliche
+            Maßnahmen).
+          </p>
+        </Section>
+
+        <Section n={6} title="Cookies und lokale Speicherung im Browser">
+          <p>
+            Für Besucherinnen und Besucher dieser Website setzen wir{' '}
+            <strong className="font-medium text-brand">keine Cookies</strong>. Ein Cookie wird
+            ausschließlich im internen Verwaltungsbereich zur Absicherung der Anmeldung gesetzt; dieser
+            Bereich ist öffentlich nicht zugänglich.
+          </p>
+          <p>
+            Damit Ihre Konfiguration beim Wechsel zwischen Seiten nicht verloren geht, speichern wir
+            folgende Angaben ausschließlich lokal in Ihrem Browser (Local Storage bzw. IndexedDB):
+          </p>
+          <ul className="ml-4 list-disc space-y-1">
+            <li>Inhalt des Warenkorbs</li>
+            <li>aktuelle Konfiguration inklusive hochgeladener Motive (IndexedDB)</li>
+            <li>gewählte Währung sowie markierte Favoriten</li>
+          </ul>
+          <p>
+            Diese Daten verbleiben auf Ihrem Endgerät, werden nicht automatisch an uns übertragen und
+            können jederzeit über die Einstellungen Ihres Browsers gelöscht werden. Die Speicherung ist
+            technisch erforderlich, um die von Ihnen aufgerufene Funktion bereitzustellen
+            (§ 25 Abs. 2 Nr. 2 TDDDG); Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+        </Section>
+
+        <Section n={7} title="Kontaktformular">
+          <p>
+            Über unser Kontaktformular verarbeiten wir die von Ihnen angegebenen Daten: Name,
+            E-Mail-Adresse, optional Betreff sowie Ihre Nachricht.
+          </p>
+          <p>
+            Zusätzlich verarbeiten wir Ihre IP-Adresse kurzzeitig, um die Anzahl der Absendevorgänge zu
+            begrenzen und Missbrauch (Spam) zu verhindern. Die IP-Adresse wird ausschließlich flüchtig
+            im Arbeitsspeicher vorgehalten, nicht dauerhaft gespeichert und automatisch nach spätestens
+            zehn Minuten verworfen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+            Interesse an der Abwehr missbräuchlicher Nutzung).
+          </p>
+          <p>
+            Die Verarbeitung Ihrer Nachricht erfolgt zur Beantwortung Ihrer Anfrage auf Grundlage von
+            Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) bzw. Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+        </Section>
+
+        <Section n={8} title="Bestellungen und unverbindliche Anfragen">
+          <p>Im Rahmen einer Bestellung verarbeiten wir:</p>
+          <ul className="ml-4 list-disc space-y-1">
+            <li>Vor- und Nachname, optional Firmenname</li>
+            <li>E-Mail-Adresse, optional Telefonnummer</li>
+            <li>Lieferanschrift</li>
+            <li>Bestelldaten (Produkte, Farben, Größen, Mengen, Preise)</li>
+            <li>hochgeladene Logos und Motive sowie die daraus erzeugten Produktionsunterlagen</li>
+          </ul>
+          <p>
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Vertrages). Bei einer
+            unverbindlichen Anfrage erheben wir keine Lieferanschrift und keine Zahlungsdaten; hier ist
+            Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen).
+          </p>
+          <p>
+            Zur Erfüllung des Auftrags geben wir die für die Lieferung erforderlichen Daten an das
+            beauftragte Versandunternehmen sowie – soweit für die Beschaffung der Textilien erforderlich
+            – an unsere Lieferanten weiter. Es werden dabei nur die jeweils notwendigen Daten
+            übermittelt.
+          </p>
+        </Section>
+
+        <Section n={9} title="E-Mail-Versand (Resend)">
+          <p>
+            Für den Versand von Bestätigungs- und Benachrichtigungs-E-Mails nutzen wir den Dienst
+            Resend (Resend, Inc., 2261 Market Street, San Francisco, CA 94114, USA). Dabei werden Ihre
+            E-Mail-Adresse sowie der Inhalt der jeweiligen Nachricht verarbeitet.
+          </p>
+          <p>
+            Mit dem Anbieter besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; die
+            Übermittlung in die USA erfolgt auf Grundlage der EU-Standardvertragsklauseln nach Art. 46
+            Abs. 2 lit. c DSGVO. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO bzw. Art. 6 Abs. 1
+            lit. f DSGVO.
+          </p>
+        </Section>
+
+        <Section n={10} title="Speicherdauer">
+          <p>
+            Wir speichern personenbezogene Daten nur so lange, wie dies für die genannten Zwecke
+            erforderlich ist. Anfragen, die nicht zu einem Vertrag führen, löschen wir spätestens nach
+            Ablauf von sechs Monaten, sofern keine weitergehende Aufbewahrungspflicht besteht.
+          </p>
+          <p>
+            Für Vertrags- und Rechnungsdaten gelten die gesetzlichen Aufbewahrungsfristen von sechs
+            bzw. zehn Jahren (§ 257 HGB, § 147 AO). Für die Dauer dieser Fristen ist die Verarbeitung
+            auf die Erfüllung der Aufbewahrungspflicht beschränkt.
+          </p>
+        </Section>
+
+        <Section n={11} title="Ihre Rechte">
+          <p>Sie haben jederzeit das Recht auf:</p>
+          <ul className="ml-4 list-disc space-y-1">
+            <li>Auskunft über die von uns verarbeiteten Daten (Art. 15 DSGVO)</li>
+            <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+            <li>Löschung (Art. 17 DSGVO)</li>
+            <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+            <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+            <li>
+              Widerspruch gegen Verarbeitungen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO
+              (Art. 21 DSGVO)
+            </li>
+          </ul>
+          <p>
+            Zur Ausübung Ihrer Rechte genügt eine formlose Mitteilung an die unter Ziffer 1 genannten
+            Kontaktdaten.
+          </p>
+          <p>
+            Darüber hinaus steht Ihnen ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu
+            (Art. 77 DSGVO). Zuständig für uns ist die Landesbeauftragte für Datenschutz und
+            Informationsfreiheit Nordrhein-Westfalen, Kavalleriestraße 2–4, 40213 Düsseldorf.
+          </p>
+        </Section>
+
+        <Section n={12} title="Datensicherheit">
+          <p>
+            Die Übertragung sämtlicher Daten erfolgt verschlüsselt über TLS. Der Zugriff auf Bestell-
+            und Anfragedaten ist auf berechtigte Personen beschränkt und durch eine gesonderte
+            Anmeldung geschützt.
+          </p>
+        </Section>
+
+        <Section n={13} title="Änderungen dieser Datenschutzerklärung">
+          <p>
+            Wir passen diese Datenschutzerklärung an, sobald Änderungen an unseren Leistungen oder den
+            eingesetzten Diensten dies erforderlich machen. Es gilt jeweils die auf dieser Seite
+            veröffentlichte Fassung.
+          </p>
+        </Section>
+      </div>
     </main>
   );
 }

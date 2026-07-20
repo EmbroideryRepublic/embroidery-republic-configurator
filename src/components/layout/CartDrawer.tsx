@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { useCartStore, getCartTotal } from '@/stores/cartStore';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getProduct } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
+import { submitOrder, submitInquiry } from '@/lib/actions/orders';
+import { SHIPPING_COUNTRIES, SHIPPING_RATES, calculateShipping } from '@/config/shipping';
 import type { CartItem } from '@/types';
 
 interface CartDrawerProps {
@@ -29,9 +31,8 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
 
   const total = getCartTotal(items);
 
-  function handleOrderPlaced() {
-    const number = `ER-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
-    setOrderNumber(number);
+  function handleOrderPlaced(realOrderNumber: string) {
+    setOrderNumber(realOrderNumber);
     clearCart();
     setStep('confirmed');
   }
@@ -73,7 +74,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                     ? t('cart_inquiry_sent_title')
                     : `${t('cart_title')} ${items.length > 0 ? `(${items.length})` : ''}`}
           </h2>
-          <button type="button" onClick={onClose} className="rounded p-1 text-gray-400 hover:bg-gray-100">
+          <button type="button" onClick={onClose} className="rounded p-1 text-brand/40 hover:bg-gray-100">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -82,7 +83,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
           <>
             <div className="flex-1 overflow-y-auto px-4 py-3">
               {items.length === 0 ? (
-                <p className="mt-8 text-center text-sm text-gray-400">{t('cart_empty')}</p>
+                <p className="mt-8 text-center text-sm text-brand/40">{t('cart_empty')}</p>
               ) : (
                 <ul className="space-y-3">
                   {items.map((item) => {
@@ -99,12 +100,12 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                         <div className="flex items-start justify-between gap-2">
                           <div>
                             <p className="text-sm font-medium text-brand">{product?.name ?? 'Produkt'}</p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-brand/60">
                               {color?.name ?? '–'} ·{' '}
                               {item.printMethod === 'embroidery' ? 'Stickerei' : 'DTF-Transferdruck'}
                             </p>
                             <p className="mt-0.5 text-xs font-medium text-brand/70">{sizeSummary || `${item.quantity}×`}</p>
-                            <p className="text-xs text-gray-400">
+                            <p className="text-xs text-brand/40">
                               {logoCount} Logo, {textCount} Text
                             </p>
                           </div>
@@ -112,7 +113,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                             <button
                               type="button"
                               onClick={() => handleEditItem(item)}
-                              className="rounded p-1 text-gray-300 hover:bg-gold-light hover:text-gold-dark"
+                              className="rounded p-1 text-brand/30 hover:bg-gold-light hover:text-gold-dark"
                               title={t('cart_edit_item')}
                             >
                               <Pencil className="h-4 w-4" />
@@ -120,7 +121,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                             <button
                               type="button"
                               onClick={() => removeItem(item.id)}
-                              className="rounded p-1 text-gray-300 hover:bg-red-50 hover:text-red-500"
+                              className="rounded p-1 text-brand/30 hover:bg-red-50 hover:text-red-500"
                               title="Entfernen"
                             >
                               <Trash2 className="h-4 w-4" />
@@ -129,7 +130,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                         </div>
 
                         <div className="mt-2 flex items-center justify-between">
-                          <span className="text-xs text-gray-400">{item.quantity} Stück gesamt</span>
+                          <span className="text-xs text-brand/40">{item.quantity} Stück gesamt</span>
                           <span className="text-sm font-medium">{formatPrice(item.totalPrice)}</span>
                         </div>
                       </li>
@@ -145,10 +146,14 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                   <span>{t('cart_total')}</span>
                   <span>{formatPrice(total)}</span>
                 </div>
-                <p className="mb-3 text-xs text-gray-500">
-                  {total >= 75
+                <p className="mb-3 text-xs text-brand/60">
+                  {/* Vor der Länderwahl gilt der DE-Tarif als Orientierung;
+                      verbindlich wird der Versand im Checkout berechnet. */}
+                  {total >= SHIPPING_RATES.DE.freeFrom
                     ? t('cart_free_shipping')
-                    : t('cart_shipping_remaining', { amount: formatPrice(75 - total) })}{' '}
+                    : t('cart_shipping_remaining', {
+                        amount: formatPrice(SHIPPING_RATES.DE.freeFrom - total),
+                      })}{' '}
                   {t('cart_no_returns')}
                 </p>
                 <button
@@ -195,29 +200,31 @@ interface CheckoutFormProps {
   items: CartItem[];
   total: number;
   formatPrice: (amount: number) => string;
-  onOrderPlaced: () => void;
+  onOrderPlaced: (orderNumber: string) => void;
 }
 
 /**
  * Echtes Bestellformular (Adresse, Zahlungsart, AGB-Zustimmung) statt einer
  * reinen "Anfrage"-Vorschau.
  *
- * WICHTIG, ehrlich: Die eigentliche ZahlungsABWICKLUNG (Kreditkarte
- * belasten, PayPal-Zahlung ausführen) ist hier NICHT angebunden – dafür
- * bräuchte es einen echten Zahlungsanbieter (Stripe, PayPal o.ä.) mit
- * eurem Account, API-Keys und einem Backend, das die Zahlung server-seitig
- * bestätigt. Das kann ich nicht ohne eure Zugangsdaten/Entscheidung für
- * einen Anbieter fertigstellen. Der komplette Ablauf DRUMHERUM (Formular,
- * Validierung, Bestellübersicht, Bestätigung) ist aber real nutzbar – an
- * der Stelle "Zahlung ausführen" müsste der jeweilige Anbieter eingehängt
- * werden (z.B. Stripe Checkout, PayPal Buttons).
+ * Zahlungsart: bis zur Stripe-Anbindung ausschließlich RECHNUNG. Karte und
+ * PayPal sind bewusst ausgeblendet (nicht entfernt) – die paymentMethod-Union
+ * und die serverseitige Verarbeitung bleiben erhalten, sodass sie sich später
+ * ohne Umbau reaktivieren lassen. Es wird im Checkout nichts abgebucht; die
+ * Rechnung folgt separat mit der Auftragsbearbeitung.
  */
 function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutFormProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal' | 'invoice'>('card');
+  // Bis zur Stripe-Anbindung ist Rechnung die einzige Zahlungsart. Die Union
+  // ('card' | 'paypal' | 'invoice') und die serverseitige Verarbeitung in
+  // submitOrder bleiben bewusst unverändert erhalten, damit Karte/PayPal
+  // später ohne Umbau wieder aktiviert werden können – hier wird lediglich
+  // fest 'invoice' übermittelt und die Auswahl-UI ausgeblendet.
+  const paymentMethod = 'invoice' as const;
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -230,6 +237,11 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
     country: 'Deutschland',
   });
 
+  // Versand aus Lieferland + Warenwert. Rein zur ANZEIGE – verbindlich ist
+  // die identische Berechnung auf dem Server (serverPricing.ts).
+  const shipping = calculateShipping(form.country, total);
+  const grandTotal = total + (shipping?.cost ?? 0);
+
   const isValid =
     form.firstName.trim() &&
     form.lastName.trim() &&
@@ -237,6 +249,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
     form.street.trim() &&
     form.zip.trim() &&
     form.city.trim() &&
+    shipping !== null &&
     acceptedTerms;
 
   function update(field: keyof typeof form, value: string) {
@@ -247,10 +260,30 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
     e.preventDefault();
     if (!isValid) return;
     setIsSubmitting(true);
-    // Simulierte Verarbeitung, bis ein echter Zahlungsanbieter angebunden ist.
-    await new Promise((resolve) => setTimeout(resolve, 700));
-    setIsSubmitting(false);
-    onOrderPlaced();
+    setSubmitError(null);
+    try {
+      const result = await submitOrder({
+        items,
+        contact: {
+          firstName: form.firstName,
+          lastName: form.lastName,
+          companyName: form.companyName,
+          email: form.email,
+          phone: form.phone,
+        },
+        shipping: { street: form.street, zip: form.zip, city: form.city, country: form.country },
+        paymentMethod,
+      });
+      if (result.success && result.orderNumber) {
+        onOrderPlaced(result.orderNumber);
+      } else {
+        setSubmitError(result.error ?? t('checkout_submit_error_fallback'));
+      }
+    } catch {
+      setSubmitError(t('checkout_submit_error_fallback'));
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -315,42 +348,30 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
               onChange={(e) => update('city', e.target.value)}
               className="rounded border border-gray-300 px-2.5 py-1.5 text-sm"
             />
+            {/* Auswahl kommt aus config/shipping.ts – es sind ausschließlich
+                Länder wählbar, für die ein Versandtarif hinterlegt ist. */}
             <select
               value={form.country}
               onChange={(e) => update('country', e.target.value)}
               className="col-span-2 rounded border border-gray-300 px-2.5 py-1.5 text-sm"
             >
-              <option>Deutschland</option>
-              <option>Österreich</option>
-              <option>Schweiz</option>
+              {SHIPPING_COUNTRIES.map((c) => (
+                <option key={c.name} value={c.name}>
+                  {c.name}
+                </option>
+              ))}
             </select>
           </div>
         </section>
 
         <section>
           <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/50">{t('checkout_payment_heading')}</h3>
-          <div className="space-y-1.5">
-            {(
-              [
-                { id: 'card', label: t('checkout_payment_card') },
-                { id: 'paypal', label: t('checkout_payment_paypal') },
-                { id: 'invoice', label: t('checkout_payment_invoice') },
-              ] as const
-            ).map((method) => (
-              <label
-                key={method.id}
-                className="flex cursor-pointer items-center gap-2 rounded border border-gray-200 px-3 py-2 text-sm has-[:checked]:border-gold has-[:checked]:bg-gold-light/30"
-              >
-                <input
-                  type="radio"
-                  name="payment"
-                  checked={paymentMethod === method.id}
-                  onChange={() => setPaymentMethod(method.id)}
-                  className="h-3.5 w-3.5"
-                />
-                {method.label}
-              </label>
-            ))}
+          {/* Nur Rechnung bis Stripe live ist – Karte/PayPal bewusst
+              ausgeblendet (nicht entfernt). Ein statischer, informativer
+              Hinweis statt einer Auswahl mit nur einer Option. */}
+          <div className="rounded-lg border border-gold bg-gold-light/30 px-3 py-2.5">
+            <p className="text-sm font-medium text-brand">{t('checkout_payment_invoice')}</p>
+            <p className="mt-1 text-xs leading-relaxed text-brand/60">{t('checkout_payment_invoice_note')}</p>
           </div>
         </section>
 
@@ -368,13 +389,34 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
               );
             })}
           </div>
-          <div className="flex items-center justify-between border-t border-gold/15 pt-1.5 text-base font-semibold text-brand">
-            <span>{t('checkout_grand_total')}</span>
+          {/* Versand transparent ausweisen: Zwischensumme, Versandkosten (mit
+              Hinweis auf die Freigrenze) und erst dann die Endsumme. */}
+          <div className="flex items-center justify-between border-t border-gold/15 pt-1.5 text-xs text-brand/60">
+            <span>{t('checkout_subtotal')}</span>
             <span>{formatPrice(total)}</span>
+          </div>
+          <div className="mt-1 flex items-center justify-between text-xs text-brand/60">
+            <span>{t('checkout_shipping')}</span>
+            <span>
+              {shipping
+                ? shipping.isFree
+                  ? t('checkout_shipping_free')
+                  : formatPrice(shipping.cost)
+                : '—'}
+            </span>
+          </div>
+          {shipping && !shipping.isFree && (
+            <p className="mt-1 text-[11px] text-gold-dark">
+              {t('checkout_shipping_hint', { amount: formatPrice(shipping.amountUntilFree) })}
+            </p>
+          )}
+          <div className="mt-1.5 flex items-center justify-between border-t border-gold/15 pt-1.5 text-base font-semibold text-brand">
+            <span>{t('checkout_grand_total')}</span>
+            <span>{formatPrice(grandTotal)}</span>
           </div>
         </section>
 
-        <label className="flex items-start gap-2 text-xs text-gray-500">
+        <label className="flex items-start gap-2 text-xs text-brand/60">
           <input
             type="checkbox"
             checked={acceptedTerms}
@@ -383,11 +425,11 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
           />
           <span>
             Ich akzeptiere die{' '}
-            <a href="/agb" target="_blank" className="text-brand-accent hover:underline">
+            <a href="/agb" target="_blank" className="text-gold-dark hover:underline">
               AGB
             </a>{' '}
             und{' '}
-            <a href="/datenschutz" target="_blank" className="text-brand-accent hover:underline">
+            <a href="/datenschutz" target="_blank" className="text-gold-dark hover:underline">
               Datenschutzerklärung
             </a>
             . Personalisierte Produkte sind vom Widerruf ausgeschlossen.
@@ -396,12 +438,25 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
       </div>
 
       <div className="border-t border-gray-100 px-4 py-3">
+        {submitError && (
+          <div className="mb-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
+            <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+            <span>{submitError}</span>
+          </div>
+        )}
         <button
           type="submit"
           disabled={!isValid || isSubmitting}
-          className="w-full rounded-lg bg-gold py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold py-2.5 text-sm font-medium text-white shadow-elegant transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {isSubmitting ? t('checkout_processing') : `${t('checkout_submit')} · ${formatPrice(total)}`}
+          {isSubmitting ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              {t('checkout_processing')}
+            </>
+          ) : (
+            `${t('checkout_submit')} · ${formatPrice(grandTotal)}`
+          )}
         </button>
       </div>
     </form>
@@ -426,6 +481,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', companyName: '', email: '', phone: '', message: '' });
 
   const isValid = form.name.trim() && form.email.trim().includes('@');
@@ -438,9 +494,23 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
     e.preventDefault();
     if (!isValid) return;
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    setIsSubmitting(false);
-    onSent();
+    setSubmitError(null);
+    try {
+      const result = await submitInquiry({
+        items,
+        contact: { name: form.name, companyName: form.companyName, email: form.email, phone: form.phone },
+        message: form.message,
+      });
+      if (result.success) {
+        onSent();
+      } else {
+        setSubmitError(result.error ?? t('inquiry_submit_error_fallback'));
+      }
+    } catch {
+      setSubmitError(t('inquiry_submit_error_fallback'));
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -520,12 +590,25 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
       </div>
 
       <div className="border-t border-gray-100 px-4 py-3">
+        {submitError && (
+          <div className="mb-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
+            <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+            <span>{submitError}</span>
+          </div>
+        )}
         <button
           type="submit"
           disabled={!isValid || isSubmitting}
-          className="w-full rounded-lg border-2 border-gold py-2.5 text-sm font-medium text-gold-dark transition-colors hover:bg-gold-light/40 disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-gold py-2.5 text-sm font-medium text-gold-dark transition-colors hover:bg-gold-light/40 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {isSubmitting ? t('inquiry_sending') : t('inquiry_submit')}
+          {isSubmitting ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              {t('inquiry_sending')}
+            </>
+          ) : (
+            t('inquiry_submit')
+          )}
         </button>
       </div>
     </form>
@@ -539,13 +622,13 @@ function InquirySent({ onClose }: { onClose: () => void }) {
     <div className="flex flex-1 flex-col items-center justify-center gap-3 px-6 py-10 text-center">
       <CheckCircle2 className="h-12 w-12 text-gold-dark" />
       <h3 className="text-lg font-semibold text-brand">{t('cart_inquiry_sent_title')}</h3>
-      <p className="max-w-xs text-sm text-gray-500">
+      <p className="max-w-xs text-sm text-brand/60">
         {t('inquiry_sent_text')}
       </p>
       <button
         type="button"
         onClick={onClose}
-        className="mt-3 rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50"
+        className="mt-3 rounded-lg border border-gold/40 px-4 py-2 text-sm font-medium text-gold-dark transition-colors hover:bg-gold-light/40"
       >
         {t('common_close')}
       </button>
@@ -559,17 +642,17 @@ function OrderConfirmed({ orderNumber, onClose }: { orderNumber: string; onClose
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-3 px-6 py-10 text-center">
       <CheckCircle2 className="h-12 w-12 text-green-600" />
-      <h3 className="text-lg font-semibold text-brand">{t('cart_checkout_title')}</h3>
-      <p className="text-sm text-gray-500">
+      <h3 className="text-lg font-semibold text-brand">{t('cart_order_confirmed_title')}</h3>
+      <p className="text-sm text-brand/60">
         {t('checkout_order_number_label')} <span className="font-medium text-brand">{orderNumber}</span>
       </p>
-      <p className="max-w-xs text-xs text-gray-400">
+      <p className="max-w-xs text-xs text-brand/40">
         {t('checkout_order_confirmed_text')}
       </p>
       <button
         type="button"
         onClick={onClose}
-        className="mt-3 rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50"
+        className="mt-3 rounded-lg border border-gold/40 px-4 py-2 text-sm font-medium text-gold-dark transition-colors hover:bg-gold-light/40"
       >
         {t('common_close')}
       </button>

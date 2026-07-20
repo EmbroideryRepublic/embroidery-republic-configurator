@@ -7,6 +7,7 @@ import { PRODUCTS } from '@/config/products';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useFavoritesStore } from '@/stores/favoritesStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
+import { useLanguageStore, translate } from '@/stores/languageStore';
 
 type FilterMode = 'all' | 'favorites';
 
@@ -27,13 +28,23 @@ export const ProductList = memo(function ProductList() {
   const currency = useCurrencyStore((s) => s.currency);
   const formatPrice = (amount: number) => formatPriceWithCurrency(amount, currency);
   const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
+  const language = useLanguageStore((s) => s.language);
+  const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
+
+  const brands = useMemo(() => Array.from(new Set(PRODUCTS.map((p) => p.brand))).sort(), []);
+  /** Obergrenze des Preis-Sliders wird aus dem tatsächlichen Katalog
+   *  abgeleitet (auf die nächsten 5€ aufgerundet, mind. 20€) – ein fest
+   *  verdrahteter Wert würde teurere Produkte sonst dauerhaft aus dem
+   *  Slider-Bereich herausfallen lassen. */
+  const sliderMax = useMemo(() => {
+    const highest = Math.max(...PRODUCTS.map((p) => p.basePrice), 0);
+    return Math.max(20, Math.ceil(highest / 5) * 5);
+  }, []);
 
   const [search, setSearch] = useState('');
   const [filterMode, setFilterMode] = useState<FilterMode>('all');
   const [brandFilter, setBrandFilter] = useState<string>('all');
-  const [maxPrice, setMaxPrice] = useState<number>(100);
-
-  const brands = useMemo(() => Array.from(new Set(PRODUCTS.map((p) => p.brand))).sort(), []);
+  const [maxPrice, setMaxPrice] = useState<number>(sliderMax);
 
   function handleSelectProduct(id: string) {
     const next = PRODUCTS.find((p) => p.id === id);
@@ -63,7 +74,7 @@ export const ProductList = memo(function ProductList() {
     <div className="flex h-full flex-col rounded-xl border border-gold/20 bg-white shadow-elegant">
       <div className="border-b border-gold/10 p-2.5">
         <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/60">
-          Produkt wählen
+          {t('product_choose')}
         </h2>
 
         <div className="relative">
@@ -71,7 +82,7 @@ export const ProductList = memo(function ProductList() {
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Suchen (Name, Marke, Material) …"
+            placeholder={t('product_search')}
             className="w-full rounded-md border border-gray-200 py-1.5 pl-7 pr-6 text-xs focus:border-gold/50 focus:outline-none"
           />
           {search && (
@@ -87,10 +98,10 @@ export const ProductList = memo(function ProductList() {
 
         <div className="mt-2 flex gap-1">
           <FilterChip active={filterMode === 'all'} onClick={() => setFilterMode('all')}>
-            Alle ({PRODUCTS.length})
+            {t('product_all_count', { count: PRODUCTS.length })}
           </FilterChip>
           <FilterChip active={filterMode === 'favorites'} onClick={() => setFilterMode('favorites')}>
-            <Star className="h-3 w-3" /> Favoriten ({favoriteIds.length})
+            <Star className="h-3 w-3" /> {t('product_favorites_count', { count: favoriteIds.length })}
           </FilterChip>
         </div>
 
@@ -100,7 +111,7 @@ export const ProductList = memo(function ProductList() {
             onChange={(e) => setBrandFilter(e.target.value)}
             className="w-full rounded-md border border-gray-200 px-2 py-1 text-xs focus:border-gold/50 focus:outline-none"
           >
-            <option value="all">Alle Marken</option>
+            <option value="all">{t('product_all_brands')}</option>
             {brands.map((b) => (
               <option key={b} value={b}>
                 {b}
@@ -109,11 +120,11 @@ export const ProductList = memo(function ProductList() {
           </select>
 
           <label className="flex items-center gap-2 text-[11px] text-brand/50">
-            <span className="whitespace-nowrap">bis {maxPrice} €</span>
+            <span className="whitespace-nowrap">{t('product_price_up_to', { maxPrice })}</span>
             <input
               type="range"
               min={10}
-              max={100}
+              max={sliderMax}
               step={5}
               value={maxPrice}
               onChange={(e) => setMaxPrice(Number(e.target.value))}
@@ -127,7 +138,7 @@ export const ProductList = memo(function ProductList() {
           gesamte Seite, sondern nur diesen Bereich (max-h + overflow-y-auto). */}
       <div className="max-h-[480px] flex-1 space-y-1.5 overflow-y-auto p-2">
         {filteredProducts.length === 0 ? (
-          <p className="p-3 text-center text-xs text-brand/40">Keine Produkte gefunden.</p>
+          <p className="p-3 text-center text-xs text-brand/40">{t('product_no_results')}</p>
         ) : (
           filteredProducts.map((p) => {
             const isActive = p.id === productId;
@@ -163,7 +174,7 @@ export const ProductList = memo(function ProductList() {
                     {p.material} · {p.weightGsm} g/m²
                   </span>
                   <span className="block text-xs font-medium text-gold-dark">
-                    ab {formatPrice(p.basePrice)}
+                    {t('product_from')} {formatPrice(p.basePrice)}
                   </span>
                 </span>
                 <button
@@ -172,7 +183,7 @@ export const ProductList = memo(function ProductList() {
                     e.stopPropagation();
                     toggleFavorite(p.id);
                   }}
-                  title={isFav ? 'Von Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+                  title={isFav ? t('favorite_remove') : t('favorite_add')}
                   className="flex-shrink-0 rounded p-1 text-brand/25 opacity-0 transition-opacity hover:text-gold-dark group-hover:opacity-100"
                   style={isFav ? { opacity: 1 } : undefined}
                 >

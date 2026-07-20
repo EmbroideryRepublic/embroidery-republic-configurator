@@ -8,6 +8,17 @@ export type PrintView = 'front' | 'back' | 'sleeve_left' | 'sleeve_right';
 /** Veredelungsart – bestimmt Druckbereichsgrößen, Preislogik und Farboptionen */
 export type PrintMethod = 'dtf' | 'embroidery';
 
+/** Feste, dauerhafte Produktkategorien – Basis für die (spätere) primäre
+ *  Navigationsachse "erst Produktart wählen, dann Marken/Modelle
+ *  vergleichen". Dieses Feld taggt aktuell nur den Bestand; die neue
+ *  Browsing-UX selbst ist nicht Teil dieser Änderung. */
+export type ProductType = 'tshirt' | 'longsleeve' | 'polo' | 'hoodie' | 'zip-hoodie' | 'sweater' | 'vest' | 'jacket';
+
+/** Vier feste Qualitätsstufen, genau eine pro Produkt. Bestimmt zusammen
+ *  mit purchasePrice den Verkaufs-Grundpreis, siehe
+ *  src/config/pricing/marginTiers.ts::computeBasePrice(). */
+export type QualityTier = 'basic' | 'standard' | 'premium' | 'luxury';
+
 // ---------------------------------------------------------------
 // Produktdaten (aus Supabase geladen)
 // ---------------------------------------------------------------
@@ -85,11 +96,36 @@ export interface PrintArea {
    *  Kleidungsstücks entspricht. */
   movementWidthCm: number;
   /** Sperrzonen INNERHALB der Bewegungsfläche, auf denen kein Motiv
-   *  platziert werden darf (z.B. Knopfleiste beim Polo, Reißverschluss
-   *  beim Zip-Hoodie). Prozentwerte relativ zum GESAMTEN Bild (dieselbe
-   *  Basis wie xPercent/yPercent/widthPercent/heightPercent oben). */
-  exclusionZones?: { xPercent: number; yPercent: number; widthPercent: number; heightPercent: number; label: string }[];
+   *  platziert werden darf (z.B. Kragen-Naht/Knöpfe beim Polo,
+   *  Reißverschluss bei Jacken/Hoodies). Prozentwerte relativ zum
+   *  GESAMTEN Bild (dieselbe Basis wie xPercent/yPercent/widthPercent/
+   *  heightPercent oben). */
+  exclusionZones?: ExclusionZone[];
 }
+
+/** Rechteckige Sperrzone (Standardfall, z.B. Reißverschluss-Streifen,
+ *  Knopfleiste). xPercent/yPercent = obere linke Ecke. */
+export interface RectExclusionZone {
+  shape?: 'rect';
+  xPercent: number;
+  yPercent: number;
+  widthPercent: number;
+  heightPercent: number;
+  label: string;
+}
+
+/** Kreisförmige Sperrzone (z.B. ein einzelner Knopf) – präziser als ein
+ *  Rechteck, da sie keine "toten Ecken" um das runde Objekt herum sperrt.
+ *  xPercent/yPercent = Mittelpunkt. */
+export interface CircleExclusionZone {
+  shape: 'circle';
+  xPercent: number;
+  yPercent: number;
+  radiusPercent: number;
+  label: string;
+}
+
+export type ExclusionZone = RectExclusionZone | CircleExclusionZone;
 
 // ---------------------------------------------------------------
 // Preisregeln
@@ -201,6 +237,11 @@ export interface ConfiguratorState {
   elements: ConfigElement[];
   unitPrice: number;
   totalPrice: number;
+  /** Größe, deren Maße gerade live an der Leinwand als Lineal angezeigt
+   *  werden (z.B. beim Fokussieren eines Größenfelds) – reine UI-Auswahl,
+   *  nicht Teil der gespeicherten Konfiguration. null = kein Hover/Fokus,
+   *  Anzeige fällt dann auf eine Referenzgröße zurück. */
+  previewSize: string | null;
 }
 
 // ---------------------------------------------------------------

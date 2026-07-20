@@ -14,7 +14,22 @@ import { InfoTooltip } from '@/components/ui/InfoTooltip';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import type { LogoElement, PrintArea, TextElement } from '@/types';
 
-const POSITION_PRESETS: { labelKey: 'element_position_top_center' | 'element_position_center' | 'element_position_bottom_center'; x: number; y: number }[] = [
+type PositionPresetKey =
+  | 'element_position_top_center'
+  | 'element_position_center'
+  | 'element_position_bottom_center'
+  | 'element_position_chest_left'
+  | 'element_position_chest_right';
+
+// x/y = Anteil der freien Bewegungsfläche (0 = ganz links/oben, 1 = ganz
+// rechts/unten). "Brust links/rechts" ist aus TRÄGER-Sicht benannt (wie in
+// der Textilbranche üblich: "Brust links" = Herzseite): die Herzseite des
+// Trägers erscheint auf dem Frontfoto rechts im Bild – daher x: 0.75 für
+// "Brust links" und x: 0.25 für "Brust rechts". frontOnly blendet die
+// Brust-Presets auf Rücken-/Ärmelansichten aus, wo sie keinen Sinn ergeben.
+const POSITION_PRESETS: { labelKey: PositionPresetKey; x: number; y: number; frontOnly?: boolean }[] = [
+  { labelKey: 'element_position_chest_left', x: 0.75, y: 0.18, frontOnly: true },
+  { labelKey: 'element_position_chest_right', x: 0.25, y: 0.18, frontOnly: true },
   { labelKey: 'element_position_top_center', x: 0.5, y: 0.08 },
   { labelKey: 'element_position_center', x: 0.5, y: 0.5 },
   { labelKey: 'element_position_bottom_center', x: 0.5, y: 0.85 },
@@ -484,7 +499,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
         <div>
           <p className="mb-1.5 text-xs text-gray-400">{t('element_position')}</p>
           <div className="flex flex-wrap gap-1.5">
-            {POSITION_PRESETS.map((preset) => (
+            {POSITION_PRESETS.filter((preset) => !preset.frontOnly || printArea.id.endsWith('-front')).map((preset) => (
               <button
                 key={preset.labelKey}
                 type="button"

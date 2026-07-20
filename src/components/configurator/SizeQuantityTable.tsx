@@ -19,6 +19,7 @@ interface SizeQuantityTableProps {
 export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
   const sizeQuantities = useConfiguratorStore((s) => s.sizeQuantities);
   const setSizeQuantity = useConfiguratorStore((s) => s.setSizeQuantity);
+  const setPreviewSize = useConfiguratorStore((s) => s.setPreviewSize);
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
@@ -39,6 +40,8 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
         {product.sizes.map((size) => (
           <div
             key={size}
+            onMouseEnter={() => setPreviewSize(size)}
+            onMouseLeave={() => setPreviewSize(null)}
             className="flex items-center justify-between gap-1.5 rounded border border-gray-200 pl-2 pr-1 py-1"
           >
             <span className="text-xs font-medium text-brand/70">{size}</span>
@@ -48,6 +51,8 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
               inputMode="numeric"
               value={sizeQuantities[size] ?? ''}
               placeholder="0"
+              onFocus={() => setPreviewSize(size)}
+              onBlur={() => setPreviewSize(null)}
               onChange={(e) => {
                 const value = e.target.value === '' ? 0 : Math.max(0, Math.floor(Number(e.target.value)));
                 if (!Number.isNaN(value)) setSizeQuantity(size, value);

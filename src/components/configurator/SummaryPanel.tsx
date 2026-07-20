@@ -140,7 +140,7 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
         )}
         {breakdown && breakdown.savingsAmount > 0 && (
           <p className="mt-1 text-[11px] font-medium text-green-700">
-            Du sparst {formatPrice(breakdown.savingsAmount)} durch den Mengenrabatt.
+            Sie sparen {formatPrice(breakdown.savingsAmount)} durch den Mengenrabatt.
           </p>
         )}
       </div>

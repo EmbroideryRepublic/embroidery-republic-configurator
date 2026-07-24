@@ -18,19 +18,48 @@
  * have"-Haltung wie im Rest des Bestellflusses, siehe orders.ts).
  */
 import type { ReactElement } from 'react';
+import { protokoll } from '@/lib/observability/log';
 import { render } from '@react-email/render';
 import { getResendClient, getFromAddress, getInternalNotificationAddress } from './resendClient';
+import { istTestmodus, meldeAbgefangen, testmodusKennung } from '@/config/testmodus';
+
+/**
+ * Warum diese E-Mail entsteht. Pflichtangabe, damit im Nachhinein
+ * nachvollziehbar ist, wodurch eine Nachricht ausgelöst wurde – statt nur
+ * zu sehen, DASS etwas versendet wurde.
+ *
+ * Die Werte sind bewusst frei erweiterbar (neue Anlässe brauchen keine
+ * Typänderung an dieser Datei), aber immer anzugeben.
+ */
+export interface EmailKontext {
+  /** z.B. 'order_confirmation', 'order_cancelled', 'internal_order_notification'. */
+  anlass: string;
+  /** Bezugsbestellung, sofern die Nachricht zu einer gehört. */
+  orderId?: string;
+}
 
 interface SendEmailParams {
   to: string | string[];
   subject: string;
   react: ReactElement;
   replyTo?: string;
+  /** Auslöser der Nachricht – erscheint im Protokoll und ermöglicht später
+   *  eine vollständige Kommunikationshistorie. */
+  kontext: EmailKontext;
+  /**
+   * Geplanter Versandzeitpunkt (ISO). Resend hält die Nachricht bis dahin
+   * zurück. Wird für die interne Benachrichtigung genutzt, die erst nach
+   * Ablauf der Stornofrist zugestellt werden soll.
+   */
+  scheduledAt?: string;
 }
 
 interface SendEmailResult {
   success: boolean;
   error?: string;
+  /** Resend-Nachrichten-ID – nötig, um eine GEPLANTE Mail später wieder
+   *  zurückziehen zu können. */
+  messageId?: string;
 }
 
 /** Testmodus ist AN, außer der Wert ist exakt "false" – bewusst sicherer
@@ -42,7 +71,29 @@ function isTestMode(): boolean {
   return process.env.EMAIL_TEST_MODE !== 'false';
 }
 
-export async function sendEmail({ to, subject, react, replyTo }: SendEmailParams): Promise<SendEmailResult> {
+export async function sendEmail({
+  to,
+  subject,
+  react,
+  replyTo,
+  kontext,
+  scheduledAt,
+}: SendEmailParams): Promise<SendEmailResult> {
+  // ── Testmodus: nichts verlässt den Rechner ──────────────────────────
+  // Bewusst {success: true} MIT Nachrichten-ID statt eines Fehlschlags: Ein
+  // `success: false` würde den FEHLERZWEIG des Bestellprozesses prüfen statt
+  // des Erfolgszweigs. Die ID wird eine Ebene höher gebraucht – sie landet in
+  // orders.internal_notification_email_id und in der Bestell-Historie, und
+  // genau dort weist der End-to-End-Test sie später nach.
+  //
+  // Der Aufruf steht VOR getResendClient(): Der Testlauf soll auch ohne
+  // hinterlegten RESEND_API_KEY vollständig durchlaufen.
+  if (istTestmodus()) {
+    const empfaenger = Array.isArray(to) ? to.join(', ') : to;
+    meldeAbgefangen('E-Mail', `„${subject}" an ${empfaenger}${scheduledAt ? ` (geplant für ${scheduledAt})` : ''}`);
+    return { success: true, messageId: testmodusKennung(kontext.anlass) };
+  }
+
   const resend = getResendClient();
   if (!resend) return { success: false, error: 'RESEND_API_KEY fehlt' };
 
@@ -65,19 +116,30 @@ export async function sendEmail({ to, subject, react, replyTo }: SendEmailParams
       html,
       text,
       ...(replyTo ? { replyTo } : {}),
+      // Geplanter Versand: Resend hält die Nachricht bis zum Zeitpunkt
+      // zurück. Wird u.a. für die interne Benachrichtigung genutzt, die erst
+      // nach Ablauf der Stornofrist zugestellt werden soll.
+      ...(scheduledAt ? { scheduledAt } : {}),
     });
     if (error) {
-      console.error(`[email] Versand fehlgeschlagen (${effectiveSubject}): ${error.message}`);
+      protokoll.fehler('EMAIL', 'versand_fehlgeschlagen', effectiveSubject, error);
       return { success: false, error: error.message };
     }
     // Bewusst beibehalten: die Resend-Nachrichten-ID ist der einzige Weg, eine
     // konkrete Mail später im Resend-Dashboard nachzuverfolgen (z.B. bei einer
     // Kundenrückfrage „ich habe nichts bekommen"). Kein Debug-Rauschen.
-    console.info(`[email] Gesendet: "${effectiveSubject}" → ${originalTo} (ID ${data?.id ?? 'unbekannt'})`);
-    return { success: true };
+    // Der ANLASS steht bewusst im Protokoll: Ohne ihn liesse sich später
+    // nicht mehr feststellen, wodurch eine Nachricht entstanden ist.
+    protokoll.info('EMAIL', scheduledAt ? 'geplant' : 'gesendet', effectiveSubject, {
+      anlass: kontext.anlass,
+      bestellung: kontext.orderId,
+      nachricht_id: data?.id ?? 'unbekannt',
+      geplant_fuer: scheduledAt,
+    });
+    return { success: true, ...(data?.id ? { messageId: data.id } : {}) };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    console.error(`[email] Versand fehlgeschlagen (${effectiveSubject}): ${message}`);
+    protokoll.fehler('EMAIL', 'versand_fehlgeschlagen', effectiveSubject, err);
     return { success: false, error: message };
   }
 }

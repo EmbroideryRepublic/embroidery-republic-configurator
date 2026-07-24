@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Häufige Fragen',
   description:
-    'Antworten zu Mindestbestellmenge, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung bei Embroidery Republic Germany.',
+    'Antworten zu Bestellmengen, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung bei Embroidery Republic Germany.',
 };
 
 const FAQS: { q: string; a: string }[] = [
@@ -13,7 +13,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Ab welcher Menge kann ich bestellen?',
-    a: 'Die Mindestbestellmenge liegt bei 5 Stück pro Konfiguration – unabhängig davon, ob Sie DTF-Transferdruck oder Stickerei wählen. Größen dürfen Sie dabei frei mischen (z.B. 2× M, 2× L, 1× XL).',
+    a: 'Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie dabei frei mischen (z.B. 2× M, 2× L, 1× XL). Die einmaligen Einrichtungskosten (Stickdatei bzw. Transferbogen) fallen pro Auftrag nur einmal an und verteilen sich auf die Stückzahl – deshalb sinkt der Stückpreis mit größerer Menge deutlich.',
   },
   {
     q: 'Was ist der Unterschied zwischen DTF-Transferdruck und Stickerei?',
@@ -37,7 +37,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Wie hoch sind die Versandkosten?',
-    a: 'Innerhalb Deutschlands betragen die Versandkosten 7,99 € – ab einem Bestellwert von 75,00 € liefern wir versandkostenfrei. Für Lieferungen innerhalb der Europäischen Union betragen die Versandkosten 11,99 €, ab einem Bestellwert von 100,00 € entfallen sie. Die für Ihre Bestellung geltenden Kosten werden im Bestellvorgang automatisch anhand von Lieferland und Bestellwert berechnet und vor dem Absenden transparent ausgewiesen.',
+    a: 'Innerhalb Deutschlands betragen die Versandkosten 6,90 € – ab einem Bestellwert von 75,00 € liefern wir versandkostenfrei. Für Lieferungen innerhalb der Europäischen Union betragen die Versandkosten 11,99 €, ab einem Bestellwert von 100,00 € entfallen sie. Die für Ihre Bestellung geltenden Kosten werden im Bestellvorgang automatisch anhand von Lieferland und Bestellwert berechnet und vor dem Absenden transparent ausgewiesen.',
   },
   {
     q: 'Kann ich eine Bestellung noch stornieren?',
@@ -93,7 +93,7 @@ export default function FaqPage() {
             Kontakt aufnehmen
           </Link>
           <Link
-            href="/"
+            href="/konfigurator"
             className="rounded-lg border border-gold/40 px-5 py-2.5 text-sm font-medium text-gold-dark transition-colors hover:bg-gold-light/40"
           >
             Zum Konfigurator

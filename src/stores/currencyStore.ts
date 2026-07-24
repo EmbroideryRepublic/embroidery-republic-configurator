@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { formatiereGeld } from '@/lib/format';
 
 export type Currency = 'EUR' | 'CHF';
 
@@ -27,9 +28,12 @@ const APPROX_RATES: Record<Currency, number> = {
  * aktuellen Wert auf.
  */
 export function formatPriceWithCurrency(amountInEur: number, currency: Currency): string {
+  // UMRECHNUNG bleibt hier – sie ist eine (näherungsweise) fachliche
+  // Entscheidung. Die DARSTELLUNG kommt aus lib/format/geld.ts, damit im
+  // Shop dieselbe Schreibweise steht wie in E-Mail, Produktionsblatt und
+  // später auf der Rechnung.
   const converted = amountInEur * APPROX_RATES[currency];
-  const formatted = converted.toFixed(2);
-  return currency === 'EUR' ? `${formatted} €` : `${formatted} CHF`;
+  return formatiereGeld(converted, currency);
 }
 
 interface CurrencyState {

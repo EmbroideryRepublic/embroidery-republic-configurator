@@ -81,20 +81,29 @@ export interface PrintArea {
   maxWidthCm: number;
   maxHeightCm: number;
   seamMarginCm: number;
-  /** Echte Höhe des Kleidungsstücks (Referenzgröße, meist "M") in cm –
-   *  wird für die Pixel-zu-cm-Umrechnung der GESAMTEN Bewegungsfläche
-   *  verwendet. WICHTIG: bewusst getrennt von maxHeightCm (das ist nur
-   *  die maximale Motivgröße, eine Maschinen-/Produktionsgrenze, kein
-   *  Körpermaß) – vorher wurden beide fälschlich gleichgesetzt, wodurch
-   *  alle angezeigten cm-Werte nicht der Realität entsprachen. */
+  /** WAHRE Höhe der GEZEICHNETEN Fläche in cm – Grundlage der Pixel↔cm-
+   *  Umrechnung (cmConversion: pxPerCm = areaPx.height / dieser Wert).
+   *
+   *  Der Wert MUSS beschreiben, wie viel Stoff die gezeichnete Box abdeckt,
+   *  sonst driften angezeigtes Maß und gezeichnete Strecke auseinander.
+   *  Hier stand früher die KÖRPERLÄNGE (z.B. 72 cm), obwohl der Generator
+   *  die Box als bedruckbaren Bereich zeichnet (z.B. 47 cm). Im laufenden
+   *  Canvas nachgemessen: Box 457,7 px, Standardlogo 13,95 cm mit 89 px
+   *  gezeichnet – 6,38 statt 9,74 px/cm. Jedes Motiv erschien mit 65 % der
+   *  angegebenen Größe. Kommt jetzt als boxHeightCm aus dem Generator.
+   *
+   *  Nicht zu verwechseln mit maxHeightCm: Das ist die Motivgrenze. Auf
+   *  Vorder-/Rückseite sind beide gleich (die Box IST der bedruckbare
+   *  Bereich), auf der Ärmelansicht ist diese Fläche bewusst größer. */
   referenceGarmentHeightCm: number;
-  /** Reale Breite des GESAMTEN Bewegungsbereichs (nicht die maximale
-   *  Motivgröße!) in cm – bevorzugt aus echten Lieferantendaten
-   *  (sizeGuide-Breite), sonst aus dem Foto-Seitenverhältnis geschätzt.
-   *  Wird für Positionierung/Zentrierung neuer Elemente verwendet, damit
-   *  die Mitte des Koordinatensystems der visuellen Mitte des
-   *  Kleidungsstücks entspricht. */
+  /** Wahre Breite der gezeichneten Fläche in cm (boxWidthCm, s.o.). */
   movementWidthCm: number;
+  /** Startposition eines neu eingefügten Motivs innerhalb der Fläche, in cm.
+   *  Nur auf der Ärmelansicht gesetzt: Dort umfasst der Bewegungsbereich das
+   *  ganze Kleidungsstück, ein neues Motiv soll aber mittig auf dem Oberarm
+   *  beginnen. Ohne Angabe gilt die bisherige Zentrierung. */
+  startXCm?: number;
+  startYCm?: number;
   /** Sperrzonen INNERHALB der Bewegungsfläche, auf denen kein Motiv
    *  platziert werden darf (z.B. Kragen-Naht/Knöpfe beim Polo,
    *  Reißverschluss bei Jacken/Hoodies). Prozentwerte relativ zum
@@ -131,22 +140,67 @@ export type ExclusionZone = RectExclusionZone | CircleExclusionZone;
 // Preisregeln
 // ---------------------------------------------------------------
 
+/**
+ * Preisbausteine. Jeder Typ braucht einen Handler in
+ * `lib/pricing/ruleEngine.ts` – ein Typ OHNE Handler löst bewusst einen
+ * Fehler aus, statt still übersprungen zu werden (siehe dort).
+ */
 export type PricingRuleType =
+  // ── Veredelungskosten je Stück ──────────────────────────────────────
   | 'per_logo'
   | 'per_text'
   | 'per_position'
   | 'per_cm2'
   | 'per_1000_stitches'
-  | 'quantity_discount';
+  /** Wird nicht über einen Handler, sondern über QUANTITY_TIERS abgebildet. */
+  | 'quantity_discount'
+  // ── Einmalige Kosten ────────────────────────────────────────────────
+  /** EINMALIGE Kosten des Auftrags (Rüsten, Digitalisieren, Einrichten) –
+   *  nicht je Stück. Wie oft der Betrag anfällt, steuert `multiplier`. */
+  | 'setup_fee'
+  // ── Zuschläge ───────────────────────────────────────────────────────
+  /** Zuschlag je Stück, z.B. Premiumgarn, Spezialfolie, Sondermaterial. */
+  | 'surcharge_per_unit'
+  /** Einmaliger Zuschlag, z.B. Expressproduktion. */
+  | 'surcharge_per_order'
+  // ── Nachlässe ───────────────────────────────────────────────────────
+  /** Prozentualer Nachlass, z.B. Vereins-/Geschäftskundenrabatt, Aktion. */
+  | 'discount_percent'
+  /** Absoluter Nachlass je Stück, z.B. Gutschein auf den Stückpreis. */
+  | 'discount_per_unit';
+
+/**
+ * Wie oft der Betrag einer EINMALIGEN Regel anfällt.
+ *
+ * `once`         – einmal je Auftragsposition, unabhängig von Motiven
+ * `per_position` – je genutzter Veredelungsposition (Brust, Rücken, Ärmel …)
+ * `per_element`  – je Motiv (mehrere Logos auf derselben Position zählen einzeln)
+ */
+export type PricingRuleMultiplier = 'once' | 'per_position' | 'per_element';
 
 export interface PricingRule {
   id: string;
   ruleType: PricingRuleType;
+  /** Begrenzt die Regel auf EINE Ansicht. Ohne Angabe gilt sie für alle. */
   printView?: PrintView;
   sizeThresholdCm2?: number;
   price: number;
   label: string;
   isActive: boolean;
+
+  // ── Optionale Steuerung (alle Felder sind freiwillig) ────────────────
+  // Damit lassen sich Preisstrategien konfigurieren, OHNE die
+  // Berechnungslogik anzufassen – siehe lib/pricing/ruleEngine.ts.
+
+  /** Nur für einmalige Regeln. Ohne Angabe: `once`. */
+  multiplier?: PricingRuleMultiplier;
+  /** Nur ab dieser Stückzahl gültig (Staffeln, Mengenaktionen). */
+  minQuantity?: number;
+  /** Nur bis zu dieser Stückzahl gültig. */
+  maxQuantity?: number;
+  /** ISO-Datum – Aktionen mit Start-/Enddatum. */
+  validFrom?: string;
+  validUntil?: string;
 }
 
 // ---------------------------------------------------------------
@@ -289,5 +343,9 @@ export interface CartItem {
   elements: ConfigElement[];
   unitPrice: number;
   totalPrice: number;
+  /** Einmalige Rüstkosten dieser Position (nicht je Stück). Wird
+   *  mitgeführt, damit eine Mengenänderung im Warenkorb sie NICHT
+   *  vervielfacht – sie fällt pro Auftrag genau einmal an. */
+  setupTotal?: number;
   addedAt: number;
 }

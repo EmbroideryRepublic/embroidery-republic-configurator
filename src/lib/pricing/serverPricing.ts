@@ -17,7 +17,11 @@
  */
 import { getProduct } from '@/config/products';
 import { getPricingRules } from '@/config/pricingRules';
-import { calculateShipping } from '@/config/shipping';
+import { steuersatzFuer } from '@/config/pricing/steuer';
+import { calculatePipeline } from './pipeline';
+import { sumSizeQuantities } from './quantity';
+import type { PriceLine } from './priceLine';
+import { groupByCategory } from './priceLine';
 import { calculatePrice } from './calculatePrice';
 import type { CartItem } from '@/types';
 
@@ -27,16 +31,12 @@ function round2(value: number): number {
 
 /**
  * Vertrauenswürdige Stückzahl EINER Position: Summe der Größen-Mengen aus der
- * Konfiguration – NICHT das ggf. manipulierte `CartItem.quantity`. Negative/
- * nicht-numerische Werte werden ignoriert.
+ * Konfiguration – NICHT das ggf. manipulierte `CartItem.quantity`.
+ *
+ * Die Regel selbst liegt in `quantity.ts` und wird von Oberfläche UND Server
+ * genutzt; hier bleibt nur der sprechende Name für den Sicherheitskontext.
  */
-export function trustedQuantity(sizeQuantities: Record<string, number> | undefined | null): number {
-  if (!sizeQuantities) return 0;
-  return Object.values(sizeQuantities).reduce<number>((sum, q) => {
-    const n = Number(q);
-    return sum + (Number.isFinite(n) && n > 0 ? Math.floor(n) : 0);
-  }, 0);
-}
+export const trustedQuantity = sumSizeQuantities;
 
 export interface ServerItemPrice {
   productId: string;
@@ -72,8 +72,17 @@ export interface ServerCartPricing {
   subtotal: number;
   /** Serverseitig ermittelte Versandkosten (0, wenn Freigrenze erreicht). */
   shippingCost: number;
-  /** Endsumme inkl. Versand – der Betrag, der gespeichert/berechnet wird. */
+  /** Endsumme inkl. Versand – der BRUTTObetrag, der gespeichert wird. */
   totalPrice: number;
+  /**
+   * Enthaltene Umsatzsteuer. Der Satz stammt ausschließlich aus
+   * `config/pricing/steuer.ts`; hier wird er nur weitergereicht.
+   */
+  taxAmount: number;
+  /** Steuersatz in Prozent zum Zeitpunkt dieser Berechnung. */
+  taxRate: number;
+  /** Nettosumme = `totalPrice − taxAmount`. Grundlage jeder Auswertung. */
+  netTotal: number;
   totalQuantity: number;
   /** Produkt-IDs, die serverseitig NICHT bepreisbar waren (unbekanntes
    *  Produkt) – bei echten Bestellungen ein Ablehnungsgrund. */
@@ -82,6 +91,13 @@ export interface ServerCartPricing {
    *  `shippingCost` 0, der Betrag aber NICHT belastbar – Aufrufer müssen die
    *  Bestellung ablehnen statt stillschweigend 0 € Versand anzusetzen. */
   shippingUnavailable: boolean;
+  /** Vollständige Aufschlüsselung aller Preisbestandteile (alle Stufen). */
+  lines: PriceLine[];
+  /** Dieselben Posten nach Kategorie gruppiert – für Anzeige und Rechnung. */
+  grouped: ReturnType<typeof groupByCategory>;
+  /** true = Ergebnis nicht belastbar (z.B. fehlender Versandtarif). */
+  blocked: boolean;
+  issues: string[];
 }
 
 /**
@@ -93,20 +109,48 @@ export interface ServerCartPricing {
  */
 export async function priceCart(items: CartItem[], shippingCountry?: string): Promise<ServerCartPricing> {
   const priced = await Promise.all(items.map((it) => priceCartItem(it)));
-  const subtotal = round2(priced.reduce((sum, p) => sum + p.totalPrice, 0));
 
-  const shipping = shippingCountry ? calculateShipping(shippingCountry, subtotal) : null;
-  const shippingUnavailable = Boolean(shippingCountry) && shipping === null;
-  const shippingCost = shipping?.cost ?? 0;
+  // Die Stufen 1–3 laufen über die PIPELINE (lib/pricing/pipeline.ts) – es
+  // gibt bewusst keine zweite Rechenlogik für den Warenkorb. Positionen, die
+  // serverseitig nicht bepreisbar sind (unbekanntes Produkt), gehen NICHT in
+  // die Pipeline; sie werden unten über `unpriceable` gemeldet.
+  const pipelinePositionen = await Promise.all(
+    items
+      .map((item, i) => ({ item, ergebnis: priced[i]! }))
+      .filter(({ ergebnis }) => ergebnis.priced)
+      .map(async ({ item, ergebnis }) => {
+        const product = getProduct(item.productId)!;
+        return {
+          itemId: item.id,
+          productName: product.name,
+          basePrice: product.basePrice,
+          quantity: ergebnis.quantity,
+          elements: item.elements,
+          pricingRules: await getPricingRules(item.printMethod),
+        };
+      })
+  );
+
+  const pipeline = calculatePipeline({ positions: pipelinePositionen, shippingCountry });
 
   return {
     items: priced,
-    subtotal,
-    shippingCost,
-    totalPrice: round2(subtotal + shippingCost),
+    subtotal: pipeline.subtotal,
+    shippingCost: round2(pipeline.lines.filter((l) => l.category === 'versand').reduce((s, l) => s + l.total, 0)),
+    totalPrice: pipeline.grandTotal,
+    taxAmount: pipeline.taxAmount,
+    taxRate: steuersatzFuer().satz,
+    netTotal: round2(pipeline.grandTotal - pipeline.taxAmount),
     totalQuantity: priced.reduce((sum, p) => sum + p.quantity, 0),
     unpriceable: priced.filter((p) => !p.priced).map((p) => p.productId),
-    shippingUnavailable,
+    // Kein hinterlegter Versandtarif blockiert die Pipeline – das ist
+    // derselbe Sachverhalt wie bisher, nur an einer Stelle geprüft.
+    shippingUnavailable: Boolean(shippingCountry) && pipeline.issues.some((i) => i.includes('Versandtarif')),
+    /** Vollständige Aufschlüsselung für Warenkorb, Rechnung und Auswertung. */
+    lines: pipeline.lines,
+    grouped: pipeline.grouped,
+    blocked: pipeline.blocked,
+    issues: pipeline.issues,
   };
 }
 

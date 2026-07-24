@@ -40,7 +40,7 @@ export function CompareModal({ onClose }: CompareModalProps) {
             <Scale className="h-5 w-5 text-gold-dark" />
             {t('compare_title')}
           </h2>
-          <button type="button" onClick={onClose} className="rounded p-1 text-gray-400 hover:bg-gray-100">
+          <button type="button" onClick={onClose} className="rounded-md p-1 text-gray-400 hover:bg-gray-100">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -49,7 +49,7 @@ export function CompareModal({ onClose }: CompareModalProps) {
           <select
             value={leftId}
             onChange={(e) => setLeftId(e.target.value)}
-            className="rounded border border-gray-300 px-2 py-1.5 text-sm"
+            className="rounded-md border border-gray-300 px-2 py-1.5 text-sm"
           >
             {PRODUCTS.map((p) => (
               <option key={p.id} value={p.id}>
@@ -60,7 +60,7 @@ export function CompareModal({ onClose }: CompareModalProps) {
           <select
             value={rightId}
             onChange={(e) => setRightId(e.target.value)}
-            className="rounded border border-gray-300 px-2 py-1.5 text-sm"
+            className="rounded-md border border-gray-300 px-2 py-1.5 text-sm"
           >
             {PRODUCTS.map((p) => (
               <option key={p.id} value={p.id}>

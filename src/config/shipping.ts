@@ -22,7 +22,11 @@ export interface ShippingRate {
 }
 
 export const SHIPPING_RATES: Record<ShippingZone, ShippingRate> = {
-  DE: { cost: 7.99, freeFrom: 75 },
+  // 6,90 € auf Festlegung des Betreibers vom 2026-07-22 (zuvor 7,99 €).
+  // Unsere echten Kosten: 5,50 € DHL + 0,50 € Karton = 6,00 €. Unterhalb der
+  // Freigrenze trägt sich der Versand damit knapp; oberhalb tragen wir ihn
+  // vollständig – als Deckungslücke erfasst in pricing/selbstkosten.ts.
+  DE: { cost: 6.9, freeFrom: 75 },
   EU: { cost: 11.99, freeFrom: 100 },
 };
 

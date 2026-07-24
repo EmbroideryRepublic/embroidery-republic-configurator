@@ -16,7 +16,7 @@ import {
   type CoverageStatus,
   type DimensionCoverageEntry,
 } from '@/lib/suppliers/mapping';
-import { isAdminAuthenticated } from '@/lib/admin/auth';
+import { istAdmin } from '@/lib/admin/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -52,13 +52,13 @@ function DimensionChips({ title, entries }: { title: string; entries: DimensionC
   );
 }
 
-export default function AdminSupplierMappingPage() {
+export default async function AdminSupplierMappingPage() {
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
   // rendert Seite und Layout parallel und serialisiert das Seitenergebnis in
   // den RSC-Payload des HTML – auch wenn das Layout `children` verwirft.
   // Ohne diese Wache lagen Kundendaten und signierte Datei-URLs im Quelltext
   // der Login-Seite (real nachgewiesen).
-  if (!isAdminAuthenticated()) return null;
+  if (!(await istAdmin())) return null;
   const products: CoverageProduct[] = PRODUCTS.map((p) => ({
     id: p.id,
     supplierId: p.supplier?.supplierId,

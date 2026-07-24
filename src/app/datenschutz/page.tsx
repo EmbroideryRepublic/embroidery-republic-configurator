@@ -134,7 +134,15 @@ export default function DatenschutzPage() {
           <ul className="ml-4 list-disc space-y-1">
             <li>Inhalt des Warenkorbs</li>
             <li>aktuelle Konfiguration inklusive hochgeladener Motive (IndexedDB)</li>
-            <li>gewählte Währung sowie markierte Favoriten</li>
+            <li>gewählte Währung, gewählte Sprache sowie markierte Favoriten</li>
+            <li>
+              zuletzt geöffnete Produktgruppe im Produktbrowser, damit Sie dort weitermachen können,
+              wo Sie aufgehört haben
+            </li>
+            <li>
+              ein technischer Vermerk, der ein versehentlich doppeltes Absenden einer Bestellung
+              verhindert
+            </li>
           </ul>
           <p>
             Diese Daten verbleiben auf Ihrem Endgerät, werden nicht automatisch an uns übertragen und

@@ -32,3 +32,22 @@ export const COMPANY_ADDRESS_LINE = `${COMPANY.street}, ${COMPANY.zip} ${COMPANY
 
 /** Zahlungsziel in Tagen ab Rechnungsdatum (ohne Abzug). */
 export const PAYMENT_TERM_DAYS = 14;
+
+/**
+ * Reguläre Produktionszeit in Werktagen (ab Bestellfreigabe).
+ *
+ * Stand zuvor als Literal in Footer, Startseite, Produktseite und „Über uns" –
+ * vier Stellen mit drei Schreibweisen („3–4 Werktage", „3 bis 4 Werktagen",
+ * „3–4"). Ändert sich die Zusage, gehört sie an genau eine Stelle.
+ *
+ * Bewusst NICHT in AGB und FAQ eingesetzt: Das sind Rechts- und Fließtexte,
+ * die als zusammenhängende Prosa gelesen und juristisch geprüft werden.
+ * Variablen im Vertragstext erschweren diese Prüfung mehr, als sie nutzen.
+ */
+export const PRODUKTIONSTAGE = { von: 3, bis: 4 } as const;
+
+/** Versanddauer in Werktagen nach abgeschlossener Produktion. */
+export const VERSANDTAGE = { von: 1, bis: 2 } as const;
+
+/** Einheitliche Schreibweise für die Oberfläche, z.B. „3–4 Werktage". */
+export const PRODUKTIONSZEIT_TEXT = `${PRODUKTIONSTAGE.von}–${PRODUKTIONSTAGE.bis} Werktage`;

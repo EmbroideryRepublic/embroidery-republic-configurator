@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Verrät sonst per `X-Powered-By: Next.js`, womit gearbeitet wird – eine
+  // unnötige Information für jeden, der nach passenden Angriffen sucht.
+  poweredByHeader: false,
   experimental: {
     // Standardlimit (1 MB) reicht nicht: Logo-Dateien kommen als Data-URLs
     // (LogoElement.fileUrl/originalFileUrl) direkt als Server-Action-
@@ -34,18 +37,22 @@ const nextConfig = {
     ];
   },
   images: {
+    // Jede Freigabe erlaubt es, fremde Bilder über den eigenen Optimierer zu
+    // leiten – deshalb bewusst knapp halten. Der Produktkatalog liegt lokal
+    // unter public/ und braucht hier keinen Eintrag.
+    //
+    // Entfernt (2026-07-23): `images.unsplash.com`. Der Eintrag verwies auf ein
+    // Hero-Hintergrundbild in `src/components/layout/Hero.tsx` – diese Datei
+    // existiert nicht mehr, und im gesamten Quelltext wird kein Unsplash-Bild
+    // verwendet. Eine Freigabe für einen fremden Host ohne jeden Nutzen.
     remotePatterns: [
       {
-        // Supabase Storage – Domain nach Projekt-Setup anpassen
+        // Supabase Storage. Aktuell rendert keine Seite Storage-Bilder über
+        // next/image; der Eintrag bleibt, weil es die eigene Infrastruktur ist
+        // und die Druckvorschauen dort liegen (Admin-Anzeige ist absehbar).
         protocol: 'https',
         hostname: '*.supabase.co',
         pathname: '/storage/v1/object/public/**',
-      },
-      {
-        // Hero-Hintergrundbild (lizenzfrei, Unsplash License) – austauschbar
-        // gegen eigenes Bildmaterial in src/components/layout/Hero.tsx
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
       },
     ],
   },

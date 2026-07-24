@@ -5,13 +5,8 @@ import type { PrintView } from '@/types';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import type { TranslationKey } from '@/lib/i18n/translations';
+import { positionTranslationKey } from '@/config/decorationPositions';
 
-const VIEW_LABEL_KEYS: Record<PrintView, TranslationKey> = {
-  front: 'view_front',
-  back: 'view_back',
-  sleeve_left: 'view_sleeve_left',
-  sleeve_right: 'view_sleeve_right',
-};
 
 const VIEW_ORDER: PrintView[] = ['front', 'back', 'sleeve_left', 'sleeve_right'];
 
@@ -39,7 +34,7 @@ export function ViewSwitcher({ imageUrls, hasSleeves = true }: ViewSwitcherProps
       {views.map((view) => {
         const count = elements.filter((el) => el.view === view).length;
         const isActive = activeView === view;
-        const label = t(VIEW_LABEL_KEYS[view]);
+        const label = t(positionTranslationKey(view));
         return (
           <button
             key={view}
@@ -64,11 +59,14 @@ export function ViewSwitcher({ imageUrls, hasSleeves = true }: ViewSwitcherProps
                 {count}
               </span>
             )}
-            {/* Sprachunabhängig gekürzt via CSS-Ellipsis statt fragiler
-                String-Manipulation (funktionierte nur für Deutsch). */}
+            {/* Umbruch statt Kürzung: „Ärmel rechts" passt bei 10 px Schrift
+                nicht in 56 px und erschien als „Ärmel rec…". Eine der vier
+                Hauptnavigationen der Ansicht darf nicht unlesbar sein. Die
+                feste Mindesthöhe von zwei Zeilen hält alle vier Kacheln
+                gleich hoch, obwohl „Vorderseite" einzeilig bleibt. */}
             <span
               className={clsx(
-                'mt-1 block max-w-[56px] truncate text-center text-[10px] font-medium leading-tight',
+                'mt-1 flex min-h-[1.7rem] w-[56px] items-start justify-center text-center text-[10px] font-medium leading-tight',
                 isActive ? 'text-gold-dark' : 'text-brand/40 group-hover:text-brand/60'
               )}
             >

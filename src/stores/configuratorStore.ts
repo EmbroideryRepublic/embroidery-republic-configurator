@@ -15,6 +15,7 @@ interface ConfiguratorActions {
   /** Menge für eine einzelne Größe setzen (0 = aus der Auswahl entfernen). */
   setSizeQuantity: (size: string, quantity: number) => void;
   resetSizeQuantities: () => void;
+  setSizeQuantities: (sizeQuantities: Record<string, number>) => void;
   setActiveView: (view: PrintView) => void;
   setPreviewSize: (size: string | null) => void;
 
@@ -118,6 +119,10 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           return { sizeQuantities: next };
         }),
       resetSizeQuantities: () => set({ sizeQuantities: {} }),
+      // Ganze Größen-/Mengenauswahl auf einmal setzen – beim Produktwechsel
+      // wird die übernommene Auswahl in einem Rutsch geschrieben, statt sie
+      // Größe für Größe zu setzen (das löste sonst mehrere Renders aus).
+      setSizeQuantities: (sizeQuantities) => set({ sizeQuantities: { ...sizeQuantities } }),
       setActiveView: (activeView) => set({ activeView, selectedElementId: null }),
       setPreviewSize: (previewSize) => set({ previewSize }),
 

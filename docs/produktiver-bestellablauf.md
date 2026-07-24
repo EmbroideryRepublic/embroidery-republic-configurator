@@ -110,11 +110,18 @@ läuft echte Browser-Automatisierung; sonst Dry-Run ohne Nebenwirkungen.
 
 - 65 Unit-Tests grün (inkl. Lifecycle: Übergänge inkl. paused, Backoff,
   Fehlerklassifikation, Outcome), `tsc` + `eslint` sauber.
-- **Live-E2E des autonomen Ablaufs** (echte Rechnungs-Bestellung über den
-  Konfigurator-Checkout): Bestellung → **automatisch je Lieferant
-  `draft→queued`** (Audit „Automatisch nach Bestelleingang eingereiht") →
+- **Live-E2E des Ablaufs** (echte Rechnungs-Bestellung über den
+  Konfigurator-Checkout): Bestellung → je Lieferant `draft→queued` (Audit
+  „Nach Ablauf der Stornofrist beim Öffnen im Adminbereich eingereiht") →
   Processor („Fällige jetzt verarbeiten") verarbeitet beide → `blocked`
   (Dry-Run) mit Lock + Audit.
+
+  > **Stand seit Einführung der Stornofrist:** Die Einreihung erfolgt NICHT
+  > mehr beim Bestelleingang, sondern erst beim Öffnen der Bestellung im
+  > Adminbereich – und die ist für Bestellungen erst nach Ablauf der
+  > zweistündigen Stornofrist erreichbar. Für stornierte Bestellungen
+  > entsteht dadurch nie ein Lieferantenauftrag. Die eigentliche Bestellung
+  > beim Lieferanten läuft derzeit bewusst manuell.
 - **Crash-Recovery live:** ein künstlich verwaister Lock (`processing`,
   10+ min alt) wurde vom Reaper erkannt, zurückgesetzt (`[unlock]
   processing→queued`) und automatisch neu verarbeitet.

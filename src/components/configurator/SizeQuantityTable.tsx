@@ -3,6 +3,7 @@
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import type { ProductConfig } from '@/config/products';
+import { sumSizeQuantities } from '@/lib/pricing/quantity';
 
 interface SizeQuantityTableProps {
   product: ProductConfig;
@@ -23,7 +24,7 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
-  const total = Object.values(sizeQuantities).reduce((sum, n) => sum + n, 0);
+  const total = sumSizeQuantities(sizeQuantities);
 
   return (
     <div className="rounded-lg border border-gold/20 bg-white p-3 shadow-elegant">
@@ -42,7 +43,9 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
             key={size}
             onMouseEnter={() => setPreviewSize(size)}
             onMouseLeave={() => setPreviewSize(null)}
-            className="flex items-center justify-between gap-1.5 rounded border border-gray-200 pl-2 pr-1 py-1"
+            // Das Überfahren blendet die Größe auf dem Leinwand-Lineal ein –
+            // eine dezente Hover-Färbung signalisiert, dass die Zeile reagiert.
+            className="flex items-center justify-between gap-1.5 rounded-md border border-gray-200 pl-2 pr-1 py-1 transition-colors hover:border-gold/40 hover:bg-cream/50"
           >
             <span className="text-xs font-medium text-brand/70">{size}</span>
             <input
@@ -57,7 +60,7 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
                 const value = e.target.value === '' ? 0 : Math.max(0, Math.floor(Number(e.target.value)));
                 if (!Number.isNaN(value)) setSizeQuantity(size, value);
               }}
-              className="h-7 w-14 rounded border border-gray-300 px-1.5 text-right text-xs focus:border-gold focus:outline-none"
+              className="h-7 w-14 rounded-md border border-gray-300 px-1.5 text-right text-xs focus:border-gold focus:outline-none"
             />
           </div>
         ))}

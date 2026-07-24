@@ -1,8 +1,11 @@
 import Link from 'next/link';
+import { PRODUKTIONSZEIT_TEXT } from '@/config/company';
 
 /** Fakten, die bereits an anderer Stelle der Seite ausgewiesen sind – hier
  *  nur gebündelt wiederholt (keine neuen Zusagen). */
-const FACTS = ['Ab 5 Stück bestellbar', 'Produktion 3–4 Werktage', 'Kauf auf Rechnung – 14 Tage'];
+// „Ab 5 Stück" stand hier fälschlich: Die Mindestbestellmenge ist abgeschafft,
+// die Staffel beginnt bei 1 Stück (calculatePrice.ts). Ab 5 gibt es Rabatt.
+const FACTS = ['Ab 1 Stück – ohne Mindestmenge', `Produktion ${PRODUKTIONSZEIT_TEXT}`, 'Kauf auf Rechnung – 14 Tage'];
 
 const NAV = [
   { href: '/', label: 'Konfigurator' },

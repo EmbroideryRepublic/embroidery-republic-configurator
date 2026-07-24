@@ -16,7 +16,7 @@ Vergleich und Preis-Slider; ein Live-Konfigurator mit Echtzeit-Preis inkl.
 erklärter Mengenrabatt-Staffel; DE/EN-Umschaltung; saubere Trennung von
 verbindlicher Bestellung und unverbindlicher Anfrage. Keine JavaScript-Fehler in
 der Konsole. Besonders positiv: die Info-/Rechtsseiten arbeiten mit **ehrlichen
-Platzhaltern** statt erfundenen Firmendaten, und die Mindestbestellmenge (5 Stück)
+Platzhaltern** statt erfundenen Firmendaten, und die Bestellmenge (ab 1 Stück)
 wird beim Warenkorb sauber erzwungen.
 
 Die wichtigsten Baustellen betreffen nicht die Technik, sondern die **Ehrlichkeit
@@ -105,7 +105,7 @@ Vertrauen im B2B-Verkauf ist genau diese Seite wichtig.
 - Transparente Preislogik: Live-Preis, sichtbare Mengenrabatt-Staffel, „du sparst
   X"-Hinweis und aufklappbare Preisdetails mit Erklär-Tooltips.
 - Saubere Trennung „verbindlich kaufen" vs. „unverbindlich anfragen".
-- Mindestbestellmenge klar kommuniziert und technisch erzwungen.
+- Keine Mindestbestellmenge mehr (Stand Juli 2026): Einzelstücke sind möglich; die Wirtschaftlichkeit kleiner Mengen wird über einmalige Rüstkosten abgebildet.
 - Ehrlichkeit: Platzhalter statt erfundener Firmen-/Rechtsdaten.
 
 ## Offene Entscheidungen / Daten

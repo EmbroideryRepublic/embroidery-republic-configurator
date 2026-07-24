@@ -108,3 +108,32 @@ test('trustedQuantity ignoriert negative/nicht-numerische Größenmengen', () =>
   assert.equal(trustedQuantity(undefined), 0);
   assert.equal(trustedQuantity({}), 0);
 });
+
+// ── Blockierte Preise erreichen die Bestellschicht ────────────────────────
+//
+// `blocked` meldet, dass ein Preis NICHT belastbar ist (unbekannter
+// Preisbaustein im Produktivbetrieb, fehlender Versandtarif, nicht
+// einlösbarer Gutschein). Das Feld existierte bereits, wurde vom
+// Bestellabschluss aber nie geprüft – eine Bestellung zu einem unsicheren
+// Betrag wäre durchgelaufen. Diese Tests sichern die Meldekette ab.
+
+test('priceCart meldet blocked, wenn für das Lieferland kein Versandtarif hinterlegt ist', async () => {
+  const res = await priceCart([cartItem()], 'Fantasialand');
+  assert.equal(res.shippingUnavailable, true, 'fehlender Tarif muss gemeldet werden');
+  assert.equal(res.blocked, true, 'ein unbelastbarer Preis muss als blockiert gelten');
+  assert.ok(res.issues.length > 0, 'der Grund muss benannt sein');
+});
+
+test('priceCart meldet einen belastbaren Preis NICHT als blockiert', async () => {
+  const res = await priceCart([cartItem()], 'Deutschland');
+  assert.equal(res.blocked, false);
+  assert.equal(res.shippingUnavailable, false);
+  assert.deepEqual(res.issues, []);
+  assert.ok(res.totalPrice > 0);
+});
+
+test('ohne Lieferland (unverbindliche Anfrage) entsteht kein Versandposten und keine Blockade', async () => {
+  const res = await priceCart([cartItem()]);
+  assert.equal(res.blocked, false);
+  assert.equal(res.shippingCost, 0);
+});

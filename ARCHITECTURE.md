@@ -1,3 +1,9 @@
+> ⚠️ **ÜBERHOLT (Stand 2026-07-22).** Aus der frühen Projektphase; einiges
+> trifft nicht mehr zu (z.B. Zod, Port 3000). Maßgeblich ist die
+> Entwicklerdokumentation unter [docs/README.md](docs/README.md), speziell
+> [docs/architektur.md](docs/architektur.md). Bleibt nur als historischer
+> Beleg.
+
 # Bekleidungskonfigurator – Architektur
 
 ## 1. Tech-Stack

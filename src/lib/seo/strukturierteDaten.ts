@@ -1,0 +1,116 @@
+/**
+ * Strukturierte Daten (JSON-LD) für Suchmaschinen – reine Logik.
+ *
+ * Ohne sie sieht Google eine Produktseite nur als Text. Mit ihr versteht sie
+ * Marke, Preis, Verfügbarkeit und Bild und kann ein angereichertes Ergebnis
+ * anzeigen (Preis und Verfügbarkeit direkt in der Trefferliste).
+ *
+ * ── Nur belegte Angaben ───────────────────────────────────────────────
+ * Es werden ausschließlich Felder ausgegeben, die aus dem Katalog stammen.
+ * Keine erfundenen Bewertungen, keine erfundene Verfügbarkeit. Insbesondere
+ * gibt es **keine** `aggregateRating`/`review`-Angaben – Bewertungen ohne
+ * echte Kundenstimmen wären eine Falschangabe und ein Verstoß gegen Googles
+ * Richtlinien.
+ *
+ * ── Warum AggregateOffer statt Offer ──────────────────────────────────
+ * Der Katalogpreis ist ein **Ab-Preis**: Veredelung, Menge und Staffel ändern
+ * ihn. `AggregateOffer` mit `lowPrice` sagt genau das aus – ein einzelner
+ * `price` würde einen Festpreis behaupten, den es nicht gibt.
+ */
+import type { ProductConfig } from '@/config/products/types';
+import { ermittleVerfuegbarkeit } from '@/lib/catalog/verfuegbarkeit';
+
+/** Schema.org-Verfügbarkeit aus dem Katalogstatus. */
+function schemaVerfuegbarkeit(produkt: ProductConfig): string {
+  switch (ermittleVerfuegbarkeit(produkt)) {
+    case 'ausgelaufen':
+      return 'https://schema.org/Discontinued';
+    case 'voruebergehend_nicht_lieferbar':
+      return 'https://schema.org/OutOfStock';
+    default:
+      return 'https://schema.org/InStock';
+  }
+}
+
+/**
+ * Product-Auszeichnung einer Produktseite.
+ *
+ * `basis` ist die öffentliche Basisadresse (ohne Schrägstrich am Ende).
+ */
+export function produktSchema(produkt: ProductConfig, basis: string): Record<string, unknown> {
+  const url = `${basis}/produkt/${produkt.id}`;
+  const bilder = produkt.colors
+    .map((farbe) => farbe.images.front)
+    .filter((pfad): pfad is string => Boolean(pfad))
+    .slice(0, 6)
+    .map((pfad) => `${basis}${pfad}`);
+
+  const schema: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: produkt.name,
+    description: produkt.description,
+    url,
+    brand: { '@type': 'Brand', name: produkt.brand },
+    material: produkt.material,
+    color: produkt.colors.map((f) => f.name),
+    size: produkt.sizes,
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'EUR',
+      lowPrice: produkt.basePrice,
+      availability: schemaVerfuegbarkeit(produkt),
+      url,
+    },
+  };
+
+  if (bilder.length > 0) schema.image = bilder;
+  // Artikelnummer nur, wenn wirklich eine hinterlegt ist.
+  if (produkt.supplier?.articleNumber) schema.sku = produkt.supplier.articleNumber;
+
+  return schema;
+}
+
+/** Brotkrumenpfad einer Produktseite: Start → Produkte → Produkt. */
+export function brotkrumenSchema(
+  produkt: ProductConfig,
+  artLabel: string,
+  basis: string
+): Record<string, unknown> {
+  const stationen = [
+    { name: 'Start', url: basis },
+    { name: 'Produkte', url: `${basis}/produkt` },
+    { name: artLabel, url: `${basis}/produkt?kategorie=${produkt.productType}` },
+    { name: produkt.name, url: `${basis}/produkt/${produkt.id}` },
+  ];
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: stationen.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: s.name,
+      item: s.url,
+    })),
+  };
+}
+
+/**
+ * Das Unternehmen selbst – einmal auf der Startseite.
+ *
+ * Nur Angaben, die auch im Impressum stehen bzw. aus der Konfiguration
+ * kommen. Keine erfundenen Telefonnummern oder Profile.
+ */
+export function organisationSchema(basis: string): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Embroidery Republic Germany',
+    url: basis,
+    logo: `${basis}/brand/logo.jpg`,
+    description:
+      'Firmen- und Teambekleidung individuell veredelt: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet.',
+    areaServed: 'DE',
+  };
+}

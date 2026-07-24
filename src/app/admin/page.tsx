@@ -4,7 +4,9 @@
  */
 import Link from 'next/link';
 import { listOrders } from '@/lib/admin/data';
-import { isAdminAuthenticated } from '@/lib/admin/auth';
+import { istAdmin } from '@/lib/admin/auth';
+import { formatiereGeld } from '@/lib/format';
+import { PAYMENT_STATUS_LABELS, type OrderPaymentStatus } from '@/lib/actions/orderTypes';
 
 const STATUS_LABELS: Record<string, string> = {
   new: 'Neu',
@@ -14,20 +16,13 @@ const STATUS_LABELS: Record<string, string> = {
   cancelled: 'Storniert',
 };
 
-const PAYMENT_LABELS: Record<string, string> = {
-  not_required: '–',
-  pending: 'Zahlung offen',
-  paid: 'Bezahlt',
-  failed: 'Zahlung fehlgeschlagen',
-};
-
 export default async function AdminOrdersPage() {
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
   // rendert Seite und Layout parallel und serialisiert das Seitenergebnis in
   // den RSC-Payload des HTML – auch wenn das Layout `children` verwirft.
   // Ohne diese Wache lagen Kundendaten und signierte Datei-URLs im Quelltext
   // der Login-Seite (real nachgewiesen).
-  if (!isAdminAuthenticated()) return null;
+  if (!(await istAdmin())) return null;
   const orders = await listOrders();
 
   return (
@@ -69,10 +64,10 @@ export default async function AdminOrdersPage() {
                     {order.company && <span className="block text-xs text-gray-400">{order.company}</span>}
                   </td>
                   <td className="whitespace-nowrap px-3 py-2 text-right">
-                    {order.totalPrice.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}
+                    {formatiereGeld(order.totalPrice)}
                   </td>
                   <td className="px-3 py-2">{STATUS_LABELS[order.status] ?? order.status}</td>
-                  <td className="px-3 py-2 text-gray-500">{PAYMENT_LABELS[order.paymentStatus] ?? order.paymentStatus}</td>
+                  <td className="px-3 py-2 text-gray-500">{PAYMENT_STATUS_LABELS[order.paymentStatus as OrderPaymentStatus] ?? order.paymentStatus}</td>
                 </tr>
               ))}
             </tbody>

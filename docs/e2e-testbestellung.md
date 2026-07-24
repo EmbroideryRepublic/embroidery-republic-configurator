@@ -59,7 +59,7 @@ Da der Login fehlschlägt, ist das Gesamt-Outcome `partial` → Status `blocked`
 
 ### Audit-Trail (`supplier_order_events`, Auszug)
 ```
-draft→queued     Automatisch nach Bestelleingang eingereiht.
+draft→queued     Nach Ablauf der Stornofrist beim Oeffnen im Adminbereich eingereiht.
 —→processing     Verarbeitung übernommen (Lock …), Versuch N.
 attempt          Lauf beendet: partial → blocked.
 processing→blocked  Blockiert – braucht Klärung (Daten/Zugangsdaten/Variante).

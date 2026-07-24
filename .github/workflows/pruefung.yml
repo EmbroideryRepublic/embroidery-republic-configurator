@@ -1,0 +1,92 @@
+# ═══════════════════════════════════════════════════════════════════════
+# AUTOMATISCHE PRÜFUNG
+# ═══════════════════════════════════════════════════════════════════════
+#
+# Läuft bei jedem Push und jedem Pull Request.
+#
+# ── Was hier NICHT läuft ─────────────────────────────────────────────
+# Die E2E-Läufe (Bestellung, Zahlung, Rate-Limit, Admin-Sitzungen). Sie
+# brauchen Datenbankzugang, und der einzige verfügbare ist die
+# Produktivdatenbank. Bei jedem Push dort Testdaten anzulegen ist ein
+# Risiko, das der Nutzen nicht rechtfertigt: Die Läufe räumen zwar selbst
+# auf, aber ein Abbruch mitten drin hinterließe Reste.
+#
+# Ebenso werden Migrationen NICHT angewendet – nur ihre Struktur geprüft.
+# Dass eine Migration erst gilt, wenn sie angewendet UND verifiziert ist,
+# war in diesem Projekt eine schmerzhafte Lehre (0011 fehlte wochenlang).
+# Das bleibt ein bewusster Schritt mit Trockenlauf.
+#
+# Beides steht in der Zusammenfassung, damit es nicht in Vergessenheit gerät.
+
+name: Prüfung
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pruefung:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      # ── Typen ────────────────────────────────────────────────────────
+      - name: TypeScript
+        run: npx tsc --noEmit
+
+      # ── Stil ─────────────────────────────────────────────────────────
+      - name: ESLint
+        run: npx next lint
+
+      # ── Tests ────────────────────────────────────────────────────────
+      # Enthält die Wächter: keine console-Aufrufe, keine zweite
+      # Steuersatz-/Rate-Limit-Stelle, kein direkter Insert in orders,
+      # Secret nur in auth.ts.
+      - name: Unit-Tests
+        run: npm test
+
+      # ── Build ────────────────────────────────────────────────────────
+      # Findet Fehler, die tsc nicht sieht: fehlende Umgebungsvariablen zur
+      # Bauzeit, ungültige Routen, Probleme beim Vorabrendern.
+      - name: Build
+        run: npx next build
+        env:
+          # Platzhalter: Der Build darf keine echten Zugangsdaten brauchen.
+          # Schlägt er ohne sie fehl, ist das selbst ein Befund.
+          NEXT_PUBLIC_SUPABASE_URL: https://beispiel.supabase.co
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: platzhalter
+          SUPABASE_SECRET_KEY: platzhalter
+          ADMIN_SECRET: platzhalter-fuer-den-build
+          ORDER_TOKEN_SECRET: platzhalter-fuer-den-build
+
+      # ── Sicherheit ───────────────────────────────────────────────────
+      - name: Bekannte Schwachstellen in Abhängigkeiten
+        run: npm audit --audit-level=high
+
+      - name: Keine Secrets im Quelltext
+        run: node scripts/pruefeSecrets.mjs
+
+      # ── Migrationen ──────────────────────────────────────────────────
+      - name: Migrationen strukturell prüfen
+        run: node scripts/pruefeMigrationen.mjs
+
+      - name: Hinweis auf die lokalen Schritte
+        if: always()
+        run: |
+          echo "### Nicht in der CI geprüft" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Vor jeder Auslieferung lokal ausführen:" >> $GITHUB_STEP_SUMMARY
+          echo '- `npm run test:e2e` – Bestellung über den echten Serverweg' >> $GITHUB_STEP_SUMMARY
+          echo '- `npm run test:e2e:ratelimit`' >> $GITHUB_STEP_SUMMARY
+          echo '- `npm run test:e2e:adminauth`' >> $GITHUB_STEP_SUMMARY
+          echo '- Migrationen: `node scripts/applyMigration.mjs <datei> --dry`, dann ohne `--dry`' >> $GITHUB_STEP_SUMMARY

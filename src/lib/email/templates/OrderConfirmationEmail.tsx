@@ -6,9 +6,21 @@
 import { Text } from '@react-email/components';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PAYMENT_TERM_DAYS } from '@/config/company';
+import { STORNOFRIST_MS } from '@/config/orderProcess';
 import { EmailLayout, OrderItemsTable } from './EmailLayout';
+import { formatiereGeld } from '@/lib/format';
 
-export function OrderConfirmationEmail({ order }: { order: OrderRecord }) {
+export function OrderConfirmationEmail({
+  order,
+  bestellansichtUrl,
+}: {
+  order: OrderRecord;
+  /** Optional: Link zur Bestellansicht mit Storno-Möglichkeit. Die E-Mail
+   *  erklärt den Ablauf auch OHNE diesen Link vollständig – er ist ein
+   *  zusätzlicher Weg, nicht die Erklärung selbst. */
+  bestellansichtUrl?: string;
+}) {
+  const stornofristStunden = Math.round(STORNOFRIST_MS / (60 * 60 * 1000));
   const isOrder = order.orderType === 'order';
   const title = isOrder ? `Bestellbestätigung ${order.orderNumber}` : `Ihre Anfrage ${order.orderNumber}`;
   const intro = isOrder
@@ -23,16 +35,16 @@ export function OrderConfirmationEmail({ order }: { order: OrderRecord }) {
       {isOrder && order.subtotal !== undefined && (
         <>
           <Text style={{ margin: '12px 0 0', textAlign: 'right', fontSize: 13 }}>
-            Zwischensumme: {order.subtotal.toFixed(2)} €
+            Zwischensumme: {formatiereGeld(order.subtotal)}
           </Text>
           <Text style={{ margin: '2px 0 0', textAlign: 'right', fontSize: 13 }}>
-            Versand: {order.shippingCost ? `${order.shippingCost.toFixed(2)} €` : 'kostenlos'}
+            Versand: {order.shippingCost ? formatiereGeld(order.shippingCost) : 'kostenlos'}
           </Text>
         </>
       )}
 
       <Text style={{ marginTop: 8, textAlign: 'right', fontSize: 16, fontWeight: 600 }}>
-        {isOrder ? 'Gesamtsumme' : 'Ungefährer Richtpreis'}: {order.totalPrice.toFixed(2)} €
+        {isOrder ? 'Gesamtsumme' : 'Ungefährer Richtpreis'}: {formatiereGeld(order.totalPrice)}
       </Text>
 
       {isOrder && (
@@ -42,6 +54,28 @@ export function OrderConfirmationEmail({ order }: { order: OrderRecord }) {
           ohne Abzug zu begleichen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der
           Versand erfolgt anschließend innerhalb von 1 bis 2 Werktagen.
         </Text>
+      )}
+
+      {/* Stornofrist – bewusst als Fließtext erklärt, damit der Ablauf auch
+          ohne Klick auf den Link vollständig verständlich ist. */}
+      {isOrder && (
+        <>
+          <Text style={{ marginTop: 16, fontSize: 13 }}>
+            <strong>Sie können diese Bestellung noch stornieren.</strong> Innerhalb von{' '}
+            {stornofristStunden} Stunden nach Bestelleingang können Sie sie ohne Angabe von Gründen
+            selbst stornieren – es entstehen Ihnen dann keine Kosten. Nach Ablauf dieser Frist
+            beginnen wir mit der Bearbeitung und beschaffen die Ware; eine Selbststornierung ist
+            dann nicht mehr möglich.
+          </Text>
+          {bestellansichtUrl && (
+            <Text style={{ marginTop: 12, fontSize: 13 }}>
+              Ihre Bestellung ansehen und bei Bedarf stornieren:{' '}
+              <a href={bestellansichtUrl} style={{ color: '#8a6d3b' }}>
+                {bestellansichtUrl}
+              </a>
+            </Text>
+          )}
+        </>
       )}
     </EmailLayout>
   );

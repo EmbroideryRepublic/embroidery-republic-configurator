@@ -8,18 +8,13 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import type { TranslationKey } from '@/lib/i18n/translations';
 import type { PrintArea, PrintView } from '@/types';
+import { DECORATION_POSITIONS, DECORATION_POSITION_ORDER, positionTranslationKey } from '@/config/decorationPositions';
 
 const ConfiguratorCanvas = dynamic(
   () => import('./ConfiguratorCanvas').then((m) => m.ConfiguratorCanvas),
   { ssr: false }
 );
 
-const VIEW_LABEL_KEYS: Record<PrintView, TranslationKey> = {
-  front: 'view_front',
-  back: 'view_back',
-  sleeve_left: 'view_sleeve_left',
-  sleeve_right: 'view_sleeve_right',
-};
 
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 4;
@@ -53,8 +48,8 @@ export function LargePreviewModal({ imageUrls, printAreas, hasSleeves = true, on
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
 
   const availableViews = hasSleeves
-    ? (Object.keys(VIEW_LABEL_KEYS) as PrintView[])
-    : (['front', 'back'] as PrintView[]);
+    ? [...DECORATION_POSITION_ORDER]
+    : DECORATION_POSITION_ORDER.filter((p) => DECORATION_POSITIONS[p].gruppe !== 'aermel');
 
   const printArea = printAreas.find((a) => a.view === previewView) ?? null;
 
@@ -77,7 +72,7 @@ export function LargePreviewModal({ imageUrls, printAreas, hasSleeves = true, on
                 previewView === view ? 'bg-gold text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'
               )}
             >
-              {t(VIEW_LABEL_KEYS[view])}
+              {t(positionTranslationKey(view))}
             </button>
           ))}
         </div>

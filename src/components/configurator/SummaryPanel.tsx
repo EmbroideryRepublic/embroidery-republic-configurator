@@ -8,25 +8,24 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useCartStore } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
-import { MINIMUM_QUANTITY, QUANTITY_TIERS, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
+import { QUANTITY_TIERS, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
 import { getProduct } from '@/config/products';
 import { SizeQuantityTable } from './SizeQuantityTable';
 import type { TranslationKey } from '@/lib/i18n/translations';
 import type { CartItem, PrintView } from '@/types';
+import { DECORATION_POSITION_ORDER, positionTranslationKey } from '@/config/decorationPositions';
+import { sumSizeQuantities } from '@/lib/pricing/quantity';
 
-const VIEW_LABEL_KEYS: Record<PrintView, TranslationKey> = {
-  front: 'view_front',
-  back: 'view_back',
-  sleeve_left: 'view_sleeve_left',
-  sleeve_right: 'view_sleeve_right',
-};
 
 interface SummaryPanelProps {
   productName: string;
   breakdown: PriceCalculationResult['breakdown'] | null;
+  /** true = mindestens ein Preisbaustein konnte nicht verarbeitet werden.
+   *  Der Preis ist dann ungültig und darf nicht bestellt werden. */
+  priceHasErrors?: boolean;
 }
 
-export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
+export function SummaryPanel({ productName, breakdown, priceHasErrors = false }: SummaryPanelProps) {
   const printMethod = useConfiguratorStore((s) => s.printMethod);
   const productId = useConfiguratorStore((s) => s.productId);
   const colorId = useConfiguratorStore((s) => s.colorId);
@@ -36,7 +35,7 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
   const elements = useConfiguratorStore((s) => s.elements);
   const resetDesign = useConfiguratorStore((s) => s.resetDesign);
 
-  const quantity = Object.values(sizeQuantities).reduce((sum, n) => sum + n, 0);
+  const quantity = sumSizeQuantities(sizeQuantities);
   const product = productId ? getProduct(productId) : null;
 
   const addCartItem = useCartStore((s) => s.addItem);
@@ -58,7 +57,11 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
     }
   }, [totalPrice]);
 
-  const canAddToCart = productId !== null && colorId !== null && quantity >= MINIMUM_QUANTITY;
+  // Einzelstücke sind ausdrücklich erlaubt – es gibt keine Mindestmenge mehr.
+  // Bedingung ist nur noch, dass überhaupt etwas ausgewählt wurde UND der
+  // Preis gültig zustande kam: Ein Preis mit nicht verarbeiteten Bausteinen
+  // darf niemals in eine Bestellung übernommen werden.
+  const canAddToCart = productId !== null && colorId !== null && quantity > 0 && !priceHasErrors;
 
   function handleAddToCart() {
     if (!canAddToCart || !productId || !colorId) return;
@@ -72,6 +75,7 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
       elements,
       unitPrice,
       totalPrice,
+      setupTotal: breakdown?.setupTotal ?? 0,
       addedAt: Date.now(),
     };
     addCartItem(item);
@@ -81,50 +85,47 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
   }
 
   return (
-    <div className="space-y-3 rounded-xl border border-gold/20 bg-white p-4 shadow-elegant">
-      <div className="flex items-center justify-between text-sm">
-        <span className="text-brand/50">{t('summary_method')}</span>
-        <span className="font-medium text-brand">
-          {printMethod === 'embroidery' ? t('method_embroidery') : t('method_dtf')}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-sm">
-        <span className="text-brand/50">{t('summary_elements')}</span>
-        <span className="font-medium text-brand">{elements.length}</span>
-      </div>
-
+    <div className="space-y-2 rounded-xl border border-gold/20 bg-white p-3 shadow-elegant">
+      {/* Veredelung, Elemente und Position stehen jetzt in der Live-Übersicht
+          (KonfigUebersicht) oben in der Spalte – hier bleibt der eigentliche
+          Preis- und Bestellbereich, um Doppelungen zu vermeiden. */}
       {product && <SizeQuantityTable product={product} />}
 
-      <p className="text-xs text-brand/40">
-        {t('summary_min_quantity')}: {MINIMUM_QUANTITY} Stück{' '}
-        {quantity > 0 && quantity < MINIMUM_QUANTITY && (
-          <span className="text-red-500">– noch {MINIMUM_QUANTITY - quantity} Stück bis zur Mindestmenge.</span>
-        )}
-      </p>
+      {/* Harte Warnung statt still falscher Preis. Tritt nur auf, wenn eine
+          Preisregel im laufenden Betrieb nicht verarbeitet werden konnte –
+          in Entwicklung und Tests bricht die Engine vorher ab. */}
+      {priceHasErrors && (
+        <p className="rounded-lg bg-red-50 px-3 py-2 text-xs font-medium text-red-700">
+          {t('summary_price_invalid')}
+        </p>
+      )}
 
-      {/* Mengenrabatt-Staffel: visualisiert, wo der Kunde aktuell steht und
-          was der nächste Rabattschritt wäre, inkl. Preis pro Stück bei der
-          aktuellen Menge (das ersetzt die vorherige separate
-          "Einzelpreis"-Zeile weiter unten – hier ist der Pro-Stück-Preis
-          im Kontext des Rabatts direkt sichtbar). */}
-      <div className="rounded-lg bg-cream/70 p-2.5">
-        <div className="mb-1.5 flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-xs font-medium text-brand/70">
-            <TrendingDown className="h-3.5 w-3.5 text-gold-dark" />
-            Mengenrabatt
-          </div>
-          <div className="text-right">
-            <span className="text-sm font-semibold text-brand">{formatPrice(unitPrice)}</span>
-            <span className="ml-1 text-[11px] text-brand/40">/ Stück</span>
-          </div>
-        </div>
-        <div className="flex gap-1">
+      {/* Keine Mindestmenge mehr – stattdessen die einmaligen Rüstkosten
+          ausweisen. Der Kunde soll verstehen, WARUM ein Einzelstück
+          verhältnismäßig teurer ist und dass sich Menge lohnt. */}
+      {breakdown && breakdown.setupTotal > 0 && (
+        <p className="text-xs text-brand/55">
+          {t('summary_setup_fee')}: {formatPrice(breakdown.setupTotal)}{' '}
+          <span className="text-brand/45">
+            ({formatPrice(breakdown.setupPerUnit)} {t('summary_setup_per_unit')})
+          </span>
+        </p>
+      )}
+
+      {/* Mengenrabatt als schmale Chip-Leiste.
+          Vorher ein eigener Block mit Überschrift, Erklärtext, Fortschritts-
+          und Ersparnishinweis – zusammen rund 120 px, die dem Preis und dem
+          Bestellknopf fehlten. Die Staffel selbst ist die Information; alles
+          Weitere steht im Tooltip oder ergibt sich aus dem Preis. */}
+      <div className="flex items-center gap-1">
+        <TrendingDown className="h-3.5 w-3.5 flex-shrink-0 text-gold-dark" aria-hidden="true" />
+        <div className="flex min-w-0 flex-1 gap-0.5">
           {QUANTITY_TIERS.map((tier) => (
             <div
               key={tier.minQuantity}
               className={clsx(
-                'min-w-0 flex-1 truncate rounded py-1 text-center text-[10px] font-medium',
-                quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-white text-brand/40'
+                'min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium',
+                quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-cream text-brand/40'
               )}
               title={`ab ${tier.minQuantity} Stück: -${tier.veredelungDiscountPercent}% auf Veredelung, -${tier.baseDiscountPercent}% auf Grundpreis`}
             >
@@ -132,18 +133,19 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
             </div>
           ))}
         </div>
-        <p className="mt-1 text-[10px] text-brand/40">Rabatt auf Veredelung (Grundpreis-Rabatt separat, kleiner)</p>
-        {breakdown && breakdown.nextTier && (
-          <p className="mt-1.5 text-[11px] text-brand/50">
-            Noch {breakdown.nextTier.minQuantity - quantity} Stück bis {breakdown.nextTier.veredelungDiscountPercent}% Rabatt auf die Veredelung.
-          </p>
-        )}
-        {breakdown && breakdown.savingsAmount > 0 && (
-          <p className="mt-1 text-[11px] font-medium text-green-700">
-            Sie sparen {formatPrice(breakdown.savingsAmount)} durch den Mengenrabatt.
-          </p>
-        )}
       </div>
+
+      {/* Nur der NÄCHSTE Schritt bzw. die erreichte Ersparnis – eine Zeile,
+          und nur wenn sie etwas aussagt. */}
+      {breakdown?.nextTier ? (
+        <p className="text-[11px] text-brand/50">
+          Noch {breakdown.nextTier.minQuantity - quantity} Stück bis {breakdown.nextTier.veredelungDiscountPercent}% Rabatt.
+        </p>
+      ) : breakdown && breakdown.savingsAmount > 0 ? (
+        <p className="text-[11px] font-medium text-green-700">
+          Sie sparen {formatPrice(breakdown.savingsAmount)}.
+        </p>
+      ) : null}
 
       {breakdown && (
         <div className="rounded-lg bg-cream/70 text-xs text-brand/70">
@@ -170,12 +172,12 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
                   <span>{formatPrice(breakdown.positionFeeTotal)}</span>
                 </div>
               )}
-              {(Object.keys(VIEW_LABEL_KEYS) as PrintView[])
+              {DECORATION_POSITION_ORDER
                 .filter((view) => breakdown.areaPriceByView[view] > 0)
                 .map((view, i) => (
                   <div key={view} className="flex items-center justify-between">
                     <span className="flex items-center gap-1">
-                      {breakdown.isStitchBased ? 'Stichpreis' : t('summary_area_price')} {t(VIEW_LABEL_KEYS[view])}
+                      {breakdown.isStitchBased ? 'Stichpreis' : t('summary_area_price')} {t(positionTranslationKey(view))}
                       {i === 0 && (
                         <InfoTooltip
                           text={
@@ -194,7 +196,9 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
         </div>
       )}
 
-      {quantity >= MINIMUM_QUANTITY ? (
+      {/* Gesamtpreis, sobald überhaupt eine Menge gewählt ist – auch bei
+          einem einzigen Stück. Vorher erschien er erst ab 5 Stück. */}
+      {quantity > 0 ? (
         <div
           className={clsx(
             'flex items-center justify-between rounded-lg bg-gradient-to-r from-gold-light/80 to-cream px-3 py-2.5 transition-transform duration-200',
@@ -210,9 +214,7 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
             <span className="text-sm font-medium text-brand/70">{t('summary_unit_price')}</span>
             <span className="font-serif text-lg font-semibold text-brand">{formatPrice(unitPrice)}</span>
           </div>
-          <p className="mt-1 text-xs text-amber-700">
-            {t('summary_add_at_least', { min: MINIMUM_QUANTITY })}
-          </p>
+          <p className="mt-1 text-xs text-amber-700">{t('summary_select_size_first')}</p>
         </div>
       )}
 
@@ -236,7 +238,7 @@ export function SummaryPanel({ productName, breakdown }: SummaryPanelProps) {
       </button>
       {!canAddToCart && (
         <p className="text-center text-xs text-amber-600">
-          {t('summary_select_size_first', { min: MINIMUM_QUANTITY })}
+          {t('summary_select_size_first')}
         </p>
       )}
     </div>

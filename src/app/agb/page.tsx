@@ -100,8 +100,9 @@ export default function AgbPage() {
             Motivgröße bzw. Stichzahl sowie der Bestellmenge (Mengenstaffel).
           </p>
           <p>
-            (2) Umsatzsteuer:{' '}
-            <Todo>Angabe ergänzen – Netto- oder Bruttopreise bzw. Hinweis auf § 19 UStG</Todo>
+            (2) Umsatzsteuer: Alle angegebenen Preise sind Endpreise und enthalten die gesetzliche
+            Umsatzsteuer von derzeit 19 %. Ein gesonderter Ausweis erfolgt in der Bestellbestätigung
+            und auf der Rechnung.
           </p>
           <p>(3) Versandkosten werden gemäß § 7 gesondert ausgewiesen und kommen zum Warenwert hinzu.</p>
         </Section>
@@ -174,7 +175,7 @@ export default function AgbPage() {
           </p>
           <ul className="ml-4 list-disc space-y-1">
             <li>
-              Innerhalb Deutschlands: 7,99 € – ab einem Bestellwert von 75,00 € versandkostenfrei.
+              Innerhalb Deutschlands: 6,90 € – ab einem Bestellwert von 75,00 € versandkostenfrei.
             </li>
             <li>
               Innerhalb der Europäischen Union: 11,99 € – ab einem Bestellwert von 100,00 €

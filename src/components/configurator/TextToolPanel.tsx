@@ -102,13 +102,13 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
             if (e.key === 'Enter') handleAdd();
           }}
           placeholder={t('text_tool_placeholder')}
-          className="flex-1 rounded border border-gray-300 px-2 py-1.5 text-sm"
+          className="flex-1 rounded-md border border-gray-300 px-2 py-1.5 text-sm"
         />
         <button
           type="button"
           onClick={handleAdd}
           disabled={!value.trim() || !printArea}
-          className="rounded bg-gold px-3 py-1.5 text-sm text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-md bg-gold px-3 py-1.5 text-sm text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
         >
           {t('text_tool_add_button')}
         </button>

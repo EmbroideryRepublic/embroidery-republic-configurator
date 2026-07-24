@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
 import { Scissors, Shirt, Clock, ShieldCheck, Palette, Users } from 'lucide-react';
 
 export const metadata = {
@@ -26,12 +27,12 @@ const CAPABILITIES = [
   {
     icon: Clock,
     title: 'Planbare Produktion',
-    text: 'Produktion in 3 bis 4 Werktagen ab Bestellfreigabe, Versand innerhalb von 1 bis 2 Werktagen. Bei großen Mengen informieren wir Sie vorab.',
+    text: `Produktion in ${PRODUKTIONSTAGE.von} bis ${PRODUKTIONSTAGE.bis} Werktagen ab Bestellfreigabe, Versand innerhalb von ${VERSANDTAGE.von} bis ${VERSANDTAGE.bis} Werktagen. Bei großen Mengen informieren wir Sie vorab.`,
   },
   {
     icon: Users,
-    title: 'Ab 5 Stück',
-    text: 'Kleine Teams, Vereine oder erste Testläufe: Die Mindestbestellmenge liegt bei 5 Stück – Größen frei kombinierbar.',
+    title: 'Ab 1 Stück',
+    text: 'Vom Einzelstück bis zur Großbestellung: Es gibt keine Mindestbestellmenge. Größen frei kombinierbar, Staffelpreise ab 5 Stück.',
   },
   {
     icon: Scissors,

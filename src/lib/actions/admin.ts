@@ -11,7 +11,15 @@
  */
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
-import { ADMIN_COOKIE_NAME, isAdminAuthenticated, isAdminConfigured } from '@/lib/admin/auth';
+import {
+  beendeAlleAdminSitzungen,
+  isAdminConfigured,
+  istAdmin,
+  meldeAdminAb,
+  meldeAdminAn,
+  widerrufeSitzung,
+} from '@/lib/admin/auth';
+import { pruefeRateLimit } from '@/lib/security/rateLimit';
 import { createSupplierOrder } from '@/lib/suppliers';
 import type { SupplierId } from '@/lib/suppliers';
 import {
@@ -33,24 +41,54 @@ export async function adminLogin(_prev: AdminActionResult | null, formData: Form
   if (!isAdminConfigured()) {
     return { success: false, error: 'ADMIN_SECRET ist nicht konfiguriert (mind. 12 Zeichen in .env.local setzen).' };
   }
-  const key = String(formData.get('key') ?? '');
-  if (key !== process.env.ADMIN_SECRET) {
-    return { success: false, error: 'Falscher Zugangsschlüssel.' };
+  // VOR dem Vergleich: Ohne Begrenzung ließe sich das Secret beliebig oft
+  // raten, und wer es errät, sieht alle Bestellungen und Kundendaten.
+  // Gezählt wird jeder Versuch, auch der erfolglose – sonst bliebe Raten
+  // unbegrenzt möglich.
+  const grenze = await pruefeRateLimit('adminLogin');
+  if (!grenze.erlaubt) {
+    return { success: false, error: grenze.meldung };
   }
-  cookies().set(ADMIN_COOKIE_NAME, key, {
-    httpOnly: true,
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
-    path: '/',
-    maxAge: 60 * 60 * 12, // 12 Stunden – danach erneut anmelden
-  });
+
+  // Prüfung und Sitzungsanlage liegen vollständig in lib/admin/auth.ts:
+  // Das Secret wird dort zeitkonstant verglichen und danach verworfen. Ins
+  // Cookie geht ein zufälliges Sitzungstoken, nie das Secret selbst.
+  const anmeldung = await meldeAdminAn(String(formData.get('key') ?? ''));
+  if (!anmeldung.ok) {
+    return { success: false, error: anmeldung.fehler };
+  }
+
   revalidatePath('/admin');
   return { success: true };
 }
 
 export async function adminLogout(): Promise<void> {
-  cookies().delete(ADMIN_COOKIE_NAME);
+  // Widerruft die Sitzung serverseitig UND entfernt das Cookie. Ein bloßes
+  // Löschen des Cookies würde eine kopierte Sitzung gültig lassen.
+  await meldeAdminAb();
   revalidatePath('/admin');
+}
+
+/**
+ * Beendet alle Zugänge, ohne das Secret zu ändern.
+ *
+ * Für den Fall eines vergessenen Zugangs auf einem fremden Rechner. Vorher
+ * ging das nur über das Ändern des Secrets – womit auch alle anderen
+ * ausgesperrt waren.
+ */
+export async function beendeAlleSitzungenAction(): Promise<AdminActionResult> {
+  if (!(await istAdmin())) return { success: false, error: 'Nicht angemeldet.' };
+  const anzahl = await beendeAlleAdminSitzungen();
+  revalidatePath('/admin');
+  return { success: true, error: `${anzahl} Sitzung(en) beendet.` };
+}
+
+/** Beendet eine einzelne Sitzung aus der Übersicht. */
+export async function widerrufeSitzungAction(id: string): Promise<AdminActionResult> {
+  if (!(await istAdmin())) return { success: false, error: 'Nicht angemeldet.' };
+  const ok = await widerrufeSitzung(id);
+  revalidatePath('/admin');
+  return { success: ok, error: ok ? undefined : 'Die Sitzung konnte nicht beendet werden.' };
 }
 
 export interface PrepareSupplierOrderResult extends AdminActionResult {
@@ -67,7 +105,7 @@ export interface PrepareSupplierOrderResult extends AdminActionResult {
  * Jeder Statuswechsel landet im Audit-Log (supplier_order_events).
  */
 export async function prepareSupplierOrderAction(orderId: string): Promise<PrepareSupplierOrderResult> {
-  if (!isAdminAuthenticated()) {
+  if (!(await istAdmin())) {
     return { success: false, error: 'Nicht angemeldet.' };
   }
 
@@ -101,7 +139,7 @@ const MONITOR_PATH = '/admin/lieferanten-bestellungen';
 
 /** Admin-Monitoring: erneut anstoßen (re-queue + sofort verarbeiten). */
 export async function retrySupplierOrderAction(orderId: string, supplierId: SupplierId): Promise<AdminActionResult> {
-  if (!isAdminAuthenticated()) return { success: false, error: 'Nicht angemeldet.' };
+  if (!(await istAdmin())) return { success: false, error: 'Nicht angemeldet.' };
   const requeue = await requeueForProcessing(orderId, supplierId);
   if (!requeue.ok) {
     revalidatePath(MONITOR_PATH);
@@ -114,7 +152,7 @@ export async function retrySupplierOrderAction(orderId: string, supplierId: Supp
 
 /** Admin-Monitoring: pausieren (wieder aufnehmbar). */
 export async function pauseSupplierOrderAction(orderId: string, supplierId: SupplierId): Promise<AdminActionResult> {
-  if (!isAdminAuthenticated()) return { success: false, error: 'Nicht angemeldet.' };
+  if (!(await istAdmin())) return { success: false, error: 'Nicht angemeldet.' };
   const r = await pauseSupplierOrder(orderId, supplierId);
   revalidatePath(MONITOR_PATH);
   return { success: r.ok, error: r.ok ? undefined : r.reason };
@@ -122,7 +160,7 @@ export async function pauseSupplierOrderAction(orderId: string, supplierId: Supp
 
 /** Manueller Prozess: „Bei Textil-Grosshandel bestellt" festhalten. */
 export async function markSupplierOrderedAction(orderId: string, supplierId: SupplierId): Promise<AdminActionResult> {
-  if (!isAdminAuthenticated()) return { success: false, error: 'Nicht angemeldet.' };
+  if (!(await istAdmin())) return { success: false, error: 'Nicht angemeldet.' };
   const r = await markSupplierOrderAsOrdered(orderId, supplierId);
   revalidatePath(MONITOR_PATH);
   revalidatePath(`/admin/bestellung/${orderId}`);
@@ -132,7 +170,7 @@ export async function markSupplierOrderedAction(orderId: string, supplierId: Sup
 
 /** Admin-Monitoring: dauerhaft abbrechen. */
 export async function cancelSupplierOrderAction(orderId: string, supplierId: SupplierId): Promise<AdminActionResult> {
-  if (!isAdminAuthenticated()) return { success: false, error: 'Nicht angemeldet.' };
+  if (!(await istAdmin())) return { success: false, error: 'Nicht angemeldet.' };
   const r = await cancelSupplierOrder(orderId, supplierId);
   revalidatePath(MONITOR_PATH);
   return { success: r.ok, error: r.ok ? undefined : r.reason };
@@ -141,7 +179,7 @@ export async function cancelSupplierOrderAction(orderId: string, supplierId: Sup
 /** Admin-Monitoring: den Hintergrund-Processor manuell auslösen (fällige
  *  Einträge jetzt verarbeiten – nützlich ohne aktiven Cron). */
 export async function runSupplierProcessorAction(): Promise<AdminActionResult> {
-  if (!isAdminAuthenticated()) return { success: false, error: 'Nicht angemeldet.' };
+  if (!(await istAdmin())) return { success: false, error: 'Nicht angemeldet.' };
   const { reclaimed, processed } = await processDueSupplierOrders({ limit: 25 });
   revalidatePath(MONITOR_PATH);
   return { success: true, error: `${processed.length} verarbeitet, ${reclaimed} Locks zurückgesetzt.` };

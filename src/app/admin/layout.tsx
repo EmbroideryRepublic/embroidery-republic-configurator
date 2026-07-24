@@ -6,7 +6,7 @@
  */
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { isAdminAuthenticated, isAdminConfigured } from '@/lib/admin/auth';
+import { istAdmin, isAdminConfigured } from '@/lib/admin/auth';
 import { adminLogout } from '@/lib/actions/admin';
 import { AdminLoginForm } from '@/components/admin/AdminLoginForm';
 
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 // Auth hängt an Cookies – die Seiten dürfen nie statisch vorgerendert werden.
 export const dynamic = 'force-dynamic';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  if (!isAdminAuthenticated()) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  if (!(await istAdmin())) {
     return (
       <main className="min-h-screen bg-brand-light px-4">
         <AdminLoginForm configured={isAdminConfigured()} />

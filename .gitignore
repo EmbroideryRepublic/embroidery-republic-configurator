@@ -25,3 +25,24 @@ tsconfig.tsbuildinfo
 # Temporaere Analyse-Artefakte (Debug-Screenshots, Wegwerf-Skripte)
 _tmp_*
 scripts/_tmp_*
+# Unterstrich-Praefix = Wegwerfskript (z.B. scripts/_pruefe.mjs). Diese lesen
+# haeufig .env.local und geben Kundendaten aus - nie versionieren.
+scripts/_*
+
+# Ausgabe der visuellen Pruefstrecke (scripts/visualQa.mts u.a.) – wird bei
+# jedem Durchlauf neu erzeugt, rund 43 MB, gehoert nicht in die Versionierung.
+qa-screenshots/
+.testablage/
+
+# Restore-Drill (docs/restore-drill.md): Dumps und Fingerprints enthalten
+# KUNDENDATEN bzw. Betriebskennzahlen – niemals committen.
+restore-drill/
+fingerprint-*.json
+# Sicherungen vor dem Entfernen von Bestellungen (scripts/entferneTest-
+# bestellungen.mjs bzw. manuelle Laeufe): enthalten Namen, Anschriften und
+# E-Mail-Adressen echter Datensaetze.
+sicherung-bestellungen-*.json
+*.dump.sql
+roles.sql
+schema.sql
+data.sql

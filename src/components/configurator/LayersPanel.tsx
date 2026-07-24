@@ -89,7 +89,7 @@ export function LayersPanel({ printArea }: LayersPanelProps) {
                   if (e.key === 'Enter') e.currentTarget.blur();
                 }}
                 onClick={(e) => e.stopPropagation()}
-                className="min-w-0 flex-1 rounded border border-gold/40 bg-white px-1 py-0.5 text-xs"
+                className="min-w-0 flex-1 rounded-md border border-gold/40 bg-white px-1 py-0.5 text-xs"
               />
             ) : (
               <button
@@ -189,7 +189,7 @@ function IconButton({
       onClick={onClick}
       title={title}
       className={clsx(
-        'rounded p-1 text-brand/40 transition-colors hover:bg-white',
+        'rounded-md p-1 text-brand/40 transition-colors hover:bg-white',
         danger ? 'hover:text-red-500' : 'hover:text-gold-dark'
       )}
     >

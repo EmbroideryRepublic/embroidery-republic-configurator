@@ -1,17 +1,22 @@
 'use server';
 
+import { randomUUID } from 'node:crypto';
 import { createAdminClient } from '@/lib/supabase/server';
-import { uploadProductionFile, getProductionFileSignedUrl } from '@/lib/supabase/storage';
-import { renderProductionSheet } from '@/lib/production/buildProductionSheet';
-import { sendOrderConfirmationEmail, sendInternalOrderNotificationEmail } from '@/lib/email/orderEmails';
-import { renderPrintView } from '@/lib/rendering/renderPrintView';
-import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
+import { uploadProductionFile } from '@/lib/supabase/storage';
+import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
+import { meldeEreignis } from '@/lib/observability/ereignis';
+import { merkeBestellung } from '@/lib/observability/kontext';
+import { anfangsZahlungsstatus, brauchtVorabZahlung } from '@/config/zahlung';
+import { pruefeRateLimit } from '@/lib/security/rateLimit';
+import { validateSubmission } from '@/lib/orders/orderValidation';
+// Phase 2 des Bestelleingangs – Rendering, Produktionsblatt, Benachrichtigung.
+import { schliesseBestellungAb } from '@/lib/orders/orderCompletion';
 import { getProduct } from '@/config/products';
-import type { CartItem, ConfigElement, PrintView } from '@/types';
+import type { CartItem, ConfigElement } from '@/types';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { priceCart, priceClaimDeviation, type ServerItemPrice } from '@/lib/pricing/serverPricing';
-import { enqueueSupplierOrdersForOrder } from '@/lib/suppliers/lifecycle/enqueue';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
+import { formatiereGeld } from '@/lib/format';
 
 export interface SubmitResult {
   success: boolean;
@@ -43,6 +48,14 @@ export interface SubmitOrderInput {
   contact: CheckoutContact;
   shipping: CheckoutShipping;
   paymentMethod: OrderPaymentMethod;
+  /**
+   * Kennung DIESES Absendevorgangs, im Browser erzeugt und über alle
+   * Wiederholungen hinweg unverändert. Verhindert, dass Doppelklick,
+   * Zeitüberschreitung oder ein wiederholter Request eine zweite Bestellung
+   * erzeugen (siehe Migration 0011). Fehlt sie, wird ohne Doppelschutz
+   * gespeichert – ältere Clients bleiben damit funktionsfähig.
+   */
+  clientRequestId?: string;
 }
 
 interface InquiryContact {
@@ -56,6 +69,8 @@ export interface SubmitInquiryInput {
   items: CartItem[];
   contact: InquiryContact;
   message?: string;
+  /** Siehe SubmitOrderInput.clientRequestId. */
+  clientRequestId?: string;
 }
 
 /** Wandelt ein rohes ConfigElement (inkl. UI-Feldern wie isOutOfBounds)
@@ -97,6 +112,17 @@ async function buildElementRecord(element: ConfigElement, orderId: string, itemI
   // verwendete Version (ggf. freigestellt) – Letztere ist die, die das
   // Druckvorschau-Rendering (Phase 2, src/lib/rendering/) verwendet, da sie
   // exakt dem entspricht, was der Kunde im Editor gesehen hat.
+  // Die Element-ID stammt vom Client und geht in den Speicherpfad ein. Ohne
+  // Prüfung könnte ein Wert wie `../../fremde-bestellung` den Ordner dieser
+  // Bestellung verlassen.
+  //
+  // Der Speicher weist solche Pfade ohnehin ab (istSichererSpeicherpfad in
+  // storage.ts). Hier wird zusätzlich an der Quelle geprüft: Der Fehler
+  // benennt dann die Ursache, statt erst tief im Upload aufzutreten.
+  if (!istSicherePfadkomponente(element.id)) {
+    throw new Error(`Ungültige Element-Kennung: ${JSON.stringify(element.id)}`);
+  }
+
   const originalPath = `orders/${orderId}/item-${itemIndex}-logo-${element.id}-original.png`;
   const displayPath = `orders/${orderId}/item-${itemIndex}-logo-${element.id}-display.png`;
   // Beide Uploads sind voneinander unabhängig → parallel statt nacheinander.
@@ -144,6 +170,31 @@ async function buildItemRecords(
   );
 }
 
+/**
+ * Sucht eine bereits gespeicherte Bestellung zur Absendekennung.
+ *
+ * Gibt die Bestell-ID zurück oder null. Ein Lesefehler wird bewusst wie
+ * "nicht gefunden" behandelt: dann greift immer noch der eindeutige Index
+ * beim Insert. Ein Doppelschutz darf nie selbst zum Grund werden, warum eine
+ * Bestellung scheitert.
+ */
+async function findeBestellungZuKennung(
+  supabase: ReturnType<typeof createAdminClient>,
+  clientRequestId: string
+): Promise<string | null> {
+  const { data, error } = await supabase
+    .from('orders')
+    .select('id')
+    .eq('client_request_id', clientRequestId)
+    .maybeSingle();
+
+  if (error) {
+    console.warn('[orders] Prüfung auf wiederholte Absendung fehlgeschlagen (fahre fort):', error);
+    return null;
+  }
+  return (data?.id as string | undefined) ?? null;
+}
+
 /** Dünner Wrapper um persistAndNotifyCore: fängt WIRKLICH alles ab,
  *  inklusive synchroner Throws (z.B. createAdminClient() wirft sofort, wenn
  *  NEXT_PUBLIC_SUPABASE_URL/SUPABASE_SECRET_KEY fehlen – beobachtet beim
@@ -174,15 +225,28 @@ async function persistAndNotifyCore(params: {
   items: CartItem[];
   shipping?: CheckoutShipping;
   paymentMethod?: OrderPaymentMethod;
+  clientRequestId?: string;
 }): Promise<SubmitResult> {
-  // Eine echte Bestellung braucht mindestens eine Position; eine
-  // unverbindliche Anfrage darf bewusst auch ohne Warenkorb-Inhalt
-  // gesendet werden (siehe InquiryForm in CartDrawer.tsx).
-  if (params.orderType === 'order' && params.items.length === 0) {
-    return { success: false, error: 'Der Warenkorb ist leer.' };
-  }
-  if (!params.email.includes('@')) {
-    return { success: false, error: 'Bitte eine gültige E-Mail-Adresse angeben.' };
+  // ── VOLLSTÄNDIGE PRÜFUNG DER ÜBERMITTELTEN ANGABEN ──────────────────────
+  // Produkt, Farbe, Größen, Mengen, Motivmaße und Kontaktdaten werden gegen
+  // den Katalog geprüft, BEVOR irgendetwas berechnet oder gespeichert wird
+  // (lib/orders/orderValidation.ts). Keine dieser Angaben wird ungeprüft
+  // übernommen – auch dann nicht, wenn der Preis am Ende plausibel wirkt.
+  // Bewusst noch ohne Datenbankzugriff: fachliche Fehler sollen gemeldet
+  // werden, ohne dass eine Verbindung nötig ist.
+  const validierung = await validateSubmission({
+    orderType: params.orderType,
+    items: params.items,
+    email: params.email,
+    customerName: params.customerName,
+    shipping: params.shipping,
+  });
+  if (!validierung.valid) {
+    console.warn(
+      '[orders] Bestelleingang abgelehnt:',
+      validierung.issues.map((i) => `${i.code}${i.itemId ? ` (${i.itemId})` : ''}`).join(', ')
+    );
+    return { success: false, error: validierung.customerMessage };
   }
 
   // ── AUTORITATIVE, serverseitige Preisberechnung ─────────────────────────
@@ -199,7 +263,7 @@ async function persistAndNotifyCore(params: {
   if (deviation > 0.01) {
     console.warn(
       `[orders] Client-Preis weicht ab (Serverpreis wird verwendet): behauptet ` +
-        `${clientClaimedTotal.toFixed(2)} €, serverseitig ${pricing.totalPrice.toFixed(2)} € (Δ ${deviation.toFixed(2)} €).`
+        `${formatiereGeld(clientClaimedTotal)}, serverseitig ${formatiereGeld(pricing.totalPrice)} (Δ ${formatiereGeld(deviation)}).`
     );
   }
 
@@ -221,6 +285,36 @@ async function persistAndNotifyCore(params: {
     };
   }
 
+  // ── KEINE BESTELLUNG AUF EINEM UNSICHEREN PREIS ─────────────────────────
+  // Die Preispipeline meldet selbst, wenn ihr Ergebnis nicht belastbar ist
+  // (`blocked`) – etwa bei einem unbekannten Preisbaustein im Produktivbetrieb,
+  // einem nicht einlösbaren Gutschein oder einem unterschrittenen
+  // Mindestbestellwert. Das ist der Kern des Grundsatzes „blockieren statt
+  // raten": lieber keine Bestellung als eine zu einem Betrag, für den wir
+  // nicht einstehen können. Der Kundschaft wird bewusst nicht die technische
+  // Ursache gezeigt, sondern ein Weg zu uns.
+  if (params.orderType === 'order' && pricing.blocked) {
+    console.error('[orders] Bestellung wegen nicht belastbarer Preisberechnung abgelehnt:', pricing.issues);
+    return {
+      success: false,
+      error:
+        'Der Gesamtpreis konnte für diese Zusammenstellung nicht verbindlich ermittelt werden. ' +
+        'Bitte kontaktieren Sie uns kurz – wir klären das und schließen Ihre Bestellung persönlich ab.',
+    };
+  }
+
+  // Sicherheitsnetz: Eine echte Bestellung ohne Stückzahl oder ohne Betrag
+  // ist immer ein Fehler, egal woher er kommt. Die Validierung oben schließt
+  // das bereits aus – diese Prüfung steht direkt vor dem Speichern und würde
+  // auch eine künftige Lücke davor abfangen.
+  if (params.orderType === 'order' && (pricing.totalQuantity <= 0 || !(pricing.totalPrice > 0))) {
+    console.error('[orders] Bestellung mit unplausibler Menge/Summe abgelehnt:', {
+      menge: pricing.totalQuantity,
+      summe: pricing.totalPrice,
+    });
+    return { success: false, error: 'Ihre Bestellung konnte nicht berechnet werden. Bitte stellen Sie den Warenkorb neu zusammen.' };
+  }
+
   // Admin-Client (Service Role) statt des Publishable-Keys: dieser Code läuft
   // ausschließlich serverseitig in einer Server Action, nie im Browser. Mit
   // dem Publishable-Key schlägt `.select()` nach dem Insert fehl, weil RLS
@@ -231,37 +325,93 @@ async function persistAndNotifyCore(params: {
   // hier bewusst der Service-Role-Client (umgeht RLS vollständig).
   const supabase = createAdminClient();
 
-  const { data: orderRow, error: insertOrderError } = await supabase
-    .from('orders')
-    .insert({
-      customer_name: params.customerName,
-      company: params.company ?? null,
-      email: params.email,
-      phone: params.phone ?? null,
-      message: params.message ?? null,
-      order_type: params.orderType,
-      quantity: pricing.totalQuantity,
-      total_price: pricing.totalPrice,
-      shipping_street: params.shipping?.street ?? null,
-      shipping_zip: params.shipping?.zip ?? null,
-      shipping_city: params.shipping?.city ?? null,
-      shipping_country: params.shipping?.country ?? null,
-    })
-    .select('id, created_at')
-    .single();
-
-  if (insertOrderError || !orderRow) {
-    console.error('[orders] Insert in "orders" fehlgeschlagen:', insertOrderError);
-    return { success: false, error: 'Die Bestellung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.' };
+  // ── DOPPELSCHUTZ, ERSTER RIEGEL: bereits abgesendet? ────────────────────
+  // Deckt den häufigen Fall ab: die erste Absendung war erfolgreich, aber die
+  // Antwort kam nicht an (Verbindungsabbruch, Zeitüberschreitung, Neuladen).
+  // Der Browser wiederholt mit derselben Kennung – wir geben die BESTEHENDE
+  // Bestellnummer zurück, statt eine zweite Bestellung anzulegen.
+  if (params.clientRequestId) {
+    const bestehende = await findeBestellungZuKennung(supabase, params.clientRequestId);
+    if (bestehende) {
+      console.info('[orders] Wiederholte Absendung erkannt – bestehende Bestellung zurückgegeben:', bestehende);
+      return { success: true, orderNumber: buildOrderNumber(bestehende) };
+    }
   }
 
-  const orderId = orderRow.id as string;
+  // ── PHASE 1a: Dateien ablegen – VOR der Transaktion ─────────────────
+  //
+  // Die Bestellkennung wird hier erzeugt und nicht von der Datenbank
+  // vergeben. Nur so können die Logodateien bereits unter ihrem endgültigen
+  // Pfad liegen, bevor die Transaktion beginnt.
+  //
+  // Warum Uploads NICHT in die Transaktion gehören: Sie sind externe
+  // Wirkungen auf einen fremden Dienst und lassen sich nicht zurückrollen.
+  // Eine offene Datenbanktransaktion, die auf einen Netzwerkaufruf wartet,
+  // hält Sperren und Verbindungen – unter Last der nächste Ausfall.
+  //
+  // Schlägt ein Upload fehl, bricht der Vorgang hier ab. In der Datenbank ist
+  // dann noch nichts entstanden – der sauberste denkbare Zustand. Gelingt der
+  // Upload und die Transaktion scheitert danach, bleiben verwaiste Dateien im
+  // Speicher zurück: kein Datenverlust, kein falscher Zustand, nur belegter
+  // Platz. Ein späterer Aufräumlauf kann sie anhand fehlender Bestellungen
+  // erkennen.
+  const orderId = randomUUID();
   const orderNumber = buildOrderNumber(orderId);
 
-  const itemRecords = await buildItemRecords(params.items, orderId, pricing.items);
+  let itemRecords;
+  try {
+    itemRecords = await buildItemRecords(params.items, orderId, pricing.items);
+  } catch (fehler) {
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'UPLOAD',
+      ereignis: 'ablage_fehlgeschlagen',
+      fehler,
+    });
+    return {
+      success: false,
+      error: 'Ihre Motivdateien konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.',
+    };
+  }
 
-  const orderItemsPayload = params.items.map((item, i) => ({
-    order_id: orderId,
+  // ── PHASE 1b: EINE Transaktion für die gesamte Bestellung ───────────
+  //
+  // Bestellung, Positionen und Konfigurationselemente entstehen gemeinsam
+  // oder gar nicht (Migration 0015). Vorher waren es drei getrennte Aufrufe:
+  // Brach der zweite oder dritte ab, blieb ein Torso zurück – und die
+  // Idempotenzsperre gab diesen Torso beim nächsten Versuch als Erfolg aus.
+  const orderPayload = {
+    id: orderId,
+    customer_name: params.customerName,
+    company: params.company ?? null,
+    email: params.email,
+    phone: params.phone ?? null,
+    message: params.message ?? null,
+    order_type: params.orderType,
+    quantity: pricing.totalQuantity,
+    total_price: pricing.totalPrice,
+    // Steuer zum KAUFZEITPUNKT festhalten: Eine spätere Satzänderung darf
+    // diese Bestellung nicht mehr berühren (Migration 0014).
+    tax_rate: pricing.taxRate,
+    tax_amount: pricing.taxAmount,
+    net_total: pricing.netTotal,
+    prices_include_tax: true,
+    shipping_street: params.shipping?.street ?? null,
+    shipping_zip: params.shipping?.zip ?? null,
+    shipping_city: params.shipping?.city ?? null,
+    shipping_country: params.shipping?.country ?? null,
+    client_request_id: params.clientRequestId ?? null,
+    // Ohne die Zahlungsart kann später weder der Adminbereich noch eine
+    // Erstattung entscheiden, wie zu verfahren ist. Anfragen haben keine
+    // und bleiben bewusst leer.
+    payment_method: params.paymentMethod ?? null,
+    // Zahlungsstatus von der Zahlungsart abgeleitet: Rechnungskauf braucht
+    // keine Vorabzahlung (not_required), Karte/PayPal warten auf die
+    // Bestätigung (pending). Bestimmt, ob Phase 2 sofort läuft.
+    payment_status: params.paymentMethod ? anfangsZahlungsstatus(params.paymentMethod) : 'not_required',
+  };
+
+  const itemsPayload = params.items.map((item, i) => ({
     product_id: item.productId,
     product_name: itemRecords[i]?.productName ?? item.productId,
     color_id: item.colorId,
@@ -271,26 +421,13 @@ async function persistAndNotifyCore(params: {
     // Serverseitig berechnete Menge/Preis (nie der Client-Wert).
     quantity: pricing.items[i]?.quantity ?? 0,
     unit_price: pricing.items[i]?.unitPrice ?? 0,
-  }));
-
-  // Eine Anfrage ohne Warenkorb-Inhalt hat nichts zum Einfügen – Insert
-  // mit leerem Array überspringen statt einen unnötigen Request/Fehler
-  // zu riskieren.
-  let insertedItems: { id: string }[] = [];
-  if (orderItemsPayload.length > 0) {
-    const { data, error: insertItemsError } = await supabase.from('order_items').insert(orderItemsPayload).select('id');
-    if (insertItemsError || !data) {
-      console.error('[orders] Insert in "order_items" fehlgeschlagen:', insertItemsError);
-      return { success: false, error: 'Die Bestellpositionen konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.' };
-    }
-    insertedItems = data;
-  }
-
-  const configurationElementsPayload = itemRecords.flatMap((itemRecord, i) => {
-    const orderItemId = insertedItems[i]?.id;
-    if (!orderItemId) return [];
-    return itemRecord.elements.map((el) => ({
-      order_item_id: orderItemId,
+    // Der Positionsgesamtpreis wird GESPEICHERT, nicht abgeleitet: `unit_price`
+    // ist der auf Cent gerundete effektive Stückpreis, `unit_price × quantity`
+    // weicht deshalb je nach Menge um mehrere Cent ab (siehe Migration 0013).
+    total_price: pricing.items[i]?.totalPrice ?? 0,
+    tax_rate: pricing.taxRate,
+    net_total_price: Math.round(((pricing.items[i]?.totalPrice ?? 0) / (1 + pricing.taxRate / 100)) * 100) / 100,
+    elements: (itemRecords[i]?.elements ?? []).map((el) => ({
       element_type: el.type,
       view: el.view,
       x_cm: el.xCm,
@@ -313,79 +450,64 @@ async function persistAndNotifyCore(params: {
       has_shadow: el.hasShadow ?? false,
       has_outline: el.hasOutline ?? false,
       outline_color: el.outlineColor ?? null,
-    }));
+    })),
+  }));
+
+  const { data: rpcRows, error: transaktionsFehler } = await supabase.rpc('create_order_atomic', {
+    p_order: orderPayload,
+    p_items: itemsPayload,
   });
 
-  if (configurationElementsPayload.length > 0) {
-    const { error: insertElementsError } = await supabase.from('configuration_elements').insert(configurationElementsPayload);
-    if (insertElementsError) {
-      // Bestellung selbst ist bereits gespeichert (die Quelle der Wahrheit) –
-      // ein Fehler hier soll die Bestellung nicht als Ganzes scheitern lassen,
-      // nur geloggt werden, damit es manuell nachgetragen werden kann.
-      console.error('[orders] Insert in "configuration_elements" fehlgeschlagen:', insertElementsError);
-    }
-  }
-
-  // Druckvorschau-Rendering (Phase 2): pro Bestellposition und Ansicht mit
-  // mindestens einem Element ein hochauflösendes PNG erzeugen (Kleidungsstück
-  // + Logo/Text exakt wie im Editor platziert) und in Storage ablegen.
-  // Bewusst NACH dem configuration_elements-Insert (braucht die dort
-  // gespeicherten Werte) und in einem eigenen, nicht-fatalen try/catch wie
-  // beim Produktionsblatt-PDF weiter unten – ein Rendering-Fehler darf die
-  // Bestellung nie zum Scheitern bringen.
-  try {
-    // Alle (Position × Ansicht)-Kombinationen zuerst sammeln und dann PARALLEL
-    // rendern+hochladen. Zuvor lief das streng nacheinander – bei mehreren
-    // Positionen mit je bis zu vier Ansichten summierten sich die einzelnen
-    // Rasterungen zu einer sehr langen Wartezeit im Checkout. Die Aufgaben sind
-    // voneinander unabhängig (getrennte Dateipfade, getrennte Buffer).
-    const renderTasks: { itemIndex: number; itemRecord: OrderItemRecord; view: PrintView; elements: OrderElementRecord[] }[] = [];
-    for (let itemIndex = 0; itemIndex < itemRecords.length; itemIndex++) {
-      const itemRecord = itemRecords[itemIndex];
-      if (!itemRecord) continue;
-
-      const elementsByView = new Map<PrintView, OrderElementRecord[]>();
-      for (const el of itemRecord.elements) {
-        const list = elementsByView.get(el.view) ?? [];
-        list.push(el);
-        elementsByView.set(el.view, list);
-      }
-      for (const [view, elements] of elementsByView) {
-        renderTasks.push({ itemIndex, itemRecord, view, elements });
+  if (transaktionsFehler) {
+    // ── DOPPELSCHUTZ, ZWEITER RIEGEL: gleichzeitige Absendung ────────────
+    // Zwischen der Prüfung oben und dieser Transaktion liegt immer eine
+    // Lücke. Bei zwei echt gleichzeitigen Anfragen gewinnt eine, die andere
+    // läuft in den eindeutigen Index aus Migration 0011 (Code 23505).
+    //
+    // Seit die Bestellung atomar entsteht, ist dieser Riegel verlässlich:
+    // Die zweite Anfrage blockiert am Index, bis die erste abgeschlossen
+    // ist, und sieht danach entweder eine VOLLSTÄNDIGE Bestellung oder gar
+    // keine. Ein Zwischenzustand ist nicht mehr beobachtbar.
+    const code = (transaktionsFehler as { code?: string }).code;
+    if (params.clientRequestId && code === '23505') {
+      const bestehende = await findeBestellungZuKennung(supabase, params.clientRequestId);
+      if (bestehende) {
+        console.info('[orders] Gleichzeitige Doppelabsendung abgefangen:', bestehende);
+        return { success: true, orderNumber: buildOrderNumber(bestehende) };
       }
     }
-
-    const renderStartedAt = Date.now();
-    await Promise.all(
-      renderTasks.map(async ({ itemIndex, itemRecord, view, elements }) => {
-        const renderableElements = await Promise.all(elements.map(toRenderableElement));
-        const result = await renderPrintView({
-          productId: itemRecord.productId,
-          colorId: itemRecord.colorId,
-          view,
-          printMethod: itemRecord.printMethod,
-          elements: renderableElements,
-        });
-        if (!result) return;
-        const previewPath = `orders/${orderId}/preview-item${itemIndex}-${view}.png`;
-        await uploadProductionFile(previewPath, result.pngBuffer, 'image/png');
-        // Buffer zusätzlich am itemRecord behalten – buildProductionSheet()
-        // wird gleich im selben Request aufgerufen und kann die Vorschau so
-        // direkt einbetten, ohne sie aus Storage erneut herunterzuladen.
-        itemRecord.previews ??= {};
-        itemRecord.previews[view] = result.pngBuffer;
-      })
-    );
-    console.info(`[orders] Druckvorschauen: ${renderTasks.length} Ansicht(en) in ${Date.now() - renderStartedAt} ms.`);
-  } catch (err) {
-    console.error('[orders] Druckvorschau-Rendering fehlgeschlagen:', err);
+    await meldeEreignis({
+      schwere: 'CRITICAL',
+      kategorie: 'ORDER',
+      ereignis: 'transaktion_fehlgeschlagen',
+      meldung: transaktionsFehler.message,
+      felder: { code, positionen: itemsPayload.length },
+    });
+    return { success: false, error: 'Die Bestellung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.' };
   }
 
+  const angelegt = Array.isArray(rpcRows) ? rpcRows[0] : rpcRows;
+  if (!angelegt?.order_id) {
+    // Kein Fehler, aber auch kein Ergebnis: Ein solcher Zustand darf nicht
+    // als Erfolg durchgehen, sonst wird eine nicht existierende Bestellung
+    // bestätigt.
+    await meldeEreignis({
+      schwere: 'CRITICAL',
+      kategorie: 'ORDER',
+      ereignis: 'transaktion_ohne_ergebnis',
+      meldung: 'Die Transaktion meldete keinen Fehler, lieferte aber keine Bestellkennung.',
+    });
+    return { success: false, error: 'Die Bestellung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.' };
+  }
+
+  // ── ENDE PHASE 1: die Bestellung EXISTIERT ──────────────────────────
+  // Alles bis hierher macht die Bestellung vollständig und belastbar:
+  // geprüft, bepreist, gespeichert, Logodateien abgelegt.
   const order: OrderRecord = {
     id: orderId,
     orderNumber,
     orderType: params.orderType,
-    createdAt: orderRow.created_at as string,
+    createdAt: (angelegt.order_created_at as string) ?? new Date().toISOString(),
     contact: { name: params.customerName, company: params.company, email: params.email, phone: params.phone },
     shipping: params.shipping,
     paymentMethod: params.paymentMethod,
@@ -396,67 +518,66 @@ async function persistAndNotifyCore(params: {
     items: itemRecords,
   };
 
-  let productionSheetSignedUrl: string | null = null;
-  try {
-    const pdfStartedAt = Date.now();
-    const pdfBuffer = await renderProductionSheet(order);
-    const pdfPath = `orders/${orderId}/produktionsblatt.pdf`;
-    // Upload und Statusspalte hängen nicht voneinander ab → parallel.
-    await Promise.all([
-      uploadProductionFile(pdfPath, pdfBuffer, 'application/pdf'),
-      supabase.from('orders').update({ pdf_url: pdfPath, production_files_url: `orders/${orderId}/` }).eq('id', orderId),
-    ]);
-    productionSheetSignedUrl = await getProductionFileSignedUrl(pdfPath);
-    console.info(`[orders] Produktionsblatt in ${Date.now() - pdfStartedAt} ms.`);
-  } catch (err) {
-    // Auch hier: Bestellung ist bereits gespeichert, das Produktionsblatt
-    // kann notfalls manuell nachgeneriert werden.
-    console.error('[orders] Produktionsblatt-Erzeugung fehlgeschlagen:', err);
+  // ── PHASE 2: abschließen – NUR ohne Vorabzahlung ────────────────────
+  // Druckvorschauen, Produktionsblatt und Benachrichtigungen – die teuren
+  // und die nach außen sichtbaren Schritte (lib/orders/orderCompletion.ts).
+  //
+  // Die Weiche: Braucht die Zahlungsart eine Vorabzahlung (Karte, PayPal),
+  // läuft Phase 2 NICHT hier, sondern erst nach der Bestätigung durch den
+  // Zahlungs-Webhook (paymentService.ts). Für einen abgebrochenen
+  // Bezahlvorgang soll weder gerendert noch eine Bestätigung verschickt
+  // werden. Beim Rechnungskauf (not_required) folgt Phase 2 wie bisher
+  // unmittelbar.
+  //
+  // Anfragen (order_type 'inquiry') haben keine Zahlungsart und werden wie
+  // Rechnungskauf behandelt.
+  const vorabZahlung = params.paymentMethod ? brauchtVorabZahlung(params.paymentMethod) : false;
+
+  if (vorabZahlung) {
+    // Die Bestellung existiert und ist 'pending'. Der Aufrufer startet als
+    // Nächstes die Zahlung; Phase 2 wartet auf den Webhook.
+    return { success: true, orderNumber };
   }
 
-  // E-Mails sind bewusst „nice-to-have": die Bestellung ist bereits persistiert
-  // und gilt als erfolgreich, auch wenn Template-Rendern oder Versand scheitern.
-  // Umschlossen, damit ein Render-/Versandfehler NIE eine gespeicherte
-  // Bestellung als fehlgeschlagen meldet (DB ist Quelle der Wahrheit).
-  try {
-    // Beide Mails gehen an unterschiedliche Empfänger und hängen nicht
-    // voneinander ab → parallel senden statt nacheinander zu warten.
-    const mailStartedAt = Date.now();
-    await Promise.all([
-      sendOrderConfirmationEmail(order),
-      sendInternalOrderNotificationEmail(order, productionSheetSignedUrl),
-    ]);
-    console.info(`[orders] E-Mail-Versand in ${Date.now() - mailStartedAt} ms.`);
-  } catch (err) {
-    console.error('[orders] E-Mail-Versand fehlgeschlagen (nicht-fatal):', err);
+  // Die Funktion wirft nicht – sie berichtet. Eine gespeicherte Bestellung
+  // darf an dieser Stelle nicht mehr scheitern.
+  const abschluss = await schliesseBestellungAb(order);
+  if (abschluss.probleme.length > 0) {
+    console.warn(`[orders] Abschluss ${orderNumber} mit Einschränkungen:`, abschluss.probleme);
   }
 
-  // Automatische Übergabe an den Lieferantenprozess: nur bei echten
-  // Bestellungen (keine Anfragen) und nur, wenn keine Vorauszahlung nötig
-  // ist (Rechnung → sofort fällig). Karte/PayPal werden erst nach
-  // bestätigter Zahlung eingereiht (künftig aus dem Stripe-Webhook via
-  // enqueueSupplierOrdersForOrder). Bewusst NICHT-fatal: eine Bestellung
-  // darf nie an der Lieferanten-Einreihung scheitern.
-  if (params.orderType === 'order' && params.paymentMethod === 'invoice') {
-    try {
-      const result = await enqueueSupplierOrdersForOrder(orderId);
-      console.info(`[orders] Lieferanten-Einreihung ${orderId}: +${result.enqueued} eingereiht, ${result.skipped} übersprungen.`);
-    } catch (err) {
-      console.error('[orders] Lieferanten-Einreihung fehlgeschlagen (nicht-fatal):', err);
-    }
-  }
+  // BEWUSST KEINE Lieferanten-Einreihung an dieser Stelle.
+  //
+  // Während der Stornofrist darf kein Lieferantenprozess beginnen: Der Kunde
+  // kann die Bestellung noch selbst stornieren, und für eine stornierte
+  // Bestellung soll gar kein Lieferantenauftrag entstehen – so muss auch
+  // nichts nachträglich aufgeräumt werden.
+  //
+  // Der Auftrag entsteht stattdessen bedarfsgerecht, sobald der Betreiber die
+  // Bestellung im Adminbereich öffnet. Das ist frühestens nach Fristablauf
+  // möglich (siehe lib/orders/orderVisibility), womit die Reihenfolge ohne
+  // Scheduler und ohne Hintergrundjob garantiert ist.
 
   return { success: true, orderNumber };
 }
 
 export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult> {
-  const customerName = `${input.contact.firstName} ${input.contact.lastName}`.trim();
-  if (!customerName || !input.shipping.street || !input.shipping.zip || !input.shipping.city) {
-    return { success: false, error: 'Bitte alle Pflichtfelder ausfüllen.' };
+  // Der teuerste Pfad des Systems: Datei-Uploads, Vorschau-Rendering,
+  // Produktionsblatt und zwei E-Mails je Vorgang. Ohne Begrenzung kann ein
+  // Skript beliebig viele davon auslösen.
+  //
+  // Gegen versehentliche Doppelbestellungen schützt die Idempotenz – hier
+  // geht es allein um Missbrauch.
+  const grenze = await pruefeRateLimit('bestellung');
+  if (!grenze.erlaubt) {
+    return { success: false, error: grenze.meldung };
   }
 
+  const customerName = `${input.contact.firstName} ${input.contact.lastName}`.trim();
+
   // Menge + Preis werden serverseitig in persistAndNotifyCore aus Katalog +
-  // Konfiguration berechnet – hier bewusst NICHTS aus dem Client übernehmen.
+  // Konfiguration berechnet, die Pflichtfelder dort geprüft (validateSubmission)
+  // – hier bewusst NICHTS aus dem Client übernehmen und nichts doppelt prüfen.
   return persistAndNotify({
     orderType: 'order',
     customerName,
@@ -466,15 +587,20 @@ export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult
     items: input.items,
     shipping: input.shipping,
     paymentMethod: input.paymentMethod,
+    clientRequestId: input.clientRequestId,
   });
 }
 
 export async function submitInquiry(input: SubmitInquiryInput): Promise<SubmitResult> {
-  if (!input.contact.name.trim()) {
-    return { success: false, error: 'Bitte einen Namen angeben.' };
+  // Eigenes, höheres Limit: unverbindlich, kein Zahlungsvorgang, im Ablauf
+  // günstiger als eine Bestellung.
+  const grenze = await pruefeRateLimit('anfrage');
+  if (!grenze.erlaubt) {
+    return { success: false, error: grenze.meldung };
   }
 
   // Menge + Preis serverseitig (persistAndNotifyCore) – kein Client-Wert.
+  // Die Pflichtfeldprüfung liegt ebenfalls dort (validateSubmission).
   return persistAndNotify({
     orderType: 'inquiry',
     customerName: input.contact.name,
@@ -483,5 +609,6 @@ export async function submitInquiry(input: SubmitInquiryInput): Promise<SubmitRe
     phone: input.contact.phone || undefined,
     message: input.message || undefined,
     items: input.items,
+    clientRequestId: input.clientRequestId,
   });
 }

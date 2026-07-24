@@ -22,6 +22,21 @@ const DTF_PRICING_RULES: PricingRule[] = [
   { id: 'dtf-logo-base', ruleType: 'per_logo', price: 4.5, label: 'DTF-Transfer (Basis)', isActive: false },
   { id: 'dtf-text-base', ruleType: 'per_text', price: 3.5, label: 'Text-Transfer (Basis)', isActive: false },
 
+  // ── Einmalige Rüstkosten – TECHNISCH VORBEREITET, FACHLICH AUS ──────
+  // Standardmäßig 0 € und inaktiv: Die Preisstrategie wird später anhand der
+  // echten Einkaufspreise, Produktionszeiten und Margenziele festgelegt.
+  // Zum Aktivieren genügt `isActive: true` + ein Preis – am Rechenkern ist
+  // dafür NICHTS zu ändern.
+  //
+  // `multiplier` steuert, wie oft der Betrag anfällt:
+  //   'once'         – einmal je Auftragsposition
+  //   'per_position' – je genutzter Fläche (Brust, Rücken, Ärmel …)
+  //   'per_element'  – je Motiv
+  // Mit `printView` lässt sich eine Regel auf eine Ansicht begrenzen, mit
+  // `minQuantity`/`maxQuantity` auf ein Mengenfenster, mit `validFrom`/
+  // `validUntil` auf einen Aktionszeitraum.
+  { id: 'dtf-setup', ruleType: 'setup_fee', multiplier: 'per_position', price: 0, label: 'Einrichtung DTF (einmalig je Position)', isActive: false },
+
   { id: 'dtf-pos-front', ruleType: 'per_position', printView: 'front', price: 0, label: 'Position: Brust', isActive: true },
   { id: 'dtf-pos-back', ruleType: 'per_position', printView: 'back', price: 2, label: 'Position: Rücken', isActive: true },
   { id: 'dtf-pos-sleeve-l', ruleType: 'per_position', printView: 'sleeve_left', price: 1.5, label: 'Position: Ärmel links', isActive: true },
@@ -31,8 +46,11 @@ const DTF_PRICING_RULES: PricingRule[] = [
   // liegt komplett im Produkt-Grundpreis, siehe products.ts). Berechnet
   // aus echten Folienpreisen: 297×420mm (A3) für 7,49€ = 0,006 €/cm².
   // Kalibriert auf Basis eines T-Shirts mit 4,90€ Blankokosten, 1€
-  // Verpackung, 5,50€ Versand (÷5 wegen Mindestbestellmenge 5 = 1,10€/
-  // Shirt), 1,4 Min. Arbeitszeit bei 20€/h sowie 5€ Zielgewinn pro Shirt
+  // Verpackung, 5,50€ Versand (historisch ÷5 gerechnet, als noch eine
+  // Mindestbestellmenge von 5 galt = 1,10€/Shirt – diese Annahme gilt seit
+  // dem Wegfall der Mindestmenge nicht mehr und ist beim nächsten
+  // Kalkulationsdurchgang zu prüfen),
+  // 1,4 Min. Arbeitszeit bei 20€/h sowie 5€ Zielgewinn pro Shirt
   // (unabhängig von der Motivgröße – dafür wird die Fläche 1:1
   // durchgereicht statt zusätzlich Marge draufzuschlagen).
   // Auf 0,035 €/cm² angepasst (0,06€ war zu hoch).
@@ -56,6 +74,12 @@ const EMBROIDERY_PRICING_RULES: PricingRule[] = [
   // stattdessen in den Stichpreis eingerechnet.
   { id: 'emb-logo-base', ruleType: 'per_logo', price: 6.9, label: 'Stickerei-Digitalisierung', isActive: false },
   { id: 'emb-text-base', ruleType: 'per_text', price: 5.5, label: 'Schriftzug-Digitalisierung', isActive: false },
+
+  // ── Einmalige Rüstkosten Stickerei – ebenfalls vorbereitet, aus ──────
+  // Getrennte Regel je Veredelungsart: Dadurch sind „nur Stickerei",
+  // „nur DTF" oder unterschiedliche Beträge je Verfahren allein über die
+  // Konfiguration abbildbar.
+  { id: 'emb-setup', ruleType: 'setup_fee', multiplier: 'per_position', price: 0, label: 'Digitalisierung & Einrichtung (einmalig je Position)', isActive: false },
 
   { id: 'emb-pos-front', ruleType: 'per_position', printView: 'front', price: 0, label: 'Position: Brust', isActive: true },
   { id: 'emb-pos-back', ruleType: 'per_position', printView: 'back', price: 2.5, label: 'Position: Rücken', isActive: true },

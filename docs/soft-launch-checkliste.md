@@ -17,7 +17,7 @@ als erledigt markiert.
 | **Bestellung E2E** | `ER-2026-33AF40` angelegt, gespeichert, bestätigt |
 | **Serverseitige Preisberechnung** | Manipulierter Client-Preis (1 €) ignoriert → korrekt 74,92 € |
 | **Versandkosten** | DE 50 €→7,99 · DE 75 €→frei · AT 99 €→11,99 · AT 100 €→frei · CH→abgelehnt (kein Tarif) |
-| **Mindestbestellmenge** | 5 Stück im Konfigurator erzwungen |
+| **Bestellmenge** | ab 1 Stück – keine Mindestmenge; Rüstkosten einmalig je Position |
 | **E-Mail-Versand** | Kundenbestätigung + interne Benachrichtigung über eigene verifizierte Domain, mit Resend-IDs |
 | **Absenderdomain** | `info@send.embroidery-republic.com` (DKIM/SPF verifiziert), Reply-To `info@embroidery-republic.com` |
 | **Produktionsblatt (PDF)** | erzeugt in ~350–580 ms, in Storage abgelegt |

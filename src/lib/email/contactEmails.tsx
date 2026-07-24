@@ -23,6 +23,7 @@ export async function sendContactMessageEmail(payload: ContactMessagePayload): P
     to: getInternalNotificationAddress(),
     subject: subjectLine,
     react: <ContactMessageEmail {...payload} />,
+    kontext: { anlass: 'contact_form' },
     // Antworten gehen direkt an die/den Interessent:in statt an die interne Adresse.
     replyTo: payload.email,
   });

@@ -10,11 +10,11 @@ import assert from 'node:assert/strict';
 
 import { calculateShipping, shippingZoneForCountry, SHIPPING_COUNTRIES, SHIPPING_RATES } from '../shipping';
 
-test('Deutschland: 7,99 € unter der Freigrenze', () => {
+test('Deutschland: 6,90 € unter der Freigrenze', () => {
   const r = calculateShipping('Deutschland', 50);
   assert.ok(r);
   assert.equal(r.zone, 'DE');
-  assert.equal(r.cost, 7.99);
+  assert.equal(r.cost, 6.9);
   assert.equal(r.isFree, false);
   assert.equal(r.amountUntilFree, 25);
 });
@@ -28,7 +28,7 @@ test('Deutschland: ab genau 75 € versandkostenfrei (Grenze inklusive)', () => 
 
   const below = calculateShipping('Deutschland', 74.99);
   assert.ok(below);
-  assert.equal(below.cost, 7.99, 'einen Cent darunter ist noch kostenpflichtig');
+  assert.equal(below.cost, 6.9, 'einen Cent darunter ist noch kostenpflichtig');
 });
 
 test('EU-Land: 11,99 € und Freigrenze 100 €', () => {
@@ -76,6 +76,6 @@ test('jedes auswählbare Land hat einen definierten Tarif', () => {
 test('negative oder unsinnige Warenwerte werden wie 0 behandelt', () => {
   const r = calculateShipping('Deutschland', -50);
   assert.ok(r);
-  assert.equal(r.cost, 7.99);
+  assert.equal(r.cost, 6.9);
   assert.equal(r.amountUntilFree, 75);
 });

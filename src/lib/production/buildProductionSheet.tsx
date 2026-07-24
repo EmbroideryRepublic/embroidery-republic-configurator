@@ -9,6 +9,7 @@
 import { Document, Page, View, Text, Image, StyleSheet, renderToBuffer } from '@react-pdf/renderer';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PRINT_VIEW_LABELS, PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
+import { formatiereGeld } from '@/lib/format';
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 9, fontFamily: 'Helvetica', color: '#23211d' },
@@ -177,7 +178,7 @@ function ProductionSheetDocument({ order }: { order: OrderRecord }) {
             </Text>
             <Text style={styles.itemSub}>
               {item.printMethod === 'embroidery' ? 'Stickerei' : 'DTF-Transferdruck'} · {item.quantity} Stück gesamt · Einzelpreis{' '}
-              {item.unitPrice.toFixed(2)} € · Gesamt {item.totalPrice.toFixed(2)} €
+              {formatiereGeld(item.unitPrice)} · Gesamt {formatiereGeld(item.totalPrice)}
             </Text>
             <SizeTable sizeQuantities={item.sizeQuantities} />
             <ItemPreviews item={item} />
@@ -187,7 +188,7 @@ function ProductionSheetDocument({ order }: { order: OrderRecord }) {
           </View>
         ))}
 
-        <Text style={{ ...styles.meta, marginTop: 16 }}>Gesamtsumme: {order.totalPrice.toFixed(2)} €</Text>
+        <Text style={{ ...styles.meta, marginTop: 16 }}>Gesamtsumme: {formatiereGeld(order.totalPrice)}</Text>
       </Page>
     </Document>
   );

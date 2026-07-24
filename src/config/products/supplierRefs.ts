@@ -35,6 +35,24 @@
  * fotl-ladies-original-t, fotl-ladies-valueweight-vneck, fotl-iconic195-t,
  * fotl-iconic195-longsleeve, fotl-ladies-iconic195-t.
  *
+ * ── Zwei Nummernsysteme (recherchiert 2026-07-21, öffentliche Quellen) ─
+ * Jedes Produkt trägt ZWEI Artikelnummern:
+ *   Herstellernummer (Fruit of the Loom):  61-036-0
+ *   Händlernummer (textil-grosshandel):    F140
+ * In dieser Datei stehen die HÄNDLERnummern – nur mit ihnen findet der
+ * Worker das Produkt im Shop. Die Herstellernummer hilft dagegen, dasselbe
+ * Produkt bei einem ANDEREN Lieferanten wiederzufinden.
+ *
+ * Belegte Zuordnungen (vor Nutzung gegenprüfen):
+ *   Valueweight T  61-036-0 = F140   ·   Original T  61-082-0 = F110
+ *   Iconic 195 T   61-422-0
+ *
+ * VERWECHSLUNGSFALLEN – bei eigener Recherche beachten:
+ *   61-430-0 ist die „Iconic 150", NICHT die „Iconic 195" (= 61-422-0).
+ *     Anderes Flächengewicht, anderer Preis, fast gleicher Name.
+ *   61-038-0 ist der „Valueweight Long Sleeve", NICHT der „Original Long
+ *     Sleeve". Original und Valueweight sind verschiedene Produktreihen.
+ *
  * WICHTIG vor dem Eintragen: diese Modelle nutzen FOTL-spezifische Farben
  * (heather-grey, sunflower, solar-yellow, azure, heather-charcoal …), die noch
  * NICHT in der TG-Mapping-Tabelle stehen. Erst diese Farbschlüssel (mit

@@ -12,8 +12,16 @@ import { getOrderDetail } from '@/lib/admin/data';
 import { SUPPLIERS } from '@/lib/suppliers';
 import type { SupplierId } from '@/lib/suppliers';
 import { MarkOrderedButton } from '@/components/admin/MarkOrderedButton';
+import { OrderStatusControl } from '@/components/admin/OrderStatusControl';
+import {
+  PAYMENT_METHOD_LABELS,
+  PAYMENT_STATUS_LABELS,
+  type OrderPaymentStatus,
+  type OrderStatus,
+} from '@/lib/actions/orderTypes';
 import { buildManualSupplierGroups } from '@/lib/admin/supplierOrderView';
-import { isAdminAuthenticated } from '@/lib/admin/auth';
+import { istAdmin } from '@/lib/admin/auth';
+import { formatiereGeld } from '@/lib/format';
 
 export default async function AdminOrderDetailPage({ params }: { params: { id: string } }) {
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
@@ -21,7 +29,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
   // den RSC-Payload des HTML – auch wenn das Layout `children` verwirft.
   // Ohne diese Wache lagen Kundendaten und signierte Datei-URLs im Quelltext
   // der Login-Seite (real nachgewiesen).
-  if (!isAdminAuthenticated()) return null;
+  if (!(await istAdmin())) return null;
   const order = await getOrderDetail(params.id);
   if (!order) notFound();
 
@@ -43,6 +51,19 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           </span>
         </h1>
       </div>
+
+      {/* Statussteuerung: bewusst ganz oben – es ist die Aktion, wegen der
+          der Betreiber diese Seite in aller Regel öffnet. Anfragen haben
+          keinen Bestellstatus und bekommen sie deshalb nicht. */}
+      {order.orderType === 'order' && (
+        <div className="mb-4">
+          <OrderStatusControl
+            orderId={order.id}
+            status={order.status as OrderStatus}
+            trackingNummer={order.trackingNumber}
+          />
+        </div>
+      )}
 
       {/* Kontakt & Versand */}
       <div className="grid gap-4 sm:grid-cols-2">
@@ -70,8 +91,27 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
             <p className="text-sm text-gray-400">Keine Lieferadresse (Anfrage).</p>
           )}
           <p className="mt-2 text-sm font-medium">
-            Summe: {order.totalPrice.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}
+            Summe: {formatiereGeld(order.totalPrice)}
           </p>
+          {/* Zahlungsart: seit Migration 0012 gespeichert. Bestellungen aus
+              der Zeit davor tragen sie nachgetragen als "Rechnung" – belegt
+              durch den damals fest verdrahteten Checkout. */}
+          {order.paymentMethod && (
+            <p className="mt-1 text-sm text-gray-700">
+              Zahlungsart: {PAYMENT_METHOD_LABELS[order.paymentMethod] ?? order.paymentMethod}
+            </p>
+          )}
+          {/* Zahlungszustand: Auf dieser Seite kann er nur 'not_required'
+              oder 'paid' sein – ausstehende Zahlungen werden von der
+              Sichtbarkeitsregel gar nicht erst ausgeliefert
+              (lib/orders/orderVisibility.ts). Angezeigt wird er trotzdem,
+              damit auf einen Blick erkennbar ist, ob Geld geflossen ist. */}
+          {order.orderType === 'order' && (
+            <p className="mt-1 text-sm text-gray-700">
+              Zahlung:{' '}
+              {PAYMENT_STATUS_LABELS[order.paymentStatus as OrderPaymentStatus] ?? order.paymentStatus}
+            </p>
+          )}
         </section>
       </div>
 

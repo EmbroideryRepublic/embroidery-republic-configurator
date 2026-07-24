@@ -7,6 +7,7 @@ import { Text, Link } from '@react-email/components';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PRINT_VIEW_LABELS } from '@/lib/actions/orderTypes';
 import { EmailLayout, OrderItemsTable, COLORS } from './EmailLayout';
+import { formatiereGeld } from '@/lib/format';
 
 function PlacedElements({ order }: { order: OrderRecord }) {
   const rows = order.items.flatMap((item) =>
@@ -55,7 +56,7 @@ export function InternalOrderNotificationEmail({
         <Text style={{ backgroundColor: COLORS.background, padding: 10, borderRadius: 6, margin: '8px 0 0' }}>{order.message}</Text>
       )}
       <OrderItemsTable order={order} />
-      <Text style={{ marginTop: 12, textAlign: 'right', fontSize: 16, fontWeight: 600 }}>Gesamtsumme: {order.totalPrice.toFixed(2)} €</Text>
+      <Text style={{ marginTop: 12, textAlign: 'right', fontSize: 16, fontWeight: 600 }}>Gesamtsumme: {formatiereGeld(order.totalPrice)}</Text>
       <PlacedElements order={order} />
       {productionSheetSignedUrl ? (
         <Text style={{ marginTop: 16 }}>

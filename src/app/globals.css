@@ -46,3 +46,88 @@ body {
 .animate-scale-in {
   animation: scale-in 0.18s ease-out;
 }
+
+/* Weiches Auf- und Zuklappen ohne feste Höhe: die Zeile wächst von 0fr auf
+   1fr, der innere Container kappt den Überstand. Trägt die Baumstruktur des
+   Produktbrowsers. */
+.klappe {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease-out;
+}
+.klappe-auf {
+  grid-template-rows: 1fr;
+}
+.klappe > div {
+  overflow: hidden;
+}
+
+/* Eleganter Produktwechsel: Das neue Kleidungsstück gleitet als eigene Ebene
+   von rechts an seinen Platz und löst sich dann auf – darunter liegt bereits
+   die fertige Leinwand mit demselben Teil, sodass der Übergang nahtlos wirkt.
+   Kein Eingriff in die Konva-Leinwand; der Schlüssel am Element wird beim
+   Produktwechsel neu gesetzt, wodurch die Animation erneut startet. */
+@keyframes produkt-gleiten {
+  0% {
+    opacity: 0;
+    transform: translateX(28px) scale(0.985);
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0) scale(1);
+  }
+}
+.animate-produkt-gleiten {
+  animation: produkt-gleiten 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Wer reduzierte Bewegung wünscht, bekommt keinen Gleiteffekt. */
+  .animate-produkt-gleiten {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* ── Barrierefreiheit ──────────────────────────────────────────────────
+   Sichtbarer Tastaturfokus – EINHEITLICH über die gesamte Anwendung. Viele
+   Bedienelemente hatten zuvor gar keinen (oder per `outline-none` einen
+   entfernten) Fokus. `:where(...)` hält die Spezifität bei 0, sodass
+   speziellere Komponentенstile weiterhin gewinnen; `:focus-visible` zeigt den
+   Ring nur bei Tastaturbedienung, nicht beim Mausklick. */
+:where(a, button, input, select, textarea, summary, [role='button'], [role='radio'], [tabindex='0']):focus-visible {
+  outline: 2px solid theme('colors.gold.DEFAULT');
+  outline-offset: 2px;
+}
+
+/* Reduzierte Bewegung umfassend: Animationen und Übergänge werden praktisch
+   sofort abgeschlossen, sanftes Scrollen abgeschaltet. Deckt sämtliche
+   Mikroanimationen der Oberfläche ab, nicht nur einzelne. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Kleine Bestätigung auf der ausgewählten Modellkarte. */
+@keyframes marke-auf {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-marke-auf {
+  animation: marke-auf 0.25s ease-out;
+}

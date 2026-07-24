@@ -4,18 +4,57 @@
  * ausschließlich serverseitig (Server Actions) über den Admin-Client, da
  * der Bucket bewusst privat ist (siehe supabase/migrations/0002_...).
  */
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+// Als nodePath eingebunden: die Funktionen dieser Datei haben einen
+// Parameter namens `path` (den Storage-Pfad), der sonst verdeckt würde.
+import nodePath from 'node:path';
 import { createAdminClient } from './server';
+import { istTestmodus, meldeAbgefangen } from '@/config/testmodus';
+import { UnsichererPfadFehler, istSichererSpeicherpfad, pruefeDataUrl } from '@/lib/upload/pruefeUpload';
 
 const PRODUCTION_FILES_BUCKET = 'production-files';
 
-/** Zerlegt eine Data-URL ("data:image/png;base64,...") in MIME-Typ + Bytes. */
-function decodeDataUrl(dataUrl: string): { contentType: string; bytes: Buffer } {
-  const match = dataUrl.match(/^data:([^;]+);base64,(.+)$/);
-  if (!match) {
-    throw new Error('uploadDataUrl: erwartet eine base64-kodierte Data-URL.');
+/**
+ * ── Testmodus: lokale Ablage statt Supabase Storage ──────────────────
+ *
+ * Hier wird bewusst ERSETZT und nicht unterdrückt. Grund: Das
+ * Druckvorschau-Rendering lädt die zuvor hochgeladenen Logos wieder
+ * HERUNTER (renderPrintView → downloadProductionFile). Würde der Upload nur
+ * verschluckt, schlüge der Download fehl – und weil dieser Schritt in
+ * orders.ts bewusst nicht-fatal abgefangen ist, liefe ein Testlauf grün
+ * durch, während Rendering und Produktionsblatt stillschweigend
+ * übersprungen würden. Das wäre exakt der blinde Fleck, dessentwegen es den
+ * Testmodus gibt.
+ *
+ * Mit einer lokalen Ablage laufen Upload, Download und damit das gesamte
+ * Rendering echt – nur eben nicht gegen den Bucket.
+ */
+const TESTABLAGE = nodePath.join(process.cwd(), '.testablage', PRODUCTION_FILES_BUCKET);
+
+function testPfad(schluessel: string): string {
+  // Storage-Pfade enthalten "/" – im Dateisystem als Unterverzeichnisse
+  // abbilden statt zu ersetzen, damit die Struktur nachvollziehbar bleibt.
+  return nodePath.join(TESTABLAGE, ...schluessel.split('/'));
+}
+
+/**
+ * Fehler bei abgelehntem Upload.
+ *
+ * Trägt zwei Texte: `message` ist für die Kundschaft bestimmt und nennt nur
+ * Änderbares; `protokoll` enthält den technischen Grund und gehört
+ * ausschließlich ins Serverprotokoll. Ein Angreifer soll aus der Antwort nicht
+ * ableiten können, welche Prüfung gegriffen hat.
+ */
+export class UploadAbgelehntFehler extends Error {
+  readonly protokoll: string;
+  readonly grund: string;
+
+  constructor(kundenMeldung: string, grund: string, protokoll: string) {
+    super(kundenMeldung);
+    this.name = 'UploadAbgelehntFehler';
+    this.grund = grund;
+    this.protokoll = protokoll;
   }
-  const [, contentType, base64] = match;
-  return { contentType: contentType ?? 'application/octet-stream', bytes: Buffer.from(base64 ?? '', 'base64') };
 }
 
 /**
@@ -28,8 +67,47 @@ export async function uploadProductionFile(
   content: string | Buffer,
   contentType?: string
 ): Promise<string> {
-  const { bytes, contentType: resolvedContentType } =
-    typeof content === 'string' ? decodeDataUrl(content) : { bytes: content, contentType: contentType ?? 'application/octet-stream' };
+  // Der Pfad enthält Werte, die mittelbar vom Client stammen (Element-IDs).
+  // Geprüft wird hier an der Engstelle statt bei jedem Aufrufer – so ist auch
+  // ein künftiger Aufrufer abgesichert, ohne daran denken zu müssen.
+  if (!istSichererSpeicherpfad(path)) {
+    console.warn(`[upload] Pfad abgewiesen: ${JSON.stringify(path)}`);
+    throw new UnsichererPfadFehler(path);
+  }
+
+  // Data-URLs stammen von der Kundschaft und werden vollständig geprüft:
+  // Größe vor dem Dekodieren, tatsächlicher Typ über die Signatur,
+  // Abmessungen aus dem Header (lib/upload/pruefeUpload.ts).
+  //
+  // Fertige Puffer entstehen dagegen serverseitig – Produktionsblatt-PDF und
+  // Druckvorschauen. Sie durchlaufen die Prüfung bewusst nicht: Sie kommen
+  // nicht von außen, und ein PDF würde an der PNG-Whitelist scheitern.
+  let bytes: Buffer;
+  let resolvedContentType: string;
+
+  if (typeof content === 'string') {
+    const geprueft = pruefeDataUrl(content);
+    if (!geprueft.ok) {
+      console.warn(`[upload] Abgelehnt (${geprueft.grund}) für "${path}": ${geprueft.protokoll}`);
+      throw new UploadAbgelehntFehler(geprueft.kundenMeldung, geprueft.grund, geprueft.protokoll);
+    }
+    bytes = geprueft.bytes;
+    // Der Typ stammt aus der SIGNATUR, nicht aus der Deklaration des
+    // Aufrufers. Damit stimmt der im Bucket gespeicherte Content-Type
+    // nachweislich mit dem Inhalt überein.
+    resolvedContentType = geprueft.mime;
+  } else {
+    bytes = content;
+    resolvedContentType = contentType ?? 'application/octet-stream';
+  }
+
+  if (istTestmodus()) {
+    const ziel = testPfad(path);
+    await mkdir(nodePath.dirname(ziel), { recursive: true });
+    await writeFile(ziel, bytes);
+    meldeAbgefangen('Datei-Upload', `${path} (${bytes.length} Bytes) → lokale Testablage`);
+    return path;
+  }
 
   const admin = createAdminClient();
   const { error } = await admin.storage.from(PRODUCTION_FILES_BUCKET).upload(path, bytes, {
@@ -49,6 +127,19 @@ export async function uploadProductionFile(
  *  Rendering (src/lib/rendering/), das bewusst nur aus PERSISTIERTEN
  *  Bestelldaten arbeitet, nicht aus dem transienten Warenkorb-State. */
 export async function downloadProductionFile(path: string): Promise<Buffer> {
+  // Auch beim Lesen: Der Pfad stammt aus der Datenbank, wurde dort aber
+  // ursprünglich aus Client-Werten gebaut.
+  if (!istSichererSpeicherpfad(path)) {
+    console.warn(`[download] Pfad abgewiesen: ${JSON.stringify(path)}`);
+    throw new UnsichererPfadFehler(path);
+  }
+  // Gegenstück zum Upload oben: Ohne dieses Lesen aus der Testablage
+  // scheiterte das Druckvorschau-Rendering im Testmodus – und zwar
+  // stillschweigend, weil orders.ts es nicht-fatal abfängt.
+  if (istTestmodus()) {
+    return readFile(testPfad(path));
+  }
+
   const admin = createAdminClient();
   const { data, error } = await admin.storage.from(PRODUCTION_FILES_BUCKET).download(path);
   if (error || !data) {
@@ -59,6 +150,20 @@ export async function downloadProductionFile(path: string): Promise<Buffer> {
 
 /** Erzeugt eine zeitlich begrenzte Signed-URL für eine hochgeladene Produktionsdatei (privater Bucket). */
 export async function getProductionFileSignedUrl(path: string, expiresInSeconds = 60 * 60 * 24 * 7): Promise<string | null> {
+  // Eine Signed URL auf einen manipulierten Pfad wäre der direkteste Weg,
+  // fremde Dateien auszuleiten.
+  if (!istSichererSpeicherpfad(path)) {
+    console.warn(`[signedUrl] Pfad abgewiesen: ${JSON.stringify(path)}`);
+    return null;
+  }
+  // Im Testmodus existiert keine Signed-URL. Ein `file://`-Verweis auf die
+  // Testablage ist ehrlicher als null: Der Aufrufer (interne Benachrichtigung)
+  // durchläuft damit denselben Zweig wie produktiv – bei null wäre es der
+  // Zweig „PDF konnte nicht erzeugt werden".
+  if (istTestmodus()) {
+    return `file://${testPfad(path)}`;
+  }
+
   const admin = createAdminClient();
   const { data, error } = await admin.storage.from(PRODUCTION_FILES_BUCKET).createSignedUrl(path, expiresInSeconds);
   if (error || !data) return null;

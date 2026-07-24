@@ -29,7 +29,7 @@ export function CanvasToolbar({
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   return (
-    <div className="flex w-full items-center justify-between gap-2 rounded-lg border border-gold/15 bg-white px-2 py-1.5 shadow-sm">
+    <div className="flex w-full items-center justify-between gap-2 rounded-lg border border-gold/20 bg-white px-2 py-1.5 shadow-sm">
       <div className="flex items-center gap-1">
         <ToolbarButton title={t('canvas_undo')} onClick={onUndo} disabled={!canUndo}>
           <Undo2 className="h-3.5 w-3.5" />
@@ -57,7 +57,7 @@ export function CanvasToolbar({
           type="button"
           onClick={onOpenPreview}
           title={t('canvas_large_preview_title')}
-          className="flex items-center gap-1 rounded px-2 py-1 text-xs font-medium text-gold-dark hover:bg-gold-light"
+          className="flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-gold-dark hover:bg-gold-light"
         >
           <Eye className="h-3.5 w-3.5" />
           {t('canvas_large_preview')}
@@ -84,7 +84,7 @@ function ToolbarButton({
       onClick={onClick}
       title={title}
       disabled={disabled}
-      className="rounded p-1.5 text-brand/60 transition-colors hover:bg-cream hover:text-gold-dark disabled:cursor-not-allowed disabled:opacity-30"
+      className="rounded-md p-1.5 text-brand/60 transition-colors hover:bg-cream hover:text-gold-dark disabled:cursor-not-allowed disabled:opacity-30"
     >
       {children}
     </button>

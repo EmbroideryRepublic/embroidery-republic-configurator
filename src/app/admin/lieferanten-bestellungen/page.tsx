@@ -11,7 +11,7 @@ import { getSupplierDescriptor } from '@/lib/suppliers/registry';
 import type { SupplierId } from '@/lib/suppliers';
 import { SupplierOrderActions } from '@/components/admin/SupplierOrderActions';
 import { RunProcessorButton } from '@/components/admin/RunProcessorButton';
-import { isAdminAuthenticated } from '@/lib/admin/auth';
+import { istAdmin } from '@/lib/admin/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -95,7 +95,7 @@ export default async function SupplierPipelinePage() {
   // den RSC-Payload des HTML – auch wenn das Layout `children` verwirft.
   // Ohne diese Wache lagen Kundendaten und signierte Datei-URLs im Quelltext
   // der Login-Seite (real nachgewiesen).
-  if (!isAdminAuthenticated()) return null;
+  if (!(await istAdmin())) return null;
   const rows = await listSupplierOrderPipeline();
   const counts = rows.reduce<Record<string, number>>((acc, r) => {
     acc[r.status] = (acc[r.status] ?? 0) + 1;

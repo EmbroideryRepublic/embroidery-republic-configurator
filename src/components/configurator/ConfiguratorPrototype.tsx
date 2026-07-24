@@ -5,11 +5,10 @@ import dynamic from 'next/dynamic';
 import { AlertCircle } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { CartDrawer } from '@/components/layout/CartDrawer';
-import { Hero } from '@/components/layout/Hero';
 import { Stepper } from '@/components/layout/Stepper';
-import { TrustBar } from '@/components/layout/TrustBar';
 import { MethodSwitcher } from './MethodSwitcher';
-import { ProductList } from './ProductList';
+import { KonfigUebersicht } from './KonfigUebersicht';
+import { ProduktBrowser } from './ProduktBrowser';
 import { ColorSizeSelector } from './ColorSizeSelector';
 import { ProductDetails } from './ProductDetails';
 import { ViewSwitcher } from './ViewSwitcher';
@@ -25,6 +24,8 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
 import type { PricingRule, PrintArea } from '@/types';
+import { sumSizeQuantities } from '@/lib/pricing/quantity';
+import { vorladenAlleFarben } from '@/lib/configurator/vorladen';
 
 // Konva greift auf `window` zu und darf deshalb nicht serverseitig gerendert
 // werden – dynamischer Import mit ssr:false ist bei react-konva in Next.js
@@ -61,6 +62,10 @@ export function ConfiguratorPrototype() {
   const [printAreas, setPrintAreas] = useState<PrintArea[]>([]);
   const [pricingRules, setPricingRules] = useState<PricingRule[]>([]);
   const [priceBreakdown, setPriceBreakdown] = useState<PriceCalculationResult['breakdown'] | null>(null);
+  // Preisbausteine, die nicht verarbeitet werden konnten. Nicht leer =
+  // der Preis ist ungültig und darf NICHT bestellbar sein (siehe
+  // lib/pricing/ruleEngine.ts, Abschnitt „FAIL FAST").
+  const [priceHasErrors, setPriceHasErrors] = useState(false);
   const [isLoadingContext, setIsLoadingContext] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
@@ -87,7 +92,7 @@ export function ConfiguratorPrototype() {
   const productId = useConfiguratorStore((s) => s.productId);
   const colorId = useConfiguratorStore((s) => s.colorId);
   const sizeQuantities = useConfiguratorStore((s) => s.sizeQuantities);
-  const quantity = Object.values(sizeQuantities).reduce((sum, n) => sum + n, 0);
+  const quantity = sumSizeQuantities(sizeQuantities);
   const elements = useConfiguratorStore((s) => s.elements);
   const history = useConfiguratorStore((s) => s.history);
   const future = useConfiguratorStore((s) => s.future);
@@ -110,8 +115,28 @@ export function ConfiguratorPrototype() {
   // Erstbesuch (kein wiederhergestellter Zustand vorhanden): Standardprodukt
   // vorbelegen. Läuft erst NACH der Hydration, sonst würde ein
   // wiederhergestelltes Design überschrieben.
+  //
+  // `?produkt=<id>` hat Vorrang: Die Produktseiten verlinken so in den
+  // Konfigurator („Jetzt konfigurieren"). Ohne diese Auswertung landete der
+  // Kunde beim zuletzt konfigurierten Produkt statt bei dem, das er gerade
+  // angesehen hat.
   useEffect(() => {
     if (!isHydrated) return;
+
+    const gewuenscht = new URLSearchParams(window.location.search).get('produkt');
+    if (gewuenscht && gewuenscht !== productId) {
+      const ziel = getProduct(gewuenscht);
+      if (ziel) {
+        setProduct(ziel.id);
+        const ersteFarbe = ziel.colors[0];
+        if (ersteFarbe) setColor(ersteFarbe.id);
+        // Parameter entfernen, damit ein späterer Reload nicht erneut
+        // zurücksetzt und der Kunde seine Änderungen behält.
+        window.history.replaceState({}, '', window.location.pathname);
+        return;
+      }
+    }
+
     if (!productId) {
       setProduct(DEFAULT_PRODUCT.id);
       const firstColor = DEFAULT_PRODUCT.colors[0];
@@ -120,6 +145,12 @@ export function ConfiguratorPrototype() {
   }, [isHydrated, productId, setProduct, setColor]);
 
   const product = getProduct(productId ?? '') ?? DEFAULT_PRODUCT;
+
+  // Alle Farbansichten des aktuellen Produkts im Hintergrund vorladen, damit
+  // auch der Farbwechsel ohne Wartezeit erfolgt. Läuft nur bei Produktwechsel.
+  useEffect(() => {
+    vorladenAlleFarben(product);
+  }, [product]);
 
   // Aktuellen activeView-Wert per Ref verfügbar machen, OHNE ihn als
   // Dependency in den untenstehenden Effekt aufzunehmen – der Effekt soll
@@ -181,6 +212,7 @@ export function ConfiguratorPrototype() {
     });
     setPrices(result.unitPrice, result.totalPrice);
     setPriceBreakdown(result.breakdown);
+    setPriceHasErrors(result.hasErrors);
   }, [elements, quantity, pricingRules, product.basePrice, setPrices]);
 
   // Tastenkürzel: Strg/Cmd+Z = Rückgängig, Strg/Cmd+Y bzw. Strg+Shift+Z =
@@ -289,11 +321,15 @@ export function ConfiguratorPrototype() {
     <>
       <SiteHeader onCartClick={handleOpenCart} onCompareClick={handleOpenCompare} />
 
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 p-4 lg:p-6">
-        <Hero />
-        <TrustBar />
-        <Stepper activeStep={progressStep} />
-        <MethodSwitcher />
+      {/* Schrittleiste liegt AUSSERHALB des Inhaltscontainers, weil sie über
+          die volle Breite unter der Navigation klebt. */}
+      <Stepper activeStep={progressStep} />
+
+      {/* Zentrierter Inhalt, 1280 px, gleichmäßige Ränder. Der frühere
+          Hero-Banner und die Trust-Leiste sind entfallen: Beide standen
+          zwischen Navigation und Konfigurator und kosteten auf jedem Aufruf
+          Bildschirmhöhe, die dem eigentlichen Werkzeug fehlte. */}
+      <div className="mx-auto flex w-full max-w-[1800px] flex-col gap-3 px-4 py-3 lg:px-6 2xl:px-8">
 
         {syncNotice && (
           <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
@@ -310,24 +346,28 @@ export function ConfiguratorPrototype() {
           verursacht, das behoben werden sollte. Nur die tatsächlich vom
           Produkt betroffenen Teile (Bild, Druckbereiche) aktualisieren sich.
         */}
-        <div className="flex flex-1 flex-col gap-4 lg:flex-row lg:items-start">
+        <div className="flex flex-1 flex-col gap-3 lg:flex-row lg:items-start">
           {/* Linke Sidebar: Produktliste, sticky unterhalb des Headers,
               eigener Scroll-Bereich */}
-          <div className="w-full lg:sticky lg:top-20 lg:w-56 lg:flex-shrink-0 lg:self-start">
-            <ProductList />
+          {/* Linke Spalte: der Produktbrowser. Breite bestimmt er selbst –
+              sie wächst, sobald die Modellliste neben dem Baum aufgeht.
+              Höhe an den Viewport gebunden; gescrollt wird INNEN, damit die
+              Seite nicht mitwandert. */}
+          <div className="w-full lg:sticky lg:top-24 lg:h-[calc(100vh-7rem)] lg:w-auto lg:flex-shrink-0 lg:self-start">
+            <ProduktBrowser />
           </div>
 
           {/* Mitte: Farbe/Größe, Ansichts-Miniaturen + Canvas – größter Bereich */}
-          <div className="flex flex-1 flex-col items-center gap-4">
+          <div className="flex min-w-0 flex-1 flex-col items-center gap-2">
             <div className="w-full animate-fade-in" key={`meta-${product.id}`}>
               <ColorSizeSelector product={product} />
             </div>
             <ProductDetails product={product} />
 
-            <div className="flex w-full max-w-[780px] flex-col items-start gap-3 lg:flex-row">
+            <div className="flex w-full max-w-full flex-col items-start gap-3 lg:flex-row">
               <ViewSwitcher imageUrls={currentImages} hasSleeves={product.hasSleeves ?? true} />
 
-              <div className="flex flex-1 flex-col items-center gap-2">
+              <div className="flex min-w-0 flex-1 flex-col items-center gap-2">
                 <CanvasToolbar
                   zoom={zoom}
                   onZoomIn={handleZoomIn}
@@ -344,11 +384,31 @@ export function ConfiguratorPrototype() {
                     Viewport (abzüglich Header/Toolbar-Schätzwert), damit das
                     Produkt bei jedem Bildschirm vollständig sichtbar bleibt,
                     ohne dass innerhalb der Canvas gescrollt werden muss. */}
-                <div className="w-full max-w-[700px]" style={{ maxHeight: 'min(840px, 78vh)' }}>
+                {/* Höhe an den TATSÄCHLICH verbleibenden Platz gebunden.
+                    Die frühere Angabe 78vh ignorierte, dass oberhalb rund
+                    320 px für Kopfzeile, Schrittleiste, Produktkopf und
+                    Werkzeugleiste verbraucht werden – der Canvas ragte
+                    dadurch aus dem Sichtbereich und erzwang Scrollen. */}
+                <div className="relative w-full max-w-[820px] xl:max-w-[960px] 2xl:max-w-[1100px]" style={{ maxHeight: 'min(840px, calc(100vh - 20rem))' }}>
                   {isLoadingContext ? (
                     <CanvasSkeleton />
                   ) : (
                     <ConfiguratorCanvas productImageUrl={currentImageUrl} printArea={currentPrintArea} zoom={zoom} product={product} />
+                  )}
+                  {/* Eleganter Produktwechsel: Eine Ebene mit dem neuen Teil
+                      gleitet herein und löst sich auf; darunter liegt bereits
+                      die fertige Leinwand. Schlüssel = product.id, damit die
+                      Animation NUR beim Produktwechsel läuft, nicht bei jedem
+                      Farb- oder Ansichtswechsel. Konva bleibt unberührt. */}
+                  {!isLoadingContext && currentImageUrl && (
+                    <div
+                      key={`gleiten-${product.id}`}
+                      aria-hidden
+                      className="animate-produkt-gleiten pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-hidden rounded-lg bg-cream"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={currentImageUrl} alt="" className="max-h-full max-w-full object-contain p-6" />
+                    </div>
                   )}
                 </div>
 
@@ -363,9 +423,34 @@ export function ConfiguratorPrototype() {
 
           {/* Rechts: Werkzeuge als Tabs + immer sichtbare Preis-Zusammenfassung,
               sticky unterhalb des Headers */}
-          <div className="w-full space-y-4 lg:sticky lg:top-20 lg:w-72 lg:flex-shrink-0 lg:self-start">
-            <ToolPanelTabs printArea={currentPrintArea} printAreas={printAreas} />
-            <SummaryPanel productName={product.name} breakdown={priceBreakdown} />
+          {/* Rechte Spalte: Werkzeuge + Zusammenfassung. Der
+              Veredelungswechsler sitzt hier statt in einer eigenen Zeile über
+              den Spalten – er gehört inhaltlich zu den Optionen und kostete
+              oben 62 px Höhe, die dem Entwurfsbereich fehlten. */}
+          {/* Rechte Spalte nach dem Muster professioneller Werkzeug-
+              oberflächen (Figma, Canva): Die Werkzeuge scrollen INNEN, Preis
+              und Bestellknopf sind am Fuß verankert und dadurch dauerhaft
+              sichtbar. Vorher scrollte die ganze Spalte – der Bestellknopf
+              lag je nach Produkt unterhalb des Sichtbereichs. */}
+          <div className="flex w-full flex-col gap-2 lg:sticky lg:top-24 lg:h-[calc(100vh-6.5rem)] lg:w-80 lg:flex-shrink-0 xl:w-[22rem] 2xl:w-96 lg:self-start">
+            {/* Status-Übersicht zuerst: Der Kunde sieht auf einen Blick, wo er
+                steht und was als Nächstes ansteht – der geführte Einkauf
+                beginnt mit Orientierung, nicht mit Werkzeugen. */}
+            <div className="flex-shrink-0">
+              <KonfigUebersicht priceHasErrors={priceHasErrors} />
+            </div>
+            <div className="flex-shrink-0">
+              <MethodSwitcher />
+            </div>
+            {/* min-h-0 ist nötig, damit dieser Bereich im Flex-Container
+                tatsächlich schrumpfen darf statt seine Inhaltshöhe zu
+                erzwingen – sonst greift overflow-y-auto nie. */}
+            <div className="min-h-0 flex-1 overflow-y-auto lg:pr-0.5">
+              <ToolPanelTabs printArea={currentPrintArea} printAreas={printAreas} />
+            </div>
+            <div className="flex-shrink-0">
+              <SummaryPanel productName={product.name} breakdown={priceBreakdown} priceHasErrors={priceHasErrors} />
+            </div>
           </div>
         </div>
       </div>
@@ -387,7 +472,7 @@ export function ConfiguratorPrototype() {
 /** Dezenter Platzhalter statt weißer Fläche/Sprung während des Ladens. */
 function CanvasSkeleton() {
   return (
-    <div className="flex h-[840px] w-full max-w-[700px] animate-pulse items-center justify-center rounded-lg bg-cream ring-1 ring-gold/15">
+    <div className="flex h-[840px] w-full max-w-[820px] animate-pulse xl:max-w-[960px] 2xl:max-w-[1100px] items-center justify-center rounded-lg bg-cream ring-1 ring-gold/15">
       <div className="h-3/4 w-1/2 rounded-lg bg-gold/10" />
     </div>
   );

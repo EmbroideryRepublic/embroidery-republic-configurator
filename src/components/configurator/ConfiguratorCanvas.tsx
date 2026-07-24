@@ -13,6 +13,7 @@ import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateLogoStitches, estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import { CANVAS_WIDTH, CANVAS_HEIGHT, type ProductConfig } from '@/config/products';
+import { cm as formatCm } from '@/lib/format';
 
 /** Platz für die seitlichen/unteren Maß-Lineale (Linie + cm-Beschriftung),
  *  in CSS-Pixeln – bewusst klein gehalten, damit die Leinwand selbst kaum
@@ -95,7 +96,20 @@ export function ConfiguratorCanvas({
 
   useEffect(() => {
     function updateScale() {
-      const containerWidth = containerRef.current?.offsetWidth ?? CANVAS_WIDTH;
+      // Die gemessene Breite kann auf schmalen Bildschirmen zu groß ausfallen:
+      // Der Container (`w-full` mit `overflow-auto`) und die Stage bedingen
+      // sich gegenseitig, sodass die Messung nicht unter die Fensterbreite
+      // fällt und die Leinwand seitlich überliefe. Deshalb zusätzlich an die
+      // sichtbare Fensterbreite (abzüglich Lineal + Rand) klemmen. Auf großen
+      // Bildschirmen greift die eigentliche Spaltenbreite (kleiner als das
+      // Fenster), dort ändert `Math.min` nichts.
+      const gemessen = containerRef.current?.offsetWidth ?? CANVAS_WIDTH;
+      const fensterbreite =
+        typeof window !== 'undefined' ? document.documentElement.clientWidth : gemessen;
+      // Reserve = Lineal (34) + seitliche Seitenpolsterung (px-4 = 2×16) + Luft.
+      // Nur auf schmalen Bildschirmen wirksam; auf großen greift die kleinere
+      // Spaltenbreite via Math.min, sodass die Leinwand dort voll bleibt.
+      const containerWidth = Math.min(gemessen, fensterbreite - (RULER_TRACK_PX + 36));
       // Verfügbare Höhe direkt aus der Fensterhöhe ableiten (abzüglich
       // Platz für Header/Werkzeugleiste/Zusammenfassung) statt die Höhe
       // eines Containers zu messen, der selbst nur eine CSS max-height
@@ -103,7 +117,24 @@ export function ConfiguratorCanvas({
       // der Container hatte noch keine echte Höhe, solange die Leinwand
       // (deren Größe genau von dieser Messung abhängt) noch nicht
       // gerendert war, wodurch eine winzige Höhe gemessen wurde.
-      const availableHeight = typeof window !== 'undefined' ? window.innerHeight * 0.72 : CANVAS_HEIGHT;
+      //
+      // WICHTIG: Nicht `window.innerHeight * 0.72` – dieser Anteil ignoriert,
+      // was ÜBER der Leinwand liegt (Kopfzeile, Schrittleiste, Produktkopf,
+      // Werkzeugleiste, zusammen rund 320 px). Die Leinwand ragte dadurch
+      // unten aus dem Sichtbereich und erzwang Scrollen, obwohl sie
+      // rechnerisch „nur 72 %" belegte.
+      //
+      // Stattdessen wird der Abstand des Containers zur Fensteroberkante
+      // gemessen und von der Fensterhöhe abgezogen. Das Henne-Ei-Problem der
+      // Vorgängerfassung entsteht dabei nicht: Gemessen wird die POSITION des
+      // Containers, nicht seine Höhe – die steht schon vor dem ersten
+      // Leinwand-Render fest.
+      const obenImFenster = containerRef.current?.getBoundingClientRect().top ?? 0;
+      const RESERVE_UNTEN = 16; // Luft zur Fensterunterkante
+      const availableHeight =
+        typeof window !== 'undefined'
+          ? Math.max(240, window.innerHeight - obenImFenster - RESERVE_UNTEN)
+          : CANVAS_HEIGHT;
       const widthScale = containerWidth / CANVAS_WIDTH;
       const heightScale = availableHeight / CANVAS_HEIGHT;
       setScale(Math.min(1, widthScale, heightScale));
@@ -171,9 +202,22 @@ export function ConfiguratorCanvas({
   }, [product, sizeQuantities, previewSize]);
 
   const rulerPxPerCm = scaleFactors?.pxPerCmX ?? null;
-  const heightRulerPx = sizeRow && rulerPxPerCm ? sizeRow.hoeheCm * rulerPxPerCm * stageScale : null;
-  const widthRulerPx = sizeRow && rulerPxPerCm ? sizeRow.breiteCm * rulerPxPerCm * stageScale : null;
-  const hasRulers = !hideGuides && !!sizeRow && heightRulerPx !== null && widthRulerPx !== null;
+  // ── Maßlinien der DRUCKFLÄCHE ────────────────────────────────────────
+  // Vorher maßen die Lineale das KLEIDUNGSSTÜCK (sizeRow.breiteCm/hoeheCm
+  // aus der Größentabelle). Angezeigt wurde also z.B. „56 cm" für die
+  // Shirtbreite, während der Kunde die Maße seiner Druckfläche braucht.
+  //
+  // Jetzt kommen Länge UND Beschriftung aus derselben Quelle wie die
+  // gezeichnete Fläche: printArea.maxWidthCm/maxHeightCm und areaPx. Damit
+  // ist ein Auseinanderlaufen konstruktiv ausgeschlossen – die Linie IST
+  // die Kante der Fläche.
+  const druckBreiteCm = printArea?.maxWidthCm ?? null;
+  const druckHoeheCm = printArea?.maxHeightCm ?? null;
+  const heightRulerPx = areaPx ? areaPx.height * stageScale : null;
+  const widthRulerPx = areaPx ? areaPx.width * stageScale : null;
+  const hasRulers =
+    !hideGuides && !!areaPx && druckBreiteCm !== null && druckHoeheCm !== null &&
+    heightRulerPx !== null && widthRulerPx !== null;
 
   // Neue Elemente (Upload, Text, Vorlage, Duplikat, Einfügen, Positions-
   // Presets) starten alle standardmäßig MITTIG im Druckbereich – bei
@@ -193,7 +237,32 @@ export function ConfiguratorCanvas({
       const rectPx = elementToPixelRect(areaPx, scaleFactors, el);
       if (!zonesPx.some((zone) => overlapsExclusionZone(rectPx, zone))) continue;
       const pushed = pushOutOfExclusionZones(rectPx, areaPx, zonesPx, zoneMarginPx);
-      if (pushed.x === rectPx.x && pushed.y === rectPx.y) continue;
+
+      // NUR schreiben, wenn das Verschieben die Überlappung tatsächlich löst.
+      //
+      // Bei MEHREREN Sperrzonen (Fleecejacke: Reißverschluss + zwei Taschen)
+      // kann `pushOutOfExclusionZones` ein Element aus der einen Zone genau in
+      // die nächste schieben und im Folgedurchlauf wieder zurück. Es gibt dann
+      // eine Position zurück, die weiterhin überlappt. Wurde die trotzdem
+      // gespeichert, lief dieser Effekt bei jedem Render erneut und React brach
+      // mit „Maximum update depth exceeded" ab – der Konfigurator war für
+      // Kunden mit einem betroffenen gespeicherten Entwurf nicht mehr bedienbar.
+      const restposition = { ...rectPx, x: pushed.x, y: pushed.y };
+      if (zonesPx.some((zone) => overlapsExclusionZone(restposition, zone))) {
+        // Keine freie Position gefunden: Das Element bleibt stehen, wird aber
+        // als außerhalb markiert – sonst läge ein Motiv unbemerkt auf dem
+        // Reißverschluss und ginge so in die Bestellung. Die `isOutOfBounds`-
+        // Abfrage ist zwingend: ohne sie schriebe der Effekt bei jedem Render
+        // denselben Wert und die Endlosschleife wäre zurück.
+        if (!el.isOutOfBounds) updateElement(el.id, { isOutOfBounds: true });
+        continue;
+      }
+
+      // Float-Toleranz statt exaktem Vergleich: px → cm → px ist nicht
+      // verlustfrei. Ein exakter Vergleich hielt eine Abweichung von
+      // Bruchteilen eines Pixels für eine echte Änderung und schrieb endlos.
+      if (Math.abs(pushed.x - rectPx.x) < 0.5 && Math.abs(pushed.y - rectPx.y) < 0.5) continue;
+
       updateElement(el.id, {
         xCm: (pushed.x - areaPx.x) / scaleFactors.pxPerCmX,
         yCm: (pushed.y - areaPx.y) / scaleFactors.pxPerCmY,
@@ -217,19 +286,21 @@ export function ConfiguratorCanvas({
   }
 
   return (
-    <div className="flex w-full max-w-[700px] flex-col items-center">
+    <div className="flex w-full max-w-[820px] flex-col items-center xl:max-w-[960px] 2xl:max-w-[1100px]">
       <div className="flex w-full flex-row items-start justify-center">
-        {hasRulers && sizeRow && heightRulerPx !== null && (
+        {hasRulers && heightRulerPx !== null && (
           <div
             className="relative flex-shrink-0"
             style={{ width: RULER_TRACK_PX, height: CANVAS_HEIGHT * scale * zoom }}
           >
-            <span className="absolute left-1/2 top-0 -translate-x-1/2 text-[9px] font-semibold uppercase tracking-wide text-gold-dark/70">
-              {sizeRow.size}
-            </span>
+            {sizeRow && (
+              <span className="absolute left-1/2 top-0 -translate-x-1/2 text-[9px] font-semibold uppercase tracking-wide text-gold-dark/70">
+                {sizeRow.size}
+              </span>
+            )}
             <div
               className="absolute flex flex-col items-center"
-              style={{ left: RULER_TRACK_PX - 16, top: imageRect.y * stageScale, height: heightRulerPx, width: 16 }}
+              style={{ left: RULER_TRACK_PX - 16, top: areaPx!.y * stageScale, height: heightRulerPx, width: 16 }}
             >
               <span className="h-0 w-2.5 border-t border-gold-dark/70" />
               <div className="w-0 flex-1 border-l border-dashed border-gold-dark/60" />
@@ -238,7 +309,7 @@ export function ConfiguratorCanvas({
                 className="absolute left-1/2 top-1/2 whitespace-nowrap text-[10px] font-medium text-gold-dark"
                 style={{ transform: 'translate(-50%, -50%) rotate(-90deg)' }}
               >
-                {sizeRow.hoeheCm} cm
+                {formatCm(druckHoeheCm!)}
               </span>
             </div>
           </div>
@@ -246,7 +317,7 @@ export function ConfiguratorCanvas({
 
         <div
           ref={containerRef}
-          className="flex w-full max-w-[700px] justify-center overflow-auto rounded-lg"
+          className="flex w-full max-w-[820px] justify-center overflow-auto rounded-lg xl:max-w-[960px] 2xl:max-w-[1100px]"
           style={{ maxHeight: zoom > 1 ? CANVAS_HEIGHT * scale + 20 : undefined }}
         >
           <Stage
@@ -443,7 +514,7 @@ export function ConfiguratorCanvas({
         </div>
       </div>
 
-      {hasRulers && sizeRow && widthRulerPx !== null && (
+      {hasRulers && widthRulerPx !== null && (
         <div
           className="relative"
           style={{ width: CANVAS_WIDTH * stageScale + RULER_TRACK_PX, height: RULER_TRACK_PX }}
@@ -451,7 +522,7 @@ export function ConfiguratorCanvas({
           <div
             className="absolute flex flex-row items-center"
             style={{
-              left: RULER_TRACK_PX + imageRect.x * stageScale + (imageRect.width * stageScale - widthRulerPx) / 2,
+              left: RULER_TRACK_PX + areaPx!.x * stageScale,
               top: 4,
               width: widthRulerPx,
               height: 14,
@@ -464,12 +535,12 @@ export function ConfiguratorCanvas({
           <span
             className="absolute whitespace-nowrap text-[10px] font-medium text-gold-dark"
             style={{
-              left: RULER_TRACK_PX + imageRect.x * stageScale + (imageRect.width * stageScale) / 2,
+              left: RULER_TRACK_PX + (areaPx!.x + areaPx!.width / 2) * stageScale,
               top: 18,
               transform: 'translateX(-50%)',
             }}
           >
-            {sizeRow.breiteCm} cm
+            {formatCm(druckBreiteCm!)}
           </span>
         </div>
       )}

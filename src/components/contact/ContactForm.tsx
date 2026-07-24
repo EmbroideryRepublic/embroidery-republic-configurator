@@ -113,10 +113,12 @@ export function ContactForm() {
             value={form.name}
             onChange={(e) => update('name', e.target.value)}
             onBlur={() => markTouched('name')}
+            aria-invalid={touched.name && !nameValid}
+            aria-describedby={touched.name && !nameValid ? 'contact-name-fehler' : undefined}
             className={`${inputClass} ${touched.name && !nameValid ? invalidClass : ''}`}
           />
           {touched.name && !nameValid && (
-            <p className="mt-1 text-xs text-red-500">Bitte geben Sie Ihren Namen an.</p>
+            <p id="contact-name-fehler" className="mt-1 text-xs text-red-500">Bitte geben Sie Ihren Namen an.</p>
           )}
         </div>
 
@@ -133,10 +135,12 @@ export function ContactForm() {
             value={form.email}
             onChange={(e) => update('email', e.target.value)}
             onBlur={() => markTouched('email')}
+            aria-invalid={touched.email && !emailValid}
+            aria-describedby={touched.email && !emailValid ? 'contact-email-fehler' : undefined}
             className={`${inputClass} ${touched.email && !emailValid ? invalidClass : ''}`}
           />
           {touched.email && !emailValid && (
-            <p className="mt-1 text-xs text-red-500">Bitte geben Sie eine gültige E-Mail-Adresse an.</p>
+            <p id="contact-email-fehler" className="mt-1 text-xs text-red-500">Bitte geben Sie eine gültige E-Mail-Adresse an.</p>
           )}
         </div>
       </div>
@@ -169,11 +173,15 @@ export function ContactForm() {
           value={form.message}
           onChange={(e) => update('message', e.target.value)}
           onBlur={() => markTouched('message')}
+          aria-invalid={touched.message && !messageValid}
+          aria-describedby={touched.message && !messageValid ? 'contact-message-fehler' : undefined}
           className={`${inputClass} resize-y ${touched.message && !messageValid ? invalidClass : ''}`}
         />
         <div className="mt-1 flex items-center justify-between">
           {touched.message && !messageValid ? (
-            <p className="text-xs text-red-500">Bitte formulieren Sie Ihre Nachricht (mind. 10 Zeichen).</p>
+            <p id="contact-message-fehler" className="text-xs text-red-500">
+              Bitte formulieren Sie Ihre Nachricht (mind. 10 Zeichen).
+            </p>
           ) : (
             <span />
           )}
@@ -184,7 +192,7 @@ export function ContactForm() {
       </div>
 
       {status === 'error' && error && (
-        <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
+        <div role="alert" className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
           <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
           <span>{error}</span>
         </div>

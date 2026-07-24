@@ -24,11 +24,21 @@ import { runSupplierJob } from '../worker/supplierWorker';
 import type { SupplierAutomationJob, SupplierId, SupplierJobMode, SupplierOrderPosition, SupplierWorkerRunResult } from '../types';
 import { canTransition, classifyRunFailure, decideOutcome, type SupplierOrderStatus } from './status';
 import { acquireLock, LOCK_TTL_MS, recordEvent, releaseLock, transition } from './store';
+import { istTestmodus, meldeAbgefangen } from '@/config/testmodus';
 
 /** Master-Schalter Test/Prod: nur bei '1' läuft echte Browser-Automatisierung.
  *  Default AUS – im Test-/Dev-Betrieb wird nichts real beim Lieferanten
  *  bestellt (Dry-Run). */
 export function isAutomationEnabled(): boolean {
+  // Der Testmodus überstimmt den Schalter. Ohne diese Sperre würde ein
+  // Testlauf auf einer Umgebung mit SUPPLIER_AUTOMATION_ENABLED=1 eine
+  // ECHTE Bestellung beim Großhändler auslösen – die teuerste denkbare
+  // Nebenwirkung eines Tests, und die einzige hier, die sich nicht
+  // zurücknehmen lässt.
+  if (istTestmodus()) {
+    meldeAbgefangen('Lieferantenautomatisierung', 'Ausführung im Testmodus gesperrt');
+    return false;
+  }
   return process.env.SUPPLIER_AUTOMATION_ENABLED === '1';
 }
 

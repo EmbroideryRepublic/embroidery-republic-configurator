@@ -1,16 +1,41 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { CartItem } from '@/types';
-import { MINIMUM_QUANTITY } from '@/lib/pricing/calculatePrice';
 import { indexedDbStorage } from '@/lib/storage/indexedDbStorage';
 
 interface CartState {
   items: CartItem[];
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
-  updateItemQuantity: (id: string, quantity: number) => void;
+  /**
+   * ENTFERNT – bewusst nicht ersetzt.
+   *
+   * Die frühere Fassung rechnete den Preis im Store selbst neu
+   * (`unitPrice * Menge + Rüstkosten`) und war damit eine ZWEITE
+   * Geschäftslogik neben der Preispipeline. Sie wandte die Mengenstaffel
+   * nicht erneut an: Wer 5 Stück in den Warenkorb legte und dort auf 100
+   * erhöhte, zahlte gemessen **173,82 € (11,2 %) zu viel**, weil der
+   * Mengenrabatt von -5 % statt -25 % stehen blieb.
+   *
+   * Die Aktion hatte keinen einzigen Aufrufer und wurde deshalb entfernt
+   * statt repariert. Wird die Mengenänderung im Warenkorb später gebraucht,
+   * MUSS sie über `calculatePipeline` laufen (siehe
+   * docs/geschaeftsarchitektur.md, Migration M1) – niemals über eine eigene
+   * Rechnung im Store.
+   */
   clear: () => void;
 }
+
+/**
+ * HINWEIS zur Absendekennung gegen Doppelbestellungen:
+ *
+ * Sie liegt BEWUSST nicht hier, sondern synchron im localStorage (siehe
+ * lib/hooks/useSubmitGuard.ts). Sie beschreibt einen Absendevorgang, nicht den
+ * Warenkorbinhalt, und muss getrennt verworfen werden können: nach einer
+ * unverbindlichen Anfrage bleibt der Warenkorb bestehen, die Kennung darf es
+ * nicht – sonst gälte die anschließende echte Bestellung als Wiederholung der
+ * Anfrage und entstünde nie.
+ */
 
 /**
  * Persistiert im localStorage des Browsers (nur Warenkorb-Inhalt, keine
@@ -21,21 +46,13 @@ interface CartState {
  */
 export const useCartStore = create<CartState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       items: [],
 
       addItem: (item) => set((state) => ({ items: [...state.items, item] })),
 
       removeItem: (id) => set((state) => ({ items: state.items.filter((i) => i.id !== id) })),
 
-      updateItemQuantity: (id, quantity) =>
-        set((state) => ({
-          items: state.items.map((i) => {
-            if (i.id !== id) return i;
-            const nextQuantity = Math.max(quantity, MINIMUM_QUANTITY);
-            return { ...i, quantity: nextQuantity, totalPrice: i.unitPrice * nextQuantity };
-          }),
-        })),
 
       clear: () => set({ items: [] }),
     }),

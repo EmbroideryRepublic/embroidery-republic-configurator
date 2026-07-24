@@ -217,12 +217,12 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
           {isText ? (selected as TextElement).content || 'Text' : selected.type === 'logo' ? selected.fileName : ''}
         </span>
         {selected.isOutOfBounds && (
-          <span className="whitespace-nowrap rounded bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">
+          <span className="whitespace-nowrap rounded-md bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">
             {t('element_out_of_bounds_badge')}
           </span>
         )}
         {selected.locked && (
-          <span className="whitespace-nowrap rounded bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+          <span className="whitespace-nowrap rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
             {t('element_locked_badge')}
           </span>
         )}
@@ -235,14 +235,14 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
             onChange={(e) => handleContentChange(e.target.value)}
             placeholder={t('element_text_placeholder')}
             rows={2}
-            className="w-full resize-y rounded border border-gray-300 px-2 py-1.5 text-sm"
+            className="w-full resize-y rounded-md border border-gray-300 px-2 py-1.5 text-sm"
           />
 
           <div className="grid grid-cols-2 gap-2">
             <select
               value={(selected as TextElement).fontFamily ?? AVAILABLE_FONTS[0]}
               onChange={(e) => updateText({ fontFamily: e.target.value })}
-              className="rounded border border-gray-300 px-2 py-1.5 text-sm"
+              className="rounded-md border border-gray-300 px-2 py-1.5 text-sm"
             >
               {AVAILABLE_FONTS.map((font) => (
                 <option key={font} value={font}>
@@ -256,7 +256,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 type="color"
                 value={(selected as TextElement).color ?? '#000000'}
                 onChange={(e) => updateText({ color: e.target.value })}
-                className="h-9 w-full cursor-pointer rounded border border-gray-300"
+                className="h-9 w-full cursor-pointer rounded-md border border-gray-300"
                 title="Textfarbe (Feinabstimmung)"
               />
             )}
@@ -339,7 +339,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                   const v = Number(e.target.value);
                   if (!Number.isNaN(v) && v > 0) updateText({ fontSizePx: v });
                 }}
-                className="w-14 flex-shrink-0 rounded border border-gray-300 px-1 py-0.5 text-xs"
+                className="w-14 flex-shrink-0 rounded-md border border-gray-300 px-1 py-0.5 text-xs"
               />
             </div>
           </div>
@@ -349,7 +349,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               type="button"
               onClick={() => updateText({ bold: !(selected as TextElement).bold })}
               className={clsx(
-                'h-8 flex-1 rounded border text-sm font-bold',
+                'h-8 flex-1 rounded-md border text-sm font-bold',
                 (selected as TextElement).bold ? 'border-gold bg-gold text-white' : 'border-gray-300 text-gray-600'
               )}
               title={t('element_bold')}
@@ -360,7 +360,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               type="button"
               onClick={() => updateText({ italic: !(selected as TextElement).italic })}
               className={clsx(
-                'h-8 flex-1 rounded border text-sm italic',
+                'h-8 flex-1 rounded-md border text-sm italic',
                 (selected as TextElement).italic ? 'border-gold bg-gold text-white' : 'border-gray-300 text-gray-600'
               )}
               title={t('element_italic')}
@@ -376,7 +376,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 type="button"
                 onClick={() => updateText({ align })}
                 className={clsx(
-                  'min-w-0 flex-1 truncate rounded border py-1 text-xs',
+                  'min-w-0 flex-1 truncate rounded-md border py-1 text-xs',
                   (selected as TextElement).align === align
                     ? 'border-gold bg-gold text-white'
                     : 'border-gray-300 text-gray-600'
@@ -424,7 +424,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 type="checkbox"
                 checked={(selected as TextElement).hasShadow ?? false}
                 onChange={(e) => updateText({ hasShadow: e.target.checked })}
-                className="h-3.5 w-3.5 rounded border-gray-300"
+                className="h-3.5 w-3.5 rounded-md border-gray-300"
               />
               {t('element_shadow')}
             </label>
@@ -433,7 +433,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 type="checkbox"
                 checked={(selected as TextElement).hasOutline ?? false}
                 onChange={(e) => updateText({ hasOutline: e.target.checked })}
-                className="h-3.5 w-3.5 rounded border-gray-300"
+                className="h-3.5 w-3.5 rounded-md border-gray-300"
               />
               {t('element_outline')}
             </label>
@@ -442,7 +442,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 type="color"
                 value={(selected as TextElement).outlineColor ?? '#ffffff'}
                 onChange={(e) => updateText({ outlineColor: e.target.value })}
-                className="h-6 w-8 cursor-pointer rounded border border-gray-300"
+                className="h-6 w-8 cursor-pointer rounded-md border border-gray-300"
                 title={t('element_outline_color')}
               />
             )}
@@ -504,7 +504,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 key={preset.labelKey}
                 type="button"
                 onClick={() => applyPreset(preset)}
-                className="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-brand-accent hover:text-brand-accent"
+                className="rounded-md border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-brand-accent hover:text-brand-accent"
               >
                 {t(preset.labelKey)}
               </button>
@@ -531,7 +531,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
       </div>
 
       {/* Live-Maße – gilt für Logo und Text gleichermaßen */}
-      <div className="grid grid-cols-2 gap-2 rounded bg-gray-50 p-2 text-sm text-gray-700">
+      <div className="grid grid-cols-2 gap-2 rounded-md bg-gray-50 p-2 text-sm text-gray-700">
         <div>
           <span className="block text-xs text-gray-400">{t('element_width')}</span>
           {selected.widthCm.toFixed(1)} cm
@@ -582,7 +582,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
             type="button"
             onClick={() => copyElement(selected.id)}
             title="Kopieren (Strg+C) – danach mit Strg+V hier oder auf einer anderen Ansicht einfügen"
-            className="min-w-0 flex-1 truncate rounded bg-brand-light px-2 py-1.5 text-sm hover:bg-gray-200"
+            className="min-w-0 flex-1 truncate rounded-md bg-brand-light px-2 py-1.5 text-sm hover:bg-gray-200"
           >
             Kopieren
           </button>
@@ -594,7 +594,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 printArea ? { movementWidthCm: printArea.movementWidthCm, referenceGarmentHeightCm: printArea.referenceGarmentHeightCm } : undefined
               )
             }
-            className="min-w-0 flex-1 truncate rounded bg-brand-light px-2 py-1.5 text-sm hover:bg-gray-200"
+            className="min-w-0 flex-1 truncate rounded-md bg-brand-light px-2 py-1.5 text-sm hover:bg-gray-200"
           >
             {t('element_duplicate')}
           </button>
@@ -602,7 +602,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
         <button
           type="button"
           onClick={() => removeElement(selected.id)}
-          className="w-full rounded bg-red-50 px-3 py-1.5 text-sm text-red-600 hover:bg-red-100"
+          className="w-full rounded-md bg-red-50 px-3 py-1.5 text-sm text-red-600 hover:bg-red-100"
         >
           {t('element_delete')}
         </button>

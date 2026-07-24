@@ -7,8 +7,10 @@
  * die einzigen Schreiber.
  */
 import { createAdminClient } from '@/lib/supabase/server';
-import { buildOrderNumber } from '@/lib/actions/orderTypes';
+import { buildOrderNumber, type OrderPaymentMethod } from '@/lib/actions/orderTypes';
 import { buildSupplierPositions } from '@/lib/suppliers';
+import { bearbeitungsGrenze, imAdminSichtbar, BEARBEITBARE_ZAHLUNGSZUSTAENDE } from '@/lib/orders/orderVisibility';
+import { enqueueSupplierOrdersForOrder } from '@/lib/suppliers/lifecycle/enqueue';
 import { getProductionFileSignedUrl } from '@/lib/supabase/storage';
 import type { SupplierOrderDraft, SupplierWorkerRunResult } from '@/lib/suppliers';
 
@@ -51,6 +53,9 @@ export interface AdminOrderDetail {
   orderType: 'inquiry' | 'order';
   status: string;
   paymentStatus: string;
+  /** Gewählte Zahlungsart. null bei Anfragen und bei Bestellungen, die vor
+   *  Migration 0012 ohne diese Angabe erfasst wurden. */
+  paymentMethod: OrderPaymentMethod | null;
   customerName: string;
   company: string | null;
   email: string;
@@ -66,6 +71,9 @@ export interface AdminOrderDetail {
   /** Zeitlich befristete Download-URL des Produktionsblatts (null, solange
    *  keines erzeugt wurde). Wird beim Seitenaufbau frisch signiert. */
   productionSheetUrl: string | null;
+  /** Sendungsnummer, sofern beim Versand erfasst. */
+  trackingNumber: string | null;
+  shippedAt: string | null;
   /** Persistierte Automatisierungs-Snapshots inkl. letztem Lauf. */
   supplierOrders: AdminSupplierOrderRow[];
 }
@@ -166,6 +174,16 @@ export async function listOrders(): Promise<AdminOrderListRow[]> {
   const { data, error } = await supabase
     .from('orders')
     .select('id, created_at, order_type, customer_name, company, email, total_price, status, payment_status')
+    // Sichtbarkeitsregel (lib/orders/orderVisibility): stornierte Bestellungen
+    // nie; echte Bestellungen erst nach Ablauf der Stornofrist; Anfragen sofort.
+    // Bereits in der Datenbank gefiltert statt nachträglich zu verwerfen.
+    .neq('status', 'cancelled')
+    .or(`order_type.neq.order,created_at.lte.${bearbeitungsGrenze()}`)
+    // Ausstehende Zahlungen gehören nicht in die Bearbeitungsliste – sonst
+    // würde Ware für einen abgebrochenen Bezahlvorgang beschafft. Dieselbe
+    // Regel wie in imAdminSichtbar; die Zustände kommen von dort, damit sie
+    // nicht an zwei Stellen gepflegt werden müssen.
+    .in('payment_status', [...BEARBEITBARE_ZAHLUNGSZUSTAENDE])
     .order('created_at', { ascending: false })
     .limit(200);
 
@@ -194,13 +212,27 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   const { data: order, error: orderError } = await supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, status, payment_status, customer_name, company, email, phone, message, total_price, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url'
+      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at'
     )
     .eq('id', orderId)
     .single();
 
   if (orderError || !order) {
     console.error('[admin] Bestellung nicht gefunden:', orderId, orderError);
+    return null;
+  }
+
+  // Dieselbe Sichtbarkeitsregel wie in der Liste. Ohne diese Prüfung wäre
+  // eine noch stornierbare oder stornierte Bestellung über die direkte URL
+  // erreichbar, obwohl sie in der Liste fehlt.
+  if (
+    !imAdminSichtbar({
+      createdAt: order.created_at as string,
+      status: order.status as string,
+      orderType: order.order_type as string,
+      paymentStatus: (order.payment_status as string) ?? 'not_required',
+    })
+  ) {
     return null;
   }
 
@@ -235,6 +267,19 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     quantity: Number(row.quantity ?? 0),
   }));
 
+  // Lieferantenauftrag bedarfsgerecht anlegen: Der Aufruf ist idempotent
+  // (bestehende Snapshots werden nicht überschrieben) und erfolgt frühestens
+  // hier – also nach Ablauf der Stornofrist, weil die Detailseite vorher gar
+  // nicht ausgeliefert wird. Für stornierte Bestellungen entsteht damit nie
+  // ein Auftrag. Nicht-fatal: die Detailseite muss auch ohne funktionieren.
+  if ((order.order_type as string) === 'order') {
+    try {
+      await enqueueSupplierOrdersForOrder(orderId);
+    } catch (err) {
+      console.error('[admin] Lieferanten-Einreihung fehlgeschlagen (nicht-fatal):', err);
+    }
+  }
+
   const supplierDraft = buildSupplierPositions(
     orderId,
     itemRows.map((item) => ({
@@ -251,6 +296,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     orderType: order.order_type as 'inquiry' | 'order',
     status: order.status as string,
     paymentStatus: (order.payment_status as string) ?? 'not_required',
+    paymentMethod: (order.payment_method as OrderPaymentMethod | null) ?? null,
     customerName: order.customer_name as string,
     company: (order.company as string | null) ?? null,
     email: order.email as string,
@@ -268,6 +314,8 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     items: itemRows,
     supplierDraft,
     productionSheetUrl: order.pdf_url ? await getProductionFileSignedUrl(order.pdf_url as string) : null,
+    trackingNumber: (order.tracking_number as string | null) ?? null,
+    shippedAt: (order.shipped_at as string | null) ?? null,
     supplierOrders: (supplierRows ?? []).map((row) => ({
       supplierId: row.supplier_id as string,
       status: row.status as string,

@@ -134,8 +134,28 @@ export function LogoUploader({ printArea, onElementAdded }: LogoUploaderProps) {
         id: crypto.randomUUID(),
         type: 'logo',
         view: activeView,
-        xCm: (printArea.movementWidthCm - widthCm) / 2,
-        yCm: (printArea.referenceGarmentHeightCm - heightCm) / 2,
+        // startXCm/startYCm ist die Mitte der fachlich richtigen Startstelle
+        // (Ärmelansicht: Oberarmmitte). Der Bewegungsbereich umfasst dort das
+        // ganze Kleidungsstück, mittig im BEREICH wäre also die Rumpfmitte.
+        // Ohne Angabe (Vorder-/Rückseite) bleibt es bei der Zentrierung.
+        xCm: Math.max(
+          0,
+          Math.min(
+            printArea.startXCm !== undefined
+              ? printArea.startXCm - widthCm / 2
+              : (printArea.movementWidthCm - widthCm) / 2,
+            printArea.movementWidthCm - widthCm
+          )
+        ),
+        yCm: Math.max(
+          0,
+          Math.min(
+            printArea.startYCm !== undefined
+              ? printArea.startYCm - heightCm / 2
+              : (printArea.referenceGarmentHeightCm - heightCm) / 2,
+            printArea.referenceGarmentHeightCm - heightCm
+          )
+        ),
         widthCm,
         heightCm,
         rotationDeg: 0,
@@ -196,7 +216,7 @@ export function LogoUploader({ printArea, onElementAdded }: LogoUploaderProps) {
           type="checkbox"
           checked={removeBg}
           onChange={(e) => setRemoveBg(e.target.checked)}
-          className="h-3.5 w-3.5 rounded border-gray-300"
+          className="h-3.5 w-3.5 rounded-md border-gray-300"
         />
         {t('logo_remove_bg_checkbox')}
         <InfoTooltip text={t('logo_remove_bg_hint')} />

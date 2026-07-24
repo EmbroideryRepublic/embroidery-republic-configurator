@@ -8,6 +8,7 @@ import { getProduct } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { submitOrder, submitInquiry } from '@/lib/actions/orders';
+import { useSubmitGuard } from '@/lib/hooks/useSubmitGuard';
 import { SHIPPING_COUNTRIES, SHIPPING_RATES, calculateShipping } from '@/config/shipping';
 import type { CartItem } from '@/types';
 
@@ -59,7 +60,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
         <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
           <h2 className="flex items-center gap-2 text-sm font-semibold text-brand">
             {(step === 'checkout' || step === 'inquiry') && (
-              <button type="button" onClick={() => setStep('cart')} className="rounded p-0.5 hover:bg-gray-100">
+              <button type="button" onClick={() => setStep('cart')} className="rounded-md p-0.5 hover:bg-gray-100">
                 <ArrowLeft className="h-4 w-4" />
               </button>
             )}
@@ -74,7 +75,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                     ? t('cart_inquiry_sent_title')
                     : `${t('cart_title')} ${items.length > 0 ? `(${items.length})` : ''}`}
           </h2>
-          <button type="button" onClick={onClose} className="rounded p-1 text-brand/40 hover:bg-gray-100">
+          <button type="button" onClick={onClose} className="rounded-md p-1 text-brand/40 hover:bg-gray-100">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -113,16 +114,18 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                             <button
                               type="button"
                               onClick={() => handleEditItem(item)}
-                              className="rounded p-1 text-brand/30 hover:bg-gold-light hover:text-gold-dark"
+                              className="rounded-md p-1 text-brand/30 transition-colors hover:bg-gold-light hover:text-gold-dark"
                               title={t('cart_edit_item')}
+                              aria-label={t('cart_edit_item')}
                             >
                               <Pencil className="h-4 w-4" />
                             </button>
                             <button
                               type="button"
                               onClick={() => removeItem(item.id)}
-                              className="rounded p-1 text-brand/30 hover:bg-red-50 hover:text-red-500"
+                              className="rounded-md p-1 text-brand/30 transition-colors hover:bg-red-50 hover:text-red-500"
                               title="Entfernen"
+                              aria-label="Position entfernen"
                             >
                               <Trash2 className="h-4 w-4" />
                             </button>
@@ -223,8 +226,24 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
   // fest 'invoice' übermittelt und die Auswahl-UI ausgeblendet.
   const paymentMethod = 'invoice' as const;
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  // Mehrfachklick, Zeitüberschreitung und Verbindungsabbruch liegen gebündelt
+  // im Hook (lib/hooks/useSubmitGuard.ts) – nicht in jedem Formular erneut.
+  const {
+    isSubmitting,
+    error: submitError,
+    setError: setSubmitError,
+    submit,
+    reset: resetSubmitGuard,
+  } = useSubmitGuard(
+    {
+      timeout: t('submit_timeout_error'),
+      offline: t('submit_offline_error'),
+      fallback: t('checkout_submit_error_fallback'),
+    },
+    // Eigener Schlüssel je Vorgangsart: eine Bestellung darf nie als
+    // Wiederholung einer vorangegangenen Anfrage gelten.
+    'er-absendung-bestellung'
+  );
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -259,10 +278,12 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!isValid) return;
-    setIsSubmitting(true);
-    setSubmitError(null);
-    try {
-      const result = await submitOrder({
+
+    // `submit` lässt nur einen Vorgang gleichzeitig zu und reicht dieselbe
+    // Absendekennung an jede Wiederholung weiter – daraus entsteht auf dem
+    // Server niemals eine zweite Bestellung.
+    const result = await submit((clientRequestId) =>
+      submitOrder({
         items,
         contact: {
           firstName: form.firstName,
@@ -273,16 +294,20 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
         },
         shipping: { street: form.street, zip: form.zip, city: form.city, country: form.country },
         paymentMethod,
-      });
-      if (result.success && result.orderNumber) {
-        onOrderPlaced(result.orderNumber);
-      } else {
-        setSubmitError(result.error ?? t('checkout_submit_error_fallback'));
-      }
-    } catch {
-      setSubmitError(t('checkout_submit_error_fallback'));
-    } finally {
-      setIsSubmitting(false);
+        clientRequestId,
+      })
+    );
+    // undefined = abgewiesen (läuft bereits) oder fehlgeschlagen; die Meldung
+    // steht in dem Fall bereits im Hook.
+    if (!result) return;
+
+    if (result.success && result.orderNumber) {
+      resetSubmitGuard();
+      onOrderPlaced(result.orderNumber);
+    } else {
+      // Fachliche Ablehnung vom Server (ungültige Größe, blockierter Preis …):
+      // Der Server liefert bereits einen verständlichen Satz.
+      setSubmitError(result.error ?? t('checkout_submit_error_fallback'));
     }
   }
 
@@ -292,75 +317,40 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
         <section>
           <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/50">{t('checkout_contact_heading')}</h3>
           <div className="grid grid-cols-2 gap-2">
-            <input
-              required
-              placeholder={t('checkout_first_name')}
-              value={form.firstName}
-              onChange={(e) => update('firstName', e.target.value)}
-              className="rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              required
-              placeholder={t('checkout_last_name')}
-              value={form.lastName}
-              onChange={(e) => update('lastName', e.target.value)}
-              className="rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              placeholder={t('checkout_company')}
-              value={form.companyName}
-              onChange={(e) => update('companyName', e.target.value)}
-              className="col-span-2 rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              required
-              type="email"
-              placeholder={t('checkout_email')}
-              value={form.email}
-              onChange={(e) => update('email', e.target.value)}
-              className="col-span-2 rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              type="tel"
-              placeholder={t('checkout_phone')}
-              value={form.phone}
-              onChange={(e) => update('phone', e.target.value)}
-              className="col-span-2 rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              required
-              placeholder={t('checkout_street')}
-              value={form.street}
-              onChange={(e) => update('street', e.target.value)}
-              className="col-span-2 rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              required
-              placeholder={t('checkout_zip')}
-              value={form.zip}
-              onChange={(e) => update('zip', e.target.value)}
-              className="rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              required
-              placeholder={t('checkout_city')}
-              value={form.city}
-              onChange={(e) => update('city', e.target.value)}
-              className="rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
+            <Feld id="vorname" label={t('checkout_first_name')} wert={form.firstName}
+              onWert={(v) => update('firstName', v)} autoComplete="given-name" pflicht />
+            <Feld id="nachname" label={t('checkout_last_name')} wert={form.lastName}
+              onWert={(v) => update('lastName', v)} autoComplete="family-name" pflicht />
+            <Feld id="firma" label={t('checkout_company')} wert={form.companyName}
+              onWert={(v) => update('companyName', v)} autoComplete="organization" spalten />
+            <Feld id="email" label={t('checkout_email')} wert={form.email}
+              onWert={(v) => update('email', v)} autoComplete="email" type="email" pflicht spalten />
+            <Feld id="telefon" label={t('checkout_phone')} wert={form.phone}
+              onWert={(v) => update('phone', v)} autoComplete="tel" type="tel" spalten />
+            <Feld id="strasse" label={t('checkout_street')} wert={form.street}
+              onWert={(v) => update('street', v)} autoComplete="street-address" pflicht spalten />
+            <Feld id="plz" label={t('checkout_zip')} wert={form.zip}
+              onWert={(v) => update('zip', v)} autoComplete="postal-code" inputMode="numeric" pflicht />
+            <Feld id="ort" label={t('checkout_city')} wert={form.city}
+              onWert={(v) => update('city', v)} autoComplete="address-level2" pflicht />
             {/* Auswahl kommt aus config/shipping.ts – es sind ausschließlich
                 Länder wählbar, für die ein Versandtarif hinterlegt ist. */}
-            <select
-              value={form.country}
-              onChange={(e) => update('country', e.target.value)}
-              className="col-span-2 rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            >
-              {SHIPPING_COUNTRIES.map((c) => (
-                <option key={c.name} value={c.name}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+            <div className="col-span-2">
+              <label htmlFor="land" className="sr-only">{t('checkout_country')}</label>
+              <select
+                id="land"
+                autoComplete="country-name"
+                value={form.country}
+                onChange={(e) => update('country', e.target.value)}
+                className={FELD_KLASSE}
+              >
+                {SHIPPING_COUNTRIES.map((c) => (
+                  <option key={c.name} value={c.name}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </section>
 
@@ -421,7 +411,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
             type="checkbox"
             checked={acceptedTerms}
             onChange={(e) => setAcceptedTerms(e.target.checked)}
-            className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 rounded border-gray-300"
+            className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 rounded-md border-gray-300"
           />
           <span>
             Ich akzeptiere die{' '}
@@ -439,7 +429,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
 
       <div className="border-t border-gray-100 px-4 py-3">
         {submitError && (
-          <div className="mb-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
+          <div role="alert" className="mb-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
             <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
             <span>{submitError}</span>
           </div>
@@ -480,8 +470,21 @@ interface InquiryFormProps {
 function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  // Gleiche Absicherung wie im Bestellformular (siehe useSubmitGuard).
+  const {
+    isSubmitting,
+    error: submitError,
+    setError: setSubmitError,
+    submit,
+    reset: resetSubmitGuard,
+  } = useSubmitGuard(
+    {
+      timeout: t('submit_timeout_error'),
+      offline: t('submit_offline_error'),
+      fallback: t('inquiry_submit_error_fallback'),
+    },
+    'er-absendung-anfrage'
+  );
   const [form, setForm] = useState({ name: '', companyName: '', email: '', phone: '', message: '' });
 
   const isValid = form.name.trim() && form.email.trim().includes('@');
@@ -493,23 +496,22 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!isValid) return;
-    setIsSubmitting(true);
-    setSubmitError(null);
-    try {
-      const result = await submitInquiry({
+
+    const result = await submit((clientRequestId) =>
+      submitInquiry({
         items,
         contact: { name: form.name, companyName: form.companyName, email: form.email, phone: form.phone },
         message: form.message,
-      });
-      if (result.success) {
-        onSent();
-      } else {
-        setSubmitError(result.error ?? t('inquiry_submit_error_fallback'));
-      }
-    } catch {
-      setSubmitError(t('inquiry_submit_error_fallback'));
-    } finally {
-      setIsSubmitting(false);
+        clientRequestId,
+      })
+    );
+    if (!result) return;
+
+    if (result.success) {
+      resetSubmitGuard();
+      onSent();
+    } else {
+      setSubmitError(result.error ?? t('inquiry_submit_error_fallback'));
     }
   }
 
@@ -523,41 +525,25 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
         <section>
           <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/50">{t('inquiry_contact_heading')}</h3>
           <div className="space-y-2">
-            <input
-              required
-              placeholder={t('inquiry_name')}
-              value={form.name}
-              onChange={(e) => update('name', e.target.value)}
-              className="w-full rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              placeholder={t('checkout_company')}
-              value={form.companyName}
-              onChange={(e) => update('companyName', e.target.value)}
-              className="w-full rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              required
-              type="email"
-              placeholder={t('checkout_email')}
-              value={form.email}
-              onChange={(e) => update('email', e.target.value)}
-              className="w-full rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <input
-              type="tel"
-              placeholder={t('checkout_phone')}
-              value={form.phone}
-              onChange={(e) => update('phone', e.target.value)}
-              className="w-full rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
-            <textarea
-              placeholder={t('inquiry_message_placeholder')}
-              value={form.message}
-              onChange={(e) => update('message', e.target.value)}
-              rows={4}
-              className="w-full resize-y rounded border border-gray-300 px-2.5 py-1.5 text-sm"
-            />
+            <Feld id="a-name" label={t('inquiry_name')} wert={form.name}
+              onWert={(v) => update('name', v)} autoComplete="name" pflicht />
+            <Feld id="a-firma" label={t('checkout_company')} wert={form.companyName}
+              onWert={(v) => update('companyName', v)} autoComplete="organization" />
+            <Feld id="a-email" label={t('checkout_email')} wert={form.email}
+              onWert={(v) => update('email', v)} autoComplete="email" type="email" pflicht />
+            <Feld id="a-telefon" label={t('checkout_phone')} wert={form.phone}
+              onWert={(v) => update('phone', v)} autoComplete="tel" type="tel" />
+            <div>
+              <label htmlFor="a-nachricht" className="sr-only">{t('inquiry_message_placeholder')}</label>
+              <textarea
+                id="a-nachricht"
+                placeholder={t('inquiry_message_placeholder')}
+                value={form.message}
+                onChange={(e) => update('message', e.target.value)}
+                rows={4}
+                className={`${FELD_KLASSE} resize-y`}
+              />
+            </div>
           </div>
         </section>
 
@@ -591,7 +577,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
 
       <div className="border-t border-gray-100 px-4 py-3">
         {submitError && (
-          <div className="mb-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
+          <div role="alert" className="mb-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
             <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
             <span>{submitError}</span>
           </div>
@@ -656,6 +642,52 @@ function OrderConfirmed({ orderNumber, onClose }: { orderNumber: string; onClose
       >
         {t('common_close')}
       </button>
+    </div>
+  );
+}
+
+
+/** Einheitliche Feldoptik – eine Stelle statt zwölf Wiederholungen. */
+const FELD_KLASSE =
+  'w-full rounded-lg border border-gray-300 px-2.5 py-1.5 text-sm transition-colors focus:border-gold focus:outline-none';
+
+/**
+ * Ein Eingabefeld in Warenkorb und Anfrage.
+ *
+ * Bündelt drei Dinge, die zuvor an JEDEM Feld einzeln fehlten:
+ *  • eine echte Beschriftung (visuell versteckt) – ein Platzhalter ist keine
+ *    Beschriftung: Vorlesehilfen brauchen sie, und beim Tippen verschwindet er;
+ *  • `autoComplete`, damit Browser Name und Anschrift ausfüllen können – im
+ *    Checkout ein spürbarer Unterschied für die Abschlussquote;
+ *  • die einheitliche Optik samt sichtbarem Fokus.
+ */
+function Feld({
+  id, label, wert, onWert, autoComplete, type = 'text', pflicht = false, inputMode, spalten,
+}: {
+  id: string;
+  label: string;
+  wert: string;
+  onWert: (wert: string) => void;
+  autoComplete: string;
+  type?: 'text' | 'email' | 'tel';
+  pflicht?: boolean;
+  inputMode?: 'numeric' | 'tel' | 'email' | 'text';
+  spalten?: boolean;
+}) {
+  return (
+    <div className={spalten ? 'col-span-2' : undefined}>
+      <label htmlFor={id} className="sr-only">{label}</label>
+      <input
+        id={id}
+        required={pflicht}
+        type={type}
+        inputMode={inputMode}
+        autoComplete={autoComplete}
+        placeholder={label}
+        value={wert}
+        onChange={(e) => onWert(e.target.value)}
+        className={FELD_KLASSE}
+      />
     </div>
   );
 }

@@ -55,7 +55,22 @@ export interface ProductConfig {
   /** Detaillierte Herstellerangaben (Material, Herkunft, Nachhaltigkeit
    *  etc.) – so wie sie vom Lieferanten mitgeliefert werden. */
   detailedDescription?: DetailedDescription;
+  /** Lieferbarkeit – MANUELL gepflegt. Ohne Angabe gilt „lieferbar"; nur
+   *  Ausnahmen werden hier eingetragen. Wird später von Lieferantendaten
+   *  überschrieben, ohne dass sich die Architektur ändert – die Auflösung
+   *  liegt zentral in `lib/catalog/verfuegbarkeit.ts`. */
+  verfuegbarkeit?: Verfuegbarkeit;
+  /** Aufnahmedatum in den Katalog (ISO, YYYY-MM-DD) – Grundlage der
+   *  Sortierung „Neuheiten". Ohne Angabe gilt das Katalog-Startdatum. */
+  aufgenommenAm?: string;
 }
+
+/** Lieferbarkeit eines Produkts.
+ *
+ *  `ausgelaufen` ist bewusst getrennt von `voruebergehend_nicht_lieferbar`:
+ *  Ersteres ist endgültig und darf von einer späteren Lieferantenmeldung NICHT
+ *  zurückgeholt werden (siehe Vorrangregel in verfuegbarkeit.ts). */
+export type Verfuegbarkeit = 'lieferbar' | 'voruebergehend_nicht_lieferbar' | 'ausgelaufen';
 
 export const PRODUCT_TYPE_LABELS: Record<ProductType, string> = {
   tshirt: 'T-Shirt',

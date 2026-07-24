@@ -1,0 +1,10 @@
+{
+  "erstellt": "2026-07-24T09:22:03.863Z",
+  "rootSpf": [
+    "v=spf1 include:_spf-eu.ionos.com ~all"
+  ],
+  "rootMx": [
+    "mx01.ionos.de",
+    "mx00.ionos.de"
+  ]
+}

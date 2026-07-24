@@ -8,6 +8,7 @@
 import { Html, Head, Preview, Body, Container, Text, Hr } from '@react-email/components';
 import type { ReactNode } from 'react';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
+import { formatiereGeld } from '@/lib/format';
 
 const COLORS = {
   text: '#23211d',
@@ -66,7 +67,7 @@ export function OrderItemsTable({ order }: { order: OrderRecord }) {
                 </span>
               </td>
               <td style={{ padding: '8px 0', borderBottom: `1px solid ${COLORS.border}`, textAlign: 'right', whiteSpace: 'nowrap' }}>
-                {item.totalPrice.toFixed(2)} €
+                {formatiereGeld(item.totalPrice)}
               </td>
             </tr>
           );

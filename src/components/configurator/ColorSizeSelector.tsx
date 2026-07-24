@@ -15,6 +15,8 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
+  const aktiveFarbe = product.colors.find((c) => c.id === colorId) ?? product.colors[0];
+
   return (
     <div className="flex w-full flex-wrap items-center justify-between gap-4 rounded-xl border border-gold/20 bg-white px-4 py-3 shadow-elegant">
       <div>
@@ -23,9 +25,14 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
         <p className="text-xs text-brand/50">{product.tagline}</p>
       </div>
 
-      <div className="flex items-center gap-2">
-        <span className="text-xs text-brand/40">{t('color_label')}</span>
-        <div className="flex gap-1.5">
+      <div className="flex flex-col items-end gap-1.5">
+        {/* Farbname statt reiner Beschriftung: Der Kunde soll benennen
+            können, was er gewählt hat – die Farbfläche allein reicht dafür
+            nicht (Navy und Schwarz sind auf kleinen Punkten kaum trennbar). */}
+        <span className="text-xs text-brand/50">
+          {t('color_label')} <span className="font-medium text-brand">{aktiveFarbe?.name}</span>
+        </span>
+        <div className="flex flex-wrap justify-end gap-1.5">
           {product.colors.map((color) => (
             <button
               key={color.id}

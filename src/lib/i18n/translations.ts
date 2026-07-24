@@ -29,7 +29,7 @@ export const translations = {
     trust_germany: 'Veredelung in Deutschland',
     trust_support: 'Persönliche Beratung',
     trust_check: 'Kostenlose Designprüfung',
-    trust_moq: 'Mindestbestellmenge 5 Stück',
+    trust_moq: 'Ab 1 Stück bestellbar',
     trust_express: 'Versand in 1–2 Werktagen',
     trust_shipping: 'Kostenloser Versand ab 75 € (DE)',
 
@@ -37,6 +37,19 @@ export const translations = {
     step_element: 'Motiv hinzufügen',
     step_position: 'Position prüfen',
     step_ready: 'Bereit zum Bestellen',
+
+    konfig_title: 'Deine Konfiguration',
+    konfig_product: 'Produkt',
+    konfig_color: 'Farbe',
+    konfig_size: 'Größe',
+    konfig_method: 'Veredelung',
+    konfig_position: 'Position',
+    konfig_price: 'Preis',
+    konfig_none: '—',
+    next_size: 'Nächster Schritt: Größe & Menge wählen',
+    next_motif: 'Nächster Schritt: Motiv hochladen oder Text hinzufügen',
+    next_position: 'Nächster Schritt: Motiv in die Fläche rücken',
+    next_ready: 'Alles bereit – ab in den Warenkorb',
 
     method_dtf: 'DTF-Transferdruck',
     method_dtf_desc: 'Vollfarbig, ideal für große Motive & Farbverläufe',
@@ -74,13 +87,15 @@ export const translations = {
     summary_size_none: 'nicht gewählt',
     summary_elements: 'Elemente',
     summary_quantity: 'Menge',
-    summary_min_quantity: 'Mindestbestellmenge',
+    summary_price_invalid: 'Der Preis konnte nicht vollständig berechnet werden. Bitte kontaktieren Sie uns – eine Bestellung ist aktuell nicht möglich.',
+    summary_setup_fee: 'Einrichtung (einmalig)',
+    summary_setup_per_unit: 'pro Stück bei dieser Menge',
     summary_unit_price: 'Einzelpreis',
-    summary_add_at_least: 'Bitte mindestens {min} Artikel hinzufügen, um den Gesamtpreis zu sehen.',
+    summary_add_at_least: 'Bitte eine Menge wählen, um den Gesamtpreis zu sehen.',
     summary_total_price: 'Gesamtpreis',
     summary_add_to_cart: 'In den Warenkorb',
     summary_added: 'Zum Warenkorb hinzugefügt',
-    summary_select_size_first: 'Bitte zuerst eine Größe wählen (Mindestmenge {min} Stück).',
+    summary_select_size_first: 'Bitte zuerst eine Größe und Menge wählen.',
 
     cart_title: 'Warenkorb',
     cart_empty: 'Ihr Warenkorb ist noch leer. Konfigurieren Sie ein Produkt und legen Sie es in den Warenkorb.',
@@ -178,7 +193,7 @@ export const translations = {
 
     // Größenauswahl
     size_label: 'Größe',
-    color_label: 'Farbe',
+    color_label: 'Farbe:',
 
     view_front: 'Vorderseite',
     view_back: 'Rückseite',
@@ -208,6 +223,7 @@ export const translations = {
     checkout_street: 'Straße & Hausnummer',
     checkout_zip: 'PLZ',
     checkout_city: 'Stadt',
+    checkout_country: 'Land',
     checkout_payment_heading: 'Zahlungsart',
     checkout_payment_card: 'Kreditkarte',
     checkout_payment_paypal: 'PayPal',
@@ -224,6 +240,13 @@ export const translations = {
     checkout_order_confirmed_text: 'Ihre Bestellung ist bei uns eingegangen. Die Rechnung senden wir Ihnen separat mit der Auftragsbearbeitung zu. Bei Fragen genügt eine kurze Nachricht mit dieser Bestellnummer.',
     checkout_submit_error_fallback: 'Die Bestellung konnte nicht gesendet werden. Bitte versuchen Sie es erneut.',
     inquiry_submit_error_fallback: 'Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.',
+    // Der Hinweis, dass erneutes Senden gefahrlos ist, ist der wichtigste Teil
+    // dieser Meldung: technisch verhindert die Absendekennung eine zweite
+    // Bestellung – aber nur, wenn die Kundschaft sich den zweiten Versuch traut.
+    submit_timeout_error:
+      'Die Antwort hat zu lange gedauert. Möglicherweise ist Ihre Bestellung trotzdem bei uns eingegangen – senden Sie sie einfach erneut ab. Eine doppelte Bestellung entsteht dabei nicht.',
+    submit_offline_error:
+      'Es besteht momentan keine Verbindung zum Internet. Ihre Eingaben bleiben erhalten – bitte versuchen Sie es erneut, sobald Sie wieder online sind.',
     inquiry_intro: 'Kein Problem – senden Sie uns Ihre Konfiguration unverbindlich als Anfrage. Wir melden uns persönlich bei Ihnen, klären offene Fragen und Sie entscheiden danach in Ruhe, ob Sie bestellen möchten. Keine Zahlungsdaten, keine Verpflichtung.',
     inquiry_contact_heading: 'Ihre Kontaktdaten',
     inquiry_name: 'Name',
@@ -285,7 +308,7 @@ export const translations = {
     trust_germany: 'Finishing in Germany',
     trust_support: 'Personal consulting',
     trust_check: 'Free design check',
-    trust_moq: 'Minimum order 5 pieces',
+    trust_moq: 'Order from 1 piece',
     trust_express: 'Dispatch in 1–2 working days',
     trust_shipping: 'Free shipping from €75 (DE)',
 
@@ -293,6 +316,19 @@ export const translations = {
     step_element: 'Add artwork',
     step_position: 'Check position',
     step_ready: 'Ready to order',
+
+    konfig_title: 'Your configuration',
+    konfig_product: 'Product',
+    konfig_color: 'Color',
+    konfig_size: 'Size',
+    konfig_method: 'Decoration',
+    konfig_position: 'Position',
+    konfig_price: 'Price',
+    konfig_none: '—',
+    next_size: 'Next step: choose size & quantity',
+    next_motif: 'Next step: upload artwork or add text',
+    next_position: 'Next step: move the artwork into the area',
+    next_ready: 'All set – add to cart',
 
     method_dtf: 'DTF transfer print',
     method_dtf_desc: 'Full color, ideal for large designs & gradients',
@@ -330,13 +366,15 @@ export const translations = {
     summary_size_none: 'not selected',
     summary_elements: 'Elements',
     summary_quantity: 'Quantity',
-    summary_min_quantity: 'Minimum order quantity',
+    summary_price_invalid: 'The price could not be calculated completely. Please contact us – ordering is currently not possible.',
+    summary_setup_fee: 'Setup (one-off)',
+    summary_setup_per_unit: 'per item at this quantity',
     summary_unit_price: 'Unit price',
-    summary_add_at_least: 'Please add at least {min} items to see the total price.',
+    summary_add_at_least: 'Please choose a quantity to see the total price.',
     summary_total_price: 'Total price',
     summary_add_to_cart: 'Add to cart',
     summary_added: 'Added to cart',
-    summary_select_size_first: 'Please select a size first (minimum quantity {min} pieces).',
+    summary_select_size_first: 'Please select a size and quantity first.',
 
     cart_title: 'Cart',
     cart_empty: 'Your cart is empty. Configure a product and click "Add to cart".',
@@ -428,7 +466,7 @@ export const translations = {
     canvas_loading: 'Loading canvas …',
 
     size_label: 'Size',
-    color_label: 'Color',
+    color_label: 'Color:',
 
     view_front: 'Front',
     view_back: 'Back',
@@ -456,6 +494,7 @@ export const translations = {
     checkout_street: 'Street & house number',
     checkout_zip: 'ZIP code',
     checkout_city: 'City',
+    checkout_country: 'Country',
     checkout_payment_heading: 'Payment method',
     checkout_payment_card: 'Credit card',
     checkout_payment_paypal: 'PayPal',
@@ -472,6 +511,10 @@ export const translations = {
     checkout_order_confirmed_text: 'We have received your order. We will send the invoice separately as we process your order. For questions, just reference this order number.',
     checkout_submit_error_fallback: 'The order could not be sent. Please try again.',
     inquiry_submit_error_fallback: 'The inquiry could not be sent. Please try again.',
+    submit_timeout_error:
+      'The response took too long. Your order may still have reached us — simply send it again. This will not create a duplicate order.',
+    submit_offline_error:
+      'There is currently no internet connection. Your entries are preserved — please try again once you are back online.',
     inquiry_intro: "No problem — send us your configuration as a non-binding inquiry. We'll get in touch personally, answer any open questions, and you can decide afterwards, without pressure, whether to order. No payment details, no obligation.",
     inquiry_contact_heading: 'Your contact details',
     inquiry_name: 'Name',

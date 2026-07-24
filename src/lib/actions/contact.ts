@@ -6,10 +6,10 @@
  * Bewusst schlank und OHNE neue Infrastruktur: nutzt ausschließlich den
  * bereits vorhandenen E-Mail-Versand (Resend über sendEmail.ts). Der Client-
  * Input wird serverseitig validiert – die Client-Validierung ist reiner
- * Komfort. Missbrauchsschutz mit einfachen Mitteln: Honeypot-Feld +
- * best-effort In-Memory-Rate-Limit pro IP.
+ * Komfort. Missbrauchsschutz: Honeypot-Feld + zentrales Rate-Limit
+ * (lib/security/rateLimit.ts).
  */
-import { headers } from 'next/headers';
+import { pruefeRateLimit } from '@/lib/security/rateLimit';
 import { sendContactMessageEmail } from '@/lib/email/contactEmails';
 
 export interface ContactFormInput {
@@ -30,42 +30,9 @@ export interface ContactFormResult {
   error?: string;
 }
 
-// ---- Einfaches In-Memory-Rate-Limit (best effort) --------------------------
-// Bewusst simpel und ohne zusätzliche Infrastruktur: greift pro Server-
-// Instanz. Für harte, instanzübergreifende Limits bräuchte es einen geteilten
-// Store (z.B. Upstash) – das wird hier bewusst NICHT eingeführt. Reicht als
-// Grundschutz gegen versehentliche Doppel-Sends und einfache Spam-Wellen.
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 Minuten
-const RATE_LIMIT_MAX = 5; // max. 5 Nachrichten pro Fenster & IP
-const recentSubmissions = new Map<string, number[]>();
-
-function isRateLimited(key: string): boolean {
-  const now = Date.now();
-  const hits = (recentSubmissions.get(key) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-  if (hits.length >= RATE_LIMIT_MAX) {
-    recentSubmissions.set(key, hits);
-    return true;
-  }
-  hits.push(now);
-  recentSubmissions.set(key, hits);
-
-  // Gelegentliches Aufräumen, damit die Map nicht unbegrenzt wächst.
-  if (recentSubmissions.size > 5000) {
-    for (const [k, ts] of recentSubmissions) {
-      const fresh = ts.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-      if (fresh.length === 0) recentSubmissions.delete(k);
-      else recentSubmissions.set(k, fresh);
-    }
-  }
-  return false;
-}
-
-function clientKey(): string {
-  const h = headers();
-  const forwarded = h.get('x-forwarded-for');
-  const ip = forwarded?.split(',')[0]?.trim() || h.get('x-real-ip') || 'unknown';
-  return ip;
-}
+// Rate-Limit: zentral in lib/security/rateLimit.ts. Der frühere Zähler lag
+// im Prozessspeicher und war auf einer serverlosen Plattform wirkungslos –
+// jede Instanz zählte für sich (siehe docs/rate-limiting.md).
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -96,11 +63,11 @@ export async function submitContactMessage(input: ContactFormInput): Promise<Con
 
   // 3) Rate-Limit erst NACH erfolgreicher Validierung – Tippfehler eines
   //    Menschen sollen das Kontingent nicht verbrauchen.
-  if (isRateLimited(clientKey())) {
-    return {
-      success: false,
-      error: 'Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es in ein paar Minuten erneut.',
-    };
+  // Die E-Mail-Adresse als zweites Merkmal: Sonst trifft das Limit alle
+  // hinter derselben Firmenadresse gemeinsam.
+  const grenze = await pruefeRateLimit('kontakt', email);
+  if (!grenze.erlaubt) {
+    return { success: false, error: grenze.meldung };
   }
 
   // 4) Versand über die bestehende E-Mail-Infrastruktur.

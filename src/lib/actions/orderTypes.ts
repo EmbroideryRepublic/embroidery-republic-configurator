@@ -1,4 +1,5 @@
 import type { PrintView } from '@/types';
+import { DECORATION_POSITION_ORDER, positionLabel } from '@/config/decorationPositions';
 
 /**
  * Von den rohen Client-Typen (CartItem/ConfigElement, die auch UI-nur-
@@ -105,15 +106,29 @@ export interface OrderRecord {
   items: OrderItemRecord[];
 }
 
-export const PRINT_VIEW_LABELS: Record<PrintView, string> = {
-  front: 'Vorderseite',
-  back: 'Rückseite',
-  sleeve_left: 'Ärmel links',
-  sleeve_right: 'Ärmel rechts',
-};
+/** Anzeigenamen der Veredelungspositionen.
+ *  Re-Export aus der zentralen Beschreibung (config/decorationPositions) –
+ *  die Bezeichnungen werden NUR dort gepflegt. */
+export const PRINT_VIEW_LABELS: Record<PrintView, string> = Object.fromEntries(
+  DECORATION_POSITION_ORDER.map((p) => [p, positionLabel(p)])
+) as Record<PrintView, string>;
 
 export const PAYMENT_METHOD_LABELS: Record<OrderPaymentMethod, string> = {
   card: 'Kreditkarte',
   paypal: 'PayPal',
   invoice: 'Kauf auf Rechnung',
+};
+
+/**
+ * Bezeichnungen der Zahlungszustände für den Adminbereich.
+ *
+ * Liegt hier neben `OrderPaymentStatus` und nicht in einer einzelnen Seite:
+ * Bestellliste und Bestelldetail zeigen denselben Zustand und müssen ihn
+ * gleich benennen.
+ */
+export const PAYMENT_STATUS_LABELS: Record<OrderPaymentStatus, string> = {
+  not_required: 'Rechnung – nichts offen',
+  pending: 'Zahlung offen',
+  paid: 'Bezahlt',
+  failed: 'Zahlung fehlgeschlagen',
 };

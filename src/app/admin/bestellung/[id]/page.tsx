@@ -1,10 +1,14 @@
 /**
  * Admin: Bestell-Detailseite mit Lieferanten-Panel.
  *  - Kontakt/Versand/Positionen (Leser aus lib/admin/data.ts)
- *  - Lieferanten-Vorschau: live berechnete Positionen je Lieferant +
- *    unresolved-Produkte (ohne Bezugsquelle)
- *  - "Beim Lieferanten bestellen"-Button (PrepareSupplierButton) +
- *    persistierte Laufprotokolle aus supplier_orders.last_run
+ *  - Lieferanten-Gruppen je Bezugsquelle (buildManualSupplierGroups);
+ *    Produkte ohne hinterlegte Bezugsquelle werden ausgewiesen
+ *  - MANUELLER Weg: Direktlink zum Lieferanten + "als bestellt markieren"
+ *    (MarkOrderedButton), Status je Lieferant aus supplier_orders
+ *
+ * Hinweis: Die frühere automatisierte Auslösung (PrepareSupplierButton) ist
+ * entfallen – der gelebte Regelweg ist der manuelle Prozess, siehe
+ * docs/manueller-lieferantenprozess.md.
  */
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -149,7 +153,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
         </div>
       </section>
 
-      {/* Lieferanten-Automatisierung */}
+      {/* Lieferanten-Bestellung (manueller Weg) */}
       <section className="rounded-lg border border-gray-200 bg-white p-4">
         <h2 className="mb-2 text-sm font-semibold">Lieferanten-Bestellung</h2>
 

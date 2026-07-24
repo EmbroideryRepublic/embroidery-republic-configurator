@@ -51,7 +51,25 @@ async function renderPdfFirstPage(file: File): Promise<UploadedImage> {
   // Dynamischer Import: pdfjs-dist ist groß und wird nur bei tatsächlichem
   // PDF-Upload geladen, nicht im initialen Bundle.
   const pdfjsLib = await import('pdfjs-dist');
-  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+
+  // Der Worker kommt aus dem installierten Paket, NICHT von einem CDN.
+  //
+  // Vorher stand hier eine zusammengebaute cdnjs-Adresse auf
+  // `pdf.worker.min.js`. Seit pdfjs-dist 4 heißt die Datei `.mjs` – die
+  // Adresse lieferte nachweislich HTTP 404, der PDF-Upload war damit
+  // defekt. Drei Gründe sprechen ohnehin gegen das CDN: ein Ausfall dort
+  // bricht den Upload, die Version wurde aus dem Paket geraten statt
+  // garantiert, und eine spätere Content-Security-Policy müsste einen
+  // fremden Host freigeben.
+  //
+  // Die Datei liegt als Kopie unter `public/` und wird von der eigenen
+  // Domain geladen. Ein Wächter-Test (`pdfWorker.test.ts`) vergleicht die
+  // Kopie mit der Paketdatei und schlägt an, sobald ein Update von
+  // pdfjs-dist sie auseinanderlaufen ließe.
+  //
+  // Nicht über `new URL(..., import.meta.url)`: Der Bundler versucht den
+  // Worker dann als Modul zu übersetzen und der Build bricht ab.
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
   const arrayBuffer = await file.arrayBuffer();
   const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;

@@ -67,7 +67,7 @@ interface SendEmailResult {
  *  eingerichtet ist. Im Testmodus geht JEDE Mail an EMAIL_TEST_RECIPIENT
  *  (Fallback: INTERNAL_NOTIFICATION_EMAIL) statt an die echte Adresse,
  *  der Betreff bekommt einen "[TEST → ursprüngliche@adresse]"-Hinweis. */
-function isTestMode(): boolean {
+export function isTestMode(): boolean {
   return process.env.EMAIL_TEST_MODE !== 'false';
 }
 

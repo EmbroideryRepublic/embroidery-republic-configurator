@@ -1,6 +1,6 @@
 # Entwicklerdokumentation – Embroidery Republic
 
-Einstiegspunkt in die technische Dokumentation. Stand 2026-07-22.
+Einstiegspunkt in die technische Dokumentation. Stand 2026-07-24.
 
 Diese Seite ist die **Landkarte**. Sie erklärt, was das System ist, wie die
 Dokumentation aufgebaut ist und in welcher Reihenfolge man sie liest. Die
@@ -50,7 +50,7 @@ npm run dev            # Entwicklungsserver auf Port 3007
 ```bash
 npx tsc --noEmit       # Typen
 npx next lint          # Stil
-npm test               # 451 Unit-Tests
+npm test               # 547 Unit-Tests
 ```
 
 Vor jeder Auslieferung zusätzlich die E2E-Läufe gegen die echte Datenbank
@@ -144,6 +144,9 @@ npm run test:e2e:adminauth
 | [betriebsbeobachtung.md](betriebsbeobachtung.md) | Logging, Monitoring, Health-Check, CI |
 | [umgebungsvariablen.md](umgebungsvariablen.md) | Alle Variablen mit Bedeutung und Pflichtstatus |
 | [deployment.md](deployment.md) | Auslieferung, Backup/Restore, Cronjobs |
+| [runbook.md](runbook.md) | **Nachschlagewerk im Betrieb**: Störungen, wiederkehrende Aufgaben, Stolperstellen |
+| [incident-prozess.md](incident-prozess.md) | Schweregrade, Eindämmen vor Reparieren, Datenschutzvorfall, Nacharbeit |
+| [wartung.md](wartung.md) | Turnus, Abhängigkeits-Updates, Bewertung von Sicherheitsmeldungen, Checkliste vor Auslieferung |
 | [restore-drill.md](restore-drill.md) | Reproduzierbarer Backup-/Restore-Praxistest (B3) + Prüfskripte |
 | [betriebsreview-2026-07-23.md](betriebsreview-2026-07-23.md) | Produktions-/Betriebsreview: Go-live-Blocker B1–B4 + Status |
 | [next-upgrade-entscheidung.md](next-upgrade-entscheidung.md) | Next.js-Advisories: Betroffenheit, Upgrade-Versuch, Entscheidung (B4) |

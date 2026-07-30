@@ -25,14 +25,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Package, Receipt, ShieldCheck, Sparkles } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { PRODUCTS } from '@/config/products';
 import { FARBGRUPPEN } from '@/config/products/facetten';
 import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
 import { SHIPPING_RATES } from '@/config/shipping';
-import { PRODUKTIONSTAGE } from '@/config/company';
+import { PRODUKTIONSTAGE, PAYMENT_TERM_DAYS } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
 import { basisUrl } from '@/lib/seo/basisUrl';
 import { organisationSchema } from '@/lib/seo/strukturierteDaten';
 import type { ProductType } from '@/types';
@@ -168,9 +170,37 @@ export default function Startseite() {
         </div>
       </section>
 
+      {/* ══ Serviceversprechen ══════════════════════════════════════════
+          Vertrauensanker direkt unter der Bühne: was der Kunde bekommt,
+          bevor er stöbert. Ausschließlich belegte Zusagen aus config/*. */}
+      <section className="border-y border-brand/[0.08] bg-white/60">
+        <ul className="mx-auto grid max-w-[1500px] sm:grid-cols-2 lg:grid-cols-4">
+          <Versprechen
+            icon={ShieldCheck}
+            titel="Kostenlose Designprüfung"
+            text="Wir prüfen jedes Motiv vor der Produktion – auf unsere Kosten."
+          />
+          <Versprechen
+            icon={Package}
+            titel="Ab 1 Stück"
+            text="Keine Mindestmenge. Staffelpreise beginnen ab fünf Stück."
+          />
+          <Versprechen
+            icon={Sparkles}
+            titel="Druck & Stickerei"
+            text="DTF für Farbverläufe, Stickerei für edle Firmenlogos."
+          />
+          <Versprechen
+            icon={Receipt}
+            titel="Kauf auf Rechnung"
+            text={`Zahlungsziel ${PAYMENT_TERM_DAYS} Tage – keine Vorkasse nötig.`}
+          />
+        </ul>
+      </section>
+
       {/* ══ Sortiment ═══════════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-[1500px] px-4 pb-24 sm:px-8">
-        <div className="flex items-end justify-between gap-8 border-t border-brand/[0.08] pt-14">
+      <section className="mx-auto max-w-[1500px] px-4 pb-24 pt-24 sm:px-8">
+        <div className="flex items-end justify-between gap-8">
           <h2 className="font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
             Für jeden Look
             <span className="block text-gold">das Richtige.</span>
@@ -241,6 +271,23 @@ export default function Startseite() {
         </div>
       </section>
 
+      {/* ══ Veredelung ══════════════════════════════════════════════════
+          Zwei Verfahren, klar erklärt – Verständnis schafft Vertrauen und
+          bereitet die Entscheidung im Konfigurator vor. Die Kurzbeschreibung
+          ist deckungsgleich mit dem Methodenwähler (i18n), die Merkmale sind
+          allgemeingültige Eigenschaften der Verfahren, keine Werbeversprechen. */}
+      <section className="mx-auto max-w-[1500px] px-4 py-24 sm:px-8">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Veredelung</p>
+        <h2 className="mt-6 max-w-2xl font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
+          Zwei Wege zu deinem Motiv.
+          <span className="block text-gold">Beide von Hand geprüft.</span>
+        </h2>
+
+        <div className="mt-14">
+          <Veredelungsverfahren />
+        </div>
+      </section>
+
       {/* ══ Konfigurator ════════════════════════════════════════════════
           Der eine dunkle Bruch im hellen Seitenfluss: der wichtigste Weg
           der Seite ist auch optisch der lauteste. */}
@@ -287,6 +334,20 @@ export default function Startseite() {
         </dl>
       </section>
     </main>
+  );
+}
+
+function Versprechen({ icon: Icon, titel, text }: { icon: LucideIcon; titel: string; text: string }) {
+  return (
+    <li className="flex items-start gap-4 px-6 py-8 sm:px-8 lg:[&:not(:first-child)]:border-l lg:border-brand/[0.06]">
+      <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 text-gold-dark">
+        <Icon className="h-5 w-5" aria-hidden />
+      </span>
+      <span>
+        <span className="block font-serif text-[17px] leading-tight text-brand">{titel}</span>
+        <span className="mt-1.5 block text-[13px] leading-relaxed text-brand/50">{text}</span>
+      </span>
+    </li>
   );
 }
 

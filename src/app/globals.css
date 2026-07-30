@@ -60,6 +60,17 @@ body {
 }
 .klappe > div {
   overflow: hidden;
+  /* Zugeklappt ist der Inhalt auch für Tastatur und Screenreader weg. Ohne
+     visibility bleiben die Knöpfe einer geschlossenen Gruppe im Tabulator-Lauf
+     und im Barrierefreiheitsbaum – man springt dann durch unsichtbare
+     Schaltflächen. Die Verzögerung entspricht der Klappdauer, damit die
+     Schließanimation vollständig sichtbar bleibt. */
+  visibility: hidden;
+  transition: visibility 0s linear 0.28s;
+}
+.klappe-auf > div {
+  visibility: visible;
+  transition: visibility 0s;
 }
 
 /* Eleganter Produktwechsel: Das neue Kleidungsstück gleitet als eigene Ebene

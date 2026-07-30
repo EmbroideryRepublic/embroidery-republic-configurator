@@ -55,7 +55,7 @@ export function FilterMenues({
       <button
         type="button"
         onClick={onPanelOeffnen}
-        className="inline-flex items-center gap-2 rounded-full border border-gray-900/[0.09] bg-white/70 px-4 py-2 text-[13px] font-medium text-gray-700 transition-all duration-300 hover:bg-white lg:hidden"
+        className="inline-flex items-center gap-2 rounded-full border border-brand/[0.09] bg-white/70 px-4 py-2 text-[13px] font-medium text-brand/70 transition-all duration-300 hover:bg-white lg:hidden"
       >
         <SlidersHorizontal className="h-4 w-4" aria-hidden />
         Filter
@@ -111,9 +111,9 @@ export function FilterMenues({
       <button
         type="button"
         onClick={onPanelOeffnen}
-        className="hidden items-center gap-2 rounded-full border border-gray-900/[0.09] bg-white/70 px-4 py-2 text-[13px] text-gray-600 transition-all duration-300 ease-out hover:border-gray-900/20 hover:bg-white hover:text-gray-900 lg:inline-flex"
+        className="hidden items-center gap-2 rounded-full border border-brand/[0.09] bg-white/70 px-4 py-2 text-[13px] text-brand/60 transition-all duration-300 ease-out hover:border-brand/20 hover:bg-white hover:text-brand lg:inline-flex"
       >
-        <SlidersHorizontal className="h-4 w-4 text-gray-400" aria-hidden />
+        <SlidersHorizontal className="h-4 w-4 text-brand/40" aria-hidden />
         Mehr Filter
       </button>
     </div>
@@ -131,7 +131,7 @@ function Ausloeser({
       className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[13px] transition-all duration-300 ease-out ${
         anzahl > 0
           ? 'border-brand/30 bg-brand/[0.04] font-medium text-brand'
-          : 'border-gray-900/[0.09] bg-white/70 text-gray-600 hover:border-gray-900/20 hover:bg-white hover:text-gray-900'
+          : 'border-brand/[0.09] bg-white/70 text-brand/60 hover:border-brand/20 hover:bg-white hover:text-brand'
       }`}
     >
       {label}
@@ -141,7 +141,7 @@ function Ausloeser({
         </span>
       )}
       <ChevronDown
-        className={`h-3.5 w-3.5 text-gray-400 transition-transform duration-300 ease-out ${geoeffnet ? 'rotate-180' : ''}`}
+        className={`h-3.5 w-3.5 text-brand/40 transition-transform duration-300 ease-out ${geoeffnet ? '' : 'rotate-180'}`}
         aria-hidden
       />
     </button>
@@ -152,7 +152,7 @@ function Menue({ label, children }: { label: string; children: React.ReactNode }
   return (
     <div
       role="dialog" aria-label={label}
-      className="absolute left-0 z-50 mt-3 w-[19rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-gray-900/[0.07] bg-white p-2 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.3)]"
+      className="absolute left-0 z-50 mt-3 w-[19rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-brand/[0.07] bg-white p-2 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.3)]"
     >
       {children}
     </div>

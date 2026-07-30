@@ -59,8 +59,10 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
   return (
     <main className="min-h-screen bg-brand-light">
       <div className="mx-auto max-w-[1500px] px-4 pb-24 pt-12 sm:px-8">
-        <h1 className="text-[32px] font-light tracking-tight text-brand">Alle Produkte</h1>
-        <p className="mt-2.5 text-[13px] text-gray-400">
+        <h1 className="font-serif text-[clamp(2rem,3.6vw,2.75rem)] font-normal tracking-tight text-brand">
+          Alle Produkte
+        </h1>
+        <p className="mt-2.5 text-[13px] text-brand/50">
           Veredelt per DTF-Transferdruck oder Stickerei · ohne Mindestbestellmenge
         </p>
 
@@ -75,13 +77,13 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
           >
             {ergebnis.produkte.length === 0 ? (
               <div className="py-24 text-center">
-                <p className="text-[17px] text-gray-900">Keine Produkte für diese Auswahl</p>
-                <p className="mt-2 text-[13px] text-gray-400">
+                <p className="text-[17px] text-brand">Keine Produkte für diese Auswahl</p>
+                <p className="mt-2 text-[13px] text-brand/45">
                   Entfernen Sie einzelne Filter – oder setzen Sie alle zurück.
                 </p>
                 <Link
                   href="/produkt"
-                  className="mt-7 inline-block rounded-full border border-gray-900/[0.09] bg-white/70 px-6 py-2.5 text-[13px] text-gray-700 transition-all duration-300 ease-out hover:border-gray-900/20 hover:bg-white hover:text-gray-900"
+                  className="mt-7 inline-block rounded-full border border-brand/[0.12] bg-white/70 px-6 py-2.5 text-[13px] text-brand/70 transition-all duration-300 ease-out hover:border-gold/40 hover:bg-white hover:text-brand"
                 >
                   Alle Produkte anzeigen
                 </Link>
@@ -114,7 +116,7 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
                       className={`flex h-10 w-10 items-center justify-center rounded-full text-[13px] tabular-nums transition-all duration-300 ease-out ${
                         nr === ergebnis.seite
                           ? 'bg-brand font-medium text-white'
-                          : 'border border-gray-900/[0.09] bg-white/70 text-gray-600 hover:border-gray-900/20 hover:bg-white hover:text-gray-900'
+                          : 'border border-brand/[0.12] bg-white/70 text-brand/60 hover:border-gold/40 hover:bg-white hover:text-brand'
                       }`}
                     >
                       {nr}

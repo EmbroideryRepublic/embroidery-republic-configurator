@@ -181,25 +181,26 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
       {/* ══ Spalte 1: der Baum ═══════════════════════════════════════ */}
       <div
         className={clsx(
-          // Auf dem Telefon ist für zwei Spalten kein Platz: dort tritt der
-          // Baum zurück, sobald eine Produktart offen ist.
+          // Bei doppelter Schriftgröße brauchen beide Spalten zusammen rund
+          // 800 px. Nebeneinander passt das erst ab 2xl; darunter tritt der
+          // Baum zurück, sobald eine Produktart offen ist – wie am Telefon.
           'relative flex-col overflow-hidden rounded-xl border border-gold/20 bg-white shadow-elegant',
-          'w-full lg:flex lg:w-64 lg:flex-shrink-0 xl:w-72',
+          'w-full lg:flex lg:w-[17rem] lg:flex-shrink-0 xl:w-[18rem]',
           gewaehlt ? 'hidden' : 'flex'
         )}
       >
         <div className="flex-shrink-0 border-b border-gold/10 p-3">
-          <h2 className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand/50">
+          <h2 className="mb-2.5 text-[15px] font-semibold uppercase tracking-[0.12em] text-brand/50">
             Produkt Browser
           </h2>
 
           <div className="relative">
-            <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-brand/30" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-brand/30" />
             <input
               value={suche}
               onChange={(e) => setSuche(e.target.value)}
               placeholder="Suche nach Produkten, Marken…"
-              className="w-full rounded-full border border-gray-200 py-2 pl-8 pr-7 text-xs transition-colors focus:border-gold/60 focus:outline-none"
+              className="w-full rounded-full border border-gray-200 py-2.5 pl-9 pr-9 text-[16px] transition-colors focus:border-gold/60 focus:outline-none"
             />
             {suche && (
               <button
@@ -208,12 +209,12 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                 aria-label="Suche leeren"
                 className="absolute right-2 top-1/2 -translate-y-1/2 text-brand/30 transition-colors hover:text-brand/70"
               >
-                <X className="h-3.5 w-3.5" />
+                <X className="h-4 w-4" />
               </button>
             )}
           </div>
 
-          <div className="mt-2.5 flex items-center gap-1.5">
+          <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
             <Reiter an={!nurFavoriten} onClick={() => setNurFavoriten(false)}>
               Alle Produkte ({PRODUCTS.length})
             </Reiter>
@@ -227,20 +228,20 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               title="Filter öffnen"
               aria-label="Filter öffnen"
               className={clsx(
-                'ml-auto flex flex-shrink-0 items-center gap-1 rounded-full border px-2 py-1 text-[11px] transition-colors',
+                'ml-auto flex flex-shrink-0 items-center gap-1 rounded-full border px-2 py-1 text-[14px] transition-colors',
                 aktiveFilter > 0
                   ? 'border-gold bg-gold text-white'
                   : 'border-gray-200 text-brand/50 hover:border-gold/50 hover:text-brand'
               )}
             >
-              <SlidersHorizontal className="h-3 w-3" />
+              <SlidersHorizontal className="h-4 w-4" />
               {aktiveFilter > 0 && aktiveFilter}
             </button>
           </div>
 
           {/* Breadcrumb – nur wenn in einen Ast hineingegangen wurde. */}
           {gewaehlt && !eingegrenzt && (
-            <nav aria-label="Pfad" className="mt-2.5 flex items-center gap-1 text-[11px]">
+            <nav aria-label="Pfad" className="mt-2.5 flex items-center gap-1 text-[15px]">
               <button
                 type="button"
                 onClick={() => setGewaehlt(null)}
@@ -248,7 +249,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               >
                 {gruppeLabel}
               </button>
-              <ChevronRight className="h-3 w-3 text-brand/25" aria-hidden />
+              <ChevronRight className="h-4 w-4 text-brand/25" aria-hidden />
               <span className="px-1 py-0.5 font-medium text-brand">{astLabel}</span>
             </nav>
           )}
@@ -276,12 +277,16 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                     auf ? 'text-brand' : 'hover:bg-cream/70'
                   )}
                 >
-                  <span className="flex-1 text-[12px] font-semibold uppercase tracking-[0.1em] text-brand/70">
+                  <span className="flex-1 text-[20px] font-semibold uppercase tracking-[0.1em] text-brand/70">
                     {g.label}
                   </span>
-                  <span className="text-[11px] tabular-nums text-brand/45">{g.anzahl}</span>
+                  <span className="text-[15px] tabular-nums text-brand/45">{g.anzahl}</span>
+                  {/* Nach unten = offen, die Produktarten stehen darunter.
+                      Zugeklappt zeigt der Pfeil nach oben. Damit verhält sich
+                      der Gruppenkopf wie die Produktart eine Ebene tiefer, die
+                      im offenen Zustand ebenfalls nach unten zeigt. */}
                   <ChevronDown
-                    className={clsx('h-3.5 w-3.5 text-brand/35 transition-transform duration-300', auf && 'rotate-180')}
+                    className={clsx('h-5 w-5 text-brand/35 transition-transform duration-300', !auf && 'rotate-180')}
                     aria-hidden
                   />
                 </button>
@@ -291,7 +296,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                   <div>
                     <ul key={`${g.gruppe}-${gewaehlt?.art ?? 'alle'}`} className="animate-fade-in pb-1.5">
                       {zeigeArten.length === 0 ? (
-                        <li className="px-3 pb-2 text-[11px] text-brand/55">Keine Treffer in dieser Gruppe.</li>
+                        <li className="px-3 pb-2 text-[14px] text-brand/55">Keine Treffer in dieser Gruppe.</li>
                       ) : (
                         zeigeArten.map((a) => {
                           const an = gewaehlt?.gruppe === g.gruppe && gewaehlt.art === a.art;
@@ -308,13 +313,13 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                               >
                                 {bild && (
                                   // eslint-disable-next-line @next/next/no-img-element
-                                  <img src={bild} alt="" loading="lazy" className="h-5 w-5 flex-shrink-0 object-contain" />
+                                  <img src={bild} alt="" loading="lazy" className="h-7 w-7 flex-shrink-0 object-contain" />
                                 )}
-                                <span className="flex-1 truncate text-[13px]">{a.label}</span>
-                                <span className="text-[11px] tabular-nums text-brand/45">{a.anzahl}</span>
+                                <span className="flex-1 truncate text-[20px]">{a.label}</span>
+                                <span className="text-[15px] tabular-nums text-brand/45">{a.anzahl}</span>
                                 <ChevronRight
                                   className={clsx(
-                                    'h-3 w-3 flex-shrink-0 transition-transform',
+                                    'h-4 w-4 flex-shrink-0 transition-transform',
                                     an ? 'rotate-90 text-gold-dark' : 'text-brand/25'
                                   )}
                                   aria-hidden
@@ -336,14 +341,14 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
         {filterOffen && (
           <div className="absolute inset-0 z-20 flex animate-fade-in flex-col bg-white">
             <div className="flex flex-shrink-0 items-center gap-2 border-b border-gold/10 p-3">
-              <h3 className="flex-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand/50">Filter</h3>
+              <h3 className="flex-1 text-[15px] font-semibold uppercase tracking-[0.12em] text-brand/50">Filter</h3>
               <button
                 type="button"
                 onClick={() => setFilterOffen(false)}
                 aria-label="Filter schließen"
                 className="rounded-md p-1 text-brand/40 transition-colors hover:text-brand"
               >
-                <X className="h-4 w-4" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
@@ -384,7 +389,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                 type="button"
                 onClick={setzeFilterZurueck}
                 disabled={aktiveFilter === 0}
-                className="w-full rounded-full border border-gold/40 py-2 text-[12px] text-gold-dark transition-colors hover:bg-gold-light/40 disabled:cursor-not-allowed disabled:border-gray-200 disabled:text-brand/25"
+                className="w-full rounded-full border border-gold/40 py-2 text-[15px] text-gold-dark transition-colors hover:bg-gold-light/40 disabled:cursor-not-allowed disabled:border-gray-200 disabled:text-brand/25"
               >
                 Alle Filter zurücksetzen
               </button>
@@ -395,7 +400,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
 
       {/* ══ Spalte 2: Modellkarten des geöffneten Astes ══════════════ */}
       {gewaehlt && (
-        <div className="flex w-full flex-shrink-0 flex-col overflow-hidden rounded-xl border border-gold/20 bg-white shadow-elegant lg:w-[17rem]">
+        <div className="flex w-full flex-shrink-0 flex-col overflow-hidden rounded-xl border border-gold/20 bg-white shadow-elegant lg:w-[17rem] xl:w-[18rem]">
           <div className="flex flex-shrink-0 items-center gap-1.5 border-b border-gold/10 p-2.5">
             <button
               type="button"
@@ -403,10 +408,10 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               aria-label="Zurück zur Übersicht"
               className="rounded-md p-0.5 text-brand/40 transition-colors hover:text-brand"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-5 w-5" />
             </button>
-            <span className="flex-1 truncate text-[13px] font-medium text-brand">{astLabel}</span>
-            <span className="text-[11px] tabular-nums text-brand/50">{modelle.length}</span>
+            <span className="flex-1 truncate text-[19px] font-medium text-brand">{astLabel}</span>
+            <span className="text-[15px] tabular-nums text-brand/50">{modelle.length}</span>
           </div>
 
           <ul
@@ -512,12 +517,12 @@ function Modellkarte({
       </div>
 
       <div className="border-t border-gray-900/[0.05] p-3">
-        <p className="truncate text-[14px] font-semibold leading-tight text-brand">{produkt.name}</p>
-        <p className="mt-0.5 truncate text-[11px] uppercase tracking-wide text-brand/40">{produkt.brand}</p>
+        <p className="truncate text-[19px] font-semibold leading-tight text-brand">{produkt.name}</p>
+        <p className="mt-0.5 truncate text-[14px] uppercase tracking-wide text-brand/40">{produkt.brand}</p>
 
         <div className="mt-2.5 flex flex-wrap gap-1">
           {badges.map((b) => (
-            <span key={b.text} className={clsx('rounded-md px-1.5 py-0.5 text-[10px] font-medium', BADGE_TON[b.ton])}>
+            <span key={b.text} className={clsx('rounded-md px-1.5 py-0.5 text-[13px] font-medium', BADGE_TON[b.ton])}>
               {b.text}
             </span>
           ))}
@@ -533,9 +538,9 @@ function Modellkarte({
                 style={{ backgroundColor: c.hex }}
               />
             ))}
-            {weitere > 0 && <span className="text-[10px] font-medium text-brand/40">+{weitere}</span>}
+            {weitere > 0 && <span className="text-[13px] font-medium text-brand/40">+{weitere}</span>}
           </span>
-          <span className="text-[13px] font-semibold text-gold-dark">ab {preis(produkt.basePrice)}</span>
+          <span className="text-[19px] font-semibold text-gold-dark">ab {preis(produkt.basePrice)}</span>
         </div>
       </div>
     </button>
@@ -548,7 +553,7 @@ function Reiter({ an, onClick, children }: { an: boolean; onClick: () => void; c
       type="button"
       onClick={onClick}
       className={clsx(
-        'rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors',
+        'rounded-full px-2.5 py-1 whitespace-nowrap text-[14px] font-medium transition-colors',
         an ? 'bg-gold text-white' : 'bg-cream text-brand/50 hover:bg-cream/70'
       )}
     >
@@ -560,7 +565,7 @@ function Reiter({ an, onClick, children }: { an: boolean; onClick: () => void; c
 function Feld({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-[11px] font-medium text-brand/60">{label}</span>
+      <span className="mb-1.5 block text-[15px] font-medium text-brand/60">{label}</span>
       {children}
     </label>
   );
@@ -579,7 +584,7 @@ function Auswahl({
     <select
       value={wert ?? ''}
       onChange={(e) => onWahl(e.target.value || undefined)}
-      className="w-full rounded-md border border-gray-200 px-2 py-1.5 text-xs transition-colors focus:border-gold/60 focus:outline-none"
+      className="w-full rounded-md border border-gray-200 px-2 py-1.5 text-[16px] transition-colors focus:border-gold/60 focus:outline-none"
     >
       <option value="">{alle}</option>
       {werte.map((v) => (

@@ -57,10 +57,10 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/40">
       <div className="flex h-full w-full max-w-md flex-col bg-white shadow-xl">
-        <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+        <div className="flex items-center justify-between border-b border-brand/[0.08] px-4 py-3">
           <h2 className="flex items-center gap-2 text-sm font-semibold text-brand">
             {(step === 'checkout' || step === 'inquiry') && (
-              <button type="button" onClick={() => setStep('cart')} className="rounded-md p-0.5 hover:bg-gray-100">
+              <button type="button" onClick={() => setStep('cart')} className="rounded-md p-0.5 hover:bg-cream">
                 <ArrowLeft className="h-4 w-4" />
               </button>
             )}
@@ -75,7 +75,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                     ? t('cart_inquiry_sent_title')
                     : `${t('cart_title')} ${items.length > 0 ? `(${items.length})` : ''}`}
           </h2>
-          <button type="button" onClick={onClose} className="rounded-md p-1 text-brand/40 hover:bg-gray-100">
+          <button type="button" onClick={onClose} className="rounded-md p-1 text-brand/40 hover:bg-cream">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -97,7 +97,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                       .join(', ');
 
                     return (
-                      <li key={item.id} className="rounded-lg border border-gray-200 p-3">
+                      <li key={item.id} className="rounded-lg border border-brand/[0.08] p-3">
                         <div className="flex items-start justify-between gap-2">
                           <div>
                             <p className="text-sm font-medium text-brand">{product?.name ?? 'Produkt'}</p>
@@ -144,7 +144,7 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
             </div>
 
             {items.length > 0 && (
-              <div className="border-t border-gray-100 px-4 py-3">
+              <div className="border-t border-brand/[0.08] px-4 py-3">
                 <div className="mb-3 flex items-center justify-between text-base font-semibold">
                   <span>{t('cart_total')}</span>
                   <span>{formatPrice(total)}</span>
@@ -411,7 +411,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
             type="checkbox"
             checked={acceptedTerms}
             onChange={(e) => setAcceptedTerms(e.target.checked)}
-            className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 rounded-md border-gray-300"
+            className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 rounded-md border-brand/30 accent-gold"
           />
           <span>
             Ich akzeptiere die{' '}
@@ -427,13 +427,18 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
         </label>
       </div>
 
-      <div className="border-t border-gray-100 px-4 py-3">
+      <div className="border-t border-brand/[0.08] px-4 py-3">
         {submitError && (
           <div role="alert" className="mb-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
             <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
             <span>{submitError}</span>
           </div>
         )}
+        {/* Dezente Vertrauenszeile am Entscheidungspunkt – aus den bestehenden
+            zweisprachigen Trust-Schlüsseln, damit sie in DE wie EN stimmt. */}
+        <p className="mb-2.5 text-center text-[11px] leading-relaxed text-brand/45">
+          {t('trust_check')} · {t('trust_germany')} · {t('trust_express')}
+        </p>
         <button
           type="submit"
           disabled={!isValid || isSubmitting}
@@ -575,7 +580,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
         </section>
       </div>
 
-      <div className="border-t border-gray-100 px-4 py-3">
+      <div className="border-t border-brand/[0.08] px-4 py-3">
         {submitError && (
           <div role="alert" className="mb-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
             <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
@@ -649,7 +654,7 @@ function OrderConfirmed({ orderNumber, onClose }: { orderNumber: string; onClose
 
 /** Einheitliche Feldoptik – eine Stelle statt zwölf Wiederholungen. */
 const FELD_KLASSE =
-  'w-full rounded-lg border border-gray-300 px-2.5 py-1.5 text-sm transition-colors focus:border-gold focus:outline-none';
+  'w-full rounded-lg border border-brand/20 px-2.5 py-1.5 text-sm text-brand transition-colors focus:border-gold focus:outline-none';
 
 /**
  * Ein Eingabefeld in Warenkorb und Anfrage.

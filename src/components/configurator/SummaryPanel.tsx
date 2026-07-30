@@ -155,7 +155,8 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
             className="flex w-full items-center justify-between px-2.5 py-1.5 text-brand/50"
           >
             <span>Preisdetails</span>
-            <ChevronDown className={clsx('h-3.5 w-3.5 transition-transform', showBreakdown && 'rotate-180')} />
+            {/* Nach unten = geöffnet, die Preisdetails stehen darunter. */}
+            <ChevronDown className={clsx('h-3.5 w-3.5 transition-transform', !showBreakdown && 'rotate-180')} />
           </button>
           {showBreakdown && (
             <div className="space-y-1 px-2.5 pb-2.5">

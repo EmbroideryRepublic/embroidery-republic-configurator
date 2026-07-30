@@ -16,6 +16,26 @@ import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
 import { QUALITY_TIER_LABELS } from '@/config/qualityTiers';
 import { PRINT_AREA_DATA } from '@/config/printAreaData.generated';
 import type { ProductConfig } from '@/config/products/types';
+import type { ProductType } from '@/types';
+
+/**
+ * Komplementäre Produktarten für die Cross-Selling-Empfehlung „Passt dazu".
+ *
+ * Bewusst eine feste, nachvollziehbare Zuordnung statt einer geratenen
+ * „Ähnlichkeit": Wer ein T-Shirt veredeln lässt, braucht oft denselben Print
+ * auf einem Hoodie oder Polo (Team-/Firmenausstattung). Es wird nichts
+ * erfunden – gezeigt wird nur, was der Katalog tatsächlich führt.
+ */
+const KOMPLEMENT: Partial<Record<ProductType, ProductType[]>> = {
+  tshirt: ['hoodie', 'polo', 'sweater'],
+  polo: ['tshirt', 'sweater', 'jacket'],
+  hoodie: ['tshirt', 'zip-hoodie', 'sweater'],
+  'zip-hoodie': ['hoodie', 'tshirt', 'jacket'],
+  sweater: ['tshirt', 'hoodie', 'longsleeve'],
+  longsleeve: ['tshirt', 'hoodie', 'sweater'],
+  jacket: ['hoodie', 'sweater', 'vest'],
+  vest: ['tshirt', 'jacket', 'hoodie'],
+};
 
 export interface ProduktseitenDaten {
   produkt: ProductConfig;
@@ -27,6 +47,8 @@ export interface ProduktseitenDaten {
   veredelungsflaechen: { ansicht: string; breiteCm: number; hoeheCm: number }[];
   /** Weitere Produkte derselben Art, für die Querverlinkung. */
   aehnliche: ProductConfig[];
+  /** Komplementäre Produkte anderer Art („Passt dazu") für Cross-Selling. */
+  empfehlungen: ProductConfig[];
 }
 
 const ANSICHT_LABELS: Record<string, string> = {
@@ -56,11 +78,22 @@ export function ladeProduktseite(slug: string): ProduktseitenDaten | null {
     (p) => p.id !== produkt.id && p.productType === produkt.productType
   ).slice(0, 4);
 
+  // „Passt dazu": je komplementärer Produktart ein Vorschlag (günstigster
+  // Vertreter), maximal vier – so bleibt die Reihe vielfältig statt viermal
+  // dieselbe Art.
+  const empfehlungen: ProductConfig[] = [];
+  for (const typ of KOMPLEMENT[produkt.productType] ?? []) {
+    const kandidaten = PRODUCTS.filter((p) => p.productType === typ && p.id !== produkt.id);
+    const guenstigster = kandidaten.sort((a, b) => a.basePrice - b.basePrice)[0];
+    if (guenstigster) empfehlungen.push(guenstigster);
+  }
+
   return {
     produkt,
     artLabel: PRODUCT_TYPE_LABELS[produkt.productType],
     stufeLabel: QUALITY_TIER_LABELS[produkt.qualityTier],
     veredelungsflaechen,
     aehnliche,
+    empfehlungen: empfehlungen.slice(0, 4),
   };
 }

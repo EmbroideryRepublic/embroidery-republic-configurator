@@ -112,5 +112,27 @@ export function organisationSchema(basis: string): Record<string, unknown> {
     description:
       'Firmen- und Teambekleidung individuell veredelt: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet.',
     areaServed: 'DE',
+    // Bewusst OHNE telephone/address: Kontaktdaten gehören ins Impressum, nicht
+    // dupliziert in die Auszeichnung (per Wächter-Test festgehalten). Firmen-
+    // daten bleiben zudem Sache des Betreibers (offener Go-live-Punkt).
+  };
+}
+
+/**
+ * FAQ-Auszeichnung der Häufig-gefragt-Seite.
+ *
+ * Ermöglicht ein FAQ-Rich-Result in der Google-Trefferliste. Die Fragen und
+ * Antworten sind wortgleich mit der sichtbaren Seite – Google verlangt das
+ * ausdrücklich (keine versteckten, nur für die Auszeichnung erzeugten Inhalte).
+ */
+export function faqSchema(fragen: { q: string; a: string }[]): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: fragen.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
   };
 }

@@ -12,7 +12,7 @@ const MESSAGE_MAX = 5000;
 const EMPTY = { name: '', email: '', subject: '', message: '', website: '' };
 
 const inputClass =
-  'w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-brand outline-none transition-colors placeholder:text-brand/30 focus:border-gold focus:ring-1 focus:ring-gold';
+  'w-full rounded-lg border border-brand/20 px-3 py-2 text-sm text-brand outline-none transition-colors placeholder:text-brand/30 focus:border-gold focus:ring-1 focus:ring-gold';
 const invalidClass = 'border-red-300 focus:border-red-400 focus:ring-red-300';
 
 export function ContactForm() {

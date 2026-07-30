@@ -42,7 +42,7 @@ export function Spannenregler({
   return (
     <div>
       <div className="relative h-6">
-        <div className="absolute inset-x-0 top-2.5 h-1 rounded-full bg-gray-200" />
+        <div className="absolute inset-x-0 top-2.5 h-1 rounded-full bg-brand/10" />
         <div
           className="absolute top-2.5 h-1 rounded-full bg-gold"
           style={{ left: `${anteil(a)}%`, right: `${100 - anteil(b)}%` }}
@@ -65,9 +65,9 @@ export function Spannenregler({
           machen aus der Seitenleiste ein Formular, und die Spanne stand
           vorher doppelt da (Felder + Skala darunter). */}
       <div className="mt-3 flex items-baseline justify-between text-[13px]">
-        <span className="tabular-nums text-gray-900">{a} {einheit}</span>
-        <span className="text-gray-300">–</span>
-        <span className="tabular-nums text-gray-900">{b} {einheit}</span>
+        <span className="tabular-nums text-brand">{a} {einheit}</span>
+        <span className="text-brand/30">–</span>
+        <span className="tabular-nums text-brand">{b} {einheit}</span>
       </div>
     </div>
   );

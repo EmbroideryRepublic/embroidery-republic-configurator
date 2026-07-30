@@ -53,6 +53,11 @@ ergänzen:
    ([lib/catalog/filter.ts](../src/lib/catalog/filter.ts)) und Kategorie-Reiter
    ([components/shop/KategorieReiter.tsx](../src/components/shop/KategorieReiter.tsx))
    greifen automatisch.
+4. Optional für Cross-Selling: einen Eintrag in `KOMPLEMENT`
+   ([lib/products/productPage.ts](../src/lib/products/productPage.ts)) ergänzen,
+   damit die neue Kategorie in der „Passt dazu“-Reihe auftaucht bzw. selbst
+   passende Vorschläge zeigt. Fehlt der Eintrag, entfällt nur diese Reihe – kein
+   Fehler. Hintergrund: [shop-praesentation.md](shop-praesentation.md).
 
 ## Neues Druckverfahren (PrintMethod)
 

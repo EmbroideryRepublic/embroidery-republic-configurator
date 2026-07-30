@@ -58,7 +58,7 @@ function LinkNichtVerwendbar({ grund }: { grund: 'ungueltig' | 'abgelaufen' | 'n
     <main className="min-h-screen bg-brand-light px-4 py-10">
       <div className="mx-auto max-w-2xl space-y-6">
         <div>
-          <Link href="/" className="text-xs text-gray-500 hover:text-gray-800">
+          <Link href="/" className="text-xs text-brand/50 hover:text-brand">
             ← Zur Startseite
           </Link>
           <h1 className="mt-2 text-xl font-semibold text-brand">
@@ -66,13 +66,13 @@ function LinkNichtVerwendbar({ grund }: { grund: 'ungueltig' | 'abgelaufen' | 'n
           </h1>
         </div>
 
-        <section className="rounded-lg border border-gray-300 bg-white p-4">
-          <p className="text-sm text-gray-700">
+        <section className="rounded-lg border border-brand/20 bg-white p-4">
+          <p className="text-sm text-brand/70">
             {abgelaufen
               ? 'Links zur Bestellansicht sind aus Sicherheitsgründen zeitlich begrenzt. Ihre Bestellung ist davon nicht betroffen – sie bleibt selbstverständlich bestehen.'
               : 'Der Link ist unvollständig oder wurde beim Kopieren abgeschnitten. Das passiert häufig, wenn er über mehrere Zeilen umgebrochen wurde.'}
           </p>
-          <p className="mt-3 text-sm text-gray-700">
+          <p className="mt-3 text-sm text-brand/70">
             Schreiben Sie uns kurz – am besten mit Ihrer Bestellnummer aus der Bestätigungsmail. Wir senden Ihnen den
             aktuellen Stand umgehend zu.
           </p>
@@ -107,11 +107,11 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
     <main className="min-h-screen bg-brand-light px-4 py-10">
       <div className="mx-auto max-w-2xl space-y-6">
         <div>
-          <Link href="/" className="text-xs text-gray-500 hover:text-gray-800">
+          <Link href="/" className="text-xs text-brand/50 hover:text-brand">
             ← Zur Startseite
           </Link>
           <h1 className="mt-2 text-xl font-semibold text-brand">Bestellung {bestellung.bestellnummer}</h1>
-          <p className="mt-1 text-sm text-gray-600">Eingegangen am {zeit(bestellung.bestelltAm)}</p>
+          <p className="mt-1 text-sm text-brand/60">Eingegangen am {zeit(bestellung.bestelltAm)}</p>
         </div>
 
         {/* Fortschritt zuerst: Das ist die Frage, wegen der der Kunde die
@@ -124,9 +124,9 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
 
         {/* Zustandsabhängiger Hinweisbereich */}
         {bestellung.zustand === 'storniert' && (
-          <section className="rounded-lg border border-gray-300 bg-gray-50 p-4">
-            <h2 className="text-sm font-semibold text-gray-900">Diese Bestellung wurde storniert</h2>
-            <p className="mt-1 text-sm text-gray-700">
+          <section className="rounded-lg border border-brand/20 bg-cream/60 p-4">
+            <h2 className="text-sm font-semibold text-brand">Diese Bestellung wurde storniert</h2>
+            <p className="mt-1 text-sm text-brand/70">
               {bestellung.storniertAm ? `Storniert am ${zeit(bestellung.storniertAm)}.` : 'Die Bestellung ist storniert.'}{' '}
               Es entstehen Ihnen keine Kosten. Eine Bestätigung haben wir Ihnen per E-Mail gesendet.
             </p>
@@ -136,7 +136,7 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
         {bestellung.zustand === 'stornierbar' && (
           <section className="rounded-lg border border-gold/40 bg-gold-light/30 p-4">
             <h2 className="text-sm font-semibold text-brand">Sie können diese Bestellung noch stornieren</h2>
-            <p className="mt-1 text-sm text-gray-700">
+            <p className="mt-1 text-sm text-brand/70">
               Innerhalb von zwei Stunden nach Bestelleingang können Sie Ihre Bestellung selbst stornieren. Danach geht
               sie in die Bearbeitung und wir beschaffen die Ware.
             </p>
@@ -147,13 +147,13 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
         )}
 
         {bestellung.zustand === 'frist-abgelaufen' && (
-          <section className="rounded-lg border border-gray-200 bg-white p-4">
+          <section className="rounded-lg border border-brand/[0.08] bg-white p-4">
             <h2 className="text-sm font-semibold text-brand">Selbststornierung nicht mehr möglich</h2>
-            <p className="mt-1 text-sm text-gray-700">
+            <p className="mt-1 text-sm text-brand/70">
               Die zweistündige Stornofrist ist am {zeit(bestellung.stornofristBis)} abgelaufen. Ihre Bestellung ist
               inzwischen in Bearbeitung.
             </p>
-            <p className="mt-2 text-sm text-gray-700">
+            <p className="mt-2 text-sm text-brand/70">
               Sie haben trotzdem eine Frage oder einen Sonderfall? Melden Sie sich gern direkt bei uns – wir schauen,
               was sich machen lässt.
             </p>
@@ -169,18 +169,18 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
         )}
 
         {/* Bestelldetails – in ALLEN Zuständen identisch */}
-        <section className="rounded-lg border border-gray-200 bg-white p-4">
+        <section className="rounded-lg border border-brand/[0.08] bg-white p-4">
           <h2 className="mb-3 text-sm font-semibold text-brand">Ihre Positionen</h2>
           <ul className="space-y-3">
             {bestellung.positionen.map((pos, i) => (
-              <li key={i} className="border-b border-gray-100 pb-3 last:border-0 last:pb-0">
-                <p className="text-sm font-medium text-gray-900">{pos.produktName}</p>
-                <p className="text-xs text-gray-600">
+              <li key={i} className="border-b border-brand/[0.06] pb-3 last:border-0 last:pb-0">
+                <p className="text-sm font-medium text-brand">{pos.produktName}</p>
+                <p className="text-xs text-brand/60">
                   {pos.farbe} · {pos.veredelung}
                 </p>
-                <p className="mt-1 text-xs text-gray-700">
+                <p className="mt-1 text-xs text-brand/70">
                   {pos.groessen.map((g) => `${g.groesse} × ${g.menge}`).join(' · ')}
-                  <span className="text-gray-500"> ({pos.menge} Stück)</span>
+                  <span className="text-brand/50"> ({pos.menge} Stück)</span>
                 </p>
               </li>
             ))}
@@ -191,9 +191,9 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
         </section>
 
         {bestellung.lieferadresse && (
-          <section className="rounded-lg border border-gray-200 bg-white p-4">
+          <section className="rounded-lg border border-brand/[0.08] bg-white p-4">
             <h2 className="mb-2 text-sm font-semibold text-brand">Lieferadresse</h2>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-brand/70">
               {bestellung.kundenName}
               <br />
               {bestellung.lieferadresse.strasse}
@@ -204,7 +204,7 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
         )}
 
         {bestellung.zustand !== 'storniert' && (
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-brand/50">
             Die Rechnung erhalten Sie separat, zahlbar innerhalb von {PAYMENT_TERM_DAYS} Tagen ohne Abzug.
           </p>
         )}

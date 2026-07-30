@@ -106,8 +106,8 @@ export default async function ZahlungsRueckkehr({
     <main className="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-6 py-16 text-center">
       <Icon className={`mb-6 h-16 w-16 ${farbe}`} aria-hidden />
       <h1 className="mb-3 text-2xl font-semibold text-brand">{titel}</h1>
-      {bestellnummer && <p className="mb-2 text-sm text-gray-500">Bestellnummer {bestellnummer}</p>}
-      <p className="mb-8 max-w-md text-gray-600">{text}</p>
+      {bestellnummer && <p className="mb-2 text-sm text-brand/50">Bestellnummer {bestellnummer}</p>}
+      <p className="mb-8 max-w-md text-brand/60">{text}</p>
 
       <div className="flex flex-wrap justify-center gap-3">
         <Link
@@ -127,7 +127,7 @@ export default async function ZahlungsRueckkehr({
       </div>
 
       {anzeige !== 'bezahlt' && (
-        <p className="mt-8 text-xs text-gray-400">
+        <p className="mt-8 text-xs text-brand/40">
           Fragen? {COMPANY.email} · {COMPANY.phone}
         </p>
       )}

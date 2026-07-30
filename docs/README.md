@@ -108,6 +108,7 @@ npm run test:e2e:adminauth
 
 | Dokument | Inhalt |
 |---|---|
+| [shop-praesentation.md](shop-praesentation.md) | Kundenseitige Shop-Seiten außerhalb des Konfigurators: Seiten, Komponenten, Datenflüsse, Gestaltungssprache, SEO |
 | [state-management.md](state-management.md) | Die sechs Zustand-Stores, Persistenz, Abonnement-Disziplin, Datenfluss |
 | [konfigurator-logik.md](konfigurator-logik.md) | Produktbrowser, Auswahl-Übernahme, geführter Kauf, Vorladen, Canvas cm↔px (**v1.0, eingefroren**) |
 | [designsystem.md](designsystem.md) | Farben, Typografie, Radien-Skala, Schatten, Badges, Icons |

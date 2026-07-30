@@ -56,9 +56,9 @@ export function FilterPanel({
 
       <div className="flex h-full w-full max-w-sm flex-col bg-white shadow-2xl">
         {/* Kopf */}
-        <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
+        <div className="flex items-center justify-between border-b border-brand/[0.08] px-4 py-3">
           {ebene ? (
-            <button type="button" onClick={() => setEbene(null)} className="inline-flex items-center gap-1 text-sm font-medium text-gray-700">
+            <button type="button" onClick={() => setEbene(null)} className="inline-flex items-center gap-1 text-sm font-medium text-brand/70">
               <ChevronLeft className="h-4 w-4" aria-hidden />
               {DIMENSION_LABELS[ebene]}
             </button>
@@ -70,13 +70,13 @@ export function FilterPanel({
               <button
                 type="button"
                 onClick={() => setEntwurf(setzeZurueck(entwurf))}
-                className="rounded-md border border-gray-300 px-2.5 py-1 text-xs text-gray-600"
+                className="rounded-md border border-brand/20 px-2.5 py-1 text-xs text-brand/60"
               >
                 Alle Filter löschen
               </button>
             )}
             <button type="button" onClick={onSchliessen} aria-label="Schließen">
-              <X className="h-5 w-5 text-gray-500" />
+              <X className="h-5 w-5 text-brand/50" />
             </button>
           </div>
         </div>
@@ -92,42 +92,42 @@ export function FilterPanel({
                     <button
                       type="button"
                       onClick={() => setEbene(dim)}
-                      className="flex w-full items-center justify-between border-b border-gray-100 px-4 py-3.5 text-left"
+                      className="flex w-full items-center justify-between border-b border-brand/[0.06] px-4 py-3.5 text-left"
                     >
-                      <span className="text-sm font-medium text-gray-800">{DIMENSION_LABELS[dim]}</span>
+                      <span className="text-sm font-medium text-brand">{DIMENSION_LABELS[dim]}</span>
                       <span className="flex items-center gap-1.5">
-                        <span className="max-w-[10rem] truncate text-sm text-gray-500">
+                        <span className="max-w-[10rem] truncate text-sm text-brand/50">
                           {gewaehlt.length === 0
                             ? `Alle ${DIMENSION_PLURAL[dim]}`
                             : gewaehlt.map((w) => beschrifteWert(dim, w, bezeichnungen)).join(', ')}
                         </span>
-                        <ChevronRight className="h-4 w-4 shrink-0 text-gray-400" aria-hidden />
+                        <ChevronRight className="h-4 w-4 shrink-0 text-brand/40" aria-hidden />
                       </span>
                     </button>
                   </li>
                 );
               })}
 
-              <li className="border-b border-gray-100 px-4 py-3.5">
-                <p className="mb-2 text-sm font-medium text-gray-800">Preis (€)</p>
+              <li className="border-b border-brand/[0.06] px-4 py-3.5">
+                <p className="mb-2 text-sm font-medium text-brand">Preis (€)</p>
                 <ZweiFelder
                   von={entwurf.preisVon} bis={entwurf.preisBis} min={spannen.preisMin} max={spannen.preisMax}
                   onAendern={(von, bis) => setEntwurf({ ...entwurf, preisVon: von, preisBis: bis, seite: 1 })}
                 />
               </li>
-              <li className="border-b border-gray-100 px-4 py-3.5">
-                <p className="mb-2 text-sm font-medium text-gray-800">Stoffgewicht (g/m²)</p>
+              <li className="border-b border-brand/[0.06] px-4 py-3.5">
+                <p className="mb-2 text-sm font-medium text-brand">Stoffgewicht (g/m²)</p>
                 <ZweiFelder
                   von={entwurf.gewichtVon} bis={entwurf.gewichtBis} min={spannen.gewichtMin} max={spannen.gewichtMax}
                   onAendern={(von, bis) => setEntwurf({ ...entwurf, gewichtVon: von, gewichtBis: bis, seite: 1 })}
                 />
               </li>
               <li className="px-4 py-3.5">
-                <label className="flex items-center gap-2 text-sm text-gray-800">
+                <label className="flex items-center gap-2 text-sm text-brand">
                   <input
                     type="checkbox" checked={entwurf.auchNichtLieferbare}
                     onChange={(e) => setEntwurf({ ...entwurf, auchNichtLieferbare: e.target.checked, seite: 1 })}
-                    className="h-4 w-4 rounded-md border-gray-300"
+                    className="h-4 w-4 rounded-md border-brand/20"
                   />
                   Auch nicht lieferbare Produkte anzeigen
                 </label>
@@ -145,7 +145,7 @@ export function FilterPanel({
         </div>
 
         {/* Fuß – eigenständig, NICHT im Scrollbereich (sonst verdeckt er Einträge). */}
-        <div className="border-t border-gray-200 p-4">
+        <div className="border-t border-brand/[0.08] p-4">
           <button
             type="button"
             onClick={() => { anwenden(entwurf); onSchliessen(); }}
@@ -168,13 +168,13 @@ function ZweiFelder({
       <input
         type="number" inputMode="numeric" min={min} max={max} placeholder={String(min)}
         defaultValue={von ?? ''} onBlur={(e) => onAendern(lies(e.target.value), bis)}
-        aria-label="von" className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
+        aria-label="von" className="w-full rounded-md border border-brand/20 px-2 py-1.5 text-sm"
       />
-      <span className="text-xs text-gray-400">bis</span>
+      <span className="text-xs text-brand/40">bis</span>
       <input
         type="number" inputMode="numeric" min={min} max={max} placeholder={String(max)}
         defaultValue={bis ?? ''} onBlur={(e) => onAendern(von, lies(e.target.value))}
-        aria-label="bis" className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
+        aria-label="bis" className="w-full rounded-md border border-brand/20 px-2 py-1.5 text-sm"
       />
     </div>
   );

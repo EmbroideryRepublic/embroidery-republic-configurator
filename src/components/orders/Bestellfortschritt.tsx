@@ -35,9 +35,9 @@ export function Bestellfortschritt({
   const aktuell = fortschrittIndex(status);
 
   return (
-    <section className="rounded-lg border border-gray-200 bg-white p-4">
-      <h2 className="text-sm font-semibold text-gray-900">{STATUS_LABELS[status]}</h2>
-      <p className="mt-1 text-sm text-gray-700">{STATUS_KUNDENTEXT[status]}</p>
+    <section className="rounded-lg border border-brand/[0.08] bg-white p-4">
+      <h2 className="text-sm font-semibold text-brand">{STATUS_LABELS[status]}</h2>
+      <p className="mt-1 text-sm text-brand/70">{STATUS_KUNDENTEXT[status]}</p>
 
       <ol className="mt-4 space-y-2">
         {STATUS_REIHENFOLGE.map((s, i) => {
@@ -52,13 +52,13 @@ export function Bestellfortschritt({
                     ? 'bg-brand text-white'
                     : hier
                       ? 'bg-gold text-white ring-2 ring-gold/30'
-                      : 'bg-gray-100 text-gray-400'
+                      : 'bg-brand/[0.06] text-brand/40'
                 }`}
               >
                 {erledigt ? <Check className="h-3 w-3" /> : i + 1}
               </span>
               <span
-                className={`text-sm ${hier ? 'font-medium text-gray-900' : erledigt ? 'text-gray-700' : 'text-gray-400'}`}
+                className={`text-sm ${hier ? 'font-medium text-brand' : erledigt ? 'text-brand/70' : 'text-brand/40'}`}
               >
                 {STATUS_LABELS[s]}
               </span>
@@ -68,12 +68,12 @@ export function Bestellfortschritt({
       </ol>
 
       {versendetAm && (
-        <p className="mt-4 border-t border-gray-100 pt-3 text-sm text-gray-700">
+        <p className="mt-4 border-t border-brand/[0.06] pt-3 text-sm text-brand/70">
           Versendet am {zeit(versendetAm)}
           {trackingNummer && (
             <>
               <br />
-              <span className="text-gray-500">Sendungsnummer:</span>{' '}
+              <span className="text-brand/50">Sendungsnummer:</span>{' '}
               <span className="font-medium">{trackingNummer}</span>
             </>
           )}

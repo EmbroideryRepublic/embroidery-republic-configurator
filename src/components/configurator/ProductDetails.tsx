@@ -29,7 +29,8 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         <span className="text-xs font-semibold uppercase tracking-wide text-brand/50">
           {t('product_details_title')}
         </span>
-        <ChevronDown className={clsx('h-4 w-4 text-brand/40 transition-transform', isOpen && 'rotate-180')} />
+        {/* Nach unten = geöffnet, die Details stehen darunter. */}
+        <ChevronDown className={clsx('h-4 w-4 text-brand/40 transition-transform', !isOpen && 'rotate-180')} />
       </button>
 
       {isOpen && (

@@ -3,6 +3,7 @@ import { PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
 import { Scissors, Shirt, Clock, ShieldCheck, Palette, Users } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: '/ueber-uns' },
   title: 'Über uns',
   description:
     'Embroidery Republic Germany veredelt Firmen- und Teambekleidung per DTF-Transferdruck und Stickerei – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
@@ -45,7 +46,7 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
       <Link href="/" className="text-xs text-gold-dark hover:underline">
-        ← Zurück zum Konfigurator
+        ← Zurück zur Startseite
       </Link>
 
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">

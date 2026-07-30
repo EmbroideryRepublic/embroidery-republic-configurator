@@ -29,7 +29,7 @@ export function CancelOrderButton({ token, fristBis }: { token: string; fristBis
         >
           Bestellung stornieren
         </button>
-        <p className="mt-2 text-xs text-gray-500">Möglich bis {fristBis}.</p>
+        <p className="mt-2 text-xs text-brand/50">Möglich bis {fristBis}.</p>
       </div>
     );
   }
@@ -64,7 +64,7 @@ export function CancelOrderButton({ token, fristBis }: { token: string; fristBis
             setNachfrage(false);
             setFehler(null);
           }}
-          className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 disabled:opacity-50"
+          className="rounded-md border border-brand/20 bg-white px-4 py-2 text-sm text-brand/70 transition-colors hover:bg-cream/60 disabled:opacity-50"
         >
           Abbrechen
         </button>

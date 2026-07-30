@@ -88,19 +88,19 @@ export function Produktkachel({
           </span>
         )}
         {stand !== 'lieferbar' && (
-          <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1 text-[10px] uppercase tracking-wide text-gray-700 backdrop-blur-sm">
+          <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1 text-[10px] uppercase tracking-wide text-brand/70 backdrop-blur-sm">
             {VERFUEGBARKEIT_LABELS[stand]}
           </span>
         )}
       </div>
 
       <div className={liste ? 'min-w-0 flex-1' : 'pt-5'}>
-        <p className="text-[11px] uppercase tracking-[0.14em] text-gray-400">{produkt.brand}</p>
-        <p className="mt-1.5 truncate text-[15px] leading-snug text-gray-900 transition-colors duration-300 group-hover:text-brand">
+        <p className="text-[11px] uppercase tracking-[0.14em] text-brand/40">{produkt.brand}</p>
+        <p className="mt-1.5 truncate text-[15px] leading-snug text-brand transition-colors duration-300 group-hover:text-gold-dark">
           {produkt.name}
         </p>
-        <p className="mt-2.5 text-[16px] font-medium tabular-nums text-gray-900">
-          <span className="mr-1 text-[12px] font-normal text-gray-400">ab</span>
+        <p className="mt-2.5 text-[16px] font-medium tabular-nums text-brand">
+          <span className="mr-1 text-[12px] font-normal text-brand/40">ab</span>
           {formatiereGeld(produkt.basePrice)}
         </p>
 
@@ -109,7 +109,7 @@ export function Produktkachel({
             <span key={f.id} title={f.name} className={PUNKT} style={{ backgroundColor: f.hex }} />
           ))}
           {produkt.colors.length > PUNKTE && (
-            <span className="ml-1 text-[11px] tracking-wide text-gray-400">
+            <span className="ml-1 text-[11px] tracking-wide text-brand/40">
               +{produkt.colors.length - PUNKTE}
             </span>
           )}

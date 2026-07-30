@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { faqSchema } from '@/lib/seo/strukturierteDaten';
 
 export const metadata = {
   title: 'Häufige Fragen',
   description:
     'Antworten zu Bestellmengen, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung bei Embroidery Republic Germany.',
+  alternates: { canonical: '/faq' },
 };
 
 const FAQS: { q: string; a: string }[] = [
@@ -60,8 +63,9 @@ const FAQS: { q: string; a: string }[] = [
 export default function FaqPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
+      <JsonLd daten={faqSchema(FAQS)} />
       <Link href="/" className="text-xs text-gold-dark hover:underline">
-        ← Zurück zum Konfigurator
+        ← Zurück zur Startseite
       </Link>
 
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Häufige Fragen</h1>

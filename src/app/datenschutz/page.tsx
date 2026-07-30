@@ -20,7 +20,7 @@ export default function DatenschutzPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-10 text-sm leading-relaxed text-brand/70">
       <Link href="/" className="text-xs text-gold-dark hover:underline">
-        ← Zurück zum Konfigurator
+        ← Zurück zur Startseite
       </Link>
 
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Datenschutzerklärung</h1>

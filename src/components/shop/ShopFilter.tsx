@@ -42,14 +42,14 @@ export function ShopFilter({
   return (
     <>
       {/* ══ Band 1 + 2: angeheftet ═══════════════════════════════════ */}
-      <div className="sticky top-0 z-40 -mx-4 border-b border-gray-900/[0.06] bg-brand-light/80 px-4 backdrop-blur-xl sm:-mx-8 sm:px-8">
+      <div className="sticky top-0 z-40 -mx-4 border-b border-brand/[0.06] bg-brand-light/80 px-4 backdrop-blur-xl sm:-mx-8 sm:px-8">
         {/* Band 1 – Shop-Navigation. Volle Breite: neun große Reiter und
             sieben Filterknöpfe passen nicht nebeneinander, die Reiter würden
             abgeschnitten. */}
         <KategorieReiter kriterien={kriterien} werte={facetten.kategorie} />
 
         {/* Band 2 – die eigentlichen Filter, durch eine feine Linie getrennt. */}
-        <div className="border-t border-gray-900/[0.06] py-4">
+        <div className="border-t border-brand/[0.06] py-4">
           <FilterMenues
             kriterien={kriterien} facetten={facetten} spannen={spannen}
             bezeichnungen={bezeichnungen} onPanelOeffnen={() => setPanelOffen(true)}

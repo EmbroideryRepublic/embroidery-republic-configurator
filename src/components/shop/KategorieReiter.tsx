@@ -69,7 +69,7 @@ function Reiter({ aktiv, onClick, label }: { aktiv: boolean; onClick: () => void
       onClick={onClick}
       aria-current={aktiv ? 'page' : undefined}
       className={`group relative shrink-0 whitespace-nowrap px-5 pb-4 pt-5 transition-colors duration-300 ease-out xl:px-7 ${
-        aktiv ? 'text-brand' : 'text-gray-500 hover:text-gray-900'
+        aktiv ? 'text-brand' : 'text-brand/50 hover:text-brand'
       }`}
     >
       <span className={`text-[15px] tracking-tight transition-all duration-300 ${aktiv ? 'font-medium' : 'font-normal'}`}>
@@ -79,7 +79,7 @@ function Reiter({ aktiv, onClick, label }: { aktiv: boolean; onClick: () => void
           und die vertraute Formensprache einer Shop-Navigation. */}
       <span
         className={`absolute inset-x-3 bottom-0 h-[2px] origin-center rounded-full bg-brand transition-transform duration-300 ease-out ${
-          aktiv ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100 group-hover:bg-gray-300'
+          aktiv ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100 group-hover:bg-brand/20'
         }`}
         aria-hidden
       />

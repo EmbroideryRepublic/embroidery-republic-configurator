@@ -52,7 +52,7 @@ export function WerteListe({
   bezeichnungen: Record<string, string>;
   onToggle: (wert: string) => void;
 }) {
-  if (werte.length === 0) return <p className="px-3 py-4 text-sm text-gray-500">Keine Werte vorhanden.</p>;
+  if (werte.length === 0) return <p className="px-3 py-4 text-sm text-brand/50">Keine Werte vorhanden.</p>;
 
   return (
     <ul className="max-h-80 space-y-0.5 overflow-y-auto">
@@ -64,7 +64,7 @@ export function WerteListe({
         return (
           <li key={wert}>
             <label className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] transition-colors duration-200 ${
-              leer ? 'cursor-not-allowed text-gray-300' : 'cursor-pointer text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+              leer ? 'cursor-not-allowed text-brand/30' : 'cursor-pointer text-brand/60 hover:bg-cream/60 hover:text-brand'
             }`}>
               <Kaestchen an={an} leer={leer} onToggle={() => onToggle(wert)} />
               {dim === 'farbe' && (
@@ -74,10 +74,10 @@ export function WerteListe({
                   aria-hidden
                 />
               )}
-              <span className={`flex-1 ${an ? 'font-medium text-gray-900' : ''}`}>
+              <span className={`flex-1 ${an ? 'font-medium text-brand' : ''}`}>
                 {beschrifteWert(dim, wert, bezeichnungen)}
               </span>
-              <span className="text-[11px] tabular-nums text-gray-300">{anzahl}</span>
+              <span className="text-[11px] tabular-nums text-brand/30">{anzahl}</span>
             </label>
           </li>
         );
@@ -109,7 +109,7 @@ export function Kaestchen({
       <span
         aria-hidden
         className={`pointer-events-none flex h-full w-full items-center justify-center rounded-[5px] border transition-all duration-200 peer-focus-visible:ring-2 peer-focus-visible:ring-gold/60 ${
-          an ? 'border-brand bg-brand text-white' : 'border-gray-300 bg-white group-hover:border-gray-400'
+          an ? 'border-brand bg-brand text-white' : 'border-brand/20 bg-white group-hover:border-brand/30'
         }`}
       >
         {an && <Check className="h-3 w-3" strokeWidth={3} />}
@@ -124,11 +124,11 @@ export function Chip({
   return (
     <button
       type="button" onClick={onEntfernen} aria-label={ariaLabel}
-      className="inline-flex items-center gap-2 rounded-full border border-gray-900/[0.09] bg-white/70 py-1.5 pl-3.5 pr-2.5 text-[12px] text-gray-700 transition-all duration-300 ease-out hover:border-gray-900/20 hover:bg-white hover:text-gray-900"
+      className="inline-flex items-center gap-2 rounded-full border border-brand/[0.09] bg-white/70 py-1.5 pl-3.5 pr-2.5 text-[12px] text-brand/70 transition-all duration-300 ease-out hover:border-brand/20 hover:bg-white hover:text-brand"
     >
       {farbe && <span className="h-3 w-3 rounded-full border border-black/10" style={{ backgroundColor: farbe }} aria-hidden />}
       {text}
-      <X className="h-3.5 w-3.5 text-gray-400" aria-hidden />
+      <X className="h-3.5 w-3.5 text-brand/40" aria-hidden />
     </button>
   );
 }

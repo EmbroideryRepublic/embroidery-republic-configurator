@@ -35,13 +35,13 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
 
   return (
     <div>
-      <div className="relative aspect-square overflow-hidden rounded-lg border border-gray-200 bg-white">
+      <div className="relative aspect-square overflow-hidden rounded-2xl border border-brand/[0.08] bg-white">
         <Image
           src={farbe.images[ansicht]}
           alt={`${produkt.name} in ${farbe.name}, ${ANSICHTEN.find((a) => a.key === ansicht)?.label}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-contain p-4"
+          className="object-contain p-6"
           priority
         />
       </div>
@@ -53,10 +53,10 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
             type="button"
             onClick={() => setAnsicht(a.key)}
             aria-pressed={ansicht === a.key}
-            className={`rounded-md border px-2.5 py-1 text-xs transition ${
+            className={`rounded-full border px-3 py-1 text-xs transition ${
               ansicht === a.key
                 ? 'border-brand bg-brand text-white'
-                : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
+                : 'border-brand/15 bg-white text-brand/60 hover:border-gold/50 hover:text-brand'
             }`}
           >
             {a.label}
@@ -65,11 +65,11 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
       </div>
 
       <div className="mt-4">
-        <p className="text-sm font-medium text-gray-900">
-          Farbe: <span className="font-normal text-gray-700">{farbe.name}</span>
+        <p className="text-sm font-medium text-brand">
+          Farbe: <span className="font-normal text-brand/70">{farbe.name}</span>
         </p>
-        <p className="mt-0.5 text-xs text-gray-500">{produkt.colors.length} Farben verfügbar</p>
-        <div className="mt-2 flex flex-wrap gap-1.5">
+        <p className="mt-0.5 text-xs text-brand/50">{produkt.colors.length} Farben verfügbar</p>
+        <div className="mt-2.5 flex flex-wrap gap-2">
           {produkt.colors.map((c, i) => (
             <button
               key={c.id}
@@ -79,8 +79,10 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
               aria-label={`Farbe ${c.name}`}
               aria-pressed={i === farbIndex}
               style={{ backgroundColor: c.hex }}
-              className={`h-7 w-7 rounded-full border-2 transition ${
-                i === farbIndex ? 'border-brand ring-2 ring-gold' : 'border-gray-300 hover:border-gray-500'
+              className={`h-7 w-7 rounded-full border transition ${
+                i === farbIndex
+                  ? 'border-white ring-2 ring-gold ring-offset-1'
+                  : 'border-black/10 hover:ring-2 hover:ring-gold/40'
               }`}
             />
           ))}

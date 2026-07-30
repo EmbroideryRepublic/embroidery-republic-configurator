@@ -4,6 +4,7 @@ import { ContactForm } from '@/components/contact/ContactForm';
 import { COMPANY } from '@/config/company';
 
 export const metadata = {
+  alternates: { canonical: '/kontakt' },
   title: 'Kontakt',
   description:
     'Fragen zu Firmenbekleidung, Mengenrabatten oder einem individuellen Projekt? Schreiben Sie Embroidery Republic Germany – Antwort meist innerhalb eines Werktags.',
@@ -31,7 +32,7 @@ export default function KontaktPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
       <Link href="/" className="text-xs text-gold-dark hover:underline">
-        ← Zurück zum Konfigurator
+        ← Zurück zur Startseite
       </Link>
 
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Kontakt</h1>

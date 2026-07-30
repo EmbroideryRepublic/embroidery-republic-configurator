@@ -19,7 +19,7 @@ als erledigt markiert.
 | **Versandkosten** | DE 50 €→7,99 · DE 75 €→frei · AT 99 €→11,99 · AT 100 €→frei · CH→abgelehnt (kein Tarif) |
 | **Bestellmenge** | ab 1 Stück – keine Mindestmenge; Rüstkosten einmalig je Position |
 | **E-Mail-Versand** | Kundenbestätigung + interne Benachrichtigung über eigene verifizierte Domain, mit Resend-IDs |
-| **Absenderdomain** | `info@send.embroidery-republic.com` (DKIM/SPF verifiziert), Reply-To `info@embroidery-republic.com` |
+| **Absenderdomain** | `info@send.embroidery-republic.com` (DKIM/SPF verifiziert), Reply-To `info@ergermany.de` |
 | **Produktionsblatt (PDF)** | erzeugt in ~350–580 ms, in Storage abgelegt |
 | **Unverbindliche Anfrage** | `ER-2026-389E78` inkl. beider E-Mails |
 | **Kontaktformular** | real abgesendet → `POST /kontakt 200`, E-Mail zugestellt (ID `e1bccd5a…`) |

@@ -23,8 +23,8 @@ export const COMPANY = {
   // Die tatsächlich existierende Firmendomain ist .com (per DNS verifiziert:
   // IONOS-Nameserver, aktive MX-Records, gültiger SPF). Die zuvor eingetragene
   // .de-Domain ist NICHT registriert – im Impressum wäre das ein Mangel.
-  email: 'info@embroidery-republic.com',
-  emailHref: 'mailto:info@embroidery-republic.com',
+  email: 'info@ergermany.de',
+  emailHref: 'mailto:info@ergermany.de',
 } as const;
 
 /** Einzeilige Anschrift, z.B. für Fließtext. */

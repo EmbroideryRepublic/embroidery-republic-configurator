@@ -12,7 +12,7 @@
  * Resend-Konto registriert wurde.
  *
  * Umstellung auf die eigene Domain später: in .env.local lediglich
- *   RESEND_FROM_EMAIL=info@embroidery-republic.com
+ *   RESEND_FROM_EMAIL=info@ergermany.de
  *   EMAIL_TEST_MODE=false
  * setzen (nachdem die Domain bei Resend verifiziert ist). Am Code ändert
  * sich nichts.

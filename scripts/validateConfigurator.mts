@@ -102,7 +102,7 @@ for (const p of PRODUCTS) {
   // Farben: Hex gültig, Bilder vorhanden.
   for (const c of p.colors) {
     if (!/^#[0-9a-fA-F]{6}$/.test(c.hex)) melde('FEHLER', 'Farben', p.id, `${c.id}: ungültiger Hex "${c.hex}"`);
-    const noetig = p.hasSleeves === false ? VIEWS.slice(0, 2) : VIEWS;
+    const noetig = p.views ?? VIEWS;
     for (const v of noetig) {
       const url = c.images[v];
       if (!url) {
@@ -127,7 +127,7 @@ for (const p of PRODUCTS) {
   const mass = p.sizeGuide?.measurements.find((m) => m.size === 'M') ?? p.sizeGuide?.measurements[0];
   if (!mass) continue;
 
-  const erwartet = p.hasSleeves === false ? VIEWS.slice(0, 2) : VIEWS;
+  const erwartet = p.views ?? VIEWS;
   for (const v of erwartet) {
     const a = views[v];
     if (!a) {
@@ -199,7 +199,7 @@ for (const p of PRODUCTS) {
 for (const p of PRODUCTS) {
   const dtf = await getPrintAreas(p.id, 'dtf');
   const stick = await getPrintAreas(p.id, 'embroidery');
-  const erwartet = p.hasSleeves === false ? 2 : 4;
+  const erwartet = (p.views ?? VIEWS).length;
 
   if (dtf.length !== erwartet) melde('FEHLER', 'Veredelung', p.id, `DTF: ${dtf.length} statt ${erwartet} Ansichten`);
   if (stick.length !== erwartet) melde('FEHLER', 'Veredelung', p.id, `Stickerei: ${stick.length} statt ${erwartet} Ansichten`);
@@ -214,15 +214,15 @@ for (const p of PRODUCTS) {
       d.widthPercent === s.widthPercent && d.heightPercent === s.heightPercent;
     if (!gleich) melde('FEHLER', 'Veredelung', p.id, `DTF und Stickerei haben unterschiedliche Geometrie`, d.view);
 
-    if (!(d.movementWidthCm > 0)) melde('FEHLER', 'Skalierung', p.id, 'movementWidthCm <= 0', d.view);
-    if (!(d.referenceGarmentHeightCm > 0)) melde('FEHLER', 'Skalierung', p.id, 'referenceGarmentHeightCm <= 0', d.view);
+    if (!(d.boxWidthCm > 0)) melde('FEHLER', 'Skalierung', p.id, 'boxWidthCm <= 0', d.view);
+    if (!(d.boxHeightCm > 0)) melde('FEHLER', 'Skalierung', p.id, 'boxHeightCm <= 0', d.view);
 
     // Gegenprobe zur isotropen Umrechnung im Canvas.
     //
     // WICHTIG: Das Bild wird in die Leinwand EINGEPASST (contain), nicht
     // gestreckt. Eine erste Fassung rechnete areaPxH gegen CANVAS_HEIGHT und
     // meldete dadurch 162 Falschbefunde – der Unterschied war ausschließlich
-    // das ignorierte Seitenverhältnis. Genau dafür trägt movementWidthCm den
+    // das ignorierte Seitenverhältnis. Genau dafür trägt boxWidthCm den
     // Faktor imgW/imgH (siehe Kommentar in printAreas.ts).
     const bildA = PRINT_AREA_DATA[p.id]?.[d.view];
     if (!bildA) continue;
@@ -232,10 +232,10 @@ for (const p of PRODUCTS) {
     const dargestellteHoehe = bildAspekt >= leinwandAspekt ? CANVAS_WIDTH / bildAspekt : CANVAS_HEIGHT;
     const areaPxW = (d.widthPercent / 100) * dargestellteBreite;
     const areaPxH = (d.heightPercent / 100) * dargestellteHoehe;
-    const pxProCm = areaPxH / d.referenceGarmentHeightCm;
-    const abweichung = Math.abs(d.movementWidthCm * pxProCm - areaPxW);
+    const pxProCm = areaPxH / d.boxHeightCm;
+    const abweichung = Math.abs(d.boxWidthCm * pxProCm - areaPxW);
     if (abweichung > 1) {
-      melde('FEHLER', 'Skalierung', p.id, `movementWidthCm inkonsistent (Δ ${abweichung.toFixed(1)} px)`, d.view);
+      melde('FEHLER', 'Skalierung', p.id, `boxWidthCm inkonsistent (Δ ${abweichung.toFixed(1)} px)`, d.view);
     }
   }
 }

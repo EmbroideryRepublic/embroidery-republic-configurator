@@ -2,11 +2,11 @@
  * Zentrale Mapping-Registry – die EINZIGE Stelle, an der jedem Lieferanten
  * seine Variantentabelle zugeordnet wird.
  *
- * `Record<SupplierId, SupplierVariantMap>` erzwingt Vollständigkeit: wird
- * die SupplierId-Union (../types) um einen Lieferanten erweitert,
- * kompiliert das Projekt erst wieder, wenn hier auch seine Tabelle
- * eingetragen ist – ein vergessenes Mapping ist ein Compile-Fehler, kein
- * stiller Laufzeitfehler.
+ * `SupplierId` ist eine OFFENE ID (`string`, ADR 0004); Vollständigkeit erzwingt
+ * daher NICHT der Compiler, sondern der Wächter-Test (`../__tests__/registry.test.ts`):
+ * fehlt einem registrierten Lieferanten die Tabelle (oder umgekehrt), schlägt der
+ * Test an – ein vergessenes Mapping wird so vor dem Merge sichtbar, statt erst im
+ * fail-loud `getVariantMap` zur Laufzeit.
  *
  * Bewusst getrennt von der Adapter-Registry (../registry.ts): Adapter
  * kapseln die Browser-Steuerung, diese Registry die Datenübersetzung. Ein
@@ -27,8 +27,13 @@ export const SUPPLIER_VARIANT_MAPS: Record<SupplierId, SupplierVariantMap> = {
   ralawise: ralawiseMap,
 };
 
-/** Variantentabelle eines Lieferanten (immer vorhanden – Record ist über
- *  die SupplierId-Union vollständig typgeprüft). */
+/** Variantentabelle eines Lieferanten. Fail-loud: unbekannte ID wirft mit klarer
+ *  Meldung (SupplierId ist offen; Wächter-Test sichert, dass jeder genutzte
+ *  Lieferant eine Tabelle hat). */
 export function getVariantMap(id: SupplierId): SupplierVariantMap {
-  return SUPPLIER_VARIANT_MAPS[id];
+  const map = SUPPLIER_VARIANT_MAPS[id];
+  if (!map) {
+    throw new Error(`Keine Variantentabelle für Lieferant "${id}" registriert (mapping/registry.ts).`);
+  }
+  return map;
 }

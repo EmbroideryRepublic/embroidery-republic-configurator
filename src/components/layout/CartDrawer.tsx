@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { useCartStore, getCartTotal } from '@/stores/cartStore';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
@@ -23,6 +24,8 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
   const removeItem = useCartStore((s) => s.removeItem);
   const clearCart = useCartStore((s) => s.clear);
   const loadCartItemForEditing = useConfiguratorStore((s) => s.loadCartItemForEditing);
+  const router = useRouter();
+  const pathname = usePathname();
   const [step, setStep] = useState<DrawerStep>('cart');
   const [orderNumber, setOrderNumber] = useState('');
   const language = useLanguageStore((s) => s.language);
@@ -52,6 +55,10 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
     });
     removeItem(item.id);
     onClose();
+    // Aus dem GLOBALEN Warenkorb (Shop-Seiten) muss zum Konfigurator gewechselt
+    // werden, damit das geladene Design auch sichtbar bearbeitet werden kann.
+    // Im Konfigurator selbst ist man bereits dort – kein Wechsel nötig.
+    if (!pathname?.startsWith('/konfigurator')) router.push('/konfigurator');
   }
 
   return (
@@ -361,6 +368,11 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
               Hinweis statt einer Auswahl mit nur einer Option. */}
           <div className="rounded-lg border border-gold bg-gold-light/30 px-3 py-2.5">
             <p className="text-sm font-medium text-brand">{t('checkout_payment_invoice')}</p>
+            {/* Zentrales Kaufargument zuerst und hervorgehoben: keine Vorkasse. */}
+            <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-gold-dark">
+              <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0" aria-hidden />
+              {t('checkout_no_prepay')}
+            </p>
             <p className="mt-1 text-xs leading-relaxed text-brand/60">{t('checkout_payment_invoice_note')}</p>
           </div>
         </section>
@@ -442,7 +454,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
         <button
           type="submit"
           disabled={!isValid || isSubmitting}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold py-2.5 text-sm font-medium text-white shadow-elegant transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold py-2.5 text-sm font-medium text-white shadow-elegant transition-all duration-200 ease-out hover:bg-gold-dark active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100"
         >
           {isSubmitting ? (
             <>
@@ -453,6 +465,9 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
             `${t('checkout_submit')} · ${formatPrice(grandTotal)}`
           )}
         </button>
+        {/* Dezente Sicherheitszusage direkt unter dem Absenden – nimmt die
+            letzte Unsicherheit, ohne Badge-Lärm. */}
+        <p className="mt-2 text-center text-[11px] text-brand/40">{t('checkout_secure_note')}</p>
       </div>
     </form>
   );

@@ -32,7 +32,8 @@ export interface Merkmale {
   groesse: string[];
   farbe: string[];
   geschlecht: string[];
-  gewicht: number;
+  /** g/m² – kann fehlen, wenn die Lieferantenquelle keine Grammatur nennt. */
+  gewicht: number | undefined;
   preis: number;
   lieferbar: boolean;
   aufgenommenAm: string;
@@ -80,8 +81,11 @@ export function passt(m: Merkmale, k: FilterKriterien, ausser?: MengenDimension)
   if (!pruefe('farbe', m.farbe)) return false;
   if (!pruefe('geschlecht', m.geschlecht)) return false;
 
-  if (k.gewichtVon !== undefined && m.gewicht < k.gewichtVon) return false;
-  if (k.gewichtBis !== undefined && m.gewicht > k.gewichtBis) return false;
+  // Produkte ohne veröffentlichte Grammatur (m.gewicht === undefined) werden
+  // vom Gewichtsfilter nicht ausgeschlossen – ohne Wert lässt sich die Grenze
+  // nicht prüfen, statt sie still zu verwerfen.
+  if (k.gewichtVon !== undefined && m.gewicht !== undefined && m.gewicht < k.gewichtVon) return false;
+  if (k.gewichtBis !== undefined && m.gewicht !== undefined && m.gewicht > k.gewichtBis) return false;
   if (k.preisVon !== undefined && m.preis < k.preisVon) return false;
   if (k.preisBis !== undefined && m.preis > k.preisBis) return false;
 
@@ -204,11 +208,13 @@ function werteVon(m: Merkmale, dim: MengenDimension): string[] {
 /** Preis- und Gewichtsspanne des GESAMTEN Bestands – Grenzen der Schieberegler. */
 export function spannen(alle: Merkmale[]): Spannen {
   const preise = alle.map((m) => m.preis);
-  const gewichte = alle.map((m) => m.gewicht);
+  // Produkte ohne veröffentlichte Grammatur (gewicht === undefined) fließen
+  // NICHT in die Schiebereglergrenzen ein – sonst würde Math.min/max NaN.
+  const gewichte = alle.map((m) => m.gewicht).filter((g): g is number => g !== undefined);
   return {
     preisMin: Math.floor(Math.min(...preise)),
     preisMax: Math.ceil(Math.max(...preise)),
-    gewichtMin: Math.min(...gewichte),
-    gewichtMax: Math.max(...gewichte),
+    gewichtMin: gewichte.length ? Math.min(...gewichte) : 0,
+    gewichtMax: gewichte.length ? Math.max(...gewichte) : 0,
   };
 }

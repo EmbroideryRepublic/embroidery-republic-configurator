@@ -9,6 +9,7 @@
  * Diese Seite macht nur sofort sichtbar, wo noch etwas fehlt.
  */
 import { PRODUCTS } from '@/config/products';
+import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { getSupplierDescriptor } from '@/lib/suppliers/registry';
 import {
   buildSupplierMappingCoverage,
@@ -61,7 +62,7 @@ export default async function AdminSupplierMappingPage() {
   if (!(await istAdmin())) return null;
   const products: CoverageProduct[] = PRODUCTS.map((p) => ({
     id: p.id,
-    supplierId: p.supplier?.supplierId,
+    supplierId: supplierRefVon(p.id)?.supplierId,
     colorIds: p.colors.map((c) => c.id),
     sizes: p.sizes,
   }));

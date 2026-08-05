@@ -10,6 +10,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { alleProduktSlugs, ladeProduktseite } from '../productPage';
 import { PRODUCTS } from '@/config/products';
+import { ansichtenVon } from '@/lib/products/ansichten';
+import { bildFuerAnsicht } from '@/lib/assets';
 
 test('jedes Katalogprodukt hat einen Slug', () => {
   assert.equal(alleProduktSlugs().length, PRODUCTS.length);
@@ -38,7 +40,10 @@ test('jede Produktseite lädt und trägt die Pflichtangaben', () => {
     assert.ok(p.material.trim(), `${slug}: kein Material`);
     assert.ok(p.careInstructions.trim(), `${slug}: keine Pflegehinweise`);
     assert.ok(p.fit.trim(), `${slug}: keine Passform`);
-    assert.ok(p.weightGsm > 0, `${slug}: kein Flächengewicht`);
+    // weightGsm ist optional: einzelne Lieferantenprodukte haben an der Quelle
+    // keine veröffentlichte Grammatur (kein geschätzter Wert). Wenn gesetzt,
+    // muss der Wert plausibel (> 0) sein.
+    assert.ok(p.weightGsm === undefined || p.weightGsm > 0, `${slug}: unplausibles Flächengewicht`);
     assert.ok(p.basePrice > 0, `${slug}: kein Preis`);
     assert.ok(p.sizes.length > 0, `${slug}: keine Größen`);
     assert.ok(p.colors.length > 0, `${slug}: keine Farben`);
@@ -50,13 +55,13 @@ test('jede Produktseite lädt und trägt die Pflichtangaben', () => {
 test('jedes Produkt hat Bilder für alle geführten Ansichten', () => {
   for (const slug of alleProduktSlugs()) {
     const p = ladeProduktseite(slug)!.produkt;
-    const noetig = p.hasSleeves === false
-      ? (['front', 'back'] as const)
-      : (['front', 'back', 'sleeve_left', 'sleeve_right'] as const);
+    // Datengetrieben: die geführten Ansichten kommen aus ansichtenVon(),
+    // nicht aus einer festen front/back/sleeve-Liste.
+    const noetig = ansichtenVon(p);
 
     for (const c of p.colors) {
       for (const v of noetig) {
-        assert.ok(c.images[v], `${slug}/${c.id}: Bild für ${v} fehlt`);
+        assert.ok(bildFuerAnsicht(p.id, c.id, v), `${slug}/${c.id}: Bild für ${v} fehlt`);
       }
     }
   }

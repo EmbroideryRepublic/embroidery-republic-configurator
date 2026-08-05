@@ -118,7 +118,7 @@ for (const p of PRODUCTS) {
     luecken++;
     continue;
   }
-  const braucht = p.hasSleeves === false ? ANSICHTEN.slice(0, 2) : ANSICHTEN;
+  const braucht = p.views ?? ANSICHTEN;
   for (const o of ordner) {
     const fehlend = braucht.filter((a) => !bildPfad(o, a));
     if (fehlend.length > 0) {

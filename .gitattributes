@@ -1,0 +1,9 @@
+# Minifizierte, ausgelieferte Worker-Datei von pdf.js.
+#
+# Ohne diese Regel wandelt Git auf Windows (core.autocrlf=true) beim Checkout
+# die Zeilenenden auf CRLF um. Der Wächter-Test vergleicht die Prüfsumme dieser
+# Datei mit der Original-Datei aus node_modules/pdfjs-dist (LF) – die CRLF-
+# Variante hat eine andere Prüfsumme und ließ den Test lokal fehlschlagen.
+# Der committete Git-Blob ist LF (Linux/Vercel daher unbetroffen); diese Regel
+# hält auch die lokale Arbeitskopie stabil bei LF.
+public/pdf.worker.min.mjs -text

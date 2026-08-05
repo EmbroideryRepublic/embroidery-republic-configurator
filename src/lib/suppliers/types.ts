@@ -8,24 +8,31 @@
  * Adapter und der spätere Playwright-Worker sie alle gefahrlos importieren,
  * ohne Zyklen zu erzeugen.
  *
- * Erweiterung um einen neuen Lieferanten:
- *   1. SupplierId-Union unten ergänzen (z.B. | 'ralawise').
- *   2. Adapter-Klasse unter adapters/ anlegen (Interface SupplierAdapter).
- *   3. Eintrag in registry.ts ergänzen (Record ist über SupplierId
- *      vollständig typisiert – ein vergessener Eintrag ist ein
- *      Compile-Fehler, kein stiller Laufzeitfehler).
+ * Erweiterung um einen neuen Lieferanten – REIN ADDITIV (ADR 0004):
+ *   1. Adapter-Klasse unter adapters/ anlegen (Interface SupplierAdapter).
+ *   2. Mapping-Tabelle unter mapping/tables/ anlegen.
+ *   3. Je einen Eintrag in registry.ts (Adapter/Config) UND
+ *      mapping/registry.ts (Variantentabelle) ergänzen.
+ *   4. Zugangsdaten in .env.local hinterlegen.
+ * KEIN Eingriff in diesen Typ oder in die Kernlogik (resolve/orchestrator/…);
+ * Wächter-Tests sichern die Konsistenz statt einer geschlossenen Union.
  */
 
-/** Alle bekannten Lieferanten. Bewusst eine geschlossene Union statt
- *  freiem String: Registry und Worker sind darüber VOLLSTÄNDIG
- *  typgeprüft – ein Tippfehler wie 'wordan' fällt beim Kompilieren auf. */
-export type SupplierId = 'textil-grosshandel' | 'wordans' | 'needen' | 'ralawise';
+/**
+ * Lieferanten-ID als OFFENE ID (analog PrintView/ProductType, ADR 0001/0002/0004).
+ * Die gültige Menge kommt aus den Lieferanten-Registries (registry.ts /
+ * mapping/registry.ts), nicht aus dem Typ; Wächter-Tests erzwingen: jeder Adapter
+ * hat eine Mapping-Tabelle und umgekehrt, und jede genutzte ID ist registriert.
+ * Bekannt heute: textil-grosshandel, wordans, needen, ralawise.
+ */
+export type SupplierId = string;
 
 /**
- * Lieferanten-Referenz EINES Katalogprodukts – hängt als optionales Feld
- * an ProductConfig (src/config/products/types.ts) und wird zentral in
- * src/config/products/supplierRefs.ts gepflegt (eine Datei statt über
- * 9 Marken-Dateien verstreut; später 1:1 in eine DB-Tabelle überführbar).
+ * Lieferanten-Referenz EINES Katalogprodukts. Seit ADR 0004 trägt die
+ * Produktdefinition KEIN Lieferanten-Wissen mehr: die Referenz lebt zentral in
+ * src/lib/suppliers/supplierRefs.ts (Record<productId, …>) und wird über den
+ * Resolver `supplierRefVon(productId)` aufgelöst – eine Datei statt über
+ * 9 Marken-Dateien verstreut; später 1:1 in eine DB-Tabelle überführbar.
  */
 export interface SupplierProductRef {
   supplierId: SupplierId;
@@ -62,10 +69,10 @@ export interface SupplierOrderPosition {
   productUrl: string;
   /** Unsere Farb-ID (z.B. "royal") – für Rückverfolgung. */
   colorId: string;
-  /** Anzeigename der Farbe (z.B. "Royal") – der Adapter nutzt ihn, um im
-   *  Lieferanten-Shop die passende Farbvariante anzuklicken. Falls der
-   *  Lieferant andere Farbnamen verwendet, übersetzt der jeweilige
-   *  Adapter (NICHT dieser Datensatz). */
+  /** Anzeigename der Farbe (z.B. "Royal") – interner Anzeige-/Rückverfolgungs-
+   *  name (Audit-Snapshot). Die Farbauswahl im Shop läuft NICHT über dieses
+   *  Feld, sondern über den in der Mapping-Schicht aufgelösten `colorVariant`
+   *  (Label/variantId); die Übersetzung liegt in mapping/, nicht im Adapter. */
   colorName: string;
   sizes: SupplierSizeQuantity[];
 }

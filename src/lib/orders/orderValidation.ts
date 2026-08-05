@@ -26,7 +26,7 @@
 import { getProduct } from '@/config/products';
 import { getPrintAreas } from '@/config/printAreas';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
-import type { CartItem, PrintMethod, PrintView } from '@/types';
+import type { CartItem, PrintMethod } from '@/types';
 
 /**
  * TECHNISCHE SCHUTZGRENZEN – ausdrücklich KEINE Geschäftsentscheidungen.
@@ -58,7 +58,6 @@ export const GRENZEN = {
   toleranzCm: 0.5,
 } as const;
 
-const ERLAUBTE_ANSICHTEN: readonly PrintView[] = ['front', 'back', 'sleeve_left', 'sleeve_right'];
 const ERLAUBTE_VEREDELUNGEN: readonly PrintMethod[] = ['dtf', 'embroidery'];
 
 export interface OrderValidationIssue {
@@ -261,10 +260,17 @@ async function pruefePosition(item: CartItem): Promise<OrderValidationIssue[]> {
     : [];
 
   for (const element of elemente) {
-    if (!ERLAUBTE_ANSICHTEN.includes(element.view)) {
+    // Ansicht datengetrieben prüfen: gültig ist eine Ansicht genau dann, wenn
+    // das PRODUKT für die gewählte Veredelung eine Druckfläche dieser Ansicht
+    // führt (keine globale 4er-Whitelist mehr). Behebt zugleich, dass ein Motiv
+    // auf einer vom Produkt gar nicht geführten Ansicht früher akzeptiert wurde.
+    // Bei ungültiger Veredelungsart ist druckflaechen leer – das meldet ein
+    // separater Veredelungsfehler, hier nicht doppelt.
+    const flaeche = druckflaechen.find((a) => a.view === element.view);
+    if (ERLAUBTE_VEREDELUNGEN.includes(item.printMethod) && !flaeche) {
       issues.push({
         code: 'ansicht_ungueltig',
-        message: `Ein Motiv auf „${name}" liegt auf einer unbekannten Position.`,
+        message: `Ein Motiv auf „${name}" liegt auf einer für dieses Produkt nicht verfügbaren Position.`,
         itemId,
       });
       continue;
@@ -301,7 +307,6 @@ async function pruefePosition(item: CartItem): Promise<OrderValidationIssue[]> {
     // serverseitig eindeutig in Zentimetern vergleichbar, während die
     // Position vom Bildmaßstab der jeweiligen Ansicht abhängt und der
     // Konfigurator sie ohnehin an der Fläche festhält.
-    const flaeche = druckflaechen.find((a) => a.view === element.view);
     if (flaeche) {
       const zuBreit = element.widthCm > flaeche.maxWidthCm + GRENZEN.toleranzCm;
       const zuHoch = element.heightCm > flaeche.maxHeightCm + GRENZEN.toleranzCm;

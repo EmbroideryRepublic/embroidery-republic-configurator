@@ -22,6 +22,12 @@
  * WELCHER Gruppe ein vorhandener Wert angehört.
  */
 import type { ProductConfig } from './types';
+import {
+  MATERIAL_GRUPPEN_GENERIERT,
+  PASSFORMEN_GENERIERT,
+  GESCHLECHTER_GENERIERT,
+  FARBGRUPPEN_GENERIERT,
+} from './facettenGeneriert.generated';
 
 // ── Vokabulare ─────────────────────────────────────────────────────────
 
@@ -80,7 +86,7 @@ export const FARBGRUPPE_HEX: Record<Farbgruppe, string> = {
 // „100 % Baumwolle (meliert: …)" bleibt Baumwolle: Die Melange-Abweichung
 // betrifft einzelne Farben, nicht das Produkt.
 
-export const MATERIAL_GRUPPEN: Record<string, MaterialGruppe[]> = {
+const MATERIAL_GRUPPEN_BASIS: Record<string, MaterialGruppe[]> = {
   '100% Baumwolle': ['baumwolle-100'],
   '100% Baumwolle (Grau meliert: 90% Baumwolle/10% Polyester)': ['baumwolle-100'],
   '100% Baumwolle (Grau meliert: 90% Baumwolle/10% Polyester, Dunkelgrau meliert: 50%/50%)': ['baumwolle-100'],
@@ -114,7 +120,7 @@ export const MATERIAL_GRUPPEN: Record<string, MaterialGruppe[]> = {
 // Die Freitexte mischen Passform mit Ausstattung („Kängurutasche",
 // „3-Knopfleiste"); hier zählt allein der Schnitt.
 
-export const PASSFORMEN: Record<string, Passform> = {
+const PASSFORMEN_BASIS: Record<string, Passform> = {
   'Classic Fit, Unisex': 'regular',
   'Damen, körpernah geschnitten mit Seitennähten': 'tailliert',
   'Damen, taillierte Passform mit Seitennähten': 'tailliert',
@@ -143,7 +149,7 @@ export const PASSFORMEN: Record<string, Passform> = {
 // „Unisex/Herren" ist ein Mischwert und wird auf BEIDE Werte abgebildet –
 // nur so findet die Kundin das Produkt unter „Herren" UND unter „Unisex".
 
-export const GESCHLECHTER: Record<string, Geschlecht[]> = {
+const GESCHLECHTER_BASIS: Record<string, Geschlecht[]> = {
   Damen: ['damen'],
   Herren: ['herren'],
   Unisex: ['unisex'],
@@ -154,7 +160,7 @@ export const GESCHLECHTER: Record<string, Geschlecht[]> = {
 // Zweifarbige Artikel werden nach der ZUERST genannten Farbe eingeordnet –
 // das ist die Farbe, die das Kleidungsstück prägt.
 
-export const FARBGRUPPEN: Record<string, Farbgruppe> = {
+const FARBGRUPPEN_BASIS: Record<string, Farbgruppe> = {
   Anthrazit: 'grau', Azure: 'blau', Blush: 'rosa', 'Bottle Green': 'gruen',
   'Brick Red': 'rot', Burgundy: 'rot', Chocolate: 'braun', Cranberry: 'rot',
   'Dark Grey (Solid)': 'grau', 'Deep Navy': 'blau', 'Dunkelgrau meliert': 'grau',
@@ -176,6 +182,33 @@ export const FARBGRUPPEN: Record<string, Farbgruppe> = {
  *  Für den Bestand liegt kein echtes Aufnahmedatum vor; „Neuheiten" wird
  *  deshalb erst mit den ersten gepflegten Daten aussagekräftig. */
 export const KATALOG_START = '2026-01-01';
+
+// ── Zusammenführung Hand + generiert ───────────────────────────────────
+// Die exportierten Tabellen vereinen die handgepflegten Basiszuordnungen mit
+// den automatisch erzeugten Ergänzungen der importierten Produkte
+// (facettenGeneriert.generated.ts). Der Wächter-Test „keine toten Einträge"
+// prüft die ZUSAMMENGEFÜHRTE Tabelle – der Generator emittiert daher nur
+// tatsächlich genutzte, in der Basis noch fehlende Werte.
+
+export const MATERIAL_GRUPPEN: Record<string, MaterialGruppe[]> = {
+  ...MATERIAL_GRUPPEN_BASIS,
+  ...MATERIAL_GRUPPEN_GENERIERT,
+};
+
+export const PASSFORMEN: Record<string, Passform> = {
+  ...PASSFORMEN_BASIS,
+  ...PASSFORMEN_GENERIERT,
+};
+
+export const GESCHLECHTER: Record<string, Geschlecht[]> = {
+  ...GESCHLECHTER_BASIS,
+  ...GESCHLECHTER_GENERIERT,
+};
+
+export const FARBGRUPPEN: Record<string, Farbgruppe> = {
+  ...FARBGRUPPEN_BASIS,
+  ...FARBGRUPPEN_GENERIERT,
+};
 
 // ── Auflösung je Produkt ───────────────────────────────────────────────
 

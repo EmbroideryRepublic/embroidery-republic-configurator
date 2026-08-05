@@ -28,6 +28,7 @@ const INSPIRE_ZIP_HOOD_PURCHASE_PRICE = 23.63;
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'bandc-inspire-hoodie',
+    views: ["front","back"],
     name: 'Inspire Hooded Sweat',
     brand: 'B&C',
     productType: 'hoodie',
@@ -70,7 +71,6 @@ export const PRODUCTS: ProductConfig[] = [
     // Nur Vorne+Hinten sind echte, farblich passende Fotos je Farbe – kein
     // echtes Ärmelfoto für dieses productType verfügbar (siehe Kommentar
     // oben), daher hasSleeves:false statt einer Kompromiss-Ansicht.
-    hasSleeves: false,
     colors: realPhotoFrontBackColorSet('bandc-inspire-hoodie', 'black', [
       'white',
       'navy',
@@ -82,6 +82,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'bandc-inspire-zip-hood',
+    views: ["front","back"],
     name: 'Inspire Zipped Hood Jacket',
     brand: 'B&C',
     productType: 'zip-hoodie',
@@ -124,7 +125,6 @@ export const PRODUCTS: ProductConfig[] = [
     // Nur Vorne+Hinten sind echte, farblich passende Fotos je Farbe – kein
     // echtes Ärmelfoto für dieses productType verfügbar, daher
     // hasSleeves:false statt einer Kompromiss-Ansicht.
-    hasSleeves: false,
     colors: realPhotoFrontBackColorSet('bandc-inspire-zip-hood', 'black', [
       'white',
       'navy',

@@ -45,7 +45,7 @@ const treffer: Treffer[] = [];
 let geprueft = 0;
 
 for (const p of PRODUCTS) {
-  const views = (p.hasSleeves ?? true) ? VIEWS : VIEWS.filter((v) => !v.startsWith('sleeve'));
+  const views = p.views ?? VIEWS;
   for (const view of views) {
     const a = PRINT_AREA_DATA[p.id]?.[view];
     if (!a) continue;

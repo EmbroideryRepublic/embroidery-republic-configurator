@@ -2,9 +2,12 @@
  * Zentrale Lieferanten-Registry – die EINZIGE Stelle, an der Lieferanten
  * beschrieben und ihren Adaptern zugeordnet werden.
  *
- * `Record<SupplierId, …>` erzwingt Vollständigkeit: wird die SupplierId-
- * Union in types.ts um einen Lieferanten erweitert, kompiliert das Projekt
- * erst wieder, wenn hier auch sein Descriptor eingetragen ist.
+ * `SupplierId` ist eine OFFENE ID (`string`, ADR 0004) – ein neuer Lieferant ist
+ * rein additiv (Descriptor hier + Mapping-Tabelle + Config). Vollständigkeit
+ * erzwingt daher NICHT mehr der Compiler, sondern der Wächter-Test
+ * (`__tests__/registry.test.ts`): Adapter- und Mapping-Registry müssen dieselben
+ * Lieferanten abdecken, und jede real genutzte `supplierId` muss registriert sein
+ * – sonst wirft der fail-loud-Resolver erst zur Laufzeit.
  */
 import type { SupplierAdapter } from './adapters/SupplierAdapter';
 import { TextilGrosshandelAdapter } from './adapters/TextilGrosshandelAdapter';
@@ -57,24 +60,31 @@ export const SUPPLIERS: Record<SupplierId, SupplierDescriptor> = {
   },
 };
 
+/** Lieferanten-Descriptor. Fail-loud: unbekannte ID wirft mit klarer Meldung
+ *  (SupplierId ist offen; Wächter-Test sichert die Registrierung). */
 export function getSupplierDescriptor(id: SupplierId): SupplierDescriptor {
-  return SUPPLIERS[id];
+  const descriptor = SUPPLIERS[id];
+  if (!descriptor) {
+    throw new Error(`Kein Lieferant "${id}" registriert (registry.ts).`);
+  }
+  return descriptor;
 }
 
 export function createSupplierAdapter(id: SupplierId): SupplierAdapter {
-  return SUPPLIERS[id].createAdapter();
+  return getSupplierDescriptor(id).createAdapter();
 }
 
 /** Liest die Konto-Zugangsdaten eines Lieferanten aus der Umgebung.
  *  Wirft bewusst früh und mit klarer Meldung, statt dass der Worker
  *  später mitten im Browser-Lauf an einem leeren Loginfeld scheitert. */
 export function getSupplierCredentials(id: SupplierId): SupplierCredentials {
-  const { username: userVar, password: passVar } = SUPPLIERS[id].credentialsEnv;
+  const descriptor = getSupplierDescriptor(id);
+  const { username: userVar, password: passVar } = descriptor.credentialsEnv;
   const username = process.env[userVar];
   const password = process.env[passVar];
   if (!username || !password) {
     throw new Error(
-      `Zugangsdaten für "${SUPPLIERS[id].label}" fehlen – bitte ${userVar} und ${passVar} in .env.local setzen.`
+      `Zugangsdaten für "${descriptor.label}" fehlen – bitte ${userVar} und ${passVar} in .env.local setzen.`
     );
   }
   return { username, password };

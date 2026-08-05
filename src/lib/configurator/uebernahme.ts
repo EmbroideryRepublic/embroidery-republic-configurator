@@ -7,7 +7,8 @@
  * die Auswahl deshalb mit hinüber:
  *
  *   • Farbe – exakt gleicher Name, sonst der farblich nächste Ton.
- *   • Größe – gleiche Größe, sonst die nächstgelegene Konfektionsgröße.
+ *   • Größe – gleiche Größe, sonst die nächstgelegene gemäß Größenleiter des
+ *     Zielprodukts (Konfektion/Kopfweite per Index, Einheitsgröße auf die eine).
  *   • Veredelungsart – bleibt im Store ohnehin erhalten (produktunabhängig);
  *     sie taucht hier nur der Vollständigkeit halber im Ergebnis auf.
  *
@@ -15,7 +16,7 @@
  * sinnvolle Alternative gewählt – nie einfach die erste.
  */
 import type { ProductColorConfig, ProductConfig } from '@/config/products/types';
-import { groessenIndex } from '@/config/products/groessen';
+import { naechsteGroesse, groessenLeiterVon } from '@/config/products/groessen';
 
 function hexZuRgb(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
@@ -60,41 +61,23 @@ export function passendeFarbe(neu: ProductConfig, altFarbe: ProductColorConfig |
   return beste.id;
 }
 
-/** Die dem Wunsch nächstgelegene verfügbare Konfektionsgröße. */
-export function naechsteGroesse(wunsch: string, verfuegbar: string[]): string | undefined {
-  if (verfuegbar.includes(wunsch)) return wunsch;
-  const rang = groessenIndex(wunsch);
-  if (rang === -1) return undefined; // unbekannte Größe – keine sinnvolle Nähe
-
-  let beste: string | undefined;
-  let besterAbstand = Infinity;
-  for (const g of verfuegbar) {
-    const r = groessenIndex(g);
-    if (r === -1) continue;
-    const d = Math.abs(r - rang);
-    // Bei Gleichstand die kleinere Größe bevorzugen (fällt niemandem zu eng aus).
-    if (d < besterAbstand || (d === besterAbstand && beste !== undefined && r < groessenIndex(beste))) {
-      besterAbstand = d;
-      beste = g;
-    }
-  }
-  return beste;
-}
-
 /**
  * Größen-/Mengenauswahl auf das neue Produkt abbilden.
  *
- * Vorhandene Größen bleiben; fehlende wandern auf die nächstgelegene. Fallen
- * zwei Wunschgrößen auf dieselbe Ersatzgröße, addieren sich ihre Mengen.
+ * Vorhandene Größen bleiben; fehlende wandern auf die nächstgelegene – gemäß der
+ * Größenleiter des NEUEN Produkts (Konfektion nach Index, Einheitsgröße auf die
+ * einzige Größe usw.). Fallen zwei Wunschgrößen auf dieselbe Ersatzgröße,
+ * addieren sich ihre Mengen.
  */
 export function passendeGroessen(
   neu: ProductConfig,
   mengen: Record<string, number>
 ): Record<string, number> {
+  const leiter = groessenLeiterVon(neu);
   const ergebnis: Record<string, number> = {};
   for (const [groesse, menge] of Object.entries(mengen)) {
     if (menge <= 0) continue;
-    const ziel = naechsteGroesse(groesse, neu.sizes);
+    const ziel = naechsteGroesse(groesse, neu.sizes, leiter);
     if (!ziel) continue;
     ergebnis[ziel] = (ergebnis[ziel] ?? 0) + menge;
   }

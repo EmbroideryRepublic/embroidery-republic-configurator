@@ -7,6 +7,7 @@ import { ShoppingCart, Scale, Menu, X } from 'lucide-react';
 import { useCartStore, getCartItemCount } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, type Currency } from '@/stores/currencyStore';
+import { useUiStore } from '@/stores/uiStore';
 import type { Language } from '@/lib/i18n/translations';
 
 interface SiteHeaderProps {
@@ -27,6 +28,10 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   const currency = useCurrencyStore((s) => s.currency);
   const setCurrency = useCurrencyStore((s) => s.setCurrency);
+  // Ohne eigenes onCartClick (alle Seiten außer Konfigurator) öffnet das Symbol
+  // die globale Warenkorb-Schublade.
+  const oeffneWarenkorb = useUiStore((s) => s.oeffneWarenkorb);
+  const warenkorbOeffnen = onCartClick ?? oeffneWarenkorb;
 
   const navLinks: { href: string; label: string }[] = [
     { href: '/konfigurator', label: t('nav_configurator') },
@@ -123,21 +128,11 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
             {menueOffen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
 
-          {onCartClick ? (
-            <button
-              type="button"
-              onClick={onCartClick}
-              className={WARENKORB_KLASSE}
-            >
-              <Warenkorbinhalt count={count} label={t('nav_cart')} />
-            </button>
-          ) : (
-            /* Ohne Schublade (alle Seiten außer dem Konfigurator) führt der
-               Warenkorb dorthin, wo er sich öffnen lässt. */
-            <Link href="/konfigurator" className={WARENKORB_KLASSE}>
-              <Warenkorbinhalt count={count} label={t('nav_cart')} />
-            </Link>
-          )}
+          {/* Öffnet überall dieselbe Schublade: im Konfigurator dessen eigene
+              (onCartClick), sonst die globale (CartDrawerHost via UI-Store). */}
+          <button type="button" onClick={warenkorbOeffnen} className={WARENKORB_KLASSE}>
+            <Warenkorbinhalt count={count} label={t('nav_cart')} />
+          </button>
         </div>
       </div>
 

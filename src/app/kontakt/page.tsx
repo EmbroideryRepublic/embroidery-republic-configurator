@@ -31,12 +31,15 @@ const HELPERS = [
 export default function KontaktPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
-      <Link href="/" className="text-xs text-gold-dark hover:underline">
+      <Link href="/" className="text-xs text-gold-dark transition-colors hover:text-gold">
         ← Zurück zur Startseite
       </Link>
 
-      <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Kontakt</h1>
-      <p className="mb-6 text-sm text-brand/60">
+      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold">Persönliche Beratung</p>
+      <h1 className="mt-4 font-serif text-[clamp(2.25rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
+        Kontakt
+      </h1>
+      <p className="mt-6 mb-8 max-w-xl text-[17px] leading-relaxed text-brand/60">
         Fragen zu Ihrer Konfiguration, zu Mengenrabatten oder ein individuelles Projekt? Schreiben Sie
         uns – wir melden uns persönlich zurück, meist innerhalb eines Werktags.
       </p>
@@ -45,7 +48,7 @@ export default function KontaktPage() {
 
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {HELPERS.map((h) => (
-          <div key={h.title} className="rounded-xl border border-gold/20 bg-white p-4 shadow-elegant">
+          <div key={h.title} className="rounded-2xl border border-gold/20 bg-white p-4 shadow-elegant">
             <span className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-gold-light text-gold-dark">
               <h.icon className="h-4 w-4" />
             </span>
@@ -55,7 +58,7 @@ export default function KontaktPage() {
         ))}
       </div>
 
-      <div className="mt-8 rounded-xl border border-gold/20 bg-white p-5 shadow-elegant">
+      <div className="mt-8 rounded-2xl border border-gold/20 bg-white p-5 shadow-elegant">
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/50">
           Direkter Kontakt
         </h2>

@@ -1,4 +1,4 @@
-import type { PrintView } from '@/types';
+import type { PrintView, PrintMethod } from '@/types';
 import { DECORATION_POSITION_ORDER, positionLabel } from '@/config/decorationPositions';
 
 /**
@@ -75,7 +75,7 @@ export interface OrderItemRecord {
   colorId: string;
   productName: string;
   colorName: string;
-  printMethod: 'dtf' | 'embroidery';
+  printMethod: PrintMethod;
   sizeQuantities: Record<string, number>;
   quantity: number;
   unitPrice: number;

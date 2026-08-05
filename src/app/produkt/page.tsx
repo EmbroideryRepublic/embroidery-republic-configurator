@@ -16,17 +16,29 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { PRODUCTS } from '@/config/products';
+import { produktTypLabelPlural, PRODUCT_TYPE_ORDER } from '@/config/products/types';
 import { ShopFilter } from '@/components/shop/ShopFilter';
 import { Produktkachel } from '@/components/shop/Produktkachel';
-import { produktAbfrage } from '@/lib/catalog/abfrage';
+import { produktAbfrage, ALLE_MERKMALE } from '@/lib/catalog/abfrage';
 import { ladeBeliebtheit } from '@/lib/catalog/beliebtheit';
-import { merkmaleVon } from '@/lib/catalog/filter';
 import { hatAktiveFilter, leseKriterien, schreibeKriterien, type SuchParameter } from '@/lib/catalog/kriterien';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { basisUrl } from '@/lib/seo/basisUrl';
+import { katalogBrotkrumenSchema, sammlungSchema } from '@/lib/seo/strukturierteDaten';
 
 export const dynamic = 'force-dynamic';
 
-const BESCHREIBUNG =
-  'T-Shirts, Poloshirts, Hoodies, Sweatshirts und Longsleeves etablierter Marken – mit DTF-Transferdruck oder Stickerei veredelt, ab 1 Stück.';
+/** „A, B und C" aus einer Liste. */
+function listeMitUnd(items: string[]): string {
+  if (items.length === 0) return 'Produkte';
+  if (items.length === 1) return items[0]!;
+  return `${items.slice(0, -1).join(', ')} und ${items[items.length - 1]!}`;
+}
+// Selbst-aktualisierende Katalog-Beschreibung: die tatsächlich vertretenen
+// Produktarten (in Registry-Reihenfolge) statt einer hartkodierten, veraltenden
+// Kleidungsliste – eine neue Produktgruppe (Tasche/Cap …) erscheint automatisch (M4).
+const VORHANDENE_ARTEN = PRODUCT_TYPE_ORDER.filter((t) => PRODUCTS.some((p) => p.productType === t));
+const BESCHREIBUNG = `${listeMitUnd(VORHANDENE_ARTEN.map(produktTypLabelPlural))} etablierter Marken – mit DTF-Transferdruck oder Stickerei veredelt, ab 1 Stück.`;
 
 /** So viele Produkte tragen die Auszeichnung „Bestseller". */
 const BESTSELLER_ANZAHL = 3;
@@ -56,8 +68,19 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
 
   const liste = kriterien.ansicht === 'liste';
 
+  // Strukturierte Daten nur für die ungefilterte, indexierbare Übersicht –
+  // gefilterte Ansichten sind noindex und beschreiben keine eigene Sammlung.
+  const gefiltert = hatAktiveFilter(kriterien);
+  const basis = basisUrl();
+
   return (
     <main className="min-h-screen bg-brand-light">
+      {!gefiltert && (
+        <>
+          <JsonLd daten={sammlungSchema(basis, PRODUCTS.length)} />
+          <JsonLd daten={katalogBrotkrumenSchema(basis)} />
+        </>
+      )}
       <div className="mx-auto max-w-[1500px] px-4 pb-24 pt-12 sm:px-8">
         <h1 className="font-serif text-[clamp(2rem,3.6vw,2.75rem)] font-normal tracking-tight text-brand">
           Alle Produkte
@@ -73,7 +96,7 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
             spannen={ergebnis.spannen}
             bezeichnungen={ergebnis.bezeichnungen}
             gesamt={ergebnis.gesamt}
-            merkmale={PRODUCTS.map(merkmaleVon)}
+            merkmale={ALLE_MERKMALE}
           >
             {ergebnis.produkte.length === 0 ? (
               <div className="py-24 text-center">

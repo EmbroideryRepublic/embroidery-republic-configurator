@@ -13,6 +13,7 @@
  * `window` da ist (SSR).
  */
 import type { ProductConfig } from '@/config/products/types';
+import { resolveColorImages, repraesentativBildVon } from '@/lib/assets';
 
 const angestossen = new Set<string>();
 
@@ -24,23 +25,24 @@ function lade(url: string): void {
   img.src = url;
 }
 
-/** Alle vier Ansichten der ersten Farbe – das, was beim Öffnen eines Modells zählt. */
+/** Alle vorhandenen Ansichten der ersten Farbe – das, was beim Öffnen eines
+ *  Modells zählt. Iteriert über die tatsächlich geführten Ansichten des
+ *  Produkts (keine feste front/back/sleeve-Annahme). */
 export function vorladenModell(p: ProductConfig): void {
   if (typeof window === 'undefined') return;
   const farbe = p.colors[0];
   if (!farbe) return;
-  lade(farbe.images.front);
-  lade(farbe.images.back);
-  lade(farbe.images.sleeve_left);
-  lade(farbe.images.sleeve_right);
+  for (const url of Object.values(resolveColorImages(p.id, farbe.id))) lade(url);
 }
 
-/** Vorderansichten mehrerer Modelle – beim Öffnen einer Produktart. */
+/** Repräsentativbilder mehrerer Modelle – beim Öffnen einer Produktart. */
 export function vorladenListe(produkte: ProductConfig[]): void {
   if (typeof window === 'undefined') return;
   for (const p of produkte) {
-    const front = p.colors[0]?.images.front;
-    if (front) lade(front);
+    const farbe = p.colors[0];
+    if (!farbe) continue;
+    const rep = repraesentativBildVon(p.id, farbe.id);
+    if (rep) lade(rep);
   }
 }
 
@@ -48,9 +50,7 @@ export function vorladenListe(produkte: ProductConfig[]): void {
 export function vorladenAlleFarben(p: ProductConfig): void {
   if (typeof window === 'undefined') return;
   for (const farbe of p.colors) {
-    lade(farbe.images.front);
-    lade(farbe.images.back);
-    lade(farbe.images.sleeve_left);
-    lade(farbe.images.sleeve_right);
+    for (const url of Object.values(resolveColorImages(p.id, farbe.id))) lade(url);
   }
 }
+

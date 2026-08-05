@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { GlobaleKopfzeile } from '@/components/layout/GlobaleKopfzeile';
+import { CartDrawerHost } from '@/components/layout/CartDrawerHost';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -60,6 +61,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GlobaleKopfzeile />
         <div className="flex-1">{children}</div>
         <Footer />
+        {/* Globale Warenkorb-Schublade: auf allen Seiten außer dem Konfigurator
+            (der bringt seine eigene mit). Rendert nur, wenn geöffnet. */}
+        <CartDrawerHost />
       </body>
     </html>
   );

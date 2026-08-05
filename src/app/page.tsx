@@ -25,16 +25,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { ArrowRight, Package, Receipt, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, Package, Palette, Scissors, Shirt } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { PRODUCTS } from '@/config/products';
+import { repraesentativBildVon } from '@/lib/assets';
 import { FARBGRUPPEN } from '@/config/products/facetten';
-import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
+import { produktTypLabel, PRODUCT_TYPE_ORDER, PRODUCT_TYPES } from '@/config/products/types';
 import { SHIPPING_RATES } from '@/config/shipping';
-import { PRODUKTIONSTAGE, PAYMENT_TERM_DAYS } from '@/config/company';
+import { PRODUKTIONSTAGE } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
+import { Kundenstimmen } from '@/components/shop/Kundenstimmen';
 import { basisUrl } from '@/lib/seo/basisUrl';
 import { organisationSchema } from '@/lib/seo/strukturierteDaten';
 import type { ProductType } from '@/types';
@@ -43,36 +45,28 @@ export const metadata: Metadata = {
   title: 'Textilveredelung mit Stickerei & DTF-Druck',
   description:
     'Hochwertige Stickerei und DTF-Transferdruck für Unternehmen, Vereine und Marken. Selbst gestalten im Konfigurator – ab 1 Stück, ohne Mindestbestellmenge.',
+  alternates: { canonical: '/' },
 };
 
-/** Reihenfolge der Kacheln: von der häufigsten Anfrage abwärts. */
-const REIHENFOLGE: ProductType[] = [
-  'tshirt', 'polo', 'hoodie', 'zip-hoodie', 'sweater', 'longsleeve', 'jacket', 'vest',
-];
+/** Reihenfolge der Kacheln: häufigste Anfrage zuerst – zentral in
+ *  PRODUCT_TYPE_ORDER (config/products/types). */
+const REIHENFOLGE = PRODUCT_TYPE_ORDER;
 
-/**
- * Wunschfarbe je Kachel.
- *
- * Ohne diese Vorgabe zeigt jede Kachel `colors[0]` – und weil die Kataloge
- * fast überall mit Schwarz beginnen, stand hier eine Reihe aus sieben nahezu
- * gleichen dunklen Umrissen. Gesucht wird deshalb pro Kachel eine andere
- * Farbfamilie; gezeigt wird nur, was der Katalog auch führt (findeBild fällt
- * sonst auf die erste Farbe zurück – es wird nichts eingefärbt).
- */
-const KACHELFARBE: Partial<Record<ProductType, string[]>> = {
-  tshirt: ['rot'], polo: ['blau'], hoodie: ['grau'], 'zip-hoodie': ['schwarz'],
-  sweater: ['gruen'], longsleeve: ['weiss'], jacket: ['blau'], vest: ['rot'],
-};
-
-/** Erstes echtes Katalogbild in einer der Wunschfarbfamilien. */
+/** Erstes echtes Katalogbild in einer der Wunsch-Farbfamilien der Kachel.
+ *  Die Wunschfarben stehen zentral im PRODUCT_TYPES-Register (`kachelFarbe`):
+ *  ohne Vorgabe zeigte jede Kachel `colors[0]` und – weil die Kataloge fast
+ *  überall mit Schwarz beginnen – eine Reihe nahezu gleicher dunkler Umrisse.
+ *  Fällt keine Wunschfarbe, greift die erste Katalogfarbe (nichts wird eingefärbt). */
 function findeBild(treffer: typeof PRODUCTS, art: ProductType): string | undefined {
-  for (const wunsch of KACHELFARBE[art] ?? []) {
+  for (const wunsch of PRODUCT_TYPES[art]?.kachelFarbe ?? []) {
     for (const p of treffer) {
       const farbe = p.colors.find((c) => FARBGRUPPEN[c.name] === wunsch);
-      if (farbe) return farbe.images.front;
+      if (farbe) return repraesentativBildVon(p.id, farbe.id);
     }
   }
-  return treffer[0]?.colors[0]?.images.front;
+  const ersteProdukt = treffer[0];
+  const ersteFarbe = ersteProdukt?.colors[0];
+  return ersteProdukt && ersteFarbe ? repraesentativBildVon(ersteProdukt.id, ersteFarbe.id) : undefined;
 }
 
 /** Farbfamilien in der Reihenfolge des Spektrums – das Band soll fließen. */
@@ -104,9 +98,12 @@ export default function Startseite() {
     .map(([name, d]) => ({ name, ...d }))
     .sort((a, b) => FAMILIENFOLGE.indexOf(a.gruppe) - FAMILIENFOLGE.indexOf(b.gruppe));
 
-  // Die Bühne zeigt den Hoodie: größte Fläche, stärkster Auftritt bei der
-  // Auflösung, die die Lieferantenfotos hergeben.
-  const buehne = kategorien.find((k) => k.art === 'hoodie') ?? kategorien[0];
+  // Die Bühne zeigt die als `hero` markierte Art (Register) – aktuell der
+  // Hoodie: größte Fläche, stärkster Auftritt bei der Auflösung, die die
+  // Lieferantenfotos hergeben. Fällt keine hero-Art in den Bestand, greift die
+  // erste Kategorie.
+  const buehne = kategorien.find((k) => PRODUCT_TYPES[k.art]?.hero) ?? kategorien[0];
+  const buehneDef = buehne ? PRODUCT_TYPES[buehne.art] : undefined;
 
   return (
     <main className="bg-brand-light">
@@ -120,7 +117,10 @@ export default function Startseite() {
             <p className="text-[11px] uppercase tracking-[0.3em] text-gold">
               Stickerei &amp; DTF-Druck
             </p>
-            <h1 className="mt-7 font-serif text-[clamp(3.5rem,7.6vw,7.5rem)] font-normal leading-[0.9] tracking-[-0.025em] text-brand">
+            <h1
+              aria-label="Dein Design. Unsere Qualität."
+              className="mt-7 font-serif text-[clamp(3.5rem,7.6vw,7.5rem)] font-normal leading-[0.9] tracking-[-0.025em] text-brand"
+            >
               Dein Design.
               <span className="mt-1 block text-gold">Unsere Qualität.</span>
             </h1>
@@ -131,7 +131,7 @@ export default function Startseite() {
             <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
               <Link
                 href="/konfigurator"
-                className="group inline-flex items-center gap-3 rounded-full bg-brand px-9 py-4 text-[15px] font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-[0_16px_36px_-12px_rgba(43,36,28,0.5)]"
+                className="group inline-flex items-center gap-3 rounded-full bg-brand px-9 py-4 text-[15px] font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-[0_16px_36px_-12px_rgba(43,36,28,0.5)] active:scale-[0.98]"
               >
                 Jetzt gestalten
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -155,10 +155,10 @@ export default function Startseite() {
               aria-hidden
               className="absolute h-[min(86vw,620px)] w-[min(86vw,620px)] rounded-full bg-[radial-gradient(circle_at_50%_45%,#ffffff_0%,#f6efe2_55%,rgba(246,239,226,0)_72%)]"
             />
-            {buehne && (
+            {buehneDef?.heroBild && (
               <Image
-                src="/buehne/hoodie.png"
-                alt="Hoodie aus dem Sortiment, bereit zur Veredelung"
+                src={buehneDef.heroBild}
+                alt={buehneDef.heroAlt ?? ''}
                 width={620}
                 height={720}
                 priority
@@ -170,72 +170,108 @@ export default function Startseite() {
         </div>
       </section>
 
-      {/* ══ Serviceversprechen ══════════════════════════════════════════
-          Vertrauensanker direkt unter der Bühne: was der Kunde bekommt,
-          bevor er stöbert. Ausschließlich belegte Zusagen aus config/*. */}
-      <section className="border-y border-brand/[0.08] bg-white/60">
-        <ul className="mx-auto grid max-w-[1500px] sm:grid-cols-2 lg:grid-cols-4">
-          <Versprechen
-            icon={ShieldCheck}
-            titel="Kostenlose Designprüfung"
-            text="Wir prüfen jedes Motiv vor der Produktion – auf unsere Kosten."
-          />
-          <Versprechen
-            icon={Package}
-            titel="Ab 1 Stück"
-            text="Keine Mindestmenge. Staffelpreise beginnen ab fünf Stück."
-          />
-          <Versprechen
-            icon={Sparkles}
-            titel="Druck & Stickerei"
-            text="DTF für Farbverläufe, Stickerei für edle Firmenlogos."
-          />
-          <Versprechen
-            icon={Receipt}
-            titel="Kauf auf Rechnung"
-            text={`Zahlungsziel ${PAYMENT_TERM_DAYS} Tage – keine Vorkasse nötig.`}
-          />
-        </ul>
-      </section>
+      {/* ══ Kategorien ══════════════════════════════════════════════════
+          Ein Abschnitt vereint Einstieg, Vorteile und Kategorie-Auswahl.
+          ── Rechter Markenbereich ──────────────────────────────────────
+          Bewusst gestaltetes Material-Panel (warmer Verlauf + eingeprägtes
+          R-Monogramm, echtes Markenzeichen) – KEIN fabriziertes Foto, kein
+          Platzhalter. Maße/Seitenverhältnis sind final: sobald echte Marken-
+          oder Lifestyle-Fotografie vorliegt, ersetzt ein
+          `<Image fill className="object-cover" />` im selben Container die
+          Gestaltung, ohne dass das Layout angepasst werden muss. */}
+      <section className="mx-auto max-w-[1500px] px-4 pb-24 pt-20 sm:px-8 lg:pt-24">
+        <div className="grid items-start gap-10 lg:grid-cols-[1fr_0.8fr] lg:gap-14">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Kategorien entdecken</p>
+            <h2 className="mt-6 font-serif text-[clamp(2.25rem,4.5vw,3.75rem)] font-normal leading-[1.02] tracking-[-0.025em] text-brand">
+              Ihre Lieblingsstücke.
+              <span className="block">Ihre Marke.</span>
+            </h2>
+            <p className="mt-4 max-w-md text-[16px] leading-relaxed text-brand/70">
+              Wählen Sie Ihr Textil und gestalten Sie es mit Ihrem Logo, Motiv oder Schriftzug.
+              Hochwertige Basics, perfekt veredelt – für Unternehmen, Teams und Marken.
+            </p>
 
-      {/* ══ Sortiment ═══════════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-[1500px] px-4 pb-24 pt-24 sm:px-8">
-        <div className="flex items-end justify-between gap-8">
-          <h2 className="font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
-            Für jeden Look
-            <span className="block text-gold">das Richtige.</span>
-          </h2>
-          <Link
-            href="/produkt"
-            className="group hidden shrink-0 items-center gap-2 border-b border-brand/20 pb-1 text-[14px] text-brand/60 transition-colors duration-300 hover:border-brand hover:text-brand sm:inline-flex"
+            <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              <Vorteil icon={Scissors} titel="Hochwertige Veredelung" text="Stick & DTF-Transferdruck" />
+              <Vorteil icon={Palette} titel="Große Auswahl" text="Farben, Größen & Marken" />
+              <Vorteil
+                icon={Package}
+                titel="Schnelle Produktion"
+                text={`In ${PRODUKTIONSTAGE.von}–${PRODUKTIONSTAGE.bis} Werktagen bei Ihnen`}
+              />
+            </ul>
+          </div>
+
+          {/* Markenbereich – echtes, in Baumwollstoff gesticktes ER-Marken­
+              zeichen. Container-Maße unverändert (aspect-[4/3]); object-cover
+              hält das Monogramm zentriert, nur die Stofffläche wird oben/unten
+              minimal beschnitten. Der Verlauf dient nur als Ladehintergrund. */}
+          <div
+            className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-brand/[0.06] lg:block"
+            style={{ background: 'radial-gradient(120% 100% at 25% 20%, #fdfaf3 0%, #f1e8d6 55%, #e6dac2 100%)' }}
           >
-            Alle {PRODUCTS.length} Artikel
-            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-          </Link>
+            <Image
+              src="/brand/markenpanel.png"
+              alt="Embroidery Republic Germany – Markenzeichen, in Baumwollstoff gestickt"
+              fill
+              sizes="(min-width: 1024px) 44vw, 1px"
+              className="object-cover"
+            />
+            {/* Feiner Innenschatten für die eingerahmte, hochwertige Anmutung. */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -60px 90px -60px rgba(43,36,28,0.18)' }}
+            />
+          </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-4">
+        {/* Kategorie-Karten – die letzte Kachel führt in den vollen Katalog. */}
+        <div className="mt-16 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-4">
           {kategorien.map(({ art, anzahl, bild }) => (
             <Link key={art} href={`/produkt?kategorie=${art}`} className="group block">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] bg-white">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-white ring-1 ring-brand/[0.05] transition-shadow duration-300 group-hover:shadow-[0_22px_44px_-24px_rgba(43,36,28,0.28)]">
                 {bild && (
                   <Image
                     src={bild}
-                    alt={PRODUCT_TYPE_LABELS[art]}
+                    alt={produktTypLabel(art)}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 24vw"
                     className="object-contain p-8 transition-transform duration-[700ms] ease-out group-hover:scale-[1.05]"
                   />
                 )}
               </div>
-              <div className="mt-5 flex items-baseline justify-between gap-3">
-                <p className="font-serif text-[19px] text-brand transition-colors duration-300 group-hover:text-gold-dark">
-                  {PRODUCT_TYPE_LABELS[art]}
-                </p>
-                <p className="text-[12px] tabular-nums text-brand/35">{anzahl}</p>
+              <div className="mt-4 flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-serif text-[19px] text-brand transition-colors duration-300 group-hover:text-gold-dark">
+                    {produktTypLabel(art)}
+                  </p>
+                  <p className="mt-1 text-[13px] leading-relaxed text-brand/45">{PRODUCT_TYPES[art]?.kachelText}</p>
+                </div>
+                <span className="mt-0.5 inline-flex h-6 min-w-[1.5rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2 text-[12px] tabular-nums text-gold-dark">
+                  {anzahl}
+                </span>
               </div>
             </Link>
           ))}
+
+          <div className="flex flex-col justify-center rounded-2xl bg-gold-light/35 p-6">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/70 text-gold-dark">
+              <Shirt className="h-5 w-5" aria-hidden />
+            </span>
+            <p className="mt-5 font-serif text-[19px] text-brand">Nicht das Richtige?</p>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-brand/55">
+              Noch mehr Produkte, Farben und Marken entdecken.
+            </p>
+            <Link
+              href="/produkt"
+              className="group mt-5 inline-flex items-center gap-2 self-start rounded-full bg-gold px-5 py-2.5 text-[14px] font-medium text-white shadow-elegant transition-all duration-300 ease-out hover:bg-gold-dark active:scale-[0.98]"
+            >
+              Alle Produkte ansehen
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -254,16 +290,16 @@ export default function Startseite() {
             </p>
           </div>
 
-          <ul className="flex flex-wrap gap-2.5">
+          <ul aria-label="Nach Farbe filtern" className="flex flex-wrap gap-2.5">
             {farben.map(({ name, hex, gruppe }) => (
               <li key={name}>
                 <Link
                   href={`/produkt?farbe=${gruppe}`}
-                  title={name}
-                  className="block h-11 w-11 rounded-full ring-1 ring-inset ring-black/[0.09] transition-transform duration-300 ease-out hover:scale-110 hover:ring-black/25"
+                  title={`${name} – Artikel in dieser Farbe ansehen`}
+                  className="block h-11 w-11 rounded-full ring-1 ring-inset ring-black/[0.09] transition-all duration-300 ease-out hover:scale-110 hover:shadow-[0_8px_20px_-8px_rgba(43,36,28,0.45)] hover:ring-2 hover:ring-gold"
                   style={{ backgroundColor: hex }}
                 >
-                  <span className="sr-only">{name}</span>
+                  <span className="sr-only">{name} – Artikel in dieser Farbe ansehen</span>
                 </Link>
               </li>
             ))}
@@ -288,6 +324,12 @@ export default function Startseite() {
         </div>
       </section>
 
+      {/* ══ Vertrauen / Social Proof ════════════════════════════════════
+          Erscheint automatisch, sobald echte Kundenstimmen/Referenzen in
+          config/referenzen.ts stehen – bis dahin rendert die Komponente
+          nichts (keine Platzhalter). */}
+      <Kundenstimmen />
+
       {/* ══ Konfigurator ════════════════════════════════════════════════
           Der eine dunkle Bruch im hellen Seitenfluss: der wichtigste Weg
           der Seite ist auch optisch der lauteste. */}
@@ -296,7 +338,7 @@ export default function Startseite() {
           <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Selbst gestalten</p>
           <div className="mt-7 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.75rem)] font-normal leading-[0.98] tracking-[-0.025em]">
-              Dein Design.
+              Deine Idee.
               <span className="block text-gold">Dein Statement.</span>
             </h2>
             <div>
@@ -307,7 +349,7 @@ export default function Startseite() {
               </p>
               <Link
                 href="/konfigurator"
-                className="group mt-9 inline-flex items-center gap-3 rounded-full bg-white px-9 py-4 text-[15px] font-medium text-brand transition-all duration-300 ease-out hover:bg-gold hover:text-white"
+                className="group mt-9 inline-flex items-center gap-3 rounded-full bg-white px-9 py-4 text-[15px] font-medium text-brand transition-all duration-300 ease-out hover:bg-gold hover:text-white active:scale-[0.98]"
               >
                 Konfigurator öffnen
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -337,15 +379,15 @@ export default function Startseite() {
   );
 }
 
-function Versprechen({ icon: Icon, titel, text }: { icon: LucideIcon; titel: string; text: string }) {
+function Vorteil({ icon: Icon, titel, text }: { icon: LucideIcon; titel: string; text: string }) {
   return (
-    <li className="flex items-start gap-4 px-6 py-8 sm:px-8 lg:[&:not(:first-child)]:border-l lg:border-brand/[0.06]">
-      <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 text-gold-dark">
-        <Icon className="h-5 w-5" aria-hidden />
+    <li className="flex items-start gap-3">
+      <span className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-gold-light/80 to-gold-light/25 text-gold-dark ring-1 ring-gold/15 shadow-[0_1px_2px_rgba(43,36,28,0.06)]">
+        <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} aria-hidden />
       </span>
       <span>
-        <span className="block font-serif text-[17px] leading-tight text-brand">{titel}</span>
-        <span className="mt-1.5 block text-[13px] leading-relaxed text-brand/50">{text}</span>
+        <span className="block text-[14px] font-semibold text-brand">{titel}</span>
+        <span className="block text-[12px] leading-relaxed text-brand/55">{text}</span>
       </span>
     </li>
   );

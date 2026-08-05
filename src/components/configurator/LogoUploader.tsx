@@ -143,8 +143,8 @@ export function LogoUploader({ printArea, onElementAdded }: LogoUploaderProps) {
           Math.min(
             printArea.startXCm !== undefined
               ? printArea.startXCm - widthCm / 2
-              : (printArea.movementWidthCm - widthCm) / 2,
-            printArea.movementWidthCm - widthCm
+              : (printArea.boxWidthCm - widthCm) / 2,
+            printArea.boxWidthCm - widthCm
           )
         ),
         yCm: Math.max(
@@ -152,8 +152,8 @@ export function LogoUploader({ printArea, onElementAdded }: LogoUploaderProps) {
           Math.min(
             printArea.startYCm !== undefined
               ? printArea.startYCm - heightCm / 2
-              : (printArea.referenceGarmentHeightCm - heightCm) / 2,
-            printArea.referenceGarmentHeightCm - heightCm
+              : (printArea.boxHeightCm - heightCm) / 2,
+            printArea.boxHeightCm - heightCm
           )
         ),
         widthCm,

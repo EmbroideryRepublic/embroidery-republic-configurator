@@ -20,12 +20,15 @@ import { LargePreviewModal } from './LargePreviewModal';
 import { getPrintAreas } from '@/config/printAreas';
 import { getPricingRules } from '@/config/pricingRules';
 import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
+import { resolveColorImages } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
 import type { PricingRule, PrintArea } from '@/types';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
+import { ansichtenVon } from '@/lib/products/ansichten';
 import { vorladenAlleFarben } from '@/lib/configurator/vorladen';
+import { istHellesTextil } from '@/lib/canvas/garmentLuminance';
 
 // Konva greift auf `window` zu und darf deshalb nicht serverseitig gerendert
 // werden – dynamischer Import mit ssr:false ist bei react-konva in Next.js
@@ -177,13 +180,14 @@ export function ConfiguratorPrototype() {
         setIsLoadingContext(false);
         isFirstLoad.current = false;
 
-        // Ärmellose Produkte (z.B. Weste) haben keine Ärmel-Ansichten –
-        // falls man von einem Produkt MIT Ärmeln kommt und gerade auf
-        // einer Ärmel-Ansicht war, gäbe es sonst eine aktive Ansicht, die
-        // für dieses Produkt gar nicht existiert.
-        const hasSleeves = product.hasSleeves ?? true;
-        if (!hasSleeves && (activeViewRef.current === 'sleeve_left' || activeViewRef.current === 'sleeve_right')) {
-          setActiveView('front');
+        // Aktive Ansicht mit dem neuen Produkt abgleichen: Führt das Produkt
+        // die aktuelle Ansicht nicht (z.B. Wechsel von einem Kleidungsstück
+        // mit Ärmeln zu einem ärmellosen Produkt, oder zu einer Tasche/Schürze
+        // mit ganz anderen Flächen), auf die erste geführte Ansicht setzen.
+        // Datengetrieben über ansichtenVon() – keine Produktart-Annahme.
+        const produktViews = ansichtenVon(product);
+        if (produktViews[0] && !produktViews.includes(activeViewRef.current)) {
+          setActiveView(produktViews[0]);
         }
 
         const dropped = syncElementsToPrintAreas(areas);
@@ -199,7 +203,7 @@ export function ConfiguratorPrototype() {
     return () => {
       isMounted = false;
     };
-  }, [isHydrated, productId, printMethod, syncElementsToPrintAreas, setActiveView, product.hasSleeves]);
+  }, [isHydrated, productId, printMethod, syncElementsToPrintAreas, setActiveView, product]);
 
   // Preis live neu berechnen – einzige Stelle, die calculatePrice aufruft.
   useEffect(() => {
@@ -253,7 +257,7 @@ export function ConfiguratorPrototype() {
       if (isModifier && e.key.toLowerCase() === 'd') {
         e.preventDefault();
         const area = printAreas.find((a) => a.view === activeView);
-        duplicateElement(selectedElementId, area ? { movementWidthCm: area.movementWidthCm, referenceGarmentHeightCm: area.referenceGarmentHeightCm } : undefined);
+        duplicateElement(selectedElementId, area ? { boxWidthCm: area.boxWidthCm, boxHeightCm: area.boxHeightCm } : undefined);
         return;
       }
 
@@ -276,8 +280,8 @@ export function ConfiguratorPrototype() {
         if (!el || !area) return;
         const step = e.shiftKey ? 1 : 0.1;
         const [dx, dy] = arrowDeltas[e.key];
-        const xCm = Math.max(0, Math.min(el.xCm + dx * step, area.movementWidthCm - el.widthCm));
-        const yCm = Math.max(0, Math.min(el.yCm + dy * step, area.referenceGarmentHeightCm - el.heightCm));
+        const xCm = Math.max(0, Math.min(el.xCm + dx * step, area.boxWidthCm - el.widthCm));
+        const yCm = Math.max(0, Math.min(el.yCm + dy * step, area.boxHeightCm - el.heightCm));
         commitElement(selectedElementId, { xCm, yCm });
       }
     }
@@ -295,8 +299,14 @@ export function ConfiguratorPrototype() {
 
   const currentPrintArea = printAreas.find((area) => area.view === activeView) ?? null;
   const currentColor = product.colors.find((c) => c.id === colorId) ?? product.colors[0];
-  const currentImages = currentColor?.images ?? { front: '', back: '', sleeve_left: '', sleeve_right: '' };
-  const currentImageUrl = currentImages[activeView];
+  const currentImages: Record<string, string> = currentColor ? resolveColorImages(product.id, currentColor.id) : {};
+  const currentImageUrl = currentImages[activeView] ?? '';
+  // Die tatsächlich geführten Ansichten des Produkts – einzige Quelle für
+  // Ansichtswechsler und Großvorschau (keine feste Liste, kein hasSleeves).
+  const produktViews = ansichtenVon(product);
+  // Realistische Vorschau: auf hellen Textilien werden Motive per multiply mit
+  // dem Stoff verrechnet – abgeleitet aus der echten Farbe, nicht dem Foto.
+  const garmentLight = currentColor ? istHellesTextil(currentColor.hex) : false;
 
   const progressStep = quantity === 0
     ? 0
@@ -365,7 +375,7 @@ export function ConfiguratorPrototype() {
             <ProductDetails product={product} />
 
             <div className="flex w-full max-w-full flex-col items-start gap-3 lg:flex-row">
-              <ViewSwitcher imageUrls={currentImages} hasSleeves={product.hasSleeves ?? true} />
+              <ViewSwitcher imageUrls={currentImages} views={produktViews} />
 
               <div className="flex min-w-0 flex-1 flex-col items-center gap-2">
                 <CanvasToolbar
@@ -393,7 +403,7 @@ export function ConfiguratorPrototype() {
                   {isLoadingContext ? (
                     <CanvasSkeleton />
                   ) : (
-                    <ConfiguratorCanvas productImageUrl={currentImageUrl} printArea={currentPrintArea} zoom={zoom} product={product} />
+                    <ConfiguratorCanvas productImageUrl={currentImageUrl} printArea={currentPrintArea} zoom={zoom} product={product} garmentLight={garmentLight} />
                   )}
                   {/* Eleganter Produktwechsel: Eine Ebene mit dem neuen Teil
                       gleitet herein und löst sich auf; darunter liegt bereits
@@ -461,7 +471,8 @@ export function ConfiguratorPrototype() {
         <LargePreviewModal
           imageUrls={currentImages}
           printAreas={printAreas}
-          hasSleeves={product.hasSleeves ?? true}
+          views={produktViews}
+          garmentLight={garmentLight}
           onClose={() => setIsPreviewOpen(false)}
         />
       )}

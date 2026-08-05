@@ -8,7 +8,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { PRODUCTS } from '@/config/products';
-import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
+import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
+import { produktTypLabel } from '@/config/products/types';
+import { assetVerfuegbarkeit, PLATZHALTER_BILD } from '@/lib/assets';
 import { brotkrumenSchema, organisationSchema, produktSchema } from '../strukturierteDaten';
 
 const BASIS = 'https://example.test';
@@ -39,16 +41,36 @@ test('keine erfundenen Bewertungen', () => {
 });
 
 test('Bilder sind absolute URLs und begrenzt', () => {
-  const s = produktSchema(produkt, BASIS) as { image?: string[] };
+  // Robust über den Asset-Resolver statt über die Katalog-Reihenfolge: ein
+  // Produkt mit echten Fotos MUSS Bilder auszeichnen.
+  const echtfoto = PRODUCTS.find((p) => assetVerfuegbarkeit(p.id) === 'vorhanden');
+  assert.ok(echtfoto, 'Testannahme: mindestens ein Produkt hat echte Fotos');
+  const s = produktSchema(echtfoto, BASIS) as { image?: string[] };
   assert.ok(s.image && s.image.length > 0);
   assert.ok(s.image.length <= 6);
   for (const url of s.image) assert.ok(url.startsWith(BASIS + '/'), url);
 });
 
+test('Platzhalter tauchen NIE in der JSON-LD-Auszeichnung auf (B1/ADR 0004)', () => {
+  const platzhalterUrl = `${BASIS}${PLATZHALTER_BILD}`;
+  for (const p of PRODUCTS) {
+    const s = produktSchema(p, BASIS) as { image?: string[] };
+    for (const url of s.image ?? []) {
+      assert.notEqual(url, platzhalterUrl, `${p.name}: Platzhalter darf nicht in JSON-LD stehen`);
+    }
+    // Ein reines Platzhalter-Produkt zeichnet konsequent GAR kein Bild aus,
+    // statt ein Platzhalterbild als Produktfoto zu behaupten.
+    if (assetVerfuegbarkeit(p.id) === 'fehlt') {
+      assert.equal(s.image, undefined, `${p.name}: ohne echtes Foto kein image-Feld`);
+    }
+  }
+});
+
 test('SKU erscheint nur, wenn eine Artikelnummer hinterlegt ist', () => {
   for (const p of PRODUCTS) {
     const s = produktSchema(p, BASIS);
-    if (p.supplier?.articleNumber) assert.equal(s['sku'], p.supplier.articleNumber);
+    const ref = supplierRefVon(p.id);
+    if (ref?.articleNumber) assert.equal(s['sku'], ref.articleNumber);
     else assert.equal(s['sku'], undefined, `${p.name} hat keine Artikelnummer`);
   }
 });
@@ -66,7 +88,7 @@ test('jedes Produkt liefert eine gültige Verfügbarkeit', () => {
 });
 
 test('Brotkrumen laufen von Start bis zum Produkt', () => {
-  const label = PRODUCT_TYPE_LABELS[produkt.productType];
+  const label = produktTypLabel(produkt.productType);
   const s = brotkrumenSchema(produkt, label, BASIS) as { itemListElement: Record<string, unknown>[] };
   assert.equal(s['@type' as never], 'BreadcrumbList' as never);
   assert.equal(s.itemListElement.length, 4);

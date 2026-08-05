@@ -1,16 +1,14 @@
 /**
- * Prüfungen des Produktbaums.
- *
- * Der wichtigste Fall ist die Navigationsregel: Unisexware muss in allen
- * drei Hauptgruppen auftauchen, sonst versteckt die interne Klassifizierung
- * ganze Produktarten (im echten Katalog wären das sämtliche Hoodies).
+ * Prüfungen des Produktbaums (baueBaum) – generische Baum-Eigenschaften,
+ * unabhängig von der konkreten Navigationsachse. Die achsenspezifische
+ * Semantik (Geschlechts-Überschneidung, „jedes Produkt landet in einer
+ * Gruppe") liegt in config/products/__tests__/naviAchsen.test.ts.
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { PRODUCTS } from '@/config/products';
-import { geschlechterVon } from '@/config/products/facetten';
 import {
-  ARTFOLGE, HAUPTGRUPPEN, LEERER_FILTER, anzahlAktiverFilter, baueBaum, gehoertZu,
+  ARTFOLGE, LEERER_FILTER, anzahlAktiverFilter, baueBaum,
   materialKurz, modellBadges, modelleVon, passtZurSuche, type Browserfilter,
 } from '../produktbaum';
 
@@ -23,34 +21,10 @@ test('jeder Artikel ist über mindestens einen Ast erreichbar', () => {
   assert.equal(erreichbar.size, PRODUCTS.length, 'kein Artikel darf sich hinter der Datenstruktur verstecken');
 });
 
-test('Unisexware steht in allen drei Hauptgruppen', () => {
-  const unisex = PRODUCTS.filter((p) => geschlechterVon(p).includes('unisex'));
-  assert.ok(unisex.length > 0, 'ohne Unisexware sagt dieser Test nichts');
-
-  for (const p of unisex) {
-    for (const g of HAUPTGRUPPEN) {
-      assert.ok(gehoertZu(p, g), `${p.name} fehlt in Gruppe ${g}`);
-    }
-  }
-});
-
-test('reine Herrenware erscheint nicht bei Damen – und umgekehrt', () => {
-  for (const p of PRODUCTS) {
-    const eigen = geschlechterVon(p);
-    if (eigen.includes('unisex')) continue;
-    if (eigen.includes('herren')) assert.equal(gehoertZu(p, 'damen'), false, `${p.name}`);
-    if (eigen.includes('damen')) assert.equal(gehoertZu(p, 'herren'), false, `${p.name}`);
-  }
-});
-
-test('die Gruppe Unisex führt ausschließlich Unisexware', () => {
-  const drin = PRODUCTS.filter((p) => gehoertZu(p, 'unisex'));
-  for (const p of drin) assert.ok(geschlechterVon(p).includes('unisex'), `${p.name}`);
-});
-
 test('jede Hauptgruppe führt alle Produktarten des Sortiments', () => {
-  // Genau das war der Grund für die Regel: ohne sie hätte „Herren" keine
-  // Hoodies, weil alle Hoodies als Unisex geführt werden.
+  // Für den aktuellen (durchgängig geschlechts-achsigen) Katalog führt jede
+  // Gruppe dank der Unisex-Überschneidung alle Arten. Die achsenspezifische
+  // Begründung steht im naviAchsen-Test; hier nur die Baum-Eigenschaft.
   const alleArten = new Set(PRODUCTS.map((p) => p.productType));
   for (const g of BAUM) {
     const vorhanden = new Set(g.arten.map((a) => a.art));
@@ -87,7 +61,8 @@ test('Modelle stehen günstigste zuerst', () => {
 test('leere Produktarten verschwinden, leere Hauptgruppen bleiben stehen', () => {
   // Eine Suche ohne jeden Treffer darf die Navigation nicht wegräumen.
   const baum = baueBaum(PRODUCTS, mit({ suche: 'gibtesnicht-xyz' }));
-  assert.equal(baum.length, 3, 'die drei Hauptgruppen bleiben');
+  assert.equal(baum.length, BAUM.length, 'die Hauptgruppen der aktiven Achsen bleiben (springen nicht beim Tippen)');
+  assert.ok(baum.length > 0, 'es gibt mindestens eine Hauptgruppe');
   for (const g of baum) {
     assert.equal(g.anzahl, 0);
     assert.equal(g.arten.length, 0, 'Arten ohne Treffer werden nicht angeboten');
@@ -165,11 +140,19 @@ test('materialKurz beschönigt nichts', () => {
   assert.equal(materialKurz('100% Polyester (Fleece)'), 'Polyester');
 });
 
-test('jedes Modell trägt Zusammensetzung und Gewicht, Güteklasse nur wenn hochwertig', () => {
+test('jedes Modell trägt Zusammensetzung (und Gewicht, falls bekannt), Güteklasse nur wenn hochwertig', () => {
   for (const p of PRODUCTS) {
     const badges = modellBadges(p);
-    assert.ok(badges.length >= 2 && badges.length <= 3, `${p.name}: ${badges.length} Badges`);
-    assert.equal(badges[1]!.text, `${p.weightGsm} g/m²`);
+    assert.ok(badges.length >= 1 && badges.length <= 3, `${p.name}: ${badges.length} Badges`);
+    // Material-Badge ist immer die erste.
+    // Gewicht-Badge genau dann, wenn eine Grammatur hinterlegt ist (optional,
+    // siehe weightGsm-Kommentar in products/types.ts).
+    const gewichtBadge = badges.find((b) => /\bg\/m²$/.test(b.text));
+    if (p.weightGsm) {
+      assert.equal(gewichtBadge?.text, `${p.weightGsm} g/m²`, `${p.name}: Gewicht-Badge fehlt/falsch`);
+    } else {
+      assert.equal(gewichtBadge, undefined, `${p.name}: unerwartetes Gewicht-Badge ohne Grammatur`);
+    }
 
     const gold = badges.find((b) => b.ton === 'gold');
     if (p.qualityTier === 'premium' || p.qualityTier === 'luxury') {

@@ -8,7 +8,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import type { TranslationKey } from '@/lib/i18n/translations';
 import type { PrintArea, PrintView } from '@/types';
-import { DECORATION_POSITIONS, DECORATION_POSITION_ORDER, positionTranslationKey } from '@/config/decorationPositions';
+import { positionTranslationKey } from '@/config/decorationPositions';
 
 const ConfiguratorCanvas = dynamic(
   () => import('./ConfiguratorCanvas').then((m) => m.ConfiguratorCanvas),
@@ -21,9 +21,13 @@ const MAX_ZOOM = 4;
 const ZOOM_STEP = 0.5;
 
 interface LargePreviewModalProps {
-  imageUrls: Record<PrintView, string>;
+  imageUrls: Record<string, string>;
   printAreas: PrintArea[];
-  hasSleeves?: boolean;
+  /** Die tatsächlich geführten Ansichten des Produkts (ansichtenVon(product)) –
+   *  einzige Quelle der wählbaren Ansichten. Keine feste Liste, kein hasSleeves. */
+  views: PrintView[];
+  /** Helles Textil → realistische Multiply-Vorschau (durchgereicht an die Leinwand). */
+  garmentLight?: boolean;
   onClose: () => void;
 }
 
@@ -38,18 +42,17 @@ interface LargePreviewModalProps {
  * dadurch ganz normal per Scrollen/Wischen verschieben (Panning), ohne
  * dass dafür eine eigene Drag-Logik nötig ist.
  */
-export function LargePreviewModal({ imageUrls, printAreas, hasSleeves = true, onClose }: LargePreviewModalProps) {
+export function LargePreviewModal({ imageUrls, printAreas, views, garmentLight = false, onClose }: LargePreviewModalProps) {
   const storeActiveView = useConfiguratorStore((s) => s.activeView);
-  const isSleeveView = storeActiveView === 'sleeve_left' || storeActiveView === 'sleeve_right';
-  const initialView = !hasSleeves && isSleeveView ? 'front' : storeActiveView;
+  // Auf die im Modal wählbaren Ansichten beschränken: liegt die aktive Ansicht
+  // nicht in den Produkt-Ansichten, mit der ersten geführten starten.
+  const initialView = views.includes(storeActiveView) ? storeActiveView : (views[0] ?? storeActiveView);
   const [previewView, setPreviewView] = useState<PrintView>(initialView);
   const [zoom, setZoom] = useState(1);
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
 
-  const availableViews = hasSleeves
-    ? [...DECORATION_POSITION_ORDER]
-    : DECORATION_POSITION_ORDER.filter((p) => DECORATION_POSITIONS[p].gruppe !== 'aermel');
+  const availableViews = views;
 
   const printArea = printAreas.find((a) => a.view === previewView) ?? null;
 
@@ -125,11 +128,12 @@ export function LargePreviewModal({ imageUrls, printAreas, hasSleeves = true, on
 
       <div className="flex flex-1 items-center justify-center overflow-auto">
         <ConfiguratorCanvas
-          productImageUrl={imageUrls[previewView]}
+          productImageUrl={imageUrls[previewView] ?? ''}
           printArea={printArea}
           hideGuides
           viewOverride={previewView}
           zoom={zoom}
+          garmentLight={garmentLight}
         />
       </div>
     </div>

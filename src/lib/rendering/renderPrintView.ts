@@ -1,5 +1,6 @@
 import { Resvg } from '@resvg/resvg-js';
 import { CANVAS_WIDTH, CANVAS_HEIGHT, getProduct } from '@/config/products';
+import { bildFuerAnsicht } from '@/lib/assets';
 import { getPrintAreas } from '@/config/printAreas';
 import { getContainRect, computeAreaPx } from '@/lib/canvas/containRect';
 import { getScaleFactors, elementToPixelRect } from '@/lib/canvas/cmConversion';
@@ -41,7 +42,11 @@ export async function renderPrintView(input: RenderPrintViewInput): Promise<Rend
   if (!product) throw new Error(`Unbekannte Produkt-ID "${input.productId}".`);
   const color = product.colors.find((c) => c.id === input.colorId);
   if (!color) throw new Error(`Unbekannte Farb-ID "${input.colorId}" für Produkt "${input.productId}".`);
-  const imagePath = color.images[input.view];
+  const imagePath = bildFuerAnsicht(input.productId, input.colorId, input.view);
+  // Kein Herstellerbild für diese Ansicht (offenes View-Modell: nicht jedes
+  // Produkt führt jede Ansicht) → keine Produktionsvorschau für diese Ansicht,
+  // analog zur fehlenden Druckfläche unten. Kein Fehler.
+  if (!imagePath) return null;
 
   const printAreas = await getPrintAreas(input.productId, input.printMethod);
   const printArea = printAreas.find((a) => a.view === input.view);
@@ -54,7 +59,7 @@ export async function renderPrintView(input: RenderPrintViewInput): Promise<Rend
   // Zuschnitt/Seitenverhältnis des jeweiligen Produktfotos konsistent ist.
   const imageRectLogical = getContainRect(garment.naturalWidth, garment.naturalHeight, CANVAS_WIDTH, CANVAS_HEIGHT, printArea.heightPercent / 100);
   const areaPxHeightLogical = (printArea.heightPercent / 100) * imageRectLogical.height;
-  const pxPerCmLogical = areaPxHeightLogical / printArea.referenceGarmentHeightCm;
+  const pxPerCmLogical = areaPxHeightLogical / printArea.boxHeightCm;
   const renderScale = clamp(TARGET_PX_PER_CM / pxPerCmLogical, MIN_RENDER_SCALE, MAX_RENDER_SCALE);
 
   const canvasWidthPx = CANVAS_WIDTH * renderScale;

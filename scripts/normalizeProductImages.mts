@@ -120,7 +120,7 @@ let unveraendert = 0;
 
 for (const p of ziel) {
   for (const view of VIEWS) {
-    if (p.hasSleeves === false && view.startsWith('sleeve')) continue;
+    if (!(p.views ?? []).includes(view)) continue;
 
     const lagen: Lage[] = [];
     for (const c of p.colors) {

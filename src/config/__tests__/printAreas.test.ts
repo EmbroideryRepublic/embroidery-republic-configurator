@@ -9,8 +9,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { getPrintAreas } from '../printAreas';
-import { PRINT_AREA_DATA } from '../printAreaData.generated';
+import { PRINT_AREA_DATA } from '../printAreaData';
+import { PRINT_AREA_DATA as GEMESSEN } from '../printAreaData.generated';
+import { GEOMETRY_ALIAS } from '../printAreaAlias.generated';
 import { PRODUCTS } from '../products';
+import { ansichtenVon } from '@/lib/products/ansichten';
 
 /** Prozessgrenzen aus dem Generator – hier gespiegelt als Obergrenze. */
 const GRENZE = {
@@ -33,12 +36,15 @@ test('jedes Produkt führt Vorder- und Rückseite', () => {
   }
 });
 
-test('Ärmelansichten genau dann, wenn das Produkt sie führt', () => {
+test('die Druckflächen-Ansichten entsprechen den deklarierten Produkt-Ansichten', () => {
+  // Generisch statt front/back/sleeve-fixiert: Die im (alias-aufgelösten)
+  // PRINT_AREA_DATA vorhandenen Ansichten müssen exakt den vom Produkt
+  // geführten Ansichten (ansichtenVon) entsprechen – gilt auch für Nicht-
+  // Kleidung (Tasche/Schürze).
   for (const p of PRODUCTS) {
-    const views = PRINT_AREA_DATA[p.id]!;
-    const erwartet = p.hasSleeves !== false;
-    assert.equal(Boolean(views.sleeve_left), erwartet, `${p.id}: sleeve_left`);
-    assert.equal(Boolean(views.sleeve_right), erwartet, `${p.id}: sleeve_right`);
+    const flaechen = Object.keys(PRINT_AREA_DATA[p.id] ?? {}).sort();
+    const deklariert = [...ansichtenVon(p)].sort();
+    assert.deepEqual(flaechen, deklariert, `${p.id}: Druckflächen-Ansichten weichen von den deklarierten ab`);
   }
 });
 
@@ -117,8 +123,8 @@ test('getPrintAreas liefert vollständige Bereiche für beide Methoden', async (
     const areas = await getPrintAreas('gildan-heavy-t', method);
     assert.equal(areas.length, 4, `${method}: 4 Ansichten erwartet`);
     for (const a of areas) {
-      assert.ok(a.movementWidthCm > 0, `${a.view}: movementWidthCm <= 0`);
-      assert.ok(a.referenceGarmentHeightCm > 0);
+      assert.ok(a.boxWidthCm > 0, `${a.view}: boxWidthCm <= 0`);
+      assert.ok(a.boxHeightCm > 0);
       assert.equal(a.productId, 'gildan-heavy-t');
     }
   }
@@ -126,4 +132,27 @@ test('getPrintAreas liefert vollständige Bereiche für beide Methoden', async (
 
 test('unbekannte Produkte liefern eine leere Liste statt zu werfen', async () => {
   assert.deepEqual(await getPrintAreas('gibt-es-nicht', 'dtf'), []);
+});
+
+// ── Klassen-Alias-Merge (printAreaData.ts vereint GEMESSEN + GEOMETRY_ALIAS) ──
+// Der Merge macht `merged = {...GEMESSEN}` und setzt dann je Alias-Eintrag
+// `merged[neu] = GEMESSEN[rep]` – OHNE Kollisionsschutz. Diese zwei Invarianten
+// sichern die Import-Groundwork gegen einen fehlerhaften Generatorlauf; heute
+// grün (0 Schnittmenge, alle rep-Ziele vorhanden), rein datengetrieben.
+
+test('Klassen-Alias überschreibt keine gemessene Druckfläche', () => {
+  // Wäre ein Alias-Schlüssel zugleich eine gemessene Produkt-ID, ersetzte der
+  // Merge deren echte Flächen still durch die des Klassen-Vertreters.
+  const gemessen = new Set(Object.keys(GEMESSEN));
+  const kollisionen = Object.keys(GEOMETRY_ALIAS).filter((k) => gemessen.has(k));
+  assert.deepEqual(kollisionen, [], `Alias-Schlüssel kollidieren mit gemessenen IDs: ${kollisionen.join(', ')}`);
+});
+
+test('jedes Alias-Ziel verweist auf eine gemessene Druckfläche', () => {
+  // Zeigt ein Alias auf eine nicht gemessene ID, bleibt merged[neu] ungesetzt –
+  // das aliasierte Produkt hätte still gar keine Druckflächen.
+  const gemessen = new Set(Object.keys(GEMESSEN));
+  for (const rep of Object.values(GEOMETRY_ALIAS)) {
+    assert.ok(gemessen.has(rep), `Alias-Ziel "${rep}" ist keine gemessene Druckfläche`);
+  }
 });

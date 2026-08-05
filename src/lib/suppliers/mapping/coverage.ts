@@ -116,6 +116,7 @@ export function buildSupplierMappingCoverage(
   const result: SupplierCoverage[] = [];
   for (const [supplierId, supplierProducts] of bySupplier) {
     const map = maps[supplierId];
+    if (!map) continue; // SupplierId offen: nicht registrierte Lieferanten überspringen
     const colors = coverForDimension(
       supplierProducts,
       map.colors,
@@ -190,6 +191,7 @@ export function buildProductColorCoverage(
   for (const product of products) {
     if (!product.supplierId) continue;
     const map = maps[product.supplierId];
+    if (!map) continue; // SupplierId offen: nicht registrierte Lieferanten überspringen
     const override = map.productOverrides?.[product.id]?.colors;
     const openAmbiguous: string[] = [];
     const openOther: string[] = [];

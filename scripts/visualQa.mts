@@ -81,7 +81,7 @@ async function warteAufCanvas() {
 }
 
 for (const p of produkte) {
-  const hatAermel = p.hasSleeves !== false;
+  const hatAermel = (p.views ?? []).some((v) => v.startsWith('sleeve'));
   const views = VIEWS.filter((v) => hatAermel || !v.startsWith('sleeve'));
   const farben = FARB_MODUS === 'all' ? p.colors : [p.colors[0]];
 

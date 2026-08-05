@@ -168,13 +168,13 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1">
                     Positions-Aufschlag
-                    <InfoTooltip text="Rücken- und Ärmel-Motive kosten wegen des höheren Aufwands beim Wechseln/Einspannen etwas mehr als ein Brust-Motiv." />
+                    <InfoTooltip text="Manche Positionen kosten wegen des höheren Aufwands beim Wechseln/Einspannen etwas mehr als andere." />
                   </span>
                   <span>{formatPrice(breakdown.positionFeeTotal)}</span>
                 </div>
               )}
               {DECORATION_POSITION_ORDER
-                .filter((view) => breakdown.areaPriceByView[view] > 0)
+                .filter((view) => (breakdown.areaPriceByView[view] ?? 0) > 0)
                 .map((view, i) => (
                   <div key={view} className="flex items-center justify-between">
                     <span className="flex items-center gap-1">
@@ -189,7 +189,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
                         />
                       )}
                     </span>
-                    <span>{formatPrice(breakdown.areaPriceByView[view])}</span>
+                    <span>{formatPrice(breakdown.areaPriceByView[view] ?? 0)}</span>
                   </div>
                 ))}
             </div>

@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { X, Scale } from 'lucide-react';
-import { PRODUCTS, type ProductConfig } from '@/config/products';
+import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
+import { repraesentativBildVon } from '@/lib/assets';
 
 interface CompareModalProps {
   onClose: () => void;
@@ -19,14 +20,14 @@ export function CompareModal({ onClose }: CompareModalProps) {
   const currency = useCurrencyStore((s) => s.currency);
   const formatPrice = (amount: number) => formatPriceWithCurrency(amount, currency);
 
-  const left = PRODUCTS.find((p) => p.id === leftId);
-  const right = PRODUCTS.find((p) => p.id === rightId);
+  const left = getProduct(leftId);
+  const right = getProduct(rightId);
 
   const rows: { label: string; get: (p: ProductConfig | undefined) => string }[] = [
     { label: 'Marke', get: (p) => p?.brand ?? '–' },
     { label: 'Preis', get: (p) => (p ? `${t('product_from')} ${formatPrice(p.basePrice)}` : '–') },
     { label: 'Material', get: (p) => p?.material ?? '–' },
-    { label: 'Grammatur', get: (p) => (p ? `${p.weightGsm} g/m²` : '–') },
+    { label: 'Grammatur', get: (p) => (p?.weightGsm ? `${p.weightGsm} g/m²` : '–') },
     { label: 'Passform', get: (p) => p?.fit ?? '–' },
     { label: 'Größen', get: (p) => p?.sizes.join(', ') ?? '–' },
     { label: 'Farben', get: (p) => p?.colors.map((c) => c.name).join(', ') ?? '–' },
@@ -75,10 +76,10 @@ export function CompareModal({ onClose }: CompareModalProps) {
             const firstColor = p?.colors[0];
             return (
               <div key={i} className="flex flex-col items-center rounded-lg bg-cream/60 p-3">
-                {firstColor && (
+                {p && firstColor && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={firstColor.images.front}
+                    src={repraesentativBildVon(p.id, firstColor.id)}
                     alt={p?.name ?? ''}
                     loading="lazy"
                     className="h-32 w-full object-contain"

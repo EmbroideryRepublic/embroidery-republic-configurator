@@ -55,7 +55,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             </div>
             <div>
               <dt className="text-brand/40">{t('product_details_weight')}</dt>
-              <dd className="text-brand/80">{product.weightGsm} g/m²</dd>
+              <dd className="text-brand/80">{product.weightGsm ? `${product.weightGsm} g/m²` : '–'}</dd>
             </div>
             <div>
               <dt className="text-brand/40">{t('product_details_fit')}</dt>
@@ -145,7 +145,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                     </div>
                     <div>
                       <dt className="text-brand/40">Grammatur</dt>
-                      <dd className="text-brand/80">{product.weightGsm} g/m²</dd>
+                      <dd className="text-brand/80">{product.weightGsm ? `${product.weightGsm} g/m²` : '–'}</dd>
                     </div>
                   </dl>
                 </div>

@@ -13,7 +13,9 @@ import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateLogoStitches, estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import { CANVAS_WIDTH, CANVAS_HEIGHT, type ProductConfig } from '@/config/products';
+import { groessenLeiterVon } from '@/config/products/groessen';
 import { cm as formatCm } from '@/lib/format';
+import { gewebeTextur } from '@/lib/canvas/fabricTexture';
 
 /** Platz für die seitlichen/unteren Maß-Lineale (Linie + cm-Beschriftung),
  *  in CSS-Pixeln – bewusst klein gehalten, damit die Leinwand selbst kaum
@@ -27,6 +29,25 @@ const RULER_TRACK_PX = 34;
  *  statt nur hauchdünn (rechnerisch korrekt, optisch aber wie
  *  überlappend wirkend) daneben zu landen. */
 const EXCLUSION_ZONE_MARGIN_CM = 0.5;
+
+/**
+ * Einheitlicher, markeneigener Stil der Transformier-Griffe (Auswahlrahmen).
+ *
+ * Die Standard-Konva-Griffe sind grellblaue Quadrate – sie lassen den Editor
+ * „Werkzeug von der Stange" wirken. Weiße, dezent gerundete Griffe mit
+ * goldenem Rahmen greifen die Markenfarben auf und fügen sich in das ruhige,
+ * hochwertige Erscheinungsbild ein, ohne die Bedienung zu verändern.
+ */
+const TRANSFORMER_STYLE = {
+  anchorFill: '#ffffff',
+  anchorStroke: '#a8792f',
+  anchorStrokeWidth: 1.5,
+  anchorSize: 9,
+  anchorCornerRadius: 5,
+  borderStroke: '#a8792f',
+  borderStrokeWidth: 1.5,
+  rotateAnchorOffset: 22,
+} as const;
 
 interface ConfiguratorCanvasProps {
   productImageUrl: string;
@@ -43,6 +64,10 @@ interface ConfiguratorCanvasProps {
    *  Leinwand) – ohne dieses Prop (z.B. in der Großansicht) werden einfach
    *  keine Lineale gezeichnet. */
   product?: ProductConfig;
+  /** Helles Textil → Motive werden per „multiply" mit dem Stoff verrechnet
+   *  (realistische Vorschau). Aus der echten Kleidungsfarbe abgeleitet
+   *  (lib/canvas/garmentLuminance). Ohne Angabe: kein Effekt (sicher). */
+  garmentLight?: boolean;
 }
 
 export function ConfiguratorCanvas({
@@ -52,6 +77,7 @@ export function ConfiguratorCanvas({
   hideGuides = false,
   viewOverride,
   product,
+  garmentLight = false,
 }: ConfiguratorCanvasProps) {
   const [productImage] = useImage(productImageUrl);
   const storeActiveView = useConfiguratorStore((s) => s.activeView);
@@ -63,6 +89,22 @@ export function ConfiguratorCanvas({
   const commitElement = useConfiguratorStore((s) => s.commitElement);
   const sizeQuantities = useConfiguratorStore((s) => s.sizeQuantities);
   const previewSize = useConfiguratorStore((s) => s.previewSize);
+
+  // ── Realistische Vorschau (Stufe 1) ─────────────────────────────────
+  // Auf HELLEN Kleidungsstücken wird das Motiv im Blend-Modus „multiply"
+  // gezeichnet: Es übernimmt dadurch Falten, Licht und Schatten des echten
+  // Produktfotos darunter und wirkt gedruckt statt aufgeklebt. Auf DUNKLEN
+  // Teilen sitzt echter Druck mit weißer Unterlage deckend obenauf – „multiply"
+  // würde ihn dort fälschlich verschwinden lassen, also bleibt der normale
+  // Blend. Die Entscheidung kommt aus der ECHTEN Kleidungsfarbe (garmentLight-
+  // Prop, siehe lib/canvas/garmentLuminance), NICHT aus dem Foto – ein
+  // schwarzes Shirt-Foto mittelt wegen Glanzlichtern zu hoch und würde falsch
+  // als hell gelten.
+  //
+  // Rein visuelle Bildschirmvorschau: dieser Canvas wird nirgends exportiert
+  // (kein toDataURL/toImage); Produktionsblatt und Bestell-Vorschau rendern
+  // vollständig getrennt über src/lib/rendering – die Druckdatei bleibt exakt.
+  const druckMischung: 'multiply' | undefined = garmentLight ? 'multiply' : undefined;
 
   const [isAreaHovered, setIsAreaHovered] = useState(false);
   // Hilfslinien: zeigen an, wenn ein gezogenes Element mittig im
@@ -198,7 +240,11 @@ export function ConfiguratorCanvas({
       const found = measurements.find((m) => m.size === activeSize);
       if (found) return found;
     }
-    return measurements.find((m) => m.size === 'M') ?? measurements[Math.floor(measurements.length / 2)];
+    // Referenzgröße DATENGETRIEBEN aus dem Größenleiter-Registry (statt fixem 'M'):
+    // Konfektion → 'M', aber Kopfweiten/Einheits-/Maß-Leitern künftiger Gruppen
+    // bringen ihre eigene Referenz mit; ohne Referenz die mittlere Größe (M4-C6).
+    const referenz = product ? groessenLeiterVon(product).referenz : undefined;
+    return measurements.find((m) => m.size === referenz) ?? measurements[Math.floor(measurements.length / 2)];
   }, [product, sizeQuantities, previewSize]);
 
   const rulerPxPerCm = scaleFactors?.pxPerCmX ?? null;
@@ -483,6 +529,7 @@ export function ConfiguratorCanvas({
                   stageScale={stageScale}
                   isSelected={!hideGuides && element.id === selectedElementId}
                   readOnly={hideGuides}
+                  blend={druckMischung}
                   onSelect={() => setSelectedElementId(element.id)}
                   onChange={(changes) => updateElement(element.id, changes)}
                   onCommit={(changes) => commitElement(element.id, changes)}
@@ -501,6 +548,7 @@ export function ConfiguratorCanvas({
                   stageScale={stageScale}
                   isSelected={!hideGuides && element.id === selectedElementId}
                   readOnly={hideGuides}
+                  blend={druckMischung}
                   onSelect={() => setSelectedElementId(element.id)}
                   onChange={(changes) => updateElement(element.id, changes)}
                   onCommit={(changes) => commitElement(element.id, changes)}
@@ -683,6 +731,8 @@ interface LogoNodeProps {
   stageScale: number;
   isSelected: boolean;
   readOnly?: boolean;
+  /** Blend-Modus des Motivs über dem Textil (realistische Vorschau). */
+  blend?: 'multiply';
   onSelect: () => void;
   onChange: (changes: Partial<LogoElement>) => void;
   onCommit: (changes: Partial<LogoElement>) => void;
@@ -700,15 +750,66 @@ function LogoNode({
   stageScale,
   isSelected,
   readOnly = false,
+  blend,
   onSelect,
   onChange,
   onCommit,
   onDragCheck,
   onDragStop,
 }: LogoNodeProps) {
-  const [image] = useImage(element.fileUrl);
+  const [rawImage] = useImage(element.fileUrl);
   const shapeRef = useRef<Konva.Image>(null);
   const transformerRef = useRef<Konva.Transformer>(null);
+
+  // Realistische Vorschau: eine feine Gewebetextur NUR in die Motivfläche
+  // einrechnen (overlay, danach auf die Motivkontur maskiert). Ergebnis ist ein
+  // reines Anzeige-Bild – `element.fileUrl` (= Produktionsdaten) bleibt exakt.
+  // Wird nur neu berechnet, wenn sich das Rohbild ändert (nicht beim Verschieben
+  // /Skalieren), also ohne Performance-Kosten bei der Bedienung.
+  const [displayImage, setDisplayImage] = useState<HTMLImageElement | HTMLCanvasElement | undefined>(undefined);
+  useEffect(() => {
+    if (!rawImage) {
+      setDisplayImage(undefined);
+      return;
+    }
+    const w = rawImage.naturalWidth || rawImage.width;
+    const h = rawImage.naturalHeight || rawImage.height;
+    const textur = gewebeTextur();
+    if (!w || !h || !textur) {
+      setDisplayImage(rawImage);
+      return;
+    }
+    try {
+      const cv = document.createElement('canvas');
+      cv.width = w;
+      cv.height = h;
+      const ctx = cv.getContext('2d');
+      if (!ctx) {
+        setDisplayImage(rawImage);
+        return;
+      }
+      ctx.drawImage(rawImage, 0, 0, w, h);
+      // Gewebe als „overlay" über die gesamte Fläche (moduliert die Helligkeit),
+      // dann per „destination-in" wieder auf die Motivkontur beschneiden, damit
+      // die Textur ausschließlich auf der Farbe liegt, nie auf dem Textil daneben.
+      const muster = ctx.createPattern(textur, 'repeat');
+      if (muster) {
+        ctx.globalCompositeOperation = 'overlay';
+        ctx.globalAlpha = 0.35;
+        ctx.fillStyle = muster;
+        ctx.fillRect(0, 0, w, h);
+        ctx.globalAlpha = 1;
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.drawImage(rawImage, 0, 0, w, h);
+        ctx.globalCompositeOperation = 'source-over';
+      }
+      setDisplayImage(cv);
+    } catch {
+      setDisplayImage(rawImage); // im Zweifel das unveränderte Bild zeigen
+    }
+  }, [rawImage]);
+
+  const image = displayImage ?? rawImage;
 
   useEffect(() => {
     if (isSelected && transformerRef.current && shapeRef.current) {
@@ -734,6 +835,7 @@ function LogoNode({
         draggable={!element.locked && !readOnly}
         listening={!readOnly}
         opacity={element.locked ? 0.7 : 1}
+        globalCompositeOperation={blend}
         stroke={element.isOutOfBounds ? '#dc2626' : undefined}
         strokeWidth={element.isOutOfBounds ? 3 : 0}
         onClick={onSelect}
@@ -826,6 +928,7 @@ function LogoNode({
             ref={transformerRef}
             rotateEnabled
             keepRatio
+            {...TRANSFORMER_STYLE}
             boundBoxFunc={(oldBox, newBox) => (newBox.width < 15 || newBox.height < 15 ? oldBox : newBox)}
           />
           {/* Live-Maßanzeige direkt am Element – zusätzlich zur Anzeige im
@@ -861,6 +964,8 @@ interface TextNodeProps {
   stageScale: number;
   isSelected: boolean;
   readOnly?: boolean;
+  /** Blend-Modus des Motivs über dem Textil (realistische Vorschau). */
+  blend?: 'multiply';
   onSelect: () => void;
   onChange: (changes: Partial<TextElement>) => void;
   onCommit: (changes: Partial<TextElement>) => void;
@@ -878,6 +983,7 @@ function TextNode({
   stageScale,
   isSelected,
   readOnly = false,
+  blend,
   onSelect,
   onChange,
   onCommit,
@@ -935,6 +1041,7 @@ function TextNode({
         draggable={!element.locked && !readOnly}
         listening={!readOnly}
         opacity={element.locked ? 0.7 : 1}
+        globalCompositeOperation={blend}
         stroke={element.isOutOfBounds ? '#dc2626' : (element.hasOutline ?? false) ? (element.outlineColor ?? '#ffffff') : undefined}
         strokeWidth={element.isOutOfBounds ? 1 : (element.hasOutline ?? false) ? 0.8 : 0}
         onClick={onSelect}
@@ -1028,6 +1135,7 @@ function TextNode({
           <Transformer
             ref={transformerRef}
             rotateEnabled
+            {...TRANSFORMER_STYLE}
             boundBoxFunc={(oldBox, newBox) => (newBox.width < 15 || newBox.height < 15 ? oldBox : newBox)}
           />
           <KonvaText

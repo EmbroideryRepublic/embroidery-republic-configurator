@@ -17,6 +17,10 @@ export const metadata: Metadata = {
 export default function KonfiguratorSeite() {
   return (
     <main className="w-full bg-cream">
+      {/* Für Screenreader und Dokumentstruktur: der Konfigurator brachte bisher
+          keine h1 mit. Visuell versteckt, damit das eingefrorene v1.0-Layout
+          unberührt bleibt. */}
+      <h1 className="sr-only">Konfigurator – Textilien mit Druck oder Stickerei gestalten</h1>
       <ConfiguratorPrototype />
     </main>
   );

@@ -4,15 +4,14 @@ import clsx from 'clsx';
 import type { PrintView } from '@/types';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
-import type { TranslationKey } from '@/lib/i18n/translations';
 import { positionTranslationKey } from '@/config/decorationPositions';
 
-
-const VIEW_ORDER: PrintView[] = ['front', 'back', 'sleeve_left', 'sleeve_right'];
-
 interface ViewSwitcherProps {
-  imageUrls: Record<PrintView, string>;
-  hasSleeves?: boolean;
+  imageUrls: Record<string, string>;
+  /** Die tatsächlich vom Produkt geführten Ansichten in fachlicher Reihenfolge
+   *  (ansichtenVon(product)) – die einzige Quelle. Keine feste 4er-Liste, kein
+   *  hasSleeves mehr; es erscheinen nur real vorhandene Ansichten. */
+  views: PrintView[];
 }
 
 /**
@@ -20,14 +19,12 @@ interface ViewSwitcherProps {
  * tatsächliche Ansicht als kleines Vorschaubild, die aktive Ansicht wird
  * über Rahmen, Schatten und Skalierung hervorgehoben.
  */
-export function ViewSwitcher({ imageUrls, hasSleeves = true }: ViewSwitcherProps) {
+export function ViewSwitcher({ imageUrls, views }: ViewSwitcherProps) {
   const activeView = useConfiguratorStore((s) => s.activeView);
   const setActiveView = useConfiguratorStore((s) => s.setActiveView);
   const elements = useConfiguratorStore((s) => s.elements);
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
-
-  const views = hasSleeves ? VIEW_ORDER : VIEW_ORDER.filter((v) => v !== 'sleeve_left' && v !== 'sleeve_right');
 
   return (
     <div className="flex flex-row gap-2 lg:flex-col">
@@ -50,7 +47,7 @@ export function ViewSwitcher({ imageUrls, hasSleeves = true }: ViewSwitcherProps
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={imageUrls[view]}
+              src={imageUrls[view] ?? ''}
               alt={label}
               className="h-14 w-14 object-contain"
             />

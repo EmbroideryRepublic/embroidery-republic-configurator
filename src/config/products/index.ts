@@ -31,13 +31,13 @@ import { PRODUCTS as JUSTHOODS_PRODUCTS } from './justhoods';
 import { PRODUCTS as BANDC_PRODUCTS } from './bAndC';
 import { PRODUCTS as STEDMAN_PRODUCTS } from './stedman';
 import { PRODUCTS as JAMES_NICHOLSON_PRODUCTS } from './jamesNicholson';
-import { SUPPLIER_REFS } from './supplierRefs';
+import { PRODUCTS as IMPORTIERTE_PRODUCTS } from './importiert.generated';
 import type { ProductConfig } from './types';
 
-// Lieferanten-Referenz (Bezugsquelle für die Supplier Engine) wird hier
-// zentral angeheftet statt in den Marken-Dateien gepflegt – siehe
-// supplierRefs.ts. Produkte ohne Eintrag behalten supplier: undefined.
-const RAW_PRODUCTS: ProductConfig[] = [
+// Die Produktdefinitionen tragen KEIN Lieferanten-Wissen mehr (ADR 0004): die
+// Bezugsquelle liegt ausschließlich in der Lieferantenschicht
+// (lib/suppliers/supplierRefs.ts, Resolver supplierRefVon).
+export const PRODUCTS: ProductConfig[] = [
   ...FRUIT_OF_THE_LOOM_PRODUCTS,
   ...SOLS_PRODUCTS,
   ...GILDAN_PRODUCTS,
@@ -47,16 +47,33 @@ const RAW_PRODUCTS: ProductConfig[] = [
   ...BANDC_PRODUCTS,
   ...STEDMAN_PRODUCTS,
   ...JAMES_NICHOLSON_PRODUCTS,
+  // Neu importierte Produkte (verifizierte Quelldaten, Bilder folgen über die
+  // Asset-Pipeline). Siehe importiert.generated.ts / scripts/importiereProdukte.mts.
+  ...IMPORTIERTE_PRODUCTS,
 ];
-
-export const PRODUCTS: ProductConfig[] = RAW_PRODUCTS.map((product) =>
-  SUPPLIER_REFS[product.id] ? { ...product, supplier: SUPPLIER_REFS[product.id] } : product
-);
 
 export const TEST_PRODUCT_ID = PRODUCTS[0]?.id ?? '';
 
+// O(1)-Index statt linearer Suche: getProduct läuft in Render-Pfaden
+// (ConfiguratorPrototype, SummaryPanel …) und skaliert sonst mit dem Katalog.
+// Einmal je Prozess aufgebaut; Rückgabe (Objektreferenz) bleibt identisch.
+const PRODUCT_BY_ID: Map<string, ProductConfig> = new Map(PRODUCTS.map((p) => [p.id, p]));
+
 export function getProduct(productId: string): ProductConfig | undefined {
-  return PRODUCTS.find((p) => p.id === productId);
+  return PRODUCT_BY_ID.get(productId);
+}
+
+// Produkte je Art – O(1)-Lookup statt linearem PRODUCTS.filter (Muster wie
+// PRODUCT_BY_ID). Skaliert die „ähnliche Produkte / passt dazu"-Berechnung auf
+// tausende Produkte. Reihenfolge = Katalogreihenfolge (Aufbau iteriert PRODUCTS).
+const PRODUCTS_BY_TYPE: Map<string, ProductConfig[]> = new Map();
+for (const p of PRODUCTS) {
+  const liste = PRODUCTS_BY_TYPE.get(p.productType);
+  if (liste) liste.push(p);
+  else PRODUCTS_BY_TYPE.set(p.productType, [p]);
+}
+export function produkteVomTyp(productType: string): ProductConfig[] {
+  return PRODUCTS_BY_TYPE.get(productType) ?? [];
 }
 
 export { CANVAS_WIDTH, CANVAS_HEIGHT } from './colorHelpers';

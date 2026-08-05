@@ -7,6 +7,7 @@
  * Service als auch später von Admin-Vorschau-UI verwendet werden können.
  */
 import { getProduct } from '@/config/products';
+import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import type {
   SupplierId,
   SupplierOrderDraft,
@@ -29,7 +30,7 @@ export function buildSupplierPositions(orderId: string, items: SupplierSourceIte
 
   for (const item of items) {
     const product = getProduct(item.productId);
-    const supplierRef = product?.supplier;
+    const supplierRef = supplierRefVon(item.productId);
 
     if (!product || !supplierRef) {
       unresolved.push({

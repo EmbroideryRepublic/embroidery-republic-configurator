@@ -29,6 +29,7 @@ const LADIES_AUTHENTIC_TEE_PURCHASE_PRICE = 5.48; // ab-Preis textil-grosshandel
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'russell-authentic-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Authentic Tee Pure Organic',
     brand: 'Russell',
     productType: 'tshirt',
@@ -75,6 +76,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'russell-workwear-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Workwear T-Shirt',
     brand: 'Russell',
     productType: 'tshirt',
@@ -128,6 +130,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'russell-ladies-authentic-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Ladies Authentic Tee Pure Organic',
     brand: 'Russell',
     productType: 'tshirt',

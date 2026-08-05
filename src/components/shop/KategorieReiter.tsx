@@ -17,16 +17,15 @@
  * Gewählt wird eine Art nach der anderen (wie in einer Navigation); ein
  * erneuter Klick auf den aktiven Reiter führt zurück zu „Alle Produkte".
  */
-import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
+import { produktTypLabel, PRODUCT_TYPE_ORDER } from '@/config/products/types';
 import type { ProductType } from '@/types';
 import type { FilterKriterien } from '@/lib/catalog/kriterien';
 import type { FacettenWert } from '@/lib/catalog/filter';
 import { useFilterNavigation } from './filterNavigation';
 
-/** Fachliche Reihenfolge: häufigste Anfrage zuerst. */
-const REIHENFOLGE: ProductType[] = [
-  'tshirt', 'polo', 'hoodie', 'zip-hoodie', 'sweater', 'longsleeve', 'jacket', 'vest',
-];
+/** Fachliche Reihenfolge: häufigste Anfrage zuerst – zentral in
+ *  PRODUCT_TYPE_ORDER (config/products/types). */
+const REIHENFOLGE = PRODUCT_TYPE_ORDER;
 
 export function KategorieReiter({
   kriterien, werte,
@@ -54,7 +53,7 @@ export function KategorieReiter({
             key={art}
             aktiv={aktiv}
             onClick={() => waehle(aktiv ? undefined : art)}
-            label={PRODUCT_TYPE_LABELS[art]}
+            label={produktTypLabel(art)}
           />
         );
       })}

@@ -36,6 +36,7 @@ const LADIES_PREMIUM_POLO_PURCHASE_PRICE = 7.8; // ab-Preis textil-grosshandel.e
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'fotl-heavy-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Heavy T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -81,6 +82,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-ladies-valueweight-vneck',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Ladies Valueweight V-Neck T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -135,6 +137,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-original-longsleeve',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Original Long Sleeve T',
     brand: 'Fruit of the Loom',
     productType: 'longsleeve',
@@ -180,6 +183,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-original-vneck',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Original V-Neck T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -224,6 +228,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-ladies-original-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Ladies Original T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -270,6 +275,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-iconic195-longsleeve',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Iconic 195 Ringspun Premium Long Sleeve T',
     brand: 'Fruit of the Loom',
     productType: 'longsleeve',
@@ -324,6 +330,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-pure-cotton-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Pure Cotton T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -386,6 +393,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-super-premium-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Super Premium T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -447,6 +455,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-valueweight-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Valueweight T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -516,6 +525,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-valueweight-vneck',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Valueweight V-Neck T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -575,6 +585,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-iconic195-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Iconic 195 Ringspun Premium T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -649,6 +660,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-ladies-iconic195-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Ladies Iconic 195 Ringspun Premium T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -714,6 +726,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-original-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Original T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -781,6 +794,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-ladies-valueweight-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Ladies Valueweight T',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -851,6 +865,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-baseball-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Baseball T-Shirt',
     brand: 'Fruit of the Loom',
     productType: 'tshirt',
@@ -897,6 +912,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-premium-polo',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Premium Polo',
     brand: 'Fruit of the Loom',
     productType: 'polo',
@@ -942,6 +958,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-ladies-premium-polo',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Premium Polo Lady-Fit',
     brand: 'Fruit of the Loom',
     productType: 'polo',
@@ -988,6 +1005,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'fotl-baseball-longsleeve',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Baseball Longsleeve',
     brand: 'Fruit of the Loom',
     productType: 'longsleeve',

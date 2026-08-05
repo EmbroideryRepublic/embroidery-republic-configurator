@@ -14,31 +14,24 @@ import { useState } from 'react';
 import Image from 'next/image';
 import type { PrintView } from '@/types';
 import type { ProductConfig } from '@/config/products/types';
-
-const ANSICHTEN: { key: PrintView; label: string }[] = [
-  { key: 'front', label: 'Vorne' },
-  { key: 'back', label: 'Hinten' },
-  { key: 'sleeve_left', label: 'Ärmel links' },
-  { key: 'sleeve_right', label: 'Ärmel rechts' },
-];
+import { bildFuerAnsicht, repraesentativBildVon } from '@/lib/assets';
+import { ansichtenVon } from '@/lib/products/ansichten';
+import { positionLabel } from '@/config/decorationPositions';
 
 export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
+  const ansichten = ansichtenVon(produkt);
   const [farbIndex, setFarbIndex] = useState(0);
-  const [ansicht, setAnsicht] = useState<PrintView>('front');
+  const [ansicht, setAnsicht] = useState<PrintView>(ansichten[0] ?? 'front');
 
   const farbe = produkt.colors[farbIndex] ?? produkt.colors[0];
   if (!farbe) return null;
-
-  const ansichten = ANSICHTEN.filter(
-    (a) => produkt.hasSleeves !== false || (a.key !== 'sleeve_left' && a.key !== 'sleeve_right')
-  );
 
   return (
     <div>
       <div className="relative aspect-square overflow-hidden rounded-2xl border border-brand/[0.08] bg-white">
         <Image
-          src={farbe.images[ansicht]}
-          alt={`${produkt.name} in ${farbe.name}, ${ANSICHTEN.find((a) => a.key === ansicht)?.label}`}
+          src={bildFuerAnsicht(produkt.id, farbe.id, ansicht) ?? repraesentativBildVon(produkt.id, farbe.id)}
+          alt={`${produkt.name} in ${farbe.name}, ${positionLabel(ansicht)}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-contain p-6"
@@ -47,19 +40,19 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
-        {ansichten.map((a) => (
+        {ansichten.map((view) => (
           <button
-            key={a.key}
+            key={view}
             type="button"
-            onClick={() => setAnsicht(a.key)}
-            aria-pressed={ansicht === a.key}
+            onClick={() => setAnsicht(view)}
+            aria-pressed={ansicht === view}
             className={`rounded-full border px-3 py-1 text-xs transition ${
-              ansicht === a.key
+              ansicht === view
                 ? 'border-brand bg-brand text-white'
                 : 'border-brand/15 bg-white text-brand/60 hover:border-gold/50 hover:text-brand'
             }`}
           >
-            {a.label}
+            {positionLabel(view)}
           </button>
         ))}
       </div>

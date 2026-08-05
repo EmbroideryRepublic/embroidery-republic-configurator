@@ -12,6 +12,10 @@
 # Betriebssystem
 .DS_Store
 
+# Vercel-Projektverknuepfung (repo.json/project.json) – lokale Deploy-Anbindung,
+# wird von Vercels Tooling ohnehin ignoriert, gehoert nicht in die Versionierung.
+.vercel
+
 # Logs
 npm-debug.log*
 

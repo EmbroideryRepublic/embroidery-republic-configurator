@@ -35,6 +35,16 @@ import { existsSync, writeFileSync } from 'node:fs';
 import { zeilenProfil } from './analyzeGarmentContour.mjs';
 
 const { PRODUCTS } = await import('../src/config/products/index.ts');
+// Bild-Bytes kommen AUSSCHLIESSLICH über die Asset-Schicht (ADR 0004): die
+// Produktdefinition trägt keine Pfade mehr. bildFuerAnsicht(productId,colorId,view)
+// ist die einzige Auflösungsstelle; Platzhalter werden beim Vermessen übersprungen.
+const { bildFuerAnsicht, PLATZHALTER_BILD } = await import('../src/lib/assets/index.ts');
+// Geometrie-Rezept je Ansicht kommt aus dem View-Registry (nicht aus hartkodierten
+// View-IDs): der Generator KONSUMIERT DECORATION_POSITIONS.geometrieRezept (M4-B1).
+const { DECORATION_POSITIONS, sortierePositionen } = await import('../src/config/decorationPositions.ts');
+// Ausgabeziel überschreibbar (Reproduktions-/Trockenlauf, schreibt NICHT in src/):
+//   PRINTAREA_OUT=/tmp/x.ts npx tsx --tsconfig tsconfig.scripts.json scripts/generatePrintAreaData.mts
+const PRINTAREA_OUT = process.env.PRINTAREA_OUT ?? 'src/config/printAreaData.generated.ts';
 
 /** Projektion eines liegenden Zylinders: Durchmesser / halber Umfang. */
 const ZYLINDER_PROJEKTION = 2 / Math.PI;
@@ -95,25 +105,11 @@ const ABSTAND = {
   aermelnaht: 1.0,
 };
 
-/**
- * Prozessgrenzen der Veredelung in cm. Deckeln die aus dem Kleidungsstück
- * berechnete Fläche – ein DTF-Transfer lässt sich nicht beliebig groß
- * produzieren, unabhängig davon, wie viel Stoff zur Verfügung steht.
- *
- * DTF und Stickerei nutzen bewusst DIESELBEN Werte: Der Mehraufwand der
- * Stickerei wird über den €/cm²-Satz in pricingRules abgebildet, nicht über
- * eine künstlich kleinere Fläche (bestehende Festlegung, unverändert).
- */
-const PROZESSGRENZE = {
-  front: { w: 30, h: 47 },
-  back: { w: 30, h: 47 },
-  // Ärmel: 10 cm statt vormals 13 cm Höhe. Ein kurzer Ärmel misst ab
-  // Schulternaht rund 20 cm – eine 13 cm hohe Fläche ließe oben und unten
-  // je nur ~3,5 cm und wirkte gedrängt. Übliche Ärmelmotive liegen bei
-  // 8–10 cm (siehe docs/platzierung-veredelung.md).
-  sleeve_left: { w: 11, h: 10 },
-  sleeve_right: { w: 11, h: 10 },
-};
+// Prozessgrenzen der Veredelung (cm) leben jetzt im View-Registry
+// (decorationPositions.ts, Feld `prozessgrenze`) – die EINZIGE Quelle (M4-B2).
+// Sie deckeln die aus dem Kleidungsstück berechnete Fläche (ein DTF-Transfer
+// lässt sich nicht beliebig groß produzieren). DTF und Stickerei nutzen bewusst
+// dieselben Werte (Mehraufwand der Stickerei über den €/cm²-Satz in pricingRules).
 
 /** Oberarmbreite für Schnitte ohne messbare Ärmelkontur.
  *  Aus den 28 validierten Produkten gemessener MITTELWERT (10,9 cm).
@@ -136,8 +132,14 @@ const AERMEL_KONSERVATIV_CM = 10.9;
 const AERMEL_BAND_VON = 0.08;
 const AERMEL_BAND_BIS = 0.26;
 
-const VIEWS = ['front', 'back', 'sleeve_left', 'sleeve_right'] as const;
-type View = (typeof VIEWS)[number];
+// Zu erzeugende Ansichten DATENGETRIEBEN aus dem Katalog (M4): genau die von
+// Produkten geführten Ansichten, in Registry-Reihenfolge – nicht mehr die
+// hartkodierte Kleidungsliste ['front','back','sleeve_left','sleeve_right'].
+// Neue Ansichten (Tasche, Cap …) fließen automatisch ein; ihre Geometrie steuert
+// das Rezept (fail-loud bis implementiert). Für den heutigen Katalog identisch zur
+// alten Liste (per Reproduktionsnachweis bestätigt).
+const VIEWS = sortierePositionen([...new Set(PRODUCTS.flatMap((p) => p.views ?? []))]);
+type View = string;
 
 /**
  * MANUELLE KORREKTUR des Bewegungsbereichs, je Produkt und Ansicht.
@@ -328,25 +330,20 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
 const NAHAUFNAHME_AB = 0.6;
 
 /**
- * Bildpfad einer Ansicht aus den PRODUKTDATEN ableiten.
+ * Existierender Dateipfad zu einem bereits aufgelösten Browser-Bild-URL.
  *
- * Bewusst NICHT über den Ordnernamen geraten: `fotl-ladies-valueweight-vneck`
- * liegt unter `fotl-ladies-vneck`. Eine Ableitung aus der Produkt-ID hielt
- * dieses Produkt fälschlich für bildlos. Die Farbdaten führen den echten
- * Pfad, also werden sie gefragt.
+ * Die URL kommt jetzt AUSSCHLIESSLICH aus der Asset-Schicht (`bildFuerAnsicht`),
+ * nicht mehr aus der Produktdefinition (ADR 0004: `colors` tragen keine Pfade
+ * mehr). Platzhalter werden übersprungen – nur echte Fotos werden vermessen,
+ * damit bildlose Produkte (Bildimport offen) KEINE Geometrie erhalten (sie
+ * erben sie per Klassen-Alias, printAreaAlias.generated.ts).
+ * '/products/x/front.webp' → 'public/products/x/front.{png,webp}'.
  */
-function bildPfad(
-  colors: { images?: Partial<Record<string, string>> }[],
-  view: string
-): string | null {
-  for (const c of colors) {
-    const url = c.images?.[view];
-    if (!url) continue;
-    // '/products/x/front.webp' → 'public/products/x/front.{png,webp}'
-    const basis = `public${url}`.replace(/\.(webp|png)$/, '');
-    for (const e of ['png', 'webp']) {
-      if (existsSync(`${basis}.${e}`)) return `${basis}.${e}`;
-    }
+function urlZuDateipfad(url: string | undefined | null): string | null {
+  if (!url || url === PLATZHALTER_BILD) return null;
+  const basis = `public${url}`.replace(/\.(webp|png)$/, '');
+  for (const e of ['png', 'webp']) {
+    if (existsSync(`${basis}.${e}`)) return `${basis}.${e}`;
   }
   return null;
 }
@@ -390,7 +387,7 @@ let ohneBild = 0;
 // Population gemessene Konstante, angewandt auf Mitglieder dieser Population.
 async function maxBreiteCm(url: string | undefined, hoeheCm: number): Promise<number | null> {
   if (!url) return null;
-  const pf = bildPfad([{ images: { v: url } }] as never, 'v');
+  const pf = urlZuDateipfad(url);
   if (!pf) return null;
   const { zeilen } = await zeilenProfil(pf);
   const bel = zeilen.filter((z) => z.breite > 0);
@@ -404,11 +401,13 @@ const verhaeltnisse = new Map<string, number>();
 const aermelLaengeCm = new Map<string, number>();
 
 for (const p of PRODUCTS) {
-  if (p.hasSleeves === false) continue;
+  // Nur Produkte mit Ärmel-Ansichten (datengetrieben aus views, kein hasSleeves).
+  if (!p.views?.some((v) => v === 'sleeve_left' || v === 'sleeve_right')) continue;
   const mass = p.sizeGuide?.measurements?.find((x) => x.size === 'M') ?? p.sizeGuide?.measurements?.[0];
   if (!mass) continue;
-  const breite = await maxBreiteCm(p.colors[0]?.images.front, mass.hoeheCm);
-  const tiefe = await maxBreiteCm(p.colors[0]?.images.sleeve_left, mass.hoeheCm);
+  const c0 = p.colors[0]?.id;
+  const breite = await maxBreiteCm(c0 ? bildFuerAnsicht(p.id, c0, 'front') : undefined, mass.hoeheCm);
+  const tiefe = await maxBreiteCm(c0 ? bildFuerAnsicht(p.id, c0, 'sleeve_left') : undefined, mass.hoeheCm);
   if (breite && tiefe) verhaeltnisse.set(p.id, tiefe / breite);
 
   // ── Ärmellänge über die validierte Achselerkennung ──────────────────
@@ -417,7 +416,7 @@ for (const p of PRODUCTS) {
   // die bisherige Bandregel nicht hatte: Ohne ihn war das Band ein Anteil
   // der KLEIDUNGSSTÜCKHÖHE und landete auf der Schulter statt auf dem
   // Oberarm – genau der zuerst gemeldete Fehler.
-  const fp = bildPfad([{ images: { v: p.colors[0]?.images.front } }] as never, 'v');
+  const fp = urlZuDateipfad(c0 ? bildFuerAnsicht(p.id, c0, 'front') : undefined);
   if (!fp) continue;
   const { zeilen: fz } = await zeilenProfil(fp);
   const fbel = fz.filter((z) => z.breite > 0);
@@ -482,8 +481,9 @@ for (const p of PRODUCTS) {
   const proProdukt: Partial<Record<View, Box>> = {};
 
   for (const view of VIEWS) {
-    // Ärmelansichten nur, wenn das Produkt sie führt.
-    if (p.hasSleeves === false && (view === 'sleeve_left' || view === 'sleeve_right')) continue;
+    // Nur die vom Produkt tatsächlich geführten Ansichten erzeugen
+    // (datengetrieben aus views – generisch auch für Nicht-Kleidung).
+    if (!(p.views ?? []).includes(view)) continue;
 
     // ── Kontur über ALLE Farbvarianten schneiden ────────────────────────
     // Frühere Fassung nahm EIN Bild je Produkt (die erste Farbe) und wandte
@@ -498,7 +498,7 @@ for (const p of PRODUCTS) {
     // Variante vorhanden ist. Eine Fläche je Produkt bleibt damit korrekt.
     const alleProfile: { w: number; h: number; zeilen: Awaited<ReturnType<typeof zeilenProfil>>['zeilen'] }[] = [];
     for (const c of p.colors) {
-      const pf = bildPfad([c] as never, view);
+      const pf = urlZuDateipfad(bildFuerAnsicht(p.id, c.id, view));
       if (!pf) continue;
       const prof = await zeilenProfil(pf);
       if (prof.zeilen.some((z) => z.breite > 0)) alleProfile.push(prof);
@@ -590,8 +590,32 @@ for (const p of PRODUCTS) {
     const yUnten = Math.round((obersteUnten / 100) * h);
     const konturHoehePx = yUnten - yOben + 1;
 
-    const istAermel = view === 'sleeve_left' || view === 'sleeve_right';
-    const grenze = PROZESSGRENZE[view];
+    // ── Geometrie-Rezept DATENGETRIEBEN (M4-B1) ──────────────────────────
+    // Statt hartkodierter View-IDs (`view === 'sleeve_*'`) bestimmt jetzt das
+    // Registry-Feld `geometrieRezept` die Geometrie-Behandlung. Die zwei heute
+    // real genutzten Rezepte werden byte-identisch reproduziert; weitere
+    // (`flachteil` für Tasche/Schürze/Handtuch/Decke, `wickelflaeche` für Cap)
+    // sind additiv – bis zu ihrer Implementierung fail-loud, damit eine neue
+    // Ansicht NICHT still im Torso-Pfad landet und falsch vermessen wird. Die
+    // eigene Strategie je Rezept folgt kalibriert mit dem ersten realen
+    // Nicht-Kleidungsprodukt (kein Raten ohne echte Kontur).
+    const rezept = DECORATION_POSITIONS[view]?.geometrieRezept;
+    if (rezept !== 'torso-zylinder' && rezept !== 'oberarm-band') {
+      throw new Error(
+        `Geometrie-Rezept "${rezept ?? '—'}" (Ansicht "${view}") ist im Druckflächen-Generator ` +
+          `noch nicht implementiert. Ergänze eine Rezept-Strategie in generatePrintAreaData.mts, ` +
+          `sobald ein reales Produkt diese Ansicht führt (M4).`
+      );
+    }
+    const istAermel = rezept === 'oberarm-band';
+    // Prozessgrenze DATENGETRIEBEN aus dem View-Registry (M4-B2): das Feld
+    // `prozessgrenze` ist die einzige Quelle; eine neue Ansicht bringt ihre
+    // Grenze als Daten mit, ohne den Generator zu ändern. Fail-loud, falls eine
+    // implementierte-Rezept-Ansicht keine Grenze hinterlegt hat.
+    const grenze = DECORATION_POSITIONS[view]?.prozessgrenze;
+    if (!grenze) {
+      throw new Error(`Keine prozessgrenze für Ansicht "${view}" im View-Registry (decorationPositions.ts).`);
+    }
 
     // ── Kapuzen-/Kragenhöhe aus VERIFIZIERTEN Maßen bestimmen ───────────
     //
@@ -647,12 +671,12 @@ for (const p of PRODUCTS) {
     let quelle: string;
 
     if (!istAermel) {
-      breiteCm = Math.min(mass.breiteCm - 2 * ABSTAND.seitennaht, grenze.w);
-      hoeheNutzbarCm = Math.min(mass.hoeheCm - ABSTAND.kragen - ABSTAND.saum, grenze.h);
+      breiteCm = Math.min(mass.breiteCm - 2 * ABSTAND.seitennaht, grenze.maxWidthCm);
+      hoeheNutzbarCm = Math.min(mass.hoeheCm - ABSTAND.kragen - ABSTAND.saum, grenze.maxHeightCm);
       quelle = 'Kontur (Position) + Größentabelle (Maß)';
     } else {
-      breiteCm = Math.min(AERMEL_KONSERVATIV_CM - 2 * ABSTAND.aermelnaht, grenze.w);
-      hoeheNutzbarCm = grenze.h;
+      breiteCm = Math.min(AERMEL_KONSERVATIV_CM - 2 * ABSTAND.aermelnaht, grenze.maxWidthCm);
+      hoeheNutzbarCm = grenze.maxHeightCm;
       quelle = 'Kontur (Position) + Gruppenfläche Oberarm';
     }
 
@@ -779,7 +803,7 @@ for (const p of PRODUCTS) {
     // ── Wahre cm-Ausdehnung der GEZEICHNETEN Box ────────────────────────
     //
     // Das ist der Bezug, mit dem der Canvas Zentimeter in Pixel umrechnet
-    // (cmConversion: pxPerCm = areaPx.height / referenceGarmentHeightCm).
+    // (cmConversion: pxPerCm = areaPx.height / boxHeightCm).
     // Bisher stand dort die KÖRPERLÄNGE (z.B. 72 cm), obwohl die Box nur den
     // bedruckbaren Bereich zeigt (z.B. 47 cm). Gemessen im laufenden Canvas:
     // Box 457,7 px, Standardlogo 13,95 cm wurde mit 89 px gezeichnet – das
@@ -793,7 +817,7 @@ for (const p of PRODUCTS) {
 
     proProdukt[view] = {
       garmentWidthCm: Number((istAermel ? AERMEL_KONSERVATIV_CM : mass.breiteCm - 2 * ABSTAND.seitennaht).toFixed(1)),
-      garmentHeightCm: Number((istAermel ? grenze.h : mass.hoeheCm - ABSTAND.kragen - ABSTAND.saum).toFixed(1)),
+      garmentHeightCm: Number((istAermel ? grenze.maxHeightCm : mass.hoeheCm - ABSTAND.kragen - ABSTAND.saum).toFixed(1)),
       x0: proz(x0px, w),
       y0: proz(y0px, h),
       x1: proz(x1px, w),
@@ -873,7 +897,7 @@ for (const [id, views] of Object.entries(ergebnis)) {
 }
 zeilenAus.push('};', '');
 
-writeFileSync('src/config/printAreaData.generated.ts', zeilenAus.join('\n'), 'utf8');
+writeFileSync(PRINTAREA_OUT, zeilenAus.join('\n'), 'utf8');
 
 console.log(`Produkte mit Flächen : ${Object.keys(ergebnis).length} von ${PRODUCTS.length}`);
 console.log(`Ansichten gesamt     : ${Object.values(ergebnis).reduce((s, v) => s + Object.keys(v).length, 0)}`);

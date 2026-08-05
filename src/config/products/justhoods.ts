@@ -29,6 +29,7 @@ const QUARTERZIP_SWEAT_PURCHASE_PRICE = 17.5;
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'justhoods-college-hoodie',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'College Hoodie',
     brand: 'Just Hoods',
     productType: 'hoodie',
@@ -82,6 +83,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'justhoods-zoodie',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Zoodie',
     brand: 'Just Hoods',
     productType: 'zip-hoodie',
@@ -128,6 +130,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'justhoods-awdis-sweat',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'AWDis Sweat',
     brand: 'Just Hoods',
     productType: 'sweater',
@@ -174,6 +177,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'justhoods-contrast-hoodie',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Kontrast-Hoodie',
     brand: 'Just Hoods',
     productType: 'hoodie',
@@ -225,6 +229,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'justhoods-quarterzip-sweat',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: '1/4 Zip Sweat',
     brand: 'Just Hoods',
     productType: 'zip-hoodie',

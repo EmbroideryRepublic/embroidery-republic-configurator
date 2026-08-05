@@ -13,7 +13,10 @@
  * wenn das Sortiment sich geändert hat. Ein weggefallener Farbwert führt
  * deshalb zu „Filter ohne Wirkung", nicht zu einer Fehlerseite.
  */
-import type { Farbgruppe, Geschlecht, MaterialGruppe, Passform } from '@/config/products/facetten';
+import {
+  FARBGRUPPE_LABELS, GESCHLECHT_LABELS, MATERIAL_LABELS, PASSFORM_LABELS,
+  type Farbgruppe, type Geschlecht, type MaterialGruppe, type Passform,
+} from '@/config/products/facetten';
 
 export type Sortierung = 'beliebtheit' | 'preis-auf' | 'preis-ab' | 'neu' | 'name-az' | 'name-za';
 
@@ -100,10 +103,15 @@ function nurBekannte<T extends string>(werte: string[], erlaubt: readonly T[]): 
   return werte.filter((w): w is T => (erlaubt as readonly string[]).includes(w));
 }
 
-const MATERIALIEN = ['baumwolle-100', 'bio-baumwolle', 'mischgewebe', 'polyester', 'recycelt'] as const;
-const PASSFORMEN = ['regular', 'slim', 'tailliert', 'weit', 'oversized'] as const;
-const GESCHLECHTER = ['damen', 'herren', 'unisex'] as const;
-const FARBEN = ['schwarz', 'weiss', 'grau', 'blau', 'tuerkis', 'gruen', 'gelb', 'orange', 'rot', 'rosa', 'lila', 'braun', 'beige'] as const;
+// Facetten-Vokabulare aus der Single Source (config/products/facetten) ableiten,
+// NICHT duplizieren. nurBekannte() filtert per .includes(), daher ist die
+// Schlüsselreihenfolge irrelevant und die Ableitung byte-identisch zur früheren
+// Literalliste. So kann kein Vokabular mehr auseinanderlaufen.
+const MATERIALIEN = Object.keys(MATERIAL_LABELS) as MaterialGruppe[];
+const PASSFORMEN = Object.keys(PASSFORM_LABELS) as Passform[];
+const GESCHLECHTER = Object.keys(GESCHLECHT_LABELS) as Geschlecht[];
+const FARBEN = Object.keys(FARBGRUPPE_LABELS) as Farbgruppe[];
+// Sortierung ist ein reines Query-Konzept (keine Produktfacette) und bleibt lokal.
 const SORTIERUNGEN = ['beliebtheit', 'preis-auf', 'preis-ab', 'neu', 'name-az', 'name-za'] as const;
 
 export type SuchParameter = Record<string, string | string[] | undefined>;

@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { imageSize } from 'image-size';
+import { rasterPfad } from '@/lib/assets';
 
 interface SvgGarmentImageInfo {
   kind: 'svg';
@@ -67,7 +68,7 @@ export async function loadGarmentImageInfo(publicRelativePath: string): Promise<
   }
 
   if (ext === '.webp') {
-    const pngRelativePath = publicRelativePath.replace(/\.webp$/i, '.png');
+    const pngRelativePath = rasterPfad(publicRelativePath);
     const filePath = path.join(process.cwd(), 'public', pngRelativePath);
     let pngBuffer: Buffer;
     try {

@@ -29,6 +29,7 @@ const ROLLSLEEVE_T_PURCHASE_PRICE = 9.92;
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'neutral-classic-polo',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: "Men's Classic Polo",
     brand: 'Neutral',
     productType: 'polo',
@@ -82,6 +83,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'neutral-rollsleeve-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: "Men's Roll Up Sleeve T-Shirt",
     brand: 'Neutral',
     productType: 'tshirt',

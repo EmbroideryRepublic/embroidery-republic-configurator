@@ -1,6 +1,10 @@
 import { MEASURED_SWATCH_HEX } from './measuredSwatchHexes';
 import type { ProductColorConfig } from './types';
 
+// Bildpfade, Platzhalter und repräsentatives Bild leben seit ADR 0004
+// ausschließlich in der Asset-Schicht (src/lib/assets); colorHelpers deklariert
+// nur noch Farb-Identität (id/name/hex).
+
 /** Canvas-Grundmaße – alle Prozent-/cm-Umrechnungen basieren darauf. */
 export const CANVAS_WIDTH = 700;
 export const CANVAS_HEIGHT = 840;
@@ -112,76 +116,66 @@ function swatchHex(folderName: string, colorId: string): string {
   return MEASURED_SWATCH_HEX[folderName] ?? getColorMeta(colorId).hex;
 }
 
+/**
+ * ══════════════════════════════════════════════════════════════════════
+ * PLATZHALTER-FARBSATZ (Produkte OHNE echte Fotos)
+ * ══════════════════════════════════════════════════════════════════════
+ * Für neu aufgenommene Produkte, für die noch keine echten Fotos vorliegen
+ * (`bildStatus: 'fehlt'` auf dem ProductConfig). Jede Farbe zeigt in ALLEN
+ * Ansichten denselben neutralen Platzhalter; der Farb-Swatch nutzt aber den
+ * ECHTEN, aus der Lieferantenquelle (textil-grosshandel.eu, Swatch-`data-key`)
+ * verifizierten Hex – kein geschätzter Ton. So bleibt das Produkt vollständig
+ * pflegbar und wird beim späteren Bebildern gesammelt umgestellt (Platzhalter
+ * → echte `/products/<ordner>/…`-Pfade), ohne dass je ein Platzhalter für ein
+ * echtes Foto gehalten wird.
+ */
+export function platzhalterFarbSet(
+  farben: { id: string; name: string; hex: string }[],
+  // Historischer Parameter (welche Ansichten Platzhalter bekamen). Seit ADR 0004
+  // liefert die Asset-Schicht die Bilder über das Manifest – der Parameter wird
+  // ignoriert und bleibt nur, damit bestehende generierte Aufrufe kompilieren.
+  _views?: readonly string[]
+): ProductColorConfig[] {
+  return farben.map(({ id, name, hex }) => ({ id, name, hex }));
+}
+
+/**
+ * Gemeinsamer Aufbau eines Farbsatzes: Anker-Farbe + Extra-Farben. Deklariert
+ * ausschließlich die Farb-Identität – Name aus COLOR_META, Hex aus dem gemessenen
+ * Swatch (measuredSwatchHexes, je Bild-Ablageordner). Die Bildpfade liegen im
+ * Asset-Manifest (ADR 0004); die Produktdefinition kennt sie nicht.
+ */
+function realPhotoSet(
+  folder: string,
+  anchorColorId: string,
+  extraColorIds: string[]
+): ProductColorConfig[] {
+  const baue = (ordner: string, id: string): ProductColorConfig => ({
+    id,
+    name: getColorMeta(id).name,
+    hex: swatchHex(ordner, id),
+  });
+  return [baue(folder, anchorColorId), ...extraColorIds.map((id) => baue(`${folder}-${id}`, id))];
+}
+
+/** Farbsatz eines Produkts mit echten Fotos. `folder` = Ablage-Basis (heute die
+ *  Produkt-ID); wird nur noch für den gemessenen Swatch-Hex genutzt, NICHT für
+ *  Bildpfade (die liegen im Asset-Manifest, ADR 0004). */
 export function realPhotoColorSet(
   folder: string,
   anchorColorId: string,
   extraColorIds: string[]
 ): ProductColorConfig[] {
-  const anchor: ProductColorConfig = {
-    id: anchorColorId,
-    name: getColorMeta(anchorColorId).name,
-    hex: swatchHex(folder, anchorColorId),
-    images: {
-      front: `/products/${folder}/front.webp`,
-      back: `/products/${folder}/back.webp`,
-      sleeve_left: `/products/${folder}/sleeve-left.webp`,
-      sleeve_right: `/products/${folder}/sleeve-right.webp`,
-    },
-  };
-
-  const extras: ProductColorConfig[] = extraColorIds.map((id) => ({
-    id,
-    name: getColorMeta(id).name,
-    hex: swatchHex(`${folder}-${id}`, id),
-    images: {
-      front: `/products/${folder}-${id}/front.webp`,
-      back: `/products/${folder}-${id}/back.webp`,
-      sleeve_left: `/products/${folder}-${id}/sleeve-left.webp`,
-      sleeve_right: `/products/${folder}-${id}/sleeve-right.webp`,
-    },
-  }));
-
-  return [anchor, ...extras];
+  return realPhotoSet(folder, anchorColorId, extraColorIds);
 }
 
-/**
- * Wie realPhotoColorSet(), aber für Produkte OHNE echtes Ärmel-/Seitenfoto
- * (nur Vorne+Hinten sind echte, farblich passende Fotos je Farbe). Immer in
- * Kombination mit `hasSleeves: false` auf dem ProductConfig verwenden – das
- * blendet die Ärmel-Ansichten in der UI vollständig aus (ViewSwitcher,
- * Großansicht, aktive Ansicht), sodass die hier auf front.webp
- * zurückfallenden sleeve_left/sleeve_right-Pfade nie gerendert werden. Kein
- * Verstoß gegen "nur echte, farblich passende Fotos" – es wird nirgends ein
- * Foto ALS Ärmel-Ansicht angezeigt, die Pfade sind reine Typ-Platzhalter.
- */
+/** Historisch für Produkte ohne echte Ärmel-/Seitenfotos; seit der Asset-Schicht
+ *  (ADR 0004) identisch zu realPhotoColorSet – der frühere front-Fallback lebt
+ *  jetzt im Manifest. Bleibt als eigener Name für die bestehenden Aufrufer. */
 export function realPhotoFrontBackColorSet(
   folder: string,
   anchorColorId: string,
   extraColorIds: string[]
 ): ProductColorConfig[] {
-  const anchor: ProductColorConfig = {
-    id: anchorColorId,
-    name: getColorMeta(anchorColorId).name,
-    hex: swatchHex(folder, anchorColorId),
-    images: {
-      front: `/products/${folder}/front.webp`,
-      back: `/products/${folder}/back.webp`,
-      sleeve_left: `/products/${folder}/front.webp`,
-      sleeve_right: `/products/${folder}/front.webp`,
-    },
-  };
-
-  const extras: ProductColorConfig[] = extraColorIds.map((id) => ({
-    id,
-    name: getColorMeta(id).name,
-    hex: swatchHex(`${folder}-${id}`, id),
-    images: {
-      front: `/products/${folder}-${id}/front.webp`,
-      back: `/products/${folder}-${id}/back.webp`,
-      sleeve_left: `/products/${folder}-${id}/front.webp`,
-      sleeve_right: `/products/${folder}-${id}/front.webp`,
-    },
-  }));
-
-  return [anchor, ...extras];
+  return realPhotoSet(folder, anchorColorId, extraColorIds);
 }

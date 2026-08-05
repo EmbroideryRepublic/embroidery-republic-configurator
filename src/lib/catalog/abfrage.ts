@@ -48,7 +48,9 @@ interface Eintrag {
 }
 
 const EINTRAEGE: Eintrag[] = PRODUCTS.map((produkt) => ({ produkt, merkmale: merkmaleVon(produkt) }));
-const ALLE_MERKMALE: Merkmale[] = EINTRAEGE.map((e) => e.merkmale);
+/** Merkmale ALLER Produkte – einmal je Prozess vorberechnet. Von der Shop-Seite
+ *  direkt wiederverwendet, statt sie je (force-dynamic) Request neu zu berechnen. */
+export const ALLE_MERKMALE: Merkmale[] = EINTRAEGE.map((e) => e.merkmale);
 const SPANNEN = spannen(ALLE_MERKMALE);
 
 /** Marken- und Größennamen zu ihren Slugs – die Oberfläche zeigt Klartext. */

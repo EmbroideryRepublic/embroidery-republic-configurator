@@ -155,7 +155,7 @@ async function main() {
   let fehlendeBilder = 0;
 
   for (const p of PRODUCTS) {
-    const views = (p.hasSleeves ?? true) ? VIEWS : VIEWS.filter((v) => !v.startsWith('sleeve'));
+    const views = p.views ?? VIEWS;
     for (const color of p.colors) {
       for (const view of views) {
         const url = color.images[view];

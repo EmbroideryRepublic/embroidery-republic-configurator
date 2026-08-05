@@ -7,10 +7,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import type { ProductColorConfig, ProductConfig } from '@/config/products/types';
-import { naechsteGroesse, passendeFarbe, passendeGroessen, uebernehmeAuswahl } from '../uebernahme';
+import { passendeFarbe, passendeGroessen, uebernehmeAuswahl } from '../uebernahme';
+import { naechsteGroesse, GROESSEN_LEITERN } from '@/config/products/groessen';
+
+/** Konfektions-Standardleiter für die geordnet-diskreten Größen-Tests. */
+const KONF = GROESSEN_LEITERN['konfektion-eu']!;
 
 function farbe(id: string, name: string, hex: string): ProductColorConfig {
-  return { id, name, hex, images: { front: '', back: '', sleeve_left: '', sleeve_right: '' } };
+  return { id, name, hex };
 }
 
 function produkt(teil: Partial<ProductConfig> & { colors: ProductColorConfig[]; sizes: string[] }): ProductConfig {
@@ -47,21 +51,21 @@ test('Kurz-Hex (#abc) wird wie #aabbcc gelesen', () => {
 // ── Größe ──────────────────────────────────────────────────────────────
 
 test('vorhandene Größe bleibt', () => {
-  assert.equal(naechsteGroesse('L', ['S', 'M', 'L', 'XL']), 'L');
+  assert.equal(naechsteGroesse('L', ['S', 'M', 'L', 'XL'], KONF), 'L');
 });
 
 test('fehlende Größe fällt auf die nächstgelegene', () => {
-  assert.equal(naechsteGroesse('XXL', ['S', 'M', 'L', 'XL']), 'XL', 'größte verfügbare liegt am nächsten');
-  assert.equal(naechsteGroesse('XS', ['M', 'L', 'XL']), 'M');
+  assert.equal(naechsteGroesse('XXL', ['S', 'M', 'L', 'XL'], KONF), 'XL', 'größte verfügbare liegt am nächsten');
+  assert.equal(naechsteGroesse('XS', ['M', 'L', 'XL'], KONF), 'M');
 });
 
 test('bei Gleichstand wird die kleinere Größe gewählt', () => {
   // M fehlt, S und L sind gleich weit entfernt → S (nichts fällt zu eng aus).
-  assert.equal(naechsteGroesse('M', ['S', 'L']), 'S');
+  assert.equal(naechsteGroesse('M', ['S', 'L'], KONF), 'S');
 });
 
-test('unbekannte Größe hat keine sinnvolle Nähe', () => {
-  assert.equal(naechsteGroesse('Einheitsgröße', ['S', 'M', 'L']), undefined);
+test('unbekannte Größe hat keine sinnvolle Nähe (Konfektion)', () => {
+  assert.equal(naechsteGroesse('Einheitsgröße', ['S', 'M', 'L'], KONF), undefined);
 });
 
 test('Mengen fehlender Größen wandern mit und addieren sich bei Kollision', () => {

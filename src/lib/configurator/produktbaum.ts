@@ -7,54 +7,35 @@
  * (Hauptgruppe → Produktart → Modell) und muss nichts filtern. Filter sind
  * eine optionale Hilfe und wirken hier nur als Vorauswahl auf den Baum.
  *
- * ── Die Navigationsregel ───────────────────────────────────────────────
- * Die interne Klassifizierung ist NICHT die Navigation. Gemessen am echten
- * Katalog (43 Artikel) trägt die reine Klassifizierung nicht:
+ * ── Die Navigationsregel: achsengetrieben, KEINE feste Achse ────────────
+ * Die oberste Baumebene (Hauptgruppen) kommt NICHT aus fest verdrahtetem
+ * Herren/Damen/Unisex, sondern aus der Navigationsachsen-Registry
+ * (config/products/naviAchsen.ts). Jede Produktart nennt im PRODUCT_TYPES-
+ * Register ihre `naviAchse`; die Registry liefert deren Gruppen und die
+ * Zuordnung eines Produkts. So lässt sich der Katalog künftig nach Geschlecht,
+ * Einsatzgebiet, Saison, Zielgruppe, Hersteller … gliedern – rein über Daten.
  *
- *     Herren 14 (nur T-Shirt, Longsleeve, Polo)
- *     Damen  10 (nur T-Shirt, Polo)
- *     Unisex 29 (alle sieben Arten)
- *
- * Wer „Herren" öffnet und einen Kapuzenpullover sucht, fände dort keinen –
- * sämtliche Hoodies, Zip-Hoodies, Sweater und Jacken sind Unisex. Deshalb:
- * Unisexware erscheint ZUSÄTZLICH unter Herren und Damen. Reine Herrenware
- * bleibt bei Herren, reine Damenware bei Damen. Ergebnis: alle drei Gruppen
- * führen alle sieben Produktarten, kein Artikel versteckt sich hinter der
- * Datenstruktur. Die Gruppen überschneiden sich dadurch bewusst – die Summe
- * ihrer Zähler ist größer als der Bestand, und das ist richtig so.
+ * Überschneidung ist eine Eigenschaft der Achse, nicht der Kernlogik: Bei der
+ * Geschlechtsachse erscheint Unisexware zusätzlich unter Herren und Damen,
+ * sodass kein Artikel hinter der Klassifizierung verschwindet; die Summe der
+ * Gruppenzähler ist dann größer als der Bestand, und das ist richtig so.
  */
 import type { ProductConfig } from '@/config/products/types';
-import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
-import { geschlechterVon } from '@/config/products/facetten';
+import { produktTypLabel, PRODUCT_TYPE_ORDER } from '@/config/products/types';
+import { AKTIVE_ACHSEN, produktAchsenId } from '@/config/products/naviAchsen';
 import { QUALITY_TIER_LABELS } from '@/config/qualityTiers';
 import type { ProductType, QualityTier } from '@/types';
 
-export type Hauptgruppe = 'herren' | 'damen' | 'unisex';
+/** ID einer Navigationsgruppe (oberste Baumebene). Offen – die gültigen Werte
+ *  liefert die aktive Navigationsachse (naviAchsen.ts), nicht dieser Typ.
+ *  Der Name ist achsenneutral („Hauptgruppe" = oberste Ebene), die Werte sind
+ *  es seit M3.4 ebenfalls. */
+export type Hauptgruppe = string;
 
-export const HAUPTGRUPPEN: Hauptgruppe[] = ['herren', 'damen', 'unisex'];
-
-export const HAUPTGRUPPEN_LABELS: Record<Hauptgruppe, string> = {
-  herren: 'Herren', damen: 'Damen', unisex: 'Unisex',
-};
-
-/** Reihenfolge der Produktarten – von der häufigsten Anfrage abwärts. */
-export const ARTFOLGE: ProductType[] = [
-  'tshirt', 'polo', 'hoodie', 'zip-hoodie', 'sweater', 'longsleeve', 'jacket', 'vest',
-];
-
-/**
- * Gehört ein Artikel in der Navigation zu dieser Hauptgruppe?
- *
- * Unisex zählt in alle drei Gruppen; die Gruppe „Unisex" selbst führt
- * ausschließlich Unisexware und ist damit ein zusätzlicher Einstieg, keine
- * Ausweichgruppe.
- */
-export function gehoertZu(p: ProductConfig, gruppe: Hauptgruppe): boolean {
-  const eigen = geschlechterVon(p);
-  const istUnisex = eigen.includes('unisex');
-  if (gruppe === 'unisex') return istUnisex;
-  return istUnisex || eigen.includes(gruppe);
-}
+/** Reihenfolge der Produktarten – von der häufigsten Anfrage abwärts.
+ *  Zentral in PRODUCT_TYPE_ORDER (config/products/types); hier nur der fachlich
+ *  sprechende Navigations-Alias. */
+export const ARTFOLGE: readonly ProductType[] = PRODUCT_TYPE_ORDER;
 
 /** Optionale Einschränkungen. Alle Felder wirken als UND. */
 export type Browserfilter = {
@@ -123,33 +104,39 @@ export type Gruppenknoten = {
 /**
  * Baut den vollständigen Baum.
  *
- * Die drei Hauptgruppen bleiben immer erhalten – auch wenn eine Suche sie
- * leer räumt. Sonst spränge die Navigation beim Tippen. Produktarten ohne
- * Treffer verschwinden dagegen, denn ein leerer Ast lädt zum Klicken ein und
- * enttäuscht dann.
+ * Die Hauptgruppen der aktiven Achsen bleiben immer erhalten – auch wenn eine
+ * Suche sie leer räumt. Sonst spränge die Navigation beim Tippen. Produktarten
+ * ohne Treffer verschwinden dagegen, denn ein leerer Ast lädt zum Klicken ein
+ * und enttäuscht dann. Welche Gruppen es gibt, bestimmt allein die
+ * Navigationsachsen-Registry (naviAchsen.ts) – keine feste Achse im Code.
  */
 export function baueBaum(produkte: ProductConfig[], filter: Browserfilter): Gruppenknoten[] {
   const treffer = produkte.filter((p) => passtZumFilter(p, filter));
+  const knoten: Gruppenknoten[] = [];
 
-  return HAUPTGRUPPEN.map((gruppe) => {
-    const drin = treffer.filter((p) => gehoertZu(p, gruppe));
+  // Über alle im Katalog aktiven Achsen und deren Gruppen. Ein Produkt erscheint
+  // unter einer Gruppe, wenn es der Achse dieser Gruppe angehört UND die Achse es
+  // der Gruppe zuordnet (Überschneidung möglich, z.B. Unisex in drei Gruppen).
+  for (const achse of AKTIVE_ACHSEN) {
+    for (const gruppe of achse.gruppen) {
+      const drin = treffer.filter(
+        (p) => produktAchsenId(p) === achse.id && achse.gruppenVon(p).includes(gruppe.id)
+      );
 
-    const arten: Artknoten[] = ARTFOLGE.map((art) => {
-      const modelle = drin
-        .filter((p) => p.productType === art)
-        // Günstigste zuerst: die Kundschaft steigt beim Stöbern über den
-        // Preis ein, nicht über den Modellnamen.
-        .sort((a, b) => a.basePrice - b.basePrice || a.name.localeCompare(b.name, 'de'));
-      return { art, label: PRODUCT_TYPE_LABELS[art], anzahl: modelle.length, modelle };
-    }).filter((a) => a.anzahl > 0);
+      const arten: Artknoten[] = ARTFOLGE.map((art) => {
+        const modelle = drin
+          .filter((p) => p.productType === art)
+          // Günstigste zuerst: die Kundschaft steigt beim Stöbern über den
+          // Preis ein, nicht über den Modellnamen.
+          .sort((a, b) => a.basePrice - b.basePrice || a.name.localeCompare(b.name, 'de'));
+        return { art, label: produktTypLabel(art), anzahl: modelle.length, modelle };
+      }).filter((a) => a.anzahl > 0);
 
-    return {
-      gruppe,
-      label: HAUPTGRUPPEN_LABELS[gruppe],
-      anzahl: drin.length,
-      arten,
-    };
-  });
+      knoten.push({ gruppe: gruppe.id, label: gruppe.label, anzahl: drin.length, arten });
+    }
+  }
+
+  return knoten;
 }
 
 /**
@@ -184,8 +171,8 @@ export function modellBadges(p: ProductConfig): Badge[] {
   const bio = /biologisch|bio-/i.test(p.material);
   const badges: Badge[] = [
     { text: materialKurz(p.material), ton: bio ? 'bio' : 'neutral' },
-    { text: `${p.weightGsm} g/m²`, ton: 'neutral' },
   ];
+  if (p.weightGsm) badges.push({ text: `${p.weightGsm} g/m²`, ton: 'neutral' });
   if (p.qualityTier === 'premium' || p.qualityTier === 'luxury') {
     badges.push({ text: QUALITY_TIER_LABELS[p.qualityTier], ton: 'gold' });
   }

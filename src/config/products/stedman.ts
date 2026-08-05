@@ -23,6 +23,7 @@ const SLIMFIT_T_PURCHASE_PRICE = 3.22;
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'stedman-slimfit-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Classic-T Fitted',
     brand: 'Stedman',
     productType: 'tshirt',

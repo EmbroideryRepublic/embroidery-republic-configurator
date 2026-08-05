@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
+import { DECORATION_POSITIONS } from '@/config/decorationPositions';
 import { AVAILABLE_FONTS } from '@/config/fonts';
 import { THREAD_COLORS } from '@/config/threadColors';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
@@ -17,19 +18,16 @@ import type { LogoElement, PrintArea, TextElement } from '@/types';
 type PositionPresetKey =
   | 'element_position_top_center'
   | 'element_position_center'
-  | 'element_position_bottom_center'
-  | 'element_position_chest_left'
-  | 'element_position_chest_right';
+  | 'element_position_bottom_center';
 
 // x/y = Anteil der freien Bewegungsfläche (0 = ganz links/oben, 1 = ganz
-// rechts/unten). "Brust links/rechts" ist aus TRÄGER-Sicht benannt (wie in
-// der Textilbranche üblich: "Brust links" = Herzseite): die Herzseite des
-// Trägers erscheint auf dem Frontfoto rechts im Bild – daher x: 0.75 für
-// "Brust links" und x: 0.25 für "Brust rechts". frontOnly blendet die
-// Brust-Presets auf Rücken-/Ärmelansichten aus, wo sie keinen Sinn ergeben.
-const POSITION_PRESETS: { labelKey: PositionPresetKey; x: number; y: number; frontOnly?: boolean }[] = [
-  { labelKey: 'element_position_chest_left', x: 0.75, y: 0.18, frontOnly: true },
-  { labelKey: 'element_position_chest_right', x: 0.25, y: 0.18, frontOnly: true },
+// rechts/unten). UNIVERSELLE Presets (oben/mittig/unten) gelten für JEDE Ansicht
+// und Produktgruppe. VIEW-spezifische Presets – etwa „Brust links/rechts", die
+// nur auf einer Torso-Vorderseite Sinn ergeben – kommen jetzt datengetrieben aus
+// dem View-Registry (`DECORATION_POSITIONS[view].presets`, M4-C3), statt hier
+// hartkodiert + per `-front`-String-Sniff gefiltert zu werden. So bringt eine
+// neue Produktgruppe (Tasche/Cap/…) ihre Presets als Daten mit.
+const UNIVERSAL_PRESETS: { labelKey: PositionPresetKey; x: number; y: number }[] = [
   { labelKey: 'element_position_top_center', x: 0.5, y: 0.08 },
   { labelKey: 'element_position_center', x: 0.5, y: 0.5 },
   { labelKey: 'element_position_bottom_center', x: 0.5, y: 0.85 },
@@ -162,8 +160,8 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
       // "wegspringt", sondern von seiner aktuellen Mitte aus wächst/schrumpft.
       const centerXCm = current.xCm + current.widthCm / 2;
       const centerYCm = current.yCm + current.heightCm / 2;
-      const xCm = Math.max(0, Math.min(centerXCm - box.widthCm / 2, printArea.movementWidthCm - box.widthCm));
-      const yCm = Math.max(0, Math.min(centerYCm - box.heightCm / 2, printArea.referenceGarmentHeightCm - box.heightCm));
+      const xCm = Math.max(0, Math.min(centerXCm - box.widthCm / 2, printArea.boxWidthCm - box.widthCm));
+      const yCm = Math.max(0, Math.min(centerYCm - box.heightCm / 2, printArea.boxHeightCm - box.heightCm));
 
       updateElement(current.id, {
         ...changes,
@@ -205,8 +203,8 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
 
   function applyPreset(preset: { x: number; y: number }) {
     if (!printArea || !selected) return;
-    const xCm = Math.max(0, preset.x * (printArea.movementWidthCm - selected.widthCm));
-    const yCm = Math.max(0, preset.y * (printArea.referenceGarmentHeightCm - selected.heightCm));
+    const xCm = Math.max(0, preset.x * (printArea.boxWidthCm - selected.widthCm));
+    const yCm = Math.max(0, preset.y * (printArea.boxHeightCm - selected.heightCm));
     commitElement(selected.id, { xCm, yCm, isOutOfBounds: false });
   }
 
@@ -499,7 +497,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
         <div>
           <p className="mb-1.5 text-xs text-gray-400">{t('element_position')}</p>
           <div className="flex flex-wrap gap-1.5">
-            {POSITION_PRESETS.filter((preset) => !preset.frontOnly || printArea.id.endsWith('-front')).map((preset) => (
+            {[...(DECORATION_POSITIONS[printArea.view]?.presets ?? []), ...UNIVERSAL_PRESETS].map((preset) => (
               <button
                 key={preset.labelKey}
                 type="button"
@@ -591,7 +589,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
             onClick={() =>
               duplicateElement(
                 selected.id,
-                printArea ? { movementWidthCm: printArea.movementWidthCm, referenceGarmentHeightCm: printArea.referenceGarmentHeightCm } : undefined
+                printArea ? { boxWidthCm: printArea.boxWidthCm, boxHeightCm: printArea.boxHeightCm } : undefined
               )
             }
             className="min-w-0 flex-1 truncate rounded-md bg-brand-light px-2 py-1.5 text-sm hover:bg-gray-200"

@@ -5,6 +5,9 @@ import { MINIMUM_QUANTITY } from '@/lib/pricing/calculatePrice';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import { indexedDbStorage } from '@/lib/storage/indexedDbStorage';
+import { getProduct } from '@/config/products';
+import { ansichtenVon } from '@/lib/products/ansichten';
+import { istGueltigeView } from '@/config/decorationPositions';
 
 const MAX_HISTORY = 30;
 
@@ -28,7 +31,7 @@ interface ConfiguratorActions {
    *  Drehen, Positions-Presets) – wird in der Undo-Historie erfasst. */
   commitElement: (id: string, changes: Partial<ConfigElement>) => void;
   removeElement: (id: string) => void;
-  duplicateElement: (id: string, bounds?: { movementWidthCm: number; referenceGarmentHeightCm: number }) => void;
+  duplicateElement: (id: string, bounds?: { boxWidthCm: number; boxHeightCm: number }) => void;
 
   /** Kopieren/Einfügen (Strg+C/Strg+V) – auch über Ansichten hinweg (z.B.
    *  Logo von der Vorderseite auf der Rückseite einfügen). Die Zwischen-
@@ -180,8 +183,8 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
         // die Kopie exakt auf dem Original und wirkt wie "nichts passiert").
         const sameView = clipboard.view === targetView;
         const offset = sameView ? 1 : 0;
-        const xCm = Math.min(Math.max(clipboard.xCm + offset, 0), Math.max(area.movementWidthCm - widthCm, 0));
-        const yCm = Math.min(Math.max(clipboard.yCm + offset, 0), Math.max(area.referenceGarmentHeightCm - heightCm, 0));
+        const xCm = Math.min(Math.max(clipboard.xCm + offset, 0), Math.max(area.boxWidthCm - widthCm, 0));
+        const yCm = Math.min(Math.max(clipboard.yCm + offset, 0), Math.max(area.boxHeightCm - heightCm, 0));
 
         const pasted: ConfigElement = {
           ...clipboard,
@@ -211,8 +214,8 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
         let yCm = original.yCm + 1;
 
         if (bounds) {
-          const maxX = Math.max(bounds.movementWidthCm - original.widthCm, 0);
-          const maxY = Math.max(bounds.referenceGarmentHeightCm - original.heightCm, 0);
+          const maxX = Math.max(bounds.boxWidthCm - original.widthCm, 0);
+          const maxY = Math.max(bounds.boxHeightCm - original.heightCm, 0);
           xCm = Math.min(xCm, maxX);
           yCm = Math.min(yCm, maxY);
         }
@@ -306,8 +309,8 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
               box = computeTextBoxCm(el.content, el.fontFamily, fontSizePx, el.bold, el.italic, area);
             }
 
-            const xCm = Math.min(Math.max(el.xCm, 0), Math.max(area.movementWidthCm - box.widthCm, 0));
-            const yCm = Math.min(Math.max(el.yCm, 0), Math.max(area.referenceGarmentHeightCm - box.heightCm, 0));
+            const xCm = Math.min(Math.max(el.xCm, 0), Math.max(area.boxWidthCm - box.widthCm, 0));
+            const yCm = Math.min(Math.max(el.yCm, 0), Math.max(area.boxHeightCm - box.heightCm, 0));
 
             nextElements.push({
               ...el,
@@ -325,8 +328,8 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           // Logos: Größe/Position wie bisher in den neuen Bereich hineinklemmen.
           const widthCm = Math.min(el.widthCm, area.maxWidthCm);
           const heightCm = Math.min(el.heightCm, area.maxHeightCm);
-          const xCm = Math.min(Math.max(el.xCm, 0), Math.max(area.movementWidthCm - widthCm, 0));
-          const yCm = Math.min(Math.max(el.yCm, 0), Math.max(area.referenceGarmentHeightCm - heightCm, 0));
+          const xCm = Math.min(Math.max(el.xCm, 0), Math.max(area.boxWidthCm - widthCm, 0));
+          const yCm = Math.min(Math.max(el.yCm, 0), Math.max(area.boxHeightCm - heightCm, 0));
 
           // Stichzahl anteilig zur Flächenänderung mitskalieren (grobe,
           // aber synchron mögliche Näherung – eine echte Neuvermessung des
@@ -407,7 +410,11 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           sizeQuantities: {},
         }),
 
-      loadCartItemForEditing: (item) =>
+      loadCartItemForEditing: (item) => {
+        // Startansicht datengetrieben aus dem Produkt (erste geführte Ansicht)
+        // statt fix 'front' – funktioniert auch für Produkte ohne Vorderseite.
+        const produkt = getProduct(item.productId);
+        const ersteView = (produkt && ansichtenVon(produkt)[0]) || 'front';
         set({
           printMethod: item.printMethod,
           productId: item.productId,
@@ -415,10 +422,11 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           sizeQuantities: { ...item.sizeQuantities },
           elements: item.elements.map((el) => ({ ...el })),
           selectedElementId: null,
-          activeView: 'front',
+          activeView: ersteView,
           history: [],
           future: [],
-        }),
+        });
+      },
     }),
     {
       name: 'konfigurator-design',
@@ -432,9 +440,9 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
       // gespeicherte Elemente ohne diese Felder geladen und einzelne
       // Bedienelemente (die genau dieses Feld lesen/schreiben) würden ins
       // Leere laufen, ohne dass ein Fehler sichtbar wird.
-      version: 8,
+      version: 9,
       migrate: (persistedState, storedVersion) => {
-        const state = persistedState as Partial<ConfiguratorState> & { sizeLabel?: string | null; quantity?: number };
+        let state = persistedState as Partial<ConfiguratorState> & { sizeLabel?: string | null; quantity?: number };
         if (storedVersion < 7) {
           // Struktur von TextElement hat sich geändert – gespeichertes
           // Design ist nicht mehr sicher kompatibel. Produkt/Farbe/Größe
@@ -447,7 +455,15 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           // Größen gleichzeitig). Alten Einzelwert als Startpunkt übernehmen,
           // statt ihn zu verwerfen.
           const { sizeLabel, quantity, ...rest } = state;
-          return { ...rest, sizeQuantities: sizeLabel ? { [sizeLabel]: quantity ?? MINIMUM_QUANTITY } : {} };
+          state = { ...rest, sizeQuantities: sizeLabel ? { [sizeLabel]: quantity ?? MINIMUM_QUANTITY } : {} };
+        }
+        if (storedVersion < 9) {
+          // PrintView ist seit ADR 0001 eine offene View-ID. Defensiv:
+          // gespeicherte Elemente, deren Ansicht nicht (mehr) in der zentralen
+          // View-Registry existiert, entfernen – sonst zeigte eine veraltete
+          // View auf eine Ansicht ohne Druckfläche. Eine ungültige `activeView`
+          // heilt der Reconcile-Effekt beim Produktladen (→ erste geführte View).
+          state.elements = (state.elements ?? []).filter((el) => istGueltigeView(el.view));
         }
         return state;
       },

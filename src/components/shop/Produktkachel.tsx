@@ -21,6 +21,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Leaf } from 'lucide-react';
 import type { ProductConfig } from '@/config/products/types';
+import { repraesentativBildVon } from '@/lib/assets';
 import { materialGruppen } from '@/config/products/facetten';
 import { formatiereGeld } from '@/lib/format';
 import { ermittleVerfuegbarkeit, VERFUEGBARKEIT_LABELS } from '@/lib/catalog/verfuegbarkeit';
@@ -64,7 +65,7 @@ export function Produktkachel({
       >
         {produkt.colors[0] && (
           <Image
-            src={produkt.colors[0].images.front}
+            src={repraesentativBildVon(produkt.id, produkt.colors[0].id)}
             alt={produkt.name}
             fill
             sizes={liste ? '176px' : '(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw'}

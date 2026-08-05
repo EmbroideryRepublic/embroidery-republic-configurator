@@ -18,7 +18,7 @@ export interface ScaleFactors {
  * im Verhältnis zu seiner realen Größe in cm (aus der Produktdatenbank).
  */
 export function getScaleFactors(printAreaPx: PixelRect, printArea: PrintArea): ScaleFactors {
-  const pxPerCm = printAreaPx.height / printArea.referenceGarmentHeightCm;
+  const pxPerCm = printAreaPx.height / printArea.boxHeightCm;
   return {
     pxPerCmX: pxPerCm,
     pxPerCmY: pxPerCm,

@@ -8,6 +8,7 @@
  * unverifizierte Näherungen sind kein Fehler, nur eine Handlungsliste.
  */
 import { PRODUCTS } from '@/config/products/index';
+import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import {
   buildSupplierMappingCoverage,
   formatCoverageReport,
@@ -20,7 +21,7 @@ import {
 
 const products: CoverageProduct[] = PRODUCTS.map((p) => ({
   id: p.id,
-  supplierId: p.supplier?.supplierId,
+  supplierId: supplierRefVon(p.id)?.supplierId,
   colorIds: p.colors.map((c) => c.id),
   sizes: p.sizes,
 }));

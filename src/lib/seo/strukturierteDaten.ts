@@ -18,6 +18,8 @@
  * `price` würde einen Festpreis behaupten, den es nicht gibt.
  */
 import type { ProductConfig } from '@/config/products/types';
+import { repraesentativBildVon, PLATZHALTER_BILD } from '@/lib/assets';
+import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ermittleVerfuegbarkeit } from '@/lib/catalog/verfuegbarkeit';
 
 /** Schema.org-Verfügbarkeit aus dem Katalogstatus. */
@@ -40,8 +42,10 @@ function schemaVerfuegbarkeit(produkt: ProductConfig): string {
 export function produktSchema(produkt: ProductConfig, basis: string): Record<string, unknown> {
   const url = `${basis}/produkt/${produkt.id}`;
   const bilder = produkt.colors
-    .map((farbe) => farbe.images.front)
-    .filter((pfad): pfad is string => Boolean(pfad))
+    .map((farbe) => repraesentativBildVon(produkt.id, farbe.id))
+    // Platzhalter (Bildimport noch offen) NIE als Produktbild veröffentlichen
+    // (ADR 0004): keine Platzhalter in JSON-LD/Suchmaschinen.
+    .filter((pfad) => pfad !== PLATZHALTER_BILD)
     .slice(0, 6)
     .map((pfad) => `${basis}${pfad}`);
 
@@ -54,7 +58,8 @@ export function produktSchema(produkt: ProductConfig, basis: string): Record<str
     brand: { '@type': 'Brand', name: produkt.brand },
     material: produkt.material,
     color: produkt.colors.map((f) => f.name),
-    size: produkt.sizes,
+    // Einheitsgrößen-/größenlose Produkte (künftig) zeichnen KEIN leeres size-Array aus.
+    ...(produkt.sizes.length > 0 ? { size: produkt.sizes } : {}),
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: 'EUR',
@@ -65,8 +70,9 @@ export function produktSchema(produkt: ProductConfig, basis: string): Record<str
   };
 
   if (bilder.length > 0) schema.image = bilder;
-  // Artikelnummer nur, wenn wirklich eine hinterlegt ist.
-  if (produkt.supplier?.articleNumber) schema.sku = produkt.supplier.articleNumber;
+  // Artikelnummer nur, wenn wirklich eine hinterlegt ist (aus der Lieferantenschicht).
+  const supplierRef = supplierRefVon(produkt.id);
+  if (supplierRef?.articleNumber) schema.sku = supplierRef.articleNumber;
 
   return schema;
 }
@@ -115,6 +121,36 @@ export function organisationSchema(basis: string): Record<string, unknown> {
     // Bewusst OHNE telephone/address: Kontaktdaten gehören ins Impressum, nicht
     // dupliziert in die Auszeichnung (per Wächter-Test festgehalten). Firmen-
     // daten bleiben zudem Sache des Betreibers (offener Go-live-Punkt).
+  };
+}
+
+/**
+ * Katalogübersicht als CollectionPage + der zugehörige Brotkrumenpfad.
+ *
+ * Nur für die ungefilterte, indexierbare Ansicht gedacht (gefilterte Ansichten
+ * sind `noindex`). Bewusst schlank: kein vollständiges ItemList mit 40+ Offers –
+ * die einzelnen Produktseiten tragen die Produkt-Auszeichnung, die Übersicht
+ * beschreibt nur die Sammlung.
+ */
+export function sammlungSchema(basis: string, anzahl: number): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Alle Produkte',
+    description: `${anzahl} individuell veredelbare Produkte etablierter Marken – mit DTF-Transferdruck oder Stickerei, ab 1 Stück.`,
+    url: `${basis}/produkt`,
+    isPartOf: { '@type': 'WebSite', name: 'Embroidery Republic Germany', url: basis },
+  };
+}
+
+export function katalogBrotkrumenSchema(basis: string): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: basis },
+      { '@type': 'ListItem', position: 2, name: 'Produkte', item: `${basis}/produkt` },
+    ],
   };
 }
 

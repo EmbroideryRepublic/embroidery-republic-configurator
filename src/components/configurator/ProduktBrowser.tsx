@@ -9,18 +9,19 @@
  * ein Dateibrowser: eine Hauptgruppe öffnen → eine Produktart öffnen → die
  * Modelle erscheinen als Karten daneben.
  *
- * ── Explorer-Verhalten ────────────────────────────────────────────────
- * Immer nur EIN Pfad ist offen. „Herren" zu öffnen schließt Damen und Unisex;
- * innerhalb von Herren „Hoodies" zu öffnen blendet die übrigen Produktarten
- * aus. So bleibt die Ansicht ruhig und wird nie zur endlosen Liste. Der
- * Breadcrumb oben zeigt den Weg und führt eine Ebene zurück.
+ * ── Aufklapp-Verhalten (mehrere Gruppen gleichzeitig) ─────────────────
+ * KEIN Akkordeon: „Herren" zu öffnen schließt „Damen" oder „Unisex" nicht.
+ * Mehrere Gruppen bleiben offen, bis sie bewusst wieder zugeklappt werden – so
+ * behält der Nutzer seinen Kontext und kann Kategorien vergleichen. Eine
+ * offene Gruppe zeigt stets ALLE ihre Produktarten. Pfeile einheitlich:
+ * zugeklappt nach rechts, aufgeklappt nach unten (Haupt- wie Unterebene).
  *
  * Die Regeln des Baums (Zuordnung, Badges, Filter) stehen in
  * `lib/configurator/produktbaum.ts`; hier steht nur Darstellung und Bedienung.
  */
 import { memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { Check, ChevronDown, ChevronLeft, ChevronRight, Search, SlidersHorizontal, Star, X } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Search, SlidersHorizontal, Star, X } from 'lucide-react';
 import { PRODUCTS } from '@/config/products';
 import type { ProductConfig } from '@/config/products/types';
 import { QUALITY_TIER_LABELS, sortiereQualityTiers } from '@/config/qualityTiers';
@@ -32,6 +33,7 @@ import {
 import { uebernehmeAuswahl } from '@/lib/configurator/uebernahme';
 import { vorladenListe, vorladenModell } from '@/lib/configurator/vorladen';
 import { getProduct } from '@/config/products';
+import { repraesentativBildVon } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useBrowserStore } from '@/stores/browserStore';
 import { useFavoritesStore } from '@/stores/favoritesStore';
@@ -40,7 +42,10 @@ import { formatPriceWithCurrency, useCurrencyStore } from '@/stores/currencyStor
 /** Kleines Vorschaubild als Symbol der Produktart – echte Ware statt Piktogramm. */
 const ARTBILD = new Map<ProductType, string | undefined>();
 for (const p of PRODUCTS) {
-  if (!ARTBILD.has(p.productType)) ARTBILD.set(p.productType, p.colors[0]?.images.front);
+  if (!ARTBILD.has(p.productType)) {
+    const farbe = p.colors[0];
+    ARTBILD.set(p.productType, farbe ? repraesentativBildVon(p.id, farbe.id) : undefined);
+  }
 }
 
 const BADGE_TON: Record<Badge['ton'], string> = {
@@ -48,6 +53,14 @@ const BADGE_TON: Record<Badge['ton'], string> = {
   bio: 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/10',
   gold: 'bg-gold-light/60 text-gold-dark ring-1 ring-inset ring-gold/20',
 };
+
+// Katalogweite, zustandsunabhängige Ableitungen einmal je Prozess (wie ARTBILD),
+// statt je Component-Mount per useMemo([]) – reduziert Mount-Kosten und Vollscans
+// bei wachsendem Katalog. Verhaltensneutral.
+const MARKEN = [...new Set(PRODUCTS.map((p) => p.brand))].sort();
+const MATERIALIEN = [...new Set(PRODUCTS.map((p) => p.material))].sort();
+const STUFEN = sortiereQualityTiers([...new Set(PRODUCTS.map((p) => p.qualityTier))]);
+const TEUERSTES = Math.ceil(Math.max(...PRODUCTS.map((p) => p.basePrice)) / 5) * 5;
 
 export const ProduktBrowser = memo(function ProduktBrowser() {
   const productId = useConfiguratorStore((s) => s.productId);
@@ -68,19 +81,20 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
   const [material, setMaterial] = useState<string | undefined>();
   const [preisMax, setPreisMax] = useState<number | undefined>();
 
-  // Explorer: höchstens eine Gruppe und ein Ast offen. Der zuletzt geöffnete
-  // Pfad wird über Sitzungen hinweg gemerkt (browserStore). Bis der
+  // Mehrere Gruppen können gleichzeitig offen sein (kein Akkordeon). Der
+  // Zustand wird über Sitzungen hinweg gemerkt (browserStore). Bis der
   // persistierte Zustand am Client vorliegt (`hydriert`), wird der Standard
   // (alles zu) gezeigt – so entsteht keine Server/Client-Abweichung.
-  const gemerkteGruppe = useBrowserStore((s) => s.offeneGruppe);
+  const gemerkteGruppen = useBrowserStore((s) => s.offeneGruppen);
   const gemerkteAuswahl = useBrowserStore((s) => s.gewaehlt);
-  const setOffeneGruppe = useBrowserStore((s) => s.setOffeneGruppe);
+  const toggleGruppeStore = useBrowserStore((s) => s.toggleGruppe);
+  const oeffneGruppeStore = useBrowserStore((s) => s.oeffneGruppe);
   const setGewaehltStore = useBrowserStore((s) => s.setGewaehlt);
 
   const [hydriert, setHydriert] = useState(false);
   useEffect(() => setHydriert(true), []);
 
-  const offeneGruppe = hydriert ? gemerkteGruppe : null;
+  const offeneGruppen = hydriert ? gemerkteGruppen : [];
   const gewaehlt = hydriert ? gemerkteAuswahl : null;
   const setGewaehlt = setGewaehltStore;
 
@@ -127,12 +141,12 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
 
   // Sucht oder filtert jemand, wäre der zugeklappte Baum im Weg: alles offen.
   const eingegrenzt = suche.trim() !== '' || nurFavoriten || aktiveFilter > 0;
-  const istOffen = (g: Hauptgruppe) => eingegrenzt || offeneGruppe === g;
+  const istOffen = (g: Hauptgruppe) => eingegrenzt || offeneGruppen.includes(g);
 
-  const marken = useMemo(() => [...new Set(PRODUCTS.map((p) => p.brand))].sort(), []);
-  const materialien = useMemo(() => [...new Set(PRODUCTS.map((p) => p.material))].sort(), []);
-  const stufen = useMemo(() => sortiereQualityTiers([...new Set(PRODUCTS.map((p) => p.qualityTier))]), []);
-  const teuerstes = useMemo(() => Math.ceil(Math.max(...PRODUCTS.map((p) => p.basePrice)) / 5) * 5, []);
+  const marken = MARKEN;
+  const materialien = MATERIALIEN;
+  const stufen = STUFEN;
+  const teuerstes = TEUERSTES;
 
   const modelle = gewaehlt ? modelleVon(baum, gewaehlt.gruppe, gewaehlt.art) : [];
   const gruppeLabel = gewaehlt ? baum.find((g) => g.gruppe === gewaehlt.gruppe)?.label : undefined;
@@ -141,12 +155,13 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
     : undefined;
 
   function toggleGruppe(g: Hauptgruppe) {
-    setOffeneGruppe(offeneGruppe === g ? null : g);
-    setGewaehlt(null);
+    // Nur diese eine Gruppe auf-/zuklappen – andere bleiben, wie sie sind, und
+    // die aktuelle Modellauswahl (Kontext) bleibt erhalten.
+    toggleGruppeStore(g);
   }
 
   function waehleArt(gruppe: Hauptgruppe, art: ProductType) {
-    setOffeneGruppe(gruppe);
+    oeffneGruppeStore(gruppe);
     const schonOffen = gewaehlt?.gruppe === gruppe && gewaehlt.art === art;
     setGewaehlt(schonOffen ? null : { gruppe, art });
     // Vorderansichten der Modelle vorladen, damit die Karten sofort stehen.
@@ -219,7 +234,9 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               Alle Produkte ({PRODUCTS.length})
             </Reiter>
             <Reiter an={nurFavoriten} onClick={() => setNurFavoriten(true)}>
-              Favoriten ({favoriteIds.length})
+              {/* „(0)" wirkt wie ein leerer Zustand – der Zähler erscheint erst,
+                  sobald wirklich etwas gemerkt wurde. */}
+              Favoriten{favoriteIds.length > 0 ? ` (${favoriteIds.length})` : ''}
             </Reiter>
 
             <button
@@ -259,12 +276,9 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
         <ul className="min-h-0 flex-1 overflow-y-auto p-1.5">
           {baum.map((g) => {
             const auf = istOffen(g.gruppe);
-            // Im geöffneten Ast bleibt nur die gewählte Produktart stehen;
-            // die Geschwister schließen sich (Explorer-Verhalten).
-            const zeigeArten =
-              gewaehlt?.gruppe === g.gruppe && !eingegrenzt
-                ? g.arten.filter((a) => a.art === gewaehlt.art)
-                : g.arten;
+            // Eine offene Gruppe zeigt IMMER alle ihre Produktarten – so bleibt
+            // der Überblick erhalten und mehrere Gruppen sind vergleichbar.
+            const zeigeArten = g.arten;
 
             return (
               <li key={g.gruppe} className="border-b border-gold/10 last:border-0">
@@ -281,12 +295,11 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                     {g.label}
                   </span>
                   <span className="text-[15px] tabular-nums text-brand/45">{g.anzahl}</span>
-                  {/* Nach unten = offen, die Produktarten stehen darunter.
-                      Zugeklappt zeigt der Pfeil nach oben. Damit verhält sich
-                      der Gruppenkopf wie die Produktart eine Ebene tiefer, die
-                      im offenen Zustand ebenfalls nach unten zeigt. */}
-                  <ChevronDown
-                    className={clsx('h-5 w-5 text-brand/35 transition-transform duration-300', !auf && 'rotate-180')}
+                  {/* Einheitliche Pfeillogik: zugeklappt nach RECHTS,
+                      aufgeklappt nach UNTEN (rotate-90) – identisch zu den
+                      Produktart-Zeilen eine Ebene tiefer. */}
+                  <ChevronRight
+                    className={clsx('h-5 w-5 flex-shrink-0 text-brand/35 transition-transform duration-300', auf && 'rotate-90')}
                     aria-hidden
                   />
                 </button>
@@ -294,7 +307,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                 {/* Weich auf-/zuklappen (0fr → 1fr). */}
                 <div className={clsx('klappe', auf && 'klappe-auf')}>
                   <div>
-                    <ul key={`${g.gruppe}-${gewaehlt?.art ?? 'alle'}`} className="animate-fade-in pb-1.5">
+                    <ul key={g.gruppe} className="animate-fade-in pb-1.5">
                       {zeigeArten.length === 0 ? (
                         <li className="px-3 pb-2 text-[14px] text-brand/55">Keine Treffer in dieser Gruppe.</li>
                       ) : (
@@ -480,7 +493,7 @@ function Modellkarte({
         {produkt.colors[0] && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={produkt.colors[0].images.front}
+            src={repraesentativBildVon(produkt.id, produkt.colors[0].id)}
             alt={produkt.name}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.05]"

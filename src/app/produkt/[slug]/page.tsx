@@ -20,7 +20,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { alleProduktSlugs, ladeProduktseite } from '@/lib/products/productPage';
-import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
+import { produktTypLabelPlural } from '@/config/products/types';
+import { repraesentativBildVon, PLATZHALTER_BILD } from '@/lib/assets';
+import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ProduktFarbwahl } from '@/components/produkt/ProduktFarbwahl';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
 import { cm, formatiereGeld } from '@/lib/format';
@@ -40,11 +42,26 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!daten) return { title: 'Produkt nicht gefunden' };
 
   const { produkt, artLabel } = daten;
+  // Größen-Text defensiv: Einheitsgrößen-Produkte (künftig z.B. Taschen,
+  // Handtücher) führen eine oder keine Größe – dann keine „S–S"- oder
+  // „undefined–undefined"-Spanne, sondern „Größe X" bzw. gar keine Angabe.
+  const ersteGroesse = produkt.sizes[0];
+  const letzteGroesse = produkt.sizes[produkt.sizes.length - 1];
+  const groessenText = !ersteGroesse
+    ? ''
+    : ersteGroesse === letzteGroesse
+      ? `, Größe ${ersteGroesse}`
+      : `, Größen ${ersteGroesse}–${letzteGroesse}`;
   const beschreibung =
-    `${produkt.name} von ${produkt.brand} – ${produkt.material}, ${produkt.weightGsm} g/m², ` +
-    `${produkt.colors.length} Farben, Größen ${produkt.sizes[0]}–${produkt.sizes[produkt.sizes.length - 1]}. ` +
+    `${produkt.name} von ${produkt.brand} – ${produkt.material}${produkt.weightGsm ? `, ${produkt.weightGsm} g/m²` : ''}, ` +
+    `${produkt.colors.length} Farben${groessenText}. ` +
     `Mit DTF-Transferdruck oder Stickerei veredeln, ab 1 Stück.`;
 
+  // Platzhalter (Bildimport noch offen) NIE als OpenGraph-Vorschaubild
+  // ausliefern (ADR 0004): kein Platzhalter in externen Ausgaben.
+  const ogBild = produkt.colors[0]
+    ? repraesentativBildVon(produkt.id, produkt.colors[0].id)
+    : undefined;
   return {
     title: `${produkt.name} bedrucken & besticken | ${produkt.brand}`,
     description: beschreibung,
@@ -52,7 +69,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     openGraph: {
       title: `${produkt.name} – ${artLabel} von ${produkt.brand}`,
       description: beschreibung,
-      images: produkt.colors[0] ? [produkt.colors[0].images.front] : [],
+      images: ogBild && ogBild !== PLATZHALTER_BILD ? [ogBild] : [],
       type: 'website',
     },
   };
@@ -77,7 +94,7 @@ function MiniKarte({ produkt }: { produkt: ProductConfig }) {
       <div className="relative aspect-square overflow-hidden rounded-xl bg-cream/40">
         {produkt.colors[0] && (
           <Image
-            src={produkt.colors[0].images.front}
+            src={repraesentativBildVon(produkt.id, produkt.colors[0].id)}
             alt={produkt.name}
             fill
             sizes="(max-width: 768px) 50vw, 25vw"
@@ -147,9 +164,11 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
                 {stufeLabel}
               </span>
               <span className="rounded-full bg-brand/[0.05] px-3 py-1 text-xs text-brand/70">{artLabel}</span>
-              <span className="rounded-full bg-brand/[0.05] px-3 py-1 text-xs text-brand/70">
-                {produkt.weightGsm} g/m²
-              </span>
+              {produkt.weightGsm ? (
+                <span className="rounded-full bg-brand/[0.05] px-3 py-1 text-xs text-brand/70">
+                  {produkt.weightGsm} g/m²
+                </span>
+              ) : null}
             </div>
 
             <p className="mt-5 text-sm leading-relaxed text-brand/70">{produkt.description}</p>
@@ -163,7 +182,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
               </p>
               <Link
                 href={`/konfigurator?produkt=${produkt.id}`}
-                className="mt-4 block rounded-full bg-brand px-4 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-brand/90"
+                className="mt-4 block rounded-full bg-brand px-4 py-3 text-center text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 active:scale-[0.98]"
               >
                 Jetzt konfigurieren
               </Link>
@@ -229,12 +248,12 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
               <Datenzeile label="Marke" wert={produkt.brand} />
               <Datenzeile label="Produktart" wert={artLabel} />
               <Datenzeile label="Material" wert={produkt.material} />
-              <Datenzeile label="Flächengewicht" wert={`${produkt.weightGsm} g/m²`} />
+              <Datenzeile label="Flächengewicht" wert={produkt.weightGsm ? `${produkt.weightGsm} g/m²` : '–'} />
               <Datenzeile label="Passform" wert={produkt.fit} />
               {d?.gender && <Datenzeile label="Schnitt" wert={d.gender} />}
               {d?.countryOfOrigin && <Datenzeile label="Herkunft" wert={d.countryOfOrigin} />}
-              {produkt.supplier?.articleNumber && (
-                <Datenzeile label="Artikelnummer" wert={produkt.supplier.articleNumber} />
+              {supplierRefVon(produkt.id)?.articleNumber && (
+                <Datenzeile label="Artikelnummer" wert={supplierRefVon(produkt.id)!.articleNumber} />
               )}
             </dl>
           </div>
@@ -346,7 +365,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
         {aehnliche.length > 0 && (
           <section className="mt-14">
             <h2 className="font-serif text-xl font-normal text-brand">
-              Weitere {PRODUCT_TYPE_LABELS[produkt.productType]}s
+              Weitere {produktTypLabelPlural(produkt.productType)}
             </h2>
             <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
               {aehnliche.map((a) => (

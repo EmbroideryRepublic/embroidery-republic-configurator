@@ -31,6 +31,7 @@ const ZIP_HOODIE_PURCHASE_PRICE = 22.98; // ab-Preis needen.de (Artikel GN960)
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'gildan-heavy-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Heavy Cotton T-Shirt',
     brand: 'Gildan',
     productType: 'tshirt',
@@ -86,6 +87,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'gildan-softstyle-polo',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Softstyle Double Piqué Polo',
     brand: 'Gildan',
     productType: 'polo',
@@ -132,6 +134,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'gildan-vneck-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Softstyle V-Neck T-Shirt',
     brand: 'Gildan',
     productType: 'tshirt',
@@ -178,6 +181,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'gildan-ladies-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Softstyle Ladies T-Shirt',
     brand: 'Gildan',
     productType: 'tshirt',
@@ -224,6 +228,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'gildan-ladies-heavy-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Heavy Cotton Ladies T-Shirt',
     brand: 'Gildan',
     productType: 'tshirt',
@@ -270,6 +275,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'gildan-ladies-vneck-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Softstyle Ladies V-Neck T-Shirt',
     brand: 'Gildan',
     productType: 'tshirt',
@@ -316,6 +322,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'gildan-ladies-polo',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Softstyle Ladies Double Piqué Polo',
     brand: 'Gildan',
     productType: 'polo',
@@ -362,6 +369,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'gildan-zip-hoodie',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Heavy Blend Full-Zip Hoodie',
     brand: 'Gildan',
     productType: 'zip-hoodie',

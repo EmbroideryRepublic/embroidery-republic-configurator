@@ -1,4 +1,5 @@
 import type { ConfigElement, PricingRule } from '@/types';
+import { positionLabel } from '@/config/decorationPositions';
 import { calculatePrice } from '../calculatePrice';
 import { buildStageResult, makeLine, roundCents, sumLines, type PriceLine, type StageResult } from '../priceLine';
 
@@ -71,19 +72,14 @@ export function calculatePositionStage(input: PositionInput): PositionResult {
 
   // ── Veredelung je Position ──────────────────────────────────────────
   // Nach Ansicht getrennt, damit im Warenkorb sichtbar ist, wofür gezahlt
-  // wird („Brust", „Rücken" …) statt nur einer Sammelzeile.
-  const ansichtLabel: Record<string, string> = {
-    front: 'Vorderseite',
-    back: 'Rückseite',
-    sleeve_left: 'Ärmel links',
-    sleeve_right: 'Ärmel rechts',
-  };
+  // wird („Brust", „Rücken" …) statt nur einer Sammelzeile. Anzeigename kommt
+  // aus der zentralen View-Registry (kein dupliziertes Label-Mapping).
   for (const [view, betrag] of Object.entries(b.areaPriceByView)) {
     if (betrag === 0) continue;
     lines.push(
       makeLine({
         id: `${itemId}:veredelung:${view}`,
-        label: `Veredelung ${ansichtLabel[view] ?? view}`,
+        label: `Veredelung ${positionLabel(view)}`,
         category: 'veredelung',
         description: b.isStitchBased
           ? `Stickerei nach Stichzahl (${b.totalEstimatedStitches.toLocaleString('de-DE')} Stiche gesamt)`
@@ -91,8 +87,8 @@ export function calculatePositionStage(input: PositionInput): PositionResult {
         origin: herkunft(
           b.isStitchBased ? 'per_1000_stitches' : 'per_cm2',
           b.isStitchBased
-            ? `Stickerei auf der Ansicht „${ansichtLabel[view] ?? view}", abgerechnet nach Stichzahl`
-            : `Transferdruck auf der Ansicht „${ansichtLabel[view] ?? view}", abgerechnet nach bedruckter Fläche`,
+            ? `Stickerei auf der Ansicht „${positionLabel(view)}", abgerechnet nach Stichzahl`
+            : `Transferdruck auf der Ansicht „${positionLabel(view)}", abgerechnet nach bedruckter Fläche`,
           b.isStitchBased
             ? { stiche: b.totalEstimatedStitches, satzJe1000Stiche: b.pricePer1000Stitches,
                 veredelungsrabattProzent: b.veredelungDiscountPercent }

@@ -266,3 +266,12 @@ export const SUPPLIER_REFS: Record<string, SupplierProductRef> = {
     urlVerified: true,
   },
 };
+
+/**
+ * Bezugsquelle eines Katalogprodukts (oder undefined). EINZIGER Zugriffsweg –
+ * die Produktdefinition trägt seit ADR 0004 KEIN `supplier`-Feld mehr; die
+ * Beschaffungsbeziehung lebt ausschließlich in dieser Lieferantenschicht.
+ */
+export function supplierRefVon(productId: string): SupplierProductRef | undefined {
+  return SUPPLIER_REFS[productId];
+}

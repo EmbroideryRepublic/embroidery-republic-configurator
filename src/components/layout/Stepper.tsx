@@ -58,7 +58,12 @@ export function Stepper({ activeStep }: StepperProps) {
               </span>
               <span
                 className={clsx(
-                  'hidden whitespace-nowrap text-xs sm:inline',
+                  'whitespace-nowrap text-xs',
+                  // Der AKTIVE Schritt trägt seine Beschriftung immer – auch auf
+                  // dem Telefon. So weiß der Nutzer jederzeit, wo er steht,
+                  // ohne dass die ganze Leiste umbricht. Die übrigen Labels
+                  // erscheinen erst ab sm.
+                  isActive ? 'inline' : 'hidden sm:inline',
                   isActive ? 'font-medium text-brand' : isDone ? 'text-brand/55' : 'text-brand/35'
                 )}
               >

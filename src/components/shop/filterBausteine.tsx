@@ -9,7 +9,7 @@
  */
 import { Check, X } from 'lucide-react';
 import { QUALITY_TIER_LABELS } from '@/config/qualityTiers';
-import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
+import { produktTypLabel } from '@/config/products/types';
 import {
   FARBGRUPPE_HEX, FARBGRUPPE_LABELS, GESCHLECHT_LABELS, MATERIAL_LABELS, PASSFORM_LABELS,
 } from '@/config/products/facetten';
@@ -33,7 +33,7 @@ export function beschrifteWert(
   bezeichnungen: Record<string, string>
 ): string {
   switch (dim) {
-    case 'kategorie': return PRODUCT_TYPE_LABELS[wert as keyof typeof PRODUCT_TYPE_LABELS] ?? wert;
+    case 'kategorie': return produktTypLabel(wert);
     case 'qualitaet': return QUALITY_TIER_LABELS[wert as keyof typeof QUALITY_TIER_LABELS] ?? wert;
     case 'material': return MATERIAL_LABELS[wert as keyof typeof MATERIAL_LABELS] ?? wert;
     case 'passform': return PASSFORM_LABELS[wert as keyof typeof PASSFORM_LABELS] ?? wert;

@@ -11,31 +11,16 @@
  * (Bestellpositionen, Lieferantenzuordnung, Druckflächen). Ein zweiter,
  * separat gepflegter Slug wäre eine weitere Quelle für Abweichungen.
  */
-import { PRODUCTS, getProduct } from '@/config/products';
-import { PRODUCT_TYPE_LABELS } from '@/config/products/types';
+import { PRODUCTS, getProduct, produkteVomTyp } from '@/config/products';
+import { produktTypLabel, PRODUCT_TYPES } from '@/config/products/types';
 import { QUALITY_TIER_LABELS } from '@/config/qualityTiers';
-import { PRINT_AREA_DATA } from '@/config/printAreaData.generated';
+import { PRINT_AREA_DATA } from '@/config/printAreaData';
+import { positionLabel } from '@/config/decorationPositions';
 import type { ProductConfig } from '@/config/products/types';
-import type { ProductType } from '@/types';
 
-/**
- * Komplementäre Produktarten für die Cross-Selling-Empfehlung „Passt dazu".
- *
- * Bewusst eine feste, nachvollziehbare Zuordnung statt einer geratenen
- * „Ähnlichkeit": Wer ein T-Shirt veredeln lässt, braucht oft denselben Print
- * auf einem Hoodie oder Polo (Team-/Firmenausstattung). Es wird nichts
- * erfunden – gezeigt wird nur, was der Katalog tatsächlich führt.
- */
-const KOMPLEMENT: Partial<Record<ProductType, ProductType[]>> = {
-  tshirt: ['hoodie', 'polo', 'sweater'],
-  polo: ['tshirt', 'sweater', 'jacket'],
-  hoodie: ['tshirt', 'zip-hoodie', 'sweater'],
-  'zip-hoodie': ['hoodie', 'tshirt', 'jacket'],
-  sweater: ['tshirt', 'hoodie', 'longsleeve'],
-  longsleeve: ['tshirt', 'hoodie', 'sweater'],
-  jacket: ['hoodie', 'sweater', 'vest'],
-  vest: ['tshirt', 'jacket', 'hoodie'],
-};
+// Komplementäre Produktarten für „Passt dazu" liegen jetzt zentral im
+// PRODUCT_TYPES-Register (Feld `komplement`) – bewusste, nachvollziehbare
+// Zuordnung statt geratener Ähnlichkeit; gezeigt wird nur, was der Katalog führt.
 
 export interface ProduktseitenDaten {
   produkt: ProductConfig;
@@ -51,13 +36,6 @@ export interface ProduktseitenDaten {
   empfehlungen: ProductConfig[];
 }
 
-const ANSICHT_LABELS: Record<string, string> = {
-  front: 'Vorderseite',
-  back: 'Rückseite',
-  sleeve_left: 'Ärmel links',
-  sleeve_right: 'Ärmel rechts',
-};
-
 /** Alle Slugs – Grundlage für generateStaticParams und die Sitemap. */
 export function alleProduktSlugs(): string[] {
   return PRODUCTS.map((p) => p.id);
@@ -69,28 +47,28 @@ export function ladeProduktseite(slug: string): ProduktseitenDaten | null {
 
   const flaechen = PRINT_AREA_DATA[produkt.id] ?? {};
   const veredelungsflaechen = Object.entries(flaechen).map(([ansicht, a]) => ({
-    ansicht: ANSICHT_LABELS[ansicht] ?? ansicht,
+    ansicht: positionLabel(ansicht),
     breiteCm: a!.maxWidthCm,
     hoeheCm: a!.maxHeightCm,
   }));
 
-  const aehnliche = PRODUCTS.filter(
-    (p) => p.id !== produkt.id && p.productType === produkt.productType
-  ).slice(0, 4);
+  const aehnliche = produkteVomTyp(produkt.productType)
+    .filter((p) => p.id !== produkt.id)
+    .slice(0, 4);
 
   // „Passt dazu": je komplementärer Produktart ein Vorschlag (günstigster
   // Vertreter), maximal vier – so bleibt die Reihe vielfältig statt viermal
   // dieselbe Art.
   const empfehlungen: ProductConfig[] = [];
-  for (const typ of KOMPLEMENT[produkt.productType] ?? []) {
-    const kandidaten = PRODUCTS.filter((p) => p.productType === typ && p.id !== produkt.id);
+  for (const typ of PRODUCT_TYPES[produkt.productType]?.komplement ?? []) {
+    const kandidaten = produkteVomTyp(typ).filter((p) => p.id !== produkt.id);
     const guenstigster = kandidaten.sort((a, b) => a.basePrice - b.basePrice)[0];
     if (guenstigster) empfehlungen.push(guenstigster);
   }
 
   return {
     produkt,
-    artLabel: PRODUCT_TYPE_LABELS[produkt.productType],
+    artLabel: produktTypLabel(produkt.productType),
     stufeLabel: QUALITY_TIER_LABELS[produkt.qualityTier],
     veredelungsflaechen,
     aehnliche,

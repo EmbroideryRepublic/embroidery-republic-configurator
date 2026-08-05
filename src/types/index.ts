@@ -1,73 +1,44 @@
 /**
- * Zentrale Typdefinitionen für den Bekleidungskonfigurator.
- * Diese Typen spiegeln das Supabase-Schema (supabase/migrations/0001_init.sql).
+ * Zentrale Typdefinitionen für den Produktkonfigurator.
+ *
+ * Die Kern-Verträge (`PrintView`/`ProductType` als offene IDs, `PrintArea`,
+ * `ConfiguratorState`, `CartItem`) sind bewusst GENERISCH (ADR 0001/0002) – KEIN
+ * Supabase-Spiegel. Die Produktdefinition selbst lebt in `src/config/products`
+ * (`ProductConfig`), nicht hier.
  */
 
-export type PrintView = 'front' | 'back' | 'sleeve_left' | 'sleeve_right';
+/**
+ * Druckansicht als OFFENE View-ID (früher geschlossene Union
+ * 'front'|'back'|'sleeve_left'|'sleeve_right'). Die Menge gültiger Ansichten
+ * kommt nicht mehr aus dem Typ, sondern aus der zentralen View-Registry
+ * (src/config/decorationPositions.ts) und der pro-Produkt-Deklaration
+ * (ProductConfig.views). Absicherung per Wächter-Tests statt Compiler-
+ * Vollständigkeit — siehe docs/adr/0001-generische-druckansichten.md.
+ */
+export type PrintView = string;
 
 /** Veredelungsart – bestimmt Druckbereichsgrößen, Preislogik und Farboptionen */
 export type PrintMethod = 'dtf' | 'embroidery';
 
-/** Feste, dauerhafte Produktkategorien – Basis für die (spätere) primäre
- *  Navigationsachse "erst Produktart wählen, dann Marken/Modelle
- *  vergleichen". Dieses Feld taggt aktuell nur den Bestand; die neue
- *  Browsing-UX selbst ist nicht Teil dieser Änderung. */
-export type ProductType = 'tshirt' | 'longsleeve' | 'polo' | 'hoodie' | 'zip-hoodie' | 'sweater' | 'vest' | 'jacket';
+/**
+ * Produktart als OFFENE ID (früher geschlossene 8er-Kleidungs-Union). Analog
+ * zu `PrintView` (ADR 0001): die Menge gültiger Arten kommt nicht mehr aus dem
+ * Typ, sondern aus dem zentralen PRODUCT_TYPES-Register
+ * (src/config/products/productTypes.ts) – der EINZIGEN Quelle. So entsteht eine
+ * neue Produktgruppe (Tasche, Schürze, Cap …) rein über einen Registereintrag,
+ * ohne Typänderung quer durch den Code.
+ *
+ * Die verlorene Compiler-Vollständigkeit ersetzen Wächter-Tests
+ * (config/products/__tests__/productTypes.test.ts): jede von einem Produkt oder
+ * über `komplement` genutzte Art MUSS im Register stehen. Siehe ADR 0002 §1.
+ * Bekannt heute: tshirt, longsleeve, polo, hoodie, zip-hoodie, sweater, vest, jacket.
+ */
+export type ProductType = string;
 
 /** Vier feste Qualitätsstufen, genau eine pro Produkt. Bestimmt zusammen
  *  mit purchasePrice den Verkaufs-Grundpreis, siehe
  *  src/config/pricing/marginTiers.ts::computeBasePrice(). */
 export type QualityTier = 'basic' | 'standard' | 'premium' | 'luxury';
-
-// ---------------------------------------------------------------
-// Produktdaten (aus Supabase geladen)
-// ---------------------------------------------------------------
-
-export interface Brand {
-  id: string;
-  name: string;
-  logoUrl?: string;
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  slug: string;
-}
-
-export interface Product {
-  id: string;
-  brandId: string;
-  categoryId: string;
-  name: string;
-  basePrice: number;
-  material?: string;
-  weightGsm?: number;
-  fit?: string;
-  targetGroup?: string;
-  careInstructions?: string;
-  certifications: string[];
-  description?: string;
-  isActive: boolean;
-}
-
-export interface ProductColor {
-  id: string;
-  productId: string;
-  colorName: string;
-  colorHex?: string;
-  imageFront: string;
-  imageBack: string;
-  imageSleeveL?: string;
-  imageSleeveR?: string;
-}
-
-export interface ProductSize {
-  id: string;
-  productId: string;
-  sizeLabel: string;
-  inStock: boolean;
-}
 
 /** Bedruckbarer Bereich einer Produktansicht, relativ positioniert (%) */
 export interface PrintArea {
@@ -95,9 +66,9 @@ export interface PrintArea {
    *  Nicht zu verwechseln mit maxHeightCm: Das ist die Motivgrenze. Auf
    *  Vorder-/Rückseite sind beide gleich (die Box IST der bedruckbare
    *  Bereich), auf der Ärmelansicht ist diese Fläche bewusst größer. */
-  referenceGarmentHeightCm: number;
+  boxHeightCm: number;
   /** Wahre Breite der gezeichneten Fläche in cm (boxWidthCm, s.o.). */
-  movementWidthCm: number;
+  boxWidthCm: number;
   /** Startposition eines neu eingefügten Motivs innerhalb der Fläche, in cm.
    *  Nur auf der Ärmelansicht gesetzt: Dort umfasst der Bewegungsbereich das
    *  ganze Kleidungsstück, ein neues Motiv soll aber mittig auf dem Oberarm
@@ -183,7 +154,6 @@ export interface PricingRule {
   ruleType: PricingRuleType;
   /** Begrenzt die Regel auf EINE Ansicht. Ohne Angabe gilt sie für alle. */
   printView?: PrintView;
-  sizeThresholdCm2?: number;
   price: number;
   label: string;
   isActive: boolean;
@@ -311,18 +281,6 @@ export interface ContactInfo {
 }
 
 export type OrderType = 'inquiry' | 'order';
-
-export interface OrderSubmission {
-  contact: ContactInfo;
-  orderType: OrderType;
-  productId: string;
-  colorId: string;
-  sizeLabel: string;
-  quantity: number;
-  elements: ConfigElement[];
-  unitPrice: number;
-  totalPrice: number;
-}
 
 // ---------------------------------------------------------------
 // Warenkorb

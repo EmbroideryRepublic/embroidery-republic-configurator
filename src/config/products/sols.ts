@@ -24,6 +24,7 @@ const NORTH_FLEECE_PURCHASE_PRICE = 15.06;
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'sols-imperial-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: 'Imperial T-Shirt',
     brand: "SOL'S",
     productType: 'tshirt',
@@ -70,6 +71,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'sols-north-fleece',
+    views: ["front","back"],
     name: 'Fleecejacket North',
     brand: "SOL'S",
     productType: 'jacket',
@@ -112,7 +114,6 @@ export const PRODUCTS: ProductConfig[] = [
     // Nur Vorne+Hinten sind echte, farblich passende Fotos je Farbe – kein
     // echtes Ärmelfoto für dieses productType verfügbar, daher
     // hasSleeves:false statt einer Kompromiss-Ansicht.
-    hasSleeves: false,
     colors: realPhotoFrontBackColorSet('sols-north-fleece', 'black', [
       'navy',
       'royal',

@@ -213,9 +213,14 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       getElementTypeBasePrice(el.type, pricingRules) + getEffectivePositionPrice(el.view) + getVariableCost(el, pricingRules),
   }));
 
-  const areaPriceByView: Record<PrintView, number> = { front: 0, back: 0, sleeve_left: 0, sleeve_right: 0 };
+  // Dynamisch je tatsächlich genutzter Ansicht akkumulieren (offene View-IDs).
+  // Früher fix auf front/back/sleeve_left/sleeve_right initialisiert – dabei
+  // ging der Flächenpreis jeder anderen Ansicht (Tasche, Schürze, Kapuze)
+  // still verloren. Siehe Optimierungs-Register O3.
+  const areaPriceByView: Record<string, number> = {};
   for (const el of elements) {
-    areaPriceByView[el.view] += getVariableCost(el, pricingRules) * (1 - tier.veredelungDiscountPercent / 100);
+    areaPriceByView[el.view] =
+      (areaPriceByView[el.view] ?? 0) + getVariableCost(el, pricingRules) * (1 - tier.veredelungDiscountPercent / 100);
   }
 
   // Grundpreis + Grundgebühren + Positionsaufschlag = "fester" Anteil,
@@ -277,12 +282,9 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       perElement,
       elementBaseFeeTotal: roundToCents(elementBaseFeeTotal * (1 - tier.baseDiscountPercent / 100)),
       positionFeeTotal: roundToCents(positionFeeTotal * (1 - tier.baseDiscountPercent / 100)),
-      areaPriceByView: {
-        front: roundToCents(areaPriceByView.front),
-        back: roundToCents(areaPriceByView.back),
-        sleeve_left: roundToCents(areaPriceByView.sleeve_left),
-        sleeve_right: roundToCents(areaPriceByView.sleeve_right),
-      },
+      areaPriceByView: Object.fromEntries(
+        Object.entries(areaPriceByView).map(([view, betrag]) => [view, roundToCents(betrag)])
+      ),
       areaPricePerCm2: areaRule?.price ?? 0,
       pricePer1000Stitches: stitchRule?.price ?? 0,
       isStitchBased: Boolean(stitchRule),

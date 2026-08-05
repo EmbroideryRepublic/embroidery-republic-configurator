@@ -148,7 +148,7 @@ export function LayersPanel({ printArea }: LayersPanelProps) {
                   e.stopPropagation();
                   duplicateElement(
                     el.id,
-                    printArea ? { movementWidthCm: printArea.movementWidthCm, referenceGarmentHeightCm: printArea.referenceGarmentHeightCm } : undefined
+                    printArea ? { boxWidthCm: printArea.boxWidthCm, boxHeightCm: printArea.boxHeightCm } : undefined
                   );
                 }}
               >

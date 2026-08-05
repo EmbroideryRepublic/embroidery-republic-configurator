@@ -24,6 +24,7 @@ const HALFZIP_SWEAT_PURCHASE_PRICE = 29.78;
 export const PRODUCTS: ProductConfig[] = [
   {
     id: 'jn-active-t',
+    views: ["front","back","sleeve_left","sleeve_right"],
     name: "Men's Active-T",
     brand: 'James+Nicholson',
     productType: 'tshirt',
@@ -70,6 +71,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: 'jn-halfzip-sweat',
+    views: ["front","back"],
     name: 'Workwear Half Zip Sweat',
     brand: 'James+Nicholson',
     productType: 'zip-hoodie',
@@ -112,7 +114,6 @@ export const PRODUCTS: ProductConfig[] = [
     // Nur Vorne+Hinten sind echte, farblich passende Fotos je Farbe – kein
     // echtes Ärmelfoto für dieses productType verfügbar, daher
     // hasSleeves:false statt einer Kompromiss-Ansicht.
-    hasSleeves: false,
     colors: realPhotoFrontBackColorSet('jn-halfzip-sweat', 'black', ['navy']),
   },
 ];

@@ -1,24 +1,1251 @@
 [
- {"productId":"bundc-e220-t","quelle":"groener-schulze","colors":[
-   {"id":"black","erwarteterHex":"#000000","front":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_black.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_black_2.webp"},
-   {"id":"white","erwarteterHex":"#FFFFFF","front":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_white.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_white_2.webp"},
-   {"id":"navy","erwarteterHex":"#1F2532","front":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_navy.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_navy_2.webp"},
-   {"id":"lake-blue","erwarteterHex":"#3F82B4","front":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_lake_blue.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_lake_blue_2.webp"},
-   {"id":"amalfi-teal","erwarteterHex":"#334C50","front":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_amalfi_teal.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_e220_tg002_amalfi_teal_2.webp"}]},
- {"productId":"bundc-inspire-t-men","quelle":"groener-schulze","colors":[
-   {"id":"black","erwarteterHex":"#000000","front":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_black.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_black_2.webp"},
-   {"id":"white","erwarteterHex":"#FFFFFF","front":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_white.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_white_2.webp"},
-   {"id":"navy","erwarteterHex":"#1F2532","front":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_navy.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_navy_2.webp"},
-   {"id":"red","erwarteterHex":"#DB001B","front":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_red.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_red_2.webp"},
-   {"id":"royal-blue","erwarteterHex":"#154E8F","front":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_royal_blue.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_royal_blue_2.webp"},
-   {"id":"sport-grey-heather","erwarteterHex":"#9C9E9F","front":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_sport_grey.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_sport_grey_2.webp"},
-   {"id":"khaki","erwarteterHex":"#4C4B30","front":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_khaki.webp","back":"https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_khaki_2.webp"}]},
- {"productId":"jamesnicholson-mens-bio-workwear-t-shirt","quelle":"groener-schulze","colors":[
-   {"id":"black","erwarteterHex":"#1B1B1F","front":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_black.webp","back":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_black_2.webp","side":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_black_3.webp"},
-   {"id":"white","erwarteterHex":"#FFFFFF","front":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_white.webp","back":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_white_2.webp","side":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_white_3.webp"},
-   {"id":"navy","erwarteterHex":"#003254","front":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_navy.webp","back":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_navy_2.webp","side":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_navy_3.webp"},
-   {"id":"red","erwarteterHex":"#C80A25","front":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_red.webp","back":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_red_2.webp"},
-   {"id":"royal","erwarteterHex":"#004985","front":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_royal.webp","back":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_royal_2.webp"},
-   {"id":"carbon","erwarteterHex":"#646F79","front":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_carbon.webp","back":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_carbon_2.webp"},
-   {"id":"dark-green","erwarteterHex":"#1B5126","front":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_dark_green.webp","back":"https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_dark_green_2.webp"}]}
+ {
+  "productId": "bundc-inspire-e150-t-shirt",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_navy_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_white_2.webp"
+   },
+   {
+    "id": "navy-blue",
+    "erwarteterHex": "#101145",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_navy_2.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_red_2.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_royal_blue.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_royal_blue_2.webp"
+   },
+   {
+    "id": "heather-grey",
+    "erwarteterHex": "#B1B3B4",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_sport_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_sport_grey_2.webp"
+   },
+   {
+    "id": "forest-green",
+    "erwarteterHex": "#002500",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_real_green.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-inspire-e150-t-shirt-women",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_navy_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_white_2.webp"
+   },
+   {
+    "id": "navy-blue",
+    "erwarteterHex": "#101145",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_navy_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-inspire-v-t-men",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_v_t_men_tm044_white.webp"
+   },
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_v_t_men_tm044_black.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-inspire-v-t-women",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_v_t_women_tw045_white.webp"
+   },
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_v_t_women_tw045_black.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-inspire-t-women",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_white_2.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_navy_2.webp"
+   },
+   {
+    "id": "sport-grey-heather",
+    "erwarteterHex": "#9C9E9F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_dark_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_dark_grey_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-round-t-heavy",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_royal_3.webp"
+   },
+   {
+    "id": "grey-heather",
+    "erwarteterHex": "#9396A3",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_grey_heather.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_grey_heather_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_grey_heather_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_dark_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-ladies-active-t",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_royal_3.webp"
+   },
+   {
+    "id": "purple",
+    "erwarteterHex": "#8D5197",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_purple.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_purple_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_purple_3.webp"
+   },
+   {
+    "id": "green",
+    "erwarteterHex": "#009A41",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-men-s-basic-t",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_royal_3.webp"
+   },
+   {
+    "id": "grey-heather",
+    "erwarteterHex": "#9396A3",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_grey_heather.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_grey_heather_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_grey_heather_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_dark_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-ladies-basic-t",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_royal_3.webp"
+   },
+   {
+    "id": "grey-heather",
+    "erwarteterHex": "#9396A3",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_grey_heather.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_grey_heather_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_grey_heather_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_dark_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-workwear-t-men",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_red_3.webp"
+   },
+   {
+    "id": "carbon",
+    "erwarteterHex": "#646F79",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_carbon.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_carbon_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_carbon_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-workwear-t-women",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_royal_3.webp"
+   },
+   {
+    "id": "carbon",
+    "erwarteterHex": "#646F79",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_carbon.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_carbon_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_carbon_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_dark_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-ladies-bio-workwear-t-shirt",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_royal_3.webp"
+   },
+   {
+    "id": "carbon",
+    "erwarteterHex": "#646F79",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_carbon.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_carbon_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_carbon_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_dark_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-unisex-polo-id-001",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_001_polo_pui10_black.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_001_polo_pui10_white.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_001_polo_pui10_navy.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_001_polo_pui10_red.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_001_polo_pui10_royal_blue.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#004413",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_001_polo_pui10_bottle_green.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-my-polo-180",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_polo_180_pu424_black.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_polo_180_pu424_white.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_polo_180_pu424_navy.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_polo_180_pu424_red.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_polo_180_pu424_royal_blue.webp"
+   },
+   {
+    "id": "sport-grey-heather",
+    "erwarteterHex": "#9C9E9F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_polo_180_pu424_sport_grey.webp"
+   },
+   {
+    "id": "ivy-green",
+    "erwarteterHex": "#324C38",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_polo_180_pu424_ivy_green.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-inspire-polo-men",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_men_pm430_black.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_men_pm430_white.webp"
+   },
+   {
+    "id": "dark-grey-solid",
+    "erwarteterHex": "#29363F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_men_pm430_dark_grey.webp"
+   },
+   {
+    "id": "heather-grey",
+    "erwarteterHex": "#B1B3B4",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_men_pm430_heather_grey.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-inspire-polo-women",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_women_pw440_black.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_women_pw440_white.webp"
+   },
+   {
+    "id": "dark-grey-solid",
+    "erwarteterHex": "#29363F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_women_pw440_dark_grey.webp"
+   },
+   {
+    "id": "heather-grey",
+    "erwarteterHex": "#B1B3B4",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_women_pw440_heather_grey.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-my-eco-polo-6535",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_black.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_white.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_navy.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_red.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_royal_blue.webp"
+   },
+   {
+    "id": "camo-green",
+    "erwarteterHex": "#646354",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_camo_green.webp"
+   },
+   {
+    "id": "dark-grey-solid",
+    "erwarteterHex": "#29363F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_dark_grey.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-my-eco-polo-6535-women",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_black.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_white.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_navy.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_red.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_royal_blue.webp"
+   },
+   {
+    "id": "camo-green",
+    "erwarteterHex": "#646354",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_camo_green.webp"
+   },
+   {
+    "id": "dark-grey-solid",
+    "erwarteterHex": "#29363F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_dark_grey.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-classic-polo",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_royal_3.webp"
+   },
+   {
+    "id": "grey-heather",
+    "erwarteterHex": "#9396A3",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_grey_heather.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_grey_heather_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_grey_heather_3.webp"
+   },
+   {
+    "id": "graphite-solid",
+    "erwarteterHex": "#4A4A4B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_graphite.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_graphite_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_graphite_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-classic-polo-ladies",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_royal_3.webp"
+   },
+   {
+    "id": "grey-heather",
+    "erwarteterHex": "#9396A3",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_grey_heather.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_grey_heather_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_grey_heather_3.webp"
+   },
+   {
+    "id": "graphite-solid",
+    "erwarteterHex": "#4A4A4B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_graphite.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_graphite_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_graphite_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-men-s-bio-workwear-polo",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_royal_3.webp"
+   },
+   {
+    "id": "carbon",
+    "erwarteterHex": "#646F79",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_carbon.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_carbon_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_carbon_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_dark_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-workwear-polo-men",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_royal_3.webp"
+   },
+   {
+    "id": "carbon",
+    "erwarteterHex": "#646F79",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_carbon.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_carbon_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_carbon_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_dark_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-id-333-hoodie",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_white_2.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_navy_2.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_red_2.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_royal_blue.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_royal_blue_2.webp"
+   },
+   {
+    "id": "sport-grey-heather",
+    "erwarteterHex": "#9C9E9F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_sport_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_sport_grey_2.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#004413",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_bottle_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_bottle_green_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-king-hooded-sweat",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_white_2.webp"
+   },
+   {
+    "id": "navy-blue",
+    "erwarteterHex": "#101145",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_navy_blue.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_red_2.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_royal_2.webp"
+   },
+   {
+    "id": "heather-grey",
+    "erwarteterHex": "#B1B3B4",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_heather_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_heather_grey_2.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#004413",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_bottle_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_bottle_green_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-id-223-hoodie",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_white_2.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_navy_2.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_red_2.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_royal_blue.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_royal_blue_2.webp"
+   },
+   {
+    "id": "sport-grey-heather",
+    "erwarteterHex": "#9C9E9F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_sport_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_sport_grey_2.webp"
+   },
+   {
+    "id": "forest-green",
+    "erwarteterHex": "#002500",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_forest_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_forest_green_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-influence-hoodie",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_white_2.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_navy_2.webp"
+   },
+   {
+    "id": "sport-grey-heather",
+    "erwarteterHex": "#9C9E9F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_sport_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_sport_grey_2.webp"
+   },
+   {
+    "id": "amalfi-teal",
+    "erwarteterHex": "#334C50",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_amalfi_teal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_amalfi_teal_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "bundc-hoodie",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black-pure",
+    "erwarteterHex": "#070509",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_hooded_sweat_wu620_black.webp"
+   },
+   {
+    "id": "navy-blue",
+    "erwarteterHex": "#101145",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_hooded_sweat_wu620_navy.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_hooded_sweat_wu620_red.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_hooded_sweat_wu620_royal_blue.webp"
+   },
+   {
+    "id": "heather-grey",
+    "erwarteterHex": "#B1B3B4",
+    "front": "https://www.groener-schulze.com/grafik/image/original/bc_hooded_sweat_wu620_heather_grey.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-men-s-fleece-jacket-jn",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_royal_3.webp"
+   },
+   {
+    "id": "dark-grey-solid",
+    "erwarteterHex": "#99A499",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_grey_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_grey_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "jamesnicholson-ladies-fleece-jacket-jn781",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#1B1B1F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_white_3.webp"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#003254",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C80A25",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_red_3.webp"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#004985",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_royal_3.webp"
+   },
+   {
+    "id": "dark-grey-solid",
+    "erwarteterHex": "#99A499",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_dark_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_dark_grey_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_dark_grey_3.webp"
+   },
+   {
+    "id": "dark-green",
+    "erwarteterHex": "#1B5126",
+    "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_dark_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_dark_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_dark_green_3.webp"
+   }
+  ]
+ }
 ]

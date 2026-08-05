@@ -26,6 +26,7 @@ const norm = (s: string) => s.toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a
 // Marke → Quelle (aus dem Discovery-Workflow verifiziert)
 const QUELLE: Record<string, string> = {
   'B&C': 'groener-schulze', 'James+Nicholson': 'groener-schulze',
+  'Russell': 'groener-schulze', 'Fruit of the Loom': 'groener-schulze',
   "SOL'S": 'myworkwear', 'Build Your Brand': 'buildyourbrand', 'Just Hoods': 'sportyfied-justhoods',
 };
 

@@ -88,40 +88,6 @@
     ]
   },
   {
-    "productId": "bundc-e220-t",
-    "brand": "B&C",
-    "name": "#E220 T",
-    "productType": "tshirt",
-    "quelle": "groener-schulze",
-    "colors": [
-      {
-        "id": "black",
-        "name": "Black",
-        "hex": "#000000"
-      },
-      {
-        "id": "white",
-        "name": "White",
-        "hex": "#FFFFFF"
-      },
-      {
-        "id": "navy",
-        "name": "Navy",
-        "hex": "#1F2532"
-      },
-      {
-        "id": "lake-blue",
-        "name": "Lake Blue",
-        "hex": "#3F82B4"
-      },
-      {
-        "id": "amalfi-teal",
-        "name": "Amalfi Teal",
-        "hex": "#334C50"
-      }
-    ]
-  },
-  {
     "productId": "bundc-inspire-v-t-men",
     "brand": "B&C",
     "name": "Inspire V T / Men",
@@ -191,50 +157,6 @@
         "id": "light-grey",
         "name": "Light Grey",
         "hex": "#A09D98"
-      },
-      {
-        "id": "khaki",
-        "name": "Khaki",
-        "hex": "#4C4B30"
-      }
-    ]
-  },
-  {
-    "productId": "bundc-inspire-t-men",
-    "brand": "B&C",
-    "name": "Inspire T /Men",
-    "productType": "tshirt",
-    "quelle": "groener-schulze",
-    "colors": [
-      {
-        "id": "black",
-        "name": "Black",
-        "hex": "#000000"
-      },
-      {
-        "id": "white",
-        "name": "White",
-        "hex": "#FFFFFF"
-      },
-      {
-        "id": "navy",
-        "name": "Navy",
-        "hex": "#1F2532"
-      },
-      {
-        "id": "red",
-        "name": "Red",
-        "hex": "#DB001B"
-      },
-      {
-        "id": "royal-blue",
-        "name": "Royal Blue",
-        "hex": "#154E8F"
-      },
-      {
-        "id": "sport-grey-heather",
-        "name": "Sport Grey (Heather)",
-        "hex": "#9C9E9F"
       },
       {
         "id": "khaki",
@@ -547,9 +469,9 @@
     ]
   },
   {
-    "productId": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "productId": "jamesnicholson-ladies-bio-workwear-t-shirt",
     "brand": "James+Nicholson",
-    "name": "Mens Bio Workwear T-Shirt",
+    "name": "Ladies` BIO Workwear T-Shirt",
     "productType": "tshirt",
     "quelle": "groener-schulze",
     "colors": [
@@ -591,16 +513,16 @@
     ]
   },
   {
-    "productId": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "brand": "James+Nicholson",
-    "name": "Ladies` BIO Workwear T-Shirt",
+    "productId": "russell-russell-classic-t",
+    "brand": "Russell",
+    "name": "Russell Classic T",
     "productType": "tshirt",
     "quelle": "groener-schulze",
     "colors": [
       {
         "id": "black",
         "name": "Black",
-        "hex": "#1B1B1F"
+        "hex": "#000000"
       },
       {
         "id": "white",
@@ -608,29 +530,150 @@
         "hex": "#FFFFFF"
       },
       {
-        "id": "navy",
-        "name": "Navy",
-        "hex": "#003254"
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
       },
       {
-        "id": "red",
-        "name": "Red",
-        "hex": "#C80A25"
+        "id": "bright-red",
+        "name": "Bright Red",
+        "hex": "#ED1C24"
       },
       {
-        "id": "royal",
-        "name": "Royal",
-        "hex": "#004985"
+        "id": "0062ae",
+        "name": "0062AE",
+        "hex": "#0062AE"
       },
       {
-        "id": "carbon",
-        "name": "Carbon",
-        "hex": "#646F79"
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
       },
       {
-        "id": "dark-green",
-        "name": "Dark Green",
-        "hex": "#1B5126"
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
+      }
+    ]
+  },
+  {
+    "productId": "russell-classic-heavyweight-t-shirt",
+    "brand": "Russell",
+    "name": "Classic Heavyweight T-Shirt",
+    "productType": "tshirt",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "classic-red",
+        "name": "Classic Red",
+        "hex": "#D71925"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
+      }
+    ]
+  },
+  {
+    "productId": "russell-mens-pure-organic-heavy-tee",
+    "brand": "Russell",
+    "name": "Men´s Pure Organic Heavy Tee",
+    "productType": "tshirt",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "555b66",
+        "name": "555B66",
+        "hex": "#555B66"
+      }
+    ]
+  },
+  {
+    "productId": "russell-ladies-pure-organic-heavy-tee",
+    "brand": "Russell",
+    "name": "Ladies´ Pure Organic Heavy Tee",
+    "productType": "tshirt",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "555b66",
+        "name": "555B66",
+        "hex": "#555B66"
+      }
+    ]
+  },
+  {
+    "productId": "russell-mens-pure-organic-v-neck-tee",
+    "brand": "Russell",
+    "name": "Men´s Pure Organic V-Neck Tee",
+    "productType": "tshirt",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
       }
     ]
   },
@@ -1055,6 +1098,216 @@
     ]
   },
   {
+    "productId": "russell-strapazierfaehiges-poloshirt-599",
+    "brand": "Russell",
+    "name": "Strapazierfähiges Poloshirt 599",
+    "productType": "polo",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "bright-red",
+        "name": "Bright Red",
+        "hex": "#ED1C24"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
+      }
+    ]
+  },
+  {
+    "productId": "russell-men-s-ultimate-cotton-polo",
+    "brand": "Russell",
+    "name": "Men`s Ultimate Cotton Polo",
+    "productType": "polo",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "classic-red",
+        "name": "Classic Red",
+        "hex": "#D71925"
+      },
+      {
+        "id": "azure-blue",
+        "name": "Azure Blue",
+        "hex": "#0062AE"
+      },
+      {
+        "id": "titanium-solid",
+        "name": "Titanium (Solid)",
+        "hex": "#2D3844"
+      }
+    ]
+  },
+  {
+    "productId": "russell-men-s-classic-cotton-polo",
+    "brand": "Russell",
+    "name": "Men`s Classic Cotton Polo",
+    "productType": "polo",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "classic-red",
+        "name": "Classic Red",
+        "hex": "#D71925"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
+      }
+    ]
+  },
+  {
+    "productId": "russell-poloshirt-6535",
+    "brand": "Russell",
+    "name": "Poloshirt 65/35",
+    "productType": "polo",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "bright-red",
+        "name": "Bright Red",
+        "hex": "#ED1C24"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
+      }
+    ]
+  },
+  {
+    "productId": "russell-ladies-poloshirt-6535",
+    "brand": "Russell",
+    "name": "Ladies` Poloshirt 65/35",
+    "productType": "polo",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "bright-red",
+        "name": "Bright Red",
+        "hex": "#ED1C24"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
+      }
+    ]
+  },
+  {
     "productId": "sols-men-s-polo-shirt-prime",
     "brand": "SOL'S",
     "name": "Men`s Polo Shirt Prime",
@@ -1227,6 +1480,167 @@
         "id": "kelly-green",
         "name": "Kelly Green",
         "hex": "#008845"
+      }
+    ]
+  },
+  {
+    "productId": "fruit-of-the-loom-premium-hooded-sweat",
+    "brand": "Fruit of the Loom",
+    "name": "Premium Hooded Sweat",
+    "productType": "hoodie",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#120F14"
+      },
+      {
+        "id": "heather-grey",
+        "name": "Heather Grey",
+        "hex": "#D4D9DC"
+      },
+      {
+        "id": "charcoal-solid",
+        "name": "Charcoal (Solid)",
+        "hex": "#3E3F40"
+      },
+      {
+        "id": "red",
+        "name": "Red",
+        "hex": "#E61709"
+      },
+      {
+        "id": "royal-blue",
+        "name": "Royal Blue",
+        "hex": "#004D9F"
+      },
+      {
+        "id": "classic-olive",
+        "name": "Classic Olive",
+        "hex": "#63673F"
+      }
+    ]
+  },
+  {
+    "productId": "fruit-of-the-loom-lightweight-hooded-sweat",
+    "brand": "Fruit of the Loom",
+    "name": "Lightweight Hooded Sweat",
+    "productType": "hoodie",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#120F14"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#1E4026"
+      },
+      {
+        "id": "red",
+        "name": "Red",
+        "hex": "#E61709"
+      },
+      {
+        "id": "royal-blue",
+        "name": "Royal Blue",
+        "hex": "#004D9F"
+      },
+      {
+        "id": "heather-grey",
+        "name": "Heather Grey",
+        "hex": "#D4D9DC"
+      },
+      {
+        "id": "kelly-green",
+        "name": "Kelly Green",
+        "hex": "#00A056"
+      }
+    ]
+  },
+  {
+    "productId": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+    "brand": "Fruit of the Loom",
+    "name": "Iconic Premium Hooded Sweat",
+    "productType": "hoodie",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#120F14"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "deep-navy",
+        "name": "Deep Navy",
+        "hex": "#000F33"
+      },
+      {
+        "id": "red",
+        "name": "Red",
+        "hex": "#E61709"
+      },
+      {
+        "id": "royal-blue",
+        "name": "Royal Blue",
+        "hex": "#004D9F"
+      },
+      {
+        "id": "light-graphite-solid",
+        "name": "Light Graphite (Solid)",
+        "hex": "#554B47"
+      }
+    ]
+  },
+  {
+    "productId": "fruit-of-the-loom-iconic-250-hooded-sweat",
+    "brand": "Fruit of the Loom",
+    "name": "ICONIC 250 Hooded Sweat",
+    "productType": "hoodie",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#120F14"
+      },
+      {
+        "id": "ffffff",
+        "name": "FFFFFF",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "deep-navy",
+        "name": "Deep Navy",
+        "hex": "#000F33"
+      },
+      {
+        "id": "red",
+        "name": "Red",
+        "hex": "#E61709"
+      },
+      {
+        "id": "royal-blue",
+        "name": "Royal Blue",
+        "hex": "#004D9F"
+      },
+      {
+        "id": "light-graphite-solid",
+        "name": "Light Graphite (Solid)",
+        "hex": "#554B47"
       }
     ]
   },
@@ -1665,6 +2079,133 @@
     ]
   },
   {
+    "productId": "russell-authentic-hooded-sweat",
+    "brand": "Russell",
+    "name": "Authentic Hooded Sweat",
+    "productType": "hoodie",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "ffffff",
+        "name": "FFFFFF",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "classic-red",
+        "name": "Classic Red",
+        "hex": "#D71925"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
+      }
+    ]
+  },
+  {
+    "productId": "russell-ladies-authentic-hood",
+    "brand": "Russell",
+    "name": "Ladies` Authentic Hood",
+    "productType": "hoodie",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "classic-red",
+        "name": "Classic Red",
+        "hex": "#D71925"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
+      }
+    ]
+  },
+  {
+    "productId": "russell-hooded-sweatshirt",
+    "brand": "Russell",
+    "name": "Hooded Sweatshirt",
+    "productType": "hoodie",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "classic-red",
+        "name": "Classic Red",
+        "hex": "#D71925"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
+      }
+    ]
+  },
+  {
     "productId": "just-hoods-signature-heavyweight-sweat",
     "brand": "Just Hoods",
     "name": "Signature Heavyweight Sweat",
@@ -1744,6 +2285,35 @@
         "id": "bottle-green",
         "name": "Bottle Green",
         "hex": "#253E33"
+      }
+    ]
+  },
+  {
+    "productId": "russell-classic-t-long-sleeve",
+    "brand": "Russell",
+    "name": "Classic T - Long Sleeve",
+    "productType": "longsleeve",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
       }
     ]
   },
@@ -1997,6 +2567,45 @@
         "id": "forest-green",
         "name": "Forest Green",
         "hex": "#495853"
+      }
+    ]
+  },
+  {
+    "productId": "russell-outdoor-fleece-jacke",
+    "brand": "Russell",
+    "name": "Outdoor Fleece Jacke",
+    "productType": "jacket",
+    "quelle": "groener-schulze",
+    "colors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "id": "french-navy",
+        "name": "French Navy",
+        "hex": "#021E42"
+      },
+      {
+        "id": "classic-red",
+        "name": "Classic Red",
+        "hex": "#D71925"
+      },
+      {
+        "id": "bright-royal",
+        "name": "Bright Royal",
+        "hex": "#1E519E"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "name": "Convoy Grey (Solid)",
+        "hex": "#555B66"
+      },
+      {
+        "id": "bottle-green",
+        "name": "Bottle Green",
+        "hex": "#00461C"
       }
     ]
   },

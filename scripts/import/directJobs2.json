@@ -1,0 +1,574 @@
+[
+ {
+  "productId": "sols-men-s-polo-shirt-prime",
+  "quelle": "MyWorkWear",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://assets.myworkwear.co.uk/products/6077/10571-BLK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6077/10571-BLK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6077/10571-BLK-LEFT.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://assets.myworkwear.co.uk/products/6077/10571-WHI-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6077/10571-WHI-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6077/10571-WHI-LEFT.jpg"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#011F45",
+    "front": "https://assets.myworkwear.co.uk/products/6077/10571-FNA-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6077/10571-FNA-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6077/10571-FNA-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/6077/10571-RED-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6077/10571-RED-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6077/10571-RED-LEFT.jpg"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#193574",
+    "front": "https://assets.myworkwear.co.uk/products/6077/10571-ROY-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6077/10571-ROY-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6077/10571-ROY-LEFT.jpg"
+   },
+   {
+    "id": "grey-melange",
+    "erwarteterHex": "#8F8B8B",
+    "front": "https://assets.myworkwear.co.uk/products/6077/10571-GYM-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6077/10571-GYM-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6077/10571-GYM-LEFT.jpg"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#253E33",
+    "front": "https://assets.myworkwear.co.uk/products/6077/10571-BOT-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6077/10571-BOT-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6077/10571-BOT-LEFT.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "sols-women-s-polo-shirt-prime",
+  "quelle": "MyWorkwear",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://assets.myworkwear.co.uk/products/6078/10573-BLK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6078/10573-BLK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6078/10573-BLK-LEFT.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://assets.myworkwear.co.uk/products/6078/10573-WHI-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6078/10573-WHI-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6078/10573-WHI-LEFT.jpg"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#011F45",
+    "front": "https://assets.myworkwear.co.uk/products/6078/10573-FNA-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6078/10573-FNA-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6078/10573-FNA-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/6078/10573-RED-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6078/10573-RED-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6078/10573-RED-LEFT.jpg"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#193574",
+    "front": "https://assets.myworkwear.co.uk/products/6078/10573-ROY-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6078/10573-ROY-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6078/10573-ROY-LEFT.jpg"
+   },
+   {
+    "id": "grey-melange",
+    "erwarteterHex": "#8F8B8B",
+    "front": "https://assets.myworkwear.co.uk/products/6078/10573-GYM-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6078/10573-GYM-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6078/10573-GYM-LEFT.jpg"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#253E33",
+    "front": "https://assets.myworkwear.co.uk/products/6078/10573-BOT-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6078/10573-BOT-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6078/10573-BOT-LEFT.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "sols-men-s-polo-shirt-perfect",
+  "quelle": "MyWorkwear",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://assets.myworkwear.co.uk/products/6094/11346-BLK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6094/11346-BLK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6094/11346-BLK-LEFT.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://assets.myworkwear.co.uk/products/6094/11346-WHI-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6094/11346-WHI-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6094/11346-WHI-LEFT.jpg"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#011F45",
+    "front": "https://assets.myworkwear.co.uk/products/6094/11346-FNA-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6094/11346-FNA-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6094/11346-FNA-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/6094/11346-RED-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6094/11346-RED-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6094/11346-RED-LEFT.jpg"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#193574",
+    "front": "https://assets.myworkwear.co.uk/products/6094/11346-ROY-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6094/11346-ROY-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6094/11346-ROY-LEFT.jpg"
+   },
+   {
+    "id": "grey-melange",
+    "erwarteterHex": "#8F8B8B",
+    "front": "https://assets.myworkwear.co.uk/products/6094/11346-GYM-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6094/11346-GYM-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6094/11346-GYM-LEFT.jpg"
+   },
+   {
+    "id": "kelly-green",
+    "erwarteterHex": "#008845",
+    "front": "https://assets.myworkwear.co.uk/products/6094/11346-KEL-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6094/11346-KEL-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6094/11346-KEL-LEFT.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "sols-unisex-pulse-polo-shirt",
+  "quelle": "MyWorkWear",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://assets.myworkwear.co.uk/products/6073/04502-BLK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6073/04502-BLK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6073/04502-BLK-LEFT.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://assets.myworkwear.co.uk/products/6073/04502-WHI-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6073/04502-WHI-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6073/04502-WHI-LEFT.jpg"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#011F45",
+    "front": "https://assets.myworkwear.co.uk/products/6073/04502-FNA-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6073/04502-FNA-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6073/04502-FNA-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/6073/04502-RED-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6073/04502-RED-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6073/04502-RED-LEFT.jpg"
+   },
+   {
+    "id": "royal-blue-241",
+    "erwarteterHex": "#01509D",
+    "front": "https://assets.myworkwear.co.uk/products/6073/04502-ROY-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6073/04502-ROY-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6073/04502-ROY-LEFT.jpg"
+   },
+   {
+    "id": "grey-melange",
+    "erwarteterHex": "#8F8B8B",
+    "front": "https://assets.myworkwear.co.uk/products/6073/04502-GYM-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6073/04502-GYM-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6073/04502-GYM-LEFT.jpg"
+   },
+   {
+    "id": "kelly-green",
+    "erwarteterHex": "#008845",
+    "front": "https://assets.myworkwear.co.uk/products/6073/04502-KEL-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6073/04502-KEL-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6073/04502-KEL-LEFT.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "build-your-brand-heavy-hoody",
+  "quelle": "Build",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P1-00007.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P2-00007.jpg",
+    "side": "top"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P1-00220.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P2-00220.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-00220.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#221C35",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P1-00155.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P2-00155.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-00155.jpg"
+   },
+   {
+    "id": "ruby",
+    "erwarteterHex": "#8A2232",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P1-00207.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P2-00207.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-00207.jpg"
+   },
+   {
+    "id": "charcoal-heather",
+    "erwarteterHex": "#4E5054",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P1-00091.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P2-00091.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-00091.jpg"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#324241",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P1-02245.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P2-02245.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-02245.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "build-your-brand-fluffy-hoody",
+  "quelle": "buildyourbrand.de",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-00007.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-00007.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-00220.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-00220.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P4-00220.jpg"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#324241",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-02245.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-02245.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P4-02245.jpg"
+   },
+   {
+    "id": "pale-olive",
+    "erwarteterHex": "#888072",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-18328.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-18328.jpg"
+   },
+   {
+    "id": "magnet",
+    "erwarteterHex": "#4D4B4F",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-03516.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-03516.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "build-your-brand-ultra-heavy-cotton-box-hoody",
+  "quelle": "buildyourbrand.de",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00007.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P2-00007.jpg",
+    "side": "black"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00220.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P2-00220.jpg",
+    "side": "white"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#221C35",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00155.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P2-00155.jpg",
+    "side": "navy"
+   },
+   {
+    "id": "city-red",
+    "erwarteterHex": "#BE132D",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00491.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P2-00491.jpg",
+    "side": "city-red"
+   },
+   {
+    "id": "grey",
+    "erwarteterHex": "#CDC8C0",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00111.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P2-00111.jpg",
+    "side": "grey"
+   },
+   {
+    "id": "magnet",
+    "erwarteterHex": "#4D4B4F",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-03516.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P2-03516.jpg",
+    "side": "magnet"
+   }
+  ]
+ },
+ {
+  "productId": "build-your-brand-ladies-heavy-hoody",
+  "quelle": "Build",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P1-00007.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P2-00007.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P4-00007.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P1-00220.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P2-00220.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P4-00220.jpg"
+   },
+   {
+    "id": "charcoal-heather",
+    "erwarteterHex": "#4E5054",
+    "front": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P1-00091.jpg",
+    "back": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P2-00091.jpg",
+    "side": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P4-00091.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "sols-men-s-long-sleeve-t-shirt-imperial",
+  "quelle": "MyWorkwear",
+  "colors": [
+   {
+    "id": "charcoal-melange",
+    "erwarteterHex": "#040F13",
+    "front": "https://assets.myworkwear.co.uk/products/5966/02074-DBK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5966/02074-DBK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5966/02074-DBK-LEFT.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://assets.myworkwear.co.uk/products/5966/02074-WHI-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5966/02074-WHI-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5966/02074-WHI-LEFT.jpg"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#011F45",
+    "front": "https://assets.myworkwear.co.uk/products/5966/02074-FNA-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5966/02074-FNA-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5966/02074-FNA-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/5966/02074-RED-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5966/02074-RED-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5966/02074-RED-LEFT.jpg"
+   },
+   {
+    "id": "grey-melange",
+    "erwarteterHex": "#8F8B8B",
+    "front": "https://assets.myworkwear.co.uk/products/5966/02074-GYM-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5966/02074-GYM-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5966/02074-GYM-LEFT.jpg"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#253E33",
+    "front": "https://assets.myworkwear.co.uk/products/5966/02074-BOT-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5966/02074-BOT-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5966/02074-BOT-LEFT.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "sols-men-s-plain-fleece-jacket-norman",
+  "quelle": "MyWorkwear",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://assets.myworkwear.co.uk/products/5973/02093-BLK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5973/02093-BLK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5973/02093-BLK-LEFT.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#07213B",
+    "front": "https://assets.myworkwear.co.uk/products/5973/02093-NAV-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5973/02093-NAV-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5973/02093-NAV-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/5973/02093-RED-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5973/02093-RED-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5973/02093-RED-LEFT.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "sols-women-s-plain-fleece-jacket-norman",
+  "quelle": "MyWorkwear",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://assets.myworkwear.co.uk/products/5974/02094-BLK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5974/02094-BLK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5974/02094-BLK-LEFT.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#07213B",
+    "front": "https://assets.myworkwear.co.uk/products/5974/02094-NAV-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5974/02094-NAV-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5974/02094-NAV-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/5974/02094-RED-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/5974/02094-RED-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/5974/02094-RED-LEFT.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "sols-women-s-fleecejacket-north",
+  "quelle": "MyWorkwear",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://assets.myworkwear.co.uk/products/6136/54500-BLK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6136/54500-BLK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6136/54500-BLK-LEFT.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://assets.myworkwear.co.uk/products/6136/54500-WHI-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6136/54500-WHI-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6136/54500-WHI-LEFT.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#07213B",
+    "front": "https://assets.myworkwear.co.uk/products/6136/54500-NAV-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6136/54500-NAV-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6136/54500-NAV-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/6136/54500-RED-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6136/54500-RED-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6136/54500-RED-LEFT.jpg"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#193574",
+    "front": "https://assets.myworkwear.co.uk/products/6136/54500-ROY-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6136/54500-ROY-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6136/54500-ROY-LEFT.jpg"
+   },
+   {
+    "id": "grey-melange",
+    "erwarteterHex": "#8F8B8B",
+    "front": "https://assets.myworkwear.co.uk/products/6136/54500-GYM-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6136/54500-GYM-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6136/54500-GYM-LEFT.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "sols-mens-factor-zipped-fleece-jacket",
+  "quelle": "MyWorkwear",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://assets.myworkwear.co.uk/products/6028/03823-BLK-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6028/03823-BLK-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6028/03823-BLK-LEFT.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#07213B",
+    "front": "https://assets.myworkwear.co.uk/products/6028/03823-NAV-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6028/03823-NAV-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6028/03823-NAV-LEFT.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://assets.myworkwear.co.uk/products/6028/03823-ROP-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6028/03823-ROP-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6028/03823-ROP-LEFT.jpg"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#193574",
+    "front": "https://assets.myworkwear.co.uk/products/6028/03823-ROY-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6028/03823-ROY-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6028/03823-ROY-LEFT.jpg"
+   },
+   {
+    "id": "forest-green",
+    "erwarteterHex": "#495853",
+    "front": "https://assets.myworkwear.co.uk/products/6028/03823-FOR-FRONT.jpg",
+    "back": "https://assets.myworkwear.co.uk/products/6028/03823-FOR-BACK.jpg",
+    "side": "https://assets.myworkwear.co.uk/products/6028/03823-FOR-LEFT.jpg"
+   }
+  ]
+ }
+]

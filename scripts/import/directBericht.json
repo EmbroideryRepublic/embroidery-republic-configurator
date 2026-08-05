@@ -1,252 +1,986 @@
 [
   {
-    "produkt": "bundc-e220-t",
+    "produkt": "sols-men-s-polo-shirt-prime",
     "farbe": "black",
-    "quelle": "groener-schulze",
+    "quelle": "MyWorkWear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#292727",
-    "erwartet": "#000000",
-    "deltaE": 69,
+    "frontDom": "#1b1b1b",
+    "erwartet": "#180F12",
+    "deltaE": 15,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-e220-t",
+    "produkt": "sols-men-s-polo-shirt-prime",
     "farbe": "white",
-    "quelle": "groener-schulze",
+    "quelle": "MyWorkWear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#ededed",
+    "frontDom": "#efefef",
     "erwartet": "#FFFFFF",
-    "deltaE": 31,
+    "deltaE": 28,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-e220-t",
-    "farbe": "navy",
-    "quelle": "groener-schulze",
+    "produkt": "sols-men-s-polo-shirt-prime",
+    "farbe": "french-navy",
+    "quelle": "MyWorkWear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#1f2633",
-    "erwartet": "#1F2532",
-    "deltaE": 1,
+    "frontDom": "#212643",
+    "erwartet": "#011F45",
+    "deltaE": 33,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-e220-t",
-    "farbe": "lake-blue",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#5585c7",
-    "erwartet": "#3F82B4",
-    "deltaE": 29,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-e220-t",
-    "farbe": "amalfi-teal",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#3c4b4f",
-    "erwartet": "#334C50",
-    "deltaE": 9,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-men",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#262223",
-    "erwartet": "#000000",
-    "deltaE": 62,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-men",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#ededed",
-    "erwartet": "#FFFFFF",
-    "deltaE": 31,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-men",
-    "farbe": "navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#1b212f",
-    "erwartet": "#1F2532",
-    "deltaE": 6,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-men",
+    "produkt": "sols-men-s-polo-shirt-prime",
     "farbe": "red",
-    "quelle": "groener-schulze",
+    "quelle": "MyWorkWear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#cd0826",
-    "erwartet": "#DB001B",
-    "deltaE": 20,
+    "frontDom": "#cf252a",
+    "erwartet": "#C4082D",
+    "deltaE": 31,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-t-men",
+    "produkt": "sols-men-s-polo-shirt-prime",
     "farbe": "royal-blue",
-    "quelle": "groener-schulze",
+    "quelle": "MyWorkWear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#114b8c",
-    "erwartet": "#154E8F",
-    "deltaE": 6,
+    "frontDom": "#1954a5",
+    "erwartet": "#193574",
+    "deltaE": 58,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-t-men",
-    "farbe": "sport-grey-heather",
-    "quelle": "groener-schulze",
+    "produkt": "sols-men-s-polo-shirt-prime",
+    "farbe": "grey-melange",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#8b8b8b",
+    "erwartet": "#8F8B8B",
+    "deltaE": 4,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-polo-shirt-prime",
+    "farbe": "bottle-green",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#18321f",
+    "erwartet": "#253E33",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "black",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#202020",
+    "erwartet": "#180F12",
+    "deltaE": 23,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "white",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e9e9e9",
+    "erwartet": "#FFFFFF",
+    "deltaE": 38,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "french-navy",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#30364f",
+    "erwartet": "#011F45",
+    "deltaE": 53,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "red",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#b2142b",
+    "erwartet": "#C4082D",
+    "deltaE": 22,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "royal-blue",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2c4185",
+    "erwartet": "#193574",
+    "deltaE": 28,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "grey-melange",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#a3a3a3",
+    "erwartet": "#8F8B8B",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "bottle-green",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2c402a",
+    "erwartet": "#253E33",
+    "deltaE": 12,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-polo-shirt-perfect",
+    "farbe": "black",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#202020",
+    "erwartet": "#180F12",
+    "deltaE": 23,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-polo-shirt-perfect",
+    "farbe": "white",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#f7f7f7",
+    "erwartet": "#FFFFFF",
+    "deltaE": 14,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-polo-shirt-perfect",
+    "farbe": "french-navy",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#1b2741",
+    "erwartet": "#011F45",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-polo-shirt-perfect",
+    "farbe": "red",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ca0820",
+    "erwartet": "#C4082D",
+    "deltaE": 14,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-polo-shirt-perfect",
+    "farbe": "royal-blue",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#02539a",
+    "erwartet": "#193574",
+    "deltaE": 54,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-polo-shirt-perfect",
+    "farbe": "grey-melange",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#cfcfcf",
+    "erwartet": "#8F8B8B",
+    "deltaE": 116,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-polo-shirt-perfect",
+    "farbe": "kelly-green",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#038f4b",
+    "erwartet": "#008845",
+    "deltaE": 10,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "black",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#313036",
+    "erwartet": "#180F12",
+    "deltaE": 55,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "white",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#eae8f3",
+    "erwartet": "#FFFFFF",
+    "deltaE": 33,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "french-navy",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#1a2134",
+    "erwartet": "#011F45",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "red",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#de0726",
+    "erwartet": "#C4082D",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "royal-blue-241",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3566b0",
+    "erwartet": "#01509D",
+    "deltaE": 60,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "grey-melange",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#959595",
+    "erwartet": "#8F8B8B",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "kelly-green",
+    "quelle": "MyWorkWear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#148556",
+    "erwartet": "#008845",
+    "deltaE": 26,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-heavy-hoody",
+    "farbe": "black",
+    "quelle": "Build",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#a2a2a2",
-    "erwartet": "#9C9E9F",
+    "frontDom": "#1e1e1e",
+    "erwartet": "#000000",
+    "deltaE": 52,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-heavy-hoody",
+    "farbe": "white",
+    "quelle": "Build",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#f0eff4",
+    "erwartet": "#FFFFFF",
+    "deltaE": 25,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-heavy-hoody",
+    "farbe": "navy",
+    "quelle": "Build",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#303342",
+    "erwartet": "#221C35",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-heavy-hoody",
+    "farbe": "ruby",
+    "quelle": "Build",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#dc253f",
+    "erwartet": "#8A2232",
+    "deltaE": 83,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-heavy-hoody",
+    "farbe": "charcoal-heather",
+    "quelle": "Build",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3b3b3b",
+    "erwartet": "#4E5054",
+    "deltaE": 38,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-heavy-hoody",
+    "farbe": "bottle-green",
+    "quelle": "Build",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2a4c4e",
+    "erwartet": "#324241",
+    "deltaE": 18,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "black",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#202022",
+    "erwartet": "#000000",
+    "deltaE": 57,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "white",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e4e2e7",
+    "erwartet": "#FFFFFF",
+    "deltaE": 46,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "bottle-green",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2b3f3e",
+    "erwartet": "#324241",
     "deltaE": 8,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-t-men",
-    "farbe": "khaki",
-    "quelle": "groener-schulze",
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "pale-olive",
+    "quelle": "buildyourbrand.de",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#544a41",
-    "erwartet": "#4C4B30",
-    "deltaE": 19,
+    "frontDom": "#a09985",
+    "erwartet": "#888072",
+    "deltaE": 40,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "magnet",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#746b70",
+    "erwartet": "#4D4B4F",
+    "deltaE": 60,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
     "farbe": "black",
-    "quelle": "groener-schulze",
+    "quelle": "buildyourbrand.de",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#2f2f2f",
-    "erwartet": "#1B1B1F",
-    "deltaE": 32,
+    "frontDom": "#1b1b1d",
+    "erwartet": "#000000",
+    "deltaE": 48,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
     "farbe": "white",
-    "quelle": "groener-schulze",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#efeef3",
+    "erwartet": "#FFFFFF",
+    "deltaE": 26,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "navy",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#312d3e",
+    "erwartet": "#221C35",
+    "deltaE": 24,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "city-red",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ea102c",
+    "erwartet": "#BE132D",
+    "deltaE": 44,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "grey",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#c5c4c9",
+    "erwartet": "#CDC8C0",
+    "deltaE": 13,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "magnet",
+    "quelle": "buildyourbrand.de",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#5a575c",
+    "erwartet": "#4D4B4F",
+    "deltaE": 22,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-ladies-heavy-hoody",
+    "farbe": "black",
+    "quelle": "Build",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#e3e3e3",
+    "frontDom": "#1b1b1b",
+    "erwartet": "#000000",
+    "deltaE": 47,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-ladies-heavy-hoody",
+    "farbe": "white",
+    "quelle": "Build",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#f0f0f2",
+    "erwartet": "#FFFFFF",
+    "deltaE": 25,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-ladies-heavy-hoody",
+    "farbe": "charcoal-heather",
+    "quelle": "Build",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#383838",
+    "erwartet": "#4E5054",
+    "deltaE": 43,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "farbe": "charcoal-melange",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#272822",
+    "erwartet": "#040F13",
+    "deltaE": 46,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "farbe": "white",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#dfe4e8",
     "erwartet": "#FFFFFF",
     "deltaE": 48,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "navy",
-    "quelle": "groener-schulze",
+    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "farbe": "french-navy",
+    "quelle": "MyWorkwear",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#3f455a",
-    "erwartet": "#003254",
-    "deltaE": 66,
+    "frontDom": "#282e4b",
+    "erwartet": "#011F45",
+    "deltaE": 42,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
     "farbe": "red",
-    "quelle": "groener-schulze",
+    "quelle": "MyWorkwear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#b31026",
-    "erwartet": "#C80A25",
-    "deltaE": 22,
+    "frontDom": "#ca0629",
+    "erwartet": "#C4082D",
+    "deltaE": 7,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "royal",
-    "quelle": "groener-schulze",
+    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "farbe": "grey-melange",
+    "quelle": "MyWorkwear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#3b5ea3",
-    "erwartet": "#004985",
-    "deltaE": 69,
+    "frontDom": "#9c9c9c",
+    "erwartet": "#8F8B8B",
+    "deltaE": 27,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "carbon",
-    "quelle": "groener-schulze",
+    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "farbe": "bottle-green",
+    "quelle": "MyWorkwear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#464e57",
-    "erwartet": "#646F79",
-    "deltaE": 56,
+    "frontDom": "#1b4422",
+    "erwartet": "#253E33",
+    "deltaE": 21,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "dark-green",
-    "quelle": "groener-schulze",
+    "produkt": "sols-men-s-plain-fleece-jacket-norman",
+    "farbe": "black",
+    "quelle": "MyWorkwear",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#44624f",
-    "erwartet": "#1B5126",
-    "deltaE": 60,
+    "frontDom": "#241b14",
+    "erwartet": "#180F12",
+    "deltaE": 17,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-plain-fleece-jacket-norman",
+    "farbe": "navy",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#21262b",
+    "erwartet": "#07213B",
+    "deltaE": 31,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-plain-fleece-jacket-norman",
+    "farbe": "red",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#a30b1d",
+    "erwartet": "#C4082D",
+    "deltaE": 37,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-plain-fleece-jacket-norman",
+    "farbe": "black",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2a252c",
+    "erwartet": "#180F12",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-plain-fleece-jacket-norman",
+    "farbe": "navy",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#252837",
+    "erwartet": "#07213B",
+    "deltaE": 31,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-plain-fleece-jacket-norman",
+    "farbe": "red",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#c30827",
+    "erwartet": "#C4082D",
+    "deltaE": 6,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "black",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#191913",
+    "erwartet": "#180F12",
+    "deltaE": 10,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "white",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e8e8e8",
+    "erwartet": "#FFFFFF",
+    "deltaE": 40,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "navy",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#23364f",
+    "erwartet": "#07213B",
+    "deltaE": 40,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "red",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#d3242f",
+    "erwartet": "#C4082D",
+    "deltaE": 32,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "royal-blue",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#075099",
+    "erwartet": "#193574",
+    "deltaE": 49,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "grey-melange",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#4d4d4e",
+    "erwartet": "#8F8B8B",
+    "deltaE": 109,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-mens-factor-zipped-fleece-jacket",
+    "farbe": "black",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#131313",
+    "erwartet": "#180F12",
+    "deltaE": 6,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-mens-factor-zipped-fleece-jacket",
+    "farbe": "navy",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#1c1b26",
+    "erwartet": "#07213B",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-mens-factor-zipped-fleece-jacket",
+    "farbe": "red",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#c0baa2",
+    "erwartet": "#C4082D",
+    "deltaE": 213,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-mens-factor-zipped-fleece-jacket",
+    "farbe": "royal-blue",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#035395",
+    "erwartet": "#193574",
+    "deltaE": 50,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-mens-factor-zipped-fleece-jacket",
+    "farbe": "forest-green",
+    "quelle": "MyWorkwear",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3e514b",
+    "erwartet": "#495853",
+    "deltaE": 15,
     "dupeMit": null
   }
 ]

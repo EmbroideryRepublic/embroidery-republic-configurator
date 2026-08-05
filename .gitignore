@@ -50,3 +50,6 @@ sicherung-bestellungen-*.json
 roles.sql
 schema.sql
 data.sql
+
+# Sportyfied-Sitemap-Dump (Referenz fuer den Import, ~2MB, regenerierbar)
+scripts/import/sf_sitemap.xml

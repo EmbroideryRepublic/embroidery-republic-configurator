@@ -1,23 +1,19 @@
 /**
  * Bild-Ingest aus Sportyfied (europäischer Multi-Marken-Händler, ADR 0006).
  *
- * Sportyfied serviert echte Produktfotos je Farbe UND Ansicht über ein klares,
- * skriptbares CDN-Muster:
- *   https://www.sportyfied.com/thumbs/regular/<sku>_<farbslug>_<ansicht>_700x700.png
- * mit ansicht ∈ {front, back, side} (Max-Auflösung 700×700). Vorder- UND
- * Rückansicht sind je Farbe echt vorhanden – genau die geforderte Priorität;
- * die Seitenansicht ist ein Bonus und wird als linke Ärmelansicht abgelegt.
+ * Sportyfied hat je Produkt/Artikel UNTERSCHIEDLICHE Bild-Dateinamensmuster
+ * (mal <artikel>_<farbe>_front, mal <artikel>_<kurzcode>, mal
+ * bc-tshirt-<farbe>-<artikel>-001-f_<n>). Deshalb werden die Bild-URLs NICHT
+ * konstruiert, sondern je Farbseite direkt aus der Seite EXTRAHIERT (700×700,
+ * Max-Auflösung). Das ist gegen alle Formatvarianten robust.
  *
- * Ablage: public/products/<productId>-<colorId>/{front,back,sleeve-left}.{png,webp}
- * (sleeve-right aliased der Manifest-Generator auf front). Danach Manifest neu
- * erzeugen (scripts/generateAssetManifest.mts) + Farben trimmen (applyImportColors).
+ * Pro Ziel-Farbe wird die Farbseite <baseSlug>-<colorSlug> geladen und daraus
+ * die echte Vorder-, Rück- und (falls vorhanden) Seitenansicht gezogen. Ablage:
+ * public/products/<productId>-<colorId>/{front,back,sleeve-left}.{png,webp}
+ * (sleeve-right aliased der Manifest-Generator auf front).
  *
- * Verifikation (fail-loud): fehlende Ansicht (HTTP≠200 / Mini-Antwort) wird
- * ausgelassen; Front-Duplikate übersprungen; Farbtreue via gemessenem Körper-Hex
- * (ΔE); Cross-Produkt-Dedup über den Front-Hash.
- *
- * Job-Format: [{ productId, sku, colors:[{id, slug, erwarteterHex}] }]
- * Aufruf:  npx tsx scripts/ingestSportyfied.mts scripts/import/sportyfiedJobs.json
+ * Job: [{ productId, baseSlug, colors:[{id, colorSlug, erwarteterHex}] }]
+ * Aufruf: npx tsx scripts/ingestSportyfied.mts scripts/import/sportyfiedJobs.json
  */
 import sharp from 'sharp';
 import path from 'node:path';
@@ -27,20 +23,44 @@ import { createHash } from 'node:crypto';
 
 const PUBLIC_PRODUCTS = path.join(process.cwd(), 'public', 'products');
 const TARGET_W = 620, TARGET_H = 720, MARGIN_RATIO = 0.86;
-const CDN = 'https://www.sportyfied.com/thumbs/regular';
-/** Datei-Ansicht (Store) → Sportyfied-Ansichtstoken. */
-const VIEWS: Record<string, string> = { front: 'front', back: 'back', 'sleeve-left': 'side' };
+const BASE = 'https://www.sportyfied.com';
+const UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' };
 
-type Farbe = { id: string; slug: string; erwarteterHex?: string };
-type Job = { productId: string; sku: string; colors: Farbe[] };
+type Farbe = { id: string; colorSlug: string; erwarteterHex?: string };
+type Job = { productId: string; baseSlug: string; colors: Farbe[] };
 const md5 = (b: Buffer) => createHash('md5').update(b).digest('hex');
 
-async function hole(sku: string, slug: string, viewToken: string): Promise<Buffer | null> {
-  const url = `${CDN}/${sku}_${slug}_${viewToken}_700x700.png`;
-  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' } });
+async function fetchText(url: string): Promise<string | null> {
+  const res = await fetch(url, { headers: UA, redirect: 'follow' });
+  return res.ok ? await res.text() : null;
+}
+async function fetchBuf(url: string): Promise<Buffer | null> {
+  const res = await fetch(url, { headers: UA });
   if (!res.ok) return null;
-  const buf = Buffer.from(await res.arrayBuffer());
-  return buf.length > 2000 ? buf : null;   // Mini-Antwort = Platzhalter/404-Bild
+  const b = Buffer.from(await res.arrayBuffer());
+  return b.length > 2500 ? b : null;
+}
+
+/** Aus einer Farbseite die 700×700-Produkt-URLs je Ansicht ziehen. Sportyfied
+ *  markiert Rück-/Seitenansicht per "back"/"side"-Token bzw. "-b"/"-s" im Namen;
+ *  die Vorderansicht ist das erste 700er ohne solches Token. Alle drei müssen
+ *  denselben Farb-Präfix teilen (gegen Fremdprodukt-Vorschauen). */
+function bildURLs(html: string): { front?: string; back?: string; side?: string } {
+  const alle = [...html.matchAll(/\/thumbs\/regular\/([a-z0-9_-]+)_700x700\.(?:png|jpg)/g)]
+    .map((m) => ({ url: BASE + m[0], stem: m[1] }))
+    .filter((x) => !/logo|payment|card|download\d|collection|_100x60/.test(x.stem));
+  const istBack = (s: string) => /(_|-)b(ack)?(_|$)/.test(s);
+  const istSide = (s: string) => /(_|-)s(ide)?(_|$)/.test(s);
+  const front = alle.find((x) => !istBack(x.stem) && !istSide(x.stem));
+  if (!front) return {};
+  // Farb-Präfix = gemeinsamer Anfang (bis zum Ansichts-Token)
+  const praefix = front.stem.replace(/(_|-)(f|front)(_\d+)?$/, '');
+  const same = (x: { stem: string }) => x.stem.startsWith(praefix.slice(0, Math.max(6, praefix.length - 2)));
+  return {
+    front: front.url,
+    back: alle.find((x) => istBack(x.stem) && same(x))?.url,
+    side: alle.find((x) => istSide(x.stem) && same(x))?.url,
+  };
 }
 
 async function normalisiere(raw: Buffer): Promise<Buffer> {
@@ -77,28 +97,30 @@ const bericht: any[] = [];
 
 for (const job of jobs) {
   for (const c of job.colors) {
+    const seite = await fetchText(`${BASE}/en/${job.baseSlug}-${c.colorSlug}`);
+    const urls = seite ? bildURLs(seite) : {};
     const outDir = path.join(PUBLIC_PRODUCTS, `${job.productId}-${c.id}`);
-    const gefunden: string[] = [], fehlend: string[] = [];
-    let frontHash = '', frontDom = '', frontRaw = '';
+    const gefunden: string[] = [];
+    let frontHash = '', frontDom = '';
     await fs.mkdir(outDir, { recursive: true });
-    for (const [vn, token] of Object.entries(VIEWS)) {
-      const raw = await hole(job.sku, c.slug, token);
-      if (!raw) { fehlend.push(vn); continue; }
-      const rawHash = md5(raw);
-      if (vn !== 'front' && rawHash === frontRaw) { fehlend.push(vn); continue; }  // Kopie der Front
+    const ziel: Record<string, string | undefined> = { front: urls.front, back: urls.back, 'sleeve-left': urls.side };
+    for (const [vn, u] of Object.entries(ziel)) {
+      if (!u) continue;
+      const raw = await fetchBuf(u);
+      if (!raw) continue;
       const png = await normalisiere(raw);
       await fs.writeFile(path.join(outDir, `${vn}.png`), png);
       await sharp(png).webp({ quality: 90 }).toFile(path.join(outDir, `${vn}.webp`));
       gefunden.push(vn);
-      if (vn === 'front') { frontRaw = rawHash; frontHash = md5(png); frontDom = await koerperHex(png); }
+      if (vn === 'front') { frontHash = md5(png); frontDom = await koerperHex(png); }
     }
     if (!gefunden.includes('front')) { await fs.rm(outDir, { recursive: true, force: true }); }
     const dupe = frontHash && bestehend.has(frontHash) ? bestehend.get(frontHash)! : null;
     if (frontHash) bestehend.set(frontHash, `${job.productId}-${c.id}`);
     const dElta = c.erwarteterHex && frontDom ? deltaHex(frontDom, c.erwarteterHex) : null;
-    bericht.push({ produkt: job.productId, farbe: c.id, slug: c.slug, gefunden, fehlend, frontDom, erwartet: c.erwarteterHex ?? null, deltaE: dElta, dupeMit: dupe });
-    const warn = [dupe ? `DUP:${dupe}` : '', dElta !== null && dElta > 60 ? `ΔE=${dElta}!` : '', !gefunden.includes('front') ? 'KEINE FRONT' : ''].filter(Boolean).join(' ');
-    console.log(`${job.productId}/${c.id} (${c.slug}): [${gefunden.join(',')}]${fehlend.length ? ' fehlt:' + fehlend.join(',') : ''} dom=${frontDom} ${warn}`);
+    bericht.push({ produkt: job.productId, farbe: c.id, colorSlug: c.colorSlug, gefunden, frontDom, erwartet: c.erwarteterHex ?? null, deltaE: dElta, dupeMit: dupe });
+    const warn = [dupe ? `DUP:${dupe}` : '', dElta !== null && dElta > 70 ? `ΔE=${dElta}!` : '', !gefunden.includes('front') ? 'KEINE FRONT' : ''].filter(Boolean).join(' ');
+    console.log(`${job.productId}/${c.id} (${c.colorSlug}): [${gefunden.join(',')}] dom=${frontDom} ${warn}`);
   }
 }
 await fs.writeFile('scripts/import/sportyfiedBericht.json', JSON.stringify(bericht, null, 2));

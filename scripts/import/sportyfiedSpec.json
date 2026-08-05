@@ -1,0 +1,10 @@
+[
+  { "productId": "bundc-t-shirt-e190", "baseSlug": "bandc-e190-t-shirt" },
+  { "productId": "bundc-t-shirt-e190-women", "baseSlug": "bandc-e190-t-shirt-women" },
+  { "productId": "neutral-men-s-fit-t-shirt", "baseSlug": "neutral-organic-fit-cotton-t-shirt" },
+  { "productId": "neutral-ladies-fit-t-shirt", "baseSlug": "neutral-organic-fit-t-shirt-women" },
+  { "productId": "neutral-unisex-regular-t-shirt", "baseSlug": "neutral-organic-cotton-unisex-regular-t-shirt" },
+  { "productId": "neutral-unisex-performance-t-shirt", "baseSlug": "neutral-performance-t-shirt-recycled-polyester" },
+  { "productId": "neutral-men-s-long-sleeve-t-shirt", "baseSlug": "neutral-organic-long-sleeve-cotton-t-shirt" },
+  { "productId": "neutral-ladies-long-sleeve-t-shirt", "baseSlug": "neutral-long-sleeve-t-shirt-female" }
+]

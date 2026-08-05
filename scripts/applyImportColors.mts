@@ -11,7 +11,8 @@
  *
  * Aufruf:  npx tsx scripts/applyImportColors.mts scripts/import/teamshirtsJobs.json
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import path from 'node:path';
 
 type Farbe = { id: string; name?: string };
 type Job = { productId: string; colors: Farbe[] };
@@ -20,10 +21,14 @@ const jobsPfad = process.argv[2] ?? 'scripts/import/teamshirtsJobs.json';
 const zielDatei = 'src/config/products/importiert.generated.ts';
 const jobs: Job[] = JSON.parse(readFileSync(jobsPfad, 'utf-8'));
 let inhalt = readFileSync(zielDatei, 'utf-8');
+const PUB = path.join(process.cwd(), 'public', 'products');
 
 const summary: string[] = [];
 for (const job of jobs) {
-  const keep = job.colors.map((c) => c.id);
+  // Nur auf Farben trimmen, die TATSÄCHLICH ein Bild bekamen (front.webp da) –
+  // vom Ingest verworfene (nicht verfügbare) Farben werden nicht zu Platzhaltern.
+  const keep = job.colors.map((c) => c.id).filter((id) => existsSync(path.join(PUB, `${job.productId}-${id}`, 'front.webp')));
+  if (!keep.length) { summary.push(`${job.productId}: keine bebilderte Farbe – übersprungen`); continue; }
   // Produktblock ab `id: "<pid>"` bis zum colors-Array; die generierte Struktur
   // ist streng regelmäßig: colors: platzhalterFarbSet([ <zeilen> ], [ <views> ]),
   const idIdx = inhalt.indexOf(`id: "${job.productId}"`);

@@ -13959,347 +13959,68 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     }
   },
   "gildan-softstyle-midweight-sweat-adult-hoodie": {
-    "navy": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "cobalt": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "stone-blue": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "paragon": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/front.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/front.webp"
       },
-      "status": "placeholder"
-    },
-    "charcoal-solid": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "dark-heather": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "light-pink": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "maroon": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "military-green": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "red": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "sport-grey-heather": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "royal": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "sand": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/front.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
-    "yellow-haze": {
+    "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/front.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/front.webp"
       },
-      "status": "placeholder"
-    },
-    "cement": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "cocoa": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "daisy": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "forest-green": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "mustard": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "pink-lemonade": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "pistachio": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "purple": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "sky": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "tangerine": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "aquatic": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
+      "status": "real"
     },
     "ash-grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/front.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
-    "blue-dusk": {
+    "charcoal-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/front.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
-    "brown-savana": {
+    "maroon": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/front.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
-    "cardinal-red": {
+    "military-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/front.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/front.webp"
       },
-      "status": "placeholder"
-    },
-    "carolina-blue": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "dusty-rose": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "off-white": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "sage": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "smoke": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "t-orange": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
-    },
-    "393d47": {
-      "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "gildan-hammer-maxweight-adult-hooded-sweatshirt": {

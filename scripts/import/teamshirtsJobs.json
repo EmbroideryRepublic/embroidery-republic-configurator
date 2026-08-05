@@ -18,5 +18,17 @@
       { "id": "white", "appearanceId": 1, "erwarteterHex": "#FFFFFF" },
       { "id": "sport-grey-heather", "appearanceId": 231, "erwarteterHex": "#97999B" }
     ]
+  },
+  {
+    "productId": "gildan-softstyle-midweight-sweat-adult-hoodie", "productType": 2489, "namespace": "sprd-eu",
+    "colors": [
+      { "id": "black", "appearanceId": 2, "erwarteterHex": "#25282B" },
+      { "id": "white", "appearanceId": 1, "erwarteterHex": "#FFFFFF" },
+      { "id": "navy", "appearanceId": 348, "erwarteterHex": "#263147" },
+      { "id": "ash-grey-heather", "appearanceId": 577, "erwarteterHex": "#C8C9C7" },
+      { "id": "charcoal-solid", "appearanceId": 164, "erwarteterHex": "#66676C" },
+      { "id": "maroon", "appearanceId": 708, "erwarteterHex": "#5B2B42" },
+      { "id": "military-green", "appearanceId": 715, "erwarteterHex": "#63655A" }
+    ]
   }
 ]

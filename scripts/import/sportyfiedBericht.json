@@ -1,76 +1,82 @@
 [
   {
-    "produkt": "bundc-t-shirt-e190",
+    "produkt": "bundc-t-shirt-e150-women",
     "farbe": "black",
     "colorSlug": "black",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#38373d",
+    "frontDom": "#3f3c3d",
     "erwartet": "#000000",
-    "deltaE": 99,
+    "deltaE": 106,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-t-shirt-e190",
+    "produkt": "bundc-t-shirt-e150-women",
     "farbe": "white",
     "colorSlug": "white",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#e7e7e7",
+    "frontDom": "#eae9ea",
     "erwartet": "#FFFFFF",
-    "deltaE": 42,
+    "deltaE": 37,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-t-shirt-e190",
-    "farbe": "navy-blue",
-    "colorSlug": "navy-blue",
+    "produkt": "bundc-t-shirt-e150-women",
+    "farbe": "navy",
+    "colorSlug": "navy",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#3b3e51",
-    "erwartet": "#101145",
-    "deltaE": 63,
+    "frontDom": "#3e3d4f",
+    "erwartet": "#1F2532",
+    "deltaE": 49,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-t-shirt-e190",
+    "produkt": "bundc-t-shirt-e150-women",
     "farbe": "red",
     "colorSlug": "red",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#c60021",
+    "frontDom": "#dd1c2f",
     "erwartet": "#DB001B",
-    "deltaE": 22,
+    "deltaE": 34,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-t-shirt-e190",
+    "produkt": "bundc-t-shirt-e150-women",
     "farbe": "royal-blue",
     "colorSlug": "royal-blue",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#134d8d",
+    "frontDom": "#1b5595",
     "erwartet": "#154E8F",
-    "deltaE": 3,
+    "deltaE": 11,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-t-shirt-e190",
+    "produkt": "bundc-t-shirt-e150-women",
     "farbe": "sport-grey-heather",
     "colorSlug": "sport-grey",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
     "frontDom": "#a6a6a6",
     "erwartet": "#9C9E9F",
@@ -78,111 +84,21 @@
     "dupeMit": null
   },
   {
-    "produkt": "bundc-t-shirt-e190",
+    "produkt": "bundc-t-shirt-e150-women",
     "farbe": "kelly-green",
     "colorSlug": "kelly-green",
     "gefunden": [
       "front",
-      "back"
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#017f5c",
+    "frontDom": "#078d68",
     "erwartet": "#009149",
-    "deltaE": 26,
+    "deltaE": 32,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-t-shirt-e190-women",
-    "farbe": "black",
-    "colorSlug": "black",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#3b3839",
-    "erwartet": "#000000",
-    "deltaE": 99,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e190-women",
-    "farbe": "white",
-    "colorSlug": "white",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#eeeeee",
-    "erwartet": "#FFFFFF",
-    "deltaE": 29,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e190-women",
-    "farbe": "navy",
-    "colorSlug": "navy",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#3a404d",
-    "erwartet": "#1F2532",
-    "deltaE": 47,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e190-women",
-    "farbe": "red",
-    "colorSlug": "red",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#dc253b",
-    "erwartet": "#DB001B",
-    "deltaE": 49,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e190-women",
-    "farbe": "royal-blue",
-    "colorSlug": "royal-blue",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#215b9b",
-    "erwartet": "#154E8F",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e190-women",
-    "farbe": "sport-grey-heather",
-    "colorSlug": "sport-grey",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#a2a2a2",
-    "erwartet": "#9C9E9F",
-    "deltaE": 8,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e190-women",
-    "farbe": "kelly-green",
-    "colorSlug": "kelly-green",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#0d946f",
-    "erwartet": "#009149",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-fit-t-shirt",
+    "produkt": "neutral-men-s-classic-t-shirt",
     "farbe": "black",
     "colorSlug": "black",
     "gefunden": [
@@ -195,274 +111,88 @@
     "dupeMit": null
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
+    "produkt": "neutral-men-s-classic-t-shirt",
     "farbe": "white",
     "colorSlug": "white",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#e6e6e6",
+    "frontDom": "#eeeeee",
     "erwartet": "#FFFFFF",
-    "deltaE": 43,
+    "deltaE": 29,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
+    "produkt": "neutral-men-s-classic-t-shirt",
     "farbe": "navy",
     "colorSlug": "navy",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#1e2337",
+    "frontDom": "#1d2236",
     "erwartet": "#1F2A44",
-    "deltaE": 15,
+    "deltaE": 16,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
+    "produkt": "neutral-men-s-classic-t-shirt",
     "farbe": "red",
     "colorSlug": "red",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#ba1f28",
+    "frontDom": "#bf1e29",
     "erwartet": "#D50032",
-    "deltaE": 42,
+    "deltaE": 38,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
+    "produkt": "neutral-men-s-classic-t-shirt",
     "farbe": "royal",
     "colorSlug": "royal",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#0b416e",
+    "frontDom": "#03427d",
     "erwartet": "#0033A0",
-    "deltaE": 53,
+    "deltaE": 38,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
+    "produkt": "neutral-men-s-classic-t-shirt",
     "farbe": "charcoal",
     "colorSlug": "charcoal",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#43443e",
-    "erwartet": "#53565A",
-    "deltaE": 37,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-fit-t-shirt",
-    "farbe": "bottle-green",
-    "colorSlug": "bottle-green",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#1c432a",
-    "erwartet": "#215732",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-fit-t-shirt",
-    "farbe": "black",
-    "colorSlug": "black",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#292929",
-    "erwartet": "#000000",
-    "deltaE": 71,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-fit-t-shirt",
-    "farbe": "white",
-    "colorSlug": "white",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#e4e4e4",
-    "erwartet": "#FFFFFF",
-    "deltaE": 47,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-fit-t-shirt",
-    "farbe": "navy",
-    "colorSlug": "navy",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#1b1e2d",
-    "erwartet": "#1F2A44",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-fit-t-shirt",
-    "farbe": "red",
-    "colorSlug": "red",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#b81e28",
-    "erwartet": "#D50032",
-    "deltaE": 43,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-fit-t-shirt",
-    "farbe": "royal",
-    "colorSlug": "royal",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#0c3c66",
-    "erwartet": "#0033A0",
-    "deltaE": 60,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-fit-t-shirt",
-    "farbe": "charcoal",
-    "colorSlug": "charcoal",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#43443e",
+    "frontDom": "#40413c",
     "erwartet": "#53565A",
-    "deltaE": 37,
+    "deltaE": 41,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-ladies-fit-t-shirt",
+    "produkt": "neutral-men-s-classic-t-shirt",
     "farbe": "bottle-green",
     "colorSlug": "bottle-green",
     "gefunden": [
-      "front",
-      "back"
+      "front"
     ],
-    "frontDom": "#1a4829",
+    "frontDom": "#1b3f27",
     "erwartet": "#215732",
-    "deltaE": 19,
+    "deltaE": 27,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-unisex-regular-t-shirt",
+    "produkt": "neutral-ladies-classic-t-shirt",
     "farbe": "black",
     "colorSlug": "black",
     "gefunden": [
       "front",
       "back"
-    ],
-    "frontDom": "#1b1b1d",
-    "erwartet": "#000000",
-    "deltaE": 48,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-regular-t-shirt",
-    "farbe": "white",
-    "colorSlug": "white",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#f1f1f3",
-    "erwartet": "#FFFFFF",
-    "deltaE": 23,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-regular-t-shirt",
-    "farbe": "navy",
-    "colorSlug": "navy",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#1a1f30",
-    "erwartet": "#1F2A44",
-    "deltaE": 23,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-regular-t-shirt",
-    "farbe": "red",
-    "colorSlug": "red",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#bf252b",
-    "erwartet": "#D50032",
-    "deltaE": 44,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-regular-t-shirt",
-    "farbe": "royal",
-    "colorSlug": "royal",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#0c416f",
-    "erwartet": "#0033A0",
-    "deltaE": 52,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-regular-t-shirt",
-    "farbe": "ash-grey",
-    "colorSlug": "ash-grey",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#d2d3d3",
-    "erwartet": "#D9D9DB",
-    "deltaE": 12,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-regular-t-shirt",
-    "farbe": "bottle-green",
-    "colorSlug": "bottle-green",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#122a17",
-    "erwartet": "#215732",
-    "deltaE": 55,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "black",
-    "colorSlug": "black",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
     ],
     "frontDom": "#252525",
     "erwartet": "#000000",
@@ -470,13 +200,12 @@
     "dupeMit": null
   },
   {
-    "produkt": "neutral-unisex-performance-t-shirt",
+    "produkt": "neutral-ladies-classic-t-shirt",
     "farbe": "white",
     "colorSlug": "white",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
     "frontDom": "#f0f0f0",
     "erwartet": "#FFFFFF",
@@ -484,244 +213,156 @@
     "dupeMit": null
   },
   {
-    "produkt": "neutral-unisex-performance-t-shirt",
+    "produkt": "neutral-ladies-classic-t-shirt",
     "farbe": "navy",
     "colorSlug": "navy",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#1e243e",
+    "frontDom": "#1d2134",
     "erwartet": "#1F2A44",
-    "deltaE": 9,
+    "deltaE": 18,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-unisex-performance-t-shirt",
+    "produkt": "neutral-ladies-classic-t-shirt",
     "farbe": "red",
     "colorSlug": "red",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#b91726",
+    "frontDom": "#c0272d",
     "erwartet": "#D50032",
-    "deltaE": 38,
+    "deltaE": 45,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-unisex-performance-t-shirt",
+    "produkt": "neutral-ladies-classic-t-shirt",
     "farbe": "royal",
     "colorSlug": "royal",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#1c4998",
+    "frontDom": "#0a3e6c",
     "erwartet": "#0033A0",
+    "deltaE": 54,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-ladies-classic-t-shirt",
+    "farbe": "charcoal",
+    "colorSlug": "charcoal",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#43443f",
+    "erwartet": "#53565A",
     "deltaE": 36,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "charcoal",
-    "colorSlug": "charcoal",
+    "produkt": "neutral-ladies-classic-t-shirt",
+    "farbe": "bottle-green",
+    "colorSlug": "bottle-green",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#1a3d25",
+    "erwartet": "#215732",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "fruit-of-the-loom-classic-hooded-sweat",
+    "farbe": "black",
+    "colorSlug": "black",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#4b4b4b",
-    "erwartet": "#53565A",
+    "frontDom": "#393637",
+    "erwartet": "#120F14",
+    "deltaE": 65,
+    "dupeMit": null
+  },
+  {
+    "produkt": "fruit-of-the-loom-classic-hooded-sweat",
+    "farbe": "white",
+    "colorSlug": "white",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f3f3f5",
+    "erwartet": "#FFFFFF",
     "deltaE": 20,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "bottle-green",
-    "colorSlug": "bottle-green",
-    "gefunden": [],
-    "frontDom": "",
-    "erwartet": "#215732",
-    "deltaE": null,
+    "produkt": "fruit-of-the-loom-classic-hooded-sweat",
+    "farbe": "navy",
+    "colorSlug": "heather-navy",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#50526e",
+    "erwartet": "#051734",
+    "deltaE": 112,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "black",
-    "colorSlug": "black",
+    "produkt": "fruit-of-the-loom-classic-hooded-sweat",
+    "farbe": "heather-red",
+    "colorSlug": "red",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#1e1e20",
-    "erwartet": "#000000",
+    "frontDom": "#e13444",
+    "erwartet": "#B04A5A",
+    "deltaE": 58,
+    "dupeMit": null
+  },
+  {
+    "produkt": "fruit-of-the-loom-classic-hooded-sweat",
+    "farbe": "royal-blue",
+    "colorSlug": "royal-blue",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#3662b1",
+    "erwartet": "#004D9F",
+    "deltaE": 61,
+    "dupeMit": null
+  },
+  {
+    "produkt": "fruit-of-the-loom-classic-hooded-sweat",
+    "farbe": "heather-grey",
+    "colorSlug": "heather-grey",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#cccbd1",
+    "erwartet": "#D4D9DC",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "fruit-of-the-loom-classic-hooded-sweat",
+    "farbe": "bottle-green",
+    "colorSlug": "bottle-green",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#425448",
+    "erwartet": "#1E4026",
     "deltaE": 53,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "white",
-    "colorSlug": "white",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#f0f0f1",
-    "erwartet": "#FFFFFF",
-    "deltaE": 25,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "navy",
-    "colorSlug": "navy",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#171c2e",
-    "erwartet": "#1F2A44",
-    "deltaE": 27,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "red",
-    "colorSlug": "red",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#b61a25",
-    "erwartet": "#D50032",
-    "deltaE": 42,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "royal",
-    "colorSlug": "royal",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#0e3d68",
-    "erwartet": "#0033A0",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "charcoal",
-    "colorSlug": "charcoal-2",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#4d4d4e",
-    "erwartet": "#53565A",
-    "deltaE": 16,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "bottle-green",
-    "colorSlug": "bottle-green",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#183e27",
-    "erwartet": "#215732",
-    "deltaE": 29,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "black",
-    "colorSlug": "black",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#292929",
-    "erwartet": "#000000",
-    "deltaE": 71,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "white",
-    "colorSlug": "white",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f2f4f7",
-    "erwartet": "#FFFFFF",
-    "deltaE": 19,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "navy",
-    "colorSlug": "navy",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#1f2230",
-    "erwartet": "#1F2A44",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "red",
-    "colorSlug": "red",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b1212c",
-    "erwartet": "#D50032",
-    "deltaE": 49,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "royal",
-    "colorSlug": "royal",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#0f3e68",
-    "erwartet": "#0033A0",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "charcoal",
-    "colorSlug": "charcoal",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#474843",
-    "erwartet": "#53565A",
-    "deltaE": 29,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "bottle-green",
-    "colorSlug": "bottle-green",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#1c442a",
-    "erwartet": "#215732",
-    "deltaE": 21,
     "dupeMit": null
   }
 ]

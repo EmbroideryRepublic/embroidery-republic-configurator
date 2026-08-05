@@ -1,0 +1,108 @@
+[
+  {
+    "produkt": "bundc-t-shirt-e150",
+    "farbe": "black",
+    "slug": "black",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "fehlend": [],
+    "frontDom": "#363334",
+    "erwartet": "#000000",
+    "deltaE": 91,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150",
+    "farbe": "white",
+    "slug": "white",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "fehlend": [
+      "sleeve-left"
+    ],
+    "frontDom": "#f3f3f3",
+    "erwartet": "#FFFFFF",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150",
+    "farbe": "navy",
+    "slug": "navy",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "fehlend": [],
+    "frontDom": "#3d3f51",
+    "erwartet": "#1F2532",
+    "deltaE": 50,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150",
+    "farbe": "red",
+    "slug": "red",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "fehlend": [],
+    "frontDom": "#cd0d25",
+    "erwartet": "#DB001B",
+    "deltaE": 22,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150",
+    "farbe": "royal-blue",
+    "slug": "royal-blue",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "fehlend": [],
+    "frontDom": "#124c8c",
+    "erwartet": "#154E8F",
+    "deltaE": 5,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150",
+    "farbe": "sport-grey-heather",
+    "slug": "sport-grey",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "fehlend": [],
+    "frontDom": "#a4a4a4",
+    "erwartet": "#9C9E9F",
+    "deltaE": 11,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150",
+    "farbe": "bottle-green",
+    "slug": "bottle-green",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "fehlend": [],
+    "frontDom": "#3e5a45",
+    "erwartet": "#004413",
+    "deltaE": 83,
+    "dupeMit": null
+  }
+]

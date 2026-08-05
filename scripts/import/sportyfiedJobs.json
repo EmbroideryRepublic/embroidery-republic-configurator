@@ -1,0 +1,14 @@
+[
+  {
+    "productId": "bundc-t-shirt-e150", "sku": "bc-tshirt-tu01t",
+    "colors": [
+      { "id": "black", "slug": "black", "erwarteterHex": "#000000" },
+      { "id": "white", "slug": "white", "erwarteterHex": "#FFFFFF" },
+      { "id": "navy", "slug": "navy", "erwarteterHex": "#1F2532" },
+      { "id": "red", "slug": "red", "erwarteterHex": "#DB001B" },
+      { "id": "royal-blue", "slug": "royal-blue", "erwarteterHex": "#154E8F" },
+      { "id": "sport-grey-heather", "slug": "sport-grey", "erwarteterHex": "#9C9E9F" },
+      { "id": "bottle-green", "slug": "bottle-green", "erwarteterHex": "#004413" }
+    ]
+  }
+]

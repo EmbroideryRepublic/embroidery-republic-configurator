@@ -60,7 +60,6 @@ export const FARBGRUPPEN_GENERIERT: Record<string, Farbgruppe> = {
   "009149": "gruen",
   "01509D": "blau",
   "051733": "schwarz",
-  "101145": "blau",
   "1C9A2C": "gruen",
   "1F2532": "blau",
   "215732": "gruen",

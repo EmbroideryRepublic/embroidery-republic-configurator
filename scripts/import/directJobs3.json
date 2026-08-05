@@ -1,0 +1,464 @@
+[
+ {
+  "productId": "russell-russell-classic-t",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_white_2.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#1F2A44",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_french_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_french_navy_2.webp"
+   },
+   {
+    "id": "classic-red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_classic_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_classic_red_2.webp"
+   },
+   {
+    "id": "bright-royal",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_bright_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_bright_royal_2.webp"
+   },
+   {
+    "id": "convoy-grey",
+    "erwarteterHex": "#7A7C7F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_convoy_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_convoy_grey_2.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#004B34",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_bottle_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_bottle_green_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "russell-classic-heavyweight-t-shirt",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_white_3.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#1F2A44",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_french_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_french_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_french_navy_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "russell-strapazierfaehiges-poloshirt-599",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_white_2.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#1F2A44",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_french_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_french_navy_2.webp"
+   },
+   {
+    "id": "classic-red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_classic_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_classic_red_2.webp"
+   },
+   {
+    "id": "bright-royal",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_bright_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_bright_royal_2.webp"
+   },
+   {
+    "id": "convoy-grey",
+    "erwarteterHex": "#7A7C7F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_convoy_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_convoy_grey_2.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#004B34",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_bottle_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_bottle_green_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "russell-men-s-ultimate-cotton-polo",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_white_2.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#1F2A44",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_french_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_french_navy_2.webp"
+   },
+   {
+    "id": "classic-red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_classic_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_classic_red_2.webp"
+   },
+   {
+    "id": "bright-royal",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_bright_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_bright_royal_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "russell-men-s-classic-cotton-polo",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_white_2.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#1F2A44",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_french_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_french_navy_2.webp"
+   },
+   {
+    "id": "classic-red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_classic_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_classic_red_2.webp"
+   },
+   {
+    "id": "bright-royal",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_bright_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_bright_royal_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "fruit-of-the-loom-premium-hooded-sweat",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_black_2.webp"
+   },
+   {
+    "id": "deep-navy",
+    "erwarteterHex": "#212B3D",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_deep_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_deep_navy_2.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_red_2.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_royal_blue.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_royal_blue_2.webp"
+   },
+   {
+    "id": "heather-grey",
+    "erwarteterHex": "#9EA1A3",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_heather_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_heather_grey_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "fruit-of-the-loom-lightweight-hooded-sweat",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_black_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_black_3.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_white_2.webp"
+   },
+   {
+    "id": "deep-navy",
+    "erwarteterHex": "#212B3D",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_deep_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_deep_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_deep_navy_3.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_red_3.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_royal_blue.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_royal_blue_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_royal_blue_3.webp"
+   },
+   {
+    "id": "heather-grey",
+    "erwarteterHex": "#9EA1A3",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_heather_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_heather_grey_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_heather_grey_3.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#004B34",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_bottle_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_bottle_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_bottle_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_white_2.webp"
+   },
+   {
+    "id": "deep-navy",
+    "erwarteterHex": "#212B3D",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_deep_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_deep_navy_2.webp"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_red_2.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_royal_blue.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_royal_blue_2.webp"
+   },
+   {
+    "id": "heather-grey",
+    "erwarteterHex": "#9EA1A3",
+    "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_athletic_heather.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_athletic_heather_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "russell-authentic-hooded-sweat",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_white_2.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#1F2A44",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_french_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_french_navy_2.webp"
+   },
+   {
+    "id": "classic-red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_classic_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_classic_red_2.webp"
+   },
+   {
+    "id": "bright-royal",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bright_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bright_royal_2.webp"
+   },
+   {
+    "id": "convoy-grey",
+    "erwarteterHex": "#7A7C7F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_convoy_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_convoy_grey_2.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#004B34",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bottle_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bottle_green_2.webp"
+   }
+  ]
+ },
+ {
+  "productId": "russell-hooded-sweatshirt",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_black_2.webp"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_white.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_white_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_white_3.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#1F2A44",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_french_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_french_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_french_navy_3.webp"
+   },
+   {
+    "id": "classic-red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_classic_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_classic_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_classic_red_3.webp"
+   },
+   {
+    "id": "bright-royal",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bright_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bright_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bright_royal_3.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#004B34",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bottle_green.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bottle_green_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bottle_green_3.webp"
+   }
+  ]
+ },
+ {
+  "productId": "russell-outdoor-fleece-jacke",
+  "quelle": "groener-schulze",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_black.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_black_2.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#1F2A44",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_french_navy.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_french_navy_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_french_navy_3.webp"
+   },
+   {
+    "id": "classic-red",
+    "erwarteterHex": "#C4122E",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_classic_red.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_classic_red_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_classic_red_3.webp"
+   },
+   {
+    "id": "bright-royal",
+    "erwarteterHex": "#0057B8",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_bright_royal.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_bright_royal_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_bright_royal_3.webp"
+   },
+   {
+    "id": "convoy-grey",
+    "erwarteterHex": "#7A7C7F",
+    "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_convoy_grey.webp",
+    "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_convoy_grey_2.webp",
+    "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_convoy_grey_3.webp"
+   }
+  ]
+ }
+]

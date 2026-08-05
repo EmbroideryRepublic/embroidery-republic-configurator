@@ -7037,21 +7037,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-russell-classic-t-black/front.webp",
+        "back": "/products/russell-russell-classic-t-black/back.webp",
+        "sleeve_left": "/products/russell-russell-classic-t-black/front.webp",
+        "sleeve_right": "/products/russell-russell-classic-t-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-russell-classic-t-bottle-green/front.webp",
+        "back": "/products/russell-russell-classic-t-bottle-green/back.webp",
+        "sleeve_left": "/products/russell-russell-classic-t-bottle-green/front.webp",
+        "sleeve_right": "/products/russell-russell-classic-t-bottle-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-red": {
       "views": {
@@ -7064,12 +7064,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bright-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-russell-classic-t-bright-royal/front.webp",
+        "back": "/products/russell-russell-classic-t-bright-royal/back.webp",
+        "sleeve_left": "/products/russell-russell-classic-t-bright-royal/front.webp",
+        "sleeve_right": "/products/russell-russell-classic-t-bright-royal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
@@ -7082,12 +7082,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "classic-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-russell-classic-t-classic-red/front.webp",
+        "back": "/products/russell-russell-classic-t-classic-red/back.webp",
+        "sleeve_left": "/products/russell-russell-classic-t-classic-red/front.webp",
+        "sleeve_right": "/products/russell-russell-classic-t-classic-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "convoy-grey-solid": {
       "views": {
@@ -7100,12 +7100,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-russell-classic-t-french-navy/front.webp",
+        "back": "/products/russell-russell-classic-t-french-navy/back.webp",
+        "sleeve_left": "/products/russell-russell-classic-t-french-navy/front.webp",
+        "sleeve_right": "/products/russell-russell-classic-t-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-oxford-heather": {
       "views": {
@@ -7136,12 +7136,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-russell-classic-t-white/front.webp",
+        "back": "/products/russell-russell-classic-t-white/back.webp",
+        "sleeve_left": "/products/russell-russell-classic-t-white/front.webp",
+        "sleeve_right": "/products/russell-russell-classic-t-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow": {
       "views": {
@@ -7210,12 +7210,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-classic-heavyweight-t-shirt": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-classic-heavyweight-t-shirt-black/front.webp",
+        "back": "/products/russell-classic-heavyweight-t-shirt-black/back.webp",
+        "sleeve_left": "/products/russell-classic-heavyweight-t-shirt-black/sleeve-left.webp",
+        "sleeve_right": "/products/russell-classic-heavyweight-t-shirt-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-royal": {
       "views": {
@@ -7237,21 +7237,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-classic-heavyweight-t-shirt-french-navy/front.webp",
+        "back": "/products/russell-classic-heavyweight-t-shirt-french-navy/back.webp",
+        "sleeve_left": "/products/russell-classic-heavyweight-t-shirt-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/russell-classic-heavyweight-t-shirt-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-classic-heavyweight-t-shirt-white/front.webp",
+        "back": "/products/russell-classic-heavyweight-t-shirt-white/back.webp",
+        "sleeve_left": "/products/russell-classic-heavyweight-t-shirt-white/sleeve-left.webp",
+        "sleeve_right": "/products/russell-classic-heavyweight-t-shirt-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "tan": {
       "views": {
@@ -13068,21 +13068,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-strapazierfaehiges-poloshirt-599": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-strapazierfaehiges-poloshirt-599-black/front.webp",
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-black/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-black/front.webp",
+        "sleeve_right": "/products/russell-strapazierfaehiges-poloshirt-599-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/front.webp",
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/front.webp",
+        "sleeve_right": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-red": {
       "views": {
@@ -13095,12 +13095,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bright-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/front.webp",
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/front.webp",
+        "sleeve_right": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
@@ -13113,12 +13113,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "classic-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/front.webp",
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/front.webp",
+        "sleeve_right": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "convoy-grey-solid": {
       "views": {
@@ -13131,12 +13131,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/front.webp",
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/front.webp",
+        "sleeve_right": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-oxford-heather": {
       "views": {
@@ -13158,12 +13158,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-strapazierfaehiges-poloshirt-599-white/front.webp",
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-white/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-white/front.webp",
+        "sleeve_right": "/products/russell-strapazierfaehiges-poloshirt-599-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "russell-men-s-ultimate-cotton-polo": {
@@ -13178,21 +13178,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-ultimate-cotton-polo-black/front.webp",
+        "back": "/products/russell-men-s-ultimate-cotton-polo-black/back.webp",
+        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-black/front.webp",
+        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/front.webp",
+        "back": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/back.webp",
+        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/front.webp",
+        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
@@ -13205,21 +13205,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "classic-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-ultimate-cotton-polo-classic-red/front.webp",
+        "back": "/products/russell-men-s-ultimate-cotton-polo-classic-red/back.webp",
+        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-classic-red/front.webp",
+        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-classic-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-ultimate-cotton-polo-french-navy/front.webp",
+        "back": "/products/russell-men-s-ultimate-cotton-polo-french-navy/back.webp",
+        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-french-navy/front.webp",
+        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sky": {
       "views": {
@@ -13241,12 +13241,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-ultimate-cotton-polo-white/front.webp",
+        "back": "/products/russell-men-s-ultimate-cotton-polo-white/back.webp",
+        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-white/front.webp",
+        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "00461c": {
       "views": {
@@ -13261,12 +13261,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-men-s-classic-cotton-polo": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-classic-cotton-polo-black/front.webp",
+        "back": "/products/russell-men-s-classic-cotton-polo-black/back.webp",
+        "sleeve_left": "/products/russell-men-s-classic-cotton-polo-black/front.webp",
+        "sleeve_right": "/products/russell-men-s-classic-cotton-polo-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
@@ -13279,30 +13279,30 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bright-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-classic-cotton-polo-bright-royal/front.webp",
+        "back": "/products/russell-men-s-classic-cotton-polo-bright-royal/back.webp",
+        "sleeve_left": "/products/russell-men-s-classic-cotton-polo-bright-royal/front.webp",
+        "sleeve_right": "/products/russell-men-s-classic-cotton-polo-bright-royal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "classic-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-classic-cotton-polo-classic-red/front.webp",
+        "back": "/products/russell-men-s-classic-cotton-polo-classic-red/back.webp",
+        "sleeve_left": "/products/russell-men-s-classic-cotton-polo-classic-red/front.webp",
+        "sleeve_right": "/products/russell-men-s-classic-cotton-polo-classic-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-classic-cotton-polo-french-navy/front.webp",
+        "back": "/products/russell-men-s-classic-cotton-polo-french-navy/back.webp",
+        "sleeve_left": "/products/russell-men-s-classic-cotton-polo-french-navy/front.webp",
+        "sleeve_right": "/products/russell-men-s-classic-cotton-polo-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "fuchsia": {
       "views": {
@@ -13324,12 +13324,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-men-s-classic-cotton-polo-white/front.webp",
+        "back": "/products/russell-men-s-classic-cotton-polo-white/back.webp",
+        "sleeve_left": "/products/russell-men-s-classic-cotton-polo-white/front.webp",
+        "sleeve_right": "/products/russell-men-s-classic-cotton-polo-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "russell-poloshirt-6535": {
@@ -15353,12 +15353,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "fruit-of-the-loom-premium-hooded-sweat": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-premium-hooded-sweat-black/front.webp",
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-black/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-black/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-premium-hooded-sweat-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "charcoal-solid": {
       "views": {
@@ -15371,21 +15371,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "deep-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/front.webp",
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "heather-grey": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/front.webp",
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
@@ -15407,21 +15407,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-premium-hooded-sweat-red/front.webp",
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-red/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-red/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-premium-hooded-sweat-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/front.webp",
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "fruit-of-the-loom-lightweight-hooded-sweat": {
@@ -15436,21 +15436,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-lightweight-hooded-sweat-black/front.webp",
+        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-black/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-lightweight-hooded-sweat-black/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-lightweight-hooded-sweat-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-lightweight-hooded-sweat-bottle-green/front.webp",
+        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-bottle-green/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-lightweight-hooded-sweat-bottle-green/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-lightweight-hooded-sweat-bottle-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
@@ -15463,21 +15463,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "deep-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-lightweight-hooded-sweat-deep-navy/front.webp",
+        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-deep-navy/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-lightweight-hooded-sweat-deep-navy/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-lightweight-hooded-sweat-deep-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "heather-grey": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-lightweight-hooded-sweat-heather-grey/front.webp",
+        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-heather-grey/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-lightweight-hooded-sweat-heather-grey/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-lightweight-hooded-sweat-heather-grey/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "kelly-green": {
       "views": {
@@ -15508,50 +15508,50 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-lightweight-hooded-sweat-red/front.webp",
+        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-red/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-lightweight-hooded-sweat-red/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-lightweight-hooded-sweat-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-lightweight-hooded-sweat-royal-blue/front.webp",
+        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-royal-blue/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-lightweight-hooded-sweat-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-lightweight-hooded-sweat-royal-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/front.webp",
+        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "fruit-of-the-loom-iconic-premium-hooded-sweat": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "athletic-heather": {
       "views": {
@@ -15573,21 +15573,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "deep-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "classic-olive": {
       "views": {
@@ -15618,12 +15618,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/front.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "fruit-of-the-loom-iconic-250-hooded-sweat": {
@@ -18039,39 +18039,39 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-authentic-hooded-sweat-black/front.webp",
+        "back": "/products/russell-authentic-hooded-sweat-black/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-black/front.webp",
+        "sleeve_right": "/products/russell-authentic-hooded-sweat-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-authentic-hooded-sweat-bright-royal/front.webp",
+        "back": "/products/russell-authentic-hooded-sweat-bright-royal/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-bright-royal/front.webp",
+        "sleeve_right": "/products/russell-authentic-hooded-sweat-bright-royal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "classic-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-authentic-hooded-sweat-classic-red/front.webp",
+        "back": "/products/russell-authentic-hooded-sweat-classic-red/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-classic-red/front.webp",
+        "sleeve_right": "/products/russell-authentic-hooded-sweat-classic-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-authentic-hooded-sweat-french-navy/front.webp",
+        "back": "/products/russell-authentic-hooded-sweat-french-navy/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-french-navy/front.webp",
+        "sleeve_right": "/products/russell-authentic-hooded-sweat-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "fuchsia": {
       "views": {
@@ -18102,12 +18102,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-authentic-hooded-sweat-bottle-green/front.webp",
+        "back": "/products/russell-authentic-hooded-sweat-bottle-green/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-bottle-green/front.webp",
+        "sleeve_right": "/products/russell-authentic-hooded-sweat-bottle-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "convoy-grey-solid": {
       "views": {
@@ -18295,48 +18295,48 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-hooded-sweatshirt": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-black/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-black/back.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-black/front.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-bottle-green/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-bottle-green/back.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-bottle-green/sleeve-left.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-bottle-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-bright-royal/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-bright-royal/back.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-bright-royal/sleeve-left.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-bright-royal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "classic-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-classic-red/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-classic-red/back.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-classic-red/sleeve-left.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-classic-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-french-navy/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-french-navy/back.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "fuchsia": {
       "views": {
@@ -18385,12 +18385,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-white/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-white/back.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-white/sleeve-left.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow": {
       "views": {
@@ -20274,10 +20274,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-outdoor-fleece-jacke": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-outdoor-fleece-jacke-black/front.webp",
+        "back": "/products/russell-outdoor-fleece-jacke-black/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
@@ -20288,10 +20288,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bright-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-outdoor-fleece-jacke-bright-royal/front.webp",
+        "back": "/products/russell-outdoor-fleece-jacke-bright-royal/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
@@ -20302,10 +20302,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "classic-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-outdoor-fleece-jacke-classic-red/front.webp",
+        "back": "/products/russell-outdoor-fleece-jacke-classic-red/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "convoy-grey-solid": {
       "views": {
@@ -20316,10 +20316,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-outdoor-fleece-jacke-french-navy/front.webp",
+        "back": "/products/russell-outdoor-fleece-jacke-french-navy/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "jamesnicholson-men-s-fleece-jacket-jn": {

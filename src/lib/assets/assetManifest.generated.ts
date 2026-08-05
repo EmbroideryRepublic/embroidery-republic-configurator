@@ -4860,30 +4860,30 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "bundc-e220-t": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-e220-t-black/front.webp",
+        "back": "/products/bundc-e220-t-black/back.webp",
+        "sleeve_left": "/products/bundc-e220-t-black/front.webp",
+        "sleeve_right": "/products/bundc-e220-t-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-e220-t-white/front.webp",
+        "back": "/products/bundc-e220-t-white/back.webp",
+        "sleeve_left": "/products/bundc-e220-t-white/front.webp",
+        "sleeve_right": "/products/bundc-e220-t-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-e220-t-navy/front.webp",
+        "back": "/products/bundc-e220-t-navy/back.webp",
+        "sleeve_left": "/products/bundc-e220-t-navy/front.webp",
+        "sleeve_right": "/products/bundc-e220-t-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
@@ -4914,12 +4914,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "lake-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-e220-t-lake-blue/front.webp",
+        "back": "/products/bundc-e220-t-lake-blue/back.webp",
+        "sleeve_left": "/products/bundc-e220-t-lake-blue/front.webp",
+        "sleeve_right": "/products/bundc-e220-t-lake-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "mastic": {
       "views": {
@@ -4932,12 +4932,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "amalfi-teal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-e220-t-amalfi-teal/front.webp",
+        "back": "/products/bundc-e220-t-amalfi-teal/back.webp",
+        "sleeve_left": "/products/bundc-e220-t-amalfi-teal/front.webp",
+        "sleeve_right": "/products/bundc-e220-t-amalfi-teal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "orchid-pink": {
       "views": {
@@ -5073,12 +5073,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-t-men-black/front.webp",
+        "back": "/products/bundc-inspire-t-men-black/back.webp",
+        "sleeve_left": "/products/bundc-inspire-t-men-black/front.webp",
+        "sleeve_right": "/products/bundc-inspire-t-men-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
@@ -5109,12 +5109,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "khaki": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-t-men-khaki/front.webp",
+        "back": "/products/bundc-inspire-t-men-khaki/back.webp",
+        "sleeve_left": "/products/bundc-inspire-t-men-khaki/front.webp",
+        "sleeve_right": "/products/bundc-inspire-t-men-khaki/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-grey": {
       "views": {
@@ -5127,12 +5127,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-t-men-navy/front.webp",
+        "back": "/products/bundc-inspire-t-men-navy/back.webp",
+        "sleeve_left": "/products/bundc-inspire-t-men-navy/front.webp",
+        "sleeve_right": "/products/bundc-inspire-t-men-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "orange": {
       "views": {
@@ -5154,39 +5154,39 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-t-men-red/front.webp",
+        "back": "/products/bundc-inspire-t-men-red/back.webp",
+        "sleeve_left": "/products/bundc-inspire-t-men-red/front.webp",
+        "sleeve_right": "/products/bundc-inspire-t-men-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-t-men-royal-blue/front.webp",
+        "back": "/products/bundc-inspire-t-men-royal-blue/back.webp",
+        "sleeve_left": "/products/bundc-inspire-t-men-royal-blue/front.webp",
+        "sleeve_right": "/products/bundc-inspire-t-men-royal-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-t-men-white/front.webp",
+        "back": "/products/bundc-inspire-t-men-white/back.webp",
+        "sleeve_left": "/products/bundc-inspire-t-men-white/front.webp",
+        "sleeve_right": "/products/bundc-inspire-t-men-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sport-grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-t-men-sport-grey-heather/front.webp",
+        "back": "/products/bundc-inspire-t-men-sport-grey-heather/back.webp",
+        "sleeve_left": "/products/bundc-inspire-t-men-sport-grey-heather/front.webp",
+        "sleeve_right": "/products/bundc-inspire-t-men-sport-grey-heather/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "millennial-khaki": {
       "views": {
@@ -6718,12 +6718,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-white/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-white/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-white/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "stone": {
       "views": {
@@ -6754,12 +6754,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/front.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "aqua": {
       "views": {
@@ -6772,12 +6772,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/front.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "turquoise": {
       "views": {
@@ -6790,12 +6790,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-navy/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-navy/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-navy/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "grey-heather": {
       "views": {
@@ -6817,21 +6817,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "carbon": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/front.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-black/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-black/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-black/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "brown": {
       "views": {
@@ -6853,12 +6853,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "dark-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/front.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "jamesnicholson-ladies-bio-workwear-t-shirt": {

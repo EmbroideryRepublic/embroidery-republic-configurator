@@ -1,18 +1,78 @@
 {
-  "gildan-ultra-cotton-t-shirt": { "quelle": "teamshirts.com (Spreadshirt-Medienserver)", "hinweis": "front+back" },
-  "gildan-heavy-blend-hooded-sweatshirt": { "quelle": "teamshirts.com (Spreadshirt-Medienserver)", "hinweis": "front+back+2 Ärmel" },
-  "gildan-softstyle-midweight-sweat-adult-hoodie": { "quelle": "teamshirts.de (Spreadshirt-Medienserver, sprd-eu)", "hinweis": "front+back" },
-  "bundc-t-shirt-e150": { "quelle": "sportyfied.com", "hinweis": "front+back+side" },
-  "bundc-t-shirt-e150-women": { "quelle": "sportyfied.com", "hinweis": "front+back+side" },
-  "bundc-t-shirt-e190": { "quelle": "sportyfied.com", "hinweis": "front+back" },
-  "bundc-t-shirt-e190-women": { "quelle": "sportyfied.com", "hinweis": "front+back" },
-  "neutral-men-s-fit-t-shirt": { "quelle": "sportyfied.com", "hinweis": "front+back" },
-  "neutral-ladies-fit-t-shirt": { "quelle": "sportyfied.com", "hinweis": "front+back" },
-  "neutral-unisex-regular-t-shirt": { "quelle": "sportyfied.com", "hinweis": "front+back+side" },
-  "neutral-unisex-performance-t-shirt": { "quelle": "sportyfied.com", "hinweis": "front+back+side" },
-  "neutral-men-s-long-sleeve-t-shirt": { "quelle": "sportyfied.com", "hinweis": "front+back" },
-  "neutral-ladies-long-sleeve-t-shirt": { "quelle": "sportyfied.com", "hinweis": "meist nur front (Sportyfied ohne Rückansicht)" },
-  "neutral-men-s-classic-t-shirt": { "quelle": "sportyfied.com", "hinweis": "front+back" },
-  "neutral-ladies-classic-t-shirt": { "quelle": "sportyfied.com", "hinweis": "front+back" },
-  "fruit-of-the-loom-classic-hooded-sweat": { "quelle": "sportyfied.com", "hinweis": "front+back" }
+  "gildan-ultra-cotton-t-shirt": {
+    "quelle": "teamshirts.com (Spreadshirt-Medienserver)",
+    "hinweis": "front+back"
+  },
+  "gildan-heavy-blend-hooded-sweatshirt": {
+    "quelle": "teamshirts.com (Spreadshirt-Medienserver)",
+    "hinweis": "front+back+2 Ärmel"
+  },
+  "gildan-softstyle-midweight-sweat-adult-hoodie": {
+    "quelle": "teamshirts.de (Spreadshirt-Medienserver, sprd-eu)",
+    "hinweis": "front+back"
+  },
+  "bundc-t-shirt-e150": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back+side"
+  },
+  "bundc-t-shirt-e150-women": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back+side"
+  },
+  "bundc-t-shirt-e190": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back"
+  },
+  "bundc-t-shirt-e190-women": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back"
+  },
+  "neutral-men-s-fit-t-shirt": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back"
+  },
+  "neutral-ladies-fit-t-shirt": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back"
+  },
+  "neutral-unisex-regular-t-shirt": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back+side"
+  },
+  "neutral-unisex-performance-t-shirt": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back+side"
+  },
+  "neutral-men-s-long-sleeve-t-shirt": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back"
+  },
+  "neutral-ladies-long-sleeve-t-shirt": {
+    "quelle": "sportyfied.com",
+    "hinweis": "meist nur front (Sportyfied ohne Rückansicht)"
+  },
+  "neutral-men-s-classic-t-shirt": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back"
+  },
+  "neutral-ladies-classic-t-shirt": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back"
+  },
+  "fruit-of-the-loom-classic-hooded-sweat": {
+    "quelle": "sportyfied.com",
+    "hinweis": "front+back"
+  },
+  "bundc-e220-t": {
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+    "hinweis": "front+back"
+  },
+  "bundc-inspire-t-men": {
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+    "hinweis": "front+back"
+  },
+  "jamesnicholson-mens-bio-workwear-t-shirt": {
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+    "hinweis": "front+back"
+  }
 }

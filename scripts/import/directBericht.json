@@ -1,0 +1,252 @@
+[
+  {
+    "produkt": "bundc-e220-t",
+    "farbe": "black",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#292727",
+    "erwartet": "#000000",
+    "deltaE": 69,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-e220-t",
+    "farbe": "white",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ededed",
+    "erwartet": "#FFFFFF",
+    "deltaE": 31,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-e220-t",
+    "farbe": "navy",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#1f2633",
+    "erwartet": "#1F2532",
+    "deltaE": 1,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-e220-t",
+    "farbe": "lake-blue",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#5585c7",
+    "erwartet": "#3F82B4",
+    "deltaE": 29,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-e220-t",
+    "farbe": "amalfi-teal",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#3c4b4f",
+    "erwartet": "#334C50",
+    "deltaE": 9,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "black",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#262223",
+    "erwartet": "#000000",
+    "deltaE": 62,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "white",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ededed",
+    "erwartet": "#FFFFFF",
+    "deltaE": 31,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "navy",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#1b212f",
+    "erwartet": "#1F2532",
+    "deltaE": 6,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "red",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#cd0826",
+    "erwartet": "#DB001B",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "royal-blue",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#114b8c",
+    "erwartet": "#154E8F",
+    "deltaE": 6,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "sport-grey-heather",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a2a2a2",
+    "erwartet": "#9C9E9F",
+    "deltaE": 8,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "khaki",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#544a41",
+    "erwartet": "#4C4B30",
+    "deltaE": 19,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "farbe": "black",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2f2f2f",
+    "erwartet": "#1B1B1F",
+    "deltaE": 32,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "farbe": "white",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e3e3e3",
+    "erwartet": "#FFFFFF",
+    "deltaE": 48,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "farbe": "navy",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3f455a",
+    "erwartet": "#003254",
+    "deltaE": 66,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "farbe": "red",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#b31026",
+    "erwartet": "#C80A25",
+    "deltaE": 22,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "farbe": "royal",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#3b5ea3",
+    "erwartet": "#004985",
+    "deltaE": 69,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "farbe": "carbon",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#464e57",
+    "erwartet": "#646F79",
+    "deltaE": 56,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "farbe": "dark-green",
+    "quelle": "groener-schulze",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#44624f",
+    "erwartet": "#1B5126",
+    "deltaE": 60,
+    "dupeMit": null
+  }
+]

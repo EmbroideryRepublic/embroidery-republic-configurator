@@ -1,34 +1,42 @@
 [
   {
-    "productId": "gildan-ultra-cotton-t-shirt", "productType": 3220, "namespace": "sprd-na",
+    "productId": "russell-mens-pure-organic-heavy-tee",
+    "productType": 1561,
+    "namespace": "sprd-eu",
     "colors": [
-      { "id": "black", "appearanceId": 2, "erwarteterHex": "#25282B" },
-      { "id": "white", "appearanceId": 1, "erwarteterHex": "#FFFFFF" },
-      { "id": "navy", "appearanceId": 348, "erwarteterHex": "#263147" },
-      { "id": "red", "appearanceId": 5, "erwarteterHex": "#B1302A" },
-      { "id": "royal", "appearanceId": 17, "erwarteterHex": "#224D8F" },
-      { "id": "sport-grey-heather", "appearanceId": 906, "erwarteterHex": "#97999B" },
-      { "id": "forest-green", "appearanceId": 438, "erwarteterHex": "#273B33" }
+      {
+        "id": "french-navy",
+        "appearanceId": 938,
+        "erwarteterHex": "#021E42"
+      },
+      {
+        "id": "555b66",
+        "appearanceId": 874,
+        "erwarteterHex": "#555B66"
+      }
     ]
   },
   {
-    "productId": "gildan-heavy-blend-hooded-sweatshirt", "productType": 1359, "namespace": "sprd-na",
+    "productId": "russell-ladies-pure-organic-heavy-tee",
+    "productType": 1562,
+    "namespace": "sprd-eu",
     "colors": [
-      { "id": "black", "appearanceId": 2, "erwarteterHex": "#25282B" },
-      { "id": "white", "appearanceId": 1, "erwarteterHex": "#FFFFFF" },
-      { "id": "sport-grey-heather", "appearanceId": 231, "erwarteterHex": "#97999B" }
+      {
+        "id": "french-navy",
+        "appearanceId": 938,
+        "erwarteterHex": "#021E42"
+      },
+      {
+        "id": "555b66",
+        "appearanceId": 874,
+        "erwarteterHex": "#555B66"
+      }
     ]
   },
   {
-    "productId": "gildan-softstyle-midweight-sweat-adult-hoodie", "productType": 2489, "namespace": "sprd-eu",
-    "colors": [
-      { "id": "black", "appearanceId": 2, "erwarteterHex": "#25282B" },
-      { "id": "white", "appearanceId": 1, "erwarteterHex": "#FFFFFF" },
-      { "id": "navy", "appearanceId": 348, "erwarteterHex": "#263147" },
-      { "id": "ash-grey-heather", "appearanceId": 577, "erwarteterHex": "#C8C9C7" },
-      { "id": "charcoal-solid", "appearanceId": 164, "erwarteterHex": "#66676C" },
-      { "id": "maroon", "appearanceId": 708, "erwarteterHex": "#5B2B42" },
-      { "id": "military-green", "appearanceId": 715, "erwarteterHex": "#63655A" }
-    ]
+    "productId": "russell-ladies-authentic-hood",
+    "productType": 1282,
+    "namespace": "sprd-eu",
+    "colors": []
   }
 ]

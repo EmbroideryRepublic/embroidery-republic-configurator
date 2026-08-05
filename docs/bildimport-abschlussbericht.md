@@ -3,10 +3,10 @@
 _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scripts/import/quellen.json._
 
 ## Übersicht
-- Produkte mit echten Bildern: **59 / 154**
-- Echte Farb-Bildsätze: **436**
-- Farben mit echter Rückansicht: **423** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **13**
-- Noch offen (nur Platzhalter): **95** Produkte
+- Produkte mit echten Bildern: **62 / 154**
+- Echte Farb-Bildsätze: **455**
+- Farben mit echter Rückansicht: **442** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **13**
+- Noch offen (nur Platzhalter): **92** Produkte
 
 ## Bebilderte Produkte
 | Produkt | Marke | Quelle | echte Farben | Ansichten | Farben mit Rückansicht |
@@ -58,6 +58,9 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | bundc-t-shirt-e190-women | B&C | sportyfied.com | 7 | back+front | 7 |
 | bundc-t-shirt-e150 | B&C | sportyfied.com | 7 | back+front+sleeve_left | 7 |
 | bundc-t-shirt-e150-women | B&C | sportyfied.com | 7 | back+front+sleeve_left | 7 |
+| bundc-e220-t | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 5 | back+front | 5 |
+| bundc-inspire-t-men | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front | 7 |
+| jamesnicholson-mens-bio-workwear-t-shirt | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
 | gildan-ultra-cotton-t-shirt | Gildan | teamshirts.com (Spreadshirt-Medienserver) | 7 | back+front | 7 |
 | neutral-men-s-classic-t-shirt | Neutral | sportyfied.com | 7 | back+front | 5 · ohne echte Rückansicht: 2 (bottle-green, charcoal) |
 | neutral-ladies-classic-t-shirt | Neutral | sportyfied.com | 7 | back+front | 5 · ohne echte Rückansicht: 2 (bottle-green, charcoal) |
@@ -72,9 +75,9 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | neutral-men-s-long-sleeve-t-shirt | Neutral | sportyfied.com | 7 | back+front | 6 · ohne echte Rückansicht: 1 (charcoal) |
 
 ## Noch offen (Recherche/Import ausstehend)
-- **B&C** (23): bundc-inspire-e150-t-shirt, bundc-inspire-e150-t-shirt-women, bundc-e220-t, bundc-inspire-v-t-men, bundc-inspire-v-t-women, bundc-inspire-t-men, bundc-inspire-t-women, bundc-unisex-polo-id-001, bundc-my-polo-180, bundc-inspire-polo-men, bundc-inspire-polo-women, bundc-my-eco-polo-6535, bundc-my-eco-polo-6535-women, bundc-id-333-hoodie, bundc-king-hooded-sweat, bundc-id-223-hoodie, bundc-influence-hoodie, bundc-hoodie, bundc-t-shirt-e150-long-sleeve-unisex-exact, bundc-t-shirt-e150-long-sleeve-women-exact, bundc-mens-t-shirt-e190-long-sleeve-exact, bundc-microfleece-duo-id501, bundc-microfleece-duo-id501-women
+- **B&C** (21): bundc-inspire-e150-t-shirt, bundc-inspire-e150-t-shirt-women, bundc-inspire-v-t-men, bundc-inspire-v-t-women, bundc-inspire-t-women, bundc-unisex-polo-id-001, bundc-my-polo-180, bundc-inspire-polo-men, bundc-inspire-polo-women, bundc-my-eco-polo-6535, bundc-my-eco-polo-6535-women, bundc-id-333-hoodie, bundc-king-hooded-sweat, bundc-id-223-hoodie, bundc-influence-hoodie, bundc-hoodie, bundc-t-shirt-e150-long-sleeve-unisex-exact, bundc-t-shirt-e150-long-sleeve-women-exact, bundc-mens-t-shirt-e190-long-sleeve-exact, bundc-microfleece-duo-id501, bundc-microfleece-duo-id501-women
 - **Russell** (15): russell-russell-classic-t, russell-classic-heavyweight-t-shirt, russell-mens-pure-organic-heavy-tee, russell-ladies-pure-organic-heavy-tee, russell-mens-pure-organic-v-neck-tee, russell-strapazierfaehiges-poloshirt-599, russell-men-s-ultimate-cotton-polo, russell-men-s-classic-cotton-polo, russell-poloshirt-6535, russell-ladies-poloshirt-6535, russell-authentic-hooded-sweat, russell-ladies-authentic-hood, russell-hooded-sweatshirt, russell-classic-t-long-sleeve, russell-outdoor-fleece-jacke
-- **James+Nicholson** (14): jamesnicholson-round-t-heavy, jamesnicholson-ladies-active-t, jamesnicholson-men-s-basic-t, jamesnicholson-ladies-basic-t, jamesnicholson-workwear-t-men, jamesnicholson-workwear-t-women, jamesnicholson-mens-bio-workwear-t-shirt, jamesnicholson-ladies-bio-workwear-t-shirt, jamesnicholson-classic-polo, jamesnicholson-classic-polo-ladies, jamesnicholson-men-s-bio-workwear-polo, jamesnicholson-workwear-polo-men, jamesnicholson-men-s-fleece-jacket-jn, jamesnicholson-ladies-fleece-jacket-jn781
+- **James+Nicholson** (13): jamesnicholson-round-t-heavy, jamesnicholson-ladies-active-t, jamesnicholson-men-s-basic-t, jamesnicholson-ladies-basic-t, jamesnicholson-workwear-t-men, jamesnicholson-workwear-t-women, jamesnicholson-ladies-bio-workwear-t-shirt, jamesnicholson-classic-polo, jamesnicholson-classic-polo-ladies, jamesnicholson-men-s-bio-workwear-polo, jamesnicholson-workwear-polo-men, jamesnicholson-men-s-fleece-jacket-jn, jamesnicholson-ladies-fleece-jacket-jn781
 - **EarthPositive** (9): earthpositive-pique-polo-shirt, earthpositive-jersey-polo-shirt, earthpositive-earth-positive-pullover-hoodie, earthpositive-earth-positive-women-s-half-zip-hoodie, earthpositive-earth-positive-super-heavy-hoodie, earthpositive-earthpositive-organic-mensunisex-pullover-hoodie, earthpositive-unisex-organic-pullover-hood-ep, earthpositive-premium-long-sleeve-t-shirt, earthpositive-unisex-organic-longsleeve-t-shirt
 - **SOL'S** (9): sols-men-s-polo-shirt-prime, sols-women-s-polo-shirt-prime, sols-men-s-polo-shirt-perfect, sols-unisex-pulse-polo-shirt, sols-men-s-long-sleeve-t-shirt-imperial, sols-men-s-plain-fleece-jacket-norman, sols-women-s-plain-fleece-jacket-norman, sols-women-s-fleecejacket-north, sols-mens-factor-zipped-fleece-jacket
 - **Stedman** (6): stedman-stedman-classic-t, stedman-classic-t-for-women, stedman-classic-t-v-neck, stedman-classic-t-v-neck-for-women, stedman-comfort-t, stedman-clive-crew-neck

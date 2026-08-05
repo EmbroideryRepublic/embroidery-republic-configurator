@@ -53,3 +53,5 @@ data.sql
 
 # Sportyfied-Sitemap-Dump (Referenz fuer den Import, ~2MB, regenerierbar)
 scripts/import/sf_sitemap.xml
+
+scripts/import/quellen-discovery-full.txt

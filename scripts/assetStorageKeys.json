@@ -1,0 +1,417 @@
+{
+  "fotl-heavy-t": {
+    "white": "fotl-heavy-t",
+    "navy": "fotl-heavy-t-navy",
+    "black": "fotl-heavy-t-black",
+    "heather-grey": "fotl-heavy-t-heather-grey"
+  },
+  "fotl-ladies-valueweight-vneck": {
+    "black": "fotl-ladies-vneck",
+    "white": "fotl-ladies-vneck-white",
+    "heather-grey": "fotl-ladies-vneck-heather-grey"
+  },
+  "fotl-original-longsleeve": {
+    "black": "fotl-original-longsleeve",
+    "white": "fotl-original-longsleeve-white"
+  },
+  "fotl-original-vneck": {
+    "black": "fotl-original-vneck",
+    "white": "fotl-original-vneck-white"
+  },
+  "fotl-ladies-original-t": {
+    "white": "fotl-ladies-original-t",
+    "black": "fotl-ladies-original-t-black",
+    "red": "fotl-ladies-original-t-red",
+    "royal": "fotl-ladies-original-t-royal",
+    "pink": "fotl-ladies-original-t-pink",
+    "heather-grey": "fotl-ladies-original-t-heather-grey"
+  },
+  "fotl-iconic195-longsleeve": {
+    "black": "fotl-iconic195-longsleeve",
+    "white": "fotl-iconic195-longsleeve-white",
+    "red": "fotl-iconic195-longsleeve-red",
+    "heather-grey": "fotl-iconic195-longsleeve-heather-grey",
+    "navy": "fotl-iconic195-longsleeve-navy"
+  },
+  "fotl-pure-cotton-t": {
+    "black": "fotl-pure-cotton-t",
+    "white": "fotl-pure-cotton-t-white",
+    "red": "fotl-pure-cotton-t-red",
+    "royal": "fotl-pure-cotton-t-royal",
+    "sage": "fotl-pure-cotton-t-sage",
+    "navy": "fotl-pure-cotton-t-navy",
+    "sand": "fotl-pure-cotton-t-sand",
+    "grey": "fotl-pure-cotton-t-grey",
+    "petrol": "fotl-pure-cotton-t-petrol",
+    "sky-blue": "fotl-pure-cotton-t-sky-blue",
+    "very-turquoise": "fotl-pure-cotton-t-very-turquoise"
+  },
+  "fotl-super-premium-t": {
+    "navy": "fotl-super-premium-t",
+    "black": "fotl-super-premium-t-black",
+    "bottle-green": "fotl-super-premium-t-bottle-green",
+    "red": "fotl-super-premium-t-red",
+    "royal": "fotl-super-premium-t-royal",
+    "olive": "fotl-super-premium-t-olive",
+    "heather-grey": "fotl-super-premium-t-heather-grey",
+    "graphite": "fotl-super-premium-t-graphite",
+    "dark-grey-solid": "fotl-super-premium-t-dark-grey-solid"
+  },
+  "fotl-valueweight-t": {
+    "white": "fotl-valueweight-t",
+    "navy": "fotl-valueweight-t-navy",
+    "bottle-green": "fotl-valueweight-t-bottle-green",
+    "red": "fotl-valueweight-t-red",
+    "burgundy": "fotl-valueweight-t-burgundy",
+    "royal": "fotl-valueweight-t-royal",
+    "pink": "fotl-valueweight-t-pink",
+    "olive": "fotl-valueweight-t-olive",
+    "natural": "fotl-valueweight-t-natural",
+    "heather-grey": "fotl-valueweight-t-heather-grey",
+    "graphite": "fotl-valueweight-t-graphite",
+    "solar-yellow": "fotl-valueweight-t-solar-yellow",
+    "azure": "fotl-valueweight-t-azure",
+    "brick-red": "fotl-valueweight-t-brick-red",
+    "chocolate": "fotl-valueweight-t-chocolate",
+    "heather-royal": "fotl-valueweight-t-heather-royal",
+    "purple": "fotl-valueweight-t-purple",
+    "sunflower": "fotl-valueweight-t-sunflower"
+  },
+  "fotl-valueweight-vneck": {
+    "white": "fotl-valueweight-vneck",
+    "navy": "fotl-valueweight-vneck-navy",
+    "solar-yellow": "fotl-valueweight-vneck-solar-yellow",
+    "black": "fotl-valueweight-vneck-black",
+    "red": "fotl-valueweight-vneck-red",
+    "orange": "fotl-valueweight-vneck-orange",
+    "royal": "fotl-valueweight-vneck-royal",
+    "heather-grey": "fotl-valueweight-vneck-heather-grey",
+    "deep-navy": "fotl-valueweight-vneck-deep-navy",
+    "graphite": "fotl-valueweight-vneck-graphite",
+    "azure": "fotl-valueweight-vneck-azure",
+    "heather-charcoal": "fotl-valueweight-vneck-heather-charcoal"
+  },
+  "fotl-iconic195-t": {
+    "azure": "fotl-iconic195-t",
+    "white": "fotl-iconic195-t-white",
+    "navy": "fotl-iconic195-t-navy",
+    "solar-yellow": "fotl-iconic195-t-solar-yellow",
+    "black": "fotl-iconic195-t-black",
+    "bottle-green": "fotl-iconic195-t-bottle-green",
+    "red": "fotl-iconic195-t-red",
+    "burgundy": "fotl-iconic195-t-burgundy",
+    "sage": "fotl-iconic195-t-sage",
+    "royal": "fotl-iconic195-t-royal",
+    "olive": "fotl-iconic195-t-olive",
+    "natural": "fotl-iconic195-t-natural",
+    "deep-navy": "fotl-iconic195-t-deep-navy",
+    "cranberry": "fotl-iconic195-t-cranberry",
+    "sand": "fotl-iconic195-t-sand",
+    "graphite": "fotl-iconic195-t-graphite",
+    "heather-grey": "fotl-iconic195-t-heather-grey",
+    "khaki": "fotl-iconic195-t-khaki",
+    "powder-blue": "fotl-iconic195-t-powder-blue"
+  },
+  "fotl-ladies-iconic195-t": {
+    "azure": "fotl-ladies-iconic195-t",
+    "navy": "fotl-ladies-iconic195-t-navy",
+    "solar-yellow": "fotl-ladies-iconic195-t-solar-yellow",
+    "black": "fotl-ladies-iconic195-t-black",
+    "red": "fotl-ladies-iconic195-t-red",
+    "royal": "fotl-ladies-iconic195-t-royal",
+    "burgundy": "fotl-ladies-iconic195-t-burgundy",
+    "pink": "fotl-ladies-iconic195-t-pink",
+    "natural": "fotl-ladies-iconic195-t-natural",
+    "deep-navy": "fotl-ladies-iconic195-t-deep-navy",
+    "cranberry": "fotl-ladies-iconic195-t-cranberry",
+    "sand": "fotl-ladies-iconic195-t-sand",
+    "graphite": "fotl-ladies-iconic195-t-graphite",
+    "white": "fotl-ladies-iconic195-t-white",
+    "blush": "fotl-ladies-iconic195-t-blush",
+    "millennial-lilac": "fotl-ladies-iconic195-t-millennial-lilac",
+    "very-turquoise": "fotl-ladies-iconic195-t-very-turquoise"
+  },
+  "fotl-original-t": {
+    "white": "fotl-original-t",
+    "navy": "fotl-original-t-navy",
+    "solar-yellow": "fotl-original-t-solar-yellow",
+    "black": "fotl-original-t-black",
+    "bottle-green": "fotl-original-t-bottle-green",
+    "red": "fotl-original-t-red",
+    "burgundy": "fotl-original-t-burgundy",
+    "orange": "fotl-original-t-orange",
+    "kelly-green": "fotl-original-t-kelly-green",
+    "royal": "fotl-original-t-royal",
+    "pink": "fotl-original-t-pink",
+    "heather-grey": "fotl-original-t-heather-grey",
+    "deep-navy": "fotl-original-t-deep-navy",
+    "cranberry": "fotl-original-t-cranberry",
+    "graphite": "fotl-original-t-graphite",
+    "yellow": "fotl-original-t-yellow",
+    "azure": "fotl-original-t-azure",
+    "lime-green": "fotl-original-t-lime-green",
+    "sky-blue": "fotl-original-t-sky-blue",
+    "urban-khaki": "fotl-original-t-urban-khaki"
+  },
+  "fotl-ladies-valueweight-t": {
+    "azure": "fotl-ladies-valueweight-t",
+    "navy": "fotl-ladies-valueweight-t-navy",
+    "solar-yellow": "fotl-ladies-valueweight-t-solar-yellow",
+    "bottle-green": "fotl-ladies-valueweight-t-bottle-green",
+    "red": "fotl-ladies-valueweight-t-red",
+    "burgundy": "fotl-ladies-valueweight-t-burgundy",
+    "orange": "fotl-ladies-valueweight-t-orange",
+    "royal": "fotl-ladies-valueweight-t-royal",
+    "pink": "fotl-ladies-valueweight-t-pink",
+    "deep-navy": "fotl-ladies-valueweight-t-deep-navy",
+    "graphite": "fotl-ladies-valueweight-t-graphite",
+    "yellow": "fotl-ladies-valueweight-t-yellow",
+    "cranberry": "fotl-ladies-valueweight-t-cranberry",
+    "white": "fotl-ladies-valueweight-t-white",
+    "blush": "fotl-ladies-valueweight-t-blush",
+    "heather-charcoal": "fotl-ladies-valueweight-t-heather-charcoal",
+    "heather-purple": "fotl-ladies-valueweight-t-heather-purple",
+    "heather-royal": "fotl-ladies-valueweight-t-heather-royal",
+    "lime-green": "fotl-ladies-valueweight-t-lime-green",
+    "purple": "fotl-ladies-valueweight-t-purple"
+  },
+  "fotl-baseball-t": {
+    "white-navy": "fotl-baseball-t",
+    "white-black": "fotl-baseball-t-white-black",
+    "white-royal": "fotl-baseball-t-white-royal"
+  },
+  "fotl-premium-polo": {
+    "black": "fotl-premium-polo",
+    "navy": "fotl-premium-polo-navy",
+    "royal": "fotl-premium-polo-royal",
+    "grey": "fotl-premium-polo-grey",
+    "white": "fotl-premium-polo-white",
+    "red": "fotl-premium-polo-red",
+    "bottle-green": "fotl-premium-polo-bottle-green"
+  },
+  "fotl-ladies-premium-polo": {
+    "black": "fotl-ladies-premium-polo",
+    "white": "fotl-ladies-premium-polo-white",
+    "navy": "fotl-ladies-premium-polo-navy",
+    "red": "fotl-ladies-premium-polo-red",
+    "royal": "fotl-ladies-premium-polo-royal",
+    "grey": "fotl-ladies-premium-polo-grey",
+    "burgundy": "fotl-ladies-premium-polo-burgundy"
+  },
+  "fotl-baseball-longsleeve": {
+    "white-navy": "fotl-baseball-longsleeve",
+    "white-black": "fotl-baseball-longsleeve-white-black",
+    "white-royal": "fotl-baseball-longsleeve-white-royal"
+  },
+  "sols-imperial-t": {
+    "black": "sols-imperial-t",
+    "white": "sols-imperial-t-white",
+    "navy": "sols-imperial-t-navy",
+    "red": "sols-imperial-t-red",
+    "yellow": "sols-imperial-t-yellow",
+    "grey": "sols-imperial-t-grey"
+  },
+  "sols-north-fleece": {
+    "black": "sols-north-fleece",
+    "navy": "sols-north-fleece-navy",
+    "royal": "sols-north-fleece-royal",
+    "grey": "sols-north-fleece-grey",
+    "white": "sols-north-fleece-white",
+    "anthracite": "sols-north-fleece-anthracite",
+    "green": "sols-north-fleece-green"
+  },
+  "gildan-heavy-t": {
+    "black": "gildan-heavy-t",
+    "white": "gildan-heavy-t-white",
+    "grey": "gildan-heavy-t-grey",
+    "charcoal": "gildan-heavy-t-charcoal",
+    "red": "gildan-heavy-t-red",
+    "navy": "gildan-heavy-t-navy",
+    "orange": "gildan-heavy-t-orange",
+    "royal": "gildan-heavy-t-royal"
+  },
+  "gildan-softstyle-polo": {
+    "black": "gildan-softstyle-polo",
+    "white": "gildan-softstyle-polo-white",
+    "navy": "gildan-softstyle-polo-navy",
+    "grey": "gildan-softstyle-polo-grey",
+    "royal": "gildan-softstyle-polo-royal",
+    "red": "gildan-softstyle-polo-red",
+    "green": "gildan-softstyle-polo-green"
+  },
+  "gildan-vneck-t": {
+    "black": "gildan-vneck-t",
+    "navy": "gildan-vneck-t-navy",
+    "royal": "gildan-vneck-t-royal",
+    "grey": "gildan-vneck-t-grey",
+    "white": "gildan-vneck-t-white",
+    "red": "gildan-vneck-t-red"
+  },
+  "gildan-ladies-t": {
+    "black": "gildan-ladies-t",
+    "white": "gildan-ladies-t-white",
+    "navy": "gildan-ladies-t-navy",
+    "royal": "gildan-ladies-t-royal",
+    "grey": "gildan-ladies-t-grey",
+    "red": "gildan-ladies-t-red",
+    "kelly-green": "gildan-ladies-t-kelly-green"
+  },
+  "gildan-ladies-heavy-t": {
+    "black": "gildan-ladies-heavy-t",
+    "white": "gildan-ladies-heavy-t-white",
+    "navy": "gildan-ladies-heavy-t-navy",
+    "grey": "gildan-ladies-heavy-t-grey",
+    "red": "gildan-ladies-heavy-t-red",
+    "charcoal": "gildan-ladies-heavy-t-charcoal",
+    "royal": "gildan-ladies-heavy-t-royal"
+  },
+  "gildan-ladies-vneck-t": {
+    "black": "gildan-ladies-vneck-t",
+    "white": "gildan-ladies-vneck-t-white",
+    "navy": "gildan-ladies-vneck-t-navy",
+    "red": "gildan-ladies-vneck-t-red",
+    "grey": "gildan-ladies-vneck-t-grey",
+    "pink": "gildan-ladies-vneck-t-pink"
+  },
+  "gildan-ladies-polo": {
+    "black": "gildan-ladies-polo",
+    "white": "gildan-ladies-polo-white",
+    "navy": "gildan-ladies-polo-navy",
+    "grey": "gildan-ladies-polo-grey",
+    "royal": "gildan-ladies-polo-royal"
+  },
+  "gildan-zip-hoodie": {
+    "navy": "gildan-zip-hoodie",
+    "grey": "gildan-zip-hoodie-grey",
+    "red": "gildan-zip-hoodie-red",
+    "royal": "gildan-zip-hoodie-royal",
+    "kelly-green": "gildan-zip-hoodie-kelly-green",
+    "burgundy": "gildan-zip-hoodie-burgundy",
+    "bottle-green": "gildan-zip-hoodie-bottle-green"
+  },
+  "russell-authentic-t": {
+    "black": "russell-authentic-t",
+    "white": "russell-authentic-t-white",
+    "navy": "russell-authentic-t-navy",
+    "red": "russell-authentic-t-red",
+    "grey": "russell-authentic-t-grey",
+    "royal": "russell-authentic-t-royal",
+    "burgundy": "russell-authentic-t-burgundy"
+  },
+  "russell-workwear-t": {
+    "black": "russell-workwear-t",
+    "navy": "russell-workwear-t-navy",
+    "royal": "russell-workwear-t-royal",
+    "grey": "russell-workwear-t-grey",
+    "white": "russell-workwear-t-white",
+    "red": "russell-workwear-t-red",
+    "bottle-green": "russell-workwear-t-bottle-green"
+  },
+  "russell-ladies-authentic-t": {
+    "black": "russell-ladies-authentic-t",
+    "white": "russell-ladies-authentic-t-white",
+    "navy": "russell-ladies-authentic-t-navy",
+    "grey": "russell-ladies-authentic-t-grey",
+    "red": "russell-ladies-authentic-t-red",
+    "royal": "russell-ladies-authentic-t-royal",
+    "bottle-green": "russell-ladies-authentic-t-bottle-green"
+  },
+  "neutral-classic-polo": {
+    "black": "neutral-classic-polo",
+    "white": "neutral-classic-polo-white",
+    "navy": "neutral-classic-polo-navy",
+    "royal": "neutral-classic-polo-royal",
+    "red": "neutral-classic-polo-red",
+    "grey": "neutral-classic-polo-grey",
+    "bottle-green": "neutral-classic-polo-bottle-green"
+  },
+  "neutral-rollsleeve-t": {
+    "black": "neutral-rollsleeve-t",
+    "grey": "neutral-rollsleeve-t-grey",
+    "navy": "neutral-rollsleeve-t-navy",
+    "anthracite": "neutral-rollsleeve-t-anthracite",
+    "white": "neutral-rollsleeve-t-white",
+    "burgundy": "neutral-rollsleeve-t-burgundy",
+    "olive": "neutral-rollsleeve-t-olive"
+  },
+  "justhoods-college-hoodie": {
+    "black": "justhoods-college-hoodie",
+    "white": "justhoods-college-hoodie-white",
+    "navy": "justhoods-college-hoodie-navy",
+    "grey": "justhoods-college-hoodie-grey",
+    "royal": "justhoods-college-hoodie-royal",
+    "red": "justhoods-college-hoodie-red",
+    "bottle-green": "justhoods-college-hoodie-bottle-green"
+  },
+  "justhoods-zoodie": {
+    "black": "justhoods-zoodie",
+    "navy": "justhoods-zoodie-navy",
+    "royal": "justhoods-zoodie-royal",
+    "grey": "justhoods-zoodie-grey",
+    "burgundy": "justhoods-zoodie-burgundy",
+    "anthracite": "justhoods-zoodie-anthracite",
+    "green": "justhoods-zoodie-green"
+  },
+  "justhoods-awdis-sweat": {
+    "black": "justhoods-awdis-sweat",
+    "white": "justhoods-awdis-sweat-white",
+    "navy": "justhoods-awdis-sweat-navy",
+    "red": "justhoods-awdis-sweat-red",
+    "royal": "justhoods-awdis-sweat-royal",
+    "grey": "justhoods-awdis-sweat-grey",
+    "kelly-green": "justhoods-awdis-sweat-kelly-green"
+  },
+  "justhoods-contrast-hoodie": {
+    "navy-grey": "justhoods-contrast-hoodie",
+    "black-red": "justhoods-contrast-hoodie-black-red",
+    "grey-navy": "justhoods-contrast-hoodie-grey-navy",
+    "burgundy-anthracite": "justhoods-contrast-hoodie-burgundy-anthracite",
+    "red-white": "justhoods-contrast-hoodie-red-white"
+  },
+  "justhoods-quarterzip-sweat": {
+    "grey": "justhoods-quarterzip-sweat",
+    "black": "justhoods-quarterzip-sweat-black",
+    "anthracite": "justhoods-quarterzip-sweat-anthracite"
+  },
+  "bandc-inspire-hoodie": {
+    "black": "bandc-inspire-hoodie",
+    "white": "bandc-inspire-hoodie-white",
+    "navy": "bandc-inspire-hoodie-navy",
+    "grey": "bandc-inspire-hoodie-grey",
+    "royal": "bandc-inspire-hoodie-royal",
+    "red": "bandc-inspire-hoodie-red",
+    "burgundy": "bandc-inspire-hoodie-burgundy"
+  },
+  "bandc-inspire-zip-hood": {
+    "black": "bandc-inspire-zip-hood",
+    "white": "bandc-inspire-zip-hood-white",
+    "navy": "bandc-inspire-zip-hood-navy",
+    "grey": "bandc-inspire-zip-hood-grey",
+    "royal": "bandc-inspire-zip-hood-royal",
+    "red": "bandc-inspire-zip-hood-red",
+    "sage": "bandc-inspire-zip-hood-sage"
+  },
+  "stedman-slimfit-t": {
+    "black": "stedman-slimfit-t",
+    "white": "stedman-slimfit-t-white",
+    "navy": "stedman-slimfit-t-navy",
+    "grey": "stedman-slimfit-t-grey",
+    "royal": "stedman-slimfit-t-royal",
+    "red": "stedman-slimfit-t-red",
+    "olive": "stedman-slimfit-t-olive",
+    "graphite": "stedman-slimfit-t-graphite"
+  },
+  "jn-active-t": {
+    "black": "jn-active-t",
+    "royal": "jn-active-t-royal",
+    "navy": "jn-active-t-navy",
+    "white": "jn-active-t-white",
+    "red": "jn-active-t-red",
+    "yellow": "jn-active-t-yellow",
+    "kelly-green": "jn-active-t-kelly-green"
+  },
+  "jn-halfzip-sweat": {
+    "black": "jn-halfzip-sweat",
+    "navy": "jn-halfzip-sweat-navy"
+  }
+}

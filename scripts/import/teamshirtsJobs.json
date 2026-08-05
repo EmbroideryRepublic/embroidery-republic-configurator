@@ -1,0 +1,22 @@
+[
+  {
+    "productId": "gildan-ultra-cotton-t-shirt", "productType": 3220, "namespace": "sprd-na",
+    "colors": [
+      { "id": "black", "appearanceId": 2, "erwarteterHex": "#25282B" },
+      { "id": "white", "appearanceId": 1, "erwarteterHex": "#FFFFFF" },
+      { "id": "navy", "appearanceId": 348, "erwarteterHex": "#263147" },
+      { "id": "red", "appearanceId": 5, "erwarteterHex": "#B1302A" },
+      { "id": "royal", "appearanceId": 17, "erwarteterHex": "#224D8F" },
+      { "id": "sport-grey-heather", "appearanceId": 906, "erwarteterHex": "#97999B" },
+      { "id": "forest-green", "appearanceId": 438, "erwarteterHex": "#273B33" }
+    ]
+  },
+  {
+    "productId": "gildan-heavy-blend-hooded-sweatshirt", "productType": 1359, "namespace": "sprd-na",
+    "colors": [
+      { "id": "black", "appearanceId": 2, "erwarteterHex": "#25282B" },
+      { "id": "white", "appearanceId": 1, "erwarteterHex": "#FFFFFF" },
+      { "id": "sport-grey-heather", "appearanceId": 231, "erwarteterHex": "#97999B" }
+    ]
+  }
+]

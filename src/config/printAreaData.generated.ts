@@ -408,9 +408,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     back: { x0: 32.3, y0: 20.6, x1: 67.5, y1: 68, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 63 },
   },
   'gildan-light-cotton-adult-t-shirt': {
-    front: { x0: 34, y0: 16.5, x1: 67.5, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 24.1, maxHeightCm: 47, boxWidthCm: 24.1, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
-    back: { x0: 34.2, y0: 16.5, x1: 67.9, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 24.2, maxHeightCm: 47, boxWidthCm: 24.2, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
-    sleeve_left: { x0: 37.5, y0: 8.1, x1: 62.5, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 17.9, boxHeightCm: 69.9, startXCm: 8.8, startYCm: 11.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    front: { x0: 48.8, y0: 18.2, x1: 69.7, y1: 71.2, imgW: 620, imgH: 720, maxWidthCm: 15.9, maxHeightCm: 47, boxWidthCm: 15.9, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
+    back: { x0: 48.8, y0: 18.2, x1: 69.7, y1: 71.2, imgW: 620, imgH: 720, maxWidthCm: 15.9, maxHeightCm: 47, boxWidthCm: 15.9, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
   },
   'neutral-men-s-classic-t-shirt': {
     front: { x0: 30.3, y0: 16.5, x1: 70.8, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.1, maxHeightCm: 47, boxWidthCm: 29.1, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 61 },
@@ -577,9 +576,9 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     sleeve_right: { x0: 31.6, y0: 8.2, x1: 68.6, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 26.2, boxHeightCm: 68.9, startXCm: 12.4, startYCm: 11.1, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'gildan-softstyle-midweight-sweat-adult-hoodie': {
-    front: { x0: 34.9, y0: 38.6, x1: 59.7, y1: 80, imgW: 620, imgH: 720, maxWidthCm: 24.3, maxHeightCm: 47, boxWidthCm: 24.3, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
-    back: { x0: 37.3, y0: 28.3, x1: 64.1, y1: 77.5, imgW: 620, imgH: 720, maxWidthCm: 22, maxHeightCm: 47, boxWidthCm: 22, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
-    sleeve_left: { x0: 35.6, y0: 8.2, x1: 63.7, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 19.6, boxHeightCm: 67.9, startXCm: 10, startYCm: 10.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    front: { x0: 35.4, y0: 39, x1: 59.8, y1: 78.1, imgW: 620, imgH: 720, maxWidthCm: 25.3, maxHeightCm: 47, boxWidthCm: 25.3, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
+    back: { x0: 36.9, y0: 39.5, x1: 64.5, y1: 80.2, imgW: 620, imgH: 720, maxWidthCm: 27.5, maxHeightCm: 47, boxWidthCm: 27.5, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
+    sleeve_left: { x0: 32.9, y0: 8.2, x1: 67.1, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 23.9, boxHeightCm: 67.9, startXCm: 9.5, startYCm: 10.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'gildan-hammer-maxweight-adult-hooded-sweatshirt': {
     front: { x0: 34.8, y0: 39.6, x1: 64.7, y1: 79.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
@@ -706,9 +705,9 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     back: { x0: 30.1, y0: 19.7, x1: 70, y1: 73.5, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 58 },
   },
   'gildan-ultra-cotton-long-sleeve-t-shirt': {
-    front: { x0: 33.1, y0: 16, x1: 70.4, y1: 69.4, imgW: 620, imgH: 720, maxWidthCm: 28.3, maxHeightCm: 47, boxWidthCm: 28.3, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 65 },
-    back: { x0: 31.4, y0: 16, x1: 69.8, y1: 69.4, imgW: 620, imgH: 720, maxWidthCm: 29.1, maxHeightCm: 47, boxWidthCm: 29.1, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 65 },
-    sleeve_left: { x0: 39.4, y0: 8.1, x1: 60.3, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 15.9, boxHeightCm: 73.9, startXCm: 8.4, startYCm: 11.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    front: { x0: 30.4, y0: 16, x1: 69.9, y1: 69.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 65 },
+    back: { x0: 30.2, y0: 16, x1: 69.8, y1: 69.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 65 },
+    sleeve_left: { x0: 14, y0: 9.5, x1: 85.7, y1: 90.5, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 23.9, boxHeightCm: 31.3, startXCm: 13.4, startYCm: 11.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'sols-men-s-long-sleeve-t-shirt-imperial': {
     front: { x0: 29.1, y0: 16.5, x1: 70.8, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },

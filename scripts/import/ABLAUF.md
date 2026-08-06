@@ -4,6 +4,11 @@ Die Schritte hängen voneinander ab – wird einer ausgelassen, bricht ein Wäch
 oder es bleibt eine Lücke im Shop. Reihenfolge einhalten:
 
 ```bash
+# 0. Torwächter: On-Model-Aufnahmen VOR dem Ablegen aussortieren – PFLICHT.
+#    Ein Mensch im Bild verdirbt nicht nur den Bildstil, er verdirbt die
+#    Druckfläche (siehe unten). Nach dem Import ist das nur mühsam rückbaubar.
+npx tsx --tsconfig tsconfig.scripts.json scripts/jobsOnModelFilter.mts scripts/import/<jobs>.json --schreiben
+
 # 1. Bilder holen, normalisieren, ablegen
 npx tsx scripts/ingestDirect.mts scripts/import/<jobs>.json
 

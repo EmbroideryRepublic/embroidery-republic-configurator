@@ -1,0 +1,95 @@
+[
+  {
+    "productId": "gildan-softstyle-midweight-sweat-adult-hoodie",
+    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "colors": [
+      {
+        "id": "navy",
+        "erwarteterHex": "#263147",
+        "front": "https://images.shirtspace.com/fullsize/DlaM1e2X7r71LJxll2f4xw%3D%3D/357475/17470-gildan-sf500-softstyle-hooded-sweatshirt-front-navy.jpg",
+        "side": "https://images.shirtspace.com/fullsize/0OxaUlex4XIsN5DX%2Fu%2Blnw%3D%3D/357476/17470-gildan-sf500-softstyle-hooded-sweatshirt-side-navy.jpg"
+      },
+      {
+        "id": "black",
+        "erwarteterHex": "#25282B",
+        "front": "https://images.shirtspace.com/fullsize/3FO%2FlGetKCbo3BE3%2BaCgiA%3D%3D/357466/17470-gildan-sf500-softstyle-hooded-sweatshirt-front-black.jpg",
+        "back": "https://images.shirtspace.com/fullsize/LpP18yjKqE6533n%2B8zh0Yw%3D%3D/357468/17470-gildan-sf500-softstyle-hooded-sweatshirt-back-black.jpg",
+        "side": "https://images.shirtspace.com/fullsize/FekquDU9gtgfCnYnXspk2g%3D%3D/357467/17470-gildan-sf500-softstyle-hooded-sweatshirt-side-black.jpg"
+      },
+      {
+        "id": "charcoal-solid",
+        "erwarteterHex": "#66676C",
+        "front": "https://images.shirtspace.com/fullsize/d2rNwTlbjS9heU8uj3%2FCGg%3D%3D/357457/17470-gildan-sf500-softstyle-hooded-sweatshirt-front-charcoal.jpg",
+        "back": "https://images.shirtspace.com/fullsize/KYJJf51vF0L4rijG2oKxzA%3D%3D/357459/17470-gildan-sf500-softstyle-hooded-sweatshirt-back-charcoal.jpg",
+        "side": "https://images.shirtspace.com/fullsize/7a86Y5KUGQKjpNTHaXfvKg%3D%3D/357458/17470-gildan-sf500-softstyle-hooded-sweatshirt-side-charcoal.jpg"
+      },
+      {
+        "id": "dark-heather",
+        "erwarteterHex": "#3F4444",
+        "front": "https://images.shirtspace.com/fullsize/VfyST9ZqVDrCShMzod48sw%3D%3D/357484/17470-gildan-sf500-softstyle-hooded-sweatshirt-front-dark-heather.jpg",
+        "back": "https://images.shirtspace.com/fullsize/StqObAi0MmEArJAIFu1fOA%3D%3D/357486/17470-gildan-sf500-softstyle-hooded-sweatshirt-back-dark-heather.jpg",
+        "side": "https://images.shirtspace.com/fullsize/5GvUVluG3G8bhhq6xuIdig%3D%3D/357485/17470-gildan-sf500-softstyle-hooded-sweatshirt-side-dark-heather.jpg"
+      },
+      {
+        "id": "maroon",
+        "erwarteterHex": "#5B2B42",
+        "front": "https://images.shirtspace.com/fullsize/fK2TBXkDV76a14vyIksbCg%3D%3D/357478/17470-gildan-sf500-softstyle-hooded-sweatshirt-front-maroon.jpg",
+        "back": "https://images.shirtspace.com/fullsize/IEYxeGIaYsYxyQ1beYg2PA%3D%3D/357480/17470-gildan-sf500-softstyle-hooded-sweatshirt-back-maroon.jpg",
+        "side": "https://images.shirtspace.com/fullsize/%2BHc1hkMkcTFxV58rEutN9w%3D%3D/357479/17470-gildan-sf500-softstyle-hooded-sweatshirt-side-maroon.jpg"
+      },
+      {
+        "id": "military-green",
+        "erwarteterHex": "#63655A",
+        "front": "https://images.shirtspace.com/fullsize/9%2FSMtpt%2Fgr8xd09eIoOXEQ%3D%3D/357481/17470-gildan-sf500-softstyle-hooded-sweatshirt-front-military-green.jpg",
+        "back": "https://images.shirtspace.com/fullsize/kk%2BCJ%2FhF3fVzAnL38wGHVQ%3D%3D/357483/17470-gildan-sf500-softstyle-hooded-sweatshirt-back-military-green.jpg",
+        "side": "https://images.shirtspace.com/fullsize/roXXWc7zIpobfgwsJBhjAg%3D%3D/357482/17470-gildan-sf500-softstyle-hooded-sweatshirt-side-military-green.jpg"
+      },
+      {
+        "id": "sand",
+        "erwarteterHex": "#CABFAD",
+        "front": "https://images.shirtspace.com/fullsize/G7Vs4v98S6iMsO2LWTfVdg%3D%3D/357454/17470-gildan-sf500-softstyle-hooded-sweatshirt-front-sand.jpg",
+        "back": "https://images.shirtspace.com/fullsize/l5AVtbRMi%2BNdx4ZCbmgKiw%3D%3D/357456/17470-gildan-sf500-softstyle-hooded-sweatshirt-back-sand.jpg",
+        "side": "https://images.shirtspace.com/fullsize/dbksx4YmbLcN0OHCDMp3mA%3D%3D/357455/17470-gildan-sf500-softstyle-hooded-sweatshirt-side-sand.jpg"
+      },
+      {
+        "id": "cocoa",
+        "erwarteterHex": "#6B3D2E",
+        "front": "https://images.shirtspace.com/fullsize/Aah%2FCnd8MWThlSE5U%2BxsBA%3D%3D/465948/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-front-cocoa.jpg",
+        "back": "https://images.shirtspace.com/fullsize/jVLmMGFi%2F5RIjVmilLXM7g%3D%3D/465950/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-back-cocoa.jpg",
+        "side": "https://images.shirtspace.com/fullsize/%2BZJY7o0i0bTnrQH9vQ53Bg%3D%3D/465949/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-side-cocoa.jpg"
+      },
+      {
+        "id": "pistachio",
+        "erwarteterHex": "#BDC293",
+        "front": "https://images.shirtspace.com/fullsize/i1Qqo57%2BFTzcGta9%2FeFNfw%3D%3D/465942/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-front-pistachio.jpg",
+        "back": "https://images.shirtspace.com/fullsize/63eRksAKzQ%2FQlGyUeOESYg%3D%3D/465944/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-back-pistachio.jpg",
+        "side": "https://images.shirtspace.com/fullsize/Ql4n9zVpmBi5XKfSq9MHKA%3D%3D/465943/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-side-pistachio.jpg"
+      },
+      {
+        "id": "purple",
+        "erwarteterHex": "#5D396F",
+        "front": "https://images.shirtspace.com/fullsize/kijcBs8FDdwdNFkwhmKQww%3D%3D/465936/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-front-purple.jpg",
+        "back": "https://images.shirtspace.com/fullsize/7hs7p6TTEQZgtv7O3sWlhQ%3D%3D/465938/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-back-purple.jpg",
+        "side": "https://images.shirtspace.com/fullsize/HLvftZcyUF796JnDBe2ILQ%3D%3D/465937/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-side-purple.jpg"
+      },
+      {
+        "id": "ash-grey-heather",
+        "erwarteterHex": "#C8C9C7",
+        "front": "https://images.shirtspace.com/fullsize/81uNtTBOu1Kn8EVe559u4A%3D%3D/534398/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-front-ash.jpg",
+        "back": "https://images.shirtspace.com/fullsize/A2AGS6KWV3UE3h8HWs6agA%3D%3D/534400/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-back-ash.jpg",
+        "side": "https://images.shirtspace.com/fullsize/UOaD%2FZDBe5Y8YNxgLtMC3w%3D%3D/534399/17470-gildan-sf500-adult-softstyle-fleece-pullover-hooded-sweatshirt-side-ash.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "quelle": "theparkwholesale.com (Shopify) – Gildan 2400 G240 Ultra Cotton Long Sleeve, Freisteller-Serie wie die uebrigen 20 Farben. Nachtrag: light-pink stammte bisher aus dem Altbestand ohne protokollierte Herkunft und ging beim Ordnerwechsel verloren.",
+    "colors": [
+      {
+        "id": "light-pink",
+        "erwarteterHex": "#E4BED2",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2400_Light_Pink_Front_High.jpg"
+      }
+    ]
+  }
+]

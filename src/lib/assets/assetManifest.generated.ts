@@ -3751,7 +3751,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/bundc-t-shirt-e150-white/front.webp",
-        "back": "/products/bundc-t-shirt-e150-white/back.webp"
+        "back": "/products/bundc-t-shirt-e150-white/back.webp",
+        "sleeve_left": "/products/bundc-t-shirt-e150-white/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -6069,14 +6070,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grey-heather": {
       "views": {
         "front": "/products/jamesnicholson-workwear-t-women-grey-heather/front.webp",
-        "back": "/products/jamesnicholson-workwear-t-women-grey-heather/back.webp"
+        "back": "/products/jamesnicholson-workwear-t-women-grey-heather/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-t-women-grey-heather/sleeve-left.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/jamesnicholson-workwear-t-women-light-blue/front.webp",
-        "back": "/products/jamesnicholson-workwear-t-women-light-blue/back.webp"
+        "back": "/products/jamesnicholson-workwear-t-women-light-blue/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-t-women-light-blue/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -6091,7 +6094,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/jamesnicholson-workwear-t-women-orange/front.webp",
-        "back": "/products/jamesnicholson-workwear-t-women-orange/back.webp"
+        "back": "/products/jamesnicholson-workwear-t-women-orange/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-t-women-orange/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -6148,7 +6152,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "gold-yellow": {
       "views": {
         "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -6285,7 +6290,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "gold-yellow": {
       "views": {
         "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7802,7 +7808,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-bottle-green/front.webp",
-        "back": "/products/neutral-men-s-fit-t-shirt-bottle-green/back.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-bottle-green/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-bottle-green/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7849,7 +7856,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "charcoal": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-charcoal/front.webp",
-        "back": "/products/neutral-men-s-fit-t-shirt-charcoal/back.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-charcoal/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-charcoal/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7880,14 +7888,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-black/front.webp",
-        "back": "/products/neutral-men-s-fit-t-shirt-black/back.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-black/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-navy/front.webp",
-        "back": "/products/neutral-men-s-fit-t-shirt-navy/back.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-navy/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-navy/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7902,7 +7912,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-white/front.webp",
-        "back": "/products/neutral-men-s-fit-t-shirt-white/back.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-white/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-white/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7925,7 +7936,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-red/front.webp",
-        "back": "/products/neutral-men-s-fit-t-shirt-red/back.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-red/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-red/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7988,7 +8000,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "royal": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-royal/front.webp",
-        "back": "/products/neutral-men-s-fit-t-shirt-royal/back.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-royal/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-royal/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -11440,14 +11453,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/russell-strapazierfaehiges-poloshirt-599-black/front.webp",
-        "back": "/products/russell-strapazierfaehiges-poloshirt-599-black/back.webp"
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-black/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/front.webp",
-        "back": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/back.webp"
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -11462,7 +11477,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bright-royal": {
       "views": {
         "front": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/front.webp",
-        "back": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/back.webp"
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -11477,7 +11493,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "classic-red": {
       "views": {
         "front": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/front.webp",
-        "back": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/back.webp"
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -11492,7 +11509,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "french-navy": {
       "views": {
         "front": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/front.webp",
-        "back": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/back.webp"
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -11515,7 +11533,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/russell-strapazierfaehiges-poloshirt-599-white/front.webp",
-        "back": "/products/russell-strapazierfaehiges-poloshirt-599-white/back.webp"
+        "back": "/products/russell-strapazierfaehiges-poloshirt-599-white/back.webp",
+        "sleeve_left": "/products/russell-strapazierfaehiges-poloshirt-599-white/sleeve-left.webp"
       },
       "status": "real"
     }
@@ -13366,7 +13385,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/fruit-of-the-loom-premium-hooded-sweat-black/front.webp",
-        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-black/back.webp"
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-black/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-black/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -13381,14 +13401,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-navy": {
       "views": {
         "front": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/front.webp",
-        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/back.webp"
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/sleeve-left.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/front.webp",
-        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/back.webp"
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -13411,14 +13433,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/fruit-of-the-loom-premium-hooded-sweat-red/front.webp",
-        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-red/back.webp"
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-red/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-red/sleeve-left.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/front.webp",
-        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/back.webp"
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/sleeve-left.webp"
       },
       "status": "real"
     }
@@ -13511,7 +13535,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/front.webp",
-        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/back.webp"
+        "back": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/sleeve-left.webp"
       },
       "status": "real"
     }
@@ -13520,14 +13545,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/front.webp",
-        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/back.webp"
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/front.webp",
-        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/back.webp"
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -13550,14 +13577,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-navy": {
       "views": {
         "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/front.webp",
-        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/back.webp"
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/sleeve-left.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/front.webp",
-        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/back.webp"
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -13588,7 +13617,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/front.webp",
-        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/back.webp"
+        "back": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/sleeve-left.webp"
       },
       "status": "real"
     }
@@ -13711,7 +13741,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/build-your-brand-heavy-hoody-black/front.webp",
-        "back": "/products/build-your-brand-heavy-hoody-black/back.webp"
+        "back": "/products/build-your-brand-heavy-hoody-black/back.webp",
+        "sleeve_left": "/products/build-your-brand-heavy-hoody-black/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -14056,21 +14087,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-black/front.webp",
-        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-black/back.webp"
+        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-black/back.webp",
+        "sleeve_left": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-white/front.webp",
-        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-white/back.webp"
+        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-white/back.webp",
+        "sleeve_left": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-white/sleeve-left.webp"
       },
       "status": "real"
     },
     "grey": {
       "views": {
         "front": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-grey/front.webp",
-        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-grey/back.webp"
+        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-grey/back.webp",
+        "sleeve_left": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-grey/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -14109,7 +14143,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "city-red": {
       "views": {
         "front": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-city-red/front.webp",
-        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-city-red/back.webp"
+        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-city-red/back.webp",
+        "sleeve_left": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-city-red/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -14164,7 +14199,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "magnet": {
       "views": {
         "front": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-magnet/front.webp",
-        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-magnet/back.webp"
+        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-magnet/back.webp",
+        "sleeve_left": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-magnet/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -14211,7 +14247,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-navy/front.webp",
-        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-navy/back.webp"
+        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-navy/back.webp",
+        "sleeve_left": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-navy/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -15552,28 +15589,32 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/russell-authentic-hooded-sweat-black/front.webp",
-        "back": "/products/russell-authentic-hooded-sweat-black/back.webp"
+        "back": "/products/russell-authentic-hooded-sweat-black/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "bright-royal": {
       "views": {
         "front": "/products/russell-authentic-hooded-sweat-bright-royal/front.webp",
-        "back": "/products/russell-authentic-hooded-sweat-bright-royal/back.webp"
+        "back": "/products/russell-authentic-hooded-sweat-bright-royal/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-bright-royal/sleeve-left.webp"
       },
       "status": "real"
     },
     "classic-red": {
       "views": {
         "front": "/products/russell-authentic-hooded-sweat-classic-red/front.webp",
-        "back": "/products/russell-authentic-hooded-sweat-classic-red/back.webp"
+        "back": "/products/russell-authentic-hooded-sweat-classic-red/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-classic-red/sleeve-left.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/russell-authentic-hooded-sweat-french-navy/front.webp",
-        "back": "/products/russell-authentic-hooded-sweat-french-navy/back.webp"
+        "back": "/products/russell-authentic-hooded-sweat-french-navy/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-french-navy/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -15604,7 +15645,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/russell-authentic-hooded-sweat-bottle-green/front.webp",
-        "back": "/products/russell-authentic-hooded-sweat-bottle-green/back.webp"
+        "back": "/products/russell-authentic-hooded-sweat-bottle-green/back.webp",
+        "sleeve_left": "/products/russell-authentic-hooded-sweat-bottle-green/sleeve-left.webp"
       },
       "status": "real"
     },

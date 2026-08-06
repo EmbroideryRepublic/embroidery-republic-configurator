@@ -1,0 +1,294 @@
+[
+  {
+    "productId": "neutral-men-s-fit-t-shirt",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_bottle-green_RIGHT_d786ca63-13eb-44c3-9100-57f9738b1a21_web.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/19_6fa8401a-4c1b-4e77-b81d-5f62eb7f9539.jpg?v=1770287778"
+      },
+      {
+        "id": "charcoal",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_charcoal_RIGHT_9007e698-9320-4d77-bc25-c892fb857059_web.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/6_93eb83c2-a0df-47f4-97c0-fd7cdfcfd24d.jpg?v=1770287720"
+      },
+      {
+        "id": "black",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_black_RIGHT_cda538a9-0959-4d57-a031-d377407771d0_web.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/7_f8622b18-c436-41bd-90d2-a90d83f02cd7.jpg?v=1770287725"
+      },
+      {
+        "id": "navy",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_navy_RIGHT_eebc75aa-e3a3-4c0c-b159-c1dc2f8745a1_web.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/8_9fdd9558-6cba-45a4-ba0d-701729cd607e.jpg?v=1770287728"
+      },
+      {
+        "id": "white",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_white_RIGHT_dfb9a9ae-24ca-4b2c-b241-f3404cb4279a_web.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/1_bf437b55-b402-4b49-9fa4-fab8b339478d.jpg?v=1770287703"
+      },
+      {
+        "id": "red",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_red_RIGHT_cb6ded7d-8380-47c4-8d55-d87ebbfa8318_web.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/24_e0dda450-09fa-410d-bf2e-b70a4f52d8ac.jpg?v=1770287812"
+      },
+      {
+        "id": "royal",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_royal_RIGHT_1aaa38eb-debb-47d8-a35c-bf45c4d3ec34_web.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/10_693deec6-64dc-4fe9-b312-ebb3cc5e8889.jpg?v=1770287750"
+      }
+    ]
+  },
+  {
+    "productId": "russell-strapazierfaehiges-poloshirt-599",
+    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "colors": [
+      {
+        "id": "black",
+        "side": "https://www.wovina.com/cdn/shop/products/599M_20BLK_20RIGHT_1200x1200.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_black.webp"
+      },
+      {
+        "id": "bottle-green",
+        "side": "https://www.wovina.com/cdn/shop/products/599M_20BOT_20RIGHT_1200x1200.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_bottle_green.webp"
+      },
+      {
+        "id": "bright-royal",
+        "side": "https://www.wovina.com/cdn/shop/products/599M_20BRO_20RIGHT_1200x1200.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_bright_royal.webp"
+      },
+      {
+        "id": "classic-red",
+        "side": "https://www.wovina.com/cdn/shop/products/599M_20CSR_20RIGHT_1200x1200.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_classic_red.webp"
+      },
+      {
+        "id": "french-navy",
+        "side": "https://www.wovina.com/cdn/shop/products/599M_20FNA_20RIGHT_1200x1200.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_french_navy.webp"
+      },
+      {
+        "id": "white",
+        "side": "https://www.wovina.com/cdn/shop/products/599M_20WHI_20RIGHT_1200x1200.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_white.webp"
+      }
+    ]
+  },
+  {
+    "productId": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
+    "colors": [
+      {
+        "id": "black",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P4-00007.jpg",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00007.jpg"
+      },
+      {
+        "id": "white",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P4-00220.jpg",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00220.jpg"
+      },
+      {
+        "id": "grey",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P4-00111.jpg",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00111.jpg"
+      },
+      {
+        "id": "city-red",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P4-00491.jpg",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00491.jpg"
+      },
+      {
+        "id": "magnet",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P4-03516.jpg",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-03516.jpg"
+      },
+      {
+        "id": "navy",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P4-00155.jpg",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00155.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "fruit-of-the-loom-premium-hooded-sweat",
+    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
+    "colors": [
+      {
+        "id": "black",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_black_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_black.webp"
+      },
+      {
+        "id": "deep-navy",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_deep_navy_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_deep_navy.webp"
+      },
+      {
+        "id": "heather-grey",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_heather_grey_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_heather_grey.webp"
+      },
+      {
+        "id": "red",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_red_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_red.webp"
+      },
+      {
+        "id": "royal-blue",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_royal_blue_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_royal_blue.webp"
+      }
+    ]
+  },
+  {
+    "productId": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
+    "colors": [
+      {
+        "id": "black",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_black_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_black.webp"
+      },
+      {
+        "id": "white",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_white_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_white.webp"
+      },
+      {
+        "id": "deep-navy",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_deep_navy_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_deep_navy.webp"
+      },
+      {
+        "id": "royal-blue",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_royal_blue_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_royal_blue.webp"
+      },
+      {
+        "id": "red",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_red_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_red.webp"
+      }
+    ]
+  },
+  {
+    "productId": "russell-authentic-hooded-sweat",
+    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "colors": [
+      {
+        "id": "black",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_black_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_black.webp"
+      },
+      {
+        "id": "bright-royal",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bright_royal_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bright_royal.webp"
+      },
+      {
+        "id": "classic-red",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_classic_red_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_classic_red.webp"
+      },
+      {
+        "id": "french-navy",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_french_navy_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_french_navy.webp"
+      },
+      {
+        "id": "bottle-green",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bottle_green_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_bottle_green.webp"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-workwear-t-women",
+    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Produktfotografie)",
+    "colors": [
+      {
+        "id": "grey-heather",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_grey_heather_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_grey_heather.webp"
+      },
+      {
+        "id": "light-blue",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_light_blue_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_light_blue.webp"
+      },
+      {
+        "id": "orange",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_orange_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_orange.webp"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-unisex-performance-t-shirt",
+    "quelle": "sportyfied.com – Produkt \"Neutral Performance T-Shirt Recycled Polyester\" (Art. R61001), je Farbe eine eigene Seite https://www.sportyfied.com/en/neutral-performance-t-shirt-recycled-polyester-<farbe>; Galerie = front, back, side; Bilddateien unter https://www.sportyfied.com/thumbs/regular/<name>_700x700.png (700x700 = Maximalaufloesung). Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Referenzfarbe bottle-green ausgelesen: dort liegen neutral-r61001-performance-t-shirt-bottle-green-back_700x700.png und ...-bottle-green-side_700x700.png. WICHTIG: sportyfied benennt die Dateien je Farbe uneinheitlich – die Seitenansicht fuer Yellow heisst nicht nach dem bottle-green-Schema, sondern r61001_yel_side_700x700.png (aus dem DOM von .../neutral-performance-t-shirt-recycled-polyester-yellow ausgelesen; Front = r61001_yel_3, Back = r61001_yel_back). Gleiche Quelle wie die bereits vorhandenen Front-/Rueckansichten dieses Produkts.",
+    "colors": [
+      {
+        "id": "yellow",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/12_bf8a1411-981b-425b-8a29-ea73ef4efd3d.jpg?v=1770289338"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-t-shirt-e150",
+    "quelle": "cottonclassics.com – Produktseite \"B&C E150\" (https://www.cottonclassics.com/en/bandc-e150.html), Katalognummer 01001T = BCTU01T. Bildschema im DOM ausgelesen, nicht geraten: https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_01001T_bandc_-e150_<farbe>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht, offizielle B&C-Freistellerfotografie ohne Model. Die bisherige Quelle sportyfied.com (bc-tshirt-tu01t_<farbe>_<front|back|side>_700x700.png) fuehrt die Seitenansicht fuer JEDE Farbe ausser white; das Muster ist an der Belegfarbe navy (rueckKlappt 101145) verifiziert (front 347052 B / back 326215 B / side 166961 B, drei eigene Dateien), waehrend bc-tshirt-tu01t_white_side_700x700.png sowie die Varianten _side_2 und _side_3 alle 404 liefern und die white-Galerie der Produktseite nur front+back listet.",
+    "colors": [
+      {
+        "id": "white",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_01001T_bandc_-e150_white_RIGHT_19ed551d-9e9d-46a0-865c-0632dce383d9_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/bc-tshirt-tu01t_white_front_700x700.png"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "quelle": "daiber.de (offizielle Gustav Daiber Mediathek, J&N JN1808 — identische Studiofotografie, die groener-schulze unter daiber_* spiegelt); Muster: /files/jn1808-mens-workwear-t-shirt-ocs-blended-<farbe>-men.<id>_detail_<n>.jpg",
+    "colors": [
+      {
+        "id": "gold-yellow",
+        "side": "https://www.daiber.de/files/jn1808-mens-workwear-t-shirt-ocs-blended-yellow-men.44669_detail_64092.jpg",
+        "front": "https://www.textil-grosshandel.eu/out/pictures/generated/produkt/JN1808/856_1100_100/JN1808_Gold-Yellow.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-ladies-bio-workwear-t-shirt",
+    "quelle": "daiber.de Mediathek (Hersteller Gustav Daiber GmbH), Variante .44652 = Gold Yellow des Artikels JN1807 — Fallback, da groener-schulze diese Farbe fuer JN1807 nicht fuehrt",
+    "colors": [
+      {
+        "id": "gold-yellow",
+        "side": "https://www.daiber.de/files/jn1807-ladies-workwear-t-shirt-ocs-blended-yellow-ladies.44652_detail_64037.jpg",
+        "front": "https://www.textil-grosshandel.eu/out/pictures/generated/produkt/JN1807/428_550_85/JN1807_Gold-Yellow.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "fruit-of-the-loom-lightweight-hooded-sweat",
+    "quelle": "Offizielle Fruit-of-the-Loom-Mediathek (cdn.fruitoftheloom.eu). Muster NICHT geraten, sondern aus dem AngularJS-Scope der Herstellerseite https://www.fruitoftheloom.eu/shop/p/lightweight-hooded-sweat/0621400 ausgelesen: prodDetails.imageList liefert je Farbe Assets mit Typ-Namen asset_product_front / asset_product_back / asset_product_side (Freisteller) und asset_model_* (On-Model). Bildmuster: https://cdn.fruitoftheloom.eu/resources/images/product/062140/<FOTL-Farbcode>/<large|zoom|medium>/<asset-id>.jpg – 062140 = Artikel 62-140-0, Farbcode 30 = White (bestaetigt durch Swatch .../swatches/fruit/30_White.png und die Farbliste \"30 - white\" bei groener-schulze). Fuer White: asset_product_front=40193, asset_product_back=40195, asset_product_side=40194. Bisherige Quelle groener-schulze.com (Muster ..._62-140-0_<farbe>[_2|_3].webp, _2=Rueck, _3=Seite; am Beleg-Farbton black verifiziert: black.webp 36212 B, black_2.webp 26082 B, black_3.webp 15940 B) fuehrt fuer White nachweislich nur Front (white.webp 21312 B) und Rueck (white_2.webp 12242 B); white_3.webp = HTTP 404, und die White-Variantenseite (?Farbe=30+-+white) listet ebenfalls nur diese zwei Dateien.",
+    "colors": [
+      {
+        "id": "white",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/062140/30/zoom/40194.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_white.webp"
+      }
+    ]
+  },
+  {
+    "productId": "build-your-brand-heavy-hoody",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/heavy-hoody, Artikel BY011) – Bild-CDN tbi.cdn.pacerace.de. Perspektiven: P1=Front, P2=Rueck, P4=Seite/Aermel. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-<farbcode>.jpg. Der Farbcode wurde NICHT geraten, sondern 1:1 aus dem HTML der Herstellerseite ausgelesen: jede Farbzeile der Mengentabelle (span.label mit Farbnamen) traegt data-attribute-IDs, und zu jeder dieser IDs existiert ein Galerie-Block id=\"attributes-product-more-images-<id>\", der die Bilddateien dieser Farbe fuehrt. Daraus: black=00007, bottlegreen=02245 (= rueckKlappt-Beleg), burgundy=00606 (die Muster-Front-URL).",
+    "colors": [
+      {
+        "id": "black",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-00007.jpg",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P1-00007.jpg"
+      }
+    ]
+  }
+]

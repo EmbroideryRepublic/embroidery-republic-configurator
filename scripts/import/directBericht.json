@@ -1,260 +1,560 @@
 [
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "black",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#262729",
-    "erwartet": "#25282B",
-    "deltaE": 2,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "charcoal-solid",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#4b4b4b",
-    "erwartet": "#66676C",
-    "deltaE": 51,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "dark-heather",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#353c42",
-    "erwartet": "#3F4444",
-    "deltaE": 13,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "maroon",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#52263b",
-    "erwartet": "#5B2B42",
-    "deltaE": 12,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "military-green",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#53654d",
-    "erwartet": "#63655A",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "sand",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c3b6a6",
-    "erwartet": "#CABFAD",
-    "deltaE": 13,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "cocoa",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#5c3525",
-    "erwartet": "#6B3D2E",
-    "deltaE": 19,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "pistachio",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#bfc798",
-    "erwartet": "#BDC293",
-    "deltaE": 7,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "purple",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3e1774",
-    "erwartet": "#5D396F",
-    "deltaE": 46,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "ash-grey-heather",
-    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c8c8c8",
-    "erwartet": "#C8C9C7",
-    "deltaE": 1,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "french-navy",
-    "quelle": "s7g3.scene7.com",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#2d314c",
-    "erwartet": "#011F45",
-    "deltaE": 48,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "grey-melange",
-    "quelle": "s7g3.scene7.com",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#999b9a",
-    "erwartet": "#8F8B8B",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "red",
-    "quelle": "s7g3.scene7.com",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#ab0f2c",
-    "erwartet": "#C4082D",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "white",
-    "quelle": "s7g3.scene7.com",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#dee3e6",
-    "erwartet": "#FFFFFF",
-    "deltaE": 50,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "produkt": "neutral-men-s-fit-t-shirt",
     "farbe": "bottle-green",
-    "quelle": "s7g3.scene7.com",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
     "gefunden": [
       "front",
-      "back",
       "sleeve-left"
     ],
-    "frontDom": "#2f4629",
-    "erwartet": "#253E33",
-    "deltaE": 16,
-    "dupeMit": null
+    "frontDom": "#1e442b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-men-s-fit-t-shirt-bottle-green"
   },
   {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "mouse-grey-solid",
-    "quelle": "s7g3.scene7.com",
+    "produkt": "neutral-men-s-fit-t-shirt",
+    "farbe": "charcoal",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
     "gefunden": [
       "front",
-      "back",
       "sleeve-left"
     ],
-    "frontDom": "#333037",
-    "erwartet": "#645E67",
-    "deltaE": 83,
-    "dupeMit": null
+    "frontDom": "#494946",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-men-s-fit-t-shirt-charcoal"
   },
   {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "burgundy",
-    "quelle": "groener-schulze.com – Produktseite /werbetextilien/polo-shirts/russell-athletic-mens-ultimate-cotton-polo-r-577m-0 (offizielle Russell/FOTL-Freistellerfotografie, 1200x1200 .webp). Farbliste und Bild-URLs aus dem Varianten-DOM der Seite ausgelesen (?clk=Farbe&Farbe=41+-+burgundy), Slugs nicht geraten. Dateimuster: /grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_<farbe>.webp = Front, _2 = Ruecken, _3 = Seite (_4/_5 sind On-Model-Aufnahmen und wurden nicht verwendet). Perspektiven-Index nicht aus einer anderen Farbe uebertragen, sondern fuer burgundy einzeln dekodiert und angesehen. Artikelnummer r-577m-0 in allen gelieferten Dateinamen enthalten.",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#693448",
-    "erwartet": "#5A032C",
-    "deltaE": 58,
-    "dupeMit": null
-  },
-  {
-    "produkt": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+    "produkt": "neutral-men-s-fit-t-shirt",
     "farbe": "black",
-    "quelle": "continentalclothing.com – offizieller Continental Clothing / EarthPositive Asset-Server, Muster /assets/product_shots/high_res/{front,back}/EP61P-<Farbcode>.jpg. Farbcode-Zuordnung NICHT geraten, sondern aus der Quelle selbst belegt: continentalclothing.com leitet heute auf den offiziellen Shop earthpositiveonline.com (Shopify) um; dessen Varianten-JSON (/products/<handle>.json) loest die Herstellercodes eindeutig auf – ep306-bl1 = \"Black\", ep306-na1 = \"Dark Navy\", ep75-bl = \"Black\", ep75-na = \"Dark Navy\". Damit BL = Black, NA = Navy, konsistent zum vorhandenen Muster (AB = Ash Black, MGY = Melange Grey, MA = Mango). Der Asset-Server liefert fuer erfundene Codes sauber 404 (getestet: EP61P-ZZZ, EP61P-XX9), es gibt also keinen Platzhalter-Fallback – die 200er fuer EP61P-BL/EP61P-NA sind echte, gefuehrte Farben dieses Artikels. Alle vier Dateien einzeln heruntergeladen und angesehen: identischer Freisteller-Laydown, identischer Bildausschnitt und identische Aufloesung (2160x2830) wie die Belegfarbe EP61P-AB. Perspektive \"side\" fuehrt der Asset-Server fuer diesen Artikel nicht (front/back = 200, side/left/right/detail = 404).",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
     "gefunden": [
       "front",
-      "back"
-    ],
-    "frontDom": "#0d1215",
-    "erwartet": "#191516",
-    "deltaE": 12,
-    "dupeMit": null
-  },
-  {
-    "produkt": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
-    "farbe": "navy",
-    "quelle": "continentalclothing.com – offizieller Continental Clothing / EarthPositive Asset-Server, Muster /assets/product_shots/high_res/{front,back}/EP61P-<Farbcode>.jpg. Farbcode-Zuordnung NICHT geraten, sondern aus der Quelle selbst belegt: continentalclothing.com leitet heute auf den offiziellen Shop earthpositiveonline.com (Shopify) um; dessen Varianten-JSON (/products/<handle>.json) loest die Herstellercodes eindeutig auf – ep306-bl1 = \"Black\", ep306-na1 = \"Dark Navy\", ep75-bl = \"Black\", ep75-na = \"Dark Navy\". Damit BL = Black, NA = Navy, konsistent zum vorhandenen Muster (AB = Ash Black, MGY = Melange Grey, MA = Mango). Der Asset-Server liefert fuer erfundene Codes sauber 404 (getestet: EP61P-ZZZ, EP61P-XX9), es gibt also keinen Platzhalter-Fallback – die 200er fuer EP61P-BL/EP61P-NA sind echte, gefuehrte Farben dieses Artikels. Alle vier Dateien einzeln heruntergeladen und angesehen: identischer Freisteller-Laydown, identischer Bildausschnitt und identische Aufloesung (2160x2830) wie die Belegfarbe EP61P-AB. Perspektive \"side\" fuehrt der Asset-Server fuer diesen Artikel nicht (front/back = 200, side/left/right/detail = 404).",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#0c1427",
-    "erwartet": "#211F2C",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-fluffy-hoody",
-    "farbe": "light-asphalt",
-    "quelle": "tbi.cdn.pacerace.de – Original-CDN von TB International / Build Your Brand, Artikel BY284 \"Fluffy Hoody\". Bild-URLs aus dem HTML der offiziellen Produktseite https://www.buildyourbrand.de/en/fluffy-hoody ausgelesen (Galerieblöcke attributes-product-more-images-<attributeId>, verknuepft ueber die data-attribute-IDs der Farbzeile \"lightasphalt\" in der Groessenmatrix). Muster: /media/images/org/BY284_<P1|P2|P4|P5>-<Farbcode>.jpg; Light Asphalt = Farbcode 02946 (aus der Quelle, nicht geraten).",
-    "gefunden": [
-      "front",
-      "back",
       "sleeve-left"
     ],
-    "frontDom": "#c5c8bd",
-    "erwartet": "#ABB1B3",
-    "deltaE": 36,
-    "dupeMit": null
+    "frontDom": "#232323",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-men-s-fit-t-shirt-black"
+  },
+  {
+    "produkt": "neutral-men-s-fit-t-shirt",
+    "farbe": "navy",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#212338",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-men-s-fit-t-shirt-navy"
+  },
+  {
+    "produkt": "neutral-men-s-fit-t-shirt",
+    "farbe": "white",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#e6e6e8",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-men-s-fit-t-shirt-white"
+  },
+  {
+    "produkt": "neutral-men-s-fit-t-shirt",
+    "farbe": "red",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#bb1f29",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-men-s-fit-t-shirt-red"
+  },
+  {
+    "produkt": "neutral-men-s-fit-t-shirt",
+    "farbe": "royal",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#0b417e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-men-s-fit-t-shirt-royal"
+  },
+  {
+    "produkt": "russell-strapazierfaehiges-poloshirt-599",
+    "farbe": "black",
+    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#323135",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-black"
+  },
+  {
+    "produkt": "russell-strapazierfaehiges-poloshirt-599",
+    "farbe": "bottle-green",
+    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#41594e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-bottle-green"
+  },
+  {
+    "produkt": "russell-strapazierfaehiges-poloshirt-599",
+    "farbe": "bright-royal",
+    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#183670",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-bright-royal"
+  },
+  {
+    "produkt": "russell-strapazierfaehiges-poloshirt-599",
+    "farbe": "classic-red",
+    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#b6223e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-classic-red"
+  },
+  {
+    "produkt": "russell-strapazierfaehiges-poloshirt-599",
+    "farbe": "french-navy",
+    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#363d4a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-french-navy"
+  },
+  {
+    "produkt": "russell-strapazierfaehiges-poloshirt-599",
+    "farbe": "white",
+    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#efeef3",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-white"
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "black",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#1b1b1d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-black"
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "white",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#efeef3",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-white"
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "grey",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#c5c4c9",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-grey"
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "city-red",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#ea102c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-city-red"
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "magnet",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#5a575c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-magnet"
+  },
+  {
+    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
+    "farbe": "navy",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#312d3e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-navy"
+  },
+  {
+    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
+    "farbe": "black",
+    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#383334",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-black"
+  },
+  {
+    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
+    "farbe": "deep-navy",
+    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#3c3a46",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-deep-navy"
+  },
+  {
+    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
+    "farbe": "heather-grey",
+    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#cac8d2",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-heather-grey"
+  },
+  {
+    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
+    "farbe": "red",
+    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#db293f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-red"
+  },
+  {
+    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
+    "farbe": "royal-blue",
+    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#3964b1",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-royal-blue"
+  },
+  {
+    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+    "farbe": "black",
+    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#19191e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-black"
+  },
+  {
+    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+    "farbe": "white",
+    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#eeeeee",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-white"
+  },
+  {
+    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+    "farbe": "deep-navy",
+    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#131b2d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy"
+  },
+  {
+    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+    "farbe": "royal-blue",
+    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#014e99",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue"
+  },
+  {
+    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+    "farbe": "red",
+    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#d4163b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-red"
+  },
+  {
+    "produkt": "russell-authentic-hooded-sweat",
+    "farbe": "black",
+    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#333033",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-authentic-hooded-sweat-black"
+  },
+  {
+    "produkt": "russell-authentic-hooded-sweat",
+    "farbe": "bright-royal",
+    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#3e4e84",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-authentic-hooded-sweat-bright-royal"
+  },
+  {
+    "produkt": "russell-authentic-hooded-sweat",
+    "farbe": "classic-red",
+    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#c40e37",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-authentic-hooded-sweat-classic-red"
+  },
+  {
+    "produkt": "russell-authentic-hooded-sweat",
+    "farbe": "french-navy",
+    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#373e4c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-authentic-hooded-sweat-french-navy"
+  },
+  {
+    "produkt": "russell-authentic-hooded-sweat",
+    "farbe": "bottle-green",
+    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#3f554b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-authentic-hooded-sweat-bottle-green"
+  },
+  {
+    "produkt": "jamesnicholson-workwear-t-women",
+    "farbe": "grey-heather",
+    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Produktfotografie)",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#a0a0a0",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "jamesnicholson-workwear-t-women-grey-heather"
+  },
+  {
+    "produkt": "jamesnicholson-workwear-t-women",
+    "farbe": "light-blue",
+    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Produktfotografie)",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#c2d6e3",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "jamesnicholson-workwear-t-women-light-blue"
+  },
+  {
+    "produkt": "jamesnicholson-workwear-t-women",
+    "farbe": "orange",
+    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Produktfotografie)",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#f67d23",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "jamesnicholson-workwear-t-women-orange"
+  },
+  {
+    "produkt": "neutral-unisex-performance-t-shirt",
+    "farbe": "yellow",
+    "quelle": "sportyfied.com – Produkt \"Neutral Performance T-Shirt Recycled Polyester\" (Art. R61001), je Farbe eine eigene Seite https://www.sportyfied.com/en/neutral-performance-t-shirt-recycled-polyester-<farbe>; Galerie = front, back, side; Bilddateien unter https://www.sportyfied.com/thumbs/regular/<name>_700x700.png (700x700 = Maximalaufloesung). Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Referenzfarbe bottle-green ausgelesen: dort liegen neutral-r61001-performance-t-shirt-bottle-green-back_700x700.png und ...-bottle-green-side_700x700.png. WICHTIG: sportyfied benennt die Dateien je Farbe uneinheitlich – die Seitenansicht fuer Yellow heisst nicht nach dem bottle-green-Schema, sondern r61001_yel_side_700x700.png (aus dem DOM von .../neutral-performance-t-shirt-recycled-polyester-yellow ausgelesen; Front = r61001_yel_3, Back = r61001_yel_back). Gleiche Quelle wie die bereits vorhandenen Front-/Rueckansichten dieses Produkts.",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f0d254",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-unisex-performance-t-shirt-yellow"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150",
+    "farbe": "white",
+    "quelle": "cottonclassics.com – Produktseite \"B&C E150\" (https://www.cottonclassics.com/en/bandc-e150.html), Katalognummer 01001T = BCTU01T. Bildschema im DOM ausgelesen, nicht geraten: https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_01001T_bandc_-e150_<farbe>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht, offizielle B&C-Freistellerfotografie ohne Model. Die bisherige Quelle sportyfied.com (bc-tshirt-tu01t_<farbe>_<front|back|side>_700x700.png) fuehrt die Seitenansicht fuer JEDE Farbe ausser white; das Muster ist an der Belegfarbe navy (rueckKlappt 101145) verifiziert (front 347052 B / back 326215 B / side 166961 B, drei eigene Dateien), waehrend bc-tshirt-tu01t_white_side_700x700.png sowie die Varianten _side_2 und _side_3 alle 404 liefern und die white-Galerie der Produktseite nur front+back listet.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#f3f3f3",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-white"
+  },
+  {
+    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "farbe": "gold-yellow",
+    "quelle": "daiber.de (offizielle Gustav Daiber Mediathek, J&N JN1808 — identische Studiofotografie, die groener-schulze unter daiber_* spiegelt); Muster: /files/jn1808-mens-workwear-t-shirt-ocs-blended-<farbe>-men.<id>_detail_<n>.jpg",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#ffbb3b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow"
+  },
+  {
+    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
+    "farbe": "gold-yellow",
+    "quelle": "daiber.de Mediathek (Hersteller Gustav Daiber GmbH), Variante .44652 = Gold Yellow des Artikels JN1807 — Fallback, da groener-schulze diese Farbe fuer JN1807 nicht fuehrt",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#f7b02f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow"
+  },
+  {
+    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
+    "farbe": "white",
+    "quelle": "Offizielle Fruit-of-the-Loom-Mediathek (cdn.fruitoftheloom.eu). Muster NICHT geraten, sondern aus dem AngularJS-Scope der Herstellerseite https://www.fruitoftheloom.eu/shop/p/lightweight-hooded-sweat/0621400 ausgelesen: prodDetails.imageList liefert je Farbe Assets mit Typ-Namen asset_product_front / asset_product_back / asset_product_side (Freisteller) und asset_model_* (On-Model). Bildmuster: https://cdn.fruitoftheloom.eu/resources/images/product/062140/<FOTL-Farbcode>/<large|zoom|medium>/<asset-id>.jpg – 062140 = Artikel 62-140-0, Farbcode 30 = White (bestaetigt durch Swatch .../swatches/fruit/30_White.png und die Farbliste \"30 - white\" bei groener-schulze). Fuer White: asset_product_front=40193, asset_product_back=40195, asset_product_side=40194. Bisherige Quelle groener-schulze.com (Muster ..._62-140-0_<farbe>[_2|_3].webp, _2=Rueck, _3=Seite; am Beleg-Farbton black verifiziert: black.webp 36212 B, black_2.webp 26082 B, black_3.webp 15940 B) fuehrt fuer White nachweislich nur Front (white.webp 21312 B) und Rueck (white_2.webp 12242 B); white_3.webp = HTTP 404, und die White-Variantenseite (?Farbe=30+-+white) listet ebenfalls nur diese zwei Dateien.",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#edecf1",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "fruit-of-the-loom-lightweight-hooded-sweat-white"
+  },
+  {
+    "produkt": "build-your-brand-heavy-hoody",
+    "farbe": "black",
+    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/heavy-hoody, Artikel BY011) – Bild-CDN tbi.cdn.pacerace.de. Perspektiven: P1=Front, P2=Rueck, P4=Seite/Aermel. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-<farbcode>.jpg. Der Farbcode wurde NICHT geraten, sondern 1:1 aus dem HTML der Herstellerseite ausgelesen: jede Farbzeile der Mengentabelle (span.label mit Farbnamen) traegt data-attribute-IDs, und zu jeder dieser IDs existiert ein Galerie-Block id=\"attributes-product-more-images-<id>\", der die Bilddateien dieser Farbe fuehrt. Daraus: black=00007, bottlegreen=02245 (= rueckKlappt-Beleg), burgundy=00606 (die Muster-Front-URL).",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#1e1e1e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "build-your-brand-heavy-hoody-black"
   }
 ]

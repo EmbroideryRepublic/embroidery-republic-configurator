@@ -45,6 +45,31 @@ function flagWert(name: string): string | undefined {
 
 const ohne = new Set((flagWert('--ohne') ?? '').split(',').filter(Boolean));
 
+/**
+ * Bereits mit Begründung als nicht beschaffbar dokumentierte Ansichten – nicht
+ * erneut recherchieren lassen. Für den Gildan Ultra Cotton hat ein Agent dafür
+ * 13 Distributoren, die Herstellerseite und das Wayback-Archiv geprüft; das ein
+ * zweites Mal zu tun, kostet nur Zeit. `--alle` hebt die Sperre auf, falls sich
+ * die Vorgabe ändert (etwa wenn On-Model doch zugelassen würde).
+ */
+const aufgegeben = new Set<string>();
+for (const f of process.argv.includes('--alle')
+  ? []
+  : readdirSync(IMPORT).filter((f) => f.startsWith('nichtbeschaffbar'))) {
+  let eintraege: { productId?: string; id?: string; colorId?: string; colors?: { id: string }[] }[];
+  try {
+    eintraege = JSON.parse(readFileSync(join(IMPORT, f), 'utf8'));
+  } catch {
+    continue;
+  }
+  for (const e of Array.isArray(eintraege) ? eintraege : []) {
+    const pid = e.productId ?? e.id;
+    if (!pid) continue;
+    if (e.colorId) aufgegeben.add(`${pid}/${e.colorId}`);
+    for (const c of e.colors ?? []) aufgegeben.add(`${pid}/${c.id}`);
+  }
+}
+
 const ansicht = flagWert('--ansicht') ?? 'back';
 const istRueck = ansicht === 'back';
 
@@ -56,7 +81,7 @@ for (const p of PRODUCTS) {
     const b = ASSET_MANIFEST[p.id]?.[id]?.views?.[ansicht];
     return Boolean(b) && !b!.includes('_platzhalter');
   };
-  const fehlt = real.filter((c) => !hat(c.id));
+  const fehlt = real.filter((c) => !hat(c.id) && !aufgegeben.has(`${p.id}/${c.id}`));
   if (!fehlt.length) continue;
   const h = herkunft.get(p.id);
   // Eine Farbe, die die Ansicht schon hat, ist der beste Beleg dafür, dass die

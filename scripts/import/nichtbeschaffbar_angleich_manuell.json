@@ -1,0 +1,12 @@
+[
+  {
+    "productId": "bundc-t-shirt-e150-women",
+    "colorId": "atoll",
+    "grund": "Von der Angleichung AUSGENOMMEN. sportyfied.com fuehrt Atoll fuer TW02T nur unter dem Dateinamen bc-tshirt-tw04t__atoll_* - TW04T ist die Artikelnummer des E190-Damenshirts, eines anderen Katalogprodukts. Ein Angleich-Lauf hatte diese Datei bereits einmal eingesetzt; der Bilddubletten-Audit hat es gefunden (MAD 0.41). Es bleibt beim offiziellen B&C-Bild TW02T_P_BC_441_01 von bc-collection.eu. Ein Stilbruch ist hinnehmbar, ein fremdes Produktbild nicht."
+  },
+  {
+    "productId": "bundc-t-shirt-e150-women",
+    "colorId": "ash-heather",
+    "grund": "sportyfied.com fuehrt fuer TW02T keine Farbe Ash - das Varianten-JSON listet alle 40 Farben ohne Ash-Eintrag. Bleibt bei bc-collection.eu."
+  }
+]

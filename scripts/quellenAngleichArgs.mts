@@ -68,6 +68,23 @@ for (const { f } of dateien) {
   }
 }
 
+/**
+ * Farben, die an der Zielquelle nachweislich nicht existieren, nicht erneut
+ * suchen lassen – und Faelle, in denen die Zielquelle das Bild nur unter einer
+ * FREMDEN Artikelnummer fuehrt (dann ist der Stilbruch das kleinere Uebel).
+ */
+const aufgegeben = new Set<string>();
+for (const f of process.argv.includes('--alle') ? [] : readdirSync(IMPORT).filter((f) => f.startsWith('nichtbeschaffbar'))) {
+  let eintraege: { productId?: string; id?: string; colorId?: string; colors?: { id: string }[] }[];
+  try { eintraege = JSON.parse(readFileSync(join(IMPORT, f), 'utf8')); } catch { continue; }
+  for (const e of Array.isArray(eintraege) ? eintraege : []) {
+    const pid = e.productId ?? e.id;
+    if (!pid) continue;
+    if (e.colorId) aufgegeben.add(`${pid}/${e.colorId}`);
+    for (const c of e.colors ?? []) aufgegeben.add(`${pid}/${c.id}`);
+  }
+}
+
 const mind = Number(flagWert('--mind')) || 1;
 const items = [];
 
@@ -88,7 +105,7 @@ for (const p of PRODUCTS) {
   const ziel = kandidaten[0];
   if (!ziel) continue;
 
-  const angleichen = real.filter((c) => (proFarbe.get(c.id)?.q ?? ALT) !== ziel[0]);
+  const angleichen = real.filter((c) => (proFarbe.get(c.id)?.q ?? ALT) !== ziel[0] && !aufgegeben.has(`${p.id}/${c.id}`));
   if (angleichen.length < mind) continue;
 
   // Drei echte URLs der Zielquelle als Muster – daraus leitet sich das Schema ab.

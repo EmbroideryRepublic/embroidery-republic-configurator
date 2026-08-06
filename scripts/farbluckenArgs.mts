@@ -20,6 +20,13 @@ import { ASSET_MANIFEST } from '../src/lib/assets/assetManifest.generated.ts';
 
 const IMPORT = join(process.cwd(), 'scripts', 'import');
 
+/** Wert eines Schalters. NICHT `argv[indexOf(x)+1]` – ohne den Schalter ist das
+ *  `argv[0]`, also der Node-Pfad, und die Auswertung kippt lautlos. */
+function flagWert(name: string): string | undefined {
+  const i = process.argv.indexOf(name);
+  return i > -1 ? process.argv[i + 1] : undefined;
+}
+
 /** Quelle + Beispiel-URL je Produkt aus allen bisherigen Importläufen. */
 const herkunft = new Map<string, { quelle: string; muster: string }>();
 for (const datei of readdirSync(IMPORT).filter((f) => f.startsWith('directJobs') && f.endsWith('.json'))) {
@@ -36,9 +43,11 @@ for (const datei of readdirSync(IMPORT).filter((f) => f.startsWith('directJobs')
   }
 }
 
-/** Schon dokumentiert als nirgends beschaffbar – nicht erneut suchen lassen. */
+/** Schon dokumentiert als nirgends beschaffbar – nicht erneut suchen lassen.
+ *  `--alle` hebt das auf: für eine Schlussrunde mit geänderter Vorgabe (z.B.
+ *  On-Model als letzter Ausweg zugelassen) müssen genau diese wieder rein. */
 const aufgegeben = new Set<string>();
-for (const datei of readdirSync(IMPORT).filter((f) => f.startsWith('nichtbeschaffbar'))) {
+for (const datei of process.argv.includes('--alle') ? [] : readdirSync(IMPORT).filter((f) => f.startsWith('nichtbeschaffbar'))) {
   // Zwei gewachsene Formen: flach {productId,colorId,grund} und
   // gruppiert {productId,colors:[{id,grund}]}. Beide lesen.
   let eintraege: { productId?: string; id?: string; colorId?: string; colors?: { id: string }[] }[];
@@ -77,8 +86,8 @@ for (const p of PRODUCTS) {
 
 items.sort((a, b) => b.fehlend.split(' ; ').length - a.fehlend.split(' ; ').length);
 
-const ab = Number(process.argv[process.argv.indexOf('--ab') + 1]) || 0;
-const max = Number(process.argv[process.argv.indexOf('--max') + 1]) || items.length;
+const ab = Number(flagWert('--ab')) || 0;
+const max = Number(flagWert('--max')) || items.length;
 const teil = items.slice(ab, ab + max);
 
 const ziel = process.argv[2];

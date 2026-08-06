@@ -36,11 +36,16 @@ for (const datei of readdirSync(IMPORT).filter((f) => f.startsWith('directJobs')
   }
 }
 
-const ohne = new Set(
-  (process.argv[process.argv.indexOf('--ohne') + 1] ?? '').split(',').filter(Boolean)
-);
+/** Wert eines Schalters. NICHT `argv[indexOf(x)+1]` – ohne den Schalter ist das
+ *  `argv[0]`, also der Node-Pfad, und die Auswertung kippt lautlos. */
+function flagWert(name: string): string | undefined {
+  const i = process.argv.indexOf(name);
+  return i > -1 ? process.argv[i + 1] : undefined;
+}
 
-const ansicht = process.argv[process.argv.indexOf('--ansicht') + 1] ?? 'back';
+const ohne = new Set((flagWert('--ohne') ?? '').split(',').filter(Boolean));
+
+const ansicht = flagWert('--ansicht') ?? 'back';
 const istRueck = ansicht === 'back';
 
 const items = [];
@@ -74,8 +79,8 @@ for (const p of PRODUCTS) {
 
 items.sort((a, b) => b.fehlend.split(' ; ').length - a.fehlend.split(' ; ').length);
 
-const ab = Number(process.argv[process.argv.indexOf('--ab') + 1]) || 0;
-const max = Number(process.argv[process.argv.indexOf('--max') + 1]) || items.length;
+const ab = Number(flagWert('--ab')) || 0;
+const max = Number(flagWert('--max')) || items.length;
 const teil = items.slice(ab, ab + max);
 
 const ziel = process.argv[2];

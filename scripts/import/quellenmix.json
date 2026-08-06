@@ -1,0 +1,894 @@
+[
+  {
+    "id": "bundc-inspire-t-men",
+    "mehrheit": "ALTBESTAND (keine Herkunft protokolliert)",
+    "anzahl": 7,
+    "minderheit": [
+      {
+        "host": "coozo.co.uk",
+        "farben": [
+          "atoll",
+          "orange",
+          "millennial-khaki",
+          "millennial-pink",
+          "urban-orange",
+          "urban-purple"
+        ]
+      },
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "dark-grey-solid",
+          "fuchsia",
+          "gold",
+          "light-grey",
+          "real-green"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-t-shirt-e150-women",
+    "mehrheit": "sportyfied.com",
+    "anzahl": 32,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "white",
+          "black",
+          "royal-blue",
+          "red",
+          "sport-grey-heather",
+          "kelly-green",
+          "navy"
+        ]
+      },
+      {
+        "host": "bc-collection.eu",
+        "farben": [
+          "atoll",
+          "ash-heather"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-unisex-polo-id-001",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 11,
+    "minderheit": [
+      {
+        "host": "textile-direct.fr",
+        "farben": [
+          "brown",
+          "chili-gold",
+          "fuchsia",
+          "heather-grey",
+          "light-blue",
+          "orange",
+          "pixel-coral",
+          "purple",
+          "sand"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neutral-men-s-classic-t-shirt",
+    "mehrheit": "sportyfied.com",
+    "anzahl": 21,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "bottle-green",
+          "charcoal",
+          "black",
+          "navy",
+          "red",
+          "white",
+          "royal"
+        ]
+      },
+      {
+        "host": "neutral.com",
+        "farben": [
+          "teal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neutral-ladies-fit-t-shirt",
+    "mehrheit": "sportyfied.com",
+    "anzahl": 23,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "bottle-green",
+          "charcoal",
+          "black",
+          "navy",
+          "red",
+          "royal",
+          "white"
+        ]
+      },
+      {
+        "host": "cdn.shopify.com/s/files/1/0076/1439/8546",
+        "farben": [
+          "white-navy-striped"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-t-shirt-e190",
+    "mehrheit": "sportyfied.com",
+    "anzahl": 33,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "navy-blue",
+          "white",
+          "black",
+          "sport-grey-heather",
+          "royal-blue",
+          "red",
+          "kelly-green"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-t-shirt-e190-women",
+    "mehrheit": "stickx.de",
+    "anzahl": 33,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "white",
+          "black",
+          "navy",
+          "sport-grey-heather",
+          "royal-blue",
+          "red",
+          "kelly-green"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-t-shirt-e150",
+    "mehrheit": "sportyfied.com",
+    "anzahl": 34,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "white",
+          "black",
+          "royal-blue",
+          "sport-grey-heather",
+          "red",
+          "bottle-green",
+          "navy"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gildan-ultra-cotton-t-shirt",
+    "mehrheit": "cdn.shopify.com/s/files/1/0077/4048/9809",
+    "anzahl": 45,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "navy",
+          "forest-green",
+          "black",
+          "red",
+          "royal",
+          "sport-grey-heather",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neutral-ladies-classic-t-shirt",
+    "mehrheit": "sportyfied.com",
+    "anzahl": 22,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "bottle-green",
+          "charcoal",
+          "black",
+          "navy",
+          "red",
+          "white",
+          "royal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neutral-men-s-fit-t-shirt",
+    "mehrheit": "cdn.shopify.com/s/files/1/0076/1439/8546",
+    "anzahl": 24,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "bottle-green",
+          "charcoal",
+          "black",
+          "navy",
+          "white",
+          "red",
+          "royal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-inspire-polo-men",
+    "mehrheit": "rexlander.com",
+    "anzahl": 13,
+    "minderheit": [
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "urban-navy",
+          "cobalt-blue",
+          "white",
+          "heather-grey",
+          "dark-grey-solid",
+          "black",
+          "fire-red"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-inspire-polo-women",
+    "mehrheit": "promociel.fr",
+    "anzahl": 13,
+    "minderheit": [
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "urban-navy",
+          "cobalt-blue",
+          "white",
+          "heather-grey",
+          "dark-grey-solid",
+          "black",
+          "fire-red"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sols-women-s-polo-shirt-prime",
+    "mehrheit": "cdn.shopify.com/s/files/1/0601/4464/8378",
+    "anzahl": 10,
+    "minderheit": [
+      {
+        "host": "assets.myworkwear.co.uk",
+        "farben": [
+          "royal-blue",
+          "black",
+          "bottle-green",
+          "french-navy",
+          "grey-melange",
+          "red",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gildan-heavy-blend-hooded-sweatshirt",
+    "mehrheit": "shop.ralawise.com",
+    "anzahl": 32,
+    "minderheit": [
+      {
+        "host": "textil-grosshandel.eu",
+        "farben": [
+          "old-gold",
+          "violet",
+          "antique-cherry-red-heather",
+          "antique-sapphire-heather"
+        ]
+      },
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "black",
+          "sport-grey-heather",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gildan-softstyle-midweight-sweat-adult-hoodie",
+    "mehrheit": "images.teamshirts.net",
+    "anzahl": 8,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "navy",
+          "black",
+          "charcoal-solid",
+          "maroon",
+          "military-green",
+          "white",
+          "ash-grey-heather"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fruit-of-the-loom-classic-hooded-sweat",
+    "mehrheit": "cdn.fruitoftheloom.eu",
+    "anzahl": 18,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "black",
+          "heather-grey",
+          "navy",
+          "white",
+          "heather-red",
+          "bottle-green",
+          "royal-blue"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "mehrheit": "cdn.blankstyle.com",
+    "anzahl": 14,
+    "minderheit": [
+      {
+        "host": "images.allmyclothes.de",
+        "farben": [
+          "navy",
+          "black",
+          "charcoal-solid",
+          "forest-green",
+          "red",
+          "royal",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neutral-ladies-long-sleeve-t-shirt",
+    "mehrheit": "cdn.shopify.com/s/files/1/0076/1439/8546",
+    "anzahl": 16,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "bottle-green",
+          "charcoal",
+          "black",
+          "navy",
+          "red",
+          "white",
+          "royal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neutral-men-s-long-sleeve-t-shirt",
+    "mehrheit": "cdn.shopify.com/s/files/1/0076/1439/8546",
+    "anzahl": 17,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "bottle-green",
+          "black",
+          "navy",
+          "white",
+          "charcoal",
+          "red",
+          "royal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gildan-light-cotton-adult-t-shirt",
+    "mehrheit": "cdn11.bigcommerce.com/s-25plmff032",
+    "anzahl": 19,
+    "minderheit": [
+      {
+        "host": "pencarrie.com",
+        "farben": [
+          "navy",
+          "black",
+          "charcoal-solid",
+          "red",
+          "royal",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neutral-unisex-performance-t-shirt",
+    "mehrheit": "cdn.shopify.com/s/files/1/0076/1439/8546",
+    "anzahl": 14,
+    "minderheit": [
+      {
+        "host": "ALTBESTAND (keine Herkunft protokolliert)",
+        "farben": [
+          "white",
+          "charcoal",
+          "black",
+          "navy",
+          "red",
+          "royal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "russell-poloshirt-6535",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 7,
+    "minderheit": [
+      {
+        "host": "freewear.de",
+        "farben": [
+          "bottle-green",
+          "bright-red",
+          "burgundy",
+          "purple",
+          "sky",
+          "yellow"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sols-men-s-polo-shirt-perfect",
+    "mehrheit": "s7g3.scene7.com",
+    "anzahl": 19,
+    "minderheit": [
+      {
+        "host": "assets.myworkwear.co.uk",
+        "farben": [
+          "royal-blue",
+          "black",
+          "french-navy",
+          "kelly-green",
+          "red",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-e220-t",
+    "mehrheit": "ALTBESTAND (keine Herkunft protokolliert)",
+    "anzahl": 5,
+    "minderheit": [
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "dark-grey-solid",
+          "off-white",
+          "khaki",
+          "mastic",
+          "orchid-pink"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-hoodie",
+    "mehrheit": "bc-collection.eu",
+    "anzahl": 30,
+    "minderheit": [
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "navy-blue",
+          "red",
+          "royal-blue",
+          "black-pure",
+          "heather-grey"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthpositive-earth-positive-pullover-hoodie",
+    "mehrheit": "cdn.earthpositiveonline.com",
+    "anzahl": 27,
+    "minderheit": [
+      {
+        "host": "shirtplus.net",
+        "farben": [
+          "black",
+          "forest-green",
+          "french-navy",
+          "stone-washed-grey",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fruit-of-the-loom-lightweight-hooded-sweat",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 8,
+    "minderheit": [
+      {
+        "host": "freewear.de",
+        "farben": [
+          "azure-blue",
+          "kelly-green",
+          "light-graphite-solid",
+          "orange"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "mehrheit": "assets.myworkwear.co.uk",
+    "anzahl": 8,
+    "minderheit": [
+      {
+        "host": "s7g3.scene7.com",
+        "farben": [
+          "royal-blue",
+          "oxblood",
+          "dark-khaki",
+          "orange"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-inspire-t-women",
+    "mehrheit": "cottonclassics.com",
+    "anzahl": 15,
+    "minderheit": [
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "black",
+          "navy",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "russell-classic-heavyweight-t-shirt",
+    "mehrheit": "cdn.fruitoftheloom.eu",
+    "anzahl": 6,
+    "minderheit": [
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "black",
+          "french-navy",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "russell-men-s-classic-cotton-polo",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 5,
+    "minderheit": [
+      {
+        "host": "rexlander.com",
+        "farben": [
+          "bottle-green",
+          "fuchsia",
+          "sky"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 7,
+    "minderheit": [
+      {
+        "host": "freewear.de",
+        "farben": [
+          "urban-orange",
+          "burgundy",
+          "urban-purple"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-inspire-v-t-men",
+    "mehrheit": "images.allmyclothes.de",
+    "anzahl": 4,
+    "minderheit": [
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "black",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-inspire-v-t-women",
+    "mehrheit": "bc-collection.eu",
+    "anzahl": 4,
+    "minderheit": [
+      {
+        "host": "groener-schulze.com",
+        "farben": [
+          "black",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-men-s-basic-t",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 27,
+    "minderheit": [
+      {
+        "host": "freewear.de",
+        "farben": [
+          "coral"
+        ]
+      },
+      {
+        "host": "daiber.de",
+        "farben": [
+          "dark-royal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stedman-clive-crew-neck",
+    "mehrheit": "stedman.eu",
+    "anzahl": 11,
+    "minderheit": [
+      {
+        "host": "web.archive.org",
+        "farben": [
+          "grey-heather",
+          "king-blue"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-classic-polo",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 33,
+    "minderheit": [
+      {
+        "host": "daiber.de",
+        "farben": [
+          "grenadine",
+          "signal-red"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-classic-polo-ladies",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 33,
+    "minderheit": [
+      {
+        "host": "daiber.de",
+        "farben": [
+          "grenadine",
+          "signal-red"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "russell-strapazierfaehiges-poloshirt-599",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 9,
+    "minderheit": [
+      {
+        "host": "wovina.com",
+        "farben": [
+          "bright-red",
+          "sky"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "russell-men-s-ultimate-cotton-polo",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 8,
+    "minderheit": [
+      {
+        "host": "cdn.shopify.com/s/files/1/0582/4361/2812",
+        "farben": [
+          "burgundy",
+          "00461c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+    "mehrheit": "shirtplus.net",
+    "anzahl": 2,
+    "minderheit": [
+      {
+        "host": "continentalclothing.com",
+        "farben": [
+          "mango",
+          "melange-grey"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sols-women-s-fleecejacket-north",
+    "mehrheit": "assets.myworkwear.co.uk",
+    "anzahl": 15,
+    "minderheit": [
+      {
+        "host": "cdn.shopify.com/s/files/1/0601/4464/8378",
+        "farben": [
+          "neon-orange",
+          "neon-yellow"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-round-t-heavy",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 39,
+    "minderheit": [
+      {
+        "host": "daiber.de",
+        "farben": [
+          "grenadine"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-ladies-active-t",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 16,
+    "minderheit": [
+      {
+        "host": "daiber.de",
+        "farben": [
+          "grenadine"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-ladies-basic-t",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 39,
+    "minderheit": [
+      {
+        "host": "daiber.de",
+        "farben": [
+          "grenadine"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 16,
+    "minderheit": [
+      {
+        "host": "textil-grosshandel.eu",
+        "farben": [
+          "gold-yellow"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-ladies-bio-workwear-t-shirt",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 16,
+    "minderheit": [
+      {
+        "host": "textil-grosshandel.eu",
+        "farben": [
+          "gold-yellow"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "russell-russell-classic-t",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 20,
+    "minderheit": [
+      {
+        "host": "morecolor.nl",
+        "farben": [
+          "purple"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bundc-my-eco-polo-6535-women",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 19,
+    "minderheit": [
+      {
+        "host": "spworkwear.co.uk",
+        "farben": [
+          "pop-green"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jamesnicholson-men-s-bio-workwear-polo",
+    "mehrheit": "groener-schulze.com",
+    "anzahl": 16,
+    "minderheit": [
+      {
+        "host": "daiber.de",
+        "farben": [
+          "brown"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "build-your-brand-fluffy-hoody",
+    "mehrheit": "tbi.cdn.pacerace.de",
+    "anzahl": 12,
+    "minderheit": [
+      {
+        "host": "rexlander.com",
+        "farben": [
+          "light-asphalt"
+        ]
+      }
+    ]
+  }
+]

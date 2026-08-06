@@ -3,10 +3,10 @@
 _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scripts/import/quellen.json._
 
 ## Übersicht
-- Produkte mit echten Bildern: **62 / 154**
-- Echte Farb-Bildsätze: **455**
-- Farben mit echter Rückansicht: **442** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **13**
-- Noch offen (nur Platzhalter): **92** Produkte
+- Produkte mit echten Bildern: **120 / 154**
+- Echte Farb-Bildsätze: **753**
+- Farben mit echter Rückansicht: **690** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **63**
+- Noch offen (nur Platzhalter): **34** Produkte
 
 ## Bebilderte Produkte
 | Produkt | Marke | Quelle | echte Farben | Ansichten | Farben mit Rückansicht |
@@ -56,11 +56,25 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | jn-halfzip-sweat | James+Nicholson | — | 2 | back+front | 2 |
 | bundc-t-shirt-e190 | B&C | sportyfied.com | 7 | back+front | 7 |
 | bundc-t-shirt-e190-women | B&C | sportyfied.com | 7 | back+front | 7 |
+| bundc-inspire-e150-t-shirt | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 6 |
 | bundc-t-shirt-e150 | B&C | sportyfied.com | 7 | back+front+sleeve_left | 7 |
+| bundc-inspire-e150-t-shirt-women | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 3 | back+front | 3 |
 | bundc-t-shirt-e150-women | B&C | sportyfied.com | 7 | back+front+sleeve_left | 7 |
 | bundc-e220-t | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 5 | back+front | 5 |
+| bundc-inspire-v-t-men | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 2 | front | 0 · ohne echte Rückansicht: 2 (black, white) |
+| bundc-inspire-v-t-women | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 2 | front | 0 · ohne echte Rückansicht: 2 (black, white) |
 | bundc-inspire-t-men | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front | 7 |
+| bundc-inspire-t-women | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 3 | back+front | 3 |
+| jamesnicholson-round-t-heavy | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-ladies-active-t | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-men-s-basic-t | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-ladies-basic-t | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-workwear-t-men | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 5 | back+front+sleeve_left | 5 |
+| jamesnicholson-workwear-t-women | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
 | jamesnicholson-mens-bio-workwear-t-shirt | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-ladies-bio-workwear-t-shirt | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| russell-russell-classic-t | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 6 | back+front | 6 |
+| russell-classic-heavyweight-t-shirt | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 3 | back+front+sleeve_left | 3 |
 | gildan-ultra-cotton-t-shirt | Gildan | teamshirts.com (Spreadshirt-Medienserver) | 7 | back+front | 7 |
 | neutral-men-s-classic-t-shirt | Neutral | sportyfied.com | 7 | back+front | 5 · ohne echte Rückansicht: 2 (bottle-green, charcoal) |
 | neutral-ladies-classic-t-shirt | Neutral | sportyfied.com | 7 | back+front | 5 · ohne echte Rückansicht: 2 (bottle-green, charcoal) |
@@ -68,24 +82,65 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | neutral-unisex-performance-t-shirt | Neutral | sportyfied.com | 6 | back+front+sleeve_left | 6 |
 | neutral-ladies-fit-t-shirt | Neutral | sportyfied.com | 7 | back+front | 6 · ohne echte Rückansicht: 1 (royal) |
 | neutral-unisex-regular-t-shirt | Neutral | sportyfied.com | 7 | back+front+sleeve_left | 7 |
+| stedman-stedman-classic-t | Stedman | stedman.eu (offizielle Hersteller-Medienbibliothek) | 1 | front | 0 · ohne echte Rückansicht: 1 (white) |
+| stedman-classic-t-for-women | Stedman | stedman.eu (offizielle Hersteller-Medienbibliothek) | 1 | front | 0 · ohne echte Rückansicht: 1 (white) |
+| stedman-classic-t-v-neck | Stedman | stedman.eu (offizielle Hersteller-Medienbibliothek) | 1 | front | 0 · ohne echte Rückansicht: 1 (white) |
+| stedman-classic-t-v-neck-for-women | Stedman | stedman.eu (offizielle Hersteller-Medienbibliothek) | 1 | front | 0 · ohne echte Rückansicht: 1 (white) |
+| stedman-comfort-t | Stedman | stedman.eu (offizielle Hersteller-Medienbibliothek) | 1 | front | 0 · ohne echte Rückansicht: 1 (white) |
+| bundc-unisex-polo-id-001 | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | front | 0 · ohne echte Rückansicht: 6 (black, bottle-green, navy, red, royal-blue, white) |
+| bundc-my-polo-180 | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | front | 0 · ohne echte Rückansicht: 7 (black, navy, white, sport-grey-heather, royal-blue, red, ivy-green) |
+| bundc-inspire-polo-men | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 4 | front | 0 · ohne echte Rückansicht: 4 (white, heather-grey, dark-grey-solid, black) |
+| bundc-inspire-polo-women | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 4 | front | 0 · ohne echte Rückansicht: 4 (white, heather-grey, dark-grey-solid, black) |
+| bundc-my-eco-polo-6535 | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | front | 0 · ohne echte Rückansicht: 7 (camo-green, white, black, navy, royal-blue, red, dark-grey-solid) |
+| bundc-my-eco-polo-6535-women | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | front | 0 · ohne echte Rückansicht: 7 (camo-green, white, black, navy, royal-blue, red, dark-grey-solid) |
+| jamesnicholson-classic-polo | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-classic-polo-ladies | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-men-s-bio-workwear-polo | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-workwear-polo-men | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| russell-strapazierfaehiges-poloshirt-599 | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 6 | back+front | 6 |
+| russell-men-s-ultimate-cotton-polo | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
+| russell-men-s-classic-cotton-polo | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
+| sols-men-s-polo-shirt-prime | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 7 | back+front+sleeve_left | 7 |
+| sols-women-s-polo-shirt-prime | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 7 | back+front+sleeve_left | 7 |
+| sols-men-s-polo-shirt-perfect | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front+sleeve_left | 6 |
+| sols-unisex-pulse-polo-shirt | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 7 | back+front+sleeve_left | 7 |
 | gildan-heavy-blend-hooded-sweatshirt | Gildan | teamshirts.com (Spreadshirt-Medienserver) | 3 | back+front+sleeve_left+sleeve_right | 3 |
 | gildan-softstyle-midweight-sweat-adult-hoodie | Gildan | teamshirts.de (Spreadshirt-Medienserver, sprd-eu) | 7 | back+front | 7 |
 | fruit-of-the-loom-classic-hooded-sweat | Fruit of the Loom | sportyfied.com | 7 | back+front | 6 · ohne echte Rückansicht: 1 (navy) |
+| fruit-of-the-loom-premium-hooded-sweat | Fruit of the Loom | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
+| fruit-of-the-loom-lightweight-hooded-sweat | Fruit of the Loom | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| fruit-of-the-loom-iconic-premium-hooded-sweat | Fruit of the Loom | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
+| build-your-brand-heavy-hoody | Build Your Brand | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front+sleeve_left | 6 |
+| build-your-brand-fluffy-hoody | Build Your Brand | myworkwear.co.uk / buildyourbrand-CDN | 5 | back+front+sleeve_left | 5 |
+| build-your-brand-ultra-heavy-cotton-box-hoody | Build Your Brand | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front | 6 |
+| build-your-brand-ladies-heavy-hoody | Build Your Brand | myworkwear.co.uk / buildyourbrand-CDN | 3 | back+front+sleeve_left | 3 |
+| bundc-id-333-hoodie | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front | 7 |
+| bundc-king-hooded-sweat | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 5 · ohne echte Rückansicht: 1 (navy-blue) |
+| bundc-id-223-hoodie | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front | 7 |
+| bundc-influence-hoodie | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 5 | back+front | 5 |
+| bundc-hoodie | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 5 | front | 0 · ohne echte Rückansicht: 5 (navy-blue, red, royal-blue, black-pure, heather-grey) |
+| russell-authentic-hooded-sweat | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
+| russell-hooded-sweatshirt | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 6 | back+front+sleeve_left | 6 |
+| sols-men-s-long-sleeve-t-shirt-imperial | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front+sleeve_left | 6 |
 | neutral-ladies-long-sleeve-t-shirt | Neutral | sportyfied.com | 7 | back+front | 1 · ohne echte Rückansicht: 6 (bottle-green, black, navy, red, white, royal) |
 | neutral-men-s-long-sleeve-t-shirt | Neutral | sportyfied.com | 7 | back+front | 6 · ohne echte Rückansicht: 1 (charcoal) |
+| sols-men-s-plain-fleece-jacket-norman | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 3 | back+front | 3 |
+| sols-women-s-plain-fleece-jacket-norman | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 3 | back+front | 3 |
+| sols-women-s-fleecejacket-north | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 5 | back+front | 5 |
+| sols-mens-factor-zipped-fleece-jacket | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 4 | back+front | 4 |
+| russell-outdoor-fleece-jacke | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 4 | back+front | 4 |
+| jamesnicholson-men-s-fleece-jacket-jn | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 6 |
+| jamesnicholson-ladies-fleece-jacket-jn781 | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 6 |
 
 ## Noch offen (Recherche/Import ausstehend)
-- **B&C** (21): bundc-inspire-e150-t-shirt, bundc-inspire-e150-t-shirt-women, bundc-inspire-v-t-men, bundc-inspire-v-t-women, bundc-inspire-t-women, bundc-unisex-polo-id-001, bundc-my-polo-180, bundc-inspire-polo-men, bundc-inspire-polo-women, bundc-my-eco-polo-6535, bundc-my-eco-polo-6535-women, bundc-id-333-hoodie, bundc-king-hooded-sweat, bundc-id-223-hoodie, bundc-influence-hoodie, bundc-hoodie, bundc-t-shirt-e150-long-sleeve-unisex-exact, bundc-t-shirt-e150-long-sleeve-women-exact, bundc-mens-t-shirt-e190-long-sleeve-exact, bundc-microfleece-duo-id501, bundc-microfleece-duo-id501-women
-- **Russell** (15): russell-russell-classic-t, russell-classic-heavyweight-t-shirt, russell-mens-pure-organic-heavy-tee, russell-ladies-pure-organic-heavy-tee, russell-mens-pure-organic-v-neck-tee, russell-strapazierfaehiges-poloshirt-599, russell-men-s-ultimate-cotton-polo, russell-men-s-classic-cotton-polo, russell-poloshirt-6535, russell-ladies-poloshirt-6535, russell-authentic-hooded-sweat, russell-ladies-authentic-hood, russell-hooded-sweatshirt, russell-classic-t-long-sleeve, russell-outdoor-fleece-jacke
-- **James+Nicholson** (13): jamesnicholson-round-t-heavy, jamesnicholson-ladies-active-t, jamesnicholson-men-s-basic-t, jamesnicholson-ladies-basic-t, jamesnicholson-workwear-t-men, jamesnicholson-workwear-t-women, jamesnicholson-ladies-bio-workwear-t-shirt, jamesnicholson-classic-polo, jamesnicholson-classic-polo-ladies, jamesnicholson-men-s-bio-workwear-polo, jamesnicholson-workwear-polo-men, jamesnicholson-men-s-fleece-jacket-jn, jamesnicholson-ladies-fleece-jacket-jn781
 - **EarthPositive** (9): earthpositive-pique-polo-shirt, earthpositive-jersey-polo-shirt, earthpositive-earth-positive-pullover-hoodie, earthpositive-earth-positive-women-s-half-zip-hoodie, earthpositive-earth-positive-super-heavy-hoodie, earthpositive-earthpositive-organic-mensunisex-pullover-hoodie, earthpositive-unisex-organic-pullover-hood-ep, earthpositive-premium-long-sleeve-t-shirt, earthpositive-unisex-organic-longsleeve-t-shirt
-- **SOL'S** (9): sols-men-s-polo-shirt-prime, sols-women-s-polo-shirt-prime, sols-men-s-polo-shirt-perfect, sols-unisex-pulse-polo-shirt, sols-men-s-long-sleeve-t-shirt-imperial, sols-men-s-plain-fleece-jacket-norman, sols-women-s-plain-fleece-jacket-norman, sols-women-s-fleecejacket-north, sols-mens-factor-zipped-fleece-jacket
-- **Stedman** (6): stedman-stedman-classic-t, stedman-classic-t-for-women, stedman-classic-t-v-neck, stedman-classic-t-v-neck-for-women, stedman-comfort-t, stedman-clive-crew-neck
-- **Fruit of the Loom** (4): fruit-of-the-loom-premium-hooded-sweat, fruit-of-the-loom-lightweight-hooded-sweat, fruit-of-the-loom-iconic-premium-hooded-sweat, fruit-of-the-loom-iconic-250-hooded-sweat
-- **Build Your Brand** (4): build-your-brand-heavy-hoody, build-your-brand-fluffy-hoody, build-your-brand-ultra-heavy-cotton-box-hoody, build-your-brand-ladies-heavy-hoody
+- **Russell** (7): russell-mens-pure-organic-heavy-tee, russell-ladies-pure-organic-heavy-tee, russell-mens-pure-organic-v-neck-tee, russell-poloshirt-6535, russell-ladies-poloshirt-6535, russell-ladies-authentic-hood, russell-classic-t-long-sleeve
+- **B&C** (5): bundc-t-shirt-e150-long-sleeve-unisex-exact, bundc-t-shirt-e150-long-sleeve-women-exact, bundc-mens-t-shirt-e190-long-sleeve-exact, bundc-microfleece-duo-id501, bundc-microfleece-duo-id501-women
 - **Gildan** (3): gildan-light-cotton-adult-t-shirt, gildan-hammer-maxweight-adult-hooded-sweatshirt, gildan-ultra-cotton-long-sleeve-t-shirt
 - **Just Hoods** (3): just-hoods-organic-hoodie-jh201, just-hoods-vision-heavyweight-hoodie, just-hoods-signature-heavyweight-sweat
 - **Neutral** (2): neutral-oversized-t-shirt, neutral-recycled-performance-long-sleeve-t-shirt
+- **Stedman** (1): stedman-clive-crew-neck
+- **Fruit of the Loom** (1): fruit-of-the-loom-iconic-250-hooded-sweat
 - **JHK** (1): jhk-hooded-sweater
 - **Just Cool** (1): just-cool-long-sleeve-cool-t
 - **ID Identity** (1): id-identity-microfleece-jacke

@@ -11545,7 +11545,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-burgundy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/russell-men-s-ultimate-cotton-polo-burgundy/back.webp",
+        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-burgundy/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -13988,7 +13989,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-asphalt": {
       "views": {
         "front": "/products/build-your-brand-fluffy-hoody-light-asphalt/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/build-your-brand-fluffy-hoody-light-asphalt/back.webp",
         "sleeve_left": "/products/build-your-brand-fluffy-hoody-light-asphalt/sleeve-left.webp"
       },
       "status": "real"
@@ -15269,7 +15270,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-black/back.webp"
       },
       "status": "real"
     },
@@ -15290,7 +15291,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-navy/back.webp"
       },
       "status": "real"
     },

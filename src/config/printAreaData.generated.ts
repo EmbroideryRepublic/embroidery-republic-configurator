@@ -536,6 +536,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   'russell-men-s-ultimate-cotton-polo': {
     front: { x0: 31.4, y0: 23.7, x1: 70.5, y1: 76.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 59 },
     back: { x0: 30.8, y0: 24.3, x1: 69.5, y1: 76.5, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 59 },
+    sleeve_left: { x0: 33.7, y0: 8.2, x1: 66.3, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.8, boxHeightCm: 67.9, startXCm: 11.2, startYCm: 14.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'russell-men-s-classic-cotton-polo': {
     front: { x0: 31, y0: 23.7, x1: 70, y1: 76.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 59 },
@@ -577,7 +578,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     sleeve_right: { x0: 31.6, y0: 8.2, x1: 68.6, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 26.2, boxHeightCm: 68.9, startXCm: 12.4, startYCm: 11.1, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'gildan-softstyle-midweight-sweat-adult-hoodie': {
-    front: { x0: 35.4, y0: 39, x1: 59.8, y1: 78.1, imgW: 620, imgH: 720, maxWidthCm: 25.3, maxHeightCm: 47, boxWidthCm: 25.3, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
+    front: { x0: 35.4, y0: 39, x1: 64.3, y1: 78.1, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
     back: { x0: 36.9, y0: 39.5, x1: 64.5, y1: 80.2, imgW: 620, imgH: 720, maxWidthCm: 27.5, maxHeightCm: 47, boxWidthCm: 27.5, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
     sleeve_left: { x0: 32.9, y0: 8.2, x1: 67.1, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 23.9, boxHeightCm: 67.9, startXCm: 9.5, startYCm: 10.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
@@ -617,7 +618,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'build-your-brand-fluffy-hoody': {
     front: { x0: 32.2, y0: 27.1, x1: 67.6, y1: 74.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 57, garmentHeightCm: 62 },
-    back: { x0: 32.3, y0: 27.1, x1: 67.7, y1: 74.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 57, garmentHeightCm: 62 },
+    back: { x0: 32.2, y0: 27.1, x1: 67.6, y1: 74.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 57, garmentHeightCm: 62 },
     sleeve_left: { x0: 34.8, y0: 8.1, x1: 65.1, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.1, boxHeightCm: 70.9, startXCm: 11.1, startYCm: 11.4, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'build-your-brand-ultra-heavy-cotton-box-hoody': {
@@ -663,8 +664,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     back: { x0: 34.9, y0: 40.3, x1: 64.6, y1: 80.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
   },
   'earthpositive-earthpositive-organic-mensunisex-pullover-hoodie': {
-    front: { x0: 37.7, y0: 41.6, x1: 62.3, y1: 74.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 63 },
-    back: { x0: 37.6, y0: 41.5, x1: 62.3, y1: 74.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 63 },
+    front: { x0: 34.4, y0: 29.4, x1: 65.5, y1: 71.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 63 },
+    back: { x0: 34.4, y0: 29.5, x1: 65.5, y1: 71.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 63 },
   },
   'earthpositive-unisex-organic-pullover-hood-ep': {
     front: { x0: 33.7, y0: 29, x1: 66.2, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 53, garmentHeightCm: 63 },

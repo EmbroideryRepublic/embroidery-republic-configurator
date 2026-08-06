@@ -1,0 +1,150 @@
+[
+  {
+    "productId": "gildan-softstyle-midweight-sweat-adult-hoodie",
+    "quelle": "shop.ralawise.com – Gildan GD067 \"Softstyle™ midweight fleece adult hoodie\" (= Gildan SF500 / GSF500). Produktseite: https://shop.ralawise.com/gildan/softstyle-midweight-fleece-adult-hoodie/ – die kanonische URL kam aus dem Such-Endpunkt der Quelle selbst (/search?q=gd067 → 302-Ziel), nicht geraten. Die Bild-URLs stammen aus dem im Seiten-HTML eingebetteten Varianten-JSON, in dem jede Farbe als Objekt mit ColourName, ColourCode und ImageUrls[] steht; die Farb-Slugs sind damit von der Quelle benannt und nicht abgeleitet. Schema wie in den Mustern: globalassets/ralawise/gd/gd067_<farbslug>_ft.jpg (gleiche Freisteller-Laydowns ohne Modell, identischer Bildausschnitt wie die 23 behaltenen Farben). Alle 10 URLs mit curl geprueft: 200 / image/jpeg / 36–232 kB, alle Bytegroessen paarweise verschieden.",
+    "colors": [
+      {
+        "id": "black",
+        "erwarteterHex": "#25282B",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_black_ft.jpg"
+      },
+      {
+        "id": "charcoal-solid",
+        "erwarteterHex": "#66676C",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_charcoal_ft.jpg"
+      },
+      {
+        "id": "dark-heather",
+        "erwarteterHex": "#3F4444",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_darkheather_ft.jpg"
+      },
+      {
+        "id": "maroon",
+        "erwarteterHex": "#5B2B42",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_maroon_ft.jpg"
+      },
+      {
+        "id": "military-green",
+        "erwarteterHex": "#63655A",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_militarygreen_ft.jpg"
+      },
+      {
+        "id": "sand",
+        "erwarteterHex": "#CABFAD",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_sand_ft.jpg"
+      },
+      {
+        "id": "cocoa",
+        "erwarteterHex": "#6B3D2E",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_cocoa_ft.jpg"
+      },
+      {
+        "id": "pistachio",
+        "erwarteterHex": "#BDC293",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_pistachio_ft.jpg"
+      },
+      {
+        "id": "purple",
+        "erwarteterHex": "#5D396F",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_purple_ft.jpg"
+      },
+      {
+        "id": "ash-grey-heather",
+        "erwarteterHex": "#C8C9C7",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd067_ashgrey_ft.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "quelle": "s7g3.scene7.com",
+    "colors": [
+      {
+        "id": "french-navy",
+        "erwarteterHex": "#011F45",
+        "front": "https://s7g3.scene7.com/is/image/soloinvest/n02074319A?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "back": "https://s7g3.scene7.com/is/image/soloinvest/n02074319B?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "side": "https://s7g3.scene7.com/is/image/soloinvest/n02074319C?wid=1200&hei=1200&fmt=jpg&qlt=90"
+      },
+      {
+        "id": "grey-melange",
+        "erwarteterHex": "#8F8B8B",
+        "front": "https://s7g3.scene7.com/is/image/soloinvest/n02074350A?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "back": "https://s7g3.scene7.com/is/image/soloinvest/n02074350B?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "side": "https://s7g3.scene7.com/is/image/soloinvest/n02074350C?wid=1200&hei=1200&fmt=jpg&qlt=90"
+      },
+      {
+        "id": "red",
+        "erwarteterHex": "#C4082D",
+        "front": "https://s7g3.scene7.com/is/image/soloinvest/n02074145A?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "back": "https://s7g3.scene7.com/is/image/soloinvest/n02074145B?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "side": "https://s7g3.scene7.com/is/image/soloinvest/n02074145C?wid=1200&hei=1200&fmt=jpg&qlt=90"
+      },
+      {
+        "id": "white",
+        "erwarteterHex": "#FFFFFF",
+        "front": "https://s7g3.scene7.com/is/image/soloinvest/n02074102A?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "back": "https://s7g3.scene7.com/is/image/soloinvest/n02074102B?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "side": "https://s7g3.scene7.com/is/image/soloinvest/n02074102C?wid=1200&hei=1200&fmt=jpg&qlt=90"
+      },
+      {
+        "id": "bottle-green",
+        "erwarteterHex": "#253E33",
+        "front": "https://s7g3.scene7.com/is/image/soloinvest/n02074264A?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "back": "https://s7g3.scene7.com/is/image/soloinvest/n02074264B?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "side": "https://s7g3.scene7.com/is/image/soloinvest/n02074264C?wid=1200&hei=1200&fmt=jpg&qlt=90"
+      },
+      {
+        "id": "mouse-grey-solid",
+        "erwarteterHex": "#645E67",
+        "front": "https://s7g3.scene7.com/is/image/soloinvest/n02074381A?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "back": "https://s7g3.scene7.com/is/image/soloinvest/n02074381B?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "side": "https://s7g3.scene7.com/is/image/soloinvest/n02074381C?wid=1200&hei=1200&fmt=jpg&qlt=90"
+      }
+    ]
+  },
+  {
+    "productId": "russell-men-s-ultimate-cotton-polo",
+    "quelle": "groener-schulze.com – Produktseite /werbetextilien/polo-shirts/russell-athletic-mens-ultimate-cotton-polo-r-577m-0 (offizielle Russell/FOTL-Freistellerfotografie, 1200x1200 .webp). Farbliste und Bild-URLs aus dem Varianten-DOM der Seite ausgelesen (?clk=Farbe&Farbe=41+-+burgundy), Slugs nicht geraten. Dateimuster: /grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_<farbe>.webp = Front, _2 = Ruecken, _3 = Seite (_4/_5 sind On-Model-Aufnahmen und wurden nicht verwendet). Perspektiven-Index nicht aus einer anderen Farbe uebertragen, sondern fuer burgundy einzeln dekodiert und angesehen. Artikelnummer r-577m-0 in allen gelieferten Dateinamen enthalten.",
+    "colors": [
+      {
+        "id": "burgundy",
+        "erwarteterHex": "#5A032C",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_burgundy.webp",
+        "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_burgundy_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_burgundy_3.webp"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+    "quelle": "continentalclothing.com – offizieller Continental Clothing / EarthPositive Asset-Server, Muster /assets/product_shots/high_res/{front,back}/EP61P-<Farbcode>.jpg. Farbcode-Zuordnung NICHT geraten, sondern aus der Quelle selbst belegt: continentalclothing.com leitet heute auf den offiziellen Shop earthpositiveonline.com (Shopify) um; dessen Varianten-JSON (/products/<handle>.json) loest die Herstellercodes eindeutig auf – ep306-bl1 = \"Black\", ep306-na1 = \"Dark Navy\", ep75-bl = \"Black\", ep75-na = \"Dark Navy\". Damit BL = Black, NA = Navy, konsistent zum vorhandenen Muster (AB = Ash Black, MGY = Melange Grey, MA = Mango). Der Asset-Server liefert fuer erfundene Codes sauber 404 (getestet: EP61P-ZZZ, EP61P-XX9), es gibt also keinen Platzhalter-Fallback – die 200er fuer EP61P-BL/EP61P-NA sind echte, gefuehrte Farben dieses Artikels. Alle vier Dateien einzeln heruntergeladen und angesehen: identischer Freisteller-Laydown, identischer Bildausschnitt und identische Aufloesung (2160x2830) wie die Belegfarbe EP61P-AB. Perspektive \"side\" fuehrt der Asset-Server fuer diesen Artikel nicht (front/back = 200, side/left/right/detail = 404).",
+    "colors": [
+      {
+        "id": "black",
+        "erwarteterHex": "#191516",
+        "front": "https://www.continentalclothing.com/assets/product_shots/high_res/front/EP61P-BL.jpg",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP61P-BL.jpg"
+      },
+      {
+        "id": "navy",
+        "erwarteterHex": "#211F2C",
+        "front": "https://www.continentalclothing.com/assets/product_shots/high_res/front/EP61P-NA.jpg",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP61P-NA.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "build-your-brand-fluffy-hoody",
+    "quelle": "tbi.cdn.pacerace.de – Original-CDN von TB International / Build Your Brand, Artikel BY284 \"Fluffy Hoody\". Bild-URLs aus dem HTML der offiziellen Produktseite https://www.buildyourbrand.de/en/fluffy-hoody ausgelesen (Galerieblöcke attributes-product-more-images-<attributeId>, verknuepft ueber die data-attribute-IDs der Farbzeile \"lightasphalt\" in der Groessenmatrix). Muster: /media/images/org/BY284_<P1|P2|P4|P5>-<Farbcode>.jpg; Light Asphalt = Farbcode 02946 (aus der Quelle, nicht geraten).",
+    "colors": [
+      {
+        "id": "light-asphalt",
+        "erwarteterHex": "#ABB1B3",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-02946.jpg",
+        "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-02946.jpg",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P4-02946.jpg"
+      }
+    ]
+  }
+]

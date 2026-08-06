@@ -1,0 +1,92 @@
+[
+  {
+    "productId": "jamesnicholson-men-s-basic-t",
+    "colorId": "coral",
+    "grund": "groener-schulze.com fuehrt JN8008 in genau 37 Farben (serverseitig gerenderte Swatch-Liste, 37 Swatches = 37 <option>, kein Nachladen); \"coral\" ist nicht darunter. Direktproben aller plausiblen Slug-Varianten liefern 404/146 Bytes/text-html: ..._coral.webp, ..._coral_2.webp, ..._coral_3.webp, ..._coral_solid.webp, ..._koralle.webp, ..._coralle.webp. Dieselben 37 Farben auch beim Schwesterartikel JN8007 – die Daiber-Basic-T-Reihe dieser Quelle fuehrt den ausgelaufenen Ton nicht mehr. Kein Ausweichen auf eine dritte Quelle; das bestehende Bild (freewear.de) bleibt stehen."
+  },
+  {
+    "productId": "jamesnicholson-men-s-basic-t",
+    "colorId": "dark-royal",
+    "grund": "In der vollstaendigen 37-Farben-Liste von groener-schulze zu JN8008 gibt es kein \"dark royal\". Direktproben 404/146 Bytes/text-html fuer ..._dark_royal.webp, ..._dark_royal_2.webp, ..._dark_royal_3.webp, ..._darkroyal.webp, ..._dark_royal_solid.webp, ..._royal_blue.webp, ..._dunkelblau.webp. Die Quelle fuehrt nur \"RY - royal\" (#005393) – das ist die Vorlage unserer bereits vorhandenen, separaten Farbe royal (#004985); daiber_mens_basic_t_jn8008_royal.webp gehoert damit schon zu royal und darf dark-royal (#004189) nicht zusaetzlich zugewiesen werden (keine Farbe zweimal, und abweichender Farbton). Das bestehende Bild (daiber.de) bleibt stehen."
+  },
+  {
+    "productId": "jamesnicholson-classic-polo",
+    "colorId": "grenadine",
+    "grund": "groener-schulze.com fuehrt die Farbe fuer JN070 nicht. Die Produktseite /werbetextilien/polo-shirts/daiber-classic-polo-jn070 listet im vollstaendigen Farb-Select genau 34 Farben; 'Grenadine' ist nicht darunter (0 Treffer auf der Produktseite und allen 3 Kategorieseiten). Die nach dem verifizierten Schema gebildete URL .../daiber_classic_polo_jn070_grenadine.webp liefert 404 (146 Bytes, text/html), ebenso Schreibvarianten. Kein Ausweichen auf eine dritte Quelle und keine Datei mit fremder Artikelnummer (z.B. jn070k = Classic Polo Junior)."
+  },
+  {
+    "productId": "jamesnicholson-classic-polo",
+    "colorId": "signal-red",
+    "grund": "groener-schulze.com fuehrt die Farbe fuer JN070 nicht. 'Signal Red' fehlt im vollstaendigen 34-Farben-Select der Produktseite (0 Treffer auf Produkt- und Kategorieseiten). Die nach dem an 'grey heather' -> grey_heather verifizierten Schema gebildete URL .../daiber_classic_polo_jn070_signal_red.webp liefert 404, ebenso signalred/signal-red. Der aehnliche Rotton 'RD - red' bzw. 'TO - tomato' ist ein anderer Farbton und waere ein falsches Bild - daher keine Ersatzzuordnung."
+  },
+  {
+    "productId": "jamesnicholson-classic-polo-ladies",
+    "colorId": "grenadine",
+    "grund": "groener-schulze.com fuehrt JN-071 (Seite /werbetextilien/polo-shirts/daiber-ladies-polo-jn071) mit genau 34 server-seitig im HTML gerenderten Farbvarianten (ACYE, AQ, AUB, BL, BR, DOR, DRY, FEGR, GOYE, GREHE, GRP, IRGR, LBLU, LIL, LIM, LYE, MI, NY, OL, OR, PAC, PE, PI, PU, RD, RO, RY, SBLU, ST, TO, TU, WH, WI, YE). 'Grenadine' ist nicht darunter (grep = 0 Treffer auf Basis- und Variantenseite, Liste bleibt bei Variantenwechsel unveraendert, kein Nachladen). Direkte Probe des abgeleiteten Schemas .../daiber_ladies_polo_jn071_grenadine.webp -> 404, 146 Bytes, text/html. Kein Ausweichen auf daiber.de (dritte Quelle), keine Ersatzfarbe (naechstliegend RO - rose, klar abweichender Ton zu #ED8E78). Vorhandenes Bild bleibt stehen."
+  },
+  {
+    "productId": "jamesnicholson-classic-polo-ladies",
+    "colorId": "signal-red",
+    "grund": "Gleiche Pruefung: 'Signal Red' fehlt in der vollstaendigen 34er-Farbliste der groener-schulze-Produktseite fuer daiber-ladies-polo-jn071. Alle Slug-Varianten 404 (je 146 Bytes, text/html): ..._signal_red.webp, ..._signalred.webp, ..._signal-red.webp, ..._red_signal.webp. Die naechstliegenden gefuehrten Toene sind eigenstaendige, separat gelistete Farben (DOR - dark orange #ED5806, TO - tomato #BF0D00, RD - red) und decken #E83600 nicht ab; eine Umetikettierung waere ein falscher Farbton. Kein Rueckgriff auf daiber.de. Vorhandenes Bild bleibt stehen."
+  },
+  {
+    "productId": "russell-strapazierfaehiges-poloshirt-599",
+    "colorId": "bright-red",
+    "grund": "Die Zielquelle groener-schulze.com fuehrt fuer Artikel R-599M-0 (Produktseite /werbetextilien/polo-shirts/russell-athletic-hardwearing-polycotton-polo-r-599m-0) genau 9 Farben im Farbwaehler: 30 white, 36 black, 38 bottle green, 41 burgundy, BH bright royal, CG convoy grey, CR classic red, FN french navy, LX light oxford. Ein Bright Red (#ED1C24) ist nicht darunter. Alle Namensvarianten nach dem verifizierten Schema (…_bright_red.webp, …_red.webp) liefern 404 / 146 Bytes / text/html, waehrend …_classic_red.webp, …_white.webp, …_french_navy.webp, …_light_oxford.webp mit 200 / image-webp antworten - das Schema stimmt, die Farbe fehlt. 'CR - classic red' ist laut Quelle #A6093D (Karmin-/Weinrot) und damit ein abweichender Farbton gegenueber #ED1C24, also kein zulaessiger Ersatz."
+  },
+  {
+    "productId": "russell-strapazierfaehiges-poloshirt-599",
+    "colorId": "sky",
+    "grund": "Ebenfalls nicht im Sortiment der Zielquelle fuer R-599M-0. Der Farbwaehler enthaelt als einzige Blautoene BH bright royal (#485CC7) und FN french navy (#1C1F2A) - kein Hellblau in Richtung #8BB4DF. …_sky.webp, …_sky_blue.webp und …_skyblue.webp liefern jeweils 404 / 146 Bytes / text/html. Ein Ausweichen auf bright royal waere ein klar abweichender Farbton, ein Ausweichen auf eine dritte Quelle wuerde den Stilbruch nur verschieben."
+  },
+  {
+    "productId": "russell-men-s-ultimate-cotton-polo",
+    "colorId": "00461c",
+    "grund": "Die Zielquelle groener-schulze.com fuehrt den Artikel R-577M-0 in genau 9 Farben (30 white, 36 black, 41 burgundy, BH bright royal, CR classic red, FN french navy, SC sky, TT titanium, ZU azure blue). Ein Bottle Green / Dunkelgruen (#00461C) ist in der Farbauswahl des Varianten-DOM nicht enthalten; die entsprechende Datei ...r-577m-0_bottle_green.webp liefert 404 (146 Bytes, text/html). Kein Ausweichen auf eine dritte Quelle oder eine fremde Artikelnummer – vorhandenes Bild bleibt stehen."
+  },
+  {
+    "productId": "sols-women-s-fleecejacket-north",
+    "colorId": "neon-orange",
+    "grund": "myworkwear.co.uk fuehrt fuer Artikel 54500 (SOL'S Ladies North Fleece Jacket) genau 15 Farben – Aqua, Black, Burgundy, Charcoal, Dark Chocolate, Dark Purple, Green, Grey Marl, Lime Green, Navy, Orange, Red, Rope, Royal Blue, White (Codes AQA/BLK/BUR/CHA/DCH/DKP/GRN/GYM/LIM/NAV/ORA/RED/ROP/ROY/WHI). Kein 'Neon' auf der Produktseite (0 Treffer im HTML/Varianten-JSON). CDN-Gegenprobe mit 12 plausiblen Neon-Codes (NEO,NOR,NON,NEY,NYE,NLI,FOR,FYE,NEE,NGR,ORN,YEL) unter products/6136/ ergab durchweg 403 (nicht vorhanden); Methodik verifiziert, da 54500-ROY-FRONT.jpg 200/38845 Bytes/image/jpeg liefert. 54500-ORA (Orange #F08800) ist bereits der vorhandenen Farbe 'orange' zugewiesen und darf nicht doppelt als Neon Orange verwendet werden. Das SOL'S North in Herren (Artikel 55000) waere eine andere Artikelnummer und ist damit disqualifiziert – dort existiert ohnehin ebenfalls keine Neon-Farbe."
+  },
+  {
+    "productId": "sols-women-s-fleecejacket-north",
+    "colorId": "neon-yellow",
+    "grund": "Gleiche Pruefung: Artikel 54500 hat bei myworkwear.co.uk kein Neon Yellow. Das naechstliegende LIM (Lime Green) ist bereits der vorhandenen Farbe 'lime' (#D0DEBB) zugeordnet – eine Zweitverwendung derselben Datei fuer 'neon-yellow' waere ein Doppelbeleg und ein falscher Farbton. Alle Neon-Code-Kandidaten unter https://assets.myworkwear.co.uk/products/6136/ liefern 403. Ausweichen auf Artikel 55000 (Herren North) oder eine dritte Quelle ist laut Vorgabe ausgeschlossen."
+  },
+  {
+    "productId": "jamesnicholson-round-t-heavy",
+    "colorId": "grenadine",
+    "grund": "Groener-Schulze fuehrt den Artikel JN002 (Produktseite https://www.groener-schulze.com/werbetextilien/t-shirts/daiber-round-t-heavy-jn002, gid TEXTILIEN.T-SHIRTS.JN-JN002.0) mit genau 39 Farben - identisch mit den bereits behaltenen 39. Grenadine ist weder im Varianten-JSON des Endpunkts /services/os/api.php (os=search) noch in der Swatch-Liste des Seiten-HTML enthalten; der String 'grenadine' kommt auf der Produktseite 0x vor und die shopweite Suche nach 'grenadine' liefert 0 Treffer. Direkt am Bildpfad getestete Slug-Varianten daiber_round_t_heavy_jn002_{grenadine,granadine,gren,grenadin,grenadine_1,grenadinerot}.webp liefern alle HTTP 404 (Kontrolle: aubergine/olive/wine liefern 200 mit 22848/46394/35976 Bytes image/webp, Schema also korrekt). Es existiert nur ein einziger JN002-Datensatz im Shop-Index, also kein zweiter Variantensatz. Kein vorhandener Farbton entspricht #ED8E78 (orange #F57F20, dark orange #ED5806, rose #F7D0DF, tomato #BF0D00 - alle klar abweichend), es handelt sich also auch nicht um dieselbe Farbe unter anderem Namen. Ausweichen auf eine dritte Quelle waere regelwidrig; das vorhandene daiber.de-Bild bleibt stehen."
+  },
+  {
+    "productId": "jamesnicholson-ladies-active-t",
+    "colorId": "grenadine",
+    "grund": "groener-schulze.com fuehrt Grenadine fuer JN357 nachweislich nicht. Die Produktseite https://www.groener-schulze.com/werbetextilien/t-shirts/daiber-ladies-active-t-jn357 listet im Varianten-Selektor exakt 16 Farben (ACYE acid yellow, BL black, DME dark melange, GR green, LIM lime green, LME light melange, NY navy, OR orange, PAC pacific, PI pink, PU purple, RD red, RY royal, TU turquoise, WH white, YE yellow) - identisch mit behalten=16, Grenadine fehlt. Das Wort 'grenadine' kommt im Seiten-HTML 0x vor. Der Aufruf ?clk=Farbe&Farbe=GRE+-+grenadine liefert HTTP 200, faellt aber stillschweigend auf die Standardfarbe acid yellow zurueck (keine Grenadine-Bilder im DOM). Direkte Probes nach dem verifizierten Schema (daiber_ladies_active_t_jn357_grenadine.webp, _gre, _grenadin, _grenadine_2) liefern alle 404 / 146 Bytes / text/html. Gegenprobe: das Herrenmodell JN358 derselben Quelle fuehrt dieselben 16 Farben, ebenfalls ohne Grenadine - die Farbe existiert bei groener-schulze in der Active-T-Reihe gar nicht. Ausweichen auf eine dritte Quelle oder auf eine Fremd-Artikelnummer (JN358/JN735) waere regelwidrig, daher bleibt das vorhandene daiber.de-Bild stehen."
+  },
+  {
+    "productId": "jamesnicholson-ladies-basic-t",
+    "colorId": "grenadine",
+    "grund": "groener-schulze.com fuehrt Grenadine fuer JN901 nachweislich nicht. (1) Der Varianten-Selektor der Produktseite listet genau 39 Farben (acid yellow, aqua, ash, aubergine, black, brown, dark green, dark grey, dark orange, dark royal, fern green, gold yellow, grey heather, graphite, irish green, khaki, light blue, light grey, lilac, lime green, light yellow, mint, navy, olive, orange, pacific, petrol, pink, purple, red, rose, royal, sky blue, stone, tomato, turquoise, white, wine, yellow) – Grenadine ist nicht darunter; die Zahl deckt sich exakt mit den 39 bereits vorhandenen Farben. (2) Direkter Bildabruf: daiber_ladies_basic_t_jn901_grenadine.webp sowie _2/_3/_1 und die Bindestrich-Variante liefern alle 404 / 146 Bytes / text-html; Kontrollfarbe daiber_ladies_basic_t_jn901_aubergine.webp liefert 200 / 22424 Bytes / image-webp. (3) Varianten-Parameter-Probe: ?Farbe=GRE+-+grenadine faellt auf die Default-Bilder (white) zurueck, waehrend ?Farbe=AUB+-+aubergine korrekt auf den Aubergine-Bildsatz umschaltet – die Quelle selbst kennt die Farbe also nicht. (4) Auch fuer andere Daiber-Artikel existiert auf diesem Bildserver keine Grenadine-Datei (jn070, jn002 ebenfalls 404). Kein Ausweichen auf eine dritte Quelle und keine Ersatzfarbe (rose/coral sind andere Farbtoene); das vorhandene daiber.de-Bild bleibt stehen."
+  },
+  {
+    "productId": "jamesnicholson-mens-bio-workwear-t-shirt",
+    "colorId": "gold-yellow",
+    "grund": "groener-schulze.com fuehrt JN1808 nachweislich nur in 20 Farben (aqua, black, brown, carbon, cement, dark green, dark grey, foggy-green, grey heather, lime green, navy, orange, red, royal, spicy-orange, stone, steel-blue, turquoise, white, wine) - kein Gelb darunter. Das Wort 'gold' kommt auf der Produktseite ueberhaupt nicht vor; der Aufruf ?clk=Farbe&Farbe=GOYE+-+gold+yellow faellt auf die Standardfarbe aqua zurueck. Bildproben daiber_mens_bio_workwear_t_jn1808_{gold_yellow,gold-yellow,goldyellow,goye}.webp liefern alle HTTP 404 (146 Bytes, text/html), waehrend das identische Schema fuer lime_green (200, 70380 B) und grey_heather (200, 99432 B) funktioniert - das Schema ist also korrekt, die Farbe existiert dort schlicht nicht. Kein Ausweichen auf eine dritte Quelle; vorhandenes Bild bleibt stehen."
+  },
+  {
+    "productId": "jamesnicholson-ladies-bio-workwear-t-shirt",
+    "colorId": "gold-yellow",
+    "grund": "groener-schulze.com fuehrt JN1807 (daiber-ladies-organic-workwear-t-shirt-jn1807) in genau 20 Farben: aqua, black, brown, carbon, cement, dark green, dark grey, foggy-green, grey heather, lime green, navy, orange, red, royal, spicy-orange, stone, steel-blue, turquoise, white, wine. Ein Gelb-/Gold-Ton ist nicht darunter - weder in der data-tokens-Optionsliste noch in der Farbenleiste des DOM. Direkte URL-Proben nach dem verifizierten Schema (_gold-yellow, _gold_yellow, _goldyellow, _gold, _gelb, _yellow, _gold-gelb) liefern alle 404 / 146 Bytes / text/html, waehrend die Kontrollproben _wine (200/56404/image-webp), _white (200/37544) und _stone (200/69576) im selben Lauf 200 liefern. Kein Ausweichen auf eine dritte Quelle."
+  },
+  {
+    "productId": "russell-russell-classic-t",
+    "colorId": "purple",
+    "grund": "groener-schulze.com fuehrt fuer den Artikel R-180M-0 nachweislich kein Purple. Dreifach verifiziert: (1) Shop-Such-API /services/os/api.php?os=search, Datensatz TEXTILIEN.T-SHIRTS.RUS-R-180M-0.0, Feld colors enthaelt exakt 20 Farben (30 white, 36 black, 38 bottle green, 41 burgundy, 60 natural, BH bright royal, BP olive, BR bright red, CG convoy grey, CR classic red, FN french navy, IB indigo blue, K2 yellow, LX light oxford, MJ mocha, MK mineral blue, PR powder rose, SC sky, TK tan, ZU azure blue) - deckungsgleich mit den bereits vorhandenen 20 Farben (behalten=20), kein Purple. (2) Live-Produktseite: Treffer fuer 'purple', 'violet' und 'lila' jeweils 0, alle 20 gelisteten Farbnamen dagegen vorhanden. (3) Direkte URL-Pruefung von 8 Slug-Varianten (purple, deep_purple, bright_purple, dark_purple, violet, lila, 81, purple_81) - alle HTTP 404/146 Bytes; Kontrolle mit bekannt gutem Slug bright_royal liefert 200/90214 Bytes/image-webp, die Pruefmethode ist also valide. Kein Ausweichen auf eine dritte Quelle (Russell/FOTL-DAM), da das den Stilbruch nur verschieben wuerde; kein Ersatz durch einen aehnlichen Farbton, da die naechsten Nachbarn im Sortiment (BH bright royal #485CC7, FN french navy #1C1F2A, 41 burgundy #66435A) klar von #33346E abweichen. Das vorhandene Bild bleibt stehen."
+  },
+  {
+    "productId": "jamesnicholson-men-s-bio-workwear-polo",
+    "colorId": "brown",
+    "grund": "Produktseite der Zielquelle (https://www.groener-schulze.com/werbetextilien/polo-shirts/daiber-mens-bio-workwear-polo-jn874) fuehrt fuer JN874 genau 20 Farben im Farb-Select: AQ aqua, BL black, CB carbon, CE cement, DGR dark green, DGRE dark grey, FOGR foggy-green, GOYE gold yellow, GREHE grey heather, LIM lime green, NY navy, OR orange, RD red, RY royal, SPOR spicy-orange, ST stone, STBLU steel-blue, TU turquoise, WH white, WI wine. Kein Braunton vorhanden (String 'brown' kommt im gesamten Seiten-HTML 0x vor). Zusaetzlich alle plausiblen Slugs am verifizierten Bildschema geprueft: daiber_mens_bio_workwear_polo_jn874_{brown,braun,chocolate,coffee,dark_brown,darkbrown,mocca,hazel}.webp -> alle HTTP 404. Keine Ausweichquelle genutzt; vorhandenes Bild bleibt stehen."
+  }
+]

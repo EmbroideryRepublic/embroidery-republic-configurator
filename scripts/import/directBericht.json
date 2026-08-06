@@ -1,560 +1,1425 @@
 [
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
-    "farbe": "bottle-green",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "atoll",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#1e442b",
+    "frontDom": "#0186b3",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "neutral-men-s-fit-t-shirt-bottle-green"
+    "dupeMit": "bundc-inspire-t-men-atoll"
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
-    "farbe": "charcoal",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "dark-grey-solid",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#494946",
+    "frontDom": "#47464c",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "neutral-men-s-fit-t-shirt-charcoal"
+    "dupeMit": "bundc-inspire-t-men-dark-grey-solid"
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
-    "farbe": "black",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "fuchsia",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#232323",
+    "frontDom": "#dd456c",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "neutral-men-s-fit-t-shirt-black"
+    "dupeMit": "bundc-inspire-t-men-fuchsia"
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
-    "farbe": "navy",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "gold",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#212338",
+    "frontDom": "#fcc305",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "neutral-men-s-fit-t-shirt-navy"
+    "dupeMit": "bundc-inspire-t-men-gold"
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
-    "farbe": "white",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "orange",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#e6e6e8",
+    "frontDom": "#e85d02",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "neutral-men-s-fit-t-shirt-white"
+    "dupeMit": "bundc-inspire-t-men-orange"
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
-    "farbe": "red",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "real-green",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#bb1f29",
+    "frontDom": "#4f994a",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "neutral-men-s-fit-t-shirt-red"
+    "dupeMit": "bundc-inspire-t-men-real-green"
   },
   {
-    "produkt": "neutral-men-s-fit-t-shirt",
-    "farbe": "royal",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, Artikel \"Neutral O 61001\", interne Artikelnr. 776101) – Original-Neutral-Packshots. Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Produktseite https://www.cottonclassics.com/en/neutral-o-61001.html ausgelesen: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_776101_neutral_o-61001_<farb-slug>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht. Beleg-Farbe aus rueckKlappt (teal) fuehrt genau dieses RIGHT-Bild (PS_776101_neutral_o-61001_teal_RIGHT_812f2e1d-f5ec-4288-b8fb-55da50456c27_web.jpg, 200/24942 B/image/jpeg); das Muster wurde 1:1 auf die fehlenden Farben uebertragen. Der uuid ist je Datei individuell und daher nicht ableitbar – alle uuids stammen aus dem Seiten-DOM. Die unskalierte Original-URL (/media/catalog/product/P/S/…, ohne /cache/<hash>/) liefert die hoechste Aufloesung (z.B. teal RIGHT 24942 B vs. 10755 B in der Cache-Variante) und wurde deshalb gewaehlt.",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "millennial-khaki",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#0b417e",
+    "frontDom": "#666962",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "neutral-men-s-fit-t-shirt-royal"
+    "dupeMit": "bundc-inspire-t-men-millennial-khaki"
   },
   {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "black",
-    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "millennial-pink",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#323135",
+    "frontDom": "#d0b2a6",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-black"
+    "dupeMit": "bundc-inspire-t-men-millennial-pink"
   },
   {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "bottle-green",
-    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "urban-orange",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#41594e",
+    "frontDom": "#d5591b",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-bottle-green"
+    "dupeMit": "bundc-inspire-t-men-urban-orange"
   },
   {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "bright-royal",
-    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "urban-purple",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#183670",
+    "frontDom": "#432f51",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-bright-royal"
+    "dupeMit": "bundc-inspire-t-men-urban-purple"
   },
   {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "classic-red",
-    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "purple",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#b6223e",
+    "frontDom": "#402c5d",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-classic-red"
+    "dupeMit": "just-cool-long-sleeve-cool-t-purple"
   },
   {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "sapphire-blue",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#018dcc",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-cool-long-sleeve-cool-t-sapphire-blue"
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "arctic-white",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#fafafa",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-cool-long-sleeve-cool-t-arctic-white"
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "charcoal-solid",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#434142",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-cool-long-sleeve-cool-t-charcoal-solid"
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "electric-yellow-neon",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#e6fa6b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-cool-long-sleeve-cool-t-electric-yellow-neon"
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "fire-red",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d43c3d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-cool-long-sleeve-cool-t-fire-red"
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
     "farbe": "french-navy",
-    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#363d4a",
+    "frontDom": "#2f2d3f",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-french-navy"
+    "dupeMit": "just-cool-long-sleeve-cool-t-french-navy"
   },
   {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "white",
-    "quelle": "wovina.com (Shopify-CDN, offizielle Russell 599M Freisteller-Serie FRONT/BACK/RIGHT) — gleiche Bildquelle wie das vorgegebene muster",
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "jet-black",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#efeef3",
+    "frontDom": "#272727",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-white"
+    "dupeMit": "just-cool-long-sleeve-cool-t-jet-black"
   },
   {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "black",
-    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#1b1b1d",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-black"
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "white",
-    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#efeef3",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-white"
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "grey",
-    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#c5c4c9",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-grey"
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "city-red",
-    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#ea102c",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-city-red"
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "magnet",
-    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#5a575c",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-magnet"
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "navy",
-    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/ultra-heavy-cotton-box-hoody, Artikel BY162 – im Seiten-<title> und im Artikelnummernfeld bestaetigt), Bild-CDN tbi.cdn.pacerace.de. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY162_<P1|P2|P4>-<farbcode>.jpg mit P1=Front, P2=Rueck, P4=Seite/Aermel (P5 = zusaetzliche Detail-/Schraegansicht, Mw* = On-Model, daher nicht verwendet). Perspektiven-Muster NICHT geraten, sondern an der Belegfarbe dark-grey (Code 00094) verifiziert: BY162_P4-00094.jpg ist eine eigene 101.539-Byte-Datei gegenueber P1=259.266 und P2=287.038 Byte und zeigt visuell geprueft die reine Seitenansicht als Freisteller ohne Person. Farbcode-Zuordnung 1:1 aus dem HTML der Herstellerseite ausgelesen (Galerie-Container id=\"attributes-product-more-images-<attributId>\" gegen die Farbzeilen der Groessentabelle <span class=\"label\">): black=00007, white=00220, grey=00111, cityred=00491, magnet=03516, navy=00155, darkgrey=00094.",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#312d3e",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "build-your-brand-ultra-heavy-cotton-box-hoody-navy"
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "black",
-    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#383334",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-black"
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "deep-navy",
-    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#3c3a46",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-deep-navy"
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "heather-grey",
-    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#cac8d2",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-heather-grey"
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "red",
-    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#db293f",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-red"
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
+    "produkt": "just-cool-long-sleeve-cool-t",
     "farbe": "royal-blue",
-    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-premium-hooded-sweat-62-152-0",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#3964b1",
+    "frontDom": "#1b559b",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-premium-hooded-sweat-royal-blue"
+    "dupeMit": "just-cool-long-sleeve-cool-t-royal-blue"
   },
   {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "electric-green-neon",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#bafb6d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-cool-long-sleeve-cool-t-electric-green-neon"
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "electric-orange-neon",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#fe721b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-cool-long-sleeve-cool-t-electric-orange-neon"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
     "farbe": "black",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
     "gefunden": [
       "front",
+      "back",
       "sleeve-left"
     ],
-    "frontDom": "#19191e",
+    "frontDom": "#1d1d1d",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-black"
+    "dupeMit": "russell-ladies-poloshirt-6535-black"
   },
   {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "white",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "bottle-green",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
     "gefunden": [
       "front",
+      "back",
       "sleeve-left"
+    ],
+    "frontDom": "#2d3e34",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-bottle-green"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "bright-red",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#bc091c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-bright-red"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "bright-royal",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#213da1",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-bright-royal"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "classic-red",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#991429",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-classic-red"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "french-navy",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#272938",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-french-navy"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "sky",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#9db1dd",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-sky"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "white",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#f0eff5",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-white"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "convoy-grey-solid",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#51515b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-convoy-grey-solid"
+  },
+  {
+    "produkt": "russell-ladies-poloshirt-6535",
+    "farbe": "light-oxford-heather",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#aeadb7",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-poloshirt-6535-light-oxford-heather"
+  },
+  {
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "earthy-green",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#626e56",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-earthy-green"
+  },
+  {
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "arctic-white",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
+    "gefunden": [
+      "front",
+      "back"
     ],
     "frontDom": "#eeeeee",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-white"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-arctic-white"
   },
   {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "deep-navy",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#131b2d",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy"
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "royal-blue",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#014e99",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue"
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "red",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie)",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#d4163b",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-red"
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "black",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#333033",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "russell-authentic-hooded-sweat-black"
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
+    "produkt": "just-hoods-signature-heavyweight-sweat",
     "farbe": "bright-royal",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#3e4e84",
+    "frontDom": "#1a3b7b",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-authentic-hooded-sweat-bright-royal"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-bright-royal"
   },
   {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "classic-red",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "deep-black",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#c40e37",
+    "frontDom": "#1d1f1e",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-authentic-hooded-sweat-classic-red"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-deep-black"
   },
   {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "heather-grey",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#373e4c",
+    "frontDom": "#c9c9cb",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-authentic-hooded-sweat-french-navy"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-heather-grey"
   },
   {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "bottle-green",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic Freisteller-Produktfotografie, Produktseite: https://www.groener-schulze.com/werbetextilien/sweater-pullover/russell-athletic-mens-authentic-hooded-sweat-r-265m-0). Muster: /grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_<farbe>.webp, Mehrwort-Farben mit Unterstrich, Suffix _2 = Rueck, _3 = Seite.",
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "natural-stone",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#3f554b",
+    "frontDom": "#cdc3b4",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "russell-authentic-hooded-sweat-bottle-green"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-natural-stone"
   },
   {
-    "produkt": "jamesnicholson-workwear-t-women",
-    "farbe": "grey-heather",
-    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Produktfotografie)",
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "new-french-navy",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#a0a0a0",
+    "frontDom": "#252331",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "jamesnicholson-workwear-t-women-grey-heather"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-new-french-navy"
   },
   {
-    "produkt": "jamesnicholson-workwear-t-women",
-    "farbe": "light-blue",
-    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Produktfotografie)",
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "solid-charcoal",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#c2d6e3",
+    "frontDom": "#4a484a",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "jamesnicholson-workwear-t-women-light-blue"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-solid-charcoal"
   },
   {
-    "produkt": "jamesnicholson-workwear-t-women",
-    "farbe": "orange",
-    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Produktfotografie)",
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "4f758b",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#f67d23",
+    "frontDom": "#495971",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "jamesnicholson-workwear-t-women-orange"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-4f758b"
   },
   {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "yellow",
-    "quelle": "sportyfied.com – Produkt \"Neutral Performance T-Shirt Recycled Polyester\" (Art. R61001), je Farbe eine eigene Seite https://www.sportyfied.com/en/neutral-performance-t-shirt-recycled-polyester-<farbe>; Galerie = front, back, side; Bilddateien unter https://www.sportyfied.com/thumbs/regular/<name>_700x700.png (700x700 = Maximalaufloesung). Perspektiven-Muster NICHT geraten, sondern aus dem DOM der Referenzfarbe bottle-green ausgelesen: dort liegen neutral-r61001-performance-t-shirt-bottle-green-back_700x700.png und ...-bottle-green-side_700x700.png. WICHTIG: sportyfied benennt die Dateien je Farbe uneinheitlich – die Seitenansicht fuer Yellow heisst nicht nach dem bottle-green-Schema, sondern r61001_yel_side_700x700.png (aus dem DOM von .../neutral-performance-t-shirt-recycled-polyester-yellow ausgelesen; Front = r61001_yel_3, Back = r61001_yel_back). Gleiche Quelle wie die bereits vorhandenen Front-/Rueckansichten dieses Produkts.",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f0d254",
-    "erwartet": null,
-    "deltaE": null,
-    "dupeMit": "neutral-unisex-performance-t-shirt-yellow"
-  },
-  {
-    "produkt": "bundc-t-shirt-e150",
-    "farbe": "white",
-    "quelle": "cottonclassics.com – Produktseite \"B&C E150\" (https://www.cottonclassics.com/en/bandc-e150.html), Katalognummer 01001T = BCTU01T. Bildschema im DOM ausgelesen, nicht geraten: https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_01001T_bandc_-e150_<farbe>_<FRONT|BACK|RIGHT>_<uuid>_web.jpg – RIGHT = Seiten-/Aermelansicht, offizielle B&C-Freistellerfotografie ohne Model. Die bisherige Quelle sportyfied.com (bc-tshirt-tu01t_<farbe>_<front|back|side>_700x700.png) fuehrt die Seitenansicht fuer JEDE Farbe ausser white; das Muster ist an der Belegfarbe navy (rueckKlappt 101145) verifiziert (front 347052 B / back 326215 B / side 166961 B, drei eigene Dateien), waehrend bc-tshirt-tu01t_white_side_700x700.png sowie die Varianten _side_2 und _side_3 alle 404 liefern und die white-Galerie der Produktseite nur front+back listet.",
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "4f413c",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#f3f3f3",
+    "frontDom": "#513c36",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "bundc-t-shirt-e150-white"
+    "dupeMit": "just-hoods-signature-heavyweight-sweat-4f413c"
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "gold-yellow",
-    "quelle": "daiber.de (offizielle Gustav Daiber Mediathek, J&N JN1808 — identische Studiofotografie, die groener-schulze unter daiber_* spiegelt); Muster: /files/jn1808-mens-workwear-t-shirt-ocs-blended-<farbe>-men.<id>_detail_<n>.jpg",
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "aqua",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
     "gefunden": [
       "front",
+      "back",
       "sleeve-left"
     ],
-    "frontDom": "#ffbb3b",
+    "frontDom": "#058fb3",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow"
+    "dupeMit": "sols-women-s-fleecejacket-north-aqua"
   },
   {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "gold-yellow",
-    "quelle": "daiber.de Mediathek (Hersteller Gustav Daiber GmbH), Variante .44652 = Gold Yellow des Artikels JN1807 — Fallback, da groener-schulze diese Farbe fuer JN1807 nicht fuehrt",
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "charcoal-grey-solid",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
     "gefunden": [
       "front",
+      "back",
       "sleeve-left"
     ],
-    "frontDom": "#f7b02f",
+    "frontDom": "#302e37",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow"
+    "dupeMit": "sols-women-s-fleecejacket-north-charcoal-grey-solid"
   },
   {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "white",
-    "quelle": "Offizielle Fruit-of-the-Loom-Mediathek (cdn.fruitoftheloom.eu). Muster NICHT geraten, sondern aus dem AngularJS-Scope der Herstellerseite https://www.fruitoftheloom.eu/shop/p/lightweight-hooded-sweat/0621400 ausgelesen: prodDetails.imageList liefert je Farbe Assets mit Typ-Namen asset_product_front / asset_product_back / asset_product_side (Freisteller) und asset_model_* (On-Model). Bildmuster: https://cdn.fruitoftheloom.eu/resources/images/product/062140/<FOTL-Farbcode>/<large|zoom|medium>/<asset-id>.jpg – 062140 = Artikel 62-140-0, Farbcode 30 = White (bestaetigt durch Swatch .../swatches/fruit/30_White.png und die Farbliste \"30 - white\" bei groener-schulze). Fuer White: asset_product_front=40193, asset_product_back=40195, asset_product_side=40194. Bisherige Quelle groener-schulze.com (Muster ..._62-140-0_<farbe>[_2|_3].webp, _2=Rueck, _3=Seite; am Beleg-Farbton black verifiziert: black.webp 36212 B, black_2.webp 26082 B, black_3.webp 15940 B) fuehrt fuer White nachweislich nur Front (white.webp 21312 B) und Rueck (white_2.webp 12242 B); white_3.webp = HTTP 404, und die White-Variantenseite (?Farbe=30+-+white) listet ebenfalls nur diese zwei Dateien.",
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "dark-chocolate",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
     "gefunden": [
       "front",
+      "back",
       "sleeve-left"
     ],
-    "frontDom": "#edecf1",
+    "frontDom": "#412a22",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "fruit-of-the-loom-lightweight-hooded-sweat-white"
+    "dupeMit": "sols-women-s-fleecejacket-north-dark-chocolate"
   },
   {
-    "produkt": "build-your-brand-heavy-hoody",
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "dark-purple",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#6c348b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "sols-women-s-fleecejacket-north-dark-purple"
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "fir-green",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#16372c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "sols-women-s-fleecejacket-north-fir-green"
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "grey-melange",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#4d4d4e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "sols-women-s-fleecejacket-north-grey-melange"
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "lime",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#96c22b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "sols-women-s-fleecejacket-north-lime"
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "rope",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#c9c1b4",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "sols-women-s-fleecejacket-north-rope"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "blue-dusk",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#182433",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-blue-dusk"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "cherry-red",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a51f36",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-cherry-red"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "deep-royal",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#05296c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-deep-royal"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "garnet",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#711b33",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-garnet"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "888b8d",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#67666a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-888b8d"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "off-white",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f1ecd7",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-off-white"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "olive",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#534d36",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-olive"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "2d2926",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#141414",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-2d2926"
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "tan",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a48c72",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-hammer-maxweight-adult-hooded-sweatshirt-tan"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "atoll",
+    "quelle": "cantana.com (WooCommerce-Shop, fuehrt die aktuelle offizielle B&C-Studiofotografie zu FUI50 = ID.501 Micro Fleece Full Zip als eigene Dateien pro Farbe und Ansicht, Upload-Ordner /wp-content/uploads/2026/05/, Muster B-C-ID-501-FUI50-<Farbe>-{Main|Back|Side}.jpg). Die Ableitung wurde NICHT geraten: Die vollstaendige Dateiliste wurde ueber die WordPress-REST-Media-API ausgelesen (https://www.cantana.com/wp-json/wp/v2/media?search=FUI50 bzw. search=ID-501) und mit der Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-fui50/ abgeglichen. Belegte Artikelidentitaet: FUI50 = B&C ID.501 (Herren/Unisex), Damenpendant FWI51 wird auf cantana getrennt gefuehrt. Die bisherige Quelle falk-ross.eu scheidet als Rueck-Quelle aus: die Galerie fuehrt pro Farbe nur die Freisteller-Vorderansicht 803_42_<Farbcode>_f-2015_01.jpg (Farbcodes aus den Swatch-alt-Texten: 000 White, 101 Black, 128 Dark Grey, 200 Navy, 300 Royal Blue, 314 Atoll, 400 Red, 412 Pumpkin Orange, 541 Forest Green) plus ein On-Model-Bild _m im Ordner /product/2/ - kein _b/_back/_r-Pendant (Probe 803/804_42_101_b-2015_01.jpg -> 404). Auch coozo.co.uk, aus dem die vorhandenen Vorderansichten stammen, fuehrt zu FUI50 exakt 9 Bilder = 9x FUI50_<Code>_FRONT, keine BACK-Datei.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#4296ba",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-microfleece-duo-id501-atoll"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
     "farbe": "black",
-    "quelle": "Offizielle Hersteller-Mediathek Build Your Brand (https://www.buildyourbrand.de/en/heavy-hoody, Artikel BY011) – Bild-CDN tbi.cdn.pacerace.de. Perspektiven: P1=Front, P2=Rueck, P4=Seite/Aermel. Muster: https://tbi.cdn.pacerace.de/media/images/org/BY011_P4-<farbcode>.jpg. Der Farbcode wurde NICHT geraten, sondern 1:1 aus dem HTML der Herstellerseite ausgelesen: jede Farbzeile der Mengentabelle (span.label mit Farbnamen) traegt data-attribute-IDs, und zu jeder dieser IDs existiert ein Galerie-Block id=\"attributes-product-more-images-<id>\", der die Bilddateien dieser Farbe fuehrt. Daraus: black=00007, bottlegreen=02245 (= rueckKlappt-Beleg), burgundy=00606 (die Muster-Front-URL).",
+    "quelle": "cantana.com (WooCommerce-Shop, fuehrt die aktuelle offizielle B&C-Studiofotografie zu FUI50 = ID.501 Micro Fleece Full Zip als eigene Dateien pro Farbe und Ansicht, Upload-Ordner /wp-content/uploads/2026/05/, Muster B-C-ID-501-FUI50-<Farbe>-{Main|Back|Side}.jpg). Die Ableitung wurde NICHT geraten: Die vollstaendige Dateiliste wurde ueber die WordPress-REST-Media-API ausgelesen (https://www.cantana.com/wp-json/wp/v2/media?search=FUI50 bzw. search=ID-501) und mit der Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-fui50/ abgeglichen. Belegte Artikelidentitaet: FUI50 = B&C ID.501 (Herren/Unisex), Damenpendant FWI51 wird auf cantana getrennt gefuehrt. Die bisherige Quelle falk-ross.eu scheidet als Rueck-Quelle aus: die Galerie fuehrt pro Farbe nur die Freisteller-Vorderansicht 803_42_<Farbcode>_f-2015_01.jpg (Farbcodes aus den Swatch-alt-Texten: 000 White, 101 Black, 128 Dark Grey, 200 Navy, 300 Royal Blue, 314 Atoll, 400 Red, 412 Pumpkin Orange, 541 Forest Green) plus ein On-Model-Bild _m im Ordner /product/2/ - kein _b/_back/_r-Pendant (Probe 803/804_42_101_b-2015_01.jpg -> 404). Auch coozo.co.uk, aus dem die vorhandenen Vorderansichten stammen, fuehrt zu FUI50 exakt 9 Bilder = 9x FUI50_<Code>_FRONT, keine BACK-Datei.",
     "gefunden": [
       "front",
+      "back",
       "sleeve-left"
     ],
-    "frontDom": "#1e1e1e",
+    "frontDom": "#31302b",
     "erwartet": null,
     "deltaE": null,
-    "dupeMit": "build-your-brand-heavy-hoody-black"
+    "dupeMit": "bundc-microfleece-duo-id501-black"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "navy",
+    "quelle": "cantana.com (WooCommerce-Shop, fuehrt die aktuelle offizielle B&C-Studiofotografie zu FUI50 = ID.501 Micro Fleece Full Zip als eigene Dateien pro Farbe und Ansicht, Upload-Ordner /wp-content/uploads/2026/05/, Muster B-C-ID-501-FUI50-<Farbe>-{Main|Back|Side}.jpg). Die Ableitung wurde NICHT geraten: Die vollstaendige Dateiliste wurde ueber die WordPress-REST-Media-API ausgelesen (https://www.cantana.com/wp-json/wp/v2/media?search=FUI50 bzw. search=ID-501) und mit der Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-fui50/ abgeglichen. Belegte Artikelidentitaet: FUI50 = B&C ID.501 (Herren/Unisex), Damenpendant FWI51 wird auf cantana getrennt gefuehrt. Die bisherige Quelle falk-ross.eu scheidet als Rueck-Quelle aus: die Galerie fuehrt pro Farbe nur die Freisteller-Vorderansicht 803_42_<Farbcode>_f-2015_01.jpg (Farbcodes aus den Swatch-alt-Texten: 000 White, 101 Black, 128 Dark Grey, 200 Navy, 300 Royal Blue, 314 Atoll, 400 Red, 412 Pumpkin Orange, 541 Forest Green) plus ein On-Model-Bild _m im Ordner /product/2/ - kein _b/_back/_r-Pendant (Probe 803/804_42_101_b-2015_01.jpg -> 404). Auch coozo.co.uk, aus dem die vorhandenen Vorderansichten stammen, fuehrt zu FUI50 exakt 9 Bilder = 9x FUI50_<Code>_FRONT, keine BACK-Datei.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#1f2633",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-microfleece-duo-id501-navy"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "red",
+    "quelle": "cantana.com (WooCommerce-Shop, fuehrt die aktuelle offizielle B&C-Studiofotografie zu FUI50 = ID.501 Micro Fleece Full Zip als eigene Dateien pro Farbe und Ansicht, Upload-Ordner /wp-content/uploads/2026/05/, Muster B-C-ID-501-FUI50-<Farbe>-{Main|Back|Side}.jpg). Die Ableitung wurde NICHT geraten: Die vollstaendige Dateiliste wurde ueber die WordPress-REST-Media-API ausgelesen (https://www.cantana.com/wp-json/wp/v2/media?search=FUI50 bzw. search=ID-501) und mit der Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-fui50/ abgeglichen. Belegte Artikelidentitaet: FUI50 = B&C ID.501 (Herren/Unisex), Damenpendant FWI51 wird auf cantana getrennt gefuehrt. Die bisherige Quelle falk-ross.eu scheidet als Rueck-Quelle aus: die Galerie fuehrt pro Farbe nur die Freisteller-Vorderansicht 803_42_<Farbcode>_f-2015_01.jpg (Farbcodes aus den Swatch-alt-Texten: 000 White, 101 Black, 128 Dark Grey, 200 Navy, 300 Royal Blue, 314 Atoll, 400 Red, 412 Pumpkin Orange, 541 Forest Green) plus ein On-Model-Bild _m im Ordner /product/2/ - kein _b/_back/_r-Pendant (Probe 803/804_42_101_b-2015_01.jpg -> 404). Auch coozo.co.uk, aus dem die vorhandenen Vorderansichten stammen, fuehrt zu FUI50 exakt 9 Bilder = 9x FUI50_<Code>_FRONT, keine BACK-Datei.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ad292e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-microfleece-duo-id501-red"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "white",
+    "quelle": "cantana.com (WooCommerce-Shop, fuehrt die aktuelle offizielle B&C-Studiofotografie zu FUI50 = ID.501 Micro Fleece Full Zip als eigene Dateien pro Farbe und Ansicht, Upload-Ordner /wp-content/uploads/2026/05/, Muster B-C-ID-501-FUI50-<Farbe>-{Main|Back|Side}.jpg). Die Ableitung wurde NICHT geraten: Die vollstaendige Dateiliste wurde ueber die WordPress-REST-Media-API ausgelesen (https://www.cantana.com/wp-json/wp/v2/media?search=FUI50 bzw. search=ID-501) und mit der Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-fui50/ abgeglichen. Belegte Artikelidentitaet: FUI50 = B&C ID.501 (Herren/Unisex), Damenpendant FWI51 wird auf cantana getrennt gefuehrt. Die bisherige Quelle falk-ross.eu scheidet als Rueck-Quelle aus: die Galerie fuehrt pro Farbe nur die Freisteller-Vorderansicht 803_42_<Farbcode>_f-2015_01.jpg (Farbcodes aus den Swatch-alt-Texten: 000 White, 101 Black, 128 Dark Grey, 200 Navy, 300 Royal Blue, 314 Atoll, 400 Red, 412 Pumpkin Orange, 541 Forest Green) plus ein On-Model-Bild _m im Ordner /product/2/ - kein _b/_back/_r-Pendant (Probe 803/804_42_101_b-2015_01.jpg -> 404). Auch coozo.co.uk, aus dem die vorhandenen Vorderansichten stammen, fuehrt zu FUI50 exakt 9 Bilder = 9x FUI50_<Code>_FRONT, keine BACK-Datei.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ebeae8",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-microfleece-duo-id501-white"
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "black",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#0c0a0d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "earthpositive-unisex-organic-longsleeve-t-shirt-black"
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "faded-denim",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#416794",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "earthpositive-unisex-organic-longsleeve-t-shirt-faded-denim"
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f5f9fc",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "earthpositive-unisex-organic-longsleeve-t-shirt-white"
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "denim-blue",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#29455b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "earthpositive-unisex-organic-longsleeve-t-shirt-denim-blue"
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "french-navy",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#22324c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "earthpositive-unisex-organic-longsleeve-t-shirt-french-navy"
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "light-heather",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a1abad",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "earthpositive-unisex-organic-longsleeve-t-shirt-light-heather"
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "stone-washed-black",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#181c25",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "earthpositive-unisex-organic-longsleeve-t-shirt-stone-washed-black"
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "f4f4ec",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ebece7",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "earthpositive-unisex-organic-longsleeve-t-shirt-f4f4ec"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501-women",
+    "farbe": "atoll",
+    "quelle": "cantana.com (WooCommerce-Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-women-fwi51/ ; Bildliste NICHT geraten, sondern vollstaendig ueber die WP-REST-Media-API https://www.cantana.com/wp-json/wp/v2/media?search=FWI51&per_page=100 ausgelesen. Dateinamen-Schema: B-C-ID-501-women-FWI51-<Farbe>-Main.jpg / -Back.jpg / -Side.jpg im Ordner /wp-content/uploads/2026/05/. Es sind die originalen B&C-Studio-Freisteller des Artikels FWI51 (ID.501/women), 1600x~2055 px, weisser Hintergrund, keine Person.)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#4296ba",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-microfleece-duo-id501-women-atoll"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501-women",
+    "farbe": "navy",
+    "quelle": "cantana.com (WooCommerce-Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-women-fwi51/ ; Bildliste NICHT geraten, sondern vollstaendig ueber die WP-REST-Media-API https://www.cantana.com/wp-json/wp/v2/media?search=FWI51&per_page=100 ausgelesen. Dateinamen-Schema: B-C-ID-501-women-FWI51-<Farbe>-Main.jpg / -Back.jpg / -Side.jpg im Ordner /wp-content/uploads/2026/05/. Es sind die originalen B&C-Studio-Freisteller des Artikels FWI51 (ID.501/women), 1600x~2055 px, weisser Hintergrund, keine Person.)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#1f2634",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-microfleece-duo-id501-women-navy"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501-women",
+    "farbe": "red",
+    "quelle": "cantana.com (WooCommerce-Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-women-fwi51/ ; Bildliste NICHT geraten, sondern vollstaendig ueber die WP-REST-Media-API https://www.cantana.com/wp-json/wp/v2/media?search=FWI51&per_page=100 ausgelesen. Dateinamen-Schema: B-C-ID-501-women-FWI51-<Farbe>-Main.jpg / -Back.jpg / -Side.jpg im Ordner /wp-content/uploads/2026/05/. Es sind die originalen B&C-Studio-Freisteller des Artikels FWI51 (ID.501/women), 1600x~2055 px, weisser Hintergrund, keine Person.)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ad292e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-microfleece-duo-id501-women-red"
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501-women",
+    "farbe": "white",
+    "quelle": "cantana.com (WooCommerce-Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-women-fwi51/ ; Bildliste NICHT geraten, sondern vollstaendig ueber die WP-REST-Media-API https://www.cantana.com/wp-json/wp/v2/media?search=FWI51&per_page=100 ausgelesen. Dateinamen-Schema: B-C-ID-501-women-FWI51-<Farbe>-Main.jpg / -Back.jpg / -Side.jpg im Ordner /wp-content/uploads/2026/05/. Es sind die originalen B&C-Studio-Freisteller des Artikels FWI51 (ID.501/women), 1600x~2055 px, weisser Hintergrund, keine Person.)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ebeae8",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-microfleece-duo-id501-women-white"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-men",
+    "farbe": "black",
+    "quelle": "cantana.com (WordPress-Mediathek, B&C-Originalfotografie TM044, ueber die WP-REST-API /wp-json/wp/v2/media?search=TM044 ausgelesen – Dateifamilie 2026/05 \"B-C-Inspire-V-T-men-TM044-<Farbe>-Back.jpg\") fuer Black, Khaki, Navy, Red, White; cottonclassics.com (Magento-Produktseite /en/bandc-inspire-v-t-men.html, Bildfamilie \"PS_01TM44_bandc_inspire-v-t-men__<farbe>_FRONT/_RIGHT_<uuid>_web.jpg\" – das mit \"RIGHT\" getaggte Bild ist faktisch die Rueckansicht, visuell geprueft) fuer Light Grey",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#211d1e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-men-black"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-men",
+    "farbe": "khaki",
+    "quelle": "cantana.com (WordPress-Mediathek, B&C-Originalfotografie TM044, ueber die WP-REST-API /wp-json/wp/v2/media?search=TM044 ausgelesen – Dateifamilie 2026/05 \"B-C-Inspire-V-T-men-TM044-<Farbe>-Back.jpg\") fuer Black, Khaki, Navy, Red, White; cottonclassics.com (Magento-Produktseite /en/bandc-inspire-v-t-men.html, Bildfamilie \"PS_01TM44_bandc_inspire-v-t-men__<farbe>_FRONT/_RIGHT_<uuid>_web.jpg\" – das mit \"RIGHT\" getaggte Bild ist faktisch die Rueckansicht, visuell geprueft) fuer Light Grey",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#4b4539",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-men-khaki"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-men",
+    "farbe": "navy",
+    "quelle": "cantana.com (WordPress-Mediathek, B&C-Originalfotografie TM044, ueber die WP-REST-API /wp-json/wp/v2/media?search=TM044 ausgelesen – Dateifamilie 2026/05 \"B-C-Inspire-V-T-men-TM044-<Farbe>-Back.jpg\") fuer Black, Khaki, Navy, Red, White; cottonclassics.com (Magento-Produktseite /en/bandc-inspire-v-t-men.html, Bildfamilie \"PS_01TM44_bandc_inspire-v-t-men__<farbe>_FRONT/_RIGHT_<uuid>_web.jpg\" – das mit \"RIGHT\" getaggte Bild ist faktisch die Rueckansicht, visuell geprueft) fuer Light Grey",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#181e2c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-men-navy"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-men",
+    "farbe": "red",
+    "quelle": "cantana.com (WordPress-Mediathek, B&C-Originalfotografie TM044, ueber die WP-REST-API /wp-json/wp/v2/media?search=TM044 ausgelesen – Dateifamilie 2026/05 \"B-C-Inspire-V-T-men-TM044-<Farbe>-Back.jpg\") fuer Black, Khaki, Navy, Red, White; cottonclassics.com (Magento-Produktseite /en/bandc-inspire-v-t-men.html, Bildfamilie \"PS_01TM44_bandc_inspire-v-t-men__<farbe>_FRONT/_RIGHT_<uuid>_web.jpg\" – das mit \"RIGHT\" getaggte Bild ist faktisch die Rueckansicht, visuell geprueft) fuer Light Grey",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#b9031f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-men-red"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-men",
+    "farbe": "white",
+    "quelle": "cantana.com (WordPress-Mediathek, B&C-Originalfotografie TM044, ueber die WP-REST-API /wp-json/wp/v2/media?search=TM044 ausgelesen – Dateifamilie 2026/05 \"B-C-Inspire-V-T-men-TM044-<Farbe>-Back.jpg\") fuer Black, Khaki, Navy, Red, White; cottonclassics.com (Magento-Produktseite /en/bandc-inspire-v-t-men.html, Bildfamilie \"PS_01TM44_bandc_inspire-v-t-men__<farbe>_FRONT/_RIGHT_<uuid>_web.jpg\" – das mit \"RIGHT\" getaggte Bild ist faktisch die Rueckansicht, visuell geprueft) fuer Light Grey",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#e3e3e3",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-men-white"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-men",
+    "farbe": "light-grey",
+    "quelle": "cantana.com (WordPress-Mediathek, B&C-Originalfotografie TM044, ueber die WP-REST-API /wp-json/wp/v2/media?search=TM044 ausgelesen – Dateifamilie 2026/05 \"B-C-Inspire-V-T-men-TM044-<Farbe>-Back.jpg\") fuer Black, Khaki, Navy, Red, White; cottonclassics.com (Magento-Produktseite /en/bandc-inspire-v-t-men.html, Bildfamilie \"PS_01TM44_bandc_inspire-v-t-men__<farbe>_FRONT/_RIGHT_<uuid>_web.jpg\" – das mit \"RIGHT\" getaggte Bild ist faktisch die Rueckansicht, visuell geprueft) fuer Light Grey",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#908d86",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-men-light-grey"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-women",
+    "farbe": "black",
+    "quelle": "shirtilux.de (OXID-Shop, Produktseite https://shirtilux.de/damen/t-shirts/bio-t-shirt-inspire-v-neck-women.html = B&C TW045). Je Farbvariante liegt die Galerie unter /out/pictures/master/product/<Position>/<hash>.png; Position 1 = Front, Position 2 = Rueckseite. Die Farb-zu-Bild-Zuordnung stammt aus dem gerenderten DOM: jeder Farbschalter ist ein <a data-selection-id=\"...\"> mit Farbnamen in img alt/title; nach dem Umschalten jeder Variante wurden die master-URLs beider Positionen ausgelesen. Unabhaengig gegengeprueft ueber cantana.com, das die originalen B&C-Assets in Herstellernamenskonvention hostet (P_TW045_Inspire_V_T_women_white_back.jpg).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#282626",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-women-black"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-women",
+    "farbe": "khaki",
+    "quelle": "shirtilux.de (OXID-Shop, Produktseite https://shirtilux.de/damen/t-shirts/bio-t-shirt-inspire-v-neck-women.html = B&C TW045). Je Farbvariante liegt die Galerie unter /out/pictures/master/product/<Position>/<hash>.png; Position 1 = Front, Position 2 = Rueckseite. Die Farb-zu-Bild-Zuordnung stammt aus dem gerenderten DOM: jeder Farbschalter ist ein <a data-selection-id=\"...\"> mit Farbnamen in img alt/title; nach dem Umschalten jeder Variante wurden die master-URLs beider Positionen ausgelesen. Unabhaengig gegengeprueft ueber cantana.com, das die originalen B&C-Assets in Herstellernamenskonvention hostet (P_TW045_Inspire_V_T_women_white_back.jpg).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#544e42",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-women-khaki"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-women",
+    "farbe": "light-grey",
+    "quelle": "shirtilux.de (OXID-Shop, Produktseite https://shirtilux.de/damen/t-shirts/bio-t-shirt-inspire-v-neck-women.html = B&C TW045). Je Farbvariante liegt die Galerie unter /out/pictures/master/product/<Position>/<hash>.png; Position 1 = Front, Position 2 = Rueckseite. Die Farb-zu-Bild-Zuordnung stammt aus dem gerenderten DOM: jeder Farbschalter ist ein <a data-selection-id=\"...\"> mit Farbnamen in img alt/title; nach dem Umschalten jeder Variante wurden die master-URLs beider Positionen ausgelesen. Unabhaengig gegengeprueft ueber cantana.com, das die originalen B&C-Assets in Herstellernamenskonvention hostet (P_TW045_Inspire_V_T_women_white_back.jpg).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#9e9a92",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-women-light-grey"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-women",
+    "farbe": "navy",
+    "quelle": "shirtilux.de (OXID-Shop, Produktseite https://shirtilux.de/damen/t-shirts/bio-t-shirt-inspire-v-neck-women.html = B&C TW045). Je Farbvariante liegt die Galerie unter /out/pictures/master/product/<Position>/<hash>.png; Position 1 = Front, Position 2 = Rueckseite. Die Farb-zu-Bild-Zuordnung stammt aus dem gerenderten DOM: jeder Farbschalter ist ein <a data-selection-id=\"...\"> mit Farbnamen in img alt/title; nach dem Umschalten jeder Variante wurden die master-URLs beider Positionen ausgelesen. Unabhaengig gegengeprueft ueber cantana.com, das die originalen B&C-Assets in Herstellernamenskonvention hostet (P_TW045_Inspire_V_T_women_white_back.jpg).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#1e2532",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-women-navy"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-women",
+    "farbe": "red",
+    "quelle": "shirtilux.de (OXID-Shop, Produktseite https://shirtilux.de/damen/t-shirts/bio-t-shirt-inspire-v-neck-women.html = B&C TW045). Je Farbvariante liegt die Galerie unter /out/pictures/master/product/<Position>/<hash>.png; Position 1 = Front, Position 2 = Rueckseite. Die Farb-zu-Bild-Zuordnung stammt aus dem gerenderten DOM: jeder Farbschalter ist ein <a data-selection-id=\"...\"> mit Farbnamen in img alt/title; nach dem Umschalten jeder Variante wurden die master-URLs beider Positionen ausgelesen. Unabhaengig gegengeprueft ueber cantana.com, das die originalen B&C-Assets in Herstellernamenskonvention hostet (P_TW045_Inspire_V_T_women_white_back.jpg).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#cf0b29",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-women-red"
+  },
+  {
+    "produkt": "bundc-inspire-v-t-women",
+    "farbe": "white",
+    "quelle": "shirtilux.de (OXID-Shop, Produktseite https://shirtilux.de/damen/t-shirts/bio-t-shirt-inspire-v-neck-women.html = B&C TW045). Je Farbvariante liegt die Galerie unter /out/pictures/master/product/<Position>/<hash>.png; Position 1 = Front, Position 2 = Rueckseite. Die Farb-zu-Bild-Zuordnung stammt aus dem gerenderten DOM: jeder Farbschalter ist ein <a data-selection-id=\"...\"> mit Farbnamen in img alt/title; nach dem Umschalten jeder Variante wurden die master-URLs beider Positionen ausgelesen. Unabhaengig gegengeprueft ueber cantana.com, das die originalen B&C-Assets in Herstellernamenskonvention hostet (P_TW045_Inspire_V_T_women_white_back.jpg).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ededed",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-inspire-v-t-women-white"
+  },
+  {
+    "produkt": "neutral-ladies-long-sleeve-t-shirt",
+    "farbe": "bottle-green",
+    "quelle": "sportyfied.com (B2B/Teamwear-Haendler, fuehrt Neutral O81050 mit Original-Herstellerfotos). Die Rueck-Zuordnung wurde NICHT geraten, sondern aus dem eingebetteten Varianten-JSON der Produktseite https://www.sportyfied.com/de/neutral-long-sleeve-t-shirt-female-charcoal ausgelesen: der \"variants\"-Block liefert je Variante \"supplier_prod_no\":\"O81050\", \"color_no\", \"primary_color_name\", \"primary_color_hex\" und einen images-Block mit explizitem \"product_side\":\"front\" bzw. \"product_side\":\"back\" samt file_name. Fuer die hier fehlenden 6 Farben greift die numerische Dateinamen-Familie o81050-<colorNo>.png (front) / o81050-<colorNo>_1.png (back); ausgeliefert als 700x700-Thumb unter /thumbs/regular/ (gleiche Konvention wie die bereits im Projekt genutzten sportyfied-Bilder der uebrigen 16 Farben). Deklarierte Zuordnung: 01=White, 03=Black, 04=Navy, 05=Red, 33=Bottle Green, 51=Royal – genau die sechs numerischen Codes, die von den bereits versorgten Farben (08/13/21/26/27/67/98) noch nicht belegt waren. Verifikation: alle 12 URLs (6 Front + 6 Back) geprueft, jeweils 200 / image/png / 188–437 KB. Bytegroessen-Gegenprobe Front vs. Back je Farbe unterschiedlich (z. B. white 377952 vs 295895, black 197635 vs 188213, navy 363154 vs 328881, red 436980 vs 389241, bottle-green 353651 vs 338698, royal 372008 vs 362545) – also echte Einzeldateien, keine umbenannte Frontdatei. Sichtpruefung aller 6 Rueckenbilder: Geistermannequin ohne Person, weisser Grund, geschlossener Rueckenausschnitt, kein vorderer Halsausschnitt, keine Knopfleiste, kein Aufdruck. Artikel- und Farbidentitaet zusaetzlich abgesichert, indem die sportyfied-FRONT je Code gegen die im Projekt vorhandene front.png gestellt wurde: identische Herstelleraufnahme inkl. Neutral-Nackenlabel (geprueft fuer royal, bottle-green, navy, red) – damit ist auch royal eindeutig, obwohl der sportyfied-Swatch-Hex (#0a3f6c) von unserem (#0033A0) abweicht. \"side\" wurde bewusst weggelassen: das Varianten-JSON deklariert ausschliesslich product_side front und back, eine eigene Seitenansicht existiert nicht. Die urspruengliche Quelle neutral.com (Shopify) scheidet als Rueck-Quelle weiterhin aus (Produkt-JSON liefert nur einen Freisteller pro Farbe, ausschliesslich Vorderansichten).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#1e452b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-ladies-long-sleeve-t-shirt-bottle-green"
+  },
+  {
+    "produkt": "neutral-ladies-long-sleeve-t-shirt",
+    "farbe": "black",
+    "quelle": "sportyfied.com (B2B/Teamwear-Haendler, fuehrt Neutral O81050 mit Original-Herstellerfotos). Die Rueck-Zuordnung wurde NICHT geraten, sondern aus dem eingebetteten Varianten-JSON der Produktseite https://www.sportyfied.com/de/neutral-long-sleeve-t-shirt-female-charcoal ausgelesen: der \"variants\"-Block liefert je Variante \"supplier_prod_no\":\"O81050\", \"color_no\", \"primary_color_name\", \"primary_color_hex\" und einen images-Block mit explizitem \"product_side\":\"front\" bzw. \"product_side\":\"back\" samt file_name. Fuer die hier fehlenden 6 Farben greift die numerische Dateinamen-Familie o81050-<colorNo>.png (front) / o81050-<colorNo>_1.png (back); ausgeliefert als 700x700-Thumb unter /thumbs/regular/ (gleiche Konvention wie die bereits im Projekt genutzten sportyfied-Bilder der uebrigen 16 Farben). Deklarierte Zuordnung: 01=White, 03=Black, 04=Navy, 05=Red, 33=Bottle Green, 51=Royal – genau die sechs numerischen Codes, die von den bereits versorgten Farben (08/13/21/26/27/67/98) noch nicht belegt waren. Verifikation: alle 12 URLs (6 Front + 6 Back) geprueft, jeweils 200 / image/png / 188–437 KB. Bytegroessen-Gegenprobe Front vs. Back je Farbe unterschiedlich (z. B. white 377952 vs 295895, black 197635 vs 188213, navy 363154 vs 328881, red 436980 vs 389241, bottle-green 353651 vs 338698, royal 372008 vs 362545) – also echte Einzeldateien, keine umbenannte Frontdatei. Sichtpruefung aller 6 Rueckenbilder: Geistermannequin ohne Person, weisser Grund, geschlossener Rueckenausschnitt, kein vorderer Halsausschnitt, keine Knopfleiste, kein Aufdruck. Artikel- und Farbidentitaet zusaetzlich abgesichert, indem die sportyfied-FRONT je Code gegen die im Projekt vorhandene front.png gestellt wurde: identische Herstelleraufnahme inkl. Neutral-Nackenlabel (geprueft fuer royal, bottle-green, navy, red) – damit ist auch royal eindeutig, obwohl der sportyfied-Swatch-Hex (#0a3f6c) von unserem (#0033A0) abweicht. \"side\" wurde bewusst weggelassen: das Varianten-JSON deklariert ausschliesslich product_side front und back, eine eigene Seitenansicht existiert nicht. Die urspruengliche Quelle neutral.com (Shopify) scheidet als Rueck-Quelle weiterhin aus (Produkt-JSON liefert nur einen Freisteller pro Farbe, ausschliesslich Vorderansichten).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#2a2a2a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-ladies-long-sleeve-t-shirt-black"
+  },
+  {
+    "produkt": "neutral-ladies-long-sleeve-t-shirt",
+    "farbe": "navy",
+    "quelle": "sportyfied.com (B2B/Teamwear-Haendler, fuehrt Neutral O81050 mit Original-Herstellerfotos). Die Rueck-Zuordnung wurde NICHT geraten, sondern aus dem eingebetteten Varianten-JSON der Produktseite https://www.sportyfied.com/de/neutral-long-sleeve-t-shirt-female-charcoal ausgelesen: der \"variants\"-Block liefert je Variante \"supplier_prod_no\":\"O81050\", \"color_no\", \"primary_color_name\", \"primary_color_hex\" und einen images-Block mit explizitem \"product_side\":\"front\" bzw. \"product_side\":\"back\" samt file_name. Fuer die hier fehlenden 6 Farben greift die numerische Dateinamen-Familie o81050-<colorNo>.png (front) / o81050-<colorNo>_1.png (back); ausgeliefert als 700x700-Thumb unter /thumbs/regular/ (gleiche Konvention wie die bereits im Projekt genutzten sportyfied-Bilder der uebrigen 16 Farben). Deklarierte Zuordnung: 01=White, 03=Black, 04=Navy, 05=Red, 33=Bottle Green, 51=Royal – genau die sechs numerischen Codes, die von den bereits versorgten Farben (08/13/21/26/27/67/98) noch nicht belegt waren. Verifikation: alle 12 URLs (6 Front + 6 Back) geprueft, jeweils 200 / image/png / 188–437 KB. Bytegroessen-Gegenprobe Front vs. Back je Farbe unterschiedlich (z. B. white 377952 vs 295895, black 197635 vs 188213, navy 363154 vs 328881, red 436980 vs 389241, bottle-green 353651 vs 338698, royal 372008 vs 362545) – also echte Einzeldateien, keine umbenannte Frontdatei. Sichtpruefung aller 6 Rueckenbilder: Geistermannequin ohne Person, weisser Grund, geschlossener Rueckenausschnitt, kein vorderer Halsausschnitt, keine Knopfleiste, kein Aufdruck. Artikel- und Farbidentitaet zusaetzlich abgesichert, indem die sportyfied-FRONT je Code gegen die im Projekt vorhandene front.png gestellt wurde: identische Herstelleraufnahme inkl. Neutral-Nackenlabel (geprueft fuer royal, bottle-green, navy, red) – damit ist auch royal eindeutig, obwohl der sportyfied-Swatch-Hex (#0a3f6c) von unserem (#0033A0) abweicht. \"side\" wurde bewusst weggelassen: das Varianten-JSON deklariert ausschliesslich product_side front und back, eine eigene Seitenansicht existiert nicht. Die urspruengliche Quelle neutral.com (Shopify) scheidet als Rueck-Quelle weiterhin aus (Produkt-JSON liefert nur einen Freisteller pro Farbe, ausschliesslich Vorderansichten).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#181e2e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-ladies-long-sleeve-t-shirt-navy"
+  },
+  {
+    "produkt": "neutral-ladies-long-sleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "sportyfied.com (B2B/Teamwear-Haendler, fuehrt Neutral O81050 mit Original-Herstellerfotos). Die Rueck-Zuordnung wurde NICHT geraten, sondern aus dem eingebetteten Varianten-JSON der Produktseite https://www.sportyfied.com/de/neutral-long-sleeve-t-shirt-female-charcoal ausgelesen: der \"variants\"-Block liefert je Variante \"supplier_prod_no\":\"O81050\", \"color_no\", \"primary_color_name\", \"primary_color_hex\" und einen images-Block mit explizitem \"product_side\":\"front\" bzw. \"product_side\":\"back\" samt file_name. Fuer die hier fehlenden 6 Farben greift die numerische Dateinamen-Familie o81050-<colorNo>.png (front) / o81050-<colorNo>_1.png (back); ausgeliefert als 700x700-Thumb unter /thumbs/regular/ (gleiche Konvention wie die bereits im Projekt genutzten sportyfied-Bilder der uebrigen 16 Farben). Deklarierte Zuordnung: 01=White, 03=Black, 04=Navy, 05=Red, 33=Bottle Green, 51=Royal – genau die sechs numerischen Codes, die von den bereits versorgten Farben (08/13/21/26/27/67/98) noch nicht belegt waren. Verifikation: alle 12 URLs (6 Front + 6 Back) geprueft, jeweils 200 / image/png / 188–437 KB. Bytegroessen-Gegenprobe Front vs. Back je Farbe unterschiedlich (z. B. white 377952 vs 295895, black 197635 vs 188213, navy 363154 vs 328881, red 436980 vs 389241, bottle-green 353651 vs 338698, royal 372008 vs 362545) – also echte Einzeldateien, keine umbenannte Frontdatei. Sichtpruefung aller 6 Rueckenbilder: Geistermannequin ohne Person, weisser Grund, geschlossener Rueckenausschnitt, kein vorderer Halsausschnitt, keine Knopfleiste, kein Aufdruck. Artikel- und Farbidentitaet zusaetzlich abgesichert, indem die sportyfied-FRONT je Code gegen die im Projekt vorhandene front.png gestellt wurde: identische Herstelleraufnahme inkl. Neutral-Nackenlabel (geprueft fuer royal, bottle-green, navy, red) – damit ist auch royal eindeutig, obwohl der sportyfied-Swatch-Hex (#0a3f6c) von unserem (#0033A0) abweicht. \"side\" wurde bewusst weggelassen: das Varianten-JSON deklariert ausschliesslich product_side front und back, eine eigene Seitenansicht existiert nicht. Die urspruengliche Quelle neutral.com (Shopify) scheidet als Rueck-Quelle weiterhin aus (Produkt-JSON liefert nur einen Freisteller pro Farbe, ausschliesslich Vorderansichten).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f3f4f8",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-ladies-long-sleeve-t-shirt-white"
+  },
+  {
+    "produkt": "neutral-ladies-long-sleeve-t-shirt",
+    "farbe": "royal",
+    "quelle": "sportyfied.com (B2B/Teamwear-Haendler, fuehrt Neutral O81050 mit Original-Herstellerfotos). Die Rueck-Zuordnung wurde NICHT geraten, sondern aus dem eingebetteten Varianten-JSON der Produktseite https://www.sportyfied.com/de/neutral-long-sleeve-t-shirt-female-charcoal ausgelesen: der \"variants\"-Block liefert je Variante \"supplier_prod_no\":\"O81050\", \"color_no\", \"primary_color_name\", \"primary_color_hex\" und einen images-Block mit explizitem \"product_side\":\"front\" bzw. \"product_side\":\"back\" samt file_name. Fuer die hier fehlenden 6 Farben greift die numerische Dateinamen-Familie o81050-<colorNo>.png (front) / o81050-<colorNo>_1.png (back); ausgeliefert als 700x700-Thumb unter /thumbs/regular/ (gleiche Konvention wie die bereits im Projekt genutzten sportyfied-Bilder der uebrigen 16 Farben). Deklarierte Zuordnung: 01=White, 03=Black, 04=Navy, 05=Red, 33=Bottle Green, 51=Royal – genau die sechs numerischen Codes, die von den bereits versorgten Farben (08/13/21/26/27/67/98) noch nicht belegt waren. Verifikation: alle 12 URLs (6 Front + 6 Back) geprueft, jeweils 200 / image/png / 188–437 KB. Bytegroessen-Gegenprobe Front vs. Back je Farbe unterschiedlich (z. B. white 377952 vs 295895, black 197635 vs 188213, navy 363154 vs 328881, red 436980 vs 389241, bottle-green 353651 vs 338698, royal 372008 vs 362545) – also echte Einzeldateien, keine umbenannte Frontdatei. Sichtpruefung aller 6 Rueckenbilder: Geistermannequin ohne Person, weisser Grund, geschlossener Rueckenausschnitt, kein vorderer Halsausschnitt, keine Knopfleiste, kein Aufdruck. Artikel- und Farbidentitaet zusaetzlich abgesichert, indem die sportyfied-FRONT je Code gegen die im Projekt vorhandene front.png gestellt wurde: identische Herstelleraufnahme inkl. Neutral-Nackenlabel (geprueft fuer royal, bottle-green, navy, red) – damit ist auch royal eindeutig, obwohl der sportyfied-Swatch-Hex (#0a3f6c) von unserem (#0033A0) abweicht. \"side\" wurde bewusst weggelassen: das Varianten-JSON deklariert ausschliesslich product_side front und back, eine eigene Seitenansicht existiert nicht. Die urspruengliche Quelle neutral.com (Shopify) scheidet als Rueck-Quelle weiterhin aus (Produkt-JSON liefert nur einen Freisteller pro Farbe, ausschliesslich Vorderansichten).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#0e4781",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-ladies-long-sleeve-t-shirt-royal"
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "neutral.com – offizielle Hersteller-Mediathek: Dropbox-Packshot-Bibliothek, verlinkt von https://neutral.com/pages/downloads (PACKSHOTS → PACKSHOTS WITHOUT CERTIFICATES → PERFORMANCE → \"R61050 Recycled Performance LS T-shirt\")",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e5e5e5",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-recycled-performance-long-sleeve-t-shirt-white"
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "black",
+    "quelle": "neutral.com – offizielle Hersteller-Mediathek: Dropbox-Packshot-Bibliothek, verlinkt von https://neutral.com/pages/downloads (PACKSHOTS → PACKSHOTS WITHOUT CERTIFICATES → PERFORMANCE → \"R61050 Recycled Performance LS T-shirt\")",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2c2c2c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-recycled-performance-long-sleeve-t-shirt-black"
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "navy",
+    "quelle": "neutral.com – offizielle Hersteller-Mediathek: Dropbox-Packshot-Bibliothek, verlinkt von https://neutral.com/pages/downloads (PACKSHOTS → PACKSHOTS WITHOUT CERTIFICATES → PERFORMANCE → \"R61050 Recycled Performance LS T-shirt\")",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#242632",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-recycled-performance-long-sleeve-t-shirt-navy"
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "lime",
+    "quelle": "neutral.com – offizielle Hersteller-Mediathek: Dropbox-Packshot-Bibliothek, verlinkt von https://neutral.com/pages/downloads (PACKSHOTS → PACKSHOTS WITHOUT CERTIFICATES → PERFORMANCE → \"R61050 Recycled Performance LS T-shirt\")",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#77ba5f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-recycled-performance-long-sleeve-t-shirt-lime"
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "dusty-mint",
+    "quelle": "neutral.com – offizielle Hersteller-Mediathek: Dropbox-Packshot-Bibliothek, verlinkt von https://neutral.com/pages/downloads (PACKSHOTS → PACKSHOTS WITHOUT CERTIFICATES → PERFORMANCE → \"R61050 Recycled Performance LS T-shirt\")",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#96c3a7",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-recycled-performance-long-sleeve-t-shirt-dusty-mint"
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "yellow",
+    "quelle": "neutral.com – offizielle Hersteller-Mediathek: Dropbox-Packshot-Bibliothek, verlinkt von https://neutral.com/pages/downloads (PACKSHOTS → PACKSHOTS WITHOUT CERTIFICATES → PERFORMANCE → \"R61050 Recycled Performance LS T-shirt\")",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#e3c84d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-recycled-performance-long-sleeve-t-shirt-yellow"
+  },
+  {
+    "produkt": "russell-mens-pure-organic-heavy-tee",
+    "farbe": "white",
+    "quelle": "stickx.de (StickX Textilveredelung, fuehrt den Artikel als RLTS020 = Russell Pure Organic R-118M-0 / L-Shop Z118M). Rueck-URLs NICHT geraten, sondern aus dem DOM der vier Farbvarianten-Seiten ausgelesen: /catalog/t-shirts/russell-mens-pure-organic-heavy-tee-for-print-and-embroidery-RLTS020/{1|005|10071|168}. Jede Variantenseite liefert genau zwei Galeriebilder: /static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.<farbcode>_FR_1.jpg (Front) und ..._BK_1.jpg (Back). Farbcodes aus den Seitentiteln: 001=white, 002=black, 253=convoy grey, 290=french navy. Gleiche offizielle Russell-Studioserie (Geistermannequin, weisser Grund) wie die vorhandenen Vorderansichten von freewear.de.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f0f0f2",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-mens-pure-organic-heavy-tee-white"
+  },
+  {
+    "produkt": "russell-mens-pure-organic-heavy-tee",
+    "farbe": "black",
+    "quelle": "stickx.de (StickX Textilveredelung, fuehrt den Artikel als RLTS020 = Russell Pure Organic R-118M-0 / L-Shop Z118M). Rueck-URLs NICHT geraten, sondern aus dem DOM der vier Farbvarianten-Seiten ausgelesen: /catalog/t-shirts/russell-mens-pure-organic-heavy-tee-for-print-and-embroidery-RLTS020/{1|005|10071|168}. Jede Variantenseite liefert genau zwei Galeriebilder: /static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.<farbcode>_FR_1.jpg (Front) und ..._BK_1.jpg (Back). Farbcodes aus den Seitentiteln: 001=white, 002=black, 253=convoy grey, 290=french navy. Gleiche offizielle Russell-Studioserie (Geistermannequin, weisser Grund) wie die vorhandenen Vorderansichten von freewear.de.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#14171b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-mens-pure-organic-heavy-tee-black"
+  },
+  {
+    "produkt": "russell-mens-pure-organic-heavy-tee",
+    "farbe": "555b66",
+    "quelle": "stickx.de (StickX Textilveredelung, fuehrt den Artikel als RLTS020 = Russell Pure Organic R-118M-0 / L-Shop Z118M). Rueck-URLs NICHT geraten, sondern aus dem DOM der vier Farbvarianten-Seiten ausgelesen: /catalog/t-shirts/russell-mens-pure-organic-heavy-tee-for-print-and-embroidery-RLTS020/{1|005|10071|168}. Jede Variantenseite liefert genau zwei Galeriebilder: /static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.<farbcode>_FR_1.jpg (Front) und ..._BK_1.jpg (Back). Farbcodes aus den Seitentiteln: 001=white, 002=black, 253=convoy grey, 290=french navy. Gleiche offizielle Russell-Studioserie (Geistermannequin, weisser Grund) wie die vorhandenen Vorderansichten von freewear.de.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#474a4f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-mens-pure-organic-heavy-tee-555b66"
+  },
+  {
+    "produkt": "russell-mens-pure-organic-heavy-tee",
+    "farbe": "french-navy",
+    "quelle": "stickx.de (StickX Textilveredelung, fuehrt den Artikel als RLTS020 = Russell Pure Organic R-118M-0 / L-Shop Z118M). Rueck-URLs NICHT geraten, sondern aus dem DOM der vier Farbvarianten-Seiten ausgelesen: /catalog/t-shirts/russell-mens-pure-organic-heavy-tee-for-print-and-embroidery-RLTS020/{1|005|10071|168}. Jede Variantenseite liefert genau zwei Galeriebilder: /static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.<farbcode>_FR_1.jpg (Front) und ..._BK_1.jpg (Back). Farbcodes aus den Seitentiteln: 001=white, 002=black, 253=convoy grey, 290=french navy. Gleiche offizielle Russell-Studioserie (Geistermannequin, weisser Grund) wie die vorhandenen Vorderansichten von freewear.de.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#111e33",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-mens-pure-organic-heavy-tee-french-navy"
+  },
+  {
+    "produkt": "russell-ladies-pure-organic-heavy-tee",
+    "farbe": "white",
+    "quelle": "stickx.de — Produktseite https://www.stickx.de/en/catalog/t-shirts/russell-ladies-pure-organic-heavy-tee-for-print-and-embroidery-RLTS019/10071 (Russell R-118F-0 / Cotton-Classics-Artikel 10.118F). Aus dem DOM ausgelesenes Bildmuster: /static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.<farbcode>_FR_1.jpg = Vorderansicht, _BK_1.jpg = Rueckansicht. Farbcodes stammen aus den Swatch-Titeln derselben Seite: 001=white, 002=schwarz, 253=convoy grey, 290=french navy. Gegenprobe der Rueckansicht convoy grey ueber vivo-shop.com (https://www.vivo-shop.com/Russell-R-118F-0-Ladies-Pure-Organic-Heavy-Tee, Datei 125.00_convoy-grey_D3.jpg = identische Aufnahme); von dort auch die Seitenansicht _D1. Alle Bilder sind Geistermannequin-Freisteller auf Weiss, keine Personen.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#eaeaec",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-pure-organic-heavy-tee-white"
+  },
+  {
+    "produkt": "russell-ladies-pure-organic-heavy-tee",
+    "farbe": "black",
+    "quelle": "stickx.de — Produktseite https://www.stickx.de/en/catalog/t-shirts/russell-ladies-pure-organic-heavy-tee-for-print-and-embroidery-RLTS019/10071 (Russell R-118F-0 / Cotton-Classics-Artikel 10.118F). Aus dem DOM ausgelesenes Bildmuster: /static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.<farbcode>_FR_1.jpg = Vorderansicht, _BK_1.jpg = Rueckansicht. Farbcodes stammen aus den Swatch-Titeln derselben Seite: 001=white, 002=schwarz, 253=convoy grey, 290=french navy. Gegenprobe der Rueckansicht convoy grey ueber vivo-shop.com (https://www.vivo-shop.com/Russell-R-118F-0-Ladies-Pure-Organic-Heavy-Tee, Datei 125.00_convoy-grey_D3.jpg = identische Aufnahme); von dort auch die Seitenansicht _D1. Alle Bilder sind Geistermannequin-Freisteller auf Weiss, keine Personen.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#121317",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-pure-organic-heavy-tee-black"
+  },
+  {
+    "produkt": "russell-ladies-pure-organic-heavy-tee",
+    "farbe": "555b66",
+    "quelle": "stickx.de — Produktseite https://www.stickx.de/en/catalog/t-shirts/russell-ladies-pure-organic-heavy-tee-for-print-and-embroidery-RLTS019/10071 (Russell R-118F-0 / Cotton-Classics-Artikel 10.118F). Aus dem DOM ausgelesenes Bildmuster: /static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.<farbcode>_FR_1.jpg = Vorderansicht, _BK_1.jpg = Rueckansicht. Farbcodes stammen aus den Swatch-Titeln derselben Seite: 001=white, 002=schwarz, 253=convoy grey, 290=french navy. Gegenprobe der Rueckansicht convoy grey ueber vivo-shop.com (https://www.vivo-shop.com/Russell-R-118F-0-Ladies-Pure-Organic-Heavy-Tee, Datei 125.00_convoy-grey_D3.jpg = identische Aufnahme); von dort auch die Seitenansicht _D1. Alle Bilder sind Geistermannequin-Freisteller auf Weiss, keine Personen.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#414449",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-pure-organic-heavy-tee-555b66"
+  },
+  {
+    "produkt": "russell-ladies-pure-organic-heavy-tee",
+    "farbe": "french-navy",
+    "quelle": "stickx.de — Produktseite https://www.stickx.de/en/catalog/t-shirts/russell-ladies-pure-organic-heavy-tee-for-print-and-embroidery-RLTS019/10071 (Russell R-118F-0 / Cotton-Classics-Artikel 10.118F). Aus dem DOM ausgelesenes Bildmuster: /static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.<farbcode>_FR_1.jpg = Vorderansicht, _BK_1.jpg = Rueckansicht. Farbcodes stammen aus den Swatch-Titeln derselben Seite: 001=white, 002=schwarz, 253=convoy grey, 290=french navy. Gegenprobe der Rueckansicht convoy grey ueber vivo-shop.com (https://www.vivo-shop.com/Russell-R-118F-0-Ladies-Pure-Organic-Heavy-Tee, Datei 125.00_convoy-grey_D3.jpg = identische Aufnahme); von dort auch die Seitenansicht _D1. Alle Bilder sind Geistermannequin-Freisteller auf Weiss, keine Personen.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#0e192c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-ladies-pure-organic-heavy-tee-french-navy"
+  },
+  {
+    "produkt": "neutral-ladies-fit-t-shirt",
+    "farbe": "sports-grey",
+    "quelle": "sportyfied.com (Neutral Organic Fit T-Shirt Women, Art. O81001). Das Rueckenmuster wurde NICHT geraten, sondern aus dem eingebetteten Varianten-JSON der Produktseiten ausgelesen (jede Variante enthaelt \"supplier_prod_no\":\"O81001\", \"color_no\", \"primary_color_hex\" und einen images-Block mit explizitem \"product_side\":\"front\"/\"back\" samt \"file_name\"; ausgeliefert unter /thumbs/regular/<file>_700x700.png). Ergebnis der DOM-Auswertung von https://www.sportyfied.com/de/neutral-organic-fit-t-shirt-women-sport-grey (Produktgruppe 7874, 30 Varianten): fuer color_no 21 (Sport Grey), 31 (Okay Orange) und 43 (Dusty Yellow) fuehrt Gruppe 7874 AUSSCHLIESSLICH ein front-Bild, keinen back-Eintrag. Fuer Sport Grey existiert jedoch auf derselben Plattform eine zweite Listung desselben Artikels: https://www.sportyfied.com/de/neutral-organic-fit-t-shirt-women-melange-sport-grey (Produktgruppe 7901, productID 22142) mit mpn \"O81001\", gtin13 \"5712762007085\" – identisch mit der Sport-Grey-Variante aus Gruppe 7874 (gtin13 5712762007085) – color_no 21, primary_color_hex #b0b0b0, und den Dateien o81001_grey.png (front) + o81001_grey_back.png (back). Daraus stammt die gelieferte Rueckansicht.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#afafaf",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-ladies-fit-t-shirt-sports-grey"
   }
 ]

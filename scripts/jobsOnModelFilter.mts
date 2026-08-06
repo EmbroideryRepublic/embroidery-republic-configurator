@@ -8,17 +8,30 @@
  * Kopf und Schultern gelegt. Genau das ist beim Gildan Ultra Cotton Longsleeve
  * passiert. Ein Rückbau ist mühsam; die Ablehnung an der Tür ist billig.
  *
- * Verfahren: Hautregel nach Kovac et al. – aber die Menge allein trennt NICHT.
- * Gemessen: ein rosa Freisteller (Gildan „Heliconia") kommt auf 48 % Hautanteil
- * und 26 % in der Kopfregion, eine echte On-Model-Rückansicht dagegen nur auf
- * 10 % / 6 %. Der Stoff IST die Hautfarbe; jede absolute Schwelle wirft damit
- * genau die guten Freisteller raus.
+ * Verfahren: Hautregel nach Kovac et al. – aber die MENGE hautfarbener Pixel
+ * trennt nicht. Ein rosa Freisteller kommt auf 48 % Hautanteil, eine echte
+ * On-Model-Aufnahme nur auf 10 %: Der Stoff IST dort die Hautfarbe. Jede
+ * absolute Schwelle wirft deshalb genau die guten Freisteller raus.
  *
- * Entscheidend ist deshalb, ob die hautfarbenen Pixel die STOFFFARBE sind oder
- * etwas anderes: Bestimmt wird die dominante Nicht-Weiß-Farbe des Bildes, und
- * gezählt werden nur Hautpixel, die weit davon entfernt liegen. Beim rosa
- * Freisteller ist das praktisch nichts – die „Haut" ist der Stoff. Beim Model im
- * navyfarbenen Shirt sind Gesicht, Hals und Arme weit von Navy entfernt.
+ * Entschieden wird stattdessen, ob die hautfarbenen Pixel die STOFFFARBE sind.
+ * Referenz ist die dominante Nicht-Weiß-Farbe SAMT ihrer Schattenfamilie (alle
+ * Farbeimer innerhalb von FAMILIE um sie herum); gezählt werden nur Hautpixel,
+ * die von jedem dieser Töne weiter als ABSTAND entfernt liegen.
+ *
+ * Zwei Sackgassen führten hierher, beide an echten Bildern gemessen:
+ *   - Nur die EINE dominante Farbe als Referenz verwarf einen gelben
+ *     Freisteller (10,5 %) – seine Faltenschatten liegen weit vom hellsten Ton.
+ *   - Hautfarbene Eimer generell auszuschließen verwarf alle rosa und orangen
+ *     Freisteller (28–43 %) – dort bleibt gar keine Referenz übrig.
+ *
+ * BEKANNTE GRENZE: Ist die Stofffarbe selbst hautnah (Gildan „Paragon", ein
+ * graustichiges Altrosa), verschwimmt der Unterschied und die Aufnahme rutscht
+ * durch (gemessen 1,1 %). Der Torwächter ist deshalb die erste Verteidigungs-
+ * linie, nicht die einzige: `scripts/onModelAudit.mts` prüft nach dem Import
+ * produktweit, ob Haut in nahezu ALLEN Farben auftaucht – was genau dann der
+ * Fall ist, wenn ein Modell jede Farbe trägt.
+ *
+ * Kalibriert und nachprüfbar über `scripts/onModelKalibrierung.mts`.
  *
  *   npx tsx --tsconfig tsconfig.scripts.json scripts/jobsOnModelFilter.mts <jobs.json> [--schreiben]
  *
@@ -32,19 +45,13 @@ const datei = process.argv[2];
 if (!datei) throw new Error('Aufruf: scripts/jobsOnModelFilter.mts <jobs.json> [--schreiben]');
 const schreiben = process.argv.includes('--schreiben');
 
-/**
- * Anteil stofffremder Hautpixel, ab dem ein Mensch im Bild angenommen wird.
- *
- * An echten Daten kalibriert (Rückansichten-Charge 2, 436 Bilder): Die 45
- * On-Model-Rückansichten des Gildan Ultra Cotton liegen geschlossen zwischen
- * 6,6 % und 12,0 % – unabhängig von der Stofffarbe, denn dasselbe Modell trägt
- * jede Farbe. Die verbliebenen Fehlalarme (Faltenschatten in roten und orangen
- * Freistellern) liegen bei 2,2–3,5 %. Zwischen 3,5 % und 6,2 % liegt nichts;
- * 5 % trennt beide Gruppen mit Abstand nach beiden Seiten.
- */
-const SCHWELLE = 0.05;
+/** Anteil stofffremder Hautpixel, ab dem ein Mensch angenommen wird. An zehn
+ *  bekannten Faellen kalibriert: Freisteller bis 1,9 %, On-Model ab 4,0 %. */
+const SCHWELLE = 0.03;
 /** Ab diesem RGB-Abstand gilt ein Hautpixel als NICHT die Stofffarbe. */
 const ABSTAND = 70;
+/** Farbabstand, innerhalb dessen ein Ton noch zur Stofffarbe gehoert. */
+const FAMILIE = 40;
 
 const istHaut = (r: number, g: number, b: number) =>
   r > 95 && g > 40 && b > 20 && Math.max(r, g, b) - Math.min(r, g, b) > 15 && Math.abs(r - g) > 15 && r > g && r > b;
@@ -79,19 +86,23 @@ async function pruefe(url: string): Promise<{ fremd: number } | null> {
       e.n++; e.r += r; e.g += g; e.b += b;
       eimer.set(key, e);
     }
-    let stoff = { r: 255, g: 255, b: 255 };
-    let max = 0;
-    for (const e of eimer.values()) {
-      if (e.n > max) { max = e.n; stoff = { r: e.r / e.n, g: e.g / e.n, b: e.b / e.n }; }
-    }
+    // Stoffreferenz: dominante Farbe samt Schattenfamilie – warum gerade so,
+    // steht oben im Dateikopf.
+    const alle = [...eimer.values()]
+      .map((e) => ({ n: e.n, r: e.r / e.n, g: e.g / e.n, b: e.b / e.n }))
+      .sort((a, b) => b.n - a.n);
+    const haupt = alle[0];
+    if (!haupt) return { fremd: 0 };
+    const stoff = alle
+      .filter((e) => Math.hypot(e.r - haupt.r, e.g - haupt.g, e.b - haupt.b) <= FAMILIE)
+      .slice(0, 8);
 
     let fremd = 0;
     for (let i = 0; i < n; i++) {
       const p = i * k;
       const r = data[p]!, g = data[p + 1]!, b = data[p + 2]!;
       if (!istHaut(r, g, b)) continue;
-      const d = Math.hypot(r - stoff.r, g - stoff.g, b - stoff.b);
-      if (d > ABSTAND) fremd++;
+      if (stoff.every((s) => Math.hypot(r - s.r, g - s.g, b - s.b) > ABSTAND)) fremd++;
     }
     return { fremd: fremd / n };
   } catch {

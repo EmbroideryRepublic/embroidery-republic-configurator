@@ -12,9 +12,9 @@ und den dokumentierten Ausnahmen. Nicht von Hand pflegen._
 | davon mit echtem Herstellerbild | **2277** (99.8 %) |
 | im Shop auswählbar | **2273** |
 | ausgeblendet (siehe unten) | **9** |
-| Farben mit echter Rückansicht | **1890** |
-| Farben mit Rückseiten-Platzhalter | **383** |
-| Produkte mit Ärmelansicht für alle Farben | **68** von 154 |
+| Farben mit echter Rückansicht | **1996** |
+| Farben mit Rückseiten-Platzhalter | **277** |
+| Produkte mit Ärmelansicht für alle Farben | **82** von 154 |
 
 **Kein auswählbares Kleidungsstück zeigt eine Silhouette.** Jede Farbe, die der Kunde
 anklicken kann, hat ein echtes Foto des richtigen Artikels in der richtigen Farbe.
@@ -40,7 +40,7 @@ angeboten – anzubieten, was wir nicht zeigen können, wäre ein Versprechen oh
 
 ## Rückansichten, die es nirgends gibt
 
-Bei 48 Produkten zeigt der Klick auf „Rückseite" einen neutralen
+Bei 39 Produkten zeigt der Klick auf „Rückseite" einen neutralen
 Platzhalter statt eines Fotos. Rückendruck bleibt buchbar; die Fläche ist über den
 Umriss der Vorderansicht vermessen. Der häufigste Grund: Die Hersteller fotografieren
 die Rückseite nur am Modell, und On-Model-Aufnahmen sind ausgeschlossen (Begründung unten).
@@ -56,34 +56,23 @@ die Rückseite nur am Modell, und On-Model-Aufnahmen sind ausgeschlossen (Begrü
 | Classic-T V-Neck for women | Stedman | 16 von 18 |
 | Classic-T V-Neck | Stedman | 15 von 16 |
 | My Polo 180 | B&C | 13 von 30 |
-| Inspire T /Men | B&C | 11 von 18 |
 | Clive Crew Neck | Stedman | 11 von 13 |
-| Long Sleeve Cool T | Just Cool | 11 von 11 |
-| Ladies` Poloshirt 65/35 | Russell | 10 von 10 |
-| Signature Heavyweight Sweat | Just Hoods | 10 von 10 |
-| Women`s Fleecejacket North | SOL'S | 10 von 17 |
-| Hammer Maxweight Adult Hooded Sweatshirt | Gildan | 9 von 9 |
-| Microfleece-Duo ID501 | B&C | 9 von 9 |
-| Unisex Organic Longsleeve T-Shirt | EarthPositive | 8 von 8 |
-| Microfleece-Duo ID501 / Women | B&C | 8 von 9 |
 | My Eco Polo 65/35_° | B&C | 7 von 20 |
 | Heavy Blend Hooded Sweatshirt | Gildan | 7 von 40 |
-| Inspire V T / Men | B&C | 6 von 6 |
-| Inspire V T /Women | B&C | 6 von 6 |
 | Poloshirt 65/35 | Russell | 6 von 13 |
-| Ladies` Long Sleeve T-Shirt | Neutral | 6 von 23 |
-| Recycled Performance Long Sleeve T-Shirt | Neutral | 6 von 6 |
-| Men´s Pure Organic Heavy Tee | Russell | 4 von 4 |
-| Ladies´ Pure Organic Heavy Tee | Russell | 4 von 4 |
 | Classic-T for women | Stedman | 4 von 34 |
 | Lightweight Hooded Sweat | Fruit of the Loom | 4 von 12 |
-| Ladies` Fit T-Shirt | Neutral | 3 von 31 |
+| Microfleece-Duo ID501 | B&C | 4 von 9 |
+| Microfleece-Duo ID501 / Women | B&C | 4 von 9 |
 | Men`s Classic Cotton Polo | Russell | 3 von 8 |
 | Men´s T-Shirt #E190 Long Sleeve (Exact) | B&C | 3 von 10 |
+| Ladies` Fit T-Shirt | Neutral | 2 von 31 |
 | Unisex Polo ID.001 | B&C | 2 von 20 |
 | KING Hooded Sweat | B&C | 2 von 21 |
+| Women`s Fleecejacket North | SOL'S | 2 von 17 |
 | #Inspire E150 T-Shirt | B&C | 1 von 21 |
 | T-Shirt #E150 / Women | B&C | 1 von 41 |
+| Inspire T /Men | B&C | 1 von 18 |
 | Men`s Basic-T | James+Nicholson | 1 von 29 |
 | Mens Bio Workwear T-Shirt | James+Nicholson | 1 von 17 |
 | Ladies` BIO Workwear T-Shirt | James+Nicholson | 1 von 17 |
@@ -94,6 +83,8 @@ die Rückseite nur am Modell, und On-Model-Aufnahmen sind ausgeschlossen (Begrü
 | Influence Hoodie | B&C | 1 von 6 |
 | Earth Positive Super Heavy Hoodie | EarthPositive | 1 von 1 |
 | Ultra Cotton Long Sleeve T- Shirt | Gildan | 1 von 21 |
+| Ladies` Long Sleeve T-Shirt | Neutral | 1 von 23 |
+| Long Sleeve Cool T | Just Cool | 1 von 11 |
 | Men`s Long Sleeve T-Shirt | Neutral | 1 von 23 |
 
 ## Warum keine On-Model-Aufnahmen
@@ -109,7 +100,7 @@ Hautfarbregel zu 48 %, eine echte On-Model-Aufnahme nur zu 10 %, weil der Stoff 
 hautfarben ist. Gezählt werden deshalb nur Hautpixel, die weit von der dominanten
 Stofffarbe entfernt liegen.
 
-Bisher abgelehnt: **55 Bilder**.
+Bisher abgelehnt: **63 Bilder**.
 
 **Im Shop liegt derzeit keine einzige On-Model-Aufnahme.** Zwischenzeitlich waren 23
 Farben des Gildan Softstyle Hoodie so importiert worden – besser als 23 ausgeblendete
@@ -123,7 +114,7 @@ Geprüfte Fehlalarme des Audits (warme Stofffarben, kein Mensch im Bild):
 
 ## Technisch nicht beschaffbar
 
-685 Einträge (Farbe oder einzelne Ansicht) sind mit Begründung und
+702 Einträge (Farbe oder einzelne Ansicht) sind mit Begründung und
 geprüften Quellen dokumentiert. Die Agenten haben dafür je Fall bis zu 15 Händler, die
 Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 `scripts/import/nichtbeschaffbar_*.json`; hier die betroffenen Produkte:
@@ -149,9 +140,13 @@ Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 | build-your-brand-fluffy-hoody | 10 |
 | neutral-ladies-classic-t-shirt | 6 |
 | russell-poloshirt-6535 | 6 |
+| bundc-t-shirt-e150-long-sleeve-unisex-exact | 4 |
 | fruit-of-the-loom-lightweight-hooded-sweat | 4 |
 | sols-men-s-long-sleeve-t-shirt-imperial | 4 |
+| bundc-microfleece-duo-id501 | 4 |
+| bundc-microfleece-duo-id501-women | 4 |
 | earthpositive-unisex-organic-pullover-hood-ep | 3 |
+| neutral-unisex-performance-t-shirt | 3 |
 | bundc-t-shirt-e150-women | 3 |
 | russell-men-s-classic-cotton-polo | 3 |
 | bundc-mens-t-shirt-e190-long-sleeve-exact | 3 |
@@ -163,10 +158,10 @@ Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 | jamesnicholson-classic-polo-ladies | 2 |
 | russell-strapazierfaehiges-poloshirt-599 | 2 |
 | sols-women-s-fleecejacket-north | 2 |
+| neutral-ladies-fit-t-shirt | 2 |
 | build-your-brand-ultra-heavy-cotton-box-hoody | 1 |
 | sols-women-s-polo-shirt-prime | 1 |
 | earthpositive-earthpositive-organic-mensunisex-pullover-hoodie | 1 |
-| neutral-unisex-performance-t-shirt | 1 |
 | russell-men-s-ultimate-cotton-polo | 1 |
 | jamesnicholson-round-t-heavy | 1 |
 | jamesnicholson-ladies-active-t | 1 |
@@ -175,12 +170,13 @@ Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 | jamesnicholson-ladies-bio-workwear-t-shirt | 1 |
 | russell-russell-classic-t | 1 |
 | jamesnicholson-men-s-bio-workwear-polo | 1 |
+| bundc-inspire-t-men | 1 |
 
 ## Bildquellen
 
 | Quelle | Farbbildsätze |
 |---|---|
-| groener-schulze.com | 574 |
+| groener-schulze.com | 570 |
 | sportyfied.com | 237 |
 | cdn.shopify.com | 199 |
 | stedman.eu | 157 |
@@ -194,15 +190,15 @@ Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 | s7g3.scene7.com | 39 |
 | cdn.earthpositiveonline.com | 38 |
 | images.shirtspace.com | 35 |
+| coozo.co.uk | 30 |
 | rexlander.com | 27 |
 | freewear.de | 22 |
 | textil-grosshandel.eu | 19 |
-| coozo.co.uk | 19 |
 | neutral.com | 19 |
 | cottonclassics.com | 18 |
 | d1l2kcmc130e06.cloudfront.net | 18 |
 | promociel.fr | 13 |
 | awdis.com | 12 |
-| falk-ross.eu | 12 |
 | shirtplus.net | 10 |
+| s3-eu-west-1.amazonaws.com | 10 |
 

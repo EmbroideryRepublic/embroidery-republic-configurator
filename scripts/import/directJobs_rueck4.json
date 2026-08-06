@@ -1,0 +1,665 @@
+[
+  {
+    "productId": "bundc-inspire-t-men",
+    "quelle": "Drei unabhaengig verifizierte Rueck-Quellen fuer B&C TM042 (Inspire T /men), da die bisherige Quelle keine Rueckansichten fuehrt. (1) groener-schulze.com – Token bc_inspire_t_tm042: Muster aus dem DOM abgeleitet, /grafik/image/original/bc_inspire_t_tm042_<farbe>.webp = Front, Suffix _2 = Rueckansicht (bestaetigt an der bereits vorhandenen Rueckansicht 'black': bc_inspire_t_tm042_black_2.webp). _2 existiert fuer white/black/navy/red/gold/fuchsia/royal_blue/khaki/sport_grey/dark_grey, NICHT fuer light_grey/real_green. (2) cantana.com (WooCommerce, B&C-Haendler) – Dateinamen-Familie B-C-Inspire-T-men-TM042-<Farbe>-Back.jpg unter /wp-content/uploads/2026/05/; vollstaendig ueber die WP-Media-API (/wp-json/wp/v2/media?search=TM042) ausgelesen, nicht geraten: Back existiert fuer Atoll, Black, Fuchsia, Gold, Khaki, Navy, Orange, Real Green, Red, Sport Grey, Urban Orange, Urban Purple, White. (3) media2.designpartner.fr (Bildpool hinter lamaisonduteeshirt.com / tee-shirts-express.com) – Artikel 10132 = TM042; /c/p/10132/10132-<colorId>-1.jpg = Front, -2.jpg = Rueckansicht; colorId-Zuordnung aus den base64-kodierten Proxy-URLs der Produktseite dekodiert (15=atoll, 12=real_green, 45=orange, 13684=light_grey, 743=sport grey, 14356=urban_purple, 14360=millennial_khaki, 14362=urban_orange, 14367=millennial_pink, 750=dark grey, 38=fuchsia, 50=gold). Alle gelieferten Dateien sind Geistermannequin-Freisteller auf Weiss ohne Person, wurden einzeln angesehen und haben eine von der jeweiligen Front abweichende Bytegroesse (eigene Datei).",
+    "colors": [
+      {
+        "id": "atoll",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-Inspire-T-men-TM042-Atoll-Back.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_ATO_FRONT-uZUIZMko.webp"
+      },
+      {
+        "id": "dark-grey-solid",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_dark_grey_2.webp",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_DGRY_FRONT-3Ka5bms3.webp"
+      },
+      {
+        "id": "fuchsia",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_fuchsia_2.webp",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_FUS_FRONT-ETlQ82v0.webp"
+      },
+      {
+        "id": "gold",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_gold_2.webp",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_GLD_FRONT-brzDX0Xz.webp"
+      },
+      {
+        "id": "orange",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-Inspire-T-men-TM042-Orange-Back.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_O_FRONT-HDJVSq6O.webp"
+      },
+      {
+        "id": "real-green",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-Inspire-T-men-TM042-Real-Green-Back.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_RGRN_FRONT-uxc1wiGY.webp"
+      },
+      {
+        "id": "millennial-khaki",
+        "back": "https://media2.designpartner.fr/c/p/10132/10132-14360-2.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_MILKHA_FRONT-Ydulfb1A_2e746e7d-0971-4220-ba5a-9b835313b044.webp"
+      },
+      {
+        "id": "millennial-pink",
+        "back": "https://media2.designpartner.fr/c/p/10132/10132-14367-2.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_MILPNK_FRONT-VxTgjfV7_954af093-ef41-4908-b9ef-479b938f932b.webp"
+      },
+      {
+        "id": "urban-orange",
+        "back": "https://media2.designpartner.fr/c/p/10132/10132-14362-2.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_UO_FRONT-4dFVKJQi_2d33bb7e-2a24-43a6-8cb8-0c7f3bb8c76f.webp"
+      },
+      {
+        "id": "urban-purple",
+        "back": "https://media2.designpartner.fr/c/p/10132/10132-14356-2.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_UPUR_FRONT-nDUbb2Pd.webp"
+      }
+    ]
+  },
+  {
+    "productId": "just-cool-long-sleeve-cool-t",
+    "quelle": "directworkwearonline.com (BigCommerce-CDN, AWDis-Packshots JC002_*_BACK) für 9 Farben + utteam.com (Just-Cool-Packshots jc002-*-b1) für Purple und Sapphire Blue. Die bisherige Quelle shop.ralawise.com führt zu JC002 ausschliesslich Frontbilder (_ft2/_ft) und keinerlei Rueckenfoto.",
+    "colors": [
+      {
+        "id": "purple",
+        "back": "https://utteam.com/utt_img/product_images/1280/just-cool/packshots/jc002/jc002-purple-b1.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_purple_ft.jpg"
+      },
+      {
+        "id": "sapphire-blue",
+        "back": "https://utteam.com/utt_img/product_images/1280/just-cool/packshots/jc002/jc002-sapphire_blue-b1.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_sapphireblue_ft.jpg"
+      },
+      {
+        "id": "arctic-white",
+        "back": "https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/677/16538/JC002_ACW_BACK__05003.1740479346.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_arcticwhite_ft2.jpg"
+      },
+      {
+        "id": "charcoal-solid",
+        "back": "https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/677/16536/JC002_CHA_BACK__89077.1740479345.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_charcoal_ft2.jpg"
+      },
+      {
+        "id": "electric-yellow-neon",
+        "back": "https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/677/16549/JC002_EYL_BACK__84762.1740479347.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_electricyellow_ft2.jpg"
+      },
+      {
+        "id": "fire-red",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_firered_ft2.jpg"
+      },
+      {
+        "id": "french-navy",
+        "back": "https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/677/16537/JC002_FNA_BACK__52864.1740479345.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_frenchnavy_ft2.jpg"
+      },
+      {
+        "id": "jet-black",
+        "back": "https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/677/16539/JC002_JBK_BACK__58196.1740479346.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_jetblack_ft2.jpg"
+      },
+      {
+        "id": "royal-blue",
+        "back": "https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/677/16544/JC002_ROY_BACK__34358.1740479346.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_royalblue_ft2.jpg"
+      },
+      {
+        "id": "electric-green-neon",
+        "back": "https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/677/16547/JC002_ELG_BACK__10206.1740479347.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_electricgreen_ft2.jpg"
+      },
+      {
+        "id": "electric-orange-neon",
+        "back": "https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/677/16548/JC002_EOR_BACK__32813.1740479347.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_electricorange_ft2.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "russell-ladies-poloshirt-6535",
+    "quelle": "Offizielle Russell Europe / Fruit of the Loom Europe Mediathek (cdn.fruitoftheloom.eu), Style 0R539F0, Asset-Typ asset_product_back / asset_product_side; ausgelesen ueber https://www.russelleurope.com/shop/p/ladies-classic-polycotton-polo/0R539F0. Geprueft und verworfen: rexlander.com (nur 1 Bild je Farbkombination), vivo-shop.com (Rueckansicht nur fuer Bright Red).",
+    "colors": [
+      {
+        "id": "black",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/36/large/41992.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/36/large/41996.jpg",
+        "front": "https://www.rexlander.com/5898-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "bottle-green",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/38/large/41923.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/38/large/41921.jpg",
+        "front": "https://www.rexlander.com/5899-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "bright-red",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/BR/large/41942.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/BR/large/41946.jpg",
+        "front": "https://www.rexlander.com/5900-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "bright-royal",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/BH/large/41928.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/BH/large/41930.jpg",
+        "front": "https://www.rexlander.com/5901-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "classic-red",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/CR/large/41980.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/CR/large/41984.jpg",
+        "front": "https://www.rexlander.com/5902-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "french-navy",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/FN/large/41956.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/FN/large/41955.jpg",
+        "front": "https://www.rexlander.com/5903-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "sky",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/SC/large/41968.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/SC/large/41971.jpg",
+        "front": "https://www.rexlander.com/5904-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "white",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/30/large/42007.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/30/large/42008.jpg",
+        "front": "https://www.rexlander.com/5905-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/CG/large/41898.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/CG/large/41901.jpg",
+        "front": "https://www.rexlander.com/20144-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      },
+      {
+        "id": "light-oxford-heather",
+        "back": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/LX/large/42018.jpg",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R539F/LX/large/42020.jpg",
+        "front": "https://www.rexlander.com/20145-thickbox_default/Russell-R-539F-0-Damen-Poloshirt-6535.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "just-hoods-signature-heavyweight-sweat",
+    "quelle": "pencarrie (www.pencarrie.com) — \"Phoenix All Images / Just Hoods / Product Images / JH123 / ProductCarouselZoom\", offizielle AWDis-Freisteller-Serie (FRONT/BACK) je Farbe. Bisherige Quelle ralawise fuehrt fuer JH123 ausschliesslich _ft2-Fronten, keine Rueckansichten.",
+    "colors": [
+      {
+        "id": "earthy-green",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20ERG%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh030_earthygreen_ft2.jpg"
+      },
+      {
+        "id": "arctic-white",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20ACW%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh030_arcticwhite_ft2.jpg"
+      },
+      {
+        "id": "bright-royal",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20BRO%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh030_brightroyal_ft2.jpg"
+      },
+      {
+        "id": "deep-black",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20DBK%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh123_deepblack_ft2.jpg"
+      },
+      {
+        "id": "heather-grey",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20HEA%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh030_heathergrey_ft2.jpg"
+      },
+      {
+        "id": "natural-stone",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20NTS%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh123_naturalstone_ft2.jpg"
+      },
+      {
+        "id": "new-french-navy",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20NFN%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh030_newfrenchnavy_ft2.jpg"
+      },
+      {
+        "id": "solid-charcoal",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20SDC%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh030_charcoal_ft2.jpg"
+      },
+      {
+        "id": "4f758b",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20AIR%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh123ablu/jh123_airforceblue_ft.jpg"
+      },
+      {
+        "id": "4f413c",
+        "back": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Just%20Hoods/Product%20Images/JH123/ProductCarouselZoom/JH123%20ESP%20BACK.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh123espr/jh123_espresso_ft.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "sols-women-s-fleecejacket-north",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-ladies-north-fleece-jacket — die im Auftrag genannte URL /3313-sol-s-ladies-north-fleece-jacket-54500 liefert 404, der Artikel liegt jetzt unter dem sprechenden Slug). Farbcode-Zuordnung NICHT geraten, sondern aus dem schema.org/JSON-LD-Block der Produktseite ausgelesen: jede Variante traegt \"sku\":\"54500 <CODE> <Groesse>\" plus \"color\":\"<Klarname>\", woraus sich die Tabelle AQA=Aqua, BUR=Burgundy, CHA=Charcoal, DCH=Dark Chocolate, DKP=Dark Purple, GRN=Green (SOL'S: Fir Green), GYM=Grey Marl (SOL'S: Grey Melange), LIM=Lime Green, ORA=Orange, ROP=Rope, ROY=Royal Blue ergibt. Bildmuster: products/6136/54500-<CODE>-<VIEW>.jpg mit VIEW in FRONT|BACK|LEFT.",
+    "colors": [
+      {
+        "id": "aqua",
+        "back": "https://assets.myworkwear.co.uk/products/6136/54500-AQA-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-AQA-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-AQA-FRONT.jpg"
+      },
+      {
+        "id": "charcoal-grey-solid",
+        "back": "https://assets.myworkwear.co.uk/products/6136/54500-CHA-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-CHA-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-CHA-FRONT.jpg"
+      },
+      {
+        "id": "dark-chocolate",
+        "back": "https://assets.myworkwear.co.uk/products/6136/54500-DCH-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-DCH-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-DCH-FRONT.jpg"
+      },
+      {
+        "id": "dark-purple",
+        "back": "https://assets.myworkwear.co.uk/products/6136/54500-DKP-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-DKP-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-DKP-FRONT.jpg"
+      },
+      {
+        "id": "fir-green",
+        "back": "https://assets.myworkwear.co.uk/products/6136/54500-GRN-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-GRN-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-GRN-FRONT.jpg"
+      },
+      {
+        "id": "grey-melange",
+        "back": "https://assets.myworkwear.co.uk/products/6136/54500-GYM-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-GYM-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-GYM-FRONT.jpg"
+      },
+      {
+        "id": "lime",
+        "back": "https://assets.myworkwear.co.uk/products/6136/54500-LIM-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-LIM-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-LIM-FRONT.jpg"
+      },
+      {
+        "id": "rope",
+        "back": "https://assets.myworkwear.co.uk/products/6136/54500-ROP-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-ROP-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-ROP-FRONT.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "quelle": "centurygs.com (Century Graphics & Sign, Shopify-CDN) – hostet die Original-Gildan/SanMar-Studiobilder zum US-Aequivalent Style 19500 im Schema 19500_<farbe>_flat_back.jpg",
+    "colors": [
+      {
+        "id": "blue-dusk",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_bluedusk_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028bdus/gd028_bluedusk_ft.jpg"
+      },
+      {
+        "id": "cherry-red",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_cherryred_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028chrd/gd028_cherryred_ft.jpg"
+      },
+      {
+        "id": "deep-royal",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_deeproyal_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028dery/gd028_deeproyal_ft.jpg"
+      },
+      {
+        "id": "garnet",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_garnet_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028garn/gd028_garnet_ft.jpg"
+      },
+      {
+        "id": "888b8d",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_gravel_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028grav/gd028_gravel_ft.jpg"
+      },
+      {
+        "id": "off-white",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_offwhite_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028owhi/gd028_offwhite_ft.jpg"
+      },
+      {
+        "id": "olive",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_olive_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028oliv/gd028_olive_ft.jpg"
+      },
+      {
+        "id": "2d2926",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_pitchblack_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028pbmi/gd028_pitchblack_ft.jpg"
+      },
+      {
+        "id": "tan",
+        "back": "https://cdn.shopify.com/s/files/1/0953/7247/6732/files/19500_tan_flat_back.jpg?v=1760037675",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028tann/gd028_tan_ft.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-microfleece-duo-id501",
+    "quelle": "cantana.com (WooCommerce-Shop, fuehrt die aktuelle offizielle B&C-Studiofotografie zu FUI50 = ID.501 Micro Fleece Full Zip als eigene Dateien pro Farbe und Ansicht, Upload-Ordner /wp-content/uploads/2026/05/, Muster B-C-ID-501-FUI50-<Farbe>-{Main|Back|Side}.jpg). Die Ableitung wurde NICHT geraten: Die vollstaendige Dateiliste wurde ueber die WordPress-REST-Media-API ausgelesen (https://www.cantana.com/wp-json/wp/v2/media?search=FUI50 bzw. search=ID-501) und mit der Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-fui50/ abgeglichen. Belegte Artikelidentitaet: FUI50 = B&C ID.501 (Herren/Unisex), Damenpendant FWI51 wird auf cantana getrennt gefuehrt. Die bisherige Quelle falk-ross.eu scheidet als Rueck-Quelle aus: die Galerie fuehrt pro Farbe nur die Freisteller-Vorderansicht 803_42_<Farbcode>_f-2015_01.jpg (Farbcodes aus den Swatch-alt-Texten: 000 White, 101 Black, 128 Dark Grey, 200 Navy, 300 Royal Blue, 314 Atoll, 400 Red, 412 Pumpkin Orange, 541 Forest Green) plus ein On-Model-Bild _m im Ordner /product/2/ - kein _b/_back/_r-Pendant (Probe 803/804_42_101_b-2015_01.jpg -> 404). Auch coozo.co.uk, aus dem die vorhandenen Vorderansichten stammen, fuehrt zu FUI50 exakt 9 Bilder = 9x FUI50_<Code>_FRONT, keine BACK-Datei.",
+    "colors": [
+      {
+        "id": "atoll",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-Atoll-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-Atoll-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FUI50_ATO_FRONT-LATjauap.webp?v=1728526299"
+      },
+      {
+        "id": "black",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-Black-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-Black-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FUI50_BLK_FRONT-Yp24n8Np.webp?v=1728526299"
+      },
+      {
+        "id": "navy",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-Navy-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-Navy-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FUI50_NVY_FRONT-LPhOVRb8.webp?v=1728526299"
+      },
+      {
+        "id": "red",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-Red-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-Red-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FUI50_R_FRONT-QS57RsRa.webp?v=1728526299"
+      },
+      {
+        "id": "white",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-White-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-FUI50-White-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FUI50_W_FRONT-JvYnKWcQ.webp?v=1728526299"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "quelle": "www.continentalclothing.com — offizielle Continental Clothing / EarthPositive Hersteller-Mediathek. Muster abgeleitet (nicht geraten) aus dem archivierten Style-Sheet https://www.continentalclothing.com/style/view/EP01L: dort sind alle Galeriebilder als /assets/product_shots/{low_res|high_res}/front/EP01L-<FARBCODE>.jpg referenziert. Der Sibling-Ordner .../high_res/back/EP01L-<FARBCODE>.jpg liefert live 200 + image/jpeg und ist je Farbe eine eigene Datei. Ausgeliefert werden die high_res-Freisteller (2160x2830 px).",
+    "colors": [
+      {
+        "id": "black",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP01L-BL.jpg",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_BL_FRONT.webp"
+      },
+      {
+        "id": "faded-denim",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP01L-FDE.jpg",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_FDE_FRONT.webp"
+      },
+      {
+        "id": "white",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP01L-WH.jpg",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_WH_FRONT.webp"
+      },
+      {
+        "id": "denim-blue",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP01L-DE.jpg",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_DE_FRONT.webp"
+      },
+      {
+        "id": "french-navy",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP01L-FRNA.jpg",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_FRNA_FRONT.webp"
+      },
+      {
+        "id": "light-heather",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP01L-LHE.jpg",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_LHE_FRONT.jpg"
+      },
+      {
+        "id": "stone-washed-black",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP01L-SBL.jpg",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_SBL_FRONT.jpg"
+      },
+      {
+        "id": "f4f4ec",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP01L-SWH.jpg",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_SWH_FRONT.webp"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-microfleece-duo-id501-women",
+    "quelle": "cantana.com (WooCommerce-Produktseite https://www.cantana.com/bio-und-fair/jacken-und-westen/bc-id-501-women-fwi51/ ; Bildliste NICHT geraten, sondern vollstaendig ueber die WP-REST-Media-API https://www.cantana.com/wp-json/wp/v2/media?search=FWI51&per_page=100 ausgelesen. Dateinamen-Schema: B-C-ID-501-women-FWI51-<Farbe>-Main.jpg / -Back.jpg / -Side.jpg im Ordner /wp-content/uploads/2026/05/. Es sind die originalen B&C-Studio-Freisteller des Artikels FWI51 (ID.501/women), 1600x~2055 px, weisser Hintergrund, keine Person.)",
+    "colors": [
+      {
+        "id": "atoll",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-women-FWI51-Atoll-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-women-FWI51-Atoll-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FWI51_ATO_FRONT-dnwwcric.webp?v=1728526317"
+      },
+      {
+        "id": "navy",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-women-FWI51-Navy-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-women-FWI51-Navy-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FWI51_NVY_FRONT-bWbG5kzo.webp?v=1728526317"
+      },
+      {
+        "id": "red",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-women-FWI51-Red-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-women-FWI51-Red-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FWI51_R_FRONT-Xldz95zV.webp?v=1728526317"
+      },
+      {
+        "id": "white",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-women-FWI51-White-Back.jpg",
+        "side": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-ID-501-women-FWI51-White-Side.jpg",
+        "front": "https://www.coozo.co.uk/cdn/shop/files/FWI51_W_FRONT-nyMDQECl.webp?v=1728526317"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-inspire-v-t-men",
+    "quelle": "cantana.com (WordPress-Mediathek, B&C-Originalfotografie TM044, ueber die WP-REST-API /wp-json/wp/v2/media?search=TM044 ausgelesen – Dateifamilie 2026/05 \"B-C-Inspire-V-T-men-TM044-<Farbe>-Back.jpg\") fuer Black, Khaki, Navy, Red, White; cottonclassics.com (Magento-Produktseite /en/bandc-inspire-v-t-men.html, Bildfamilie \"PS_01TM44_bandc_inspire-v-t-men__<farbe>_FRONT/_RIGHT_<uuid>_web.jpg\" – das mit \"RIGHT\" getaggte Bild ist faktisch die Rueckansicht, visuell geprueft) fuer Light Grey",
+    "colors": [
+      {
+        "id": "black",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-Inspire-V-T-men-TM044-Black-Back.jpg",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Black.jpg"
+      },
+      {
+        "id": "khaki",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-Inspire-V-T-men-TM044-Khaki-Back.jpg",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Khaki.jpg"
+      },
+      {
+        "id": "navy",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-Inspire-V-T-men-TM044-Navy-Back.jpg",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Navy.jpg"
+      },
+      {
+        "id": "red",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-Inspire-V-T-men-TM044-Red-Back.jpg",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Red.jpg"
+      },
+      {
+        "id": "white",
+        "back": "https://www.cantana.com/wp-content/uploads/2026/05/B-C-Inspire-V-T-men-TM044-White-Back.jpg",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-White.jpg"
+      },
+      {
+        "id": "light-grey",
+        "back": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_01TM44_bandc_inspire-v-t-men__light-grey_RIGHT_05a5f77f-908c-4e7a-ba57-f9bc229451bf_web.jpg",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Light-Grey.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-inspire-v-t-women",
+    "quelle": "shirtilux.de (OXID-Shop, Produktseite https://shirtilux.de/damen/t-shirts/bio-t-shirt-inspire-v-neck-women.html = B&C TW045). Je Farbvariante liegt die Galerie unter /out/pictures/master/product/<Position>/<hash>.png; Position 1 = Front, Position 2 = Rueckseite. Die Farb-zu-Bild-Zuordnung stammt aus dem gerenderten DOM: jeder Farbschalter ist ein <a data-selection-id=\"...\"> mit Farbnamen in img alt/title; nach dem Umschalten jeder Variante wurden die master-URLs beider Positionen ausgelesen. Unabhaengig gegengeprueft ueber cantana.com, das die originalen B&C-Assets in Herstellernamenskonvention hostet (P_TW045_Inspire_V_T_women_white_back.jpg).",
+    "colors": [
+      {
+        "id": "black",
+        "back": "https://shirtilux.de/out/pictures/master/product/2/e4c9c9c804f9836250c4da9bfd639f66.png",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6194/TW045_P_BC_002_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=183b16692a73dd0166cf222530c15139"
+      },
+      {
+        "id": "khaki",
+        "back": "https://shirtilux.de/out/pictures/master/product/2/d27a74f8d8cf615e682b11ea387257cb.png",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6197/TW045_P_BC_555_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=e894334b6e8f97e3b6eff916050e790b"
+      },
+      {
+        "id": "light-grey",
+        "back": "https://shirtilux.de/out/pictures/master/product/2/00c6dcc6e2305ec7397524c853864bad.png",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6198/TW045_P_BC_671_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=356ff5861b36a366a82fbb1ef60a66a4"
+      },
+      {
+        "id": "navy",
+        "back": "https://shirtilux.de/out/pictures/master/product/2/cd20a0456303e81e43ee45f9a5404778.png",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6195/TW045_P_BC_003_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=3b927e86b5b1227bd476d7585465cae9"
+      },
+      {
+        "id": "red",
+        "back": "https://shirtilux.de/out/pictures/master/product/2/669786480-17631486806463df1c078d0832ab57f0.png",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6196/TW045_P_BC_004_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=6ba69cbcb6c9e0dfd8a40d7cc98c132f"
+      },
+      {
+        "id": "white",
+        "back": "https://shirtilux.de/out/pictures/master/product/2/75fd3741c930e6753c3fa961c71b470d.png",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6193/TW045_P_BC_001_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=f3c25fcfaa2cde494092f928dd89cc9c"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-ladies-long-sleeve-t-shirt",
+    "quelle": "sportyfied.com (B2B/Teamwear-Haendler, fuehrt Neutral O81050 mit Original-Herstellerfotos). Die Rueck-Zuordnung wurde NICHT geraten, sondern aus dem eingebetteten Varianten-JSON der Produktseite https://www.sportyfied.com/de/neutral-long-sleeve-t-shirt-female-charcoal ausgelesen: der \"variants\"-Block liefert je Variante \"supplier_prod_no\":\"O81050\", \"color_no\", \"primary_color_name\", \"primary_color_hex\" und einen images-Block mit explizitem \"product_side\":\"front\" bzw. \"product_side\":\"back\" samt file_name. Fuer die hier fehlenden 6 Farben greift die numerische Dateinamen-Familie o81050-<colorNo>.png (front) / o81050-<colorNo>_1.png (back); ausgeliefert als 700x700-Thumb unter /thumbs/regular/ (gleiche Konvention wie die bereits im Projekt genutzten sportyfied-Bilder der uebrigen 16 Farben). Deklarierte Zuordnung: 01=White, 03=Black, 04=Navy, 05=Red, 33=Bottle Green, 51=Royal – genau die sechs numerischen Codes, die von den bereits versorgten Farben (08/13/21/26/27/67/98) noch nicht belegt waren. Verifikation: alle 12 URLs (6 Front + 6 Back) geprueft, jeweils 200 / image/png / 188–437 KB. Bytegroessen-Gegenprobe Front vs. Back je Farbe unterschiedlich (z. B. white 377952 vs 295895, black 197635 vs 188213, navy 363154 vs 328881, red 436980 vs 389241, bottle-green 353651 vs 338698, royal 372008 vs 362545) – also echte Einzeldateien, keine umbenannte Frontdatei. Sichtpruefung aller 6 Rueckenbilder: Geistermannequin ohne Person, weisser Grund, geschlossener Rueckenausschnitt, kein vorderer Halsausschnitt, keine Knopfleiste, kein Aufdruck. Artikel- und Farbidentitaet zusaetzlich abgesichert, indem die sportyfied-FRONT je Code gegen die im Projekt vorhandene front.png gestellt wurde: identische Herstelleraufnahme inkl. Neutral-Nackenlabel (geprueft fuer royal, bottle-green, navy, red) – damit ist auch royal eindeutig, obwohl der sportyfied-Swatch-Hex (#0a3f6c) von unserem (#0033A0) abweicht. \"side\" wurde bewusst weggelassen: das Varianten-JSON deklariert ausschliesslich product_side front und back, eine eigene Seitenansicht existiert nicht. Die urspruengliche Quelle neutral.com (Shopify) scheidet als Rueck-Quelle weiterhin aus (Produkt-JSON liefert nur einen Freisteller pro Farbe, ausschliesslich Vorderansichten).",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "back": "https://www.sportyfied.com/thumbs/regular/o81050-33_1_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/13_7d172c39-bae3-4f6d-a9dc-6b07f179bdd0.jpg?v=1770294594"
+      },
+      {
+        "id": "black",
+        "back": "https://www.sportyfied.com/thumbs/regular/o81050-03_1_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/4_af4ae085-ccfb-4fd7-843c-7db5abac30ea.jpg?v=1770294541"
+      },
+      {
+        "id": "navy",
+        "back": "https://www.sportyfied.com/thumbs/regular/o81050-04_1_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/5_aff37153-96c5-4b2a-84c9-36fdfddb0dc8.jpg?v=1770294549"
+      },
+      {
+        "id": "white",
+        "back": "https://www.sportyfied.com/thumbs/regular/o81050-01_1_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/1_8f716fcc-8da5-4b3f-a78d-b5a9ca81db8a.jpg?v=1770294530"
+      },
+      {
+        "id": "royal",
+        "back": "https://www.sportyfied.com/thumbs/regular/o81050-51_1_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/7_be408a8c-146f-4371-8c47-46a191508b76.jpg?v=1770294574"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "quelle": "neutral.com – offizielle Hersteller-Mediathek: Dropbox-Packshot-Bibliothek, verlinkt von https://neutral.com/pages/downloads (PACKSHOTS → PACKSHOTS WITHOUT CERTIFICATES → PERFORMANCE → \"R61050 Recycled Performance LS T-shirt\")",
+    "colors": [
+      {
+        "id": "white",
+        "back": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AEh8dvXcCYlZprRR-Qr70cw/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_WHI_BACK.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "side": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AMJvTa_QtP7YO2sLTwSlxw0/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_WHI_SIDE.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "front": "https://neutral.com/cdn/shop/products/R61050_WHI.jpg"
+      },
+      {
+        "id": "black",
+        "back": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AJ5-92KWWxkUPiZqq_wu5H4/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_BLA_BACK.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "side": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AJi3_yib4C_Gjtb24HnKyrc/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_BLA_SIDE.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "front": "https://neutral.com/cdn/shop/products/R61050_BLA.jpg"
+      },
+      {
+        "id": "navy",
+        "back": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/ANblXp46pEAVSXkoiC9Cm5I/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_NAV_BACK.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "side": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/APhsglV86VBS53GJBVLzPgE/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_NAV_SIDE.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "front": "https://neutral.com/cdn/shop/products/R61050_NAV.jpg"
+      },
+      {
+        "id": "lime",
+        "back": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AJpb6s6g3pILQ15TOThqYcQ/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_LIME_BACK.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "side": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AOtxFf9ekmxhtdY-aT-8IF4/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_LIME_SIDE.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "front": "https://neutral.com/cdn/shop/products/R61050_LIME.jpg"
+      },
+      {
+        "id": "dusty-mint",
+        "back": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AE7rQnAz6Do8HJNUifmZ5LM/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_DMINT_BACK.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "side": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AED878vTuU05NCYWpWDGB5Q/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_DMINT_SIDE.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "front": "https://neutral.com/cdn/shop/products/R61050_DMINT.jpg"
+      },
+      {
+        "id": "yellow",
+        "back": "https://www.dropbox.com/scl/fo/3yzso4umitys0f62d3g38/AO4Jq52ixA-UfNsn6afuIFk/PACKSHOTS%20WITHOUT%20CERTIFICATES/PERFORMANCE/R61050%20Recycled%20Performance%20LS%20T-shirt/R61050_YEL_BACK.jpg?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1",
+        "front": "https://neutral.com/cdn/shop/products/R61050_YEL.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "russell-mens-pure-organic-heavy-tee",
+    "quelle": "stickx.de (StickX Textilveredelung, fuehrt den Artikel als RLTS020 = Russell Pure Organic R-118M-0 / L-Shop Z118M). Rueck-URLs NICHT geraten, sondern aus dem DOM der vier Farbvarianten-Seiten ausgelesen: /catalog/t-shirts/russell-mens-pure-organic-heavy-tee-for-print-and-embroidery-RLTS020/{1|005|10071|168}. Jede Variantenseite liefert genau zwei Galeriebilder: /static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.<farbcode>_FR_1.jpg (Front) und ..._BK_1.jpg (Back). Farbcodes aus den Seitentiteln: 001=white, 002=black, 253=convoy grey, 290=french navy. Gleiche offizielle Russell-Studioserie (Geistermannequin, weisser Grund) wie die vorhandenen Vorderansichten von freewear.de.",
+    "colors": [
+      {
+        "id": "white",
+        "back": "https://www.stickx.de/static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.001_BK_1.jpg",
+        "front": "https://freewear.de/media/image/variation/283542/lg/mens-pure-organic-heavy-tee-russell-pure-organic-r-118m-0-z118m_farbe_white.jpg"
+      },
+      {
+        "id": "black",
+        "back": "https://www.stickx.de/static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.002_BK_1.jpg",
+        "front": "https://freewear.de/media/image/variation/283550/lg/mens-pure-organic-heavy-tee-russell-pure-organic-r-118m-0-z118m_farbe_black.jpg"
+      },
+      {
+        "id": "555b66",
+        "back": "https://www.stickx.de/static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.253_BK_1.jpg",
+        "front": "https://freewear.de/media/image/variation/283551/lg/mens-pure-organic-heavy-tee-russell-pure-organic-r-118m-0-z118m_farbe_convoy-grey-solid.jpg"
+      },
+      {
+        "id": "french-navy",
+        "back": "https://www.stickx.de/static/images/product_images/960x1000x95/2020/CC/10/118M/PS/PS10.118M.290_BK_1.jpg",
+        "front": "https://freewear.de/media/image/variation/283552/lg/mens-pure-organic-heavy-tee-russell-pure-organic-r-118m-0-z118m_farbe_french-navy.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "russell-ladies-pure-organic-heavy-tee",
+    "quelle": "stickx.de — Produktseite https://www.stickx.de/en/catalog/t-shirts/russell-ladies-pure-organic-heavy-tee-for-print-and-embroidery-RLTS019/10071 (Russell R-118F-0 / Cotton-Classics-Artikel 10.118F). Aus dem DOM ausgelesenes Bildmuster: /static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.<farbcode>_FR_1.jpg = Vorderansicht, _BK_1.jpg = Rueckansicht. Farbcodes stammen aus den Swatch-Titeln derselben Seite: 001=white, 002=schwarz, 253=convoy grey, 290=french navy. Gegenprobe der Rueckansicht convoy grey ueber vivo-shop.com (https://www.vivo-shop.com/Russell-R-118F-0-Ladies-Pure-Organic-Heavy-Tee, Datei 125.00_convoy-grey_D3.jpg = identische Aufnahme); von dort auch die Seitenansicht _D1. Alle Bilder sind Geistermannequin-Freisteller auf Weiss, keine Personen.",
+    "colors": [
+      {
+        "id": "white",
+        "back": "https://www.stickx.de/static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.001_BK_1.jpg",
+        "front": "https://freewear.de/media/image/variation/283532/lg/ladies-pure-organic-heavy-tee-russell-pure-organic-r-118f-0-z118f_farbe_white.jpg"
+      },
+      {
+        "id": "black",
+        "back": "https://www.stickx.de/static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.002_BK_1.jpg",
+        "front": "https://freewear.de/media/image/variation/283539/lg/ladies-pure-organic-heavy-tee-russell-pure-organic-r-118f-0-z118f_farbe_black.jpg"
+      },
+      {
+        "id": "555b66",
+        "back": "https://www.stickx.de/static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.253_BK_1.jpg",
+        "side": "https://www.vivo-shop.com/WebRoot/Store12/Shops/235615/5E4D/6231/2687/FB19/EA41/0A0C/6D11/6AB2/125.00_convoy-grey_D1.jpg",
+        "front": "https://freewear.de/media/image/variation/283540/lg/ladies-pure-organic-heavy-tee-russell-pure-organic-r-118f-0-z118f_farbe_convoy-grey-solid.jpg"
+      },
+      {
+        "id": "french-navy",
+        "back": "https://www.stickx.de/static/images/product_images/960x1000x95/2020/CC/10/118F/PS/PS10.118F.290_BK_1.jpg",
+        "front": "https://freewear.de/media/image/variation/283541/lg/ladies-pure-organic-heavy-tee-russell-pure-organic-r-118f-0-z118f_farbe_french-navy.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-ladies-fit-t-shirt",
+    "quelle": "sportyfied.com (Neutral Organic Fit T-Shirt Women, Art. O81001). Das Rueckenmuster wurde NICHT geraten, sondern aus dem eingebetteten Varianten-JSON der Produktseiten ausgelesen (jede Variante enthaelt \"supplier_prod_no\":\"O81001\", \"color_no\", \"primary_color_hex\" und einen images-Block mit explizitem \"product_side\":\"front\"/\"back\" samt \"file_name\"; ausgeliefert unter /thumbs/regular/<file>_700x700.png). Ergebnis der DOM-Auswertung von https://www.sportyfied.com/de/neutral-organic-fit-t-shirt-women-sport-grey (Produktgruppe 7874, 30 Varianten): fuer color_no 21 (Sport Grey), 31 (Okay Orange) und 43 (Dusty Yellow) fuehrt Gruppe 7874 AUSSCHLIESSLICH ein front-Bild, keinen back-Eintrag. Fuer Sport Grey existiert jedoch auf derselben Plattform eine zweite Listung desselben Artikels: https://www.sportyfied.com/de/neutral-organic-fit-t-shirt-women-melange-sport-grey (Produktgruppe 7901, productID 22142) mit mpn \"O81001\", gtin13 \"5712762007085\" – identisch mit der Sport-Grey-Variante aus Gruppe 7874 (gtin13 5712762007085) – color_no 21, primary_color_hex #b0b0b0, und den Dateien o81001_grey.png (front) + o81001_grey_back.png (back). Daraus stammt die gelieferte Rueckansicht.",
+    "colors": [
+      {
+        "id": "sports-grey",
+        "back": "https://www.sportyfied.com/thumbs/regular/o81001_grey_back_700x700.png",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-fittedtshirt-sportgrey-o81001-front_700x700.png"
+      }
+    ]
+  }
+]

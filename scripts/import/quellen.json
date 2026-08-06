@@ -392,7 +392,7 @@
     "hinweis": "front+back"
   },
   "bundc-microfleece-duo-id501": {
-    "quelle": "falk-ross.eu",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
     "hinweis": "front"
   },
   "russell-mens-pure-organic-heavy-tee": {
@@ -418,5 +418,29 @@
   "bundc-t-shirt-e150-long-sleeve-women-exact": {
     "quelle": "bc-collection.eu",
     "hinweis": "front"
+  },
+  "neutral-oversized-t-shirt": {
+    "quelle": "Neutral (Hersteller) — offizieller Shopify-Produktfeed https://neutral.com/products/t6011-tiger-cotton-oversiz",
+    "hinweis": "front"
+  },
+  "earthpositive-jersey-polo-shirt": {
+    "quelle": "Earth Positive(R) by Continental Clothing Co. (offizieller Hersteller-Shop, verlinkt von continentalclothing.c",
+    "hinweis": "front"
+  },
+  "russell-ladies-poloshirt-6535": {
+    "quelle": "rexlander.com (Primaerquelle, Pro-Farbe-Studiofotos mit deklariertem Farb-Tagging); Gegenprobe vivo-shop.com",
+    "hinweis": "front"
+  },
+  "fruit-of-the-loom-iconic-250-hooded-sweat": {
+    "quelle": "Fruit of the Loom Europe (Hersteller) — offizielle Produktseite + hersteller-eigenes Bild-CDN cdn.fruitofthelo",
+    "hinweis": "front+back+side"
+  },
+  "russell-classic-t-long-sleeve": {
+    "quelle": "Offizieller Hersteller: Russell Europe Produktseite 0R180L0 + Russell/FOTL Hersteller-DAM cdn.fruitoftheloom.e",
+    "hinweis": "front+back+side"
+  },
+  "bundc-microfleece-duo-id501-women": {
+    "quelle": "COOZO (coozo.co.uk) — B&C-Haendler, unveraenderte B&C-Studiofreisteller pro Farbe (FWI51_*_FRONT); Back/Side f",
+    "hinweis": "front+back+side"
   }
 }

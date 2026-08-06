@@ -26,6 +26,18 @@ try {
   /* keine Gründe-Datei vorhanden – dann ohne Begründung listen */
 }
 
+/**
+ * Recherche-Entscheidungen, bei denen die Katalog-Artikelnummer korrigiert oder
+ * ein offizielles Nachfolgemodell verwendet wurde (Nachvollziehbarkeit).
+ */
+type Entscheidung = { katalogNr: string; korrektNr: string; art: string; beleg: string };
+let entscheidungen: Record<string, Entscheidung> = {};
+try {
+  entscheidungen = JSON.parse(readFileSync('scripts/import/entscheidungen.json', 'utf-8'));
+} catch {
+  /* keine Entscheidungen dokumentiert */
+}
+
 /** Ist eine Ansicht ein echtes eigenes Bild (kein Platzhalter, kein Front-Alias)? */
 const istEigen = (pfad: string, front: string | undefined, view: string) =>
   pfad !== PLATZHALTER_BILD && (view === 'front' || pfad !== front);
@@ -68,6 +80,16 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | Produkt | Marke | Quelle | echte Farben | Ansichten | Farben mit Rückansicht |
 |---|---|---|---|---|---|
 ${zeilen.join('\n')}
+
+## Korrigierte Artikelnummern & Nachfolgemodelle
+_Fälle, in denen die Katalog-Artikelnummer nachweislich falsch/veraltet war oder das Produkt offiziell
+ersetzt wurde. Die Bilder stammen jeweils vom belegten korrekten Artikel; die Katalognummer sollte
+entsprechend nachgezogen werden._
+
+| Produkt | Katalog-Nr. | Belegte korrekte Nr. | Art | Beleg |
+|---|---|---|---|---|
+${Object.entries(entscheidungen).map(([id, e]) =>
+  `| ${id} | ${e.katalogNr} | **${e.korrektNr}** | ${e.art} | ${e.beleg} |`).join('\n') || '| — | — | — | — | — |'}
 
 ## Noch offen (Recherche/Import ausstehend)
 ${Object.entries(offen).sort((a, b) => b[1].length - a[1].length).map(([b, a]) =>

@@ -1,332 +1,110 @@
 [
   {
-    "produkt": "russell-mens-pure-organic-heavy-tee",
+    "produkt": "bundc-microfleece-duo-id501",
     "farbe": "black",
-    "quelle": "freewear.de",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#14171b",
-    "erwartet": "#000000",
-    "deltaE": 41,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-mens-pure-organic-heavy-tee",
-    "farbe": "white",
-    "quelle": "freewear.de",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f0f0f2",
-    "erwartet": "#FFFFFF",
-    "deltaE": 25,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-mens-pure-organic-heavy-tee",
-    "farbe": "french-navy",
-    "quelle": "freewear.de",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#111e33",
-    "erwartet": "#021E42",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-mens-pure-organic-heavy-tee",
-    "farbe": "555b66",
-    "quelle": "freewear.de",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#474a4f",
-    "erwartet": "#555B66",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-mens-pure-organic-v-neck-tee",
-    "farbe": "black",
-    "quelle": "media2.designpartner.fr (Bild-CDN hinter lamaisonduteeshirt.com). Muster: https://media2.d",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#1d1e22",
-    "erwartet": "#000000",
-    "deltaE": 54,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-mens-pure-organic-v-neck-tee",
-    "farbe": "white",
-    "quelle": "media2.designpartner.fr (Bild-CDN hinter lamaisonduteeshirt.com). Muster: https://media2.d",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#ededef",
-    "erwartet": "#FFFFFF",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-mens-pure-organic-v-neck-tee",
-    "farbe": "french-navy",
-    "quelle": "media2.designpartner.fr (Bild-CDN hinter lamaisonduteeshirt.com). Muster: https://media2.d",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#1d2437",
-    "erwartet": "#021E42",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-clive-crew-neck",
-    "farbe": "white",
-    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/)",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c8cccf",
-    "erwartet": "#FFFFFF",
-    "deltaE": 89,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-clive-crew-neck",
-    "farbe": "051733",
-    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/)",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#283747",
-    "erwartet": "#051733",
-    "deltaE": 51,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-clive-crew-neck",
-    "farbe": "slate-grey-solid",
-    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/)",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#45494b",
-    "erwartet": "#747679",
-    "deltaE": 80,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-clive-crew-neck",
-    "farbe": "blue-midnight",
-    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/)",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#111111",
-    "erwartet": "#180A29",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "earthpositive-earth-positive-super-heavy-hoodie",
-    "farbe": "black",
-    "quelle": "Offizieller EarthPositive / Continental Clothing Shopify-Store (earthpositiveonline.com, c",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#171717",
-    "erwartet": "#111021",
-    "deltaE": 14,
-    "dupeMit": null
-  },
-  {
-    "produkt": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
-    "farbe": "black",
-    "quelle": "shirtplus.net (EP301 Shopify CDN)",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#111316",
-    "erwartet": "#191516",
-    "deltaE": 8,
-    "dupeMit": "earthpositive-earth-positive-pullover-hoodie-black"
-  },
-  {
-    "produkt": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
-    "farbe": "navy",
-    "quelle": "shirtplus.net (EP301 Shopify CDN)",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#21232f",
-    "erwartet": "#211F2C",
-    "deltaE": 5,
-    "dupeMit": "earthpositive-earth-positive-pullover-hoodie-french-navy"
-  },
-  {
-    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
-    "farbe": "black",
-    "quelle": "bc-collection.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#2f2f2f",
-    "erwartet": "#000000",
-    "deltaE": 81,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
-    "farbe": "white",
-    "quelle": "bc-collection.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#fefefe",
-    "erwartet": "#FFFFFF",
-    "deltaE": 2,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
-    "farbe": "navy",
-    "quelle": "bc-collection.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#39404e",
-    "erwartet": "#1F2532",
-    "deltaE": 47,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
-    "farbe": "red",
-    "quelle": "bc-collection.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d9253e",
-    "erwartet": "#DB001B",
-    "deltaE": 51,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
-    "farbe": "royal-blue",
-    "quelle": "bc-collection.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#175192",
-    "erwartet": "#154E8F",
-    "deltaE": 5,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
-    "farbe": "sport-grey-heather",
-    "quelle": "bc-collection.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b1b1b1",
-    "erwartet": "#9C9E9F",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
-    "farbe": "bottle-green",
-    "quelle": "bc-collection.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3e5a43",
-    "erwartet": "#004413",
-    "deltaE": 81,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-microfleece-duo-id501-women",
-    "farbe": "black",
-    "quelle": "falk-ross.eu",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
     "gefunden": [
       "front"
     ],
     "frontDom": "#31302b",
     "erwartet": "#000000",
     "deltaE": 81,
-    "dupeMit": "bundc-microfleece-duo-id501-black"
+    "dupeMit": null
   },
   {
-    "produkt": "bundc-microfleece-duo-id501-women",
+    "produkt": "bundc-microfleece-duo-id501",
     "farbe": "white",
-    "quelle": "falk-ross.eu",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#ecebe9",
+    "frontDom": "#ebeae8",
     "erwartet": "#FFFFFF",
-    "deltaE": 35,
-    "dupeMit": "bundc-microfleece-duo-id501-white"
+    "deltaE": 37,
+    "dupeMit": null
   },
   {
-    "produkt": "bundc-microfleece-duo-id501-women",
+    "produkt": "bundc-microfleece-duo-id501",
     "farbe": "navy",
-    "quelle": "falk-ross.eu",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#1c2535",
+    "frontDom": "#1f2633",
     "erwartet": "#1F2532",
-    "deltaE": 4,
-    "dupeMit": "bundc-microfleece-duo-id501-navy"
+    "deltaE": 1,
+    "dupeMit": null
   },
   {
-    "produkt": "bundc-microfleece-duo-id501-women",
+    "produkt": "bundc-microfleece-duo-id501",
     "farbe": "red",
-    "quelle": "falk-ross.eu",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#bd0e2f",
+    "frontDom": "#ad292e",
     "erwartet": "#DB001B",
-    "deltaE": 39,
-    "dupeMit": "bundc-microfleece-duo-id501-red"
+    "deltaE": 64,
+    "dupeMit": null
   },
   {
-    "produkt": "bundc-microfleece-duo-id501-women",
+    "produkt": "bundc-microfleece-duo-id501",
     "farbe": "royal-blue",
-    "quelle": "falk-ross.eu",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#075898",
+    "frontDom": "#2f5691",
     "erwartet": "#154E8F",
-    "deltaE": 19,
-    "dupeMit": "bundc-microfleece-duo-id501-royal-blue"
+    "deltaE": 27,
+    "dupeMit": null
   },
   {
-    "produkt": "bundc-microfleece-duo-id501-women",
+    "produkt": "bundc-microfleece-duo-id501",
     "farbe": "forest-green",
-    "quelle": "falk-ross.eu",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#343f2f",
+    "frontDom": "#373f33",
     "erwartet": "#002500",
-    "deltaE": 75,
-    "dupeMit": "bundc-microfleece-duo-id501-forest-green"
+    "deltaE": 79,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "dark-grey-solid",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#474a4f",
+    "erwartet": "#29363F",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "atoll",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#4296ba",
+    "erwartet": "#0092C3",
+    "deltaE": 67,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "pumpkin-orange",
+    "quelle": "coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#c84a1c",
+    "erwartet": "#EE7C27",
+    "deltaE": 64,
+    "dupeMit": null
   }
 ]

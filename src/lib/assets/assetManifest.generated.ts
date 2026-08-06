@@ -8358,111 +8358,111 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "neutral-oversized-t-shirt": {
     "215732": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-215732/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-215732/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-215732/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-215732/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-white/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-white/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-white/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sport-grey": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-sport-grey/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-sport-grey/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-sport-grey/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-sport-grey/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-black/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-black/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-black/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-navy/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-navy/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-navy/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "brown": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-brown/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-brown/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-brown/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-brown/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "raw": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-raw/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-raw/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-raw/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-raw/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sand": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-sand/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-sand/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-sand/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-sand/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "teal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-teal/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-teal/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-teal/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-teal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dusty-indigo": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-dusty-indigo/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-dusty-indigo/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-dusty-indigo/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-dusty-indigo/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dusty-purple": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-dusty-purple/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-dusty-purple/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-dusty-purple/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-dusty-purple/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dusty-mint": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/neutral-oversized-t-shirt-dusty-mint/front.webp",
+        "back": "/products/neutral-oversized-t-shirt-dusty-mint/front.webp",
+        "sleeve_left": "/products/neutral-oversized-t-shirt-dusty-mint/front.webp",
+        "sleeve_right": "/products/neutral-oversized-t-shirt-dusty-mint/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "neutral-ladies-classic-t-shirt": {
@@ -13057,12 +13057,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "earthpositive-jersey-polo-shirt": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/earthpositive-jersey-polo-shirt-black/front.webp",
+        "back": "/products/earthpositive-jersey-polo-shirt-black/front.webp",
+        "sleeve_left": "/products/earthpositive-jersey-polo-shirt-black/front.webp",
+        "sleeve_right": "/products/earthpositive-jersey-polo-shirt-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "russell-strapazierfaehiges-poloshirt-599": {
@@ -13454,93 +13454,93 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-ladies-poloshirt-6535": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-black/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-black/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-black/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-bottle-green/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-bottle-green/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-bottle-green/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-bottle-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-bright-red/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-bright-red/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-bright-red/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-bright-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-bright-royal/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-bright-royal/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-bright-royal/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-bright-royal/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "classic-red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-classic-red/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-classic-red/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-classic-red/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-classic-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-french-navy/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-french-navy/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-french-navy/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sky": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-sky/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-sky/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-sky/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-sky/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-white/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-white/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-white/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "convoy-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-oxford-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/front.webp",
+        "back": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/front.webp",
+        "sleeve_left": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/front.webp",
+        "sleeve_right": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "sols-men-s-polo-shirt-prime": {
@@ -15629,93 +15629,93 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "fruit-of-the-loom-iconic-250-hooded-sweat": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-black/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-black/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-black/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "ffffff": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-ffffff/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-ffffff/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-ffffff/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-ffffff/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "athletic-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-athletic-heather/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-athletic-heather/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-athletic-heather/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-athletic-heather/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-graphite-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-light-graphite-solid/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-light-graphite-solid/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-light-graphite-solid/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-light-graphite-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "deep-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-deep-navy/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-deep-navy/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-deep-navy/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-deep-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "college-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-college-green/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-college-green/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-college-green/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-college-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "desert-sand": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-desert-sand/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-desert-sand/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-desert-sand/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-desert-sand/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-burgundy/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-burgundy/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-burgundy/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-burgundy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-red/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-red/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-red/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-royal-blue/front.webp",
+        "back": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-royal-blue/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-royal-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "build-your-brand-heavy-hoody": {
@@ -19236,39 +19236,39 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-classic-t-long-sleeve": {
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-classic-t-long-sleeve-white/front.webp",
+        "back": "/products/russell-classic-t-long-sleeve-white/back.webp",
+        "sleeve_left": "/products/russell-classic-t-long-sleeve-white/sleeve-left.webp",
+        "sleeve_right": "/products/russell-classic-t-long-sleeve-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-classic-t-long-sleeve-black/front.webp",
+        "back": "/products/russell-classic-t-long-sleeve-black/back.webp",
+        "sleeve_left": "/products/russell-classic-t-long-sleeve-black/sleeve-left.webp",
+        "sleeve_right": "/products/russell-classic-t-long-sleeve-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-classic-t-long-sleeve-french-navy/front.webp",
+        "back": "/products/russell-classic-t-long-sleeve-french-navy/back.webp",
+        "sleeve_left": "/products/russell-classic-t-long-sleeve-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/russell-classic-t-long-sleeve-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "convoy-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-classic-t-long-sleeve-convoy-grey-solid/front.webp",
+        "back": "/products/russell-classic-t-long-sleeve-convoy-grey-solid/back.webp",
+        "sleeve_left": "/products/russell-classic-t-long-sleeve-convoy-grey-solid/sleeve-left.webp",
+        "sleeve_right": "/products/russell-classic-t-long-sleeve-convoy-grey-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "bundc-t-shirt-e150-long-sleeve-unisex-exact": {
@@ -20513,10 +20513,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "bundc-microfleece-duo-id501": {
     "atoll": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-atoll/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-atoll/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black": {
       "views": {
@@ -20527,10 +20527,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-dark-grey-solid/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-dark-grey-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "forest-green": {
       "views": {
@@ -20548,10 +20548,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "pumpkin-orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-pumpkin-orange/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-pumpkin-orange/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
@@ -20578,66 +20578,66 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "bundc-microfleece-duo-id501-women": {
     "atoll": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-atoll/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-atoll/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-black/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-black/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-dark-grey-solid/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-dark-grey-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "forest-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-forest-green/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-forest-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-navy/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "pumpkin-orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-pumpkin-orange/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-pumpkin-orange/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-red/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-royal-blue/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-royal-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-microfleece-duo-id501-women-white/front.webp",
+        "back": "/products/bundc-microfleece-duo-id501-women-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   }
 };

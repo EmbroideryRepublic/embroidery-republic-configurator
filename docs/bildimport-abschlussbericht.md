@@ -3,10 +3,10 @@
 _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scripts/import/quellen.json._
 
 ## Übersicht
-- Produkte mit echten Bildern: **148 / 154**
-- Echte Farb-Bildsätze: **887**
-- Farben mit echter Rückansicht: **740** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **147**
-- Noch offen (nur Platzhalter): **6** Produkte
+- Produkte mit echten Bildern: **154 / 154**
+- Echte Farb-Bildsätze: **936**
+- Farben mit echter Rückansicht: **755** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **181**
+- Noch offen (nur Platzhalter): **0** Produkte
 
 ## Bebilderte Produkte
 | Produkt | Marke | Quelle | echte Farben | Ansichten | Farben mit Rückansicht |
@@ -81,6 +81,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | gildan-ultra-cotton-t-shirt | Gildan | teamshirts.com (Spreadshirt-Medienserver) | 7 | back+front | 7 |
 | gildan-light-cotton-adult-t-shirt | Gildan | Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P | 6 | back+front | 6 |
 | neutral-men-s-classic-t-shirt | Neutral | sportyfied.com | 7 | back+front | 5 · ohne echte Rückansicht: 2 (bottle-green, charcoal) |
+| neutral-oversized-t-shirt | Neutral | Neutral (Hersteller) — offizieller Shopify-Produktfeed https://neutral.com/products/t6011-tiger-cotton-oversiz | 12 | front | 0 · ohne echte Rückansicht: 12 (215732, white, sport-grey, black, navy, brown, raw, sand, teal, dusty-indigo, dusty-purple, dusty-mint) |
 | neutral-ladies-classic-t-shirt | Neutral | sportyfied.com | 7 | back+front | 5 · ohne echte Rückansicht: 2 (bottle-green, charcoal) |
 | neutral-men-s-fit-t-shirt | Neutral | sportyfied.com | 7 | back+front | 7 |
 | neutral-unisex-performance-t-shirt | Neutral | sportyfied.com | 6 | back+front+sleeve_left | 6 |
@@ -103,10 +104,12 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | jamesnicholson-men-s-bio-workwear-polo | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
 | jamesnicholson-workwear-polo-men | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
 | earthpositive-pique-polo-shirt | EarthPositive | baroneclothing.com (Magento-CDN media/catalog/product) — Earth Positive EP20 Men | 1 | front | 0 · ohne echte Rückansicht: 1 (black) |
+| earthpositive-jersey-polo-shirt | EarthPositive | Earth Positive(R) by Continental Clothing Co. (offizieller Hersteller-Shop, verlinkt von continentalclothing.c | 1 | front | 0 · ohne echte Rückansicht: 1 (black) |
 | russell-strapazierfaehiges-poloshirt-599 | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 6 | back+front | 6 |
 | russell-men-s-ultimate-cotton-polo | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
 | russell-men-s-classic-cotton-polo | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
 | russell-poloshirt-6535 | Russell | groener-schulze.com | 6 | back+front+sleeve_left | 6 |
+| russell-ladies-poloshirt-6535 | Russell | rexlander.com (Primaerquelle, Pro-Farbe-Studiofotos mit deklariertem Farb-Tagging); Gegenprobe vivo-shop.com | 10 | front | 0 · ohne echte Rückansicht: 10 (black, bottle-green, bright-red, bright-royal, classic-red, french-navy, sky, white, convoy-grey-solid, light-oxford-heather) |
 | sols-men-s-polo-shirt-prime | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 7 | back+front+sleeve_left | 7 |
 | sols-women-s-polo-shirt-prime | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 7 | back+front+sleeve_left | 7 |
 | sols-men-s-polo-shirt-perfect | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front+sleeve_left | 6 |
@@ -118,6 +121,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | fruit-of-the-loom-premium-hooded-sweat | Fruit of the Loom | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
 | fruit-of-the-loom-lightweight-hooded-sweat | Fruit of the Loom | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 7 | back+front+sleeve_left | 7 |
 | fruit-of-the-loom-iconic-premium-hooded-sweat | Fruit of the Loom | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
+| fruit-of-the-loom-iconic-250-hooded-sweat | Fruit of the Loom | Fruit of the Loom Europe (Hersteller) — offizielle Produktseite + hersteller-eigenes Bild-CDN cdn.fruitofthelo | 10 | back+front+sleeve_left | 10 |
 | build-your-brand-heavy-hoody | Build Your Brand | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front+sleeve_left | 6 |
 | build-your-brand-fluffy-hoody | Build Your Brand | myworkwear.co.uk / buildyourbrand-CDN | 5 | back+front+sleeve_left | 5 |
 | build-your-brand-ultra-heavy-cotton-box-hoody | Build Your Brand | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front | 6 |
@@ -143,6 +147,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | gildan-ultra-cotton-long-sleeve-t-shirt | Gildan | blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad) | 7 | back+front+sleeve_left | 7 |
 | sols-men-s-long-sleeve-t-shirt-imperial | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front+sleeve_left | 6 |
 | neutral-ladies-long-sleeve-t-shirt | Neutral | sportyfied.com | 7 | back+front | 1 · ohne echte Rückansicht: 6 (bottle-green, black, navy, red, white, royal) |
+| russell-classic-t-long-sleeve | Russell | Offizieller Hersteller: Russell Europe Produktseite 0R180L0 + Russell/FOTL Hersteller-DAM cdn.fruitoftheloom.e | 4 | back+front+sleeve_left | 4 |
 | bundc-t-shirt-e150-long-sleeve-unisex-exact | B&C | bc-collection.eu (offizielle B&C-Herstellerseite) | 7 | front | 0 · ohne echte Rückansicht: 7 (white, black, navy, sport-grey-heather, royal-blue, red, bottle-green) |
 | earthpositive-unisex-organic-longsleeve-t-shirt | EarthPositive | dynamics.se (Shopify CDN, EP01L Earth Positive Long Sleeve T-shirt Produktseite; | 5 | front | 0 · ohne echte Rückansicht: 5 (black, white, denim-blue, french-navy, stone-washed-black) |
 | just-cool-long-sleeve-cool-t | Just Cool | shop.ralawise.com | 5 | front | 0 · ohne echte Rückansicht: 5 (arctic-white, charcoal-solid, fire-red, french-navy, royal-blue) |
@@ -158,17 +163,22 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | jamesnicholson-men-s-fleece-jacket-jn | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 6 |
 | id-identity-microfleece-jacke | ID Identity | id.dk (offizielle ID Identity Medienbibliothek, id-identity.azureedge.net CDN) | 4 | back+front | 4 |
 | jamesnicholson-ladies-fleece-jacket-jn781 | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 6 |
-| bundc-microfleece-duo-id501 | B&C | falk-ross.eu | 6 | front | 0 · ohne echte Rückansicht: 6 (black, forest-green, navy, red, royal-blue, white) |
+| bundc-microfleece-duo-id501 | B&C | coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop- | 9 | front | 0 · ohne echte Rückansicht: 9 (atoll, black, dark-grey-solid, forest-green, navy, pumpkin-orange, red, royal-blue, white) |
+| bundc-microfleece-duo-id501-women | B&C | COOZO (coozo.co.uk) — B&C-Haendler, unveraenderte B&C-Studiofreisteller pro Farbe (FWI51_*_FRONT); Back/Side f | 9 | back+front | 1 · ohne echte Rückansicht: 8 (atoll, dark-grey-solid, forest-green, navy, pumpkin-orange, red, royal-blue, white) |
+
+## Korrigierte Artikelnummern & Nachfolgemodelle
+_Fälle, in denen die Katalog-Artikelnummer nachweislich falsch/veraltet war oder das Produkt offiziell
+ersetzt wurde. Die Bilder stammen jeweils vom belegten korrekten Artikel; die Katalognummer sollte
+entsprechend nachgezogen werden._
+
+| Produkt | Katalog-Nr. | Belegte korrekte Nr. | Art | Beleg |
+|---|---|---|---|---|
+| neutral-oversized-t-shirt | O60022 | **T60011 (Tiger Cotton Oversized T-Shirt)** | Katalognummer existiert nicht | O60022 in neutral.com Vollkatalog (products.json), Kollektionsfeed und Wayback-CDX über die gesamte Domain nicht auffindbar – die O-Serie ist Neutrals Regular-Fit-Linie. T60011 ist das einzige Kurzarm-Oversize-Tee; seine offizielle 12er-Farbliste (inkl. Dusty Indigo/Mint/Purple, Raw, Teal, Bottle Green) deckt sich 1:1 mit den 12 Katalogfarben. |
+| earthpositive-jersey-polo-shirt | EP21 | **EP39 (Earth Positive Jersey Polo Shirt)** | Katalognummer bezeichnet ein anderes Produkt | Wayback-Snapshots der offiziellen Continental-Clothing-Seite belegen EP21 als 'Men's Pique Polo' (180 g Piqué) – kein Jersey-Polo. Im Herstellershop (continentalclothing.com/about/earthpositive → earthpositiveonline.com) heisst genau ein Artikel 'Jersey Polo Shirt': EP39 (EP40 = Piqué). EP39 existiert nur in Black. |
+| fruit-of-the-loom-iconic-250-hooded-sweat | 62-150 | **62-294-0 (Modell 0622940)** | Katalognummer bezeichnet ein anderes Produkt | 62-150 ist die FOTL Lady-Fit Lightweight Hooded Sweat Jacket. Auf fruitoftheloom.eu löst 0622940 auf /shop/p/iconic-250-hooded-sweat/ auf (H1 'Iconic 250 Hooded Sweat', Modell 0622940, Unisex, 230/240 g/m²). Die 10 Herstellerfarben decken sich exakt mit den 10 Katalogfarben. Bild-CDN-Pfad enthält die Artikelnummer (…/product/062294/…), Fremdprodukt technisch ausgeschlossen. |
+| bundc-microfleece-duo-id501-women | FWI50 | **FWI51 (B&C ID.501 /women)** | Katalognummer existiert nicht (Herren/Damen vertauscht) | Die offizielle B&C-Outerwear-Minisite führt 'ID.501' als ref FUI50 (Herren) und 'ID.501 /women' als ref FWI51 (Damen); eine Referenz FWI50 existiert nicht. Wayback-Snapshots von bc-collection.eu zeigen die Damen-Bildstrecke im DAM-Schema FWI51_P_BC_<farbcode>_01.jpg. BTC Activewear nennt zu FUI50 ausdrücklich 'also available in ladies' sizes code FWI51'. |
+| bundc-microfleece-duo-id501 | (ohne Nr., zuvor als FWI51 angenommen) | **FUI50 (B&C ID.501, Herren)** | Falschprodukt-Korrektur: zuvor importierte Bilder waren das Damenmodell | Die früher genutzten falk-ross-Bilder (804_42_*) wurden als Damenmodell entlarvt: gegenüber den verifizierten FWI51-Damenbildern nur 1,75 mittlere Grauwertabweichung und identische Silhouettenmaße. Nach Neuimport von FUI50 (Coozo, SKU-Schema FUI50/<Farbe>/<Größe>) liegt die Abweichung bei 7,93 und die Brustbreite bei 54 statt 49 – nachweislich der breitere Herrenschnitt. Identität dreifach belegt (L-Shop-Team BCFUI50 = 'Microfleece-Duo ID.501', BTC Activewear, Coozo). |
+| russell-classic-t-long-sleeve | R-180M-LS (angenommen) | **180L (SKU 0R180L0)** | Angenommene Nummer existiert nicht | russelleurope.com/shop/p/authentic-classic-long-sleeve-t/0R180L0 führt 180L als offizielle Langarm-Version des Classic T 180M. Herstellerfarbliste (White, Convoy Grey, Black, French Navy) deckt sich exakt mit den 4 Katalogfarben; bestätigt durch TopTex (RUZT180L), PenCarrie und Cotton Classics. Bilder aus dem Hersteller-DAM (Pfad /product/0R180L/…) mit typisierten Assets front/back/side. |
 
 ## Noch offen (Recherche/Import ausstehend)
-- **Russell** (2):
-  - `russell-ladies-poloshirt-6535` — R-539F existiert, aber keine skriptbare oder Browser-Quelle fuehrt Pro-Farbe-Studiofotos: groener-schulze hat nur die Herren-Variante R-539M, cottonclassics nur EIN generisches Frontbild (kein Back, keine Farbvarianten). Herren-Bilder waeren ein Falschprodukt. AKTION: saubere Pro-Farbe-Quelle fuer R-539F noetig (sonst Front-only-Generik moeglich, falls gewuenscht).
-  - `russell-classic-t-long-sleeve` — R-180M-LS (Langarm) wird von keiner skriptbaren Quelle gefuehrt (groener nur Kurzarm R-180M-0; kein Russell-Longsleeve im Sortiment). Variante existiert moeglicherweise gar nicht als eigenes Produkt. AKTION: pruefen, ob R-180M-LS real ist / korrekte Nummer.
-- **Neutral** (1):
-  - `neutral-oversized-t-shirt` — Katalog-Artikelnr. O60022 existiert bei Neutral nicht (products.json vollstaendig geprueft). Neutrals reales Oversized-Tee ist T60011 'Tiger Cotton Oversized' – andere Nummer. Ohne bestaetigte korrekte Artikelnummer nicht substituiert (Falschprodukt-Regel). AKTION: Artikelnummer im Katalog pruefen (vermutlich T60011).
-- **EarthPositive** (1):
-  - `earthpositive-jersey-polo-shirt` — EP21 ist eingestellt; offizieller Nachfolger EP39 'Earth Positive Jersey Polo' hat eine ANDERE Artikelnummer und echte Shopify-Bilder. Substitution bewusst unterlassen. AKTION: Freigabe fuer EP39-Bilder erteilen oder Artikel aus dem Katalog nehmen.
-- **Fruit of the Loom** (1):
-  - `fruit-of-the-loom-iconic-250-hooded-sweat` — Katalog-Artikelnr. 62-150 ist real eine Lady-Fit Lightweight Zip-Jacke, NICHT der Iconic-250-Kapuzenpullover. Produktidentitaet bestaetigt (textil-grosshandel.eu, exakt passende Farb-Hex), aber nur EIN generisches Studiobild, keine Pro-Farbe- oder Rueckansicht. AKTION: korrekte Artikelnummer des Iconic-250-Hoodie pruefen.
-- **B&C** (1):
-  - `bundc-microfleece-duo-id501-women` — Keine eigene Damen-Bildstrecke (FWI50) gefunden; falk-ross liefert unter der abgeleiteten Nummer die HERREN-Bilder (FWI51, byte-identisch) – waere ein Falschprodukt und wurde verworfen. AKTION: saubere Damen-Quelle (FWI50) noetig.
+

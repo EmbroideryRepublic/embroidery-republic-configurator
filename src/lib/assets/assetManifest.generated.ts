@@ -3577,7 +3577,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-navy-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-navy-blue/back.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-navy-blue/sleeve-left.webp"
       },
       "status": "real"
@@ -11445,7 +11445,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/earthpositive-jersey-polo-shirt-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-jersey-polo-shirt-black/back.webp"
       },
       "status": "real"
     }
@@ -12463,7 +12463,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "gold": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-gold/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/sols-unisex-pulse-polo-shirt-gold/back.webp",
         "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-gold/sleeve-left.webp"
       },
       "status": "real"
@@ -14486,7 +14486,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy-blue": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-navy-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-king-hooded-sweat-navy-blue/back.webp"
       },
       "status": "real"
     },
@@ -14626,7 +14626,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "1f2532": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-1f2532/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-king-hooded-sweat-1f2532/back.webp"
       },
       "status": "real"
     }
@@ -14749,7 +14749,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mastic": {
       "views": {
         "front": "/products/bundc-influence-hoodie-mastic/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-influence-hoodie-mastic/back.webp"
       },
       "status": "real"
     },
@@ -15317,7 +15317,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/earthpositive-earth-positive-super-heavy-hoodie-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-earth-positive-super-heavy-hoodie-black/back.webp"
       },
       "status": "real"
     }
@@ -16292,7 +16292,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-pink": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/back.webp",
         "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/sleeve-left.webp"
       },
       "status": "real"
@@ -17190,7 +17190,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "charcoal": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-charcoal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-charcoal/back.webp",
         "sleeve_left": "/products/neutral-men-s-long-sleeve-t-shirt-charcoal/sleeve-left.webp"
       },
       "status": "real"

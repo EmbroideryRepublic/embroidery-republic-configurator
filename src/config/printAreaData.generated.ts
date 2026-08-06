@@ -527,7 +527,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'earthpositive-jersey-polo-shirt': {
     front: { x0: 35.1, y0: 29.2, x1: 64.9, y1: 69.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 63 },
-    back: { x0: 35.1, y0: 29.2, x1: 64.9, y1: 69.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 63 },
+    back: { x0: 33.4, y0: 25.7, x1: 66.8, y1: 70.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 63 },
   },
   'russell-strapazierfaehiges-poloshirt-599': {
     front: { x0: 30.7, y0: 23.7, x1: 69.8, y1: 76.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 59 },
@@ -571,7 +571,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   'sols-unisex-pulse-polo-shirt': {
     front: { x0: 30.6, y0: 23.4, x1: 68.6, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 61 },
     back: { x0: 31.7, y0: 24.1, x1: 69.3, y1: 74.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 61 },
-    sleeve_left: { x0: 31.6, y0: 8.1, x1: 68.4, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 26.5, boxHeightCm: 69.9, startXCm: 13, startYCm: 14, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_left: { x0: 31.6, y0: 8.1, x1: 68.3, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 26.4, boxHeightCm: 69.9, startXCm: 13, startYCm: 14, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'gildan-heavy-blend-hooded-sweatshirt': {
     front: { x0: 35.6, y0: 40, x1: 63.7, y1: 77.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 60 },
@@ -639,7 +639,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'bundc-king-hooded-sweat': {
     front: { x0: 31.5, y0: 28.3, x1: 68.4, y1: 78.2, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 45, garmentHeightCm: 57 },
-    back: { x0: 31.1, y0: 28.1, x1: 68.8, y1: 79.1, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 45, garmentHeightCm: 57 },
+    back: { x0: 31, y0: 27.9, x1: 68.9, y1: 79, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 45, garmentHeightCm: 57 },
   },
   'bundc-id-223-hoodie': {
     front: { x0: 34.8, y0: 41.4, x1: 65.4, y1: 82.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 56 },
@@ -663,7 +663,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'earthpositive-earth-positive-super-heavy-hoodie': {
     front: { x0: 34.9, y0: 40.3, x1: 64.6, y1: 80.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
-    back: { x0: 34.9, y0: 40.3, x1: 64.6, y1: 80.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
+    back: { x0: 31.5, y0: 27.5, x1: 68.5, y1: 77.3, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
   },
   'earthpositive-earthpositive-organic-mensunisex-pullover-hoodie': {
     front: { x0: 34.4, y0: 29.4, x1: 65.5, y1: 71.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 63 },
@@ -758,7 +758,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'neutral-men-s-long-sleeve-t-shirt': {
     front: { x0: 28.6, y0: 16.8, x1: 71.5, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
-    back: { x0: 28.3, y0: 16.8, x1: 71.2, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
+    back: { x0: 28.5, y0: 16.8, x1: 71.4, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
     sleeve_left: { x0: 35.3, y0: 8.2, x1: 64.7, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 20.5, boxHeightCm: 67.9, startXCm: 10.9, startYCm: 10.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'sols-men-s-plain-fleece-jacket-norman': {

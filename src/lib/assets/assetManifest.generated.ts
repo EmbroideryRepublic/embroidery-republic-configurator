@@ -7293,39 +7293,39 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-mens-pure-organic-heavy-tee": {
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-mens-pure-organic-heavy-tee-white/front.webp",
+        "back": "/products/russell-mens-pure-organic-heavy-tee-white/front.webp",
+        "sleeve_left": "/products/russell-mens-pure-organic-heavy-tee-white/front.webp",
+        "sleeve_right": "/products/russell-mens-pure-organic-heavy-tee-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-mens-pure-organic-heavy-tee-black/front.webp",
+        "back": "/products/russell-mens-pure-organic-heavy-tee-black/front.webp",
+        "sleeve_left": "/products/russell-mens-pure-organic-heavy-tee-black/front.webp",
+        "sleeve_right": "/products/russell-mens-pure-organic-heavy-tee-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "555b66": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-mens-pure-organic-heavy-tee-555b66/front.webp",
+        "back": "/products/russell-mens-pure-organic-heavy-tee-555b66/front.webp",
+        "sleeve_left": "/products/russell-mens-pure-organic-heavy-tee-555b66/front.webp",
+        "sleeve_right": "/products/russell-mens-pure-organic-heavy-tee-555b66/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-mens-pure-organic-heavy-tee-french-navy/front.webp",
+        "back": "/products/russell-mens-pure-organic-heavy-tee-french-navy/front.webp",
+        "sleeve_left": "/products/russell-mens-pure-organic-heavy-tee-french-navy/front.webp",
+        "sleeve_right": "/products/russell-mens-pure-organic-heavy-tee-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "russell-ladies-pure-organic-heavy-tee": {
@@ -7369,30 +7369,30 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "russell-mens-pure-organic-v-neck-tee": {
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-mens-pure-organic-v-neck-tee-white/front.webp",
+        "back": "/products/russell-mens-pure-organic-v-neck-tee-white/back.webp",
+        "sleeve_left": "/products/russell-mens-pure-organic-v-neck-tee-white/sleeve-left.webp",
+        "sleeve_right": "/products/russell-mens-pure-organic-v-neck-tee-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-mens-pure-organic-v-neck-tee-black/front.webp",
+        "back": "/products/russell-mens-pure-organic-v-neck-tee-black/back.webp",
+        "sleeve_left": "/products/russell-mens-pure-organic-v-neck-tee-black/sleeve-left.webp",
+        "sleeve_right": "/products/russell-mens-pure-organic-v-neck-tee-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-mens-pure-organic-v-neck-tee-french-navy/front.webp",
+        "back": "/products/russell-mens-pure-organic-v-neck-tee-french-navy/back.webp",
+        "sleeve_left": "/products/russell-mens-pure-organic-v-neck-tee-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/russell-mens-pure-organic-v-neck-tee-french-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "gildan-ultra-cotton-t-shirt": {
@@ -10864,12 +10864,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "stedman-clive-crew-neck": {
     "slate-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-clive-crew-neck-slate-grey-solid/front.webp",
+        "back": "/products/stedman-clive-crew-neck-slate-grey-solid/front.webp",
+        "sleeve_left": "/products/stedman-clive-crew-neck-slate-grey-solid/front.webp",
+        "sleeve_right": "/products/stedman-clive-crew-neck-slate-grey-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black-opal": {
       "views": {
@@ -10918,12 +10918,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-clive-crew-neck-white/front.webp",
+        "back": "/products/stedman-clive-crew-neck-white/front.webp",
+        "sleeve_left": "/products/stedman-clive-crew-neck-white/front.webp",
+        "sleeve_right": "/products/stedman-clive-crew-neck-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-chocolate": {
       "views": {
@@ -10945,12 +10945,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "blue-midnight": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-clive-crew-neck-blue-midnight/front.webp",
+        "back": "/products/stedman-clive-crew-neck-blue-midnight/front.webp",
+        "sleeve_left": "/products/stedman-clive-crew-neck-blue-midnight/front.webp",
+        "sleeve_right": "/products/stedman-clive-crew-neck-blue-midnight/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "scarlet-red": {
       "views": {
@@ -10972,12 +10972,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "051733": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-clive-crew-neck-051733/front.webp",
+        "back": "/products/stedman-clive-crew-neck-051733/front.webp",
+        "sleeve_left": "/products/stedman-clive-crew-neck-051733/front.webp",
+        "sleeve_right": "/products/stedman-clive-crew-neck-051733/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "bundc-unisex-polo-id-001": {
@@ -17669,23 +17669,23 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "earthpositive-earth-positive-super-heavy-hoodie": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/earthpositive-earth-positive-super-heavy-hoodie-black/front.webp",
+        "back": "/products/earthpositive-earth-positive-super-heavy-hoodie-black/front.webp",
+        "sleeve_left": "/products/earthpositive-earth-positive-super-heavy-hoodie-black/front.webp",
+        "sleeve_right": "/products/earthpositive-earth-positive-super-heavy-hoodie-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie": {
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-black/front.webp",
+        "back": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-black/front.webp",
+        "sleeve_left": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-black/front.webp",
+        "sleeve_right": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "mango": {
       "views": {
@@ -17707,12 +17707,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-navy/front.webp",
+        "back": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-navy/front.webp",
+        "sleeve_left": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-navy/front.webp",
+        "sleeve_right": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "ash-black": {
       "views": {
@@ -19568,57 +19568,57 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-white/front.webp",
+        "back": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-white/front.webp",
+        "sleeve_left": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-white/front.webp",
+        "sleeve_right": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-black/front.webp",
+        "back": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-black/front.webp",
+        "sleeve_left": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-black/front.webp",
+        "sleeve_right": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-black/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-navy/front.webp",
+        "back": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-navy/front.webp",
+        "sleeve_left": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-navy/front.webp",
+        "sleeve_right": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-navy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sport-grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-sport-grey-heather/front.webp",
+        "back": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-sport-grey-heather/front.webp",
+        "sleeve_left": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-sport-grey-heather/front.webp",
+        "sleeve_right": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-sport-grey-heather/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-royal-blue/front.webp",
+        "back": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-royal-blue/front.webp",
+        "sleeve_left": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-royal-blue/front.webp",
+        "sleeve_right": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-royal-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-red/front.webp",
+        "back": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-red/front.webp",
+        "sleeve_left": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-red/front.webp",
+        "sleeve_right": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "millennial-pink": {
       "views": {
@@ -19640,12 +19640,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bottle-green/front.webp",
+        "back": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bottle-green/front.webp",
+        "sleeve_left": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bottle-green/front.webp",
+        "sleeve_right": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bottle-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bear-brown": {
       "views": {

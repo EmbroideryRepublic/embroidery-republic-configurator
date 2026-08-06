@@ -1,0 +1,185 @@
+[
+  {
+    "productId": "russell-mens-pure-organic-heavy-tee",
+    "quelle": "freewear.de",
+    "colors": [
+      {
+        "id": "black",
+        "front": "https://freewear.de/media/image/variation/283550/lg/mens-pure-organic-heavy-tee-russell-pure-organic-r-118m-0-z118m_farbe_black.jpg",
+        "erwarteterHex": "#000000"
+      },
+      {
+        "id": "white",
+        "front": "https://freewear.de/media/image/variation/283542/lg/mens-pure-organic-heavy-tee-russell-pure-organic-r-118m-0-z118m_farbe_white.jpg",
+        "erwarteterHex": "#FFFFFF"
+      },
+      {
+        "id": "french-navy",
+        "front": "https://freewear.de/media/image/variation/283552/lg/mens-pure-organic-heavy-tee-russell-pure-organic-r-118m-0-z118m_farbe_french-navy.jpg",
+        "erwarteterHex": "#021E42"
+      },
+      {
+        "id": "555b66",
+        "front": "https://freewear.de/media/image/variation/283551/lg/mens-pure-organic-heavy-tee-russell-pure-organic-r-118m-0-z118m_farbe_convoy-grey-solid.jpg",
+        "erwarteterHex": "#555B66"
+      }
+    ]
+  },
+  {
+    "productId": "russell-mens-pure-organic-v-neck-tee",
+    "quelle": "media2.designpartner.fr (Bild-CDN hinter lamaisonduteeshirt.com). Muster: https://media2.d",
+    "colors": [
+      {
+        "id": "black",
+        "front": "https://media2.designpartner.fr/c/p/15531/15531-17414-1.jpg",
+        "erwarteterHex": "#000000",
+        "back": "https://media2.designpartner.fr/c/p/15531/15531-17414-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/15531/15531-17414-4.jpg"
+      },
+      {
+        "id": "white",
+        "front": "https://media2.designpartner.fr/c/p/15531/15531-17413-1.jpg",
+        "erwarteterHex": "#FFFFFF",
+        "back": "https://media2.designpartner.fr/c/p/15531/15531-17413-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/15531/15531-17413-4.jpg"
+      },
+      {
+        "id": "french-navy",
+        "front": "https://media2.designpartner.fr/c/p/15531/15531-17415-1.jpg",
+        "erwarteterHex": "#021E42",
+        "back": "https://media2.designpartner.fr/c/p/15531/15531-17415-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/15531/15531-17415-4.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "stedman-clive-crew-neck",
+    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/)",
+    "colors": [
+      {
+        "id": "white",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_WHI.jpg",
+        "erwarteterHex": "#FFFFFF"
+      },
+      {
+        "id": "051733",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_NAV.jpg",
+        "erwarteterHex": "#051733"
+      },
+      {
+        "id": "slate-grey-solid",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_SLG.jpg",
+        "erwarteterHex": "#747679"
+      },
+      {
+        "id": "blue-midnight",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_BLO.jpg",
+        "erwarteterHex": "#180A29"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-earth-positive-super-heavy-hoodie",
+    "quelle": "Offizieller EarthPositive / Continental Clothing Shopify-Store (earthpositiveonline.com, c",
+    "colors": [
+      {
+        "id": "black",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/01KH1NQXAXYNSJ8T2GDB49RQEC.webp",
+        "erwarteterHex": "#111021"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+    "quelle": "shirtplus.net (EP301 Shopify CDN)",
+    "colors": [
+      {
+        "id": "black",
+        "front": "https://shirtplus.net/cdn/shop/files/EP301-BL_FRONT_EP1.jpg",
+        "erwarteterHex": "#191516"
+      },
+      {
+        "id": "navy",
+        "front": "https://shirtplus.net/cdn/shop/files/EP301-FRNA_FRONT_EP1.jpg",
+        "erwarteterHex": "#211F2C"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "quelle": "bc-collection.eu",
+    "colors": [
+      {
+        "id": "black",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5082/TW06T_P_BC_002_01-.jpg?w=1100&h=1100&fit=crop&fm=webp&s=336914c99e03e76faf01470b01934dc2",
+        "erwarteterHex": "#000000"
+      },
+      {
+        "id": "white",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5079/TW06T_P_BC_001_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=3609529e44d5559c35c9697c8176c009",
+        "erwarteterHex": "#FFFFFF"
+      },
+      {
+        "id": "navy",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5085/TW06T_P_BC_003_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=3c79d8bcb94a83896ff1ee34af56ee1a",
+        "erwarteterHex": "#1F2532"
+      },
+      {
+        "id": "red",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5088/TW06T_P_BC_004_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=7d92ba551965751290759ba1dfe3806d",
+        "erwarteterHex": "#DB001B"
+      },
+      {
+        "id": "royal-blue",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5091/TW06T_P_BC_450_01_0.jpg?w=1100&h=1100&fit=crop&fm=webp&s=8c225842d742ff1a39f8c887855652a6",
+        "erwarteterHex": "#154E8F"
+      },
+      {
+        "id": "sport-grey-heather",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5094/TW06T_P_BC_620_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=9c77729b28a918a816e5dc1672260d3e",
+        "erwarteterHex": "#9C9E9F"
+      },
+      {
+        "id": "bottle-green",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5100/TW06T_P_BC_540_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=e01c1e7f12feb969d49fec053c09167d",
+        "erwarteterHex": "#004413"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-microfleece-duo-id501-women",
+    "quelle": "falk-ross.eu",
+    "colors": [
+      {
+        "id": "black",
+        "front": "https://www.falk-ross.eu/out/pictures/master/product/1/804_42_101_f-2015_01.jpg_l.jpg",
+        "erwarteterHex": "#000000"
+      },
+      {
+        "id": "white",
+        "front": "https://www.falk-ross.eu/out/pictures/master/product/1/804_42_000_f-2015_01.jpg_l.jpg",
+        "erwarteterHex": "#FFFFFF"
+      },
+      {
+        "id": "navy",
+        "front": "https://www.falk-ross.eu/out/pictures/master/product/1/804_42_200_f-2015_01.jpg_l.jpg",
+        "erwarteterHex": "#1F2532"
+      },
+      {
+        "id": "red",
+        "front": "https://www.falk-ross.eu/out/pictures/master/product/1/804_42_400_f-2015_01.jpg_l.jpg",
+        "erwarteterHex": "#DB001B"
+      },
+      {
+        "id": "royal-blue",
+        "front": "https://www.falk-ross.eu/out/pictures/master/product/1/804_42_300_f-2015_01.jpg_l.jpg",
+        "erwarteterHex": "#154E8F"
+      },
+      {
+        "id": "forest-green",
+        "front": "https://www.falk-ross.eu/out/pictures/master/product/1/804_42_541_f-2015_01.jpg_l.jpg",
+        "erwarteterHex": "#002500"
+      }
+    ]
+  }
+]

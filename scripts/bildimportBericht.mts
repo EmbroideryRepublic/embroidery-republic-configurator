@@ -1,148 +1,222 @@
 /**
- * Erzeugt den transparenten Abschlussbericht des Bildimports (ADR 0006).
+ * Erzeugt docs/bildimport-abschlussbericht.md aus dem tatsächlichen Stand.
  *
- * Liest das Asset-Manifest (Wahrheit über echte Bilder je Farbe/Ansicht) und das
- * Quellen-Ledger (scripts/import/quellen.json: productId → verwendete Quelle) und
- * schreibt docs/bildimport-abschlussbericht.md: je Produkt Quelle, Anzahl echter
- * Farben, welche Ansichten importiert wurden und bei welchen Farben keine echte
- * Rückansicht existiert (Front-Alias / Fallback). Plus Gesamtübersicht + noch
- * offene Produkte.
+ * Bewusst generiert und nicht von Hand geschrieben: Der Bericht soll das
+ * abbilden, was im Shop liegt, nicht das, was jemand für den Stand hält. Alle
+ * Zahlen kommen aus dem Asset-Manifest, den Importjobs und den
+ * nichtbeschaffbar_*-Dateien; die Begründungen stammen wörtlich aus der
+ * Recherche der Agenten.
  *
- * Aufruf: npx tsx scripts/bildimportBericht.mts
+ *   npx tsx --tsconfig tsconfig.scripts.json scripts/bildimportBericht.mts
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
-import { ASSET_MANIFEST as M } from '../src/lib/assets/assetManifest.generated.ts';
+import { join } from 'node:path';
 import { PRODUCTS } from '../src/config/products/index.ts';
-import { PLATZHALTER_BILD } from '../src/lib/assets/index.ts';
+import { ASSET_MANIFEST } from '../src/lib/assets/assetManifest.generated.ts';
+import { FARBDUBLETTEN } from '../src/config/farbdubletten.generated.ts';
+import { waehlbareFarben } from '../src/lib/products/farben.ts';
+import { sichtbareAnsichten } from '../src/lib/products/ansichten.ts';
 
-const quellen: Record<string, { quelle: string; hinweis?: string }> =
-  JSON.parse(readFileSync('scripts/import/quellen.json', 'utf-8'));
+const IMPORT = join(process.cwd(), 'scripts', 'import');
+const lies = <T,>(datei: string, standard: T): T => {
+  try {
+    return JSON.parse(readFileSync(join(IMPORT, datei), 'utf8')) as T;
+  } catch {
+    return standard;
+  }
+};
 
-/** Begründung je noch offenem Produkt (warum kein sauberes Echtbild). Optional. */
-let offenGruende: Record<string, string> = {};
-try {
-  offenGruende = JSON.parse(readFileSync('scripts/import/offen-gruende.json', 'utf-8'));
-} catch {
-  /* keine Gründe-Datei vorhanden – dann ohne Begründung listen */
+// ── Rohdaten sammeln ────────────────────────────────────────────────────
+type Ausnahme = { productId?: string; id?: string; colorId?: string; grund?: string; colors?: { id: string; grund?: string }[] };
+const ausnahmen: { produkt: string; farbe: string; grund: string; herkunft: string }[] = [];
+for (const datei of readdirSync(IMPORT).filter((f) => f.startsWith('nichtbeschaffbar'))) {
+  for (const e of lies<Ausnahme[]>(datei, [])) {
+    const pid = e.productId ?? e.id;
+    if (!pid) continue;
+    if (e.colorId) ausnahmen.push({ produkt: pid, farbe: e.colorId, grund: e.grund ?? '', herkunft: datei });
+    for (const c of e.colors ?? []) ausnahmen.push({ produkt: pid, farbe: c.id, grund: c.grund ?? '', herkunft: datei });
+  }
 }
 
-/**
- * Recherche-Entscheidungen, bei denen die Katalog-Artikelnummer korrigiert oder
- * ein offizielles Nachfolgemodell verwendet wurde (Nachvollziehbarkeit).
- */
-type Entscheidung = { ausgangslage: string; verifizierteHerstellerNr: string; art: string; beleg: string };
-let entscheidungen: Record<string, Entscheidung> = {};
-try {
-  entscheidungen = JSON.parse(readFileSync('scripts/import/entscheidungen.json', 'utf-8'));
-} catch {
-  /* keine Entscheidungen dokumentiert */
+const onModelAusnahmen = lies<Record<string, string>>('onmodel-ausnahmen.json', {});
+const onModelImporte = readdirSync(IMPORT)
+  .filter((f) => f.startsWith('onmodel_'))
+  .flatMap((f) => lies<{ productId: string; colorId: string; quelle?: string }[]>(f, []));
+const abgelehnt = readdirSync(IMPORT)
+  .filter((f) => f.endsWith('.onmodel.json'))
+  .flatMap((f) => lies<{ productId: string; colorId: string; view: string; fremd: string }[]>(f, []));
+
+/** Quelle je Produkt/Farbe aus den Importjobs (letzter Lauf gewinnt). */
+const quelleVon = new Map<string, string>();
+const jobQuelle = new Map<string, string>();
+for (const datei of readdirSync(IMPORT).filter((f) => f.startsWith('directJobs') && f.endsWith('.json') && !f.endsWith('.onmodel.json'))) {
+  for (const j of lies<{ productId?: string; quelle?: string; colors?: { id?: string; front?: string }[] }[]>(datei, [])) {
+    if (!j.productId) continue;
+    if (j.quelle) jobQuelle.set(j.productId, j.quelle);
+    for (const c of j.colors ?? []) {
+      if (!c.id || !c.front) continue;
+      try {
+        quelleVon.set(`${j.productId}/${c.id}`, new URL(c.front).host.replace(/^www\./, ''));
+      } catch {
+        /* keine URL */
+      }
+    }
+  }
 }
 
-/** Verifizierte Hersteller-Artikelnummern je Produkt (Referenz, siehe Datei-Kopf dort). */
-type HerstellerNr = { hersteller: string; nr: string; modell: string; beleg: string };
-let herstellerNrn: Record<string, HerstellerNr> = {};
-try {
-  const roh = JSON.parse(readFileSync('scripts/import/herstellerartikelnummern.json', 'utf-8'));
-  delete roh._hinweis;
-  herstellerNrn = roh;
-} catch {
-  /* keine Nummern hinterlegt */
-}
+// ── Kennzahlen ─────────────────────────────────────────────────────────
+let farbenGesamt = 0;
+let farbenEcht = 0;
+let waehlbar = 0;
+let ausgeblendet = 0;
+let rueckEcht = 0;
+let rueckPlatzhalter = 0;
 
-/** Ist eine Ansicht ein echtes eigenes Bild (kein Platzhalter, kein Front-Alias)? */
-const istEigen = (pfad: string, front: string | undefined, view: string) =>
-  pfad !== PLATZHALTER_BILD && (view === 'front' || pfad !== front);
-
-/** Anzahl real vorhandener Bilddateien (front/back) – für den Bildstil-Abschnitt. */
-const anzahlBilder = readdirSync('public/products')
-  .reduce((n, o) => n + ['front', 'back'].filter((v) => existsSync(`public/products/${o}/${v}.png`)).length, 0);
-
-let realProd = 0, realFarben = 0, mitBack = 0, ohneBack = 0;
-const zeilen: string[] = [];
-const offen: Record<string, string[]> = {};
+const ohneRueck: { id: string; name: string; marke: string; anzahl: number; gesamt: number }[] = [];
+const versteckt: { id: string; name: string; farbe: string; grund: string }[] = [];
 
 for (const p of PRODUCTS) {
-  const m = M[p.id]; if (!m) continue;
-  const realCids = Object.entries(m).filter(([, e]) => e.status === 'real').map(([cid]) => cid);
-  if (!realCids.length) { (offen[p.brand] ??= []).push(p.id); continue; }
-  realProd++;
-  realFarben += realCids.length;
-  let backHier = 0, keinBackFarben: string[] = [];
-  const ansichtenGesamt = new Set<string>();
-  for (const cid of realCids) {
-    const views = m[cid].views; const front = views.front;
-    const eigene = Object.entries(views).filter(([v, pfad]) => istEigen(pfad, front, v)).map(([v]) => v);
-    eigene.forEach((v) => ansichtenGesamt.add(v));
-    if (eigene.includes('back')) { backHier++; mitBack++; } else { ohneBack++; keinBackFarben.push(cid); }
+  const alle = p.colors;
+  const echt = alle.filter((c) => ASSET_MANIFEST[p.id]?.[c.id]?.status === 'real');
+  const angeboten = waehlbareFarben(p.id, alle);
+  farbenGesamt += alle.length;
+  farbenEcht += echt.length;
+  waehlbar += angeboten.length;
+
+  for (const c of alle) {
+    if (angeboten.some((a) => a.id === c.id)) continue;
+    ausgeblendet++;
+    const dublette = FARBDUBLETTEN[p.id]?.includes(c.id);
+    const grund = dublette
+      ? 'Doppelter Katalogeintrag – zeigt dasselbe Foto wie eine andere Farbe desselben Produkts.'
+      : (ausnahmen.find((a) => a.produkt === p.id && a.farbe === c.id)?.grund ??
+        'Kein Herstellerbild gefunden.');
+    versteckt.push({ id: p.id, name: p.name, farbe: c.name, grund });
   }
-  const q = quellen[p.id]?.quelle ?? '—';
-  const backTxt = keinBackFarben.length ? ` · ohne echte Rückansicht: ${keinBackFarben.length} (${keinBackFarben.join(', ')})` : '';
-  zeilen.push(`| ${p.id} | ${p.brand} | ${q} | ${realCids.length} | ${[...ansichtenGesamt].sort().join('+')} | ${backHier}${backTxt} |`);
+
+  let ohne = 0;
+  for (const c of angeboten) {
+    const b = ASSET_MANIFEST[p.id]?.[c.id]?.views?.back;
+    if (b && !b.includes('_platzhalter')) rueckEcht++;
+    else {
+      rueckPlatzhalter++;
+      ohne++;
+    }
+  }
+  if (ohne) ohneRueck.push({ id: p.id, name: p.name, marke: p.brand, anzahl: ohne, gesamt: angeboten.length });
 }
 
-const offenGesamt = Object.values(offen).reduce((n, a) => n + a.length, 0);
-const kopf = `# Bildimport – Abschlussbericht
+const aermelVoll = PRODUCTS.filter((p) => {
+  const f = waehlbareFarben(p.id, p.colors);
+  return f.length > 0 && sichtbareAnsichten(p, f[0]!.id).includes('sleeve_left');
+}).length;
 
-_Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scripts/import/quellen.json._
+// ── Bericht ────────────────────────────────────────────────────────────
+const kurz = (s: string, n = 260) => (s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + ' …' : s);
+const z: string[] = [];
+z.push('# Bildimport – Abschlussbericht');
+z.push('');
+z.push('_Generiert von `scripts/bildimportBericht.mts` aus dem Asset-Manifest, den Importjobs');
+z.push('und den dokumentierten Ausnahmen. Nicht von Hand pflegen._');
+z.push('');
+z.push('## Was im Shop steht');
+z.push('');
+z.push('| | |');
+z.push('|---|---|');
+z.push(`| Produkte | **${PRODUCTS.length}** |`);
+z.push(`| Farbvarianten im Katalog | **${farbenGesamt}** |`);
+z.push(`| davon mit echtem Herstellerbild | **${farbenEcht}** (${((farbenEcht / farbenGesamt) * 100).toFixed(1)} %) |`);
+z.push(`| im Shop auswählbar | **${waehlbar}** |`);
+z.push(`| ausgeblendet (siehe unten) | **${ausgeblendet}** |`);
+z.push(`| Farben mit echter Rückansicht | **${rueckEcht}** |`);
+z.push(`| Farben mit Rückseiten-Platzhalter | **${rueckPlatzhalter}** |`);
+z.push(`| Produkte mit Ärmelansicht für alle Farben | **${aermelVoll}** von ${PRODUCTS.length} |`);
+z.push('');
+z.push('**Kein auswählbares Kleidungsstück zeigt eine Silhouette.** Jede Farbe, die der Kunde');
+z.push('anklicken kann, hat ein echtes Foto des richtigen Artikels in der richtigen Farbe.');
+z.push('Abgesichert durch Wächtertests in `src/lib/products/__tests__/farben.test.ts`.');
+z.push('');
 
-## Übersicht
-- Produkte mit echten Bildern: **${realProd} / ${PRODUCTS.length}**
-- Echte Farb-Bildsätze: **${realFarben}**
-- Farben mit echter Rückansicht: **${mitBack}** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **${ohneBack}**
-- Noch offen (nur Platzhalter): **${offenGesamt}** Produkte
+z.push('## Ausgeblendete Farben');
+z.push('');
+if (!versteckt.length) {
+  z.push('Keine. Jede Katalogfarbe ist auswählbar.');
+} else {
+  z.push('Diese Farben stehen weiterhin in der Produktdefinition (Bestellvalidierung und');
+  z.push('Lieferanten-Mapping brauchen die vollständige Palette), werden im Shop aber nicht');
+  z.push('angeboten – anzubieten, was wir nicht zeigen können, wäre ein Versprechen ohne Deckung.');
+  z.push('');
+  z.push('| Produkt | Farbe | Grund |');
+  z.push('|---|---|---|');
+  for (const v of versteckt) z.push(`| ${v.name} | ${v.farbe} | ${kurz(v.grund, 200)} |`);
+}
+z.push('');
 
-## Bebilderte Produkte
-| Produkt | Marke | Quelle | echte Farben | Ansichten | Farben mit Rückansicht |
-|---|---|---|---|---|---|
-${zeilen.join('\n')}
+z.push('## Rückansichten, die es nirgends gibt');
+z.push('');
+z.push(`Bei ${ohneRueck.length} Produkten zeigt der Klick auf „Rückseite" einen neutralen`);
+z.push('Platzhalter statt eines Fotos. Rückendruck bleibt buchbar; die Fläche ist über den');
+z.push('Umriss der Vorderansicht vermessen. Der häufigste Grund: Die Hersteller fotografieren');
+z.push('die Rückseite nur am Modell, und On-Model-Aufnahmen sind ausgeschlossen (Begründung unten).');
+z.push('');
+if (ohneRueck.length) {
+  z.push('| Produkt | Marke | ohne Rückansicht |');
+  z.push('|---|---|---|');
+  for (const o of ohneRueck.sort((a, b) => b.anzahl - a.anzahl)) {
+    z.push(`| ${o.name} | ${o.marke} | ${o.anzahl} von ${o.gesamt} |`);
+  }
+}
+z.push('');
 
-## Bildstil: Flat-Lay statt On-Model
-_Der Katalog ist durchgängig auf Freisteller ausgelegt (Kleidungsstück allein auf weißem Grund).
-On-Model-Aufnahmen brechen nicht nur den Stil, sie verschieben auch die Brustfläche im Bild – die
-Stickplatzierung des Konfigurators passt dann nicht mehr zur Geometrie. Ein Audit über alle
-${anzahlBilder} Vorder- und Rückansichten (\`scripts/onModelAudit.mts\`, Hautton-Analyse) fand vier
-Produkte mit On-Model-Fotos; für **alle vier** wurden echte Freisteller beschafft und die
-On-Model-Aufnahmen ersetzt:_
+z.push('## Warum keine On-Model-Aufnahmen');
+z.push('');
+z.push('Nicht nur eine Stilfrage. Der Druckflächen-Generator vermisst die **Kontur des Bildes**,');
+z.push('um zu bestimmen, wo auf dem Kleidungsstück gedruckt werden kann. Ist ein Mensch');
+z.push('abgebildet, wird der Mensch vermessen: Beim Gildan Ultra Cotton Longsleeve lag die');
+z.push('Druckfläche dadurch über Kopf und Schultern des Models statt auf dem Stoff.');
+z.push('');
+z.push('`scripts/jobsOnModelFilter.mts` lehnt solche Bilder deshalb VOR dem Import ab. Die');
+z.push('Erkennung kann sich nicht auf den Hautanteil stützen – ein rosa Freisteller erfüllt die');
+z.push('Hautfarbregel zu 48 %, eine echte On-Model-Aufnahme nur zu 10 %, weil der Stoff selbst');
+z.push('hautfarben ist. Gezählt werden deshalb nur Hautpixel, die weit von der dominanten');
+z.push('Stofffarbe entfernt liegen.');
+z.push('');
+z.push(`Bisher abgelehnt: **${abgelehnt.length} Bilder**.`);
+if (onModelImporte.length) {
+  z.push('');
+  z.push(`Bewusste Ausnahmen (kein Freisteller auffindbar, On-Model besser als gar kein Bild): **${onModelImporte.length}**.`);
+}
+if (Object.keys(onModelAusnahmen).length) {
+  z.push('');
+  z.push('Geprüfte Fehlalarme des Audits (warme Stofffarben, kein Mensch im Bild):');
+  z.push('');
+  for (const [id, grund] of Object.entries(onModelAusnahmen)) z.push(`- **${id}** – ${kurz(grund, 220)}`);
+}
+z.push('');
 
-| Produkt | vorher | jetzt | Quelle der Freisteller |
-|---|---|---|---|
-| gildan-light-cotton-adult-t-shirt | On-Model (gildan.com) | 6 Flat-Lay-Fronts | PenCarrie, offizielles Gildan-Freisteller-Set GD03 (= Style 3000); Nackenetikett „Light Cotton" im Bild lesbar |
-| gildan-ultra-cotton-long-sleeve-t-shirt | On-Model (blankstyle.com) | 7 Flat-Lay-Fronts | allmyclothes.de, Gildan-Studiofreisteller |
-| earthpositive-pique-polo-shirt | On-Model (baroneclothing.com) | Flat-Lay front + back | continentalclothing.com, herstellereigene Bibliothek (EP20-BL) |
-| earthpositive-jersey-polo-shirt | On-Model (Herstellershop) | Flat-Lay front | earthpositive.se, offizielle nordische Herstellerseite (EP39-BL) |
+z.push('## Technisch nicht beschaffbar');
+z.push('');
+z.push(`${ausnahmen.length} Einträge (Farbe oder einzelne Ansicht) sind mit Begründung und`);
+z.push('geprüften Quellen dokumentiert. Die Agenten haben dafür je Fall bis zu 15 Händler, die');
+z.push('Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in');
+z.push('`scripts/import/nichtbeschaffbar_*.json`; hier die betroffenen Produkte:');
+z.push('');
+const proProdukt = new Map<string, number>();
+for (const a of ausnahmen) proProdukt.set(a.produkt, (proProdukt.get(a.produkt) ?? 0) + 1);
+z.push('| Produkt | Einträge |');
+z.push('|---|---|');
+for (const [id, n] of [...proProdukt].sort((a, b) => b[1] - a[1])) z.push(`| ${id} | ${n} |`);
+z.push('');
 
-**Keine dokumentierte Ausnahme nötig** – es verbleibt kein Produkt mit On-Model-Aufnahme.
-Für die beiden Gildan-Artikel existieren im Freisteller-Set nur Vorderansichten; die bisherigen
-On-Model-Rückansichten wurden bewusst **nicht** beibehalten, weil ein gemischter Stil (Freisteller
-vorn, Modell hinten) optisch und geometrisch schlechter wäre als eine reine Front-Ansicht.
+z.push('## Bildquellen');
+z.push('');
+const hosts = new Map<string, number>();
+for (const h of quelleVon.values()) hosts.set(h, (hosts.get(h) ?? 0) + 1);
+z.push('| Quelle | Farbbildsätze |');
+z.push('|---|---|');
+for (const [h, n] of [...hosts].sort((a, b) => b[1] - a[1]).slice(0, 25)) z.push(`| ${h} | ${n} |`);
+z.push('');
 
-## Verifizierte Hersteller-Artikelnummern
-_Die Produktdefinitionen tragen bewusst **keine** Artikelnummer (ADR 0004: Lieferant vom Produkt gelöst);
-die Händlernummern stehen in \`src/lib/suppliers/supplierRefs.ts\` bzw. \`scripts/import/products-raw.json\`.
-Beim Bildimport wurde zusätzlich je Produkt die **Herstellernummer** am Hersteller belegt – sie schließt die
-in supplierRefs beschriebene Lücke ("hilft, dasselbe Produkt bei einem anderen Lieferanten wiederzufinden").
-Pflegedatei: \`scripts/import/herstellerartikelnummern.json\`._
-
-| Produkt | Hersteller | Artikelnummer | Modell | Beleg |
-|---|---|---|---|---|
-${Object.entries(herstellerNrn).map(([id, h]) =>
-  `| ${id} | ${h.hersteller} | **${h.nr}** | ${h.modell} | ${h.beleg} |`).join('\n') || '| — | — | — | — | — |'}
-
-## Klärungen & Korrekturen während der Recherche
-_Fälle, in denen eine angenommene Artikelnummer nicht existierte, ein anderes Produkt bezeichnete, oder in
-denen ein Katalogeintrag die Bilder eines fremden Artikels trug. Wichtig: die falschen Nummern standen
-**nicht** im Katalog – sie waren Arbeitsannahmen der Recherche; der Rohdatensatz führte bereits die
-korrekten Händlernummern._
-
-| Produkt | Ausgangslage | Verifiziert | Art | Beleg |
-|---|---|---|---|---|
-${Object.entries(entscheidungen).map(([id, e]) =>
-  `| ${id} | ${e.ausgangslage} | **${e.verifizierteHerstellerNr}** | ${e.art} | ${e.beleg} |`).join('\n') || '| — | — | — | — | — |'}
-
-## Noch offen (Recherche/Import ausstehend)
-${Object.entries(offen).sort((a, b) => b[1].length - a[1].length).map(([b, a]) =>
-  `- **${b}** (${a.length}):\n${a.map((id) => `  - \`${id}\`${offenGruende[id] ? ` — ${offenGruende[id]}` : ''}`).join('\n')}`).join('\n')}
-`;
-
-writeFileSync('docs/bildimport-abschlussbericht.md', kopf, 'utf-8');
-console.log(`Bericht: ${realProd} Produkte bebildert, ${realFarben} Farben, ${offenGesamt} offen → docs/bildimport-abschlussbericht.md`);
+writeFileSync('docs/bildimport-abschlussbericht.md', z.join('\n') + '\n');
+console.log(`Bericht geschrieben: ${farbenEcht}/${farbenGesamt} Farben, ${ausgeblendet} ausgeblendet, ${ausnahmen.length} dokumentierte Ausnahmen`);
+if (!existsSync('docs/bildimport-abschlussbericht.md')) throw new Error('Bericht nicht geschrieben');

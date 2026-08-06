@@ -18,6 +18,7 @@ import { MENGEN_DIMENSIONEN, type FilterKriterien, type MengenDimension } from '
 export const DIMENSION_LABELS: Record<MengenDimension, string> = {
   kategorie: 'Kategorie', marke: 'Marke', qualitaet: 'Qualität', material: 'Material',
   passform: 'Passform', groesse: 'Größe', farbe: 'Farbe', geschlecht: 'Geschlecht',
+  veredelung: 'Veredelung',
 };
 
 /** Ausgeschriebene Mehrzahl – deutsche Plurale folgen keiner Anhängeregel
@@ -25,6 +26,7 @@ export const DIMENSION_LABELS: Record<MengenDimension, string> = {
 export const DIMENSION_PLURAL: Record<MengenDimension, string> = {
   kategorie: 'Kategorien', marke: 'Marken', qualitaet: 'Qualitäten', material: 'Materialien',
   passform: 'Passformen', groesse: 'Größen', farbe: 'Farben', geschlecht: 'Geschlechter',
+  veredelung: 'Veredelungen',
 };
 
 export function beschrifteWert(
@@ -38,6 +40,7 @@ export function beschrifteWert(
     case 'material': return MATERIAL_LABELS[wert as keyof typeof MATERIAL_LABELS] ?? wert;
     case 'passform': return PASSFORM_LABELS[wert as keyof typeof PASSFORM_LABELS] ?? wert;
     case 'geschlecht': return GESCHLECHT_LABELS[wert as keyof typeof GESCHLECHT_LABELS] ?? wert;
+    case 'veredelung': return wert === 'embroidery' ? 'Stickerei' : wert === 'dtf' ? 'DTF-Transfer' : wert;
     case 'farbe': return FARBGRUPPE_LABELS[wert as keyof typeof FARBGRUPPE_LABELS] ?? wert;
     default: return bezeichnungen[wert] ?? wert;
   }

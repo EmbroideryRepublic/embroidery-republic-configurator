@@ -39,6 +39,7 @@ const { PRODUCTS } = await import('../src/config/products/index.ts');
 // Produktdefinition trägt keine Pfade mehr. bildFuerAnsicht(productId,colorId,view)
 // ist die einzige Auflösungsstelle; Platzhalter werden beim Vermessen übersprungen.
 const { bildFuerAnsicht, PLATZHALTER_BILD } = await import('../src/lib/assets/index.ts');
+const { waehlbareFarben } = await import('../src/lib/products/farben.ts');
 // Geometrie-Rezept je Ansicht kommt aus dem View-Registry (nicht aus hartkodierten
 // View-IDs): der Generator KONSUMIERT DECORATION_POSITIONS.geometrieRezept (M4-B1).
 const { DECORATION_POSITIONS, sortierePositionen } = await import('../src/config/decorationPositions.ts');
@@ -490,7 +491,7 @@ for (const p of PRODUCTS) {
   if (!p.views?.some((v) => v === 'sleeve_left' || v === 'sleeve_right')) continue;
   const mass = p.sizeGuide?.measurements?.find((x) => x.size === 'M') ?? p.sizeGuide?.measurements?.[0];
   if (!mass) continue;
-  const c0 = p.colors[0]?.id;
+  const c0 = waehlbareFarben(p.id, p.colors)[0]?.id;
   const breite = await maxBreiteCm(c0 ? bildFuerAnsicht(p.id, c0, 'front') : undefined, mass.hoeheCm);
   const tiefe = await maxBreiteCm(c0 ? bildFuerAnsicht(p.id, c0, 'sleeve_left') : undefined, mass.hoeheCm);
   if (breite && tiefe) verhaeltnisse.set(p.id, tiefe / breite);
@@ -607,8 +608,14 @@ for (const p of PRODUCTS) {
     // Statt das Datenmodell auf Flächen je Farbe aufzublähen, wird hier die
     // SCHNITTMENGE gebildet: die Fläche liegt auf Stoff, der in JEDER
     // Variante vorhanden ist. Eine Fläche je Produkt bleibt damit korrekt.
+    // Nur die WÄHLBAREN Farben vermessen. Eine ausgeblendete Farbe steht zwar
+    // noch in der Palette, wird dem Kunden aber nie gezeigt – ihre Aufnahme in
+    // die Schnittmenge verengt und verschiebt die Fläche für alle anderen.
+    // Gemessen beim Gildan Light Cotton: dort ist genau eine Farbe ausgeblendet
+    // (nur On-Model beschaffbar), und deren Menschen-Silhouette zog die Fläche
+    // schmal und aus der Mitte – im Kontaktbogen deutlich sichtbar.
     const alleProfile: { w: number; h: number; zeilen: Awaited<ReturnType<typeof zeilenProfil>>['zeilen'] }[] = [];
-    for (const c of p.colors) {
+    for (const c of waehlbareFarben(p.id, p.colors)) {
       const pf = urlZuDateipfad(bildFuerAnsicht(p.id, c.id, view));
       if (!pf) continue;
       const prof = await zeilenProfil(pf);
@@ -895,6 +902,42 @@ for (const p of PRODUCTS) {
       x1px = neuX1;
       y0px = neuY0;
       y1px = neuY1;
+    }
+
+    // ── Breite an den Zeilen prüfen, die die Fläche WIRKLICH einnimmt ────
+    //
+    // Die seitliche Begrenzung oben stammt aus dem TORSOSTREIFEN (unteres
+    // Drittel). Die Fläche reicht aber bis dicht unter den Kragen, und dort
+    // läuft der Schnitt zur Schulter hin ein – bei taillierten Damenschnitten
+    // und Kapuzenware deutlich. Gemessen ragte die Fläche dadurch bei zehn
+    // Produkt-/Farbkombinationen über die Stoffkante, beim Stedman Classic-T
+    // in Weiß um 14,8 % der Bildbreite.
+    //
+    // Deshalb hier die Gegenprobe über den tatsächlichen Zeilenbereich der
+    // Box, wieder als Schnittmenge über alle wählbaren Farben: Was in EINER
+    // Variante über die Kante ragt, wird für alle eingezogen. Das ist genau
+    // die Zusage „nie über die Seitennaht hinaus" – jetzt auf der gesamten
+    // Höhe der Fläche statt nur im Torso.
+    if (!istAermel) {
+      const naht = ABSTAND.seitennaht * pxProCm;
+      let engL = 0;
+      let engR = w;
+      for (const prof of profile) {
+        const skalaY = prof.h / h;
+        const skalaX = prof.w / w;
+        const vy0 = Math.max(0, Math.round(y0px * skalaY));
+        const vy1 = Math.min(prof.h - 1, Math.round(y1px * skalaY));
+        for (let y = vy0; y <= vy1; y++) {
+          const z = prof.zeilen[y];
+          if (!z || z.breite === 0) continue;
+          engL = Math.max(engL, z.links / skalaX);
+          engR = Math.min(engR, z.rechts / skalaX);
+        }
+      }
+      if (engR > engL) {
+        x0px = Math.max(x0px, engL + naht);
+        x1px = Math.min(x1px, engR - naht);
+      }
     }
 
     // ── Bewegungsbereich je Produkt anwenden ────────────────────────────

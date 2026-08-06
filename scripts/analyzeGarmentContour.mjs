@@ -9,7 +9,23 @@
  */
 import sharp from 'sharp';
 
-const HINTERGRUND_TOLERANZ = 18; // wie weit ein Pixel vom Hintergrund abweichen muss
+/**
+ * Wie weit ein Pixel je Kanal vom Hintergrund abweichen muss, um als Stoff zu
+ * gelten (verglichen wird die Summe über RGB, also 3 × dieser Wert).
+ *
+ * War 18 (Summe 54) und damit zu großzügig: Der Ingest legt alle Aufnahmen auf
+ * reines Weiß, cremefarbener Stoff misst dort 248,246,233 – Summenabstand 38
+ * und damit innerhalb der Toleranz. Beim Gildan Light Cotton in Off White lief
+ * die Flutfüllung deshalb durch die halbe Vorderseite; die Kontur meldete die
+ * linke Kante bei 46,2 % statt 26 %. Weil die Druckfläche die SCHNITTMENGE aller
+ * Farben ist, schrumpfte sie dadurch für das ganze Produkt auf 15,9 cm und saß
+ * sichtbar außermittig.
+ *
+ * 6 (Summe 18) trennt sauber: Cremestoff (38) bleibt Stoff, JPEG-Rauschen im
+ * Hintergrund (≤ 3) bleibt Hintergrund. Die Kantenschwelle unten fängt zusätzlich
+ * die Fälle ab, in denen der Stoff dem Hintergrund noch näher kommt.
+ */
+const HINTERGRUND_TOLERANZ = 6;
 
 /** Ab welchem Helligkeitssprung eine Kante angenommen wird (0–255).
  *  Empirisch gegen eine bekannte Kontrollgröße bestimmt: Bei

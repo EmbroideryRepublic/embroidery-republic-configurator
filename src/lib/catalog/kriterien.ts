@@ -17,6 +17,7 @@ import {
   FARBGRUPPE_LABELS, GESCHLECHT_LABELS, MATERIAL_LABELS, PASSFORM_LABELS,
   type Farbgruppe, type Geschlecht, type MaterialGruppe, type Passform,
 } from '@/config/products/facetten';
+import type { PrintMethod } from '@/types';
 
 export type Sortierung = 'beliebtheit' | 'preis-auf' | 'preis-ab' | 'neu' | 'name-az' | 'name-za';
 
@@ -41,6 +42,8 @@ export interface FilterKriterien {
   groesse: string[];
   farbe: Farbgruppe[];
   geschlecht: Geschlecht[];
+  /** Veredelungsverfahren, die das Produkt zulässt (Stickerei / DTF-Transfer). */
+  veredelung: PrintMethod[];
   gewichtVon?: number;
   gewichtBis?: number;
   preisVon?: number;
@@ -57,7 +60,7 @@ export type Ansicht = 'raster' | 'liste';
 
 export const LEERE_KRITERIEN: FilterKriterien = {
   kategorie: [], marke: [], qualitaet: [], material: [], passform: [],
-  groesse: [], farbe: [], geschlecht: [],
+  groesse: [], farbe: [], geschlecht: [], veredelung: [],
   // Bewusst ausgeschrieben statt weggelassen: So hat ein gelesenes Kriterium
   // dieselbe Form wie dieses hier – sonst unterscheiden sich zwei inhaltlich
   // gleiche Objekte allein durch fehlende Schlüssel.
@@ -69,7 +72,7 @@ export const LEERE_KRITERIEN: FilterKriterien = {
 /** Die Mengen-Dimensionen – für Chips, Zurücksetzen und Facettenzählung. */
 export const MENGEN_DIMENSIONEN = [
   'kategorie', 'marke', 'qualitaet', 'material', 'passform',
-  'groesse', 'farbe', 'geschlecht',
+  'groesse', 'farbe', 'geschlecht', 'veredelung',
 ] as const;
 export type MengenDimension = (typeof MENGEN_DIMENSIONEN)[number];
 
@@ -111,6 +114,7 @@ const MATERIALIEN = Object.keys(MATERIAL_LABELS) as MaterialGruppe[];
 const PASSFORMEN = Object.keys(PASSFORM_LABELS) as Passform[];
 const GESCHLECHTER = Object.keys(GESCHLECHT_LABELS) as Geschlecht[];
 const FARBEN = Object.keys(FARBGRUPPE_LABELS) as Farbgruppe[];
+const VEREDELUNGEN = ['dtf', 'embroidery'] as const;
 // Sortierung ist ein reines Query-Konzept (keine Produktfacette) und bleibt lokal.
 const SORTIERUNGEN = ['beliebtheit', 'preis-auf', 'preis-ab', 'neu', 'name-az', 'name-za'] as const;
 
@@ -130,6 +134,7 @@ export function leseKriterien(p: SuchParameter): FilterKriterien {
     groesse: liste(p.groesse),
     farbe: nurBekannte(liste(p.farbe), FARBEN),
     geschlecht: nurBekannte(liste(p.geschlecht), GESCHLECHTER),
+    veredelung: nurBekannte(liste(p.veredelung), VEREDELUNGEN),
     gewichtVon: zahl(p.gewichtVon),
     gewichtBis: zahl(p.gewichtBis),
     preisVon: zahl(p.preisVon),
@@ -161,6 +166,7 @@ export function schreibeKriterien(k: FilterKriterien): string {
   setze('groesse', k.groesse);
   setze('farbe', k.farbe);
   setze('geschlecht', k.geschlecht);
+  setze('veredelung', k.veredelung);
   if (k.gewichtVon !== undefined) p.set('gewichtVon', String(k.gewichtVon));
   if (k.gewichtBis !== undefined) p.set('gewichtBis', String(k.gewichtBis));
   if (k.preisVon !== undefined) p.set('preisVon', String(k.preisVon));

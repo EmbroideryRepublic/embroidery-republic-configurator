@@ -17,7 +17,20 @@ import { DIMENSION_LABELS, WerteListe, anzahlAktiv } from './filterBausteine';
 import { Spannenregler } from './Spannenregler';
 import { useFilterNavigation } from './filterNavigation';
 
-const MENUES: MengenDimension[] = ['marke', 'qualitaet', 'material', 'farbe', 'groesse', 'passform'];
+/**
+ * Reihenfolge der Filtermenüs – vom Häufigsten zum Speziellsten.
+ *
+ * `geschlecht` und `veredelung` fehlten hier, obwohl die Filterlogik sie längst
+ * kennt: Sie waren nur über die Adresszeile erreichbar. `kategorie` bleibt
+ * bewusst draußen, die gehört in die Reiter-Navigation darüber.
+ *
+ * Menüs ohne Unterscheidungskraft blendet die Leiste selbst aus (siehe unten) –
+ * ein Filter, bei dem jede Option alles durchlässt, hilft niemandem.
+ */
+const MENUES: MengenDimension[] = [
+  'marke', 'geschlecht', 'farbe', 'groesse',
+  'material', 'passform', 'qualitaet', 'veredelung',
+];
 
 type Offen = MengenDimension | 'preis' | null;
 
@@ -66,6 +79,15 @@ export function FilterMenues({
 
       {MENUES.map((dim) => {
         const anzahl = (kriterien[dim] as string[]).length;
+        // Ein Menü, dessen Werte ALLE Produkte treffen, filtert nichts – es
+        // täuscht nur eine Unterscheidung vor. Heute betrifft das die
+        // Veredelung: Jedes Produkt im Sortiment lässt Stickerei UND DTF zu.
+        // Sobald ein Artikel ein Verfahren ausschließt (`supportedMethods`),
+        // erscheint das Menü von selbst.
+        const werte = facetten[dim] ?? [];
+        const gesamt = Math.max(...werte.map((w) => w.anzahl), 0);
+        const unterscheidet = werte.length > 1 && werte.some((w) => w.anzahl < gesamt);
+        if (!unterscheidet && anzahl === 0) return null;
         return (
           <div key={dim} className="relative hidden lg:block">
             <Ausloeser

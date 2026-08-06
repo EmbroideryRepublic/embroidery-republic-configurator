@@ -287,7 +287,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                   onClick={() => toggleGruppe(g.gruppe)}
                   aria-expanded={auf}
                   className={clsx(
-                    'flex w-full items-center gap-2 rounded-lg px-2 py-2.5 text-left transition-colors',
+                    'group flex w-full items-center gap-2 rounded-lg px-2 py-2.5 text-left transition-colors',
                     auf ? 'text-brand' : 'hover:bg-cream/70'
                   )}
                 >
@@ -295,11 +295,18 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                     {g.label}
                   </span>
                   <span className="text-[15px] tabular-nums text-brand/45">{g.anzahl}</span>
-                  {/* Einheitliche Pfeillogik: zugeklappt nach RECHTS,
-                      aufgeklappt nach UNTEN (rotate-90) – identisch zu den
-                      Produktart-Zeilen eine Ebene tiefer. */}
+                  {/* Der Pfeil sagt, was ein Klick BEWIRKT – nicht nur, was ist:
+                      nach RECHTS = zugeklappt, öffnet sich beim Klick nach rechts;
+                      nach UNTEN = offen, die Unterkategorien stehen darunter;
+                      nach OBEN = der Klick würde wieder zuklappen (nur solange
+                      der Zeiger auf der Zeile liegt). Ohne den dritten Zustand
+                      muss man raten, ob ein Klick auf eine offene Kategorie sie
+                      schließt oder etwas anderes tut. */}
                   <ChevronRight
-                    className={clsx('h-5 w-5 flex-shrink-0 text-brand/35 transition-transform duration-300', auf && 'rotate-90')}
+                    className={clsx(
+                      'h-5 w-5 flex-shrink-0 text-brand/35 transition-transform duration-300',
+                      auf && 'rotate-90 group-hover:-rotate-90 group-focus-visible:-rotate-90'
+                    )}
                     aria-hidden
                   />
                 </button>
@@ -319,8 +326,9 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                               <button
                                 type="button"
                                 onClick={() => waehleArt(g.gruppe, a.art)}
+                                aria-expanded={an}
                                 className={clsx(
-                                  'flex w-full items-center gap-2.5 rounded-lg py-2 pl-2 pr-2 text-left transition-colors',
+                                  'group flex w-full items-center gap-2.5 rounded-lg py-2 pl-2 pr-2 text-left transition-colors',
                                   an ? 'bg-gold-light/60 text-brand' : 'text-brand/75 hover:bg-cream/70'
                                 )}
                               >
@@ -332,8 +340,10 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                                 <span className="text-[15px] tabular-nums text-brand/45">{a.anzahl}</span>
                                 <ChevronRight
                                   className={clsx(
-                                    'h-4 w-4 flex-shrink-0 transition-transform',
-                                    an ? 'rotate-90 text-gold-dark' : 'text-brand/25'
+                                    'h-4 w-4 flex-shrink-0 transition-transform duration-300',
+                                    an
+                                      ? 'rotate-90 text-gold-dark group-hover:-rotate-90 group-focus-visible:-rotate-90'
+                                      : 'text-brand/25'
                                   )}
                                   aria-hidden
                                 />

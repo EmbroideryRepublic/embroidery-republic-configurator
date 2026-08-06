@@ -22,6 +22,9 @@ import {
   MENGEN_DIMENSIONEN, slug, type FilterKriterien, type MengenDimension, type Sortierung,
 } from './kriterien';
 
+/** Verfahren, die ein Produkt ohne eigene Einschränkung zulässt. */
+const ALLE_VEREDELUNGEN: readonly string[] = ['dtf', 'embroidery'];
+
 /** Die filterbaren Werte eines Produkts – einmal berechnet, mehrfach genutzt. */
 export interface Merkmale {
   kategorie: string;
@@ -32,6 +35,10 @@ export interface Merkmale {
   groesse: string[];
   farbe: string[];
   geschlecht: string[];
+  /** Zugelassene Veredelungsverfahren. Ohne eigene Angabe kann das Produkt
+   *  ALLE bekannten Verfahren – das ist auch die Vorgabe im Produktmodell
+   *  (`supportedMethods`), nicht eine Annahme dieser Datei. */
+  veredelung: string[];
   /** g/m² – kann fehlen, wenn die Lieferantenquelle keine Grammatur nennt. */
   gewicht: number | undefined;
   preis: number;
@@ -50,6 +57,7 @@ export function merkmaleVon(p: ProductConfig): Merkmale {
     groesse: p.sizes,
     farbe: farbgruppenVon(p),
     geschlecht: geschlechterVon(p),
+    veredelung: [...(p.supportedMethods ?? ALLE_VEREDELUNGEN)],
     gewicht: p.weightGsm,
     preis: p.basePrice,
     lieferbar: ermittleVerfuegbarkeit(p) === 'lieferbar',
@@ -80,6 +88,7 @@ export function passt(m: Merkmale, k: FilterKriterien, ausser?: MengenDimension)
   if (!pruefe('groesse', m.groesse)) return false;
   if (!pruefe('farbe', m.farbe)) return false;
   if (!pruefe('geschlecht', m.geschlecht)) return false;
+  if (!pruefe('veredelung', m.veredelung)) return false;
 
   // Produkte ohne veröffentlichte Grammatur (m.gewicht === undefined) werden
   // vom Gewichtsfilter nicht ausgeschlossen – ohne Wert lässt sich die Grenze
@@ -202,6 +211,7 @@ function werteVon(m: Merkmale, dim: MengenDimension): string[] {
     case 'groesse': return m.groesse;
     case 'farbe': return m.farbe;
     case 'geschlecht': return m.geschlecht;
+    case 'veredelung': return m.veredelung;
   }
 }
 

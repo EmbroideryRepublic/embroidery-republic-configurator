@@ -24,7 +24,10 @@ import { useFilterNavigation } from './filterNavigation';
 /** So viele Einträge je Liste, bevor „Mehr anzeigen" erscheint. */
 const ANFANGS = 5;
 
-const LISTEN: MengenDimension[] = ['marke', 'farbe', 'groesse'];
+/** Dimensionen der Dauer-Seitenleiste. `geschlecht` und `veredelung` waren
+ *  bisher nur über die Adresszeile erreichbar; `kategorie` bleibt in den
+ *  Reitern. Nicht unterscheidende Abschnitte blendet Werteabschnitt selbst aus. */
+const LISTEN: MengenDimension[] = ['marke', 'geschlecht', 'farbe', 'groesse', 'material', 'veredelung'];
 
 export function FilterSeitenleiste({
   kriterien, facetten, spannen, bezeichnungen,
@@ -95,6 +98,13 @@ function Werteabschnitt({
 }) {
   const [alle, setAlle] = useState(false);
   const sichtbar = alle ? werte : werte.slice(0, ANFANGS);
+
+  // Ein Abschnitt, dessen Werte ausnahmslos ALLE Produkte treffen, filtert
+  // nichts – er täuscht nur eine Unterscheidung vor und kostet Platz. Er
+  // erscheint automatisch, sobald die Daten ihn sinnvoll machen.
+  const gesamt = Math.max(...werte.map((w) => w.anzahl), 0);
+  const unterscheidet = werte.length > 1 && werte.some((w) => w.anzahl < gesamt);
+  if (!unterscheidet && gewaehlt.length === 0) return null;
 
   return (
     <Abschnitt titel={DIMENSION_LABELS[dim]}>

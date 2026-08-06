@@ -1,0 +1,17 @@
+[
+  {
+    "productId": "earthpositive-unisex-organic-pullover-hood-ep",
+    "colorId": "sage-green",
+    "grund": "EP60P wurde nie in Sage Green gefertigt. Geprueft: (1) continentalclothing.com Asset-Server – Brute-Force ALLER 676 Zweibuchstaben-Codes in high_res/front UND low_res/front, Treffer nur BL/CT/NA; zusaetzlich alle 114 offiziellen Marken-Farbcodes aus der Continental-PIM-API durchprobiert, darunter exakt SAG=Sage Green und SSAG=Stone Washed Sage Green -> 404. (2) Neuer offizieller CDN cdn.earthpositiveonline.com/packshots/EP60P/ – alle 676 Codes -> kein einziges EP60P-Asset. (3) Offizielle PIM-API pim.earthpositiveonline.com/api/styles/ccc (87 Styles) – EP60P nicht mehr enthalten (ausgelaufen). (4) Wayback-Snapshots der offiziellen Produktseite continentalclothing.com/style/view/EP60P von 2015, 2017, 2019, 2021 und 2023: Farbpalette durchgaengig nur Claret Red (CT), Navy (NA), Melange Grey (MGY), Black (BL) – Sage Green kommt in keinem Jahrgang vor. (5) Haendler ohne Sage-Green-Variante: fifthcolumn.co.uk (nur 6 Lifestyle-Modelfotos in Navy/Melange Grey), tanteguerilla.com (nur black/melange-grey/navy), pivotalprints.co.uk (Garment-Farben black/navy/melange grey), protextile.com, cantana.com, delonatelo.com, lynka.eu, myneedsaresimple.co.uk, espmerchandise.com, newforesttextiles.co.uk, twofifteen.co.uk, continentalclothing.ie, pardel-store.eu, blackwaterstudios.co.uk (404/403 bzw. keine Farb-Packshots). Der Code SAG existiert in der Markenpalette, aber nur fuer andere Styles (z. B. EP01)."
+  },
+  {
+    "productId": "earthpositive-unisex-organic-pullover-hood-ep",
+    "colorId": "bright-blue",
+    "grund": "EP60P wurde nie in Bright Blue gefertigt. Identisch geprueft wie sage-green: Asset-Server-Brute-Force ueber alle 676 Zweibuchstaben-Codes (high_res + low_res) sowie alle 114 offiziellen Marken-Farbcodes inkl. exakt BB=Bright Blue -> 404; neuer CDN cdn.earthpositiveonline.com/packshots/EP60P/ liefert gar kein EP60P; PIM-API fuehrt EP60P nicht mehr; Wayback-Snapshots der offiziellen Produktseite 2015/2017/2019/2021/2023 nennen ausschliesslich Claret Red, Navy, Melange Grey, Black. Haendlerpruefung (fifthcolumn, tanteguerilla, pivotalprints, protextile, cantana, delonatelo, lynka, myneedsaresimple, espmerchandise, newforesttextiles, twofifteen, continentalclothing.ie, pardel-store, blackwaterstudios) ergab ebenfalls kein Bright Blue. BB existiert in der Markenpalette nur fuer andere Styles (z. B. EP01)."
+  },
+  {
+    "productId": "earthpositive-unisex-organic-pullover-hood-ep",
+    "colorId": "white",
+    "grund": "EP60P wurde nie in Weiss gefertigt. Identisch geprueft: Asset-Server-Brute-Force ueber alle 676 Zweibuchstaben-Codes (high_res + low_res) plus alle 114 offiziellen Marken-Farbcodes inkl. WH=White, WM=Off White, WWH=Warm White, FWH=Faded White, SWH=Stone Washed White -> durchgaengig 404; neuer CDN cdn.earthpositiveonline.com/packshots/EP60P/ hat kein EP60P; PIM-API fuehrt EP60P nicht mehr; Wayback-Snapshots 2015/2017/2019/2021/2023 der offiziellen Produktseite listen nur Claret Red, Navy, Melange Grey, Black. Wichtig: Bei pivotalprints.co.uk taucht 'White' zwar im HTML auf, gehoert aber zur DRUCKFARBEN-Palette des Konfigurators ({\"color\":\"#e5e1e6\",\"title\":\"White\"}), nicht zu den Textilfarben – daher bewusst NICHT uebernommen. WH existiert in der Markenpalette nur fuer andere Styles (z. B. EP01)."
+  }
+]

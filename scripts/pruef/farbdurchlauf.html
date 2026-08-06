@@ -1,0 +1,96 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Farbdurchlauf</title>
+<style>
+  body { font: 13px/1.5 system-ui; margin: 0; display: grid; grid-template-columns: 1fr 420px; height: 100vh }
+  iframe { width: 100%; height: 100%; border: 0; border-right: 1px solid #ddd }
+  #log { overflow: auto; padding: 12px; background: #fafafa }
+  .bad { color: #b00; font-weight: 600 }
+</style>
+<iframe id="rahmen"></iframe>
+<div id="log">bereit</div>
+<script>
+/**
+ * Sichtprüfung im ECHTEN Shop: öffnet jede Produktseite in einem iframe,
+ * klickt JEDE Farbe und darin JEDE Ansicht an und liest, welches Bild danach
+ * tatsächlich im DOM steht.
+ *
+ * Warum nicht per Skript gegen das Manifest? Weil das Manifest korrekt sein
+ * kann, während die Seite trotzdem etwas anderes zeigt (Fallback, Cache,
+ * Zustandsfehler beim Farbwechsel). Geprüft wird deshalb das Ergebnis.
+ */
+const rahmen = document.getElementById('rahmen');
+const log = document.getElementById('log');
+
+/** Next.js verpackt Bild-URLs in /_next/image?url=… – sonst übersieht man Platzhalter. */
+const roh = (s) => {
+  try { const u = new URL(s, location.href); return decodeURIComponent(u.searchParams.get('url') || u.pathname); }
+  catch { return s || ''; }
+};
+const schlaf = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function laden(pfad) {
+  await new Promise((fertig) => { rahmen.onload = fertig; rahmen.src = pfad; });
+  for (let i = 0; i < 60; i++) {
+    if (rahmen.contentDocument?.querySelector('img[data-produktbild]')) break;
+    await schlaf(100);
+  }
+  await schlaf(120);
+}
+
+/** Das Produktbild – NICHT über img[alt], das greift das Seitenlogo.
+ *  Wartet, bis der data-Anker den erwarteten Zustand meldet; erst dann ist das
+ *  src, das wir lesen, wirklich das der angeklickten Farbe/Ansicht. */
+async function produktbild(d, erwartet) {
+  for (let i = 0; i < 40; i++) {
+    const el = d.querySelector('img[data-produktbild]');
+    if (el && (!erwartet || el.dataset.produktbild === erwartet)) return el;
+    await schlaf(25);
+  }
+  return d.querySelector('img[data-produktbild]');
+}
+
+async function produktPruefen(id) {
+  await laden('/produkt/' + id);
+  const d = rahmen.contentDocument;
+  const befunde = [];
+  const farben = [...d.querySelectorAll('button[data-farbe]')];
+  if (!farben.length) return [{ id, farbe: '-', ansicht: '-', problem: 'keine Farbwahl gefunden' }];
+
+  for (const knopf of farben) {
+    const farbe = knopf.dataset.farbe;
+    knopf.click();
+    const ansichten = [...d.querySelectorAll('button[data-ansicht]')].map((b) => b.dataset.ansicht);
+    const gesehen = new Map();
+    for (const view of ansichten.length ? ansichten : ['front']) {
+      d.querySelector(`button[data-ansicht="${view}"]`)?.click();
+      const bild = await produktbild(d, `${farbe}/${view}`);
+      const pfad = roh(bild?.getAttribute('src') || '');
+      const melde = (problem) => befunde.push({ id, farbe, ansicht: view, problem });
+      if (bild?.dataset.produktbild !== `${farbe}/${view}`) melde('Zustand nicht übernommen: ' + bild?.dataset.produktbild);
+      else if (!pfad) melde('kein Bild im DOM');
+      // Rückseiten-Platzhalter ist der DOKUMENTIERTE Fallback (Rückendruck bleibt
+      // buchbar, auch wo kein Händler ein Rückenfoto führt) – getrennt zählen.
+      else if (pfad.includes('_platzhalter')) melde(view === 'back' ? 'RUECK-PLATZHALTER' : 'Platzhalter: ' + pfad);
+      else if (gesehen.has(pfad)) melde('gleiches Bild wie "' + gesehen.get(pfad) + '"');
+      else gesehen.set(pfad, view);
+    }
+  }
+  return befunde;
+}
+
+window.starten = async (ids) => {
+  window.ERGEBNIS = null;
+  const befunde = [];
+  let n = 0;
+  for (const id of ids) {
+    try { befunde.push(...(await produktPruefen(id))); }
+    catch (e) { befunde.push({ id, farbe: '-', ansicht: '-', problem: 'Fehler: ' + e.message }); }
+    n++;
+    log.innerHTML = `${n}/${ids.length} geprüft · <span class="${befunde.length ? 'bad' : ''}">${befunde.length} Befunde</span><br>` +
+      befunde.slice(-25).map((b) => `${b.id} / ${b.farbe} / ${b.ansicht}: ${b.problem}`).join('<br>');
+  }
+  window.ERGEBNIS = { geprueft: ids.length, befunde };
+  return window.ERGEBNIS;
+};
+</script>

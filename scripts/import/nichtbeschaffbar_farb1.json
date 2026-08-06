@@ -1,0 +1,17 @@
+[
+  {
+    "productId": "sols-men-s-polo-shirt-perfect",
+    "colorId": "creamy-blue",
+    "grund": "Creamy Blue ist KEINE Farbe des Artikels 11346. Geprueft: sologroup-paris.com / sols-europe.com (offizielle Farbliste von 11346 enthaelt 25 Farben – Creamy blue ist nicht dabei; Code 251 existiert nur im globalen SOL'S-Farbvokabular), myworkwear.co.uk (15 Farben, kein Creamy Blue), utteam.com SO11346 (18 Farben, kein Creamy Blue), pencarrie (404), cottonclassics (404), nationwideworkwear, bksafetywear. WICHTIG: Unter der Scene7-URL n11346251A liegt zwar ein Bild (HTTP 200, 82 KB), aber die Zoomkontrolle des Nackenetiketts zeigt eindeutig 'SOL'S PERFORMER WOMEN' – also ein ANDERER Artikel (Performer Women, nicht Perfect Men 11346). Deshalb bewusst NICHT verwendet."
+  },
+  {
+    "productId": "sols-men-s-polo-shirt-perfect",
+    "colorId": "hibiscus",
+    "grund": "Hibiscus ist KEINE aktuelle Farbe des Artikels 11346. Geprueft: sologroup-paris.com/sols-europe.com (Hibiscus = globaler SOL'S-Code 168, steht NICHT in der 25er-Farbliste von 11346), myworkwear.co.uk, utteam.com SO11346, pencarrie, cottonclassics, nationwideworkwear, bksafetywear. Unter n11346168A existiert zwar ein echtes Perfect-Men-11346-Bild (Etikett 'PERFECT MEN 11346' lesbar), die Pixelmessung der Textilflaeche ergibt jedoch #BB4542 (Korall-/Ziegelrot, Blau- und Gruenkanal praktisch identisch = kein Pinkanteil). Der Zielwert #FF245E ist ein kraeftiges Pink-Rot. Zum Vergleich: 'Red' (Code 145) misst #A91024. Die Farbe passt damit nicht eindeutig zu Hibiscus/#FF245E – gemaess Vorgabe lieber Luecke als Fehlzuordnung."
+  },
+  {
+    "productId": "sols-men-s-polo-shirt-perfect",
+    "colorId": "01509d",
+    "grund": "Es gibt bei SOL'S keine Farbe dieses Namens – 'ID' und 'Name' sind hier nur der Hexwert selbst, d.h. ein Datenimport-Artefakt ohne Herstellerfarbnamen. Der String '01509D' kommt in KEINER der geprueften Quellen vor (sologroup-paris.com, sols-europe.com, myworkwear.co.uk, utteam.com SO11346). Der Hex #01509D liegt praktisch auf SOL'S 'Royal Blue' (Code 241), das im Shop aber bereits als eigene, funktionierende Farbe 'royal-blue' existiert. Eine Zuordnung waere entweder ein Duplikat oder eine Fehlzuordnung – daher bewusst offen gelassen. Empfehlung: diesen Farbeintrag im Shop-Datensatz pruefen/entfernen."
+  }
+]

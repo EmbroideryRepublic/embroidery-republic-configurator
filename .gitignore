@@ -55,3 +55,4 @@ data.sql
 scripts/import/sf_sitemap.xml
 
 scripts/import/quellen-discovery-full.txt
+public/_pruef/

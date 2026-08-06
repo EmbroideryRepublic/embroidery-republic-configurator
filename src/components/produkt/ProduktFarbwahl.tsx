@@ -45,6 +45,10 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
     <div>
       <div className="relative aspect-square overflow-hidden rounded-2xl border border-brand/[0.08] bg-white">
         <Image
+          // Prüfanker wie `data-preis` an der Kachel: Die Sichtprüfung muss das
+          // Produktbild eindeutig greifen können – über `img[alt]` erwischte sie
+          // das Seitenlogo. Diktiert die Gestaltung nicht.
+          data-produktbild={`${farbe.id}/${aktiveAnsicht}`}
           src={bildFuerAnsicht(produkt.id, farbe.id, aktiveAnsicht) ?? repraesentativBildVon(produkt.id, farbe.id)}
           alt={`${produkt.name} in ${farbe.name}, ${positionLabel(aktiveAnsicht)}`}
           fill
@@ -59,6 +63,7 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
           <button
             key={view}
             type="button"
+            data-ansicht={view}
             onClick={() => setAnsicht(view)}
             aria-pressed={aktiveAnsicht === view}
             className={`rounded-full border px-3 py-1 text-xs transition ${
@@ -82,6 +87,7 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
             <button
               key={c.id}
               type="button"
+              data-farbe={c.id}
               onClick={() => setFarbIndex(i)}
               title={c.name}
               aria-label={`Farbe ${c.name}`}

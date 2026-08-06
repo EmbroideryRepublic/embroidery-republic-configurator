@@ -1,2667 +1,319 @@
 [
   {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "dark-grey",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#4b4b50",
-    "erwartet": "#606263",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "ready-to-dye",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#e7e6e1",
-    "erwartet": "#F7F7F7",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "vintage-blue",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#696d8a",
-    "erwartet": "#4D586D",
-    "deltaE": 45,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "union-beige",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#d2b394",
-    "erwartet": "#A69173",
-    "deltaE": 65,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "sand",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#e5dccb",
-    "erwartet": "#D6CBB8",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "lilac",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#d0bed5",
-    "erwartet": "#BEB2D5",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "cobalt-blue",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#0275d3",
-    "erwartet": "#221BC3",
-    "deltaE": 97,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "ocean-blue",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#c0d7df",
-    "erwartet": "#9DC3D4",
-    "deltaE": 42,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "beryl-blue",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#b4e6e8",
-    "erwartet": "#88CFD2",
-    "deltaE": 54,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "light-mint",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#e3e9d9",
-    "erwartet": "#D1E2C7",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "bark",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#925f4b",
-    "erwartet": "#AD6D5B",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "forgotten-orange",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#f09935",
-    "erwartet": "#F1A255",
-    "deltaE": 33,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "olive",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#6b6147",
-    "erwartet": "#80905F",
-    "deltaE": 57,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "retro-green",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#035662",
-    "erwartet": "#015665",
-    "deltaE": 4,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "cloud",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#d8cfc9",
-    "erwartet": "#BCB3AA",
-    "deltaE": 50,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ultra-heavy-cotton-box-hoody",
-    "farbe": "soft-pink",
-    "quelle": "tbi.cdn.pacerace.de (offizielle Build-Your-Brand-/TB-International-CDN); Farbcode-Zuordnung ausgelesen aus dem",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#eacbd3",
-    "erwartet": "#E9ADCA",
-    "deltaE": 31,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
+    "produkt": "neutral-unisex-regular-t-shirt",
     "farbe": "dusty-indigo",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#6f839d",
+    "frontDom": "#5d7e9f",
     "erwartet": "#5E8AB4",
-    "deltaE": 29,
+    "deltaE": 24,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "orange",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#de4921",
-    "erwartet": "#FE5000",
-    "deltaE": 46,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "dusty-mint",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#add6be",
-    "erwartet": "#86C8BC",
-    "deltaE": 41,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "lime",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#8bbf5a",
-    "erwartet": "#63D05A",
-    "deltaE": 43,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "sports-grey",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ababab",
-    "erwartet": "#B8B8B9",
-    "deltaE": 23,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "teal",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3f7a75",
-    "erwartet": "#5F8289",
-    "deltaE": 39,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "light-blue",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c6dbe5",
-    "erwartet": "#ABCAE9",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "pink",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d42055",
-    "erwartet": "#D0006F",
-    "deltaE": 41,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "light-pink",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#efd7df",
-    "erwartet": "#EABEDB",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "b8b8b8",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ababab",
-    "erwartet": "#B8B8B8",
-    "deltaE": 23,
-    "dupeMit": "neutral-men-s-long-sleeve-t-shirt-sports-grey"
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "bordeaux",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#5d1d30",
-    "erwartet": "#6C1D45",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "military",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#4a522e",
-    "erwartet": "#3E4827",
-    "deltaE": 17,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "dark-heather",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#616161",
-    "erwartet": "#3A3A3A",
-    "deltaE": 68,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "white-navy-striped",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#7d7f8b",
-    "erwartet": "#1D1F2F",
-    "deltaE": 164,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "yellow",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f2d653",
-    "erwartet": "#FFE44F",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
+    "produkt": "neutral-unisex-regular-t-shirt",
     "farbe": "sapphire",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#0985bc",
+    "frontDom": "#286eab",
     "erwartet": "#00CDF2",
-    "deltaE": 90,
+    "deltaE": 125,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-men-s-long-sleeve-t-shirt",
-    "farbe": "green",
-    "quelle": "neutral.com (Hersteller-Shopify, Produkt \"o61050-mens-long-sleeve-t-shirt\") – Farb→Bild-Zuordnung aus /product",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "lime",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#126f2e",
-    "erwartet": "#009A44",
-    "deltaE": 52,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "urban-navy",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#393a4d",
-    "erwartet": "#101146",
-    "deltaE": 58,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "cobalt-blue",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3b4d97",
-    "erwartet": "#375885",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "fire-red",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e6391f",
-    "erwartet": "#E30411",
-    "deltaE": 55,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "urban-khaki",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#595a42",
-    "erwartet": "#454839",
-    "deltaE": 28,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "orange",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ec6407",
-    "erwartet": "#E75113",
-    "deltaE": 23,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "sorbet",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b20449",
-    "erwartet": "#CC005C",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "very-turquoise",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#47a3ca",
-    "erwartet": "#48BFE3",
-    "deltaE": 38,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "sky-blue",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#99bfe6",
-    "erwartet": "#7AB2DC",
-    "deltaE": 35,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "bottle-green",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#425e48",
-    "erwartet": "#004413",
-    "deltaE": 89,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "solar-yellow",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f7e844",
-    "erwartet": "#FFE93C",
-    "deltaE": 11,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "urban-orange",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#de6124",
-    "erwartet": "#CC4F00",
-    "deltaE": 44,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "orchid-pink",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f9d9df",
-    "erwartet": "#FBE0E4",
-    "deltaE": 9,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "orchid-green",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#90c040",
-    "erwartet": "#99C32E",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "radiant-purple",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#5f4b6e",
-    "erwartet": "#3B1D66",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "millennial-lilac",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#7f7097",
-    "erwartet": "#6B629A",
-    "deltaE": 25,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-men",
-    "farbe": "millennial-mint",
-    "quelle": "groener-schulze.com (3 Farben, bisherige Quelle) + rexlander.com (13 Farben, PrestaShop-Kombinationsdaten, ide",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b8d7d9",
-    "erwartet": "#91C0BA",
-    "deltaE": 55,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "urban-navy",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3c4053",
-    "erwartet": "#101146",
-    "deltaE": 66,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "cobalt-blue",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#4256a1",
-    "erwartet": "#375885",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "fire-red",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ea3c22",
-    "erwartet": "#E30411",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "urban-khaki",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#5e5d48",
-    "erwartet": "#454839",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "solar-yellow",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f3e443",
-    "erwartet": "#FFE93C",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "orange",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#fb6e18",
-    "erwartet": "#E75113",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "urban-orange",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e97030",
-    "erwartet": "#CC4F00",
-    "deltaE": 65,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "sorbet",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b7094d",
-    "erwartet": "#CC005C",
-    "deltaE": 27,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "orchid-pink",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f8d8de",
-    "erwartet": "#FBE0E4",
-    "deltaE": 10,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "very-turquoise",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#57b3d8",
-    "erwartet": "#48BFE3",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "sky-blue",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#a2c9f0",
-    "erwartet": "#7AB2DC",
-    "deltaE": 50,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "radiant-purple",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#523f5f",
-    "erwartet": "#3B1D66",
-    "deltaE": 42,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "orchid-green",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#8ec142",
-    "erwartet": "#99C32E",
-    "deltaE": 23,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "millennial-mint",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#bddcdf",
-    "erwartet": "#91C0BA",
-    "deltaE": 64,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "bottle-green",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#445d48",
-    "erwartet": "#004413",
-    "deltaE": 90,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-polo-women",
-    "farbe": "millennial-lilac",
-    "quelle": "groener-schulze.com (Farben, die dort gefuehrt werden) + promociel.fr (B&C Original-Freistellerfotos, Dateinam",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#8f83a7",
-    "erwartet": "#6B629A",
-    "deltaE": 51,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "dusty-indigo",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#7a93a7",
-    "erwartet": "#5E8AB4",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "orange",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d8481c",
-    "erwartet": "#FE5000",
+    "frontDom": "#73b03a",
+    "erwartet": "#63D05A",
     "deltaE": 48,
     "dupeMit": null
   },
   {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "dusty-mint",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#add5bd",
-    "erwartet": "#86C8BC",
-    "deltaE": 41,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "lime",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#88c355",
-    "erwartet": "#63D05A",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "teal",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#4a8178",
-    "erwartet": "#5F8289",
-    "deltaE": 27,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "light-blue",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c6dde5",
-    "erwartet": "#ABCAE9",
-    "deltaE": 33,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "pink",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#cd296b",
-    "erwartet": "#D0006F",
-    "deltaE": 41,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "light-pink",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#eed7df",
-    "erwartet": "#EABEDB",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "bordeaux",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#642233",
-    "erwartet": "#6C1D45",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
+    "produkt": "neutral-unisex-regular-t-shirt",
     "farbe": "military",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#393d26",
+    "frontDom": "#31351d",
     "erwartet": "#3E4827",
-    "deltaE": 12,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "sports-grey",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#9f9f9f",
-    "erwartet": "#B8B8B9",
-    "deltaE": 44,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "dark-heather",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#696969",
-    "erwartet": "#3A3A3A",
-    "deltaE": 81,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "white-navy-striped",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#73747d",
-    "erwartet": "#1D1F2F",
-    "deltaE": 144,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "yellow",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ecd049",
-    "erwartet": "#FFE44F",
-    "deltaE": 28,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "sapphire",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#1089bc",
-    "erwartet": "#00CDF2",
-    "deltaE": 88,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-ladies-long-sleeve-t-shirt",
-    "farbe": "green",
-    "quelle": "neutral.com (offizieller Hersteller-Shop, Shopify) – Produkt \"O81050 LADIES LONG SLEEVE T-SHIRT\", Variantenbil",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#13692a",
-    "erwartet": "#009A44",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "atoll",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#0487b5",
-    "erwartet": "#0092C3",
-    "deltaE": 18,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "dark-grey-solid",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#47464c",
-    "erwartet": "#29363F",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "fuchsia",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#de466e",
-    "erwartet": "#D40050",
-    "deltaE": 77,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "gold",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#fdc108",
-    "erwartet": "#FCC643",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "khaki",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#524c40",
-    "erwartet": "#4C4B30",
-    "deltaE": 17,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "light-grey",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#9e9b94",
-    "erwartet": "#A09D98",
-    "deltaE": 5,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "orange",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#ec5e04",
-    "erwartet": "#E75113",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "real-green",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#4e9849",
-    "erwartet": "#41A62A",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "red",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#c90724",
-    "erwartet": "#DB001B",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "royal-blue",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#104a8a",
-    "erwartet": "#154E8F",
-    "deltaE": 8,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "sport-grey-heather",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#a1a1a1",
-    "erwartet": "#9C9E9F",
-    "deltaE": 6,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "millennial-pink",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#e3c6b8",
-    "erwartet": "#D1ABA0",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "urban-orange",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#de6224",
-    "erwartet": "#CC4F00",
-    "deltaE": 45,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "urban-purple",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#5c4969",
-    "erwartet": "#2A094E",
-    "deltaE": 86,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-t-women",
-    "farbe": "millennial-khaki",
-    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043) – Bildzuordnung ueber ",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#676a63",
-    "erwartet": "#585B55",
     "deltaE": 25,
     "dupeMit": null
   },
   {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "mocha",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "sports-grey",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#776355",
-    "erwartet": "#716356",
-    "deltaE": 6,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "0062ae",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#2866a1",
-    "erwartet": "#0062AE",
-    "deltaE": 42,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "bright-red",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#db2a48",
-    "erwartet": "#ED1C24",
-    "deltaE": 43,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "burgundy",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#643344",
-    "erwartet": "#5A032C",
-    "deltaE": 55,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "convoy-grey-solid",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#6f6e76",
-    "erwartet": "#555B66",
-    "deltaE": 36,
-    "dupeMit": "russell-russell-classic-t-convoy-grey"
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "light-oxford-heather",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#b7bbc1",
-    "erwartet": "#9DA6AB",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "purple",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#54416c",
-    "erwartet": "#33346E",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "sky",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#95bad4",
-    "erwartet": "#8BB4DF",
+    "frontDom": "#afafaf",
+    "erwartet": "#B8B8B9",
     "deltaE": 16,
     "dupeMit": null
   },
   {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "yellow",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#ecd05d",
-    "erwartet": "#FFF450",
-    "deltaE": 43,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "natural",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#ebe2d5",
-    "erwartet": "#F7F4DD",
-    "deltaE": 23,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "olive",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#686753",
-    "erwartet": "#6B6B55",
-    "deltaE": 5,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "mineral-blue",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#b7c8db",
-    "erwartet": "#768BA2",
-    "deltaE": 106,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "indigo",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#405575",
-    "erwartet": "#3A5270",
-    "deltaE": 8,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "powder-rose",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#f1d8d9",
-    "erwartet": "#DFC2C3",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "tan",
-    "quelle": "Primär: groener-schulze.com (offizielle Russell/FOTL-Fotografie, Artikel \"Russell Athletic Classic T - R-180M-",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#cbaf8f",
-    "erwartet": "#AE997D",
-    "deltaE": 41,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "747679",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3a3e3d",
-    "erwartet": "#747679",
-    "deltaE": 100,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "black-opal",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#212121",
-    "erwartet": "#000000",
-    "deltaE": 57,
-    "dupeMit": "stedman-classic-t-v-neck-black"
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "blue-midnight",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#273040",
-    "erwartet": "#180A29",
-    "deltaE": 47,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "bottle-green",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#284742",
-    "erwartet": "#293E11",
-    "deltaE": 50,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "bright-royal",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#1b5a93",
-    "erwartet": "#2D428A",
-    "deltaE": 31,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "deep-berry",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3e344b",
-    "erwartet": "#4A3650",
-    "deltaE": 13,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "grey-heather",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#7b7c77",
-    "erwartet": "#A1A1A2",
-    "deltaE": 68,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "kiwi-green",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#699e42",
-    "erwartet": "#78BE20",
-    "deltaE": 49,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "navy-blue",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#323b54",
-    "erwartet": "#051733",
-    "deltaE": 66,
-    "dupeMit": "stedman-classic-t-v-neck-navy"
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "ocean-blue",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#126e8c",
-    "erwartet": "#007FA3",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "orange",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#cb7b30",
-    "erwartet": "#EC6400",
-    "deltaE": 63,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "scarlet-red",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b5303e",
-    "erwartet": "#E60029",
-    "deltaE": 72,
-    "dupeMit": "stedman-classic-t-v-neck-red"
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "yellow",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d0c85f",
-    "erwartet": "#FFEB4F",
-    "deltaE": 61,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "sunflower-yellow",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d0a012",
-    "erwartet": "#FFC600",
-    "deltaE": 63,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "1c9a2c",
-    "quelle": "stedman.eu – offizielle Herstellerseite/Mediathek, Produktseite https://www.stedman.eu/en/classic-t-v-neck (ST",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#24702e",
-    "erwartet": "#1C9A2C",
-    "deltaE": 43,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "yellow-fizz",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "dark-heather",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#fbdd5e",
-    "erwartet": "#FFE93C",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "pure-orange",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#ea6320",
-    "erwartet": "#EB5D0F",
-    "deltaE": 18,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "dark-cherry",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#571a34",
-    "erwartet": "#5C2333",
-    "deltaE": 10,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "soft-rose",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#e9c5b8",
-    "erwartet": "#F0D1C4",
-    "deltaE": 18,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "magenta-pink",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#e6276c",
-    "erwartet": "#DC1A62",
-    "deltaE": 19,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "radiant-purple",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#58487f",
-    "erwartet": "#3B1D66",
-    "deltaE": 58,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "pure-sky",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#cbd9dd",
-    "erwartet": "#DDE7E9",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "nordic-blue",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#5f7583",
-    "erwartet": "#5F7788",
-    "deltaE": 5,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "aqua-green",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#b5cdc0",
-    "erwartet": "#C1D3C7",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "khaki",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#575045",
-    "erwartet": "#4C4B30",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "grey-fog",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#c9c5b9",
-    "erwartet": "#D8D2C0",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "asphalt",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#414548",
-    "erwartet": "#433F42",
-    "deltaE": 9,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "black-pure",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#292727",
-    "erwartet": "#070509",
-    "deltaE": 57,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "heather-mid-grey",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#656a6d",
-    "erwartet": "#7F8080",
-    "deltaE": 39,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-king-hooded-sweat",
-    "farbe": "1f2532",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#1f2632",
-    "erwartet": "#1F2532",
-    "deltaE": 1,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "bottle-green",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#133b20",
-    "erwartet": "#215732",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "dusty-indigo",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#73879f",
-    "erwartet": "#5E8AB4",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "sapphire",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#028bc3",
-    "erwartet": "#00CDF2",
-    "deltaE": 81,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "yellow",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f0d254",
-    "erwartet": "#FFE44F",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "okay-orange",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f89e34",
-    "erwartet": "#FAAF3F",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "dusty-mint",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#a9d5b9",
-    "erwartet": "#86C8BC",
-    "deltaE": 37,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "lime",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#7fc252",
-    "erwartet": "#63D05A",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "green",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#0f7c32",
-    "erwartet": "#009A44",
-    "deltaE": 38,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "bordeaux",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#651a2e",
-    "erwartet": "#6C1D45",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "sand",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e8cfbb",
-    "erwartet": "#D2C7C4",
-    "deltaE": 25,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "dusty-yellow",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#fbe790",
-    "erwartet": "#F8E08E",
-    "deltaE": 8,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "dusty-purple",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e0d3e6",
-    "erwartet": "#C6B0BC",
-    "deltaE": 61,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "military",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#747654",
-    "erwartet": "#3E4827",
-    "deltaE": 84,
-    "dupeMit": null
-  },
-  {
-    "produkt": "neutral-unisex-performance-t-shirt",
-    "farbe": "pink",
-    "quelle": "Offizieller Hersteller-Shop neutral.com (Shopify) – Produkt \"R61001 RECYCLED PERFORMANCE T-SHIRT\", https://neu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e12862",
-    "erwartet": "#D0006F",
-    "deltaE": 45,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "anthracite",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3a3f42",
-    "erwartet": "#373939",
-    "deltaE": 11,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "atoll",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#459abd",
-    "erwartet": "#0092C3",
-    "deltaE": 70,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "009149",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#539760",
-    "erwartet": "#009149",
-    "deltaE": 86,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "real-green",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#7aa85d",
-    "erwartet": "#41A62A",
-    "deltaE": 77,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "wine",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#5a2e44",
-    "erwartet": "#6A2B40",
-    "deltaE": 17,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "brown",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3d3a2f",
-    "erwartet": "#461A11",
-    "deltaE": 45,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "chili-gold",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#dca543",
-    "erwartet": "#FFB300",
-    "deltaE": 77,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "fuchsia",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#be5e92",
-    "erwartet": "#D40050",
-    "deltaE": 117,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "heather-grey",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#a5a8ad",
-    "erwartet": "#B1B3B4",
-    "deltaE": 18,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "light-blue",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#81bbe0",
-    "erwartet": "#9DC7EB",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "orange",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e95c26",
-    "erwartet": "#E75113",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "pixel-coral",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c96258",
-    "erwartet": "#FF403D",
-    "deltaE": 69,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "purple",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#574785",
-    "erwartet": "#5B0E5B",
+    "frontDom": "#636363",
+    "erwartet": "#3A3A3A",
     "deltaE": 71,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-unisex-polo-id-001",
-    "farbe": "sand",
-    "quelle": "groener-schulze.com (5 Farben, Original-B&C-Fotografie, webp) + textile-direct.fr (9 Farben, identische B&C-St",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d2bf9f",
-    "erwartet": "#EBDFCA",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "dark-grey-solid",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "bordeaux",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#313131",
-    "erwartet": "#636267",
-    "deltaE": 88,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "army",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#4e4b38",
-    "erwartet": "#746142",
-    "deltaE": 45,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "chocolate",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#3b271e",
-    "erwartet": "#4B271C",
-    "deltaE": 16,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "aqua",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#029fce",
-    "erwartet": "#0095C3",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "ash-heather",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#e1e1e1",
-    "erwartet": "#C1C4C7",
-    "deltaE": 50,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "pure-grey",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#c3c2c8",
-    "erwartet": "#ADB2B6",
-    "deltaE": 33,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "apple-green",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#b2cb70",
-    "erwartet": "#CDEA80",
-    "deltaE": 44,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "burgundy",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#63242f",
-    "erwartet": "#700B23",
-    "deltaE": 31,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "dark-purple",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#5b318d",
-    "erwartet": "#55117B",
-    "deltaE": 37,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "gold",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#fac902",
-    "erwartet": "#FBC54B",
-    "deltaE": 73,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "kelly-green",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#0a8a40",
-    "erwartet": "#008845",
-    "deltaE": 11,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "orange",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#ef7106",
-    "erwartet": "#F08800",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "sand",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#ddbc8a",
-    "erwartet": "#BAA584",
-    "deltaE": 42,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-polo-shirt-prime",
-    "farbe": "sky-blue",
-    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shi",
-    "gefunden": [
-      "front",
-      "sleeve-left"
-    ],
-    "frontDom": "#a0c8e8",
-    "erwartet": "#96C2E8",
-    "deltaE": 12,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "mocha",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#6f5648",
-    "erwartet": "#716356",
-    "deltaE": 19,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "fuchsia",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#e33874",
-    "erwartet": "#EC0083",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "light-oxford-heather",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#b1b0b5",
-    "erwartet": "#9DA6AB",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "ffffff",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#eeeef3",
-    "erwartet": "#FFFFFF",
-    "deltaE": 27,
-    "dupeMit": "russell-authentic-hooded-sweat-white"
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "convoy-grey-solid",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#6b6a70",
-    "erwartet": "#555B66",
-    "deltaE": 28,
-    "dupeMit": "russell-authentic-hooded-sweat-convoy-grey"
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "burgundy",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#5c2a3b",
-    "erwartet": "#5A032C",
-    "deltaE": 42,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "olive",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#535547",
-    "erwartet": "#6B6B55",
-    "deltaE": 35,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "urban-grey",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#c8c7c4",
-    "erwartet": "#C5C5C5",
-    "deltaE": 4,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "mineral-blue",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#7f96ac",
-    "erwartet": "#768BA2",
+    "frontDom": "#692335",
+    "erwartet": "#6C1D45",
     "deltaE": 17,
     "dupeMit": null
   },
   {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "indigo",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "green",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#324664",
-    "erwartet": "#3A5270",
-    "deltaE": 19,
+    "frontDom": "#1a6f31",
+    "erwartet": "#009A44",
+    "deltaE": 54,
     "dupeMit": null
   },
   {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "sport-heather",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "yellow",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#a39ea0",
-    "erwartet": "#9D9C9F",
-    "deltaE": 6,
+    "frontDom": "#edd260",
+    "erwartet": "#FFE44F",
+    "deltaE": 31,
     "dupeMit": null
   },
   {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "natural",
-    "quelle": "groener-schulze.com (offizielle Russell Athletic / FOTL Produktfotografie, Produktseite: https://www.groener-s",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "sand",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#e1ddd0",
-    "erwartet": "#F7F4DD",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "dark-chocolate",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#2e1711",
-    "erwartet": "#423238",
-    "deltaE": 51,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "ash-grey-heather",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#9e9e9e",
-    "erwartet": "#C8C9C7",
-    "deltaE": 73,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "cardinal-red",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#64071a",
-    "erwartet": "#8D2838",
-    "deltaE": 61,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "carolina-blue",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#77a2d5",
-    "erwartet": "#79A0C6",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "dark-heather",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#494e51",
-    "erwartet": "#3F4444",
-    "deltaE": 19,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "gold",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#e7ad1f",
-    "erwartet": "#EEAD1A",
-    "deltaE": 9,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "irish-green",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#058847",
-    "erwartet": "#009E69",
-    "deltaE": 41,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "light-blue",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#9ebfe0",
-    "erwartet": "#A3B3CB",
-    "deltaE": 25,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "light-pink",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#f1cdcd",
-    "erwartet": "#E4BED2",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "maroon",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#490a1a",
-    "erwartet": "#5B2B42",
-    "deltaE": 55,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "orange",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#da490c",
-    "erwartet": "#DF6426",
+    "frontDom": "#c8b6a3",
+    "erwartet": "#D2C7C4",
     "deltaE": 38,
     "dupeMit": null
   },
   {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "safety-green-neon",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "teal",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#badb34",
-    "erwartet": "#C6D218",
+    "frontDom": "#366f64",
+    "erwartet": "#5F8289",
+    "deltaE": 58,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "dusty-mint",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#a4ceb0",
+    "erwartet": "#86C8BC",
+    "deltaE": 33,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "light-blue",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#bed4df",
+    "erwartet": "#ABCAE9",
+    "deltaE": 24,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "light-pink",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e5cdd6",
+    "erwartet": "#EABEDB",
+    "deltaE": 17,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "charcoal",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#444444",
+    "erwartet": "#53565A",
     "deltaE": 32,
     "dupeMit": null
   },
   {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "safety-orange-neon",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "nature",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#f57a22",
-    "erwartet": "#FF7800",
-    "deltaE": 35,
+    "frontDom": "#e9e7de",
+    "erwartet": "#FFFAD9",
+    "deltaE": 29,
     "dupeMit": null
   },
   {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "sport-grey-heather",
-    "quelle": "blankstyle.com – Produktseite https://www.blankstyle.com/2400-gildan-ultra-cotton-long-sleeve-t-shirt (Bild-UR",
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "brown",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#a0a0a0",
-    "erwartet": "#97999B",
-    "deltaE": 12,
+    "frontDom": "#3c292a",
+    "erwartet": "#382F2D",
+    "deltaE": 8,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "dusty-yellow",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#efde8f",
+    "erwartet": "#F8E08E",
+    "deltaE": 9,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "okay-orange",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#fca43d",
+    "erwartet": "#FAAF3F",
+    "deltaE": 11,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "orange",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#d13415",
+    "erwartet": "#FE5000",
+    "deltaE": 57,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "pink",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#cb2565",
+    "erwartet": "#D0006F",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "purple",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2f1e3c",
+    "erwartet": "#765BA7",
+    "deltaE": 142,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-unisex-regular-t-shirt",
+    "farbe": "dusty-purple",
+    "quelle": "sportyfied.com – Neutral O60002 Unisex Regular T-Shirt (155 g/m², XS–3XL/5XL). KORREKTUR: der Erstimport hatte irrtuemlich O60001 (185 g/m², S–3XL) verwendet – das ist unser 'Men`s Classic T-Shirt', ein anderer Artikel. Beleg: neutral.com/products/o60002-unisex-regular-t-shirt '155 gsm single jersey knit'.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#dbd1dc",
+    "erwartet": "#C6B0BC",
+    "deltaE": 51,
     "dupeMit": null
   }
 ]

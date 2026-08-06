@@ -3020,27 +3020,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "cobalt-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3061,9 +3055,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3091,198 +3083,154 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "apricot": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sunset-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fire-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sorbet": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "swimming-pool": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "atoll": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "diva-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pixel-lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3296,63 +3244,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "used-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -3361,36 +3295,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cobalt-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3439,198 +3365,154 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "apricot": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fire-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sunset-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sorbet": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "swimming-pool": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "atoll": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "diva-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pixel-lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3644,63 +3526,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "used-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -3730,27 +3598,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mocha": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "yellow-fizz": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pure-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3771,27 +3633,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "soft-rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "magenta-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3805,36 +3661,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "blue-fog": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sage": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "apple-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3848,18 +3696,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "asphalt": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "black-pure": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3882,27 +3726,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "101145": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cobalt-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -3948,198 +3786,154 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "apricot": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fire-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "deep-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "atoll": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "real-turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "diva-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "azure": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "denim": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pistachio": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4154,81 +3948,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "used-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bear-brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "electric-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4394,27 +4170,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cobalt-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4461,216 +4231,168 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "apricot": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fire-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "deep-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "atoll": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "real-turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "diva-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "azure": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "denim": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "electric-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pistachio": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4685,63 +4407,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "used-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bear-brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4779,27 +4487,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "off-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4813,9 +4515,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mastic": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4829,9 +4529,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orchid-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -4847,36 +4545,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4899,36 +4589,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4944,9 +4626,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "atoll": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4960,27 +4640,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -4994,9 +4668,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5010,18 +4682,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "real-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5056,36 +4724,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "millennial-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -5094,9 +4754,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "atoll": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5110,45 +4768,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5162,36 +4810,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "real-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "royal-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5205,45 +4845,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sport-grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -5252,54 +4882,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "aubergine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "wine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "acid-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aqua": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5314,9 +4932,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5331,63 +4947,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fern-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "graphite-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grenadine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5402,72 +5004,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "irish-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5482,45 +5068,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "petrol": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5535,9 +5111,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5552,36 +5126,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "tomato": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5596,9 +5162,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -5607,9 +5171,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "acid-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5624,9 +5186,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-melange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5641,27 +5201,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grenadine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-melange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5676,27 +5230,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5727,9 +5275,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5744,9 +5290,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -5755,45 +5299,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-denim-melange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "wine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "acid-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5808,27 +5342,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cobalt": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "coral": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5843,27 +5371,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "graphite-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5878,18 +5400,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "lime-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5904,18 +5422,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "petrol": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5938,18 +5452,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "steel-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -5964,45 +5474,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "vanilla": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "jade-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -6011,54 +5511,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "aubergine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "wine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "acid-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aqua": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6073,9 +5561,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6090,63 +5576,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fern-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "graphite-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grenadine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6161,72 +5633,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "irish-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6241,45 +5697,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "petrol": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6294,9 +5740,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6311,36 +5755,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "tomato": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6355,9 +5791,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -6382,18 +5816,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6408,9 +5838,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6425,9 +5853,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6468,18 +5894,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6494,9 +5916,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6803,18 +6223,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mocha": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "0062ae": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6835,9 +6251,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bright-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6851,9 +6265,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6867,9 +6279,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "convoy-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6883,27 +6293,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-oxford-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -6917,63 +6321,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mineral-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "powder-rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "tan": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -6990,18 +6380,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bright-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "classic-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -7024,36 +6410,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "tan": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "convoy-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "petrol-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sport-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -7155,108 +6533,84 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "metro-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "azalea": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blue-dusk": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cardinal-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "carolina-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cherry-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cornsilk": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "daisy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -7270,279 +6624,217 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-cardinal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heliconia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ice-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "indigo-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "iris": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "irish-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "jade-dome": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kiwi": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "maroon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pistachio": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "prairie-dust": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "tan": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "tangerine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "texas-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "vegas-gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -7570,18 +6862,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "safety-green-neon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "safety-orange-neon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -7611,9 +6899,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "graphite-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -7634,18 +6920,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -7666,18 +6948,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -7691,126 +6969,98 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cherry-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "daisy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "forest-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heliconia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "irish-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "maroon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "off-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "safety-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sage": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -7826,81 +7076,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "nature": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -7914,72 +7146,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "okay-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8007,9 +7223,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8023,36 +7237,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8161,81 +7367,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "nature": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8249,72 +7437,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "okay-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8342,9 +7514,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8358,36 +7528,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8410,45 +7572,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "okay-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8462,27 +7614,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8503,9 +7649,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8519,18 +7663,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8544,63 +7684,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8614,54 +7740,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "white-navy-striped": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -8670,9 +7784,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8703,18 +7815,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8737,81 +7845,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "okay-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8826,18 +7916,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "military": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -8853,45 +7939,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "okay-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8905,36 +7981,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -8948,54 +8016,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9009,18 +8065,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9041,18 +8093,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sports-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9066,45 +8114,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "white-navy-striped": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -9121,36 +8159,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9178,9 +8208,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9194,27 +8222,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9228,9 +8250,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9245,126 +8265,98 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "charcoal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "nature": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "okay-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -9373,162 +8365,126 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "slate-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "black-opal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blue-midnight": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bright-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "deep-berry": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "hunters-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kiwi-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "navy-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ocean-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "real-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "scarlet-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9542,135 +8498,105 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bright-lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brilliant-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sunflower-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "denim-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "marina-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sweet-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "f7a30a": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "5a6f5e": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -9679,144 +8605,112 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "slate-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "black-opal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bright-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "deep-berry": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "hunters-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kiwi-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "navy-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ocean-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "real-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "scarlet-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sweet-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -9830,153 +8724,119 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bright-lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brilliant-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sunflower-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blue-midnight": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "denim-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "marina-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "f7a30a": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "5a6f5e": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -9985,108 +8845,84 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "747679": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "black-opal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blue-midnight": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bright-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "deep-berry": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kiwi-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "navy-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ocean-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "scarlet-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10100,27 +8936,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sunflower-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "1c9a2c": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -10129,99 +8959,77 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "747679": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "black-opal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bright-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "deep-berry": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kiwi-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "navy-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ocean-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "scarlet-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sweet-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10235,54 +9043,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blue-midnight": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sunflower-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "1c9a2c": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -10291,99 +9087,77 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "slate-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "black-opal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blue-midnight": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bright-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "navy-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "real-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "scarlet-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10397,81 +9171,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sunflower-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "marina-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "89163e": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dac9af": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kiwi-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -10487,45 +9243,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black-opal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "king-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "marina-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10539,18 +9285,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "salmon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10564,18 +9306,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "scarlet-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "293e11": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10591,18 +9329,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "anthracite": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "atoll": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10623,54 +9357,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "chili-gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "009149": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10684,36 +9406,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pixel-coral": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "real-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10734,9 +9448,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10750,9 +9462,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "wine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -10761,18 +9471,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-forest": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "camo-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10800,9 +9506,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10830,36 +9534,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "off-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mastic": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "roasted-coffee": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -10873,144 +9569,112 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy-pure": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "meta-turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "apple-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "meta-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pixel-lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "meta-lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "meta-fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "meta-gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blush-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blush-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blush-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lavender": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pure-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lotus-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -11019,27 +9683,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cobalt-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11074,117 +9732,91 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fire-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sorbet": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "very-turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -11193,27 +9825,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cobalt-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11248,117 +9874,91 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "solar-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fire-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sorbet": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "very-turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -11367,9 +9967,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-forest": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11425,108 +10023,84 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mastic": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "roasted-coffee": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "melon-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lotus-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lotus-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "acid-lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pop-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pop-tomato": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pop-turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pop-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -11535,9 +10109,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-forest": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11593,108 +10165,84 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mastic": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "roasted-coffee": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "melon-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lotus-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lotus-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "acid-lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pop-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pop-tomato": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pop-turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pop-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -11703,45 +10251,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "aubergine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "wine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "acid-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aqua": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11756,45 +10294,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fern-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11809,9 +10337,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grenadine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11826,54 +10352,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "irish-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11888,36 +10402,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "petrol": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11932,9 +10438,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -11949,45 +10453,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "signal-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "tomato": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12002,9 +10496,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -12013,45 +10505,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "aubergine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "wine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "acid-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aqua": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12066,45 +10548,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fern-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12119,9 +10591,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grenadine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12136,54 +10606,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "irish-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12198,36 +10656,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pacific": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "petrol": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12242,9 +10692,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12259,45 +10707,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "signal-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "tomato": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12312,9 +10750,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -12323,9 +10759,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "wine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12340,9 +10774,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "aqua": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12373,9 +10805,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "stone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12390,9 +10820,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12407,36 +10835,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "turquoise": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12451,18 +10871,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "gold-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -12495,18 +10911,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12521,9 +10933,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12588,9 +10998,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bright-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12604,9 +11012,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12620,9 +11026,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "convoy-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12636,18 +11040,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-oxford-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12663,9 +11063,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "azure-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12686,9 +11084,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12709,18 +11105,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "titanium-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12734,9 +11126,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "00461c": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -12752,9 +11142,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12782,18 +11170,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12817,18 +11201,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bright-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12843,9 +11223,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12868,27 +11246,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-oxford-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -12903,9 +11275,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13002,63 +11372,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "army": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aqua": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pure-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "apple-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13081,18 +11437,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13107,9 +11459,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13124,18 +11474,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13150,18 +11496,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13186,18 +11528,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "army": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13220,18 +11558,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13254,18 +11588,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pure-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13280,18 +11610,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13306,27 +11632,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "4b271c": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cdea80": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -13343,9 +11663,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13368,9 +11686,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grey-melange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13401,180 +11717,140 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "creamy-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "creamy-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "spring-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "01509d": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "apple-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aqua": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "denim": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "hibiscus": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "slate-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pure-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "charcoal-melange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-oxblood": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-denim": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -13591,45 +11867,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "rope": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "linen": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "candy-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13644,9 +11910,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13661,27 +11925,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aqua": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13704,18 +11962,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "denim": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pure-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13730,9 +11984,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mouse-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -13747,9 +11999,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "off-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -13758,315 +12008,245 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "graphite-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "azalea": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mint-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "old-gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orchid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "b23730": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "violet": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "antique-cherry-red-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "antique-sapphire-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "carolina-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cherry-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "forest-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "garnet": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "eead1a": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heliconia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "indigo-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "irish-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "maroon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "safety-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "safety-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "005683": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "205c40": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "1c3775": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14082,18 +12262,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14127,27 +12303,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "cobalt": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "paragon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14168,18 +12338,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14200,36 +12366,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14243,108 +12401,84 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow-haze": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cement": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cocoa": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "daisy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "forest-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mustard": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink-lemonade": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pistachio": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "tangerine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aquatic": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14358,90 +12492,70 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "blue-dusk": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "brown-savana": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cardinal-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "carolina-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "off-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sage": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "smoke": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "t-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "393d47": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -14464,18 +12578,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "garnet": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14510,9 +12620,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "tan": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -14521,9 +12629,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14537,9 +12643,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14567,36 +12671,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-royal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14617,36 +12713,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "classic-olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-graphite-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14660,72 +12748,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "azure-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sunflower": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -14741,9 +12813,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "charcoal-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14764,18 +12834,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "classic-olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14798,9 +12864,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "azure-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14823,9 +12887,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14848,27 +12910,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-graphite-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14914,18 +12970,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "athletic-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-graphite-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -14946,27 +12998,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "classic-olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "desert-sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15072,27 +13118,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15114,18 +13154,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "cobaltblue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15140,18 +13176,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ultraviolett": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15166,72 +13198,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "paradise-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "forest-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "hibiskus-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "neo-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ocean-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "frozen-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "city-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15246,117 +13262,91 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "taxi-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bark": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-asphalt": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "purple-night": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pale-leaf": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "white-sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "baltic-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "chocoloate-brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "plum-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "powder-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -15402,72 +13392,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-asphalt": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "chocoloate-brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "u-beige": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "white-sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "plum-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "powder-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "beryl-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -15476,9 +13450,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15506,36 +13478,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ready-to-dye": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "vintage-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "union-beige": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15549,54 +13513,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cobalt-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ocean-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "beryl-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bark": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15610,45 +13562,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "forgotten-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "retro-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "e8e7e3": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cloud": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15662,9 +13604,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "soft-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -15681,18 +13621,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15715,36 +13651,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "heather-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusk-rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-salvia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -15753,9 +13681,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15790,9 +13716,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15813,27 +13737,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "off-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15847,54 +13765,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "pop-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "nordic-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mastic": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lotus-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blush-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -15917,18 +13823,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "yellow-fizz": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pure-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15942,36 +13844,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-cherry": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "soft-rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "magenta-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -15985,36 +13879,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "pure-sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "nordic-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "aqua-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16028,27 +13914,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grey-fog": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "asphalt": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "black-pure": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16062,18 +13942,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "heather-mid-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "1f2532": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -16117,9 +13993,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16140,36 +14014,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "lake-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "acid-lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -16206,9 +14072,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mastic": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16231,72 +14095,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "elephant-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "desert": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "melon-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pale-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "nude": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pure-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16310,63 +14158,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "wine": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "candy-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pale-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink-fizz": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lavender": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "hawaiian-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16380,72 +14214,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "pure-sky": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sage": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-jade": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "millennial-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "grey-fog": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "forest-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "asphalt": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16466,63 +14284,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "heather-mid-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-asphalt": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-royal-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "heather-dark-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -16538,90 +14342,70 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "faded-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-washed-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "cherry-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "denim-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16635,18 +14419,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "faded-mustard": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16660,99 +14440,77 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "faded-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-charcoal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burnt-yellow-mango": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "miami-pink-purple-rose": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "rfd-ready-for-dye": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-beige-sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-washed-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-washed-burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-washed-denim": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16766,27 +14524,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "stone-washed-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-washed-sage-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "stone-washed-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16800,9 +14552,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "blue-dusk": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -16825,54 +14575,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sueded-light-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sueded-fawn": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sueded-pale-lemon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sueded-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sueded-miami-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sueded-slate-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16886,18 +14624,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sueded-blue-dusk": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sueded-light-blue-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -16922,18 +14656,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mango": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "melange-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16947,9 +14677,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -16958,27 +14686,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sage-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -16992,18 +14714,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bright-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -17040,27 +14758,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "baby-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "deep-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17074,18 +14786,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "heather-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mustard": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17106,27 +14814,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "lavender": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural-stone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sky-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -17149,18 +14851,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-lilac": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17181,9 +14879,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ice-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17197,18 +14893,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "natural-clay": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural-stone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17231,9 +14923,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mocha": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17268,27 +14958,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-oxford-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ffffff": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17302,90 +14986,70 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "convoy-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "olive": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mineral-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sport-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "natural": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "8fd491": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "fac511": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -17425,18 +15089,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "fuchsia": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-oxford-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17467,9 +15127,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -17592,9 +15250,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17608,9 +15264,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "natural-stone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17631,18 +15285,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "4f758b": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "4f413c": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -17667,9 +15317,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grey-melange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17716,18 +15364,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "kelly-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "mustard": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -17743,72 +15387,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "faded-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-navy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "blue-dusk": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bone": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-mustard": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "faded-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17822,27 +15450,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "faded-white": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "rfd-ready-for-dye": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-beige-sand": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17865,18 +15487,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-chocolate": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "ash-grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17890,18 +15508,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "cardinal-red": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "carolina-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17915,9 +15529,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17931,54 +15543,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "gold": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "irish-green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "maroon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -17999,27 +15599,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "safety-green-neon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "safety-orange-neon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18035,27 +15629,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "royal-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "oxblood": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18070,9 +15658,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18119,18 +15705,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mouse-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -18146,36 +15728,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18189,36 +15763,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18232,18 +15798,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18264,9 +15826,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18280,45 +15840,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "white-navy-striped": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18368,9 +15918,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18419,18 +15967,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "millennial-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18444,18 +15988,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bear-brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -18471,9 +16011,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "faded-denim": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18501,9 +16039,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "light-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18517,9 +16053,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "f4f4ec": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -18528,18 +16062,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18560,9 +16090,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "electric-yellow-neon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18583,9 +16111,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "jet-black": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18599,18 +16125,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "electric-green-neon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "electric-orange-neon": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -18619,9 +16141,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-khaki": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18670,18 +16190,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "millennial-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18695,18 +16211,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bear-brown": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -18762,27 +16274,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "burgundy": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "urban-purple": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18820,27 +16326,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     }
@@ -18856,36 +16356,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "lime": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18906,9 +16398,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18929,63 +16419,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "teal": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "b8b8b8": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "military": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
@@ -18999,45 +16475,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "white-navy-striped": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "yellow": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "sapphire": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
     "green": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },

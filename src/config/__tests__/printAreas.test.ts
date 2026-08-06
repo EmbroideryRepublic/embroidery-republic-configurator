@@ -13,7 +13,7 @@ import { PRINT_AREA_DATA } from '../printAreaData';
 import { PRINT_AREA_DATA as GEMESSEN } from '../printAreaData.generated';
 import { GEOMETRY_ALIAS } from '../printAreaAlias.generated';
 import { PRODUCTS } from '../products';
-import { ansichtenVon } from '@/lib/products/ansichten';
+import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 
 /** Prozessgrenzen aus dem Generator – hier gespiegelt als Obergrenze. */
 const GRENZE = {
@@ -36,15 +36,24 @@ test('jedes Produkt führt Vorder- und Rückseite', () => {
   }
 });
 
-test('die Druckflächen-Ansichten entsprechen den deklarierten Produkt-Ansichten', () => {
-  // Generisch statt front/back/sleeve-fixiert: Die im (alias-aufgelösten)
-  // PRINT_AREA_DATA vorhandenen Ansichten müssen exakt den vom Produkt
-  // geführten Ansichten (ansichtenVon) entsprechen – gilt auch für Nicht-
-  // Kleidung (Tasche/Schürze).
+test('Druckflächen gibt es für jede ZEIGBARE Ansicht und nie für eine undeklarierte', () => {
+  // Früher musste die Flächenliste exakt den deklarierten Ansichten entsprechen.
+  // Das ging nur, solange das Manifest fehlende Ansichten auf das Vorderbild
+  // aliaste – der Generator „vermaß" dann Ärmel auf dem Frontfoto. Ohne dieses
+  // Alias gilt: Eine Fläche kann nur entstehen, wo es ein Bild gibt. Verbindlich
+  // ist daher: (a) keine Fläche für eine nicht deklarierte Ansicht, (b) jede dem
+  // Kunden gezeigte Ansicht hat eine Fläche.
   for (const p of PRODUCTS) {
-    const flaechen = Object.keys(PRINT_AREA_DATA[p.id] ?? {}).sort();
-    const deklariert = [...ansichtenVon(p)].sort();
-    assert.deepEqual(flaechen, deklariert, `${p.id}: Druckflächen-Ansichten weichen von den deklarierten ab`);
+    const flaechen = Object.keys(PRINT_AREA_DATA[p.id] ?? {});
+    const deklariert = new Set(ansichtenVon(p));
+    for (const v of flaechen) {
+      assert.ok(deklariert.has(v as (typeof p.views)[number]), `${p.id}: Fläche für undeklarierte Ansicht "${v}"`);
+    }
+    for (const c of p.colors) {
+      for (const v of sichtbareAnsichten(p, c.id)) {
+        assert.ok(flaechen.includes(v), `${p.id}/${c.id}: zeigbare Ansicht "${v}" ohne Druckfläche`);
+      }
+    }
   }
 });
 
@@ -141,11 +150,21 @@ test('unbekannte Produkte liefern eine leere Liste statt zu werfen', async () =>
 // grün (0 Schnittmenge, alle rep-Ziele vorhanden), rein datengetrieben.
 
 test('Klassen-Alias überschreibt keine gemessene Druckfläche', () => {
-  // Wäre ein Alias-Schlüssel zugleich eine gemessene Produkt-ID, ersetzte der
-  // Merge deren echte Flächen still durch die des Klassen-Vertreters.
-  const gemessen = new Set(Object.keys(GEMESSEN));
-  const kollisionen = Object.keys(GEOMETRY_ALIAS).filter((k) => gemessen.has(k));
-  assert.deepEqual(kollisionen, [], `Alias-Schlüssel kollidieren mit gemessenen IDs: ${kollisionen.join(', ')}`);
+  // Seit alle 154 Produkte eigene Fotos haben, wird fast jedes auch einzeln
+  // VERMESSEN – Alias-Schlüssel und gemessene IDs überschneiden sich damit
+  // zwangsläufig. Früher war diese Überschneidung verboten, weil der Merge den
+  // Alias gewinnen ließ und echte Messungen still ersetzte. Jetzt gewinnt die
+  // Messung; geprüft wird direkt dieses Ergebnis – schärfer, weil es den Merge
+  // selbst prüft statt einer Hilfsbedingung.
+  for (const id of Object.keys(GEOMETRY_ALIAS)) {
+    const eigene = GEMESSEN[id];
+    if (!eigene) continue;
+    assert.deepEqual(
+      PRINT_AREA_DATA[id],
+      eigene,
+      `${id}: eigene Messung wurde vom Klassen-Alias überschrieben`
+    );
+  }
 });
 
 test('jedes Alias-Ziel verweist auf eine gemessene Druckfläche', () => {

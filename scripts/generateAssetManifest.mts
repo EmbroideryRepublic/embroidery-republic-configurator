@@ -92,8 +92,13 @@ for (const p of PRODUCTS) {
       byColor[c.id] = { views, status: 'real' };
       realFarben++;
     } else {
+      // Platzhalter NUR für Vorder- und Rückseite. Früher bekam jede deklarierte
+      // Ansicht einen Platzhalter, also auch die Ärmel – die galten dadurch als
+      // „zeigbar", obwohl es dafür weder ein Bild noch eine Druckfläche gibt.
       const ph: Record<string, string> = {};
-      for (const view of p.views) ph[view] = PLATZHALTER_BILD;
+      for (const view of p.views) {
+        if (view === 'front' || view === 'back') ph[view] = PLATZHALTER_BILD;
+      }
       byColor[c.id] = { views: ph, status: 'placeholder' };
       platzhalterFarben++;
     }

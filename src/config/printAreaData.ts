@@ -16,6 +16,11 @@ import { GEOMETRY_ALIAS } from './printAreaAlias.generated';
 
 const merged: Record<string, Partial<Record<import('@/types').PrintView, GeneratedArea>>> = { ...GEMESSEN };
 for (const [neu, rep] of Object.entries(GEOMETRY_ALIAS)) {
+  // Die EIGENE Messung hat Vorrang. Der Klassen-Alias ist nur der Notnagel für
+  // Produkte, die sich nicht selbst vermessen lassen (keine Maßtabelle) – vorher
+  // überschrieb er JEDE vorhandene Messung, wodurch individuell vermessene
+  // Produkte pauschal die Fläche ihres Klassenvertreters bekamen.
+  if (merged[neu]) continue;
   const flaechen = GEMESSEN[rep];
   if (flaechen) merged[neu] = flaechen;
 }

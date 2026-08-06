@@ -97,6 +97,91 @@ const KOPFTEIL_ANTEIL: Record<string, number> = {
   'justhoods-quarterzip-sweat': 0.1,
 };
 
+/**
+ * Kopfteil je Produkt – Handmessung, sonst aus dem SCHNITT abgeleitet.
+ *
+ * Die Tabelle oben entstand, als nur 43 Produkte eigene Fotos hatten. Seit dem
+ * abgeschlossenen Bildimport werden 135 Produkte vermessen; für die neuen
+ * Kapuzen- und Stehkragenteile fehlte ein Eintrag, sie galten damit als
+ * kopfteilfrei – ihre Druckfläche landete auf der Kapuze.
+ *
+ * Ein Kopfteil ist ein Merkmal des Schnitts (jeder Hoodie hat eine Kapuze), und
+ * die Handmessungen streuen innerhalb einer Schnittgruppe kaum:
+ *   Kapuze      0,13 · 0,14 · 0,13 · 0,14 · 0,14 · 0,16  → Mittel 0,14 (σ 0,011)
+ *   Stehkragen  0,10 · 0,10 · 0,10                        → 0,10
+ * Deshalb erbt ein Produkt ohne eigene Messung den Gruppenwert. Der Versuch, die
+ * Schulterlinie automatisch aus der Kontur zu lesen, scheitert weiterhin: die
+ * Kapuze selbst verbreitert sich am stärksten, der Wendepunkt liegt zu hoch
+ * (gegen alle neun Handmessungen geprüft, Δ bis 0,15).
+ */
+const KOPFTEIL_KAPUZE = 0.14;
+const KOPFTEIL_STEHKRAGEN = 0.1;
+/**
+ * Polokragen. Aus demselben Grund ein Kopfteil wie Kapuze und Stehkragen:
+ * `hoeheCm` der Größentabelle beginnt am höchsten Schulterpunkt, die Bildkontur
+ * dagegen an der Kragenspitze. Ohne Abzug rutschte die Fläche in den Kragen und
+ * der Maßstab wurde zu klein.
+ * Gemessen über alle 26 Polos mit Foto (erste Zeile mit 55 % der Maximalbreite):
+ * Median 0,096, Spanne 0,064–0,117.
+ */
+const KOPFTEIL_POLOKRAGEN = 0.09;
+
+/**
+ * Kopfteil aus der KONTUR: erste Zeile, die 55 % der Maximalbreite erreicht.
+ *
+ * Gegen alle neun Handmessungen geprüft – mittlere Abweichung 0,026 (Handmessung
+ * selbst ±0,02). Entscheidend ist, dass dieses Maß das EINZELNE Foto liest: Bei
+ * B&C ID.223/ID.333 und Influence steht die Kapuze im Bild AUFRECHT, das Kopfteil
+ * misst dort 0,31 statt 0,14. Ein Schnitt-Pauschalwert legte die Druckfläche bei
+ * diesen drei mitten auf die Kapuze.
+ */
+function kopfteilAusKontur(zeilen: { y: number; breite: number }[]): number | null {
+  const belegt = zeilen.filter((z) => z.breite > 0);
+  if (belegt.length < 10) return null;
+  const oben = belegt[0]!.y;
+  const unten = belegt[belegt.length - 1]!.y;
+  const hoehe = unten - oben;
+  if (hoehe <= 0) return null;
+  const max = Math.max(...zeilen.map((z) => z.breite));
+  const schulter = zeilen.find((z) => z.y > oben && z.breite >= max * 0.55);
+  if (!schulter) return null;
+  return (schulter.y - oben) / hoehe;
+}
+
+function kopfteilVon(
+  p: { id: string; productType: string; name: string },
+  zeilen?: { y: number; breite: number }[]
+): number {
+  // 1. Handmessung ist maßgeblich (genauer als jede Ableitung).
+  const gemessen = KOPFTEIL_ANTEIL[p.id];
+  if (gemessen !== undefined) return gemessen;
+
+  // 2. Sonst aus der eigenen Kontur – passt sich dem konkreten Foto an.
+  const ausBild = zeilen ? kopfteilAusKontur(zeilen) : null;
+
+  // 3. Schnitt-Erwartung als Plausibilitätsrahmen. Ein T-Shirt hat kein
+  //    Kopfteil; ein Messwert darf dort nicht plötzlich 20 % abschneiden.
+  const hatKopfteil =
+    p.productType === 'hoodie' ||
+    p.productType === 'zip-hoodie' ||
+    p.productType === 'jacket' ||
+    p.productType === 'polo' ||
+    /\b(zip|half.?zip|quarter.?zip|troyer)\b/i.test(p.name);
+  if (!hatKopfteil) return 0;
+
+  const erwartet =
+    p.productType === 'hoodie' || p.productType === 'zip-hoodie'
+      ? KOPFTEIL_KAPUZE
+      : p.productType === 'polo'
+        ? KOPFTEIL_POLOKRAGEN
+        : KOPFTEIL_STEHKRAGEN;
+  if (ausBild === null) return erwartet;
+  // Messwerte unterhalb der Schnitt-Erwartung wären zu knapp (Fläche liefe in
+  // den Kragen); nach oben wird großzügig zugelassen, weil eine aufgestellte
+  // Kapuze real mehr Platz braucht.
+  return Math.min(0.4, Math.max(erwartet, ausBild));
+}
+
 /** Reale Sicherheitsabstände in cm (Veredelungspraxis). */
 const ABSTAND = {
   seitennaht: 2.0,
@@ -471,14 +556,40 @@ const echtesVerhaeltnis = new Map<string, number>();
   }
 }
 
+const { GEOMETRY_ALIAS } = await import('../src/config/printAreaAlias.generated.ts');
+/** Maßtabelle des Klassenvertreters (gleicher Produkttyp) als Rückfallebene. */
+function massVon(p: (typeof PRODUCTS)[number]) {
+  const eigen = p.sizeGuide?.measurements?.find((x) => x.size === 'M') ?? p.sizeGuide?.measurements?.[0];
+  if (eigen) return { mass: eigen, geliehenVon: null as string | null };
+  // Ohne eigene Maße wurde das Produkt bisher übersprungen und erbte die
+  // Druckfläche des Klassenvertreters 1:1 – also dessen BILDrelative Koordinaten.
+  // Da die Fotos unterschiedlich beschnitten sind, saß die Fläche dann falsch
+  // (Box im Kragen). Mit geliehener Maßtabelle wird stattdessen die EIGENE
+  // Bildkontur vermessen; nur die cm-Referenz stammt aus derselben Schnittgruppe.
+  const rep = GEOMETRY_ALIAS[p.id];
+  const repProd = rep ? PRODUCTS.find((x) => x.id === rep) : undefined;
+  const geliehen = repProd?.sizeGuide?.measurements?.find((x) => x.size === 'M')
+    ?? repProd?.sizeGuide?.measurements?.[0];
+  return { mass: geliehen, geliehenVon: geliehen ? (rep ?? null) : null };
+}
+
 for (const p of PRODUCTS) {
-  const mass = p.sizeGuide?.measurements?.find((x) => x.size === 'M') ?? p.sizeGuide?.measurements?.[0];
+  const { mass, geliehenVon } = massVon(p);
   if (!mass) {
-    protokoll.push(`${p.id}: keine Maßtabelle – übersprungen`);
+    protokoll.push(`${p.id}: keine Maßtabelle (auch nicht beim Klassenvertreter) – übersprungen`);
     continue;
   }
+  if (geliehenVon) protokoll.push(`${p.id}: Maßtabelle von ${geliehenVon} geliehen, Kontur eigenständig vermessen`);
 
   const proProdukt: Partial<Record<View, Box>> = {};
+
+  // Frontkontur merken: Ohne eigenes Rückenfoto liefert sie die Silhouette für
+  // die Rückseite. Vorder- und Rückansicht eines Kleidungsstücks haben denselben
+  // Umriss – anders als beim Ärmel ist das keine Näherung, sondern dieselbe Form.
+  // (Früher fiel das nicht auf, weil das Manifest fehlende Ansichten auf das
+  // Vorderbild aliaste; ohne dieses Alias hätten Produkte ohne Rückenfoto gar
+  // keine Rückenfläche mehr – Rückendruck ist aber ein Kernangebot.)
+  let frontProfile: { w: number; h: number; zeilen: Awaited<ReturnType<typeof zeilenProfil>>['zeilen'] }[] = [];
 
   for (const view of VIEWS) {
     // Nur die vom Produkt tatsächlich geführten Ansichten erzeugen
@@ -521,7 +632,13 @@ for (const p of PRODUCTS) {
 
     // Sind ALLE Aufnahmen angeschnitten (Ärmel-Nahaufnahmen), bleibt nur der
     // vorhandene Bestand – eine Fläche aus nichts ist keine Verbesserung.
-    const profile = nichtAngeschnitten.length > 0 ? nichtAngeschnitten : alleProfile;
+    let profile = nichtAngeschnitten.length > 0 ? nichtAngeschnitten : alleProfile;
+    if (view === 'front') frontProfile = profile;
+    // Rückseite ohne eigenes Foto: Umriss der Vorderansicht verwenden.
+    if (view === 'back' && profile.length === 0 && frontProfile.length > 0) {
+      profile = frontProfile;
+      protokoll.push(`${p.id}/back: kein Rückenfoto – Umriss der Vorderansicht verwendet`);
+    }
     if (nichtAngeschnitten.length < alleProfile.length) {
       protokoll.push(
         `${p.id}/${view}: ${alleProfile.length - nichtAngeschnitten.length} von ${alleProfile.length} Aufnahmen angeschnitten` +
@@ -636,7 +753,7 @@ for (const p of PRODUCTS) {
     // Flächen dieser Produkte bleiben damit unverändert richtig.
     // Schulterlinie = Bildoberkante zuzüglich Kopfteil (siehe KOPFTEIL_ANTEIL).
     // Ab hier gilt die Größentabelle; alles darüber ist Kapuze oder Kragen.
-    const kopfteilAnteil = KOPFTEIL_ANTEIL[p.id] ?? 0;
+    const kopfteilAnteil = kopfteilVon(p, zeilen);
     const ySchulter = istAermel ? yOben : yOben + konturHoehePx * kopfteilAnteil;
     const hoehePx = yUnten - ySchulter + 1;
 

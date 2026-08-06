@@ -76,16 +76,26 @@ test('jede explizit deklarierte product.views existiert in der Registry', () => 
   assert.deepEqual(fehler, [], 'Produkte deklarieren nicht registrierte View-IDs');
 });
 
-test('jede geführte Ansicht existiert in der Registry UND hat einen Druckbereich', async () => {
+test('jede geführte Ansicht ist registriert; jede ZEIGBARE hat einen Druckbereich', async () => {
+  // Registry-Zugehörigkeit gilt für alle geführten Ansichten (fachliche
+  // Deklaration). Eine Druckfläche kann dagegen nur entstehen, wo ein Bild
+  // existiert – Ärmel sind nicht überall fotografiert. Maßgeblich ist deshalb
+  // sichtbareAnsichten(): genau was der Kunde zu sehen bekommt, muss auch eine
+  // Fläche haben. (Vorher erzwang der Test eine Fläche für JEDE deklarierte
+  // Ansicht; erfüllbar war das nur durch das Vorderbild-Alias im Manifest.)
   const fehler: string[] = [];
   for (const p of PRODUCTS) {
     const flaechen = new Set((await getPrintAreas(p.id, 'dtf')).map((a) => a.view));
     for (const v of ansichtenVon(p)) {
       if (!istGueltigeView(v)) fehler.push(`${p.id}/${v}: nicht in Registry`);
-      else if (!flaechen.has(v)) fehler.push(`${p.id}/${v}: keine Druckfläche`);
+    }
+    for (const c of p.colors) {
+      for (const v of sichtbareAnsichten(p, c.id)) {
+        if (!flaechen.has(v)) fehler.push(`${p.id}/${c.id}/${v}: keine Druckfläche`);
+      }
     }
   }
-  assert.deepEqual(fehler, [], 'geführte Ansichten ohne Registry-Eintrag/Druckfläche');
+  assert.deepEqual(fehler.slice(0, 20), [], 'Ansichten ohne Registry-Eintrag/Druckfläche');
 });
 
 /**

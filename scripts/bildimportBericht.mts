@@ -30,12 +30,23 @@ try {
  * Recherche-Entscheidungen, bei denen die Katalog-Artikelnummer korrigiert oder
  * ein offizielles Nachfolgemodell verwendet wurde (Nachvollziehbarkeit).
  */
-type Entscheidung = { katalogNr: string; korrektNr: string; art: string; beleg: string };
+type Entscheidung = { ausgangslage: string; verifizierteHerstellerNr: string; art: string; beleg: string };
 let entscheidungen: Record<string, Entscheidung> = {};
 try {
   entscheidungen = JSON.parse(readFileSync('scripts/import/entscheidungen.json', 'utf-8'));
 } catch {
   /* keine Entscheidungen dokumentiert */
+}
+
+/** Verifizierte Hersteller-Artikelnummern je Produkt (Referenz, siehe Datei-Kopf dort). */
+type HerstellerNr = { hersteller: string; nr: string; modell: string; beleg: string };
+let herstellerNrn: Record<string, HerstellerNr> = {};
+try {
+  const roh = JSON.parse(readFileSync('scripts/import/herstellerartikelnummern.json', 'utf-8'));
+  delete roh._hinweis;
+  herstellerNrn = roh;
+} catch {
+  /* keine Nummern hinterlegt */
 }
 
 /** Ist eine Ansicht ein echtes eigenes Bild (kein Platzhalter, kein Front-Alias)? */
@@ -81,15 +92,28 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 |---|---|---|---|---|---|
 ${zeilen.join('\n')}
 
-## Korrigierte Artikelnummern & Nachfolgemodelle
-_Fälle, in denen die Katalog-Artikelnummer nachweislich falsch/veraltet war oder das Produkt offiziell
-ersetzt wurde. Die Bilder stammen jeweils vom belegten korrekten Artikel; die Katalognummer sollte
-entsprechend nachgezogen werden._
+## Verifizierte Hersteller-Artikelnummern
+_Die Produktdefinitionen tragen bewusst **keine** Artikelnummer (ADR 0004: Lieferant vom Produkt gelöst);
+die Händlernummern stehen in \`src/lib/suppliers/supplierRefs.ts\` bzw. \`scripts/import/products-raw.json\`.
+Beim Bildimport wurde zusätzlich je Produkt die **Herstellernummer** am Hersteller belegt – sie schließt die
+in supplierRefs beschriebene Lücke ("hilft, dasselbe Produkt bei einem anderen Lieferanten wiederzufinden").
+Pflegedatei: \`scripts/import/herstellerartikelnummern.json\`._
 
-| Produkt | Katalog-Nr. | Belegte korrekte Nr. | Art | Beleg |
+| Produkt | Hersteller | Artikelnummer | Modell | Beleg |
+|---|---|---|---|---|
+${Object.entries(herstellerNrn).map(([id, h]) =>
+  `| ${id} | ${h.hersteller} | **${h.nr}** | ${h.modell} | ${h.beleg} |`).join('\n') || '| — | — | — | — | — |'}
+
+## Klärungen & Korrekturen während der Recherche
+_Fälle, in denen eine angenommene Artikelnummer nicht existierte, ein anderes Produkt bezeichnete, oder in
+denen ein Katalogeintrag die Bilder eines fremden Artikels trug. Wichtig: die falschen Nummern standen
+**nicht** im Katalog – sie waren Arbeitsannahmen der Recherche; der Rohdatensatz führte bereits die
+korrekten Händlernummern._
+
+| Produkt | Ausgangslage | Verifiziert | Art | Beleg |
 |---|---|---|---|---|
 ${Object.entries(entscheidungen).map(([id, e]) =>
-  `| ${id} | ${e.katalogNr} | **${e.korrektNr}** | ${e.art} | ${e.beleg} |`).join('\n') || '| — | — | — | — | — |'}
+  `| ${id} | ${e.ausgangslage} | **${e.verifizierteHerstellerNr}** | ${e.art} | ${e.beleg} |`).join('\n') || '| — | — | — | — | — |'}
 
 ## Noch offen (Recherche/Import ausstehend)
 ${Object.entries(offen).sort((a, b) => b[1].length - a[1].length).map(([b, a]) =>

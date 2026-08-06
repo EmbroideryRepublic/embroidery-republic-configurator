@@ -146,7 +146,10 @@ function verarbeite(p: RohProdukt, quelle: string): void {
   const qt: QualityTier = p.qualityTier ?? 'standard';
   const gm = typeof p.weight === 'number' && p.weight > 0 ? p.weight : null;
   const brand = markeNormalisieren(p.brand);
-  const desc = `${p.name} von ${brand}. ${p.material}${gm ? `, ${gm} g/m²` : ''}. Verifizierte Lieferantendaten (${quelle}); Produktfotos folgen.`;
+  // Kein "Produktfotos folgen" mehr: seit Abschluss des Bildimports
+  // (docs/bildimport-abschlussbericht.md) hat jedes Katalogprodukt echte
+  // Herstellerfotos – der Satz stand sonst dauerhaft falsch auf der Produktseite.
+  const desc = `${p.name} von ${brand}. ${p.material}${gm ? `, ${gm} g/m²` : ''}. Verifizierte Lieferantendaten (${quelle}).`;
   const tagline = `${TYP_LABEL[typ]} von ${brand}`;
   const sizesLit = JSON.stringify([...new Set(p.sizes.map(normSize))]);
   const weightLine = gm ? `\n    weightGsm: ${gm},` : '';

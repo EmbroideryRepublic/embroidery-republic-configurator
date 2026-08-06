@@ -39,7 +39,14 @@ for (const datei of readdirSync(IMPORT).filter((f) => f.startsWith('nichtbeschaf
 }
 
 const onModelAusnahmen = lies<Record<string, string>>('onmodel-ausnahmen.json', {});
-const onModelImporte = readdirSync(IMPORT)
+/**
+ * Bewusst importierte On-Model-Aufnahmen – aber nur die, die HEUTE noch im Shop
+ * liegen. Der Gildan Softstyle Hoodie etwa wurde zunächst mit 23 On-Model-
+ * Bildern gefüllt (besser als 23 ausgeblendete Farben) und später komplett durch
+ * Freisteller ersetzt. Diese Einträge weiterhin als Ausnahme auszuweisen wäre
+ * schlicht falsch. Abgeglichen wird über den Host der zuletzt genutzten Quelle.
+ */
+const onModelRoh = readdirSync(IMPORT)
   .filter((f) => f.startsWith('onmodel_'))
   .flatMap((f) => lies<{ productId: string; colorId: string; quelle?: string }[]>(f, []));
 const abgelehnt = readdirSync(IMPORT)
@@ -105,6 +112,16 @@ for (const p of PRODUCTS) {
   }
   if (ohne) ohneRueck.push({ id: p.id, name: p.name, marke: p.brand, anzahl: ohne, gesamt: angeboten.length });
 }
+
+const hostVon = (s?: string) => {
+  const t = /https?:\/\/([^/\s)]+)/.exec(s ?? '');
+  return t ? t[1]!.replace(/^www\./, '') : undefined;
+};
+const onModelImporte = onModelRoh.filter((e) => {
+  const jetzt = quelleVon.get(`${e.productId}/${e.colorId}`);
+  const damals = hostVon(e.quelle);
+  return jetzt !== undefined && damals !== undefined && jetzt === damals;
+});
 
 const aermelVoll = PRODUCTS.filter((p) => {
   const f = waehlbareFarben(p.id, p.colors);
@@ -182,9 +199,13 @@ z.push('hautfarben ist. Gezählt werden deshalb nur Hautpixel, die weit von der 
 z.push('Stofffarbe entfernt liegen.');
 z.push('');
 z.push(`Bisher abgelehnt: **${abgelehnt.length} Bilder**.`);
+z.push('');
 if (onModelImporte.length) {
-  z.push('');
-  z.push(`Bewusste Ausnahmen (kein Freisteller auffindbar, On-Model besser als gar kein Bild): **${onModelImporte.length}**.`);
+  z.push(`Bewusst stehen gelassen (kein Freisteller auffindbar, On-Model besser als gar kein Bild): **${onModelImporte.length}**.`);
+} else {
+  z.push('**Im Shop liegt derzeit keine einzige On-Model-Aufnahme.** Zwischenzeitlich waren 23');
+  z.push('Farben des Gildan Softstyle Hoodie so importiert worden – besser als 23 ausgeblendete');
+  z.push('Farben –, sie sind inzwischen alle durch Freisteller ersetzt.');
 }
 if (Object.keys(onModelAusnahmen).length) {
   z.push('');

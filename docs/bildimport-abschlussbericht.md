@@ -31,10 +31,10 @@ angeboten – anzubieten, was wir nicht zeigen können, wäre ein Versprechen oh
 | T-Shirt #E150 | 101145 | Doppelter Katalogeintrag – zeigt dasselbe Foto wie eine andere Farbe desselben Produkts. |
 | Light Cotton Adult T-Shirt | Ash Grey (Heather) | Fuer Gildan 3000 in Ash (Ash Grey, 99/1) existiert bei keiner geprueften Quelle eine Freisteller-Aufnahme – ueberall nur On-Model. Geprueft: (1) d1l2kcmc130e06.cloudfront.net Bucket /3/ … |
 | Men`s Polo Shirt Perfect | 01509D | Doppelter Katalogeintrag – zeigt dasselbe Foto wie eine andere Farbe desselben Produkts. |
-| Softstyle® Midweight Sweat Adult Hoodie | Paragon | Kein Herstellerbild gefunden. |
-| Softstyle® Midweight Sweat Adult Hoodie | Light Pink | Kein Herstellerbild gefunden. |
-| Softstyle® Midweight Sweat Adult Hoodie | White | Kein Herstellerbild gefunden. |
-| Softstyle® Midweight Sweat Adult Hoodie | Carolina Blue | Kein Herstellerbild gefunden. |
+| Softstyle® Midweight Sweat Adult Hoodie | Paragon | Nur On-Model beschaffbar. shirtspace.com fuehrt fuer SF500/Paragon front, back und side (alle HTTP 200) - alle drei zeigen einen Menschen; einzeln gesichtet. ralawise GD067 fuehrt Paragon nicht. Da … |
+| Softstyle® Midweight Sweat Adult Hoodie | Light Pink | Nur On-Model beschaffbar. shirtspace.com SF500 Light Pink: front/back/side vorhanden, alle mit Model (gesichtet: Frau im rosa Hoodie). ralawise GD067 fuehrt die Farbe nicht. Ausgeblendet. |
+| Softstyle® Midweight Sweat Adult Hoodie | White | Nur On-Model beschaffbar. shirtspace.com SF500 White: front/side mit Model (gesichtet: Frau im weissen Hoodie). ralawise GD067 fuehrt Weiss nicht im Freistellersatz. Ausgeblendet. |
+| Softstyle® Midweight Sweat Adult Hoodie | Carolina Blue | Nur On-Model beschaffbar. shirtspace.com SF500 Carolina Blue: front mit Model (gesichtet). ralawise GD067 fuehrt die Farbe nicht. Ausgeblendet. |
 | Ultra Heavy Cotton Box Hoody | E8E7E3 | Doppelter Katalogeintrag – zeigt dasselbe Foto wie eine andere Farbe desselben Produkts. |
 | Men`s Long Sleeve T-Shirt | B8B8B8 | Doppelter Katalogeintrag – zeigt dasselbe Foto wie eine andere Farbe desselben Produkts. |
 
@@ -111,7 +111,9 @@ Stofffarbe entfernt liegen.
 
 Bisher abgelehnt: **55 Bilder**.
 
-Bewusste Ausnahmen (kein Freisteller auffindbar, On-Model besser als gar kein Bild): **23**.
+**Im Shop liegt derzeit keine einzige On-Model-Aufnahme.** Zwischenzeitlich waren 23
+Farben des Gildan Softstyle Hoodie so importiert worden – besser als 23 ausgeblendete
+Farben –, sie sind inzwischen alle durch Freisteller ersetzt.
 
 Geprüfte Fehlalarme des Audits (warme Stofffarben, kein Mensch im Bild):
 
@@ -121,7 +123,7 @@ Geprüfte Fehlalarme des Audits (warme Stofffarben, kein Mensch im Bild):
 
 ## Technisch nicht beschaffbar
 
-681 Einträge (Farbe oder einzelne Ansicht) sind mit Begründung und
+685 Einträge (Farbe oder einzelne Ansicht) sind mit Begründung und
 geprüften Quellen dokumentiert. Die Agenten haben dafür je Fall bis zu 15 Händler, die
 Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 `scripts/import/nichtbeschaffbar_*.json`; hier die betroffenen Produkte:
@@ -131,9 +133,9 @@ Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 | stedman-stedman-classic-t | 66 |
 | stedman-comfort-t | 61 |
 | bundc-my-eco-polo-6535-women | 55 |
+| gildan-softstyle-midweight-sweat-adult-hoodie | 51 |
 | gildan-heavy-blend-hooded-sweatshirt | 50 |
 | stedman-classic-t-v-neck-for-women | 49 |
-| gildan-softstyle-midweight-sweat-adult-hoodie | 47 |
 | stedman-classic-t-v-neck | 45 |
 | gildan-ultra-cotton-t-shirt | 44 |
 | bundc-my-polo-180 | 39 |

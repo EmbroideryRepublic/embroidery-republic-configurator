@@ -9,11 +9,11 @@ und den dokumentierten Ausnahmen. Nicht von Hand pflegen._
 |---|---|
 | Produkte | **154** |
 | Farbvarianten im Katalog | **2282** |
-| davon mit echtem Herstellerbild | **2277** (99.8 %) |
-| im Shop auswählbar | **2273** |
-| ausgeblendet (siehe unten) | **9** |
-| Farben mit echter Rückansicht | **1996** |
-| Farben mit Rückseiten-Platzhalter | **277** |
+| davon mit echtem Herstellerbild | **2276** (99.7 %) |
+| im Shop auswählbar | **2272** |
+| ausgeblendet (siehe unten) | **10** |
+| Farben mit echter Rückansicht | **2002** |
+| Farben mit Rückseiten-Platzhalter | **270** |
 | Produkte mit Ärmelansicht für alle Farben | **82** von 154 |
 
 **Kein auswählbares Kleidungsstück zeigt eine Silhouette.** Jede Farbe, die der Kunde
@@ -28,6 +28,7 @@ angeboten – anzubieten, was wir nicht zeigen können, wäre ein Versprechen oh
 
 | Produkt | Farbe | Grund |
 |---|---|---|
+| Ladies Iconic 195 Ringspun Premium T | Navy | Kein Herstellerbild gefunden. |
 | T-Shirt #E150 | 101145 | Doppelter Katalogeintrag – zeigt dasselbe Foto wie eine andere Farbe desselben Produkts. |
 | Light Cotton Adult T-Shirt | Ash Grey (Heather) | Fuer Gildan 3000 in Ash (Ash Grey, 99/1) existiert bei keiner geprueften Quelle eine Freisteller-Aufnahme – ueberall nur On-Model. Geprueft: (1) d1l2kcmc130e06.cloudfront.net Bucket /3/ … |
 | Men`s Polo Shirt Perfect | 01509D | Doppelter Katalogeintrag – zeigt dasselbe Foto wie eine andere Farbe desselben Produkts. |
@@ -40,16 +41,16 @@ angeboten – anzubieten, was wir nicht zeigen können, wäre ein Versprechen oh
 
 ## Rückansichten, die es nirgends gibt
 
-Bei 39 Produkten zeigt der Klick auf „Rückseite" einen neutralen
+Bei 31 Produkten zeigt der Klick auf „Rückseite" einen neutralen
 Platzhalter statt eines Fotos. Rückendruck bleibt buchbar; die Fläche ist über den
 Umriss der Vorderansicht vermessen. Der häufigste Grund: Die Hersteller fotografieren
 die Rückseite nur am Modell, und On-Model-Aufnahmen sind ausgeschlossen (Begründung unten).
 
 | Produkt | Marke | ohne Rückansicht |
 |---|---|---|
-| Ultra Cotton T-Shirt | Gildan | 44 von 52 |
+| Ultra Cotton T-Shirt | Gildan | 45 von 52 |
 | Stedman Classic-T | Stedman | 33 von 34 |
-| Softstyle® Midweight Sweat Adult Hoodie | Gildan | 24 von 34 |
+| Softstyle® Midweight Sweat Adult Hoodie | Gildan | 25 von 34 |
 | Comfort-T | Stedman | 20 von 21 |
 | My Eco Polo 65/35 Women_° | B&C | 18 von 20 |
 | Light Cotton Adult T-Shirt | Gildan | 17 von 24 |
@@ -68,24 +69,16 @@ die Rückseite nur am Modell, und On-Model-Aufnahmen sind ausgeschlossen (Begrü
 | Men´s T-Shirt #E190 Long Sleeve (Exact) | B&C | 3 von 10 |
 | Ladies` Fit T-Shirt | Neutral | 2 von 31 |
 | Unisex Polo ID.001 | B&C | 2 von 20 |
-| KING Hooded Sweat | B&C | 2 von 21 |
 | Women`s Fleecejacket North | SOL'S | 2 von 17 |
-| #Inspire E150 T-Shirt | B&C | 1 von 21 |
 | T-Shirt #E150 / Women | B&C | 1 von 41 |
 | Inspire T /Men | B&C | 1 von 18 |
 | Men`s Basic-T | James+Nicholson | 1 von 29 |
 | Mens Bio Workwear T-Shirt | James+Nicholson | 1 von 17 |
 | Ladies` BIO Workwear T-Shirt | James+Nicholson | 1 von 17 |
 | Russell Classic T | Russell | 1 von 21 |
-| Jersey Polo Shirt | EarthPositive | 1 von 1 |
 | Men`s Ultimate Cotton Polo | Russell | 1 von 10 |
-| Unisex Pulse Polo Shirt | SOL'S | 1 von 20 |
-| Influence Hoodie | B&C | 1 von 6 |
-| Earth Positive Super Heavy Hoodie | EarthPositive | 1 von 1 |
-| Ultra Cotton Long Sleeve T- Shirt | Gildan | 1 von 21 |
 | Ladies` Long Sleeve T-Shirt | Neutral | 1 von 23 |
 | Long Sleeve Cool T | Just Cool | 1 von 11 |
-| Men`s Long Sleeve T-Shirt | Neutral | 1 von 23 |
 
 ## Warum keine On-Model-Aufnahmen
 
@@ -100,7 +93,7 @@ Hautfarbregel zu 48 %, eine echte On-Model-Aufnahme nur zu 10 %, weil der Stoff 
 hautfarben ist. Gezählt werden deshalb nur Hautpixel, die weit von der dominanten
 Stofffarbe entfernt liegen.
 
-Bisher abgelehnt: **63 Bilder**.
+Bisher abgelehnt: **69 Bilder**.
 
 **Im Shop liegt derzeit keine einzige On-Model-Aufnahme.** Zwischenzeitlich waren 23
 Farben des Gildan Softstyle Hoodie so importiert worden – besser als 23 ausgeblendete
@@ -114,7 +107,7 @@ Geprüfte Fehlalarme des Audits (warme Stofffarben, kein Mensch im Bild):
 
 ## Technisch nicht beschaffbar
 
-702 Einträge (Farbe oder einzelne Ansicht) sind mit Begründung und
+707 Einträge (Farbe oder einzelne Ansicht) sind mit Begründung und
 geprüften Quellen dokumentiert. Die Agenten haben dafür je Fall bis zu 15 Händler, die
 Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 `scripts/import/nichtbeschaffbar_*.json`; hier die betroffenen Produkte:
@@ -124,11 +117,11 @@ Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 | stedman-stedman-classic-t | 66 |
 | stedman-comfort-t | 61 |
 | bundc-my-eco-polo-6535-women | 55 |
-| gildan-softstyle-midweight-sweat-adult-hoodie | 51 |
+| gildan-softstyle-midweight-sweat-adult-hoodie | 52 |
 | gildan-heavy-blend-hooded-sweatshirt | 50 |
 | stedman-classic-t-v-neck-for-women | 49 |
+| gildan-ultra-cotton-t-shirt | 45 |
 | stedman-classic-t-v-neck | 45 |
-| gildan-ultra-cotton-t-shirt | 44 |
 | bundc-my-polo-180 | 39 |
 | stedman-classic-t-for-women | 38 |
 | stedman-clive-crew-neck | 23 |
@@ -147,6 +140,7 @@ Hersteller-Mediathek und das Wayback-Archiv abgesucht. Vollständig in
 | bundc-microfleece-duo-id501-women | 4 |
 | earthpositive-unisex-organic-pullover-hood-ep | 3 |
 | neutral-unisex-performance-t-shirt | 3 |
+| russell-ladies-pure-organic-heavy-tee | 3 |
 | bundc-t-shirt-e150-women | 3 |
 | russell-men-s-classic-cotton-polo | 3 |
 | bundc-mens-t-shirt-e190-long-sleeve-exact | 3 |

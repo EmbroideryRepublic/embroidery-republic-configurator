@@ -861,12 +861,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "navy": {
       "views": {
-        "front": "/products/fotl-ladies-iconic195-t-navy/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-navy/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-navy/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-navy/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
@@ -7015,7 +7013,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "tan": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-tan/front.webp",
-        "back": "/products/gildan-ultra-cotton-t-shirt-tan/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -12858,8 +12856,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/sleeve-left.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -13057,7 +13054,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-grey-heather": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/back.webp",
+        "back": "/products/_platzhalter/platzhalter.webp",
         "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/sleeve-left.webp"
       },
       "status": "real"

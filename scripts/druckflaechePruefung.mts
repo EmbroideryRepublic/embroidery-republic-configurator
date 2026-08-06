@@ -54,16 +54,35 @@ for (const p of PRODUCTS) {
     geprueft++;
     const y0 = Math.round((a.y0 / 100) * prof.h);
     const y1 = Math.round((a.y1 / 100) * prof.h);
-    let ueberL = 0;
-    let ueberR = 0;
-    for (let y = y0; y < y1; y++) {
+    // Denselben Saum-Toleranzbereich ausnehmen, den der Generator beim
+    // Platzieren der Fläche bereits anwendet (generatePrintAreaData.mts):
+    // Der Stoff läuft am unteren Rand in einer Kurve zusammen, das ist keine
+    // seitliche Begrenzung. Ohne diesen Gleichlauf meldet die Prüfung genau
+    // die letzten Pixel vor dem Saum als „Überstand", obwohl der Generator sie
+    // absichtlich schon ausgenommen hat – eine Prüfung, die strenger misst als
+    // das, wonach die Fläche gebaut wurde, prüft am Ergebnis vorbei.
+    const bel = prof.zeilen.filter((z) => z.breite > 0);
+    const saumAb = bel.length ? bel[bel.length - 1]!.y - Math.round(prof.h * 0.03) : Infinity;
+    // Ebenso das PERZENTIL statt des strikten Extremwerts: Der Generator
+    // toleriert vereinzelte Ausreißerzeilen (Falte, Schatten) und hält nur
+    // eine anhaltende Verengung für eine echte Kante. Sammelt zunächst alle
+    // Zeilen, wertet danach aus – so bleibt exakt dieselbe Regel wie dort.
+    const werte: { l: number; r: number }[] = [];
+    for (let y = y0; y < Math.min(y1, saumAb); y++) {
       const z = prof.zeilen[y];
       if (!z || z.breite === 0) continue;
-      ueberL = Math.max(ueberL, ((z.links - (a.x0 / 100) * prof.w) / prof.w) * 100);
-      ueberR = Math.max(ueberR, (((a.x1 / 100) * prof.w - z.rechts) / prof.w) * 100);
+      werte.push({ l: z.links, r: z.rechts });
     }
-    if (ueberL > tol) befunde.push({ id: p.id, farbe: c.id, ueber: ueberL, seite: 'links' });
-    if (ueberR > tol) befunde.push({ id: p.id, farbe: c.id, ueber: ueberR, seite: 'rechts' });
+    if (werte.length > 20) {
+      const linksSortiert = [...werte].sort((x, y) => x.l - y.l);
+      const rechtsSortiert = [...werte].sort((x, y) => x.r - y.r);
+      const engL = linksSortiert[Math.floor(linksSortiert.length * 0.98)]!.l;
+      const engR = rechtsSortiert[Math.floor(rechtsSortiert.length * 0.02)]!.r;
+      const ueberL = ((engL - (a.x0 / 100) * prof.w) / prof.w) * 100;
+      const ueberR = (((a.x1 / 100) * prof.w - engR) / prof.w) * 100;
+      if (ueberL > tol) befunde.push({ id: p.id, farbe: c.id, ueber: ueberL, seite: 'links' });
+      if (ueberR > tol) befunde.push({ id: p.id, farbe: c.id, ueber: ueberR, seite: 'rechts' });
+    }
   }
 }
 

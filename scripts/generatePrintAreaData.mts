@@ -255,6 +255,16 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   // darf die Flaeche anschliessend noch vergroessern (groesstmoegliches
   // Rechteck auf dem Rumpf), niemals verkleinern.
 
+  // ── Stedman Classic-T for Women: Saum beginnt früher sichtbar als bei den
+  // übrigen 29 Farben ──────────────────────────────────────────────────
+  // Bei Weiß ist der Saumbogen schon ab y≈73 % als Falte erkennbar (geringer
+  // Kontrast zu den anderen Farben, wo er erst ab y≈83 % einschnürt). Die
+  // Schnittmenge über alle Farben lässt den Wert deshalb rechnerisch bis
+  // y1=82,2 % zu, während Weiß dort schon 9 % über die Kante ragt. y1 auf 76 %
+  // gekappt – geprüft: Weiß misst dort einzeln noch links 30,8 %/rechts 64,7 %,
+  // die Fläche (33,8/65,2) bleibt mit Sicherheitsabstand innerhalb.
+  'stedman-classic-t-for-women-back': { y1: 76 },
+
   // ── Raglan mit Kontrastaermeln ───────────────────────────────────────
   // Die Rumpfkante ist hier keine Silhouettenkante, sondern eine FARBGRENZE
   // (weisser Rumpf, navy Aermel). Die Silhouettenmessung sieht beides als
@@ -918,25 +928,49 @@ for (const p of PRODUCTS) {
     // Variante über die Kante ragt, wird für alle eingezogen. Das ist genau
     // die Zusage „nie über die Seitennaht hinaus" – jetzt auf der gesamten
     // Höhe der Fläche statt nur im Torso.
+    //
+    // NICHT als striktes Minimum/Maximum über alle Zeilen – ein einzelner
+    // Schatten- oder Faltenwurf reicht sonst, um die Fläche für ein ganzes
+    // Produkt zu verengen. Gemessen beim Stedman Classic-T for Women in Weiß:
+    // bei y=78,8–79,6 % (zwei von über 500 Zeilen) sackte die rechte Kante auf
+    // 55–56 % ein und erholte sich sofort wieder auf 75 % – die Fläche schrumpfte
+    // dadurch von 22,6 cm (Vorderseite) auf 11,1 cm. Statt des Extremwerts zählt
+    // deshalb ein PERZENTIL (2 %): Vereinzelte Ausreißerzeilen – Falte, Schatten,
+    // Naht-Detail – bleiben ohne Wirkung; eine über mehrere Zeilen anhaltende
+    // Verengung (echte Kontur, siehe Saumkurve oben) schlägt weiterhin durch.
     if (!istAermel) {
       const naht = ABSTAND.seitennaht * pxProCm;
-      let engL = 0;
-      let engR = w;
+      const linksWerte: number[] = [];
+      const rechtsWerte: number[] = [];
       for (const prof of profile) {
         const skalaY = prof.h / h;
         const skalaX = prof.w / w;
         const vy0 = Math.max(0, Math.round(y0px * skalaY));
         const vy1 = Math.min(prof.h - 1, Math.round(y1px * skalaY));
-        for (let y = vy0; y <= vy1; y++) {
+        // Den SAUM dieser Variante weiterhin ausnehmen: Der Stoff läuft dort in
+        // einer Kurve zusammen (rundet zur Mitte, manchmal zum Zipfel) – eine
+        // anhaltende, keine punktuelle Verengung, die auch ein Perzentil nicht
+        // zuverlässig herausrechnet. Siehe Herleitung: FOTL Iconic 195 in Navy.
+        const bel = prof.zeilen.filter((z) => z.breite > 0);
+        const saumAb = bel.length ? bel[bel.length - 1]!.y - Math.round(prof.h * 0.03) : Infinity;
+        for (let y = vy0; y <= Math.min(vy1, saumAb); y++) {
           const z = prof.zeilen[y];
           if (!z || z.breite === 0) continue;
-          engL = Math.max(engL, z.links / skalaX);
-          engR = Math.min(engR, z.rechts / skalaX);
+          linksWerte.push(z.links / skalaX);
+          rechtsWerte.push(z.rechts / skalaX);
         }
       }
-      if (engR > engL) {
-        x0px = Math.max(x0px, engL + naht);
-        x1px = Math.min(x1px, engR - naht);
+      const perzentil = (werte: number[], p: number) => {
+        const sortiert = [...werte].sort((a, b) => a - b);
+        return sortiert[Math.floor(sortiert.length * p)]!;
+      };
+      if (linksWerte.length > 20) {
+        const engL = perzentil(linksWerte, 0.98); // 98. Perzentil = enge Kante von links
+        const engR = perzentil(rechtsWerte, 0.02); // 2. Perzentil = enge Kante von rechts
+        if (engR > engL) {
+          x0px = Math.max(x0px, engL + naht);
+          x1px = Math.min(x1px, engR - naht);
+        }
       }
     }
 

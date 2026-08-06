@@ -49,6 +49,23 @@ test('die Vorderansicht jeder wählbaren Farbe ist kein Platzhalter', () => {
   assert.deepEqual(schlecht, []);
 });
 
+test('die Ansichtenleiste springt beim Farbwechsel nicht', () => {
+  // Was der Kunde erlebt: Er klickt sich durch die Farben, und die Reiter über
+  // dem Bild bleiben dieselben. Eine Ansicht, die nur bei manchen Farben
+  // auftaucht, sieht nach Fehler aus – nicht nach Datenlage.
+  const springt: string[] = [];
+  for (const p of PRODUCTS) {
+    const farben = waehlbareFarben(p.id, p.colors);
+    if (farben.length < 2) continue;
+    const erste = sichtbareAnsichten(p, farben[0]!.id).join(',');
+    for (const f of farben.slice(1)) {
+      const jetzt = sichtbareAnsichten(p, f.id).join(',');
+      if (jetzt !== erste) springt.push(`${p.id}: ${farben[0]!.id}=[${erste}] vs ${f.id}=[${jetzt}]`);
+    }
+  }
+  assert.deepEqual(springt.slice(0, 10), []);
+});
+
 test('jede gezeigte Ansicht einer wählbaren Farbe hat ein Bild', () => {
   // Ausnahme mit Ansage: `back` darf der neutrale Platzhalter sein, damit
   // Rückendruck buchbar bleibt, auch wo der Händler kein Rückenfoto führt.

@@ -3,6 +3,7 @@ import type { PrintView } from '@/types';
 import { PRINT_AREA_DATA } from '@/config/printAreaData';
 import { sortierePositionen, istGueltigeView } from '@/config/decorationPositions';
 import { resolveColorImages } from '@/lib/assets';
+import { waehlbareFarben } from './farben';
 
 /**
  * EINZIGE Laufzeit-Quelle „welche Druckansichten hat dieses Produkt".
@@ -54,8 +55,34 @@ export function sichtbareAnsichten(product: ProductConfig, colorId: string | nul
   const gefuehrt = ansichtenVon(product);
   if (!colorId) return gefuehrt;
   const vorhanden = resolveColorImages(product.id, colorId);
-  const sichtbar = gefuehrt.filter((v) => vorhanden[v]);
+  const sichtbar = gefuehrt.filter((v) => vorhanden[v] && (!AERMEL.has(v) || aermelVollstaendig(product, v)));
   // Ohne jedes Bild (Farbe ganz ohne Fotos) lieber die geführten Ansichten
   // zeigen als eine leere Ansichtenleiste.
   return sichtbar.length ? sichtbar : gefuehrt;
+}
+
+const AERMEL = new Set<string>(['sleeve_left', 'sleeve_right']);
+
+/**
+ * Ärmelansichten werden nur produktweit angeboten – entweder für JEDE wählbare
+ * Farbe oder für keine.
+ *
+ * Grund: Die Händler fotografieren Ärmel unsystematisch. Ohne diese Regel führte
+ * z.B. das Neutral Ladies' Fit T-Shirt bei genau 1 von 31 Farben einen Reiter
+ * „Ärmel links", der beim Weiterklicken wieder verschwand. Für den Kunden sieht
+ * das nicht nach Datenlage aus, sondern nach einem Fehler. Lieber eine Ansicht
+ * weniger als eine, die springt; sobald der Bildimport die Lücke schließt,
+ * erscheint sie von selbst wieder für alle Farben.
+ */
+const aermelCache = new WeakMap<ProductConfig, Map<string, boolean>>();
+
+function aermelVollstaendig(product: ProductConfig, view: PrintView): boolean {
+  let proProdukt = aermelCache.get(product);
+  if (!proProdukt) aermelCache.set(product, (proProdukt = new Map()));
+  const gecacht = proProdukt.get(view);
+  if (gecacht !== undefined) return gecacht;
+  const farben = waehlbareFarben(product.id, product.colors);
+  const alle = farben.length > 0 && farben.every((c) => resolveColorImages(product.id, c.id)[view]);
+  proProdukt.set(view, alle);
+  return alle;
 }

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "stedman-clive-crew-neck",
+    "marke": "Stedman",
+    "name": "Clive Crew Neck",
+    "typ": "sweater",
+    "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+    "muster": null,
+    "klappt": "white,navy-blue,grey-heather,scarlet-red",
+    "fehlend": "black-opal|Black Opal|#000000 ; blue-midnight|Blue Midnight|#180A29",
+    "hinweis": "KORREKTURAUFTRAG: Diese beiden Farben zeigen im Shop AKTUELL DASSELBE Bild (bytegleich). Black Opal und Blue Midnight sind zwei verschiedene Stedman-Farben; eine der beiden Zuordnungen ist falsch. Ermittle fuer BEIDE die jeweils richtige, eigene Datei und liefere zwei nachweislich verschiedene Bilder (Bytegroessen vergleichen). Findest du fuer eine der beiden nachweislich keine eigene Aufnahme, melde sie unter nichtBeschaffbar - dann wird sie im Shop ausgeblendet, statt zweimal dasselbe zu zeigen."
+  },
+  {
+    "id": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "marke": "SOL'S",
+    "name": "Men`s Long Sleeve T-Shirt Imperial",
+    "typ": "longsleeve",
+    "quelle": "assets.myworkwear.co.uk bzw. s7g3.scene7.com (SOL'S Markenbilder)",
+    "muster": null,
+    "klappt": "french-navy,white,red,royal-blue",
+    "fehlend": "charcoal-melange|Charcoal Melange|#040F13 ; deep-black|Deep Black|#000000",
+    "hinweis": "KORREKTURAUFTRAG: Diese beiden Farben zeigen im Shop AKTUELL DASSELBE Bild (bytegleich). Charcoal Melange (meliert) und Deep Black (uni) sind zwei verschiedene SOL'S-Farben; eine der beiden Zuordnungen ist falsch. Ermittle fuer BEIDE die jeweils richtige, eigene Datei und liefere zwei nachweislich verschiedene Bilder (Bytegroessen vergleichen). Findest du fuer eine der beiden nachweislich keine eigene Aufnahme, melde sie unter nichtBeschaffbar - dann wird sie im Shop ausgeblendet, statt zweimal dasselbe zu zeigen."
+  }
+]

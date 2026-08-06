@@ -55,6 +55,7 @@ if (!Array.isArray(ergebnisse)) throw new Error('Kein Ergebnis-Array in der Ausg
 
 const jobs = [];
 const offen = [];
+const onModel = [];
 let farben = 0;
 
 let ohneFront = 0;
@@ -80,13 +81,21 @@ for (const e of ergebnisse) {
   for (const n of e.nichtBeschaffbar ?? []) {
     if (n?.id) offen.push({ productId: e.productId, colorId: n.id, grund: n.grund ?? '' });
   }
+  // On-Model-Aufnahmen sind die dokumentierte Ausnahme: erlaubt nur, wo kein
+  // Freisteller existiert. Sie gehören in den Abschlussbericht, nicht in eine
+  // stille Ecke – deshalb hier mitgeschrieben.
+  for (const c of colors) {
+    if (c.onModel) onModel.push({ productId: e.productId, colorId: c.id, quelle: e.quelle ?? '' });
+  }
 }
 
 const zielJobs = `scripts/import/directJobs_${tag}.json`;
 const zielOffen = `scripts/import/nichtbeschaffbar_${tag}.json`;
+const zielOnModel = `scripts/import/onmodel_${tag}.json`;
 writeFileSync(zielJobs, JSON.stringify(jobs, null, 2));
 writeFileSync(zielOffen, JSON.stringify(offen, null, 2));
 console.log(`${jobs.length} Produkte · ${farben} Farben → ${zielJobs}`);
 if (ohneFront) console.log(`${ohneFront} Farben ausgelassen: keine bekannte Front-URL (Altbestand)`);
+if (onModel.length) { writeFileSync(zielOnModel, JSON.stringify(onModel, null, 2)); console.log(`${onModel.length} On-Model-Ausnahmen → ${zielOnModel}`); }
 console.log(`${offen.length} nicht beschaffbar → ${zielOffen}`);
 for (const o of offen) console.log(`  ${o.productId}/${o.colorId}: ${o.grund.slice(0, 90)}`);

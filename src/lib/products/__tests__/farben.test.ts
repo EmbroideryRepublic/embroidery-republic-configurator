@@ -49,6 +49,21 @@ test('die Vorderansicht jeder wählbaren Farbe ist kein Platzhalter', () => {
   assert.deepEqual(schlecht, []);
 });
 
+test('keine Farbe wird zweimal angeboten', () => {
+  // Doppelte Katalogeinträge (dieselbe Herstellerfarbe einmal benannt, einmal
+  // nur als Hexwert) zeigten zwei Farbfelder mit demselben Foto dahinter.
+  for (const p of PRODUCTS) {
+    const farben = waehlbareFarben(p.id, p.colors);
+    const bilder = new Map<string, string>();
+    for (const f of farben) {
+      const front = bildFuerAnsicht(p.id, f.id, 'front');
+      if (!front) continue;
+      assert.ok(!bilder.has(front), `${p.id}: ${f.id} zeigt dasselbe Bild wie ${bilder.get(front)}`);
+      bilder.set(front, f.id);
+    }
+  }
+});
+
 test('die Ansichtenleiste springt beim Farbwechsel nicht', () => {
   // Was der Kunde erlebt: Er klickt sich durch die Farben, und die Reiter über
   // dem Bild bleiben dieselben. Eine Ansicht, die nur bei manchen Farben

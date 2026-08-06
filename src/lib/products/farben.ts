@@ -1,4 +1,5 @@
 import { assetVerfuegbarkeit } from '@/lib/assets';
+import { FARBDUBLETTEN } from '@/config/farbdubletten.generated';
 
 /**
  * Farben, die dem Kunden zur AUSWAHL gestellt werden dürfen.
@@ -26,6 +27,12 @@ export function waehlbareFarben<T extends { id: string }>(
   productId: string,
   colors: readonly T[]
 ): readonly T[] {
-  const mitFoto = colors.filter((c) => assetVerfuegbarkeit(productId, c.id) === 'vorhanden');
+  // Zusätzlich fallen Farben weg, die eine andere Farbe desselben Produkts
+  // bytegleich wiederholen (doppelte Katalogeinträge, siehe FARBDUBLETTEN) –
+  // zwei Farbfelder mit demselben Foto dahinter sind für den Kunden ein Fehler.
+  const doppelt = FARBDUBLETTEN[productId];
+  const mitFoto = colors.filter(
+    (c) => assetVerfuegbarkeit(productId, c.id) === 'vorhanden' && !doppelt?.includes(c.id)
+  );
   return mitFoto.length ? mitFoto : colors;
 }

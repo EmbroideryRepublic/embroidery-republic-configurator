@@ -1,0 +1,8151 @@
+[
+ {
+  "id": "gildan-ultra-cotton-t-shirt",
+  "brand": "Gildan",
+  "name": "Ultra Cotton T-Shirt",
+  "typ": "tshirt",
+  "quelle": "teamshirts.com (Spreadshirt-Medienserver)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "navy",
+   "forest-green",
+   "black",
+   "red",
+   "royal",
+   "sport-grey-heather",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "metro-blue",
+    "name": "Metro Blue",
+    "hex": "#264583"
+   },
+   {
+    "id": "dark-chocolate",
+    "name": "Dark Chocolate",
+    "hex": "#423238"
+   },
+   {
+    "id": "stone-blue",
+    "name": "Stone Blue",
+    "hex": "#788995"
+   },
+   {
+    "id": "azalea",
+    "name": "Azalea",
+    "hex": "#D977A9"
+   },
+   {
+    "id": "blue-dusk",
+    "name": "Blue Dusk",
+    "hex": "#3C4652"
+   },
+   {
+    "id": "cardinal-red",
+    "name": "Cardinal Red",
+    "hex": "#8D2838"
+   },
+   {
+    "id": "carolina-blue",
+    "name": "Carolina Blue",
+    "hex": "#79A0C6"
+   },
+   {
+    "id": "charcoal-solid",
+    "name": "Charcoal (Solid)",
+    "hex": "#66676C"
+   },
+   {
+    "id": "cherry-red",
+    "name": "Cherry Red",
+    "hex": "#AC2B37"
+   },
+   {
+    "id": "cornsilk",
+    "name": "Cornsilk",
+    "hex": "#F0EC74"
+   },
+   {
+    "id": "daisy",
+    "name": "Daisy",
+    "hex": "#F6D03A"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3F4444"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#EEAD1A"
+   },
+   {
+    "id": "heather-cardinal",
+    "name": "Heather Cardinal",
+    "hex": "#9B2743"
+   },
+   {
+    "id": "heather-navy",
+    "name": "Heather Navy",
+    "hex": "#333F48"
+   },
+   {
+    "id": "heliconia",
+    "name": "Heliconia",
+    "hex": "#DB3E79"
+   },
+   {
+    "id": "ice-grey-solid",
+    "name": "Ice Grey (Solid)",
+    "hex": "#CBC4BD"
+   },
+   {
+    "id": "indigo-blue",
+    "name": "Indigo Blue",
+    "hex": "#486D87"
+   },
+   {
+    "id": "iris",
+    "name": "Iris",
+    "hex": "#3975B7"
+   },
+   {
+    "id": "irish-green",
+    "name": "Irish Green",
+    "hex": "#009E69"
+   },
+   {
+    "id": "jade-dome",
+    "name": "Jade Dome",
+    "hex": "#008E85"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#00805E"
+   },
+   {
+    "id": "kiwi",
+    "name": "Kiwi",
+    "hex": "#A3A76D"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#A3B3CB"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#E4BED2"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#92BF55"
+   },
+   {
+    "id": "maroon",
+    "name": "Maroon",
+    "hex": "#5B2B42"
+   },
+   {
+    "id": "military-green",
+    "name": "Military Green",
+    "hex": "#63655A"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#DCD6C1"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#5E534E"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#DF6426"
+   },
+   {
+    "id": "orchid",
+    "name": "Orchid",
+    "hex": "#C9AFCF"
+   },
+   {
+    "id": "pistachio",
+    "name": "Pistachio",
+    "hex": "#BDC293"
+   },
+   {
+    "id": "prairie-dust",
+    "name": "Prairie Dust",
+    "hex": "#90857B"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#5D396F"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#CABFAD"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#0077B5"
+   },
+   {
+    "id": "sky",
+    "name": "Sky",
+    "hex": "#87CBD8"
+   },
+   {
+    "id": "tan",
+    "name": "Tan",
+    "hex": "#B29E69"
+   },
+   {
+    "id": "tangerine",
+    "name": "Tangerine",
+    "hex": "#E9954B"
+   },
+   {
+    "id": "texas-orange",
+    "name": "Texas Orange",
+    "hex": "#B65A30"
+   },
+   {
+    "id": "vegas-gold",
+    "name": "Vegas Gold",
+    "hex": "#F4D1A1"
+   },
+   {
+    "id": "ash-grey-heather",
+    "name": "Ash Grey (Heather)",
+    "hex": "#C8C9C7"
+   },
+   {
+    "id": "safety-green-neon",
+    "name": "Safety Green (Neon)",
+    "hex": "#C6D218"
+   },
+   {
+    "id": "safety-orange-neon",
+    "name": "Safety Orange (Neon)",
+    "hex": "#FF7800"
+   }
+  ]
+ },
+ {
+  "id": "gildan-heavy-blend-hooded-sweatshirt",
+  "brand": "Gildan",
+  "name": "Heavy Blend Hooded Sweatshirt",
+  "typ": "hoodie",
+  "quelle": "teamshirts.com (Spreadshirt-Medienserver)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "black",
+   "sport-grey-heather",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "navy",
+    "name": "Navy",
+    "hex": "#263147"
+   },
+   {
+    "id": "dark-chocolate",
+    "name": "Dark Chocolate",
+    "hex": "#423238"
+   },
+   {
+    "id": "graphite-heather",
+    "name": "Graphite Heather",
+    "hex": "#707372"
+   },
+   {
+    "id": "azalea",
+    "name": "Azalea",
+    "hex": "#D977A9"
+   },
+   {
+    "id": "mint-green",
+    "name": "Mint Green",
+    "hex": "#A0CFAB"
+   },
+   {
+    "id": "old-gold",
+    "name": "Old Gold",
+    "hex": "#CA9F75"
+   },
+   {
+    "id": "orchid",
+    "name": "Orchid",
+    "hex": "#C9AFCF"
+   },
+   {
+    "id": "b23730",
+    "name": "B23730",
+    "hex": "#B23730"
+   },
+   {
+    "id": "violet",
+    "name": "Violet",
+    "hex": "#8381BA"
+   },
+   {
+    "id": "antique-cherry-red-heather",
+    "name": "Antique Cherry Red (Heather)",
+    "hex": "#971B2F"
+   },
+   {
+    "id": "antique-sapphire-heather",
+    "name": "Antique Sapphire (Heather)",
+    "hex": "#006A8E"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#C8C9C7"
+   },
+   {
+    "id": "carolina-blue",
+    "name": "Carolina Blue",
+    "hex": "#79A0C6"
+   },
+   {
+    "id": "charcoal-solid",
+    "name": "Charcoal (Solid)",
+    "hex": "#66676C"
+   },
+   {
+    "id": "cherry-red",
+    "name": "Cherry Red",
+    "hex": "#AC2B37"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3F4444"
+   },
+   {
+    "id": "forest-green",
+    "name": "Forest Green",
+    "hex": "#273B33"
+   },
+   {
+    "id": "garnet",
+    "name": "Garnet",
+    "hex": "#7D2935"
+   },
+   {
+    "id": "eead1a",
+    "name": "EEAD1A",
+    "hex": "#EEAD1A"
+   },
+   {
+    "id": "heliconia",
+    "name": "Heliconia",
+    "hex": "#DB3E79"
+   },
+   {
+    "id": "indigo-blue",
+    "name": "Indigo Blue",
+    "hex": "#486D87"
+   },
+   {
+    "id": "irish-green",
+    "name": "Irish Green",
+    "hex": "#009E69"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#A3B3CB"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#E4BED2"
+   },
+   {
+    "id": "maroon",
+    "name": "Maroon",
+    "hex": "#5B2B42"
+   },
+   {
+    "id": "military-green",
+    "name": "Military Green",
+    "hex": "#63655A"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#DF6426"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#5D396F"
+   },
+   {
+    "id": "safety-green",
+    "name": "Safety Green",
+    "hex": "#C6D219"
+   },
+   {
+    "id": "safety-orange",
+    "name": "Safety Orange",
+    "hex": "#E5801C"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#CABFAD"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#0077B5"
+   },
+   {
+    "id": "005683",
+    "name": "005683",
+    "hex": "#005683"
+   },
+   {
+    "id": "205c40",
+    "name": "205C40",
+    "hex": "#205C40"
+   },
+   {
+    "id": "1c3775",
+    "name": "1C3775",
+    "hex": "#1C3775"
+   },
+   {
+    "id": "red",
+    "name": "Red",
+    "hex": "#B1302A"
+   },
+   {
+    "id": "royal",
+    "name": "Royal",
+    "hex": "#224D8F"
+   }
+  ]
+ },
+ {
+  "id": "bundc-t-shirt-e150",
+  "brand": "B&C",
+  "name": "T-Shirt #E150",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white",
+   "black",
+   "royal-blue",
+   "sport-grey-heather",
+   "red",
+   "bottle-green",
+   "navy"
+  ],
+  "fehlend": [
+   {
+    "id": "101145",
+    "name": "101145",
+    "hex": "#101145"
+   },
+   {
+    "id": "cobalt-blue",
+    "name": "Cobalt Blue",
+    "hex": "#375885"
+   },
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#F5F1E8"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#EBDFCA"
+   },
+   {
+    "id": "solar-yellow",
+    "name": "Solar Yellow",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FCC643"
+   },
+   {
+    "id": "apricot",
+    "name": "Apricot",
+    "hex": "#F6A800"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "fire-red",
+    "name": "Fire Red",
+    "hex": "#E30411"
+   },
+   {
+    "id": "deep-red",
+    "name": "Deep Red",
+    "hex": "#C50B2E"
+   },
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#D40050"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#96D3E2"
+   },
+   {
+    "id": "atoll",
+    "name": "Atoll",
+    "hex": "#0092C3"
+   },
+   {
+    "id": "real-turquoise",
+    "name": "Real Turquoise",
+    "hex": "#0098A1"
+   },
+   {
+    "id": "diva-blue",
+    "name": "Diva Blue",
+    "hex": "#007088"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#7AB2DC"
+   },
+   {
+    "id": "azure",
+    "name": "Azure",
+    "hex": "#4A96CD"
+   },
+   {
+    "id": "denim",
+    "name": "Denim",
+    "hex": "#5E7898"
+   },
+   {
+    "id": "light-navy",
+    "name": "Light Navy",
+    "hex": "#003157"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "pistachio",
+    "name": "Pistachio",
+    "hex": "#BECD6C"
+   },
+   {
+    "id": "orchid-green",
+    "name": "Orchid Green",
+    "hex": "#99C32E"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#009149"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#E3E4E4"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "used-black",
+    "name": "Used Black",
+    "hex": "#1A232D"
+   },
+   {
+    "id": "bear-brown",
+    "name": "Bear Brown",
+    "hex": "#4E403A"
+   },
+   {
+    "id": "urban-purple",
+    "name": "Urban Purple",
+    "hex": "#2A094E"
+   },
+   {
+    "id": "electric-blue",
+    "name": "Electric Blue",
+    "hex": "#17286E"
+   },
+   {
+    "id": "urban-black",
+    "name": "Urban Black",
+    "hex": "#070508"
+   },
+   {
+    "id": "millennial-pink",
+    "name": "Millennial Pink",
+    "hex": "#D1ABA0"
+   },
+   {
+    "id": "millennial-khaki",
+    "name": "Millennial Khaki",
+    "hex": "#585B55"
+   }
+  ]
+ },
+ {
+  "id": "bundc-t-shirt-e150-women",
+  "brand": "B&C",
+  "name": "T-Shirt #E150 / Women",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white",
+   "black",
+   "royal-blue",
+   "red",
+   "sport-grey-heather",
+   "kelly-green",
+   "navy"
+  ],
+  "fehlend": [
+   {
+    "id": "urban-navy",
+    "name": "Urban Navy",
+    "hex": "#101146"
+   },
+   {
+    "id": "cobalt-blue",
+    "name": "Cobalt Blue",
+    "hex": "#375885"
+   },
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#F5F1E8"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#EBDFCA"
+   },
+   {
+    "id": "millennial-pink",
+    "name": "Millennial Pink",
+    "hex": "#D1ABA0"
+   },
+   {
+    "id": "solar-yellow",
+    "name": "Solar Yellow",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FCC643"
+   },
+   {
+    "id": "apricot",
+    "name": "Apricot",
+    "hex": "#F6A800"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "fire-red",
+    "name": "Fire Red",
+    "hex": "#E30411"
+   },
+   {
+    "id": "deep-red",
+    "name": "Deep Red",
+    "hex": "#C50B2E"
+   },
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#D40050"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#96D3E2"
+   },
+   {
+    "id": "atoll",
+    "name": "Atoll",
+    "hex": "#0092C3"
+   },
+   {
+    "id": "real-turquoise",
+    "name": "Real Turquoise",
+    "hex": "#0098A1"
+   },
+   {
+    "id": "diva-blue",
+    "name": "Diva Blue",
+    "hex": "#007088"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#7AB2DC"
+   },
+   {
+    "id": "azure",
+    "name": "Azure",
+    "hex": "#4A96CD"
+   },
+   {
+    "id": "denim",
+    "name": "Denim",
+    "hex": "#5E7898"
+   },
+   {
+    "id": "light-navy",
+    "name": "Light Navy",
+    "hex": "#003157"
+   },
+   {
+    "id": "electric-blue",
+    "name": "Electric Blue",
+    "hex": "#17286E"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "urban-purple",
+    "name": "Urban Purple",
+    "hex": "#2A094E"
+   },
+   {
+    "id": "pistachio",
+    "name": "Pistachio",
+    "hex": "#BECD6C"
+   },
+   {
+    "id": "orchid-green",
+    "name": "Orchid Green",
+    "hex": "#99C32E"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#004413"
+   },
+   {
+    "id": "millennial-khaki",
+    "name": "Millennial Khaki",
+    "hex": "#585B55"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#E3E4E4"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "used-black",
+    "name": "Used Black",
+    "hex": "#1A232D"
+   },
+   {
+    "id": "urban-black",
+    "name": "Urban Black",
+    "hex": "#070508"
+   },
+   {
+    "id": "bear-brown",
+    "name": "Bear Brown",
+    "hex": "#4E403A"
+   }
+  ]
+ },
+ {
+  "id": "bundc-t-shirt-e190",
+  "brand": "B&C",
+  "name": "T-Shirt #E190",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "navy-blue",
+   "white",
+   "black",
+   "sport-grey-heather",
+   "royal-blue",
+   "red",
+   "kelly-green"
+  ],
+  "fehlend": [
+   {
+    "id": "cobalt-blue",
+    "name": "Cobalt Blue",
+    "hex": "#375885"
+   },
+   {
+    "id": "stone-blue",
+    "name": "Stone Blue",
+    "hex": "#417499"
+   },
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "navy",
+    "name": "Navy",
+    "hex": "#1F2532"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#F5F1E8"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#EBDFCA"
+   },
+   {
+    "id": "solar-yellow",
+    "name": "Solar Yellow",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FCC643"
+   },
+   {
+    "id": "apricot",
+    "name": "Apricot",
+    "hex": "#F6A800"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "urban-orange",
+    "name": "Urban Orange",
+    "hex": "#CC4F00"
+   },
+   {
+    "id": "sunset-orange",
+    "name": "Sunset Orange",
+    "hex": "#E74C33"
+   },
+   {
+    "id": "fire-red",
+    "name": "Fire Red",
+    "hex": "#E30411"
+   },
+   {
+    "id": "orchid-pink",
+    "name": "Orchid Pink",
+    "hex": "#FBE0E4"
+   },
+   {
+    "id": "sorbet",
+    "name": "Sorbet",
+    "hex": "#CC005C"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "swimming-pool",
+    "name": "Swimming Pool",
+    "hex": "#2DAEC4"
+   },
+   {
+    "id": "atoll",
+    "name": "Atoll",
+    "hex": "#0092C3"
+   },
+   {
+    "id": "diva-blue",
+    "name": "Diva Blue",
+    "hex": "#007088"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#7AB2DC"
+   },
+   {
+    "id": "millennial-lilac",
+    "name": "Millennial Lilac",
+    "hex": "#6B629A"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "urban-purple",
+    "name": "Urban Purple",
+    "hex": "#2A094E"
+   },
+   {
+    "id": "pixel-lime",
+    "name": "Pixel Lime",
+    "hex": "#D6FF00"
+   },
+   {
+    "id": "orchid-green",
+    "name": "Orchid Green",
+    "hex": "#99C32E"
+   },
+   {
+    "id": "millennial-mint",
+    "name": "Millennial Mint",
+    "hex": "#91C0BA"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#004413"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#E3E4E4"
+   },
+   {
+    "id": "pacific-grey",
+    "name": "Pacific Grey",
+    "hex": "#C0C3C4"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "used-black",
+    "name": "Used Black",
+    "hex": "#1A232D"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#461A11"
+   },
+   {
+    "id": "chocolate",
+    "name": "Chocolate",
+    "hex": "#7E593C"
+   }
+  ]
+ },
+ {
+  "id": "bundc-t-shirt-e190-women",
+  "brand": "B&C",
+  "name": "T-Shirt #E190 / Women",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white",
+   "black",
+   "navy",
+   "sport-grey-heather",
+   "royal-blue",
+   "red",
+   "kelly-green"
+  ],
+  "fehlend": [
+   {
+    "id": "urban-navy",
+    "name": "Urban Navy",
+    "hex": "#101146"
+   },
+   {
+    "id": "cobalt-blue",
+    "name": "Cobalt Blue",
+    "hex": "#375885"
+   },
+   {
+    "id": "stone-blue",
+    "name": "Stone Blue",
+    "hex": "#417499"
+   },
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#F5F1E8"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#EBDFCA"
+   },
+   {
+    "id": "solar-yellow",
+    "name": "Solar Yellow",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FCC643"
+   },
+   {
+    "id": "apricot",
+    "name": "Apricot",
+    "hex": "#F6A800"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "urban-orange",
+    "name": "Urban Orange",
+    "hex": "#CC4F00"
+   },
+   {
+    "id": "fire-red",
+    "name": "Fire Red",
+    "hex": "#E30411"
+   },
+   {
+    "id": "sunset-orange",
+    "name": "Sunset Orange",
+    "hex": "#E74C33"
+   },
+   {
+    "id": "orchid-pink",
+    "name": "Orchid Pink",
+    "hex": "#FBE0E4"
+   },
+   {
+    "id": "sorbet",
+    "name": "Sorbet",
+    "hex": "#CC005C"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "swimming-pool",
+    "name": "Swimming Pool",
+    "hex": "#2DAEC4"
+   },
+   {
+    "id": "atoll",
+    "name": "Atoll",
+    "hex": "#0092C3"
+   },
+   {
+    "id": "diva-blue",
+    "name": "Diva Blue",
+    "hex": "#007088"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#7AB2DC"
+   },
+   {
+    "id": "millennial-lilac",
+    "name": "Millennial Lilac",
+    "hex": "#6B629A"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "urban-purple",
+    "name": "Urban Purple",
+    "hex": "#2A094E"
+   },
+   {
+    "id": "pixel-lime",
+    "name": "Pixel Lime",
+    "hex": "#D6FF00"
+   },
+   {
+    "id": "orchid-green",
+    "name": "Orchid Green",
+    "hex": "#99C32E"
+   },
+   {
+    "id": "millennial-mint",
+    "name": "Millennial Mint",
+    "hex": "#91C0BA"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#004413"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#E3E4E4"
+   },
+   {
+    "id": "pacific-grey",
+    "name": "Pacific Grey",
+    "hex": "#C0C3C4"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "used-black",
+    "name": "Used Black",
+    "hex": "#1A232D"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#461A11"
+   },
+   {
+    "id": "chocolate",
+    "name": "Chocolate",
+    "hex": "#7E593C"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-round-t-heavy",
+  "brand": "James+Nicholson",
+  "name": "Round-T Heavy",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_round_t_heavy_jn002_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "dark-green",
+   "grey-heather",
+   "navy",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "aubergine",
+    "name": "Aubergine",
+    "hex": "#272236"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#555239"
+   },
+   {
+    "id": "wine",
+    "name": "Wine",
+    "hex": "#830628"
+   },
+   {
+    "id": "acid-yellow",
+    "name": "Acid Yellow",
+    "hex": "#D7E076"
+   },
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#477AB8"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#C6CADD"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#5D4631"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#99A499"
+   },
+   {
+    "id": "dark-orange",
+    "name": "Dark Orange",
+    "hex": "#ED8800"
+   },
+   {
+    "id": "dark-royal",
+    "name": "Dark Royal",
+    "hex": "#004189"
+   },
+   {
+    "id": "fern-green",
+    "name": "Fern Green",
+    "hex": "#29B957"
+   },
+   {
+    "id": "gold-yellow",
+    "name": "Gold Yellow",
+    "hex": "#FBBF1F"
+   },
+   {
+    "id": "graphite-solid",
+    "name": "Graphite (Solid)",
+    "hex": "#4A4A4B"
+   },
+   {
+    "id": "grenadine",
+    "name": "Grenadine",
+    "hex": "#ED8E78"
+   },
+   {
+    "id": "irish-green",
+    "name": "Irish Green",
+    "hex": "#009930"
+   },
+   {
+    "id": "khaki",
+    "name": "Khaki",
+    "hex": "#8A794E"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#E0F2FB"
+   },
+   {
+    "id": "light-grey",
+    "name": "Light Grey",
+    "hex": "#E3E4E4"
+   },
+   {
+    "id": "light-yellow",
+    "name": "Light Yellow",
+    "hex": "#FFEE98"
+   },
+   {
+    "id": "lilac",
+    "name": "Lilac",
+    "hex": "#CCC6E1"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   },
+   {
+    "id": "mint",
+    "name": "Mint",
+    "hex": "#89C9CF"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   },
+   {
+    "id": "pacific",
+    "name": "Pacific",
+    "hex": "#007CB7"
+   },
+   {
+    "id": "petrol",
+    "name": "Petrol",
+    "hex": "#1E3248"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#E64370"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#8D5197"
+   },
+   {
+    "id": "rose",
+    "name": "Rose",
+    "hex": "#FBE5EF"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#A0D6F1"
+   },
+   {
+    "id": "stone",
+    "name": "Stone",
+    "hex": "#F5EDCF"
+   },
+   {
+    "id": "tomato",
+    "name": "Tomato",
+    "hex": "#B21F16"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#00A9CE"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFED00"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-ladies-basic-t",
+  "brand": "James+Nicholson",
+  "name": "Ladies` Basic-T",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_basic_t_jn8007_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "dark-green",
+   "grey-heather",
+   "navy",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "aubergine",
+    "name": "Aubergine",
+    "hex": "#272236"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#555239"
+   },
+   {
+    "id": "wine",
+    "name": "Wine",
+    "hex": "#830628"
+   },
+   {
+    "id": "acid-yellow",
+    "name": "Acid Yellow",
+    "hex": "#D7E076"
+   },
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#477AB8"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#C6CADD"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#5D4631"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#99A499"
+   },
+   {
+    "id": "dark-orange",
+    "name": "Dark Orange",
+    "hex": "#ED8800"
+   },
+   {
+    "id": "dark-royal",
+    "name": "Dark Royal",
+    "hex": "#004189"
+   },
+   {
+    "id": "fern-green",
+    "name": "Fern Green",
+    "hex": "#29B957"
+   },
+   {
+    "id": "gold-yellow",
+    "name": "Gold Yellow",
+    "hex": "#FBBF1F"
+   },
+   {
+    "id": "graphite-solid",
+    "name": "Graphite (Solid)",
+    "hex": "#4A4A4B"
+   },
+   {
+    "id": "grenadine",
+    "name": "Grenadine",
+    "hex": "#ED8E78"
+   },
+   {
+    "id": "irish-green",
+    "name": "Irish Green",
+    "hex": "#009930"
+   },
+   {
+    "id": "khaki",
+    "name": "Khaki",
+    "hex": "#8A794E"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#E0F2FB"
+   },
+   {
+    "id": "light-grey",
+    "name": "Light Grey",
+    "hex": "#E3E4E4"
+   },
+   {
+    "id": "light-yellow",
+    "name": "Light Yellow",
+    "hex": "#FFEE98"
+   },
+   {
+    "id": "lilac",
+    "name": "Lilac",
+    "hex": "#CCC6E1"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   },
+   {
+    "id": "mint",
+    "name": "Mint",
+    "hex": "#89C9CF"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   },
+   {
+    "id": "pacific",
+    "name": "Pacific",
+    "hex": "#007CB7"
+   },
+   {
+    "id": "petrol",
+    "name": "Petrol",
+    "hex": "#1E3248"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#E64370"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#8D5197"
+   },
+   {
+    "id": "rose",
+    "name": "Rose",
+    "hex": "#FBE5EF"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#A0D6F1"
+   },
+   {
+    "id": "stone",
+    "name": "Stone",
+    "hex": "#F5EDCF"
+   },
+   {
+    "id": "tomato",
+    "name": "Tomato",
+    "hex": "#B21F16"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#00A9CE"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFED00"
+   }
+  ]
+ },
+ {
+  "id": "stedman-stedman-classic-t",
+  "brand": "Stedman",
+  "name": "Stedman Classic-T",
+  "typ": "tshirt",
+  "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "slate-grey-solid",
+    "name": "Slate Grey (Solid)",
+    "hex": "#747679"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#D6DDDD"
+   },
+   {
+    "id": "black-opal",
+    "name": "Black Opal",
+    "hex": "#000000"
+   },
+   {
+    "id": "blue-midnight",
+    "name": "Blue Midnight",
+    "hex": "#180A29"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#293E11"
+   },
+   {
+    "id": "bright-royal",
+    "name": "Bright Royal",
+    "hex": "#2D428A"
+   },
+   {
+    "id": "burgundy-red",
+    "name": "Burgundy Red",
+    "hex": "#4B1325"
+   },
+   {
+    "id": "deep-berry",
+    "name": "Deep Berry",
+    "hex": "#4A3650"
+   },
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#A1A1A2"
+   },
+   {
+    "id": "hunters-green",
+    "name": "Hunters Green",
+    "hex": "#505A2A"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#1C9A2C"
+   },
+   {
+    "id": "kiwi-green",
+    "name": "Kiwi Green",
+    "hex": "#78BE20"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#95B6E0"
+   },
+   {
+    "id": "navy-blue",
+    "name": "Navy Blue",
+    "hex": "#051733"
+   },
+   {
+    "id": "ocean-blue",
+    "name": "Ocean Blue",
+    "hex": "#007FA3"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#EC6400"
+   },
+   {
+    "id": "real-grey",
+    "name": "Real Grey",
+    "hex": "#303C42"
+   },
+   {
+    "id": "scarlet-red",
+    "name": "Scarlet Red",
+    "hex": "#E60029"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFEB4F"
+   },
+   {
+    "id": "bright-lime",
+    "name": "Bright Lime",
+    "hex": "#CBD320"
+   },
+   {
+    "id": "brilliant-orange",
+    "name": "Brilliant Orange",
+    "hex": "#EE3124"
+   },
+   {
+    "id": "soft-grey",
+    "name": "Soft Grey",
+    "hex": "#8D9194"
+   },
+   {
+    "id": "dark-chocolate",
+    "name": "Dark Chocolate",
+    "hex": "#473F3D"
+   },
+   {
+    "id": "sunflower-yellow",
+    "name": "Sunflower Yellow",
+    "hex": "#FFC600"
+   },
+   {
+    "id": "denim-blue",
+    "name": "Denim Blue",
+    "hex": "#4D5F80"
+   },
+   {
+    "id": "marina-blue",
+    "name": "Marina Blue",
+    "hex": "#394A59"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#89163E"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#DAC9AF"
+   },
+   {
+    "id": "sweet-pink",
+    "name": "Sweet Pink",
+    "hex": "#E31C79"
+   },
+   {
+    "id": "f7a30a",
+    "name": "F7A30A",
+    "hex": "#F7A30A"
+   },
+   {
+    "id": "5a6f5e",
+    "name": "5A6F5E",
+    "hex": "#5A6F5E"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#C7B6A3"
+   },
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#035A60"
+   }
+  ]
+ },
+ {
+  "id": "stedman-classic-t-for-women",
+  "brand": "Stedman",
+  "name": "Classic-T for women",
+  "typ": "tshirt",
+  "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "slate-grey-solid",
+    "name": "Slate Grey (Solid)",
+    "hex": "#747679"
+   },
+   {
+    "id": "black-opal",
+    "name": "Black Opal",
+    "hex": "#000000"
+   },
+   {
+    "id": "bright-royal",
+    "name": "Bright Royal",
+    "hex": "#2D428A"
+   },
+   {
+    "id": "burgundy-red",
+    "name": "Burgundy Red",
+    "hex": "#4B1325"
+   },
+   {
+    "id": "deep-berry",
+    "name": "Deep Berry",
+    "hex": "#4A3650"
+   },
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#A1A1A2"
+   },
+   {
+    "id": "hunters-green",
+    "name": "Hunters Green",
+    "hex": "#505A2A"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#1C9A2C"
+   },
+   {
+    "id": "kiwi-green",
+    "name": "Kiwi Green",
+    "hex": "#78BE20"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#95B6E0"
+   },
+   {
+    "id": "navy-blue",
+    "name": "Navy Blue",
+    "hex": "#051733"
+   },
+   {
+    "id": "ocean-blue",
+    "name": "Ocean Blue",
+    "hex": "#007FA3"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#EC6400"
+   },
+   {
+    "id": "real-grey",
+    "name": "Real Grey",
+    "hex": "#303C42"
+   },
+   {
+    "id": "scarlet-red",
+    "name": "Scarlet Red",
+    "hex": "#E60029"
+   },
+   {
+    "id": "sweet-pink",
+    "name": "Sweet Pink",
+    "hex": "#E31C79"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFEB4F"
+   },
+   {
+    "id": "bright-lime",
+    "name": "Bright Lime",
+    "hex": "#CBD320"
+   },
+   {
+    "id": "brilliant-orange",
+    "name": "Brilliant Orange",
+    "hex": "#EE3124"
+   },
+   {
+    "id": "soft-grey",
+    "name": "Soft Grey",
+    "hex": "#8D9194"
+   },
+   {
+    "id": "dark-chocolate",
+    "name": "Dark Chocolate",
+    "hex": "#473F3D"
+   },
+   {
+    "id": "sunflower-yellow",
+    "name": "Sunflower Yellow",
+    "hex": "#FFC600"
+   },
+   {
+    "id": "blue-midnight",
+    "name": "Blue Midnight",
+    "hex": "#180A29"
+   },
+   {
+    "id": "denim-blue",
+    "name": "Denim Blue",
+    "hex": "#4D5F80"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#D6DDDD"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#293E11"
+   },
+   {
+    "id": "marina-blue",
+    "name": "Marina Blue",
+    "hex": "#394A59"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#89163E"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#DAC9AF"
+   },
+   {
+    "id": "f7a30a",
+    "name": "F7A30A",
+    "hex": "#F7A30A"
+   },
+   {
+    "id": "5a6f5e",
+    "name": "5A6F5E",
+    "hex": "#5A6F5E"
+   },
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#035A60"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#C7B6A3"
+   }
+  ]
+ },
+ {
+  "id": "gildan-softstyle-midweight-sweat-adult-hoodie",
+  "brand": "Gildan",
+  "name": "Softstyle® Midweight Sweat Adult Hoodie",
+  "typ": "hoodie",
+  "quelle": "teamshirts.de (Spreadshirt-Medienserver, sprd-eu)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "navy",
+   "black",
+   "charcoal-solid",
+   "maroon",
+   "military-green",
+   "white",
+   "ash-grey-heather"
+  ],
+  "fehlend": [
+   {
+    "id": "cobalt",
+    "name": "Cobalt",
+    "hex": "#374393"
+   },
+   {
+    "id": "stone-blue",
+    "name": "Stone Blue",
+    "hex": "#788995"
+   },
+   {
+    "id": "paragon",
+    "name": "Paragon",
+    "hex": "#948794"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3F4444"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#E4BED2"
+   },
+   {
+    "id": "red",
+    "name": "Red",
+    "hex": "#B1302A"
+   },
+   {
+    "id": "sport-grey-heather",
+    "name": "Sport Grey (Heather)",
+    "hex": "#97999B"
+   },
+   {
+    "id": "royal",
+    "name": "Royal",
+    "hex": "#224D8F"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#CABFAD"
+   },
+   {
+    "id": "yellow-haze",
+    "name": "Yellow Haze",
+    "hex": "#F4D199"
+   },
+   {
+    "id": "cement",
+    "name": "Cement",
+    "hex": "#A7A8A9"
+   },
+   {
+    "id": "cocoa",
+    "name": "Cocoa",
+    "hex": "#6B3D2E"
+   },
+   {
+    "id": "daisy",
+    "name": "Daisy",
+    "hex": "#F6D03A"
+   },
+   {
+    "id": "forest-green",
+    "name": "Forest Green",
+    "hex": "#273B33"
+   },
+   {
+    "id": "mustard",
+    "name": "Mustard",
+    "hex": "#CBA052"
+   },
+   {
+    "id": "pink-lemonade",
+    "name": "Pink Lemonade",
+    "hex": "#F04E98"
+   },
+   {
+    "id": "pistachio",
+    "name": "Pistachio",
+    "hex": "#BDC293"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#5D396F"
+   },
+   {
+    "id": "sky",
+    "name": "Sky",
+    "hex": "#87CBD8"
+   },
+   {
+    "id": "tangerine",
+    "name": "Tangerine",
+    "hex": "#E9954B"
+   },
+   {
+    "id": "aquatic",
+    "name": "Aquatic",
+    "hex": "#8FC5BB"
+   },
+   {
+    "id": "blue-dusk",
+    "name": "Blue Dusk",
+    "hex": "#3C4652"
+   },
+   {
+    "id": "brown-savana",
+    "name": "Brown Savana",
+    "hex": "#7A6855"
+   },
+   {
+    "id": "cardinal-red",
+    "name": "Cardinal Red",
+    "hex": "#8D2838"
+   },
+   {
+    "id": "carolina-blue",
+    "name": "Carolina Blue",
+    "hex": "#79A0C6"
+   },
+   {
+    "id": "dusty-rose",
+    "name": "Dusty Rose",
+    "hex": "#F9D0BF"
+   },
+   {
+    "id": "off-white",
+    "name": "Off White",
+    "hex": "#E7DBB9"
+   },
+   {
+    "id": "sage",
+    "name": "Sage",
+    "hex": "#819E87"
+   },
+   {
+    "id": "smoke",
+    "name": "Smoke",
+    "hex": "#3D3935"
+   },
+   {
+    "id": "t-orange",
+    "name": "T. Orange",
+    "hex": "#D4643E"
+   },
+   {
+    "id": "393d47",
+    "name": "393D47",
+    "hex": "#393D47"
+   }
+  ]
+ },
+ {
+  "id": "bundc-hoodie",
+  "brand": "B&C",
+  "name": "#Hoodie",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_hooded_sweat_wu620_black.webp",
+  "vorhandeneFarben": [
+   "navy-blue",
+   "red",
+   "royal-blue",
+   "black-pure",
+   "heather-grey"
+  ],
+  "fehlend": [
+   {
+    "id": "elephant-grey",
+    "name": "Elephant Grey",
+    "hex": "#827679"
+   },
+   {
+    "id": "white",
+    "name": "White",
+    "hex": "#FFFFFF"
+   },
+   {
+    "id": "desert",
+    "name": "Desert",
+    "hex": "#CEB596"
+   },
+   {
+    "id": "melon-orange",
+    "name": "Melon Orange",
+    "hex": "#F6AA70"
+   },
+   {
+    "id": "pale-yellow",
+    "name": "Pale Yellow",
+    "hex": "#FAF1D7"
+   },
+   {
+    "id": "solar-yellow",
+    "name": "Solar Yellow",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "nude",
+    "name": "Nude",
+    "hex": "#E1B09D"
+   },
+   {
+    "id": "pure-orange",
+    "name": "Pure Orange",
+    "hex": "#EB5D0F"
+   },
+   {
+    "id": "wine",
+    "name": "Wine",
+    "hex": "#6A2B40"
+   },
+   {
+    "id": "candy-pink",
+    "name": "Candy Pink",
+    "hex": "#E0BED5"
+   },
+   {
+    "id": "pale-pink",
+    "name": "Pale Pink",
+    "hex": "#FEEDE1"
+   },
+   {
+    "id": "pink-fizz",
+    "name": "Pink Fizz",
+    "hex": "#ED6890"
+   },
+   {
+    "id": "lavender",
+    "name": "Lavender",
+    "hex": "#D5CDDF"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "hawaiian-blue",
+    "name": "Hawaiian Blue",
+    "hex": "#0097C3"
+   },
+   {
+    "id": "pure-sky",
+    "name": "Pure Sky",
+    "hex": "#DDE7E9"
+   },
+   {
+    "id": "sage",
+    "name": "Sage",
+    "hex": "#AAC1B3"
+   },
+   {
+    "id": "light-jade",
+    "name": "Light Jade",
+    "hex": "#C9DBAE"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#009149"
+   },
+   {
+    "id": "millennial-khaki",
+    "name": "Millennial Khaki",
+    "hex": "#585B55"
+   },
+   {
+    "id": "grey-fog",
+    "name": "Grey Fog",
+    "hex": "#D8D2C0"
+   },
+   {
+    "id": "forest-green",
+    "name": "Forest Green",
+    "hex": "#002500"
+   },
+   {
+    "id": "asphalt",
+    "name": "Asphalt",
+    "hex": "#433F42"
+   },
+   {
+    "id": "heather-mid-grey",
+    "name": "Heather Mid Grey",
+    "hex": "#7F8080"
+   },
+   {
+    "id": "heather-red",
+    "name": "Heather Red",
+    "hex": "#E11A3B"
+   },
+   {
+    "id": "heather-asphalt",
+    "name": "Heather Asphalt",
+    "hex": "#3E4041"
+   },
+   {
+    "id": "heather-purple",
+    "name": "Heather Purple",
+    "hex": "#714D69"
+   },
+   {
+    "id": "heather-royal-blue",
+    "name": "Heather Royal Blue",
+    "hex": "#425A97"
+   },
+   {
+    "id": "heather-navy",
+    "name": "Heather Navy",
+    "hex": "#3F404E"
+   },
+   {
+    "id": "heather-dark-green",
+    "name": "Heather Dark Green",
+    "hex": "#415D56"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-classic-polo",
+  "brand": "James+Nicholson",
+  "name": "Classic Polo",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_classic_polo_jn070_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "graphite-solid",
+   "grey-heather",
+   "navy",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "aubergine",
+    "name": "Aubergine",
+    "hex": "#272236"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#555239"
+   },
+   {
+    "id": "wine",
+    "name": "Wine",
+    "hex": "#830628"
+   },
+   {
+    "id": "acid-yellow",
+    "name": "Acid Yellow",
+    "hex": "#D7E076"
+   },
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#477AB8"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#5D4631"
+   },
+   {
+    "id": "dark-orange",
+    "name": "Dark Orange",
+    "hex": "#ED8800"
+   },
+   {
+    "id": "dark-royal",
+    "name": "Dark Royal",
+    "hex": "#004189"
+   },
+   {
+    "id": "fern-green",
+    "name": "Fern Green",
+    "hex": "#29B957"
+   },
+   {
+    "id": "gold-yellow",
+    "name": "Gold Yellow",
+    "hex": "#FBBF1F"
+   },
+   {
+    "id": "grenadine",
+    "name": "Grenadine",
+    "hex": "#ED8E78"
+   },
+   {
+    "id": "irish-green",
+    "name": "Irish Green",
+    "hex": "#009930"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#E0F2FB"
+   },
+   {
+    "id": "light-yellow",
+    "name": "Light Yellow",
+    "hex": "#FFEE98"
+   },
+   {
+    "id": "lilac",
+    "name": "Lilac",
+    "hex": "#CCC6E1"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   },
+   {
+    "id": "mint",
+    "name": "Mint",
+    "hex": "#89C9CF"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   },
+   {
+    "id": "pacific",
+    "name": "Pacific",
+    "hex": "#007CB7"
+   },
+   {
+    "id": "petrol",
+    "name": "Petrol",
+    "hex": "#1E3248"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#8D5197"
+   },
+   {
+    "id": "rose",
+    "name": "Rose",
+    "hex": "#FBE5EF"
+   },
+   {
+    "id": "signal-red",
+    "name": "Signal Red",
+    "hex": "#E83600"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#A0D6F1"
+   },
+   {
+    "id": "stone",
+    "name": "Stone",
+    "hex": "#F5EDCF"
+   },
+   {
+    "id": "tomato",
+    "name": "Tomato",
+    "hex": "#B21F16"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#00A9CE"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFED00"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-classic-polo-ladies",
+  "brand": "James+Nicholson",
+  "name": "Classic Polo Ladies",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_polo_jn071_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "graphite-solid",
+   "grey-heather",
+   "navy",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "aubergine",
+    "name": "Aubergine",
+    "hex": "#272236"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#555239"
+   },
+   {
+    "id": "wine",
+    "name": "Wine",
+    "hex": "#830628"
+   },
+   {
+    "id": "acid-yellow",
+    "name": "Acid Yellow",
+    "hex": "#D7E076"
+   },
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#477AB8"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#5D4631"
+   },
+   {
+    "id": "dark-orange",
+    "name": "Dark Orange",
+    "hex": "#ED8800"
+   },
+   {
+    "id": "dark-royal",
+    "name": "Dark Royal",
+    "hex": "#004189"
+   },
+   {
+    "id": "fern-green",
+    "name": "Fern Green",
+    "hex": "#29B957"
+   },
+   {
+    "id": "gold-yellow",
+    "name": "Gold Yellow",
+    "hex": "#FBBF1F"
+   },
+   {
+    "id": "grenadine",
+    "name": "Grenadine",
+    "hex": "#ED8E78"
+   },
+   {
+    "id": "irish-green",
+    "name": "Irish Green",
+    "hex": "#009930"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#E0F2FB"
+   },
+   {
+    "id": "light-yellow",
+    "name": "Light Yellow",
+    "hex": "#FFEE98"
+   },
+   {
+    "id": "lilac",
+    "name": "Lilac",
+    "hex": "#CCC6E1"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   },
+   {
+    "id": "mint",
+    "name": "Mint",
+    "hex": "#89C9CF"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   },
+   {
+    "id": "pacific",
+    "name": "Pacific",
+    "hex": "#007CB7"
+   },
+   {
+    "id": "petrol",
+    "name": "Petrol",
+    "hex": "#1E3248"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#8D5197"
+   },
+   {
+    "id": "rose",
+    "name": "Rose",
+    "hex": "#FBE5EF"
+   },
+   {
+    "id": "signal-red",
+    "name": "Signal Red",
+    "hex": "#E83600"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#A0D6F1"
+   },
+   {
+    "id": "stone",
+    "name": "Stone",
+    "hex": "#F5EDCF"
+   },
+   {
+    "id": "tomato",
+    "name": "Tomato",
+    "hex": "#B21F16"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#00A9CE"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFED00"
+   }
+  ]
+ },
+ {
+  "id": "build-your-brand-heavy-hoody",
+  "brand": "Build Your Brand",
+  "name": "Heavy Hoody",
+  "typ": "hoodie",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://tbi.cdn.pacerace.de/media/images/org/BY011_P1-00007.jpg",
+  "vorhandeneFarben": [
+   "bottle-green",
+   "black",
+   "charcoal-heather",
+   "navy",
+   "white",
+   "ruby"
+  ],
+  "fehlend": [
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#862336"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#D6CBB8"
+   },
+   {
+    "id": "light-navy",
+    "name": "Light Navy",
+    "hex": "#1B2848"
+   },
+   {
+    "id": "cobaltblue",
+    "name": "Cobaltblue",
+    "hex": "#221BC3"
+   },
+   {
+    "id": "heather-grey",
+    "name": "Heather Grey",
+    "hex": "#99999B"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#80905F"
+   },
+   {
+    "id": "ultraviolett",
+    "name": "Ultraviolett",
+    "hex": "#5F4A8B"
+   },
+   {
+    "id": "paradise-orange",
+    "name": "Paradise Orange",
+    "hex": "#FF8C55"
+   },
+   {
+    "id": "forest-green",
+    "name": "Forest Green",
+    "hex": "#12674A"
+   },
+   {
+    "id": "hibiskus-pink",
+    "name": "Hibiskus Pink",
+    "hex": "#CF2D71"
+   },
+   {
+    "id": "neo-mint",
+    "name": "Neo Mint",
+    "hex": "#A0DAA9"
+   },
+   {
+    "id": "ocean-blue",
+    "name": "Ocean Blue",
+    "hex": "#9DC3D4"
+   },
+   {
+    "id": "frozen-yellow",
+    "name": "Frozen Yellow",
+    "hex": "#F1FE88"
+   },
+   {
+    "id": "city-red",
+    "name": "City Red",
+    "hex": "#BE132D"
+   },
+   {
+    "id": "lilac",
+    "name": "Lilac",
+    "hex": "#BEB2D5"
+   },
+   {
+    "id": "taxi-yellow",
+    "name": "Taxi Yellow",
+    "hex": "#FFC72C"
+   },
+   {
+    "id": "soft-yellow",
+    "name": "Soft Yellow",
+    "hex": "#E0DBA9"
+   },
+   {
+    "id": "bark",
+    "name": "Bark",
+    "hex": "#AD6D5B"
+   },
+   {
+    "id": "light-asphalt",
+    "name": "Light Asphalt",
+    "hex": "#ABB1B3"
+   },
+   {
+    "id": "purple-night",
+    "name": "Purple Night",
+    "hex": "#3B3047"
+   },
+   {
+    "id": "pale-leaf",
+    "name": "Pale Leaf",
+    "hex": "#466B66"
+   },
+   {
+    "id": "white-sand",
+    "name": "White Sand",
+    "hex": "#ECE3D6"
+   },
+   {
+    "id": "dark-green",
+    "name": "Dark Green",
+    "hex": "#37604E"
+   },
+   {
+    "id": "baltic-blue",
+    "name": "Baltic Blue",
+    "hex": "#7AB6D9"
+   },
+   {
+    "id": "chocoloate-brown",
+    "name": "Chocoloate Brown",
+    "hex": "#5A3F38"
+   },
+   {
+    "id": "plum-purple",
+    "name": "Plum Purple",
+    "hex": "#4F3643"
+   },
+   {
+    "id": "soft-pink",
+    "name": "Soft Pink",
+    "hex": "#E9ADCA"
+   },
+   {
+    "id": "powder-blue",
+    "name": "Powder Blue",
+    "hex": "#91A5CF"
+   }
+  ]
+ },
+ {
+  "id": "earthpositive-earth-positive-pullover-hoodie",
+  "brand": "EarthPositive",
+  "name": "Earth Positive Pullover Hoodie",
+  "typ": "hoodie",
+  "quelle": "shirtplus.net (Shopify-CDN) – offizieller Continental Clothing / EarthPositive E",
+  "beispielUrl": "https://shirtplus.net/cdn/shop/files/EP301-BL_FRONT_EP1.jpg",
+  "vorhandeneFarben": [
+   "black",
+   "forest-green",
+   "french-navy",
+   "stone-washed-grey",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "faded-black",
+    "name": "Faded Black",
+    "hex": "#212322"
+   },
+   {
+    "id": "stone-washed-green",
+    "name": "Stone Washed Green",
+    "hex": "#335630"
+   },
+   {
+    "id": "faded-navy",
+    "name": "Faded Navy",
+    "hex": "#454955"
+   },
+   {
+    "id": "faded-brown",
+    "name": "Faded Brown",
+    "hex": "#675342"
+   },
+   {
+    "id": "faded-khaki",
+    "name": "Faded Khaki",
+    "hex": "#797054"
+   },
+   {
+    "id": "bone",
+    "name": "Bone",
+    "hex": "#C7BCB7"
+   },
+   {
+    "id": "cherry-red",
+    "name": "Cherry Red",
+    "hex": "#6C1D23"
+   },
+   {
+    "id": "denim-blue",
+    "name": "Denim Blue",
+    "hex": "#5D739C"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#6B6A6A"
+   },
+   {
+    "id": "faded-burgundy",
+    "name": "Faded Burgundy",
+    "hex": "#7D4254"
+   },
+   {
+    "id": "faded-mustard",
+    "name": "Faded Mustard",
+    "hex": "#946F3A"
+   },
+   {
+    "id": "faded-pink",
+    "name": "Faded Pink",
+    "hex": "#B08D92"
+   },
+   {
+    "id": "faded-white",
+    "name": "Faded White",
+    "hex": "#F6F5F4"
+   },
+   {
+    "id": "light-grey",
+    "name": "Light Grey",
+    "hex": "#BABAB8"
+   },
+   {
+    "id": "light-charcoal",
+    "name": "Light Charcoal",
+    "hex": "#62666F"
+   },
+   {
+    "id": "light-heather",
+    "name": "Light Heather",
+    "hex": "#959D9D"
+   },
+   {
+    "id": "burnt-yellow-mango",
+    "name": "Burnt Yellow (Mango)",
+    "hex": "#CD9939"
+   },
+   {
+    "id": "miami-pink-purple-rose",
+    "name": "Miami Pink (Purple Rose)",
+    "hex": "#C4AAB3"
+   },
+   {
+    "id": "rfd-ready-for-dye",
+    "name": "RFD (Ready for Dye)",
+    "hex": "#DDDAD5"
+   },
+   {
+    "id": "light-beige-sand",
+    "name": "Light Beige (Sand)",
+    "hex": "#CEC3AF"
+   },
+   {
+    "id": "stone-washed-black",
+    "name": "Stone Washed Black",
+    "hex": "#3E3F3C"
+   },
+   {
+    "id": "stone-washed-burgundy",
+    "name": "Stone Washed Burgundy",
+    "hex": "#7B3949"
+   },
+   {
+    "id": "stone-washed-denim",
+    "name": "Stone Washed Denim",
+    "hex": "#476E88"
+   },
+   {
+    "id": "stone-washed-pink",
+    "name": "Stone Washed Pink",
+    "hex": "#FFC1C2"
+   },
+   {
+    "id": "stone-washed-sage-green",
+    "name": "Stone Washed Sage Green",
+    "hex": "#7D9C89"
+   },
+   {
+    "id": "stone-washed-white",
+    "name": "Stone Washed White",
+    "hex": "#F4F4EC"
+   },
+   {
+    "id": "blue-dusk",
+    "name": "Blue Dusk",
+    "hex": "#809CA8"
+   }
+  ]
+ },
+ {
+  "id": "neutral-men-s-fit-t-shirt",
+  "brand": "Neutral",
+  "name": "Men`s Fit T-Shirt",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "bottle-green",
+   "charcoal",
+   "black",
+   "navy",
+   "white",
+   "red",
+   "royal"
+  ],
+  "fehlend": [
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#5F8289"
+   },
+   {
+    "id": "dusty-purple",
+    "name": "Dusty Purple",
+    "hex": "#C6B0BC"
+   },
+   {
+    "id": "dusty-yellow",
+    "name": "Dusty Yellow",
+    "hex": "#F8E08E"
+   },
+   {
+    "id": "okay-orange",
+    "name": "Okay Orange",
+    "hex": "#FAAF3F"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#382F2D"
+   },
+   {
+    "id": "dusty-indigo",
+    "name": "Dusty Indigo",
+    "hex": "#5E8AB4"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#EABEDB"
+   },
+   {
+    "id": "sports-grey",
+    "name": "Sports Grey",
+    "hex": "#B8B8B9"
+   },
+   {
+    "id": "ash-grey",
+    "name": "Ash Grey",
+    "hex": "#D9D9DB"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3A3A3A"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#6C1D45"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "hex": "#009A44"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#ABCAE9"
+   },
+   {
+    "id": "military",
+    "name": "Military",
+    "hex": "#3E4827"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#FFFAD9"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#FE5000"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#D0006F"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#00CDF2"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#765BA7"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#D2C7C4"
+   },
+   {
+    "id": "white-navy-striped",
+    "name": "White - Navy (Striped)",
+    "hex": "#1D1F2F"
+   }
+  ]
+ },
+ {
+  "id": "neutral-ladies-fit-t-shirt",
+  "brand": "Neutral",
+  "name": "Ladies` Fit T-Shirt",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "bottle-green",
+   "charcoal",
+   "black",
+   "navy",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#5F8289"
+   },
+   {
+    "id": "dusty-purple",
+    "name": "Dusty Purple",
+    "hex": "#C6B0BC"
+   },
+   {
+    "id": "dusty-yellow",
+    "name": "Dusty Yellow",
+    "hex": "#F8E08E"
+   },
+   {
+    "id": "okay-orange",
+    "name": "Okay Orange",
+    "hex": "#FAAF3F"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#382F2D"
+   },
+   {
+    "id": "dusty-indigo",
+    "name": "Dusty Indigo",
+    "hex": "#5E8AB4"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#EABEDB"
+   },
+   {
+    "id": "ash-grey",
+    "name": "Ash Grey",
+    "hex": "#D9D9DB"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#6C1D45"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3A3A3A"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "hex": "#009A44"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#ABCAE9"
+   },
+   {
+    "id": "military",
+    "name": "Military",
+    "hex": "#3E4827"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#FFFAD9"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#FE5000"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#D0006F"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#00CDF2"
+   },
+   {
+    "id": "sports-grey",
+    "name": "Sports Grey",
+    "hex": "#B8B8B9"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#765BA7"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#D2C7C4"
+   },
+   {
+    "id": "white-navy-striped",
+    "name": "White - Navy (Striped)",
+    "hex": "#1D1F2F"
+   }
+  ]
+ },
+ {
+  "id": "neutral-unisex-regular-t-shirt",
+  "brand": "Neutral",
+  "name": "Unisex Regular T-Shirt",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "bottle-green",
+   "black",
+   "navy",
+   "red",
+   "white",
+   "royal",
+   "ash-grey"
+  ],
+  "fehlend": [
+   {
+    "id": "dusty-indigo",
+    "name": "Dusty Indigo",
+    "hex": "#5E8AB4"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#00CDF2"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "military",
+    "name": "Military",
+    "hex": "#3E4827"
+   },
+   {
+    "id": "sports-grey",
+    "name": "Sports Grey",
+    "hex": "#B8B8B9"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3A3A3A"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#6C1D45"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "hex": "#009A44"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#D2C7C4"
+   },
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#5F8289"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#ABCAE9"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#EABEDB"
+   },
+   {
+    "id": "charcoal",
+    "name": "Charcoal",
+    "hex": "#53565A"
+   },
+   {
+    "id": "nature",
+    "name": "Nature",
+    "hex": "#FFFAD9"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#382F2D"
+   },
+   {
+    "id": "dusty-yellow",
+    "name": "Dusty Yellow",
+    "hex": "#F8E08E"
+   },
+   {
+    "id": "okay-orange",
+    "name": "Okay Orange",
+    "hex": "#FAAF3F"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#FE5000"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#D0006F"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#765BA7"
+   },
+   {
+    "id": "dusty-purple",
+    "name": "Dusty Purple",
+    "hex": "#C6B0BC"
+   }
+  ]
+ },
+ {
+  "id": "bundc-my-polo-180",
+  "brand": "B&C",
+  "name": "My Polo 180",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_my_polo_180_pu424_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "navy",
+   "white",
+   "sport-grey-heather",
+   "royal-blue",
+   "red",
+   "ivy-green"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-forest",
+    "name": "Dark Forest",
+    "hex": "#273224"
+   },
+   {
+    "id": "camo-green",
+    "name": "Camo Green",
+    "hex": "#646354"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "off-white",
+    "name": "Off White",
+    "hex": "#F5EFE2"
+   },
+   {
+    "id": "mastic",
+    "name": "Mastic",
+    "hex": "#B6A58D"
+   },
+   {
+    "id": "roasted-coffee",
+    "name": "Roasted Coffee",
+    "hex": "#493A35"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "navy-pure",
+    "name": "Navy Pure",
+    "hex": "#282B38"
+   },
+   {
+    "id": "meta-turquoise",
+    "name": "Meta Turquoise",
+    "hex": "#6DC5C9"
+   },
+   {
+    "id": "apple-green",
+    "name": "Apple Green",
+    "hex": "#45A94C"
+   },
+   {
+    "id": "meta-orange",
+    "name": "Meta Orange",
+    "hex": "#F08000"
+   },
+   {
+    "id": "pixel-lime",
+    "name": "Pixel Lime",
+    "hex": "#D6FF00"
+   },
+   {
+    "id": "meta-lilac",
+    "name": "Meta Lilac",
+    "hex": "#5C4078"
+   },
+   {
+    "id": "meta-fuchsia",
+    "name": "Meta Fuchsia",
+    "hex": "#BD1D55"
+   },
+   {
+    "id": "meta-gold",
+    "name": "Meta Gold",
+    "hex": "#BA9F7F"
+   },
+   {
+    "id": "blush-blue",
+    "name": "Blush Blue",
+    "hex": "#C6D9E9"
+   },
+   {
+    "id": "blush-pink",
+    "name": "Blush Pink",
+    "hex": "#ECC9C0"
+   },
+   {
+    "id": "blush-mint",
+    "name": "Blush Mint",
+    "hex": "#CFDFD1"
+   },
+   {
+    "id": "lavender",
+    "name": "Lavender",
+    "hex": "#D5CDDF"
+   },
+   {
+    "id": "pure-orange",
+    "name": "Pure Orange",
+    "hex": "#EB5D0F"
+   },
+   {
+    "id": "solar-yellow",
+    "name": "Solar Yellow",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "lotus-pink",
+    "name": "Lotus Pink",
+    "hex": "#E16B94"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-men-s-basic-t",
+  "brand": "James+Nicholson",
+  "name": "Men`s Basic-T",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "dark-green",
+   "grey-heather",
+   "navy",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "light-denim-melange",
+    "name": "Light Denim Melange",
+    "hex": "#236192"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#555239"
+   },
+   {
+    "id": "wine",
+    "name": "Wine",
+    "hex": "#830628"
+   },
+   {
+    "id": "acid-yellow",
+    "name": "Acid Yellow",
+    "hex": "#D7E076"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#C6CADD"
+   },
+   {
+    "id": "black-heather",
+    "name": "Black Heather",
+    "hex": "#2D3B3B"
+   },
+   {
+    "id": "cobalt",
+    "name": "Cobalt",
+    "hex": "#0159A6"
+   },
+   {
+    "id": "coral",
+    "name": "Coral",
+    "hex": "#FF665E"
+   },
+   {
+    "id": "dark-royal",
+    "name": "Dark Royal",
+    "hex": "#004189"
+   },
+   {
+    "id": "gold-yellow",
+    "name": "Gold Yellow",
+    "hex": "#FBBF1F"
+   },
+   {
+    "id": "graphite-solid",
+    "name": "Graphite (Solid)",
+    "hex": "#4A4A4B"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#F7F2D2"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   },
+   {
+    "id": "petrol",
+    "name": "Petrol",
+    "hex": "#1E3248"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#A0D6F1"
+   },
+   {
+    "id": "steel-grey",
+    "name": "Steel Grey",
+    "hex": "#BDBDBD"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFED00"
+   },
+   {
+    "id": "vanilla",
+    "name": "Vanilla",
+    "hex": "#EFEEEA"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#E0F2FB"
+   },
+   {
+    "id": "soft-grey",
+    "name": "Soft Grey",
+    "hex": "#C6C6C6"
+   },
+   {
+    "id": "jade-green",
+    "name": "Jade Green",
+    "hex": "#97C2A7"
+   }
+  ]
+ },
+ {
+  "id": "neutral-men-s-classic-t-shirt",
+  "brand": "Neutral",
+  "name": "Men`s Classic T-Shirt",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "bottle-green",
+   "charcoal",
+   "black",
+   "navy",
+   "red",
+   "white",
+   "royal"
+  ],
+  "fehlend": [
+   {
+    "id": "nature",
+    "name": "Nature",
+    "hex": "#FFFAD9"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#ABCAE9"
+   },
+   {
+    "id": "dusty-indigo",
+    "name": "Dusty Indigo",
+    "hex": "#5E8AB4"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#FE5000"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#D0006F"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#00CDF2"
+   },
+   {
+    "id": "military",
+    "name": "Military",
+    "hex": "#3E4827"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#D2C7C4"
+   },
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#5F8289"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#765BA7"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#EABEDB"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#382F2D"
+   },
+   {
+    "id": "dusty-yellow",
+    "name": "Dusty Yellow",
+    "hex": "#F8E08E"
+   },
+   {
+    "id": "okay-orange",
+    "name": "Okay Orange",
+    "hex": "#FAAF3F"
+   },
+   {
+    "id": "dusty-purple",
+    "name": "Dusty Purple",
+    "hex": "#C6B0BC"
+   },
+   {
+    "id": "sports-grey",
+    "name": "Sports Grey",
+    "hex": "#B8B8B9"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3A3A3A"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#6C1D45"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "hex": "#009A44"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   }
+  ]
+ },
+ {
+  "id": "neutral-ladies-classic-t-shirt",
+  "brand": "Neutral",
+  "name": "Ladies` Classic T-Shirt",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "bottle-green",
+   "charcoal",
+   "black",
+   "navy",
+   "red",
+   "white",
+   "royal"
+  ],
+  "fehlend": [
+   {
+    "id": "nature",
+    "name": "Nature",
+    "hex": "#FFFAD9"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#ABCAE9"
+   },
+   {
+    "id": "dusty-indigo",
+    "name": "Dusty Indigo",
+    "hex": "#5E8AB4"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#FE5000"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#D0006F"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "military",
+    "name": "Military",
+    "hex": "#3E4827"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#00CDF2"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#D2C7C4"
+   },
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#5F8289"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#765BA7"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#EABEDB"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#382F2D"
+   },
+   {
+    "id": "dusty-yellow",
+    "name": "Dusty Yellow",
+    "hex": "#F8E08E"
+   },
+   {
+    "id": "okay-orange",
+    "name": "Okay Orange",
+    "hex": "#FAAF3F"
+   },
+   {
+    "id": "dusty-purple",
+    "name": "Dusty Purple",
+    "hex": "#C6B0BC"
+   },
+   {
+    "id": "sports-grey",
+    "name": "Sports Grey",
+    "hex": "#B8B8B9"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3A3A3A"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#6C1D45"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "hex": "#009A44"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   }
+  ]
+ },
+ {
+  "id": "sols-men-s-polo-shirt-perfect",
+  "brand": "SOL'S",
+  "name": "Men`s Polo Shirt Perfect",
+  "typ": "polo",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/6094/11346-BLK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "royal-blue",
+   "black",
+   "french-navy",
+   "kelly-green",
+   "red",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#636267"
+   },
+   {
+    "id": "grey-melange",
+    "name": "Grey Melange",
+    "hex": "#8F8B8B"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#253E33"
+   },
+   {
+    "id": "creamy-pink",
+    "name": "Creamy Pink",
+    "hex": "#EDCDC2"
+   },
+   {
+    "id": "creamy-blue",
+    "name": "Creamy Blue",
+    "hex": "#C5D7E1"
+   },
+   {
+    "id": "spring-green",
+    "name": "Spring Green",
+    "hex": "#15B15C"
+   },
+   {
+    "id": "01509d",
+    "name": "01509D",
+    "hex": "#01509D"
+   },
+   {
+    "id": "apple-green",
+    "name": "Apple Green",
+    "hex": "#CDEA80"
+   },
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#0095C3"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#C1C4C7"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#700B23"
+   },
+   {
+    "id": "denim",
+    "name": "Denim",
+    "hex": "#1B3353"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FBC54B"
+   },
+   {
+    "id": "hibiscus",
+    "name": "Hibiscus",
+    "hex": "#FF245E"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F08800"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#BAA584"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#96C2E8"
+   },
+   {
+    "id": "slate-blue",
+    "name": "Slate Blue",
+    "hex": "#1E5F6E"
+   },
+   {
+    "id": "pure-grey",
+    "name": "Pure Grey",
+    "hex": "#ADB2B6"
+   },
+   {
+    "id": "charcoal-melange",
+    "name": "Charcoal Melange",
+    "hex": "#040F13"
+   },
+   {
+    "id": "heather-oxblood",
+    "name": "Heather Oxblood",
+    "hex": "#4E323E"
+   },
+   {
+    "id": "heather-denim",
+    "name": "Heather Denim",
+    "hex": "#464D60"
+   }
+  ]
+ },
+ {
+  "id": "stedman-comfort-t",
+  "brand": "Stedman",
+  "name": "Comfort-T",
+  "typ": "tshirt",
+  "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "slate-grey-solid",
+    "name": "Slate Grey (Solid)",
+    "hex": "#747679"
+   },
+   {
+    "id": "black-opal",
+    "name": "Black Opal",
+    "hex": "#000000"
+   },
+   {
+    "id": "blue-midnight",
+    "name": "Blue Midnight",
+    "hex": "#180A29"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#293E11"
+   },
+   {
+    "id": "bright-royal",
+    "name": "Bright Royal",
+    "hex": "#2D428A"
+   },
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#A1A1A2"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#95B6E0"
+   },
+   {
+    "id": "navy-blue",
+    "name": "Navy Blue",
+    "hex": "#051733"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#EC6400"
+   },
+   {
+    "id": "real-grey",
+    "name": "Real Grey",
+    "hex": "#303C42"
+   },
+   {
+    "id": "scarlet-red",
+    "name": "Scarlet Red",
+    "hex": "#E60029"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFEB4F"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#1C9A2C"
+   },
+   {
+    "id": "sunflower-yellow",
+    "name": "Sunflower Yellow",
+    "hex": "#FFC600"
+   },
+   {
+    "id": "marina-blue",
+    "name": "Marina Blue",
+    "hex": "#394A59"
+   },
+   {
+    "id": "89163e",
+    "name": "89163E",
+    "hex": "#89163E"
+   },
+   {
+    "id": "dac9af",
+    "name": "DAC9AF",
+    "hex": "#DAC9AF"
+   },
+   {
+    "id": "kiwi-green",
+    "name": "Kiwi Green",
+    "hex": "#78BE20"
+   },
+   {
+    "id": "military-green",
+    "name": "Military Green",
+    "hex": "#5A6F5E"
+   },
+   {
+    "id": "soft-grey",
+    "name": "Soft Grey",
+    "hex": "#8D9194"
+   }
+  ]
+ },
+ {
+  "id": "gildan-light-cotton-adult-t-shirt",
+  "brand": "Gildan",
+  "name": "Light Cotton Adult T-Shirt",
+  "typ": "tshirt",
+  "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
+  "beispielUrl": "https://cdn11.bigcommerce.com/s-25plmff032/products/6468/images/91743868/3000-036-alt1__49548.1785944478.1280.1280.jpg?c=1",
+  "vorhandeneFarben": [
+   "navy",
+   "black",
+   "charcoal-solid",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "graphite-heather",
+    "name": "Graphite Heather",
+    "hex": "#707372"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#E4BED2"
+   },
+   {
+    "id": "military-green",
+    "name": "Military Green",
+    "hex": "#63655A"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#CABFAD"
+   },
+   {
+    "id": "sport-grey-heather",
+    "name": "Sport Grey (Heather)",
+    "hex": "#97999B"
+   },
+   {
+    "id": "ash-grey-heather",
+    "name": "Ash Grey (Heather)",
+    "hex": "#C8C9C7"
+   },
+   {
+    "id": "cherry-red",
+    "name": "Cherry Red",
+    "hex": "#AC2B37"
+   },
+   {
+    "id": "daisy",
+    "name": "Daisy",
+    "hex": "#F6D03A"
+   },
+   {
+    "id": "forest-green",
+    "name": "Forest Green",
+    "hex": "#273B33"
+   },
+   {
+    "id": "heliconia",
+    "name": "Heliconia",
+    "hex": "#DB3E79"
+   },
+   {
+    "id": "irish-green",
+    "name": "Irish Green",
+    "hex": "#009E69"
+   },
+   {
+    "id": "maroon",
+    "name": "Maroon",
+    "hex": "#5B2B42"
+   },
+   {
+    "id": "off-white",
+    "name": "Off White",
+    "hex": "#E7DBB9"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#DF6426"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#5D396F"
+   },
+   {
+    "id": "safety-green",
+    "name": "Safety Green",
+    "hex": "#C6D219"
+   },
+   {
+    "id": "sage",
+    "name": "Sage",
+    "hex": "#819E87"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#0077B5"
+   },
+   {
+    "id": "sky",
+    "name": "Sky",
+    "hex": "#87CBD8"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-loom-classic-hooded-sweat",
+  "brand": "Fruit of the Loom",
+  "name": "Classic Hooded Sweat",
+  "typ": "hoodie",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "black",
+   "heather-grey",
+   "navy",
+   "white",
+   "heather-red",
+   "bottle-green",
+   "royal-blue"
+  ],
+  "fehlend": [
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#431279"
+   },
+   {
+    "id": "deep-navy",
+    "name": "Deep Navy",
+    "hex": "#000F33"
+   },
+   {
+    "id": "dark-heather-grey",
+    "name": "Dark Heather Grey",
+    "hex": "#9B9797"
+   },
+   {
+    "id": "heather-navy",
+    "name": "Heather Navy",
+    "hex": "#1F2A44"
+   },
+   {
+    "id": "heather-royal",
+    "name": "Heather Royal",
+    "hex": "#0047BB"
+   },
+   {
+    "id": "heather-green",
+    "name": "Heather Green",
+    "hex": "#00965E"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#77002F"
+   },
+   {
+    "id": "classic-olive",
+    "name": "Classic Olive",
+    "hex": "#63673F"
+   },
+   {
+    "id": "light-graphite-solid",
+    "name": "Light Graphite (Solid)",
+    "hex": "#554B47"
+   },
+   {
+    "id": "red",
+    "name": "Red",
+    "hex": "#E61709"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#FFFAD9"
+   },
+   {
+    "id": "azure-blue",
+    "name": "Azure Blue",
+    "hex": "#0076AD"
+   },
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#E50D89"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#00A056"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#F0A5C7"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#EA4F00"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#82CDF2"
+   },
+   {
+    "id": "sunflower",
+    "name": "Sunflower",
+    "hex": "#F9BA05"
+   }
+  ]
+ },
+ {
+  "id": "stedman-classic-t-v-neck-for-women",
+  "brand": "Stedman",
+  "name": "Classic-T V-Neck for women",
+  "typ": "tshirt",
+  "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "747679",
+    "name": "747679",
+    "hex": "#747679"
+   },
+   {
+    "id": "black-opal",
+    "name": "Black Opal",
+    "hex": "#000000"
+   },
+   {
+    "id": "bright-royal",
+    "name": "Bright Royal",
+    "hex": "#2D428A"
+   },
+   {
+    "id": "deep-berry",
+    "name": "Deep Berry",
+    "hex": "#4A3650"
+   },
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#A1A1A2"
+   },
+   {
+    "id": "kiwi-green",
+    "name": "Kiwi Green",
+    "hex": "#78BE20"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#95B6E0"
+   },
+   {
+    "id": "navy-blue",
+    "name": "Navy Blue",
+    "hex": "#051733"
+   },
+   {
+    "id": "ocean-blue",
+    "name": "Ocean Blue",
+    "hex": "#007FA3"
+   },
+   {
+    "id": "scarlet-red",
+    "name": "Scarlet Red",
+    "hex": "#E60029"
+   },
+   {
+    "id": "sweet-pink",
+    "name": "Sweet Pink",
+    "hex": "#E31C79"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFEB4F"
+   },
+   {
+    "id": "blue-midnight",
+    "name": "Blue Midnight",
+    "hex": "#180A29"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#293E11"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#EC6400"
+   },
+   {
+    "id": "sunflower-yellow",
+    "name": "Sunflower Yellow",
+    "hex": "#FFC600"
+   },
+   {
+    "id": "1c9a2c",
+    "name": "1C9A2C",
+    "hex": "#1C9A2C"
+   }
+  ]
+ },
+ {
+  "id": "build-your-brand-ultra-heavy-cotton-box-hoody",
+  "brand": "Build Your Brand",
+  "name": "Ultra Heavy Cotton Box Hoody",
+  "typ": "hoodie",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://tbi.cdn.pacerace.de/media/images/org/BY162_P1-00007.jpg",
+  "vorhandeneFarben": [
+   "black",
+   "white",
+   "grey",
+   "city-red",
+   "magnet",
+   "navy"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-grey",
+    "name": "Dark Grey",
+    "hex": "#606263"
+   },
+   {
+    "id": "ready-to-dye",
+    "name": "Ready To Dye",
+    "hex": "#F7F7F7"
+   },
+   {
+    "id": "vintage-blue",
+    "name": "Vintage Blue",
+    "hex": "#4D586D"
+   },
+   {
+    "id": "union-beige",
+    "name": "Union Beige",
+    "hex": "#A69173"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#D6CBB8"
+   },
+   {
+    "id": "lilac",
+    "name": "Lilac",
+    "hex": "#BEB2D5"
+   },
+   {
+    "id": "cobalt-blue",
+    "name": "Cobalt Blue",
+    "hex": "#221BC3"
+   },
+   {
+    "id": "ocean-blue",
+    "name": "Ocean Blue",
+    "hex": "#9DC3D4"
+   },
+   {
+    "id": "beryl-blue",
+    "name": "Beryl Blue",
+    "hex": "#88CFD2"
+   },
+   {
+    "id": "light-mint",
+    "name": "Light Mint",
+    "hex": "#D1E2C7"
+   },
+   {
+    "id": "bark",
+    "name": "Bark",
+    "hex": "#AD6D5B"
+   },
+   {
+    "id": "forgotten-orange",
+    "name": "Forgotten Orange",
+    "hex": "#F1A255"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#80905F"
+   },
+   {
+    "id": "retro-green",
+    "name": "Retro Green",
+    "hex": "#015665"
+   },
+   {
+    "id": "e8e7e3",
+    "name": "E8E7E3",
+    "hex": "#E8E7E3"
+   },
+   {
+    "id": "cloud",
+    "name": "Cloud",
+    "hex": "#BCB3AA"
+   },
+   {
+    "id": "soft-pink",
+    "name": "Soft Pink",
+    "hex": "#E9ADCA"
+   }
+  ]
+ },
+ {
+  "id": "neutral-men-s-long-sleeve-t-shirt",
+  "brand": "Neutral",
+  "name": "Men`s Long Sleeve T-Shirt",
+  "typ": "longsleeve",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "bottle-green",
+   "black",
+   "navy",
+   "white",
+   "charcoal",
+   "red",
+   "royal"
+  ],
+  "fehlend": [
+   {
+    "id": "dusty-indigo",
+    "name": "Dusty Indigo",
+    "hex": "#5E8AB4"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#FE5000"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "sports-grey",
+    "name": "Sports Grey",
+    "hex": "#B8B8B9"
+   },
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#5F8289"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#ABCAE9"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#D0006F"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#EABEDB"
+   },
+   {
+    "id": "b8b8b8",
+    "name": "B8B8B8",
+    "hex": "#B8B8B8"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#6C1D45"
+   },
+   {
+    "id": "military",
+    "name": "Military",
+    "hex": "#3E4827"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3A3A3A"
+   },
+   {
+    "id": "white-navy-striped",
+    "name": "White - Navy (Striped)",
+    "hex": "#1D1F2F"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#00CDF2"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "hex": "#009A44"
+   }
+  ]
+ },
+ {
+  "id": "bundc-inspire-polo-men",
+  "brand": "B&C",
+  "name": "Inspire Polo / Men",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_men_pm430_black.webp",
+  "vorhandeneFarben": [
+   "white",
+   "heather-grey",
+   "dark-grey-solid",
+   "black"
+  ],
+  "fehlend": [
+   {
+    "id": "urban-navy",
+    "name": "Urban Navy",
+    "hex": "#101146"
+   },
+   {
+    "id": "cobalt-blue",
+    "name": "Cobalt Blue",
+    "hex": "#375885"
+   },
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "fire-red",
+    "name": "Fire Red",
+    "hex": "#E30411"
+   },
+   {
+    "id": "sorbet",
+    "name": "Sorbet",
+    "hex": "#CC005C"
+   },
+   {
+    "id": "very-turquoise",
+    "name": "Very Turquoise",
+    "hex": "#48BFE3"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#7AB2DC"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#004413"
+   },
+   {
+    "id": "solar-yellow",
+    "name": "Solar Yellow",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "urban-orange",
+    "name": "Urban Orange",
+    "hex": "#CC4F00"
+   },
+   {
+    "id": "orchid-pink",
+    "name": "Orchid Pink",
+    "hex": "#FBE0E4"
+   },
+   {
+    "id": "orchid-green",
+    "name": "Orchid Green",
+    "hex": "#99C32E"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "millennial-lilac",
+    "name": "Millennial Lilac",
+    "hex": "#6B629A"
+   },
+   {
+    "id": "millennial-mint",
+    "name": "Millennial Mint",
+    "hex": "#91C0BA"
+   }
+  ]
+ },
+ {
+  "id": "bundc-inspire-polo-women",
+  "brand": "B&C",
+  "name": "Inspire Polo / Women",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_polo_women_pw440_black.webp",
+  "vorhandeneFarben": [
+   "white",
+   "heather-grey",
+   "dark-grey-solid",
+   "black"
+  ],
+  "fehlend": [
+   {
+    "id": "urban-navy",
+    "name": "Urban Navy",
+    "hex": "#101146"
+   },
+   {
+    "id": "cobalt-blue",
+    "name": "Cobalt Blue",
+    "hex": "#375885"
+   },
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "solar-yellow",
+    "name": "Solar Yellow",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "urban-orange",
+    "name": "Urban Orange",
+    "hex": "#CC4F00"
+   },
+   {
+    "id": "fire-red",
+    "name": "Fire Red",
+    "hex": "#E30411"
+   },
+   {
+    "id": "sorbet",
+    "name": "Sorbet",
+    "hex": "#CC005C"
+   },
+   {
+    "id": "orchid-pink",
+    "name": "Orchid Pink",
+    "hex": "#FBE0E4"
+   },
+   {
+    "id": "very-turquoise",
+    "name": "Very Turquoise",
+    "hex": "#48BFE3"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#7AB2DC"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "orchid-green",
+    "name": "Orchid Green",
+    "hex": "#99C32E"
+   },
+   {
+    "id": "millennial-mint",
+    "name": "Millennial Mint",
+    "hex": "#91C0BA"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#004413"
+   },
+   {
+    "id": "millennial-lilac",
+    "name": "Millennial Lilac",
+    "hex": "#6B629A"
+   }
+  ]
+ },
+ {
+  "id": "neutral-ladies-long-sleeve-t-shirt",
+  "brand": "Neutral",
+  "name": "Ladies` Long Sleeve T-Shirt",
+  "typ": "longsleeve",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "bottle-green",
+   "charcoal",
+   "black",
+   "navy",
+   "red",
+   "white",
+   "royal"
+  ],
+  "fehlend": [
+   {
+    "id": "dusty-indigo",
+    "name": "Dusty Indigo",
+    "hex": "#5E8AB4"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#FE5000"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "teal",
+    "name": "Teal",
+    "hex": "#5F8289"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#ABCAE9"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#D0006F"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#EABEDB"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#6C1D45"
+   },
+   {
+    "id": "military",
+    "name": "Military",
+    "hex": "#3E4827"
+   },
+   {
+    "id": "sports-grey",
+    "name": "Sports Grey",
+    "hex": "#B8B8B9"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3A3A3A"
+   },
+   {
+    "id": "white-navy-striped",
+    "name": "White - Navy (Striped)",
+    "hex": "#1D1F2F"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#00CDF2"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "hex": "#009A44"
+   }
+  ]
+ },
+ {
+  "id": "bundc-inspire-t-women",
+  "brand": "B&C",
+  "name": "Inspire T /Women",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_women_tw043_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "navy",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "atoll",
+    "name": "Atoll",
+    "hex": "#0092C3"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#D40050"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FCC643"
+   },
+   {
+    "id": "khaki",
+    "name": "Khaki",
+    "hex": "#4C4B30"
+   },
+   {
+    "id": "light-grey",
+    "name": "Light Grey",
+    "hex": "#A09D98"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "real-green",
+    "name": "Real Green",
+    "hex": "#41A62A"
+   },
+   {
+    "id": "red",
+    "name": "Red",
+    "hex": "#DB001B"
+   },
+   {
+    "id": "royal-blue",
+    "name": "Royal Blue",
+    "hex": "#154E8F"
+   },
+   {
+    "id": "sport-grey-heather",
+    "name": "Sport Grey (Heather)",
+    "hex": "#9C9E9F"
+   },
+   {
+    "id": "millennial-pink",
+    "name": "Millennial Pink",
+    "hex": "#D1ABA0"
+   },
+   {
+    "id": "urban-orange",
+    "name": "Urban Orange",
+    "hex": "#CC4F00"
+   },
+   {
+    "id": "urban-purple",
+    "name": "Urban Purple",
+    "hex": "#2A094E"
+   },
+   {
+    "id": "millennial-khaki",
+    "name": "Millennial Khaki",
+    "hex": "#585B55"
+   }
+  ]
+ },
+ {
+  "id": "russell-russell-classic-t",
+  "brand": "Russell",
+  "name": "Russell Classic T",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bottle-green",
+   "bright-royal",
+   "classic-red",
+   "french-navy",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "mocha",
+    "name": "Mocha",
+    "hex": "#716356"
+   },
+   {
+    "id": "0062ae",
+    "name": "0062AE",
+    "hex": "#0062AE"
+   },
+   {
+    "id": "bright-red",
+    "name": "Bright Red",
+    "hex": "#ED1C24"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5A032C"
+   },
+   {
+    "id": "convoy-grey-solid",
+    "name": "Convoy Grey (Solid)",
+    "hex": "#555B66"
+   },
+   {
+    "id": "light-oxford-heather",
+    "name": "Light Oxford (Heather)",
+    "hex": "#9DA6AB"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#33346E"
+   },
+   {
+    "id": "sky",
+    "name": "Sky",
+    "hex": "#8BB4DF"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFF450"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#F7F4DD"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#6B6B55"
+   },
+   {
+    "id": "mineral-blue",
+    "name": "Mineral Blue",
+    "hex": "#768BA2"
+   },
+   {
+    "id": "indigo",
+    "name": "Indigo",
+    "hex": "#3A5270"
+   },
+   {
+    "id": "powder-rose",
+    "name": "Powder Rose",
+    "hex": "#DFC2C3"
+   },
+   {
+    "id": "tan",
+    "name": "Tan",
+    "hex": "#AE997D"
+   }
+  ]
+ },
+ {
+  "id": "stedman-classic-t-v-neck",
+  "brand": "Stedman",
+  "name": "Classic-T V-Neck",
+  "typ": "tshirt",
+  "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "747679",
+    "name": "747679",
+    "hex": "#747679"
+   },
+   {
+    "id": "black-opal",
+    "name": "Black Opal",
+    "hex": "#000000"
+   },
+   {
+    "id": "blue-midnight",
+    "name": "Blue Midnight",
+    "hex": "#180A29"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#293E11"
+   },
+   {
+    "id": "bright-royal",
+    "name": "Bright Royal",
+    "hex": "#2D428A"
+   },
+   {
+    "id": "deep-berry",
+    "name": "Deep Berry",
+    "hex": "#4A3650"
+   },
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#A1A1A2"
+   },
+   {
+    "id": "kiwi-green",
+    "name": "Kiwi Green",
+    "hex": "#78BE20"
+   },
+   {
+    "id": "navy-blue",
+    "name": "Navy Blue",
+    "hex": "#051733"
+   },
+   {
+    "id": "ocean-blue",
+    "name": "Ocean Blue",
+    "hex": "#007FA3"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#EC6400"
+   },
+   {
+    "id": "scarlet-red",
+    "name": "Scarlet Red",
+    "hex": "#E60029"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFEB4F"
+   },
+   {
+    "id": "sunflower-yellow",
+    "name": "Sunflower Yellow",
+    "hex": "#FFC600"
+   },
+   {
+    "id": "1c9a2c",
+    "name": "1C9A2C",
+    "hex": "#1C9A2C"
+   }
+  ]
+ },
+ {
+  "id": "bundc-king-hooded-sweat",
+  "brand": "B&C",
+  "name": "KING Hooded Sweat",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_king_hooded_sweat_wu02k_white.webp",
+  "vorhandeneFarben": [
+   "navy-blue",
+   "white",
+   "red",
+   "royal-blue",
+   "bottle-green",
+   "heather-grey"
+  ],
+  "fehlend": [
+   {
+    "id": "yellow-fizz",
+    "name": "Yellow Fizz",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "pure-orange",
+    "name": "Pure Orange",
+    "hex": "#EB5D0F"
+   },
+   {
+    "id": "dark-cherry",
+    "name": "Dark Cherry",
+    "hex": "#5C2333"
+   },
+   {
+    "id": "soft-rose",
+    "name": "Soft Rose",
+    "hex": "#F0D1C4"
+   },
+   {
+    "id": "magenta-pink",
+    "name": "Magenta Pink",
+    "hex": "#DC1A62"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "pure-sky",
+    "name": "Pure Sky",
+    "hex": "#DDE7E9"
+   },
+   {
+    "id": "nordic-blue",
+    "name": "Nordic Blue",
+    "hex": "#5F7788"
+   },
+   {
+    "id": "aqua-green",
+    "name": "Aqua Green",
+    "hex": "#C1D3C7"
+   },
+   {
+    "id": "khaki",
+    "name": "Khaki",
+    "hex": "#4C4B30"
+   },
+   {
+    "id": "grey-fog",
+    "name": "Grey Fog",
+    "hex": "#D8D2C0"
+   },
+   {
+    "id": "asphalt",
+    "name": "Asphalt",
+    "hex": "#433F42"
+   },
+   {
+    "id": "black-pure",
+    "name": "Black Pure",
+    "hex": "#070509"
+   },
+   {
+    "id": "heather-mid-grey",
+    "name": "Heather Mid Grey",
+    "hex": "#7F8080"
+   },
+   {
+    "id": "1f2532",
+    "name": "1F2532",
+    "hex": "#1F2532"
+   }
+  ]
+ },
+ {
+  "id": "neutral-unisex-performance-t-shirt",
+  "brand": "Neutral",
+  "name": "Unisex Performance T-Shirt",
+  "typ": "tshirt",
+  "quelle": "sportyfied.com",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "white",
+   "charcoal",
+   "black",
+   "navy",
+   "red",
+   "royal"
+  ],
+  "fehlend": [
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#215732"
+   },
+   {
+    "id": "dusty-indigo",
+    "name": "Dusty Indigo",
+    "hex": "#5E8AB4"
+   },
+   {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "hex": "#00CDF2"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   },
+   {
+    "id": "okay-orange",
+    "name": "Okay Orange",
+    "hex": "#FAAF3F"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "hex": "#009A44"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#6C1D45"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#D2C7C4"
+   },
+   {
+    "id": "dusty-yellow",
+    "name": "Dusty Yellow",
+    "hex": "#F8E08E"
+   },
+   {
+    "id": "dusty-purple",
+    "name": "Dusty Purple",
+    "hex": "#C6B0BC"
+   },
+   {
+    "id": "military",
+    "name": "Military",
+    "hex": "#3E4827"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#D0006F"
+   }
+  ]
+ },
+ {
+  "id": "bundc-unisex-polo-id-001",
+  "brand": "B&C",
+  "name": "Unisex Polo ID.001",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_id_001_polo_pui10_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bottle-green",
+   "navy",
+   "red",
+   "royal-blue",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "anthracite",
+    "name": "Anthracite",
+    "hex": "#373939"
+   },
+   {
+    "id": "atoll",
+    "name": "Atoll",
+    "hex": "#0092C3"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#461A11"
+   },
+   {
+    "id": "chili-gold",
+    "name": "Chili Gold",
+    "hex": "#FFB300"
+   },
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#D40050"
+   },
+   {
+    "id": "heather-grey",
+    "name": "Heather Grey",
+    "hex": "#B1B3B4"
+   },
+   {
+    "id": "009149",
+    "name": "009149",
+    "hex": "#009149"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#9DC7EB"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "pixel-coral",
+    "name": "Pixel Coral",
+    "hex": "#FF403D"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#5B0E5B"
+   },
+   {
+    "id": "real-green",
+    "name": "Real Green",
+    "hex": "#41A62A"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#EBDFCA"
+   },
+   {
+    "id": "wine",
+    "name": "Wine",
+    "hex": "#6A2B40"
+   }
+  ]
+ },
+ {
+  "id": "sols-men-s-polo-shirt-prime",
+  "brand": "SOL'S",
+  "name": "Men`s Polo Shirt Prime",
+  "typ": "polo",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/6077/10571-BLK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "royal-blue",
+   "black",
+   "bottle-green",
+   "french-navy",
+   "grey-melange",
+   "red",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#636267"
+   },
+   {
+    "id": "army",
+    "name": "Army",
+    "hex": "#746142"
+   },
+   {
+    "id": "chocolate",
+    "name": "Chocolate",
+    "hex": "#4B271C"
+   },
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#0095C3"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#C1C4C7"
+   },
+   {
+    "id": "pure-grey",
+    "name": "Pure Grey",
+    "hex": "#ADB2B6"
+   },
+   {
+    "id": "apple-green",
+    "name": "Apple Green",
+    "hex": "#CDEA80"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#700B23"
+   },
+   {
+    "id": "dark-purple",
+    "name": "Dark Purple",
+    "hex": "#55117B"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FBC54B"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#008845"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F08800"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#BAA584"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#96C2E8"
+   }
+  ]
+ },
+ {
+  "id": "russell-authentic-hooded-sweat",
+  "brand": "Russell",
+  "name": "Authentic Hooded Sweat",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_authentic_hooded_sweat_r-265m-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bright-royal",
+   "classic-red",
+   "french-navy",
+   "bottle-green"
+  ],
+  "fehlend": [
+   {
+    "id": "mocha",
+    "name": "Mocha",
+    "hex": "#716356"
+   },
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#EC0083"
+   },
+   {
+    "id": "light-oxford-heather",
+    "name": "Light Oxford (Heather)",
+    "hex": "#9DA6AB"
+   },
+   {
+    "id": "ffffff",
+    "name": "FFFFFF",
+    "hex": "#FFFFFF"
+   },
+   {
+    "id": "convoy-grey-solid",
+    "name": "Convoy Grey (Solid)",
+    "hex": "#555B66"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5A032C"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#6B6B55"
+   },
+   {
+    "id": "urban-grey",
+    "name": "Urban Grey",
+    "hex": "#C5C5C5"
+   },
+   {
+    "id": "mineral-blue",
+    "name": "Mineral Blue",
+    "hex": "#768BA2"
+   },
+   {
+    "id": "indigo",
+    "name": "Indigo",
+    "hex": "#3A5270"
+   },
+   {
+    "id": "sport-heather",
+    "name": "Sport Heather",
+    "hex": "#9D9C9F"
+   },
+   {
+    "id": "natural",
+    "name": "Natural",
+    "hex": "#F7F4DD"
+   },
+   {
+    "id": "8fd491",
+    "name": "8FD491",
+    "hex": "#8FD491"
+   },
+   {
+    "id": "fac511",
+    "name": "FAC511",
+    "hex": "#FAC511"
+   }
+  ]
+ },
+ {
+  "id": "gildan-ultra-cotton-long-sleeve-t-shirt",
+  "brand": "Gildan",
+  "name": "Ultra Cotton Long Sleeve T- Shirt",
+  "typ": "longsleeve",
+  "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+  "beispielUrl": "https://cdn.blankstyle.com/files/p_images/5869/gildan_135-black-front.jpg",
+  "vorhandeneFarben": [
+   "navy",
+   "black",
+   "charcoal-solid",
+   "forest-green",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-chocolate",
+    "name": "Dark Chocolate",
+    "hex": "#423238"
+   },
+   {
+    "id": "ash-grey-heather",
+    "name": "Ash Grey (Heather)",
+    "hex": "#C8C9C7"
+   },
+   {
+    "id": "cardinal-red",
+    "name": "Cardinal Red",
+    "hex": "#8D2838"
+   },
+   {
+    "id": "carolina-blue",
+    "name": "Carolina Blue",
+    "hex": "#79A0C6"
+   },
+   {
+    "id": "dark-heather",
+    "name": "Dark Heather",
+    "hex": "#3F4444"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#EEAD1A"
+   },
+   {
+    "id": "irish-green",
+    "name": "Irish Green",
+    "hex": "#009E69"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#A3B3CB"
+   },
+   {
+    "id": "light-pink",
+    "name": "Light Pink",
+    "hex": "#E4BED2"
+   },
+   {
+    "id": "maroon",
+    "name": "Maroon",
+    "hex": "#5B2B42"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#DF6426"
+   },
+   {
+    "id": "safety-green-neon",
+    "name": "Safety Green (Neon)",
+    "hex": "#C6D218"
+   },
+   {
+    "id": "safety-orange-neon",
+    "name": "Safety Orange (Neon)",
+    "hex": "#FF7800"
+   },
+   {
+    "id": "sport-grey-heather",
+    "name": "Sport Grey (Heather)",
+    "hex": "#97999B"
+   }
+  ]
+ },
+ {
+  "id": "bundc-my-eco-polo-6535",
+  "brand": "B&C",
+  "name": "My Eco Polo 65/35_°",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_black.webp",
+  "vorhandeneFarben": [
+   "camo-green",
+   "white",
+   "black",
+   "navy",
+   "royal-blue",
+   "red",
+   "dark-grey-solid"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-forest",
+    "name": "Dark Forest",
+    "hex": "#273224"
+   },
+   {
+    "id": "mastic",
+    "name": "Mastic",
+    "hex": "#B6A58D"
+   },
+   {
+    "id": "roasted-coffee",
+    "name": "Roasted Coffee",
+    "hex": "#493A35"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "melon-orange",
+    "name": "Melon Orange",
+    "hex": "#F6AA70"
+   },
+   {
+    "id": "lotus-pink",
+    "name": "Lotus Pink",
+    "hex": "#E16B94"
+   },
+   {
+    "id": "lotus-blue",
+    "name": "Lotus Blue",
+    "hex": "#9EBCDD"
+   },
+   {
+    "id": "acid-lime",
+    "name": "Acid Lime",
+    "hex": "#BDD010"
+   },
+   {
+    "id": "pacific-grey",
+    "name": "Pacific Grey",
+    "hex": "#C0C3C4"
+   },
+   {
+    "id": "pop-yellow",
+    "name": "Pop Yellow",
+    "hex": "#F0B70C"
+   },
+   {
+    "id": "pop-tomato",
+    "name": "Pop Tomato",
+    "hex": "#BF1D25"
+   },
+   {
+    "id": "pop-turquoise",
+    "name": "Pop Turquoise",
+    "hex": "#008E96"
+   },
+   {
+    "id": "pop-green",
+    "name": "Pop Green",
+    "hex": "#15A062"
+   }
+  ]
+ },
+ {
+  "id": "bundc-my-eco-polo-6535-women",
+  "brand": "B&C",
+  "name": "My Eco Polo 65/35 Women_°",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_black.webp",
+  "vorhandeneFarben": [
+   "camo-green",
+   "white",
+   "black",
+   "navy",
+   "royal-blue",
+   "red",
+   "dark-grey-solid"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-forest",
+    "name": "Dark Forest",
+    "hex": "#273224"
+   },
+   {
+    "id": "mastic",
+    "name": "Mastic",
+    "hex": "#B6A58D"
+   },
+   {
+    "id": "roasted-coffee",
+    "name": "Roasted Coffee",
+    "hex": "#493A35"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "melon-orange",
+    "name": "Melon Orange",
+    "hex": "#F6AA70"
+   },
+   {
+    "id": "lotus-pink",
+    "name": "Lotus Pink",
+    "hex": "#E16B94"
+   },
+   {
+    "id": "lotus-blue",
+    "name": "Lotus Blue",
+    "hex": "#9EBCDD"
+   },
+   {
+    "id": "acid-lime",
+    "name": "Acid Lime",
+    "hex": "#BDD010"
+   },
+   {
+    "id": "pacific-grey",
+    "name": "Pacific Grey",
+    "hex": "#C0C3C4"
+   },
+   {
+    "id": "pop-yellow",
+    "name": "Pop Yellow",
+    "hex": "#F0B70C"
+   },
+   {
+    "id": "pop-tomato",
+    "name": "Pop Tomato",
+    "hex": "#BF1D25"
+   },
+   {
+    "id": "pop-turquoise",
+    "name": "Pop Turquoise",
+    "hex": "#008E96"
+   },
+   {
+    "id": "pop-green",
+    "name": "Pop Green",
+    "hex": "#15A062"
+   }
+  ]
+ },
+ {
+  "id": "sols-unisex-pulse-polo-shirt",
+  "brand": "SOL'S",
+  "name": "Unisex Pulse Polo Shirt",
+  "typ": "polo",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/6073/04502-BLK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "white",
+   "red",
+   "kelly-green",
+   "royal-blue-241",
+   "french-navy",
+   "grey-melange",
+   "black"
+  ],
+  "fehlend": [
+   {
+    "id": "rope",
+    "name": "Rope",
+    "hex": "#B6A186"
+   },
+   {
+    "id": "linen",
+    "name": "Linen",
+    "hex": "#CFBFB3"
+   },
+   {
+    "id": "candy-pink",
+    "name": "Candy Pink",
+    "hex": "#EBA9C4"
+   },
+   {
+    "id": "lilac",
+    "name": "Lilac",
+    "hex": "#C0B6CA"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F08800"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FBC54B"
+   },
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#253E33"
+   },
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#0095C3"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#96C2E8"
+   },
+   {
+    "id": "denim",
+    "name": "Denim",
+    "hex": "#1B3353"
+   },
+   {
+    "id": "pure-grey",
+    "name": "Pure Grey",
+    "hex": "#ADB2B6"
+   },
+   {
+    "id": "mouse-grey-solid",
+    "name": "Mouse Grey (Solid)",
+    "hex": "#645E67"
+   },
+   {
+    "id": "off-white",
+    "name": "Off White",
+    "hex": "#FAFAFA"
+   }
+  ]
+ },
+ {
+  "id": "bundc-inspire-e150-t-shirt",
+  "brand": "B&C",
+  "name": "#Inspire E150 T-Shirt",
+  "typ": "tshirt",
+  "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_navy.webp",
+  "vorhandeneFarben": [
+   "navy-blue",
+   "white",
+   "off-white",
+   "red",
+   "burgundy",
+   "royal-blue",
+   "forest-green",
+   "heather-grey",
+   "navy"
+  ],
+  "fehlend": [
+   {
+    "id": "mocha",
+    "name": "Mocha",
+    "hex": "#6C4F3E"
+   },
+   {
+    "id": "yellow-fizz",
+    "name": "Yellow Fizz",
+    "hex": "#FFE93C"
+   },
+   {
+    "id": "pure-orange",
+    "name": "Pure Orange",
+    "hex": "#EB5D0F"
+   },
+   {
+    "id": "soft-rose",
+    "name": "Soft Rose",
+    "hex": "#F0D1C4"
+   },
+   {
+    "id": "magenta-pink",
+    "name": "Magenta Pink",
+    "hex": "#DC1A62"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "blue-fog",
+    "name": "Blue Fog",
+    "hex": "#A6B7C2"
+   },
+   {
+    "id": "sage",
+    "name": "Sage",
+    "hex": "#AAC1B3"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#EDEE19"
+   },
+   {
+    "id": "apple-green",
+    "name": "Apple Green",
+    "hex": "#45A94C"
+   },
+   {
+    "id": "asphalt",
+    "name": "Asphalt",
+    "hex": "#433F42"
+   },
+   {
+    "id": "black-pure",
+    "name": "Black Pure",
+    "hex": "#070509"
+   }
+  ]
+ },
+ {
+  "id": "sols-women-s-fleecejacket-north",
+  "brand": "SOL'S",
+  "name": "Women`s Fleecejacket North",
+  "typ": "jacket",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/6136/54500-BLK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "royal-blue",
+   "white",
+   "black",
+   "navy",
+   "red"
+  ],
+  "fehlend": [
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#0095C3"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#700B23"
+   },
+   {
+    "id": "charcoal-grey-solid",
+    "name": "Charcoal Grey (Solid)",
+    "hex": "#1D181F"
+   },
+   {
+    "id": "dark-chocolate",
+    "name": "Dark Chocolate",
+    "hex": "#461A11"
+   },
+   {
+    "id": "dark-purple",
+    "name": "Dark Purple",
+    "hex": "#55117B"
+   },
+   {
+    "id": "fir-green",
+    "name": "Fir Green",
+    "hex": "#00282B"
+   },
+   {
+    "id": "grey-melange",
+    "name": "Grey Melange",
+    "hex": "#8F8B8B"
+   },
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#D0DEBB"
+   },
+   {
+    "id": "neon-orange",
+    "name": "Neon Orange",
+    "hex": "#F7A600"
+   },
+   {
+    "id": "neon-yellow",
+    "name": "Neon Yellow",
+    "hex": "#F0FF3D"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F08800"
+   },
+   {
+    "id": "rope",
+    "name": "Rope",
+    "hex": "#B6A186"
+   }
+  ]
+ },
+ {
+  "id": "bundc-inspire-t-men",
+  "brand": "B&C",
+  "name": "Inspire T /Men",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "black",
+   "khaki",
+   "navy",
+   "red",
+   "royal-blue",
+   "white",
+   "sport-grey-heather"
+  ],
+  "fehlend": [
+   {
+    "id": "atoll",
+    "name": "Atoll",
+    "hex": "#0092C3"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#D40050"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "hex": "#FCC643"
+   },
+   {
+    "id": "light-grey",
+    "name": "Light Grey",
+    "hex": "#A09D98"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "real-green",
+    "name": "Real Green",
+    "hex": "#41A62A"
+   },
+   {
+    "id": "millennial-khaki",
+    "name": "Millennial Khaki",
+    "hex": "#585B55"
+   },
+   {
+    "id": "millennial-pink",
+    "name": "Millennial Pink",
+    "hex": "#D1ABA0"
+   },
+   {
+    "id": "urban-orange",
+    "name": "Urban Orange",
+    "hex": "#CC4F00"
+   },
+   {
+    "id": "urban-purple",
+    "name": "Urban Purple",
+    "hex": "#2A094E"
+   }
+  ]
+ },
+ {
+  "id": "sols-women-s-polo-shirt-prime",
+  "brand": "SOL'S",
+  "name": "Women`s Polo Shirt Prime",
+  "typ": "polo",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/6078/10573-BLK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "royal-blue",
+   "black",
+   "bottle-green",
+   "french-navy",
+   "grey-melange",
+   "red",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#636267"
+   },
+   {
+    "id": "army",
+    "name": "Army",
+    "hex": "#746142"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#700B23"
+   },
+   {
+    "id": "dark-purple",
+    "name": "Dark Purple",
+    "hex": "#55117B"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#008845"
+   },
+   {
+    "id": "pure-grey",
+    "name": "Pure Grey",
+    "hex": "#ADB2B6"
+   },
+   {
+    "id": "sand",
+    "name": "Sand",
+    "hex": "#BAA584"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#96C2E8"
+   },
+   {
+    "id": "4b271c",
+    "name": "4B271C",
+    "hex": "#4B271C"
+   },
+   {
+    "id": "ash-heather",
+    "name": "Ash (Heather)",
+    "hex": "#C1C4C7"
+   },
+   {
+    "id": "cdea80",
+    "name": "CDEA80",
+    "hex": "#CDEA80"
+   }
+  ]
+ },
+ {
+  "id": "bundc-id-333-hoodie",
+  "brand": "B&C",
+  "name": "ID.333 Hoodie",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_black.webp",
+  "vorhandeneFarben": [
+   "navy",
+   "black",
+   "sport-grey-heather",
+   "white",
+   "red",
+   "royal-blue",
+   "bottle-green"
+  ],
+  "fehlend": [
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "off-white",
+    "name": "Off White",
+    "hex": "#F5EFE2"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "pop-yellow",
+    "name": "Pop Yellow",
+    "hex": "#F0B70C"
+   },
+   {
+    "id": "nordic-blue",
+    "name": "Nordic Blue",
+    "hex": "#5F7788"
+   },
+   {
+    "id": "mastic",
+    "name": "Mastic",
+    "hex": "#B6A58D"
+   },
+   {
+    "id": "lotus-blue",
+    "name": "Lotus Blue",
+    "hex": "#9EBCDD"
+   },
+   {
+    "id": "radiant-purple",
+    "name": "Radiant Purple",
+    "hex": "#3B1D66"
+   },
+   {
+    "id": "blush-mint",
+    "name": "Blush Mint",
+    "hex": "#CFDFD1"
+   }
+  ]
+ },
+ {
+  "id": "earthpositive-premium-long-sleeve-t-shirt",
+  "brand": "EarthPositive",
+  "name": "Premium Long Sleeve T-Shirt",
+  "typ": "longsleeve",
+  "quelle": "shirtplus.net (Shopify-CDN, hostet Continentals offizielle EP01L-Studioflats mit",
+  "beispielUrl": "https://shirtplus.net/cdn/shop/files/EP01L-BL_FRONT_EP1.jpg",
+  "vorhandeneFarben": [
+   "black",
+   "french-navy",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "faded-black",
+    "name": "Faded Black",
+    "hex": "#212322"
+   },
+   {
+    "id": "faded-navy",
+    "name": "Faded Navy",
+    "hex": "#454955"
+   },
+   {
+    "id": "faded-brown",
+    "name": "Faded Brown",
+    "hex": "#675342"
+   },
+   {
+    "id": "faded-khaki",
+    "name": "Faded Khaki",
+    "hex": "#797054"
+   },
+   {
+    "id": "blue-dusk",
+    "name": "Blue Dusk",
+    "hex": "#809CA8"
+   },
+   {
+    "id": "bone",
+    "name": "Bone",
+    "hex": "#C7BCB7"
+   },
+   {
+    "id": "faded-mustard",
+    "name": "Faded Mustard",
+    "hex": "#946F3A"
+   },
+   {
+    "id": "faded-pink",
+    "name": "Faded Pink",
+    "hex": "#B08D92"
+   },
+   {
+    "id": "faded-white",
+    "name": "Faded White",
+    "hex": "#F6F5F4"
+   },
+   {
+    "id": "rfd-ready-for-dye",
+    "name": "RFD (Ready for Dye)",
+    "hex": "#DDDAD5"
+   },
+   {
+    "id": "light-beige-sand",
+    "name": "Light Beige (Sand)",
+    "hex": "#CEC3AF"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-ladies-active-t",
+  "brand": "James+Nicholson",
+  "name": "Ladies` Active-T",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "green",
+   "navy",
+   "purple",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "acid-yellow",
+    "name": "Acid Yellow",
+    "hex": "#D7E076"
+   },
+   {
+    "id": "dark-melange",
+    "name": "Dark-Melange",
+    "hex": "#474D52"
+   },
+   {
+    "id": "grenadine",
+    "name": "Grenadine",
+    "hex": "#ED8E78"
+   },
+   {
+    "id": "light-melange",
+    "name": "Light Melange",
+    "hex": "#E7E3D6"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   },
+   {
+    "id": "pacific",
+    "name": "Pacific",
+    "hex": "#007CB7"
+   },
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#E64370"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#00A9CE"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFED00"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-men-s-bio-workwear-polo",
+  "brand": "James+Nicholson",
+  "name": "Men`s Bio Workwear Polo",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_black.webp",
+  "vorhandeneFarben": [
+   "red",
+   "navy",
+   "royal",
+   "black",
+   "white",
+   "carbon",
+   "dark-green"
+  ],
+  "fehlend": [
+   {
+    "id": "wine",
+    "name": "Wine",
+    "hex": "#830628"
+   },
+   {
+    "id": "aqua",
+    "name": "Aqua",
+    "hex": "#477AB8"
+   },
+   {
+    "id": "stone",
+    "name": "Stone",
+    "hex": "#F5EDCF"
+   },
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#5D4631"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#99A499"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#00A9CE"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   },
+   {
+    "id": "gold-yellow",
+    "name": "Gold Yellow",
+    "hex": "#FBBF1F"
+   },
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#9396A3"
+   }
+  ]
+ },
+ {
+  "id": "stedman-clive-crew-neck",
+  "brand": "Stedman",
+  "name": "Clive Crew Neck",
+  "typ": "tshirt",
+  "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/)",
+  "beispielUrl": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_WHI.jpg",
+  "vorhandeneFarben": [
+   "slate-grey-solid",
+   "white",
+   "blue-midnight",
+   "051733"
+  ],
+  "fehlend": [
+   {
+    "id": "black-opal",
+    "name": "Black Opal",
+    "hex": "#000000"
+   },
+   {
+    "id": "bordeaux",
+    "name": "Bordeaux",
+    "hex": "#89163E"
+   },
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#A1A1A2"
+   },
+   {
+    "id": "king-blue",
+    "name": "King Blue",
+    "hex": "#1B4F90"
+   },
+   {
+    "id": "marina-blue",
+    "name": "Marina Blue",
+    "hex": "#394A59"
+   },
+   {
+    "id": "dark-chocolate",
+    "name": "Dark Chocolate",
+    "hex": "#473F3D"
+   },
+   {
+    "id": "salmon",
+    "name": "Salmon",
+    "hex": "#E74061"
+   },
+   {
+    "id": "scarlet-red",
+    "name": "Scarlet Red",
+    "hex": "#E60029"
+   },
+   {
+    "id": "293e11",
+    "name": "293E11",
+    "hex": "#293E11"
+   }
+  ]
+ },
+ {
+  "id": "build-your-brand-fluffy-hoody",
+  "brand": "Build Your Brand",
+  "name": "Fluffy Hoody",
+  "typ": "hoodie",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-00007.jpg",
+  "vorhandeneFarben": [
+   "bottle-green",
+   "pale-olive",
+   "white",
+   "black",
+   "magnet"
+  ],
+  "fehlend": [
+   {
+    "id": "light-asphalt",
+    "name": "Light Asphalt",
+    "hex": "#ABB1B3"
+   },
+   {
+    "id": "chocoloate-brown",
+    "name": "Chocoloate Brown",
+    "hex": "#5A3F38"
+   },
+   {
+    "id": "u-beige",
+    "name": "U. Beige",
+    "hex": "#A69173"
+   },
+   {
+    "id": "white-sand",
+    "name": "White Sand",
+    "hex": "#ECE3D6"
+   },
+   {
+    "id": "soft-pink",
+    "name": "Soft Pink",
+    "hex": "#E9ADCA"
+   },
+   {
+    "id": "plum-purple",
+    "name": "Plum Purple",
+    "hex": "#4F3643"
+   },
+   {
+    "id": "powder-blue",
+    "name": "Powder Blue",
+    "hex": "#91A5CF"
+   },
+   {
+    "id": "beryl-blue",
+    "name": "Beryl Blue",
+    "hex": "#88CFD2"
+   }
+  ]
+ },
+ {
+  "id": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+  "brand": "EarthPositive",
+  "name": "Earth Positive Women`s Half-Zip Hoodie",
+  "typ": "zip-hoodie",
+  "quelle": "EarthPositive / Continental Clothing (offizielle Herstellerquelle: PIM api pim.e",
+  "beispielUrl": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUBL_front.png?width=1000",
+  "vorhandeneFarben": [
+   "sueded-black",
+   "sueded-off-white",
+   "7e8f62"
+  ],
+  "fehlend": [
+   {
+    "id": "sueded-light-heather",
+    "name": "Sueded Light Heather",
+    "hex": "#B2B7B3"
+   },
+   {
+    "id": "sueded-fawn",
+    "name": "Sueded Fawn",
+    "hex": "#E0D4C8"
+   },
+   {
+    "id": "sueded-pale-lemon",
+    "name": "Sueded Pale Lemon",
+    "hex": "#F7F4C0"
+   },
+   {
+    "id": "sueded-orange",
+    "name": "Sueded Orange",
+    "hex": "#F08305"
+   },
+   {
+    "id": "sueded-miami-pink",
+    "name": "Sueded Miami Pink",
+    "hex": "#CCB2B9"
+   },
+   {
+    "id": "sueded-slate-green",
+    "name": "Sueded Slate Green",
+    "hex": "#A4B9AD"
+   },
+   {
+    "id": "sueded-blue-dusk",
+    "name": "Sueded Blue Dusk",
+    "hex": "#58747C"
+   },
+   {
+    "id": "sueded-light-blue-heather",
+    "name": "Sueded Light Blue Heather",
+    "hex": "#A6B4BF"
+   }
+  ]
+ },
+ {
+  "id": "just-hoods-organic-hoodie-jh201",
+  "brand": "Just Hoods",
+  "name": "Organic Hoodie JH201",
+  "typ": "hoodie",
+  "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+  "beispielUrl": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_newfrenchnavy_ft2.jpg",
+  "vorhandeneFarben": [
+   "bottle-green",
+   "ink-blue",
+   "charcoal-heather",
+   "arctic-white",
+   "fire-red",
+   "new-french-navy",
+   "royal-blue"
+  ],
+  "fehlend": [
+   {
+    "id": "baby-pink",
+    "name": "Baby Pink",
+    "hex": "#FFB3FA"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#651C32"
+   },
+   {
+    "id": "deep-black",
+    "name": "Deep Black",
+    "hex": "#000000"
+   },
+   {
+    "id": "heather-grey",
+    "name": "Heather Grey",
+    "hex": "#7A7D81"
+   },
+   {
+    "id": "mustard",
+    "name": "Mustard",
+    "hex": "#C69214"
+   },
+   {
+    "id": "lavender",
+    "name": "Lavender",
+    "hex": "#CBA3D8"
+   },
+   {
+    "id": "natural-stone",
+    "name": "Natural Stone",
+    "hex": "#A4ADA6"
+   },
+   {
+    "id": "sky-blue",
+    "name": "Sky Blue",
+    "hex": "#9BB8D3"
+   }
+  ]
+ },
+ {
+  "id": "russell-poloshirt-6535",
+  "brand": "Russell",
+  "name": "Poloshirt 65/35",
+  "typ": "polo",
+  "quelle": "groener-schulze.com",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_polycotton_polo_r-539m-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bright-royal",
+   "classic-red",
+   "french-navy",
+   "white",
+   "convoy-grey-solid"
+  ],
+  "fehlend": [
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#00461C"
+   },
+   {
+    "id": "bright-red",
+    "name": "Bright Red",
+    "hex": "#ED1C24"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5A032C"
+   },
+   {
+    "id": "light-oxford-heather",
+    "name": "Light Oxford (Heather)",
+    "hex": "#9DA6AB"
+   },
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#33346E"
+   },
+   {
+    "id": "sky",
+    "name": "Sky",
+    "hex": "#8BB4DF"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFF450"
+   }
+  ]
+ },
+ {
+  "id": "russell-classic-heavyweight-t-shirt",
+  "brand": "Russell",
+  "name": "Classic Heavyweight T-Shirt",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_heavy_t_r-215m-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "french-navy",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "bright-royal",
+    "name": "Bright Royal",
+    "hex": "#1E519E"
+   },
+   {
+    "id": "classic-red",
+    "name": "Classic Red",
+    "hex": "#D71925"
+   },
+   {
+    "id": "tan",
+    "name": "Tan",
+    "hex": "#AE997D"
+   },
+   {
+    "id": "convoy-grey-solid",
+    "name": "Convoy Grey (Solid)",
+    "hex": "#555B66"
+   },
+   {
+    "id": "petrol-blue",
+    "name": "Petrol Blue",
+    "hex": "#004860"
+   },
+   {
+    "id": "sport-heather",
+    "name": "Sport Heather",
+    "hex": "#9D9C9F"
+   }
+  ]
+ },
+ {
+  "id": "build-your-brand-ladies-heavy-hoody",
+  "brand": "Build Your Brand",
+  "name": "Ladies` Heavy Hoody",
+  "typ": "hoodie",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://tbi.cdn.pacerace.de/media/images/org/BY026_P1-00007.jpg",
+  "vorhandeneFarben": [
+   "white",
+   "black",
+   "charcoal-heather"
+  ],
+  "fehlend": [
+   {
+    "id": "pink",
+    "name": "Pink",
+    "hex": "#F5BFCC"
+   },
+   {
+    "id": "olive",
+    "name": "Olive",
+    "hex": "#80905F"
+   },
+   {
+    "id": "heather-grey",
+    "name": "Heather Grey",
+    "hex": "#99999B"
+   },
+   {
+    "id": "soft-yellow",
+    "name": "Soft Yellow",
+    "hex": "#E0DBA9"
+   },
+   {
+    "id": "dusk-rose",
+    "name": "Dusk Rose",
+    "hex": "#A89592"
+   },
+   {
+    "id": "soft-salvia",
+    "name": "Soft Salvia",
+    "hex": "#BDBC9E"
+   }
+  ]
+ },
+ {
+  "id": "sols-men-s-long-sleeve-t-shirt-imperial",
+  "brand": "SOL'S",
+  "name": "Men`s Long-Sleeve T-Shirt Imperial",
+  "typ": "longsleeve",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/5966/02074-DBK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "charcoal-melange",
+   "french-navy",
+   "grey-melange",
+   "red",
+   "white",
+   "bottle-green"
+  ],
+  "fehlend": [
+   {
+    "id": "royal-blue",
+    "name": "Royal Blue",
+    "hex": "#193574"
+   },
+   {
+    "id": "oxblood",
+    "name": "Oxblood",
+    "hex": "#663333"
+   },
+   {
+    "id": "dark-khaki",
+    "name": "Dark Khaki",
+    "hex": "#4E5B31"
+   },
+   {
+    "id": "deep-black",
+    "name": "Deep Black",
+    "hex": "#000000"
+   },
+   {
+    "id": "mouse-grey-solid",
+    "name": "Mouse Grey (Solid)",
+    "hex": "#645E67"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F08800"
+   }
+  ]
+ },
+ {
+  "id": "just-cool-long-sleeve-cool-t",
+  "brand": "Just Cool",
+  "name": "Long Sleeve Cool T",
+  "typ": "longsleeve",
+  "quelle": "shop.ralawise.com",
+  "beispielUrl": "https://shop.ralawise.com/globalassets/ralawise/jc/jc002_frenchnavy_ft2.jpg",
+  "vorhandeneFarben": [
+   "arctic-white",
+   "charcoal-solid",
+   "fire-red",
+   "french-navy",
+   "royal-blue"
+  ],
+  "fehlend": [
+   {
+    "id": "purple",
+    "name": "Purple",
+    "hex": "#512D6D"
+   },
+   {
+    "id": "sapphire-blue",
+    "name": "Sapphire Blue",
+    "hex": "#009CDE"
+   },
+   {
+    "id": "electric-yellow-neon",
+    "name": "Electric Yellow (Neon)",
+    "hex": "#E3E829"
+   },
+   {
+    "id": "jet-black",
+    "name": "Jet Black",
+    "hex": "#000710"
+   },
+   {
+    "id": "electric-green-neon",
+    "name": "Electric Green (Neon)",
+    "hex": "#44D62C"
+   },
+   {
+    "id": "electric-orange-neon",
+    "name": "Electric Orange (Neon)",
+    "hex": "#F0872B"
+   }
+  ]
+ },
+ {
+  "id": "bundc-e220-t",
+  "brand": "B&C",
+  "name": "#E220 T",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": null,
+  "vorhandeneFarben": [
+   "black",
+   "white",
+   "navy",
+   "lake-blue",
+   "amalfi-teal"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "off-white",
+    "name": "Off White",
+    "hex": "#F5EFE2"
+   },
+   {
+    "id": "khaki",
+    "name": "Khaki",
+    "hex": "#4C4B30"
+   },
+   {
+    "id": "mastic",
+    "name": "Mastic",
+    "hex": "#B6A58D"
+   },
+   {
+    "id": "orchid-pink",
+    "name": "Orchid Pink",
+    "hex": "#FBE0E4"
+   }
+  ]
+ },
+ {
+  "id": "russell-strapazierfaehiges-poloshirt-599",
+  "brand": "Russell",
+  "name": "Strapazierfähiges Poloshirt 599",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_hardwearing_polycotton_polo_r-599m-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bottle-green",
+   "bright-royal",
+   "classic-red",
+   "french-navy",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "bright-red",
+    "name": "Bright Red",
+    "hex": "#ED1C24"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5A032C"
+   },
+   {
+    "id": "convoy-grey-solid",
+    "name": "Convoy Grey (Solid)",
+    "hex": "#555B66"
+   },
+   {
+    "id": "light-oxford-heather",
+    "name": "Light Oxford (Heather)",
+    "hex": "#9DA6AB"
+   },
+   {
+    "id": "sky",
+    "name": "Sky",
+    "hex": "#8BB4DF"
+   }
+  ]
+ },
+ {
+  "id": "russell-men-s-ultimate-cotton-polo",
+  "brand": "Russell",
+  "name": "Men`s Ultimate Cotton Polo",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_ultimate_cotton_polo_r-577m-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bright-royal",
+   "classic-red",
+   "french-navy",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "azure-blue",
+    "name": "Azure Blue",
+    "hex": "#0062AE"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5A032C"
+   },
+   {
+    "id": "sky",
+    "name": "Sky",
+    "hex": "#8BB4DF"
+   },
+   {
+    "id": "titanium-solid",
+    "name": "Titanium (Solid)",
+    "hex": "#2D3844"
+   },
+   {
+    "id": "00461c",
+    "name": "00461C",
+    "hex": "#00461C"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-loom-lightweight-hooded-sweat",
+  "brand": "Fruit of the Loom",
+  "name": "Lightweight Hooded Sweat",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bottle-green",
+   "deep-navy",
+   "heather-grey",
+   "red",
+   "royal-blue",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "azure-blue",
+    "name": "Azure Blue",
+    "hex": "#0076AD"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#77002F"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#00A056"
+   },
+   {
+    "id": "light-graphite-solid",
+    "name": "Light Graphite (Solid)",
+    "hex": "#554B47"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#EA4F00"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-loom-iconic-premium-hooded-sweat",
+  "brand": "Fruit of the Loom",
+  "name": "Iconic Premium Hooded Sweat",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_iconic_premium_hooded_sweat_62-284-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "white",
+   "deep-navy",
+   "royal-blue",
+   "red"
+  ],
+  "fehlend": [
+   {
+    "id": "athletic-heather",
+    "name": "Athletic Heather",
+    "hex": "#B8B9BD"
+   },
+   {
+    "id": "light-graphite-solid",
+    "name": "Light Graphite (Solid)",
+    "hex": "#554B47"
+   },
+   {
+    "id": "classic-olive",
+    "name": "Classic Olive",
+    "hex": "#63673F"
+   },
+   {
+    "id": "desert-sand",
+    "name": "Desert Sand",
+    "hex": "#DFC8B7"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#77002F"
+   }
+  ]
+ },
+ {
+  "id": "bundc-id-223-hoodie",
+  "brand": "B&C",
+  "name": "ID.223 Hoodie",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_id_223_hoodie_wg008_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "navy",
+   "sport-grey-heather",
+   "white",
+   "royal-blue",
+   "red",
+   "forest-green"
+  ],
+  "fehlend": [
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "lake-blue",
+    "name": "Lake Blue",
+    "hex": "#3F82B4"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "acid-lime",
+    "name": "Acid Lime",
+    "hex": "#BDD010"
+   }
+  ]
+ },
+ {
+  "id": "earthpositive-unisex-organic-pullover-hood-ep",
+  "brand": "EarthPositive",
+  "name": "Unisex Organic Pullover Hood - EP",
+  "typ": "hoodie",
+  "quelle": "fifthcolumn.co.uk (Continental/EarthPositive Kampagnenbilder, weisser Studiohint",
+  "beispielUrl": "https://fifthcolumn.co.uk/wp-content/uploads/2020/08/EP60P_005.jpg",
+  "vorhandeneFarben": [
+   "navy"
+  ],
+  "fehlend": [
+   {
+    "id": "black",
+    "name": "Black",
+    "hex": "#111021"
+   },
+   {
+    "id": "sage-green",
+    "name": "Sage Green",
+    "hex": "#799981"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#4F2024"
+   },
+   {
+    "id": "bright-blue",
+    "name": "Bright Blue",
+    "hex": "#006CB1"
+   },
+   {
+    "id": "white",
+    "name": "White",
+    "hex": "#EEEFF4"
+   }
+  ]
+ },
+ {
+  "id": "just-hoods-vision-heavyweight-hoodie",
+  "brand": "Just Hoods",
+  "name": "Vision Heavyweight Hoodie",
+  "typ": "hoodie",
+  "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+  "beispielUrl": "https://awdis.com/wp-content/uploads/2025/12/JH111-New-French-Navy-Torso.jpg",
+  "vorhandeneFarben": [
+   "arctic-white",
+   "atlantic-blue",
+   "fire-red",
+   "heather-grey",
+   "moss-green",
+   "new-french-navy",
+   "solid-charcoal"
+  ],
+  "fehlend": [
+   {
+    "id": "deep-black",
+    "name": "Deep Black",
+    "hex": "#000000"
+   },
+   {
+    "id": "dusty-lilac",
+    "name": "Dusty Lilac",
+    "hex": "#6B7292"
+   },
+   {
+    "id": "ice-blue",
+    "name": "Ice Blue",
+    "hex": "#B1EBFC"
+   },
+   {
+    "id": "natural-clay",
+    "name": "Natural Clay",
+    "hex": "#8C8277"
+   },
+   {
+    "id": "natural-stone",
+    "name": "Natural Stone",
+    "hex": "#A4ADA6"
+   }
+  ]
+ },
+ {
+  "id": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+  "brand": "B&C",
+  "name": "T-Shirt #E150 Long Sleeve / Unisex (Exact)",
+  "typ": "longsleeve",
+  "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+  "beispielUrl": "https://www.bc-collection.eu/thumbs/v1/5023/TU05T_P_BC_002_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=e956ce71ca4bd1af1fab6bdc795217d8",
+  "vorhandeneFarben": [
+   "white",
+   "black",
+   "navy",
+   "sport-grey-heather",
+   "royal-blue",
+   "red",
+   "bottle-green"
+  ],
+  "fehlend": [
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "millennial-pink",
+    "name": "Millennial Pink",
+    "hex": "#D1ABA0"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   },
+   {
+    "id": "bear-brown",
+    "name": "Bear Brown",
+    "hex": "#4E403A"
+   }
+  ]
+ },
+ {
+  "id": "bundc-t-shirt-e150-long-sleeve-women-exact",
+  "brand": "B&C",
+  "name": "T-Shirt #E150 Long Sleeve / Women (Exact)",
+  "typ": "longsleeve",
+  "quelle": "bc-collection.eu",
+  "beispielUrl": "https://www.bc-collection.eu/thumbs/v1/5082/TW06T_P_BC_002_01-.jpg?w=1100&h=1100&fit=crop&fm=webp&s=336914c99e03e76faf01470b01934dc2",
+  "vorhandeneFarben": [
+   "white",
+   "black",
+   "navy",
+   "sport-grey-heather",
+   "royal-blue",
+   "red",
+   "bottle-green"
+  ],
+  "fehlend": [
+   {
+    "id": "urban-khaki",
+    "name": "Urban Khaki",
+    "hex": "#454839"
+   },
+   {
+    "id": "millennial-pink",
+    "name": "Millennial Pink",
+    "hex": "#D1ABA0"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#E75113"
+   },
+   {
+    "id": "bear-brown",
+    "name": "Bear Brown",
+    "hex": "#4E403A"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#29363F"
+   }
+  ]
+ },
+ {
+  "id": "bundc-inspire-v-t-men",
+  "brand": "B&C",
+  "name": "Inspire V T / Men",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_v_t_men_tm044_white.webp",
+  "vorhandeneFarben": [
+   "black",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "khaki",
+    "name": "Khaki",
+    "hex": "#4C4B30"
+   },
+   {
+    "id": "light-grey",
+    "name": "Light Grey",
+    "hex": "#A09D98"
+   },
+   {
+    "id": "navy",
+    "name": "Navy",
+    "hex": "#1F2532"
+   },
+   {
+    "id": "red",
+    "name": "Red",
+    "hex": "#DB001B"
+   }
+  ]
+ },
+ {
+  "id": "bundc-inspire-v-t-women",
+  "brand": "B&C",
+  "name": "Inspire V T /Women",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_v_t_women_tw045_white.webp",
+  "vorhandeneFarben": [
+   "black",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "khaki",
+    "name": "Khaki",
+    "hex": "#4C4B30"
+   },
+   {
+    "id": "light-grey",
+    "name": "Light Grey",
+    "hex": "#A09D98"
+   },
+   {
+    "id": "navy",
+    "name": "Navy",
+    "hex": "#1F2532"
+   },
+   {
+    "id": "red",
+    "name": "Red",
+    "hex": "#DB001B"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-workwear-t-men",
+  "brand": "James+Nicholson",
+  "name": "Workwear-T Men",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "carbon",
+   "navy",
+   "red",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#9396A3"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#E0F2FB"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   },
+   {
+    "id": "royal",
+    "name": "Royal",
+    "hex": "#004985"
+   }
+  ]
+ },
+ {
+  "id": "just-hoods-signature-heavyweight-sweat",
+  "brand": "Just Hoods",
+  "name": "Signature Heavyweight Sweat",
+  "typ": "sweater",
+  "quelle": "ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers",
+  "beispielUrl": "https://shop.ralawise.com/globalassets/ralawise/jh/jh030_newfrenchnavy_ft2.jpg",
+  "vorhandeneFarben": [
+   "earthy-green",
+   "arctic-white",
+   "bright-royal",
+   "heather-grey",
+   "new-french-navy",
+   "solid-charcoal"
+  ],
+  "fehlend": [
+   {
+    "id": "deep-black",
+    "name": "Deep Black",
+    "hex": "#000000"
+   },
+   {
+    "id": "natural-stone",
+    "name": "Natural Stone",
+    "hex": "#A4ADA6"
+   },
+   {
+    "id": "4f758b",
+    "name": "4F758B",
+    "hex": "#4F758B"
+   },
+   {
+    "id": "4f413c",
+    "name": "4F413C",
+    "hex": "#4F413C"
+   }
+  ]
+ },
+ {
+  "id": "sols-mens-factor-zipped-fleece-jacket",
+  "brand": "SOL'S",
+  "name": "Men´s Factor Zipped Fleece Jacket",
+  "typ": "jacket",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/6028/03823-BLK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "royal-blue",
+   "forest-green",
+   "black",
+   "navy"
+  ],
+  "fehlend": [
+   {
+    "id": "charcoal-grey-solid",
+    "name": "Charcoal Grey (Solid)",
+    "hex": "#1D181F"
+   },
+   {
+    "id": "red",
+    "name": "Red",
+    "hex": "#C4082D"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F08800"
+   },
+   {
+    "id": "rope",
+    "name": "Rope",
+    "hex": "#B6A186"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-men-s-fleece-jacket-jn",
+  "brand": "James+Nicholson",
+  "name": "Men`s Fleece Jacket JN",
+  "typ": "jacket",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_black.webp",
+  "vorhandeneFarben": [
+   "red",
+   "navy",
+   "royal",
+   "black",
+   "white",
+   "dark-green"
+  ],
+  "fehlend": [
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#5D4631"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#99A499"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#00A9CE"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-ladies-fleece-jacket-jn781",
+  "brand": "James+Nicholson",
+  "name": "Ladies` Fleece Jacket JN781",
+  "typ": "jacket",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_black.webp",
+  "vorhandeneFarben": [
+   "red",
+   "navy",
+   "royal",
+   "black",
+   "white",
+   "dark-green"
+  ],
+  "fehlend": [
+   {
+    "id": "brown",
+    "name": "Brown",
+    "hex": "#5D4631"
+   },
+   {
+    "id": "dark-grey-solid",
+    "name": "Dark Grey (Solid)",
+    "hex": "#99A499"
+   },
+   {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "hex": "#00A9CE"
+   },
+   {
+    "id": "lime-green",
+    "name": "Lime Green",
+    "hex": "#9DC118"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-workwear-t-women",
+  "brand": "James+Nicholson",
+  "name": "Workwear-T Women",
+  "typ": "tshirt",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "carbon",
+   "dark-green",
+   "navy",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#9396A3"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#E0F2FB"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   }
+  ]
+ },
+ {
+  "id": "jamesnicholson-workwear-polo-men",
+  "brand": "James+Nicholson",
+  "name": "Workwear Polo Men",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "carbon",
+   "dark-green",
+   "navy",
+   "red",
+   "royal",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "grey-heather",
+    "name": "Grey Heather",
+    "hex": "#9396A3"
+   },
+   {
+    "id": "light-blue",
+    "name": "Light Blue",
+    "hex": "#E0F2FB"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "hex": "#F18E00"
+   }
+  ]
+ },
+ {
+  "id": "russell-men-s-classic-cotton-polo",
+  "brand": "Russell",
+  "name": "Men`s Classic Cotton Polo",
+  "typ": "polo",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_classic_cotton_polo_r-569m-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bright-royal",
+   "classic-red",
+   "french-navy",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#00461C"
+   },
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#EC0083"
+   },
+   {
+    "id": "sky",
+    "name": "Sky",
+    "hex": "#8BB4DF"
+   }
+  ]
+ },
+ {
+  "id": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+  "brand": "Gildan",
+  "name": "Hammer Maxweight Adult Hooded Sweatshirt",
+  "typ": "hoodie",
+  "quelle": "shop.ralawise.com (Ralawise, Gildan-Fachhaendler; Artikel GD028 = EU/UK-Aequival",
+  "beispielUrl": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028pbmi/gd028_pitchblack_ft.jpg",
+  "vorhandeneFarben": [
+   "blue-dusk",
+   "cherry-red",
+   "888b8d",
+   "off-white",
+   "olive",
+   "2d2926"
+  ],
+  "fehlend": [
+   {
+    "id": "deep-royal",
+    "name": "Deep Royal",
+    "hex": "#0022D7"
+   },
+   {
+    "id": "garnet",
+    "name": "Garnet",
+    "hex": "#7D2935"
+   },
+   {
+    "id": "tan",
+    "name": "Tan",
+    "hex": "#B29E69"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-loom-premium-hooded-sweat",
+  "brand": "Fruit of the Loom",
+  "name": "Premium Hooded Sweat",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "deep-navy",
+   "heather-grey",
+   "red",
+   "royal-blue"
+  ],
+  "fehlend": [
+   {
+    "id": "charcoal-solid",
+    "name": "Charcoal (Solid)",
+    "hex": "#3E3F40"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#77002F"
+   },
+   {
+    "id": "classic-olive",
+    "name": "Classic Olive",
+    "hex": "#63673F"
+   }
+  ]
+ },
+ {
+  "id": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+  "brand": "EarthPositive",
+  "name": "EarthPositive Organic Mens/Unisex Pullover Hoodie",
+  "typ": "hoodie",
+  "quelle": "shirtplus.net (EP301 Shopify CDN)",
+  "beispielUrl": "https://shirtplus.net/cdn/shop/files/EP301-BL_FRONT_EP1.jpg",
+  "vorhandeneFarben": [
+   "black",
+   "navy"
+  ],
+  "fehlend": [
+   {
+    "id": "mango",
+    "name": "Mango",
+    "hex": "#E89E1B"
+   },
+   {
+    "id": "melange-grey",
+    "name": "Melange Grey",
+    "hex": "#A2A2A2"
+   },
+   {
+    "id": "ash-black",
+    "name": "Ash Black",
+    "hex": "#2A2522"
+   }
+  ]
+ },
+ {
+  "id": "russell-ladies-authentic-hood",
+  "brand": "Russell",
+  "name": "Ladies` Authentic Hood",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bright-royal",
+   "classic-red",
+   "french-navy",
+   "white",
+   "bottle-green",
+   "convoy-grey-solid"
+  ],
+  "fehlend": [
+   {
+    "id": "fuchsia",
+    "name": "Fuchsia",
+    "hex": "#EC0083"
+   },
+   {
+    "id": "light-oxford-heather",
+    "name": "Light Oxford (Heather)",
+    "hex": "#9DA6AB"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5A032C"
+   }
+  ]
+ },
+ {
+  "id": "jhk-hooded-sweater",
+  "brand": "JHK",
+  "name": "Hooded Sweater",
+  "typ": "hoodie",
+  "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+  "beispielUrl": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_bk.jpg",
+  "vorhandeneFarben": [
+   "black",
+   "dark-grey-melange",
+   "khaki",
+   "navy",
+   "red",
+   "royal-blue",
+   "white"
+  ],
+  "fehlend": [
+   {
+    "id": "grey-melange",
+    "name": "Grey Melange",
+    "hex": "#B4B4B9"
+   },
+   {
+    "id": "kelly-green",
+    "name": "Kelly Green",
+    "hex": "#28754D"
+   },
+   {
+    "id": "mustard",
+    "name": "Mustard",
+    "hex": "#F8BE00"
+   }
+  ]
+ },
+ {
+  "id": "earthpositive-unisex-organic-longsleeve-t-shirt",
+  "brand": "EarthPositive",
+  "name": "Unisex Organic Longsleeve T-Shirt",
+  "typ": "longsleeve",
+  "quelle": "dynamics.se (Shopify CDN, EP01L Earth Positive Long Sleeve T-shirt Produktseite;",
+  "beispielUrl": "https://dynamics.se/cdn/shop/files/EP01L_BL_FRONT.webp",
+  "vorhandeneFarben": [
+   "black",
+   "white",
+   "denim-blue",
+   "french-navy",
+   "stone-washed-black"
+  ],
+  "fehlend": [
+   {
+    "id": "faded-denim",
+    "name": "Faded Denim",
+    "hex": "#405685"
+   },
+   {
+    "id": "light-heather",
+    "name": "Light Heather",
+    "hex": "#959D9D"
+   },
+   {
+    "id": "f4f4ec",
+    "name": "F4F4EC",
+    "hex": "#F4F4EC"
+   }
+  ]
+ },
+ {
+  "id": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+  "brand": "B&C",
+  "name": "Men´s T-Shirt #E190 Long Sleeve (Exact)",
+  "typ": "longsleeve",
+  "quelle": "groener-schulze.com",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_e190_long_sleeve_t_tu07t_black.webp",
+  "vorhandeneFarben": [
+   "white",
+   "black",
+   "navy",
+   "sport-grey-heather",
+   "royal-blue",
+   "red",
+   "dark-grey-solid"
+  ],
+  "fehlend": [
+   {
+    "id": "urban-orange",
+    "name": "Urban Orange",
+    "hex": "#CC4F00"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5B263D"
+   },
+   {
+    "id": "urban-purple",
+    "name": "Urban Purple",
+    "hex": "#2A094E"
+   }
+  ]
+ },
+ {
+  "id": "neutral-recycled-performance-long-sleeve-t-shirt",
+  "brand": "Neutral",
+  "name": "Recycled Performance Long Sleeve T-Shirt",
+  "typ": "longsleeve",
+  "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek / Shopify-CDN)",
+  "beispielUrl": "https://neutral.com/cdn/shop/products/R61050_BLA.jpg",
+  "vorhandeneFarben": [
+   "white",
+   "black",
+   "navy"
+  ],
+  "fehlend": [
+   {
+    "id": "lime",
+    "name": "Lime",
+    "hex": "#63D05A"
+   },
+   {
+    "id": "dusty-mint",
+    "name": "Dusty Mint",
+    "hex": "#86C8BC"
+   },
+   {
+    "id": "yellow",
+    "name": "Yellow",
+    "hex": "#FFE44F"
+   }
+  ]
+ },
+ {
+  "id": "russell-outdoor-fleece-jacke",
+  "brand": "Russell",
+  "name": "Outdoor Fleece Jacke",
+  "typ": "jacket",
+  "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "bright-royal",
+   "classic-red",
+   "french-navy"
+  ],
+  "fehlend": [
+   {
+    "id": "bottle-green",
+    "name": "Bottle Green",
+    "hex": "#00461C"
+   },
+   {
+    "id": "burgundy",
+    "name": "Burgundy",
+    "hex": "#5A032C"
+   },
+   {
+    "id": "convoy-grey-solid",
+    "name": "Convoy Grey (Solid)",
+    "hex": "#555B66"
+   }
+  ]
+ },
+ {
+  "id": "id-identity-microfleece-jacke",
+  "brand": "ID Identity",
+  "name": "Microfleece Jacke",
+  "typ": "jacket",
+  "quelle": "id.dk (offizielle ID Identity Medienbibliothek, id-identity.azureedge.net CDN)",
+  "beispielUrl": "https://id-identity.azureedge.net/admin/public/getimage.ashx?Image=%2fFiles%2fImages%2fproducts%2f0807_900_pack_1.jpg&Width=960&Height=0&Format=webp&Quality=75&Crop=0",
+  "vorhandeneFarben": [
+   "grau",
+   "rot",
+   "navy",
+   "schwarz"
+  ],
+  "fehlend": [
+   {
+    "id": "weiss",
+    "name": "Weiß",
+    "hex": "#FFFFFF"
+   },
+   {
+    "id": "hellblau",
+    "name": "Hellblau",
+    "hex": "#A1BFDF"
+   }
+  ]
+ },
+ {
+  "id": "bundc-influence-hoodie",
+  "brand": "B&C",
+  "name": "Influence Hoodie",
+  "typ": "hoodie",
+  "quelle": "groener-schulze.com (offizielle B&C/Daiber-Fotografie)",
+  "beispielUrl": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_black.webp",
+  "vorhandeneFarben": [
+   "black",
+   "navy",
+   "sport-grey-heather",
+   "white",
+   "amalfi-teal"
+  ],
+  "fehlend": [
+   {
+    "id": "mastic",
+    "name": "Mastic",
+    "hex": "#B6A58D"
+   }
+  ]
+ },
+ {
+  "id": "sols-men-s-plain-fleece-jacket-norman",
+  "brand": "SOL'S",
+  "name": "Men`s Plain Fleece Jacket Norman",
+  "typ": "jacket",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/5973/02093-BLK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "black",
+   "navy",
+   "red"
+  ],
+  "fehlend": [
+   {
+    "id": "charcoal-grey-solid",
+    "name": "Charcoal Grey (Solid)",
+    "hex": "#1D181F"
+   }
+  ]
+ },
+ {
+  "id": "sols-women-s-plain-fleece-jacket-norman",
+  "brand": "SOL'S",
+  "name": "Women`s Plain Fleece Jacket Norman",
+  "typ": "jacket",
+  "quelle": "myworkwear.co.uk / buildyourbrand-CDN",
+  "beispielUrl": "https://assets.myworkwear.co.uk/products/5974/02094-BLK-FRONT.jpg",
+  "vorhandeneFarben": [
+   "black",
+   "navy",
+   "red"
+  ],
+  "fehlend": [
+   {
+    "id": "charcoal-grey-solid",
+    "name": "Charcoal Grey (Solid)",
+    "hex": "#1D181F"
+   }
+  ]
+ }
+]

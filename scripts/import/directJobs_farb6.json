@@ -1,0 +1,199 @@
+[
+  {
+    "productId": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+    "quelle": "continentalclothing.com – offizielle Continental Clothing / EarthPositive Mediathek (Asset-Server /assets/prod",
+    "colors": [
+      {
+        "id": "mango",
+        "front": "https://www.continentalclothing.com/assets/product_shots/high_res/front/EP301-MA.jpg",
+        "erwarteterHex": "#E89E1B",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP301-MA.jpg"
+      },
+      {
+        "id": "melange-grey",
+        "front": "https://www.continentalclothing.com/assets/product_shots/high_res/front/EP60P-MGY.jpg",
+        "erwarteterHex": "#A2A2A2",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP60P-MGY.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "russell-ladies-authentic-hood",
+    "quelle": "groener-schulze.com",
+    "colors": [
+      {
+        "id": "fuchsia",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_fuchsia.webp",
+        "erwarteterHex": "#EC0083",
+        "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_fuchsia_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_fuchsia_3.webp"
+      },
+      {
+        "id": "light-oxford-heather",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_light_oxford.webp",
+        "erwarteterHex": "#9DA6AB",
+        "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_light_oxford_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_light_oxford_3.webp"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_burgundy.webp",
+        "erwarteterHex": "#5A032C",
+        "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_burgundy_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_ladies_authentic_hooded_sweat_r-265f-0_burgundy_3.webp"
+      }
+    ]
+  },
+  {
+    "productId": "jhk-hooded-sweater",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pictures/sku/) – Farbcodes aus dem",
+    "colors": [
+      {
+        "id": "grey-melange",
+        "front": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_gm.jpg",
+        "erwarteterHex": "#B4B4B9",
+        "back": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_gm_back.jpg",
+        "side": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_gm_side.jpg"
+      },
+      {
+        "id": "kelly-green",
+        "front": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_kg.jpg",
+        "erwarteterHex": "#28754D",
+        "back": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_kg_back.jpg",
+        "side": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_kg_side.jpg"
+      },
+      {
+        "id": "mustard",
+        "front": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_mu.jpg",
+        "erwarteterHex": "#F8BE00",
+        "back": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_mu_back.jpg",
+        "side": "https://s3-eu-west-1.amazonaws.com/resources.jhktshirt.com/pictures/sku/jhktshirt_swrakng_mu_side.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "quelle": "dynamics.se (Shopify CDN, EP01L) — Bild-Manifest ausgelesen aus https://dynamics.se/products/ep01l.json; Farbl",
+    "colors": [
+      {
+        "id": "faded-denim",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_FDE_FRONT.webp",
+        "erwarteterHex": "#405685"
+      },
+      {
+        "id": "light-heather",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_LHE_FRONT.jpg",
+        "erwarteterHex": "#959D9D"
+      },
+      {
+        "id": "f4f4ec",
+        "front": "https://dynamics.se/cdn/shop/files/EP01L_SWH_FRONT.webp",
+        "erwarteterHex": "#F4F4EC"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "quelle": "freewear.de (Produktseite \"Men´s T-Shirt #E190 Long Sleeve, B&C TU07T // BCTU07T\", https://freewear.de/Mens-T-",
+    "colors": [
+      {
+        "id": "urban-orange",
+        "front": "https://freewear.de/media/image/variation/196879/lg/mens-t-shirt-e190-long-sleeve-bc-tu07t-bctu07t_farbe_urban-orange.jpg",
+        "erwarteterHex": "#CC4F00"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://freewear.de/media/image/variation/196880/lg/mens-t-shirt-e190-long-sleeve-bc-tu07t-bctu07t_farbe_burgundy.jpg",
+        "erwarteterHex": "#5B263D"
+      },
+      {
+        "id": "urban-purple",
+        "front": "https://freewear.de/media/image/variation/196881/lg/mens-t-shirt-e190-long-sleeve-bc-tu07t-bctu07t_farbe_urban-purple.jpg",
+        "erwarteterHex": "#2A094E"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek) - Produktseite https://neutral.com/products/r61050-recycl",
+    "colors": [
+      {
+        "id": "lime",
+        "front": "https://neutral.com/cdn/shop/products/R61050_LIME.jpg",
+        "erwarteterHex": "#63D05A"
+      },
+      {
+        "id": "dusty-mint",
+        "front": "https://neutral.com/cdn/shop/products/R61050_DMINT.jpg",
+        "erwarteterHex": "#86C8BC"
+      },
+      {
+        "id": "yellow",
+        "front": "https://neutral.com/cdn/shop/products/R61050_YEL.jpg",
+        "erwarteterHex": "#FFE44F"
+      }
+    ]
+  },
+  {
+    "productId": "russell-outdoor-fleece-jacke",
+    "quelle": "groener-schulze.com — Produktseite https://www.groener-schulze.com/werbetextilien/fleece/russell-athletic-mens",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_bottle_green.webp",
+        "erwarteterHex": "#00461C",
+        "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_bottle_green_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_bottle_green_3.webp"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_burgundy.webp",
+        "erwarteterHex": "#5A032C",
+        "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_burgundy_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_burgundy_3.webp"
+      },
+      {
+        "id": "convoy-grey-solid",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_convoy_grey.webp",
+        "erwarteterHex": "#555B66",
+        "back": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_convoy_grey_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_mens_full_zip_outdoor_fleece_r-870m-0_convoy_grey_3.webp"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-influence-hoodie",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie, Artikel WG002)",
+    "colors": [
+      {
+        "id": "mastic",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_influence_hoodie_wg002_mastic.webp",
+        "erwarteterHex": "#B6A58D"
+      }
+    ]
+  },
+  {
+    "productId": "sols-men-s-plain-fleece-jacket-norman",
+    "quelle": "myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/7605-sol-s-norman-fleece-jacket-02093.html, Asset-",
+    "colors": [
+      {
+        "id": "charcoal-grey-solid",
+        "front": "https://assets.myworkwear.co.uk/products/5973/02093-CHA-FRONT.jpg",
+        "erwarteterHex": "#1D181F",
+        "back": "https://assets.myworkwear.co.uk/products/5973/02093-CHA-BACK.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "sols-women-s-plain-fleece-jacket-norman",
+    "quelle": "myworkwear.co.uk (assets.myworkwear.co.uk CDN, Produktordner 5974, Artikel 02094)",
+    "colors": [
+      {
+        "id": "charcoal-grey-solid",
+        "front": "https://assets.myworkwear.co.uk/products/5974/02094-CHA-FRONT.jpg",
+        "erwarteterHex": "#1D181F",
+        "back": "https://assets.myworkwear.co.uk/products/5974/02094-CHA-BACK.jpg"
+      }
+    ]
+  }
+]

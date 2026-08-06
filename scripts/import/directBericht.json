@@ -1,183 +1,300 @@
 [
   {
-    "produkt": "gildan-light-cotton-adult-t-shirt",
-    "farbe": "white",
-    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f6f6f6",
-    "erwartet": "#FFFFFF",
-    "deltaE": 16,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-light-cotton-adult-t-shirt",
-    "farbe": "black",
-    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#191919",
-    "erwartet": "#25282B",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-light-cotton-adult-t-shirt",
-    "farbe": "navy",
-    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#192654",
-    "erwartet": "#263147",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-light-cotton-adult-t-shirt",
-    "farbe": "red",
-    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b7131a",
-    "erwartet": "#B1302A",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-light-cotton-adult-t-shirt",
-    "farbe": "royal",
-    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#1265a5",
-    "erwartet": "#224D8F",
-    "deltaE": 36,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-light-cotton-adult-t-shirt",
-    "farbe": "charcoal-solid",
-    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#838383",
-    "erwartet": "#66676C",
-    "deltaE": 46,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "white",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e8e8e8",
-    "erwartet": "#FFFFFF",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "black",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#252527",
-    "erwartet": "#25282B",
-    "deltaE": 5,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "navy",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#092042",
-    "erwartet": "#263147",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "red",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ca0523",
-    "erwartet": "#B1302A",
-    "deltaE": 50,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "royal",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#0264ab",
-    "erwartet": "#224D8F",
-    "deltaE": 48,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "charcoal-solid",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#595959",
-    "erwartet": "#66676C",
-    "deltaE": 27,
-    "dupeMit": null
-  },
-  {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "forest-green",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#12311a",
-    "erwartet": "#273B33",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "earthpositive-pique-polo-shirt",
-    "farbe": "black",
-    "quelle": "Continental Clothing Co. — herstellereigene Produktfoto-Bibliothek (continentalclothing.com/assets/product_sho",
+    "produkt": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+    "farbe": "mango",
+    "quelle": "continentalclothing.com – offizielle Continental Clothing / EarthPositive Mediathek (Asset-Server /assets/prod",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#0f1217",
-    "erwartet": "#111021",
+    "frontDom": "#e9ad1e",
+    "erwartet": "#E89E1B",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+    "farbe": "melange-grey",
+    "quelle": "continentalclothing.com – offizielle Continental Clothing / EarthPositive Mediathek (Asset-Server /assets/prod",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#696969",
+    "erwartet": "#A2A2A2",
+    "deltaE": 99,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "fuchsia",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#eb4782",
+    "erwartet": "#EC0083",
+    "deltaE": 71,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "light-oxford-heather",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#b4b3b8",
+    "erwartet": "#9DA6AB",
+    "deltaE": 29,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "burgundy",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#5f2e3f",
+    "erwartet": "#5A032C",
+    "deltaE": 47,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "grey-melange",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pictures/sku/) – Farbcodes aus dem",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#aeaeae",
+    "erwartet": "#B4B4B9",
+    "deltaE": 14,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "kelly-green",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pictures/sku/) – Farbcodes aus dem",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#038c58",
+    "erwartet": "#28754D",
+    "deltaE": 45,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "mustard",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pictures/sku/) – Farbcodes aus dem",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#fcb735",
+    "erwartet": "#F8BE00",
+    "deltaE": 54,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "faded-denim",
+    "quelle": "dynamics.se (Shopify CDN, EP01L) — Bild-Manifest ausgelesen aus https://dynamics.se/products/ep01l.json; Farbl",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#416794",
+    "erwartet": "#405685",
+    "deltaE": 23,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "light-heather",
+    "quelle": "dynamics.se (Shopify CDN, EP01L) — Bild-Manifest ausgelesen aus https://dynamics.se/products/ep01l.json; Farbl",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#a1abad",
+    "erwartet": "#959D9D",
+    "deltaE": 24,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "f4f4ec",
+    "quelle": "dynamics.se (Shopify CDN, EP01L) — Bild-Manifest ausgelesen aus https://dynamics.se/products/ep01l.json; Farbl",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#ebece7",
+    "erwartet": "#F4F4EC",
+    "deltaE": 13,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "urban-orange",
+    "quelle": "freewear.de (Produktseite \"Men´s T-Shirt #E190 Long Sleeve, B&C TU07T // BCTU07T\", https://freewear.de/Mens-T-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#e26628",
+    "erwartet": "#CC4F00",
+    "deltaE": 51,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "burgundy",
+    "quelle": "freewear.de (Produktseite \"Men´s T-Shirt #E190 Long Sleeve, B&C TU07T // BCTU07T\", https://freewear.de/Mens-T-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#663440",
+    "erwartet": "#5B263D",
+    "deltaE": 18,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "urban-purple",
+    "quelle": "freewear.de (Produktseite \"Men´s T-Shirt #E190 Long Sleeve, B&C TU07T // BCTU07T\", https://freewear.de/Mens-T-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#53435e",
+    "erwartet": "#2A094E",
+    "deltaE": 73,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "lime",
+    "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek) - Produktseite https://neutral.com/products/r61050-recycl",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#77ba5f",
+    "erwartet": "#63D05A",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "dusty-mint",
+    "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek) - Produktseite https://neutral.com/products/r61050-recycl",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#96c3a7",
+    "erwartet": "#86C8BC",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "yellow",
+    "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek) - Produktseite https://neutral.com/products/r61050-recycl",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#e3c84d",
+    "erwartet": "#FFE44F",
+    "deltaE": 40,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-outdoor-fleece-jacke",
+    "farbe": "bottle-green",
+    "quelle": "groener-schulze.com — Produktseite https://www.groener-schulze.com/werbetextilien/fleece/russell-athletic-mens",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3a4c42",
+    "erwartet": "#00461C",
+    "deltaE": 70,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-outdoor-fleece-jacke",
+    "farbe": "burgundy",
+    "quelle": "groener-schulze.com — Produktseite https://www.groener-schulze.com/werbetextilien/fleece/russell-athletic-mens",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#5c2e3d",
+    "erwartet": "#5A032C",
+    "deltaE": 46,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-outdoor-fleece-jacke",
+    "farbe": "convoy-grey-solid",
+    "quelle": "groener-schulze.com — Produktseite https://www.groener-schulze.com/werbetextilien/fleece/russell-athletic-mens",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#6a696e",
+    "erwartet": "#555B66",
+    "deltaE": 26,
+    "dupeMit": "russell-outdoor-fleece-jacke-convoy-grey"
+  },
+  {
+    "produkt": "bundc-influence-hoodie",
+    "farbe": "mastic",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie, Artikel WG002)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#aea392",
+    "erwartet": "#B6A58D",
     "deltaE": 10,
     "dupeMit": null
   },
   {
-    "produkt": "earthpositive-jersey-polo-shirt",
-    "farbe": "black",
-    "quelle": "earthpositive.se (offizielle nordische Earth-Positive-/Continental-Clothing-Herstellerseite, Betreiber Dynamic",
+    "produkt": "sols-men-s-plain-fleece-jacket-norman",
+    "farbe": "charcoal-grey-solid",
+    "quelle": "myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/7605-sol-s-norman-fleece-jacket-02093.html, Asset-",
     "gefunden": [
-      "front"
+      "front",
+      "back"
     ],
-    "frontDom": "#161214",
-    "erwartet": "#111021",
-    "deltaE": 14,
+    "frontDom": "#3f3e44",
+    "erwartet": "#1D181F",
+    "deltaE": 63,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-plain-fleece-jacket-norman",
+    "farbe": "charcoal-grey-solid",
+    "quelle": "myworkwear.co.uk (assets.myworkwear.co.uk CDN, Produktordner 5974, Artikel 02094)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#444349",
+    "erwartet": "#1D181F",
+    "deltaE": 72,
     "dupeMit": null
   }
 ]

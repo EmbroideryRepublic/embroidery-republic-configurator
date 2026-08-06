@@ -4544,31 +4544,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "khaki": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-inspire-v-t-men-khaki/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-grey": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-inspire-v-t-men-light-grey/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-inspire-v-t-men-navy/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-inspire-v-t-men-red/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -4588,31 +4588,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "khaki": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-inspire-v-t-women-khaki/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-grey": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-inspire-v-t-women-light-grey/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-inspire-v-t-women-navy/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-inspire-v-t-women-red/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -5815,17 +5815,19 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-t-men-grey-heather/front.webp",
+        "back": "/products/jamesnicholson-workwear-t-men-grey-heather/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-t-men-grey-heather/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-t-men-light-blue/front.webp",
+        "back": "/products/jamesnicholson-workwear-t-men-light-blue/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-t-men-light-blue/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
@@ -5837,10 +5839,11 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-t-men-orange/front.webp",
+        "back": "/products/jamesnicholson-workwear-t-men-orange/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-t-men-orange/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
@@ -5852,10 +5855,11 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-t-men-royal/front.webp",
+        "back": "/products/jamesnicholson-workwear-t-men-royal/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-t-men-royal/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -5893,17 +5897,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-t-women-grey-heather/front.webp",
+        "back": "/products/jamesnicholson-workwear-t-women-grey-heather/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-t-women-light-blue/front.webp",
+        "back": "/products/jamesnicholson-workwear-t-women-light-blue/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
@@ -5915,10 +5919,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-t-women-orange/front.webp",
+        "back": "/products/jamesnicholson-workwear-t-women-orange/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
@@ -10910,17 +10914,19 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-polo-men-grey-heather/front.webp",
+        "back": "/products/jamesnicholson-workwear-polo-men-grey-heather/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-polo-men-grey-heather/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-polo-men-light-blue/front.webp",
+        "back": "/products/jamesnicholson-workwear-polo-men-light-blue/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-polo-men-light-blue/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
@@ -10932,10 +10938,11 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-workwear-polo-men-orange/front.webp",
+        "back": "/products/jamesnicholson-workwear-polo-men-orange/back.webp",
+        "sleeve_left": "/products/jamesnicholson-workwear-polo-men-orange/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
@@ -11141,10 +11148,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/russell-men-s-classic-cotton-polo-bottle-green/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-royal": {
       "views": {
@@ -11169,17 +11176,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "fuchsia": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/russell-men-s-classic-cotton-polo-fuchsia/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sky": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/russell-men-s-classic-cotton-polo-sky/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -12577,17 +12584,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "deep-royal": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-deep-royal/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "garnet": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-garnet/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "888b8d": {
       "views": {
@@ -12619,10 +12626,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "tan": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-tan/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "fruit-of-the-loom-classic-hooded-sweat": {
@@ -12812,10 +12819,11 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "charcoal-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-premium-hooded-sweat-charcoal-solid/front.webp",
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-charcoal-solid/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-charcoal-solid/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "deep-navy": {
       "views": {
@@ -12833,17 +12841,19 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "burgundy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-premium-hooded-sweat-burgundy/front.webp",
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-burgundy/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-burgundy/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "classic-olive": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/fruit-of-the-loom-premium-hooded-sweat-classic-olive/front.webp",
+        "back": "/products/fruit-of-the-loom-premium-hooded-sweat-classic-olive/back.webp",
+        "sleeve_left": "/products/fruit-of-the-loom-premium-hooded-sweat-classic-olive/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
@@ -14071,10 +14081,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "mastic": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-influence-hoodie-mastic/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "amalfi-teal": {
       "views": {
@@ -14655,17 +14665,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "mango": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-mango/front.webp",
+        "back": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-mango/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "melange-grey": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-melange-grey/front.webp",
+        "back": "/products/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-melange-grey/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
@@ -15088,17 +15098,19 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "fuchsia": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-authentic-hood-fuchsia/front.webp",
+        "back": "/products/russell-ladies-authentic-hood-fuchsia/back.webp",
+        "sleeve_left": "/products/russell-ladies-authentic-hood-fuchsia/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-oxford-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-authentic-hood-light-oxford-heather/front.webp",
+        "back": "/products/russell-ladies-authentic-hood-light-oxford-heather/back.webp",
+        "sleeve_left": "/products/russell-ladies-authentic-hood-light-oxford-heather/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -15126,10 +15138,11 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "burgundy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-ladies-authentic-hood-burgundy/front.webp",
+        "back": "/products/russell-ladies-authentic-hood-burgundy/back.webp",
+        "sleeve_left": "/products/russell-ladies-authentic-hood-burgundy/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "russell-hooded-sweatshirt": {
@@ -15249,10 +15262,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "deep-black": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/just-hoods-signature-heavyweight-sweat-deep-black/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "heather-grey": {
       "views": {
@@ -15263,10 +15276,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "natural-stone": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/just-hoods-signature-heavyweight-sweat-natural-stone/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "new-french-navy": {
       "views": {
@@ -15284,17 +15297,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "4f758b": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/just-hoods-signature-heavyweight-sweat-4f758b/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "4f413c": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/just-hoods-signature-heavyweight-sweat-4f413c/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "jhk-hooded-sweater": {
@@ -15316,10 +15329,11 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey-melange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jhk-hooded-sweater-grey-melange/front.webp",
+        "back": "/products/jhk-hooded-sweater-grey-melange/back.webp",
+        "sleeve_left": "/products/jhk-hooded-sweater-grey-melange/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "khaki": {
       "views": {
@@ -15363,17 +15377,19 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "kelly-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jhk-hooded-sweater-kelly-green/front.webp",
+        "back": "/products/jhk-hooded-sweater-kelly-green/back.webp",
+        "sleeve_left": "/products/jhk-hooded-sweater-kelly-green/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "mustard": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jhk-hooded-sweater-mustard/front.webp",
+        "back": "/products/jhk-hooded-sweater-mustard/back.webp",
+        "sleeve_left": "/products/jhk-hooded-sweater-mustard/sleeve-left.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "earthpositive-premium-long-sleeve-t-shirt": {
@@ -15917,10 +15933,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "bundc-t-shirt-e150-long-sleeve-unisex-exact": {
     "urban-khaki": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-urban-khaki/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -15966,17 +15982,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "millennial-pink": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-millennial-pink/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-orange/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
@@ -15987,17 +16003,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-dark-grey-solid/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bear-brown": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-bear-brown/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "earthpositive-unisex-organic-longsleeve-t-shirt": {
@@ -16010,10 +16026,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "faded-denim": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/earthpositive-unisex-organic-longsleeve-t-shirt-faded-denim/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -16038,10 +16054,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "light-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/earthpositive-unisex-organic-longsleeve-t-shirt-light-heather/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "stone-washed-black": {
       "views": {
@@ -16052,10 +16068,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "f4f4ec": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/earthpositive-unisex-organic-longsleeve-t-shirt-f4f4ec/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "just-cool-long-sleeve-cool-t": {
@@ -16140,10 +16156,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "bundc-t-shirt-e150-long-sleeve-women-exact": {
     "urban-khaki": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-urban-khaki/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -16189,17 +16205,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "millennial-pink": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-millennial-pink/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-orange/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bottle-green": {
       "views": {
@@ -16210,17 +16226,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bear-brown": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bear-brown/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-dark-grey-solid/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "bundc-mens-t-shirt-e190-long-sleeve-exact": {
@@ -16273,24 +16289,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "urban-orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-urban-orange/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-burgundy/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "urban-purple": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-urban-purple/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
@@ -16325,24 +16341,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "lime": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/neutral-recycled-performance-long-sleeve-t-shirt-lime/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dusty-mint": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/neutral-recycled-performance-long-sleeve-t-shirt-dusty-mint/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/neutral-recycled-performance-long-sleeve-t-shirt-yellow/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "neutral-men-s-long-sleeve-t-shirt": {
@@ -16525,10 +16541,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "charcoal-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/sols-men-s-plain-fleece-jacket-norman-charcoal-grey-solid/front.webp",
+        "back": "/products/sols-men-s-plain-fleece-jacket-norman-charcoal-grey-solid/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
@@ -16555,10 +16571,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "charcoal-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/sols-women-s-plain-fleece-jacket-norman-charcoal-grey-solid/front.webp",
+        "back": "/products/sols-women-s-plain-fleece-jacket-norman-charcoal-grey-solid/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
@@ -16727,31 +16743,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "charcoal-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/sols-mens-factor-zipped-fleece-jacket-charcoal-grey-solid/front.webp",
+        "back": "/products/sols-mens-factor-zipped-fleece-jacket-charcoal-grey-solid/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/sols-mens-factor-zipped-fleece-jacket-red/front.webp",
+        "back": "/products/sols-mens-factor-zipped-fleece-jacket-red/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/sols-mens-factor-zipped-fleece-jacket-orange/front.webp",
+        "back": "/products/sols-mens-factor-zipped-fleece-jacket-orange/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "rope": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/sols-mens-factor-zipped-fleece-jacket-rope/front.webp",
+        "back": "/products/sols-mens-factor-zipped-fleece-jacket-rope/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "russell-outdoor-fleece-jacke": {
@@ -16764,10 +16780,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bottle-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-outdoor-fleece-jacke-bottle-green/front.webp",
+        "back": "/products/russell-outdoor-fleece-jacke-bottle-green/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "bright-royal": {
       "views": {
@@ -16778,10 +16794,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "burgundy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-outdoor-fleece-jacke-burgundy/front.webp",
+        "back": "/products/russell-outdoor-fleece-jacke-burgundy/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "classic-red": {
       "views": {
@@ -16792,10 +16808,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "convoy-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-outdoor-fleece-jacke-convoy-grey-solid/front.webp",
+        "back": "/products/russell-outdoor-fleece-jacke-convoy-grey-solid/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "french-navy": {
       "views": {
@@ -16843,31 +16859,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "brown": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-men-s-fleece-jacket-jn-brown/front.webp",
+        "back": "/products/jamesnicholson-men-s-fleece-jacket-jn-brown/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-men-s-fleece-jacket-jn-dark-grey-solid/front.webp",
+        "back": "/products/jamesnicholson-men-s-fleece-jacket-jn-dark-grey-solid/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "turquoise": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-men-s-fleece-jacket-jn-turquoise/front.webp",
+        "back": "/products/jamesnicholson-men-s-fleece-jacket-jn-turquoise/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "lime-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-men-s-fleece-jacket-jn-lime-green/front.webp",
+        "back": "/products/jamesnicholson-men-s-fleece-jacket-jn-lime-green/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-green": {
       "views": {
@@ -16959,31 +16975,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "brown": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-fleece-jacket-jn781-brown/front.webp",
+        "back": "/products/jamesnicholson-ladies-fleece-jacket-jn781-brown/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-fleece-jacket-jn781-dark-grey-solid/front.webp",
+        "back": "/products/jamesnicholson-ladies-fleece-jacket-jn781-dark-grey-solid/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "turquoise": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-fleece-jacket-jn781-turquoise/front.webp",
+        "back": "/products/jamesnicholson-ladies-fleece-jacket-jn781-turquoise/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "lime-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-fleece-jacket-jn781-lime-green/front.webp",
+        "back": "/products/jamesnicholson-ladies-fleece-jacket-jn781-lime-green/back.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-green": {
       "views": {

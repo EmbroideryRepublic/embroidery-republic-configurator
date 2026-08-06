@@ -1,0 +1,394 @@
+[
+  {
+    "productId": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite) – Produktseite https://www.bc-collection.eu/en/t-shirts/bc-e",
+    "colors": [
+      {
+        "id": "urban-khaki",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5044/TU05T_P_BC_552_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=f256d8d9e98ed88e6408789f5a0974f4",
+        "erwarteterHex": "#454839"
+      },
+      {
+        "id": "millennial-pink",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5047/TU05T_P_BC_304_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=9e99b12423e4e83e84f19d76d68b0de5",
+        "erwarteterHex": "#D1ABA0"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5041/TU05T_P_BC_235_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=396f74e0a5245396b8d9e492ef80dd9f",
+        "erwarteterHex": "#E75113"
+      },
+      {
+        "id": "dark-grey-solid",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5035/TU05T_P_BC_670_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=ac3ff659835217925f05fe8bfdf1e776",
+        "erwarteterHex": "#29363F"
+      },
+      {
+        "id": "bear-brown",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5050/TU05T_P_BC_150_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=d0b7cf2c80d957fcec948ef007c4d81f",
+        "erwarteterHex": "#4E403A"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "quelle": "bc-collection.eu (offizielle B&C Collection Produktseite, https://www.bc-collection.eu/en/t-shirts/bc-e150-lsl",
+    "colors": [
+      {
+        "id": "urban-khaki",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5106/TW06T_P_BC_552_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=b187d5367d57f8c38403a4c395b5a6fd",
+        "erwarteterHex": "#454839"
+      },
+      {
+        "id": "millennial-pink",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5109/TW06T_P_BC_304_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=34da42576fdc15108c9fb35f4949603a",
+        "erwarteterHex": "#D1ABA0"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5103/TW06T_P_BC_235_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=7e7f413348ffa524e997b1c0e74a593a",
+        "erwarteterHex": "#E75113"
+      },
+      {
+        "id": "bear-brown",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5112/TW06T_P_BC_150_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=2a162ef6e5695f1cdc2cb432ab4853a0",
+        "erwarteterHex": "#4E403A"
+      },
+      {
+        "id": "dark-grey-solid",
+        "front": "https://www.bc-collection.eu/thumbs/v1/5097/TW06T_P_BC_670_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=5181603043723b4c60e84cf11e9ca4f7",
+        "erwarteterHex": "#29363F"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-inspire-v-t-men",
+    "quelle": "allmyclothes.de (images.allmyclothes.de, Artikel-ID 7467 = B&C TM044, offizielle B&C-Studiofotografie)",
+    "colors": [
+      {
+        "id": "khaki",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Khaki.jpg",
+        "erwarteterHex": "#4C4B30"
+      },
+      {
+        "id": "light-grey",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Light-Grey.jpg",
+        "erwarteterHex": "#A09D98"
+      },
+      {
+        "id": "navy",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Navy.jpg",
+        "erwarteterHex": "#1F2532"
+      },
+      {
+        "id": "red",
+        "front": "https://images.allmyclothes.de/item/images/7467/full/BC-BE-INSPIRED-TM044-Red.jpg",
+        "erwarteterHex": "#DB001B"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-inspire-v-t-women",
+    "quelle": "bc-collection.eu (offizielle B&C-Hersteller-Mediathek, Produktseite TW045; Bild-URLs aus dem gerenderten DOM d",
+    "colors": [
+      {
+        "id": "khaki",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6197/TW045_P_BC_555_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=e894334b6e8f97e3b6eff916050e790b",
+        "erwarteterHex": "#4C4B30"
+      },
+      {
+        "id": "light-grey",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6198/TW045_P_BC_671_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=356ff5861b36a366a82fbb1ef60a66a4",
+        "erwarteterHex": "#A09D98"
+      },
+      {
+        "id": "navy",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6195/TW045_P_BC_003_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=3b927e86b5b1227bd476d7585465cae9",
+        "erwarteterHex": "#1F2532"
+      },
+      {
+        "id": "red",
+        "front": "https://www.bc-collection.eu/thumbs/v1/6196/TW045_P_BC_004_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=6ba69cbcb6c9e0dfd8a40d7cc98c132f",
+        "erwarteterHex": "#DB001B"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-workwear-t-men",
+    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson Produktfotografie) – Bild-URLs je Farbe aus dem DOM der",
+    "colors": [
+      {
+        "id": "grey-heather",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_grey_heather.webp",
+        "erwarteterHex": "#9396A3",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_grey_heather_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_grey_heather_3.webp"
+      },
+      {
+        "id": "light-blue",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_light_blue.webp",
+        "erwarteterHex": "#E0F2FB",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_light_blue_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_light_blue_3.webp"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_orange.webp",
+        "erwarteterHex": "#F18E00",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_orange_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_orange_3.webp"
+      },
+      {
+        "id": "royal",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_royal.webp",
+        "erwarteterHex": "#004985",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_royal_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_men_jn800_royal_3.webp"
+      }
+    ]
+  },
+  {
+    "productId": "just-hoods-signature-heavyweight-sweat",
+    "quelle": "shop.ralawise.com – offizielle Produktseite \"JH123 | Signature heavyweight sweatshirt\" (https://shop.ralawise.",
+    "colors": [
+      {
+        "id": "deep-black",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh123_deepblack_ft2.jpg",
+        "erwarteterHex": "#000000"
+      },
+      {
+        "id": "natural-stone",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh123_naturalstone_ft2.jpg",
+        "erwarteterHex": "#A4ADA6"
+      },
+      {
+        "id": "4f758b",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh123ablu/jh123_airforceblue_ft.jpg",
+        "erwarteterHex": "#4F758B"
+      },
+      {
+        "id": "4f413c",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh123espr/jh123_espresso_ft.jpg",
+        "erwarteterHex": "#4F413C"
+      }
+    ]
+  },
+  {
+    "productId": "sols-mens-factor-zipped-fleece-jacket",
+    "quelle": "myworkwear.co.uk (assets.myworkwear.co.uk/products/6028/, Artikel 03823, Produktseite https://www.myworkwear.c",
+    "colors": [
+      {
+        "id": "charcoal-grey-solid",
+        "front": "https://assets.myworkwear.co.uk/products/6028/03823-CHA-FRONT.jpg",
+        "erwarteterHex": "#1D181F",
+        "back": "https://assets.myworkwear.co.uk/products/6028/03823-CHA-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6028/03823-CHA-LEFT.jpg"
+      },
+      {
+        "id": "red",
+        "front": "https://assets.myworkwear.co.uk/products/6028/03823-RED-FRONT.jpg",
+        "erwarteterHex": "#C4082D",
+        "back": "https://assets.myworkwear.co.uk/products/6028/03823-RED-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6028/03823-RED-LEFT.jpg"
+      },
+      {
+        "id": "orange",
+        "front": "https://assets.myworkwear.co.uk/products/6028/03823-ORA-FRONT.jpg",
+        "erwarteterHex": "#F08800",
+        "back": "https://assets.myworkwear.co.uk/products/6028/03823-ORA-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6028/03823-ORA-LEFT.jpg"
+      },
+      {
+        "id": "rope",
+        "front": "https://assets.myworkwear.co.uk/products/6028/03823-ROP-FRONT.jpg",
+        "erwarteterHex": "#B6A186",
+        "back": "https://assets.myworkwear.co.uk/products/6028/03823-ROP-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6028/03823-ROP-LEFT.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-men-s-fleece-jacket-jn",
+    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Fotografie); Farbnamen gegengeprueft ueber rexlander.co",
+    "colors": [
+      {
+        "id": "brown",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_brown.webp",
+        "erwarteterHex": "#5D4631",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_brown_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_brown_3.webp"
+      },
+      {
+        "id": "dark-grey-solid",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_grey.webp",
+        "erwarteterHex": "#99A499",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_grey_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_dark_grey_3.webp"
+      },
+      {
+        "id": "turquoise",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_turquoise.webp",
+        "erwarteterHex": "#00A9CE",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_turquoise_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_turquoise_3.webp"
+      },
+      {
+        "id": "lime-green",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_lime_green.webp",
+        "erwarteterHex": "#9DC118",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_lime_green_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_fleece_jacket_jn782_lime_green_3.webp"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-ladies-fleece-jacket-jn781",
+    "quelle": "groener-schulze.com (offizielle Daiber / James+Nicholson Produktfotografie)",
+    "colors": [
+      {
+        "id": "brown",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_brown.webp",
+        "erwarteterHex": "#5D4631",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_brown_2.webp"
+      },
+      {
+        "id": "dark-grey-solid",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_dark_grey.webp",
+        "erwarteterHex": "#99A499",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_dark_grey_2.webp"
+      },
+      {
+        "id": "turquoise",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_turquoise.webp",
+        "erwarteterHex": "#00A9CE",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_turquoise_2.webp"
+      },
+      {
+        "id": "lime-green",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_lime_green.webp",
+        "erwarteterHex": "#9DC118",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_fleece_jacket_jn781_lime_green_2.webp"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-workwear-t-women",
+    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson-Produktfotografie), Produktseite https://www.groener-sc",
+    "colors": [
+      {
+        "id": "grey-heather",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_grey_heather.webp",
+        "erwarteterHex": "#9396A3",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_grey_heather_2.webp"
+      },
+      {
+        "id": "light-blue",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_light_blue.webp",
+        "erwarteterHex": "#E0F2FB",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_light_blue_2.webp"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_orange.webp",
+        "erwarteterHex": "#F18E00",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_t_women_jn802_orange_2.webp"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-workwear-polo-men",
+    "quelle": "groener-schulze.com (offizielle Daiber/James+Nicholson Produktfotografie), Produktseite Daiber Workwear Polo M",
+    "colors": [
+      {
+        "id": "grey-heather",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_grey_heather.webp",
+        "erwarteterHex": "#9396A3",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_grey_heather_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_grey_heather_3.webp"
+      },
+      {
+        "id": "light-blue",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_light_blue.webp",
+        "erwarteterHex": "#E0F2FB",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_light_blue_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_light_blue_3.webp"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_orange.webp",
+        "erwarteterHex": "#F18E00",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_orange_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_workwear_polo_men_jn801_orange_3.webp"
+      }
+    ]
+  },
+  {
+    "productId": "russell-men-s-classic-cotton-polo",
+    "quelle": "rexlander.com (PrestaShop-Produktseite Russell R-569M-0, offizielle Russell/FOTL-Studiofotografie; Farb-zu-Bil",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "front": "https://www.rexlander.com/5213-thickbox_default/Russell-R-569M-0-Mens-Classic-Cotton-Poloshirt-Herren.jpg",
+        "erwarteterHex": "#00461C"
+      },
+      {
+        "id": "fuchsia",
+        "front": "https://www.rexlander.com/5218-thickbox_default/Russell-R-569M-0-Mens-Classic-Cotton-Poloshirt-Herren.jpg",
+        "erwarteterHex": "#EC0083"
+      },
+      {
+        "id": "sky",
+        "front": "https://www.rexlander.com/5223-thickbox_default/Russell-R-569M-0-Mens-Classic-Cotton-Poloshirt-Herren.jpg",
+        "erwarteterHex": "#8BB4DF"
+      }
+    ]
+  },
+  {
+    "productId": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "quelle": "shop.ralawise.com – Produktseite https://shop.ralawise.com/products/gd028-hammer-adult-hooded-sweatshirt.aspx ",
+    "colors": [
+      {
+        "id": "deep-royal",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028dery/gd028_deeproyal_ft.jpg",
+        "erwarteterHex": "#0022D7"
+      },
+      {
+        "id": "garnet",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028garn/gd028_garnet_ft.jpg",
+        "erwarteterHex": "#7D2935"
+      },
+      {
+        "id": "tan",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd028tann/gd028_tan_ft.jpg",
+        "erwarteterHex": "#B29E69"
+      }
+    ]
+  },
+  {
+    "productId": "fruit-of-the-loom-premium-hooded-sweat",
+    "quelle": "groener-schulze.com – Produktseite https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-th",
+    "colors": [
+      {
+        "id": "charcoal-solid",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_charcoal.webp",
+        "erwarteterHex": "#3E3F40",
+        "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_charcoal_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_charcoal_3.webp"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_burgundy.webp",
+        "erwarteterHex": "#77002F",
+        "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_burgundy_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_burgundy_3.webp"
+      },
+      {
+        "id": "classic-olive",
+        "front": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_classic_olive.webp",
+        "erwarteterHex": "#63673F",
+        "back": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_classic_olive_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/fruit_of_the_loom_premium_hooded_sweat_62-152-0_classic_olive_3.webp"
+      }
+    ]
+  }
+]

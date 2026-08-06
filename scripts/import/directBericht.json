@@ -1,342 +1,1437 @@
 [
   {
-    "produkt": "stedman-stedman-classic-t",
+    "produkt": "russell-ladies-pure-organic-heavy-tee",
     "farbe": "black",
-    "quelle": "stedman.eu",
+    "quelle": "freewear.de",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#232524",
-    "erwartet": "#25282B",
-    "deltaE": 8,
+    "frontDom": "#121317",
+    "erwartet": "#000000",
+    "deltaE": 35,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-stedman-classic-t",
+    "produkt": "russell-ladies-pure-organic-heavy-tee",
     "farbe": "white",
-    "quelle": "stedman.eu",
+    "quelle": "freewear.de",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#d5d5d5",
+    "frontDom": "#eaeaec",
     "erwartet": "#FFFFFF",
-    "deltaE": 73,
+    "deltaE": 35,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-stedman-classic-t",
-    "farbe": "navy",
-    "quelle": "stedman.eu",
+    "produkt": "russell-ladies-pure-organic-heavy-tee",
+    "farbe": "french-navy",
+    "quelle": "freewear.de",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#253741",
-    "erwartet": "#20304C",
-    "deltaE": 14,
+    "frontDom": "#0e192c",
+    "erwartet": "#021E42",
+    "deltaE": 26,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-stedman-classic-t",
-    "farbe": "red",
-    "quelle": "stedman.eu",
+    "produkt": "russell-ladies-pure-organic-heavy-tee",
+    "farbe": "555b66",
+    "quelle": "freewear.de",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#be1d26",
-    "erwartet": "#B62025",
-    "deltaE": 9,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-stedman-classic-t",
-    "farbe": "royal",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#30508a",
-    "erwartet": "#1E4C9A",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-stedman-classic-t",
-    "farbe": "grey",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b6b2af",
-    "erwartet": "#8A8D8F",
-    "deltaE": 66,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-for-women",
-    "farbe": "black",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#101010",
-    "erwartet": "#25282B",
+    "frontDom": "#414449",
+    "erwartet": "#555B66",
     "deltaE": 42,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-for-women",
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "black",
+    "quelle": "Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#222224",
+    "erwartet": "#25282B",
+    "deltaE": 10,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
     "farbe": "white",
-    "quelle": "stedman.eu",
+    "quelle": "Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P",
     "gefunden": [
-      "front"
+      "front",
+      "back"
     ],
-    "frontDom": "#d0d0d0",
+    "frontDom": "#f1f2f2",
     "erwartet": "#FFFFFF",
-    "deltaE": 81,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-for-women",
-    "farbe": "navy",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#263343",
-    "erwartet": "#20304C",
-    "deltaE": 11,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-for-women",
-    "farbe": "red",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c91d19",
-    "erwartet": "#B62025",
     "deltaE": 23,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-for-women",
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "navy",
+    "quelle": "Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#082344",
+    "erwartet": "#263147",
+    "deltaE": 33,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "red",
+    "quelle": "Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#da173f",
+    "erwartet": "#B1302A",
+    "deltaE": 52,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
     "farbe": "royal",
-    "quelle": "stedman.eu",
+    "quelle": "Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P",
     "gefunden": [
-      "front"
+      "front",
+      "back"
     ],
-    "frontDom": "#2d5392",
-    "erwartet": "#1E4C9A",
-    "deltaE": 18,
+    "frontDom": "#0f65ac",
+    "erwartet": "#224D8F",
+    "deltaE": 42,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-v-neck",
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "charcoal-solid",
+    "quelle": "Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#777271",
+    "erwartet": "#66676C",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-pique-polo-shirt",
     "farbe": "black",
-    "quelle": "stedman.eu",
+    "quelle": "baroneclothing.com (Magento-CDN media/catalog/product) — Earth Positive EP20 Men",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#212121",
-    "erwartet": "#25282B",
-    "deltaE": 13,
+    "frontDom": "#13121a",
+    "erwartet": "#111021",
+    "deltaE": 8,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-v-neck",
+    "produkt": "russell-poloshirt-6535",
+    "farbe": "black",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2a2a2c",
+    "erwartet": "#000000",
+    "deltaE": 74,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-poloshirt-6535",
     "farbe": "white",
-    "quelle": "stedman.eu",
+    "quelle": "groener-schulze.com",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#d1d1d1",
+    "frontDom": "#edeef2",
     "erwartet": "#FFFFFF",
-    "deltaE": 80,
+    "deltaE": 28,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "navy",
-    "quelle": "stedman.eu",
+    "produkt": "russell-poloshirt-6535",
+    "farbe": "french-navy",
+    "quelle": "groener-schulze.com",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#323b54",
-    "erwartet": "#20304C",
-    "deltaE": 23,
+    "frontDom": "#303551",
+    "erwartet": "#021E42",
+    "deltaE": 54,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-v-neck",
-    "farbe": "red",
-    "quelle": "stedman.eu",
+    "produkt": "russell-poloshirt-6535",
+    "farbe": "classic-red",
+    "quelle": "groener-schulze.com",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#b5303e",
-    "erwartet": "#B62025",
-    "deltaE": 30,
+    "frontDom": "#bf3349",
+    "erwartet": "#D71925",
+    "deltaE": 50,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-v-neck-for-women",
-    "farbe": "black",
-    "quelle": "stedman.eu",
+    "produkt": "russell-poloshirt-6535",
+    "farbe": "bright-royal",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3a4e87",
+    "erwartet": "#1E519E",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-poloshirt-6535",
+    "farbe": "convoy-grey-solid",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#73747c",
+    "erwartet": "#555B66",
+    "deltaE": 45,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "2d2926",
+    "quelle": "shop.ralawise.com (Ralawise, Gildan-Fachhaendler; Artikel GD028 = EU/UK-Aequival",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#202020",
-    "erwartet": "#25282B",
+    "frontDom": "#141414",
+    "erwartet": "#2D2926",
+    "deltaE": 37,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "off-white",
+    "quelle": "shop.ralawise.com (Ralawise, Gildan-Fachhaendler; Artikel GD028 = EU/UK-Aequival",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f1ecd7",
+    "erwartet": "#E7DBB9",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "blue-dusk",
+    "quelle": "shop.ralawise.com (Ralawise, Gildan-Fachhaendler; Artikel GD028 = EU/UK-Aequival",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#182433",
+    "erwartet": "#3C4652",
+    "deltaE": 58,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "cherry-red",
+    "quelle": "shop.ralawise.com (Ralawise, Gildan-Fachhaendler; Artikel GD028 = EU/UK-Aequival",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#a51f36",
+    "erwartet": "#AC2B37",
     "deltaE": 14,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-v-neck-for-women",
-    "farbe": "white",
-    "quelle": "stedman.eu",
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "888b8d",
+    "quelle": "shop.ralawise.com (Ralawise, Gildan-Fachhaendler; Artikel GD028 = EU/UK-Aequival",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#c8c8c8",
-    "erwartet": "#FFFFFF",
-    "deltaE": 95,
+    "frontDom": "#67666a",
+    "erwartet": "#888B8D",
+    "deltaE": 61,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-classic-t-v-neck-for-women",
-    "farbe": "navy",
-    "quelle": "stedman.eu",
+    "produkt": "gildan-hammer-maxweight-adult-hooded-sweatshirt",
+    "farbe": "olive",
+    "quelle": "shop.ralawise.com (Ralawise, Gildan-Fachhaendler; Artikel GD028 = EU/UK-Aequival",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#313950",
-    "erwartet": "#20304C",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-classic-t-v-neck-for-women",
-    "farbe": "red",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ae2e3b",
-    "erwartet": "#B62025",
+    "frontDom": "#534d36",
+    "erwartet": "#5E534E",
     "deltaE": 27,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-comfort-t",
+    "produkt": "earthpositive-earth-positive-pullover-hoodie",
     "farbe": "black",
-    "quelle": "stedman.eu",
+    "quelle": "shirtplus.net (Shopify-CDN) – offizieller Continental Clothing / EarthPositive E",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#252525",
-    "erwartet": "#25282B",
-    "deltaE": 7,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-comfort-t",
-    "farbe": "white",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d8d8d8",
-    "erwartet": "#FFFFFF",
-    "deltaE": 68,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-comfort-t",
-    "farbe": "navy",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#253842",
-    "erwartet": "#20304C",
-    "deltaE": 14,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-comfort-t",
-    "farbe": "red",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c11e27",
-    "erwartet": "#B62025",
+    "frontDom": "#111316",
+    "erwartet": "#111021",
     "deltaE": 11,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-comfort-t",
-    "farbe": "royal",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#30528c",
-    "erwartet": "#1E4C9A",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-comfort-t",
-    "farbe": "grey",
-    "quelle": "stedman.eu",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#b9b4b1",
-    "erwartet": "#8A8D8F",
-    "deltaE": 70,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-clive-crew-neck",
-    "farbe": "black",
-    "quelle": "stedman.eu",
-    "gefunden": [],
-    "frontDom": "",
-    "erwartet": "#25282B",
-    "deltaE": null,
-    "dupeMit": null
-  },
-  {
-    "produkt": "stedman-clive-crew-neck",
+    "produkt": "earthpositive-earth-positive-pullover-hoodie",
     "farbe": "white",
-    "quelle": "stedman.eu",
-    "gefunden": [],
-    "frontDom": "",
-    "erwartet": "#FFFFFF",
-    "deltaE": null,
+    "quelle": "shirtplus.net (Shopify-CDN) – offizieller Continental Clothing / EarthPositive E",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f3f3f3",
+    "erwartet": "#EEEFF4",
+    "deltaE": 6,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-clive-crew-neck",
+    "produkt": "earthpositive-earth-positive-pullover-hoodie",
+    "farbe": "french-navy",
+    "quelle": "shirtplus.net (Shopify-CDN) – offizieller Continental Clothing / EarthPositive E",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#21232f",
+    "erwartet": "#26273B",
+    "deltaE": 14,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-pullover-hoodie",
+    "farbe": "forest-green",
+    "quelle": "shirtplus.net (Shopify-CDN) – offizieller Continental Clothing / EarthPositive E",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#524f2e",
+    "erwartet": "#53543F",
+    "deltaE": 18,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-pullover-hoodie",
+    "farbe": "stone-washed-grey",
+    "quelle": "shirtplus.net (Shopify-CDN) – offizieller Continental Clothing / EarthPositive E",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#353334",
+    "erwartet": "#6D6E6B",
+    "deltaE": 98,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-black",
+    "quelle": "EarthPositive / Continental Clothing (offizielle Herstellerquelle: PIM api pim.e",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#1a181b",
+    "erwartet": "#1D181A",
+    "deltaE": 3,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-off-white",
+    "quelle": "EarthPositive / Continental Clothing (offizielle Herstellerquelle: PIM api pim.e",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f5f2ef",
+    "erwartet": "#F5F3EF",
+    "deltaE": 1,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "7e8f62",
+    "quelle": "EarthPositive / Continental Clothing (offizielle Herstellerquelle: PIM api pim.e",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a2b99a",
+    "erwartet": "#7E8F62",
+    "deltaE": 79,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-pullover-hood-ep",
     "farbe": "navy",
-    "quelle": "stedman.eu",
-    "gefunden": [],
-    "frontDom": "",
-    "erwartet": "#20304C",
-    "deltaE": null,
+    "quelle": "fifthcolumn.co.uk (Continental/EarthPositive Kampagnenbilder, weisser Studiohint",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#1c1826",
+    "erwartet": "#20345A",
+    "deltaE": 59,
     "dupeMit": null
   },
   {
-    "produkt": "stedman-clive-crew-neck",
-    "farbe": "grey",
-    "quelle": "stedman.eu",
-    "gefunden": [],
-    "frontDom": "",
-    "erwartet": "#8A8D8F",
-    "deltaE": null,
+    "produkt": "just-hoods-organic-hoodie-jh201",
+    "farbe": "new-french-navy",
+    "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#252432",
+    "erwartet": "#091F2C",
+    "deltaE": 29,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-organic-hoodie-jh201",
+    "farbe": "arctic-white",
+    "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f5f5f5",
+    "erwartet": "#FFFFFF",
+    "deltaE": 17,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-organic-hoodie-jh201",
+    "farbe": "ink-blue",
+    "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#164163",
+    "erwartet": "#123955",
+    "deltaE": 17,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-organic-hoodie-jh201",
+    "farbe": "fire-red",
+    "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#b63439",
+    "erwartet": "#BA0C2F",
+    "deltaE": 41,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-organic-hoodie-jh201",
+    "farbe": "royal-blue",
+    "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#045097",
+    "erwartet": "#003594",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-organic-hoodie-jh201",
+    "farbe": "charcoal-heather",
+    "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#5c5050",
+    "erwartet": "#364747",
+    "deltaE": 40,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-organic-hoodie-jh201",
+    "farbe": "bottle-green",
+    "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#29402d",
+    "erwartet": "#105017",
+    "deltaE": 37,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "new-french-navy",
+    "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#24263d",
+    "erwartet": "#091F2C",
+    "deltaE": 33,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "arctic-white",
+    "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f3f2f6",
+    "erwartet": "#FFFFFF",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "solid-charcoal",
+    "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#37353a",
+    "erwartet": "#3F4850",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "fire-red",
+    "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#e5212b",
+    "erwartet": "#BA0C2F",
+    "deltaE": 48,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "atlantic-blue",
+    "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#5775af",
+    "erwartet": "#5174A8",
+    "deltaE": 9,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "heather-grey",
+    "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#a8a6b4",
+    "erwartet": "#7A7D81",
+    "deltaE": 80,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "moss-green",
+    "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#50685b",
+    "erwartet": "#135E31",
+    "deltaE": 75,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "black",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#3e3d40",
+    "erwartet": "#000000",
+    "deltaE": 108,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "white",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ebebef",
+    "erwartet": "#FFFFFF",
+    "deltaE": 32,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "french-navy",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3a3c4c",
+    "erwartet": "#021E42",
+    "deltaE": 64,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "classic-red",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ca344a",
+    "erwartet": "#D71925",
+    "deltaE": 48,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "bright-royal",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3f5196",
+    "erwartet": "#1E519E",
+    "deltaE": 34,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "convoy-grey-solid",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#65656a",
+    "erwartet": "#555B66",
+    "deltaE": 19,
+    "dupeMit": null
+  },
+  {
+    "produkt": "russell-ladies-authentic-hood",
+    "farbe": "bottle-green",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3b5243",
+    "erwartet": "#00461C",
+    "deltaE": 72,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "new-french-navy",
+    "quelle": "ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#252331",
+    "erwartet": "#091F2C",
+    "deltaE": 29,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "arctic-white",
+    "quelle": "ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#eeeeee",
+    "erwartet": "#FFFFFF",
+    "deltaE": 29,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "solid-charcoal",
+    "quelle": "ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#4a484a",
+    "erwartet": "#3F4850",
+    "deltaE": 13,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "bright-royal",
+    "quelle": "ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#1a3b7b",
+    "erwartet": "#002DCB",
+    "deltaE": 85,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "heather-grey",
+    "quelle": "ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#c9c9cb",
+    "erwartet": "#7A7D81",
+    "deltaE": 132,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-hoods-signature-heavyweight-sweat",
+    "farbe": "earthy-green",
+    "quelle": "ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#626e56",
+    "erwartet": "#476240",
+    "deltaE": 37,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "black",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#1b161a",
+    "erwartet": "#211915",
+    "deltaE": 8,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "white",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ebeaf0",
+    "erwartet": "#FFFFFF",
+    "deltaE": 33,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "navy",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#222439",
+    "erwartet": "#212C4C",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "red",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ce0225",
+    "erwartet": "#BA0715",
+    "deltaE": 26,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "royal-blue",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#213a96",
+    "erwartet": "#00559E",
+    "deltaE": 43,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "dark-grey-melange",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#79777b",
+    "erwartet": "#6D7175",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jhk-hooded-sweater",
+    "farbe": "khaki",
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#514d34",
+    "erwartet": "#3D5554",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "black",
+    "quelle": "shirtplus.net (Shopify-CDN, hostet Continentals offizielle EP01L-Studioflats mit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#111214",
+    "erwartet": "#111021",
+    "deltaE": 13,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "shirtplus.net (Shopify-CDN, hostet Continentals offizielle EP01L-Studioflats mit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f2f2f2",
+    "erwartet": "#EEEFF4",
+    "deltaE": 5,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "french-navy",
+    "quelle": "shirtplus.net (Shopify-CDN, hostet Continentals offizielle EP01L-Studioflats mit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#212430",
+    "erwartet": "#26273B",
+    "deltaE": 12,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "black",
+    "quelle": "blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#181818",
+    "erwartet": "#25282B",
+    "deltaE": 28,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#d2d2d2",
+    "erwartet": "#FFFFFF",
+    "deltaE": 78,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "navy",
+    "quelle": "blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#161d2d",
+    "erwartet": "#263147",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "red",
+    "quelle": "blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#aa041a",
+    "erwartet": "#B1302A",
+    "deltaE": 47,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "royal",
+    "quelle": "blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#06377d",
+    "erwartet": "#224D8F",
+    "deltaE": 40,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "charcoal-solid",
+    "quelle": "blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#545454",
+    "erwartet": "#66676C",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "forest-green",
+    "quelle": "blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#0e3425",
+    "erwartet": "#273B33",
+    "deltaE": 29,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "black",
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#2a2a2a",
+    "erwartet": "#000000",
+    "deltaE": 73,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "white",
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f9f9f9",
+    "erwartet": "#FFFFFF",
+    "deltaE": 10,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "navy",
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#353c49",
+    "erwartet": "#1F2532",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "red",
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d3162f",
+    "erwartet": "#DB001B",
+    "deltaE": 31,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "royal-blue",
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#134d8e",
+    "erwartet": "#154E8F",
+    "deltaE": 2,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "sport-grey-heather",
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#a5a5a5",
+    "erwartet": "#9C9E9F",
+    "deltaE": 13,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "bottle-green",
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#3a5740",
+    "erwartet": "#004413",
+    "deltaE": 76,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "black",
+    "quelle": "dynamics.se (Shopify CDN, EP01L Earth Positive Long Sleeve T-shirt Produktseite;",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#0c0a0d",
+    "erwartet": "#191516",
+    "deltaE": 19,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "dynamics.se (Shopify CDN, EP01L Earth Positive Long Sleeve T-shirt Produktseite;",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f5f9fc",
+    "erwartet": "#EEEFF4",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "french-navy",
+    "quelle": "dynamics.se (Shopify CDN, EP01L Earth Positive Long Sleeve T-shirt Produktseite;",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#22324c",
+    "erwartet": "#26273B",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "denim-blue",
+    "quelle": "dynamics.se (Shopify CDN, EP01L Earth Positive Long Sleeve T-shirt Produktseite;",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#29455b",
+    "erwartet": "#5D739C",
+    "deltaE": 95,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-unisex-organic-longsleeve-t-shirt",
+    "farbe": "stone-washed-black",
+    "quelle": "dynamics.se (Shopify CDN, EP01L Earth Positive Long Sleeve T-shirt Produktseite;",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#181c25",
+    "erwartet": "#3E3F3C",
+    "deltaE": 57,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "french-navy",
+    "quelle": "shop.ralawise.com",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#2f2d3f",
+    "erwartet": "#041C2C",
+    "deltaE": 50,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "arctic-white",
+    "quelle": "shop.ralawise.com",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#fafafa",
+    "erwartet": "#FFFFFF",
+    "deltaE": 9,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "charcoal-solid",
+    "quelle": "shop.ralawise.com",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#434142",
+    "erwartet": "#3F4444",
+    "deltaE": 5,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "fire-red",
+    "quelle": "shop.ralawise.com",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d43c3d",
+    "erwartet": "#C8102E",
+    "deltaE": 48,
+    "dupeMit": null
+  },
+  {
+    "produkt": "just-cool-long-sleeve-cool-t",
+    "farbe": "royal-blue",
+    "quelle": "shop.ralawise.com",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#1b559b",
+    "erwartet": "#003594",
+    "deltaE": 42,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "black",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#2c2c2c",
+    "erwartet": "#000000",
+    "deltaE": 76,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "white",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#f8f8f8",
+    "erwartet": "#FFFFFF",
+    "deltaE": 12,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "navy",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#353c49",
+    "erwartet": "#1F2532",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "red",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#d91833",
+    "erwartet": "#DB001B",
+    "deltaE": 34,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "royal-blue",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#124c8d",
+    "erwartet": "#154E8F",
+    "deltaE": 4,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "sport-grey-heather",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#a8a8a8",
+    "erwartet": "#9C9E9F",
+    "deltaE": 18,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "farbe": "dark-grey-solid",
+    "quelle": "groener-schulze.com",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#4e4d52",
+    "erwartet": "#29363F",
+    "deltaE": 48,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "black",
+    "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek / Shopify-CDN)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#2c2c2c",
+    "erwartet": "#000000",
+    "deltaE": 76,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek / Shopify-CDN)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#e5e5e5",
+    "erwartet": "#FFFFFF",
+    "deltaE": 45,
+    "dupeMit": null
+  },
+  {
+    "produkt": "neutral-recycled-performance-long-sleeve-t-shirt",
+    "farbe": "navy",
+    "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek / Shopify-CDN)",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#242632",
+    "erwartet": "#1F2A44",
+    "deltaE": 19,
+    "dupeMit": null
+  },
+  {
+    "produkt": "id-identity-microfleece-jacke",
+    "farbe": "schwarz",
+    "quelle": "id.dk (offizielle ID Identity Medienbibliothek, id-identity.azureedge.net CDN)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#282828",
+    "erwartet": "#2B2B2B",
+    "deltaE": 5,
+    "dupeMit": null
+  },
+  {
+    "produkt": "id-identity-microfleece-jacke",
+    "farbe": "navy",
+    "quelle": "id.dk (offizielle ID Identity Medienbibliothek, id-identity.azureedge.net CDN)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#212533",
+    "erwartet": "#2A2D3C",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "id-identity-microfleece-jacke",
+    "farbe": "rot",
+    "quelle": "id.dk (offizielle ID Identity Medienbibliothek, id-identity.azureedge.net CDN)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a30b31",
+    "erwartet": "#A8022C",
+    "deltaE": 11,
+    "dupeMit": null
+  },
+  {
+    "produkt": "id-identity-microfleece-jacke",
+    "farbe": "grau",
+    "quelle": "id.dk (offizielle ID Identity Medienbibliothek, id-identity.azureedge.net CDN)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#3b3e44",
+    "erwartet": "#525760",
+    "deltaE": 44,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "black",
+    "quelle": "falk-ross.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#31302b",
+    "erwartet": "#000000",
+    "deltaE": 81,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "white",
+    "quelle": "falk-ross.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#ecebe9",
+    "erwartet": "#FFFFFF",
+    "deltaE": 35,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "navy",
+    "quelle": "falk-ross.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#1c2535",
+    "erwartet": "#1F2532",
+    "deltaE": 4,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "red",
+    "quelle": "falk-ross.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#bd0e2f",
+    "erwartet": "#DB001B",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "royal-blue",
+    "quelle": "falk-ross.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#075898",
+    "erwartet": "#154E8F",
+    "deltaE": 19,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-microfleece-duo-id501",
+    "farbe": "forest-green",
+    "quelle": "falk-ross.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#343f2f",
+    "erwartet": "#002500",
+    "deltaE": 75,
     "dupeMit": null
   }
 ]

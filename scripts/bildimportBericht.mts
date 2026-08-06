@@ -10,7 +10,7 @@
  *
  * Aufruf: npx tsx scripts/bildimportBericht.mts
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { ASSET_MANIFEST as M } from '../src/lib/assets/assetManifest.generated.ts';
 import { PRODUCTS } from '../src/config/products/index.ts';
 import { PLATZHALTER_BILD } from '../src/lib/assets/index.ts';
@@ -53,6 +53,10 @@ try {
 const istEigen = (pfad: string, front: string | undefined, view: string) =>
   pfad !== PLATZHALTER_BILD && (view === 'front' || pfad !== front);
 
+/** Anzahl real vorhandener Bilddateien (front/back) – für den Bildstil-Abschnitt. */
+const anzahlBilder = readdirSync('public/products')
+  .reduce((n, o) => n + ['front', 'back'].filter((v) => existsSync(`public/products/${o}/${v}.png`)).length, 0);
+
 let realProd = 0, realFarben = 0, mitBack = 0, ohneBack = 0;
 const zeilen: string[] = [];
 const offen: Record<string, string[]> = {};
@@ -91,6 +95,26 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | Produkt | Marke | Quelle | echte Farben | Ansichten | Farben mit Rückansicht |
 |---|---|---|---|---|---|
 ${zeilen.join('\n')}
+
+## Bildstil: Flat-Lay statt On-Model
+_Der Katalog ist durchgängig auf Freisteller ausgelegt (Kleidungsstück allein auf weißem Grund).
+On-Model-Aufnahmen brechen nicht nur den Stil, sie verschieben auch die Brustfläche im Bild – die
+Stickplatzierung des Konfigurators passt dann nicht mehr zur Geometrie. Ein Audit über alle
+${anzahlBilder} Vorder- und Rückansichten (\`scripts/onModelAudit.mts\`, Hautton-Analyse) fand vier
+Produkte mit On-Model-Fotos; für **alle vier** wurden echte Freisteller beschafft und die
+On-Model-Aufnahmen ersetzt:_
+
+| Produkt | vorher | jetzt | Quelle der Freisteller |
+|---|---|---|---|
+| gildan-light-cotton-adult-t-shirt | On-Model (gildan.com) | 6 Flat-Lay-Fronts | PenCarrie, offizielles Gildan-Freisteller-Set GD03 (= Style 3000); Nackenetikett „Light Cotton" im Bild lesbar |
+| gildan-ultra-cotton-long-sleeve-t-shirt | On-Model (blankstyle.com) | 7 Flat-Lay-Fronts | allmyclothes.de, Gildan-Studiofreisteller |
+| earthpositive-pique-polo-shirt | On-Model (baroneclothing.com) | Flat-Lay front + back | continentalclothing.com, herstellereigene Bibliothek (EP20-BL) |
+| earthpositive-jersey-polo-shirt | On-Model (Herstellershop) | Flat-Lay front | earthpositive.se, offizielle nordische Herstellerseite (EP39-BL) |
+
+**Keine dokumentierte Ausnahme nötig** – es verbleibt kein Produkt mit On-Model-Aufnahme.
+Für die beiden Gildan-Artikel existieren im Freisteller-Set nur Vorderansichten; die bisherigen
+On-Model-Rückansichten wurden bewusst **nicht** beibehalten, weil ein gemischter Stil (Freisteller
+vorn, Modell hinten) optisch und geometrisch schlechter wäre als eine reine Front-Ansicht.
 
 ## Verifizierte Hersteller-Artikelnummern
 _Die Produktdefinitionen tragen bewusst **keine** Artikelnummer (ADR 0004: Lieferant vom Produkt gelöst);

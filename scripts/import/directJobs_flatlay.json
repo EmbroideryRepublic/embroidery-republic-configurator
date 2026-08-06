@@ -1,0 +1,102 @@
+[
+  {
+    "productId": "gildan-light-cotton-adult-t-shirt",
+    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
+    "colors": [
+      {
+        "id": "white",
+        "front": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Gildan/Product%20Images/GD03/ProductCarouselMain/GD03%20WHI%20FRONT.jpg",
+        "erwarteterHex": "#FFFFFF"
+      },
+      {
+        "id": "black",
+        "front": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Gildan/Product%20Images/GD03/ProductCarouselMain/GD03%20BLK%20FRONT.jpg",
+        "erwarteterHex": "#25282B"
+      },
+      {
+        "id": "navy",
+        "front": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Gildan/Product%20Images/GD03/ProductCarouselMain/GD03%20NAV%20FRONT.jpg",
+        "erwarteterHex": "#263147"
+      },
+      {
+        "id": "red",
+        "front": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Gildan/Product%20Images/GD03/ProductCarouselMain/GD03%20RED%20FRONT.jpg",
+        "erwarteterHex": "#B1302A"
+      },
+      {
+        "id": "royal",
+        "front": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Gildan/Product%20Images/GD03/ProductCarouselMain/GD03%20ROY%20FRONT.jpg",
+        "erwarteterHex": "#224D8F"
+      },
+      {
+        "id": "charcoal-solid",
+        "front": "https://www.pencarrie.com/storage/phoenix/2026/Phoenix%20All%20Images/Gildan/Product%20Images/GD03/ProductCarouselMain/GD03%20CHA%20FRONT.jpg",
+        "erwarteterHex": "#66676C"
+      }
+    ]
+  },
+  {
+    "productId": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+    "colors": [
+      {
+        "id": "white",
+        "front": "https://images.allmyclothes.de/item/images/11140/full/Gildan-2400-White.jpg",
+        "erwarteterHex": "#FFFFFF"
+      },
+      {
+        "id": "black",
+        "front": "https://images.allmyclothes.de/item/images/11140/full/Gildan-2400-Black.jpg",
+        "erwarteterHex": "#25282B"
+      },
+      {
+        "id": "navy",
+        "front": "https://images.allmyclothes.de/item/images/11140/full/Gildan-2400-Navy.jpg",
+        "erwarteterHex": "#263147"
+      },
+      {
+        "id": "red",
+        "front": "https://images.allmyclothes.de/item/images/11140/full/Gildan-2400-Red.jpg",
+        "erwarteterHex": "#B1302A"
+      },
+      {
+        "id": "royal",
+        "front": "https://images.allmyclothes.de/item/images/11140/full/Gildan-2400-Royal.jpg",
+        "erwarteterHex": "#224D8F"
+      },
+      {
+        "id": "charcoal-solid",
+        "front": "https://images.allmyclothes.de/item/images/11140/full/Gildan-2400-Charcoal-Solid.jpg",
+        "erwarteterHex": "#66676C"
+      },
+      {
+        "id": "forest-green",
+        "front": "https://images.allmyclothes.de/item/images/11140/full/Gildan-2400-Forest-Green.jpg",
+        "erwarteterHex": "#273B33"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-pique-polo-shirt",
+    "quelle": "Continental Clothing Co. — herstellereigene Produktfoto-Bibliothek (continentalclothing.com/assets/product_sho",
+    "colors": [
+      {
+        "id": "black",
+        "front": "https://www.continentalclothing.com/assets/product_shots/high_res/front/EP20-BL.jpg",
+        "erwarteterHex": "#111021",
+        "back": "https://www.continentalclothing.com/assets/product_shots/high_res/back/EP20-BL.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-jersey-polo-shirt",
+    "quelle": "earthpositive.se (offizielle nordische Earth-Positive-/Continental-Clothing-Herstellerseite, Betreiber Dynamic",
+    "colors": [
+      {
+        "id": "black",
+        "front": "https://impro.usercontent.one/appid/oneComWsb/domain/earthpositive.se/media/earthpositive.se/onewebmedia/EP39-BL.png",
+        "erwarteterHex": "#111021"
+      }
+    ]
+  }
+]

@@ -1,123 +1,183 @@
 [
   {
-    "produkt": "bundc-inspire-e150-t-shirt",
+    "produkt": "gildan-light-cotton-adult-t-shirt",
     "farbe": "white",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#eeeeee",
+    "frontDom": "#f6f6f6",
     "erwartet": "#FFFFFF",
-    "deltaE": 29,
+    "deltaE": 16,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt",
+    "produkt": "gildan-light-cotton-adult-t-shirt",
     "farbe": "black",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#2a2829",
-    "erwartet": "#000000",
-    "deltaE": 71,
+    "frontDom": "#191919",
+    "erwartet": "#25282B",
+    "deltaE": 26,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt",
+    "produkt": "gildan-light-cotton-adult-t-shirt",
     "farbe": "navy",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#202634",
-    "erwartet": "#1F2532",
-    "deltaE": 2,
+    "frontDom": "#192654",
+    "erwartet": "#263147",
+    "deltaE": 21,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt",
-    "farbe": "navy-blue",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#202634",
-    "erwartet": "#1F2532",
-    "deltaE": 2,
-    "dupeMit": "bundc-inspire-e150-t-shirt-navy"
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt",
+    "produkt": "gildan-light-cotton-adult-t-shirt",
     "farbe": "red",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#d30e2b",
-    "erwartet": "#DB001B",
-    "deltaE": 23,
+    "frontDom": "#b7131a",
+    "erwartet": "#B1302A",
+    "deltaE": 34,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt",
-    "farbe": "royal-blue",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "royal",
+    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#053c82",
-    "erwartet": "#154E8F",
+    "frontDom": "#1265a5",
+    "erwartet": "#224D8F",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "charcoal-solid",
+    "quelle": "PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#838383",
+    "erwartet": "#66676C",
+    "deltaE": 46,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#e8e8e8",
+    "erwartet": "#FFFFFF",
+    "deltaE": 40,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "black",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#252527",
+    "erwartet": "#25282B",
+    "deltaE": 5,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "navy",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#092042",
+    "erwartet": "#263147",
+    "deltaE": 34,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "red",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#ca0523",
+    "erwartet": "#B1302A",
+    "deltaE": 50,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "royal",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#0264ab",
+    "erwartet": "#224D8F",
+    "deltaE": 48,
+    "dupeMit": null
+  },
+  {
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "charcoal-solid",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#595959",
+    "erwartet": "#66676C",
     "deltaE": 27,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt",
-    "farbe": "heather-grey",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
+    "farbe": "forest-green",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#12311a",
+    "erwartet": "#273B33",
+    "deltaE": 34,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-pique-polo-shirt",
+    "farbe": "black",
+    "quelle": "Continental Clothing Co. — herstellereigene Produktfoto-Bibliothek (continentalclothing.com/assets/product_sho",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#9e9ea0",
-    "erwartet": "#9C9E9F",
-    "deltaE": 2,
+    "frontDom": "#0f1217",
+    "erwartet": "#111021",
+    "deltaE": 10,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt",
-    "farbe": "off-white",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "produkt": "earthpositive-jersey-polo-shirt",
+    "farbe": "black",
+    "quelle": "earthpositive.se (offizielle nordische Earth-Positive-/Continental-Clothing-Herstellerseite, Betreiber Dynamic",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#ece5d8",
-    "erwartet": "#F2EFE6",
-    "deltaE": 18,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt",
-    "farbe": "forest-green",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#2f3f33",
-    "erwartet": "#004413",
-    "deltaE": 57,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt",
-    "farbe": "burgundy",
-    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#5e2c38",
-    "erwartet": "#6B2233",
-    "deltaE": 17,
+    "frontDom": "#161214",
+    "erwartet": "#111021",
+    "deltaE": 14,
     "dupeMit": null
   }
 ]

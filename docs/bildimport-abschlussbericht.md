@@ -5,7 +5,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 ## Übersicht
 - Produkte mit echten Bildern: **154 / 154**
 - Echte Farb-Bildsätze: **984**
-- Farben mit echter Rückansicht: **759** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **225**
+- Farben mit echter Rückansicht: **747** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **237**
 - Noch offen (nur Platzhalter): **0** Produkte
 
 ## Bebilderte Produkte
@@ -79,7 +79,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | russell-ladies-pure-organic-heavy-tee | Russell | freewear.de | 4 | front | 0 · ohne echte Rückansicht: 4 (white, black, 555b66, french-navy) |
 | russell-mens-pure-organic-v-neck-tee | Russell | media2.designpartner.fr (Bild-CDN hinter lamaisonduteeshirt.com). Muster: https://media2.d | 3 | back+front+sleeve_left | 3 |
 | gildan-ultra-cotton-t-shirt | Gildan | teamshirts.com (Spreadshirt-Medienserver) | 7 | back+front | 7 |
-| gildan-light-cotton-adult-t-shirt | Gildan | Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P | 6 | back+front | 6 |
+| gildan-light-cotton-adult-t-shirt | Gildan | PenCarrie (UK-B2B-Grosshaendler) – offizielles Gildan-Freisteller-Bildset fuer GD03 = Style 3000; zweitbestaet | 6 | front | 0 · ohne echte Rückansicht: 6 (navy, black, charcoal-solid, red, royal, white) |
 | neutral-men-s-classic-t-shirt | Neutral | sportyfied.com | 7 | back+front | 5 · ohne echte Rückansicht: 2 (bottle-green, charcoal) |
 | neutral-oversized-t-shirt | Neutral | Neutral (Hersteller) — offizieller Shopify-Produktfeed https://neutral.com/products/t6011-tiger-cotton-oversiz | 12 | front | 0 · ohne echte Rückansicht: 12 (215732, white, sport-grey, black, navy, brown, raw, sand, teal, dusty-indigo, dusty-purple, dusty-mint) |
 | neutral-ladies-classic-t-shirt | Neutral | sportyfied.com | 7 | back+front | 5 · ohne echte Rückansicht: 2 (bottle-green, charcoal) |
@@ -103,8 +103,8 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | jamesnicholson-classic-polo-ladies | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
 | jamesnicholson-men-s-bio-workwear-polo | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
 | jamesnicholson-workwear-polo-men | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
-| earthpositive-pique-polo-shirt | EarthPositive | baroneclothing.com (Magento-CDN media/catalog/product) — Earth Positive EP20 Men | 1 | front | 0 · ohne echte Rückansicht: 1 (black) |
-| earthpositive-jersey-polo-shirt | EarthPositive | Earth Positive(R) by Continental Clothing Co. (offizieller Hersteller-Shop, verlinkt von continentalclothing.c | 1 | front | 0 · ohne echte Rückansicht: 1 (black) |
+| earthpositive-pique-polo-shirt | EarthPositive | Continental Clothing Co. — herstellereigene Produktfoto-Bibliothek (continentalclothing.com/assets/product_sho | 1 | back+front | 1 |
+| earthpositive-jersey-polo-shirt | EarthPositive | earthpositive.se (offizielle nordische Earth-Positive-/Continental-Clothing-Herstellerseite, Betreiber Dynamic | 1 | front | 0 · ohne echte Rückansicht: 1 (black) |
 | russell-strapazierfaehiges-poloshirt-599 | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 6 | back+front | 6 |
 | russell-men-s-ultimate-cotton-polo | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
 | russell-men-s-classic-cotton-polo | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
@@ -144,7 +144,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | just-hoods-signature-heavyweight-sweat | Just Hoods | ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers | 6 | front | 0 · ohne echte Rückansicht: 6 (earthy-green, arctic-white, bright-royal, heather-grey, new-french-navy, solid-charcoal) |
 | jhk-hooded-sweater | JHK | jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict | 7 | back+front+sleeve_left | 7 |
 | earthpositive-premium-long-sleeve-t-shirt | EarthPositive | shirtplus.net (Shopify-CDN, hostet Continentals offizielle EP01L-Studioflats mit | 3 | front | 0 · ohne echte Rückansicht: 3 (black, french-navy, white) |
-| gildan-ultra-cotton-long-sleeve-t-shirt | Gildan | blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad) | 7 | back+front+sleeve_left | 7 |
+| gildan-ultra-cotton-long-sleeve-t-shirt | Gildan | allmyclothes.de (B2B-Grosshandel, Item 11140) — Gildan-Studiofreisteller/Ghost-Mannequin, Bild-CDN images.allm | 7 | front | 0 · ohne echte Rückansicht: 7 (navy, black, charcoal-solid, forest-green, red, royal, white) |
 | sols-men-s-long-sleeve-t-shirt-imperial | SOL'S | myworkwear.co.uk / buildyourbrand-CDN | 6 | back+front+sleeve_left | 6 |
 | neutral-ladies-long-sleeve-t-shirt | Neutral | sportyfied.com | 7 | back+front | 1 · ohne echte Rückansicht: 6 (bottle-green, black, navy, red, white, royal) |
 | russell-classic-t-long-sleeve | Russell | Offizieller Hersteller: Russell Europe Produktseite 0R180L0 + Russell/FOTL Hersteller-DAM cdn.fruitoftheloom.e | 4 | back+front+sleeve_left | 4 |
@@ -165,6 +165,26 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | jamesnicholson-ladies-fleece-jacket-jn781 | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 6 |
 | bundc-microfleece-duo-id501 | B&C | coozo.co.uk (Shopify-CDN, fuehrt die offizielle B&C-Bildstrecke unveraendert); Identitaetsbelege: shop.l-shop- | 9 | front | 0 · ohne echte Rückansicht: 9 (atoll, black, dark-grey-solid, forest-green, navy, pumpkin-orange, red, royal-blue, white) |
 | bundc-microfleece-duo-id501-women | B&C | COOZO (coozo.co.uk) — B&C-Haendler, unveraenderte B&C-Studiofreisteller pro Farbe (FWI51_*_FRONT); Back/Side f | 9 | back+front | 1 · ohne echte Rückansicht: 8 (atoll, dark-grey-solid, forest-green, navy, pumpkin-orange, red, royal-blue, white) |
+
+## Bildstil: Flat-Lay statt On-Model
+_Der Katalog ist durchgängig auf Freisteller ausgelegt (Kleidungsstück allein auf weißem Grund).
+On-Model-Aufnahmen brechen nicht nur den Stil, sie verschieben auch die Brustfläche im Bild – die
+Stickplatzierung des Konfigurators passt dann nicht mehr zur Geometrie. Ein Audit über alle
+1764 Vorder- und Rückansichten (`scripts/onModelAudit.mts`, Hautton-Analyse) fand vier
+Produkte mit On-Model-Fotos; für **alle vier** wurden echte Freisteller beschafft und die
+On-Model-Aufnahmen ersetzt:_
+
+| Produkt | vorher | jetzt | Quelle der Freisteller |
+|---|---|---|---|
+| gildan-light-cotton-adult-t-shirt | On-Model (gildan.com) | 6 Flat-Lay-Fronts | PenCarrie, offizielles Gildan-Freisteller-Set GD03 (= Style 3000); Nackenetikett „Light Cotton" im Bild lesbar |
+| gildan-ultra-cotton-long-sleeve-t-shirt | On-Model (blankstyle.com) | 7 Flat-Lay-Fronts | allmyclothes.de, Gildan-Studiofreisteller |
+| earthpositive-pique-polo-shirt | On-Model (baroneclothing.com) | Flat-Lay front + back | continentalclothing.com, herstellereigene Bibliothek (EP20-BL) |
+| earthpositive-jersey-polo-shirt | On-Model (Herstellershop) | Flat-Lay front | earthpositive.se, offizielle nordische Herstellerseite (EP39-BL) |
+
+**Keine dokumentierte Ausnahme nötig** – es verbleibt kein Produkt mit On-Model-Aufnahme.
+Für die beiden Gildan-Artikel existieren im Freisteller-Set nur Vorderansichten; die bisherigen
+On-Model-Rückansichten wurden bewusst **nicht** beibehalten, weil ein gemischter Stil (Freisteller
+vorn, Modell hinten) optisch und geometrisch schlechter wäre als eine reine Front-Ansicht.
 
 ## Verifizierte Hersteller-Artikelnummern
 _Die Produktdefinitionen tragen bewusst **keine** Artikelnummer (ADR 0004: Lieferant vom Produkt gelöst);

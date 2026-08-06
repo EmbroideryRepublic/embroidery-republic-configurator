@@ -7869,7 +7869,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-navy/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-navy/back.webp",
+        "back": "/products/gildan-light-cotton-adult-t-shirt-navy/front.webp",
         "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-navy/front.webp",
         "sleeve_right": "/products/gildan-light-cotton-adult-t-shirt-navy/front.webp"
       },
@@ -7887,7 +7887,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-black/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-black/back.webp",
+        "back": "/products/gildan-light-cotton-adult-t-shirt-black/front.webp",
         "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-black/front.webp",
         "sleeve_right": "/products/gildan-light-cotton-adult-t-shirt-black/front.webp"
       },
@@ -7896,7 +7896,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/back.webp",
+        "back": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/front.webp",
         "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/front.webp",
         "sleeve_right": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/front.webp"
       },
@@ -7923,7 +7923,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-red/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-red/back.webp",
+        "back": "/products/gildan-light-cotton-adult-t-shirt-red/front.webp",
         "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-red/front.webp",
         "sleeve_right": "/products/gildan-light-cotton-adult-t-shirt-red/front.webp"
       },
@@ -7932,7 +7932,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "royal": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-royal/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-royal/back.webp",
+        "back": "/products/gildan-light-cotton-adult-t-shirt-royal/front.webp",
         "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-royal/front.webp",
         "sleeve_right": "/products/gildan-light-cotton-adult-t-shirt-royal/front.webp"
       },
@@ -7959,7 +7959,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-white/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-white/back.webp",
+        "back": "/products/gildan-light-cotton-adult-t-shirt-white/front.webp",
         "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-white/front.webp",
         "sleeve_right": "/products/gildan-light-cotton-adult-t-shirt-white/front.webp"
       },
@@ -13047,7 +13047,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/earthpositive-pique-polo-shirt-black/front.webp",
-        "back": "/products/earthpositive-pique-polo-shirt-black/front.webp",
+        "back": "/products/earthpositive-pique-polo-shirt-black/back.webp",
         "sleeve_left": "/products/earthpositive-pique-polo-shirt-black/front.webp",
         "sleeve_right": "/products/earthpositive-pique-polo-shirt-black/front.webp"
       },
@@ -18727,8 +18727,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/sleeve-left.webp",
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/front.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/front.webp",
         "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/front.webp"
       },
       "status": "real"
@@ -18754,8 +18754,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/sleeve-left.webp",
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/front.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/front.webp",
         "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/front.webp"
       },
       "status": "real"
@@ -18781,8 +18781,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/sleeve-left.webp",
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/front.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/front.webp",
         "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/front.webp"
       },
       "status": "real"
@@ -18799,8 +18799,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "forest-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/sleeve-left.webp",
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/front.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/front.webp",
         "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/front.webp"
       },
       "status": "real"
@@ -18862,8 +18862,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/sleeve-left.webp",
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/front.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/front.webp",
         "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/front.webp"
       },
       "status": "real"
@@ -18871,8 +18871,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "royal": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/sleeve-left.webp",
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/front.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/front.webp",
         "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/front.webp"
       },
       "status": "real"
@@ -18907,8 +18907,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/sleeve-left.webp",
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/front.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/front.webp",
         "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/front.webp"
       },
       "status": "real"

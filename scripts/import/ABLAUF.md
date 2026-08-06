@@ -62,6 +62,21 @@ ein CLUSTER dunkler Farben desselben Produkts mit gleichem Überstand.
 
 ## Sichtprüfung im Browser
 
+**Nicht gegen `next dev` laufen lassen.** Der Bildoptimierer verarbeitet dort
+jede Variante beim ersten Aufruf einzeln; bei ~30 Farben × 3 Ansichten je Produkt
+dauert ein Durchlauf über 154 Produkte Stunden. Gemessen: vier Produkte in
+mehreren Minuten. Für die Sichtprüfung deshalb erst bauen und dann starten:
+
+```bash
+npx tsx --tsconfig tsconfig.scripts.json scripts/pruefIds.mts
+cp scripts/pruef/farbdurchlauf.html public/_pruef/
+NEXT_PUBLIC_SITE_URL="https://embroidery-republic.com" npx next build
+npx next start -p 3007
+```
+
+Ebenfalls nicht parallel zu Quelltextänderungen laufen lassen: Fast Refresh lädt
+die Harness-Seite neu und setzt den Durchlauf zurück.
+
 Der verlässlichste Weg ist, den Konfigurator selbst zu steuern: `?produkt=<id>`
 öffnet ein Produkt direkt. In einem iframe lassen sich so alle 154 Produkte
 nacheinander durchfahren und Ansichtenleiste + Farbwechsel auslesen.

@@ -135,14 +135,14 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   'fotl-premium-polo': {
     front: { x0: 31.3, y0: 23.4, x1: 69.3, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 57.4, garmentWidthCm: 48, garmentHeightCm: 61 },
     back: { x0: 31.1, y0: 23.4, x1: 69.1, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 57.4, garmentWidthCm: 48, garmentHeightCm: 61 },
-    sleeve_left: { x0: 16.7, y0: 9.5, x1: 83.1, y1: 90.5, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.2, boxHeightCm: 31.4, startXCm: 11, startYCm: 14.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
-    sleeve_right: { x0: 16.5, y0: 9.5, x1: 83.3, y1: 90.5, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.3, boxHeightCm: 31.4, startXCm: 11.2, startYCm: 14.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_left: { x0: 16.8, y0: 9.6, x1: 83.1, y1: 90.4, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 21.6, boxHeightCm: 30.6, startXCm: 10.8, startYCm: 14.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_right: { x0: 16.6, y0: 9.6, x1: 83.2, y1: 90.4, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 21.7, boxHeightCm: 30.6, startXCm: 10.9, startYCm: 14.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'fotl-ladies-premium-polo': {
     front: { x0: 32, y0: 25, x1: 68, y1: 82, imgW: 620, imgH: 720, maxWidthCm: 26.4, maxHeightCm: 47, boxWidthCm: 26.4, boxHeightCm: 48.5, garmentWidthCm: 43, garmentHeightCm: 55 },
     back: { x0: 32, y0: 24.2, x1: 68, y1: 82, imgW: 620, imgH: 720, maxWidthCm: 26.1, maxHeightCm: 47, boxWidthCm: 26.1, boxHeightCm: 48.6, garmentWidthCm: 43, garmentHeightCm: 55 },
-    sleeve_left: { x0: 11.5, y0: 9.9, x1: 88.7, y1: 90.1, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.7, boxHeightCm: 27.4, startXCm: 11.1, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
-    sleeve_right: { x0: 11.5, y0: 9.9, x1: 88.4, y1: 90.1, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.6, boxHeightCm: 27.4, startXCm: 11.5, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_left: { x0: 11.5, y0: 9.9, x1: 88.6, y1: 90.1, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.2, boxHeightCm: 26.7, startXCm: 10.8, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_right: { x0: 11.5, y0: 9.9, x1: 88.3, y1: 90.1, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.1, boxHeightCm: 26.7, startXCm: 11.2, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'fotl-baseball-longsleeve': {
     front: { x0: 35, y0: 32, x1: 65, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 21.3, maxHeightCm: 44.5, boxWidthCm: 21.3, boxHeightCm: 44.5, garmentWidthCm: 45, garmentHeightCm: 60 },
@@ -169,8 +169,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   'gildan-softstyle-polo': {
     front: { x0: 28, y0: 23.2, x1: 72, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 35.7, boxHeightCm: 59.2, garmentWidthCm: 49, garmentHeightCm: 63 },
     back: { x0: 28, y0: 23.2, x1: 72, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 35.8, boxHeightCm: 59.3, garmentWidthCm: 49, garmentHeightCm: 63 },
-    sleeve_left: { x0: 14.6, y0: 9.1, x1: 85.2, y1: 90.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 27.7, boxHeightCm: 37.3, startXCm: 13.8, startYCm: 16.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
-    sleeve_right: { x0: 14.6, y0: 9.1, x1: 85.8, y1: 90.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 28, boxHeightCm: 37.3, startXCm: 14, startYCm: 16.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_left: { x0: 14.7, y0: 9.2, x1: 85.1, y1: 90.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 27.1, boxHeightCm: 36.4, startXCm: 13.5, startYCm: 16.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_right: { x0: 14.7, y0: 9.2, x1: 85.8, y1: 90.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 27.3, boxHeightCm: 36.4, startXCm: 13.6, startYCm: 16.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'gildan-vneck-t': {
     front: { x0: 28, y0: 25, x1: 72, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 33.5, boxHeightCm: 53.9, garmentWidthCm: 47, garmentHeightCm: 63 },
@@ -199,8 +199,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   'gildan-ladies-polo': {
     front: { x0: 30, y0: 24.5, x1: 69, y1: 82, imgW: 620, imgH: 720, maxWidthCm: 27.4, maxHeightCm: 46.9, boxWidthCm: 27.4, boxHeightCm: 46.9, garmentWidthCm: 43, garmentHeightCm: 53 },
     back: { x0: 30, y0: 24.5, x1: 69, y1: 82, imgW: 620, imgH: 720, maxWidthCm: 27.4, maxHeightCm: 46.9, boxWidthCm: 27.4, boxHeightCm: 46.9, garmentWidthCm: 43, garmentHeightCm: 53 },
-    sleeve_left: { x0: 14.4, y0: 9.6, x1: 85.6, y1: 90.4, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.7, boxHeightCm: 29.8, startXCm: 11.2, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
-    sleeve_right: { x0: 14.6, y0: 9.6, x1: 85.4, y1: 90.4, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.6, boxHeightCm: 29.8, startXCm: 11.4, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_left: { x0: 14.5, y0: 9.7, x1: 85.5, y1: 90.3, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.1, boxHeightCm: 29.1, startXCm: 10.9, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_right: { x0: 14.7, y0: 9.7, x1: 85.3, y1: 90.3, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22, boxHeightCm: 29.1, startXCm: 11.1, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'gildan-zip-hoodie': {
     front: { x0: 27, y0: 28.9, x1: 73, y1: 58, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 28.5, boxWidthCm: 38.8, boxHeightCm: 28.5, garmentWidthCm: 52, garmentHeightCm: 60 },
@@ -229,8 +229,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   'neutral-classic-polo': {
     front: { x0: 28, y0: 24.1, x1: 73, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 35.3, boxHeightCm: 56.4, garmentWidthCm: 49, garmentHeightCm: 60 },
     back: { x0: 28, y0: 24.6, x1: 73, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 35.6, boxHeightCm: 56.4, garmentWidthCm: 49, garmentHeightCm: 60 },
-    sleeve_left: { x0: 14.7, y0: 9.3, x1: 85.5, y1: 90.7, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 25.8, boxHeightCm: 34.5, startXCm: 12.8, startYCm: 16.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
-    sleeve_right: { x0: 14.7, y0: 9.3, x1: 85.5, y1: 90.7, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 25.8, boxHeightCm: 34.5, startXCm: 13, startYCm: 16.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_left: { x0: 14.7, y0: 9.4, x1: 85.4, y1: 90.6, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 25.2, boxHeightCm: 33.7, startXCm: 12.5, startYCm: 16.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    sleeve_right: { x0: 14.7, y0: 9.4, x1: 85.4, y1: 90.6, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 25.2, boxHeightCm: 33.7, startXCm: 12.7, startYCm: 16.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'neutral-rollsleeve-t': {
     front: { x0: 28, y0: 16.7, x1: 73, y1: 86, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 31.9, boxHeightCm: 57.1, garmentWidthCm: 47, garmentHeightCm: 60 },
@@ -302,7 +302,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'bundc-inspire-e150-t-shirt': {
     front: { x0: 29.3, y0: 16.5, x1: 70.2, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.3, maxHeightCm: 47, boxWidthCm: 29.3, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
-    back: { x0: 30.4, y0: 16.5, x1: 69.5, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 28.1, maxHeightCm: 47, boxWidthCm: 28.1, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
+    back: { x0: 30.4, y0: 16.5, x1: 69.3, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 28, maxHeightCm: 47, boxWidthCm: 28, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
   },
   'bundc-t-shirt-e150': {
     front: { x0: 31.6, y0: 19.8, x1: 69.2, y1: 70.6, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 61 },
@@ -311,7 +311,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'bundc-inspire-e150-t-shirt-women': {
     front: { x0: 28, y0: 18.1, x1: 70.8, y1: 83.5, imgW: 620, imgH: 720, maxWidthCm: 26.5, maxHeightCm: 47, boxWidthCm: 26.5, boxHeightCm: 47, garmentWidthCm: 43, garmentHeightCm: 51 },
-    back: { x0: 28, y0: 18.1, x1: 70.8, y1: 83.5, imgW: 620, imgH: 720, maxWidthCm: 26.5, maxHeightCm: 47, boxWidthCm: 26.5, boxHeightCm: 47, garmentWidthCm: 43, garmentHeightCm: 51 },
+    back: { x0: 30, y0: 18.1, x1: 71.1, y1: 83.5, imgW: 620, imgH: 720, maxWidthCm: 25.5, maxHeightCm: 47, boxWidthCm: 25.5, boxHeightCm: 47, garmentWidthCm: 43, garmentHeightCm: 51 },
   },
   'bundc-t-shirt-e150-women': {
     front: { x0: 30, y0: 21, x1: 72.4, y1: 80.4, imgW: 620, imgH: 720, maxWidthCm: 28.8, maxHeightCm: 47, boxWidthCm: 28.8, boxHeightCm: 47, garmentWidthCm: 43, garmentHeightCm: 51 },
@@ -427,6 +427,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   'neutral-men-s-fit-t-shirt': {
     front: { x0: 29.3, y0: 16.7, x1: 71.6, y1: 73.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 60 },
     back: { x0: 29.7, y0: 16.7, x1: 70.4, y1: 73.8, imgW: 620, imgH: 720, maxWidthCm: 28.8, maxHeightCm: 47, boxWidthCm: 28.8, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 60 },
+    sleeve_left: { x0: 33.5, y0: 8.2, x1: 66.5, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 23.4, boxHeightCm: 68.9, startXCm: 11.9, startYCm: 12.4, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'neutral-unisex-performance-t-shirt': {
     front: { x0: 29.6, y0: 16.4, x1: 70.7, y1: 71.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 62 },
@@ -453,11 +454,13 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'stedman-classic-t-v-neck': {
     front: { x0: 28.8, y0: 16.7, x1: 71.1, y1: 73.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 60 },
-    back: { x0: 28.8, y0: 16.7, x1: 71.1, y1: 73.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 60 },
+    back: { x0: 27.5, y0: 16.7, x1: 69.9, y1: 73.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 60 },
+    sleeve_left: { x0: 27.7, y0: 8.2, x1: 71.5, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 31, boxHeightCm: 68.9, startXCm: 14.6, startYCm: 14.7, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'stedman-classic-t-v-neck-for-women': {
     front: { x0: 27.9, y0: 17.9, x1: 71.3, y1: 82.2, imgW: 620, imgH: 720, maxWidthCm: 27.3, maxHeightCm: 47, boxWidthCm: 27.3, boxHeightCm: 47, garmentWidthCm: 43, garmentHeightCm: 52 },
-    back: { x0: 27.9, y0: 17.9, x1: 71.3, y1: 82.2, imgW: 620, imgH: 720, maxWidthCm: 27.3, maxHeightCm: 47, boxWidthCm: 27.3, boxHeightCm: 47, garmentWidthCm: 43, garmentHeightCm: 52 },
+    back: { x0: 28.6, y0: 17.9, x1: 72.2, y1: 82.2, imgW: 620, imgH: 720, maxWidthCm: 27.4, maxHeightCm: 47, boxWidthCm: 27.4, boxHeightCm: 47, garmentWidthCm: 43, garmentHeightCm: 52 },
+    sleeve_left: { x0: 30.5, y0: 8.3, x1: 68.7, y1: 91.7, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 24.1, boxHeightCm: 60.9, startXCm: 11.9, startYCm: 10.5, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'stedman-comfort-t': {
     front: { x0: 28.8, y0: 16.7, x1: 71.1, y1: 73.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 60 },
@@ -469,27 +472,30 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'bundc-unisex-polo-id-001': {
     front: { x0: 32.5, y0: 25.9, x1: 67.4, y1: 73, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
-    back: { x0: 32.5, y0: 25.9, x1: 67.4, y1: 73, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
+    back: { x0: 31.3, y0: 23.2, x1: 68.3, y1: 73, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
   },
   'bundc-my-polo-180': {
     front: { x0: 31.5, y0: 25.6, x1: 68.1, y1: 74.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 59 },
-    back: { x0: 31.5, y0: 25.6, x1: 68.1, y1: 74.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 59 },
+    back: { x0: 31.1, y0: 25.7, x1: 69, y1: 76.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 59 },
+    sleeve_left: { x0: 35.3, y0: 8.2, x1: 64.7, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 20.5, boxHeightCm: 67.9, startXCm: 10.1, startYCm: 16, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'bundc-inspire-polo-men': {
     front: { x0: 33.5, y0: 26.2, x1: 67.5, y1: 72, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
-    back: { x0: 33.5, y0: 26.2, x1: 67.5, y1: 72, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
+    back: { x0: 33.1, y0: 27.2, x1: 67.1, y1: 73, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
   },
   'bundc-inspire-polo-women': {
     front: { x0: 31.9, y0: 24.2, x1: 68.4, y1: 73.3, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
-    back: { x0: 31.9, y0: 24.2, x1: 68.4, y1: 73.3, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
+    back: { x0: 32.3, y0: 24.5, x1: 68.6, y1: 73.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 63 },
   },
   'bundc-my-eco-polo-6535': {
     front: { x0: 35.2, y0: 26.4, x1: 67.4, y1: 73.8, imgW: 620, imgH: 720, maxWidthCm: 27.5, maxHeightCm: 47, boxWidthCm: 27.5, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 59 },
-    back: { x0: 35.2, y0: 26.4, x1: 67.4, y1: 73.8, imgW: 620, imgH: 720, maxWidthCm: 27.5, maxHeightCm: 47, boxWidthCm: 27.5, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 59 },
+    back: { x0: 31.2, y0: 26.2, x1: 68.9, y1: 77, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 59 },
+    sleeve_left: { x0: 35.1, y0: 8.2, x1: 64.7, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 20.7, boxHeightCm: 67.9, startXCm: 10.2, startYCm: 10.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'bundc-my-eco-polo-6535-women': {
     front: { x0: 30.1, y0: 27.4, x1: 69.7, y1: 80.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 53 },
-    back: { x0: 30.1, y0: 27.4, x1: 69.7, y1: 80.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 53 },
+    back: { x0: 28.3, y0: 24.7, x1: 70.9, y1: 82.2, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 53 },
+    sleeve_left: { x0: 31.7, y0: 8.3, x1: 67.5, y1: 91.7, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.8, boxHeightCm: 61.9, startXCm: 11.6, startYCm: 9.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'jamesnicholson-classic-polo': {
     front: { x0: 31, y0: 23.5, x1: 68.9, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 61 },
@@ -741,7 +747,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'neutral-men-s-long-sleeve-t-shirt': {
     front: { x0: 28.5, y0: 16.8, x1: 71.4, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
-    back: { x0: 28.2, y0: 16.8, x1: 71.1, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
+    back: { x0: 28.3, y0: 16.8, x1: 71.2, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
+    sleeve_left: { x0: 35.3, y0: 8.2, x1: 64.7, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 20.5, boxHeightCm: 67.9, startXCm: 11, startYCm: 10.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'sols-men-s-plain-fleece-jacket-norman': {
     front: { x0: 31.6, y0: 26.8, x1: 68.3, y1: 76.3, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 60 },

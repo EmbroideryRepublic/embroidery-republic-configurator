@@ -1,0 +1,507 @@
+[
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "camo-green",
+    "grund": "Auf der DesignPartner-Plattform (media2.designpartner.fr, Produkt 17577, Farb-ID 20095) existiert nur -1 (Front); -2/-3 liefern 404, auch als .webp/.png. Geprueft und jeweils nur Front-je-Farbe: bc-collection.eu (offizielle B&C-API /endpoints/de/product-detail/bc-my-polo-180-pu424 – alle Dateien mit Praefix F_, Varianten B_/Back_/D_/R_ unter /storage/v1/<id>/ = 404), groener-schulze.com (nur ein Bild je Farbe), cottonclassics.com (PS_-Farbbilder alle imagePerspective FR; BACK-Dateien sind LS-Lifestyle mit colorCode:null), allmyclothes.de (Item 16649), textilwaren24.eu, burger-print.com (BCPU424_CG554_01 – nur _01), toptex.com (PS_CGPU424_* nur Front, Farbe gar nicht gefuehrt), texstar.eu und falk-ross.eu (527_42_*_f-2023_01; _b-/_r-/_02 = 404), ralawise/workwearexpress (_ft, kein _bk), l-shop-team.de, wemaonline.de, spreeprint.de, deine-stickerei.de, lynka.eu, greenfieldselection.com, ibigraficuniformes.com."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "meta-turquoise",
+    "grund": "DesignPartner Farb-ID 20102: nur -1 vorhanden, -2/-3 = 404. Gleiche Quellenpruefung wie camo-green (bc-collection.eu offizielle API nur F_-Dateien, groener-schulze, cottonclassics, allmyclothes, textilwaren24, burger-print BCPU424_MT439_01, toptex, texstar, falk-ross, ralawise, l-shop-team, wemaonline, spreeprint, deine-stickerei, lynka, greenfieldselection) – nirgends ein Rueckenfoto dieser Farbe."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "apple-green",
+    "grund": "DesignPartner Farb-ID 16501: nur -1, -2/-3 = 404. Kein Rueckenfoto bei bc-collection.eu (nur F_PU424_..._apple_green.jpg), groener-schulze, cottonclassics (PS_..._apple-green_FRONT), allmyclothes, burger-print (BCPU424_AG515_01), textilwaren24, toptex, texstar, falk-ross, ralawise, l-shop-team, wemaonline, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "meta-orange",
+    "grund": "DesignPartner Farb-ID 20099: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu (F_ only), groener-schulze, cottonclassics, allmyclothes, burger-print (BCPU424_MO226_01), textilwaren24, toptex (Farbe nicht gefuehrt), texstar, falk-ross, ralawise, l-shop-team, wemaonline, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "pixel-lime",
+    "grund": "DesignPartner Farb-ID 10981: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu (F_PU424_..._pixel_lime.jpg), groener-schulze, cottonclassics (PS_..._pixel-lime_FRONT), allmyclothes, burger-print (BCPU424_PL986_01), textilwaren24, toptex, texstar, falk-ross, ralawise, l-shop-team, wemaonline, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "meta-lilac",
+    "grund": "DesignPartner Farb-ID 20101: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu, groener-schulze, cottonclassics, allmyclothes, burger-print (BCPU424_ML349_01), textilwaren24, toptex, texstar, falk-ross, ralawise, l-shop-team, wemaonline, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "meta-fuchsia",
+    "grund": "DesignPartner Farb-ID 20100: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu, groener-schulze, cottonclassics, allmyclothes, burger-print (BCPU424_MF312_01), textilwaren24, wemaonline (BCPU424_Meta-Fuchsia.webp = Front), toptex, texstar, falk-ross, ralawise, l-shop-team, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "meta-gold",
+    "grund": "DesignPartner Farb-ID 20103: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu, groener-schulze, cottonclassics, allmyclothes, burger-print (BCPU424_MG211_01), textilwaren24, wemaonline (BCPU424_Meta-Gold.webp = Front), toptex, texstar, falk-ross, ralawise, l-shop-team, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "lavender",
+    "grund": "DesignPartner Farb-ID 16512: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu (F_PU424_..._lavender.jpg), groener-schulze, cottonclassics (PS_..._lavender_FRONT), allmyclothes, wemaonline (BCPU424_Lavender.webp = Front), textilwaren24, burger-print, toptex, texstar, falk-ross, ralawise, l-shop-team, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "pure-orange",
+    "grund": "DesignPartner Farb-ID 16498: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu, groener-schulze, cottonclassics, allmyclothes, burger-print (BCPU424_PO233_01), textilwaren24, toptex, texstar, falk-ross, ralawise, l-shop-team, wemaonline, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "solar-yellow",
+    "grund": "DesignPartner Farb-ID 14355: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu, groener-schulze, cottonclassics, allmyclothes, burger-print (BCPU424_SY201_01), textilwaren24, toptex, texstar, falk-ross, ralawise, l-shop-team, wemaonline, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "lotus-pink",
+    "grund": "DesignPartner Farb-ID 20104: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu, groener-schulze, cottonclassics, allmyclothes, burger-print (BCPU424_LP313_01), textilwaren24, wemaonline (BCPU424_Lotus-Pink.webp = Front), toptex, texstar, falk-ross, ralawise, l-shop-team, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "bundc-my-polo-180",
+    "colorId": "radiant-purple",
+    "grund": "DesignPartner Farb-ID 14361: nur -1, -2/-3 = 404. Keine Rueckansicht bei bc-collection.eu, groener-schulze, cottonclassics, allmyclothes, burger-print (BCPU424_RP351_01), textilwaren24, toptex, texstar, falk-ross, ralawise, l-shop-team, wemaonline, spreeprint, deine-stickerei, lynka."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "slate-grey-solid",
+    "grund": "Stedman-Code SLG. Front ST2100_SLG.jpg vorhanden, Rueckenfoto existiert nirgends. Geprueft: stedman.eu Produktseite (DOM-Galerie, nur Front + Model + Detailshots); Suffix-Probes _b/_B/_back/_bk/-b/_2/_rueck/_rear auf /public/images/products/2026/ST2100/ -> alle HTTP 400; Bildordner 2019-2025 (nur 2025 existiert, gleiche Namenslogik); Wayback-CDX-Vollindex stedman.eu + ftp.stedman.eu (116 Treffer zu *2100* – kein einziges Back-File, nur *_model, *_<COLOR>, PDFs, 360.zip); allmyclothes.de Item 12266; foildirect.de/.com; coozo.co.uk (Shopify products.json – Dateinamen explizit *_FRONT, kein *_BACK); printmymerch.co.uk; tomstshirtcabin.com (Shopify JSON); vivo-shop.com; shopschwiiz.ch (L-Shop-Team-Daten, LSHS185); lamaisonduteeshirt.com/designpartner.fr (nur Bildindex -1, -2/-3/-4 = 404); printunion.eu; lynka.eu; activeweargroup.com; l-shop-team CDN (liefert fuer jeden Pfad text/html-Fehlerseite); ralawise.com, pencarrie.com, cottonclassics.com, falk-ross.eu, textil-grosshandel.eu, texstar.eu, wordans.de -> ST2100 nicht im Sortiment/kein Treffer."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "black-opal",
+    "grund": "Stedman-Code BLO. Nur Front ST2100_BLO.jpg. Gleiche Quellenpruefung wie slate-grey-solid: stedman.eu (DOM), Suffix-Probes (_b/_back/_2/_rueck/_rear = HTTP 400), Wayback-CDX stedman.eu+ftp.stedman.eu, allmyclothes.de 12266, foildirect, coozo.co.uk (products.json nur *_FRONT), printmymerch, tomstshirtcabin, vivo-shop, shopschwiiz, lamaisonduteeshirt/designpartner, printunion, lynka, activeweargroup, l-shop-team-CDN, ralawise/pencarrie/cottonclassics/falk-ross/textil-grosshandel/texstar/wordans (kein Sortiment). Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "blue-midnight",
+    "grund": "Stedman-Code BLM. Nur Front ST2100_BLM.jpg. Identische Quellenliste geprueft (stedman.eu DOM + Suffix-Probes, Wayback-CDX, allmyclothes.de 12266, foildirect, coozo.co.uk products.json nur *_FRONT, printmymerch, tomstshirtcabin, vivo-shop, shopschwiiz, lamaisonduteeshirt/designpartner, printunion, lynka, activeweargroup, l-shop-team-CDN, ralawise/pencarrie/cottonclassics/falk-ross/textil-grosshandel/texstar/wordans). Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "bottle-green",
+    "grund": "Stedman-Code BOG. Nur Front ST2100_BOG.jpg. Identische Quellenliste geprueft (siehe slate-grey-solid). Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "bright-royal",
+    "grund": "Stedman-Code BRR. Nur Front ST2100_BRR.jpg. Identische Quellenliste geprueft (stedman.eu, Wayback-CDX, allmyclothes, foildirect, coozo, printmymerch, tomstshirtcabin, vivo-shop, shopschwiiz, lamaisonduteeshirt, printunion, lynka, activeweargroup, l-shop-team, ralawise/pencarrie/cottonclassics/falk-ross/textil-grosshandel/texstar/wordans). Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "grey-heather",
+    "grund": "Stedman-Code GYH. Nur Front ST2100_GYH.jpg. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "light-blue",
+    "grund": "Stedman-Code LBL – im aktuellen 2026-Sortiment auf stedman.eu gar nicht mehr gefuehrt. Front nur noch bei Haendlern (foildirect.de st2100-lbl.jpg, vivo-shop s185_light-blue_321, printmymerch/tomstshirtcabin ST2100_LBL.jpg, allmyclothes Stedman-ST2100-Light-Blue.jpg) – alle Front-Packshots aus dem Stedman-DAM, keiner mit Rueckansicht. Zusaetzlich geprueft: Wayback-CDX (ftp.stedman.eu/out/pictures-2021/zoom/ST2100_LBL.jpg = Front), coozo, shopschwiiz, lamaisonduteeshirt, printunion, lynka. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "navy-blue",
+    "grund": "Stedman-Code NAV. Nur Front ST2100_NAV.jpg. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "orange",
+    "grund": "Stedman-Code ORA. Nur Front ST2100_ORA.jpg. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "real-grey",
+    "grund": "Stedman-Code RGY. Nur Front ST2100_RGY.jpg. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "scarlet-red",
+    "grund": "Stedman-Code SRE. Nur Front ST2100_SRE.jpg. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "white",
+    "grund": "Stedman-Code WHI. Nur Front ST2100_WHI.jpg. Identische Quellenliste geprueft; auch coozo.co.uk fuehrt genau ST2100_W_FRONT.webp und kein Back-Pendant. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "yellow",
+    "grund": "Stedman-Code YEL – im 2026-Sortiment auf stedman.eu nicht mehr gefuehrt. Front nur bei Haendlern (foildirect.de st2100-yel.jpg, vivo-shop s185_yellow_600, printmymerch/tomstshirtcabin ST2100_YEL.jpg, allmyclothes Stedman-ST2100-Yellow.jpg, shopschwiiz) – ausschliesslich Stedman-Front-Packshots. Wayback-CDX (ftp.stedman.eu/out/pictures-2021/zoom/ST2100_YEL.jpg = Front). Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "kelly-green",
+    "grund": "Stedman-Code KEG. Nur Front ST2100_KEG.jpg. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "sunflower-yellow",
+    "grund": "Stedman-Code SUN. Nur Front ST2100_SUN.jpg (auch in Wayback nur out/pictures-2023|2024/standard/ST2100_SUN.jpg = Front). Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "marina-blue",
+    "grund": "Stedman-Code MAB. Nur Front ST2100_MAB.jpg. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "89163e",
+    "grund": "Entspricht der einzigen Bordeaux-Farbe des Artikels, Stedman-Code BOD (Swatch #781118, Front ST2100_BOD.jpg, bei allmyclothes Stedman-ST2100-Bordeaux.jpg). Auch dort existiert ausschliesslich ein Front-Packshot. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "dac9af",
+    "grund": "Entspricht der einzigen hellen Naturfarbe des Artikels, Stedman-Code NAT (Swatch #FAE6C8, Front ST2100_NAT.jpg, bei allmyclothes Stedman-ST2100-Natural.jpg). Auch dort existiert ausschliesslich ein Front-Packshot. Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "kiwi-green",
+    "grund": "Stedman-Code KIW (Neuheit 2026). Nur Front ST2100_KIW.jpg. Identische Quellenliste geprueft; als Neuheit bei Drittanbietern noch gar nicht gelistet. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "military-green",
+    "grund": "Stedman-Code MIL (Neuheit 2026). Nur Front ST2100_MIL.jpg (allmyclothes Stedman-ST2100-Military-Green.jpg = ebenfalls Front). Identische Quellenliste geprueft. Kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "colorId": "soft-grey",
+    "grund": "Stedman-Code SGY (Neuheit 2026). Nur Front ST2100_SGY.jpg. Identische Quellenliste geprueft; als Neuheit bei Drittanbietern kaum gelistet. Kein Rueckenfoto."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "anthracite",
+    "grund": "Kein Rueckenfoto auffindbar. Bei wordans.de existiert die Farbe (Anthrazit, model_specification 81073), aber im Varianten-JSON ist das Rueckbild-Feld leer und die Datei fehlt real: https://assets.wordans.de/files/model_specifications/2015/7/16/81073/81073_back_big.jpg -> 404 (ebenso _back_medium, _left_big, _right_big ueber img.netenders.com -> 404). Gegengeprueft ohne Rueckansicht: bc-collection.eu (offizielle B&C-Mediathek, Produkt-API/Meilisearch liefert je Farbe genau EIN Bild PUI10_P_BC_883_01.jpg = Front; Galerie pui10-bc-id001-01/02/03 sind Modell-/Detailaufnahmen von vorn), groener-schulze.com (bisherige Quelle, Produktseite bc-id001-polo-pui10: nur ein Bild pro Farbe), textile-direct.fr (nur ps_cgpui10_<farbe>.jpg = Front), allmyclothes.de Item 7429 (nur BC-BE-INSPIRED-PUI10-<Farbe>.jpg = Front, Zusatzbild -guqm ist ebenfalls Front), shop.ralawise.com BA306 (nur ba306_anthracite_ft2.jpg, _bk/_bk2/_back/_rear2 alle 404), texstar.eu 548_42 (nur *_f-2015_01 Front, _02 existiert nur als Detailaufnahme der Knopfleiste), lamaisonduteeshirt.com bzw. media2.designpartner.fr/c/p/717 (717-<id>-2.jpg 404), teeasy.com, wemaonline.de, cantana.com, shirtilux.de (pui10_anthrazit_1 404), basic-shirts.de, prosafety.com, lynka.eu, gocustom.com, 4dimension.be, epic-label.fr, wordans.co.uk/.fr (gleiche Bilddaten, ebenfalls ohne Rueckbild), web.archive.org CDX (keine Snapshots der Datei). shop.l-shop-team.de und coozo.com/gorillaworkwear.co.uk waren nicht auswertbar (Bot-Validierung / 429 / 403)."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "purple",
+    "grund": "Kein Rueckenfoto auffindbar. Bei wordans.de existiert die Farbe (Lila, model_specification 81100), Rueckbild-Feld im Varianten-JSON leer und Datei real nicht vorhanden: https://assets.wordans.de/files/model_specifications/2015/7/16/81100/81100_back_big.jpg -> 404 (auch _back_medium/_left_big/_right_big ueber img.netenders.com -> 404). Dieselben Quellen wie bei Anthracite geprueft und alle ohne Rueckansicht: bc-collection.eu (nur PUI10_P_BC_350_01.jpg = Front), groener-schulze.com, textile-direct.fr, allmyclothes.de (Item 7429), shop.ralawise.com (ba306_purple_ft2.jpg, kein _bk), texstar.eu, lamaisonduteeshirt.com / media2.designpartner.fr, teeasy.com, wemaonline.de, cantana.com, shirtilux.de (pui10_lila_1 / pui10_purple_1 404), basic-shirts.de, prosafety.com, lynka.eu, gocustom.com, 4dimension.be, epic-label.fr, wordans.co.uk/.fr, web.archive.org (keine Snapshots)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "dark-forest",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: groener-schulze.com (Produktseite bc-my-eco-polo-65-35-pu428 = nur 1 Bild/Farbe, keine 2. Galerieposition, Suffixe _back/_rueck/_2/_b alle 404); bc-collection.eu offizielle API /endpoints/en/product-detail/bc-my-eco-polo-6535-pu428 (nur F_PU428_..._dark_forest.jpg, kein B_-Pendant im DAM /storage/v1/); cottonclassics.com (colorPerspectiveImages fuer dark-forest nur FRONT); shop.ralawise.com BA265 (nur _ft); l-shop-team/textilwaren24 (Front/Back/Side nur fuer black); cantana.com (fuer diese Farbe nur 1 Bild von 2025/02, kein -Back); ausserdem geprueft: pencarrie, coozo, falk-ross, textil-grosshandel, rexlander, vivo-shop, toptex, freewear, workwearexpress, clothes2order, nawajo, grossiste-tee-shirts, lamaisonduteeshirt, tee-shirts-express, imbretex, 4dimension, th4/designpartner, kruedener."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "camo-green",
+    "grund": "Kein Rueckenfoto auffindbar. Gleiche Pruefkette wie dark-forest: groener-schulze (1 Bild/Farbe), bc-collection.eu DAM (nur F_PU428_..._camo_green.jpg, kein B_), cottonclassics (nur FRONT je Farbe), ralawise BA265 (_bk 404), l-shop-team (Back nur black), cantana.com WP-Media-API liefert fuer PU428 nur 20 Dateien, davon -Back/-Side nur fuer White/Black/Navy/Red/Mastic/Burgundy."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "royal-blue",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu hat nur F_PU428_My-Eco-Polo-65-35_royal_blue.jpg; groener-schulze nur Frontdatei; cottonclassics PS_..._royal-blue nur _FRONT; ralawise ba265_royalblue_ft (kein _bk); l-shop-team Back nur black; cantana kein Royal-Blue-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "dark-grey-solid",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu nur F_PU428_..._dark_grey.jpg; groener-schulze nur Front; cottonclassics PS_..._dark-grey nur _FRONT; ralawise ba265_darkgrey_ft ohne _bk; l-shop-team Back nur black; cantana kein Dark-Grey-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "roasted-coffee",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu nur F_PU428_..._roasted_coffee.jpg; groener-schulze nur Front; cottonclassics nur _FRONT; ralawise ba265_roastedcoffee_ft ohne _bk; textilwaren24 (L-Shop-Feed) fuehrt BCPU428_Roasted-Coffee.jpg nur als Front; cantana kein Roasted-Coffee-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "melon-orange",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu nur F_PU428_..._melon_orange.jpg; groener-schulze nur Front; cottonclassics nur _FRONT; ralawise ba265_melonorange_ft ohne _bk; l-shop-team Back nur black; cantana kein Melon-Orange-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "lotus-pink",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu nur F_PU428_..._lotus_pink.jpg; groener-schulze nur Front; cottonclassics nur _FRONT; ralawise ba265_lotuspink_ft ohne _bk; l-shop-team Back nur black; cantana kein Lotus-Pink-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "lotus-blue",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu nur F_PU428_..._lotus_blue.jpg; groener-schulze nur Front; cottonclassics nur _FRONT; ralawise ba265_lotusblue_ft ohne _bk; l-shop-team Back nur black; cantana kein Lotus-Blue-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "acid-lime",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu nur F_PU428_..._acid_lime.jpg; groener-schulze nur Front; cottonclassics nur _FRONT; ralawise ba265_acidlime_ft ohne _bk; l-shop-team Back nur black; cantana kein Acid-Lime-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "pacific-grey",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu nur F_PU428_..._pacific_grey.jpg; groener-schulze nur Front; cottonclassics nur _FRONT; ralawise ba265_pacificgrey_ft ohne _bk; l-shop-team Back nur black; cantana kein Pacific-Grey-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "pop-yellow",
+    "grund": "Kein Rueckenfoto auffindbar. bc-collection.eu nur F_PU428_..._pop_yellow.jpg; groener-schulze nur Front; cottonclassics nur _FRONT; ralawise ba265_popyellow_ft ohne _bk; l-shop-team Back nur black; cantana kein Pop-Yellow-Back."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "pop-tomato",
+    "grund": "Kein Packshot-Rueckenfoto (weisser Hintergrund) auffindbar - bc-collection.eu, groener-schulze, cottonclassics (PS_-Farbbilder nur _FRONT), ralawise, l-shop-team, cantana haben keins. ES EXISTIERT ABER ein echtes Rueckenfoto als Model-/Lifestyle-Aufnahme: https://www.cottonclassics.com/at/media/catalog/product/cache/e88603815787d90c369fd67a7173bb02/L/S/LS_01U428_bandc_my-eco-polo-65-35__BACK_98f7160d-19cb-4962-ab84-02db4cfb13ce_web.jpg (200, 59207 B, image/jpeg, eigene Datei, Caption 'Ruecken'). Farbe ist belegt, nicht geraten: B&C fuehrt die Frontaufnahme derselben Session unter dem sprechenden Dateinamen https://www.bc-collection.eu/storage/media/pu428-bc-myecopolo-65-35-poptomato.jpg - identisches Model, identisches Kleidungsstueck. Nicht in colors[] aufgenommen, weil es ein Model-Shot vor grauer Betonwand ist und damit nicht zum weissen Ghost-Packshot der Vorderansicht passt; bei Bedarf bewusst nachtragen."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "pop-turquoise",
+    "grund": "Kein Packshot-Rueckenfoto auffindbar (bc-collection.eu, groener-schulze, cottonclassics PS_-Farbbilder nur _FRONT, ralawise, l-shop-team, cantana). Kandidat vorhanden, aber nicht namentlich belegt: https://www.cottonclassics.com/at/media/catalog/product/cache/e88603815787d90c369fd67a7173bb02/L/S/LS_01U428_bandc_my-eco-polo-65-35__BACK_221b2907-5d02-4e2d-a4de-91a382a3f1ad_web.jpg (200, 59930 B, echte Rueckansicht, colorCode im Shop = null). Gemessener Stofffarbwert #22849C; im 20-Farben-Programm gibt es nur EIN Tuerkis (Pop Turquoise, offiziell #00b5c8), die Zuordnung waere also Ausschluss-Logik statt Beleg - deshalb bewusst nicht gesetzt."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "colorId": "pop-green",
+    "grund": "Kein Packshot-Rueckenfoto auffindbar (bc-collection.eu, groener-schulze, cottonclassics PS_-Farbbilder nur _FRONT, ralawise, l-shop-team, cantana). Kandidat vorhanden, aber nicht namentlich belegt: https://www.cottonclassics.com/at/media/catalog/product/cache/e88603815787d90c369fd67a7173bb02/L/S/LS_01U428_bandc_my-eco-polo-65-35__BACK_52d54b37-2669-4515-9263-cbf63bc4d75f_web.jpg (200, 64632 B, echte Rueckansicht, colorCode im Shop = null). Gemessener Stofffarbwert #02AB9F, naechstliegende Programmfarbe Pop Green (offiziell #33b889) - wieder Ausschluss-Logik statt Beleg, daher nicht gesetzt."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "dark-forest",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (offizielle B&C-Mediathek, API /endpoints/en/product-detail/bc-my-eco-polo-6535-women-pw465 -> je Farbe genau EIN Bild, Praefix F_ = Front; DAM-Scan /storage/<id>/B_PW465_My-Eco-Polo-65-35_women_*.jpg ueber IDs 21360-21520 ohne Treffer), groener-schulze.com (Farbwechsel ?clk=Farbe&Farbe=… -> pro Farbe nur 1 Bild), cottonclassics.com (Galerie-JSON: 20x PS_01W465_…_FRONT je Farbe, KEIN farbzugeordnetes BACK), Ralawise-Feed via clothes2order.com / teeone.co.uk / workwearexpress.com (nur *_ft2 bzw. *_FT), falk-ross.eu (nur 3 Farb-Fronten), cantana.com (Front/Side/Back nur fuer Red), allmyclothes.de (Artikel nicht gefuehrt), l-shop-team.de (Bot-Validierungsseite, nicht auslesbar)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "camo-green",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front je Farbe, DAM-Scan auf B_-Dateien ohne Treffer), groener-schulze.com (1 Bild je Farbe), cottonclassics.com (nur PS_…_FRONT je Farbe), Ralawise-Feed via clothes2order.com/teeone.co.uk/workwearexpress.com (nur *_ft/_FT), falk-ross.eu, cantana.com (Back nur Red), allmyclothes.de (nicht gefuehrt), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "white",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_PW465_…_white.jpg; /storage/<id>/B_PW465_…_white.jpg ueber IDs 21360-21520 durchprobiert, kein Treffer), groener-schulze.com (1 Bild je Farbe), cottonclassics.com (PS_…__white_FRONT, kein BACK), Ralawise via workwearexpress.com (B265F_White_FT.jpg, kein _BK), teeone.co.uk/clothes2order.com, falk-ross.eu, cantana.com (Back nur Red), allmyclothes.de (nicht gefuehrt), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "black",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__black_FRONT, kein BACK), Ralawise-Feed via teeone.co.uk (Shopify-JSON /products/b265f-blac.js liefert exakt 1 Bild: B265F_Black_FT.jpg) und workwearexpress.com (B265F_Black_FT.jpg), clothes2order.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "navy",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__navy_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_navy_ft2…jpg, kein _bk) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "royal-blue",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__royal-blue_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_royalblue_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "dark-grey-solid",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_PW465_…_dark_grey.jpg), groener-schulze.com, cottonclassics.com (PS_…__dark-grey_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_darkgrey_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "mastic",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__mastic_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_mastic_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "roasted-coffee",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__roasted-coffee_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_roastedcoffee_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "burgundy",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__burgundy_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_burgundy_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (nur Burgundy-Main = Front, Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "melon-orange",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__melon-orange_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_melonorange_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "lotus-pink",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__lotus-pink_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_lotuspink_ft / _ft2, kein _bk) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "lotus-blue",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__lotus-blue_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_lotusblue_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "acid-lime",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__acid-lime_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_acidlime_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "pacific-grey",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__pacific-grey_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_pacificgrey_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "pop-yellow",
+    "grund": "Kein VERIFIZIERBARES Rueckenfoto. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, Ralawise-Feed via clothes2order.com (b265f_popyellow_ft2…jpg, kein _bk) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre). Bei cottonclassics.com existiert genau EIN Rueckenbild (LS_01W465_bandc_my-eco-polo-65-35-women__BACK_f5a6dd63-…_web.jpg) – es zeigt zwar tatsaechlich die Rueckseite dieses Artikels in Gelb, ist aber ein Lifestyle-Modelfoto vor Betonwand OHNE Farbzuordnung (colorCode = null im Galerie-JSON). Die Farbe ist damit nicht belegt (Pop Yellow nur vermutet) und der Bildstil passt nicht zu den Freisteller-Fronten. Bewusst NICHT uebernommen."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "pop-tomato",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__pop-tomato_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_poptomato_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red). Wichtig: Der dort gefundene Back-Packshot ist nachweislich die Farbe Red (004) und darf NICHT fuer Pop Tomato verwendet werden."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "pop-turquoise",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__pop-turquoise_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_popturquoise_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "colorId": "pop-green",
+    "grund": "Kein Rueckenfoto auffindbar. Geprueft: bc-collection.eu (nur F_-Front), groener-schulze.com, cottonclassics.com (PS_…__pop-green_FRONT, kein BACK), Ralawise-Feed via clothes2order.com (b265f_popgreen_ft2…jpg) / teeone.co.uk / workwearexpress.com, falk-ross.eu, spworkwear.co.uk (bisherige Pop-Green-Quelle, nur Front), cantana.com (Back nur Red), l-shop-team.de (Bot-Sperre)."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "747679",
+    "grund": "Slate Grey (SLG). Kein Rueckenfoto auffindbar. Geprueft: stedman.eu Produktseite /en/classic-t-v-neck-women (DOM ausgelesen: pro Farbe exakt EIN Bild /public/images/products/2026/ST2700/ST2700_SLG.jpg, dazu nur ST2700_model.jpg; ueber die gesamte 2026-Kollektion existiert kein einziges Bild mit Back-Suffix); Stedman 360-View-Strecke /360-view/ST2700/images/01-12.jpg existiert nur in EINER Farbe (Bottle Green), farbspezifische Ordner (z.B. /360-view/ST2700_SLG/) liefern 404; Wayback-CDX ueber stedman.eu*ST2700* und stedman.eu/360-view* zeigt ebenfalls nur Front-/Model-Bilder; needen.co.uk + ntextil.co.uk + wordans.co.uk (Wordans-Plattform, Feldschema enthaelt img_back_big/img_back_medium - fuer alle 10 gelisteten Farben LEER); coozo.co.uk (Galerie durchgehend Dateiname *_FRONT-*, kein _BACK); activeweargroup.com (10 Bilder, alle Front); lamaisonduteeshirt.com/designpartner.fr (Schema 510-<farbe>-<view>, view 2 und 3 = 404); shop.snap-sportswear.com (Schema st2700<farbe><view>, view 02 = 404); texcompany.eu (nur 1 Produktbild); stitchunion.de; cottonclassics.com (fuehrt ST2700 nicht); pencarrie.com (Login noetig, Artikel nicht gelistet); ralawise.com (Artikel nicht gelistet); toptex.com, falk-ross.eu, myworkwear.co.uk, blankstyle.com, jiffyshirts.com, shirtspace.com (kein Treffer fuer ST2700); aulenbacher.de (keine Produktbilder); l-shop-team.de nur mit Bot-Validierung erreichbar - nicht umgangen."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "black-opal",
+    "grund": "Black Opal (BLO). Identische Pruefkette wie 747679: stedman.eu liefert nur ST2700_BLO.jpg (Front), abgeleitete Rueck-Muster (_B, _b, _back, _2, -b) alle 400/404; 360-View nur in Bottle Green; Wayback nur Front; Wordans-Netz (needen/ntextil/wordans) img_back leer; coozo _FRONT-only; activeweargroup, lamaisonduteeshirt/designpartner (view 2 = 404), snap-sportswear (view 02 = 404), texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops - alle ohne Rueckansicht."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "bright-royal",
+    "grund": "Bright Royal (BRR). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View, Wayback-CDX, needen/ntextil/wordans mit leerem img_back, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, blankstyle/jiffyshirts/shirtspace) - nirgends ein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "deep-berry",
+    "grund": "Deep Berry (DBY). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "grey-heather",
+    "grund": "Grey Heather (GYH). Sonderfall: Eine ECHTE Rueckansicht in Grey Heather existiert - aber nur als Datei 07.jpg INNERHALB des archivierten ZIP https://web.archive.org/web/20201231053451if_/https://www.stedman.eu/360-view/ST2700/images/360.zip (alte 360-Strecke von 2019, visuell geprueft: eindeutig Rueckseite, gleiches Modell). Es gibt dafuer KEINE direkt abrufbare Bild-URL: Wayback-CDX fuer stedman.eu/360-view/ST2700/images/* kennt nur die 360.zip, die Einzelframes sind nicht archiviert; live wurde die Strecke inzwischen durch die Bottle-Green-Version ersetzt (alle Stedman-Domains .nl/.be/.dk/.es/.fi/.gr/.ie/.lt/.lv/.pt/.ro/.si/.ba/.bg und ftp.stedman.eu liefern byte-identisch 80423 Bytes = Bottle Green). Zusaetzlich geprueft: alle unter 747679 genannten Haendler - keiner fuehrt eine Rueckansicht. Falls das ZIP-Bild lokal gespiegelt werden darf, waere Grey Heather nachtraeglich loesbar."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "kiwi-green",
+    "grund": "Kiwi Green (KIW). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "light-blue",
+    "grund": "Light Blue (LBL). Farbe ist im aktuellen Stedman-2026-Sortiment fuer ST2700 gar nicht mehr gelistet (Produktseite fuehrt 17 Farben, LBL nicht darunter); historisch nur Front unter /out/pictures-2021/zoom/ST2700_LBL.jpg (Wayback). coozo.co.uk fuehrt LB, aber ausschliesslich als ST2700_LB_FRONT-*.webp. Weiter geprueft: needen/ntextil/wordans (img_back leer), activeweargroup, designpartner (view2=404), snap-sportswear (view02=404), texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "navy-blue",
+    "grund": "Navy Blue (NAV). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "ocean-blue",
+    "grund": "Ocean Blue (OCB). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "scarlet-red",
+    "grund": "Scarlet Red (SRE). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "sweet-pink",
+    "grund": "Sweet Pink (SPK). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "white",
+    "grund": "White (WHI). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "yellow",
+    "grund": "Yellow (YEL). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "blue-midnight",
+    "grund": "Blue Midnight (BLM). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "orange",
+    "grund": "Orange (ORA). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "sunflower-yellow",
+    "grund": "Sunflower Yellow (SUN). Gleiche Quellenpruefung wie oben (stedman.eu DOM, Stedman-360-View nur Bottle Green, Wayback-CDX inkl. /out/pictures-2023|2024/standard/ST2700_SUN.jpg = nur Front, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "colorId": "1c9a2c",
+    "grund": "Kelly Green (KEG). Gleiche Quellenpruefung wie oben (stedman.eu DOM: nur ST2700_KEG.jpg Front, Stedman-360-View nur Bottle Green, Wayback-CDX, Wordans-Netz img_back leer, coozo _FRONT, activeweargroup, designpartner view2=404, snap-sportswear view02=404, texcompany, stitchunion, cottonclassics, pencarrie, ralawise, toptex, falk-ross, myworkwear, US-Shops) - kein Rueckenfoto."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "747679",
+    "grund": "Slate Grey (Solid). stedman.eu fuehrt fuer ST2300 nachweislich NUR EIN Bild je Farbe (Front): Produktseite /en/classic-t-v-neck listet exakt 16 Dateien ST2300_<CODE>.jpg in /public/images/products/2026/ (+2026-SM) - kein _b/_back/_2/_R-Suffix existiert (alle 400). Wayback-CDX ueber stedman.eu* (Filter ST2300) zeigt fuer 2013-2026 ausschliesslich Frontdateien; nur ST2300_model_b.jpg (Model-Ruecken, farbunabhaengig) existierte 2015. Geprueft ohne Ruecken-Treffer: l-shop-team S270 (Ruecken-Foto nur in Deep Berry, produktweit identisch), coozo.co.uk (Shopify products.js: 13 Bilder, alle *_FRONT), lamaisonduteeshirt.com (CDN media2.designpartner.fr /c/p/6188/6188-<farbe>-1 - Index -2/-3/-4 = 404), action-wear.com (Galerie nur st2300-01/-02, beides Front), ntextil.co.uk 430371 (nur *_big.jpg, _2/_back = 404), texcompany.eu, foildirect.com, tictex.com, vivo-shop.com, activeweargroup.com, allmyclothes.de, cottonclassics.com (Stedman nicht gelistet), falk-ross.eu (Suche liefert kein ST2300 ohne Login), textil-grosshandel.eu, rexlander.com, groener-schulze.de. Nicht im Sortiment: pencarrie.com, shop.ralawise.com, blankstyle.com, jiffyshirts.com, shirtspace.com, myworkwear.co.uk."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "black-opal",
+    "grund": "Black Opal. Gleiche Beweislage: stedman.eu hat nur ST2300_BLO.jpg (Front, 200/52382 B); _B, _back, _2, -b, _bk, _R, _A, _D, _F alle 400. Jahresordner 2021-2024 fuer diese Datei nicht vorhanden, 2025/2026 nur Front. Kein Haendler mit eigener BLO-Rueckansicht: l-shop-team S270 (Bildindex 2-5 bleibt bei jedem Farbwechsel identisch = nur Deep Berry), coozo.co.uk (ST2300_BLKOPAL_FRONT, kein BACK-Pendant), lamaisonduteeshirt/designpartner (nur -1), action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze, sportyfied. Wayback: keine BLO-Rueckdatei archiviert."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "blue-midnight",
+    "grund": "Blue Midnight. stedman.eu: nur ST2300_BLM.jpg (Front). Kein Ruecken-Suffix auffindbar (alle Varianten 400), Wayback-CDX kennt fuer BLM nur /out/pictures-2021/zoom/ST2300_BLM.jpg (Front). coozo: ST2300_MID_FRONT (nur Front). designpartner-CDN (lamaisonduteeshirt): 6188-<id>-1 vorhanden, -2 = 404. l-shop-team: Ruecken-Foto ist produktweit dasselbe (Deep Berry), nicht farbabhaengig. Zusaetzlich ergebnislos geprueft: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "bottle-green",
+    "grund": "Bottle Green. stedman.eu: nur ST2300_BOG.jpg (Front); kein _back/_b/_2 (400). Wayback: nur Frontvarianten 2021/2025/2026. coozo: ST2300_BOT_FRONT (Front). action-wear st2300-01_2.jpg ist zwar ein Bottle-Green-Modelbild, aber Vorderansicht (Halsausschnitt sichtbar) - keine Rueckseite. designpartner-CDN nur Index -1. l-shop-team liefert kein farbspezifisches Rueckenfoto. Weiter geprueft: ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "bright-royal",
+    "grund": "Bright Royal. stedman.eu: nur ST2300_BRR.jpg (Front) plus Detailaufnahmen (size_label, care_label_hem, taped_shoulder_to_shoulder) - das sind Label-Makros, keine Rueckansicht. Kein _back/_b/_2 (400). coozo: ST2300_BROY_FRONT. designpartner-CDN nur -1. l-shop-team: Ruecken nur in Deep Berry. Ebenfalls ohne Treffer: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze, Wayback."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "grey-heather",
+    "grund": "Grey Heather. stedman.eu: nur ST2300_GYH.jpg (Front); Wayback kennt zusaetzlich /out/pictures-2021/standard|zoom/ST2300_GYH.jpg - ebenfalls Front. Kein Ruecken-Suffix (400). coozo: ST2300_HG_FRONT. designpartner-CDN nur -1. l-shop-team: farbunabhaengiges Deep-Berry-Set. Weiter geprueft ohne Treffer: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "kiwi-green",
+    "grund": "Kiwi Green. stedman.eu: nur ST2300_KIW.jpg (Front); Wayback kennt KIW schon in /out/pictures-2014|2015/icon/ - alles Front. Kein _back/_b/_2 (400). coozo: ST2300_KIW_FRONT. designpartner-CDN nur -1. l-shop-team ohne farbspezifische Rueckansicht. Zusaetzlich geprueft: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "navy-blue",
+    "grund": "Navy Blue. stedman.eu: nur ST2300_NAV.jpg (Front, auch 2021er Wayback-Zoom nur Front). Kein Ruecken-Suffix (400). coozo: ST2300_NVY_FRONT. foildirect nutzt 1:1 die Stedman-Frontdatei (st2300-nav.jpg). designpartner-CDN nur -1. l-shop-team ohne farbspezifisches Rueckenbild. Weiter ergebnislos: action-wear, ntextil, texcompany, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "ocean-blue",
+    "grund": "Ocean Blue. stedman.eu: nur ST2300_OCB.jpg (Front); Wayback 2021-Zoom ebenfalls nur Front. Kein _back/_b/_2 (400). coozo: ST2300_OCB_FRONT. designpartner-CDN nur -1. l-shop-team: Rueckansicht ist produktweit Deep Berry, nicht OCB. Weiter geprueft: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "orange",
+    "grund": "Orange. stedman.eu: nur ST2300_ORA.jpg (Front). action-wear.com fuehrt zwar ein zweites Galeriebild (st2300-02_2.jpg, Orange), es ist aber eine Vorderansicht (V-Ausschnitt und Nackenetikett sichtbar) - als Rueckansicht unbrauchbar. coozo: ST2300_O_FRONT. designpartner-CDN nur -1. l-shop-team ohne farbspezifisches Rueckenbild. Kein Treffer bei ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze, Wayback."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "scarlet-red",
+    "grund": "Scarlet Red. stedman.eu: nur ST2300_SRE.jpg (Front, auch 2021er Wayback nur Front). Kein Ruecken-Suffix (400). coozo: ST2300_SCA_FRONT. designpartner-CDN nur -1. l-shop-team ohne farbspezifische Rueckansicht. Weiter ergebnislos geprueft: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "white",
+    "grund": "White. stedman.eu: nur ST2300_WHI.jpg (Front, 2021er Wayback-Zoom ebenfalls Front). Kein _back/_b/_2 (400). coozo: ST2300_W_FRONT. designpartner-CDN nur -1. l-shop-team: beim Farbwechsel auf White aendert sich ausschliesslich Bildindex 1 (Stedman-Front, ID 592591); Index 2-5 (Front/Ruecken/Seite) bleiben das Deep-Berry-Set. Weiter geprueft: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "yellow",
+    "grund": "Yellow. stedman.eu: nur ST2300_YEL.jpg (Front, auch 2021er Wayback nur Front). Kein Ruecken-Suffix (400). coozo: ST2300_Y_FRONT. designpartner-CDN nur -1. l-shop-team ohne farbspezifisches Rueckenbild. Ebenfalls ohne Treffer: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "sunflower-yellow",
+    "grund": "Sunflower Yellow. stedman.eu: nur ST2300_SUN.jpg (Front); Wayback kennt zusaetzlich /out/pictures-2023/standard/ST2300_SUN.jpg - ebenfalls Front. Kein _back/_b/_2 (400). Bei coozo gar nicht gelistet (nur 13 der 16 Farben). designpartner-CDN nur -1. l-shop-team ohne farbspezifische Rueckansicht. Weiter geprueft: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze."
+  },
+  {
+    "productId": "stedman-classic-t-v-neck",
+    "colorId": "1c9a2c",
+    "grund": "Kelly Green (Stedman-Code KEG). stedman.eu: nur ST2300_KEG.jpg (Front, erst ab 2026er Ordner vorhanden); kein _back/_b/_2 (400). Bei coozo nicht gelistet. designpartner-CDN nur -1. l-shop-team fuehrt Kelly Green als Farbe, liefert aber dasselbe farbunabhaengige Deep-Berry-Bildset. Weiter ergebnislos geprueft: action-wear, ntextil, texcompany, foildirect, tictex, vivo-shop, activeweargroup, allmyclothes, falk-ross, textil-grosshandel, cottonclassics, rexlander, groener-schulze, Wayback-CDX."
+  }
+]

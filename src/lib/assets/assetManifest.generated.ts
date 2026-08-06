@@ -3577,133 +3577,133 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-navy-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-navy-blue/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-white/back.webp"
       },
       "status": "real"
     },
     "off-white": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-off-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-off-white/back.webp"
       },
       "status": "real"
     },
     "mocha": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-mocha/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-mocha/back.webp"
       },
       "status": "real"
     },
     "yellow-fizz": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-yellow-fizz/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-yellow-fizz/back.webp"
       },
       "status": "real"
     },
     "pure-orange": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-pure-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-pure-orange/back.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-red/back.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-burgundy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-burgundy/back.webp"
       },
       "status": "real"
     },
     "soft-rose": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-soft-rose/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-soft-rose/back.webp"
       },
       "status": "real"
     },
     "magenta-pink": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-magenta-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-magenta-pink/back.webp"
       },
       "status": "real"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-radiant-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-radiant-purple/back.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-royal-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-royal-blue/back.webp"
       },
       "status": "real"
     },
     "blue-fog": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-blue-fog/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-blue-fog/back.webp"
       },
       "status": "real"
     },
     "sage": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-sage/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-sage/back.webp"
       },
       "status": "real"
     },
     "lime": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-lime/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-lime/back.webp"
       },
       "status": "real"
     },
     "apple-green": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-apple-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-apple-green/back.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-forest-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-forest-green/back.webp"
       },
       "status": "real"
     },
     "asphalt": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-asphalt/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-asphalt/back.webp"
       },
       "status": "real"
     },
     "black-pure": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-black-pure/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-black-pure/back.webp"
       },
       "status": "real"
     },
@@ -3717,7 +3717,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-navy/back.webp"
       },
       "status": "real"
     }
@@ -4055,147 +4055,147 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-navy-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-navy-blue/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-white/back.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-red/back.webp"
       },
       "status": "real"
     },
     "off-white": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-off-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-off-white/back.webp"
       },
       "status": "real"
     },
     "mocha": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-mocha/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-mocha/back.webp"
       },
       "status": "real"
     },
     "yellow-fizz": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-yellow-fizz/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-yellow-fizz/back.webp"
       },
       "status": "real"
     },
     "pure-orange": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-pure-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-pure-orange/back.webp"
       },
       "status": "real"
     },
     "soft-rose": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-soft-rose/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-soft-rose/back.webp"
       },
       "status": "real"
     },
     "magenta-pink": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-magenta-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-magenta-pink/back.webp"
       },
       "status": "real"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-radiant-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-radiant-purple/back.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-burgundy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-burgundy/back.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-royal-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-royal-blue/back.webp"
       },
       "status": "real"
     },
     "blue-fog": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-blue-fog/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-blue-fog/back.webp"
       },
       "status": "real"
     },
     "sage": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-sage/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-sage/back.webp"
       },
       "status": "real"
     },
     "apple-green": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-apple-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-apple-green/back.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-heather-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-heather-grey/back.webp"
       },
       "status": "real"
     },
     "asphalt": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-asphalt/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-asphalt/back.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-forest-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-forest-green/back.webp"
       },
       "status": "real"
     },
     "black-pure": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-black-pure/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-black-pure/back.webp"
       },
       "status": "real"
     },
     "lime": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-lime/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-lime/back.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-e150-t-shirt-women-navy/back.webp"
       },
       "status": "real"
     }
@@ -7764,35 +7764,40 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "teal": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-teal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-teal/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-teal/sleeve-left.webp"
       },
       "status": "real"
     },
     "dusty-purple": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-dusty-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-dusty-purple/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-dusty-purple/sleeve-left.webp"
       },
       "status": "real"
     },
     "dusty-yellow": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-dusty-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-dusty-yellow/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-dusty-yellow/sleeve-left.webp"
       },
       "status": "real"
     },
     "okay-orange": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-okay-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-okay-orange/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-okay-orange/sleeve-left.webp"
       },
       "status": "real"
     },
     "brown": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-brown/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-brown/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-brown/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7806,21 +7811,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-dusty-indigo/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-dusty-indigo/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-dusty-indigo/sleeve-left.webp"
       },
       "status": "real"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-dusty-mint/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-dusty-mint/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-dusty-mint/sleeve-left.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-light-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-light-pink/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-light-pink/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7841,7 +7849,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-sports-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-sports-grey/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-sports-grey/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7855,14 +7864,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-grey": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-ash-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-ash-grey/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-ash-grey/sleeve-left.webp"
       },
       "status": "real"
     },
     "dark-heather": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-dark-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-dark-heather/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-dark-heather/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7876,49 +7887,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bordeaux": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-bordeaux/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-bordeaux/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-bordeaux/sleeve-left.webp"
       },
       "status": "real"
     },
     "green": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-green/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-green/sleeve-left.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-light-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-light-blue/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-light-blue/sleeve-left.webp"
       },
       "status": "real"
     },
     "military": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-military/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-military/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-military/sleeve-left.webp"
       },
       "status": "real"
     },
     "natural": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-natural/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-natural/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-natural/sleeve-left.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-orange/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-orange/sleeve-left.webp"
       },
       "status": "real"
     },
     "pink": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-pink/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-pink/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7932,42 +7950,48 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sapphire": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-sapphire/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-sapphire/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-sapphire/sleeve-left.webp"
       },
       "status": "real"
     },
     "yellow": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-yellow/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-yellow/sleeve-left.webp"
       },
       "status": "real"
     },
     "lime": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-lime/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-lime/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-lime/sleeve-left.webp"
       },
       "status": "real"
     },
     "purple": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-purple/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-purple/sleeve-left.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-sand/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-sand/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-sand/sleeve-left.webp"
       },
       "status": "real"
     },
     "white-navy-striped": {
       "views": {
         "front": "/products/neutral-men-s-fit-t-shirt-white-navy-striped/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-fit-t-shirt-white-navy-striped/back.webp",
+        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-white-navy-striped/sleeve-left.webp"
       },
       "status": "real"
     }
@@ -9089,7 +9113,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-berry": {
       "views": {
         "front": "/products/stedman-classic-t-v-neck-deep-berry/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-classic-t-v-neck-deep-berry/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-v-neck-deep-berry/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -9266,7 +9291,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/stedman-classic-t-v-neck-for-women-bottle-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-classic-t-v-neck-for-women-bottle-green/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-v-neck-for-women-bottle-green/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -9545,84 +9571,84 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "atoll": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-atoll/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-atoll/back.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-black/back.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-bottle-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-bottle-green/back.webp"
       },
       "status": "real"
     },
     "brown": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-brown/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-brown/back.webp"
       },
       "status": "real"
     },
     "chili-gold": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-chili-gold/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-chili-gold/back.webp"
       },
       "status": "real"
     },
     "fuchsia": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-fuchsia/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-fuchsia/back.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-heather-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-heather-grey/back.webp"
       },
       "status": "real"
     },
     "009149": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-009149/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-009149/back.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-light-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-light-blue/back.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-navy/back.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-orange/back.webp"
       },
       "status": "real"
     },
     "pixel-coral": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-pixel-coral/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-pixel-coral/back.webp"
       },
       "status": "real"
     },
@@ -9636,42 +9662,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "real-green": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-real-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-real-green/back.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-red/back.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-royal-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-royal-blue/back.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-sand/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-sand/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-white/back.webp"
       },
       "status": "real"
     },
     "wine": {
       "views": {
         "front": "/products/bundc-unisex-polo-id-001-wine/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-unisex-polo-id-001-wine/back.webp"
       },
       "status": "real"
     }
@@ -9680,7 +9706,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-forest": {
       "views": {
         "front": "/products/bundc-my-polo-180-dark-forest/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-dark-forest/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-dark-forest/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -9694,91 +9721,104 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/bundc-my-polo-180-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-black/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/bundc-my-polo-180-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-navy/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-navy/sleeve-left.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-my-polo-180-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-white/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-white/sleeve-left.webp"
       },
       "status": "real"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/bundc-my-polo-180-dark-grey-solid/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-dark-grey-solid/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-dark-grey-solid/sleeve-left.webp"
       },
       "status": "real"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/bundc-my-polo-180-sport-grey-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-sport-grey-heather/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-sport-grey-heather/sleeve-left.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/bundc-my-polo-180-royal-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-royal-blue/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-royal-blue/sleeve-left.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/bundc-my-polo-180-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-red/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-red/sleeve-left.webp"
       },
       "status": "real"
     },
     "off-white": {
       "views": {
         "front": "/products/bundc-my-polo-180-off-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-off-white/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-off-white/sleeve-left.webp"
       },
       "status": "real"
     },
     "mastic": {
       "views": {
         "front": "/products/bundc-my-polo-180-mastic/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-mastic/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-mastic/sleeve-left.webp"
       },
       "status": "real"
     },
     "roasted-coffee": {
       "views": {
         "front": "/products/bundc-my-polo-180-roasted-coffee/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-roasted-coffee/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-roasted-coffee/sleeve-left.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/bundc-my-polo-180-burgundy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-burgundy/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-burgundy/sleeve-left.webp"
       },
       "status": "real"
     },
     "ivy-green": {
       "views": {
         "front": "/products/bundc-my-polo-180-ivy-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-ivy-green/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-ivy-green/sleeve-left.webp"
       },
       "status": "real"
     },
     "navy-pure": {
       "views": {
         "front": "/products/bundc-my-polo-180-navy-pure/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-navy-pure/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-navy-pure/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -9834,21 +9874,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "blush-blue": {
       "views": {
         "front": "/products/bundc-my-polo-180-blush-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-blush-blue/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-blush-blue/sleeve-left.webp"
       },
       "status": "real"
     },
     "blush-pink": {
       "views": {
         "front": "/products/bundc-my-polo-180-blush-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-blush-pink/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-blush-pink/sleeve-left.webp"
       },
       "status": "real"
     },
     "blush-mint": {
       "views": {
         "front": "/products/bundc-my-polo-180-blush-mint/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-polo-180-blush-mint/back.webp",
+        "sleeve_left": "/products/bundc-my-polo-180-blush-mint/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -9892,140 +9935,140 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-navy": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-urban-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-urban-navy/back.webp"
       },
       "status": "real"
     },
     "cobalt-blue": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-cobalt-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-cobalt-blue/back.webp"
       },
       "status": "real"
     },
     "urban-khaki": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-urban-khaki/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-urban-khaki/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-white/back.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-heather-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-heather-grey/back.webp"
       },
       "status": "real"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-dark-grey-solid/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-dark-grey-solid/back.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-black/back.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-orange/back.webp"
       },
       "status": "real"
     },
     "fire-red": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-fire-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-fire-red/back.webp"
       },
       "status": "real"
     },
     "sorbet": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-sorbet/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-sorbet/back.webp"
       },
       "status": "real"
     },
     "very-turquoise": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-very-turquoise/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-very-turquoise/back.webp"
       },
       "status": "real"
     },
     "sky-blue": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-sky-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-sky-blue/back.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-bottle-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-bottle-green/back.webp"
       },
       "status": "real"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-solar-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-solar-yellow/back.webp"
       },
       "status": "real"
     },
     "urban-orange": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-urban-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-urban-orange/back.webp"
       },
       "status": "real"
     },
     "orchid-pink": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-orchid-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-orchid-pink/back.webp"
       },
       "status": "real"
     },
     "orchid-green": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-orchid-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-orchid-green/back.webp"
       },
       "status": "real"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-radiant-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-radiant-purple/back.webp"
       },
       "status": "real"
     },
     "millennial-lilac": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-millennial-lilac/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-millennial-lilac/back.webp"
       },
       "status": "real"
     },
     "millennial-mint": {
       "views": {
         "front": "/products/bundc-inspire-polo-men-millennial-mint/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-men-millennial-mint/back.webp"
       },
       "status": "real"
     }
@@ -10034,140 +10077,140 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "urban-navy": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-urban-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-urban-navy/back.webp"
       },
       "status": "real"
     },
     "cobalt-blue": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-cobalt-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-cobalt-blue/back.webp"
       },
       "status": "real"
     },
     "urban-khaki": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-urban-khaki/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-urban-khaki/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-white/back.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-heather-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-heather-grey/back.webp"
       },
       "status": "real"
     },
     "dark-grey-solid": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-dark-grey-solid/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-dark-grey-solid/back.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-black/back.webp"
       },
       "status": "real"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-solar-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-solar-yellow/back.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-orange/back.webp"
       },
       "status": "real"
     },
     "urban-orange": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-urban-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-urban-orange/back.webp"
       },
       "status": "real"
     },
     "fire-red": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-fire-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-fire-red/back.webp"
       },
       "status": "real"
     },
     "sorbet": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-sorbet/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-sorbet/back.webp"
       },
       "status": "real"
     },
     "orchid-pink": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-orchid-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-orchid-pink/back.webp"
       },
       "status": "real"
     },
     "very-turquoise": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-very-turquoise/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-very-turquoise/back.webp"
       },
       "status": "real"
     },
     "sky-blue": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-sky-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-sky-blue/back.webp"
       },
       "status": "real"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-radiant-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-radiant-purple/back.webp"
       },
       "status": "real"
     },
     "orchid-green": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-orchid-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-orchid-green/back.webp"
       },
       "status": "real"
     },
     "millennial-mint": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-millennial-mint/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-millennial-mint/back.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-bottle-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-bottle-green/back.webp"
       },
       "status": "real"
     },
     "millennial-lilac": {
       "views": {
         "front": "/products/bundc-inspire-polo-women-millennial-lilac/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-inspire-polo-women-millennial-lilac/back.webp"
       },
       "status": "real"
     }
@@ -10190,21 +10233,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-white/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-white/sleeve-left.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-black/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-navy/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-navy/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -10218,7 +10264,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-red/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-red/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -10232,7 +10279,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "mastic": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-mastic/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-mastic/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-mastic/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -10246,7 +10294,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-burgundy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-burgundy/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-burgundy/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -10360,7 +10409,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-red/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-red/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -16174,28 +16224,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-indigo/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-indigo/back.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-orange/back.webp"
       },
       "status": "real"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-mint/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-mint/back.webp"
       },
       "status": "real"
     },
     "lime": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-lime/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-lime/back.webp"
       },
       "status": "real"
     },
@@ -16209,28 +16259,28 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "teal": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-teal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-teal/back.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-light-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-light-blue/back.webp"
       },
       "status": "real"
     },
     "pink": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-pink/back.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-light-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-light-pink/back.webp"
       },
       "status": "real"
     },
@@ -16244,14 +16294,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bordeaux": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-bordeaux/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-bordeaux/back.webp"
       },
       "status": "real"
     },
     "military": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-military/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-military/back.webp"
       },
       "status": "real"
     },
@@ -16272,7 +16322,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-sports-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-sports-grey/back.webp"
       },
       "status": "real"
     },
@@ -16286,35 +16336,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-dark-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dark-heather/back.webp"
       },
       "status": "real"
     },
     "white-navy-striped": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-white-navy-striped/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-white-navy-striped/back.webp"
       },
       "status": "real"
     },
     "yellow": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-yellow/back.webp"
       },
       "status": "real"
     },
     "sapphire": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-sapphire/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-sapphire/back.webp"
       },
       "status": "real"
     },
     "green": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-green/back.webp"
       },
       "status": "real"
     },
@@ -16802,28 +16852,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-dusty-indigo/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-dusty-indigo/back.webp",
+        "sleeve_left": "/products/neutral-men-s-long-sleeve-t-shirt-dusty-indigo/sleeve-left.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-orange/back.webp",
+        "sleeve_left": "/products/neutral-men-s-long-sleeve-t-shirt-orange/sleeve-left.webp"
       },
       "status": "real"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-dusty-mint/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-dusty-mint/back.webp"
       },
       "status": "real"
     },
     "lime": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-lime/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-lime/back.webp",
+        "sleeve_left": "/products/neutral-men-s-long-sleeve-t-shirt-lime/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -16844,7 +16897,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sports-grey": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-sports-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-sports-grey/back.webp"
       },
       "status": "real"
     },
@@ -16865,49 +16918,52 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "teal": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-teal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-teal/back.webp",
+        "sleeve_left": "/products/neutral-men-s-long-sleeve-t-shirt-teal/sleeve-left.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-light-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-light-blue/back.webp"
       },
       "status": "real"
     },
     "pink": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-pink/back.webp",
+        "sleeve_left": "/products/neutral-men-s-long-sleeve-t-shirt-pink/sleeve-left.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-light-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-light-pink/back.webp",
+        "sleeve_left": "/products/neutral-men-s-long-sleeve-t-shirt-light-pink/sleeve-left.webp"
       },
       "status": "real"
     },
     "b8b8b8": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-b8b8b8/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-b8b8b8/back.webp"
       },
       "status": "real"
     },
     "bordeaux": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-bordeaux/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-bordeaux/back.webp"
       },
       "status": "real"
     },
     "military": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-military/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-military/back.webp"
       },
       "status": "real"
     },
@@ -16921,35 +16977,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-heather": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-dark-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-dark-heather/back.webp"
       },
       "status": "real"
     },
     "white-navy-striped": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-white-navy-striped/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-white-navy-striped/back.webp"
       },
       "status": "real"
     },
     "yellow": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-yellow/back.webp"
       },
       "status": "real"
     },
     "sapphire": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-sapphire/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-sapphire/back.webp"
       },
       "status": "real"
     },
     "green": {
       "views": {
         "front": "/products/neutral-men-s-long-sleeve-t-shirt-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-men-s-long-sleeve-t-shirt-green/back.webp"
       },
       "status": "real"
     },

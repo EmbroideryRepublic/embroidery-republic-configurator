@@ -8,12 +8,44 @@
  * nur Formatwandel und zwei Plausibilitätsprüfungen (Farb-ID gehört zum
  * Produkt, front vorhanden), damit ein Ausreißer nicht still durchrutscht.
  *
- *   node scripts/wfErgebnisUebernehmen.mjs <workflow.output> <tag>
+ * `--ergaenzend`: Für Läufe, die nur EINE Ansicht nachliefern (Rückseite,
+ * Ärmel). Solche Ergebnisse haben kein `front` – und ingestDirect LÖSCHT einen
+ * Zielordner, in dem es keine Vorderansicht findet. Die vorhandene Front-URL
+ * wird deshalb aus dem letzten Importjob derselben Farbe ergänzt; Farben ohne
+ * bekannte Front-URL werden ausgelassen, statt ihren Ordner zu gefährden.
+ *
+ *   node scripts/wfErgebnisUebernehmen.mjs <workflow.output> <tag> [--ergaenzend]
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
+import { join } from 'node:path';
 
 const [, , quelle, tag] = process.argv;
 if (!quelle || !tag) throw new Error('Aufruf: node scripts/wfErgebnisUebernehmen.mjs <output-datei> <tag>');
+const ergaenzend = process.argv.includes('--ergaenzend');
+
+/** productId → colorId → zuletzt verwendete Front-URL. */
+const fronts = new Map();
+if (ergaenzend) {
+  const dir = join('scripts', 'import');
+  const dateien = readdirSync(dir)
+    .filter((f) => f.startsWith('directJobs') && f.endsWith('.json'))
+    .map((f) => ({ f, zeit: statSync(join(dir, f)).mtimeMs }))
+    .sort((a, b) => a.zeit - b.zeit);
+  for (const { f } of dateien) {
+    let jobs;
+    try {
+      jobs = JSON.parse(readFileSync(join(dir, f), 'utf8'));
+    } catch {
+      continue;
+    }
+    for (const j of Array.isArray(jobs) ? jobs : []) {
+      if (!j.productId) continue;
+      let proFarbe = fronts.get(j.productId);
+      if (!proFarbe) fronts.set(j.productId, (proFarbe = new Map()));
+      for (const c of j.colors ?? []) if (c?.id && c?.front) proFarbe.set(c.id, c.front);
+    }
+  }
+}
 
 // Die Ausgabedatei ist {summary, agentCount, logs, result: [...]}; interessant
 // ist nur `result`. Ältere Läufe legten das Array direkt ab – beides lesen.
@@ -25,9 +57,22 @@ const jobs = [];
 const offen = [];
 let farben = 0;
 
+let ohneFront = 0;
+
 for (const e of ergebnisse) {
   if (!e?.productId) continue;
-  const colors = (e.colors ?? []).filter((c) => c?.id && c?.front);
+  const roh = ergaenzend
+    ? (e.colors ?? []).map((c) => {
+        if (!c?.id || c.front) return c;
+        const front = fronts.get(e.productId)?.get(c.id);
+        if (!front) {
+          ohneFront++;
+          return null;
+        }
+        return { ...c, front };
+      })
+    : (e.colors ?? []);
+  const colors = roh.filter((c) => c?.id && c?.front);
   if (colors.length) {
     jobs.push({ productId: e.productId, quelle: e.quelle ?? '', colors });
     farben += colors.length;
@@ -42,5 +87,6 @@ const zielOffen = `scripts/import/nichtbeschaffbar_${tag}.json`;
 writeFileSync(zielJobs, JSON.stringify(jobs, null, 2));
 writeFileSync(zielOffen, JSON.stringify(offen, null, 2));
 console.log(`${jobs.length} Produkte · ${farben} Farben → ${zielJobs}`);
+if (ohneFront) console.log(`${ohneFront} Farben ausgelassen: keine bekannte Front-URL (Altbestand)`);
 console.log(`${offen.length} nicht beschaffbar → ${zielOffen}`);
 for (const o of offen) console.log(`  ${o.productId}/${o.colorId}: ${o.grund.slice(0, 90)}`);

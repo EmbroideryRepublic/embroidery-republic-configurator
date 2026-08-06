@@ -45,9 +45,9 @@ test('Druckflächen gibt es für jede ZEIGBARE Ansicht und nie für eine undekla
   // Kunden gezeigte Ansicht hat eine Fläche.
   for (const p of PRODUCTS) {
     const flaechen = Object.keys(PRINT_AREA_DATA[p.id] ?? {});
-    const deklariert = new Set(ansichtenVon(p));
+    const deklariert = new Set<string>(ansichtenVon(p));
     for (const v of flaechen) {
-      assert.ok(deklariert.has(v as (typeof p.views)[number]), `${p.id}: Fläche für undeklarierte Ansicht "${v}"`);
+      assert.ok(deklariert.has(v), `${p.id}: Fläche für undeklarierte Ansicht "${v}"`);
     }
     for (const c of p.colors) {
       for (const v of sichtbareAnsichten(p, c.id)) {

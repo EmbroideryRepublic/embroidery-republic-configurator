@@ -5,7 +5,13 @@
  * einer vorhandenen Farbe die Rückansicht. Der Auftrag ist damit ein anderer –
  * die Quelle trägt das Produkt bereits, sie liefert nur kein zweites Foto.
  *
- *   npx tsx --tsconfig tsconfig.scripts.json scripts/rueckansichtArgs.mts <ziel.json> [--max N] [--ab N] [--ohne id,id]
+ * Mit `--ansicht sleeve_left` dient dasselbe Skript der Ärmelbeschaffung: Die
+ * Frage ist dieselbe (Farbe vorhanden, EINE Ansicht fehlt), nur die Ansicht
+ * wechselt. Bei Ärmeln werden nur Produkte gelistet, bei denen die Quelle
+ * nachweislich schon Ärmelfotos liefert (mindestens eine Farbe hat eins) –
+ * sonst wäre der Auftrag eine Suche ins Blaue.
+ *
+ *   npx tsx --tsconfig tsconfig.scripts.json scripts/rueckansichtArgs.mts <ziel.json> [--max N] [--ab N] [--ohne id,id] [--ansicht back|sleeve_left|sleeve_right]
  */
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
@@ -34,22 +40,26 @@ const ohne = new Set(
   (process.argv[process.argv.indexOf('--ohne') + 1] ?? '').split(',').filter(Boolean)
 );
 
+const ansicht = process.argv[process.argv.indexOf('--ansicht') + 1] ?? 'back';
+const istRueck = ansicht === 'back';
+
 const items = [];
 for (const p of PRODUCTS) {
   if (ohne.has(p.id)) continue;
   const real = p.colors.filter((c) => ASSET_MANIFEST[p.id]?.[c.id]?.status === 'real');
-  const fehlt = real.filter((c) => {
-    const b = ASSET_MANIFEST[p.id]?.[c.id]?.views?.back;
-    return !b || b.includes('_platzhalter');
-  });
+  const hat = (id: string) => {
+    const b = ASSET_MANIFEST[p.id]?.[id]?.views?.[ansicht];
+    return Boolean(b) && !b!.includes('_platzhalter');
+  };
+  const fehlt = real.filter((c) => !hat(c.id));
   if (!fehlt.length) continue;
   const h = herkunft.get(p.id);
-  // Eine Farbe, die schon eine echte Rückansicht hat, ist der beste Beleg dafür,
-  // dass die Quelle überhaupt Rückenfotos führt – als Muster mitgeben.
-  const mitRueck = real.find((c) => {
-    const b = ASSET_MANIFEST[p.id]?.[c.id]?.views?.back;
-    return b && !b.includes('_platzhalter');
-  });
+  // Eine Farbe, die die Ansicht schon hat, ist der beste Beleg dafür, dass die
+  // Quelle sie überhaupt führt – als Muster mitgeben.
+  const mitRueck = real.find((c) => hat(c.id));
+  // Ärmel: ohne einen einzigen Beleg lohnt der Auftrag nicht (69 Produkte haben
+  // schlicht keine Ärmelaufnahmen). Rückseite dagegen immer versuchen.
+  if (!istRueck && !mitRueck) continue;
   items.push({
     id: p.id,
     marke: p.brand,

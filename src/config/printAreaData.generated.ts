@@ -303,6 +303,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   'bundc-inspire-e150-t-shirt': {
     front: { x0: 29.3, y0: 16.5, x1: 70.2, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.3, maxHeightCm: 47, boxWidthCm: 29.3, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
     back: { x0: 30.4, y0: 16.5, x1: 69.3, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 28, maxHeightCm: 47, boxWidthCm: 28, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
+    sleeve_left: { x0: 12.6, y0: 9.6, x1: 86.5, y1: 90.4, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 23.6, boxHeightCm: 29.9, startXCm: 11.7, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'bundc-t-shirt-e150': {
     front: { x0: 31.6, y0: 19.8, x1: 69.2, y1: 70.6, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 61 },
@@ -323,12 +324,12 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     back: { x0: 31.6, y0: 21.5, x1: 68.4, y1: 71.2, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 42, garmentHeightCm: 59 },
   },
   'bundc-inspire-v-t-men': {
-    front: { x0: 30.3, y0: 16.5, x1: 71.4, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.6, maxHeightCm: 47, boxWidthCm: 29.6, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 61 },
-    back: { x0: 30.3, y0: 16.5, x1: 71.4, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.6, maxHeightCm: 47, boxWidthCm: 29.6, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 61 },
+    front: { x0: 30.3, y0: 16.5, x1: 71.6, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.7, maxHeightCm: 47, boxWidthCm: 29.7, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 61 },
+    back: { x0: 30.3, y0: 16.5, x1: 71.6, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.7, maxHeightCm: 47, boxWidthCm: 29.7, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 61 },
   },
   'bundc-inspire-v-t-women': {
-    front: { x0: 28.8, y0: 17.4, x1: 73, y1: 78.8, imgW: 620, imgH: 720, maxWidthCm: 29.1, maxHeightCm: 47, boxWidthCm: 29.1, boxHeightCm: 47, garmentWidthCm: 44, garmentHeightCm: 55 },
-    back: { x0: 28.8, y0: 17.4, x1: 73, y1: 78.8, imgW: 620, imgH: 720, maxWidthCm: 29.1, maxHeightCm: 47, boxWidthCm: 29.1, boxHeightCm: 47, garmentWidthCm: 44, garmentHeightCm: 55 },
+    front: { x0: 28.9, y0: 17.4, x1: 73, y1: 78.8, imgW: 620, imgH: 720, maxWidthCm: 29, maxHeightCm: 47, boxWidthCm: 29, boxHeightCm: 47, garmentWidthCm: 44, garmentHeightCm: 55 },
+    back: { x0: 28.9, y0: 17.4, x1: 73, y1: 78.8, imgW: 620, imgH: 720, maxWidthCm: 29, maxHeightCm: 47, boxWidthCm: 29, boxHeightCm: 47, garmentWidthCm: 44, garmentHeightCm: 55 },
   },
   'bundc-inspire-t-men': {
     front: { x0: 29.3, y0: 16.5, x1: 70.8, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.8, maxHeightCm: 47, boxWidthCm: 29.8, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 61 },
@@ -336,7 +337,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'bundc-inspire-t-women': {
     front: { x0: 28.7, y0: 17, x1: 69.9, y1: 72.5, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
-    back: { x0: 28.9, y0: 16.5, x1: 70.3, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.7, maxHeightCm: 47, boxWidthCm: 29.7, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
+    back: { x0: 28.9, y0: 16.5, x1: 70.3, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 29.8, maxHeightCm: 47, boxWidthCm: 29.8, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
     sleeve_left: { x0: 31.6, y0: 8.1, x1: 68.9, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 26.9, boxHeightCm: 69.9, startXCm: 13, startYCm: 11.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'jamesnicholson-round-t-heavy': {
@@ -386,8 +387,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
   },
   'russell-classic-heavyweight-t-shirt': {
     front: { x0: 30.4, y0: 17.2, x1: 69.6, y1: 71.1, imgW: 620, imgH: 720, maxWidthCm: 29.5, maxHeightCm: 47, boxWidthCm: 29.5, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 62 },
-    back: { x0: 36.1, y0: 17.3, x1: 65.1, y1: 71.8, imgW: 620, imgH: 720, maxWidthCm: 21.6, maxHeightCm: 47, boxWidthCm: 21.6, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 62 },
-    sleeve_left: { x0: 36, y0: 9.8, x1: 63.3, y1: 90, imgW: 620, imgH: 720, maxWidthCm: 8.8, maxHeightCm: 10, boxWidthCm: 8.8, boxHeightCm: 29.9, startXCm: 4.5, startYCm: 15.3, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    back: { x0: 30.5, y0: 17.3, x1: 69.4, y1: 71.8, imgW: 620, imgH: 720, maxWidthCm: 28.9, maxHeightCm: 47, boxWidthCm: 28.9, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 62 },
+    sleeve_left: { x0: 34.3, y0: 8.1, x1: 65.1, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.5, boxHeightCm: 70.9, startXCm: 11.8, startYCm: 15.7, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'russell-mens-pure-organic-heavy-tee': {
     front: { x0: 31.1, y0: 18.1, x1: 69.9, y1: 70.5, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 62 },
@@ -407,7 +408,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     back: { x0: 32.3, y0: 20.6, x1: 67.5, y1: 68, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 63 },
   },
   'gildan-light-cotton-adult-t-shirt': {
-    front: { x0: 33, y0: 19.9, x1: 67.9, y1: 70.2, imgW: 620, imgH: 720, maxWidthCm: 28.2, maxHeightCm: 47, boxWidthCm: 28.2, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
+    front: { x0: 34, y0: 16.5, x1: 67.5, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 24.1, maxHeightCm: 47, boxWidthCm: 24.1, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
     back: { x0: 34.2, y0: 16.5, x1: 67.9, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 24.2, maxHeightCm: 47, boxWidthCm: 24.2, boxHeightCm: 47, garmentWidthCm: 49.5, garmentHeightCm: 61 },
     sleeve_left: { x0: 37.5, y0: 8.1, x1: 62.5, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 17.9, boxHeightCm: 69.9, startXCm: 8.8, startYCm: 11.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
@@ -430,7 +431,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     sleeve_left: { x0: 33.5, y0: 8.2, x1: 66.5, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 23.4, boxHeightCm: 68.9, startXCm: 11.9, startYCm: 12.4, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'neutral-unisex-performance-t-shirt': {
-    front: { x0: 29.6, y0: 16.4, x1: 70.7, y1: 71.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 62 },
+    front: { x0: 29.5, y0: 16.4, x1: 70.7, y1: 71.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 62 },
     back: { x0: 29.5, y0: 16.4, x1: 70.7, y1: 71.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 62 },
     sleeve_left: { x0: 34, y0: 8.1, x1: 65.9, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 23.3, boxHeightCm: 70.9, startXCm: 11.7, startYCm: 14.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
@@ -559,9 +560,9 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     sleeve_left: { x0: 33, y0: 8.3, x1: 67.3, y1: 91.7, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 22.3, boxHeightCm: 62.9, startXCm: 10.8, startYCm: 10, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'sols-men-s-polo-shirt-perfect': {
-    front: { x0: 40, y0: 29.1, x1: 62.3, y1: 71.5, imgW: 620, imgH: 720, maxWidthCm: 21.3, maxHeightCm: 47, boxWidthCm: 21.3, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 61 },
-    back: { x0: 32.7, y0: 28.1, x1: 65.5, y1: 72.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 61 },
-    sleeve_left: { x0: 35.4, y0: 8.1, x1: 63.8, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 20.4, boxHeightCm: 69.9, startXCm: 9.9, startYCm: 14, garmentWidthCm: 10.9, garmentHeightCm: 10 },
+    front: { x0: 35.1, y0: 29.3, x1: 61.3, y1: 71.5, imgW: 620, imgH: 720, maxWidthCm: 25.1, maxHeightCm: 47, boxWidthCm: 25.1, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 61 },
+    back: { x0: 32.6, y0: 27.9, x1: 65.5, y1: 72.5, imgW: 620, imgH: 720, maxWidthCm: 29.9, maxHeightCm: 47, boxWidthCm: 29.9, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 61 },
+    sleeve_left: { x0: 35.4, y0: 8.1, x1: 63.8, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 20.4, boxHeightCm: 69.9, startXCm: 9.8, startYCm: 13.6, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'sols-unisex-pulse-polo-shirt': {
     front: { x0: 30.6, y0: 23.4, x1: 68.6, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 48, garmentHeightCm: 61 },
@@ -575,8 +576,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     sleeve_right: { x0: 31.6, y0: 8.2, x1: 68.6, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 26.2, boxHeightCm: 68.9, startXCm: 12.4, startYCm: 11.1, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'gildan-softstyle-midweight-sweat-adult-hoodie': {
-    front: { x0: 33.1, y0: 27.6, x1: 66.2, y1: 77.3, imgW: 620, imgH: 720, maxWidthCm: 26.9, maxHeightCm: 47, boxWidthCm: 26.9, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
-    back: { x0: 31.7, y0: 28.3, x1: 68.2, y1: 77.5, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
+    front: { x0: 34.9, y0: 38.6, x1: 59.7, y1: 80, imgW: 620, imgH: 720, maxWidthCm: 24.3, maxHeightCm: 47, boxWidthCm: 24.3, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
+    back: { x0: 37.3, y0: 28.3, x1: 64.1, y1: 77.5, imgW: 620, imgH: 720, maxWidthCm: 22, maxHeightCm: 47, boxWidthCm: 22, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
     sleeve_left: { x0: 35.6, y0: 8.2, x1: 63.7, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 19.6, boxHeightCm: 67.9, startXCm: 10, startYCm: 10.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'gildan-hammer-maxweight-adult-hooded-sweatshirt': {
@@ -645,11 +646,11 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     back: { x0: 35.2, y0: 33.4, x1: 64.8, y1: 73.3, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 50, garmentHeightCm: 55 },
   },
   'bundc-hoodie': {
-    front: { x0: 32, y0: 30, x1: 67.9, y1: 78.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 58 },
-    back: { x0: 32, y0: 30, x1: 67.9, y1: 78.4, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 58 },
+    front: { x0: 31.2, y0: 27.6, x1: 68.7, y1: 78.1, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 58 },
+    back: { x0: 31.2, y0: 27.6, x1: 68.7, y1: 78.1, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 46, garmentHeightCm: 58 },
   },
   'earthpositive-earth-positive-pullover-hoodie': {
-    front: { x0: 37, y0: 42, x1: 63, y1: 77, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
+    front: { x0: 31.8, y0: 28.4, x1: 68.2, y1: 77.5, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
     back: { x0: 31.5, y0: 27.5, x1: 68.5, y1: 77.3, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 52, garmentHeightCm: 59 },
   },
   'earthpositive-earth-positive-women-s-half-zip-hoodie': {
@@ -748,7 +749,7 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     back: { x0: 29.4, y0: 16.4, x1: 70.5, y1: 71.9, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 62 },
   },
   'neutral-men-s-long-sleeve-t-shirt': {
-    front: { x0: 28.5, y0: 16.8, x1: 71.4, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
+    front: { x0: 28.6, y0: 16.8, x1: 71.5, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
     back: { x0: 28.3, y0: 16.8, x1: 71.2, y1: 74.7, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 47, garmentHeightCm: 59 },
     sleeve_left: { x0: 35.3, y0: 8.2, x1: 64.7, y1: 91.8, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 20.5, boxHeightCm: 67.9, startXCm: 11, startYCm: 10.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },

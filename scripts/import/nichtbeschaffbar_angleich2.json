@@ -1,0 +1,177 @@
+[
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "brown",
+    "grund": "groener-schulze.com fuehrt zu PUI10 nur 11 Farben (001 white, 002 black, 003 navy, 004 red, 441 atoll, 450 royal blue, 520 kelly green, 540 bottle green, 732 real green, 881 wine, 883 anthracite) – laut servergerendertem Farb-Select im Produkt-HTML. Brown ist nicht darunter; bc_id_001_polo_pui10_brown.webp = 404 (146 B, text/html)."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "chili-gold",
+    "grund": "Nicht im 11er-Farbsatz der Zielquelle. bc_id_001_polo_pui10_chili_gold.webp sowie die Varianten _chiligold / _chili-gold / _gold = alle 404 (146 B, text/html). Farbname kommt im Seiten-HTML nicht vor."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "fuchsia",
+    "grund": "Nicht im 11er-Farbsatz der Zielquelle. bc_id_001_polo_pui10_fuchsia.webp = 404 (146 B, text/html); Farbname im Seiten-HTML nicht vorhanden."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "heather-grey",
+    "grund": "Nicht im 11er-Farbsatz der Zielquelle. bc_id_001_polo_pui10_heather_grey.webp sowie _heather_gray / _heathergrey = alle 404 (146 B, text/html)."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "light-blue",
+    "grund": "Nicht im 11er-Farbsatz der Zielquelle. bc_id_001_polo_pui10_light_blue.webp sowie _lightblue / _light-blue = alle 404 (146 B, text/html)."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "orange",
+    "grund": "Nicht im 11er-Farbsatz der Zielquelle. bc_id_001_polo_pui10_orange.webp = 404 (146 B, text/html); Farbname im Seiten-HTML nicht vorhanden."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "pixel-coral",
+    "grund": "Nicht im 11er-Farbsatz der Zielquelle. bc_id_001_polo_pui10_pixel_coral.webp sowie _pixelcoral / _coral = alle 404 (146 B, text/html)."
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "purple",
+    "grund": "Nicht im 11er-Farbsatz der Zielquelle. bc_id_001_polo_pui10_purple.webp = 404 (146 B, text/html); Farbname im Seiten-HTML nicht vorhanden. (Die gefuehrte Farbe 881 wine ist ein anderer Farbton und wurde nicht ersatzweise verwendet.)"
+  },
+  {
+    "productId": "bundc-unisex-polo-id-001",
+    "colorId": "sand",
+    "grund": "Nicht im 11er-Farbsatz der Zielquelle. bc_id_001_polo_pui10_sand.webp = 404 (146 B, text/html). Die Zeichenfolge 'sand' erscheint im Seiten-HTML ausschliesslich in 'Versand'/'Palettenversand', nicht als Farbname."
+  },
+  {
+    "productId": "neutral-unisex-performance-t-shirt",
+    "colorId": "charcoal",
+    "grund": "Die Zielquelle neutral.com fuehrt fuer R61001 aktuell 19 Farbvarianten (White, Black, Navy, Sapphire, Dusty Indigo, Dusty Mint, Lime, Green, Red, Okay Orange, Yellow, Bottle Green, Bordeaux, Sand, Dusty Yellow, Dusty Purple, Pink, Royal, Military) – Charcoal ist NICHT darunter. Im Varianten-JSON existiert kein Charcoal-Variant und keine zugehoerige Bild-Datei; 'Charcoal' taucht nur in der Tag-Liste des Produkts auf (Alt-Tag), auf der Produktseite selbst kommt der Farbname 0-mal vor. Es gibt somit kein Bild dieser Farbe aus der Zielquelle. Ausweichen auf eine dritte Quelle waere Stilbruch, daher bleibt das vorhandene Bild stehen."
+  },
+  {
+    "productId": "russell-poloshirt-6535",
+    "colorId": "bottle-green",
+    "grund": "groener-schulze.com fuehrt R-539M-0 nur in 7 Farben (Farb-Select im DOM: 30 white, 36 black, BH bright royal, CG convoy grey, CR classic red, FN french navy, LX light oxford). Bottle Green ist nicht darunter. Direkte Bildpruefung nach abgeleitetem Schema: ..._r-539m-0_bottle_green.webp -> 404 (146 Bytes, text/html); Varianten bottle-green, bottlegreen, dark_green, green ebenfalls 404. Kein Ausweichen auf r-599m-0 oder eine dritte Quelle."
+  },
+  {
+    "productId": "russell-poloshirt-6535",
+    "colorId": "bright-red",
+    "grund": "Nicht im Farb-Select der Zielquelle (nur 7 Farben, siehe oben). ..._r-539m-0_bright_red.webp -> 404; Varianten brightred, red ebenfalls 404."
+  },
+  {
+    "productId": "russell-poloshirt-6535",
+    "colorId": "burgundy",
+    "grund": "Nicht im Farb-Select der Zielquelle. ..._r-539m-0_burgundy.webp -> 404; Varianten bordeaux, wine ebenfalls 404."
+  },
+  {
+    "productId": "russell-poloshirt-6535",
+    "colorId": "purple",
+    "grund": "Nicht im Farb-Select der Zielquelle. ..._r-539m-0_purple.webp -> 404; Varianten lila, violet ebenfalls 404."
+  },
+  {
+    "productId": "russell-poloshirt-6535",
+    "colorId": "sky",
+    "grund": "Nicht im Farb-Select der Zielquelle. ..._r-539m-0_sky.webp -> 404; Varianten sky_blue, skyblue, himmelblau ebenfalls 404."
+  },
+  {
+    "productId": "russell-poloshirt-6535",
+    "colorId": "yellow",
+    "grund": "Nicht im Farb-Select der Zielquelle. ..._r-539m-0_yellow.webp -> 404; Varianten gelb, pure_yellow, yellow_2 ebenfalls 404."
+  },
+  {
+    "productId": "gildan-heavy-blend-hooded-sweatshirt",
+    "colorId": "old-gold",
+    "grund": "Ralawise fuehrt zu GD057 keine Farbe 'Old Gold'. Im Varianten-JSON existiert nur 'Gold' (Code GOLD, gd057_gold_ft3.jpg) – das ist Gildans helles Gold, nicht das gedeckte Old Gold (#CA9F75); zwei verschiedene Gildan-Farben. gd057_oldgold_ft3.jpg und gd057_old_gold_ft3.jpg liefern beide 404 (text/html, Fehlerseite)."
+  },
+  {
+    "productId": "gildan-heavy-blend-hooded-sweatshirt",
+    "colorId": "b23730",
+    "grund": "Farbe liegt nur als Hex-ID/Hex-Name (#B23730) ohne Herstellerfarbnamen vor. Im 34-Farben-Satz von Ralawise GD057 gibt es keinen Eintrag dieses Namens, und eine Zuordnung ueber Hex-Naehe (Red #B1302A bzw. Cherry Red) waere geraten – genau das ist untersagt. Ohne belegbaren Farbnamen der Quelle nicht beschaffbar."
+  },
+  {
+    "productId": "gildan-heavy-blend-hooded-sweatshirt",
+    "colorId": "violet",
+    "grund": "Ralawise fuehrt zu GD057 kein 'Violet'. Vorhanden sind nur 'Purple' (PURP) und 'Orchid' (ORCH) – beides eigene, andere Gildan-Farben, die im Shop separat gefuehrt werden. gd057_violet_ft3.jpg, _violetsolid_, _heatherviolet_, _lilac_ jeweils 404."
+  },
+  {
+    "productId": "gildan-heavy-blend-hooded-sweatshirt",
+    "colorId": "antique-cherry-red-heather",
+    "grund": "Ralawise fuehrt zu GD057 nur 'Cherry Red' (CHRD, gd057_cherryred_ft3.jpg) – eine andere, solide Farbe, nicht Antique Cherry Red (Heather) #971B2F. Zwar existiert auf dem Server noch eine Altdatei gd057_antiquecherryred_ft3.jpg (200, image/jpeg, 97.498 Bytes), sie ist aber im Varianten-JSON der Seite nicht mehr referenziert UND gehoert visuell geprueft zur ALTEN Gildan-Fotoserie (flach liegende Kapuze, anderer Bildausschnitt, andere Silhouette) statt zur 2026-Flatlay-Serie mit aufgestellter Kapuze, aus der navy/graphite-heather stammen; zusaetzlich zeigt sie ein helles Rot statt des dunklen melierten #971B2F. Der Einsatz wuerde exakt den Stilbruch erzeugen, der beseitigt werden soll – deshalb bewusst NICHT verwendet."
+  },
+  {
+    "productId": "gildan-heavy-blend-hooded-sweatshirt",
+    "colorId": "antique-sapphire-heather",
+    "grund": "Ralawise fuehrt zu GD057 nur 'Sapphire' (SAPP, gd057_sapphire_ft3.jpg) – ein solides Blau und eine andere Gildan-Farbe als Antique Sapphire (Heather) #006A8E. gd057_antiquesapphire_ft3.jpg, _antiquesapphireheather_ft3.jpg und _antiquesaphire_ft3.jpg liefern alle 404."
+  },
+  {
+    "productId": "fruit-of-the-loom-lightweight-hooded-sweat",
+    "colorId": "azure-blue",
+    "grund": "groener-schulze.com fuehrt fuer Artikel 62-140-0 nachweislich nur 8 Farben (Modal 'Verfuegbare Farben' auf https://www.groener-schulze.com/werbetextilien/sweater-pullover/fruit-of-the-loom-lightweight-hooded-sweat-62-140-0: red #ED1A38, bottle green #164630, royal blue #1763AF, deep navy #00093C, burgundy #6A1B42, heather grey #BEC4C9, black #181A1C, white #FFFFFF). Azure Blue ist nicht darunter. CDN-Sondierung mit .../fruit_of_the_loom_lightweight_hooded_sweat_62-140-0_azure_blue.webp sowie _azure.webp und _azure_blue_2.webp: jeweils 404, 146 Bytes, text/html. Kontroll-Slug _zzz_nonsense_control.webp liefert identisches 404, es gibt also kein Platzhalterbild. Erzwungener Farbwechsel per ?clk=Farbe&Farbe=... faellt auf royal blue zurueck. Kein Ausweichen auf Fremdquelle oder fremde Artikelnummer."
+  },
+  {
+    "productId": "fruit-of-the-loom-lightweight-hooded-sweat",
+    "colorId": "kelly-green",
+    "grund": "Nicht im Farbsatz der Zielquelle fuer 62-140-0 (8 gefuehrte Farben, siehe oben; Kelly Green fehlt). CDN: _kelly_green.webp, _kelly.webp und _kelly_green_2.webp jeweils 404 / 146 Bytes / text/html gegen Kontroll-404 abgesichert. Direkter Seitenaufruf mit ?clk=Farbe&form_clk=0&Farbe=47+-+kelly+green liefert weiterhin nur die royal-blue-Bilder, die Variante existiert dort nicht."
+  },
+  {
+    "productId": "fruit-of-the-loom-lightweight-hooded-sweat",
+    "colorId": "light-graphite-solid",
+    "grund": "Nicht im Farbsatz der Zielquelle fuer 62-140-0. CDN-Sondierung aller plausiblen Slugs (_light_graphite.webp, _light_graphite_solid.webp, _graphite.webp, _light_graphite_s.webp, _solid_light_graphite.webp) durchgehend 404 / 146 Bytes / text/html, Kontroll-Slug ebenfalls 404. Auch kein .jpg-Pendant (Test an bekannt gutem _black.jpg ergibt 404, die Quelle liefert ausschliesslich .webp)."
+  },
+  {
+    "productId": "fruit-of-the-loom-lightweight-hooded-sweat",
+    "colorId": "orange",
+    "grund": "Nicht im Farbsatz der Zielquelle fuer 62-140-0. CDN: _orange.webp, _orange_1.webp und _bright_orange.webp jeweils 404 / 146 Bytes / text/html. Erzwungener Aufruf ?clk=Farbe&form_clk=0&Farbe=44+-+orange rendert unveraendert die royal-blue-Bilder. Eine Uebernahme aus freewear.de/L-SHOP-T oder von einer abweichenden Artikelnummer wurde bewusst unterlassen, da das den Stilbruch nur verschieben bzw. gegen die Artikelnummer-Regel verstossen wuerde."
+  },
+  {
+    "productId": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "colorId": "royal-blue",
+    "grund": "Die Zielquelle fuehrt Artikel 02074 (products/5966) nachweislich nur in 7 Farben: Deep Black (DBK), White (WHI), French Navy (FNA), Grey Marl (GYM), Mouse Grey (MGY), Red (RED), Bottle Green (BOT). Ausgelesen aus dem vollstaendigen Radio-Set input.colour_swatch der Produktseite (7 Eintraege, keine Nachladung, keine eingeklappte Liste). Royal Blue ist nicht darunter. Gegenprobe am CDN: 02074-ROY/-RBL/-RYL/-ROB/-BLU-FRONT.jpg liefern alle 403 (111 Bytes), waehrend alle 7 echten Codes 200 + image/jpeg liefern – 403 belegt hier also die Nichtexistenz. Royal Blue existiert auf myworkwear nur unter fremden Artikelnummern (Ladies-/Kids-Imperial-LSL), die laut Artikelnummer-Regel disqualifiziert sind."
+  },
+  {
+    "productId": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "colorId": "oxblood",
+    "grund": "Nicht im 7-Farben-Set des Artikels 02074 (DBK, WHI, FNA, GYM, MGY, RED, BOT) der Zielquelle enthalten. CDN-Gegenprobe: 02074-OXB/-OXO/-OXR-FRONT.jpg jeweils 403 (111 Bytes) gegenueber 200 + image/jpeg bei allen echten Codes. Kein Ausweichen auf eine dritte Quelle, da das den Stilbruch nur verschieben wuerde."
+  },
+  {
+    "productId": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "colorId": "dark-khaki",
+    "grund": "Nicht im 7-Farben-Set des Artikels 02074 (DBK, WHI, FNA, GYM, MGY, RED, BOT) der Zielquelle enthalten. CDN-Gegenprobe: 02074-KHA/-DKH/-KHK/-DKA-FRONT.jpg jeweils 403 (111 Bytes) gegenueber 200 + image/jpeg bei allen echten Codes. MyWorkwear fuehrt fuer diesen Artikel keine Khaki-Variante."
+  },
+  {
+    "productId": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "colorId": "orange",
+    "grund": "Nicht im 7-Farben-Set des Artikels 02074 (DBK, WHI, FNA, GYM, MGY, RED, BOT) der Zielquelle enthalten. CDN-Gegenprobe: 02074-ORA/-ORG/-ORN/-ORE-FRONT.jpg jeweils 403 (111 Bytes) gegenueber 200 + image/jpeg bei allen echten Codes. Der einzige Orange-Treffer im Seiten-HTML ist 'Orange Hi-Vis' aus einem fremden Produktblock, nicht aus diesem Artikel."
+  },
+  {
+    "productId": "russell-men-s-classic-cotton-polo",
+    "colorId": "bottle-green",
+    "grund": "groener-schulze.com fuehrt fuer Artikel R-569M-0 nachweislich nur 5 Farben. Das Varianten-<select name=\"farbe-select\"> der Produktseite https://www.groener-schulze.com/werbetextilien/polo-shirts/russell-athletic-mens-classic-cotton-polo-r-569m-0 enthaelt ausschliesslich: 30 - white (FFFFFF), 36 - black (2D2926), BH - bright royal (485CC7), CR - classic red (A6093D), FN - french navy (1C1F2A). Bottle Green kommt weder als Option noch als Swatch/Popover noch im Farbinformations-Modal vor. Probe nach Namensschema (…_r-569m-0_bottle_green.webp und …_bottlegreen.webp) liefert 404 / 146 Bytes / text/html - kein Bild vorhanden. Alle 12 Sitemaps enthalten nur diese eine Produkt-URL, es gibt also keine zweite Seite mit groesserer Farbpalette. Ausweichen auf eine dritte Quelle oder eine fremde Artikelnummer ist ausgeschlossen."
+  },
+  {
+    "productId": "russell-men-s-classic-cotton-polo",
+    "colorId": "fuchsia",
+    "grund": "Gleiche Beweislage: Fuchsia ist im Variantensatz der Zielquelle fuer R-569M-0 nicht enthalten (nur white/black/bright royal/classic red/french navy). Keine Option, kein Swatch, kein Eintrag im Farbinformations-Modal. Bild-Probe …_r-569m-0_fuchsia.webp -> 404 / 146 Bytes / text/html. Kein alternatives Listing in den Sitemaps."
+  },
+  {
+    "productId": "russell-men-s-classic-cotton-polo",
+    "colorId": "sky",
+    "grund": "Gleiche Beweislage: Sky ist im Variantensatz der Zielquelle fuer R-569M-0 nicht enthalten (nur white/black/bright royal/classic red/french navy). Keine Option, kein Swatch, kein Eintrag im Farbinformations-Modal. Bild-Proben …_r-569m-0_sky.webp und …_sky_blue.webp -> jeweils 404 / 146 Bytes / text/html. Kein alternatives Listing in den Sitemaps."
+  },
+  {
+    "productId": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "colorId": "urban-orange",
+    "grund": "groener-schulze.com fuehrt fuer Artikel TU07T (#E190 Long Sleeve T) nachweislich nur 7 Farben: 001 white, 002 black, 003 navy, 004 red, 450 royal blue, 620 sport grey, 670 dark grey. Belege: (a) Varianten-JSON des Shops unter /services/os/api.php?os=search -> Datensatz TEXTILIEN.T-SHIRTS.BC-TU07T.0 listet genau diese 7 Farben und alle SKUs 11325-11372, keine weitere; (b) die Live-Produktseite rendert exakt dieselben 7 Farbauswahl-Optionen; (c) Direkttests aller plausiblen Slugs unter der korrekten Artikelnummer liefern 404: bc_e190_long_sleeve_t_tu07t_urban_orange.webp = 404, ..._orange.webp = 404, ..._urbanorange.webp = 404. Urban Orange existiert bei dieser Quelle NUR unter FREMDEN Artikelnummern (TU01T = #E150 T-Shirt, TW02T = #E150 Damen, TW04T = #E190 Damen) - das sind andere Produkte, die wir separat im Katalog fuehren. Eine shopweite Suche nach 'B&C urban orange' ergibt 0 Treffer fuer TU07T. Gemaess bindender Artikelnummern-Regel disqualifiziert; kein Ausweichen auf eine dritte Quelle. Vorhandenes Bild bleibt stehen."
+  },
+  {
+    "productId": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "colorId": "burgundy",
+    "grund": "Nicht im Farbsortiment von TU07T bei groener-schulze.com. Das Varianten-JSON (TEXTILIEN.T-SHIRTS.BC-TU07T.0, SKUs 11325-11372) und die Live-Produktseite nennen uebereinstimmend nur 7 Farben, Burgundy ist nicht darunter. Direkttest bc_e190_long_sleeve_t_tu07t_burgundy.webp = 404 (146 Bytes, text/html). Burgundy fuehrt die Quelle bei B&C nur unter der fremden Artikelnummer TU01B (#Inspire E150 T-Shirt) sowie bei anderen Marken/Modellen - andere Artikelnummer, damit disqualifiziert. Shopweite Suche nach 'B&C burgundy': 0 TU07T-Treffer. Vorhandenes Bild bleibt stehen."
+  },
+  {
+    "productId": "bundc-mens-t-shirt-e190-long-sleeve-exact",
+    "colorId": "urban-purple",
+    "grund": "Nicht im Farbsortiment von TU07T bei groener-schulze.com. Beleg identisch: Varianten-JSON und Produktseite fuehren nur die 7 Farben white/black/navy/red/royal blue/sport grey/dark grey. Direkttests bc_e190_long_sleeve_t_tu07t_urban_purple.webp = 404 und ..._purple.webp = 404. Urban Purple existiert bei der Quelle nur unter den FREMDEN Artikelnummern TU01T (#E150 T-Shirt) und TU03T (#E190 T-Shirt, Kurzarm) - TU03T ist das kurzaermelige E190, ein eigenes Produkt in unserem Katalog, nicht das Long-Sleeve TU07T. Genau dieser Fehlertyp (fremde Artikelnummer im Dateinamen) ist beim E150 Damenshirt bereits passiert und wird hier bewusst nicht wiederholt. Shopweite Suche nach 'B&C urban purple': 0 TU07T-Treffer. Vorhandenes Bild bleibt stehen."
+  }
+]

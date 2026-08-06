@@ -9,6 +9,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { PRODUCTS } from '@/config/products';
 import { waehlbareFarben } from '../farben';
+import { FARBGLEICHHEIT_OFFEN } from '@/config/farbdubletten.generated';
 import { sichtbareAnsichten } from '../ansichten';
 import {
   assetVerfuegbarkeit,
@@ -47,6 +48,17 @@ test('die Vorderansicht jeder wählbaren Farbe ist kein Platzhalter', () => {
     }
   }
   assert.deepEqual(schlecht, []);
+});
+
+test('keine zwei benannten Farben teilen sich ein Bild', () => {
+  // Bytegleiche Bilder bei zwei BENANNTEN Farben sind keine Katalogdublette,
+  // sondern eine Fehlzuordnung: Eine der beiden zeigt das Bild der anderen.
+  // Gefunden hat das den Stedman Clive (blue-midnight zeigte Black Opal), das
+  // SOL'S Imperial (charcoal-melange zeigte Deep Black) und das B&C Inspire
+  // E150 (beide Navy-Töne dieselbe Datei). Der Vergleich läuft im Generator
+  // (scripts/generateFarbdubletten.mts, liest die Dateien); hier wird nur sein
+  // Ergebnis festgenagelt – so bleibt der Test schnell.
+  assert.deepEqual([...FARBGLEICHHEIT_OFFEN], []);
 });
 
 test('keine Farbe wird zweimal angeboten', () => {

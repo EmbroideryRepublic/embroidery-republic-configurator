@@ -3577,7 +3577,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-navy-blue/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-navy-blue/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-navy-blue/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7062,7 +7063,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-navy/back.webp"
       },
       "status": "real"
     },
@@ -7077,14 +7078,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-black/back.webp",
+        "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/back.webp",
+        "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7107,14 +7110,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-red/back.webp",
+        "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-red/sleeve-left.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-royal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-royal/back.webp",
+        "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-royal/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -7137,7 +7142,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-white/back.webp",
+        "sleeve_left": "/products/gildan-light-cotton-adult-t-shirt-white/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -12692,7 +12698,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-navy/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -12715,49 +12722,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "paragon": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-paragon/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-paragon/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-paragon/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-paragon/sleeve-left.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/sleeve-left.webp"
       },
       "status": "real"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/sleeve-left.webp"
       },
       "status": "real"
     },
     "dark-heather": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/sleeve-left.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-light-pink/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-light-pink/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-light-pink/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-light-pink/sleeve-left.webp"
       },
       "status": "real"
     },
     "maroon": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/sleeve-left.webp"
       },
       "status": "real"
     },
     "military-green": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -12788,14 +12802,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/sleeve-left.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -12818,7 +12834,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "cocoa": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -12856,14 +12873,16 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "pistachio": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/sleeve-left.webp"
       },
       "status": "real"
     },
     "purple": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -12894,7 +12913,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-grey-heather": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -12925,7 +12945,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "carolina-blue": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-carolina-blue/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-carolina-blue/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-carolina-blue/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-carolina-blue/sleeve-left.webp"
       },
       "status": "real"
     },
@@ -14837,7 +14858,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/earthpositive-earth-positive-pullover-hoodie-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-earth-positive-pullover-hoodie-black/back.webp"
       },
       "status": "real"
     },
@@ -14914,7 +14935,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "forest-green": {
       "views": {
         "front": "/products/earthpositive-earth-positive-pullover-hoodie-forest-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-earth-positive-pullover-hoodie-forest-green/back.webp"
       },
       "status": "real"
     },
@@ -14935,7 +14956,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "french-navy": {
       "views": {
         "front": "/products/earthpositive-earth-positive-pullover-hoodie-french-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-earth-positive-pullover-hoodie-french-navy/back.webp"
       },
       "status": "real"
     },
@@ -15019,7 +15040,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "stone-washed-grey": {
       "views": {
         "front": "/products/earthpositive-earth-positive-pullover-hoodie-stone-washed-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-earth-positive-pullover-hoodie-stone-washed-grey/back.webp"
       },
       "status": "real"
     },
@@ -15047,7 +15068,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/earthpositive-earth-positive-pullover-hoodie-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/earthpositive-earth-positive-pullover-hoodie-white/back.webp"
       },
       "status": "real"
     },

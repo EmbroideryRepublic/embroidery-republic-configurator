@@ -11,6 +11,7 @@ export const FARBDUBLETTEN: Record<string, readonly string[]> = {
   'build-your-brand-ultra-heavy-cotton-box-hoody': ['e8e7e3'],
   'bundc-t-shirt-e150': ['101145'],
   'neutral-men-s-long-sleeve-t-shirt': ['b8b8b8'],
+  'sols-men-s-polo-shirt-perfect': ['01509d'],
 };
 
 /**
@@ -20,5 +21,5 @@ export const FARBDUBLETTEN: Record<string, readonly string[]> = {
  * hier sichtbar gehalten, bis das richtige Bild beschafft ist.
  */
 export const FARBGLEICHHEIT_OFFEN: readonly string[] = [
-  'bundc-inspire-e150-t-shirt: navy-blue == navy',
+
 ];

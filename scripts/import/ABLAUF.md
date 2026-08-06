@@ -16,10 +16,17 @@ npx tsx scripts/generateAssetManifest.mts
 #    Ansicht an, für die es keine Fläche gibt (Wächtertest schlägt fehl).
 npx tsx --tsconfig tsconfig.scripts.json scripts/generatePrintAreaData.mts
 
+# 3b. Farbdubletten neu bestimmen – PFLICHT:
+#     Zwei Katalogfarben mit demselben Foto dahinter blendet der Shop aus;
+#     zwei BENANNTE Farben mit demselben Foto sind dagegen eine Fehlzuordnung
+#     und lassen den Wächtertest fehlschlagen, bis sie korrigiert sind.
+npx tsx --tsconfig tsconfig.scripts.json scripts/generateFarbdubletten.mts
+
 # 4. Prüfen
 npx tsx scripts/ansichtenAudit.mts        # jede Ansicht eigene Datei, kein Front-Alias
 npx tsx scripts/bilddublettenAudit.mts    # keine Fremdprodukt-Bilder
 npx tsx scripts/onModelAudit.mts          # keine On-Model-Aufnahmen
+npx tsx --tsconfig tsconfig.scripts.json scripts/quellenAudit.mts   # eine Fotoserie je Produkt
 npx tsc --noEmit && npx eslint .
 npx tsx --test "src/**/*.test.ts"         # 6 bekannte Umgebungs-Fails sind normal
 
@@ -28,6 +35,25 @@ npx tsx --test "src/**/*.test.ts"         # 6 bekannte Umgebungs-Fails sind norm
 #    teilen sich .next und zerschießen sich sonst gegenseitig.
 npm run dev -- -p 3007
 ```
+
+## On-Model-Aufnahmen sind nicht nur hässlich – sie zerstören die Druckfläche
+
+`onModelAudit` nur laufen zu lassen genügt nicht, seine Befunde müssen aufgelöst
+werden. Grund: `generatePrintAreaData` vermisst die KONTUR des Bildes. Zeigt das
+Bild einen Menschen, ist die gemessene Kontur der Mensch – die Druckfläche landet
+dann über Kopf und Schultern statt auf dem Stoff. Genau das ist beim Gildan Ultra
+Cotton Longsleeve passiert, nachdem eine Charge Bilder von einem Händler geholt
+hatte, der ausschließlich On-Model fotografiert.
+
+Gegenprobe nach jedem Import:
+
+```bash
+npx tsx --tsconfig tsconfig.scripts.json scripts/druckflaechePruefung.mts --toleranz 3
+```
+
+Weiße Kleidungsstücke stehen dort systematisch oben (weiß auf weiß lässt sich
+nicht sauber von der Stoffkante trennen) – das ist Messrauschen. Verdächtig ist
+ein CLUSTER dunkler Farben desselben Produkts mit gleichem Überstand.
 
 ## Sichtprüfung im Browser
 

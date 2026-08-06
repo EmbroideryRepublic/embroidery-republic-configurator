@@ -1,54 +1,28 @@
 [
   {
-    "produkt": "stedman-clive-crew-neck",
-    "farbe": "black-opal",
-    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/; Produktseite https://www.stedman.eu/en/stretch-t – Artikel ST9600, die Serie hiess frueher \"Clive & Claire\")",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "navy-blue",
+    "quelle": "Fronts: allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM; back/side: cottonclassics.com (B2B-Grosshandel, PDP /en/bandc-inspire-e150.html, interne SKU 01U01B = B&C TU01B). Farbbeleg zusaetzlich ueber freewear.de/textil-grosshandel (BCTU01B).",
     "gefunden": [
-      "front"
+      "front",
+      "sleeve-left"
     ],
-    "frontDom": "#111111",
-    "erwartet": "#000000",
-    "deltaE": 29,
-    "dupeMit": "stedman-clive-crew-neck-blue-midnight"
-  },
-  {
-    "produkt": "stedman-clive-crew-neck",
-    "farbe": "blue-midnight",
-    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/; Produktseite https://www.stedman.eu/en/stretch-t – Artikel ST9600, die Serie hiess frueher \"Clive & Claire\")",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#151a1d",
-    "erwartet": "#180A29",
-    "deltaE": 20,
+    "frontDom": "#202634",
+    "erwartet": "#101145",
+    "deltaE": 31,
     "dupeMit": null
   },
   {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "charcoal-melange",
-    "quelle": "Offizielle SOL'S-Mediathek (Scene7-CDN s7g3.scene7.com/is/image/soloinvest), Artikel 02074 Imperial LSL MEN; gegengeprueft an textil-grosshandel.eu (L02074) und assets.myworkwear.co.uk (Produkt 5966)",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "navy",
+    "quelle": "Fronts: allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM; back/side: cottonclassics.com (B2B-Grosshandel, PDP /en/bandc-inspire-e150.html, interne SKU 01U01B = B&C TU01B). Farbbeleg zusaetzlich ueber freewear.de/textil-grosshandel (BCTU01B).",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#373735",
-    "erwartet": "#040F13",
-    "deltaE": 73,
-    "dupeMit": null
-  },
-  {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "deep-black",
-    "quelle": "Offizielle SOL'S-Mediathek (Scene7-CDN s7g3.scene7.com/is/image/soloinvest), Artikel 02074 Imperial LSL MEN; gegengeprueft an textil-grosshandel.eu (L02074) und assets.myworkwear.co.uk (Produkt 5966)",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#2c2b26",
-    "erwartet": "#000000",
-    "deltaE": 72,
+    "frontDom": "#1f2533",
+    "erwartet": "#1F2532",
+    "deltaE": 1,
     "dupeMit": null
   }
 ]

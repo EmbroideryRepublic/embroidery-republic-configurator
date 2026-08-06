@@ -80,6 +80,31 @@ export function repraesentativBildVon(productId: string, colorId: string): strin
   return repraesentativesBild(resolveColorImages(productId, colorId));
 }
 
+/**
+ * Farbe, die ein Produkt nach außen repräsentiert: die erste mit ECHTEN Fotos.
+ *
+ * Warum nötig: Die Katalogpaletten sind vollständig (alle Herstellerfarben), echte
+ * Fotos existieren aber nur für die wichtigsten Farben. `colors[0]` ist häufig eine
+ * Farbe ohne Foto – Kacheln, Produktseite und der Konfigurator-Start zeigten dann
+ * den Platzhalter, obwohl das Produkt sehr wohl echte Bilder hat. Jeder Konsument,
+ * der EIN Bild für ein Produkt braucht, fragt hier nach der Farbe.
+ *
+ * Fällt auf `colors[0]` zurück, wenn für keine Farbe Fotos vorliegen.
+ */
+export function repraesentativeFarbe<T extends { id: string }>(
+  productId: string,
+  colors: readonly T[]
+): T | undefined {
+  const prod = ASSET_MANIFEST[productId];
+  return colors.find((c) => prod?.[c.id]?.status === 'real') ?? colors[0];
+}
+
+/** Repräsentatives Bild eines Produkts – wählt selbst eine Farbe mit echten Fotos. */
+export function produktBild(productId: string, colors: readonly { id: string }[]): string {
+  const farbe = repraesentativeFarbe(productId, colors);
+  return farbe ? repraesentativBildVon(productId, farbe.id) : PLATZHALTER_BILD;
+}
+
 /** Sind für dieses Produkt (bzw. diese Farbe) ECHTE Fotos vorhanden? Ersetzt das
  *  frühere produktseitige `bildStatus`/`hasRealPhotos`-Wissen. `fehlt` = nur
  *  Platzhalter (Bildimport noch offen). */

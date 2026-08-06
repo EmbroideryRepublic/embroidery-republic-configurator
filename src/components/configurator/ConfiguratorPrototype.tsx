@@ -20,7 +20,7 @@ import { LargePreviewModal } from './LargePreviewModal';
 import { getPrintAreas } from '@/config/printAreas';
 import { getPricingRules } from '@/config/pricingRules';
 import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
-import { resolveColorImages } from '@/lib/assets';
+import { resolveColorImages, repraesentativeFarbe } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
@@ -131,7 +131,7 @@ export function ConfiguratorPrototype() {
       const ziel = getProduct(gewuenscht);
       if (ziel) {
         setProduct(ziel.id);
-        const ersteFarbe = ziel.colors[0];
+        const ersteFarbe = repraesentativeFarbe(ziel.id, ziel.colors);
         if (ersteFarbe) setColor(ersteFarbe.id);
         // Parameter entfernen, damit ein späterer Reload nicht erneut
         // zurücksetzt und der Kunde seine Änderungen behält.
@@ -142,7 +142,7 @@ export function ConfiguratorPrototype() {
 
     if (!productId) {
       setProduct(DEFAULT_PRODUCT.id);
-      const firstColor = DEFAULT_PRODUCT.colors[0];
+      const firstColor = repraesentativeFarbe(DEFAULT_PRODUCT.id, DEFAULT_PRODUCT.colors);
       if (firstColor) setColor(firstColor.id);
     }
   }, [isHydrated, productId, setProduct, setColor]);
@@ -298,7 +298,7 @@ export function ConfiguratorPrototype() {
   const handleCloseCompare = useCallback(() => setIsCompareOpen(false), []);
 
   const currentPrintArea = printAreas.find((area) => area.view === activeView) ?? null;
-  const currentColor = product.colors.find((c) => c.id === colorId) ?? product.colors[0];
+  const currentColor = product.colors.find((c) => c.id === colorId) ?? repraesentativeFarbe(product.id, product.colors);
   const currentImages: Record<string, string> = currentColor ? resolveColorImages(product.id, currentColor.id) : {};
   const currentImageUrl = currentImages[activeView] ?? '';
   // Die tatsächlich geführten Ansichten des Produkts – einzige Quelle für

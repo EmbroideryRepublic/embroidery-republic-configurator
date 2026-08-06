@@ -21,7 +21,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { alleProduktSlugs, ladeProduktseite } from '@/lib/products/productPage';
 import { produktTypLabelPlural } from '@/config/products/types';
-import { repraesentativBildVon, PLATZHALTER_BILD } from '@/lib/assets';
+import { produktBild, PLATZHALTER_BILD } from '@/lib/assets';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ProduktFarbwahl } from '@/components/produkt/ProduktFarbwahl';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
@@ -59,9 +59,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
   // Platzhalter (Bildimport noch offen) NIE als OpenGraph-Vorschaubild
   // ausliefern (ADR 0004): kein Platzhalter in externen Ausgaben.
-  const ogBild = produkt.colors[0]
-    ? repraesentativBildVon(produkt.id, produkt.colors[0].id)
-    : undefined;
+  const ogBild = produkt.colors.length ? produktBild(produkt.id, produkt.colors) : undefined;
   return {
     title: `${produkt.name} bedrucken & besticken | ${produkt.brand}`,
     description: beschreibung,
@@ -94,7 +92,7 @@ function MiniKarte({ produkt }: { produkt: ProductConfig }) {
       <div className="relative aspect-square overflow-hidden rounded-xl bg-cream/40">
         {produkt.colors[0] && (
           <Image
-            src={repraesentativBildVon(produkt.id, produkt.colors[0].id)}
+            src={produktBild(produkt.id, produkt.colors)}
             alt={produkt.name}
             fill
             sizes="(max-width: 768px) 50vw, 25vw"

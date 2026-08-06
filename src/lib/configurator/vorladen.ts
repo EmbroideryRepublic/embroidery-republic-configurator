@@ -13,7 +13,7 @@
  * `window` da ist (SSR).
  */
 import type { ProductConfig } from '@/config/products/types';
-import { resolveColorImages, repraesentativBildVon } from '@/lib/assets';
+import { resolveColorImages, produktBild, repraesentativeFarbe } from '@/lib/assets';
 
 const angestossen = new Set<string>();
 
@@ -30,7 +30,7 @@ function lade(url: string): void {
  *  Produkts (keine feste front/back/sleeve-Annahme). */
 export function vorladenModell(p: ProductConfig): void {
   if (typeof window === 'undefined') return;
-  const farbe = p.colors[0];
+  const farbe = repraesentativeFarbe(p.id, p.colors);
   if (!farbe) return;
   for (const url of Object.values(resolveColorImages(p.id, farbe.id))) lade(url);
 }
@@ -39,9 +39,8 @@ export function vorladenModell(p: ProductConfig): void {
 export function vorladenListe(produkte: ProductConfig[]): void {
   if (typeof window === 'undefined') return;
   for (const p of produkte) {
-    const farbe = p.colors[0];
-    if (!farbe) continue;
-    const rep = repraesentativBildVon(p.id, farbe.id);
+    if (!p.colors.length) continue;
+    const rep = produktBild(p.id, p.colors);
     if (rep) lade(rep);
   }
 }

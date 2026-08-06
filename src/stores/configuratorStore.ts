@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { assetVerfuegbarkeit } from '@/lib/assets';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { ConfigElement, ConfiguratorState, PrintArea, PrintMethod, PrintView } from '@/types';
 import { MINIMUM_QUANTITY } from '@/lib/pricing/calculatePrice';
@@ -440,7 +441,7 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
       // gespeicherte Elemente ohne diese Felder geladen und einzelne
       // Bedienelemente (die genau dieses Feld lesen/schreiben) würden ins
       // Leere laufen, ohne dass ein Fehler sichtbar wird.
-      version: 9,
+      version: 10,
       migrate: (persistedState, storedVersion) => {
         let state = persistedState as Partial<ConfiguratorState> & { sizeLabel?: string | null; quantity?: number };
         if (storedVersion < 7) {
@@ -464,6 +465,17 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           // View auf eine Ansicht ohne Druckfläche. Eine ungültige `activeView`
           // heilt der Reconcile-Effekt beim Produktladen (→ erste geführte View).
           state.elements = (state.elements ?? []).filter((el) => istGueltigeView(el.view));
+        }
+        if (storedVersion < 10) {
+          // Die Katalogpaletten führen ALLE Herstellerfarben, echte Fotos gibt es
+          // aber nur für die wichtigsten. Wer vor dem Bildimport eine Farbe ohne
+          // Foto gewählt hatte, sah nach dem Import weiterhin den Platzhalter –
+          // der gespeicherte Wert überlebt ja. Solche Farbstände einmalig lösen,
+          // damit die Startauswahl greift (erste Farbe MIT echten Fotos).
+          if (state.productId && state.colorId &&
+              assetVerfuegbarkeit(state.productId, state.colorId) === 'fehlt') {
+            state.colorId = null;
+          }
         }
         return state;
       },

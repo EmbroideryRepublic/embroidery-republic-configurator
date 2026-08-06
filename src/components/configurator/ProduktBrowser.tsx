@@ -33,7 +33,7 @@ import {
 import { uebernehmeAuswahl } from '@/lib/configurator/uebernahme';
 import { vorladenListe, vorladenModell } from '@/lib/configurator/vorladen';
 import { getProduct } from '@/config/products';
-import { repraesentativBildVon } from '@/lib/assets';
+import { produktBild } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useBrowserStore } from '@/stores/browserStore';
 import { useFavoritesStore } from '@/stores/favoritesStore';
@@ -43,8 +43,7 @@ import { formatPriceWithCurrency, useCurrencyStore } from '@/stores/currencyStor
 const ARTBILD = new Map<ProductType, string | undefined>();
 for (const p of PRODUCTS) {
   if (!ARTBILD.has(p.productType)) {
-    const farbe = p.colors[0];
-    ARTBILD.set(p.productType, farbe ? repraesentativBildVon(p.id, farbe.id) : undefined);
+    ARTBILD.set(p.productType, p.colors.length ? produktBild(p.id, p.colors) : undefined);
   }
 }
 
@@ -493,7 +492,7 @@ function Modellkarte({
         {produkt.colors[0] && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={repraesentativBildVon(produkt.id, produkt.colors[0].id)}
+            src={produktBild(produkt.id, produkt.colors)}
             alt={produkt.name}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.05]"

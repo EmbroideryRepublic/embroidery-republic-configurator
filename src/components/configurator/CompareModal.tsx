@@ -5,7 +5,7 @@ import { X, Scale } from 'lucide-react';
 import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
-import { repraesentativBildVon } from '@/lib/assets';
+import { produktBild } from '@/lib/assets';
 
 interface CompareModalProps {
   onClose: () => void;
@@ -79,7 +79,7 @@ export function CompareModal({ onClose }: CompareModalProps) {
                 {p && firstColor && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={repraesentativBildVon(p.id, firstColor.id)}
+                    src={produktBild(p.id, p.colors)}
                     alt={p?.name ?? ''}
                     loading="lazy"
                     className="h-32 w-full object-contain"

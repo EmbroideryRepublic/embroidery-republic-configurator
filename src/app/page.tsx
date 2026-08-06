@@ -28,7 +28,7 @@ import type { Metadata } from 'next';
 import { ArrowRight, Package, Palette, Scissors, Shirt } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { PRODUCTS } from '@/config/products';
-import { repraesentativBildVon } from '@/lib/assets';
+import { repraesentativBildVon, produktBild } from '@/lib/assets';
 import { FARBGRUPPEN } from '@/config/products/facetten';
 import { produktTypLabel, PRODUCT_TYPE_ORDER, PRODUCT_TYPES } from '@/config/products/types';
 import { SHIPPING_RATES } from '@/config/shipping';
@@ -65,8 +65,7 @@ function findeBild(treffer: typeof PRODUCTS, art: ProductType): string | undefin
     }
   }
   const ersteProdukt = treffer[0];
-  const ersteFarbe = ersteProdukt?.colors[0];
-  return ersteProdukt && ersteFarbe ? repraesentativBildVon(ersteProdukt.id, ersteFarbe.id) : undefined;
+  return ersteProdukt?.colors.length ? produktBild(ersteProdukt.id, ersteProdukt.colors) : undefined;
 }
 
 /** Farbfamilien in der Reihenfolge des Spektrums – das Band soll fließen. */

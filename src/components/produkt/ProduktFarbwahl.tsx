@@ -14,13 +14,19 @@ import { useState } from 'react';
 import Image from 'next/image';
 import type { PrintView } from '@/types';
 import type { ProductConfig } from '@/config/products/types';
-import { bildFuerAnsicht, repraesentativBildVon } from '@/lib/assets';
+import { bildFuerAnsicht, repraesentativBildVon, repraesentativeFarbe } from '@/lib/assets';
 import { ansichtenVon } from '@/lib/products/ansichten';
 import { positionLabel } from '@/config/decorationPositions';
 
 export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
   const ansichten = ansichtenVon(produkt);
-  const [farbIndex, setFarbIndex] = useState(0);
+  // Startfarbe ist die erste MIT echten Fotos – nicht stumpf colors[0]. Die
+  // Paletten führen alle Herstellerfarben, Fotos gibt es nur für die wichtigsten;
+  // sonst öffnete die Produktseite auf einem Platzhalter, obwohl Fotos existieren.
+  const [farbIndex, setFarbIndex] = useState(() => {
+    const start = repraesentativeFarbe(produkt.id, produkt.colors);
+    return Math.max(0, produkt.colors.findIndex((c) => c.id === start?.id));
+  });
   const [ansicht, setAnsicht] = useState<PrintView>(ansichten[0] ?? 'front');
 
   const farbe = produkt.colors[farbIndex] ?? produkt.colors[0];

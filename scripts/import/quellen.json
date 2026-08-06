@@ -286,5 +286,25 @@
   "russell-outdoor-fleece-jacke": {
     "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie)",
     "hinweis": "front+back+side"
+  },
+  "stedman-stedman-classic-t": {
+    "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+    "hinweis": "nur echte Vorderansicht (stedman.eu hat keine per-Farbe-Rückansicht) - Rückansicht Front-Alias bis Original gefunden"
+  },
+  "stedman-classic-t-for-women": {
+    "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+    "hinweis": "nur echte Vorderansicht (stedman.eu hat keine per-Farbe-Rückansicht) - Rückansicht Front-Alias bis Original gefunden"
+  },
+  "stedman-classic-t-v-neck": {
+    "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+    "hinweis": "nur echte Vorderansicht (stedman.eu hat keine per-Farbe-Rückansicht) - Rückansicht Front-Alias bis Original gefunden"
+  },
+  "stedman-classic-t-v-neck-for-women": {
+    "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+    "hinweis": "nur echte Vorderansicht (stedman.eu hat keine per-Farbe-Rückansicht) - Rückansicht Front-Alias bis Original gefunden"
+  },
+  "stedman-comfort-t": {
+    "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
+    "hinweis": "nur echte Vorderansicht (stedman.eu hat keine per-Farbe-Rückansicht) - Rückansicht Front-Alias bis Original gefunden"
   }
 }

@@ -1,0 +1,183 @@
+[
+ {
+  "productId": "stedman-stedman-classic-t",
+  "quelle": "stedman.eu",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2000/ST2000_BLO.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2000/ST2000_WHI.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#20304C",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2000/ST2000_NAV.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#B62025",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2000/ST2000_SRE.jpg"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#1E4C9A",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2000/ST2000_BRR.jpg"
+   },
+   {
+    "id": "grey",
+    "erwarteterHex": "#8A8D8F",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2000/ST2000_GYH.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "stedman-classic-t-for-women",
+  "quelle": "stedman.eu",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2600/ST2600_BLO.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2600/ST2600_WHI.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#20304C",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2600/ST2600_NAV.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#B62025",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2600/ST2600_SRE.jpg"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#1E4C9A",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2600/ST2600_BRR.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "stedman-classic-t-v-neck",
+  "quelle": "stedman.eu",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2300/ST2300_BLO.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2300/ST2300_WHI.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#20304C",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2300/ST2300_NAV.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#B62025",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2300/ST2300_SRE.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "stedman-classic-t-v-neck-for-women",
+  "quelle": "stedman.eu",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2700/ST2700_BLO.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2700/ST2700_WHI.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#20304C",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2700/ST2700_NAV.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#B62025",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2700/ST2700_SRE.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "stedman-comfort-t",
+  "quelle": "stedman.eu",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2100/ST2100_BLO.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2100/ST2100_WHI.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#20304C",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2100/ST2100_NAV.jpg"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#B62025",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2100/ST2100_SRE.jpg"
+   },
+   {
+    "id": "royal",
+    "erwarteterHex": "#1E4C9A",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2100/ST2100_BRR.jpg"
+   },
+   {
+    "id": "grey",
+    "erwarteterHex": "#8A8D8F",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST2100/ST2100_GYH.jpg"
+   }
+  ]
+ },
+ {
+  "productId": "stedman-clive-crew-neck",
+  "quelle": "stedman.eu",
+  "colors": [
+   {
+    "id": "black",
+    "erwarteterHex": "#25282B",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST5620/ST5620_BLO.jpg"
+   },
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST5620/ST5620_WHI.jpg"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#20304C",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST5620/ST5620_NAV.jpg"
+   },
+   {
+    "id": "grey",
+    "erwarteterHex": "#8A8D8F",
+    "front": "https://www.stedman.eu/public/images/products/2026/ST5620/ST5620_GYH.jpg"
+   }
+  ]
+ }
+]

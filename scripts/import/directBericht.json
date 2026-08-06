@@ -1,839 +1,342 @@
 [
   {
-    "produkt": "russell-russell-classic-t",
+    "produkt": "stedman-stedman-classic-t",
     "farbe": "black",
-    "quelle": "groener-schulze",
+    "quelle": "stedman.eu",
     "gefunden": [
-      "front",
-      "back"
+      "front"
     ],
-    "frontDom": "#302d33",
-    "erwartet": "#25282B",
-    "deltaE": 14,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#eeedf2",
-    "erwartet": "#FFFFFF",
-    "deltaE": 28,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#303747",
-    "erwartet": "#1F2A44",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "classic-red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#d1193e",
-    "erwartet": "#C4122E",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "bright-royal",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#385490",
-    "erwartet": "#0057B8",
-    "deltaE": 69,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "convoy-grey",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#6f6e76",
-    "erwartet": "#7A7C7F",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-russell-classic-t",
-    "farbe": "bottle-green",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#3f574f",
-    "erwartet": "#004B34",
-    "deltaE": 70,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#312f30",
-    "erwartet": "#25282B",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#eeedf2",
-    "erwartet": "#FFFFFF",
-    "deltaE": 28,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#383f4e",
-    "erwartet": "#1F2A44",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#323135",
-    "erwartet": "#25282B",
-    "deltaE": 19,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#efeef3",
-    "erwartet": "#FFFFFF",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#363d4a",
-    "erwartet": "#1F2A44",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "classic-red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#b6223e",
-    "erwartet": "#C4122E",
-    "deltaE": 27,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "bright-royal",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#183670",
-    "erwartet": "#0057B8",
-    "deltaE": 83,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "convoy-grey",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#696c74",
-    "erwartet": "#7A7C7F",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "bottle-green",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#41594e",
-    "erwartet": "#004B34",
-    "deltaE": 71,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#2a292c",
-    "erwartet": "#25282B",
-    "deltaE": 5,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#e2e2e7",
-    "erwartet": "#FFFFFF",
-    "deltaE": 48,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#313747",
-    "erwartet": "#1F2A44",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "classic-red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#cb2244",
-    "erwartet": "#C4122E",
-    "deltaE": 28,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "bright-royal",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#324c8e",
-    "erwartet": "#0057B8",
-    "deltaE": 66,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-classic-cotton-polo",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#363336",
-    "erwartet": "#25282B",
-    "deltaE": 23,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-classic-cotton-polo",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#eceef2",
-    "erwartet": "#FFFFFF",
-    "deltaE": 29,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-classic-cotton-polo",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#2c3242",
-    "erwartet": "#1F2A44",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-classic-cotton-polo",
-    "farbe": "classic-red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#ba1e40",
-    "erwartet": "#C4122E",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-classic-cotton-polo",
-    "farbe": "bright-royal",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#223c79",
-    "erwartet": "#0057B8",
-    "deltaE": 77,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#383334",
-    "erwartet": "#25282B",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "deep-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#3c3a46",
-    "erwartet": "#212B3D",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#db293f",
-    "erwartet": "#C4122E",
-    "deltaE": 37,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "royal-blue",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#3964b1",
-    "erwartet": "#0057B8",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-premium-hooded-sweat",
-    "farbe": "heather-grey",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#cac8d2",
-    "erwartet": "#9EA1A3",
-    "deltaE": 75,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#38373a",
-    "erwartet": "#25282B",
-    "deltaE": 28,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#edecf1",
-    "erwartet": "#FFFFFF",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "deep-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#373843",
-    "erwartet": "#212B3D",
-    "deltaE": 26,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#da3844",
-    "erwartet": "#C4122E",
-    "deltaE": 49,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "royal-blue",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#3368b3",
-    "erwartet": "#0057B8",
-    "deltaE": 54,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "heather-grey",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#bdbcc1",
-    "erwartet": "#9EA1A3",
-    "deltaE": 51,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "bottle-green",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#394e3f",
-    "erwartet": "#004B34",
-    "deltaE": 58,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#19191e",
-    "erwartet": "#25282B",
-    "deltaE": 23,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#eeeeee",
-    "erwartet": "#FFFFFF",
-    "deltaE": 29,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "deep-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#131b2d",
-    "erwartet": "#212B3D",
-    "deltaE": 27,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#d4163b",
-    "erwartet": "#C4122E",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "royal-blue",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#014e99",
-    "erwartet": "#0057B8",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "heather-grey",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#b2b2b2",
-    "erwartet": "#9EA1A3",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#333033",
-    "erwartet": "#25282B",
-    "deltaE": 18,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#eeeef3",
-    "erwartet": "#FFFFFF",
-    "deltaE": 27,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#373e4c",
-    "erwartet": "#1F2A44",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "classic-red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#c40e37",
-    "erwartet": "#C4122E",
-    "deltaE": 10,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "bright-royal",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#3e4e84",
-    "erwartet": "#0057B8",
-    "deltaE": 81,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "convoy-grey",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#6b6a70",
-    "erwartet": "#7A7C7F",
-    "deltaE": 28,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-authentic-hooded-sweat",
-    "farbe": "bottle-green",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#3f554b",
-    "erwartet": "#004B34",
-    "deltaE": 68,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#333033",
-    "erwartet": "#25282B",
-    "deltaE": 18,
-    "dupeMit": "russell-authentic-hooded-sweat-black"
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "white",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#eeeef3",
-    "erwartet": "#FFFFFF",
-    "deltaE": 27,
-    "dupeMit": "russell-authentic-hooded-sweat-white"
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#373e4c",
-    "erwartet": "#1F2A44",
-    "deltaE": 32,
-    "dupeMit": "russell-authentic-hooded-sweat-french-navy"
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "classic-red",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#c40e37",
-    "erwartet": "#C4122E",
-    "deltaE": 10,
-    "dupeMit": "russell-authentic-hooded-sweat-classic-red"
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "bright-royal",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#3e4e84",
-    "erwartet": "#0057B8",
-    "deltaE": 81,
-    "dupeMit": "russell-authentic-hooded-sweat-bright-royal"
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "bottle-green",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#3f554b",
-    "erwartet": "#004B34",
-    "deltaE": 68,
-    "dupeMit": "russell-authentic-hooded-sweat-bottle-green"
-  },
-  {
-    "produkt": "russell-outdoor-fleece-jacke",
-    "farbe": "black",
-    "quelle": "groener-schulze",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#262424",
+    "frontDom": "#232524",
     "erwartet": "#25282B",
     "deltaE": 8,
     "dupeMit": null
   },
   {
-    "produkt": "russell-outdoor-fleece-jacke",
-    "farbe": "french-navy",
-    "quelle": "groener-schulze",
+    "produkt": "stedman-stedman-classic-t",
+    "farbe": "white",
+    "quelle": "stedman.eu",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#313845",
-    "erwartet": "#1F2A44",
+    "frontDom": "#d5d5d5",
+    "erwartet": "#FFFFFF",
+    "deltaE": 73,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-stedman-classic-t",
+    "farbe": "navy",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#253741",
+    "erwartet": "#20304C",
+    "deltaE": 14,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-stedman-classic-t",
+    "farbe": "red",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#be1d26",
+    "erwartet": "#B62025",
+    "deltaE": 9,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-stedman-classic-t",
+    "farbe": "royal",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#30508a",
+    "erwartet": "#1E4C9A",
+    "deltaE": 24,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-stedman-classic-t",
+    "farbe": "grey",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#b6b2af",
+    "erwartet": "#8A8D8F",
+    "deltaE": 66,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "black",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#101010",
+    "erwartet": "#25282B",
+    "deltaE": 42,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "white",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d0d0d0",
+    "erwartet": "#FFFFFF",
+    "deltaE": 81,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "navy",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#263343",
+    "erwartet": "#20304C",
+    "deltaE": 11,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "red",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#c91d19",
+    "erwartet": "#B62025",
     "deltaE": 23,
     "dupeMit": null
   },
   {
-    "produkt": "russell-outdoor-fleece-jacke",
-    "farbe": "classic-red",
-    "quelle": "groener-schulze",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "royal",
+    "quelle": "stedman.eu",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#c52e44",
-    "erwartet": "#C4122E",
-    "deltaE": 36,
+    "frontDom": "#2d5392",
+    "erwartet": "#1E4C9A",
+    "deltaE": 18,
     "dupeMit": null
   },
   {
-    "produkt": "russell-outdoor-fleece-jacke",
-    "farbe": "bright-royal",
-    "quelle": "groener-schulze",
+    "produkt": "stedman-classic-t-v-neck",
+    "farbe": "black",
+    "quelle": "stedman.eu",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#17356b",
-    "erwartet": "#0057B8",
-    "deltaE": 87,
+    "frontDom": "#212121",
+    "erwartet": "#25282B",
+    "deltaE": 13,
     "dupeMit": null
   },
   {
-    "produkt": "russell-outdoor-fleece-jacke",
-    "farbe": "convoy-grey",
-    "quelle": "groener-schulze",
+    "produkt": "stedman-classic-t-v-neck",
+    "farbe": "white",
+    "quelle": "stedman.eu",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#6a696e",
-    "erwartet": "#7A7C7F",
+    "frontDom": "#d1d1d1",
+    "erwartet": "#FFFFFF",
+    "deltaE": 80,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-v-neck",
+    "farbe": "navy",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#323b54",
+    "erwartet": "#20304C",
+    "deltaE": 23,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-v-neck",
+    "farbe": "red",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#b5303e",
+    "erwartet": "#B62025",
     "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-v-neck-for-women",
+    "farbe": "black",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#202020",
+    "erwartet": "#25282B",
+    "deltaE": 14,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-v-neck-for-women",
+    "farbe": "white",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#c8c8c8",
+    "erwartet": "#FFFFFF",
+    "deltaE": 95,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-v-neck-for-women",
+    "farbe": "navy",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#313950",
+    "erwartet": "#20304C",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-classic-t-v-neck-for-women",
+    "farbe": "red",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#ae2e3b",
+    "erwartet": "#B62025",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-comfort-t",
+    "farbe": "black",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#252525",
+    "erwartet": "#25282B",
+    "deltaE": 7,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-comfort-t",
+    "farbe": "white",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d8d8d8",
+    "erwartet": "#FFFFFF",
+    "deltaE": 68,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-comfort-t",
+    "farbe": "navy",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#253842",
+    "erwartet": "#20304C",
+    "deltaE": 14,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-comfort-t",
+    "farbe": "red",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#c11e27",
+    "erwartet": "#B62025",
+    "deltaE": 11,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-comfort-t",
+    "farbe": "royal",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#30528c",
+    "erwartet": "#1E4C9A",
+    "deltaE": 24,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-comfort-t",
+    "farbe": "grey",
+    "quelle": "stedman.eu",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#b9b4b1",
+    "erwartet": "#8A8D8F",
+    "deltaE": 70,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "black",
+    "quelle": "stedman.eu",
+    "gefunden": [],
+    "frontDom": "",
+    "erwartet": "#25282B",
+    "deltaE": null,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "white",
+    "quelle": "stedman.eu",
+    "gefunden": [],
+    "frontDom": "",
+    "erwartet": "#FFFFFF",
+    "deltaE": null,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "navy",
+    "quelle": "stedman.eu",
+    "gefunden": [],
+    "frontDom": "",
+    "erwartet": "#20304C",
+    "deltaE": null,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "grey",
+    "quelle": "stedman.eu",
+    "gefunden": [],
+    "frontDom": "",
+    "erwartet": "#8A8D8F",
+    "deltaE": null,
     "dupeMit": null
   }
 ]

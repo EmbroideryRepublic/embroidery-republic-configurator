@@ -9909,12 +9909,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-stedman-classic-t-white/front.webp",
+        "back": "/products/stedman-stedman-classic-t-white/front.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-white/front.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow": {
       "views": {
@@ -10199,12 +10199,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-classic-t-for-women-white/front.webp",
+        "back": "/products/stedman-classic-t-for-women-white/front.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-white/front.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow": {
       "views": {
@@ -10471,12 +10471,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-classic-t-v-neck-white/front.webp",
+        "back": "/products/stedman-classic-t-v-neck-white/front.webp",
+        "sleeve_left": "/products/stedman-classic-t-v-neck-white/front.webp",
+        "sleeve_right": "/products/stedman-classic-t-v-neck-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow": {
       "views": {
@@ -10608,12 +10608,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-classic-t-v-neck-for-women-white/front.webp",
+        "back": "/products/stedman-classic-t-v-neck-for-women-white/front.webp",
+        "sleeve_left": "/products/stedman-classic-t-v-neck-for-women-white/front.webp",
+        "sleeve_right": "/products/stedman-classic-t-v-neck-for-women-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow": {
       "views": {
@@ -10772,12 +10772,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/stedman-comfort-t-white/front.webp",
+        "back": "/products/stedman-comfort-t-white/front.webp",
+        "sleeve_left": "/products/stedman-comfort-t-white/front.webp",
+        "sleeve_right": "/products/stedman-comfort-t-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow": {
       "views": {

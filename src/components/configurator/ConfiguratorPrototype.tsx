@@ -409,7 +409,17 @@ export function ConfiguratorPrototype() {
                     320 px für Kopfzeile, Schrittleiste, Produktkopf und
                     Werkzeugleiste verbraucht werden – der Canvas ragte
                     dadurch aus dem Sichtbereich und erzwang Scrollen. */}
-                <div className="relative w-full max-w-[820px] xl:max-w-[960px] 2xl:max-w-[1100px]" style={{ maxHeight: 'min(840px, calc(100vh - 20rem))' }}>
+                <div
+                  // Prüfanker für die Sichtprüfung. Das Kleidungsstück wird auf
+                  // eine Konva-Leinwand gezeichnet – im DOM gibt es dafür kein
+                  // <img>, dessen src man lesen könnte. Ohne diesen Anker lässt
+                  // sich nicht nachweisen, dass der Konfigurator dieselbe Datei
+                  // zeigt wie die Produktseite; genau dort lag der gemeldete
+                  // Fehler ("Liste zeigt Foto, Konfigurator zeigt Silhouette").
+                  data-konfigbild={`${currentColor?.id ?? '-'}/${activeView}/${currentImageUrl}`}
+                  className="relative w-full max-w-[820px] xl:max-w-[960px] 2xl:max-w-[1100px]"
+                  style={{ maxHeight: 'min(840px, calc(100vh - 20rem))' }}
+                >
                   {isLoadingContext ? (
                     <CanvasSkeleton />
                   ) : (

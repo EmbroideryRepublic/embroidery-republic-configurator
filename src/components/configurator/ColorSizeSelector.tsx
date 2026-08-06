@@ -41,6 +41,7 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
             <button
               key={color.id}
               type="button"
+              data-farbe={color.id}
               title={color.name}
               onClick={() => setColor(color.id)}
               className={clsx(

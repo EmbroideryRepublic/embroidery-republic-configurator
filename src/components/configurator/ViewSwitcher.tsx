@@ -36,6 +36,7 @@ export function ViewSwitcher({ imageUrls, views }: ViewSwitcherProps) {
           <button
             key={view}
             type="button"
+            data-ansicht={view}
             onClick={() => setActiveView(view)}
             title={label}
             className={clsx(

@@ -79,12 +79,58 @@ async function produktPruefen(id) {
   return befunde;
 }
 
-window.starten = async (ids) => {
+/**
+ * Derselbe Durchlauf im KONFIGURATOR. Der gemeldete Fehler war ausdrücklich,
+ * dass die Produktliste ein Foto zeigt und der Konfigurator danach eine
+ * Silhouette – die Produktseite allein zu prüfen würde ihn also gar nicht
+ * finden. Das Kleidungsstück liegt dort auf einer Konva-Leinwand, im DOM gibt
+ * es kein <img>; gelesen wird deshalb der Anker data-konfigbild.
+ */
+async function konfigPruefen(id) {
+  await new Promise((fertig) => { rahmen.onload = fertig; rahmen.src = '/konfigurator?produkt=' + id; });
+  const d = rahmen.contentDocument;
+  for (let i = 0; i < 120; i++) {
+    if (d.querySelector('[data-konfigbild]') && d.querySelector('button[data-farbe]')) break;
+    await schlaf(100);
+  }
+  const befunde = [];
+  const farben = [...d.querySelectorAll('button[data-farbe]')];
+  if (!farben.length) return [{ id, farbe: '-', ansicht: '-', problem: 'Konfigurator: keine Farbwahl' }];
+
+  for (const knopf of farben) {
+    const farbe = knopf.dataset.farbe;
+    knopf.click();
+    const ansichten = [...d.querySelectorAll('button[data-ansicht]')].map((b) => b.dataset.ansicht);
+    const gesehen = new Map();
+    for (const view of ansichten.length ? ansichten : ['front']) {
+      d.querySelector(`button[data-ansicht="${view}"]`)?.click();
+      let anker = null;
+      for (let i = 0; i < 40; i++) {
+        anker = d.querySelector('[data-konfigbild]')?.dataset.konfigbild ?? '';
+        if (anker.startsWith(`${farbe}/${view}/`)) break;
+        await schlaf(25);
+      }
+      const pfad = (anker || '').split('/').slice(2).join('/');
+      const melde = (problem) => befunde.push({ id, farbe, ansicht: view, problem: 'Konfigurator: ' + problem });
+      if (!anker.startsWith(`${farbe}/${view}/`)) melde('Zustand nicht übernommen: ' + anker);
+      else if (!pfad) melde('kein Bild');
+      else if (pfad.includes('_platzhalter')) melde(view === 'back' ? 'RUECK-PLATZHALTER' : 'Platzhalter');
+      else if (gesehen.has(pfad)) melde('gleiches Bild wie "' + gesehen.get(pfad) + '"');
+      else gesehen.set(pfad, view);
+    }
+  }
+  return befunde;
+}
+
+window.starten = async (ids, auch = 'beides') => {
   window.ERGEBNIS = null;
   const befunde = [];
   let n = 0;
   for (const id of ids) {
-    try { befunde.push(...(await produktPruefen(id))); }
+    try {
+      if (auch !== 'nur-konfig') befunde.push(...(await produktPruefen(id)));
+      if (auch !== 'nur-produkt') befunde.push(...(await konfigPruefen(id)));
+    }
     catch (e) { befunde.push({ id, farbe: '-', ansicht: '-', problem: 'Fehler: ' + e.message }); }
     n++;
     log.innerHTML = `${n}/${ids.length} geprüft · <span class="${befunde.length ? 'bad' : ''}">${befunde.length} Befunde</span><br>` +

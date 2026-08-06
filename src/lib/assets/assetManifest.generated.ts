@@ -3737,7 +3737,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-navy-blue/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-navy-blue/back.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-navy-blue/front.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-navy-blue/front.webp",
         "sleeve_right": "/products/bundc-inspire-e150-t-shirt-navy-blue/front.webp"
       },
@@ -3746,7 +3746,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-white/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-white/back.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-white/front.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-white/front.webp",
         "sleeve_right": "/products/bundc-inspire-e150-t-shirt-white/front.webp"
       },
@@ -3754,12 +3754,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "off-white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-off-white/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-off-white/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-off-white/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-off-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "mocha": {
       "views": {
@@ -3791,7 +3791,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-red/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-red/back.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-red/front.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-red/front.webp",
         "sleeve_right": "/products/bundc-inspire-e150-t-shirt-red/front.webp"
       },
@@ -3799,12 +3799,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "burgundy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-burgundy/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-burgundy/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-burgundy/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-burgundy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "soft-rose": {
       "views": {
@@ -3836,7 +3836,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "royal-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-royal-blue/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-royal-blue/back.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-royal-blue/front.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-royal-blue/front.webp",
         "sleeve_right": "/products/bundc-inspire-e150-t-shirt-royal-blue/front.webp"
       },
@@ -3880,12 +3880,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "forest-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-forest-green/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-forest-green/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-forest-green/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-forest-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "asphalt": {
       "views": {
@@ -3917,7 +3917,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-navy/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-navy/back.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-navy/front.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-navy/front.webp",
         "sleeve_right": "/products/bundc-inspire-e150-t-shirt-navy/front.webp"
       },

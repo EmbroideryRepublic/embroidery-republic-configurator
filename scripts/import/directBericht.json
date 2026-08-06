@@ -1,882 +1,123 @@
 [
   {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "navy",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "white",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#1f2533",
-    "erwartet": "#1F2532",
-    "deltaE": 1,
+    "frontDom": "#eeeeee",
+    "erwartet": "#FFFFFF",
+    "deltaE": 29,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "navy-blue",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "black",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#2a2829",
+    "erwartet": "#000000",
+    "deltaE": 71,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "navy",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
       "front"
     ],
     "frontDom": "#202634",
-    "erwartet": "#101145",
-    "deltaE": 31,
+    "erwartet": "#1F2532",
+    "deltaE": 2,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "white",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "navy-blue",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#ececec",
-    "erwartet": "#FFFFFF",
-    "deltaE": 33,
-    "dupeMit": null
+    "frontDom": "#202634",
+    "erwartet": "#1F2532",
+    "deltaE": 2,
+    "dupeMit": "bundc-inspire-e150-t-shirt-navy"
   },
   {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
+    "produkt": "bundc-inspire-e150-t-shirt",
     "farbe": "red",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#cc0927",
+    "frontDom": "#d30e2b",
     "erwartet": "#DB001B",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "off-white",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ece4d7",
-    "erwartet": "#F5EFE2",
-    "deltaE": 18,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "mocha",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#6a4e42",
-    "erwartet": "#6C4F3E",
-    "deltaE": 5,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "yellow-fizz",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#fee26b",
-    "erwartet": "#FFE93C",
-    "deltaE": 48,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "pure-orange",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ec631e",
-    "erwartet": "#EB5D0F",
-    "deltaE": 16,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "soft-rose",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#edc9bb",
-    "erwartet": "#F0D1C4",
-    "deltaE": 12,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "magenta-pink",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e5296d",
-    "erwartet": "#DC1A62",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "radiant-purple",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#514279",
-    "erwartet": "#3B1D66",
-    "deltaE": 47,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "burgundy",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#5e2c38",
-    "erwartet": "#5B263D",
-    "deltaE": 8,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "royal-blue",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#043b7e",
-    "erwartet": "#154E8F",
-    "deltaE": 31,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "blue-fog",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#9ab0bc",
-    "erwartet": "#A6B7C2",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "sage",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#9db9ab",
-    "erwartet": "#AAC1B3",
-    "deltaE": 17,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "apple-green",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#48b05b",
-    "erwartet": "#45A94C",
-    "deltaE": 17,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "heather-grey",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#a1a1a3",
-    "erwartet": "#B1B3B4",
-    "deltaE": 29,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "asphalt",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3d4045",
-    "erwartet": "#433F42",
-    "deltaE": 7,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "forest-green",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#304135",
-    "erwartet": "#002500",
-    "deltaE": 77,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "black-pure",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#282627",
-    "erwartet": "#070509",
-    "deltaE": 55,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-inspire-e150-t-shirt-women",
-    "farbe": "lime",
-    "quelle": "allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d1dd79",
-    "erwartet": "#EDEE19",
-    "deltaE": 101,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "wine",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#7f1131",
-    "erwartet": "#830628",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "white",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#ebebeb",
-    "erwartet": "#FFFFFF",
-    "deltaE": 35,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "stone",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#c9bba2",
-    "erwartet": "#F5EDCF",
-    "deltaE": 80,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "gold-yellow",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f7b02f",
-    "erwartet": "#FBBF1F",
-    "deltaE": 22,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "orange",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#f88721",
-    "erwartet": "#F18E00",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "red",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#99182d",
-    "erwartet": "#C80A25",
-    "deltaE": 50,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "aqua",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#47a5e5",
-    "erwartet": "#477AB8",
-    "deltaE": 62,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "royal",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#284a98",
-    "erwartet": "#004985",
-    "deltaE": 44,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "turquoise",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#03a3d1",
-    "erwartet": "#00A9CE",
-    "deltaE": 7,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "navy",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#2c3146",
-    "erwartet": "#003254",
-    "deltaE": 46,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "grey-heather",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#a6a7ab",
-    "erwartet": "#9396A3",
-    "deltaE": 27,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "dark-grey-solid",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#5e635f",
-    "erwartet": "#99A499",
-    "deltaE": 105,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "carbon",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#30333d",
-    "erwartet": "#646F79",
-    "deltaE": 100,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "black",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#2d2d2d",
-    "erwartet": "#1B1B1F",
-    "deltaE": 29,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "brown",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#443126",
-    "erwartet": "#5D4631",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "lime-green",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#67c543",
-    "erwartet": "#9DC118",
-    "deltaE": 69,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-ladies-bio-workwear-t-shirt",
-    "farbe": "dark-green",
-    "quelle": "groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); ",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#114539",
-    "erwartet": "#1B5126",
-    "deltaE": 25,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "black",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#373737",
-    "erwartet": "#1B1B1F",
-    "deltaE": 46,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "white",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#f2f2f2",
-    "erwartet": "#FFFFFF",
     "deltaE": 23,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "navy",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "royal-blue",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#3a4050",
-    "erwartet": "#003254",
-    "deltaE": 60,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "red",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#a32436",
-    "erwartet": "#C80A25",
-    "deltaE": 48,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "royal",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#2c559c",
-    "erwartet": "#004985",
-    "deltaE": 51,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "carbon",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#3b3e46",
-    "erwartet": "#646F79",
-    "deltaE": 82,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "dark-green",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#2b5043",
-    "erwartet": "#1B5126",
-    "deltaE": 33,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "grey-heather",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#acacac",
-    "erwartet": "#9396A3",
-    "deltaE": 34,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "dark-grey-solid",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#565b57",
-    "erwartet": "#99A499",
-    "deltaE": 119,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "wine",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#7b153a",
-    "erwartet": "#830628",
-    "deltaE": 25,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "stone",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#c9bdac",
-    "erwartet": "#F5EDCF",
-    "deltaE": 74,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "orange",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#ff7701",
-    "erwartet": "#F18E00",
+    "frontDom": "#053c82",
+    "erwartet": "#154E8F",
     "deltaE": 27,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "aqua",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "heather-grey",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#3ca4e1",
-    "erwartet": "#477AB8",
-    "deltaE": 60,
+    "frontDom": "#9e9ea0",
+    "erwartet": "#9C9E9F",
+    "deltaE": 2,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "turquoise",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "off-white",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#16a1c9",
-    "erwartet": "#00A9CE",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "brown",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#4d3f36",
-    "erwartet": "#5D4631",
+    "frontDom": "#ece5d8",
+    "erwartet": "#F2EFE6",
     "deltaE": 18,
     "dupeMit": null
   },
   {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "lime-green",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#64b53e",
-    "erwartet": "#9DC118",
-    "deltaE": 70,
-    "dupeMit": null
-  },
-  {
-    "produkt": "jamesnicholson-mens-bio-workwear-t-shirt",
-    "farbe": "gold-yellow",
-    "quelle": "groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "forest-green",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#ffbb3b",
-    "erwartet": "#FBBF1F",
-    "deltaE": 29,
+    "frontDom": "#2f3f33",
+    "erwartet": "#004413",
+    "deltaE": 57,
     "dupeMit": null
   },
   {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "black",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#303032",
-    "erwartet": "#000000",
-    "deltaE": 84,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "bottle-green",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#2f5049",
-    "erwartet": "#00461C",
-    "deltaE": 66,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "bright-royal",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#315090",
-    "erwartet": "#1E519E",
-    "deltaE": 24,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "classic-red",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#c52b45",
-    "erwartet": "#D71925",
-    "deltaE": 41,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "french-navy",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#353b47",
-    "erwartet": "#021E42",
-    "deltaE": 59,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "fuchsia",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e04882",
-    "erwartet": "#EC0083",
-    "deltaE": 73,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "light-oxford-heather",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#a2a2a3",
-    "erwartet": "#9DA6AB",
-    "deltaE": 10,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "orange",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ea643f",
-    "erwartet": "#F26121",
-    "deltaE": 31,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "purple",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#573e78",
-    "erwartet": "#33346E",
-    "deltaE": 39,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "sky",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#7eafd1",
-    "erwartet": "#8BB4DF",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "white",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#e7e6eb",
-    "erwartet": "#FFFFFF",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
-    "farbe": "yellow",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f6d75a",
-    "erwartet": "#FFF450",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-hooded-sweatshirt",
+    "produkt": "bundc-inspire-e150-t-shirt",
     "farbe": "burgundy",
-    "quelle": "textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#542d3b",
-    "erwartet": "#5A032C",
-    "deltaE": 45,
+    "frontDom": "#5e2c38",
+    "erwartet": "#6B2233",
+    "deltaE": 17,
     "dupeMit": null
   }
 ]

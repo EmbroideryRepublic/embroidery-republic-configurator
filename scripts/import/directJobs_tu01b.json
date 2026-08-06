@@ -1,0 +1,59 @@
+[
+  {
+    "productId": "bundc-inspire-e150-t-shirt",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM",
+    "colors": [
+      {
+        "id": "white",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-White.jpg",
+        "erwarteterHex": "#FFFFFF"
+      },
+      {
+        "id": "black",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Black-Pure.jpg",
+        "erwarteterHex": "#000000"
+      },
+      {
+        "id": "navy",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Navy-Blue.jpg",
+        "erwarteterHex": "#1F2532"
+      },
+      {
+        "id": "navy-blue",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Navy-Blue.jpg",
+        "erwarteterHex": "#1F2532"
+      },
+      {
+        "id": "red",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Red.jpg",
+        "erwarteterHex": "#DB001B"
+      },
+      {
+        "id": "royal-blue",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Royal.jpg",
+        "erwarteterHex": "#154E8F"
+      },
+      {
+        "id": "heather-grey",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Heather-Grey.jpg",
+        "erwarteterHex": "#9C9E9F",
+        "back": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-Inspire-E150-T-Shirt-TU01B-qrve.jpg"
+      },
+      {
+        "id": "off-white",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Off-White.jpg",
+        "erwarteterHex": "#F2EFE6"
+      },
+      {
+        "id": "forest-green",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Forest-Green.jpg",
+        "erwarteterHex": "#004413"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Burgundy.jpg",
+        "erwarteterHex": "#6B2233"
+      }
+    ]
+  }
+]

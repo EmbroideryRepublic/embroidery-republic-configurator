@@ -1,4 +1,34 @@
 {
+  "bundc-inspire-e150-t-shirt": {
+    "katalogNr": "TU01B (korrekt)",
+    "korrektNr": "TU01B – nur Bebilderung getauscht",
+    "art": "Falschprodukt-Korrektur: trug TM042-Bilder",
+    "beleg": "Der Import nutzte den Token bc_inspire_t_tm042 – das ist B&C TM042 'Inspire T /men', ein anderer Artikel (140 g/m², MIT Seitennähten, eingenähtes Nackenlabel). TU01B ist 145 g/m², schlauchgestrickt (OHNE Seitennaht) und 'B&C No Label Solution'. Neue Bilder von der TU01B-Artikelseite (allmyclothes Item 7480), deren HTML genau diese drei Merkmale nennt; Prüfsummen unterscheiden sich vom TM042-Referenzbild."
+  },
+  "bundc-inspire-e150-t-shirt-women": {
+    "katalogNr": "TW02B (korrekt)",
+    "korrektNr": "TW02B – nur Bebilderung getauscht",
+    "art": "Falschprodukt-Korrektur: trug TW043-Bilder",
+    "beleg": "Beide Katalogeinträge waren auf denselben Token bc_inspire_t_women_tw043 gemappt. TW043 = 'Inspire T /women' (140 g/m²), TW02B = '#Inspire E150 /women' (145 g/m²) – zwei Artikel. Neue Bilder vom korrekten TW02B (allmyclothes Item 7487), 21 Farben."
+  },
+  "russell-hooded-sweatshirt": {
+    "katalogNr": "R-575M-0 (korrekt)",
+    "korrektNr": "R-575M-0 – nur Bebilderung getauscht",
+    "art": "Falschprodukt-Korrektur: trug R-265M-Bilder",
+    "beleg": "Beide Russell-Hoodie-Einträge waren auf den Token russell_athletic_mens_authentic_hooded_sweat_r-265m-0 gemappt. 'Authentic Hooded Sweat' (R-265M) und 'Hooded Sweatshirt' (R-575M) sind zwei Artikel. Neue Bilder des R-575M von textil-grosshandel.eu, 13 Farben."
+  },
+  "jamesnicholson-ladies-bio-workwear-t-shirt": {
+    "katalogNr": "JN1807 (korrekt)",
+    "korrektNr": "JN1807 – nur Bebilderung getauscht",
+    "art": "Falschprodukt-Korrektur: trug JN802-Bilder",
+    "beleg": "Der Eintrag war auf den Token daiber_workwear_t_women_jn802 gemappt – das ist 'Workwear-T Women' (konventionelle Baumwolle), nicht das BIO-Modell JN1807. Neue Bilder des JN1807, 17 Farben mit Rückansicht."
+  },
+  "jamesnicholson-mens-bio-workwear-t-shirt": {
+    "katalogNr": "JN1808 (korrekt)",
+    "korrektNr": "JN1808 – nur Bebilderung getauscht",
+    "art": "Falschprodukt-Korrektur: trug JN800-Bilder",
+    "beleg": "Analog zum Damenmodell: der Eintrag zeigte JN800 'Workwear-T Men' statt des BIO-Modells JN1808. Neue Bilder des JN1808 (Quell-URLs tragen die Artikelnummer jn1808), 17 Farben mit Rückansicht."
+  },
   "neutral-oversized-t-shirt": {
     "katalogNr": "O60022",
     "korrektNr": "T60011 (Tiger Cotton Oversized T-Shirt)",

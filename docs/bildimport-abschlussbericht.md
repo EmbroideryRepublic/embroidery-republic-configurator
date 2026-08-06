@@ -4,8 +4,8 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 
 ## Übersicht
 - Produkte mit echten Bildern: **154 / 154**
-- Echte Farb-Bildsätze: **981**
-- Farben mit echter Rückansicht: **764** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **217**
+- Echte Farb-Bildsätze: **984**
+- Farben mit echter Rückansicht: **759** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **225**
 - Noch offen (nur Platzhalter): **0** Produkte
 
 ## Bebilderte Produkte
@@ -56,7 +56,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | jn-halfzip-sweat | James+Nicholson | — | 2 | back+front | 2 |
 | bundc-t-shirt-e190 | B&C | sportyfied.com | 7 | back+front | 7 |
 | bundc-t-shirt-e190-women | B&C | sportyfied.com | 7 | back+front | 7 |
-| bundc-inspire-e150-t-shirt | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 6 |
+| bundc-inspire-e150-t-shirt | B&C | allmyclothes.de (B2B-Grosshandel, Item 7480 = BCTU01B) — Original-B&C-Studiofotos aus dem Hersteller-DAM | 9 | back+front | 1 · ohne echte Rückansicht: 8 (navy-blue, white, off-white, red, burgundy, royal-blue, forest-green, navy) |
 | bundc-t-shirt-e150 | B&C | sportyfied.com | 7 | back+front+sleeve_left | 7 |
 | bundc-inspire-e150-t-shirt-women | B&C | allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW | 21 | front | 0 · ohne echte Rückansicht: 21 (navy-blue, white, red, off-white, mocha, yellow-fizz, pure-orange, soft-rose, magenta-pink, radiant-purple, burgundy, royal-blue, blue-fog, sage, apple-green, heather-grey, asphalt, forest-green, black-pure, lime, navy) |
 | bundc-t-shirt-e150-women | B&C | sportyfied.com | 7 | back+front+sleeve_left | 7 |
@@ -173,6 +173,11 @@ entsprechend nachgezogen werden._
 
 | Produkt | Katalog-Nr. | Belegte korrekte Nr. | Art | Beleg |
 |---|---|---|---|---|
+| bundc-inspire-e150-t-shirt | TU01B (korrekt) | **TU01B – nur Bebilderung getauscht** | Falschprodukt-Korrektur: trug TM042-Bilder | Der Import nutzte den Token bc_inspire_t_tm042 – das ist B&C TM042 'Inspire T /men', ein anderer Artikel (140 g/m², MIT Seitennähten, eingenähtes Nackenlabel). TU01B ist 145 g/m², schlauchgestrickt (OHNE Seitennaht) und 'B&C No Label Solution'. Neue Bilder von der TU01B-Artikelseite (allmyclothes Item 7480), deren HTML genau diese drei Merkmale nennt; Prüfsummen unterscheiden sich vom TM042-Referenzbild. |
+| bundc-inspire-e150-t-shirt-women | TW02B (korrekt) | **TW02B – nur Bebilderung getauscht** | Falschprodukt-Korrektur: trug TW043-Bilder | Beide Katalogeinträge waren auf denselben Token bc_inspire_t_women_tw043 gemappt. TW043 = 'Inspire T /women' (140 g/m²), TW02B = '#Inspire E150 /women' (145 g/m²) – zwei Artikel. Neue Bilder vom korrekten TW02B (allmyclothes Item 7487), 21 Farben. |
+| russell-hooded-sweatshirt | R-575M-0 (korrekt) | **R-575M-0 – nur Bebilderung getauscht** | Falschprodukt-Korrektur: trug R-265M-Bilder | Beide Russell-Hoodie-Einträge waren auf den Token russell_athletic_mens_authentic_hooded_sweat_r-265m-0 gemappt. 'Authentic Hooded Sweat' (R-265M) und 'Hooded Sweatshirt' (R-575M) sind zwei Artikel. Neue Bilder des R-575M von textil-grosshandel.eu, 13 Farben. |
+| jamesnicholson-ladies-bio-workwear-t-shirt | JN1807 (korrekt) | **JN1807 – nur Bebilderung getauscht** | Falschprodukt-Korrektur: trug JN802-Bilder | Der Eintrag war auf den Token daiber_workwear_t_women_jn802 gemappt – das ist 'Workwear-T Women' (konventionelle Baumwolle), nicht das BIO-Modell JN1807. Neue Bilder des JN1807, 17 Farben mit Rückansicht. |
+| jamesnicholson-mens-bio-workwear-t-shirt | JN1808 (korrekt) | **JN1808 – nur Bebilderung getauscht** | Falschprodukt-Korrektur: trug JN800-Bilder | Analog zum Damenmodell: der Eintrag zeigte JN800 'Workwear-T Men' statt des BIO-Modells JN1808. Neue Bilder des JN1808 (Quell-URLs tragen die Artikelnummer jn1808), 17 Farben mit Rückansicht. |
 | neutral-oversized-t-shirt | O60022 | **T60011 (Tiger Cotton Oversized T-Shirt)** | Katalognummer existiert nicht | O60022 in neutral.com Vollkatalog (products.json), Kollektionsfeed und Wayback-CDX über die gesamte Domain nicht auffindbar – die O-Serie ist Neutrals Regular-Fit-Linie. T60011 ist das einzige Kurzarm-Oversize-Tee; seine offizielle 12er-Farbliste (inkl. Dusty Indigo/Mint/Purple, Raw, Teal, Bottle Green) deckt sich 1:1 mit den 12 Katalogfarben. |
 | earthpositive-jersey-polo-shirt | EP21 | **EP39 (Earth Positive Jersey Polo Shirt)** | Katalognummer bezeichnet ein anderes Produkt | Wayback-Snapshots der offiziellen Continental-Clothing-Seite belegen EP21 als 'Men's Pique Polo' (180 g Piqué) – kein Jersey-Polo. Im Herstellershop (continentalclothing.com/about/earthpositive → earthpositiveonline.com) heisst genau ein Artikel 'Jersey Polo Shirt': EP39 (EP40 = Piqué). EP39 existiert nur in Black. |
 | fruit-of-the-loom-iconic-250-hooded-sweat | 62-150 | **62-294-0 (Modell 0622940)** | Katalognummer bezeichnet ein anderes Produkt | 62-150 ist die FOTL Lady-Fit Lightweight Hooded Sweat Jacket. Auf fruitoftheloom.eu löst 0622940 auf /shop/p/iconic-250-hooded-sweat/ auf (H1 'Iconic 250 Hooded Sweat', Modell 0622940, Unisex, 230/240 g/m²). Die 10 Herstellerfarben decken sich exakt mit den 10 Katalogfarben. Bild-CDN-Pfad enthält die Artikelnummer (…/product/062294/…), Fremdprodukt technisch ausgeschlossen. |

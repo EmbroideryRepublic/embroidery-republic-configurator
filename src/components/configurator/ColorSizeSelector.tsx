@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import type { ProductConfig } from '@/config/products';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
+import { waehlbareFarben } from '@/lib/products/farben';
 
 interface ColorSizeSelectorProps {
   product: ProductConfig;
@@ -15,7 +16,10 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
-  const aktiveFarbe = product.colors.find((c) => c.id === colorId) ?? product.colors[0];
+  // Nur Farben mit echtem Herstellerfoto zur Auswahl stellen: Ein Klick auf eine
+  // Farbe ohne Bild ersetzte die Produktansicht durch die Platzhalter-Silhouette.
+  const farben = waehlbareFarben(product.id, product.colors);
+  const aktiveFarbe = farben.find((c) => c.id === colorId) ?? farben[0];
 
   return (
     <div className="flex w-full flex-wrap items-center justify-between gap-4 rounded-xl border border-gold/20 bg-white px-4 py-3 shadow-elegant">
@@ -33,7 +37,7 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
           {t('color_label')} <span className="font-medium text-brand">{aktiveFarbe?.name}</span>
         </span>
         <div className="flex flex-wrap justify-end gap-1.5">
-          {product.colors.map((color) => (
+          {farben.map((color) => (
             <button
               key={color.id}
               type="button"

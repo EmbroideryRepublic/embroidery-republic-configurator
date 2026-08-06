@@ -22,6 +22,7 @@
  * WELCHER Gruppe ein vorhandener Wert angehört.
  */
 import type { ProductConfig } from './types';
+import { waehlbareFarben } from '@/lib/products/farben';
 import {
   MATERIAL_GRUPPEN_GENERIERT,
   PASSFORMEN_GENERIERT,
@@ -227,7 +228,9 @@ export function geschlechterVon(p: ProductConfig): Geschlecht[] {
 
 export function farbgruppenVon(p: ProductConfig): Farbgruppe[] {
   const gruppen = new Set<Farbgruppe>();
-  for (const farbe of p.colors) {
+  // Nur die tatsächlich wählbaren Farben zählen: Wer nach „Pink" filtert, soll
+  // kein Produkt bekommen, bei dem Pink gar nicht anwählbar ist.
+  for (const farbe of waehlbareFarben(p.id, p.colors)) {
     const g = FARBGRUPPEN[farbe.name];
     if (g) gruppen.add(g);
   }

@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { SizeGuideModal } from './SizeGuideModal';
 import type { ProductConfig } from '@/config/products';
+import { waehlbareFarben } from '@/lib/products/farben';
 
 interface ProductDetailsProps {
   product: ProductConfig;
@@ -63,7 +64,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             </div>
             <div>
               <dt className="text-brand/40">{t('product_details_colors_available')}</dt>
-              <dd className="text-brand/80">{product.colors.length}</dd>
+              <dd className="text-brand/80">{waehlbareFarben(product.id, product.colors).length}</dd>
             </div>
           </dl>
 

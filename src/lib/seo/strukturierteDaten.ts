@@ -19,6 +19,7 @@
  */
 import type { ProductConfig } from '@/config/products/types';
 import { repraesentativBildVon, PLATZHALTER_BILD } from '@/lib/assets';
+import { waehlbareFarben } from '@/lib/products/farben';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ermittleVerfuegbarkeit } from '@/lib/catalog/verfuegbarkeit';
 
@@ -41,7 +42,10 @@ function schemaVerfuegbarkeit(produkt: ProductConfig): string {
  */
 export function produktSchema(produkt: ProductConfig, basis: string): Record<string, unknown> {
   const url = `${basis}/produkt/${produkt.id}`;
-  const bilder = produkt.colors
+  // Nur wählbare Farben auszeichnen – sonst verspricht das Suchergebnis eine
+  // Farbe, die der Kunde auf der Seite gar nicht anklicken kann.
+  const farben = waehlbareFarben(produkt.id, produkt.colors);
+  const bilder = farben
     .map((farbe) => repraesentativBildVon(produkt.id, farbe.id))
     // Platzhalter (Bildimport noch offen) NIE als Produktbild veröffentlichen
     // (ADR 0004): keine Platzhalter in JSON-LD/Suchmaschinen.
@@ -57,7 +61,7 @@ export function produktSchema(produkt: ProductConfig, basis: string): Record<str
     url,
     brand: { '@type': 'Brand', name: produkt.brand },
     material: produkt.material,
-    color: produkt.colors.map((f) => f.name),
+    color: farben.map((f) => f.name),
     // Einheitsgrößen-/größenlose Produkte (künftig) zeichnen KEIN leeres size-Array aus.
     ...(produkt.sizes.length > 0 ? { size: produkt.sizes } : {}),
     offers: {

@@ -34,6 +34,7 @@ import { uebernehmeAuswahl } from '@/lib/configurator/uebernahme';
 import { vorladenListe, vorladenModell } from '@/lib/configurator/vorladen';
 import { getProduct } from '@/config/products';
 import { produktBild } from '@/lib/assets';
+import { waehlbareFarben } from '@/lib/products/farben';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useBrowserStore } from '@/stores/browserStore';
 import { useFavoritesStore } from '@/stores/favoritesStore';
@@ -468,8 +469,9 @@ function Modellkarte({
 }) {
   const badges = modellBadges(produkt);
   const MAX_PUNKTE = 6;
-  const punkte = produkt.colors.slice(0, MAX_PUNKTE);
-  const weitere = produkt.colors.length - punkte.length;
+  const farben = waehlbareFarben(produkt.id, produkt.colors);
+  const punkte = farben.slice(0, MAX_PUNKTE);
+  const weitere = farben.length - punkte.length;
 
   return (
     <button
@@ -541,7 +543,7 @@ function Modellkarte({
         </div>
 
         <div className="mt-3 flex items-center justify-between gap-2">
-          <span className="flex items-center gap-1" aria-label={`${produkt.colors.length} Farben`}>
+          <span className="flex items-center gap-1" aria-label={`${farben.length} Farben`}>
             {punkte.map((c) => (
               <span
                 key={c.id}

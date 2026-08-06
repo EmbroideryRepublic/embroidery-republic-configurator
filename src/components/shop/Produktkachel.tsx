@@ -22,6 +22,7 @@ import Image from 'next/image';
 import { Leaf } from 'lucide-react';
 import type { ProductConfig } from '@/config/products/types';
 import { produktBild } from '@/lib/assets';
+import { waehlbareFarben } from '@/lib/products/farben';
 import { materialGruppen } from '@/config/products/facetten';
 import { formatiereGeld } from '@/lib/format';
 import { ermittleVerfuegbarkeit, VERFUEGBARKEIT_LABELS } from '@/lib/catalog/verfuegbarkeit';
@@ -41,6 +42,9 @@ export function Produktkachel({
   produkt, bestseller, ansicht,
 }: { produkt: ProductConfig; bestseller: boolean; ansicht: Ansicht }) {
   const stand = ermittleVerfuegbarkeit(produkt);
+  // Die Punkte versprechen „diese Farben bekommst du" – deshalb dieselbe
+  // Auswahl wie auf der Produktseite, nicht die volle Herstellerpalette.
+  const farben = waehlbareFarben(produkt.id, produkt.colors);
   const gruppen = materialGruppen(produkt);
   const nachhaltig = gruppen.includes('bio-baumwolle') || gruppen.includes('recycelt');
   const liste = ansicht === 'liste';
@@ -106,12 +110,12 @@ export function Produktkachel({
         </p>
 
         <div className="mt-3.5 flex items-center gap-2">
-          {produkt.colors.slice(0, PUNKTE).map((f) => (
+          {farben.slice(0, PUNKTE).map((f) => (
             <span key={f.id} title={f.name} className={PUNKT} style={{ backgroundColor: f.hex }} />
           ))}
-          {produkt.colors.length > PUNKTE && (
+          {farben.length > PUNKTE && (
             <span className="ml-1 text-[11px] tracking-wide text-brand/40">
-              +{produkt.colors.length - PUNKTE}
+              +{farben.length - PUNKTE}
             </span>
           )}
         </div>

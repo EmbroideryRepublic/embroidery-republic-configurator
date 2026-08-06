@@ -29,6 +29,7 @@ import { ArrowRight, Package, Palette, Scissors, Shirt } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { PRODUCTS } from '@/config/products';
 import { repraesentativBildVon, produktBild } from '@/lib/assets';
+import { waehlbareFarben } from '@/lib/products/farben';
 import { FARBGRUPPEN } from '@/config/products/facetten';
 import { produktTypLabel, PRODUCT_TYPE_ORDER, PRODUCT_TYPES } from '@/config/products/types';
 import { SHIPPING_RATES } from '@/config/shipping';
@@ -60,7 +61,9 @@ const REIHENFOLGE = PRODUCT_TYPE_ORDER;
 function findeBild(treffer: typeof PRODUCTS, art: ProductType): string | undefined {
   for (const wunsch of PRODUCT_TYPES[art]?.kachelFarbe ?? []) {
     for (const p of treffer) {
-      const farbe = p.colors.find((c) => FARBGRUPPEN[c.name] === wunsch);
+      // Nur wählbare Farben: sonst zeigt die Kachel einen Ton, den es beim
+      // Öffnen des Produkts gar nicht zur Auswahl gibt.
+      const farbe = waehlbareFarben(p.id, p.colors).find((c) => FARBGRUPPEN[c.name] === wunsch);
       if (farbe) return repraesentativBildVon(p.id, farbe.id);
     }
   }
@@ -88,7 +91,7 @@ export default function Startseite() {
   // kein Entwurfsraster. Gleiche Farbnamen erscheinen nur einmal.
   const toene = new Map<string, { hex: string; gruppe: string }>();
   for (const p of PRODUCTS) {
-    for (const c of p.colors) {
+    for (const c of waehlbareFarben(p.id, p.colors)) {
       const gruppe = FARBGRUPPEN[c.name];
       if (c.hex && gruppe && !toene.has(c.name)) toene.set(c.name, { hex: c.hex, gruppe });
     }

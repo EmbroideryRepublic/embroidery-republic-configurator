@@ -16,17 +16,21 @@ import type { PrintView } from '@/types';
 import type { ProductConfig } from '@/config/products/types';
 import { bildFuerAnsicht, repraesentativBildVon, repraesentativeFarbe } from '@/lib/assets';
 import { sichtbareAnsichten } from '@/lib/products/ansichten';
+import { waehlbareFarben } from '@/lib/products/farben';
 import { positionLabel } from '@/config/decorationPositions';
 
 export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
+  // Nur Farben anbieten, für die ein echtes Herstellerfoto vorliegt – sonst
+  // klickte der Kunde eine Farbe an und bekam die Platzhalter-Silhouette.
+  const farben = waehlbareFarben(produkt.id, produkt.colors);
   // Startfarbe ist die erste MIT echten Fotos – nicht stumpf colors[0]. Die
   // Paletten führen alle Herstellerfarben, Fotos gibt es nur für die wichtigsten;
   // sonst öffnete die Produktseite auf einem Platzhalter, obwohl Fotos existieren.
   const [farbIndex, setFarbIndex] = useState(() => {
-    const start = repraesentativeFarbe(produkt.id, produkt.colors);
-    return Math.max(0, produkt.colors.findIndex((c) => c.id === start?.id));
+    const start = repraesentativeFarbe(produkt.id, farben);
+    return Math.max(0, farben.findIndex((c) => c.id === start?.id));
   });
-  const farbe = produkt.colors[farbIndex] ?? produkt.colors[0];
+  const farbe = farben[farbIndex] ?? farben[0];
   // Nur Ansichten mit eigenem Bild anbieten (Ärmel sind nicht überall
   // fotografiert) – sonst zeigte „Ärmel links" schlicht die Vorderansicht.
   const ansichten = sichtbareAnsichten(produkt, farbe?.id);
@@ -72,9 +76,9 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
         <p className="text-sm font-medium text-brand">
           Farbe: <span className="font-normal text-brand/70">{farbe.name}</span>
         </p>
-        <p className="mt-0.5 text-xs text-brand/50">{produkt.colors.length} Farben verfügbar</p>
+        <p className="mt-0.5 text-xs text-brand/50">{farben.length} Farben verfügbar</p>
         <div className="mt-2.5 flex flex-wrap gap-2">
-          {produkt.colors.map((c, i) => (
+          {farben.map((c, i) => (
             <button
               key={c.id}
               type="button"

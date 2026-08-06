@@ -306,5 +306,117 @@
   "stedman-comfort-t": {
     "quelle": "stedman.eu (offizielle Hersteller-Medienbibliothek)",
     "hinweis": "nur echte Vorderansicht (stedman.eu hat keine per-Farbe-Rückansicht) - Rückansicht Front-Alias bis Original gefunden"
+  },
+  "russell-ladies-pure-organic-heavy-tee": {
+    "quelle": "freewear.de",
+    "hinweis": "front"
+  },
+  "gildan-light-cotton-adult-t-shirt": {
+    "quelle": "Offizielle Gildan-Herstellerseite (gildan.com, BigCommerce-Store s-25plmff032, P",
+    "hinweis": "front+back"
+  },
+  "earthpositive-pique-polo-shirt": {
+    "quelle": "baroneclothing.com (Magento-CDN media/catalog/product) — Earth Positive EP20 Men",
+    "hinweis": "front"
+  },
+  "russell-poloshirt-6535": {
+    "quelle": "groener-schulze.com",
+    "hinweis": "front+back+side"
+  },
+  "gildan-hammer-maxweight-adult-hooded-sweatshirt": {
+    "quelle": "shop.ralawise.com (Ralawise, Gildan-Fachhaendler; Artikel GD028 = EU/UK-Aequival",
+    "hinweis": "front"
+  },
+  "earthpositive-earth-positive-pullover-hoodie": {
+    "quelle": "shirtplus.net (Shopify-CDN) – offizieller Continental Clothing / EarthPositive E",
+    "hinweis": "front"
+  },
+  "earthpositive-earth-positive-women-s-half-zip-hoodie": {
+    "quelle": "EarthPositive / Continental Clothing (offizielle Herstellerquelle: PIM api pim.e",
+    "hinweis": "front+back"
+  },
+  "earthpositive-unisex-organic-pullover-hood-ep": {
+    "quelle": "fifthcolumn.co.uk (Continental/EarthPositive Kampagnenbilder, weisser Studiohint",
+    "hinweis": "front"
+  },
+  "just-hoods-organic-hoodie-jh201": {
+    "quelle": "Ralawise (shop.ralawise.com) - offizieller AWDis/Just Hoods Distributor; saubere",
+    "hinweis": "front"
+  },
+  "just-hoods-vision-heavyweight-hoodie": {
+    "quelle": "awdis.com (offizielle Herstellerseite / Medienbibliothek)",
+    "hinweis": "front"
+  },
+  "russell-ladies-authentic-hood": {
+    "quelle": "groener-schulze.com",
+    "hinweis": "front+back+side"
+  },
+  "just-hoods-signature-heavyweight-sweat": {
+    "quelle": "ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers",
+    "hinweis": "front"
+  },
+  "jhk-hooded-sweater": {
+    "quelle": "jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict",
+    "hinweis": "front+back+side"
+  },
+  "earthpositive-premium-long-sleeve-t-shirt": {
+    "quelle": "shirtplus.net (Shopify-CDN, hostet Continentals offizielle EP01L-Studioflats mit",
+    "hinweis": "front"
+  },
+  "gildan-ultra-cotton-long-sleeve-t-shirt": {
+    "quelle": "blankstyle.com (cdn.blankstyle.com, Full-Res p_images-Pfad)",
+    "hinweis": "front+back+side"
+  },
+  "bundc-t-shirt-e150-long-sleeve-unisex-exact": {
+    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite)",
+    "hinweis": "front"
+  },
+  "earthpositive-unisex-organic-longsleeve-t-shirt": {
+    "quelle": "dynamics.se (Shopify CDN, EP01L Earth Positive Long Sleeve T-shirt Produktseite;",
+    "hinweis": "front"
+  },
+  "just-cool-long-sleeve-cool-t": {
+    "quelle": "shop.ralawise.com",
+    "hinweis": "front"
+  },
+  "bundc-mens-t-shirt-e190-long-sleeve-exact": {
+    "quelle": "groener-schulze.com",
+    "hinweis": "front+back+side"
+  },
+  "neutral-recycled-performance-long-sleeve-t-shirt": {
+    "quelle": "neutral.com (offizielle Hersteller-Medienbibliothek / Shopify-CDN)",
+    "hinweis": "front"
+  },
+  "id-identity-microfleece-jacke": {
+    "quelle": "id.dk (offizielle ID Identity Medienbibliothek, id-identity.azureedge.net CDN)",
+    "hinweis": "front+back"
+  },
+  "bundc-microfleece-duo-id501": {
+    "quelle": "falk-ross.eu",
+    "hinweis": "front"
+  },
+  "russell-mens-pure-organic-heavy-tee": {
+    "quelle": "freewear.de",
+    "hinweis": "front"
+  },
+  "russell-mens-pure-organic-v-neck-tee": {
+    "quelle": "media2.designpartner.fr (Bild-CDN hinter lamaisonduteeshirt.com). Muster: https://media2.d",
+    "hinweis": "front+back+side"
+  },
+  "stedman-clive-crew-neck": {
+    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/)",
+    "hinweis": "front"
+  },
+  "earthpositive-earth-positive-super-heavy-hoodie": {
+    "quelle": "Offizieller EarthPositive / Continental Clothing Shopify-Store (earthpositiveonline.com, c",
+    "hinweis": "front"
+  },
+  "earthpositive-earthpositive-organic-mensunisex-pullover-hoodie": {
+    "quelle": "shirtplus.net (EP301 Shopify CDN)",
+    "hinweis": "front"
+  },
+  "bundc-t-shirt-e150-long-sleeve-women-exact": {
+    "quelle": "bc-collection.eu",
+    "hinweis": "front"
   }
 }

@@ -18,6 +18,14 @@ import { PLATZHALTER_BILD } from '../src/lib/assets/index.ts';
 const quellen: Record<string, { quelle: string; hinweis?: string }> =
   JSON.parse(readFileSync('scripts/import/quellen.json', 'utf-8'));
 
+/** Begründung je noch offenem Produkt (warum kein sauberes Echtbild). Optional. */
+let offenGruende: Record<string, string> = {};
+try {
+  offenGruende = JSON.parse(readFileSync('scripts/import/offen-gruende.json', 'utf-8'));
+} catch {
+  /* keine Gründe-Datei vorhanden – dann ohne Begründung listen */
+}
+
 /** Ist eine Ansicht ein echtes eigenes Bild (kein Platzhalter, kein Front-Alias)? */
 const istEigen = (pfad: string, front: string | undefined, view: string) =>
   pfad !== PLATZHALTER_BILD && (view === 'front' || pfad !== front);
@@ -62,7 +70,8 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 ${zeilen.join('\n')}
 
 ## Noch offen (Recherche/Import ausstehend)
-${Object.entries(offen).sort((a, b) => b[1].length - a[1].length).map(([b, a]) => `- **${b}** (${a.length}): ${a.join(', ')}`).join('\n')}
+${Object.entries(offen).sort((a, b) => b[1].length - a[1].length).map(([b, a]) =>
+  `- **${b}** (${a.length}):\n${a.map((id) => `  - \`${id}\`${offenGruende[id] ? ` — ${offenGruende[id]}` : ''}`).join('\n')}`).join('\n')}
 `;
 
 writeFileSync('docs/bildimport-abschlussbericht.md', kopf, 'utf-8');

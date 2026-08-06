@@ -10,7 +10,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { alleProduktSlugs, ladeProduktseite } from '../productPage';
 import { PRODUCTS } from '@/config/products';
-import { ansichtenVon } from '@/lib/products/ansichten';
+import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 import { bildFuerAnsicht } from '@/lib/assets';
 
 test('jedes Katalogprodukt hat einen Slug', () => {
@@ -52,15 +52,14 @@ test('jede Produktseite lädt und trägt die Pflichtangaben', () => {
   }
 });
 
-test('jedes Produkt hat Bilder für alle geführten Ansichten', () => {
+test('jedes Produkt hat Bilder für alle ZEIGBAREN Ansichten', () => {
   for (const slug of alleProduktSlugs()) {
     const p = ladeProduktseite(slug)!.produkt;
-    // Datengetrieben: die geführten Ansichten kommen aus ansichtenVon(),
-    // nicht aus einer festen front/back/sleeve-Liste.
-    const noetig = ansichtenVon(p);
-
+    // Maßgeblich ist sichtbareAnsichten(): geführt = wo bedruckbar, zeigbar = wo
+    // auch ein Bild existiert. Ärmelansichten ohne eigenes Foto werden nicht
+    // angeboten, statt sie mit dem Vorderbild zu füllen.
     for (const c of p.colors) {
-      for (const v of noetig) {
+      for (const v of sichtbareAnsichten(p, c.id)) {
         assert.ok(bildFuerAnsicht(p.id, c.id, v), `${slug}/${c.id}: Bild für ${v} fehlt`);
       }
     }

@@ -15,11 +15,10 @@ import Image from 'next/image';
 import type { PrintView } from '@/types';
 import type { ProductConfig } from '@/config/products/types';
 import { bildFuerAnsicht, repraesentativBildVon, repraesentativeFarbe } from '@/lib/assets';
-import { ansichtenVon } from '@/lib/products/ansichten';
+import { sichtbareAnsichten } from '@/lib/products/ansichten';
 import { positionLabel } from '@/config/decorationPositions';
 
 export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
-  const ansichten = ansichtenVon(produkt);
   // Startfarbe ist die erste MIT echten Fotos – nicht stumpf colors[0]. Die
   // Paletten führen alle Herstellerfarben, Fotos gibt es nur für die wichtigsten;
   // sonst öffnete die Produktseite auf einem Platzhalter, obwohl Fotos existieren.
@@ -27,17 +26,23 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
     const start = repraesentativeFarbe(produkt.id, produkt.colors);
     return Math.max(0, produkt.colors.findIndex((c) => c.id === start?.id));
   });
+  const farbe = produkt.colors[farbIndex] ?? produkt.colors[0];
+  // Nur Ansichten mit eigenem Bild anbieten (Ärmel sind nicht überall
+  // fotografiert) – sonst zeigte „Ärmel links" schlicht die Vorderansicht.
+  const ansichten = sichtbareAnsichten(produkt, farbe?.id);
   const [ansicht, setAnsicht] = useState<PrintView>(ansichten[0] ?? 'front');
 
-  const farbe = produkt.colors[farbIndex] ?? produkt.colors[0];
   if (!farbe) return null;
+  // Nach einem Farbwechsel kann die gewählte Ansicht wegfallen (z.B. Ärmelfoto
+  // nur bei manchen Farben) – dann die erste zeigbare rendern.
+  const aktiveAnsicht = ansichten.includes(ansicht) ? ansicht : (ansichten[0] ?? 'front');
 
   return (
     <div>
       <div className="relative aspect-square overflow-hidden rounded-2xl border border-brand/[0.08] bg-white">
         <Image
-          src={bildFuerAnsicht(produkt.id, farbe.id, ansicht) ?? repraesentativBildVon(produkt.id, farbe.id)}
-          alt={`${produkt.name} in ${farbe.name}, ${positionLabel(ansicht)}`}
+          src={bildFuerAnsicht(produkt.id, farbe.id, aktiveAnsicht) ?? repraesentativBildVon(produkt.id, farbe.id)}
+          alt={`${produkt.name} in ${farbe.name}, ${positionLabel(aktiveAnsicht)}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-contain p-6"
@@ -51,9 +56,9 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
             key={view}
             type="button"
             onClick={() => setAnsicht(view)}
-            aria-pressed={ansicht === view}
+            aria-pressed={aktiveAnsicht === view}
             className={`rounded-full border px-3 py-1 text-xs transition ${
-              ansicht === view
+              aktiveAnsicht === view
                 ? 'border-brand bg-brand text-white'
                 : 'border-brand/15 bg-white text-brand/60 hover:border-gold/50 hover:text-brand'
             }`}

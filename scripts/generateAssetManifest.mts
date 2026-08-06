@@ -68,19 +68,27 @@ for (const p of PRODUCTS) {
     const key = storageKey(p.id, c.id);
     const views: Record<string, string> = {};
     const frontReal = !!key && hatDatei(key, 'front');
-    if (key) {
+    if (key && frontReal) {
       for (const view of p.views) {
         if (hatDatei(key, view)) {
           views[view] = `/products/${key}/${dateiBasis(view)}.webp`;
-        } else if (frontReal) {
-          // Fehlende deklarierte Ansicht → Vorderbild-Alias (kein Platzhalter,
-          // kein generiertes Bild) – reproduziert das Bestandsverhalten.
-          views[view] = `/products/${key}/front.webp`;
+          continue;
         }
+        // KEIN Vorderbild-Alias mehr. Ein Frontfoto unter „Rückseite" oder
+        // „Ärmel" ist sichtbar falsch (Kragen, Tasche, Aufdruck stimmen nicht).
+        if (view === 'back') {
+          // Rückseite bleibt geführt (Rückendruck ist ein Kernangebot) und
+          // bekommt den neutralen Platzhalter als ehrlichen Fallback.
+          views[view] = PLATZHALTER_BILD;
+        }
+        // Ärmelansichten OHNE eigenes Bild werden gar nicht erst geführt –
+        // die UI blendet sie dadurch aus, statt sie mit der Front zu füllen.
       }
     }
-    const vollstaendig = p.views.length > 0 && Object.keys(views).length === p.views.length;
-    if (vollstaendig) {
+    // „real" hängt allein an einer echten VORDERANSICHT. Vorher musste jede
+    // deklarierte Ansicht vorhanden sein, was nur durch das Front-Alias erfüllt
+    // war – ohne Alias wären sonst fast alle Farben faelschlich Platzhalter.
+    if (frontReal) {
       byColor[c.id] = { views, status: 'real' };
       realFarben++;
     } else {

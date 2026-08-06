@@ -17,6 +17,7 @@
  */
 import type { ProductColorConfig, ProductConfig } from '@/config/products/types';
 import { naechsteGroesse, groessenLeiterVon } from '@/config/products/groessen';
+import { assetVerfuegbarkeit } from '@/lib/assets';
 
 function hexZuRgb(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
@@ -40,10 +41,17 @@ function farbabstand(a: string, b: string): number {
  *
  * Erst der exakt gleiche Name (Groß-/Kleinschreibung egal – „Navy" bleibt
  * „Navy"), sonst der farblich nächste Ton. Ohne Vorgabe: die erste Farbe.
+ *
+ * Gewählt wird NUR unter Farben mit echten Produktfotos, solange es welche gibt.
+ * Die Katalogpaletten führen alle Herstellerfarben, Fotos existieren aber nur für
+ * die wichtigsten; ohne diese Einschränkung landete der Produktwechsel auf einem
+ * farblich nahen Ton OHNE Foto – der Kunde sah dann im Konfigurator eine
+ * Silhouette, obwohl die Produktliste daneben ein echtes Foto zeigte.
  */
 export function passendeFarbe(neu: ProductConfig, altFarbe: ProductColorConfig | undefined): string | undefined {
-  const farben = neu.colors;
-  if (farben.length === 0) return undefined;
+  if (neu.colors.length === 0) return undefined;
+  const mitFotos = neu.colors.filter((c) => assetVerfuegbarkeit(neu.id, c.id) === 'vorhanden');
+  const farben = mitFotos.length ? mitFotos : neu.colors;
   if (!altFarbe) return farben[0]!.id;
 
   const exakt = farben.find((c) => c.name.toLowerCase() === altFarbe.name.toLowerCase());

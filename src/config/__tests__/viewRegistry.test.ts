@@ -14,9 +14,9 @@ import {
   istGueltigeView,
   viewDef,
 } from '@/config/decorationPositions';
-import { ansichtenVon } from '@/lib/products/ansichten';
+import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 import { getPrintAreas } from '@/config/printAreas';
-import { bildFuerAnsicht } from '@/lib/assets';
+import { bildFuerAnsicht, assetVerfuegbarkeit } from '@/lib/assets';
 import { getPricingRules } from '@/config/pricingRules';
 
 // ── Registry-Integrität ────────────────────────────────────────────────
@@ -88,17 +88,39 @@ test('jede geführte Ansicht existiert in der Registry UND hat einen Druckbereic
   assert.deepEqual(fehler, [], 'geführte Ansichten ohne Registry-Eintrag/Druckfläche');
 });
 
-test('jede Produktfarbe liefert ein Bild für jede geführte Ansicht', () => {
+/**
+ * Früher wurde hier verlangt, dass JEDE geführte Ansicht ein Bild liefert. Diese
+ * Regel war der Grund für das Front-Alias im Manifest: fehlte ein Ärmel- oder
+ * Rückbild, wurde einfach das Vorderbild eingesetzt – im Konfigurator sichtbar
+ * falsch. Maßgeblich ist jetzt `sichtbareAnsichten()`: gezeigt wird nur, wofür es
+ * auch ein Bild gibt. Genau das sichert dieser Test ab.
+ */
+test('jede zeigbare Ansicht liefert auch wirklich ein Bild', () => {
   const fehler: string[] = [];
   for (const p of PRODUCTS) {
-    const views = ansichtenVon(p);
     for (const c of p.colors) {
-      for (const v of views) {
+      for (const v of sichtbareAnsichten(p, c.id)) {
         if (!bildFuerAnsicht(p.id, c.id, v)) fehler.push(`${p.id}/${c.id}/${v}`);
       }
     }
   }
-  assert.deepEqual(fehler.slice(0, 20), [], 'Farben ohne Bild für eine geführte Ansicht');
+  assert.deepEqual(fehler.slice(0, 20), [], 'zeigbare Ansicht ohne Bild');
+});
+
+test('jede Farbe mit Fotos zeigt mindestens Vorder- und Rückansicht', () => {
+  const fehler: string[] = [];
+  for (const p of PRODUCTS) {
+    for (const c of p.colors) {
+      if (assetVerfuegbarkeit(p.id, c.id) !== 'vorhanden') continue;
+      const sichtbar = sichtbareAnsichten(p, c.id);
+      for (const pflicht of ['front', 'back'] as const) {
+        if (ansichtenVon(p).includes(pflicht) && !sichtbar.includes(pflicht)) {
+          fehler.push(`${p.id}/${c.id}: ${pflicht} fehlt`);
+        }
+      }
+    }
+  }
+  assert.deepEqual(fehler.slice(0, 20), [], 'Pflichtansicht fehlt');
 });
 
 // ── Preisregeln ────────────────────────────────────────────────────────

@@ -26,7 +26,7 @@ import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
 import type { PricingRule, PrintArea } from '@/types';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
-import { ansichtenVon } from '@/lib/products/ansichten';
+import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 import { vorladenAlleFarben } from '@/lib/configurator/vorladen';
 import { istHellesTextil } from '@/lib/canvas/garmentLuminance';
 
@@ -301,9 +301,19 @@ export function ConfiguratorPrototype() {
   const currentColor = product.colors.find((c) => c.id === colorId) ?? repraesentativeFarbe(product.id, product.colors);
   const currentImages: Record<string, string> = currentColor ? resolveColorImages(product.id, currentColor.id) : {};
   const currentImageUrl = currentImages[activeView] ?? '';
-  // Die tatsächlich geführten Ansichten des Produkts – einzige Quelle für
-  // Ansichtswechsler und Großvorschau (keine feste Liste, kein hasSleeves).
-  const produktViews = ansichtenVon(product);
+  // Die dem Kunden ZEIGBAREN Ansichten – einzige Quelle für Ansichtswechsler und
+  // Großvorschau. Ärmelansichten ohne eigenes Bild werden ausgeblendet, statt sie
+  // mit dem Vorderbild zu füllen (siehe sichtbareAnsichten).
+  const produktViews = sichtbareAnsichten(product, currentColor?.id ?? null);
+  // Zeigt die aktive Ansicht für DIESE Farbe kein Bild (Ärmel sind nicht in
+  // jeder Farbe fotografiert), auf die erste zeigbare Ansicht wechseln – sonst
+  // bliebe die Leinwand leer.
+  const ersteSichtbareView = produktViews[0];
+  const activeViewZeigbar = produktViews.includes(activeView);
+  useEffect(() => {
+    if (ersteSichtbareView && !activeViewZeigbar) setActiveView(ersteSichtbareView);
+  }, [ersteSichtbareView, activeViewZeigbar, setActiveView]);
+
   // Realistische Vorschau: auf hellen Textilien werden Motive per multiply mit
   // dem Stoff verrechnet – abgeleitet aus der echten Farbe, nicht dem Foto.
   const garmentLight = currentColor ? istHellesTextil(currentColor.hex) : false;

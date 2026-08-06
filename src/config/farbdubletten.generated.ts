@@ -21,6 +21,4 @@ export const FARBDUBLETTEN: Record<string, readonly string[]> = {
  */
 export const FARBGLEICHHEIT_OFFEN: readonly string[] = [
   'bundc-inspire-e150-t-shirt: navy-blue == navy',
-  'stedman-clive-crew-neck: black-opal == blue-midnight',
-  'sols-men-s-long-sleeve-t-shirt-imperial: charcoal-melange == deep-black',
 ];

@@ -1,14 +1,54 @@
 [
   {
-    "produkt": "bundc-t-shirt-e150-women",
-    "farbe": "atoll",
-    "quelle": "bc-collection.eu (offizielle B&C-Herstellerseite), Artikel TW02T = E150 Women, Farbcode 441 (Atoll). RUECKNAHME einer Quellenangleichung: Der Angleich-Lauf hatte hierfuer die Datei bc-tshirt-tw04t__atoll_* von sportyfied.com eingesetzt. TW04T ist aber die Artikelnummer des E190-DAMENSHIRTS - ein anderes Produkt, das im Katalog eigenstaendig gefuehrt wird. Der Bilddubletten-Audit hat das Paar gefunden (MAD 0.41). Ein Stilbruch innerhalb eines Produkts ist hinnehmbar, ein fremdes Produktbild nicht.",
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "black-opal",
+    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/; Produktseite https://www.stedman.eu/en/stretch-t – Artikel ST9600, die Serie hiess frueher \"Clive & Claire\")",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#038dba",
-    "erwartet": "#0092C3",
-    "deltaE": 11,
+    "frontDom": "#111111",
+    "erwartet": "#000000",
+    "deltaE": 29,
+    "dupeMit": "stedman-clive-crew-neck-blue-midnight"
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "blue-midnight",
+    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/; Produktseite https://www.stedman.eu/en/stretch-t – Artikel ST9600, die Serie hiess frueher \"Clive & Claire\")",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#151a1d",
+    "erwartet": "#180A29",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "farbe": "charcoal-melange",
+    "quelle": "Offizielle SOL'S-Mediathek (Scene7-CDN s7g3.scene7.com/is/image/soloinvest), Artikel 02074 Imperial LSL MEN; gegengeprueft an textil-grosshandel.eu (L02074) und assets.myworkwear.co.uk (Produkt 5966)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#373735",
+    "erwartet": "#040F13",
+    "deltaE": 73,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "farbe": "deep-black",
+    "quelle": "Offizielle SOL'S-Mediathek (Scene7-CDN s7g3.scene7.com/is/image/soloinvest), Artikel 02074 Imperial LSL MEN; gegengeprueft an textil-grosshandel.eu (L02074) und assets.myworkwear.co.uk (Produkt 5966)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2c2b26",
+    "erwartet": "#000000",
+    "deltaE": 72,
     "dupeMit": null
   }
 ]

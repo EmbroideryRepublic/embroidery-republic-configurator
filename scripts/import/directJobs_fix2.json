@@ -1,0 +1,42 @@
+[
+  {
+    "productId": "stedman-clive-crew-neck",
+    "quelle": "stedman.eu (offizielle Stedman Medienbibliothek, CDN /public/images/products/2026/ST9600/; Produktseite https://www.stedman.eu/en/stretch-t – Artikel ST9600, die Serie hiess frueher \"Clive & Claire\")",
+    "colors": [
+      {
+        "id": "black-opal",
+        "erwarteterHex": "#000000",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_BLO.jpg",
+        "onModel": false
+      },
+      {
+        "id": "blue-midnight",
+        "erwarteterHex": "#180A29",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_BLM.jpg",
+        "onModel": false
+      }
+    ]
+  },
+  {
+    "productId": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "quelle": "Offizielle SOL'S-Mediathek (Scene7-CDN s7g3.scene7.com/is/image/soloinvest), Artikel 02074 Imperial LSL MEN; gegengeprueft an textil-grosshandel.eu (L02074) und assets.myworkwear.co.uk (Produkt 5966)",
+    "colors": [
+      {
+        "id": "charcoal-melange",
+        "erwarteterHex": "#040F13",
+        "front": "https://s7g3.scene7.com/is/image/soloinvest/n02074348A?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "back": "https://s7g3.scene7.com/is/image/soloinvest/n02074348B?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "side": "https://s7g3.scene7.com/is/image/soloinvest/n02074348C?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "onModel": false
+      },
+      {
+        "id": "deep-black",
+        "erwarteterHex": "#000000",
+        "front": "https://s7g3.scene7.com/is/image/soloinvest/n02074309A?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "back": "https://s7g3.scene7.com/is/image/soloinvest/n02074309B?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "side": "https://s7g3.scene7.com/is/image/soloinvest/n02074309C?wid=1200&hei=1200&fmt=jpg&qlt=90",
+        "onModel": false
+      }
+    ]
+  }
+]

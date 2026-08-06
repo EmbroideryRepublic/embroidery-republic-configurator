@@ -1,0 +1,13 @@
+[
+  {
+    "id": "bundc-inspire-e150-t-shirt",
+    "marke": "B&C",
+    "name": "Inspire E150 T-Shirt",
+    "typ": "tshirt",
+    "quelle": "bisher gemischt – bitte die offizielle B&C-Quelle (bc-collection.eu) bzw. die Quelle der uebrigen Farben dieses Produkts verwenden",
+    "muster": null,
+    "klappt": "white,black,sport-grey-heather,red",
+    "fehlend": "navy-blue|Navy Blue|#101145 ; navy|Navy|#1F2532",
+    "hinweis": "KORREKTURAUFTRAG: Diese beiden Farben zeigen im Shop AKTUELL DASSELBE Bild (bytegleich). Kläre zuerst, ob der Artikel (B&C Inspire E150, Herren) beim Hersteller ueberhaupt ZWEI verschiedene Navy-Toene fuehrt. Wenn ja: liefere fuer beide die jeweils eigene, nachweislich verschiedene Datei (Bytegroessen vergleichen). Wenn der Hersteller nur EINEN Navy-Ton fuehrt, dann melde die ueberzaehlige Farb-ID unter nichtBeschaffbar mit der Begruendung 'doppelter Katalogeintrag, Hersteller fuehrt nur einen Navy-Ton' - sie wird dann im Shop ausgeblendet, statt zweimal dasselbe zu zeigen. Nenne in beiden Faellen den Beleg (Farbliste der Herstellerseite mit Farbcodes)."
+  }
+]

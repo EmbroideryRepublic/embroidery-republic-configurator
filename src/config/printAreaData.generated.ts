@@ -709,8 +709,8 @@ export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, Generated
     sleeve_left: { x0: 39.4, y0: 8.1, x1: 60.3, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 15.9, boxHeightCm: 73.9, startXCm: 8.4, startYCm: 11.9, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'sols-men-s-long-sleeve-t-shirt-imperial': {
-    front: { x0: 29.1, y0: 16.5, x1: 70.9, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
-    back: { x0: 29.5, y0: 16.5, x1: 71.2, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
+    front: { x0: 29.1, y0: 16.5, x1: 70.8, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
+    back: { x0: 29.6, y0: 16.5, x1: 71.3, y1: 72.8, imgW: 620, imgH: 720, maxWidthCm: 30, maxHeightCm: 47, boxWidthCm: 30, boxHeightCm: 47, garmentWidthCm: 49, garmentHeightCm: 61 },
     sleeve_left: { x0: 35.4, y0: 8.1, x1: 64.9, y1: 91.9, imgW: 620, imgH: 720, maxWidthCm: 8.9, maxHeightCm: 10, boxWidthCm: 21.2, boxHeightCm: 69.9, startXCm: 10.5, startYCm: 11.2, garmentWidthCm: 10.9, garmentHeightCm: 10 },
   },
   'neutral-ladies-long-sleeve-t-shirt': {

@@ -1,0 +1,1064 @@
+[
+  {
+    "productId": "gildan-ultra-cotton-t-shirt",
+    "quelle": "blankstyle.com – Produktseite \"Gildan 2000 Ultra Cotton T-Shirt (G200)\" (https://www.blankstyle.com/gildan-2000-ultra-cotton-t-shirt-g200). Muster NICHT geraten, sondern aus dem HTML/DOM ausgelesen: die Galerie der aktiv gewaehlten Farbe liefert dort woertlich .../p_images/1246/gildan_39-metro-blue-front.jpg, -back.jpg und -side.jpg; die Farbzuordnung stammt aus den <option data-content>-Bloecken der Farbauswahl, in denen Dateiname (gildan_39-<slug>-front.jpg) und angezeigter Farbname (z.B. \"Kiwi\") im selben Element stehen. Rueckansicht-Muster: https://cdn.blankstyle.com/files/p_images/1246/gildan_39-<slug>-back.jpg (Original-Pfad ohne /imagecache/, ca. 240–430 kB, 1200x1800). Es ist die offizielle SanMar/Gildan-Modelfotostrecke zu Style 2000/G200 – dasselbe Kleidungsstueck und derselbe Farbton wie die bisherigen Gildan-Studio-Freisteller: Front und Back einer Farbe zeigen bei blankstyle denselben Aufnahmetag/dasselbe Model, und der Blauton der Metro-Blue-Rueckansicht deckt sich mit dem gedeckten Indigo des vorhandenen Gildan_2000_Metro_Blue_Front_High.jpg (#264583). Vorderansichten bleiben unveraendert bei theparkwholesale.com.",
+    "colors": [
+      {
+        "id": "metro-blue",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Metro_Blue_Front_High.jpg?v=1653201589"
+      },
+      {
+        "id": "dark-chocolate",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Dark_Chocolate_Front_High.jpg?v=1653201593"
+      },
+      {
+        "id": "stone-blue",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Stone_Blue_Front_High.jpg?v=1653201590"
+      },
+      {
+        "id": "azalea",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Azalea_Front_High.jpg?v=1653201583"
+      },
+      {
+        "id": "blue-dusk",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Blue_Dusk_Front_High.jpg?v=1653201598"
+      },
+      {
+        "id": "cardinal-red",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Cardinal_Red_Front_High.jpg?v=1653201581"
+      },
+      {
+        "id": "carolina-blue",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Carolina_Blue_Front_High.jpg?v=1653201582"
+      },
+      {
+        "id": "charcoal-solid",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Charcoal_Front_High.jpg?v=1653201599"
+      },
+      {
+        "id": "cherry-red",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Cherry_Red_Front_High.jpg?v=1653201581"
+      },
+      {
+        "id": "cornsilk",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Cornsilk_Front_High.jpg?v=1653201594"
+      },
+      {
+        "id": "daisy",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Daisy_Front_High.jpg?v=1653201581"
+      },
+      {
+        "id": "dark-heather",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Dark_Heather_Front_High.jpg?v=1653201586"
+      },
+      {
+        "id": "gold",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Gold_Front_High.jpg?v=1653201585"
+      },
+      {
+        "id": "heather-cardinal",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Heather_Cardinal_Front_High.jpg?v=1653201587"
+      },
+      {
+        "id": "heather-navy",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Heather_Navy_Front_High.jpg?v=1653201595"
+      },
+      {
+        "id": "heliconia",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Heliconia_Front_High.jpg?v=1653201582"
+      },
+      {
+        "id": "ice-grey-solid",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Ice_Grey_Front_High.jpg?v=1653201584"
+      },
+      {
+        "id": "indigo-blue",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Indigo_Blue_Front_High.jpg?v=1653201585"
+      },
+      {
+        "id": "iris",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Iris_Front_High.jpg?v=1653201582"
+      },
+      {
+        "id": "irish-green",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Irish_Green_Front_High.jpg?v=1653201584"
+      },
+      {
+        "id": "jade-dome",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Jade_Dome_Front_High.jpg?v=1653201580"
+      },
+      {
+        "id": "kelly-green",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Kelly_Front_High.jpg?v=1653201581"
+      },
+      {
+        "id": "kiwi",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Kiwi_Front_High.jpg?v=1653201592"
+      },
+      {
+        "id": "light-blue",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Light_Blue_Front_High.jpg?v=1653201597"
+      },
+      {
+        "id": "light-pink",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Light_Pink_Front_High.jpg?v=1653201595"
+      },
+      {
+        "id": "lime",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Lime_Front_High.jpg?v=1653201584"
+      },
+      {
+        "id": "maroon",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Maroon_Front_High.jpg?v=1653201584"
+      },
+      {
+        "id": "military-green",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Military_Green_Front_High.jpg?v=1653201593"
+      },
+      {
+        "id": "natural",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Natural_Front_High.jpg?v=1653201580"
+      },
+      {
+        "id": "olive",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Olive_Front_High.jpg?v=1653201597"
+      },
+      {
+        "id": "orange",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Orange_Front_High.jpg?v=1653201585"
+      },
+      {
+        "id": "orchid",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Orchid_Front_High.jpg?v=1653201586"
+      },
+      {
+        "id": "pistachio",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Pistachio_Front_High.jpg?v=1653201586"
+      },
+      {
+        "id": "prairie-dust",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Prairie_Dust_Front_High.jpg?v=1653201593"
+      },
+      {
+        "id": "purple",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Purple_Front_High.jpg?v=1653201588"
+      },
+      {
+        "id": "sand",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Sand_Front_High.jpg?v=1653201598"
+      },
+      {
+        "id": "sapphire",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Sapphire_Front_High.jpg?v=1653201585"
+      },
+      {
+        "id": "sky",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Sky_Front_High.jpg?v=1653201590"
+      },
+      {
+        "id": "tan",
+        "back": "https://cdn.blankstyle.com/files/p_images/1246/gildan_39-tan-back.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Tan_Front_High.jpg?v=1653201581"
+      },
+      {
+        "id": "tangerine",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Tangerine_Front_High.jpg?v=1653201582"
+      },
+      {
+        "id": "texas-orange",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Texas_Orange_Front_High.jpg?v=1653201591"
+      },
+      {
+        "id": "vegas-gold",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Vegas_Gold_Front_High.jpg?v=1653201580"
+      },
+      {
+        "id": "ash-grey-heather",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Ash_Front_High.jpg?v=1653201591"
+      },
+      {
+        "id": "safety-green-neon",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Safety_Green_Front_High.jpg?v=1653201596"
+      },
+      {
+        "id": "safety-orange-neon",
+        "front": "https://cdn.shopify.com/s/files/1/0077/4048/9809/products/Gildan_2000_Safety_Orange_Front_High.jpg?v=1653201587"
+      }
+    ]
+  },
+  {
+    "productId": "gildan-heavy-blend-hooded-sweatshirt",
+    "quelle": "wordans.com (Netenders-Plattform, Produktseite \"Gildan 18500 - Heavy Blend Fleece Hooded Sweatshirt\", ID 25233) – Rueckansichten als eigenstaendige, freigestellte Geisterpuppen-PNG 1200x1200 mit Alphakanal, Dateimuster `<bild-id>_back_original.png` (Front = `<bild-id>_original.png`, gleiche ID-Ordner). Identische Bildstrecke liegt gespiegelt auf needen.com. Bisherige Quellen shop.ralawise.com (GD057) und textil-grosshandel.eu (G18500) fuehren NACHWEISLICH gar keine Rueckenfotos.",
+    "colors": [
+      {
+        "id": "navy",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115641/115641_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_navy_ft3.jpg"
+      },
+      {
+        "id": "dark-chocolate",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115602/115602_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_darkchocolate_ft3.jpg"
+      },
+      {
+        "id": "graphite-heather",
+        "back": "https://assets.wordans.com/files/model_specifications/2022/8/18/1242034/1242034_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_graphiteheather_ft3.jpg"
+      },
+      {
+        "id": "azalea",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_azalea_ft3.jpg"
+      },
+      {
+        "id": "mint-green",
+        "back": "https://assets.wordans.com/files/model_specifications/2022/8/25/1253006/1253006_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_mintgreen_ft3.jpg"
+      },
+      {
+        "id": "orchid",
+        "back": "https://assets.wordans.com/files/model_specifications/2022/8/25/1253000/1253000_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_orchid_ft3.jpg"
+      },
+      {
+        "id": "violet",
+        "back": "https://assets.wordans.com/files/model_specifications/2022/8/25/1253004/1253004_back_original.png",
+        "front": "https://www.textil-grosshandel.eu/out/pictures/generated/produkt/G18500/767_900_85/gildan_heavy-blend-hooded-sweatshirt_Violet.jpg"
+      },
+      {
+        "id": "antique-cherry-red-heather",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115578/115578_back_original.png",
+        "front": "https://www.textil-grosshandel.eu/out/pictures/generated/produkt/G18500/767_900_85/gildan_heavy-blend-hooded-sweatshirt_Antique_Cherry_Red_%28Heather%29.jpg"
+      },
+      {
+        "id": "antique-sapphire-heather",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115581/115581_back_original.png",
+        "front": "https://www.textil-grosshandel.eu/out/pictures/generated/produkt/G18500/767_900_85/gildan_heavy-blend-hooded-sweatshirt_Antique_Sapphire_%28Heather%29.jpg"
+      },
+      {
+        "id": "ash-heather",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115584/115584_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_ash_ft3.jpg"
+      },
+      {
+        "id": "carolina-blue",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115593/115593_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_carolinablue_ft3.jpg"
+      },
+      {
+        "id": "charcoal-solid",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115596/115596_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_charcoal_ft3.jpg"
+      },
+      {
+        "id": "cherry-red",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115599/115599_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_cherryred_ft3.jpg"
+      },
+      {
+        "id": "dark-heather",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115605/115605_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_darkheather_ft3.jpg"
+      },
+      {
+        "id": "forest-green",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115608/115608_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_forestgreen_ft3.jpg"
+      },
+      {
+        "id": "garnet",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115611/115611_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_garnet_ft3.jpg"
+      },
+      {
+        "id": "eead1a",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_gold_ft3.jpg"
+      },
+      {
+        "id": "heliconia",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115617/115617_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_heliconia_ft3.jpg"
+      },
+      {
+        "id": "indigo-blue",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115620/115620_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_indigoblue_ft3.jpg"
+      },
+      {
+        "id": "irish-green",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115623/115623_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_irishgreen_ft3.jpg"
+      },
+      {
+        "id": "light-blue",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115629/115629_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_lightblue_ft3.jpg"
+      },
+      {
+        "id": "light-pink",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115632/115632_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_lightpink_ft3.jpg"
+      },
+      {
+        "id": "maroon",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115635/115635_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_maroon_ft3.jpg"
+      },
+      {
+        "id": "military-green",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115638/115638_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_militarygreen_ft3.jpg"
+      },
+      {
+        "id": "orange",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115644/115644_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_orange_ft3.jpg"
+      },
+      {
+        "id": "red",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115650/115650_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_red_ft3.jpg"
+      },
+      {
+        "id": "royal",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115653/115653_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_royal_ft3.jpg"
+      },
+      {
+        "id": "safety-green",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115656/115656_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_safetygreen_ft3.jpg"
+      },
+      {
+        "id": "safety-orange",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115659/115659_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_safetyorange_ft3.jpg"
+      },
+      {
+        "id": "sand",
+        "back": "https://assets.wordans.com/files/model_specifications/2015/8/28/115665/115665_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_sand_ft3.jpg"
+      },
+      {
+        "id": "sapphire",
+        "back": "https://assets.wordans.com/files/model_specifications/2016/1/6/189564/189564_back_original.png",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/gd/gd057_sapphire_ft3.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-hoodie",
+    "quelle": "media2.designpartner.fr (Bild-Backend der DesignPartner-Plattform, u.a. lamaisonduteeshirt.com / tee-shirts-express.com / th4.com). Produkt-ID 14430 = B&C WU03W \"#Hoodie\" (verifiziert ueber die Produktseite https://www.lamaisonduteeshirt.com/en/produits/sweats/bc-wu03w/bc-hoodie – Artikelnummer bc-wu03w im Seitentitel/URL). Die Galerie-URLs stehen dort base64-kodiert in den imgproxy-Links (data-src/data-link, Praefix aHR0cDovL21lZGlhMi5kZXNpZ25wYXJ0bmVy...); dekodiert ergibt sich das Muster https://media2.designpartner.fr/c/p/14430/14430-<farbId>-<ansicht>.jpg mit -1 = Front und -2 = Rueckseite. Muster NICHT geraten, sondern aus dem DOM ausgelesen. Farb-IDs stammen aus den alt-Attributen derselben Slides (z.B. alt=\"B&C Collection B&C #Hoodie heather_dark_green\" bei 14430-16519-2). Eine -3 (Seitenansicht) existiert fuer dieses Produkt nicht (404). Vorderansichten bleiben unveraendert bei bc-collection.eu.",
+    "colors": [
+      {
+        "id": "navy-blue",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-4120-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4851/WU03W_P_BC_006_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=5bc3a41d629c4c97f93355f5ad030e0e"
+      },
+      {
+        "id": "elephant-grey",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16507-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4899/WU03W_P_BC_665_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=113936c8791da3ce68f81f6bdfd85cbb"
+      },
+      {
+        "id": "white",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-8-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4847/WU03W_P_BC_001_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=f6d7d8bf199aa1d719aa69c5b931cc0b"
+      },
+      {
+        "id": "desert",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16522-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4883/WU03W_P_BC_123_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=64c4d083a3dd3abf00778b6b5b74a684"
+      },
+      {
+        "id": "melon-orange",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16518-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4885/WU03W_P_BC_255_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=f955b67015dfa4e676b0832b9858a1db"
+      },
+      {
+        "id": "pale-yellow",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16521-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4877/WU03W_P_BC_199_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=f9ec372f7f342b2e866bd09330b15d22"
+      },
+      {
+        "id": "solar-yellow",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-14355-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4863/WU03W_P_BC_201_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=cd2b884c3e0b43752fbda391d7c89a8a"
+      },
+      {
+        "id": "nude",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16523-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4881/WU03W_P_BC_307_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=15d3d72915e2675e657bebb8294dd2f1"
+      },
+      {
+        "id": "pure-orange",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16498-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4865/WU03W_P_BC_233_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=81740d2dec2078fb9857ce0126fbf686"
+      },
+      {
+        "id": "red",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-23-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4853/WU03W_P_BC_004_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=1be36166f79399e6a81734a3b6ece874"
+      },
+      {
+        "id": "wine",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-9458-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4857/WU03W_P_BC_881_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=3b9b6eefea3a6ac4e693ed70a5393375"
+      },
+      {
+        "id": "candy-pink",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16517-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4869/WU03W_P_BC_331_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=9f59ec3d144472faef9fa3c003dbf25c"
+      },
+      {
+        "id": "pale-pink",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16516-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4879/WU03W_P_BC_305_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=242cbfc8238e322d898db49db0544f00"
+      },
+      {
+        "id": "pink-fizz",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16515-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4867/WU03W_P_BC_308_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=dec20f16845cfb7332d7854e3df34843"
+      },
+      {
+        "id": "lavender",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16512-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4887/WU03W_P_BC_339_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=8bce039302b857f3a1b619e8e6a5e2e3"
+      },
+      {
+        "id": "radiant-purple",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-14361-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4875/WU03W_P_BC_351_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=7dec4e3f88fc6e3601512fd4a49dfbb7"
+      },
+      {
+        "id": "hawaiian-blue",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16510-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4871/WU03W_P_BC_443_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=46e08473b4fe446f0ec4d2769b4be5a7"
+      },
+      {
+        "id": "royal-blue",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-4330-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4855/WU03W_P_BC_453_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=30467d4cfd91768d3bd6a5b446afef9d"
+      },
+      {
+        "id": "pure-sky",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16511-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4889/WU03W_P_BC_405_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=37224529dea149bee711b3972b66b4ac"
+      },
+      {
+        "id": "sage",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16503-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4895/WU03W_P_BC_502_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=f89477d156171a0bd2fbf7dc80d0c351"
+      },
+      {
+        "id": "light-jade",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16520-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4893/WU03W_P_BC_503_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=3db44206a613436aec0fa8a396501491"
+      },
+      {
+        "id": "kelly-green",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-49-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4873/WU03W_P_BC_520_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=7d90ecd10cdafb2e2a3d1baa291925d7"
+      },
+      {
+        "id": "millennial-khaki",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-14360-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4897/WU03W_P_BC_551_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=2603ae40868eff234f1cecd96746f775"
+      },
+      {
+        "id": "grey-fog",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16506-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4891/WU03W_P_BC_672_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=4dd52a17a1e081763fad58bec5e5cf99"
+      },
+      {
+        "id": "forest-green",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-10985-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4859/WU03W_P_BC_882_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=1325d37a8c4a8b0aa99d72148f5d0ee9"
+      },
+      {
+        "id": "asphalt",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16496-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4861/WU03W_P_BC_669_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=085aba5deb30824f675bc71528b8be07"
+      },
+      {
+        "id": "black-pure",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16495-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4849/WU03W_P_BC_005_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=9845cb6a4853843d65142a60b2a339ba"
+      },
+      {
+        "id": "heather-grey",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-99-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4901/WU03W_P_BC_610_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=fe0a2c33954e9b1eeb16bbdb1d6cb5fe"
+      },
+      {
+        "id": "heather-mid-grey",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16509-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4903/WU03W_P_BC_623_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=8488ca625f8ade9d8abf71fcd4921f49"
+      },
+      {
+        "id": "heather-red",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16514-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4907/WU03W_P_BC_617_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=200392764dd62ac89586db31c607470e"
+      },
+      {
+        "id": "heather-asphalt",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16508-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4905/WU03W_P_BC_625_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=b6fde0c2d75cfaa58b41322b0c9cba3f"
+      },
+      {
+        "id": "heather-purple",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16513-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4909/WU03W_P_BC_616_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=eff7a16ec1b1c42240a1a7b5ab7182d3"
+      },
+      {
+        "id": "heather-royal-blue",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-13689-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4911/WU03W_P_BC_612_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=1110ed4941d82bc89f84741f404722f4"
+      },
+      {
+        "id": "heather-navy",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-13686-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4913/WU03W_P_BC_611_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=5a20f0084b9549161df00c9bd3ce35cf"
+      },
+      {
+        "id": "heather-dark-green",
+        "back": "https://media2.designpartner.fr/c/p/14430/14430-16519-2.jpg",
+        "front": "https://www.bc-collection.eu/thumbs/v1/4915/WU03W_P_BC_618_01.jpg?w=1100&h=1100&fit=crop&fm=webp&s=e4a61a739a36e8c4ff58a0dc27477225"
+      }
+    ]
+  },
+  {
+    "productId": "stedman-stedman-classic-t",
+    "quelle": "Rueckansicht aus shop.l-shop-team.de (Stedman Classic-T Unisex, L-Shop-Art. S140 = Stedman ST2000), Bildslot 3 = Rueckseite / Slot 4 = Seitenansicht. Vorderansichten bleiben stedman.eu (public/images/products/2026/ST2000/). Bisherige Quelle stedman.eu fuehrt nachweislich KEINE Rueckenfotos je Farbe.",
+    "colors": [
+      {
+        "id": "bright-royal",
+        "back": "https://shop.l-shop-team.de/out/pictures/master/product/3/1876292.jpg",
+        "side": "https://shop.l-shop-team.de/out/pictures/master/product/4/1876293.jpg",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST2000/ST2000_BRR.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-t-shirt-e190-women",
+    "quelle": "sportyfied.com — B&C #E190 /women = Herstellernummer TW04T. Rueckansichten als eigene Dateien unter https://www.sportyfied.com/archive/bc-tshirt-{farbe}-tw04t-{bcCode}-b.png (Original 1291x1500 PNG). Muster aus dem eingebetteten Produkt-JSON der Seite gelesen (\"product_side\":\"back\" / \"original\":\"/archive/...\"), nicht geraten. Dieselbe Quelle lieferte bereits die vorhandenen Rueckansichten (white/black/navy/...) laut scripts/import/quellen.json. Bisherige Quelle stickx.de fuehrt nachweislich KEINE Rueckenfotos (alle (Back)/(Rueck)/(2)-Varianten = HTTP 404).",
+    "colors": [
+      {
+        "id": "urban-navy",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-urbannavy-tw04t-006-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Burban%20navy%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "cobalt-blue",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-cobaltblue-tw04t-008-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bcobalt%20blue%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "stone-blue",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-stoneblue-tw04t-460-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bstone%20blue%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "urban-khaki",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-urbankhaki-tw04t-552-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Burban%20khaki%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "natural",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-natural-tw04t-100-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bnatural%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "sand",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-sand-tw04t-120-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bsand%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "solar-yellow",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-solaryellow-tw04t-201-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bsolar%20yellow%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "gold",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-gold-tw04t-210-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bgold%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "apricot",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-apricot-tw04t-220-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bapricot%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "orange",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-orange-tw04t-235-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Borange%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "urban-orange",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-urbanorange-tw04t-231-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Burban%20orange%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "fire-red",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-firered-tw04t-007-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bfire%20red%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "sunset-orange",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-sunsetorange-tw04t-236-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bsunset%20orange%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "orchid-pink",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-orchidpink-tw04t-303-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Borchid%20pink%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "sorbet",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-sorbet-tw04t-311-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bsorbet%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "burgundy",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-burgundy-tw04t-370-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bburgundy%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "swimming-pool",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-swimmingpool-tw04t-442-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bswimming%20pool%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "atoll",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-atoll-tw04t-441-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Batoll%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "diva-blue",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-divablue-tw04t-445-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bdiva%20blue%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "sky-blue",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-skyblue-tw04t-410-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bsky%20blue%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "millennial-lilac",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-millenniallilac-tw04t-341-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bmillennial%20lilac%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "radiant-purple",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-radiantpurple-tw04t-351-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bradiant%20purple%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "urban-purple",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-urbanpurple-tw04t-352-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Burban%20purple%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "pixel-lime",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-pixellime-tw04t-986-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bpixel%20lime%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "orchid-green",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-orchidgreen-tw04t-511-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Borchid%20green%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "millennial-mint",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-millennialmint-tw04t-509-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bmillennial%20mint%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "bottle-green",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-bottlegreen-tw04t-540-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bbottle%20green%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "ash-heather",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-ash-tw04t-600-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bash%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "pacific-grey",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-pacificgrey-tw04t-874-b_2.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bpacific%20grey%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "dark-grey-solid",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-darkgreysolid-tw04t-670-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bdark%20grey%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "used-black",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-usedblack-tw04t-748-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bused%20black%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "brown",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-brown-tw04t-145-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bbrown%5D%20(Front)%20(1).jpg"
+      },
+      {
+        "id": "chocolate",
+        "back": "https://www.sportyfied.com/archive/bc-tshirt-chocolate-tw04t-140-b.png",
+        "front": "https://www.stickx.de/static/images/product_images/960x1000x95/2018/CC/01/004T/(PS)%20(01.004T)%20-%20B%26C%20E190%20%20women%20%5Bchocolate%5D%20(Front)%20(1).jpg"
+      }
+    ]
+  },
+  {
+    "productId": "stedman-comfort-t",
+    "quelle": "Rueckenfoto-Quelle: allmyclothes.de (Artikelseite \"Stedman Comfort-T 185\" = Item 12266, Bildhost images.allmyclothes.de). Front-Quelle des Shops bleibt stedman.eu (ST2100, /public/images/products/2026/ST2100/ST2100_<CODE>.jpg).",
+    "colors": [
+      {
+        "id": "light-blue",
+        "back": "https://images.allmyclothes.de/item/images/12266/full/Stedman-Comfort-T-ST2100-b05e.jpg",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST2100/ST2100_LBL.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "quelle": "wemaonline.de (WEMA GmbH, Shopware-Media) – Produktseite https://www.wemaonline.de/b-c-my-eco-polo-65-35-women-PW465. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: WEMA fuehrt neben den reinen Farb-Fronten (BCPW465_<Farbe>.webp) fuer GENAU EINE Farbe (Lotus Pink) ein vollstaendiges Packshot-Set als durchnummerierte Serie aus demselben Upload-Batch – \"…-lotuspink-4\" = Front, \"-5\" = Side, \"-6\" = Back (Batch-Timestamps 1739659882/83/84, drei verschiedene Dateien, md5 261778a2…/242db084…/00ac1e03…). Zuordnung zur Farbe \"Lotus Pink\" doppelt belegt: (a) Datei \"-4\" ist derselbe Packshot wie der offizielle B&C-Front https://www.bc-collection.eu/storage/v1/21422/F_PW465_My-Eco-Polo-65-35_women_lotus_pink.jpg (identisches Kleidungsstueck, identische Falten/Knopfleiste, nur enger beschnitten); (b) offizieller B&C-Farbwert Lotus Pink = #f471ac deckt sich mit dem Bildton. Silhouette (taillierte Damenform, 1x1-Rippkragen) deckungsgleich mit der bereits verifizierten Damen-Rueckansicht in Red. Vorderansichten bleiben unveraendert bei groener-schulze.com.",
+    "colors": [
+      {
+        "id": "lotus-pink",
+        "back": "https://www.wemaonline.de/media/d1/fd/ca/1739659884/BC-PW465-My-Eco-Polo-65-35-women-lotuspink-6.webp",
+        "side": "https://www.wemaonline.de/media/f4/g0/ab/1739659883/BC-PW465-My-Eco-Polo-65-35-women-lotuspink-5.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_lotus_pink.webp"
+      }
+    ]
+  },
+  {
+    "productId": "stedman-classic-t-v-neck-for-women",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Artikel 12276 = Stedman ST2700 Classic-T V-Neck Women) – produktseitige Galerie mit der offiziellen Stedman-Fotoserie (Front / 3-4-Ansicht / Seite / Rueckseite) in Grey Heather. Front-Basis bleibt stedman.eu (2026/ST2700/ST2700_<CODE>.jpg).",
+    "colors": [
+      {
+        "id": "grey-heather",
+        "back": "https://images.allmyclothes.de/item/images/12276/full/Stedman-Classic-T-V-Neck-Women-ST2700-5z3g.jpg",
+        "side": "https://images.allmyclothes.de/item/images/12276/full/Stedman-Classic-T-V-Neck-Women-ST2700-vjul.jpg",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST2700/ST2700_GYH.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "just-hoods-organic-hoodie-jh201",
+    "quelle": "media2.designpartner.fr (Bild-Backend der DesignPartner-Plattform, u.a. lamaisonduteeshirt.com / tee-shirts-express.com). Produkt-ID 17852 = AWDis Just Hoods JH201 \"Organic Hoodie\" – verifiziert ueber die Produktseite https://www.lamaisonduteeshirt.com/en/produits/sweats/aw-jh201/organic-hoodie (Slug \"aw-jh201\", Seitentitel \"Hoodie & Sweatshirt AWDis Just Hoods - JH201 - Organic Hoodie\"). Muster NICHT geraten, sondern aus den base64-kodierten Proxy-URLs der Seite dekodiert: https://media2.designpartner.fr/c/p/17852/17852-<farbId>-<ansicht>.jpg mit -1 = Front und -2 = Rueckseite (-3/Seitenansicht existiert fuer dieses Produkt nicht, liefert durchgaengig 404). Die Farb-IDs wurden aus dem DOM derselben Seite ausgelesen (div title=\"<farbe>\" id=\"bloc_vue_couleurs_<id>\" sowie die handleColorClick(event, <id>, [{\"couleur\":\"<farbe>\"...}])-Payloads), nicht abgeleitet. Vorderansichten bleiben unveraendert bei shop.ralawise.com (jh201_<farbe>_ft.jpg / _ft2.jpg).",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3390-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_bottlegreen_ft2.jpg"
+      },
+      {
+        "id": "ink-blue",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-20330-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_inkblue_ft2.jpg"
+      },
+      {
+        "id": "charcoal-heather",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3354-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_charcoal_ft.jpg"
+      },
+      {
+        "id": "arctic-white",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3364-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_arcticwhite_ft.jpg"
+      },
+      {
+        "id": "baby-pink",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3389-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_babypink_ft.jpg"
+      },
+      {
+        "id": "burgundy",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3347-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_burgundy_ft.jpg"
+      },
+      {
+        "id": "deep-black",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-20310-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_deepblack_ft2.jpg"
+      },
+      {
+        "id": "fire-red",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3367-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_firered_ft.jpg"
+      },
+      {
+        "id": "heather-grey",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3366-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_heathergrey_ft2.jpg"
+      },
+      {
+        "id": "mustard",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-20333-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_mustard_ft.jpg"
+      },
+      {
+        "id": "new-french-navy",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-4724-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_newfrenchnavy_ft2.jpg"
+      },
+      {
+        "id": "royal-blue",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3383-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_royalblue_ft.jpg"
+      },
+      {
+        "id": "lavender",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3375-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_lavender_ft.jpg"
+      },
+      {
+        "id": "natural-stone",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-20334-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_naturalstone_ft.jpg"
+      },
+      {
+        "id": "sky-blue",
+        "back": "https://media2.designpartner.fr/c/p/17852/17852-3384-2.jpg",
+        "front": "https://shop.ralawise.com/globalassets/ralawise/jh/jh201_skyblue_ft.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-unisex-performance-t-shirt",
+    "quelle": "sportyfied.com – Produkt \"Neutral Performance T-Shirt Recycled Polyester\" (Art. R61001), je Farbe eine eigene URL https://www.sportyfied.com/en/neutral-performance-t-shirt-recycled-polyester-<farbe>; Galerie = front, back, side; Bilddateien unter https://www.sportyfied.com/thumbs/regular/<name>_700x700.png (700x700 ist die Maximalaufloesung, <name>.png und _1200x1200 liefern 404). Gleiche Quelle wie die bereits vorhandene Rueckansicht fuer white/black/charcoal/navy/red (belegt in scripts/import/quellenmix.json). Die bisherige Quelle neutral.com (Shopify product.json von /products/r61001-recycled-performance-t-shirt) fuehrt nachweislich NUR je ein Frontbild pro Farbe plus ein Hero-Bild – 20 Bilder, keine einzige Rueckansicht; daher der Quellenwechsel.",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "back": "https://www.sportyfied.com/thumbs/regular/neutral-r61001-performance-t-shirt-bottle-green-back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/neutral-r61001-performance-t-shirt-bottle-green-side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/files/R61001_BGRE.jpg?v=1770289341"
+      },
+      {
+        "id": "dusty-indigo",
+        "back": "https://www.sportyfied.com/thumbs/regular/r61001_dindi_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/r61001_dindi_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/6_2160c7cb-7b7f-43b3-8a23-983dc53bccaa.jpg?v=1770289323"
+      },
+      {
+        "id": "sapphire",
+        "back": "https://www.sportyfied.com/thumbs/regular/r61001_saph_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/r61001_saph_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/5_498b93f7-6eb7-40e6-bb6d-412a2679a503.jpg?v=1770289307"
+      },
+      {
+        "id": "yellow",
+        "back": "https://www.sportyfied.com/thumbs/regular/r61001_yel_back_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/12_bf8a1411-981b-425b-8a29-ea73ef4efd3d.jpg?v=1770289338"
+      },
+      {
+        "id": "okay-orange",
+        "back": "https://www.sportyfied.com/thumbs/regular/r61001_ooran_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/r61001_ooran_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/11_df9d5e25-d148-44e2-ae22-ab58444c4ee4.jpg?v=1770289336"
+      },
+      {
+        "id": "dusty-mint",
+        "back": "https://www.sportyfied.com/thumbs/regular/r61001_dmint_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/r61001_dmint_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/7_6cfa2354-d8b4-4fa2-8410-06abe9857d56.jpg?v=1770289325"
+      },
+      {
+        "id": "lime",
+        "back": "https://www.sportyfied.com/thumbs/regular/r61001_lime_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/r61001_lime_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/8_584a0aa2-ad0c-45d1-9404-7ddf7f72a7ad.jpg?v=1770289328"
+      },
+      {
+        "id": "green",
+        "back": "https://www.sportyfied.com/thumbs/regular/r61001_gre_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/r61001_gre_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/9_1e93c6f1-13d1-4af3-9a62-f4167ea776c3.jpg?v=1770289332"
+      },
+      {
+        "id": "bordeaux",
+        "back": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-bordeaux-r61001_bor_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-bordeaux-r61001_bor_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/files/R61001_BOR.jpg?v=1770289345"
+      },
+      {
+        "id": "sand",
+        "back": "https://www.sportyfied.com/thumbs/regular/neutral-r61001-performance-t-shirt-sand-back_2_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/neutral-r61001-performanc-sand-side_2_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/files/R61001_SAND.jpg?v=1770289349"
+      },
+      {
+        "id": "dusty-yellow",
+        "back": "https://www.sportyfied.com/thumbs/regular/neutral-r61001-performance-t-shirt-dusty-yellow_2_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/files/R61001_DYEL.jpg?v=1770289366"
+      },
+      {
+        "id": "dusty-purple",
+        "back": "https://www.sportyfied.com/thumbs/regular/neutral-r61001-performance-t-shirt-dusty-purple-back_3_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/files/R61001_DPURP.jpg?v=1770289370"
+      },
+      {
+        "id": "military",
+        "back": "https://www.sportyfied.com/thumbs/regular/neutral-performance-tee-r61001_mil_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/neutral-performance-tee-r61001_mil_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/files/R61001RecycledPerformanceT-shirt_Military.jpg?v=1770289394"
+      },
+      {
+        "id": "pink",
+        "back": "https://www.sportyfied.com/thumbs/regular/neutral-performance-tee-r61001_pink_back_700x700.png",
+        "side": "https://www.sportyfied.com/thumbs/regular/neutral-performance-teer61001_pink_side_700x700.png",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/files/R61001RecycledPerformanceT-shirt_Pink_b5ba7356-50fe-432b-840a-5d9f297f1325.jpg?v=1770289380"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "quelle": "media2.designpartner.fr (B&C-Packshot-Strecke zu PU428, Produkt-ID 17581; Muster 17581-<farbId>-1/-2/-3 = Front/Rueckseite/Seite, ausgelesen aus der Customizer-API https://api.th4.com/products/17581/product-customizer-datas mit reference_fabricant \"PU428\"; Artikel-/Farbidentitaet gegen die bisherige groener-schulze-Vorderansicht und die offizielle B&C-Mediathek bc-collection.eu verifiziert)",
+    "colors": [
+      {
+        "id": "dark-forest",
+        "back": "https://media2.designpartner.fr/c/p/17581/17581-20097-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/17581/17581-20097-3.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_dark_forest.webp"
+      },
+      {
+        "id": "royal-blue",
+        "back": "https://media2.designpartner.fr/c/p/17581/17581-32-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/17581/17581-32-3.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_royal_blue.webp"
+      },
+      {
+        "id": "dark-grey-solid",
+        "back": "https://media2.designpartner.fr/c/p/17581/17581-750-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/17581/17581-750-3.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_dark_grey.webp"
+      },
+      {
+        "id": "roasted-coffee",
+        "back": "https://media2.designpartner.fr/c/p/17581/17581-20094-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/17581/17581-20094-3.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_roasted_coffee.webp"
+      },
+      {
+        "id": "lotus-pink",
+        "back": "https://media2.designpartner.fr/c/p/17581/17581-20104-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/17581/17581-20104-3.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_lotus_pink.webp"
+      },
+      {
+        "id": "lotus-blue",
+        "back": "https://media2.designpartner.fr/c/p/17581/17581-20121-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/17581/17581-20121-3.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_lotus_blue.webp"
+      },
+      {
+        "id": "pacific-grey",
+        "back": "https://media2.designpartner.fr/c/p/17581/17581-9453-2.jpg",
+        "side": "https://media2.designpartner.fr/c/p/17581/17581-9453-3.jpg",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_pacific_grey.webp"
+      }
+    ]
+  },
+  {
+    "productId": "sols-men-s-polo-shirt-prime",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/5764-sol-s-prime-poly-cotton-pique-polo-shirt)",
+    "colors": [
+      {
+        "id": "dark-grey-solid",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-DGY-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-DGY-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-DGY-FRONT.jpg"
+      },
+      {
+        "id": "army",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-ARM-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-ARM-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-ARM-FRONT.jpg"
+      },
+      {
+        "id": "chocolate",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-CHO-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-CHO-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-CHO-FRONT.jpg"
+      },
+      {
+        "id": "aqua",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-AQA-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-AQA-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-AQA-FRONT.jpg"
+      },
+      {
+        "id": "ash-heather",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-ASH-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-ASH-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-ASH-FRONT.jpg"
+      },
+      {
+        "id": "pure-grey",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-PGE-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-PGE-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-PGE-FRONT.jpg"
+      },
+      {
+        "id": "apple-green",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-APL-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-APL-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-APL-FRONT.jpg"
+      },
+      {
+        "id": "burgundy",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-BUR-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-BUR-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-BUR-FRONT.jpg"
+      },
+      {
+        "id": "dark-purple",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-DKP-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-DKP-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-DKP-FRONT.jpg"
+      },
+      {
+        "id": "gold",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-GOL-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-GOL-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-GOL-FRONT.jpg"
+      },
+      {
+        "id": "kelly-green",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-KEL-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-KEL-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-KEL-FRONT.jpg"
+      },
+      {
+        "id": "orange",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-ORA-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-ORA-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-ORA-FRONT.jpg"
+      },
+      {
+        "id": "sand",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-SAN-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-SAN-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-SAN-FRONT.jpg"
+      },
+      {
+        "id": "sky-blue",
+        "back": "https://assets.myworkwear.co.uk/products/6077/10571-SKY-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6077/10571-SKY-LEFT.jpg",
+        "front": "https://assets.myworkwear.co.uk/products/6077/10571-SKY-FRONT.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "stedman-clive-crew-neck",
+    "quelle": "shop.l-shop-team.de (L-SHOP-TEAM, Artikel S9600 = Stedman ST9600 \"Clive Crew Neck\" / ab Kollektion 2026 \"Stretch-T\"). Bildergalerie der Artikelseite https://shop.l-shop-team.de/Sortiment/Basic-T-Shirts/Rundhals-oxid-1/Clive-Crew-Neck.html – Slot 2 = Front, Slot 3 = Ruecken. Die bisherige Quelle stedman.eu fuehrt fuer diesen Artikel KEINE Rueckenfotos.",
+    "colors": [
+      {
+        "id": "bordeaux",
+        "back": "https://shop.l-shop-team.de/out/pictures/master/product/3/2719016.jpg",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_BOD.jpg"
+      }
+    ]
+  }
+]

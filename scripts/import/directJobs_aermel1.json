@@ -1,0 +1,717 @@
+[
+  {
+    "productId": "neutral-ladies-fit-t-shirt",
+    "quelle": "profilsport.dk (dänischer B2B-Händler, Produktseite https://www.profilsport.dk/produkter/profilbeklaedning/t-shirts/kortaermede-t-shirts/o81001-ladies-fit-t-shirt/) – führt zu Neutral O81001 pro Farbe einen Dreier-Block freigestellter Geisterpuppen-JPGs (ca. 900x1200, weißer Hintergrund, keine Models) unter /produktbilleder/<id>/Neutral-Ladies-Fit-T-shirt-O81001-<Farbe>-<id>.jpg. Muster im DOM verifiziert, nicht geraten: die drei aufeinanderfolgenden Bild-IDs einer Farbe sind Front = n, Rueck = n+1, SEITE = n+2. Belegt an der Kontrollfarbe Teal (rueckKlappt): 275992 Front / 275993 Rueck / 275994 Seite – die Seitenaufnahme deckt sich exakt mit der bereits vorhandenen sportyfied-Datei neutral-dametshirt-o81001_teal_side_700x700.png. Die bisherige Quelle sportyfied.com führt die Seitenansicht NACHWEISLICH nur für teal (o81001_<code>_side_700x700.png, neutral-fittedtshirt-<farbe>-o81001-side_700x700.png = 404 für alle anderen Farben); neutral.com (Shopify product.json von /products/o81001-ladies-fit-t-shirt) führt nur EIN Bild je Farbe und keinerlei Seitenansichten.",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "side": "https://www.profilsport.dk/produktbilleder/275970/Neutral-Ladies-Fit-T-shirt-O81001-Bottle-Green-275970.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_bgre_700x700.png"
+      },
+      {
+        "id": "dusty-purple",
+        "side": "https://www.profilsport.dk/produktbilleder/275985/Neutral-Ladies-Fit-T-shirt-O81001-Dusty-Purple-275985.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-fittedtshirt-dustypurple-o81001-front_2_700x700.png"
+      },
+      {
+        "id": "dusty-yellow",
+        "side": "https://www.profilsport.dk/produktbilleder/275988/Neutral-Ladies-Fit-T-shirt-O81001-Dusty-Yellow-275988.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-fittedtshirt-dustyyellow-o81001-front_700x700.png"
+      },
+      {
+        "id": "okay-orange",
+        "side": "https://www.profilsport.dk/produktbilleder/275967/Neutral-Ladies-Fit-T-shirt-O81001-Okay-Orange-275967.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-fittedtshirt-okayorange-o81001-front_700x700.png"
+      },
+      {
+        "id": "brown",
+        "side": "https://www.profilsport.dk/produktbilleder/275973/Neutral-Ladies-Fit-T-shirt-O81001-Brown-275973.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-fittedtshirt-brown-o81001-front_700x700.png"
+      },
+      {
+        "id": "charcoal",
+        "side": "https://www.profilsport.dk/produktbilleder/275934/Neutral-Ladies-Fit-T-shirt-O81001-Charcoal-275934.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_char_700x700.png"
+      },
+      {
+        "id": "dusty-indigo",
+        "side": "https://www.profilsport.dk/produktbilleder/275982/Neutral-Ladies-Fit-T-shirt-O81001-Dusty-Indigo-275982.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_dindi_700x700.png"
+      },
+      {
+        "id": "dusty-mint",
+        "side": "https://www.profilsport.dk/produktbilleder/275979/Neutral-Ladies-Fit-T-shirt-O81001-Dusty-Mint-275979.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_dmint_700x700.png"
+      },
+      {
+        "id": "light-pink",
+        "side": "https://www.profilsport.dk/produktbilleder/275949/Neutral-Ladies-Fit-T-shirt-O81001-Light-Pink-275949.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_lpink_700x700.png"
+      },
+      {
+        "id": "ash-grey",
+        "side": "https://www.profilsport.dk/produktbilleder/275955/Neutral-Ladies-Fit-T-shirt-O81001-Ash-Grey-275955.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-fittedtshirt-ashgrey-o81001-front_700x700.png"
+      },
+      {
+        "id": "black",
+        "side": "https://www.profilsport.dk/produktbilleder/275925/Neutral-Ladies-Fit-T-shirt-O81001-Black-275925.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_bla_700x700.png"
+      },
+      {
+        "id": "bordeaux",
+        "side": "https://www.profilsport.dk/produktbilleder/275958/Neutral-Ladies-Fit-T-shirt-O81001-Bordeaux-275958.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_bor_700x700.png"
+      },
+      {
+        "id": "dark-heather",
+        "side": "https://www.profilsport.dk/produktbilleder/275937/Neutral-Ladies-Fit-T-shirt-O81001-Dark-Heather-275937.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_dhea_700x700.png"
+      },
+      {
+        "id": "green",
+        "side": "https://www.profilsport.dk/produktbilleder/275997/Neutral-Ladies-Fit-T-shirt-O81001-Green-275997.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_gre_700x700.png"
+      },
+      {
+        "id": "light-blue",
+        "side": "https://www.profilsport.dk/produktbilleder/276000/Neutral-Ladies-Fit-T-shirt-O81001-Light-Blue-276000.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_lblue_700x700.png"
+      },
+      {
+        "id": "military",
+        "side": "https://www.profilsport.dk/produktbilleder/275946/Neutral-Ladies-Fit-T-shirt-O81001-Military-275946.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_mil_700x700.png"
+      },
+      {
+        "id": "natural",
+        "side": "https://www.profilsport.dk/produktbilleder/275919/Neutral-Ladies-Fit-T-shirt-O81001-Nature-275919.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_nat_700x700.png"
+      },
+      {
+        "id": "navy",
+        "side": "https://www.profilsport.dk/produktbilleder/275928/Neutral-Ladies-Fit-T-shirt-O81001-Navy-275928.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_nav_700x700.png"
+      },
+      {
+        "id": "orange",
+        "side": "https://www.profilsport.dk/produktbilleder/275964/Neutral-Ladies-Fit-T-shirt-O81001-Orange-275964.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_oran_700x700.png"
+      },
+      {
+        "id": "pink",
+        "side": "https://www.profilsport.dk/produktbilleder/275940/Neutral-Ladies-Fit-T-shirt-O81001-Pink-275940.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_pink_700x700.png"
+      },
+      {
+        "id": "red",
+        "side": "https://www.profilsport.dk/produktbilleder/275931/Neutral-Ladies-Fit-T-shirt-O81001-Red-275931.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_red_700x700.png"
+      },
+      {
+        "id": "royal",
+        "side": "https://www.profilsport.dk/produktbilleder/275991/Neutral-Ladies-Fit-T-shirt-O81001-Royal-275991.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_roy1_700x700.png"
+      },
+      {
+        "id": "sapphire",
+        "side": "https://www.profilsport.dk/produktbilleder/275961/Neutral-Ladies-Fit-T-shirt-O81001-Sapphire-275961.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_saph_700x700.png"
+      },
+      {
+        "id": "sports-grey",
+        "side": "https://www.profilsport.dk/produktbilleder/275952/Neutral-Ladies-Fit-T-shirt-O81001-Sport-Grey-275952.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-fittedtshirt-sportgrey-o81001-front_700x700.png"
+      },
+      {
+        "id": "white",
+        "side": "https://www.profilsport.dk/produktbilleder/275922/Neutral-Ladies-Fit-T-shirt-O81001-White-275922.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_whi_700x700.png"
+      },
+      {
+        "id": "yellow",
+        "side": "https://www.profilsport.dk/produktbilleder/276006/Neutral-Ladies-Fit-T-shirt-O81001-Yellow-276006.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_yel_700x700.png"
+      },
+      {
+        "id": "lime",
+        "side": "https://www.profilsport.dk/produktbilleder/275943/Neutral-Ladies-Fit-T-shirt-O81001-Lime-275943.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_lime_700x700.png"
+      },
+      {
+        "id": "purple",
+        "side": "https://www.profilsport.dk/produktbilleder/276003/Neutral-Ladies-Fit-T-shirt-O81001-Purple-276003.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_purp_700x700.png"
+      },
+      {
+        "id": "sand",
+        "side": "https://www.profilsport.dk/produktbilleder/275976/Neutral-Ladies-Fit-T-shirt-O81001-Sand-275976.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_sand_700x700.png"
+      },
+      {
+        "id": "white-navy-striped",
+        "side": "https://www.profilsport.dk/produktbilleder/276009/Neutral-Ladies-Fit-T-shirt-O81001-White-Navy-Stripe-276009.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o81001_stpwb_700x700.png"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-ladies-classic-t-shirt",
+    "quelle": "cottonclassics.com – Produktseite \"Neutral O 80001\" (https://www.cottonclassics.com/en/neutral-o-80001.html); Bilddateien unter https://www.cottonclassics.com/at/media/catalog/product/P/S/ nach Muster PS_778001_neutral_o-80001_<farbe>_RIGHT_<uuid>_web.jpg",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_bottle-green_RIGHT_80011590-ffbd-4886-ac58-aaccec4b8473_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-bottlegreen-front-o80001_700x700.png"
+      },
+      {
+        "id": "nature",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_nature_RIGHT_7ddb0582-8ff6-49cf-981f-05b601159ad1_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-nature-front-o80001_700x700.png"
+      },
+      {
+        "id": "light-blue",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_light-blue_RIGHT_fb0cdce7-5afb-4f73-9910-f93f8ccd77ac_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-lightblue-front-o80001_700x700.png"
+      },
+      {
+        "id": "dusty-indigo",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_dusty-indigo_RIGHT_02380193-4b2e-4a6d-9f40-7d31ea1d357d_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-dustyindigo-front-o80001_700x700.png"
+      },
+      {
+        "id": "orange",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_orange_RIGHT_cdbb10c4-e87b-4fcd-a1cd-980e8f2a6e8a_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-orange-front-o80001_700x700.png"
+      },
+      {
+        "id": "pink",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_pink_RIGHT_5132b441-ba3b-484c-b0f0-94bb64acd69d_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-pink-front-o80001_700x700.png"
+      },
+      {
+        "id": "lime",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_lime_RIGHT_19495eb0-b491-4f2b-819b-3cba57079a1b_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-lime-front-o80001_700x700.png"
+      },
+      {
+        "id": "military",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_military_RIGHT_4d8cc1c9-9fcb-46a4-8599-43aafe90304e_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_mil_700x700.png"
+      },
+      {
+        "id": "sapphire",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_sapphire_RIGHT_9fa4dcfe-d5b0-41d8-a76a-4dc5ae452fea_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_saph_700x700.png"
+      },
+      {
+        "id": "black",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_black_RIGHT_6d5434fc-d261-4797-bf79-9f8aa411f879_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_bla_700x700.png"
+      },
+      {
+        "id": "navy",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_navy_RIGHT_72edb04a-f6ad-4e21-b784-97023e6b1887_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_nav_700x700.png"
+      },
+      {
+        "id": "red",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_red_RIGHT_22c5fcb3-83ee-406a-a3f6-7eb3c0866f2c_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_red_700x700.png"
+      },
+      {
+        "id": "sports-grey",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_sport-grey_RIGHT_3e2fd808-1d3f-40c0-bf5a-670f172464e5_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/neutral-tshirt-sportgrey-front-o80001_700x700.png"
+      },
+      {
+        "id": "white",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_white_RIGHT_7a363434-f6fd-447c-bd4f-da97fb2ce2e5_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_whi_700x700.png"
+      },
+      {
+        "id": "dark-heather",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_dark-heather_RIGHT_1a47a647-8240-43b7-998d-55c733bf4607_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_dhea_700x700.png"
+      },
+      {
+        "id": "bordeaux",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_bordeaux_RIGHT_0d7f804f-db08-4fdc-bd9c-3067d9cdaab3_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_bor_700x700.png"
+      },
+      {
+        "id": "green",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_green_RIGHT_ae869e93-b0d1-4383-8ce5-64f3cd89caf1_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_gre_700x700.png"
+      },
+      {
+        "id": "yellow",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_yellow_RIGHT_300aa045-8f79-45fe-9b9f-ddb8493d1dfc_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_yel_700x700.png"
+      },
+      {
+        "id": "royal",
+        "side": "https://www.cottonclassics.com/at/media/catalog/product/P/S/PS_778001_neutral_o-80001_royal_RIGHT_829b405b-3765-4fd1-aa05-9b34160351a3_web.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o80001_roy_700x700.png"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-men-s-basic-t",
+    "quelle": "Primär groener-schulze.com (offizielle Daiber/J&N-Freistellerfotografie, Produktseite /werbetextilien/t-shirts/daiber-mens-basic-t-jn8008). Perspektiven-Muster am Beleg-Farbton \"black\" verifiziert: /grafik/image/original/daiber_mens_basic_t_jn8008_<farbe>.webp = Front, _2 = Rücken, _3 = Seite/Ärmel (rechts), _4 = zweite Seitenansicht. 20 der 21 fehlenden Farben über _3 beschafft (Slugs aus der Farbauswahl der Produktseite: \"Ash (Heather)\" = ash, \"Graphite (Solid)\" = graphite). Coral ist bei groener-schulze, cottonclassics, textilwaren24 und in der aktuellen Daiber-Mediathek nicht mehr gelistet (ausgelaufene Farbe); die Aermelansicht stammt aus der offiziellen Hersteller-Mediathek daiber.de, Artikel 8008, Farb-Node .42334 (= Coral, über Wayback-CDX ermittelt, Datei live abrufbar).",
+    "colors": [
+      {
+        "id": "light-denim-melange",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_light_denim_melange_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_light_denim_melange.webp"
+      },
+      {
+        "id": "olive",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_olive_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_olive.webp"
+      },
+      {
+        "id": "wine",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_wine_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_wine.webp"
+      },
+      {
+        "id": "acid-yellow",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_acid_yellow_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_acid_yellow.webp"
+      },
+      {
+        "id": "ash-heather",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_ash_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_ash.webp"
+      },
+      {
+        "id": "black-heather",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_black_heather_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_black_heather.webp"
+      },
+      {
+        "id": "cobalt",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_cobalt_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_cobalt.webp"
+      },
+      {
+        "id": "coral",
+        "side": "https://www.daiber.de/files/8008-mens-basic-t-rot-herren.42334_detail_32114.jpg",
+        "front": "https://freewear.de/media/image/variation/217855/lg/mens-basic-t-jamesnicholson-8008-jn8008_farbe_coral.webp"
+      },
+      {
+        "id": "gold-yellow",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_gold_yellow_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_gold_yellow.webp"
+      },
+      {
+        "id": "graphite-solid",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_graphite_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_graphite.webp"
+      },
+      {
+        "id": "lime-green",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_lime_green_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_lime_green.webp"
+      },
+      {
+        "id": "natural",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_natural_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_natural.webp"
+      },
+      {
+        "id": "orange",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_orange_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_orange.webp"
+      },
+      {
+        "id": "petrol",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_petrol_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_petrol.webp"
+      },
+      {
+        "id": "sky-blue",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_sky_blue_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_sky_blue.webp"
+      },
+      {
+        "id": "steel-grey",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_steel_grey_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_steel_grey.webp"
+      },
+      {
+        "id": "yellow",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_yellow_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_yellow.webp"
+      },
+      {
+        "id": "vanilla",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_vanilla_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_vanilla.webp"
+      },
+      {
+        "id": "light-blue",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_light_blue_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_light_blue.webp"
+      },
+      {
+        "id": "soft-grey",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_soft_grey_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_soft_grey.webp"
+      },
+      {
+        "id": "jade-green",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_jade_green_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_basic_t_jn8008_jade_green.webp"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-men-s-long-sleeve-t-shirt",
+    "quelle": "profilsport.dk (Neutral Men's Long Sleeve T-shirt O61050, https://www.profilsport.dk/produkt/neutral-mens-long-sleeve-t-shirt-o61050/ – Bildmuster /produktbilleder/<id>/Neutral-Mens-Long-Sleeve-T-shirt-O61050-<Farbe>-<id>.jpg, je Farbe ein Dreier-Block front/back/side mit fortlaufenden ids 275313-275381; die Seitenansicht ist immer das dritte Bild des Blocks). Perspektiven-Muster zuvor an der bisherigen Quelle sportyfied.com an der Belegfarbe dusty-indigo abgeleitet (_side: https://www.sportyfied.com/archive/neutral-lstshirt-o61050_dindi_side.png, 200/2015653/image/png), dort aber nur fuer dusty-indigo und teal vorhanden.",
+    "colors": [
+      {
+        "id": "bottle-green",
+        "side": "https://www.profilsport.dk/produktbilleder/275357/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Bottle-Green-275357.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/13_d415bd12-603a-45dd-98ef-e229bd9db29b.jpg?v=1770294451"
+      },
+      {
+        "id": "dusty-mint",
+        "side": "https://www.profilsport.dk/produktbilleder/275360/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Dusty-Mint-275360.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/10_206cd8fd-2d8a-49cd-b2bb-c9301a6bf102.jpg?v=1770294442"
+      },
+      {
+        "id": "black",
+        "side": "https://www.profilsport.dk/produktbilleder/275318/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Black-275318.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/4_87ab5c93-380f-461b-a00c-a343a2bf90ee.jpg?v=1770294420"
+      },
+      {
+        "id": "navy",
+        "side": "https://www.profilsport.dk/produktbilleder/275321/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Navy-275321.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/5_8cf71cce-3a92-4253-9021-98f24d113480.jpg?v=1770294425"
+      },
+      {
+        "id": "sports-grey",
+        "side": "https://www.profilsport.dk/produktbilleder/275345/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Sport-Grey-275345.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/2_d5fe93a2-465d-4c7b-8aa2-2cf4058f59ed.jpg?v=1770294402"
+      },
+      {
+        "id": "white",
+        "side": "https://www.profilsport.dk/produktbilleder/275315/Neutral-Mens-Long-Sleeve-T-shirt-O61050-White-275315.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/1_163cc156-21af-486d-959a-b7c44031faf3.jpg?v=1770294396"
+      },
+      {
+        "id": "charcoal",
+        "side": "https://www.profilsport.dk/produktbilleder/275327/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Charcoal-275327.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/O61050_CHAR.jpg?v=1770294492"
+      },
+      {
+        "id": "light-blue",
+        "side": "https://www.profilsport.dk/produktbilleder/275375/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Light-Blue-275375.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/O61050_LBLUE.jpg?v=1770294490"
+      },
+      {
+        "id": "b8b8b8",
+        "side": "https://www.profilsport.dk/produktbilleder/275345/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Sport-Grey-275345.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/2_d5fe93a2-465d-4c7b-8aa2-2cf4058f59ed.jpg?v=1770294402"
+      },
+      {
+        "id": "bordeaux",
+        "side": "https://www.profilsport.dk/produktbilleder/275348/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Bordeaux-275348.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/15_950e7a13-7643-4299-be0c-00bc00077844.jpg?v=1770294474"
+      },
+      {
+        "id": "military",
+        "side": "https://www.profilsport.dk/produktbilleder/275339/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Military-275339.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/14_9df8a4e4-99fe-48c0-a47d-0ff375e0c809.jpg?v=1770294471"
+      },
+      {
+        "id": "red",
+        "side": "https://www.profilsport.dk/produktbilleder/275324/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Red-275324.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/16_5718988f-7451-4893-8f72-1efbabf9786b.jpg?v=1770294478"
+      },
+      {
+        "id": "dark-heather",
+        "side": "https://www.profilsport.dk/produktbilleder/275330/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Dark-Heather-275330.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/3_59e1dc41-dccb-4a3a-ad3a-49a3060f34a8.jpg?v=1770294405"
+      },
+      {
+        "id": "white-navy-striped",
+        "side": "https://www.profilsport.dk/produktbilleder/275381/Neutral-Mens-Long-Sleeve-T-shirt-O61050-White-Navy-Stripe-275381.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/6_bbf74b78-bf1f-42f9-bca6-a46b4c631f67.jpg?v=1770294429"
+      },
+      {
+        "id": "yellow",
+        "side": "https://www.profilsport.dk/produktbilleder/275378/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Yellow-275378.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/18_30c68cd8-1fa6-4242-9352-5ec3cf311321.jpg?v=1770294484"
+      },
+      {
+        "id": "sapphire",
+        "side": "https://www.profilsport.dk/produktbilleder/275351/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Sapphire-275351.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/8_5acdf8b7-4621-41f9-8f1e-e481b73b9ebf.jpg?v=1770294434"
+      },
+      {
+        "id": "green",
+        "side": "https://www.profilsport.dk/produktbilleder/275372/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Green-275372.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/12_5499f525-ff5e-4106-8dd3-c12ec8d602f1.jpg?v=1770294448"
+      },
+      {
+        "id": "royal",
+        "side": "https://www.profilsport.dk/produktbilleder/275366/Neutral-Mens-Long-Sleeve-T-shirt-O61050-Royal-275366.jpg",
+        "front": "https://cdn.shopify.com/s/files/1/0076/1439/8546/products/7_179e19cf-85d0-41ca-a2f0-7957428bc357.jpg?v=1770294432"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-inspire-t-women",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, offizielle B&C-Produktfotografie zu Artikel TW043 / Dateipraefix 01TW43) – Aermel-/Seitenansichten aus dem Gallery-Bildsatz der Produktseite https://www.cottonclassics.com/en/bandc-inspire-t-women.html; die Quelle labelt Rueck- UND Seitenansicht als \"_RIGHT_\", Farben mit Seitenaufnahme fuehren zwei _RIGHT_-Dateien mit unterschiedlicher UUID (Muster uebertragen von der Belegfarbe millennial-pink)",
+    "colors": [
+      {
+        "id": "sport-grey-heather",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_01TW43_bandc_inspire-t-women__sport-grey_RIGHT_124c201f-09ca-4eb0-9feb-792ac6197b93_web.jpg",
+        "front": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_01TW43_bandc_inspire-t-women__sport-grey_FRONT_72f839a3-a0af-4330-93f8-5976bbe6fc1a_web.jpg"
+      },
+      {
+        "id": "urban-orange",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_01TW43_bandc_inspire-t-women__urban-orange_RIGHT_269d3ae6-2fa8-4e63-b772-a2c2abea91cd_web.jpg",
+        "front": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_01TW43_bandc_inspire-t-women__urban-orange_FRONT_2412e0e8-0cc8-4a3d-b3dc-ea36119e3576_web.jpg"
+      },
+      {
+        "id": "millennial-khaki",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_01TW43_bandc_inspire-t-women__millennial-khaki_RIGHT_a5659b39-9782-43b4-82b6-2d153317a8b7_web.jpg",
+        "front": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_01TW43_bandc_inspire-t-women__millennial-khaki_FRONT_49f2730b-e196-4f37-a759-51a56567e4f1_web.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-inspire-polo-women",
+    "quelle": "cottonclassics.com (B2B-Grosshandel, Produktseite https://www.cottonclassics.com/en/bandc-inspire-polo-women.html) — Original-B&C-Packshots zu Artikel PW440 / Cotton-Classics-Artikelnummer 010440. Muster fuer die Seiten-/Aermelansicht: https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__<farb-slug>_RIGHT_<uuid>_web.jpg (PS_ = Packshot/Freisteller, LS_ = Lifestyle/on-model und daher nicht verwendet; FRONT/BACK/RIGHT als Perspektiven-Token). WICHTIG: Es liegen ZWEI Foto-Generationen unter demselben Token \"RIGHT\" — die neuere 800x~1041/1082-Serie zeigt trotz \"RIGHT\" die RUECKANSICHT (visuell geprueft an white_RIGHT_debeee8a...), nur die aeltere 405x1200-Serie ist die echte Seiten-/Aermelansicht. Es wurde konsequent die 405x1200-Variante gewaehlt. Die bisherige Quelle bc-collection.eu (Hersteller-DAM, /storage/v1/<mediaId>/PW440_P_BC_<code>_NN.jpg) fuehrt NACHWEISLICH nur _01 (Front) und _02 (Rueck) je Farbe — die mediaIds laufen pro Farbe in Zweierschritten (6476/6477 = Navy 006), ein _03 gibt es nicht (404 auf /storage/v1/6477/PW440_P_BC_006_03.jpg und /storage/v1/6478/PW440_P_BC_006_03.jpg). Daher stammen alle Aermelbilder aus cottonclassics.com.",
+    "colors": [
+      {
+        "id": "urban-khaki",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/cache/e88603815787d90c369fd67a7173bb02/P/S/PS_010440_bandc_inspire-polo-women__urban-khaki_RIGHT_b8263bd1-f162-4889-a456-117951baae54_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_urbankhaki.jpg"
+      },
+      {
+        "id": "solar-yellow",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__solar-yellow_RIGHT_12ff26ae-226d-4f0c-ba07-e3a2c08d489d_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_solaryellow.jpg"
+      },
+      {
+        "id": "orange",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__orange_RIGHT_bde125f7-ad76-4084-8975-e0b96315f32e_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_orange.jpg"
+      },
+      {
+        "id": "urban-orange",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__urban-orange_RIGHT_deb867f8-1b97-4cb8-8b41-abe0bea55b1a_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/c/g/cgpw440_urbanorangeface.jpg"
+      },
+      {
+        "id": "sorbet",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__sorbet_RIGHT_26539693-2077-4acd-b498-50b523f5ae9e_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_sorbet.jpg"
+      },
+      {
+        "id": "orchid-pink",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__orchid-pink_RIGHT_62dae2e2-f744-4e54-b8a2-0ec677d7dae5_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_orchidpink.jpg"
+      },
+      {
+        "id": "very-turquoise",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__very-turquoise_RIGHT_b9c5134a-56fa-471a-a5c8-590574e50530_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_veryturquoise.jpg"
+      },
+      {
+        "id": "sky-blue",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__sky-blue_RIGHT_51b17a58-74ce-4760-b794-5f79ac7606e4_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_skyblue.jpg"
+      },
+      {
+        "id": "radiant-purple",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__radiant-purple_RIGHT_fb0b698f-85f6-4860-a217-bb1525071738_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_radiantpurple.jpg"
+      },
+      {
+        "id": "orchid-green",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__orchid-green_RIGHT_dfa39439-27a2-423b-96ab-f6b9b617e9f7_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_orchidgreen.jpg"
+      },
+      {
+        "id": "millennial-mint",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__millennial-mint_RIGHT_682a2968-1c67-4397-930a-eb2359c16f8f_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_millennialmint.jpg"
+      },
+      {
+        "id": "bottle-green",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__bottle-green_RIGHT_3aa3080d-c773-4824-b3ef-8c47ae8b5c0f_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_bottlegreen.jpg"
+      },
+      {
+        "id": "millennial-lilac",
+        "side": "https://www.cottonclassics.com/en/media/catalog/product/P/S/PS_010440_bandc_inspire-polo-women__millennial-lilac_RIGHT_8ae7cc08-6777-40e3-a136-71b95d44bfd1_web.jpg",
+        "front": "https://www.promociel.fr/media/catalog/product/p/s/ps_cgpw440_millenniallilac.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "build-your-brand-fluffy-hoody",
+    "quelle": "tbi.cdn.pacerace.de – Original-CDN von TB International / Build Your Brand (Artikel BY284). Perspektiven-Muster am Beleg-Farbton bottle-green abgelesen: /media/images/org/BY284_P1-<Farbcode>.jpg = Front, _P2- = Rueck, _P4- = Seite/Aermel (bottle-green = Code 02245: P1 154928 B, P2 162660 B, P4 109021 B – drei eigene Dateien).",
+    "colors": [
+      {
+        "id": "light-asphalt",
+        "side": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P4-02946.jpg",
+        "front": "https://www.rexlander.com/74906-thickbox_default/Build-Your-Brand-BY284-Fluffy-Hoody-UnisexKapuzenpullover-berschnittene-Schultern.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "neutral-unisex-regular-t-shirt",
+    "quelle": "profilsport.dk – Neutral Unisex Regular T-shirt O60002 (https://www.profilsport.dk/produkter/profilbeklaedning/t-shirts/kortaermede-t-shirts/o60002-unisex-regular-t-shirt/). Der Haendler fuehrt je Farbe einen Dreierblock mit fortlaufender Bild-ID unter /produktbilleder/<id>/Neutral-Unisex-Regular-T-shirt-O60002-<Farbe>-<id>.jpg: n = Front, n+1 = Ruecken, n+3. Slot (n+2) = Seiten-/Aermelansicht. Das Muster wurde NICHT geraten, sondern an der Referenzfarbe Bottle Green (rueckKlappt) verifiziert: 275121 = Front, 275122 = Ruecken, 275123 = Seite; 275123 deckt sich exakt mit der bereits vorhandenen sportyfied-Seitenansicht neutral-tshirt-bottlegreen-o60002-33-side_700x700.png. Alle Bilder sind freigestellte Studioaufnahmen (Geisterpuppe, weisser Hintergrund, KEINE Menschen), ~900x1200 JPEG. Die bisherige Quelle sportyfied.com fuehrt fuer genau diese 10 Farben NUR die Datei-Familie o60002-<code>_front / _back und nachweislich keine Seitenansicht (o60002-<code>_side/_r/_right/_sleeve/_arm/_3 sowie -side alle 404); die -side-Dateien existieren dort nur fuer die andere Bildfamilie neutral-tshirt-<farbe>-o60002-<code>-side.",
+    "colors": [
+      {
+        "id": "white",
+        "side": "https://www.profilsport.dk/produktbilleder/275078/Neutral-Unisex-Regular-T-shirt-O60002-White-275078.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-01_front_700x700.png"
+      },
+      {
+        "id": "black",
+        "side": "https://www.profilsport.dk/produktbilleder/275081/Neutral-Unisex-Regular-T-shirt-O60002-Black-275081.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-03_front_700x700.png"
+      },
+      {
+        "id": "navy",
+        "side": "https://www.profilsport.dk/produktbilleder/275084/Neutral-Unisex-Regular-T-shirt-O60002-Navy-275084.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-04_front_700x700.png"
+      },
+      {
+        "id": "red",
+        "side": "https://www.profilsport.dk/produktbilleder/275087/Neutral-Unisex-Regular-T-shirt-O60002-Red-275087.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-05_front_700x700.png"
+      },
+      {
+        "id": "dark-heather",
+        "side": "https://www.profilsport.dk/produktbilleder/275093/Neutral-Unisex-Regular-T-shirt-O60002-Dark-Heather-275093.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-08_front_700x700.png"
+      },
+      {
+        "id": "sports-grey",
+        "side": "https://www.profilsport.dk/produktbilleder/275108/Neutral-Unisex-Regular-T-shirt-O60002-Sport-Grey-275108.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-21_front_700x700.png"
+      },
+      {
+        "id": "bordeaux",
+        "side": "https://www.profilsport.dk/produktbilleder/275111/Neutral-Unisex-Regular-T-shirt-O60002-Bordeaux-275111.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-26_front_700x700.png"
+      },
+      {
+        "id": "royal",
+        "side": "https://www.profilsport.dk/produktbilleder/275144/Neutral-Unisex-Regular-T-shirt-O60002-Royal-275144.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-51_front_700x700.png"
+      },
+      {
+        "id": "green",
+        "side": "https://www.profilsport.dk/produktbilleder/275150/Neutral-Unisex-Regular-T-shirt-O60002-Green-275150.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-67_front_700x700.png"
+      },
+      {
+        "id": "yellow",
+        "side": "https://www.profilsport.dk/produktbilleder/275159/Neutral-Unisex-Regular-T-shirt-O60002-Yellow-275159.jpg",
+        "front": "https://www.sportyfied.com/thumbs/regular/o60002-98_front_700x700.png"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-men-s-bio-workwear-polo",
+    "quelle": "groener-schulze.com",
+    "colors": [
+      {
+        "id": "wine",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_wine_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_wine.webp"
+      },
+      {
+        "id": "aqua",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_aqua_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_aqua.webp"
+      },
+      {
+        "id": "stone",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_stone_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_stone.webp"
+      },
+      {
+        "id": "orange",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_orange_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_orange.webp"
+      },
+      {
+        "id": "dark-grey-solid",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_dark_grey_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_dark_grey.webp"
+      },
+      {
+        "id": "turquoise",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_turquoise_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_turquoise.webp"
+      },
+      {
+        "id": "lime-green",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_lime_green_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_lime_green.webp"
+      },
+      {
+        "id": "gold-yellow",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_gold_yellow_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_gold_yellow.webp"
+      },
+      {
+        "id": "grey-heather",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_grey_heather_3.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_grey_heather.webp"
+      }
+    ]
+  },
+  {
+    "productId": "russell-russell-classic-t",
+    "quelle": "Primär groener-schulze.com (offizielle Russell/FOTL-Freistellerfotografie, Artikel \"Russell Athletic Classic T - R-180M-0\", Dateimuster https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_<farbe>_<n>.webp, 1200x1200) für 6 Farben. ACHTUNG – der Perspektiven-Index ist NICHT farbübergreifend konstant: Die Belegfarbe mocha führt 5 Bilder (Basis=Front, _2=Rücken, _3=Seite, _4/_5=On-Model); die 7 gesuchten Farben führen nur 4 Bilder, dort ist Basis=Front, _2=SEITE, _3=Rücken, _4=On-Model. Jede Datei wurde einzeln dekodiert und angesehen, der Index nicht übertragen. purple führt groener-schulze überhaupt nicht (Farbliste der Produktseite: 30 white, 36 black, 38 bottle green, 41 burgundy, 60 natural, BH bright royal, BP olive, BR bright red, CG convoy grey, CR classic red, FN french navy, IB indigo blue, K2 yellow, LX light oxford, MJ mocha, MK mineral blue, PR powder rose, SC sky, TK tan, ZU azure blue – kein purple). purple stammt daher aus der offiziellen Hersteller-Mediathek Russell Europe / Fruit of the Loom (russelleurope.com, Produkt 0R180M0): DAM-Muster https://cdn.fruitoftheloom.eu/resources/images/product/0R180M/<Farbcode>/large/<assetId>.jpg, Asset-Typ \"asset_product_side\" (Freisteller-Seitenansicht), purple = Farbcode 81. Farbcode- und Asset-Zuordnung wurde aus dem Angular-Scope der Produktseite ausgelesen (Feld selectedProductImages mit Asset_Type__r.Name und Color__r.Name), nicht geraten.",
+    "colors": [
+      {
+        "id": "black",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_black_2.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_black.webp"
+      },
+      {
+        "id": "bottle-green",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_bottle_green_2.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_bottle_green.webp"
+      },
+      {
+        "id": "bright-royal",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_bright_royal_2.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_bright_royal.webp"
+      },
+      {
+        "id": "classic-red",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_classic_red_2.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_classic_red.webp"
+      },
+      {
+        "id": "french-navy",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_french_navy_2.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_french_navy.webp"
+      },
+      {
+        "id": "purple",
+        "side": "https://cdn.fruitoftheloom.eu/resources/images/product/0R180M/81/large/29008.jpg",
+        "front": "https://www.morecolor.nl/uploads/cache/product_detail_slider/merken/russell/Z180/Z180_Purple.webp"
+      },
+      {
+        "id": "white",
+        "side": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_white_2.webp",
+        "front": "https://www.groener-schulze.com/grafik/image/original/russell_athletic_classic_t_r-180m-0_white.webp"
+      }
+    ]
+  }
+]

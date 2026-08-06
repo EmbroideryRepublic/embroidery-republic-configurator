@@ -1,167 +1,1334 @@
 [
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "navy",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "slate-grey-solid",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#25354e",
-    "erwartet": "#263147",
-    "deltaE": 8,
-    "dupeMit": null
+    "frontDom": "#43474a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-slate-grey-solid"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "black",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "black-opal",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#2a292e",
-    "erwartet": "#25282B",
-    "deltaE": 6,
-    "dupeMit": null
+    "frontDom": "#101010",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-black-opal"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "charcoal-solid",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "bright-royal",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#707477",
-    "erwartet": "#66676C",
-    "deltaE": 20,
-    "dupeMit": null
+    "frontDom": "#2d5392",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-royal"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "dark-heather",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "burgundy-red",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#5c676d",
-    "erwartet": "#3F4444",
-    "deltaE": 61,
-    "dupeMit": null
+    "frontDom": "#472229",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-burgundy-red"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "maroon",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "deep-berry",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#661747",
-    "erwartet": "#5B2B42",
-    "deltaE": 23,
-    "dupeMit": null
+    "frontDom": "#3c293d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-deep-berry"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "military-green",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "grey-heather",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#696d58",
-    "erwartet": "#63655A",
-    "deltaE": 10,
-    "dupeMit": null
+    "frontDom": "#8b8880",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-grey-heather"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "sand",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "hunters-green",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#dcc4b1",
-    "erwartet": "#CABFAD",
-    "deltaE": 19,
-    "dupeMit": null
+    "frontDom": "#474e22",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-hunters-green"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "cocoa",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "kelly-green",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#6a3e32",
-    "erwartet": "#6B3D2E",
-    "deltaE": 4,
-    "dupeMit": null
+    "frontDom": "#258134",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-kelly-green"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "pistachio",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "kiwi-green",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
     "gefunden": [
       "front",
-      "back",
-      "sleeve-left"
+      "back"
     ],
-    "frontDom": "#cfdfab",
-    "erwartet": "#BDC293",
-    "deltaE": 42,
-    "dupeMit": null
+    "frontDom": "#43a62d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-kiwi-green"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "light-blue",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#53768a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-light-blue"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "navy-blue",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#263343",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-navy-blue"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "orange",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#cd5d2d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-orange"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "real-grey",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#4b5346",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-real-grey"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "scarlet-red",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#c91d19",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-scarlet-red"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "sweet-pink",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#d13b5e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-sweet-pink"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "white",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#d0d0d0",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-white"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "yellow",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#cec345",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-yellow"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "bright-lime",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a3c729",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-bright-lime"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "brilliant-orange",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ce3726",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-brilliant-orange"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "soft-grey",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#949a8e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-soft-grey"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "dark-chocolate",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#32261d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-dark-chocolate"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "sunflower-yellow",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#d09a2a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-sunflower-yellow"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "denim-blue",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#3a4d5d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-denim-blue"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "ash-heather",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#c3c3c2",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-ash-heather"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "bottle-green",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#223021",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-bottle-green"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "marina-blue",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#13212a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-marina-blue"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "bordeaux",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#63141a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-bordeaux"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "natural",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ccbba2",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-natural"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "f7a30a",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#dd8023",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-f7a30a"
+  },
+  {
+    "produkt": "stedman-classic-t-for-women",
+    "farbe": "5a6f5e",
+    "quelle": "shirt-king.de (Shopware-Variantenseiten zu Stedman ST2600, Mediendateien ST2600b_<Farbcode>.webp – identisches Stedman-Fotoset wie die Vorderansichten ST2600_<Farbcode>)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#5f674f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-classic-t-for-women-5a6f5e"
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "irish-green",
+    "quelle": "shirtspace.com – Produktseite Style 24311 \"Gildan G3000 Unisex Light Cotton T-Shirt\" (https://www.shirtspace.com/gildan/t-shirts/24311-gildan-g3000-unisex-light-cotton-t-shirt). Muster NICHT geraten: die kompletten Bild-URLs stehen woertlich im HTML der Seite (Thumbnail-Pfad /cell/ → Grossbild /fullsize/), Schema https://images.shirtspace.com/fullsize/<hash>/<bildId>/24311-gildan-g3000-unisex-light-cotton-t-shirt-<front|back|side>-<farbslug>.jpg. Die bisherige Quelle gildan.com (BigCommerce s-25plmff032, Produkt 6468) wurde zuerst im DOM ausgelesen: dort liegen je Farbe genau sechs Bilder alt1–alt6 (Damen-Model front/back/side, Herren-Model front/back/side, z.B. .../products/6468/images/91743844/3000-020-alt1__45567.1785944471.1280.1280.jpg bis alt6). Alle sechs sind On-Model-Aufnahmen mit Person – damit als Rueckansicht unbrauchbar. Bei shirtspace fuehrt jede Farbe genau drei Ansichten (front/back/side); die Bildsets sind gemischt: fuer die 2025er Kernfarben stammen sie aus derselben On-Model-Strecke wie bei gildan.com, fuer sieben Farben der erweiterten Palette liegen echte Geistermannequin-Freisteller auf weissem Grund. Nur diese sieben sind hier geliefert. Jede gelieferte Datei wurde einzeln heruntergeladen und angesehen: Rueckseite ohne Halsausschnitt vorn, ohne Person, eigene Datei (md5 und Bytegroesse verschieden von der Front derselben Farbe, z.B. sky back 57.149 B vs. front 52.184 B). Gegenprobe gegen das Gildan-5000-Listing derselben Plattform (1250-gildan-g500-…): dort sind die Rueckansichten in denselben Farben On-Model und byteverschieden – die gelieferten Freisteller sind also keine vom Heavy-Cotton-Modell uebernommenen Fremdbilder. Vorderansichten bleiben unveraendert bei gildan.com.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#14b76a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-light-cotton-adult-t-shirt-irish-green"
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "off-white",
+    "quelle": "shirtspace.com – Produktseite Style 24311 \"Gildan G3000 Unisex Light Cotton T-Shirt\" (https://www.shirtspace.com/gildan/t-shirts/24311-gildan-g3000-unisex-light-cotton-t-shirt). Muster NICHT geraten: die kompletten Bild-URLs stehen woertlich im HTML der Seite (Thumbnail-Pfad /cell/ → Grossbild /fullsize/), Schema https://images.shirtspace.com/fullsize/<hash>/<bildId>/24311-gildan-g3000-unisex-light-cotton-t-shirt-<front|back|side>-<farbslug>.jpg. Die bisherige Quelle gildan.com (BigCommerce s-25plmff032, Produkt 6468) wurde zuerst im DOM ausgelesen: dort liegen je Farbe genau sechs Bilder alt1–alt6 (Damen-Model front/back/side, Herren-Model front/back/side, z.B. .../products/6468/images/91743844/3000-020-alt1__45567.1785944471.1280.1280.jpg bis alt6). Alle sechs sind On-Model-Aufnahmen mit Person – damit als Rueckansicht unbrauchbar. Bei shirtspace fuehrt jede Farbe genau drei Ansichten (front/back/side); die Bildsets sind gemischt: fuer die 2025er Kernfarben stammen sie aus derselben On-Model-Strecke wie bei gildan.com, fuer sieben Farben der erweiterten Palette liegen echte Geistermannequin-Freisteller auf weissem Grund. Nur diese sieben sind hier geliefert. Jede gelieferte Datei wurde einzeln heruntergeladen und angesehen: Rueckseite ohne Halsausschnitt vorn, ohne Person, eigene Datei (md5 und Bytegroesse verschieden von der Front derselben Farbe, z.B. sky back 57.149 B vs. front 52.184 B). Gegenprobe gegen das Gildan-5000-Listing derselben Plattform (1250-gildan-g500-…): dort sind die Rueckansichten in denselben Farben On-Model und byteverschieden – die gelieferten Freisteller sind also keine vom Heavy-Cotton-Modell uebernommenen Fremdbilder. Vorderansichten bleiben unveraendert bei gildan.com.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#faf7e8",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-light-cotton-adult-t-shirt-off-white"
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "orange",
+    "quelle": "shirtspace.com – Produktseite Style 24311 \"Gildan G3000 Unisex Light Cotton T-Shirt\" (https://www.shirtspace.com/gildan/t-shirts/24311-gildan-g3000-unisex-light-cotton-t-shirt). Muster NICHT geraten: die kompletten Bild-URLs stehen woertlich im HTML der Seite (Thumbnail-Pfad /cell/ → Grossbild /fullsize/), Schema https://images.shirtspace.com/fullsize/<hash>/<bildId>/24311-gildan-g3000-unisex-light-cotton-t-shirt-<front|back|side>-<farbslug>.jpg. Die bisherige Quelle gildan.com (BigCommerce s-25plmff032, Produkt 6468) wurde zuerst im DOM ausgelesen: dort liegen je Farbe genau sechs Bilder alt1–alt6 (Damen-Model front/back/side, Herren-Model front/back/side, z.B. .../products/6468/images/91743844/3000-020-alt1__45567.1785944471.1280.1280.jpg bis alt6). Alle sechs sind On-Model-Aufnahmen mit Person – damit als Rueckansicht unbrauchbar. Bei shirtspace fuehrt jede Farbe genau drei Ansichten (front/back/side); die Bildsets sind gemischt: fuer die 2025er Kernfarben stammen sie aus derselben On-Model-Strecke wie bei gildan.com, fuer sieben Farben der erweiterten Palette liegen echte Geistermannequin-Freisteller auf weissem Grund. Nur diese sieben sind hier geliefert. Jede gelieferte Datei wurde einzeln heruntergeladen und angesehen: Rueckseite ohne Halsausschnitt vorn, ohne Person, eigene Datei (md5 und Bytegroesse verschieden von der Front derselben Farbe, z.B. sky back 57.149 B vs. front 52.184 B). Gegenprobe gegen das Gildan-5000-Listing derselben Plattform (1250-gildan-g500-…): dort sind die Rueckansichten in denselben Farben On-Model und byteverschieden – die gelieferten Freisteller sind also keine vom Heavy-Cotton-Modell uebernommenen Fremdbilder. Vorderansichten bleiben unveraendert bei gildan.com.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#fb5c32",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-light-cotton-adult-t-shirt-orange"
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
     "farbe": "purple",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "quelle": "shirtspace.com – Produktseite Style 24311 \"Gildan G3000 Unisex Light Cotton T-Shirt\" (https://www.shirtspace.com/gildan/t-shirts/24311-gildan-g3000-unisex-light-cotton-t-shirt). Muster NICHT geraten: die kompletten Bild-URLs stehen woertlich im HTML der Seite (Thumbnail-Pfad /cell/ → Grossbild /fullsize/), Schema https://images.shirtspace.com/fullsize/<hash>/<bildId>/24311-gildan-g3000-unisex-light-cotton-t-shirt-<front|back|side>-<farbslug>.jpg. Die bisherige Quelle gildan.com (BigCommerce s-25plmff032, Produkt 6468) wurde zuerst im DOM ausgelesen: dort liegen je Farbe genau sechs Bilder alt1–alt6 (Damen-Model front/back/side, Herren-Model front/back/side, z.B. .../products/6468/images/91743844/3000-020-alt1__45567.1785944471.1280.1280.jpg bis alt6). Alle sechs sind On-Model-Aufnahmen mit Person – damit als Rueckansicht unbrauchbar. Bei shirtspace fuehrt jede Farbe genau drei Ansichten (front/back/side); die Bildsets sind gemischt: fuer die 2025er Kernfarben stammen sie aus derselben On-Model-Strecke wie bei gildan.com, fuer sieben Farben der erweiterten Palette liegen echte Geistermannequin-Freisteller auf weissem Grund. Nur diese sieben sind hier geliefert. Jede gelieferte Datei wurde einzeln heruntergeladen und angesehen: Rueckseite ohne Halsausschnitt vorn, ohne Person, eigene Datei (md5 und Bytegroesse verschieden von der Front derselben Farbe, z.B. sky back 57.149 B vs. front 52.184 B). Gegenprobe gegen das Gildan-5000-Listing derselben Plattform (1250-gildan-g500-…): dort sind die Rueckansichten in denselben Farben On-Model und byteverschieden – die gelieferten Freisteller sind also keine vom Heavy-Cotton-Modell uebernommenen Fremdbilder. Vorderansichten bleiben unveraendert bei gildan.com.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#4f2d76",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-light-cotton-adult-t-shirt-purple"
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "sage",
+    "quelle": "shirtspace.com – Produktseite Style 24311 \"Gildan G3000 Unisex Light Cotton T-Shirt\" (https://www.shirtspace.com/gildan/t-shirts/24311-gildan-g3000-unisex-light-cotton-t-shirt). Muster NICHT geraten: die kompletten Bild-URLs stehen woertlich im HTML der Seite (Thumbnail-Pfad /cell/ → Grossbild /fullsize/), Schema https://images.shirtspace.com/fullsize/<hash>/<bildId>/24311-gildan-g3000-unisex-light-cotton-t-shirt-<front|back|side>-<farbslug>.jpg. Die bisherige Quelle gildan.com (BigCommerce s-25plmff032, Produkt 6468) wurde zuerst im DOM ausgelesen: dort liegen je Farbe genau sechs Bilder alt1–alt6 (Damen-Model front/back/side, Herren-Model front/back/side, z.B. .../products/6468/images/91743844/3000-020-alt1__45567.1785944471.1280.1280.jpg bis alt6). Alle sechs sind On-Model-Aufnahmen mit Person – damit als Rueckansicht unbrauchbar. Bei shirtspace fuehrt jede Farbe genau drei Ansichten (front/back/side); die Bildsets sind gemischt: fuer die 2025er Kernfarben stammen sie aus derselben On-Model-Strecke wie bei gildan.com, fuer sieben Farben der erweiterten Palette liegen echte Geistermannequin-Freisteller auf weissem Grund. Nur diese sieben sind hier geliefert. Jede gelieferte Datei wurde einzeln heruntergeladen und angesehen: Rueckseite ohne Halsausschnitt vorn, ohne Person, eigene Datei (md5 und Bytegroesse verschieden von der Front derselben Farbe, z.B. sky back 57.149 B vs. front 52.184 B). Gegenprobe gegen das Gildan-5000-Listing derselben Plattform (1250-gildan-g500-…): dort sind die Rueckansichten in denselben Farben On-Model und byteverschieden – die gelieferten Freisteller sind also keine vom Heavy-Cotton-Modell uebernommenen Fremdbilder. Vorderansichten bleiben unveraendert bei gildan.com.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#abb4a1",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-light-cotton-adult-t-shirt-sage"
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "sapphire",
+    "quelle": "shirtspace.com – Produktseite Style 24311 \"Gildan G3000 Unisex Light Cotton T-Shirt\" (https://www.shirtspace.com/gildan/t-shirts/24311-gildan-g3000-unisex-light-cotton-t-shirt). Muster NICHT geraten: die kompletten Bild-URLs stehen woertlich im HTML der Seite (Thumbnail-Pfad /cell/ → Grossbild /fullsize/), Schema https://images.shirtspace.com/fullsize/<hash>/<bildId>/24311-gildan-g3000-unisex-light-cotton-t-shirt-<front|back|side>-<farbslug>.jpg. Die bisherige Quelle gildan.com (BigCommerce s-25plmff032, Produkt 6468) wurde zuerst im DOM ausgelesen: dort liegen je Farbe genau sechs Bilder alt1–alt6 (Damen-Model front/back/side, Herren-Model front/back/side, z.B. .../products/6468/images/91743844/3000-020-alt1__45567.1785944471.1280.1280.jpg bis alt6). Alle sechs sind On-Model-Aufnahmen mit Person – damit als Rueckansicht unbrauchbar. Bei shirtspace fuehrt jede Farbe genau drei Ansichten (front/back/side); die Bildsets sind gemischt: fuer die 2025er Kernfarben stammen sie aus derselben On-Model-Strecke wie bei gildan.com, fuer sieben Farben der erweiterten Palette liegen echte Geistermannequin-Freisteller auf weissem Grund. Nur diese sieben sind hier geliefert. Jede gelieferte Datei wurde einzeln heruntergeladen und angesehen: Rueckseite ohne Halsausschnitt vorn, ohne Person, eigene Datei (md5 und Bytegroesse verschieden von der Front derselben Farbe, z.B. sky back 57.149 B vs. front 52.184 B). Gegenprobe gegen das Gildan-5000-Listing derselben Plattform (1250-gildan-g500-…): dort sind die Rueckansichten in denselben Farben On-Model und byteverschieden – die gelieferten Freisteller sind also keine vom Heavy-Cotton-Modell uebernommenen Fremdbilder. Vorderansichten bleiben unveraendert bei gildan.com.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#0692c8",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-light-cotton-adult-t-shirt-sapphire"
+  },
+  {
+    "produkt": "gildan-light-cotton-adult-t-shirt",
+    "farbe": "sky",
+    "quelle": "shirtspace.com – Produktseite Style 24311 \"Gildan G3000 Unisex Light Cotton T-Shirt\" (https://www.shirtspace.com/gildan/t-shirts/24311-gildan-g3000-unisex-light-cotton-t-shirt). Muster NICHT geraten: die kompletten Bild-URLs stehen woertlich im HTML der Seite (Thumbnail-Pfad /cell/ → Grossbild /fullsize/), Schema https://images.shirtspace.com/fullsize/<hash>/<bildId>/24311-gildan-g3000-unisex-light-cotton-t-shirt-<front|back|side>-<farbslug>.jpg. Die bisherige Quelle gildan.com (BigCommerce s-25plmff032, Produkt 6468) wurde zuerst im DOM ausgelesen: dort liegen je Farbe genau sechs Bilder alt1–alt6 (Damen-Model front/back/side, Herren-Model front/back/side, z.B. .../products/6468/images/91743844/3000-020-alt1__45567.1785944471.1280.1280.jpg bis alt6). Alle sechs sind On-Model-Aufnahmen mit Person – damit als Rueckansicht unbrauchbar. Bei shirtspace fuehrt jede Farbe genau drei Ansichten (front/back/side); die Bildsets sind gemischt: fuer die 2025er Kernfarben stammen sie aus derselben On-Model-Strecke wie bei gildan.com, fuer sieben Farben der erweiterten Palette liegen echte Geistermannequin-Freisteller auf weissem Grund. Nur diese sieben sind hier geliefert. Jede gelieferte Datei wurde einzeln heruntergeladen und angesehen: Rueckseite ohne Halsausschnitt vorn, ohne Person, eigene Datei (md5 und Bytegroesse verschieden von der Front derselben Farbe, z.B. sky back 57.149 B vs. front 52.184 B). Gegenprobe gegen das Gildan-5000-Listing derselben Plattform (1250-gildan-g500-…): dort sind die Rueckansichten in denselben Farben On-Model und byteverschieden – die gelieferten Freisteller sind also keine vom Heavy-Cotton-Modell uebernommenen Fremdbilder. Vorderansichten bleiben unveraendert bei gildan.com.",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a1ddf5",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "gildan-light-cotton-adult-t-shirt-sky"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "black",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#4e2669",
-    "erwartet": "#5D396F",
-    "deltaE": 25,
-    "dupeMit": null
+    "frontDom": "#303032",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-black"
   },
   {
-    "produkt": "gildan-softstyle-midweight-sweat-adult-hoodie",
-    "farbe": "ash-grey-heather",
-    "quelle": "shirtspace.com – Produktseite Style 17470 \"Gildan SF500 Unisex Softstyle Midweight Hooded Sweatshirt\" (https://www.shirtspace.com/gildan/sweatshirts/17470-gildan-sf500-unisex-softstyle-midweight-hooded-sweatshirt). Bild-URLs (Variante /fullsize/) direkt aus dem HTML der Seite ausgelesen, Farb-Slugs aus den Dateinamen der Quelle. Offizielle Gildan-Produktaufnahmen zu SF500 (= GSF500 / \"Softstyle Midweight Sweat Adult Hoodie\").",
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "bottle-green",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#d3d3d4",
-    "erwartet": "#C8C9C7",
-    "deltaE": 20,
-    "dupeMit": null
+    "frontDom": "#2f5049",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-bottle-green"
   },
   {
-    "produkt": "gildan-ultra-cotton-long-sleeve-t-shirt",
-    "farbe": "light-pink",
-    "quelle": "theparkwholesale.com (Shopify) – Gildan 2400 G240 Ultra Cotton Long Sleeve, Freisteller-Serie wie die uebrigen 20 Farben. Nachtrag: light-pink stammte bisher aus dem Altbestand ohne protokollierte Herkunft und ging beim Ordnerwechsel verloren.",
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "bright-royal",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#f5c6d8",
-    "erwartet": "#E4BED2",
-    "deltaE": 20,
-    "dupeMit": null
+    "frontDom": "#315090",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-bright-royal"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "classic-red",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#c52b45",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-classic-red"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "french-navy",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#353b47",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-french-navy"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "fuchsia",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e04882",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-fuchsia"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "light-oxford-heather",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#a2a2a3",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-light-oxford-heather"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "orange",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ea643f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-orange"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "purple",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#573e78",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-purple"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "sky",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#7eafd1",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-sky"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "white",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e7e6eb",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-white"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "yellow",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#f6d75a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-yellow"
+  },
+  {
+    "produkt": "russell-hooded-sweatshirt",
+    "farbe": "burgundy",
+    "quelle": "cottonclassics.com (Cotton Classics Handels GmbH, Magento-Media) – Produktseite Russell/Jerzees 575M: https://www.cottonclassics.com/jerzees-575m.html?___store=english&showproduct=111952. Muster NICHT geraten, sondern aus dem HTML/DOM der Produktseite ausgelesen: Cotton Classics fuehrt je Farbvariante ein vollstaendiges Packshot-Set mit sprechendem Dateinamen PS_10575M_russell-athletic_575m_<farbslug>_<ANSICHT>_<uuid>_web.jpg, ANSICHT = FRONT | BACK | RIGHT. Ausgelesen wurden alle 13 Farbslugs (black, bottle-green, bright-royal, burgundy, classic-red, french-navy, fuchsia, light-oxford, orange, purple, sky, white, yellow) – exakt die 13 Farben aus \"fehlend\". Original-Pfad ohne /cache/<hash>/: https://www.cottonclassics.com/at/media/catalog/product/P/S/<datei>. Artikelidentitaet doppelt belegt: (a) textil-grosshandel.eu nennt fuer Z575N die Herstellernummer \"R-575M-0\", Cotton Classics fuehrt dieselbe Artikelnummer 575M (interne SKU 10575M); (b) die FRONT-Dateien desselben Sets zeigen denselben Russell-575M-Geistermannequin-Packshot wie die vorhandenen Z575N_<Farbe>.jpg-Vorderansichten (identischer Schnitt, Kaengurutasche, doppellagige Kapuze mit Russell-\"R\"-Label, gleicher Farbton – z.B. Purple und Light Oxford (Heather) direkt gegengeprueft). Alle 13 BACK-Dateien wurden einzeln heruntergeladen, per md5/Bytegroesse gegen die zugehoerige FRONT-Datei abgeglichen (26/26 unterschiedliche md5, keine Dubletten) und einzeln visuell geprueft: Geistermannequin-Freisteller auf weissem Grund, KEINE Person im Bild, keine Kaengurutasche/Kordel/Halsausschnitt sichtbar, nur Kapuzenrueckseite + Rueckenpartie. Zusaetzlich lieferbar: eigene Seitenansicht (RIGHT) je Farbe, ebenfalls Freisteller ohne Person, ebenfalls eigene Datei. Vorderansichten bleiben unveraendert bei textil-grosshandel.eu.",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#542d3b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "russell-hooded-sweatshirt-burgundy"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "215732",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#022f18",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-215732"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "white",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#eeeeee",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-white"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "sport-grey",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#bfbabf",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-sport-grey"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "black",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#232323",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-black"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "navy",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#24263b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-navy"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "brown",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#412d2e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-brown"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "raw",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#eae1d7",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-raw"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "sand",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e6ccbb",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-sand"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "teal",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#447a72",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-teal"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "dusty-indigo",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#719cbc",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-dusty-indigo"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "dusty-purple",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e0d3e5",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-dusty-purple"
+  },
+  {
+    "produkt": "neutral-oversized-t-shirt",
+    "farbe": "dusty-mint",
+    "quelle": "Neutral (Hersteller) — offizielle Medien-/Packshot-Bibliothek, oeffentlich verlinkt von https://neutral.com/pages/downloads (\"Packshots\"), Dropbox-Share-Link scl/fo/3yzso4umitys0f62d3g38 (rlkey=22ydpmasgcesfvyrvpqadlwec). Pfad: /PACKSHOTS WITHOUT CERTIFICATES/TIGER COTTON/T60011 Tiger Cotton Oversize T-shirt/. Muster NICHT geraten: der Shopify-Feed von neutral.com (https://neutral.com/products/t6011-tiger-cotton-oversized-t-shirt.js) liefert nachweislich NUR 12 Front-Dateien (T60011_WHI.jpg, _GREY, _BLA, _NAV, _BRO, _DINDkopier, _DMIN, _DPURP, _SAND, _TEAL, _RAW_<uuid>, _BGRE) plus ein Lifestyle-Bild — kein Rueckenfoto (rueckKlappt=null bestaetigt). Auf demselben Shopify-CDN existiert aber fuer ein anderes Produkt die Datei O13101_DHEA_BACK.jpg; daraus abgeleitetes Herstellermuster <ARTIKEL>_<FARBCODE>_BACK.jpg. Auf dem Shop-CDN ist es fuer T60011 nicht hochgeladen (alle 12 Varianten mit _BACK dort 404), im offiziellen Packshot-Archiv dagegen vollstaendig vorhanden: Verzeichnislisting ueber www.dropbox.com/list_shared_link_folder_entries (link_key=3yzso4umitys0f62d3g38, secure_hash=APxmxPqR0CJMu3KV4g1D8qw) ergab 41 Eintraege, darunter fuer JEDE der 12 Farben genau ein T60011_<CODE>_BACK.jpg und ein T60011_<CODE>_SIDE.jpg neben dem bekannten Front-File T60011_<CODE>.jpg. Direkt-URL-Form: .../<datei-hash>/<pfad>/<datei>?rlkey=22ydpmasgcesfvyrvpqadlwec&raw=1 (raw=1 liefert Content-Type image/jpeg; dl=1 liefert application/binary und ist daher NICHT verwendet). Farbzuordnung ist herstellerseitig eindeutig, weil die Front-Dateinamen im selben Ordner exakt den Front-Dateinamen auf neutral.com entsprechen (T60011_BGRE.jpg = Bottle Green usw.); neu nur NAVY (Shop: NAV) und DPUR (Shop: DPURP). Verifikation: alle 24 gelieferten URLs mit curl -sL -A \"Mozilla/5.0\" geprueft -> 200, 482.291-3.612.125 Bytes, image/jpeg. Eigenstaendigkeit belegt: jede BACK-Datei hat eine andere Bytegroesse als die zugehoerige Front-Datei (z.B. BLA Front 149.673 B / Back 686.449 B; WHI Front 63.131 B / Back 676.692 B). Sichtpruefung: Kontaktabzuege aller 12 BACK- und aller 12 SIDE-Bilder gerendert und angesehen — durchgehend 2000x2600 px Freisteller auf Weiss, ohne Person, echte Rueckansicht (flache Rueckenpasse, kein tiefer Halsausschnitt, kein Nackenetikett sichtbar) bzw. echte Seitenansicht. Hinweis: die Packshots im Herstellerarchiv sind einen Tick dunkler/waermer gradiert als die auf dem Shopify-CDN liegenden Fronten (z.B. Sand: CDN-Front #E8CEBD, Archiv-Front #CFBDA5, Archiv-Back #CAB8A0) — Archiv-Front und Archiv-Back sind untereinander farbgleich, es handelt sich also um dieselbe Farbe in derselben Aufnahmeserie. Ergebnislos geprueft (nur Fronten bzw. On-Model): cottonclassics.com (PS_77T011_neutral_t-60011_<farbe>_FRONT_*.jpg, kein _BACK_), allmyclothes.de (17729, 1 Bild je Farbe), l-shop-team.de (NET60011: 1 Lifestyle + 1 Front-Packshot Sand), rexlander.com (13 Bilder = 12 Fronten + 1 Duplikat), shirtmanufaktur.de (_1-Zweitbilder sind On-Model), freewear.de, fifthcolumn.co.uk (3 Bilder, alle Front), th4.com/lamaisonduteeshirt.com/media2.designpartner.fr (18001-<farbId>-1 vorhanden, -2/-3 = 404), idressmyself.co.uk (DecoNetwork: Back-View nutzt Ersatzbild T61001_WHI_BACK.jpg eines ANDEREN Artikels), lsi.co.uk, lynka.eu, tictex.com, promotionmax.net, tanteguerilla.com, ideastage.com (403), textil-grosshandel.eu/groener-schulze.com/falk-ross.eu/coozo.com/ralawise.com/pencarrie.com/sportyfied.com (Artikel nicht gefuehrt), Wayback-CDX fuer das Shopify-CDN (keine T60011-Treffer).",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#a7d5b8",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "neutral-oversized-t-shirt-dusty-mint"
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "king-blue",
+    "quelle": "allmyclothes.de (B2B-Grosshandel, Bild-CDN images.allmyclothes.de, Artikel 12386 = Stedman ST9600 \"Stretch-T\", frueher \"Clive Crew Neck\" – Artikelidentitaet ueber die Autocomplete-API /rest/io/item/search/autocomplete?query=ST9600 aufgeloest). Die Galerie enthaelt 13 Farb-Fronten (Stedman-ST9600-<Farbe>.jpg) plus GENAU DREI Zusatzbilder aus der offiziellen Stedman-Fotostrecke: \"-Stedman-Stretch-T-ST9600.jpg\" (On-Model, verworfen), \"-ts00.jpg\" (Front) und \"-4rgb.jpg\" (Rueckseite). Die beiden Zusatzansichten sind in EINER Farbe fotografiert; Zuordnung nicht geraten, sondern per Pixelmessung belegt: Mittelwert Brustbereich back \"-4rgb\" = #1071B8, front \"-ts00\" = #1170B7, allmyclothes-Farbdatei \"Stedman-ST9600-King-Blue.jpg\" = #016DB9, unsere vorhandene Front public/products/stedman-clive-crew-neck-king-blue/front.png = #016DB9 – identischer Farbton, alle anderen ST9600-Blautoene (Marina Blue #394A59, Navy #051733, Blue Midnight #180A29) liegen weit daneben. Eigene Datei verifiziert: back 398.655 Bytes vs. front-ts00 403.429 Bytes vs. Farb-Front 49.116 Bytes – drei verschiedene Dateien, keine Umbenennung. Bildinhalt geprueft: Freisteller/Geistermannequin auf Weiss, kein Mensch, kein Halsausschnitt vorn, kein Nackenband sichtbar. Die bisherige Quelle stedman.eu fuehrt fuer ST9600 KEINE Rueckenfotos (nur ST9600_<CODE>.jpg = Front sowie ST9600_model.jpg / ST9600_model_b.jpg = On-Model).",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#026eb9",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "stedman-clive-crew-neck-king-blue"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "arctic-white",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f3f2f6",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-arctic-white"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "atlantic-blue",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#5775af",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-atlantic-blue"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "deep-black",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#292728",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-deep-black"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "dusty-lilac",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#847685",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-dusty-lilac"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "fire-red",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#e5212b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-fire-red"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "heather-grey",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#a8a6b4",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-heather-grey"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "ice-blue",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#aed0ec",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-ice-blue"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "moss-green",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#50685b",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-moss-green"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "natural-clay",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#89786e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-natural-clay"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "natural-stone",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#e4d8cc",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-natural-stone"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "new-french-navy",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#24263d",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-new-french-navy"
+  },
+  {
+    "produkt": "just-hoods-vision-heavyweight-hoodie",
+    "farbe": "solid-charcoal",
+    "quelle": "pierrefrancis.co.uk (Shopify-Variantengalerie JH111, Front+Back je Farbe) – Bildmaterial identisch mit dem AWDis-Studioshooting",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#37353a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "just-hoods-vision-heavyweight-hoodie-solid-charcoal"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "urban-khaki",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#5c5c43",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-urban-khaki"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "white",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f9f9f9",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-white"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "black",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#2a2a2a",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-black"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "navy",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#353c49",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-navy"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "sport-grey-heather",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#a5a5a5",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-sport-grey-heather"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "royal-blue",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#134d8e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-royal-blue"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "red",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#d3162f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-red"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "millennial-pink",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#d0b2a5",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-millennial-pink"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "orange",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#fe731c",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-orange"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "bottle-green",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3a5740",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-bottle-green"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "dark-grey-solid",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#4f4e53",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-dark-grey-solid"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-unisex-exact",
+    "farbe": "bear-brown",
+    "quelle": "bc-collection.eu / api.bc-collection.eu (offizielle B&C-Mediathek, Artikel TU05T #E150 LSL)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#534746",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-unisex-exact-bear-brown"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "white",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#fefefe",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-white"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "black",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#2f2f2f",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-black"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "navy",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#39404e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-navy"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "red",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#d9253e",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-red"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "royal-blue",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#175192",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-royal-blue"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "sport-grey-heather",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#b1b1b1",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-sport-grey-heather"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "dark-grey-solid",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#555459",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-dark-grey-solid"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "bottle-green",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#3e5a43",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-bottle-green"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "orange",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#fe7b28",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-orange"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "urban-khaki",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#616148",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-urban-khaki"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "millennial-pink",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#d9bbae",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-millennial-pink"
+  },
+  {
+    "produkt": "bundc-t-shirt-e150-long-sleeve-women-exact",
+    "farbe": "bear-brown",
+    "quelle": "bc-collection.eu",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#554a49",
+    "erwartet": null,
+    "deltaE": null,
+    "dupeMit": "bundc-t-shirt-e150-long-sleeve-women-exact-bear-brown"
   }
 ]

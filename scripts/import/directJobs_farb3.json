@@ -1,0 +1,983 @@
+[
+  {
+    "productId": "bundc-my-eco-polo-6535",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "colors": [
+      {
+        "id": "dark-forest",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_dark_forest.webp",
+        "erwarteterHex": "#273224"
+      },
+      {
+        "id": "mastic",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_mastic.webp",
+        "erwarteterHex": "#B6A58D"
+      },
+      {
+        "id": "roasted-coffee",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_roasted_coffee.webp",
+        "erwarteterHex": "#493A35"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_burgundy.webp",
+        "erwarteterHex": "#5B263D"
+      },
+      {
+        "id": "melon-orange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_melon_orange.webp",
+        "erwarteterHex": "#F6AA70"
+      },
+      {
+        "id": "lotus-pink",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_lotus_pink.webp",
+        "erwarteterHex": "#E16B94"
+      },
+      {
+        "id": "lotus-blue",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_lotus_blue.webp",
+        "erwarteterHex": "#9EBCDD"
+      },
+      {
+        "id": "acid-lime",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_acid_lime.webp",
+        "erwarteterHex": "#BDD010"
+      },
+      {
+        "id": "pacific-grey",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_pacific_grey.webp",
+        "erwarteterHex": "#C0C3C4"
+      },
+      {
+        "id": "pop-yellow",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_pop_yellow.webp",
+        "erwarteterHex": "#F0B70C"
+      },
+      {
+        "id": "pop-tomato",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_pop_tomato.webp",
+        "erwarteterHex": "#BF1D25"
+      },
+      {
+        "id": "pop-turquoise",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_pop_turquoise.webp",
+        "erwarteterHex": "#008E96"
+      },
+      {
+        "id": "pop-green",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_pu428_pop_green.webp",
+        "erwarteterHex": "#15A062"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-my-eco-polo-6535-women",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "colors": [
+      {
+        "id": "dark-forest",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_dark_forest.webp",
+        "erwarteterHex": "#273224"
+      },
+      {
+        "id": "mastic",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_mastic.webp",
+        "erwarteterHex": "#B6A58D"
+      },
+      {
+        "id": "roasted-coffee",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_roasted_coffee.webp",
+        "erwarteterHex": "#493A35"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_burgundy.webp",
+        "erwarteterHex": "#5B263D"
+      },
+      {
+        "id": "melon-orange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_melon_orange.webp",
+        "erwarteterHex": "#F6AA70"
+      },
+      {
+        "id": "lotus-pink",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_lotus_pink.webp",
+        "erwarteterHex": "#E16B94"
+      },
+      {
+        "id": "lotus-blue",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_lotus_blue.webp",
+        "erwarteterHex": "#9EBCDD"
+      },
+      {
+        "id": "acid-lime",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_acid_lime.webp",
+        "erwarteterHex": "#BDD010"
+      },
+      {
+        "id": "pacific-grey",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_pacific_grey.webp",
+        "erwarteterHex": "#C0C3C4"
+      },
+      {
+        "id": "pop-yellow",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_pop_yellow.webp",
+        "erwarteterHex": "#F0B70C"
+      },
+      {
+        "id": "pop-tomato",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_pop_tomato.webp",
+        "erwarteterHex": "#BF1D25"
+      },
+      {
+        "id": "pop-turquoise",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_my_eco_polo_6535_women_pw465_pop_turquoise.webp",
+        "erwarteterHex": "#008E96"
+      },
+      {
+        "id": "pop-green",
+        "front": "https://www.spworkwear.co.uk/wp-content/uploads/2024/08/B265F_PopGreen_FT.jpg",
+        "erwarteterHex": "#15A062"
+      }
+    ]
+  },
+  {
+    "productId": "sols-unisex-pulse-polo-shirt",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "colors": [
+      {
+        "id": "rope",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-ROP-FRONT.jpg",
+        "erwarteterHex": "#B6A186",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-ROP-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-ROP-LEFT.jpg"
+      },
+      {
+        "id": "linen",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-LNN-FRONT.jpg",
+        "erwarteterHex": "#CFBFB3",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-LNN-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-LNN-LEFT.jpg"
+      },
+      {
+        "id": "candy-pink",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-CNP-FRONT.jpg",
+        "erwarteterHex": "#EBA9C4",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-CNP-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-CNP-LEFT.jpg"
+      },
+      {
+        "id": "lilac",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-LIL-FRONT.jpg",
+        "erwarteterHex": "#C0B6CA",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-LIL-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-LIL-LEFT.jpg"
+      },
+      {
+        "id": "orange",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-ORA-FRONT.jpg",
+        "erwarteterHex": "#F08800",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-ORA-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-ORA-LEFT.jpg"
+      },
+      {
+        "id": "gold",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-GOL-FRONT.jpg",
+        "erwarteterHex": "#FBC54B",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-GOL-LEFT.jpg"
+      },
+      {
+        "id": "bottle-green",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-BOT-FRONT.jpg",
+        "erwarteterHex": "#253E33",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-BOT-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-BOT-LEFT.jpg"
+      },
+      {
+        "id": "aqua",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-AQA-FRONT.jpg",
+        "erwarteterHex": "#0095C3",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-AQA-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-AQA-LEFT.jpg"
+      },
+      {
+        "id": "sky-blue",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-SKY-FRONT.jpg",
+        "erwarteterHex": "#96C2E8",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-SKY-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-SKY-LEFT.jpg"
+      },
+      {
+        "id": "denim",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-DNM-FRONT.jpg",
+        "erwarteterHex": "#1B3353",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-DNM-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-DNM-LEFT.jpg"
+      },
+      {
+        "id": "pure-grey",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-PGE-FRONT.jpg",
+        "erwarteterHex": "#ADB2B6",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-PGE-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-PGE-LEFT.jpg"
+      },
+      {
+        "id": "mouse-grey-solid",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-MGY-FRONT.jpg",
+        "erwarteterHex": "#645E67",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-MGY-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-MGY-LEFT.jpg"
+      },
+      {
+        "id": "off-white",
+        "front": "https://assets.myworkwear.co.uk/products/6073/04502-OFW-FRONT.jpg",
+        "erwarteterHex": "#FAFAFA",
+        "back": "https://assets.myworkwear.co.uk/products/6073/04502-OFW-BACK.jpg",
+        "side": "https://assets.myworkwear.co.uk/products/6073/04502-OFW-LEFT.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-inspire-e150-t-shirt",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "colors": [
+      {
+        "id": "mocha",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Mocha.jpg",
+        "erwarteterHex": "#6C4F3E"
+      },
+      {
+        "id": "yellow-fizz",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Yellow-Fizz.jpg",
+        "erwarteterHex": "#FFE93C"
+      },
+      {
+        "id": "pure-orange",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Pure-Orange.jpg",
+        "erwarteterHex": "#EB5D0F"
+      },
+      {
+        "id": "soft-rose",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Soft-Rose.jpg",
+        "erwarteterHex": "#F0D1C4"
+      },
+      {
+        "id": "magenta-pink",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Magenta-Pink.jpg",
+        "erwarteterHex": "#DC1A62"
+      },
+      {
+        "id": "radiant-purple",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Radiant-Purple.jpg",
+        "erwarteterHex": "#3B1D66"
+      },
+      {
+        "id": "blue-fog",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Blue-Fog.jpg",
+        "erwarteterHex": "#A6B7C2"
+      },
+      {
+        "id": "sage",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Sage.jpg",
+        "erwarteterHex": "#AAC1B3"
+      },
+      {
+        "id": "lime",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Lime.jpg",
+        "erwarteterHex": "#EDEE19"
+      },
+      {
+        "id": "apple-green",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Apple-Green.jpg",
+        "erwarteterHex": "#45A94C"
+      },
+      {
+        "id": "asphalt",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Asphalt.jpg",
+        "erwarteterHex": "#433F42"
+      },
+      {
+        "id": "black-pure",
+        "front": "https://images.allmyclothes.de/item/images/7480/full/BC-BE-INSPIRED-TU01B-Black-Pure.jpg",
+        "erwarteterHex": "#070509"
+      }
+    ]
+  },
+  {
+    "productId": "sols-women-s-fleecejacket-north",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "colors": [
+      {
+        "id": "aqua",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-AQA-FRONT.jpg",
+        "erwarteterHex": "#0095C3",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-AQA-LEFT.jpg"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-BUR-FRONT.jpg",
+        "erwarteterHex": "#700B23",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-BUR-LEFT.jpg"
+      },
+      {
+        "id": "charcoal-grey-solid",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-CHA-FRONT.jpg",
+        "erwarteterHex": "#1D181F",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-CHA-LEFT.jpg"
+      },
+      {
+        "id": "dark-chocolate",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-DCH-FRONT.jpg",
+        "erwarteterHex": "#461A11",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-DCH-LEFT.jpg"
+      },
+      {
+        "id": "dark-purple",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-DKP-FRONT.jpg",
+        "erwarteterHex": "#55117B",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-DKP-LEFT.jpg"
+      },
+      {
+        "id": "fir-green",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-GRN-FRONT.jpg",
+        "erwarteterHex": "#00282B",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-GRN-LEFT.jpg"
+      },
+      {
+        "id": "grey-melange",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-GYM-FRONT.jpg",
+        "erwarteterHex": "#8F8B8B",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-GYM-LEFT.jpg"
+      },
+      {
+        "id": "lime",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-LIM-FRONT.jpg",
+        "erwarteterHex": "#D0DEBB",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-LIM-LEFT.jpg"
+      },
+      {
+        "id": "neon-orange",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/54500_20NOR_20FRONT.jpg",
+        "erwarteterHex": "#F7A600",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/54500_20NOR_20BACK.jpg",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/54500_20NOR_20LEFT.jpg"
+      },
+      {
+        "id": "neon-yellow",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/54500_20NYL_20FRONT.jpg",
+        "erwarteterHex": "#F0FF3D",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/54500_20NYL_20BACK.jpg",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/54500_20NYL_20LEFT.jpg"
+      },
+      {
+        "id": "orange",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-ORA-FRONT.jpg",
+        "erwarteterHex": "#F08800",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-ORA-LEFT.jpg"
+      },
+      {
+        "id": "rope",
+        "front": "https://assets.myworkwear.co.uk/products/6136/54500-ROP-FRONT.jpg",
+        "erwarteterHex": "#B6A186",
+        "side": "https://assets.myworkwear.co.uk/products/6136/54500-ROP-LEFT.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-inspire-t-men",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
+    "colors": [
+      {
+        "id": "atoll",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_ATO_FRONT-uZUIZMko.webp",
+        "erwarteterHex": "#0092C3"
+      },
+      {
+        "id": "dark-grey-solid",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_dark_grey.webp",
+        "erwarteterHex": "#29363F"
+      },
+      {
+        "id": "fuchsia",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_fuchsia.webp",
+        "erwarteterHex": "#D40050"
+      },
+      {
+        "id": "gold",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_gold.webp",
+        "erwarteterHex": "#FCC643"
+      },
+      {
+        "id": "light-grey",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_light_grey.webp",
+        "erwarteterHex": "#A09D98"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_O_FRONT-HDJVSq6O.webp",
+        "erwarteterHex": "#E75113"
+      },
+      {
+        "id": "real-green",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_inspire_t_tm042_real_green.webp",
+        "erwarteterHex": "#41A62A"
+      },
+      {
+        "id": "millennial-khaki",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_MILKHA_FRONT-Ydulfb1A_2e746e7d-0971-4220-ba5a-9b835313b044.webp",
+        "erwarteterHex": "#585B55"
+      },
+      {
+        "id": "millennial-pink",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_MILPNK_FRONT-VxTgjfV7_954af093-ef41-4908-b9ef-479b938f932b.webp",
+        "erwarteterHex": "#D1ABA0"
+      },
+      {
+        "id": "urban-orange",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_UO_FRONT-4dFVKJQi_2d33bb7e-2a24-43a6-8cb8-0c7f3bb8c76f.webp",
+        "erwarteterHex": "#CC4F00"
+      },
+      {
+        "id": "urban-purple",
+        "front": "https://www.coozo.co.uk/cdn/shop/products/TM042_UPUR_FRONT-nDUbb2Pd.webp",
+        "erwarteterHex": "#2A094E"
+      }
+    ]
+  },
+  {
+    "productId": "sols-women-s-polo-shirt-prime",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "colors": [
+      {
+        "id": "dark-grey-solid",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20DGY_20FRONT.jpg?v=1677590560",
+        "erwarteterHex": "#636267",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20DGY_20BACK.jpg?v=1677590560",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20DGY_20LEFT.jpg?v=1677590560"
+      },
+      {
+        "id": "army",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20ARM_20FRONT.jpg?v=1677590531",
+        "erwarteterHex": "#746142",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20ARM_20BACK.jpg?v=1677590531",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20ARM_20LEFT.jpg?v=1677590531"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20BUR_20FRONT.jpg?v=1677590580",
+        "erwarteterHex": "#700B23",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20BUR_20BACK.jpg?v=1677590580",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20BUR_20LEFT.jpg?v=1677590580"
+      },
+      {
+        "id": "dark-purple",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20DKP_20FRONT.jpg?v=1677590502",
+        "erwarteterHex": "#55117B",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20DKP_20BACK.jpg?v=1677590502",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20DKP_20LEFT.jpg?v=1677590502"
+      },
+      {
+        "id": "kelly-green",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20KEL_20FRONT.jpg?v=1677590521",
+        "erwarteterHex": "#008845",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20KEL_20BACK.jpg?v=1677590521",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20KEL_20LEFT.jpg?v=1677590521"
+      },
+      {
+        "id": "pure-grey",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20PGE_20FRONT.jpg?v=1677590553",
+        "erwarteterHex": "#ADB2B6",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20PGE_20BACK.jpg?v=1677590553",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20PGE_20LEFT.jpg?v=1677590553"
+      },
+      {
+        "id": "sand",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20SAN_20FRONT.jpg?v=1677590469",
+        "erwarteterHex": "#BAA584",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20SAN_20BACK.jpg?v=1677590469",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20SAN_20LEFT.jpg?v=1677590469"
+      },
+      {
+        "id": "sky-blue",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20SKY_20FRONT.jpg?v=1677590476",
+        "erwarteterHex": "#96C2E8",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20SKY_20BACK.jpg?v=1677590476",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20SKY_20LEFT.jpg?v=1677590476"
+      },
+      {
+        "id": "4b271c",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20CHO_20FRONT.jpg?v=1677590567",
+        "erwarteterHex": "#4B271C",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20CHO_20BACK.jpg?v=1677590567",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20CHO_20LEFT.jpg?v=1677590567"
+      },
+      {
+        "id": "ash-heather",
+        "front": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20ASH_20FRONT.jpg?v=1677590538",
+        "erwarteterHex": "#C1C4C7",
+        "back": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20ASH_20BACK.jpg?v=1677590538",
+        "side": "https://cdn.shopify.com/s/files/1/0601/4464/8378/products/10573_20ASH_20LEFT.jpg?v=1677590538"
+      }
+    ]
+  },
+  {
+    "productId": "bundc-id-333-hoodie",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
+    "colors": [
+      {
+        "id": "urban-khaki",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_urban_khaki.webp",
+        "erwarteterHex": "#454839",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_urban_khaki_2.webp"
+      },
+      {
+        "id": "dark-grey-solid",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_dark_grey.webp",
+        "erwarteterHex": "#29363F",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_dark_grey_2.webp"
+      },
+      {
+        "id": "off-white",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_off_white.webp",
+        "erwarteterHex": "#F5EFE2",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_off_white_2.webp"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_orange.webp",
+        "erwarteterHex": "#E75113",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_orange_2.webp"
+      },
+      {
+        "id": "burgundy",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_burgundy.webp",
+        "erwarteterHex": "#5B263D",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_burgundy_2.webp"
+      },
+      {
+        "id": "pop-yellow",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_pop_yellow.webp",
+        "erwarteterHex": "#F0B70C",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_pop_yellow_2.webp"
+      },
+      {
+        "id": "nordic-blue",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_nordic_blue.webp",
+        "erwarteterHex": "#5F7788",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_nordic_blue_2.webp"
+      },
+      {
+        "id": "mastic",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_mastic.webp",
+        "erwarteterHex": "#B6A58D",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_mastic_2.webp"
+      },
+      {
+        "id": "lotus-blue",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_lotus_blue.webp",
+        "erwarteterHex": "#9EBCDD",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_lotus_blue_2.webp"
+      },
+      {
+        "id": "radiant-purple",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_radiant_purple.webp",
+        "erwarteterHex": "#3B1D66",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_radiant_purple_2.webp"
+      },
+      {
+        "id": "blush-mint",
+        "front": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_blush_mint.webp",
+        "erwarteterHex": "#CFDFD1",
+        "back": "https://www.groener-schulze.com/grafik/image/original/bc_id_333_hoodie_wg005_blush_mint_2.webp"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-premium-long-sleeve-t-shirt",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "colors": [
+      {
+        "id": "faded-black",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FBL_front_41317aa6-01cd-4808-b783-b221468c69c3.webp?v=1779689776",
+        "erwarteterHex": "#212322",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FBL_back.webp?v=1779689778"
+      },
+      {
+        "id": "faded-navy",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FNA_front_caa61aea-aa71-4ae8-8545-866757a7409b.webp?v=1779689787",
+        "erwarteterHex": "#454955",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FNA_back_30a16413-065f-421e-a2a5-98d868d70076.webp?v=1779689787"
+      },
+      {
+        "id": "faded-brown",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FBR_front_bfb25ad8-a06f-434d-ae8c-36c4a565a949.webp?v=1779689776",
+        "erwarteterHex": "#675342",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FBR_back_ed4d9287-7c1a-4f0d-903b-ddb1aadad5d7.webp?v=1779689778"
+      },
+      {
+        "id": "faded-khaki",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FKH_front_dde3cc01-fede-444e-afae-04a79e2d8b7b.webp?v=1779689778",
+        "erwarteterHex": "#797054",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FKH_back.webp?v=1779689777"
+      },
+      {
+        "id": "blue-dusk",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-BD_front_cb4d1008-8b28-4d80-8be6-c69f8aafc865.webp?v=1779689775",
+        "erwarteterHex": "#809CA8",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-BD_back_c0d8ccf8-c5d7-42ac-99d1-4f879a58e66a.webp?v=1779689776"
+      },
+      {
+        "id": "bone",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-BON_front_26b5c7c6-a6bc-463d-9230-181ca8910f2c.webp?v=1779689775",
+        "erwarteterHex": "#C7BCB7",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-BON_back.webp?v=1779689776"
+      },
+      {
+        "id": "faded-mustard",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FMU_front.webp?v=1779689787",
+        "erwarteterHex": "#946F3A",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FMU_back_85f4873f-766e-4d03-9a8b-40500722c029.webp?v=1779689785"
+      },
+      {
+        "id": "faded-pink",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FPK_front_6f96ebec-8cda-4efa-8b83-c9fdde767cc1.webp?v=1779689788",
+        "erwarteterHex": "#B08D92",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FPK_back_76a0bb38-333c-4b3b-bafc-542c6ec46897.webp?v=1779689787"
+      },
+      {
+        "id": "faded-white",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FWH_front_a2cf426b-82bc-463a-9d6e-15f38d43f35d.webp?v=1779689789",
+        "erwarteterHex": "#F6F5F4",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FWH_back_46a6408b-202e-4a13-b7b4-15efe352fccd.webp?v=1779689789"
+      },
+      {
+        "id": "rfd-ready-for-dye",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-RFD_front_52e697a7-2f65-4b84-8871-c595bbb4e869.webp?v=1779689790",
+        "erwarteterHex": "#DDDAD5",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-RFD_back_6b1a377f-9d34-455e-8a71-d71337e70911.webp?v=1779689790"
+      },
+      {
+        "id": "light-beige-sand",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-SA_front_3e576494-b472-4805-bf76-b0faaa70c887.webp?v=1779689790",
+        "erwarteterHex": "#CEC3AF",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-SA_back.webp?v=1779689790"
+      },
+      {
+        "id": "black",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-BL_front_2c8ce081-48a0-4c6b-ae4f-5068f2039c4f.webp?v=1779689775",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-BL_back.webp?v=1779689776"
+      },
+      {
+        "id": "french-navy",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FRNA_front.webp?v=1779689787",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-FRNA_back.webp?v=1779689789"
+      },
+      {
+        "id": "white",
+        "front": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-WH_front_19e230fe-b756-42e0-bdb0-04157a09b1eb.webp?v=1779689789",
+        "back": "https://cdn.shopify.com/s/files/1/0749/9176/3676/files/EP185L-WH_back_fd47745c-1772-4528-a117-d5373c932b59.webp?v=1779689789"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-ladies-active-t",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
+    "colors": [
+      {
+        "id": "acid-yellow",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_acid_yellow.webp",
+        "erwarteterHex": "#D7E076",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_acid_yellow_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_acid_yellow_3.webp"
+      },
+      {
+        "id": "dark-melange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_dark_melange.webp",
+        "erwarteterHex": "#474D52",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_dark_melange_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_dark_melange_3.webp"
+      },
+      {
+        "id": "grenadine",
+        "front": "https://www.daiber.de/files/jn357-ladies-active-t-red-ladies.40809_master_680x800.jpg",
+        "erwarteterHex": "#ED8E78",
+        "back": "https://www.daiber.de/files/jn357-ladies-active-t-red-ladies.40809_detail_42801_680x800.jpg",
+        "side": "https://www.daiber.de/files/jn357-ladies-active-t-red-ladies.40809_detail_42799_680x800.jpg"
+      },
+      {
+        "id": "light-melange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_light_melange.webp",
+        "erwarteterHex": "#E7E3D6",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_light_melange_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_light_melange_3.webp"
+      },
+      {
+        "id": "lime-green",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_lime_green.webp",
+        "erwarteterHex": "#9DC118",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_lime_green_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_lime_green_3.webp"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_orange.webp",
+        "erwarteterHex": "#F18E00",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_orange_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_orange_3.webp"
+      },
+      {
+        "id": "pacific",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_pacific.webp",
+        "erwarteterHex": "#007CB7",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_pacific_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_pacific_3.webp"
+      },
+      {
+        "id": "pink",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_pink.webp",
+        "erwarteterHex": "#E64370",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_pink_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_pink_3.webp"
+      },
+      {
+        "id": "turquoise",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_turquoise.webp",
+        "erwarteterHex": "#00A9CE",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_turquoise_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_turquoise_3.webp"
+      },
+      {
+        "id": "yellow",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_yellow.webp",
+        "erwarteterHex": "#FFED00",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_yellow_2.webp",
+        "side": "https://www.groener-schulze.com/grafik/image/original/daiber_ladies_active_t_jn357_yellow_3.webp"
+      }
+    ]
+  },
+  {
+    "productId": "jamesnicholson-men-s-bio-workwear-polo",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "colors": [
+      {
+        "id": "wine",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_wine.webp",
+        "erwarteterHex": "#830628",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_wine_2.webp"
+      },
+      {
+        "id": "aqua",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_aqua.webp",
+        "erwarteterHex": "#477AB8",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_aqua_2.webp"
+      },
+      {
+        "id": "stone",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_stone.webp",
+        "erwarteterHex": "#F5EDCF",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_stone_2.webp"
+      },
+      {
+        "id": "brown",
+        "front": "https://www.daiber.de/files/jn874-mens-workwear-polo-ocs-blended-brown-men.44330_master_680x800.jpg",
+        "erwarteterHex": "#5D4631",
+        "back": "https://www.daiber.de/files/jn874-mens-workwear-polo-ocs-blended-brown-men.44330_detail_111296_680x800.jpg",
+        "side": "https://www.daiber.de/files/jn874-mens-workwear-polo-ocs-blended-brown-men.44330_detail_111292_680x800.jpg"
+      },
+      {
+        "id": "orange",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_orange.webp",
+        "erwarteterHex": "#F18E00",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_orange_2.webp"
+      },
+      {
+        "id": "dark-grey-solid",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_dark_grey.webp",
+        "erwarteterHex": "#99A499",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_dark_grey_2.webp"
+      },
+      {
+        "id": "turquoise",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_turquoise.webp",
+        "erwarteterHex": "#00A9CE",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_turquoise_2.webp"
+      },
+      {
+        "id": "lime-green",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_lime_green.webp",
+        "erwarteterHex": "#9DC118",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_lime_green_2.webp"
+      },
+      {
+        "id": "gold-yellow",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_gold_yellow.webp",
+        "erwarteterHex": "#FBBF1F",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_gold_yellow_2.webp"
+      },
+      {
+        "id": "grey-heather",
+        "front": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_grey_heather.webp",
+        "erwarteterHex": "#9396A3",
+        "back": "https://www.groener-schulze.com/grafik/image/original/daiber_mens_bio_workwear_polo_jn874_grey_heather_2.webp"
+      }
+    ]
+  },
+  {
+    "productId": "stedman-clive-crew-neck",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "colors": [
+      {
+        "id": "black-opal",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_BLO.jpg",
+        "erwarteterHex": "#000000"
+      },
+      {
+        "id": "bordeaux",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_BOD.jpg",
+        "erwarteterHex": "#89163E"
+      },
+      {
+        "id": "grey-heather",
+        "front": "https://web.archive.org/web/20210320131224if_/https://www.stedman.eu/out/pictures-2021/zoom/ST9600_GYH.jpg",
+        "erwarteterHex": "#A1A1A2"
+      },
+      {
+        "id": "king-blue",
+        "front": "https://web.archive.org/web/20210320131239if_/https://www.stedman.eu/out/pictures-2021/zoom/ST9600_KIB.jpg",
+        "erwarteterHex": "#1B4F90"
+      },
+      {
+        "id": "marina-blue",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_MAB.jpg",
+        "erwarteterHex": "#394A59"
+      },
+      {
+        "id": "dark-chocolate",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_DCH.jpg",
+        "erwarteterHex": "#473F3D"
+      },
+      {
+        "id": "salmon",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_SAL.jpg",
+        "erwarteterHex": "#E74061"
+      },
+      {
+        "id": "scarlet-red",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_SRE.jpg",
+        "erwarteterHex": "#E60029"
+      },
+      {
+        "id": "293e11",
+        "front": "https://www.stedman.eu/public/images/products/2026/ST9600/ST9600_BOG.jpg",
+        "erwarteterHex": "#293E11"
+      }
+    ]
+  },
+  {
+    "productId": "build-your-brand-fluffy-hoody",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "colors": [
+      {
+        "id": "light-asphalt",
+        "front": "https://www.rexlander.com/74906-thickbox_default/Build-Your-Brand-BY284-Fluffy-Hoody-UnisexKapuzenpullover-berschnittene-Schultern.jpg",
+        "erwarteterHex": "#ABB1B3"
+      },
+      {
+        "id": "chocoloate-brown",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-14274.jpg",
+        "erwarteterHex": "#5A3F38",
+        "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-14274.jpg"
+      },
+      {
+        "id": "u-beige",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-03738.jpg",
+        "erwarteterHex": "#A69173",
+        "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-03738.jpg"
+      },
+      {
+        "id": "white-sand",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-02903.jpg",
+        "erwarteterHex": "#ECE3D6",
+        "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-02903.jpg"
+      },
+      {
+        "id": "soft-pink",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-12155.jpg",
+        "erwarteterHex": "#E9ADCA",
+        "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-12155.jpg"
+      },
+      {
+        "id": "plum-purple",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-18329.jpg",
+        "erwarteterHex": "#4F3643",
+        "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-18329.jpg"
+      },
+      {
+        "id": "powder-blue",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-18327.jpg",
+        "erwarteterHex": "#91A5CF",
+        "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-18327.jpg"
+      },
+      {
+        "id": "beryl-blue",
+        "front": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P1-04221.jpg",
+        "erwarteterHex": "#88CFD2",
+        "back": "https://tbi.cdn.pacerace.de/media/images/org/BY284_P2-04221.jpg"
+      }
+    ]
+  },
+  {
+    "productId": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "colors": [
+      {
+        "id": "sueded-light-heather",
+        "front": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SULHE_front.png?width=1000",
+        "erwarteterHex": "#B2B7B3",
+        "back": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SULHE_back.png?width=1000"
+      },
+      {
+        "id": "sueded-fawn",
+        "front": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUFA_front.png?width=1000",
+        "erwarteterHex": "#E0D4C8",
+        "back": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUFA_back.png?width=1000"
+      },
+      {
+        "id": "sueded-pale-lemon",
+        "front": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUPLE_front.png?width=1000",
+        "erwarteterHex": "#F7F4C0",
+        "back": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUPLE_back.png?width=1000"
+      },
+      {
+        "id": "sueded-orange",
+        "front": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUOR_front.png?width=1000",
+        "erwarteterHex": "#F08305",
+        "back": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUOR_back.png?width=1000"
+      },
+      {
+        "id": "sueded-miami-pink",
+        "front": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUPR_front.png?width=1000",
+        "erwarteterHex": "#CCB2B9",
+        "back": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUPR_back.png?width=1000"
+      },
+      {
+        "id": "sueded-slate-green",
+        "front": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUSLGR_front.png?width=1000",
+        "erwarteterHex": "#A4B9AD",
+        "back": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUSLGR_back.png?width=1000"
+      },
+      {
+        "id": "sueded-blue-dusk",
+        "front": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUBD_front.png?width=1000",
+        "erwarteterHex": "#58747C",
+        "back": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SUBD_back.png?width=1000"
+      },
+      {
+        "id": "sueded-light-blue-heather",
+        "front": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SULBHE_front.png?width=1000",
+        "erwarteterHex": "#A6B4BF",
+        "back": "https://cdn.earthpositiveonline.com/packshots/EP314/EP314-SULBHE_back.png?width=1000"
+      }
+    ]
+  }
+]

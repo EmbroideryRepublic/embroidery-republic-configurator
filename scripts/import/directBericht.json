@@ -1,527 +1,1101 @@
 [
   {
-    "produkt": "just-hoods-organic-hoodie-jh201",
-    "farbe": "baby-pink",
-    "quelle": "shop.ralawise.com (offizieller AWDis/Just Hoods-Haendler) – Produktseite https://shop.ralawise.com/Organic-hoo",
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "dark-forest",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#edc9cd",
-    "erwartet": "#FFB3FA",
+    "frontDom": "#2e3a36",
+    "erwartet": "#273224",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "mastic",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#b6a793",
+    "erwartet": "#B6A58D",
+    "deltaE": 6,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "roasted-coffee",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#473735",
+    "erwartet": "#493A35",
+    "deltaE": 4,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "burgundy",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#5f2d39",
+    "erwartet": "#5B263D",
+    "deltaE": 9,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "melon-orange",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f29874",
+    "erwartet": "#F6AA70",
+    "deltaE": 19,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "lotus-pink",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#ee6ba3",
+    "erwartet": "#E16B94",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "lotus-blue",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#a6c8ec",
+    "erwartet": "#9EBCDD",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "acid-lime",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#c2d449",
+    "erwartet": "#BDD010",
+    "deltaE": 57,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "pacific-grey",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#b9b9b9",
+    "erwartet": "#C0C3C4",
+    "deltaE": 16,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "pop-yellow",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#fed634",
+    "erwartet": "#F0B70C",
     "deltaE": 53,
     "dupeMit": null
   },
   {
-    "produkt": "just-hoods-organic-hoodie-jh201",
-    "farbe": "burgundy",
-    "quelle": "shop.ralawise.com (offizieller AWDis/Just Hoods-Haendler) – Produktseite https://shop.ralawise.com/Organic-hoo",
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "pop-tomato",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#702931",
-    "erwartet": "#651C32",
-    "deltaE": 17,
+    "frontDom": "#e51b24",
+    "erwartet": "#BF1D25",
+    "deltaE": 38,
     "dupeMit": null
   },
   {
-    "produkt": "just-hoods-organic-hoodie-jh201",
-    "farbe": "deep-black",
-    "quelle": "shop.ralawise.com (offizieller AWDis/Just Hoods-Haendler) – Produktseite https://shop.ralawise.com/Organic-hoo",
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "pop-turquoise",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#1e1e1e",
-    "erwartet": "#000000",
-    "deltaE": 52,
-    "dupeMit": null
-  },
-  {
-    "produkt": "just-hoods-organic-hoodie-jh201",
-    "farbe": "heather-grey",
-    "quelle": "shop.ralawise.com (offizieller AWDis/Just Hoods-Haendler) – Produktseite https://shop.ralawise.com/Organic-hoo",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#d4d1d8",
-    "erwartet": "#7A7D81",
-    "deltaE": 151,
-    "dupeMit": null
-  },
-  {
-    "produkt": "just-hoods-organic-hoodie-jh201",
-    "farbe": "mustard",
-    "quelle": "shop.ralawise.com (offizieller AWDis/Just Hoods-Haendler) – Produktseite https://shop.ralawise.com/Organic-hoo",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#dc9d34",
-    "erwartet": "#C69214",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "just-hoods-organic-hoodie-jh201",
-    "farbe": "lavender",
-    "quelle": "shop.ralawise.com (offizieller AWDis/Just Hoods-Haendler) – Produktseite https://shop.ralawise.com/Organic-hoo",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#cdb2d1",
-    "erwartet": "#CBA3D8",
-    "deltaE": 17,
-    "dupeMit": null
-  },
-  {
-    "produkt": "just-hoods-organic-hoodie-jh201",
-    "farbe": "natural-stone",
-    "quelle": "shop.ralawise.com (offizieller AWDis/Just Hoods-Haendler) – Produktseite https://shop.ralawise.com/Organic-hoo",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ded7cf",
-    "erwartet": "#A4ADA6",
-    "deltaE": 83,
-    "dupeMit": null
-  },
-  {
-    "produkt": "just-hoods-organic-hoodie-jh201",
-    "farbe": "sky-blue",
-    "quelle": "shop.ralawise.com (offizieller AWDis/Just Hoods-Haendler) – Produktseite https://shop.ralawise.com/Organic-hoo",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#dceaf5",
-    "erwartet": "#9BB8D3",
-    "deltaE": 89,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-poloshirt-6535",
-    "farbe": "bottle-green",
-    "quelle": "freewear.de (6 Farben, Variation-Bilder zu Russell R-539M-0 / Z539) + groener-schulze.com (light oxford, 1200p",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#3f524c",
-    "erwartet": "#00461C",
-    "deltaE": 80,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-poloshirt-6535",
-    "farbe": "bright-red",
-    "quelle": "freewear.de (6 Farben, Variation-Bilder zu Russell R-539M-0 / Z539) + groener-schulze.com (light oxford, 1200p",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#cf3948",
-    "erwartet": "#ED1C24",
-    "deltaE": 55,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-poloshirt-6535",
-    "farbe": "burgundy",
-    "quelle": "freewear.de (6 Farben, Variation-Bilder zu Russell R-539M-0 / Z539) + groener-schulze.com (light oxford, 1200p",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#663a4b",
-    "erwartet": "#5A032C",
-    "deltaE": 64,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-poloshirt-6535",
-    "farbe": "light-oxford-heather",
-    "quelle": "freewear.de (6 Farben, Variation-Bilder zu Russell R-539M-0 / Z539) + groener-schulze.com (light oxford, 1200p",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#a8a9b2",
-    "erwartet": "#9DA6AB",
-    "deltaE": 13,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-poloshirt-6535",
-    "farbe": "purple",
-    "quelle": "freewear.de (6 Farben, Variation-Bilder zu Russell R-539M-0 / Z539) + groener-schulze.com (light oxford, 1200p",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#5b4973",
-    "erwartet": "#33346E",
-    "deltaE": 45,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-poloshirt-6535",
-    "farbe": "sky",
-    "quelle": "freewear.de (6 Farben, Variation-Bilder zu Russell R-539M-0 / Z539) + groener-schulze.com (light oxford, 1200p",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#8ab7d9",
-    "erwartet": "#8BB4DF",
-    "deltaE": 7,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-poloshirt-6535",
-    "farbe": "yellow",
-    "quelle": "freewear.de (6 Farben, Variation-Bilder zu Russell R-539M-0 / Z539) + groener-schulze.com (light oxford, 1200p",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#f9d742",
-    "erwartet": "#FFF450",
-    "deltaE": 33,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "bright-royal",
-    "quelle": "Russell Athletic / Fruit of the Loom Europe – offizielle Hersteller-Mediathek (cdn.fruitoftheloom.eu), ausgele",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#264a93",
-    "erwartet": "#1E519E",
-    "deltaE": 15,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "classic-red",
-    "quelle": "Russell Athletic / Fruit of the Loom Europe – offizielle Hersteller-Mediathek (cdn.fruitoftheloom.eu), ausgele",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#bd293d",
-    "erwartet": "#D71925",
+    "frontDom": "#05a3b6",
+    "erwartet": "#008E96",
     "deltaE": 39,
     "dupeMit": null
   },
   {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "tan",
-    "quelle": "Russell Athletic / Fruit of the Loom Europe – offizielle Hersteller-Mediathek (cdn.fruitoftheloom.eu), ausgele",
+    "produkt": "bundc-my-eco-polo-6535",
+    "farbe": "pop-green",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie; Produktseite https://www.groener-schulze.com/wer",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#cbaf8d",
-    "erwartet": "#AE997D",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "convoy-grey-solid",
-    "quelle": "Russell Athletic / Fruit of the Loom Europe – offizielle Hersteller-Mediathek (cdn.fruitoftheloom.eu), ausgele",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#6e6e76",
-    "erwartet": "#555B66",
-    "deltaE": 35,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "petrol-blue",
-    "quelle": "Russell Athletic / Fruit of the Loom Europe – offizielle Hersteller-Mediathek (cdn.fruitoftheloom.eu), ausgele",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#265368",
-    "erwartet": "#004860",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-classic-heavyweight-t-shirt",
-    "farbe": "sport-heather",
-    "quelle": "Russell Athletic / Fruit of the Loom Europe – offizielle Hersteller-Mediathek (cdn.fruitoftheloom.eu), ausgele",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#858585",
-    "erwartet": "#9D9C9F",
-    "deltaE": 42,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ladies-heavy-hoody",
-    "farbe": "pink",
-    "quelle": "Offizielle Hersteller-Produktseite buildyourbrand.de (TB International GmbH) – https://www.buildyourbrand.de/e",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#f4e0d9",
-    "erwartet": "#F5BFCC",
-    "deltaE": 35,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ladies-heavy-hoody",
-    "farbe": "olive",
-    "quelle": "Offizielle Hersteller-Produktseite buildyourbrand.de (TB International GmbH) – https://www.buildyourbrand.de/e",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#6b6251",
-    "erwartet": "#80905F",
-    "deltaE": 52,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ladies-heavy-hoody",
-    "farbe": "heather-grey",
-    "quelle": "Offizielle Hersteller-Produktseite buildyourbrand.de (TB International GmbH) – https://www.buildyourbrand.de/e",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#b1b1b1",
-    "erwartet": "#99999B",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "build-your-brand-ladies-heavy-hoody",
-    "farbe": "soft-yellow",
-    "quelle": "Offizielle Hersteller-Produktseite buildyourbrand.de (TB International GmbH) – https://www.buildyourbrand.de/e",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#eae0c1",
-    "erwartet": "#E0DBA9",
+    "frontDom": "#0fa77a",
+    "erwartet": "#15A062",
     "deltaE": 26,
     "dupeMit": null
   },
   {
-    "produkt": "build-your-brand-ladies-heavy-hoody",
-    "farbe": "dusk-rose",
-    "quelle": "Offizielle Hersteller-Produktseite buildyourbrand.de (TB International GmbH) – https://www.buildyourbrand.de/e",
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "dark-forest",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#c8aca5",
-    "erwartet": "#A89592",
-    "deltaE": 44,
+    "frontDom": "#2f3936",
+    "erwartet": "#273224",
+    "deltaE": 21,
     "dupeMit": null
   },
   {
-    "produkt": "build-your-brand-ladies-heavy-hoody",
-    "farbe": "soft-salvia",
-    "quelle": "Offizielle Hersteller-Produktseite buildyourbrand.de (TB International GmbH) – https://www.buildyourbrand.de/e",
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "mastic",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
     "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
+      "front"
     ],
-    "frontDom": "#cdccb8",
-    "erwartet": "#BDBC9E",
+    "frontDom": "#b3a490",
+    "erwartet": "#B6A58D",
+    "deltaE": 4,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "roasted-coffee",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#453634",
+    "erwartet": "#493A35",
+    "deltaE": 6,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "burgundy",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#5f2e3a",
+    "erwartet": "#5B263D",
+    "deltaE": 9,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "melon-orange",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f39975",
+    "erwartet": "#F6AA70",
+    "deltaE": 18,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "lotus-pink",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#ed6aa2",
+    "erwartet": "#E16B94",
+    "deltaE": 18,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "lotus-blue",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#a5c8ec",
+    "erwartet": "#9EBCDD",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "acid-lime",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#c2d348",
+    "erwartet": "#BDD010",
+    "deltaE": 56,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "pacific-grey",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#bababa",
+    "erwartet": "#C0C3C4",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "pop-yellow",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#fdd731",
+    "erwartet": "#F0B70C",
+    "deltaE": 51,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "pop-tomato",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#e51b23",
+    "erwartet": "#BF1D25",
+    "deltaE": 38,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "pop-turquoise",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#05a3b7",
+    "erwartet": "#008E96",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-my-eco-polo-6535-women",
+    "farbe": "pop-green",
+    "quelle": "groener-schulze.com (12 Farben, offizielle B&C/Daiber-Fotografie) + spworkwear.co.uk (1 Farbe: Pop Green, B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#04a97e",
+    "erwartet": "#15A062",
     "deltaE": 34,
     "dupeMit": null
   },
   {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "royal-blue",
-    "quelle": "Offizielle SOL'S-Mediathek (sologroup-paris.com / Scene7-CDN s7g3.scene7.com/is/image/soloinvest) fuer royal-b",
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "rope",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#29488b",
-    "erwartet": "#193574",
-    "deltaE": 34,
+    "frontDom": "#cdbfb4",
+    "erwartet": "#B6A186",
+    "deltaE": 60,
     "dupeMit": null
   },
   {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "oxblood",
-    "quelle": "Offizielle SOL'S-Mediathek (sologroup-paris.com / Scene7-CDN s7g3.scene7.com/is/image/soloinvest) fuer royal-b",
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "linen",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#441922",
-    "erwartet": "#663333",
-    "deltaE": 46,
+    "frontDom": "#dbc9b5",
+    "erwartet": "#CFBFB3",
+    "deltaE": 16,
     "dupeMit": null
   },
   {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "dark-khaki",
-    "quelle": "Offizielle SOL'S-Mediathek (sologroup-paris.com / Scene7-CDN s7g3.scene7.com/is/image/soloinvest) fuer royal-b",
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "candy-pink",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
     "gefunden": [
       "front",
       "back",
       "sleeve-left"
     ],
-    "frontDom": "#525633",
-    "erwartet": "#4E5B31",
+    "frontDom": "#f3a3ab",
+    "erwartet": "#EBA9C4",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "lilac",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#dfdced",
+    "erwartet": "#C0B6CA",
+    "deltaE": 60,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "orange",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ea6625",
+    "erwartet": "#F08800",
+    "deltaE": 51,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "gold",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#ffd901",
+    "erwartet": "#FBC54B",
+    "deltaE": 77,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "bottle-green",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#32553f",
+    "erwartet": "#253E33",
+    "deltaE": 29,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "aqua",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#04aede",
+    "erwartet": "#0095C3",
+    "deltaE": 37,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "sky-blue",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#b9d5eb",
+    "erwartet": "#96C2E8",
+    "deltaE": 40,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "denim",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#4f5d82",
+    "erwartet": "#1B3353",
+    "deltaE": 82,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "pure-grey",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#a4a9ad",
+    "erwartet": "#ADB2B6",
+    "deltaE": 16,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "mouse-grey-solid",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#404549",
+    "erwartet": "#645E67",
+    "deltaE": 53,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-unisex-pulse-polo-shirt",
+    "farbe": "off-white",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/sols-unisex-pulse-twin-pique-polo-shirt, Ar",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e6e2d9",
+    "erwartet": "#FAFAFA",
+    "deltaE": 45,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "mocha",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#664a3e",
+    "erwartet": "#6C4F3E",
+    "deltaE": 8,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "yellow-fizz",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#fde15e",
+    "erwartet": "#FFE93C",
+    "deltaE": 35,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "pure-orange",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#ed6621",
+    "erwartet": "#EB5D0F",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "soft-rose",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#f7c8ba",
+    "erwartet": "#F0D1C4",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "magenta-pink",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#e5286c",
+    "erwartet": "#DC1A62",
+    "deltaE": 19,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "radiant-purple",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#55467d",
+    "erwartet": "#3B1D66",
+    "deltaE": 54,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "blue-fog",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#99afbb",
+    "erwartet": "#A6B7C2",
+    "deltaE": 17,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "sage",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#9bb7a9",
+    "erwartet": "#AAC1B3",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "lime",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#cedb76",
+    "erwartet": "#EDEE19",
+    "deltaE": 100,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "apple-green",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#45ae59",
+    "erwartet": "#45A94C",
+    "deltaE": 14,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "asphalt",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#3e4146",
+    "erwartet": "#433F42",
     "deltaE": 7,
     "dupeMit": null
   },
   {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
+    "produkt": "bundc-inspire-e150-t-shirt",
+    "farbe": "black-pure",
+    "quelle": "allmyclothes.de (Item 7480 = B&C #Inspire E150 T-Shirt TU01B) – Bild-URLs direkt aus dem DOM der Produktseite ",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#2a2829",
+    "erwartet": "#070509",
+    "deltaE": 59,
+    "dupeMit": "bundc-inspire-e150-t-shirt-black"
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "aqua",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#058fb3",
+    "erwartet": "#0095C3",
+    "deltaE": 18,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "burgundy",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#5a1922",
+    "erwartet": "#700B23",
+    "deltaE": 26,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "charcoal-grey-solid",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#302e37",
+    "erwartet": "#1D181F",
+    "deltaE": 38,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "dark-chocolate",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#412a22",
+    "erwartet": "#461A11",
+    "deltaE": 24,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "dark-purple",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#6c348b",
+    "erwartet": "#55117B",
+    "deltaE": 45,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "fir-green",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#16372c",
+    "erwartet": "#00282B",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "grey-melange",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#4d4d4e",
+    "erwartet": "#8F8B8B",
+    "deltaE": 109,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "lime",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "sleeve-left"
+    ],
+    "frontDom": "#96c22b",
+    "erwartet": "#D0DEBB",
+    "deltaE": 158,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "neon-orange",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#f08a2c",
+    "erwartet": "#F7A600",
+    "deltaE": 53,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "neon-yellow",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#e9e675",
+    "erwartet": "#F0FF3D",
+    "deltaE": 62,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-fleecejacket-north",
     "farbe": "orange",
-    "quelle": "Offizielle SOL'S-Mediathek (sologroup-paris.com / Scene7-CDN s7g3.scene7.com/is/image/soloinvest) fuer royal-b",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
     "gefunden": [
       "front",
-      "back",
       "sleeve-left"
     ],
-    "frontDom": "#cb622b",
+    "frontDom": "#eb5c0f",
     "erwartet": "#F08800",
-    "deltaE": 68,
+    "deltaE": 47,
     "dupeMit": null
   },
   {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "deep-black",
-    "quelle": "Offizielle SOL'S-Mediathek (sologroup-paris.com / Scene7-CDN s7g3.scene7.com/is/image/soloinvest) fuer royal-b",
+    "produkt": "sols-women-s-fleecejacket-north",
+    "farbe": "rope",
+    "quelle": "assets.myworkwear.co.uk (Produktseite https://www.myworkwear.co.uk/3313-sol-s-ladies-north-fleece-jacket-54500",
     "gefunden": [
       "front",
-      "back",
       "sleeve-left"
     ],
-    "frontDom": "#272822",
-    "erwartet": "#000000",
-    "deltaE": 65,
-    "dupeMit": "sols-men-s-long-sleeve-t-shirt-imperial-charcoal-melange"
-  },
-  {
-    "produkt": "sols-men-s-long-sleeve-t-shirt-imperial",
-    "farbe": "mouse-grey-solid",
-    "quelle": "Offizielle SOL'S-Mediathek (sologroup-paris.com / Scene7-CDN s7g3.scene7.com/is/image/soloinvest) fuer royal-b",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#332c34",
-    "erwartet": "#645E67",
-    "deltaE": 87,
+    "frontDom": "#c9c1b4",
+    "erwartet": "#B6A186",
+    "deltaE": 59,
     "dupeMit": null
   },
   {
-    "produkt": "just-cool-long-sleeve-cool-t",
-    "farbe": "purple",
-    "quelle": "shop.ralawise.com (Produktseite https://shop.ralawise.com/awdisjustcool/long-sleeve-cool-t/ – echte Bilddatein",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "atoll",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#402c5d",
-    "erwartet": "#512D6D",
-    "deltaE": 23,
+    "frontDom": "#0186b3",
+    "erwartet": "#0092C3",
+    "deltaE": 20,
     "dupeMit": null
   },
   {
-    "produkt": "just-cool-long-sleeve-cool-t",
-    "farbe": "sapphire-blue",
-    "quelle": "shop.ralawise.com (Produktseite https://shop.ralawise.com/awdisjustcool/long-sleeve-cool-t/ – echte Bilddatein",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "dark-grey-solid",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#018dcc",
-    "erwartet": "#009CDE",
-    "deltaE": 23,
+    "frontDom": "#48474e",
+    "erwartet": "#29363F",
+    "deltaE": 38,
     "dupeMit": null
   },
   {
-    "produkt": "just-cool-long-sleeve-cool-t",
-    "farbe": "electric-yellow-neon",
-    "quelle": "shop.ralawise.com (Produktseite https://shop.ralawise.com/awdisjustcool/long-sleeve-cool-t/ – echte Bilddatein",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "fuchsia",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#e6fa6b",
-    "erwartet": "#E3E829",
-    "deltaE": 68,
+    "frontDom": "#df476f",
+    "erwartet": "#D40050",
+    "deltaE": 78,
     "dupeMit": null
   },
   {
-    "produkt": "just-cool-long-sleeve-cool-t",
-    "farbe": "jet-black",
-    "quelle": "shop.ralawise.com (Produktseite https://shop.ralawise.com/awdisjustcool/long-sleeve-cool-t/ – echte Bilddatein",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "gold",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#272727",
-    "erwartet": "#000710",
-    "deltaE": 55,
+    "frontDom": "#fdc206",
+    "erwartet": "#FCC643",
+    "deltaE": 61,
     "dupeMit": null
   },
   {
-    "produkt": "just-cool-long-sleeve-cool-t",
-    "farbe": "electric-green-neon",
-    "quelle": "shop.ralawise.com (Produktseite https://shop.ralawise.com/awdisjustcool/long-sleeve-cool-t/ – echte Bilddatein",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "light-grey",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#bafb6d",
-    "erwartet": "#44D62C",
-    "deltaE": 140,
+    "frontDom": "#9e9a92",
+    "erwartet": "#A09D98",
+    "deltaE": 7,
     "dupeMit": null
   },
   {
-    "produkt": "just-cool-long-sleeve-cool-t",
-    "farbe": "electric-orange-neon",
-    "quelle": "shop.ralawise.com (Produktseite https://shop.ralawise.com/awdisjustcool/long-sleeve-cool-t/ – echte Bilddatein",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "orange",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#fe721b",
-    "erwartet": "#F0872B",
+    "frontDom": "#e85d02",
+    "erwartet": "#E75113",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "real-green",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#509a4b",
+    "erwartet": "#41A62A",
+    "deltaE": 38,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "millennial-khaki",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#666962",
+    "erwartet": "#585B55",
+    "deltaE": 24,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "millennial-pink",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d0b2a6",
+    "erwartet": "#D1ABA0",
+    "deltaE": 9,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "urban-orange",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d5591b",
+    "erwartet": "#CC4F00",
     "deltaE": 30,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-e220-t",
+    "produkt": "bundc-inspire-t-men",
+    "farbe": "urban-purple",
+    "quelle": "groener-schulze.com (Token bc_inspire_t_tm042) fuer 5 Farben + coozo.co.uk Shopify-CDN mit den originalen B&C-",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#432f51",
+    "erwartet": "#2A094E",
+    "deltaE": 46,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
     "farbe": "dark-grey-solid",
-    "quelle": "groener-schulze.com (Produktseite https://www.groener-schulze.com/werbetextilien/t-shirts/bc-%23e220-tg002, of",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#383838",
+    "erwartet": "#636267",
+    "deltaE": 76,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "army",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#545142",
+    "erwartet": "#746142",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "burgundy",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#5f2831",
+    "erwartet": "#700B23",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "dark-purple",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#51337e",
+    "erwartet": "#55117B",
+    "deltaE": 34,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "kelly-green",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#477b45",
+    "erwartet": "#008845",
+    "deltaE": 72,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "pure-grey",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#c5c4ca",
+    "erwartet": "#ADB2B6",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "sand",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#cfb685",
+    "erwartet": "#BAA584",
+    "deltaE": 27,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "sky-blue",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#9dbbe0",
+    "erwartet": "#96C2E8",
+    "deltaE": 13,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "4b271c",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#38241b",
+    "erwartet": "#4B271C",
+    "deltaE": 19,
+    "dupeMit": null
+  },
+  {
+    "produkt": "sols-women-s-polo-shirt-prime",
+    "farbe": "ash-heather",
+    "quelle": "bellseal.com (Shopify-CDN, offizielle SOL'S-Produktfotos zu Artikel 10573 / SOL'S Ref. 00573 \"PRIME WOMEN\"); F",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#dcdbe1",
+    "erwartet": "#C1C4C7",
+    "deltaE": 44,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-id-333-hoodie",
+    "farbe": "urban-khaki",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#4b4a50",
-    "erwartet": "#29363F",
-    "deltaE": 43,
+    "frontDom": "#484e38",
+    "erwartet": "#454839",
+    "deltaE": 7,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-e220-t",
+    "produkt": "bundc-id-333-hoodie",
+    "farbe": "dark-grey-solid",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#4d4c51",
+    "erwartet": "#29363F",
+    "deltaE": 46,
+    "dupeMit": "bundc-id-223-hoodie-dark-grey-solid"
+  },
+  {
+    "produkt": "bundc-id-333-hoodie",
     "farbe": "off-white",
-    "quelle": "groener-schulze.com (Produktseite https://www.groener-schulze.com/werbetextilien/t-shirts/bc-%23e220-tg002, of",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
     "gefunden": [
       "front",
       "back"
@@ -532,350 +1106,20 @@
     "dupeMit": null
   },
   {
-    "produkt": "bundc-e220-t",
-    "farbe": "khaki",
-    "quelle": "groener-schulze.com (Produktseite https://www.groener-schulze.com/werbetextilien/t-shirts/bc-%23e220-tg002, of",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#585045",
-    "erwartet": "#4C4B30",
-    "deltaE": 25,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-e220-t",
-    "farbe": "mastic",
-    "quelle": "groener-schulze.com (Produktseite https://www.groener-schulze.com/werbetextilien/t-shirts/bc-%23e220-tg002, of",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#aba090",
-    "erwartet": "#B6A58D",
-    "deltaE": 12,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-e220-t",
-    "farbe": "orchid-pink",
-    "quelle": "groener-schulze.com (Produktseite https://www.groener-schulze.com/werbetextilien/t-shirts/bc-%23e220-tg002, of",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#fad0d6",
-    "erwartet": "#FBE0E4",
-    "deltaE": 21,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "bright-red",
-    "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie, neue Generation) fuer burgundy/convoy-grey/light-oxfo",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#c93241",
-    "erwartet": "#ED1C24",
-    "deltaE": 51,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "burgundy",
-    "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie, neue Generation) fuer burgundy/convoy-grey/light-oxfo",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#70364c",
-    "erwartet": "#5A032C",
-    "deltaE": 64,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "convoy-grey-solid",
-    "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie, neue Generation) fuer burgundy/convoy-grey/light-oxfo",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#696c74",
-    "erwartet": "#555B66",
-    "deltaE": 30,
-    "dupeMit": "russell-strapazierfaehiges-poloshirt-599-convoy-grey"
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "light-oxford-heather",
-    "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie, neue Generation) fuer burgundy/convoy-grey/light-oxfo",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#b4b5b9",
-    "erwartet": "#9DA6AB",
-    "deltaE": 31,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-strapazierfaehiges-poloshirt-599",
-    "farbe": "sky",
-    "quelle": "groener-schulze.com (offizielle Russell/FOTL-Fotografie, neue Generation) fuer burgundy/convoy-grey/light-oxfo",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#7fb5e3",
-    "erwartet": "#8BB4DF",
-    "deltaE": 13,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "azure-blue",
-    "quelle": "groener-schulze.com (Farbliste + Bild-URLs aus dem Varianten-DOM ausgelesen, nicht geraten) fuer azure-blue/sk",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#1b5c9e",
-    "erwartet": "#0062AE",
-    "deltaE": 32,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "burgundy",
-    "quelle": "groener-schulze.com (Farbliste + Bild-URLs aus dem Varianten-DOM ausgelesen, nicht geraten) fuer azure-blue/sk",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#673447",
-    "erwartet": "#5A032C",
-    "deltaE": 57,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "sky",
-    "quelle": "groener-schulze.com (Farbliste + Bild-URLs aus dem Varianten-DOM ausgelesen, nicht geraten) fuer azure-blue/sk",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#7bafd6",
-    "erwartet": "#8BB4DF",
-    "deltaE": 19,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "titanium-solid",
-    "quelle": "groener-schulze.com (Farbliste + Bild-URLs aus dem Varianten-DOM ausgelesen, nicht geraten) fuer azure-blue/sk",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#4d4d4e",
-    "erwartet": "#2D3844",
-    "deltaE": 40,
-    "dupeMit": null
-  },
-  {
-    "produkt": "russell-men-s-ultimate-cotton-polo",
-    "farbe": "00461c",
-    "quelle": "groener-schulze.com (Farbliste + Bild-URLs aus dem Varianten-DOM ausgelesen, nicht geraten) fuer azure-blue/sk",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#37564b",
-    "erwartet": "#00461C",
-    "deltaE": 74,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "burgundy",
-    "quelle": "groener-schulze.com (Burgundy, offizielle FOTL-Fotografie 1200x1200, Front/Back/Side) + freewear.de / L-SHOP-T",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#6c394d",
-    "erwartet": "#77002F",
-    "deltaE": 65,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "azure-blue",
-    "quelle": "groener-schulze.com (Burgundy, offizielle FOTL-Fotografie 1200x1200, Front/Back/Side) + freewear.de / L-SHOP-T",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#029dc4",
-    "erwartet": "#0076AD",
-    "deltaE": 45,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "kelly-green",
-    "quelle": "groener-schulze.com (Burgundy, offizielle FOTL-Fotografie 1200x1200, Front/Back/Side) + freewear.de / L-SHOP-T",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#02904e",
-    "erwartet": "#00A056",
-    "deltaE": 18,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "light-graphite-solid",
-    "quelle": "groener-schulze.com (Burgundy, offizielle FOTL-Fotografie 1200x1200, Front/Back/Side) + freewear.de / L-SHOP-T",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#333132",
-    "erwartet": "#554B47",
-    "deltaE": 48,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-lightweight-hooded-sweat",
-    "farbe": "orange",
-    "quelle": "groener-schulze.com (Burgundy, offizielle FOTL-Fotografie 1200x1200, Front/Back/Side) + freewear.de / L-SHOP-T",
-    "gefunden": [
-      "front"
-    ],
-    "frontDom": "#ed6a05",
-    "erwartet": "#EA4F00",
-    "deltaE": 28,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "athletic-heather",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie) – Produktseite https://www.groener-schulze.com/werbetextilien",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#b2b2b2",
-    "erwartet": "#B8B9BD",
-    "deltaE": 14,
-    "dupeMit": "fruit-of-the-loom-iconic-premium-hooded-sweat-heather-grey"
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "light-graphite-solid",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie) – Produktseite https://www.groener-schulze.com/werbetextilien",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#303234",
-    "erwartet": "#554B47",
-    "deltaE": 49,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "classic-olive",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie) – Produktseite https://www.groener-schulze.com/werbetextilien",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#72745e",
-    "erwartet": "#63673F",
-    "deltaE": 37,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "desert-sand",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie) – Produktseite https://www.groener-schulze.com/werbetextilien",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#ead9b8",
-    "erwartet": "#DFC8B7",
-    "deltaE": 20,
-    "dupeMit": null
-  },
-  {
-    "produkt": "fruit-of-the-loom-iconic-premium-hooded-sweat",
-    "farbe": "burgundy",
-    "quelle": "groener-schulze.com (offizielle FOTL-Fotografie) – Produktseite https://www.groener-schulze.com/werbetextilien",
-    "gefunden": [
-      "front",
-      "back",
-      "sleeve-left"
-    ],
-    "frontDom": "#501629",
-    "erwartet": "#77002F",
-    "deltaE": 45,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-id-223-hoodie",
-    "farbe": "dark-grey-solid",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#4d4c51",
-    "erwartet": "#29363F",
-    "deltaE": 46,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-id-223-hoodie",
-    "farbe": "lake-blue",
-    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
-    "gefunden": [
-      "front",
-      "back"
-    ],
-    "frontDom": "#5586c8",
-    "erwartet": "#3F82B4",
-    "deltaE": 30,
-    "dupeMit": null
-  },
-  {
-    "produkt": "bundc-id-223-hoodie",
+    "produkt": "bundc-id-333-hoodie",
     "farbe": "orange",
     "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#fa680c",
+    "frontDom": "#f9660a",
     "erwartet": "#E75113",
-    "deltaE": 31,
+    "deltaE": 29,
     "dupeMit": null
   },
   {
-    "produkt": "bundc-id-223-hoodie",
+    "produkt": "bundc-id-333-hoodie",
     "farbe": "burgundy",
     "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
     "gefunden": [
@@ -888,115 +1132,849 @@
     "dupeMit": null
   },
   {
-    "produkt": "bundc-id-223-hoodie",
-    "farbe": "acid-lime",
+    "produkt": "bundc-id-333-hoodie",
+    "farbe": "pop-yellow",
     "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#e0fc68",
-    "erwartet": "#BDD010",
-    "deltaE": 104,
+    "frontDom": "#fcd345",
+    "erwartet": "#F0B70C",
+    "deltaE": 65,
     "dupeMit": null
   },
   {
-    "produkt": "earthpositive-unisex-organic-pullover-hood-ep",
+    "produkt": "bundc-id-333-hoodie",
+    "farbe": "nordic-blue",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#5d7684",
+    "erwartet": "#5F7788",
+    "deltaE": 5,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-id-333-hoodie",
+    "farbe": "mastic",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#aca191",
+    "erwartet": "#B6A58D",
+    "deltaE": 11,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-id-333-hoodie",
+    "farbe": "lotus-blue",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#aec9f1",
+    "erwartet": "#9EBCDD",
+    "deltaE": 29,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-id-333-hoodie",
+    "farbe": "radiant-purple",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#56467e",
+    "erwartet": "#3B1D66",
+    "deltaE": 55,
+    "dupeMit": null
+  },
+  {
+    "produkt": "bundc-id-333-hoodie",
+    "farbe": "blush-mint",
+    "quelle": "groener-schulze.com (offizielle B&C/Daiber-Produktfotografie) – Produktseite https://www.groener-schulze.com/w",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#e2efe8",
+    "erwartet": "#CFDFD1",
+    "deltaE": 34,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "faded-black",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#23292d",
+    "erwartet": "#212322",
+    "deltaE": 13,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "faded-navy",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#3c4d63",
+    "erwartet": "#454955",
+    "deltaE": 17,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "faded-brown",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#6a563f",
+    "erwartet": "#675342",
+    "deltaE": 5,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "faded-khaki",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#726c4e",
+    "erwartet": "#797054",
+    "deltaE": 10,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "blue-dusk",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#7296a7",
+    "erwartet": "#809CA8",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "bone",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#e5dec9",
+    "erwartet": "#C7BCB7",
+    "deltaE": 49,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "faded-mustard",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#c89245",
+    "erwartet": "#946F3A",
+    "deltaE": 64,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "faded-pink",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#d6b1c0",
+    "erwartet": "#B08D92",
+    "deltaE": 70,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "faded-white",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#dce2de",
+    "erwartet": "#F6F5F4",
+    "deltaE": 39,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "rfd-ready-for-dye",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f0ece4",
+    "erwartet": "#DDDAD5",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "light-beige-sand",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#d1c2ae",
+    "erwartet": "#CEC3AF",
+    "deltaE": 3,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
     "farbe": "black",
-    "quelle": "continentalclothing.com Asset-Server (assets/product_shots/high_res/{front,back}/EP60P-{CODE}.jpg) – gegengepr",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#191919",
-    "erwartet": "#111021",
-    "deltaE": 14,
+    "frontDom": "#0c090c",
+    "erwartet": null,
+    "deltaE": null,
     "dupeMit": null
   },
   {
-    "produkt": "earthpositive-unisex-organic-pullover-hood-ep",
-    "farbe": "burgundy",
-    "quelle": "continentalclothing.com Asset-Server (assets/product_shots/high_res/{front,back}/EP60P-{CODE}.jpg) – gegengepr",
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "french-navy",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#411517",
-    "erwartet": "#4F2024",
-    "deltaE": 22,
+    "frontDom": "#22324c",
+    "erwartet": null,
+    "deltaE": null,
     "dupeMit": null
   },
   {
-    "produkt": "earthpositive-unisex-organic-pullover-hood-ep",
-    "farbe": "navy",
-    "quelle": "continentalclothing.com Asset-Server (assets/product_shots/high_res/{front,back}/EP60P-{CODE}.jpg) – gegengepr",
+    "produkt": "earthpositive-premium-long-sleeve-t-shirt",
+    "farbe": "white",
+    "quelle": "earthpositiveonline.com (offizieller EarthPositive-/Continental-Clothing-Markenshop; continentalclothing.com l",
     "gefunden": [
       "front",
       "back"
     ],
-    "frontDom": "#1d1c23",
-    "erwartet": "#1C1B22",
-    "deltaE": 2,
+    "frontDom": "#eff5fa",
+    "erwartet": null,
+    "deltaE": null,
     "dupeMit": null
   },
   {
-    "produkt": "just-hoods-vision-heavyweight-hoodie",
-    "farbe": "deep-black",
-    "quelle": "awdis.com (offizielle Herstellerseite, Produktseite https://awdis.com/products/vision-heavyweight-hoodie-jh111",
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "acid-yellow",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#292728",
-    "erwartet": "#000000",
+    "frontDom": "#d5dd31",
+    "erwartet": "#D7E076",
     "deltaE": 69,
     "dupeMit": null
   },
   {
-    "produkt": "just-hoods-vision-heavyweight-hoodie",
-    "farbe": "dusty-lilac",
-    "quelle": "awdis.com (offizielle Herstellerseite, Produktseite https://awdis.com/products/vision-heavyweight-hoodie-jh111",
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "dark-melange",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#847685",
-    "erwartet": "#6B7292",
-    "deltaE": 28,
+    "frontDom": "#515051",
+    "erwartet": "#474D52",
+    "deltaE": 10,
     "dupeMit": null
   },
   {
-    "produkt": "just-hoods-vision-heavyweight-hoodie",
-    "farbe": "ice-blue",
-    "quelle": "awdis.com (offizielle Herstellerseite, Produktseite https://awdis.com/products/vision-heavyweight-hoodie-jh111",
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "grenadine",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
     "gefunden": [
-      "front"
+      "front",
+      "back",
+      "sleeve-left"
     ],
-    "frontDom": "#aed0ec",
-    "erwartet": "#B1EBFC",
+    "frontDom": "#dd4e3c",
+    "erwartet": "#ED8E78",
+    "deltaE": 89,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "light-melange",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#acacac",
+    "erwartet": "#E7E3D6",
+    "deltaE": 91,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "lime-green",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#6ebd4b",
+    "erwartet": "#9DC118",
+    "deltaE": 69,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "orange",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#fd7828",
+    "erwartet": "#F18E00",
+    "deltaE": 47,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "pacific",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#4ebce2",
+    "erwartet": "#007CB7",
+    "deltaE": 110,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "pink",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#ec4dac",
+    "erwartet": "#E64370",
+    "deltaE": 61,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "turquoise",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#038abb",
+    "erwartet": "#00A9CE",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-ladies-active-t",
+    "farbe": "yellow",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, 9 Farben) + daiber.de Hersteller-Mediathek (grenadine)",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#f3c53d",
+    "erwartet": "#FFED00",
+    "deltaE": 74,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "wine",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#7a1635",
+    "erwartet": "#830628",
+    "deltaE": 22,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "aqua",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#349de0",
+    "erwartet": "#477AB8",
+    "deltaE": 56,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "stone",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#d2c7ad",
+    "erwartet": "#F5EDCF",
+    "deltaE": 62,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "brown",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back",
+      "sleeve-left"
+    ],
+    "frontDom": "#503f35",
+    "erwartet": "#5D4631",
+    "deltaE": 15,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "orange",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f48021",
+    "erwartet": "#F18E00",
+    "deltaE": 36,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "dark-grey-solid",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#787e77",
+    "erwartet": "#99A499",
+    "deltaE": 61,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "turquoise",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#15b6e3",
+    "erwartet": "#00A9CE",
     "deltaE": 32,
     "dupeMit": null
   },
   {
-    "produkt": "just-hoods-vision-heavyweight-hoodie",
-    "farbe": "natural-clay",
-    "quelle": "awdis.com (offizielle Herstellerseite, Produktseite https://awdis.com/products/vision-heavyweight-hoodie-jh111",
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "lime-green",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
     "gefunden": [
-      "front"
+      "front",
+      "back"
     ],
-    "frontDom": "#89786e",
-    "erwartet": "#8C8277",
-    "deltaE": 14,
+    "frontDom": "#6fc33d",
+    "erwartet": "#9DC118",
+    "deltaE": 59,
     "dupeMit": null
   },
   {
-    "produkt": "just-hoods-vision-heavyweight-hoodie",
-    "farbe": "natural-stone",
-    "quelle": "awdis.com (offizielle Herstellerseite, Produktseite https://awdis.com/products/vision-heavyweight-hoodie-jh111",
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "gold-yellow",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#f8ae37",
+    "erwartet": "#FBBF1F",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "jamesnicholson-men-s-bio-workwear-polo",
+    "farbe": "grey-heather",
+    "quelle": "groener-schulze.com (offizielle Daiber-Fotografie, gleiches URL-Muster wie die bereits funktionierenden Farben",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#bfbfbf",
+    "erwartet": "#9396A3",
+    "deltaE": 66,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "black-opal",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
     "gefunden": [
       "front"
     ],
-    "frontDom": "#e4d8cc",
-    "erwartet": "#A4ADA6",
-    "deltaE": 86,
+    "frontDom": "#111111",
+    "erwartet": "#000000",
+    "deltaE": 29,
+    "dupeMit": "stedman-clive-crew-neck-blue-midnight"
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "bordeaux",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#4b0e18",
+    "erwartet": "#89163E",
+    "deltaE": 73,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "grey-heather",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#bfbfbe",
+    "erwartet": "#A1A1A2",
+    "deltaE": 51,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "king-blue",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#026eb9",
+    "erwartet": "#1B4F90",
+    "deltaE": 57,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "marina-blue",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#14222b",
+    "erwartet": "#394A59",
+    "deltaE": 71,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "dark-chocolate",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#34271f",
+    "erwartet": "#473F3D",
+    "deltaE": 43,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "salmon",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d6513e",
+    "erwartet": "#E74061",
+    "deltaE": 42,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "scarlet-red",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#ce1f1c",
+    "erwartet": "#E60029",
+    "deltaE": 41,
+    "dupeMit": null
+  },
+  {
+    "produkt": "stedman-clive-crew-neck",
+    "farbe": "293e11",
+    "quelle": "stedman.eu offizielle Medienbibliothek – aktuelle Kollektion /public/images/products/2026/ST9600/ (Produktseit",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#223522",
+    "erwartet": "#293E11",
+    "deltaE": 20,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "light-asphalt",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "gefunden": [
+      "front"
+    ],
+    "frontDom": "#d1d1cf",
+    "erwartet": "#ABB1B3",
+    "deltaE": 57,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "chocoloate-brown",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#6f4137",
+    "erwartet": "#5A3F38",
+    "deltaE": 21,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "u-beige",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#daba8d",
+    "erwartet": "#A69173",
+    "deltaE": 71,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "white-sand",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ede5d7",
+    "erwartet": "#ECE3D6",
+    "deltaE": 2,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "soft-pink",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#efd7e2",
+    "erwartet": "#E9ADCA",
+    "deltaE": 49,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "plum-purple",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#513041",
+    "erwartet": "#4F3643",
+    "deltaE": 7,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "powder-blue",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#b0c3e3",
+    "erwartet": "#91A5CF",
+    "deltaE": 48,
+    "dupeMit": null
+  },
+  {
+    "produkt": "build-your-brand-fluffy-hoody",
+    "farbe": "beryl-blue",
+    "quelle": "Primaer: tbi.cdn.pacerace.de (Original-CDN von TB International / Build Your Brand). Muster: https://tbi.cdn.p",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#b4e4e8",
+    "erwartet": "#88CFD2",
+    "deltaE": 53,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-light-heather",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#c5c5c5",
+    "erwartet": "#B2B7B3",
+    "deltaE": 30,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-fawn",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#e1d2c6",
+    "erwartet": "#E0D4C8",
+    "deltaE": 3,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-pale-lemon",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ede4ae",
+    "erwartet": "#F7F4C0",
+    "deltaE": 26,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-orange",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#ed832f",
+    "erwartet": "#F08305",
+    "deltaE": 42,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-miami-pink",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#d5b8b9",
+    "erwartet": "#CCB2B9",
+    "deltaE": 11,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-slate-green",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#c3dbd4",
+    "erwartet": "#A4B9AD",
+    "deltaE": 60,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-blue-dusk",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#89aab9",
+    "erwartet": "#58747C",
+    "deltaE": 95,
+    "dupeMit": null
+  },
+  {
+    "produkt": "earthpositive-earth-positive-women-s-half-zip-hoodie",
+    "farbe": "sueded-light-blue-heather",
+    "quelle": "Offizielle EarthPositive PIM-API (https://pim.earthpositiveonline.com/api/styles/EP314), Feld front_image_urls",
+    "gefunden": [
+      "front",
+      "back"
+    ],
+    "frontDom": "#93a8bc",
+    "erwartet": "#A6B4BF",
+    "deltaE": 23,
     "dupeMit": null
   }
 ]

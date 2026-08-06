@@ -4,8 +4,8 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 
 ## Übersicht
 - Produkte mit echten Bildern: **154 / 154**
-- Echte Farb-Bildsätze: **936**
-- Farben mit echter Rückansicht: **755** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **181**
+- Echte Farb-Bildsätze: **981**
+- Farben mit echter Rückansicht: **764** · nur Vorderansicht (noch keine echte Rückansicht gefunden): **217**
 - Noch offen (nur Platzhalter): **0** Produkte
 
 ## Bebilderte Produkte
@@ -58,7 +58,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | bundc-t-shirt-e190-women | B&C | sportyfied.com | 7 | back+front | 7 |
 | bundc-inspire-e150-t-shirt | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 6 | back+front | 6 |
 | bundc-t-shirt-e150 | B&C | sportyfied.com | 7 | back+front+sleeve_left | 7 |
-| bundc-inspire-e150-t-shirt-women | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 3 | back+front | 3 |
+| bundc-inspire-e150-t-shirt-women | B&C | allmyclothes.de Artikel BCTW02B (Item 7487) — offizielle B&C-Studiofotografie, Dateinamen mit Artikelnummer TW | 21 | front | 0 · ohne echte Rückansicht: 21 (navy-blue, white, red, off-white, mocha, yellow-fizz, pure-orange, soft-rose, magenta-pink, radiant-purple, burgundy, royal-blue, blue-fog, sage, apple-green, heather-grey, asphalt, forest-green, black-pure, lime, navy) |
 | bundc-t-shirt-e150-women | B&C | sportyfied.com | 7 | back+front+sleeve_left | 7 |
 | bundc-e220-t | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 5 | back+front | 5 |
 | bundc-inspire-v-t-men | B&C | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 2 | front | 0 · ohne echte Rückansicht: 2 (black, white) |
@@ -71,8 +71,8 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | jamesnicholson-ladies-basic-t | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
 | jamesnicholson-workwear-t-men | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 5 | back+front+sleeve_left | 5 |
 | jamesnicholson-workwear-t-women | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
-| jamesnicholson-mens-bio-workwear-t-shirt | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
-| jamesnicholson-ladies-bio-workwear-t-shirt | James+Nicholson | groener-schulze.com (offizielle B&C/Daiber-Fotografie) | 7 | back+front+sleeve_left | 7 |
+| jamesnicholson-mens-bio-workwear-t-shirt | James+Nicholson | groener-schulze.com (offizielle Daiber/J&N-Studiofotografie, Muster /grafik/image/original/daiber_mens_bio_wor | 17 | back+front+sleeve_left | 16 · ohne echte Rückansicht: 1 (gold-yellow) |
+| jamesnicholson-ladies-bio-workwear-t-shirt | James+Nicholson | groener-schulze.com Originalbilder, Token daiber_ladies_bio_workwear_t_jn1807 (Artikelnummer JN1807 im Pfad); | 17 | back+front+sleeve_left | 16 · ohne echte Rückansicht: 1 (gold-yellow) |
 | russell-russell-classic-t | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 6 | back+front | 6 |
 | russell-classic-heavyweight-t-shirt | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 3 | back+front+sleeve_left | 3 |
 | russell-mens-pure-organic-heavy-tee | Russell | freewear.de | 4 | front | 0 · ohne echte Rückansicht: 4 (white, black, 555b66, french-navy) |
@@ -140,7 +140,7 @@ _Auto-generiert von scripts/bildimportBericht.mts. Quelle: Asset-Manifest + scri
 | just-hoods-vision-heavyweight-hoodie | Just Hoods | awdis.com (offizielle Herstellerseite / Medienbibliothek) | 7 | front | 0 · ohne echte Rückansicht: 7 (arctic-white, atlantic-blue, fire-red, heather-grey, moss-green, new-french-navy, solid-charcoal) |
 | russell-authentic-hooded-sweat | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 5 | back+front | 5 |
 | russell-ladies-authentic-hood | Russell | groener-schulze.com | 7 | back+front+sleeve_left | 7 |
-| russell-hooded-sweatshirt | Russell | groener-schulze.com (offizielle Russell/FOTL-Fotografie) | 6 | back+front+sleeve_left | 6 |
+| russell-hooded-sweatshirt | Russell | textil-grosshandel.eu — Artikelseite https://www.textil-grosshandel.eu/russell-hooded-sweatshirt.html, Artikel | 13 | front | 0 · ohne echte Rückansicht: 13 (black, bottle-green, bright-royal, classic-red, french-navy, fuchsia, light-oxford-heather, orange, purple, sky, white, yellow, burgundy) |
 | just-hoods-signature-heavyweight-sweat | Just Hoods | ralawise (shop.ralawise.com) — offizieller AWDis Just Hoods Distributor, vorhers | 6 | front | 0 · ohne echte Rückansicht: 6 (earthy-green, arctic-white, bright-royal, heather-grey, new-french-navy, solid-charcoal) |
 | jhk-hooded-sweater | JHK | jhktshirt.com (offizielle JHK-Medienbibliothek, S3: resources.jhktshirt.com/pict | 7 | back+front+sleeve_left | 7 |
 | earthpositive-premium-long-sleeve-t-shirt | EarthPositive | shirtplus.net (Shopify-CDN, hostet Continentals offizielle EP01L-Studioflats mit | 3 | front | 0 · ohne echte Rückansicht: 3 (black, french-navy, white) |

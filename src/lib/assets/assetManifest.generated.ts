@@ -4299,7 +4299,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy-blue": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-navy-blue/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-women-navy-blue/back.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-navy-blue/front.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-navy-blue/front.webp",
         "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-navy-blue/front.webp"
       },
@@ -4308,7 +4308,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-white/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-women-white/back.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-white/front.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-white/front.webp",
         "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-white/front.webp"
       },
@@ -4316,170 +4316,170 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "red": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-red/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-red/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-red/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-red/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "off-white": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-off-white/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-off-white/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-off-white/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-off-white/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "mocha": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-mocha/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-mocha/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-mocha/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-mocha/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "yellow-fizz": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-yellow-fizz/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-yellow-fizz/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-yellow-fizz/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-yellow-fizz/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "pure-orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-pure-orange/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-pure-orange/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-pure-orange/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-pure-orange/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "soft-rose": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-soft-rose/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-soft-rose/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-soft-rose/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-soft-rose/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "magenta-pink": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-magenta-pink/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-magenta-pink/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-magenta-pink/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-magenta-pink/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "radiant-purple": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-radiant-purple/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-radiant-purple/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-radiant-purple/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-radiant-purple/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-burgundy/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-burgundy/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-burgundy/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-burgundy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal-blue": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-royal-blue/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-royal-blue/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-royal-blue/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-royal-blue/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "blue-fog": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-blue-fog/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-blue-fog/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-blue-fog/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-blue-fog/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sage": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-sage/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-sage/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-sage/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-sage/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "apple-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-apple-green/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-apple-green/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-apple-green/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-apple-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "heather-grey": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-heather-grey/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-heather-grey/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-heather-grey/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-heather-grey/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "asphalt": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-asphalt/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-asphalt/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-asphalt/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-asphalt/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "forest-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-forest-green/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-forest-green/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-forest-green/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-forest-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "black-pure": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-black-pure/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-black-pure/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-black-pure/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-black-pure/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "lime": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/bundc-inspire-e150-t-shirt-women-lime/front.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-lime/front.webp",
+        "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-lime/front.webp",
+        "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-lime/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/bundc-inspire-e150-t-shirt-women-navy/front.webp",
-        "back": "/products/bundc-inspire-e150-t-shirt-women-navy/back.webp",
+        "back": "/products/bundc-inspire-e150-t-shirt-women-navy/front.webp",
         "sleeve_left": "/products/bundc-inspire-e150-t-shirt-women-navy/front.webp",
         "sleeve_right": "/products/bundc-inspire-e150-t-shirt-women-navy/front.webp"
       },
@@ -6709,12 +6709,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "jamesnicholson-mens-bio-workwear-t-shirt": {
     "wine": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-wine/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-wine/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-wine/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-wine/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -6727,66 +6727,66 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "stone": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-stone/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-stone/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-stone/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-stone/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "gold-yellow": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow/front.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow/front.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-orange/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-orange/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-orange/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-orange/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/front.webp",
         "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/back.webp",
-        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/front.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/sleeve-left.webp",
         "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/front.webp"
       },
       "status": "real"
     },
     "aqua": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-aqua/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-aqua/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-aqua/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-aqua/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/front.webp",
         "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/back.webp",
-        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/front.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/sleeve-left.webp",
         "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/front.webp"
       },
       "status": "real"
     },
     "turquoise": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-turquoise/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-turquoise/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-turquoise/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-turquoise/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
@@ -6799,27 +6799,27 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-grey-heather/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-grey-heather/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-grey-heather/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-grey-solid/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-grey-solid/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-grey-solid/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-grey-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "carbon": {
       "views": {
         "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/front.webp",
         "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/back.webp",
-        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/front.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/sleeve-left.webp",
         "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/front.webp"
       },
       "status": "real"
@@ -6835,27 +6835,27 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "brown": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-brown/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-brown/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-brown/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-brown/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "lime-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-lime-green/front.webp",
+        "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-lime-green/back.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-lime-green/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-lime-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-green": {
       "views": {
         "front": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/front.webp",
         "back": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/back.webp",
-        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/front.webp",
+        "sleeve_left": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/sleeve-left.webp",
         "sleeve_right": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/front.webp"
       },
       "status": "real"
@@ -6864,12 +6864,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
   "jamesnicholson-ladies-bio-workwear-t-shirt": {
     "wine": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-wine/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-wine/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-wine/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-wine/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
@@ -6882,30 +6882,30 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "stone": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-stone/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-stone/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-stone/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-stone/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "gold-yellow": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow/front.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow/front.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-orange/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-orange/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-orange/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-orange/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "red": {
       "views": {
@@ -6918,12 +6918,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "aqua": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-aqua/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-aqua/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-aqua/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-aqua/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "royal": {
       "views": {
@@ -6936,12 +6936,12 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "turquoise": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-turquoise/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-turquoise/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-turquoise/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-turquoise/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "navy": {
       "views": {
@@ -6954,21 +6954,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-grey-heather/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-grey-heather/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-grey-heather/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-dark-grey-solid/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-dark-grey-solid/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-dark-grey-solid/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-dark-grey-solid/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "carbon": {
       "views": {
@@ -6990,21 +6990,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "brown": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-brown/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-brown/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-brown/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-brown/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "lime-green": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-lime-green/front.webp",
+        "back": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-lime-green/back.webp",
+        "sleeve_left": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-lime-green/sleeve-left.webp",
+        "sleeve_right": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-lime-green/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "dark-green": {
       "views": {
@@ -18296,7 +18296,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-black/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-black/back.webp",
+        "back": "/products/russell-hooded-sweatshirt-black/front.webp",
         "sleeve_left": "/products/russell-hooded-sweatshirt-black/front.webp",
         "sleeve_right": "/products/russell-hooded-sweatshirt-black/front.webp"
       },
@@ -18305,8 +18305,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-bottle-green/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-bottle-green/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-bottle-green/sleeve-left.webp",
+        "back": "/products/russell-hooded-sweatshirt-bottle-green/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-bottle-green/front.webp",
         "sleeve_right": "/products/russell-hooded-sweatshirt-bottle-green/front.webp"
       },
       "status": "real"
@@ -18314,8 +18314,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bright-royal": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-bright-royal/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-bright-royal/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-bright-royal/sleeve-left.webp",
+        "back": "/products/russell-hooded-sweatshirt-bright-royal/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-bright-royal/front.webp",
         "sleeve_right": "/products/russell-hooded-sweatshirt-bright-royal/front.webp"
       },
       "status": "real"
@@ -18323,8 +18323,8 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "classic-red": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-classic-red/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-classic-red/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-classic-red/sleeve-left.webp",
+        "back": "/products/russell-hooded-sweatshirt-classic-red/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-classic-red/front.webp",
         "sleeve_right": "/products/russell-hooded-sweatshirt-classic-red/front.webp"
       },
       "status": "real"
@@ -18332,83 +18332,83 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "french-navy": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-french-navy/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-french-navy/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-french-navy/sleeve-left.webp",
+        "back": "/products/russell-hooded-sweatshirt-french-navy/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-french-navy/front.webp",
         "sleeve_right": "/products/russell-hooded-sweatshirt-french-navy/front.webp"
       },
       "status": "real"
     },
     "fuchsia": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-fuchsia/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-fuchsia/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-fuchsia/front.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-fuchsia/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "light-oxford-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-light-oxford-heather/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-light-oxford-heather/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-light-oxford-heather/front.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-light-oxford-heather/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "orange": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-orange/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-orange/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-orange/front.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-orange/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "purple": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-purple/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-purple/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-purple/front.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-purple/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "sky": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-sky/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-sky/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-sky/front.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-sky/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-white/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-white/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-white/sleeve-left.webp",
+        "back": "/products/russell-hooded-sweatshirt-white/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-white/front.webp",
         "sleeve_right": "/products/russell-hooded-sweatshirt-white/front.webp"
       },
       "status": "real"
     },
     "yellow": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-yellow/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-yellow/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-yellow/front.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-yellow/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "burgundy": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_right": "/products/_platzhalter/platzhalter.webp"
+        "front": "/products/russell-hooded-sweatshirt-burgundy/front.webp",
+        "back": "/products/russell-hooded-sweatshirt-burgundy/front.webp",
+        "sleeve_left": "/products/russell-hooded-sweatshirt-burgundy/front.webp",
+        "sleeve_right": "/products/russell-hooded-sweatshirt-burgundy/front.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     }
   },
   "just-hoods-signature-heavyweight-sweat": {

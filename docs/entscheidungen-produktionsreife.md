@@ -1053,7 +1053,30 @@ entfernt. Diese Automatismen laufen auf der aktuellen Live-Seite vermutlich
 nicht selbständig – Details und Lösungsoptionen in
 `docs/deployment-checkliste-live.md`.
 
-### 13.5 Was jetzt noch zu tun ist
+### 13.5 Commit & Push
+
+Der komplette Arbeitsstand ist in zwei Commits auf dem Branch
+`restore/session-recovery` (bewusst NICHT `main`, um kein automatisches
+Vercel-Deployment auszulösen) committet und nach `origin` gepusht:
+
+- `b6f5205d` – Produktionsreife: Kundenkonto, DSGVO, Steuer-Konformität,
+  adversarialer Vollaudit (204 Dateien, +15.484/-1.001 Zeilen)
+- `a7d7bf20` – Build-Cache-Artefakt aus Versionskontrolle entfernen
+
+Vor dem Commit wurden alle temporären Prüf-Skripte (`*TMP.mts`) und
+~20 MB Screenshot-Dumps aus den Audit-Läufen entfernt – nur die durable,
+wiederverwendbare QA-Tooling (`scripts/pruef/a11yPruefung.mts`,
+`emailVorlagenAudit.mts`, `verify-pricing-engine.mts` u. a.) bleibt im
+Repository.
+
+**Für den finalen Merge nach `main`** (löst das Vercel-Deployment aus,
+siehe `docs/deployment-checkliste-live.md` Schritt 3): entweder ein Pull
+Request von `restore/session-recovery` nach `main` (GitHub bietet dafür
+bereits einen Link an) oder direkt `git push origin restore/session-recovery:main`,
+**nachdem** Schritt 1 (Backup) und Schritt 2 (Migrationen) der Checkliste
+erledigt sind.
+
+### 13.6 Was jetzt noch zu tun ist
 
 Vollständige, geprüfte Schritt-für-Schritt-Anleitung:
 **`docs/deployment-checkliste-live.md`**. Zusammengefasst, ausschließlich

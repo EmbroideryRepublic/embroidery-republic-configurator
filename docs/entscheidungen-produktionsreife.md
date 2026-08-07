@@ -1095,6 +1095,81 @@ noch durch den Betreiber (mit echten Produktions-Zugangsdaten) auszuführen:
 
 ---
 
+## 14. Bereinigung von Entwicklungsartefakten vor dem Merge nach `main` (2026-08-07, vierte Phase)
+
+Vor dem geplanten Merge von `restore/session-recovery` nach `main` wurde der
+Branch noch einmal vollständig auf Dateien durchsucht, die ausschließlich
+während der Entwicklung/Prüfung entstanden sind und nicht in die Produktion
+gehören. Maßstab: eine Datei bleibt nur, wenn sie entweder aktiv von einem
+noch bestehenden, allgemein nutzbaren Skript gelesen wird (geprüft per
+gezieltem Grep auf den exakten Dateipfad) oder eine dauerhaft gültige,
+weiterhin referenzierte Dokumentation ist – alles andere (einmalige
+Zwischenstände, Debug-Ausgaben, Kontaktbögen-Bilder) fliegt raus.
+
+### 14.1 Entfernt (148 Dateien)
+
+- **10 Root-Level-Skripte** (`_bs.mjs`, `_bsm.mjs`, `_check_tmp.mjs`, `_m3.mjs`,
+  `_mont.mjs`, `_mont2.mjs`, `_sp.mjs`, `_spm.mjs`, `_ss.mjs`, `_ssm.mjs`):
+  minifizierte Einmal-Skripte zur Farbabgleich-Prüfung während des
+  Bildimports, die versehentlich außerhalb von `scripts/` (und damit
+  außerhalb der bestehenden `.gitignore`-Regel `scripts/_*`) committet
+  wurden. Alle referenzieren fest den Scratchpad-Pfad dieser Sitzung – kein
+  Produktionsbezug, nirgends importiert.
+- **10 Kontaktbogen-Bilder** unter `docs/kontaktbogen/*.png`: generierte
+  QA-Referenzbilder (Druckflächen-Kontrolle), von keinem Anwendungscode
+  referenziert, jederzeit per `scripts/druckflaechenKontaktbogen.mts` bzw.
+  `scripts/farbKontaktbogen.mts` neu erzeugbar.
+- **128 Job-/Recherche-Dateien** unter `scripts/import/*.json`: Zwischenstände
+  einzelner, längst abgeschlossener Import-Batches (`directJobs*.json`,
+  `nichtbeschaffbar_*.json`, `*Bericht.json`, `*Spec.json`, `entscheidungen.json`,
+  `dubletten-befunde.json`, `farbluecken.json`, `quellen*.json` u. v. a.). Für
+  jede Datei per Grep geprüft, ob ein bestehendes Skript sie unbedingt liest
+  – keine tat es (einige dienten nur als CLI-Default-Fallback, was beim
+  nächsten Lauf einfach durch einen neuen Pfad ersetzt wird).
+
+### 14.2 Bewusst im Repository belassen
+
+- `scripts/import/ABLAUF.md` – die einzige durchgehende Anleitung für den
+  Bildimport-Ablauf (Torwächter → Ingest → Manifest → Audits → Grün-Gate),
+  von 9 weiterhin bestehenden Treiber-Skripten referenziert.
+- `scripts/import/dubletten-ok.json` und `scripts/import/onmodel-ausnahmen.json`
+  – aktive Allowlists, unbedingt gelesen von `scripts/bilddublettenAudit.mts`
+  bzw. `scripts/onModelAudit.mts`.
+- `scripts/druckflaechenKontaktbogen.mts`, `scripts/farbKontaktbogen.mts` und
+  alle übrigen 86 Top-Level-Skripte unter `scripts/` – geprüft und als
+  dauerhaftes, allgemein nutzbares Projekt-Tooling eingestuft (Migrations-,
+  Audit-, Preis-, QA- und E2E-Skripte).
+- Alle 72 Markdown-Dateien unter `docs/` (inkl. datierter Berichte wie
+  `betriebsreview-2026-07-23.md`, `production-readiness-review.md`,
+  `m3-abschlussbewertung.md`): durchgehend geführte, weiterhin wertvolle
+  Entscheidungs-/Auditprotokolle nach demselben Muster wie dieses Dokument
+  – keine Wegwerf-Reports.
+- `public/brand/logo.jpg`, `public/buehne/hoodie.png`, `public/pdf.worker.min.mjs`
+  – echte Produktions-Assets (Marken-Logo, Hero-Bild, ausgelieferte
+  PDF.js-Worker-Kopie, per Test `die Kopie ist identisch mit der Datei aus
+  pdfjs-dist` abgesichert).
+
+### 14.3 Grün-Gate nach der Bereinigung
+
+Erneut vollständig durchgeführt, alles grün:
+
+- `tsc --noEmit`: fehlerfrei.
+- `eslint . --ext .ts,.tsx --max-warnings=0`: fehlerfrei.
+- `npm test`: **657/657 bestanden**.
+- `next build` (sauberer `.next`-Neubau): erfolgreich, 190 statische Seiten.
+- Einzelserver-Smoke-Test (Port 3007, nach Sicherstellen, dass kein anderer
+  Node-Prozess denselben Port belegt): alle geprüften Routen `200`
+  (`/`, `/konfigurator`, `/produkt`, `/konto/anmelden`, `/konto/registrieren`,
+  `/impressum`, `/datenschutz`, `/agb`, `/faq`, `/kontakt`, `/admin`); `/api/health`
+  erwartungsgemäß `503` ohne lokale DB-Verbindung (siehe
+  `docs/deployment-checkliste-live.md`, Schritt 4).
+
+Ergebnis: 148 Dateien entfernt, committet und nach
+`origin/restore/session-recovery` gepusht (**nicht** nach `main`). Der Merge
+nach `main` bleibt ein separater, bewusster nächster Schritt.
+
+---
+
 ## Zusammenfassung
 
 Ausgehend vom Auftrag, das Projekt so weit wie möglich in einen

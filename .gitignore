@@ -21,6 +21,7 @@ npm-debug.log*
 
 # TypeScript-Build-Cache
 tsconfig.tsbuildinfo
+*.tsbuildinfo
 
 # Lokale Entwicklungs-Logs
 *.log

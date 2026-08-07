@@ -22,6 +22,7 @@
  * „ab 1 Stück" – eine Mindestbestellmenge gibt es nicht, die Staffelpreise
  * beginnen bei 5 (calculatePrice.ts).
  */
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
@@ -34,16 +35,22 @@ import { FARBGRUPPEN } from '@/config/products/facetten';
 import { produktTypLabel, PRODUCT_TYPE_ORDER, PRODUCT_TYPES } from '@/config/products/types';
 import { SHIPPING_RATES } from '@/config/shipping';
 import { PRODUKTIONSTAGE } from '@/config/company';
-import { formatiereGeld } from '@/lib/format';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
 import { Kundenstimmen } from '@/components/shop/Kundenstimmen';
+import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
+import { HeroText } from '@/components/home/HeroText';
 import { basisUrl } from '@/lib/seo/basisUrl';
 import { organisationSchema } from '@/lib/seo/strukturierteDaten';
 import type { ProductType } from '@/types';
 
 export const metadata: Metadata = {
-  title: 'Textilveredelung mit Stickerei & DTF-Druck',
+  // `title.template` aus dem Root-Layout greift nur bei vererbten Titeln
+  // aus verschachtelten Segmenten – die app/page.tsx im selben Segment wie
+  // das Root-Layout bekommt den Marken-Suffix sonst NICHT automatisch, im
+  // Unterschied zu jeder anderen Seite des Projekts. Deshalb hier `absolute`
+  // statt eines einfachen Strings.
+  title: { absolute: 'Textilveredelung mit Stickerei & DTF-Druck | Embroidery Republic Germany' },
   description:
     'Hochwertige Stickerei und DTF-Transferdruck für Unternehmen, Vereine und Marken. Selbst gestalten im Konfigurator – ab 1 Stück, ohne Mindestbestellmenge.',
   alternates: { canonical: '/' },
@@ -116,19 +123,7 @@ export default function Startseite() {
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-[1500px] items-center gap-4 px-4 pb-14 pt-6 sm:px-8 lg:min-h-[86vh] lg:grid-cols-[1.05fr_1fr] lg:pb-20 lg:pt-0">
           <div className="relative z-10 order-2 lg:order-1">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-gold">
-              Stickerei &amp; DTF-Druck
-            </p>
-            <h1
-              aria-label="Dein Design. Unsere Qualität."
-              className="mt-7 font-serif text-[clamp(3.5rem,7.6vw,7.5rem)] font-normal leading-[0.9] tracking-[-0.025em] text-brand"
-            >
-              Dein Design.
-              <span className="mt-1 block text-gold">Unsere Qualität.</span>
-            </h1>
-            <p className="mt-9 max-w-[19rem] text-[17px] leading-relaxed text-brand/55">
-              Veredelte Textilien für alle, die nicht von der Stange tragen.
-            </p>
+            <HeroText />
 
             <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
               <Link
@@ -175,16 +170,16 @@ export default function Startseite() {
       {/* ══ Kategorien ══════════════════════════════════════════════════
           Ein Abschnitt vereint Einstieg, Vorteile und Kategorie-Auswahl.
           ── Rechter Markenbereich ──────────────────────────────────────
-          Bewusst gestaltetes Material-Panel (warmer Verlauf + eingeprägtes
-          R-Monogramm, echtes Markenzeichen) – KEIN fabriziertes Foto, kein
-          Platzhalter. Maße/Seitenverhältnis sind final: sobald echte Marken-
-          oder Lifestyle-Fotografie vorliegt, ersetzt ein
-          `<Image fill className="object-cover" />` im selben Container die
-          Gestaltung, ohne dass das Layout angepasst werden muss. */}
+          Reines Verlaufs-Panel (warmer Farbverlauf + Innenschatten), KEIN
+          fabriziertes Foto, kein Platzhalterbild. Maße/Seitenverhältnis sind
+          final: sobald echte Marken- oder Lifestyle-Fotografie vorliegt,
+          ersetzt ein `<Image fill className="object-cover" />` im selben
+          Container die Gestaltung, ohne dass das Layout angepasst werden
+          muss. */}
       <section className="mx-auto max-w-[1500px] px-4 pb-24 pt-20 sm:px-8 lg:pt-24">
         <div className="grid items-start gap-10 lg:grid-cols-[1fr_0.8fr] lg:gap-14">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Kategorien entdecken</p>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Kategorien entdecken</p>
             <h2 className="mt-6 font-serif text-[clamp(2.25rem,4.5vw,3.75rem)] font-normal leading-[1.02] tracking-[-0.025em] text-brand">
               Ihre Lieblingsstücke.
               <span className="block">Ihre Marke.</span>
@@ -205,21 +200,13 @@ export default function Startseite() {
             </ul>
           </div>
 
-          {/* Markenbereich – echtes, in Baumwollstoff gesticktes ER-Marken­
-              zeichen. Container-Maße unverändert (aspect-[4/3]); object-cover
-              hält das Monogramm zentriert, nur die Stofffläche wird oben/unten
-              minimal beschnitten. Der Verlauf dient nur als Ladehintergrund. */}
+          {/* Markenbereich – bis echte Marken-/Lifestyle-Fotografie vorliegt
+              (siehe Kommentar oben) bleibt es bei diesem reinen Verlauf statt
+              einem fehlenden Bild. Container-Maße unverändert (aspect-[4/3]). */}
           <div
             className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-brand/[0.06] lg:block"
             style={{ background: 'radial-gradient(120% 100% at 25% 20%, #fdfaf3 0%, #f1e8d6 55%, #e6dac2 100%)' }}
           >
-            <Image
-              src="/brand/markenpanel.png"
-              alt="Embroidery Republic Germany – Markenzeichen, in Baumwollstoff gestickt"
-              fill
-              sizes="(min-width: 1024px) 44vw, 1px"
-              className="object-cover"
-            />
             {/* Feiner Innenschatten für die eingerahmte, hochwertige Anmutung. */}
             <span
               aria-hidden
@@ -249,7 +236,7 @@ export default function Startseite() {
                   <p className="font-serif text-[19px] text-brand transition-colors duration-300 group-hover:text-gold-dark">
                     {produktTypLabel(art)}
                   </p>
-                  <p className="mt-1 text-[13px] leading-relaxed text-brand/45">{PRODUCT_TYPES[art]?.kachelText}</p>
+                  <p className="mt-1 text-[13px] leading-relaxed text-brand/70">{PRODUCT_TYPES[art]?.kachelText}</p>
                 </div>
                 <span className="mt-0.5 inline-flex h-6 min-w-[1.5rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2 text-[12px] tabular-nums text-gold-dark">
                   {anzahl}
@@ -263,12 +250,12 @@ export default function Startseite() {
               <Shirt className="h-5 w-5" aria-hidden />
             </span>
             <p className="mt-5 font-serif text-[19px] text-brand">Nicht das Richtige?</p>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-brand/55">
+            <p className="mt-1.5 text-[13px] leading-relaxed text-brand/70">
               Noch mehr Produkte, Farben und Marken entdecken.
             </p>
             <Link
               href="/produkt"
-              className="group mt-5 inline-flex items-center gap-2 self-start rounded-full bg-gold px-5 py-2.5 text-[14px] font-medium text-white shadow-elegant transition-all duration-300 ease-out hover:bg-gold-dark active:scale-[0.98]"
+              className="group mt-5 inline-flex items-center gap-2 self-start rounded-full bg-gold-dark px-5 py-2.5 text-[14px] font-medium text-white shadow-elegant transition-all duration-300 ease-out hover:bg-brand active:scale-[0.98]"
             >
               Alle Produkte ansehen
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -281,12 +268,12 @@ export default function Startseite() {
       <section className="border-y border-brand/[0.08] bg-white/50">
         <div className="mx-auto grid max-w-[1500px] items-center gap-14 px-4 py-24 sm:px-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Farbe</p>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Farbe</p>
             <h2 className="mt-6 font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
               {farben.length} Farbtöne.
-              <span className="block text-gold">Einer ist deiner.</span>
+              <span className="block text-gold-dark">Einer ist deiner.</span>
             </h2>
-            <p className="mt-7 max-w-sm text-[16px] leading-relaxed text-brand/55">
+            <p className="mt-7 max-w-sm text-[16px] leading-relaxed text-brand/70">
               Von Naturweiß bis Tiefschwarz – gewachsen aus {marken} Marken und{' '}
               {materialien} Materialien.
             </p>
@@ -315,10 +302,10 @@ export default function Startseite() {
           ist deckungsgleich mit dem Methodenwähler (i18n), die Merkmale sind
           allgemeingültige Eigenschaften der Verfahren, keine Werbeversprechen. */}
       <section className="mx-auto max-w-[1500px] px-4 py-24 sm:px-8">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Veredelung</p>
+        <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Veredelung</p>
         <h2 className="mt-6 max-w-2xl font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
           Zwei Wege zu deinem Motiv.
-          <span className="block text-gold">Beide von Hand geprüft.</span>
+          <span className="block text-gold-dark">Beide von Hand geprüft.</span>
         </h2>
 
         <div className="mt-14">
@@ -335,7 +322,7 @@ export default function Startseite() {
       {/* ══ Konfigurator ════════════════════════════════════════════════
           Der eine dunkle Bruch im hellen Seitenfluss: der wichtigste Weg
           der Seite ist auch optisch der lauteste. */}
-      <section className="bg-brand text-white">
+      <section className="fokus-hell bg-brand text-white">
         <div className="mx-auto max-w-[1500px] px-4 py-28 sm:px-8">
           <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Selbst gestalten</p>
           <div className="mt-7 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
@@ -372,9 +359,9 @@ export default function Startseite() {
       <section className="mx-auto max-w-[1500px] px-4 py-24 sm:px-8">
         <dl className="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
           <Zahl wert={`${PRODUCTS.length}`} label="Artikel im Sortiment" />
-          <Zahl wert={`ab ${formatiereGeld(guenstigster)}`} label="pro Stück, ohne Mindestmenge" />
+          <Zahl wert={<>ab <WaehrungsPreis betragInEur={guenstigster} /></>} label="pro Stück, ohne Mindestmenge" />
           <Zahl wert={`${PRODUKTIONSTAGE.von}–${PRODUKTIONSTAGE.bis}`} label="Werktage Produktionszeit" />
-          <Zahl wert={formatiereGeld(SHIPPING_RATES.DE.freeFrom)} label="versandkostenfrei ab" />
+          <Zahl wert={<WaehrungsPreis betragInEur={SHIPPING_RATES.DE.freeFrom} />} label="versandkostenfrei ab" />
         </dl>
       </section>
     </main>
@@ -389,7 +376,7 @@ function Vorteil({ icon: Icon, titel, text }: { icon: LucideIcon; titel: string;
       </span>
       <span>
         <span className="block text-[14px] font-semibold text-brand">{titel}</span>
-        <span className="block text-[12px] leading-relaxed text-brand/55">{text}</span>
+        <span className="block text-[12px] leading-relaxed text-brand/70">{text}</span>
       </span>
     </li>
   );
@@ -405,7 +392,7 @@ function Schritt({ nr, titel, text }: { nr: string; titel: string; text: string 
   );
 }
 
-function Zahl({ wert, label }: { wert: string; label: string }) {
+function Zahl({ wert, label }: { wert: ReactNode; label: string }) {
   return (
     <div>
       <dt className="sr-only">{label}</dt>
@@ -413,7 +400,7 @@ function Zahl({ wert, label }: { wert: string; label: string }) {
         <p className="font-serif text-[clamp(2.25rem,3.6vw,3.25rem)] font-normal leading-none tracking-[-0.02em] text-brand">
           {wert}
         </p>
-        <p className="mt-4 text-[13px] leading-relaxed text-brand/45">{label}</p>
+        <p className="mt-4 text-[13px] leading-relaxed text-brand/70">{label}</p>
       </dd>
     </div>
   );

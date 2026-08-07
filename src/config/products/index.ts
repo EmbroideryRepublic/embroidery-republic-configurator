@@ -52,8 +52,6 @@ export const PRODUCTS: ProductConfig[] = [
   ...IMPORTIERTE_PRODUCTS,
 ];
 
-export const TEST_PRODUCT_ID = PRODUCTS[0]?.id ?? '';
-
 // O(1)-Index statt linearer Suche: getProduct läuft in Render-Pfaden
 // (ConfiguratorPrototype, SummaryPanel …) und skaliert sonst mit dem Katalog.
 // Einmal je Prozess aufgebaut; Rückgabe (Objektreferenz) bleibt identisch.

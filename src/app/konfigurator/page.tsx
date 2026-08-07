@@ -12,6 +12,12 @@ export const metadata: Metadata = {
   title: 'Konfigurator',
   description:
     'Gestalte deine Textilien selbst: Logo oder Text platzieren, Farbe und Größe wählen, Preis sofort sehen. Veredelt per DTF-Transferdruck oder Stickerei.',
+  alternates: { canonical: '/konfigurator' },
+  openGraph: {
+    title: 'Konfigurator',
+    description:
+      'Logo oder Text platzieren, Farbe und Größe wählen, Preis sofort sehen – veredelt per DTF-Transferdruck oder Stickerei.',
+  },
 };
 
 export default function KonfiguratorSeite() {

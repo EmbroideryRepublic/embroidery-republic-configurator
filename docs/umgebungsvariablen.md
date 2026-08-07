@@ -1,7 +1,7 @@
 # Umgebungsvariablen
 
 Alle Variablen mit Bedeutung, Pflichtstatus und Verwendungsort. Stand
-2026-07-22.
+2026-08-07.
 
 Gehalten in `.env.local` (lokal) bzw. in den Umgebungseinstellungen der
 Plattform (produktiv). Der [Health-Check](betriebsbeobachtung.md) prüft die
@@ -28,6 +28,26 @@ Zustand **kritisch** (HTTP 503).
 
 ---
 
+## Kundenkonto (Supabase Auth)
+
+Dieselben drei Supabase-Variablen (`NEXT_PUBLIC_SUPABASE_URL`,
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`) tragen nicht
+nur den Datenbankzugriff, sondern auch das komplette Kundenkonto-System:
+Registrierung, Login/Logout, Passwort vergessen/zurücksetzen, E-Mail ändern.
+Die Bestätigungs- und Reset-Links selbst entstehen serverseitig über
+`admin.generateLink()` (`lib/actions/konto.ts`) und werden als eigene
+gebrandete Mails über Resend verschickt; der Link führt auf den
+PKCE-Callback unter `/auth/callback`.
+
+**Go-live-Voraussetzung, ohne die diese Links in Produktion nicht
+funktionieren:** Im Supabase-Dashboard muss unter *Authentication → URL
+Configuration* die Redirect-URL `<eigene-domain>/auth/callback` eingetragen
+sein (zusätzlich zur `Site URL`). Fehlt dieser Eintrag, weist Supabase jeden
+Bestätigungs- und Reset-Link ab – das Konto-System wirkt in der lokalen
+Entwicklung unauffällig, scheitert aber beim ersten Produktivversand.
+
+---
+
 ## Für den Vollbetrieb erforderlich
 
 | Variable | Bedeutung | Fehlt sie? |
@@ -51,6 +71,21 @@ wenn diese beiden Variablen gesetzt sind:
 Solange diese fehlen, gilt Stripe über `stripeKonfigurationsStand()` als nicht
 einsatzbereit; `registry.ts` bietet dann ausschließlich Rechnungskauf – ohne
 stillen Rückfall auf den Testanbieter.
+
+**Diese beiden Variablen zu setzen reicht allein noch nicht.** Im Checkout
+ist die Zahlungsart derzeit unabhängig davon hart auf Rechnung verdrahtet
+(`paymentMethod = 'invoice' as const` in `CartDrawer.tsx`, Karte/PayPal sind
+UI-seitig ausgeblendet, nicht entfernt). Erst wenn diese Festverdrahtung
+zurückgebaut und die Auswahl wieder freigegeben wird, ist Kartenzahlung im
+Checkout tatsächlich wählbar.
+
+---
+
+## Rate-Limit: vertrauenswürdiger Proxy
+
+| Variable | Bedeutung | Fehlt sie? |
+|---|---|---|
+| `TRUSTED_PROXY` | macht explizit, ob `x-forwarded-for` als Aufrufer-Adresse fürs Rate-Limit vertraut wird (`lib/security/rateLimit.ts`, `ermittleIp()`) | Default `'vercel'` – passt zum aktuellen Produktivbetrieb, ändert nichts. Bei einem Betreiberwechsel ohne vertrauenswürdigen Proxy davor auf einen anderen Wert setzen, sonst lässt sich der Rate-Limit-Schlüssel (u.a. `admin_login`) über den Header frei fälschen, siehe [rate-limiting.md](rate-limiting.md). |
 
 ---
 

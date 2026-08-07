@@ -24,9 +24,9 @@ if (!restoreDatei) { console.error('FEHLER: --restore <datei.json> ist erforderl
 const restore = JSON.parse(readFileSync(restoreDatei, 'utf8'));
 const baseline = baselineDatei ? JSON.parse(readFileSync(baselineDatei, 'utf8')) : null;
 
-// ── Soll-Vorgaben (aus Migrationen 0001–0021) ─────────────────────────
-const PFLICHT_TABELLEN = ['admin_sitzungen','brands','categories','configuration_elements','order_events','order_items','orders','pricing_rules','print_areas','product_colors','product_sizes','products','rate_limit_zaehler','supplier_order_events','supplier_orders','system_ereignisse'];
-const PFLICHT_FUNKTIONEN = ['create_order_atomic','beanspruche_abschluss','gib_abschluss_frei','gib_haengende_abschluesse_frei','verfalle_offene_zahlungen','raeume_rate_limit_auf','raeume_admin_sitzungen_auf','raeume_system_ereignisse_auf'];
+// ── Soll-Vorgaben (aus Migrationen 0001–0024) ─────────────────────────
+const PFLICHT_TABELLEN = ['admin_sitzungen','brands','categories','configuration_elements','customer_addresses','customer_profiles','order_events','order_items','orders','pricing_rules','print_areas','product_colors','product_sizes','products','rate_limit_zaehler','supplier_order_events','supplier_orders','system_ereignisse'];
+const PFLICHT_FUNKTIONEN = ['create_order_atomic','beanspruche_abschluss','gib_abschluss_frei','gib_haengende_abschluesse_frei','verfalle_offene_zahlungen','raeume_rate_limit_auf','raeume_admin_sitzungen_auf','raeume_system_ereignisse_auf','anonymisiere_alte_bestellungen','loesche_alte_anfragen','lege_kundenprofil_an'];
 const KUNDENDATEN_TABELLEN = ['orders','order_items','configuration_elements'];
 
 let fails = 0, warns = 0;
@@ -62,7 +62,7 @@ if (baseline) console.log(`  Baseline: ${baselineDatei}  (DB=${baseline.datenban
 console.log('='.repeat(74));
 
 // ── 1. Absolute Soll-Prüfungen (unabhängig von der Baseline) ──────────
-abschnitt('1. Pflicht-Objekte vorhanden (Migrationen 0001–0021)');
+abschnitt('1. Pflicht-Objekte vorhanden (Migrationen 0001–0024)');
 const tabNamen = new Set((restore.tabellen || []).map(t => t.name));
 for (const t of PFLICHT_TABELLEN) tabNamen.has(t) ? ok(`Tabelle ${t}`) : fail(`Tabelle ${t} FEHLT`);
 const funkNamen = new Set((restore.funktionen || []).map(f => f.name));

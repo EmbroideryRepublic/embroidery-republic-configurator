@@ -6,6 +6,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { DECORATION_POSITIONS } from '@/config/decorationPositions';
 import { AVAILABLE_FONTS } from '@/config/fonts';
 import { THREAD_COLORS } from '@/config/threadColors';
+import { isNearSeam } from '@/lib/canvas/bounds';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
@@ -206,6 +207,39 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
     const xCm = Math.max(0, preset.x * (printArea.boxWidthCm - selected.widthCm));
     const yCm = Math.max(0, preset.y * (printArea.boxHeightCm - selected.heightCm));
     commitElement(selected.id, { xCm, yCm, isOutOfBounds: false });
+  }
+
+  /** Achsenparallele Bounding-Box eines um `rotationDeg` gedrehten
+   *  Rechtecks – ein z.B. um 90° gedrehtes, breites Element wird schmal
+   *  und hoch und kann dadurch aus dem Druckbereich ragen, auch wenn das
+   *  UNGEDREHTE Rechteck (xCm/yCm/widthCm/heightCm) vollständig hineinpasst. */
+  function rotatedBoundingBoxCm(widthCm: number, heightCm: number, rotationDeg: number) {
+    const rad = (rotationDeg * Math.PI) / 180;
+    const cos = Math.abs(Math.cos(rad));
+    const sin = Math.abs(Math.sin(rad));
+    return { width: widthCm * cos + heightCm * sin, height: widthCm * sin + heightCm * cos };
+  }
+
+  // Der Rotations-Regler änderte bisher NUR rotationDeg, ohne isOutOfBounds
+  // neu zu prüfen – ein gedrehtes Element konnte dadurch sichtbar über den
+  // Druckbereich hinausragen, ohne dass die rote Warnung erscheint. Die
+  // Sperrzonen-Prüfung (Kragen/Reißverschluss) bleibt hier bewusst außen
+  // vor: sie braucht die Bild-Pixelgeometrie (imageRect), die in dieser
+  // Werkzeugleiste nicht vorliegt – dafür bleibt es beim nächsten Ziehen des
+  // Elements aktuell (siehe ConfiguratorCanvas.tsx onDragMove/onTransformEnd).
+  function handleRotationChange(rotationDeg: number) {
+    if (!selected) return;
+    if (!printArea) {
+      updateElement(selected.id, { rotationDeg });
+      return;
+    }
+    const { width, height } = rotatedBoundingBoxCm(selected.widthCm, selected.heightCm, rotationDeg);
+    const centerXCm = selected.xCm + selected.widthCm / 2;
+    const centerYCm = selected.yCm + selected.heightCm / 2;
+    const rotatedRect = { x: centerXCm - width / 2, y: centerYCm - height / 2, width, height };
+    const area = { x: 0, y: 0, width: printArea.boxWidthCm, height: printArea.boxHeightCm };
+    const isOutOfBounds = isNearSeam(rotatedRect, area, printArea.seamMarginCm);
+    updateElement(selected.id, { rotationDeg, isOutOfBounds });
   }
 
   return (
@@ -523,7 +557,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
           min={0}
           max={359}
           value={((selected.rotationDeg % 360) + 360) % 360}
-          onChange={(e) => updateElement(selected.id, { rotationDeg: Number(e.target.value) })}
+          onChange={(e) => handleRotationChange(Number(e.target.value))}
           className="w-full"
         />
       </div>

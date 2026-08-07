@@ -1,0 +1,102 @@
+{
+  "geprueft": 6,
+  "befunde": [
+    {
+      "id": "bundc-microfleece-duo-id501",
+      "farbe": "dark-grey-solid",
+      "ansicht": "back",
+      "problem": "RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501",
+      "farbe": "forest-green",
+      "ansicht": "back",
+      "problem": "RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501",
+      "farbe": "pumpkin-orange",
+      "ansicht": "back",
+      "problem": "RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501",
+      "farbe": "royal-blue",
+      "ansicht": "back",
+      "problem": "RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501",
+      "farbe": "dark-grey-solid",
+      "ansicht": "back",
+      "problem": "Konfigurator: RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501",
+      "farbe": "forest-green",
+      "ansicht": "back",
+      "problem": "Konfigurator: RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501",
+      "farbe": "pumpkin-orange",
+      "ansicht": "back",
+      "problem": "Konfigurator: RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501",
+      "farbe": "royal-blue",
+      "ansicht": "back",
+      "problem": "Konfigurator: RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501-women",
+      "farbe": "dark-grey-solid",
+      "ansicht": "back",
+      "problem": "RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501-women",
+      "farbe": "forest-green",
+      "ansicht": "back",
+      "problem": "RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501-women",
+      "farbe": "pumpkin-orange",
+      "ansicht": "back",
+      "problem": "RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501-women",
+      "farbe": "royal-blue",
+      "ansicht": "back",
+      "problem": "RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501-women",
+      "farbe": "dark-grey-solid",
+      "ansicht": "back",
+      "problem": "Konfigurator: RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501-women",
+      "farbe": "forest-green",
+      "ansicht": "back",
+      "problem": "Konfigurator: RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501-women",
+      "farbe": "pumpkin-orange",
+      "ansicht": "back",
+      "problem": "Konfigurator: RUECK-PLATZHALTER"
+    },
+    {
+      "id": "bundc-microfleece-duo-id501-women",
+      "farbe": "royal-blue",
+      "ansicht": "back",
+      "problem": "Konfigurator: RUECK-PLATZHALTER"
+    }
+  ],
+  "erzeugtAm": "2026-08-06T23:16:17.180Z"
+}

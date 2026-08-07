@@ -29,7 +29,7 @@ export function CanvasToolbar({
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   return (
-    <div className="flex w-full items-center justify-between gap-2 rounded-lg border border-gold/20 bg-white px-2 py-1.5 shadow-sm">
+    <div className="flex w-full flex-wrap items-center justify-between gap-2 rounded-lg border border-gold/20 bg-white px-2 py-1.5 shadow-sm">
       <div className="flex items-center gap-1">
         <ToolbarButton title={t('canvas_undo')} onClick={onUndo} disabled={!canUndo}>
           <Undo2 className="h-3.5 w-3.5" />

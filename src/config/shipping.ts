@@ -10,6 +10,26 @@
  * gibt es KEINEN Fallback. `calculateShipping` liefert dann `null`; solche
  * Länder sind im Checkout gar nicht erst auswählbar. Lieber kein Angebot als
  * ein geratener Preis.
+ *
+ * ── Entscheidung 2026-08-06: Lieferländer vorerst auf Deutschland begrenzt ──
+ * Bis 2026-08-06 waren hier zusätzlich 26 EU-Staaten auswählbar, obwohl die
+ * Steuerberechnung (config/pricing/steuer.ts) ausnahmslos den deutschen Satz
+ * anwandte – unterhalb der Lieferschwelle korrekt, oberhalb hätte das
+ * Bestimmungslandprinzip (One-Stop-Shop/OSS) gegolten. Dafür fehlten sowohl
+ * verlässlich verifizierte Steuersätze je Land als auch die tatsächliche
+ * OSS-Registrierung beim Finanzamt – beides keine Code-Fragen, sondern reale
+ * steuerrechtliche Voraussetzungen, die nur der Betreiber schaffen kann.
+ * Eine falsch berechnete Steuer ist ein Steuerdelikt, kein Rundungsfehler
+ * (s.o.) – deshalb wurde die sichere Seite gewählt: nur Länder anbieten, für
+ * die die Steuer nachweislich korrekt ist. Das entspricht der eigenen
+ * Empfehlung aus docs/audit-produktionsreife.md (M7) und
+ * docs/steuerarchitektur.md.
+ *
+ * Wiedereröffnung eines Landes ist strukturell weiterhin „ein Eintrag":
+ * Zeile hier ergänzen (mit ISO-Code) UND den passenden Satz in
+ * config/pricing/steuer.ts eintragen UND die OSS-Registrierung tatsächlich
+ * vorliegen haben. Die EU-Versandzone/-Rate bleibt unten bewusst definiert,
+ * genau damit dieser Schritt später keine Struktur ändert, nur Daten ergänzt.
  */
 
 export type ShippingZone = 'DE' | 'EU';
@@ -27,41 +47,24 @@ export const SHIPPING_RATES: Record<ShippingZone, ShippingRate> = {
   // Freigrenze trägt sich der Versand damit knapp; oberhalb tragen wir ihn
   // vollständig – als Deckungslücke erfasst in pricing/selbstkosten.ts.
   DE: { cost: 6.9, freeFrom: 75 },
+  // EU-Satz bleibt definiert (nicht gelöscht), obwohl aktuell kein
+  // EU-Land auswählbar ist – siehe Entscheidung oben. Sobald ein Land mit
+  // verifiziertem Steuersatz + OSS-Registrierung hinzukommt, greift dieser
+  // Wert ohne weitere Änderung.
   EU: { cost: 11.99, freeFrom: 100 },
 };
 
 /**
- * Auswählbare Lieferländer mit ihrer Versandzone. Bewusst ausschließlich
- * Länder, für die ein Tarif definiert ist (Deutschland + EU-Mitgliedstaaten).
+ * Auswählbare Lieferländer mit ihrer Versandzone UND ihrem ISO-3166-1-
+ * alpha-2-Code (Bindeglied zu den Steuersätzen in config/pricing/steuer.ts,
+ * die pro Land unter genau diesem Code hinterlegt sind).
+ *
+ * Bewusst ausschließlich Länder, für die sowohl ein Versandtarif ALS AUCH
+ * ein verifizierter, anwendbarer Steuersatz definiert sind (siehe
+ * Entscheidung 2026-08-06 oben) – aktuell nur Deutschland.
  */
-export const SHIPPING_COUNTRIES: { name: string; zone: ShippingZone }[] = [
-  { name: 'Deutschland', zone: 'DE' },
-  { name: 'Belgien', zone: 'EU' },
-  { name: 'Bulgarien', zone: 'EU' },
-  { name: 'Dänemark', zone: 'EU' },
-  { name: 'Estland', zone: 'EU' },
-  { name: 'Finnland', zone: 'EU' },
-  { name: 'Frankreich', zone: 'EU' },
-  { name: 'Griechenland', zone: 'EU' },
-  { name: 'Irland', zone: 'EU' },
-  { name: 'Italien', zone: 'EU' },
-  { name: 'Kroatien', zone: 'EU' },
-  { name: 'Lettland', zone: 'EU' },
-  { name: 'Litauen', zone: 'EU' },
-  { name: 'Luxemburg', zone: 'EU' },
-  { name: 'Malta', zone: 'EU' },
-  { name: 'Niederlande', zone: 'EU' },
-  { name: 'Österreich', zone: 'EU' },
-  { name: 'Polen', zone: 'EU' },
-  { name: 'Portugal', zone: 'EU' },
-  { name: 'Rumänien', zone: 'EU' },
-  { name: 'Schweden', zone: 'EU' },
-  { name: 'Slowakei', zone: 'EU' },
-  { name: 'Slowenien', zone: 'EU' },
-  { name: 'Spanien', zone: 'EU' },
-  { name: 'Tschechien', zone: 'EU' },
-  { name: 'Ungarn', zone: 'EU' },
-  { name: 'Zypern', zone: 'EU' },
+export const SHIPPING_COUNTRIES: { name: string; zone: ShippingZone; code: string }[] = [
+  { name: 'Deutschland', zone: 'DE', code: 'DE' },
 ];
 
 /** Versandzone eines Lieferlandes; `null`, wenn kein Tarif definiert ist. */
@@ -69,6 +72,22 @@ export function shippingZoneForCountry(country: string | undefined | null): Ship
   if (!country) return null;
   const match = SHIPPING_COUNTRIES.find((c) => c.name.toLowerCase() === country.trim().toLowerCase());
   return match ? match.zone : null;
+}
+
+/**
+ * ISO-Ländercode des Lieferlandes (z.B. „Deutschland" → „DE"); `null`, wenn
+ * das Land nicht in `SHIPPING_COUNTRIES` geführt wird.
+ *
+ * Bindeglied zwischen dem im Checkout gewählten Klartext-Ländernamen und
+ * `steuersatzFuer()` (config/pricing/steuer.ts), das ausschließlich
+ * ISO-Codes kennt. Ohne dieses Bindeglied müsste die Steuerstufe den
+ * Ländernamen selbst kennen – genau die Doppellogik, die das Projekt
+ * durchgehend vermeidet.
+ */
+export function landCodeForCountry(country: string | undefined | null): string | null {
+  if (!country) return null;
+  const match = SHIPPING_COUNTRIES.find((c) => c.name.toLowerCase() === country.trim().toLowerCase());
+  return match ? match.code : null;
 }
 
 export interface ShippingResult {

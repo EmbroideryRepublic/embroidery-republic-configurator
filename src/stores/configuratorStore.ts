@@ -5,7 +5,7 @@ import type { ConfigElement, ConfiguratorState, PrintArea, PrintMethod, PrintVie
 import { MINIMUM_QUANTITY } from '@/lib/pricing/calculatePrice';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
-import { indexedDbStorage } from '@/lib/storage/indexedDbStorage';
+import { indexedDbStorage, getTabId } from '@/lib/storage/indexedDbStorage';
 import { getProduct } from '@/config/products';
 import { ansichtenVon } from '@/lib/products/ansichten';
 import { istGueltigeView } from '@/config/decorationPositions';
@@ -430,7 +430,12 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
       },
     }),
     {
-      name: 'konfigurator-design',
+      // Tab-eindeutig (siehe getTabId in indexedDbStorage.ts): sonst
+      // überschreiben sich mehrere gleichzeitig geöffnete Konfigurator-Tabs
+      // gegenseitig den Design-Stand. Ein Reload IM SELBEN Tab behält den
+      // Stand trotzdem (sessionStorage übersteht ihn), ein neuer Tab bekommt
+      // einen eigenen, unabhängigen Datensatz.
+      name: `konfigurator-design-${getTabId()}`,
       // IndexedDB statt localStorage (siehe indexedDbStorage.ts) – behebt
       // QuotaExceededError bei mehreren Logos (Base64-Bilddaten sprengen
       // schnell das kleine localStorage-Limit).

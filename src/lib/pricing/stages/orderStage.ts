@@ -1,4 +1,4 @@
-import { calculateShipping } from '@/config/shipping';
+import { calculateShipping, landCodeForCountry } from '@/config/shipping';
 import { STANDARDLAND, steuersatzFuer } from '@/config/pricing/steuer';
 import { buildStageResult, makeLine, type PriceLine, type StageResult } from '../priceLine';
 
@@ -196,13 +196,17 @@ export function calculateOrderStage(ctx: OrderContext, config: OrderConfig = DEF
   // Der Satz kommt AUSSCHLIESSLICH aus config/pricing/steuer.ts. Diese Stufe
   // kennt keinen Prozentwert – ein Wächter-Test sichert das ab.
   //
-  // Derzeit immer der deutsche Satz: Der Betreiber verkauft an Endkunden in
-  // Deutschland (Festlegung 2026-07-22). Für Lieferungen in andere
-  // EU-Länder gilt bei Überschreiten der Lieferschwelle das
-  // Bestimmungslandprinzip (OSS) – dann ist hier auf das Lieferland
-  // umzustellen und in steuer.ts sind die Sätze zu ergänzen. Das ist eine
-  // steuerliche Entscheidung, keine technische; siehe docs/steuerarchitektur.md.
-  const steuersatz = steuersatzFuer(STANDARDLAND);
+  // Länderauflösung statt hartem STANDARDLAND (Entscheidung 2026-08-06): Das
+  // Lieferland kommt – wenn vorhanden – aus shipping.ts' `landCodeForCountry`,
+  // demselben Bindeglied, das auch die Versandzone auflöst. Ohne gewähltes
+  // Land (unverbindliche Anfrage) oder für ein (noch) nicht geführtes Land
+  // bleibt STANDARDLAND ('DE') die Schätzgrundlage – unschädlich, weil
+  // `SHIPPING_COUNTRIES` ohnehin nur Länder mit verifiziertem Satz listet und
+  // der Versand-Baustein oben jede andere Eingabe bereits ablehnt (`issues`).
+  // Sobald ein weiteres Land samt Satz hinzukommt, greift diese Auflösung
+  // automatisch – siehe docs/steuerarchitektur.md „Offener Punkt: EU-Lieferungen".
+  const landCode = landCodeForCountry(ctx.shippingCountry) ?? STANDARDLAND;
+  const steuersatz = steuersatzFuer(landCode);
   let taxAmount = 0;
   if (steuersatz.satz > 0) {
     // Bei Bruttopreisen wird die enthaltene Steuer HERAUSgerechnet, sonst

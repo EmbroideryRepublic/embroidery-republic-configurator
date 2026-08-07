@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ShoppingCart, Scale, Menu, X } from 'lucide-react';
+import { ShoppingCart, Scale, Menu, X, User } from 'lucide-react';
 import { useCartStore, getCartItemCount } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, type Currency } from '@/stores/currencyStore';
@@ -41,6 +41,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
     { href: '/ueber-uns', label: t('nav_about') },
     { href: '/faq', label: t('nav_faq') },
     { href: '/kontakt', label: t('nav_contact') },
+    { href: '/konto', label: t('nav_account') },
   ];
 
   return (
@@ -81,7 +82,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
                 type="button"
                 onClick={() => setLanguage(lang)}
                 className={`rounded-full px-2 py-1 font-medium uppercase transition-colors ${
-                  language === lang ? 'bg-gold text-white' : 'text-brand/50 hover:text-brand'
+                  language === lang ? 'bg-gold-dark text-white' : 'text-brand/70 hover:text-brand'
                 }`}
               >
                 {lang}
@@ -93,7 +94,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
           <select
             value={currency}
             onChange={(e) => setCurrency(e.target.value as Currency)}
-            className="hidden rounded-full border border-gold/30 bg-transparent px-2 py-1 text-xs text-brand/60 sm:block"
+            className="hidden rounded-full border border-gold/30 bg-transparent px-2 py-1 text-xs text-brand/70 sm:block"
             title="Währung (Näherungswert, kein Live-Kurs)"
             aria-label="Währung"
           >
@@ -113,24 +114,33 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
             </button>
           )}
 
-          {/* Kein Kundenkonto: Embroidery Republic bestellt bewusst ohne
-              Registrierung (B2B, Rechnung/Anfrage). Ein toter „Mein Konto"-
-              Button hätte Kund:innen ein nicht existierendes Login-System
-              suggeriert – daher bewusst entfernt. */}
+          {/* Additiv seit dem Kundenkonto (supabase/migrations/0023): Der
+              Gastkauf bleibt der Standardweg (Rechnung/Anfrage, kein Zwang
+              zur Anmeldung) – "Mein Konto" ist jetzt ein echtes, zusätzliches
+              Angebot (Text-Link oben in navLinks, hier nur das Icon für
+              Bildschirme zwischen "mobil" und "volle Desktop-Navigation"). */}
+          <Link
+            href="/konto"
+            title={t('nav_account')}
+            aria-label={t('nav_account')}
+            className="hidden items-center gap-1.5 text-sm text-brand/70 hover:text-gold-dark sm:flex lg:hidden"
+          >
+            <User className="h-4 w-4" />
+          </Link>
 
           <button
             type="button"
             onClick={() => setMenueOffen(!menueOffen)}
             aria-expanded={menueOffen}
             aria-label="Menü"
-            className="flex items-center rounded-full border border-gold/40 bg-white p-2 text-brand transition-colors hover:border-gold lg:hidden"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full border border-gold/40 bg-white p-2 text-brand transition-colors hover:border-gold lg:hidden"
           >
             {menueOffen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
 
           {/* Öffnet überall dieselbe Schublade: im Konfigurator dessen eigene
               (onCartClick), sonst die globale (CartDrawerHost via UI-Store). */}
-          <button type="button" onClick={warenkorbOeffnen} className={WARENKORB_KLASSE}>
+          <button type="button" onClick={warenkorbOeffnen} aria-label={t('nav_cart')} className={WARENKORB_KLASSE}>
             <Warenkorbinhalt count={count} label={t('nav_cart')} />
           </button>
         </div>
@@ -139,6 +149,36 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
       {/* Mobile Navigation – erscheint unter der Kopfzeile. */}
       {menueOffen && (
         <nav className="border-t border-gold/20 bg-cream px-4 pb-3 lg:hidden" aria-label="Hauptnavigation">
+          {/* Unter 640px sind Sprach- und Währungsumschalter sonst nirgends
+              erreichbar (die Fassung oben blendet sich dort per sm:flex/
+              sm:block komplett aus) – hier dieselben Umschalter, nur
+              sichtbar solange die obigen es nicht sind. */}
+          <div className="flex items-center gap-3 border-b border-gold/10 py-3 sm:hidden">
+            <div className="flex items-center rounded-full border border-gold/30 text-xs">
+              {(['de', 'en'] as Language[]).map((lang) => (
+                <button
+                  key={lang}
+                  type="button"
+                  onClick={() => setLanguage(lang)}
+                  className={`rounded-full px-2 py-1 font-medium uppercase transition-colors ${
+                    language === lang ? 'bg-gold-dark text-white' : 'text-brand/70 hover:text-brand'
+                  }`}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
+            <select
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value as Currency)}
+              className="rounded-full border border-gold/30 bg-transparent px-2 py-1 text-xs text-brand/70"
+              title="Währung (Näherungswert, kein Live-Kurs)"
+              aria-label="Währung"
+            >
+              <option value="EUR">EUR</option>
+              <option value="CHF">CHF</option>
+            </select>
+          </div>
           <ul>
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -160,7 +200,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
 
 
 const WARENKORB_KLASSE =
-  'relative flex items-center gap-2 rounded-full border border-gold/40 bg-white px-3 py-1.5 text-sm text-brand transition-colors hover:border-gold';
+  'relative flex min-h-11 min-w-11 items-center gap-2 rounded-full border border-gold/40 bg-white px-3 py-2.5 text-sm text-brand transition-colors hover:border-gold';
 
 function Warenkorbinhalt({ count, label }: { count: number; label: string }) {
   return (
@@ -168,7 +208,7 @@ function Warenkorbinhalt({ count, label }: { count: number; label: string }) {
       <ShoppingCart className="h-4 w-4" />
       <span className="hidden sm:inline">{label}</span>
       {count > 0 && (
-        <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-gold px-1 text-[11px] font-semibold text-white">
+        <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-gold-dark px-1 text-[11px] font-semibold text-white">
           {count}
         </span>
       )}

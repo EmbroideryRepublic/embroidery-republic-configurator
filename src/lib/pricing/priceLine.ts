@@ -172,11 +172,6 @@ export function explainLine(line: PriceLine): string {
   return teile.join(' · ');
 }
 
-/** Erklärt eine ganze Berechnung Zeile für Zeile. */
-export function explainLines(lines: PriceLine[]): string[] {
-  return lines.map(explainLine);
-}
-
 /**
  * Fasst Posten für die ANZEIGE nach Kategorie zusammen (Warenkorb, Rechnung).
  * Die Berechnung nutzt weiterhin die Einzelposten – diese Funktion ist reine

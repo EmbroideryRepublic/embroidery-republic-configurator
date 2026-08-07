@@ -119,6 +119,7 @@ test('alle schreibenden Endpunkte nutzen die zentrale Prüfung', () => {
     { datei: join('src', 'lib', 'actions', 'contact.ts'), was: 'Kontaktformular' },
     { datei: join('src', 'lib', 'actions', 'admin.ts'), was: 'Admin-Login' },
     { datei: join('src', 'lib', 'actions', 'orderCancellation.ts'), was: 'Stornierung' },
+    { datei: join('src', 'lib', 'actions', 'konto.ts'), was: 'Konto: Adressbuch, Profil, E-Mail, Passwort' },
   ];
   for (const { datei, was } of pflicht) {
     const inhalt = readFileSync(datei, 'utf8');

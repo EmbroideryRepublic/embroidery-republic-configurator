@@ -36,7 +36,7 @@ die Anwendbarkeit. Geprüft wurde jeweils gegen den Quelltext.
 | Advisory | Warum nicht |
 |---|---|
 | Middleware/Proxy-Bypass, Pages Router + i18n (HIGH) | **kein** Pages Router, **kein** i18n |
-| Middleware/Proxy-Redirect Cache-Poisoning (LOW) | **keine** `middleware.ts` |
+| Middleware/Proxy-Redirect Cache-Poisoning (LOW) | **Update 2026-08-07:** Seit dem Kundenkonto existiert `src/middleware.ts` – aber bewusst eng: NUR für `/konto/*` und `/auth/*` (siehe `matcher`), OHNE jeden Redirect (ausschließlich Sitzungs-Cookie-Auffrischung über `supabase.auth.getUser()`). Das Advisory betrifft Middleware, die selbst umleitet – das tut diese nicht. Für den gesamten übrigen Shop bleibt die Aussage „keine Middleware" unverändert wahr. |
 | SSRF in `rewrites` (HIGH) | **keine** rewrites in `next.config.js` |
 | Request Smuggling in `rewrites` (MODERATE) | dito |
 | SSRF in Server Actions auf **custom servers** (HIGH) | **kein** custom server (Vercel) |
@@ -47,9 +47,11 @@ die Anwendbarkeit. Geprüft wurde jeweils gegen den Quelltext.
 | Image-Optimizer `remotePatterns` DoS (MODERATE) | Advisory betrifft **self-hosted**; auf Vercel läuft die Bildoptimierung plattformseitig |
 | Unbounded `next/image`-Disk-Cache (MODERATE) | dito |
 
-Belege: keine `middleware.ts`, kein `src/pages`, keine `i18n`/`rewrites`/`redirects`
-in `next.config.js`, kein `server.js`, kein `runtime = 'edge'`, kein `nonce`, kein
-`beforeInteractive` – jeweils per Suche im gesamten `src`-Baum bestätigt.
+Belege: kein `src/pages`, keine `i18n`/`rewrites`/`redirects` in `next.config.js`,
+kein `server.js`, kein `runtime = 'edge'`, kein `nonce`, kein `beforeInteractive` –
+jeweils per Suche im gesamten `src`-Baum bestätigt. `middleware.ts` existiert seit
+dem Kundenkonto (siehe Zeile oben), ist aber bewusst eng gehalten – macht selbst
+**keine** Redirects –, weshalb die ursprüngliche Advisory-Analyse gültig bleibt.
 
 ### Anwendbar – das tatsächliche Restrisiko
 
@@ -184,8 +186,14 @@ Datenabfluss oder Codeausführung liefe. Das ist nach dieser Analyse nicht der F
 | Alle kundendatenführenden Routen `force-dynamic` (kein Caching) | vorhanden |
 | Vercel-Plattformschutz nutzen; bei Angriff **Attack Challenge Mode** aktivieren | bei Bedarf |
 | Health-Check + strukturiertes Logging + `system_ereignisse` zur Früherkennung von DoS-Mustern | vorhanden |
-| **CI:** `npm audit --audit-level=high` schlägt weiterhin fehl (Exit 1) – als **datierte, begründete Ausnahme** führen, nicht stillschweigend ignorieren; dieses Dokument ist die Begründung | zu setzen |
-| Advisory-Lage monatlich prüfen; bei einem Advisory mit Datenabfluss/RCE **sofort** neu bewerten | wiederkehrend |
+| **CI:** `npm audit --audit-level=high` schlägt weiterhin fehl (Exit 1) – als **datierte, begründete Ausnahme** führen, nicht stillschweigend ignorieren; dieses Dokument ist die Begründung | **gesetzt (2026-08-07)** – `scripts/pruefeNpmAudit.mjs`, in `pruefung.yml` verdrahtet. Lässt nur die unten in „Monatliche Prüfung" gelisteten, bereits analysierten Pakete/Versionsspannen durch; jedes neue Advisory lässt CI weiterhin fehlschlagen |
+| Advisory-Lage monatlich prüfen; bei einem Advisory mit Datenabfluss/RCE **sofort** neu bewerten | wiederkehrend – siehe „Monatliche Prüfung" unten |
+
+### Monatliche Prüfung
+
+| Datum | Ergebnis |
+|---|---|
+| 2026-08-07 | Erneut geprüft im Rahmen des Produktionsreife-Durchlaufs. Die vollständigen Advisories aus Abschnitt 1 gelten weiter (keine neue Kategorie – weiterhin überwiegend DoS/Cache, kein Datenabfluss/RCE). Verschoben hat sich nur, WELCHE next-Version alles schließt: `npm audit` schlägt inzwischen `next@16.3.0` statt `15.5.21` vor (weitere Advisories seit 07-23 hinzugekommen, alle in derselben Kategorie). Zusätzlich neu und BEHOBEN (nicht next-bezogen, sicher per `npm audit fix`): `js-yaml` (nur `eslint`-Werkzeugkette, nie zur Laufzeit aktiv) und die `glob`/`eslint-config-next`-Kette auf der 14er-Linie. Entscheidung unverändert: Upgrade bleibt zurückgestellt, derselbe react-konva/React-19-Blocker gilt unverändert (eher verschärft, da neuere Next-Versionen React 19 tendenziell noch verbindlicher voraussetzen). `scripts/pruefeNpmAudit.mjs` aktualisiert auf die aktuellen Versionsspannen. |
 
 ---
 

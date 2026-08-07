@@ -42,15 +42,15 @@ function mitUmgebung(werte: Record<string, string | undefined>, fn: () => void) 
 
 // ── Absender ──────────────────────────────────────────────────────────
 
-test('gesetzte Absenderadresse wird verwendet', () => {
+test('gesetzte Absenderadresse wird mit Anzeigenamen verwendet', () => {
   mitUmgebung({ RESEND_FROM_EMAIL: 'shop@example.test' }, () => {
-    assert.equal(getFromAddress(), 'shop@example.test');
+    assert.equal(getFromAddress(), `${COMPANY.tradeName} <shop@example.test>`);
   });
 });
 
-test('ohne Absenderadresse greift die Firmenadresse', () => {
+test('ohne Absenderadresse greift die Firmenadresse (mit Anzeigenamen)', () => {
   mitUmgebung({ RESEND_FROM_EMAIL: undefined }, () => {
-    assert.equal(getFromAddress(), COMPANY.email);
+    assert.equal(getFromAddress(), `${COMPANY.tradeName} <${COMPANY.email}>`);
   });
 });
 
@@ -60,7 +60,11 @@ test('ein leerer Absender zählt als nicht gesetzt', () => {
   // irgendwo ersichtlich wäre, warum.
   for (const leer of ['', '   ']) {
     mitUmgebung({ RESEND_FROM_EMAIL: leer }, () => {
-      assert.equal(getFromAddress(), COMPANY.email, `bei ${JSON.stringify(leer)}`);
+      assert.equal(
+        getFromAddress(),
+        `${COMPANY.tradeName} <${COMPANY.email}>`,
+        `bei ${JSON.stringify(leer)}`
+      );
     });
   }
 });

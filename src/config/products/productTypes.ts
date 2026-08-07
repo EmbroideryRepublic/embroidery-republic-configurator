@@ -107,6 +107,10 @@ export const PRODUCT_TYPES: Record<ProductType, ProductTypeDef> = {
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
     komplement: ['hoodie', 'sweater', 'vest'], kachelFarbe: ['blau'], kachelText: 'Schützt, hält warm, macht Eindruck.',
   },
+  // Bewusst vorbereitete Kategorie ohne Bestandsprodukt: Register-Eintrag,
+  // Größenleiter und Kachel stehen bereit, aber im Katalog gibt es aktuell
+  // kein Produkt mit `productType:'vest'`. Kein Versehen – taucht deshalb in
+  // keiner Kategorieliste auf, bis ein erstes Produkt hinzukommt.
   vest: {
     labelSingular: 'Weste', labelPlural: 'Westen', order: 8, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',

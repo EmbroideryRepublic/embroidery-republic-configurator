@@ -42,7 +42,12 @@ export function ShopFilter({
   return (
     <>
       {/* ══ Band 1 + 2: angeheftet ═══════════════════════════════════ */}
-      <div className="sticky top-0 z-40 -mx-4 border-b border-brand/[0.06] bg-brand-light/80 px-4 backdrop-blur-xl sm:-mx-8 sm:px-8">
+      {/* top-[57px] statt top-0: direkt unter der ebenfalls sticky
+          Kopfzeile (SiteHeader, z-40) einhängen, sonst überdeckt dieses Band
+          sie beim Scrollen vollständig und Hamburger/Warenkorb-Icon werden
+          unerreichbar. Gleicher Wert wie Stepper.tsx, z-index bewusst
+          niedriger als der Header. */}
+      <div className="sticky top-[57px] z-30 -mx-4 border-b border-brand/[0.06] bg-brand-light/80 px-4 backdrop-blur-xl sm:-mx-8 sm:px-8">
         {/* Band 1 – Shop-Navigation. Volle Breite: neun große Reiter und
             sieben Filterknöpfe passen nicht nebeneinander, die Reiter würden
             abgeschnitten. */}

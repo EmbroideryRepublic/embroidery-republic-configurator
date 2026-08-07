@@ -47,6 +47,45 @@ async function withStore<T>(mode: IDBTransactionMode, fn: (store: IDBObjectStore
 }
 
 /**
+ * Tab-eindeutige Kennung für Persistenz-Schlüssel.
+ *
+ * Ohne sie teilen sich alle Tabs desselben Browser-Origins EINEN Datensatz
+ * pro Store-Name: öffnet Kundschaft den Konfigurator in zwei Tabs (z.B. um
+ * zwei Produkte zu vergleichen), überschreibt der zuletzt schreibende Tab
+ * kommentarlos den Stand des anderen. `sessionStorage` ist von Natur aus
+ * tab-lokal – ein neuer Tab (Strg+T + URL) startet mit leerem
+ * `sessionStorage` und bekommt damit eine eigene Kennung, ein Neuladen
+ * DESSELBEN Tabs übersteht `sessionStorage` dagegen unverändert (genau das
+ * gewünschte Verhalten: Reload behält den Stand, neuer Tab kollidiert
+ * nicht mehr mit einem anderen).
+ *
+ * Ausnahme: Ein vom Browser DUPLIZIERTER Tab (z.B. "Tab duplizieren")
+ * übernimmt `sessionStorage` vom Ursprungstab und teilt sich damit
+ * anfangs dieselbe Kennung – ein bewusst hingenommener Randfall.
+ */
+let tabId: string | null = null;
+
+export function getTabId(): string {
+  if (tabId) return tabId;
+  if (typeof sessionStorage === 'undefined') {
+    // Kein Browser-Kontext (SSR/Build) – wird ohnehin nicht persistiert,
+    // da `openDb` weiter unten in diesem Fall verwirft.
+    return 'ssr';
+  }
+  try {
+    const vorhanden = sessionStorage.getItem('tab-id');
+    tabId = vorhanden ?? crypto.randomUUID();
+    if (!vorhanden) sessionStorage.setItem('tab-id', tabId);
+    return tabId;
+  } catch {
+    // Privater Modus o.ä.: flüchtige Kennung, gilt nur für diesen
+    // Modul-Lebenszyklus statt persistent über sessionStorage.
+    tabId = crypto.randomUUID();
+    return tabId;
+  }
+}
+
+/**
  * Kompatibel mit zustand/persist's `StateStorage`-Interface. Fällt bei
  * Fehlern (z.B. IndexedDB nicht verfügbar, privater Modus in manchen
  * Browsern) auf localStorage zurück, damit die App auch dann nicht

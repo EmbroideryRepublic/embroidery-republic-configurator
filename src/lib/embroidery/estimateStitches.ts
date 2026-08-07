@@ -22,6 +22,8 @@
  * ══════════════════════════════════════════════════════════════════════
  */
 
+import { loadImage } from '@/lib/browser/loadImage';
+
 const FILL_STITCHES_PER_CM2 = 420; // kalibriert an einem echten Beispiel (siehe unten)
 const EDGE_STITCHES_PER_CM2 = 240;
 const BASE_OVERHEAD_STITCHES = 500;
@@ -103,13 +105,4 @@ export function estimateTextStitches(areaCm2: number, inkCoverageRatio: number):
   const TEXT_STITCHES_PER_CM2 = 580;
   const stitches = areaCm2 * inkCoverageRatio * TEXT_STITCHES_PER_CM2 + BASE_OVERHEAD_STITCHES * 0.5;
   return Math.round(Math.max(150, stitches));
-}
-
-function loadImage(src: string): Promise<HTMLImageElement> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error('Bild konnte nicht geladen werden.'));
-    img.src = src;
-  });
 }

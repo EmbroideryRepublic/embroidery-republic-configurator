@@ -77,6 +77,15 @@ export interface OrderValidationResult {
    * mit einem Hinweis auf die Gesamtzahl. Nie eine technische Meldung.
    */
   customerMessage?: string;
+  /**
+   * Zeitpunkt, zu dem DIESE Prüfung die AGB-/Datenschutz-Zustimmung als
+   * erfüllt bestätigt hat – nur gesetzt bei `valid === true` und einer
+   * echten Bestellung (orderType 'order'), NIE bei einer Anfrage. Einzige
+   * Stelle, die diesen Zeitpunkt festlegt (server-seitig, nicht der Client):
+   * lib/actions/orders.ts übernimmt ihn nur noch nach `orders.terms_accepted_at`
+   * (Migration 0025), berechnet ihn nicht selbst neu.
+   */
+  termsAcceptedAt?: string;
 }
 
 export interface OrderValidationInput {
@@ -86,6 +95,8 @@ export interface OrderValidationInput {
   customerName: string;
   /** Nur bei echten Bestellungen vorhanden. */
   shipping?: { street: string; zip: string; city: string; country: string };
+  /** Nur bei echten Bestellungen relevant – ohne Zustimmung keine Bestellung. */
+  acceptedTerms?: boolean;
 }
 
 /**
@@ -98,6 +109,21 @@ export function istPlausibleEmail(email: string): boolean {
   if (wert.length < 5 || wert.length > GRENZEN.maxFeldLaenge) return false;
   if (/\s/.test(wert)) return false;
   return /^[^@]+@[^@.]+(\.[^@.]+)+$/.test(wert);
+}
+
+/**
+ * Deutsche Postleitzahl: exakt fünf Ziffern.
+ *
+ * Einzige Stelle, die dieses Format kennt – Checkout (CartDrawer.tsx) UND
+ * Konto-Adressbuch (lib/account/validation.ts) nutzen dieselbe Regel, damit
+ * eine PLZ nicht an der einen Stelle akzeptiert und an der anderen abgelehnt
+ * wird. Solange ausschließlich nach Deutschland verkauft wird (siehe
+ * config/shipping.ts), ist ein einzelnes, festes Format ausreichend.
+ */
+export const PLZ_MUSTER = /^\d{5}$/;
+
+export function istGueltigePlz(plz: string): boolean {
+  return PLZ_MUSTER.test(plz.trim());
 }
 
 /** Endliche Zahl (kein NaN, kein Infinity, kein String, kein null). */
@@ -134,11 +160,24 @@ export async function validateSubmission(input: OrderValidationInput): Promise<O
       issues.push({ code: 'adresse_unvollstaendig', message: 'Bitte füllen Sie die Lieferadresse vollständig aus.' });
     } else {
       const zuLang = [versand.street, versand.zip, versand.city, versand.country].some(
-        (feld) => feld.length > GRENZEN.maxFeldLaenge
+        (feld) => feld.trim().length > GRENZEN.maxFeldLaenge
       );
       if (zuLang) {
         issues.push({ code: 'adresse_zu_lang', message: 'Eine Angabe in der Lieferadresse ist zu lang.' });
+      } else if (!istGueltigePlz(versand.zip)) {
+        issues.push({ code: 'plz_ungueltig', message: 'Bitte geben Sie eine gültige Postleitzahl an (5 Ziffern).' });
       }
+    }
+
+    // AGB-Zustimmung ist Voraussetzung für eine Bestellung, nicht nur eine
+    // UI-Bequemlichkeit – der Client prüft das bereits, aber nur eine
+    // serverseitige Prüfung verhindert eine Bestellung ohne Zustimmung
+    // zuverlässig (siehe CartDrawer.tsx `acceptedTerms`).
+    if (!input.acceptedTerms) {
+      issues.push({
+        code: 'agb_nicht_akzeptiert',
+        message: 'Bitte akzeptieren Sie die AGB und die Datenschutzerklärung, um die Bestellung abzuschließen.',
+      });
     }
   }
 
@@ -160,7 +199,15 @@ export async function validateSubmission(input: OrderValidationInput): Promise<O
     issues.push(...(await pruefePosition(item)));
   }
 
-  return baueErgebnis(issues);
+  const ergebnis = baueErgebnis(issues);
+  // Der Zeitstempel entsteht GENAU hier, im Moment der bestätigten Prüfung –
+  // nicht erst später beim Speichern (lib/actions/orders.ts) und nicht aus
+  // einer Client-Angabe. "Eine Berechnung, ein Ort": Der Ort, der die
+  // Zustimmung prüft, ist auch der Ort, der ihren Zeitpunkt festhält.
+  if (ergebnis.valid && istBestellung) {
+    ergebnis.termsAcceptedAt = new Date().toISOString();
+  }
+  return ergebnis;
 }
 
 /** Prüft EINE Warenkorbposition gegen Katalog und Druckflächen. */

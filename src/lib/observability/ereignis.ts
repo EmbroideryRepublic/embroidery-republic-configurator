@@ -17,10 +17,7 @@
  */
 import { createAdminClient } from '@/lib/supabase/server';
 import { aktuellerKontext } from './kontext';
-import { bereinige, log, type Felder, type Kategorie, type Schwere } from './log';
-
-/** Ab dieser Schwere wird dauerhaft festgehalten. */
-const RANG: Record<Schwere, number> = { DEBUG: 0, INFO: 1, WARNING: 2, ERROR: 3, CRITICAL: 4 };
+import { bereinige, log, PERSISTENZ_AB, RANG, type Felder, type Kategorie, type Schwere } from './log';
 
 export interface EreignisEingabe {
   schwere: Exclude<Schwere, 'DEBUG'>;
@@ -48,7 +45,7 @@ export async function meldeEreignis(eingabe: EreignisEingabe): Promise<void> {
     fehler: eingabe.fehler,
   });
 
-  if (RANG[eingabe.schwere] < RANG.WARNING) return;
+  if (RANG[eingabe.schwere] < RANG[PERSISTENZ_AB]) return;
 
   const kontext = aktuellerKontext();
 

@@ -1,7 +1,7 @@
 # Architektur
 
 Tech-Stack, Schichtenmodell, Ordnerstruktur und die tragenden Prinzipien.
-Stand 2026-07-22.
+Stand 2026-08-07.
 
 Einstieg: [README.md](README.md). Der Weg einer Bestellung:
 [bestellablauf.md](bestellablauf.md).
@@ -17,6 +17,7 @@ Einstieg: [README.md](README.md). Der Weg einer Bestellung:
 | UI | React 18, Tailwind CSS | |
 | 2D-Canvas | Konva.js + react-konva | der Konfigurator |
 | Datenbank & Storage | Supabase (Postgres) | Zugriff serverseitig über Service-Role |
+| Kundenkonto-Auth | Supabase Auth | additiv zum Gastkauf; `middleware.ts` frischt nur `/konto/*` und `/auth/*` auf, macht selbst keine Redirects; eigene gebrandete E-Mails (Resend) statt Supabase-Standardmails |
 | E-Mail | Resend | Bestätigungen, interne Benachrichtigung |
 | Zustand (Client) | Zustand | nur der Konfigurator-State |
 | PDF | pdf-lib / Canvas | Produktionsblatt, Druckvorschauen |
@@ -83,6 +84,8 @@ src/
       cron/process-supplier-orders/   Lieferantenlauf + Wartung
       health/                Health-Check
     admin/                   geschützt über das Layout-Gate
+    konto/                   Kundenkonto: Profil, Adressbuch, Bestellhistorie
+    auth/callback/           PKCE-Callback für Supabase Auth
     produkt/[slug]/          öffentliche Produktseiten
     kontakt/, agb/, impressum/, datenschutz/, faq/, ueber-uns/
   components/
@@ -92,10 +95,17 @@ src/
   lib/                       GESCHÄFTSLOGIK (siehe oben)
   stores/                    Zustand-Stores (Konfigurator, Sprache)
   types/                     gemeinsame Typen
-supabase/migrations/         0001 … 0019, fortlaufend
+  middleware.ts              Kundenkonto-Sitzungsauffrischung, nur /konto/* und /auth/*
+supabase/migrations/         0001 … 0024, fortlaufend
 scripts/                     E2E-Läufe, Prüf- und Auswertungswerkzeuge
 docs/                        diese Dokumentation
 ```
+
+Das Kundenkonto-System (`app/konto/`, `app/auth/`, `src/middleware.ts`) ist
+**additiv** zum bestehenden Gastkauf – ein Gast bestellt weiterhin ohne
+Konto. Authentifizierung läuft über Supabase Auth (`admin.generateLink()` +
+PKCE-Callback unter `/auth/callback`), aber mit eigenen gebrandeten E-Mails
+über Resend statt der Supabase-Standardmails.
 
 ### Die größten Dateien und was sie tun
 
@@ -155,7 +165,7 @@ Aller Datenbankzugriff läuft serverseitig über den **Service-Role-Client**
 INSERT-Policies für anonyme Clients; für das `RETURNING` nach einem Insert
 bräuchte es eine SELECT-Policy, die Kundendaten offenlegen würde.
 
-Row Level Security ist auf **allen 16 Tabellen** aktiv – als zweite
+Row Level Security ist auf **allen 18 Tabellen** aktiv – als zweite
 Verteidigungslinie, falls je der publizierbare Schlüssel verwendet würde.
 Schreibzugriff von außen ist damit ausgeschlossen.
 
@@ -165,10 +175,16 @@ Schreibzugriff von außen ist damit ausgeschlossen.
 
 | Ebene | Werkzeug | Was |
 |---|---|---|
-| Unit | `node:test` + `tsx` | 451 Tests, reine Logik + Wächter |
+| Unit | `node:test` + `tsx` | 657 Tests, reine Logik + Wächter |
 | E2E Serverpfad | `scripts/e2e*.mts` | echter Bestell-, Zahlungs-, Limit-, Auth-Weg gegen die DB |
 | Visuell | Playwright | der Konfigurator (der In-App-Browser scheitert am Konva-Canvas) |
 
 Die E2E-Läufe fahren den **echten Serverweg** und fangen nur die äußeren
 Wirkungen ab (E-Mail, Dateien, Lieferant). Ein Browsertest allein beweist
 nichts – siehe [testmodus-und-abnahme.md](testmodus-und-abnahme.md).
+
+Der „Auth-Weg" in der Tabelle bezieht sich auf das **Admin-System**
+(`test:e2e:adminauth`). Für das seither hinzugekommene zweite Auth-System,
+das Kundenkonto (Registrierung, Login, Passwort-Reset), gibt es noch **keine
+eigene E2E-Suite** – bislang nur Unit-Tests der reinen Logik. Das ist ein
+offener Punkt.

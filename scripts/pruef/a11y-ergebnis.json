@@ -1,0 +1,1213 @@
+{
+  "geprueft": {
+    "seiten": 14,
+    "breite": 1280,
+    "relevanteTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa"
+    ]
+  },
+  "gesamtFehler": 79,
+  "befunde": [
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "fehler": 16,
+      "verstoesse": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "beschreibung": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "hilfe": "Elements must meet minimum color contrast ratio thresholds",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "knoten": [
+            {
+              "html": "<span class=\"text-[10px] font-medium uppercase tracking-[0.2em] text-gold-dark\">Germany</span>",
+              "ziel": [
+                ".leading-tight > .text-\\[10px\\].tracking-\\[0\\.2em\\].font-medium"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #8a6a3a, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<p class=\"text-[11px] uppercase tracking-[0.3em] text-gold\">Stickerei &amp; DTF-Druck</p>",
+              "ziel": [
+                ".z-10 > .text-\\[11px\\].tracking-\\[0\\.3em\\].uppercase"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.66 (foreground color: #b8935a, background color: #faf7f1, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-1 block text-gold\">Unsere Qualität.</span>",
+              "ziel": [
+                ".mt-1.text-gold.block"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.66 (foreground color: #b8935a, background color: #faf7f1, font size: 73.0pt (97.28px), font weight: normal). Expected contrast ratio of 3:1"
+            },
+            {
+              "html": "<p class=\"text-[11px] uppercase tracking-[0.3em] text-gold\">Kategorien entdecken</p>",
+              "ziel": [
+                ".lg\\:grid-cols-\\[1fr_0\\.8fr\\] > div:nth-child(1) > .text-\\[11px\\].tracking-\\[0\\.3em\\].uppercase"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.66 (foreground color: #b8935a, background color: #faf7f1, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-0.5 inline-flex h-6 min-w-[1.5rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2 text-[12px] tabular-nums text-gold-dark\">64</span>",
+              "ziel": [
+                "a[href=\"/produkt?kategorie=tshirt\"] > .justify-between.mt-4.items-start > .min-w-\\[1\\.5rem\\].bg-gold-light\\/60.tabular-nums"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.29 (foreground color: #8a6a3a, background color: #f6eddb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-0.5 inline-flex h-6 min-w-[1.5rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2 text-[12px] tabular-nums text-gold-dark\">26</span>",
+              "ziel": [
+                "a[href=\"/produkt?kategorie=polo\"] > .justify-between.mt-4.items-start > .min-w-\\[1\\.5rem\\].bg-gold-light\\/60.tabular-nums"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.29 (foreground color: #8a6a3a, background color: #f6eddb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-0.5 inline-flex h-6 min-w-[1.5rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2 text-[12px] tabular-nums text-gold-dark\">30</span>",
+              "ziel": [
+                "a[href=\"/produkt?kategorie=hoodie\"] > .justify-between.mt-4.items-start > .min-w-\\[1\\.5rem\\].bg-gold-light\\/60.tabular-nums"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.29 (foreground color: #8a6a3a, background color: #f6eddb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-0.5 inline-flex h-6 min-w-[1.5rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2 text-[12px] tabular-nums text-gold-dark\">15</span>",
+              "ziel": [
+                "a[href=\"/produkt?kategorie=longsleeve\"] > .justify-between.mt-4.items-start > .min-w-\\[1\\.5rem\\].bg-gold-light\\/60.tabular-nums"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.29 (foreground color: #8a6a3a, background color: #f6eddb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-0.5 inline-flex h-6 min-w-[1.5rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2 text-[12px] tabular-nums text-gold-dark\">11</span>",
+              "ziel": [
+                "a[href=\"/produkt?kategorie=jacket\"] > .justify-between.mt-4.items-start > .min-w-\\[1\\.5rem\\].bg-gold-light\\/60.tabular-nums"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.29 (foreground color: #8a6a3a, background color: #f6eddb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<a class=\"group mt-5 inline-flex items-center gap-2 self-start rounded-full bg-gold px-5 py-2.5 text-[14px] font-medium text-white shadow-elegant transition-all duration-300 ease-out hover:bg-gold-dark active:scale-[0.98]\" href=\"/produkt\">",
+              "ziel": [
+                ".self-start"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.85 (foreground color: #ffffff, background color: #b8935a, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<p class=\"text-[11px] uppercase tracking-[0.3em] text-gold\">Farbe</p>",
+              "ziel": [
+                ".lg\\:grid-cols-\\[0\\.85fr_1\\.15fr\\] > div > .text-\\[11px\\].tracking-\\[0\\.3em\\].uppercase"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.76 (foreground color: #b8935a, background color: #fdfbf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"block text-gold\">Einer ist deiner.</span>",
+              "ziel": [
+                "div > .text-\\[clamp\\(2rem\\,3\\.6vw\\,3\\.25rem\\)\\].leading-\\[1\\.05\\] > .text-gold.block"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.76 (foreground color: #b8935a, background color: #fdfbf8, font size: 34.6pt (46.08px), font weight: normal). Expected contrast ratio of 3:1"
+            },
+            {
+              "html": "<p class=\"text-[11px] uppercase tracking-[0.3em] text-gold\">Veredelung</p>",
+              "ziel": [
+                ".py-24:nth-child(5) > .text-\\[11px\\].tracking-\\[0\\.3em\\].uppercase"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.66 (foreground color: #b8935a, background color: #faf7f1, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"block text-gold\">Beide von Hand geprüft.</span>",
+              "ziel": [
+                ".max-w-2xl > .text-gold.block"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.66 (foreground color: #b8935a, background color: #faf7f1, font size: 34.6pt (46.08px), font weight: normal). Expected contrast ratio of 3:1"
+            },
+            {
+              "html": "<p class=\"mt-2 text-[15px] leading-relaxed text-brand/55\">Vollfarbig, ideal für große Motive &amp; Farbverläufe</p>",
+              "ziel": [
+                ".rounded-\\[24px\\].hover\\:shadow-\\[0_24px_60px_-30px_rgba\\(43\\,36\\,28\\,0\\.35\\)\\].sm\\:p-10:nth-child(1) > .mt-2.text-brand\\/55.text-\\[15px\\]"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #8a8782, background color: #ffffff, font size: 11.3pt (15px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<p class=\"mt-2 text-[15px] leading-relaxed text-brand/55\">Hochwertig &amp; langlebig, ideal für Firmenlogos</p>",
+              "ziel": [
+                ".rounded-\\[24px\\].hover\\:shadow-\\[0_24px_60px_-30px_rgba\\(43\\,36\\,28\\,0\\.35\\)\\].sm\\:p-10:nth-child(2) > .mt-2.text-brand\\/55.text-\\[15px\\]"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #8a8782, background color: #ffffff, font size: 11.3pt (15px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "fehler": 39,
+      "verstoesse": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "beschreibung": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "hilfe": "Elements must meet minimum color contrast ratio thresholds",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "knoten": [
+            {
+              "html": "<span class=\"text-[10px] font-medium uppercase tracking-[0.2em] text-gold-dark\">Germany</span>",
+              "ziel": [
+                ".sm\\:flex.leading-tight.hidden > .tracking-\\[0\\.2em\\].text-gold-dark.uppercase"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #8a6a3a, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"whitespace-nowrap text-xs hidden sm:inline text-brand/35\">Motiv hinzufügen</span>",
+              "ziel": [
+                ".gap-1\\.5:nth-child(2) > .sm\\:inline.whitespace-nowrap.text-brand\\/35"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.07 (foreground color: #b0a99f, background color: #f7f1e6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"whitespace-nowrap text-xs hidden sm:inline text-brand/35\">Position prüfen</span>",
+              "ziel": [
+                ".gap-1\\.5:nth-child(3) > .sm\\:inline.whitespace-nowrap.text-brand\\/35"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.07 (foreground color: #b0a99f, background color: #f7f1e6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"whitespace-nowrap text-xs hidden sm:inline text-brand/35\">Bereit zum Bestellen</span>",
+              "ziel": [
+                ".gap-1\\.5:nth-child(4) > .sm\\:inline.whitespace-nowrap.text-brand\\/35"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.07 (foreground color: #b0a99f, background color: #f7f1e6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<h2 class=\"mb-2.5 text-[15px] font-semibold uppercase tracking-[0.12em] text-brand/50\">Produkt Browser</h2>",
+              "ziel": [
+                "h2"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #95928e, background color: #ffffff, font size: 11.3pt (15px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<button type=\"button\" class=\"rounded-full px-2.5 py-1 whitespace-nowrap text-[14px] font-medium transition-colors bg-gold text-white\">Alle Produkte (154)</button>",
+              "ziel": [
+                ".text-\\[14px\\].px-2\\.5.bg-gold"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.85 (foreground color: #ffffff, background color: #b8935a, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<button type=\"button\" class=\"rounded-full px-2.5 py-1 whitespace-nowrap text-[14px] font-medium transition-colors bg-cream text-brand/50 hover:bg-cream/70\">Favoriten</button>",
+              "ziel": [
+                ".text-\\[14px\\].px-2\\.5.whitespace-nowrap:nth-child(2)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3 (foreground color: #918b81, background color: #f7f1e6, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"text-[15px] tabular-nums text-brand/45\">116</span>",
+              "ziel": [
+                ".last\\:border-0.border-gold\\/10.border-b:nth-child(1) > .px-2.py-2\\.5.gap-2 > .text-\\[15px\\].tabular-nums.text-brand\\/45"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 11.3pt (15px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"text-[15px] tabular-nums text-brand/45\">127</span>",
+              "ziel": [
+                ".last\\:border-0.border-gold\\/10.border-b:nth-child(2) > .px-2.py-2\\.5.gap-2 > .text-\\[15px\\].tabular-nums.text-brand\\/45"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 11.3pt (15px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"text-[15px] tabular-nums text-brand/45\">89</span>",
+              "ziel": [
+                ".last\\:border-0.border-gold\\/10.border-b:nth-child(3) > .px-2.py-2\\.5.gap-2 > .text-\\[15px\\].tabular-nums.text-brand\\/45"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 11.3pt (15px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<p class=\"text-xs uppercase tracking-wide text-brand/40\">Fruit of the Loom</p>",
+              "ziel": [
+                ".tracking-wide.text-brand\\/40.uppercase"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.39 (foreground color: #aaa7a4, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<p class=\"text-xs text-brand/50\">Schwere Baumwolle, leicht im Preis</p>",
+              "ziel": [
+                ".gap-4.py-3.flex-wrap > div:nth-child(1) > .text-brand\\/50"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #95928e, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"text-xs text-brand/50\">Farbe: <span class=\"font-medium text-brand\">Weiß</span></span>",
+              "ziel": [
+                ".items-end > .text-brand\\/50.text-xs"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #95928e, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"text-xs font-semibold uppercase tracking-wide text-brand/50\">Produktdetails</span>",
+              "ziel": [
+                ".px-4.py-2\\.5.justify-between > .tracking-wide.text-brand\\/50.uppercase"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #95928e, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-1 flex min-h-[1.7rem] w-[56px] items-start justify-center text-center text-[10px] font-medium leading-tight text-brand/40 group-hover:text-brand/60\">Rückseite</span>",
+              "ziel": [
+                "button[data-ansicht=\"back\"] > .group-hover\\:text-brand\\/60.min-h-\\[1\\.7rem\\].w-\\[56px\\]"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.39 (foreground color: #aaa7a4, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-1 flex min-h-[1.7rem] w-[56px] items-start justify-center text-center text-[10px] font-medium leading-tight text-brand/40 group-hover:text-brand/60\">Ärmel links</span>",
+              "ziel": [
+                "button[data-ansicht=\"sleeve_left\"] > .group-hover\\:text-brand\\/60.min-h-\\[1\\.7rem\\].w-\\[56px\\]"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.39 (foreground color: #aaa7a4, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"mt-1 flex min-h-[1.7rem] w-[56px] items-start justify-center text-center text-[10px] font-medium leading-tight text-brand/40 group-hover:text-brand/60\">Ärmel rechts</span>",
+              "ziel": [
+                "button[data-ansicht=\"sleeve_right\"] > .group-hover\\:text-brand\\/60.min-h-\\[1\\.7rem\\].w-\\[56px\\]"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.39 (foreground color: #aaa7a4, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"w-10 text-center text-xs tabular-nums text-brand/60\">100%</span>",
+              "ziel": [
+                ".w-10.text-brand\\/60.text-center"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.14 (foreground color: #807c77, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"absolute left-1/2 top-1/2 whitespace-nowrap text-[10px] font-medium text-gold-dark\" style=\"transform: translate(-50%, -50%) rotate(-90deg);\">47 cm</span>",
+              "ziel": [
+                ".left-1\\/2.top-1\\/2.absolute"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #8a6a3a, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"absolute whitespace-nowrap text-[10px] font-medium text-gold-dark\" style=\"left: 267.583px; top: 18px; transform: translateX(-50%);\">27,9 cm</span>",
+              "ziel": [
+                ".relative > .absolute.whitespace-nowrap.text-gold-dark"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #8a6a3a, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<p class=\"mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand/50\">Deine Konfiguration</p>",
+              "ziel": [
+                ".mb-2.text-\\[11px\\].tracking-\\[0\\.12em\\]"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #95928e, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<dt class=\"w-[4.5rem] flex-shrink-0 text-brand/45\">Produkt</dt>",
+              "ziel": [
+                ".text-\\[13px\\].gap-2:nth-child(1) > dt"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<dt class=\"w-[4.5rem] flex-shrink-0 text-brand/45\">Farbe</dt>",
+              "ziel": [
+                ".text-\\[13px\\].gap-2:nth-child(2) > dt"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<dt class=\"w-[4.5rem] flex-shrink-0 text-brand/45\">Größe</dt>",
+              "ziel": [
+                ".text-\\[13px\\].gap-2:nth-child(3) > dt"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<dt class=\"w-[4.5rem] flex-shrink-0 text-brand/45\">Veredelung</dt>",
+              "ziel": [
+                ".text-\\[13px\\].gap-2:nth-child(4) > dt"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<dt class=\"w-[4.5rem] flex-shrink-0 text-brand/45\">Position</dt>",
+              "ziel": [
+                ".text-\\[13px\\].gap-2:nth-child(5) > dt"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<dt class=\"w-[4.5rem] flex-shrink-0 text-brand/45\">Preis</dt>",
+              "ziel": [
+                ".text-\\[13px\\].gap-2:nth-child(6) > dt"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #a09c99, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span class=\"block text-xs text-brand/50\">Hochwertig &amp; langlebig, ideal für Firmenlogos</span>",
+              "ziel": [
+                ".gap-3.transition-all.p-3:nth-child(2) > span:nth-child(2) > .block.text-brand\\/50.text-xs"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #95928e, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<div class=\"min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium bg-cream text-brand/40\" title=\"ab 1 Stück: -0% auf Veredelung, -0% auf Grundpreis\">1+</div>",
+              "ziel": [
+                ".py-0\\.5.bg-cream.text-center:nth-child(1)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.33 (foreground color: #a59f95, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<div class=\"min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium bg-cream text-brand/40\" title=\"ab 5 Stück: -5% auf Veredelung, -2% auf Grundpreis\">-5%</div>",
+              "ziel": [
+                ".py-0\\.5.bg-cream.text-center:nth-child(2)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.33 (foreground color: #a59f95, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<div class=\"min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium bg-cream text-brand/40\" title=\"ab 10 Stück: -8% auf Veredelung, -3% auf Grundpreis\">-8%</div>",
+              "ziel": [
+                ".py-0\\.5.bg-cream.text-center:nth-child(3)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.33 (foreground color: #a59f95, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<div class=\"min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium bg-cream text-brand/40\" title=\"ab 25 Stück: -14% auf Veredelung, -5% auf Grundpreis\">-14%</div>",
+              "ziel": [
+                ".py-0\\.5.bg-cream.text-center:nth-child(4)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.33 (foreground color: #a59f95, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<div class=\"min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium bg-cream text-brand/40\" title=\"ab 50 Stück: -19% auf Veredelung, -6% auf Grundpreis\">-19%</div>",
+              "ziel": [
+                ".py-0\\.5.bg-cream.text-center:nth-child(5)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.33 (foreground color: #a59f95, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<div class=\"min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium bg-cream text-brand/40\" title=\"ab 100 Stück: -25% auf Veredelung, -8% auf Grundpreis\">-25%</div>",
+              "ziel": [
+                ".py-0\\.5.bg-cream.text-center:nth-child(6)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.33 (foreground color: #a59f95, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<div class=\"min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium bg-cream text-brand/40\" title=\"ab 250 Stück: -35% auf Veredelung, -11% auf Grundpreis\">-35%</div>",
+              "ziel": [
+                ".py-0\\.5.bg-cream.text-center:nth-child(7)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.33 (foreground color: #a59f95, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<div class=\"min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium bg-cream text-brand/40\" title=\"ab 500 Stück: -45% auf Veredelung, -15% auf Grundpreis\">-45%</div>",
+              "ziel": [
+                ".py-0\\.5.bg-cream.text-center:nth-child(8)"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 2.33 (foreground color: #a59f95, background color: #f7f1e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<p class=\"text-[11px] text-brand/50\">Noch 5 Stück bis 5% Rabatt.</p>",
+              "ziel": [
+                ".space-y-2 > .text-\\[11px\\].text-brand\\/50"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #95928e, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<span>Preisdetails</span>",
+              "ziel": [
+                ".py-1\\.5.px-2\\.5.justify-between > span"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.03 (foreground color: #928d85, background color: #f9f5ee, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "html": "<p class=\"text-center text-xs text-amber-600\">Bitte zuerst eine Größe und Menge wählen.</p>",
+              "ziel": [
+                ".text-amber-600"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Element has insufficient color contrast of 3.18 (foreground color: #d97706, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "fehler": 2,
+      "verstoesse": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "beschreibung": "Ensure each HTML document contains a non-empty <title> element",
+          "hilfe": "Documents must have <title> element to aid in navigation",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242",
+            "TTv5",
+            "TT12.a",
+            "EN-301-549",
+            "EN-9.2.4.2",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.5.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "beschreibung": "Ensure every HTML document has a lang attribute",
+          "hilfe": "<html> element must have a lang attribute",
+          "hilfeUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT",
+            "RGAAv4",
+            "RGAA-8.3.1"
+          ],
+          "knoten": [
+            {
+              "html": "<html>",
+              "ziel": [
+                "html"
+              ],
+              "fehlerZusammenfassung": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "erzeugtAm": "2026-08-07T08:15:40.189Z"
+}

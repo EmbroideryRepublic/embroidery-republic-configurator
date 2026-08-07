@@ -34,7 +34,7 @@ import { uebernehmeAuswahl } from '@/lib/configurator/uebernahme';
 import { vorladenListe, vorladenModell } from '@/lib/configurator/vorladen';
 import { getProduct } from '@/config/products';
 import { produktBild } from '@/lib/assets';
-import { waehlbareFarben } from '@/lib/products/farben';
+import { formatiereFarbname, waehlbareFarben } from '@/lib/products/farben';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useBrowserStore } from '@/stores/browserStore';
 import { useFavoritesStore } from '@/stores/favoritesStore';
@@ -49,7 +49,7 @@ for (const p of PRODUCTS) {
 }
 
 const BADGE_TON: Record<Badge['ton'], string> = {
-  neutral: 'bg-brand/[0.05] text-brand/55',
+  neutral: 'bg-brand/[0.05] text-brand/70',
   bio: 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/10',
   gold: 'bg-gold-light/60 text-gold-dark ring-1 ring-inset ring-gold/20',
 };
@@ -205,7 +205,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
         )}
       >
         <div className="flex-shrink-0 border-b border-gold/10 p-3">
-          <h2 className="mb-2.5 text-[15px] font-semibold uppercase tracking-[0.12em] text-brand/50">
+          <h2 className="mb-2.5 text-[15px] font-semibold uppercase tracking-[0.12em] text-brand/70">
             Produkt Browser
           </h2>
 
@@ -247,7 +247,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               className={clsx(
                 'ml-auto flex flex-shrink-0 items-center gap-1 rounded-full border px-2 py-1 text-[14px] transition-colors',
                 aktiveFilter > 0
-                  ? 'border-gold bg-gold text-white'
+                  ? 'border-gold-dark bg-gold-dark text-white'
                   : 'border-gray-200 text-brand/50 hover:border-gold/50 hover:text-brand'
               )}
             >
@@ -262,7 +262,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               <button
                 type="button"
                 onClick={() => setGewaehlt(null)}
-                className="rounded-md px-1 py-0.5 text-brand/50 transition-colors hover:text-gold-dark"
+                className="rounded-md px-1 py-0.5 text-brand/70 transition-colors hover:text-gold-dark"
               >
                 {gruppeLabel}
               </button>
@@ -294,7 +294,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                   <span className="flex-1 text-[20px] font-semibold uppercase tracking-[0.1em] text-brand/70">
                     {g.label}
                   </span>
-                  <span className="text-[15px] tabular-nums text-brand/45">{g.anzahl}</span>
+                  <span className="text-[15px] tabular-nums text-brand/70">{g.anzahl}</span>
                   {/* Der Pfeil sagt, was ein Klick BEWIRKT – nicht nur, was ist:
                       nach RECHTS = zugeklappt, öffnet sich beim Klick nach rechts;
                       nach UNTEN = offen, die Unterkategorien stehen darunter;
@@ -316,7 +316,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                   <div>
                     <ul key={g.gruppe} className="animate-fade-in pb-1.5">
                       {zeigeArten.length === 0 ? (
-                        <li className="px-3 pb-2 text-[14px] text-brand/55">Keine Treffer in dieser Gruppe.</li>
+                        <li className="px-3 pb-2 text-[14px] text-brand/70">Keine Treffer in dieser Gruppe.</li>
                       ) : (
                         zeigeArten.map((a) => {
                           const an = gewaehlt?.gruppe === g.gruppe && gewaehlt.art === a.art;
@@ -337,7 +337,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                                   <img src={bild} alt="" loading="lazy" className="h-7 w-7 flex-shrink-0 object-contain" />
                                 )}
                                 <span className="flex-1 truncate text-[20px]">{a.label}</span>
-                                <span className="text-[15px] tabular-nums text-brand/45">{a.anzahl}</span>
+                                <span className="text-[15px] tabular-nums text-brand/70">{a.anzahl}</span>
                                 <ChevronRight
                                   className={clsx(
                                     'h-4 w-4 flex-shrink-0 transition-transform duration-300',
@@ -364,7 +364,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
         {filterOffen && (
           <div className="absolute inset-0 z-20 flex animate-fade-in flex-col bg-white">
             <div className="flex flex-shrink-0 items-center gap-2 border-b border-gold/10 p-3">
-              <h3 className="flex-1 text-[15px] font-semibold uppercase tracking-[0.12em] text-brand/50">Filter</h3>
+              <h3 className="flex-1 text-[15px] font-semibold uppercase tracking-[0.12em] text-brand/70">Filter</h3>
               <button
                 type="button"
                 onClick={() => setFilterOffen(false)}
@@ -434,7 +434,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               <ChevronLeft className="h-5 w-5" />
             </button>
             <span className="flex-1 truncate text-[19px] font-medium text-brand">{astLabel}</span>
-            <span className="text-[15px] tabular-nums text-brand/50">{modelle.length}</span>
+            <span className="text-[15px] tabular-nums text-brand/70">{modelle.length}</span>
           </div>
 
           <ul
@@ -542,7 +542,7 @@ function Modellkarte({
 
       <div className="border-t border-gray-900/[0.05] p-3">
         <p className="truncate text-[19px] font-semibold leading-tight text-brand">{produkt.name}</p>
-        <p className="mt-0.5 truncate text-[14px] uppercase tracking-wide text-brand/40">{produkt.brand}</p>
+        <p className="mt-0.5 truncate text-[14px] uppercase tracking-wide text-brand/70">{produkt.brand}</p>
 
         <div className="mt-2.5 flex flex-wrap gap-1">
           {badges.map((b) => (
@@ -557,12 +557,12 @@ function Modellkarte({
             {punkte.map((c) => (
               <span
                 key={c.id}
-                title={c.name}
+                title={formatiereFarbname(c.name)}
                 className="h-3 w-3 rounded-full ring-1 ring-inset ring-black/10"
                 style={{ backgroundColor: c.hex }}
               />
             ))}
-            {weitere > 0 && <span className="text-[13px] font-medium text-brand/40">+{weitere}</span>}
+            {weitere > 0 && <span className="text-[13px] font-medium text-brand/70">+{weitere}</span>}
           </span>
           <span className="text-[19px] font-semibold text-gold-dark">ab {preis(produkt.basePrice)}</span>
         </div>
@@ -578,7 +578,7 @@ function Reiter({ an, onClick, children }: { an: boolean; onClick: () => void; c
       onClick={onClick}
       className={clsx(
         'rounded-full px-2.5 py-1 whitespace-nowrap text-[14px] font-medium transition-colors',
-        an ? 'bg-gold text-white' : 'bg-cream text-brand/50 hover:bg-cream/70'
+        an ? 'bg-gold-dark text-white' : 'bg-cream text-brand/70 hover:bg-cream/70'
       )}
     >
       {children}
@@ -589,7 +589,7 @@ function Reiter({ an, onClick, children }: { an: boolean; onClick: () => void; c
 function Feld({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-[15px] font-medium text-brand/60">{label}</span>
+      <span className="mb-1.5 block text-[15px] font-medium text-brand/70">{label}</span>
       {children}
     </label>
   );

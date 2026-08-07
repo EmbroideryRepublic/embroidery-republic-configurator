@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { CartItem } from '@/types';
-import { indexedDbStorage } from '@/lib/storage/indexedDbStorage';
+import { indexedDbStorage, getTabId } from '@/lib/storage/indexedDbStorage';
 
 interface CartState {
   items: CartItem[];
@@ -57,7 +57,12 @@ export const useCartStore = create<CartState>()(
       clear: () => set({ items: [] }),
     }),
     {
-      name: 'konfigurator-cart',
+      // Tab-eindeutig (siehe getTabId in indexedDbStorage.ts): sonst
+      // überschreiben sich mehrere gleichzeitig geöffnete Tabs gegenseitig
+      // den Warenkorb-Stand. Ein Reload IM SELBEN Tab behält den Stand
+      // trotzdem (sessionStorage übersteht ihn), ein neuer Tab bekommt einen
+      // eigenen, unabhängigen Datensatz.
+      name: `konfigurator-cart-${getTabId()}`,
       storage: createJSONStorage(() => indexedDbStorage),
       // WICHTIG: sizeLabel (eine Größe) -> sizeQuantities (mehrere Größen)
       // umgestellt. Ohne Migration hätten bereits im Warenkorb liegende
@@ -84,8 +89,13 @@ export const useCartStore = create<CartState>()(
   )
 );
 
+/**
+ * Anzahl der Positionen (unterschiedliche Artikel), NICHT die
+ * Gesamtstückzahl – Header-Badge und Drawer-Titel zeigen beide diese Zahl,
+ * damit am selben Warenkorb nicht zwei widersprüchliche Zahlen erscheinen.
+ */
 export function getCartItemCount(items: CartItem[]): number {
-  return items.reduce((sum, item) => sum + item.quantity, 0);
+  return items.length;
 }
 
 export function getCartTotal(items: CartItem[]): number {

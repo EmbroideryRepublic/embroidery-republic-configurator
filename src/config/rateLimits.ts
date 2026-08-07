@@ -108,6 +108,58 @@ export const RATE_LIMITS = {
     merkmal: 'ip_und_merkmal',
     begruendung: 'Ein Token gehört zu genau einer Bestellung. Zehn Versuche je Stunde reichen für jeden echten Fall.',
   },
+
+  /** Kundenkonto-Anmeldung: dasselbe Motiv wie adminLogin, nur mit vielen
+   *  statt einer Person – deshalb mit E-Mail als zweitem Merkmal statt
+   *  reinem IP-Limit, sonst träfe ein Angriff auf ein Konto alle hinter
+   *  derselben Firmenadresse. */
+  kontoAnmeldung: {
+    id: 'konto_anmeldung',
+    max: 8,
+    fensterSekunden: 15 * MINUTE,
+    merkmal: 'ip_und_merkmal',
+    begruendung:
+      'Acht Versuche je Viertelstunde je E-Mail+Adresse machen Passwort-Raten aussichtslos, ohne echte ' +
+      'Tippfehler-Serien zu bestrafen.',
+  },
+
+  /** Registrierung: begrenzt automatisiertes Anlegen vieler Konten. */
+  kontoRegistrierung: {
+    id: 'konto_registrierung',
+    max: 5,
+    fensterSekunden: STUNDE,
+    merkmal: 'ip',
+    begruendung: 'Eine Person legt selten mehr als ein Konto je Stunde an. Bremst automatisiertes Massenanlegen.',
+  },
+
+  /** "Passwort vergessen": verhindert, dass sich der E-Mail-Versand als
+   *  Belästigungsvektor gegen fremde Adressen missbrauchen lässt. */
+  kontoPasswortVergessen: {
+    id: 'konto_passwort_vergessen',
+    max: 5,
+    fensterSekunden: STUNDE,
+    merkmal: 'ip_und_merkmal',
+    begruendung:
+      'Fünf Anforderungen je Stunde je Adresse genügen für jeden echten Fall und verhindern, dass die ' +
+      'Funktion als E-Mail-Spam-Vektor gegen eine fremde Adresse missbraucht wird.',
+  },
+
+  /** Schreibende Kontoänderungen bei bereits angemeldeter Sitzung: die vier
+   *  Adressbuch-Aktionen sowie Profil-, E-Mail- und Passwortwechsel. Ein
+   *  gemeinsames Limit für alle sieben – dieselbe Sitzung ist das
+   *  schützenswerte Gut, nicht das einzelne Feld. Merkmal ist die
+   *  Kunden-ID: Begrenzt eine gekaperte oder automatisierte Sitzung, ohne
+   *  eine Familie/Firma hinter derselben Adresse beim gemeinsamen Kontieren
+   *  zu behindern. */
+  kontoAenderung: {
+    id: 'konto_aenderung',
+    max: 20,
+    fensterSekunden: STUNDE,
+    merkmal: 'ip_und_merkmal',
+    begruendung:
+      'Zwanzig schreibende Änderungen je Stunde je Konto decken jede reale Nutzung ab (mehrere Adressen ' +
+      'anlegen, Profil anpassen) und bremsen automatisiertes Schreiben über eine gekaperte Sitzung.',
+  },
 } as const satisfies Record<string, RateLimit>;
 
 export type RateLimitName = keyof typeof RATE_LIMITS;

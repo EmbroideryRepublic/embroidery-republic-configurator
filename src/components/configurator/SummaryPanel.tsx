@@ -32,7 +32,6 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
   const sizeQuantities = useConfiguratorStore((s) => s.sizeQuantities);
   const unitPrice = useConfiguratorStore((s) => s.unitPrice);
   const totalPrice = useConfiguratorStore((s) => s.totalPrice);
-  const elements = useConfiguratorStore((s) => s.elements);
   const resetDesign = useConfiguratorStore((s) => s.resetDesign);
 
   const quantity = sumSizeQuantities(sizeQuantities);
@@ -72,7 +71,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
       colorId,
       sizeQuantities,
       quantity,
-      elements,
+      elements: useConfiguratorStore.getState().elements,
       unitPrice,
       totalPrice,
       setupTotal: breakdown?.setupTotal ?? 0,
@@ -104,9 +103,9 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
           ausweisen. Der Kunde soll verstehen, WARUM ein Einzelstück
           verhältnismäßig teurer ist und dass sich Menge lohnt. */}
       {breakdown && breakdown.setupTotal > 0 && (
-        <p className="text-xs text-brand/55">
+        <p className="text-xs text-brand/70">
           {t('summary_setup_fee')}: {formatPrice(breakdown.setupTotal)}{' '}
-          <span className="text-brand/45">
+          <span>
             ({formatPrice(breakdown.setupPerUnit)} {t('summary_setup_per_unit')})
           </span>
         </p>
@@ -125,7 +124,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
               key={tier.minQuantity}
               className={clsx(
                 'min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium',
-                quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-cream text-brand/40'
+                quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-cream text-brand/70'
               )}
               title={`ab ${tier.minQuantity} Stück: -${tier.veredelungDiscountPercent}% auf Veredelung, -${tier.baseDiscountPercent}% auf Grundpreis`}
             >
@@ -138,7 +137,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
       {/* Nur der NÄCHSTE Schritt bzw. die erreichte Ersparnis – eine Zeile,
           und nur wenn sie etwas aussagt. */}
       {breakdown?.nextTier ? (
-        <p className="text-[11px] text-brand/50">
+        <p className="text-[11px] text-brand/70">
           Noch {breakdown.nextTier.minQuantity - quantity} Stück bis {breakdown.nextTier.veredelungDiscountPercent}% Rabatt.
         </p>
       ) : breakdown && breakdown.savingsAmount > 0 ? (
@@ -152,7 +151,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
           <button
             type="button"
             onClick={() => setShowBreakdown((v) => !v)}
-            className="flex w-full items-center justify-between px-2.5 py-1.5 text-brand/50"
+            className="flex w-full items-center justify-between px-2.5 py-1.5"
           >
             <span>Preisdetails</span>
             {/* Nach unten = geöffnet, die Preisdetails stehen darunter. */}
@@ -205,12 +204,14 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
             'flex items-center justify-between rounded-lg bg-gradient-to-r from-gold-light/80 to-cream px-3 py-2.5 transition-transform duration-200',
             isPriceChanged && 'scale-[1.03]'
           )}
+          aria-live="polite"
+          aria-atomic="true"
         >
           <span className="text-sm font-medium text-brand">{t('summary_total_price')}</span>
           <span className="font-serif text-xl font-bold text-gold-dark">{formatPrice(totalPrice)}</span>
         </div>
       ) : (
-        <div className="rounded-lg bg-cream/70 px-3 py-2.5">
+        <div className="rounded-lg bg-cream/70 px-3 py-2.5" aria-live="polite" aria-atomic="true">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-brand/70">{t('summary_unit_price')}</span>
             <span className="font-serif text-lg font-semibold text-brand">{formatPrice(unitPrice)}</span>
@@ -224,7 +225,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
         onClick={handleAddToCart}
         disabled={!canAddToCart}
         className={clsx(
-          'flex w-full items-center justify-center gap-2 rounded-lg py-2.5 text-sm font-medium text-white shadow-elegant transition-colors disabled:cursor-not-allowed disabled:opacity-40',
+          'flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-medium text-white shadow-elegant transition-colors disabled:cursor-not-allowed disabled:opacity-40',
           justAdded ? 'bg-green-600' : 'bg-gold hover:bg-gold-dark'
         )}
       >

@@ -5,7 +5,7 @@
  * in FARBGRUPPE_HEX). Enthält nur tatsächlich genutzte, in der Hand-Basis noch
  * fehlende Werte.
  */
-import type { Farbgruppe, Geschlecht, MaterialGruppe, Passform } from './facetten';
+import type { Farbgruppe, Geschlecht, MaterialGruppe, Passform } from './types';
 
 export const MATERIAL_GRUPPEN_GENERIERT: Record<string, MaterialGruppe[]> = {
   "100 % Bio-Baumwolle": ["bio-baumwolle","baumwolle-100"],

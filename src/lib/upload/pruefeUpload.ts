@@ -90,7 +90,7 @@ const KUNDEN_MELDUNGEN: Record<Ablehnungsgrund, string> = {
   kein_data_url: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
   leer: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
   zu_gross: 'Die Datei ist zu groß. Bitte verwenden Sie eine Datei bis 10 MB.',
-  unbekanntes_format: 'Dieses Dateiformat wird nicht unterstützt. Bitte laden Sie ein PNG, SVG oder PDF hoch.',
+  unbekanntes_format: 'Dieses Dateiformat wird nicht unterstützt. Bitte laden Sie eine PNG-Datei hoch.',
   abmessungen_unlesbar: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
   zu_grosse_abmessungen: 'Das Bild hat zu große Abmessungen. Bitte verwenden Sie eine kleinere Datei.',
 };

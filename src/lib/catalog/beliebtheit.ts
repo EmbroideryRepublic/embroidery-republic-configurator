@@ -45,8 +45,3 @@ export async function ladeBeliebtheit(): Promise<Beliebtheit> {
   zwischenspeicher = { werte, bis: Date.now() + GUELTIG_MS };
   return werte;
 }
-
-/** Nur für Tests: Zwischenspeicher leeren. */
-export function vergissBeliebtheit(): void {
-  zwischenspeicher = null;
-}

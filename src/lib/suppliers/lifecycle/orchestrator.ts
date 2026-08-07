@@ -119,13 +119,29 @@ export async function processDueSupplierOrders(
   return { reclaimed, processed };
 }
 
-/** Admin-Aktion: bewusst pausieren (wieder aufnehmbar). Ein laufender
- *  ('processing') Eintrag ist nicht pausierbar (erst nach Ende). */
-export async function pauseSupplierOrder(
+/**
+ * Gemeinsames Gerüst der drei einfachen Admin-Statusübergänge (pausieren/
+ * als-bestellt-markieren/abbrechen): Status laden → Sonderfälle prüfen
+ * (bereits im Zielstatus / läuft gerade, in der übergebenen Reihenfolge) →
+ * canTransition prüfen → transition() ausführen. Da ein Datensatz immer nur
+ * EINEN Status gleichzeitig hat, ist die Prüfreihenfolge der Sonderfälle
+ * verhaltensneutral – es kann ohnehin nur einer zutreffen.
+ */
+async function ladeStatusUndPruefeUebergang(
+  client: ReturnType<typeof createAdminClient>,
   orderId: string,
-  supplierId: SupplierId
+  supplierId: SupplierId,
+  optionen: {
+    zielStatus: SupplierOrderStatus;
+    /** Vor der allgemeinen canTransition-Prüfung geprüft (z.B. „bereits im Zielstatus" oder „läuft gerade"). */
+    sonderfaelle: Array<{ wenn: (status: SupplierOrderStatus) => boolean; ergebnis: { ok: boolean; reason: string } }>;
+    nichtErlaubtReason: (status: SupplierOrderStatus) => string;
+    transitionReason: string;
+    patch?: Record<string, unknown>;
+    erfolgReason: string;
+    fehlschlagReason: string;
+  }
 ): Promise<{ ok: boolean; reason: string }> {
-  const client = createAdminClient();
   const { data } = await client
     .from('supplier_orders')
     .select('status')
@@ -133,15 +149,42 @@ export async function pauseSupplierOrder(
     .eq('supplier_id', supplierId)
     .maybeSingle<{ status: SupplierOrderStatus }>();
   if (!data) return { ok: false, reason: 'Kein Lieferanten-Snapshot vorhanden.' };
-  if (data.status === 'processing') return { ok: false, reason: 'Läuft gerade – erst nach Abschluss pausierbar.' };
-  if (!canTransition(data.status, 'paused')) return { ok: false, reason: `Aus Status "${data.status}" nicht pausierbar.` };
+
+  for (const sonderfall of optionen.sonderfaelle) {
+    if (sonderfall.wenn(data.status)) return sonderfall.ergebnis;
+  }
+
+  if (!canTransition(data.status, optionen.zielStatus)) {
+    return { ok: false, reason: optionen.nichtErlaubtReason(data.status) };
+  }
+
   const ok = await transition(client, orderId, supplierId, {
     from: data.status,
-    to: 'paused',
-    reason: 'Vom Admin pausiert.',
-    patch: { next_attempt_at: null },
+    to: optionen.zielStatus,
+    reason: optionen.transitionReason,
+    patch: optionen.patch,
   });
-  return { ok, reason: ok ? 'Pausiert.' : 'Pausieren fehlgeschlagen (Status geändert).' };
+  return { ok, reason: ok ? optionen.erfolgReason : optionen.fehlschlagReason };
+}
+
+/** Admin-Aktion: bewusst pausieren (wieder aufnehmbar). Ein laufender
+ *  ('processing') Eintrag ist nicht pausierbar (erst nach Ende). */
+export async function pauseSupplierOrder(
+  orderId: string,
+  supplierId: SupplierId
+): Promise<{ ok: boolean; reason: string }> {
+  const client = createAdminClient();
+  return ladeStatusUndPruefeUebergang(client, orderId, supplierId, {
+    zielStatus: 'paused',
+    sonderfaelle: [
+      { wenn: (s) => s === 'processing', ergebnis: { ok: false, reason: 'Läuft gerade – erst nach Abschluss pausierbar.' } },
+    ],
+    nichtErlaubtReason: (s) => `Aus Status "${s}" nicht pausierbar.`,
+    transitionReason: 'Vom Admin pausiert.',
+    patch: { next_attempt_at: null },
+    erfolgReason: 'Pausiert.',
+    fehlschlagReason: 'Pausieren fehlgeschlagen (Status geändert).',
+  });
 }
 
 /**
@@ -156,25 +199,18 @@ export async function markSupplierOrderAsOrdered(
   supplierId: SupplierId
 ): Promise<{ ok: boolean; reason: string }> {
   const client = createAdminClient();
-  const { data } = await client
-    .from('supplier_orders')
-    .select('status')
-    .eq('order_id', orderId)
-    .eq('supplier_id', supplierId)
-    .maybeSingle<{ status: SupplierOrderStatus }>();
-  if (!data) return { ok: false, reason: 'Kein Lieferanten-Snapshot vorhanden.' };
-  if (data.status === 'ordered') return { ok: true, reason: 'War bereits als bestellt markiert.' };
-  if (data.status === 'processing') return { ok: false, reason: 'Läuft gerade – bitte kurz warten.' };
-  if (!canTransition(data.status, 'ordered')) {
-    return { ok: false, reason: `Aus Status "${data.status}" nicht als bestellt markierbar.` };
-  }
-  const ok = await transition(client, orderId, supplierId, {
-    from: data.status,
-    to: 'ordered',
-    reason: 'Manuell beim Lieferanten bestellt (Adminbereich).',
+  return ladeStatusUndPruefeUebergang(client, orderId, supplierId, {
+    zielStatus: 'ordered',
+    sonderfaelle: [
+      { wenn: (s) => s === 'ordered', ergebnis: { ok: true, reason: 'War bereits als bestellt markiert.' } },
+      { wenn: (s) => s === 'processing', ergebnis: { ok: false, reason: 'Läuft gerade – bitte kurz warten.' } },
+    ],
+    nichtErlaubtReason: (s) => `Aus Status "${s}" nicht als bestellt markierbar.`,
+    transitionReason: 'Manuell beim Lieferanten bestellt (Adminbereich).',
     patch: { next_attempt_at: null },
+    erfolgReason: 'Als bestellt markiert.',
+    fehlschlagReason: 'Markieren fehlgeschlagen (Status geändert).',
   });
-  return { ok, reason: ok ? 'Als bestellt markiert.' : 'Markieren fehlgeschlagen (Status geändert).' };
 }
 
 /** Admin-Aktion: dauerhaft abbrechen (terminal). */
@@ -183,23 +219,18 @@ export async function cancelSupplierOrder(
   supplierId: SupplierId
 ): Promise<{ ok: boolean; reason: string }> {
   const client = createAdminClient();
-  const { data } = await client
-    .from('supplier_orders')
-    .select('status')
-    .eq('order_id', orderId)
-    .eq('supplier_id', supplierId)
-    .maybeSingle<{ status: SupplierOrderStatus }>();
-  if (!data) return { ok: false, reason: 'Kein Lieferanten-Snapshot vorhanden.' };
-  if (data.status === 'cancelled') return { ok: true, reason: 'Bereits abgebrochen.' };
-  if (data.status === 'processing') return { ok: false, reason: 'Läuft gerade – erst nach Abschluss abbrechbar.' };
-  if (!canTransition(data.status, 'cancelled')) return { ok: false, reason: `Aus Status "${data.status}" nicht abbrechbar.` };
-  const ok = await transition(client, orderId, supplierId, {
-    from: data.status,
-    to: 'cancelled',
-    reason: 'Vom Admin dauerhaft abgebrochen.',
+  return ladeStatusUndPruefeUebergang(client, orderId, supplierId, {
+    zielStatus: 'cancelled',
+    sonderfaelle: [
+      { wenn: (s) => s === 'cancelled', ergebnis: { ok: true, reason: 'Bereits abgebrochen.' } },
+      { wenn: (s) => s === 'processing', ergebnis: { ok: false, reason: 'Läuft gerade – erst nach Abschluss abbrechbar.' } },
+    ],
+    nichtErlaubtReason: (s) => `Aus Status "${s}" nicht abbrechbar.`,
+    transitionReason: 'Vom Admin dauerhaft abgebrochen.',
     patch: { next_attempt_at: null, locked_at: null, locked_by: null },
+    erfolgReason: 'Abgebrochen.',
+    fehlschlagReason: 'Abbrechen fehlgeschlagen (Status geändert).',
   });
-  return { ok, reason: ok ? 'Abgebrochen.' : 'Abbrechen fehlgeschlagen (Status geändert).' };
 }
 
 /**

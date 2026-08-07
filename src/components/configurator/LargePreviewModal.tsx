@@ -62,7 +62,7 @@ export function LargePreviewModal({ imageUrls, printAreas, views, garmentLight =
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center bg-black/85 p-4">
+    <div className="fokus-hell fixed inset-0 z-50 flex flex-col items-center bg-black/85 p-4">
       <div className="flex w-full max-w-3xl items-center justify-between py-2">
         <div className="flex gap-2">
           {availableViews.map((view) => (

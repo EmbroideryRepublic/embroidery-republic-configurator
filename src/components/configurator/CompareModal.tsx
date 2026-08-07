@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { X, Scale } from 'lucide-react';
 import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { produktBild } from '@/lib/assets';
+import { formatiereFarbname } from '@/lib/products/farben';
 
 interface CompareModalProps {
   onClose: () => void;
@@ -23,6 +24,28 @@ export function CompareModal({ onClose }: CompareModalProps) {
   const left = getProduct(leftId);
   const right = getProduct(rightId);
 
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  // Fokusmanagement für den modalen Dialog: beim Öffnen den Fokus hinein,
+  // beim Schliessen (Unmount) zurück auf das auslösende Element – analog
+  // zum CartDrawer-Muster (src/components/layout/CartDrawer.tsx).
+  useEffect(() => {
+    const zuvorFokussiertesElement = document.activeElement as HTMLElement | null;
+    dialogRef.current?.focus();
+    return () => {
+      zuvorFokussiertesElement?.focus();
+    };
+  }, []);
+
+  // Escape schliesst den Dialog wie jeden modalen Dialog.
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') onClose();
+    }
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [onClose]);
+
   const rows: { label: string; get: (p: ProductConfig | undefined) => string }[] = [
     { label: 'Marke', get: (p) => p?.brand ?? '–' },
     { label: 'Preis', get: (p) => (p ? `${t('product_from')} ${formatPrice(p.basePrice)}` : '–') },
@@ -30,18 +53,30 @@ export function CompareModal({ onClose }: CompareModalProps) {
     { label: 'Grammatur', get: (p) => (p?.weightGsm ? `${p.weightGsm} g/m²` : '–') },
     { label: 'Passform', get: (p) => p?.fit ?? '–' },
     { label: 'Größen', get: (p) => p?.sizes.join(', ') ?? '–' },
-    { label: 'Farben', get: (p) => p?.colors.map((c) => c.name).join(', ') ?? '–' },
+    { label: 'Farben', get: (p) => p?.colors.map((c) => formatiereFarbname(c.name)).join(', ') ?? '–' },
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="compare-modal-title"
+      ref={dialogRef}
+      tabIndex={-1}
+    >
       <div className="w-full max-w-2xl rounded-xl bg-white p-5 shadow-xl">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="flex items-center gap-2 font-serif text-lg font-semibold text-brand">
+          <h2 id="compare-modal-title" className="flex items-center gap-2 font-serif text-lg font-semibold text-brand">
             <Scale className="h-5 w-5 text-gold-dark" />
             {t('compare_title')}
           </h2>
-          <button type="button" onClick={onClose} className="rounded-md p-1 text-gray-400 hover:bg-gray-100">
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={t('common_close')}
+            className="rounded-md p-1 text-gray-400 hover:bg-gray-100"
+          >
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -95,7 +130,7 @@ export function CompareModal({ onClose }: CompareModalProps) {
           <tbody>
             {rows.map((row) => (
               <tr key={row.label} className="border-b border-gray-100">
-                <td className="w-1/3 py-2 text-xs font-medium uppercase tracking-wide text-brand/40">
+                <td className="w-1/3 py-2 text-xs font-medium uppercase tracking-wide text-brand/70">
                   {row.label}
                 </td>
                 <td className="w-1/3 py-2 text-brand/80">{row.get(left)}</td>

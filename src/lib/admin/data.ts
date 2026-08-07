@@ -62,6 +62,12 @@ export interface AdminOrderDetail {
   phone: string | null;
   message: string | null;
   totalPrice: number;
+  /** Netto-/Steuer-Aufschlüsselung – nur gesetzt, wenn zum Bestellzeitpunkt
+   *  bereits gespeichert (Migration 0014, ab 2026-07-22). Ältere Bestellungen
+   *  liefern hier `null`. */
+  taxAmount: number | null;
+  taxRate: number | null;
+  netTotal: number | null;
   shipping: { street: string; zip: string; city: string; country: string } | null;
   items: AdminOrderItemRow[];
   /** Live berechnete Lieferanten-Vorschau (unabhängig davon, ob schon ein
@@ -169,11 +175,43 @@ export async function listSupplierOrderPipeline(): Promise<AdminSupplierPipeline
   });
 }
 
-export async function listOrders(): Promise<AdminOrderListRow[]> {
+export interface ListOrdersOptions {
+  /** Volltextsuche über Bestellnummer, Name und E-Mail (siehe Anmerkung unten). */
+  suche?: string;
+  /** 0-basiert. */
+  seite?: number;
+  jeSeite?: number;
+}
+
+export interface ListOrdersErgebnis {
+  zeilen: AdminOrderListRow[];
+  gesamt: number;
+}
+
+/**
+ * Bestellliste mit serverseitiger Suche und Pagination (M1,
+ * docs/audit-produktionsreife.md: bislang `.limit(200)` ohne Suche/Blättern
+ * – bei 10.000 Bestellungen wären 9.800 unerreichbar gewesen).
+ *
+ * Die Suche läuft über `.or()` mit `ilike` auf Name/E-Mail/Firma. Eine
+ * Bestellnummer (z.B. "ER-2026-A1B2C3") lässt sich NICHT direkt per SQL
+ * suchen, da sie aus der ID abgeleitet wird (buildOrderNumber) statt
+ * gespeichert zu sein – bei einer Eingabe im Bestellnummernformat wird
+ * deshalb zusätzlich versucht, das enthaltene Kürzel gegen den Anfang der
+ * ID zu matchen.
+ */
+export async function listOrders(optionen: ListOrdersOptions = {}): Promise<ListOrdersErgebnis> {
   const supabase = createAdminClient();
-  const { data, error } = await supabase
+  const seite = Math.max(0, optionen.seite ?? 0);
+  const jeSeite = Math.min(200, Math.max(1, optionen.jeSeite ?? 50));
+  const von = seite * jeSeite;
+  const bis = von + jeSeite - 1;
+
+  let query = supabase
     .from('orders')
-    .select('id, created_at, order_type, customer_name, company, email, total_price, status, payment_status')
+    .select('id, created_at, order_type, customer_name, company, email, total_price, status, payment_status', {
+      count: 'exact',
+    })
     // Sichtbarkeitsregel (lib/orders/orderVisibility): stornierte Bestellungen
     // nie; echte Bestellungen erst nach Ablauf der Stornofrist; Anfragen sofort.
     // Bereits in der Datenbank gefiltert statt nachträglich zu verwerfen.
@@ -183,16 +221,24 @@ export async function listOrders(): Promise<AdminOrderListRow[]> {
     // würde Ware für einen abgebrochenen Bezahlvorgang beschafft. Dieselbe
     // Regel wie in imAdminSichtbar; die Zustände kommen von dort, damit sie
     // nicht an zwei Stellen gepflegt werden müssen.
-    .in('payment_status', [...BEARBEITBARE_ZAHLUNGSZUSTAENDE])
-    .order('created_at', { ascending: false })
-    .limit(200);
+    .in('payment_status', [...BEARBEITBARE_ZAHLUNGSZUSTAENDE]);
+
+  const suche = optionen.suche?.trim();
+  if (suche) {
+    const jokerErlaubt = suche.replace(/[%_]/g, '');
+    query = query.or(
+      `customer_name.ilike.%${jokerErlaubt}%,email.ilike.%${jokerErlaubt}%,company.ilike.%${jokerErlaubt}%`
+    );
+  }
+
+  const { data, error, count } = await query.order('created_at', { ascending: false }).range(von, bis);
 
   if (error || !data) {
     console.error('[admin] Bestellliste konnte nicht geladen werden:', error);
-    return [];
+    return { zeilen: [], gesamt: 0 };
   }
 
-  return data.map((row) => ({
+  const zeilen = data.map((row) => ({
     id: row.id as string,
     orderNumber: buildOrderNumber(row.id as string),
     createdAt: row.created_at as string,
@@ -204,6 +250,8 @@ export async function listOrders(): Promise<AdminOrderListRow[]> {
     status: row.status as string,
     paymentStatus: (row.payment_status as string) ?? 'not_required',
   }));
+
+  return { zeilen, gesamt: count ?? zeilen.length };
 }
 
 export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail | null> {
@@ -212,7 +260,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   const { data: order, error: orderError } = await supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at'
+      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at'
     )
     .eq('id', orderId)
     .single();
@@ -303,6 +351,9 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     phone: (order.phone as string | null) ?? null,
     message: (order.message as string | null) ?? null,
     totalPrice: Number(order.total_price ?? 0),
+    taxAmount: order.tax_amount !== null && order.tax_amount !== undefined ? Number(order.tax_amount) : null,
+    taxRate: order.tax_rate !== null && order.tax_rate !== undefined ? Number(order.tax_rate) : null,
+    netTotal: order.net_total !== null && order.net_total !== undefined ? Number(order.net_total) : null,
     shipping: order.shipping_street
       ? {
           street: order.shipping_street as string,
@@ -323,5 +374,135 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
       updatedAt: row.updated_at as string,
       lastRun: (row.last_run as SupplierWorkerRunResult | null) ?? null,
     })),
+  };
+}
+
+export interface AdminCustomerRow {
+  id: string;
+  email: string;
+  createdAt: string;
+  displayName: string | null;
+  phone: string | null;
+  company: string | null;
+  newsletterOptIn: boolean;
+  emailConfirmed: boolean;
+  orderCount: number;
+}
+
+/**
+ * Kundenliste für den Adminbereich – additiv seit dem Kundenkonto
+ * (supabase/migrations/0023). Führt zwei Quellen zusammen: `auth.users`
+ * (E-Mail, Bestätigungsstatus – nur über `auth.admin.listUsers()` erreichbar,
+ * ein normaler `.from('users')`-Zugriff funktioniert hier nicht, weil
+ * `auth` ein eigenes, von PostgREST getrenntes Schema ist) und
+ * `customer_profiles` (Name, Telefon, Newsletter). Zusätzlich die Anzahl
+ * verknüpfter Bestellungen – bewusst gezählt, nicht geladen, damit die
+ * Liste bei vielen Bestellungen je Kunde nicht schwer wird.
+ */
+export async function listCustomers(): Promise<AdminCustomerRow[]> {
+  const supabase = createAdminClient();
+
+  const { data: nutzer, error: authFehler } = await supabase.auth.admin.listUsers({ perPage: 1000 });
+  if (authFehler) {
+    console.error('[admin] Kundenliste (auth.users) konnte nicht geladen werden:', authFehler.message);
+    return [];
+  }
+
+  const { data: profile } = await supabase
+    .from('customer_profiles')
+    .select('id, display_name, phone, company, newsletter_opt_in');
+  const profilNachId = new Map((profile ?? []).map((p) => [p.id as string, p]));
+
+  const { data: bestellzahlen } = await supabase.from('orders').select('customer_id').not('customer_id', 'is', null);
+  const anzahlNachId = new Map<string, number>();
+  for (const row of bestellzahlen ?? []) {
+    const id = row.customer_id as string;
+    anzahlNachId.set(id, (anzahlNachId.get(id) ?? 0) + 1);
+  }
+
+  return nutzer.users
+    .map((u) => {
+      const p = profilNachId.get(u.id);
+      return {
+        id: u.id,
+        email: u.email ?? '(keine E-Mail)',
+        createdAt: u.created_at,
+        displayName: (p?.display_name as string | null) ?? null,
+        phone: (p?.phone as string | null) ?? null,
+        company: (p?.company as string | null) ?? null,
+        newsletterOptIn: Boolean(p?.newsletter_opt_in),
+        emailConfirmed: Boolean(u.email_confirmed_at),
+        orderCount: anzahlNachId.get(u.id) ?? 0,
+      };
+    })
+    .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+}
+
+export interface AdminStatistik {
+  bestellungenGesamt: number;
+  anfragenGesamt: number;
+  umsatzBrutto: number;
+  umsatzNetto: number;
+  durchschnittsbestellwert: number;
+  statusVerteilung: { status: string; anzahl: number }[];
+  bestellungenLetzte30Tage: number;
+  umsatzLetzte30Tage: number;
+}
+
+/**
+ * Kennzahlen für das Admin-Dashboard. Bewusst aus echten Bestelldaten
+ * berechnet (keine Schätzung) – dieselbe Regel wie überall im Projekt:
+ * lieber eine kleine, wahre Zahl als eine große, geratene.
+ *
+ * NUR echte Bestellungen (order_type = 'order') fließen in Umsatzzahlen
+ * ein; Anfragen sind unverbindlich und werden separat gezählt.
+ */
+export async function ladeStatistik(): Promise<AdminStatistik> {
+  const supabase = createAdminClient();
+  const leer: AdminStatistik = {
+    bestellungenGesamt: 0,
+    anfragenGesamt: 0,
+    umsatzBrutto: 0,
+    umsatzNetto: 0,
+    durchschnittsbestellwert: 0,
+    statusVerteilung: [],
+    bestellungenLetzte30Tage: 0,
+    umsatzLetzte30Tage: 0,
+  };
+
+  const { data, error } = await supabase
+    .from('orders')
+    .select('order_type, status, total_price, net_total, created_at')
+    .neq('status', 'cancelled');
+  if (error || !data) {
+    console.error('[admin] Statistik konnte nicht geladen werden:', error?.message);
+    return leer;
+  }
+
+  const bestellungen = data.filter((r) => r.order_type === 'order');
+  const anfragen = data.filter((r) => r.order_type === 'inquiry');
+  const grenze30Tage = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+  const letzte30Tage = bestellungen.filter((r) => (r.created_at as string) >= grenze30Tage);
+
+  const summiere = (rows: typeof bestellungen, feld: 'total_price' | 'net_total') =>
+    rows.reduce((s, r) => s + Number(r[feld] ?? 0), 0);
+
+  const statusZaehler = new Map<string, number>();
+  for (const r of bestellungen) {
+    const status = r.status as string;
+    statusZaehler.set(status, (statusZaehler.get(status) ?? 0) + 1);
+  }
+
+  const umsatzBrutto = summiere(bestellungen, 'total_price');
+
+  return {
+    bestellungenGesamt: bestellungen.length,
+    anfragenGesamt: anfragen.length,
+    umsatzBrutto: Math.round(umsatzBrutto * 100) / 100,
+    umsatzNetto: Math.round(summiere(bestellungen, 'net_total') * 100) / 100,
+    durchschnittsbestellwert: bestellungen.length > 0 ? Math.round((umsatzBrutto / bestellungen.length) * 100) / 100 : 0,
+    statusVerteilung: [...statusZaehler.entries()].map(([status, anzahl]) => ({ status, anzahl })),
+    bestellungenLetzte30Tage: letzte30Tage.length,
+    umsatzLetzte30Tage: Math.round(summiere(letzte30Tage, 'total_price') * 100) / 100,
   };
 }

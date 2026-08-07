@@ -25,7 +25,8 @@ import { produktBild, PLATZHALTER_BILD } from '@/lib/assets';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ProduktFarbwahl } from '@/components/produkt/ProduktFarbwahl';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
-import { cm, formatiereGeld } from '@/lib/format';
+import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
+import { cm } from '@/lib/format';
 import { SHIPPING_RATES } from '@/config/shipping';
 import { PRODUKTIONSZEIT_TEXT } from '@/config/company';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -35,6 +36,42 @@ import type { ProductConfig } from '@/config/products/types';
 
 export function generateStaticParams() {
   return alleProduktSlugs().map((slug) => ({ slug }));
+}
+
+// Der Katalog ist Code (src/config/products/*), kein Laufzeit-Datenbestand –
+// ein neues Produkt kommt nur per Deploy dazu, und generateStaticParams()
+// erfasst es dann automatisch. `false` lässt Next.js unbekannte Slugs schon
+// im Routing mit echtem 404 und dessen eigenem (kurzem) Cache-Control
+// beantworten, statt sie wie eine echte Produktseite dynamisch zu rendern
+// und mit demselben einjährigen s-maxage zu cachen (Soft-404-Risiko).
+export const dynamicParams = false;
+
+// Google zeigt den <title>-Tag ab ca. 60 Zeichen abgeschnitten an – und das
+// Root-Layout hängt an JEDEN Titel automatisch den Marken-Suffix aus seinem
+// Template an (src/app/layout.tsx: `%s | Embroidery Republic Germany`). Der
+// Suffix zählt für die Darstellung mit, also bleibt für den hier erzeugten
+// Titel nur der Rest des Budgets übrig.
+const ROOT_TITEL_SUFFIX_LAENGE = ' | Embroidery Republic Germany'.length;
+const GOOGLE_TITEL_ZIELLAENGE = 60;
+const PRODUKT_TITEL_BUDGET = GOOGLE_TITEL_ZIELLAENGE - ROOT_TITEL_SUFFIX_LAENGE;
+
+// Richtwert für Meta-Descriptions in der Google-Trefferliste; etwas Puffer
+// unter den üblichen 160 Zeichen, damit das „…"-Kürzen selten zuschlägt.
+const GOOGLE_DESCRIPTION_ZIELLAENGE = 155;
+
+/**
+ * Kürzt Text hart auf `maxLaenge`, bevorzugt an einer Wortgrenze, und hängt
+ * bei tatsächlicher Kürzung ein „…" an. Einziger Ort für diese Regel, damit
+ * Titel und Description dieselbe Kürzungslogik teilen.
+ */
+function kuerzenAufLaenge(text: string, maxLaenge: number): string {
+  if (text.length <= maxLaenge) return text;
+  const budget = maxLaenge - 1; // Platz für das „…"
+  const abschnitt = text.slice(0, budget);
+  const letzteLeerstelle = abschnitt.lastIndexOf(' ');
+  // Nur an der Wortgrenze abschneiden, wenn dabei nicht zu viel verloren geht.
+  const gekuerzt = letzteLeerstelle > budget * 0.6 ? abschnitt.slice(0, letzteLeerstelle) : abschnitt;
+  return `${gekuerzt.trimEnd()}…`;
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
@@ -52,16 +89,34 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     : ersteGroesse === letzteGroesse
       ? `, Größe ${ersteGroesse}`
       : `, Größen ${ersteGroesse}–${letzteGroesse}`;
-  const beschreibung =
-    `${produkt.name} von ${produkt.brand} – ${produkt.material}${produkt.weightGsm ? `, ${produkt.weightGsm} g/m²` : ''}, ` +
+  // Nur die häufigste/erste Materialzusammensetzung in die Description – bei
+  // Produkten mit Farbgruppen-Ausnahmen (z.B. "80% Baumwolle / 20% Polyester
+  // (Heather Grey: 92% Baumwolle / 8% Viskose)") steht die volle Aufschlüsselung
+  // bereits sichtbar in der Datenzeile "Material" weiter unten auf der Seite.
+  const materialKurz = (produkt.material.split('(')[0] ?? produkt.material).trim();
+  const beschreibungRoh =
+    `${produkt.name} von ${produkt.brand} – ${materialKurz}${produkt.weightGsm ? `, ${produkt.weightGsm} g/m²` : ''}, ` +
     `${produkt.colors.length} Farben${groessenText}. ` +
     `Mit DTF-Transferdruck oder Stickerei veredeln, ab 1 Stück.`;
+  const beschreibung = kuerzenAufLaenge(beschreibungRoh, GOOGLE_DESCRIPTION_ZIELLAENGE);
+
+  // Titel bevorzugt mit Marke ("{Name} | {Marke}"); passt das nicht ins
+  // Budget, erst die Marke weglassen, erst als letzter Ausweg den Namen
+  // selbst kürzen – "bedrucken & besticken" fällt komplett weg, das steht
+  // schon sichtbar in H1/Beschreibung.
+  const titelMitMarke = `${produkt.name} | ${produkt.brand}`;
+  const titel =
+    titelMitMarke.length <= PRODUKT_TITEL_BUDGET
+      ? titelMitMarke
+      : produkt.name.length <= PRODUKT_TITEL_BUDGET
+        ? produkt.name
+        : kuerzenAufLaenge(produkt.name, PRODUKT_TITEL_BUDGET);
 
   // Platzhalter (Bildimport noch offen) NIE als OpenGraph-Vorschaubild
   // ausliefern (ADR 0004): kein Platzhalter in externen Ausgaben.
   const ogBild = produkt.colors.length ? produktBild(produkt.id, produkt.colors) : undefined;
   return {
-    title: `${produkt.name} bedrucken & besticken | ${produkt.brand}`,
+    title: titel,
     description: beschreibung,
     alternates: { canonical: `/produkt/${produkt.id}` },
     openGraph: {
@@ -102,7 +157,9 @@ function MiniKarte({ produkt }: { produkt: ProductConfig }) {
       </div>
       <p className="mt-3 text-[11px] uppercase tracking-wide text-brand/40">{produkt.brand}</p>
       <p className="text-sm font-medium text-brand transition-colors group-hover:text-gold-dark">{produkt.name}</p>
-      <p className="mt-1 text-xs text-brand/55">ab {formatiereGeld(produkt.basePrice)}</p>
+      <p className="mt-1 text-xs text-brand/55">
+        ab <WaehrungsPreis betragInEur={produkt.basePrice} />
+      </p>
     </Link>
   );
 }
@@ -173,7 +230,9 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
 
             <div className="mt-6 rounded-2xl border border-gold/25 bg-white p-5 shadow-[0_16px_40px_-30px_rgba(43,36,28,0.4)]">
               <p className="text-sm text-brand/50">Ab</p>
-              <p className="font-serif text-3xl font-normal text-brand">{formatiereGeld(produkt.basePrice)}</p>
+              <p className="font-serif text-3xl font-normal text-brand">
+                <WaehrungsPreis betragInEur={produkt.basePrice} />
+              </p>
               <p className="mt-1 text-xs text-brand/50">
                 inkl. {steuersatzFuer().satz} % MwSt. · pro Stück zzgl. Veredelung · ohne Mindestmenge ·
                 Staffelpreise ab 5 Stück
@@ -195,7 +254,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
                 </li>
                 <li className="flex items-center gap-2">
                   <Truck className="h-4 w-4 flex-shrink-0 text-gold-dark" aria-hidden />
-                  Versandkostenfrei ab {formatiereGeld(SHIPPING_RATES.DE.freeFrom)} (DE)
+                  Versandkostenfrei ab <WaehrungsPreis betragInEur={SHIPPING_RATES.DE.freeFrom} /> (DE)
                 </li>
                 <li className="flex items-center gap-2">
                   <BadgeCheck className="h-4 w-4 flex-shrink-0 text-gold-dark" aria-hidden />
@@ -329,7 +388,11 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
               Armausschnitte, Länge von der höchsten Schulterstelle bis zur Unterkante. Toleranz ± 2,5 cm.
             </p>
             <div className="mt-3 overflow-x-auto">
-              <table className="w-full min-w-80 text-sm">
+              {/* min-w-56 (224px) statt min-w-80 (320px): passt bei 320px
+                  Viewport-Breite noch in die Karte (320 − 2×16px Seiten- −
+                  2×24px Kartenpolster = 240px) – sonst fällt „Länge" ohne
+                  jedes Scroll-Signal aus dem Sichtbereich. */}
+              <table className="w-full min-w-56 text-sm">
                 <thead>
                   <tr className="border-b border-brand/10 text-left text-xs uppercase tracking-wide text-brand/50">
                     <th scope="col" className="py-2 pr-4 font-medium">

@@ -23,6 +23,7 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { protokoll } from '@/lib/observability/log';
 import { processDueSupplierOrders } from '@/lib/suppliers/lifecycle/orchestrator';
 import { ABSCHLUSS_CLAIM_VERWAIST_NACH_MINUTEN, ZAHLUNG_VERFAELLT_NACH_STUNDEN } from '@/config/zahlung';
+import { ANFRAGE_LOESCHT_NACH_MONATEN, BESTELLUNG_ANONYMISIERT_NACH_JAHREN } from '@/config/dsgvo';
 
 export const dynamic = 'force-dynamic';
 // Läufe können (mit echter Browser-Automatisierung) länger dauern.
@@ -86,12 +87,22 @@ async function raeumeAuf(): Promise<{
   ereignisse: number;
   zahlungenVerfallen: number;
   abschluesseFreigegeben: number;
+  anfragenGeloescht: number;
+  bestellungenAnonymisiert: number;
   fehler?: string;
 }> {
-  const leer = { rateLimitFenster: 0, sitzungen: 0, ereignisse: 0, zahlungenVerfallen: 0, abschluesseFreigegeben: 0 };
+  const leer = {
+    rateLimitFenster: 0,
+    sitzungen: 0,
+    ereignisse: 0,
+    zahlungenVerfallen: 0,
+    abschluesseFreigegeben: 0,
+    anfragenGeloescht: 0,
+    bestellungenAnonymisiert: 0,
+  };
   try {
     const db = createAdminClient();
-    const [limits, sitzungen, ereignisse, verfall, haengend] = await Promise.all([
+    const [limits, sitzungen, ereignisse, verfall, haengend, anfragen, anonymisiert] = await Promise.all([
       db.rpc('raeume_rate_limit_auf'),
       db.rpc('raeume_admin_sitzungen_auf'),
       db.rpc('raeume_system_ereignisse_auf'),
@@ -100,8 +111,17 @@ async function raeumeAuf(): Promise<{
       // Z5: hängengebliebene Phase-2-Ansprüche freigeben, damit ein neuer
       // Lauf sie übernimmt (Absturz mitten in Phase 2).
       db.rpc('gib_haengende_abschluesse_frei', { p_minuten: ABSCHLUSS_CLAIM_VERWAIST_NACH_MINUTEN }),
+      // DSGVO (H6, Migration 0022): Anfragen ohne Vertrag löschen und
+      // Bestellungen nach Ablauf der steuerlichen Aufbewahrungsfrist
+      // anonymisieren – siehe docs/dsgvo-loeschkonzept.md. Bei den heutigen
+      // (jungen) Testdaten dauerhaft ein No-op, bis Daten tatsächlich so alt
+      // werden; genau dann soll es aber ohne manuellen Eingriff greifen.
+      db.rpc('loesche_alte_anfragen', { p_monate: ANFRAGE_LOESCHT_NACH_MONATEN }),
+      db.rpc('anonymisiere_alte_bestellungen', { p_jahre: BESTELLUNG_ANONYMISIERT_NACH_JAHREN }),
     ]);
-    const fehlerObj = limits.error || sitzungen.error || ereignisse.error || verfall.error || haengend.error;
+    const fehlerObj =
+      limits.error || sitzungen.error || ereignisse.error || verfall.error || haengend.error ||
+      anfragen.error || anonymisiert.error;
     if (fehlerObj) {
       protokoll.fehler('CRON', 'aufraeumen_fehlgeschlagen', fehlerObj.message);
       return { ...leer, fehler: fehlerObj.message };
@@ -112,6 +132,8 @@ async function raeumeAuf(): Promise<{
       ereignisse: (ereignisse.data as number) ?? 0,
       zahlungenVerfallen: (verfall.data as number) ?? 0,
       abschluesseFreigegeben: (haengend.data as number) ?? 0,
+      anfragenGeloescht: (anfragen.data as number) ?? 0,
+      bestellungenAnonymisiert: (anonymisiert.data as number) ?? 0,
     };
   } catch (fehler) {
     const meldung = fehler instanceof Error ? fehler.message : String(fehler);

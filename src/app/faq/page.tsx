@@ -7,6 +7,11 @@ export const metadata = {
   description:
     'Antworten zu Bestellmengen, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung bei Embroidery Republic Germany.',
   alternates: { canonical: '/faq' },
+  openGraph: {
+    title: 'Häufige Fragen',
+    description:
+      'Antworten zu Bestellmengen, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung.',
+  },
 };
 
 /**
@@ -66,7 +71,7 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Wie hoch sind die Versandkosten?',
-        a: 'Innerhalb Deutschlands betragen die Versandkosten 6,90 € – ab einem Bestellwert von 75,00 € liefern wir versandkostenfrei. Für Lieferungen innerhalb der Europäischen Union betragen die Versandkosten 11,99 €, ab einem Bestellwert von 100,00 € entfallen sie. Die für Ihre Bestellung geltenden Kosten werden im Bestellvorgang automatisch anhand von Lieferland und Bestellwert berechnet und vor dem Absenden transparent ausgewiesen.',
+        a: 'Wir liefern aktuell ausschließlich innerhalb Deutschlands. Die Versandkosten betragen 6,90 € – ab einem Bestellwert von 75,00 € liefern wir versandkostenfrei. Die Lieferung in weitere europäische Länder bereiten wir vor und geben sie bekannt, sobald sie verfügbar ist.',
       },
       {
         q: 'Kann ich personalisierte Produkte zurückgeben?',
@@ -108,7 +113,7 @@ export default function FaqPage() {
             </h2>
             <div className="mt-4 space-y-3">
               {gruppe.fragen.map((item) => (
-                <div key={item.q} className="rounded-2xl border border-gold/20 bg-white p-5 shadow-elegant">
+                <div key={item.q} className="rounded-xl border border-gold/20 bg-white p-5 shadow-elegant">
                   <h3 className="mb-1.5 font-medium text-brand">{item.q}</h3>
                   <p className="text-sm leading-relaxed text-brand/70">{item.a}</p>
                 </div>

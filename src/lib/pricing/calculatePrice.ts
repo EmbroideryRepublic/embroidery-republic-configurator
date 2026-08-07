@@ -1,5 +1,5 @@
 import type { ConfigElement, PricingRule, PrintView } from '@/types';
-import { evaluateRules, type PricingIssue } from './ruleEngine';
+import { evaluateRules, isRuleApplicable, type PricingIssue } from './ruleEngine';
 
 /**
  * Zentrale Preisberechnung des Konfigurators.
@@ -131,15 +131,24 @@ function getNextTier(quantity: number): QuantityTier | null {
  */
 export const MINIMUM_QUANTITY = 1;
 
-function getPositionPrice(view: PrintView, rules: PricingRule[]): number {
-  const rule = rules.find((r) => r.isActive && r.ruleType === 'per_position' && r.printView === view);
-  return rule?.price ?? 0;
+// Nutzt dieselbe Anwendbarkeitsprüfung wie evaluateRules() (Mengenfenster,
+// Gültigkeitszeitraum) – sonst weicht dieser Pfad von der Regel-Engine ab
+// und liefert bei Staffel-/Zeitfenster-Regeln einen falschen Preis.
+//
+// SUMMIERT alle passenden Regeln (wie evaluateRules()), statt nur die erste
+// zu nehmen: Sind z.B. zwei per_position-Regeln für dieselbe Ansicht aktiv,
+// gelten beide gemeinsam – sonst würde ein Teil des Preises still verschwinden.
+function getPositionPrice(view: PrintView, rules: PricingRule[], quantity: number): number {
+  return rules
+    .filter((r) => r.ruleType === 'per_position' && r.printView === view && isRuleApplicable(r, quantity))
+    .reduce((sum, r) => sum + r.price, 0);
 }
 
-function getElementTypeBasePrice(type: 'logo' | 'text', rules: PricingRule[]): number {
+function getElementTypeBasePrice(type: 'logo' | 'text', rules: PricingRule[], quantity: number): number {
   const ruleType = type === 'logo' ? 'per_logo' : 'per_text';
-  const rule = rules.find((r) => r.isActive && r.ruleType === ruleType);
-  return rule?.price ?? 0;
+  return rules
+    .filter((r) => r.ruleType === ruleType && isRuleApplicable(r, quantity))
+    .reduce((sum, r) => sum + r.price, 0);
 }
 
 /**
@@ -159,17 +168,27 @@ function getBillableAreaCm2(element: ConfigElement): number {
 
 /**
  * Variable Kosten eines Elements: entweder Fläche × €/cm² ODER
- * (Stiche / 1000) × €/1000-Stiche – je nachdem, welche Regel aktiv ist.
+ * (Stiche / 1000) × €/1000-Stiche – je nachdem, welcher REGELTYP aktiv ist.
+ * Sind mehrere Regeln DESSELBEN Typs gleichzeitig aktiv (z.B. zwei
+ * per_cm2-Regeln), gelten sie gemeinsam und werden summiert – wie
+ * evaluateRules() es für den Veredelungstopf tut. Nur der TYP
+ * (Fläche vs. Stichzahl) bleibt exklusiv, nicht die einzelne Regel.
+ *
+ * Nutzt dieselbe Anwendbarkeitsprüfung wie getPositionPrice()/
+ * getElementTypeBasePrice() (Mengenfenster, Gültigkeitszeitraum) – sonst
+ * weicht dieser Pfad von der Regel-Engine ab und liefert bei Staffel-/
+ * Zeitfenster-Regeln einen falschen Preis.
  */
-function getVariableCost(element: ConfigElement, rules: PricingRule[]): number {
-  const stitchRule = rules.find((r) => r.isActive && r.ruleType === 'per_1000_stitches');
-  if (stitchRule) {
+function getVariableCost(element: ConfigElement, rules: PricingRule[], quantity: number): number {
+  const stitchRules = rules.filter((r) => r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, quantity));
+  if (stitchRules.length > 0) {
     const stitches = element.estimatedStitches ?? 0;
-    return (stitches / 1000) * stitchRule.price;
+    return stitchRules.reduce((sum, r) => sum + (stitches / 1000) * r.price, 0);
   }
-  const areaRule = rules.find((r) => r.isActive && r.ruleType === 'per_cm2');
-  if (areaRule) {
-    return getBillableAreaCm2(element) * areaRule.price;
+  const areaRules = rules.filter((r) => r.ruleType === 'per_cm2' && isRuleApplicable(r, quantity));
+  if (areaRules.length > 0) {
+    const areaCm2 = getBillableAreaCm2(element);
+    return areaRules.reduce((sum, r) => sum + areaCm2 * r.price, 0);
   }
   return 0;
 }
@@ -189,7 +208,7 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // gegenüber "nur eine Fläche", also auch kein Aufschlag.
   const distinctViewCount = new Set(elements.map((el) => el.view)).size;
   const getEffectivePositionPrice = (view: PrintView) =>
-    distinctViewCount > 1 ? getPositionPrice(view, pricingRules) : 0;
+    distinctViewCount > 1 ? getPositionPrice(view, pricingRules, quantity) : 0;
 
   // ── Regelauswertung über die Engine ─────────────────────────────────
   // Alle Beträge kommen aus den Preisregeln, ausgewertet von
@@ -203,14 +222,19 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
     chargePositionFees: distinctViewCount > 1,
   });
 
-  const elementBaseFeeTotal = elements.reduce((sum, el) => sum + getElementTypeBasePrice(el.type, pricingRules), 0);
+  const elementBaseFeeTotal = elements.reduce(
+    (sum, el) => sum + getElementTypeBasePrice(el.type, pricingRules, quantity),
+    0
+  );
   const positionFeeTotal = elements.reduce((sum, el) => sum + getEffectivePositionPrice(el.view), 0);
-  const variableCostTotal = elements.reduce((sum, el) => sum + getVariableCost(el, pricingRules), 0);
+  const variableCostTotal = elements.reduce((sum, el) => sum + getVariableCost(el, pricingRules, quantity), 0);
 
   const perElement = elements.map((el) => ({
     elementId: el.id,
     price:
-      getElementTypeBasePrice(el.type, pricingRules) + getEffectivePositionPrice(el.view) + getVariableCost(el, pricingRules),
+      getElementTypeBasePrice(el.type, pricingRules, quantity) +
+      getEffectivePositionPrice(el.view) +
+      getVariableCost(el, pricingRules, quantity),
   }));
 
   // Dynamisch je tatsächlich genutzter Ansicht akkumulieren (offene View-IDs).
@@ -220,7 +244,8 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   const areaPriceByView: Record<string, number> = {};
   for (const el of elements) {
     areaPriceByView[el.view] =
-      (areaPriceByView[el.view] ?? 0) + getVariableCost(el, pricingRules) * (1 - tier.veredelungDiscountPercent / 100);
+      (areaPriceByView[el.view] ?? 0) +
+      getVariableCost(el, pricingRules, quantity) * (1 - tier.veredelungDiscountPercent / 100);
   }
 
   // Grundpreis + Grundgebühren + Positionsaufschlag = "fester" Anteil,

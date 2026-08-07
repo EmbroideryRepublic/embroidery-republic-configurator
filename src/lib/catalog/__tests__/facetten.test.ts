@@ -14,8 +14,9 @@ import { join } from 'node:path';
 import { PRODUCTS } from '@/config/products';
 import {
   FARBGRUPPEN, GESCHLECHTER, MATERIAL_GRUPPEN, PASSFORMEN,
-  farbgruppenVon, geschlechterVon, materialGruppen, passformVon,
+  geschlechterVon, materialGruppen, passformVon,
 } from '@/config/products/facetten';
+import { farbgruppenVon } from '../filter';
 import { loeseAuf } from '../verfuegbarkeit';
 
 test('jedes Produkt hat eine Materialgruppe', () => {

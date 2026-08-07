@@ -65,11 +65,6 @@ export const GROESSEN_LEITERN: Record<string, GroessenLeiter> = {
 /** Die Standard-Leiter (Konfektion) – nie undefined. */
 const KONFEKTION = GROESSEN_LEITERN[DEFAULT_GROESSEN_LEITER]!;
 
-/** Leiterdefinition oder undefined (unbekannte ID). */
-export function groessenLeiter(id: string): GroessenLeiter | undefined {
-  return GROESSEN_LEITERN[id];
-}
-
 /**
  * Die Größenleiter eines Produkts: eigener `sizeScale`-Override zuerst, sonst
  * die Leiter seiner Produktart (Register), sonst die Konfektions-Standardleiter.

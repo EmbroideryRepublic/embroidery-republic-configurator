@@ -2,7 +2,17 @@ import Link from 'next/link';
 import { TodoNote, Todo } from '@/components/legal/TodoNote';
 import { COMPANY } from '@/config/company';
 
-export const metadata = { title: 'Impressum' };
+export const metadata = {
+  title: 'Impressum',
+  description:
+    'Anbieterkennzeichnung nach § 5 DDG: Kontaktdaten und Vertretungsberechtigte von Embroidery Republic Germany.',
+  alternates: { canonical: '/impressum' },
+  openGraph: {
+    title: 'Impressum',
+    description:
+      'Anbieterkennzeichnung nach § 5 DDG: Kontaktdaten und Vertretungsberechtigte von Embroidery Republic Germany.',
+  },
+};
 
 export default function ImpressumPage() {
   return (

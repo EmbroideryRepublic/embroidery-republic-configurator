@@ -20,9 +20,6 @@ export const COMPANY = {
 
   phone: '0173 7532910',
   phoneHref: 'tel:+491737532910',
-  // Die tatsächlich existierende Firmendomain ist .com (per DNS verifiziert:
-  // IONOS-Nameserver, aktive MX-Records, gültiger SPF). Die zuvor eingetragene
-  // .de-Domain ist NICHT registriert – im Impressum wäre das ein Mangel.
   email: 'info@ergermany.de',
   emailHref: 'mailto:info@ergermany.de',
 } as const;

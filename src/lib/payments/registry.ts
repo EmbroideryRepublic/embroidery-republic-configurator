@@ -14,7 +14,7 @@
 import { istTestmodus } from '@/config/testmodus';
 import { testAnbieter } from './providers/testAnbieter';
 import { stripeAnbieter } from './providers/stripe';
-import { stripeKonfigurationsStand } from './providers/stripeKonfiguration';
+import { stripeKonfigurationsStand, warneBeiProduktivSchluessel } from './providers/stripeKonfiguration';
 import type { ZahlungsAnbieter, ZahlungsAnbieterId } from './types';
 
 /**
@@ -67,6 +67,10 @@ export class ZahlungsAnbieterFehlt extends Error {}
 export function waehleZahlungsAnbieter(gewuenscht?: ZahlungsAnbieterId): ZahlungsAnbieter {
   if (istTestmodus()) return testAnbieter;
 
+  // Vor jeder echten Verwendung prüfen: ein sk_live_-Schlüssel außerhalb des
+  // Produktivbetriebs wäre der teuerste denkbare Konfigurationsfehler.
+  warneBeiProduktivSchluessel();
+
   const id = gewuenscht ?? standardAnbieter();
   const anbieter = ANBIETER[id];
   if (!anbieter || !istEinsatzbereit(id)) {
@@ -89,10 +93,4 @@ export function waehleZahlungsAnbieter(gewuenscht?: ZahlungsAnbieterId): Zahlung
  */
 function standardAnbieter(): ZahlungsAnbieterId {
   return 'stripe';
-}
-
-/** Ist überhaupt ein Anbieter einsatzbereit? Für Anzeige und Diagnose. */
-export function zahlungsAnbieterVerfuegbar(id?: ZahlungsAnbieterId): boolean {
-  if (istTestmodus()) return true;
-  return istEinsatzbereit(id ?? standardAnbieter());
 }

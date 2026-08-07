@@ -13,6 +13,17 @@ export function createClient() {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
+      // Ohne eigene cookieOptions setzt @supabase/ssr httpOnly:false und kein
+      // secure – schwächer als das Admin-Cookie (lib/admin/auth.ts). Es gibt
+      // keinen Client-Supabase-Client in diesem Projekt (kein
+      // createBrowserClient), der auf Lesezugriff aus JavaScript angewiesen
+      // wäre – httpOnly kann also gefahrlos analog zum Admin-Cookie gesetzt
+      // werden. secure nur in Produktion, sonst bräche lokales http.
+      cookieOptions: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+      },
       cookies: {
         getAll() {
           return cookieStore.getAll();

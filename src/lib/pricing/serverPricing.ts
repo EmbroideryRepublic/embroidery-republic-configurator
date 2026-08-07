@@ -17,7 +17,8 @@
  */
 import { getProduct } from '@/config/products';
 import { getPricingRules } from '@/config/pricingRules';
-import { steuersatzFuer } from '@/config/pricing/steuer';
+import { STANDARDLAND, steuersatzFuer } from '@/config/pricing/steuer';
+import { landCodeForCountry } from '@/config/shipping';
 import { calculatePipeline } from './pipeline';
 import { sumSizeQuantities } from './quantity';
 import type { PriceLine } from './priceLine';
@@ -139,7 +140,9 @@ export async function priceCart(items: CartItem[], shippingCountry?: string): Pr
     shippingCost: round2(pipeline.lines.filter((l) => l.category === 'versand').reduce((s, l) => s + l.total, 0)),
     totalPrice: pipeline.grandTotal,
     taxAmount: pipeline.taxAmount,
-    taxRate: steuersatzFuer().satz,
+    // Dieselbe Länderauflösung wie in orderStage.ts – EIN Weg vom
+    // Lieferland zum Steuersatz, an keiner zweiten Stelle nachgebaut.
+    taxRate: steuersatzFuer(landCodeForCountry(shippingCountry) ?? STANDARDLAND).satz,
     netTotal: round2(pipeline.grandTotal - pipeline.taxAmount),
     totalQuantity: priced.reduce((sum, p) => sum + p.quantity, 0),
     unpriceable: priced.filter((p) => !p.priced).map((p) => p.productId),

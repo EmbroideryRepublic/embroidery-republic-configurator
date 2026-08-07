@@ -7,6 +7,11 @@ export const metadata = {
   title: 'Über uns',
   description:
     'Embroidery Republic Germany veredelt Firmen- und Teambekleidung per DTF-Transferdruck und Stickerei – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
+  openGraph: {
+    title: 'Über Embroidery Republic Germany',
+    description:
+      'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
+  },
 };
 
 const CAPABILITIES = [

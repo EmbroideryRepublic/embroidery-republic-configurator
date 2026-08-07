@@ -17,6 +17,8 @@ import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { priceCart, priceClaimDeviation, type ServerItemPrice } from '@/lib/pricing/serverPricing';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
 import { formatiereGeld } from '@/lib/format';
+import { aktuellerKunde } from '@/lib/account/session';
+import { ladeProfil as ladeProfilDb } from '@/lib/account/data';
 
 export interface SubmitResult {
   success: boolean;
@@ -48,6 +50,13 @@ export interface SubmitOrderInput {
   contact: CheckoutContact;
   shipping: CheckoutShipping;
   paymentMethod: OrderPaymentMethod;
+  /**
+   * Zustimmung zu AGB und Datenschutzerklärung. Der Client prüft das bereits
+   * vor dem Absenden – hier zusätzlich serverseitig erzwungen
+   * (validateSubmission), damit eine Bestellung ohne Zustimmung nicht allein
+   * durch einen manipulierten oder älteren Client zustande kommt.
+   */
+  acceptedTerms: boolean;
   /**
    * Kennung DIESES Absendevorgangs, im Browser erzeugt und über alle
    * Wiederholungen hinweg unverändert. Verhindert, dass Doppelklick,
@@ -225,6 +234,7 @@ async function persistAndNotifyCore(params: {
   items: CartItem[];
   shipping?: CheckoutShipping;
   paymentMethod?: OrderPaymentMethod;
+  acceptedTerms?: boolean;
   clientRequestId?: string;
 }): Promise<SubmitResult> {
   // ── VOLLSTÄNDIGE PRÜFUNG DER ÜBERMITTELTEN ANGABEN ──────────────────────
@@ -240,6 +250,7 @@ async function persistAndNotifyCore(params: {
     email: params.email,
     customerName: params.customerName,
     shipping: params.shipping,
+    acceptedTerms: params.acceptedTerms,
   });
   if (!validierung.valid) {
     console.warn(
@@ -380,8 +391,24 @@ async function persistAndNotifyCore(params: {
   // oder gar nicht (Migration 0015). Vorher waren es drei getrennte Aufrufe:
   // Brach der zweite oder dritte ab, blieb ein Torso zurück – und die
   // Idempotenzsperre gab diesen Torso beim nächsten Versuch als Erfolg aus.
+  // Additiv (Kundenkonto, Migration 0023): War beim Absenden eine Sitzung
+  // aktiv, wird die Bestellung verknüpft (orders.customer_id). Ohne Sitzung
+  // bleibt sie null – der Gastkauf ist davon in keiner Weise betroffen, das
+  // ist reine Zusatzinformation für die Konto-Bestellhistorie.
+  const kunde = await aktuellerKunde();
+
+  // Die USt-IdNr. kommt AUSSCHLIESSLICH aus dem serverseitig geladenen Profil
+  // der gerade angemeldeten Person, NIE aus einer Client-Angabe (dieselbe
+  // Server-ist-Wahrheit wie beim Preis) – ein Gast ohne Sitzung hat kein
+  // Profil und damit hier immer null. Als Schnappschuss in orders.customer_vat_id
+  // gespeichert (Migration 0025): ändert sich das Profil später, bleibt die
+  // auf dieser Bestellung ausgewiesene Nummer unverändert.
+  const vatId = kunde ? (await ladeProfilDb(kunde.id, kunde.email))?.vatId ?? null : null;
+
   const orderPayload = {
     id: orderId,
+    customer_id: kunde?.id ?? null,
+    customer_vat_id: vatId,
     customer_name: params.customerName,
     company: params.company ?? null,
     email: params.email,
@@ -409,6 +436,11 @@ async function persistAndNotifyCore(params: {
     // keine Vorabzahlung (not_required), Karte/PayPal warten auf die
     // Bestätigung (pending). Bestimmt, ob Phase 2 sofort läuft.
     payment_status: params.paymentMethod ? anfangsZahlungsstatus(params.paymentMethod) : 'not_required',
+    // Zeitpunkt der bestätigten AGB-/Datenschutz-Zustimmung, unverändert aus
+    // validateSubmission übernommen (Migration 0025) – nicht hier neu
+    // berechnet, siehe orderValidation.ts. null bei Anfragen, die keine
+    // Zustimmung verlangen.
+    terms_accepted_at: validierung.termsAcceptedAt ?? null,
   };
 
   const itemsPayload = params.items.map((item, i) => ({
@@ -515,6 +547,9 @@ async function persistAndNotifyCore(params: {
     subtotal: pricing.subtotal,
     shippingCost: pricing.shippingCost,
     totalPrice: pricing.totalPrice,
+    taxAmount: pricing.taxAmount,
+    taxRate: pricing.taxRate,
+    netTotal: pricing.netTotal,
     items: itemRecords,
   };
 
@@ -587,6 +622,7 @@ export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult
     items: input.items,
     shipping: input.shipping,
     paymentMethod: input.paymentMethod,
+    acceptedTerms: input.acceptedTerms,
     clientRequestId: input.clientRequestId,
   });
 }

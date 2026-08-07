@@ -472,10 +472,20 @@ export function ConfiguratorPrototype() {
             <div className="flex-shrink-0">
               <MethodSwitcher />
             </div>
-            {/* min-h-0 ist nötig, damit dieser Bereich im Flex-Container
-                tatsächlich schrumpfen darf statt seine Inhaltshöhe zu
-                erzwingen – sonst greift overflow-y-auto nie. */}
-            <div className="min-h-0 flex-1 overflow-y-auto lg:pr-0.5">
+            {/* min-h-[280px] statt min-h-0: Ohne eine feste Untergrenze darf
+                dieser Bereich im Flex-Container bis auf 0 schrumpfen, sobald
+                KonfigUebersicht + MethodSwitcher + SummaryPanel bei knappen
+                Bildschirmhöhen (1366×768, 1440×900 – verbreitete Laptop-
+                Auflösungen) mehr Platz beanspruchen als die feste Spaltenhöhe
+                hergibt. Folge: Die Tab-Leiste (u.a. der „Logo"-Tab, der
+                Standardtab zum Motiv-Hinzufügen) wird auf einen nicht mehr
+                anklickbaren Streifen zusammengedrückt – live per
+                elementFromPoint() bestätigt. 280px sichert die Tab-Leiste
+                plus etwas Inhalt; reicht der Platz nicht, wächst die Spalte
+                über ihre sticky-Höhe hinaus und die Seite scrollt, statt die
+                Werkzeuge unbedienbar zu machen. Reicht der Platz, greift
+                overflow-y-auto weiterhin normal. */}
+            <div className="min-h-[280px] flex-1 overflow-y-auto lg:pr-0.5">
               <ToolPanelTabs printArea={currentPrintArea} printAreas={printAreas} />
             </div>
             <div className="flex-shrink-0">

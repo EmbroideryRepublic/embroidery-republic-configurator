@@ -36,13 +36,18 @@ export function getResendClient(): Resend | null {
 }
 
 /**
- * Absenderadresse. Default ist bewusst die künftige eigene Adresse – solange
- * deren Domain nicht verifiziert ist, MUSS in .env.local
+ * Absenderadresse mit Anzeigenamen im Format „Name <adresse>". Ohne
+ * Anzeigenamen zeigen die meisten Mail-Clients im Posteingang nur die rohe
+ * Adresse statt eines erkennbaren Markennamens.
+ *
+ * Die Adresse selbst ist bewusst die künftige eigene Adresse – solange deren
+ * Domain nicht verifiziert ist, MUSS in .env.local
  * `RESEND_FROM_EMAIL=onboarding@resend.dev` gesetzt sein, sonst lehnt Resend
  * den Versand ab.
  */
 export function getFromAddress(): string {
-  return envOr('RESEND_FROM_EMAIL', COMPANY.email);
+  const adresse = envOr('RESEND_FROM_EMAIL', COMPANY.email);
+  return `${COMPANY.tradeName} <${adresse}>`;
 }
 
 /** Interne Empfängeradresse für Bestell-/Anfrage-Benachrichtigungen. */

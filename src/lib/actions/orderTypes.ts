@@ -103,6 +103,14 @@ export interface OrderRecord {
   shippingCost?: number;
   /** Endsumme inklusive Versand. */
   totalPrice: number;
+  /** Enthaltene Umsatzsteuer (Preisangabenverordnung: nur AUSGEWIESEN, nicht
+   *  aufgeschlagen – die Preise sind bereits brutto). Aus `steuer.ts` über
+   *  die Preispipeline, nirgends neu berechnet. */
+  taxAmount?: number;
+  /** Steuersatz in Prozent zum Bestellzeitpunkt (z.B. 19). */
+  taxRate?: number;
+  /** Nettosumme = totalPrice − taxAmount. */
+  netTotal?: number;
   items: OrderItemRecord[];
 }
 

@@ -52,6 +52,7 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
               type="number"
               min={0}
               inputMode="numeric"
+              aria-label={`${t('size_table_qty_label')} ${size}`}
               value={sizeQuantities[size] ?? ''}
               placeholder="0"
               onFocus={() => setPreviewSize(size)}
@@ -60,7 +61,7 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
                 const value = e.target.value === '' ? 0 : Math.max(0, Math.floor(Number(e.target.value)));
                 if (!Number.isNaN(value)) setSizeQuantity(size, value);
               }}
-              className="h-7 w-14 rounded-md border border-gray-300 px-1.5 text-right text-xs focus:border-gold focus:outline-none"
+              className="h-11 w-14 rounded-md border border-gray-300 px-1.5 text-right text-xs focus:border-gold focus:outline-none"
             />
           </div>
         ))}

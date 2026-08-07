@@ -8,6 +8,12 @@
  * Ausgenommen sind bewusst: der Adminbereich und `/bestellung/[token]`.
  * Beide sind nicht öffentlich und in ihren Metadaten bereits auf `noindex`
  * gesetzt.
+ *
+ * `lastModified` wird bewusst weggelassen: Ohne ein echtes, gepflegtes
+ * Änderungsdatum je Seite würde hier sonst der Abrufzeitpunkt der Sitemap
+ * selbst landen — bei jedem Crawl ein neuer Wert für dieselbe URL. Das ist
+ * ein falsches Signal, das Suchmaschinen dazu bringen kann, das
+ * lastmod-Signal für die ganze Sitemap zu ignorieren.
  */
 import type { MetadataRoute } from 'next';
 import { alleProduktSlugs } from '@/lib/products/productPage';
@@ -15,7 +21,6 @@ import { basisUrl } from '@/lib/seo/basisUrl';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const basis = basisUrl();
-  const jetzt = new Date();
 
   const statisch: { pfad: string; prioritaet: number }[] = [
     { pfad: '', prioritaet: 1 },
@@ -32,13 +37,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...statisch.map((s) => ({
       url: `${basis}${s.pfad}`,
-      lastModified: jetzt,
       changeFrequency: 'monthly' as const,
       priority: s.prioritaet,
     })),
     ...alleProduktSlugs().map((slug) => ({
       url: `${basis}/produkt/${slug}`,
-      lastModified: jetzt,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),

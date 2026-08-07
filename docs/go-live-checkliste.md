@@ -5,6 +5,13 @@ Abnahmeprüfung vor der Freigabe. Stand 2026-07-22.
 Jeder Punkt wurde **gegen den laufenden Code und die Produktivdatenbank
 verifiziert**, nicht gegen frühere Notizen.
 
+> **Historisches Protokoll:** Dieses Dokument ist eine Momentaufnahme vom
+> 2026-07-22 – Zahlen wie Migrations-, Tabellen- und Funktionsanzahl sind der
+> damalige Stand und wurden seither durch weitere Arbeit überholt (aktueller
+> Stand siehe [entscheidungen-produktionsreife.md](entscheidungen-produktionsreife.md)).
+> Das Gesamturteil bleibt gültig; einzelne, seither überholte Einträge sind
+> unten ausdrücklich als solche markiert.
+
 ---
 
 ## Prüfgrundlage
@@ -13,7 +20,7 @@ verifiziert**, nicht gegen frühere Notizen.
 |---|---|
 | `tsc --noEmit` | sauber |
 | `next lint` | keine Warnungen |
-| Unit-Tests | **451 / 451** |
+| Unit-Tests | 451 / 451 *(Stand 2026-07-22; aktuell 657/657, siehe [entscheidungen-produktionsreife.md](entscheidungen-produktionsreife.md))* |
 | E2E Bestellung | **21 / 21** |
 | E2E Rate-Limit | **16 / 16** |
 | E2E Admin-Sitzungen | **19 / 19** |
@@ -160,7 +167,7 @@ Fehlersuche ist dort mühsamer.
 | **M2** Tests für `lib/actions` | E2E deckt den Pfad ab |
 | **M3** Zod-Schemata | handgeschriebene Prüfung funktioniert |
 | **M4** Indizes auf `orders(email)` | bei 10 Zeilen belanglos |
-| **B2** Kundenkonto | bewusste Entscheidung |
+| **B2** Kundenkonto | *(Stand 2026-07-22: bewusste Entscheidung gegen ein Konto)* – inzwischen **additiv umgesetzt** (Registrierung/Login, Profil, Adressbuch, Bestellhistorie; Gastkauf bleibt vollständig erhalten), siehe [entscheidungen-produktionsreife.md](entscheidungen-produktionsreife.md) Abschnitt 5 |
 | **N4** Accessibility-Audit | mittelfristig relevant |
 | Automatische Benachrichtigung bei Häufungen | Erkennung steht, nur die Zustellung fehlt |
 

@@ -8,13 +8,22 @@
  * werden darf, entscheidet ausschließlich der Server anhand von
  * `created_at` – ein Zähler im Browser würde suggerieren, die Uhrzeit des
  * Geräts spiele eine Rolle.
+ *
+ * Zwei Aufrufkontexte, dieselbe Schaltfläche: entweder der signierte
+ * Gast-Token (/bestellung/[token]) oder – im Kundenkonto – die Bestell-ID,
+ * deren Zugehörigkeit die Server Action anhand der Sitzung prüft.
  */
 'use client';
 
 import { useState, useTransition } from 'react';
 import { storniereBestellungAction } from '@/lib/actions/orderCancellation';
 
-export function CancelOrderButton({ token, fristBis }: { token: string; fristBis: string }) {
+type CancelOrderButtonProps = { fristBis: string } & (
+  | { token: string; orderId?: never }
+  | { orderId: string; token?: never }
+);
+
+export function CancelOrderButton({ token, orderId, fristBis }: CancelOrderButtonProps) {
   const [nachfrage, setNachfrage] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -48,7 +57,9 @@ export function CancelOrderButton({ token, fristBis }: { token: string; fristBis
           onClick={() =>
             startTransition(async () => {
               setFehler(null);
-              const r = await storniereBestellungAction(token);
+              const r = await storniereBestellungAction(
+                token ? { art: 'token', token } : { art: 'konto', orderId: orderId as string }
+              );
               if (!r.ok) setFehler(r.fehler ?? 'Die Stornierung war nicht möglich.');
               // Bei Erfolg lädt die Seite neu und zeigt den Zustand „storniert".
             })

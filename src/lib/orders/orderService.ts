@@ -26,7 +26,7 @@ import { sendOrderCancellationEmail } from '@/lib/email/orderEmails';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
 import { istUebergangErlaubt } from '@/config/orderStatus';
-import { sendOrderShippedEmail } from '@/lib/email/orderEmails';
+import { sendOrderShippedEmail, sendOrderInProductionEmail, sendOrderCompletedEmail } from '@/lib/email/orderEmails';
 
 export type StornoErgebnis =
   | { ok: true; bereitsStorniert: boolean }
@@ -113,7 +113,9 @@ export async function setzeBestellstatus(
     db
   );
 
-  // Versandbenachrichtigung. Nicht-fatal: Der Status gilt unabhängig davon.
+  // Status-E-Mails. Nicht-fatal in allen drei Fällen: Der Status gilt
+  // unabhängig davon, ob der Versand gelingt (dieselbe Haltung wie beim
+  // Bestellabschluss selbst – E-Mail ist nachgelagert, nie steuernd).
   if (nach === 'shipped' && bestellung.email) {
     try {
       const versand = await sendOrderShippedEmail({
@@ -133,6 +135,48 @@ export async function setzeBestellstatus(
       );
     } catch (err) {
       console.error(`[orders] Versandmail ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+    }
+  }
+
+  if (nach === 'in_production' && bestellung.email) {
+    try {
+      const versand = await sendOrderInProductionEmail({
+        orderId,
+        orderNumber: buildOrderNumber(orderId),
+        empfaenger: bestellung.email,
+      });
+      await protokolliereBestellereignis(
+        {
+          orderId,
+          eventType: 'email_sent',
+          reason: 'Produktionsbeginn-Benachrichtigung an den Kunden versendet.',
+          detail: { anlass: 'order_in_production', messageId: versand?.messageId ?? null },
+        },
+        db
+      );
+    } catch (err) {
+      console.error(`[orders] Produktionsmail ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+    }
+  }
+
+  if (nach === 'completed' && bestellung.email) {
+    try {
+      const versand = await sendOrderCompletedEmail({
+        orderId,
+        orderNumber: buildOrderNumber(orderId),
+        empfaenger: bestellung.email,
+      });
+      await protokolliereBestellereignis(
+        {
+          orderId,
+          eventType: 'email_sent',
+          reason: 'Abschluss-Benachrichtigung an den Kunden versendet.',
+          detail: { anlass: 'order_completed', messageId: versand?.messageId ?? null },
+        },
+        db
+      );
+    } catch (err) {
+      console.error(`[orders] Abschlussmail ${orderId} fehlgeschlagen (nicht-fatal):`, err);
     }
   }
 

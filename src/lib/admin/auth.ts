@@ -27,8 +27,9 @@
  * Vollständige Herleitung: docs/admin-authentifizierung.md
  */
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
-import { cookies, headers } from 'next/headers';
+import { cookies } from 'next/headers';
 import { createAdminClient } from '@/lib/supabase/server';
+import { ermittleIp } from '@/lib/security/rateLimit';
 
 export const ADMIN_COOKIE_NAME = 'er_admin_session';
 
@@ -73,8 +74,7 @@ function hashe(token: string): string {
  */
 function herkunft(): string {
   try {
-    const h = headers();
-    const ip = h.get('x-forwarded-for')?.split(',')[0]?.trim() || h.get('x-real-ip') || 'unbekannt';
+    const ip = ermittleIp();
     const teile = ip.split('.');
     return teile.length === 4 ? `${teile[0]}.${teile[1]}.${teile[2]}.x` : ip.slice(0, 24);
   } catch {

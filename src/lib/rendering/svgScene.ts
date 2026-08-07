@@ -49,10 +49,16 @@ function renderGarment(garment: GarmentImageInfo, imageRect: PixelRect): string 
   return `<image href="data:image/png;base64,${base64}" x="${imageRect.x}" y="${imageRect.y}" width="${imageRect.width}" height="${imageRect.height}" preserveAspectRatio="none"/>`;
 }
 
+/** Dreht das Motiv um seine EIGENE Mitte (wie der Editor, siehe
+ *  ConfiguratorCanvas.tsx LogoNode), nicht um die obere linke Ecke von
+ *  `rect` – sonst weicht die gedrehte Position im Druck-Rendering sichtbar
+ *  von der im Editor gezeigten Position ab. */
 function renderLogoElement(rect: PixelRect, rotationDeg: number, imageBuffer: Buffer): string {
   const base64 = imageBuffer.toString('base64');
-  return `<g transform="translate(${rect.x},${rect.y}) rotate(${rotationDeg})">` +
-    `<image href="data:image/png;base64,${base64}" x="0" y="0" width="${rect.width}" height="${rect.height}" preserveAspectRatio="none"/>` +
+  const centerX = rect.x + rect.width / 2;
+  const centerY = rect.y + rect.height / 2;
+  return `<g transform="translate(${centerX},${centerY}) rotate(${rotationDeg})">` +
+    `<image href="data:image/png;base64,${base64}" x="${-rect.width / 2}" y="${-rect.height / 2}" width="${rect.width}" height="${rect.height}" preserveAspectRatio="none"/>` +
     `</g>`;
 }
 

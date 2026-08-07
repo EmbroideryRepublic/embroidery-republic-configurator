@@ -97,7 +97,7 @@ node <projektpfad>/scripts/restoreDrillFingerprint.mjs --url "$PROD_DB_URL" --ou
 > `.env.local` verwendet (das ist die Produktion). Für den Drill ist der
 > explizite `--url` klarer.
 
-Erwartete Ausgabe: `Tabellen=16  Funktionen=10  Policies=7  Buckets=1`.
+Erwartete Ausgabe: `Tabellen=18  Funktionen=13  Policies=7  Buckets=1`.
 
 ### Schritt 2 – Logischen Dump erzeugen (Supabase CLI)
 
@@ -180,7 +180,7 @@ node <projektpfad>/scripts/restoreDrillVergleich.mjs   --restore fingerprint-res
 
 Das Vergleichsskript prüft in einem Durchlauf:
 
-1. **Pflicht-Objekte** (16 Tabellen, 8 Kernfunktionen aus den Migrationen 0001–0021)
+1. **Pflicht-Objekte** (18 Tabellen, 11 Kernfunktionen aus den Migrationen 0001–0024)
 2. **RLS** auf allen public-Tabellen aktiv
 3. **Storage-Bucket** `production-files` vorhanden und **privat**
 4. **Sicherheitshärtung B1** überlebt: keine öffentlichen INSERT-Policies und
@@ -306,7 +306,7 @@ damit die Wiederholbarkeit belegt ist.
 ## 9. Status
 
 Die Werkzeuge sind erstellt und **read-only gegen die Produktion validiert**
-(`restoreDrillFingerprint.mjs` erfasst 16 Tabellen/10 Funktionen/7 Policies/
+(`restoreDrillFingerprint.mjs` erfasst 18 Tabellen/13 Funktionen/7 Policies/
 1 Bucket; `restoreDrillVergleich.mjs` liefert im Selbsttest Prod-gegen-Prod
 `✅ BESTANDEN`). **B3 gilt erst als erledigt, wenn dieser Drill einmal
 vollständig mit einem echten Restore in ein Test-Projekt durchlaufen und das

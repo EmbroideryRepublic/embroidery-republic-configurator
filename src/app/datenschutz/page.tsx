@@ -3,7 +3,17 @@ import Link from 'next/link';
 import { TodoNote, Todo } from '@/components/legal/TodoNote';
 import { COMPANY } from '@/config/company';
 
-export const metadata = { title: 'Datenschutz' };
+export const metadata = {
+  title: 'Datenschutz',
+  description:
+    'Datenschutzerklärung von Embroidery Republic Germany: welche Daten wir verarbeiten, wofür, wie lange und welche Rechte Sie haben.',
+  alternates: { canonical: '/datenschutz' },
+  openGraph: {
+    title: 'Datenschutzerklärung',
+    description:
+      'Welche Daten Embroidery Republic Germany verarbeitet, wofür, wie lange und welche Rechte Sie haben.',
+  },
+};
 
 function Section({ n, title, children }: { n: number; title: string; children: ReactNode }) {
   return (
@@ -70,7 +80,7 @@ export default function DatenschutzPage() {
               Social-Media-Plugins ein.
             </strong>{' '}
             Es findet kein Profiling und keine automatisierte Entscheidungsfindung statt. Ein
-            Cookie-Banner ist daher nicht erforderlich (siehe Ziffer 6).
+            Cookie-Banner ist daher nicht erforderlich (siehe Ziffer 7).
           </p>
         </Section>
 
@@ -120,12 +130,44 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={6} title="Cookies und lokale Speicherung im Browser">
+        <Section n={6} title="Kundenkonto">
+          <p>
+            Bei der Registrierung eines Kundenkontos unter /konto/registrieren verarbeiten wir die von
+            Ihnen angegebene E-Mail-Adresse sowie Ihr Passwort. Nach Bestätigung Ihrer E-Mail-Adresse
+            können Sie in Ihrem Profil zusätzlich folgende Angaben hinterlegen: Anzeigename,
+            Telefonnummer, Firma sowie Umsatzsteuer-Identifikationsnummer.
+          </p>
+          <p>
+            In Ihrem Adressbuch können Sie mehrere Lieferadressen (Name, Firma, Straße, Postleitzahl,
+            Ort, Land, Telefonnummer) hinterlegen und eine davon als Standardadresse festlegen, damit Sie
+            diese Angaben bei künftigen Bestellungen nicht erneut eingeben müssen.
+          </p>
+          <p>
+            Optional können Sie bei der Registrierung oder in Ihrem Profil in den Erhalt unseres
+            Newsletters einwilligen. Wirksam wird diese Einwilligung erst, nachdem Sie Ihre
+            E-Mail-Adresse über den Bestätigungslink verifiziert haben; wir speichern dabei den
+            Zeitpunkt dieser Einwilligung.
+          </p>
+          <p>
+            Rechtsgrundlage für die Kontoführung und das Adressbuch ist Art. 6 Abs. 1 lit. b DSGVO
+            (Vertragserfüllung bzw. vorvertragliche Maßnahmen), für die Newsletter-Einwilligung Art. 6
+            Abs. 1 lit. a DSGVO. Diese Daten verarbeiten wir – wie die übrigen in Ziffer 5 genannten
+            Daten – ebenfalls bei Supabase. Sie können Ihr Konto samt Profildaten und Adressbuch
+            jederzeit selbst in Ihrem Profil löschen (Art. 17 DSGVO).
+          </p>
+        </Section>
+
+        <Section n={7} title="Cookies und lokale Speicherung im Browser">
           <p>
             Für Besucherinnen und Besucher dieser Website setzen wir{' '}
-            <strong className="font-medium text-brand">keine Cookies</strong>. Ein Cookie wird
-            ausschließlich im internen Verwaltungsbereich zur Absicherung der Anmeldung gesetzt; dieser
-            Bereich ist öffentlich nicht zugänglich.
+            <strong className="font-medium text-brand">grundsätzlich keine Cookies</strong>. Eine
+            Ausnahme gilt für den Bereich unseres Kundenkontos (/konto und /auth): Melden Sie sich dort
+            an oder registrieren Sie sich, setzen wir ein technisch notwendiges, httpOnly-gesichertes
+            Sitzungs-Cookie zur Absicherung Ihrer Anmeldung. Ein separates Cookie desselben Typs wird
+            außerdem im internen Verwaltungsbereich zur Absicherung der Anmeldung gesetzt; dieser
+            Bereich ist öffentlich nicht zugänglich, das Kundenkonto hingegen schon. Beide Cookies sind
+            technisch erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG); Rechtsgrundlage ist Art. 6 Abs. 1 lit. b
+            DSGVO (Vertragserfüllung) bzw. Art. 6 Abs. 1 lit. f DSGVO.
           </p>
           <p>
             Damit Ihre Konfiguration beim Wechsel zwischen Seiten nicht verloren geht, speichern wir
@@ -152,17 +194,18 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={7} title="Kontaktformular">
+        <Section n={8} title="Kontaktformular">
           <p>
             Über unser Kontaktformular verarbeiten wir die von Ihnen angegebenen Daten: Name,
             E-Mail-Adresse, optional Betreff sowie Ihre Nachricht.
           </p>
           <p>
-            Zusätzlich verarbeiten wir Ihre IP-Adresse kurzzeitig, um die Anzahl der Absendevorgänge zu
-            begrenzen und Missbrauch (Spam) zu verhindern. Die IP-Adresse wird ausschließlich flüchtig
-            im Arbeitsspeicher vorgehalten, nicht dauerhaft gespeichert und automatisch nach spätestens
-            zehn Minuten verworfen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
-            Interesse an der Abwehr missbräuchlicher Nutzung).
+            Zusätzlich verarbeiten wir Ihre IP-Adresse, um die Anzahl der Absendevorgänge zu begrenzen
+            und Missbrauch (Spam) zu verhindern. Die IP-Adresse wird dazu als Teil eines technischen
+            Zählerschlüssels in einer Datenbanktabelle gespeichert und durch einen regelmäßig laufenden
+            automatisierten Bereinigungsvorgang gelöscht, spätestens 24 Stunden nach der jeweiligen
+            Zählung. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der
+            Abwehr missbräuchlicher Nutzung).
           </p>
           <p>
             Die Verarbeitung Ihrer Nachricht erfolgt zur Beantwortung Ihrer Anfrage auf Grundlage von
@@ -170,7 +213,7 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={8} title="Bestellungen und unverbindliche Anfragen">
+        <Section n={9} title="Bestellungen und unverbindliche Anfragen">
           <p>Im Rahmen einer Bestellung verarbeiten wir:</p>
           <ul className="ml-4 list-disc space-y-1">
             <li>Vor- und Nachname, optional Firmenname</li>
@@ -192,7 +235,7 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={9} title="E-Mail-Versand (Resend)">
+        <Section n={10} title="E-Mail-Versand (Resend)">
           <p>
             Für den Versand von Bestätigungs- und Benachrichtigungs-E-Mails nutzen wir den Dienst
             Resend (Resend, Inc., 2261 Market Street, San Francisco, CA 94114, USA). Dabei werden Ihre
@@ -206,7 +249,7 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={10} title="Speicherdauer">
+        <Section n={11} title="Speicherdauer">
           <p>
             Wir speichern personenbezogene Daten nur so lange, wie dies für die genannten Zwecke
             erforderlich ist. Anfragen, die nicht zu einem Vertrag führen, löschen wir spätestens nach
@@ -215,11 +258,18 @@ export default function DatenschutzPage() {
           <p>
             Für Vertrags- und Rechnungsdaten gelten die gesetzlichen Aufbewahrungsfristen von sechs
             bzw. zehn Jahren (§ 257 HGB, § 147 AO). Für die Dauer dieser Fristen ist die Verarbeitung
-            auf die Erfüllung der Aufbewahrungspflicht beschränkt.
+            auf die Erfüllung der Aufbewahrungspflicht beschränkt. Nach Ablauf der zehnjährigen Frist
+            werden die personenbezogenen Angaben der Bestellung automatisiert anonymisiert.
+          </p>
+          <p>
+            Von Ihnen hochgeladene Logos und Motive sowie die daraus erzeugten Druckvorschauen gehören
+            nicht zu den aufbewahrungspflichtigen Rechnungsunterlagen. Wir entfernen sie bereits
+            deutlich früher aus unserem Dateispeicher – 24 Monate, nachdem die zugehörige Bestellung
+            abgeschlossen oder storniert wurde.
           </p>
         </Section>
 
-        <Section n={11} title="Ihre Rechte">
+        <Section n={12} title="Ihre Rechte">
           <p>Sie haben jederzeit das Recht auf:</p>
           <ul className="ml-4 list-disc space-y-1">
             <li>Auskunft über die von uns verarbeiteten Daten (Art. 15 DSGVO)</li>
@@ -243,7 +293,7 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={12} title="Datensicherheit">
+        <Section n={13} title="Datensicherheit">
           <p>
             Die Übertragung sämtlicher Daten erfolgt verschlüsselt über TLS. Der Zugriff auf Bestell-
             und Anfragedaten ist auf berechtigte Personen beschränkt und durch eine gesonderte
@@ -251,7 +301,7 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={13} title="Änderungen dieser Datenschutzerklärung">
+        <Section n={14} title="Änderungen dieser Datenschutzerklärung">
           <p>
             Wir passen diese Datenschutzerklärung an, sobald Änderungen an unseren Leistungen oder den
             eingesetzten Diensten dies erforderlich machen. Es gilt jeweils die auf dieser Seite

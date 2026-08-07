@@ -36,3 +36,19 @@ export function waehlbareFarben<T extends { id: string }>(
   );
   return mitFoto.length ? mitFoto : colors;
 }
+
+/** Erkennt einen rohen 6-stelligen Hex-Code ohne führendes „#". */
+const HEX_OHNE_RAUTE = /^[0-9A-Fa-f]{6}$/;
+
+/**
+ * Anzeigename einer Farbe.
+ *
+ * Für einige Katalogfarben liegt kein echter Herstellername vor (nicht
+ * erfunden!) – der Katalog führt dann ersatzweise den rohen Hex-Code als
+ * `name` (z.B. „555B66"). Unmarkiert sähe das für Kundin und Screenreader wie
+ * ein beliebiger Farbname aus statt erkennbar wie ein Farbcode – deshalb hier
+ * ein „#" voranstellen. Alle anderen Namen bleiben unverändert.
+ */
+export function formatiereFarbname(name: string): string {
+  return HEX_OHNE_RAUTE.test(name) ? `#${name}` : name;
+}

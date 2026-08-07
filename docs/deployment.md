@@ -1,6 +1,6 @@
 # Deployment, Backup und Cronjobs
 
-Auslieferung, Datensicherung und Hintergrundläufe. Stand 2026-07-22.
+Auslieferung, Datensicherung und Hintergrundläufe. Stand 2026-08-07.
 
 Voraussetzungen: [umgebungsvariablen.md](umgebungsvariablen.md),
 [datenbankschema.md](datenbankschema.md).
@@ -17,13 +17,15 @@ lokal. Die vollständige Abnahme:
 ```bash
 npx tsc --noEmit          # Typen
 npx next lint             # Stil
-npm test                  # 451 Unit-Tests inkl. Wächter
+npm test                  # 657 Unit-Tests inkl. Wächter
 npx next build            # Build-Prüfung
 
 # E2E gegen die echte Datenbank – NUR lokal (Begründung unten)
 npm run test:e2e            # Bestellung über den echten Serverweg
+npm run test:e2e:zahlung
 npm run test:e2e:ratelimit
 npm run test:e2e:adminauth
+npm run test:e2e:stripe
 ```
 
 Erst wenn alles grün ist, wird ausgeliefert.

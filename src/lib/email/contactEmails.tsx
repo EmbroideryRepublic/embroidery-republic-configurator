@@ -4,8 +4,9 @@
  * analog zu orderEmails.tsx. Keine neue Infrastruktur.
  */
 import { sendEmail } from './sendEmail';
-import { getInternalNotificationAddress } from './resendClient';
+import { getInternalNotificationAddress, getReplyToAddress } from './resendClient';
 import { ContactMessageEmail } from './templates/ContactMessageEmail';
+import { ContactAutoReplyEmail } from './templates/ContactAutoReplyEmail';
 
 export interface ContactMessagePayload {
   name: string;
@@ -27,5 +28,17 @@ export async function sendContactMessageEmail(payload: ContactMessagePayload): P
     // Antworten gehen direkt an die/den Interessent:in statt an die interne Adresse.
     replyTo: payload.email,
   });
+
+  // Eingangsbestätigung AN die anfragende Person – nicht-fatal: Die interne
+  // Benachrichtigung (oben) ist der eigentlich wichtige Versand; ohne
+  // Bestätigung würde die Anfrage selbst trotzdem ankommen.
+  await sendEmail({
+    to: payload.email,
+    subject: 'Ihre Nachricht ist bei uns angekommen',
+    react: <ContactAutoReplyEmail name={payload.name} message={payload.message} />,
+    kontext: { anlass: 'contact_form_autoreply' },
+    replyTo: getReplyToAddress(),
+  }).catch(() => {});
+
   return { success: result.success };
 }

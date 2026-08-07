@@ -48,7 +48,7 @@ export function generateMetadata({ searchParams }: { searchParams: SuchParameter
   return {
     title: 'Alle Produkte',
     description: BESCHREIBUNG,
-    robots: gefiltert ? { index: false, follow: true } : undefined,
+    robots: gefiltert ? { index: false, follow: true } : { index: true, follow: true },
     alternates: { canonical: '/produkt' },
   };
 }
@@ -82,6 +82,15 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
         </>
       )}
       <div className="mx-auto max-w-[1500px] px-4 pb-24 pt-12 sm:px-8">
+        {/* Sichtbares Gegenstück zu katalogBrotkrumenSchema oben – bislang gab
+            es nur die JSON-LD-Auszeichnung, keine sichtbare Navigation. */}
+        <nav aria-label="Brotkrumen" className="mb-4 text-xs text-brand/45">
+          <Link href="/" className="transition-colors hover:text-gold-dark">
+            Start
+          </Link>
+          <span className="mx-2">/</span>
+          <span className="text-brand">Produkte</span>
+        </nav>
         <h1 className="font-serif text-[clamp(2rem,3.6vw,2.75rem)] font-normal tracking-tight text-brand">
           Alle Produkte
         </h1>
@@ -115,12 +124,13 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
               // Bewusst wenige Kacheln je Zeile: Kleidungsstück und Motiv
               // brauchen Fläche, um zu wirken.
               <div className={liste ? 'space-y-10' : 'grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-3'}>
-                {ergebnis.produkte.map((p) => (
+                {ergebnis.produkte.map((p, index) => (
                   <Produktkachel
                     key={p.id}
                     produkt={p}
                     bestseller={bestseller.has(p.id)}
                     ansicht={kriterien.ansicht}
+                    index={index}
                   />
                 ))}
               </div>

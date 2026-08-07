@@ -35,11 +35,6 @@ export function ansichtenVon(product: ProductConfig): PrintView[] {
   return ergebnis;
 }
 
-/** Führt das Produkt diese Ansicht? */
-export function hatAnsicht(product: ProductConfig, view: PrintView): boolean {
-  return ansichtenVon(product).includes(view);
-}
-
 /**
  * Ansichten, die dem Kunden für DIESE Farbe gezeigt werden dürfen.
  *

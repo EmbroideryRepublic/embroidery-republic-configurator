@@ -17,21 +17,38 @@ export const translations = {
     nav_account: 'Mein Konto',
     nav_cart: 'Warenkorb',
     nav_compare: 'Vergleichen',
+    nav_products: 'Produkte',
 
-    hero_tagline: 'Embroidery Republic Germany',
-    hero_title: 'Ihre Firmenbekleidung – in wenigen Minuten konfiguriert',
-    hero_subtitle:
-      'DTF-Transferdruck oder hochwertige Stickerei – gestalten Sie Ihre Arbeitskleidung professionell, live und unverbindlich.',
-    hero_highlight_1: 'Veredelung in Deutschland',
-    hero_highlight_2: 'Produktion in 3–4 Werktagen',
-    hero_highlight_3: 'Persönliche Beratung',
+    // Zeile 1/2 der Bühnenüberschrift, getrennt durch "\n" (HeroText.tsx) –
+    // wortgleich mit dem bisherigen, fest verdrahteten Markup der Startseite.
+    hero_tagline: 'Stickerei & DTF-Druck',
+    hero_title: 'Dein Design.\nUnsere Qualität.',
+    hero_subtitle: 'Veredelte Textilien für alle, die nicht von der Stange tragen.',
 
     trust_germany: 'Veredelung in Deutschland',
-    trust_support: 'Persönliche Beratung',
     trust_check: 'Kostenlose Designprüfung',
-    trust_moq: 'Ab 1 Stück bestellbar',
     trust_express: 'Versand in 1–2 Werktagen',
-    trust_shipping: 'Kostenloser Versand ab 75 € (DE)',
+
+    // Footer (FooterText.tsx) – Navigations-/Rechtliches-Label spiegeln die
+    // Kopfzeile (nav_configurator/nav_about/nav_faq/nav_contact/nav_products
+    // werden dort wiederverwendet). Impressum/Datenschutz/AGB selbst bleiben
+    // nur Deutsch (s.o.), hier wird nur das Link-Label übersetzt.
+    footer_nav_heading: 'Navigation',
+    footer_legal_heading: 'Rechtliches',
+    footer_contact_heading: 'Kontakt',
+    footer_info_heading: 'Gut zu wissen',
+    footer_description:
+      'Firmen- und Teambekleidung veredelt per DTF-Transferdruck und Stickerei – live konfigurierbar, ab kleiner Menge.',
+    footer_nav_home: 'Startseite',
+    footer_legal_impressum: 'Impressum',
+    footer_legal_datenschutz: 'Datenschutz',
+    footer_legal_agb: 'AGB',
+    // {von}/{bis} kommen aus PRODUKTIONSTAGE, {days} aus PAYMENT_TERM_DAYS
+    // (config/company.ts) – dieselbe Quelle wie überall sonst auf der Seite.
+    footer_fact_moq: 'Ab 1 Stück – ohne Mindestmenge',
+    footer_fact_production: 'Produktion {von}–{bis} Werktage',
+    footer_fact_invoice: 'Kauf auf Rechnung – {days} Tage',
+    footer_bottom_tagline: 'DTF-Transferdruck & Stickerei · Made to order in {city}',
 
     step_product: 'Produkt & Größe',
     step_element: 'Motiv hinzufügen',
@@ -210,10 +227,20 @@ export const translations = {
     // Größentabelle
     size_table_title: 'Größen & Stückzahl',
     size_table_total: 'Stück gesamt',
+    size_table_qty_label: 'Menge Größe',
 
     // Warenkorb / Kaufprozess
     cart_go_checkout: 'Zur Kasse',
     cart_edit_item: 'Design bearbeiten',
+    cart_remove_item: 'Position entfernen',
+    // Pluralisierung von Hand: {logoWord}/{textWord} kommen bereits passend
+    // ausgewählt (Einzahl/Mehrzahl) vom Aufrufer, translate() ersetzt nur die
+    // Platzhalter (siehe stores/languageStore.ts translate()).
+    cart_item_summary: '{logoCount} {logoWord}, {textCount} {textWord}',
+    cart_logo_singular: 'Logo',
+    cart_logo_plural: 'Logos',
+    cart_text_singular: 'Text',
+    cart_text_plural: 'Texte',
     cart_checkout_title: 'Bestellung abschließen',
     cart_order_confirmed_title: 'Bestellung bestätigt',
     cart_inquiry_title: 'Unverbindlich anfragen',
@@ -230,6 +257,17 @@ export const translations = {
     checkout_zip: 'PLZ',
     checkout_city: 'Stadt',
     checkout_country: 'Land',
+    checkout_country_notice: 'Aktuell liefern wir ausschließlich innerhalb Deutschlands. Weitere Länder folgen in Kürze.',
+    // Fehlermeldungen je Pflichtfeld – erscheinen erst nach Berühren (onBlur)
+    // des jeweiligen Feldes, siehe CartDrawer.tsx `feldFehler`.
+    checkout_error_first_name: 'Bitte Vornamen angeben.',
+    checkout_error_last_name: 'Bitte Nachnamen angeben.',
+    checkout_error_email_required: 'Bitte E-Mail-Adresse angeben.',
+    checkout_error_email_invalid: 'Bitte eine gültige E-Mail-Adresse angeben.',
+    checkout_error_street: 'Bitte Straße und Hausnummer angeben.',
+    checkout_error_zip_required: 'Bitte Postleitzahl angeben.',
+    checkout_error_zip_invalid: 'Bitte eine gültige Postleitzahl angeben (5 Ziffern).',
+    checkout_error_city: 'Bitte Stadt angeben.',
     checkout_payment_heading: 'Zahlungsart',
     checkout_payment_card: 'Kreditkarte',
     checkout_payment_paypal: 'PayPal',
@@ -241,6 +279,7 @@ export const translations = {
     checkout_shipping: 'Versand',
     checkout_shipping_free: 'kostenlos',
     checkout_shipping_hint: 'Noch {amount} bis zum kostenlosen Versand.',
+    checkout_tax_line: 'enthaltene USt. ({rate} %)',
     checkout_terms: 'Ich akzeptiere die AGB und Datenschutzerklärung. Personalisierte Produkte sind vom Widerruf ausgeschlossen.',
     checkout_submit: 'Zahlungspflichtig bestellen',
     checkout_processing: 'Wird verarbeitet …',
@@ -304,21 +343,30 @@ export const translations = {
     nav_account: 'My account',
     nav_cart: 'Cart',
     nav_compare: 'Compare',
+    nav_products: 'Products',
 
-    hero_tagline: 'Embroidery Republic Germany',
-    hero_title: 'Your workwear – configured in minutes',
-    hero_subtitle:
-      'DTF transfer printing or premium embroidery – design your workwear professionally, live and without obligation.',
-    hero_highlight_1: 'Finished in Germany',
-    hero_highlight_2: 'Production in 3–4 working days',
-    hero_highlight_3: 'Personal consulting',
+    hero_tagline: 'Embroidery & DTF printing',
+    hero_title: 'Your design.\nOur quality.',
+    hero_subtitle: "Finished garments for everyone who doesn't wear off-the-rack.",
 
     trust_germany: 'Finishing in Germany',
-    trust_support: 'Personal consulting',
     trust_check: 'Free design check',
-    trust_moq: 'Order from 1 piece',
     trust_express: 'Dispatch in 1–2 working days',
-    trust_shipping: 'Free shipping from €75 (DE)',
+
+    footer_nav_heading: 'Navigation',
+    footer_legal_heading: 'Legal',
+    footer_contact_heading: 'Contact',
+    footer_info_heading: 'Good to know',
+    footer_description:
+      'Corporate and team apparel finished with DTF transfer printing and embroidery – configure it live, from a small quantity.',
+    footer_nav_home: 'Home',
+    footer_legal_impressum: 'Legal notice',
+    footer_legal_datenschutz: 'Privacy policy',
+    footer_legal_agb: 'Terms & conditions',
+    footer_fact_moq: 'From 1 piece – no minimum order',
+    footer_fact_production: 'Production in {von}–{bis} working days',
+    footer_fact_invoice: 'Payment by invoice – {days} days',
+    footer_bottom_tagline: 'DTF transfer printing & embroidery · Made to order in {city}',
 
     step_product: 'Product & size',
     step_element: 'Add artwork',
@@ -490,9 +538,16 @@ export const translations = {
 
     size_table_title: 'Sizes & quantity',
     size_table_total: 'items total',
+    size_table_qty_label: 'Quantity size',
 
     cart_go_checkout: 'Checkout',
     cart_edit_item: 'Edit design',
+    cart_remove_item: 'Remove item',
+    cart_item_summary: '{logoCount} {logoWord}, {textCount} {textWord}',
+    cart_logo_singular: 'logo',
+    cart_logo_plural: 'logos',
+    cart_text_singular: 'text',
+    cart_text_plural: 'texts',
     cart_checkout_title: 'Complete order',
     cart_order_confirmed_title: 'Order confirmed',
     cart_inquiry_title: 'Ask without obligation',
@@ -509,17 +564,27 @@ export const translations = {
     checkout_zip: 'ZIP code',
     checkout_city: 'City',
     checkout_country: 'Country',
+    checkout_country_notice: 'We currently ship within Germany only. More countries are coming soon.',
     checkout_payment_heading: 'Payment method',
     checkout_payment_card: 'Credit card',
     checkout_payment_paypal: 'PayPal',
     checkout_payment_invoice: 'Payment by invoice',
     checkout_payment_invoice_note: 'Convenient payment by invoice, payable within 14 days of the invoice date without deduction. You will receive the invoice separately as we process your order — nothing is charged now.',
     checkout_no_prepay: 'No prepayment – you only pay after receiving your order.',
+    checkout_error_first_name: 'Please enter your first name.',
+    checkout_error_last_name: 'Please enter your last name.',
+    checkout_error_email_required: 'Please enter your email address.',
+    checkout_error_email_invalid: 'Please enter a valid email address.',
+    checkout_error_street: 'Please enter street and house number.',
+    checkout_error_zip_required: 'Please enter your postal code.',
+    checkout_error_zip_invalid: 'Please enter a valid postal code (5 digits).',
+    checkout_error_city: 'Please enter your city.',
     checkout_secure_note: 'Secure, encrypted transmission · GDPR-compliant',
     checkout_subtotal: 'Subtotal',
     checkout_shipping: 'Shipping',
     checkout_shipping_free: 'free',
     checkout_shipping_hint: '{amount} more until free shipping.',
+    checkout_tax_line: 'VAT included ({rate}%)',
     checkout_terms: 'I accept the terms and privacy policy. Personalized products are excluded from returns.',
     checkout_submit: 'Order with obligation to pay',
     checkout_processing: 'Processing …',

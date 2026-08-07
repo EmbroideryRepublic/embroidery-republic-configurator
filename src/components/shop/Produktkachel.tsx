@@ -22,11 +22,16 @@ import Image from 'next/image';
 import { Leaf } from 'lucide-react';
 import type { ProductConfig } from '@/config/products/types';
 import { produktBild } from '@/lib/assets';
-import { waehlbareFarben } from '@/lib/products/farben';
+import { formatiereFarbname, waehlbareFarben } from '@/lib/products/farben';
 import { materialGruppen } from '@/config/products/facetten';
-import { formatiereGeld } from '@/lib/format';
+import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { ermittleVerfuegbarkeit, VERFUEGBARKEIT_LABELS } from '@/lib/catalog/verfuegbarkeit';
 import type { Ansicht } from '@/lib/catalog/kriterien';
+
+/** So viele Kacheln zu Seitenbeginn sind LCP-Kandidaten (oberhalb des Falzes)
+ *  – deren Bild bekommt `priority`, analog zum Muster auf der Produktseite
+ *  (ProduktFarbwahl.tsx). Alle weiteren laden weiterhin verzögert. */
+const PRIORITAET_ANZAHL = 6;
 
 /** So viele Farbpunkte werden gezeigt, der Rest als „+N". */
 const PUNKTE = 6;
@@ -39,8 +44,8 @@ const PUNKT =
   'transition-transform duration-300 ease-out group-hover:scale-105';
 
 export function Produktkachel({
-  produkt, bestseller, ansicht,
-}: { produkt: ProductConfig; bestseller: boolean; ansicht: Ansicht }) {
+  produkt, bestseller, ansicht, index,
+}: { produkt: ProductConfig; bestseller: boolean; ansicht: Ansicht; index?: number }) {
   const stand = ermittleVerfuegbarkeit(produkt);
   // Die Punkte versprechen „diese Farben bekommst du" – deshalb dieselbe
   // Auswahl wie auf der Produktseite, nicht die volle Herstellerpalette.
@@ -73,6 +78,7 @@ export function Produktkachel({
             alt={produkt.name}
             fill
             sizes={liste ? '176px' : '(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw'}
+            priority={index !== undefined && index < PRIORITAET_ANZAHL}
             className={`object-contain p-6 transition-transform duration-[600ms] ease-out group-hover:scale-[1.05] ${
               stand !== 'lieferbar' ? 'opacity-40' : ''
             }`}
@@ -100,21 +106,21 @@ export function Produktkachel({
       </div>
 
       <div className={liste ? 'min-w-0 flex-1' : 'pt-5'}>
-        <p className="text-[11px] uppercase tracking-[0.14em] text-brand/40">{produkt.brand}</p>
+        <p className="text-[11px] uppercase tracking-[0.14em] text-brand/70">{produkt.brand}</p>
         <p className="mt-1.5 truncate text-[15px] leading-snug text-brand transition-colors duration-300 group-hover:text-gold-dark">
           {produkt.name}
         </p>
         <p className="mt-2.5 text-[16px] font-medium tabular-nums text-brand">
-          <span className="mr-1 text-[12px] font-normal text-brand/40">ab</span>
-          {formatiereGeld(produkt.basePrice)}
+          <span className="mr-1 text-[12px] font-normal text-brand/70">ab</span>
+          <WaehrungsPreis betragInEur={produkt.basePrice} />
         </p>
 
         <div className="mt-3.5 flex items-center gap-2">
           {farben.slice(0, PUNKTE).map((f) => (
-            <span key={f.id} title={f.name} className={PUNKT} style={{ backgroundColor: f.hex }} />
+            <span key={f.id} title={formatiereFarbname(f.name)} className={PUNKT} style={{ backgroundColor: f.hex }} />
           ))}
           {farben.length > PUNKTE && (
-            <span className="ml-1 text-[11px] tracking-wide text-brand/40">
+            <span className="ml-1 text-[11px] tracking-wide text-brand/70">
               +{farben.length - PUNKTE}
             </span>
           )}

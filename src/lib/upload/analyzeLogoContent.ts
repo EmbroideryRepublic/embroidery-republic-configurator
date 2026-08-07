@@ -1,5 +1,7 @@
 'use client';
 
+import { loadImage } from '@/lib/browser/loadImage';
+
 export interface LogoContentAnalysis {
   /** Beschnittene Box relativ zum Originalbild, in Prozent (0-100). */
   bounds: { x0: number; y0: number; x1: number; y1: number };
@@ -97,7 +99,23 @@ export async function cropImageToContent(
   const margin = 1.5; // Prozentpunkte Toleranz
   if (bounds.x0 < margin && bounds.y0 < margin && bounds.x1 > 100 - margin && bounds.y1 > 100 - margin) {
     const img = await loadImage(dataUrl);
-    return { dataUrl, width: img.naturalWidth || img.width, height: img.naturalHeight || img.height };
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    // Die Serverseite akzeptiert ausschließlich PNG (pruefeUpload.ts prüft die
+    // PNG-Signatur, nicht den deklarierten MIME-Typ). Ein SVG ohne Leerraum
+    // würde diesen Zuschnittspfad sonst unverändert durchlaufen und beim
+    // Bestellabschluss mit einer generischen Fehlermeldung scheitern. Über
+    // Canvas re-encodieren, auch wenn kein tatsächlicher Zuschnitt nötig ist.
+    if (dataUrl.startsWith('data:image/png')) {
+      return { dataUrl, width, height };
+    }
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return { dataUrl, width, height };
+    ctx.drawImage(img, 0, 0, width, height);
+    return { dataUrl: canvas.toDataURL('image/png'), width, height };
   }
 
   const img = await loadImage(dataUrl);
@@ -118,13 +136,4 @@ export async function cropImageToContent(
   ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, cropW, cropH);
 
   return { dataUrl: canvas.toDataURL('image/png'), width: cropW, height: cropH };
-}
-
-function loadImage(src: string): Promise<HTMLImageElement> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error('Bild konnte nicht geladen werden.'));
-    img.src = src;
-  });
 }

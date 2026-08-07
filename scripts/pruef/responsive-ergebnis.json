@@ -1,0 +1,1800 @@
+{
+  "geprueft": {
+    "seiten": 16,
+    "breiten": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1280,
+      1440,
+      1920
+    ],
+    "kombinationen": 144
+  },
+  "treffer": 11,
+  "befunde": [
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "div.absolute.h-[min(86vw,620px)]",
+          "tag": "div",
+          "klassen": "absolute h-[min(86vw,620px)] w-[min(86vw,620px)] rounded-full bg-[radial-gradient(circle_at_50%_45%,#ffffff_0%,#f6efe2_5",
+          "text": "",
+          "rectRight": 1072,
+          "ueberstand": 48
+        }
+      ]
+    },
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "startseite",
+      "pfad": "/",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "button.group.relative",
+          "tag": "button",
+          "klassen": "group relative shrink-0 whitespace-nowrap px-5 pb-4 pt-5 transition-colors duration-300 ease-out xl:px-7 text-brand/50 h",
+          "text": "Hoodie",
+          "rectRight": 403,
+          "ueberstand": 83
+        }
+      ]
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "button.group.relative",
+          "tag": "button",
+          "klassen": "group relative shrink-0 whitespace-nowrap px-5 pb-4 pt-5 transition-colors duration-300 ease-out xl:px-7 text-brand/50 h",
+          "text": "Hoodie",
+          "rectRight": 403,
+          "ueberstand": 28
+        },
+        {
+          "selektor": "span.text-[15px].tracking-tight",
+          "tag": "span",
+          "klassen": "text-[15px] tracking-tight transition-all duration-300 font-normal",
+          "text": "Hoodie",
+          "rectRight": 383,
+          "ueberstand": 8
+        }
+      ]
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "button.group.relative",
+          "tag": "button",
+          "klassen": "group relative shrink-0 whitespace-nowrap px-5 pb-4 pt-5 transition-colors duration-300 ease-out xl:px-7 text-brand/50 h",
+          "text": "Hoodie",
+          "rectRight": 403,
+          "ueberstand": 13
+        }
+      ]
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "button.group.relative",
+          "tag": "button",
+          "klassen": "group relative shrink-0 whitespace-nowrap px-5 pb-4 pt-5 transition-colors duration-300 ease-out xl:px-7 text-brand/50 h",
+          "text": "Zip-Hoodie",
+          "rectRight": 523,
+          "ueberstand": 93
+        },
+        {
+          "selektor": "span.text-[15px].tracking-tight",
+          "tag": "span",
+          "klassen": "text-[15px] tracking-tight transition-all duration-300 font-normal",
+          "text": "Zip-Hoodie",
+          "rectRight": 503,
+          "ueberstand": 73
+        }
+      ]
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "button.group.relative",
+          "tag": "button",
+          "klassen": "group relative shrink-0 whitespace-nowrap px-5 pb-4 pt-5 transition-colors duration-300 ease-out xl:px-7 text-brand/50 h",
+          "text": "Jacke",
+          "rectRight": 844,
+          "ueberstand": 76
+        }
+      ]
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "katalog",
+      "pfad": "/produkt",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "th.py-2.font-medium",
+          "tag": "th",
+          "klassen": "py-2 font-medium",
+          "text": "Länge",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "71 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "74 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "76 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "79 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "81 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "84 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "86 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "89 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        }
+      ]
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben",
+      "pfad": "/produkt/gildan-ultra-cotton-t-shirt",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "th.py-2.font-medium",
+          "tag": "th",
+          "klassen": "py-2 font-medium",
+          "text": "Länge",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "58 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "60 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "62 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "64 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "66 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "68 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "70 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        }
+      ]
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-viele-farben-2",
+      "pfad": "/produkt/bundc-t-shirt-e150-women",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "th.py-2.font-medium",
+          "tag": "th",
+          "klassen": "py-2 font-medium",
+          "text": "Länge",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "78 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "71 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "74 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "76 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "68 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "80 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        }
+      ]
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-langer-name",
+      "pfad": "/produkt/earthpositive-earthpositive-organic-mensunisex-pullover-hoodie",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "th.py-2.font-medium",
+          "tag": "th",
+          "klassen": "py-2 font-medium",
+          "text": "Länge",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "72 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "74 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "76 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "78 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        },
+        {
+          "selektor": "td.py-2.text-brand/70",
+          "tag": "td",
+          "klassen": "py-2 text-brand/70",
+          "text": "80 cm",
+          "rectRight": 361,
+          "ueberstand": 41
+        }
+      ]
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "produkt-minimal",
+      "pfad": "/produkt/earthpositive-pique-polo-shirt",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 320,
+      "htmlOverflow": true,
+      "scrollWidth": 349,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": [
+        {
+          "selektor": "div.flex.w-full",
+          "tag": "div",
+          "klassen": "flex w-full items-center justify-between gap-2 rounded-lg border border-gold/20 bg-white px-2 py-1.5 shadow-sm",
+          "text": "100%Großansicht",
+          "rectRight": 349,
+          "ueberstand": 29
+        },
+        {
+          "selektor": "div.flex.w-full",
+          "tag": "div",
+          "klassen": "flex w-full max-w-[820px] justify-center overflow-auto rounded-lg xl:max-w-[960px] 2xl:max-w-[1100px]",
+          "text": "",
+          "rectRight": 349,
+          "ueberstand": 29
+        },
+        {
+          "selektor": "button.flex.items-center",
+          "tag": "button",
+          "klassen": "flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-gold-dark hover:bg-gold-light",
+          "text": "Großansicht",
+          "rectRight": 340,
+          "ueberstand": 20
+        }
+      ]
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konfigurator",
+      "pfad": "/konfigurator",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-anmelden",
+      "pfad": "/konto/anmelden",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "konto-registrieren",
+      "pfad": "/konto/registrieren",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "kontakt",
+      "pfad": "/kontakt",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "faq",
+      "pfad": "/faq",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "impressum",
+      "pfad": "/impressum",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "datenschutz",
+      "pfad": "/datenschutz",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "agb",
+      "pfad": "/agb",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "admin-login",
+      "pfad": "/admin",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 320,
+      "htmlOverflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 375,
+      "htmlOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 390,
+      "htmlOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 430,
+      "htmlOverflow": false,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 768,
+      "htmlOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 1024,
+      "htmlOverflow": false,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 1280,
+      "htmlOverflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 1440,
+      "htmlOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    },
+    {
+      "seite": "404",
+      "pfad": "/diese-seite-gibt-es-nicht-404-check",
+      "breite": 1920,
+      "htmlOverflow": false,
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "overflowVerdeckt": false,
+      "ueberstehendeElemente": []
+    }
+  ],
+  "erzeugtAm": "2026-08-07T04:09:59.193Z"
+}

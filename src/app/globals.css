@@ -108,10 +108,26 @@ body {
    Bedienelemente hatten zuvor gar keinen (oder per `outline-none` einen
    entfernten) Fokus. `:where(...)` hält die Spezifität bei 0, sodass
    speziellere Komponentенstile weiterhin gewinnen; `:focus-visible` zeigt den
-   Ring nur bei Tastaturbedienung, nicht beim Mausklick. */
+   Ring nur bei Tastaturbedienung, nicht beim Mausklick.
+   Farbe: brand.DEFAULT statt gold.DEFAULT – Gold erreicht gegen Creme/Weiß
+   nur ~2.5–2.9:1 (WCAG 1.4.11 verlangt 3:1 für Nicht-Text-Kontrast), das
+   dunkle Anthrazit-Braun der Marke liegt bei >13:1 gegen beide Hintergründe. */
 :where(a, button, input, select, textarea, summary, [role='button'], [role='radio'], [tabindex='0']):focus-visible {
-  outline: 2px solid theme('colors.gold.DEFAULT');
+  outline: 2px solid theme('colors.brand.DEFAULT');
   outline-offset: 2px;
+}
+
+/* Helle Variante für dunkle Container (z.B. bg-brand, bg-black/85): der
+   dunkle Ring oben verschwindet dort im Hintergrund (~1:1 statt der von
+   WCAG 1.4.11 geforderten 3:1). Über eine umschließende .fokus-hell-Klasse
+   gezielt anwenden, statt die globale Regel zu ändern – sonst würde helles
+   Outline auf den (weit häufigeren) hellen Hintergründen selbst unsichtbar.
+   Gleiche Selektorliste und Spezifität-0-Technik wie oben, nur höher durch
+   die zusätzliche Elternklasse – gewinnt daher unabhängig von der
+   Reihenfolge im Stylesheet. Weiß gegen brand.DEFAULT und gegen
+   schwarz/85 liegt beides weit über 3:1. */
+.fokus-hell :where(a, button, input, select, textarea, summary, [role='button'], [role='radio'], [tabindex='0']):focus-visible {
+  outline-color: #ffffff;
 }
 
 /* Reduzierte Bewegung umfassend: Animationen und Übergänge werden praktisch

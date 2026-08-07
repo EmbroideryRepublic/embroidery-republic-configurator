@@ -14,7 +14,10 @@
 import { writeFileSync } from 'node:fs';
 import { PRODUCTS } from '@/config/products/index';
 import {
-  EINKAUFSPREIS_NACHWEISE,
+  einkaufspreisNachweis,
+  istEinkaufspreisUngeprueft,
+  taugtZurKalkulation,
+  weichtVomKatalogAb,
   type EinkaufspreisNachweis,
   type EinkaufspreisStufe,
 } from '@/config/pricing/einkaufspreise';
@@ -30,7 +33,7 @@ interface Zeile {
 }
 
 const zeilen: Zeile[] = PRODUCTS.map((p) => {
-  const nachweis = EINKAUFSPREIS_NACHWEISE[p.id];
+  const nachweis = einkaufspreisNachweis(p.id);
   return {
     id: p.id,
     name: p.name,
@@ -46,8 +49,8 @@ const verifiziert = jeStufe('verifiziert');
 const bekannt = jeStufe('bekannt');
 const platzhalter = jeStufe('platzhalter');
 const ohneNachweis = zeilen.filter((z) => !z.nachweis);
-const abweichungen = zeilen.filter((z) => Math.abs(z.abweichungCent) > 0);
-const kalkulierbar = verifiziert.length + bekannt.length;
+const abweichungen = zeilen.filter((z) => weichtVomKatalogAb(z.id));
+const kalkulierbar = zeilen.filter((z) => taugtZurKalkulation(z.id)).length;
 
 const L = '='.repeat(94);
 console.log(`\n${L}\nEINKAUFSPREISE – DATENGRUNDLAGE (${zeilen.length} Produkte)\n${L}`);
@@ -97,7 +100,7 @@ console.log(`\n${'─'.repeat(94)}`);
 console.log('NOCH ZU PRÜFEN – nach Bezugsquelle (erleichtert die Abfrage im Portal)');
 console.log('─'.repeat(94));
 
-const offen = [...bekannt, ...platzhalter, ...ohneNachweis];
+const offen = zeilen.filter((z) => istEinkaufspreisUngeprueft(z.id));
 const jeLieferant = new Map<string, Zeile[]>();
 for (const z of offen) {
   const lieferant = z.nachweis?.lieferant ?? 'ohne Bezugsquelle';

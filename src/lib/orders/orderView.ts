@@ -49,6 +49,12 @@ export interface BestellAnsicht {
   versendetAm: string | null;
   positionen: BestellAnsichtPosition[];
   gesamtpreis: number;
+  /** Enthaltene Umsatzsteuer – nur vorhanden, wenn zum Bestellzeitpunkt
+   *  bereits gespeichert (Migration 0014, ab 2026-07-22). Ältere Bestellungen
+   *  liefern hier `null`; die Seite blendet die Zeile dann aus, statt eine
+   *  falsche Schätzung zu zeigen. */
+  steuerbetrag: number | null;
+  steuersatz: number | null;
   lieferadresse: { strasse: string; plz: string; ort: string; land: string } | null;
   kundenName: string;
 }
@@ -65,7 +71,7 @@ export async function ladeBestellAnsicht(orderId: string, jetzt: Date = new Date
   const { data: order, error } = await db
     .from('orders')
     .select(
-      'id, created_at, status, order_type, total_price, customer_name, cancelled_at, shipping_street, shipping_zip, shipping_city, shipping_country, tracking_number, shipped_at'
+      'id, created_at, status, order_type, total_price, tax_amount, tax_rate, customer_name, cancelled_at, shipping_street, shipping_zip, shipping_city, shipping_country, tracking_number, shipped_at'
     )
     .eq('id', orderId)
     .maybeSingle();
@@ -99,6 +105,8 @@ export async function ladeBestellAnsicht(orderId: string, jetzt: Date = new Date
     versendetAm: (order.shipped_at as string | null) ?? null,
     kundenName: (order.customer_name as string) ?? '',
     gesamtpreis: Number(order.total_price ?? 0),
+    steuerbetrag: order.tax_amount !== null && order.tax_amount !== undefined ? Number(order.tax_amount) : null,
+    steuersatz: order.tax_rate !== null && order.tax_rate !== undefined ? Number(order.tax_rate) : null,
     lieferadresse: order.shipping_street
       ? {
           strasse: order.shipping_street as string,

@@ -1,0 +1,66 @@
+/**
+ * Rabatte – read-only Übersicht der Mengenstaffel, die tatsächlich im
+ * Checkout wirkt (lib/pricing/calculatePrice.ts, QUANTITY_TIERS).
+ *
+ * ── Warum keine Bearbeitung hier ────────────────────────────────────────
+ * Wie der gesamte Produktkatalog liegen Preisregeln bewusst im Code, nicht
+ * in der Datenbank (docs/filterleiste-konzept.md, Architekturentscheidung 1:
+ * "zwei Quellen für dieselbe Information" ist genau das, was die
+ * Geschäftsarchitektur verbietet). Eine Änderung hier würde eine zweite
+ * Wahrheit neben calculatePrice.ts schaffen. Diese Seite macht die
+ * geltende Regel nur sichtbar, ohne sie zu duplizieren.
+ *
+ * ── Gutscheincodes gibt es (noch) nicht ─────────────────────────────────
+ * Es existiert kein System für individuelle Rabattcodes (Gutschein-Feld im
+ * Checkout) – nur die automatische Mengenstaffel unten. Das ist eine
+ * bewusste Auslassung dieses Durchlaufs (siehe
+ * docs/entscheidungen-produktionsreife.md): ein Gutscheincode-System ist
+ * ein eigenständiges neues Feature, keine bloße Admin-Sichtbarkeit auf
+ * Bestehendem.
+ */
+import { istAdmin } from '@/lib/admin/auth';
+import { QUANTITY_TIERS } from '@/lib/pricing/calculatePrice';
+
+export const dynamic = 'force-dynamic';
+
+export default async function AdminRabattePage() {
+  if (!(await istAdmin())) return null;
+
+  return (
+    <section className="space-y-4">
+      <div>
+        <h1 className="text-lg font-semibold">Rabatte</h1>
+        <p className="mt-1 text-sm text-gray-500">
+          Automatische Mengenstaffel, angewendet auf jede Bestellung – kein manueller Gutscheincode nötig. Pflege in{' '}
+          <code className="rounded bg-gray-100 px-1">src/lib/pricing/calculatePrice.ts</code> (QUANTITY_TIERS).
+        </p>
+      </div>
+
+      <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+        <table className="w-full text-left text-sm">
+          <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wide text-gray-500">
+            <tr>
+              <th className="px-3 py-2">Ab Stückzahl</th>
+              <th className="px-3 py-2 text-right">Rabatt Grundpreis</th>
+              <th className="px-3 py-2 text-right">Rabatt Veredelung (Fläche/Stiche)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {QUANTITY_TIERS.map((tier) => (
+              <tr key={tier.minQuantity} className="border-b border-gray-100 last:border-0">
+                <td className="px-3 py-2 font-medium">{tier.minQuantity}</td>
+                <td className="px-3 py-2 text-right">{tier.baseDiscountPercent} %</td>
+                <td className="px-3 py-2 text-right">{tier.veredelungDiscountPercent} %</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="rounded-lg border border-dashed border-gray-300 bg-white p-4 text-sm text-gray-500">
+        Kein Gutschein-/Rabattcode-System vorhanden. Ein Textfeld &bdquo;Gutscheincode&ldquo; im Checkout wäre ein neues Feature
+        (eigene Verwaltung, Einlösungslogik, Missbrauchsschutz) – bislang bewusst nicht gebaut.
+      </div>
+    </section>
+  );
+}

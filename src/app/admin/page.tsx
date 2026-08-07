@@ -16,18 +16,57 @@ const STATUS_LABELS: Record<string, string> = {
   cancelled: 'Storniert',
 };
 
-export default async function AdminOrdersPage() {
+const JE_SEITE = 50;
+
+export default async function AdminOrdersPage({
+  searchParams,
+}: {
+  searchParams: { q?: string; seite?: string };
+}) {
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
   // rendert Seite und Layout parallel und serialisiert das Seitenergebnis in
   // den RSC-Payload des HTML – auch wenn das Layout `children` verwirft.
   // Ohne diese Wache lagen Kundendaten und signierte Datei-URLs im Quelltext
   // der Login-Seite (real nachgewiesen).
   if (!(await istAdmin())) return null;
-  const orders = await listOrders();
+  const suche = searchParams.q?.trim() ?? '';
+  const seite = Math.max(0, Number(searchParams.seite ?? '0') || 0);
+  const { zeilen: orders, gesamt } = await listOrders({ suche, seite, jeSeite: JE_SEITE });
+  const letzteSeite = Math.max(0, Math.ceil(gesamt / JE_SEITE) - 1);
+
+  function seitenLink(neueSeite: number): string {
+    const params = new URLSearchParams();
+    if (suche) params.set('q', suche);
+    if (neueSeite > 0) params.set('seite', String(neueSeite));
+    const query = params.toString();
+    return query ? `/admin?${query}` : '/admin';
+  }
 
   return (
     <div>
-      <h1 className="mb-4 text-lg font-semibold">Bestellungen &amp; Anfragen ({orders.length})</h1>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <h1 className="text-lg font-semibold">
+          Bestellungen &amp; Anfragen ({gesamt}
+          {suche ? ` · Treffer für „${suche}"` : ''})
+        </h1>
+        <form method="get" className="flex items-center gap-2">
+          <input
+            type="search"
+            name="q"
+            defaultValue={suche}
+            placeholder="Name, E-Mail oder Firma suchen …"
+            className="w-64 rounded border border-gray-300 px-3 py-1.5 text-sm"
+          />
+          <button type="submit" className="rounded bg-gray-800 px-3 py-1.5 text-sm text-white hover:bg-gray-700">
+            Suchen
+          </button>
+          {suche && (
+            <Link href="/admin" className="text-xs text-gray-500 hover:underline">
+              zurücksetzen
+            </Link>
+          )}
+        </form>
+      </div>
 
       {orders.length === 0 ? (
         <p className="rounded-lg border border-dashed border-gray-300 bg-white p-6 text-center text-sm text-gray-500">
@@ -72,6 +111,26 @@ export default async function AdminOrdersPage() {
               ))}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {letzteSeite > 0 && (
+        <div className="mt-4 flex items-center justify-between text-sm">
+          <span className="text-gray-500">
+            Seite {seite + 1} von {letzteSeite + 1}
+          </span>
+          <div className="flex gap-2">
+            {seite > 0 && (
+              <Link href={seitenLink(seite - 1)} className="rounded border border-gray-300 px-3 py-1 hover:bg-gray-50">
+                ← Zurück
+              </Link>
+            )}
+            {seite < letzteSeite && (
+              <Link href={seitenLink(seite + 1)} className="rounded border border-gray-300 px-3 py-1 hover:bg-gray-50">
+                Weiter →
+              </Link>
+            )}
+          </div>
         </div>
       )}
     </div>

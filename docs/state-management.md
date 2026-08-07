@@ -10,7 +10,7 @@ erlaubt – anders als Context, das alle Verbraucher neu rendert.
 > [architektur.md](architektur.md)). Die Stores halten nur den Bearbeitungs-
 > und Sitzungszustand des Clients.
 
-## Die sechs Stores
+## Die sieben Stores
 
 | Store | Datei | Hält | Persistenz (localStorage) |
 |-------|-------|------|---------------------------|
@@ -20,6 +20,7 @@ erlaubt – anders als Context, das alle Verbraucher neu rendert.
 | **favoritesStore** | `favoritesStore.ts` | Gemerkte Produkt-IDs | `konfigurator-favorites` |
 | **currencyStore** | `currencyStore.ts` | Anzeigewährung (EUR/CHF, Näherungskurs – **kein** Live-Kurs) | `konfigurator-currency` |
 | **languageStore** | `languageStore.ts` | Sprache (de/en) | `konfigurator-language` |
+| **uiStore** | `uiStore.ts` | Kurzlebiger, seitenübergreifender UI-Zustand: nur `warenkorbOffen` (steuert die Warenkorb-Schublade, die von jeder Seite über die Kopfzeile geöffnet wird) | nein (bewusst nicht persistiert) |
 
 ### configuratorStore – das Herz
 

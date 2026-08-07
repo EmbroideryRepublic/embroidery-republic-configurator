@@ -17,6 +17,8 @@ import {
   FARBGRUPPE_LABELS, GESCHLECHT_LABELS, MATERIAL_LABELS, PASSFORM_LABELS,
   type Farbgruppe, type Geschlecht, type MaterialGruppe, type Passform,
 } from '@/config/products/facetten';
+import { PRODUCT_TYPE_ORDER } from '@/config/products/types';
+import { QUALITY_TIER_ORDER } from '@/config/qualityTiers';
 import type { PrintMethod } from '@/types';
 
 export type Sortierung = 'beliebtheit' | 'preis-auf' | 'preis-ab' | 'neu' | 'name-az' | 'name-za';
@@ -115,6 +117,11 @@ const PASSFORMEN = Object.keys(PASSFORM_LABELS) as Passform[];
 const GESCHLECHTER = Object.keys(GESCHLECHT_LABELS) as Geschlecht[];
 const FARBEN = Object.keys(FARBGRUPPE_LABELS) as Farbgruppe[];
 const VEREDELUNGEN = ['dtf', 'embroidery'] as const;
+// kategorie/qualitaet haben – anders als marke/groesse – ein geschlossenes,
+// vom Sortiment unabhängiges Vokabular (Produktart-Register bzw. Stufen-
+// Registry) und lassen sich daher hier ebenso prüfen wie farbe/material.
+const KATEGORIEN = PRODUCT_TYPE_ORDER;
+const QUALITAETSSTUFEN = QUALITY_TIER_ORDER;
 // Sortierung ist ein reines Query-Konzept (keine Produktfacette) und bleibt lokal.
 const SORTIERUNGEN = ['beliebtheit', 'preis-auf', 'preis-ab', 'neu', 'name-az', 'name-za'] as const;
 
@@ -126,9 +133,15 @@ export function leseKriterien(p: SuchParameter): FilterKriterien {
   const seite = zahl(p.seite);
 
   return {
-    kategorie: liste(p.kategorie),
+    kategorie: nurBekannte(liste(p.kategorie), KATEGORIEN),
+    // marke/groesse bleiben ungeprüft: Sie haben kein sortimentsunabhängiges
+    // Vokabular (Marken/Größen entstehen frei aus dem Katalog), und diese Datei
+    // kennt den Katalog bewusst nicht (siehe Kopfkommentar). Ein weggefallener
+    // Wert führt hier – wie dokumentiert – zu „Filter ohne Wirkung", nicht zu 0
+    // Treffern, weil das Filtermenü seine Optionen ohnehin nur aus real
+    // vorkommenden Werten aufbaut.
     marke: liste(p.marke),
-    qualitaet: liste(p.qualitaet),
+    qualitaet: nurBekannte(liste(p.qualitaet), QUALITAETSSTUFEN),
     material: nurBekannte(liste(p.material), MATERIALIEN),
     passform: nurBekannte(liste(p.passform), PASSFORMEN),
     groesse: liste(p.groesse),

@@ -37,10 +37,26 @@ import { formatiereGeld } from '@/lib/format';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { protokolliereBestellereignis } from './orderService';
 import { ladeBestellungFuerAbschluss, schliesseBestellungAb } from './orderCompletion';
+import { sendEmail } from '@/lib/email/sendEmail';
+import { PaymentSucceededEmail } from '@/lib/email/templates/PaymentSucceededEmail';
+import { PaymentFailedEmail } from '@/lib/email/templates/PaymentFailedEmail';
+import { basisUrl } from '@/lib/seo/basisUrl';
+import { bestellansichtUrl } from './orderIntake';
 
-/** Basis-URL für Rückkehr- und Abbruchadressen. */
-function basisUrl(): string {
-  return (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3007').replace(/\/$/, '');
+/**
+ * Minimaler, unabhängiger Nachschlag für die beiden Zahlungs-E-Mails – NICHT
+ * dasselbe wie `ladeBestellungFuerAbschluss` (das lädt den vollen
+ * Bestellkontext für Phase 2). E-Mail-Versand ist bewusst entkoppelt vom
+ * Abschluss-Anspruch: Schlägt Phase 2 fehl, soll die Kundschaft trotzdem
+ * wissen, dass die Zahlung angekommen ist.
+ */
+async function ladeEmailUndBetrag(
+  db: ReturnType<typeof createAdminClient>,
+  orderId: string
+): Promise<{ email: string; totalPrice: number } | null> {
+  const { data, error } = await db.from('orders').select('email, total_price').eq('id', orderId).maybeSingle();
+  if (error || !data) return null;
+  return { email: data.email as string, totalPrice: Number(data.total_price ?? 0) };
 }
 
 /**
@@ -323,6 +339,19 @@ async function bestaetigeZahlung(
     detail: { ereignisId: ereignis.ereignisId, referenz: ereignis.referenz, betragCent: ereignis.betragCent },
   });
 
+  // E-Mail ist "nice to have", nicht-fatal – dieselbe Haltung wie beim
+  // Bestellabschluss (Rendering/PDF dürfen die verbuchte Zahlung nicht
+  // rückgängig machen, ein fehlgeschlagener Mailversand erst recht nicht).
+  const bestellinfo = await ladeEmailUndBetrag(db, ereignis.bestellId);
+  if (bestellinfo) {
+    await sendEmail({
+      to: bestellinfo.email,
+      subject: `Zahlung erhalten: ${buildOrderNumber(ereignis.bestellId)}`,
+      react: PaymentSucceededEmail({ orderNumber: buildOrderNumber(ereignis.bestellId), betrag: bestellinfo.totalPrice }),
+      kontext: { anlass: 'payment_succeeded', orderId: ereignis.bestellId },
+    }).catch(() => {});
+  }
+
   // ── JETZT erst Phase 2 ──────────────────────────────────────────────
   // Druckvorschauen, Produktionsblatt und Benachrichtigungen laufen genau
   // hier – nach bestätigter Zahlung, nicht vorher. Das ist der Grund für
@@ -424,6 +453,23 @@ async function markiereZahlungAlsGescheitert(
     reason: ereignis.grund ?? `Bezahlvorgang: ${ereignis.art}.`,
     detail: { ereignisId: ereignis.ereignisId, referenz: ereignis.referenz, art: ereignis.art },
   });
+
+  // Nicht-fatal, wie überall: die Kundschaft soll wissen, dass sie es erneut
+  // versuchen kann – ein fehlgeschlagener Mailversand ändert nichts am
+  // bereits gespeicherten Zahlungszustand.
+  const bestellinfo = await ladeEmailUndBetrag(db, ereignis.bestellId);
+  if (bestellinfo) {
+    const orderNumber = buildOrderNumber(ereignis.bestellId);
+    await sendEmail({
+      to: bestellinfo.email,
+      subject: `Zahlung nicht erfolgreich: ${orderNumber}`,
+      react: PaymentFailedEmail({
+        orderNumber,
+        bestellansichtUrl: bestellansichtUrl(ereignis.bestellId) ?? undefined,
+      }),
+      kontext: { anlass: 'payment_failed', orderId: ereignis.bestellId },
+    }).catch(() => {});
+  }
 
   return { ok: true, wirkung: 'fehlgeschlagen', bereitsVerarbeitet: false };
 }

@@ -1,8 +1,17 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { TodoNote, Todo } from '@/components/legal/TodoNote';
 
-export const metadata = { title: 'AGB' };
+export const metadata = {
+  title: 'AGB',
+  description:
+    'Allgemeine Geschäftsbedingungen von Embroidery Republic Germany: Vertragsschluss, Preise, Versand, Widerrufsrecht und Gewährleistung.',
+  alternates: { canonical: '/agb' },
+  openGraph: {
+    title: 'Allgemeine Geschäftsbedingungen',
+    description:
+      'Vertragsschluss, Preise, Versand, Widerrufsrecht und Gewährleistung bei Embroidery Republic Germany.',
+  },
+};
 
 function Section({ n, title, children }: { n: number; title: string; children: ReactNode }) {
   return (
@@ -26,12 +35,6 @@ export default function AgbPage() {
         Allgemeine Geschäftsbedingungen
       </h1>
       <p className="mb-6 text-xs text-brand/50">Stand: Juli 2026</p>
-
-      <TodoNote>
-        Vor dem Go-live ist noch die umsatzsteuerliche Angabe in § 4 zu ergänzen (Netto- oder
-        Bruttopreise bzw. Kleinunternehmerregelung). Eine anwaltliche Prüfung dieser Bedingungen wird
-        empfohlen.
-      </TodoNote>
 
       <div className="space-y-6">
         <Section n={1} title="Geltungsbereich und Vertragspartner">
@@ -171,23 +174,19 @@ export default function AgbPage() {
             ausdrücklich in Textform als verbindlich vereinbart wurden.
           </p>
           <p>
-            (4) Es gelten folgende Versandkosten:
+            (4) Wir liefern derzeit ausschließlich innerhalb Deutschlands. Es gelten folgende
+            Versandkosten:
           </p>
           <ul className="ml-4 list-disc space-y-1">
             <li>
               Innerhalb Deutschlands: 6,90 € – ab einem Bestellwert von 75,00 € versandkostenfrei.
             </li>
-            <li>
-              Innerhalb der Europäischen Union: 11,99 € – ab einem Bestellwert von 100,00 €
-              versandkostenfrei.
-            </li>
           </ul>
           <p>
             (5) Die für Ihre Bestellung geltenden Versandkosten werden im Bestellvorgang automatisch
-            anhand des Lieferlandes und des Bestellwertes berechnet und vor dem Absenden der
-            Bestellung transparent ausgewiesen. Lieferungen in Länder außerhalb der genannten Gebiete
-            bieten wir derzeit nicht über den Konfigurator an; sprechen Sie uns für ein individuelles
-            Angebot gerne an.
+            anhand des Bestellwertes berechnet und vor dem Absenden der Bestellung transparent
+            ausgewiesen. Lieferungen ins Ausland bieten wir derzeit nicht über den Konfigurator an;
+            sprechen Sie uns für ein individuelles Angebot gerne an.
           </p>
           <p>
             (6) Teillieferungen sind zulässig, soweit sie für den Kunden zumutbar sind. Zusätzliche

@@ -8,6 +8,11 @@ export const metadata = {
   title: 'Kontakt',
   description:
     'Fragen zu Firmenbekleidung, Mengenrabatten oder einem individuellen Projekt? Schreiben Sie Embroidery Republic Germany – Antwort meist innerhalb eines Werktags.',
+  openGraph: {
+    title: 'Kontakt',
+    description:
+      'Fragen zu Firmenbekleidung, Mengenrabatten oder einem individuellen Projekt? Wir melden uns persönlich zurück.',
+  },
 };
 
 const HELPERS = [
@@ -48,7 +53,7 @@ export default function KontaktPage() {
 
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {HELPERS.map((h) => (
-          <div key={h.title} className="rounded-2xl border border-gold/20 bg-white p-4 shadow-elegant">
+          <div key={h.title} className="rounded-xl border border-gold/20 bg-white p-4 shadow-elegant">
             <span className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-gold-light text-gold-dark">
               <h.icon className="h-4 w-4" />
             </span>
@@ -58,7 +63,7 @@ export default function KontaktPage() {
         ))}
       </div>
 
-      <div className="mt-8 rounded-2xl border border-gold/20 bg-white p-5 shadow-elegant">
+      <div className="mt-8 rounded-xl border border-gold/20 bg-white p-5 shadow-elegant">
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/50">
           Direkter Kontakt
         </h2>

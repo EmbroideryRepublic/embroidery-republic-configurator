@@ -154,11 +154,6 @@ export function seamMarginCmVon(id: string): number {
   return DECORATION_POSITIONS[id]?.seamMarginCm ?? DEFAULT_SEAM_MARGIN_CM;
 }
 
-/** Alle registrierten View-IDs (in fachlicher Reihenfolge). */
-export const ALLE_VIEW_IDS: readonly string[] = Object.values(DECORATION_POSITIONS)
-  .sort((a, b) => a.order - b.order)
-  .map((d) => d.id);
-
 /** Alle Positionen in fachlicher Reihenfolge. */
 export const DECORATION_POSITION_ORDER: readonly DecorationPosition[] = (
   Object.values(DECORATION_POSITIONS) as DecorationPositionDefinition[]
@@ -183,9 +178,4 @@ export function sortierePositionen(positionen: readonly DecorationPosition[]): D
   return [...positionen].sort(
     (a, b) => (DECORATION_POSITIONS[a]?.order ?? Number.MAX_SAFE_INTEGER) - (DECORATION_POSITIONS[b]?.order ?? Number.MAX_SAFE_INTEGER)
   );
-}
-
-/** Alle Positionen einer Gruppe – Grundlage für Filter wie „nur Ärmel". */
-export function positionenDerGruppe(gruppe: PositionGruppe): DecorationPosition[] {
-  return DECORATION_POSITION_ORDER.filter((p) => DECORATION_POSITIONS[p]?.gruppe === gruppe);
 }

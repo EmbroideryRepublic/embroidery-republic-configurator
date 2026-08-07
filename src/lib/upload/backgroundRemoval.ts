@@ -38,6 +38,8 @@
  * ══════════════════════════════════════════════════════════════════════
  */
 
+import { loadImage } from '@/lib/browser/loadImage';
+
 const WORKING_MAX_DIM = 900; // Maskenberechnung läuft auf einer verkleinerten Kopie (Performance), Ergebnis wird auf Originalauflösung angewendet
 
 export async function removeSimpleBackground(dataUrl: string): Promise<string> {
@@ -295,13 +297,4 @@ function despeckle(alpha: Uint8ClampedArray, width: number, height: number) {
       }
     }
   }
-}
-
-function loadImage(src: string): Promise<HTMLImageElement> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error('Bild konnte nicht geladen werden.'));
-    img.src = src;
-  });
 }

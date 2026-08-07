@@ -1,16 +1,21 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
-import { useCartStore, getCartTotal } from '@/stores/cartStore';
+import { useCartStore, getCartTotal, getCartItemCount } from '@/stores/cartStore';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getProduct } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { submitOrder, submitInquiry } from '@/lib/actions/orders';
+import { ladeCheckoutVorbelegung } from '@/lib/actions/konto';
 import { useSubmitGuard } from '@/lib/hooks/useSubmitGuard';
-import { SHIPPING_COUNTRIES, SHIPPING_RATES, calculateShipping } from '@/config/shipping';
+import { SHIPPING_RATES, calculateShipping, landCodeForCountry } from '@/config/shipping';
+import { steuersatzFuer, steueranteil, STANDARDLAND } from '@/config/pricing/steuer';
+import { istPlausibleEmail, istGueltigePlz } from '@/lib/orders/orderValidation';
+import { FELD_KLASSE } from '@/lib/ui/feldKlasse';
+import { formatiereFarbname } from '@/lib/products/farben';
 import type { CartItem } from '@/types';
 
 interface CartDrawerProps {
@@ -28,12 +33,75 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
   const pathname = usePathname();
   const [step, setStep] = useState<DrawerStep>('cart');
   const [orderNumber, setOrderNumber] = useState('');
+  // Von CheckoutForm gemeldet: eine laufende Bestellübermittlung darf nicht
+  // durch den Zurück-Button unterbrochen werden (siehe handleSubmit dort).
+  const [checkoutSubmitting, setCheckoutSubmitting] = useState(false);
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   const currency = useCurrencyStore((s) => s.currency);
   const formatPrice = (amount: number) => formatPriceWithCurrency(amount, currency);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  // Fokusmanagement für den modalen Dialog: beim Öffnen den Fokus in die
+  // Schublade setzen, beim Schliessen (Unmount) auf das auslösende Element
+  // zurückgeben – ohne das verliert Tastatur-/Screenreader-Nutzung den Kontext.
+  useEffect(() => {
+    const zuvorFokussiertesElement = document.activeElement as HTMLElement | null;
+    dialogRef.current?.focus();
+    return () => {
+      zuvorFokussiertesElement?.focus();
+    };
+  }, []);
+
+  // Escape schliesst die Schublade wie jeden modalen Dialog. Tab wird als
+  // echte Tastatur-Fokus-Falle behandelt: ohne sie verlässt Tab am letzten
+  // bzw. Shift+Tab am ersten fokussierbaren Element die Schublade und landet
+  // im dahinterliegenden, unsichtbar unter dem Overlay liegenden Seiteninhalt
+  // (Footer-Links, Konfigurator-Elemente) – live reproduziert.
+  useEffect(() => {
+    function fokussierbareElemente(): HTMLElement[] {
+      const container = dialogRef.current;
+      if (!container) return [];
+      return Array.from(
+        container.querySelectorAll<HTMLElement>(
+          'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => !el.hasAttribute('disabled') && el.getClientRects().length > 0);
+    }
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        onClose();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+
+      const elemente = fokussierbareElemente();
+      if (elemente.length === 0) return;
+      const erstes = elemente[0]!;
+      const letztes = elemente[elemente.length - 1]!;
+      const aktiv = document.activeElement as HTMLElement | null;
+
+      if (e.shiftKey) {
+        // Shift+Tab am ersten Element (oder mit Fokus noch auf dem
+        // Dialog-Container selbst, direkt nach dem Öffnen) → zum letzten.
+        if (aktiv === erstes || !aktiv || !elemente.includes(aktiv)) {
+          e.preventDefault();
+          letztes.focus();
+        }
+      } else if (aktiv === letztes) {
+        e.preventDefault();
+        erstes.focus();
+      }
+    }
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [onClose]);
 
   const total = getCartTotal(items);
+  // Dieselbe Zahl wie das Header-Badge (SiteHeader), damit am selben
+  // Warenkorb nicht zwei unterschiedliche Zahlen auftauchen.
+  const positionCount = getCartItemCount(items);
 
   function handleOrderPlaced(realOrderNumber: string) {
     setOrderNumber(realOrderNumber);
@@ -45,7 +113,20 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
   // zurück in den Editor laden. Die Position wird aus dem Warenkorb
   // entfernt, damit sie nicht doppelt existiert – nach dem erneuten
   // Anpassen legt der Kunde sie über "In den Warenkorb" wieder ab.
+  //
+  // Liegt im Konfigurator bereits ein ungespeichertes Design (platzierte
+  // Elemente), würde loadCartItemForEditing es samt Undo-Historie
+  // stillschweigend überschreiben. Ein einfacher Bestätigungsdialog genügt
+  // hier – es geht nicht um einen komplexen Workflow, nur um eine bewusste
+  // Entscheidung statt eines stillen Datenverlusts.
   function handleEditItem(item: CartItem) {
+    const bestehendeElemente = useConfiguratorStore.getState().elements;
+    if (bestehendeElemente.length > 0) {
+      const bestaetigt = window.confirm(
+        'Im Konfigurator liegt bereits ein ungespeichertes Design vor. Beim Laden dieser Warenkorb-Position geht es verloren. Fortfahren?'
+      );
+      if (!bestaetigt) return;
+    }
     loadCartItemForEditing({
       printMethod: item.printMethod,
       productId: item.productId,
@@ -62,12 +143,26 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-black/40">
-      <div className="flex h-full w-full max-w-md flex-col bg-white shadow-xl">
+    <div
+      className="fixed inset-0 z-50 flex justify-end bg-black/40"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('cart_title')}
+      ref={dialogRef}
+      tabIndex={-1}
+      onClick={onClose}
+    >
+      <div className="flex h-full w-full max-w-md flex-col bg-white shadow-xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between border-b border-brand/[0.08] px-4 py-3">
           <h2 className="flex items-center gap-2 text-sm font-semibold text-brand">
             {(step === 'checkout' || step === 'inquiry') && (
-              <button type="button" onClick={() => setStep('cart')} className="rounded-md p-0.5 hover:bg-cream">
+              <button
+                type="button"
+                onClick={() => setStep('cart')}
+                aria-label="Zurück"
+                disabled={step === 'checkout' && checkoutSubmitting}
+                className="rounded-md p-0.5 hover:bg-cream disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+              >
                 <ArrowLeft className="h-4 w-4" />
               </button>
             )}
@@ -80,9 +175,14 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                   ? t('cart_inquiry_title')
                   : step === 'inquiry-sent'
                     ? t('cart_inquiry_sent_title')
-                    : `${t('cart_title')} ${items.length > 0 ? `(${items.length})` : ''}`}
+                    : `${t('cart_title')} ${positionCount > 0 ? `(${positionCount})` : ''}`}
           </h2>
-          <button type="button" onClick={onClose} className="rounded-md p-1 text-brand/40 hover:bg-cream">
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={t('common_close')}
+            className="rounded-md p-1 text-brand/40 hover:bg-cream"
+          >
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -109,12 +209,17 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                           <div>
                             <p className="text-sm font-medium text-brand">{product?.name ?? 'Produkt'}</p>
                             <p className="text-xs text-brand/60">
-                              {color?.name ?? '–'} ·{' '}
+                              {color ? formatiereFarbname(color.name) : '–'} ·{' '}
                               {item.printMethod === 'embroidery' ? 'Stickerei' : 'DTF-Transferdruck'}
                             </p>
                             <p className="mt-0.5 text-xs font-medium text-brand/70">{sizeSummary || `${item.quantity}×`}</p>
                             <p className="text-xs text-brand/40">
-                              {logoCount} Logo, {textCount} Text
+                              {t('cart_item_summary', {
+                                logoCount,
+                                logoWord: t(logoCount === 1 ? 'cart_logo_singular' : 'cart_logo_plural'),
+                                textCount,
+                                textWord: t(textCount === 1 ? 'cart_text_singular' : 'cart_text_plural'),
+                              })}
                             </p>
                           </div>
                           <div className="flex flex-shrink-0 items-center gap-0.5">
@@ -131,8 +236,8 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
                               type="button"
                               onClick={() => removeItem(item.id)}
                               className="rounded-md p-1 text-brand/30 transition-colors hover:bg-red-50 hover:text-red-500"
-                              title="Entfernen"
-                              aria-label="Position entfernen"
+                              title={t('cart_remove_item')}
+                              aria-label={t('cart_remove_item')}
                             >
                               <Trash2 className="h-4 w-4" />
                             </button>
@@ -192,7 +297,13 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
         )}
 
         {step === 'checkout' && (
-          <CheckoutForm items={items} total={total} formatPrice={formatPrice} onOrderPlaced={handleOrderPlaced} />
+          <CheckoutForm
+            items={items}
+            total={total}
+            formatPrice={formatPrice}
+            onOrderPlaced={handleOrderPlaced}
+            onSubmittingChange={setCheckoutSubmitting}
+          />
         )}
 
         {step === 'inquiry' && (
@@ -211,6 +322,10 @@ interface CheckoutFormProps {
   total: number;
   formatPrice: (amount: number) => string;
   onOrderPlaced: (orderNumber: string) => void;
+  /** Meldet isSubmitting an die übergeordnete Schublade, damit der
+   *  Zurück-Button im Header während der Übermittlung deaktiviert werden
+   *  kann (siehe dortiger Kommentar). */
+  onSubmittingChange: (submitting: boolean) => void;
 }
 
 /**
@@ -223,7 +338,7 @@ interface CheckoutFormProps {
  * ohne Umbau reaktivieren lassen. Es wird im Checkout nichts abgebucht; die
  * Rechnung folgt separat mit der Auftragsbearbeitung.
  */
-function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutFormProps) {
+function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingChange }: CheckoutFormProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   // Bis zur Stripe-Anbindung ist Rechnung die einzige Zahlungsart. Die Union
@@ -251,6 +366,27 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
     // Wiederholung einer vorangegangenen Anfrage gelten.
     'er-absendung-bestellung'
   );
+
+  // isSubmitting an die Schublade weiterreichen, damit deren Zurück-Button
+  // während der Übermittlung deaktiviert werden kann.
+  useEffect(() => {
+    onSubmittingChange(isSubmitting);
+  }, [isSubmitting, onSubmittingChange]);
+
+  // Unmount-Guard nach demselben Muster wie bei der Checkout-Vorbelegung
+  // unten: Wird dieses Formular während einer laufenden Übermittlung
+  // trotzdem entfernt (Schließen der Schublade per X/Escape/Klick auf das
+  // Overlay – der Zurück-Button allein deckt das nicht ab), darf das
+  // spät eintreffende Ergebnis nicht mehr onOrderPlaced() aufrufen: das
+  // würde auf der bereits verlassenen, inzwischen ggf. veränderten
+  // Elternkomponente den Warenkorb leeren und den Schritt wechseln.
+  const abgebrochenRef = useRef(false);
+  useEffect(() => {
+    return () => {
+      abgebrochenRef.current = true;
+    };
+  }, []);
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -263,23 +399,94 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
     country: 'Deutschland',
   });
 
+  // Vorbelegung für angemeldete Kund:innen aus der Standardadresse des
+  // Kundenkontos (lib/actions/konto.ts, ladeCheckoutVorbelegung) – reine
+  // Bequemlichkeit, ändert nichts an der verbindlichen Serverberechnung.
+  // Läuft genau einmal beim Öffnen dieses Schritts; ein Gast ohne Sitzung
+  // bekommt `null` zurück und das Formular bleibt unverändert leer. Kein
+  // Überschreiben laufender Eingaben nötig – das Formular ist an dieser
+  // Stelle immer frisch (CheckoutForm mountet neu, sobald der Schritt
+  // wieder auf 'checkout' wechselt).
+  useEffect(() => {
+    let abgebrochen = false;
+    ladeCheckoutVorbelegung().then((vorbelegung) => {
+      if (!vorbelegung || abgebrochen) return;
+      setForm((f) => ({
+        ...f,
+        firstName: f.firstName || vorbelegung.firstName,
+        lastName: f.lastName || vorbelegung.lastName,
+        companyName: f.companyName || vorbelegung.companyName,
+        email: f.email || vorbelegung.email,
+        phone: f.phone || vorbelegung.phone,
+        street: f.street || vorbelegung.street,
+        zip: f.zip || vorbelegung.zip,
+        city: f.city || vorbelegung.city,
+      }));
+    });
+    return () => {
+      abgebrochen = true;
+    };
+  }, []);
+
   // Versand aus Lieferland + Warenwert. Rein zur ANZEIGE – verbindlich ist
   // die identische Berechnung auf dem Server (serverPricing.ts).
   const shipping = calculateShipping(form.country, total);
   const grandTotal = total + (shipping?.cost ?? 0);
 
+  // Enthaltene Umsatzsteuer – rein zur ANZEIGE, dieselbe Auflösung
+  // (Land → Code → Satz) wie serverseitig in orderStage.ts/serverPricing.ts.
+  // Da die Preise brutto sind (pricesIncludeTax), wird sie nur ausgewiesen,
+  // nicht aufgeschlagen.
+  const landCode = landCodeForCountry(form.country) ?? STANDARDLAND;
+  const taxRate = steuersatzFuer(landCode).satz;
+  // Zentrale Funktion statt eigener Inline-Formel (config/pricing/steuer.ts) –
+  // dieselbe Rundung wie überall sonst im Projekt.
+  const taxAmount = steueranteil(grandTotal, landCode);
+
   const isValid =
     form.firstName.trim() &&
     form.lastName.trim() &&
-    form.email.trim().includes('@') &&
+    istPlausibleEmail(form.email) &&
     form.street.trim() &&
-    form.zip.trim() &&
+    istGueltigePlz(form.zip) &&
     form.city.trim() &&
     shipping !== null &&
     acceptedTerms;
 
   function update(field: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
+  }
+
+  // Für die Fehleranzeige pro Pflichtfeld: erst nach Berühren (onBlur) sichtbar
+  // (siehe Feld-Komponente unten). Ohne das bekäme ein Tastatur-/Screenreader-
+  // Nutzer nie mitgeteilt, WARUM der Absenden-Button deaktiviert bleibt – der
+  // Button fällt dabei aus der Tab-Reihenfolge, eine reine Client-Validierung
+  // löst sonst keine Ansage aus.
+  const [beruehrteFelder, setBeruehrteFelder] = useState<Partial<Record<keyof typeof form, boolean>>>({});
+  function beruehren(feld: keyof typeof form) {
+    setBeruehrteFelder((b) => ({ ...b, [feld]: true }));
+  }
+
+  function feldFehler(feld: keyof typeof form): string | undefined {
+    if (!beruehrteFelder[feld]) return undefined;
+    switch (feld) {
+      case 'firstName':
+        return form.firstName.trim() ? undefined : t('checkout_error_first_name');
+      case 'lastName':
+        return form.lastName.trim() ? undefined : t('checkout_error_last_name');
+      case 'email':
+        if (!form.email.trim()) return t('checkout_error_email_required');
+        return istPlausibleEmail(form.email) ? undefined : t('checkout_error_email_invalid');
+      case 'street':
+        return form.street.trim() ? undefined : t('checkout_error_street');
+      case 'zip':
+        if (!form.zip.trim()) return t('checkout_error_zip_required');
+        return istGueltigePlz(form.zip) ? undefined : t('checkout_error_zip_invalid');
+      case 'city':
+        return form.city.trim() ? undefined : t('checkout_error_city');
+      default:
+        return undefined;
+    }
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -301,9 +508,16 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
         },
         shipping: { street: form.street, zip: form.zip, city: form.city, country: form.country },
         paymentMethod,
+        acceptedTerms,
         clientRequestId,
       })
     );
+
+    // Die Schublade wurde während der Übermittlung geschlossen (X/Escape/
+    // Overlay-Klick) – die Elternkomponente ist ggf. nicht mehr in diesem
+    // Zustand. Weder Erfolg noch Fehler dürfen jetzt noch auf sie wirken.
+    if (abgebrochenRef.current) return;
+
     // undefined = abgewiesen (läuft bereits) oder fehlgeschlagen; die Meldung
     // steht in dem Fall bereits im Hook.
     if (!result) return;
@@ -325,38 +539,36 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
           <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/50">{t('checkout_contact_heading')}</h3>
           <div className="grid grid-cols-2 gap-2">
             <Feld id="vorname" label={t('checkout_first_name')} wert={form.firstName}
-              onWert={(v) => update('firstName', v)} autoComplete="given-name" pflicht />
+              onWert={(v) => update('firstName', v)} autoComplete="given-name" pflicht
+              fehler={feldFehler('firstName')} onBeruehrt={() => beruehren('firstName')} />
             <Feld id="nachname" label={t('checkout_last_name')} wert={form.lastName}
-              onWert={(v) => update('lastName', v)} autoComplete="family-name" pflicht />
+              onWert={(v) => update('lastName', v)} autoComplete="family-name" pflicht
+              fehler={feldFehler('lastName')} onBeruehrt={() => beruehren('lastName')} />
             <Feld id="firma" label={t('checkout_company')} wert={form.companyName}
               onWert={(v) => update('companyName', v)} autoComplete="organization" spalten />
             <Feld id="email" label={t('checkout_email')} wert={form.email}
-              onWert={(v) => update('email', v)} autoComplete="email" type="email" pflicht spalten />
+              onWert={(v) => update('email', v)} autoComplete="email" type="email" pflicht spalten
+              fehler={feldFehler('email')} onBeruehrt={() => beruehren('email')} />
             <Feld id="telefon" label={t('checkout_phone')} wert={form.phone}
               onWert={(v) => update('phone', v)} autoComplete="tel" type="tel" spalten />
             <Feld id="strasse" label={t('checkout_street')} wert={form.street}
-              onWert={(v) => update('street', v)} autoComplete="street-address" pflicht spalten />
+              onWert={(v) => update('street', v)} autoComplete="street-address" pflicht spalten
+              fehler={feldFehler('street')} onBeruehrt={() => beruehren('street')} />
             <Feld id="plz" label={t('checkout_zip')} wert={form.zip}
-              onWert={(v) => update('zip', v)} autoComplete="postal-code" inputMode="numeric" pflicht />
+              onWert={(v) => update('zip', v)} autoComplete="postal-code" inputMode="numeric" pflicht
+              fehler={feldFehler('zip')} onBeruehrt={() => beruehren('zip')} />
             <Feld id="ort" label={t('checkout_city')} wert={form.city}
-              onWert={(v) => update('city', v)} autoComplete="address-level2" pflicht />
-            {/* Auswahl kommt aus config/shipping.ts – es sind ausschließlich
-                Länder wählbar, für die ein Versandtarif hinterlegt ist. */}
-            <div className="col-span-2">
-              <label htmlFor="land" className="sr-only">{t('checkout_country')}</label>
-              <select
-                id="land"
-                autoComplete="country-name"
-                value={form.country}
-                onChange={(e) => update('country', e.target.value)}
-                className={FELD_KLASSE}
-              >
-                {SHIPPING_COUNTRIES.map((c) => (
-                  <option key={c.name} value={c.name}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
+              onWert={(v) => update('city', v)} autoComplete="address-level2" pflicht
+              fehler={feldFehler('city')} onBeruehrt={() => beruehren('city')} />
+            {/* Land kommt aus config/shipping.ts – aktuell ausschließlich
+                Deutschland (siehe Entscheidung 2026-08-06 dort). Solange nur
+                ein Land lieferbar ist, ein statischer Hinweis statt einer
+                Auswahl mit nur einer Option – derselbe Grundsatz wie bei der
+                Zahlungsart unten. `form.country` bleibt technisch bestehen
+                (submitOrder erwartet es), ist hier nur nicht mehr editierbar. */}
+            <div className="col-span-2 rounded-lg border border-brand/10 bg-cream/50 px-3 py-2.5">
+              <p className="text-sm font-medium text-brand">{form.country}</p>
+              <p className="mt-0.5 text-xs leading-relaxed text-brand/60">{t('checkout_country_notice')}</p>
             </div>
           </div>
         </section>
@@ -412,6 +624,13 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced }: CheckoutForm
               {t('checkout_shipping_hint', { amount: formatPrice(shipping.amountUntilFree) })}
             </p>
           )}
+          {/* Steuerzeile: bei Bruttopreisen (pricesIncludeTax) nur AUSGEWIESEN,
+              verändert die Summe nicht – exakt dieselbe Semantik wie
+              orderStage.ts. Pflicht gegenüber Verbrauchern (Preisangabenverordnung). */}
+          <div className="mt-1 flex items-center justify-between text-xs text-brand/60">
+            <span>{t('checkout_tax_line', { rate: taxRate })}</span>
+            <span>{formatPrice(taxAmount)}</span>
+          </div>
           <div className="mt-1.5 flex items-center justify-between border-t border-gold/15 pt-1.5 text-base font-semibold text-brand">
             <span>{t('checkout_grand_total')}</span>
             <span>{formatPrice(grandTotal)}</span>
@@ -507,6 +726,27 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
   );
   const [form, setForm] = useState({ name: '', companyName: '', email: '', phone: '', message: '' });
 
+  // Dieselbe Vorbelegung wie im Bestellformular (siehe dortiger Kommentar) –
+  // hier nur auf das schlankere Anfrageformular gemappt (ein einzelnes
+  // `name`-Feld statt firstName/lastName getrennt).
+  useEffect(() => {
+    let abgebrochen = false;
+    ladeCheckoutVorbelegung().then((vorbelegung) => {
+      if (!vorbelegung || abgebrochen) return;
+      const vollerName = `${vorbelegung.firstName} ${vorbelegung.lastName}`.trim();
+      setForm((f) => ({
+        ...f,
+        name: f.name || vollerName,
+        companyName: f.companyName || vorbelegung.companyName,
+        email: f.email || vorbelegung.email,
+        phone: f.phone || vorbelegung.phone,
+      }));
+    });
+    return () => {
+      abgebrochen = true;
+    };
+  }, []);
+
   const isValid = form.name.trim() && form.email.trim().includes('@');
 
   function update(field: keyof typeof form, value: string) {
@@ -587,9 +827,14 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
             )}
           </div>
           {items.length > 0 && (
-            <div className="mt-2 flex items-center justify-between border-t border-gold/15 pt-1.5 text-sm font-semibold text-brand">
-              <span>{t('inquiry_estimated_price')}</span>
-              <span>{formatPrice(total)}</span>
+            <div className="mt-2 border-t border-gold/15 pt-1.5">
+              <div className="flex items-center justify-between text-sm font-semibold text-brand">
+                <span>{t('inquiry_estimated_price')}</span>
+                <span>{formatPrice(total)}</span>
+              </div>
+              <p className="mt-0.5 text-[11px] text-brand/40">
+                {t('checkout_tax_line', { rate: steuersatzFuer(STANDARDLAND).satz })}
+              </p>
             </div>
           )}
         </section>
@@ -667,10 +912,6 @@ function OrderConfirmed({ orderNumber, onClose }: { orderNumber: string; onClose
 }
 
 
-/** Einheitliche Feldoptik – eine Stelle statt zwölf Wiederholungen. */
-const FELD_KLASSE =
-  'w-full rounded-lg border border-brand/20 px-2.5 py-1.5 text-sm text-brand transition-colors focus:border-gold focus:outline-none';
-
 /**
  * Ein Eingabefeld in Warenkorb und Anfrage.
  *
@@ -682,7 +923,7 @@ const FELD_KLASSE =
  *  • die einheitliche Optik samt sichtbarem Fokus.
  */
 function Feld({
-  id, label, wert, onWert, autoComplete, type = 'text', pflicht = false, inputMode, spalten,
+  id, label, wert, onWert, autoComplete, type = 'text', pflicht = false, inputMode, spalten, fehler, onBeruehrt,
 }: {
   id: string;
   label: string;
@@ -693,7 +934,19 @@ function Feld({
   pflicht?: boolean;
   inputMode?: 'numeric' | 'tel' | 'email' | 'text';
   spalten?: boolean;
+  /**
+   * Sichtbare Fehlermeldung für dieses Feld – vom Elternformular erst nach
+   * Berühren (onBeruehrt) geliefert, damit niemand vor der ersten Eingabe
+   * mit einer Fehlermeldung begrüßt wird. Bei Client-seitiger Validierung
+   * bleibt sonst ein deaktivierter Absenden-Button die einzige Rückmeldung –
+   * für Tastatur-/Screenreader-Nutzung unsichtbar, da der Button dann aus
+   * der Tab-Reihenfolge fällt.
+   */
+  fehler?: string;
+  /** Meldet dem Elternformular, dass dieses Feld einmal verlassen wurde. */
+  onBeruehrt?: () => void;
 }) {
+  const fehlerId = fehler ? `${id}-fehler` : undefined;
   return (
     <div className={spalten ? 'col-span-2' : undefined}>
       <label htmlFor={id} className="sr-only">{label}</label>
@@ -706,8 +959,19 @@ function Feld({
         placeholder={label}
         value={wert}
         onChange={(e) => onWert(e.target.value)}
+        onBlur={onBeruehrt}
+        aria-invalid={fehler ? true : undefined}
+        aria-describedby={fehlerId}
         className={FELD_KLASSE}
       />
+      {fehler && (
+        // role="alert" statt einer gemeinsamen aria-live-Region: einfacher und
+        // hier ausreichend, da jede Meldung genau ein Feld betrifft und beim
+        // Erscheinen (nicht beim erneuten Rendern desselben Texts) angesagt wird.
+        <p id={fehlerId} role="alert" className="mt-1 text-[11px] text-red-600">
+          {fehler}
+        </p>
+      )}
     </div>
   );
 }

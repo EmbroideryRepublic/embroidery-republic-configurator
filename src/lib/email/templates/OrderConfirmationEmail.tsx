@@ -46,6 +46,14 @@ export function OrderConfirmationEmail({
       <Text style={{ marginTop: 8, textAlign: 'right', fontSize: 16, fontWeight: 600 }}>
         {isOrder ? 'Gesamtsumme' : 'Ungefährer Richtpreis'}: {formatiereGeld(order.totalPrice)}
       </Text>
+      {/* Steuerzeile: Pflichtangabe gegenüber Verbrauchern (Preisangabenverordnung).
+          Bei Bruttopreisen nur AUSGEWIESEN, in der Gesamtsumme oben bereits
+          enthalten – dieselbe Semantik wie orderStage.ts. */}
+      {order.taxAmount !== undefined && order.taxRate !== undefined && (
+        <Text style={{ margin: '2px 0 0', textAlign: 'right', fontSize: 12, color: '#6b675e' }}>
+          davon enthaltene USt. ({order.taxRate} %): {formatiereGeld(order.taxAmount)}
+        </Text>
+      )}
 
       {isOrder && (
         <Text style={{ marginTop: 16, fontSize: 13 }}>

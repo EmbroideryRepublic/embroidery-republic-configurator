@@ -26,7 +26,7 @@ import { pruefeBestellzugriff } from '@/lib/orders/orderAccess';
 import { ladeBestellAnsicht } from '@/lib/orders/orderView';
 import { CancelOrderButton } from '@/components/orders/CancelOrderButton';
 import { Bestellfortschritt } from '@/components/orders/Bestellfortschritt';
-import { formatiereGeld } from '@/lib/format';
+import { BestellPositionen } from '@/components/orders/BestellPositionen';
 
 export const metadata = {
   title: 'Ihre Bestellung',
@@ -94,7 +94,7 @@ function LinkNichtVerwendbar({ grund }: { grund: 'ungueltig' | 'abgelaufen' | 'n
 }
 
 export default async function BestellAnsichtSeite({ params }: { params: { token: string } }) {
-  const zugriff = pruefeBestellzugriff({ art: 'token', token: params.token });
+  const zugriff = await pruefeBestellzugriff({ art: 'token', token: params.token });
   if (!zugriff.erlaubt) return <LinkNichtVerwendbar grund={zugriff.grund} />;
 
   const bestellung = await ladeBestellAnsicht(zugriff.orderId);
@@ -169,26 +169,7 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
         )}
 
         {/* Bestelldetails – in ALLEN Zuständen identisch */}
-        <section className="rounded-lg border border-brand/[0.08] bg-white p-4">
-          <h2 className="mb-3 text-sm font-semibold text-brand">Ihre Positionen</h2>
-          <ul className="space-y-3">
-            {bestellung.positionen.map((pos, i) => (
-              <li key={i} className="border-b border-brand/[0.06] pb-3 last:border-0 last:pb-0">
-                <p className="text-sm font-medium text-brand">{pos.produktName}</p>
-                <p className="text-xs text-brand/60">
-                  {pos.farbe} · {pos.veredelung}
-                </p>
-                <p className="mt-1 text-xs text-brand/70">
-                  {pos.groessen.map((g) => `${g.groesse} × ${g.menge}`).join(' · ')}
-                  <span className="text-brand/50"> ({pos.menge} Stück)</span>
-                </p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-right text-sm font-semibold text-brand">
-            Gesamt: {formatiereGeld(bestellung.gesamtpreis)}
-          </p>
-        </section>
+        <BestellPositionen bestellung={bestellung} />
 
         {bestellung.lieferadresse && (
           <section className="rounded-lg border border-brand/[0.08] bg-white p-4">

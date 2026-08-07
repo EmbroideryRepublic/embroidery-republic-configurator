@@ -24,6 +24,8 @@ import { OrderConfirmationEmail } from './templates/OrderConfirmationEmail';
 import { InternalOrderNotificationEmail } from './templates/InternalOrderNotificationEmail';
 import { OrderCancellationEmail } from './templates/OrderCancellationEmail';
 import { OrderShippedEmail } from './templates/OrderShippedEmail';
+import { OrderInProductionEmail } from './templates/OrderInProductionEmail';
+import { OrderCompletedEmail } from './templates/OrderCompletedEmail';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 
 export async function sendOrderConfirmationEmail(
@@ -118,6 +120,46 @@ export async function sendOrderShippedEmail(params: {
       />
     ),
     kontext: { anlass: 'order_shipped', orderId: params.orderId },
+  });
+  return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
+}
+
+/**
+ * Benachrichtigt den Kunden, dass die Produktion begonnen hat.
+ *
+ * Wird ausschließlich von orderService beim Übergang nach `in_production`
+ * aufgerufen — NACH dem erfolgreichen Statuswechsel.
+ */
+export async function sendOrderInProductionEmail(params: {
+  orderId: string;
+  orderNumber: string;
+  empfaenger: string;
+}): Promise<EmailVersandErgebnis> {
+  const result = await sendEmail({
+    to: params.empfaenger,
+    subject: `Ihre Bestellung ${params.orderNumber} ist in Produktion`,
+    react: <OrderInProductionEmail orderNumber={params.orderNumber} />,
+    kontext: { anlass: 'order_in_production', orderId: params.orderId },
+  });
+  return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
+}
+
+/**
+ * Benachrichtigt den Kunden über den Abschluss der Bestellung.
+ *
+ * Wird ausschließlich von orderService beim Übergang nach `completed`
+ * aufgerufen — NACH dem erfolgreichen Statuswechsel.
+ */
+export async function sendOrderCompletedEmail(params: {
+  orderId: string;
+  orderNumber: string;
+  empfaenger: string;
+}): Promise<EmailVersandErgebnis> {
+  const result = await sendEmail({
+    to: params.empfaenger,
+    subject: `Bestellung ${params.orderNumber} abgeschlossen`,
+    react: <OrderCompletedEmail orderNumber={params.orderNumber} />,
+    kontext: { anlass: 'order_completed', orderId: params.orderId },
   });
   return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
 }

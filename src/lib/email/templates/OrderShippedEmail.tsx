@@ -26,7 +26,7 @@ export function OrderShippedEmail({
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        gute Nachrichten: Ihre Bestellung <strong>{orderNumber}</strong> hat unser Haus verlassen und
+        Gute Nachrichten: Ihre Bestellung <strong>{orderNumber}</strong> hat unser Haus verlassen und
         ist auf dem Weg zu Ihnen.
       </Text>
 

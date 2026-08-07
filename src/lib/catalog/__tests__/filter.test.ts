@@ -130,10 +130,22 @@ test('Kriterien überstehen den Weg durch die Adresszeile unverändert', () => {
 });
 
 test('unbekannte Werte werden ignoriert statt abgelehnt', () => {
-  const k = leseKriterien({ farbe: 'schwarz,giftgruen', material: 'unfug', sortierung: 'quatsch' });
+  const k = leseKriterien({
+    farbe: 'schwarz,giftgruen', material: 'unfug', sortierung: 'quatsch',
+    kategorie: 'tshirt,unfug', qualitaet: 'basic,unfug',
+  });
   assert.deepEqual(k.farbe, ['schwarz']);
   assert.deepEqual(k.material, []);
+  assert.deepEqual(k.kategorie, ['tshirt'], 'unbekannte Kategorie wird ignoriert, bekannte bleibt');
+  assert.deepEqual(k.qualitaet, ['basic'], 'unbekannte Qualitätsstufe wird ignoriert, bekannte bleibt');
   assert.equal(k.sortierung, 'beliebtheit', 'unbekannte Sortierung fällt auf den Standard zurück');
+});
+
+test('eine gänzlich unbekannte Kategorie liefert leere Kriterien statt 0 Treffer', () => {
+  const k = leseKriterien({ kategorie: 'nicht-existent' });
+  assert.deepEqual(k.kategorie, []);
+  const treffer = ALLE.filter((m) => passt(m, k));
+  assert.equal(treffer.length, ALLE.filter((m) => m.lieferbar).length, 'ignorierter Filter lässt wieder alle lieferbaren Produkte durch');
 });
 
 test('Standardwerte erscheinen nicht in der Adresse', () => {

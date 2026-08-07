@@ -55,7 +55,9 @@ export type Schwere = 'DEBUG' | 'INFO' | 'WARNING' | 'ERROR' | 'CRITICAL';
 /** Ab dieser Schwere wird zusätzlich in `system_ereignisse` geschrieben. */
 export const PERSISTENZ_AB: Schwere = 'WARNING';
 
-const RANG: Record<Schwere, number> = { DEBUG: 0, INFO: 1, WARNING: 2, ERROR: 3, CRITICAL: 4 };
+/** Vergleichbare Rangordnung der Schweregrade. Auch von ereignis.ts genutzt,
+ *  damit es keine zweite Rangtabelle gibt, die aus dem Takt geraten könnte. */
+export const RANG: Record<Schwere, number> = { DEBUG: 0, INFO: 1, WARNING: 2, ERROR: 3, CRITICAL: 4 };
 
 function istProduktion(): boolean {
   return process.env.NODE_ENV === 'production';

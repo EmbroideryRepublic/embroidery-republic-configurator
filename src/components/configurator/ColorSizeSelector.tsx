@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import type { ProductConfig } from '@/config/products';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
-import { waehlbareFarben } from '@/lib/products/farben';
+import { waehlbareFarben, formatiereFarbname } from '@/lib/products/farben';
 
 interface ColorSizeSelectorProps {
   product: ProductConfig;
@@ -34,7 +34,10 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
             können, was er gewählt hat – die Farbfläche allein reicht dafür
             nicht (Navy und Schwarz sind auf kleinen Punkten kaum trennbar). */}
         <span className="text-xs text-brand/50">
-          {t('color_label')} <span className="font-medium text-brand">{aktiveFarbe?.name}</span>
+          {t('color_label')}{' '}
+          <span className="font-medium text-brand">
+            {aktiveFarbe ? formatiereFarbname(aktiveFarbe.name) : undefined}
+          </span>
         </span>
         <div className="flex flex-wrap justify-end gap-1.5">
           {farben.map((color) => (
@@ -42,17 +45,17 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
               key={color.id}
               type="button"
               data-farbe={color.id}
-              title={color.name}
+              title={formatiereFarbname(color.name)}
               onClick={() => setColor(color.id)}
               className={clsx(
-                'h-7 w-7 rounded-full border-2 transition-transform',
+                'h-11 w-11 rounded-full border-2 transition-transform',
                 colorId === color.id
                   ? 'scale-110 border-gold ring-2 ring-gold/30'
                   : 'border-gray-200 hover:scale-105'
               )}
               style={{ backgroundColor: color.hex }}
             >
-              <span className="sr-only">{color.name}</span>
+              <span className="sr-only">{formatiereFarbname(color.name)}</span>
             </button>
           ))}
         </div>

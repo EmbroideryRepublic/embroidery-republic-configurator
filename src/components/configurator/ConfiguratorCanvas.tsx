@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Stage, Layer, Image as KonvaImage, Text as KonvaText, Rect, Circle, Transformer, Group } from 'react-konva';
 import useImage from 'use-image';
 import Konva from 'konva';
 import type { ConfigElement, LogoElement, PrintArea, PrintView, TextElement } from '@/types';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
-import { getScaleFactors, elementToPixelRect, type PixelRect, type ScaleFactors } from '@/lib/canvas/cmConversion';
+import { getScaleFactors, elementToPixelRect, pxToCm, cmToPx, type PixelRect, type ScaleFactors } from '@/lib/canvas/cmConversion';
 import { getContainRect, computeAreaPx } from '@/lib/canvas/containRect';
 import { isNearSeam, overlapsExclusionZone, pushOutOfExclusionZones } from '@/lib/canvas/bounds';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
@@ -188,8 +188,10 @@ export function ConfiguratorCanvas({
 
   // Nur Elemente der aktuell aktiven Ansicht anzeigen – die anderen bleiben
   // unverändert im Store erhalten (setActiveView löscht keine Elemente,
-  // sondern wechselt nur den Filter).
-  const viewElements = elements.filter((el) => el.view === activeView);
+  // sondern wechselt nur den Filter). ALS useMemo: ohne Cache entstünde bei
+  // JEDEM Render ein neues Array, was den Sperrzonen-Effekt weiter unten
+  // (der viewElements als Abhängigkeit hat) unnötig oft erneut auslöst.
+  const viewElements = useMemo(() => elements.filter((el) => el.view === activeView), [elements, activeView]);
   const hasSelectionInView = viewElements.some((el) => el.id === selectedElementId);
 
   // Tatsächlich sichtbare (unverzerrte) Bildfläche innerhalb der Canvas.
@@ -220,7 +222,7 @@ export function ConfiguratorCanvas({
   );
 
   const scaleFactors = printArea && areaPx ? getScaleFactors(areaPx, printArea) : null;
-  const seamMarginPx = scaleFactors && printArea ? printArea.seamMarginCm * scaleFactors.pxPerCmX : 0;
+  const seamMarginPx = scaleFactors && printArea ? cmToPx(printArea.seamMarginCm, scaleFactors.pxPerCmX) : 0;
   // Tatsächlicher Skalierungsfaktor der <Stage> (siehe scaleX={scale*zoom}
   // unten) – wird an die Zieh-Begrenzung durchgereicht, damit absolute
   // (skalierte) Konva-Koordinaten korrekt ins logische Koordinatensystem
@@ -278,7 +280,7 @@ export function ConfiguratorCanvas({
     const zonesPx = computeExclusionZonesPx(printArea, imageRect);
     if (zonesPx.length === 0) return;
 
-    const zoneMarginPx = EXCLUSION_ZONE_MARGIN_CM * scaleFactors.pxPerCmX;
+    const zoneMarginPx = cmToPx(EXCLUSION_ZONE_MARGIN_CM, scaleFactors.pxPerCmX);
     for (const el of viewElements) {
       const rectPx = elementToPixelRect(areaPx, scaleFactors, el);
       if (!zonesPx.some((zone) => overlapsExclusionZone(rectPx, zone))) continue;
@@ -310,26 +312,38 @@ export function ConfiguratorCanvas({
       if (Math.abs(pushed.x - rectPx.x) < 0.5 && Math.abs(pushed.y - rectPx.y) < 0.5) continue;
 
       updateElement(el.id, {
-        xCm: (pushed.x - areaPx.x) / scaleFactors.pxPerCmX,
-        yCm: (pushed.y - areaPx.y) / scaleFactors.pxPerCmY,
+        xCm: pxToCm(pushed.x - areaPx.x, scaleFactors.pxPerCmX),
+        yCm: pxToCm(pushed.y - areaPx.y, scaleFactors.pxPerCmY),
       });
     }
   }, [viewElements, areaPx, scaleFactors, printArea, imageRect, updateElement]);
 
   // Prüft, ob der Mittelpunkt eines gezogenen Elements nah genug am
   // Mittelpunkt des Druckbereichs liegt, um eine Hilfslinie einzublenden.
-  function checkCenterGuides(elX: number, elY: number, elWidth: number, elHeight: number) {
-    if (!areaPx) return;
-    const tolerancePx = 4;
-    const elCenterX = elX + elWidth / 2;
-    const elCenterY = elY + elHeight / 2;
-    const areaCenterX = areaPx.x + areaPx.width / 2;
-    const areaCenterY = areaPx.y + areaPx.height / 2;
-    setCenterGuides({
-      x: Math.abs(elCenterX - areaCenterX) < tolerancePx,
-      y: Math.abs(elCenterY - areaCenterY) < tolerancePx,
-    });
-  }
+  // ALS useCallback (stabile Referenz, solange sich areaPx nicht ändert):
+  // wird unten unverändert an jeden LogoNode/TextNode durchgereicht – ohne
+  // stabile Referenz würde React.memo dort wirkungslos bleiben, weil sich
+  // die Prop bei jedem Render neu "ändern" würde.
+  const checkCenterGuides = useCallback(
+    (elX: number, elY: number, elWidth: number, elHeight: number) => {
+      if (!areaPx) return;
+      const tolerancePx = 4;
+      const elCenterX = elX + elWidth / 2;
+      const elCenterY = elY + elHeight / 2;
+      const areaCenterX = areaPx.x + areaPx.width / 2;
+      const areaCenterY = areaPx.y + areaPx.height / 2;
+      setCenterGuides({
+        x: Math.abs(elCenterX - areaCenterX) < tolerancePx,
+        y: Math.abs(elCenterY - areaCenterY) < tolerancePx,
+      });
+    },
+    [areaPx]
+  );
+
+  // Ebenfalls aus demselben Grund als stabile Referenz (setCenterGuides
+  // selbst ist als React-State-Setter bereits stabil, das leere
+  // Abhängigkeits-Array hält auch den Wrapper dauerhaft stabil).
+  const clearCenterGuides = useCallback(() => setCenterGuides({ x: false, y: false }), []);
 
   return (
     <div className="flex w-full max-w-[820px] flex-col items-center xl:max-w-[960px] 2xl:max-w-[1100px]">
@@ -530,11 +544,11 @@ export function ConfiguratorCanvas({
                   isSelected={!hideGuides && element.id === selectedElementId}
                   readOnly={hideGuides}
                   blend={druckMischung}
-                  onSelect={() => setSelectedElementId(element.id)}
-                  onChange={(changes) => updateElement(element.id, changes)}
-                  onCommit={(changes) => commitElement(element.id, changes)}
+                  onSelect={setSelectedElementId}
+                  onChange={updateElement}
+                  onCommit={commitElement}
                   onDragCheck={checkCenterGuides}
-                  onDragStop={() => setCenterGuides({ x: false, y: false })}
+                  onDragStop={clearCenterGuides}
                 />
               ) : (
                 <TextNode
@@ -549,11 +563,11 @@ export function ConfiguratorCanvas({
                   isSelected={!hideGuides && element.id === selectedElementId}
                   readOnly={hideGuides}
                   blend={druckMischung}
-                  onSelect={() => setSelectedElementId(element.id)}
-                  onChange={(changes) => updateElement(element.id, changes)}
-                  onCommit={(changes) => commitElement(element.id, changes)}
+                  onSelect={setSelectedElementId}
+                  onChange={updateElement}
+                  onCommit={commitElement}
                   onDragCheck={checkCenterGuides}
-                  onDragStop={() => setCenterGuides({ x: false, y: false })}
+                  onDragStop={clearCenterGuides}
                 />
               )
             )}
@@ -643,50 +657,20 @@ function checkOutOfBounds(
   return computeExclusionZonesPx(printArea, imageRect).some((zone) => overlapsExclusionZone(rect, zone));
 }
 
-function clampDragPosition(
-  pos: { x: number; y: number },
-  areaPx: PixelRect,
-  widthPx: number,
-  heightPx: number,
-  stageScale: number,
-  exclusionZonesPx: PixelRect[],
-  zoneMarginPx: number
-) {
-  // WICHTIG – eigentliche Ursache des "kann nur nach rechts, nicht nach
-  // links"-Bugs: dragBoundFunc liefert die Position in ABSOLUTEN
-  // Stage-Koordinaten (also bereits multipliziert mit scaleX/scaleY der
-  // Stage, siehe <Stage scaleX={scale*zoom}>). areaPx/widthPx/heightPx
-  // sind dagegen im LOGISCHEN, unskalierten Koordinatensystem berechnet
-  // (CANVAS_WIDTH/CANVAS_HEIGHT-Basis). Bei jedem Skalierungsfaktor ≠ 1
-  // wurden dadurch zwei unterschiedliche Maßstäbe miteinander verglichen –
-  // das erklärt die krumme, asymmetrische Begrenzung. Deshalb hier zuerst
-  // zurück ins logische System umrechnen, dort klemmen, dann wieder zurück
-  // in absolute Koordinaten (die Konva von dragBoundFunc erwartet).
-  const logicalPos = { x: pos.x / stageScale, y: pos.y / stageScale };
-
-  // Wenn das Element breiter/höher als der Druckbereich ist, gibt es
-  // keine "richtige" Position mehr innerhalb der Grenzen – statt es dann
-  // immer an eine feste Seite (links/oben) zu kleben, wird es zentriert.
-  const maxX = areaPx.x + areaPx.width - widthPx;
-  const maxY = areaPx.y + areaPx.height - heightPx;
-  const clampedLogicalX = maxX >= areaPx.x ? Math.min(Math.max(logicalPos.x, areaPx.x), maxX) : areaPx.x + (areaPx.width - widthPx) / 2;
-  const clampedLogicalY = maxY >= areaPx.y ? Math.min(Math.max(logicalPos.y, areaPx.y), maxY) : areaPx.y + (areaPx.height - heightPx) / 2;
-
-  // Harte Sperre: ein Motiv darf technisch gar nicht auf Kragen/
-  // Reißverschluss abgelegt werden, nicht nur eine Warnung dafür anzeigen.
-  const pushed = pushOutOfExclusionZones(
-    { x: clampedLogicalX, y: clampedLogicalY, width: widthPx, height: heightPx },
-    areaPx,
-    exclusionZonesPx,
-    zoneMarginPx
-  );
-
-  return { x: pushed.x * stageScale, y: pushed.y * stageScale };
-}
-
-/** Wie clampDragPosition, aber für zentrumsbasiert positionierte Knoten
- *  (TextNode: x/y sind wegen offsetX/offsetY bereits der Mittelpunkt,
- *  nicht die obere linke Ecke). */
+/** Klemmt die Zieh-Position eines zentrumsbasiert positionierten Knotens
+ *  (LogoNode/TextNode: x/y sind wegen offsetX/offsetY bereits der
+ *  Mittelpunkt, nicht die obere linke Ecke) auf den Druckbereich.
+ *
+ *  WICHTIG – eigentliche Ursache des früheren "kann nur nach rechts, nicht
+ *  nach links"-Bugs: dragBoundFunc liefert die Position in ABSOLUTEN
+ *  Stage-Koordinaten (also bereits multipliziert mit scaleX/scaleY der
+ *  Stage, siehe <Stage scaleX={scale*zoom}>). areaPx/widthPx/heightPx sind
+ *  dagegen im LOGISCHEN, unskalierten Koordinatensystem berechnet
+ *  (CANVAS_WIDTH/CANVAS_HEIGHT-Basis). Bei jedem Skalierungsfaktor ≠ 1
+ *  wurden dadurch zwei unterschiedliche Maßstäbe miteinander verglichen –
+ *  das erklärt die krumme, asymmetrische Begrenzung. Deshalb hier zuerst
+ *  zurück ins logische System umrechnen, dort klemmen, dann wieder zurück
+ *  in absolute Koordinaten (die Konva von dragBoundFunc erwartet). */
 function clampDragPositionCentered(
   pos: { x: number; y: number },
   areaPx: PixelRect,
@@ -733,14 +717,20 @@ interface LogoNodeProps {
   readOnly?: boolean;
   /** Blend-Modus des Motivs über dem Textil (realistische Vorschau). */
   blend?: 'multiply';
-  onSelect: () => void;
-  onChange: (changes: Partial<LogoElement>) => void;
-  onCommit: (changes: Partial<LogoElement>) => void;
+  onSelect: (id: string) => void;
+  onChange: (id: string, changes: Partial<LogoElement>) => void;
+  onCommit: (id: string, changes: Partial<LogoElement>) => void;
   onDragCheck: (x: number, y: number, width: number, height: number) => void;
   onDragStop: () => void;
 }
 
-function LogoNode({
+/** ALS React.memo: ohne das würde JEDES Logo/Text-Element bei JEDEM
+ *  Zieh-Frame eines EINZELNEN anderen Elements neu gerendert, weil
+ *  viewElements (oben) bei jeder Store-Änderung ein neues Array liefert.
+ *  Wirkt nur zusammen mit stabilen Props – deshalb werden hier bewusst die
+ *  Store-Actions direkt durchgereicht (Zustand hält sie referenzstabil)
+ *  statt sie pro Element in eine neue Inline-Funktion einzupacken. */
+const LogoNode = memo(function LogoNode({
   element,
   printArea,
   areaPx,
@@ -820,15 +810,25 @@ function LogoNode({
 
   const { x: xPx, y: yPx, width: widthPx, height: heightPx } = elementToPixelRect(areaPx, scaleFactors, element);
   const exclusionZonesPx = useMemo(() => computeExclusionZonesPx(printArea, imageRect), [printArea, imageRect]);
-  const zoneMarginPx = EXCLUSION_ZONE_MARGIN_CM * scaleFactors.pxPerCmX;
+  const zoneMarginPx = cmToPx(EXCLUSION_ZONE_MARGIN_CM, scaleFactors.pxPerCmX);
+
+  // Zentrumsbasierte Positionierung (x/y + offsetX/offsetY = Mitte des
+  // Motivs, analog zu TextNode unten): Konva dreht ein Shape immer um
+  // seinen eigenen x/y-Punkt. Mit x/y = obere linke Ecke (wie vorher) dreht
+  // sich das Logo also um die Ecke statt um die Mitte und springt sichtbar
+  // aus seiner Position – exakt der gemeldete Fehler.
+  const centerXPx = xPx + widthPx / 2;
+  const centerYPx = yPx + heightPx / 2;
 
   return (
     <>
       <KonvaImage
         ref={shapeRef}
         image={image}
-        x={xPx}
-        y={yPx}
+        x={centerXPx}
+        y={centerYPx}
+        offsetX={widthPx / 2}
+        offsetY={heightPx / 2}
         width={widthPx}
         height={heightPx}
         rotation={element.rotationDeg}
@@ -838,26 +838,30 @@ function LogoNode({
         globalCompositeOperation={blend}
         stroke={element.isOutOfBounds ? '#dc2626' : undefined}
         strokeWidth={element.isOutOfBounds ? 3 : 0}
-        onClick={onSelect}
-        onTap={onSelect}
-        dragBoundFunc={(pos) => clampDragPosition(pos, areaPx, widthPx, heightPx, stageScale, exclusionZonesPx, zoneMarginPx)}
+        onClick={() => onSelect(element.id)}
+        onTap={() => onSelect(element.id)}
+        dragBoundFunc={(pos) => clampDragPositionCentered(pos, areaPx, widthPx, heightPx, stageScale, exclusionZonesPx, zoneMarginPx)}
         onDragMove={(e: Konva.KonvaEventObject<DragEvent>) => {
           const node = e.target;
+          const cornerX = node.x() - widthPx / 2;
+          const cornerY = node.y() - heightPx / 2;
           const nearSeam = checkOutOfBounds(
-            { x: node.x(), y: node.y(), width: widthPx, height: heightPx },
+            { x: cornerX, y: cornerY, width: widthPx, height: heightPx },
             areaPx,
             seamMarginPx,
             printArea,
             imageRect
           );
-          if (nearSeam !== element.isOutOfBounds) onChange({ isOutOfBounds: nearSeam });
-          onDragCheck(node.x(), node.y(), widthPx, heightPx);
+          if (nearSeam !== element.isOutOfBounds) onChange(element.id, { isOutOfBounds: nearSeam });
+          onDragCheck(cornerX, cornerY, widthPx, heightPx);
         }}
         onDragEnd={(e: Konva.KonvaEventObject<DragEvent>) => {
           const node = e.target;
-          onCommit({
-            xCm: (node.x() - areaPx.x) / scaleFactors.pxPerCmX,
-            yCm: (node.y() - areaPx.y) / scaleFactors.pxPerCmY,
+          const cornerX = node.x() - widthPx / 2;
+          const cornerY = node.y() - heightPx / 2;
+          onCommit(element.id, {
+            xCm: pxToCm(cornerX - areaPx.x, scaleFactors.pxPerCmX),
+            yCm: pxToCm(cornerY - areaPx.y, scaleFactors.pxPerCmY),
           });
           onDragStop();
         }}
@@ -867,16 +871,23 @@ function LogoNode({
 
           let newWidthPx = Math.max(node.width() * node.scaleX(), 15);
           let newHeightPx = Math.max(node.height() * node.scaleY(), 15);
+          // node.x()/node.y() sind wegen offsetX/offsetY oben bereits der
+          // MITTELPUNKT des Motivs (nicht mehr die obere linke Ecke) – die
+          // Mitte muss VOR dem Zurücksetzen von scaleX/scaleY gelesen
+          // werden, danach bleibt sie als Referenz für die Neuberechnung.
+          const oldCenterX = node.x();
+          const oldCenterY = node.y();
           node.scaleX(1);
           node.scaleY(1);
 
           // Logo darf die Druckfläche nie überragen – sonst kollabiert
           // die Zieh-Begrenzung auf eine feste Seite (siehe
-          // clampDragPosition), was sich wie "nur links/oben bedruckbar"
-          // anfühlt. Seitenverhältnis bleibt beim Herunterskalieren erhalten.
+          // clampDragPositionCentered), was sich wie "nur links/oben
+          // bedruckbar" anfühlt. Seitenverhältnis bleibt beim
+          // Herunterskalieren erhalten.
           if (printArea) {
-            const maxWidthPx = printArea.maxWidthCm * scaleFactors.pxPerCmX;
-            const maxHeightPx = printArea.maxHeightCm * scaleFactors.pxPerCmY;
+            const maxWidthPx = cmToPx(printArea.maxWidthCm, scaleFactors.pxPerCmX);
+            const maxHeightPx = cmToPx(printArea.maxHeightCm, scaleFactors.pxPerCmY);
             if (newWidthPx > maxWidthPx || newHeightPx > maxHeightPx) {
               const scale = Math.min(maxWidthPx / newWidthPx, maxHeightPx / newHeightPx);
               newWidthPx *= scale;
@@ -884,11 +895,14 @@ function LogoNode({
             }
           }
 
+          const rawX = oldCenterX - newWidthPx / 2;
+          const rawY = oldCenterY - newHeightPx / 2;
+
           // Nach dem Skalieren kann das Motiv (auch ohne eigenes Zutun beim
           // Ziehen) neu in eine Sperrzone hineinragen – deshalb auch hier
           // aus Kragen/Reißverschluss herausschieben, nicht nur beim Drag.
           const pushed = pushOutOfExclusionZones(
-            { x: node.x(), y: node.y(), width: newWidthPx, height: newHeightPx },
+            { x: rawX, y: rawY, width: newWidthPx, height: newHeightPx },
             areaPx,
             exclusionZonesPx,
             zoneMarginPx
@@ -902,14 +916,14 @@ function LogoNode({
             imageRect
           );
 
-          const newWidthCm = newWidthPx / scaleFactors.pxPerCmX;
-          const newHeightCm = newHeightPx / scaleFactors.pxPerCmY;
+          const newWidthCm = pxToCm(newWidthPx, scaleFactors.pxPerCmX);
+          const newHeightCm = pxToCm(newHeightPx, scaleFactors.pxPerCmY);
 
-          onCommit({
+          onCommit(element.id, {
             widthCm: newWidthCm,
             heightCm: newHeightCm,
-            xCm: (pushed.x - areaPx.x) / scaleFactors.pxPerCmX,
-            yCm: (pushed.y - areaPx.y) / scaleFactors.pxPerCmY,
+            xCm: pxToCm(pushed.x - areaPx.x, scaleFactors.pxPerCmX),
+            yCm: pxToCm(pushed.y - areaPx.y, scaleFactors.pxPerCmY),
             rotationDeg: node.rotation(),
             isOutOfBounds: nearSeam,
           });
@@ -918,7 +932,7 @@ function LogoNode({
           // Skalieren neu schätzen (asynchron, Bildanalyse blockiert die
           // Ziehgeste selbst nicht).
           estimateLogoStitches(element.fileUrl, newWidthCm, newHeightCm).then((stitches) => {
-            onChange({ estimatedStitches: stitches });
+            onChange(element.id, { estimatedStitches: stitches });
           });
         }}
       />
@@ -947,7 +961,7 @@ function LogoNode({
       )}
     </>
   );
-}
+});
 
 // ---------------------------------------------------------------
 // Text-Knoten – gleiche Interaktionslogik wie Logo (Drag, Skalieren,
@@ -966,14 +980,15 @@ interface TextNodeProps {
   readOnly?: boolean;
   /** Blend-Modus des Motivs über dem Textil (realistische Vorschau). */
   blend?: 'multiply';
-  onSelect: () => void;
-  onChange: (changes: Partial<TextElement>) => void;
-  onCommit: (changes: Partial<TextElement>) => void;
+  onSelect: (id: string) => void;
+  onChange: (id: string, changes: Partial<TextElement>) => void;
+  onCommit: (id: string, changes: Partial<TextElement>) => void;
   onDragCheck: (x: number, y: number, width: number, height: number) => void;
   onDragStop: () => void;
 }
 
-function TextNode({
+/** ALS React.memo, siehe Begründung bei LogoNode oben. */
+const TextNode = memo(function TextNode({
   element,
   printArea,
   areaPx,
@@ -1002,7 +1017,7 @@ function TextNode({
 
   const { x: xPx, y: yPx, width: widthPx, height: heightPx } = elementToPixelRect(areaPx, scaleFactors, element);
   const exclusionZonesPx = useMemo(() => computeExclusionZonesPx(printArea, imageRect), [printArea, imageRect]);
-  const zoneMarginPx = EXCLUSION_ZONE_MARGIN_CM * scaleFactors.pxPerCmX;
+  const zoneMarginPx = cmToPx(EXCLUSION_ZONE_MARGIN_CM, scaleFactors.pxPerCmX);
 
   const fontStyle = [element.bold ? 'bold' : '', element.italic ? 'italic' : ''].filter(Boolean).join(' ') || 'normal';
 
@@ -1044,24 +1059,24 @@ function TextNode({
         globalCompositeOperation={blend}
         stroke={element.isOutOfBounds ? '#dc2626' : (element.hasOutline ?? false) ? (element.outlineColor ?? '#ffffff') : undefined}
         strokeWidth={element.isOutOfBounds ? 1 : (element.hasOutline ?? false) ? 0.8 : 0}
-        onClick={onSelect}
-        onTap={onSelect}
+        onClick={() => onSelect(element.id)}
+        onTap={() => onSelect(element.id)}
         dragBoundFunc={(pos) => clampDragPositionCentered(pos, areaPx, widthPx, heightPx, stageScale, exclusionZonesPx, zoneMarginPx)}
         onDragMove={(e: Konva.KonvaEventObject<DragEvent>) => {
           const node = e.target;
           const cornerX = node.x() - widthPx / 2;
           const cornerY = node.y() - heightPx / 2;
           const nearSeam = checkOutOfBounds({ x: cornerX, y: cornerY, width: widthPx, height: heightPx }, areaPx, seamMarginPx, printArea, imageRect);
-          if (nearSeam !== element.isOutOfBounds) onChange({ isOutOfBounds: nearSeam });
+          if (nearSeam !== element.isOutOfBounds) onChange(element.id, { isOutOfBounds: nearSeam });
           onDragCheck(cornerX, cornerY, widthPx, heightPx);
         }}
         onDragEnd={(e: Konva.KonvaEventObject<DragEvent>) => {
           const node = e.target;
           const cornerX = node.x() - widthPx / 2;
           const cornerY = node.y() - heightPx / 2;
-          onCommit({
-            xCm: (cornerX - areaPx.x) / scaleFactors.pxPerCmX,
-            yCm: (cornerY - areaPx.y) / scaleFactors.pxPerCmY,
+          onCommit(element.id, {
+            xCm: pxToCm(cornerX - areaPx.x, scaleFactors.pxPerCmX),
+            yCm: pxToCm(cornerY - areaPx.y, scaleFactors.pxPerCmY),
           });
           onDragStop();
         }}
@@ -1088,10 +1103,10 @@ function TextNode({
           // der sichtbare Text – genau der gemeldete Fehler.
           const box = printArea
             ? computeTextBoxCm(element.content, element.fontFamily, newFontSizePx, element.bold, element.italic, printArea)
-            : { widthCm: newFontSizePx / scaleFactors.pxPerCmX, heightCm: newFontSizePx / scaleFactors.pxPerCmY };
+            : { widthCm: pxToCm(newFontSizePx, scaleFactors.pxPerCmX), heightCm: pxToCm(newFontSizePx, scaleFactors.pxPerCmY) };
 
-          const newWidthPx = box.widthCm * scaleFactors.pxPerCmX;
-          const newHeightPx = box.heightCm * scaleFactors.pxPerCmY;
+          const newWidthPx = cmToPx(box.widthCm, scaleFactors.pxPerCmX);
+          const newHeightPx = cmToPx(box.heightCm, scaleFactors.pxPerCmY);
 
           const rawX = oldCenterX - newWidthPx / 2;
           const rawY = oldCenterY - newHeightPx / 2;
@@ -1117,11 +1132,11 @@ function TextNode({
 
           const inkRatio = measureInkCoverageRatio(element.content, element.fontFamily, newFontSizePx, element.bold, element.italic);
 
-          onCommit({
+          onCommit(element.id, {
             widthCm: box.widthCm,
             heightCm: box.heightCm,
-            xCm: (newX - areaPx.x) / scaleFactors.pxPerCmX,
-            yCm: (newY - areaPx.y) / scaleFactors.pxPerCmY,
+            xCm: pxToCm(newX - areaPx.x, scaleFactors.pxPerCmX),
+            yCm: pxToCm(newY - areaPx.y, scaleFactors.pxPerCmY),
             rotationDeg: node.rotation(),
             fontSizePx: newFontSizePx,
             isOutOfBounds: nearSeam,
@@ -1151,4 +1166,4 @@ function TextNode({
       )}
     </>
   );
-}
+});

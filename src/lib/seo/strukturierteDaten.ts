@@ -19,7 +19,7 @@
  */
 import type { ProductConfig } from '@/config/products/types';
 import { repraesentativBildVon, PLATZHALTER_BILD } from '@/lib/assets';
-import { waehlbareFarben } from '@/lib/products/farben';
+import { waehlbareFarben, formatiereFarbname } from '@/lib/products/farben';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ermittleVerfuegbarkeit } from '@/lib/catalog/verfuegbarkeit';
 
@@ -61,7 +61,7 @@ export function produktSchema(produkt: ProductConfig, basis: string): Record<str
     url,
     brand: { '@type': 'Brand', name: produkt.brand },
     material: produkt.material,
-    color: farben.map((f) => f.name),
+    color: farben.map((f) => formatiereFarbname(f.name)),
     // Einheitsgrößen-/größenlose Produkte (künftig) zeichnen KEIN leeres size-Array aus.
     ...(produkt.sizes.length > 0 ? { size: produkt.sizes } : {}),
     offers: {
@@ -125,6 +125,28 @@ export function organisationSchema(basis: string): Record<string, unknown> {
     // Bewusst OHNE telephone/address: Kontaktdaten gehören ins Impressum, nicht
     // dupliziert in die Auszeichnung (per Wächter-Test festgehalten). Firmen-
     // daten bleiben zudem Sache des Betreibers (offener Go-live-Punkt).
+  };
+}
+
+/**
+ * Die Website als Ganzes – im Root-Layout, erscheint also auf JEDER Seite
+ * (anders als `organisationSchema`, bewusst nur auf der Startseite). Bisher
+ * gab es nur eine eingebettete Kopie in `sammlungSchema` (`isPartOf`) – eine
+ * eigenständige `WebSite`-Auszeichnung fehlte auf allen anderen Seiten.
+ *
+ * Bewusst OHNE `potentialAction`/`SearchAction`: Der Shop-Filter kennt keine
+ * generische Freitextsuche über einen `q`-Parameter (nur Facetten wie
+ * Marke/Farbe/Größe) – eine SearchAction, die dorthin zeigte, wäre eine
+ * Suchmaschinen-Funktion, die beim Anklicken nicht das täte, was sie
+ * verspricht.
+ */
+export function websiteSchema(basis: string): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Embroidery Republic Germany',
+    url: basis,
+    inLanguage: 'de-DE',
   };
 }
 

@@ -68,10 +68,20 @@ jobs:
           SUPABASE_SECRET_KEY: platzhalter
           ADMIN_SECRET: platzhalter-fuer-den-build
           ORDER_TOKEN_SECRET: platzhalter-fuer-den-build
+          # lib/seo/basisUrl.ts bricht in Produktion (NODE_ENV=production,
+          # das next build IMMER setzt) ohne diese Variable bewusst hart ab
+          # (Fail-Fast statt stiller localhost-URLs in Sitemap/Canonical/OG) –
+          # ohne den Platzhalter hier wäre der CI-Build-Schritt bereits an
+          # dieser Stelle rot, unabhängig vom eigentlichen Seiteninhalt.
+          NEXT_PUBLIC_SITE_URL: https://beispiel.example
 
       # ── Sicherheit ───────────────────────────────────────────────────
+      # Mit datierter, begründeter Ausnahmeliste statt roher Prüfung – siehe
+      # scripts/pruefeNpmAudit.mjs und docs/next-upgrade-entscheidung.md.
+      # Eine NEUE Schwachstelle (anderes Paket oder andere Versionsspanne)
+      # lässt diesen Schritt weiterhin fehlschlagen.
       - name: Bekannte Schwachstellen in Abhängigkeiten
-        run: npm audit --audit-level=high
+        run: node scripts/pruefeNpmAudit.mjs
 
       - name: Keine Secrets im Quelltext
         run: node scripts/pruefeSecrets.mjs

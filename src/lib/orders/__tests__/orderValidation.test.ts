@@ -13,7 +13,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateSubmission, istPlausibleEmail, GRENZEN } from '../orderValidation';
+import { validateSubmission, istPlausibleEmail, istGueltigePlz, GRENZEN } from '../orderValidation';
 import { PRODUCTS } from '@/config/products';
 import type { CartItem } from '@/types';
 
@@ -41,6 +41,7 @@ const gueltigeBestellung = {
   email: 'kundin@example.de',
   customerName: 'Alex Beispiel',
   shipping: { street: 'Musterweg 1', zip: '12345', city: 'Musterstadt', country: 'Deutschland' },
+  acceptedTerms: true,
 };
 
 /** Kürzel: prüft und gibt die Codes der Befunde zurück. */
@@ -230,6 +231,39 @@ test('eine Bestellung ohne vollständige Lieferadresse wird abgewiesen', async (
 test('eine leere Bestellung wird abgewiesen', async () => {
   const gefunden = await codes({ ...gueltigeBestellung, items: [] });
   assert.ok(gefunden.includes('warenkorb_leer'), gefunden.join(','));
+});
+
+test('eine Bestellung ohne AGB-Zustimmung wird abgewiesen', async () => {
+  const gefunden = await codes({ ...gueltigeBestellung, acceptedTerms: false, items: [position()] });
+  assert.ok(gefunden.includes('agb_nicht_akzeptiert'), gefunden.join(','));
+});
+
+test('eine Anfrage braucht keine AGB-Zustimmung', async () => {
+  const ergebnis = await validateSubmission({
+    orderType: 'inquiry',
+    items: [],
+    email: 'interessent@example.de',
+    customerName: 'Chris Beispiel',
+  });
+  assert.equal(ergebnis.valid, true);
+});
+
+test('eine Postleitzahl ohne fünf Ziffern wird abgewiesen', async () => {
+  const gefunden = await codes({
+    ...gueltigeBestellung,
+    shipping: { ...gueltigeBestellung.shipping, zip: 'AB123' },
+    items: [position()],
+  });
+  assert.ok(gefunden.includes('plz_ungueltig'), gefunden.join(','));
+});
+
+test('istGueltigePlz erkennt fünf Ziffern, sonst nicht', () => {
+  for (const gueltig of ['12345', '00000', ' 80331 ']) {
+    assert.equal(istGueltigePlz(gueltig), true, gueltig);
+  }
+  for (const ungueltig of ['', '1234', '123456', 'ABCDE', '1234A']) {
+    assert.equal(istGueltigePlz(ungueltig), false, ungueltig);
+  }
 });
 
 // ── Anzeige für die Kundschaft ───────────────────────────────────────────

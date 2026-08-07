@@ -261,13 +261,15 @@ test('Stickerei trägt die höhere Ausschussquote', () => {
   assert.ok(stickAnteil > dtfAnteil * 3, 'die Stick-Ausschussquote muss deutlich höher wirken');
 });
 
-test('der unbestätigte Stichsatz wird im Ergebnis ausgewiesen', () => {
+test('der Stichsatz (Entscheidung 2026-08-06, externer Partnersatz) wird im Ergebnis ausgewiesen', () => {
   const k = kalkuliere({ einkaufspreis: 10, menge: 10, veredelung: 'stick', stiche: 12000 });
   assert.ok(
-    k.hinweise.some((h) => h.includes('nicht bestätigt')),
-    'die Unsicherheit des Stichsatzes muss im Ergebnis stehen'
+    k.hinweise.some((h) => h.includes('Partnerrechnung abzugleichen')),
+    'der Hinweis auf den Abgleich gegen die reale Partnerrechnung muss im Ergebnis stehen'
   );
-  assert.equal(STICKKOSTEN_JE_1000_STICHE, 0.1);
+  // 0,76 €/1.000 Stiche = externer Stickpartner-Satz, nicht der unplausible
+  // 0,10-€-Materialsatz (siehe Begründung in selbstkosten.ts).
+  assert.equal(STICKKOSTEN_JE_1000_STICHE, 0.76);
 });
 
 test('fehlende Grundlagen erscheinen als Hinweis statt als Fehler', () => {

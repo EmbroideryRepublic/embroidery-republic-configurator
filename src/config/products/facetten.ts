@@ -21,8 +21,7 @@
  * hartkodierten Optionslisten in der Oberfläche) – diese Datei sagt nur,
  * WELCHER Gruppe ein vorhandener Wert angehört.
  */
-import type { ProductConfig } from './types';
-import { waehlbareFarben } from '@/lib/products/farben';
+import type { ProductConfig, MaterialGruppe, Passform, Geschlecht, Farbgruppe } from './types';
 import {
   MATERIAL_GRUPPEN_GENERIERT,
   PASSFORMEN_GENERIERT,
@@ -31,21 +30,13 @@ import {
 } from './facettenGeneriert.generated';
 
 // ── Vokabulare ─────────────────────────────────────────────────────────
-
-export type MaterialGruppe =
-  | 'baumwolle-100'
-  | 'bio-baumwolle'
-  | 'mischgewebe'
-  | 'polyester'
-  | 'recycelt';
-
-export type Passform = 'regular' | 'slim' | 'tailliert' | 'weit' | 'oversized';
-
-export type Geschlecht = 'damen' | 'herren' | 'unisex';
-
-export type Farbgruppe =
-  | 'schwarz' | 'weiss' | 'grau' | 'blau' | 'tuerkis' | 'gruen'
-  | 'gelb' | 'orange' | 'rot' | 'rosa' | 'lila' | 'braun' | 'beige';
+// Definiert in types.ts (nicht hier) und nur re-exportiert: So teilen sich
+// facetten.ts und facettenGeneriert.generated.ts die Typen, ohne dass eine
+// der beiden Dateien die andere importieren muss – die frühere Zirkularität
+// (facettenGeneriert.generated.ts importierte die Typen aus facetten.ts,
+// facetten.ts importiert umgekehrt die generierten Werte) ist damit auch
+// strukturell aufgelöst, nicht nur zur Laufzeit folgenlos.
+export type { MaterialGruppe, Passform, Geschlecht, Farbgruppe };
 
 export const MATERIAL_LABELS: Record<MaterialGruppe, string> = {
   'baumwolle-100': '100 % Baumwolle',
@@ -226,16 +217,12 @@ export function geschlechterVon(p: ProductConfig): Geschlecht[] {
   return roh ? GESCHLECHTER[roh] ?? [] : [];
 }
 
-export function farbgruppenVon(p: ProductConfig): Farbgruppe[] {
-  const gruppen = new Set<Farbgruppe>();
-  // Nur die tatsächlich wählbaren Farben zählen: Wer nach „Pink" filtert, soll
-  // kein Produkt bekommen, bei dem Pink gar nicht anwählbar ist.
-  for (const farbe of waehlbareFarben(p.id, p.colors)) {
-    const g = FARBGRUPPEN[farbe.name];
-    if (g) gruppen.add(g);
-  }
-  return [...gruppen];
-}
+// farbgruppenVon() steht bewusst NICHT hier: Sie bräuchte waehlbareFarben()
+// aus lib/products/farben.ts (echte Asset-Verfügbarkeitsprüfung), und config/
+// darf nicht von lib/ abhängen (Einbahnstraße, siehe docs/architektur.md).
+// Die reine Zuordnungstabelle FARBGRUPPEN steht hier; die Auflösung je Produkt
+// – inklusive Filterung auf wählbare Farben – lebt bei ihrem einzigen
+// Aufrufer in lib/catalog/filter.ts.
 
 export function aufnahmedatumVon(p: ProductConfig): string {
   return p.aufgenommenAm ?? KATALOG_START;

@@ -16,6 +16,7 @@
     "preis:vergleich": "tsx --tsconfig tsconfig.scripts.json scripts/preisvergleich.mts",
     "preis:strategien": "tsx --tsconfig tsconfig.scripts.json scripts/preisstrategien.mts",
     "dateien:pruefen": "tsx --tsconfig tsconfig.scripts.json scripts/verwaisteDateien.mts",
+    "dsgvo:altdateien": "tsx --tsconfig tsconfig.scripts.json scripts/dsgvoAltdateien.mts",
     "test:e2e:ratelimit": "tsx --tsconfig tsconfig.scripts.json scripts/e2eRateLimit.mts",
     "test:e2e:adminauth": "tsx --tsconfig tsconfig.scripts.json scripts/e2eAdminAuth.mts",
     "test:e2e:stripe": "tsx --tsconfig tsconfig.scripts.json scripts/e2eStripe.mts"
@@ -50,6 +51,8 @@
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.0",
+    "jscpd": "^5.0.14",
+    "knip": "^6.32.0",
     "pg": "^8.22.0",
     "postcss": "^8.4.38",
     "sharp": "^0.35.3",

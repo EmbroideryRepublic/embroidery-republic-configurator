@@ -42,13 +42,43 @@ export interface RateLimitErgebnis {
 const ERLAUBT: RateLimitErgebnis = { erlaubt: true, zuruecksetzenIn: 0, meldung: '' };
 
 /**
+ * Ob dem `X-Forwarded-For`-Header vertraut werden darf.
+ *
+ * Der Header ist grundsätzlich vom Client frei setzbar. Vertrauenswürdig
+ * wird er erst, wenn ein Proxy davorsteht, der ihn beim Eintreffen selbst
+ * setzt und eine mitgeschickte Kopie überschreibt – auf Vercel ist das der
+ * Fall. Diese Annahme galt bisher stillschweigend; jetzt steht sie hier
+ * EXPLIZIT: Default `'vercel'` passt zum aktuellen Produktivbetrieb (siehe
+ * docs/deployment.md) und ändert das bisherige Verhalten nicht. Bei einem
+ * Betreiberwechsel ohne vertrauenswürdigen Proxy davor muss `TRUSTED_PROXY`
+ * auf einen anderen Wert gesetzt werden – sonst kann ein Angreifer den
+ * Rate-Limit-Schlüssel (u.a. für `admin_login`) beliebig rotieren, indem er
+ * den Header selbst mitschickt.
+ *
+ * Bewusst bei jedem Aufruf neu aus `process.env` gelesen statt einmalig in
+ * einer Modulkonstante zwischengespeichert – analog zu `istTestmodus()` in
+ * `config/testmodus.ts`, aus demselben Grund: ein zwischengespeicherter
+ * Wert wäre je nach Ladereihenfolge eingefroren und in Tests nicht mehr
+ * umschaltbar.
+ */
+function istVertrauenswuerdigerProxy(): boolean {
+  return (process.env.TRUSTED_PROXY ?? 'vercel') === 'vercel';
+}
+
+/**
  * Die Adresse des Aufrufers.
  *
- * `x-forwarded-for` ist grundsätzlich manipulierbar; auf Vercel setzt die
- * Plattform den Wert selbst und überschreibt eine mitgeschickte Kopfzeile.
- * Bei einem Betreiberwechsel wäre das erneut zu prüfen.
+ * Nur bei vertrauenswürdigem Proxy (siehe `istVertrauenswuerdigerProxy()`
+ * oben) wird `x-forwarded-for` gelesen. Ohne einen solchen Proxy gibt es in
+ * diesem Next.js-14-Kontext keine verlässliche Quelle: `headers()` liefert
+ * kein `NextRequest`, also auch kein `request.ip`, und jeder andere Header
+ * ist ebenso clientseitig fälschbar. In diesem Fall teilen sich alle
+ * Aufrufer denselben Schlüssel – IP-basiertes Rate-Limiting ist dann
+ * strukturell nicht zuverlässig möglich (siehe docs/rate-limiting.md,
+ * Abschnitt „Gefälschte IP-Kopfzeilen").
  */
 export function ermittleIp(): string {
+  if (!istVertrauenswuerdigerProxy()) return 'unbekannt';
   const h = headers();
   const weitergeleitet = h.get('x-forwarded-for');
   return weitergeleitet?.split(',')[0]?.trim() || h.get('x-real-ip') || 'unbekannt';

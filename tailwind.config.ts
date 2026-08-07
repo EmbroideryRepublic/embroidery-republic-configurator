@@ -11,6 +11,18 @@ const config: Config = {
         // Markenpalette: warme Beige-/Creme-Grundfarben, Gold/Bronze als
         // Akzent – orientiert am Firmenlogo (Tiger-Wappen in Gold/Bronze
         // auf Creme).
+        //
+        // Kontrast (WCAG 1.4.3, per WCAG-Formel gegen cream/white geprüft):
+        // text-brand ab Opacity 70 erreicht 4.5:1 (5.53–5.71:1), darunter
+        // (30–60) nicht – auch eine dunklere DEFAULT-Farbe kann das bei so
+        // niedriger Deckkraft rechnerisch nicht auffangen, ohne fast Schwarz
+        // zu werden (erst ab ca. 65% der jetzigen Helligkeit läge /60 knapp
+        // über 4.5:1 – zu große, ungeprüfte Farbänderung für alle rund 266
+        // Fundstellen auf einmal). Für Fließtext/Labels daher mindestens
+        // text-brand/70 verwenden, nicht niedriger. bg-gold mit text-white
+        // liegt bei 2.85:1 (fehlschlägt); bg-gold-dark mit text-white bei
+        // 5.00:1 (besteht) – für Buttons/Badges mit weißer Schrift
+        // gold-dark statt gold als Hintergrund verwenden.
         brand: {
           DEFAULT: '#2b241c', // warmes Anthrazit-Braun für Text (kein reines Schwarz)
           light: '#faf7f1',   // Creme-Hintergrund

@@ -203,9 +203,9 @@ brutto an, wenn Sie nichts anderes sagen.
 | Speicherung im Bestellvorgang (Bestellung + Positionen) | **fertig** |
 | Anzeige Produktseite, AGB § 4 (2) | **fertig** |
 | Deckungsbeitrag/Marge auf Nettobasis | **war bereits so, Tests sichern es** |
-| Ausweis in Bestellbestätigung und Rechnung | **offen** |
-| Ausweis im Adminbereich (netto/Steuer/brutto) | **offen** |
-| Ausweis in Konfigurator und Warenkorb | **offen** |
+| Ausweis in Bestellbestätigung und Rechnung | **fertig** (Seite `bestellung/[token]` + E-Mail `OrderConfirmationEmail.tsx`; siehe `docs/entscheidungen-produktionsreife.md`, Abschnitt 1) |
+| Ausweis im Adminbereich (netto/Steuer/brutto) | **fertig** (`admin/bestellung/[id]`, aufgeschlüsselt) |
+| Ausweis in Konfigurator und Warenkorb | **fertig** (Steuerzeile in `CartDrawer.tsx`, Hinweis „inkl. USt." bei der unverbindlichen Anfrage) |
 | E2E-Durchlauf mit Steuerprüfung | **offen** |
 
 ### Ergebnis der Migration
@@ -215,11 +215,23 @@ brutto an, wenn Sie nichts anderes sagen.
 Abweichung 0,00 €). 10 Nachweise in `order_events` mit vollständigem Detail.
 **Kein Kundenpreis hat sich geändert** – die Bruttosumme ist unverändert.
 
-### Offener Punkt: EU-Lieferungen
+### Erledigt: EU-Lieferungen zurückgestellt (2026-08-06)
 
-`SHIPPING_COUNTRIES` erlaubt Lieferungen in EU-Länder, die Steuer rechnet
-aber immer mit dem deutschen Satz. Solange die Lieferschwelle nicht
-überschritten ist, ist das korrekt. Darüber gilt das Bestimmungslandprinzip
-(OSS) – dann sind in `steuer.ts` die Sätze zu ergänzen und `orderStage` auf
-das Lieferland umzustellen. Die Struktur trägt das bereits; es ist eine
-steuerliche Entscheidung, keine technische.
+Der ursprüngliche Widerspruch – `SHIPPING_COUNTRIES` erlaubte EU-Lieferungen,
+die Steuer rechnete aber immer mit dem deutschen Satz – ist aufgelöst, nicht
+durch eine Erweiterung, sondern durch eine bewusste Einschränkung: Der Versand
+ist seit 2026-08-06 **nur noch nach Deutschland** möglich
+(`src/config/shipping.ts`, `SHIPPING_COUNTRIES` führt ausschließlich `DE`).
+
+Grund: Für eine korrekte EU-weite Lösung fehlten verlässlich verifizierte
+Steuersätze je Zielland und die tatsächliche OSS-Registrierung beim
+Finanzamt – beides keine Code-Fragen, sondern reale steuerrechtliche
+Voraussetzungen, die nur der Betreiber schaffen kann. Da eine falsch
+berechnete Steuer ein Steuerdelikt und kein Rundungsfehler ist, wurde die
+sichere Seite gewählt.
+
+Die EU-Erweiterung ist strukturell vorbereitet, aber zurückgestellt: Ein
+weiteres Land ist später ein Eintrag (Zeile in `SHIPPING_COUNTRIES` inkl.
+ISO-Code + Satz in `steuer.ts`), sobald OSS-Registrierung und verifizierte
+Sätze vorliegen. Vollständige Begründung und Umsetzungsdetails in
+`docs/entscheidungen-produktionsreife.md`, Abschnitt 1.

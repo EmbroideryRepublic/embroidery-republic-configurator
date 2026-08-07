@@ -47,25 +47,39 @@ import { PREISSTRATEGIE, gewinnsatzFuerMenge, rundeNachRegel, type Preisstrategi
  * Materialkosten der Stickerei je 1.000 Stiche.
  *
  * ╔═══════════════════════════════════════════════════════════════════╗
- * ║ WERT IST KLÄRUNGSBEDÜRFTIG.                                       ║
+ * ║ ENTSCHEIDUNG 2026-08-06: 0,76 € (externer Stickpartner).          ║
  * ║                                                                   ║
- * ║ Der Betreiber nannte am 2026-07-22 „etwa 0,10 € pro 1.000         ║
- * ║ Stiche". Am 2026-07-21 waren zwei andere Sätze genannt worden:    ║
- * ║ 1,40 € (interne Verrechnung) und 0,76 € (externer Stickpartner).  ║
+ * ║ Drei Sätze standen im Raum: 1,40 € (interne Verrechnung, 21.07.), ║
+ * ║ 0,76 € (externer Stickpartner, 21.07.) und 0,10 € (22.07., bis    ║
+ * ║ hierhin aktiv). Begründung der Wahl:                              ║
  * ║                                                                   ║
- * ║ Die Sätze unterscheiden sich um das Sieben- bis Vierzehnfache.    ║
- * ║ Wahrscheinlich beschreiben sie Verschiedenes: 0,10 € trägt das    ║
- * ║ reine Garn, die höheren Sätze schließen Maschinenzeit und Arbeit  ║
- * ║ ein. Da die Arbeitszeit hier bewusst nicht eingerechnet wird      ║
- * ║ (siehe gemeinkosten.ts), ist der Materialsatz der schlüssige –    ║
- * ║ bestätigt ist das aber nicht.                                     ║
+ * ║ 1. Gestickt wird extern, nicht auf eigenen Maschinen – wie bei    ║
+ * ║    DTF (dtfKosten.ts) ist damit der reale, an einen Dienstleister ║
+ * ║    gezahlte Preis die richtige Bemessungsgrundlage, nicht ein     ║
+ * ║    theoretischer Materialwert.                                   ║
+ * ║ 2. 1,40 € ist ausdrücklich als „interne Verrechnung" benannt –    ║
+ * ║    kein tatsächlich gezahlter Betrag, und Verrechnungssätze       ║
+ * ║    schließen erfahrungsgemäß Arbeitszeit ein. Das widerspräche    ║
+ * ║    dem eigenen Grundsatz, Arbeitszeit bewusst nicht einzurechnen  ║
+ * ║    (gemeinkosten.ts) – der Satz wäre doppelt zu niedrig ODER die  ║
+ * ║    Arbeitszeit stiege versteckt wieder ein.                       ║
+ * ║ 3. 0,10 € führte zu einem wirtschaftlich unplausiblen Ergebnis:   ║
+ * ║    ein besticktes Shirt für 6,90 € gegenüber einem bedruckten für ║
+ * ║    24,90 € – Stickerei wäre die mit Abstand billigste Veredelung, ║
+ * ║    was der Marktlage widerspricht (Stickerei ist üblicherweise    ║
+ * ║    vergleichbar teuer oder teurer als DTF für ähnlich große       ║
+ * ║    Motive).                                                       ║
+ * ║ 4. Bei 0,76 € kostet ein Logo mit 12.000 Stichen rund 9,12 € –    ║
+ * ║    derselben Größenordnung wie ein DTF-A3-Bogen samt Versand      ║
+ * ║    (14,59 €, siehe unten). Das ist die plausible Relation.        ║
  * ║                                                                   ║
- * ║ Auswirkung: Ein Logo mit 12.000 Stichen kostet bei 0,10 € rund    ║
- * ║ 1,20 €, bei 0,76 € rund 9,12 €. Das verschiebt jeden Stickpreis   ║
- * ║ erheblich. Vor der Freigabe der Verkaufspreise klären.            ║
+ * ║ Bewusst zurückgestellt: Diesen Satz auf die tatsächliche erste    ║
+ * ║ Rechnung des Stickpartners abgleichen, sobald der Betrieb läuft.  ║
+ * ║ Bis dahin ist dies die belastbarste verfügbare Schätzung, keine   ║
+ * ║ endgültig verifizierte Zahl.                                      ║
  * ╚═══════════════════════════════════════════════════════════════════╝
  */
-export const STICKKOSTEN_JE_1000_STICHE = 0.1;
+export const STICKKOSTEN_JE_1000_STICHE = 0.76;
 
 /** Womit ein Stück veredelt wird. Bestimmt auch die Ausschussquote. */
 export type Veredelungsart = 'dtf' | 'stick';
@@ -324,8 +338,9 @@ export function produktkosten(position: BestellPosition): {
     }
     veredelung = (stiche / 1000) * STICKKOSTEN_JE_1000_STICHE * menge;
     hinweise.push(
-      `Stickkosten mit ${formatiereGeld(STICKKOSTEN_JE_1000_STICHE)} je 1.000 Stichen gerechnet – dieser Satz ist ` +
-        'noch nicht bestätigt (siehe STICKKOSTEN_JE_1000_STICHE).'
+      `Stickkosten mit ${formatiereGeld(STICKKOSTEN_JE_1000_STICHE)} je 1.000 Stichen gerechnet (Entscheidung ` +
+        '2026-08-06, externer Stickpartner-Satz) – gegen die erste tatsächliche Partnerrechnung abzugleichen ' +
+        '(siehe STICKKOSTEN_JE_1000_STICHE).'
     );
   }
 
@@ -495,24 +510,6 @@ export function kalkuliereBestellung(
     decktIstkosten: deckungsbeitrag >= -0.005,
     hinweise: [...hinweise, ...ergebnisse.flatMap((e) => e.hinweise)],
   };
-}
-
-/**
- * Deckt ein Verkaufspreis bei dieser Menge die Kosten?
- *
- * Für die Prüfung bestehender Preise, ohne sie zu ändern.
- */
-export function decktKosten(preisNetto: number, eingabe: KalkulationsEingabe): boolean {
-  // Erwartet einen NETTOpreis – die Selbstkosten sind ebenfalls netto.
-  return preisNetto * Math.max(1, eingabe.menge) >= kalkuliere(eingabe).selbstkosten;
-}
-
-/** Nur zur Beurteilung: Was verdienen wir je Stunde bei diesem Auftrag? */
-export function stundenertrag(kalkulation: Kalkulation, menge: number, minutenJeStueck: number): number {
-  const stunden = (menge * minutenJeStueck) / 60;
-  if (stunden <= 0) return 0;
-  const erloes = kalkulation.verkaufspreisNetto * menge;
-  return runde((erloes - kalkulation.selbstkosten) / stunden);
 }
 
 /** Für Diagnosezwecke: welche Qualitätsstufe welche Zielmarge trägt. */

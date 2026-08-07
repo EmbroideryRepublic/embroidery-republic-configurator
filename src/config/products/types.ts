@@ -1,5 +1,26 @@
 import type { PrintView, PrintMethod, ProductType, QualityTier, ConfigElementType } from '@/types';
 
+// ── Facetten-Vokabulare ────────────────────────────────────────────────
+// Hier statt in facetten.ts definiert, damit facetten.ts (Hand-Zuordnung)
+// und facettenGeneriert.generated.ts (Zuordnungs-Delta aus dem Import) sich
+// die Typen ohne gegenseitigen Import teilen können – sonst entstünde eine
+// Zirkularität zwischen den beiden Dateien (siehe facettenGeneriert.generated.ts).
+
+export type MaterialGruppe =
+  | 'baumwolle-100'
+  | 'bio-baumwolle'
+  | 'mischgewebe'
+  | 'polyester'
+  | 'recycelt';
+
+export type Passform = 'regular' | 'slim' | 'tailliert' | 'weit' | 'oversized';
+
+export type Geschlecht = 'damen' | 'herren' | 'unisex';
+
+export type Farbgruppe =
+  | 'schwarz' | 'weiss' | 'grau' | 'blau' | 'tuerkis' | 'gruen'
+  | 'gelb' | 'orange' | 'rot' | 'rosa' | 'lila' | 'braun' | 'beige';
+
 export interface ProductColorConfig {
   id: string;
   name: string;

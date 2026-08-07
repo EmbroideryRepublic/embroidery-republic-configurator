@@ -4,11 +4,23 @@
  * Kernaussagen: Tarife greifen je Zone korrekt, die Freigrenzen sind exakt
  * (>= statt >), und für Länder OHNE hinterlegten Tarif gibt es KEINEN
  * 0-€-Fallback – sie liefern null und müssen vom Aufrufer abgelehnt werden.
+ *
+ * Seit der Entscheidung vom 2026-08-06 ist NUR Deutschland auswählbar (siehe
+ * Kommentar in shipping.ts) – die EU-Rate bleibt im Code definiert, aber
+ * kein Land verweist mehr darauf. Frühere Tests gegen „Österreich" etc.
+ * prüften damit ein Angebot, das es aktuell nicht mehr gibt; sie sind durch
+ * die Tests unten ersetzt.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { calculateShipping, shippingZoneForCountry, SHIPPING_COUNTRIES, SHIPPING_RATES } from '../shipping';
+import {
+  calculateShipping,
+  shippingZoneForCountry,
+  landCodeForCountry,
+  SHIPPING_COUNTRIES,
+  SHIPPING_RATES,
+} from '../shipping';
 
 test('Deutschland: 6,90 € unter der Freigrenze', () => {
   const r = calculateShipping('Deutschland', 50);
@@ -31,46 +43,62 @@ test('Deutschland: ab genau 75 € versandkostenfrei (Grenze inklusive)', () => 
   assert.equal(below.cost, 6.9, 'einen Cent darunter ist noch kostenpflichtig');
 });
 
-test('EU-Land: 11,99 € und Freigrenze 100 €', () => {
-  const at = calculateShipping('Österreich', 60);
-  assert.ok(at);
-  assert.equal(at.zone, 'EU');
-  assert.equal(at.cost, 11.99);
-  assert.equal(at.amountUntilFree, 40);
-
-  const free = calculateShipping('Österreich', 100);
-  assert.ok(free);
-  assert.equal(free.cost, 0);
-  assert.equal(free.isFree, true);
+test('EU-Rate bleibt definiert, auch ohne auswählbares EU-Land (Wiedereröffnung = ein Eintrag)', () => {
+  assert.equal(SHIPPING_RATES.EU.cost, 11.99);
+  assert.equal(SHIPPING_RATES.EU.freeFrom, 100);
 });
 
-test('EU-Freigrenze gilt NICHT schon ab der DE-Grenze', () => {
-  const r = calculateShipping('Frankreich', 80);
-  assert.ok(r);
-  assert.equal(r.cost, 11.99, '80 € liegt über 75 (DE), aber unter 100 (EU)');
+test('EU-Länder sind aktuell NICHT auswählbar – Steuersatz ist nur für DE verifiziert (Entscheidung 2026-08-06)', () => {
+  assert.equal(calculateShipping('Österreich', 60), null);
+  assert.equal(calculateShipping('Frankreich', 80), null);
+  assert.equal(shippingZoneForCountry('ÖSTERREICH'), null);
 });
 
 test('Land ohne Tarif liefert null – kein stiller 0-€-Versand', () => {
   assert.equal(calculateShipping('Schweiz', 200), null);
   assert.equal(calculateShipping('USA', 500), null);
+  assert.equal(calculateShipping('Österreich', 200), null);
   assert.equal(calculateShipping('', 100), null);
   assert.equal(calculateShipping(undefined, 100), null);
 });
 
 test('Länderzuordnung ist case-insensitiv und tolerant gegenüber Leerzeichen', () => {
   assert.equal(shippingZoneForCountry('  deutschland '), 'DE');
-  assert.equal(shippingZoneForCountry('ÖSTERREICH'), 'EU');
+  assert.equal(shippingZoneForCountry('DEUTSCHLAND'), 'DE');
   assert.equal(shippingZoneForCountry('Schweiz'), null);
 });
 
-test('jedes auswählbare Land hat einen definierten Tarif', () => {
-  assert.ok(SHIPPING_COUNTRIES.length > 1);
+test('jedes auswählbare Land hat einen definierten Tarif UND einen ISO-Code', () => {
+  assert.ok(SHIPPING_COUNTRIES.length >= 1);
   for (const c of SHIPPING_COUNTRIES) {
     const r = calculateShipping(c.name, 0);
     assert.ok(r, `kein Tarif für ${c.name}`);
     assert.equal(r.baseCost, SHIPPING_RATES[c.zone].cost);
     assert.equal(r.freeFrom, SHIPPING_RATES[c.zone].freeFrom);
+    assert.match(c.code, /^[A-Z]{2}$/, `${c.name} braucht einen zweistelligen ISO-Code`);
   }
+});
+
+test('aktuell ist ausschließlich Deutschland lieferbar', () => {
+  assert.deepEqual(
+    SHIPPING_COUNTRIES.map((c) => c.name),
+    ['Deutschland']
+  );
+});
+
+// ── landCodeForCountry: das Bindeglied zum Steuersatz ─────────────────────
+
+test('landCodeForCountry löst den Klartextnamen auf den ISO-Code auf', () => {
+  assert.equal(landCodeForCountry('Deutschland'), 'DE');
+  assert.equal(landCodeForCountry('  deutschland '), 'DE');
+  assert.equal(landCodeForCountry('DEUTSCHLAND'), 'DE');
+});
+
+test('landCodeForCountry liefert null für unbekannte oder nicht (mehr) geführte Länder', () => {
+  assert.equal(landCodeForCountry('Österreich'), null);
+  assert.equal(landCodeForCountry('Schweiz'), null);
+  assert.equal(landCodeForCountry(''), null);
+  assert.equal(landCodeForCountry(undefined), null);
 });
 
 test('negative oder unsinnige Warenwerte werden wie 0 behandelt', () => {

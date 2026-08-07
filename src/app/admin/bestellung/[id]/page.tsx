@@ -97,6 +97,14 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           <p className="mt-2 text-sm font-medium">
             Summe: {formatiereGeld(order.totalPrice)}
           </p>
+          {/* Netto/Steuer/Brutto – nur für Bestellungen ab Migration 0014
+              vorhanden (order.taxAmount === null bei älteren Bestellungen). */}
+          {order.taxAmount !== null && order.taxRate !== null && order.netTotal !== null && (
+            <p className="mt-0.5 text-xs text-gray-500">
+              netto {formatiereGeld(order.netTotal)} + {order.taxRate} % USt. {formatiereGeld(order.taxAmount)} = brutto{' '}
+              {formatiereGeld(order.totalPrice)}
+            </p>
+          )}
           {/* Zahlungsart: seit Migration 0012 gespeichert. Bestellungen aus
               der Zeit davor tragen sie nachgetragen als "Rechnung" – belegt
               durch den damals fest verdrahteten Checkout. */}

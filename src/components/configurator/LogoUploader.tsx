@@ -22,10 +22,9 @@ type QualityLevel = 'green' | 'yellow' | 'red' | null;
 
 interface LogoUploaderProps {
   printArea: PrintArea | null;
-  onElementAdded?: () => void;
 }
 
-export function LogoUploader({ printArea, onElementAdded }: LogoUploaderProps) {
+export function LogoUploader({ printArea }: LogoUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -174,9 +173,11 @@ export function LogoUploader({ printArea, onElementAdded }: LogoUploaderProps) {
         estimatedStitches: await estimateLogoStitches(displayDataUrl, widthCm, heightCm),
       };
 
+      // Den Tab-Wechsel zum Design-Editor übernimmt ToolPanelTabs zeitlich
+      // verzögert (siehe dortiger useEffect) – so bleibt die Qualitätsampel
+      // oben kurz sichtbar, statt sofort wieder aus dem DOM zu verschwinden.
       addElement(element);
       setSelectedElementId(element.id);
-      onElementAdded?.();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Datei konnte nicht verarbeitet werden.');
     } finally {
@@ -198,7 +199,7 @@ export function LogoUploader({ printArea, onElementAdded }: LogoUploaderProps) {
         id="logo-upload"
         type="file"
         accept=".svg,.png,.pdf,image/svg+xml,image/png,application/pdf"
-        className="hidden"
+        className="peer sr-only"
         onChange={(e) => {
           const file = e.target.files?.[0];
           if (file) handleFile(file);
@@ -206,7 +207,7 @@ export function LogoUploader({ printArea, onElementAdded }: LogoUploaderProps) {
       />
       <label
         htmlFor="logo-upload"
-        className="block cursor-pointer rounded-lg border border-dashed border-gold/30 p-4 text-center text-sm text-brand/50 transition-colors hover:border-gold hover:text-gold-dark"
+        className="block cursor-pointer rounded-lg border border-dashed border-gold/30 p-4 text-center text-sm text-brand/50 transition-colors hover:border-gold hover:text-gold-dark peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand"
       >
         {isLoading ? t('logo_upload_loading') : t('logo_upload_label')}
       </label>

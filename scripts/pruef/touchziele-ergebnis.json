@@ -1,0 +1,257 @@
+{
+  "ergebnisse": [
+    {
+      "name": "Hamburger-Menü",
+      "seite": "startseite",
+      "breite": 375,
+      "gefunden": true,
+      "w": 34,
+      "h": 34,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Cart-Icon (Kopfzeile)",
+      "seite": "startseite",
+      "breite": 375,
+      "gefunden": true,
+      "w": 42,
+      "h": 30,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Farbwahl-Swatch #1 (Produktseite)",
+      "seite": "produktseite",
+      "breite": 375,
+      "gefunden": true,
+      "w": 28,
+      "h": 28,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Ansicht-Umschalter (Produktseite)",
+      "seite": "produktseite",
+      "breite": 375,
+      "gefunden": true,
+      "w": 91,
+      "h": 26,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "\"Jetzt konfigurieren\"-CTA",
+      "seite": "produktseite",
+      "breite": 375,
+      "gefunden": true,
+      "w": 301,
+      "h": 44,
+      "unterMindestgroesse": false
+    },
+    {
+      "name": "Farbwahl-Swatch #1 (Konfigurator)",
+      "seite": "konfigurator",
+      "breite": 375,
+      "gefunden": true,
+      "w": 31,
+      "h": 31,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Größen-Mengeneingabe (erstes Feld)",
+      "seite": "konfigurator",
+      "breite": 375,
+      "gefunden": true,
+      "w": 56,
+      "h": 28,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "\"In den Warenkorb\"-Button",
+      "seite": "konfigurator",
+      "breite": 375,
+      "gefunden": true,
+      "w": 317,
+      "h": 40,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Hamburger-Menü",
+      "seite": "startseite",
+      "breite": 768,
+      "gefunden": true,
+      "w": 34,
+      "h": 34,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Cart-Icon (Kopfzeile)",
+      "seite": "startseite",
+      "breite": 768,
+      "gefunden": true,
+      "w": 122,
+      "h": 34,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Farbwahl-Swatch #1 (Produktseite)",
+      "seite": "produktseite",
+      "breite": 768,
+      "gefunden": true,
+      "w": 28,
+      "h": 28,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Ansicht-Umschalter (Produktseite)",
+      "seite": "produktseite",
+      "breite": 768,
+      "gefunden": true,
+      "w": 91,
+      "h": 26,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "\"Jetzt konfigurieren\"-CTA",
+      "seite": "produktseite",
+      "breite": 768,
+      "gefunden": true,
+      "w": 310,
+      "h": 44,
+      "unterMindestgroesse": false
+    },
+    {
+      "name": "Farbwahl-Swatch #1 (Konfigurator)",
+      "seite": "konfigurator",
+      "breite": 768,
+      "gefunden": true,
+      "w": 31,
+      "h": 31,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "Größen-Mengeneingabe (erstes Feld)",
+      "seite": "konfigurator",
+      "breite": 768,
+      "gefunden": true,
+      "w": 56,
+      "h": 28,
+      "unterMindestgroesse": true
+    },
+    {
+      "name": "\"In den Warenkorb\"-Button",
+      "seite": "konfigurator",
+      "breite": 768,
+      "gefunden": true,
+      "w": 710,
+      "h": 40,
+      "unterMindestgroesse": true
+    }
+  ],
+  "stickyBefunde": [
+    {
+      "seite": "katalog",
+      "breite": 375,
+      "headerRect": {
+        "top": 0,
+        "bottom": 65,
+        "h": 65,
+        "zIndex": "40"
+      },
+      "filterBandRect": {
+        "top": 0,
+        "bottom": 132,
+        "h": 132,
+        "zIndex": "40"
+      },
+      "elementAtLogoPosition": {
+        "tag": "BUTTON",
+        "klassen": "group relative shrink-0 whitespace-nowrap px-5 pb-4 pt-5 transition-colors durat",
+        "liegtInHeader": false,
+        "liegtInFilterBand": true
+      }
+    },
+    {
+      "seite": "konfigurator",
+      "breite": 375,
+      "headerRect": {
+        "top": 0,
+        "bottom": 65,
+        "h": 65,
+        "zIndex": "40"
+      },
+      "stepperRect": {
+        "top": 57,
+        "bottom": 94,
+        "h": 37,
+        "zIndex": "30"
+      },
+      "elementAtLogoPosition": {
+        "tag": "IMG",
+        "liegtInHeader": true
+      }
+    },
+    {
+      "seite": "konfigurator-canvas",
+      "breite": 375,
+      "canvasInfo": {
+        "w": 305,
+        "h": 366,
+        "top": 706,
+        "passtInViewportBreite": true,
+        "touchAction": "auto"
+      }
+    },
+    {
+      "seite": "katalog",
+      "breite": 768,
+      "headerRect": {
+        "top": 0,
+        "bottom": 65,
+        "h": 65,
+        "zIndex": "40"
+      },
+      "filterBandRect": {
+        "top": 0,
+        "bottom": 132,
+        "h": 132,
+        "zIndex": "40"
+      },
+      "elementAtLogoPosition": {
+        "tag": "DIV",
+        "klassen": "sticky top-0 z-40 -mx-4 border-b border-brand/[0.06] bg-brand-light/80 px-4 back",
+        "liegtInHeader": false,
+        "liegtInFilterBand": true
+      }
+    },
+    {
+      "seite": "konfigurator",
+      "breite": 768,
+      "headerRect": {
+        "top": 0,
+        "bottom": 65,
+        "h": 65,
+        "zIndex": "40"
+      },
+      "stepperRect": {
+        "top": 57,
+        "bottom": 94,
+        "h": 37,
+        "zIndex": "30"
+      },
+      "elementAtLogoPosition": {
+        "tag": "DIV",
+        "liegtInHeader": true
+      }
+    },
+    {
+      "seite": "konfigurator-canvas",
+      "breite": 768,
+      "canvasInfo": {
+        "w": 200,
+        "h": 240,
+        "top": 804,
+        "passtInViewportBreite": true,
+        "touchAction": "auto"
+      }
+    }
+  ],
+  "erzeugtAm": "2026-08-07T04:08:26.306Z"
+}

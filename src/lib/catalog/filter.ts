@@ -14,10 +14,12 @@
  */
 import type { ProductConfig } from '@/config/products/types';
 import {
-  farbgruppenVon, geschlechterVon, materialGruppen, passformVon, aufnahmedatumVon,
+  FARBGRUPPEN, geschlechterVon, materialGruppen, passformVon, aufnahmedatumVon,
+  type Farbgruppe,
 } from '@/config/products/facetten';
 import { groessenRang } from '@/config/products/groessen';
-import { ermittleVerfuegbarkeit } from './verfuegbarkeit';
+import { waehlbareFarben } from '@/lib/products/farben';
+import { istLieferbar } from './verfuegbarkeit';
 import {
   MENGEN_DIMENSIONEN, slug, type FilterKriterien, type MengenDimension, type Sortierung,
 } from './kriterien';
@@ -46,6 +48,26 @@ export interface Merkmale {
   aufgenommenAm: string;
 }
 
+/**
+ * Grundfarben eines Produkts – nur aus den tatsächlich wählbaren Farben
+ * (siehe `waehlbareFarben()`). Wer nach „Pink" filtert, soll kein Produkt
+ * bekommen, bei dem Pink gar nicht anwählbar ist.
+ *
+ * Lebt hier statt in config/products/facetten.ts, weil sie `waehlbareFarben()`
+ * braucht – die prüft echte Asset-Verfügbarkeit (lib/products/farben.ts) und
+ * ist damit Geschäftslogik, keine reine Zuordnungstabelle. config/ darf nicht
+ * von lib/ abhängen (Einbahnstraße, siehe docs/architektur.md); die reine
+ * Zuordnungstabelle FARBGRUPPEN bleibt entsprechend in facetten.ts.
+ */
+export function farbgruppenVon(p: ProductConfig): Farbgruppe[] {
+  const gruppen = new Set<Farbgruppe>();
+  for (const farbe of waehlbareFarben(p.id, p.colors)) {
+    const g = FARBGRUPPEN[farbe.name];
+    if (g) gruppen.add(g);
+  }
+  return [...gruppen];
+}
+
 export function merkmaleVon(p: ProductConfig): Merkmale {
   const passform = passformVon(p);
   return {
@@ -60,7 +82,7 @@ export function merkmaleVon(p: ProductConfig): Merkmale {
     veredelung: [...(p.supportedMethods ?? ALLE_VEREDELUNGEN)],
     gewicht: p.weightGsm,
     preis: p.basePrice,
-    lieferbar: ermittleVerfuegbarkeit(p) === 'lieferbar',
+    lieferbar: istLieferbar(p),
     aufgenommenAm: aufnahmedatumVon(p),
   };
 }

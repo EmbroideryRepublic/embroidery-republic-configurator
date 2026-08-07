@@ -6,19 +6,6 @@ export interface BoundsRect {
 }
 
 /**
- * Prüft, ob ein Element vollständig innerhalb eines Bereichs liegt.
- * Wird für die harte Begrenzung (Drag/Resize-Clamping) verwendet.
- */
-export function isWithinBounds(element: BoundsRect, area: BoundsRect): boolean {
-  return (
-    element.x >= area.x &&
-    element.y >= area.y &&
-    element.x + element.width <= area.x + area.width &&
-    element.y + element.height <= area.y + area.height
-  );
-}
-
-/**
  * Prüft, ob ein Element näher als `marginPx` an einer Kante des Druckbereichs
  * liegt (Nahtabstand). Wird für die visuelle Warnung verwendet – das Element
  * darf technisch noch innerhalb des Bereichs sein, aber zu nah an der Naht.
@@ -113,18 +100,4 @@ export function pushOutOfExclusionZones(
   }
 
   return { x, y };
-}
-
-/** Begrenzt die Position eines Elements so, dass es vollständig im Bereich bleibt. */
-export function clampPositionToBounds(
-  element: BoundsRect,
-  area: BoundsRect
-): { x: number; y: number } {
-  const maxX = area.x + area.width - element.width;
-  const maxY = area.y + area.height - element.height;
-
-  return {
-    x: maxX >= area.x ? Math.min(Math.max(element.x, area.x), maxX) : area.x + (area.width - element.width) / 2,
-    y: maxY >= area.y ? Math.min(Math.max(element.y, area.y), maxY) : area.y + (area.height - element.height) / 2,
-  };
 }

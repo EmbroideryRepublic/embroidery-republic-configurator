@@ -312,8 +312,10 @@ export const GEMEINKOSTEN_BLOECKE: Gemeinkostenblock[] = [
     beschreibung:
       'KEIN Kostenblock, sondern das Ziel der Kalkulation. Prozentual und nicht als fester Betrag – ausdrückliche ' +
       'Festlegung des Betreibers, damit teure Produkte nicht denselben Aufschlag tragen wie günstige. ' +
-      'Der Satz von 25 % ist die HAUPT-STELLSCHRAUBE der gesamten Preisbildung und noch nicht bestätigt: ' +
-      'Er wurde so gewählt, dass die Preise ungefähr auf Shirtinator-Niveau landen. Hier drehen, nicht an Produktpreisen.',
+      'Der Satz von 25 % ist die HAUPT-STELLSCHRAUBE der gesamten Preisbildung. Entscheidung 2026-08-06: als ' +
+      'Zielwert bestätigt – er ist bewusst auf das angestrebte Shirtinator-Marktniveau kalibriert (nicht aus ' +
+      'eigenen Ist-Zahlen abgeleitet) und bleibt bis zu einer ausdrücklich abweichenden Festlegung des Betreibers ' +
+      'die geltende Marge. Hier drehen, nicht an Produktpreisen.',
   },
 ];
 

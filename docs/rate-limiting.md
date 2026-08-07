@@ -163,7 +163,18 @@ allerdings erheblich.
 
 **Gefälschte IP-Kopfzeilen.** `x-forwarded-for` ist manipulierbar, wenn
 kein vertrauenswürdiger Proxy davorsteht. Auf Vercel setzt die Plattform
-den Wert selbst; bei einem anderen Betreiber wäre das zu prüfen.
+den Wert selbst. Diese Annahme steht seit dem Fund aus dem
+Sicherheitsaudit vom 2026-08-07 EXPLIZIT im Code statt stillschweigend
+voraus­gesetzt zu sein: `TRUSTED_PROXY` (Default `'vercel'`, siehe
+`ermittleIp()` in `lib/security/rateLimit.ts`) steuert, ob der Header
+gelesen wird. Bei einem Betreiberwechsel ohne einen solchen Proxy muss die
+Variable auf einen anderen Wert gesetzt werden – dann liefert `ermittleIp()`
+für alle Aufrufer denselben Platzhalter (`'unbekannt'`), weil sich die
+Adresse ohne vertrauenswürdigen Proxy in diesem Next.js-14-Kontext
+(`headers()` statt `NextRequest`, kein `request.ip` verfügbar) nicht
+zuverlässig ermitteln lässt. IP-basiertes Rate-Limiting ist dann
+strukturell nicht möglich; ein Betreiberwechsel bräuchte einen eigenen
+vorgelagerten Schutz (siehe „Verteilte Angriffe" oben).
 
 **Verfügbarkeit vor Sicherheit.** Ist die Datenbank nicht erreichbar,
 lässt die Prüfung die Anfrage **durch** statt sie abzuweisen. Ein Ausfall

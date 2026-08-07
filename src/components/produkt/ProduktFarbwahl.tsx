@@ -16,7 +16,7 @@ import type { PrintView } from '@/types';
 import type { ProductConfig } from '@/config/products/types';
 import { bildFuerAnsicht, repraesentativBildVon, repraesentativeFarbe } from '@/lib/assets';
 import { sichtbareAnsichten } from '@/lib/products/ansichten';
-import { waehlbareFarben } from '@/lib/products/farben';
+import { waehlbareFarben, formatiereFarbname } from '@/lib/products/farben';
 import { positionLabel } from '@/config/decorationPositions';
 
 export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
@@ -50,7 +50,7 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
           // das Seitenlogo. Diktiert die Gestaltung nicht.
           data-produktbild={`${farbe.id}/${aktiveAnsicht}`}
           src={bildFuerAnsicht(produkt.id, farbe.id, aktiveAnsicht) ?? repraesentativBildVon(produkt.id, farbe.id)}
-          alt={`${produkt.name} in ${farbe.name}, ${positionLabel(aktiveAnsicht)}`}
+          alt={`${produkt.name} in ${formatiereFarbname(farbe.name)}, ${positionLabel(aktiveAnsicht)}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-contain p-6"
@@ -66,7 +66,7 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
             data-ansicht={view}
             onClick={() => setAnsicht(view)}
             aria-pressed={aktiveAnsicht === view}
-            className={`rounded-full border px-3 py-1 text-xs transition ${
+            className={`rounded-full border px-3 py-2 text-xs transition ${
               aktiveAnsicht === view
                 ? 'border-brand bg-brand text-white'
                 : 'border-brand/15 bg-white text-brand/60 hover:border-gold/50 hover:text-brand'
@@ -79,7 +79,7 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
 
       <div className="mt-4">
         <p className="text-sm font-medium text-brand">
-          Farbe: <span className="font-normal text-brand/70">{farbe.name}</span>
+          Farbe: <span className="font-normal text-brand/70">{formatiereFarbname(farbe.name)}</span>
         </p>
         <p className="mt-0.5 text-xs text-brand/50">{farben.length} Farben verfügbar</p>
         <div className="mt-2.5 flex flex-wrap gap-2">
@@ -89,11 +89,11 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
               type="button"
               data-farbe={c.id}
               onClick={() => setFarbIndex(i)}
-              title={c.name}
-              aria-label={`Farbe ${c.name}`}
+              title={formatiereFarbname(c.name)}
+              aria-label={`Farbe ${formatiereFarbname(c.name)}`}
               aria-pressed={i === farbIndex}
               style={{ backgroundColor: c.hex }}
-              className={`h-7 w-7 rounded-full border transition ${
+              className={`h-11 w-11 rounded-full border transition ${
                 i === farbIndex
                   ? 'border-white ring-2 ring-gold ring-offset-1'
                   : 'border-black/10 hover:ring-2 hover:ring-gold/40'

@@ -23,7 +23,7 @@ curl -s -o /dev/null -w "%{http_code}\n" https://<domain>/api/health
 |---|---|---|
 | `200` | System läuft, alle Bausteine `ok` oder `beeintraechtigt` | Abschnitt 3 (Einzelfälle) |
 | `503` | mindestens ein Baustein `kritisch` | Abschnitt 2 |
-| keine Antwort / Zeitüberschreitung | Hosting oder DNS | Abschnitt 2.4 |
+| keine Antwort / Zeitüberschreitung | Hosting oder DNS | Abschnitt 2.5 |
 
 Die ausführliche Antwort (`/api/health?detail=1`) gibt es nur angemeldet – sie
 nennt Fehlermeldungen, die öffentlich ein Informationsleck wären.
@@ -82,7 +82,35 @@ Preisbaustein (Fail-fast statt geratener Wert).
 fehlende Regel für eine Veredelungsart oder ein fehlender Steuersatz ist die
 übliche Ursache.
 
-### 2.4 Seite nicht erreichbar
+### 2.4 Kundenkonto-Probleme (Registrierung, Login, Passwort-Reset)
+
+**Erkennbar an:** Registrierung oder Anmeldung schlägt fehl, ein
+Bestätigungs- oder Reset-Link führt ins Leere oder zeigt eine
+Supabase-Fehlerseite statt der Zielseite, Kundschaft erhält keine
+Konto-E-Mail.
+
+**Prüfen, in dieser Reihenfolge:**
+1. **Link führt ins Leere / Supabase-Fehlerseite statt zur App:**
+   Supabase-Dashboard → *Authentication → URL Configuration* – *Site URL*
+   und die *Redirect URLs*-Allowlist müssen `<domain>/auth/callback`
+   enthalten. `admin.generateLink()` erzeugt den Link serverseitig (siehe
+   `src/lib/actions/konto.ts`); weicht die dort verwendete Domain von der
+   Allowlist ab, weist Supabase den Redirect zurück.
+2. **„Zu viele Versuche" / Aktion wird stillschweigend abgelehnt:**
+   Registrierung, Anmeldung, Passwort-vergessen und Kontoänderungen laufen
+   über `pruefeRateLimit()` (Tabelle `rate_limit_zaehler`, Funktion
+   `pruefe_rate_limit`). Betrifft es nur eine Person, in der Tabelle
+   nachsehen, ob deren Zähler noch läuft; betrifft es viele gleichzeitig,
+   liegt die Ursache eher bei Punkt 1 oder 3.
+3. **Kein Bestätigungs- oder Reset-Mail kommt an:** dieselbe Prüfkette wie
+   unter 2.2 (`RESEND_API_KEY`, `EMAIL_TEST_MODE`, DNS, Resend-Dashboard) –
+   Konto-Mails laufen über denselben Versandweg wie Bestellbestätigungen.
+4. **Fehler nach Linkklick, aber vor der Zielseite:** `src/middleware.ts`
+   frischt die Sitzung nur für `/konto/*` und `/auth/*` auf und leitet
+   selbst **nicht** um. Ein Redirect-Problem liegt dann in der aufgerufenen
+   Route (`src/app/auth/callback/route.ts`), nicht in der Middleware.
+
+### 2.5 Seite nicht erreichbar
 
 - Vercel-Dashboard → *Deployments*: letzter Build erfolgreich?
 - Bricht der Build mit `NEXT_PUBLIC_SITE_URL ist nicht gesetzt` ab, ist das
@@ -148,7 +176,7 @@ oder ein geschützter Name getroffen würde. Die Sicherungsdatei enthält
 | Punkt | Wert |
 |---|---|
 | Dev-Server | Port **3007** (`npx next dev -p 3007`). 3000/3001 gehören einem anderen Projekt |
-| Voller Prüflauf | `npm run typecheck && npm run lint && npm test && npm run build && npm run test:e2e` |
+| Voller Prüflauf | `npm run typecheck && npm run lint && npm test && npm run build && npm run test:e2e && npm run test:e2e:zahlung && npm run test:e2e:ratelimit && npm run test:e2e:adminauth && npm run test:e2e:stripe` (alle 5 E2E-Suiten, siehe [deployment.md](deployment.md#1-auslieferungsablauf)) |
 | Nach `next build` | Ein parallel laufender Dev-Server liefert danach 404 auf seine Chunks – sauber neu starten |
 
 **Bekannte Stolperstelle:** `npm run build` überschreibt `.next`. Läuft

@@ -20,10 +20,11 @@
  * sodass kein Artikel hinter der Klassifizierung verschwindet; die Summe der
  * Gruppenzähler ist dann größer als der Bestand, und das ist richtig so.
  */
-import type { ProductConfig } from '@/config/products/types';
+import type { ProductConfig, Farbgruppe } from '@/config/products/types';
 import { produktTypLabel, PRODUCT_TYPE_ORDER } from '@/config/products/types';
 import { AKTIVE_ACHSEN, produktAchsenId } from '@/config/products/naviAchsen';
 import { QUALITY_TIER_LABELS } from '@/config/qualityTiers';
+import { farbgruppenVon } from '@/lib/catalog/filter';
 import type { ProductType, QualityTier } from '@/types';
 
 /** ID einer Navigationsgruppe (oberste Baumebene). Offen – die gültigen Werte
@@ -37,7 +38,9 @@ export type Hauptgruppe = string;
  *  sprechende Navigations-Alias. */
 export const ARTFOLGE: readonly ProductType[] = PRODUCT_TYPE_ORDER;
 
-/** Optionale Einschränkungen. Alle Felder wirken als UND. */
+/** Optionale Einschränkungen. Alle Felder wirken als UND; innerhalb von
+ *  `groesse`/`farbe` (Mehrfachauswahl) wirken die gewählten Werte als ODER –
+ *  wie bei jedem Fashion-Filter: „S ODER M", nicht „S UND M". */
 export type Browserfilter = {
   suche: string;
   nurFavoriten: boolean;
@@ -46,11 +49,14 @@ export type Browserfilter = {
   qualitaet?: QualityTier;
   material?: string;
   preisMax?: number;
+  groesse: string[];
+  farbe: Farbgruppe[];
 };
 
 export const LEERER_FILTER: Browserfilter = {
   suche: '', nurFavoriten: false, favoriten: [],
   marke: undefined, qualitaet: undefined, material: undefined, preisMax: undefined,
+  groesse: [], farbe: [],
 };
 
 /** Sind über die Suche hinaus Filter gesetzt? Steuert den Zähler am Knopf. */
@@ -60,6 +66,8 @@ export function anzahlAktiverFilter(f: Browserfilter): number {
   if (f.qualitaet) n++;
   if (f.material) n++;
   if (f.preisMax !== undefined) n++;
+  if (f.groesse.length > 0) n++;
+  if (f.farbe.length > 0) n++;
   return n;
 }
 
@@ -78,12 +86,24 @@ export function passtZurSuche(p: ProductConfig, suche: string): boolean {
   );
 }
 
-export function passtZumFilter(p: ProductConfig, f: Browserfilter): boolean {
+/**
+ * Passt ein Produkt auf den Filter?
+ *
+ * `ausser` blendet EINE Mehrfachauswahl-Dimension aus (groesse/farbe) – das
+ * braucht die Facettenzählung im Filterpanel: Wie viele Treffer hätte „M",
+ * wenn man es JETZT zusätzlich anhakt? Ohne diesen Ausschluss würde nach der
+ * Wahl von „M" jede andere Größe 0 Treffer zeigen, sobald nur EINE Größe
+ * gewählt werden könnte – dieselbe Systematik wie `passt()` in
+ * lib/catalog/filter.ts (Surface A des Katalogs).
+ */
+export function passtZumFilter(p: ProductConfig, f: Browserfilter, ausser?: 'groesse' | 'farbe'): boolean {
   if (f.nurFavoriten && !f.favoriten.includes(p.id)) return false;
   if (f.marke && p.brand !== f.marke) return false;
   if (f.qualitaet && p.qualityTier !== f.qualitaet) return false;
   if (f.material && p.material !== f.material) return false;
   if (f.preisMax !== undefined && p.basePrice > f.preisMax) return false;
+  if (ausser !== 'groesse' && f.groesse.length > 0 && !f.groesse.some((g) => p.sizes.includes(g))) return false;
+  if (ausser !== 'farbe' && f.farbe.length > 0 && !f.farbe.some((g) => farbgruppenVon(p).includes(g))) return false;
   return passtZurSuche(p, f.suche);
 }
 

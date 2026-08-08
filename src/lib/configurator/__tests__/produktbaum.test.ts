@@ -7,9 +7,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { PRODUCTS } from '@/config/products';
+import { farbgruppenVon } from '@/lib/catalog/filter';
+import type { Farbgruppe } from '@/config/products/types';
 import {
   ARTFOLGE, LEERER_FILTER, anzahlAktiverFilter, baueBaum,
-  materialKurz, modellBadges, modelleVon, passtZurSuche, type Browserfilter,
+  materialKurz, modellBadges, modelleVon, passtZumFilter, passtZurSuche, type Browserfilter,
 } from '../produktbaum';
 
 const mit = (teil: Partial<Browserfilter>): Browserfilter => ({ ...LEERER_FILTER, ...teil });
@@ -115,6 +117,71 @@ test('Filter wirken als UND', () => {
       }
     }
   }
+});
+
+test('Größenfilter wirkt als ODER innerhalb der Auswahl', () => {
+  const groessen = ['S', 'M'];
+  const baum = baueBaum(PRODUCTS, mit({ groesse: groessen }));
+  for (const g of baum) {
+    for (const a of g.arten) {
+      for (const m of a.modelle) {
+        assert.ok(groessen.some((s) => m.sizes.includes(s)), `${m.id} hat keine der gewählten Größen`);
+      }
+    }
+  }
+});
+
+test('Farbfilter wirkt als ODER innerhalb der Auswahl', () => {
+  const farben = [...new Set(PRODUCTS.flatMap((p) => farbgruppenVon(p)))].slice(0, 2);
+  const baum = baueBaum(PRODUCTS, mit({ farbe: farben }));
+  for (const g of baum) {
+    for (const a of g.arten) {
+      for (const m of a.modelle) {
+        assert.ok(farben.some((f) => farbgruppenVon(m).includes(f)), `${m.id} hat keine der gewählten Farben`);
+      }
+    }
+  }
+});
+
+test('Größen- und Farbfilter wirken zusammen als UND', () => {
+  const p = PRODUCTS.find((x) => x.sizes.length > 0 && farbgruppenVon(x).length > 0)!;
+  const groesse = p.sizes[0]!;
+  const farbe = farbgruppenVon(p)[0]!;
+  const baum = baueBaum(PRODUCTS, mit({ groesse: [groesse], farbe: [farbe] }));
+  const gefunden = new Set<string>();
+  for (const g of baum) for (const a of g.arten) for (const m of a.modelle) gefunden.add(m.id);
+  assert.ok(gefunden.has(p.id), 'ein Produkt, das beide Kriterien erfüllt, muss im Ergebnis stehen');
+  for (const g of baum) {
+    for (const a of g.arten) {
+      for (const m of a.modelle) {
+        assert.ok(m.sizes.includes(groesse) && farbgruppenVon(m).includes(farbe));
+      }
+    }
+  }
+});
+
+test('passtZumFilter mit ausser blendet genau eine Mehrfachauswahl-Dimension aus (für die Facettenzählung)', () => {
+  const p = PRODUCTS.find((x) => x.sizes.length > 0)!;
+  const andereGroesse = ['gibtesnicht-xyz'];
+  // Ohne Ausschluss: die falsche Größe schließt das Produkt aus.
+  assert.equal(passtZumFilter(p, mit({ groesse: andereGroesse })), false);
+  // Mit ausser: 'groesse' wird die Größen-Bedingung ignoriert – so zählt das
+  // Filterpanel, wie viele Treffer eine ANDERE Größe hätte, unabhängig von
+  // der aktuell (fälschlich) gewählten.
+  assert.equal(passtZumFilter(p, mit({ groesse: andereGroesse }), 'groesse'), true);
+
+  const ALLE_FARBGRUPPEN: Farbgruppe[] = [
+    'schwarz', 'weiss', 'grau', 'blau', 'tuerkis', 'gruen',
+    'gelb', 'orange', 'rot', 'rosa', 'lila', 'braun', 'beige',
+  ];
+  const andereFarbe = ALLE_FARBGRUPPEN.filter((f) => !farbgruppenVon(p).includes(f));
+  assert.equal(passtZumFilter(p, mit({ farbe: andereFarbe })), false);
+  assert.equal(passtZumFilter(p, mit({ farbe: andereFarbe }), 'farbe'), true);
+});
+
+test('Größen- und Farbfilter zählen als aktive Filter', () => {
+  assert.equal(anzahlAktiverFilter(mit({ groesse: ['M'] })), 1);
+  assert.equal(anzahlAktiverFilter(mit({ farbe: ['schwarz'] })), 1);
 });
 
 test('der Filterzähler zählt nur echte Einschränkungen, nicht die Suche', () => {

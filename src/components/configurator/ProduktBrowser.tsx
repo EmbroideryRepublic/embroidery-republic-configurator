@@ -23,11 +23,13 @@ import { memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'rea
 import clsx from 'clsx';
 import { Check, ChevronLeft, ChevronRight, Search, SlidersHorizontal, Star, X } from 'lucide-react';
 import { PRODUCTS } from '@/config/products';
-import type { ProductConfig } from '@/config/products/types';
+import type { ProductConfig, Farbgruppe } from '@/config/products/types';
 import { QUALITY_TIER_LABELS, sortiereQualityTiers } from '@/config/qualityTiers';
+import { groessenRang } from '@/config/products/groessen';
+import { farbgruppenVon } from '@/lib/catalog/filter';
 import type { ProductType, QualityTier } from '@/types';
 import {
-  LEERER_FILTER, anzahlAktiverFilter, baueBaum, modellBadges, modelleVon,
+  LEERER_FILTER, anzahlAktiverFilter, baueBaum, modellBadges, modelleVon, passtZumFilter,
   type Badge, type Browserfilter, type Hauptgruppe,
 } from '@/lib/configurator/produktbaum';
 import { uebernehmeAuswahl } from '@/lib/configurator/uebernahme';
@@ -39,6 +41,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useBrowserStore } from '@/stores/browserStore';
 import { useFavoritesStore } from '@/stores/favoritesStore';
 import { formatPriceWithCurrency, useCurrencyStore } from '@/stores/currencyStore';
+import { WerteListe } from '@/components/shop/filterBausteine';
 
 /** Kleines Vorschaubild als Symbol der Produktart – echte Ware statt Piktogramm. */
 const ARTBILD = new Map<ProductType, string | undefined>();
@@ -61,6 +64,11 @@ const MARKEN = [...new Set(PRODUCTS.map((p) => p.brand))].sort();
 const MATERIALIEN = [...new Set(PRODUCTS.map((p) => p.material))].sort();
 const STUFEN = sortiereQualityTiers([...new Set(PRODUCTS.map((p) => p.qualityTier))]);
 const TEUERSTES = Math.ceil(Math.max(...PRODUCTS.map((p) => p.basePrice)) / 5) * 5;
+// Konfektionsreihenfolge statt Alphabet/Häufigkeit – „L, M, S, XL" sähe für
+// Kundschaft schlicht falsch aus (dieselbe Regel wie facettenGroesse in
+// lib/catalog/filter.ts, Surface A des Katalogs).
+const GROESSEN = [...new Set(PRODUCTS.flatMap((p) => p.sizes))].sort((a, b) => groessenRang(a) - groessenRang(b));
+const FARBEN: Farbgruppe[] = [...new Set(PRODUCTS.flatMap((p) => farbgruppenVon(p)))];
 
 export const ProduktBrowser = memo(function ProduktBrowser() {
   const productId = useConfiguratorStore((s) => s.productId);
@@ -80,6 +88,16 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
   const [qualitaet, setQualitaet] = useState<QualityTier | undefined>();
   const [material, setMaterial] = useState<string | undefined>();
   const [preisMax, setPreisMax] = useState<number | undefined>();
+  const [groesse, setGroesse] = useState<string[]>([]);
+  const [farbe, setFarbe] = useState<Farbgruppe[]>([]);
+
+  function toggleGroesse(wert: string) {
+    setGroesse((cur) => (cur.includes(wert) ? cur.filter((g) => g !== wert) : [...cur, wert]));
+  }
+  function toggleFarbe(wert: string) {
+    const f = wert as Farbgruppe;
+    setFarbe((cur) => (cur.includes(f) ? cur.filter((g) => g !== f) : [...cur, f]));
+  }
 
   // Mehrere Gruppen können gleichzeitig offen sein (kein Akkordeon). Der
   // Zustand wird über Sitzungen hinweg gemerkt (browserStore). Bis der
@@ -132,12 +150,35 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
   }, [hydriert, gewaehlt?.gruppe, gewaehlt?.art]);
 
   const filter: Browserfilter = useMemo(
-    () => ({ ...LEERER_FILTER, suche, nurFavoriten, favoriten: favoriteIds, marke, qualitaet, material, preisMax }),
-    [suche, nurFavoriten, favoriteIds, marke, qualitaet, material, preisMax]
+    () => ({
+      ...LEERER_FILTER, suche, nurFavoriten, favoriten: favoriteIds, marke, qualitaet, material, preisMax,
+      groesse, farbe,
+    }),
+    [suche, nurFavoriten, favoriteIds, marke, qualitaet, material, preisMax, groesse, farbe]
   );
 
   const baum = useMemo(() => baueBaum(PRODUCTS, filter), [filter]);
   const aktiveFilter = anzahlAktiverFilter(filter);
+
+  // Trefferzahl je Größe/Farbe – gegen alle ANDEREN aktiven Filter berechnet
+  // (ausser blendet die eigene Dimension aus), sonst zeigte nach der Wahl von
+  // „M" jede andere Größe 0 Treffer. Dieselbe Systematik wie
+  // berechneFacetten() in lib/catalog/filter.ts (Surface A des Katalogs).
+  const facettenGroesse = useMemo(
+    () =>
+      GROESSEN.map((wert) => ({
+        wert,
+        anzahl: PRODUCTS.filter((p) => p.sizes.includes(wert) && passtZumFilter(p, filter, 'groesse')).length,
+      })),
+    [filter]
+  );
+  const facettenFarbe = useMemo(() => {
+    const eintraege = FARBEN.map((wert) => ({
+      wert,
+      anzahl: PRODUCTS.filter((p) => farbgruppenVon(p).includes(wert) && passtZumFilter(p, filter, 'farbe')).length,
+    }));
+    return eintraege.sort((a, b) => b.anzahl - a.anzahl || a.wert.localeCompare(b.wert, 'de'));
+  }, [filter]);
 
   // Sucht oder filtert jemand, wäre der zugeklappte Baum im Weg: alles offen.
   const eingegrenzt = suche.trim() !== '' || nurFavoriten || aktiveFilter > 0;
@@ -189,6 +230,8 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
     setQualitaet(undefined);
     setMaterial(undefined);
     setPreisMax(undefined);
+    setGroesse([]);
+    setFarbe([]);
   }
 
   return (
@@ -376,6 +419,12 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
             </div>
 
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-3">
+              <Feld label="Größe">
+                <WerteListe dim="groesse" werte={facettenGroesse} gewaehlt={groesse} bezeichnungen={{}} onToggle={toggleGroesse} />
+              </Feld>
+              <Feld label="Farbe">
+                <WerteListe dim="farbe" werte={facettenFarbe} gewaehlt={farbe} bezeichnungen={{}} onToggle={toggleFarbe} />
+              </Feld>
               <Feld label="Marke">
                 <Auswahl wert={marke} onWahl={setMarke} alle="Alle Marken" werte={marken} />
               </Feld>

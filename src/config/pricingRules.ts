@@ -37,10 +37,15 @@ const DTF_PRICING_RULES: PricingRule[] = [
   // `validUntil` auf einen Aktionszeitraum.
   { id: 'dtf-setup', ruleType: 'setup_fee', multiplier: 'per_position', price: 0, label: 'Einrichtung DTF (einmalig je Position)', isActive: false },
 
-  { id: 'dtf-pos-front', ruleType: 'per_position', printView: 'front', price: 0, label: 'Position: Brust', isActive: true },
-  { id: 'dtf-pos-back', ruleType: 'per_position', printView: 'back', price: 2, label: 'Position: Rücken', isActive: true },
-  { id: 'dtf-pos-sleeve-l', ruleType: 'per_position', printView: 'sleeve_left', price: 1.5, label: 'Position: Ärmel links', isActive: true },
-  { id: 'dtf-pos-sleeve-r', ruleType: 'per_position', printView: 'sleeve_right', price: 1.5, label: 'Position: Ärmel rechts', isActive: true },
+  // ── Je-Ansicht-Aufschläge (front/back/sleeve, unterschiedlich hoch je
+  // Position) – ABGELÖST durch das Positionsstaffel-Modell unten (erste
+  // Ansicht 9€ pauschal, jede weitere 5€, unabhängig davon WELCHE Ansicht).
+  // Deaktiviert statt gelöscht, damit die vorherige Kalkulationsgrundlage im
+  // Code nachvollziehbar bleibt.
+  { id: 'dtf-pos-front', ruleType: 'per_position', printView: 'front', price: 0, label: 'Position: Brust', isActive: false },
+  { id: 'dtf-pos-back', ruleType: 'per_position', printView: 'back', price: 2, label: 'Position: Rücken', isActive: false },
+  { id: 'dtf-pos-sleeve-l', ruleType: 'per_position', printView: 'sleeve_left', price: 1.5, label: 'Position: Ärmel links', isActive: false },
+  { id: 'dtf-pos-sleeve-r', ruleType: 'per_position', printView: 'sleeve_right', price: 1.5, label: 'Position: Ärmel rechts', isActive: false },
 
   // Reiner Materialdurchschlag der DTF-Folie (kein Aufschlag – die Marge
   // liegt komplett im Produkt-Grundpreis, siehe products.ts). Berechnet
@@ -65,8 +70,23 @@ const DTF_PRICING_RULES: PricingRule[] = [
   // der echten Körperhöhe als Referenz) – dadurch werden Flächen jetzt
   // automatisch ~2x größer (und realistisch) berechnet. Satz entsprechend
   // gesenkt, um die Ausgangspreise ungefähr auf dem zuvor
-  // marktkalibrierten Niveau zu halten. Bitte an echten Beispielen prüfen.
-  { id: 'dtf-area', ruleType: 'per_cm2', price: 0.019, label: 'Flächenpreis DTF (0,019 €/cm²)', isActive: true },
+  // marktkalibrierten Niveau zu halten.
+  //
+  // ABGELÖST (auf Wunsch des Betreibers) durch das Positionsstaffel-Modell
+  // unten: der Preis richtet sich nicht mehr nach der Motivfläche, sondern
+  // ausschließlich danach, wie viele Ansichten bedruckt werden. Deaktiviert
+  // statt gelöscht.
+  { id: 'dtf-area', ruleType: 'per_cm2', price: 0.019, label: 'Flächenpreis DTF (0,019 €/cm²)', isActive: false },
+
+  // ── Positionsstaffel (aktuelles Modell) ──────────────────────────────
+  // 9 € für die erste bedruckte Ansicht (Vorderseite, Rückseite oder Ärmel –
+  // welche, ist egal), +5 € für jede weitere tatsächlich genutzte Ansicht.
+  // Gilt je Stück, unabhängig von der Zahl oder Größe der Motive auf einer
+  // Ansicht. Siehe lib/pricing/ruleEngine.ts (first_position/
+  // additional_position) und lib/pricing/calculatePrice.ts
+  // (getPositionTierRulePrices).
+  { id: 'dtf-erste-position', ruleType: 'first_position', price: 9, label: 'Bedruckung – erste Ansicht', isActive: true },
+  { id: 'dtf-zusatz-position', ruleType: 'additional_position', price: 5, label: 'Bedruckung – jede weitere Ansicht', isActive: true },
 ];
 
 const EMBROIDERY_PRICING_RULES: PricingRule[] = [

@@ -14,22 +14,23 @@ import { useState } from 'react';
 import Image from 'next/image';
 import type { PrintView } from '@/types';
 import type { ProductConfig } from '@/config/products/types';
-import { bildFuerAnsicht, repraesentativBildVon, repraesentativeFarbe } from '@/lib/assets';
+import { bildFuerAnsicht, repraesentativBildVon } from '@/lib/assets';
 import { sichtbareAnsichten } from '@/lib/products/ansichten';
 import { waehlbareFarben, formatiereFarbname } from '@/lib/products/farben';
 import { positionLabel } from '@/config/decorationPositions';
+import { useProduktFarbe } from './ProduktFarbeContext';
 
 export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
   // Nur Farben anbieten, für die ein echtes Herstellerfoto vorliegt – sonst
   // klickte der Kunde eine Farbe an und bekam die Platzhalter-Silhouette.
   const farben = waehlbareFarben(produkt.id, produkt.colors);
-  // Startfarbe ist die erste MIT echten Fotos – nicht stumpf colors[0]. Die
-  // Paletten führen alle Herstellerfarben, Fotos gibt es nur für die wichtigsten;
-  // sonst öffnete die Produktseite auf einem Platzhalter, obwohl Fotos existieren.
-  const [farbIndex, setFarbIndex] = useState(() => {
-    const start = repraesentativeFarbe(produkt.id, farben);
-    return Math.max(0, farben.findIndex((c) => c.id === start?.id));
-  });
+  // Die Startfarbe kommt aus ProduktFarbeProvider (page.tsx) – derselbe
+  // Zustand, den auch die „Jetzt konfigurieren"-Karte (KonfiguratorCta)
+  // liest. So bleiben Bild, Farbwahl und Konfigurator-Link zwangsläufig
+  // synchron, auch nachdem der Kunde hier eine andere Farbe gewählt hat.
+  const { farbeId, setFarbeId } = useProduktFarbe();
+  const farbeIndexRoh = farben.findIndex((c) => c.id === farbeId);
+  const farbIndex = farbeIndexRoh === -1 ? 0 : farbeIndexRoh;
   const farbe = farben[farbIndex] ?? farben[0];
   // Nur Ansichten mit eigenem Bild anbieten (Ärmel sind nicht überall
   // fotografiert) – sonst zeigte „Ärmel links" schlicht die Vorderansicht.
@@ -88,7 +89,7 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
               key={c.id}
               type="button"
               data-farbe={c.id}
-              onClick={() => setFarbIndex(i)}
+              onClick={() => setFarbeId(c.id)}
               title={formatiereFarbname(c.name)}
               aria-label={`Farbe ${formatiereFarbname(c.name)}`}
               aria-pressed={i === farbIndex}

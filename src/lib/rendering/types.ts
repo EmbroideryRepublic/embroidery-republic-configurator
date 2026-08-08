@@ -53,6 +53,15 @@ export interface RenderPrintViewInput {
    *  Ebenen-Reihenfolge (Array-Reihenfolge == Zeichenreihenfolge, analog zu
    *  Konvas impliziter Paint-Order im Editor). */
   elements: RenderableElement[];
+  /**
+   * Stückzahl je Größe dieser Bestellposition – bestimmt, gegen welche
+   * größenabhängige Druckfläche gerendert wird (config/printAreas.ts,
+   * flaecheFuerGroesse). MUSS dieselbe Größe ergeben wie die Prüfung in
+   * orderValidation.ts (dieselbe Funktion, kleinsteBestellteGroesse), sonst
+   * platziert das Produktionsbild die Elemente in einem ANDEREN Maßstab, als
+   * der Kunde im Editor gesehen und wogegen validiert wurde.
+   */
+  sizeQuantities: Record<string, number>;
 }
 
 export interface RenderPrintViewResult {

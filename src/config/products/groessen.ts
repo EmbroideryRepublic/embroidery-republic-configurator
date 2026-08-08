@@ -66,6 +66,30 @@ export const GROESSEN_LEITERN: Record<string, GroessenLeiter> = {
 const KONFEKTION = GROESSEN_LEITERN[DEFAULT_GROESSEN_LEITER]!;
 
 /**
+ * Kleinste GRÖSSE mit Stückzahl > 0 – die Größe, gegen die eine
+ * größenabhängige Druckfläche (PrintArea.bySize, config/printAreas.ts)
+ * geprüft werden muss, wenn eine Bestellposition mehrere Größen gleichzeitig
+ * umfasst. Ein Motiv wird EINMAL platziert und identisch auf jede bestellte
+ * Größe gedruckt (Standard-Praxis bei Sammelaufträgen) – es muss also auf
+ * der KLEINSTEN Größe passen, sonst würde es dort über den bedruckbaren
+ * Bereich hinausragen, obwohl es auf der größeren Größe frei Platz hätte.
+ *
+ * `undefined`, wenn keine Größe eine Stückzahl > 0 trägt (Warenkorb noch
+ * leer) – Aufrufer fallen dann auf ihren eigenen Standard zurück (z.B. die
+ * Referenzgröße der Leiter).
+ */
+export function kleinsteBestellteGroesse(
+  sizeQuantities: Record<string, number>,
+  leiter: GroessenLeiter = KONFEKTION
+): string | undefined {
+  const bestellte = Object.keys(sizeQuantities).filter((s) => (sizeQuantities[s] ?? 0) > 0);
+  if (bestellte.length === 0) return undefined;
+  return bestellte.reduce((kleinste, g) =>
+    groessenRang(g, leiter) < groessenRang(kleinste, leiter) ? g : kleinste
+  );
+}
+
+/**
  * Die Größenleiter eines Produkts: eigener `sizeScale`-Override zuerst, sonst
  * die Leiter seiner Produktart (Register), sonst die Konfektions-Standardleiter.
  */

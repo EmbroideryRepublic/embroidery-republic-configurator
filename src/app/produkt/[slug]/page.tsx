@@ -24,6 +24,8 @@ import { produktTypLabelPlural } from '@/config/products/types';
 import { produktBild, PLATZHALTER_BILD } from '@/lib/assets';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ProduktFarbwahl } from '@/components/produkt/ProduktFarbwahl';
+import { ProduktFarbeProvider } from '@/components/produkt/ProduktFarbeContext';
+import { KonfiguratorCta } from '@/components/produkt/KonfiguratorCta';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { cm } from '@/lib/format';
@@ -203,6 +205,11 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
           <span className="text-brand">{produkt.name}</span>
         </nav>
 
+        {/* Bild, Farbwahl und der „Jetzt konfigurieren"-Link teilen sich die
+            gewählte Farbe (ProduktFarbeContext) – nur so öffnet der
+            Konfigurator zwingend auf der Variante, die der Kunde zuletzt
+            gesehen hat, auch wenn er hier die Farbe gewechselt hat. */}
+        <ProduktFarbeProvider produktId={produkt.id} colors={produkt.colors}>
         <div className="grid gap-8 md:grid-cols-2">
           {/* Bild + Farbwahl – der einzige interaktive Teil der Seite. */}
           <ProduktFarbwahl produkt={produkt} />
@@ -237,12 +244,12 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
                 inkl. {steuersatzFuer().satz} % MwSt. · pro Stück zzgl. Veredelung · ohne Mindestmenge ·
                 Staffelpreise ab 5 Stück
               </p>
-              <Link
-                href={`/konfigurator?produkt=${produkt.id}`}
+              <KonfiguratorCta
+                produktId={produkt.id}
                 className="mt-4 block rounded-full bg-brand px-4 py-3 text-center text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 active:scale-[0.98]"
               >
                 Jetzt konfigurieren
-              </Link>
+              </KonfiguratorCta>
 
               {/* Lieferinformationen gehören neben den Preis, nicht ins
                   Kleingedruckte: „Wann habe ich es?" ist die zweite Frage nach
@@ -280,6 +287,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
             </div>
           </div>
         </div>
+        </ProduktFarbeProvider>
 
         {/* ── Veredelung ───────────────────────────────────────────────
             Überzeugende Darstellung der zwei Verfahren – gemeinsame

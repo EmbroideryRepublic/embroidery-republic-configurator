@@ -574,12 +574,12 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
         </div>
         <div>
           <span className="flex items-center gap-1 text-xs text-gray-400">
-            {printMethod === 'embroidery' ? 'Geschätzte Stiche' : t('element_billable_area')}
+            {printMethod === 'embroidery' ? 'Geschätzte Stiche' : 'Motivfläche (informativ)'}
             <InfoTooltip
               text={
                 printMethod === 'embroidery'
                   ? 'Schätzung nach Branchenwert, keine echte Digitalisierung – siehe Chroma Inspire für die verbindliche Zahl.'
-                  : `Box: ${(selected.widthCm * selected.heightCm).toFixed(1)} cm² – berechnet wird nur ${isText ? 'der Buchstaben-Anteil' : 'der tatsächliche Motiv-Anteil'}, nicht die volle Auswahlfläche.`
+                  : `Box: ${(selected.widthCm * selected.heightCm).toFixed(1)} cm² – rein informativ. Der Preis richtet sich bei DTF nach der Zahl der bedruckten Ansichten, nicht nach der Motivgröße.`
               }
             />
           </span>

@@ -81,6 +81,31 @@ export interface PrintArea {
    *  GESAMTEN Bild (dieselbe Basis wie xPercent/yPercent/widthPercent/
    *  heightPercent oben). */
   exclusionZones?: ExclusionZone[];
+  /**
+   * Fläche je Konfektionsgröße – NUR Torso-Ansichten (front/back). Die
+   * Felder oben (xPercent…boxHeightCm) beschreiben die REFERENZGRÖSSE
+   * (i.d.R. 'M'); diese Map trägt dieselben Werte für jede andere Größe der
+   * Maßtabelle, aus derselben Bildkontur, aber mit deren EIGENEN
+   * Herstellermaßen berechnet – eine XL bekommt dadurch tatsächlich mehr
+   * nutzbare Breite als eine S. Ärmelflächen sind größenunabhängig konstant
+   * (siehe scripts/generatePrintAreaData.mts, AERMEL_KONSERVATIV_CM) und
+   * führen deshalb nie diese Map. Auflösung über `flaecheFuerGroesse()`
+   * (config/printAreas.ts) – niemals direkt lesen, sonst fehlt der Fallback
+   * auf die Referenzgröße bei fehlendem Eintrag.
+   */
+  bySize?: Record<
+    string,
+    {
+      xPercent: number;
+      yPercent: number;
+      widthPercent: number;
+      heightPercent: number;
+      maxWidthCm: number;
+      maxHeightCm: number;
+      boxWidthCm: number;
+      boxHeightCm: number;
+    }
+  >;
 }
 
 /** Rechteckige Sperrzone (Standardfall, z.B. Reißverschluss-Streifen,
@@ -121,6 +146,13 @@ export type PricingRuleType =
   | 'per_logo'
   | 'per_text'
   | 'per_position'
+  /** Fester Aufschlag je Stück, sobald MINDESTENS eine Ansicht bedruckt/
+   *  bestickt ist – unabhängig davon, welche Ansicht und wie viele Motive
+   *  darauf liegen. Gilt genau EINMAL je Stück (nicht je Ansicht). */
+  | 'first_position'
+  /** Fester Aufschlag je Stück und je ZUSÄTZLICH genutzter Ansicht über die
+   *  erste hinaus (Anzahl der tatsächlich genutzten Ansichten − 1). */
+  | 'additional_position'
   | 'per_cm2'
   | 'per_1000_stitches'
   /** Wird nicht über einen Handler, sondern über QUANTITY_TIERS abgebildet. */

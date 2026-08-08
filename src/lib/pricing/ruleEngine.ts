@@ -184,6 +184,33 @@ export const RULE_HANDLERS: Record<PricingRuleType, RuleHandler | null> = {
     amount: (rule, ctx) => (ctx.chargePositionFees ? matchingElements(rule, ctx).length * rule.price : 0),
   },
 
+  /** Erste bedruckte/bestickte Ansicht, EGAL WELCHE – genau einmal je Stück,
+   *  unabhängig von der Zahl der Motive darauf. Berechnung erfolgt NICHT
+   *  über `matchingElements`/`printView` (das würde je nach `rule.printView`
+   *  nur EINE bestimmte Ansicht zählen), sondern direkt über
+   *  `ctx.distinctViews` – siehe lib/pricing/calculatePrice.ts,
+   *  getPositionTierCost(), die eigene, spezialisierte Auswertung dieser
+   *  beiden Regeltypen (dieselbe Architektur wie getPositionPrice() für
+   *  `per_position`). Der Handler hier existiert nur, damit die Engine den
+   *  Typ kennt (RULE_HANDLERS ist ein vollständiges Record) und ihn bei
+   *  Validierung/Fehlererkennung nicht als „unbekannt" meldet.
+   */
+  first_position: {
+    phase: 'charge',
+    scope: 'per_unit',
+    bucket: 'veredelung',
+    amount: (rule, ctx) => (ctx.distinctViews.length > 0 ? rule.price : 0),
+  },
+
+  /** Jede zusätzlich genutzte Ansicht über die erste hinaus – siehe
+   *  first_position oben, dieselbe Begründung für den Handler hier. */
+  additional_position: {
+    phase: 'charge',
+    scope: 'per_unit',
+    bucket: 'veredelung',
+    amount: (rule, ctx) => Math.max(0, ctx.distinctViews.length - 1) * rule.price,
+  },
+
   per_cm2: {
     phase: 'charge',
     scope: 'per_unit',

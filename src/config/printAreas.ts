@@ -1,5 +1,5 @@
 import type { ExclusionZone, PrintArea, PrintMethod, PrintView } from '@/types';
-import { PRINT_AREA_DATA } from './printAreaData';
+import { PRINT_AREA_DATA, type GeneratedArea } from './printAreaData';
 import { GEOMETRY_ALIAS } from './printAreaAlias.generated';
 import { seamMarginCmVon } from './decorationPositions';
 
@@ -114,6 +114,31 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
  * Stickerei steckt im €/cm²-Satz (pricingRules), nicht in einer künstlich
  * kleineren Fläche. Bestehende Festlegung, unverändert übernommen.
  */
+/** Übersetzt die je-Größe-Flächen des Generators (x0/x1/y0/y1, Prozent der
+ *  Bildkante) ins Laufzeitformat (xPercent/widthPercent) – dieselbe
+ *  x1-x0→widthPercent-Umrechnung wie für die Referenzgröße unten. `undefined`
+ *  bei Ärmelansichten und Produkten ohne eigene Maßtabelle (der Generator
+ *  lässt bySize dort ganz weg). */
+function uebersetzeBySize(
+  bySize: GeneratedArea['bySize']
+): PrintArea['bySize'] {
+  if (!bySize) return undefined;
+  const uebersetzt: NonNullable<PrintArea['bySize']> = {};
+  for (const [groesse, g] of Object.entries(bySize)) {
+    uebersetzt[groesse] = {
+      xPercent: g.x0,
+      yPercent: g.y0,
+      widthPercent: g.x1 - g.x0,
+      heightPercent: g.y1 - g.y0,
+      maxWidthCm: g.maxWidthCm,
+      maxHeightCm: g.maxHeightCm,
+      boxWidthCm: g.boxWidthCm,
+      boxHeightCm: g.boxHeightCm,
+    };
+  }
+  return uebersetzt;
+}
+
 function buildAreasForProduct(productId: string, method: PrintMethod): PrintArea[] {
   // Klassen-Übernahme: Hat das Produkt keine eigene gemessene Geometrie, aber
   // einen Alias auf ein Bestandsprodukt gleicher Klasse (printAreaAlias.
@@ -163,6 +188,7 @@ function buildAreasForProduct(productId: string, method: PrintMethod): PrintArea
         ? { startXCm: a.startXCm, startYCm: a.startYCm }
         : {}),
       ...(exclusionZones ? { exclusionZones } : {}),
+      ...(a.bySize ? { bySize: uebersetzeBySize(a.bySize) } : {}),
     };
   });
 }
@@ -193,4 +219,31 @@ const EMBROIDERY_BY_PRODUCT = indexByProduct(EMBROIDERY_PRINT_AREAS);
 export async function getPrintAreas(productId: string, printMethod: PrintMethod): Promise<PrintArea[]> {
   const map = printMethod === 'embroidery' ? EMBROIDERY_BY_PRODUCT : DTF_BY_PRODUCT;
   return map.get(productId) ?? [];
+}
+
+/**
+ * Löst die für eine KONKRETE Größe geltende Fläche auf – die einzige Stelle,
+ * die `bySize` liest. Ohne passenden Eintrag (Ärmelansicht, keine Größe
+ * übergeben, Produkt ohne eigene Maßtabelle) gelten unverändert die
+ * Referenzgrößen-Felder von `area` selbst – das bisherige, größenunabhängige
+ * Verhalten bleibt damit der sichere Rückfall.
+ *
+ * Aufrufer bestimmen die GELTENDE Größe selbst (siehe
+ * `kleinsteBestellteGroesse` in config/products/groessen.ts) – diese Funktion
+ * kennt nur „Fläche zu Größe X", nicht die Regel, welche Größe gilt.
+ */
+export function flaecheFuerGroesse(area: PrintArea, groesse: string | null | undefined): PrintArea {
+  const variante = groesse ? area.bySize?.[groesse] : undefined;
+  if (!variante) return area;
+  return {
+    ...area,
+    xPercent: variante.xPercent,
+    yPercent: variante.yPercent,
+    widthPercent: variante.widthPercent,
+    heightPercent: variante.heightPercent,
+    maxWidthCm: variante.maxWidthCm,
+    maxHeightCm: variante.maxHeightCm,
+    boxWidthCm: variante.boxWidthCm,
+    boxHeightCm: variante.boxHeightCm,
+  };
 }

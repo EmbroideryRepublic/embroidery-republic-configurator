@@ -8,12 +8,13 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { getPrintAreas } from '../printAreas';
+import { getPrintAreas, flaecheFuerGroesse } from '../printAreas';
 import { PRINT_AREA_DATA } from '../printAreaData';
 import { PRINT_AREA_DATA as GEMESSEN } from '../printAreaData.generated';
 import { GEOMETRY_ALIAS } from '../printAreaAlias.generated';
 import { PRODUCTS } from '../products';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
+import { groessenRang } from '../products/groessen';
 
 /** Prozessgrenzen aus dem Generator – hier gespiegelt als Obergrenze. */
 const GRENZE = {
@@ -174,4 +175,107 @@ test('jedes Alias-Ziel verweist auf eine gemessene Druckfläche', () => {
   for (const rep of Object.values(GEOMETRY_ALIAS)) {
     assert.ok(gemessen.has(rep), `Alias-Ziel "${rep}" ist keine gemessene Druckfläche`);
   }
+});
+
+// ── Größenabhängige Torsoflächen (bySize) ───────────────────────────────
+// Jede Größe der Maßtabelle bekommt in scripts/generatePrintAreaData.mts
+// eine eigene, aus derselben Bildkontur berechnete Fläche (front/back). Diese
+// Tests sichern die Eigenschaften, die für JEDE Größe jedes Produkts gelten
+// müssen – analog zu den Prüfungen oben für die Referenzgröße.
+
+test('Ärmelansichten führen nie größenabhängige Flächen', () => {
+  // Die Ärmelfläche ist bewusst konstant (AERMEL_KONSERVATIV_CM), siehe
+  // Kommentar im Generator – eine bySize-Map dort wäre nur toter Ballast.
+  for (const [id, views] of Object.entries(PRINT_AREA_DATA)) {
+    for (const view of ['sleeve_left', 'sleeve_right'] as const) {
+      const a = views[view];
+      if (!a) continue;
+      assert.equal(a.bySize, undefined, `${id}/${view}: Ärmelansicht mit bySize`);
+    }
+  }
+});
+
+test('bySize deckt jede Größe der Maßtabelle ab', () => {
+  for (const p of PRODUCTS) {
+    if (!p.sizeGuide) continue;
+    for (const view of ['front', 'back'] as const) {
+      const a = PRINT_AREA_DATA[p.id]?.[view];
+      if (!a) continue;
+      // Aliasierte Produkte ohne eigene Maßtabelle erben bySize der geliehenen
+      // Tabelle (deckt dann deren, nicht zwingend die eigenen Größen ab) –
+      // hier nur geprüft, wo tatsächlich eine bySize-Map vorhanden ist.
+      if (!a.bySize) continue;
+      for (const m of p.sizeGuide.measurements) {
+        assert.ok(a.bySize[m.size], `${p.id}/${view}: Größe "${m.size}" fehlt in bySize`);
+      }
+    }
+  }
+});
+
+test('bySize-Flächen respektieren dieselben Grenzen wie die Referenzgröße', () => {
+  for (const [id, views] of Object.entries(PRINT_AREA_DATA)) {
+    for (const [view, a] of Object.entries(views)) {
+      if (!a!.bySize) continue;
+      const g = GRENZE[view as keyof typeof GRENZE];
+      for (const [groesse, box] of Object.entries(a!.bySize)) {
+        assert.ok(box.maxWidthCm > 0 && box.maxHeightCm > 0, `${id}/${view}/${groesse}: Maß <= 0`);
+        assert.ok(box.maxWidthCm <= g.w + 0.05, `${id}/${view}/${groesse}: ${box.maxWidthCm} cm > Prozessgrenze ${g.w} cm`);
+        assert.ok(box.maxHeightCm <= g.h + 0.05, `${id}/${view}/${groesse}: ${box.maxHeightCm} cm > Prozessgrenze ${g.h} cm`);
+        assert.ok(box.x0 >= 0 && box.x1 <= 100, `${id}/${view}/${groesse}: x außerhalb (${box.x0}..${box.x1})`);
+        assert.ok(box.y0 >= 0 && box.y1 <= 100, `${id}/${view}/${groesse}: y außerhalb (${box.y0}..${box.y1})`);
+      }
+    }
+  }
+});
+
+test('größere Konfektionsgrößen bekommen nie eine schmalere oder niedrigere Fläche als kleinere', () => {
+  // Kernversprechen der Funktion: XL darf S niemals unterschreiten – sonst
+  // würde ein größeres Kleidungsstück ein kleineres Motiv erzwingen, obwohl
+  // real mehr Stoff vorhanden ist.
+  for (const [id, views] of Object.entries(PRINT_AREA_DATA)) {
+    for (const [view, a] of Object.entries(views)) {
+      if (!a!.bySize) continue;
+      const groessen = Object.keys(a!.bySize).sort((x, y) => groessenRang(x) - groessenRang(y));
+      let vorherigeBreite = -Infinity;
+      let vorherigeHoehe = -Infinity;
+      for (const g of groessen) {
+        const box = a!.bySize[g]!;
+        assert.ok(
+          box.maxWidthCm >= vorherigeBreite - 0.05,
+          `${id}/${view}: "${g}" (${box.maxWidthCm} cm) schmaler als die nächstkleinere Größe (${vorherigeBreite} cm)`
+        );
+        assert.ok(
+          box.maxHeightCm >= vorherigeHoehe - 0.05,
+          `${id}/${view}: "${g}" (${box.maxHeightCm} cm) niedriger als die nächstkleinere Größe (${vorherigeHoehe} cm)`
+        );
+        vorherigeBreite = box.maxWidthCm;
+        vorherigeHoehe = box.maxHeightCm;
+      }
+    }
+  }
+});
+
+test('flaecheFuerGroesse löst eine vorhandene Größe auf', async () => {
+  const areas = await getPrintAreas('jamesnicholson-ladies-bio-workwear-t-shirt', 'dtf');
+  const front = areas.find((a) => a.view === 'front');
+  assert.ok(front?.bySize?.['XS'] && front.bySize['4XL']);
+  const klein = flaecheFuerGroesse(front, 'XS');
+  const gross = flaecheFuerGroesse(front, '4XL');
+  assert.equal(klein.maxWidthCm, front.bySize['XS']!.maxWidthCm);
+  assert.equal(gross.maxWidthCm, front.bySize['4XL']!.maxWidthCm);
+  // Reales Beispiel mit sichtbarer Größenabhängigkeit (siehe Generator-Lauf):
+  // die aufgelöste Fläche für 4XL muss spürbar breiter sein als für XS.
+  assert.ok(gross.maxWidthCm > klein.maxWidthCm + 1, 'erwartet spürbar mehr Breite bei 4XL als bei XS');
+});
+
+test('flaecheFuerGroesse fällt ohne passenden Eintrag auf die Referenzgröße zurück', async () => {
+  const areas = await getPrintAreas('gildan-heavy-t', 'dtf');
+  const front = areas.find((a) => a.view === 'front');
+  assert.ok(front);
+  assert.deepEqual(flaecheFuerGroesse(front, undefined), front);
+  assert.deepEqual(flaecheFuerGroesse(front, null), front);
+  assert.deepEqual(flaecheFuerGroesse(front, 'gibt-es-nicht'), front);
+  const sleeve = areas.find((a) => a.view === 'sleeve_left');
+  assert.ok(sleeve && !sleeve.bySize);
+  assert.deepEqual(flaecheFuerGroesse(sleeve, 'M'), sleeve);
 });

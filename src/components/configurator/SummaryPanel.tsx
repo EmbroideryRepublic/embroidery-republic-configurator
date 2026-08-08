@@ -177,13 +177,20 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
                 .map((view, i) => (
                   <div key={view} className="flex items-center justify-between">
                     <span className="flex items-center gap-1">
-                      {breakdown.isStitchBased ? 'Stichpreis' : t('summary_area_price')} {t(positionTranslationKey(view))}
+                      {breakdown.isStitchBased
+                        ? 'Stichpreis'
+                        : breakdown.isPositionBased
+                          ? 'Bedruckung'
+                          : t('summary_area_price')}{' '}
+                      {t(positionTranslationKey(view))}
                       {i === 0 && (
                         <InfoTooltip
                           text={
                             breakdown.isStitchBased
                               ? `Berechnet nach geschätzter Stichzahl (≈ ${breakdown.totalEstimatedStitches.toLocaleString('de-DE')} Stiche insgesamt) × ${formatPrice(breakdown.pricePer1000Stitches)} pro 1.000 Stiche. Nur eine Näherung – für die verbindliche Zahl zählt die Digitalisierung (z.B. Chroma Inspire).`
-                              : `Je größer ein Logo oder Text, desto mehr Material wird verbraucht – automatisch berechnet mit ${formatPrice(breakdown.areaPricePerCm2)} pro cm².`
+                              : breakdown.isPositionBased
+                                ? `${formatPrice(breakdown.firstPositionPrice)} für die erste bedruckte Ansicht, ${formatPrice(breakdown.additionalPositionPrice)} für jede weitere – unabhängig von der Größe der Motive.`
+                                : `Je größer ein Logo oder Text, desto mehr Material wird verbraucht – automatisch berechnet mit ${formatPrice(breakdown.areaPricePerCm2)} pro cm².`
                           }
                         />
                       )}

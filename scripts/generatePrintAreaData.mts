@@ -445,6 +445,17 @@ function urlZuDateipfad(url: string | undefined | null): string | null {
 }
 
 
+interface GroessenBox {
+  x0: number;
+  y0: number;
+  x1: number;
+  y1: number;
+  maxWidthCm: number;
+  maxHeightCm: number;
+  boxWidthCm: number;
+  boxHeightCm: number;
+}
+
 interface Box {
   x0: number;
   y0: number;
@@ -460,6 +471,10 @@ interface Box {
   startYCm?: number;
   garmentWidthCm: number;
   garmentHeightCm: number;
+  /** Fläche je Konfektionsgröße – NUR Torso-Ansichten (front/back), siehe
+   *  Kommentar an der Berechnungsstelle. Schlüssel = Größenbezeichnung
+   *  (`sizeGuide.measurements[].size`, z.B. "S"/"XL"). */
+  bySize?: Record<string, GroessenBox>;
   quelle: string;
 }
 
@@ -568,10 +583,15 @@ const echtesVerhaeltnis = new Map<string, number>();
 }
 
 const { GEOMETRY_ALIAS } = await import('../src/config/printAreaAlias.generated.ts');
-/** Maßtabelle des Klassenvertreters (gleicher Produkttyp) als Rückfallebene. */
+/** Maßtabelle des Klassenvertreters (gleicher Produkttyp) als Rückfallebene.
+ *  Gibt zusätzlich die VOLLSTÄNDIGE Maßtabelle zurück, aus der `mass`
+ *  stammt – Grundlage der größenabhängigen Torsoflächen (bySize) unten:
+ *  jede Größe DIESER Tabelle bekommt eine eigene Fläche, kalibriert am
+ *  selben Foto wie die Referenzgröße. */
 function massVon(p: (typeof PRODUCTS)[number]) {
-  const eigen = p.sizeGuide?.measurements?.find((x) => x.size === 'M') ?? p.sizeGuide?.measurements?.[0];
-  if (eigen) return { mass: eigen, geliehenVon: null as string | null };
+  const eigeneTabelle = p.sizeGuide?.measurements;
+  const eigen = eigeneTabelle?.find((x) => x.size === 'M') ?? eigeneTabelle?.[0];
+  if (eigen) return { mass: eigen, sizeTabelle: eigeneTabelle, geliehenVon: null as string | null };
   // Ohne eigene Maße wurde das Produkt bisher übersprungen und erbte die
   // Druckfläche des Klassenvertreters 1:1 – also dessen BILDrelative Koordinaten.
   // Da die Fotos unterschiedlich beschnitten sind, saß die Fläche dann falsch
@@ -579,13 +599,17 @@ function massVon(p: (typeof PRODUCTS)[number]) {
   // Bildkontur vermessen; nur die cm-Referenz stammt aus derselben Schnittgruppe.
   const rep = GEOMETRY_ALIAS[p.id];
   const repProd = rep ? PRODUCTS.find((x) => x.id === rep) : undefined;
-  const geliehen = repProd?.sizeGuide?.measurements?.find((x) => x.size === 'M')
-    ?? repProd?.sizeGuide?.measurements?.[0];
-  return { mass: geliehen, geliehenVon: geliehen ? (rep ?? null) : null };
+  const geliehenTabelle = repProd?.sizeGuide?.measurements;
+  const geliehen = geliehenTabelle?.find((x) => x.size === 'M') ?? geliehenTabelle?.[0];
+  return {
+    mass: geliehen,
+    sizeTabelle: geliehen ? geliehenTabelle : undefined,
+    geliehenVon: geliehen ? (rep ?? null) : null,
+  };
 }
 
 for (const p of PRODUCTS) {
-  const { mass, geliehenVon } = massVon(p);
+  const { mass, sizeTabelle, geliehenVon } = massVon(p);
   if (!mass) {
     protokoll.push(`${p.id}: keine Maßtabelle (auch nicht beim Klassenvertreter) – übersprungen`);
     continue;
@@ -793,6 +817,11 @@ for (const p of PRODUCTS) {
       `${p.id}/${view}: Kopfteil ${((ySchulter - yOben) / pxProCm).toFixed(1)} cm`
     );
 
+    // Ärmellänge Schulter→Achsel – von berechneBox() unten per Closure
+    // gelesen (Bandmitte des Bewegungsbereichs), größenunabhängig, da aus
+    // der Frontkontur DIESES Produkts gemessen (siehe Vorlauf oben).
+    const laenge = aermelLaengeCm.get(p.id);
+
     // ── Erst die REALEN Maße bestimmen, dann daraus die Box ──────────
     // Vorher liefen beide Größen getrennt: Die Box kam aus Kontur plus
     // Sicherheitsabständen, die cm-Werte aus Größentabelle plus
@@ -800,25 +829,9 @@ for (const p of PRODUCTS) {
     // vorne 62,5 cm gezeichnet gegen 47 cm angezeigt, am Ärmel 18,4 gegen
     // 13. Jetzt ist die Box die DARSTELLUNG der cm-Werte, eine Abweichung
     // ist damit konstruktiv ausgeschlossen.
-    let breiteCm: number;
-    let hoeheNutzbarCm: number;
-    let quelle: string;
-
-    if (!istAermel) {
-      breiteCm = Math.min(mass.breiteCm - 2 * ABSTAND.seitennaht, grenze.maxWidthCm);
-      hoeheNutzbarCm = Math.min(mass.hoeheCm - ABSTAND.kragen - ABSTAND.saum, grenze.maxHeightCm);
-      quelle = 'Kontur (Position) + Größentabelle (Maß)';
-    } else {
-      breiteCm = Math.min(AERMEL_KONSERVATIV_CM - 2 * ABSTAND.aermelnaht, grenze.maxWidthCm);
-      hoeheNutzbarCm = grenze.maxHeightCm;
-      quelle = 'Kontur (Position) + Gruppenfläche Oberarm';
-    }
-
-    // Umrechnung ISOTROP über px/cm aus der Bildhöhe – derselbe Faktor, den
-    // auch cmConversion im Canvas verwendet. Nur so entspricht ein
-    // angezeigter Zentimeterwert exakt der gezeichneten Strecke.
-    const breitePx = breiteCm * pxProCm;
-    const hoehePxBox = hoeheNutzbarCm * pxProCm;
+    const quelle = !istAermel
+      ? 'Kontur (Position) + Größentabelle (Maß)'
+      : 'Kontur (Position) + Gruppenfläche Oberarm';
 
     // Waagerecht auf der Kleidungsstückmitte zentriert (Median über alle
     // Farbvarianten, siehe oben).
@@ -826,205 +839,223 @@ for (const p of PRODUCTS) {
     // Fläche zusätzlich auf die engste Kante begrenzen.
     const grenzeLinksPx = (engsteLinks / 100) * w;
     const grenzeRechtsPx = (engsteRechts / 100) * w;
-    let x0px = mitteX - breitePx / 2;
-    let x1px = mitteX + breitePx / 2;
-    // Nie über die engste Stoffkante hinaus – auch nicht, wenn das
-    // Herstellermaß mehr zuließe.
-    if (!istAermel) {
-      const naht = ABSTAND.seitennaht * pxProCm;
-      x0px = Math.max(x0px, grenzeLinksPx + naht);
-      x1px = Math.min(x1px, grenzeRechtsPx - naht);
-    }
 
-    // ── Senkrechte Lage ──────────────────────────────────────────────
-    // Vorder-/Rückseite: unterhalb des Kragens.
+    // ── Box für EINE Maßtabellen-Zeile ──────────────────────────────────
+    // Extrahiert, damit dieselbe Berechnung sowohl für die Referenzgröße
+    // (Kalibrierung + die bisherigen Top-Level-Felder, byte-identisch zum
+    // Vorgänger) als auch – NUR für Torso-Ansichten (front/back) – für JEDE
+    // weitere Größe der Maßtabelle läuft (siehe bySize weiter unten).
     //
-    // ÄRMEL: mittig auf der nutzbaren Oberarmfläche. Die frühere Regel
-    // (15 % der Kleidungsstückhöhe ab Bildoberkante) hatte keinerlei Bezug
-    // zur Schulternaht oder zum Ärmelabschluss – die Fläche landete
-    // rechnerisch irgendwo und fachlich zu weit oben.
-    //
-    // Herleitung: Ein kurzer Ärmel reicht ab Schulternaht rund 20 cm
-    // hinunter, das sind bei einem 71-cm-Oberteil etwa 28 % der
-    // Kleidungsstückhöhe. Als nutzbares Band gilt davon der mittlere
-    // Bereich – ab AERMEL_BAND_VON bis AERMEL_BAND_BIS –, der oben die
-    // Schulter-/Armkugelnaht und unten den Ärmelabschluss frei lässt. Die
-    // Fläche wird in diesem Band ZENTRIERT, wie es die Praxisempfehlungen
-    // („mittig auf dem Oberarm", Orientierung an der Ärmelfalte)
-    // übereinstimmend beschreiben.
-    // Bezugspunkt ist die SCHULTERLINIE, nicht die Bildoberkante: Bei Kapuzen-
-    // und Stehkragenware liegt zwischen beiden das Kopfteil (bis ~22 cm).
-    // Band in ZENTIMETERN ab Schulterlinie, nicht als Anteil der sichtbaren
-    // Konturhöhe: Bei einer Nahaufnahme ist die sichtbare Höhe nur ein Teil
-    // des Kleidungsstücks, ein Anteil davon träfe irgendwohin. Über den
-    // korrigierten Maßstab trifft der cm-Wert in beiden Aufnahmearten
-    // dieselbe Stelle am Oberarm. Bei Ganzansichten ist das rechnerisch
-    // identisch mit der bisherigen Formel.
-    //
-    // Bezugspunkt ist die GEMESSENE Ärmellänge (Schulter→Achsel, aus der
-    // Frontansicht), Mitte davon = Mitte des Oberarms. Das ist die Vorgabe
-    // aus docs/platzierung-veredelung.md („mittig auf dem Oberarm"). Fehlt
-    // die Messung, greift ersatzweise der bisherige Anteil.
-    const laenge = aermelLaengeCm.get(p.id);
-    const bandMitte = laenge
-      ? ySchulter + (laenge / 2) * pxProCm
-      : ySchulter + ((AERMEL_BAND_VON + AERMEL_BAND_BIS) / 2) * mass.hoeheCm * pxProCm;
-    let y0px = istAermel
-      ? bandMitte - hoehePxBox / 2
-      : ySchulter + ABSTAND.kragen * pxProCm;
-    let y1px = y0px + hoehePxBox;
+    // pxProCm bleibt dabei IMMER an der Referenzgröße kalibriert (Closure
+    // über die äußere Konstante): Das Foto zeigt ein einziges, real
+    // existierendes Kleidungsstück – ein je Zielgröße neu berechneter
+    // Maßstab würde dasselbe Foto fälschlich als unterschiedlich groß
+    // interpretieren. Es ändert sich nur, WIE VIEL cm Fläche für die
+    // jeweilige Größe angefordert wird (massZeile.breiteCm/hoeheCm) – die
+    // Ärmelfläche bleibt davon ohnehin unberührt (AERMEL_KONSERVATIV_CM ist
+    // bereits größenunabhängig, siehe Kommentar dort).
+    function berechneBox(massZeile: { breiteCm: number; hoeheCm: number }) {
+      // ── Größenverhältnis zur Referenzgröße ──────────────────────────────
+      // Das Foto zeigt EIN reales Kleidungsstück (die Referenzgröße, i.d.R.
+      // 'M'). Alle aus dem Foto GEMESSENEN Sicherheitsgrenzen (engste Kante,
+      // Zeilen-Perzentil, hand-kalibrierte BEREICH_KORREKTUR) beschreiben
+      // deshalb strenggenommen nur DIESES eine Kleidungsstück – ohne weitere
+      // Behandlung blieben sie für JEDE Größe gleich, und die Fläche würde nie
+      // größer als bei der Referenzgröße (empirisch geprüft: 0 von 308
+      // Torso-Ansichten zeigten dann überhaupt eine Größenabhängigkeit, weil
+      // diese Fotogrenzen praktisch immer enger sind als die Prozessgrenze).
+      //
+      // Deshalb werden die photobasierten Grenzen um denselben Faktor
+      // skaliert, um den sich auch die Herstellermaße dieser Größe gegenüber
+      // der Referenzgröße unterscheiden – dieselbe Näherung (Schnitt skaliert
+      // über die Größenreihe näherungsweise gleichmäßig), die auch die
+      // Zylinder-Projektion oben für die Torsobreite trifft. Bei der
+      // Referenzgröße selbst ist ratio exakt 1 – die Top-Level-Felder bleiben
+      // dadurch unverändert (mit dem Vorgänger-Generator reproduktionsgeprüft).
+      const breiteRatio = massZeile.breiteCm / mass.breiteCm;
+      const hoeheRatio = massZeile.hoeheCm / mass.hoeheCm;
+      const skaliereX = (px: number) => mitteX + (px - mitteX) * breiteRatio;
 
-    // ── ÄRMEL: Bewegungsbereich über die GANZE Stofffläche ──────────────
-    //
-    // Vorgabe des Auftraggebers: Auf der Ärmelansicht soll sich das Motiv
-    // frei über dem gesamten Kleidungsstück bewegen lassen, nicht nur in
-    // einem kleinen Rechteck auf dem Oberarm. Ein Kunde platziert sein Motiv
-    // nicht absichtlich falsch – ein enger Rahmen bevormundet ihn, ohne
-    // einen realen Fehler zu verhindern.
-    //
-    // Die MOTIVGRÖSSE bleibt davon unberührt: maxWidthCm/maxHeightCm decken
-    // die Ärmelveredelung weiterhin auf 8,9 × 10 cm. Groß ist der Bereich,
-    // in dem verschoben werden darf – nicht das, was gedruckt werden kann.
-    //
-    // Die zuvor berechnete Bandmitte bleibt die STARTPOSITION (siehe unten
-    // startXCm/startYCm), damit ein frisch eingefügtes Motiv weiterhin
-    // fachlich richtig auf dem Oberarm landet.
-    let startXCm: number | undefined;
-    let startYCm: number | undefined;
-    if (istAermel) {
-      const naht = ABSTAND.aermelnaht * pxProCm;
-      const silhLinksPx = (silhouetteLinks / 100) * w;
-      const silhRechtsPx = (silhouetteRechts / 100) * w;
+      let breiteCmLokal: number;
+      let hoeheNutzbarCmLokal: number;
+      if (!istAermel) {
+        breiteCmLokal = Math.min(massZeile.breiteCm - 2 * ABSTAND.seitennaht, grenze.maxWidthCm);
+        hoeheNutzbarCmLokal = Math.min(massZeile.hoeheCm - ABSTAND.kragen - ABSTAND.saum, grenze.maxHeightCm);
+      } else {
+        breiteCmLokal = Math.min(AERMEL_KONSERVATIV_CM - 2 * ABSTAND.aermelnaht, grenze.maxWidthCm);
+        hoeheNutzbarCmLokal = grenze.maxHeightCm;
+      }
 
-      const neuX0 = silhLinksPx + naht;
-      const neuX1 = silhRechtsPx - naht;
-      const neuY0 = yOben + naht;
-      const neuY1 = yUnten - naht;
+      // Umrechnung ISOTROP über px/cm aus der Bildhöhe – derselbe Faktor, den
+      // auch cmConversion im Canvas verwendet. Nur so entspricht ein
+      // angezeigter Zentimeterwert exakt der gezeichneten Strecke.
+      const breitePxLokal = breiteCmLokal * pxProCm;
+      const hoehePxBoxLokal = hoeheNutzbarCmLokal * pxProCm;
 
-      // MITTE der bisherigen Oberarmfläche relativ zum neuen Bereich merken,
-      // BEVOR die Box wächst. Ein neu eingefügtes Motiv wird darauf zentriert
-      // und landet damit weiterhin fachlich richtig, obwohl es anschließend
-      // frei über das ganze Kleidungsstück bewegt werden darf.
-      startXCm = (x0px + breitePx / 2 - neuX0) / pxProCm;
-      startYCm = (y0px + hoehePxBox / 2 - neuY0) / pxProCm;
+      let x0pxLokal = mitteX - breitePxLokal / 2;
+      let x1pxLokal = mitteX + breitePxLokal / 2;
+      // Nie über die (größenskalierte) engste Stoffkante hinaus – auch nicht,
+      // wenn das Herstellermaß mehr zuließe.
+      if (!istAermel) {
+        const naht = ABSTAND.seitennaht * pxProCm;
+        x0pxLokal = Math.max(x0pxLokal, skaliereX(grenzeLinksPx) + naht);
+        x1pxLokal = Math.min(x1pxLokal, skaliereX(grenzeRechtsPx) - naht);
+      }
 
-      x0px = neuX0;
-      x1px = neuX1;
-      y0px = neuY0;
-      y1px = neuY1;
-    }
+      const bandMitteLokal = laenge
+        ? ySchulter + (laenge / 2) * pxProCm
+        : ySchulter + ((AERMEL_BAND_VON + AERMEL_BAND_BIS) / 2) * massZeile.hoeheCm * pxProCm;
+      let y0pxLokal = istAermel ? bandMitteLokal - hoehePxBoxLokal / 2 : ySchulter + ABSTAND.kragen * pxProCm;
+      let y1pxLokal = y0pxLokal + hoehePxBoxLokal;
 
-    // ── Breite an den Zeilen prüfen, die die Fläche WIRKLICH einnimmt ────
-    //
-    // Die seitliche Begrenzung oben stammt aus dem TORSOSTREIFEN (unteres
-    // Drittel). Die Fläche reicht aber bis dicht unter den Kragen, und dort
-    // läuft der Schnitt zur Schulter hin ein – bei taillierten Damenschnitten
-    // und Kapuzenware deutlich. Gemessen ragte die Fläche dadurch bei zehn
-    // Produkt-/Farbkombinationen über die Stoffkante, beim Stedman Classic-T
-    // in Weiß um 14,8 % der Bildbreite.
-    //
-    // Deshalb hier die Gegenprobe über den tatsächlichen Zeilenbereich der
-    // Box, wieder als Schnittmenge über alle wählbaren Farben: Was in EINER
-    // Variante über die Kante ragt, wird für alle eingezogen. Das ist genau
-    // die Zusage „nie über die Seitennaht hinaus" – jetzt auf der gesamten
-    // Höhe der Fläche statt nur im Torso.
-    //
-    // NICHT als striktes Minimum/Maximum über alle Zeilen – ein einzelner
-    // Schatten- oder Faltenwurf reicht sonst, um die Fläche für ein ganzes
-    // Produkt zu verengen. Gemessen beim Stedman Classic-T for Women in Weiß:
-    // bei y=78,8–79,6 % (zwei von über 500 Zeilen) sackte die rechte Kante auf
-    // 55–56 % ein und erholte sich sofort wieder auf 75 % – die Fläche schrumpfte
-    // dadurch von 22,6 cm (Vorderseite) auf 11,1 cm. Statt des Extremwerts zählt
-    // deshalb ein PERZENTIL (2 %): Vereinzelte Ausreißerzeilen – Falte, Schatten,
-    // Naht-Detail – bleiben ohne Wirkung; eine über mehrere Zeilen anhaltende
-    // Verengung (echte Kontur, siehe Saumkurve oben) schlägt weiterhin durch.
-    if (!istAermel) {
-      const naht = ABSTAND.seitennaht * pxProCm;
-      const linksWerte: number[] = [];
-      const rechtsWerte: number[] = [];
-      for (const prof of profile) {
-        const skalaY = prof.h / h;
-        const skalaX = prof.w / w;
-        const vy0 = Math.max(0, Math.round(y0px * skalaY));
-        const vy1 = Math.min(prof.h - 1, Math.round(y1px * skalaY));
-        // Den SAUM dieser Variante weiterhin ausnehmen: Der Stoff läuft dort in
-        // einer Kurve zusammen (rundet zur Mitte, manchmal zum Zipfel) – eine
-        // anhaltende, keine punktuelle Verengung, die auch ein Perzentil nicht
-        // zuverlässig herausrechnet. Siehe Herleitung: FOTL Iconic 195 in Navy.
-        const bel = prof.zeilen.filter((z) => z.breite > 0);
-        const saumAb = bel.length ? bel[bel.length - 1]!.y - Math.round(prof.h * 0.03) : Infinity;
-        for (let y = vy0; y <= Math.min(vy1, saumAb); y++) {
-          const z = prof.zeilen[y];
-          if (!z || z.breite === 0) continue;
-          linksWerte.push(z.links / skalaX);
-          rechtsWerte.push(z.rechts / skalaX);
+      let startXCmLokal: number | undefined;
+      let startYCmLokal: number | undefined;
+      if (istAermel) {
+        const naht = ABSTAND.aermelnaht * pxProCm;
+        const silhLinksPx = (silhouetteLinks / 100) * w;
+        const silhRechtsPx = (silhouetteRechts / 100) * w;
+
+        const neuX0 = silhLinksPx + naht;
+        const neuX1 = silhRechtsPx - naht;
+        const neuY0 = yOben + naht;
+        const neuY1 = yUnten - naht;
+
+        startXCmLokal = (x0pxLokal + breitePxLokal / 2 - neuX0) / pxProCm;
+        startYCmLokal = (y0pxLokal + hoehePxBoxLokal / 2 - neuY0) / pxProCm;
+
+        x0pxLokal = neuX0;
+        x1pxLokal = neuX1;
+        y0pxLokal = neuY0;
+        y1pxLokal = neuY1;
+      }
+
+      if (!istAermel) {
+        const naht = ABSTAND.seitennaht * pxProCm;
+        const linksWerte: number[] = [];
+        const rechtsWerte: number[] = [];
+        for (const prof of profile) {
+          const skalaY = prof.h / h;
+          const skalaX = prof.w / w;
+          const vy0 = Math.max(0, Math.round(y0pxLokal * skalaY));
+          const vy1 = Math.min(prof.h - 1, Math.round(y1pxLokal * skalaY));
+          const bel = prof.zeilen.filter((z) => z.breite > 0);
+          const saumAb = bel.length ? bel[bel.length - 1]!.y - Math.round(prof.h * 0.03) : Infinity;
+          for (let y = vy0; y <= Math.min(vy1, saumAb); y++) {
+            const z = prof.zeilen[y];
+            if (!z || z.breite === 0) continue;
+            linksWerte.push(z.links / skalaX);
+            rechtsWerte.push(z.rechts / skalaX);
+          }
+        }
+        const perzentil = (werte: number[], p: number) => {
+          const sortiert = [...werte].sort((a, b) => a - b);
+          return sortiert[Math.floor(sortiert.length * p)]!;
+        };
+        if (linksWerte.length > 20) {
+          const engL = skaliereX(perzentil(linksWerte, 0.98));
+          const engR = skaliereX(perzentil(rechtsWerte, 0.02));
+          if (engR > engL) {
+            x0pxLokal = Math.max(x0pxLokal, engL + naht);
+            x1pxLokal = Math.min(x1pxLokal, engR - naht);
+          }
         }
       }
-      const perzentil = (werte: number[], p: number) => {
-        const sortiert = [...werte].sort((a, b) => a - b);
-        return sortiert[Math.floor(sortiert.length * p)]!;
+
+      // BEREICH_KORREKTUR ist am Foto der Referenzgröße abgelesen – dieselbe
+      // Skalierung wie oben, damit ein hand-kalibriertes Produkt nicht auf
+      // die Referenzgröße eingefroren bleibt. x skaliert um die Bildmitte
+      // (mitteX); y ist am KRAGEN verankert (y0 bewegt sich mit der Größe
+      // nicht – der Kragen sitzt bei jeder Größe an derselben Schulterlinie),
+      // der SAUM (y1) rückt bei einer größeren Größe weiter nach unten.
+      const korrektur = BEREICH_KORREKTUR[`${p.id}-${view}`];
+      if (korrektur) {
+        if (korrektur.x0 !== undefined) x0pxLokal = skaliereX((korrektur.x0 / 100) * w);
+        if (korrektur.x1 !== undefined) x1pxLokal = skaliereX((korrektur.x1 / 100) * w);
+        const y0Basis = korrektur.y0 !== undefined ? (korrektur.y0 / 100) * h : y0pxLokal;
+        if (korrektur.y0 !== undefined) y0pxLokal = y0Basis;
+        if (korrektur.y1 !== undefined) {
+          const y1Basis = (korrektur.y1 / 100) * h;
+          y1pxLokal = y0Basis + (y1Basis - y0Basis) * hoeheRatio;
+        }
+      }
+
+      // Letzte, unbedingte Grenze: nie über den Bildrand hinaus. Für die
+      // Referenzgröße (ratio=1) unwirksam (die bisherige Kontur-Klemme sitzt
+      // immer innerhalb des Bildes); erst bei stark skalierten Größen
+      // relevant, falls die hochskalierte Foto-Grenze rechnerisch über den
+      // tatsächlichen Bildausschnitt hinausliefe.
+      x0pxLokal = Math.max(x0pxLokal, 0);
+      x1pxLokal = Math.min(x1pxLokal, w);
+      y0pxLokal = Math.max(y0pxLokal, 0);
+      y1pxLokal = Math.min(y1pxLokal, h);
+
+      breiteCmLokal = Math.min(breiteCmLokal, (x1pxLokal - x0pxLokal) / pxProCm);
+      hoeheNutzbarCmLokal = Math.min(hoeheNutzbarCmLokal, (y1pxLokal - y0pxLokal) / pxProCm);
+
+      return {
+        x0px: x0pxLokal,
+        y0px: y0pxLokal,
+        x1px: x1pxLokal,
+        y1px: y1pxLokal,
+        maxWidthCm: Number(breiteCmLokal.toFixed(1)),
+        maxHeightCm: Number(hoeheNutzbarCmLokal.toFixed(1)),
+        boxWidthCm: Number(((x1pxLokal - x0pxLokal) / pxProCm).toFixed(1)),
+        boxHeightCm: Number(((y1pxLokal - y0pxLokal) / pxProCm).toFixed(1)),
+        startXCm: startXCmLokal !== undefined ? Number(Math.max(0, startXCmLokal).toFixed(1)) : undefined,
+        startYCm: startYCmLokal !== undefined ? Number(Math.max(0, startYCmLokal).toFixed(1)) : undefined,
       };
-      if (linksWerte.length > 20) {
-        const engL = perzentil(linksWerte, 0.98); // 98. Perzentil = enge Kante von links
-        const engR = perzentil(rechtsWerte, 0.02); // 2. Perzentil = enge Kante von rechts
-        if (engR > engL) {
-          x0px = Math.max(x0px, engL + naht);
-          x1px = Math.min(x1px, engR - naht);
-        }
+    }
+
+    const referenzBox = berechneBox(mass);
+
+    // ── Senkrechte Lage, Ärmel-Bewegungsbereich, Zeilen-Gegenprobe,
+    // BEREICH_KORREKTUR und finale cm-Ableitung: siehe berechneBox() oben –
+    // referenzBox trägt bereits das vollständige, für die Referenzgröße
+    // (mass) berechnete Ergebnis.
+    const proz = (v: number, g: number) => Number(((v / g) * 100).toFixed(1));
+
+    // ── Größenabhängige Torsoflächen (front/back) ───────────────────────
+    // Jede Größe der Maßtabelle bekommt ihre EIGENE Fläche (dieselbe
+    // Berechnung wie referenzBox, nur mit den cm-Maßen dieser Größe statt
+    // der Referenzgröße) – eine XL bekommt dadurch tatsächlich mehr nutzbare
+    // Breite als eine S, eine S nie mehr, als ihr Schnitt hergibt. Ärmel
+    // bleiben bewusst außen vor (AERMEL_KONSERVATIV_CM ist bereits
+    // größenunabhängig, siehe Kommentar dort) – kein bySize für Ärmelansichten.
+    let bySize: Record<string, GroessenBox> | undefined;
+    if (!istAermel && sizeTabelle && sizeTabelle.length > 0) {
+      bySize = {};
+      for (const zeile of sizeTabelle) {
+        const box = berechneBox(zeile);
+        bySize[zeile.size] = {
+          x0: proz(box.x0px, w),
+          y0: proz(box.y0px, h),
+          x1: proz(box.x1px, w),
+          y1: proz(box.y1px, h),
+          maxWidthCm: box.maxWidthCm,
+          maxHeightCm: box.maxHeightCm,
+          boxWidthCm: box.boxWidthCm,
+          boxHeightCm: box.boxHeightCm,
+        };
       }
     }
-
-    // ── Bewegungsbereich je Produkt anwenden ────────────────────────────
-    // Die je Produkt am Foto abgelesenen, visuell abgenommenen Kanten sind
-    // führend (BEREICH_KORREKTUR). Sie überschreiben die aus Größentabelle und
-    // Prozessgrenze berechnete Fläche dort, wo diese die sichtbare Stofffläche
-    // nicht ausnutzt oder Kragen/V-Ausschnitt/Naht nicht freihält. Nur die
-    // angegebenen Kanten werden ersetzt, der Rest bleibt berechnet.
-    const korrektur = BEREICH_KORREKTUR[`${p.id}-${view}`];
-    if (korrektur) {
-      if (korrektur.x0 !== undefined) x0px = (korrektur.x0 / 100) * w;
-      if (korrektur.x1 !== undefined) x1px = (korrektur.x1 / 100) * w;
-      if (korrektur.y0 !== undefined) y0px = (korrektur.y0 / 100) * h;
-      if (korrektur.y1 !== undefined) y1px = (korrektur.y1 / 100) * h;
-    }
-
-    // ── cm-Werte aus der ENDGÜLTIGEN Box ableiten ───────────────────────
-    // Die Box ist führend; die cm-Werte folgen ihr, sonst liefen gezeichnete
-    // Fläche und angezeigtes Maß auseinander.
-    breiteCm = Math.min(breiteCm, (x1px - x0px) / pxProCm);
-    hoeheNutzbarCm = Math.min(hoeheNutzbarCm, (y1px - y0px) / pxProCm);
-
-    // ── Wahre cm-Ausdehnung der GEZEICHNETEN Box ────────────────────────
-    //
-    // Das ist der Bezug, mit dem der Canvas Zentimeter in Pixel umrechnet
-    // (cmConversion: pxPerCm = areaPx.height / boxHeightCm).
-    // Bisher stand dort die KÖRPERLÄNGE (z.B. 72 cm), obwohl die Box nur den
-    // bedruckbaren Bereich zeigt (z.B. 47 cm). Gemessen im laufenden Canvas:
-    // Box 457,7 px, Standardlogo 13,95 cm wurde mit 89 px gezeichnet – das
-    // sind 6,38 px/cm statt der korrekten 9,74. Jedes Motiv erschien damit
-    // mit 65 % seiner angegebenen Größe, der Druck fiele 1,53-fach größer
-    // aus als in der Vorschau.
-    const boxBreiteCm = (x1px - x0px) / pxProCm;
-    const boxHoeheCm = (y1px - y0px) / pxProCm;
-
-    const proz = (v: number, g: number) => Number(((v / g) * 100).toFixed(1));
 
     proProdukt[view] = {
       garmentWidthCm: Number((istAermel ? AERMEL_KONSERVATIV_CM : mass.breiteCm - 2 * ABSTAND.seitennaht).toFixed(1)),
       garmentHeightCm: Number((istAermel ? grenze.maxHeightCm : mass.hoeheCm - ABSTAND.kragen - ABSTAND.saum).toFixed(1)),
-      x0: proz(x0px, w),
-      y0: proz(y0px, h),
-      x1: proz(x1px, w),
-      y1: proz(y1px, h),
+      x0: proz(referenzBox.x0px, w),
+      y0: proz(referenzBox.y0px, h),
+      x1: proz(referenzBox.x1px, w),
+      y1: proz(referenzBox.y1px, h),
       imgW: w,
       imgH: h,
-      maxWidthCm: Number(breiteCm.toFixed(1)),
-      maxHeightCm: Number(hoeheNutzbarCm.toFixed(1)),
-      boxWidthCm: Number(boxBreiteCm.toFixed(1)),
-      boxHeightCm: Number(boxHoeheCm.toFixed(1)),
-      ...(startXCm !== undefined && startYCm !== undefined
-        ? { startXCm: Number(Math.max(0, startXCm).toFixed(1)), startYCm: Number(Math.max(0, startYCm).toFixed(1)) }
+      maxWidthCm: referenzBox.maxWidthCm,
+      maxHeightCm: referenzBox.maxHeightCm,
+      boxWidthCm: referenzBox.boxWidthCm,
+      boxHeightCm: referenzBox.boxHeightCm,
+      ...(referenzBox.startXCm !== undefined && referenzBox.startYCm !== undefined
+        ? { startXCm: referenzBox.startXCm, startYCm: referenzBox.startYCm }
         : {}),
+      ...(bySize ? { bySize } : {}),
       quelle,
     };
   }
@@ -1075,16 +1106,34 @@ const zeilenAus: string[] = [
   '   *  ob die Prozessgrenze oder der Schnitt die Fläche begrenzt. */',
   '  garmentWidthCm: number;',
   '  garmentHeightCm: number;',
+  '  /** Fläche je Konfektionsgröße – NUR Torso-Ansichten (front/back), aus',
+  '   *  derselben Bildkontur wie oben, aber mit den cm-Maßen DIESER Größe',
+  '   *  statt der Referenzgröße berechnet (siehe generatePrintAreaData.mts,',
+  '   *  berechneBox()). Ärmelflächen sind größenunabhängig konstant, deshalb',
+  '   *  hier nie gesetzt. Schlüssel = sizeGuide.measurements[].size. */',
+  '  bySize?: Record<string, {',
+  '    x0: number; y0: number; x1: number; y1: number;',
+  '    maxWidthCm: number; maxHeightCm: number;',
+  '    boxWidthCm: number; boxHeightCm: number;',
+  '  }>;',
   '}',
   '',
   'export const PRINT_AREA_DATA: Record<string, Partial<Record<PrintView, GeneratedArea>>> = {',
 ];
 
+function serialisiereBySize(bySize: Record<string, GroessenBox> | undefined): string {
+  if (!bySize) return '';
+  const eintraege = Object.entries(bySize)
+    .map(([groesse, g]) => `'${groesse}': { x0: ${g.x0}, y0: ${g.y0}, x1: ${g.x1}, y1: ${g.y1}, maxWidthCm: ${g.maxWidthCm}, maxHeightCm: ${g.maxHeightCm}, boxWidthCm: ${g.boxWidthCm}, boxHeightCm: ${g.boxHeightCm} }`)
+    .join(', ');
+  return ` bySize: { ${eintraege} },`;
+}
+
 for (const [id, views] of Object.entries(ergebnis)) {
   zeilenAus.push(`  '${id}': {`);
   for (const [view, b] of Object.entries(views)) {
     zeilenAus.push(
-      `    ${view}: { x0: ${b!.x0}, y0: ${b!.y0}, x1: ${b!.x1}, y1: ${b!.y1}, imgW: ${b!.imgW}, imgH: ${b!.imgH}, maxWidthCm: ${b!.maxWidthCm}, maxHeightCm: ${b!.maxHeightCm}, boxWidthCm: ${b!.boxWidthCm}, boxHeightCm: ${b!.boxHeightCm},${b!.startXCm !== undefined ? ` startXCm: ${b!.startXCm}, startYCm: ${b!.startYCm},` : ''} garmentWidthCm: ${b!.garmentWidthCm}, garmentHeightCm: ${b!.garmentHeightCm} },`
+      `    ${view}: { x0: ${b!.x0}, y0: ${b!.y0}, x1: ${b!.x1}, y1: ${b!.y1}, imgW: ${b!.imgW}, imgH: ${b!.imgH}, maxWidthCm: ${b!.maxWidthCm}, maxHeightCm: ${b!.maxHeightCm}, boxWidthCm: ${b!.boxWidthCm}, boxHeightCm: ${b!.boxHeightCm},${b!.startXCm !== undefined ? ` startXCm: ${b!.startXCm}, startYCm: ${b!.startYCm},` : ''} garmentWidthCm: ${b!.garmentWidthCm}, garmentHeightCm: ${b!.garmentHeightCm},${serialisiereBySize(b!.bySize)} },`
     );
   }
   zeilenAus.push('  },');

@@ -1,7 +1,8 @@
 import { Resvg } from '@resvg/resvg-js';
 import { CANVAS_WIDTH, CANVAS_HEIGHT, getProduct } from '@/config/products';
 import { bildFuerAnsicht } from '@/lib/assets';
-import { getPrintAreas } from '@/config/printAreas';
+import { getPrintAreas, flaecheFuerGroesse } from '@/config/printAreas';
+import { kleinsteBestellteGroesse, groessenLeiterVon } from '@/config/products/groessen';
 import { getContainRect, computeAreaPx } from '@/lib/canvas/containRect';
 import { getScaleFactors, elementToPixelRect } from '@/lib/canvas/cmConversion';
 import { getFontFiles } from './fonts';
@@ -49,8 +50,14 @@ export async function renderPrintView(input: RenderPrintViewInput): Promise<Rend
   if (!imagePath) return null;
 
   const printAreas = await getPrintAreas(input.productId, input.printMethod);
-  const printArea = printAreas.find((a) => a.view === input.view);
-  if (!printArea) return null;
+  const printAreaRoh = printAreas.find((a) => a.view === input.view);
+  if (!printAreaRoh) return null;
+  // Dieselbe Fläche wie bei der Bestellprüfung (orderValidation.ts) und im
+  // Editor (ConfiguratorPrototype.tsx) – gegen die kleinste bestellte Größe
+  // dieser Position aufgelöst, sonst platziert das Produktionsbild die
+  // Elemente in einem anderen Maßstab als der, gegen den geprüft wurde.
+  const groesseFuerFlaeche = kleinsteBestellteGroesse(input.sizeQuantities, groessenLeiterVon(product));
+  const printArea = flaecheFuerGroesse(printAreaRoh, groesseFuerFlaeche);
 
   const garment = await loadGarmentImageInfo(imagePath);
 

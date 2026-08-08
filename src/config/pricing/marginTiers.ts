@@ -1,32 +1,34 @@
 import type { QualityTier } from '@/types';
 
 /**
- * PLATZHALTER – vorläufige Schätzwerte, keine finalen Geschäftszahlen.
- * Einzige Stelle, an der die Marge zwischen Einkaufspreis und
- * Verkaufs-Grundpreis (basePrice) je Qualitätsstufe definiert ist. Jede
- * künftige Preisänderung je Stufe wird hier einmal geändert und wirkt
- * sofort auf alle Produkte aller Marken, ohne einzelne Produkteinträge
- * anzufassen.
+ * Fester Aufschlag in Euro je Stück auf den Einkaufspreis – die gesamte
+ * Marge. Ersetzt das frühere, nach Qualitätsstufe gestaffelte
+ * Multiplikator-Modell (2,2×–3,2×): auf ausdrücklichen Wunsch des
+ * Betreibers bekommt JEDES Produkt denselben Euro-Aufschlag, unabhängig
+ * von seiner Qualitätsstufe. `qualityTier` bleibt Parameter von
+ * `computeBasePrice()` (Kennzeichnung/Filterkriterium im Katalog, siehe
+ * QUALITY_TIER_LABELS), beeinflusst die Preisbildung aber nicht mehr.
  */
-export const QUALITY_TIER_MARGIN: Record<QualityTier, number> = {
-  basic: 2.2,
-  standard: 2.5,
-  premium: 2.8,
-  luxury: 3.2,
-};
+export const FLAT_MARKUP_EUR = 8;
 
-/** Rundet auf x.90 (üblicher Ladenpreis-Stil, siehe bestehende basePrice-
- *  Werte in products.ts: 11.0, 18.9, 22.9, 34.9, ...). */
-function roundToPsychologicalPrice(value: number): number {
-  const floor90 = Math.floor(value) + 0.9;
-  return floor90 >= value ? floor90 : Math.ceil(value) + 0.9;
+/**
+ * Rundet auf den NÄCHSTHÖHEREN vollen Euro plus 99 Cent – nie auf die
+ * kleinste .99-Zahl, die den Betrag gerade noch deckt. Beispiel (Vorgabe
+ * des Betreibers): 11,52 € → 12,99 €, nicht 11,99 €. Dadurch endet jeder
+ * Verkaufspreis auf „,99 €" UND liegt immer mindestens einen vollen Euro
+ * über dem Einkaufspreis + Aufschlag – eine bewusst großzügige, leicht
+ * nachvollziehbare Rundungsregel statt einer margenminimalen.
+ */
+function roundUpToNextNinetyNine(value: number): number {
+  return Math.floor(value) + 1.99;
 }
 
 /**
- * Einziger Ort, an dem basePrice aus purchasePrice + qualityTier
- * abgeleitet wird. Jedes Produkt jeder Marke ruft ausschließlich diese
- * Funktion auf, nie eine eigene Formel.
+ * Einziger Ort, an dem basePrice aus purchasePrice abgeleitet wird. Jedes
+ * Produkt jeder Marke ruft ausschließlich diese Funktion auf, nie eine
+ * eigene Formel.
  */
 export function computeBasePrice(purchasePrice: number, qualityTier: QualityTier): number {
-  return roundToPsychologicalPrice(purchasePrice * QUALITY_TIER_MARGIN[qualityTier]);
+  void qualityTier;
+  return roundUpToNextNinetyNine(purchasePrice + FLAT_MARKUP_EUR);
 }

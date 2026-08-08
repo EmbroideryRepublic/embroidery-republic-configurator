@@ -36,3 +36,35 @@ export async function aktuellerKunde(): Promise<AngemeldeterKunde | null> {
     return null;
   }
 }
+
+/**
+ * Unterscheidet eine frische Recovery-Sitzung (aus dem Link der "Passwort
+ * vergessen"-E-Mail) von einer ganz normalen, bereits angemeldeten Sitzung.
+ * Ohne diese Prüfung könnte jede aktive Sitzung – z.B. eine an einem fremden
+ * Gerät vergessene – ein neues Passwort setzen, ohne das alte zu kennen.
+ * `getClaims()` verifiziert das Access Token (serverseitig bei symmetrischem
+ * Signing, sonst per WebCrypto) und liefert den `amr`-Claim (Authentication
+ * Method Reference) – bei einem über den Recovery-Link getauschten Code
+ * enthält er `recovery`, bei einer normalen Anmeldung z.B. `password`. Jeder
+ * Fehler oder unklare Zustand fällt auf "keine Recovery-Sitzung" zurück
+ * (fail-closed, wie überall sonst bei Zugriffsentscheidungen).
+ *
+ * WICHTIG: Diese Funktion muss sowohl von der Seite (UI-Gating) ALS AUCH von
+ * `passwortZuruecksetzenAction` (der eigentlichen Mutation) aufgerufen
+ * werden. Die Seite entscheidet nur, was gerendert wird – ein direkter
+ * Aufruf der Server Action (die Next.js-Action-ID steckt im ausgelieferten
+ * JS-Bundle, unabhängig vom gerenderten Zweig) würde die UI-Prüfung sonst
+ * vollständig umgehen.
+ */
+export async function istRecoverySitzung(): Promise<boolean> {
+  try {
+    const supabase = createClient();
+    const { data, error } = await supabase.auth.getClaims();
+    if (error || !data?.claims) return false;
+    const amr = data.claims.amr;
+    if (!Array.isArray(amr)) return false;
+    return amr.some((eintrag) => (typeof eintrag === 'string' ? eintrag === 'recovery' : eintrag?.method === 'recovery'));
+  } catch {
+    return false;
+  }
+}

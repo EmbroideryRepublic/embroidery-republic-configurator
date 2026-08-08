@@ -39,7 +39,8 @@ import { renderPrintView } from '@/lib/rendering/renderPrintView';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
 import { verarbeiteBestelleingang } from './orderIntake';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
-import type { OrderElementRecord, OrderItemRecord, OrderRecord } from '@/lib/actions/orderTypes';
+import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
+import { brauchtVorabZahlung } from '@/config/zahlung';
 import type { PrintView } from '@/types';
 
 /**
@@ -85,6 +86,59 @@ export async function schliesseBestellungAb(order: OrderRecord): Promise<Abschlu
     kommunikation,
     probleme,
   };
+}
+
+/**
+ * Holt Phase 2 nach, falls sie für eine bereits angelegte Bestellung nie
+ * gelaufen ist – der Retry-Pfad für `lib/actions/orders.ts` (beide
+ * Doppelschutz-Treffer bei `clientRequestId`: dieselbe Absendung kam ein
+ * zweites Mal an, weil die erste Antwort den Kunden nie erreichte).
+ *
+ * Ohne diese Nachholung blieb eine Bestellung, deren Phase 1 (die
+ * Datenbanktransaktion) zwar committet hatte, deren Phase 2 aber vor/während
+ * des Renderings abbrach (Deploy-Neustart, Funktions-Timeout, Absturz),
+ * für immer ohne Bestätigungsmail, interne Benachrichtigung und
+ * Produktionsblatt – der bisherige Code gab bei einem Treffer sofort
+ * `success:true` zurück, ohne je zu prüfen, ob Phase 2 überhaupt gelaufen
+ * war. `useSubmitGuard` schickt den Kunden nach einer Zeitüberschreitung
+ * genau mit dieser (unveränderten) `clientRequestId` erneut los – das ist
+ * also kein Rand-, sondern der erwartete Wiederherstellungsweg.
+ *
+ * Bewusst HIER statt in orders.ts: Phase 2 bleibt so vollständig
+ * eigenständig aufrufbar (siehe „Der Abschluss hängt nicht am Anlegen" in
+ * phasentrennung.test.ts) und `schliesseBestellungAb` wird in orders.ts
+ * weiterhin nur an der einen regulären Stelle direkt aufgerufen.
+ *
+ * Bei Vorabzahlung (Karte/PayPal) wird NICHTS nachgeholt – dort startet
+ * Phase 2 erst durch den bestätigten Zahlungs-Webhook, exakt wie beim
+ * Erstversuch. `verarbeiteBestelleingang` ist selbst idempotent (prüft
+ * `internal_notification_email_id`), ein erneuter Aufruf von
+ * `schliesseBestellungAb` sendet also so oder so keine zweite E-Mail – die
+ * Prüfung hier erspart nur die überflüssige Rendering-/PDF-Arbeit im
+ * Normalfall (die Antwort ging nur verloren, Phase 2 lief längst durch).
+ */
+export async function holeAbschlussFuerRetryNach(orderId: string): Promise<void> {
+  const db = createAdminClient();
+  const { data, error } = await db
+    .from('orders')
+    .select('payment_method, internal_notification_email_id')
+    .eq('id', orderId)
+    .maybeSingle<{ payment_method: OrderPaymentMethod | null; internal_notification_email_id: string | null }>();
+
+  if (error || !data) return;
+  if (data.internal_notification_email_id) return; // Phase 2 lief bereits vollständig durch.
+
+  const vorabZahlung = data.payment_method ? brauchtVorabZahlung(data.payment_method) : false;
+  if (vorabZahlung) return; // wartet weiterhin auf den Zahlungs-Webhook
+
+  const order = await ladeBestellungFuerAbschluss(orderId);
+  if (!order) return;
+
+  console.info(`[orders] Phase 2 für ${orderId} war offen – hole sie im Retry nach.`);
+  const abschluss = await schliesseBestellungAb(order);
+  if (abschluss.probleme.length > 0) {
+    console.warn(`[orders] Nachgeholter Abschluss ${orderId} mit Einschränkungen:`, abschluss.probleme);
+  }
 }
 
 /**
@@ -267,6 +321,7 @@ async function erzeugeDruckvorschauen(order: OrderRecord, probleme: string[]): P
           view,
           printMethod: itemRecord.printMethod,
           elements: renderbar,
+          sizeQuantities: itemRecord.sizeQuantities,
         });
         if (!ergebnis) return;
         await uploadProductionFile(`orders/${order.id}/preview-item${itemIndex}-${view}.png`, ergebnis.pngBuffer, 'image/png');

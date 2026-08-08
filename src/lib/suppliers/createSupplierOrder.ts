@@ -24,6 +24,7 @@
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { buildSupplierPositions, type SupplierSourceItem } from './buildSupplierPositions';
+import { PROCESSABLE_STATUSES } from './lifecycle/status';
 import type { SupplierAutomationJob, SupplierId, SupplierJobMode, SupplierOrderDraft } from './types';
 
 export interface CreateSupplierOrderResult {
@@ -116,12 +117,22 @@ export async function createSupplierOrder(
       console.error('[suppliers] supplier_orders-Insert fehlgeschlagen:', ensureError);
       continue;
     }
-    // 4b. Snapshot (Positionen/unresolved/mode) auffrischen, Status unberührt.
+    // 4b. Snapshot (Positionen/unresolved/mode) auffrischen, Status unberührt –
+    //     aber NUR, solange die Zeile noch in einem der bearbeitbaren
+    //     Zustände (PROCESSABLE_STATUSES) steht. getOrderDetail() ruft
+    //     createSupplierOrder() bei JEDEM Aufruf der Bestell-Detailseite
+    //     erneut auf; ohne diese Bedingung würde ein späterer Katalog-/
+    //     Mapping-Wechsel (Artikelnummer, Farb-Hex) den Positions-Snapshot
+    //     einer bereits laufenden/abgeschlossenen Zeile (queued/processing/
+    //     cart_prepared/ordered/blocked/paused/failed) stillschweigend
+    //     überschreiben – genau der Audit-Nachweis, WAS beim Lieferanten
+    //     tatsächlich bestellt wurde, ginge damit verloren.
     const { error: refreshError } = await supabase
       .from('supplier_orders')
       .update({ positions: job.positions, unresolved: draft.unresolved, mode, updated_at: nowIso })
       .eq('order_id', orderId)
-      .eq('supplier_id', job.supplierId);
+      .eq('supplier_id', job.supplierId)
+      .in('status', PROCESSABLE_STATUSES);
     if (refreshError) {
       console.error('[suppliers] supplier_orders-Snapshot-Update fehlgeschlagen:', refreshError);
     }

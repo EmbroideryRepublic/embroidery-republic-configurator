@@ -27,7 +27,7 @@ import { basisUrl } from '@/lib/seo/basisUrl';
 import { pruefeRateLimit } from '@/lib/security/rateLimit';
 import { protokoll } from '@/lib/observability/log';
 import { sendEmail } from '@/lib/email/sendEmail';
-import { aktuellerKunde } from '@/lib/account/session';
+import { aktuellerKunde, istRecoverySitzung } from '@/lib/account/session';
 import {
   aktualisiereAdresse as aktualisiereAdresseDb,
   aktualisiereProfil as aktualisiereProfilDb,
@@ -38,6 +38,7 @@ import {
   setzeStandardadresse as setzeStandardadresseDb,
 } from '@/lib/account/data';
 import { pruefeAdresse, pruefeEmail, pruefePasswort, pruefeRegistrierung } from '@/lib/account/validation';
+import { GRENZEN } from '@/lib/orders/orderValidation';
 import type { KundenAdresseEingabe } from '@/lib/account/types';
 import { KontoBestaetigenEmail } from '@/lib/email/templates/KontoBestaetigenEmail';
 import { PasswortVergessenEmail } from '@/lib/email/templates/PasswortVergessenEmail';
@@ -270,6 +271,16 @@ export async function passwortZuruecksetzenAction(_prev: KontoActionResult | nul
     return { success: false, error: 'Der Link ist abgelaufen oder wurde bereits verwendet. Bitte fordern Sie einen neuen an.' };
   }
 
+  // Dieselbe Prüfung wie beim Rendern der Seite (siehe istRecoverySitzung):
+  // Eine ganz normale, bereits angemeldete Sitzung reicht sonst aus, um hier
+  // ein neues Passwort zu setzen, ohne das alte zu kennen – die Next.js-
+  // Action-ID steckt im ausgelieferten JS-Bundle unabhängig davon, welchen
+  // Zweig die Seite gerendert hat. Ohne diese Prüfung in der Mutation selbst
+  // schützt die Seiten-Prüfung nur die eigene Oberfläche, nicht die Aktion.
+  if (!(await istRecoverySitzung())) {
+    return { success: false, error: 'Der Link ist abgelaufen oder wurde bereits verwendet. Bitte fordern Sie einen neuen an.' };
+  }
+
   const { error } = await supabase.auth.updateUser({ password: passwort });
   if (error) {
     protokoll.fehler('AUTH', 'passwort_zuruecksetzen_fehlgeschlagen', error.message);
@@ -297,6 +308,24 @@ export async function profilAktualisierenAction(_prev: KontoActionResult | null,
     const wert = String(formData.get(name) ?? '').trim();
     return wert.length > 0 ? wert : null;
   };
+
+  // Dieselbe Längengrenze wie überall sonst im Projekt (Adressen, Bestell-
+  // Kontaktdaten – GRENZEN.maxFeldLaenge). Ohne diese Prüfung landete ein
+  // unbegrenzt langer Wert direkt in customer_profiles und tauchte
+  // unverändert im nächsten Checkout, in Bestell-E-Mails und im
+  // Adminbereich wieder auf.
+  const PROFIL_FELDER: { name: string; label: string }[] = [
+    { name: 'displayName', label: 'Name' },
+    { name: 'phone', label: 'Telefonnummer' },
+    { name: 'company', label: 'Firma' },
+    { name: 'vatId', label: 'USt-IdNr.' },
+  ];
+  for (const { name, label } of PROFIL_FELDER) {
+    const wert = feld(name);
+    if (wert && wert.length > GRENZEN.maxFeldLaenge) {
+      return { success: false, error: `${label} darf höchstens ${GRENZEN.maxFeldLaenge} Zeichen lang sein.` };
+    }
+  }
 
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };

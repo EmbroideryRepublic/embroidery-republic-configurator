@@ -12,8 +12,7 @@ import { isNearSeam, overlapsExclusionZone, pushOutOfExclusionZones } from '@/li
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateLogoStitches, estimateTextStitches } from '@/lib/embroidery/estimateStitches';
-import { CANVAS_WIDTH, CANVAS_HEIGHT, type ProductConfig } from '@/config/products';
-import { groessenLeiterVon } from '@/config/products/groessen';
+import { CANVAS_WIDTH, CANVAS_HEIGHT } from '@/config/products';
 import { cm as formatCm } from '@/lib/format';
 import { gewebeTextur } from '@/lib/canvas/fabricTexture';
 
@@ -60,10 +59,13 @@ interface ConfiguratorCanvasProps {
    *  der zuletzt im Editor aktiven Ansicht gezeigt, unabhängig davon,
    *  welche Ansicht in der Großansicht gerade ausgewählt ist. */
   viewOverride?: PrintView;
-  /** Für die Live-Maßlineale (Breite/Höhe je Größe an den Seiten der
-   *  Leinwand) – ohne dieses Prop (z.B. in der Großansicht) werden einfach
-   *  keine Lineale gezeichnet. */
-  product?: ProductConfig;
+  /** Größenbezeichnung, die neben dem Lineal steht (z.B. "XL") – dieselbe
+   *  Größe, für die `printArea` bereits aufgelöst wurde (siehe
+   *  ConfiguratorPrototype.tsx, governingSize/flaecheFuerGroesse). Bewusst
+   *  ALS PROP statt hier selbst neu bestimmt: Lineal-ZAHL (aus printArea)
+   *  und Lineal-BESCHRIFTUNG müssen zwingend zur selben Größe gehören, sonst
+   *  zeigt die Leinwand ein anderes Maximum an, als tatsächlich geprüft wird. */
+  governingSize?: string;
   /** Helles Textil → Motive werden per „multiply" mit dem Stoff verrechnet
    *  (realistische Vorschau). Aus der echten Kleidungsfarbe abgeleitet
    *  (lib/canvas/garmentLuminance). Ohne Angabe: kein Effekt (sicher). */
@@ -76,7 +78,7 @@ export function ConfiguratorCanvas({
   zoom = 1,
   hideGuides = false,
   viewOverride,
-  product,
+  governingSize,
   garmentLight = false,
 }: ConfiguratorCanvasProps) {
   const [productImage] = useImage(productImageUrl);
@@ -87,8 +89,6 @@ export function ConfiguratorCanvas({
   const setSelectedElementId = useConfiguratorStore((s) => s.setSelectedElementId);
   const updateElement = useConfiguratorStore((s) => s.updateElement);
   const commitElement = useConfiguratorStore((s) => s.commitElement);
-  const sizeQuantities = useConfiguratorStore((s) => s.sizeQuantities);
-  const previewSize = useConfiguratorStore((s) => s.previewSize);
 
   // ── Realistische Vorschau (Stufe 1) ─────────────────────────────────
   // Auf HELLEN Kleidungsstücken wird das Motiv im Blend-Modus „multiply"
@@ -229,26 +229,6 @@ export function ConfiguratorCanvas({
   // umgerechnet werden können, in dem areaPx/widthPx berechnet sind.
   const stageScale = scale * zoom;
 
-  // Live-Maßlineale: zeigen Breite/Höhe der aktuell "im Fokus" stehenden
-  // Größe an den Seiten der Leinwand. "Im Fokus" = gerade im Größenfeld
-  // gehoverte/fokussierte Größe (previewSize), sonst die erste Größe mit
-  // eingetragener Stückzahl, sonst als sinnvoller Standard 'M' bzw. die
-  // mittlere verfügbare Größe.
-  const sizeRow = useMemo(() => {
-    const measurements = product?.sizeGuide?.measurements;
-    if (!measurements || measurements.length === 0) return null;
-    const activeSize = previewSize ?? Object.keys(sizeQuantities).find((s) => (sizeQuantities[s] ?? 0) > 0) ?? null;
-    if (activeSize) {
-      const found = measurements.find((m) => m.size === activeSize);
-      if (found) return found;
-    }
-    // Referenzgröße DATENGETRIEBEN aus dem Größenleiter-Registry (statt fixem 'M'):
-    // Konfektion → 'M', aber Kopfweiten/Einheits-/Maß-Leitern künftiger Gruppen
-    // bringen ihre eigene Referenz mit; ohne Referenz die mittlere Größe (M4-C6).
-    const referenz = product ? groessenLeiterVon(product).referenz : undefined;
-    return measurements.find((m) => m.size === referenz) ?? measurements[Math.floor(measurements.length / 2)];
-  }, [product, sizeQuantities, previewSize]);
-
   const rulerPxPerCm = scaleFactors?.pxPerCmX ?? null;
   // ── Maßlinien der DRUCKFLÄCHE ────────────────────────────────────────
   // Vorher maßen die Lineale das KLEIDUNGSSTÜCK (sizeRow.breiteCm/hoeheCm
@@ -353,9 +333,9 @@ export function ConfiguratorCanvas({
             className="relative flex-shrink-0"
             style={{ width: RULER_TRACK_PX, height: CANVAS_HEIGHT * scale * zoom }}
           >
-            {sizeRow && (
+            {governingSize && (
               <span className="absolute left-1/2 top-0 -translate-x-1/2 text-[9px] font-semibold uppercase tracking-wide text-gold-dark/70">
-                {sizeRow.size}
+                {governingSize}
               </span>
             )}
             <div
@@ -701,6 +681,38 @@ function clampDragPositionCentered(
   return { x: (pushed.x + halfW) * stageScale, y: (pushed.y + halfH) * stageScale };
 }
 
+/** Klemmt die obere-linke Ecke eines Rechtecks (bereits im logischen,
+ *  unskalierten Koordinatensystem – kein stageScale-Umweg nötig, anders als
+ *  clampDragPositionCentered) auf den Druckbereich.
+ *
+ *  Anders als beim Ziehen (dragBoundFunc, siehe oben) hatte das Resize per
+ *  Transformer-Griff KEINE Positions-Begrenzung: onTransformEnd klemmte nur
+ *  die GRÖSSE auf maxWidthCm/maxHeightCm und schob danach lediglich aus
+ *  Sperrzonen heraus (pushOutOfExclusionZones) – die neue Position (aus dem
+ *  ALTEN Mittelpunkt + NEUER Größe berechnet) konnte dadurch außerhalb der
+ *  Druckfläche landen, wenn z.B. am oberen linken Eckgriff gezogen wurde.
+ *  isOutOfBounds zeigte das zwar an (roter Rahmen), verhinderte aber nichts:
+ *  weder den Warenkorb noch den Checkout noch die serverseitige Prüfung
+ *  (orderValidation.ts prüft bewusst nur die Größe, nicht die Position –
+ *  in der Annahme, der Konfigurator halte die Position ohnehin in der
+ *  Fläche). Das produzierte PNG wurde exakt mit dieser Position gerendert. */
+function clampRectTopLeftToArea(
+  rawX: number,
+  rawY: number,
+  width: number,
+  height: number,
+  areaPx: PixelRect
+): { x: number; y: number } {
+  const minX = areaPx.x;
+  const maxX = areaPx.x + areaPx.width - width;
+  const minY = areaPx.y;
+  const maxY = areaPx.y + areaPx.height - height;
+  return {
+    x: Math.min(Math.max(rawX, Math.min(minX, maxX)), Math.max(minX, maxX)),
+    y: Math.min(Math.max(rawY, Math.min(minY, maxY)), Math.max(minY, maxY)),
+  };
+}
+
 // ---------------------------------------------------------------
 // Logo-Knoten
 // ---------------------------------------------------------------
@@ -895,14 +907,23 @@ const LogoNode = memo(function LogoNode({
             }
           }
 
-          const rawX = oldCenterX - newWidthPx / 2;
-          const rawY = oldCenterY - newHeightPx / 2;
+          // Position auf die Druckfläche klemmen, BEVOR aus Sperrzonen
+          // herausgeschoben wird – sonst kann der aus dem alten Mittelpunkt
+          // + neuer Größe berechnete Punkt außerhalb der Fläche liegen
+          // (siehe clampRectTopLeftToArea).
+          const clampedTopLeft = clampRectTopLeftToArea(
+            oldCenterX - newWidthPx / 2,
+            oldCenterY - newHeightPx / 2,
+            newWidthPx,
+            newHeightPx,
+            areaPx
+          );
 
           // Nach dem Skalieren kann das Motiv (auch ohne eigenes Zutun beim
           // Ziehen) neu in eine Sperrzone hineinragen – deshalb auch hier
           // aus Kragen/Reißverschluss herausschieben, nicht nur beim Drag.
           const pushed = pushOutOfExclusionZones(
-            { x: rawX, y: rawY, width: newWidthPx, height: newHeightPx },
+            { x: clampedTopLeft.x, y: clampedTopLeft.y, width: newWidthPx, height: newHeightPx },
             areaPx,
             exclusionZonesPx,
             zoneMarginPx
@@ -1108,13 +1129,18 @@ const TextNode = memo(function TextNode({
           const newWidthPx = cmToPx(box.widthCm, scaleFactors.pxPerCmX);
           const newHeightPx = cmToPx(box.heightCm, scaleFactors.pxPerCmY);
 
-          const rawX = oldCenterX - newWidthPx / 2;
-          const rawY = oldCenterY - newHeightPx / 2;
-
-          // Wie bei LogoNode: nach dem Skalieren aus einer neu entstandenen
+          // Wie bei LogoNode: erst auf die Druckfläche klemmen (siehe
+          // clampRectTopLeftToArea), dann aus einer neu entstandenen
           // Überlappung mit Kragen/Reißverschluss herausschieben.
+          const clampedTopLeft = clampRectTopLeftToArea(
+            oldCenterX - newWidthPx / 2,
+            oldCenterY - newHeightPx / 2,
+            newWidthPx,
+            newHeightPx,
+            areaPx
+          );
           const pushed = pushOutOfExclusionZones(
-            { x: rawX, y: rawY, width: newWidthPx, height: newHeightPx },
+            { x: clampedTopLeft.x, y: clampedTopLeft.y, width: newWidthPx, height: newHeightPx },
             areaPx,
             exclusionZonesPx,
             zoneMarginPx

@@ -10,7 +10,7 @@ import { anfangsZahlungsstatus, brauchtVorabZahlung } from '@/config/zahlung';
 import { pruefeRateLimit } from '@/lib/security/rateLimit';
 import { validateSubmission } from '@/lib/orders/orderValidation';
 // Phase 2 des Bestelleingangs – Rendering, Produktionsblatt, Benachrichtigung.
-import { schliesseBestellungAb } from '@/lib/orders/orderCompletion';
+import { schliesseBestellungAb, holeAbschlussFuerRetryNach } from '@/lib/orders/orderCompletion';
 import { getProduct } from '@/config/products';
 import type { CartItem, ConfigElement } from '@/types';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
@@ -345,6 +345,7 @@ async function persistAndNotifyCore(params: {
     const bestehende = await findeBestellungZuKennung(supabase, params.clientRequestId);
     if (bestehende) {
       console.info('[orders] Wiederholte Absendung erkannt – bestehende Bestellung zurückgegeben:', bestehende);
+      await holeAbschlussFuerRetryNach(bestehende);
       return { success: true, orderNumber: buildOrderNumber(bestehende) };
     }
   }
@@ -505,6 +506,7 @@ async function persistAndNotifyCore(params: {
       const bestehende = await findeBestellungZuKennung(supabase, params.clientRequestId);
       if (bestehende) {
         console.info('[orders] Gleichzeitige Doppelabsendung abgefangen:', bestehende);
+        await holeAbschlussFuerRetryNach(bestehende);
         return { success: true, orderNumber: buildOrderNumber(bestehende) };
       }
     }

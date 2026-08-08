@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { aktuellerKunde } from '@/lib/account/session';
-import { createClient } from '@/lib/supabase/server';
+import { aktuellerKunde, istRecoverySitzung } from '@/lib/account/session';
 import { PasswortZuruecksetzenForm } from '@/components/konto/PasswortZuruecksetzenForm';
 
 export const metadata = {
@@ -8,32 +7,6 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 export const dynamic = 'force-dynamic';
-
-/**
- * Unterscheidet eine frische Recovery-Sitzung (aus dem Link der "Passwort
- * vergessen"-E-Mail) von einer ganz normalen, bereits angemeldeten Sitzung.
- * Ohne diese Prüfung könnte jede aktive Sitzung – z.B. eine an einem fremden
- * Gerät vergessene – über diese Seite ein neues Passwort setzen, ohne das
- * alte zu kennen. `getClaims()` verifiziert das Access Token (serverseitig
- * bei symmetrischem Signing, sonst per WebCrypto) und liefert den
- * `amr`-Claim (Authentication Method Reference) – bei einem über den
- * Recovery-Link getauschten Code enthält er `recovery`, bei einer normalen
- * Anmeldung z.B. `password`. Jeder Fehler oder unklare Zustand fällt auf
- * "keine Recovery-Sitzung" zurück (fail-closed, wie überall sonst bei
- * Zugriffsentscheidungen in diesem Projekt, siehe aktuellerKunde()).
- */
-async function istRecoverySitzung(): Promise<boolean> {
-  try {
-    const supabase = createClient();
-    const { data, error } = await supabase.auth.getClaims();
-    if (error || !data?.claims) return false;
-    const amr = data.claims.amr;
-    if (!Array.isArray(amr)) return false;
-    return amr.some((eintrag) => (typeof eintrag === 'string' ? eintrag === 'recovery' : eintrag?.method === 'recovery'));
-  } catch {
-    return false;
-  }
-}
 
 /**
  * Erreichbar über den Link aus der "Passwort vergessen"-E-Mail, nach dem
@@ -59,7 +32,7 @@ export default async function PasswortZuruecksetzenPage() {
         </div>
       ) : (
         <>
-          <p className="mt-1 mb-6 text-sm text-brand/60">Bitte vergeben Sie ein neues Passwort für {kunde.email}.</p>
+          <p className="mt-1 mb-6 text-sm text-brand/70">Bitte vergeben Sie ein neues Passwort für {kunde.email}.</p>
           <div className="rounded-2xl border border-gold/20 bg-white p-5 shadow-elegant">
             <PasswortZuruecksetzenForm />
           </div>

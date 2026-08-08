@@ -112,7 +112,7 @@ export async function ladeStandardadresse(kundenId: string): Promise<KundenAdres
 export async function legeAdresseAn(kundenId: string, eingabe: KundenAdresseEingabe & { label?: string | null }): Promise<{ ok: boolean; fehler?: string }> {
   const db = createAdminClient();
   const bestehende = await ladeAdressen(kundenId);
-  const { error } = await db.from('customer_addresses').insert({
+  const basisEintrag = {
     customer_id: kundenId,
     label: eingabe.label ?? null,
     first_name: eingabe.firstName,
@@ -123,9 +123,21 @@ export async function legeAdresseAn(kundenId: string, eingabe: KundenAdresseEing
     city: eingabe.city,
     country: eingabe.country,
     phone: eingabe.phone,
-    is_default: bestehende.length === 0,
-  });
+  };
+  const { error } = await db.from('customer_addresses').insert({ ...basisEintrag, is_default: bestehende.length === 0 });
   if (error) {
+    // Zwei nahezu gleichzeitige "erste Adresse anlegen"-Aufrufe (zwei Tabs,
+    // Doppelklick auf langsamer Verbindung) lesen beide bestehende.length
+    // === 0 und versuchen beide is_default: true. Der partielle Unique-Index
+    // customer_addresses_ein_standard_je_kunde lässt nur einen davon zu –
+    // ohne diesen Wiederholungsversuch ginge die zweite, fachlich gültige
+    // Adresse komplett verloren statt nur ihr Standard-Flag.
+    if (error.code === '23505' && error.message.includes('customer_addresses_ein_standard_je_kunde')) {
+      const { error: zweiterVersuch } = await db.from('customer_addresses').insert({ ...basisEintrag, is_default: false });
+      if (!zweiterVersuch) return { ok: true };
+      console.error('[konto] Adresse konnte auch im zweiten Versuch nicht angelegt werden:', zweiterVersuch.message);
+      return { ok: false, fehler: 'Die Adresse konnte nicht gespeichert werden.' };
+    }
     console.error('[konto] Adresse konnte nicht angelegt werden:', error.message);
     return { ok: false, fehler: 'Die Adresse konnte nicht gespeichert werden.' };
   }

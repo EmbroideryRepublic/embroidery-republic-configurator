@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { AlertCircle } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/SiteHeader';
@@ -17,9 +17,10 @@ import { ToolPanelTabs } from './ToolPanelTabs';
 import { SummaryPanel } from './SummaryPanel';
 import { CompareModal } from './CompareModal';
 import { LargePreviewModal } from './LargePreviewModal';
-import { getPrintAreas } from '@/config/printAreas';
+import { getPrintAreas, flaecheFuerGroesse } from '@/config/printAreas';
 import { getPricingRules } from '@/config/pricingRules';
 import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
+import { kleinsteBestellteGroesse, groessenLeiterVon } from '@/config/products/groessen';
 import { resolveColorImages, repraesentativeFarbe } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
@@ -28,6 +29,7 @@ import type { PricingRule, PrintArea } from '@/types';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 import { vorladenAlleFarben } from '@/lib/configurator/vorladen';
+import { passendeGroessen } from '@/lib/configurator/uebernahme';
 import { istHellesTextil } from '@/lib/canvas/garmentLuminance';
 
 // Konva greift auf `window` zu und darf deshalb nicht serverseitig gerendert
@@ -95,6 +97,7 @@ export function ConfiguratorPrototype() {
   const productId = useConfiguratorStore((s) => s.productId);
   const colorId = useConfiguratorStore((s) => s.colorId);
   const sizeQuantities = useConfiguratorStore((s) => s.sizeQuantities);
+  const previewSize = useConfiguratorStore((s) => s.previewSize);
   const quantity = sumSizeQuantities(sizeQuantities);
   const elements = useConfiguratorStore((s) => s.elements);
   const history = useConfiguratorStore((s) => s.history);
@@ -110,6 +113,7 @@ export function ConfiguratorPrototype() {
   const commitElement = useConfiguratorStore((s) => s.commitElement);
   const setProduct = useConfiguratorStore((s) => s.setProduct);
   const setColor = useConfiguratorStore((s) => s.setColor);
+  const setSizeQuantities = useConfiguratorStore((s) => s.setSizeQuantities);
   const setPrices = useConfiguratorStore((s) => s.setPrices);
   const syncElementsToPrintAreas = useConfiguratorStore((s) => s.syncElementsToPrintAreas);
   const language = useLanguageStore((s) => s.language);
@@ -123,16 +127,35 @@ export function ConfiguratorPrototype() {
   // Konfigurator („Jetzt konfigurieren"). Ohne diese Auswertung landete der
   // Kunde beim zuletzt konfigurierten Produkt statt bei dem, das er gerade
   // angesehen hat.
+  //
+  // `?farbe=<id>` trägt die auf der Produktseite GEWÄHLTE Variante weiter
+  // (siehe ProduktFarbeContext/KonfiguratorCta). Ohne diese Auswertung wählte
+  // der Konfigurator hier erneut eigenständig die repräsentative Farbe – hatte
+  // der Kunde auf der Produktseite eine ANDERE Farbe gewählt, öffnete der
+  // Konfigurator auf einem Bild, das der Kunde so nie angeklickt hatte. Nur
+  // gültig, wenn das Produkt diese Farbe tatsächlich führt (defensiv gegen
+  // eine von Hand veränderte URL).
   useEffect(() => {
     if (!isHydrated) return;
 
-    const gewuenscht = new URLSearchParams(window.location.search).get('produkt');
+    const params = new URLSearchParams(window.location.search);
+    const gewuenscht = params.get('produkt');
     if (gewuenscht && gewuenscht !== productId) {
       const ziel = getProduct(gewuenscht);
       if (ziel) {
         setProduct(ziel.id);
-        const ersteFarbe = repraesentativeFarbe(ziel.id, ziel.colors);
-        if (ersteFarbe) setColor(ersteFarbe.id);
+        const gewuenschteFarbe = params.get('farbe');
+        const passendeFarbe = ziel.colors.find((c) => c.id === gewuenschteFarbe);
+        const farbe = passendeFarbe ?? repraesentativeFarbe(ziel.id, ziel.colors);
+        if (farbe) setColor(farbe.id);
+        // Größen/Mengen der bisherigen Auswahl auf das neue Produkt abbilden
+        // (dieselbe Logik wie beim Produktwechsel über ProduktBrowser,
+        // waehleModell) – ohne diese Zuordnung blieb eine Menge unter einer
+        // Größe stehen, die es beim neuen Produkt gar nicht gibt: unsichtbar
+        // in der Größentabelle, aber weiterhin in der Summe und im Preis
+        // enthalten, bis die Bestellung erst beim Absenden mit einer
+        // verwirrenden Fehlermeldung abgelehnt wurde.
+        setSizeQuantities(passendeGroessen(ziel, useConfiguratorStore.getState().sizeQuantities));
         // Parameter entfernen, damit ein späterer Reload nicht erneut
         // zurücksetzt und der Kunde seine Änderungen behält.
         window.history.replaceState({}, '', window.location.pathname);
@@ -145,9 +168,31 @@ export function ConfiguratorPrototype() {
       const firstColor = repraesentativeFarbe(DEFAULT_PRODUCT.id, DEFAULT_PRODUCT.colors);
       if (firstColor) setColor(firstColor.id);
     }
-  }, [isHydrated, productId, setProduct, setColor]);
+  }, [isHydrated, productId, setProduct, setColor, setSizeQuantities]);
 
   const product = getProduct(productId ?? '') ?? DEFAULT_PRODUCT;
+
+  // ── Größenabhängige Druckflächen: EINZIGE Auflösungsstelle ─────────────
+  // Ein Motiv wird einmal platziert und identisch auf jede bestellte Größe
+  // gedruckt – es muss deshalb auf der KLEINSTEN bestellten Größe passen,
+  // sonst ragt es dort über den bedruckbaren Bereich hinaus, obwohl bei einer
+  // größeren Größe noch Platz wäre (siehe kleinsteBestellteGroesse). Ohne
+  // gewählte Stückzahl (Warenkorb noch leer) gilt ersatzweise die im
+  // Größenfeld gehoverte Größe, sonst die Referenzgröße der Leiter – exakt
+  // die bisherige Fallback-Kette der Lineal-Beschriftung, jetzt aber
+  // bestimmend für die TATSÄCHLICHE Fläche, nicht nur deren Beschriftung.
+  //
+  // Ab hier ersetzt effectivePrintAreas ausnahmslos die roh geladenen
+  // printAreas – jede Stelle, die eine Fläche zeigt oder gegen sie
+  // begrenzt (Canvas, Werkzeugleiste, Großvorschau, Pfeiltasten-Clamp),
+  // muss dieselbe, für dieselbe Größe aufgelöste Fläche sehen, sonst zeigt
+  // der Kunde ein anderes Maximum als das, wogegen tatsächlich geprüft wird.
+  const leiter = groessenLeiterVon(product);
+  const governingSize = kleinsteBestellteGroesse(sizeQuantities, leiter) ?? previewSize ?? leiter.referenz;
+  const effectivePrintAreas = useMemo(
+    () => printAreas.map((a) => flaecheFuerGroesse(a, governingSize)),
+    [printAreas, governingSize]
+  );
 
   // Alle Farbansichten des aktuellen Produkts im Hintergrund vorladen, damit
   // auch der Farbwechsel ohne Wartezeit erfolgt. Läuft nur bei Produktwechsel.
@@ -162,6 +207,15 @@ export function ConfiguratorPrototype() {
   // aktuell gehalten, das ist ein sicheres, von React unterstütztes Muster.
   const activeViewRef = useRef(activeView);
   activeViewRef.current = activeView;
+
+  // Dieselbe Ref-Regel für governingSize: `syncElementsToPrintAreas` unten
+  // muss gegen die für die AKTUELL bestellte(n) Größe(n) aufgelöste Fläche
+  // prüfen (sonst könnte ein Element fälschlich als „zu groß" markiert
+  // werden, obwohl die tatsächlich geltende Größe mehr Platz böte) – ohne
+  // dass jede Mengenänderung einen kompletten Neu-Fetch der Druckflächen
+  // auslöst (getPrintAreas hängt nicht von der Größe ab).
+  const governingSizeRef = useRef(governingSize);
+  governingSizeRef.current = governingSize;
 
   // Druckbereiche und Preisregeln neu laden, sobald sich Produkt oder
   // Veredelungsart ändern. Bestehendes Design wird NICHT verworfen, sondern
@@ -190,7 +244,8 @@ export function ConfiguratorPrototype() {
           setActiveView(produktViews[0]);
         }
 
-        const dropped = syncElementsToPrintAreas(areas);
+        const areasFuerAktuelleGroesse = areas.map((a) => flaecheFuerGroesse(a, governingSizeRef.current));
+        const dropped = syncElementsToPrintAreas(areasFuerAktuelleGroesse);
         if (dropped > 0) {
           setSyncNotice(
             `${dropped} Element${dropped > 1 ? 'e' : ''} ${dropped > 1 ? 'wurden' : 'wurde'} entfernt, da für diese Ansicht(en) im neuen Kontext kein Druckbereich existiert.`
@@ -242,7 +297,7 @@ export function ConfiguratorPrototype() {
 
       if (isModifier && e.key.toLowerCase() === 'v') {
         e.preventDefault();
-        pasteElement(activeView, printAreas);
+        pasteElement(activeView, effectivePrintAreas);
         return;
       }
 
@@ -256,7 +311,7 @@ export function ConfiguratorPrototype() {
 
       if (isModifier && e.key.toLowerCase() === 'd') {
         e.preventDefault();
-        const area = printAreas.find((a) => a.view === activeView);
+        const area = effectivePrintAreas.find((a) => a.view === activeView);
         duplicateElement(selectedElementId, area ? { boxWidthCm: area.boxWidthCm, boxHeightCm: area.boxHeightCm } : undefined);
         return;
       }
@@ -276,7 +331,7 @@ export function ConfiguratorPrototype() {
       if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.preventDefault();
         const el = elements.find((el) => el.id === selectedElementId);
-        const area = printAreas.find((a) => a.view === activeView);
+        const area = effectivePrintAreas.find((a) => a.view === activeView);
         if (!el || !area) return;
         const step = e.shiftKey ? 1 : 0.1;
         const [dx, dy] = arrowDeltas[e.key];
@@ -287,7 +342,7 @@ export function ConfiguratorPrototype() {
     }
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [undo, redo, selectedElementId, removeElement, duplicateElement, copyElement, pasteElement, commitElement, elements, printAreas, activeView]);
+  }, [undo, redo, selectedElementId, removeElement, duplicateElement, copyElement, pasteElement, commitElement, elements, effectivePrintAreas, activeView]);
 
   const handleZoomIn = useCallback(() => setZoom((z) => Math.min(ZOOM_MAX, +(z + ZOOM_STEP).toFixed(2))), []);
   const handleZoomOut = useCallback(() => setZoom((z) => Math.max(ZOOM_MIN, +(z - ZOOM_STEP).toFixed(2))), []);
@@ -297,7 +352,7 @@ export function ConfiguratorPrototype() {
   const handleOpenCompare = useCallback(() => setIsCompareOpen(true), []);
   const handleCloseCompare = useCallback(() => setIsCompareOpen(false), []);
 
-  const currentPrintArea = printAreas.find((area) => area.view === activeView) ?? null;
+  const currentPrintArea = effectivePrintAreas.find((area) => area.view === activeView) ?? null;
   const currentColor = product.colors.find((c) => c.id === colorId) ?? repraesentativeFarbe(product.id, product.colors);
   const currentImages: Record<string, string> = currentColor ? resolveColorImages(product.id, currentColor.id) : {};
   const currentImageUrl = currentImages[activeView] ?? '';
@@ -331,7 +386,7 @@ export function ConfiguratorPrototype() {
       <>
         <SiteHeader onCartClick={handleOpenCart} />
         <div className="flex min-h-[500px] w-full items-center justify-center">
-          <p className="text-sm text-brand/40">{t('canvas_loading')}</p>
+          <p className="text-sm text-brand/70">{t('canvas_loading')}</p>
         </div>
       </>
     );
@@ -423,7 +478,7 @@ export function ConfiguratorPrototype() {
                   {isLoadingContext ? (
                     <CanvasSkeleton />
                   ) : (
-                    <ConfiguratorCanvas productImageUrl={currentImageUrl} printArea={currentPrintArea} zoom={zoom} product={product} garmentLight={garmentLight} />
+                    <ConfiguratorCanvas productImageUrl={currentImageUrl} printArea={currentPrintArea} zoom={zoom} governingSize={governingSize} garmentLight={garmentLight} />
                   )}
                   {/* Eleganter Produktwechsel: Eine Ebene mit dem neuen Teil
                       gleitet herein und löst sich auf; darunter liegt bereits
@@ -486,7 +541,7 @@ export function ConfiguratorPrototype() {
                 Werkzeuge unbedienbar zu machen. Reicht der Platz, greift
                 overflow-y-auto weiterhin normal. */}
             <div className="min-h-[280px] flex-1 overflow-y-auto lg:pr-0.5">
-              <ToolPanelTabs printArea={currentPrintArea} printAreas={printAreas} />
+              <ToolPanelTabs printArea={currentPrintArea} printAreas={effectivePrintAreas} />
             </div>
             <div className="flex-shrink-0">
               <SummaryPanel productName={product.name} breakdown={priceBreakdown} priceHasErrors={priceHasErrors} />
@@ -500,7 +555,7 @@ export function ConfiguratorPrototype() {
       {isPreviewOpen && (
         <LargePreviewModal
           imageUrls={currentImages}
-          printAreas={printAreas}
+          printAreas={effectivePrintAreas}
           views={produktViews}
           garmentLight={garmentLight}
           onClose={() => setIsPreviewOpen(false)}

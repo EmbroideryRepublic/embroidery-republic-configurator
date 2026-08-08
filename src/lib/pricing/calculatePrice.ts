@@ -48,10 +48,23 @@ export interface PriceCalculationResult {
     perElement: { elementId: string; price: number }[];
     elementBaseFeeTotal: number;
     positionFeeTotal: number;
+    /** Je Ansicht: entweder Flächen-/Stichzahl-Kosten ODER (bei aktiver
+     *  Positionsstaffel) der Positionsanteil dieser Ansicht – siehe
+     *  isPositionBased. Nie beide Quellen gleichzeitig ungleich 0. */
     areaPriceByView: Record<PrintView, number>;
     areaPricePerCm2: number;
     pricePer1000Stitches: number;
     isStitchBased: boolean;
+    /** True, wenn first_position/additional_position aktiv sind (DTF) –
+     *  areaPriceByView zeigt dann den Positionsanteil je Ansicht, nicht
+     *  Fläche/Stichzahl. Anzeige nutzt dafür firstPositionPrice/
+     *  additionalPositionPrice statt areaPricePerCm2/pricePer1000Stitches. */
+    isPositionBased: boolean;
+    /** Aufschlag für die erste bedruckte Ansicht (nur informativ für die
+     *  Anzeige, z.B. im Tooltip „9 € für die erste Position"). */
+    firstPositionPrice: number;
+    /** Aufschlag je zusätzlich genutzter Ansicht (nur informativ). */
+    additionalPositionPrice: number;
     totalEstimatedStitches: number;
     /** Rabatt auf Grundpreis/Grundgebühren (leicht). */
     baseDiscountPercent: number;
@@ -144,11 +157,42 @@ function getPositionPrice(view: PrintView, rules: PricingRule[], quantity: numbe
     .reduce((sum, r) => sum + r.price, 0);
 }
 
-function getElementTypeBasePrice(type: 'logo' | 'text', rules: PricingRule[], quantity: number): number {
+function getElementTypeBasePrice(
+  type: 'logo' | 'text',
+  view: PrintView,
+  rules: PricingRule[],
+  quantity: number
+): number {
   const ruleType = type === 'logo' ? 'per_logo' : 'per_text';
   return rules
-    .filter((r) => r.ruleType === ruleType && isRuleApplicable(r, quantity))
+    .filter(
+      (r) => r.ruleType === ruleType && isRuleApplicable(r, quantity) && (!r.printView || r.printView === view)
+    )
     .reduce((sum, r) => sum + r.price, 0);
+}
+
+/**
+ * Positionsgestaffelter Aufschlag (DTF): `first_position` einmal je Stück,
+ * sobald überhaupt eine Ansicht bedruckt ist, `additional_position` je
+ * ZUSÄTZLICH genutzter Ansicht. Eigene, spezialisierte Auswertung statt über
+ * `evaluateRules()`s allgemeinen `perUnitVeredelung`-Topf – aus demselben
+ * Grund wie getVariableCost() unten: Der Rechenkern führt für jeden
+ * Regeltyp eine EIGENE Summierung, damit unterschiedliche Bausteintypen sich
+ * nie gegenseitig überschreiben oder doppelt zählen (z.B. Stickerei-Stichzahl
+ * vs. DTF-Positionsstaffel – beide bucket:'veredelung', aber inhaltlich
+ * völlig verschieden berechnet).
+ *
+ * Nutzt dieselbe Anwendbarkeitsprüfung wie die übrigen Getter (Mengenfenster,
+ * Gültigkeitszeitraum).
+ */
+function getPositionTierRulePrices(rules: PricingRule[], quantity: number): { erste: number; zusatz: number } {
+  const erste = rules
+    .filter((r) => r.ruleType === 'first_position' && isRuleApplicable(r, quantity))
+    .reduce((sum, r) => sum + r.price, 0);
+  const zusatz = rules
+    .filter((r) => r.ruleType === 'additional_position' && isRuleApplicable(r, quantity))
+    .reduce((sum, r) => sum + r.price, 0);
+  return { erste, zusatz };
 }
 
 /**
@@ -180,12 +224,17 @@ function getBillableAreaCm2(element: ConfigElement): number {
  * Zeitfenster-Regeln einen falschen Preis.
  */
 function getVariableCost(element: ConfigElement, rules: PricingRule[], quantity: number): number {
-  const stitchRules = rules.filter((r) => r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, quantity));
+  const stitchRules = rules.filter(
+    (r) =>
+      r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, quantity) && (!r.printView || r.printView === element.view)
+  );
   if (stitchRules.length > 0) {
     const stitches = element.estimatedStitches ?? 0;
     return stitchRules.reduce((sum, r) => sum + (stitches / 1000) * r.price, 0);
   }
-  const areaRules = rules.filter((r) => r.ruleType === 'per_cm2' && isRuleApplicable(r, quantity));
+  const areaRules = rules.filter(
+    (r) => r.ruleType === 'per_cm2' && isRuleApplicable(r, quantity) && (!r.printView || r.printView === element.view)
+  );
   if (areaRules.length > 0) {
     const areaCm2 = getBillableAreaCm2(element);
     return areaRules.reduce((sum, r) => sum + areaCm2 * r.price, 0);
@@ -206,7 +255,8 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // Rücken). Nutzt der Kunde nur EINE Ansicht – egal welche, auch nur
   // Rücken oder nur ein Ärmel – entsteht kein zusätzlicher Rüstaufwand
   // gegenüber "nur eine Fläche", also auch kein Aufschlag.
-  const distinctViewCount = new Set(elements.map((el) => el.view)).size;
+  const distinctViewsOrdered = [...new Set(elements.map((el) => el.view))];
+  const distinctViewCount = distinctViewsOrdered.length;
   const getEffectivePositionPrice = (view: PrintView) =>
     distinctViewCount > 1 ? getPositionPrice(view, pricingRules, quantity) : 0;
 
@@ -216,23 +266,37 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // wirkt hier automatisch – diese Funktion muss dafür nicht angefasst werden.
   const charges = evaluateRules(pricingRules, {
     elements,
-    distinctViews: [...new Set(elements.map((el) => el.view))],
+    distinctViews: distinctViewsOrdered,
     quantity,
     billableAreaCm2: getBillableAreaCm2,
     chargePositionFees: distinctViewCount > 1,
   });
 
   const elementBaseFeeTotal = elements.reduce(
-    (sum, el) => sum + getElementTypeBasePrice(el.type, pricingRules, quantity),
+    (sum, el) => sum + getElementTypeBasePrice(el.type, el.view, pricingRules, quantity),
     0
   );
   const positionFeeTotal = elements.reduce((sum, el) => sum + getEffectivePositionPrice(el.view), 0);
-  const variableCostTotal = elements.reduce((sum, el) => sum + getVariableCost(el, pricingRules, quantity), 0);
+
+  // Positionsgestaffelter DTF-Aufschlag (erste Ansicht + jede weitere) – fällt
+  // je Stück GENAU EINMAL an, nicht je Element (siehe getPositionTierRulePrices).
+  // Ohne aktive first_position/additional_position-Regeln ist erste=zusatz=0,
+  // das Produkt bleibt dann unverändert (z.B. Stickerei, die stattdessen über
+  // per_1000_stitches in getVariableCost() unten läuft).
+  const { erste: erstePositionPreis, zusatz: zusatzPositionPreis } = getPositionTierRulePrices(
+    pricingRules,
+    quantity
+  );
+  const positionTierTotal =
+    distinctViewCount > 0 ? erstePositionPreis + zusatzPositionPreis * (distinctViewCount - 1) : 0;
+
+  const variableCostTotal =
+    elements.reduce((sum, el) => sum + getVariableCost(el, pricingRules, quantity), 0) + positionTierTotal;
 
   const perElement = elements.map((el) => ({
     elementId: el.id,
     price:
-      getElementTypeBasePrice(el.type, pricingRules, quantity) +
+      getElementTypeBasePrice(el.type, el.view, pricingRules, quantity) +
       getEffectivePositionPrice(el.view) +
       getVariableCost(el, pricingRules, quantity),
   }));
@@ -247,6 +311,18 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       (areaPriceByView[el.view] ?? 0) +
       getVariableCost(el, pricingRules, quantity) * (1 - tier.veredelungDiscountPercent / 100);
   }
+  // Positionsgestaffelter Aufschlag PRO ANSICHT für die Anzeige: die zuerst
+  // bedruckte Ansicht (Reihenfolge der platzierten Elemente) bekommt
+  // erstePositionPreis, jede weitere genutzte Ansicht zusatzPositionPreis –
+  // eine reine Anzeige-Zuordnung, der GESAMTPREIS (positionTierTotal oben)
+  // ist davon unabhängig immer korrekt. Nur eine der beiden Quellen
+  // (Fläche/Stichzahl ODER Positionsstaffel) ist je Veredelungsart aktiv,
+  // in der Praxis also nie beides gleichzeitig ungleich 0 für dieselbe Ansicht.
+  distinctViewsOrdered.forEach((view, i) => {
+    const anteil = i === 0 ? erstePositionPreis : zusatzPositionPreis;
+    if (anteil === 0) return;
+    areaPriceByView[view] = (areaPriceByView[view] ?? 0) + anteil * (1 - tier.veredelungDiscountPercent / 100);
+  });
 
   // Grundpreis + Grundgebühren + Positionsaufschlag = "fester" Anteil,
   // leicht rabattiert. Fläche/Stichzahl = "variabler" Anteil, steil
@@ -313,6 +389,9 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       areaPricePerCm2: areaRule?.price ?? 0,
       pricePer1000Stitches: stitchRule?.price ?? 0,
       isStitchBased: Boolean(stitchRule),
+      isPositionBased: erstePositionPreis > 0 || zusatzPositionPreis > 0,
+      firstPositionPrice: erstePositionPreis,
+      additionalPositionPrice: zusatzPositionPreis,
       totalEstimatedStitches,
       baseDiscountPercent: tier.baseDiscountPercent,
       veredelungDiscountPercent: tier.veredelungDiscountPercent,

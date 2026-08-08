@@ -39,6 +39,8 @@ const STORNO_MELDUNGEN: Record<Extract<StornoErgebnis, { ok: false }>['grund'], 
   'frist-abgelaufen':
     'Die Stornofrist ist inzwischen abgelaufen. Bitte kontaktieren Sie uns – wir prüfen, was sich noch machen lässt.',
   'keine-bestellung': 'Für Anfragen gibt es keine Stornierung. Bitte kontaktieren Sie uns direkt.',
+  'nicht-stornierbar':
+    'Diese Bestellung ist bereits abgeschlossen und kann nicht mehr storniert werden. Bitte kontaktieren Sie uns direkt.',
   fehler: 'Die Stornierung konnte technisch nicht abgeschlossen werden. Bitte kontaktieren Sie uns direkt.',
 };
 

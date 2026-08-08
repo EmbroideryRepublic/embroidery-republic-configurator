@@ -38,6 +38,8 @@ export async function aendereBestellstatus(
       'uebergang-unzulaessig': ergebnis.aktuell
         ? `Nicht möglich: Die Bestellung steht auf „${STATUS_LABELS[ergebnis.aktuell]}".`
         : 'Dieser Statuswechsel ist nicht zulässig.',
+      'noch-nicht-freigegeben':
+        'Noch nicht möglich: Die Stornofrist für diese Bestellung läuft noch (oder die Zahlung steht aus). Der Kunde kann in dieser Zeit noch selbst stornieren.',
       fehler: 'Der Statuswechsel ist fehlgeschlagen.',
     };
     return { ok: false, meldung: texte[ergebnis.grund] ?? 'Unbekannter Fehler.' };

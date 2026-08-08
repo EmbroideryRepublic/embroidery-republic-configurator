@@ -357,6 +357,88 @@ test('Rabatt-Bausteine respektieren Aktionszeitraum und Mengenfenster', async ()
   assert.equal(r.totalPrice, ohne.totalPrice, 'abgelaufene Aktion darf nicht greifen');
 });
 
+// ── Ansichtsbeschränkte Regeln bei Fläche/Stichzahl und Logo/Text ─────
+//
+// getVariableCost()/getElementTypeBasePrice() werteten `rule.printView`
+// früher NICHT aus (anders als getPositionPrice() und die Regel-Engine
+// selbst) – eine auf eine Ansicht beschränkte per_cm2-/per_1000_stitches-/
+// per_logo-/per_text-Regel wurde dadurch fälschlich auf JEDES Element
+// angewendet, unabhängig von dessen Ansicht. Konkret: ein Kunde mit Motiven
+// auf Brust UND Rücken zahlte den Rücken-Aufschlag auch für die Brust.
+
+test('per_cm2-Regel mit printView gilt nur für Elemente auf dieser Ansicht', () => {
+  // Bewusst EIN isoliertes Regel-Set (nicht von getPricingRules abgeleitet):
+  // 'dtf'/'embroidery' enthalten aktive first_position/per_1000_stitches-
+  // Regeln, die sonst unabhängig vom hier getesteten Baustein in
+  // areaPriceByView.front einfließen und den Test verfälschen würden.
+  const rules: PricingRule[] = [
+    { id: 'flaeche-ruecken', ruleType: 'per_cm2', price: 0.05, printView: 'back', label: 'Flächenpreis Rücken', isActive: true },
+  ];
+
+  const nurVorne = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: 1, pricingRules: rules });
+  assert.equal(nurVorne.breakdown.areaPriceByView.front ?? 0, 0, 'die Regel gilt nur für den Rücken');
+
+  const vorneUndHinten = calculatePrice({
+    basePrice: 12.9,
+    elements: [logo('front', 'a'), logo('back', 'b')],
+    quantity: 1,
+    pricingRules: rules,
+  });
+  assert.equal(vorneUndHinten.breakdown.areaPriceByView.front ?? 0, 0, 'Front bleibt weiterhin unbeteiligt');
+  assert.ok((vorneUndHinten.breakdown.areaPriceByView.back ?? 0) > 0, 'Rücken trägt den Flächenpreis');
+});
+
+test('per_logo-Regel mit printView gilt nur für Logos auf dieser Ansicht', () => {
+  const rules: PricingRule[] = [
+    { id: 'logo-ruecken', ruleType: 'per_logo', price: 5, printView: 'back', label: 'Rücken-Aufschlag', isActive: true },
+  ];
+
+  const nurVorne = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: 1, pricingRules: rules });
+  const vorneUndHinten = calculatePrice({
+    basePrice: 12.9,
+    elements: [logo('front', 'a'), logo('back', 'b')],
+    quantity: 1,
+    pricingRules: rules,
+  });
+
+  // Das zusätzliche Rücken-Logo darf NUR den Rücken-Aufschlag (5 €) plus
+  // dessen eigene Fläche/Stichzahl kosten – nicht zusätzlich denselben
+  // Aufschlag nochmal für das (regelfremde) Front-Logo.
+  const differenz = vorneUndHinten.totalPrice - nurVorne.totalPrice;
+  const nurRueckenLogo = calculatePrice({ basePrice: 0, elements: [logo('back', 'b')], quantity: 1, pricingRules: rules });
+  assert.equal(
+    Math.round(differenz * 100),
+    Math.round(nurRueckenLogo.totalPrice * 100),
+    'die Differenz muss exakt dem Preis des zusätzlichen Rücken-Logos entsprechen, ohne Fremdaufschlag fürs Front-Logo'
+  );
+});
+
+test('ansichtsbeschränkte per_logo-Regel bleibt auch bei Mengenrabatt korrekt (surchargePerUnit)', () => {
+  const rules: PricingRule[] = [
+    { id: 'logo-ruecken', ruleType: 'per_logo', price: 5, printView: 'back', label: 'Rücken-Aufschlag', isActive: true },
+  ];
+  const menge = 500; // höchste Rabattstufe – deckt die ehemals unrabattierte Korrektur auf
+  const nurVorne = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: menge, pricingRules: rules });
+  const vorneUndHinten = calculatePrice({
+    basePrice: 12.9,
+    elements: [logo('front', 'a'), logo('back', 'b')],
+    quantity: menge,
+    pricingRules: rules,
+  });
+  const nurRueckenLogo = calculatePrice({
+    basePrice: 0,
+    elements: [logo('back', 'b')],
+    quantity: menge,
+    pricingRules: rules,
+  });
+
+  assert.equal(
+    Math.round((vorneUndHinten.totalPrice - nurVorne.totalPrice) * 100),
+    Math.round(nurRueckenLogo.totalPrice * 100),
+    'auch bei rabattierter Stückzahl darf das Front-Logo keinen Anteil am Rücken-Aufschlag tragen'
+  );
+});
+
 test('evaluateRules trennt Beträge in die drei Töpfe', async () => {
   const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'once' })];
   const charges = evaluateRules(rules, {

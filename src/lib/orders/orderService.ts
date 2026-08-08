@@ -26,15 +26,20 @@ import { sendOrderCancellationEmail } from '@/lib/email/orderEmails';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
 import { istUebergangErlaubt } from '@/config/orderStatus';
+import { imAdminSichtbar } from '@/lib/orders/orderVisibility';
 import { sendOrderShippedEmail, sendOrderInProductionEmail, sendOrderCompletedEmail } from '@/lib/email/orderEmails';
 
 export type StornoErgebnis =
   | { ok: true; bereitsStorniert: boolean }
-  | { ok: false; grund: 'nicht-gefunden' | 'frist-abgelaufen' | 'keine-bestellung' | 'fehler' };
+  | { ok: false; grund: 'nicht-gefunden' | 'frist-abgelaufen' | 'keine-bestellung' | 'nicht-stornierbar' | 'fehler' };
 
 export type StatusErgebnis =
   | { ok: true; von: OrderStatus; nach: OrderStatus; bereitsErreicht: boolean }
-  | { ok: false; grund: 'nicht-gefunden' | 'uebergang-unzulaessig' | 'fehler'; aktuell?: OrderStatus };
+  | {
+      ok: false;
+      grund: 'nicht-gefunden' | 'uebergang-unzulaessig' | 'noch-nicht-freigegeben' | 'fehler';
+      aktuell?: OrderStatus;
+    };
 
 /** Zeitstempelspalte, die beim jeweiligen Übergang gefüllt wird. */
 const ZEITSTEMPEL_SPALTE: Partial<Record<OrderStatus, string>> = {
@@ -65,9 +70,16 @@ export async function setzeBestellstatus(
 
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('id, email, status, order_type')
+    .select('id, email, status, order_type, created_at, payment_status')
     .eq('id', orderId)
-    .maybeSingle<{ id: string; email: string | null; status: OrderStatus; order_type: string }>();
+    .maybeSingle<{
+      id: string;
+      email: string | null;
+      status: OrderStatus;
+      order_type: string;
+      created_at: string;
+      payment_status: string | null;
+    }>();
 
   if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
 
@@ -78,6 +90,29 @@ export async function setzeBestellstatus(
 
   if (!istUebergangErlaubt(von, nach)) {
     return { ok: false, grund: 'uebergang-unzulaessig', aktuell: von };
+  }
+
+  // Dieselbe Regel wie für die Sichtbarkeit im Adminbereich (orderVisibility.ts):
+  // Vor Ablauf der Stornofrist darf noch nicht bearbeitet werden – sonst
+  // könnte Ware beschafft werden, die der Kunde Sekunden später doch noch
+  // storniert. Die Admin-UI verbirgt den Button dafür zwar, aber die Server
+  // Action selbst muss dieselbe Grenze durchsetzen, sonst schützt sie nur
+  // vor der eigenen Oberfläche, nicht vor einem direkten Aufruf.
+  // Ausnahme: eine Stornierung ist immer erlaubt, das widerspricht der Regel
+  // nicht – im Gegenteil, sie ist genau das, wovor die Regel schützen will.
+  if (nach !== 'cancelled') {
+    const sichtbar = imAdminSichtbar(
+      {
+        createdAt: bestellung.created_at,
+        status: von,
+        orderType: bestellung.order_type,
+        paymentStatus: bestellung.payment_status ?? 'not_required',
+      },
+      jetzt
+    );
+    if (!sichtbar) {
+      return { ok: false, grund: 'noch-nicht-freigegeben', aktuell: von };
+    }
   }
 
   const feld = ZEITSTEMPEL_SPALTE[nach];
@@ -242,7 +277,7 @@ export async function storniereBestellungDurchKunden(
       id: string;
       email: string | null;
       created_at: string;
-      status: string;
+      status: OrderStatus;
       order_type: string;
       internal_notification_email_id: string | null;
     }>();
@@ -254,6 +289,16 @@ export async function storniereBestellungDurchKunden(
 
   // Erneuter Klick auf denselben Link darf nicht als Fehler wirken.
   if (bestellung.status === 'cancelled') return { ok: true, bereitsStorniert: true };
+
+  // Dieselbe Zustandsmaschine wie beim Admin-Statuswechsel (setzeBestellstatus):
+  // eine bereits abgeschlossene Bestellung (Endzustand `completed`) darf auch
+  // innerhalb der Stornofrist nicht mehr storniert werden – sie ist bereits
+  // produziert/versendet/abgerechnet. Ohne diese Prüfung könnte eine schnell
+  // durchlaufende Bestellung (z.B. durch einen frühen Admin-Statuswechsel)
+  // als `cancelled` markiert werden, obwohl sie bereits `completed` ist.
+  if (!istUebergangErlaubt(bestellung.status, 'cancelled')) {
+    return { ok: false, grund: 'nicht-stornierbar' };
+  }
 
   if (!stornofristLaeuftNoch(bestellung.created_at, jetzt)) {
     return { ok: false, grund: 'frist-abgelaufen' };
@@ -270,6 +315,10 @@ export async function storniereBestellungDurchKunden(
     // Schutz gegen zwei gleichzeitige Klicks: Nur wer den Datensatz noch
     // im nicht-stornierten Zustand vorfindet, storniert ihn.
     .neq('status', 'cancelled')
+    // Zusätzlicher Schutz gegen den seltenen Fall, dass die Bestellung
+    // zwischen der obigen Prüfung und diesem UPDATE durch einen parallelen
+    // Admin-Statuswechsel `completed` erreicht (Endzustand, siehe oben).
+    .neq('status', 'completed')
     // Die Datenbank entscheidet, WER storniert hat. Ohne diese Rückgabe
     // wüssten zwei gleichzeitige Anfragen beide nichts voneinander und
     // würden beide ein 'cancelled'-Ereignis und eine Bestätigungsmail
@@ -281,11 +330,20 @@ export async function storniereBestellungDurchKunden(
     return { ok: false, grund: 'fehler' };
   }
 
-  // Keine Zeile getroffen: Eine parallele Anfrage war schneller. Für den
-  // Aufrufer ist das ein Erfolg (die Bestellung IST storniert), aber die
-  // Folgeschritte gehören dem Gewinner – hier passiert nichts weiter.
+  // Keine Zeile getroffen: entweder eine parallele Stornierung war
+  // schneller (dann ist es aus Kundensicht ein Erfolg), oder die Bestellung
+  // wurde im selben Moment `completed` (dann NICHT storniert). Der aktuelle
+  // Stand entscheidet – niemals blind "erfolgreich storniert" annehmen.
   if ((geaendert?.length ?? 0) === 0) {
-    return { ok: true, bereitsStorniert: true };
+    const { data: aktuell } = await db
+      .from('orders')
+      .select('status')
+      .eq('id', orderId)
+      .maybeSingle<{ status: OrderStatus }>();
+    if (aktuell?.status === 'cancelled') {
+      return { ok: true, bereitsStorniert: true };
+    }
+    return { ok: false, grund: 'nicht-stornierbar' };
   }
 
   // Ab hier ist die Bestellung storniert. Alles Weitere ist bewusst

@@ -4,6 +4,7 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { profilAktualisierenAction, type KontoActionResult } from '@/lib/actions/konto';
 import type { KundenProfil } from '@/lib/account/types';
 import { KontoFeld } from './KontoFeld';
+import { GRENZEN } from '@/lib/orders/orderValidation';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -24,12 +25,41 @@ export function ProfilForm({ profil }: { profil: KundenProfil }) {
   return (
     <form action={formAction} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
-        <KontoFeld id="displayName" name="displayName" label="Name" defaultValue={profil.displayName ?? ''} spalten autoComplete="name" />
-        <KontoFeld id="phone" name="phone" label="Telefon" type="tel" defaultValue={profil.phone ?? ''} autoComplete="tel" />
-        <KontoFeld id="company" name="company" label="Firma (optional)" defaultValue={profil.company ?? ''} autoComplete="organization" />
-        <KontoFeld id="vatId" name="vatId" label="USt-IdNr. (optional)" defaultValue={profil.vatId ?? ''} />
+        <KontoFeld
+          id="displayName"
+          name="displayName"
+          label="Name"
+          defaultValue={profil.displayName ?? ''}
+          spalten
+          autoComplete="name"
+          maxLength={GRENZEN.maxFeldLaenge}
+        />
+        <KontoFeld
+          id="phone"
+          name="phone"
+          label="Telefon"
+          type="tel"
+          defaultValue={profil.phone ?? ''}
+          autoComplete="tel"
+          maxLength={GRENZEN.maxFeldLaenge}
+        />
+        <KontoFeld
+          id="company"
+          name="company"
+          label="Firma (optional)"
+          defaultValue={profil.company ?? ''}
+          autoComplete="organization"
+          maxLength={GRENZEN.maxFeldLaenge}
+        />
+        <KontoFeld
+          id="vatId"
+          name="vatId"
+          label="USt-IdNr. (optional)"
+          defaultValue={profil.vatId ?? ''}
+          maxLength={GRENZEN.maxFeldLaenge}
+        />
       </div>
-      <label className="flex items-start gap-2 text-xs text-brand/60">
+      <label className="flex items-start gap-2 text-xs text-brand/70">
         <input
           type="checkbox"
           name="newsletter"

@@ -17,6 +17,7 @@ export function KontoFeld({
   autoComplete,
   required,
   minLength,
+  maxLength,
   pattern,
   spalten,
   inputMode,
@@ -29,6 +30,7 @@ export function KontoFeld({
   autoComplete?: string;
   required?: boolean;
   minLength?: number;
+  maxLength?: number;
   /** Spiegelt eine serverseitige Formatregel clientseitig (z.B. Passwort-Komplexität). */
   pattern?: string;
   /** Über beide Spalten eines zweispaltigen Formulars. */
@@ -37,7 +39,7 @@ export function KontoFeld({
 }) {
   return (
     <div className={spalten ? 'col-span-2' : undefined}>
-      <label htmlFor={id} className="mb-1 block text-xs font-medium text-brand/60">
+      <label htmlFor={id} className="mb-1 block text-xs font-medium text-brand/70">
         {label}
         {required && <span className="text-gold-dark"> *</span>}
       </label>
@@ -49,6 +51,7 @@ export function KontoFeld({
         autoComplete={autoComplete}
         required={required}
         minLength={minLength}
+        maxLength={maxLength}
         pattern={pattern}
         inputMode={inputMode}
         className={FELD_KLASSE}

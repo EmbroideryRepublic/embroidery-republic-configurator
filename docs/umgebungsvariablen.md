@@ -58,26 +58,82 @@ Entwicklung unauffällig, scheitert aber beim ersten Produktivversand.
 
 ---
 
-## Zahlung (Stripe integriert)
+## Zahlung (Stripe + PayPal integriert)
 
-Der Adapter ist gebaut und im Testmodus nachgewiesen. Er wird erst wirksam,
-wenn diese beiden Variablen gesetzt sind:
+Beide Adapter sind gebaut, verdrahtet und im Testmodus nachgewiesen. Der
+Checkout (`CartDrawer.tsx`) bietet Rechnung/Karte/PayPal als echte Auswahl;
+bei Karte/PayPal eröffnet `starteZahlung()` (`lib/orders/paymentService.ts`)
+nach dem Speichern der Bestellung den Bezahlvorgang und leitet zur
+gehosteten Checkout-Seite weiter. Ob eine Bestellung als bezahlt gilt,
+entscheidet ausschließlich der jeweilige Webhook, nie dieser Redirect.
+
+### Stripe
 
 | Variable | Bedeutung |
 |---|---|
 | `STRIPE_SECRET_KEY` | geheimer Stripe-Schlüssel (`sk_test_` / `sk_live_`). `stripeKonfiguration.ts` erkennt Verwechslung mit dem publizierbaren Schlüssel und warnt bei `sk_live_` außerhalb der Produktion. |
-| `STRIPE_WEBHOOK_SECRET` | prüft die Webhook-Signatur. **Erst nach Einrichten des Webhook-Endpunkts verfügbar** – deshalb getrennt vom Secret-Key. |
+| `STRIPE_WEBHOOK_SECRET` | prüft die Webhook-Signatur. **Erst nach Einrichten des Webhook-Endpunkts verfügbar** – deshalb getrennt vom Secret-Key. Endpunkt: `https://<domain>/api/webhooks/stripe`. |
 
-Solange diese fehlen, gilt Stripe über `stripeKonfigurationsStand()` als nicht
-einsatzbereit; `registry.ts` bietet dann ausschließlich Rechnungskauf – ohne
-stillen Rückfall auf den Testanbieter.
+### PayPal
 
-**Diese beiden Variablen zu setzen reicht allein noch nicht.** Im Checkout
-ist die Zahlungsart derzeit unabhängig davon hart auf Rechnung verdrahtet
-(`paymentMethod = 'invoice' as const` in `CartDrawer.tsx`, Karte/PayPal sind
-UI-seitig ausgeblendet, nicht entfernt). Erst wenn diese Festverdrahtung
-zurückgebaut und die Auswahl wieder freigegeben wird, ist Kartenzahlung im
-Checkout tatsächlich wählbar.
+| Variable | Bedeutung |
+|---|---|
+| `PAYPAL_CLIENT_ID` / `PAYPAL_CLIENT_SECRET` | App-Zugangsdaten aus dem PayPal Developer Dashboard – Sandbox und Live haben JEWEILS eigene Paare. |
+| `PAYPAL_WEBHOOK_ID` | für die serverseitige Signaturprüfung (`POST /v1/notifications/verify-webhook-signature`). Endpunkt: `https://<domain>/api/webhooks/paypal`. |
+| `PAYPAL_ENV` | `sandbox` oder `live` – bestimmt die Basis-URL (`api-m.sandbox.paypal.com` / `api-m.paypal.com`), explizit statt aus `NODE_ENV` abgeleitet. |
+
+Anders als Stripe (lokale HMAC-Prüfung) verifiziert PayPal Webhooks über
+einen Netzwerk-Aufruf zurück an PayPal – siehe Kopfkommentar in
+`lib/payments/providers/paypal.ts`. Der Capture-Schritt (Geld tatsächlich
+einziehen) läuft ebenfalls serverseitig im Webhook (`CHECKOUT.ORDER.APPROVED`),
+nicht auf der Rückkehr-Seite.
+
+Solange die jeweiligen Variablen fehlen, gilt der Anbieter über
+`stripeKonfigurationsStand()`/`paypalKonfigurationsStand()` als nicht
+einsatzbereit; `registry.ts` bietet dann nur die verbleibenden Anbieter an –
+ohne stillen Rückfall auf den Testanbieter.
+
+---
+
+## Rechnung (Lexware Office integriert)
+
+Lexware Office ist das führende Rechnungssystem – die Rechnungsnummer wird
+AUSSCHLIESSLICH dort vergeben, nicht im Shop. Automatisch ausgelöst für jede
+verbindliche Bestellung (Rechnungskauf UND vorab bezahlte), sobald Phase 2
+läuft (`lib/orders/orderCompletion.ts`, `erzeugeRechnung`).
+
+| Variable | Bedeutung |
+|---|---|
+| `LEXWARE_API_KEY` | persönlicher API-Schlüssel, erzeugt unter `app.lexware.de/addons/public-api`. |
+
+**Keine Sandbox verfügbar** – jeder Aufruf trifft das echte Konto. Der
+Testmodus (`E2E_TESTMODUS=aktiv`) ist deshalb hier die EINZIGE Schutzschicht
+gegen einen versehentlichen echten Rechnungslauf (`waehleRechnungsAnbieter()`
+in `lib/invoicing/registry.ts` wählt im Testmodus immer den Testanbieter,
+unabhängig vom gesetzten Schlüssel). `LEXWARE_API_KEY` deshalb **niemals in
+CI setzen**.
+
+---
+
+## Versand (DHL Parcel DE Shipping API v2 integriert)
+
+Admin-ausgelöst über den Button „DHL-Label erstellen" (Bestelldetailseite),
+sobald Zahlung + Lieferadresse vorliegen. Erzeugt Label + Sendungsnummer,
+speichert beides an der Bestellung (`tracking_number`, `carrier`,
+`dhl_label_url`).
+
+| Variable | Bedeutung |
+|---|---|
+| `DHL_API_KEY` | Anwendungs-Schlüssel aus dem DHL-Entwicklerportal (developer.dhl.com). |
+| `DHL_USERNAME` / `DHL_PASSWORD` | Zugangsdaten des DHL-Geschäftskundenkontos (HTTP-Basic, zusätzlich zum API-Key). |
+| `DHL_BILLING_NUMBER` | 14-stellige Abrechnungsnummer des Versandvertrags. |
+| `DHL_ENV` | `sandbox` oder `production` – bestimmt die Basis-URL. |
+
+**Sandbox-Zugang muss aktiv beim DHL-Entwicklerportal beantragt werden**
+(Stand Aug 2026: manuelle Prüfung, ca. 24h) – ein bestehender
+Geschäftskundenvertrag allein reicht nicht für den API-Zugang. Die alte
+SOAP-Schnittstelle „Geschäftskundenversand" v3 ist laut DHL zum 31.05.2026
+abgeschaltet; diese Integration nutzt ausschließlich die neue REST-API v2.
 
 ---
 
@@ -137,7 +193,21 @@ NEXT_PUBLIC_SITE_URL=https://<domain>
 # Skripte
 DIRECT_URL=postgresql://…
 
-# Zahlung – Stripe integriert; setzen, um Kartenzahlung zu aktivieren
+# Zahlung – Stripe + PayPal integriert; setzen, um die jeweilige Zahlart zu aktivieren
 # STRIPE_SECRET_KEY=
 # STRIPE_WEBHOOK_SECRET=
+# PAYPAL_CLIENT_ID=
+# PAYPAL_CLIENT_SECRET=
+# PAYPAL_WEBHOOK_ID=
+# PAYPAL_ENV=sandbox
+
+# Rechnung – Lexware Office integriert; setzen, um Rechnungen automatisch zu erstellen
+# LEXWARE_API_KEY=
+
+# Versand – DHL integriert; setzen, um Versandlabel erstellen zu können
+# DHL_API_KEY=
+# DHL_USERNAME=
+# DHL_PASSWORD=
+# DHL_BILLING_NUMBER=
+# DHL_ENV=sandbox
 ```

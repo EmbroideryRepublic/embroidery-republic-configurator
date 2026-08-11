@@ -106,7 +106,8 @@ export const stripeAnbieter: ZahlungsAnbieter = {
     return { referenz: session.id, weiterleitungUrl: session.url };
   },
 
-  leseEreignis(rohBody: string, signatur: string | null): ZahlungsEreignis | null {
+  async leseEreignis(rohBody: string, headers: Headers): Promise<ZahlungsEreignis | null> {
+    const signatur = headers.get('stripe-signature');
     if (!signatur) return null;
 
     // Der Webhook-Schlüssel kann fehlen (gestaffelte Konfiguration, bevor der

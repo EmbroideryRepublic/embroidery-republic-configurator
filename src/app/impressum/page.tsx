@@ -23,10 +23,13 @@ export default function ImpressumPage() {
 
       <h1 className="mb-4 mt-4 font-serif text-2xl font-semibold text-brand">Impressum</h1>
 
-      <TodoNote>
-        Es fehlt noch die Umsatzsteuer-Identifikationsnummer bzw. Steuernummer. Die betreffende
-        Stelle ist unten markiert und muss vor dem Go-live ergänzt werden.
-      </TodoNote>
+      {!COMPANY.vatId && (
+        <TodoNote>
+          Es fehlt noch die Umsatzsteuer-Identifikationsnummer bzw. Steuernummer. Sobald sie in
+          config/company.ts (COMPANY.vatId) eingetragen ist, erscheint sie hier automatisch und
+          dieser Hinweis verschwindet von selbst.
+        </TodoNote>
+      )}
 
       <section className="space-y-5">
         <div>
@@ -69,7 +72,7 @@ export default function ImpressumPage() {
           <h2 className="font-medium text-brand">Umsatzsteuer</h2>
           <p>
             Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:{' '}
-            <Todo>USt-IdNr. bzw. Steuernummer ergänzen</Todo>
+            {COMPANY.vatId ? COMPANY.vatId : <Todo>USt-IdNr. bzw. Steuernummer ergänzen</Todo>}
           </p>
         </div>
 

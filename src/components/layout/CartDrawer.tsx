@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2, AlertCircle, Loader2, Receipt, CreditCard, Wallet } from 'lucide-react';
 import { useCartStore, getCartTotal, getCartItemCount } from '@/stores/cartStore';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getProduct } from '@/config/products';
@@ -16,6 +16,7 @@ import { steuersatzFuer, steueranteil, STANDARDLAND } from '@/config/pricing/ste
 import { istPlausibleEmail, istGueltigePlz } from '@/lib/orders/orderValidation';
 import { FELD_KLASSE } from '@/lib/ui/feldKlasse';
 import { formatiereFarbname } from '@/lib/products/farben';
+import type { OrderPaymentMethod } from '@/lib/actions/orderTypes';
 import type { CartItem } from '@/types';
 
 interface CartDrawerProps {
@@ -332,21 +333,18 @@ interface CheckoutFormProps {
  * Echtes Bestellformular (Adresse, Zahlungsart, AGB-Zustimmung) statt einer
  * reinen "Anfrage"-Vorschau.
  *
- * Zahlungsart: bis zur Stripe-Anbindung ausschließlich RECHNUNG. Karte und
- * PayPal sind bewusst ausgeblendet (nicht entfernt) – die paymentMethod-Union
- * und die serverseitige Verarbeitung bleiben erhalten, sodass sie sich später
- * ohne Umbau reaktivieren lassen. Es wird im Checkout nichts abgebucht; die
- * Rechnung folgt separat mit der Auftragsbearbeitung.
+ * Zahlungsart: Rechnung, Karte (Stripe) oder PayPal, echte Auswahl. Bei Karte
+ * oder PayPal eröffnet der Server nach dem Speichern der Bestellung einen
+ * Bezahlvorgang beim gewählten Anbieter (lib/orders/paymentService.ts) und
+ * liefert eine `checkoutUrl` zurück – handleSubmit leitet dorthin per
+ * Full-Page-Redirect weiter, STATT die Erfolgsmeldung hier im Drawer zu
+ * zeigen. Ob die Bestellung als bezahlt gilt, entscheidet ausschließlich der
+ * Zahlungs-Webhook (paymentService.ts) – niemals dieser Redirect selbst.
  */
 function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingChange }: CheckoutFormProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
-  // Bis zur Stripe-Anbindung ist Rechnung die einzige Zahlungsart. Die Union
-  // ('card' | 'paypal' | 'invoice') und die serverseitige Verarbeitung in
-  // submitOrder bleiben bewusst unverändert erhalten, damit Karte/PayPal
-  // später ohne Umbau wieder aktiviert werden können – hier wird lediglich
-  // fest 'invoice' übermittelt und die Auswahl-UI ausgeblendet.
-  const paymentMethod = 'invoice' as const;
+  const [paymentMethod, setPaymentMethod] = useState<OrderPaymentMethod>('invoice');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   // Mehrfachklick, Zeitüberschreitung und Verbindungsabbruch liegen gebündelt
   // im Hook (lib/hooks/useSubmitGuard.ts) – nicht in jedem Formular erneut.
@@ -522,6 +520,18 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
     // steht in dem Fall bereits im Hook.
     if (!result) return;
 
+    if (result.success && result.checkoutUrl) {
+      // Karte/PayPal: die Bestellung existiert bereits (payment_status
+      // 'pending'), der Bezahlvorgang beim Anbieter wurde eröffnet. Kein
+      // resetSubmitGuard() davor – die Seite wird ohnehin verlassen; bricht
+      // der Redirect selbst ab (z.B. Browser-Zurück), schützt die weiterhin
+      // gespeicherte clientRequestId gegen eine zweite Bestellung bei einem
+      // erneuten Versuch. Keine Erfolgsmeldung hier: Bezahlt ist die
+      // Bestellung erst nach dem Webhook, nicht durch diesen Redirect.
+      window.location.href = result.checkoutUrl;
+      return;
+    }
+
     if (result.success && result.orderNumber) {
       resetSubmitGuard();
       onOrderPlaced(result.orderNumber);
@@ -575,18 +585,51 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
 
         <section>
           <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/50">{t('checkout_payment_heading')}</h3>
-          {/* Nur Rechnung bis Stripe live ist – Karte/PayPal bewusst
-              ausgeblendet (nicht entfernt). Ein statischer, informativer
-              Hinweis statt einer Auswahl mit nur einer Option. */}
-          <div className="rounded-lg border border-gold bg-gold-light/30 px-3 py-2.5">
-            <p className="text-sm font-medium text-brand">{t('checkout_payment_invoice')}</p>
-            {/* Zentrales Kaufargument zuerst und hervorgehoben: keine Vorkasse. */}
-            <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-gold-dark">
-              <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0" aria-hidden />
-              {t('checkout_no_prepay')}
-            </p>
-            <p className="mt-1 text-xs leading-relaxed text-brand/60">{t('checkout_payment_invoice_note')}</p>
+          {/* Echte Auswahl: Rechnung, Karte (Stripe) oder PayPal. Bei Karte/
+              PayPal übernimmt der Server nach dem Speichern der Bestellung
+              die Weiterleitung zum jeweiligen gehosteten Checkout – hier wird
+              nur die Absicht der Kundschaft festgehalten, abgebucht wird
+              nichts im Drawer selbst. */}
+          <div className="grid grid-cols-3 gap-1.5">
+            {(['invoice', 'card', 'paypal'] as const).map((methode) => {
+              const Icon = methode === 'invoice' ? Receipt : methode === 'card' ? CreditCard : Wallet;
+              const ausgewaehlt = paymentMethod === methode;
+              return (
+                <button
+                  key={methode}
+                  type="button"
+                  onClick={() => setPaymentMethod(methode)}
+                  aria-pressed={ausgewaehlt}
+                  className={`flex flex-col items-center gap-1 rounded-lg border px-2 py-2.5 text-center transition-colors ${
+                    ausgewaehlt ? 'border-gold bg-gold-light/30' : 'border-brand/10 hover:border-brand/20'
+                  }`}
+                >
+                  <Icon className={`h-4 w-4 ${ausgewaehlt ? 'text-gold-dark' : 'text-brand/50'}`} aria-hidden />
+                  <span className={`text-xs font-medium ${ausgewaehlt ? 'text-brand' : 'text-brand/70'}`}>
+                    {t(
+                      methode === 'invoice'
+                        ? 'checkout_payment_invoice'
+                        : methode === 'card'
+                          ? 'checkout_payment_card'
+                          : 'checkout_payment_paypal'
+                    )}
+                  </span>
+                </button>
+              );
+            })}
           </div>
+          {paymentMethod === 'invoice' ? (
+            <div className="mt-2 rounded-lg border border-gold bg-gold-light/30 px-3 py-2.5">
+              {/* Zentrales Kaufargument zuerst und hervorgehoben: keine Vorkasse. */}
+              <p className="flex items-center gap-1.5 text-xs font-medium text-gold-dark">
+                <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0" aria-hidden />
+                {t('checkout_no_prepay')}
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-brand/60">{t('checkout_payment_invoice_note')}</p>
+            </div>
+          ) : (
+            <p className="mt-2 text-xs leading-relaxed text-brand/60">{t('checkout_payment_redirect_note')}</p>
+          )}
         </section>
 
         <section className="rounded-lg bg-cream/70 p-3 text-sm">

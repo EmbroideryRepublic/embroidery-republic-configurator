@@ -17,6 +17,7 @@ import { SUPPLIERS } from '@/lib/suppliers';
 import type { SupplierId } from '@/lib/suppliers';
 import { MarkOrderedButton } from '@/components/admin/MarkOrderedButton';
 import { OrderStatusControl } from '@/components/admin/OrderStatusControl';
+import { ShippingLabelControl } from '@/components/admin/ShippingLabelControl';
 import {
   PAYMENT_METHOD_LABELS,
   PAYMENT_STATUS_LABELS,
@@ -60,11 +61,16 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           der Betreiber diese Seite in aller Regel öffnet. Anfragen haben
           keinen Bestellstatus und bekommen sie deshalb nicht. */}
       {order.orderType === 'order' && (
-        <div className="mb-4">
+        <div className="mb-4 grid gap-4 sm:grid-cols-2">
           <OrderStatusControl
             orderId={order.id}
             status={order.status as OrderStatus}
             trackingNummer={order.trackingNumber}
+          />
+          <ShippingLabelControl
+            orderId={order.id}
+            trackingNummer={order.trackingNumber}
+            labelUrl={order.dhlLabelUrl}
           />
         </div>
       )}
@@ -122,6 +128,32 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
             <p className="mt-1 text-sm text-gray-700">
               Zahlung:{' '}
               {PAYMENT_STATUS_LABELS[order.paymentStatus as OrderPaymentStatus] ?? order.paymentStatus}
+            </p>
+          )}
+          {/* Rechnung: von Lexware automatisch erzeugt, siehe
+              orderCompletion.ts (erzeugeRechnung). Fehlt sie, ist entweder
+              die Zahlung noch offen oder die Erstellung (nicht-fatal)
+              fehlgeschlagen – order_events (invoice_creation_failed) zeigt
+              den Grund. */}
+          {order.orderType === 'order' && (
+            <p className="mt-1 text-sm text-gray-700">
+              Rechnung:{' '}
+              {order.invoiceNumber ? (
+                <>
+                  {order.invoiceNumber}
+                  {order.invoicePdfUrl && (
+                    <>
+                      {' '}
+                      ·{' '}
+                      <a href={order.invoicePdfUrl} target="_blank" rel="noreferrer" className="text-gold-dark hover:underline">
+                        PDF öffnen ↗
+                      </a>
+                    </>
+                  )}
+                </>
+              ) : (
+                <span className="text-gray-400">noch nicht erstellt</span>
+              )}
             </p>
           )}
         </section>

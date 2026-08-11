@@ -11,6 +11,7 @@ import { pruefeRateLimit } from '@/lib/security/rateLimit';
 import { validateSubmission } from '@/lib/orders/orderValidation';
 // Phase 2 des Bestelleingangs – Rendering, Produktionsblatt, Benachrichtigung.
 import { schliesseBestellungAb, holeAbschlussFuerRetryNach } from '@/lib/orders/orderCompletion';
+import { starteZahlung } from '@/lib/orders/paymentService';
 import { getProduct } from '@/config/products';
 import type { CartItem, ConfigElement } from '@/types';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
@@ -552,6 +553,7 @@ async function persistAndNotifyCore(params: {
     taxAmount: pricing.taxAmount,
     taxRate: pricing.taxRate,
     netTotal: pricing.netTotal,
+    customerVatId: vatId ?? undefined,
     items: itemRecords,
   };
 
@@ -571,9 +573,24 @@ async function persistAndNotifyCore(params: {
   const vorabZahlung = params.paymentMethod ? brauchtVorabZahlung(params.paymentMethod) : false;
 
   if (vorabZahlung) {
-    // Die Bestellung existiert und ist 'pending'. Der Aufrufer startet als
-    // Nächstes die Zahlung; Phase 2 wartet auf den Webhook.
-    return { success: true, orderNumber };
+    // Die Bestellung existiert und ist 'pending'. Jetzt den Bezahlvorgang
+    // eröffnen und die Kundschaft zur gehosteten Checkout-Seite des
+    // gewählten Anbieters weiterleiten – Phase 2 (Produktionsblatt,
+    // Bestätigung, jetzt auch Rechnung) läuft weiterhin NICHT hier, sondern
+    // erst nach der Bestätigung durch den Zahlungs-Webhook
+    // (paymentService.ts). Schlägt die Eröffnung fehl, bleibt die Bestellung
+    // als 'pending' bestehen (kein Rollback nötig) – ein erneuter Versuch
+    // mit derselben clientRequestId trifft den bestehenden Datensatz und
+    // starteZahlung unterstützt Wiederaufnahme.
+    const zahlung = await starteZahlung({
+      orderId,
+      neuBerechnetEuro: pricing.totalPrice,
+      anbieterId: params.paymentMethod === 'paypal' ? 'paypal' : 'stripe',
+    });
+    if (!zahlung.ok) {
+      return { success: false, error: zahlung.meldung };
+    }
+    return { success: true, orderNumber, checkoutUrl: zahlung.weiterleitungUrl };
   }
 
   // Die Funktion wirft nicht – sie berichtet. Eine gespeicherte Bestellung

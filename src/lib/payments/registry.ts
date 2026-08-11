@@ -15,6 +15,8 @@ import { istTestmodus } from '@/config/testmodus';
 import { testAnbieter } from './providers/testAnbieter';
 import { stripeAnbieter } from './providers/stripe';
 import { stripeKonfigurationsStand, warneBeiProduktivSchluessel } from './providers/stripeKonfiguration';
+import { paypalAnbieter } from './providers/paypal';
+import { paypalKonfigurationsStand, warneBeiProduktivUmgebung } from './providers/paypalKonfiguration';
 import type { ZahlungsAnbieter, ZahlungsAnbieterId } from './types';
 
 /**
@@ -32,6 +34,7 @@ import type { ZahlungsAnbieter, ZahlungsAnbieterId } from './types';
 const ANBIETER: Record<ZahlungsAnbieterId, ZahlungsAnbieter | null> = {
   test: testAnbieter,
   stripe: stripeAnbieter,
+  paypal: paypalAnbieter,
 };
 
 /**
@@ -46,6 +49,7 @@ const ANBIETER: Record<ZahlungsAnbieterId, ZahlungsAnbieter | null> = {
 function istEinsatzbereit(id: ZahlungsAnbieterId): boolean {
   if (!ANBIETER[id]) return false;
   if (id === 'stripe') return stripeKonfigurationsStand().zahlungenMoeglich;
+  if (id === 'paypal') return paypalKonfigurationsStand().zahlungenMoeglich;
   return true;
 }
 
@@ -67,9 +71,11 @@ export class ZahlungsAnbieterFehlt extends Error {}
 export function waehleZahlungsAnbieter(gewuenscht?: ZahlungsAnbieterId): ZahlungsAnbieter {
   if (istTestmodus()) return testAnbieter;
 
-  // Vor jeder echten Verwendung prüfen: ein sk_live_-Schlüssel außerhalb des
-  // Produktivbetriebs wäre der teuerste denkbare Konfigurationsfehler.
+  // Vor jeder echten Verwendung prüfen: ein sk_live_-Schlüssel bzw.
+  // PAYPAL_ENV=live außerhalb des Produktivbetriebs wäre der teuerste
+  // denkbare Konfigurationsfehler.
   warneBeiProduktivSchluessel();
+  warneBeiProduktivUmgebung();
 
   const id = gewuenscht ?? standardAnbieter();
   const anbieter = ANBIETER[id];

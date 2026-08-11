@@ -77,9 +77,17 @@ export interface AdminOrderDetail {
   /** Zeitlich befristete Download-URL des Produktionsblatts (null, solange
    *  keines erzeugt wurde). Wird beim Seitenaufbau frisch signiert. */
   productionSheetUrl: string | null;
-  /** Sendungsnummer, sofern beim Versand erfasst. */
+  /** Sendungsnummer – seit der DHL-Anbindung von dort vorbefüllt, davor
+   *  manuelle Admin-Eingabe. Beide Wege schreiben dasselbe Feld. */
   trackingNumber: string | null;
   shippedAt: string | null;
+  /** Von Lexware vergebene Rechnungsnummer (null, solange keine Rechnung
+   *  erzeugt wurde). */
+  invoiceNumber: string | null;
+  /** Zeitlich befristete Download-URL der Lexware-Rechnung. */
+  invoicePdfUrl: string | null;
+  /** Zeitlich befristete Download-URL des DHL-Versandlabels. */
+  dhlLabelUrl: string | null;
   /** Persistierte Automatisierungs-Snapshots inkl. letztem Lauf. */
   supplierOrders: AdminSupplierOrderRow[];
 }
@@ -260,7 +268,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   const { data: order, error: orderError } = await supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at'
+      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url'
     )
     .eq('id', orderId)
     .single();
@@ -367,6 +375,9 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     productionSheetUrl: order.pdf_url ? await getProductionFileSignedUrl(order.pdf_url as string) : null,
     trackingNumber: (order.tracking_number as string | null) ?? null,
     shippedAt: (order.shipped_at as string | null) ?? null,
+    invoiceNumber: (order.invoice_number as string | null) ?? null,
+    invoicePdfUrl: order.invoice_pdf_url ? await getProductionFileSignedUrl(order.invoice_pdf_url as string) : null,
+    dhlLabelUrl: order.dhl_label_url ? await getProductionFileSignedUrl(order.dhl_label_url as string) : null,
     supplierOrders: (supplierRows ?? []).map((row) => ({
       supplierId: row.supplier_id as string,
       status: row.status as string,

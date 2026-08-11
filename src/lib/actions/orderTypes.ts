@@ -111,6 +111,10 @@ export interface OrderRecord {
   taxRate?: number;
   /** Nettosumme = totalPrice − taxAmount. */
   netTotal?: number;
+  /** Schnappschuss aus orders.customer_vat_id (Migration 0025) – nur bei
+   *  angemeldeten Kund:innen mit hinterlegter USt-IdNr., sonst undefined.
+   *  Für die Lexware-Rechnung (lib/invoicing/), nicht für Phase 1/2 sonst. */
+  customerVatId?: string;
   items: OrderItemRecord[];
 }
 

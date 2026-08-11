@@ -69,7 +69,8 @@ export const testAnbieter: ZahlungsAnbieter = {
    * damit ein fehlender Signaturvergleich später auffällt und nicht erst im
    * Produktivbetrieb.
    */
-  leseEreignis(rohBody: string, signatur: string | null): ZahlungsEreignis | null {
+  async leseEreignis(rohBody: string, headers: Headers): Promise<ZahlungsEreignis | null> {
+    const signatur = headers.get('x-test-signatur');
     if (signatur !== TEST_SIGNATUR) {
       console.warn('[zahlung:test] Ereignis mit ungültiger Signatur verworfen.');
       return null;

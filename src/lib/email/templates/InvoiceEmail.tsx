@@ -3,19 +3,15 @@
  * (Verkäufer, Käufer, Rechnungsnummer, Datum, Leistungsbeschreibung, Entgelt
  * netto, Steuersatz und -betrag, Endbetrag), soweit sie im System vorliegen.
  *
- * ── Bewusst NICHT automatisch verschickt (Stand 2026-08-07) ────────────
- * Diese Vorlage ist fertig und einsatzbereit, aber an KEINER Stelle im
- * Bestellablauf verdrahtet. Grund: `order.orderNumber` (buildOrderNumber,
- * orderTypes.ts) ist von der Bestell-ID abgeleitet, NICHT fortlaufend – für
- * eine rechtssichere Rechnungsnummer verlangt § 14 Abs. 4 Nr. 4 UStG eine
- * eindeutige, üblicherweise lückenlos fortlaufende Nummer. Ob die
- * Bestellnummer dafür ausreicht, ein eigener Rechnungsnummernkreis
- * eingeführt wird, oder Rechnungen weiterhin über ein externes
- * Buchhaltungswerkzeug laufen (die AGB sagen heute: "Rechnung erhalten Sie
- * separat mit der Auftragsbearbeitung" – ein bewusst manueller Prozess), ist
- * eine Buchhaltungs-/Geschäftsentscheidung, keine, die sich technisch
- * erraten lässt. Deshalb hier dokumentiert statt automatisch scharf
- * geschaltet – siehe docs/entscheidungen-produktionsreife.md.
+ * ── Seit 2026-08-10: automatisch verschickt, mit Lexware als Quelle ─────
+ * `invoiceNumber`/`invoiceDate` kommen jetzt NICHT mehr von `order.orderNumber`
+ * (das bleibt weiterhin nur die Bestellnummer, siehe buildOrderNumber,
+ * orderTypes.ts), sondern von Lexware Office – dort entsteht beim Anlegen
+ * der Rechnung (lib/invoicing/providers/lexware.ts) die fortlaufende, § 14
+ * Abs. 4 Nr. 4 UStG-konforme Nummer. Dieses Template ist die E-Mail-
+ * ZUSAMMENFASSUNG; das rechtsverbindliche Dokument ist das angehängte
+ * Lexware-PDF (siehe lib/orders/orderCompletion.ts, erzeugeRechnung – dort
+ * wird diese Komponente aufgerufen und das PDF als Anhang mitgeschickt).
  */
 import { Text } from '@react-email/components';
 import { COMPANY } from '@/config/company';

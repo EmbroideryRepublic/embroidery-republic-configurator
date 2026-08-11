@@ -38,16 +38,7 @@ import { verarbeiteZahlungsEreignis } from '@/lib/orders/paymentService';
 import { pruefeRateLimit } from '@/lib/security/rateLimit';
 
 /** Bekannte Anbieterkennungen – schützt vor Aufrufen mit Fantasienamen. */
-const BEKANNTE_ANBIETER: readonly string[] = ['test', 'stripe'];
-
-/**
- * Kopfzeile, in der die Signatur steht. Je Anbieter verschieden; die
- * Zuordnung gehört hierher, weil nur die Route die Kopfzeilen sieht.
- */
-const SIGNATUR_KOPFZEILE: Record<string, string> = {
-  test: 'x-test-signatur',
-  stripe: 'stripe-signature',
-};
+const BEKANNTE_ANBIETER: readonly string[] = ['test', 'stripe', 'paypal'];
 
 export async function POST(request: Request, { params }: { params: { anbieter: string } }): Promise<NextResponse> {
   const anbieterId = params.anbieter;
@@ -69,9 +60,10 @@ export async function POST(request: Request, { params }: { params: { anbieter: s
 
   // UNVERÄNDERT lesen – siehe Kopfkommentar.
   const rohBody = await request.text();
-  const signatur = request.headers.get(SIGNATUR_KOPFZEILE[anbieterId] ?? '') ?? null;
-
-  const ereignis = anbieter.leseEreignis(rohBody, signatur);
+  // Vollständige Header statt einer einzelnen Signatur-Kopfzeile: jeder
+  // Anbieter braucht andere (Stripe genau eine, PayPal vier) – siehe
+  // Kopfkommentar von ZahlungsAnbieter.leseEreignis in lib/payments/types.ts.
+  const ereignis = await anbieter.leseEreignis(rohBody, request.headers);
   if (!ereignis) {
     // Entweder gefälscht oder für uns bedeutungslos. In beiden Fällen darf
     // keine Wiederholung ausgelöst werden – aber es wird protokolliert.

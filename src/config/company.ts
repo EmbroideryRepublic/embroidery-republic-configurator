@@ -22,6 +22,15 @@ export const COMPANY = {
   phoneHref: 'tel:+491737532910',
   email: 'info@ergermany.de',
   emailHref: 'mailto:info@ergermany.de',
+
+  /**
+   * USt-IdNr. bzw. Steuernummer. Leer, bis die echte Nummer vorliegt – wird
+   * NICHT erfunden oder mit einem Platzhalter befüllt. Sobald hier ein Wert
+   * eingetragen ist, erscheint er automatisch im Impressum (impressum/page.tsx)
+   * und auf jeder künftigen Lexware-Rechnung (lib/invoicing/) – eine einzige
+   * Quelle für beide Stellen, wie der Rest dieser Datei.
+   */
+  vatId: '',
 } as const;
 
 /** Einzeilige Anschrift, z.B. für Fließtext. */

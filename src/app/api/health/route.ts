@@ -129,7 +129,7 @@ function pruefeDienste(): Pruefung[] {
         dauerMs: Date.now() - beginn,
       };
 
-  const zahlung: Pruefung = process.env.STRIPE_SECRET_KEY
+  const zahlung: Pruefung = process.env.STRIPE_SECRET_KEY || process.env.PAYPAL_CLIENT_ID
     ? { name: 'zahlung', zustand: 'ok', dauerMs: 0 }
     : {
         name: 'zahlung',
@@ -138,7 +138,25 @@ function pruefeDienste(): Pruefung[] {
         dauerMs: 0,
       };
 
-  return [email, zahlung];
+  const rechnung: Pruefung = process.env.LEXWARE_API_KEY
+    ? { name: 'rechnung', zustand: 'ok', dauerMs: 0 }
+    : {
+        name: 'rechnung',
+        zustand: 'beeintraechtigt',
+        detail: 'LEXWARE_API_KEY fehlt – Rechnungen entstehen nicht automatisch.',
+        dauerMs: 0,
+      };
+
+  const versand: Pruefung = process.env.DHL_API_KEY
+    ? { name: 'versand', zustand: 'ok', dauerMs: 0 }
+    : {
+        name: 'versand',
+        zustand: 'beeintraechtigt',
+        detail: 'DHL_API_KEY fehlt – Versandlabel können nicht erstellt werden.',
+        dauerMs: 0,
+      };
+
+  return [email, zahlung, rechnung, versand];
 }
 
 function gesamtzustand(pruefungen: Pruefung[]): Zustand {

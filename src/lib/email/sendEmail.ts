@@ -52,6 +52,12 @@ interface SendEmailParams {
    * Ablauf der Stornofrist zugestellt werden soll.
    */
   scheduledAt?: string;
+  /**
+   * Anhänge, z.B. die Lexware-Rechnung als PDF (lib/orders/orderCompletion.ts,
+   * erzeugeRechnung). Resend selbst unterstützt Anhänge bereits – bis jetzt
+   * hat kein Aufrufer sie gebraucht, deshalb fehlte dieser Durchgriff.
+   */
+  attachments?: { filename: string; content: Buffer }[];
 }
 
 interface SendEmailResult {
@@ -78,6 +84,7 @@ export async function sendEmail({
   replyTo,
   kontext,
   scheduledAt,
+  attachments,
 }: SendEmailParams): Promise<SendEmailResult> {
   // ── Testmodus: nichts verlässt den Rechner ──────────────────────────
   // Bewusst {success: true} MIT Nachrichten-ID statt eines Fehlschlags: Ein
@@ -90,7 +97,8 @@ export async function sendEmail({
   // hinterlegten RESEND_API_KEY vollständig durchlaufen.
   if (istTestmodus()) {
     const empfaenger = Array.isArray(to) ? to.join(', ') : to;
-    meldeAbgefangen('E-Mail', `„${subject}" an ${empfaenger}${scheduledAt ? ` (geplant für ${scheduledAt})` : ''}`);
+    const anhangHinweis = attachments?.length ? `, ${attachments.length} Anhang/Anhänge (${attachments.map((a) => a.filename).join(', ')})` : '';
+    meldeAbgefangen('E-Mail', `„${subject}" an ${empfaenger}${scheduledAt ? ` (geplant für ${scheduledAt})` : ''}${anhangHinweis}`);
     return { success: true, messageId: testmodusKennung(kontext.anlass) };
   }
 
@@ -120,6 +128,7 @@ export async function sendEmail({
       // zurück. Wird u.a. für die interne Benachrichtigung genutzt, die erst
       // nach Ablauf der Stornofrist zugestellt werden soll.
       ...(scheduledAt ? { scheduledAt } : {}),
+      ...(attachments?.length ? { attachments: attachments.map((a) => ({ filename: a.filename, content: a.content })) } : {}),
     });
     if (error) {
       protokoll.fehler('EMAIL', 'versand_fehlgeschlagen', effectiveSubject, error);

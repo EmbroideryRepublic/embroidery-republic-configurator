@@ -151,11 +151,30 @@ test('Phase 2 läuft bei Vorabzahlung NICHT im Bestellvorgang', () => {
   assert.ok(weiche > 0, 'die Weiche brauchtVorabZahlung muss existieren');
   assert.ok(abschluss > 0, 'der Abschluss muss aufgerufen werden');
   assert.ok(weiche < abschluss, 'die Weiche muss VOR dem Abschluss stehen');
-  // Bei Vorabzahlung wird vor dem Abschluss zurückgekehrt.
+
+  // Bei Vorabzahlung wird IMMER zurückgekehrt, BEVOR schliesseBestellungAb
+  // erreicht wird – unabhängig davon, ob starteZahlung gelingt (checkoutUrl)
+  // oder fehlschlägt (error). Seit der Stripe/PayPal-Verdrahtung prüft das
+  // nicht mehr eine feste Rückgabe-Zeichenkette, sondern strukturell: der
+  // Abschnitt zwischen der Weiche und schliesseBestellungAb() (der EINZIGEN
+  // Stelle, an der Phase 2 synchron angestoßen wird, siehe Nachbartest "Das
+  // Anlegen stößt den Abschluss an genau einer Stelle an") darf den
+  // Abschluss-Aufruf selbst nicht enthalten.
+  const vorabZahlungAbschnitt = inhalt.slice(weiche, abschluss);
+  assert.doesNotMatch(
+    vorabZahlungAbschnitt,
+    /schliesseBestellungAb\(/,
+    'bei Vorabzahlung darf Phase 2 nicht auf dem Weg zur Rückgabe erreicht werden'
+  );
   assert.match(
-    inhalt,
-    /if \(vorabZahlung\)[\s\S]{0,200}return \{ success: true, orderNumber \}/,
-    'bei Vorabzahlung muss vor dem Abschluss zurückgekehrt werden'
+    vorabZahlungAbschnitt,
+    /return\s*\{\s*success:\s*true,\s*orderNumber,\s*checkoutUrl/,
+    'bei erfolgreicher Zahlungseröffnung muss checkoutUrl zurückgegeben werden, statt sofort abzuschließen'
+  );
+  assert.match(
+    vorabZahlungAbschnitt,
+    /return\s*\{\s*success:\s*false,\s*error:/,
+    'bei fehlgeschlagener Zahlungseröffnung muss ein Fehler zurückgegeben werden, ohne Phase 2 anzustoßen'
   );
 });
 

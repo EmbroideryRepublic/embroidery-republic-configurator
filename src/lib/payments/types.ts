@@ -29,9 +29,9 @@
  *
  * `test` ist ein vollwertiger Anbieter, kein Sonderfall: Damit lässt sich
  * der gesamte Zahlungsablauf durchspielen, ohne ein fremdes Konto zu
- * benötigen. `stripe` folgt in S5.
+ * benötigen.
  */
-export type ZahlungsAnbieterId = 'test' | 'stripe';
+export type ZahlungsAnbieterId = 'test' | 'stripe' | 'paypal';
 
 /**
  * Währung. Vorerst ausschließlich Euro.
@@ -143,8 +143,21 @@ export interface ZahlungsAnbieter {
    * Verfahren. Ohne sie könnte jeder eine Bestellung als bezahlt melden.
    * Der Rohtext wird unverändert übergeben, weil jede Umformung – auch
    * JSON.parse und erneutes Serialisieren – die Signatur ungültig macht.
+   *
+   * `headers` statt eines einzelnen Signatur-Strings: Stripe braucht genau
+   * EINEN Header (`stripe-signature`), PayPal dagegen VIER
+   * (`paypal-transmission-id/-time/-sig/-cert-url`) für seine serverseitige
+   * Verifizierung bei PayPal selbst. Die Route entscheidet nichts über
+   * Anbieter-Eigenheiten – sie reicht die vollständigen Header unverändert
+   * durch, jeder Adapter liest sich heraus, was er braucht.
+   *
+   * `Promise`, weil PayPals Verifizierung ein Netzwerk-Aufruf ist (POST an
+   * PayPals eigene verify-webhook-signature-API), anders als Stripes lokale
+   * HMAC-Prüfung. Stripe/Test bleiben synchron im Kern, geben aber ebenfalls
+   * ein Promise zurück – ein einheitlicher Vertrag ist wichtiger als der
+   * Effizienzgewinn, den Stripe durch Synchronität hätte.
    */
-  leseEreignis(rohBody: string, signatur: string | null): ZahlungsEreignis | null;
+  leseEreignis(rohBody: string, headers: Headers): Promise<ZahlungsEreignis | null>;
 
   /**
    * Erklärt einen offenen Vorgang für ungültig.

@@ -87,6 +87,15 @@ function signiertesEreignis(typ: string, objekt: Record<string, unknown>): { bod
   return { body, sig };
 }
 
+/** Baut das Headers-Objekt, das leseEreignis() seit der PayPal-Anbindung
+ *  entgegennimmt (Headers statt eines einzelnen Signatur-Strings – siehe
+ *  lib/payments/types.ts). */
+function stripeKopf(sig: string | null): Headers {
+  const h = new Headers();
+  if (sig !== null) h.set('stripe-signature', sig);
+  return h;
+}
+
 async function zahlungsstatus(id: string): Promise<string> {
   const { rows } = await db.query('select payment_status from orders where id=$1', [id]);
   return rows[0]?.payment_status ?? '(weg)';
@@ -142,7 +151,7 @@ async function main(): Promise<void> {
       payment_status: 'paid',
       payment_intent: 'pi_test_' + randomUUID().replace(/-/g, '').slice(0, 20),
     });
-    const ereignis = stripeAnbieter.leseEreignis(body, sig);
+    const ereignis = await stripeAnbieter.leseEreignis(body, stripeKopf(sig));
     pruefe(ereignis !== null, 'echte Signatur akzeptiert, Ereignis übersetzt');
     pruefe(ereignis?.art === 'bestaetigt' && ereignis.bestellId === bestellId, `Ereignis → bestaetigt, bestellId ${ereignis?.bestellId === bestellId ? 'korrekt' : 'FALSCH'}`);
 
@@ -162,7 +171,7 @@ async function main(): Promise<void> {
 
     // ── C. Idempotenz: dasselbe Ereignis erneut ───────────────────────
     console.log('\n── C. Erneute Zustellung desselben Ereignisses ──');
-    const wieder = stripeAnbieter.leseEreignis(body, sig)!;
+    const wieder = (await stripeAnbieter.leseEreignis(body, stripeKopf(sig)))!;
     const v2 = await verarbeiteZahlungsEreignis(wieder);
     pruefe(v2.ok && v2.bereitsVerarbeitet === true, `zweite Zustellung → bereits_verarbeitet (${JSON.stringify(v2)})`);
     const { rows: histNachher } = await db.query(`select count(*)::int n from order_events where order_id=$1 and event_type='payment_succeeded'`, [bestellId]);
@@ -172,17 +181,17 @@ async function main(): Promise<void> {
     console.log('\n── D. Fehler- und Randfälle ──');
 
     // Gefälschte Signatur
-    pruefe(stripeAnbieter.leseEreignis(body, 'v1=falsch,t=123') === null, 'gefälschte Signatur → verworfen (null)');
-    pruefe(stripeAnbieter.leseEreignis(body, null) === null, 'fehlende Signatur → verworfen (null)');
+    pruefe((await stripeAnbieter.leseEreignis(body, stripeKopf('v1=falsch,t=123'))) === null, 'gefälschte Signatur → verworfen (null)');
+    pruefe((await stripeAnbieter.leseEreignis(body, stripeKopf(null))) === null, 'fehlende Signatur → verworfen (null)');
 
     // Erstattung darf paid NICHT kippen (Z7)
     const refund = signiertesEreignis('charge.refunded', { id: 'ch_test', metadata: { bestellId } });
-    pruefe(stripeAnbieter.leseEreignis(refund.body, refund.sig) === null, 'charge.refunded → nicht relevant (null), paid bleibt unberührt');
+    pruefe((await stripeAnbieter.leseEreignis(refund.body, stripeKopf(refund.sig))) === null, 'charge.refunded → nicht relevant (null), paid bleibt unberührt');
     pruefe((await zahlungsstatus(bestellId)) === 'paid', 'Bestellung nach Erstattungs-Ereignis weiterhin „paid"');
 
     // Verspäteter Fehlschlag nach paid → wirkungslos
     const spaet = signiertesEreignis('payment_intent.payment_failed', { id: 'pi_spaet', metadata: { bestellId }, amount: 3164, currency: 'eur', last_payment_error: { message: 'zu spät' } });
-    const vSpaet = await verarbeiteZahlungsEreignis(stripeAnbieter.leseEreignis(spaet.body, spaet.sig)!);
+    const vSpaet = await verarbeiteZahlungsEreignis((await stripeAnbieter.leseEreignis(spaet.body, stripeKopf(spaet.sig)))!);
     pruefe(vSpaet.ok && vSpaet.bereitsVerarbeitet === true, 'verspäteter Fehlschlag nach paid → wirkungslos');
     pruefe((await zahlungsstatus(bestellId)) === 'paid', 'Bestellung bleibt „paid"');
 
@@ -190,7 +199,7 @@ async function main(): Promise<void> {
     const b2 = await legeBestellung(50.0);
     const s2 = await stripe.checkout.sessions.create({ mode: 'payment', line_items: [{ quantity: 1, price_data: { currency: 'eur', unit_amount: 5000, product_data: { name: 'x' } } }], success_url: 'https://example.invalid/r', cancel_url: 'https://example.invalid/a', metadata: { bestellId: b2 } });
     const falsch = signiertesEreignis('checkout.session.completed', { ...s2, payment_status: 'paid', amount_total: 100 });
-    const vFalsch = await verarbeiteZahlungsEreignis(stripeAnbieter.leseEreignis(falsch.body, falsch.sig)!);
+    const vFalsch = await verarbeiteZahlungsEreignis((await stripeAnbieter.leseEreignis(falsch.body, stripeKopf(falsch.sig)))!);
     pruefe(!vFalsch.ok && vFalsch.wiederholen === false, `Betragsabweichung → fachlich abgelehnt, keine Wiederzustellung (${JSON.stringify(vFalsch)})`);
     pruefe((await zahlungsstatus(b2)) === 'pending', 'falscher Betrag: Bestellung bleibt „pending"');
 
@@ -198,13 +207,13 @@ async function main(): Promise<void> {
     const b3 = await legeBestellung(20.0);
     const s3 = await stripe.checkout.sessions.create({ mode: 'payment', line_items: [{ quantity: 1, price_data: { currency: 'eur', unit_amount: 2000, product_data: { name: 'x' } } }], success_url: 'https://example.invalid/r', cancel_url: 'https://example.invalid/a', metadata: { bestellId: b3 } });
     const abgelaufen = signiertesEreignis('checkout.session.expired', { ...s3 });
-    const vAbl = await verarbeiteZahlungsEreignis(stripeAnbieter.leseEreignis(abgelaufen.body, abgelaufen.sig)!);
+    const vAbl = await verarbeiteZahlungsEreignis((await stripeAnbieter.leseEreignis(abgelaufen.body, stripeKopf(abgelaufen.sig)))!);
     pruefe(vAbl.ok && vAbl.wirkung === 'fehlgeschlagen', 'checkout.session.expired → fehlgeschlagen');
     pruefe((await zahlungsstatus(b3)) === 'failed', 'abgelaufene Zahlung: Bestellung „failed"');
 
     // Unbekannte Bestellung → nicht relevant (kein Treffer)
     const fremd = signiertesEreignis('checkout.session.completed', { id: 'cs_fremd', payment_status: 'paid', amount_total: 1000, currency: 'eur', metadata: { bestellId: '00000000-0000-0000-0000-000000000000' } });
-    const eFremd = stripeAnbieter.leseEreignis(fremd.body, fremd.sig);
+    const eFremd = await stripeAnbieter.leseEreignis(fremd.body, stripeKopf(fremd.sig));
     if (eFremd) {
       const vFremd = await verarbeiteZahlungsEreignis(eFremd);
       pruefe(!vFremd.ok && vFremd.wiederholen === false, 'unbekannte Bestellung → fachlich abgelehnt (keine Wiederzustellung)');

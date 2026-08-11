@@ -38,9 +38,15 @@ import { renderProductionSheet } from '@/lib/production/buildProductionSheet';
 import { renderPrintView } from '@/lib/rendering/renderPrintView';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
 import { verarbeiteBestelleingang } from './orderIntake';
+import { protokolliereBestellereignis } from './orderService';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
 import { brauchtVorabZahlung } from '@/config/zahlung';
+import { waehleRechnungsAnbieter } from '@/lib/invoicing/registry';
+import type { Rechnungsauftrag } from '@/lib/invoicing/types';
+import { PAYMENT_TERM_DAYS } from '@/config/company';
+import { sendEmail } from '@/lib/email/sendEmail';
+import { InvoiceEmail } from '@/lib/email/templates/InvoiceEmail';
 import type { PrintView } from '@/types';
 
 /**
@@ -58,6 +64,8 @@ export interface AbschlussErgebnis {
   produktionsblatt: boolean;
   /** Kommunikation angestoßen (Bestätigung + interne Meldung). */
   kommunikation: boolean;
+  /** Rechnung bei Lexware erstellt und der Bestellung zugeordnet. */
+  rechnung: boolean;
   /** Was schiefging – leer, wenn alles glattlief. */
   probleme: string[];
 }
@@ -79,11 +87,17 @@ export async function schliesseBestellungAb(order: OrderRecord): Promise<Abschlu
   const vorschauen = await erzeugeDruckvorschauen(order, probleme);
   const { pfad: produktionsblattPfad, signierteUrl } = await erzeugeProduktionsblatt(order, probleme);
   const kommunikation = await benachrichtige(order, signierteUrl, probleme);
+  // NACH der Bestellbestätigung, nicht davor – natürlichere Lesereihenfolge
+  // für die Kundschaft (bei Vorabzahlung kam die Zahlungsbestätigung schon
+  // vorher aus paymentService.ts): Zahlung bestätigt → Bestellung bestätigt
+  // → Rechnung.
+  const rechnung = await erzeugeRechnung(order, probleme);
 
   return {
     vorschauen,
     produktionsblatt: Boolean(produktionsblattPfad),
     kommunikation,
+    rechnung,
     probleme,
   };
 }
@@ -161,7 +175,7 @@ export async function ladeBestellungFuerAbschluss(orderId: string): Promise<Orde
     // statisch aus dieser Angabe ab und kann eine zusammengesetzte
     // Zeichenkette nicht auswerten.
     .select(
-      'id, created_at, order_type, customer_name, company, email, phone, message, total_price, payment_method, shipping_street, shipping_zip, shipping_city, shipping_country'
+      'id, created_at, order_type, customer_name, company, email, phone, message, total_price, payment_method, shipping_street, shipping_zip, shipping_city, shipping_country, tax_rate, tax_amount, net_total, customer_vat_id'
     )
     .eq('id', orderId)
     .maybeSingle();
@@ -194,7 +208,13 @@ export async function ladeBestellungFuerAbschluss(orderId: string): Promise<Orde
   }
 
   const gesamt = Number(bestellung.total_price ?? 0);
-  const versand = 0; // wird in orders nicht getrennt geführt – siehe Hinweis unten
+  // `orders` führt Warenwert und Versand nicht getrennt – nur die Endsumme
+  // und (seit Migration 0013) den Positionsgesamtpreis je order_item. Der
+  // Versandanteil lässt sich daraus ABLEITEN (Endsumme minus Warenwert),
+  // statt ihn zu erraten oder auf 0 zu setzen – für die Lexware-Rechnung
+  // (erzeugeRechnung unten) muss er als eigene Position stimmen.
+  const warenwert = (positionen ?? []).reduce((summe, p) => summe + Number(p.total_price ?? 0), 0);
+  const versand = Math.max(0, Math.round((gesamt - warenwert) * 100) / 100);
 
   return {
     id: bestellung.id as string,
@@ -224,6 +244,10 @@ export async function ladeBestellungFuerAbschluss(orderId: string): Promise<Orde
     subtotal: gesamt,
     shippingCost: versand,
     totalPrice: gesamt,
+    taxAmount: bestellung.tax_amount !== null && bestellung.tax_amount !== undefined ? Number(bestellung.tax_amount) : undefined,
+    taxRate: bestellung.tax_rate !== null && bestellung.tax_rate !== undefined ? Number(bestellung.tax_rate) : undefined,
+    netTotal: bestellung.net_total !== null && bestellung.net_total !== undefined ? Number(bestellung.net_total) : undefined,
+    customerVatId: (bestellung.customer_vat_id as string | null) ?? undefined,
     items: (positionen ?? []).map((p) => ({
       productId: p.product_id as string,
       colorId: p.color_id as string,
@@ -365,6 +389,112 @@ async function erzeugeProduktionsblatt(
     console.error('[orders] Produktionsblatt-Erzeugung fehlgeschlagen:', err);
     probleme.push(`Produktionsblatt: ${text}`);
     return { pfad: null, signierteUrl: null };
+  }
+}
+
+/**
+ * Erstellt die Rechnung bei Lexware und ordnet sie der Bestellung zu.
+ *
+ * Gilt für JEDE Bestellung vom Typ 'order' unabhängig von der Zahlungsart –
+ * auch Rechnungskauf, nicht nur Karte/PayPal. Lexware wird damit das
+ * führende Rechnungssystem für den gesamten verbindlichen Bestellablauf,
+ * nicht nur für die neu hinzukommenden Zahlarten (siehe Migrationskommentar
+ * 0026, beanspruche_rechnungserstellung).
+ *
+ * Claim-geschützt (beanspruche_rechnungserstellung): Ein erneut zugestellter
+ * Zahlungs-Webhook oder ein nachgeholter Abschluss (holeAbschlussFuerRetryNach)
+ * darf niemals eine zweite Rechnung bei Lexware anlegen. Nicht-fatal wie
+ * jeder Nachbarschritt in dieser Datei – eine gespeicherte, bezahlte
+ * Bestellung darf an der Rechnungserstellung nicht scheitern.
+ */
+async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<boolean> {
+  if (order.orderType !== 'order') return false; // Anfragen bekommen keine Rechnung
+
+  const db = createAdminClient();
+  const { data: anspruch, error: claimFehler } = await db.rpc('beanspruche_rechnungserstellung', {
+    p_order_id: order.id,
+  });
+  if (claimFehler) {
+    console.error(`[orders] Rechnungs-Anspruch für ${order.id} fehlgeschlagen:`, claimFehler.message);
+    return false;
+  }
+  const beansprucht = Array.isArray(anspruch) ? anspruch.length > 0 : Boolean(anspruch);
+  if (!beansprucht) return false; // bereits erstellt oder ein anderer Lauf ist gerade dran
+
+  try {
+    if (!order.shipping) {
+      throw new Error('Bestellung ohne Lieferadresse – Rechnungsadresse fehlt.');
+    }
+
+    const steuersatz = order.taxRate ?? 19;
+    const zahlungszielTage = !order.paymentMethod || order.paymentMethod === 'invoice' ? PAYMENT_TERM_DAYS : 0;
+
+    const auftrag: Rechnungsauftrag = {
+      bestellId: order.id,
+      bestellnummer: order.orderNumber,
+      rechnungsdatum: new Date().toISOString().slice(0, 10),
+      kaeufer: {
+        name: order.contact.name,
+        firma: order.contact.company,
+        strasse: order.shipping.street,
+        plz: order.shipping.zip,
+        ort: order.shipping.city,
+        land: order.shipping.country,
+        ustIdNr: order.customerVatId,
+      },
+      positionen: order.items.map((item) => ({
+        bezeichnung: `${item.productName} · ${item.colorName}`,
+        menge: item.quantity,
+        einzelpreisBruttoCent: Math.round(item.unitPrice * 100),
+        steuersatzProzent: steuersatz,
+      })),
+      versandkostenBruttoCent: Math.round((order.shippingCost ?? 0) * 100),
+      gesamtBruttoCent: Math.round(order.totalPrice * 100),
+      waehrung: 'EUR',
+      zahlungszielTage,
+    };
+
+    const rechnung = await waehleRechnungsAnbieter().erstelle(auftrag);
+    const pfad = `orders/${order.id}/rechnung.pdf`;
+    await Promise.all([
+      uploadProductionFile(pfad, rechnung.pdf, 'application/pdf'),
+      db
+        .from('orders')
+        .update({ invoice_id: rechnung.rechnungsId, invoice_number: rechnung.rechnungsnummer, invoice_pdf_url: pfad })
+        .eq('id', order.id),
+    ]);
+
+    await protokolliereBestellereignis({
+      orderId: order.id,
+      eventType: 'invoice_created',
+      detail: { invoiceId: rechnung.rechnungsId, invoiceNumber: rechnung.rechnungsnummer },
+    });
+
+    await sendEmail({
+      to: order.contact.email,
+      subject: `Rechnung ${rechnung.rechnungsnummer} zu Bestellung ${order.orderNumber}`,
+      react: InvoiceEmail({
+        order,
+        invoiceNumber: rechnung.rechnungsnummer,
+        invoiceDate: auftrag.rechnungsdatum,
+        vatId: order.customerVatId,
+      }),
+      kontext: { anlass: 'invoice_created', orderId: order.id },
+      attachments: [{ filename: `Rechnung-${rechnung.rechnungsnummer}.pdf`, content: rechnung.pdf }],
+    }).catch(() => {});
+
+    return true;
+  } catch (err) {
+    const text = err instanceof Error ? err.message : String(err);
+    console.error(`[orders] Rechnungserstellung für ${order.id} fehlgeschlagen:`, err);
+    probleme.push(`Rechnung: ${text}`);
+    await db.rpc('gib_rechnungserstellung_frei', { p_order_id: order.id });
+    await protokolliereBestellereignis({
+      orderId: order.id,
+      eventType: 'invoice_creation_failed',
+      reason: text,
+    });
+    return false;
   }
 }
 

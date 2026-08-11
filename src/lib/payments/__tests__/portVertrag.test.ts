@@ -17,6 +17,16 @@ import type { ZahlungsAnbieter, Zahlungsauftrag } from '../types';
 /** Alle Anbieter, die den Vertrag erfüllen müssen. Stripe folgt in S5. */
 const anbieterUnterTest: ZahlungsAnbieter[] = [testAnbieter];
 
+/** Baut ein Headers-Objekt mit der Testanbieter-Signaturkopfzeile – seit
+ *  leseEreignis() Headers statt eines einzelnen Strings entgegennimmt
+ *  (PayPal braucht mehrere, siehe types.ts), muss auch der Test die
+ *  vollständigen Header liefern, nicht nur den einen Wert. */
+function kopfzeilen(signatur: string | null): Headers {
+  const h = new Headers();
+  if (signatur !== null) h.set('x-test-signatur', signatur);
+  return h;
+}
+
 function auftrag(ueberschreibungen: Partial<Zahlungsauftrag> = {}): Zahlungsauftrag {
   return {
     bestellId: '11111111-2222-3333-4444-555555555555',
@@ -59,26 +69,30 @@ for (const anbieter of anbieterUnterTest) {
     assert.notEqual(zweite.referenz, erste.referenz, 'eine Wiederaufnahme braucht einen eigenen Vorgang');
   });
 
-  test(`${name} weist ein Ereignis mit falscher Signatur ab`, () => {
+  test(`${name} weist ein Ereignis mit falscher Signatur ab`, async () => {
     const echt = JSON.stringify({ art: 'bestaetigt', bestellId: 'x', referenz: 'y', betragCent: 100 });
-    assert.equal(anbieter.leseEreignis(echt, 'falsch'), null, 'ohne Echtheitsprüfung könnte jeder „bezahlt" melden');
-    assert.equal(anbieter.leseEreignis(echt, null), null);
+    assert.equal(
+      await anbieter.leseEreignis(echt, kopfzeilen('falsch')),
+      null,
+      'ohne Echtheitsprüfung könnte jeder „bezahlt" melden'
+    );
+    assert.equal(await anbieter.leseEreignis(echt, kopfzeilen(null)), null);
   });
 
-  test(`${name} weist unbrauchbare Meldungen ab, statt zu werfen`, () => {
+  test(`${name} weist unbrauchbare Meldungen ab, statt zu werfen`, async () => {
     // Der Aufrufer ist ein Webhook-Endpunkt. Er muss antworten können, auch
     // wenn Unsinn ankommt – eine Ausnahme wäre dort der schlechtere Ausgang.
-    assert.equal(anbieter.leseEreignis('kein json', TEST_SIGNATUR), null);
-    assert.equal(anbieter.leseEreignis('{}', TEST_SIGNATUR), null);
+    assert.equal(await anbieter.leseEreignis('kein json', kopfzeilen(TEST_SIGNATUR)), null);
+    assert.equal(await anbieter.leseEreignis('{}', kopfzeilen(TEST_SIGNATUR)), null);
     assert.equal(
-      anbieter.leseEreignis(JSON.stringify({ art: 'erfunden', bestellId: 'x', referenz: 'y' }), TEST_SIGNATUR),
+      await anbieter.leseEreignis(JSON.stringify({ art: 'erfunden', bestellId: 'x', referenz: 'y' }), kopfzeilen(TEST_SIGNATUR)),
       null,
       'eine unbekannte Ereignisart darf nicht stillschweigend durchgehen'
     );
   });
 
-  test(`${name} übersetzt ein gültiges Ereignis in unsere Begriffe`, () => {
-    const ereignis = anbieter.leseEreignis(
+  test(`${name} übersetzt ein gültiges Ereignis in unsere Begriffe`, async () => {
+    const ereignis = await anbieter.leseEreignis(
       JSON.stringify({
         ereignisId: 'evt_1',
         art: 'bestaetigt',
@@ -88,7 +102,7 @@ for (const anbieter of anbieterUnterTest) {
         waehrung: 'EUR',
         transaktionId: 'buchung-1',
       }),
-      TEST_SIGNATUR
+      kopfzeilen(TEST_SIGNATUR)
     );
     assert.ok(ereignis);
     assert.equal(ereignis.art, 'bestaetigt');

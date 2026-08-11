@@ -20,11 +20,12 @@
  * `paymentService.ts` – hier wird nichts geschrieben.
  */
 import Stripe from 'stripe';
-import type {
-  ZahlungsAnbieter,
-  ZahlungsEreignis,
-  Zahlungsauftrag,
-  Zahlungseroeffnung,
+import {
+  SignaturUngueltigFehler,
+  type ZahlungsAnbieter,
+  type ZahlungsEreignis,
+  type Zahlungsauftrag,
+  type Zahlungseroeffnung,
 } from '../types';
 import { leseGeheimenSchluessel, leseWebhookSchluessel } from './stripeKonfiguration';
 
@@ -108,7 +109,9 @@ export const stripeAnbieter: ZahlungsAnbieter = {
 
   async leseEreignis(rohBody: string, headers: Headers): Promise<ZahlungsEreignis | null> {
     const signatur = headers.get('stripe-signature');
-    if (!signatur) return null;
+    if (!signatur) {
+      throw new SignaturUngueltigFehler('Kein stripe-signature-Header vorhanden.');
+    }
 
     // Der Webhook-Schlüssel kann fehlen (gestaffelte Konfiguration, bevor der
     // Endpunkt in Stripe angelegt ist). Ohne ihn ist keine Echtheitsprüfung
@@ -119,7 +122,7 @@ export const stripeAnbieter: ZahlungsAnbieter = {
       webhookSecret = leseWebhookSchluessel();
     } catch (err) {
       console.error(`[zahlung:stripe] Kein Webhook-Schlüssel – Ereignis verworfen: ${err instanceof Error ? err.message : err}`);
-      return null;
+      throw new SignaturUngueltigFehler('Kein Webhook-Schlüssel konfiguriert – Echtheit nicht prüfbar.');
     }
 
     let event: Stripe.Event;
@@ -130,7 +133,9 @@ export const stripeAnbieter: ZahlungsAnbieter = {
       event = stripe().webhooks.constructEvent(rohBody, signatur, webhookSecret);
     } catch (err) {
       console.warn(`[zahlung:stripe] Signaturprüfung fehlgeschlagen: ${err instanceof Error ? err.message : err}`);
-      return null;
+      throw new SignaturUngueltigFehler(
+        `Signaturprüfung fehlgeschlagen: ${err instanceof Error ? err.message : String(err)}`
+      );
     }
 
     return uebersetze(event);

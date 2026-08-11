@@ -257,6 +257,60 @@ export async function protokolliereBestellereignis(
 }
 
 /**
+ * Persistiert das Ergebnis eines bereits real, IRREVERSIBEL entstandenen
+ * externen Vorgangs (Lexware-Rechnung, DHL-Sendung) mit mehreren
+ * Wiederholungsversuchen.
+ *
+ * Nach einem erfolgreichen, nicht-idempotenten externen Aufruf ist dieser
+ * Schreibzugriff der EINZIGE Weg, den zugehörigen Datenbank-Claim dauerhaft
+ * vor einer erneuten Freigabe zu schützen (siehe die invoice_id-/
+ * tracking_number-Wächter in Migration 0026) – ein einzelner Versuch wäre
+ * demselben Transienzrisiko ausgesetzt wie der ursprüngliche Fehler, der
+ * hierher geführt hat. Weder Lexware noch DHL bieten einen eigenen
+ * Idempotenzschlüssel für diese Aufrufe; die Datenbank ist der einzige
+ * Schutz gegen eine doppelte Anlage.
+ *
+ * Schlagen auch alle Versuche fehl, rufen orderCompletion.ts/
+ * shippingService.ts diese Funktion ein ZWEITES, unabhängiges Mal auf – mit
+ * einer minimalen Nutzlast (nur rechnung_unklarer_zustand bzw.
+ * label_unklarer_zustand, ein einzelnes Bool-Feld statt mehrerer
+ * Textspalten), als letzte Rettungsleine. Dieses Flag ist der einzige
+ * verbleibende Schutz gegen eine automatische Freigabe durch den
+ * Cron-Reaper (Migration 0026: beanspruche_rechnungserstellung/
+ * beanspruche_versandlabel und beide gib_haengende_*_frei-Funktionen prüfen
+ * es zusätzlich zu invoice_id/tracking_number) – ohne dieses zweite
+ * Sicherheitsnetz sähe ein dauerhaft nicht persistierbares invoice_id/
+ * tracking_number für den Reaper identisch aus wie "Anbieter nie erreicht"
+ * und würde nach Ablauf der Frist fälschlich freigegeben, was einen echten
+ * ZWEITEN externen Aufruf ermöglichen würde (Review vom 2026-08-12, zweite
+ * Runde). Schlagen SELBST diese beiden unabhängigen Schreibversuche fehl
+ * (nur bei einer anhaltenden, schweren Datenbankstörung realistisch), bleibt
+ * ein echtes Restrisiko bestehen und wird als KRITISCH protokolliert – ohne
+ * eigenen Idempotenzschlüssel bei Lexware/DHL ist das nicht vollständig
+ * eliminierbar, aber auf diesen sehr engen Fall reduziert. Ein hängender
+ * Claim, der auf manuelle Prüfung wartet, ist in jedem Fall die sichere
+ * Fehlerrichtung gegenüber einem automatischen Retry, der den externen
+ * Aufruf ein zweites Mal auslösen würde.
+ */
+export async function persistiereKritischMitWiederholung(
+  db: ReturnType<typeof createAdminClient>,
+  orderId: string,
+  patch: Record<string, unknown>,
+  versuche = 3
+): Promise<boolean> {
+  for (let i = 0; i < versuche; i++) {
+    const { error } = await db.from('orders').update(patch).eq('id', orderId);
+    if (!error) return true;
+    console.error(
+      `[orders] Kritische Persistierung für ${orderId} (Versuch ${i + 1}/${versuche}) fehlgeschlagen:`,
+      error.message
+    );
+    if (i < versuche - 1) await new Promise((resolve) => setTimeout(resolve, 500 * (i + 1)));
+  }
+  return false;
+}
+
+/**
  * Selbststornierung durch den Kunden.
  *
  * Die EINZIGE Stelle, an der eine Bestellung durch den Kunden storniert

@@ -27,6 +27,7 @@
  *    hier "echt" asynchron, nicht nur der Form nach.
  */
 import {
+  SignaturUngueltigFehler,
   type ZahlungsAnbieter,
   type ZahlungsEreignis,
   type Zahlungsauftrag,
@@ -140,13 +141,13 @@ export const paypalAnbieter: ZahlungsAnbieter = {
       ereignis = JSON.parse(rohBody) as PaypalWebhookEreignis;
     } catch {
       console.warn('[zahlung:paypal] Ereignis ist kein gültiges JSON.');
-      return null;
+      throw new SignaturUngueltigFehler('Rohtext ist kein gültiges JSON.');
     }
 
     const echt = await istEchtesEreignis(rohBody, ereignis, headers);
     if (!echt) {
       console.warn('[zahlung:paypal] Signaturprüfung fehlgeschlagen – Ereignis verworfen.');
-      return null;
+      throw new SignaturUngueltigFehler('PayPal-Signaturprüfung fehlgeschlagen.');
     }
 
     if (ereignis.event_type === 'CHECKOUT.ORDER.APPROVED') {
@@ -186,8 +187,26 @@ interface PaypalWebhookEreignis {
   };
 }
 
-/** Ruft PayPals eigene Verifizierungs-API auf – ein Netzwerk-Aufruf, anders
- *  als Stripes lokale HMAC-Prüfung (siehe Kopfkommentar). */
+/**
+ * Ruft PayPals eigene Verifizierungs-API auf – ein Netzwerk-Aufruf, anders
+ * als Stripes lokale HMAC-Prüfung (siehe Kopfkommentar).
+ *
+ * Gibt `false` NUR zurück, wenn die Echtheit NACHWEISLICH nicht gegeben ist
+ * (Header fehlen, Konfiguration fehlt, oder PayPal antwortet regulär mit
+ * `verification_status !== 'SUCCESS'`) – all das bildet `leseEreignis` auf
+ * `SignaturUngueltigFehler`/HTTP 400 ab (keine Wiederholung sinnvoll).
+ *
+ * Ein TECHNISCHER Fehlschlag beim Verifizierungsaufruf SELBST (unser
+ * Netzwerk zu PayPal down, PayPals Verify-Endpoint antwortet mit einem
+ * eigenen Serverfehler, die Antwort ist kein gültiges JSON) ist dagegen
+ * UNSER Problem, keine Aussage über die Echtheit des ursprünglichen
+ * Ereignisses – deshalb wird hier bewusst NICHT abgefangen und `false`
+ * zurückgegeben (das würde in der Route als "ungültige Signatur" mit 400
+ * enden und PayPal von einer eigentlich gewünschten Wiederholung abhalten).
+ * Stattdessen wird ein gewöhnlicher `Error` geworfen, der unverändert bis
+ * zur Webhook-Route durchreicht und dort – weil er KEIN
+ * `SignaturUngueltigFehler` ist – zu HTTP 500 führt (siehe route.ts).
+ */
 async function istEchtesEreignis(rohBody: string, ereignis: PaypalWebhookEreignis, headers: Headers): Promise<boolean> {
   let webhookId: string;
   try {
@@ -207,26 +226,32 @@ async function istEchtesEreignis(rohBody: string, ereignis: PaypalWebhookEreigni
     return false;
   }
 
-  try {
-    const antwort = await paypalFetch('/v1/notifications/verify-webhook-signature', {
-      method: 'POST',
-      body: JSON.stringify({
-        transmission_id: transmissionId,
-        transmission_time: transmissionTime,
-        cert_url: certUrl,
-        auth_algo: authAlgo,
-        transmission_sig: transmissionSig,
-        webhook_id: webhookId,
-        webhook_event: JSON.parse(rohBody),
-      }),
-    });
-    if (!antwort.ok) return false;
-    const ergebnis = (await antwort.json()) as { verification_status?: string };
-    return ergebnis.verification_status === 'SUCCESS';
-  } catch (err) {
-    console.error('[zahlung:paypal] Verifizierungs-Aufruf fehlgeschlagen:', err);
-    return false;
+  // KEIN try/catch um den Netzwerkaufruf: siehe Funktionskommentar. Ein
+  // Fehlschlag hier (fetch wirft, PayPal antwortet nicht ok, ungültiges
+  // JSON) ist technisch, nicht fachlich – er propagiert unverändert nach
+  // oben bis zur Webhook-Route (HTTP 500, PayPal stellt erneut zu).
+  const antwort = await paypalFetch('/v1/notifications/verify-webhook-signature', {
+    method: 'POST',
+    body: JSON.stringify({
+      transmission_id: transmissionId,
+      transmission_time: transmissionTime,
+      cert_url: certUrl,
+      auth_algo: authAlgo,
+      transmission_sig: transmissionSig,
+      webhook_id: webhookId,
+      webhook_event: JSON.parse(rohBody),
+    }),
+  });
+  if (!antwort.ok) {
+    // PayPals Verify-Endpoint dokumentiert eine reguläre, erfolgreiche
+    // Antwort (200) mit `verification_status` als Ausdruck einer FACHLICHEN
+    // Ablehnung – ein Nicht-2xx-Status hier bedeutet, dass der Aufruf selbst
+    // technisch scheiterte (Auth-/Ratenlimit-/Serverfehler bei PayPal), nicht
+    // dass die ursprüngliche Signatur ungültig wäre.
+    throw new Error(`PayPal-Verifizierungsaufruf technisch fehlgeschlagen (${antwort.status}).`);
   }
+  const ergebnis = (await antwort.json()) as { verification_status?: string };
+  return ergebnis.verification_status === 'SUCCESS';
 }
 
 /** Löst den Geldeinzug für eine genehmigte Order aus. Nicht-fatal: schlägt

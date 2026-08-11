@@ -52,7 +52,16 @@ export interface Rechnungsauftrag {
     ustIdNr?: string;
   };
   positionen: Rechnungsposition[];
-  /** Versandkosten in ganzen Cent, brutto. 0 = versandkostenfrei. */
+  /**
+   * Versandkosten in ganzen Cent, brutto. 0 = versandkostenfrei.
+   *
+   * Wird vom Aufrufer als ECHTER REST (Gesamtbetrag minus Positionssumme)
+   * berechnet, nicht unabhängig geschätzt – so summieren sich Positionen und
+   * Versand immer exakt auf `gesamtBruttoCent`. Kann in seltenen Fällen
+   * negativ sein (Ausgleichszeile statt stillschweigend auf 0 geklemmt) –
+   * ein sichtbarer Rest ist besser als ein unbemerkt zu hoher
+   * Rechnungsbetrag.
+   */
   versandkostenBruttoCent: number;
   gesamtBruttoCent: number;
   waehrung: 'EUR';
@@ -76,6 +85,31 @@ export interface Rechnungserstellung {
 }
 
 /**
+ * Wird geworfen, wenn ein Rechnungsanbieter den externen Beleg bereits
+ * ANGELEGT hat (irreversibel, fortlaufend nummeriert), ein nachfolgender
+ * Schritt der Erstellung (Rechnungsnummer laden, PDF abrufen) aber
+ * scheitert. Trägt die bereits bekannten Kennungen mit – ohne sie wäre der
+ * angelegte Beleg für den Aufrufer nicht mehr auffindbar, und ein
+ * automatischer Wiederholungsversuch müsste `erstelle()` blind ein zweites
+ * Mal aufrufen, was einen zweiten echten Beleg erzeugen würde.
+ *
+ * Steht bewusst VOR dem Port-Interface (nicht danach): Der Architekturtest
+ * „Der Port hat genau die Methode, die gebraucht wird" liest ab der
+ * Interface-Deklaration bis zum Dateiende – eine Klasse danach würde ihren
+ * Konstruktor fälschlich als weitere Port-Methode zählen.
+ */
+export class RechnungsTeilerfolgFehler extends Error {
+  constructor(
+    message: string,
+    public readonly rechnungsId: string,
+    public readonly rechnungsnummer?: string
+  ) {
+    super(message);
+    this.name = 'RechnungsTeilerfolgFehler';
+  }
+}
+
+/**
  * DER PORT.
  *
  * Bewusst eine einzige Methode – Storno/Gutschrift werden erst ergänzt, wenn
@@ -85,7 +119,16 @@ export interface Rechnungserstellung {
 export interface RechnungsAnbieter {
   readonly id: RechnungsAnbieterId;
 
-  /** Erstellt eine verbindliche Rechnung und liefert das PDF gleich mit.
-   *  Wirft bei technischem Fehlschlag. */
+  /**
+   * Erstellt eine verbindliche Rechnung und liefert das PDF gleich mit.
+   *
+   * Wirft bei technischem Fehlschlag. Ist der Beleg beim Anbieter bereits
+   * ANGELEGT (irreversibel), bevor ein nachfolgender Schritt (Nummer laden,
+   * PDF abrufen) scheitert, wirft die Implementierung stattdessen
+   * `RechnungsTeilerfolgFehler` mit den bereits bekannten Kennungen – siehe
+   * oben. Ohne diese Unterscheidung ginge die einzige Spur eines bereits
+   * real entstandenen Belegs verloren und ein Retry könnte einen zweiten
+   * anlegen.
+   */
   erstelle(auftrag: Rechnungsauftrag): Promise<Rechnungserstellung>;
 }

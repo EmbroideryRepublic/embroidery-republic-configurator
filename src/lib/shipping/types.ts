@@ -46,6 +46,30 @@ export interface Versanderstellung {
 }
 
 /**
+ * Wird geworfen, wenn ein Versandanbieter die Sendung bereits ANGELEGT hat
+ * (irreversibel, abrechnungswirksam), ein nachfolgender Schritt (Label
+ * laden) aber scheitert. Trägt die bereits bekannte Sendungsnummer mit –
+ * ohne sie wäre die angelegte Sendung für den Aufrufer nicht mehr
+ * auffindbar, und ein automatischer Wiederholungsversuch müsste
+ * `erstelleSendung()` blind ein zweites Mal aufrufen, was eine zweite echte
+ * Sendung erzeugen würde.
+ *
+ * Steht bewusst VOR dem Port-Interface (nicht danach): Der Architekturtest
+ * „Der Port hat genau die Methode, die gebraucht wird" liest ab der
+ * Interface-Deklaration bis zum Dateiende – eine Klasse danach würde ihren
+ * Konstruktor fälschlich als weitere Port-Methode zählen.
+ */
+export class VersandTeilerfolgFehler extends Error {
+  constructor(
+    message: string,
+    public readonly sendungsnummer: string
+  ) {
+    super(message);
+    this.name = 'VersandTeilerfolgFehler';
+  }
+}
+
+/**
  * DER PORT.
  *
  * Bewusst eine einzige Methode. Ein Storno-Aufruf (DHL: DELETE /orders, nur
@@ -56,7 +80,16 @@ export interface Versanderstellung {
 export interface VersandAnbieter {
   readonly id: VersandAnbieterId;
 
-  /** Erstellt ein verbindliches Versandlabel. Wirft bei technischem
-   *  Fehlschlag. */
+  /**
+   * Erstellt ein verbindliches Versandlabel.
+   *
+   * Wirft bei technischem Fehlschlag. Ist die Sendung beim Anbieter bereits
+   * ANGELEGT (irreversibel, abrechnungswirksam), bevor ein nachfolgender
+   * Schritt (Label laden) scheitert, wirft die Implementierung stattdessen
+   * `VersandTeilerfolgFehler` mit der bereits bekannten Sendungsnummer –
+   * siehe oben. Ohne diese Unterscheidung ginge die einzige Spur einer
+   * bereits real entstandenen Sendung verloren und ein Retry könnte eine
+   * zweite anlegen.
+   */
   erstelleSendung(auftrag: Versandauftrag): Promise<Versanderstellung>;
 }

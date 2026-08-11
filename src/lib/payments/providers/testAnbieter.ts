@@ -21,12 +21,13 @@
 import { randomUUID } from 'node:crypto';
 import { meldeAbgefangen } from '@/config/testmodus';
 import { formatiereGeld } from '@/lib/format';
-import type {
-  ZahlungsAnbieter,
-  ZahlungsEreignis,
-  ZahlungsEreignisArt,
-  Zahlungsauftrag,
-  Zahlungseroeffnung,
+import {
+  SignaturUngueltigFehler,
+  type ZahlungsAnbieter,
+  type ZahlungsEreignis,
+  type ZahlungsEreignisArt,
+  type Zahlungsauftrag,
+  type Zahlungseroeffnung,
 } from '../types';
 
 /** Vorgänge dieses Laufs – nur zur Plausibilitätsprüfung beim Verwerfen. */
@@ -73,7 +74,7 @@ export const testAnbieter: ZahlungsAnbieter = {
     const signatur = headers.get('x-test-signatur');
     if (signatur !== TEST_SIGNATUR) {
       console.warn('[zahlung:test] Ereignis mit ungültiger Signatur verworfen.');
-      return null;
+      throw new SignaturUngueltigFehler('Test-Signatur ungültig oder fehlend.');
     }
     let roh: Record<string, unknown>;
     try {

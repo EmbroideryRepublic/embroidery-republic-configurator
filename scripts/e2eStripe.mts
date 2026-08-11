@@ -39,6 +39,7 @@ for (const zeile of readFileSync('.env.local', 'utf8').split(/\r?\n/)) {
 const { stripeAnbieter } = await import('@/lib/payments/providers/stripe');
 const { verarbeiteZahlungsEreignis } = await import('@/lib/orders/paymentService');
 const { waehleZahlungsAnbieter } = await import('@/lib/payments/registry');
+const { SignaturUngueltigFehler } = await import('@/lib/payments/types');
 
 const SECRET = process.env.STRIPE_SECRET_KEY!;
 const WHSEC = process.env.STRIPE_WEBHOOK_SECRET!;
@@ -94,6 +95,19 @@ function stripeKopf(sig: string | null): Headers {
   const h = new Headers();
   if (sig !== null) h.set('stripe-signature', sig);
   return h;
+}
+
+/** Prüft, ob ein Aufruf mit SignaturUngueltigFehler abgewiesen wird – seit
+ *  der PayPal-Anbindung der Ausgang für eine NICHT bestätigte Echtheit
+ *  (→ HTTP 400 in der Webhook-Route), statt `null` zu liefern (das bedeutet
+ *  jetzt: verifiziert, aber ohne Wirkung → HTTP 200). */
+async function wirftSignaturFehler(aufruf: () => Promise<unknown>): Promise<boolean> {
+  try {
+    await aufruf();
+    return false;
+  } catch (err) {
+    return err instanceof SignaturUngueltigFehler;
+  }
 }
 
 async function zahlungsstatus(id: string): Promise<string> {
@@ -181,8 +195,8 @@ async function main(): Promise<void> {
     console.log('\n── D. Fehler- und Randfälle ──');
 
     // Gefälschte Signatur
-    pruefe((await stripeAnbieter.leseEreignis(body, stripeKopf('v1=falsch,t=123'))) === null, 'gefälschte Signatur → verworfen (null)');
-    pruefe((await stripeAnbieter.leseEreignis(body, stripeKopf(null))) === null, 'fehlende Signatur → verworfen (null)');
+    pruefe(await wirftSignaturFehler(() => stripeAnbieter.leseEreignis(body, stripeKopf('v1=falsch,t=123'))), 'gefälschte Signatur → SignaturUngueltigFehler (400)');
+    pruefe(await wirftSignaturFehler(() => stripeAnbieter.leseEreignis(body, stripeKopf(null))), 'fehlende Signatur → SignaturUngueltigFehler (400)');
 
     // Erstattung darf paid NICHT kippen (Z7)
     const refund = signiertesEreignis('charge.refunded', { id: 'ch_test', metadata: { bestellId } });

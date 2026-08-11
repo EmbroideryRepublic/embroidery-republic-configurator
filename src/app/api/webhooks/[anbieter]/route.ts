@@ -33,7 +33,7 @@
  */
 import { NextResponse } from 'next/server';
 import { waehleZahlungsAnbieter, ZahlungsAnbieterFehlt } from '@/lib/payments/registry';
-import type { ZahlungsAnbieterId } from '@/lib/payments/types';
+import { SignaturUngueltigFehler, type ZahlungsAnbieterId } from '@/lib/payments/types';
 import { verarbeiteZahlungsEreignis } from '@/lib/orders/paymentService';
 import { pruefeRateLimit } from '@/lib/security/rateLimit';
 
@@ -58,32 +58,38 @@ export async function POST(request: Request, { params }: { params: { anbieter: s
     throw err;
   }
 
-  // UNVERÄNDERT lesen – siehe Kopfkommentar.
-  const rohBody = await request.text();
-  // Vollständige Header statt einer einzelnen Signatur-Kopfzeile: jeder
-  // Anbieter braucht andere (Stripe genau eine, PayPal vier) – siehe
-  // Kopfkommentar von ZahlungsAnbieter.leseEreignis in lib/payments/types.ts.
-  const ereignis = await anbieter.leseEreignis(rohBody, request.headers);
-  if (!ereignis) {
-    // Entweder gefälscht oder für uns bedeutungslos. In beiden Fällen darf
-    // keine Wiederholung ausgelöst werden – aber es wird protokolliert.
-    console.warn(`[webhook] ${anbieterId}: Ereignis verworfen (Signatur ungültig oder nicht relevant).`);
-    return NextResponse.json({ status: 'verworfen' }, { status: 400 });
-  }
-
-  // ── Rate-Limit NACH der Signaturprüfung ─────────────────────────────
-  // Erst hier, bewusst: Läge es davor, könnte eine Flut gefälschter Anfragen
-  // das Limit aufbrauchen und echte Stripe-Zustellungen aussperren. Nach der
-  // Signaturprüfung ist das Ereignis nachweislich echt – jetzt bremst das
-  // Limit nur noch einen Missbrauch mit gültigen Signaturen.
-  const grenze = await pruefeRateLimit('webhook');
-  if (!grenze.erlaubt) {
-    // 429 statt 200: Stripe soll erneut zustellen, wenn wir gerade drosseln.
-    console.warn(`[webhook] ${anbieterId}: Rate-Limit erreicht.`);
-    return NextResponse.json({ status: 'gedrosselt' }, { status: 429 });
-  }
-
   try {
+    // UNVERÄNDERT lesen – siehe Kopfkommentar.
+    const rohBody = await request.text();
+    // Vollständige Header statt einer einzelnen Signatur-Kopfzeile: jeder
+    // Anbieter braucht andere (Stripe genau eine, PayPal vier) – siehe
+    // Kopfkommentar von ZahlungsAnbieter.leseEreignis in lib/payments/types.ts.
+    //
+    // Zwei GRUNDVERSCHIEDENE Ausgänge, siehe dortiger Kommentar:
+    //   - wirft SignaturUngueltigFehler → die Echtheit ist NICHT bestätigt,
+    //     abgefangen unten → 400.
+    //   - liefert `null` → verifiziert, aber ohne Wirkung (z.B. PayPals
+    //     CHECKOUT.ORDER.APPROVED, das bei JEDER Zahlung anfällt) → 200,
+    //     sonst meldete diese Route dem Anbieter einen Zustellfehler für
+    //     seinen Regelfall.
+    const ereignis = await anbieter.leseEreignis(rohBody, request.headers);
+    if (!ereignis) {
+      console.info(`[webhook] ${anbieterId}: Ereignis verifiziert, aber ohne Wirkung – ignoriert.`);
+      return NextResponse.json({ status: 'ignoriert' }, { status: 200 });
+    }
+
+    // ── Rate-Limit NACH der Signaturprüfung ─────────────────────────────
+    // Erst hier, bewusst: Läge es davor, könnte eine Flut gefälschter Anfragen
+    // das Limit aufbrauchen und echte Stripe-Zustellungen aussperren. Nach der
+    // Signaturprüfung ist das Ereignis nachweislich echt – jetzt bremst das
+    // Limit nur noch einen Missbrauch mit gültigen Signaturen.
+    const grenze = await pruefeRateLimit('webhook');
+    if (!grenze.erlaubt) {
+      // 429 statt 200: Stripe soll erneut zustellen, wenn wir gerade drosseln.
+      console.warn(`[webhook] ${anbieterId}: Rate-Limit erreicht.`);
+      return NextResponse.json({ status: 'gedrosselt' }, { status: 429 });
+    }
+
     const ergebnis = await verarbeiteZahlungsEreignis(ereignis);
     if (!ergebnis.ok) {
       if (ergebnis.wiederholen) {
@@ -105,6 +111,10 @@ export async function POST(request: Request, { params }: { params: { anbieter: s
       wirkung: ergebnis.wirkung,
     });
   } catch (err) {
+    if (err instanceof SignaturUngueltigFehler) {
+      console.warn(`[webhook] ${anbieterId}: Ereignis verworfen (${err.message}).`);
+      return NextResponse.json({ status: 'verworfen' }, { status: 400 });
+    }
     // Hier ist bei UNS etwas schiefgegangen – eine Wiederholung ist
     // erwünscht, deshalb 500.
     console.error(`[webhook] ${anbieterId}: Verarbeitung fehlgeschlagen:`, err);

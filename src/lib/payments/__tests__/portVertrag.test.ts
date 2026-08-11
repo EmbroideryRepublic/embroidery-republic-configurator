@@ -70,13 +70,14 @@ for (const anbieter of anbieterUnterTest) {
   });
 
   test(`${name} weist ein Ereignis mit falscher Signatur ab`, async () => {
+    // Ohne Echtheitsprüfung könnte jeder „bezahlt" melden. Ein tatsächlicher
+    // Echtheitsfehler wirft SignaturUngueltigFehler (→ HTTP 400 in der
+    // Webhook-Route), statt `null` zu liefern – `null` ist seit der
+    // PayPal-Anbindung reserviert für ein VERIFIZIERTES, aber für uns
+    // bedeutungsloses Ereignis (→ HTTP 200), siehe types.ts.
     const echt = JSON.stringify({ art: 'bestaetigt', bestellId: 'x', referenz: 'y', betragCent: 100 });
-    assert.equal(
-      await anbieter.leseEreignis(echt, kopfzeilen('falsch')),
-      null,
-      'ohne Echtheitsprüfung könnte jeder „bezahlt" melden'
-    );
-    assert.equal(await anbieter.leseEreignis(echt, kopfzeilen(null)), null);
+    await assert.rejects(() => anbieter.leseEreignis(echt, kopfzeilen('falsch')));
+    await assert.rejects(() => anbieter.leseEreignis(echt, kopfzeilen(null)));
   });
 
   test(`${name} weist unbrauchbare Meldungen ab, statt zu werfen`, async () => {

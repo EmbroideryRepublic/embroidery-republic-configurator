@@ -21,6 +21,7 @@
  */
 import { COMPANY } from '@/config/company';
 import {
+  VersandTeilerfolgFehler,
   type VersandAnbieter,
   type Versandauftrag,
   type Versanderstellung,
@@ -93,11 +94,24 @@ export const dhlAnbieter: VersandAnbieter = {
     const daten = (await antwort.json()) as DhlOrdersAntwort;
     const sendung = daten.items?.[0];
     if (!sendung?.shipmentNo) {
+      // Noch NICHTS angelegt (DHL hat die Anfrage abgelehnt, z.B.
+      // Validierungsfehler) – ein gewöhnlicher Error genügt, der Aufrufer
+      // darf den Claim gefahrlos freigeben.
       const meldungen = sendung?.validationMessages?.map((m) => `${m.property}: ${m.validationMessage}`).join('; ');
       throw new Error(`DHL-Antwort für ${auftrag.bestellnummer} ohne Sendungsnummer${meldungen ? ` (${meldungen})` : ''}.`);
     }
     if (!sendung.label?.b64) {
-      throw new Error(`DHL-Sendung ${sendung.shipmentNo} angelegt, aber ohne eingebettetes Label.`);
+      // AB HIER ist die Sendung bei DHL bereits angelegt (shipmentNo ist
+      // eine echte, abrechnungswirksame Sendungsnummer) – nur das
+      // eingebettete Label fehlt in der Antwort. VersandTeilerfolgFehler
+      // statt eines gewöhnlichen Error, damit der Aufrufer
+      // (shippingService.ts) die bereits bekannte Sendungsnummer sichern
+      // kann, statt sie zu verlieren und bei einem Retry eine zweite Sendung
+      // anzulegen.
+      throw new VersandTeilerfolgFehler(
+        `DHL-Sendung ${sendung.shipmentNo} angelegt, aber ohne eingebettetes Label.`,
+        sendung.shipmentNo
+      );
     }
 
     return {

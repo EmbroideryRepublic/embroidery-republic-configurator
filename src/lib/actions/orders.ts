@@ -205,6 +205,73 @@ async function findeBestellungZuKennung(
   return (data?.id as string | undefined) ?? null;
 }
 
+/**
+ * Liefert das Submit-Ergebnis für eine BEREITS bestehende Bestellung – der
+ * Doppelschutz-Pfad, wenn dieselbe `clientRequestId` ein zweites Mal
+ * eintrifft (verlorene Antwort, Zeitüberschreitung, gleichzeitiger Request).
+ *
+ * Holt zunächst Phase 2 nach (siehe holeAbschlussFuerRetryNach – bei
+ * Vorabzahlung dort ein No-op, sie wartet weiter auf den Webhook). Danach
+ * entscheidend: Braucht diese Bestellung eine Vorabzahlung und ist sie noch
+ * NICHT bezahlt, darf NIEMALS bloßes `success:true` ohne `checkoutUrl`
+ * zurückgegeben werden – sonst zeigt der Client eine "Bestellung
+ * bestätigt"-Seite für eine tatsächlich unbezahlte Bestellung (Review vom
+ * 2026-08-11, Finding 1: passiert z.B., wenn die Kundschaft den
+ * Warenkorb-Drawer schließt, während submitOrder noch läuft, und danach mit
+ * derselben clientRequestId erneut absendet). starteZahlung() unterstützt
+ * bereits die Wiederaufnahme (verwirft den alten Vorgang, eröffnet einen
+ * neuen) – das wird hier genutzt, statt einen eigenen Weg zu bauen.
+ */
+async function ergebnisFuerBestehendeBestellung(
+  supabase: ReturnType<typeof createAdminClient>,
+  bestehende: string
+): Promise<SubmitResult> {
+  await holeAbschlussFuerRetryNach(bestehende);
+
+  const orderNumber = buildOrderNumber(bestehende);
+
+  const { data, error } = await supabase
+    .from('orders')
+    .select('payment_method, payment_status')
+    .eq('id', bestehende)
+    .maybeSingle<{ payment_method: OrderPaymentMethod | null; payment_status: string | null }>();
+
+  // Lesefehler: NIEMALS als Erfolg werten. Ohne payment_method/payment_status
+  // kann nicht entschieden werden, ob eine Vorabzahlung noch aussteht – ein
+  // stiller success:true wäre exakt der Fehler, den diese Funktion beheben
+  // soll (Review vom 2026-08-12: der vorherige "konservative" success:true
+  // hier war selbst ein Wiederauftreten von Finding 1). Die Bestellung ist
+  // bereits gespeichert (Phase 1 abgeschlossen) und geht durch diesen
+  // Fehlschlag nicht verloren – ein erneuter Versuch mit derselben
+  // clientRequestId landet wieder hier und kann bei wiederhergestellter
+  // Datenbankverbindung normal auflösen.
+  if (error || !data) {
+    console.error(`[orders] Zahlungsstatus für Retry ${bestehende} nicht ladbar – sicherheitshalber als Fehler behandelt:`, error);
+    return {
+      success: false,
+      error: 'Ihre Bestellung ist gespeichert, der aktuelle Status konnte aber gerade nicht geladen werden. Bitte versuchen Sie es in ein paar Minuten erneut.',
+    };
+  }
+
+  const vorabZahlung = data.payment_method ? brauchtVorabZahlung(data.payment_method) : false;
+  if (!vorabZahlung || data.payment_status === 'paid') {
+    // Rechnungskauf (keine Vorabzahlung nötig) oder bereits bestätigt
+    // bezahlt – ein echter, unbedingter Erfolg.
+    return { success: true, orderNumber };
+  }
+
+  // Vorabzahlung, aber noch NICHT bezahlt: darf nicht als Erfolg ohne
+  // checkoutUrl zurückgegeben werden (siehe Funktionskommentar oben).
+  const zahlung = await starteZahlung({
+    orderId: bestehende,
+    anbieterId: data.payment_method === 'paypal' ? 'paypal' : 'stripe',
+  });
+  if (!zahlung.ok) {
+    return { success: false, error: zahlung.meldung };
+  }
+  return { success: true, orderNumber, checkoutUrl: zahlung.weiterleitungUrl };
+}
+
 /** Dünner Wrapper um persistAndNotifyCore: fängt WIRKLICH alles ab,
  *  inklusive synchroner Throws (z.B. createAdminClient() wirft sofort, wenn
  *  NEXT_PUBLIC_SUPABASE_URL/SUPABASE_SECRET_KEY fehlen – beobachtet beim
@@ -346,8 +413,7 @@ async function persistAndNotifyCore(params: {
     const bestehende = await findeBestellungZuKennung(supabase, params.clientRequestId);
     if (bestehende) {
       console.info('[orders] Wiederholte Absendung erkannt – bestehende Bestellung zurückgegeben:', bestehende);
-      await holeAbschlussFuerRetryNach(bestehende);
-      return { success: true, orderNumber: buildOrderNumber(bestehende) };
+      return ergebnisFuerBestehendeBestellung(supabase, bestehende);
     }
   }
 
@@ -507,8 +573,7 @@ async function persistAndNotifyCore(params: {
       const bestehende = await findeBestellungZuKennung(supabase, params.clientRequestId);
       if (bestehende) {
         console.info('[orders] Gleichzeitige Doppelabsendung abgefangen:', bestehende);
-        await holeAbschlussFuerRetryNach(bestehende);
-        return { success: true, orderNumber: buildOrderNumber(bestehende) };
+        return ergebnisFuerBestehendeBestellung(supabase, bestehende);
       }
     }
     await meldeEreignis({

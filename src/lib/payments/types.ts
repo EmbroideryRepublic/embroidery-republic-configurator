@@ -121,6 +121,26 @@ export interface ZahlungsEreignis {
 }
 
 /**
+ * Wird von `leseEreignis` geworfen, wenn die Echtheit einer eingehenden
+ * Meldung NICHT bestätigt werden kann (Signatur ungültig, fehlend, oder der
+ * Rohtext nicht auswertbar) – ausdrücklich unterschieden von einer
+ * erfolgreich verifizierten, aber für uns bedeutungslosen Meldung (die
+ * weiterhin `null` liefert, siehe Kopfkommentar von `leseEreignis` weiter
+ * unten). Die Webhook-Route bildet nur DIESEN Fehler auf HTTP 400 ab.
+ *
+ * Steht bewusst VOR dem Port-Interface (nicht danach): Der Architekturtest
+ * „Der Port hat genau die Methoden, die gebraucht werden" liest ab der
+ * Interface-Deklaration bis zum Dateiende – eine Klasse danach würde ihren
+ * Konstruktor fälschlich als weitere Port-Methode zählen.
+ */
+export class SignaturUngueltigFehler extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'SignaturUngueltigFehler';
+  }
+}
+
+/**
  * DER PORT.
  *
  * Bewusst drei Methoden. `ladeStand()` und `erstatte()` aus dem ersten
@@ -137,7 +157,25 @@ export interface ZahlungsAnbieter {
 
   /**
    * Prüft die Echtheit einer eingehenden Meldung und übersetzt sie in
-   * unsere Begriffe. `null` = nicht echt oder nicht relevant.
+   * unsere Begriffe.
+   *
+   * ZWEI unterschiedliche Ausgänge, die die Webhook-Route bewusst
+   * unterschiedlich beantwortet (siehe dortiger Kopfkommentar):
+   *
+   *  - Wirft `SignaturUngueltigFehler`: die Echtheit ist NICHT bestätigt
+   *    (Signatur ungültig/fehlend, Rohtext nicht auswertbar). → HTTP 400,
+   *    keine Wiederholung sinnvoll.
+   *  - Gibt `null` zurück: die Echtheit IST bestätigt, das Ereignis bewegt
+   *    unseren Zustand aber nicht (z.B. ein für uns irrelevanter Stripe-Typ,
+   *    oder PayPals `CHECKOUT.ORDER.APPROVED`, das bei JEDER Zahlung anfällt
+   *    und absichtlich keine Zustandsänderung auslöst). → HTTP 200, eine
+   *    erneute Zustellung würde nichts ändern.
+   *
+   * Diese Unterscheidung ist notwendig: Ein verifiziertes, aber bewusst
+   * ignoriertes Ereignis mit 400 zu beantworten hieße, dem Anbieter einen
+   * Zustellfehler für seinen Regelfall zu melden – bei PayPal, wo
+   * `CHECKOUT.ORDER.APPROVED` die Mehrheit des Traffics ausmacht, hieße das
+   * praktisch dauerhaft "fehlgeschlagen".
    *
    * Die Echtheitsprüfung gehört ZWINGEND in den Anbieter: Nur er kennt das
    * Verfahren. Ohne sie könnte jeder eine Bestellung als bezahlt melden.

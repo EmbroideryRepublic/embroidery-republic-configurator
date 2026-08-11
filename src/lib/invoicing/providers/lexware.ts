@@ -24,6 +24,7 @@
  * aufgerufen wird.
  */
 import {
+  RechnungsTeilerfolgFehler,
   type RechnungsAnbieter,
   type Rechnungsauftrag,
   type Rechnungserstellung,
@@ -74,7 +75,11 @@ export const lexwareAnbieter: RechnungsAnbieter = {
             taxRatePercentage: p.steuersatzProzent,
           },
         })),
-        ...(auftrag.versandkostenBruttoCent > 0
+        // !== 0 statt > 0: Ein negativer Rest (Ausgleichszeile, siehe
+        // Rechnungsauftrag.versandkostenBruttoCent) darf nicht wie ein
+        // echtes 0 verschwinden – sonst wiese die Rechnung unbemerkt einen
+        // höheren Betrag aus, als tatsächlich autoritativ berechnet wurde.
+        ...(auftrag.versandkostenBruttoCent !== 0
           ? [
               {
                 type: 'custom',
@@ -121,6 +126,12 @@ export const lexwareAnbieter: RechnungsAnbieter = {
     // Rechnungsnummer aus der Anlage-Antwort, sonst per GET nachladen – je
     // nach exakter Antwortform (gegen die echte API zu verifizieren, siehe
     // Plan §8) ist voucherNumber ggf. erst nach dem Finalisieren gesetzt.
+    //
+    // AB HIER ist der Beleg bei Lexware bereits angelegt (angelegt.id ist
+    // ein echter, irreversibler Beleg) – jeder Fehlschlag ab jetzt wirft
+    // RechnungsTeilerfolgFehler statt eines gewöhnlichen Error, damit der
+    // Aufrufer (orderCompletion.ts) die bereits bekannte Kennung sichern
+    // kann, statt sie zu verlieren und bei einem Retry erneut anzulegen.
     let rechnungsnummer = angelegt.voucherNumber;
     if (!rechnungsnummer) {
       const geladen = await lexwareFetch(`/v1/invoices/${angelegt.id}`, { method: 'GET' });
@@ -130,7 +141,10 @@ export const lexwareAnbieter: RechnungsAnbieter = {
       }
     }
     if (!rechnungsnummer) {
-      throw new Error(`Lexware-Rechnung ${angelegt.id} angelegt, aber ohne Rechnungsnummer in der Antwort.`);
+      throw new RechnungsTeilerfolgFehler(
+        `Lexware-Rechnung ${angelegt.id} angelegt, aber ohne Rechnungsnummer in der Antwort.`,
+        angelegt.id
+      );
     }
 
     const pdfAntwort = await lexwareFetch(`/v1/invoices/${angelegt.id}/file`, {
@@ -138,7 +152,11 @@ export const lexwareAnbieter: RechnungsAnbieter = {
       headers: { Accept: 'application/pdf' },
     });
     if (!pdfAntwort.ok) {
-      throw new Error(`Lexware-Rechnung ${angelegt.id} angelegt, PDF-Abruf fehlgeschlagen (${pdfAntwort.status}).`);
+      throw new RechnungsTeilerfolgFehler(
+        `Lexware-Rechnung ${angelegt.id} (Nr. ${rechnungsnummer}) angelegt, PDF-Abruf fehlgeschlagen (${pdfAntwort.status}).`,
+        angelegt.id,
+        rechnungsnummer
+      );
     }
     const pdf = Buffer.from(await pdfAntwort.arrayBuffer());
 

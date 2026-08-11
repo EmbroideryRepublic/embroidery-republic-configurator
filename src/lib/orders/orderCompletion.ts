@@ -38,12 +38,12 @@ import { renderProductionSheet } from '@/lib/production/buildProductionSheet';
 import { renderPrintView } from '@/lib/rendering/renderPrintView';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
 import { verarbeiteBestelleingang } from './orderIntake';
-import { protokolliereBestellereignis } from './orderService';
+import { protokolliereBestellereignis, persistiereKritischMitWiederholung } from './orderService';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
 import { brauchtVorabZahlung } from '@/config/zahlung';
 import { waehleRechnungsAnbieter } from '@/lib/invoicing/registry';
-import type { Rechnungsauftrag } from '@/lib/invoicing/types';
+import { RechnungsTeilerfolgFehler, type Rechnungsauftrag, type Rechnungserstellung } from '@/lib/invoicing/types';
 import { PAYMENT_TERM_DAYS } from '@/config/company';
 import { sendEmail } from '@/lib/email/sendEmail';
 import { InvoiceEmail } from '@/lib/email/templates/InvoiceEmail';
@@ -421,6 +421,13 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
   const beansprucht = Array.isArray(anspruch) ? anspruch.length > 0 : Boolean(anspruch);
   if (!beansprucht) return false; // bereits erstellt oder ein anderer Lauf ist gerade dran
 
+  // Außerhalb des try-Blocks deklariert: Schlägt irgendetwas NACH einem
+  // erfolgreichen Lexware-Aufruf fehl, muss der catch-Block das Ergebnis
+  // noch sehen können – sonst geht die einzige Kennung eines bereits real,
+  // irreversibel angelegten Belegs verloren und ein Retry würde bei Lexware
+  // einen zweiten anlegen (siehe Review vom 2026-08-11, Orphan-Rechnung).
+  let rechnung: Rechnungserstellung | undefined;
+
   try {
     if (!order.shipping) {
       throw new Error('Bestellung ohne Lieferadresse – Rechnungsadresse fehlt.');
@@ -428,6 +435,62 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
 
     const steuersatz = order.taxRate ?? 19;
     const zahlungszielTage = !order.paymentMethod || order.paymentMethod === 'invoice' ? PAYMENT_TERM_DAYS : 0;
+
+    // Positionen: der bereits validierte POSITIONSGESAMTPREIS als
+    // "Einzelpreis" mit menge=1, NICHT unitPrice × echte Menge. Lexware
+    // multipliziert unitPrice × quantity selbst, und unit_price ist ein auf
+    // den Cent gerundeter EFFEKTIVER Stückpreis, der laut
+    // Migration-0013-Kommentar (orders.ts) je nach Menge um mehrere Cent vom
+    // gespeicherten Positionsgesamtpreis abweichen kann. menge=1 mit dem
+    // vollen, validierten Positionspreis garantiert eine centgenaue
+    // Rechnungszeile unabhängig von dieser Rundung; die tatsächliche
+    // Stückzahl steht stattdessen lesbar in der Bezeichnung (siehe
+    // Review-Bericht vom 2026-08-11, Punkt 4).
+    const positionen = order.items.map((item) => ({
+      bezeichnung: `${item.productName} · ${item.colorName} (${item.quantity}×)`,
+      menge: 1,
+      einzelpreisBruttoCent: Math.round(item.totalPrice * 100),
+      steuersatzProzent: steuersatz,
+    }));
+
+    // Versandzeile als ECHTER REST (Gesamtbetrag minus Positionssumme), nicht
+    // aus dem separat abgeleiteten order.shippingCost übernommen: So
+    // summieren sich Positionen + Versand IMMER exakt auf den tatsächlich
+    // autoritativen, bereits geprüften Bestellbetrag – unabhängig von jeder
+    // Rundung an anderer Stelle.
+    const positionenSummeCent = positionen.reduce((summe, p) => summe + p.einzelpreisBruttoCent, 0);
+    const gesamtCent = Math.round(order.totalPrice * 100);
+    const versandRestCent = gesamtCent - positionenSummeCent;
+    const abgeleiteterVersandCent = Math.round((order.shippingCost ?? 0) * 100);
+
+    // Reale Versandkosten sind in diesem Shop nie negativ und liegen aktuell
+    // nie über ca. 12 € (config/shipping.ts) – ein Rest außerhalb dieses
+    // Rahmens ist keine ungewöhnliche Versandgebühr, sondern beweist eine
+    // Inkonsistenz zwischen order.totalPrice und der Summe der Positions-
+    // preise (z.B. ein nicht auf Positionsebene abgebildeter Rabatt). Ein
+    // solcher Rest wird NICHT mehr (wie zuvor) still auf 0 geklemmt oder nur
+    // gewarnt und trotzdem verschickt – Math.max(0, …) hätte den
+    // ausgewiesenen Betrag unbemerkt zu hoch ausfallen lassen, und eine reine
+    // Log-Zeile verhindert nicht, dass ein inhaltlich falscher, unwiderruf-
+    // licher Beleg beim Kunden landet. Stattdessen wird die Erstellung HART
+    // abgebrochen, BEVOR Lexware überhaupt kontaktiert wird (rechnung bleibt
+    // undefined) – der Claim wird dadurch im catch-Block unten sicher
+    // freigegeben, ein korrigierter Retry ist jederzeit möglich, sobald die
+    // zugrundeliegende Dateninkonsistenz behoben ist.
+    const VERSANDREST_OBERGRENZE_CENT = 2000; // 20,00 € – großzügig über dem höchsten realen Satz
+    if (versandRestCent < -1 || versandRestCent > VERSANDREST_OBERGRENZE_CENT) {
+      throw new Error(
+        `Versandrest ${versandRestCent}ct ist unplausibel (Positionssumme ${positionenSummeCent}ct, ` +
+          `Bestellbetrag ${gesamtCent}ct, separat abgeleiteter Versandanteil ${abgeleiteterVersandCent}ct) – ` +
+          `Rechnungserstellung abgebrochen statt eines falschen Betrags. Bestellung manuell prüfen.`
+      );
+    }
+    if (Math.abs(versandRestCent - abgeleiteterVersandCent) > 50) {
+      console.warn(
+        `[orders] Rechnung ${order.id}: Versandrest (${versandRestCent}ct) weicht deutlich vom separat ` +
+          `abgeleiteten Versandanteil (${abgeleiteterVersandCent}ct) ab – Positionssumme möglicherweise inkonsistent.`
+      );
+    }
 
     const auftrag: Rechnungsauftrag = {
       bestellId: order.id,
@@ -442,26 +505,42 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
         land: order.shipping.country,
         ustIdNr: order.customerVatId,
       },
-      positionen: order.items.map((item) => ({
-        bezeichnung: `${item.productName} · ${item.colorName}`,
-        menge: item.quantity,
-        einzelpreisBruttoCent: Math.round(item.unitPrice * 100),
-        steuersatzProzent: steuersatz,
-      })),
-      versandkostenBruttoCent: Math.round((order.shippingCost ?? 0) * 100),
-      gesamtBruttoCent: Math.round(order.totalPrice * 100),
+      positionen,
+      versandkostenBruttoCent: versandRestCent,
+      gesamtBruttoCent: gesamtCent,
       waehrung: 'EUR',
       zahlungszielTage,
     };
 
-    const rechnung = await waehleRechnungsAnbieter().erstelle(auftrag);
+    rechnung = await waehleRechnungsAnbieter().erstelle(auftrag);
+
+    // ── KRITISCHER Punkt: Lexware hat SOEBEN einen echten, irreversiblen,
+    // fortlaufend nummerierten Beleg angelegt. Ab hier darf erstelle() für
+    // diese Bestellung unter keinen Umständen mehr aufgerufen werden – ein
+    // zweiter Aufruf würde eine zweite echte Rechnung erzeugen. invoice_id
+    // wird deshalb SOFORT und mit eigenen Wiederholungsversuchen persistiert,
+    // BEVOR ein weiterer, fehleranfälliger Schritt (Upload, E-Mail) läuft.
+    // Migration 0026s Freigabe-Funktionen prüfen invoice_id (nicht
+    // invoice_number) – erst wenn dieser Schreibzugriff gelingt, ist der
+    // Claim vor einer erneuten Freigabe sicher.
+    const kritischGespeichert = await persistiereKritischMitWiederholung(db, order.id, {
+      invoice_id: rechnung.rechnungsId,
+      invoice_number: rechnung.rechnungsnummer,
+    });
+    if (!kritischGespeichert) {
+      // Auch mehrere Versuche sind gescheitert. Wirft bewusst weiter in den
+      // catch-Block unten – dort wird der Anspruch NICHT freigegeben (siehe
+      // dort), derselbe Weg wie jeder andere Fehler nach erfolgreicher
+      // Rechnungserstellung.
+      throw new Error(
+        `Kritische Kennung (invoice_id ${rechnung.rechnungsId}) konnte nach mehreren Versuchen nicht gespeichert werden.`
+      );
+    }
+
     const pfad = `orders/${order.id}/rechnung.pdf`;
     await Promise.all([
       uploadProductionFile(pfad, rechnung.pdf, 'application/pdf'),
-      db
-        .from('orders')
-        .update({ invoice_id: rechnung.rechnungsId, invoice_number: rechnung.rechnungsnummer, invoice_pdf_url: pfad })
-        .eq('id', order.id),
+      db.from('orders').update({ invoice_pdf_url: pfad }).eq('id', order.id),
     ]);
 
     await protokolliereBestellereignis({
@@ -488,6 +567,69 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
     const text = err instanceof Error ? err.message : String(err);
     console.error(`[orders] Rechnungserstellung für ${order.id} fehlgeschlagen:`, err);
     probleme.push(`Rechnung: ${text}`);
+
+    // Lexware HAT bereits eine echte Rechnung angelegt, wenn entweder das
+    // volle Ergebnis vorliegt (rechnung gesetzt, Fehler danach) ODER
+    // erstelle() selbst NACH der Anlage einen RechnungsTeilerfolgFehler mit
+    // den bekannten Kennungen warf (Rechnungsnummer/PDF-Abruf gescheitert).
+    // In BEIDEN Fällen darf der Anspruch NICHT freigegeben werden.
+    //
+    // WICHTIG (Review vom 2026-08-12, zweite Runde): Es reicht NICHT, hier
+    // einfach nichts zu tun. Gelingt auch der Versuch, invoice_id zu
+    // speichern, nicht (persistiereKritischMitWiederholung scheitert
+    // vollständig), bleibt invoice_id NULL – und ein NULL invoice_id sieht
+    // für den Cron-Reaper (gib_haengende_rechnungserstellung_frei) exakt
+    // gleich aus wie "Lexware nie erreicht". Ohne weitere Maßnahme WÜRDE der
+    // Reaper diesen Claim nach Ablauf der Frist freigeben und einen zweiten,
+    // echten Lexware-Beleg ermöglichen – das war die konkret bestätigte
+    // Lücke. Deshalb: schlägt die invoice_id-Persistierung fehl, wird als
+    // LETZTE Rettungsleine `rechnung_unklarer_zustand = true` gesetzt (eigener,
+    // unabhängiger Schreibversuch mit minimaler Nutzlast). Dieses Flag
+    // sperrt Claim UND Freigabe UND Reaper dauerhaft und wird NIE vom Code
+    // zurückgesetzt – nur eine manuelle Prüfung bei Lexware kann diesen
+    // Zustand auflösen.
+    const teilerfolg = err instanceof RechnungsTeilerfolgFehler ? err : null;
+    if (rechnung || teilerfolg) {
+      const rechnungsId = rechnung?.rechnungsId ?? teilerfolg!.rechnungsId;
+      const rechnungsnummer = rechnung?.rechnungsnummer ?? teilerfolg?.rechnungsnummer ?? null;
+      const kritischGespeichert = await persistiereKritischMitWiederholung(db, order.id, {
+        invoice_id: rechnungsId,
+        invoice_number: rechnungsnummer,
+      });
+      // invoice_id ist bereits der stärkste Schutz (Claim/Reaper prüfen es
+      // direkt) – das Flag wird nur versucht, wenn selbst DAS gescheitert
+      // ist. `null` statt `false`, damit das Protokoll unten nicht
+      // fälschlich "Flag gesetzt" suggeriert, wenn es schlicht nicht nötig war.
+      const alsUnklarMarkiert = kritischGespeichert
+        ? null
+        : await persistiereKritischMitWiederholung(db, order.id, { rechnung_unklarer_zustand: true });
+      await protokolliereBestellereignis({
+        orderId: order.id,
+        eventType: 'invoice_creation_partial_failure',
+        reason:
+          `Lexware-Rechnung ${rechnungsId}${rechnungsnummer ? ` (Nr. ${rechnungsnummer})` : ''} wurde ` +
+          `angelegt, ein nachgelagerter Schritt ist aber fehlgeschlagen: ${text}. ` +
+          (kritischGespeichert
+            ? 'Die Kennung wurde gespeichert, der Anspruch bleibt bewusst gehalten – manuell prüfen ' +
+              '(PDF/E-Mail ggf. nachholen), NICHT automatisch erneut versuchen.'
+            : alsUnklarMarkiert
+              ? 'Die Kennung konnte NICHT gespeichert werden, aber der Klärungsfall-Marker (rechnung_unklarer_zustand) ' +
+                'wurde gesetzt – der Anspruch bleibt dauerhaft gehalten, auch über den Cron-Reaper hinaus. ' +
+                'Manuell bei Lexware anhand der Bestellnummer suchen und den Datensatz von Hand vervollständigen.'
+              : 'KRITISCH: WEDER die Kennung NOCH der Klärungsfall-Marker konnten gespeichert werden ' +
+                '(anhaltende Datenbankstörung). Der Anspruch bleibt in dieser Anfrage zwar gehalten, könnte aber ' +
+                'vom Cron-Reaper nach Ablauf der Frist fälschlich freigegeben werden. Dringend SOFORT manuell ' +
+                'prüfen: bei Lexware anhand der Bestellnummer suchen und rechnung_unklarer_zustand von Hand in ' +
+                'der Datenbank setzen.'),
+        detail: { invoiceId: rechnungsId, invoiceNumber: rechnungsnummer, kritischGespeichert, alsUnklarMarkiert },
+      });
+      return false;
+    }
+
+    // Kein Ergebnis und kein Teilerfolg bekannt: Lexware wurde entweder nie
+    // erreicht oder hat geworfen, BEVOR irgendein Beleg entstand (z.B.
+    // Netzwerkfehler vor der Antwort, fehlende Lieferadresse) – dann ist
+    // nichts Externes entstanden, und die Freigabe ist sicher.
     await db.rpc('gib_rechnungserstellung_frei', { p_order_id: order.id });
     await protokolliereBestellereignis({
       orderId: order.id,

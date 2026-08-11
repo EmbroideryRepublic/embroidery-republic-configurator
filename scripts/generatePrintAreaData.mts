@@ -307,6 +307,34 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   // erweiterung, sonst läge die Fläche auf einem Ärmel).
   'fotl-iconic195-longsleeve-front': { x0: 31, x1: 69, y0: 20, y1: 82 },
   'fotl-iconic195-longsleeve-back': { x0: 31, x1: 69, y0: 20, y1: 82 },
+  // Katalogweite Nachkalibrierung 2026-08-09: weitere Langarm-Shirts, jeweils
+  // geprüft, ob ein Ärmel neben dem Rumpf ins Bild hängt (siehe Kommentar
+  // oben zu fotl-iconic195-longsleeve) – wo ja, bewusst konservativ.
+  'earthpositive-premium-long-sleeve-t-shirt-front': { x0: 28, x1: 72, y1: 82 },
+  'earthpositive-premium-long-sleeve-t-shirt-back': { x0: 28, x1: 72, y1: 82 },
+  'gildan-ultra-cotton-long-sleeve-t-shirt-front': { x0: 28, x1: 72, y1: 83 },
+  'gildan-ultra-cotton-long-sleeve-t-shirt-back': { x0: 28, x1: 72, y1: 83 },
+  'sols-men-s-long-sleeve-t-shirt-imperial-front': { x0: 27, x1: 73, y1: 85 },
+  'sols-men-s-long-sleeve-t-shirt-imperial-back': { x0: 27, x1: 73, y1: 85 },
+  'russell-classic-t-long-sleeve-front': { x0: 27, x1: 70, y1: 85 },
+  'russell-classic-t-long-sleeve-back': { x0: 27, x1: 71, y1: 85 },
+  'bundc-t-shirt-e150-long-sleeve-unisex-exact-front': { x0: 28, x1: 72, y1: 84 },
+  'bundc-t-shirt-e150-long-sleeve-unisex-exact-back': { x0: 28, x1: 72, y1: 84 },
+  'earthpositive-unisex-organic-longsleeve-t-shirt-front': { x0: 28, x1: 72, y1: 80 },
+  'earthpositive-unisex-organic-longsleeve-t-shirt-back': { x0: 28.2, x1: 71.8, y0: 29.2, y1: 75 },
+  'just-cool-long-sleeve-cool-t-front': { x0: 27, x1: 72, y1: 84 },
+  'just-cool-long-sleeve-cool-t-back': { x0: 27, x1: 72, y1: 84 },
+  'bundc-mens-t-shirt-e190-long-sleeve-exact-front': { x0: 28, x1: 72, y1: 84 },
+  'bundc-mens-t-shirt-e190-long-sleeve-exact-back': { x0: 28, x1: 72, y1: 84 },
+  'neutral-recycled-performance-long-sleeve-t-shirt-front': { x0: 28, x1: 72, y1: 84 },
+  'neutral-recycled-performance-long-sleeve-t-shirt-back': { x0: 28, x1: 72, y1: 84 },
+  'neutral-men-s-long-sleeve-t-shirt-front': { x0: 28, x1: 71, y1: 83 },
+  'neutral-men-s-long-sleeve-t-shirt-back': { x0: 28, x1: 71, y1: 84 },
+  // Taillierte Damen-Langarm.
+  'neutral-ladies-long-sleeve-t-shirt-front': { x0: 28, x1: 72, y1: 83 },
+  'neutral-ladies-long-sleeve-t-shirt-back': { x0: 28, x1: 72, y1: 83 },
+  'bundc-t-shirt-e150-long-sleeve-women-exact-front': { x0: 30, x1: 70, y1: 86 },
+  'bundc-t-shirt-e150-long-sleeve-women-exact-back': { x0: 30, x1: 70, y1: 85 },
 
   // ── Taillierte Damenschnitte: Rumpf laeuft zum Saum EIN ──────────────
   'fotl-ladies-iconic195-t-front': { x0: 34, x1: 66, y0: 19, y1: 80 },
@@ -347,6 +375,28 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   'gildan-ladies-vneck-t-back': { y1: 82 },
   'fotl-ladies-valueweight-vneck-front': { y0: 34, y1: 82 },
   'fotl-ladies-valueweight-vneck-back': { y1: 82 },
+  // Katalogweite Nachkalibrierung 2026-08-09 (Betreiber-Vorgabe: alle
+  // Produkte durchgehen): V-Spitzen per Pixel-Kontur-Analyse + Blickkontrolle
+  // am eigenen Foto vermessen (nicht von anderen Produkten übernommen, jede
+  // Marke rahmt anders). stedman-classic-t-v-neck-for-women hatte dabei einen
+  // ECHTEN Fehler in der berechneten Basisfläche: y0 lag bei 17,9 % – mitten
+  // im offenen Ausschnitt, nicht nur ohne Bewegungsspielraum. Jetzt behoben.
+  'russell-mens-pure-organic-v-neck-tee-front': { x0: 26, x1: 73, y0: 24, y1: 86 },
+  'russell-mens-pure-organic-v-neck-tee-back': { x0: 26, x1: 74, y1: 86 },
+  'bundc-inspire-v-t-men-front': { x0: 29, x1: 72, y0: 25, y1: 86 },
+  'bundc-inspire-v-t-men-back': { x0: 28, x1: 73, y1: 86 },
+  'bundc-inspire-v-t-women-front': { x0: 29, x1: 71, y0: 28, y1: 82 },
+  'bundc-inspire-v-t-women-back': { x0: 28, x1: 71, y1: 82 },
+  'stedman-classic-t-v-neck-front': { x0: 28, x1: 72, y0: 21, y1: 86 },
+  'stedman-classic-t-v-neck-back': { x0: 29, x1: 71, y1: 86 },
+  'stedman-classic-t-v-neck-for-women-front': { x0: 30, x1: 70, y0: 30, y1: 82 },
+  'stedman-classic-t-v-neck-for-women-back': { x0: 31, x1: 70, y1: 82 },
+  // jamesnicholson-ladies-bio-workwear-t-shirt: als "T-Shirt" katalogisiert,
+  // ist am eigenen Foto aber eindeutig ein V-Ausschnitt – derselbe
+  // Ausschnitt-im-Bereich-Fehler wie bei stedman-classic-t-v-neck-for-women
+  // (y0 lag bei 17,7 %, V-Spitze liegt bei ca. 23 %).
+  'jamesnicholson-ladies-bio-workwear-t-shirt-front': { x0: 29, x1: 71, y0: 25, y1: 82 },
+  'jamesnicholson-ladies-bio-workwear-t-shirt-back': { x0: 29, x1: 71, y1: 84 },
 
   // ── Weitere Herren Rundhals (gerader Schnitt, bis y86) ───────────────
   'fotl-pure-cotton-t-front': { x0: 28, x1: 70, y1: 86 },
@@ -363,6 +413,84 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   'neutral-rollsleeve-t-back': { x0: 28, x1: 73, y1: 86 },
   'stedman-slimfit-t-front': { x0: 27, x1: 73, y1: 86 },
   'stedman-slimfit-t-back': { x0: 27, x1: 73, y1: 86 },
+  // Katalogweite Nachkalibrierung 2026-08-09, weitere gerade Herren-/Unisex-
+  // Rundhals-Schnitte. Einzelne Rückenfotos sind noch Platzhalter ("Bild
+  // folgt") statt echter Fotos – dort bewusst NUR die Vorderseite kalibriert.
+  'bundc-t-shirt-e190-front': { x0: 28, x1: 72, y0: 19, y1: 86 },
+  'bundc-t-shirt-e190-back': { x0: 27, x1: 73, y0: 18, y1: 86 },
+  'bundc-t-shirt-e190-women-front': { x0: 27, x1: 73, y0: 19, y1: 84 },
+  'bundc-t-shirt-e190-women-back': { x0: 27, x1: 73, y0: 19, y1: 84 },
+  'bundc-inspire-e150-t-shirt-front': { x0: 27, x1: 73, y0: 17, y1: 86 },
+  'bundc-inspire-e150-t-shirt-back': { x0: 27, x1: 73, y0: 17, y1: 86 },
+  'bundc-t-shirt-e150-front': { x0: 28, x1: 72, y0: 19, y1: 86 },
+  'bundc-t-shirt-e150-back': { x0: 28, x1: 72, y0: 21, y1: 85 },
+  'bundc-inspire-e150-t-shirt-women-front': { x0: 27, x1: 73, y0: 19, y1: 86 },
+  'bundc-inspire-e150-t-shirt-women-back': { x0: 27, x1: 73, y0: 19, y1: 86 },
+  'bundc-t-shirt-e150-women-front': { x0: 27, x1: 73, y0: 19, y1: 87 },
+  'bundc-t-shirt-e150-women-back': { x0: 27, x1: 73, y0: 19, y1: 87 },
+  // Fotorahmung endet hier deutlich früher (Stoff bis y~84/86, danach
+  // Weißraum) als bei den übrigen geraden Schnitten – am eigenen Foto
+  // bestätigt, kein Zuschnittfehler.
+  'bundc-e220-t-front': { x0: 27.2, x1: 72.8, y0: 24.7, y1: 83 },
+  'bundc-e220-t-back': { x0: 27, x1: 73, y0: 23.5, y1: 85 },
+  'bundc-inspire-t-men-front': { x0: 27, x1: 73, y0: 17, y1: 86 },
+  'bundc-inspire-t-men-back': { x0: 27, x1: 73, y0: 17, y1: 86 },
+  // Vorderseite hat einen gewellten Fashion-Saum (Rückseite ist normal
+  // gerundet) – y1 an den HÖCHSTEN Wellenpunkten verankert, konservativer
+  // als die Rückseite.
+  'bundc-inspire-t-women-front': { x0: 27, x1: 73, y0: 17, y1: 83 },
+  'bundc-inspire-t-women-back': { x0: 27, x1: 73, y0: 17, y1: 86 },
+  'jamesnicholson-round-t-heavy-front': { x0: 26, x1: 72, y0: 17, y1: 87 },
+  'jamesnicholson-round-t-heavy-back': { x0: 26, x1: 72, y0: 17, y1: 87 },
+  'jamesnicholson-ladies-active-t-front': { x0: 27, x1: 73, y0: 18, y1: 86 },
+  'jamesnicholson-ladies-active-t-back': { x0: 27, x1: 73, y0: 18, y1: 86 },
+  'jamesnicholson-men-s-basic-t-front': { x0: 27, x1: 72, y0: 17, y1: 87 },
+  'jamesnicholson-men-s-basic-t-back': { x0: 27, x1: 72, y0: 17, y1: 87 },
+  'jamesnicholson-ladies-basic-t-front': { x0: 27, x1: 73, y0: 18, y1: 86 },
+  'jamesnicholson-ladies-basic-t-back': { x0: 27, x1: 73, y0: 18, y1: 86 },
+  'jamesnicholson-workwear-t-men-front': { x0: 27, x1: 72, y0: 17, y1: 87 },
+  'jamesnicholson-workwear-t-men-back': { x0: 27, x1: 72, y0: 17, y1: 87 },
+  'jamesnicholson-mens-bio-workwear-t-shirt-front': { x0: 27, x1: 73, y1: 86 },
+  'jamesnicholson-mens-bio-workwear-t-shirt-back': { x0: 27, x1: 73, y1: 86 },
+  'russell-russell-classic-t-front': { x0: 27, x1: 73, y1: 86 },
+  'russell-russell-classic-t-back': { x0: 27, x1: 73, y1: 86 },
+  'russell-classic-heavyweight-t-shirt-front': { x0: 28, x1: 72, y1: 86 },
+  'russell-classic-heavyweight-t-shirt-back': { x0: 28, x1: 72, y1: 86 },
+  // Weiß, geringer Kontrast am Saum – Unterkante konservativer gewählt.
+  'russell-mens-pure-organic-heavy-tee-front': { x0: 28, x1: 72, y1: 83 },
+  'russell-mens-pure-organic-heavy-tee-back': { x0: 28, x1: 72, y1: 83 },
+  'gildan-ultra-cotton-t-shirt-front': { x0: 28, x1: 72, y1: 86 },
+  'gildan-ultra-cotton-t-shirt-back': { x0: 28, x1: 72, y1: 86 },
+  'gildan-light-cotton-adult-t-shirt-front': { x0: 28, x1: 72, y1: 86 },
+  'neutral-men-s-classic-t-shirt-front': { x0: 28, x1: 73, y1: 86 },
+  'neutral-men-s-classic-t-shirt-back': { x0: 28, x1: 73, y1: 86 },
+  'neutral-men-s-fit-t-shirt-front': { x0: 28, x1: 73, y1: 86 },
+  'neutral-men-s-fit-t-shirt-back': { x0: 28, x1: 73, y1: 86 },
+  'neutral-unisex-performance-t-shirt-front': { x0: 28, x1: 73, y1: 86 },
+  'neutral-unisex-performance-t-shirt-back': { x0: 28, x1: 73, y1: 86 },
+  'neutral-unisex-regular-t-shirt-front': { x0: 28, x1: 73, y1: 86 },
+  'neutral-unisex-regular-t-shirt-back': { x0: 28, x1: 73, y1: 86 },
+  // Oversized: breiter, boxiger Drop-Shoulder-Schnitt.
+  'neutral-oversized-t-shirt-front': { x0: 26, x1: 74, y1: 85 },
+  'neutral-oversized-t-shirt-back': { x0: 26, x1: 74, y1: 85 },
+  'stedman-stedman-classic-t-front': { x0: 27, x1: 73, y1: 86 },
+  'stedman-comfort-t-front': { x0: 27, x1: 73, y1: 86 },
+  'stedman-clive-crew-neck-front': { x0: 27, x1: 73, y1: 86 },
+  // Taillierte Damenschnitte.
+  // jamesnicholson-ladies-bio-workwear-t-shirt: ist tatsächlich ein
+  // V-Ausschnitt (am Foto bestätigt), siehe eigener Eintrag im
+  // V-Ausschnitte-Abschnitt oben statt hier.
+  'russell-ladies-pure-organic-heavy-tee-front': { x0: 31, x1: 69, y1: 79 },
+  'russell-ladies-pure-organic-heavy-tee-back': { x0: 31, x1: 69, y1: 79 },
+  'neutral-ladies-classic-t-shirt-front': { x0: 30, x1: 70, y1: 82 },
+  'neutral-ladies-classic-t-shirt-back': { x0: 30, x1: 70, y1: 82 },
+  'neutral-ladies-fit-t-shirt-front': { x0: 30, x1: 70, y1: 80 },
+  'neutral-ladies-fit-t-shirt-back': { x0: 30, x1: 70, y1: 80 },
+  // Classic-T for Women: taillierter Damenschnitt. Rückansicht hat einen
+  // photobelegten Stofffalten-Defekt (weiße Variante geprüft) und ist
+  // deshalb dort auf y1:76 gekappt; die Vorderseite zeigt in derselben
+  // weißen Variante KEINE Falte, deshalb hier moderater als die Rückseite.
+  'stedman-classic-t-for-women-front': { y1: 84 },
   // Rundhals-SWEATER: unten läuft ein Ripp-Bündchen – Unterkante bleibt
   // darüber (y83), Bündchen wird nicht bedruckt.
   'justhoods-awdis-sweat-front': { x0: 28, x1: 72, y1: 83 },
@@ -376,6 +504,70 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   'gildan-softstyle-polo-back': { x0: 28, x1: 72, y1: 86 },
   'neutral-classic-polo-front': { x0: 28, x1: 73, y1: 86 },
   'neutral-classic-polo-back': { x0: 28, x1: 73, y1: 86 },
+  // EarthPositive-Polos hatten bislang KEINEN Eintrag hier (übernahmen nur
+  // die Sperrzone von gildan-softstyle-polo per GEOMETRY_ALIAS, aber nie
+  // dessen Flächen-Korrektur) – Bewegungsbereich war dadurch exakt so groß
+  // wie die Motivgrenze (30x47 cm), also OHNE jeden Verschiebespielraum.
+  // Am eigenen Foto abgelesen (Rasterhilfe scripts/qaRaster.mts, 2026-08-09):
+  // Rumpf reicht seitlich bis x25/x75, Saum bis y85 (Jersey-Rückseite hat ein
+  // Ripp-Bündchen, deshalb dort nicht tiefer).
+  // Korrektur 2026-08-09 (2. Durchgang): bei der GRÖSSTEN Größe (XXL) ragten
+  // die oberen Ecken über die Schulterlinie hinaus, weil x0/x1 mit der
+  // Größe breiter werden, y0 aber (Kragen-Anker) gleich bleibt – am selben
+  // Referenzfoto per Pixelkontur objektiv nachgeprüft (scripts/
+  // validateCorners.mjs). y0 angehoben, bis auch bei XXL beide Ecken auf
+  // Stoff liegen.
+  'earthpositive-pique-polo-shirt-front': { x0: 25, x1: 75, y0: 25.7, y1: 85 },
+  'earthpositive-pique-polo-shirt-back': { x0: 25, x1: 75, y0: 25.7, y1: 85 },
+  'earthpositive-jersey-polo-shirt-front': { x0: 25, x1: 75, y0: 25.8, y1: 85 },
+  'earthpositive-jersey-polo-shirt-back': { x0: 25, x1: 75, y0: 22.9, y1: 85 },
+  // Katalogweite Nachkalibrierung 2026-08-09, weitere Polos. Alle hingen
+  // zuvor ebenfalls per GEOMETRY_ALIAS an gildan-softstyle-polo (Fläche UND
+  // Sperrzone) – jetzt eigene Messung je Produkt (Objektiv per Zeilenprofil-
+  // Analyse, siehe EXCLUSION_ZONES für die zugehörigen Knopfleisten).
+  'bundc-unisex-polo-id-001-front': { x0: 26, x1: 74, y1: 87 },
+  'bundc-unisex-polo-id-001-back': { x0: 26, x1: 74, y1: 87 },
+  'bundc-my-polo-180-front': { x0: 27, x1: 74, y1: 88 },
+  'bundc-my-polo-180-back': { x0: 27, x1: 74, y1: 88 },
+  'bundc-inspire-polo-men-front': { x0: 29, x1: 72, y1: 88 },
+  'bundc-inspire-polo-men-back': { x0: 29, x1: 72, y1: 88 },
+  'bundc-inspire-polo-women-front': { x0: 31, x1: 69, y1: 87 },
+  'bundc-inspire-polo-women-back': { x0: 31, x1: 69, y1: 87 },
+  'bundc-my-eco-polo-6535-front': { x0: 26, x1: 74, y1: 88 },
+  'bundc-my-eco-polo-6535-back': { x0: 26, x1: 74, y1: 88 },
+  // Rückenfoto (rot) zeigt eine tailliertere Silhouette als das Vorderfoto
+  // (dunkelgrün) desselben Produkts – reale Foto-Differenz, keine Ungenauigkeit.
+  'bundc-my-eco-polo-6535-women-front': { x0: 26, x1: 74, y1: 88 },
+  'bundc-my-eco-polo-6535-women-back': { x0: 29, x1: 72, y1: 89 },
+  'jamesnicholson-classic-polo-front': { x0: 29, x1: 71, y1: 89 },
+  'jamesnicholson-classic-polo-back': { x0: 29, x1: 71, y1: 89 },
+  'jamesnicholson-classic-polo-ladies-front': { x0: 30, x1: 70, y1: 90 },
+  'jamesnicholson-classic-polo-ladies-back': { x0: 30, x1: 70, y1: 90 },
+  'jamesnicholson-men-s-bio-workwear-polo-front': { x0: 26, x1: 73, y1: 90 },
+  'jamesnicholson-men-s-bio-workwear-polo-back': { x0: 26, x1: 72, y1: 90 },
+  'jamesnicholson-workwear-polo-men-front': { x0: 28, x1: 71, y1: 90 },
+  'jamesnicholson-workwear-polo-men-back': { x0: 28, x1: 72, y1: 90 },
+  'russell-strapazierfaehiges-poloshirt-599-front': { x0: 28, x1: 72, y1: 90 },
+  'russell-strapazierfaehiges-poloshirt-599-back': { x0: 29, x1: 71, y1: 90 },
+  'russell-men-s-ultimate-cotton-polo-front': { x0: 26, x1: 76, y1: 90 },
+  'russell-men-s-ultimate-cotton-polo-back': { x0: 27, x1: 73, y1: 90 },
+  'russell-men-s-classic-cotton-polo-front': { x0: 27, x1: 74, y1: 90 },
+  'russell-men-s-classic-cotton-polo-back': { x0: 29, x1: 71, y1: 90 },
+  'russell-poloshirt-6535-front': { x0: 27, x1: 74, y1: 90 },
+  'russell-poloshirt-6535-back': { x0: 27, x1: 73, y1: 90 },
+  'russell-ladies-poloshirt-6535-front': { x0: 30, x1: 70, y1: 90 },
+  'russell-ladies-poloshirt-6535-back': { x0: 31, x1: 71, y1: 90 },
+  'sols-men-s-polo-shirt-prime-front': { x0: 30, x1: 71, y1: 90 },
+  'sols-men-s-polo-shirt-prime-back': { x0: 28, x1: 71, y1: 88 },
+  'sols-women-s-polo-shirt-prime-front': { x0: 29, x1: 70, y1: 90 },
+  'sols-women-s-polo-shirt-prime-back': { x0: 31, x1: 69, y1: 90 },
+  // Foto mit ausgestellten Armen (Pose, nicht flach ausgebreitet) – Rumpf-
+  // breite deshalb nur aus den Zeilen UNTER der Ärmelüberschneidung
+  // gemessen; Fläche ist deshalb bewusst schmaler als bei den übrigen Polos.
+  'sols-men-s-polo-shirt-perfect-front': { x0: 33, x1: 68, y1: 84 },
+  'sols-men-s-polo-shirt-perfect-back': { x0: 30, x1: 68, y1: 84 },
+  'sols-unisex-pulse-polo-shirt-front': { x0: 26, x1: 72, y1: 90 },
+  'sols-unisex-pulse-polo-shirt-back': { x0: 29, x1: 72, y1: 90 },
   // Sweatshirts mit kurzem Kragen-Zip (kein Kängurutasche): Zip oben über
   // Sperrzone frei, Rumpf gerade → etwas breiter, Unterkante über Bündchen.
   'jn-halfzip-sweat-front': { x0: 28, x1: 72, y1: 80 },
@@ -384,6 +576,42 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   'justhoods-quarterzip-sweat-back': { x0: 28, x1: 72, y1: 80 },
   'sols-north-fleece-front': { y1: 80 },
   'sols-north-fleece-back': { y1: 80 },
+  // Katalogweite Nachkalibrierung 2026-08-09, weitere Fleece-Jacken. Alle
+  // Werte als Schnittmenge (engste Zeile gewinnt) über den relevanten
+  // y-Bereich gemessen, exakt wie der Generator selbst vorgeht.
+  'sols-men-s-plain-fleece-jacket-norman-front': { x0: 30, x1: 70, y1: 84 },
+  'sols-men-s-plain-fleece-jacket-norman-back': { x0: 29, x1: 69, y1: 84 },
+  'sols-women-s-plain-fleece-jacket-norman-front': { x0: 28, x1: 70, y1: 80 },
+  'sols-women-s-plain-fleece-jacket-norman-back': { x0: 28, x1: 70, y1: 80 },
+  // KORREKTUR 2026-08-09 (Nutzer-Feedback): y1 stand vorher bei 83 – auf
+  // dem eigenen Foto (Damen-Taillenschnitt) reicht das bis dicht an den
+  // elastischen Bund am Saum heran und wirkt dadurch unproportioniert hoch
+  // (~90% der Kleidungsstückhöhe). Auf ein für ein Rücken-/Brustmotiv
+  // übliches Maß zurückgenommen. Die vorher übersehene Eingrifftasche
+  // (front, unten links, per Bildausschnitt bestätigt) ist jetzt separat
+  // als EXCLUSION_ZONE in printAreas.ts eingetragen.
+  'sols-women-s-fleecejacket-north-front': { x0: 30, x1: 68, y1: 63 },
+  'sols-women-s-fleecejacket-north-back': { x0: 30, x1: 68, y1: 63 },
+  // KORREKTUR 2026-08-09 (Nutzer-Feedback): Front-Box saß sichtbar links vom
+  // Reißverschluss/der Kleidungsstückmitte (Zentrum vorher 47,5% statt ~50%
+  // Zip-Linie) – nach rechts versetzt, am eigenen Foto gegengeprüft (Stoff
+  // dort bis min. 85% durchgängig vorhanden, siehe Konturprofil).
+  'sols-mens-factor-zipped-fleece-jacket-front': { x0: 30, x1: 73, y1: 86 },
+  'sols-mens-factor-zipped-fleece-jacket-back': { x0: 28, x1: 74, y1: 86 },
+  // Keine eindeutige Tasche erkennbar (nur mögliche Saum-Kordel, keine
+  // Sperrzone nötig) – nur Reißverschluss.
+  'russell-outdoor-fleece-jacke-front': { x0: 27, x1: 73, y1: 78 },
+  'russell-outdoor-fleece-jacke-back': { x0: 29, x1: 72, y1: 76 },
+  'jamesnicholson-men-s-fleece-jacket-jn-front': { x0: 27, x1: 73, y1: 87 },
+  'jamesnicholson-men-s-fleece-jacket-jn-back': { x0: 29, x1: 70, y1: 87 },
+  'id-identity-microfleece-jacke-front': { x0: 31, x1: 69, y1: 84 },
+  'id-identity-microfleece-jacke-back': { x0: 31, x1: 69, y1: 84 },
+  'jamesnicholson-ladies-fleece-jacket-jn781-front': { x0: 28, x1: 70, y1: 86 },
+  'jamesnicholson-ladies-fleece-jacket-jn781-back': { x0: 30, x1: 70, y1: 87 },
+  'bundc-microfleece-duo-id501-front': { x0: 29, x1: 71, y1: 86 },
+  'bundc-microfleece-duo-id501-back': { x0: 26, x1: 71, y1: 86 },
+  'bundc-microfleece-duo-id501-women-front': { x0: 31, x1: 69, y1: 86 },
+  'bundc-microfleece-duo-id501-women-back': { x0: 30, x1: 69, y1: 88 },
 
   // ── Kapuzenware ──────────────────────────────────────────────────────
   // Breite je Produkt gemessen (Spalt Rumpf/Aermel, s.o.).
@@ -400,14 +628,97 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   'justhoods-college-hoodie-back': { y1: 81 },
   // Zoodie hat den breitesten Rumpf im Bestand (17,7-83,1) – hier blieben
   // seitlich 5-6 Pp ungenutzt.
-  'justhoods-zoodie-front': { x0: 21, x1: 79, y1: 58 },
-  'justhoods-zoodie-back': { x0: 21, x1: 79, y1: 81 },
+  // Korrektur 2026-08-09: Ecken ragten bei XXL über die Schulterlinie hinaus
+  // (objektiv per Pixelkontur geprüft, scripts/validateCorners.mjs).
+  'justhoods-zoodie-front': { x0: 23.4, x1: 76.6, y0: 27.5, y1: 58 },
+  'justhoods-zoodie-back': { x0: 24, x1: 76, y0: 31.8, y1: 81 },
   'justhoods-contrast-hoodie-front': { x0: 27, x1: 73, y1: 58 },
   'justhoods-contrast-hoodie-back': { x0: 27, x1: 73, y1: 81 },
   'bandc-inspire-hoodie-front': { x0: 31, x1: 69, y1: 58 },
   'bandc-inspire-hoodie-back': { x0: 31, x1: 69, y1: 80 },
   'bandc-inspire-zip-hood-front': { x0: 30, x1: 71, y1: 58 },
   'bandc-inspire-zip-hood-back': { x0: 30, x1: 71, y1: 80 },
+  // Katalogweite Nachkalibrierung 2026-08-09, weitere Kapuzenware. Pocket-
+  // Nahtoberkante und Bündchenhöhe je Produkt am eigenen Foto gemessen –
+  // beides variiert deutlich zwischen den Schnitten (Vorderseite y52-69,
+  // Rückseite y70-91).
+  'gildan-heavy-blend-hooded-sweatshirt-front': { x0: 30, x1: 70, y1: 69 },
+  'gildan-heavy-blend-hooded-sweatshirt-back': { x0: 30, x1: 70, y1: 87 },
+  // Rückenfotos sind (bei allen Farben) On-Model-Aufnahmen statt Flachlage –
+  // Bündchen dort gegen die Jeans abgelesen, unabhängig von der Vorderseite.
+  'gildan-softstyle-midweight-sweat-adult-hoodie-front': { x0: 30, x1: 70, y1: 69 },
+  // Korrektur 2026-08-09 (2. Durchgang): Ecken ragten bei XXL über die
+  // Schulterlinie (siehe Kommentar bei den EarthPositive-Polos oben).
+  // On-Model-Foto (nicht Flachlage wie die Vorderseite) – Kontur unruhiger,
+  // daher zusätzlicher Sicherheitsabstand bei y0.
+  'gildan-softstyle-midweight-sweat-adult-hoodie-back': { x0: 33.4, x1: 66.6, y0: 47, y1: 70 },
+  'gildan-hammer-maxweight-adult-hooded-sweatshirt-front': { x0: 27.2, x1: 72.8, y0: 43.1, y1: 68 },
+  'gildan-hammer-maxweight-adult-hooded-sweatshirt-back': { x0: 27, x1: 73, y1: 85 },
+  'fruit-of-the-loom-classic-hooded-sweat-front': { x0: 24, x1: 76, y1: 57 },
+  'fruit-of-the-loom-classic-hooded-sweat-back': { x0: 24, x1: 76, y1: 79 },
+  'fruit-of-the-loom-premium-hooded-sweat-front': { x0: 24, x1: 76, y1: 59 },
+  'fruit-of-the-loom-premium-hooded-sweat-back': { x0: 24, x1: 76, y1: 80 },
+  'fruit-of-the-loom-lightweight-hooded-sweat-front': { x0: 30, x1: 70, y1: 59 },
+  'fruit-of-the-loom-lightweight-hooded-sweat-back': { x0: 30, x1: 70, y1: 79 },
+  'fruit-of-the-loom-iconic-premium-hooded-sweat-front': { x0: 28, x1: 72, y1: 62 },
+  'fruit-of-the-loom-iconic-premium-hooded-sweat-back': { x0: 28, x1: 72, y1: 86 },
+  'fruit-of-the-loom-iconic-250-hooded-sweat-front': { x0: 27, x1: 73, y1: 64 },
+  'fruit-of-the-loom-iconic-250-hooded-sweat-back': { x0: 27, x1: 73, y1: 84 },
+  'build-your-brand-heavy-hoody-front': { x0: 26, x1: 74, y1: 59 },
+  'build-your-brand-heavy-hoody-back': { x0: 26, x1: 74, y1: 84 },
+  'build-your-brand-fluffy-hoody-front': { x0: 26, x1: 74, y1: 58 },
+  'build-your-brand-fluffy-hoody-back': { x0: 26, x1: 74, y1: 80 },
+  // Boxiger/kürzerer "Box"-Schnitt: Tasche und Bündchen sitzen beide
+  // spürbar höher als bei den übrigen Hoodies – am eigenen Foto bestätigt.
+  'build-your-brand-ultra-heavy-cotton-box-hoody-front': { x0: 27.6, x1: 72.4, y0: 30, y1: 52 },
+  'build-your-brand-ultra-heavy-cotton-box-hoody-back': { x0: 25.8, x1: 74.2, y0: 28.3, y1: 71 },
+  'build-your-brand-ladies-heavy-hoody-front': { x0: 26, x1: 74, y0: 29.2, y1: 58 },
+  'build-your-brand-ladies-heavy-hoody-back': { x0: 24, x1: 76, y1: 79 },
+  'bundc-id-223-hoodie-front': { x0: 27, x1: 73, y0: 42.4, y1: 67 },
+  'bundc-id-223-hoodie-back': { x0: 30, x1: 70, y1: 80 },
+  'bundc-influence-hoodie-front': { x0: 28, x1: 72, y1: 67 },
+  'bundc-influence-hoodie-back': { x0: 28, x1: 72, y1: 80 },
+  'bundc-hoodie-front': { x0: 31, x1: 69, y1: 66 },
+  'bundc-hoodie-back': { x0: 30, x1: 70, y1: 90 },
+  'earthpositive-earth-positive-pullover-hoodie-front': { x0: 26, x1: 74, y1: 60 },
+  'earthpositive-earth-positive-pullover-hoodie-back': { x0: 26, x1: 74, y1: 87 },
+  // Halb-Reißverschluss statt Känguru-Tasche – Sperrzone siehe EXCLUSION_ZONES.
+  'earthpositive-earth-positive-women-s-half-zip-hoodie-front': { x0: 25, x1: 75, y1: 87 },
+  'earthpositive-earth-positive-women-s-half-zip-hoodie-back': { x0: 25, x1: 75, y1: 87 },
+  // Vorderseite: Lifestyle-/Model-Foto statt Flachlage-Foto, geringere
+  // Messsicherheit – Breite von der (sauber vermessenen) Rückseite
+  // übernommen, Tasche visuell mit starkem Kontrast-Boost bestätigt.
+  // Korrektur 2026-08-09 (2. Durchgang): Ecken ragten bei XXL über die
+  // Schulterlinie (siehe Kommentar bei den EarthPositive-Polos oben).
+  'earthpositive-earth-positive-super-heavy-hoodie-front': { x0: 30.4, x1: 69.6, y0: 42.2, y1: 60 },
+  'earthpositive-earth-positive-super-heavy-hoodie-back': { x0: 26, x1: 74, y1: 87 },
+  // Keine Känguru-Tasche vorne (visuell bestätigt) – Bündchen-Logik statt Taschenkante.
+  'earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-front': { x0: 28, x1: 71, y1: 87 },
+  'earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-back': { x0: 29, x1: 71, y1: 91 },
+  // Diagonale Eingrifftaschen statt zentraler Känguru-Tasche – keine
+  // Mittelsperrzone nötig, Bündchen-Logik.
+  'earthpositive-unisex-organic-pullover-hood-ep-front': { x0: 27, x1: 73, y1: 86 },
+  'earthpositive-unisex-organic-pullover-hood-ep-back': { x0: 26, x1: 70, y1: 90 },
+  'just-hoods-organic-hoodie-jh201-front': { x0: 30, x1: 70, y1: 60 },
+  'just-hoods-organic-hoodie-jh201-back': { x0: 30, x1: 70, y1: 91 },
+  'just-hoods-vision-heavyweight-hoodie-front': { x0: 30, x1: 70, y1: 59 },
+  'just-hoods-vision-heavyweight-hoodie-back': { x0: 30, x1: 70, y1: 91 },
+  'russell-authentic-hooded-sweat-front': { x0: 28, x1: 71, y1: 58 },
+  'russell-authentic-hooded-sweat-back': { x0: 28, x1: 73, y1: 81 },
+  // Taillierter Damenschnitt, echte Taillenverengung gemessen – nicht auf
+  // volle Breite gezwungen.
+  'russell-ladies-authentic-hood-front': { x0: 33, x1: 67, y1: 58 },
+  'russell-ladies-authentic-hood-back': { x0: 31, x1: 69, y1: 80 },
+  'russell-hooded-sweatshirt-front': { x0: 28, x1: 72, y1: 54 },
+  'russell-hooded-sweatshirt-back': { x0: 28, x1: 72, y1: 81 },
+  // Trotz Produktname kein Kapuzenpulli am Foto – schlichter Rundhals-
+  // Sweater ohne Kapuze/Tasche, Bündchen-Logik.
+  'just-hoods-signature-heavyweight-sweat-front': { x0: 27, x1: 73, y1: 82 },
+  'just-hoods-signature-heavyweight-sweat-back': { x0: 27, x1: 73, y1: 75 },
+  // Raglan-artiger Schnitt ohne erkennbare Rumpf/Ärmel-Kante im Foto –
+  // bewusst moderater erweitert als die übrigen (niedrigere Messsicherheit).
+  'jhk-hooded-sweater-front': { x0: 30, x1: 70, y1: 58 },
+  'jhk-hooded-sweater-back': { x0: 30, x1: 70, y1: 82 },
 };
 
 /**
@@ -915,18 +1226,116 @@ for (const p of PRODUCTS) {
         const silhLinksPx = (silhouetteLinks / 100) * w;
         const silhRechtsPx = (silhouetteRechts / 100) * w;
 
-        const neuX0 = silhLinksPx + naht;
-        const neuX1 = silhRechtsPx - naht;
-        const neuY0 = yOben + naht;
-        const neuY1 = yUnten - naht;
+        const vollX0 = silhLinksPx + naht;
+        const vollX1 = silhRechtsPx - naht;
+        const mitteBox = (vollX0 + vollX1) / 2;
+        const halbBreiteVoll = (vollX1 - vollX0) / 2;
 
-        startXCmLokal = (x0pxLokal + breitePxLokal / 2 - neuX0) / pxProCm;
-        startYCmLokal = (y0pxLokal + hoehePxBoxLokal / 2 - neuY0) / pxProCm;
+        // KORREKTUR 2026-08-09: y0/y1 waren bisher einfach yOben/yUnten (die
+        // Silhouetten-Ober-/Unterkante) plus Nahtabstand – das ignoriert,
+        // dass eine Ärmelaufnahme oben an der Ärmelkappe UND unten am
+        // Bündchen/Saum GERUNDET zuläuft (kein rechteckiger Umriss). Eine
+        // rechteckige Box mit voller Breite (vollX0..vollX1) ragte dadurch
+        // mit ihren Ecken über die Rundung hinaus – objektiv gefunden mit
+        // scripts/validateCorners.mjs (143 von 143 Ärmelansichten betroffen,
+        // durchweg y0 nahe 0).
+        //
+        // Sichere Zeile über ALLE Farbvarianten geprüft (nicht nur
+        // profile[0] – andere Kamera-/Zuschnittposition je Foto), links und
+        // rechts UNABHÄNGIG voneinander gesucht (eine Kapuze/Kordel/ein Falz
+        // kann die Kante einseitig auf ganz anderer Höhe erzeugen als die
+        // Gegenseite). Sobald eine Seite ab einer Zeile sicher ist, bleibt
+        // sie es beim Weiterlaufen Richtung Zylindermitte auch – deshalb
+        // genügt die höhere (bzw. tiefere) der beiden Einzelgrenzen.
+        // randPuffer: zusätzlicher Sicherheitsabstand innerhalb der Kontur
+        // (nicht nur exakt an der Kante) – fängt kleine Skalierungs-/
+        // Rundungsunterschiede zwischen dem bei der Generierung genutzten
+        // Referenzfoto und dem bei der Validierung (ggf. anderes Farbfoto,
+        // andere Pixelmaße) genutzten Foto ab, die exakt an der Kante sonst
+        // vereinzelt als hauchdünne Verletzung durchrutschten.
+        const randPuffer = naht * 0.5;
+        const sicherBeiY = (y: number, x0: number, x1: number, seite: 'links' | 'rechts') => {
+          for (const prof of profile) {
+            const skalaY = prof.h / h;
+            const skalaX = prof.w / w;
+            const vy = Math.max(0, Math.min(prof.h - 1, Math.round(y * skalaY)));
+            const z = prof.zeilen[vy];
+            if (!z || z.breite === 0) return false;
+            if (seite === 'links' && z.links / skalaX > x0 - randPuffer) return false;
+            if (seite === 'rechts' && z.rechts / skalaX < x1 + randPuffer) return false;
+          }
+          return true;
+        };
+        const ersteSichereZeile = (
+          von: number,
+          bis: number,
+          schritt: 1 | -1,
+          x0: number,
+          x1: number,
+          seite: 'links' | 'rechts'
+        ) => {
+          for (let y = von; schritt === 1 ? y <= bis : y >= bis; y += schritt) {
+            if (sicherBeiY(y, x0, x1, seite)) return y;
+          }
+          return null;
+        };
+        // Liefert null, wenn diese Breite an KEINER Zeile im Suchbereich
+        // sicher ist – sonst würde ein "nichts gefunden" (Fallback auf
+        // yOben/yUnten) fälschlich wie eine bereits am Rand sichere, volle
+        // Höhe aussehen und in der Flächen-Abwägung unten eine ECHT sichere,
+        // aber schmalere/flachere Alternative verdrängen (die eigentliche
+        // Ursache der zunächst übersehenen Restfälle).
+        const sichererHoehenbereich = (x0: number, x1: number) => {
+          const linksAbOben = ersteSichereZeile(yOben, yUnten, 1, x0, x1, 'links');
+          const rechtsAbOben = ersteSichereZeile(yOben, yUnten, 1, x0, x1, 'rechts');
+          if (linksAbOben === null || rechtsAbOben === null) return null;
+          const yObenSicher = Math.max(linksAbOben, rechtsAbOben);
 
-        x0pxLokal = neuX0;
-        x1pxLokal = neuX1;
-        y0pxLokal = neuY0;
-        y1pxLokal = neuY1;
+          const linksAbUnten = ersteSichereZeile(yUnten, yOben, -1, x0, x1, 'links');
+          const rechtsAbUnten = ersteSichereZeile(yUnten, yOben, -1, x0, x1, 'rechts');
+          if (linksAbUnten === null || rechtsAbUnten === null) return null;
+          const yUntenSicher = Math.min(linksAbUnten, rechtsAbUnten);
+
+          return {
+            y0: Math.max(yOben + naht, yObenSicher + naht * 0.3),
+            y1: Math.min(yUnten - naht, yUntenSicher - naht * 0.3),
+          };
+        };
+
+        // Breite/Höhe-Abwägung: die volle, aus der Silhouette abgeleitete
+        // Breite (vollX0..vollX1) lässt sich nicht bei jeder Ärmelaufnahme
+        // über eine brauchbare Höhe sicher halten – bei schräg fotografierten
+        // Kapuzenärmeln (Kapuzenansatz zieht die sichere Mitte mit der Höhe
+        // seitlich) kollabierte der Höhenbereich sonst auf wenige Pixel.
+        // Stattdessen wird die Breite in Schritten von der Mitte her
+        // eingezogen und je Schritt der resultierende sichere Höhenbereich
+        // bestimmt; gewählt wird die Kombination mit der GRÖSSTEN Fläche –
+        // dieselbe Abwägung, mit der die Eckenverletzungen bei front/back
+        // bereits behoben wurden (schmaler statt flacher, wo das mehr Fläche
+        // erhält). Bei einer unproblematischen (rechteckigen) Kontur bleibt
+        // Schritt 0 (volle Breite) der Sieger – das Ergebnis dann unverändert.
+        // Fallback nur, falls WIRKLICH keine der 26 Breiten (bis 75% eingezogen)
+        // irgendwo sicher ist – dann bleibt der alte Zustand erhalten, statt
+        // mit einer erfundenen Fläche zu enden.
+        let beste: { x0: number; x1: number; y0: number; y1: number; flaeche: number } | null = null;
+        for (let schritt = 0; schritt <= 25; schritt++) {
+          const frac = schritt * 0.03;
+          const x0 = mitteBox - halbBreiteVoll * (1 - frac);
+          const x1 = mitteBox + halbBreiteVoll * (1 - frac);
+          const ergebnis = sichererHoehenbereich(x0, x1);
+          if (!ergebnis) continue; // an dieser Breite nirgends sicher – schmaler versuchen
+          const flaeche = Math.max(0, x1 - x0) * Math.max(0, ergebnis.y1 - ergebnis.y0);
+          if (!beste || flaeche > beste.flaeche) beste = { x0, x1, y0: ergebnis.y0, y1: ergebnis.y1, flaeche };
+        }
+        if (!beste) beste = { x0: vollX0, x1: vollX1, y0: yOben + naht, y1: yUnten - naht, flaeche: 0 };
+
+        startXCmLokal = (x0pxLokal + breitePxLokal / 2 - beste.x0) / pxProCm;
+        startYCmLokal = (y0pxLokal + hoehePxBoxLokal / 2 - beste.y0) / pxProCm;
+
+        x0pxLokal = beste.x0;
+        x1pxLokal = beste.x1;
+        y0pxLokal = beste.y0;
+        y1pxLokal = beste.y1 > beste.y0 ? beste.y1 : beste.y0 + naht; // Entartung ausschließen
       }
 
       if (!istAermel) {

@@ -8,16 +8,16 @@ import { evaluateRules, isRuleApplicable, type PricingIssue } from './ruleEngine
  * UI-Komponenten dürfen niemals eigenständig Preise berechnen – sie rufen
  * ausschließlich diese Funktion auf.
  *
- * MENGENRABATT – zwei getrennte Staffeln statt einer einzelnen:
- * Nach einem Marktvergleich mit einem etablierten deutschen Anbieter
- * (echte Preise, siehe Kalkulations-Historie) hat sich gezeigt, dass ein
- * einzelner Rabattsatz auf ALLES (Shirt + Veredelung zusammen) unrealistisch
- * ist. Am Markt wird die VEREDELUNG bei höherer Stückzahl deutlich stärker
- * rabattiert (mehr Motive auf einmal einrichten/drucken = viel günstiger
- * pro Stück), während der Blanko-Artikel (Shirt/Hoodie etc.) nur leicht
- * günstiger wird (Großeinkauf bringt nur begrenzt Ersparnis). Deshalb:
- * - BASE_PRICE_DISCOUNT_TIERS: leichter Rabatt auf Grundpreis + Grundgebühren
- * - VEREDELUNG_DISCOUNT_TIERS: steiler Rabatt auf Fläche/Stichzahl-Kosten
+ * MENGENRABATT – mehrere getrennte Staffeln statt einer einzelnen:
+ * - QUANTITY_TIERS.baseDiscountPercent: leichter Rabatt auf Grundpreis +
+ *   Grundgebühren, für ALLE Veredelungsarten.
+ * - QUANTITY_TIERS.veredelungDiscountPercent: steiler Rabatt auf Fläche/
+ *   Stichzahl-Kosten – gilt seit 2026-08-09 NUR NOCH für Stickerei
+ *   (stichzahlbasiert).
+ * - DTF_POSITION_TIERS: eigene, FESTE (nicht prozentual rabattierte)
+ *   Preisstaffel je Position für DTF-Transferdruck (siehe dortiger
+ *   Kommentar) – ersetzt seit 2026-08-09 die vorherige prozentuale
+ *   Veredelungsrabattierung für DTF vollständig.
  */
 
 export interface PriceCalculationInput {
@@ -58,17 +58,23 @@ export interface PriceCalculationResult {
     /** True, wenn first_position/additional_position aktiv sind (DTF) –
      *  areaPriceByView zeigt dann den Positionsanteil je Ansicht, nicht
      *  Fläche/Stichzahl. Anzeige nutzt dafür firstPositionPrice/
-     *  additionalPositionPrice statt areaPricePerCm2/pricePer1000Stitches. */
+     *  additionalPositionPrice/furtherPositionPrice statt
+     *  areaPricePerCm2/pricePer1000Stitches. */
     isPositionBased: boolean;
-    /** Aufschlag für die erste bedruckte Ansicht (nur informativ für die
+    /** Preis für die erste bedruckte Ansicht (nur informativ für die
      *  Anzeige, z.B. im Tooltip „9 € für die erste Position"). */
     firstPositionPrice: number;
-    /** Aufschlag je zusätzlich genutzter Ansicht (nur informativ). */
+    /** Preis für die zweite bedruckte Ansicht (nur informativ). */
     additionalPositionPrice: number;
+    /** Preis für jede weitere Ansicht ab der dritten (nur informativ). */
+    furtherPositionPrice: number;
     totalEstimatedStitches: number;
     /** Rabatt auf Grundpreis/Grundgebühren (leicht). */
     baseDiscountPercent: number;
-    /** Rabatt auf Fläche/Stichzahl-Kosten (steil, wie am Markt üblich). */
+    /** Rabatt auf Fläche/Stichzahl-Kosten (steil, wie am Markt üblich).
+     *  Betrifft seit 2026-08-09 NUR NOCH Stickerei – DTF-Positionen nutzen
+     *  die feste Staffel DTF_POSITION_TIERS und werden von diesem Wert
+     *  nicht mehr rabattiert. */
     veredelungDiscountPercent: number;
     savingsAmount: number;
     nextTier: QuantityTier | null;
@@ -87,33 +93,38 @@ export interface QuantityTier {
   minQuantity: number;
   /** Rabatt auf Grundpreis/Grundgebühren bei dieser Stückzahl. */
   baseDiscountPercent: number;
-  /** Rabatt auf Fläche/Stichzahl-Kosten bei dieser Stückzahl. */
+  /**
+   * Rabatt auf Fläche/Stichzahl-Kosten bei dieser Stückzahl – gilt seit
+   * 2026-08-09 NUR NOCH für stichzahlbasierte Stickerei-Veredelung. Die
+   * DTF-Positionsstaffel (siehe DTF_POSITION_TIERS weiter unten) hat eigene,
+   * feste Preise je Stückzahlbereich und wird von diesem Feld nicht mehr
+   * beeinflusst.
+   */
   veredelungDiscountPercent: number;
 }
 
 /**
- * Kalibriert an echten Marktpreisen (Stand: Kalkulations-Recherche).
- * Die Veredelung wird deutlich steiler rabattiert als der Grundpreis –
- * das entspricht der realen Kostenstruktur (mehr Motive gleichzeitig
- * einrichten/drucken spart viel, ein Blanko-Shirt kaum).
- */
-/**
- * Kalibriert an echten, öffentlich einsehbaren Marktpreisen (Dropshirt
- * B2B: 10=-5%, 30=-10%, 50=-15%, 100=-25%, 250=-40%, 500=-50% auf den
- * Gesamtpreis). Da unser Modell die Veredelung deutlich steiler
- * rabattiert als den Grundpreis (siehe oben), ergibt sich daraus in der
- * Summe ein ähnlicher effektiver Rabatt wie am Markt, nur eben auf zwei
- * Anteile aufgeteilt statt als ein einzelner Prozentsatz.
+ * Grundpreis-Rabatt (alle Veredelungsarten) und Stickerei-Veredelungsrabatt
+ * je Stückzahl. Kalibriert auf Vorgaben des Betreibers vom 2026-08-08
+ * (Zielpreise 379 €/1.049 €/8.300 € für das 11,99-€-T-Shirt mit DTF – die
+ * damalige Rechnung bezog dabei auch die DTF-Positionspreise mit ein, die
+ * seither durch DTF_POSITION_TIERS ersetzt wurden; baseDiscountPercent
+ * blieb unverändert, weil dieser Wert weiterhin für alle Veredelungsarten
+ * gilt). Grundprinzip: der Grundpreis wird nur LEICHT rabattiert
+ * (Großeinkauf bringt beim Blanko-Artikel wenig), Stickerei-Veredelung
+ * deutlich steiler (Digitalisieren/Einrichten amortisiert sich schnell).
  */
 export const QUANTITY_TIERS: QuantityTier[] = [
   { minQuantity: 1, baseDiscountPercent: 0, veredelungDiscountPercent: 0 },
-  { minQuantity: 5, baseDiscountPercent: 2, veredelungDiscountPercent: 5 },
-  { minQuantity: 10, baseDiscountPercent: 3, veredelungDiscountPercent: 8 },
-  { minQuantity: 25, baseDiscountPercent: 5, veredelungDiscountPercent: 14 },
-  { minQuantity: 50, baseDiscountPercent: 6, veredelungDiscountPercent: 19 },
-  { minQuantity: 100, baseDiscountPercent: 8, veredelungDiscountPercent: 25 },
-  { minQuantity: 250, baseDiscountPercent: 11, veredelungDiscountPercent: 35 },
-  { minQuantity: 500, baseDiscountPercent: 15, veredelungDiscountPercent: 45 },
+  { minQuantity: 5, baseDiscountPercent: 1, veredelungDiscountPercent: 20 },
+  { minQuantity: 10, baseDiscountPercent: 3, veredelungDiscountPercent: 35 },
+  { minQuantity: 20, baseDiscountPercent: 5, veredelungDiscountPercent: 46 },
+  { minQuantity: 25, baseDiscountPercent: 6, veredelungDiscountPercent: 48 },
+  { minQuantity: 50, baseDiscountPercent: 8, veredelungDiscountPercent: 52 },
+  { minQuantity: 100, baseDiscountPercent: 20, veredelungDiscountPercent: 90 },
+  { minQuantity: 250, baseDiscountPercent: 23, veredelungDiscountPercent: 90 },
+  { minQuantity: 500, baseDiscountPercent: 26, veredelungDiscountPercent: 90 },
+  { minQuantity: 1000, baseDiscountPercent: 36, veredelungDiscountPercent: 93 },
 ];
 
 function getTierForQuantity(quantity: number): QuantityTier {
@@ -171,28 +182,72 @@ function getElementTypeBasePrice(
     .reduce((sum, r) => sum + r.price, 0);
 }
 
+export interface DtfPositionTier {
+  minQuantity: number;
+  /** Preis für die erste bedruckte Ansicht. */
+  erste: number;
+  /** Preis für die zweite bedruckte Ansicht (zusätzlich zur ersten). */
+  zweite: number;
+  /** Preis für jede weitere Ansicht ab der dritten. */
+  abDritte: number;
+}
+
 /**
- * Positionsgestaffelter Aufschlag (DTF): `first_position` einmal je Stück,
- * sobald überhaupt eine Ansicht bedruckt ist, `additional_position` je
- * ZUSÄTZLICH genutzter Ansicht. Eigene, spezialisierte Auswertung statt über
- * `evaluateRules()`s allgemeinen `perUnitVeredelung`-Topf – aus demselben
- * Grund wie getVariableCost() unten: Der Rechenkern führt für jeden
- * Regeltyp eine EIGENE Summierung, damit unterschiedliche Bausteintypen sich
- * nie gegenseitig überschreiben oder doppelt zählen (z.B. Stickerei-Stichzahl
- * vs. DTF-Positionsstaffel – beide bucket:'veredelung', aber inhaltlich
- * völlig verschieden berechnet).
+ * Feste Preisstaffel für DTF-Positionen (Betreiber-Vorgabe 2026-08-09).
+ *
+ * ERSETZT die vorherige prozentuale Veredelungsrabattierung für DTF
+ * VOLLSTÄNDIG: Die Beträge hier sind bereits der fertige Endpreis je
+ * Position – es wird in calculatePrice() nichts mehr zusätzlich
+ * rabattiert (siehe discountedVariable dort). QUANTITY_TIERS.
+ * veredelungDiscountPercent betrifft ab jetzt ausschließlich die
+ * stichzahlbasierte Stickerei-Veredelung, nicht mehr DTF.
+ *
+ * STUFENFUNKTION, kein Gleiten: Die erreichte Mengenschwelle bestimmt den
+ * Veredelungspreis für die GESAMTE Bestellung. 10, 25 und 49 Stück kosten
+ * also exakt denselben Preis je Position; erst ab 50 Stück springt die
+ * komplette Bestellung in die nächste (günstigere) Stufe. Das gilt
+ * ausdrücklich auch an den Stufengrenzen: bei 49 Stück wird nie mehr pro
+ * Stück verlangt als bei 50 Stück.
+ *
+ * Jede weitere Position ab der dritten kostet in jeder Stufe genauso viel
+ * wie die dritte selbst (abDritte) – „dritte" und „jede weitere" fallen
+ * also zusammen, es gibt keine eigene vierte Preisklasse.
+ */
+export const DTF_POSITION_TIERS: DtfPositionTier[] = [
+  { minQuantity: 1, erste: 9.0, zweite: 5.0, abDritte: 4.0 },
+  { minQuantity: 3, erste: 8.0, zweite: 4.5, abDritte: 3.5 },
+  { minQuantity: 10, erste: 7.5, zweite: 4.0, abDritte: 3.0 },
+  { minQuantity: 50, erste: 6.0, zweite: 3.0, abDritte: 2.5 },
+  { minQuantity: 100, erste: 5.5, zweite: 2.5, abDritte: 2.0 },
+  { minQuantity: 250, erste: 5.0, zweite: 2.5, abDritte: 2.0 },
+  { minQuantity: 500, erste: 4.5, zweite: 2.0, abDritte: 1.5 },
+  { minQuantity: 1000, erste: 4.0, zweite: 2.0, abDritte: 1.5 },
+];
+
+function getDtfPositionTier(quantity: number): DtfPositionTier {
+  let current: DtfPositionTier = DTF_POSITION_TIERS[0]!;
+  for (const tier of DTF_POSITION_TIERS) {
+    if (quantity >= tier.minQuantity) current = tier;
+  }
+  return current;
+}
+
+/**
+ * Ob für diese Preisregeln/Menge überhaupt die DTF-Positionsstaffel gilt
+ * (aktive first_position/additional_position-Regel vorhanden). Bei
+ * Stickerei sind diese Regeln nicht aktiv – dort läuft die Veredelung
+ * stattdessen über getVariableCost()/per_1000_stitches weiter wie bisher.
  *
  * Nutzt dieselbe Anwendbarkeitsprüfung wie die übrigen Getter (Mengenfenster,
- * Gültigkeitszeitraum).
+ * Gültigkeitszeitraum) – nur um FESTZUSTELLEN, ob DTF-Preisregeln aktiv
+ * sind, nicht um deren Rohpreis zu lesen (der kommt jetzt aus
+ * DTF_POSITION_TIERS oben, nicht mehr aus der Regel selbst).
  */
-function getPositionTierRulePrices(rules: PricingRule[], quantity: number): { erste: number; zusatz: number } {
-  const erste = rules
-    .filter((r) => r.ruleType === 'first_position' && isRuleApplicable(r, quantity))
-    .reduce((sum, r) => sum + r.price, 0);
-  const zusatz = rules
-    .filter((r) => r.ruleType === 'additional_position' && isRuleApplicable(r, quantity))
-    .reduce((sum, r) => sum + r.price, 0);
-  return { erste, zusatz };
+function isDtfPositionPricingActive(rules: PricingRule[], quantity: number): boolean {
+  return rules.some(
+    (r) =>
+      (r.ruleType === 'first_position' || r.ruleType === 'additional_position') && isRuleApplicable(r, quantity)
+  );
 }
 
 /**
@@ -278,17 +333,25 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   );
   const positionFeeTotal = elements.reduce((sum, el) => sum + getEffectivePositionPrice(el.view), 0);
 
-  // Positionsgestaffelter DTF-Aufschlag (erste Ansicht + jede weitere) – fällt
-  // je Stück GENAU EINMAL an, nicht je Element (siehe getPositionTierRulePrices).
-  // Ohne aktive first_position/additional_position-Regeln ist erste=zusatz=0,
-  // das Produkt bleibt dann unverändert (z.B. Stickerei, die stattdessen über
-  // per_1000_stitches in getVariableCost() unten läuft).
-  const { erste: erstePositionPreis, zusatz: zusatzPositionPreis } = getPositionTierRulePrices(
-    pricingRules,
-    quantity
-  );
+  // Positionsgestaffelter DTF-Aufschlag (erste/zweite/weitere Ansicht) –
+  // fällt je Stück GENAU EINMAL an, nicht je Element (siehe
+  // DTF_POSITION_TIERS oben). Ohne aktive first_position/additional_position-
+  // Regeln bleiben alle drei Preise 0, das Produkt bleibt dann unverändert
+  // (z.B. Stickerei, die stattdessen über per_1000_stitches in
+  // getVariableCost() unten läuft).
+  const dtfPositionPricingActive = isDtfPositionPricingActive(pricingRules, quantity);
+  const dtfTier = dtfPositionPricingActive ? getDtfPositionTier(quantity) : null;
+  const erstePositionPreis = dtfTier?.erste ?? 0;
+  const zweitePositionPreis = dtfTier?.zweite ?? 0;
+  const weiterePositionPreis = dtfTier?.abDritte ?? 0;
   const positionTierTotal =
-    distinctViewCount > 0 ? erstePositionPreis + zusatzPositionPreis * (distinctViewCount - 1) : 0;
+    distinctViewCount === 0
+      ? 0
+      : distinctViewCount === 1
+        ? erstePositionPreis
+        : distinctViewCount === 2
+          ? erstePositionPreis + zweitePositionPreis
+          : erstePositionPreis + zweitePositionPreis + weiterePositionPreis * (distinctViewCount - 2);
 
   const variableCostTotal =
     elements.reduce((sum, el) => sum + getVariableCost(el, pricingRules, quantity), 0) + positionTierTotal;
@@ -313,23 +376,30 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   }
   // Positionsgestaffelter Aufschlag PRO ANSICHT für die Anzeige: die zuerst
   // bedruckte Ansicht (Reihenfolge der platzierten Elemente) bekommt
-  // erstePositionPreis, jede weitere genutzte Ansicht zusatzPositionPreis –
-  // eine reine Anzeige-Zuordnung, der GESAMTPREIS (positionTierTotal oben)
-  // ist davon unabhängig immer korrekt. Nur eine der beiden Quellen
-  // (Fläche/Stichzahl ODER Positionsstaffel) ist je Veredelungsart aktiv,
-  // in der Praxis also nie beides gleichzeitig ungleich 0 für dieselbe Ansicht.
+  // erstePositionPreis, die zweite zweitePositionPreis, jede weitere ab der
+  // dritten weiterePositionPreis – eine reine Anzeige-Zuordnung, der
+  // GESAMTPREIS (positionTierTotal oben) ist davon unabhängig immer korrekt.
+  // Nur eine der beiden Quellen (Fläche/Stichzahl ODER Positionsstaffel) ist
+  // je Veredelungsart aktiv, in der Praxis also nie beides gleichzeitig
+  // ungleich 0 für dieselbe Ansicht. Die DTF-Positionsstaffel ist bereits
+  // der fertige Endpreis (siehe DTF_POSITION_TIERS) – hier kommt KEIN
+  // Rabattfaktor mehr drauf.
   distinctViewsOrdered.forEach((view, i) => {
-    const anteil = i === 0 ? erstePositionPreis : zusatzPositionPreis;
+    const anteil = i === 0 ? erstePositionPreis : i === 1 ? zweitePositionPreis : weiterePositionPreis;
     if (anteil === 0) return;
-    areaPriceByView[view] = (areaPriceByView[view] ?? 0) + anteil * (1 - tier.veredelungDiscountPercent / 100);
+    areaPriceByView[view] = (areaPriceByView[view] ?? 0) + anteil;
   });
 
   // Grundpreis + Grundgebühren + Positionsaufschlag = "fester" Anteil,
-  // leicht rabattiert. Fläche/Stichzahl = "variabler" Anteil, steil
-  // rabattiert (siehe Kommentar oben zur Kalibrierung).
+  // leicht rabattiert. Fläche/Stichzahl (Stickerei) = "variabler" Anteil,
+  // steil rabattiert (siehe Kommentar bei QUANTITY_TIERS). Die DTF-
+  // Positionsstaffel steckt rechnerisch zwar mit im "variablen" Anteil
+  // (variableCostTotal), ist aber selbst bereits der fertige Preis und wird
+  // deshalb vor der Rabattierung wieder herausgerechnet.
   const fixedPortion = basePrice + elementBaseFeeTotal + positionFeeTotal;
   const discountedFixed = fixedPortion * (1 - tier.baseDiscountPercent / 100);
-  const discountedVariable = variableCostTotal * (1 - tier.veredelungDiscountPercent / 100);
+  const discountedVariable =
+    (variableCostTotal - positionTierTotal) * (1 - tier.veredelungDiscountPercent / 100) + positionTierTotal;
 
   // EINMALIGE Kosten des Auftrags (z.B. Rüsten/Digitalisieren). Kommen
   // vollständig aus den Preisregeln – ohne konfigurierte Regel ist der Wert 0.
@@ -389,9 +459,10 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       areaPricePerCm2: areaRule?.price ?? 0,
       pricePer1000Stitches: stitchRule?.price ?? 0,
       isStitchBased: Boolean(stitchRule),
-      isPositionBased: erstePositionPreis > 0 || zusatzPositionPreis > 0,
+      isPositionBased: erstePositionPreis > 0 || zweitePositionPreis > 0,
       firstPositionPrice: erstePositionPreis,
-      additionalPositionPrice: zusatzPositionPreis,
+      additionalPositionPrice: zweitePositionPreis,
+      furtherPositionPrice: weiterePositionPreis,
       totalEstimatedStitches,
       baseDiscountPercent: tier.baseDiscountPercent,
       veredelungDiscountPercent: tier.veredelungDiscountPercent,

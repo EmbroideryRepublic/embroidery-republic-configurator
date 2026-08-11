@@ -337,7 +337,6 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                   <span className="flex-1 text-[20px] font-semibold uppercase tracking-[0.1em] text-brand/70">
                     {g.label}
                   </span>
-                  <span className="text-[15px] tabular-nums text-brand/70">{g.anzahl}</span>
                   {/* Der Pfeil sagt, was ein Klick BEWIRKT – nicht nur, was ist:
                       nach RECHTS = zugeklappt, öffnet sich beim Klick nach rechts;
                       nach UNTEN = offen, die Unterkategorien stehen darunter;
@@ -380,7 +379,6 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                                   <img src={bild} alt="" loading="lazy" className="h-7 w-7 flex-shrink-0 object-contain" />
                                 )}
                                 <span className="flex-1 truncate text-[20px]">{a.label}</span>
-                                <span className="text-[15px] tabular-nums text-brand/70">{a.anzahl}</span>
                                 <ChevronRight
                                   className={clsx(
                                     'h-4 w-4 flex-shrink-0 transition-transform duration-300',

@@ -16,7 +16,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { getPricingRules } from '@/config/pricingRules';
-import { calculatePrice } from '../calculatePrice';
+import { calculatePrice, DTF_POSITION_TIERS } from '../calculatePrice';
 import type { ConfigElement } from '@/types';
 
 function logo(view: ConfigElement['view'], breiteCm = 20, hoeheCm = 15, id = `el-${view}-${Math.random()}`): ConfigElement {
@@ -61,7 +61,7 @@ test('zwei bedruckte Ansichten kosten 9 € + 5 € = 14 € Aufschlag', async (
   assert.ok(Math.abs(r.unitPrice - (BASIS_PREIS + 14)) < 0.01, `Stückpreis ${r.unitPrice}, erwartet ${BASIS_PREIS + 14}`);
 });
 
-test('drei bedruckte Ansichten kosten 9 € + 5 € + 5 € = 19 € Aufschlag', async () => {
+test('drei bedruckte Ansichten kosten 9 € + 5 € + 4 € = 18 € Aufschlag (1–2 Stück: dritte Position günstiger als zweite)', async () => {
   const rules = await getPricingRules('dtf');
   const r = calculatePrice({
     basePrice: BASIS_PREIS,
@@ -69,7 +69,10 @@ test('drei bedruckte Ansichten kosten 9 € + 5 € + 5 € = 19 € Aufschlag',
     elements: [logo('front'), logo('back'), logo('sleeve_left')],
     pricingRules: rules,
   });
-  assert.ok(Math.abs(r.unitPrice - (BASIS_PREIS + 19)) < 0.01, `Stückpreis ${r.unitPrice}, erwartet ${BASIS_PREIS + 19}`);
+  assert.ok(Math.abs(r.unitPrice - (BASIS_PREIS + 18)) < 0.01, `Stückpreis ${r.unitPrice}, erwartet ${BASIS_PREIS + 18}`);
+  assert.equal(r.breakdown.firstPositionPrice, 9);
+  assert.equal(r.breakdown.additionalPositionPrice, 5, 'zweite Position');
+  assert.equal(r.breakdown.furtherPositionPrice, 4, 'dritte und jede weitere Position');
 });
 
 test('mehrere Motive auf DERSELBEN Ansicht zählen nur als eine Position', async () => {
@@ -133,4 +136,52 @@ test('Stickerei bleibt unverändert stichzahlbasiert, nicht positionsgestaffelt'
   });
   assert.equal(r.breakdown.isPositionBased, false, 'Stickerei darf nicht auf das Positionsmodell umgestellt sein');
   assert.equal(r.breakdown.isStitchBased, true);
+});
+
+// ── Feste DTF-Positionsstaffel (Betreiber-Vorgabe 2026-08-09) ─────────
+//
+// Ersetzt die vorherige prozentuale Veredelungsrabattierung für DTF: feste
+// Preise je Position und Mengenbereich, keine weitere Rabattierung mehr.
+
+test('DTF-Positionsstaffel: alle 8 Stufen exakt wie vom Betreiber vorgegeben (2026-08-09)', () => {
+  assert.deepEqual(
+    DTF_POSITION_TIERS.map((t) => [t.minQuantity, t.erste, t.zweite, t.abDritte]),
+    [
+      [1, 9, 5, 4],
+      [3, 8, 4.5, 3.5],
+      [10, 7.5, 4, 3],
+      [50, 6, 3, 2.5],
+      [100, 5.5, 2.5, 2],
+      [250, 5, 2.5, 2],
+      [500, 4.5, 2, 1.5],
+      [1000, 4, 2, 1.5],
+    ]
+  );
+});
+
+test('DTF-Positionsstaffel ist eine reine Stufenfunktion: 10, 25 und 49 Stück kosten je Position exakt dasselbe, ab 50 Stück springt der gesamte Auftrag in die nächste Stufe', async () => {
+  const rules = await getPricingRules('dtf');
+  const erstePreis = (menge: number) =>
+    calculatePrice({ basePrice: 0, quantity: menge, elements: [logo('front')], pricingRules: rules }).breakdown
+      .firstPositionPrice;
+
+  assert.equal(erstePreis(10), 7.5);
+  assert.equal(erstePreis(25), 7.5);
+  assert.equal(erstePreis(49), 7.5);
+  assert.equal(erstePreis(50), 6);
+});
+
+test('Stufengrenzen: bei der niedrigeren Stückzahl wird nie WENIGER pro Position verlangt als eine Stufe höher', async () => {
+  const rules = await getPricingRules('dtf');
+  const erstePreis = (menge: number) =>
+    calculatePrice({ basePrice: 0, quantity: menge, elements: [logo('front')], pricingRules: rules }).breakdown
+      .firstPositionPrice;
+
+  const staffelgrenzen: [number, number][] = [[2, 3], [9, 10], [49, 50], [99, 100], [249, 250], [499, 500], [999, 1000]];
+  for (const [davor, abGrenze] of staffelgrenzen) {
+    assert.ok(
+      erstePreis(davor) >= erstePreis(abGrenze),
+      `${davor} Stück darf nicht günstiger sein als ${abGrenze} Stück`
+    );
+  }
 });

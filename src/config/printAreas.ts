@@ -69,6 +69,18 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
   'gildan-ladies-polo-front': [
     { xPercent: 46.5, yPercent: 20.5, widthPercent: 7, heightPercent: 17, label: 'Knopfleiste' },
   ],
+  // EarthPositive-Polos: bislang ohne eigenen Eintrag – hingen über den
+  // GEOMETRY_ALIAS an gildan-softstyle-polo und bekamen dessen Sperrzone,
+  // obwohl der Kragen/Knopfleiste auf dem EIGENEN Foto anders sitzt (die
+  // Zone hing dadurch sichtbar losgelöst über der Druckfläche statt darauf).
+  // Am eigenen Foto abgelesen (Rasterhilfe scripts/qaRaster.mts, 2026-08-09):
+  // 2-Knopf-Leiste, beide Knöpfe zwischen y17-33.
+  'earthpositive-pique-polo-shirt-front': [
+    { xPercent: 45.5, yPercent: 15, widthPercent: 7, heightPercent: 20, label: 'Knopfleiste' },
+  ],
+  'earthpositive-jersey-polo-shirt-front': [
+    { xPercent: 45.5, yPercent: 15, widthPercent: 7, heightPercent: 20, label: 'Knopfleiste' },
+  ],
   // Gildan Full-Zip: durchgehender Reißverschluss, per Bildausschnitt
   // kalibriert (Zip mittig, ab Kragenansatz bis Saum).
   'gildan-zip-hoodie-front': [
@@ -87,6 +99,62 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
     { xPercent: 26.5, yPercent: 55, widthPercent: 6.5, heightPercent: 26, label: 'Tasche' },
     { xPercent: 67, yPercent: 55, widthPercent: 6.5, heightPercent: 26, label: 'Tasche' },
   ],
+  // Katalogweite Nachkalibrierung 2026-08-09, weitere Fleece-Jacken. Jede
+  // Jacke einzeln am eigenen Foto geprüft, ob Reißverschluss UND/ODER
+  // Eingrifftaschen sichtbar sind – nicht jede hat beides.
+  'sols-men-s-plain-fleece-jacket-norman-front': [
+    { xPercent: 47, yPercent: 12, widthPercent: 6, heightPercent: 76, label: 'Reißverschluss' },
+    { xPercent: 27, yPercent: 55, widthPercent: 7, heightPercent: 17, label: 'Tasche' },
+    { xPercent: 66, yPercent: 55, widthPercent: 7, heightPercent: 17, label: 'Tasche' },
+  ],
+  'sols-women-s-plain-fleece-jacket-norman-front': [
+    { xPercent: 47, yPercent: 12, widthPercent: 6, heightPercent: 70, label: 'Reißverschluss' },
+    { xPercent: 28, yPercent: 55, widthPercent: 9, heightPercent: 21, label: 'Tasche' },
+    { xPercent: 63, yPercent: 55, widthPercent: 9, heightPercent: 21, label: 'Tasche' },
+  ],
+  // KORREKTUR 2026-08-09 (Nutzer-Feedback): eine einzelne, schräg
+  // eingesetzte Eingrifftasche unten links war zunächst übersehen worden
+  // ("keine Taschen erkennbar" war falsch – am Bildausschnitt eindeutig ein
+  // Reißverschluss-Zippel samt Tascheneingriff sichtbar). Nur EINE Tasche,
+  // keine spiegelnde zweite auf der rechten Seite (am eigenen Foto geprüft).
+  'sols-women-s-fleecejacket-north-front': [
+    { xPercent: 47, yPercent: 9, widthPercent: 6, heightPercent: 74, label: 'Reißverschluss' },
+    { xPercent: 21, yPercent: 56, widthPercent: 12, heightPercent: 28, label: 'Tasche' },
+  ],
+  'sols-mens-factor-zipped-fleece-jacket-front': [
+    { xPercent: 47, yPercent: 12, widthPercent: 6, heightPercent: 75, label: 'Reißverschluss' },
+    { xPercent: 25, yPercent: 57, widthPercent: 7, heightPercent: 9, label: 'Tasche' },
+    { xPercent: 70, yPercent: 57, widthPercent: 7, heightPercent: 9, label: 'Tasche' },
+  ],
+  // Keine eindeutige Tasche erkennbar (nur mögliche Saum-Kordel) – nur Zip.
+  'russell-outdoor-fleece-jacke-front': [
+    { xPercent: 47, yPercent: 10, widthPercent: 6, heightPercent: 70, label: 'Reißverschluss' },
+  ],
+  'jamesnicholson-men-s-fleece-jacket-jn-front': [
+    { xPercent: 47, yPercent: 12, widthPercent: 6, heightPercent: 76, label: 'Reißverschluss' },
+    { xPercent: 24, yPercent: 59, widthPercent: 5, heightPercent: 8, label: 'Tasche' },
+    { xPercent: 71, yPercent: 59, widthPercent: 5, heightPercent: 8, label: 'Tasche' },
+  ],
+  'id-identity-microfleece-jacke-front': [
+    { xPercent: 47, yPercent: 12, widthPercent: 6, heightPercent: 73, label: 'Reißverschluss' },
+    { xPercent: 26, yPercent: 49, widthPercent: 8, heightPercent: 16, label: 'Tasche' },
+    { xPercent: 66, yPercent: 49, widthPercent: 8, heightPercent: 16, label: 'Tasche' },
+  ],
+  'jamesnicholson-ladies-fleece-jacket-jn781-front': [
+    { xPercent: 47, yPercent: 12, widthPercent: 6, heightPercent: 74, label: 'Reißverschluss' },
+    { xPercent: 24, yPercent: 59, widthPercent: 6, heightPercent: 9, label: 'Tasche' },
+    { xPercent: 70, yPercent: 59, widthPercent: 6, heightPercent: 9, label: 'Tasche' },
+  ],
+  'bundc-microfleece-duo-id501-front': [
+    { xPercent: 47, yPercent: 12, widthPercent: 6, heightPercent: 75, label: 'Reißverschluss' },
+    { xPercent: 28, yPercent: 59, widthPercent: 5, heightPercent: 10, label: 'Tasche' },
+    { xPercent: 67, yPercent: 59, widthPercent: 5, heightPercent: 10, label: 'Tasche' },
+  ],
+  'bundc-microfleece-duo-id501-women-front': [
+    { xPercent: 47, yPercent: 12, widthPercent: 6, heightPercent: 75, label: 'Reißverschluss' },
+    { xPercent: 31, yPercent: 59, widthPercent: 5, heightPercent: 8, label: 'Tasche' },
+    { xPercent: 64, yPercent: 59, widthPercent: 5, heightPercent: 8, label: 'Tasche' },
+  ],
 
   // ── Halber/Viertel-Reißverschluss: nur der obere Kragenbereich ───────
   'jn-halfzip-sweat-front': [
@@ -94,6 +162,75 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
   ],
   'justhoods-quarterzip-sweat-front': [
     { xPercent: 47, yPercent: 11, widthPercent: 6, heightPercent: 25, label: 'Reißverschluss' },
+  ],
+  // Damen-Half-Zip-Hoodie: kurzer Reißverschluss nur im oberen Brustbereich,
+  // keine Känguru-Tasche darunter (per Bildausschnitt kalibriert, 2026-08-09).
+  'earthpositive-earth-positive-women-s-half-zip-hoodie-front': [
+    { xPercent: 46.8, yPercent: 20, widthPercent: 6, heightPercent: 33, label: 'Reißverschluss' },
+  ],
+
+  // ── Katalogweite Nachkalibrierung 2026-08-09: weitere Polo-Knopfleisten,
+  // jeweils am EIGENEN Foto abgelesen (nicht von einem Alias-Zielprodukt
+  // übernommen – siehe buildAreasForProduct()-Kommentar zur Prioritätsregel).
+  // bundc-unisex-polo-id-001: fast farbgleiche Knöpfe auf dunklem Stoff,
+  // Zone per Kontrastanhebung gelesen – geringere Messsicherheit als die
+  // übrigen, falls später eine bessere Fotoversion vorliegt noch mal prüfen.
+  'bundc-unisex-polo-id-001-front': [
+    { xPercent: 46, yPercent: 21, widthPercent: 7, heightPercent: 10, label: 'Knopfleiste' },
+  ],
+  'bundc-my-polo-180-front': [
+    { xPercent: 46.5, yPercent: 21, widthPercent: 7, heightPercent: 13, label: 'Knopfleiste' },
+  ],
+  'bundc-inspire-polo-men-front': [
+    { xPercent: 46.5, yPercent: 16, widthPercent: 7, heightPercent: 10, label: 'Knopfleiste' },
+  ],
+  'bundc-inspire-polo-women-front': [
+    { xPercent: 46, yPercent: 19, widthPercent: 7, heightPercent: 12, label: 'Knopfleiste' },
+  ],
+  'bundc-my-eco-polo-6535-front': [
+    { xPercent: 46.5, yPercent: 21, widthPercent: 7, heightPercent: 11, label: 'Knopfleiste' },
+  ],
+  'bundc-my-eco-polo-6535-women-front': [
+    { xPercent: 46.5, yPercent: 27, widthPercent: 7, heightPercent: 10, label: 'Knopfleiste' },
+  ],
+  'jamesnicholson-classic-polo-front': [
+    { xPercent: 46, yPercent: 15, widthPercent: 7, heightPercent: 14, label: 'Knopfleiste' },
+  ],
+  'jamesnicholson-classic-polo-ladies-front': [
+    { xPercent: 46, yPercent: 20, widthPercent: 7, heightPercent: 12, label: 'Knopfleiste' },
+  ],
+  'jamesnicholson-men-s-bio-workwear-polo-front': [
+    { xPercent: 45.5, yPercent: 18, widthPercent: 7, heightPercent: 15, label: 'Knopfleiste' },
+  ],
+  'jamesnicholson-workwear-polo-men-front': [
+    { xPercent: 45.5, yPercent: 15, widthPercent: 7, heightPercent: 16, label: 'Knopfleiste' },
+  ],
+  'russell-strapazierfaehiges-poloshirt-599-front': [
+    { xPercent: 45.5, yPercent: 17, widthPercent: 7, heightPercent: 14, label: 'Knopfleiste' },
+  ],
+  'russell-men-s-ultimate-cotton-polo-front': [
+    { xPercent: 45.5, yPercent: 18, widthPercent: 7, heightPercent: 17, label: 'Knopfleiste' },
+  ],
+  'russell-men-s-classic-cotton-polo-front': [
+    { xPercent: 45.5, yPercent: 19, widthPercent: 7, heightPercent: 13, label: 'Knopfleiste' },
+  ],
+  'russell-poloshirt-6535-front': [
+    { xPercent: 45.5, yPercent: 20, widthPercent: 7, heightPercent: 13, label: 'Knopfleiste' },
+  ],
+  'russell-ladies-poloshirt-6535-front': [
+    { xPercent: 45.5, yPercent: 24, widthPercent: 7, heightPercent: 13, label: 'Knopfleiste' },
+  ],
+  'sols-men-s-polo-shirt-prime-front': [
+    { xPercent: 45.5, yPercent: 20, widthPercent: 7, heightPercent: 15, label: 'Knopfleiste' },
+  ],
+  'sols-women-s-polo-shirt-prime-front': [
+    { xPercent: 46, yPercent: 17, widthPercent: 8, heightPercent: 17, label: 'Knopfleiste' },
+  ],
+  'sols-men-s-polo-shirt-perfect-front': [
+    { xPercent: 45.5, yPercent: 20, widthPercent: 7, heightPercent: 15, label: 'Knopfleiste' },
+  ],
+  'sols-unisex-pulse-polo-shirt-front': [
+    { xPercent: 45.5, yPercent: 19, widthPercent: 7, heightPercent: 15, label: 'Knopfleiste' },
   ],
 };
 
@@ -145,15 +282,20 @@ function buildAreasForProduct(productId: string, method: PrintMethod): PrintArea
   // generated.ts), wird dessen Fläche 1:1 übernommen. Die erzeugten Flächen
   // tragen weiterhin die EIGENE productId, damit getPrintAreas() sie findet.
   // PRINT_AREA_DATA ist bereits alias-aufgelöst (printAreaData.ts). Für die
-  // Exclusion-Zonen (nur hier gepflegt) wird zusätzlich auf die Quelle des
+  // Exclusion-Zonen (nur hier gepflegt) wird ebenfalls auf die Quelle des
   // Klassen-Alias verwiesen, damit aliasierte Produkte deren Hardware-Sperren
-  // (Reißverschluss, Knopfleiste …) miterben.
+  // (Reißverschluss, Knopfleiste …) miterben – ABER NUR, wenn das Produkt
+  // keine EIGENE Sperrzone hat: eine eigene Angabe schlägt die geerbte
+  // Klassenannahme, exakt wie bei der Geometrie selbst (siehe
+  // printAreaData.ts, "merged[neu]"). Sonst hinge z.B. die Knopfleiste eines
+  // Produkts sichtbar losgelöst über dessen eigener Druckfläche, weil beide
+  // von verschiedenen Fotos (unterschiedliche Rahmung) stammen.
   const views = PRINT_AREA_DATA[productId];
   if (!views) return [];
-  const exclId = GEOMETRY_ALIAS[productId] ?? productId;
 
   return (Object.keys(views) as PrintView[]).map((view) => {
     const a = views[view]!;
+    const exclId = EXCLUSION_ZONES[`${productId}-${view}`] ? productId : (GEOMETRY_ALIAS[productId] ?? productId);
     const widthPercent = a.x1 - a.x0;
     const heightPercent = a.y1 - a.y0;
 

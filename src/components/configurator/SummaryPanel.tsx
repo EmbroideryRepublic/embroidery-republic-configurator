@@ -8,7 +8,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useCartStore } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
-import { QUANTITY_TIERS, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
+import { QUANTITY_TIERS, DTF_POSITION_TIERS, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
 import { getProduct } from '@/config/products';
 import { SizeQuantityTable } from './SizeQuantityTable';
 import type { TranslationKey } from '@/lib/i18n/translations';
@@ -36,6 +36,14 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
 
   const quantity = sumSizeQuantities(sizeQuantities);
   const product = productId ? getProduct(productId) : null;
+  // DTF hat seit 2026-08-09 eine eigene feste Positionsstaffel statt eines
+  // Prozentrabatts (siehe DTF_POSITION_TIERS in calculatePrice.ts) – die
+  // Chip-Leiste und der "Noch X Stück bis…"-Hinweis unten müssen deshalb
+  // wissen, welche der beiden Staffeln gerade gilt. QUANTITY_TIERS.
+  // veredelungDiscountPercent beschreibt nur noch Stickerei korrekt.
+  const nextDtfTier = breakdown?.isPositionBased
+    ? DTF_POSITION_TIERS.find((t) => t.minQuantity > quantity)
+    : undefined;
 
   const addCartItem = useCartStore((s) => s.addItem);
   const [justAdded, setJustAdded] = useState(false);
@@ -119,24 +127,44 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
       <div className="flex items-center gap-1">
         <TrendingDown className="h-3.5 w-3.5 flex-shrink-0 text-gold-dark" aria-hidden="true" />
         <div className="flex min-w-0 flex-1 gap-0.5">
-          {QUANTITY_TIERS.map((tier) => (
-            <div
-              key={tier.minQuantity}
-              className={clsx(
-                'min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium',
-                quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-cream text-brand/70'
-              )}
-              title={`ab ${tier.minQuantity} Stück: -${tier.veredelungDiscountPercent}% auf Veredelung, -${tier.baseDiscountPercent}% auf Grundpreis`}
-            >
-              {tier.veredelungDiscountPercent > 0 ? `-${tier.veredelungDiscountPercent}%` : `${tier.minQuantity}+`}
-            </div>
-          ))}
+          {breakdown?.isPositionBased
+            ? DTF_POSITION_TIERS.map((tier) => (
+                <div
+                  key={tier.minQuantity}
+                  className={clsx(
+                    'min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium',
+                    quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-cream text-brand/70'
+                  )}
+                  title={`ab ${tier.minQuantity} Stück: ${formatPrice(tier.erste)} für die erste Position, ${formatPrice(tier.zweite)} für die zweite, ${formatPrice(tier.abDritte)} für jede weitere`}
+                >
+                  {formatPrice(tier.erste)}
+                </div>
+              ))
+            : QUANTITY_TIERS.map((tier) => (
+                <div
+                  key={tier.minQuantity}
+                  className={clsx(
+                    'min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium',
+                    quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-cream text-brand/70'
+                  )}
+                  title={`ab ${tier.minQuantity} Stück: -${tier.veredelungDiscountPercent}% auf Veredelung, -${tier.baseDiscountPercent}% auf Grundpreis`}
+                >
+                  {tier.veredelungDiscountPercent > 0 ? `-${tier.veredelungDiscountPercent}%` : `${tier.minQuantity}+`}
+                </div>
+              ))}
         </div>
       </div>
 
       {/* Nur der NÄCHSTE Schritt bzw. die erreichte Ersparnis – eine Zeile,
-          und nur wenn sie etwas aussagt. */}
-      {breakdown?.nextTier ? (
+          und nur wenn sie etwas aussagt. Bei DTF bezieht sich der Hinweis auf
+          die feste Positionsstaffel (DTF_POSITION_TIERS), nicht auf
+          QUANTITY_TIERS.veredelungDiscountPercent (gilt seit 2026-08-09 nur
+          noch für Stickerei). */}
+      {nextDtfTier ? (
+        <p className="text-[11px] text-brand/70">
+          Noch {nextDtfTier.minQuantity - quantity} Stück bis {formatPrice(nextDtfTier.erste)} für die erste Position.
+        </p>
+      ) : !breakdown?.isPositionBased && breakdown?.nextTier ? (
         <p className="text-[11px] text-brand/70">
           Noch {breakdown.nextTier.minQuantity - quantity} Stück bis {breakdown.nextTier.veredelungDiscountPercent}% Rabatt.
         </p>
@@ -189,7 +217,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
                             breakdown.isStitchBased
                               ? `Berechnet nach geschätzter Stichzahl (≈ ${breakdown.totalEstimatedStitches.toLocaleString('de-DE')} Stiche insgesamt) × ${formatPrice(breakdown.pricePer1000Stitches)} pro 1.000 Stiche. Nur eine Näherung – für die verbindliche Zahl zählt die Digitalisierung (z.B. Chroma Inspire).`
                               : breakdown.isPositionBased
-                                ? `${formatPrice(breakdown.firstPositionPrice)} für die erste bedruckte Ansicht, ${formatPrice(breakdown.additionalPositionPrice)} für jede weitere – unabhängig von der Größe der Motive.`
+                                ? `${formatPrice(breakdown.firstPositionPrice)} für die erste bedruckte Ansicht, ${formatPrice(breakdown.additionalPositionPrice)} für die zweite, ${formatPrice(breakdown.furtherPositionPrice)} für jede weitere ab der dritten – unabhängig von der Größe der Motive.`
                                 : `Je größer ein Logo oder Text, desto mehr Material wird verbraucht – automatisch berechnet mit ${formatPrice(breakdown.areaPricePerCm2)} pro cm².`
                           }
                         />

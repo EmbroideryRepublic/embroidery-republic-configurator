@@ -78,34 +78,13 @@ function findeBild(treffer: typeof PRODUCTS, art: ProductType): string | undefin
   return ersteProdukt?.colors.length ? produktBild(ersteProdukt.id, ersteProdukt.colors) : undefined;
 }
 
-/** Farbfamilien in der Reihenfolge des Spektrums – das Band soll fließen. */
-const FAMILIENFOLGE = [
-  'weiss', 'beige', 'gelb', 'orange', 'rot', 'rosa', 'lila',
-  'blau', 'tuerkis', 'gruen', 'braun', 'grau', 'schwarz',
-];
-
 export default function Startseite() {
   const guenstigster = Math.min(...PRODUCTS.map((p) => p.basePrice));
-  const marken = new Set(PRODUCTS.map((p) => p.brand)).size;
-  const materialien = new Set(PRODUCTS.map((p) => p.material)).size;
 
   const kategorien = REIHENFOLGE.map((art) => {
     const treffer = PRODUCTS.filter((p) => p.productType === art);
     return { art, anzahl: treffer.length, bild: findeBild(treffer, art) };
   }).filter((k) => k.anzahl > 0);
-
-  // Jeder Punkt im Farbband ist ein echter Farbwert aus den Produktdaten,
-  // kein Entwurfsraster. Gleiche Farbnamen erscheinen nur einmal.
-  const toene = new Map<string, { hex: string; gruppe: string }>();
-  for (const p of PRODUCTS) {
-    for (const c of waehlbareFarben(p.id, p.colors)) {
-      const gruppe = FARBGRUPPEN[c.name];
-      if (c.hex && gruppe && !toene.has(c.name)) toene.set(c.name, { hex: c.hex, gruppe });
-    }
-  }
-  const farben = [...toene.entries()]
-    .map(([name, d]) => ({ name, ...d }))
-    .sort((a, b) => FAMILIENFOLGE.indexOf(a.gruppe) - FAMILIENFOLGE.indexOf(b.gruppe));
 
   // Die Bühne zeigt die als `hero` markierte Art (Register) – aktuell der
   // Hoodie: größte Fläche, stärkster Auftritt bei der Auflösung, die die
@@ -113,6 +92,16 @@ export default function Startseite() {
   // erste Kategorie.
   const buehne = kategorien.find((k) => PRODUCT_TYPES[k.art]?.hero) ?? kategorien[0];
   const buehneDef = buehne ? PRODUCT_TYPES[buehne.art] : undefined;
+
+  // Bild für den Markenbereich – ein echtes, freigestelltes Katalogfoto statt
+  // eines reinen Farbverlaufs. Bewusst eine Jacke, nicht der Hoodie der
+  // Bühne: die Seite soll nicht zweimal dasselbe Kleidungsstück zeigen.
+  // Sobald echte Marken- oder Lifestyle-Fotografie vorliegt, ersetzt sie
+  // dieses Katalogfoto im selben Container, ohne Layoutänderung.
+  const markenProdukt = PRODUCTS.find((p) => p.productType === 'jacket');
+  const markenBild = markenProdukt?.colors.length
+    ? produktBild(markenProdukt.id, markenProdukt.colors)
+    : undefined;
 
   return (
     <main className="bg-brand-light">
@@ -200,9 +189,8 @@ export default function Startseite() {
             </ul>
           </div>
 
-          {/* Markenbereich – bis echte Marken-/Lifestyle-Fotografie vorliegt
-              (siehe Kommentar oben) bleibt es bei diesem reinen Verlauf statt
-              einem fehlenden Bild. Container-Maße unverändert (aspect-[4/3]). */}
+          {/* Markenbereich – Katalogfoto vor Farbverlauf, siehe Kommentar bei
+              markenBild oben. Container-Maße unverändert (aspect-[4/3]). */}
           <div
             className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-brand/[0.06] lg:block"
             style={{ background: 'radial-gradient(120% 100% at 25% 20%, #fdfaf3 0%, #f1e8d6 55%, #e6dac2 100%)' }}
@@ -213,6 +201,15 @@ export default function Startseite() {
               className="pointer-events-none absolute inset-0"
               style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -60px 90px -60px rgba(43,36,28,0.18)' }}
             />
+            {markenBild && (
+              <Image
+                src={markenBild}
+                alt={markenProdukt?.name ?? ''}
+                fill
+                sizes="(max-width: 1024px) 0px, 40vw"
+                className="object-contain p-10"
+              />
+            )}
           </div>
         </div>
 
@@ -261,38 +258,6 @@ export default function Startseite() {
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* ══ Farbe ═══════════════════════════════════════════════════════ */}
-      <section className="border-y border-brand/[0.08] bg-white/50">
-        <div className="mx-auto grid max-w-[1500px] items-center gap-14 px-4 py-24 sm:px-8 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Farbe</p>
-            <h2 className="mt-6 font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
-              {farben.length} Farbtöne.
-              <span className="block text-gold-dark">Einer ist deiner.</span>
-            </h2>
-            <p className="mt-7 max-w-sm text-[16px] leading-relaxed text-brand/70">
-              Von Naturweiß bis Tiefschwarz – gewachsen aus {marken} Marken und{' '}
-              {materialien} Materialien.
-            </p>
-          </div>
-
-          <ul aria-label="Nach Farbe filtern" className="flex flex-wrap gap-2.5">
-            {farben.map(({ name, hex, gruppe }) => (
-              <li key={name}>
-                <Link
-                  href={`/produkt?farbe=${gruppe}`}
-                  title={`${name} – Artikel in dieser Farbe ansehen`}
-                  className="block h-11 w-11 rounded-full ring-1 ring-inset ring-black/[0.09] transition-all duration-300 ease-out hover:scale-110 hover:shadow-[0_8px_20px_-8px_rgba(43,36,28,0.45)] hover:ring-2 hover:ring-gold"
-                  style={{ backgroundColor: hex }}
-                >
-                  <span className="sr-only">{name} – Artikel in dieser Farbe ansehen</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

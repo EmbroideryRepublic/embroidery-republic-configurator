@@ -13,6 +13,7 @@ import path from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { PRODUCTS } from '../src/config/products/index';
 import { PRINT_AREA_DATA } from '../src/config/printAreaData.generated';
+import { resolveColorImages } from '../src/lib/assets/index';
 import type { PrintView } from '../src/types';
 
 const view = (process.argv[2] ?? 'front') as PrintView;
@@ -27,7 +28,8 @@ for (const id of ids) {
   const p = PRODUCTS.find((x) => x.id === id);
   const a = PRINT_AREA_DATA[id]?.[view];
   if (!p || !a) { console.log(`${id}: keine Daten`); continue; }
-  const url = p.colors[0]!.images[view];
+  const url = resolveColorImages(id, p.colors[0]!.id)[view];
+  if (!url) { console.log(`${id}: kein Bild fuer ${view}`); continue; }
   const pf = path.join('public', url.replace(/^\//, ''));
   const meta = await sharp(pf).metadata();
   const w = meta.width!, h = meta.height!;

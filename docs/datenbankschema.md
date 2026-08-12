@@ -87,6 +87,8 @@ Wichtige Spaltengruppen:
 | Produktion | `pdf_url`, `production_files_url`, `tracking_number`, `shipped_at` | 0002 |
 | **DSGVO** | `anonymized_at` (Zeitpunkt der Anonymisierung nach Aufbewahrungsfrist) | **0022** |
 | **AGB/Steuernachweis** | `terms_accepted_at`, `customer_vat_id` (nullable, aus dem Kundenprofil übernommen) | **0025** |
+| **Rechnung (Lexware)** | `invoice_id`, `invoice_number`, `invoice_pdf_url` (Storage-**Pfad**, keine URL) | **0026** |
+| **Buchhaltungs-Sync-Cursor** | `invoice_date` (Belegdatum), `accounting_ready_at` (Bereitschaftszeitpunkt, Keyset-Paginierungsschlüssel zusammen mit `id` – siehe [ADR 0007](adr/0007-buchhaltungs-sync-cursor.md)) | **0027** |
 
 ### `order_items` (13 Spalten, 1 FK → orders)
 Positionen. Enthält den **Schnappschuss** von Produktname, Farbe, Größen-
@@ -196,6 +198,8 @@ Trockenlauf ausgeführt **und** verifiziert wurde – siehe die Lehre aus 0011.
 | **0023** | kundenkonto | Kundenkonto (additiv): `customer_profiles`, `customer_addresses`, `orders.customer_id` |
 | **0024** | bestellung_kundenkonto_verknuepfung | `create_order_atomic` um `customer_id` ergänzt |
 | **0025** | bestellung_agb_zeitstempel | `orders.terms_accepted_at` + `orders.customer_vat_id`; `create_order_atomic` entsprechend erweitert |
+| **0026** | rechnung_und_versand | Lexware-Rechnungsintegration: `invoice_id`/`invoice_number`/`invoice_pdf_url`, Claim-Mechanik für Rechnungs-/Versandlabel-Erstellung |
+| **0027** | buchhaltung_sync_export | `orders.invoice_date` + `orders.accounting_ready_at` (additiver Keyset-Cursor für die Buchhaltungs-Synchronisierung, [ADR 0007](adr/0007-buchhaltungs-sync-cursor.md)) |
 
 Lücken bei 0003–0005 und 0007 stammen aus der frühen Projektphase und sind in
 0006/0008 zusammengeführt worden; `pruefeMigrationen.mjs` prüft ab dem

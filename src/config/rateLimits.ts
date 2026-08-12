@@ -160,6 +160,21 @@ export const RATE_LIMITS = {
       'Zwanzig schreibende Änderungen je Stunde je Konto decken jede reale Nutzung ab (mehrere Adressen ' +
       'anlegen, Profil anpassen) und bremsen automatisiertes Schreiben über eine gekaperte Sitzung.',
   },
+
+  /** Buchhaltungs-Synchronisierung (GET /api/accounting/v1/orders): ein
+   *  einzelner Client (die lokale Buchhaltungs-Anwendung), aber Seitenweise
+   *  Abruf über mehrere Läufe/Nachhol-Vorgänge – IP-basiert reicht, da nach
+   *  dem Secret-Vergleich geprüft (wie beim Webhook), nicht davor. */
+  accountingSync: {
+    id: 'accounting_sync',
+    max: 30,
+    fensterSekunden: MINUTE,
+    merkmal: 'ip',
+    begruendung:
+      'Ein einzelner bekannter Client (lokale Buchhaltung), der in Seiten abruft. 30/Minute genügt für ' +
+      'jeden realistischen Nachhol-Lauf (mehrere hundert Bestellungen in wenigen Seiten) und bremst Missbrauch ' +
+      'eines kompromittierten Schlüssels.',
+  },
 } as const satisfies Record<string, RateLimit>;
 
 export type RateLimitName = keyof typeof RATE_LIMITS;

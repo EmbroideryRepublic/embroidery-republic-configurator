@@ -137,6 +137,26 @@ abgeschaltet; diese Integration nutzt ausschließlich die neue REST-API v2.
 
 ---
 
+## Buchhaltungs-Synchronisierung (lokale Anwendung, additiv)
+
+Sichere PULL-Synchronisierung mit der lokalen Buchhaltungs-Anwendung
+(`embroidery-republic-buchhaltung`) über `GET /api/accounting/v1/orders`
+([OpenAPI](openapi/accounting-sync-v1.yaml), [ADR 0007](adr/0007-buchhaltungs-sync-cursor.md)).
+Die Website macht dabei nichts von sich aus erreichbar – die lokale
+Buchhaltung ruft kontrolliert ab.
+
+| Variable | Bedeutung |
+|---|---|
+| `ACCOUNTING_API_KEY` | geteiltes Secret, geprüft als `Authorization: Bearer …` (zeitkonstant, exakt wie `CRON_SECRET`). Zufällig, mindestens 32 Zeichen. Muss hier **und** identisch in den Einstellungen der lokalen Buchhaltungs-Anwendung hinterlegt werden. |
+
+Ohne gesetzten Schlüssel liefert der Endpunkt bewusst 503 (nicht scharf
+geschaltet) statt eines geratenen/leeren Vergleichswerts – dasselbe
+Verhalten wie beim Cron-Endpunkt. Der Schlüssel taucht in keiner
+Fehlermeldung und in keinem Protokolleintrag auf
+(`src/lib/accounting/accountingSyncKonfiguration.ts`).
+
+---
+
 ## Rate-Limit: vertrauenswürdiger Proxy
 
 | Variable | Bedeutung | Fehlt sie? |
@@ -210,4 +230,8 @@ DIRECT_URL=postgresql://…
 # DHL_PASSWORD=
 # DHL_BILLING_NUMBER=
 # DHL_ENV=sandbox
+
+# Buchhaltungs-Synchronisierung – setzen, um die lokale Buchhaltungs-Anwendung
+# per Pull-Sync anzubinden (identischer Wert dort in den Einstellungen)
+# ACCOUNTING_API_KEY=
 ```

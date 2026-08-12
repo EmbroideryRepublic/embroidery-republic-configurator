@@ -148,6 +148,25 @@ falls sich am Prozess etwas ändert.
 
 ---
 
+## 3.4 Datenminimierung beim Buchhaltungs-Export
+
+`GET /api/accounting/v1/orders` ([OpenAPI](openapi/accounting-sync-v1.yaml))
+liefert Bestellungen an die lokale Buchhaltungs-Anwendung. Es verlassen
+ausschließlich die Felder aus `AccountingOrderDto`
+(`src/lib/accounting/types.ts`) das System: Name, Firma, E-Mail, Telefon,
+Lieferadresse, Positionen, Bruttobetrag, Zahlungsart/-status und die
+Lexware-Rechnungsreferenz. Kein Steuerbetrag (siehe ADR-Begründung im
+OpenAPI-Dokument), keine internen IDs außer der Bestell-ID selbst, keine
+Konfigurationsdetails (Logos, Platzierungen), keine Zahlungs-Rohdaten des
+Anbieters. Die signierte PDF-URL ist eine Stunde gültig und verweist auf
+genau das eine Rechnungsdokument, nicht auf den gesamten Speicherbereich.
+
+Der Endpunkt liefert nur Bestellungen, die ohnehin bereits der
+10-Jahres-Aufbewahrungspflicht (Abschnitt 1.2) unterliegen – der Export
+erzeugt keine neue, längere Aufbewahrung, sondern spiegelt die
+gesetzlich ohnehin gespeicherten Daten in ein zweites, ebenfalls lokales
+(nicht cloud-gehostetes) System.
+
 ## 4. Verwandte Dokumente
 
 - `docs/upload-lebenszyklus.md` – der Speicherweg von Motivdateien insgesamt;

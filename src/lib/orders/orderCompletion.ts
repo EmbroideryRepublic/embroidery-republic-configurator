@@ -526,6 +526,10 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
     const kritischGespeichert = await persistiereKritischMitWiederholung(db, order.id, {
       invoice_id: rechnung.rechnungsId,
       invoice_number: rechnung.rechnungsnummer,
+      // Bisher nur lokale Variable (siehe oben), nie persistiert – die
+      // Buchhaltungs-Synchronisierung (Schritt 6) braucht ein echtes
+      // Belegdatum, kein Approximat aus dem Abrufzeitpunkt.
+      invoice_date: auftrag.rechnungsdatum,
     });
     if (!kritischGespeichert) {
       // Auch mehrere Versuche sind gescheitert. Wirft bewusst weiter in den
@@ -540,7 +544,13 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
     const pfad = `orders/${order.id}/rechnung.pdf`;
     await Promise.all([
       uploadProductionFile(pfad, rechnung.pdf, 'application/pdf'),
-      db.from('orders').update({ invoice_pdf_url: pfad }).eq('id', order.id),
+      // accounting_ready_at markiert den frühesten sinnvollen Zeitpunkt für
+      // die Buchhaltungs-Synchronisierung (Schritt 6): ab hier hat die
+      // Bestellung sowohl Rechnungsnummer als auch PDF. Dient dort als
+      // monotoner Cursor, weil `orders` keine generische `updated_at`-Spalte
+      // hat und `created_at` nicht mit Buchhaltungsreife korreliert (eine
+      // Kartenzahlung kann Stunden nach der Bestellung erst bestätigt werden).
+      db.from('orders').update({ invoice_pdf_url: pfad, accounting_ready_at: new Date().toISOString() }).eq('id', order.id),
     ]);
 
     await protokolliereBestellereignis({

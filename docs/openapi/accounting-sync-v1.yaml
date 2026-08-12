@@ -1,0 +1,284 @@
+openapi: 3.0.3
+info:
+  title: Embroidery Republic – Buchhaltungs-Synchronisierung
+  version: '1.0'
+  description: |
+    Einziger Endpunkt der sicheren PULL-Synchronisierung zwischen der Website
+    und der lokalen Buchhaltungs-Anwendung (embroidery-republic-buchhaltung).
+
+    Architekturprinzip: Die Website macht nichts von sich aus erreichbar –
+    die lokale Buchhaltung ruft kontrolliert und authentifiziert ab. Kein
+    Push, keine ungeschützte lokale Gegenstelle.
+
+    Bewusst KEIN Steuerfeld im Vertrag: Die Website berechnet aktuell
+    pauschal 19 % USt. auf jede Bestellung, unabhängig vom (in der lokalen
+    Buchhaltung bestätigten) Kleinunternehmerstatus – eine offene, separat zu
+    klärende Frage. Dieser Endpunkt liefert deshalb ausschließlich den
+    Bruttogesamtbetrag; die Synchronisierung weist lokal nie eine
+    Umsatzsteuer aus.
+servers:
+  - url: https://<domain>/api/accounting/v1
+    description: Produktiv
+  - url: http://localhost:3001/api/accounting/v1
+    description: Lokale Entwicklung
+
+security:
+  - bearerAuth: []
+
+paths:
+  /orders:
+    get:
+      summary: Buchhaltungsreife Bestellungen abrufen (Keyset-Paginierung)
+      description: |
+        Liefert Bestellungen, die vollständig für die Übernahme in die lokale
+        Buchhaltung bereit sind: `order_type = 'order'`,
+        `payment_status in ('paid', 'not_required')`, mit gesetzter
+        Lexware-Rechnungsnummer UND gesetztem `accounting_ready_at`.
+
+        Bewusst KEIN Filter auf `status <> 'cancelled'` – eine stornierte
+        Bestellung kann bereits eine echte, unveränderliche Lexware-Rechnung
+        haben; die muss trotzdem gebucht werden (eine spätere Korrektur/Storno
+        läuft über die bestehende lokale Storno-Logik, nicht über diesen
+        Endpunkt).
+
+        Paginierung über einen opaken Keyset-Cursor `(accounting_ready_at,
+        id)`, monoton wachsend – siehe ADR 0007. Ein Client fragt so lange
+        mit dem zuletzt erhaltenen `nextCursor` weiter, bis `hasMore: false`.
+      parameters:
+        - name: cursorReadyAt
+          in: query
+          required: false
+          description: >
+            ISO-8601-Zeitstempel aus einem vorherigen `nextCursor.readyAt`.
+            Muss zusammen mit `cursorId` angegeben werden.
+          schema:
+            type: string
+            format: date-time
+        - name: cursorId
+          in: query
+          required: false
+          description: >
+            UUID aus einem vorherigen `nextCursor.id`. Muss zusammen mit
+            `cursorReadyAt` angegeben werden.
+          schema:
+            type: string
+            format: uuid
+        - name: limit
+          in: query
+          required: false
+          description: Seitengröße. Standard 50, maximal 200.
+          schema:
+            type: integer
+            default: 50
+            maximum: 200
+      responses:
+        '200':
+          description: Eine Seite buchhaltungsreifer Bestellungen.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountingOrdersResponse'
+        '400':
+          description: Ungültiger Cursor (nur einer der beiden Parameter gesetzt, oder falsches Format).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Fehlender oder falscher Bearer-Token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate-Limit erreicht (30 Anfragen/Minute je Adresse). Erneuter Versuch nach kurzer Wartezeit.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: ACCOUNTING_API_KEY ist auf dem Server nicht konfiguriert – der Endpunkt ist deaktiviert.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >
+        `Authorization: Bearer <ACCOUNTING_API_KEY>`. Ausschließlich als
+        Header, nie als Query-Parameter (Query-Parameter landen in
+        Zugriffsprotokollen). Zeitkonstant geprüft (SHA-256 + timingSafeEqual).
+
+  schemas:
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+
+    AccountingOrdersCursor:
+      type: object
+      required: [readyAt, id]
+      properties:
+        readyAt:
+          type: string
+          format: date-time
+        id:
+          type: string
+          format: uuid
+      description: Opak zu behandeln – nur unverändert an `cursorReadyAt`/`cursorId` des nächsten Aufrufs übergeben.
+
+    AccountingOrderCustomer:
+      type: object
+      required: [name, company, email, phone, externalCustomerId]
+      properties:
+        name:
+          type: string
+        company:
+          type: string
+          nullable: true
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        externalCustomerId:
+          type: string
+          format: uuid
+          nullable: true
+          description: Gesetzt, wenn die Bestellung einem Website-Kundenkonto zugeordnet ist. NULL bei Gastbestellungen.
+
+    AccountingOrderShippingAddress:
+      type: object
+      required: [street, zip, city, country]
+      properties:
+        street:
+          type: string
+        zip:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+
+    AccountingOrderItem:
+      type: object
+      required: [productName, colorName, printMethod, quantity, unitPrice, totalPrice]
+      properties:
+        productName:
+          type: string
+        colorName:
+          type: string
+        printMethod:
+          type: string
+          nullable: true
+        quantity:
+          type: integer
+        unitPrice:
+          type: number
+          format: double
+          description: Effektiver, auf Cent gerundeter Stückpreis. NICHT mit quantity zurückmultiplizieren (Rundungsdrift) – totalPrice ist der verbindliche Positionsbetrag.
+        totalPrice:
+          type: number
+          format: double
+
+    AccountingOrderInvoice:
+      type: object
+      required: [number, date, pdfDownloadUrl]
+      properties:
+        number:
+          type: string
+          description: Von Lexware Office vergebene, gesetzlich fortlaufende Rechnungsnummer (§14 UStG). Die lokale Buchhaltung erstellt für synchronisierte Bestellungen KEINE eigene Nummer.
+        date:
+          type: string
+          format: date
+        pdfDownloadUrl:
+          type: string
+          format: uri
+          description: Zeitlich begrenzt signierte URL (1 Stunde gültig). Muss beim Verarbeiten der Seite heruntergeladen werden, nicht erst später.
+
+    AccountingOrderDto:
+      type: object
+      required:
+        - externalOrderId
+        - orderNumber
+        - createdAt
+        - customer
+        - shippingAddress
+        - items
+        - totalGrossAmount
+        - paymentMethod
+        - paymentStatus
+        - paymentTransactionId
+        - paidAt
+        - invoice
+      properties:
+        externalOrderId:
+          type: string
+          format: uuid
+          description: Primärschlüssel der Bestellung auf der Website. Dies ist die Kennung für die Idempotenz-Prüfung (Sync-Dedup) auf Buchhaltungsseite.
+        orderNumber:
+          type: string
+          example: ER-2026-A1B2C3
+        createdAt:
+          type: string
+          format: date-time
+        customer:
+          $ref: '#/components/schemas/AccountingOrderCustomer'
+        shippingAddress:
+          allOf:
+            - $ref: '#/components/schemas/AccountingOrderShippingAddress'
+          nullable: true
+          description: NULL bei einer unverbindlichen Anfrage ohne Lieferadresse (kommt bei diesem Endpunkt praktisch nicht vor, da nur echte Bestellungen geliefert werden).
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountingOrderItem'
+        totalGrossAmount:
+          type: number
+          format: double
+          description: Bruttogesamtbetrag der Bestellung. Der EINZIGE Geldbetrag in diesem Vertrag.
+        paymentMethod:
+          type: string
+          enum: [invoice, card, paypal]
+        paymentStatus:
+          type: string
+          enum: [paid, not_required]
+          description: Nur diese zwei Werte kommen vor – `pending`/`failed` sind für die Buchhaltung nicht relevant und werden vom Endpunkt herausgefiltert.
+        paymentTransactionId:
+          type: string
+          nullable: true
+          description: Stripe-PaymentIntent-ID bzw. äquivalente Kennung des Zahlungsanbieters. NULL bei paymentStatus `not_required` (Rechnungskauf, noch nicht bezahlt).
+        paidAt:
+          type: string
+          format: date-time
+          nullable: true
+        invoice:
+          $ref: '#/components/schemas/AccountingOrderInvoice'
+
+    AccountingOrdersResponse:
+      type: object
+      required: [orders, nextCursor, hasMore]
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountingOrderDto'
+        nextCursor:
+          allOf:
+            - $ref: '#/components/schemas/AccountingOrdersCursor'
+          nullable: true
+          description: NULL nur, wenn diese Seite leer war UND kein vorheriger Cursor übergeben wurde. Sonst immer gesetzt – auch wenn `hasMore` false ist (nächster Lauf startet dort).
+        hasMore:
+          type: boolean
+          description: >
+            true, wenn eine weitere Seite existiert ODER die aktuelle Seite
+            wegen eines Fehlers beim Signieren einer PDF-URL vorzeitig
+            abgeschnitten wurde. In beiden Fällen: mit `nextCursor` erneut
+            abrufen, keine Sonderbehandlung nötig.

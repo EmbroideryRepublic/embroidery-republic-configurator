@@ -122,18 +122,27 @@ sobald Zahlung + Lieferadresse vorliegen. Erzeugt Label + Sendungsnummer,
 speichert beides an der Bestellung (`tracking_number`, `carrier`,
 `dhl_label_url`).
 
+Authentifizierung per OAuth2 (Password-Grant/ROPC gegen DHLs Authentication
+API) – der von DHL empfohlene Weg; die frühere Basic-Auth-Variante hat DHL
+selbst als auslaufend markiert ("we will no longer offer Basic Auth in
+future API versions").
+
 | Variable | Bedeutung |
 |---|---|
-| `DHL_API_KEY` | Anwendungs-Schlüssel aus dem DHL-Entwicklerportal (developer.dhl.com). |
-| `DHL_USERNAME` / `DHL_PASSWORD` | Zugangsdaten des DHL-Geschäftskundenkontos (HTTP-Basic, zusätzlich zum API-Key). |
+| `DHL_API_KEY` / `DHL_API_SECRET` | `client_id`/`client_secret` der eigenen App im DHL-API-Developer-Portal (developer.dhl.com). |
+| `DHL_USERNAME` / `DHL_PASSWORD` | Login eines Systembenutzers im Post & DHL Geschäftskundenportal – ein ANDERES Konto als das Developer-Portal, wird für den Password-Grant zusätzlich zu API-Key/-Secret gebraucht. |
 | `DHL_BILLING_NUMBER` | 14-stellige Abrechnungsnummer des Versandvertrags. |
-| `DHL_ENV` | `sandbox` oder `production` – bestimmt die Basis-URL. |
+| `DHL_ENV` | `sandbox` oder `production` – bestimmt sowohl den Sendungs- als auch den Auth-Token-Endpunkt. |
 
 **Sandbox-Zugang muss aktiv beim DHL-Entwicklerportal beantragt werden**
 (Stand Aug 2026: manuelle Prüfung, ca. 24h) – ein bestehender
 Geschäftskundenvertrag allein reicht nicht für den API-Zugang. Die alte
 SOAP-Schnittstelle „Geschäftskundenversand" v3 ist laut DHL zum 31.05.2026
 abgeschaltet; diese Integration nutzt ausschließlich die neue REST-API v2.
+
+Das OAuth2-Token (30 Minuten gültig) wird prozessweit zwischengespeichert
+(`dhl.ts`, dasselbe Muster wie PayPals `holeZugriffstoken()`) – kein
+Token-Abruf je Bestellung.
 
 ---
 
@@ -224,8 +233,9 @@ DIRECT_URL=postgresql://…
 # Rechnung – Lexware Office integriert; setzen, um Rechnungen automatisch zu erstellen
 # LEXWARE_API_KEY=
 
-# Versand – DHL integriert; setzen, um Versandlabel erstellen zu können
+# Versand – DHL integriert (OAuth2); setzen, um Versandlabel erstellen zu können
 # DHL_API_KEY=
+# DHL_API_SECRET=
 # DHL_USERNAME=
 # DHL_PASSWORD=
 # DHL_BILLING_NUMBER=

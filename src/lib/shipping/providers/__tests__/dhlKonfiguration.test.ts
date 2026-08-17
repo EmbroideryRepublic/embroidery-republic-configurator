@@ -9,6 +9,8 @@ import {
   leseZugangsdaten,
   dhlKonfigurationsStand,
   istProduktivUmgebung,
+  dhlBasisUrl,
+  dhlAuthUrl,
   DhlKonfigurationFehlt,
 } from '../dhlKonfiguration';
 
@@ -31,10 +33,19 @@ function mitUmgebung<T>(werte: Record<string, string | undefined>, fn: () => T):
 
 const OHNE = {
   DHL_API_KEY: undefined,
+  DHL_API_SECRET: undefined,
   DHL_USERNAME: undefined,
   DHL_PASSWORD: undefined,
   DHL_BILLING_NUMBER: undefined,
   DHL_ENV: undefined,
+};
+
+const VOLLSTAENDIG = {
+  DHL_API_KEY: 'key',
+  DHL_API_SECRET: 'secret',
+  DHL_USERNAME: 'user',
+  DHL_PASSWORD: 'pass',
+  DHL_BILLING_NUMBER: '12345678901234',
 };
 
 test('ohne Zugangsdaten wird klar benannt, was fehlt', () => {
@@ -44,6 +55,7 @@ test('ohne Zugangsdaten wird klar benannt, was fehlt', () => {
       (fehler: Error) => {
         assert.ok(fehler instanceof DhlKonfigurationFehlt);
         assert.match(fehler.message, /DHL_API_KEY/);
+        assert.match(fehler.message, /DHL_API_SECRET/);
         assert.match(fehler.message, /DHL_USERNAME/);
         assert.match(fehler.message, /DHL_PASSWORD/);
         assert.match(fehler.message, /DHL_BILLING_NUMBER/);
@@ -54,25 +66,26 @@ test('ohne Zugangsdaten wird klar benannt, was fehlt', () => {
 });
 
 test('einzelne fehlende Variable wird konkret benannt', () => {
-  mitUmgebung(
-    { DHL_API_KEY: 'key', DHL_USERNAME: 'user', DHL_PASSWORD: 'pass', DHL_BILLING_NUMBER: undefined },
-    () => {
-      assert.throws(() => leseZugangsdaten(), /DHL_BILLING_NUMBER/);
-    }
-  );
+  mitUmgebung({ ...VOLLSTAENDIG, DHL_BILLING_NUMBER: undefined }, () => {
+    assert.throws(() => leseZugangsdaten(), /DHL_BILLING_NUMBER/);
+  });
+});
+
+test('fehlendes API-Secret wird konkret benannt (nicht mehr optional wie im Legacy-Weg)', () => {
+  mitUmgebung({ ...VOLLSTAENDIG, DHL_API_SECRET: undefined }, () => {
+    assert.throws(() => leseZugangsdaten(), /DHL_API_SECRET/);
+  });
 });
 
 test('vollständige Zugangsdaten werden unverändert zurückgegeben', () => {
-  mitUmgebung(
-    { DHL_API_KEY: 'key', DHL_USERNAME: 'user', DHL_PASSWORD: 'pass', DHL_BILLING_NUMBER: '12345678901234' },
-    () => {
-      const zugang = leseZugangsdaten();
-      assert.equal(zugang.apiKey, 'key');
-      assert.equal(zugang.username, 'user');
-      assert.equal(zugang.password, 'pass');
-      assert.equal(zugang.billingNumber, '12345678901234');
-    }
-  );
+  mitUmgebung(VOLLSTAENDIG, () => {
+    const zugang = leseZugangsdaten();
+    assert.equal(zugang.apiKey, 'key');
+    assert.equal(zugang.apiSecret, 'secret');
+    assert.equal(zugang.username, 'user');
+    assert.equal(zugang.password, 'pass');
+    assert.equal(zugang.billingNumber, '12345678901234');
+  });
 });
 
 test('DHL_ENV=production gilt als Produktivumgebung, alles andere als Sandbox', () => {
@@ -90,12 +103,26 @@ test('der Stand meldet fehlende Konfiguration ohne zu werfen', () => {
 });
 
 test('vollständig eingerichtet meldet Versand als möglich', () => {
-  mitUmgebung(
-    { DHL_API_KEY: 'key', DHL_USERNAME: 'user', DHL_PASSWORD: 'pass', DHL_BILLING_NUMBER: '12345678901234' },
-    () => {
-      const stand = dhlKonfigurationsStand();
-      assert.equal(stand.versandMoeglich, true);
-      assert.deepEqual(stand.offeneSchritte, []);
-    }
-  );
+  mitUmgebung(VOLLSTAENDIG, () => {
+    const stand = dhlKonfigurationsStand();
+    assert.equal(stand.versandMoeglich, true);
+    assert.deepEqual(stand.offeneSchritte, []);
+  });
+});
+
+test('Sendungs- und Auth-Endpunkt sind sauber nach Sandbox/Production getrennt', () => {
+  mitUmgebung({ DHL_ENV: 'production' }, () => {
+    assert.equal(dhlBasisUrl(), 'https://api-eu.dhl.com/parcel/de/shipping/v2');
+    assert.equal(dhlAuthUrl(), 'https://api-eu.dhl.com/parcel/de/account/auth/ropc/v1/token');
+  });
+  mitUmgebung({ DHL_ENV: 'sandbox' }, () => {
+    assert.equal(dhlBasisUrl(), 'https://api-sandbox.dhl.com/parcel/de/shipping/v2');
+    assert.equal(dhlAuthUrl(), 'https://api-sandbox.dhl.com/parcel/de/account/auth/ropc/v1/token');
+  });
+  mitUmgebung({ DHL_ENV: undefined }, () => {
+    // Fehlender Wert muss wie Sandbox behandelt werden – dieselbe
+    // "fail-closed"-Regel wie bei istProduktivUmgebung() selbst.
+    assert.equal(dhlBasisUrl(), 'https://api-sandbox.dhl.com/parcel/de/shipping/v2');
+    assert.equal(dhlAuthUrl(), 'https://api-sandbox.dhl.com/parcel/de/account/auth/ropc/v1/token');
+  });
 });

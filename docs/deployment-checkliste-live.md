@@ -71,6 +71,14 @@ npx supabase db dump --db-url "<DATABASE_URL aus Vercel>" -f backup-vor-migratio
   hundert KB bis MB, je nach Datenmenge) und enthält lesbar `CREATE TABLE`-
   Anweisungen für alle 18 Tabellen.
 
+> **Nachtrag 2026-08-18:** Seit dieser Checkliste (Stand 2026-08-07) sind drei
+> weitere Migrationen entstanden: `0026_rechnung_und_versand.sql` (Lexware-
+> Stilllegung/DHL-Claims), `0027_buchhaltung_sync_export.sql` (Accounting-
+> Sync-Cursor) und `0028_website_rechnungsnummer.sql` (eigener
+> Rechnungsnummernkreis). Vor jedem künftigen Produktions-Deploy zusätzlich zu
+> Schritt 2 unten auch `0026`–`0028` gegen die Produktionsdatenbank prüfen/
+> anwenden, in dieser Reihenfolge, nach demselben Vorgehen.
+
 ## Schritt 2 — Migrationen 0022–0025 anwenden
 
 **Lokal bereits vollständig verifiziert** (siehe Abschnitt 13.2 im

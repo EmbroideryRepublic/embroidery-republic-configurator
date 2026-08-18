@@ -78,6 +78,14 @@ export interface AccountingOrderDto {
   paymentTransactionId: string | null;
   paidAt: string | null;
   invoice: AccountingOrderInvoiceDto;
+  /**
+   * Zeitpunkt einer Stornierung (Kunde oder Admin-Kulanz), falls
+   * geschehen – sonst `null`. Bewusst KEIN Ausschlusskriterium der Query:
+   * eine stornierte Bestellung bleibt im Feed sichtbar, damit die
+   * Buchhaltung eine bereits übernommene Rechnung/Zahlung/Buchung gezielt
+   * rückgängig machen kann, statt nichts von der Stornierung zu erfahren.
+   */
+  cancelledAt: string | null;
 }
 
 export interface AccountingOrdersCursorDto {

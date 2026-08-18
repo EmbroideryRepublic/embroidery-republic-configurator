@@ -10,12 +10,12 @@ info:
     die lokale Buchhaltung ruft kontrolliert und authentifiziert ab. Kein
     Push, keine ungeschützte lokale Gegenstelle.
 
-    Bewusst KEIN Steuerfeld im Vertrag: Die Website berechnet aktuell
-    pauschal 19 % USt. auf jede Bestellung, unabhängig vom (in der lokalen
-    Buchhaltung bestätigten) Kleinunternehmerstatus – eine offene, separat zu
-    klärende Frage. Dieser Endpunkt liefert deshalb ausschließlich den
-    Bruttogesamtbetrag; die Synchronisierung weist lokal nie eine
-    Umsatzsteuer aus.
+    Bewusst KEIN Steuerfeld im Vertrag: Seit 2026-08-18 gilt Kleinunternehmer-
+    status nach § 19 UStG als entschieden (`IST_KLEINUNTERNEHMER = true`,
+    `src/config/company.ts`) – die Website weist auf eigenen Rechnungen
+    konsequent 0 % USt. aus. Dieser Endpunkt liefert weiterhin ausschließlich
+    den Bruttogesamtbetrag ohne separates Steuerfeld; die Synchronisierung
+    weist lokal nie eine Umsatzsteuer aus.
 servers:
   - url: https://<domain>/api/accounting/v1
     description: Produktiv
@@ -33,13 +33,12 @@ paths:
         Liefert Bestellungen, die vollständig für die Übernahme in die lokale
         Buchhaltung bereit sind: `order_type = 'order'`,
         `payment_status in ('paid', 'not_required')`, mit gesetzter
-        Lexware-Rechnungsnummer UND gesetztem `accounting_ready_at`.
+        Rechnungsnummer UND gesetztem `accounting_ready_at`.
 
         Bewusst KEIN Filter auf `status <> 'cancelled'` – eine stornierte
-        Bestellung kann bereits eine echte, unveränderliche Lexware-Rechnung
-        haben; die muss trotzdem gebucht werden (eine spätere Korrektur/Storno
-        läuft über die bestehende lokale Storno-Logik, nicht über diesen
-        Endpunkt).
+        Bestellung kann bereits eine echte, unveränderliche Rechnung haben;
+        die muss trotzdem gebucht werden (eine spätere Korrektur/Storno läuft
+        über die bestehende lokale Storno-Logik, nicht über diesen Endpunkt).
 
         Paginierung über einen opaken Keyset-Cursor `(accounting_ready_at,
         id)`, monoton wachsend – siehe ADR 0007. Ein Client fragt so lange
@@ -194,7 +193,7 @@ components:
       properties:
         number:
           type: string
-          description: Von Lexware Office vergebene, gesetzlich fortlaufende Rechnungsnummer (§14 UStG). Die lokale Buchhaltung erstellt für synchronisierte Bestellungen KEINE eigene Nummer.
+          description: Vom Shop selbst vergebene, gesetzlich fortlaufende Rechnungsnummer (§14 UStG; Format `RE-{Jahr}-{6-stellig}`, siehe Migration 0028). Die lokale Buchhaltung erstellt für synchronisierte Bestellungen KEINE eigene Nummer.
         date:
           type: string
           format: date
@@ -217,6 +216,7 @@ components:
         - paymentStatus
         - paymentTransactionId
         - paidAt
+        - cancelledAt
         - invoice
       properties:
         externalOrderId:
@@ -259,6 +259,21 @@ components:
           type: string
           format: date-time
           nullable: true
+        cancelledAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: >-
+            Zeitpunkt einer Stornierung (Kunde oder Admin-Kulanz), sonst NULL.
+            Kein Ausschlusskriterium dieser Query – eine stornierte, bereits
+            synchronisierte Bestellung bleibt sichtbar, damit die Buchhaltung
+            eine bereits übernommene Rechnung/Zahlung/Buchung gezielt
+            rückgängig machen kann. Ein erneutes Setzen von accounting_ready_at
+            bei der Stornierung liefert die Bestellung im nächsten Sync-Lauf
+            automatisch erneut aus (Redelivery über den bestehenden,
+            aufsteigenden Cursor). Die tatsächliche Rückabwicklung läuft
+            ausschließlich über die bestehende lokale Storno-Logik der
+            Buchhaltung, nicht über diesen Endpunkt.
         invoice:
           $ref: '#/components/schemas/AccountingOrderInvoice'
 

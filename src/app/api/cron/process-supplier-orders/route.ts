@@ -11,7 +11,12 @@
  *
  * Uebernimmt zusaetzlich die Wartung: abgelaufene Rate-Limit-Fenster,
  * Admin-Sitzungen und Systemereignisse, den Verfall offener Zahlungen sowie
- * die Freigabe haengengebliebener Phase-2-Ansprueche.
+ * die Freigabe haengengebliebener Phase-2-/Rechnungs-Ansprueche. Zusaetzlich
+ * (eigene Schritte, kein reiner SQL-Aufraeumer): Rechnungserstellungen UND
+ * Bestellabschluesse (Phase 2) nachholen, die sauber fehlgeschlagen sind und
+ * seitdem nie wiederholt wurden (siehe holeOffeneRechnungenNach in
+ * lib/orders/orderCompletion.ts und holeOffeneAbschluesseNach in
+ * lib/orders/paymentService.ts).
  *
  * Beispiel (manuell/Test):
  *   curl -H "Authorization: Bearer $CRON_SECRET" \
@@ -22,9 +27,15 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/server';
 import { protokoll } from '@/lib/observability/log';
 import { processDueSupplierOrders } from '@/lib/suppliers/lifecycle/orchestrator';
-import { ABSCHLUSS_CLAIM_VERWAIST_NACH_MINUTEN, ZAHLUNG_VERFAELLT_NACH_STUNDEN } from '@/config/zahlung';
+import { holeOffeneRechnungenNach } from '@/lib/orders/orderCompletion';
+import { holeOffeneAbschluesseNach } from '@/lib/orders/paymentService';
+import {
+  ABSCHLUSS_CLAIM_VERWAIST_NACH_MINUTEN,
+  ABSCHLUSS_RETRY_LIMIT,
+  ZAHLUNG_VERFAELLT_NACH_STUNDEN,
+} from '@/config/zahlung';
 import { ANFRAGE_LOESCHT_NACH_MONATEN, BESTELLUNG_ANONYMISIERT_NACH_JAHREN } from '@/config/dsgvo';
-import { RECHNUNG_CLAIM_VERWAIST_NACH_MINUTEN } from '@/config/rechnung';
+import { RECHNUNG_CLAIM_VERWAIST_NACH_MINUTEN, RECHNUNG_RETRY_LIMIT } from '@/config/rechnung';
 import { VERSANDLABEL_CLAIM_VERWAIST_NACH_MINUTEN } from '@/config/versand';
 
 export const dynamic = 'force-dynamic';
@@ -64,10 +75,40 @@ async function handle(req: NextRequest): Promise<NextResponse> {
   // Fehler in der Wartung darf die Lieferantenverarbeitung nicht entwerten.
   const wartung = await raeumeAuf();
 
+  // ── Offene Bestellabschlüsse (Phase 2) nachholen ────────────────────
+  // VOR den offenen Rechnungen: Ein hier nachgeholter Abschluss legt intern
+  // meist auch gleich die Rechnung an (schliesseBestellungAb → erzeugeRechnung).
+  // Schlägt nur die Rechnung dabei sauber fehl, greift im selben Lauf direkt
+  // der nachfolgende Schritt. Bewusst einzeln abgefangen, aus demselben Grund
+  // wie die Wartung oben.
+  let abschluesseNachgeholt: { gefunden: number; abgeschlossen: number; weiterhinOffen: number } | { fehler: string };
+  try {
+    abschluesseNachgeholt = await holeOffeneAbschluesseNach(ABSCHLUSS_RETRY_LIMIT);
+  } catch (fehler) {
+    const meldung = fehler instanceof Error ? fehler.message : String(fehler);
+    protokoll.fehler('CRON', 'abschluss_retry_fehlgeschlagen', meldung);
+    abschluesseNachgeholt = { fehler: meldung };
+  }
+
+  // ── Offene Rechnungen nachholen ─────────────────────────────────────
+  // Eigener Schritt statt Teil von raeumeAuf(): Jeder Treffer rendert ein
+  // PDF und verschickt eine echte E-Mail – kein reiner SQL-Aufräumschritt.
+  // Bewusst einzeln abgefangen, aus demselben Grund wie die Wartung oben.
+  let rechnungenNachgeholt: { gefunden: number; erstellt: number; fehlgeschlagen: number } | { fehler: string };
+  try {
+    rechnungenNachgeholt = await holeOffeneRechnungenNach(RECHNUNG_RETRY_LIMIT);
+  } catch (fehler) {
+    const meldung = fehler instanceof Error ? fehler.message : String(fehler);
+    protokoll.fehler('CRON', 'rechnungs_retry_fehlgeschlagen', meldung);
+    rechnungenNachgeholt = { fehler: meldung };
+  }
+
   return NextResponse.json({
     ok: true,
     reclaimed,
     wartung,
+    abschluesseNachgeholt,
+    rechnungenNachgeholt,
     processed: processed.length,
     results: processed.map((r) => ({ supplierId: r.supplierId, skipped: r.skipped, status: r.status, reason: r.reason })),
   });

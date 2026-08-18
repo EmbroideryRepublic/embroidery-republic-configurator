@@ -28,6 +28,19 @@
  * Buchhaltungsreife). Nur Bestellungen mit gesetztem accounting_ready_at
  * UND invoice_number sind buchhaltungsreif.
  *
+ * ── Stornierung/Erstattung: Redelivery statt Ausschluss ────────────────
+ * status='cancelled' ist bewusst KEIN Ausschlusskriterium dieser Query –
+ * eine stornierte, bereits synchronisierte Bestellung soll der Buchhaltung
+ * weiterhin gemeldet werden, mit cancelledAt gesetzt, statt spurlos aus dem
+ * Feed zu verschwinden. Beide Stornierungspfade (orderService.ts,
+ * storniereBestellungDurchKunden/setzeBestellstatus) setzen accounting_ready_at
+ * bei der Stornierung erneut auf now() – der aufsteigende Cursor liefert die
+ * Bestellung dadurch im nächsten Sync-Lauf automatisch erneut aus, ohne
+ * eigene Redelivery-Logik auf dieser Seite. Die tatsächliche Rückabwicklung
+ * (Rechnung/Zahlung/Buchung stornieren) läuft ausschließlich in der
+ * bestehenden lokalen Storno-Logik der Buchhaltung, nicht über diesen
+ * Endpunkt.
+ *
  * ── Fehlerisolierung beim PDF-Signieren ───────────────────────────────
  * invoice_pdf_url ist ein Storage-PFAD, keine URL – wird hier über das
  * bestehende getProductionFileSignedUrl() in eine zeitlich begrenzte
@@ -112,7 +125,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   let abfrage = db
     .from('orders')
     .select(
-      'id, created_at, customer_name, company, email, phone, customer_id, shipping_street, shipping_zip, shipping_city, shipping_country, total_price, payment_method, payment_status, payment_transaction_id, paid_at, invoice_number, invoice_date, invoice_pdf_url, accounting_ready_at'
+      'id, created_at, customer_name, company, email, phone, customer_id, shipping_street, shipping_zip, shipping_city, shipping_country, total_price, payment_method, payment_status, payment_transaction_id, paid_at, invoice_number, invoice_date, invoice_pdf_url, accounting_ready_at, cancelled_at'
     )
     .eq('order_type', 'order')
     .in('payment_status', ['paid', 'not_required'])
@@ -215,6 +228,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       paymentStatus: bestellung.payment_status as AccountingOrderDto['paymentStatus'],
       paymentTransactionId: (bestellung.payment_transaction_id as string | null) ?? null,
       paidAt: (bestellung.paid_at as string | null) ?? null,
+      cancelledAt: (bestellung.cancelled_at as string | null) ?? null,
       invoice: {
         number: bestellung.invoice_number as string,
         date: (bestellung.invoice_date as string | null) ?? (bestellung.created_at as string).slice(0, 10),

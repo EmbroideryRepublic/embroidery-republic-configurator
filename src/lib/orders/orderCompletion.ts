@@ -44,7 +44,8 @@ import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderReco
 import { brauchtVorabZahlung } from '@/config/zahlung';
 import { waehleRechnungsAnbieter, istRechnungserstellungMoeglich } from '@/lib/invoicing/registry';
 import { RechnungsTeilerfolgFehler, type Rechnungsauftrag, type Rechnungserstellung } from '@/lib/invoicing/types';
-import { PAYMENT_TERM_DAYS } from '@/config/company';
+import { PAYMENT_TERM_DAYS, IST_KLEINUNTERNEHMER } from '@/config/company';
+import { ziehNaechsteRechnungsnummer } from './rechnungsnummer';
 import { sendEmail } from '@/lib/email/sendEmail';
 import { InvoiceEmail } from '@/lib/email/templates/InvoiceEmail';
 import type { PrintView } from '@/types';
@@ -153,6 +154,93 @@ export async function holeAbschlussFuerRetryNach(orderId: string): Promise<void>
   if (abschluss.probleme.length > 0) {
     console.warn(`[orders] Nachgeholter Abschluss ${orderId} mit Einschränkungen:`, abschluss.probleme);
   }
+}
+
+/**
+ * Holt ausschließlich die Rechnungserstellung nach – für Bestellungen, deren
+ * letzter Versuch SAUBER fehlgeschlagen ist (Anspruch wieder freigegeben,
+ * keine Rechnung, kein Klärungsfall) und die seitdem nie erneut versucht
+ * wurden.
+ *
+ * ── Warum das nötig ist, obwohl es `holeAbschlussFuerRetryNach` oben schon
+ * gibt ────────────────────────────────────────────────────────────────────
+ * Jener Weg greift ausschließlich, wenn dieselbe `clientRequestId` erneut
+ * ankommt, UND bricht sofort ab, sobald `internal_notification_email_id`
+ * bereits gesetzt ist – also praktisch immer, denn Kommunikation und
+ * Rechnung sind unabhängige Schritte in `schliesseBestellungAb` (siehe dort):
+ * Scheitert nur die Rechnung, während Bestätigung/interne Meldung längst
+ * erfolgreich liefen, wird dieser Fall von `holeAbschlussFuerRetryNach` nie
+ * erreicht. Ohne einen eigenen Nachholweg bliebe so eine Bestellung
+ * dauerhaft ohne `accounting_ready_at` und würde nie zur lokalen Buchhaltung
+ * synchronisiert (Abnahme-Review vom 2026-08-18, Punkt 10) – unabhängig
+ * davon, ob der Kunde je erneut etwas absendet.
+ *
+ * Der bestehende Cron-Reaper `gib_haengende_rechnungserstellung_frei` (siehe
+ * Migration 0026) deckt das ebenfalls nicht ab: Er befreit nur Ansprüche, die
+ * hängengeblieben sind (`rechnung_erstellung_gestartet_am IS NOT NULL`,
+ * Absturz mitten in der Bearbeitung) – ein sauber freigegebener Anspruch
+ * (`rechnung_erstellung_gestartet_am IS NULL`) sieht für ihn bereits wie
+ * "nichts zu tun" aus, obwohl genau hier niemand je einen neuen Versuch
+ * anstößt.
+ *
+ * Ruft bewusst NUR den privaten Rechnungs-Schritt auf, nicht die gesamte
+ * Phase 2: Druckvorschauen, Produktionsblatt und Kommunikation sind für eine
+ * längst bestätigte Bestellung entweder schon gelaufen oder für diesen
+ * gezielten Nachholvorgang irrelevant. Die Auswahl-Bedingung entspricht exakt
+ * der von `beanspruche_rechnungserstellung` (Migration 0026) – der
+ * eigentliche Schutz gegen doppelte Rechnungserstellung liegt weiterhin
+ * ausschließlich in jenem atomaren Claim, nicht in dieser Auswahl hier: Läuft
+ * der reguläre Zahlungs-Webhook zufällig zeitgleich für dieselbe Bestellung,
+ * gewinnt nur einer der beiden Aufrufe den Claim, der andere ist ein
+ * folgenloses No-op (siehe `erzeugeRechnung`).
+ *
+ * Von der Cron-Route aufgerufen (siehe process-supplier-orders/route.ts);
+ * wirft nie.
+ */
+export async function holeOffeneRechnungenNach(
+  limit: number
+): Promise<{ gefunden: number; erstellt: number; fehlgeschlagen: number }> {
+  const db = createAdminClient();
+  const { data, error } = await db
+    .from('orders')
+    .select('id')
+    .eq('order_type', 'order')
+    .in('payment_status', ['paid', 'not_required'])
+    .is('invoice_id', null)
+    .eq('rechnung_unklarer_zustand', false)
+    .is('rechnung_erstellung_gestartet_am', null)
+    .order('created_at', { ascending: true })
+    .limit(limit);
+
+  if (error) {
+    console.error('[orders] Suche nach offenen Rechnungen fehlgeschlagen:', error.message);
+    return { gefunden: 0, erstellt: 0, fehlgeschlagen: 0 };
+  }
+
+  let erstellt = 0;
+  let fehlgeschlagen = 0;
+  // Bewusst sequenziell statt parallel: Dieser Pfad greift nur bei seltenen,
+  // sauber fehlgeschlagenen Einzelfällen (Regelfall: 0 Treffer) – anders als
+  // `processDueSupplierOrders` ist hier kein Durchsatz gefragt, und jeder
+  // einzelne Versuch verschickt bereits eine E-Mail mit PDF-Anhang.
+  for (const zeile of data ?? []) {
+    const orderId = zeile.id as string;
+    const order = await ladeBestellungFuerAbschluss(orderId);
+    if (!order) {
+      fehlgeschlagen++;
+      continue;
+    }
+    const probleme: string[] = [];
+    const ok = await erzeugeRechnung(order, probleme);
+    if (ok) {
+      erstellt++;
+    } else {
+      fehlgeschlagen++;
+      console.warn(`[orders] Rechnungs-Retry für ${orderId} weiterhin ohne Erfolg:`, probleme);
+    }
+  }
+
+  return { gefunden: (data ?? []).length, erstellt, fehlgeschlagen };
 }
 
 /**
@@ -407,14 +495,16 @@ async function erzeugeProduktionsblatt(
  * jeder Nachbarschritt in dieser Datei – eine gespeicherte, bezahlte
  * Bestellung darf an der Rechnungserstellung nicht scheitern.
  *
- * ── Lexware ist stillgelegt (Stand 2026-08-18) ─────────────────────────
- * Eine eigene Buchhaltungssoftware wird separat entwickelt; Lexware wird
- * nicht mehr betrieben und bleibt absichtlich unkonfiguriert.
- * istRechnungserstellungMoeglich() fängt das VOR dem Claim ab: kein
- * Lexware-Aufruf, kein Anspruch, keine "Problem"-Meldung für einen
- * dauerhaft erwarteten Zustand. Die künftige Buchhaltung bindet sich über
- * einen eigenen, separaten Integrationspunkt an (GET
- * /api/accounting/v1/orders, siehe dort) – nicht über diesen Pfad.
+ * ── Lexware ist stillgelegt, `intern` ist der Standardanbieter (Stand
+ * 2026-08-18) ────────────────────────────────────────────────────────────
+ * Lexware wird nicht mehr betrieben und bleibt absichtlich unkonfiguriert;
+ * `waehleRechnungsAnbieter()` (lib/invoicing/registry.ts) liefert seitdem
+ * standardmäßig den `intern`-Anbieter. Der Claim (unten) und die eigentliche
+ * Rechnungserstellung laufen dadurch weiterhin ganz normal – nur ohne
+ * externen Lexware-Aufruf, mit einer eigenen, website-internen
+ * Rechnungsnummer (Migration 0028). Die lokale Buchhaltung übernimmt diese
+ * Rechnung anschließend 1:1 über den separaten Integrationspunkt (GET
+ * /api/accounting/v1/orders, siehe dort), sie ist bereits produktiv.
  */
 async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<boolean> {
   if (order.orderType !== 'order') return false; // Anfragen bekommen keine Rechnung
@@ -443,7 +533,11 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
       throw new Error('Bestellung ohne Lieferadresse – Rechnungsadresse fehlt.');
     }
 
-    const steuersatz = order.taxRate ?? 19;
+    // Kleinunternehmer nach § 19 UStG: niemals eine Steuer ausweisen, auch
+    // wenn orders.tax_rate (pauschal 19 %, siehe Migration 0014) etwas
+    // anderes sagt – das war bislang ein echter, unbemerkter Fehler auf
+    // jeder erstellten Rechnung.
+    const steuersatz = IST_KLEINUNTERNEHMER ? 0 : (order.taxRate ?? 19);
     const zahlungszielTage = !order.paymentMethod || order.paymentMethod === 'invoice' ? PAYMENT_TERM_DAYS : 0;
 
     // Positionen: der bereits validierte POSITIONSGESAMTPREIS als
@@ -520,6 +614,11 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
       gesamtBruttoCent: gesamtCent,
       waehrung: 'EUR',
       zahlungszielTage,
+      // Reine Closure, kein Datenbankzugriff innerhalb von lib/invoicing/
+      // selbst (siehe Kopfkommentar dort und __tests__/architektur.test.ts).
+      // Anbieter mit eigener Nummernvergabe (Lexware, Test) rufen das
+      // schlicht nie auf.
+      naechsteRechnungsnummer: () => ziehNaechsteRechnungsnummer(db, new Date().getFullYear()),
     };
 
     rechnung = await waehleRechnungsAnbieter().erstelle(auftrag);
@@ -552,16 +651,55 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
     }
 
     const pfad = `orders/${order.id}/rechnung.pdf`;
-    await Promise.all([
-      uploadProductionFile(pfad, rechnung.pdf, 'application/pdf'),
-      // accounting_ready_at markiert den frühesten sinnvollen Zeitpunkt für
-      // die Buchhaltungs-Synchronisierung (Schritt 6): ab hier hat die
-      // Bestellung sowohl Rechnungsnummer als auch PDF. Dient dort als
-      // monotoner Cursor, weil `orders` keine generische `updated_at`-Spalte
-      // hat und `created_at` nicht mit Buchhaltungsreife korreliert (eine
-      // Kartenzahlung kann Stunden nach der Bestellung erst bestätigt werden).
-      db.from('orders').update({ invoice_pdf_url: pfad, accounting_ready_at: new Date().toISOString() }).eq('id', order.id),
-    ]);
+    // Wirft bei einem echten Storage-Fehler (storage.ts) – landet dann im
+    // catch-Block unten wie jeder andere Fehler nach erfolgreicher
+    // Rechnungserstellung (rechnung ist bereits gesetzt).
+    await uploadProductionFile(pfad, rechnung.pdf, 'application/pdf');
+
+    // accounting_ready_at markiert den frühesten sinnvollen Zeitpunkt für die
+    // Buchhaltungs-Synchronisierung (Schritt 6): ab hier hat die Bestellung
+    // sowohl Rechnungsnummer als auch PDF. Dient dort als monotoner Cursor,
+    // weil `orders` keine generische `updated_at`-Spalte hat und `created_at`
+    // nicht mit Buchhaltungsreife korreliert (eine Kartenzahlung kann Stunden
+    // nach der Bestellung erst bestätigt werden).
+    //
+    // BEWUSST NICHT mehr Teil des Promise.all oben (Review vom 2026-08-18,
+    // Punkt 2 des Sync-Audits): Ein reiner Supabase-Query-Fehler wirft NICHT
+    // automatisch (createAdminClient() setzt kein throwOnError) – ungeprüft
+    // wäre diese Bestellung danach für IMMER unsichtbar für die
+    // Buchhaltungs-Synchronisierung UND für holeOffeneRechnungenNach (dessen
+    // Filter invoice_id IS NULL hier bereits nicht mehr zutrifft), ohne jede
+    // Fehlermeldung – invoice_id/invoice_number sind ja schon oben erfolgreich
+    // gespeichert. Deshalb dasselbe Wiederholungsmuster wie dort.
+    const accountingGespeichert = await persistiereKritischMitWiederholung(db, order.id, {
+      invoice_pdf_url: pfad,
+      accounting_ready_at: new Date().toISOString(),
+    });
+    if (!accountingGespeichert) {
+      // Auch mehrere Versuche sind gescheitert. Rechnung UND PDF existieren
+      // real und korrekt – nur die Buchhaltungs-Bereitschaft konnte nicht
+      // vermerkt werden. rechnung_unklarer_zustand ist hierfür die richtige,
+      // bereits bestehende Sperre: Sie verhindert (Migration 0026), dass der
+      // Cron-Reaper oder ein Retry diese Bestellung je automatisch anfasst,
+      // bis sie manuell geprüft wurde – exakt das gewünschte Verhalten, auch
+      // wenn die Ursache hier eine andere ist als beim benachbarten
+      // invoice_id-Rettungspfad.
+      const alsUnklarMarkiert = await persistiereKritischMitWiederholung(db, order.id, {
+        rechnung_unklarer_zustand: true,
+      });
+      await protokolliereBestellereignis({
+        orderId: order.id,
+        eventType: 'invoice_accounting_marking_failed',
+        reason:
+          `Rechnung ${rechnung.rechnungsnummer} wurde vollständig angelegt (inkl. PDF-Upload), ` +
+          `accounting_ready_at konnte aber nach mehreren Versuchen nicht gesetzt werden. ` +
+          (alsUnklarMarkiert
+            ? 'rechnung_unklarer_zustand wurde gesetzt – manuell prüfen und die beiden Felder von Hand nachtragen.'
+            : 'KRITISCH: Auch der Klärungsfall-Marker konnte nicht gespeichert werden (anhaltende ' +
+              'Datenbankstörung) – dringend manuell prüfen.'),
+        detail: { invoiceId: rechnung.rechnungsId, invoiceNumber: rechnung.rechnungsnummer, alsUnklarMarkiert },
+      });
+    }
 
     await protokolliereBestellereignis({
       orderId: order.id,

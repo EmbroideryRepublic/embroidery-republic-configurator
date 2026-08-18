@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { TodoNote, Todo } from '@/components/legal/TodoNote';
 import { COMPANY } from '@/config/company';
 
 export const metadata = {
@@ -22,14 +21,6 @@ export default function ImpressumPage() {
       </Link>
 
       <h1 className="mb-4 mt-4 font-serif text-2xl font-semibold text-brand">Impressum</h1>
-
-      {!COMPANY.vatId && (
-        <TodoNote>
-          Es fehlt noch die Umsatzsteuer-Identifikationsnummer bzw. Steuernummer. Sobald sie in
-          config/company.ts (COMPANY.vatId) eingetragen ist, erscheint sie hier automatisch und
-          dieser Hinweis verschwindet von selbst.
-        </TodoNote>
-      )}
 
       <section className="space-y-5">
         <div>
@@ -71,8 +62,9 @@ export default function ImpressumPage() {
         <div>
           <h2 className="font-medium text-brand">Umsatzsteuer</h2>
           <p>
-            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:{' '}
-            {COMPANY.vatId ? COMPANY.vatId : <Todo>USt-IdNr. bzw. Steuernummer ergänzen</Todo>}
+            Steuernummer: {COMPANY.steuernummer}
+            <br />
+            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: {COMPANY.vatId}
           </p>
         </div>
 

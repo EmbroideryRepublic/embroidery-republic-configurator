@@ -45,3 +45,14 @@ export const ZAHLUNG_VERFAELLT_NACH_STUNDEN = 24;
  * dauert Sekunden.
  */
 export const ABSCHLUSS_CLAIM_VERWAIST_NACH_MINUTEN = 15;
+
+/**
+ * Wie viele Bestellungen `holeOffeneAbschluesseNach` (paymentService.ts) je
+ * Cron-Lauf höchstens erneut versucht.
+ *
+ * Regelfall ist 0 Treffer – dieser Pfad greift nur, wenn eine bezahlte
+ * Bestellung nie eine erneute Webhook-Zustellung bekam UND der ursprüngliche
+ * Abschluss-Versuch abgestürzt ist. Bewusst klein, siehe RECHNUNG_RETRY_LIMIT
+ * (config/rechnung.ts) für dieselbe Begründung.
+ */
+export const ABSCHLUSS_RETRY_LIMIT = 10;

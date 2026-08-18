@@ -1,0 +1,64 @@
+# ═══════════════════════════════════════════════════════════════════════
+# EXTERNER SCHEDULER FÜR DEN CRON-ENDPUNKT
+# ═══════════════════════════════════════════════════════════════════════
+#
+# Ruft alle 10 Minuten /api/cron/process-supplier-orders auf – die Route
+# selbst ist bereits per CRON_SECRET (Bearer-Header, zeitkonstanter
+# Vergleich) abgesichert, siehe src/app/api/cron/process-supplier-orders/route.ts.
+#
+# Notwendig, weil vercel.json keinen `crons`-Schlüssel mehr enthält (am
+# 2026-07-30 wegen des Vercel-Hobby-Tarifs entfernt, siehe Commits
+# 00a64995/b6a42787) – ohne einen externen Auslöser laufen weder der
+# Zahlungsverfall (verfalle_offene_zahlungen) noch die Freigabe verwaister
+# Phase-2-/Rechnungs-Ansprüche noch die Rechnungs-/Abschluss-Nachhol-Läufe
+# (holeOffeneRechnungenNach, holeOffeneAbschluesseNach) automatisch.
+#
+# Setup: In den Repository-Settings (Settings → Secrets and variables →
+# Actions) ein Secret CRON_SECRET mit demselben Wert anlegen, der bereits
+# als Vercel-Produktionsumgebungsvariable CRON_SECRET gesetzt ist.
+#
+# `workflow_dispatch` erlaubt zusätzlich einen manuellen Testlauf über die
+# GitHub-Actions-Oberfläche, ohne auf den nächsten geplanten Lauf zu warten.
+#
+# ── Keine Race Conditions/doppelten Rechnungen durch überlappende Läufe ──
+# Die eigentliche Korrektheitsgarantie liegt NICHT hier, sondern in der
+# Datenbank: Jeder Anspruch (beanspruche_abschluss, Migration 0020;
+# beanspruche_rechnungserstellung, Migration 0026) ist ein atomares
+# `UPDATE ... WHERE ... RETURNING` – Postgres serialisiert konkurrierende
+# UPDATEs auf dieselbe Zeile über Zeilen-Sperren, sodass von zwei
+# gleichzeitigen Aufrufen (egal ob zwei überlappende Cron-Läufe oder ein
+# Cron-Lauf zeitgleich mit einem echten Zahlungs-Webhook) nur EINER den
+# Anspruch bekommt; der andere trifft 0 Zeilen und tut nichts. Das gilt
+# unverändert für die neuen Nachhol-Funktionen (holeOffeneAbschluesseNach,
+# holeOffeneRechnungenNach) – sie rufen exakt denselben Anspruch auf, keinen
+# eigenen Schreibpfad. `concurrency` unten verhindert zusätzlich, dass sich
+# überlappende Läufe überhaupt erst stapeln (reine Ressourcenschonung, keine
+# Korrektheitsvoraussetzung).
+
+name: Buchhaltungs-Sync-Cron
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: buchhaltungs-sync-cron
+  cancel-in-progress: false
+
+jobs:
+  cron-aufruf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Cron-Endpunkt aufrufen
+        run: |
+          status=$(curl -s -o /tmp/antwort.json -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "${{ vars.CRON_BASIS_URL || 'https://ergermany.de' }}/api/cron/process-supplier-orders")
+          echo "HTTP-Status: $status"
+          cat /tmp/antwort.json
+          if [ "$status" -ge 300 ]; then
+            echo "::error::Cron-Aufruf fehlgeschlagen (HTTP $status)"
+            exit 1
+          fi

@@ -3,18 +3,19 @@
  * (Verkäufer, Käufer, Rechnungsnummer, Datum, Leistungsbeschreibung, Entgelt
  * netto, Steuersatz und -betrag, Endbetrag), soweit sie im System vorliegen.
  *
- * ── Seit 2026-08-10: automatisch verschickt, mit Lexware als Quelle ─────
+ * ── Seit 2026-08-10: automatisch verschickt ──────────────────────────────
  * `invoiceNumber`/`invoiceDate` kommen jetzt NICHT mehr von `order.orderNumber`
  * (das bleibt weiterhin nur die Bestellnummer, siehe buildOrderNumber,
- * orderTypes.ts), sondern von Lexware Office – dort entsteht beim Anlegen
- * der Rechnung (lib/invoicing/providers/lexware.ts) die fortlaufende, § 14
- * Abs. 4 Nr. 4 UStG-konforme Nummer. Dieses Template ist die E-Mail-
- * ZUSAMMENFASSUNG; das rechtsverbindliche Dokument ist das angehängte
- * Lexware-PDF (siehe lib/orders/orderCompletion.ts, erzeugeRechnung – dort
- * wird diese Komponente aufgerufen und das PDF als Anhang mitgeschickt).
+ * orderTypes.ts), sondern vom jeweils gewählten Rechnungsanbieter (Standard:
+ * `intern`, siehe lib/invoicing/providers/intern.ts; optional Lexware) –
+ * dort entsteht die fortlaufende, § 14 Abs. 4 Nr. 4 UStG-konforme Nummer.
+ * Dieses Template ist die E-Mail-ZUSAMMENFASSUNG; das rechtsverbindliche
+ * Dokument ist das angehängte Rechnungs-PDF (siehe lib/orders/orderCompletion.ts,
+ * erzeugeRechnung – dort wird diese Komponente aufgerufen und das PDF als
+ * Anhang mitgeschickt).
  */
 import { Text } from '@react-email/components';
-import { COMPANY } from '@/config/company';
+import { COMPANY, IST_KLEINUNTERNEHMER, KLEINUNTERNEHMER_HINWEIS } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
 import { COLORS, EmailLayout } from './EmailLayout';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
@@ -55,6 +56,18 @@ export function InvoiceEmail({
               {COMPANY.zip} {COMPANY.city}
               <br />
               {COMPANY.email}
+              {COMPANY.steuernummer && (
+                <>
+                  <br />
+                  Steuernummer: {COMPANY.steuernummer}
+                </>
+              )}
+              {COMPANY.vatId && (
+                <>
+                  <br />
+                  USt-IdNr.: {COMPANY.vatId}
+                </>
+              )}
             </td>
             <td style={{ verticalAlign: 'top', textAlign: 'right' }}>
               <strong>{order.contact.name}</strong>
@@ -79,8 +92,8 @@ export function InvoiceEmail({
         </tbody>
       </table>
       <Text style={{ fontSize: 13, color: COLORS.muted, margin: 0 }}>
-        Rechnungsnummer: <strong>{invoiceNumber}</strong> · Rechnungsdatum: {invoiceDate} · Bestellung:{' '}
-        {order.orderNumber}
+        Rechnungsnummer: <strong>{invoiceNumber}</strong> · Rechnungsdatum: {invoiceDate} · Leistungsdatum
+        entspricht dem Rechnungsdatum · Bestellung: {order.orderNumber}
       </Text>
 
       <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
@@ -118,7 +131,7 @@ export function InvoiceEmail({
               <td style={{ textAlign: 'right' }}>{order.shippingCost ? formatiereGeld(order.shippingCost) : 'kostenlos'}</td>
             </tr>
           )}
-          {order.taxRate !== undefined && order.taxAmount !== undefined && (
+          {!IST_KLEINUNTERNEHMER && order.taxRate !== undefined && order.taxAmount !== undefined && (
             <tr>
               <td>enthaltene USt. ({order.taxRate} %)</td>
               <td style={{ textAlign: 'right' }}>{formatiereGeld(order.taxAmount)}</td>
@@ -136,6 +149,7 @@ export function InvoiceEmail({
       <Text style={{ marginTop: 20, fontSize: 12, color: COLORS.muted }}>
         Zahlbar innerhalb der vereinbarten Zahlungsfrist ohne Abzug. Diese Rechnung enthält die gesetzlich
         vorgeschriebenen Angaben nach § 14 UStG, soweit zum Zeitpunkt der Erstellung hinterlegt.
+        {IST_KLEINUNTERNEHMER ? ` ${KLEINUNTERNEHMER_HINWEIS}` : ''}
       </Text>
     </EmailLayout>
   );

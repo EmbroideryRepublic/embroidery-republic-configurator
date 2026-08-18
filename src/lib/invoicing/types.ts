@@ -19,8 +19,11 @@
 
 /** Verfügbare Rechnungsanbieter. Geschlossener Union-Typ wie bei den
  *  Zahlungsanbietern – eine vergessene Verdrahtung wird zum Übersetzungs-
- *  statt zum Laufzeitfehler. */
-export type RechnungsAnbieterId = 'test' | 'lexware';
+ *  statt zum Laufzeitfehler. `intern` (Website erzeugt die Rechnung selbst,
+ *  siehe providers/intern.ts) ist seit der Lexware-Stilllegung (2026-08-18)
+ *  der Standardanbieter – `lexware` bleibt als optionaler Zusatzanbieter
+ *  bestehen. */
+export type RechnungsAnbieterId = 'test' | 'lexware' | 'intern';
 
 /** Eine Rechnungsposition. */
 export interface Rechnungsposition {
@@ -72,6 +75,17 @@ export interface Rechnungsauftrag {
    * (PAYMENT_TERM_DAYS).
    */
   zahlungszielTage: number;
+  /**
+   * Zieht die nächste, verbindliche Rechnungsnummer (Migration 0028) – eine
+   * reine Closure, KEIN Datenbankzugriff dieser Schicht (siehe
+   * __tests__/architektur.test.ts). Ab dem Auflösen dieses Promise gilt die
+   * Nummer als verbraucht, exakt wie Lexwares `finalize=true` (siehe
+   * providers/lexware.ts) – ein Anbieter, der eine eigene Nummer vergibt
+   * (aktuell nur `intern`), ruft dies genau einmal auf, unmittelbar bevor er
+   * einen irreversiblen Beleg anlegt. Anbieter mit eigener Nummernvergabe
+   * (Lexware, Test) ignorieren dieses Feld.
+   */
+  naechsteRechnungsnummer: () => Promise<string>;
 }
 
 /** Was nach der Rechnungserstellung zurückkommt. */

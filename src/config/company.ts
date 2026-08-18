@@ -24,14 +24,34 @@ export const COMPANY = {
   emailHref: 'mailto:info@ergermany.de',
 
   /**
-   * USt-IdNr. bzw. Steuernummer. Leer, bis die echte Nummer vorliegt – wird
-   * NICHT erfunden oder mit einem Platzhalter befüllt. Sobald hier ein Wert
-   * eingetragen ist, erscheint er automatisch im Impressum (impressum/page.tsx)
-   * und auf jeder künftigen Lexware-Rechnung (lib/invoicing/) – eine einzige
-   * Quelle für beide Stellen, wie der Rest dieser Datei.
+   * Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG. Erscheint automatisch
+   * im Impressum (impressum/page.tsx) und auf jeder Rechnung (lib/invoicing/,
+   * lib/email/templates/InvoiceEmail.tsx) – eine einzige Quelle für alle drei
+   * Stellen, wie der Rest dieser Datei.
    */
-  vatId: '',
+  vatId: 'DE459472292',
+  /**
+   * Betriebliche Steuernummer (Finanzamt). Nach § 14 Abs. 4 Nr. 2 UStG genügt
+   * grundsätzlich EINE der beiden Angaben (Steuernummer ODER USt-IdNr.) – hier
+   * sind beide hinterlegt und werden deshalb beide angezeigt. Diese Angabe
+   * entfällt NICHT durch die Kleinunternehmerregelung (§19 UStG betrifft nur
+   * den Steuerausweis, nicht diese Pflichtangabe).
+   */
+  steuernummer: '223/5065/4984',
 } as const;
+
+/**
+ * Kleinunternehmer nach § 19 UStG: keine Umsatzsteuer auf eigene Umsätze.
+ * Einzelner Schalter statt Einstellungstabelle – diese Website betreibt
+ * genau eine Rechtsperson (siehe COMPANY oben), keine Mandantenfähigkeit
+ * nötig. Wirkt auf die Steuerzeile in Rechnung/Rechnungs-E-Mail (siehe
+ * lib/orders/orderCompletion.ts, lib/invoicing/providers/internRechnungPdf.tsx,
+ * lib/email/templates/InvoiceEmail.tsx).
+ */
+export const IST_KLEINUNTERNEHMER = true as const;
+
+/** Pflichthinweis auf einer Kleinunternehmer-Rechnung anstelle einer Steuerzeile. */
+export const KLEINUNTERNEHMER_HINWEIS = 'Gemäß § 19 UStG wird keine Umsatzsteuer berechnet und ausgewiesen.';
 
 /** Einzeilige Anschrift, z.B. für Fließtext. */
 export const COMPANY_ADDRESS_LINE = `${COMPANY.street}, ${COMPANY.zip} ${COMPANY.city}`;

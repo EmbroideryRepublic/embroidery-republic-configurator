@@ -70,7 +70,7 @@ export async function setzeBestellstatus(
 
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('id, email, status, order_type, created_at, payment_status')
+    .select('id, email, status, order_type, created_at, payment_status, accounting_ready_at')
     .eq('id', orderId)
     .maybeSingle<{
       id: string;
@@ -79,6 +79,7 @@ export async function setzeBestellstatus(
       order_type: string;
       created_at: string;
       payment_status: string | null;
+      accounting_ready_at: string | null;
     }>();
 
   if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
@@ -119,6 +120,24 @@ export async function setzeBestellstatus(
   const patch: Record<string, unknown> = { status: nach };
   if (feld) patch[feld] = jetzt.toISOString();
   if (optionen.trackingNummer?.trim()) patch.tracking_number = optionen.trackingNummer.trim();
+  if (nach === 'cancelled') {
+    // Bislang setzte NUR die Kunden-Selbststornierung (storniereBestellungDurchKunden)
+    // cancelled_at/cancellation_source – die Admin-Kulanzstornierung hier tat
+    // das nie (siehe ZEITSTEMPEL_SPALTE oben, kein Eintrag für 'cancelled').
+    // Ohne diese Ergänzung hätte die Accounting-Sync-Schnittstelle (siehe
+    // AccountingOrderDto.cancelledAt) für jede Admin-Stornierung fälschlich
+    // `cancelledAt: null` gemeldet, obwohl status bereits 'cancelled' ist.
+    patch.cancelled_at = jetzt.toISOString();
+    patch.cancellation_source = 'admin';
+    // Redelivery-Signal für die Buchhaltungs-Synchronisierung: Der Sync-
+    // Cursor ist (accounting_ready_at, id) aufsteigend – ein erneutes Setzen
+    // liefert eine bereits einmal ausgelieferte Bestellung im nächsten
+    // Sync-Lauf automatisch erneut aus, diesmal mit gesetztem cancelledAt.
+    // Nur relevant, wenn die Bestellung überhaupt schon buchhaltungsbereit
+    // war (sonst bliebe sie ohnehin wegen invoice_number IS NOT NULL
+    // ausgeschlossen) – ein unbeteiligtes NULL bleibt bewusst NULL.
+    if (bestellung.accounting_ready_at) patch.accounting_ready_at = jetzt.toISOString();
+  }
 
   const { data: geaendert, error: updateFehler } = await db
     .from('orders')
@@ -325,7 +344,7 @@ export async function storniereBestellungDurchKunden(
 
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('id, email, created_at, status, order_type, internal_notification_email_id')
+    .select('id, email, created_at, status, order_type, internal_notification_email_id, accounting_ready_at')
     .eq('id', orderId)
     .maybeSingle<{
       id: string;
@@ -334,6 +353,7 @@ export async function storniereBestellungDurchKunden(
       status: OrderStatus;
       order_type: string;
       internal_notification_email_id: string | null;
+      accounting_ready_at: string | null;
     }>();
 
   if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
@@ -364,6 +384,10 @@ export async function storniereBestellungDurchKunden(
       status: 'cancelled',
       cancelled_at: jetzt.toISOString(),
       cancellation_source: 'customer',
+      // Redelivery-Signal für die Buchhaltungs-Synchronisierung – siehe
+      // ausführlichen Kommentar in setzeBestellstatus() oben. Nur relevant,
+      // wenn die Bestellung überhaupt schon buchhaltungsbereit war.
+      ...(bestellung.accounting_ready_at ? { accounting_ready_at: jetzt.toISOString() } : {}),
     })
     .eq('id', orderId)
     // Schutz gegen zwei gleichzeitige Klicks: Nur wer den Datensatz noch

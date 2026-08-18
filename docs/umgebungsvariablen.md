@@ -95,23 +95,32 @@ ohne stillen Rückfall auf den Testanbieter.
 
 ---
 
-## Rechnung (Lexware Office integriert)
+## Rechnung (eigener Anbieter `intern`, Lexware stillgelegt)
 
-Lexware Office ist das führende Rechnungssystem – die Rechnungsnummer wird
-AUSSCHLIESSLICH dort vergeben, nicht im Shop. Automatisch ausgelöst für jede
-verbindliche Bestellung (Rechnungskauf UND vorab bezahlte), sobald Phase 2
-läuft (`lib/orders/orderCompletion.ts`, `erzeugeRechnung`).
+Seit 2026-08-18 ist Lexware Office stillgelegt (siehe Migration 0028). Standard-
+anbieter ist `intern` (`lib/invoicing/providers/intern.ts`): Der Shop vergibt
+seine eigene, fortlaufende Rechnungsnummer (`RE-{Jahr}-{6-stellig}`, Tabelle
+`rechnungsnummernkreise`) und erzeugt das Rechnungs-PDF selbst – kein externer
+API-Aufruf, kein Schlüssel nötig. Automatisch ausgelöst für jede verbindliche
+Bestellung (Rechnungskauf UND vorab bezahlte), sobald Phase 2 läuft
+(`lib/orders/orderCompletion.ts`, `erzeugeRechnung`). Die lokale Buchhaltung
+übernimmt diese Nummer anschließend 1:1 über `GET /api/accounting/v1/orders`
+(siehe unten) – sie vergibt für Website-Bestellungen nie eine eigene.
+
+Lexware bleibt als optionaler, nicht empfohlener Fallback im Code erhalten
+(`INVOICING_PROVIDER=lexware`, nur wirksam, wenn zusätzlich `LEXWARE_API_KEY`
+gesetzt ist), wird aber nicht mehr betrieben.
 
 | Variable | Bedeutung |
 |---|---|
-| `LEXWARE_API_KEY` | persönlicher API-Schlüssel, erzeugt unter `app.lexware.de/addons/public-api`. |
+| `LEXWARE_API_KEY` | nur für den optionalen Lexware-Fallback; persönlicher API-Schlüssel, erzeugt unter `app.lexware.de/addons/public-api`. Für den produktiven `intern`-Anbieter nicht nötig. |
 
-**Keine Sandbox verfügbar** – jeder Aufruf trifft das echte Konto. Der
-Testmodus (`E2E_TESTMODUS=aktiv`) ist deshalb hier die EINZIGE Schutzschicht
-gegen einen versehentlichen echten Rechnungslauf (`waehleRechnungsAnbieter()`
-in `lib/invoicing/registry.ts` wählt im Testmodus immer den Testanbieter,
-unabhängig vom gesetzten Schlüssel). `LEXWARE_API_KEY` deshalb **niemals in
-CI setzen**.
+**Falls doch verwendet: keine Sandbox verfügbar** – jeder Lexware-Aufruf trifft
+das echte Konto. Der Testmodus (`E2E_TESTMODUS=aktiv`) ist deshalb hier die
+EINZIGE Schutzschicht gegen einen versehentlichen echten Rechnungslauf
+(`waehleRechnungsAnbieter()` in `lib/invoicing/registry.ts` wählt im Testmodus
+immer den Testanbieter, unabhängig vom gesetzten Schlüssel). `LEXWARE_API_KEY`
+deshalb **niemals in CI setzen**.
 
 ---
 

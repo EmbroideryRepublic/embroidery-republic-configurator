@@ -328,7 +328,17 @@ async function bestaetigeZahlung(
   }
 
   if ((geaendert?.length ?? 0) === 0) {
-    console.info(`[zahlung] Ereignis ${ereignis.ereignisId} bereits verarbeitet – übersprungen.`);
+    console.info(`[zahlung] Ereignis ${ereignis.ereignisId} bereits verarbeitet – Bestätigungsmail übersprungen.`);
+    // NICHT einfach zurückkehren: `payment_status='paid'` stand hier schon vorher, aber ob Phase 2
+    // (stelleAbschlussSicher unten) beim ERSTEN Mal tatsächlich bis zum Ende durchlief, ist damit noch
+    // nicht gesagt – ein Absturz zwischen dem UPDATE oben und dem Phase-2-Aufruf hinterließe genau
+    // dieses Bild (payment_status bereits 'paid', Phase 2 nie gestartet). stelleAbschlussSicher() ist
+    // durch seinen eigenen DB-Claim (beanspruche_abschluss) bereits idempotent – ein Aufruf hier ist bei
+    // einer echten, längst abgeschlossenen Zustellung ein günstiger No-op (0 Zeilen betroffen), holt bei
+    // der oben beschriebenen Unterbrechung aber genau den fehlenden Abschluss nach. Siehe Review vom
+    // 2026-08-18: vorher war dies die einzige Stelle, an der ein bezahlter Auftrag bei Prozessabbruch
+    // dauerhaft ohne Rechnung/accounting_ready_at bleiben konnte.
+    await stelleAbschlussSicher(db, ereignis.bestellId);
     return { ok: true, wirkung: 'bestaetigt', bereitsVerarbeitet: true };
   }
 
@@ -414,6 +424,75 @@ export async function stelleAbschlussSicher(
     console.error('[zahlung] Abschluss nach Zahlung fehlgeschlagen (nicht-fatal):', err);
     await db.rpc('gib_abschluss_frei', { p_order_id: orderId });
   }
+}
+
+/**
+ * Holt Phase 2 für bezahlte Bestellungen nach, für die weder eine erneute
+ * Webhook-Zustellung noch der ursprüngliche Aufruf sie je abgeschlossen hat.
+ *
+ * ── Warum das nötig ist ─────────────────────────────────────────────────
+ * `stelleAbschlussSicher()` hat im gesamten Repo genau zwei Aufrufer: den
+ * Erfolgsfall UND den Redelivery-Fall in `bestaetigeZahlung()` oben (beide in
+ * dieser Datei). Kommt nach einer bestätigten Zahlung nie eine zweite
+ * Webhook-Zustellung an (der Zahlungsanbieter gibt nach einigen Versuchen
+ * auf) UND stürzt der ursprüngliche Aufruf zwischen dem Setzen von
+ * `payment_status='paid'` und dem Abschluss von Phase 2 ab, bliebe die
+ * Bestellung ohne diesen Nachholweg für immer ohne Rechnung und ohne
+ * `accounting_ready_at` (Abnahme-Review vom 2026-08-18, Punkt 1). Der
+ * bestehende Cron-Reaper `gib_haengende_abschluesse_frei` (Migration 0020)
+ * gibt einen verwaisten Anspruch zwar frei, ruft aber selbst nichts erneut
+ * auf – genau diese Lücke schließt diese Funktion.
+ *
+ * Die Auswahl-Bedingung entspricht exakt der von `beanspruche_abschluss`
+ * (Migration 0020) – der eigentliche Schutz gegen einen doppelten Abschluss
+ * bleibt vollständig im dortigen atomaren Claim; läuft der reguläre
+ * Zahlungs-Webhook zufällig zeitgleich, gewinnt nur einer der beiden Aufrufe
+ * den Claim (siehe `stelleAbschlussSicher`).
+ *
+ * `not_required`-Bestellungen (Rechnungskauf) sind hier bewusst NICHT
+ * enthalten: `beanspruche_abschluss` selbst prüft nur `payment_status='paid'`
+ * (Rechnungskauf durchläuft Phase 2 synchron im selben Request, ohne diesen
+ * Claim), ein Aufruf hier würde für sie ohnehin nie einen Anspruch bekommen.
+ *
+ * Von der Cron-Route aufgerufen (siehe process-supplier-orders/route.ts);
+ * wirft nie.
+ */
+export async function holeOffeneAbschluesseNach(
+  limit: number
+): Promise<{ gefunden: number; abgeschlossen: number; weiterhinOffen: number }> {
+  const db = createAdminClient();
+  const { data, error } = await db
+    .from('orders')
+    .select('id')
+    .eq('payment_status', 'paid')
+    .is('pdf_url', null)
+    .is('abschluss_gestartet_am', null)
+    .order('created_at', { ascending: true })
+    .limit(limit);
+
+  if (error) {
+    console.error('[zahlung] Suche nach offenen Abschlüssen fehlgeschlagen:', error.message);
+    return { gefunden: 0, abgeschlossen: 0, weiterhinOffen: 0 };
+  }
+
+  let abgeschlossen = 0;
+  let weiterhinOffen = 0;
+  // Bewusst sequenziell statt parallel: Regelfall ist 0 Treffer, und jeder
+  // Treffer löst Rendering/PDF-Erzeugung/E-Mail-Versand aus – kein
+  // Durchsatz-Pfad, siehe holeOffeneRechnungenNach für dieselbe Begründung.
+  for (const zeile of data ?? []) {
+    const orderId = zeile.id as string;
+    await stelleAbschlussSicher(db, orderId);
+    const { data: nachher } = await db.from('orders').select('pdf_url').eq('id', orderId).maybeSingle();
+    if (nachher?.pdf_url) {
+      abgeschlossen++;
+    } else {
+      weiterhinOffen++;
+      console.warn(`[zahlung] Abschluss-Retry für ${orderId} weiterhin ohne Erfolg.`);
+    }
+  }
+
+  return { gefunden: (data ?? []).length, abgeschlossen, weiterhinOffen };
 }
 
 /**

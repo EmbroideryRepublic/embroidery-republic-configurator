@@ -22,3 +22,14 @@
  * Kommentar zu gib_haengende_rechnungserstellung_frei.
  */
 export const RECHNUNG_CLAIM_VERWAIST_NACH_MINUTEN = 15;
+
+/**
+ * Wie viele Bestellungen `holeOffeneRechnungenNach` (orderCompletion.ts) je
+ * Cron-Lauf höchstens erneut versucht.
+ *
+ * Der Regelfall ist 0 Treffer – dieser Pfad greift nur, wenn ein früherer
+ * Versuch sauber fehlgeschlagen ist (z.B. fehlende Lieferadresse, einmaliger
+ * DB-/Netzwerkfehler) und seitdem nie wiederholt wurde. Bewusst klein: Jeder
+ * Treffer verschickt eine echte E-Mail mit Rechnungs-PDF, kein Massen-Batch.
+ */
+export const RECHNUNG_RETRY_LIMIT = 10;

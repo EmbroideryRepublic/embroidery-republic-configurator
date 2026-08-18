@@ -13,56 +13,65 @@ import { istTestmodus } from '@/config/testmodus';
 import { testRechnungsAnbieter } from './providers/testAnbieter';
 import { lexwareAnbieter } from './providers/lexware';
 import { lexwareKonfigurationsStand } from './providers/lexwareKonfiguration';
+import { internerRechnungsAnbieter } from './providers/intern';
 import type { RechnungsAnbieter, RechnungsAnbieterId } from './types';
 
 const ANBIETER: Record<RechnungsAnbieterId, RechnungsAnbieter | null> = {
   test: testRechnungsAnbieter,
   lexware: lexwareAnbieter,
+  intern: internerRechnungsAnbieter,
 };
 
+/** `intern` braucht keine externe Konfiguration – immer einsatzbereit. */
 function istEinsatzbereit(id: RechnungsAnbieterId): boolean {
   if (!ANBIETER[id]) return false;
   if (id === 'lexware') return lexwareKonfigurationsStand().rechnungenMoeglich;
   return true;
 }
 
-export class RechnungsAnbieterFehlt extends Error {}
-
 /**
  * Ob überhaupt ein Rechnungsanbieter einsatzbereit ist – reine Vorabfrage,
  * wirft NICHT (im Unterschied zu waehleRechnungsAnbieter()).
  *
- * Existiert, damit orderCompletion.ts den Lexware-Anspruch (Migration 0026,
- * beanspruche_rechnungserstellung) erst gar nicht beansprucht, wenn ohnehin
- * kein Anbieter bereitsteht – z.B. weil Lexware als Rechnungssystem bewusst
- * stillgelegt wurde (eigene Buchhaltungssoftware in Entwicklung, Stand
- * 2026-08-18). Ohne diese Vorabfrage würde JEDE künftige Bestellung einen
- * Claim setzen, Lexware erfolglos kontaktieren und wieder freigeben – ein
- * dauerhaft wiederholter, sinnloser Fehlschlag statt eines sauberen
- * "hier gibt es nichts zu tun".
+ * Existiert, damit orderCompletion.ts den Rechnungs-Anspruch (Migration
+ * 0026, beanspruche_rechnungserstellung) erst gar nicht beansprucht, wenn
+ * ohnehin kein Anbieter bereitsteht. Seit `intern` existiert (immer
+ * einsatzbereit, siehe oben) liefert diese Funktion außerhalb wirklich
+ * außergewöhnlicher Umstände `true` – der Rückfall auf `false` bleibt als
+ * Sicherheitsnetz bestehen, falls `intern` selbst je eine Bedingung bekäme.
  */
 export function istRechnungserstellungMoeglich(): boolean {
   if (istTestmodus()) return true;
-  return istEinsatzbereit('lexware');
+  return istEinsatzbereit('lexware') || istEinsatzbereit('intern');
 }
 
 /**
  * Liefert den zu verwendenden Rechnungsanbieter.
  *
- * Der Testmodus hat Vorrang – IMMER, auch wenn ein echter LEXWARE_API_KEY
- * hinterlegt ist (siehe Kopfkommentar). Dieselbe Regel wie bei
- * waehleZahlungsAnbieter, hier ohne die zusätzliche Schutzschicht eines
- * Schlüsselpräfix-Checks, weil Lexware selbst keine dafür geeignete
- * Unterscheidung anbietet.
+ * Der Testmodus hat Vorrang – IMMER (siehe Kopfkommentar der Nachbardatei
+ * payments/registry.ts für dieselbe Überlegung).
+ *
+ * Standardanbieter seit der Lexware-Stilllegung (2026-08-18) ist `intern` –
+ * die Website erzeugt ihre Rechnung selbst, unabhängig von jedem externen
+ * Dienst. `INVOICING_PROVIDER=lexware` schaltet optional zurück auf
+ * Lexware, aber NUR wenn es zusätzlich einsatzbereit ist (gültiger
+ * `LEXWARE_API_KEY`) – fehlt das, fällt die Funktion automatisch (mit
+ * Protokollzeile, nicht mit einem Fehler) auf `intern` zurück. Diese
+ * Funktion wirft dadurch praktisch nie mehr – das war der eigentliche
+ * Kernfehler, den dieser Anbieterwechsel behebt: die normale
+ * Bestellabwicklung darf nie an einer externen Rechnungssoftware scheitern.
  */
 export function waehleRechnungsAnbieter(): RechnungsAnbieter {
   if (istTestmodus()) return testRechnungsAnbieter;
 
-  const anbieter = ANBIETER.lexware;
-  if (!anbieter || !istEinsatzbereit('lexware')) {
-    throw new RechnungsAnbieterFehlt(
-      `Rechnungsanbieter „lexware" ist nicht einsatzbereit: ${lexwareKonfigurationsStand().offeneSchritte.join('; ') || 'unbekannter Grund'}.`
+  const gewuenscht = process.env.INVOICING_PROVIDER === 'lexware' ? 'lexware' : 'intern';
+  if (gewuenscht === 'lexware') {
+    if (istEinsatzbereit('lexware')) return lexwareAnbieter;
+    console.warn(
+      `[invoicing] INVOICING_PROVIDER=lexware angefordert, aber nicht einsatzbereit ` +
+        `(${lexwareKonfigurationsStand().offeneSchritte.join('; ') || 'unbekannter Grund'}) – ` +
+        `Rückfall auf den internen Rechnungsanbieter.`
     );
   }
-  return anbieter;
+  return internerRechnungsAnbieter;
 }

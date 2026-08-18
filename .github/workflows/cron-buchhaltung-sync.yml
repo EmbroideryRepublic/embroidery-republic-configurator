@@ -20,6 +20,19 @@
 # `workflow_dispatch` erlaubt zusätzlich einen manuellen Testlauf über die
 # GitHub-Actions-Oberfläche, ohne auf den nächsten geplanten Lauf zu warten.
 #
+# ── Kanonische Domain, kein Redirect (Fix vom 2026-08-18) ────────────────
+# Der Default-Fallback zeigt bewusst auf https://www.ergermany.de, NICHT auf
+# https://ergermany.de: Der bloße Domainname liefert einen 308-Redirect auf
+# die www-Variante. Ein Redirect wird hier absichtlich nicht per `-L`
+# mitverfolgt – curl sendet den Authorization-Header aus Sicherheitsgründen
+# grundsätzlich nicht an einen abweichenden Host, und ergermany.de/
+# www.ergermany.de zählen dafür als unterschiedliche Hosts. Der erste echte
+# Lauf (2026-08-18) scheiterte deshalb mit HTTP 308, bevor der Bearer-Token
+# je ankam. Zeigt eine Repository-Variable CRON_BASIS_URL stattdessen auf
+# die bloße Domain, überschreibt sie diesen Fallback und der Fehler kehrt
+# zurück – in diesem Fall die Variable auf https://www.ergermany.de setzen
+# oder entfernen.
+#
 # ── Keine Race Conditions/doppelten Rechnungen durch überlappende Läufe ──
 # Die eigentliche Korrektheitsgarantie liegt NICHT hier, sondern in der
 # Datenbank: Jeder Anspruch (beanspruche_abschluss, Migration 0020;
@@ -55,7 +68,7 @@ jobs:
         run: |
           status=$(curl -s -o /tmp/antwort.json -w "%{http_code}" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            "${{ vars.CRON_BASIS_URL || 'https://ergermany.de' }}/api/cron/process-supplier-orders")
+            "${{ vars.CRON_BASIS_URL || 'https://www.ergermany.de' }}/api/cron/process-supplier-orders")
           echo "HTTP-Status: $status"
           cat /tmp/antwort.json
           if [ "$status" -ge 300 ]; then

@@ -29,6 +29,24 @@ function istEinsatzbereit(id: RechnungsAnbieterId): boolean {
 export class RechnungsAnbieterFehlt extends Error {}
 
 /**
+ * Ob überhaupt ein Rechnungsanbieter einsatzbereit ist – reine Vorabfrage,
+ * wirft NICHT (im Unterschied zu waehleRechnungsAnbieter()).
+ *
+ * Existiert, damit orderCompletion.ts den Lexware-Anspruch (Migration 0026,
+ * beanspruche_rechnungserstellung) erst gar nicht beansprucht, wenn ohnehin
+ * kein Anbieter bereitsteht – z.B. weil Lexware als Rechnungssystem bewusst
+ * stillgelegt wurde (eigene Buchhaltungssoftware in Entwicklung, Stand
+ * 2026-08-18). Ohne diese Vorabfrage würde JEDE künftige Bestellung einen
+ * Claim setzen, Lexware erfolglos kontaktieren und wieder freigeben – ein
+ * dauerhaft wiederholter, sinnloser Fehlschlag statt eines sauberen
+ * "hier gibt es nichts zu tun".
+ */
+export function istRechnungserstellungMoeglich(): boolean {
+  if (istTestmodus()) return true;
+  return istEinsatzbereit('lexware');
+}
+
+/**
  * Liefert den zu verwendenden Rechnungsanbieter.
  *
  * Der Testmodus hat Vorrang – IMMER, auch wenn ein echter LEXWARE_API_KEY

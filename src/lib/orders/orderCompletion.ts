@@ -42,7 +42,7 @@ import { protokolliereBestellereignis, persistiereKritischMitWiederholung } from
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
 import { brauchtVorabZahlung } from '@/config/zahlung';
-import { waehleRechnungsAnbieter } from '@/lib/invoicing/registry';
+import { waehleRechnungsAnbieter, istRechnungserstellungMoeglich } from '@/lib/invoicing/registry';
 import { RechnungsTeilerfolgFehler, type Rechnungsauftrag, type Rechnungserstellung } from '@/lib/invoicing/types';
 import { PAYMENT_TERM_DAYS } from '@/config/company';
 import { sendEmail } from '@/lib/email/sendEmail';
@@ -406,9 +406,19 @@ async function erzeugeProduktionsblatt(
  * darf niemals eine zweite Rechnung bei Lexware anlegen. Nicht-fatal wie
  * jeder Nachbarschritt in dieser Datei – eine gespeicherte, bezahlte
  * Bestellung darf an der Rechnungserstellung nicht scheitern.
+ *
+ * ── Lexware ist stillgelegt (Stand 2026-08-18) ─────────────────────────
+ * Eine eigene Buchhaltungssoftware wird separat entwickelt; Lexware wird
+ * nicht mehr betrieben und bleibt absichtlich unkonfiguriert.
+ * istRechnungserstellungMoeglich() fängt das VOR dem Claim ab: kein
+ * Lexware-Aufruf, kein Anspruch, keine "Problem"-Meldung für einen
+ * dauerhaft erwarteten Zustand. Die künftige Buchhaltung bindet sich über
+ * einen eigenen, separaten Integrationspunkt an (GET
+ * /api/accounting/v1/orders, siehe dort) – nicht über diesen Pfad.
  */
 async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<boolean> {
   if (order.orderType !== 'order') return false; // Anfragen bekommen keine Rechnung
+  if (!istRechnungserstellungMoeglich()) return false;
 
   const db = createAdminClient();
   const { data: anspruch, error: claimFehler } = await db.rpc('beanspruche_rechnungserstellung', {

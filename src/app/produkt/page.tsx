@@ -104,7 +104,6 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
             facetten={ergebnis.facetten}
             spannen={ergebnis.spannen}
             bezeichnungen={ergebnis.bezeichnungen}
-            gesamt={ergebnis.gesamt}
             merkmale={ALLE_MERKMALE}
           >
             {ergebnis.produkte.length === 0 ? (

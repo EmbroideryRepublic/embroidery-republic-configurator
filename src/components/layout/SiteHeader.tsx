@@ -37,7 +37,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
     { href: '/konfigurator', label: t('nav_configurator') },
     // Katalogübersicht: bewusst direkt hinter dem Konfigurator. Kunden, die
     // noch kein Produkt im Kopf haben, kommen hier zuerst hin.
-    { href: '/produkt', label: 'Produkte' },
+    { href: '/produkt', label: t('nav_products') },
     { href: '/ueber-uns', label: t('nav_about') },
     { href: '/faq', label: t('nav_faq') },
     { href: '/kontakt', label: t('nav_contact') },

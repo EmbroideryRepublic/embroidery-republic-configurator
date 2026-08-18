@@ -73,6 +73,10 @@ export function ConfiguratorPrototype() {
   const [priceHasErrors, setPriceHasErrors] = useState(false);
   const [isLoadingContext, setIsLoadingContext] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  // true = die Schublade wurde gerade durch ein erfolgreiches "In den
+  // Warenkorb" geöffnet (nicht durch den Header-Klick) – steuert die kurze
+  // Erfolgsbestätigung oben in CartDrawer.
+  const [cartJustAdded, setCartJustAdded] = useState(false);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [zoom, setZoom] = useState(1);
@@ -348,7 +352,17 @@ export function ConfiguratorPrototype() {
   const handleZoomOut = useCallback(() => setZoom((z) => Math.max(ZOOM_MIN, +(z - ZOOM_STEP).toFixed(2))), []);
   const handleZoomReset = useCallback(() => setZoom(1), []);
   const handleOpenCart = useCallback(() => setIsCartOpen(true), []);
-  const handleCloseCart = useCallback(() => setIsCartOpen(false), []);
+  const handleCloseCart = useCallback(() => {
+    setIsCartOpen(false);
+    setCartJustAdded(false);
+  }, []);
+  // Nach erfolgreichem "In den Warenkorb": Schublade öffnen UND als "gerade
+  // hinzugefügt" markieren, statt nur den Badge-Zähler in der Kopfzeile zu
+  // ändern – siehe CartDrawer.geradeHinzugefuegt.
+  const handleItemAddedToCart = useCallback(() => {
+    setCartJustAdded(true);
+    setIsCartOpen(true);
+  }, []);
   const handleOpenCompare = useCallback(() => setIsCompareOpen(true), []);
   const handleCloseCompare = useCallback(() => setIsCompareOpen(false), []);
 
@@ -544,13 +558,18 @@ export function ConfiguratorPrototype() {
               <ToolPanelTabs printArea={currentPrintArea} printAreas={effectivePrintAreas} />
             </div>
             <div className="flex-shrink-0">
-              <SummaryPanel productName={product.name} breakdown={priceBreakdown} priceHasErrors={priceHasErrors} />
+              <SummaryPanel
+                productName={product.name}
+                breakdown={priceBreakdown}
+                priceHasErrors={priceHasErrors}
+                onItemAdded={handleItemAddedToCart}
+              />
             </div>
           </div>
         </div>
       </div>
 
-      {isCartOpen && <CartDrawer onClose={handleCloseCart} />}
+      {isCartOpen && <CartDrawer onClose={handleCloseCart} geradeHinzugefuegt={cartJustAdded} />}
       {isCompareOpen && <CompareModal onClose={handleCloseCompare} />}
       {isPreviewOpen && (
         <LargePreviewModal

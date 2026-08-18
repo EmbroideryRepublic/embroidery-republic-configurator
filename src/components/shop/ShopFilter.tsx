@@ -27,13 +27,12 @@ import { Ergebniskopf } from './Ergebniskopf';
 import { FilterPanel } from './FilterPanel';
 
 export function ShopFilter({
-  kriterien, facetten, spannen, bezeichnungen, gesamt, merkmale, children,
+  kriterien, facetten, spannen, bezeichnungen, merkmale, children,
 }: {
   kriterien: FilterKriterien;
   facetten: Facetten;
   spannen: Spannen;
   bezeichnungen: Record<string, string>;
-  gesamt: number;
   merkmale: Merkmale[];
   children: ReactNode;
 }) {
@@ -71,7 +70,7 @@ export function ShopFilter({
 
         <div className="min-w-0 flex-1">
           {/* Band 3 */}
-          <Ergebniskopf kriterien={kriterien} bezeichnungen={bezeichnungen} gesamt={gesamt} />
+          <Ergebniskopf kriterien={kriterien} bezeichnungen={bezeichnungen} />
           <div className="mt-10">{children}</div>
         </div>
       </div>

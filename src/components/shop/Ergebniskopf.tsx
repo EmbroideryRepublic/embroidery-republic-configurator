@@ -19,9 +19,9 @@ import { Chip, DIMENSION_LABELS, beschrifteWert } from './filterBausteine';
 import { useFilterNavigation } from './filterNavigation';
 
 export function Ergebniskopf({
-  kriterien, bezeichnungen, gesamt,
-}: { kriterien: FilterKriterien; bezeichnungen: Record<string, string>; gesamt: number }) {
-  const { anwenden, wartet } = useFilterNavigation();
+  kriterien, bezeichnungen,
+}: { kriterien: FilterKriterien; bezeichnungen: Record<string, string> }) {
+  const { anwenden } = useFilterNavigation();
   const aktiv = hatAktiveFilter(kriterien);
 
   return (
@@ -70,12 +70,7 @@ export function Ergebniskopf({
         </div>
       )}
 
-      <div className="flex items-center justify-between gap-4 border-b border-brand/[0.07] pb-5">
-        <p className={`text-sm transition ${wartet ? 'text-brand/40' : 'text-brand/60'}`} aria-live="polite">
-          <strong className="text-[22px] font-light tracking-tight text-brand">{gesamt}</strong>{' '}
-          {gesamt === 1 ? 'Produkt' : 'Produkte'}
-        </p>
-
+      <div className="flex items-center justify-end gap-4 border-b border-brand/[0.07] pb-5">
         <div className="flex items-center gap-3">
           <Sortierwahl
             wert={kriterien.sortierung}

@@ -65,13 +65,17 @@ test('AKTIVE_ACHSEN deckt jede im Katalog genutzte Achse ab', () => {
 const GESCHLECHT = NAVI_ACHSEN.geschlecht!;
 const gruppenVon = (p: (typeof PRODUCTS)[number]) => GESCHLECHT.gruppenVon(p);
 
-test('Unisexware steht in allen drei Gruppen der Geschlechtsachse', () => {
+test('Unisexware steht bei Herren und Unisex, aber NICHT bei Damen', () => {
+  // Damen ist bewusst asymmetrisch zu Herren: Unisex-Artikel sind in der
+  // Praxis Herren-Passform und dürfen die Damen-Kategorie nicht mit
+  // Herrenware verwässern (siehe naviAchsen.ts, gruppenVon).
   const unisex = PRODUCTS.filter((p) => geschlechterVon(p).includes('unisex'));
   assert.ok(unisex.length > 0, 'ohne Unisexware sagt dieser Test nichts');
   for (const p of unisex) {
-    for (const g of ['herren', 'damen', 'unisex']) {
+    for (const g of ['herren', 'unisex']) {
       assert.ok(gruppenVon(p).includes(g), `${p.name} fehlt in Gruppe ${g}`);
     }
+    assert.ok(!gruppenVon(p).includes('damen'), `${p.name} darf nicht bei Damen erscheinen (ist Unisex, keine Damenware)`);
   }
 });
 
@@ -82,6 +86,11 @@ test('reine Herrenware erscheint nicht bei Damen – und umgekehrt', () => {
     if (eigen.includes('herren')) assert.ok(!gruppenVon(p).includes('damen'), `${p.name}`);
     if (eigen.includes('damen')) assert.ok(!gruppenVon(p).includes('herren'), `${p.name}`);
   }
+});
+
+test('nur echte Damenware erscheint bei Damen', () => {
+  const drin = PRODUCTS.filter((p) => gruppenVon(p).includes('damen'));
+  for (const p of drin) assert.ok(geschlechterVon(p).includes('damen'), `${p.name} steht bei Damen, ist aber keine Damenware`);
 });
 
 test('die Gruppe Unisex führt ausschließlich Unisexware', () => {

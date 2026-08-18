@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { TodoNote, Todo } from '@/components/legal/TodoNote';
+import { LegalPageNotice } from '@/components/legal/LegalPageNotice';
 import { COMPANY } from '@/config/company';
 
 export const metadata = {
@@ -35,6 +36,8 @@ export default function DatenschutzPage() {
 
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Datenschutzerklärung</h1>
       <p className="mb-6 text-xs text-brand/50">Stand: Juli 2026</p>
+
+      <LegalPageNotice />
 
       <TodoNote>
         Noch zu ergänzen: Hosting-Anbieter samt Serverstandort (Ziffer 4) sowie die Region des

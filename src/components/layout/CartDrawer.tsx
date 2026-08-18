@@ -21,11 +21,15 @@ import type { CartItem } from '@/types';
 
 interface CartDrawerProps {
   onClose: () => void;
+  /** true = die Schublade wurde soeben durch ein erfolgreiches "In den
+   *  Warenkorb" geöffnet – zeigt oben eine kurze Bestätigung, damit der
+   *  Erfolg nicht nur am Badge-Zähler in der Kopfzeile ablesbar ist. */
+  geradeHinzugefuegt?: boolean;
 }
 
 type DrawerStep = 'cart' | 'checkout' | 'confirmed' | 'inquiry' | 'inquiry-sent';
 
-export function CartDrawer({ onClose }: CartDrawerProps) {
+export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerProps) {
   const items = useCartStore((s) => s.items);
   const removeItem = useCartStore((s) => s.removeItem);
   const clearCart = useCartStore((s) => s.clear);
@@ -190,6 +194,21 @@ export function CartDrawer({ onClose }: CartDrawerProps) {
 
         {step === 'cart' && (
           <>
+            {geradeHinzugefuegt && (
+              <div className="flex items-center justify-between gap-3 border-b border-green-100 bg-green-50 px-4 py-2.5">
+                <p className="flex items-center gap-2 text-[13px] font-medium text-green-700">
+                  <CheckCircle2 className="h-4 w-4 flex-shrink-0" aria-hidden />
+                  {t('cart_added_banner')}
+                </p>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="flex-shrink-0 whitespace-nowrap text-[12px] font-medium text-green-700 underline-offset-2 hover:underline"
+                >
+                  {t('cart_continue_shopping')}
+                </button>
+              </div>
+            )}
             <div className="flex-1 overflow-y-auto px-4 py-3">
               {items.length === 0 ? (
                 <p className="mt-8 text-center text-sm text-brand/40">{t('cart_empty')}</p>

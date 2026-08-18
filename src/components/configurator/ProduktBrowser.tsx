@@ -274,7 +274,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
 
           <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
             <Reiter an={!nurFavoriten} onClick={() => setNurFavoriten(false)}>
-              Alle Produkte ({PRODUCTS.length})
+              Alle Produkte
             </Reiter>
             <Reiter an={nurFavoriten} onClick={() => setNurFavoriten(true)}>
               {/* „(0)" wirkt wie ein leerer Zustand – der Zähler erscheint erst,

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { LegalPageNotice } from '@/components/legal/LegalPageNotice';
 
 export const metadata = {
   title: 'AGB',
@@ -35,6 +36,8 @@ export default function AgbPage() {
         Allgemeine Geschäftsbedingungen
       </h1>
       <p className="mb-6 text-xs text-brand/50">Stand: Juli 2026</p>
+
+      <LegalPageNotice />
 
       <div className="space-y-6">
         <Section n={1} title="Geltungsbereich und Vertragspartner">

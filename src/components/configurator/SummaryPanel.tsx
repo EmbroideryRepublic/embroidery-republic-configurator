@@ -23,9 +23,14 @@ interface SummaryPanelProps {
   /** true = mindestens ein Preisbaustein konnte nicht verarbeitet werden.
    *  Der Preis ist dann ungültig und darf nicht bestellt werden. */
   priceHasErrors?: boolean;
+  /** Aufgerufen nach erfolgreichem "In den Warenkorb" – öffnet im Elternteil
+   *  (ConfiguratorPrototype) die bestehende CartDrawer-Schublade mit
+   *  Erfolgsbestätigung, statt den Kauferfolg nur am Header-Badge und dem
+   *  kurzzeitig grünen Button hier erkennbar zu lassen. */
+  onItemAdded?: () => void;
 }
 
-export function SummaryPanel({ productName, breakdown, priceHasErrors = false }: SummaryPanelProps) {
+export function SummaryPanel({ productName, breakdown, priceHasErrors = false, onItemAdded }: SummaryPanelProps) {
   const printMethod = useConfiguratorStore((s) => s.printMethod);
   const productId = useConfiguratorStore((s) => s.productId);
   const colorId = useConfiguratorStore((s) => s.colorId);
@@ -89,6 +94,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false }:
     resetDesign();
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 2500);
+    onItemAdded?.();
   }
 
   return (

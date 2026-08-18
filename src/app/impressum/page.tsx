@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { COMPANY } from '@/config/company';
+import { LegalPageNotice } from '@/components/legal/LegalPageNotice';
 
 export const metadata = {
   title: 'Impressum',
@@ -21,6 +22,8 @@ export default function ImpressumPage() {
       </Link>
 
       <h1 className="mb-4 mt-4 font-serif text-2xl font-semibold text-brand">Impressum</h1>
+
+      <LegalPageNotice />
 
       <section className="space-y-5">
         <div>

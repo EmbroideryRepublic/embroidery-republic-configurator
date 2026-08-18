@@ -17,9 +17,11 @@
  * „Geschlecht" ist nur die erste registrierte, nicht die eingebaute.
  *
  * ── Überschneidung ist erlaubt ────────────────────────────────────────
- * `gruppenVon` darf mehrere Gruppen liefern (Unisexware zählt in Herren, Damen
- * UND Unisex). Die Summe der Gruppenzähler ist dann größer als der Bestand –
- * das ist gewollt und eine Eigenschaft der jeweiligen Achse, keine der Kernlogik.
+ * `gruppenVon` darf mehrere Gruppen liefern. Die Summe der Gruppenzähler kann
+ * dann größer als der Bestand sein – das ist gewollt und eine Eigenschaft der
+ * jeweiligen Achse, keine der Kernlogik. Ob und wie stark sich Gruppen einer
+ * Achse überschneiden (z.B. Geschlecht, siehe unten), entscheidet allein die
+ * jeweilige `gruppenVon`-Implementierung.
  *
  * ── Absicherung ───────────────────────────────────────────────────────
  * Wächter-Tests (config/products/__tests__/naviAchsen.test.ts) erzwingen: jede
@@ -66,14 +68,21 @@ export const NAVI_ACHSEN: Record<string, NaviAchsenDef> = {
       { id: 'unisex', label: 'Unisex' },
     ],
     gruppenVon(p) {
-      // Unisexware erscheint ZUSÄTZLICH unter Herren und Damen, damit kein
-      // Artikel hinter der Geschlechts-Klassifizierung verschwindet; reine
-      // Herren-/Damenware bleibt bei ihrer Gruppe.
+      // Unisexware erscheint ZUSÄTZLICH unter Herren, damit kein Artikel
+      // hinter der Geschlechts-Klassifizierung verschwindet – reine
+      // Herrenware bleibt ohnehin bei ihrer Gruppe.
+      //
+      // Damen ist bewusst NICHT symmetrisch: Unisex-Artikel (in der Praxis
+      // durchgehend Herren-Passform, nur eben auch für Herren freigegeben)
+      // landen NICHT zusätzlich unter Damen, sonst zeigt „Damen" Herren-
+      // T-Shirts. Nur Artikel, deren eigenes Geschlecht tatsächlich „damen"
+      // ist, erscheinen dort – fehlt in einer Unterkategorie ein echtes
+      // Damenprodukt, bleibt sie zu Recht leer, statt Herrenware einzublenden.
       const eigen = geschlechterVon(p);
       const istUnisex = eigen.includes('unisex');
       const gruppen: string[] = [];
       if (istUnisex || eigen.includes('herren')) gruppen.push('herren');
-      if (istUnisex || eigen.includes('damen')) gruppen.push('damen');
+      if (eigen.includes('damen')) gruppen.push('damen');
       if (istUnisex) gruppen.push('unisex');
       return gruppen;
     },

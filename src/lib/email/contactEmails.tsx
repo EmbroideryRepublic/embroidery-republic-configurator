@@ -13,6 +13,10 @@ export interface ContactMessagePayload {
   email: string;
   subject?: string;
   message: string;
+  /** Bereits serverseitig geprüfte Anhänge (pruefeKontaktAnhaenge), gehen
+   *  ausschließlich an die INTERNE Benachrichtigung – nicht an die
+   *  automatische Eingangsbestätigung an die anfragende Person. */
+  attachments?: { filename: string; content: Buffer }[];
 }
 
 export async function sendContactMessageEmail(payload: ContactMessagePayload): Promise<{ success: boolean }> {
@@ -27,6 +31,7 @@ export async function sendContactMessageEmail(payload: ContactMessagePayload): P
     kontext: { anlass: 'contact_form' },
     // Antworten gehen direkt an die/den Interessent:in statt an die interne Adresse.
     replyTo: payload.email,
+    attachments: payload.attachments,
   });
 
   // Eingangsbestätigung AN die anfragende Person – nicht-fatal: Die interne

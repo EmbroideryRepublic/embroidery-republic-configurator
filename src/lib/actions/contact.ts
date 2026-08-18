@@ -11,6 +11,7 @@
  */
 import { pruefeRateLimit } from '@/lib/security/rateLimit';
 import { sendContactMessageEmail } from '@/lib/email/contactEmails';
+import { pruefeKontaktAnhaenge } from '@/lib/upload/pruefeKontaktAnhang';
 
 export interface ContactFormInput {
   name: string;
@@ -23,6 +24,9 @@ export interface ContactFormInput {
    * aber nichts (kein Hinweis, der einem Bot Rückschlüsse erlaubt).
    */
   website?: string;
+  /** Optionale Anhänge (PNG/JPEG/PDF) – Data-URLs vom Client, serverseitig
+   *  in pruefeKontaktAnhaenge() autoritativ geprüft, siehe dort. */
+  attachments?: { dateiname: string; dataUrl: string }[];
 }
 
 export interface ContactFormResult {
@@ -70,12 +74,30 @@ export async function submitContactMessage(input: ContactFormInput): Promise<Con
     return { success: false, error: grenze.meldung };
   }
 
+  // 3b) Anhänge autoritativ prüfen – NACH dem Rate-Limit (teure Signatur-/
+  // Größenprüfung soll kein Kontingent für einen ohnehin gedrosselten
+  // Client verbrauchen), aber VOR dem Versand: eine Anfrage mit einem
+  // ungültigen Anhang wird als Ganzes abgelehnt, kein Anhang fällt
+  // stillschweigend weg (§5 der Anforderung).
+  let anhaenge: { filename: string; content: Buffer }[] | undefined;
+  if (input.attachments && input.attachments.length > 0) {
+    const gepruefteAnhaenge = pruefeKontaktAnhaenge(
+      input.attachments.map((a) => ({ dateiname: a.dateiname, dataUrl: a.dataUrl }))
+    );
+    if (!gepruefteAnhaenge.ok) {
+      console.warn(`[kontakt] Anhang abgelehnt: ${gepruefteAnhaenge.protokoll}`);
+      return { success: false, error: gepruefteAnhaenge.kundenMeldung };
+    }
+    anhaenge = gepruefteAnhaenge.anhaenge.map((a) => ({ filename: a.dateiname, content: a.bytes }));
+  }
+
   // 4) Versand über die bestehende E-Mail-Infrastruktur.
   const result = await sendContactMessageEmail({
     name,
     email,
     subject: subject || undefined,
     message,
+    attachments: anhaenge,
   });
   if (!result.success) {
     return {

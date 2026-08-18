@@ -8,6 +8,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { PRODUCTS } from '@/config/products';
 import { farbgruppenVon } from '@/lib/catalog/filter';
+import { geschlechterVon } from '@/config/products/facetten';
 import type { Farbgruppe } from '@/config/products/types';
 import {
   ARTFOLGE, LEERER_FILTER, anzahlAktiverFilter, baueBaum,
@@ -23,16 +24,30 @@ test('jeder Artikel ist über mindestens einen Ast erreichbar', () => {
   assert.equal(erreichbar.size, PRODUCTS.length, 'kein Artikel darf sich hinter der Datenstruktur verstecken');
 });
 
-test('jede Hauptgruppe führt alle Produktarten des Sortiments', () => {
-  // Für den aktuellen (durchgängig geschlechts-achsigen) Katalog führt jede
-  // Gruppe dank der Unisex-Überschneidung alle Arten. Die achsenspezifische
-  // Begründung steht im naviAchsen-Test; hier nur die Baum-Eigenschaft.
+test('Herren führt dank der Unisex-Überschneidung alle Produktarten des Sortiments', () => {
+  // Herren bekommt weiterhin JEDE Unisexware zusätzlich (naviAchsen.ts,
+  // gruppenVon) – für den aktuellen Katalog deckt das alle Arten ab. Die
+  // achsenspezifische Begründung steht im naviAchsen-Test; hier nur die
+  // Baum-Eigenschaft für die eine Gruppe, für die sie gilt.
   const alleArten = new Set(PRODUCTS.map((p) => p.productType));
-  for (const g of BAUM) {
-    const vorhanden = new Set(g.arten.map((a) => a.art));
-    for (const art of alleArten) {
-      assert.ok(vorhanden.has(art), `Gruppe ${g.gruppe} führt keine ${art}`);
-    }
+  const herren = BAUM.find((g) => g.gruppe === 'herren');
+  assert.ok(herren, 'Gruppe "herren" muss im Baum existieren');
+  const vorhanden = new Set(herren!.arten.map((a) => a.art));
+  for (const art of alleArten) {
+    assert.ok(vorhanden.has(art), `Herren führt keine ${art}`);
+  }
+});
+
+test('Damen führt nur Arten, für die es echte Damenware gibt (keine Unisex-Überschneidung)', () => {
+  // Bewusst NICHT dieselbe Rundum-Prüfung wie bei Herren: Damen darf eine
+  // Produktart fehlen, wenn das Sortiment dafür keine echte Damenware
+  // führt – korrekt leer ist hier richtiger als Herrenware einzublenden
+  // (siehe naviAchsen.ts, gruppenVon der Geschlechtsachse).
+  const damen = BAUM.find((g) => g.gruppe === 'damen');
+  assert.ok(damen, 'Gruppe "damen" muss im Baum existieren');
+  for (const a of damen!.arten) {
+    const hatEchteDamenware = PRODUCTS.some((p) => p.productType === a.art && geschlechterVon(p).includes('damen'));
+    assert.ok(hatEchteDamenware, `Damen führt ${a.art}, aber kein Produkt dieser Art ist tatsächlich als Damenware getaggt`);
   }
 });
 

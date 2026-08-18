@@ -16,9 +16,12 @@
  * Einsatzgebiet, Saison, Zielgruppe, Hersteller … gliedern – rein über Daten.
  *
  * Überschneidung ist eine Eigenschaft der Achse, nicht der Kernlogik: Bei der
- * Geschlechtsachse erscheint Unisexware zusätzlich unter Herren und Damen,
- * sodass kein Artikel hinter der Klassifizierung verschwindet; die Summe der
- * Gruppenzähler ist dann größer als der Bestand, und das ist richtig so.
+ * Geschlechtsachse erscheint Unisexware zusätzlich unter Herren, sodass kein
+ * Artikel hinter der Klassifizierung verschwindet – nicht aber unter Damen,
+ * das bliebe sonst mit Herren-Passform-Artikeln verwässert (siehe
+ * naviAchsen.ts, gruppenVon der Geschlechtsachse). Die Summe der
+ * Gruppenzähler kann dadurch größer als der Bestand sein, und das ist
+ * richtig so.
  */
 import type { ProductConfig, Farbgruppe } from '@/config/products/types';
 import { produktTypLabel, PRODUCT_TYPE_ORDER } from '@/config/products/types';

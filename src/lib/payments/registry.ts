@@ -49,7 +49,14 @@ const ANBIETER: Record<ZahlungsAnbieterId, ZahlungsAnbieter | null> = {
 function istEinsatzbereit(id: ZahlungsAnbieterId): boolean {
   if (!ANBIETER[id]) return false;
   if (id === 'stripe') return stripeKonfigurationsStand().zahlungenMoeglich;
-  if (id === 'paypal') return paypalKonfigurationsStand().zahlungenMoeglich;
+  // Zusätzlich zu vorhandenen Zugangsdaten MUSS PAYPAL_ENV=live gesetzt sein:
+  // Sandbox-Zugangsdaten allein dürfen produktiv niemals als "einsatzbereit"
+  // gelten, sonst bekäme echte Kundschaft eine Sandbox-Zahlung angeboten
+  // (Go-Live-Prüfung 2026-08-17: PAYPAL_ENV stand noch auf sandbox).
+  if (id === 'paypal') {
+    const stand = paypalKonfigurationsStand();
+    return stand.zahlungenMoeglich && stand.produktivUmgebung;
+  }
   return true;
 }
 
@@ -86,6 +93,20 @@ export function waehleZahlungsAnbieter(gewuenscht?: ZahlungsAnbieterId): Zahlung
     );
   }
   return anbieter;
+}
+
+/**
+ * Ob ein Anbieter der Kundschaft aktuell als Option angezeigt werden darf.
+ *
+ * Reine Anzeige-Frage für die Oberfläche (z.B. CartDrawer) – im Unterschied
+ * zu `waehleZahlungsAnbieter()` wirft sie NICHT, sondern liefert schlicht
+ * true/false, und im Testmodus gilt IMMER true (dort wird ohnehin nur der
+ * Testanbieter verwendet, die Anzeige soll sich dadurch nicht ändern). Die
+ * einzige Stelle außerhalb dieser Datei, die auf istEinsatzbereit() zugreift.
+ */
+export function istAnbieterFuerKundschaftVerfuegbar(id: ZahlungsAnbieterId): boolean {
+  if (istTestmodus()) return true;
+  return istEinsatzbereit(id);
 }
 
 /**

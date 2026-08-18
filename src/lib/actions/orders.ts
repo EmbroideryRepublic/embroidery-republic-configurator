@@ -20,6 +20,7 @@ import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderReco
 import { formatiereGeld } from '@/lib/format';
 import { aktuellerKunde } from '@/lib/account/session';
 import { ladeProfil as ladeProfilDb } from '@/lib/account/data';
+import { istAnbieterFuerKundschaftVerfuegbar } from '@/lib/payments/registry';
 
 export interface SubmitResult {
   success: boolean;
@@ -678,6 +679,19 @@ async function persistAndNotifyCore(params: {
   // Scheduler und ohne Hintergrundjob garantiert ist.
 
   return { success: true, orderNumber };
+}
+
+/**
+ * Ob PayPal der Kundschaft aktuell als Zahlungsoption angezeigt werden darf.
+ *
+ * Reine Anzeige-Frage, deshalb über istAnbieterFuerKundschaftVerfuegbar()
+ * (payments/registry.ts) statt waehleZahlungsAnbieter() – Letztere wirft
+ * bei Nicht-Einsatzbereitschaft, was für eine bloße Anzeige-Entscheidung
+ * falsch wäre. registry.ts bleibt dabei weiterhin die einzige Datei, die
+ * konkrete Anbieter kennt (siehe architektur.test.ts).
+ */
+export async function istPaypalVerfuegbar(): Promise<boolean> {
+  return istAnbieterFuerKundschaftVerfuegbar('paypal');
 }
 
 export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult> {

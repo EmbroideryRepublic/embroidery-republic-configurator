@@ -8,7 +8,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getProduct } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
-import { submitOrder, submitInquiry } from '@/lib/actions/orders';
+import { submitOrder, submitInquiry, istPaypalVerfuegbar } from '@/lib/actions/orders';
 import { ladeCheckoutVorbelegung } from '@/lib/actions/konto';
 import { useSubmitGuard } from '@/lib/hooks/useSubmitGuard';
 import { SHIPPING_RATES, calculateShipping, landCodeForCountry } from '@/config/shipping';
@@ -345,6 +345,11 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   const [paymentMethod, setPaymentMethod] = useState<OrderPaymentMethod>('invoice');
+  // Standardmäßig verborgen (fail-safe), bis der Server bestätigt, dass
+  // PayPal produktiv einsatzbereit ist (istPaypalVerfuegbar spiegelt
+  // payments/registry.ts) – niemals eine Sandbox-Zahlung anbieten, nur weil
+  // die Prüfung noch nicht zurück ist.
+  const [zahlungsoptionVerfuegbar, setZahlungsoptionVerfuegbar] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   // Mehrfachklick, Zeitüberschreitung und Verbindungsabbruch liegen gebündelt
   // im Hook (lib/hooks/useSubmitGuard.ts) – nicht in jedem Formular erneut.
@@ -420,6 +425,19 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
         zip: f.zip || vorbelegung.zip,
         city: f.city || vorbelegung.city,
       }));
+    });
+    return () => {
+      abgebrochen = true;
+    };
+  }, []);
+
+  // Ob die PayPal-Kachel angezeigt werden darf – siehe Kommentar oben am
+  // State für diese Zahlungsoption. Läuft einmal beim Öffnen des Formulars,
+  // exakt wie die Checkout-Vorbelegung oben.
+  useEffect(() => {
+    let abgebrochen = false;
+    istPaypalVerfuegbar().then((verfuegbar) => {
+      if (!abgebrochen) setZahlungsoptionVerfuegbar(verfuegbar);
     });
     return () => {
       abgebrochen = true;
@@ -591,7 +609,9 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
               nur die Absicht der Kundschaft festgehalten, abgebucht wird
               nichts im Drawer selbst. */}
           <div className="grid grid-cols-3 gap-1.5">
-            {(['invoice', 'card', 'paypal'] as const).map((methode) => {
+            {(['invoice', 'card', 'paypal'] as const)
+              .filter((methode) => methode !== 'paypal' || zahlungsoptionVerfuegbar)
+              .map((methode) => {
               const Icon = methode === 'invoice' ? Receipt : methode === 'card' ? CreditCard : Wallet;
               const ausgewaehlt = paymentMethod === methode;
               return (

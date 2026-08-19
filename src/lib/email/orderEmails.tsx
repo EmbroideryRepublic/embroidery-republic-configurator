@@ -107,6 +107,9 @@ export async function sendOrderShippedEmail(params: {
   orderNumber: string;
   empfaenger: string;
   trackingNummer: string | null;
+  /** orders.carrier – bestimmt, ob ein anklickbarer Tracking-Link gezeigt
+   *  werden kann (aktuell nur für 'dhl' hinterlegt). */
+  carrier?: string | null;
   bestellansichtUrl?: string | null;
 }): Promise<EmailVersandErgebnis> {
   const result = await sendEmail({
@@ -116,6 +119,7 @@ export async function sendOrderShippedEmail(params: {
       <OrderShippedEmail
         orderNumber={params.orderNumber}
         trackingNummer={params.trackingNummer}
+        carrier={params.carrier ?? null}
         bestellansichtUrl={params.bestellansichtUrl ?? null}
       />
     ),

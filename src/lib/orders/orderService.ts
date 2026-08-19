@@ -70,7 +70,7 @@ export async function setzeBestellstatus(
 
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('id, email, status, order_type, created_at, payment_status, accounting_ready_at')
+    .select('id, email, status, order_type, created_at, payment_status, accounting_ready_at, tracking_number, carrier')
     .eq('id', orderId)
     .maybeSingle<{
       id: string;
@@ -80,6 +80,8 @@ export async function setzeBestellstatus(
       created_at: string;
       payment_status: string | null;
       accounting_ready_at: string | null;
+      tracking_number: string | null;
+      carrier: string | null;
     }>();
 
   if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
@@ -172,11 +174,19 @@ export async function setzeBestellstatus(
   // Bestellabschluss selbst – E-Mail ist nachgelagert, nie steuernd).
   if (nach === 'shipped' && bestellung.email) {
     try {
+      // Fällt auf die bereits gespeicherte Sendungsnummer zurück (z.B. durch
+      // die DHL-Label-Erstellung, siehe shippingService.ts), wenn beim
+      // Statuswechsel selbst keine manuell eingegeben wurde – sonst müsste
+      // der Admin eine bereits bekannte Nummer ein zweites Mal abtippen.
+      // Eine explizit übergebene Nummer hat weiterhin Vorrang (bewusste
+      // Überschreibung, z.B. bei einem abweichenden Versandweg).
+      const trackingNummer = optionen.trackingNummer?.trim() || bestellung.tracking_number || null;
       const versand = await sendOrderShippedEmail({
         orderId,
         orderNumber: buildOrderNumber(orderId),
         empfaenger: bestellung.email,
-        trackingNummer: optionen.trackingNummer?.trim() || null,
+        trackingNummer,
+        carrier: bestellung.carrier,
       });
       await protokolliereBestellereignis(
         {
@@ -231,6 +241,32 @@ export async function setzeBestellstatus(
       );
     } catch (err) {
       console.error(`[orders] Abschlussmail ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+    }
+  }
+
+  // Kulanzstornierung durch den Betreiber: dieselbe Storno-Bestätigung wie
+  // bei der Selbststornierung durch den Kunden (storniereBestellungDurchKunden
+  // oben) – der Kunde soll unabhängig davon, WER storniert hat, denselben
+  // belastbaren Nachweis bekommen, dass keine Kosten entstehen.
+  if (nach === 'cancelled' && bestellung.email) {
+    try {
+      const versand = await sendOrderCancellationEmail({
+        orderId,
+        orderNumber: buildOrderNumber(orderId),
+        empfaenger: bestellung.email,
+        storniertAm: jetzt.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' }),
+      });
+      await protokolliereBestellereignis(
+        {
+          orderId,
+          eventType: 'email_sent',
+          reason: 'Storno-Bestätigung an den Kunden versendet (Kulanzstornierung durch den Betreiber).',
+          detail: { anlass: 'order_cancelled', quelle: 'admin', messageId: versand?.messageId ?? null },
+        },
+        db
+      );
+    } catch (err) {
+      console.error(`[orders] Storno-Bestätigung (Admin) ${orderId} fehlgeschlagen (nicht-fatal):`, err);
     }
   }
 

@@ -57,7 +57,15 @@ function istEinsatzbereit(id: ZahlungsAnbieterId): boolean {
     const stand = paypalKonfigurationsStand();
     return stand.zahlungenMoeglich && stand.produktivUmgebung;
   }
-  return true;
+  // id === 'test': Die Signatur des Testanbieters ist bewusst eine feste,
+  // offene Konstante (siehe testAnbieter.ts, TEST_SIGNATUR) – sie schützt
+  // nichts, sie erzwingt nur den Signaturweg. Einsatzbereitschaft ist hier
+  // deshalb die EINZIGE Schranke: Ohne sie ließe sich /api/webhooks/test im
+  // Produktivbetrieb mit dieser bekannten Konstante aufrufen und jede
+  // Bestellung ohne echte Zahlung als bezahlt markieren (Sicherheitsfund
+  // 2026-08-19). Außerhalb des Produktivbetriebs bleibt der Testanbieter
+  // unverändert nutzbar.
+  return process.env.NODE_ENV !== 'production';
 }
 
 export class ZahlungsAnbieterFehlt extends Error {}

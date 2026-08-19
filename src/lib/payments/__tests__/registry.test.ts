@@ -56,3 +56,37 @@ test('im Testmodus gilt PayPal immer als anzeigbar, unabhängig von PAYPAL_ENV',
     assert.equal(istAnbieterFuerKundschaftVerfuegbar('paypal'), true);
   });
 });
+
+/**
+ * Sicherheitsfund 2026-08-19: /api/webhooks/test war in JEDER Umgebung
+ * erreichbar, weil istEinsatzbereit() für den Testanbieter ungated `true`
+ * lieferte. Die Signatur des Testanbieters ist eine feste, im Quelltext
+ * offene Konstante (testAnbieter.ts, TEST_SIGNATUR) – ohne diese Schranke
+ * hätte jeder, der eine Bestellungs-ID und den Betrag kennt, sie im
+ * Produktivbetrieb ohne echte Zahlung als bezahlt markieren können.
+ *
+ * Die Route wählt den Anbieter ausschließlich über waehleZahlungsAnbieter()
+ * (src/app/api/webhooks/[anbieter]/route.ts) und wandelt ZahlungsAnbieterFehlt
+ * VOR jedem Lesen des Bodys, jeder Signaturprüfung und jedem Aufruf von
+ * verarbeiteZahlungsEreignis() in eine 404-Antwort um. Dass dieser Aufruf
+ * hier wirft, ist deshalb der vollständige Beweis, dass eine Anfrage an
+ * /api/webhooks/test im Produktivbetrieb niemals eine Bestellung als bezahlt
+ * markieren oder eine Fulfillment-Kette auslösen kann.
+ */
+test('Testanbieter gilt im Produktivbetrieb NICHT als einsatzbereit – /api/webhooks/test bleibt dort wirkungslos', () => {
+  mitUmgebung({ E2E_TESTMODUS: undefined, NODE_ENV: 'production' }, () => {
+    assert.equal(istAnbieterFuerKundschaftVerfuegbar('test'), false);
+    assert.throws(() => waehleZahlungsAnbieter('test'), ZahlungsAnbieterFehlt);
+  });
+});
+
+test('Testanbieter bleibt außerhalb des Produktivbetriebs unverändert nutzbar', () => {
+  mitUmgebung({ E2E_TESTMODUS: undefined, NODE_ENV: 'development' }, () => {
+    assert.equal(istAnbieterFuerKundschaftVerfuegbar('test'), true);
+    assert.equal(waehleZahlungsAnbieter('test').id, 'test');
+  });
+  mitUmgebung({ E2E_TESTMODUS: undefined, NODE_ENV: 'test' }, () => {
+    assert.equal(istAnbieterFuerKundschaftVerfuegbar('test'), true);
+    assert.equal(waehleZahlungsAnbieter('test').id, 'test');
+  });
+});

@@ -5,6 +5,7 @@
  */
 import { Text } from '@react-email/components';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
+import { PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
 import { PAYMENT_TERM_DAYS } from '@/config/company';
 import { STORNOFRIST_MS } from '@/config/orderProcess';
 import { EmailLayout, OrderItemsTable } from './EmailLayout';
@@ -57,10 +58,20 @@ export function OrderConfirmationEmail({
 
       {isOrder && (
         <Text style={{ marginTop: 16, fontSize: 13 }}>
-          Die Zahlung erfolgt auf Rechnung. Die Rechnung senden wir Ihnen separat mit der
-          Auftragsbearbeitung zu; sie ist innerhalb von {PAYMENT_TERM_DAYS} Tagen ab Rechnungsdatum
-          ohne Abzug zu begleichen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der
-          Versand erfolgt anschließend innerhalb von 1 bis 2 Werktagen.
+          {!order.paymentMethod || order.paymentMethod === 'invoice' ? (
+            <>
+              Die Zahlung erfolgt auf Rechnung. Die Rechnung senden wir Ihnen separat mit der
+              Auftragsbearbeitung zu; sie ist innerhalb von {PAYMENT_TERM_DAYS} Tagen ab
+              Rechnungsdatum ohne Abzug zu begleichen.{' '}
+            </>
+          ) : (
+            <>
+              Die Zahlung ist bereits per {PAYMENT_METHOD_LABELS[order.paymentMethod]} bei uns
+              eingegangen – vielen Dank.{' '}
+            </>
+          )}
+          Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der Versand erfolgt anschließend
+          innerhalb von 1 bis 2 Werktagen.
         </Text>
       )}
 

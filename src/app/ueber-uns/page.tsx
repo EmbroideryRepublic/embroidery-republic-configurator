@@ -85,7 +85,7 @@ export default function AboutPage() {
             'Logo hochladen oder Text gestalten und positionieren.',
             'Bestellen oder unverbindlich anfragen – ganz wie Sie möchten.',
             'Wir prüfen das Design und melden uns mit der finalen Freigabe.',
-            'Produktion und Versand – die Rechnung folgt mit der Auftragsbearbeitung.',
+            'Produktion und Versand – bei Kauf auf Rechnung erhalten Sie die Rechnung mit der Auftragsbearbeitung, bei Kreditkarte/PayPal haben Sie bereits im Checkout bezahlt.',
           ].map((step, i) => (
             <li key={step} className="flex gap-3">
               <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold text-[11px] font-semibold text-white">

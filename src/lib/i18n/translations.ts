@@ -47,7 +47,8 @@ export const translations = {
     // (config/company.ts) – dieselbe Quelle wie überall sonst auf der Seite.
     footer_fact_moq: 'Ab 1 Stück – ohne Mindestmenge',
     footer_fact_production: 'Produktion {von}–{bis} Werktage',
-    footer_fact_invoice: 'Kauf auf Rechnung – {days} Tage',
+    footer_fact_free_shipping: 'Versandkostenfrei ab',
+    footer_fact_invoice: 'Rechnung, Karte & PayPal',
     footer_bottom_tagline: 'DTF-Transferdruck & Stickerei · Made to order in {city}',
 
     step_product: 'Produkt & Größe',
@@ -284,6 +285,14 @@ export const translations = {
     checkout_shipping_hint: 'Noch {amount} bis zum kostenlosen Versand.',
     checkout_tax_line: 'enthaltene USt. ({rate} %)',
     checkout_terms: 'Ich akzeptiere die AGB und Datenschutzerklärung. Personalisierte Produkte sind vom Widerruf ausgeschlossen.',
+    // Granulare Fassung der Checkbox oben (CartDrawer.tsx) – hält die
+    // anklickbaren AGB-/Datenschutz-Links im Fließtext, statt sie wie
+    // checkout_terms in einen einzigen, nicht mehr verlinkbaren Satz zu packen.
+    checkout_terms_prefix: 'Ich akzeptiere die',
+    checkout_terms_agb_link: 'AGB',
+    checkout_terms_and: 'und',
+    checkout_terms_privacy_link: 'Datenschutzerklärung',
+    checkout_terms_no_withdrawal: 'Personalisierte Produkte sind vom Widerruf ausgeschlossen.',
     checkout_submit: 'Zahlungspflichtig bestellen',
     checkout_processing: 'Wird verarbeitet …',
     checkout_order_number_label: 'Bestellnummer',
@@ -412,7 +421,8 @@ export const translations = {
     footer_legal_agb: 'Terms & conditions',
     footer_fact_moq: 'From 1 piece – no minimum order',
     footer_fact_production: 'Production in {von}–{bis} working days',
-    footer_fact_invoice: 'Payment by invoice – {days} days',
+    footer_fact_free_shipping: 'Free shipping from',
+    footer_fact_invoice: 'Invoice, card & PayPal',
     footer_bottom_tagline: 'DTF transfer printing & embroidery · Made to order in {city}',
 
     step_product: 'Product & size',
@@ -636,6 +646,11 @@ export const translations = {
     checkout_shipping_hint: '{amount} more until free shipping.',
     checkout_tax_line: 'VAT included ({rate}%)',
     checkout_terms: 'I accept the terms and privacy policy. Personalized products are excluded from returns.',
+    checkout_terms_prefix: 'I accept the',
+    checkout_terms_agb_link: 'Terms & Conditions',
+    checkout_terms_and: 'and',
+    checkout_terms_privacy_link: 'Privacy Policy',
+    checkout_terms_no_withdrawal: 'Personalized products are excluded from returns.',
     checkout_submit: 'Order with obligation to pay',
     checkout_processing: 'Processing …',
     checkout_order_number_label: 'Order number',

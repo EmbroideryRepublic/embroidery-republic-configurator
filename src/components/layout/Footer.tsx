@@ -8,6 +8,7 @@ import {
   FooterNavColumn,
   FooterLegalColumn,
   FooterInfoColumn,
+  FooterFreeShippingLabel,
   FooterBottomTagline,
 } from './FooterText';
 
@@ -47,7 +48,7 @@ export function Footer() {
             FooterInfoColumn reiht ihn nur an der richtigen Position ein. */}
         <FooterInfoColumn>
           <li className="text-xs text-brand/70">
-            Versandkostenfrei ab <WaehrungsPreis betragInEur={SHIPPING_RATES.DE.freeFrom} />
+            <FooterFreeShippingLabel /> <WaehrungsPreis betragInEur={SHIPPING_RATES.DE.freeFrom} />
           </li>
         </FooterInfoColumn>
       </div>

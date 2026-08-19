@@ -25,6 +25,7 @@ export function InvoiceEmail({
   invoiceNumber,
   invoiceDate,
   vatId,
+  zahlungszielTage,
 }: {
   order: OrderRecord;
   /** Eigenständig zu vergeben, siehe Hinweis oben – NICHT order.orderNumber. */
@@ -41,6 +42,8 @@ export function InvoiceEmail({
    * pflichtig ist, nicht bei jeder Rechnung.
    */
   vatId?: string | null;
+  /** Tage bis Fälligkeit; 0 = bereits bezahlt (Karte/PayPal). Identische Bedeutung wie in internRechnungPdf.tsx. */
+  zahlungszielTage: number;
 }) {
   const title = `Rechnung ${invoiceNumber}`;
   return (
@@ -147,8 +150,9 @@ export function InvoiceEmail({
       </table>
 
       <Text style={{ marginTop: 20, fontSize: 12, color: COLORS.muted }}>
-        Zahlbar innerhalb der vereinbarten Zahlungsfrist ohne Abzug. Diese Rechnung enthält die gesetzlich
-        vorgeschriebenen Angaben nach § 14 UStG, soweit zum Zeitpunkt der Erstellung hinterlegt.
+        {zahlungszielTage > 0 ? `Zahlbar innerhalb von ${zahlungszielTage} Tagen ohne Abzug.` : 'Bereits bezahlt.'}{' '}
+        Diese Rechnung enthält die gesetzlich vorgeschriebenen Angaben nach § 14 UStG, soweit zum Zeitpunkt der
+        Erstellung hinterlegt.
         {IST_KLEINUNTERNEHMER ? ` ${KLEINUNTERNEHMER_HINWEIS}` : ''}
       </Text>
     </EmailLayout>

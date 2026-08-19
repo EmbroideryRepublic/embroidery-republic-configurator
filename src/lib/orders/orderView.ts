@@ -16,7 +16,7 @@
  */
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
-import type { OrderStatus } from '@/lib/actions/orderTypes';
+import type { OrderStatus, OrderPaymentMethod, OrderPaymentStatus } from '@/lib/actions/orderTypes';
 import { stornofristEndet, stornofristLaeuftNoch, verbleibendeStornozeitMs } from '@/config/orderProcess';
 
 /** Die drei Zustände, die die Seite unterscheidet. */
@@ -45,6 +45,9 @@ export interface BestellAnsicht {
   storniertAm: string | null;
   /** Fachlicher Bestellstatus – unabhängig vom Storno-Zustand. */
   status: OrderStatus;
+  /** Zahlungsart – steuert, ob unten der Rechnungs- oder "bereits bezahlt"-Text steht. */
+  zahlungsart: OrderPaymentMethod | null;
+  zahlungsstatus: OrderPaymentStatus;
   trackingNummer: string | null;
   versendetAm: string | null;
   positionen: BestellAnsichtPosition[];
@@ -71,7 +74,7 @@ export async function ladeBestellAnsicht(orderId: string, jetzt: Date = new Date
   const { data: order, error } = await db
     .from('orders')
     .select(
-      'id, created_at, status, order_type, total_price, tax_amount, tax_rate, customer_name, cancelled_at, shipping_street, shipping_zip, shipping_city, shipping_country, tracking_number, shipped_at'
+      'id, created_at, status, order_type, total_price, tax_amount, tax_rate, customer_name, cancelled_at, shipping_street, shipping_zip, shipping_city, shipping_country, tracking_number, shipped_at, payment_method, payment_status'
     )
     .eq('id', orderId)
     .maybeSingle();
@@ -101,6 +104,8 @@ export async function ladeBestellAnsicht(orderId: string, jetzt: Date = new Date
     verbleibendeMs: verbleibendeStornozeitMs(order.created_at as string, jetzt),
     storniertAm: (order.cancelled_at as string | null) ?? null,
     status: order.status as OrderStatus,
+    zahlungsart: (order.payment_method as OrderPaymentMethod | null) ?? null,
+    zahlungsstatus: order.payment_status as OrderPaymentStatus,
     trackingNummer: (order.tracking_number as string | null) ?? null,
     versendetAm: (order.shipped_at as string | null) ?? null,
     kundenName: (order.customer_name as string) ?? '',

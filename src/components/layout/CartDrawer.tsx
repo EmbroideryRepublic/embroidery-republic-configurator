@@ -230,7 +230,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                             <p className="text-sm font-medium text-brand">{product?.name ?? 'Produkt'}</p>
                             <p className="text-xs text-brand/60">
                               {color ? formatiereFarbname(color.name) : '–'} ·{' '}
-                              {item.printMethod === 'embroidery' ? 'Stickerei' : 'DTF-Transferdruck'}
+                              {item.printMethod === 'embroidery' ? t('method_embroidery') : t('method_dtf')}
                             </p>
                             <p className="mt-0.5 text-xs font-medium text-brand/70">{sizeSummary || `${item.quantity}×`}</p>
                             <p className="text-xs text-brand/40">
@@ -265,7 +265,9 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                         </div>
 
                         <div className="mt-2 flex items-center justify-between">
-                          <span className="text-xs text-brand/40">{item.quantity} Stück gesamt</span>
+                          <span className="text-xs text-brand/40">
+                            {item.quantity} {t('size_table_total')}
+                          </span>
                           <span className="text-sm font-medium">{formatPrice(item.totalPrice)}</span>
                         </div>
                       </li>
@@ -727,15 +729,15 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
             className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 rounded-md border-brand/30 accent-gold"
           />
           <span>
-            Ich akzeptiere die{' '}
+            {t('checkout_terms_prefix')}{' '}
             <a href="/agb" target="_blank" className="text-gold-dark hover:underline">
-              AGB
+              {t('checkout_terms_agb_link')}
             </a>{' '}
-            und{' '}
+            {t('checkout_terms_and')}{' '}
             <a href="/datenschutz" target="_blank" className="text-gold-dark hover:underline">
-              Datenschutzerklärung
+              {t('checkout_terms_privacy_link')}
             </a>
-            . Personalisierte Produkte sind vom Widerruf ausgeschlossen.
+            . {t('checkout_terms_no_withdrawal')}
           </span>
         </label>
       </div>

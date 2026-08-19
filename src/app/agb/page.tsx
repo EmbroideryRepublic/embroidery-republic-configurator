@@ -115,8 +115,10 @@ export default function AgbPage() {
 
         <Section n={5} title="Zahlungsbedingungen">
           <p>
-            (1) Die Abwicklung erfolgt derzeit ausschließlich auf Rechnung. Im Bestellvorgang selbst
-            wird kein Betrag eingezogen; die Rechnung wird separat im Zuge der Auftragsbearbeitung
+            (1) Die Bezahlung erfolgt wahlweise per Kreditkarte, PayPal oder auf Rechnung. Bei Zahlung
+            per Kreditkarte oder PayPal wird der Betrag im Rahmen des Bestellvorgangs über den
+            jeweiligen Zahlungsdienstleister eingezogen. Bei Kauf auf Rechnung wird im Bestellvorgang
+            selbst kein Betrag eingezogen; die Rechnung wird separat im Zuge der Auftragsbearbeitung
             übermittelt.
           </p>
           <p>

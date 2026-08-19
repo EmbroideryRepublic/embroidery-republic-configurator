@@ -79,7 +79,7 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Welche Zahlungsmöglichkeiten gibt es?',
-        a: 'Bestellungen werden grundsätzlich auf Rechnung abgewickelt. Die Rechnung ist innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug zu begleichen. Sie erhalten sie separat im Zuge der Auftragsbearbeitung – im Bestellvorgang selbst wird nichts abgebucht. Kartenzahlung und PayPal befinden sich in Vorbereitung.',
+        a: 'Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.',
       },
     ],
   },

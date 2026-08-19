@@ -184,11 +184,14 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
           </section>
         )}
 
-        {bestellung.zustand !== 'storniert' && (
-          <p className="text-xs text-brand/50">
-            Die Rechnung erhalten Sie separat, zahlbar innerhalb von {PAYMENT_TERM_DAYS} Tagen ohne Abzug.
-          </p>
-        )}
+        {bestellung.zustand !== 'storniert' &&
+          (!bestellung.zahlungsart || bestellung.zahlungsart === 'invoice' ? (
+            <p className="text-xs text-brand/50">
+              Die Rechnung erhalten Sie separat, zahlbar innerhalb von {PAYMENT_TERM_DAYS} Tagen ohne Abzug.
+            </p>
+          ) : bestellung.zahlungsstatus === 'paid' ? (
+            <p className="text-xs text-brand/50">Die Zahlung ist bereits bei uns eingegangen – vielen Dank.</p>
+          ) : null)}
       </div>
     </main>
   );

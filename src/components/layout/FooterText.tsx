@@ -115,6 +115,13 @@ export function FooterInfoColumn({ children }: { children: ReactNode }) {
   );
 }
 
+/** Übersetztes Label vor dem währungsbewussten Betrag in Footer.tsx (dort
+ *  bleibt der Betrag selbst über `WaehrungsPreis`, siehe Kommentar dort). */
+export function FooterFreeShippingLabel() {
+  const language = useLanguageStore((s) => s.language);
+  return <>{translate('footer_fact_free_shipping', language)}</>;
+}
+
 export function FooterBottomTagline({ city }: { city: string }) {
   const language = useLanguageStore((s) => s.language);
   return <p className="text-xs text-brand/70">{translate('footer_bottom_tagline', language, { city })}</p>;

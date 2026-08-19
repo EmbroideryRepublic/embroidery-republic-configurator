@@ -715,6 +715,7 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
         invoiceNumber: rechnung.rechnungsnummer,
         invoiceDate: auftrag.rechnungsdatum,
         vatId: order.customerVatId,
+        zahlungszielTage,
       }),
       kontext: { anlass: 'invoice_created', orderId: order.id },
       attachments: [{ filename: `Rechnung-${rechnung.rechnungsnummer}.pdf`, content: rechnung.pdf }],

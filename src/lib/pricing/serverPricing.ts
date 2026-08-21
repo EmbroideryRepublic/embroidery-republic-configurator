@@ -18,6 +18,7 @@
 import { getProduct } from '@/config/products';
 import { getPricingRules } from '@/config/pricingRules';
 import { STANDARDLAND, steuersatzFuer } from '@/config/pricing/steuer';
+import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { landCodeForCountry } from '@/config/shipping';
 import { calculatePipeline } from './pipeline';
 import { sumSizeQuantities } from './quantity';
@@ -142,7 +143,12 @@ export async function priceCart(items: CartItem[], shippingCountry?: string): Pr
     taxAmount: pipeline.taxAmount,
     // Dieselbe Länderauflösung wie in orderStage.ts – EIN Weg vom
     // Lieferland zum Steuersatz, an keiner zweiten Stelle nachgebaut.
-    taxRate: steuersatzFuer(landCodeForCountry(shippingCountry) ?? STANDARDLAND).satz,
+    // Kleinunternehmer-Fallunterscheidung (§ 19 UStG) hier gespiegelt, damit
+    // taxRate NIEMALS von taxAmount (aus pipeline.taxAmount, bereits
+    // Kleinunternehmer-bewusst) abweicht – sonst stünde in orders.tax_rate
+    // "19" neben orders.tax_amount "0", ein in sich widersprüchlicher
+    // Datensatz.
+    taxRate: IST_KLEINUNTERNEHMER ? 0 : steuersatzFuer(landCodeForCountry(shippingCountry) ?? STANDARDLAND).satz,
     netTotal: round2(pipeline.grandTotal - pipeline.taxAmount),
     totalQuantity: priced.reduce((sum, p) => sum + p.quantity, 0),
     unpriceable: priced.filter((p) => !p.priced).map((p) => p.productId),

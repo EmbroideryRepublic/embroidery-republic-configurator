@@ -11,6 +11,7 @@
 import { revalidatePath } from 'next/cache';
 import { istAdmin } from '@/lib/admin/auth';
 import { setzeBestellstatus } from '@/lib/orders/orderService';
+import { stelleErstattungSicher } from '@/lib/orders/refundService';
 import { STATUS_LABELS } from '@/config/orderStatus';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
 
@@ -22,7 +23,11 @@ export interface StatusAktionErgebnis {
 export async function aendereBestellstatus(
   orderId: string,
   nach: OrderStatus,
-  trackingNummer?: string
+  trackingNummer?: string,
+  /** Begründung – bei einer Kulanzstornierung durch den Betreiber Pflicht
+   *  (siehe AdminCancelControl.tsx), sonst optional. Landet unverändert im
+   *  order_events-Eintrag (setzeBestellstatus → protokolliereBestellereignis). */
+  grund?: string
 ): Promise<StatusAktionErgebnis> {
   if (!(await istAdmin())) {
     return { ok: false, meldung: 'Nicht angemeldet.' };
@@ -30,6 +35,7 @@ export async function aendereBestellstatus(
 
   const ergebnis = await setzeBestellstatus(orderId, nach, {
     ...(trackingNummer ? { trackingNummer } : {}),
+    ...(grund?.trim() ? { grund: grund.trim() } : {}),
   });
 
   if (!ergebnis.ok) {
@@ -43,6 +49,21 @@ export async function aendereBestellstatus(
       fehler: 'Der Statuswechsel ist fehlgeschlagen.',
     };
     return { ok: false, meldung: texte[ergebnis.grund] ?? 'Unbekannter Fehler.' };
+  }
+
+  // Nicht-fatal: der Statuswechsel steht bereits fest und gilt unabhängig
+  // davon, ob der Erstattungsversuch sofort gelingt. Schlägt er fehl, bleibt
+  // refund_status='failed' sichtbar und im Admin-Bereich wiederholbar
+  // (siehe refundService.ts).
+  if (ergebnis.erstattungAusstehend) {
+    try {
+      const erstattung = await stelleErstattungSicher(orderId);
+      if (!erstattung.ok) {
+        console.warn(`[storno] Rückerstattung für ${orderId} nicht sofort erfolgreich: ${erstattung.grund}`);
+      }
+    } catch (err) {
+      console.error(`[storno] Rückerstattungsanstoß für ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+    }
   }
 
   revalidatePath(`/admin/bestellung/${orderId}`);

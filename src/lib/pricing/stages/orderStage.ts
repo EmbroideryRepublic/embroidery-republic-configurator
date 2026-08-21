@@ -1,5 +1,6 @@
 import { calculateShipping, landCodeForCountry } from '@/config/shipping';
 import { STANDARDLAND, steuersatzFuer } from '@/config/pricing/steuer';
+import { IST_KLEINUNTERNEHMER, KLEINUNTERNEHMER_HINWEIS } from '@/config/company';
 import { buildStageResult, makeLine, type PriceLine, type StageResult } from '../priceLine';
 
 /**
@@ -55,6 +56,14 @@ export interface OrderConfig {
    * ausschließlich aus `config/pricing/steuer.ts`.
    */
   pricesIncludeTax: boolean;
+  /**
+   * Überschreibt `IST_KLEINUNTERNEHMER` (config/company.ts) NUR für diesen
+   * Aufruf. Ausschließlich für Tests gedacht, die beide Zweige (mit/ohne
+   * Kleinunternehmerregelung) prüfen wollen – im echten Bestellablauf wird
+   * dieses Feld NIE gesetzt; dort gilt immer der tatsächliche, aktuelle
+   * Betreiberstatus aus `company.ts`.
+   */
+  kleinunternehmer?: boolean;
 }
 
 export const DEFAULT_ORDER_CONFIG: OrderConfig = {
@@ -206,19 +215,48 @@ export function calculateOrderStage(ctx: OrderContext, config: OrderConfig = DEF
   // Sobald ein weiteres Land samt Satz hinzukommt, greift diese Auflösung
   // automatisch – siehe docs/steuerarchitektur.md „Offener Punkt: EU-Lieferungen".
   const landCode = landCodeForCountry(ctx.shippingCountry) ?? STANDARDLAND;
-  const steuersatz = steuersatzFuer(landCode);
+  const steuersatzRegulaer = steuersatzFuer(landCode);
   let taxAmount = 0;
-  if (steuersatz.satz > 0) {
+
+  // Kleinunternehmer nach § 19 UStG (config/company.ts): KEIN Steuerausweis,
+  // unabhängig vom Regelsteuersatz des Lieferlands. Der Bruttoendpreis
+  // (grandTotal unten) bleibt dabei UNVERÄNDERT – dieser Zweig ändert nur,
+  // was als Steueranteil ausgewiesen und gespeichert wird (tax_amount,
+  // und über serverPricing.ts auch tax_rate), niemals den Verkaufspreis
+  // selbst. Dieselbe Fallunterscheidung wie bereits auf der Rechnung
+  // (orderCompletion.ts, erzeugeRechnung: `IST_KLEINUNTERNEHMER ? 0 : ...`) –
+  // hier zusätzlich schon bei der Bestellung selbst angewendet, statt erst
+  // beim Rechnungsversand, damit Checkout, Bestellbestätigung und Admin-
+  // Ansicht von Anfang an denselben (korrekten) Stand zeigen wie die Rechnung.
+  const kleinunternehmer = config.kleinunternehmer ?? IST_KLEINUNTERNEHMER;
+  if (kleinunternehmer) {
+    lines.push(
+      makeLine({
+        id: 'order:steuer',
+        label: KLEINUNTERNEHMER_HINWEIS,
+        category: 'steuer',
+        description: 'Kein Steuerausweis (§ 19 UStG)',
+        origin: {
+          stage: 'order',
+          ruleId: 'steuer',
+          reason: 'Kleinunternehmerregelung nach § 19 UStG (config/company.ts, IST_KLEINUNTERNEHMER) – keine Umsatzsteuer wird berechnet oder ausgewiesen.',
+          basis: { satzProzent: 0, bemessungsgrundlage: Math.round(basis * 100) / 100 },
+        },
+        amount: 0,
+        quantity: 1,
+      })
+    );
+  } else if (steuersatzRegulaer.satz > 0) {
     // Bei Bruttopreisen wird die enthaltene Steuer HERAUSgerechnet, sonst
     // aufgeschlagen.
     taxAmount = config.pricesIncludeTax
-      ? basis - basis / (1 + steuersatz.satz / 100)
-      : (basis * steuersatz.satz) / 100;
+      ? basis - basis / (1 + steuersatzRegulaer.satz / 100)
+      : (basis * steuersatzRegulaer.satz) / 100;
 
     lines.push(
       makeLine({
         id: 'order:steuer',
-        label: steuersatz.bezeichnung,
+        label: steuersatzRegulaer.bezeichnung,
         category: 'steuer',
         description: config.pricesIncludeTax ? 'in den Preisen enthalten' : 'zzgl. auf den Nettobetrag',
         origin: {
@@ -227,7 +265,7 @@ export function calculateOrderStage(ctx: OrderContext, config: OrderConfig = DEF
           reason: config.pricesIncludeTax
             ? 'Die angezeigten Preise sind Bruttopreise – die Umsatzsteuer ist bereits enthalten und wird hier nur ausgewiesen'
             : 'Umsatzsteuer wird auf den Nettobetrag aufgeschlagen',
-          basis: { satzProzent: steuersatz.satz, bemessungsgrundlage: Math.round(basis * 100) / 100 },
+          basis: { satzProzent: steuersatzRegulaer.satz, bemessungsgrundlage: Math.round(basis * 100) / 100 },
         },
         // Enthaltene Steuer verändert die Summe NICHT – sie wird nur
         // ausgewiesen. Aufgeschlagene Steuer erhöht sie.

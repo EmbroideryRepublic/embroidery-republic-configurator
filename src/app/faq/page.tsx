@@ -75,7 +75,7 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Kann ich personalisierte Produkte zurückgeben?',
-        a: 'Nein. Da jedes Produkt individuell nach Ihren Vorgaben bedruckt oder bestickt wird, sind personalisierte Artikel vom Widerrufsrecht ausgeschlossen und können nicht zurückgegeben werden. Bitte prüfen Sie Ihre Konfiguration daher sorgfältig – und nutzen Sie im Zweifel die unverbindliche Anfrage, bevor Sie verbindlich bestellen.',
+        a: 'Nein. Jedes Produkt wird ausschließlich mit mindestens einem von Ihnen festgelegten Logo oder Text individuell bedruckt oder bestickt – eine Bestellung ganz ohne eigenes Motiv ist bei uns nicht möglich. Diese personalisierten Artikel sind vom Widerrufsrecht ausgeschlossen und können nicht zurückgegeben werden. Bitte prüfen Sie Ihre Konfiguration daher sorgfältig – und nutzen Sie im Zweifel die unverbindliche Anfrage, bevor Sie verbindlich bestellen.',
       },
       {
         q: 'Welche Zahlungsmöglichkeiten gibt es?',

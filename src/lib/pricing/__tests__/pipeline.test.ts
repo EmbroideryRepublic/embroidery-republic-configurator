@@ -201,9 +201,17 @@ test('Bestellstufe: Zahlungsartzuschlag und Express', async () => {
   assert.equal(sumLines(r.lines), r.grandTotal);
 });
 
-test('Bestellstufe: enthaltene Steuer wird ausgewiesen, aber nicht aufgeschlagen', async () => {
+// Die folgenden zwei Tests prüfen die REGULÄRE (nicht-Kleinunternehmer)
+// Steuerlogik explizit über `kleinunternehmer: false` – seit dem
+// Kleinunternehmer-Status (config/company.ts, IST_KLEINUNTERNEHMER, Stand
+// 2026-08-21) ist das ohne diese Test-Überschreibung nicht mehr der
+// tatsächliche Standardfall (siehe „Im Standard …" Test unten), die
+// zugrundeliegende Rechenlogik bleibt aber realer, erreichbarer Code
+// (Kleinunternehmer-Status kann sich künftig wieder ändern) und bleibt
+// deshalb geprüft.
+test('Bestellstufe: enthaltene Steuer wird ausgewiesen, aber nicht aufgeschlagen (ohne Kleinunternehmerregelung)', async () => {
   const config = {
-    order: { paymentSurcharge: {}, expressSurcharge: 0, pricesIncludeTax: true },
+    order: { paymentSurcharge: {}, expressSurcharge: 0, pricesIncludeTax: true, kleinunternehmer: false },
   };
   const ohne = calculatePipeline({ positions: [await position()] });
   const mit = calculatePipeline({ positions: [await position()] }, config);
@@ -213,9 +221,9 @@ test('Bestellstufe: enthaltene Steuer wird ausgewiesen, aber nicht aufgeschlagen
   assert.equal(sumLines(mit.lines), mit.grandTotal);
 });
 
-test('Bestellstufe: aufgeschlagene Steuer erhöht die Summe', async () => {
+test('Bestellstufe: aufgeschlagene Steuer erhöht die Summe (ohne Kleinunternehmerregelung)', async () => {
   const config = {
-    order: { paymentSurcharge: {}, expressSurcharge: 0, pricesIncludeTax: false },
+    order: { paymentSurcharge: {}, expressSurcharge: 0, pricesIncludeTax: false, kleinunternehmer: false },
   };
   const ohne = calculatePipeline({ positions: [await position()] });
   const mit = calculatePipeline({ positions: [await position()] }, config);
@@ -224,19 +232,44 @@ test('Bestellstufe: aufgeschlagene Steuer erhöht die Summe', async () => {
   assert.equal(sumLines(mit.lines), mit.grandTotal);
 });
 
+test('Bestellstufe: Kleinunternehmerregelung weist keine Steuer aus, UNABHÄNGIG von pricesIncludeTax', async () => {
+  // Der wichtigste Steuer-Test seit dem Kleinunternehmer-Umbau (2026-08-21):
+  // Der Bruttoendpreis darf sich durch die Kleinunternehmerregelung NIEMALS
+  // ändern – weder durch Herausrechnen noch durch Aufschlagen –, egal wie
+  // `pricesIncludeTax` gesetzt ist.
+  const ohneSteuerAusweis = calculatePipeline({ positions: [await position()] }, {
+    order: { paymentSurcharge: {}, expressSurcharge: 0, pricesIncludeTax: true, kleinunternehmer: true },
+  });
+  const mitAufschlagKonfiguriert = calculatePipeline({ positions: [await position()] }, {
+    order: { paymentSurcharge: {}, expressSurcharge: 0, pricesIncludeTax: false, kleinunternehmer: true },
+  });
+
+  assert.equal(ohneSteuerAusweis.taxAmount, 0);
+  assert.equal(mitAufschlagKonfiguriert.taxAmount, 0);
+  assert.equal(
+    ohneSteuerAusweis.grandTotal,
+    mitAufschlagKonfiguriert.grandTotal,
+    'Kleinunternehmer: pricesIncludeTax darf am Bruttoendpreis nichts ändern'
+  );
+});
+
 // ── Standardzustand ───────────────────────────────────────────────────
 
-test('Im Standard entsteht genau ein Posten: die ausgewiesene Umsatzsteuer', async () => {
-  // Seit dem 2026-07-22 ist die Steuer nicht mehr abschaltbar – der Satz
-  // kommt aus config/pricing/steuer.ts und gilt immer. Weil die Katalogpreise
-  // brutto sind, wird sie nur AUSGEWIESEN und erhöht die Summe nicht.
+test('Im Standard entsteht genau ein Posten: die Steuerzeile (Kleinunternehmer-Hinweis)', async () => {
+  // Seit dem 2026-07-22 ist die Steuerzeile nicht mehr abschaltbar – sie
+  // entsteht immer. OHNE explizite Test-Überschreibung gilt dabei der ECHTE
+  // Betreiberstatus aus config/company.ts (IST_KLEINUNTERNEHMER = true seit
+  // 2026-08-18): Es wird keine Umsatzsteuer berechnet oder ausgewiesen,
+  // taxAmount bleibt 0 – die Zeile selbst entsteht trotzdem (als
+  // Kleinunternehmer-Hinweis statt als Prozentsatz), sie verändert die
+  // Summe so oder so nicht.
   const r = calculatePipeline({ positions: [await position()] });
 
   assert.equal(r.cart.lines.length, 0, 'Warenkorbstufe ist im Standard leer');
   assert.equal(r.order.lines.length, 1, 'nur die Steuerzeile');
   assert.equal(r.order.lines[0]!.category, 'steuer');
-  assert.equal(r.order.lines[0]!.total, 0, 'enthaltene Steuer verändert die Summe nicht');
-  assert.ok(r.taxAmount > 0, 'ausgewiesen wird sie trotzdem');
+  assert.equal(r.order.lines[0]!.total, 0, 'die Steuerzeile verändert die Summe nicht');
+  assert.equal(r.taxAmount, 0, 'Kleinunternehmer (§ 19 UStG): keine Umsatzsteuer ausgewiesen');
   assert.equal(r.blocked, false);
 });
 

@@ -6,7 +6,7 @@
 import { Text } from '@react-email/components';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
-import { PAYMENT_TERM_DAYS } from '@/config/company';
+import { PAYMENT_TERM_DAYS, IST_KLEINUNTERNEHMER } from '@/config/company';
 import { STORNOFRIST_MS } from '@/config/orderProcess';
 import { EmailLayout, OrderItemsTable } from './EmailLayout';
 import { formatiereGeld } from '@/lib/format';
@@ -52,7 +52,9 @@ export function OrderConfirmationEmail({
           enthalten – dieselbe Semantik wie orderStage.ts. */}
       {order.taxAmount !== undefined && order.taxRate !== undefined && (
         <Text style={{ margin: '2px 0 0', textAlign: 'right', fontSize: 12, color: '#6b675e' }}>
-          davon enthaltene USt. ({order.taxRate} %): {formatiereGeld(order.taxAmount)}
+          {IST_KLEINUNTERNEHMER
+            ? 'Kein Steuerausweis (§ 19 UStG)'
+            : `davon enthaltene USt. (${order.taxRate} %): ${formatiereGeld(order.taxAmount)}`}
         </Text>
       )}
 

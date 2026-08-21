@@ -196,7 +196,7 @@ export async function validateSubmission(input: OrderValidationInput): Promise<O
 
   // ── 3. Jede Position einzeln gegen den Katalog ──────────────────────
   for (const item of input.items) {
-    issues.push(...(await pruefePosition(item)));
+    issues.push(...(await pruefePosition(item, istBestellung)));
   }
 
   const ergebnis = baueErgebnis(issues);
@@ -210,8 +210,15 @@ export async function validateSubmission(input: OrderValidationInput): Promise<O
   return ergebnis;
 }
 
-/** Prüft EINE Warenkorbposition gegen Katalog und Druckflächen. */
-async function pruefePosition(item: CartItem): Promise<OrderValidationIssue[]> {
+/**
+ * Prüft EINE Warenkorbposition gegen Katalog und Druckflächen.
+ *
+ * `istBestellung` steuert ausschließlich die Personalisierungspflicht unten:
+ * Eine unverbindliche Anfrage darf noch ohne fertiges Motiv verschickt
+ * werden (der Kunde klärt die Gestaltung ja erst persönlich mit uns), eine
+ * echte Bestellung nicht – siehe Geschäftsregel vom 2026-08-19.
+ */
+async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<OrderValidationIssue[]> {
   const issues: OrderValidationIssue[] = [];
   const itemId = item.id;
   // Für die Anzeige: der Produktname ist der Kundschaft vertraut, die ID nicht.
@@ -293,6 +300,19 @@ async function pruefePosition(item: CartItem): Promise<OrderValidationIssue[]> {
 
   // ── Motive und Texte ──────────────────────────────────────────────
   const elemente = item.elements ?? [];
+  // Geschäftsregel vom 2026-08-19: Wir verkaufen ausschließlich
+  // personalisierte Ware. Farbe, Größe, Menge und die Wahl von DTF oder
+  // Stickerei zählen dabei NICHT als Personalisierung – erst mindestens
+  // ein tatsächliches Logo- oder Textelement macht eine Position zu einer
+  // individuellen Anfertigung. Gilt nur für echte Bestellungen (istBestellung);
+  // eine unverbindliche Anfrage darf die Gestaltung noch offen lassen.
+  if (istBestellung && elemente.length === 0) {
+    issues.push({
+      code: 'kein_element',
+      message: `Für „${name}" fehlt noch ein Logo oder ein Text. Bitte fügen Sie mindestens ein Element hinzu, bevor Sie bestellen.`,
+      itemId,
+    });
+  }
   if (elemente.length > GRENZEN.maxElementeJePosition) {
     issues.push({
       code: 'zu_viele_elemente',

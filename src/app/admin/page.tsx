@@ -105,7 +105,21 @@ export default async function AdminOrdersPage({
                   <td className="whitespace-nowrap px-3 py-2 text-right">
                     {formatiereGeld(order.totalPrice)}
                   </td>
-                  <td className="px-3 py-2">{STATUS_LABELS[order.status] ?? order.status}</td>
+                  <td className="px-3 py-2">
+                    {STATUS_LABELS[order.status] ?? order.status}
+                    {/* Eine stornierte Zeile erscheint in dieser Liste NUR, wenn
+                        eine Rückerstattung noch aussteht (Regel 5,
+                        lib/orders/orderVisibility.ts) – sonst würde sie von der
+                        Sichtbarkeitsregel gar nicht erst ausgeliefert. Ohne
+                        diesen Hinweis liest sich "Storniert" wie "erledigt",
+                        obwohl das Gegenteil der Grund ist, warum die Zeile
+                        überhaupt noch hier steht (Review vom 2026-08-20). */}
+                    {order.status === 'cancelled' && (
+                      <span className="ml-1.5 rounded bg-amber-50 px-1.5 py-0.5 text-xs font-medium text-amber-800">
+                        Rückerstattung offen
+                      </span>
+                    )}
+                  </td>
                   <td className="px-3 py-2 text-gray-500">{PAYMENT_STATUS_LABELS[order.paymentStatus as OrderPaymentStatus] ?? order.paymentStatus}</td>
                 </tr>
               ))}

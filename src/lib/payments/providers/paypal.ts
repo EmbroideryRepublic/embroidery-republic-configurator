@@ -4,8 +4,8 @@
  * ═══════════════════════════════════════════════════════════════════════
  *
  * Die EINZIGE Datei, die die PayPal-API kennt. Erfüllt exakt den Port
- * (`eroeffne`, `leseEreignis`, `verwerfe`) und übersetzt zwischen PayPals
- * Begriffen und unseren – dieselbe Rolle wie stripe.ts für Stripe.
+ * (`eroeffne`, `leseEreignis`, `verwerfe`, `erstatte`) und übersetzt zwischen
+ * PayPals Begriffen und unseren – dieselbe Rolle wie stripe.ts für Stripe.
  *
  * ── Zwei strukturelle Unterschiede zu Stripe ───────────────────────────
  *
@@ -28,6 +28,8 @@
  */
 import {
   SignaturUngueltigFehler,
+  type Erstattungsauftrag,
+  type Erstattungsergebnis,
   type ZahlungsAnbieter,
   type ZahlungsEreignis,
   type Zahlungsauftrag,
@@ -163,6 +165,14 @@ export const paypalAnbieter: ZahlungsAnbieter = {
     if (ereignis.event_type === 'PAYMENT.CAPTURE.DENIED') {
       return ausCapture(ereignis, 'fehlgeschlagen');
     }
+    if (ereignis.event_type === 'PAYMENT.CAPTURE.REFUNDED') {
+      // Reines Bestätigungssignal, kein Auslöser – siehe ZahlungsEreignisArt
+      // ('erstattet') in types.ts und das Stripe-Pendant (ausCharge) in
+      // stripe.ts. Bewusst NICHT über ausCapture() (die für Capture-
+      // Ereignisse gebaut ist): das Resource-Objekt hier ist ein
+      // Refund-Objekt mit eigener Feldbedeutung.
+      return ausErstattung(ereignis);
+    }
 
     // Alles Übrige: nicht relevant.
     return null;
@@ -173,6 +183,44 @@ export const paypalAnbieter: ZahlungsAnbieter = {
     // genehmigte/nicht gecapturte Order verfällt von selbst (~3 Stunden) –
     // Wirft NICHT, wie der Port es zusagt.
     console.info(`[zahlung:paypal] Vorgang ${referenz} nicht aktiv verworfen (verfällt selbstständig).`);
+  },
+
+  /**
+   * `transaktionId` ist hier die Capture-ID (nicht die Order-ID) – genau die
+   * ID, die `ausCapture()` oben als `transaktionId` zurückgibt und die
+   * `paymentService.ts` in `orders.payment_transaction_id` speichert.
+   * PayPals Erstattungs-Endpunkt hängt direkt an der Capture:
+   * `POST /v2/payments/captures/{id}/refund`.
+   *
+   * `PayPal-Request-Id` ist PayPals Idempotenzschlüssel, hier – anders als
+   * bei `eroeffne()` – bei jedem Aufruf für dieselbe Bestellung IDENTISCH
+   * (siehe `Erstattungsauftrag` in types.ts): ein wiederholter Aufruf mit
+   * demselben Schlüssel liefert innerhalb des von PayPal vorgehaltenen
+   * Zeitfensters das Ergebnis der ursprünglichen Erstattung zurück; die
+   * Sicherheit danach trägt eine zweite Ebene (siehe dortiger Kopfkommentar).
+   *
+   * Der Betrag wird explizit mitgegeben (statt PayPal implizit den vollen
+   * Capture-Betrag erstatten zu lassen) – dieselbe Betragsdisziplin wie bei
+   * Stripe: der Aufrufer bleibt maßgeblich, nie der Anbieter.
+   */
+  async erstatte(auftrag: Erstattungsauftrag): Promise<Erstattungsergebnis> {
+    const antwort = await paypalFetch(`/v2/payments/captures/${auftrag.transaktionId}/refund`, {
+      method: 'POST',
+      headers: { 'PayPal-Request-Id': auftrag.idempotenzSchluessel },
+      body: JSON.stringify({
+        amount: {
+          currency_code: auftrag.waehrung,
+          value: (auftrag.betragCent / 100).toFixed(2),
+        },
+      }),
+    });
+
+    if (!antwort.ok) {
+      const fehlertext = await antwort.text().catch(() => '');
+      throw new Error(`PayPal-Erstattung fehlgeschlagen (${antwort.status}): ${fehlertext.slice(0, 500)}`);
+    }
+    const ergebnis = (await antwort.json()) as { id: string };
+    return { erstattungsId: ergebnis.id };
   },
 };
 
@@ -289,6 +337,36 @@ function ausCapture(ereignis: PaypalWebhookEreignis, art: ZahlungsEreignis['art'
     bestellId,
     referenz: orderId,
     art,
+    betragCent: Math.round(betragEuro * 100),
+    waehrung: (ereignis.resource.amount?.currency_code ?? 'EUR').toUpperCase(),
+    transaktionId: ereignis.resource.id,
+    grund: `PayPal-Ereignis: ${ereignis.event_type}.`,
+  };
+}
+
+/**
+ * Baut ein ZahlungsEreignis (`art: 'erstattet'`) aus einem Refund-Webhook-
+ * Ereignis. `custom_id` wird von PayPal von der Capture auf den Refund
+ * kopiert – dieselbe Zuordnung wie bei `ausCapture()`, aber ein eigenständiges
+ * Resource-Objekt (ein Refund, keine Capture), deshalb eine eigene Funktion
+ * statt Wiederverwendung von `ausCapture()`.
+ */
+function ausErstattung(ereignis: PaypalWebhookEreignis): ZahlungsEreignis | null {
+  const bestellId = ereignis.resource.custom_id ?? '';
+  if (!bestellId) {
+    console.warn(`[zahlung:paypal] Erstattungsereignis ${ereignis.id} ohne custom_id (bestellId) – ignoriert.`);
+    return null;
+  }
+  const betragEuro = Number(ereignis.resource.amount?.value ?? '0');
+
+  return {
+    ereignisId: ereignis.id,
+    bestellId,
+    referenz: ereignis.resource.id,
+    art: 'erstattet',
+    // Rein informativ, siehe Kopfkommentar von ausCharge() in stripe.ts:
+    // maßgeblich für unseren Datensatz bleibt, was WIR bei erstatte() selbst
+    // erhalten haben.
     betragCent: Math.round(betragEuro * 100),
     waehrung: (ereignis.resource.amount?.currency_code ?? 'EUR').toUpperCase(),
     transaktionId: ereignis.resource.id,

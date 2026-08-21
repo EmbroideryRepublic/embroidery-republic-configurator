@@ -44,9 +44,26 @@ export const COMPANY = {
  * Kleinunternehmer nach § 19 UStG: keine Umsatzsteuer auf eigene Umsätze.
  * Einzelner Schalter statt Einstellungstabelle – diese Website betreibt
  * genau eine Rechtsperson (siehe COMPANY oben), keine Mandantenfähigkeit
- * nötig. Wirkt auf die Steuerzeile in Rechnung/Rechnungs-E-Mail (siehe
- * lib/orders/orderCompletion.ts, lib/invoicing/providers/internRechnungPdf.tsx,
- * lib/email/templates/InvoiceEmail.tsx).
+ * nötig.
+ *
+ * Wirkt auf JEDE Stelle, die einen Steuersatz/-anteil AUSWEIST oder
+ * SPEICHERT (nicht auf die Katalog-Preisbildung, siehe unten): Bestellstufe
+ * (lib/pricing/stages/orderStage.ts, damit orders.tax_amount), serverseitige
+ * Steuersatzermittlung (lib/pricing/serverPricing.ts, damit
+ * orders.tax_rate), Checkout-Anzeige und Produktseite (CartDrawer.tsx,
+ * app/produkt/[slug]/page.tsx), Bestellbestätigung
+ * (OrderConfirmationEmail.tsx), Admin-Detailseite, Rechnung/Rechnungs-E-Mail
+ * (orderCompletion.ts, lib/invoicing/providers/internRechnungPdf.tsx,
+ * InvoiceEmail.tsx) sowie § 4 Abs. 2 AGB.
+ *
+ * Berührt NICHT: config/pricing/steuer.ts (steuersatzFuer/nettoZuBrutto/
+ * bruttoZuNetto) selbst, und damit auch NICHT die Katalog-Preisbildung in
+ * config/pricing/selbstkosten.ts. Der 19-%-Regelsatz bleibt dort bewusst die
+ * Rechengrundlage für die BRUTTO-Verkaufspreise – dieser Schalter ändert
+ * ausschließlich, was von einem bereits feststehenden Bruttopreis als
+ * Steueranteil ausgewiesen/gespeichert wird, NIEMALS den Verkaufspreis
+ * selbst (Entscheidung 2026-08-21: bestehende Endpreise bleiben unverändert,
+ * nur die – zuvor widersprüchliche – steuerliche Darstellung wird korrigiert).
  */
 export const IST_KLEINUNTERNEHMER = true as const;
 

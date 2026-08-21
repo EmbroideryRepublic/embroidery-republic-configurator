@@ -9,10 +9,12 @@
  * statt sich über Server Actions, Seiten und Jobs zu verteilen.
  *
  * Hier gehören künftig hinein:
- *  - Kulanzstornierung durch den Betreiber (cancellation_source 'admin'),
  *  - Freigabe der Lagerreservierung beim Stornieren, sobald es eine
- *    Bestandsführung gibt,
- *  - weitere Statusübergänge (in Produktion, versendet, abgeschlossen).
+ *    Bestandsführung gibt.
+ *
+ * (Kulanzstornierung durch den Betreiber, cancellation_source 'admin', sowie
+ * die übrigen Statusübergänge sind bereits vollständig umgesetzt – siehe
+ * setzeBestellstatus() unten und AdminCancelControl.tsx für den UI-Zugang.)
  *
  * ── Führende Quelle ist IMMER die Datenbank ────────────────────────────
  * Externe Dienste (Resend) sind reine Versandmechanismen. Schlägt dort
@@ -30,11 +32,32 @@ import { imAdminSichtbar } from '@/lib/orders/orderVisibility';
 import { sendOrderShippedEmail, sendOrderInProductionEmail, sendOrderCompletedEmail } from '@/lib/email/orderEmails';
 
 export type StornoErgebnis =
-  | { ok: true; bereitsStorniert: boolean }
+  | {
+      ok: true;
+      bereitsStorniert: boolean;
+      /**
+       * Wird `true` genau bei einer FRISCHEN Stornierung einer bezahlten
+       * Bestellung – der Aufrufer (Server Action) soll in diesem Fall direkt
+       * im Anschluss `stelleErstattungSicher()` aus `refundService.ts`
+       * anstoßen. Bewusst NICHT von hier aus aufgerufen: `refundService.ts`
+       * importiert seinerseits aus dieser Datei (`protokolliereBestellereignis`)
+       * – ein Aufruf in umgekehrter Richtung wäre ein Zirkelimport. Dieselbe
+       * Schichtung wie zwischen orderService.ts und paymentService.ts.
+       */
+      erstattungAusstehend: boolean;
+    }
   | { ok: false; grund: 'nicht-gefunden' | 'frist-abgelaufen' | 'keine-bestellung' | 'nicht-stornierbar' | 'fehler' };
 
 export type StatusErgebnis =
-  | { ok: true; von: OrderStatus; nach: OrderStatus; bereitsErreicht: boolean }
+  | {
+      ok: true;
+      von: OrderStatus;
+      nach: OrderStatus;
+      bereitsErreicht: boolean;
+      /** Siehe StornoErgebnis.erstattungAusstehend – hier für die
+       *  Kulanzstornierung durch den Betreiber. */
+      erstattungAusstehend: boolean;
+    }
   | {
       ok: false;
       grund: 'nicht-gefunden' | 'uebergang-unzulaessig' | 'noch-nicht-freigegeben' | 'fehler';
@@ -88,8 +111,11 @@ export async function setzeBestellstatus(
 
   const von = bestellung.status;
 
-  // Erneuter Klick auf denselben Zielstatus ist kein Fehler.
-  if (von === nach) return { ok: true, von, nach, bereitsErreicht: true };
+  // Erneuter Klick auf denselben Zielstatus ist kein Fehler. Eine bereits
+  // storniert gewesene Bestellung hat ihren Erstattungsanstoß beim ERSTEN
+  // Übergang schon bekommen (siehe unten) – kein zweiter hier nötig, ein
+  // hängengebliebener Versuch hat im Admin-Bereich seinen eigenen Retry.
+  if (von === nach) return { ok: true, von, nach, bereitsErreicht: true, erstattungAusstehend: false };
 
   if (!istUebergangErlaubt(von, nach)) {
     return { ok: false, grund: 'uebergang-unzulaessig', aktuell: von };
@@ -110,6 +136,12 @@ export async function setzeBestellstatus(
         status: von,
         orderType: bestellung.order_type,
         paymentStatus: bestellung.payment_status ?? 'not_required',
+        // `von` ist hier NIE 'cancelled' (dieser Zweig läuft nur, wenn
+        // `nach !== 'cancelled'`, und `istUebergangErlaubt('cancelled', …)`
+        // ist für JEDEN Zielstatus false – ein Endzustand hat keine
+        // ausgehenden Übergänge, siehe config/orderStatus.ts). Der Wert
+        // fließt deshalb nie in eine Entscheidung ein.
+        refundStatus: 'not_applicable',
       },
       jetzt
     );
@@ -122,6 +154,12 @@ export async function setzeBestellstatus(
   const patch: Record<string, unknown> = { status: nach };
   if (feld) patch[feld] = jetzt.toISOString();
   if (optionen.trackingNummer?.trim()) patch.tracking_number = optionen.trackingNummer.trim();
+  // Kulanzstornierung einer BEREITS bezahlten Bestellung: eine Rückerstattung
+  // wird fällig. Siehe supabase/migrations/0029_rueckerstattung.sql und
+  // refundService.ts – tatsächlich ausgelöst wird sie vom Aufrufer dieser
+  // Funktion (StornoErgebnis.erstattungAusstehend, siehe oben).
+  const erstattungAusstehend = nach === 'cancelled' && bestellung.payment_status === 'paid';
+  if (erstattungAusstehend) patch.refund_status = 'required';
   if (nach === 'cancelled') {
     // Bislang setzte NUR die Kunden-Selbststornierung (storniereBestellungDurchKunden)
     // cancelled_at/cancellation_source – die Admin-Kulanzstornierung hier tat
@@ -164,7 +202,17 @@ export async function setzeBestellstatus(
       fromStatus: von,
       toStatus: nach,
       reason: optionen.grund ?? `Statuswechsel im Adminbereich: ${von} → ${nach}.`,
-      detail: optionen.trackingNummer ? { trackingNummer: optionen.trackingNummer } : undefined,
+      // Bei einer Stornierung wird `quelle: 'admin'` gespiegelt – dasselbe
+      // Muster wie beim 'cancelled'-Ereignis der Kunden-Selbststornierung
+      // (storniereBestellungDurchKunden, detail: { quelle: 'customer', ... }).
+      // Ohne dies stünde `cancellation_source='admin'` zwar auf der Bestellung,
+      // aber nicht in der order_events-Historie.
+      detail:
+        nach === 'cancelled'
+          ? { quelle: 'admin', trackingNummer: optionen.trackingNummer }
+          : optionen.trackingNummer
+            ? { trackingNummer: optionen.trackingNummer }
+            : undefined,
     },
     db
   );
@@ -255,6 +303,7 @@ export async function setzeBestellstatus(
         orderNumber: buildOrderNumber(orderId),
         empfaenger: bestellung.email,
         storniertAm: jetzt.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' }),
+        erstattungFaellig: erstattungAusstehend,
       });
       await protokolliereBestellereignis(
         {
@@ -270,7 +319,7 @@ export async function setzeBestellstatus(
     }
   }
 
-  return { ok: true, von, nach, bereitsErreicht: false };
+  return { ok: true, von, nach, bereitsErreicht: false, erstattungAusstehend };
 }
 
 /**
@@ -380,7 +429,7 @@ export async function storniereBestellungDurchKunden(
 
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('id, email, created_at, status, order_type, internal_notification_email_id, accounting_ready_at')
+    .select('id, email, created_at, status, order_type, internal_notification_email_id, accounting_ready_at, payment_status')
     .eq('id', orderId)
     .maybeSingle<{
       id: string;
@@ -390,6 +439,7 @@ export async function storniereBestellungDurchKunden(
       order_type: string;
       internal_notification_email_id: string | null;
       accounting_ready_at: string | null;
+      payment_status: string | null;
     }>();
 
   if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
@@ -397,8 +447,10 @@ export async function storniereBestellungDurchKunden(
   // Anfragen sind keine Bestellungen – sie haben keine Stornofrist.
   if (bestellung.order_type !== 'order') return { ok: false, grund: 'keine-bestellung' };
 
-  // Erneuter Klick auf denselben Link darf nicht als Fehler wirken.
-  if (bestellung.status === 'cancelled') return { ok: true, bereitsStorniert: true };
+  // Erneuter Klick auf denselben Link darf nicht als Fehler wirken. Der
+  // Erstattungsanstoß erfolgte (falls nötig) bereits beim ERSTEN Aufruf –
+  // ein hängengebliebener Versuch hat im Admin-Bereich seinen eigenen Retry.
+  if (bestellung.status === 'cancelled') return { ok: true, bereitsStorniert: true, erstattungAusstehend: false };
 
   // Dieselbe Zustandsmaschine wie beim Admin-Statuswechsel (setzeBestellstatus):
   // eine bereits abgeschlossene Bestellung (Endzustand `completed`) darf auch
@@ -424,6 +476,11 @@ export async function storniereBestellungDurchKunden(
       // ausführlichen Kommentar in setzeBestellstatus() oben. Nur relevant,
       // wenn die Bestellung überhaupt schon buchhaltungsbereit war.
       ...(bestellung.accounting_ready_at ? { accounting_ready_at: jetzt.toISOString() } : {}),
+      // Eine Rückerstattung wird fällig, wenn die Bestellung bereits bezahlt
+      // war – siehe supabase/migrations/0029_rueckerstattung.sql. Tatsächlich
+      // ausgelöst wird sie vom Aufrufer (StornoErgebnis.erstattungAusstehend
+      // unten), nicht hier – siehe Kopfkommentar des Rückgabetyps.
+      ...(bestellung.payment_status === 'paid' ? { refund_status: 'required' } : {}),
     })
     .eq('id', orderId)
     // Schutz gegen zwei gleichzeitige Klicks: Nur wer den Datensatz noch
@@ -455,7 +512,9 @@ export async function storniereBestellungDurchKunden(
       .eq('id', orderId)
       .maybeSingle<{ status: OrderStatus }>();
     if (aktuell?.status === 'cancelled') {
-      return { ok: true, bereitsStorniert: true };
+      // Eine parallele Anfrage hat den Storno (und damit ggf. auch den
+      // Erstattungsanstoß) bereits ausgelöst – kein zweiter hier nötig.
+      return { ok: true, bereitsStorniert: true, erstattungAusstehend: false };
     }
     return { ok: false, grund: 'nicht-stornierbar' };
   }
@@ -509,6 +568,7 @@ export async function storniereBestellungDurchKunden(
         orderNumber: buildOrderNumber(orderId),
         empfaenger: bestellung.email,
         storniertAm: jetzt.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' }),
+        erstattungFaellig: bestellung.payment_status === 'paid',
       });
       await protokolliereBestellereignis(
         {
@@ -539,5 +599,5 @@ export async function storniereBestellungDurchKunden(
   // eine Bestandsführung gibt. Bewusst kein leerer Platzhalter-Aufruf –
   // eine Funktion, die nichts tut, sieht nach Funktionalität aus.
 
-  return { ok: true, bereitsStorniert: false };
+  return { ok: true, bereitsStorniert: false, erstattungAusstehend: bestellung.payment_status === 'paid' };
 }

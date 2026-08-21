@@ -88,12 +88,23 @@ export interface Zahlungseroeffnung {
 /**
  * Was mit einer Zahlung geschehen ist – anbieterunabhängig.
  *
- * Bewusst nur VIER Ausgänge. Anbieter unterscheiden weit mehr Zustände,
- * aber für unseren Ablauf ist allein entscheidend, ob Geld geflossen ist
- * und ob ein weiterer Versuch sinnvoll ist. Feinheiten gehören als Grund in
- * die Bestell-Historie, nicht in den Zustand.
+ * Bewusst nur FÜNF Ausgänge. Anbieter unterscheiden weit mehr Zustände, aber
+ * für unseren Ablauf ist allein entscheidend, ob Geld geflossen ist und ob
+ * ein weiterer Versuch sinnvoll ist. Feinheiten gehören als Grund in die
+ * Bestell-Historie, nicht in den Zustand.
+ *
+ * `erstattet` kam mit dem Rückerstattungs-Workflow dazu (siehe
+ * `supabase/migrations/0029_rueckerstattung.sql`) und ist ein reines
+ * BESTÄTIGUNGSSIGNAL, kein steuerndes Ereignis: Die eigentliche Erstattung
+ * läuft über unseren EIGENEN `erstatte()`-Aufruf (refundService.ts) – dieses
+ * Ereignis bestätigt nur zusätzlich, was der Anbieter seinerseits meldet,
+ * als zweite, unabhängige Absicherung. Es darf NIE `payment_status`
+ * berühren (siehe Audit-Punkt Z7, docs/zahlungs-audit.md) – nur
+ * `refund_status`, und auch das ausschließlich für Bestellungen, für die wir
+ * selbst bereits eine Rückerstattung erwarten (siehe
+ * `bestaetigeErstattungViaWebhook` in refundService.ts).
  */
-export type ZahlungsEreignisArt = 'bestaetigt' | 'fehlgeschlagen' | 'abgebrochen' | 'abgelaufen';
+export type ZahlungsEreignisArt = 'bestaetigt' | 'fehlgeschlagen' | 'abgebrochen' | 'abgelaufen' | 'erstattet';
 
 export interface ZahlungsEreignis {
   /** Kennung des Ereignisses beim Anbieter – für die Nachvollziehbarkeit. */
@@ -120,6 +131,41 @@ export interface ZahlungsEreignis {
   grund?: string;
 }
 
+/** Was der Anbieter braucht, um eine bereits bestätigte Zahlung zu erstatten. */
+export interface Erstattungsauftrag {
+  /** Buchungsreferenz aus `orders.payment_transaction_id` – Stripe
+   *  PaymentIntent-ID bzw. PayPal Capture-ID, wird bei der Bestätigung der
+   *  ursprünglichen Zahlung gesetzt (siehe `paymentService.ts`). */
+  transaktionId: string;
+  /**
+   * Zu erstattender Betrag in ganzen Cent.
+   *
+   * Bei uns IMMER `orders.total_price` – es gibt keine Teilerstattung, siehe
+   * Kopfkommentar von `supabase/migrations/0029_rueckerstattung.sql`.
+   */
+  betragCent: number;
+  waehrung: Waehrung;
+  /**
+   * Bewusst STABIL: anders als `Zahlungsauftrag.idempotenzSchluessel` (der
+   * bei jedem Versuch neu ist) bleibt dieser Schlüssel für ein und dieselbe
+   * Bestellung bei JEDEM Aufruf – auch nach einem Absturz und Retry –
+   * unverändert (`refund-${orderId}`). Innerhalb des vom Anbieter vorgehaltenen
+   * Zeitfensters (Stripe/PayPal: rund 24 Stunden) liefert ein wiederholter
+   * Aufruf dadurch das Ergebnis der ursprünglichen Erstattung zurück, statt
+   * ein zweites Mal echtes Geld zu bewegen. Danach greift als zweite,
+   * unabhängige Sicherheitsebene, dass keiner der beiden Anbieter eine
+   * bereits vollständig erstattete Charge/Capture ein zweites Mal erstattet
+   * (siehe Kopfkommentar von supabase/migrations/0029_rueckerstattung.sql).
+   */
+  idempotenzSchluessel: string;
+}
+
+/** Was nach einer erfolgreichen Erstattung zurückkommt. */
+export interface Erstattungsergebnis {
+  /** Erstattungs-ID beim Anbieter → `orders.refund_reference`. */
+  erstattungsId: string;
+}
+
 /**
  * Wird von `leseEreignis` geworfen, wenn die Echtheit einer eingehenden
  * Meldung NICHT bestätigt werden kann (Signatur ungültig, fehlend, oder der
@@ -143,11 +189,11 @@ export class SignaturUngueltigFehler extends Error {
 /**
  * DER PORT.
  *
- * Bewusst drei Methoden. `ladeStand()` und `erstatte()` aus dem ersten
- * Entwurf sind entfallen: Ersteres war durch nichts belegt (Anbieter stellen
- * Ereignisse tagelang erneut zu), Letzteres wird erst bei den Erstattungen
- * gebraucht und kommt dann dazu. Ein Port wächst mit dem Bedarf, nicht auf
- * Vorrat.
+ * Bewusst vier Methoden. `ladeStand()` aus dem ersten Entwurf ist entfallen:
+ * durch nichts belegt (Anbieter stellen Ereignisse tagelang erneut zu).
+ * `erstatte()` dagegen war zunächst zurückgestellt und ist jetzt mit dem
+ * Rückerstattungs-Workflow (Storno bezahlter Bestellungen) dazugekommen –
+ * ein Port wächst mit dem Bedarf, nicht auf Vorrat.
  */
 export interface ZahlungsAnbieter {
   readonly id: ZahlungsAnbieterId;
@@ -208,4 +254,17 @@ export interface ZahlungsAnbieter {
    * Wirft NICHT – ein bereits abgelaufener Vorgang ist kein Fehler.
    */
   verwerfe(referenz: string): Promise<void>;
+
+  /**
+   * Erstattet eine bereits bestätigte Zahlung vollständig.
+   *
+   * Wirft bei technischem Fehlschlag (Anbieter lehnt ab, Netzwerkfehler) –
+   * der Aufrufer fängt das ab und markiert die Erstattung als 'failed'
+   * (siehe `refundService.ts`). Ein Absturz ZWISCHEN einer erfolgreichen
+   * Anbieter-Antwort und unserer Persistierung ist durch den stabilen
+   * `idempotenzSchluessel` in `Erstattungsauftrag` sicher: Der nächste
+   * Aufruf mit demselben Schlüssel liefert das Ergebnis des ursprünglichen
+   * Aufrufs zurück, statt ein zweites Mal echtes Geld zu bewegen.
+   */
+  erstatte(auftrag: Erstattungsauftrag): Promise<Erstattungsergebnis>;
 }

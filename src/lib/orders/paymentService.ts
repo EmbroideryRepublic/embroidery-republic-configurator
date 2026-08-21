@@ -36,6 +36,7 @@ import type { ZahlungsAnbieterId, ZahlungsEreignis } from '@/lib/payments/types'
 import { formatiereGeld } from '@/lib/format';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { protokolliereBestellereignis } from './orderService';
+import { bestaetigeErstattungViaWebhook } from './refundService';
 import { ladeBestellungFuerAbschluss, schliesseBestellungAb } from './orderCompletion';
 import { sendEmail } from '@/lib/email/sendEmail';
 import { PaymentSucceededEmail } from '@/lib/email/templates/PaymentSucceededEmail';
@@ -73,6 +74,13 @@ const EREIGNIS_PROTOKOLLNAME: Record<ZahlungsEreignis['art'], string> = {
   fehlgeschlagen: 'payment_failed',
   abgebrochen: 'payment_abandoned',
   abgelaufen: 'payment_expired',
+  // Nur der Vollständigkeit halber hier eingetragen (der Compiler verlangt
+  // alle ZahlungsEreignisArt-Werte) – tatsächlich verwendet wird dieser
+  // Name NICHT über diese Tabelle, sondern direkt in
+  // bestaetigeErstattungViaWebhook() (refundService.ts), da 'erstattet' in
+  // verarbeiteZahlungsEreignis() unten VOR der EREIGNIS_PROTOKOLLNAME-Nutzung
+  // abzweigt.
+  erstattet: 'refund_confirmed_via_webhook',
 };
 
 export type ZahlungStartErgebnis =
@@ -151,7 +159,25 @@ export async function starteZahlung({
     return { ok: false, meldung: pruefung.meldung, grund: pruefung.grund };
   }
 
-  const anbieter = waehleZahlungsAnbieter(anbieterId ?? (bestellung.payment_provider as ZahlungsAnbieterId | undefined));
+  let anbieter;
+  try {
+    anbieter = waehleZahlungsAnbieter(anbieterId ?? (bestellung.payment_provider as ZahlungsAnbieterId | undefined));
+  } catch (err) {
+    // Anders als eroeffne()/verwerfe() unten wirft waehleZahlungsAnbieter()
+    // synchron bei fehlender/fehlerhafter Konfiguration (z.B. STRIPE_SECRET_KEY
+    // nicht gesetzt) – ohne dieses try/catch propagierte das bis zum äußeren
+    // Fehlerpfad in orders.ts, und der Kunde sähe nur die generische Meldung
+    // „Da ist etwas schiefgelaufen", ohne dass der eigentliche Grund
+    // protokolliert wäre (Review vom 2026-08-20).
+    const text = err instanceof Error ? err.message : String(err);
+    console.error(`[zahlung] Anbieterauswahl für ${orderId} fehlgeschlagen:`, err);
+    await protokolliereBestellereignis({ orderId, eventType: 'payment_blocked', reason: text });
+    return {
+      ok: false,
+      meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es in ein paar Minuten erneut.',
+      grund: text,
+    };
+  }
 
   // ── Wiederaufnahme: den alten Vorgang zuerst entwerten ──────────────
   // Ohne diesen Schritt bliebe ein früher geöffneter Bezahlvorgang in einem
@@ -237,7 +263,11 @@ export async function starteZahlung({
 }
 
 export type EreignisErgebnis =
-  | { ok: true; wirkung: 'bestaetigt' | 'fehlgeschlagen'; bereitsVerarbeitet: boolean }
+  // 'erstattet' ist das reine Webhook-Bestätigungssignal einer
+  // Rückerstattung (siehe ZahlungsEreignisArt in lib/payments/types.ts) –
+  // eigener Ausgang, damit er nicht mit 'bestaetigt' (Zahlungseingang)
+  // verwechselt wird.
+  | { ok: true; wirkung: 'bestaetigt' | 'fehlgeschlagen' | 'erstattet'; bereitsVerarbeitet: boolean }
   // `wiederholen` trennt zwei grundverschiedene Fehlschläge:
   //   false → FACHLICH abgelehnt (Betragsabweichung, unbekannte Bestellung).
   //           Deterministisch – eine erneute Zustellung ergäbe dasselbe.
@@ -273,6 +303,17 @@ export async function verarbeiteZahlungsEreignis(ereignis: ZahlungsEreignis): Pr
     // ist entweder ein fremdes/fehlgeleitetes Ereignis oder eine falsche
     // Endpunktkonfiguration; beides löst sich nicht durch Wiederholung.
     return { ok: false, wiederholen: false, grund: `Bestellung ${ereignis.bestellId} nicht gefunden.` };
+  }
+
+  // ── Rückerstattungs-Bestätigung: eigener, früher Zweig ───────────────
+  // Bewusst VOR dem Betragsabgleich unten (der ist 'bestaetigt'-spezifisch)
+  // und VOR der bestaetigt/fehlgeschlagen-Weiche am Ende dieser Funktion –
+  // dort würde 'erstattet' sonst fälschlich als "fehlgeschlagen" behandelt.
+  // Siehe bestaetigeErstattungViaWebhook() in refundService.ts: berührt
+  // NIEMALS payment_status (Audit Z7), nur refund_status, und nur bestätigend
+  // für eine Bestellung, die WIR bereits zur Erstattung vorgemerkt haben.
+  if (ereignis.art === 'erstattet') {
+    return bestaetigeErstattungViaWebhook(db, ereignis);
   }
 
   // ── Betragsabgleich: melden ist nicht bestimmen ─────────────────────

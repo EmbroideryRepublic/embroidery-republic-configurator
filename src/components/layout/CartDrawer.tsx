@@ -8,11 +8,12 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getProduct } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
-import { submitOrder, submitInquiry, istPaypalVerfuegbar } from '@/lib/actions/orders';
+import { submitOrder, submitInquiry, istPaypalVerfuegbar, istKarteVerfuegbar } from '@/lib/actions/orders';
 import { ladeCheckoutVorbelegung } from '@/lib/actions/konto';
 import { useSubmitGuard } from '@/lib/hooks/useSubmitGuard';
 import { SHIPPING_RATES, calculateShipping, landCodeForCountry } from '@/config/shipping';
 import { steuersatzFuer, steueranteil, STANDARDLAND } from '@/config/pricing/steuer';
+import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { istPlausibleEmail, istGueltigePlz } from '@/lib/orders/orderValidation';
 import { FELD_KLASSE } from '@/lib/ui/feldKlasse';
 import { formatiereFarbname } from '@/lib/products/farben';
@@ -127,9 +128,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
   function handleEditItem(item: CartItem) {
     const bestehendeElemente = useConfiguratorStore.getState().elements;
     if (bestehendeElemente.length > 0) {
-      const bestaetigt = window.confirm(
-        'Im Konfigurator liegt bereits ein ungespeichertes Design vor. Beim Laden dieser Warenkorb-Position geht es verloren. Fortfahren?'
-      );
+      const bestaetigt = window.confirm(t('cart_edit_overwrite_confirm'));
       if (!bestaetigt) return;
     }
     loadCartItemForEditing({
@@ -164,7 +163,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
               <button
                 type="button"
                 onClick={() => setStep('cart')}
-                aria-label="Zurück"
+                aria-label={t('common_back')}
                 disabled={step === 'checkout' && checkoutSubmitting}
                 className="rounded-md p-0.5 hover:bg-cream disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
               >
@@ -227,7 +226,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                       <li key={item.id} className="rounded-lg border border-brand/[0.08] p-3">
                         <div className="flex items-start justify-between gap-2">
                           <div>
-                            <p className="text-sm font-medium text-brand">{product?.name ?? 'Produkt'}</p>
+                            <p className="text-sm font-medium text-brand">{product?.name ?? t('konfig_product')}</p>
                             <p className="text-xs text-brand/60">
                               {color ? formatiereFarbname(color.name) : '–'} ·{' '}
                               {item.printMethod === 'embroidery' ? t('method_embroidery') : t('method_dtf')}
@@ -367,10 +366,11 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   const [paymentMethod, setPaymentMethod] = useState<OrderPaymentMethod>('invoice');
   // Standardmäßig verborgen (fail-safe), bis der Server bestätigt, dass
-  // PayPal produktiv einsatzbereit ist (istPaypalVerfuegbar spiegelt
-  // payments/registry.ts) – niemals eine Sandbox-Zahlung anbieten, nur weil
-  // die Prüfung noch nicht zurück ist.
+  // PayPal/Stripe produktiv einsatzbereit sind (istPaypalVerfuegbar/
+  // istKarteVerfuegbar spiegeln payments/registry.ts) – niemals eine
+  // Sandbox-Zahlung anbieten, nur weil die Prüfung noch nicht zurück ist.
   const [zahlungsoptionVerfuegbar, setZahlungsoptionVerfuegbar] = useState(false);
+  const [karteVerfuegbar, setKarteVerfuegbar] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   // Mehrfachklick, Zeitüberschreitung und Verbindungsabbruch liegen gebündelt
   // im Hook (lib/hooks/useSubmitGuard.ts) – nicht in jedem Formular erneut.
@@ -452,13 +452,16 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
     };
   }, []);
 
-  // Ob die PayPal-Kachel angezeigt werden darf – siehe Kommentar oben am
-  // State für diese Zahlungsoption. Läuft einmal beim Öffnen des Formulars,
-  // exakt wie die Checkout-Vorbelegung oben.
+  // Ob die PayPal-/Karten-Kachel angezeigt werden darf – siehe Kommentar oben
+  // an den States für diese Zahlungsoptionen. Läuft einmal beim Öffnen des
+  // Formulars, exakt wie die Checkout-Vorbelegung oben.
   useEffect(() => {
     let abgebrochen = false;
     istPaypalVerfuegbar().then((verfuegbar) => {
       if (!abgebrochen) setZahlungsoptionVerfuegbar(verfuegbar);
+    });
+    istKarteVerfuegbar().then((verfuegbar) => {
+      if (!abgebrochen) setKarteVerfuegbar(verfuegbar);
     });
     return () => {
       abgebrochen = true;
@@ -471,14 +474,15 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
   const grandTotal = total + (shipping?.cost ?? 0);
 
   // Enthaltene Umsatzsteuer – rein zur ANZEIGE, dieselbe Auflösung
-  // (Land → Code → Satz) wie serverseitig in orderStage.ts/serverPricing.ts.
-  // Da die Preise brutto sind (pricesIncludeTax), wird sie nur ausgewiesen,
-  // nicht aufgeschlagen.
+  // (Land → Code → Satz) wie serverseitig in orderStage.ts/serverPricing.ts,
+  // inklusive derselben Kleinunternehmer-Fallunterscheidung (§ 19 UStG) – der
+  // Bruttopreis (grandTotal oben) ist davon komplett unberührt, es ändert
+  // sich nur der ausgewiesene Steueranteil.
   const landCode = landCodeForCountry(form.country) ?? STANDARDLAND;
-  const taxRate = steuersatzFuer(landCode).satz;
+  const taxRate = IST_KLEINUNTERNEHMER ? 0 : steuersatzFuer(landCode).satz;
   // Zentrale Funktion statt eigener Inline-Formel (config/pricing/steuer.ts) –
   // dieselbe Rundung wie überall sonst im Projekt.
-  const taxAmount = steueranteil(grandTotal, landCode);
+  const taxAmount = IST_KLEINUNTERNEHMER ? 0 : steueranteil(grandTotal, landCode);
 
   const isValid =
     form.firstName.trim() &&
@@ -632,6 +636,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
           <div className="grid grid-cols-3 gap-1.5">
             {(['invoice', 'card', 'paypal'] as const)
               .filter((methode) => methode !== 'paypal' || zahlungsoptionVerfuegbar)
+              .filter((methode) => methode !== 'card' || karteVerfuegbar)
               .map((methode) => {
               const Icon = methode === 'invoice' ? Receipt : methode === 'card' ? CreditCard : Wallet;
               const ausgewaehlt = paymentMethod === methode;
@@ -712,7 +717,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
               verändert die Summe nicht – exakt dieselbe Semantik wie
               orderStage.ts. Pflicht gegenüber Verbrauchern (Preisangabenverordnung). */}
           <div className="mt-1 flex items-center justify-between text-xs text-brand/60">
-            <span>{t('checkout_tax_line', { rate: taxRate })}</span>
+            <span>{IST_KLEINUNTERNEHMER ? t('checkout_tax_line_kleinunternehmer') : t('checkout_tax_line', { rate: taxRate })}</span>
             <span>{formatPrice(taxAmount)}</span>
           </div>
           <div className="mt-1.5 flex items-center justify-between border-t border-gold/15 pt-1.5 text-base font-semibold text-brand">
@@ -917,7 +922,9 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
                 <span>{formatPrice(total)}</span>
               </div>
               <p className="mt-0.5 text-[11px] text-brand/40">
-                {t('checkout_tax_line', { rate: steuersatzFuer(STANDARDLAND).satz })}
+                {IST_KLEINUNTERNEHMER
+                  ? t('checkout_tax_line_kleinunternehmer')
+                  : t('checkout_tax_line', { rate: steuersatzFuer(STANDARDLAND).satz })}
               </p>
             </div>
           )}

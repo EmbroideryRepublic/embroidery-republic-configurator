@@ -16,6 +16,7 @@
 import { notFound } from 'next/navigation';
 import { BadgeCheck, PackageCheck, Truck } from 'lucide-react';
 import { steuersatzFuer } from '@/config/pricing/steuer';
+import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
@@ -241,8 +242,8 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
                 <WaehrungsPreis betragInEur={produkt.basePrice} />
               </p>
               <p className="mt-1 text-xs text-brand/50">
-                inkl. {steuersatzFuer().satz} % MwSt. · pro Stück zzgl. Veredelung · ohne Mindestmenge ·
-                Staffelpreise ab 5 Stück
+                {IST_KLEINUNTERNEHMER ? 'Kein Steuerausweis (§ 19 UStG)' : `inkl. ${steuersatzFuer().satz} % MwSt.`} ·
+                pro Stück zzgl. Veredelung · ohne Mindestmenge · Staffelpreise ab 5 Stück
               </p>
               <KonfiguratorCta
                 produktId={produkt.id}

@@ -23,6 +23,8 @@ import { meldeAbgefangen } from '@/config/testmodus';
 import { formatiereGeld } from '@/lib/format';
 import {
   SignaturUngueltigFehler,
+  type Erstattungsauftrag,
+  type Erstattungsergebnis,
   type ZahlungsAnbieter,
   type ZahlungsEreignis,
   type ZahlungsEreignisArt,
@@ -33,11 +35,15 @@ import {
 /** Vorgänge dieses Laufs – nur zur Plausibilitätsprüfung beim Verwerfen. */
 const offeneVorgaenge = new Map<string, { bestellId: string; betragCent: number }>();
 
+/** Erstattungen dieses Laufs, nach Idempotenzschlüssel – emuliert, dass ein
+ *  wiederholter Aufruf mit demselben Schlüssel dasselbe Ergebnis liefert. */
+const erstattungen = new Map<string, Erstattungsergebnis>();
+
 /**
  * Erlaubte Ereignisarten. Wird beim Einlesen geprüft, damit ein Tippfehler
  * im Testaufruf nicht als gültiges Ereignis durchgeht.
  */
-const ARTEN: readonly ZahlungsEreignisArt[] = ['bestaetigt', 'fehlgeschlagen', 'abgebrochen', 'abgelaufen'];
+const ARTEN: readonly ZahlungsEreignisArt[] = ['bestaetigt', 'fehlgeschlagen', 'abgebrochen', 'abgelaufen', 'erstattet'];
 
 export const testAnbieter: ZahlungsAnbieter = {
   id: 'test',
@@ -116,6 +122,26 @@ export const testAnbieter: ZahlungsAnbieter = {
       meldeAbgefangen('Zahlung', `Vorgang ${referenz} verworfen`);
     }
   },
+
+  /**
+   * Der Idempotenzschlüssel wird genauso ernst genommen wie bei `eroeffne()`:
+   * ein wiederholter Aufruf mit demselben Schlüssel liefert dieselbe
+   * Erstattungs-ID zurück, statt eine zweite synthetische Erstattung
+   * anzulegen – exakt das Verhalten, das der Retry-nach-Absturz-Fall von
+   * Stripe/PayPal erwartet (siehe types.ts).
+   */
+  async erstatte(auftrag: Erstattungsauftrag): Promise<Erstattungsergebnis> {
+    const bestehend = erstattungen.get(auftrag.idempotenzSchluessel);
+    if (bestehend) return bestehend;
+
+    const ergebnis: Erstattungsergebnis = { erstattungsId: `test_refund_${randomUUID()}` };
+    erstattungen.set(auftrag.idempotenzSchluessel, ergebnis);
+    meldeAbgefangen(
+      'Zahlung',
+      `Erstattung über ${formatiereGeld(auftrag.betragCent / 100, auftrag.waehrung)} für Transaktion ${auftrag.transaktionId} verarbeitet (${ergebnis.erstattungsId})`
+    );
+    return ergebnis;
+  },
 };
 
 /**
@@ -142,4 +168,5 @@ function bezahlseite(referenz: string, auftrag: Zahlungsauftrag): string {
 /** Nur für Tests: setzt den Zustand zwischen zwei Läufen zurück. */
 export function _testAnbieterZuruecksetzen(): void {
   offeneVorgaenge.clear();
+  erstattungen.clear();
 }

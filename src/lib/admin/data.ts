@@ -7,9 +7,9 @@
  * die einzigen Schreiber.
  */
 import { createAdminClient } from '@/lib/supabase/server';
-import { buildOrderNumber, type OrderPaymentMethod } from '@/lib/actions/orderTypes';
+import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/lib/actions/orderTypes';
 import { buildSupplierPositions } from '@/lib/suppliers';
-import { bearbeitungsGrenze, imAdminSichtbar, BEARBEITBARE_ZAHLUNGSZUSTAENDE } from '@/lib/orders/orderVisibility';
+import { imAdminSichtbar, listSichtbarkeitsFilter } from '@/lib/orders/orderVisibility';
 import { enqueueSupplierOrdersForOrder } from '@/lib/suppliers/lifecycle/enqueue';
 import { getProductionFileSignedUrl } from '@/lib/supabase/storage';
 import type { SupplierOrderDraft, SupplierWorkerRunResult } from '@/lib/suppliers';
@@ -90,6 +90,16 @@ export interface AdminOrderDetail {
   dhlLabelUrl: string | null;
   /** Persistierte Automatisierungs-Snapshots inkl. letztem Lauf. */
   supplierOrders: AdminSupplierOrderRow[];
+  /** 'customer' oder 'admin', null bei einer nicht stornierten Bestellung –
+   *  siehe orderService.ts (storniereBestellungDurchKunden/setzeBestellstatus). */
+  cancellationSource: string | null;
+  /** Rückerstattungszustand – siehe supabase/migrations/0029_rueckerstattung.sql
+   *  und RefundControl.tsx. 'not_applicable' bei Rechnungskauf oder wenn nie
+   *  bezahlt wurde. */
+  refundStatus: RefundStatus;
+  refundAmountCent: number | null;
+  refundReference: string | null;
+  refundedAt: string | null;
 }
 
 export interface AdminSupplierPipelineEvent {
@@ -221,15 +231,11 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
       count: 'exact',
     })
     // Sichtbarkeitsregel (lib/orders/orderVisibility): stornierte Bestellungen
-    // nie; echte Bestellungen erst nach Ablauf der Stornofrist; Anfragen sofort.
-    // Bereits in der Datenbank gefiltert statt nachträglich zu verwerfen.
-    .neq('status', 'cancelled')
-    .or(`order_type.neq.order,created_at.lte.${bearbeitungsGrenze()}`)
-    // Ausstehende Zahlungen gehören nicht in die Bearbeitungsliste – sonst
-    // würde Ware für einen abgebrochenen Bezahlvorgang beschafft. Dieselbe
-    // Regel wie in imAdminSichtbar; die Zustände kommen von dort, damit sie
-    // nicht an zwei Stellen gepflegt werden müssen.
-    .in('payment_status', [...BEARBEITBARE_ZAHLUNGSZUSTAENDE]);
+    // nur, solange eine Rückerstattung noch aussteht; echte Bestellungen erst
+    // nach Ablauf der Stornofrist; Anfragen sofort; ausstehende Zahlungen nie.
+    // Bereits in der Datenbank gefiltert statt nachträglich zu verwerfen –
+    // siehe listSichtbarkeitsFilter() für den vollständigen Ausdruck.
+    .or(listSichtbarkeitsFilter());
 
   const suche = optionen.suche?.trim();
   if (suche) {
@@ -268,7 +274,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   const { data: order, error: orderError } = await supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url'
+      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at'
     )
     .eq('id', orderId)
     .single();
@@ -287,6 +293,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
       status: order.status as string,
       orderType: order.order_type as string,
       paymentStatus: (order.payment_status as string) ?? 'not_required',
+      refundStatus: (order.refund_status as string) ?? 'not_applicable',
     })
   ) {
     return null;
@@ -378,6 +385,14 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     invoiceNumber: (order.invoice_number as string | null) ?? null,
     invoicePdfUrl: order.invoice_pdf_url ? await getProductionFileSignedUrl(order.invoice_pdf_url as string) : null,
     dhlLabelUrl: order.dhl_label_url ? await getProductionFileSignedUrl(order.dhl_label_url as string) : null,
+    cancellationSource: (order.cancellation_source as string | null) ?? null,
+    refundStatus: ((order.refund_status as RefundStatus | null) ?? 'not_applicable') as RefundStatus,
+    refundAmountCent:
+      order.refund_amount_cent !== null && order.refund_amount_cent !== undefined
+        ? Number(order.refund_amount_cent)
+        : null,
+    refundReference: (order.refund_reference as string | null) ?? null,
+    refundedAt: (order.refunded_at as string | null) ?? null,
     supplierOrders: (supplierRows ?? []).map((row) => ({
       supplierId: row.supplier_id as string,
       status: row.status as string,

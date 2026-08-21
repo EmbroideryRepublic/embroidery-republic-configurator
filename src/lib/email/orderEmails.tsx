@@ -84,11 +84,22 @@ export async function sendOrderCancellationEmail(params: {
   orderNumber: string;
   empfaenger: string;
   storniertAm: string;
+  /** Siehe OrderCancellationEmail.tsx – true nur, wenn zum Stornierungs-
+   *  zeitpunkt bereits bezahlt war (payment_status='paid'). Default false,
+   *  damit ein Aufrufer, der das Feld vergisst, den sicheren „keine Kosten"-
+   *  Text bekommt statt fälschlich eine Erstattung zu versprechen. */
+  erstattungFaellig?: boolean;
 }): Promise<EmailVersandErgebnis> {
   const result = await sendEmail({
     to: params.empfaenger,
     subject: `Stornierung bestätigt: ${params.orderNumber}`,
-    react: <OrderCancellationEmail orderNumber={params.orderNumber} storniertAm={params.storniertAm} />,
+    react: (
+      <OrderCancellationEmail
+        orderNumber={params.orderNumber}
+        storniertAm={params.storniertAm}
+        erstattungFaellig={params.erstattungFaellig ?? false}
+      />
+    ),
     replyTo: getReplyToAddress(),
     kontext: { anlass: 'order_cancelled', orderId: params.orderId },
   });

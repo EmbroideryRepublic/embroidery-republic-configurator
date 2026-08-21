@@ -106,9 +106,9 @@ export default function AgbPage() {
             Motivgröße bzw. Stichzahl sowie der Bestellmenge (Mengenstaffel).
           </p>
           <p>
-            (2) Umsatzsteuer: Alle angegebenen Preise sind Endpreise und enthalten die gesetzliche
-            Umsatzsteuer von derzeit 19 %. Ein gesonderter Ausweis erfolgt in der Bestellbestätigung
-            und auf der Rechnung.
+            (2) Alle angegebenen Preise sind Endpreise. Wir sind Kleinunternehmer im Sinne von § 19
+            UStG und weisen daher keine Umsatzsteuer aus. Ein entsprechender Hinweis erfolgt in der
+            Bestellbestätigung und auf der Rechnung.
           </p>
           <p>(3) Versandkosten werden gemäß § 7 gesondert ausgewiesen und kommen zum Warenwert hinzu.</p>
         </Section>
@@ -215,11 +215,12 @@ export default function AgbPage() {
 
         <Section n={9} title="Widerrufsrecht">
           <p>
-            (1) Da sämtliche Produkte individuell nach Kundenvorgaben bedruckt oder bestickt werden,
-            besteht für Verbraucher gemäß § 312g Abs. 2 Nr. 1 BGB kein Widerrufsrecht. Der Vertrag
-            betrifft Waren, die nicht vorgefertigt sind und für deren Herstellung eine individuelle
-            Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist bzw. die eindeutig auf die
-            persönlichen Bedürfnisse zugeschnitten sind.
+            (1) Sämtliche Produkte werden ausschließlich mit mindestens einem vom Kunden festgelegten
+            Logo oder Text individuell bedruckt oder bestickt; eine Bestellung ohne ein solches Element
+            ist bei uns nicht möglich. Es besteht daher für Verbraucher gemäß § 312g Abs. 2 Nr. 1 BGB
+            kein Widerrufsrecht. Der Vertrag betrifft Waren, die nicht vorgefertigt sind und für deren
+            Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist
+            bzw. die eindeutig auf die persönlichen Bedürfnisse zugeschnitten sind.
           </p>
           <p>(2) Gegenüber Unternehmern besteht ohnehin kein gesetzliches Widerrufsrecht.</p>
           <p>
@@ -231,10 +232,17 @@ export default function AgbPage() {
         <Section n={10} title="Gewährleistung und Mängelrüge">
           <p>(1) Es gelten die gesetzlichen Gewährleistungsrechte.</p>
           <p>
-            (2) Ist der Kunde Unternehmer, hat er die Ware unverzüglich nach Erhalt zu untersuchen und
-            erkennbare Mängel unverzüglich, spätestens innerhalb von sieben Tagen nach Erhalt, in
-            Textform anzuzeigen (§ 377 HGB). Versteckte Mängel sind unverzüglich nach Entdeckung
-            anzuzeigen. Andernfalls gilt die Ware als genehmigt.
+            (2) Handelt es sich bei dem Vertrag um ein beiderseitiges Handelsgeschäft zwischen
+            Kaufleuten (§§ 343, 377 HGB), hat der Kunde die Ware unverzüglich nach Erhalt zu
+            untersuchen und erkennbare Mängel unverzüglich, spätestens innerhalb von sieben Tagen nach
+            Erhalt, in Textform anzuzeigen (§ 377 HGB). Versteckte Mängel sind unverzüglich nach
+            Entdeckung anzuzeigen. Andernfalls gilt die Ware als genehmigt.
+          </p>
+          <p>
+            (2a) Ist der Kunde Unternehmer im Sinne des § 14 BGB, ohne dass ein beiderseitiges
+            Handelsgeschäft nach Absatz 2 vorliegt, gelten die gesetzlichen Untersuchungs- und
+            Rügeobliegenheiten nach Treu und Glauben (§ 242 BGB); eine feste Ausschlussfrist von sieben
+            Tagen wird gegenüber diesem Kundenkreis nicht vereinbart.
           </p>
           <p>
             (3) Geringfügige, technisch bedingte Abweichungen in Farbe, Größe und Platzierung im Rahmen

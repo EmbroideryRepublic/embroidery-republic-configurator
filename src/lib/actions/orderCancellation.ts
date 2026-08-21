@@ -24,6 +24,7 @@ import { revalidatePath } from 'next/cache';
 import { aktuellerKunde } from '@/lib/account/session';
 import { pruefeBestellzugriff } from '@/lib/orders/orderAccess';
 import { storniereBestellungDurchKunden, type StornoErgebnis } from '@/lib/orders/orderService';
+import { stelleErstattungSicher } from '@/lib/orders/refundService';
 
 export interface StornoAktionErgebnis {
   ok: boolean;
@@ -33,6 +34,25 @@ export interface StornoAktionErgebnis {
 
 /** Wie sich der Aufrufer ausweist – analog zu Bestellzugriff in orderAccess.ts. */
 export type StornoAnfrage = { art: 'token'; token: string } | { art: 'konto'; orderId: string };
+
+/**
+ * Stößt die Rückerstattung nach einer frischen Stornierung an – nicht-fatal:
+ * Die Stornierung selbst steht bereits fest und gilt unabhängig davon, ob
+ * der Erstattungsversuch sofort gelingt. Schlägt er fehl, bleibt
+ * `refund_status='failed'` sichtbar und über den Admin-Bereich wiederholbar
+ * (siehe refundService.ts).
+ */
+async function stosseErstattungAnFallsNoetig(orderId: string, erstattungAusstehend: boolean): Promise<void> {
+  if (!erstattungAusstehend) return;
+  try {
+    const erstattung = await stelleErstattungSicher(orderId);
+    if (!erstattung.ok) {
+      console.warn(`[storno] Rückerstattung für ${orderId} nicht sofort erfolgreich: ${erstattung.grund}`);
+    }
+  } catch (err) {
+    console.error(`[storno] Rückerstattungsanstoß für ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+  }
+}
 
 const STORNO_MELDUNGEN: Record<Extract<StornoErgebnis, { ok: false }>['grund'], string> = {
   'nicht-gefunden': 'Die Bestellung wurde nicht gefunden. Bitte kontaktieren Sie uns direkt.',
@@ -66,6 +86,7 @@ export async function storniereBestellungAction(anfrage: StornoAnfrage): Promise
     if (!ergebnis.ok) {
       return { ok: false, fehler: STORNO_MELDUNGEN[ergebnis.grund] };
     }
+    await stosseErstattungAnFallsNoetig(zugriff.orderId, ergebnis.erstattungAusstehend);
 
     // Die Seite zeigt danach den Zustand „storniert".
     revalidatePath(`/konto/bestellungen/${zugriff.orderId}`);
@@ -90,6 +111,7 @@ export async function storniereBestellungAction(anfrage: StornoAnfrage): Promise
   if (!ergebnis.ok) {
     return { ok: false, fehler: STORNO_MELDUNGEN[ergebnis.grund] };
   }
+  await stosseErstattungAnFallsNoetig(zugriff.orderId, ergebnis.erstattungAusstehend);
 
   // Die Seite zeigt danach den Zustand „storniert".
   revalidatePath(`/bestellung/${token}`);

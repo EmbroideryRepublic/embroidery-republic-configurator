@@ -12,7 +12,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { testAnbieter, TEST_SIGNATUR, _testAnbieterZuruecksetzen } from '../providers/testAnbieter';
-import type { ZahlungsAnbieter, Zahlungsauftrag } from '../types';
+import type { Erstattungsauftrag, ZahlungsAnbieter, Zahlungsauftrag } from '../types';
 
 /** Alle Anbieter, die den Vertrag erfüllen müssen. Stripe folgt in S5. */
 const anbieterUnterTest: ZahlungsAnbieter[] = [testAnbieter];
@@ -37,6 +37,16 @@ function auftrag(ueberschreibungen: Partial<Zahlungsauftrag> = {}): Zahlungsauft
     rueckkehrUrl: 'https://example.invalid/bestellung/abc',
     abbruchUrl: 'https://example.invalid/warenkorb',
     idempotenzSchluessel: 'schluessel-1',
+    ...ueberschreibungen,
+  };
+}
+
+function erstattungsauftrag(ueberschreibungen: Partial<Erstattungsauftrag> = {}): Erstattungsauftrag {
+  return {
+    transaktionId: 'buchung-1',
+    betragCent: 3164,
+    waehrung: 'EUR',
+    idempotenzSchluessel: 'refund-11111111-2222-3333-4444-555555555555',
     ...ueberschreibungen,
   };
 }
@@ -128,5 +138,34 @@ for (const anbieter of anbieterUnterTest) {
       eroeffnet.referenz,
       'nach dem Verwerfen muss ein neuer Vorgang entstehen – sonst führte die Wiederaufnahme in einen toten Vorgang'
     );
+  });
+
+  test(`${name} erstattet eine Zahlung und liefert eine Erstattungs-ID`, async () => {
+    _testAnbieterZuruecksetzen();
+    const ergebnis = await anbieter.erstatte(erstattungsauftrag());
+    assert.ok(ergebnis.erstattungsId.length > 0, 'ohne ID lässt sich die Erstattung nie nachweisen');
+  });
+
+  test(`${name} liefert bei gleichem Idempotenzschlüssel DIESELBE Erstattung`, async () => {
+    // Das ist die Eigenschaft, auf der die gesamte Absturz-Sicherheit des
+    // Rückerstattungs-Workflows beruht (siehe Kopfkommentar von
+    // Erstattungsauftrag in types.ts und supabase/migrations/0029): ein Retry
+    // nach einem Absturz zwischen Anbieter-Antwort und Persistierung darf
+    // niemals ein zweites Mal echtes Geld bewegen.
+    _testAnbieterZuruecksetzen();
+    const erste = await anbieter.erstatte(erstattungsauftrag({ idempotenzSchluessel: 'refund-gleich' }));
+    const zweite = await anbieter.erstatte(erstattungsauftrag({ idempotenzSchluessel: 'refund-gleich' }));
+    assert.equal(
+      zweite.erstattungsId,
+      erste.erstattungsId,
+      'sonst würde ein Retry nach einem Absturz eine zweite echte Erstattung auslösen'
+    );
+  });
+
+  test(`${name} liefert bei unterschiedlichem Schlüssel unterschiedliche Erstattungen`, async () => {
+    _testAnbieterZuruecksetzen();
+    const erste = await anbieter.erstatte(erstattungsauftrag({ idempotenzSchluessel: 'refund-a' }));
+    const zweite = await anbieter.erstatte(erstattungsauftrag({ idempotenzSchluessel: 'refund-b' }));
+    assert.notEqual(zweite.erstattungsId, erste.erstattungsId, 'unterschiedliche Bestellungen brauchen eigene Erstattungen');
   });
 }

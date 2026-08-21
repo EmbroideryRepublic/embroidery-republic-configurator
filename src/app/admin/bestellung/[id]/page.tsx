@@ -18,6 +18,8 @@ import type { SupplierId } from '@/lib/suppliers';
 import { MarkOrderedButton } from '@/components/admin/MarkOrderedButton';
 import { OrderStatusControl } from '@/components/admin/OrderStatusControl';
 import { ShippingLabelControl } from '@/components/admin/ShippingLabelControl';
+import { RefundControl } from '@/components/admin/RefundControl';
+import { AdminCancelControl } from '@/components/admin/AdminCancelControl';
 import {
   PAYMENT_METHOD_LABELS,
   PAYMENT_STATUS_LABELS,
@@ -26,6 +28,7 @@ import {
 } from '@/lib/actions/orderTypes';
 import { buildManualSupplierGroups } from '@/lib/admin/supplierOrderView';
 import { istAdmin } from '@/lib/admin/auth';
+import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
 
 export default async function AdminOrderDetailPage({ params }: { params: { id: string } }) {
@@ -75,6 +78,32 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
         </div>
       )}
 
+      {/* Kulanzstornierung: eigener, bewusst von OrderStatusControl getrennter
+          Vorgang (siehe AdminCancelControl.tsx). Blendet sich selbst aus,
+          sobald 'cancelled' laut Zustandsmaschine kein erlaubter Übergang
+          mehr ist (Anfragen haben ohnehin keinen Bestellstatus). */}
+      {order.orderType === 'order' && (
+        <div className="mb-4">
+          <AdminCancelControl orderId={order.id} status={order.status as OrderStatus} />
+        </div>
+      )}
+
+      {/* Erscheint von selbst nur bei tatsächlich anstehender/erfolgter
+          Rückerstattung (refundStatus !== 'not_applicable') – siehe
+          RefundControl.tsx. Deshalb bewusst NICHT in `order.orderType ===
+          'order'` verschachtelt: eine eigene Bedingung wäre hier nur
+          Redundanz zur bereits vorhandenen Selbstausblendung. */}
+      <div className="mb-4">
+        <RefundControl
+          orderId={order.id}
+          refundStatus={order.refundStatus}
+          refundAmountCent={order.refundAmountCent}
+          refundReference={order.refundReference}
+          refundedAt={order.refundedAt}
+          cancellationSource={order.cancellationSource}
+        />
+      </div>
+
       {/* Kontakt & Versand */}
       <div className="grid gap-4 sm:grid-cols-2">
         <section className="rounded-lg border border-gray-200 bg-white p-4">
@@ -107,8 +136,9 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
               vorhanden (order.taxAmount === null bei älteren Bestellungen). */}
           {order.taxAmount !== null && order.taxRate !== null && order.netTotal !== null && (
             <p className="mt-0.5 text-xs text-gray-500">
-              netto {formatiereGeld(order.netTotal)} + {order.taxRate} % USt. {formatiereGeld(order.taxAmount)} = brutto{' '}
-              {formatiereGeld(order.totalPrice)}
+              {IST_KLEINUNTERNEHMER
+                ? `Kein Steuerausweis (§ 19 UStG) – netto = brutto = ${formatiereGeld(order.totalPrice)}`
+                : `netto ${formatiereGeld(order.netTotal)} + ${order.taxRate} % USt. ${formatiereGeld(order.taxAmount)} = brutto ${formatiereGeld(order.totalPrice)}`}
             </p>
           )}
           {/* Zahlungsart: seit Migration 0012 gespeichert. Bestellungen aus
@@ -128,13 +158,23 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
             <p className="mt-1 text-sm text-gray-700">
               Zahlung:{' '}
               {PAYMENT_STATUS_LABELS[order.paymentStatus as OrderPaymentStatus] ?? order.paymentStatus}
+              {/* Verbindet die beiden sonst isoliert wirkenden Aussagen "Zahlung:
+                  Bezahlt" und den Rückerstattung-Block weiter oben (RefundControl) –
+                  ohne diesen Halbsatz liest sich eine stornierte, aber noch nicht
+                  erstattete Bestellung wie ein Widerspruch (Review vom 2026-08-20). */}
+              {order.status === 'cancelled' && order.refundStatus !== 'not_applicable' && order.refundStatus !== 'refunded' && (
+                <span className="text-amber-700"> – Rückerstattung läuft, siehe oben</span>
+              )}
             </p>
           )}
-          {/* Rechnung: von Lexware automatisch erzeugt, siehe
-              orderCompletion.ts (erzeugeRechnung). Fehlt sie, ist entweder
-              die Zahlung noch offen oder die Erstellung (nicht-fatal)
-              fehlgeschlagen – order_events (invoice_creation_failed) zeigt
-              den Grund. */}
+          {/* Rechnung: automatisch erzeugt, siehe orderCompletion.ts
+              (erzeugeRechnung) – über lib/invoicing/registry.ts standardmäßig
+              den internen Anbieter, Lexware nur optional bei gesetztem
+              INVOICING_PROVIDER=lexware (seit 2026-08-18 bewusst
+              zurückgestellt, siehe dortiger Kommentar). Fehlt die Rechnung,
+              ist entweder die Zahlung noch offen oder die Erstellung
+              (nicht-fatal) fehlgeschlagen – order_events
+              (invoice_creation_failed) zeigt den Grund. */}
           {order.orderType === 'order' && (
             <p className="mt-1 text-sm text-gray-700">
               Rechnung:{' '}

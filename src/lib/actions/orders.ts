@@ -694,6 +694,17 @@ export async function istPaypalVerfuegbar(): Promise<boolean> {
   return istAnbieterFuerKundschaftVerfuegbar('paypal');
 }
 
+/**
+ * Dasselbe für die Kreditkarten-Kachel (Stripe) – bislang fehlte diese
+ * Prüfung, die Kachel war immer sichtbar, unabhängig von der tatsächlichen
+ * Stripe-Einsatzbereitschaft (Review vom 2026-08-20). Siehe istPaypalVerfuegbar()
+ * für die Begründung, warum über istAnbieterFuerKundschaftVerfuegbar() statt
+ * waehleZahlungsAnbieter().
+ */
+export async function istKarteVerfuegbar(): Promise<boolean> {
+  return istAnbieterFuerKundschaftVerfuegbar('stripe');
+}
+
 export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult> {
   // Der teuerste Pfad des Systems: Datei-Uploads, Vorschau-Rendering,
   // Produktionsblatt und zwei E-Mails je Vorgang. Ohne Begrenzung kann ein

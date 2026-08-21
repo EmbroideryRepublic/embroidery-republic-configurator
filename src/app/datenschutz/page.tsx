@@ -40,9 +40,10 @@ export default function DatenschutzPage() {
       <LegalPageNotice />
 
       <TodoNote>
-        Noch zu ergänzen: Hosting-Anbieter samt Serverstandort (Ziffer 4) sowie die Region des
-        Datenbank- und Speicher-Dienstes (Ziffer 5). Eine datenschutzrechtliche Prüfung vor dem
-        Go-live wird empfohlen.
+        Noch zu ergänzen: die genaue Vercel-Serverregion (Ziffer 4) und die Region des Datenbank-
+        und Speicher-Dienstes (Ziffer 5), Rechtsträger/Anschrift von Stripe, PayPal (Ziffer 11) und
+        DHL (Ziffer 12) sowie der AVV-Status (Art. 28 DSGVO) mit Stripe/PayPal (Ziffer 11) und mit
+        DHL (Ziffer 12). Eine datenschutzrechtliche Prüfung vor dem Go-live wird empfohlen.
       </TodoNote>
 
       <div className="space-y-6">
@@ -106,11 +107,17 @@ export default function DatenschutzPage() {
 
         <Section n={4} title="Hosting">
           <p>
-            Die Website wird bei einem externen Dienstleister gehostet. Anbieter und Serverstandort:{' '}
-            <Todo>Hosting-Anbieter und Serverstandort ergänzen</Todo>
+            Die Website wird bei Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, USA
+            gehostet.
+          </p>
+          <p>
+            Region der eingesetzten Server-Funktionen: <Todo>Serverstandort/Vercel-Region ergänzen</Todo>{' '}
+            (Projekteinstellung im Vercel-Dashboard, aus dem Quelltext nicht ablesbar).
           </p>
           <p>
             Mit dem Anbieter besteht ein Vertrag über die Auftragsverarbeitung nach Art. 28 DSGVO.
+            Soweit eine Verarbeitung außerhalb der EU bzw. des EWR stattfindet, erfolgt diese auf
+            Grundlage der EU-Standardvertragsklauseln nach Art. 46 Abs. 2 lit. c DSGVO.
             Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
           </p>
         </Section>
@@ -252,7 +259,41 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={11} title="Speicherdauer">
+        <Section n={11} title="Zahlungsabwicklung (Stripe, PayPal)">
+          <p>
+            Bei Zahlung per Kreditkarte verarbeiten wir Ihre Zahlung über den Dienst Stripe (
+            <Todo>Rechtsträger und Anschrift von Stripe ergänzen</Todo>). Bei Zahlung per PayPal
+            verarbeiten wir Ihre Zahlung über PayPal (
+            <Todo>Rechtsträger und Anschrift von PayPal ergänzen</Todo>).
+          </p>
+          <p>
+            Von unserer Seite werden dabei ausschließlich der Zahlungsbetrag, die Währung sowie eine
+            interne Bestellreferenz übermittelt. Die Erfassung Ihrer eigentlichen Zahlungsdaten (z. B.
+            Kartendaten bzw. Ihre PayPal-Anmeldung) erfolgt direkt auf der jeweils gesicherten Seite des
+            Zahlungsdienstleisters, nicht auf unserer Website; dabei kann der Anbieter zusätzliche Daten
+            (z. B. E-Mail-Adresse, Rechnungsadresse) direkt bei Ihnen erheben.
+          </p>
+          <p>
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung). Ob und in welcher Form
+            mit den Anbietern eine Vereinbarung zur Auftragsverarbeitung nach Art. 28 DSGVO besteht:{' '}
+            <Todo>AVV-Status mit Stripe/PayPal prüfen und ergänzen</Todo>.
+          </p>
+        </Section>
+
+        <Section n={12} title="Versand (DHL)">
+          <p>
+            Zur Auslieferung Ihrer Bestellung übermitteln wir Ihren Namen und Ihre Lieferanschrift sowie
+            die Bestellnummer an DHL (<Todo>Rechtsträger und Anschrift von DHL ergänzen</Todo>). Ihre
+            E-Mail-Adresse und Telefonnummer werden dabei nicht übermittelt.
+          </p>
+          <p>
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung). Ob und in welcher Form
+            mit DHL eine Vereinbarung zur Auftragsverarbeitung nach Art. 28 DSGVO besteht:{' '}
+            <Todo>AVV-Status mit DHL prüfen und ergänzen</Todo>.
+          </p>
+        </Section>
+
+        <Section n={13} title="Speicherdauer">
           <p>
             Wir speichern personenbezogene Daten nur so lange, wie dies für die genannten Zwecke
             erforderlich ist. Anfragen, die nicht zu einem Vertrag führen, löschen wir spätestens nach
@@ -272,7 +313,7 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={12} title="Ihre Rechte">
+        <Section n={14} title="Ihre Rechte">
           <p>Sie haben jederzeit das Recht auf:</p>
           <ul className="ml-4 list-disc space-y-1">
             <li>Auskunft über die von uns verarbeiteten Daten (Art. 15 DSGVO)</li>
@@ -296,7 +337,7 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={13} title="Datensicherheit">
+        <Section n={15} title="Datensicherheit">
           <p>
             Die Übertragung sämtlicher Daten erfolgt verschlüsselt über TLS. Der Zugriff auf Bestell-
             und Anfragedaten ist auf berechtigte Personen beschränkt und durch eine gesonderte
@@ -304,7 +345,7 @@ export default function DatenschutzPage() {
           </p>
         </Section>
 
-        <Section n={14} title="Änderungen dieser Datenschutzerklärung">
+        <Section n={16} title="Änderungen dieser Datenschutzerklärung">
           <p>
             Wir passen diese Datenschutzerklärung an, sobald Änderungen an unseren Leistungen oder den
             eingesetzten Diensten dies erforderlich machen. Es gilt jeweils die auf dieser Seite

@@ -85,7 +85,7 @@ Datenbank.
 | Stripe kurz nicht erreichbar | `starteZahlung` schlägt fehl, Bestellung bleibt `pending`, keine Halbbestellung | Bestellung existiert schon, nur unbezahlt |
 | **Datenbank kurz nicht erreichbar** | **jetzt 500 → Stripe stellt erneut zu** | **P1-Behebung** |
 | Zweiter Zahlungsversuch | alter Vorgang wird zuerst verworfen, dann neuer | `verwerfe` + neue Referenz |
-| Storno/Erstattung durch Stripe | kann `paid` nicht kippen (Ereignisarten kennen keine Erstattung; `WHERE pending`) | siehe Z7 unten |
+| Storno/Erstattung durch Stripe | kann `paid` nicht kippen (`charge.refunded` bewegt nur `refund_status`, nie `payment_status`; `WHERE pending`-Guard bleibt zusätzlich bestehen) | siehe Z7 unten (Stand seit dem Rückerstattungs-Workflow, Migration 0029) |
 | Zahlung läuft ab | nach 24 h `pending → failed` | `verfalle_offene_zahlungen` |
 | **Zwei Admins bearbeiten gleichzeitig** | der zweite trifft 0 Zeilen, wird abgewiesen | `setzeBestellstatus` mit `.eq('status', von)` |
 
@@ -128,18 +128,27 @@ Gezielt geprüft, wie vom Auftrag verlangt:
 
 ## Bewusst getragene Einschränkungen (keine Bugs)
 
-**Z7 – Erstattungen sind nicht modelliert.** Die Ereignisarten kennen nur
-`bestaetigt · fehlgeschlagen · abgebrochen · abgelaufen`. Eine Erstattung
-oder Rückbuchung von Stripe kann eine `paid`-Bestellung **nicht** in einen
-inkonsistenten Zustand bringen (jeder Fehlschlag-Pfad guardet `WHERE
-pending`, trifft also 0 Zeilen). Sie wird aber auch nicht automatisch
-abgebildet – Erstattungen laufen für 1.0 manuell im Stripe-Dashboard.
+**Z7 – erledigt (Stand: Rückerstattungs-Workflow, Migration 0029).** Ursprünglich
+stand hier: „Erstattungen sind nicht modelliert. Die Ereignisarten kennen nur
+`bestaetigt · fehlgeschlagen · abgebrochen · abgelaufen`. [...] Erstattungen
+laufen für 1.0 manuell im Stripe-Dashboard.“ Das ist überholt. Es gibt jetzt
+eine fünfte Ereignisart `erstattet` (`ZahlungsEreignisArt` in
+`lib/payments/types.ts`), einen vollautomatisierten Rückerstattungs-Workflow
+(`lib/orders/refundService.ts`, Migration `0029_rueckerstattung.sql`,
+Admin-Oberfläche `RefundControl.tsx`, Cron-Reaper) und eine Webhook-Bestätigung
+als zusätzliche Absicherung (`charge.refunded`/`PAYMENT.CAPTURE.REFUNDED`).
 
-> **Wichtig für den Adapter:** Ein `charge.refunded` darf NICHT auf
-> `fehlgeschlagen` gemappt werden. Das würde vom `WHERE pending`-Guard still
-> geschluckt und den Betrieb glauben lassen, die Erstattung sei erfasst.
-> Bis Z7 gebaut ist, gehört ein Refund-Ereignis auf `null` (ignorieren) mit
-> einem Protokolleintrag.
+Die ursprüngliche Sicherheitsanforderung dieses Punkts bleibt dabei
+UNVERÄNDERT eingehalten, nur jetzt aktiv statt durch Ignorieren: Ein
+`charge.refunded`/`PAYMENT.CAPTURE.REFUNDED`-Ereignis wird in `art: 'erstattet'`
+übersetzt (nicht `null`, nicht `fehlgeschlagen`) und von
+`bestaetigeErstattungViaWebhook()` (`refundService.ts`) verarbeitet – diese
+Funktion berührt **niemals** `payment_status`, ausschließlich `refund_status`,
+und auch das nur für eine Bestellung, die das System selbst bereits zur
+Erstattung vorgemerkt hat (`refund_status` bereits `required`/`processing`/
+`failed`). Eine bezahlte Bestellung kann durch dieses Ereignis also weiterhin
+nicht in einen inkonsistenten Zustand kippen – exakt die Garantie, die Z7
+ursprünglich forderte.
 
 **Bestätigungs-E-Mail ist best-effort.** Sie ist im gesamten System
 nicht-fatal (jede Ebene fängt Fehler ab, keine wirft). `pdf_url` als
@@ -179,9 +188,10 @@ Die Konsistenz ruht auf drei einfachen, mehrfach nachgewiesenen Bausteinen:
    (500), deterministische nicht (200).
 
 Die verbleibenden Punkte sind bewusste, dokumentierte Einschränkungen
-(Erstattung manuell, Bestätigung best-effort) und eine Vertragszusage an den
-noch zu bauenden Adapter (`verwerfe` muss zuverlässig expiren). Keiner davon
-ist ein Konsistenzrisiko.
+(Bestätigung best-effort) und eine Vertragszusage an den noch zu bauenden
+Adapter (`verwerfe` muss zuverlässig expiren). Keiner davon ist ein
+Konsistenzrisiko. Erstattungen sind seit Migration 0029 automatisiert
+(siehe Z7 oben), nicht mehr manuell.
 
 **Freigabe für den nächsten Schritt:** Schlüssel hinterlegen, Adapter bauen,
 E2E gegen den Stripe-Testmodus.

@@ -16,7 +16,7 @@
  */
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
-import type { OrderStatus, OrderPaymentMethod, OrderPaymentStatus } from '@/lib/actions/orderTypes';
+import type { OrderStatus, OrderPaymentMethod, OrderPaymentStatus, RefundStatus } from '@/lib/actions/orderTypes';
 import { stornofristEndet, stornofristLaeuftNoch, verbleibendeStornozeitMs } from '@/config/orderProcess';
 
 /** Die drei Zustände, die die Seite unterscheidet. */
@@ -48,6 +48,10 @@ export interface BestellAnsicht {
   /** Zahlungsart – steuert, ob unten der Rechnungs- oder "bereits bezahlt"-Text steht. */
   zahlungsart: OrderPaymentMethod | null;
   zahlungsstatus: OrderPaymentStatus;
+  /** Rückerstattungszustand – nur relevant, wenn zustand==='storniert' UND
+   *  zum Stornozeitpunkt bereits bezahlt war. 'not_applicable' sonst immer
+   *  (siehe supabase/migrations/0029_rueckerstattung.sql). */
+  erstattungsstatus: RefundStatus;
   trackingNummer: string | null;
   versendetAm: string | null;
   positionen: BestellAnsichtPosition[];
@@ -74,7 +78,7 @@ export async function ladeBestellAnsicht(orderId: string, jetzt: Date = new Date
   const { data: order, error } = await db
     .from('orders')
     .select(
-      'id, created_at, status, order_type, total_price, tax_amount, tax_rate, customer_name, cancelled_at, shipping_street, shipping_zip, shipping_city, shipping_country, tracking_number, shipped_at, payment_method, payment_status'
+      'id, created_at, status, order_type, total_price, tax_amount, tax_rate, customer_name, cancelled_at, shipping_street, shipping_zip, shipping_city, shipping_country, tracking_number, shipped_at, payment_method, payment_status, refund_status'
     )
     .eq('id', orderId)
     .maybeSingle();
@@ -106,6 +110,7 @@ export async function ladeBestellAnsicht(orderId: string, jetzt: Date = new Date
     status: order.status as OrderStatus,
     zahlungsart: (order.payment_method as OrderPaymentMethod | null) ?? null,
     zahlungsstatus: order.payment_status as OrderPaymentStatus,
+    erstattungsstatus: ((order.refund_status as RefundStatus | null) ?? 'not_applicable') as RefundStatus,
     trackingNummer: (order.tracking_number as string | null) ?? null,
     versendetAm: (order.shipped_at as string | null) ?? null,
     kundenName: (order.customer_name as string) ?? '',

@@ -37,7 +37,8 @@ export function OrderStatusControl({
 
   // Stornieren wird hier bewusst NICHT angeboten: Eine Betreiberstornierung
   // ist ein eigener Vorgang mit anderer Begründungspflicht (Kulanz,
-  // Lieferausfall) und gehört nicht neben die regulären Fortschritte.
+  // Lieferausfall) und gehört nicht neben die regulären Fortschritte –
+  // siehe AdminCancelControl.tsx, separat auf derselben Seite eingebunden.
   const naechste = ERLAUBTE_UEBERGAENGE[status].filter((s) => s !== 'cancelled');
   const aktuellerIndex = fortschrittIndex(status);
   const storniert = status === 'cancelled';

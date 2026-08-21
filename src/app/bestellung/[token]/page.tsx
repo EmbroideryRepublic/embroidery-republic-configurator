@@ -128,7 +128,20 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
             <h2 className="text-sm font-semibold text-brand">Diese Bestellung wurde storniert</h2>
             <p className="mt-1 text-sm text-brand/70">
               {bestellung.storniertAm ? `Storniert am ${zeit(bestellung.storniertAm)}.` : 'Die Bestellung ist storniert.'}{' '}
-              Es entstehen Ihnen keine Kosten. Eine Bestätigung haben wir Ihnen per E-Mail gesendet.
+              {/* Wortlaut identisch zur Storno-Bestätigungsmail (OrderCancellationEmail.tsx)
+                  – dieselbe, bereits freigegebene Formulierung, nur an einer zweiten Stelle
+                  angewendet (Review vom 2026-08-20: diese Seite zeigte bislang IMMER den
+                  „keine Kosten"-Text, auch wenn tatsächlich eine Rückerstattung ansteht). */}
+              {bestellung.erstattungsstatus !== 'not_applicable' ? (
+                <>
+                  Der bereits gezahlte Betrag wird vollständig zurückerstattet. Die Rückerstattung erfolgt über den
+                  ursprünglichen Zahlungsweg. Für diesen Auftrag wird keine Rechnung gestellt und wir beschaffen keine
+                  Ware.
+                </>
+              ) : (
+                <>Es entstehen Ihnen keine Kosten.</>
+              )}{' '}
+              Eine Bestätigung haben wir Ihnen per E-Mail gesendet.
             </p>
           </section>
         )}

@@ -152,7 +152,7 @@ test('Der Port hat genau die Methoden, die gebraucht werden', () => {
 
   assert.deepEqual(
     methoden.sort(),
-    ['eroeffne', 'leseEreignis', 'verwerfe'],
+    ['eroeffne', 'erstatte', 'leseEreignis', 'verwerfe'],
     'Der Port wächst mit dem Bedarf, nicht auf Vorrat – siehe docs/zahlungsarchitektur.md'
   );
 });

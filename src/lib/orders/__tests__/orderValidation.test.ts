@@ -21,6 +21,32 @@ const produkt = PRODUCTS[0]!;
 const groesse = produkt.sizes[0]!;
 const farbe = produkt.colors[0]!.id;
 
+function logo(ueberschreibungen: Record<string, unknown> = {}) {
+  return {
+    id: 'el-1',
+    type: 'logo',
+    view: 'front',
+    xCm: 5,
+    yCm: 5,
+    widthCm: 10,
+    heightCm: 10,
+    rotationDeg: 0,
+    isOutOfBounds: false,
+    extraPrice: 0,
+    fileUrl: 'data:image/png;base64,x',
+    originalFileUrl: 'data:image/png;base64,x',
+    fileName: 'logo.png',
+    ...ueberschreibungen,
+  } as unknown as CartItem['elements'][number];
+}
+
+/**
+ * Standard-Position für die "gültiger Fall"-Tests. Trägt seit der
+ * Geschäftsregel vom 2026-08-19 (Personalisierungspflicht) standardmäßig
+ * EIN Logo-Element – wir verkaufen ausschließlich personalisierte Ware,
+ * eine Position ganz ohne Motiv ist kein gültiger Regelfall mehr. Tests, die
+ * genau den leeren Fall prüfen wollen, überschreiben `elements: []` explizit.
+ */
 function position(ueberschreibungen: Partial<CartItem> = {}): CartItem {
   return {
     id: 'pos-1',
@@ -29,7 +55,7 @@ function position(ueberschreibungen: Partial<CartItem> = {}): CartItem {
     printMethod: 'dtf',
     sizeQuantities: { [groesse]: 3 },
     quantity: 3,
-    elements: [],
+    elements: [logo()],
     unitPrice: 0,
     totalPrice: 0,
     ...ueberschreibungen,
@@ -156,25 +182,6 @@ test('eine unbekannte Veredelungsart wird abgewiesen', async () => {
 
 // ── Motive ───────────────────────────────────────────────────────────────
 
-function logo(ueberschreibungen: Record<string, unknown> = {}) {
-  return {
-    id: 'el-1',
-    type: 'logo',
-    view: 'front',
-    xCm: 5,
-    yCm: 5,
-    widthCm: 10,
-    heightCm: 10,
-    rotationDeg: 0,
-    isOutOfBounds: false,
-    extraPrice: 0,
-    fileUrl: 'data:image/png;base64,x',
-    originalFileUrl: 'data:image/png;base64,x',
-    fileName: 'logo.png',
-    ...ueberschreibungen,
-  } as unknown as CartItem['elements'][number];
-}
-
 test('ein Motiv mit ungültigen Maßen wird abgewiesen', async () => {
   const gefunden = await codes({
     ...gueltigeBestellung,
@@ -206,6 +213,47 @@ test('ein Motiv größer als die Druckfläche wird abgewiesen', async () => {
     items: [position({ elements: [logo({ widthCm: 500, heightCm: 500 })] })],
   });
   assert.ok(gefunden.includes('element_ueberschreitet_druckflaeche'), gefunden.join(','));
+});
+
+// ── Personalisierungspflicht (Geschäftsregel 2026-08-19) ──────────────────
+// Wir verkaufen ausschließlich personalisierte Ware – eine Bestellposition
+// ganz ohne Logo oder Text ist ungültig. Farbe, Größe, Menge und die Wahl
+// von DTF oder Stickerei zählen dabei ausdrücklich NICHT als Personalisierung.
+
+test('eine Bestellposition ganz ohne Motiv wird abgewiesen', async () => {
+  const gefunden = await codes({
+    ...gueltigeBestellung,
+    items: [position({ elements: [] })],
+  });
+  assert.ok(gefunden.includes('kein_element'), gefunden.join(','));
+});
+
+test('Farbe, Größe, Menge und Veredelungsart allein zählen nicht als Personalisierung', async () => {
+  // Gültige Farbe, gültige Größe/Menge, Stickerei statt DTF – trotzdem
+  // abgewiesen, weil kein einziges Logo/Text-Element vorhanden ist.
+  const gefunden = await codes({
+    ...gueltigeBestellung,
+    items: [position({ printMethod: 'embroidery', elements: [] })],
+  });
+  assert.ok(gefunden.includes('kein_element'), gefunden.join(','));
+});
+
+test('ein einzelnes Textelement genügt bereits als Personalisierung', async () => {
+  const ergebnis = await validateSubmission({
+    ...gueltigeBestellung,
+    items: [position({ elements: [logo({ id: 'el-text', type: 'text', content: 'Testtext' })] })],
+  });
+  assert.equal(ergebnis.valid, true, `unerwartete Befunde: ${JSON.stringify(ergebnis.issues)}`);
+});
+
+test('eine unverbindliche Anfrage darf weiterhin ganz ohne Motiv gesendet werden', async () => {
+  const ergebnis = await validateSubmission({
+    orderType: 'inquiry',
+    items: [position({ elements: [] })],
+    email: 'interessent@example.de',
+    customerName: 'Chris Beispiel',
+  });
+  assert.equal(ergebnis.valid, true, `unerwartete Befunde: ${JSON.stringify(ergebnis.issues)}`);
 });
 
 // ── Angaben zur Person ───────────────────────────────────────────────────

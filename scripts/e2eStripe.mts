@@ -198,10 +198,29 @@ async function main(): Promise<void> {
     pruefe(await wirftSignaturFehler(() => stripeAnbieter.leseEreignis(body, stripeKopf('v1=falsch,t=123'))), 'gefälschte Signatur → SignaturUngueltigFehler (400)');
     pruefe(await wirftSignaturFehler(() => stripeAnbieter.leseEreignis(body, stripeKopf(null))), 'fehlende Signatur → SignaturUngueltigFehler (400)');
 
-    // Erstattung darf paid NICHT kippen (Z7)
-    const refund = signiertesEreignis('charge.refunded', { id: 'ch_test', metadata: { bestellId } });
-    pruefe((await stripeAnbieter.leseEreignis(refund.body, stripeKopf(refund.sig))) === null, 'charge.refunded → nicht relevant (null), paid bleibt unberührt');
-    pruefe((await zahlungsstatus(bestellId)) === 'paid', 'Bestellung nach Erstattungs-Ereignis weiterhin „paid"');
+    // Erstattung darf paid NICHT kippen (Z7). Seit dem Rückerstattungs-
+    // Workflow übersetzt charge.refunded nicht mehr auf null, sondern auf
+    // ein reines Bestätigungssignal (art: 'erstattet') – die Z7-Garantie
+    // gilt unverändert: payment_status bleibt in JEDEM Fall unberührt, und
+    // für eine Bestellung, die NIE zur Erstattung vorgemerkt wurde
+    // (refund_status='not_applicable'), bleibt auch das wirkungslos.
+    const refund = signiertesEreignis('charge.refunded', {
+      id: 'ch_test',
+      payment_intent: nachZahlung[0].payment_transaction_id,
+      amount_refunded: 3164,
+      currency: 'eur',
+      metadata: { bestellId },
+    });
+    const refundEreignis = await stripeAnbieter.leseEreignis(refund.body, stripeKopf(refund.sig));
+    pruefe(refundEreignis?.art === 'erstattet' && refundEreignis.bestellId === bestellId, 'charge.refunded → erstattet, korrekt zugeordnet');
+    const vRefund = await verarbeiteZahlungsEreignis(refundEreignis!);
+    pruefe(
+      vRefund.ok && vRefund.wirkung === 'erstattet' && vRefund.bereitsVerarbeitet === true,
+      `Bestätigung ohne vorgemerkte Erstattung → wirkungslos verarbeitet (${JSON.stringify(vRefund)})`
+    );
+    pruefe((await zahlungsstatus(bestellId)) === 'paid', 'Bestellung nach Erstattungs-Bestätigung weiterhin „paid" (Z7)');
+    const { rows: refundStatusRows } = await db.query('select refund_status from orders where id=$1', [bestellId]);
+    pruefe(refundStatusRows[0].refund_status === 'not_applicable', 'refund_status bleibt unangetastet (nie zur Erstattung vorgemerkt)');
 
     // Verspäteter Fehlschlag nach paid → wirkungslos
     const spaet = signiertesEreignis('payment_intent.payment_failed', { id: 'pi_spaet', metadata: { bestellId }, amount: 3164, currency: 'eur', last_payment_error: { message: 'zu spät' } });

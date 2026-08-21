@@ -28,6 +28,9 @@ export type OrderStatus = 'new' | 'in_production' | 'shipped' | 'completed' | 'c
 
 export type OrderPaymentStatus = 'not_required' | 'pending' | 'paid' | 'failed';
 
+/** Rückerstattungszustand – siehe supabase/migrations/0029_rueckerstattung.sql. */
+export type RefundStatus = 'not_applicable' | 'required' | 'processing' | 'refunded' | 'failed';
+
 /** Gemeinsame Bestellnummer-Logik – wird sowohl bei der Erstellung
  *  (orders.ts) als auch bei der Stripe-Webhook-seitigen Rekonstruktion
  *  (reconstructOrder.ts) aus derselben DB-ID berechnet, damit beide
@@ -143,4 +146,14 @@ export const PAYMENT_STATUS_LABELS: Record<OrderPaymentStatus, string> = {
   pending: 'Zahlung offen',
   paid: 'Bezahlt',
   failed: 'Zahlung fehlgeschlagen',
+};
+
+/** Bezeichnungen der Rückerstattungszustände für den Adminbereich – siehe
+ *  RefundControl.tsx. */
+export const REFUND_STATUS_LABELS: Record<RefundStatus, string> = {
+  not_applicable: 'Keine Rückerstattung fällig',
+  required: 'Rückerstattung aussteht',
+  processing: 'Rückerstattung läuft …',
+  refunded: 'Erstattet',
+  failed: 'Rückerstattung fehlgeschlagen',
 };

@@ -29,6 +29,7 @@ import { protokoll } from '@/lib/observability/log';
 import { processDueSupplierOrders } from '@/lib/suppliers/lifecycle/orchestrator';
 import { holeOffeneRechnungenNach } from '@/lib/orders/orderCompletion';
 import { holeOffeneAbschluesseNach } from '@/lib/orders/paymentService';
+import { holeOffeneErstattungenNach } from '@/lib/orders/refundService';
 import {
   ABSCHLUSS_CLAIM_VERWAIST_NACH_MINUTEN,
   ABSCHLUSS_RETRY_LIMIT,
@@ -37,6 +38,7 @@ import {
 import { ANFRAGE_LOESCHT_NACH_MONATEN, BESTELLUNG_ANONYMISIERT_NACH_JAHREN } from '@/config/dsgvo';
 import { RECHNUNG_CLAIM_VERWAIST_NACH_MINUTEN, RECHNUNG_RETRY_LIMIT } from '@/config/rechnung';
 import { VERSANDLABEL_CLAIM_VERWAIST_NACH_MINUTEN } from '@/config/versand';
+import { ERSTATTUNG_CLAIM_VERWAIST_NACH_MINUTEN, ERSTATTUNG_RETRY_LIMIT } from '@/config/rueckerstattung';
 
 export const dynamic = 'force-dynamic';
 // Läufe können (mit echter Browser-Automatisierung) länger dauern.
@@ -103,12 +105,26 @@ async function handle(req: NextRequest): Promise<NextResponse> {
     rechnungenNachgeholt = { fehler: meldung };
   }
 
+  // ── Offene Rückerstattungen nachholen ───────────────────────────────
+  // Eigener Schritt statt Teil von raeumeAuf(): Jeder Treffer löst einen
+  // echten Zahlungsanbieter-Aufruf aus – kein reiner SQL-Aufräumschritt.
+  // Bewusst einzeln abgefangen, aus demselben Grund wie die Wartung oben.
+  let erstattungenNachgeholt: { gefunden: number; erstattet: number; weiterhinOffen: number } | { fehler: string };
+  try {
+    erstattungenNachgeholt = await holeOffeneErstattungenNach(ERSTATTUNG_RETRY_LIMIT);
+  } catch (fehler) {
+    const meldung = fehler instanceof Error ? fehler.message : String(fehler);
+    protokoll.fehler('CRON', 'erstattungs_retry_fehlgeschlagen', meldung);
+    erstattungenNachgeholt = { fehler: meldung };
+  }
+
   return NextResponse.json({
     ok: true,
     reclaimed,
     wartung,
     abschluesseNachgeholt,
     rechnungenNachgeholt,
+    erstattungenNachgeholt,
     processed: processed.length,
     results: processed.map((r) => ({ supplierId: r.supplierId, skipped: r.skipped, status: r.status, reason: r.reason })),
   });
@@ -132,6 +148,7 @@ async function raeumeAuf(): Promise<{
   abschluesseFreigegeben: number;
   rechnungserstellungenFreigegeben: number;
   versandlabelFreigegeben: number;
+  erstattungenFreigegeben: number;
   anfragenGeloescht: number;
   bestellungenAnonymisiert: number;
   fehler?: string;
@@ -144,12 +161,13 @@ async function raeumeAuf(): Promise<{
     abschluesseFreigegeben: 0,
     rechnungserstellungenFreigegeben: 0,
     versandlabelFreigegeben: 0,
+    erstattungenFreigegeben: 0,
     anfragenGeloescht: 0,
     bestellungenAnonymisiert: 0,
   };
   try {
     const db = createAdminClient();
-    const [limits, sitzungen, ereignisse, verfall, haengend, rechnungHaengend, versandHaengend, anfragen, anonymisiert] = await Promise.all([
+    const [limits, sitzungen, ereignisse, verfall, haengend, rechnungHaengend, versandHaengend, erstattungHaengend, anfragen, anonymisiert] = await Promise.all([
       db.rpc('raeume_rate_limit_auf'),
       db.rpc('raeume_admin_sitzungen_auf'),
       db.rpc('raeume_system_ereignisse_auf'),
@@ -161,6 +179,9 @@ async function raeumeAuf(): Promise<{
       // Migration 0026: dasselbe Prinzip für Rechnungs- und Label-Erstellung.
       db.rpc('gib_haengende_rechnungserstellung_frei', { p_minuten: RECHNUNG_CLAIM_VERWAIST_NACH_MINUTEN }),
       db.rpc('gib_haengende_versandlabel_frei', { p_minuten: VERSANDLABEL_CLAIM_VERWAIST_NACH_MINUTEN }),
+      // Migration 0029: dasselbe Prinzip für die Rückerstattung – sicher
+      // dank stabilem Idempotenzschlüssel, siehe config/rueckerstattung.ts.
+      db.rpc('gib_haengende_erstattungen_frei', { p_minuten: ERSTATTUNG_CLAIM_VERWAIST_NACH_MINUTEN }),
       // DSGVO (H6, Migration 0022): Anfragen ohne Vertrag löschen und
       // Bestellungen nach Ablauf der steuerlichen Aufbewahrungsfrist
       // anonymisieren – siehe docs/dsgvo-loeschkonzept.md. Bei den heutigen
@@ -171,7 +192,7 @@ async function raeumeAuf(): Promise<{
     ]);
     const fehlerObj =
       limits.error || sitzungen.error || ereignisse.error || verfall.error || haengend.error ||
-      rechnungHaengend.error || versandHaengend.error || anfragen.error || anonymisiert.error;
+      rechnungHaengend.error || versandHaengend.error || erstattungHaengend.error || anfragen.error || anonymisiert.error;
     if (fehlerObj) {
       protokoll.fehler('CRON', 'aufraeumen_fehlgeschlagen', fehlerObj.message);
       return { ...leer, fehler: fehlerObj.message };
@@ -184,6 +205,7 @@ async function raeumeAuf(): Promise<{
       abschluesseFreigegeben: (haengend.data as number) ?? 0,
       rechnungserstellungenFreigegeben: (rechnungHaengend.data as number) ?? 0,
       versandlabelFreigegeben: (versandHaengend.data as number) ?? 0,
+      erstattungenFreigegeben: (erstattungHaengend.data as number) ?? 0,
       anfragenGeloescht: (anfragen.data as number) ?? 0,
       bestellungenAnonymisiert: (anonymisiert.data as number) ?? 0,
     };

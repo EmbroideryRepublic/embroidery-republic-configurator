@@ -44,7 +44,14 @@ export default async function KontoBestellDetailPage({ params }: { params: { id:
         {bestellung.zustand === 'storniert' && (
           <section className="rounded-lg border border-brand/20 bg-cream/60 p-4">
             <h2 className="text-sm font-semibold text-brand">Diese Bestellung wurde storniert</h2>
-            <p className="mt-1 text-sm text-brand/70">Es sind Ihnen keine Kosten entstanden.</p>
+            {/* Wortlaut identisch zur Storno-Bestätigungsmail (OrderCancellationEmail.tsx)
+                und zur Token-Bestellansicht (bestellung/[token]/page.tsx) – dieselbe,
+                bereits freigegebene Formulierung an einer dritten Stelle angewendet. */}
+            <p className="mt-1 text-sm text-brand/70">
+              {bestellung.erstattungsstatus !== 'not_applicable'
+                ? 'Der bereits gezahlte Betrag wird vollständig zurückerstattet. Die Rückerstattung erfolgt über den ursprünglichen Zahlungsweg. Für diesen Auftrag wird keine Rechnung gestellt und wir beschaffen keine Ware.'
+                : 'Es sind Ihnen keine Kosten entstanden.'}
+            </p>
           </section>
         )}
 

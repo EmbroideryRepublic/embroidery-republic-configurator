@@ -30,20 +30,25 @@ erfolgreich war, bevor der nächste beginnt.
   direkter, unveränderter Nachfahre von `origin/main` – kein Merge-Konflikt
   zu erwarten.
 
-## ⚠️ Wichtiger Nebenbefund (unabhängig vom heutigen Code-Stand)
+## ✅ Ehemaliger Nebenbefund – erledigt seit 2026-08-18
 
-Das Vercel-Projekt läuft auf dem **Hobby-Tarif**. Laut Git-Historie
-(„Remove cron for Hobby plan", „Temporarily remove cron for Hobby
-deployment") wurden die geplanten Cron-Jobs (`vercel.json`/
-`api/cron/process-supplier-orders`) deshalb bereits vor dieser Sitzung aus
-der Produktions-Konfiguration entfernt. **Das bedeutet: DSGVO-Auto-
-Anonymisierung, Zahlungs-Timeout-Behandlung, Rate-Limit-Bereinigung und
-Lieferanten-Automatisierung laufen auf der aktuellen Live-Seite vermutlich
-nicht automatisch.** Das ist kein Ergebnis der heutigen Änderungen, sollte
-aber vor oder bald nach dem Go-live geklärt werden: entweder auf einen
-Vercel-Tarif mit Cron-Unterstützung wechseln, oder eine externe
-Cron-Instanz (z. B. GitHub Actions Scheduled Workflow, cron-job.org) gegen
-die per `CRON_SECRET` geschützten Endpunkte einrichten.
+Das Vercel-Projekt läuft auf dem **Hobby-Tarif**; die geplanten nativen
+Vercel-Cron-Jobs (`vercel.json`) wurden deshalb entfernt. **Das war bis
+2026-08-18 ein offenes Risiko** (DSGVO-Auto-Anonymisierung,
+Zahlungs-Timeout-Behandlung, Rate-Limit-Bereinigung, Lieferanten-
+Automatisierung und – seit dem Rückerstattungs-Workflow – der
+Cron-Reaper für hängengebliebene Erstattungs-Ansprüche hätten sonst
+nicht automatisch gelaufen).
+
+Seit Commit `0d35888d` (2026-08-18) ist das behoben: `.github/workflows/
+cron-buchhaltung-sync.yml` ruft als externer GitHub-Actions-Scheduler
+alle 10 Minuten (`*/10 * * * *`) denselben, per `CRON_SECRET` geschützten
+Endpunkt `/api/cron/process-supplier-orders` auf – exakt der hier
+ursprünglich empfohlene Lösungsweg. Ein hängengebliebener Anspruch bleibt
+dadurch höchstens rund 10–25 Minuten hängen, nicht dauerhaft. Einzige
+Voraussetzung, die sich aus dem Code selbst nicht prüfen lässt: Das
+GitHub-Repository-Secret `CRON_SECRET` muss tatsächlich gesetzt sein und
+mit dem in Vercel hinterlegten Wert übereinstimmen.
 
 ---
 

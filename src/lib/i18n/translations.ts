@@ -114,16 +114,19 @@ export const translations = {
     summary_add_to_cart: 'In den Warenkorb',
     summary_added: 'Zum Warenkorb hinzugefügt',
     summary_select_size_first: 'Bitte zuerst eine Größe und Menge wählen.',
+    summary_add_element_first: 'Bitte fügen Sie mindestens ein Logo oder einen Text hinzu.',
 
     cart_title: 'Warenkorb',
     cart_empty: 'Ihr Warenkorb ist noch leer. Konfigurieren Sie ein Produkt und legen Sie es in den Warenkorb.',
     cart_added_banner: 'Artikel wurde erfolgreich zum Warenkorb hinzugefügt.',
     cart_continue_shopping: 'Einkauf fortsetzen',
+    cart_edit_overwrite_confirm:
+      'Im Konfigurator liegt bereits ein ungespeichertes Design vor. Beim Laden dieser Warenkorb-Position geht es verloren. Fortfahren?',
     cart_total: 'Gesamtsumme',
     cart_submit: 'Anfrage abschicken',
     cart_free_shipping: '✓ Kostenloser Versand innerhalb Deutschlands.',
     cart_shipping_remaining: 'Noch {amount} bis zum kostenlosen Versand (DE, ab 75 €).',
-    cart_no_returns: 'Personalisierte Produkte sind vom Widerruf ausgeschlossen und können nicht zurückgegeben werden.',
+    cart_no_returns: 'Alle Produkte werden mit Logo oder Text individuell für Sie gefertigt und sind vom Widerruf ausgeschlossen.',
 
     compare_title: 'Produkte vergleichen',
     compare_add: 'Zum Vergleich hinzufügen',
@@ -284,6 +287,7 @@ export const translations = {
     checkout_shipping_free: 'kostenlos',
     checkout_shipping_hint: 'Noch {amount} bis zum kostenlosen Versand.',
     checkout_tax_line: 'enthaltene USt. ({rate} %)',
+    checkout_tax_line_kleinunternehmer: 'Kein Steuerausweis (§ 19 UStG)',
     checkout_terms: 'Ich akzeptiere die AGB und Datenschutzerklärung. Personalisierte Produkte sind vom Widerruf ausgeschlossen.',
     // Granulare Fassung der Checkbox oben (CartDrawer.tsx) – hält die
     // anklickbaren AGB-/Datenschutz-Links im Fließtext, statt sie wie
@@ -292,7 +296,7 @@ export const translations = {
     checkout_terms_agb_link: 'AGB',
     checkout_terms_and: 'und',
     checkout_terms_privacy_link: 'Datenschutzerklärung',
-    checkout_terms_no_withdrawal: 'Personalisierte Produkte sind vom Widerruf ausgeschlossen.',
+    checkout_terms_no_withdrawal: 'Alle Produkte werden mit Logo oder Text individuell für Sie gefertigt und sind vom Widerruf ausgeschlossen.',
     checkout_submit: 'Zahlungspflichtig bestellen',
     checkout_processing: 'Wird verarbeitet …',
     checkout_order_number_label: 'Bestellnummer',
@@ -317,6 +321,7 @@ export const translations = {
     inquiry_sending: 'Wird gesendet …',
     inquiry_sent_text: 'Vielen Dank für Ihre Anfrage! Wir melden uns in Kürze persönlich bei Ihnen — meist innerhalb eines Werktags. Bis dahin ist nichts bestellt und nichts bezahlt.',
     common_close: 'Schließen',
+    common_back: 'Zurück',
     checkout_grand_total: 'Gesamtsumme',
 
     size_guide_title: 'Größenleitfaden',
@@ -488,16 +493,20 @@ export const translations = {
     summary_add_to_cart: 'Add to cart',
     summary_added: 'Added to cart',
     summary_select_size_first: 'Please select a size and quantity first.',
+    summary_add_element_first: 'Please add at least one logo or text.',
 
     cart_title: 'Cart',
     cart_empty: 'Your cart is empty. Configure a product and click "Add to cart".',
     cart_added_banner: 'Item successfully added to your cart.',
     cart_continue_shopping: 'Continue shopping',
+    cart_edit_overwrite_confirm:
+      'The configurator already has an unsaved design. Loading this cart item will discard it. Continue?',
     cart_total: 'Total',
     cart_submit: 'Submit request',
     cart_free_shipping: '✓ Free shipping within Germany.',
     cart_shipping_remaining: '{amount} more until free shipping (DE, from €75).',
-    cart_no_returns: 'Personalized products are excluded from returns and cannot be sent back.',
+    cart_no_returns:
+      'All products are individually made for you with a logo or text and are excluded from the statutory right of withdrawal.',
 
     compare_title: 'Compare products',
     compare_add: 'Add to comparison',
@@ -645,12 +654,15 @@ export const translations = {
     checkout_shipping_free: 'free',
     checkout_shipping_hint: '{amount} more until free shipping.',
     checkout_tax_line: 'VAT included ({rate}%)',
-    checkout_terms: 'I accept the terms and privacy policy. Personalized products are excluded from returns.',
+    checkout_tax_line_kleinunternehmer: 'No VAT shown (§ 19 UStG small business exemption)',
+    checkout_terms:
+      'I accept the terms and privacy policy. Personalized products are excluded from the statutory right of withdrawal.',
     checkout_terms_prefix: 'I accept the',
     checkout_terms_agb_link: 'Terms & Conditions',
     checkout_terms_and: 'and',
     checkout_terms_privacy_link: 'Privacy Policy',
-    checkout_terms_no_withdrawal: 'Personalized products are excluded from returns.',
+    checkout_terms_no_withdrawal:
+      'All products are individually made for you with a logo or text and are excluded from the statutory right of withdrawal.',
     checkout_submit: 'Order with obligation to pay',
     checkout_processing: 'Processing …',
     checkout_order_number_label: 'Order number',
@@ -672,6 +684,7 @@ export const translations = {
     inquiry_sending: 'Sending …',
     inquiry_sent_text: "Thanks for your inquiry! We'll get back to you personally soon — usually within one business day. Nothing has been ordered or paid for yet.",
     common_close: 'Close',
+    common_back: 'Back',
     checkout_grand_total: 'Grand total',
 
     size_guide_title: 'Size guide',

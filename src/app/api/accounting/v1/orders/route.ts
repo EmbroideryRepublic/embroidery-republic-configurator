@@ -17,9 +17,11 @@
  *
  * ── Vertrag ─────────────────────────────────────────────────────────────
  * Antwortform: AccountingOrdersResponse (src/lib/accounting/types.ts).
- * Bewusst KEIN Steuerfeld – die Website berechnet aktuell pauschal 19 % USt.
- * unabhängig vom lokalen Kleinunternehmerstatus (offene, separate Frage);
- * dieser Endpunkt liefert ausschließlich den Bruttogesamtbetrag.
+ * Bewusst KEIN Steuerfeld – dieser Endpunkt liefert ausschließlich den
+ * Bruttogesamtbetrag. Die Website ist seit 2026-08-21 durchgängig
+ * Kleinunternehmer-bewusst (config/company.ts, IST_KLEINUNTERNEHMER; siehe
+ * lib/pricing/stages/orderStage.ts) – der Bruttobetrag selbst war davon nie
+ * betroffen, nur die (hier ohnehin nicht übertragene) Steueraufschlüsselung.
  *
  * ── Cursor ──────────────────────────────────────────────────────────────
  * Keyset-Paginierung über (accounting_ready_at, id) – siehe Migration

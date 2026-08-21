@@ -35,6 +35,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
   const productId = useConfiguratorStore((s) => s.productId);
   const colorId = useConfiguratorStore((s) => s.colorId);
   const sizeQuantities = useConfiguratorStore((s) => s.sizeQuantities);
+  const elements = useConfiguratorStore((s) => s.elements);
   const unitPrice = useConfiguratorStore((s) => s.unitPrice);
   const totalPrice = useConfiguratorStore((s) => s.totalPrice);
   const resetDesign = useConfiguratorStore((s) => s.resetDesign);
@@ -70,10 +71,14 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
   }, [totalPrice]);
 
   // Einzelstücke sind ausdrücklich erlaubt – es gibt keine Mindestmenge mehr.
-  // Bedingung ist nur noch, dass überhaupt etwas ausgewählt wurde UND der
-  // Preis gültig zustande kam: Ein Preis mit nicht verarbeiteten Bausteinen
-  // darf niemals in eine Bestellung übernommen werden.
-  const canAddToCart = productId !== null && colorId !== null && quantity > 0 && !priceHasErrors;
+  // Zusätzlich zu Auswahl und gültigem Preis gilt seit der Geschäftsregel vom
+  // 2026-08-19: Wir verkaufen ausschließlich personalisierte Ware, also muss
+  // mindestens ein Logo- oder Textelement vorhanden sein, bevor überhaupt in
+  // den Warenkorb gelegt werden kann. Serverseitig durchgesetzt in
+  // orderValidation.ts (pruefePosition) – diese Client-Prüfung ist nur die
+  // frühestmögliche, freundliche Rückmeldung, keine eigene Sicherheitsebene.
+  const hasElement = elements.length > 0;
+  const canAddToCart = productId !== null && colorId !== null && quantity > 0 && hasElement && !priceHasErrors;
 
   function handleAddToCart() {
     if (!canAddToCart || !productId || !colorId) return;
@@ -281,7 +286,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
       </button>
       {!canAddToCart && (
         <p className="text-center text-xs text-amber-600">
-          {t('summary_select_size_first')}
+          {quantity > 0 && !hasElement ? t('summary_add_element_first') : t('summary_select_size_first')}
         </p>
       )}
     </div>

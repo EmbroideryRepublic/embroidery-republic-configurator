@@ -8,22 +8,34 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { imAdminSichtbar, bearbeitungsGrenze, BEARBEITBARE_ZAHLUNGSZUSTAENDE } from '../orderVisibility';
+import {
+  imAdminSichtbar,
+  bearbeitungsGrenze,
+  listSichtbarkeitsFilter,
+  BEARBEITBARE_ZAHLUNGSZUSTAENDE,
+} from '../orderVisibility';
 import { STORNOFRIST_MS } from '@/config/orderProcess';
 
 const BESTELLT = '2026-07-20T10:00:00.000Z';
 const ENDE = new Date('2026-07-20T12:00:00.000Z');
 
 /**
- * Standardfall ist der RECHNUNGSKAUF (`not_required`) – so verhalten sich
- * alle bisherigen Bestellungen. Die Tests darunter belegen damit zugleich,
- * dass die Zahlungsprüfung am bestehenden Verhalten nichts ändert.
+ * Standardfall ist der RECHNUNGSKAUF (`not_required`), nie erstattungspflichtig
+ * (`not_applicable`) – so verhalten sich alle bisherigen Bestellungen. Die
+ * Tests darunter belegen damit zugleich, dass die Zahlungs-/Erstattungsprüfung
+ * am bestehenden Verhalten nichts ändert.
  */
-const bestellung = (status = 'new', orderType = 'order', paymentStatus = 'not_required') => ({
+const bestellung = (
+  status = 'new',
+  orderType = 'order',
+  paymentStatus = 'not_required',
+  refundStatus = 'not_applicable'
+) => ({
   createdAt: BESTELLT,
   status,
   orderType,
   paymentStatus,
+  refundStatus,
 });
 
 test('während der Stornofrist ist eine Bestellung NICHT sichtbar', () => {
@@ -35,7 +47,9 @@ test('nach Ablauf der Stornofrist wird sie sichtbar', () => {
   assert.equal(imAdminSichtbar(bestellung(), new Date(ENDE.getTime() + 1000)), true);
 });
 
-test('stornierte Bestellungen erscheinen NIEMALS – auch nicht nach Fristablauf', () => {
+test('stornierte Bestellungen ohne offene Rückerstattung erscheinen NIEMALS – auch nicht nach Fristablauf', () => {
+  // refundStatus bleibt beim Default 'not_applicable' – der Regelfall
+  // (Rechnungskauf oder nie bezahlt).
   assert.equal(imAdminSichtbar(bestellung('cancelled'), new Date(ENDE.getTime() + 86_400_000)), false);
   // Auch während der Frist nicht.
   assert.equal(imAdminSichtbar(bestellung('cancelled'), new Date(ENDE.getTime() - 1000)), false);
@@ -136,4 +150,47 @@ test('die Liste der bearbeitbaren Zahlungszustände deckt sich mit der Regel', (
       `„${zustand}" darf nicht bearbeitbar sein`
     );
   }
+});
+
+// ── Rückerstattung (Regel 5) ─────────────────────────────────────────────
+//
+// Der teuerste Fehler hier wäre das GEGENTEIL des Zahlungs-Risikos oben:
+// Eine stornierte, bereits bezahlte Bestellung mit noch offener
+// Rückerstattung verschwindet spurlos aus dem Adminbereich und niemand
+// bemerkt, dass Geld noch beim Betreiber liegt.
+
+test('eine stornierte, bezahlte Bestellung mit offener Rückerstattung bleibt sichtbar', () => {
+  for (const refundStatus of ['required', 'processing', 'failed']) {
+    assert.equal(
+      imAdminSichtbar(bestellung('cancelled', 'order', 'paid', refundStatus), new Date(ENDE.getTime() + 86_400_000)),
+      true,
+      `refund_status „${refundStatus}" muss die Bestellung sichtbar halten`
+    );
+    // Auch während der (für eine bereits stornierte Bestellung ohnehin
+    // bedeutungslosen) Stornofrist.
+    assert.equal(
+      imAdminSichtbar(bestellung('cancelled', 'order', 'paid', refundStatus), new Date(ENDE.getTime() - 1000)),
+      true
+    );
+  }
+});
+
+test('eine abgeschlossene Rückerstattung macht die stornierte Bestellung wieder unsichtbar', () => {
+  assert.equal(
+    imAdminSichtbar(bestellung('cancelled', 'order', 'paid', 'refunded'), new Date(ENDE.getTime() + 86_400_000)),
+    false,
+    'refund_status "refunded" heißt: nichts mehr zu tun – Regel 1 greift wieder'
+  );
+});
+
+test('listSichtbarkeitsFilter beschreibt exakt dieselben zwei Zweige wie imAdminSichtbar', () => {
+  const filter = listSichtbarkeitsFilter(ENDE);
+  // Kein Aufruf gegen eine echte Datenbank (siehe Kopfkommentar der Datei) –
+  // dieser Test sichert nur die STRUKTUR des Ausdrucks ab: beide Zweige aus
+  // der Regel müssen textlich vorhanden sein, damit ein künftiger Umbau der
+  // Zustandsnamen (z.B. ein neuer refund_status-Wert) hier aktiv auffällt.
+  assert.match(filter, /status\.neq\.cancelled/);
+  assert.match(filter, /payment_status\.in\.\(not_required,paid\)/);
+  assert.match(filter, /status\.eq\.cancelled/);
+  assert.match(filter, /refund_status\.in\.\(required,processing,failed\)/);
 });

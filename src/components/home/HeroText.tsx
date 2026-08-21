@@ -20,15 +20,17 @@ export function HeroText() {
 
   return (
     <>
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">{translate('hero_tagline', language)}</p>
+      <p className="inline-flex items-center rounded-full border border-gold/30 bg-white/60 px-4 py-1.5 text-[11px] uppercase tracking-[0.3em] text-gold-dark">
+        {translate('hero_tagline', language)}
+      </p>
       <h1
         aria-label={titel.replace('\n', ' ')}
-        className="mt-7 font-serif text-[clamp(3.5rem,7.6vw,7.5rem)] font-normal leading-[0.9] tracking-[-0.025em] text-brand"
+        className="mt-7 font-serif text-[clamp(3rem,5.6vw,5.75rem)] font-normal leading-[0.98] tracking-[-0.025em] text-brand"
       >
         {zeile1}
         {zeile2 && <span className="mt-1 block text-gold">{zeile2}</span>}
       </h1>
-      <p className="mt-9 max-w-[19rem] text-[17px] leading-relaxed text-brand/70">
+      <p className="mt-8 max-w-[26rem] text-[17px] leading-relaxed text-brand/70">
         {translate('hero_subtitle', language)}
       </p>
     </>

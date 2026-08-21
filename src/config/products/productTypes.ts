@@ -74,38 +74,38 @@ export const PRODUCT_TYPES: Record<ProductType, ProductTypeDef> = {
   tshirt: {
     labelSingular: 'T-Shirt', labelPlural: 'T-Shirts', order: 1, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
-    komplement: ['hoodie', 'polo', 'sweater'], kachelFarbe: ['rot'], kachelText: 'Klassisch, bequem, vielseitig.',
+    komplement: ['hoodie', 'polo', 'sweater'], kachelFarbe: ['rot'], kachelText: 'Der Klassiker für jedes Motiv.',
   },
   polo: {
     labelSingular: 'Polo', labelPlural: 'Polos', order: 2, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
-    komplement: ['tshirt', 'sweater', 'jacket'], kachelFarbe: ['blau'], kachelText: 'Sportlich, elegant, hochwertig.',
+    komplement: ['tshirt', 'sweater', 'jacket'], kachelFarbe: ['blau'], kachelText: 'Der saubere Auftritt fürs Team.',
   },
   hoodie: {
     labelSingular: 'Hoodie', labelPlural: 'Hoodies', order: 3, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
-    komplement: ['tshirt', 'zip-hoodie', 'sweater'], kachelFarbe: ['grau'], kachelText: 'Bequem, warm, ein echter Klassiker.',
+    komplement: ['tshirt', 'zip-hoodie', 'sweater'], kachelFarbe: ['grau'], kachelText: 'Schwer im Griff, groß in der Wirkung.',
     hero: true, heroBild: '/buehne/hoodie.png', heroAlt: 'Hoodie aus dem Sortiment, bereit zur Veredelung',
   },
   'zip-hoodie': {
     labelSingular: 'Zip-Hoodie', labelPlural: 'Zip-Hoodies', order: 4, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
-    komplement: ['hoodie', 'tshirt', 'jacket'], kachelFarbe: ['schwarz'], kachelText: 'Praktisch, modern, lässig.',
+    komplement: ['hoodie', 'tshirt', 'jacket'], kachelFarbe: ['schwarz'], kachelText: 'An- und ausgezogen in einem Zug.',
   },
   sweater: {
     labelSingular: 'Sweater', labelPlural: 'Sweater', order: 5, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
-    komplement: ['tshirt', 'hoodie', 'longsleeve'], kachelFarbe: ['gruen'], kachelText: 'Wärmend, hochwertig, zeitlos.',
+    komplement: ['tshirt', 'hoodie', 'longsleeve'], kachelFarbe: ['gruen'], kachelText: 'Zurückhaltend, aber nie einfach.',
   },
   longsleeve: {
     labelSingular: 'Longsleeve', labelPlural: 'Longsleeves', order: 6, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
-    komplement: ['tshirt', 'hoodie', 'sweater'], kachelFarbe: ['weiss'], kachelText: 'Ideal zum Layern, stark im Look.',
+    komplement: ['tshirt', 'hoodie', 'sweater'], kachelFarbe: ['weiss'], kachelText: 'Die zweite Lage, die man sieht.',
   },
   jacket: {
     labelSingular: 'Jacke', labelPlural: 'Jacken', order: 7, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
-    komplement: ['hoodie', 'sweater', 'vest'], kachelFarbe: ['blau'], kachelText: 'Schützt, hält warm, macht Eindruck.',
+    komplement: ['hoodie', 'sweater', 'vest'], kachelFarbe: ['blau'], kachelText: 'Wetterfest und trotzdem repräsentativ.',
   },
   // Bewusst vorbereitete Kategorie ohne Bestandsprodukt: Register-Eintrag,
   // Größenleiter und Kachel stehen bereit, aber im Katalog gibt es aktuell
@@ -114,7 +114,7 @@ export const PRODUCT_TYPES: Record<ProductType, ProductTypeDef> = {
   vest: {
     labelSingular: 'Weste', labelPlural: 'Westen', order: 8, primaryView: 'front',
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
-    komplement: ['tshirt', 'jacket', 'hoodie'], kachelFarbe: ['rot'], kachelText: 'Leicht, sportlich, das gewisse Etwas.',
+    komplement: ['tshirt', 'jacket', 'hoodie'], kachelFarbe: ['rot'], kachelText: 'Der Layer für die Übergangszeit.',
   },
 };
 

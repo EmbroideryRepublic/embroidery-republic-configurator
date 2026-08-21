@@ -39,7 +39,7 @@ const PUNKTE = 6;
 /** Farbpunkt mit leichtem Glanz und weichem Rand – wirkt wie Stoff, nicht
  *  wie ein Farbfeld aus einem Formular. */
 const PUNKT =
-  'h-[18px] w-[18px] rounded-full ring-1 ring-black/10 ' +
+  'h-[18px] w-[18px] flex-shrink-0 rounded-full ring-1 ring-black/10 ' +
   'shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.45),inset_0_-1.5px_2px_rgba(0,0,0,0.12)] ' +
   'transition-transform duration-300 ease-out group-hover:scale-105';
 

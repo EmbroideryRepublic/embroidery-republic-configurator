@@ -53,7 +53,7 @@ export function Veredelungsverfahren() {
               <Icon className="h-6 w-6" aria-hidden />
             </span>
             <h3 className="mt-6 font-serif text-[24px] font-normal text-brand">{v.titel}</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-brand/55">{v.claim}</p>
+            <p className="mt-2 text-[15px] leading-relaxed text-brand/70">{v.claim}</p>
             <ul className="mt-6 space-y-3 border-t border-brand/[0.06] pt-6">
               {v.punkte.map((p) => (
                 <li key={p} className="flex items-start gap-3 text-[14px] leading-relaxed text-brand/70">

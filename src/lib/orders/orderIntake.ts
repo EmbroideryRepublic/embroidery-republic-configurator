@@ -32,7 +32,7 @@ import { erzeugeBestellToken } from './orderAccessToken';
 import {
   sendOrderConfirmationEmail, sendInternalOrderNotificationEmail, type EmailVersandErgebnis,
 } from '@/lib/email/orderEmails';
-import { protokolliereBestellereignis } from './orderService';
+import { protokolliereBestellereignis, protokolliereVersand } from './orderService';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 
 /** Basis-URL für Links in E-Mails. */
@@ -52,61 +52,6 @@ export function bestellansichtUrl(orderId: string): string | null {
     return null;
   }
   return `${basisUrl()}/bestellung/${token}`;
-}
-
-/**
- * Hält einen einzelnen Versandvorgang in der Bestell-Historie fest.
- *
- * Nimmt bewusst das rohe `PromiseSettledResult` entgegen: So gibt es genau
- * einen Ort, an dem „geplant / gesendet / fehlgeschlagen" unterschieden wird,
- * statt die Fallunterscheidung je Empfänger zu wiederholen.
- *
- * Nicht-fatal wie die Historie insgesamt – `protokolliereBestellereignis`
- * schluckt seine eigenen Fehler.
- */
-export async function protokolliereVersand(
-  orderId: string,
-  anlass: string,
-  ergebnis: PromiseSettledResult<EmailVersandErgebnis>,
-  geplantFuer?: string
-): Promise<void> {
-  if (ergebnis.status === 'rejected') {
-    await protokolliereBestellereignis({
-      orderId,
-      eventType: 'email_failed',
-      reason: `E-Mail „${anlass}" konnte nicht versendet werden.`,
-      detail: {
-        anlass,
-        fehler: ergebnis.reason instanceof Error ? ergebnis.reason.message : String(ergebnis.reason),
-      },
-    });
-    return;
-  }
-
-  // Ein abgelehnter Versand meldet sich NICHT immer über eine Ausnahme –
-  // sendEmail gibt Fehler auch als `success: false` zurück. Ohne diese
-  // Prüfung stünde „versendet" in der Historie, obwohl nichts rausging.
-  // `ergebnis.value.error` ist die tatsächliche Meldung des Versanddiensts
-  // (seit orderEmails.tsx durchgereicht) – ohne sie war ein Fehlschlag nur
-  // über ephemere Server-Logs nachvollziehbar (siehe Vorfall 2026-08-21).
-  if (!ergebnis.value.success) {
-    await protokolliereBestellereignis({
-      orderId,
-      eventType: 'email_failed',
-      reason: `E-Mail „${anlass}" wurde vom Versanddienst abgelehnt.`,
-      detail: { anlass, fehler: ergebnis.value.error ?? null },
-    });
-    return;
-  }
-
-  await protokolliereBestellereignis({
-    orderId,
-    eventType: geplantFuer ? 'email_scheduled' : 'email_sent',
-    reason: geplantFuer
-      ? `E-Mail „${anlass}" für ${geplantFuer} eingeplant.`
-      : `E-Mail „${anlass}" versendet.`,
-    detail: { anlass, messageId: ergebnis.value.messageId ?? null, geplantFuer: geplantFuer ?? null },
-  });
 }
 
 /**

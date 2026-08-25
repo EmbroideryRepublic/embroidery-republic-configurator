@@ -37,8 +37,8 @@ import { uploadProductionFile, getProductionFileSignedUrl } from '@/lib/supabase
 import { renderProductionSheet } from '@/lib/production/buildProductionSheet';
 import { renderPrintView } from '@/lib/rendering/renderPrintView';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
-import { verarbeiteBestelleingang, versucheBestellbestaetigung, protokolliereVersand } from './orderIntake';
-import { protokolliereBestellereignis, persistiereKritischMitWiederholung } from './orderService';
+import { verarbeiteBestelleingang, versucheBestellbestaetigung } from './orderIntake';
+import { protokolliereBestellereignis, protokolliereVersand, persistiereKritischMitWiederholung } from './orderService';
 import { buildOrderNumber, PRINT_VIEW_LABELS } from '@/lib/actions/orderTypes';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
 import { brauchtVorabZahlung } from '@/config/zahlung';

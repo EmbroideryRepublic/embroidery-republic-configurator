@@ -29,7 +29,12 @@ import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
 import { istUebergangErlaubt } from '@/config/orderStatus';
 import { produktionsfreigabeErlaubt } from '@/lib/orders/orderVisibility';
-import { sendOrderShippedEmail, sendOrderInProductionEmail, sendOrderCompletedEmail } from '@/lib/email/orderEmails';
+import {
+  sendOrderShippedEmail,
+  sendOrderInProductionEmail,
+  sendOrderCompletedEmail,
+  type EmailVersandErgebnis,
+} from '@/lib/email/orderEmails';
 
 export type StornoErgebnis =
   | {
@@ -225,14 +230,14 @@ export async function setzeBestellstatus(
   // unabhängig davon, ob der Versand gelingt (dieselbe Haltung wie beim
   // Bestellabschluss selbst – E-Mail ist nachgelagert, nie steuernd).
   if (nach === 'shipped' && bestellung.email) {
+    // Fällt auf die bereits gespeicherte Sendungsnummer zurück (z.B. durch
+    // die DHL-Label-Erstellung, siehe shippingService.ts), wenn beim
+    // Statuswechsel selbst keine manuell eingegeben wurde – sonst müsste
+    // der Admin eine bereits bekannte Nummer ein zweites Mal abtippen.
+    // Eine explizit übergebene Nummer hat weiterhin Vorrang (bewusste
+    // Überschreibung, z.B. bei einem abweichenden Versandweg).
+    const trackingNummer = optionen.trackingNummer?.trim() || bestellung.tracking_number || null;
     try {
-      // Fällt auf die bereits gespeicherte Sendungsnummer zurück (z.B. durch
-      // die DHL-Label-Erstellung, siehe shippingService.ts), wenn beim
-      // Statuswechsel selbst keine manuell eingegeben wurde – sonst müsste
-      // der Admin eine bereits bekannte Nummer ein zweites Mal abtippen.
-      // Eine explizit übergebene Nummer hat weiterhin Vorrang (bewusste
-      // Überschreibung, z.B. bei einem abweichenden Versandweg).
-      const trackingNummer = optionen.trackingNummer?.trim() || bestellung.tracking_number || null;
       const versand = await sendOrderShippedEmail({
         orderId,
         orderNumber: buildOrderNumber(orderId),
@@ -240,17 +245,9 @@ export async function setzeBestellstatus(
         trackingNummer,
         carrier: bestellung.carrier,
       });
-      await protokolliereBestellereignis(
-        {
-          orderId,
-          eventType: 'email_sent',
-          reason: 'Versandbenachrichtigung an den Kunden versendet.',
-          detail: { anlass: 'order_shipped', messageId: versand?.messageId ?? null },
-        },
-        db
-      );
+      await protokolliereVersand(orderId, 'order_shipped', { status: 'fulfilled', value: versand });
     } catch (err) {
-      console.error(`[orders] Versandmail ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+      await protokolliereVersand(orderId, 'order_shipped', { status: 'rejected', reason: err });
     }
   }
 
@@ -261,17 +258,9 @@ export async function setzeBestellstatus(
         orderNumber: buildOrderNumber(orderId),
         empfaenger: bestellung.email,
       });
-      await protokolliereBestellereignis(
-        {
-          orderId,
-          eventType: 'email_sent',
-          reason: 'Produktionsbeginn-Benachrichtigung an den Kunden versendet.',
-          detail: { anlass: 'order_in_production', messageId: versand?.messageId ?? null },
-        },
-        db
-      );
+      await protokolliereVersand(orderId, 'order_in_production', { status: 'fulfilled', value: versand });
     } catch (err) {
-      console.error(`[orders] Produktionsmail ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+      await protokolliereVersand(orderId, 'order_in_production', { status: 'rejected', reason: err });
     }
   }
 
@@ -282,17 +271,9 @@ export async function setzeBestellstatus(
         orderNumber: buildOrderNumber(orderId),
         empfaenger: bestellung.email,
       });
-      await protokolliereBestellereignis(
-        {
-          orderId,
-          eventType: 'email_sent',
-          reason: 'Abschluss-Benachrichtigung an den Kunden versendet.',
-          detail: { anlass: 'order_completed', messageId: versand?.messageId ?? null },
-        },
-        db
-      );
+      await protokolliereVersand(orderId, 'order_completed', { status: 'fulfilled', value: versand });
     } catch (err) {
-      console.error(`[orders] Abschlussmail ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+      await protokolliereVersand(orderId, 'order_completed', { status: 'rejected', reason: err });
     }
   }
 
@@ -309,17 +290,13 @@ export async function setzeBestellstatus(
         storniertAm: jetzt.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' }),
         erstattungFaellig: erstattungAusstehend,
       });
-      await protokolliereBestellereignis(
-        {
-          orderId,
-          eventType: 'email_sent',
-          reason: 'Storno-Bestätigung an den Kunden versendet (Kulanzstornierung durch den Betreiber).',
-          detail: { anlass: 'order_cancelled', quelle: 'admin', messageId: versand?.messageId ?? null },
-        },
-        db
-      );
+      await protokolliereVersand(orderId, 'order_cancelled', { status: 'fulfilled', value: versand }, undefined, {
+        quelle: 'admin',
+      });
     } catch (err) {
-      console.error(`[orders] Storno-Bestätigung (Admin) ${orderId} fehlgeschlagen (nicht-fatal):`, err);
+      await protokolliereVersand(orderId, 'order_cancelled', { status: 'rejected', reason: err }, undefined, {
+        quelle: 'admin',
+      });
     }
   }
 
@@ -362,6 +339,71 @@ export async function protokolliereBestellereignis(
   } catch (err) {
     console.warn(`[orders] Historie-Eintrag "${eintrag.eventType}" fehlgeschlagen:`, err);
   }
+}
+
+/**
+ * Hält einen einzelnen Versandvorgang in der Bestell-Historie fest.
+ *
+ * Nimmt bewusst das rohe `PromiseSettledResult` entgegen: So gibt es genau
+ * einen Ort, an dem „geplant / gesendet / fehlgeschlagen" unterschieden wird,
+ * statt die Fallunterscheidung je Aufrufer zu wiederholen. Ein abgelehnter
+ * Versand meldet sich NICHT immer über eine Ausnahme – sendEmail.ts gibt
+ * Fehler auch als `success: false` zurück; ohne die Prüfung von
+ * `ergebnis.value.success` stünde „versendet" in der Historie, obwohl nichts
+ * rausging (Vorfall 2026-08-21, Bestellbestätigung).
+ *
+ * Lebt bewusst HIER (nicht in orderIntake.ts, wo diese Funktion ursprünglich
+ * stand) statt dort: orderIntake.ts importiert bereits protokolliereBestell-
+ * ereignis von hier, ein Import in die Gegenrichtung wäre ein Zirkelimport.
+ * orderIntake.ts und orderCompletion.ts importieren protokolliereVersand
+ * seitdem von hier.
+ *
+ * Nicht-fatal wie die Historie insgesamt – `protokolliereBestellereignis`
+ * schluckt seine eigenen Fehler.
+ */
+export async function protokolliereVersand(
+  orderId: string,
+  anlass: string,
+  ergebnis: PromiseSettledResult<EmailVersandErgebnis>,
+  geplantFuer?: string,
+  // Zusätzliche Detail-Felder, die in ALLE drei Zweige (fehlgeschlagen,
+  // abgelehnt, versendet) einfließen – z.B. `quelle: 'admin'`, um eine
+  // Kulanzstornierung durch den Betreiber vom selben `anlass` einer
+  // Selbststornierung durch den Kunden im Audit-Verlauf zu unterscheiden.
+  extraDetail?: Record<string, unknown>
+): Promise<void> {
+  if (ergebnis.status === 'rejected') {
+    await protokolliereBestellereignis({
+      orderId,
+      eventType: 'email_failed',
+      reason: `E-Mail „${anlass}" konnte nicht versendet werden.`,
+      detail: {
+        anlass,
+        fehler: ergebnis.reason instanceof Error ? ergebnis.reason.message : String(ergebnis.reason),
+        ...extraDetail,
+      },
+    });
+    return;
+  }
+
+  if (!ergebnis.value.success) {
+    await protokolliereBestellereignis({
+      orderId,
+      eventType: 'email_failed',
+      reason: `E-Mail „${anlass}" wurde vom Versanddienst abgelehnt.`,
+      detail: { anlass, fehler: ergebnis.value.error ?? null, ...extraDetail },
+    });
+    return;
+  }
+
+  await protokolliereBestellereignis({
+    orderId,
+    eventType: geplantFuer ? 'email_scheduled' : 'email_sent',
+    reason: geplantFuer
+      ? `E-Mail „${anlass}" für ${geplantFuer} eingeplant.`
+      : `E-Mail „${anlass}" versendet.`,
+    detail: { anlass, messageId: ergebnis.value.messageId ?? null, geplantFuer: geplantFuer ?? null, ...extraDetail },
+  });
 }
 
 /**
@@ -574,26 +616,13 @@ export async function storniereBestellungDurchKunden(
         storniertAm: jetzt.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' }),
         erstattungFaellig: bestellung.payment_status === 'paid',
       });
-      await protokolliereBestellereignis(
-        {
-          orderId,
-          eventType: 'email_sent',
-          reason: 'Storno-Bestätigung an den Kunden versendet.',
-          detail: { anlass: 'order_cancelled', messageId: versand?.messageId ?? null },
-        },
-        db
-      );
+      await protokolliereVersand(orderId, 'order_cancelled', { status: 'fulfilled', value: versand }, undefined, {
+        quelle: 'customer',
+      });
     } catch (err) {
-      console.error(`[orders] Storno-Bestätigung ${orderId} fehlgeschlagen (nicht-fatal):`, err);
-      await protokolliereBestellereignis(
-        {
-          orderId,
-          eventType: 'email_failed',
-          reason: 'Storno-Bestätigung konnte nicht versendet werden.',
-          detail: { anlass: 'order_cancelled', fehler: err instanceof Error ? err.message : String(err) },
-        },
-        db
-      );
+      await protokolliereVersand(orderId, 'order_cancelled', { status: 'rejected', reason: err }, undefined, {
+        quelle: 'customer',
+      });
     }
   } else {
     console.warn(`[orders] Storno-Bestätigung ${orderId} übersprungen: keine E-Mail-Adresse hinterlegt.`);

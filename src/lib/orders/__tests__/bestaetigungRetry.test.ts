@@ -18,6 +18,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
 const INTAKE = path.join(process.cwd(), 'src', 'lib', 'orders', 'orderIntake.ts');
+const SERVICE = path.join(process.cwd(), 'src', 'lib', 'orders', 'orderService.ts');
 const COMPLETION = path.join(process.cwd(), 'src', 'lib', 'orders', 'orderCompletion.ts');
 const CRON_ROUTE = path.join(process.cwd(), 'src', 'app', 'api', 'cron', 'process-supplier-orders', 'route.ts');
 const CLAIM_MIGRATION = path.join(process.cwd(), 'supabase', 'migrations', '0030_bestellbestaetigung_retry.sql');
@@ -99,10 +100,12 @@ test('holeOffeneBestellbestaetigungenNach ruft ausschließlich den Bestätigungs
 });
 
 test('ein abgelehnter Versand protokolliert die tatsächliche Fehlermeldung, nicht nur den Anlass', () => {
-  const inhalt = readFileSync(INTAKE, 'utf8');
-  // Zwei email_failed-Stellen existieren (rejected-Zweig und
-  // success:false-Zweig) – die zweite ist die relevante: sendEmail wirft nie,
-  // ein abgelehnter Versand meldet sich fast immer über success:false.
+  // protokolliereVersand lebt seit 2026-08-25 in orderService.ts (nicht mehr
+  // in orderIntake.ts) – siehe statusEmailLogging.test.ts. Die Prüfung selbst
+  // bleibt unverändert: Zwei email_failed-Stellen existieren (rejected-Zweig
+  // und success:false-Zweig) – die zweite ist die relevante: sendEmail wirft
+  // nie, ein abgelehnter Versand meldet sich fast immer über success:false.
+  const inhalt = readFileSync(SERVICE, 'utf8');
   const ersteStelle = inhalt.indexOf("eventType: 'email_failed'");
   const stelle = inhalt.indexOf("eventType: 'email_failed'", ersteStelle + 1);
   assert.ok(stelle > 0);

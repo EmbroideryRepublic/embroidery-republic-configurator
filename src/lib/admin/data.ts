@@ -30,6 +30,36 @@ export interface AdminOrderListRow {
   adminStatus: AdminStatus;
 }
 
+/**
+ * Ein platziertes Personalisierungselement (Logo/Text) für die
+ * Produktionsvorschau – aus `configuration_elements` gelesen, keine eigene
+ * Datenhaltung. Feldnamen bewusst analog zu `OrderElementRecord`
+ * (lib/actions/orderTypes.ts), das dieselbe Zeile fürs Rendering nutzt.
+ */
+export interface AdminOrderElementRow {
+  type: 'logo' | 'text';
+  view: string;
+  xCm: number;
+  yCm: number;
+  widthCm: number;
+  heightCm: number;
+  rotationDeg: number;
+  // Text-spezifisch
+  content?: string;
+  fontFamily?: string;
+  fontSizePx?: number;
+  color?: string;
+  bold?: boolean;
+  italic?: boolean;
+  align?: string;
+  // Logo-spezifisch
+  fileName?: string;
+  /** Signierte URL der tatsächlich verwendeten (ggf. freigestellten) Logo-
+   *  Datei – dieselbe, die das Rendering nutzt. null, wenn keine Datei
+   *  hinterlegt ist oder die Signed-URL nicht erzeugt werden konnte. */
+  logoPreviewUrl: string | null;
+}
+
 export interface AdminOrderItemRow {
   productId: string;
   productName: string;
@@ -39,6 +69,17 @@ export interface AdminOrderItemRow {
   sizeQuantities: Record<string, number>;
   unitPrice: number;
   quantity: number;
+  /** Platzierte Logos/Texte dieser Position, aus configuration_elements. */
+  elements: AdminOrderElementRow[];
+  /** Signierte URLs der bereits in Phase 2 gerenderten Druckvorschauen
+   *  (Kleidungsstück + Motive exakt wie im Editor platziert, siehe
+   *  lib/rendering/renderPrintView.ts) – EINE Datei je Ansicht mit
+   *  mindestens einem Element. Kein neues Rendering: Diese PNGs liegen
+   *  bereits im Storage, sobald Phase 2 einmal erfolgreich lief (siehe
+   *  orderCompletion.ts::erzeugeDruckvorschauen). Fehlender Eintrag = für
+   *  diese Ansicht (noch) keine Vorschau vorhanden (Rendering nicht-fatal
+   *  fehlgeschlagen, oder Phase 2 lief noch nicht – z.B. Zahlung offen). */
+  previewUrlByView: Partial<Record<string, string>>;
 }
 
 export interface AdminSupplierOrderRow {
@@ -313,11 +354,29 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
 
   const { data: items, error: itemsError } = await supabase
     .from('order_items')
-    .select('product_id, product_name, color_id, color_name, print_method, size_quantities, unit_price, quantity')
+    .select('id, product_id, product_name, color_id, color_name, print_method, size_quantities, unit_price, quantity')
     .eq('order_id', orderId);
 
   if (itemsError) {
     console.error('[admin] order_items konnten nicht geladen werden:', itemsError);
+  }
+
+  const itemIds = (items ?? []).map((row) => row.id as string);
+
+  // Personalisierungselemente (Logo/Text) je Position – für die
+  // Produktionsvorschau unten. Keine neue Datenhaltung: dieselbe Tabelle,
+  // die auch das Rendering (Phase 2) und das Produktionsblatt-PDF nutzen.
+  const { data: elementRows, error: elementsError } = itemIds.length
+    ? await supabase
+        .from('configuration_elements')
+        .select(
+          'order_item_id, element_type, view, x_cm, y_cm, width_cm, height_cm, rotation_deg, text_content, font_family, font_size, font_color, font_weight, font_style, text_align, file_name, display_file_url'
+        )
+        .in('order_item_id', itemIds)
+    : { data: [] as Record<string, unknown>[], error: null };
+
+  if (elementsError) {
+    console.error('[admin] configuration_elements konnten nicht geladen werden:', elementsError);
   }
 
   const { data: supplierRows, error: supplierError } = await supabase
@@ -331,16 +390,66 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     console.error('[admin] supplier_orders konnten nicht geladen werden:', supplierError);
   }
 
-  const itemRows: AdminOrderItemRow[] = (items ?? []).map((row) => ({
-    productId: row.product_id as string,
-    productName: row.product_name as string,
-    colorId: row.color_id as string,
-    colorName: row.color_name as string,
-    printMethod: (row.print_method as string | null) ?? null,
-    sizeQuantities: (row.size_quantities ?? {}) as Record<string, number>,
-    unitPrice: Number(row.unit_price ?? 0),
-    quantity: Number(row.quantity ?? 0),
-  }));
+  const itemRows: AdminOrderItemRow[] = await Promise.all(
+    (items ?? []).map(async (row, itemIndex) => {
+      const eigeneElemente = (elementRows ?? []).filter((el) => el.order_item_id === row.id);
+
+      const elements: AdminOrderElementRow[] = await Promise.all(
+        eigeneElemente.map(async (el) => {
+          const istLogo = el.element_type === 'logo';
+          const displayPath = (el.display_file_url as string | null) ?? null;
+          return {
+            type: istLogo ? 'logo' : 'text',
+            view: el.view as string,
+            xCm: Number(el.x_cm ?? 0),
+            yCm: Number(el.y_cm ?? 0),
+            widthCm: Number(el.width_cm ?? 0),
+            heightCm: Number(el.height_cm ?? 0),
+            rotationDeg: Number(el.rotation_deg ?? 0),
+            content: (el.text_content as string | null) ?? undefined,
+            fontFamily: (el.font_family as string | null) ?? undefined,
+            fontSizePx: el.font_size !== null && el.font_size !== undefined ? Number(el.font_size) : undefined,
+            color: (el.font_color as string | null) ?? undefined,
+            bold: el.font_weight === 'bold',
+            italic: el.font_style === 'italic',
+            align: (el.text_align as string | null) ?? undefined,
+            fileName: (el.file_name as string | null) ?? undefined,
+            logoPreviewUrl: istLogo && displayPath ? await getProductionFileSignedUrl(displayPath) : null,
+          } satisfies AdminOrderElementRow;
+        })
+      );
+
+      // Bereits gerenderte Druckvorschau je Ansicht mit mindestens einem
+      // Element – derselbe Speicherpfad, den orderCompletion.ts beim
+      // Bestellabschluss befüllt (erzeugeDruckvorschauen). Kein neues
+      // Rendering: getProductionFileSignedUrl liefert null, wenn die Datei
+      // (noch) nicht existiert, wirft nicht.
+      const ansichtenMitElementen = [...new Set(elements.map((e) => e.view))];
+      const previewEintraege = await Promise.all(
+        ansichtenMitElementen.map(async (view) => {
+          const pfad = `orders/${orderId}/preview-item${itemIndex}-${view}.png`;
+          return [view, await getProductionFileSignedUrl(pfad)] as const;
+        })
+      );
+      const previewUrlByView: Partial<Record<string, string>> = {};
+      for (const [view, url] of previewEintraege) {
+        if (url) previewUrlByView[view] = url;
+      }
+
+      return {
+        productId: row.product_id as string,
+        productName: row.product_name as string,
+        colorId: row.color_id as string,
+        colorName: row.color_name as string,
+        printMethod: (row.print_method as string | null) ?? null,
+        sizeQuantities: (row.size_quantities ?? {}) as Record<string, number>,
+        unitPrice: Number(row.unit_price ?? 0),
+        quantity: Number(row.quantity ?? 0),
+        elements,
+        previewUrlByView,
+      } satisfies AdminOrderItemRow;
+    })
+  );
 
   // Lieferantenauftrag bedarfsgerecht anlegen: Der Aufruf ist idempotent
   // (bestehende Snapshots werden nicht überschrieben) und läuft NUR, wenn

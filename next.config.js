@@ -47,12 +47,19 @@ const nextConfig = {
     // verwendet. Eine Freigabe für einen fremden Host ohne jeden Nutzen.
     remotePatterns: [
       {
-        // Supabase Storage. Aktuell rendert keine Seite Storage-Bilder über
-        // next/image; der Eintrag bleibt, weil es die eigene Infrastruktur ist
-        // und die Druckvorschauen dort liegen (Admin-Anzeige ist absehbar).
+        // Supabase Storage, öffentlicher Bucket (Produktkatalog-Assets u.Ä.).
         protocol: 'https',
         hostname: '*.supabase.co',
         pathname: '/storage/v1/object/public/**',
+      },
+      {
+        // Supabase Storage, SIGNIERTE URLs auf den privaten "production-files"-
+        // Bucket – anderer Pfad als oben ("sign" statt "public"). Genutzt von
+        // der Admin-Produktionsvorschau (ProductionPreview.tsx), die die in
+        // Phase 2 gerenderten Druckvorschauen und Logo-Dateien anzeigt.
+        protocol: 'https',
+        hostname: '*.supabase.co',
+        pathname: '/storage/v1/object/sign/**',
       },
     ],
   },

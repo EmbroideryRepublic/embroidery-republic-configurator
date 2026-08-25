@@ -31,6 +31,7 @@ import { istAdmin } from '@/lib/admin/auth';
 import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
+import { ProductionPreview } from '@/components/admin/ProductionPreview';
 
 export default async function AdminOrderDetailPage({ params }: { params: { id: string } }) {
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
@@ -234,6 +235,17 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
             </tbody>
           </table>
         </div>
+      </section>
+
+      {/* Personalisierung: bereits in Phase 2 gerenderte Druckvorschauen
+          (Kleidungsstück + Motive exakt wie im Editor platziert) plus die
+          strukturierte Element-Liste je Position – siehe
+          components/admin/ProductionPreview.tsx. Kein neues Rendering, keine
+          neue Datenhaltung: liest configuration_elements und die längst im
+          Storage liegenden Vorschau-PNGs (lib/admin/data.ts::getOrderDetail). */}
+      <section className="rounded-lg border border-gray-200 bg-white p-4">
+        <h2 className="mb-2 text-sm font-semibold">Personalisierung</h2>
+        <ProductionPreview items={order.items} />
       </section>
 
       {/* Lieferanten-Bestellung (manueller Weg) */}

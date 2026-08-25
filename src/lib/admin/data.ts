@@ -9,7 +9,7 @@
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/lib/actions/orderTypes';
 import { buildSupplierPositions } from '@/lib/suppliers';
-import { imAdminSichtbar, listSichtbarkeitsFilter } from '@/lib/orders/orderVisibility';
+import { berechneAdminStatus, produktionsfreigabeErlaubt, type AdminStatus } from '@/lib/orders/orderVisibility';
 import { enqueueSupplierOrdersForOrder } from '@/lib/suppliers/lifecycle/enqueue';
 import { getProductionFileSignedUrl } from '@/lib/supabase/storage';
 import type { SupplierOrderDraft, SupplierWorkerRunResult } from '@/lib/suppliers';
@@ -25,6 +25,9 @@ export interface AdminOrderListRow {
   totalPrice: number;
   status: string;
   paymentStatus: string;
+  /** Einordnung für Farbe/Badge in der Liste – siehe lib/orders/orderVisibility.ts.
+   *  Entscheidet NIE, ob die Zeile erscheint, nur wie sie beschriftet ist. */
+  adminStatus: AdminStatus;
 }
 
 export interface AdminOrderItemRow {
@@ -100,6 +103,10 @@ export interface AdminOrderDetail {
   refundAmountCent: number | null;
   refundReference: string | null;
   refundedAt: string | null;
+  /** Einordnung für Farbe/Badge auf der Detailseite – siehe
+   *  lib/orders/orderVisibility.ts. Entscheidet NICHT mehr darüber, ob die
+   *  Seite ausgeliefert wird (das war bis 2026-08-25 derselbe Wert). */
+  adminStatus: AdminStatus;
 }
 
 export interface AdminSupplierPipelineEvent {
@@ -225,17 +232,16 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
   const von = seite * jeSeite;
   const bis = von + jeSeite - 1;
 
+  // Bewusst KEIN Sichtbarkeitsfilter mehr (Entscheidung 2026-08-25): Jede
+  // Bestellung erscheint sofort nach Anlage. Was mit ihr passieren darf
+  // (Stornofrist, Zahlung, Produktion), zeigt stattdessen `adminStatus` je
+  // Zeile – siehe berechneAdminStatus() in lib/orders/orderVisibility.ts.
   let query = supabase
     .from('orders')
-    .select('id, created_at, order_type, customer_name, company, email, total_price, status, payment_status', {
-      count: 'exact',
-    })
-    // Sichtbarkeitsregel (lib/orders/orderVisibility): stornierte Bestellungen
-    // nur, solange eine Rückerstattung noch aussteht; echte Bestellungen erst
-    // nach Ablauf der Stornofrist; Anfragen sofort; ausstehende Zahlungen nie.
-    // Bereits in der Datenbank gefiltert statt nachträglich zu verwerfen –
-    // siehe listSichtbarkeitsFilter() für den vollständigen Ausdruck.
-    .or(listSichtbarkeitsFilter());
+    .select(
+      'id, created_at, order_type, customer_name, company, email, total_price, status, payment_status, refund_status',
+      { count: 'exact' }
+    );
 
   const suche = optionen.suche?.trim();
   if (suche) {
@@ -252,18 +258,26 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
     return { zeilen: [], gesamt: 0 };
   }
 
-  const zeilen = data.map((row) => ({
-    id: row.id as string,
-    orderNumber: buildOrderNumber(row.id as string),
-    createdAt: row.created_at as string,
-    orderType: row.order_type as 'inquiry' | 'order',
-    customerName: row.customer_name as string,
-    company: (row.company as string | null) ?? null,
-    email: row.email as string,
-    totalPrice: Number(row.total_price ?? 0),
-    status: row.status as string,
-    paymentStatus: (row.payment_status as string) ?? 'not_required',
-  }));
+  const zeilen = data.map((row) => {
+    const createdAt = row.created_at as string;
+    const status = row.status as string;
+    const orderType = row.order_type as 'inquiry' | 'order';
+    const paymentStatus = (row.payment_status as string) ?? 'not_required';
+    const refundStatus = (row.refund_status as string) ?? 'not_applicable';
+    return {
+      id: row.id as string,
+      orderNumber: buildOrderNumber(row.id as string),
+      createdAt,
+      orderType,
+      customerName: row.customer_name as string,
+      company: (row.company as string | null) ?? null,
+      email: row.email as string,
+      totalPrice: Number(row.total_price ?? 0),
+      status,
+      paymentStatus,
+      adminStatus: berechneAdminStatus({ createdAt, status, orderType, paymentStatus, refundStatus }),
+    };
+  });
 
   return { zeilen, gesamt: count ?? zeilen.length };
 }
@@ -284,20 +298,18 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     return null;
   }
 
-  // Dieselbe Sichtbarkeitsregel wie in der Liste. Ohne diese Prüfung wäre
-  // eine noch stornierbare oder stornierte Bestellung über die direkte URL
-  // erreichbar, obwohl sie in der Liste fehlt.
-  if (
-    !imAdminSichtbar({
-      createdAt: order.created_at as string,
-      status: order.status as string,
-      orderType: order.order_type as string,
-      paymentStatus: (order.payment_status as string) ?? 'not_required',
-      refundStatus: (order.refund_status as string) ?? 'not_applicable',
-    })
-  ) {
-    return null;
-  }
+  // Bewusst KEINE Sichtbarkeitsprüfung mehr (Entscheidung 2026-08-25): Jede
+  // Bestellung ist über ihre Detailseite erreichbar, sobald sie angelegt
+  // wurde. Die frühere Prüfung hier entschied zugleich über Sichtbarkeit
+  // UND Produktionsfreigabe – siehe stattdessen produktionsfreigabeErlaubt()
+  // weiter unten, direkt an der einzigen Stelle mit echter Wirkung.
+  const adminStatusEingabe = {
+    createdAt: order.created_at as string,
+    status: order.status as string,
+    orderType: order.order_type as string,
+    paymentStatus: (order.payment_status as string) ?? 'not_required',
+    refundStatus: (order.refund_status as string) ?? 'not_applicable',
+  };
 
   const { data: items, error: itemsError } = await supabase
     .from('order_items')
@@ -331,11 +343,14 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   }));
 
   // Lieferantenauftrag bedarfsgerecht anlegen: Der Aufruf ist idempotent
-  // (bestehende Snapshots werden nicht überschrieben) und erfolgt frühestens
-  // hier – also nach Ablauf der Stornofrist, weil die Detailseite vorher gar
-  // nicht ausgeliefert wird. Für stornierte Bestellungen entsteht damit nie
-  // ein Auftrag. Nicht-fatal: die Detailseite muss auch ohne funktionieren.
-  if ((order.order_type as string) === 'order') {
+  // (bestehende Snapshots werden nicht überschrieben) und läuft NUR, wenn
+  // produktionsfreigabeErlaubt() zustimmt (Stornofrist abgelaufen, bezahlt,
+  // nicht storniert) – seit der Trennung von Sichtbarkeit und Produktions-
+  // freigabe (2026-08-25) die alleinige Bedingung dafür, unabhängig davon,
+  // dass die Seite selbst jetzt immer ausgeliefert wird. Für stornierte oder
+  // unbezahlte Bestellungen entsteht damit weiterhin nie ein Auftrag.
+  // Nicht-fatal: die Detailseite muss auch ohne funktionieren.
+  if ((order.order_type as string) === 'order' && produktionsfreigabeErlaubt(adminStatusEingabe)) {
     try {
       await enqueueSupplierOrdersForOrder(orderId);
     } catch (err) {
@@ -393,6 +408,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
         : null,
     refundReference: (order.refund_reference as string | null) ?? null,
     refundedAt: (order.refunded_at as string | null) ?? null,
+    adminStatus: berechneAdminStatus(adminStatusEingabe),
     supplierOrders: (supplierRows ?? []).map((row) => ({
       supplierId: row.supplier_id as string,
       status: row.status as string,

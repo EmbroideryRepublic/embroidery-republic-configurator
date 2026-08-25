@@ -64,6 +64,25 @@ function istProduktion(): boolean {
 }
 
 /**
+ * Extrahiert eine lesbare Meldung aus einem geworfenen/gemeldeten Wert.
+ *
+ * Nicht jeder Fehler ist eine `Error`-Instanz: Resends `ErrorResponse` und
+ * Supabases `PostgrestError` sind reine `{message, ...}`-Objekte. Ohne diese
+ * Prüfung lieferte `String(f)` für sie `"[object Object]"` – die eigentliche
+ * Fehlermeldung war dann unwiederbringlich verloren (siehe Vorfall
+ * 2026-08-21: eine abgelehnte Bestellbestätigung ließ sich im Protokoll nicht
+ * mehr nachvollziehen, weil genau das passierte).
+ */
+function nachrichtVon(f: unknown): string {
+  if (f instanceof Error) return f.message;
+  if (typeof f === 'object' && f !== null && 'message' in f) {
+    const wert = (f as { message: unknown }).message;
+    if (typeof wert === 'string') return wert;
+  }
+  return String(f);
+}
+
+/**
  * Entfernt personenbezogene und geheime Angaben aus einem Text.
  *
  * Bewusst grob und lieber einmal zu viel: Ein unkenntlich gemachter
@@ -143,7 +162,7 @@ export function log(eintrag: LogEintrag): Record<string, unknown> {
   // In Produktion genügt die Fehlermeldung – bereinigt.
   if (eintrag.fehler) {
     const f = eintrag.fehler;
-    zeile.fehler = bereinige(f instanceof Error ? f.message : String(f));
+    zeile.fehler = bereinige(nachrichtVon(f));
     if (!istProduktion() && f instanceof Error && f.stack) {
       zeile.stack = f.stack;
     }

@@ -217,11 +217,11 @@ export async function setzeStandardadresse(kundenId: string, adresseId: string):
 }
 
 /**
- * Bestellhistorie des Kontos. Sichtbarkeitsregel bewusst GLEICH wie im
- * Adminbereich (imAdminSichtbar würde hier zu viel verbergen) – anders: Der
- * Kunde soll JEDE eigene Bestellung sehen, auch eine gerade erst angelegte
- * oder eine stornierte. Es gibt keinen Grund, ihm die eigene Historie
- * unvollständig zu zeigen.
+ * Bestellhistorie des Kontos – ungefiltert, genau wie die Admin-Bestellliste
+ * seit der Trennung von Sichtbarkeit und Bearbeitungsstatus (2026-08-25,
+ * orderVisibility.ts). Der Kunde soll JEDE eigene Bestellung sehen, auch
+ * eine gerade erst angelegte oder eine stornierte – es gibt keinen Grund,
+ * ihm die eigene Historie unvollständig zu zeigen.
  */
 export async function ladeBestellungenDesKunden(kundenId: string): Promise<KundenBestellungZeile[]> {
   const db = createAdminClient();

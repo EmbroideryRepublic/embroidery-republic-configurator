@@ -36,6 +36,33 @@ for (const zeile of readFileSync('.env.local', 'utf8').split(/\r?\n/)) {
   if (t && !process.env[t[1]!]) process.env[t[1]!] = t[2]!.trim().replace(/^["']|["']$/g, '');
 }
 
+// ═══════════════════════════════════════════════════════════════════════
+// HARD-STOP: dieser Test darf NIEMALS mit einem Live-Schlüssel laufen.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Vorfall 2026-08-25: STRIPE_SECRET_KEY in .env.local war ein sk_live_-
+// Schlüssel. Der bisherige Schutz (`bal.livemode === false` als reine
+// pruefe()-Zeile, siehe unten) protokollierte das nur – der Test lief
+// trotzdem weiter und legte eine ECHTE Live-Checkout-Session an, bevor er
+// aus einem UNABHÄNGIGEN Grund (fehlendes STRIPE_WEBHOOK_SECRET) abbrach.
+// Ein Log-Eintrag reicht nicht: Diese Prüfung muss VOR jedem Stripe-Aufruf
+// abbrechen, nicht erst nachträglich dokumentieren, dass etwas schiefging.
+//
+// Absichtlich eine reine String-Prüfung auf das Präfix, keine Rückfrage an
+// Stripe: Der Test darf mit einem Live-Schlüssel nicht einmal SO WEIT
+// kommen, dass er die API überhaupt kontaktiert.
+if (!process.env.STRIPE_SECRET_KEY?.startsWith('sk_test_')) {
+  console.error(
+    '\n✘ ABBRUCH: STRIPE_SECRET_KEY in .env.local ist kein Test-Schlüssel ' +
+      '(muss mit "sk_test_" beginnen).\n' +
+      '  Dieses Skript ruft die echte Stripe-API auf und darf niemals gegen ein ' +
+      'Live-Konto laufen.\n' +
+      '  Bitte einen sk_test_...-Schlüssel aus dem Stripe-Dashboard (Testmodus) ' +
+      'in .env.local hinterlegen.\n'
+  );
+  process.exit(1);
+}
+
 const { stripeAnbieter } = await import('@/lib/payments/providers/stripe');
 const { verarbeiteZahlungsEreignis } = await import('@/lib/orders/paymentService');
 const { waehleZahlungsAnbieter } = await import('@/lib/payments/registry');

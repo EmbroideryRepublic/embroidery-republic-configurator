@@ -28,7 +28,7 @@ import { sendOrderCancellationEmail } from '@/lib/email/orderEmails';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
 import { istUebergangErlaubt } from '@/config/orderStatus';
-import { imAdminSichtbar } from '@/lib/orders/orderVisibility';
+import { produktionsfreigabeErlaubt } from '@/lib/orders/orderVisibility';
 import { sendOrderShippedEmail, sendOrderInProductionEmail, sendOrderCompletedEmail } from '@/lib/email/orderEmails';
 
 export type StornoErgebnis =
@@ -121,16 +121,20 @@ export async function setzeBestellstatus(
     return { ok: false, grund: 'uebergang-unzulaessig', aktuell: von };
   }
 
-  // Dieselbe Regel wie für die Sichtbarkeit im Adminbereich (orderVisibility.ts):
-  // Vor Ablauf der Stornofrist darf noch nicht bearbeitet werden – sonst
-  // könnte Ware beschafft werden, die der Kunde Sekunden später doch noch
-  // storniert. Die Admin-UI verbirgt den Button dafür zwar, aber die Server
-  // Action selbst muss dieselbe Grenze durchsetzen, sonst schützt sie nur
-  // vor der eigenen Oberfläche, nicht vor einem direkten Aufruf.
+  // Dieselbe Regel wie die Produktionsfreigabe im Adminbereich
+  // (orderVisibility.ts::produktionsfreigabeErlaubt): Vor Ablauf der
+  // Stornofrist darf noch nicht bearbeitet werden – sonst könnte Ware
+  // beschafft werden, die der Kunde Sekunden später doch noch storniert.
+  // Die Admin-UI verbirgt den Button dafür zwar, aber die Server Action
+  // selbst muss dieselbe Grenze durchsetzen, sonst schützt sie nur vor der
+  // eigenen Oberfläche, nicht vor einem direkten Aufruf. Seit der Trennung
+  // von Sichtbarkeit und Produktionsfreigabe (2026-08-25) ist DIESE Prüfung
+  // hier die einzige verbliebene Bedeutung der früheren „Sichtbarkeitsregel"
+  // – die Admin-Seiten selbst filtern nichts mehr.
   // Ausnahme: eine Stornierung ist immer erlaubt, das widerspricht der Regel
   // nicht – im Gegenteil, sie ist genau das, wovor die Regel schützen will.
   if (nach !== 'cancelled') {
-    const sichtbar = imAdminSichtbar(
+    const freigegeben = produktionsfreigabeErlaubt(
       {
         createdAt: bestellung.created_at,
         status: von,
@@ -145,7 +149,7 @@ export async function setzeBestellstatus(
       },
       jetzt
     );
-    if (!sichtbar) {
+    if (!freigegeben) {
       return { ok: false, grund: 'noch-nicht-freigegeben', aktuell: von };
     }
   }

@@ -9,6 +9,10 @@
 export interface EmailVersandErgebnis {
   success: boolean;
   messageId?: string;
+  /** Fehlermeldung des Versanddiensts bei success:false – für die
+   *  Bestell-Historie (order_events.detail), damit ein Fehlschlag ohne
+   *  Rückgriff auf ephemere Server-Logs nachvollziehbar bleibt. */
+  error?: string;
 }
 
 /**
@@ -46,7 +50,11 @@ export async function sendOrderConfirmationEmail(
     // noch onboarding@resend.dev ist (Domain nicht verifiziert).
     replyTo: getReplyToAddress(),
   });
-  return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
 }
 
 export async function sendInternalOrderNotificationEmail(
@@ -69,7 +77,11 @@ export async function sendInternalOrderNotificationEmail(
     kontext: { anlass: 'internal_order_notification', orderId: order.id },
     ...(scheduledAt ? { scheduledAt } : {}),
   });
-  return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
 }
 
 /**
@@ -103,7 +115,11 @@ export async function sendOrderCancellationEmail(params: {
     replyTo: getReplyToAddress(),
     kontext: { anlass: 'order_cancelled', orderId: params.orderId },
   });
-  return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
 }
 
 /**
@@ -136,7 +152,11 @@ export async function sendOrderShippedEmail(params: {
     ),
     kontext: { anlass: 'order_shipped', orderId: params.orderId },
   });
-  return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
 }
 
 /**
@@ -156,7 +176,11 @@ export async function sendOrderInProductionEmail(params: {
     react: <OrderInProductionEmail orderNumber={params.orderNumber} />,
     kontext: { anlass: 'order_in_production', orderId: params.orderId },
   });
-  return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
 }
 
 /**
@@ -176,5 +200,9 @@ export async function sendOrderCompletedEmail(params: {
     react: <OrderCompletedEmail orderNumber={params.orderNumber} />,
     kontext: { anlass: 'order_completed', orderId: params.orderId },
   });
-  return { success: result.success, ...(result.messageId ? { messageId: result.messageId } : {}) };
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
 }

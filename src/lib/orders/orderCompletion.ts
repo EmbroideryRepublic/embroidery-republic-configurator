@@ -37,7 +37,7 @@ import { uploadProductionFile, getProductionFileSignedUrl } from '@/lib/supabase
 import { renderProductionSheet } from '@/lib/production/buildProductionSheet';
 import { renderPrintView } from '@/lib/rendering/renderPrintView';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
-import { verarbeiteBestelleingang } from './orderIntake';
+import { verarbeiteBestelleingang, versucheBestellbestaetigung, protokolliereVersand } from './orderIntake';
 import { protokolliereBestellereignis, persistiereKritischMitWiederholung } from './orderService';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
@@ -241,6 +241,75 @@ export async function holeOffeneRechnungenNach(
   }
 
   return { gefunden: (data ?? []).length, erstellt, fehlgeschlagen };
+}
+
+/**
+ * Holt die Bestellbestätigung nach für Bestellungen, deren Zustellung sauber
+ * fehlgeschlagen ist (Anspruch wieder freigegeben, order_confirmation_sent_at
+ * weiterhin null) und die seitdem nie erneut versucht wurden.
+ *
+ * ── Warum das nötig ist (Vorfall 2026-08-21) ──────────────────────────────
+ * `sendEmail()` ist bewusst "best effort, nie fatal" – lehnt der Versanddienst
+ * ab (Domain nicht verifiziert, ungültiger Schlüssel, Ratenlimit, …), bleibt
+ * die Bestellung ohne diesen Nachholweg für IMMER ohne Bestätigung, bis
+ * jemand manuell eingreift. `versucheBestellbestaetigung` (orderIntake.ts)
+ * macht daraus einen claim-geschützten, sicher wiederholbaren Vorgang; diese
+ * Funktion ist der Aufrufer für den Cron-Lauf.
+ *
+ * Die Auswahl-Bedingung entspricht exakt der von `beanspruche_bestellbestaetigung`
+ * (Migration 0030) – der eigentliche Schutz gegen eine doppelte Zustellung
+ * bleibt vollständig im dortigen atomaren Claim; läuft zufällig zeitgleich
+ * ein regulärer Bestelleingang für dieselbe Bestellung, gewinnt nur einer der
+ * beiden Aufrufe den Claim, der andere ist ein folgenloses No-op.
+ *
+ * Ruft bewusst NUR den Bestätigungs-Schritt auf, nicht die gesamte Phase 2
+ * (kein erneutes Rendering/PDF) – dieselbe Begründung wie bei
+ * `holeOffeneRechnungenNach` oben.
+ *
+ * Von der Cron-Route aufgerufen (siehe process-supplier-orders/route.ts);
+ * wirft nie.
+ */
+export async function holeOffeneBestellbestaetigungenNach(
+  limit: number
+): Promise<{ gefunden: number; zugestellt: number; weiterhinOffen: number }> {
+  const db = createAdminClient();
+  const { data, error } = await db
+    .from('orders')
+    .select('id')
+    .eq('order_type', 'order')
+    .is('order_confirmation_sent_at', null)
+    .is('order_confirmation_versuch_gestartet_am', null)
+    .order('created_at', { ascending: true })
+    .limit(limit);
+
+  if (error) {
+    console.error('[orders] Suche nach offenen Bestellbestätigungen fehlgeschlagen:', error.message);
+    return { gefunden: 0, zugestellt: 0, weiterhinOffen: 0 };
+  }
+
+  let zugestellt = 0;
+  let weiterhinOffen = 0;
+  // Bewusst sequenziell statt parallel: Regelfall ist 0 Treffer, und jeder
+  // Treffer löst einen echten Versandversuch aus – kein Durchsatz-Pfad,
+  // dieselbe Begründung wie bei holeOffeneRechnungenNach oben.
+  for (const zeile of data ?? []) {
+    const orderId = zeile.id as string;
+    const order = await ladeBestellungFuerAbschluss(orderId);
+    if (!order) {
+      weiterhinOffen++;
+      continue;
+    }
+    const ergebnis = await versucheBestellbestaetigung(order);
+    await protokolliereVersand(orderId, 'order_confirmation', { status: 'fulfilled', value: ergebnis });
+    if (ergebnis.success) {
+      zugestellt++;
+    } else {
+      weiterhinOffen++;
+      console.warn(`[orders] Bestätigungs-Retry für ${orderId} weiterhin ohne Erfolg.`);
+    }
+  }
+
+  return { gefunden: (data ?? []).length, zugestellt, weiterhinOffen };
 }
 
 /**

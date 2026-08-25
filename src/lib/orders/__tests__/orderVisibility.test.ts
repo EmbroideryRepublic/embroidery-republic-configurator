@@ -1,29 +1,26 @@
 /**
- * Tests der Admin-Sichtbarkeitsregel.
+ * Tests der Admin-Statuseinordnung (berechneAdminStatus) und der
+ * Produktionsfreigabe (produktionsfreigabeErlaubt).
  *
- * Zwei Fehler wären hier teuer: Eine Bestellung erscheint zu früh (der
- * Betreiber bestellt Ware, die der Kunde Minuten später storniert), oder
- * eine stornierte Bestellung taucht auf (Ware wird umsonst beschafft).
- * Beides wird hier abgesichert.
+ * Seit der Trennung von Sichtbarkeit und Bearbeitungsstatus (2026-08-25,
+ * siehe Kopfkommentar orderVisibility.ts) gibt es keine Sichtbarkeitsregel
+ * mehr zu testen – jede Bestellung ist immer sichtbar. Der teure Fehler, den
+ * diese Tests weiterhin verhindern müssen: `produktionsfreigabeErlaubt()`
+ * liefert `true`, obwohl der Kunde noch stornieren kann oder nie bezahlt hat
+ * – dann bestellt der Betreiber Ware für einen Vorgang, der storniert oder
+ * nie zustande gekommen ist.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import {
-  imAdminSichtbar,
-  bearbeitungsGrenze,
-  listSichtbarkeitsFilter,
-  BEARBEITBARE_ZAHLUNGSZUSTAENDE,
-} from '../orderVisibility';
+import { berechneAdminStatus, produktionsfreigabeErlaubt } from '../orderVisibility';
 import { STORNOFRIST_MS } from '@/config/orderProcess';
 
 const BESTELLT = '2026-07-20T10:00:00.000Z';
-const ENDE = new Date('2026-07-20T12:00:00.000Z');
+const ENDE = new Date('2026-07-20T12:00:00.000Z'); // BESTELLT + STORNOFRIST_MS
 
 /**
  * Standardfall ist der RECHNUNGSKAUF (`not_required`), nie erstattungspflichtig
- * (`not_applicable`) – so verhalten sich alle bisherigen Bestellungen. Die
- * Tests darunter belegen damit zugleich, dass die Zahlungs-/Erstattungsprüfung
- * am bestehenden Verhalten nichts ändert.
+ * (`not_applicable`) – so verhalten sich die meisten Bestellungen.
  */
 const bestellung = (
   status = 'new',
@@ -38,88 +35,108 @@ const bestellung = (
   refundStatus,
 });
 
-test('während der Stornofrist ist eine Bestellung NICHT sichtbar', () => {
-  assert.equal(imAdminSichtbar(bestellung(), new Date(ENDE.getTime() - 1000)), false);
+test('während der Stornofrist gilt eine Bestellung als stornierbar (rot), nicht produktionsbereit', () => {
+  const jetzt = new Date(ENDE.getTime() - 1000);
+  assert.equal(berechneAdminStatus(bestellung(), jetzt).code, 'stornierbar');
+  assert.equal(berechneAdminStatus(bestellung(), jetzt).farbe, 'rot');
+  assert.equal(produktionsfreigabeErlaubt(bestellung(), jetzt), false);
 });
 
-test('nach Ablauf der Stornofrist wird sie sichtbar', () => {
-  assert.equal(imAdminSichtbar(bestellung(), ENDE), true);
-  assert.equal(imAdminSichtbar(bestellung(), new Date(ENDE.getTime() + 1000)), true);
+test('nach Ablauf der Stornofrist gilt eine bezahlte/rechnungspflichtige Bestellung als produktionsbereit (grün)', () => {
+  assert.equal(berechneAdminStatus(bestellung(), ENDE).code, 'produktionsbereit');
+  assert.equal(berechneAdminStatus(bestellung(), ENDE).farbe, 'gruen');
+  assert.equal(produktionsfreigabeErlaubt(bestellung(), ENDE), true);
 });
 
-test('stornierte Bestellungen ohne offene Rückerstattung erscheinen NIEMALS – auch nicht nach Fristablauf', () => {
-  // refundStatus bleibt beim Default 'not_applicable' – der Regelfall
-  // (Rechnungskauf oder nie bezahlt).
-  assert.equal(imAdminSichtbar(bestellung('cancelled'), new Date(ENDE.getTime() + 86_400_000)), false);
-  // Auch während der Frist nicht.
-  assert.equal(imAdminSichtbar(bestellung('cancelled'), new Date(ENDE.getTime() - 1000)), false);
+test('stornierbar nennt exakt den Zeitpunkt, an dem die Stornofrist endet', () => {
+  const status = berechneAdminStatus(bestellung(), new Date(ENDE.getTime() - 1000));
+  assert.equal(status.stornofristEndeIso, ENDE.toISOString());
 });
 
-test('Anfragen sind von der Frist ausgenommen und sofort sichtbar', () => {
+test('produktionsbereit trägt keinen Stornofrist-Zeitpunkt mehr', () => {
+  const status = berechneAdminStatus(bestellung(), ENDE);
+  assert.equal(status.stornofristEndeIso, undefined);
+});
+
+test('stornierte Bestellungen ohne offene Rückerstattung sind grau, nie grün – auch nicht nach Fristablauf', () => {
+  // refundStatus bleibt beim Default 'not_applicable' – der Regelfall.
+  const spaeter = new Date(ENDE.getTime() + 86_400_000);
+  assert.equal(berechneAdminStatus(bestellung('cancelled'), spaeter).code, 'storniert');
+  assert.equal(berechneAdminStatus(bestellung('cancelled'), spaeter).farbe, 'grau');
+  assert.equal(produktionsfreigabeErlaubt(bestellung('cancelled'), spaeter), false);
+});
+
+test('Anfragen sind von der Frist ausgenommen und sofort produktionsfrei-neutral (blau, "anfrage")', () => {
   const anfrage = bestellung('new', 'inquiry');
-  assert.equal(imAdminSichtbar(anfrage, new Date(BESTELLT)), true);
-  assert.equal(imAdminSichtbar(anfrage, new Date(ENDE.getTime() - 1000)), true);
+  assert.equal(berechneAdminStatus(anfrage, new Date(BESTELLT)).code, 'anfrage');
+  assert.equal(berechneAdminStatus(anfrage, new Date(BESTELLT)).farbe, 'blau');
+  // Anfragen lösen nie eine Lieferanten-Einreihung aus (das prüft der
+  // Aufrufer separat über order_type === 'order'), aber auch hier gilt:
+  // 'anfrage' ist niemals 'produktionsbereit'.
+  assert.equal(produktionsfreigabeErlaubt(anfrage, new Date(BESTELLT)), false);
 });
 
-test('stornierte Anfragen erscheinen ebenfalls nicht', () => {
-  assert.equal(imAdminSichtbar(bestellung('cancelled', 'inquiry'), ENDE), false);
+test('stornierte Anfragen gelten ebenfalls nicht als produktionsbereit', () => {
+  assert.notEqual(berechneAdminStatus(bestellung('cancelled', 'inquiry'), ENDE).code, 'produktionsbereit');
 });
 
-test('Sichtbarkeit und Selbststornierung schließen einander aus', () => {
+test('Produktionsfreigabe und Selbststornierbarkeit schließen einander aus', () => {
   // Es darf keinen Moment geben, in dem der Kunde noch stornieren kann UND
-  // der Betreiber die Bestellung schon bearbeitet.
+  // der Betreiber die Bestellung schon als produktionsbereit sieht.
   for (const versatz of [-3600_000, -1000, -1, 0, 1, 1000, 3600_000]) {
     const jetzt = new Date(ENDE.getTime() + versatz);
-    const sichtbar = imAdminSichtbar(bestellung(), jetzt);
+    const freigegeben = produktionsfreigabeErlaubt(bestellung(), jetzt);
     const nochStornierbar = jetzt.getTime() < ENDE.getTime();
-    assert.notEqual(sichtbar, nochStornierbar, `Widerspruch bei Versatz ${versatz} ms`);
+    assert.notEqual(freigegeben, nochStornierbar, `Widerspruch bei Versatz ${versatz} ms`);
   }
 });
 
-test('die Datenbank-Zeitgrenze liegt genau eine Stornofrist in der Vergangenheit', () => {
-  const jetzt = new Date('2026-07-20T15:00:00.000Z');
-  const grenze = new Date(bearbeitungsGrenze(jetzt));
-  assert.equal(jetzt.getTime() - grenze.getTime(), STORNOFRIST_MS);
+test('die Stornofrist beträgt weiterhin STORNOFRIST_MS ab Bestelleingang', () => {
+  const status = berechneAdminStatus(bestellung(), new Date(BESTELLT));
+  assert.equal(
+    new Date(status.stornofristEndeIso!).getTime() - new Date(BESTELLT).getTime(),
+    STORNOFRIST_MS
+  );
 });
 
-// ── Zahlungszustand (S4) ─────────────────────────────────────────────────
+// ── Zahlungszustand ────────────────────────────────────────────────────────
 //
-// Der teuerste Fehler dieser Datei wäre: Eine unbezahlte Bestellung
-// erscheint nach Ablauf der Stornofrist im Adminbereich, und beim ersten
-// Öffnen der Detailseite entsteht der Lieferantenauftrag. Dann ist Ware für
-// einen abgebrochenen Bezahlvorgang beschafft.
+// Der teuerste Fehler dieser Gruppe: Eine unbezahlte Bestellung gilt nach
+// Ablauf der Stornofrist als produktionsbereit. Dann ist Ware für einen
+// abgebrochenen Bezahlvorgang beschafft.
 
 const LANGE_DANACH = new Date(ENDE.getTime() + 86_400_000);
 
 test('Rechnungskauf verhält sich unverändert', () => {
-  // Der wichtigste Test dieser Gruppe: Solange Stripe nicht aktiv ist,
-  // trägt JEDE Bestellung 'not_required' – es darf sich nichts ändern.
-  assert.equal(imAdminSichtbar(bestellung('new', 'order', 'not_required'), ENDE), true);
+  assert.equal(produktionsfreigabeErlaubt(bestellung('new', 'order', 'not_required'), ENDE), true);
   assert.equal(
-    imAdminSichtbar(bestellung('new', 'order', 'not_required'), new Date(ENDE.getTime() - 1000)),
+    produktionsfreigabeErlaubt(bestellung('new', 'order', 'not_required'), new Date(ENDE.getTime() - 1000)),
     false,
     'die Stornofrist gilt weiterhin'
   );
 });
 
-test('eine bezahlte Bestellung wird nach Fristablauf sichtbar', () => {
-  assert.equal(imAdminSichtbar(bestellung('new', 'order', 'paid'), ENDE), true);
+test('eine bezahlte Bestellung wird nach Fristablauf produktionsbereit', () => {
+  assert.equal(produktionsfreigabeErlaubt(bestellung('new', 'order', 'paid'), ENDE), true);
 });
 
-test('eine Bestellung mit laufender Zahlung erscheint NICHT – auch lange nach der Frist', () => {
-  assert.equal(imAdminSichtbar(bestellung('new', 'order', 'pending'), LANGE_DANACH), false);
+test('eine Bestellung mit laufender Zahlung ist NIE produktionsbereit – auch lange nach der Frist', () => {
+  const status = berechneAdminStatus(bestellung('new', 'order', 'pending'), LANGE_DANACH);
+  assert.equal(status.code, 'zahlung_ausstehend');
+  assert.equal(status.farbe, 'amber');
+  assert.equal(produktionsfreigabeErlaubt(bestellung('new', 'order', 'pending'), LANGE_DANACH), false);
 });
 
-test('eine fehlgeschlagene Zahlung erscheint NICHT', () => {
-  // Die Kundschaft kann den Vorgang wieder aufnehmen; bis dahin gibt es
-  // nichts zu bearbeiten.
-  assert.equal(imAdminSichtbar(bestellung('new', 'order', 'failed'), LANGE_DANACH), false);
+test('eine fehlgeschlagene Zahlung ist NIE produktionsbereit', () => {
+  const status = berechneAdminStatus(bestellung('new', 'order', 'failed'), LANGE_DANACH);
+  assert.equal(status.code, 'zahlung_fehlgeschlagen');
+  assert.equal(status.farbe, 'amber');
+  assert.equal(produktionsfreigabeErlaubt(bestellung('new', 'order', 'failed'), LANGE_DANACH), false);
 });
 
-test('der Zahlungszustand überstimmt die abgelaufene Frist, nicht umgekehrt', () => {
-  // Beide Bedingungen müssen erfüllt sein – eine allein genügt nie.
-  const fristVorbeiAberUnbezahlt = imAdminSichtbar(bestellung('new', 'order', 'pending'), LANGE_DANACH);
-  const bezahltAberFristLaeuft = imAdminSichtbar(
+test('der Zahlungszustand übersteuert die abgelaufene Frist, nicht umgekehrt', () => {
+  const fristVorbeiAberUnbezahlt = produktionsfreigabeErlaubt(bestellung('new', 'order', 'pending'), LANGE_DANACH);
+  const bezahltAberFristLaeuft = produktionsfreigabeErlaubt(
     bestellung('new', 'order', 'paid'),
     new Date(ENDE.getTime() - 1000)
   );
@@ -128,69 +145,35 @@ test('der Zahlungszustand überstimmt die abgelaufene Frist, nicht umgekehrt', (
 });
 
 test('Anfragen bleiben vom Zahlungszustand unberührt', () => {
-  // Eine Anfrage ist keine Bestellung – sie hat nichts zu bezahlen.
-  assert.equal(imAdminSichtbar(bestellung('new', 'inquiry', 'not_required'), new Date(BESTELLT)), true);
+  assert.equal(berechneAdminStatus(bestellung('new', 'inquiry', 'not_required'), new Date(BESTELLT)).code, 'anfrage');
 });
 
-test('die Liste der bearbeitbaren Zahlungszustände deckt sich mit der Regel', () => {
-  // Der Datenbankfilter in lib/admin/data.ts nutzt diese Liste. Liefen die
-  // beiden auseinander, wäre eine Bestellung in der Liste sichtbar, über die
-  // Detailseite aber nicht erreichbar – oder schlimmer: umgekehrt.
-  for (const zustand of BEARBEITBARE_ZAHLUNGSZUSTAENDE) {
-    assert.equal(
-      imAdminSichtbar(bestellung('new', 'order', zustand), ENDE),
-      true,
-      `„${zustand}" gilt als bearbeitbar, wird von der Regel aber ausgeschlossen`
-    );
-  }
-  for (const zustand of ['pending', 'failed']) {
-    assert.equal(
-      imAdminSichtbar(bestellung('new', 'order', zustand), ENDE),
-      false,
-      `„${zustand}" darf nicht bearbeitbar sein`
-    );
-  }
-});
-
-// ── Rückerstattung (Regel 5) ─────────────────────────────────────────────
+// ── Rückerstattung ───────────────────────────────────────────────────────
 //
 // Der teuerste Fehler hier wäre das GEGENTEIL des Zahlungs-Risikos oben:
 // Eine stornierte, bereits bezahlte Bestellung mit noch offener
-// Rückerstattung verschwindet spurlos aus dem Adminbereich und niemand
-// bemerkt, dass Geld noch beim Betreiber liegt.
+// Rückerstattung wird fälschlich als "erledigt" (grau) statt als "noch zu
+// klären" markiert, und niemand bemerkt, dass Geld noch beim Betreiber liegt.
 
-test('eine stornierte, bezahlte Bestellung mit offener Rückerstattung bleibt sichtbar', () => {
+test('eine stornierte, bezahlte Bestellung mit offener Rückerstattung ist amber, nie grau oder grün', () => {
   for (const refundStatus of ['required', 'processing', 'failed']) {
-    assert.equal(
-      imAdminSichtbar(bestellung('cancelled', 'order', 'paid', refundStatus), new Date(ENDE.getTime() + 86_400_000)),
-      true,
-      `refund_status „${refundStatus}" muss die Bestellung sichtbar halten`
+    const spaeter = berechneAdminStatus(bestellung('cancelled', 'order', 'paid', refundStatus), LANGE_DANACH);
+    assert.equal(spaeter.code, 'storniert_erstattung_offen', `refund_status „${refundStatus}"`);
+    assert.equal(spaeter.farbe, 'amber');
+
+    const waehrendFrist = berechneAdminStatus(
+      bestellung('cancelled', 'order', 'paid', refundStatus),
+      new Date(ENDE.getTime() - 1000)
     );
-    // Auch während der (für eine bereits stornierte Bestellung ohnehin
-    // bedeutungslosen) Stornofrist.
-    assert.equal(
-      imAdminSichtbar(bestellung('cancelled', 'order', 'paid', refundStatus), new Date(ENDE.getTime() - 1000)),
-      true
-    );
+    assert.equal(waehrendFrist.code, 'storniert_erstattung_offen');
+
+    // In BEIDEN Fällen niemals produktionsbereit.
+    assert.equal(produktionsfreigabeErlaubt(bestellung('cancelled', 'order', 'paid', refundStatus), LANGE_DANACH), false);
   }
 });
 
-test('eine abgeschlossene Rückerstattung macht die stornierte Bestellung wieder unsichtbar', () => {
-  assert.equal(
-    imAdminSichtbar(bestellung('cancelled', 'order', 'paid', 'refunded'), new Date(ENDE.getTime() + 86_400_000)),
-    false,
-    'refund_status "refunded" heißt: nichts mehr zu tun – Regel 1 greift wieder'
-  );
-});
-
-test('listSichtbarkeitsFilter beschreibt exakt dieselben zwei Zweige wie imAdminSichtbar', () => {
-  const filter = listSichtbarkeitsFilter(ENDE);
-  // Kein Aufruf gegen eine echte Datenbank (siehe Kopfkommentar der Datei) –
-  // dieser Test sichert nur die STRUKTUR des Ausdrucks ab: beide Zweige aus
-  // der Regel müssen textlich vorhanden sein, damit ein künftiger Umbau der
-  // Zustandsnamen (z.B. ein neuer refund_status-Wert) hier aktiv auffällt.
-  assert.match(filter, /status\.neq\.cancelled/);
-  assert.match(filter, /payment_status\.in\.\(not_required,paid\)/);
-  assert.match(filter, /status\.eq\.cancelled/);
-  assert.match(filter, /refund_status\.in\.\(required,processing,failed\)/);
+test('eine abgeschlossene Rückerstattung macht die stornierte Bestellung wieder grau ("storniert")', () => {
+  const status = berechneAdminStatus(bestellung('cancelled', 'order', 'paid', 'refunded'), LANGE_DANACH);
+  assert.equal(status.code, 'storniert', 'refund_status "refunded" heißt: nichts mehr zu tun');
+  assert.equal(status.farbe, 'grau');
 });

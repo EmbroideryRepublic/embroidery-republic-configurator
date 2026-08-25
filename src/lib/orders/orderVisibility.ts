@@ -1,54 +1,42 @@
 /**
- * Wann darf eine Bestellung im Adminbereich erscheinen?
+ * Admin-Status einer Bestellung: Sichtbarkeit und Bearbeitungsstatus sind
+ * ZWEI GETRENNTE FRAGEN.
  *
- * EINE Regel, zwei Anwendungsorte (Bestellliste und Detailseite). Läge sie
- * doppelt vor, könnte eine Bestellung in der Liste fehlen, über die direkte
- * URL aber trotzdem erreichbar sein.
+ * ── Bis 2026-08-25: Sichtbarkeit und Bearbeitbarkeit waren dieselbe Frage ──
+ * `imAdminSichtbar()` entschied früher zugleich, ob eine Bestellung in der
+ * Liste/Detailseite überhaupt ERSCHEINT. Ergebnis: Eine frische, noch
+ * stornierbare Bestellung war für den Betreiber bis zu zwei Stunden lang
+ * UNSICHTBAR – er konnte sie nicht einmal ansehen. Das widerspricht dem
+ * eigentlichen Arbeitsablauf (Entscheidung 2026-08-25): Jede Bestellung soll
+ * sofort sichtbar sein, sobald sie angelegt wurde.
  *
- * ── Die Regel ─────────────────────────────────────────────────────────
- *  1. Stornierte Bestellungen erscheinen NICHT MEHR, SOBALD eine etwaige
- *     Rückerstattung abgeschlossen ist (oder nie fällig war) – der Betreiber
- *     soll dort ausschließlich sehen, was tatsächlich zu bearbeiten ist.
- *     AUSNAHME siehe Regel 5.
- *  2. Bestellungen erscheinen erst NACH Ablauf der Stornofrist. Vorher kann
- *     der Kunde noch selbst stornieren; eine vorzeitige Bearbeitung wäre ein
- *     Risiko (Ware bereits beschafft, dann storniert).
- *  3. ANFRAGEN sind davon ausgenommen: Sie sind keine Bestellungen, haben
- *     keine Stornofrist und erscheinen sofort.
- *  4. Bestellungen mit AUSSTEHENDER Zahlung erscheinen nicht. Sonst würde
- *     nach Ablauf der Stornofrist Ware für etwas beschafft, das nie bezahlt
- *     wurde – siehe unten.
- *  5. AUSNAHME von Regel 1: Eine stornierte, bereits BEZAHLTE Bestellung
- *     bleibt sichtbar, solange ihre Rückerstattung noch aussteht
- *     (`refund_status` in 'required'/'processing'/'failed') – sonst
- *     verschwindet eine offene Rückerstattung spurlos aus dem Adminbereich,
- *     siehe supabase/migrations/0029_rueckerstattung.sql.
+ * ── Die neue Trennung ────────────────────────────────────────────────────
+ *  • SICHTBARKEIT: Jede Bestellung ist immer sichtbar (lib/admin/data.ts
+ *    filtert `orders` nicht mehr). Diese Datei liefert dafür keine
+ *    Filterfunktion mehr.
+ *  • STATUS (Anzeige): `berechneAdminStatus()` liefert eine Einordnung mit
+ *    Farbe für Liste und Detailseite – erklärt, WAS mit der Bestellung
+ *    passieren darf, verändert aber nie, OB sie erscheint.
+ *  • PRODUKTIONSFREIGABE (Wirkung): `produktionsfreigabeErlaubt()` ist der
+ *    EINZIGE Ort, der noch entscheidet, ob `enqueueSupplierOrdersForOrder()`
+ *    laufen darf (lib/admin/data.ts, getOrderDetail). Das bleibt die
+ *    scharfe Bedingung von vorher – nur nicht mehr an die Sichtbarkeit
+ *    gekoppelt, sondern eigenständig geprüft, direkt an der einzigen Stelle,
+ *    die eine echte Wirkung auslöst.
  *
- * Der Zustand wird IMMER aus `created_at`, `status`, `payment_status` und
- * `refund_status` berechnet – es gibt kein gespeichertes Sichtbarkeits-Flag
- * und keinen Job, der zu einem Zeitpunkt etwas umschaltet.
+ * Der teuerste Fehler bliebe unverändert derselbe wie vorher: Ein
+ * Lieferantenauftrag für eine Bestellung, die der Kunde noch stornieren
+ * kann oder die nie bezahlt wurde. `produktionsfreigabeErlaubt()` schützt
+ * exakt davor – nur eben nicht mehr durch Verstecken der Seite, sondern
+ * durch eine eigene, explizite Prüfung an der Wirkungsstelle.
  */
-import { bearbeitungFreigegeben, STORNOFRIST_MS } from '@/config/orderProcess';
+import { stornofristLaeuftNoch, stornofristEndet } from '@/config/orderProcess';
 
 /**
- * Zahlungszustände, bei denen NICHT gearbeitet werden darf.
- *
- * `pending` = Bezahlvorgang läuft noch oder wurde abgebrochen.
- * `failed`  = nie zustande gekommen; die Kundschaft kann ihn wieder
- *             aufnehmen, bis er verfällt.
- *
- * Bewusst NICHT enthalten:
- *   `not_required` – Rechnungskauf. Hier steht nichts aus, die Bestellung
- *                    verhält sich exakt wie vor der Zahlungsintegration.
- *   `paid`         – bezahlt, also zu bearbeiten.
- */
-const ZAHLUNG_STEHT_AUS: readonly string[] = ['pending', 'failed'];
-
-/**
- * `refund_status`-Werte, bei denen eine STORNIERTE Bestellung trotzdem
- * sichtbar bleibt (Regel 5 oben). Bewusst NICHT enthalten: `refunded`
- * (abgeschlossen – Regel 1 greift wieder) und `not_applicable`
- * (Rechnungskauf oder nie bezahlt – hier war nie etwas zu erstatten).
+ * `refund_status`-Werte, bei denen eine STORNIERTE Bestellung als „noch zu
+ * klären" statt als abgeschlossen gilt. Bewusst NICHT enthalten: `refunded`
+ * (abgeschlossen) und `not_applicable` (Rechnungskauf oder nie bezahlt –
+ * hier war nie etwas zu erstatten).
  */
 const REFUND_OFFEN: readonly string[] = ['required', 'processing', 'failed'];
 
@@ -56,81 +44,79 @@ export interface SichtbarkeitsEingabe {
   createdAt: string;
   status: string;
   orderType: string;
-  /**
-   * Zahlungszustand der Bestellung (`orders.payment_status`).
-   *
-   * Pflichtangabe und nicht optional: Ein Standardwert würde bedeuten, dass
-   * ein vergessener Aufrufer eine unbezahlte Bestellung stillschweigend
-   * sichtbar macht – genau der Fehler, den diese Regel verhindern soll. So
-   * meldet ihn der Compiler.
-   */
+  /** Zahlungszustand (`orders.payment_status`). Pflichtangabe – ein
+   *  Standardwert würde eine unbezahlte Bestellung stillschweigend als
+   *  bearbeitbar durchgehen lassen. */
   paymentStatus: string;
-  /**
-   * Rückerstattungszustand (`orders.refund_status`). Ebenfalls Pflichtangabe
-   * aus demselben Grund: Ein Standardwert (z.B. „nicht anwendbar") würde eine
-   * tatsächlich offene Rückerstattung stillschweigend unsichtbar machen –
-   * genau die Regelung, die Regel 5 einführt.
-   */
+  /** Rückerstattungszustand (`orders.refund_status`). Pflichtangabe aus
+   *  demselben Grund: ein Standardwert würde eine offene Rückerstattung
+   *  stillschweigend als „erledigt" anzeigen. */
   refundStatus: string;
 }
 
-/** Entscheidet für EINE Bestellung, ob sie im Adminbereich sichtbar ist. */
-export function imAdminSichtbar(order: SichtbarkeitsEingabe, jetzt: Date = new Date()): boolean {
-  if (order.status === 'cancelled') {
-    // Regel 5: Ausnahme für eine noch offene Rückerstattung.
-    return REFUND_OFFEN.includes(order.refundStatus);
+export type AdminStatusCode =
+  | 'anfrage'
+  | 'stornierbar'
+  | 'produktionsbereit'
+  | 'storniert'
+  | 'storniert_erstattung_offen'
+  | 'zahlung_ausstehend'
+  | 'zahlung_fehlgeschlagen';
+
+export interface AdminStatus {
+  code: AdminStatusCode;
+  label: string;
+  /** Reine Anzeigefarbe – die Bedeutung steht im `code`, nicht in der Farbe. */
+  farbe: 'rot' | 'gruen' | 'grau' | 'amber' | 'blau';
+  /** Nur bei `code === 'stornierbar'` gesetzt: Zeitpunkt, ab dem die
+   *  Stornofrist abläuft und die Bestellung produktionsbereit wird. */
+  stornofristEndeIso?: string;
+}
+
+/**
+ * Einordnung EINER Bestellung für die Admin-Anzeige – die einzige
+ * Auflösungsstelle, damit Liste und Detailseite nie auseinanderlaufen.
+ *
+ * Reihenfolge der Prüfungen ist die fachliche Priorität: Eine Anfrage ist
+ * nie „storniert" im Bestellsinne; eine stornierte Bestellung bleibt
+ * storniert, unabhängig vom Zahlungszustand; erst danach entscheiden
+ * Zahlung und Stornofrist.
+ */
+export function berechneAdminStatus(order: SichtbarkeitsEingabe, jetzt: Date = new Date()): AdminStatus {
+  if (order.orderType !== 'order') {
+    return { code: 'anfrage', label: 'Anfrage', farbe: 'blau' };
   }
-  if (order.orderType !== 'order') return true; // Anfragen sofort
-
-  // ── Warum die Zahlung VOR der Frist geprüft wird ────────────────────
-  // Beim Öffnen der Detailseite entsteht der Lieferantenauftrag. Ohne diese
-  // Bedingung erschiene eine unbezahlte Kartenbestellung nach zwei Stunden
-  // im Adminbereich, und beim ersten Öffnen würde Ware bestellt – für einen
-  // Bezahlvorgang, den jemand abgebrochen hat.
-  if (ZAHLUNG_STEHT_AUS.includes(order.paymentStatus)) return false;
-
-  return bearbeitungFreigegeben(order.createdAt, jetzt);
+  if (order.status === 'cancelled') {
+    if (REFUND_OFFEN.includes(order.refundStatus)) {
+      return { code: 'storniert_erstattung_offen', label: 'Storniert – Rückerstattung offen', farbe: 'amber' };
+    }
+    return { code: 'storniert', label: 'Storniert', farbe: 'grau' };
+  }
+  if (order.paymentStatus === 'pending') {
+    return { code: 'zahlung_ausstehend', label: 'Zahlung ausstehend', farbe: 'amber' };
+  }
+  if (order.paymentStatus === 'failed') {
+    return { code: 'zahlung_fehlgeschlagen', label: 'Zahlung fehlgeschlagen', farbe: 'amber' };
+  }
+  if (stornofristLaeuftNoch(order.createdAt, jetzt)) {
+    return {
+      code: 'stornierbar',
+      label: 'Stornierung möglich',
+      farbe: 'rot',
+      stornofristEndeIso: stornofristEndet(order.createdAt).toISOString(),
+    };
+  }
+  return { code: 'produktionsbereit', label: 'Produktionsbereit', farbe: 'gruen' };
 }
 
 /**
- * Zahlungszustände, die im Adminbereich bearbeitet werden dürfen – für die
- * Datenbankabfrage, damit dieselbe Regel dort nicht nachgebaut werden muss.
- */
-export const BEARBEITBARE_ZAHLUNGSZUSTAENDE: readonly string[] = ['not_required', 'paid'];
-
-/**
- * Zeitgrenze für die Datenbankabfrage: Bestellungen müssen älter sein.
+ * Darf JETZT ein Lieferantenauftrag für diese Bestellung entstehen?
  *
- * Die Liste filtert damit bereits in der Datenbank statt alle Datensätze zu
- * laden und danach zu verwerfen. Anfragen werden über eine ODER-Bedingung
- * ausgenommen (siehe lib/admin/data.ts).
+ * Die EINZIGE noch verbleibende scharfe Bedingung aus der früheren
+ * `imAdminSichtbar()` – aufgerufen ausschließlich von
+ * `enqueueSupplierOrdersForOrder()` (lib/admin/data.ts), NICHT mehr davon,
+ * ob die Seite überhaupt angezeigt wird.
  */
-export function bearbeitungsGrenze(jetzt: Date = new Date()): string {
-  // Alles, was VOR dieser Grenze erstellt wurde, hat die Frist hinter sich.
-  return new Date(jetzt.getTime() - STORNOFRIST_MS).toISOString();
-}
-
-/**
- * Dieselbe Regel wie `imAdminSichtbar()` oben, als EIN PostgREST-Filterausdruck
- * für `.or()` in `listOrders()` (lib/admin/data.ts) – siehe Kopfkommentar
- * dieser Datei („EINE Regel, ZWEI Anwendungsorte"). Muss `imAdminSichtbar()`
- * fachlich exakt entsprechen; ändert sich eine der beiden Stellen, muss die
- * andere mitgezogen werden.
- *
- * Zwei nach `and(...)` gruppierte Zweige, oberste Ebene ODER-verknüpft:
- *  - der bisherige Normalfall (nicht storniert, Zahlung bearbeitbar,
- *    Anfrage ODER Stornofrist abgelaufen),
- *  - die neue Ausnahme (storniert, aber Rückerstattung noch offen).
- *
- * Ersetzt die vormals drei getrennten Filter-Aufrufe (`.neq('status', …)`,
- * `.or(order_type…)`, `.in('payment_status', …)`) vollständig: Sobald ein
- * zweiter Zweig ODER-verknüpft dazukommt, dürfen die übrigen Bedingungen
- * nicht mehr als separate, automatisch UND-verknüpfte Filter danebenstehen –
- * sie würden sonst auch den neuen Zweig einschränken.
- */
-export function listSichtbarkeitsFilter(jetzt: Date = new Date()): string {
-  const grenze = bearbeitungsGrenze(jetzt);
-  const normalfall = `and(status.neq.cancelled,payment_status.in.(${BEARBEITBARE_ZAHLUNGSZUSTAENDE.join(',')}),or(order_type.neq.order,created_at.lte.${grenze}))`;
-  const erstattungOffen = `and(status.eq.cancelled,refund_status.in.(${REFUND_OFFEN.join(',')}))`;
-  return `${normalfall},${erstattungOffen}`;
+export function produktionsfreigabeErlaubt(order: SichtbarkeitsEingabe, jetzt: Date = new Date()): boolean {
+  return berechneAdminStatus(order, jetzt).code === 'produktionsbereit';
 }

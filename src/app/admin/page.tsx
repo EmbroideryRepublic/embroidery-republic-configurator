@@ -7,6 +7,7 @@ import { listOrders } from '@/lib/admin/data';
 import { istAdmin } from '@/lib/admin/auth';
 import { formatiereGeld } from '@/lib/format';
 import { PAYMENT_STATUS_LABELS, type OrderPaymentStatus } from '@/lib/actions/orderTypes';
+import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 
 const STATUS_LABELS: Record<string, string> = {
   new: 'Neu',
@@ -106,19 +107,16 @@ export default async function AdminOrdersPage({
                     {formatiereGeld(order.totalPrice)}
                   </td>
                   <td className="px-3 py-2">
-                    {STATUS_LABELS[order.status] ?? order.status}
-                    {/* Eine stornierte Zeile erscheint in dieser Liste NUR, wenn
-                        eine Rückerstattung noch aussteht (Regel 5,
-                        lib/orders/orderVisibility.ts) – sonst würde sie von der
-                        Sichtbarkeitsregel gar nicht erst ausgeliefert. Ohne
-                        diesen Hinweis liest sich "Storniert" wie "erledigt",
-                        obwohl das Gegenteil der Grund ist, warum die Zeile
-                        überhaupt noch hier steht (Review vom 2026-08-20). */}
-                    {order.status === 'cancelled' && (
-                      <span className="ml-1.5 rounded bg-amber-50 px-1.5 py-0.5 text-xs font-medium text-amber-800">
-                        Rückerstattung offen
-                      </span>
-                    )}
+                    <span className="text-gray-700">{STATUS_LABELS[order.status] ?? order.status}</span>
+                    {/* Farbige Einordnung – rot (noch stornierbar) / grün
+                        (Stornofrist abgelaufen, produktionsbereit) / grau
+                        (storniert) / amber (Zahlung offen bzw. Rückerstattung
+                        offen) / blau (Anfrage). Entscheidet NICHT mehr, ob die
+                        Zeile erscheint – jede Bestellung ist seit 2026-08-25
+                        sofort sichtbar, siehe orderVisibility.ts. */}
+                    <div className="mt-1">
+                      <AdminStatusBadge status={order.adminStatus} />
+                    </div>
                   </td>
                   <td className="px-3 py-2 text-gray-500">{PAYMENT_STATUS_LABELS[order.paymentStatus as OrderPaymentStatus] ?? order.paymentStatus}</td>
                 </tr>

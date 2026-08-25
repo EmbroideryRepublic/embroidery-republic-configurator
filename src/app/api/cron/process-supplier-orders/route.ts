@@ -28,6 +28,7 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { protokoll } from '@/lib/observability/log';
 import { processDueSupplierOrders } from '@/lib/suppliers/lifecycle/orchestrator';
 import { holeOffeneRechnungenNach } from '@/lib/orders/orderCompletion';
+import { holeOffeneBestellbestaetigungenNach } from '@/lib/orders/orderCompletion';
 import { holeOffeneAbschluesseNach } from '@/lib/orders/paymentService';
 import { holeOffeneErstattungenNach } from '@/lib/orders/refundService';
 import {
@@ -39,6 +40,7 @@ import { ANFRAGE_LOESCHT_NACH_MONATEN, BESTELLUNG_ANONYMISIERT_NACH_JAHREN } fro
 import { RECHNUNG_CLAIM_VERWAIST_NACH_MINUTEN, RECHNUNG_RETRY_LIMIT } from '@/config/rechnung';
 import { VERSANDLABEL_CLAIM_VERWAIST_NACH_MINUTEN } from '@/config/versand';
 import { ERSTATTUNG_CLAIM_VERWAIST_NACH_MINUTEN, ERSTATTUNG_RETRY_LIMIT } from '@/config/rueckerstattung';
+import { BESTAETIGUNG_CLAIM_VERWAIST_NACH_MINUTEN, BESTAETIGUNG_RETRY_LIMIT } from '@/config/bestaetigung';
 
 export const dynamic = 'force-dynamic';
 // Läufe können (mit echter Browser-Automatisierung) länger dauern.
@@ -118,6 +120,20 @@ async function handle(req: NextRequest): Promise<NextResponse> {
     erstattungenNachgeholt = { fehler: meldung };
   }
 
+  // ── Offene Bestellbestätigungen nachholen ───────────────────────────
+  // Eigener Schritt statt Teil von raeumeAuf(): Jeder Treffer löst einen
+  // echten Versandversuch beim Mail-Anbieter aus – kein reiner SQL-
+  // Aufräumschritt. Bewusst einzeln abgefangen, aus demselben Grund wie die
+  // Wartung oben. Siehe Vorfall 2026-08-21 (Migration 0030).
+  let bestaetigungenNachgeholt: { gefunden: number; zugestellt: number; weiterhinOffen: number } | { fehler: string };
+  try {
+    bestaetigungenNachgeholt = await holeOffeneBestellbestaetigungenNach(BESTAETIGUNG_RETRY_LIMIT);
+  } catch (fehler) {
+    const meldung = fehler instanceof Error ? fehler.message : String(fehler);
+    protokoll.fehler('CRON', 'bestaetigungs_retry_fehlgeschlagen', meldung);
+    bestaetigungenNachgeholt = { fehler: meldung };
+  }
+
   return NextResponse.json({
     ok: true,
     reclaimed,
@@ -125,6 +141,7 @@ async function handle(req: NextRequest): Promise<NextResponse> {
     abschluesseNachgeholt,
     rechnungenNachgeholt,
     erstattungenNachgeholt,
+    bestaetigungenNachgeholt,
     processed: processed.length,
     results: processed.map((r) => ({ supplierId: r.supplierId, skipped: r.skipped, status: r.status, reason: r.reason })),
   });
@@ -149,6 +166,7 @@ async function raeumeAuf(): Promise<{
   rechnungserstellungenFreigegeben: number;
   versandlabelFreigegeben: number;
   erstattungenFreigegeben: number;
+  bestaetigungenFreigegeben: number;
   anfragenGeloescht: number;
   bestellungenAnonymisiert: number;
   fehler?: string;
@@ -162,12 +180,13 @@ async function raeumeAuf(): Promise<{
     rechnungserstellungenFreigegeben: 0,
     versandlabelFreigegeben: 0,
     erstattungenFreigegeben: 0,
+    bestaetigungenFreigegeben: 0,
     anfragenGeloescht: 0,
     bestellungenAnonymisiert: 0,
   };
   try {
     const db = createAdminClient();
-    const [limits, sitzungen, ereignisse, verfall, haengend, rechnungHaengend, versandHaengend, erstattungHaengend, anfragen, anonymisiert] = await Promise.all([
+    const [limits, sitzungen, ereignisse, verfall, haengend, rechnungHaengend, versandHaengend, erstattungHaengend, bestaetigungHaengend, anfragen, anonymisiert] = await Promise.all([
       db.rpc('raeume_rate_limit_auf'),
       db.rpc('raeume_admin_sitzungen_auf'),
       db.rpc('raeume_system_ereignisse_auf'),
@@ -182,6 +201,8 @@ async function raeumeAuf(): Promise<{
       // Migration 0029: dasselbe Prinzip für die Rückerstattung – sicher
       // dank stabilem Idempotenzschlüssel, siehe config/rueckerstattung.ts.
       db.rpc('gib_haengende_erstattungen_frei', { p_minuten: ERSTATTUNG_CLAIM_VERWAIST_NACH_MINUTEN }),
+      // Migration 0030: dasselbe Prinzip für die Bestellbestätigung.
+      db.rpc('gib_haengende_bestellbestaetigungen_frei', { p_minuten: BESTAETIGUNG_CLAIM_VERWAIST_NACH_MINUTEN }),
       // DSGVO (H6, Migration 0022): Anfragen ohne Vertrag löschen und
       // Bestellungen nach Ablauf der steuerlichen Aufbewahrungsfrist
       // anonymisieren – siehe docs/dsgvo-loeschkonzept.md. Bei den heutigen
@@ -192,7 +213,8 @@ async function raeumeAuf(): Promise<{
     ]);
     const fehlerObj =
       limits.error || sitzungen.error || ereignisse.error || verfall.error || haengend.error ||
-      rechnungHaengend.error || versandHaengend.error || erstattungHaengend.error || anfragen.error || anonymisiert.error;
+      rechnungHaengend.error || versandHaengend.error || erstattungHaengend.error || bestaetigungHaengend.error ||
+      anfragen.error || anonymisiert.error;
     if (fehlerObj) {
       protokoll.fehler('CRON', 'aufraeumen_fehlgeschlagen', fehlerObj.message);
       return { ...leer, fehler: fehlerObj.message };
@@ -206,6 +228,7 @@ async function raeumeAuf(): Promise<{
       rechnungserstellungenFreigegeben: (rechnungHaengend.data as number) ?? 0,
       versandlabelFreigegeben: (versandHaengend.data as number) ?? 0,
       erstattungenFreigegeben: (erstattungHaengend.data as number) ?? 0,
+      bestaetigungenFreigegeben: (bestaetigungHaengend.data as number) ?? 0,
       anfragenGeloescht: (anfragen.data as number) ?? 0,
       bestellungenAnonymisiert: (anonymisiert.data as number) ?? 0,
     };

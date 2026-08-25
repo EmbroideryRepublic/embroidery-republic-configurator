@@ -13,15 +13,25 @@
  * das protokolliert – die Bestellung bleibt gültig und vollständig.
  *
  * ── Idempotenz ────────────────────────────────────────────────────────
- * Ein erneuter Aufruf für dieselbe Bestellung darf keine zweite interne
- * Benachrichtigung erzeugen. Als Merker dient `internal_notification_email_id`
- * an der Bestellung: Ist sie gesetzt, wurde bereits geplant und der Schritt
- * wird übersprungen.
+ * Die Kundenbestätigung und die interne Meldung haben JEWEILS ihren eigenen,
+ * unabhängigen Erfolgsnachweis:
+ *
+ *   – Kundenbestätigung: `orders.order_confirmation_sent_at` (Migration 0030),
+ *     claim-geschützt über `versucheBestellbestaetigung` unten. Bewusst
+ *     GETRENNT von der internen Meldung – schlägt nur die Kundenbestätigung
+ *     fehl, während die interne Meldung durchkommt, darf ein späterer Retry
+ *     sie trotzdem erneut versuchen (siehe Vorfall 2026-08-21: vorher hing
+ *     die gesamte Funktion an `internal_notification_email_id` und hätte in
+ *     genau diesem Fall die Kundenbestätigung für immer übersprungen).
+ *   – Interne Meldung: `internal_notification_email_id` an der Bestellung –
+ *     ist sie gesetzt, wurde bereits geplant, der Schritt wird übersprungen.
  */
 import { createAdminClient } from '@/lib/supabase/server';
 import { INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS } from '@/config/orderProcess';
 import { erzeugeBestellToken } from './orderAccessToken';
-import { sendOrderConfirmationEmail, sendInternalOrderNotificationEmail } from '@/lib/email/orderEmails';
+import {
+  sendOrderConfirmationEmail, sendInternalOrderNotificationEmail, type EmailVersandErgebnis,
+} from '@/lib/email/orderEmails';
 import { protokolliereBestellereignis } from './orderService';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 
@@ -54,10 +64,10 @@ export function bestellansichtUrl(orderId: string): string | null {
  * Nicht-fatal wie die Historie insgesamt – `protokolliereBestellereignis`
  * schluckt seine eigenen Fehler.
  */
-async function protokolliereVersand(
+export async function protokolliereVersand(
   orderId: string,
   anlass: string,
-  ergebnis: PromiseSettledResult<{ success: boolean; messageId?: string }>,
+  ergebnis: PromiseSettledResult<EmailVersandErgebnis>,
   geplantFuer?: string
 ): Promise<void> {
   if (ergebnis.status === 'rejected') {
@@ -76,12 +86,15 @@ async function protokolliereVersand(
   // Ein abgelehnter Versand meldet sich NICHT immer über eine Ausnahme –
   // sendEmail gibt Fehler auch als `success: false` zurück. Ohne diese
   // Prüfung stünde „versendet" in der Historie, obwohl nichts rausging.
+  // `ergebnis.value.error` ist die tatsächliche Meldung des Versanddiensts
+  // (seit orderEmails.tsx durchgereicht) – ohne sie war ein Fehlschlag nur
+  // über ephemere Server-Logs nachvollziehbar (siehe Vorfall 2026-08-21).
   if (!ergebnis.value.success) {
     await protokolliereBestellereignis({
       orderId,
       eventType: 'email_failed',
       reason: `E-Mail „${anlass}" wurde vom Versanddienst abgelehnt.`,
-      detail: { anlass },
+      detail: { anlass, fehler: ergebnis.value.error ?? null },
     });
     return;
   }
@@ -97,6 +110,57 @@ async function protokolliereVersand(
 }
 
 /**
+ * Versucht die Kundenbestätigung zuzustellen – claim-geschützt
+ * (`beanspruche_bestellbestaetigung`, Migration 0030), damit weder ein
+ * zeitgleicher zweiter Aufruf noch der Cron-Retry
+ * (`holeOffeneBestellbestaetigungenNach`, orderCompletion.ts) dieselbe
+ * Bestätigung doppelt verschickt. `order_confirmation_sent_at` ist der
+ * ALLEINIGE Erfolgsnachweis für DIESE eine E-Mail.
+ *
+ * Nur für Bestellungen (order_type='order') gedacht – der Aufrufer
+ * (`verarbeiteBestelleingang`) ruft für Anfragen unverändert direkt
+ * `sendOrderConfirmationEmail` auf, ohne Claim (Anfragen haben keinen
+ * Zahlungs-/Webhook-Umweg, der einen Retry nötig macht).
+ *
+ * Wirft nie – jeder Fehlschlag (Claim-Aufruf oder Versand) kommt als
+ * `{success:false, error}` zurück, exakt wie `sendEmail` selbst.
+ */
+export async function versucheBestellbestaetigung(order: OrderRecord): Promise<EmailVersandErgebnis> {
+  const db = createAdminClient();
+  const { data: anspruch, error: claimFehler } = await db.rpc('beanspruche_bestellbestaetigung', {
+    p_order_id: order.id,
+  });
+  if (claimFehler) {
+    console.error(`[orders] Bestätigungs-Anspruch für ${order.id} fehlgeschlagen:`, claimFehler.message);
+    return { success: false, error: claimFehler.message };
+  }
+  const beansprucht = Array.isArray(anspruch) ? anspruch.length > 0 : Boolean(anspruch);
+  if (!beansprucht) {
+    // Bereits erfolgreich zugestellt oder ein anderer Lauf ist gerade dran.
+    return { success: true };
+  }
+
+  const ergebnis = await sendOrderConfirmationEmail(order, bestellansichtUrl(order.id) ?? undefined);
+  if (ergebnis.success) {
+    const { error } = await db
+      .from('orders')
+      .update({ order_confirmation_sent_at: new Date().toISOString() })
+      .eq('id', order.id);
+    if (error) {
+      // Versand war erfolgreich (Resend hat angenommen) – nur die Markierung
+      // schlug fehl. Anspruch bewusst NICHT freigeben: Ein Retry würde sonst
+      // eine bereits zugestellte Mail ein zweites Mal verschicken. Rein
+      // kosmetisches Risiko (order_confirmation_sent_at bleibt null, obwohl
+      // zugestellt), kein Kundenschaden.
+      console.error(`[orders] order_confirmation_sent_at für ${order.id} nicht gespeichert:`, error.message);
+    }
+  } else {
+    await db.rpc('gib_bestellbestaetigung_frei', { p_order_id: order.id });
+  }
+  return ergebnis;
+}
+
+/**
  * Versendet bzw. plant alle E-Mails zu einer eingegangenen Bestellung.
  *
  * Wirft NIE. Der Aufrufer braucht das Ergebnis nicht auszuwerten – die
@@ -109,7 +173,10 @@ export async function verarbeiteBestelleingang(
   const istBestellung = order.orderType === 'order';
   const db = createAdminClient();
 
-  // Idempotenz-Prüfung: Wurde für diese Bestellung schon geplant?
+  // Idempotenz-Prüfung NUR für die interne Meldung – siehe Kopfkommentar.
+  // Die Kundenbestätigung hat ihren eigenen Claim (versucheBestellbestaetigung)
+  // und wird deshalb unten IMMER versucht, unabhängig davon, ob die interne
+  // Meldung bereits geplant ist.
   let bereitsGeplant = false;
   if (istBestellung) {
     const { data } = await db
@@ -118,10 +185,6 @@ export async function verarbeiteBestelleingang(
       .eq('id', order.id)
       .maybeSingle<{ internal_notification_email_id: string | null }>();
     bereitsGeplant = Boolean(data?.internal_notification_email_id);
-    if (bereitsGeplant) {
-      console.info(`[orders] Bestelleingang ${order.id} bereits verarbeitet – kein erneuter Versand.`);
-      return;
-    }
   }
 
   const startedAt = Date.now();
@@ -133,38 +196,48 @@ export async function verarbeiteBestelleingang(
     : undefined;
 
   const [kunde, intern] = await Promise.allSettled([
-    sendOrderConfirmationEmail(order, bestellansichtUrl(order.id) ?? undefined),
-    sendInternalOrderNotificationEmail(order, productionSheetSignedUrl, geplantFuer),
+    istBestellung
+      ? versucheBestellbestaetigung(order)
+      : sendOrderConfirmationEmail(order, bestellansichtUrl(order.id) ?? undefined),
+    bereitsGeplant
+      ? Promise.resolve<EmailVersandErgebnis>({ success: true })
+      : sendInternalOrderNotificationEmail(order, productionSheetSignedUrl, geplantFuer),
   ]);
 
   // Jeder Versand hinterlässt eine Spur in der Bestell-Historie – auch der
   // gescheiterte. Ohne das ließe sich später nicht beantworten, warum ein
   // Kunde keine Bestätigung erhalten hat.
   await protokolliereVersand(order.id, 'order_confirmation', kunde);
-  await protokolliereVersand(order.id, 'internal_order_notification', intern, geplantFuer);
+  if (!bereitsGeplant) {
+    await protokolliereVersand(order.id, 'internal_order_notification', intern, geplantFuer);
+  } else {
+    console.info(`[orders] Bestelleingang ${order.id}: interne Meldung bereits geplant – kein erneuter Versand.`);
+  }
 
   if (kunde.status === 'rejected') {
     console.error('[orders] Kundenbestätigung fehlgeschlagen (nicht-fatal):', kunde.reason);
   }
 
-  if (intern.status === 'rejected') {
-    console.error('[orders] Interne Benachrichtigung fehlgeschlagen (nicht-fatal):', intern.reason);
-  } else if (intern.value.messageId && istBestellung) {
-    // Die ID wird gebraucht, um die geplante Mail bei einer Stornierung
-    // zurückziehen zu können. Schlägt das Speichern fehl, bleibt die
-    // Bestellung unberührt – im schlimmsten Fall geht später eine
-    // überflüssige interne Mail raus.
-    const { error } = await db
-      .from('orders')
-      .update({ internal_notification_email_id: intern.value.messageId })
-      .eq('id', order.id);
-    if (error) {
-      console.error(`[orders] Message-ID der geplanten Mail nicht gespeichert (nicht-fatal):`, error.message);
+  if (!bereitsGeplant) {
+    if (intern.status === 'rejected') {
+      console.error('[orders] Interne Benachrichtigung fehlgeschlagen (nicht-fatal):', intern.reason);
+    } else if (intern.value.messageId && istBestellung) {
+      // Die ID wird gebraucht, um die geplante Mail bei einer Stornierung
+      // zurückziehen zu können. Schlägt das Speichern fehl, bleibt die
+      // Bestellung unberührt – im schlimmsten Fall geht später eine
+      // überflüssige interne Mail raus.
+      const { error } = await db
+        .from('orders')
+        .update({ internal_notification_email_id: intern.value.messageId })
+        .eq('id', order.id);
+      if (error) {
+        console.error(`[orders] Message-ID der geplanten Mail nicht gespeichert (nicht-fatal):`, error.message);
+      }
     }
   }
 
   console.info(
     `[orders] Bestelleingang ${order.orderNumber} verarbeitet in ${Date.now() - startedAt} ms` +
-      `${geplantFuer ? ` (interne Meldung geplant für ${geplantFuer})` : ''}.`
+      `${geplantFuer && !bereitsGeplant ? ` (interne Meldung geplant für ${geplantFuer})` : ''}.`
   );
 }

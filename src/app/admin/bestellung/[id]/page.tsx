@@ -30,6 +30,7 @@ import { buildManualSupplierGroups } from '@/lib/admin/supplierOrderView';
 import { istAdmin } from '@/lib/admin/auth';
 import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
+import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 
 export default async function AdminOrderDetailPage({ params }: { params: { id: string } }) {
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
@@ -51,12 +52,13 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
         <Link href="/admin" className="text-xs text-gray-500 hover:text-gray-800">
           ← Zur Bestellliste
         </Link>
-        <h1 className="mt-1 text-lg font-semibold">
-          {order.orderNumber}{' '}
+        <h1 className="mt-1 flex flex-wrap items-center gap-2 text-lg font-semibold">
+          {order.orderNumber}
           <span className="text-sm font-normal text-gray-500">
             ({order.orderType === 'order' ? 'Bestellung' : 'Anfrage'} ·{' '}
             {new Date(order.createdAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' })})
           </span>
+          <AdminStatusBadge status={order.adminStatus} />
         </h1>
       </div>
 
@@ -149,11 +151,12 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
               Zahlungsart: {PAYMENT_METHOD_LABELS[order.paymentMethod] ?? order.paymentMethod}
             </p>
           )}
-          {/* Zahlungszustand: Auf dieser Seite kann er nur 'not_required'
-              oder 'paid' sein – ausstehende Zahlungen werden von der
-              Sichtbarkeitsregel gar nicht erst ausgeliefert
-              (lib/orders/orderVisibility.ts). Angezeigt wird er trotzdem,
-              damit auf einen Blick erkennbar ist, ob Geld geflossen ist. */}
+          {/* Zahlungszustand: seit der Trennung von Sichtbarkeit und
+              Produktionsfreigabe (2026-08-25, lib/orders/orderVisibility.ts)
+              kann hier auch 'pending' oder 'failed' stehen – die Seite ist
+              immer erreichbar, der Badge oben zeigt bereits die Einordnung.
+              Der Klartext hier bleibt zusätzlich sichtbar, damit auf einen
+              Blick erkennbar ist, ob Geld geflossen ist. */}
           {order.orderType === 'order' && (
             <p className="mt-1 text-sm text-gray-700">
               Zahlung:{' '}

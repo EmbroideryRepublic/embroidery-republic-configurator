@@ -132,6 +132,16 @@ export interface AdminOrderDetail {
   invoicePdfUrl: string | null;
   /** Zeitlich befristete Download-URL des DHL-Versandlabels. */
   dhlLabelUrl: string | null;
+  /** Grund des letzten gescheiterten Label-Versuchs (order_events,
+   *  event_type shipping_label_failed/shipping_label_partial_failure) – die
+   *  tatsächliche, bereits von shippingService.ts geloggte Fehlermeldung
+   *  (DHL-Antwort bzw. technischer Fehler), NICHT die generische Meldung, die
+   *  im Fehlerfall an den Admin-Client zurückgegeben wird. null, solange noch
+   *  kein Versuch fehlgeschlagen ist oder der letzte Versuch erfolgreich war
+   *  (dhlLabelUrl/trackingNumber dann bereits gesetzt). Enthält keine
+   *  Zugangsdaten – DHL meldet bei ungültigen Credentials nur eine
+   *  Fehlerbeschreibung, nie die Werte selbst. */
+  lastShippingError: string | null;
   /** Persistierte Automatisierungs-Snapshots inkl. letztem Lauf. */
   supplierOrders: AdminSupplierOrderRow[];
   /** 'customer' oder 'admin', null bei einer nicht stornierten Bestellung –
@@ -390,6 +400,23 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     console.error('[admin] supplier_orders konnten nicht geladen werden:', supplierError);
   }
 
+  // Letzter gescheiterter DHL-Label-Versuch: shippingService.ts loggt die
+  // TATSÄCHLICHE Fehlermeldung (inkl. DHL-Antwort) bereits verlässlich in
+  // order_events – nur zeigte bisher keine Admin-Seite sie an, der Admin sah
+  // ausschließlich die generische Meldung im Formular. Nur relevant, solange
+  // noch kein Label existiert; danach ist ein älterer Fehlschlag Geschichte.
+  let lastShippingError: string | null = null;
+  if ((order.order_type as string) === 'order' && !order.tracking_number) {
+    const { data: shippingEvents } = await supabase
+      .from('order_events')
+      .select('reason')
+      .eq('order_id', orderId)
+      .in('event_type', ['shipping_label_failed', 'shipping_label_partial_failure'])
+      .order('at', { ascending: false })
+      .limit(1);
+    lastShippingError = (shippingEvents?.[0]?.reason as string | null) ?? null;
+  }
+
   const itemRows: AdminOrderItemRow[] = await Promise.all(
     (items ?? []).map(async (row, itemIndex) => {
       const eigeneElemente = (elementRows ?? []).filter((el) => el.order_item_id === row.id);
@@ -509,6 +536,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     invoiceNumber: (order.invoice_number as string | null) ?? null,
     invoicePdfUrl: order.invoice_pdf_url ? await getProductionFileSignedUrl(order.invoice_pdf_url as string) : null,
     dhlLabelUrl: order.dhl_label_url ? await getProductionFileSignedUrl(order.dhl_label_url as string) : null,
+    lastShippingError,
     cancellationSource: (order.cancellation_source as string | null) ?? null,
     refundStatus: ((order.refund_status as RefundStatus | null) ?? 'not_applicable') as RefundStatus,
     refundAmountCent:

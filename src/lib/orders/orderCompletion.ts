@@ -39,7 +39,7 @@ import { renderPrintView } from '@/lib/rendering/renderPrintView';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
 import { verarbeiteBestelleingang, versucheBestellbestaetigung, protokolliereVersand } from './orderIntake';
 import { protokolliereBestellereignis, persistiereKritischMitWiederholung } from './orderService';
-import { buildOrderNumber } from '@/lib/actions/orderTypes';
+import { buildOrderNumber, PRINT_VIEW_LABELS } from '@/lib/actions/orderTypes';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
 import { brauchtVorabZahlung } from '@/config/zahlung';
 import { waehleRechnungsAnbieter, istRechnungserstellungMoeglich } from '@/lib/invoicing/registry';
@@ -460,6 +460,58 @@ function zuElementRecord(zeile: Record<string, unknown>): OrderElementRecord {
   };
 }
 
+/** Ergebnis EINER gerenderten (Position × Ansicht)-Druckvorschau. */
+export interface EinzelVorschauErgebnis {
+  ok: boolean;
+  pngBuffer?: Buffer;
+  /** Nur gesetzt bei ok:false – Grund, warum keine Vorschau entstand
+   *  (fehlende Logo-Datei im Storage, kein Produktbild/Druckbereich für
+   *  diese Ansicht, Rendering-Fehler …). */
+  grund?: string;
+}
+
+/**
+ * Rendert EINE (Position × Ansicht)-Druckvorschau und lädt sie hoch – die
+ * kleinste unabhängige Arbeitseinheit von `erzeugeDruckvorschauen` unten.
+ * Wirft NIE: jeder Fehlerfall (fehlende Logo-Datei, kein Druckbereich für
+ * diese Ansicht, Rendering-Fehler) wird als `{ok:false, grund}` gemeldet,
+ * damit ein Fehlschlag bei EINEM Element nicht die Vorschauen der übrigen,
+ * unabhängigen Positionen/Ansichten mitreißt (siehe Aufrufer).
+ *
+ * Exportiert, damit dieselbe Rendering-Pipeline auch von der Admin-Ansicht
+ * aus für eine einzelne fehlende Vorschau nachträglich aufgerufen werden
+ * kann (siehe lib/actions/productionPreviewActions.ts) – keine zweite,
+ * parallele Rendering-Implementierung.
+ */
+export async function renderUndLadeEineDruckvorschauHoch(
+  orderId: string,
+  itemIndex: number,
+  itemRecord: Pick<OrderItemRecord, 'productId' | 'colorId' | 'printMethod' | 'sizeQuantities'>,
+  view: PrintView,
+  elements: OrderElementRecord[]
+): Promise<EinzelVorschauErgebnis> {
+  try {
+    const renderbar = await Promise.all(elements.map(toRenderableElement));
+    const ergebnis = await renderPrintView({
+      productId: itemRecord.productId,
+      colorId: itemRecord.colorId,
+      view,
+      printMethod: itemRecord.printMethod,
+      elements: renderbar,
+      sizeQuantities: itemRecord.sizeQuantities,
+    });
+    if (!ergebnis) {
+      return { ok: false, grund: 'Kein Produktbild oder kein Druckbereich für diese Ansicht hinterlegt.' };
+    }
+    await uploadProductionFile(`orders/${orderId}/preview-item${itemIndex}-${view}.png`, ergebnis.pngBuffer, 'image/png');
+    return { ok: true, pngBuffer: ergebnis.pngBuffer };
+  } catch (err) {
+    const text = err instanceof Error ? err.message : String(err);
+    console.error(`[orders] Druckvorschau ${orderId}/item${itemIndex}/${view} fehlgeschlagen:`, err);
+    return { ok: false, grund: text };
+  }
+}
+
 /**
  * Rendert je Position und Ansicht mit mindestens einem Element ein
  * hochauflösendes PNG (Kleidungsstück + Motive exakt wie im Editor
@@ -468,57 +520,61 @@ function zuElementRecord(zeile: Record<string, unknown>): OrderElementRecord {
  * Die Buffer bleiben zusätzlich am jeweiligen `OrderItemRecord` hängen:
  * `renderProductionSheet` läuft gleich danach und bettet sie direkt ein,
  * statt sie erneut herunterzuladen.
+ *
+ * Jede (Position × Ansicht)-Aufgabe ist über
+ * `renderUndLadeEineDruckvorschauHoch` einzeln abgesichert (wirft nie) –
+ * eine fehlende/kaputte Logo-Datei bei EINER Aufgabe darf nicht dazu
+ * führen, dass alle übrigen, unabhängigen Vorschauen derselben Bestellung
+ * ebenfalls ausbleiben (vormals: ein gemeinsames Promise.all mit einem
+ * EINZIGEN äußeren try/catch – der erste Fehlschlag ließ Promise.all sofort
+ * verwerfen und keine einzige Vorschau wurde gespeichert, auch nicht die
+ * bereits fertigen).
  */
 async function erzeugeDruckvorschauen(order: OrderRecord, probleme: string[]): Promise<number> {
-  try {
-    // Erst alle (Position × Ansicht)-Kombinationen sammeln, dann PARALLEL
-    // rendern und hochladen. Nacheinander summierten sich die einzelnen
-    // Rasterungen bei mehreren Positionen zu einer langen Wartezeit; die
-    // Aufgaben sind voneinander unabhängig (getrennte Pfade und Buffer).
-    const aufgaben: { itemIndex: number; itemRecord: OrderItemRecord; view: PrintView; elements: OrderElementRecord[] }[] = [];
-    for (let itemIndex = 0; itemIndex < order.items.length; itemIndex++) {
-      const itemRecord = order.items[itemIndex];
-      if (!itemRecord) continue;
+  // Erst alle (Position × Ansicht)-Kombinationen sammeln, dann PARALLEL
+  // rendern und hochladen. Nacheinander summierten sich die einzelnen
+  // Rasterungen bei mehreren Positionen zu einer langen Wartezeit; die
+  // Aufgaben sind voneinander unabhängig (getrennte Pfade und Buffer).
+  const aufgaben: { itemIndex: number; itemRecord: OrderItemRecord; view: PrintView; elements: OrderElementRecord[] }[] = [];
+  for (let itemIndex = 0; itemIndex < order.items.length; itemIndex++) {
+    const itemRecord = order.items[itemIndex];
+    if (!itemRecord) continue;
 
-      const nachAnsicht = new Map<PrintView, OrderElementRecord[]>();
-      for (const el of itemRecord.elements) {
-        const liste = nachAnsicht.get(el.view) ?? [];
-        liste.push(el);
-        nachAnsicht.set(el.view, liste);
-      }
-      for (const [view, elements] of nachAnsicht) {
-        aufgaben.push({ itemIndex, itemRecord, view, elements });
-      }
+    const nachAnsicht = new Map<PrintView, OrderElementRecord[]>();
+    for (const el of itemRecord.elements) {
+      const liste = nachAnsicht.get(el.view) ?? [];
+      liste.push(el);
+      nachAnsicht.set(el.view, liste);
     }
-
-    let erzeugt = 0;
-    const begonnen = Date.now();
-    await Promise.all(
-      aufgaben.map(async ({ itemIndex, itemRecord, view, elements }) => {
-        const renderbar = await Promise.all(elements.map(toRenderableElement));
-        const ergebnis = await renderPrintView({
-          productId: itemRecord.productId,
-          colorId: itemRecord.colorId,
-          view,
-          printMethod: itemRecord.printMethod,
-          elements: renderbar,
-          sizeQuantities: itemRecord.sizeQuantities,
-        });
-        if (!ergebnis) return;
-        await uploadProductionFile(`orders/${order.id}/preview-item${itemIndex}-${view}.png`, ergebnis.pngBuffer, 'image/png');
-        itemRecord.previews ??= {};
-        itemRecord.previews[view] = ergebnis.pngBuffer;
-        erzeugt++;
-      })
-    );
-    console.info(`[orders] Druckvorschauen: ${erzeugt}/${aufgaben.length} Ansicht(en) in ${Date.now() - begonnen} ms.`);
-    return erzeugt;
-  } catch (err) {
-    const text = err instanceof Error ? err.message : String(err);
-    console.error('[orders] Druckvorschau-Rendering fehlgeschlagen:', err);
-    probleme.push(`Druckvorschauen: ${text}`);
-    return 0;
+    for (const [view, elements] of nachAnsicht) {
+      aufgaben.push({ itemIndex, itemRecord, view, elements });
+    }
   }
+
+  let erzeugt = 0;
+  const begonnen = Date.now();
+  await Promise.all(
+    aufgaben.map(async (aufgabe) => {
+      const ergebnis = await renderUndLadeEineDruckvorschauHoch(
+        order.id,
+        aufgabe.itemIndex,
+        aufgabe.itemRecord,
+        aufgabe.view,
+        aufgabe.elements
+      );
+      if (ergebnis.ok && ergebnis.pngBuffer) {
+        aufgabe.itemRecord.previews ??= {};
+        aufgabe.itemRecord.previews[aufgabe.view] = ergebnis.pngBuffer;
+        erzeugt++;
+      } else if (ergebnis.grund) {
+        probleme.push(
+          `Druckvorschau ${aufgabe.itemRecord.productName} (${PRINT_VIEW_LABELS[aufgabe.view] ?? aufgabe.view}): ${ergebnis.grund}`
+        );
+      }
+    })
+  );
+  console.info(`[orders] Druckvorschauen: ${erzeugt}/${aufgaben.length} Ansicht(en) in ${Date.now() - begonnen} ms.`);
+  return erzeugt;
 }
 
 /** Erzeugt das Produktionsblatt und vermerkt es an der Bestellung. */

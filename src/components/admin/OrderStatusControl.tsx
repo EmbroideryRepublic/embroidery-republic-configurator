@@ -54,6 +54,11 @@ export function OrderStatusControl({
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-4">
       <h2 className="text-sm font-semibold text-gray-900">Bestellstatus</h2>
+      {/* Rein darstellend – zusätzlich zum Fortschrittsbalken unten, macht
+          aber den aktuellen Stand auf einen Blick lesbar, ohne die
+          Fortschrittsanzeige selbst interpretieren zu müssen. Ändert nichts
+          an der Zustandsmaschine/den erlaubten Übergängen. */}
+      <p className="mt-1 text-xl font-bold text-gray-900">{STATUS_LABELS[status]}</p>
 
       {storniert ? (
         <p className="mt-3 rounded border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-700">

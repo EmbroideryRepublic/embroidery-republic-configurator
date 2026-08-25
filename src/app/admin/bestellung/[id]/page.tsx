@@ -77,6 +77,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
             orderId={order.id}
             trackingNummer={order.trackingNumber}
             labelUrl={order.dhlLabelUrl}
+            letzterFehler={order.lastShippingError}
           />
         </div>
       )}
@@ -106,6 +107,56 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           cancellationSource={order.cancellationSource}
         />
       </div>
+
+      {/* Positionen + Personalisierung: bewusst VOR Kontakt & Versand
+          (2026-08-25) – für den Produktionsablauf ist "was muss produziert
+          werden und wo genau" wichtiger als Kontaktdaten, die weiter unten
+          weiterhin vollständig vorhanden sind. */}
+      <section className="rounded-lg border border-gray-200 bg-white p-4">
+        <h2 className="mb-2 text-sm font-semibold">Positionen ({order.items.length})</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead className="text-xs uppercase tracking-wide text-gray-500">
+              <tr>
+                <th className="py-1 pr-3">Produkt</th>
+                <th className="py-1 pr-3">Farbe</th>
+                <th className="py-1 pr-3">Veredelung</th>
+                <th className="py-1 pr-3">Größen</th>
+                <th className="py-1 pr-3 text-right">Menge</th>
+              </tr>
+            </thead>
+            <tbody>
+              {order.items.map((item, i) => (
+                <tr key={i} className="border-t border-gray-100">
+                  <td className="py-1.5 pr-3">{item.productName}</td>
+                  <td className="py-1.5 pr-3">{item.colorName}</td>
+                  <td className="py-1.5 pr-3">{item.printMethod === 'embroidery' ? 'Stickerei' : 'DTF'}</td>
+                  <td className="py-1.5 pr-3 text-xs text-gray-600">
+                    {Object.entries(item.sizeQuantities)
+                      .filter(([, q]) => q > 0)
+                      .map(([size, q]) => `${size}×${q}`)
+                      .join(', ')}
+                  </td>
+                  <td className="py-1.5 pr-3 text-right">{item.quantity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Personalisierung: bereits in Phase 2 gerenderte Druckvorschauen
+          (Kleidungsstück + Motive exakt wie im Editor platziert) plus die
+          strukturierte, nach Ansicht gruppierte Element-Liste je Position –
+          siehe components/admin/ProductionPreview.tsx. Kein neues Rendering,
+          keine neue Datenhaltung: liest configuration_elements und die längst
+          im Storage liegenden Vorschau-PNGs (lib/admin/data.ts::getOrderDetail);
+          fehlende Vorschauen lassen sich über denselben Rendering-Pfad direkt
+          hier nachträglich erzeugen. */}
+      <section className="rounded-lg border border-gray-200 bg-white p-4">
+        <h2 className="mb-2 text-sm font-semibold">Personalisierung</h2>
+        <ProductionPreview orderId={order.id} items={order.items} />
+      </section>
 
       {/* Kontakt & Versand */}
       <div className="grid gap-4 sm:grid-cols-2">
@@ -202,51 +253,6 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           )}
         </section>
       </div>
-
-      {/* Positionen */}
-      <section className="rounded-lg border border-gray-200 bg-white p-4">
-        <h2 className="mb-2 text-sm font-semibold">Positionen ({order.items.length})</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
-            <thead className="text-xs uppercase tracking-wide text-gray-500">
-              <tr>
-                <th className="py-1 pr-3">Produkt</th>
-                <th className="py-1 pr-3">Farbe</th>
-                <th className="py-1 pr-3">Veredelung</th>
-                <th className="py-1 pr-3">Größen</th>
-                <th className="py-1 pr-3 text-right">Menge</th>
-              </tr>
-            </thead>
-            <tbody>
-              {order.items.map((item, i) => (
-                <tr key={i} className="border-t border-gray-100">
-                  <td className="py-1.5 pr-3">{item.productName}</td>
-                  <td className="py-1.5 pr-3">{item.colorName}</td>
-                  <td className="py-1.5 pr-3">{item.printMethod === 'embroidery' ? 'Stickerei' : 'DTF'}</td>
-                  <td className="py-1.5 pr-3 text-xs text-gray-600">
-                    {Object.entries(item.sizeQuantities)
-                      .filter(([, q]) => q > 0)
-                      .map(([size, q]) => `${size}×${q}`)
-                      .join(', ')}
-                  </td>
-                  <td className="py-1.5 pr-3 text-right">{item.quantity}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      {/* Personalisierung: bereits in Phase 2 gerenderte Druckvorschauen
-          (Kleidungsstück + Motive exakt wie im Editor platziert) plus die
-          strukturierte Element-Liste je Position – siehe
-          components/admin/ProductionPreview.tsx. Kein neues Rendering, keine
-          neue Datenhaltung: liest configuration_elements und die längst im
-          Storage liegenden Vorschau-PNGs (lib/admin/data.ts::getOrderDetail). */}
-      <section className="rounded-lg border border-gray-200 bg-white p-4">
-        <h2 className="mb-2 text-sm font-semibold">Personalisierung</h2>
-        <ProductionPreview items={order.items} />
-      </section>
 
       {/* Lieferanten-Bestellung (manueller Weg) */}
       <section className="rounded-lg border border-gray-200 bg-white p-4">

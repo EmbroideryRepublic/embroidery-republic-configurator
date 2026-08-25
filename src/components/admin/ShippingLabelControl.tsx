@@ -11,6 +11,14 @@
  * Gewicht wird bewusst bei JEDER Erstellung neu abgefragt statt an der
  * Bestellung gespeichert – es gibt kein Gewichtsfeld im Datenmodell (weder
  * orders noch order_items), siehe shippingService.ts.
+ *
+ * `letzterFehler` (falls vorhanden) zeigt den Grund des letzten gescheiterten
+ * Versuchs aus einer FRÜHEREN Anfrage an (order_events, aus lib/admin/data.ts
+ * geladen) – unabhängig von `meldung` unten, die nur den Ausgang des
+ * aktuellen Klicks in DIESER Sitzung zeigt. Beides ist bereits die reale,
+ * von shippingService.ts geloggte Fehlermeldung (inkl. DHL-Antwort bei
+ * technischen Ablehnungen) – keine Zugangsdaten, DHL liefert bei ungültigen
+ * Credentials nur eine Fehlerbeschreibung.
  */
 import { useState, useTransition } from 'react';
 import { erstelleDhlLabel } from '@/lib/actions/shippingActions';
@@ -19,10 +27,12 @@ export function ShippingLabelControl({
   orderId,
   trackingNummer,
   labelUrl,
+  letzterFehler,
 }: {
   orderId: string;
   trackingNummer: string | null;
   labelUrl: string | null;
+  letzterFehler?: string | null;
 }) {
   const [gewicht, setGewicht] = useState('');
   const [meldung, setMeldung] = useState<{ ok: boolean; text: string } | null>(null);
@@ -77,6 +87,11 @@ export function ShippingLabelControl({
           >
             {laeuft ? 'Wird erstellt …' : 'DHL-Label erstellen'}
           </button>
+          {!meldung && letzterFehler && (
+            <p className="rounded border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+              Letzter Versuch fehlgeschlagen: {letzterFehler}
+            </p>
+          )}
         </div>
       )}
 

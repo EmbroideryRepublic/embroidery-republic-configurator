@@ -103,3 +103,35 @@ test('CartDrawer.tsx: der checkoutUrl-Zweig selbst ruft weder resetSubmitGuard()
       'anschließendem erneuten Versuch muss dieselbe clientRequestId treffen, sonst entsteht eine zweite Bestellung'
   );
 });
+
+test('CartDrawer.tsx: abgebrochenRef wird beim (Wieder-)Mount explizit zurückgesetzt, nicht nur beim Unmount gesetzt', () => {
+  // Regressionstest für den Fund vom 2026-08-26 (Real-User-Flow-Test dieses
+  // Audits, live reproduziert): React 18 StrictMode ruft den Mount-Effekt in
+  // der Entwicklung bewusst doppelt auf (mount → cleanup → erneuter mount),
+  // um genau Aufräumfehler wie diesen aufzudecken. Ein Ref, dessen Cleanup
+  // nur `= true` setzt, OHNE die Gegenstelle beim (erneuten) Mount auf
+  // `= false` zurückzusetzen, bleibt nach dem ERSTEN (simulierten) Unmount
+  // für immer `true` – auch wenn die Komponente tatsächlich weiter gemountet
+  // ist. Ergebnis: `if (abgebrochenRef.current) return;` in handleSubmit griff
+  // ab dem allerersten Rendern IMMER, in der Entwicklungsumgebung – jede
+  // Rechnungskauf-Bestellung blieb nach erfolgreicher Serverantwort auf dem
+  // Checkout-Formular hängen, ohne Fehlermeldung (live reproduziert:
+  // Bestellung ER-2026-A1061A wurde serverseitig korrekt angelegt, die
+  // Bestätigung erschien nie). Betraf nur den Entwicklungsmodus, aber genau
+  // dort läuft auch scripts/e2eBestellung.mts, die dauerhafte
+  // Regressionsstrecke für diesen Ablauf – ihr Fehlschlag sagte dadurch
+  // nichts mehr über den echten Ablauf aus.
+  const start = drawerQuelltext.indexOf('const abgebrochenRef = useRef(false);');
+  assert.ok(start > 0, 'abgebrochenRef muss existieren');
+  const rumpf = drawerQuelltext.slice(start, drawerQuelltext.indexOf('\n\n', start));
+
+  const resetIndex = rumpf.indexOf('abgebrochenRef.current = false;');
+  const cleanupIndex = rumpf.indexOf('abgebrochenRef.current = true;');
+  assert.ok(resetIndex > 0, 'der Effekt muss das Flag beim (erneuten) Mount auf false zurücksetzen');
+  assert.ok(cleanupIndex > 0, 'die Cleanup-Funktion muss das Flag beim (simulierten oder echten) Unmount auf true setzen');
+  assert.ok(
+    resetIndex < cleanupIndex,
+    'das Zurücksetzen muss im Effekt-Körper VOR der return-Cleanup-Funktion stehen – sonst greift es nicht ' +
+      'beim erneuten Mount nach StrictModes simuliertem Unmount'
+  );
+});

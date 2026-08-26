@@ -404,8 +404,29 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
   // spät eintreffende Ergebnis nicht mehr onOrderPlaced() aufrufen: das
   // würde auf der bereits verlassenen, inzwischen ggf. veränderten
   // Elternkomponente den Warenkorb leeren und den Schritt wechseln.
+  //
+  // Fund vom 2026-08-26 (Produktionsreife-Audit, Real-User-Flow-Test): Anders
+  // als die beiden Effekte unten (Checkout-Vorbelegung, Zahlungsoptionen), die
+  // ihr "abgebrochen"-Flag als LOKALE Closure-Variable je Effektlauf führen,
+  // lebt dieses Flag in einem Ref – das übersteht React 18 StrictModes
+  // bewusstes Doppel-Aufrufen des Mount-Effekts in der Entwicklung
+  // (mount → cleanup → erneuter mount, um genau solche Aufräumfehler
+  // aufzudecken) NICHT: Der cleanup-Aufruf des ERSTEN (simulierten) Unmounts
+  // setzt den Ref dauerhaft auf `true` – der zweite, tatsächlich aktive
+  // Effektlauf erbt denselben Ref und setzt ihn nie zurück. Ergebnis: JEDE
+  // Bestellung über diese Schublade blieb in der Entwicklungsumgebung nach
+  // erfolgreicher Serverantwort auf dem Checkout-Formular hängen, ohne
+  // Fehlermeldung – live reproduziert (Bestellung ER-2026-A1061A wurde
+  // serverseitig korrekt angelegt, die Bestätigung erschien nie). Betraf NUR
+  // den Entwicklungsmodus (StrictMode verdoppelt Effekte ausschließlich dort,
+  // nie im Produktionsbuild) – aber genau dort läuft auch scripts/
+  // e2eBestellung.mts, die eigene dauerhafte Regressionsstrecke für diesen
+  // Ablauf, deren Fehlschlag dadurch nichts mehr über den echten Ablauf
+  // aussagte. Behoben nach demselben Muster wie unten: das Flag beim
+  // (erneuten) Mount explizit zurücksetzen, nicht nur beim Unmount setzen.
   const abgebrochenRef = useRef(false);
   useEffect(() => {
+    abgebrochenRef.current = false;
     return () => {
       abgebrochenRef.current = true;
     };

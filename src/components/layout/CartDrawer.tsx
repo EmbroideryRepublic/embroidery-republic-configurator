@@ -10,7 +10,7 @@ import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { submitOrder, submitInquiry, istPaypalVerfuegbar, istKarteVerfuegbar } from '@/lib/actions/orders';
 import { ladeCheckoutVorbelegung } from '@/lib/actions/konto';
-import { useSubmitGuard } from '@/lib/hooks/useSubmitGuard';
+import { useSubmitGuard, verwirfGespeicherteKennung } from '@/lib/hooks/useSubmitGuard';
 import { SHIPPING_RATES, calculateShipping, landCodeForCountry } from '@/config/shipping';
 import { steuersatzFuer, steueranteil, STANDARDLAND } from '@/config/pricing/steuer';
 import { IST_KLEINUNTERNEHMER } from '@/config/company';
@@ -553,6 +553,27 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
         clientRequestId,
       })
     );
+
+    // Sobald die Bestellung beim Rechnungskauf ENDGÜLTIG angelegt ist, muss
+    // die Absendekennung sofort verworfen werden – UNABHÄNGIG davon, ob diese
+    // Komponente inzwischen unmounted ist (Schublade während der Übermittlung
+    // per X/Escape/Overlay-Klick geschlossen). Bewusst VOR der
+    // abgebrochenRef-Prüfung unten: Die reine localStorage-Operation ist immer
+    // sicher aufrufbar, anders als der State-verändernde Teil von
+    // resetSubmitGuard(). Ohne diese Reihenfolge blieb die Kennung nach einem
+    // währenddessen geschlossenen Drawer dauerhaft stehen – ein späterer,
+    // inhaltlich NEUER Bestellversuch lieferte dann fälschlich die ALTE
+    // Bestellung zurück, ohne den neuen Warenkorb-Inhalt je zu speichern
+    // (Fund vom 2026-08-26, Produktionsreife-Audit). Der Karte/PayPal-Zweig
+    // (checkoutUrl) verwirft die Kennung hier bewusst NICHT – siehe dessen
+    // eigener Kommentar unten. Deshalb `!result.checkoutUrl` in der
+    // Bedingung: `orderNumber` steht bei BEIDEN Zweigen (orders.ts gibt es
+    // zusammen mit checkoutUrl zurück) – ohne diese Einschränkung hätte genau
+    // dieser Block die weiter unten dokumentierte Absicht wieder zunichte
+    // gemacht.
+    if (result?.success && result.orderNumber && !result.checkoutUrl) {
+      verwirfGespeicherteKennung('er-absendung-bestellung');
+    }
 
     // Die Schublade wurde während der Übermittlung geschlossen (X/Escape/
     // Overlay-Klick) – die Elternkomponente ist ggf. nicht mehr in diesem

@@ -32,6 +32,13 @@ import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 import { ProductionPreview } from '@/components/admin/ProductionPreview';
+import { berechneNaechsteAktion, type NaechsteAktionTon } from '@/lib/admin/naechsteAktion';
+
+const AKTION_STIL: Record<NaechsteAktionTon, string> = {
+  ok: 'border-brand/20 bg-brand/5 text-brand',
+  hinweis: 'border-amber-200 bg-amber-50 text-amber-800',
+  kritisch: 'border-red-200 bg-red-50 text-red-800',
+};
 
 export default async function AdminOrderDetailPage({ params }: { params: { id: string } }) {
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
@@ -46,6 +53,9 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
   // Fuer die MANUELLE Bestellung aufbereitet (Shop-Farbname + Hex, Mengen).
   const supplierGroups = buildManualSupplierGroups(order.supplierDraft.positionsBySupplier);
   const statusJeLieferant = new Map(order.supplierOrders.map((so) => [so.supplierId as SupplierId, so.status]));
+  // Reine Ableitung aus bereits geladenen Feldern, keine neue Datenhaltung –
+  // siehe naechsteAktion.ts (Fund vom 2026-08-26, Produktionsreife-Audit).
+  const naechsteAktion = berechneNaechsteAktion(order);
 
   return (
     <div className="space-y-6">
@@ -61,6 +71,11 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           </span>
           <AdminStatusBadge status={order.adminStatus} />
         </h1>
+        {naechsteAktion && (
+          <p className={`mt-3 rounded-md border px-3 py-2 text-sm font-medium ${AKTION_STIL[naechsteAktion.ton]}`}>
+            Nächster Schritt: {naechsteAktion.text}
+          </p>
+        )}
       </div>
 
       {/* Statussteuerung: bewusst ganz oben – es ist die Aktion, wegen der
@@ -170,6 +185,14 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
             <div>{order.email}</div>
             {order.phone && <div>{order.phone}</div>}
             {order.message && <p className="pt-2 text-xs text-gray-500">&bdquo;{order.message}&ldquo;</p>}
+            {/* Fund vom 2026-08-26 (Produktionsreife-Audit): protokolliereVersand()
+                loggt einen Fehlschlag der Bestellbestätigung bereits zuverlässig in
+                order_events – bisher zeigte keine Admin-Seite ihn an. */}
+            {order.orderType === 'order' && !order.orderConfirmationSentAt && order.lastConfirmationEmailError && (
+              <p className="mt-2 rounded border border-red-200 bg-red-50 px-2 py-1.5 text-xs text-red-800">
+                Bestellbestätigung konnte nicht zugestellt werden: {order.lastConfirmationEmailError}
+              </p>
+            )}
           </dl>
         </section>
         <section className="rounded-lg border border-gray-200 bg-white p-4">
@@ -246,8 +269,18 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
                     </>
                   )}
                 </>
+              ) : order.lastInvoiceError ? (
+                // Fund vom 2026-08-26 (Produktionsreife-Audit): bisher zeigten
+                // "wartet normal auf Zahlung" und "Erstellung ist echt
+                // fehlgeschlagen" dieselbe graue "noch nicht erstellt"-Anzeige.
+                <span className="text-red-700">fehlgeschlagen: {order.lastInvoiceError}</span>
               ) : (
                 <span className="text-gray-400">noch nicht erstellt</span>
+              )}
+              {order.invoiceNumber && order.lastInvoiceError && (
+                <span className="mt-0.5 block text-xs text-red-700">
+                  Nachgelagerter Schritt fehlgeschlagen: {order.lastInvoiceError}
+                </span>
               )}
             </p>
           )}

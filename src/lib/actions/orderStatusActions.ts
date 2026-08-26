@@ -10,7 +10,7 @@
  */
 import { revalidatePath } from 'next/cache';
 import { istAdmin } from '@/lib/admin/auth';
-import { setzeBestellstatus } from '@/lib/orders/orderService';
+import { setzeBestellstatus, sendeStatusmailErneut } from '@/lib/orders/orderService';
 import { stelleErstattungSicher } from '@/lib/orders/refundService';
 import { STATUS_LABELS } from '@/config/orderStatus';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
@@ -75,4 +75,31 @@ export async function aendereBestellstatus(
       ? `Bestellung steht bereits auf „${STATUS_LABELS[nach]}".`
       : `Status auf „${STATUS_LABELS[nach]}" gesetzt.`,
   };
+}
+
+/**
+ * Verschickt die zum aktuellen Status passende Kunden-Mail erneut – für
+ * Status-Mails gibt es (anders als Rechnung/DHL-Label) weder einen
+ * automatischen Cron-Retry noch einen impliziten Weg über einen erneuten
+ * Statuswechsel (der ist bei gleichem Zielstatus bewusst ein No-op). Diese
+ * Aktion ist der einzige Nachholweg, siehe orderService.ts::sendeStatusmailErneut.
+ */
+export async function sendeBestellstatusmailErneut(orderId: string): Promise<StatusAktionErgebnis> {
+  if (!(await istAdmin())) {
+    return { ok: false, meldung: 'Nicht angemeldet.' };
+  }
+
+  const ergebnis = await sendeStatusmailErneut(orderId);
+  if (!ergebnis.ok) {
+    const texte: Record<string, string> = {
+      'nicht-gefunden': 'Bestellung nicht gefunden.',
+      'keine-email': 'Für diese Bestellung ist keine E-Mail-Adresse hinterlegt.',
+      'kein-status-mit-mail': 'Für den aktuellen Status gibt es keine Status-E-Mail zum erneuten Versenden.',
+    };
+    return { ok: false, meldung: texte[ergebnis.grund] ?? 'Unbekannter Fehler.' };
+  }
+
+  revalidatePath(`/admin/bestellung/${orderId}`);
+
+  return { ok: true, meldung: 'E-Mail erneut ausgelöst. Ob der Versand gelang, zeigt die Bestell-Historie.' };
 }

@@ -1,0 +1,25 @@
+-- ═══════════════════════════════════════════════════════════════════════
+-- 0031 – RLS-NACHTRAG: rechnungsnummernkreise
+-- ═══════════════════════════════════════════════════════════════════════
+--
+-- Fund vom 2026-08-26 (Produktionsreife-Audit): rechnungsnummernkreise
+-- (0028) war die EINZIGE Tabelle im gesamten Migrationsverzeichnis ohne
+-- "enable row level security" – ein Versehen bei 0028, kein bewusster
+-- Unterschied. Alle acht vergleichbaren, ausschließlich über den
+-- Admin-/Service-Role-Client angesprochenen Tabellen (supplier_orders,
+-- supplier_order_events, order_events, rate_limit_zaehler, admin_sitzungen,
+-- system_ereignisse, siehe 0005/0006/0009/0017/0018/0019) haben RLS aktiv,
+-- ohne eigene Policy – das ergibt Default-Deny für PostgREST/anon/
+-- authenticated, während der Service-Role-Client (createAdminClient(),
+-- der einzige tatsächliche Zugriffsweg – siehe orderCompletion.ts,
+-- ziehNaechsteRechnungsnummer) RLS wie immer umgeht.
+--
+-- Ohne diese Zeile wäre der gesetzlich vorgeschriebene (§ 14 Abs. 4 Nr. 4
+-- UStG), lückenlose Rechnungsnummernzähler die einzige Tabelle im Projekt
+-- gewesen, die über die öffentliche PostgREST-Schnittstelle grundsätzlich
+-- lesbar/schreibbar gewesen wäre (vorbehaltlich der projektweiten Supabase-
+-- Default-Grants) – unter Umgehung der eigentlich vorgesehenen atomaren
+-- Funktion naechste_rechnungsnummer() (bereits korrekt in 0028 von
+-- public/anon/authenticated abgezogen).
+
+alter table public.rechnungsnummernkreise enable row level security;

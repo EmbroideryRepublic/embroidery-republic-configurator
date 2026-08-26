@@ -54,9 +54,34 @@ const SCHALTER = 'aktiv';
  * Bewusst bei JEDEM Aufruf neu gelesen statt einmalig zwischengespeichert:
  * Ein zwischengespeicherter Wert würde beim Modultest je nach Ladereihenfolge
  * einfrieren und wäre dann nicht mehr umschaltbar.
+ *
+ * ── NODE_ENV=production-Sperre (Fund vom 2026-08-26, Produktionsreife-
+ * Audit) ─────────────────────────────────────────────────────────────────
+ * Der explizite Testanbieter (`payments/registry.ts`) ist bereits gegen
+ * Produktivbetrieb abgesichert (Sicherheitsfund 2026-08-19) – dieser
+ * GLOBALE Schalter hier überstimmt jenen Schutz aber vollständig
+ * (`waehleZahlungsAnbieter()` prüft `istTestmodus()` VOR jeder anderen
+ * Prüfung). Bislang war die einzige Absicherung organisatorische Disziplin
+ * ("nur aus der Umgebung setzen") – ein Kopierfehler beim Vercel-Env-Scoping
+ * hätte JEDEN POST an /api/webhooks/* mit der offenen Test-Signatur
+ * (testAnbieter.ts, TEST_SIGNATUR) genügen lassen, um eine beliebige
+ * Bestellung ohne echte Zahlung als bezahlt zu markieren. Laut Scheitern
+ * statt stillem Ignorieren, exakt dieselbe Haltung wie im Kopfkommentar
+ * dieser Datei begründet (ein stiller Fehlschlag war bereits einmal der
+ * teure Fehler). Zentral HIER geprüft, nicht nur in payments/registry.ts:
+ * derselbe globale Schalter steuert auch E-Mail/Storage/Lieferanten-
+ * Automatisierung – ein einziger Ort schützt alle Aufrufer gleichermaßen.
  */
 export function istTestmodus(): boolean {
-  return process.env.E2E_TESTMODUS === SCHALTER;
+  const aktiv = process.env.E2E_TESTMODUS === SCHALTER;
+  if (aktiv && process.env.NODE_ENV === 'production') {
+    throw new Error(
+      'E2E_TESTMODUS=aktiv und NODE_ENV=production sind gleichzeitig gesetzt – das darf nie vorkommen ' +
+        '(der Testmodus würde u.a. die Signaturprüfung des Zahlungs-Testanbieters umgehen). ' +
+        'Vercel-Umgebungsvariablen prüfen: E2E_TESTMODUS darf niemals im Production-Scope gesetzt sein.'
+    );
+  }
+  return aktiv;
 }
 
 /**

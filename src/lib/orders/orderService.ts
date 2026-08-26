@@ -35,6 +35,7 @@ import {
   sendOrderCompletedEmail,
   type EmailVersandErgebnis,
 } from '@/lib/email/orderEmails';
+import { meldeEreignis } from '@/lib/observability/ereignis';
 
 export type StornoErgebnis =
   | {
@@ -237,44 +238,15 @@ export async function setzeBestellstatus(
     // Eine explizit übergebene Nummer hat weiterhin Vorrang (bewusste
     // Überschreibung, z.B. bei einem abweichenden Versandweg).
     const trackingNummer = optionen.trackingNummer?.trim() || bestellung.tracking_number || null;
-    try {
-      const versand = await sendOrderShippedEmail({
-        orderId,
-        orderNumber: buildOrderNumber(orderId),
-        empfaenger: bestellung.email,
-        trackingNummer,
-        carrier: bestellung.carrier,
-      });
-      await protokolliereVersand(orderId, 'order_shipped', { status: 'fulfilled', value: versand });
-    } catch (err) {
-      await protokolliereVersand(orderId, 'order_shipped', { status: 'rejected', reason: err });
-    }
+    await sendeShippedMail(orderId, bestellung.email, trackingNummer, bestellung.carrier);
   }
 
   if (nach === 'in_production' && bestellung.email) {
-    try {
-      const versand = await sendOrderInProductionEmail({
-        orderId,
-        orderNumber: buildOrderNumber(orderId),
-        empfaenger: bestellung.email,
-      });
-      await protokolliereVersand(orderId, 'order_in_production', { status: 'fulfilled', value: versand });
-    } catch (err) {
-      await protokolliereVersand(orderId, 'order_in_production', { status: 'rejected', reason: err });
-    }
+    await sendeInProductionMail(orderId, bestellung.email);
   }
 
   if (nach === 'completed' && bestellung.email) {
-    try {
-      const versand = await sendOrderCompletedEmail({
-        orderId,
-        orderNumber: buildOrderNumber(orderId),
-        empfaenger: bestellung.email,
-      });
-      await protokolliereVersand(orderId, 'order_completed', { status: 'fulfilled', value: versand });
-    } catch (err) {
-      await protokolliereVersand(orderId, 'order_completed', { status: 'rejected', reason: err });
-    }
+    await sendeCompletedMail(orderId, bestellung.email);
   }
 
   // Kulanzstornierung durch den Betreiber: dieselbe Storno-Bestätigung wie
@@ -303,6 +275,95 @@ export async function setzeBestellstatus(
   return { ok: true, von, nach, bereitsErreicht: false, erstattungAusstehend };
 }
 
+// ── Status-E-Mail-Versand: drei kleine, wiederverwendete Helfer ─────────
+// Von setzeBestellstatus() (unmittelbar beim Übergang) UND von
+// sendeStatusmailErneut() (manueller Admin-Retry, siehe unten) genutzt –
+// exakt dieselbe Versand-/Protokollierlogik, kein zweiter Pfad.
+
+async function sendeShippedMail(
+  orderId: string,
+  email: string,
+  trackingNummer: string | null,
+  carrier: string | null
+): Promise<void> {
+  try {
+    const versand = await sendOrderShippedEmail({
+      orderId,
+      orderNumber: buildOrderNumber(orderId),
+      empfaenger: email,
+      trackingNummer,
+      carrier,
+    });
+    await protokolliereVersand(orderId, 'order_shipped', { status: 'fulfilled', value: versand });
+  } catch (err) {
+    await protokolliereVersand(orderId, 'order_shipped', { status: 'rejected', reason: err });
+  }
+}
+
+async function sendeInProductionMail(orderId: string, email: string): Promise<void> {
+  try {
+    const versand = await sendOrderInProductionEmail({ orderId, orderNumber: buildOrderNumber(orderId), empfaenger: email });
+    await protokolliereVersand(orderId, 'order_in_production', { status: 'fulfilled', value: versand });
+  } catch (err) {
+    await protokolliereVersand(orderId, 'order_in_production', { status: 'rejected', reason: err });
+  }
+}
+
+async function sendeCompletedMail(orderId: string, email: string): Promise<void> {
+  try {
+    const versand = await sendOrderCompletedEmail({ orderId, orderNumber: buildOrderNumber(orderId), empfaenger: email });
+    await protokolliereVersand(orderId, 'order_completed', { status: 'fulfilled', value: versand });
+  } catch (err) {
+    await protokolliereVersand(orderId, 'order_completed', { status: 'rejected', reason: err });
+  }
+}
+
+export type StatusmailErneutErgebnis =
+  | { ok: true; anlass: string }
+  | { ok: false; grund: 'nicht-gefunden' | 'keine-email' | 'kein-status-mit-mail' };
+
+/**
+ * Versendet die zum AKTUELLEN Status passende Kunden-Mail erneut – der
+ * fehlende Baustein aus dem Produktionsreife-Audit vom 2026-08-26: Bislang
+ * gab es für die drei Status-Mails (in_production/shipped/completed) exakt
+ * einen Versandversuch beim Übergang selbst, ohne jeden Retry – weder
+ * automatisch (kein Cron/Claim wie bei Rechnung/DHL-Label) noch manuell (ein
+ * erneuter Klick auf denselben Zielstatus ist bewusst ein No-op, siehe
+ * `von === nach`-Kurzschluss oben). Schlug der einzige Versuch fehl (siehe
+ * `lastShippingError`-Vorbild für DHL), blieb die Kundschaft bislang ohne
+ * jede Möglichkeit, das nachzuholen, außer einem direkten Datenbankeingriff.
+ *
+ * Bewusst OHNE eigenen Claim: Ein Doppelklick verschickt hier zweimal
+ * dieselbe Mail – das ist die einzige denkbare "Duplikat"-Wirkung (keine
+ * externe Zahlung, keine zweite Rechnung, kein zweites Label) und liegt in
+ * der Natur einer "erneut senden"-Aktion, die der Admin BEWUSST auslöst.
+ */
+export async function sendeStatusmailErneut(orderId: string): Promise<StatusmailErneutErgebnis> {
+  const db = createAdminClient();
+  const { data: bestellung, error } = await db
+    .from('orders')
+    .select('email, status, tracking_number, carrier')
+    .eq('id', orderId)
+    .maybeSingle<{ email: string | null; status: OrderStatus; tracking_number: string | null; carrier: string | null }>();
+
+  if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
+  if (!bestellung.email) return { ok: false, grund: 'keine-email' };
+
+  switch (bestellung.status) {
+    case 'shipped':
+      await sendeShippedMail(orderId, bestellung.email, bestellung.tracking_number, bestellung.carrier);
+      return { ok: true, anlass: 'order_shipped' };
+    case 'in_production':
+      await sendeInProductionMail(orderId, bestellung.email);
+      return { ok: true, anlass: 'order_in_production' };
+    case 'completed':
+      await sendeCompletedMail(orderId, bestellung.email);
+      return { ok: true, anlass: 'order_completed' };
+    default:
+      return { ok: false, grund: 'kein-status-mit-mail' };
+  }
+}
+
 /**
  * Schreibt einen Eintrag in die Bestell-Historie (`order_events`).
  *
@@ -314,6 +375,16 @@ export async function setzeBestellstatus(
  * nicht Steuerung. Scheitert das Schreiben, darf das den fachlichen Vorgang
  * niemals rückgängig machen oder blockieren – der maßgebliche Zustand steht
  * in `orders`.
+ *
+ * Ein Fehlschlag eskaliert seit dem Produktionsreife-Audit vom 2026-08-26
+ * ZUSÄTZLICH nach `system_ereignisse` (meldeEreignis) – vorher landete er
+ * ausschließlich in `console.warn`, einem flüchtigen Plattformprotokoll ohne
+ * Nachweis-/Häufungsauswertung. Andere kritische Schreibvorgänge in diesem
+ * Modul (Lexware-`invoice_id`, DHL-`tracking_number`) bekommen bereits
+ * mehrere Wiederholungsversuche plus ein dauerhaftes `*_unklarer_zustand`-
+ * Flag; für die Historie selbst (reiner Nachweis, keine Steuerung) wäre ein
+ * Wiederholungsversuch unverhältnismäßig – die Sichtbarkeit im Monitoring
+ * genügt, damit ein gehäuftes Auftreten (z.B. anhaltende DB-Störung) auffällt.
  */
 export async function protokolliereBestellereignis(
   eintrag: {
@@ -335,9 +406,25 @@ export async function protokolliereBestellereignis(
       reason: eintrag.reason ?? null,
       detail: eintrag.detail ?? null,
     });
-    if (error) console.warn(`[orders] Historie-Eintrag "${eintrag.eventType}" nicht geschrieben:`, error.message);
+    if (error) {
+      console.warn(`[orders] Historie-Eintrag "${eintrag.eventType}" nicht geschrieben:`, error.message);
+      await meldeEreignis({
+        schwere: 'WARNING',
+        kategorie: 'ORDER',
+        ereignis: 'bestellereignis_nicht_gespeichert',
+        meldung: error.message,
+        felder: { bestellId: eintrag.orderId, eventType: eintrag.eventType },
+      });
+    }
   } catch (err) {
     console.warn(`[orders] Historie-Eintrag "${eintrag.eventType}" fehlgeschlagen:`, err);
+    await meldeEreignis({
+      schwere: 'WARNING',
+      kategorie: 'ORDER',
+      ereignis: 'bestellereignis_nicht_gespeichert',
+      fehler: err,
+      felder: { bestellId: eintrag.orderId, eventType: eintrag.eventType },
+    }).catch(() => {});
   }
 }
 

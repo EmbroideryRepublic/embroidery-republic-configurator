@@ -127,6 +127,30 @@ function verwirf(schluessel: string): void {
 }
 
 /**
+ * Verwirft eine gespeicherte Absendekennung anhand ihres Schlüssels, OHNE
+ * eine Hook-Instanz zu brauchen – reine `localStorage`-Operation, keine
+ * React-Zustandsänderung.
+ *
+ * Wird gebraucht, wenn der Server einen Absendevorgang bereits ENDGÜLTIG
+ * abgeschlossen hat (Bestellung angelegt), die aufrufende Komponente aber
+ * zu diesem Zeitpunkt bereits unmounted sein könnte (z.B. Schublade während
+ * der Übermittlung per X/Escape/Overlay-Klick geschlossen) – `reset()` aus
+ * `useSubmitGuard()` selbst ist an die Hook-Instanz gebunden und aktualisiert
+ * React-State, was nach einem Unmount nicht mehr sicher aufrufbar ist.
+ *
+ * Fund vom 2026-08-26 (Produktionsreife-Audit): Ohne diesen von der
+ * Komponenten-Lebensdauer entkoppelten Weg blieb die Kennung nach einem
+ * währenddessen geschlossenen Warenkorb-Drawer dauerhaft in `localStorage`
+ * stehen – ein späterer, inhaltlich NEUER Bestellversuch in derselben
+ * Browser-Sitzung wurde dadurch fälschlich als Wiederholung erkannt und der
+ * Server lieferte die ALTE Bestellung zurück, ohne den neuen Warenkorb-
+ * Inhalt je zu speichern.
+ */
+export function verwirfGespeicherteKennung(schluessel: string): void {
+  verwirf(schluessel);
+}
+
+/**
  * @param texte      Anzeigetexte je Fehlerart.
  * @param schluessel Speicherschlüssel der Absendekennung. Je Vorgangsart
  *                   EIGEN wählen (Bestellung ≠ Anfrage), sonst würde eine

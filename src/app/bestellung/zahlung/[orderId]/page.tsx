@@ -6,10 +6,10 @@
  * `abbruchUrl` hinterlegt.
  *
  * ── Diese Seite LIEST nur ──────────────────────────────────────────────
- * Sie löst keinerlei Zustandsänderung aus. Ob eine Bestellung als bezahlt
- * gilt, entscheidet ausschließlich der Webhook. Diese Seite zeigt nur an,
- * was in der Datenbank steht. Das ist der Grund, warum alle Fehlerfälle
- * unkritisch sind:
+ * Sie löst keinerlei Zustandsänderung an der Bestellung/Datenbank aus. Ob
+ * eine Bestellung als bezahlt gilt, entscheidet ausschließlich der Webhook.
+ * Diese Seite zeigt nur an, was in der Datenbank steht. Das ist der Grund,
+ * warum alle Fehlerfälle unkritisch sind:
  *
  *   Webhook vor Rückleitung   → hier steht bereits „bezahlt"
  *   Webhook nach Rückleitung  → hier steht „wird geprüft"; der Kunde muss
@@ -22,12 +22,42 @@
  *   paid            → Erfolg, Bestätigung ist unterwegs
  *   pending         → Zahlung wird geprüft (oder Rückleitung kam vor Webhook)
  *   failed/abbruch  → abgebrochen, erneuter Versuch möglich
+ *
+ * ── Zugriffsschutz (Fund vom 2026-08-26, Produktionsreife-Audit) ──────
+ * Der URL-Baustein ist seit `paymentService.ts::starteZahlung` ein
+ * signierter Zugriffstoken (derselbe wie in der Bestellansicht, siehe
+ * orderAccessToken.ts) statt der rohen Bestell-ID – vorher hätte jeder, der
+ * die UUID kennt (Browser-Verlauf, geteilter Rechner, Proxy-Log), fremden
+ * Zahlungsstatus und die Bestellnummer sehen können, ohne jede Prüfung.
+ * `aufgeloesteOrderId()` unten akzeptiert ÜBERGANGSWEISE auch noch eine
+ * rohe UUID direkt – ausschließlich damit zum Deploy-Zeitpunkt bereits
+ * eröffnete, alte Stripe-/PayPal-Sitzungen (deren Rückkehr-URL vorher
+ * gebaut wurde) nicht ins Leere laufen. Jede NEU eröffnete Zahlung erhält
+ * ab sofort ausschließlich die token-geschützte URL.
  */
 import Link from 'next/link';
 import { CheckCircle2, Clock, XCircle } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { COMPANY } from '@/config/company';
+import { ZahlungErfolgAufraeumen } from '@/components/layout/ZahlungErfolgAufraeumen';
+import { pruefeBestellToken } from '@/lib/orders/orderAccessToken';
+
+const UUID_MUSTER = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * Löst den URL-Baustein zu einer Bestell-ID auf – Token bevorzugt, rohe
+ * UUID nur als befristeter Übergangsweg (siehe Kopfkommentar). Alles andere
+ * (falsches Format, abgelaufene/gefälschte Signatur) liefert `null`: dieselbe
+ * "kein Orakel"-Haltung wie in `orderAccess.ts` – dem Aufrufer wird nicht
+ * verraten, WARUM der Zugriff scheitert.
+ */
+function aufgeloesteOrderId(segment: string): string | null {
+  const pruefung = pruefeBestellToken(segment);
+  if (pruefung.gueltig) return pruefung.orderId;
+  if (UUID_MUSTER.test(segment)) return segment;
+  return null;
+}
 
 export const metadata = {
   title: 'Zahlung',
@@ -78,20 +108,23 @@ export default async function ZahlungsRueckkehr({
   searchParams: { abgebrochen?: string };
 }) {
   const abgebrochen = searchParams.abgebrochen === '1';
+  const orderId = aufgeloesteOrderId(params.orderId);
 
   // NUR lesen. Kein Update, kein Seiteneffekt.
   let paymentStatus: string | null = null;
   let gefunden = false;
   try {
-    const db = createAdminClient();
-    const { data } = await db
-      .from('orders')
-      .select('payment_status')
-      .eq('id', params.orderId)
-      .maybeSingle();
-    if (data) {
-      gefunden = true;
-      paymentStatus = (data.payment_status as string | null) ?? null;
+    if (orderId) {
+      const db = createAdminClient();
+      const { data } = await db
+        .from('orders')
+        .select('payment_status')
+        .eq('id', orderId)
+        .maybeSingle();
+      if (data) {
+        gefunden = true;
+        paymentStatus = (data.payment_status as string | null) ?? null;
+      }
     }
   } catch {
     // Bei einem Lesefehler bleibt es beim neutralen „wird geprüft" –
@@ -100,10 +133,11 @@ export default async function ZahlungsRueckkehr({
 
   const anzeige = gefunden ? bestimmeAnzeige(paymentStatus, abgebrochen) : 'ausstehend';
   const { icon: Icon, farbe, titel, text } = INHALT[anzeige];
-  const bestellnummer = gefunden ? buildOrderNumber(params.orderId) : null;
+  const bestellnummer = gefunden && orderId ? buildOrderNumber(orderId) : null;
 
   return (
     <main className="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-6 py-16 text-center">
+      {anzeige === 'bezahlt' && <ZahlungErfolgAufraeumen />}
       <Icon className={`mb-6 h-16 w-16 ${farbe}`} aria-hidden />
       <h1 className="mb-3 text-2xl font-semibold text-brand">{titel}</h1>
       {bestellnummer && <p className="mb-2 text-sm text-brand/50">Bestellnummer {bestellnummer}</p>}

@@ -89,8 +89,27 @@ export default async function AdminOrdersPage({
             </thead>
             <tbody>
               {orders.map((order) => (
-                <tr key={order.id} className="border-b border-gray-100 last:border-0 hover:bg-brand-light/50">
+                <tr
+                  key={order.id}
+                  className={`border-b border-gray-100 last:border-0 hover:bg-brand-light/50 ${
+                    order.brauchtAufmerksamkeit ? 'bg-red-50/60' : ''
+                  }`}
+                >
                   <td className="px-3 py-2 font-medium">
+                    {/* Fund vom 2026-08-26 (admin_workflow_ux-Audit): ohne
+                        dieses Signal war ein Fehlschlag (Versandlabel,
+                        Bestellbestätigung, Rechnung) nur sichtbar, wenn man
+                        die Bestellung einzeln öffnete – siehe
+                        brauchtAufmerksamkeit in lib/admin/data.ts. */}
+                    {order.brauchtAufmerksamkeit && (
+                      <span
+                        title="Braucht Aufmerksamkeit – Versand-, Bestätigungs- oder Rechnungsproblem, siehe Bestelldetails"
+                        className="mr-1.5 inline-block text-red-600"
+                        aria-label="Braucht Aufmerksamkeit"
+                      >
+                        ⚠
+                      </span>
+                    )}
                     <Link href={`/admin/bestellung/${order.id}`} className="text-gold-dark hover:underline">
                       {order.orderNumber}
                     </Link>

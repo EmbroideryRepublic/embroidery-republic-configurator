@@ -22,12 +22,19 @@
  *   payments/*              (rein)  ←→  orders/paymentService.ts  (Zustand)
  *
  * ── Idempotenz ────────────────────────────────────────────────────────
- * Der gesamte Schutz steckt in EINER Bedingung:
- * `where payment_status = 'pending'`. Ein zweites Mal zugestelltes Ereignis
- * trifft null Zeilen und löst deshalb keine Folgeschritte aus. Dieselbe
- * Bedingung verhindert, dass ein verspätetes „fehlgeschlagen" eine bereits
- * bestätigte Zahlung zurücksetzt. Keine Ereignistabelle nötig – siehe
- * docs/zahlungsarchitektur.md, Abschnitt 4a.
+ * Der Schutz steckt in der WHERE-Bedingung des jeweiligen UPDATE. Für einen
+ * Fehlschlag (`markiereZahlungAlsGescheitert`) genügt `payment_status =
+ * 'pending'`: ein zweites „fehlgeschlagen" trifft dann null Zeilen. Für eine
+ * BESTÄTIGUNG (`bestaetigeZahlung`) reicht `'pending'` allein NICHT (siehe
+ * Fund vom 2026-08-26, Produktionsreife-Audit): Stripe Checkout erlaubt nach
+ * einer abgelehnten Karte einen erneuten Versuch auf DERSELBEN Session – der
+ * Ablauf ist dann `pending → failed → paid` für dieselbe Bestellung, ganz
+ * ohne `starteZahlung()`-Wiederaufnahme dazwischen. Die Bedingung dort ist
+ * deshalb `payment_status IN ('pending','failed')`. Das bleibt trotzdem
+ * lückenlos idempotent: Sobald `payment_status='paid'` gesetzt ist, matcht
+ * KEINE der beiden Bedingungen mehr – eine erneute Zustellung eines
+ * bestätigten Ereignisses trifft weiterhin null Zeilen. Keine Ereignistabelle
+ * nötig – siehe docs/zahlungsarchitektur.md, Abschnitt 4a.
  */
 import { createAdminClient } from '@/lib/supabase/server';
 import { waehleZahlungsAnbieter } from '@/lib/payments/registry';
@@ -43,6 +50,7 @@ import { PaymentSucceededEmail } from '@/lib/email/templates/PaymentSucceededEma
 import { PaymentFailedEmail } from '@/lib/email/templates/PaymentFailedEmail';
 import { basisUrl } from '@/lib/seo/basisUrl';
 import { bestellansichtUrl } from './orderIntake';
+import { erzeugeBestellToken } from './orderAccessToken';
 
 /**
  * Minimaler, unabhängiger Nachschlag für die beiden Zahlungs-E-Mails – NICHT
@@ -199,6 +207,16 @@ export async function starteZahlung({
 
   // ── Vorgang eröffnen ────────────────────────────────────────────────
   const bestellnummer = buildOrderNumber(orderId);
+  // Signierter Zugriffstoken statt der rohen Bestell-ID in der Rückkehr-URL
+  // (Fund vom 2026-08-26, Produktionsreife-Audit): Die Seite selbst prüft
+  // KEINE Autorisierung – wer die rohe ID kennt (Browser-Verlauf, geteilter
+  // Rechner, Proxy-Log), hätte sonst Zahlungsstatus und Bestellnummer einer
+  // fremden Bestellung sehen können. Derselbe, bereits geprüfte Token wie in
+  // der Bestellansicht (orderAccessToken.ts) – kein neues Sicherheitskonzept.
+  // Fällt der Token aus (fehlendes ORDER_TOKEN_SECRET), auf die rohe ID
+  // zurück: Der Bezahlvorgang darf daran nicht scheitern, dieselbe Haltung
+  // wie beim Storno-Link in der Bestellbestätigung (orderIntake.ts).
+  const zugriffsteil = erzeugeBestellToken(orderId) ?? orderId;
   let eroeffnung;
   try {
     eroeffnung = await anbieter.eroeffne({
@@ -207,8 +225,8 @@ export async function starteZahlung({
       betragCent: pruefung.betragCent,
       waehrung: 'EUR',
       beschreibung: `Bestellung ${bestellnummer}`,
-      rueckkehrUrl: `${basisUrl()}/bestellung/zahlung/${orderId}`,
-      abbruchUrl: `${basisUrl()}/bestellung/zahlung/${orderId}?abgebrochen=1`,
+      rueckkehrUrl: `${basisUrl()}/bestellung/zahlung/${zugriffsteil}`,
+      abbruchUrl: `${basisUrl()}/bestellung/zahlung/${zugriffsteil}?abgebrochen=1`,
       // Je Versuch eigener Schlüssel: Eine Wiederaufnahme SOLL einen neuen
       // Vorgang erzeugen. Innerhalb eines Versuchs verhindert er, dass ein
       // wiederholter Aufruf einen zweiten anlegt.
@@ -349,7 +367,16 @@ async function bestaetigeZahlung(
 ): Promise<EreignisErgebnis> {
   // DIE Idempotenzbedingung. Trifft sie keine Zeile, war die Zahlung schon
   // bestätigt (erneut zugestelltes Ereignis) – dann passiert nichts weiter,
-  // insbesondere keine zweite Bestätigungsmail.
+  // insbesondere keine zweite Bestätigungsmail. Bewusst `IN ('pending',
+  // 'failed')` statt nur `= 'pending'` (Fund vom 2026-08-26): Ein erneuter
+  // Zahlungsversuch mit einer anderen Karte auf DERSELBEN Stripe-Checkout-
+  // Session durchläuft `pending → failed → paid`, ohne dass zwischendurch
+  // `starteZahlung()` lief. Mit der alten, engeren Bedingung traf ein
+  // späteres, echtes „bestaetigt"-Ereignis nach einem bereits verarbeiteten
+  // „fehlgeschlagen" null Zeilen – die Zahlung blieb dann spurlos auf
+  // `failed` stehen, obwohl das Geld eingezogen wurde: keine Bestätigung,
+  // keine Rechnung, kein Produktionsblatt, kein order_events-Eintrag. Bleibt
+  // trotzdem lückenlos idempotent, siehe Kopfkommentar dieser Datei.
   const { data: geaendert, error } = await db
     .from('orders')
     .update({
@@ -358,7 +385,7 @@ async function bestaetigeZahlung(
       payment_transaction_id: ereignis.transaktionId ?? null,
     })
     .eq('id', ereignis.bestellId)
-    .eq('payment_status', 'pending')
+    .in('payment_status', ['pending', 'failed'])
     .select('id');
 
   if (error) {

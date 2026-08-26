@@ -13,7 +13,7 @@
  * keine.
  */
 import { useState, useTransition } from 'react';
-import { aendereBestellstatus } from '@/lib/actions/orderStatusActions';
+import { aendereBestellstatus, sendeBestellstatusmailErneut } from '@/lib/actions/orderStatusActions';
 import {
   ERLAUBTE_UEBERGAENGE,
   STATUS_LABELS,
@@ -21,6 +21,11 @@ import {
   fortschrittIndex,
 } from '@/config/orderStatus';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
+
+/** Für diese drei Status gibt es eine Kunden-Mail – siehe orderService.ts.
+ *  'new'/'cancelled' haben keine (Bestellbestätigung bzw. Storno-Bestätigung
+ *  laufen über eigene, unabhängige Pfade). */
+const STATUS_MIT_MAIL: readonly OrderStatus[] = ['in_production', 'shipped', 'completed'];
 
 export function OrderStatusControl({
   orderId,
@@ -32,8 +37,10 @@ export function OrderStatusControl({
   trackingNummer: string | null;
 }) {
   const [meldung, setMeldung] = useState<{ ok: boolean; text: string } | null>(null);
+  const [mailMeldung, setMailMeldung] = useState<{ ok: boolean; text: string } | null>(null);
   const [nummer, setNummer] = useState('');
   const [laeuft, starte] = useTransition();
+  const [sendetMail, starteMailversand] = useTransition();
 
   // Stornieren wird hier bewusst NICHT angeboten: Eine Betreiberstornierung
   // ist ein eigener Vorgang mit anderer Begründungspflicht (Kulanz,
@@ -48,6 +55,19 @@ export function OrderStatusControl({
       const r = await aendereBestellstatus(orderId, nach, nach === 'shipped' ? nummer : undefined);
       setMeldung({ ok: r.ok, text: r.meldung });
       if (r.ok) setNummer('');
+    });
+  }
+
+  // Für Status-Mails gibt es (anders als Rechnung/DHL-Label) weder einen
+  // automatischen Cron-Retry noch einen impliziten Weg über einen erneuten
+  // Statuswechsel (der ist bei gleichem Zielstatus bewusst ein No-op) – diese
+  // Aktion ist der einzige Nachholweg (Fund vom 2026-08-26, Produktionsreife-
+  // Audit). Kein eigener Claim: ein Doppelklick verschickt hier bewusst
+  // zweimal dieselbe Mail, siehe orderService.ts::sendeStatusmailErneut.
+  function sendeMailErneut() {
+    starteMailversand(async () => {
+      const r = await sendeBestellstatusmailErneut(orderId);
+      setMailMeldung({ ok: r.ok, text: r.meldung });
     });
   }
 
@@ -88,6 +108,22 @@ export function OrderStatusControl({
             <p className="mt-3 text-xs text-gray-600">
               Sendungsnummer: <span className="font-medium text-gray-900">{trackingNummer}</span>
             </p>
+          )}
+
+          {STATUS_MIT_MAIL.includes(status) && (
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                disabled={sendetMail}
+                onClick={sendeMailErneut}
+                className="rounded border border-gray-300 px-2.5 py-1 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:opacity-50"
+              >
+                {sendetMail ? 'Wird gesendet …' : 'Status-Mail erneut senden'}
+              </button>
+              {mailMeldung && (
+                <span className={`text-xs ${mailMeldung.ok ? 'text-gray-600' : 'text-red-700'}`}>{mailMeldung.text}</span>
+              )}
+            </div>
           )}
 
           {naechste.length === 0 ? (

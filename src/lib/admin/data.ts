@@ -28,6 +28,13 @@ export interface AdminOrderListRow {
   /** Einordnung für Farbe/Badge in der Liste – siehe lib/orders/orderVisibility.ts.
    *  Entscheidet NIE, ob die Zeile erscheint, nur wie sie beschriftet ist. */
   adminStatus: AdminStatus;
+  /** true, wenn für diese Bestellung ein ungelöster Fehlschlag vorliegt
+   *  (Versandlabel, Bestellbestätigung oder Rechnung – dieselben Kategorien
+   *  wie lastShippingError/lastConfirmationEmailError/lastInvoiceError auf
+   *  der Detailseite, siehe getOrderDetail()). Fund vom 2026-08-26
+   *  (Produktionsreife-Audit, admin_workflow_ux): genau diese Fälle waren
+   *  bisher in der Liste unsichtbar, bevor man die Bestellung öffnete. */
+  brauchtAufmerksamkeit: boolean;
 }
 
 /**
@@ -142,6 +149,25 @@ export interface AdminOrderDetail {
    *  Zugangsdaten – DHL meldet bei ungültigen Credentials nur eine
    *  Fehlerbeschreibung, nie die Werte selbst. */
   lastShippingError: string | null;
+  /** Zeitpunkt, an dem die Bestellbestätigung erfolgreich zugestellt wurde
+   *  (order_confirmation_sent_at) – null, solange noch keine zugestellt ist
+   *  (entweder wartet der claim-geschützte Versand noch, oder er ist
+   *  fehlgeschlagen, siehe lastConfirmationEmailError). */
+  orderConfirmationSentAt: string | null;
+  /** Grund des letzten gescheiterten Bestellbestätigungs-Versands
+   *  (order_events, event_type email_failed, detail.anlass=order_confirmation)
+   *  – nach demselben Muster wie lastShippingError. null, solange die
+   *  Bestätigung noch nie fehlschlug ODER bereits zugestellt ist
+   *  (orderConfirmationSentAt dann gesetzt). */
+  lastConfirmationEmailError: string | null;
+  /** Grund des letzten Rechnungs-Fehlschlags (order_events, event_type
+   *  invoice_creation_failed/invoice_creation_partial_failure/
+   *  invoice_accounting_marking_failed) – bleibt auch dann relevant, wenn
+   *  invoiceNumber inzwischen gesetzt ist (z.B. Buchhaltungs-Markierung
+   *  scheiterte NACH erfolgreicher Rechnungserstellung). Unterscheidet
+   *  "wartet normal auf Zahlung" (invoiceNumber null, lastInvoiceError null)
+   *  von "Erstellung ist echt fehlgeschlagen" (lastInvoiceError gesetzt). */
+  lastInvoiceError: string | null;
   /** Persistierte Automatisierungs-Snapshots inkl. letztem Lauf. */
   supplierOrders: AdminSupplierOrderRow[];
   /** 'customer' oder 'admin', null bei einer nicht stornierten Bestellung –
@@ -290,7 +316,7 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
   let query = supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, customer_name, company, email, total_price, status, payment_status, refund_status',
+      'id, created_at, order_type, customer_name, company, email, total_price, status, payment_status, refund_status, tracking_number, order_confirmation_sent_at',
       { count: 'exact' }
     );
 
@@ -307,6 +333,59 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
   if (error || !data) {
     console.error('[admin] Bestellliste konnte nicht geladen werden:', error);
     return { zeilen: [], gesamt: 0 };
+  }
+
+  // "Braucht Aufmerksamkeit"-Signal (Fund vom 2026-08-26, admin_workflow_ux-
+  // Audit): dieselben drei Fehlerkategorien wie auf der Detailseite
+  // (getOrderDetail(), oben), aber EIN gemeinsamer Query über alle
+  // Bestellungen dieser Seite statt eines pro Zeile – bleibt damit unabhängig
+  // von der Seitengröße bei genau einem zusätzlichen Roundtrip.
+  const bestellIds = data
+    .filter((row) => (row.order_type as string) === 'order')
+    .map((row) => row.id as string);
+
+  const problemOrderIds = new Set<string>();
+  if (bestellIds.length > 0) {
+    const { data: problemEvents } = await supabase
+      .from('order_events')
+      .select('order_id, event_type, detail')
+      .in('order_id', bestellIds)
+      .in('event_type', [
+        'shipping_label_failed',
+        'shipping_label_partial_failure',
+        'email_failed',
+        'invoice_creation_failed',
+        'invoice_creation_partial_failure',
+        'invoice_accounting_marking_failed',
+      ]);
+
+    const trackingByOrder = new Map(data.map((row) => [row.id as string, row.tracking_number as string | null]));
+    const bestaetigungByOrder = new Map(
+      data.map((row) => [row.id as string, row.order_confirmation_sent_at as string | null])
+    );
+
+    for (const ev of problemEvents ?? []) {
+      const orderId = ev.order_id as string;
+      const eventType = ev.event_type as string;
+      if (
+        (eventType === 'shipping_label_failed' || eventType === 'shipping_label_partial_failure') &&
+        !trackingByOrder.get(orderId)
+      ) {
+        problemOrderIds.add(orderId);
+      } else if (
+        eventType === 'email_failed' &&
+        (ev.detail as Record<string, unknown> | null)?.anlass === 'order_confirmation' &&
+        !bestaetigungByOrder.get(orderId)
+      ) {
+        problemOrderIds.add(orderId);
+      } else if (
+        eventType === 'invoice_creation_failed' ||
+        eventType === 'invoice_creation_partial_failure' ||
+        eventType === 'invoice_accounting_marking_failed'
+      ) {
+        problemOrderIds.add(orderId);
+      }
+    }
   }
 
   const zeilen = data.map((row) => {
@@ -327,6 +406,7 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
       status,
       paymentStatus,
       adminStatus: berechneAdminStatus({ createdAt, status, orderType, paymentStatus, refundStatus }),
+      brauchtAufmerksamkeit: problemOrderIds.has(row.id as string),
     };
   });
 
@@ -339,7 +419,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   const { data: order, error: orderError } = await supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at'
+      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at, order_confirmation_sent_at'
     )
     .eq('id', orderId)
     .single();
@@ -400,21 +480,63 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     console.error('[admin] supplier_orders konnten nicht geladen werden:', supplierError);
   }
 
-  // Letzter gescheiterter DHL-Label-Versuch: shippingService.ts loggt die
-  // TATSÄCHLICHE Fehlermeldung (inkl. DHL-Antwort) bereits verlässlich in
-  // order_events – nur zeigte bisher keine Admin-Seite sie an, der Admin sah
-  // ausschließlich die generische Meldung im Formular. Nur relevant, solange
-  // noch kein Label existiert; danach ist ein älterer Fehlschlag Geschichte.
+  // Letzte gescheiterte Vorgänge – dieselbe Grundidee wie schon bei DHL
+  // (shippingService.ts loggt die TATSÄCHLICHE Fehlermeldung inkl. Anbieter-
+  // Antwort bereits verlässlich in order_events, nur zeigte bisher keine
+  // Admin-Seite sie an). Fund vom 2026-08-26 (Produktionsreife-Audit): Genau
+  // dieselbe Lücke bestand für die Bestellbestätigung und die Rechnung –
+  // protokolliereVersand()/erzeugeRechnung() schreiben ihre Fehlschläge
+  // seit Langem zuverlässig, nur las sie nie jemand aus. EIN gemeinsamer
+  // Query statt drei getrennter Roundtrips (Performance-Audit vom selben
+  // Datum: keine zusätzlichen N+1-Abfragen einführen).
   let lastShippingError: string | null = null;
-  if ((order.order_type as string) === 'order' && !order.tracking_number) {
-    const { data: shippingEvents } = await supabase
+  let lastConfirmationEmailError: string | null = null;
+  let lastInvoiceError: string | null = null;
+  if ((order.order_type as string) === 'order') {
+    const brauchtVersandPruefung = !order.tracking_number;
+    const brauchtBestaetigungsPruefung = !order.order_confirmation_sent_at;
+    // Rechnungsfehler bleiben relevant, auch wenn invoice_number inzwischen
+    // gesetzt ist (z.B. invoice_accounting_marking_failed NACH erfolgreicher
+    // Rechnungserstellung) – deshalb hier ohne Vorbedingung mitgeladen.
+    const relevanteEventTypen = [
+      ...(brauchtVersandPruefung ? ['shipping_label_failed', 'shipping_label_partial_failure'] : []),
+      ...(brauchtBestaetigungsPruefung ? ['email_failed'] : []),
+      'invoice_creation_failed',
+      'invoice_creation_partial_failure',
+      'invoice_accounting_marking_failed',
+    ];
+    const { data: problemEvents } = await supabase
       .from('order_events')
-      .select('reason')
+      .select('event_type, reason, detail, at')
       .eq('order_id', orderId)
-      .in('event_type', ['shipping_label_failed', 'shipping_label_partial_failure'])
+      .in('event_type', relevanteEventTypen)
       .order('at', { ascending: false })
-      .limit(1);
-    lastShippingError = (shippingEvents?.[0]?.reason as string | null) ?? null;
+      .limit(20);
+
+    for (const ev of problemEvents ?? []) {
+      const eventType = ev.event_type as string;
+      if (
+        !lastShippingError &&
+        (eventType === 'shipping_label_failed' || eventType === 'shipping_label_partial_failure')
+      ) {
+        lastShippingError = (ev.reason as string | null) ?? null;
+      }
+      if (
+        !lastConfirmationEmailError &&
+        eventType === 'email_failed' &&
+        (ev.detail as Record<string, unknown> | null)?.anlass === 'order_confirmation'
+      ) {
+        lastConfirmationEmailError = (ev.reason as string | null) ?? null;
+      }
+      if (
+        !lastInvoiceError &&
+        (eventType === 'invoice_creation_failed' ||
+          eventType === 'invoice_creation_partial_failure' ||
+          eventType === 'invoice_accounting_marking_failed')
+      ) {
+        lastInvoiceError = (ev.reason as string | null) ?? null;
+      }
+    }
   }
 
   const itemRows: AdminOrderItemRow[] = await Promise.all(
@@ -537,6 +659,9 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     invoicePdfUrl: order.invoice_pdf_url ? await getProductionFileSignedUrl(order.invoice_pdf_url as string) : null,
     dhlLabelUrl: order.dhl_label_url ? await getProductionFileSignedUrl(order.dhl_label_url as string) : null,
     lastShippingError,
+    orderConfirmationSentAt: (order.order_confirmation_sent_at as string | null) ?? null,
+    lastConfirmationEmailError,
+    lastInvoiceError,
     cancellationSource: (order.cancellation_source as string | null) ?? null,
     refundStatus: ((order.refund_status as RefundStatus | null) ?? 'not_applicable') as RefundStatus,
     refundAmountCent:

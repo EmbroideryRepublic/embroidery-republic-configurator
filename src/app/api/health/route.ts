@@ -27,6 +27,7 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { isAdminConfigured, istAdmin } from '@/lib/admin/auth';
 import { mitAnfrageKontext } from '@/lib/observability/kontext';
 import { log } from '@/lib/observability/log';
+import { zahlungsDiagnose } from '@/lib/payments/registry';
 
 export const dynamic = 'force-dynamic';
 
@@ -195,6 +196,11 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
           // Details ausschließlich für angemeldete Betreiber.
           ...(ausfuehrlich ? { detail: p.detail, dauerMs: p.dauerMs } : {}),
         })),
+        // Strukturdiagnose der Zahlungsanbieter (nie Geheimniswerte, siehe
+        // lib/payments/registry.ts::zahlungsDiagnose) – bewusst NICHT Teil
+        // von `pruefungen`/`zustand`: rein diagnostisch, beeinflusst keine
+        // Monitoring-Schwelle.
+        ...(ausfuehrlich ? { zahlungsanbieter: zahlungsDiagnose() } : {}),
       },
       { status: zustand === 'kritisch' ? 503 : 200 }
     );

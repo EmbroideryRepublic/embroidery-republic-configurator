@@ -41,6 +41,8 @@ export class StripeKonfigurationFehlt extends Error {
   }
 }
 
+import { diagnostiziereFeld, type FeldDiagnose } from './feldDiagnose';
+
 const VARIABLE_GEHEIM = 'STRIPE_SECRET_KEY';
 const VARIABLE_WEBHOOK = 'STRIPE_WEBHOOK_SECRET';
 
@@ -149,6 +151,19 @@ export function stripeKonfigurationsStand(): StripeKonfigurationsStand {
  * Konfigurationsfehler, und er sieht bis zur Kontoabrechnung völlig normal
  * aus.
  */
+/**
+ * Strukturdiagnose beider Stripe-Variablen (vorhanden/Länge/Präfix/
+ * Anführungszeichen/Leerzeichen) – NIEMALS die Werte selbst. Siehe
+ * feldDiagnose.ts für die Begründung und lib/payments/registry.ts::
+ * zahlungsDiagnose() für die Verwendung.
+ */
+export function stripeFelderDiagnose(): Record<string, FeldDiagnose> {
+  return {
+    [VARIABLE_GEHEIM]: diagnostiziereFeld(VARIABLE_GEHEIM, ['sk_test_', 'sk_live_', 'sk_']),
+    [VARIABLE_WEBHOOK]: diagnostiziereFeld(VARIABLE_WEBHOOK, ['whsec_']),
+  };
+}
+
 export function warneBeiProduktivSchluessel(): void {
   const stand = stripeKonfigurationsStand();
   if (stand.produktivSchluessel && process.env.NODE_ENV !== 'production') {

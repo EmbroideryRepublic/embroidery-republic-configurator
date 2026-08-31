@@ -14,9 +14,10 @@
 import { istTestmodus } from '@/config/testmodus';
 import { testAnbieter } from './providers/testAnbieter';
 import { stripeAnbieter } from './providers/stripe';
-import { stripeKonfigurationsStand, warneBeiProduktivSchluessel } from './providers/stripeKonfiguration';
+import { stripeKonfigurationsStand, stripeFelderDiagnose, warneBeiProduktivSchluessel } from './providers/stripeKonfiguration';
 import { paypalAnbieter } from './providers/paypal';
-import { paypalKonfigurationsStand, warneBeiProduktivUmgebung } from './providers/paypalKonfiguration';
+import { paypalKonfigurationsStand, paypalFelderDiagnose, warneBeiProduktivUmgebung } from './providers/paypalKonfiguration';
+import type { FeldDiagnose } from './providers/feldDiagnose';
 import type { ZahlungsAnbieter, ZahlungsAnbieterId } from './types';
 
 /**
@@ -115,6 +116,55 @@ export function waehleZahlungsAnbieter(gewuenscht?: ZahlungsAnbieterId): Zahlung
 export function istAnbieterFuerKundschaftVerfuegbar(id: ZahlungsAnbieterId): boolean {
   if (istTestmodus()) return true;
   return istEinsatzbereit(id);
+}
+
+export interface ZahlungsDiagnoseEintrag {
+  /** Anbieter ist über waehleZahlungsAnbieter() nutzbar (Anzeige richtet
+   *  sich nach istAnbieterFuerKundschaftVerfuegbar(), das zusätzlich
+   *  produktivEingerichtet verlangt). */
+  zahlungenMoeglich: boolean;
+  ereignisseMoeglich: boolean;
+  /** Bei Stripe: sk_live_-Schlüssel hinterlegt. Bei PayPal: PAYPAL_ENV=live.
+   *  Nur bei PayPal zusätzlich Voraussetzung für die Kundschafts-Anzeige
+   *  (istEinsatzbereit oben) – bei Stripe reicht ein gültiger Schlüssel,
+   *  Test-/Live-Modus ist dort am Schlüsselpräfix selbst erkennbar. */
+  produktivEingerichtet: boolean;
+  offeneSchritte: string[];
+  felder: Record<string, FeldDiagnose>;
+}
+
+/**
+ * Strukturdiagnose ALLER Zahlungsanbieter für den admin-geschützten
+ * Health-Check (/api/health?detail=1) – NIEMALS Geheimniswerte, nur
+ * Vorhanden/Länge/Präfix/Anführungszeichen/Leerzeichen je Variable (siehe
+ * feldDiagnose.ts) plus die bereits vorhandenen, ebenfalls werte-freien
+ * Konfigurationsstände. Grund: "Vorhanden laut `vercel env ls`" beweist
+ * NICHT "vom Code als gültig erkannt" – ein Wert, der z.B. versehentlich mit
+ * Anführungszeichen kopiert wurde, ist gesetzt, aber nicht funktionsfähig.
+ * Diese Funktion macht sichtbar, an welcher konkreten Prüfung es hakt, ohne
+ * dass ein Betreiber den Wert selbst offenlegen (oder Claude ihn sehen)
+ * muss.
+ */
+export function zahlungsDiagnose(): Record<string, ZahlungsDiagnoseEintrag> {
+  const stripeStand = stripeKonfigurationsStand();
+  const paypalStand = paypalKonfigurationsStand();
+
+  return {
+    stripe: {
+      zahlungenMoeglich: stripeStand.zahlungenMoeglich,
+      ereignisseMoeglich: stripeStand.ereignisseMoeglich,
+      produktivEingerichtet: stripeStand.produktivSchluessel,
+      offeneSchritte: stripeStand.offeneSchritte,
+      felder: stripeFelderDiagnose(),
+    },
+    paypal: {
+      zahlungenMoeglich: paypalStand.zahlungenMoeglich,
+      ereignisseMoeglich: paypalStand.ereignisseMoeglich,
+      produktivEingerichtet: paypalStand.produktivUmgebung,
+      offeneSchritte: paypalStand.offeneSchritte,
+      felder: paypalFelderDiagnose(),
+    },
+  };
 }
 
 /**

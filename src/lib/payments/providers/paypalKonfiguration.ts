@@ -17,6 +17,8 @@ export class PaypalKonfigurationFehlt extends Error {
   }
 }
 
+import { diagnostiziereFeld, type FeldDiagnose } from './feldDiagnose';
+
 const VARIABLE_CLIENT_ID = 'PAYPAL_CLIENT_ID';
 const VARIABLE_CLIENT_SECRET = 'PAYPAL_CLIENT_SECRET';
 const VARIABLE_WEBHOOK_ID = 'PAYPAL_WEBHOOK_ID';
@@ -87,6 +89,24 @@ export function paypalKonfigurationsStand(): PaypalKonfigurationsStand {
     ereignisseMoeglich: Boolean(webhookId),
     produktivUmgebung: istProduktivUmgebung(),
     offeneSchritte,
+  };
+}
+
+/**
+ * Strukturdiagnose aller vier PayPal-Variablen (vorhanden/Länge/
+ * Anführungszeichen/Leerzeichen) – NIEMALS die Werte selbst. PAYPAL_ENV hat
+ * bewusst kein Präfix-Muster in `beginntMitErwartetemPraefix` (der einzig
+ * gültige Wert ist "live", kein Präfix-Schema wie bei Stripes sk_/whsec_) –
+ * ob er exakt "live" ergibt, steht bereits in produktivUmgebung/
+ * paypalKonfigurationsStand(). Siehe feldDiagnose.ts für die Begründung und
+ * lib/payments/registry.ts::zahlungsDiagnose() für die Verwendung.
+ */
+export function paypalFelderDiagnose(): Record<string, FeldDiagnose> {
+  return {
+    [VARIABLE_CLIENT_ID]: diagnostiziereFeld(VARIABLE_CLIENT_ID),
+    [VARIABLE_CLIENT_SECRET]: diagnostiziereFeld(VARIABLE_CLIENT_SECRET),
+    [VARIABLE_WEBHOOK_ID]: diagnostiziereFeld(VARIABLE_WEBHOOK_ID),
+    [VARIABLE_ENV]: diagnostiziereFeld(VARIABLE_ENV),
   };
 }
 

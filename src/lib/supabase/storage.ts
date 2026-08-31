@@ -11,6 +11,7 @@ import nodePath from 'node:path';
 import { createAdminClient } from './server';
 import { istTestmodus, meldeAbgefangen } from '@/config/testmodus';
 import { UnsichererPfadFehler, istSichererSpeicherpfad, pruefeDataUrl } from '@/lib/upload/pruefeUpload';
+import { basisUrl } from '@/lib/seo/basisUrl';
 
 const PRODUCTION_FILES_BUCKET = 'production-files';
 
@@ -156,12 +157,17 @@ export async function getProductionFileSignedUrl(path: string, expiresInSeconds 
     console.warn(`[signedUrl] Pfad abgewiesen: ${JSON.stringify(path)}`);
     return null;
   }
-  // Im Testmodus existiert keine Signed-URL. Ein `file://`-Verweis auf die
-  // Testablage ist ehrlicher als null: Der Aufrufer (interne Benachrichtigung)
-  // durchläuft damit denselben Zweig wie produktiv – bei null wäre es der
-  // Zweig „PDF konnte nicht erzeugt werden".
+  // Im Testmodus existiert keine echte Signed-URL. Eine ECHTE, absolute
+  // HTTP-URL auf die Testablage (api/testablage/[...path], Fund vom
+  // 2026-08-31) ist ehrlicher als null: Jeder Aufrufer – interne
+  // Benachrichtigung UND die Admin-Produktionsvorschau (next/image) –
+  // durchläuft damit denselben Zweig wie produktiv. Ein zuvor genutzter
+  // `file://`-Verweis erfüllte das nur für reine Text-Links: next/image
+  // lehnt `file://` als src ab, und Browser blockieren `file://`-Abrufe von
+  // einer http(s)-Seite ohnehin – die Admin-Detailseite stürzte dadurch im
+  // Testmodus auf jeder personalisierten Bestellung ab.
   if (istTestmodus()) {
-    return `file://${testPfad(path)}`;
+    return `${basisUrl()}/api/testablage/${path}`;
   }
 
   const admin = createAdminClient();

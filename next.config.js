@@ -61,6 +61,16 @@ const nextConfig = {
         hostname: '*.supabase.co',
         pathname: '/storage/v1/object/sign/**',
       },
+      // NUR außerhalb der Produktion: Gegenstück zum Eintrag oben für den
+      // Testmodus (Fund vom 2026-08-31) – getProductionFileSignedUrl()
+      // liefert dort statt einer Supabase-Signed-URL eine lokale URL auf
+      // /api/testablage/[...path] (lib/supabase/storage.ts), damit die
+      // Admin-Produktionsvorschau auch im Testmodus echt rendert statt mit
+      // "Invalid src prop" abzustürzen. `NODE_ENV==='production'` schließt
+      // das in jedem echten Produktionsbuild wieder aus.
+      ...(process.env.NODE_ENV !== 'production'
+        ? [{ protocol: 'http', hostname: 'localhost', pathname: '/api/testablage/**' }]
+        : []),
     ],
   },
   webpack: (config) => {

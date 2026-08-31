@@ -6,12 +6,13 @@
  * Funktionen sind reine Leser für Server Components, die Actions sind
  * die einzigen Schreiber.
  */
+import nodePath from 'node:path';
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/lib/actions/orderTypes';
 import { buildSupplierPositions } from '@/lib/suppliers';
 import { berechneAdminStatus, produktionsfreigabeErlaubt, type AdminStatus } from '@/lib/orders/orderVisibility';
 import { enqueueSupplierOrdersForOrder } from '@/lib/suppliers/lifecycle/enqueue';
-import { getProductionFileSignedUrl } from '@/lib/supabase/storage';
+import { getProductionFileSignedUrl, listProductionFileInfo } from '@/lib/supabase/storage';
 import type { SupplierOrderDraft, SupplierWorkerRunResult } from '@/lib/suppliers';
 
 export interface AdminOrderListRow {
@@ -65,6 +66,27 @@ export interface AdminOrderElementRow {
    *  Datei – dieselbe, die das Rendering nutzt. null, wenn keine Datei
    *  hinterlegt ist oder die Signed-URL nicht erzeugt werden konnte. */
   logoPreviewUrl: string | null;
+  /** Basisname der ORIGINAL-Datei (vor evtl. Hintergrundentfernung) unter
+   *  orders/<id>/ im Storage – Grundlage für den Admin-Download-Link
+   *  (components/admin/KundendateienPanel.tsx). null bei Text-Elementen oder
+   *  wenn diese Bestellung keinen getrennten Original-Pfad kennt (vor
+   *  Migration 0003_element_render_fidelity). */
+  originalStorageKey: string | null;
+  /** Dateigröße der ORIGINAL-Datei in Bytes – aus einem einzigen Listing-
+   *  Aufruf je Bestellung (listProductionFileInfo), kein Download nötig.
+   *  null, wenn die Datei im Storage nicht gefunden wurde. */
+  fileSizeBytes: number | null;
+  /** MIME-Typ der ORIGINAL-Datei, sofern vom Storage geliefert (im
+   *  Testmodus immer null – die lokale Testablage kennt keine MIME-Typen). */
+  fileMimeType: string | null;
+  /** true, wenn die ORIGINAL-Datei tatsächlich im Storage gefunden wurde.
+   *  false bedeutet: die Datenbank kennt einen Pfad, die Datei fehlt aber
+   *  (z.B. DSGVO-Altdatei-Löschung, scripts/dsgvoAltdateien.mts, oder eine
+   *  sehr alte Testbestellung) – die Oberfläche zeigt dann "Datei nicht mehr
+   *  vorhanden" statt eines kaputten Downloads. Bei Text-Elementen immer
+   *  false (nicht zutreffend, keine Datei).
+   */
+  originalDateiVorhanden: boolean;
 }
 
 export interface AdminOrderItemRow {
@@ -460,7 +482,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     ? await supabase
         .from('configuration_elements')
         .select(
-          'order_item_id, element_type, view, x_cm, y_cm, width_cm, height_cm, rotation_deg, text_content, font_family, font_size, font_color, font_weight, font_style, text_align, file_name, display_file_url'
+          'order_item_id, element_type, view, x_cm, y_cm, width_cm, height_cm, rotation_deg, text_content, font_family, font_size, font_color, font_weight, font_style, text_align, file_name, display_file_url, original_file_url'
         )
         .in('order_item_id', itemIds)
     : { data: [] as Record<string, unknown>[], error: null };
@@ -468,6 +490,13 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   if (elementsError) {
     console.error('[admin] configuration_elements konnten nicht geladen werden:', elementsError);
   }
+
+  // EIN Listing-Aufruf für die gesamte Bestellung statt eines Downloads je
+  // Logo-Element – Grundlage für Dateigröße/-typ und die "Datei nicht mehr
+  // vorhanden"-Erkennung im neuen Kundendateien-Panel (siehe
+  // listProductionFileInfo, storage.ts). Läuft auch für Bestellungen ohne
+  // jedes Logo mit (leere Map), kein Sonderfall nötig.
+  const dateiInfo = await listProductionFileInfo(`orders/${orderId}`);
 
   const { data: supplierRows, error: supplierError } = await supabase
     .from('supplier_orders')
@@ -547,6 +576,9 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
         eigeneElemente.map(async (el) => {
           const istLogo = el.element_type === 'logo';
           const displayPath = (el.display_file_url as string | null) ?? null;
+          const originalPath = (el.original_file_url as string | null) ?? null;
+          const originalKey = originalPath ? nodePath.basename(originalPath) : null;
+          const originalInfo = originalKey ? (dateiInfo.get(originalKey) ?? null) : null;
           return {
             type: istLogo ? 'logo' : 'text',
             view: el.view as string,
@@ -564,6 +596,10 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
             align: (el.text_align as string | null) ?? undefined,
             fileName: (el.file_name as string | null) ?? undefined,
             logoPreviewUrl: istLogo && displayPath ? await getProductionFileSignedUrl(displayPath) : null,
+            originalStorageKey: istLogo ? originalKey : null,
+            fileSizeBytes: istLogo ? (originalInfo?.size ?? null) : null,
+            fileMimeType: istLogo ? (originalInfo?.mimeType ?? null) : null,
+            originalDateiVorhanden: istLogo && originalInfo !== null,
           } satisfies AdminOrderElementRow;
         })
       );

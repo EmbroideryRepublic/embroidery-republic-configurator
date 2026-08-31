@@ -17,22 +17,9 @@
  * Grund angezeigt statt eine Lücke zu verschleiern.
  */
 import Image from 'next/image';
-import { PRINT_VIEW_LABELS } from '@/lib/actions/orderTypes';
-import { DECORATION_POSITION_ORDER } from '@/config/decorationPositions';
 import type { AdminOrderItemRow, AdminOrderElementRow } from '@/lib/admin/data';
+import { ansichtLabel, sortiereAnsichten } from '@/lib/admin/ansichten';
 import { RegeneratePreviewButton } from './RegeneratePreviewButton';
-
-function ansichtLabel(view: string): string {
-  return PRINT_VIEW_LABELS[view as keyof typeof PRINT_VIEW_LABELS] ?? view;
-}
-
-/** Fachliche Reihenfolge (Vorderseite, Rückseite, Ärmel …) statt
- *  zufälliger DB-Reihenfolge; unbekannte Views hängen defensiv hinten an. */
-function sortiereAnsichten(views: string[]): string[] {
-  const bekannt = DECORATION_POSITION_ORDER.filter((v) => views.includes(v));
-  const unbekannt = views.filter((v) => !(DECORATION_POSITION_ORDER as readonly string[]).includes(v));
-  return [...bekannt, ...unbekannt];
-}
 
 function ElementZeile({ element, nummer }: { element: AdminOrderElementRow; nummer: number }) {
   const bezeichnung = element.type === 'logo' ? `Logo ${nummer}` : `Text ${nummer}`;

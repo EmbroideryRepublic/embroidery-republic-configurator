@@ -32,6 +32,7 @@ import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 import { ProductionPreview } from '@/components/admin/ProductionPreview';
+import { KundendateienPanel } from '@/components/admin/KundendateienPanel';
 import { berechneNaechsteAktion, type NaechsteAktionTon } from '@/lib/admin/naechsteAktion';
 
 const AKTION_STIL: Record<NaechsteAktionTon, string> = {
@@ -171,6 +172,15 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
       <section className="rounded-lg border border-gray-200 bg-white p-4">
         <h2 className="mb-2 text-sm font-semibold">Personalisierung</h2>
         <ProductionPreview orderId={order.id} items={order.items} />
+      </section>
+
+      {/* Kundendateien: die ORIGINAL hochgeladenen Logo-Dateien (vor evtl.
+          Hintergrundentfernung) zum direkten Download für die Produktion –
+          getrennt von der Druckvorschau oben, siehe
+          components/admin/KundendateienPanel.tsx für die Abgrenzung. */}
+      <section className="rounded-lg border border-gray-200 bg-white p-4">
+        <h2 className="mb-2 text-sm font-semibold">Kundendateien</h2>
+        <KundendateienPanel orderId={order.id} items={order.items} />
       </section>
 
       {/* Kontakt & Versand */}

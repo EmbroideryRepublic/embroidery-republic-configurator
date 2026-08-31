@@ -4,7 +4,7 @@
  * ausschließlich serverseitig (Server Actions) über den Admin-Client, da
  * der Bucket bewusst privat ist (siehe supabase/migrations/0002_...).
  */
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
 // Als nodePath eingebunden: die Funktionen dieser Datei haben einen
 // Parameter namens `path` (den Storage-Pfad), der sonst verdeckt würde.
 import nodePath from 'node:path';
@@ -174,4 +174,74 @@ export async function getProductionFileSignedUrl(path: string, expiresInSeconds 
   const { data, error } = await admin.storage.from(PRODUCTION_FILES_BUCKET).createSignedUrl(path, expiresInSeconds);
   if (error || !data) return null;
   return data.signedUrl;
+}
+
+export interface ProductionFileInfo {
+  size: number;
+  mimeType: string | null;
+}
+
+/**
+ * Größe/MIME-Typ ALLER Dateien direkt unter einem Speicherpfad-Präfix (z.B.
+ * "orders/<id>") – EIN Aufruf statt eines Downloads je Datei. Grundlage für
+ * die Admin-Kundendateien-Übersicht (Größe/Typ anzeigen, fehlende Dateien
+ * erkennen), ohne dafür jede Datei tatsächlich herunterzuladen.
+ *
+ * Liefert eine leere Map bei unsicherem Präfix oder wenn der Ordner (noch)
+ * nicht existiert – wirft nicht, dieselbe "fail closed, aber nicht fatal"-
+ * Haltung wie getProductionFileSignedUrl.
+ */
+export async function listProductionFileInfo(prefix: string): Promise<Map<string, ProductionFileInfo>> {
+  if (!istSichererSpeicherpfad(prefix)) {
+    console.warn(`[listInfo] Präfix abgewiesen: ${JSON.stringify(prefix)}`);
+    return new Map();
+  }
+
+  if (istTestmodus()) {
+    const dir = testPfad(prefix);
+    try {
+      const namen = await readdir(dir);
+      const eintraege = await Promise.all(
+        namen.map(async (name) => {
+          const info = await stat(nodePath.join(dir, name));
+          return [name, { size: info.size, mimeType: null }] as const;
+        })
+      );
+      return new Map(eintraege);
+    } catch {
+      return new Map();
+    }
+  }
+
+  // .list() liefert client-seitig standardmäßig NUR 100 Einträge (Supabase-
+  // Vorgabe, siehe DEFAULT_SEARCH_OPTIONS im storage-js-Paket) – ohne
+  // Paginierung wären Dateien einer großen Bestellung (viele Positionen ×
+  // Ansichten × Original-/Anzeige-/Vorschau-Datei) ab dem 101. Eintrag für
+  // diese Funktion unsichtbar und würden fälschlich als "nicht vorhanden"
+  // gelten. scripts/dsgvoAltdateien.mts kennt dieselbe Grenze bereits und
+  // setzt dort ausdrücklich ein höheres Limit – hier stattdessen eine echte
+  // Schleife, die keine feste Obergrenze mehr braucht.
+  const admin = createAdminClient();
+  const SEITENGROESSE = 1000;
+  const ergebnis = new Map<string, ProductionFileInfo>();
+  let offset = 0;
+  for (;;) {
+    const { data, error } = await admin.storage
+      .from(PRODUCTION_FILES_BUCKET)
+      .list(prefix, { limit: SEITENGROESSE, offset });
+    if (error || !data) break;
+
+    for (const f of data) {
+      if (!f.metadata) continue;
+      ergebnis.set(f.name, {
+        size: Number(f.metadata.size ?? 0),
+        mimeType: (f.metadata.mimetype as string | undefined) ?? null,
+      });
+    }
+
+    if (data.length < SEITENGROESSE) break;
+    offset += SEITENGROESSE;
+  }
+
+  return ergebnis;
 }

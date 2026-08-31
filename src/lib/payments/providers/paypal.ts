@@ -130,9 +130,20 @@ export const paypalAnbieter: ZahlungsAnbieter = {
       throw new Error(`PayPal-Order nicht angelegt (${antwort.status}): ${fehlertext.slice(0, 500)}`);
     }
     const angelegt = (await antwort.json()) as PaypalOrderAntwort;
-    const genehmigungsLink = angelegt.links?.find((l) => l.rel === 'approve')?.href;
+    // Fund vom 2026-08-31 (echter PayPal-Live-Test, Order 4XC35701PX8515222):
+    // Diese Anfrage gibt IMMER `payment_source.paypal.experience_context` mit
+    // (Zeile oben) – laut PayPals eigener Orders-v2-Dokumentation heißt der
+    // Weiterleitungs-Link in genau diesem Integrationsmuster "payer-action",
+    // NICHT "approve". "approve" ist nur der Linkname der älteren
+    // Smart-Buttons-Integration ohne payment_source. Ohne payment_source zu
+    // entfernen wird deshalb hier zuerst nach "payer-action" gesucht;
+    // "approve" bleibt als Rückfall (falls PayPal das Verhalten je ändert
+    // oder eine ältere API-Version antwortet) – kein Grund, ihn zu entfernen.
+    const genehmigungsLink =
+      angelegt.links?.find((l) => l.rel === 'payer-action')?.href ??
+      angelegt.links?.find((l) => l.rel === 'approve')?.href;
     if (!genehmigungsLink) {
-      throw new Error(`PayPal-Order ${angelegt.id} ohne Genehmigungs-Link ("approve").`);
+      throw new Error(`PayPal-Order ${angelegt.id} ohne Weiterleitungs-Link ("payer-action"/"approve").`);
     }
     return { referenz: angelegt.id, weiterleitungUrl: genehmigungsLink };
   },

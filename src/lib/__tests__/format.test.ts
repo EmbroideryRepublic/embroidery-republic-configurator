@@ -69,6 +69,13 @@ const SRC = path.join(process.cwd(), 'src');
 const ERLAUBT_EIGENE_FORMATIERUNG = [
   path.join(SRC, 'lib', 'format.ts'), // die zentrale Stelle selbst
   path.join(SRC, 'lib', 'payments', 'betrag.ts'), // rechnet in Cent, stellt nicht dar
+  // SEPA/EPC069-12-Nutztext (GiroCode): maschinenlesbares Format mit fest
+  // vorgeschriebenem Punkt als Dezimaltrennzeichen, ohne Tausendertrennzeichen
+  // oder Währungssymbol ("EUR52.88") – formatiereGeld() ("52,88 €") würde
+  // hier einen ungültigen, nicht scanbaren QR-Code erzeugen. Dieselbe
+  // Kategorie Ausnahme wie payments/betrag.ts: keine Darstellung für
+  // Menschen, sondern ein Datenformat mit eigener, fremdbestimmter Syntax.
+  path.join(SRC, 'lib', 'invoicing', 'providers', 'sepaQrCode.ts'),
 ];
 
 function quelldateien(dir: string): string[] {

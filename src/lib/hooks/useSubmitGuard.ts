@@ -52,6 +52,30 @@ import { useCallback, useRef, useState } from 'react';
  */
 export const ABSENDE_ZEITGRENZE_MS = 60_000;
 
+/**
+ * Wie lange eine gespeicherte Absendekennung wiederverwendet wird, bevor sie
+ * als veraltet gilt und eine neue erzeugt wird.
+ *
+ * Fund vom 2026-09-01 (Go-Live-Abnahme, live reproduziert): Der
+ * Karte/PayPal-Zweig verwirft die Kennung absichtlich NICHT (siehe
+ * Kopfkommentar) – das schützt einen SOFORTIGEN erneuten Versuch nach einem
+ * unterbrochenen Redirect. Ohne zeitliche Grenze blieb dieselbe Kennung aber
+ * auch Stunden später noch gültig: Eine Kundschaft, die einen PayPal-Vorgang
+ * abbrach und später einen inhaltlich GANZ ANDEREN Einkauf startete (anderer
+ * Warenkorb, ggf. sogar Kauf auf Rechnung statt PayPal), wurde vom Server als
+ * "dieselbe Bestellung, erneut abgesendet" erkannt – der neue Warenkorbinhalt
+ * und die neue Zahlungsart gingen dabei vollständig verloren, die Kundschaft
+ * landete stattdessen wieder im Bezahlvorgang der ALTEN Bestellung
+ * (ergebnisFuerBestehendeBestellung in orders.ts liest ausschließlich die
+ * gespeicherten payment_method/payment_status der bestehenden Bestellung,
+ * nicht die neue Absendung).
+ *
+ * 30 Minuten decken jeden realistischen "Seite neu geladen"/"Redirect
+ * abgebrochen, gleich nochmal versucht"-Fall großzügig ab, ohne eine
+ * Stunden oder Tage später begonnene, inhaltlich neue Bestellung zu treffen.
+ */
+export const ABSENDEKENNUNG_GUELTIG_MS = 30 * 60_000;
+
 export type SubmitGuardFehlerart = 'timeout' | 'offline' | 'unbekannt';
 
 export interface SubmitGuardTexte {
@@ -101,17 +125,43 @@ function erzeugeKennung(): string {
 }
 
 /**
- * Liest die Kennung oder legt sie an. Schlägt der Zugriff fehl (privater
- * Modus, Speicher voll), wird eine flüchtige Kennung erzeugt: der Schutz ist
- * dann schwächer, aber die Bestellung bleibt möglich. Ein Doppelschutz darf
- * nie selbst zum Hindernis werden.
+ * Gespeichertes Format: "<Kennung>:<Erzeugungszeitpunkt in ms>" – ein
+ * einzelner localStorage-Schlüssel bleibt dadurch die einzige Quelle, ohne
+ * einen zweiten Schlüssel für den Zeitstempel zu brauchen. Kein Trennzeichen-
+ * Konflikt möglich: erzeugeKennung() liefert nie einen Doppelpunkt.
  */
-function holeOderErzeuge(schluessel: string): string {
+function parseGespeicherteKennung(wert: string): { kennung: string; erzeugtAm: number } | null {
+  const i = wert.lastIndexOf(':');
+  if (i < 0) return null;
+  const erzeugtAm = Number(wert.slice(i + 1));
+  if (!Number.isFinite(erzeugtAm)) return null;
+  return { kennung: wert.slice(0, i), erzeugtAm };
+}
+
+/**
+ * Liest die Kennung oder legt sie an. Eine vorhandene, aber älter als
+ * `ABSENDEKENNUNG_GUELTIG_MS` gespeicherte Kennung gilt als veraltet (siehe
+ * dortiger Kommentar) und wird durch eine frische ersetzt – derselbe Effekt
+ * wie ein manuelles `reset()`, nur automatisch nach Ablauf der Frist.
+ *
+ * Schlägt der Speicherzugriff fehl (privater Modus, Speicher voll), wird
+ * eine flüchtige Kennung erzeugt: der Schutz ist dann schwächer, aber die
+ * Bestellung bleibt möglich. Ein Doppelschutz darf nie selbst zum Hindernis
+ * werden.
+ */
+// Exportiert ausschließlich für einen echten Verhaltenstest der
+// Ablauf-Logik (__tests__/absendekennungAblauf.test.ts) – kein Teil der
+// öffentlichen Hook-Schnittstelle, die bleibt useSubmitGuard/
+// verwirfGespeicherteKennung.
+export function holeOderErzeuge(schluessel: string): string {
   try {
     const vorhanden = window.localStorage.getItem(schluessel);
-    if (vorhanden) return vorhanden;
+    const geparst = vorhanden ? parseGespeicherteKennung(vorhanden) : null;
+    if (geparst && Date.now() - geparst.erzeugtAm < ABSENDEKENNUNG_GUELTIG_MS) {
+      return geparst.kennung;
+    }
     const neue = erzeugeKennung();
-    window.localStorage.setItem(schluessel, neue);
+    window.localStorage.setItem(schluessel, `${neue}:${Date.now()}`);
     return neue;
   } catch {
     return erzeugeKennung();

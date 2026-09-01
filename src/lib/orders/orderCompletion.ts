@@ -926,10 +926,22 @@ async function erzeugeRechnung(
         pdf: rechnung.pdf,
         zahlungszielTage,
       });
-    } else {
+    } else if (rechnung.pdf && rechnung.pdf.length > 0) {
       // Cron-Nachholpfad: Die Bestellbestätigung ist zu diesem Zeitpunkt
       // längst (ohne Rechnung) verschickt – hier bleibt nur eine
       // eigenständige Nachtrags-E-Mail.
+      //
+      // Explizite Prüfung auf einen echten, nicht-leeren PDF-Puffer (Fund
+      // beim Go-Live-Abnahmetest vom 2026-09-01): Dieser Zweig verschickte
+      // Text UND Anhang bisher UNGEPRÜFT, sobald erstelle() ohne Wurf
+      // zurückkehrte – anders als sendOrderConfirmationEmail()s
+      // rechnungGeprueft-Gate (orderEmails.tsx), das Text und Anhang an
+      // DIESELBE echte-PDF-Prüfung koppelt. Aktuell hält das implizite
+      // Versprechen des einzigen verdrahteten Anbieters (intern.ts, PDF via
+      // renderToBuffer – liefert entweder echte Bytes oder wirft), aber
+      // dieser Zweig verließ sich bislang allein darauf, statt es selbst
+      // abzusichern. Jetzt dieselbe Garantie wie dort: kein Anhang, keine
+      // Behauptung im Text, wenn der Puffer aus irgendeinem Grund leer wäre.
       await sendEmail({
         to: order.contact.email,
         subject: `Rechnung ${rechnung.rechnungsnummer} zu Bestellung ${order.orderNumber}`,
@@ -941,6 +953,17 @@ async function erzeugeRechnung(
         kontext: { anlass: 'invoice_created', orderId: order.id },
         attachments: [{ filename: `Rechnung-${rechnung.rechnungsnummer}.pdf`, content: rechnung.pdf }],
       }).catch(() => {});
+    } else {
+      // Der Anbieter lieferte einen leeren Puffer, ohne zu werfen – laut
+      // aktueller Analyse beim wired Anbieter (intern.ts) nicht möglich,
+      // aber kein Grund, im Fehlerfall eine Nachtrags-Mail ohne echten
+      // Anhang zu verschicken. Dieselbe Behandlung wie jeder andere
+      // Fehlschlag hier: protokollieren, Anspruch NICHT freigeben (die
+      // Rechnung ist ja real angelegt – siehe catch-Block unten für dasselbe
+      // Prinzip), damit eine manuelle Prüfung greift statt eines stillen
+      // Doppelversuchs bei Lexware/dem gewählten Anbieter.
+      console.error(`[orders] Rechnung ${rechnung.rechnungsnummer} für ${order.id} hat einen leeren PDF-Puffer – Nachtrags-Mail übersprungen.`);
+      probleme.push(`Rechnung ${rechnung.rechnungsnummer}: Anbieter lieferte einen leeren PDF-Puffer, Nachtrags-Mail übersprungen.`);
     }
 
     return true;

@@ -95,3 +95,29 @@ test('ladeBereitsErstellteRechnungFuerEmail wirft nie – ein Nachlade-Fehler da
   assert.match(rumpf, /catch\s*\(/, 'ein Download-Fehler muss abgefangen werden');
   assert.match(rumpf, /return null/, 'bei fehlender oder nicht ladbarer Rechnung muss null zurückgegeben werden, kein Wurf');
 });
+
+/**
+ * Regressionstest für einen beim Go-Live-Abnahmetest vom 2026-09-01 durch
+ * unabhängige Verifikation gefundenen Fund: Der eigenständige Nachtragspfad
+ * (Cron-Rechnungs-Retry ohne onErstellt-Callback) verschickte Text UND
+ * Anhang bisher UNGEPRÜFT, sobald erstelle() ohne Wurf zurückkehrte – anders
+ * als sendOrderConfirmationEmail()s rechnungGeprueft-Gate (orderEmails.tsx),
+ * das beide an DIESELBE echte-PDF-Prüfung koppelt. Kein beobachteter Bug
+ * (der einzige verdrahtete Anbieter liefert nie einen leeren Puffer ohne zu
+ * werfen), aber eine unbewachte Asymmetrie zur ausdrücklichen Anforderung
+ * "Text und tatsächlicher Anhang müssen über dieselbe Gültigkeitsprüfung
+ * abgesichert sein".
+ */
+test('erzeugeRechnung verschickt die eigenständige Nachtrags-Mail nur bei einem echten, nicht-leeren PDF-Puffer', () => {
+  const rumpf = funktionsRumpf(COMPLETION, 'erzeugeRechnung');
+  assert.match(
+    rumpf,
+    /\}\s*else if\s*\(rechnung\.pdf\s*&&\s*rechnung\.pdf\.length\s*>\s*0\)\s*\{/,
+    'der Nachtragspfad (Cron-Retry ohne Callback) muss denselben echte-Puffer-Schutz tragen wie sendOrderConfirmationEmail'
+  );
+  // Der Erfolgs-Anhang darf nur innerhalb dieses geprüften Zweigs stehen,
+  // nicht mehr unbedingt im ursprünglichen "sonst"-Zweig.
+  const geprueftStelle = rumpf.indexOf('else if (rechnung.pdf');
+  const anhangStelle = rumpf.indexOf('attachments: [{ filename:');
+  assert.ok(geprueftStelle > 0 && anhangStelle > geprueftStelle, 'der Anhang muss innerhalb des geprüften Zweigs verschickt werden');
+});

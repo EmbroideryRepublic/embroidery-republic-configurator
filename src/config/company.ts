@@ -56,7 +56,7 @@ export const COMPANY = {
  * Betreiber hat keinen mitgeteilt – hier keiner erfunden.
  */
 export const COMPANY_BANK = {
-  kontoinhaber: 'Embroidery Republic GbR',
+  kontoinhaber: 'Embroidery Republic Germany',
   iban: 'DE63 3705 0198 1959 0509 54',
 } as const;
 

@@ -67,7 +67,12 @@ test('bereits bezahlte Bestellung (Karte/PayPal) zeigt weder IBAN noch Kontoinha
 
   assert.match(text, /Bereits bezahlt/);
   assert.doesNotMatch(text, /IBAN/);
-  assert.doesNotMatch(text, new RegExp(COMPANY_BANK.kontoinhaber));
+  // Nicht auf COMPANY_BANK.kontoinhaber selbst prüfen: Der Kontoinhabername
+  // kann (wie hier) mit dem Firmennamen im Briefkopf überlappen, der auf
+  // JEDER Rechnung steht – geprüft wird stattdessen die "Kontoinhaber"-
+  // Beschriftung, die es nur im Zahlungsinformationen-Block gibt (gerendert
+  // ausschließlich bei zahlungszielTage > 0, siehe RechnungDocument).
+  assert.doesNotMatch(text, /Kontoinhaber/);
   assert.doesNotMatch(text, /Verwendungszweck/);
   assert.doesNotMatch(text, /Zahlungsziel/);
   assert.doesNotMatch(text, /fällig am/);

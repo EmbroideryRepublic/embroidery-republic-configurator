@@ -17,7 +17,7 @@
  * für denselben impliziten-JSX-Runtime-Ansatz).
  */
 import { Document, Page, View, Text, StyleSheet, renderToBuffer } from '@react-pdf/renderer';
-import { COMPANY, IST_KLEINUNTERNEHMER, KLEINUNTERNEHMER_HINWEIS } from '@/config/company';
+import { COMPANY, COMPANY_BANK, IST_KLEINUNTERNEHMER, KLEINUNTERNEHMER_HINWEIS } from '@/config/company';
 import { formatiereGeld } from '@/lib/format';
 import type { Rechnungsauftrag } from '../types';
 
@@ -98,11 +98,31 @@ function Positionstabelle({ auftrag }: { auftrag: Rechnungsauftrag }) {
   );
 }
 
-function ZahlungszielText({ auftrag }: { auftrag: Rechnungsauftrag }) {
+/**
+ * Zahlungshinweis am Ende der Rechnung.
+ *
+ * Nur eine offene Rechnung (Kauf auf Rechnung, `zahlungszielTage > 0`)
+ * bekommt eine Zahlungsanweisung mit Kontodaten – eine bereits bezahlte
+ * Bestellung (Karte/PayPal, `zahlungszielTage === 0`) zeigt weiterhin
+ * ausschließlich "Bereits bezahlt.", NIE die Bankverbindung: Eine bereits
+ * beglichene Rechnung darf niemals wie eine offene Überweisungsaufforderung
+ * wirken (Fund/Anforderung vom 2026-09-01, Go-Live-Abnahme).
+ *
+ * Verwendungszweck ist immer die echte Rechnungsnummer dieser Bestellung –
+ * damit ist jede Zahlung beim Betreiber eindeutig zuordenbar, ohne dass er
+ * sie manuell erfinden oder pflegen müsste.
+ */
+function ZahlungszielText({ auftrag, rechnungsnummer }: { auftrag: Rechnungsauftrag; rechnungsnummer: string }) {
+  if (auftrag.zahlungszielTage <= 0) {
+    return <Text style={{ marginTop: 10 }}>Bereits bezahlt.</Text>;
+  }
   return (
-    <Text style={{ marginTop: 10 }}>
-      {auftrag.zahlungszielTage > 0 ? `Zahlbar innerhalb von ${auftrag.zahlungszielTage} Tagen ohne Abzug.` : 'Bereits bezahlt.'}
-    </Text>
+    <View style={{ marginTop: 10 }}>
+      <Text>Zahlbar innerhalb von {auftrag.zahlungszielTage} Tagen ohne Abzug an folgendes Konto:</Text>
+      <Text style={{ marginTop: 4 }}>Kontoinhaber: {COMPANY_BANK.kontoinhaber}</Text>
+      <Text>IBAN: {COMPANY_BANK.iban}</Text>
+      <Text>Verwendungszweck: Rechnung {rechnungsnummer}</Text>
+    </View>
   );
 }
 
@@ -128,7 +148,7 @@ function RechnungDocument({ auftrag, rechnungsnummer }: { auftrag: Rechnungsauft
           <Text style={styles.summaryTotal}>Gesamtbetrag: {formatiereGeld(auftrag.gesamtBruttoCent / 100)}</Text>
         </View>
 
-        <ZahlungszielText auftrag={auftrag} />
+        <ZahlungszielText auftrag={auftrag} rechnungsnummer={rechnungsnummer} />
 
         <Text style={styles.footer}>
           {IST_KLEINUNTERNEHMER

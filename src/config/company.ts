@@ -41,6 +41,26 @@ export const COMPANY = {
 } as const;
 
 /**
+ * Bankverbindung für die Zahlungsanweisung auf einer OFFENEN Rechnung
+ * (Kauf auf Rechnung) – vom Betreiber am 2026-09-01 direkt mitgeteilt, per
+ * IBAN-Prüfsumme (ISO 7064 MOD 97-10) verifiziert.
+ *
+ * Erscheint AUSSCHLIESSLICH bei einer noch offenen Rechnung
+ * (internRechnungPdf.tsx, Zweig `zahlungszielTage > 0`) – eine bereits
+ * bezahlte Bestellung (Karte/PayPal) zeigt weiterhin nur "Bereits bezahlt.",
+ * niemals diese Kontodaten (dieselbe Fallunterscheidung, die die Rechnung
+ * für Rechnungskauf/Vorabzahlung schon für den Zahlungshinweis trifft).
+ *
+ * BIC bewusst nicht hinterlegt: Für SEPA-Überweisungen innerhalb der EU ist
+ * er seit 2016 nicht mehr zwingend erforderlich (SEPA-Verordnung), und der
+ * Betreiber hat keinen mitgeteilt – hier keiner erfunden.
+ */
+export const COMPANY_BANK = {
+  kontoinhaber: 'Embroidery Republic GbR',
+  iban: 'DE63 3705 0198 1959 0509 54',
+} as const;
+
+/**
  * Kleinunternehmer nach § 19 UStG: keine Umsatzsteuer auf eigene Umsätze.
  * Einzelner Schalter statt Einstellungstabelle – diese Website betreibt
  * genau eine Rechtsperson (siehe COMPANY oben), keine Mandantenfähigkeit

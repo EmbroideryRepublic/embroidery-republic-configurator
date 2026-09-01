@@ -5,7 +5,7 @@
 import Link from 'next/link';
 import { listOrders } from '@/lib/admin/data';
 import { istAdmin } from '@/lib/admin/auth';
-import { formatiereGeld } from '@/lib/format';
+import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 import { PAYMENT_STATUS_LABELS, type OrderPaymentStatus } from '@/lib/actions/orderTypes';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 
@@ -115,7 +115,7 @@ export default async function AdminOrdersPage({
                     </Link>
                   </td>
                   <td className="whitespace-nowrap px-3 py-2 text-gray-500">
-                    {new Date(order.createdAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' })}
+                    {formatiereZeitpunkt(order.createdAt)}
                   </td>
                   <td className="px-3 py-2">{order.orderType === 'order' ? 'Bestellung' : 'Anfrage'}</td>
                   <td className="px-3 py-2">

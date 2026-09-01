@@ -29,7 +29,7 @@ import {
 import { buildManualSupplierGroups } from '@/lib/admin/supplierOrderView';
 import { istAdmin } from '@/lib/admin/auth';
 import { IST_KLEINUNTERNEHMER } from '@/config/company';
-import { formatiereGeld } from '@/lib/format';
+import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 import { ProductionPreview } from '@/components/admin/ProductionPreview';
 import { KundendateienPanel } from '@/components/admin/KundendateienPanel';
@@ -68,7 +68,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           {order.orderNumber}
           <span className="text-sm font-normal text-gray-500">
             ({order.orderType === 'order' ? 'Bestellung' : 'Anfrage'} ·{' '}
-            {new Date(order.createdAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' })})
+            {formatiereZeitpunkt(order.createdAt)})
           </span>
           <AdminStatusBadge status={order.adminStatus} />
         </h1>
@@ -452,7 +452,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
                   {SUPPLIERS[so.supplierId as SupplierId]?.label ?? so.supplierId}
                 </span>{' '}
                 · Status: {so.status} · Modus: {so.mode} · Stand:{' '}
-                {new Date(so.updatedAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' })}
+                {formatiereZeitpunkt(so.updatedAt)}
                 {so.lastRun && (
                   <details className="mt-1">
                     <summary className="cursor-pointer text-gold-dark">

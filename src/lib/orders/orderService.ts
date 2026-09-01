@@ -23,6 +23,7 @@
  */
 import { createAdminClient } from '@/lib/supabase/server';
 import { stornofristLaeuftNoch } from '@/config/orderProcess';
+import { formatiereZeitpunkt } from '@/lib/format';
 import { widerrufeGeplanteEmail } from '@/lib/email/scheduledEmails';
 import { sendOrderCancellationEmail } from '@/lib/email/orderEmails';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
@@ -259,7 +260,7 @@ export async function setzeBestellstatus(
         orderId,
         orderNumber: buildOrderNumber(orderId),
         empfaenger: bestellung.email,
-        storniertAm: jetzt.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' }),
+        storniertAm: formatiereZeitpunkt(jetzt, { dateStyle: 'long', timeStyle: 'short' }),
         erstattungFaellig: erstattungAusstehend,
       });
       await protokolliereVersand(orderId, 'order_cancelled', { status: 'fulfilled', value: versand }, undefined, {
@@ -700,7 +701,7 @@ export async function storniereBestellungDurchKunden(
         // Bestellnummer wird abgeleitet, sie ist keine Spalte.
         orderNumber: buildOrderNumber(orderId),
         empfaenger: bestellung.email,
-        storniertAm: jetzt.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' }),
+        storniertAm: formatiereZeitpunkt(jetzt, { dateStyle: 'long', timeStyle: 'short' }),
         erstattungFaellig: bestellung.payment_status === 'paid',
       });
       await protokolliereVersand(orderId, 'order_cancelled', { status: 'fulfilled', value: versand }, undefined, {

@@ -10,6 +10,7 @@
  * orderVisibility.ts) – kein neuer Workflow, keine neuen Zustandsfelder.
  */
 import type { AdminOrderDetail } from './data';
+import { formatiereZeitpunkt } from '@/lib/format';
 
 export type NaechsteAktionTon = 'ok' | 'hinweis' | 'kritisch';
 
@@ -43,9 +44,7 @@ export function berechneNaechsteAktion(order: AdminOrderDetail): NaechsteAktion 
   }
 
   if (order.adminStatus.code === 'stornierbar') {
-    const uhrzeit = order.adminStatus.stornofristEndeIso
-      ? new Date(order.adminStatus.stornofristEndeIso).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' })
-      : null;
+    const uhrzeit = order.adminStatus.stornofristEndeIso ? formatiereZeitpunkt(order.adminStatus.stornofristEndeIso) : null;
     return {
       text: uhrzeit
         ? `Stornofrist läuft noch bis ${uhrzeit} – noch nicht produzieren.`

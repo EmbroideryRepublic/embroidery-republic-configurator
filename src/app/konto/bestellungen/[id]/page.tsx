@@ -7,6 +7,7 @@ import { KontoNav } from '@/components/konto/KontoNav';
 import { CancelOrderButton } from '@/components/orders/CancelOrderButton';
 import { Bestellfortschritt } from '@/components/orders/Bestellfortschritt';
 import { BestellPositionen } from '@/components/orders/BestellPositionen';
+import { formatiereZeitpunkt } from '@/lib/format';
 
 export const metadata = {
   title: 'Bestellung',
@@ -15,7 +16,7 @@ export const metadata = {
 export const dynamic = 'force-dynamic';
 
 function zeit(iso: string): string {
-  return new Date(iso).toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' });
+  return formatiereZeitpunkt(iso, { dateStyle: 'long', timeStyle: 'short' });
 }
 
 export default async function KontoBestellDetailPage({ params }: { params: { id: string } }) {

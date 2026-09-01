@@ -17,7 +17,7 @@
 import { useState, useTransition } from 'react';
 import { retryErstattung } from '@/lib/actions/refundActions';
 import { REFUND_STATUS_LABELS, type RefundStatus } from '@/lib/actions/orderTypes';
-import { formatiereGeld } from '@/lib/format';
+import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 
 export function RefundControl({
   orderId,
@@ -82,7 +82,7 @@ export function RefundControl({
           {refundedAt && (
             <div>
               Abgeschlossen am:{' '}
-              {new Date(refundedAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' })}
+              {formatiereZeitpunkt(refundedAt)}
             </div>
           )}
         </dl>

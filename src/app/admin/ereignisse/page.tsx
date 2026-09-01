@@ -6,6 +6,7 @@
  */
 import { istAdmin } from '@/lib/admin/auth';
 import { haeufungen, letzteEreignisse } from '@/lib/observability/ereignis';
+import { formatiereZeitpunkt } from '@/lib/format';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,7 +17,7 @@ const SCHWERE_STYLE: Record<string, string> = {
 };
 
 function zeit(iso: string): string {
-  return new Date(iso).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' });
+  return formatiereZeitpunkt(iso);
 }
 
 export default async function AdminEreignissePage() {

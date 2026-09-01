@@ -12,6 +12,7 @@ import type { SupplierId } from '@/lib/suppliers';
 import { SupplierOrderActions } from '@/components/admin/SupplierOrderActions';
 import { RunProcessorButton } from '@/components/admin/RunProcessorButton';
 import { istAdmin } from '@/lib/admin/auth';
+import { formatiereZeitpunkt } from '@/lib/format';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,8 +30,7 @@ const STATUS_STYLE: Record<string, string> = {
 
 function fmt(ts: string | null): string {
   if (!ts) return '–';
-  const d = new Date(ts);
-  return d.toLocaleString('de-DE', { dateStyle: 'short', timeStyle: 'short' });
+  return formatiereZeitpunkt(ts, { dateStyle: 'short', timeStyle: 'short' });
 }
 
 function Row({ row }: { row: AdminSupplierPipelineRow }) {

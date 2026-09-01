@@ -6,7 +6,7 @@ import { ladeBestellungenDesKunden } from '@/lib/account/data';
 import { KontoNav } from '@/components/konto/KontoNav';
 import { STATUS_LABELS } from '@/config/orderStatus';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
-import { formatiereGeld } from '@/lib/format';
+import { formatiereGeld, formatiereDatum } from '@/lib/format';
 
 export const metadata = {
   title: 'Meine Bestellungen',
@@ -15,7 +15,7 @@ export const metadata = {
 export const dynamic = 'force-dynamic';
 
 function zeit(iso: string): string {
-  return new Date(iso).toLocaleDateString('de-DE', { dateStyle: 'medium' });
+  return formatiereDatum(iso);
 }
 
 const STATUS_FARBE: Record<OrderStatus, string> = {

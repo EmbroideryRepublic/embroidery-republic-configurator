@@ -6,11 +6,12 @@
  */
 import { istAdmin } from '@/lib/admin/auth';
 import { listCustomers } from '@/lib/admin/data';
+import { formatiereDatum } from '@/lib/format';
 
 export const dynamic = 'force-dynamic';
 
 function zeit(iso: string): string {
-  return new Date(iso).toLocaleDateString('de-DE', { dateStyle: 'medium' });
+  return formatiereDatum(iso);
 }
 
 export default async function AdminKundenPage() {

@@ -11,7 +11,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
-import { formatiereGeld, formatiereGeldMitVorzeichen } from '../format';
+import { formatiereGeld, formatiereGeldMitVorzeichen, formatiereZeitpunkt, formatiereUhrzeit, formatiereDatum } from '../format';
 
 // ── Die Darstellung selbst ───────────────────────────────────────────────
 
@@ -114,4 +114,65 @@ test('Niemand baut die Währungsdarstellung über Intl nach', () => {
   }
 
   assert.deepEqual(verstoesse, [], 'Die Währungsdarstellung liegt ausschließlich in lib/format/geld.ts');
+});
+
+// ── Zeitpunkte: derselbe Fehler wie beim Geld, diesmal mit der Zeitzone ──
+//
+// Fund vom 2026-09-01 (echter PayPal-Live-Test): `toLocaleString('de-DE', …)`
+// ohne `timeZone` lieferte auf dem Server (Vercel, UTC) eine im Sommer zwei,
+// im Winter eine Stunde zu frühe Uhrzeit – die Stornofrist-Anzeige im
+// Adminbereich zeigte "bis 10:00" für eine Frist, die tatsächlich erst um
+// 12:00 MESZ endete.
+
+test('formatiereUhrzeit rechnet UTC in Europe/Berlin um – Sommerzeit (MESZ, UTC+2)', () => {
+  // 08:00 UTC ist im September (Sommerzeit) 10:00 in Berlin.
+  assert.equal(formatiereUhrzeit('2026-09-01T08:00:00.000Z'), '10:00');
+});
+
+test('formatiereUhrzeit rechnet UTC in Europe/Berlin um – Winterzeit (MEZ, UTC+1)', () => {
+  // 08:00 UTC ist im Januar (Winterzeit) 09:00 in Berlin.
+  assert.equal(formatiereUhrzeit('2026-01-15T08:00:00.000Z'), '09:00');
+});
+
+test('formatiereZeitpunkt nutzt dieselbe Zeitzone und akzeptiert eigene Stile', () => {
+  const text = formatiereZeitpunkt('2026-09-01T08:00:00.000Z', { dateStyle: 'long', timeStyle: 'short' });
+  assert.match(text, /10:00/);
+  assert.match(text, /2026/);
+});
+
+test('formatiereZeitpunkt akzeptiert auch ein Date-Objekt, nicht nur einen ISO-Text', () => {
+  const text = formatiereZeitpunkt(new Date('2026-09-01T08:00:00.000Z'));
+  assert.match(text, /10:00/);
+});
+
+test('formatiereDatum zeigt kein Uhrzeit-Anteil', () => {
+  const text = formatiereDatum('2026-09-01T23:30:00.000Z'); // 01:30 Uhr Berlin am Folgetag
+  assert.doesNotMatch(text, /:\d{2}/);
+  assert.match(text, /2\./); // bereits der 2. September in Berlin
+});
+
+test('Niemand formatiert Zeitpunkte mehr ohne Europe/Berlin selbst', () => {
+  // Exakt das Muster, das den Fund oben erzeugte: `toLocaleString`/
+  // `toLocaleTimeString`/`toLocaleDateString` mit deutschem Gebietsschema,
+  // aber ohne `timeZone` – auf dem Server (UTC) systematisch falsch.
+  const verstoesse: string[] = [];
+
+  for (const datei of quelldateien(SRC)) {
+    if (datei === path.join(SRC, 'lib', 'format.ts')) continue; // die zentrale Stelle selbst
+    const zeilen = readFileSync(datei, 'utf8').split('\n');
+    zeilen.forEach((zeile, i) => {
+      if (/^\s*(\*|\/\/)/.test(zeile)) return; // Kommentar
+      // Nur Aufrufe AUF EINEM DATE-OBJEKT sind gemeint (z.B. Stichzahlen
+      // formatieren ebenfalls über `.toLocaleString('de-DE')`, aber auf
+      // einer Zahl, nicht auf einem Zeitpunkt – das bleibt erlaubt).
+      if (!/\bDate\([^)]*\)\.toLocale(String|TimeString|DateString)\(\s*'de-DE'/.test(zeile)) return;
+      verstoesse.push(`${path.relative(process.cwd(), datei).replace(/\\/g, '/')}:${i + 1}`);
+    });
+  }
+
+  assert.deepEqual(
+    verstoesse,
+    [],
+    'Zeitpunkte gehören durch formatiereZeitpunkt()/formatiereUhrzeit()/formatiereDatum() – siehe lib/format.ts'
+  );
 });

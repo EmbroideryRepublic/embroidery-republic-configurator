@@ -4,9 +4,10 @@ import { useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { widerrufeSitzungAction, beendeAlleSitzungenAction } from '@/lib/actions/admin';
 import type { SitzungsUebersicht } from '@/lib/admin/auth';
+import { formatiereZeitpunkt } from '@/lib/format';
 
 function zeit(iso: string): string {
-  return new Date(iso).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' });
+  return formatiereZeitpunkt(iso);
 }
 
 export function SitzungsListe({ sitzungen }: { sitzungen: SitzungsUebersicht[] }) {

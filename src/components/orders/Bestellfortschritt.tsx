@@ -16,9 +16,10 @@ import {
   fortschrittIndex,
 } from '@/config/orderStatus';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
+import { formatiereZeitpunkt } from '@/lib/format';
 
 function zeit(iso: string): string {
-  return new Date(iso).toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' });
+  return formatiereZeitpunkt(iso, { dateStyle: 'long', timeStyle: 'short' });
 }
 
 export function Bestellfortschritt({

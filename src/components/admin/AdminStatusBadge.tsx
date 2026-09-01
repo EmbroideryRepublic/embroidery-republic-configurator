@@ -8,6 +8,7 @@
  * 2026-08-25 bewusst getrennt).
  */
 import type { AdminStatus } from '@/lib/orders/orderVisibility';
+import { formatiereUhrzeit } from '@/lib/format';
 
 const FARBEN: Record<AdminStatus['farbe'], string> = {
   rot: 'bg-red-50 text-red-700 ring-1 ring-inset ring-red-200',
@@ -23,7 +24,7 @@ export function AdminStatusBadge({ status }: { status: AdminStatus }) {
       {status.label}
       {status.stornofristEndeIso && (
         <span className="font-normal opacity-80">
-          · bis {new Date(status.stornofristEndeIso).toLocaleTimeString('de-DE', { timeStyle: 'short' })}
+          · bis {formatiereUhrzeit(status.stornofristEndeIso)}
         </span>
       )}
     </span>

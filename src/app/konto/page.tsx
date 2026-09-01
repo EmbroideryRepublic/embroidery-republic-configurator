@@ -4,7 +4,7 @@ import { Package, MapPin, User } from 'lucide-react';
 import { aktuellerKunde } from '@/lib/account/session';
 import { ladeProfil, ladeAdressen, ladeBestellungenDesKunden } from '@/lib/account/data';
 import { KontoNav } from '@/components/konto/KontoNav';
-import { formatiereGeld } from '@/lib/format';
+import { formatiereGeld, formatiereDatum } from '@/lib/format';
 
 export const metadata = {
   title: 'Mein Konto',
@@ -13,7 +13,7 @@ export const metadata = {
 export const dynamic = 'force-dynamic';
 
 function zeit(iso: string): string {
-  return new Date(iso).toLocaleDateString('de-DE', { dateStyle: 'medium' });
+  return formatiereDatum(iso);
 }
 
 export default async function KontoUebersichtPage() {

@@ -9,7 +9,7 @@
 import { Document, Page, View, Text, Image, StyleSheet, renderToBuffer } from '@react-pdf/renderer';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PRINT_VIEW_LABELS, PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
-import { formatiereGeld } from '@/lib/format';
+import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 9, fontFamily: 'Helvetica', color: '#23211d' },
@@ -163,7 +163,7 @@ function ProductionSheetDocument({ order }: { order: OrderRecord }) {
       <Page size="A4" style={styles.page}>
         <Text style={styles.h1}>Produktionsblatt {order.orderNumber}</Text>
         <Text style={styles.meta}>
-          {order.orderType === 'order' ? 'Bestellung' : 'Unverbindliche Anfrage'} · {new Date(order.createdAt).toLocaleString('de-DE')}
+          {order.orderType === 'order' ? 'Bestellung' : 'Unverbindliche Anfrage'} · {formatiereZeitpunkt(order.createdAt)}
         </Text>
 
         <ContactAndShipping order={order} />

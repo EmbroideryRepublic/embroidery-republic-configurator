@@ -43,6 +43,18 @@
  */
 const GEBIETSSCHEMA = 'de-DE';
 
+/**
+ * Ebenfalls FEST, aus demselben Grund wie GEBIETSSCHEMA: Server-Funktionen
+ * laufen auf Vercel in UTC, nicht in der Zeitzone des Unternehmens. Ohne
+ * dieses Feld liefert `toLocaleString('de-DE', …)` server- und clientseitig
+ * unterschiedliche Uhrzeiten – im Sommer (MESZ, UTC+2) zwei Stunden zu
+ * früh, im Winter (MEZ, UTC+1) eine Stunde zu früh. Fund vom 2026-09-01
+ * (echter PayPal-Live-Test): Die Stornofrist-Anzeige im Adminbereich zeigte
+ * „bis 10:00", obwohl es tatsächlich noch bis 12:00 Uhr MESZ ging – exakt
+ * dieser Zwei-Stunden-Versatz.
+ */
+const ZEITZONE = 'Europe/Berlin';
+
 /** Zahl mit deutschem Dezimalkomma, ohne unnötige Nachkommastellen. */
 export function zahl(wert: number, maxNachkomma = 1): string {
   return new Intl.NumberFormat(GEBIETSSCHEMA, {
@@ -54,6 +66,38 @@ export function zahl(wert: number, maxNachkomma = 1): string {
 /** Maßangabe in Zentimetern, z.B. „45,7 cm". */
 export function cm(wert: number): string {
   return `${zahl(wert)} cm`;
+}
+
+// ── Zeitpunkte ──────────────────────────────────────────────────────────
+//
+// Dieselbe Konsolidierung wie bei den Geldbeträgen oben, aus demselben
+// Anlass: mehrere Stellen formatierten Datum/Uhrzeit unabhängig
+// voneinander (`toLocaleString`/`toLocaleTimeString`/`toLocaleDateString`,
+// jeweils ohne `timeZone`) – auf dem Server (Vercel, UTC) ergab das
+// systematisch falsche Uhrzeiten, siehe ZEITZONE oben.
+
+/** Datum + Uhrzeit, z.B. „1. September 2026, 10:01". */
+export function formatiereZeitpunkt(
+  zeitpunkt: string | Date,
+  optionen: { dateStyle?: 'short' | 'medium' | 'long' | 'full'; timeStyle?: 'short' | 'medium' | 'long' | 'full' } = {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }
+): string {
+  const datum = typeof zeitpunkt === 'string' ? new Date(zeitpunkt) : zeitpunkt;
+  return datum.toLocaleString(GEBIETSSCHEMA, { ...optionen, timeZone: ZEITZONE });
+}
+
+/** Nur die Uhrzeit, z.B. „12:00" – für Fristen, bei denen das Datum aus dem Zusammenhang klar ist. */
+export function formatiereUhrzeit(zeitpunkt: string | Date): string {
+  const datum = typeof zeitpunkt === 'string' ? new Date(zeitpunkt) : zeitpunkt;
+  return datum.toLocaleTimeString(GEBIETSSCHEMA, { timeStyle: 'short', timeZone: ZEITZONE });
+}
+
+/** Nur das Datum, z.B. „1. September 2026" – für Listen ohne Uhrzeit-Spalte. */
+export function formatiereDatum(zeitpunkt: string | Date): string {
+  const datum = typeof zeitpunkt === 'string' ? new Date(zeitpunkt) : zeitpunkt;
+  return datum.toLocaleDateString(GEBIETSSCHEMA, { dateStyle: 'medium', timeZone: ZEITZONE });
 }
 
 // ── Geldbeträge ─────────────────────────────────────────────────────────

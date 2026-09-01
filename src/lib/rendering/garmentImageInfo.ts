@@ -2,6 +2,38 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { imageSize } from 'image-size';
 import { rasterPfad } from '@/lib/assets';
+import { basisUrl } from '@/lib/seo/basisUrl';
+
+/**
+ * Liest eine Datei unter public/ – lokal von der Platte, mit einem
+ * HTTP-Rückfall auf die eigene, öffentlich ausgelieferte Kopie.
+ *
+ * ── Warum der Rückfall nötig ist (Fund vom 2026-09-01, Go-Live-Abnahme) ──
+ * Die frühere Annahme ("public/ ist zur Laufzeit immer lokal verfügbar,
+ * auch in Serverless-Deployments") stimmte nicht: Next.js' Output File
+ * Tracing erkennt nur STATISCH importierte Dateien – ein zur Laufzeit aus
+ * einer Zeichenkette zusammengesetzter Pfad wie hier (products.ts kennt die
+ * konkreten Produktfotos nicht als Import) wird NICHT automatisch ins
+ * Server-Action-Bundle aufgenommen. `public/products/` allein ist über 1 GB
+ * groß – zu groß, um pauschal in jede Funktion eingebunden zu werden
+ * (Vercels Funktionsgrößenlimit). Lokal (Dev-Server, `next start`, Tests)
+ * bleibt der schnelle Dateisystem-Pfad unverändert die Regel; nur wenn der
+ * fehlschlägt, wird dieselbe Datei stattdessen über die eigene, ohnehin
+ * öffentlich ausgelieferte URL nachgeladen (bestätigt: `/products/**`
+ * antwortet mit 200 OK).
+ */
+async function leseAusPublicOrderHttp(relativePath: string): Promise<Buffer> {
+  const filePath = path.join(process.cwd(), 'public', relativePath);
+  try {
+    return await readFile(filePath);
+  } catch {
+    const antwort = await fetch(`${basisUrl()}${relativePath}`);
+    if (!antwort.ok) {
+      throw new Error(`Weder lokal noch über ${basisUrl()}${relativePath} erreichbar (HTTP ${antwort.status}).`);
+    }
+    return Buffer.from(await antwort.arrayBuffer());
+  }
+}
 
 interface SvgGarmentImageInfo {
   kind: 'svg';
@@ -47,8 +79,9 @@ function parseSvgDimensions(svgMarkup: string): { width: number; height: number 
 /**
  * Lädt die natürlichen Maße + Bilddaten eines Kleidungsstück-Bilds
  * (aus src/config/products.ts, z.B. "/products/hoodie-black/front.svg"),
- * ohne Browser/DOM – liest die Datei direkt von der Platte (public/-Ordner,
- * zur Build-/Laufzeit immer lokal verfügbar, auch in Serverless-Deployments).
+ * ohne Browser/DOM – liest die Datei aus public/, mit HTTP-Rückfall auf die
+ * eigene öffentliche URL, falls sie im Server-Action-Bundle fehlt (siehe
+ * leseAusPublicOrderHttp() oben).
  *
  * .webp-Produktfotos werden zur Laufzeit NICHT unterstützt (resvg kann
  * eingebettete WebP-Bilder nicht dekodieren, siehe Testlauf) – dafür muss
@@ -61,18 +94,16 @@ export async function loadGarmentImageInfo(publicRelativePath: string): Promise<
   const ext = path.extname(publicRelativePath).toLowerCase();
 
   if (ext === '.svg') {
-    const filePath = path.join(process.cwd(), 'public', publicRelativePath);
-    const svgMarkup = await readFile(filePath, 'utf-8');
+    const svgMarkup = (await leseAusPublicOrderHttp(publicRelativePath)).toString('utf-8');
     const { width, height } = parseSvgDimensions(svgMarkup);
     return { kind: 'svg', naturalWidth: width, naturalHeight: height, svgMarkup };
   }
 
   if (ext === '.webp') {
     const pngRelativePath = rasterPfad(publicRelativePath);
-    const filePath = path.join(process.cwd(), 'public', pngRelativePath);
     let pngBuffer: Buffer;
     try {
-      pngBuffer = await readFile(filePath);
+      pngBuffer = await leseAusPublicOrderHttp(pngRelativePath);
     } catch {
       throw new Error(
         `PNG-Geschwister für "${publicRelativePath}" fehlt ("${pngRelativePath}") – bitte einmalig ` +
@@ -87,8 +118,7 @@ export async function loadGarmentImageInfo(publicRelativePath: string): Promise<
   }
 
   if (ext === '.png') {
-    const filePath = path.join(process.cwd(), 'public', publicRelativePath);
-    const pngBuffer = await readFile(filePath);
+    const pngBuffer = await leseAusPublicOrderHttp(publicRelativePath);
     const dims = imageSize(pngBuffer);
     if (!dims.width || !dims.height) {
       throw new Error(`Konnte Bildmaße nicht aus "${publicRelativePath}" ermitteln.`);

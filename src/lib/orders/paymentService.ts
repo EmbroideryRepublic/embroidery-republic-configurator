@@ -46,7 +46,6 @@ import { protokolliereBestellereignis } from './orderService';
 import { bestaetigeErstattungViaWebhook } from './refundService';
 import { ladeBestellungFuerAbschluss, schliesseBestellungAb } from './orderCompletion';
 import { sendEmail } from '@/lib/email/sendEmail';
-import { PaymentSucceededEmail } from '@/lib/email/templates/PaymentSucceededEmail';
 import { PaymentFailedEmail } from '@/lib/email/templates/PaymentFailedEmail';
 import { basisUrl } from '@/lib/seo/basisUrl';
 import { bestellansichtUrl } from './orderIntake';
@@ -417,18 +416,13 @@ async function bestaetigeZahlung(
     detail: { ereignisId: ereignis.ereignisId, referenz: ereignis.referenz, betragCent: ereignis.betragCent },
   });
 
-  // E-Mail ist "nice to have", nicht-fatal – dieselbe Haltung wie beim
-  // Bestellabschluss (Rendering/PDF dürfen die verbuchte Zahlung nicht
-  // rückgängig machen, ein fehlgeschlagener Mailversand erst recht nicht).
-  const bestellinfo = await ladeEmailUndBetrag(db, ereignis.bestellId);
-  if (bestellinfo) {
-    await sendEmail({
-      to: bestellinfo.email,
-      subject: `Zahlung erhalten: ${buildOrderNumber(ereignis.bestellId)}`,
-      react: PaymentSucceededEmail({ orderNumber: buildOrderNumber(ereignis.bestellId), betrag: bestellinfo.totalPrice }),
-      kontext: { anlass: 'payment_succeeded', orderId: ereignis.bestellId },
-    }).catch(() => {});
-  }
+  // KEINE eigene Zahlungsbestätigungs-Mail mehr (bis 2026-09-01: hier direkt
+  // verschickt) – Phase 2 unten sendet die EINE Bestellbestätigung, die den
+  // Zahlungseingang bereits im Text nennt (OrderConfirmationEmail.tsx) und,
+  // sobald fertig, die Rechnung als PDF mitschickt. Fund vom 2026-09-01
+  // (echter PayPal-Live-Test): Zahlungsbestätigung, Bestellbestätigung und
+  // Rechnung gingen bis dahin als DREI getrennte E-Mails für ein einziges
+  // Ereignis raus.
 
   // ── JETZT erst Phase 2 ──────────────────────────────────────────────
   // Druckvorschauen, Produktionsblatt und Benachrichtigungen laufen genau

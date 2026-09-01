@@ -21,7 +21,11 @@ const INTAKE = path.join(process.cwd(), 'src', 'lib', 'orders', 'orderIntake.ts'
 const SERVICE = path.join(process.cwd(), 'src', 'lib', 'orders', 'orderService.ts');
 const COMPLETION = path.join(process.cwd(), 'src', 'lib', 'orders', 'orderCompletion.ts');
 const CRON_ROUTE = path.join(process.cwd(), 'src', 'app', 'api', 'cron', 'process-supplier-orders', 'route.ts');
-const CLAIM_MIGRATION = path.join(process.cwd(), 'supabase', 'migrations', '0030_bestellbestaetigung_retry.sql');
+// Die aktuell gültige Definition von beanspruche_bestellbestaetigung lebt seit
+// Migration 0033 dort (CREATE OR REPLACE der kompletten Funktion, siehe deren
+// Kopfkommentar) – 0030 legte die Spalten/das Grundmuster an, ist für die
+// WHERE-Bedingung selbst aber nicht mehr die maßgebliche Quelle.
+const CLAIM_MIGRATION = path.join(process.cwd(), 'supabase', 'migrations', '0033_bestellbestaetigung_zahlungsstatus_fix.sql');
 
 function funktionsRumpf(datei: string, name: string): string {
   const inhalt = readFileSync(datei, 'utf8');
@@ -58,8 +62,10 @@ test('verarbeiteBestelleingang versucht die Kundenbestätigung UNABHÄNGIG davon
   );
 
   // versucheBestellbestaetigung muss für Bestellungen tatsächlich aufgerufen
-  // werden, und zwar außerhalb einer bereitsGeplant-Bedingung.
-  const versuchStelle = rumpf.indexOf('versucheBestellbestaetigung(order)');
+  // werden, und zwar außerhalb einer bereitsGeplant-Bedingung. Seit 2026-09-01
+  // mit einem zweiten Argument (rechnung – siehe orderCompletion.ts::
+  // schliesseBestellungAb), deshalb hier ohne die schließende Klammer geprüft.
+  const versuchStelle = rumpf.indexOf('versucheBestellbestaetigung(order,');
   assert.ok(versuchStelle > 0, 'versucheBestellbestaetigung muss aufgerufen werden');
   const bereitsGeplantIfs = [...rumpf.matchAll(/if\s*\(bereitsGeplant\)/g)].map((m) => m.index ?? -1);
   for (const ifStelle of bereitsGeplantIfs) {
@@ -85,8 +91,38 @@ test('holeOffeneBestellbestaetigungenNach wählt exakt die Bedingung von beanspr
   const migration = readFileSync(CLAIM_MIGRATION, 'utf8');
   assert.match(
     migration,
-    /and order_type = 'order'\s*\n\s*and order_confirmation_sent_at is null\s*\n\s*and order_confirmation_versuch_gestartet_am is null/,
-    'die Referenzbedingung in Migration 0030 hat sich geändert – die Auswahl oben muss synchron bleiben'
+    /and order_type = 'order'\s*\n\s*and payment_status in \('paid', 'not_required'\)\s*\n\s*and order_confirmation_sent_at is null\s*\n\s*and order_confirmation_versuch_gestartet_am is null/,
+    'die Referenzbedingung in Migration 0033 hat sich geändert – die Auswahl oben muss synchron bleiben'
+  );
+});
+
+/**
+ * Regressionstest für den beim Zustandslogik-Audit vom 2026-09-01 real
+ * reproduzierten Bug (siehe Migration 0033): `beanspruche_bestellbestaetigung`
+ * prüfte – anders als jede andere Claim-Funktion in diesem Bereich
+ * (`beanspruche_abschluss`, `beanspruche_rechnungserstellung`) – NICHT
+ * payment_status. Für eine Bestellung mit Vorabzahlung, deren Zahlung noch
+ * nie bestätigt wurde, sind beide Zeitstempel ebenfalls NULL (nicht weil ein
+ * Versand fehlschlug, sondern weil noch nie einer versucht wurde) – der
+ * Cron-Retry hätte ihr dadurch eine "Zahlung eingegangen"-Bestätigung
+ * geschickt, BEVOR überhaupt bezahlt wurde. Real reproduziert: Bestellung
+ * c9b76029-fd4c-4cd9-9bc0-5d0d2ded006e (PayPal, weiterhin 'pending') erhielt
+ * am 2026-09-01T00:03:25Z genau diese falsche Bestätigung.
+ */
+test('holeOffeneBestellbestaetigungenNach schließt unbezahlte Vorabzahlungs-Bestellungen aus (Migration 0033)', () => {
+  const rumpf = funktionsRumpf(COMPLETION, 'holeOffeneBestellbestaetigungenNach');
+  assert.match(
+    rumpf,
+    /\.in\('payment_status',\s*\['paid',\s*'not_required'\]\)/,
+    'ohne diesen Filter würde eine noch unbezahlte Karten-/PayPal-Bestellung fälschlich als "zu bestätigen" ausgewählt'
+  );
+
+  const migration = readFileSync(CLAIM_MIGRATION, 'utf8');
+  assert.match(
+    migration,
+    /and payment_status in \('paid', 'not_required'\)/,
+    'der atomare Claim selbst muss denselben Schutz tragen – der Filter in der Auswahl allein genügt nicht ' +
+      '(Verteidigung in der Tiefe, exakt wie bei beanspruche_rechnungserstellung)'
   );
 });
 

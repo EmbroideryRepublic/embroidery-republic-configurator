@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test \"src/**/*.test.ts\"",
+    "test": "tsx --tsconfig tsconfig.scripts.json --test \"src/**/*.test.ts\"",
     "coverage:suppliers": "tsx scripts/checkSupplierMappingCoverage.mts",
     "test:e2e": "tsx --tsconfig tsconfig.scripts.json scripts/e2eBestellung.mts",
     "test:e2e:zahlung": "tsx --tsconfig tsconfig.scripts.json scripts/e2eZahlung.mts",

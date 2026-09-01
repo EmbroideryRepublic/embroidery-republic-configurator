@@ -30,25 +30,41 @@ import { OrderCancellationEmail } from './templates/OrderCancellationEmail';
 import { OrderShippedEmail } from './templates/OrderShippedEmail';
 import { OrderInProductionEmail } from './templates/OrderInProductionEmail';
 import { OrderCompletedEmail } from './templates/OrderCompletedEmail';
-import type { OrderRecord } from '@/lib/actions/orderTypes';
+import type { OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
 
 export async function sendOrderConfirmationEmail(
   order: OrderRecord,
   /** Link auf die öffentliche Bestellansicht (mit Storno-Möglichkeit während
    *  der Frist). Fehlt er – z.B. weil ORDER_TOKEN_SECRET nicht gesetzt ist –,
    *  bleibt die E-Mail trotzdem vollständig verständlich. */
-  bestellansichtUrl?: string
+  bestellansichtUrl?: string,
+  /** Vorhanden, sobald die Rechnung bereits erstellt ist – wird als PDF
+   *  angehängt UND im Text erwähnt, STATT einer eigenen Rechnungs-E-Mail
+   *  (siehe orderCompletion.ts::schliesseBestellungAb). */
+  rechnung?: RechnungFuerEmail | null
 ): Promise<EmailVersandErgebnis> {
   const isOrder = order.orderType === 'order';
   const subject = isOrder ? `Bestellbestätigung ${order.orderNumber}` : `Ihre Anfrage ${order.orderNumber}`;
+
+  // EIN gemeinsames Gültigkeits-Gate für Text UND Anhang – niemals getrennt
+  // geprüft. Sonst könnte (z.B. bei einem leeren/defekten PDF-Puffer) der
+  // Text "im Anhang" behaupten, während tatsächlich kein Anhang mitgeschickt
+  // wird. `rechnungGeprueft` ist deshalb die EINZIGE Stelle, die entscheidet
+  // – sowohl `<OrderConfirmationEmail rechnung={…}>` unten als auch
+  // `attachments` lesen ausschließlich aus dieser einen Variable.
+  const rechnungGeprueft = rechnung && rechnung.pdf && rechnung.pdf.length > 0 ? rechnung : null;
+
   const result = await sendEmail({
     to: order.contact.email,
     subject,
-    react: <OrderConfirmationEmail order={order} bestellansichtUrl={bestellansichtUrl} />,
+    react: <OrderConfirmationEmail order={order} bestellansichtUrl={bestellansichtUrl} rechnung={rechnungGeprueft ?? undefined} />,
     kontext: { anlass: isOrder ? 'order_confirmation' : 'inquiry_confirmation', orderId: order.id },
     // Antworten sollen bei uns landen – auch solange der Absender technisch
     // noch onboarding@resend.dev ist (Domain nicht verifiziert).
     replyTo: getReplyToAddress(),
+    ...(rechnungGeprueft
+      ? { attachments: [{ filename: `Rechnung-${rechnungGeprueft.rechnungsnummer}.pdf`, content: rechnungGeprueft.pdf }] }
+      : {}),
   });
   return {
     success: result.success,

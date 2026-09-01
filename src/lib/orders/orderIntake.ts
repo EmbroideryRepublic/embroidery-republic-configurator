@@ -33,7 +33,7 @@ import {
   sendOrderConfirmationEmail, sendInternalOrderNotificationEmail, type EmailVersandErgebnis,
 } from '@/lib/email/orderEmails';
 import { protokolliereBestellereignis, protokolliereVersand } from './orderService';
-import type { OrderRecord } from '@/lib/actions/orderTypes';
+import type { OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
 
 /** Basis-URL für Links in E-Mails. */
 function basisUrl(): string {
@@ -70,7 +70,10 @@ export function bestellansichtUrl(orderId: string): string | null {
  * Wirft nie – jeder Fehlschlag (Claim-Aufruf oder Versand) kommt als
  * `{success:false, error}` zurück, exakt wie `sendEmail` selbst.
  */
-export async function versucheBestellbestaetigung(order: OrderRecord): Promise<EmailVersandErgebnis> {
+export async function versucheBestellbestaetigung(
+  order: OrderRecord,
+  rechnung: RechnungFuerEmail | null = null
+): Promise<EmailVersandErgebnis> {
   const db = createAdminClient();
   const { data: anspruch, error: claimFehler } = await db.rpc('beanspruche_bestellbestaetigung', {
     p_order_id: order.id,
@@ -85,7 +88,7 @@ export async function versucheBestellbestaetigung(order: OrderRecord): Promise<E
     return { success: true };
   }
 
-  const ergebnis = await sendOrderConfirmationEmail(order, bestellansichtUrl(order.id) ?? undefined);
+  const ergebnis = await sendOrderConfirmationEmail(order, bestellansichtUrl(order.id) ?? undefined, rechnung);
   if (ergebnis.success) {
     const { error } = await db
       .from('orders')
@@ -113,7 +116,12 @@ export async function versucheBestellbestaetigung(order: OrderRecord): Promise<E
  */
 export async function verarbeiteBestelleingang(
   order: OrderRecord,
-  productionSheetSignedUrl: string | null
+  productionSheetSignedUrl: string | null,
+  /** Vorhanden, sobald die Rechnung VOR dieser Kommunikation bereits
+   *  erstellt wurde (Regelfall, siehe orderCompletion.ts::
+   *  schliesseBestellungAb) – wird dann in DERSELBEN Bestellbestätigung
+   *  mitgeschickt statt in einer eigenen E-Mail. */
+  rechnung: RechnungFuerEmail | null = null
 ): Promise<void> {
   const istBestellung = order.orderType === 'order';
   const db = createAdminClient();
@@ -142,7 +150,7 @@ export async function verarbeiteBestelleingang(
 
   const [kunde, intern] = await Promise.allSettled([
     istBestellung
-      ? versucheBestellbestaetigung(order)
+      ? versucheBestellbestaetigung(order, rechnung)
       : sendOrderConfirmationEmail(order, bestellansichtUrl(order.id) ?? undefined),
     bereitsGeplant
       ? Promise.resolve<EmailVersandErgebnis>({ success: true })

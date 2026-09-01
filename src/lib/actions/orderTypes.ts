@@ -121,6 +121,22 @@ export interface OrderRecord {
   items: OrderItemRecord[];
 }
 
+/**
+ * Was die Bestellbestätigung braucht, um eine bereits fertige Rechnung in
+ * DERSELBEN E-Mail mitzuschicken (Fund vom 2026-09-01, echter PayPal-Live-
+ * Test: Bestellbestätigung, Zahlungsbestätigung und Rechnung gingen bis
+ * dahin als DREI getrennte E-Mails raus – wirkte auf die Kundschaft wie
+ * Spam für ein einziges Ereignis). `pdf` wird als E-Mail-Anhang verwendet,
+ * nicht im Text dargestellt.
+ */
+export interface RechnungFuerEmail {
+  rechnungsnummer: string;
+  rechnungsdatum: string;
+  pdf: Buffer;
+  /** 0 = bereits bezahlt (Karte/PayPal), sonst Tage bis Fälligkeit. */
+  zahlungszielTage: number;
+}
+
 /** Anzeigenamen der Veredelungspositionen.
  *  Re-Export aus der zentralen Beschreibung (config/decorationPositions) –
  *  die Bezeichnungen werden NUR dort gepflegt. */

@@ -1,159 +1,38 @@
 /**
- * Rechnung als E-Mail – enthält alle Pflichtangaben nach § 14 Abs. 4 UStG
- * (Verkäufer, Käufer, Rechnungsnummer, Datum, Leistungsbeschreibung, Entgelt
- * netto, Steuersatz und -betrag, Endbetrag), soweit sie im System vorliegen.
+ * Kurze Nachtrags-E-Mail für die Rechnung – NUR für den seltenen
+ * Cron-Nachholfall (`holeOffeneRechnungenNach`, orderCompletion.ts), bei dem
+ * die Rechnungserstellung beim regulären Bestellabschluss fehlschlug und die
+ * Bestellbestätigung deshalb bereits OHNE Rechnung verschickt wurde.
  *
- * ── Seit 2026-08-10: automatisch verschickt ──────────────────────────────
- * `invoiceNumber`/`invoiceDate` kommen jetzt NICHT mehr von `order.orderNumber`
- * (das bleibt weiterhin nur die Bestellnummer, siehe buildOrderNumber,
- * orderTypes.ts), sondern vom jeweils gewählten Rechnungsanbieter (Standard:
- * `intern`, siehe lib/invoicing/providers/intern.ts; optional Lexware) –
- * dort entsteht die fortlaufende, § 14 Abs. 4 Nr. 4 UStG-konforme Nummer.
- * Dieses Template ist die E-Mail-ZUSAMMENFASSUNG; das rechtsverbindliche
- * Dokument ist das angehängte Rechnungs-PDF (siehe lib/orders/orderCompletion.ts,
- * erzeugeRechnung – dort wird diese Komponente aufgerufen und das PDF als
- * Anhang mitgeschickt).
+ * Im Regelfall läuft die Rechnung stattdessen als PDF-Anhang direkt in der
+ * Bestellbestätigung mit (siehe OrderConfirmationEmail.tsx) – bis 2026-09-01
+ * gab es dafür eine eigene, vollständig durchformatierte Rechnungs-E-Mail
+ * mit allen Positionen/Beträgen; das duplizierte nur, was im angehängten
+ * PDF (dem rechtsverbindlichen Dokument, siehe orderCompletion.ts::
+ * erzeugeRechnung) ohnehin bereits steht, und war einer von drei getrennten
+ * E-Mails für ein einziges Bestellereignis (Fund vom 2026-09-01, echter
+ * PayPal-Live-Test). Diese Nachtrags-Mail bleibt bewusst kurz – die
+ * Bestellpositionen kennt die Kundschaft bereits aus der Bestellbestätigung,
+ * die vollständigen Pflichtangaben nach § 14 UStG stehen im PDF.
  */
 import { Text } from '@react-email/components';
-import { COMPANY, IST_KLEINUNTERNEHMER, KLEINUNTERNEHMER_HINWEIS } from '@/config/company';
-import { formatiereGeld } from '@/lib/format';
-import { COLORS, EmailLayout } from './EmailLayout';
-import type { OrderRecord } from '@/lib/actions/orderTypes';
+import { EmailLayout } from './EmailLayout';
 
 export function InvoiceEmail({
-  order,
+  orderNumber,
   invoiceNumber,
   invoiceDate,
-  vatId,
-  zahlungszielTage,
 }: {
-  order: OrderRecord;
-  /** Eigenständig zu vergeben, siehe Hinweis oben – NICHT order.orderNumber. */
+  orderNumber: string;
   invoiceNumber: string;
   invoiceDate: string;
-  /**
-   * USt-IdNr. der Käuferschaft (Schnappschuss aus orders.customer_vat_id,
-   * Migration 0025), NICHT `order.contact` – OrderRecord (orderTypes.ts)
-   * trägt bewusst keine Rechnungs-spezifischen Felder, die außerhalb dieser
-   * (noch unverdrahteten, siehe Hinweis oben) Vorlage nirgends gebraucht
-   * werden. Fehlt sie (Gastkauf oder kein Eintrag im Profil), wird die Zeile
-   * schlicht weggelassen – nach § 14 Abs. 4 UStG ist sie nur Pflicht, wenn
-   * eine der beiden Vertragsparteien innergemeinschaftlich reverse-charge-
-   * pflichtig ist, nicht bei jeder Rechnung.
-   */
-  vatId?: string | null;
-  /** Tage bis Fälligkeit; 0 = bereits bezahlt (Karte/PayPal). Identische Bedeutung wie in internRechnungPdf.tsx. */
-  zahlungszielTage: number;
 }) {
   const title = `Rechnung ${invoiceNumber}`;
   return (
     <EmailLayout previewText={title} title={title}>
-      <table style={{ width: '100%', fontSize: 13, marginBottom: 16 }}>
-        <tbody>
-          <tr>
-            <td style={{ verticalAlign: 'top', width: '50%' }}>
-              <strong>{COMPANY.legalName}</strong>
-              <br />
-              {COMPANY.street}
-              <br />
-              {COMPANY.zip} {COMPANY.city}
-              <br />
-              {COMPANY.email}
-              {COMPANY.steuernummer && (
-                <>
-                  <br />
-                  Steuernummer: {COMPANY.steuernummer}
-                </>
-              )}
-              {COMPANY.vatId && (
-                <>
-                  <br />
-                  USt-IdNr.: {COMPANY.vatId}
-                </>
-              )}
-            </td>
-            <td style={{ verticalAlign: 'top', textAlign: 'right' }}>
-              <strong>{order.contact.name}</strong>
-              <br />
-              {order.contact.company && (
-                <>
-                  {order.contact.company}
-                  <br />
-                </>
-              )}
-              {order.shipping?.street}
-              <br />
-              {order.shipping?.zip} {order.shipping?.city}
-              {vatId && (
-                <>
-                  <br />
-                  USt-IdNr.: {vatId}
-                </>
-              )}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <Text style={{ fontSize: 13, color: COLORS.muted, margin: 0 }}>
-        Rechnungsnummer: <strong>{invoiceNumber}</strong> · Rechnungsdatum: {invoiceDate} · Leistungsdatum
-        entspricht dem Rechnungsdatum · Bestellung: {order.orderNumber}
-      </Text>
-
-      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
-        <thead>
-          <tr style={{ borderBottom: `2px solid ${COLORS.border}` }}>
-            <th style={{ textAlign: 'left', padding: '4px 0', fontSize: 12, color: COLORS.muted }}>Position</th>
-            <th style={{ textAlign: 'right', padding: '4px 0', fontSize: 12, color: COLORS.muted }}>Betrag</th>
-          </tr>
-        </thead>
-        <tbody>
-          {order.items.map((item, i) => (
-            <tr key={i}>
-              <td style={{ padding: '6px 0', borderBottom: `1px solid ${COLORS.border}` }}>
-                {item.productName} · {item.colorName} ({item.quantity}×)
-              </td>
-              <td style={{ padding: '6px 0', borderBottom: `1px solid ${COLORS.border}`, textAlign: 'right' }}>
-                {formatiereGeld(item.totalPrice)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <table style={{ width: '100%', marginTop: 12, fontSize: 13 }}>
-        <tbody>
-          {order.subtotal !== undefined && (
-            <tr>
-              <td>Zwischensumme</td>
-              <td style={{ textAlign: 'right' }}>{formatiereGeld(order.subtotal)}</td>
-            </tr>
-          )}
-          {order.shippingCost !== undefined && (
-            <tr>
-              <td>Versand</td>
-              <td style={{ textAlign: 'right' }}>{order.shippingCost ? formatiereGeld(order.shippingCost) : 'kostenlos'}</td>
-            </tr>
-          )}
-          {!IST_KLEINUNTERNEHMER && order.taxRate !== undefined && order.taxAmount !== undefined && (
-            <tr>
-              <td>enthaltene USt. ({order.taxRate} %)</td>
-              <td style={{ textAlign: 'right' }}>{formatiereGeld(order.taxAmount)}</td>
-            </tr>
-          )}
-          <tr style={{ fontWeight: 600, fontSize: 15 }}>
-            <td style={{ paddingTop: 8, borderTop: `1px solid ${COLORS.border}` }}>Gesamtbetrag</td>
-            <td style={{ paddingTop: 8, borderTop: `1px solid ${COLORS.border}`, textAlign: 'right' }}>
-              {formatiereGeld(order.totalPrice)}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <Text style={{ marginTop: 20, fontSize: 12, color: COLORS.muted }}>
-        {zahlungszielTage > 0 ? `Zahlbar innerhalb von ${zahlungszielTage} Tagen ohne Abzug.` : 'Bereits bezahlt.'}{' '}
-        Diese Rechnung enthält die gesetzlich vorgeschriebenen Angaben nach § 14 UStG, soweit zum Zeitpunkt der
-        Erstellung hinterlegt.
-        {IST_KLEINUNTERNEHMER ? ` ${KLEINUNTERNEHMER_HINWEIS}` : ''}
+      <Text style={{ margin: 0 }}>
+        Zu Ihrer Bestellung {orderNumber} finden Sie anbei die Rechnung {invoiceNumber} vom {invoiceDate} als
+        PDF.
       </Text>
     </EmailLayout>
   );

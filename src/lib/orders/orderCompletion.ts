@@ -33,14 +33,14 @@
  * die Quelle der Wahrheit, nicht das PDF.
  */
 import { createAdminClient } from '@/lib/supabase/server';
-import { uploadProductionFile, getProductionFileSignedUrl } from '@/lib/supabase/storage';
+import { uploadProductionFile, getProductionFileSignedUrl, downloadProductionFile } from '@/lib/supabase/storage';
 import { renderProductionSheet } from '@/lib/production/buildProductionSheet';
 import { renderPrintView } from '@/lib/rendering/renderPrintView';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
 import { verarbeiteBestelleingang, versucheBestellbestaetigung } from './orderIntake';
 import { protokolliereBestellereignis, protokolliereVersand, persistiereKritischMitWiederholung } from './orderService';
 import { buildOrderNumber, PRINT_VIEW_LABELS } from '@/lib/actions/orderTypes';
-import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
+import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
 import { brauchtVorabZahlung } from '@/config/zahlung';
 import { waehleRechnungsAnbieter, istRechnungserstellungMoeglich } from '@/lib/invoicing/registry';
 import { RechnungsTeilerfolgFehler, type Rechnungsauftrag, type Rechnungserstellung } from '@/lib/invoicing/types';
@@ -87,12 +87,20 @@ export async function schliesseBestellungAb(order: OrderRecord): Promise<Abschlu
 
   const vorschauen = await erzeugeDruckvorschauen(order, probleme);
   const { pfad: produktionsblattPfad, signierteUrl } = await erzeugeProduktionsblatt(order, probleme);
-  const kommunikation = await benachrichtige(order, signierteUrl, probleme);
-  // NACH der Bestellbestätigung, nicht davor – natürlichere Lesereihenfolge
-  // für die Kundschaft (bei Vorabzahlung kam die Zahlungsbestätigung schon
-  // vorher aus paymentService.ts): Zahlung bestätigt → Bestellung bestätigt
-  // → Rechnung.
-  const rechnung = await erzeugeRechnung(order, probleme);
+
+  // Rechnung VOR der Kommunikation erstellen (seit 2026-09-01, vorher
+  // umgekehrt): Nur so kann die EINE Bestellbestätigung unten die bereits
+  // fertige Rechnung als PDF mitschicken, statt einer zweiten, separaten
+  // Rechnungs-E-Mail (Fund vom 2026-09-01, echter PayPal-Live-Test: bis
+  // dahin gingen Zahlungsbestätigung, Bestellbestätigung UND Rechnung als
+  // drei getrennte E-Mails raus – für ein einziges Ereignis wirkte das wie
+  // Spam). Ändert nichts an erzeugeRechnung()s eigener Erfolgs-/
+  // Fehlerlogik – nur WOHIN das Ergebnis bei Erfolg fließt.
+  let rechnungFuerEmail: RechnungFuerEmail | null = null;
+  const rechnung = await erzeugeRechnung(order, probleme, (info) => {
+    rechnungFuerEmail = info;
+  });
+  const kommunikation = await benachrichtige(order, signierteUrl, probleme, rechnungFuerEmail);
 
   return {
     vorschauen,
@@ -244,6 +252,54 @@ export async function holeOffeneRechnungenNach(
 }
 
 /**
+ * Lädt eine BEREITS erstellte Rechnung für den Nachhol-Versand der
+ * Bestellbestätigung (siehe `holeOffeneBestellbestaetigungenNach` unten).
+ *
+ * ── Warum das nötig ist ────────────────────────────────────────────────────
+ * `erzeugeRechnung()` und `versucheBestellbestaetigung()` sind bewusst
+ * UNABHÄNGIG voneinander abgesichert (jede mit eigenem Claim). Das ist
+ * richtig, hat aber eine Lücke: Schlägt beim ERSTEN Versuch nur der
+ * E-Mail-Versand fehl (z.B. Resend-Ratenlimit), während die Rechnung im
+ * selben Lauf bereits erfolgreich erstellt wurde, findet
+ * `holeOffeneRechnungenNach` diese Bestellung nie wieder (sein Filter ist
+ * `invoice_id IS NULL` – hier längst gesetzt). Ohne diese Funktion würde der
+ * Nachhol-Versand unten die Bestellbestätigung zwar zustellen, aber OHNE die
+ * Rechnung zu erwähnen oder anzuhängen – und die Kundschaft bekäme ihre
+ * Rechnung dann NIE per E-Mail, obwohl sie bei uns längst existiert (Fund
+ * beim Zustandslogik-Audit vom 2026-09-01, PayPal-Live-Test).
+ *
+ * Wirft nie: Ein Fehlschlag beim Nachladen des PDFs darf den ohnehin schon
+ * verzögerten Bestätigungsversand nicht zusätzlich blockieren – im
+ * schlimmsten Fall geht die Bestätigung dann wie bisher ohne Rechnung raus.
+ */
+async function ladeBereitsErstellteRechnungFuerEmail(
+  db: ReturnType<typeof createAdminClient>,
+  orderId: string,
+  paymentMethod: OrderPaymentMethod | null | undefined
+): Promise<RechnungFuerEmail | null> {
+  const { data, error } = await db
+    .from('orders')
+    .select('invoice_number, invoice_pdf_url, invoice_date')
+    .eq('id', orderId)
+    .maybeSingle<{ invoice_number: string | null; invoice_pdf_url: string | null; invoice_date: string | null }>();
+
+  if (error || !data?.invoice_number || !data.invoice_pdf_url) return null;
+
+  try {
+    const pdf = await downloadProductionFile(data.invoice_pdf_url);
+    return {
+      rechnungsnummer: data.invoice_number,
+      rechnungsdatum: data.invoice_date ?? new Date().toISOString().slice(0, 10),
+      pdf,
+      zahlungszielTage: !paymentMethod || paymentMethod === 'invoice' ? PAYMENT_TERM_DAYS : 0,
+    };
+  } catch (err) {
+    console.error(`[orders] Bereits erstellte Rechnung für ${orderId} nicht nachladbar:`, err);
+    return null;
+  }
+}
+
+/**
  * Holt die Bestellbestätigung nach für Bestellungen, deren Zustellung sauber
  * fehlgeschlagen ist (Anspruch wieder freigegeben, order_confirmation_sent_at
  * weiterhin null) und die seitdem nie erneut versucht wurden.
@@ -257,14 +313,26 @@ export async function holeOffeneRechnungenNach(
  * Funktion ist der Aufrufer für den Cron-Lauf.
  *
  * Die Auswahl-Bedingung entspricht exakt der von `beanspruche_bestellbestaetigung`
- * (Migration 0030) – der eigentliche Schutz gegen eine doppelte Zustellung
- * bleibt vollständig im dortigen atomaren Claim; läuft zufällig zeitgleich
- * ein regulärer Bestelleingang für dieselbe Bestellung, gewinnt nur einer der
- * beiden Aufrufe den Claim, der andere ist ein folgenloses No-op.
+ * (Migration 0030, seit 0033 UM payment_status ERGÄNZT – siehe dort: eine
+ * Bestellung mit Vorabzahlung, deren Zahlung noch nie bestätigt wurde, hat
+ * ebenfalls beide Zeitstempel auf NULL, nicht weil ein Versand fehlschlug,
+ * sondern weil noch nie einer versucht wurde. Ohne den Filter hier UND im
+ * Claim hätte dieser Cron-Lauf ihr fälschlich eine "Zahlung eingegangen"-
+ * Bestätigung geschickt, bevor überhaupt bezahlt wurde – real reproduziert
+ * beim Zustandslogik-Audit vom 2026-09-01, siehe Migrationskommentar 0033) –
+ * der eigentliche Schutz gegen eine doppelte Zustellung bleibt vollständig im
+ * dortigen atomaren Claim; läuft zufällig zeitgleich ein regulärer
+ * Bestelleingang für dieselbe Bestellung, gewinnt nur einer der beiden
+ * Aufrufe den Claim, der andere ist ein folgenloses No-op. Der Filter hier
+ * ist zusätzlich (nicht statt des Claims): erspart nur den überflüssigen
+ * RPC-Aufruf für Bestellungen, die ohnehin nie einen Anspruch bekämen.
  *
  * Ruft bewusst NUR den Bestätigungs-Schritt auf, nicht die gesamte Phase 2
  * (kein erneutes Rendering/PDF) – dieselbe Begründung wie bei
- * `holeOffeneRechnungenNach` oben.
+ * `holeOffeneRechnungenNach` oben. Lädt aber (siehe
+ * `ladeBereitsErstellteRechnungFuerEmail` oben) eine zwischenzeitlich bereits
+ * erstellte Rechnung nach, damit sie in DIESER Bestätigung noch mitgeschickt
+ * werden kann, statt spurlos unversendet zu bleiben.
  *
  * Von der Cron-Route aufgerufen (siehe process-supplier-orders/route.ts);
  * wirft nie.
@@ -277,6 +345,7 @@ export async function holeOffeneBestellbestaetigungenNach(
     .from('orders')
     .select('id')
     .eq('order_type', 'order')
+    .in('payment_status', ['paid', 'not_required'])
     .is('order_confirmation_sent_at', null)
     .is('order_confirmation_versuch_gestartet_am', null)
     .order('created_at', { ascending: true })
@@ -299,7 +368,8 @@ export async function holeOffeneBestellbestaetigungenNach(
       weiterhinOffen++;
       continue;
     }
-    const ergebnis = await versucheBestellbestaetigung(order);
+    const rechnung = await ladeBereitsErstellteRechnungFuerEmail(db, orderId, order.paymentMethod);
+    const ergebnis = await versucheBestellbestaetigung(order, rechnung);
     await protokolliereVersand(orderId, 'order_confirmation', { status: 'fulfilled', value: ergebnis });
     if (ergebnis.success) {
       zugestellt++;
@@ -631,7 +701,21 @@ async function erzeugeProduktionsblatt(
  * Rechnung anschließend 1:1 über den separaten Integrationspunkt (GET
  * /api/accounting/v1/orders, siehe dort), sie ist bereits produktiv.
  */
-async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<boolean> {
+async function erzeugeRechnung(
+  order: OrderRecord,
+  probleme: string[],
+  /**
+   * Wird bei Erfolg MIT den Rechnungsdaten aufgerufen, STATT dass diese
+   * Funktion selbst eine eigene Rechnungs-E-Mail verschickt – so kann die
+   * Bestellbestätigung (benachrichtige() unten) die fertige Rechnung in
+   * DERSELBEN E-Mail mitschicken (Fund vom 2026-09-01: drei getrennte
+   * E-Mails für ein einziges Ereignis wirkten wie Spam). Fehlt der
+   * Callback (Cron-Nachholpfad `holeOffeneRechnungenNach`, dessen
+   * Bestellbestätigung längst – ohne Rechnung – verschickt ist), verschickt
+   * diese Funktion wie bisher eine eigenständige Nachtrags-E-Mail.
+   */
+  onErstellt?: (info: RechnungFuerEmail) => void
+): Promise<boolean> {
   if (order.orderType !== 'order') return false; // Anfragen bekommen keine Rechnung
   if (!istRechnungserstellungMoeglich()) return false;
 
@@ -832,19 +916,32 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
       detail: { invoiceId: rechnung.rechnungsId, invoiceNumber: rechnung.rechnungsnummer },
     });
 
-    await sendEmail({
-      to: order.contact.email,
-      subject: `Rechnung ${rechnung.rechnungsnummer} zu Bestellung ${order.orderNumber}`,
-      react: InvoiceEmail({
-        order,
-        invoiceNumber: rechnung.rechnungsnummer,
-        invoiceDate: auftrag.rechnungsdatum,
-        vatId: order.customerVatId,
+    if (onErstellt) {
+      // Regelfall: Die Bestellbestätigung (noch nicht verschickt) schickt
+      // diese Rechnung selbst mit – hier NICHTS versenden, sonst bekäme die
+      // Kundschaft die Rechnung doppelt (einmal hier, einmal dort).
+      onErstellt({
+        rechnungsnummer: rechnung.rechnungsnummer,
+        rechnungsdatum: auftrag.rechnungsdatum,
+        pdf: rechnung.pdf,
         zahlungszielTage,
-      }),
-      kontext: { anlass: 'invoice_created', orderId: order.id },
-      attachments: [{ filename: `Rechnung-${rechnung.rechnungsnummer}.pdf`, content: rechnung.pdf }],
-    }).catch(() => {});
+      });
+    } else {
+      // Cron-Nachholpfad: Die Bestellbestätigung ist zu diesem Zeitpunkt
+      // längst (ohne Rechnung) verschickt – hier bleibt nur eine
+      // eigenständige Nachtrags-E-Mail.
+      await sendEmail({
+        to: order.contact.email,
+        subject: `Rechnung ${rechnung.rechnungsnummer} zu Bestellung ${order.orderNumber}`,
+        react: InvoiceEmail({
+          orderNumber: order.orderNumber,
+          invoiceNumber: rechnung.rechnungsnummer,
+          invoiceDate: auftrag.rechnungsdatum,
+        }),
+        kontext: { anlass: 'invoice_created', orderId: order.id },
+        attachments: [{ filename: `Rechnung-${rechnung.rechnungsnummer}.pdf`, content: rechnung.pdf }],
+      }).catch(() => {});
+    }
 
     return true;
   } catch (err) {
@@ -928,12 +1025,17 @@ async function erzeugeRechnung(order: OrderRecord, probleme: string[]): Promise<
  * Stößt die Kommunikation an (Bestätigung an die Kundschaft, interne
  * Meldung). Die Fachlichkeit liegt vollständig in `orderIntake`.
  */
-async function benachrichtige(order: OrderRecord, signierteUrl: string | null, probleme: string[]): Promise<boolean> {
+async function benachrichtige(
+  order: OrderRecord,
+  signierteUrl: string | null,
+  probleme: string[],
+  rechnung: RechnungFuerEmail | null
+): Promise<boolean> {
   try {
     // `verarbeiteBestelleingang` wirft nicht; das try/catch bleibt als letzte
     // Sicherung, damit die Bestellung unter keinen Umständen an der
     // Kommunikation scheitert.
-    await verarbeiteBestelleingang(order, signierteUrl);
+    await verarbeiteBestelleingang(order, signierteUrl, rechnung);
     return true;
   } catch (err) {
     const text = err instanceof Error ? err.message : String(err);

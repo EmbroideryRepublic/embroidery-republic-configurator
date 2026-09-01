@@ -4,7 +4,7 @@
  * orderEmails.ts) übernommen, jetzt als React-Komponente.
  */
 import { Text } from '@react-email/components';
-import type { OrderRecord } from '@/lib/actions/orderTypes';
+import type { OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
 import { PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
 import { PAYMENT_TERM_DAYS, IST_KLEINUNTERNEHMER } from '@/config/company';
 import { STORNOFRIST_MS } from '@/config/orderProcess';
@@ -14,12 +14,24 @@ import { formatiereGeld } from '@/lib/format';
 export function OrderConfirmationEmail({
   order,
   bestellansichtUrl,
+  rechnung,
 }: {
   order: OrderRecord;
   /** Optional: Link zur Bestellansicht mit Storno-Möglichkeit. Die E-Mail
    *  erklärt den Ablauf auch OHNE diesen Link vollständig – er ist ein
    *  zusätzlicher Weg, nicht die Erklärung selbst. */
   bestellansichtUrl?: string;
+  /**
+   * Vorhanden, sobald die Rechnung zum Versandzeitpunkt dieser E-Mail bereits
+   * erstellt ist (Regelfall) – dann als PDF angehängt (siehe orderEmails.tsx)
+   * und hier im Text erwähnt, STATT einer eigenen Rechnungs-E-Mail (Fund vom
+   * 2026-09-01: Bestellbestätigung, Zahlungsbestätigung und Rechnung gingen
+   * bis dahin als drei getrennte E-Mails raus). Fehlt sie (Rechnungs-
+   * erstellung noch nicht abgeschlossen oder fehlgeschlagen), bleibt der
+   * bisherige Hinweis "separat" bestehen – der Cron-Nachhol-Mechanismus
+   * schickt die Rechnung dann später in einer eigenen, kurzen Nachtrags-Mail.
+   */
+  rechnung?: RechnungFuerEmail;
 }) {
   const stornofristStunden = Math.round(STORNOFRIST_MS / (60 * 60 * 1000));
   const isOrder = order.orderType === 'order';
@@ -58,18 +70,56 @@ export function OrderConfirmationEmail({
         </Text>
       )}
 
+      {/* Lieferadresse – eigener, klar beschrifteter Block, damit die
+          Kundschaft ohne Suchen sieht, wohin geliefert wird. */}
+      {isOrder && order.shipping && (
+        <Text style={{ marginTop: 16, fontSize: 13 }}>
+          <strong>Lieferadresse</strong>
+          <br />
+          {order.contact.name}
+          {order.contact.company && (
+            <>
+              <br />
+              {order.contact.company}
+            </>
+          )}
+          <br />
+          {order.shipping.street}
+          <br />
+          {order.shipping.zip} {order.shipping.city}
+          {order.shipping.country && order.shipping.country !== 'Deutschland' && <>, {order.shipping.country}</>}
+        </Text>
+      )}
+
       {isOrder && (
         <Text style={{ marginTop: 16, fontSize: 13 }}>
           {!order.paymentMethod || order.paymentMethod === 'invoice' ? (
             <>
-              Die Zahlung erfolgt auf Rechnung. Die Rechnung senden wir Ihnen separat mit der
-              Auftragsbearbeitung zu; sie ist innerhalb von {PAYMENT_TERM_DAYS} Tagen ab
-              Rechnungsdatum ohne Abzug zu begleichen.{' '}
+              <strong>Zahlungsart: Kauf auf Rechnung.</strong>{' '}
+              {rechnung ? (
+                <>
+                  Die Rechnung {rechnung.rechnungsnummer} finden Sie als PDF im Anhang dieser E-Mail;
+                  sie ist innerhalb von {PAYMENT_TERM_DAYS} Tagen ab Rechnungsdatum ohne Abzug zu
+                  begleichen.{' '}
+                </>
+              ) : (
+                <>
+                  Die Rechnung senden wir Ihnen separat mit der Auftragsbearbeitung zu; sie ist
+                  innerhalb von {PAYMENT_TERM_DAYS} Tagen ab Rechnungsdatum ohne Abzug zu
+                  begleichen.{' '}
+                </>
+              )}
             </>
           ) : (
             <>
-              Die Zahlung ist bereits per {PAYMENT_METHOD_LABELS[order.paymentMethod]} bei uns
-              eingegangen – vielen Dank.{' '}
+              <strong>Zahlung eingegangen.</strong> Ihre Zahlung per{' '}
+              {PAYMENT_METHOD_LABELS[order.paymentMethod]} über {formatiereGeld(order.totalPrice)} ist bei
+              uns eingegangen – vielen Dank!{' '}
+              {rechnung ? (
+                <>Die Rechnung {rechnung.rechnungsnummer} finden Sie als PDF im Anhang dieser E-Mail. </>
+              ) : (
+                <>Die Rechnung erhalten Sie in Kürze in einer separaten E-Mail. </>
+              )}
             </>
           )}
           Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der Versand erfolgt anschließend

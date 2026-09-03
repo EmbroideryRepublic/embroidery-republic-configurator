@@ -12616,8 +12616,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "b23730": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-b23730/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-b23730/back.webp",
-        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-b23730/sleeve-left.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-b23730/back.webp"
       },
       "status": "real"
     },
@@ -12884,24 +12883,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/back.webp"
       },
       "status": "real"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/back.webp"
       },
       "status": "real"
     },
     "dark-heather": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/back.webp"
       },
       "status": "real"
     },
@@ -12915,16 +12911,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "maroon": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/back.webp"
       },
       "status": "real"
     },
     "military-green": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/back.webp"
       },
       "status": "real"
     },
@@ -12952,8 +12946,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sand": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/back.webp"
       },
       "status": "real"
     },
@@ -12981,8 +12974,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "cocoa": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/back.webp"
       },
       "status": "real"
     },
@@ -13017,16 +13009,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "pistachio": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/back.webp"
       },
       "status": "real"
     },
     "purple": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/sleeve-left.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/back.webp"
       },
       "status": "real"
     },
@@ -13054,8 +13044,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-grey-heather": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
-        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/sleeve-left.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -16193,168 +16182,147 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-navy/back.webp"
       },
       "status": "real"
     },
     "dark-chocolate": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/back.webp"
       },
       "status": "real"
     },
     "ash-grey-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/back.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/back.webp"
       },
       "status": "real"
     },
     "cardinal-red": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/back.webp"
       },
       "status": "real"
     },
     "carolina-blue": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/back.webp"
       },
       "status": "real"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/back.webp"
       },
       "status": "real"
     },
     "dark-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/back.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/back.webp"
       },
       "status": "real"
     },
     "gold": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/back.webp"
       },
       "status": "real"
     },
     "irish-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/back.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/back.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/back.webp"
       },
       "status": "real"
     },
     "maroon": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/back.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/back.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/back.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/back.webp"
       },
       "status": "real"
     },
     "safety-green-neon": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/back.webp"
       },
       "status": "real"
     },
     "safety-orange-neon": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/back.webp"
       },
       "status": "real"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/back.webp",
-        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/sleeve-left.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/back.webp"
       },
       "status": "real"
     }

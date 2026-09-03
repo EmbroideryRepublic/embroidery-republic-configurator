@@ -22,6 +22,7 @@
  * Bearbeitungsablauf bleiben davon vollständig unberührt.
  */
 import { createAdminClient } from '@/lib/supabase/server';
+import { removeProductionFiles } from '@/lib/supabase/storage';
 import { stornofristLaeuftNoch } from '@/config/orderProcess';
 import { formatiereZeitpunkt } from '@/lib/format';
 import { widerrufeGeplanteEmail } from '@/lib/email/scheduledEmails';
@@ -721,4 +722,46 @@ export async function storniereBestellungDurchKunden(
   // eine Funktion, die nichts tut, sieht nach Funktionalität aus.
 
   return { ok: true, bereitsStorniert: false, erstattungAusstehend: bestellung.payment_status === 'paid' };
+}
+
+export type LoescheBestellungErgebnis =
+  | { ok: true }
+  | { ok: false; grund: 'nicht-gefunden' | 'nicht-loeschbar' | 'fehler' };
+
+/**
+ * Löscht eine stornierte Bestellung ECHT aus der Datenbank – NUR, wenn dafür
+ * nie eine Rechnungsnummer vergeben wurde (Migration 0034 erzwingt beide
+ * Bedingungen atomar im selben DELETE, kein TOCTOU-Fenster). Bestellungen
+ * mit Rechnungsnummer bleiben unlöschbar, um die fortlaufende
+ * Rechnungsnummerierung/den Prüfpfad nicht zu zerstören – dafür gibt es
+ * weiterhin ausschließlich `setzeBestellstatus(..., 'cancelled', ...)`.
+ *
+ * order_items/configuration_elements/order_events/supplier_orders hängen
+ * bereits per `on delete cascade` an orders(id) – KEIN manuelles Aufräumen
+ * dieser Tabellen nötig. Storage-Dateien (Kundendateien, Vorschauen) liegen
+ * außerhalb der Datenbank und werden hier zusätzlich, aber nicht-fatal,
+ * entfernt.
+ */
+export async function loescheStornierteBestellung(orderId: string): Promise<LoescheBestellungErgebnis> {
+  const db = createAdminClient();
+
+  const { data, error } = await db.rpc('loesche_stornierte_bestellung', { p_order_id: orderId });
+  if (error) {
+    console.error(`[orders] Löschung ${orderId} fehlgeschlagen:`, error.message);
+    return { ok: false, grund: 'fehler' };
+  }
+
+  const geloescht = Array.isArray(data) ? data.length > 0 : Boolean(data);
+  if (!geloescht) {
+    // Nicht gefunden, nicht storniert, oder bereits eine Rechnungsnummer
+    // vergeben – die Datenbank unterscheidet diese Fälle nicht (bewusst: das
+    // DELETE selbst prüft beide Bedingungen), ein zweiter lesender Aufruf
+    // klärt nur, welche Meldung angemessen ist.
+    const { data: bestellung } = await db.from('orders').select('id').eq('id', orderId).maybeSingle();
+    return { ok: false, grund: bestellung ? 'nicht-loeschbar' : 'nicht-gefunden' };
+  }
+
+  await removeProductionFiles(`orders/${orderId}`);
+
+  return { ok: true };
 }

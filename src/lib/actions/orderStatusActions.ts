@@ -10,7 +10,7 @@
  */
 import { revalidatePath } from 'next/cache';
 import { istAdmin } from '@/lib/admin/auth';
-import { setzeBestellstatus, sendeStatusmailErneut } from '@/lib/orders/orderService';
+import { setzeBestellstatus, sendeStatusmailErneut, loescheStornierteBestellung } from '@/lib/orders/orderService';
 import { stelleErstattungSicher } from '@/lib/orders/refundService';
 import { STATUS_LABELS } from '@/config/orderStatus';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
@@ -102,4 +102,30 @@ export async function sendeBestellstatusmailErneut(orderId: string): Promise<Sta
   revalidatePath(`/admin/bestellung/${orderId}`);
 
   return { ok: true, meldung: 'E-Mail erneut ausgelöst. Ob der Versand gelang, zeigt die Bestell-Historie.' };
+}
+
+/**
+ * Löscht eine stornierte Bestellung ECHT (nur möglich ohne Rechnungsnummer –
+ * siehe orderService.ts::loescheStornierteBestellung für die Begründung und
+ * die atomare DB-Bedingung). Anders als aendereBestellstatus gibt es hier
+ * danach keine Detailseite mehr, auf der revalidatePath sinnvoll wäre.
+ */
+export async function loescheBestellung(orderId: string): Promise<StatusAktionErgebnis> {
+  if (!(await istAdmin())) {
+    return { ok: false, meldung: 'Nicht angemeldet.' };
+  }
+
+  const ergebnis = await loescheStornierteBestellung(orderId);
+  if (!ergebnis.ok) {
+    const texte: Record<string, string> = {
+      'nicht-gefunden': 'Bestellung nicht gefunden.',
+      'nicht-loeschbar': 'Nicht löschbar: entweder nicht storniert, oder es wurde bereits eine Rechnungsnummer vergeben.',
+      fehler: 'Die Löschung ist fehlgeschlagen.',
+    };
+    return { ok: false, meldung: texte[ergebnis.grund] ?? 'Unbekannter Fehler.' };
+  }
+
+  revalidatePath('/admin');
+
+  return { ok: true, meldung: 'Bestellung endgültig gelöscht.' };
 }

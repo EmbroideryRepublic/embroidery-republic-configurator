@@ -3,11 +3,20 @@
  * Reiner Server-Component-Leser (Daten aus lib/admin/data.ts).
  */
 import Link from 'next/link';
-import { listOrders } from '@/lib/admin/data';
+import { listOrders, type BestellungsListenFilter } from '@/lib/admin/data';
 import { istAdmin } from '@/lib/admin/auth';
 import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 import { PAYMENT_STATUS_LABELS, type OrderPaymentStatus } from '@/lib/actions/orderTypes';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
+import { DeleteOrderButton } from '@/components/admin/DeleteOrderButton';
+
+const FILTER_LABELS: Record<BestellungsListenFilter, string> = {
+  aktiv: 'Aktiv',
+  abgeschlossen: 'Abgeschlossen',
+  storniert: 'Storniert',
+  alle: 'Alle',
+};
+const FILTER_WERTE: BestellungsListenFilter[] = ['aktiv', 'abgeschlossen', 'storniert', 'alle'];
 
 const STATUS_LABELS: Record<string, string> = {
   new: 'Neu',
@@ -22,7 +31,7 @@ const JE_SEITE = 50;
 export default async function AdminOrdersPage({
   searchParams,
 }: {
-  searchParams: { q?: string; seite?: string };
+  searchParams: { q?: string; seite?: string; status?: string };
 }) {
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
   // rendert Seite und Layout parallel und serialisiert das Seitenergebnis in
@@ -32,12 +41,16 @@ export default async function AdminOrdersPage({
   if (!(await istAdmin())) return null;
   const suche = searchParams.q?.trim() ?? '';
   const seite = Math.max(0, Number(searchParams.seite ?? '0') || 0);
-  const { zeilen: orders, gesamt } = await listOrders({ suche, seite, jeSeite: JE_SEITE });
+  const filter: BestellungsListenFilter = FILTER_WERTE.includes(searchParams.status as BestellungsListenFilter)
+    ? (searchParams.status as BestellungsListenFilter)
+    : 'aktiv';
+  const { zeilen: orders, gesamt } = await listOrders({ suche, seite, jeSeite: JE_SEITE, filter });
   const letzteSeite = Math.max(0, Math.ceil(gesamt / JE_SEITE) - 1);
 
-  function seitenLink(neueSeite: number): string {
+  function seitenLink(neueSeite: number, neuerFilter: BestellungsListenFilter = filter): string {
     const params = new URLSearchParams();
     if (suche) params.set('q', suche);
+    if (neuerFilter !== 'aktiv') params.set('status', neuerFilter);
     if (neueSeite > 0) params.set('seite', String(neueSeite));
     const query = params.toString();
     return query ? `/admin?${query}` : '/admin';
@@ -51,6 +64,7 @@ export default async function AdminOrdersPage({
           {suche ? ` · Treffer für „${suche}"` : ''})
         </h1>
         <form method="get" className="flex items-center gap-2">
+          {filter !== 'aktiv' && <input type="hidden" name="status" value={filter} />}
           <input
             type="search"
             name="q"
@@ -62,11 +76,27 @@ export default async function AdminOrdersPage({
             Suchen
           </button>
           {suche && (
-            <Link href="/admin" className="text-xs text-gray-500 hover:underline">
+            <Link href={seitenLink(0)} className="text-xs text-gray-500 hover:underline">
               zurücksetzen
             </Link>
           )}
         </form>
+      </div>
+
+      <div className="mb-4 flex gap-1 border-b border-gray-200">
+        {FILTER_WERTE.map((wert) => (
+          <Link
+            key={wert}
+            href={seitenLink(0, wert)}
+            className={`rounded-t-md px-3 py-1.5 text-sm font-medium transition ${
+              filter === wert
+                ? 'border border-b-0 border-gray-200 bg-white text-gray-900'
+                : 'text-gray-500 hover:text-gray-800'
+            }`}
+          >
+            {FILTER_LABELS[wert]}
+          </Link>
+        ))}
       </div>
 
       {orders.length === 0 ? (
@@ -85,6 +115,7 @@ export default async function AdminOrdersPage({
                 <th className="px-3 py-2 text-right">Summe</th>
                 <th className="px-3 py-2">Status</th>
                 <th className="px-3 py-2">Zahlung</th>
+                <th className="px-3 py-2" />
               </tr>
             </thead>
             <tbody>
@@ -138,6 +169,14 @@ export default async function AdminOrdersPage({
                     </div>
                   </td>
                   <td className="px-3 py-2 text-gray-500">{PAYMENT_STATUS_LABELS[order.paymentStatus as OrderPaymentStatus] ?? order.paymentStatus}</td>
+                  <td className="px-3 py-2">
+                    {/* Löschen nur anbieten, wo das Backend es ohnehin
+                        zulassen würde (siehe DeleteOrderButton.tsx-Kopfkommentar) –
+                        reine UI-Sparsamkeit, keine sicherheitsrelevante Prüfung. */}
+                    {order.status === 'cancelled' && order.invoiceNumber === null && (
+                      <DeleteOrderButton orderId={order.id} orderNumber={order.orderNumber} />
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

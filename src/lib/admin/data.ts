@@ -26,6 +26,9 @@ export interface AdminOrderListRow {
   totalPrice: number;
   status: string;
   paymentStatus: string;
+  /** null = nie eine Rechnung erstellt – Voraussetzung für die echte
+   *  Löschung einer stornierten Bestellung, siehe DeleteOrderButton.tsx. */
+  invoiceNumber: string | null;
   /** Einordnung für Farbe/Badge in der Liste – siehe lib/orders/orderVisibility.ts.
    *  Entscheidet NIE, ob die Zeile erscheint, nur wie sie beschriftet ist. */
   adminStatus: AdminStatus;
@@ -299,12 +302,24 @@ export async function listSupplierOrderPipeline(): Promise<AdminSupplierPipeline
   });
 }
 
+/**
+ * Statusfilter für die Bestellliste (Fund vom 2026-09-01: bei vielen
+ * Testbestellungen ging die Übersicht über tatsächlich handlungsbedürftige
+ * Bestellungen verloren). `aktiv` ist bewusst der Vorgabewert überall, wo
+ * dieser Typ verwendet wird – siehe admin/page.tsx.
+ */
+export type BestellungsListenFilter = 'aktiv' | 'abgeschlossen' | 'storniert' | 'alle';
+
+const AKTIVE_STATUS = ['new', 'in_production', 'shipped'] as const;
+
 export interface ListOrdersOptions {
   /** Volltextsuche über Bestellnummer, Name und E-Mail (siehe Anmerkung unten). */
   suche?: string;
   /** 0-basiert. */
   seite?: number;
   jeSeite?: number;
+  /** Vorgabe 'aktiv' (new/in_production/shipped) – siehe BestellungsListenFilter. */
+  filter?: BestellungsListenFilter;
 }
 
 export interface ListOrdersErgebnis {
@@ -338,7 +353,7 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
   let query = supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, customer_name, company, email, total_price, status, payment_status, refund_status, tracking_number, order_confirmation_sent_at',
+      'id, created_at, order_type, customer_name, company, email, total_price, status, payment_status, refund_status, tracking_number, order_confirmation_sent_at, invoice_number',
       { count: 'exact' }
     );
 
@@ -349,6 +364,12 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
       `customer_name.ilike.%${jokerErlaubt}%,email.ilike.%${jokerErlaubt}%,company.ilike.%${jokerErlaubt}%`
     );
   }
+
+  const filter = optionen.filter ?? 'aktiv';
+  if (filter === 'aktiv') query = query.in('status', AKTIVE_STATUS);
+  else if (filter === 'abgeschlossen') query = query.eq('status', 'completed');
+  else if (filter === 'storniert') query = query.eq('status', 'cancelled');
+  // 'alle': kein zusätzlicher Filter.
 
   const { data, error, count } = await query.order('created_at', { ascending: false }).range(von, bis);
 
@@ -427,6 +448,7 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
       totalPrice: Number(row.total_price ?? 0),
       status,
       paymentStatus,
+      invoiceNumber: (row.invoice_number as string | null) ?? null,
       adminStatus: berechneAdminStatus({ createdAt, status, orderType, paymentStatus, refundStatus }),
       brauchtAufmerksamkeit: problemOrderIds.has(row.id as string),
     };
@@ -661,6 +683,16 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     }))
   );
 
+  // Drei voneinander unabhängige Signed-URLs – parallel statt nacheinander
+  // (Performance-Fund vom 2026-09-01: drei sequenzielle awaits verzögerten
+  // das Öffnen einer Bestellung um die Summe aller drei Netzwerk-Laufzeiten,
+  // obwohl keiner der drei Aufrufe vom Ergebnis eines anderen abhängt).
+  const [productionSheetUrl, invoicePdfUrl, dhlLabelUrl] = await Promise.all([
+    order.pdf_url ? getProductionFileSignedUrl(order.pdf_url as string) : Promise.resolve(null),
+    order.invoice_pdf_url ? getProductionFileSignedUrl(order.invoice_pdf_url as string) : Promise.resolve(null),
+    order.dhl_label_url ? getProductionFileSignedUrl(order.dhl_label_url as string) : Promise.resolve(null),
+  ]);
+
   return {
     id: order.id as string,
     orderNumber: buildOrderNumber(order.id as string),
@@ -688,12 +720,12 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
       : null,
     items: itemRows,
     supplierDraft,
-    productionSheetUrl: order.pdf_url ? await getProductionFileSignedUrl(order.pdf_url as string) : null,
+    productionSheetUrl,
     trackingNumber: (order.tracking_number as string | null) ?? null,
     shippedAt: (order.shipped_at as string | null) ?? null,
     invoiceNumber: (order.invoice_number as string | null) ?? null,
-    invoicePdfUrl: order.invoice_pdf_url ? await getProductionFileSignedUrl(order.invoice_pdf_url as string) : null,
-    dhlLabelUrl: order.dhl_label_url ? await getProductionFileSignedUrl(order.dhl_label_url as string) : null,
+    invoicePdfUrl,
+    dhlLabelUrl,
     lastShippingError,
     orderConfirmationSentAt: (order.order_confirmation_sent_at as string | null) ?? null,
     lastConfirmationEmailError,

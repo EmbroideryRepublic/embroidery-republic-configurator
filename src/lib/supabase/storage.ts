@@ -245,3 +245,28 @@ export async function listProductionFileInfo(prefix: string): Promise<Map<string
 
   return ergebnis;
 }
+
+/**
+ * Löscht alle Dateien unter einem Präfix (z.B. `orders/{id}`) – für die
+ * echte Löschung einer stornierten, nie in Rechnung gestellten Bestellung
+ * (siehe loescheStornierteBestellung, orderService.ts). Bewusst NICHT-FATAL:
+ * Die Datenbank-Löschung (per Migration 0034 kaskadierend) ist die rechtlich
+ * maßgebliche Aktion; verwaiste Storage-Dateien sind nur Aufräum-Hygiene,
+ * kein Korrektheitsproblem, wenn dieser Schritt scheitert.
+ */
+export async function removeProductionFiles(prefix: string): Promise<void> {
+  if (!istSichererSpeicherpfad(prefix)) {
+    console.warn(`[removeFiles] Präfix abgewiesen: ${JSON.stringify(prefix)}`);
+    return;
+  }
+
+  const dateien = await listProductionFileInfo(prefix);
+  if (dateien.size === 0) return;
+
+  const pfade = [...dateien.keys()].map((name) => `${prefix}/${name}`);
+  const admin = createAdminClient();
+  const { error } = await admin.storage.from(PRODUCTION_FILES_BUCKET).remove(pfade);
+  if (error) {
+    console.error(`[removeFiles] Löschen unter ${prefix} teilweise/vollständig fehlgeschlagen:`, error.message);
+  }
+}

@@ -174,7 +174,7 @@ export const translations = {
     element_align_right: 'Rechts',
 
     // Logo-Upload
-    logo_upload_label: 'Logo hochladen (SVG, PNG, PDF)',
+    logo_upload_label: 'Logo hochladen (SVG, PNG, JPG/JPEG, PDF)',
     logo_upload_loading: 'Wird verarbeitet …',
     logo_remove_bg_checkbox: 'Weißen Hintergrund automatisch entfernen (einfache Freistellung)',
     logo_remove_bg_hint:
@@ -552,7 +552,7 @@ export const translations = {
     element_align_center: 'Center',
     element_align_right: 'Right',
 
-    logo_upload_label: 'Upload logo (SVG, PNG, PDF)',
+    logo_upload_label: 'Upload logo (SVG, PNG, JPG/JPEG, PDF)',
     logo_upload_loading: 'Processing …',
     logo_remove_bg_checkbox: 'Automatically remove white background (simple cutout)',
     logo_remove_bg_hint:

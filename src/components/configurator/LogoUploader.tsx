@@ -12,7 +12,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import type { LogoElement, PrintArea } from '@/types';
 
-const ACCEPTED_TYPES = ['image/png', 'image/svg+xml', 'application/pdf'];
+const ACCEPTED_TYPES = ['image/png', 'image/svg+xml', 'application/pdf', 'image/jpeg'];
 const MAX_FILE_SIZE_MB = 10;
 const START_SIZE_RATIO = 0.5;
 const MIN_DPI = 150;
@@ -43,7 +43,7 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
     setQuality(null);
 
     if (!ACCEPTED_TYPES.includes(file.type)) {
-      setError('Nur SVG, PNG oder PDF sind erlaubt.');
+      setError('Nur SVG, PNG, JPG/JPEG oder PDF sind erlaubt.');
       return;
     }
     if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
@@ -63,10 +63,12 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
       let backgroundRemoved = false;
 
       // Einfache Hintergrundentfernung (regelbasiert, kein ML) – nur für
-      // PNGs sinnvoll, bei denen Kunden häufig einen weißen Hintergrund
-      // mitliefern. Das Original bleibt separat erhalten, damit sich die
-      // Freistellung später jederzeit ein-/ausschalten lässt.
-      if (file.type === 'image/png' && removeBg) {
+      // Rasterbilder (PNG/JPEG) sinnvoll, bei denen Kunden häufig einen
+      // weißen Hintergrund mitliefern (bei JPEG sogar besonders häufig, da
+      // das Format selbst keine Transparenz kennt). Das Original bleibt
+      // separat erhalten, damit sich die Freistellung später jederzeit
+      // ein-/ausschalten lässt.
+      if ((file.type === 'image/png' || file.type === 'image/jpeg') && removeBg) {
         try {
           displayDataUrl = await removeSimpleBackground(originalDataUrl);
           backgroundRemoved = true;
@@ -104,8 +106,9 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
       }
 
       // Qualitätsampel: grün = optimal, gelb = akzeptabel, rot = ungeeignet.
-      // Nur für Raster-PNGs relevant (SVG/PDF sind verlustfrei skalierbar).
-      if (file.type === 'image/png') {
+      // Nur für Rasterbilder (PNG/JPEG) relevant (SVG/PDF sind verlustfrei
+      // skalierbar).
+      if (file.type === 'image/png' || file.type === 'image/jpeg') {
         const widthInches = widthCm / 2.54;
         const effectiveDpi = widthInches > 0 ? contentWidthPx / widthInches : 0;
         let level: QualityLevel = 'green';
@@ -198,7 +201,7 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
         ref={inputRef}
         id="logo-upload"
         type="file"
-        accept=".svg,.png,.pdf,image/svg+xml,image/png,application/pdf"
+        accept=".svg,.png,.pdf,.jpg,.jpeg,image/svg+xml,image/png,application/pdf,image/jpeg"
         className="peer sr-only"
         onChange={(e) => {
           const file = e.target.files?.[0];

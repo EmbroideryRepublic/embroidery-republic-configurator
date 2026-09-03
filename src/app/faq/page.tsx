@@ -58,7 +58,7 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Welche Dateiformate kann ich für mein Logo hochladen?',
-        a: 'SVG, PNG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Für Stickerei digitalisiert unser Team Ihr Logo anschließend manuell in Garnfarben – die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.',
+        a: 'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Für Stickerei digitalisiert unser Team Ihr Logo anschließend manuell in Garnfarben – die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.',
       },
     ],
   },

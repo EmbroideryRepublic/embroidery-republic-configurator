@@ -9,20 +9,23 @@ export interface UploadedImage {
 }
 
 /**
- * Wandelt eine hochgeladene Datei (SVG, PNG, PDF) in ein anzeigbares Bild um.
- * SVG und PNG werden direkt als Data-URL gelesen. PDF wird serverlos im
- * Browser gerendert (erste Seite, via pdfjs-dist) und als PNG-Data-URL
- * zurückgegeben, damit der Konfigurator intern nur einen einzigen
- * Bildtyp verwalten muss.
+ * Wandelt eine hochgeladene Datei (SVG, PNG, JPEG, PDF) in ein anzeigbares
+ * Bild um. SVG, PNG und JPEG werden direkt als Data-URL gelesen. PDF wird
+ * serverlos im Browser gerendert (erste Seite, via pdfjs-dist) und als
+ * PNG-Data-URL zurückgegeben, damit der Konfigurator intern nur einen
+ * einzigen Bildtyp verwalten muss. Der spätere Zuschnitt
+ * (cropImageToContent, siehe analyzeLogoContent.ts) re-encodiert JPEG
+ * ebenso wie PDF und SVG verlässlich zu PNG, bevor die Datei den Server
+ * erreicht – JPEG kommt serverseitig also nie an (siehe pruefeUpload.ts).
  */
 export async function fileToImage(file: File): Promise<UploadedImage> {
-  if (file.type === 'image/png' || file.type === 'image/svg+xml') {
+  if (file.type === 'image/png' || file.type === 'image/svg+xml' || file.type === 'image/jpeg') {
     return readAsImage(file);
   }
   if (file.type === 'application/pdf') {
     return renderPdfFirstPage(file);
   }
-  throw new Error('Nicht unterstütztes Dateiformat. Erlaubt sind SVG, PNG und PDF.');
+  throw new Error('Nicht unterstütztes Dateiformat. Erlaubt sind SVG, PNG, JPG/JPEG und PDF.');
 }
 
 function readAsImage(file: File): Promise<UploadedImage> {

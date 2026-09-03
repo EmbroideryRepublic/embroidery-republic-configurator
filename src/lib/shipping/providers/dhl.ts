@@ -131,7 +131,15 @@ export const dhlAnbieter: VersandAnbieter = {
             billingNumber: zugang.billingNumber,
             refNo: auftrag.bestellnummer,
             shipper: {
-              name1: COMPANY.legalName,
+              // COMPANY.legalName (58 Zeichen, inkl. Gesellschafternamen) ist
+              // zu lang für DHLs shipper.name1 (max. 50 Zeichen laut
+              // Validierungsfehler vom 2026-09-03: "Parameter name1 must be
+              // between 1 and 50 characters long"). tradeName (27 Zeichen)
+              // ist bereits an anderer Stelle (E-Mail-Absender, Footer,
+              // Manifest) der etablierte, kürzere Markenname für genau diesen
+              // Zweck – legalName selbst bleibt für Impressum/AGB/Rechnungen
+              // unverändert die maßgebliche Rechtsform-Bezeichnung.
+              name1: COMPANY.tradeName,
               addressStreet: COMPANY.street,
               postalCode: COMPANY.zip,
               city: COMPANY.city,

@@ -417,13 +417,21 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   // Rundhals-Schnitte. Einzelne Rückenfotos sind noch Platzhalter ("Bild
   // folgt") statt echter Fotos – dort bewusst NUR die Vorderseite kalibriert.
   'bundc-t-shirt-e190-front': { x0: 28, x1: 72, y0: 19, y1: 86 },
-  'bundc-t-shirt-e190-back': { x0: 27, x1: 73, y0: 18, y1: 86 },
+  // Rückenrender: Zeile für Zeile über alle 40 Farben gemessen (2026-09-03)
+  // liegt der Rumpf unterhalb der Achsel nur bei x30.8–69.8 (Heather-Varianten
+  // rechts etwas schmaler gerendert). Die frühere Box x27–73 lag links 3 % und
+  // rechts bis 3 % auf dem Hintergrund (Stoffdeckung 91,9–95,7 %).
+  'bundc-t-shirt-e190-back': { x0: 31.3, x1: 69.3, y0: 18, y1: 86 },
   'bundc-t-shirt-e190-women-front': { x0: 27, x1: 73, y0: 19, y1: 84 },
   'bundc-t-shirt-e190-women-back': { x0: 27, x1: 73, y0: 19, y1: 84 },
   'bundc-inspire-e150-t-shirt-front': { x0: 27, x1: 73, y0: 17, y1: 86 },
   'bundc-inspire-e150-t-shirt-back': { x0: 27, x1: 73, y0: 17, y1: 86 },
   'bundc-t-shirt-e150-front': { x0: 28, x1: 72, y0: 19, y1: 86 },
-  'bundc-t-shirt-e150-back': { x0: 28, x1: 72, y0: 21, y1: 85 },
+  // Rückenrender mit leichter Taille: engste Rumpfzeile über alle 41 Farben
+  // bei y≈60 x31.5–69.8, Saum bei y86 (2026-09-03 gemessen). Die frühere Box
+  // x28–72/y85 lag in der Taille beidseitig 2–3,5 % neben dem Stoff und
+  // unten im Saumbogen (Stoffdeckung 94,4 %).
+  'bundc-t-shirt-e150-back': { x0: 32, x1: 69.3, y0: 21, y1: 84 },
   'bundc-inspire-e150-t-shirt-women-front': { x0: 27, x1: 73, y0: 19, y1: 86 },
   'bundc-inspire-e150-t-shirt-women-back': { x0: 27, x1: 73, y0: 19, y1: 86 },
   'bundc-t-shirt-e150-women-front': { x0: 27, x1: 73, y0: 19, y1: 87 },
@@ -665,7 +673,17 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   'fruit-of-the-loom-iconic-250-hooded-sweat-front': { x0: 27, x1: 73, y1: 64 },
   'fruit-of-the-loom-iconic-250-hooded-sweat-back': { x0: 27, x1: 73, y1: 84 },
   'build-your-brand-heavy-hoody-front': { x0: 26, x1: 74, y1: 59 },
-  'build-your-brand-heavy-hoody-back': { x0: 26, x1: 74, y1: 84 },
+  // Rückenfoto: die Ärmel hängen ab der Achsel NEBEN dem Rumpf, dazwischen
+  // Hintergrund. Rumpflauf je Zeile über alle 34 Farben (2026-09-03): ab y54
+  // nur x31.9–68.2; der Saum liegt bei chocolate-brown/plum-purple schon bei
+  // y83.5. Die frühere Box x26–74/y84 hatte ihre unteren Ecken im Spalt bzw.
+  // auf dem Ärmel und lag bei zwei Farben unter dem Saum (Deckung bis 93,6 %).
+  'build-your-brand-heavy-hoody-back': { x0: 32.4, x1: 67.7, y1: 82 },
+  // Taillierter Damen-Hoodie, Ärmelansicht: die hintere Ärmelkante läuft im
+  // unteren Drittel schräg nach innen (y65–80 bis x≈42). Die berechnete Kante
+  // x40.7 lag dort bei 9 von 10 Farben ~1,5 % auf dem Hintergrund (Deckung
+  // 98,2–98,6 %); über alle Farben sicher ab x41.8 (2026-09-03 gemessen).
+  'russell-ladies-authentic-hood-sleeve_left': { x0: 42.5 },
   'build-your-brand-fluffy-hoody-front': { x0: 26, x1: 74, y1: 58 },
   'build-your-brand-fluffy-hoody-back': { x0: 26, x1: 74, y1: 80 },
   // Boxiger/kürzerer "Box"-Schnitt: Tasche und Bündchen sitzen beide
@@ -1378,6 +1396,8 @@ for (const p of PRODUCTS) {
       // der SAUM (y1) rückt bei einer größeren Größe weiter nach unten.
       const korrektur = BEREICH_KORREKTUR[`${p.id}-${view}`];
       if (korrektur) {
+        const x0Vorher = x0pxLokal;
+        const y0Vorher = y0pxLokal;
         if (korrektur.x0 !== undefined) x0pxLokal = skaliereX((korrektur.x0 / 100) * w);
         if (korrektur.x1 !== undefined) x1pxLokal = skaliereX((korrektur.x1 / 100) * w);
         const y0Basis = korrektur.y0 !== undefined ? (korrektur.y0 / 100) * h : y0pxLokal;
@@ -1385,6 +1405,13 @@ for (const p of PRODUCTS) {
         if (korrektur.y1 !== undefined) {
           const y1Basis = (korrektur.y1 / 100) * h;
           y1pxLokal = y0Basis + (y1Basis - y0Basis) * hoeheRatio;
+        }
+        // Ärmel: startXCm/startYCm (Oberarmmitte) sind als Abstand zur linken/
+        // oberen Boxkante abgelegt. Verschiebt die Korrektur diese Kante, bleibt
+        // die Startstelle im Bild stehen – nur ihr Abstand zur neuen Kante ändert sich.
+        if (istAermel && startXCmLokal !== undefined && startYCmLokal !== undefined) {
+          startXCmLokal -= (x0pxLokal - x0Vorher) / pxProCm;
+          startYCmLokal -= (y0pxLokal - y0Vorher) / pxProCm;
         }
       }
 

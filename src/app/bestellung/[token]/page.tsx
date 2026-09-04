@@ -25,6 +25,7 @@ import { COMPANY, PAYMENT_TERM_DAYS } from '@/config/company';
 import { pruefeBestellzugriff } from '@/lib/orders/orderAccess';
 import { ladeBestellAnsicht } from '@/lib/orders/orderView';
 import { CancelOrderButton } from '@/components/orders/CancelOrderButton';
+import { KundenfreigabeBereich } from '@/components/orders/KundenfreigabeBereich';
 import { Bestellfortschritt } from '@/components/orders/Bestellfortschritt';
 import { BestellPositionen } from '@/components/orders/BestellPositionen';
 import { formatiereZeitpunkt } from '@/lib/format';
@@ -123,6 +124,22 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
           versendetAm={bestellung.versendetAm}
         />
 
+        {/* Kundenfreigabe: bewusst VOR den Storno-/Fristhinweisen – sobald
+            angefragt, ist das die eigentliche Aktion, wegen der die Seite
+            aufgerufen wird. Blendet sich selbst aus, wenn nie angefragt oder
+            die Bestellung storniert wurde. */}
+        {bestellung.zustand !== 'storniert' && bestellung.freigabeAngefragtAm && !bestellung.freigabeErteiltAm && (
+          <KundenfreigabeBereich token={params.token} positionen={bestellung.positionen} />
+        )}
+        {bestellung.freigabeErteiltAm && (
+          <section className="rounded-lg border border-green-200 bg-green-50 p-4">
+            <h2 className="text-sm font-semibold text-green-900">Druckvorschau freigegeben</h2>
+            <p className="mt-1 text-sm text-green-800">
+              Freigegeben am {zeit(bestellung.freigabeErteiltAm)} – die Produktion kann beginnen.
+            </p>
+          </section>
+        )}
+
         {/* Zustandsabhängiger Hinweisbereich */}
         {bestellung.zustand === 'storniert' && (
           <section className="rounded-lg border border-brand/20 bg-cream/60 p-4">
@@ -198,12 +215,22 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
           </section>
         )}
 
+        {/* Ausbauplan (quickwins): sobald die Rechnung existiert, direkt zum
+            Download anbieten – löst das bisherige "erhalten Sie separat"
+            ein, statt nur darauf zu vertrösten. */}
+        {bestellung.rechnungPdfUrl && (
+          <p className="text-sm text-brand/70">
+            <a href={bestellung.rechnungPdfUrl} target="_blank" rel="noreferrer" className="text-gold-dark hover:underline">
+              Rechnung {bestellung.rechnungsnummer} herunterladen (PDF)
+            </a>
+          </p>
+        )}
         {bestellung.zustand !== 'storniert' &&
-          (!bestellung.zahlungsart || bestellung.zahlungsart === 'invoice' ? (
+          (!bestellung.rechnungPdfUrl && (!bestellung.zahlungsart || bestellung.zahlungsart === 'invoice') ? (
             <p className="text-xs text-brand/50">
               Die Rechnung erhalten Sie separat, zahlbar innerhalb von {PAYMENT_TERM_DAYS} Tagen ohne Abzug.
             </p>
-          ) : bestellung.zahlungsstatus === 'paid' ? (
+          ) : !bestellung.rechnungPdfUrl && bestellung.zahlungsstatus === 'paid' ? (
             <p className="text-xs text-brand/50">Die Zahlung ist bereits bei uns eingegangen – vielen Dank.</p>
           ) : null)}
       </div>

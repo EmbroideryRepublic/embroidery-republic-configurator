@@ -12,6 +12,7 @@ import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { produktTypLabel } from '@/config/products/types';
 import { assetVerfuegbarkeit, PLATZHALTER_BILD } from '@/lib/assets';
 import { brotkrumenSchema, organisationSchema, produktSchema } from '../strukturierteDaten';
+import { COMPANY } from '@/config/company';
 
 const BASIS = 'https://example.test';
 const produkt = PRODUCTS[0]!;
@@ -96,12 +97,20 @@ test('Brotkrumen laufen von Start bis zum Produkt', () => {
   assert.equal(s.itemListElement[3]!['name'], produkt.name);
 });
 
-test('Organisationsschema nennt nur Belegtes', () => {
+test('Organisationsschema nennt nur Belegtes – Adresse/Telefon/USt-IdNr. jetzt aus COMPANY, nicht erfunden', () => {
   const s = organisationSchema(BASIS);
-  assert.equal(s['@type'], 'Organization');
+  assert.deepEqual(s['@type'], ['Organization', 'LocalBusiness']);
   assert.equal(s['url'], BASIS);
   assert.ok(String(s['logo']).startsWith(BASIS + '/'));
-  // Keine Kontaktdaten erfinden – die stehen im Impressum.
-  assert.equal(s['telephone'], undefined);
-  assert.equal(s['address'], undefined);
+  // Seit die Firmendaten real (nicht mehr Platzhalter) sind: identisch zu
+  // COMPANY, derselben Quelle wie das Impressum – keine zweite Kopie.
+  assert.equal(s['telephone'], COMPANY.phone);
+  assert.deepEqual(s['address'], {
+    '@type': 'PostalAddress',
+    streetAddress: COMPANY.street,
+    postalCode: COMPANY.zip,
+    addressLocality: COMPANY.city,
+    addressCountry: 'DE',
+  });
+  assert.equal(s['vatID'], COMPANY.vatId);
 });

@@ -227,7 +227,7 @@ export async function ladeBestellungenDesKunden(kundenId: string): Promise<Kunde
   const db = createAdminClient();
   const { data, error } = await db
     .from('orders')
-    .select('id, created_at, order_type, status, total_price')
+    .select('id, order_number, created_at, order_type, status, total_price')
     .eq('customer_id', kundenId)
     .order('created_at', { ascending: false })
     .limit(200);
@@ -237,7 +237,7 @@ export async function ladeBestellungenDesKunden(kundenId: string): Promise<Kunde
   }
   return (data ?? []).map((row) => ({
     id: row.id as string,
-    bestellnummer: buildOrderNumber(row.id as string),
+    bestellnummer: (row.order_number as string | null) ?? buildOrderNumber(row.id as string),
     bestelltAm: row.created_at as string,
     orderType: row.order_type as 'inquiry' | 'order',
     status: row.status as string,

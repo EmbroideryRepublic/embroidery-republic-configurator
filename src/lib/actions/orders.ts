@@ -230,13 +230,11 @@ async function ergebnisFuerBestehendeBestellung(
 ): Promise<SubmitResult> {
   await holeAbschlussFuerRetryNach(bestehende);
 
-  const orderNumber = buildOrderNumber(bestehende);
-
   const { data, error } = await supabase
     .from('orders')
-    .select('payment_method, payment_status')
+    .select('payment_method, payment_status, order_number')
     .eq('id', bestehende)
-    .maybeSingle<{ payment_method: OrderPaymentMethod | null; payment_status: string | null }>();
+    .maybeSingle<{ payment_method: OrderPaymentMethod | null; payment_status: string | null; order_number: string | null }>();
 
   // Lesefehler: NIEMALS als Erfolg werten. Ohne payment_method/payment_status
   // kann nicht entschieden werden, ob eine Vorabzahlung noch aussteht – ein
@@ -254,6 +252,8 @@ async function ergebnisFuerBestehendeBestellung(
       error: 'Ihre Bestellung ist gespeichert, der aktuelle Status konnte aber gerade nicht geladen werden. Bitte versuchen Sie es in ein paar Minuten erneut.',
     };
   }
+
+  const orderNumber = data.order_number ?? buildOrderNumber(bestehende);
 
   const vorabZahlung = data.payment_method ? brauchtVorabZahlung(data.payment_method) : false;
   if (!vorabZahlung || data.payment_status === 'paid') {
@@ -507,6 +507,12 @@ async function persistAndNotifyCore(params: {
 
   const orderPayload = {
     id: orderId,
+    // Einmalig JETZT festgelegt statt bei jedem Lesen neu berechnet – siehe
+    // Migration 0036 (Bestellnummer-Jahreswechsel-Fix). buildOrderNumber(id)
+    // bleibt der einzige Erzeuger; Lesepfade nutzen ab hier ausschließlich
+    // diesen gespeicherten Wert (mit demselben Aufruf nur noch als Rückfall
+    // für den theoretischen Fall einer Zeile ohne Wert).
+    order_number: orderNumber,
     customer_id: kunde?.id ?? null,
     customer_vat_id: vatId,
     customer_name: params.customerName,

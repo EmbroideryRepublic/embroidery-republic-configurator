@@ -5,6 +5,7 @@ import { pruefeBestellzugriff } from '@/lib/orders/orderAccess';
 import { ladeBestellAnsicht } from '@/lib/orders/orderView';
 import { KontoNav } from '@/components/konto/KontoNav';
 import { CancelOrderButton } from '@/components/orders/CancelOrderButton';
+import { KundenfreigabeBereich } from '@/components/orders/KundenfreigabeBereich';
 import { Bestellfortschritt } from '@/components/orders/Bestellfortschritt';
 import { BestellPositionen } from '@/components/orders/BestellPositionen';
 import { formatiereZeitpunkt } from '@/lib/format';
@@ -41,6 +42,18 @@ export default async function KontoBestellDetailPage({ params }: { params: { id:
 
       <div className="space-y-6">
         <Bestellfortschritt status={bestellung.status} trackingNummer={bestellung.trackingNummer} versendetAm={bestellung.versendetAm} />
+
+        {bestellung.zustand !== 'storniert' && bestellung.freigabeAngefragtAm && !bestellung.freigabeErteiltAm && (
+          <KundenfreigabeBereich orderId={bestellung.orderId} positionen={bestellung.positionen} />
+        )}
+        {bestellung.freigabeErteiltAm && (
+          <section className="rounded-lg border border-green-200 bg-green-50 p-4">
+            <h2 className="text-sm font-semibold text-green-900">Druckvorschau freigegeben</h2>
+            <p className="mt-1 text-sm text-green-800">
+              Freigegeben am {zeit(bestellung.freigabeErteiltAm)} – die Produktion kann beginnen.
+            </p>
+          </section>
+        )}
 
         {bestellung.zustand === 'storniert' && (
           <section className="rounded-lg border border-brand/20 bg-cream/60 p-4">
@@ -92,6 +105,17 @@ export default async function KontoBestellDetailPage({ params }: { params: { id:
               {bestellung.lieferadresse.plz} {bestellung.lieferadresse.ort}, {bestellung.lieferadresse.land}
             </p>
           </section>
+        )}
+
+        {/* Ausbauplan (quickwins): Rechnung direkt im Konto abrufbar, statt
+            nur einmalig als Mailanhang – der häufigste Nachfragegrund bei
+            Buchhaltungen/Vereinskassierern. */}
+        {bestellung.rechnungPdfUrl && (
+          <p className="text-sm text-brand/70">
+            <a href={bestellung.rechnungPdfUrl} target="_blank" rel="noreferrer" className="text-gold-dark hover:underline">
+              Rechnung {bestellung.rechnungsnummer} herunterladen (PDF)
+            </a>
+          </p>
         )}
 
         <p className="text-xs text-brand/50">

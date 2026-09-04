@@ -402,7 +402,7 @@ export async function ladeBestellungFuerAbschluss(orderId: string): Promise<Orde
     // statisch aus dieser Angabe ab und kann eine zusammengesetzte
     // Zeichenkette nicht auswerten.
     .select(
-      'id, created_at, order_type, customer_name, company, email, phone, message, total_price, payment_method, shipping_street, shipping_zip, shipping_city, shipping_country, tax_rate, tax_amount, net_total, customer_vat_id'
+      'id, order_number, created_at, order_type, customer_name, company, email, phone, message, total_price, payment_method, shipping_street, shipping_zip, shipping_city, shipping_country, tax_rate, tax_amount, net_total, customer_vat_id'
     )
     .eq('id', orderId)
     .maybeSingle();
@@ -445,7 +445,7 @@ export async function ladeBestellungFuerAbschluss(orderId: string): Promise<Orde
 
   return {
     id: bestellung.id as string,
-    orderNumber: buildOrderNumber(bestellung.id as string),
+    orderNumber: (bestellung.order_number as string | null) ?? buildOrderNumber(bestellung.id as string),
     orderType: bestellung.order_type as 'order' | 'inquiry',
     createdAt: bestellung.created_at as string,
     contact: {

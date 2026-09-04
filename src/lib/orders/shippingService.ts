@@ -43,7 +43,7 @@ export async function erzeugeVersandlabelFuerBestellung(
 
   const { data: bestellung, error: ladeFehler } = await db
     .from('orders')
-    .select('id, customer_name, shipping_street, shipping_zip, shipping_city, shipping_country, tracking_number')
+    .select('id, order_number, customer_name, shipping_street, shipping_zip, shipping_city, shipping_country, tracking_number')
     .eq('id', orderId)
     .maybeSingle();
   if (ladeFehler || !bestellung) {
@@ -77,7 +77,7 @@ export async function erzeugeVersandlabelFuerBestellung(
     }
     const auftrag: Versandauftrag = {
       bestellId: orderId,
-      bestellnummer: buildOrderNumber(orderId),
+      bestellnummer: (bestellung.order_number as string | null) ?? buildOrderNumber(orderId),
       empfaenger: {
         name: bestellung.customer_name as string,
         strasse: bestellung.shipping_street as string,

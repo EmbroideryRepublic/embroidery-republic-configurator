@@ -55,7 +55,7 @@ export function InternalOrderNotificationEmail({
       {order.message && (
         <Text style={{ backgroundColor: COLORS.background, padding: 10, borderRadius: 6, margin: '8px 0 0' }}>{order.message}</Text>
       )}
-      <OrderItemsTable order={order} />
+      <OrderItemsTable items={order.items} />
       <Text style={{ marginTop: 12, textAlign: 'right', fontSize: 16, fontWeight: 600 }}>Gesamtsumme: {formatiereGeld(order.totalPrice)}</Text>
       <PlacedElements order={order} />
       {productionSheetSignedUrl ? (

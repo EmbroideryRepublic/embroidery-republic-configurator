@@ -41,9 +41,12 @@ function funktionsRumpf(quelltext: string, name: string): string {
 
 test('sendeStatusmailErneut versendet über dieselben Helfer wie setzeBestellstatus, kein zweiter Versandpfad', () => {
   const rumpf = funktionsRumpf(serviceQuelltext, 'sendeStatusmailErneut');
-  assert.match(rumpf, /await sendeShippedMail\(orderId, bestellung\.email, bestellung\.tracking_number, bestellung\.carrier\);/);
-  assert.match(rumpf, /await sendeInProductionMail\(orderId, bestellung\.email\);/);
-  assert.match(rumpf, /await sendeCompletedMail\(orderId, bestellung\.email\);/);
+  assert.match(
+    rumpf,
+    /await sendeShippedMail\(orderId, bestellung\.email, bestellung\.tracking_number, bestellung\.carrier, bestellung\.order_number\);/
+  );
+  assert.match(rumpf, /await sendeInProductionMail\(orderId, bestellung\.email, bestellung\.order_number\);/);
+  assert.match(rumpf, /await sendeCompletedMail\(orderId, bestellung\.email, bestellung\.order_number\);/);
 });
 
 test('sendeStatusmailErneut lehnt Bestellungen ohne E-Mail und Status ohne Status-Mail sauber ab', () => {

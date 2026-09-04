@@ -87,6 +87,7 @@ function text(overrides: Partial<TextElement> = {}): TextElement {
     hasOutline: false,
     outlineColor: '#000000',
     inkCoverageRatio: 0.35,
+    isTemplatePlaceholder: false,
     ...overrides,
   };
 }

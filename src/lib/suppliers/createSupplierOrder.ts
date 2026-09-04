@@ -49,7 +49,7 @@ export async function createSupplierOrder(
   // 1. Bestellung laden (Existenz-Check + Bestellnummer für Logs/Jobs).
   const { data: orderRow, error: orderError } = await supabase
     .from('orders')
-    .select('id, created_at')
+    .select('id, created_at, order_number')
     .eq('id', orderId)
     .single();
 
@@ -80,7 +80,7 @@ export async function createSupplierOrder(
   //    buildSupplierPositions.ts).
   const draft = buildSupplierPositions(orderId, sourceItems);
 
-  const orderNumber = buildOrderNumber(orderId);
+  const orderNumber = (orderRow.order_number as string | null) ?? buildOrderNumber(orderId);
   const jobs: SupplierAutomationJob[] = (
     Object.entries(draft.positionsBySupplier) as [SupplierId, NonNullable<SupplierOrderDraft['positionsBySupplier'][SupplierId]>][]
   ).map(([supplierId, positions]) => ({

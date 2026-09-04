@@ -109,6 +109,17 @@ export const RATE_LIMITS = {
     begruendung: 'Ein Token gehört zu genau einer Bestellung. Zehn Versuche je Stunde reichen für jeden echten Fall.',
   },
 
+  /** Kundenfreigabe der Druckvorschau (freigeben/Änderung wünschen): dasselbe
+   *  Motiv wie stornierung – ein Token bzw. eine Bestellung gehört zu genau
+   *  einem Vorgang. */
+  kundenfreigabe: {
+    id: 'kundenfreigabe',
+    max: 10,
+    fensterSekunden: STUNDE,
+    merkmal: 'ip_und_merkmal',
+    begruendung: 'Ein Token/Konto gehört zu genau einer Freigabeentscheidung. Zehn Versuche je Stunde reichen für jeden echten Fall.',
+  },
+
   /** Kundenkonto-Anmeldung: dasselbe Motiv wie adminLogin, nur mit vielen
    *  statt einer Person – deshalb mit E-Mail als zweitem Merkmal statt
    *  reinem IP-Limit, sonst träfe ein Angriff auf ein Konto alle hinter

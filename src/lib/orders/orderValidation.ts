@@ -332,6 +332,22 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     });
   }
 
+  // Zweite, serverseitige Absicherung neben SummaryPanel.tsx: ein
+  // unveränderter Vorlagen-Platzhalter (z.B. "Euer Firmenname") darf nicht
+  // bis zur Produktion durchrutschen – nur die Client-Prüfung würde sich
+  // mit einem direkten API-Aufruf umgehen lassen. Gilt wie 'kein_element'
+  // nur für echte Bestellungen, nicht für eine unverbindliche Anfrage.
+  if (istBestellung) {
+    const unbearbeiteterPlatzhalter = elemente.some((el) => el.type === 'text' && el.isTemplatePlaceholder);
+    if (unbearbeiteterPlatzhalter) {
+      issues.push({
+        code: 'platzhalter_nicht_ersetzt',
+        message: `Für „${name}" wurde der Beispieltext einer Vorlage noch nicht durch einen eigenen Inhalt ersetzt.`,
+        itemId,
+      });
+    }
+  }
+
   // Druckflächen einmal je Position laden, nicht je Element.
   const druckflaechen = ERLAUBTE_VEREDELUNGEN.includes(item.printMethod)
     ? await getPrintAreas(item.productId, item.printMethod)

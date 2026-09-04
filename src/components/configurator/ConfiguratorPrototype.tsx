@@ -25,7 +25,7 @@ import { resolveColorImages, repraesentativeFarbe } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
-import type { PricingRule, PrintArea } from '@/types';
+import type { PricingRule, PrintArea, PrintMethod } from '@/types';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 import { vorladenAlleFarben } from '@/lib/configurator/vorladen';
@@ -66,6 +66,11 @@ const ZOOM_MAX = 2.5;
 export function ConfiguratorPrototype() {
   const [printAreas, setPrintAreas] = useState<PrintArea[]>([]);
   const [pricingRules, setPricingRules] = useState<PricingRule[]>([]);
+  // Ausbauplan (quickwins): Preisregeln der JEWEILS ANDEREN Veredelungsart,
+  // ausschließlich für den Vergleichspreis im MethodSwitcher – niemals für
+  // den tatsächlichen, im Store gespeicherten Preis (dessen einzige Quelle
+  // bleibt der Effekt unten, der `setPrices` aufruft).
+  const [otherMethodPricingRules, setOtherMethodPricingRules] = useState<PricingRule[]>([]);
   const [priceBreakdown, setPriceBreakdown] = useState<PriceCalculationResult['breakdown'] | null>(null);
   // Preisbausteine, die nicht verarbeitet werden konnten. Nicht leer =
   // der Preis ist ungültig und darf NICHT bestellbar sein (siehe
@@ -119,6 +124,7 @@ export function ConfiguratorPrototype() {
   const setColor = useConfiguratorStore((s) => s.setColor);
   const setSizeQuantities = useConfiguratorStore((s) => s.setSizeQuantities);
   const setPrices = useConfiguratorStore((s) => s.setPrices);
+  const unitPrice = useConfiguratorStore((s) => s.unitPrice);
   const syncElementsToPrintAreas = useConfiguratorStore((s) => s.syncElementsToPrintAreas);
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
@@ -230,11 +236,16 @@ export function ConfiguratorPrototype() {
     let isMounted = true;
     if (isFirstLoad.current) setIsLoadingContext(true);
 
-    Promise.all([getPrintAreas(productId, printMethod), getPricingRules(printMethod)]).then(
-      ([areas, rules]) => {
+    const andereMethode: PrintMethod = printMethod === 'dtf' ? 'embroidery' : 'dtf';
+    Promise.all([
+      getPrintAreas(productId, printMethod),
+      getPricingRules(printMethod),
+      getPricingRules(andereMethode),
+    ]).then(([areas, rules, andereRules]) => {
         if (!isMounted) return;
         setPrintAreas(areas);
         setPricingRules(rules);
+        setOtherMethodPricingRules(andereRules);
         setIsLoadingContext(false);
         isFirstLoad.current = false;
 
@@ -277,6 +288,21 @@ export function ConfiguratorPrototype() {
     setPriceBreakdown(result.breakdown);
     setPriceHasErrors(result.hasErrors);
   }, [elements, quantity, pricingRules, product.basePrice, setPrices]);
+
+  // Vergleichspreis der JEWEILS ANDEREN Veredelungsart für den
+  // MethodSwitcher (Ausbauplan, quickwins) – reine Anzeige, verändert nie
+  // Store-Zustand oder das Preismodell selbst. Bewusst als useMemo statt
+  // eines weiteren setState-Effekts: es gibt keinen Grund, diesen Wert
+  // zwischen Renderns zu persistieren.
+  const otherMethodUnitPrice = useMemo(() => {
+    if (otherMethodPricingRules.length === 0) return null;
+    return calculatePrice({
+      basePrice: product.basePrice,
+      quantity,
+      elements,
+      pricingRules: otherMethodPricingRules,
+    }).unitPrice;
+  }, [elements, quantity, otherMethodPricingRules, product.basePrice]);
 
   // Tastenkürzel: Strg/Cmd+Z = Rückgängig, Strg/Cmd+Y bzw. Strg+Shift+Z =
   // Wiederholen, Entf/Rücktaste = ausgewähltes Element löschen, Strg+D =
@@ -539,7 +565,7 @@ export function ConfiguratorPrototype() {
               <KonfigUebersicht priceHasErrors={priceHasErrors} />
             </div>
             <div className="flex-shrink-0">
-              <MethodSwitcher />
+              <MethodSwitcher currentUnitPrice={unitPrice} otherMethodUnitPrice={otherMethodUnitPrice} />
             </div>
             {/* min-h-[280px] statt min-h-0: Ohne eine feste Untergrenze darf
                 dieser Bereich im Flex-Container bis auf 0 schrumpfen, sobald

@@ -7,7 +7,6 @@
  */
 import { Html, Head, Preview, Body, Container, Text, Hr } from '@react-email/components';
 import type { ReactNode } from 'react';
-import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { formatiereGeld } from '@/lib/format';
 
 const COLORS = {
@@ -44,15 +43,30 @@ export function EmailLayout({ previewText, title, children }: EmailLayoutProps) 
 
 export { COLORS };
 
+/** Bewusst schmaler als OrderRecord['items']: nur die Felder, die diese
+ *  Tabelle tatsächlich zeichnet. Ein voller OrderItemRecord (z.B. order.items
+ *  aus der Bestellbestätigung) erfüllt diese Form strukturell mit; Aufrufer,
+ *  die keinen vollständigen OrderRecord laden wollen/können (z.B. die
+ *  "In Produktion"-Mail, um einen Zirkelimport auf orderCompletion.ts zu
+ *  vermeiden), können stattdessen eine schlanke eigene Query bauen. */
+export interface OrderItemsTableItem {
+  productName: string;
+  colorName: string;
+  sizeQuantities: Record<string, number>;
+  totalPrice: number;
+  /** Nur die Länge wird für die Motiv-Anzahl gebraucht. */
+  elements: unknown[];
+}
+
 /** Positionstabelle (Produkt/Farbe/Größen/Motiv-Anzahl/Preis) – von
  *  Bestellbestätigung UND interner Benachrichtigung genutzt, damit beide
  *  E-Mails exakt dieselbe Darstellung zeigen. Weitere Bestell-bezogene
  *  E-Mails (z.B. Versandbestätigung) können sie ebenfalls wiederverwenden. */
-export function OrderItemsTable({ order }: { order: OrderRecord }) {
+export function OrderItemsTable({ items }: { items: OrderItemsTableItem[] }) {
   return (
     <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
       <tbody>
-        {order.items.map((item, index) => {
+        {items.map((item, index) => {
           const sizes = Object.entries(item.sizeQuantities)
             .filter(([, qty]) => qty > 0)
             .map(([size, qty]) => `${qty}× ${size}`)

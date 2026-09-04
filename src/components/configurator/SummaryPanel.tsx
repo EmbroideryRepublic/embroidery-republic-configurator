@@ -78,7 +78,14 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
   // orderValidation.ts (pruefePosition) – diese Client-Prüfung ist nur die
   // frühestmögliche, freundliche Rückmeldung, keine eigene Sicherheitsebene.
   const hasElement = elements.length > 0;
-  const canAddToCart = productId !== null && colorId !== null && quantity > 0 && hasElement && !priceHasErrors;
+  // Ausbauplan (quickwins): ein unveränderter Vorlagen-Platzhalter (z.B.
+  // "Euer Firmenname") ist kein echter Kundeninhalt – ohne diese Prüfung
+  // ließ er sich unverändert bis in den Checkout tragen und hätte bei
+  // personalisierter, vom Widerruf ausgeschlossener Ware zu einer
+  // Fehlproduktion auf Kosten des Betriebs geführt.
+  const hasUnbearbeitetenPlatzhalter = elements.some((e) => e.type === 'text' && e.isTemplatePlaceholder);
+  const canAddToCart =
+    productId !== null && colorId !== null && quantity > 0 && hasElement && !priceHasErrors && !hasUnbearbeitetenPlatzhalter;
 
   function handleAddToCart() {
     if (!canAddToCart || !productId || !colorId) return;
@@ -171,15 +178,19 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
           die feste Positionsstaffel (DTF_POSITION_TIERS), nicht auf
           QUANTITY_TIERS.veredelungDiscountPercent (gilt seit 2026-08-09 nur
           noch für Stickerei). */}
-      {nextDtfTier ? (
+      {/* Ausbauplan (quickwins): Vor der ersten Mengenauswahl ist quantity 0 –
+          "Noch 1 Stück bis …" wäre dann unverständlich, weil "noch" eine
+          bereits laufende Zählung suggeriert, die es noch gar nicht gibt.
+          Alle drei Hinweise deshalb erst ab quantity > 0. */}
+      {quantity > 0 && nextDtfTier ? (
         <p className="text-[11px] text-brand/70">
           Noch {nextDtfTier.minQuantity - quantity} Stück bis {formatPrice(nextDtfTier.erste)} für die erste Position.
         </p>
-      ) : !breakdown?.isPositionBased && breakdown?.nextTier ? (
+      ) : quantity > 0 && !breakdown?.isPositionBased && breakdown?.nextTier ? (
         <p className="text-[11px] text-brand/70">
           Noch {breakdown.nextTier.minQuantity - quantity} Stück bis {breakdown.nextTier.veredelungDiscountPercent}% Rabatt.
         </p>
-      ) : breakdown && breakdown.savingsAmount > 0 ? (
+      ) : quantity > 0 && breakdown && breakdown.savingsAmount > 0 ? (
         <p className="text-[11px] font-medium text-green-700">
           Sie sparen {formatPrice(breakdown.savingsAmount)}.
         </p>
@@ -257,7 +268,16 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
           aria-live="polite"
           aria-atomic="true"
         >
-          <span className="text-sm font-medium text-brand">{t('summary_total_price')}</span>
+          <div>
+            <span className="text-sm font-medium text-brand">{t('summary_total_price')}</span>
+            {/* Ausbauplan (quickwins): macht den Gesamtpreis nachvollziehbar
+                ("20,79 €/Stk. × 22" statt einer nicht herleitbaren Summe) –
+                stärkt den Eindruck der Mengenstaffel als fair, reduziert
+                Rückfragen. */}
+            <p className="text-[11px] text-brand/60">
+              {formatPrice(unitPrice)}/Stk. × {quantity}
+            </p>
+          </div>
           <span className="font-serif text-xl font-bold text-gold-dark">{formatPrice(totalPrice)}</span>
         </div>
       ) : (
@@ -290,7 +310,11 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
       </button>
       {!canAddToCart && (
         <p className="text-center text-xs text-amber-600">
-          {quantity > 0 && !hasElement ? t('summary_add_element_first') : t('summary_select_size_first')}
+          {hasUnbearbeitetenPlatzhalter
+            ? t('summary_replace_placeholder_first')
+            : quantity > 0 && !hasElement
+              ? t('summary_add_element_first')
+              : t('summary_select_size_first')}
         </p>
       )}
     </div>

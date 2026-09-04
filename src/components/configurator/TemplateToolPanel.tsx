@@ -125,6 +125,7 @@ export function TemplateToolPanel({ printAreas, onApplied }: TemplateToolPanelPr
       outlineColor: '#ffffff',
       inkCoverageRatio: inkRatio,
       estimatedStitches: estimateTextStitches(box.widthCm * box.heightCm, inkRatio),
+      isTemplatePlaceholder: true,
     };
 
     addElement(element);

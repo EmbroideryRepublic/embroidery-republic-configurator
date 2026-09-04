@@ -127,7 +127,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   let abfrage = db
     .from('orders')
     .select(
-      'id, created_at, customer_name, company, email, phone, customer_id, shipping_street, shipping_zip, shipping_city, shipping_country, total_price, payment_method, payment_status, payment_transaction_id, paid_at, invoice_number, invoice_date, invoice_pdf_url, accounting_ready_at, cancelled_at'
+      'id, order_number, created_at, customer_name, company, email, phone, customer_id, shipping_street, shipping_zip, shipping_city, shipping_country, total_price, payment_method, payment_status, payment_transaction_id, paid_at, invoice_number, invoice_date, invoice_pdf_url, accounting_ready_at, cancelled_at'
     )
     .eq('order_type', 'order')
     .in('payment_status', ['paid', 'not_required'])
@@ -199,7 +199,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     const positionen = positionenNachBestellung.get(bestellung.id as string) ?? [];
     orders.push({
       externalOrderId: bestellung.id as string,
-      orderNumber: buildOrderNumber(bestellung.id as string),
+      orderNumber: (bestellung.order_number as string | null) ?? buildOrderNumber(bestellung.id as string),
       createdAt: bestellung.created_at as string,
       customer: {
         name: bestellung.customer_name as string,

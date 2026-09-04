@@ -285,6 +285,14 @@ export interface TextElement extends BaseConfigElement {
    *  (0–1). Wird für die Preisberechnung genutzt, damit nur die echte
    *  Textfläche bezahlt wird, nicht die komplette Box. */
   inkCoverageRatio: number;
+  /** true, solange der Inhalt exakt dem Vorlagen-Platzhalter entspricht
+   *  (z.B. "Euer Firmenname") und noch nie bearbeitet wurde. Erlischt mit
+   *  der ersten Inhaltsänderung (ElementToolbar). Blockiert das Bestellen –
+   *  siehe SummaryPanel.tsx/orderValidation.ts – da unveränderte
+   *  Vorlagentexte sonst unbemerkt bis in die Produktion gelangen könnten
+   *  (Ausbauplan, quickwins). Bei manuell hinzugefügtem Text (TextToolPanel)
+   *  immer false. */
+  isTemplatePlaceholder: boolean;
 }
 
 export type ConfigElement = LogoElement | TextElement;

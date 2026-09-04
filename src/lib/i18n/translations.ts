@@ -73,6 +73,7 @@ export const translations = {
     method_dtf_desc: 'Vollfarbig, ideal für große Motive & Farbverläufe',
     method_embroidery: 'Stickerei',
     method_embroidery_desc: 'Hochwertig & langlebig, ideal für Firmenlogos',
+    method_price_delta: '{amount}/Stk.',
 
     product_choose: 'Produkt wählen',
     product_search: 'Suchen (Name, Marke, Material) …',
@@ -115,6 +116,7 @@ export const translations = {
     summary_added: 'Zum Warenkorb hinzugefügt',
     summary_select_size_first: 'Bitte zuerst eine Größe und Menge wählen.',
     summary_add_element_first: 'Bitte fügen Sie mindestens ein Logo oder einen Text hinzu.',
+    summary_replace_placeholder_first: 'Bitte ersetzen Sie den Beispieltext der Vorlage durch Ihren eigenen Inhalt, bevor Sie bestellen.',
 
     cart_title: 'Warenkorb',
     cart_empty: 'Ihr Warenkorb ist noch leer. Konfigurieren Sie ein Produkt und legen Sie es in den Warenkorb.',
@@ -452,6 +454,7 @@ export const translations = {
     method_dtf_desc: 'Full color, ideal for large designs & gradients',
     method_embroidery: 'Embroidery',
     method_embroidery_desc: 'Premium & durable, ideal for company logos',
+    method_price_delta: '{amount}/pc.',
 
     product_choose: 'Choose product',
     product_search: 'Search (name, brand, material) …',
@@ -494,6 +497,7 @@ export const translations = {
     summary_added: 'Added to cart',
     summary_select_size_first: 'Please select a size and quantity first.',
     summary_add_element_first: 'Please add at least one logo or text.',
+    summary_replace_placeholder_first: 'Please replace the template\'s placeholder text with your own content before ordering.',
 
     cart_title: 'Cart',
     cart_empty: 'Your cart is empty. Configure a product and click "Add to cart".',

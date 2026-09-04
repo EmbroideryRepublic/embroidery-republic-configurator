@@ -112,18 +112,20 @@ export default async function ZahlungsRueckkehr({
 
   // NUR lesen. Kein Update, kein Seiteneffekt.
   let paymentStatus: string | null = null;
+  let orderNumber: string | null = null;
   let gefunden = false;
   try {
     if (orderId) {
       const db = createAdminClient();
       const { data } = await db
         .from('orders')
-        .select('payment_status')
+        .select('payment_status, order_number')
         .eq('id', orderId)
         .maybeSingle();
       if (data) {
         gefunden = true;
         paymentStatus = (data.payment_status as string | null) ?? null;
+        orderNumber = (data.order_number as string | null) ?? null;
       }
     }
   } catch {
@@ -133,7 +135,7 @@ export default async function ZahlungsRueckkehr({
 
   const anzeige = gefunden ? bestimmeAnzeige(paymentStatus, abgebrochen) : 'ausstehend';
   const { icon: Icon, farbe, titel, text } = INHALT[anzeige];
-  const bestellnummer = gefunden && orderId ? buildOrderNumber(orderId) : null;
+  const bestellnummer = gefunden && orderId ? (orderNumber ?? buildOrderNumber(orderId)) : null;
 
   return (
     <main className="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-6 py-16 text-center">

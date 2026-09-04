@@ -464,7 +464,13 @@ export default async function Startseite() {
 
 function Vertrauenspunkt({ icon: Icon, text, children }: { icon: LucideIcon; text?: string; children?: ReactNode }) {
   return (
-    <span className="flex flex-shrink-0 items-center gap-2 whitespace-nowrap">
+    // whitespace-nowrap erst ab sm: – im mobilen 2-Spalten-Grid (Zeile ~153)
+    // muss der Text auf eine zweite Zeile umbrechen dürfen, sonst überlappt
+    // er die Nachbarspalte (z.B. "Ab 1 Stück, ohne Mindestmenge" bei 375px).
+    // Ab sm: wechselt das Layout zu flex-wrap und bricht ganze Elemente um,
+    // nicht mehr Wörter innerhalb eines Elements – dort bleibt der Text bewusst
+    // einzeilig.
+    <span className="flex flex-shrink-0 items-center gap-2 sm:whitespace-nowrap">
       <Icon className="h-[15px] w-[15px] flex-shrink-0 text-gold-dark" strokeWidth={1.75} aria-hidden />
       {text ?? children}
     </span>

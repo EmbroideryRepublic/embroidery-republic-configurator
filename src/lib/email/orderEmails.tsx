@@ -30,7 +30,10 @@ import { OrderCancellationEmail } from './templates/OrderCancellationEmail';
 import { OrderShippedEmail } from './templates/OrderShippedEmail';
 import { OrderInProductionEmail } from './templates/OrderInProductionEmail';
 import { OrderCompletedEmail } from './templates/OrderCompletedEmail';
+import { OrderProofRequestEmail } from './templates/OrderProofRequestEmail';
+import { ProofFeedbackEmail } from './templates/ProofFeedbackEmail';
 import type { OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
+import type { OrderItemsTableItem } from './templates/EmailLayout';
 
 export async function sendOrderConfirmationEmail(
   order: OrderRecord,
@@ -179,17 +182,28 @@ export async function sendOrderShippedEmail(params: {
  * Benachrichtigt den Kunden, dass die Produktion begonnen hat.
  *
  * Wird ausschließlich von orderService beim Übergang nach `in_production`
- * aufgerufen — NACH dem erfolgreichen Statuswechsel.
+ * aufgerufen — NACH dem erfolgreichen Statuswechsel. Nimmt (anders als die
+ * übrigen Status-Mails) das volle `OrderRecord` entgegen, damit die Mail die
+ * Positionsliste über dieselbe OrderItemsTable wie die Bestellbestätigung
+ * zeigen kann (Ausbauplan, quickwins).
  */
 export async function sendOrderInProductionEmail(params: {
   orderId: string;
   orderNumber: string;
+  items: OrderItemsTableItem[];
   empfaenger: string;
+  bestellansichtUrl?: string | null;
 }): Promise<EmailVersandErgebnis> {
   const result = await sendEmail({
     to: params.empfaenger,
     subject: `Ihre Bestellung ${params.orderNumber} ist in Produktion`,
-    react: <OrderInProductionEmail orderNumber={params.orderNumber} />,
+    react: (
+      <OrderInProductionEmail
+        orderNumber={params.orderNumber}
+        items={params.items}
+        bestellansichtUrl={params.bestellansichtUrl}
+      />
+    ),
     kontext: { anlass: 'order_in_production', orderId: params.orderId },
   });
   return {
@@ -215,6 +229,70 @@ export async function sendOrderCompletedEmail(params: {
     subject: `Bestellung ${params.orderNumber} abgeschlossen`,
     react: <OrderCompletedEmail orderNumber={params.orderNumber} />,
     kontext: { anlass: 'order_completed', orderId: params.orderId },
+  });
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
+}
+
+/**
+ * Bittet die Kundschaft um Freigabe der Druckvorschau – admin-ausgelöst
+ * (sendeVorschauFreigabeAnfrage), NICHT bei einem Statusübergang. Anders als
+ * bei den übrigen Status-Mails ist `bestellansichtUrl` hier PFLICHT: der Link
+ * ist der eigentliche Zweck dieser Mail (siehe OrderProofRequestEmail.tsx).
+ */
+export async function sendOrderProofRequestEmail(params: {
+  orderId: string;
+  orderNumber: string;
+  empfaenger: string;
+  bestellansichtUrl: string;
+}): Promise<EmailVersandErgebnis> {
+  const result = await sendEmail({
+    to: params.empfaenger,
+    subject: `Bitte Druckvorschau für ${params.orderNumber} freigeben`,
+    react: <OrderProofRequestEmail orderNumber={params.orderNumber} bestellansichtUrl={params.bestellansichtUrl} />,
+    kontext: { anlass: 'order_proof_request', orderId: params.orderId },
+  });
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
+}
+
+/**
+ * Interne Benachrichtigung, wenn die Kundschaft auf die Freigabeanfrage
+ * reagiert – Freigabe erteilt oder Änderung gewünscht (freigebeVorschauDurch-
+ * Kunden/wuenscheAenderungDurchKunden). Nicht-fatal beim Aufrufer: das
+ * fachliche Ereignis steht bereits über protokolliereBestellereignis fest,
+ * diese Mail ist reine Zusatzinformation.
+ */
+export async function sendProofFeedbackEmail(params: {
+  orderId: string;
+  orderNumber: string;
+  adminUrl: string;
+  art: 'freigegeben' | 'aenderung_gewuenscht';
+  kundeEmail: string;
+  kommentar?: string;
+}): Promise<EmailVersandErgebnis> {
+  const result = await sendEmail({
+    to: getInternalNotificationAddress(),
+    subject:
+      params.art === 'freigegeben'
+        ? `Vorschau freigegeben: ${params.orderNumber}`
+        : `Änderung gewünscht: ${params.orderNumber}`,
+    react: (
+      <ProofFeedbackEmail
+        orderNumber={params.orderNumber}
+        adminUrl={params.adminUrl}
+        art={params.art}
+        kommentar={params.kommentar}
+      />
+    ),
+    replyTo: params.kundeEmail,
+    kontext: { anlass: 'proof_feedback', orderId: params.orderId },
   });
   return {
     success: result.success,

@@ -22,6 +22,7 @@ import { repraesentativBildVon, PLATZHALTER_BILD } from '@/lib/assets';
 import { waehlbareFarben, formatiereFarbname } from '@/lib/products/farben';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ermittleVerfuegbarkeit } from '@/lib/catalog/verfuegbarkeit';
+import { COMPANY } from '@/config/company';
 
 /** Schema.org-Verfügbarkeit aus dem Katalogstatus. */
 function schemaVerfuegbarkeit(produkt: ProductConfig): string {
@@ -111,20 +112,33 @@ export function brotkrumenSchema(
  *
  * Nur Angaben, die auch im Impressum stehen bzw. aus der Konfiguration
  * kommen. Keine erfundenen Telefonnummern oder Profile.
+ *
+ * Adresse, Telefon und USt-IdNr. kommen seit Migration von der zunächst
+ * bewusst weggelassenen Fassung (die Firmendaten waren zum damaligen
+ * Zeitpunkt noch Platzhalter) direkt aus `COMPANY` – derselben einzigen
+ * Quelle, die auch das Impressum nutzt. `@type` trägt zusätzlich
+ * `LocalBusiness`, damit lokale Suchen (z.B. "Stickerei Köln") das
+ * Map-Pack-Signal bekommen, ohne die Organization-Auszeichnung zu verlieren.
  */
 export function organisationSchema(basis: string): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': ['Organization', 'LocalBusiness'],
     name: 'Embroidery Republic Germany',
     url: basis,
     logo: `${basis}/brand/logo.jpg`,
     description:
       'Firmen- und Teambekleidung individuell veredelt: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet.',
     areaServed: 'DE',
-    // Bewusst OHNE telephone/address: Kontaktdaten gehören ins Impressum, nicht
-    // dupliziert in die Auszeichnung (per Wächter-Test festgehalten). Firmen-
-    // daten bleiben zudem Sache des Betreibers (offener Go-live-Punkt).
+    telephone: COMPANY.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: COMPANY.street,
+      postalCode: COMPANY.zip,
+      addressLocality: COMPANY.city,
+      addressCountry: 'DE',
+    },
+    vatID: COMPANY.vatId,
   };
 }
 

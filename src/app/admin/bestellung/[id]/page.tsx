@@ -33,7 +33,10 @@ import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 import { ProductionPreview } from '@/components/admin/ProductionPreview';
 import { KundendateienPanel } from '@/components/admin/KundendateienPanel';
-import { berechneNaechsteAktion, type NaechsteAktionTon } from '@/lib/admin/naechsteAktion';
+import { RequestProofApprovalButton } from '@/components/admin/RequestProofApprovalButton';
+import { BestellVerlauf } from '@/components/admin/BestellVerlauf';
+import { AdminAddressEditor } from '@/components/admin/AdminAddressEditor';
+import { berechneNaechsteAktion, fehlenVorschauen, type NaechsteAktionTon } from '@/lib/admin/naechsteAktion';
 
 const AKTION_STIL: Record<NaechsteAktionTon, string> = {
   ok: 'border-brand/20 bg-brand/5 text-brand',
@@ -170,7 +173,22 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           fehlende Vorschauen lassen sich über denselben Rendering-Pfad direkt
           hier nachträglich erzeugen. */}
       <section className="rounded-lg border border-gray-200 bg-white p-4">
-        <h2 className="mb-2 text-sm font-semibold">Personalisierung</h2>
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-sm font-semibold">Personalisierung</h2>
+          {/* Kundenfreigabe: siehe orderService.ts::sendeVorschauFreigabeAnfrage.
+              Nur für Bestellungen relevant (Anfragen haben keinen Produktions-
+              schritt) und blendet sich selbst aus, sobald bereits freigegeben. */}
+          {order.orderType === 'order' && !order.freigabeErteiltAm && (
+            <RequestProofApprovalButton orderId={order.id} deaktiviert={fehlenVorschauen(order)} />
+          )}
+        </div>
+        {order.orderType === 'order' && order.freigabeAngefragtAm && (
+          <p className="mb-2 text-xs text-gray-500">
+            {order.freigabeErteiltAm
+              ? `Von der Kundschaft freigegeben am ${formatiereZeitpunkt(order.freigabeErteiltAm)}.`
+              : `Zur Freigabe angefragt am ${formatiereZeitpunkt(order.freigabeAngefragtAm)} – noch keine Rückmeldung.`}
+          </p>
+        )}
         <ProductionPreview orderId={order.id} items={order.items} />
       </section>
 
@@ -215,6 +233,9 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
             </p>
           ) : (
             <p className="text-sm text-gray-400">Keine Lieferadresse (Anfrage).</p>
+          )}
+          {order.shipping && !order.dhlLabelUrl && (
+            <AdminAddressEditor orderId={order.id} customerName={order.customerName} shipping={order.shipping} />
           )}
           <p className="mt-2 text-sm font-medium">
             Summe: {formatiereGeld(order.totalPrice)}
@@ -476,6 +497,18 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           </details>
         )}
       </section>
+
+      {/* Bestell-Historie: vollständige, ungefilterte order_events-Zeitleiste
+          (siehe getOrderDetail()/BestellVerlauf.tsx) – eingeklappt, da meist
+          nicht der erste Blick, aber jederzeit direkt aufrufbar. Zeigt
+          automatisch auch die neuen proof_requested/proof_approved/
+          proof_change_requested-Ereignisse der Kundenfreigabe mit. */}
+      <details className="rounded-lg border border-gray-200 bg-white p-4">
+        <summary className="cursor-pointer text-sm font-semibold">Bestell-Historie ({order.events.length})</summary>
+        <div className="mt-3">
+          <BestellVerlauf events={order.events} />
+        </div>
+      </details>
     </div>
   );
 }

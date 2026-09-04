@@ -69,7 +69,7 @@ export default async function AdminOrdersPage({
             type="search"
             name="q"
             defaultValue={suche}
-            placeholder="Name, E-Mail oder Firma suchen …"
+            placeholder="Name, E-Mail, Firma, Bestell-/Rechnungs-/Sendungsnr. …"
             className="w-64 rounded border border-gray-300 px-3 py-1.5 text-sm"
           />
           <button type="submit" className="rounded bg-gray-800 px-3 py-1.5 text-sm text-white hover:bg-gray-700">

@@ -114,6 +114,19 @@ export interface AdminOrderItemRow {
   previewUrlByView: Partial<Record<string, string>>;
 }
 
+/** Ein Eintrag der Bestell-Historie (order_events), ungefiltert – Grundlage
+ *  für BestellVerlauf.tsx. `detail` ist absichtlich das rohe jsonb-Feld: die
+ *  Zeitleiste zeigt nur ausgewählte, für Menschen relevante Schlüssel daraus
+ *  (siehe dort), statt ein zweites, striktes Detail-Schema zu pflegen. */
+export interface AdminOrderEvent {
+  at: string;
+  eventType: string;
+  fromStatus: string | null;
+  toStatus: string | null;
+  reason: string | null;
+  detail: Record<string, unknown> | null;
+}
+
 export interface AdminSupplierOrderRow {
   supplierId: string;
   status: string;
@@ -146,6 +159,10 @@ export interface AdminOrderDetail {
   netTotal: number | null;
   shipping: { street: string; zip: string; city: string; country: string } | null;
   items: AdminOrderItemRow[];
+  /** Vollständige, ungefilterte Bestell-Historie, neueste zuerst – siehe
+   *  BestellVerlauf.tsx. Enthält automatisch auch die neuen proof_requested/
+   *  proof_approved/proof_change_requested-Ereignisse aus der Kundenfreigabe. */
+  events: AdminOrderEvent[];
   /** Live berechnete Lieferanten-Vorschau (unabhängig davon, ob schon ein
    *  supplier_orders-Snapshot existiert) – zeigt dem Admin VOR dem Klick,
    *  was die Automatisierung tun würde, inkl. unresolved-Produkten. */
@@ -193,6 +210,14 @@ export interface AdminOrderDetail {
    *  "wartet normal auf Zahlung" (invoiceNumber null, lastInvoiceError null)
    *  von "Erstellung ist echt fehlgeschlagen" (lastInvoiceError gesetzt). */
   lastInvoiceError: string | null;
+  /** Zeitpunkt, an dem der Betreiber die Druckvorschau zur Kundenfreigabe
+   *  verschickt hat (orders.freigabe_angefragt_am). null = noch nicht
+   *  angefragt – siehe naechsteAktion.ts und RequestProofApprovalButton.tsx. */
+  freigabeAngefragtAm: string | null;
+  /** Zeitpunkt der Kundenfreigabe (orders.freigabe_erteilt_am). Zusätzliche,
+   *  von adminStatus unabhängige Bedingung für den Übergang new→in_production
+   *  – siehe orderService.ts::setzeBestellstatus. */
+  freigabeErteiltAm: string | null;
   /** Persistierte Automatisierungs-Snapshots inkl. letztem Lauf. */
   supplierOrders: AdminSupplierOrderRow[];
   /** 'customer' oder 'admin', null bei einer nicht stornierten Bestellung –
@@ -257,6 +282,18 @@ export async function listSupplierOrderPipeline(): Promise<AdminSupplierPipeline
   }
 
   const orderIds = [...new Set(rows.map((r) => r.order_id as string))];
+
+  // Gebündelt statt je Zeile (kein N+1) – derselbe orderIds-Batch wie beim
+  // events-Query gleich darunter. Siehe Migration 0036 (Bestellnummer-
+  // Jahreswechsel-Fix): buildOrderNumber(orderId) bleibt nur Rückfall.
+  const orderNumberById = new Map<string, string>();
+  if (orderIds.length > 0) {
+    const { data: numberRows } = await supabase.from('orders').select('id, order_number').in('id', orderIds);
+    for (const r of numberRows ?? []) {
+      if (r.order_number) orderNumberById.set(r.id as string, r.order_number as string);
+    }
+  }
+
   const eventsByKey = new Map<string, AdminSupplierPipelineEvent[]>();
   if (orderIds.length > 0) {
     const { data: events } = await supabase
@@ -286,7 +323,7 @@ export async function listSupplierOrderPipeline(): Promise<AdminSupplierPipeline
     const supplierId = row.supplier_id as string;
     return {
       orderId,
-      orderNumber: buildOrderNumber(orderId),
+      orderNumber: orderNumberById.get(orderId) ?? buildOrderNumber(orderId),
       supplierId,
       status: row.status as string,
       mode: row.mode as string,
@@ -332,12 +369,10 @@ export interface ListOrdersErgebnis {
  * docs/audit-produktionsreife.md: bislang `.limit(200)` ohne Suche/Blättern
  * – bei 10.000 Bestellungen wären 9.800 unerreichbar gewesen).
  *
- * Die Suche läuft über `.or()` mit `ilike` auf Name/E-Mail/Firma. Eine
- * Bestellnummer (z.B. "ER-2026-A1B2C3") lässt sich NICHT direkt per SQL
- * suchen, da sie aus der ID abgeleitet wird (buildOrderNumber) statt
- * gespeichert zu sein – bei einer Eingabe im Bestellnummernformat wird
- * deshalb zusätzlich versucht, das enthaltene Kürzel gegen den Anfang der
- * ID zu matchen.
+ * Die Suche läuft über `.or()` mit `ilike` auf Name/E-Mail/Firma sowie
+ * (seit Migration 0036, order_number als persistierte Spalte) zusätzlich auf
+ * Bestell-, Rechnungs- und Sendungsnummer – der Kundenservice kann damit
+ * anhand jeder am Telefon genannten Nummer sofort finden, statt zu scrollen.
  */
 export async function listOrders(optionen: ListOrdersOptions = {}): Promise<ListOrdersErgebnis> {
   const supabase = createAdminClient();
@@ -353,7 +388,7 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
   let query = supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, customer_name, company, email, total_price, status, payment_status, refund_status, tracking_number, order_confirmation_sent_at, invoice_number',
+      'id, created_at, order_type, customer_name, company, email, total_price, status, payment_status, refund_status, tracking_number, order_confirmation_sent_at, invoice_number, order_number',
       { count: 'exact' }
     );
 
@@ -361,7 +396,8 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
   if (suche) {
     const jokerErlaubt = suche.replace(/[%_]/g, '');
     query = query.or(
-      `customer_name.ilike.%${jokerErlaubt}%,email.ilike.%${jokerErlaubt}%,company.ilike.%${jokerErlaubt}%`
+      `customer_name.ilike.%${jokerErlaubt}%,email.ilike.%${jokerErlaubt}%,company.ilike.%${jokerErlaubt}%,` +
+        `order_number.ilike.%${jokerErlaubt}%,invoice_number.ilike.%${jokerErlaubt}%,tracking_number.ilike.%${jokerErlaubt}%`
     );
   }
 
@@ -439,7 +475,7 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
     const refundStatus = (row.refund_status as string) ?? 'not_applicable';
     return {
       id: row.id as string,
-      orderNumber: buildOrderNumber(row.id as string),
+      orderNumber: (row.order_number as string | null) ?? buildOrderNumber(row.id as string),
       createdAt,
       orderType,
       customerName: row.customer_name as string,
@@ -463,7 +499,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   const { data: order, error: orderError } = await supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at, order_confirmation_sent_at'
+      'id, order_number, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at, order_confirmation_sent_at, freigabe_angefragt_am, freigabe_erteilt_am'
     )
     .eq('id', orderId)
     .single();
@@ -590,6 +626,29 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     }
   }
 
+  // Vollständige, UNGEFILTERTE Bestell-Historie für die Zeitleiste unten
+  // (BestellVerlauf.tsx) – bewusst ein zweiter, eigener Query statt den
+  // gefilterten problemEvents-Query oben wiederzuverwenden: der obige ist auf
+  // drei Fehlerkategorien UND (bei Versand/Bestätigung) auf "noch ungelöst"
+  // eingeschränkt, die Zeitleiste soll dagegen jedes Ereignis zeigen,
+  // inklusive erfolgreicher (status_changed, invoice_created, proof_approved, …).
+  const { data: eventRows, error: eventsError } = await supabase
+    .from('order_events')
+    .select('event_type, from_status, to_status, reason, detail, at')
+    .eq('order_id', orderId)
+    .order('at', { ascending: false });
+  if (eventsError) {
+    console.error('[admin] order_events (Historie) konnten nicht geladen werden:', eventsError);
+  }
+  const events: AdminOrderEvent[] = (eventRows ?? []).map((ev) => ({
+    at: ev.at as string,
+    eventType: ev.event_type as string,
+    fromStatus: (ev.from_status as string | null) ?? null,
+    toStatus: (ev.to_status as string | null) ?? null,
+    reason: (ev.reason as string | null) ?? null,
+    detail: (ev.detail as Record<string, unknown> | null) ?? null,
+  }));
+
   const itemRows: AdminOrderItemRow[] = await Promise.all(
     (items ?? []).map(async (row, itemIndex) => {
       const eigeneElemente = (elementRows ?? []).filter((el) => el.order_item_id === row.id);
@@ -695,7 +754,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
 
   return {
     id: order.id as string,
-    orderNumber: buildOrderNumber(order.id as string),
+    orderNumber: (order.order_number as string | null) ?? buildOrderNumber(order.id as string),
     createdAt: order.created_at as string,
     orderType: order.order_type as 'inquiry' | 'order',
     status: order.status as string,
@@ -719,6 +778,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
         }
       : null,
     items: itemRows,
+    events,
     supplierDraft,
     productionSheetUrl,
     trackingNumber: (order.tracking_number as string | null) ?? null,
@@ -730,6 +790,8 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     orderConfirmationSentAt: (order.order_confirmation_sent_at as string | null) ?? null,
     lastConfirmationEmailError,
     lastInvoiceError,
+    freigabeAngefragtAm: (order.freigabe_angefragt_am as string | null) ?? null,
+    freigabeErteiltAm: (order.freigabe_erteilt_am as string | null) ?? null,
     cancellationSource: (order.cancellation_source as string | null) ?? null,
     refundStatus: ((order.refund_status as RefundStatus | null) ?? 'not_applicable') as RefundStatus,
     refundAmountCent:

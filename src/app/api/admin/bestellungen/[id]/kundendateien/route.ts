@@ -16,6 +16,7 @@ import { NextResponse } from 'next/server';
 import { istAdmin } from '@/lib/admin/auth';
 import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
+import { createAdminClient } from '@/lib/supabase/server';
 import { ladeKundendateienFuerZip, ladeKundendateiBytes } from '@/lib/admin/kundendateien';
 
 function sichererHeaderName(roh: string, ersatz: string): string {
@@ -63,7 +64,10 @@ export async function GET(_request: Request, { params }: { params: { id: string 
   }
 
   const inhalt = await zip.generateAsync({ type: 'nodebuffer', compression: 'DEFLATE' });
-  const orderNumber = buildOrderNumber(params.id);
+  // Migration 0036 (Bestellnummer-Jahreswechsel-Fix): gespeicherter Wert
+  // bevorzugt, buildOrderNumber(params.id) nur als Rückfall.
+  const { data: orderRow } = await createAdminClient().from('orders').select('order_number').eq('id', params.id).maybeSingle();
+  const orderNumber = (orderRow?.order_number as string | null) ?? buildOrderNumber(params.id);
   const dateiname = sichererHeaderName(`Bestellung-${orderNumber}-Kundendateien.zip`, 'Kundendateien.zip');
 
   return new NextResponse(new Uint8Array(inhalt), {

@@ -31,12 +31,17 @@ import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
 import { istUebergangErlaubt } from '@/config/orderStatus';
 import { produktionsfreigabeErlaubt } from '@/lib/orders/orderVisibility';
+import { erzeugeBestellToken } from '@/lib/orders/orderAccessToken';
+import { basisUrl } from '@/lib/seo/basisUrl';
 import {
   sendOrderShippedEmail,
   sendOrderInProductionEmail,
   sendOrderCompletedEmail,
+  sendOrderProofRequestEmail,
+  sendProofFeedbackEmail,
   type EmailVersandErgebnis,
 } from '@/lib/email/orderEmails';
+import type { OrderItemsTableItem } from '@/lib/email/templates/EmailLayout';
 import { meldeEreignis } from '@/lib/observability/ereignis';
 
 export type StornoErgebnis =
@@ -68,7 +73,7 @@ export type StatusErgebnis =
     }
   | {
       ok: false;
-      grund: 'nicht-gefunden' | 'uebergang-unzulaessig' | 'noch-nicht-freigegeben' | 'fehler';
+      grund: 'nicht-gefunden' | 'uebergang-unzulaessig' | 'noch-nicht-freigegeben' | 'freigabe-fehlt' | 'fehler';
       aktuell?: OrderStatus;
     };
 
@@ -101,7 +106,9 @@ export async function setzeBestellstatus(
 
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('id, email, status, order_type, created_at, payment_status, accounting_ready_at, tracking_number, carrier')
+    .select(
+      'id, email, status, order_type, created_at, payment_status, accounting_ready_at, tracking_number, carrier, freigabe_erteilt_am, order_number'
+    )
     .eq('id', orderId)
     .maybeSingle<{
       id: string;
@@ -113,6 +120,8 @@ export async function setzeBestellstatus(
       accounting_ready_at: string | null;
       tracking_number: string | null;
       carrier: string | null;
+      freigabe_erteilt_am: string | null;
+      order_number: string | null;
     }>();
 
   if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
@@ -160,6 +169,19 @@ export async function setzeBestellstatus(
     if (!freigegeben) {
       return { ok: false, grund: 'noch-nicht-freigegeben', aktuell: von };
     }
+  }
+
+  // Zusätzliche, von produktionsfreigabeErlaubt() UNABHÄNGIGE Bedingung: die
+  // Kundschaft muss die Druckvorschau ausdrücklich freigegeben haben, bevor
+  // die Produktion tatsächlich beginnt (FAQ/Über-uns versprechen genau das).
+  // Bewusst NICHT in produktionsfreigabeErlaubt() integriert – diese Funktion
+  // gated auch die Lieferanten-/Textilbestellung (admin/data.ts), und der
+  // Rohstoffeinkauf soll unabhängig vom Motiv-Freigabestatus weiterlaufen
+  // können. Nur der Übergang NACH 'in_production' braucht die Prüfung – die
+  // Zustandsmaschine erlaubt ausschließlich new→in_production→shipped→
+  // completed, ein späterer Übergang kann diesen Schritt nie überspringen.
+  if (nach === 'in_production' && !bestellung.freigabe_erteilt_am) {
+    return { ok: false, grund: 'freigabe-fehlt', aktuell: von };
   }
 
   const feld = ZEITSTEMPEL_SPALTE[nach];
@@ -240,15 +262,15 @@ export async function setzeBestellstatus(
     // Eine explizit übergebene Nummer hat weiterhin Vorrang (bewusste
     // Überschreibung, z.B. bei einem abweichenden Versandweg).
     const trackingNummer = optionen.trackingNummer?.trim() || bestellung.tracking_number || null;
-    await sendeShippedMail(orderId, bestellung.email, trackingNummer, bestellung.carrier);
+    await sendeShippedMail(orderId, bestellung.email, trackingNummer, bestellung.carrier, bestellung.order_number);
   }
 
   if (nach === 'in_production' && bestellung.email) {
-    await sendeInProductionMail(orderId, bestellung.email);
+    await sendeInProductionMail(orderId, bestellung.email, bestellung.order_number);
   }
 
   if (nach === 'completed' && bestellung.email) {
-    await sendeCompletedMail(orderId, bestellung.email);
+    await sendeCompletedMail(orderId, bestellung.email, bestellung.order_number);
   }
 
   // Kulanzstornierung durch den Betreiber: dieselbe Storno-Bestätigung wie
@@ -259,7 +281,7 @@ export async function setzeBestellstatus(
     try {
       const versand = await sendOrderCancellationEmail({
         orderId,
-        orderNumber: buildOrderNumber(orderId),
+        orderNumber: bestellung.order_number ?? buildOrderNumber(orderId),
         empfaenger: bestellung.email,
         storniertAm: formatiereZeitpunkt(jetzt, { dateStyle: 'long', timeStyle: 'short' }),
         erstattungFaellig: erstattungAusstehend,
@@ -286,12 +308,16 @@ async function sendeShippedMail(
   orderId: string,
   email: string,
   trackingNummer: string | null,
-  carrier: string | null
+  carrier: string | null,
+  // Vom Aufrufer aus der ohnehin geladenen Zeile durchgereicht (Migration
+  // 0036, Bestellnummer-Jahreswechsel-Fix) – buildOrderNumber(orderId) nur
+  // noch als Rückfall für den theoretischen Fall einer Zeile ohne Wert.
+  orderNumber?: string | null
 ): Promise<void> {
   try {
     const versand = await sendOrderShippedEmail({
       orderId,
-      orderNumber: buildOrderNumber(orderId),
+      orderNumber: orderNumber ?? buildOrderNumber(orderId),
       empfaenger: email,
       trackingNummer,
       carrier,
@@ -302,22 +328,138 @@ async function sendeShippedMail(
   }
 }
 
-async function sendeInProductionMail(orderId: string, email: string): Promise<void> {
+/** Positionen für die "In Produktion"-Mail: dieselbe schlanke order_items +
+ *  configuration_elements-Query wie in orderView.ts (Kundenfreigabe) für die
+ *  Motiv-Anzahl je Position – bewusst NICHT über orderCompletion.ts geladen
+ *  (Zirkelimport-Vermeidung, siehe Kommentar bei sendeVorschauFreigabeAnfrage
+ *  oben: orderCompletion.ts importiert bereits von hier). */
+async function ladePositionenFuerInProductionMail(
+  orderId: string,
+  db: ReturnType<typeof createAdminClient>
+): Promise<OrderItemsTableItem[]> {
+  const { data: items } = await db
+    .from('order_items')
+    .select('id, product_name, color_name, size_quantities, total_price')
+    .eq('order_id', orderId);
+  const zeilen = items ?? [];
+  const itemIds = zeilen.map((row) => row.id as string);
+  const { data: elemente } = itemIds.length
+    ? await db.from('configuration_elements').select('order_item_id').in('order_item_id', itemIds)
+    : { data: [] as { order_item_id: string }[] };
+  const anzahlJeItem = new Map<string, number>();
+  for (const el of elemente ?? []) {
+    anzahlJeItem.set(el.order_item_id as string, (anzahlJeItem.get(el.order_item_id as string) ?? 0) + 1);
+  }
+  return zeilen.map((row) => ({
+    productName: row.product_name as string,
+    colorName: row.color_name as string,
+    sizeQuantities: (row.size_quantities ?? {}) as Record<string, number>,
+    totalPrice: Number(row.total_price ?? 0),
+    elements: Array.from({ length: anzahlJeItem.get(row.id as string) ?? 0 }),
+  }));
+}
+
+async function sendeInProductionMail(orderId: string, email: string, orderNumber?: string | null): Promise<void> {
   try {
-    const versand = await sendOrderInProductionEmail({ orderId, orderNumber: buildOrderNumber(orderId), empfaenger: email });
+    const db = createAdminClient();
+    const items = await ladePositionenFuerInProductionMail(orderId, db);
+    // Derselbe signierte Link wie bei sendeVorschauFreigabeAnfrage oben – aus
+    // demselben Zirkelimport-Grund lokal nachgebaut statt aus orderIntake.ts
+    // importiert.
+    const token = erzeugeBestellToken(orderId);
+    const versand = await sendOrderInProductionEmail({
+      orderId,
+      orderNumber: orderNumber ?? buildOrderNumber(orderId),
+      items,
+      empfaenger: email,
+      bestellansichtUrl: token ? `${basisUrl()}/bestellung/${token}` : null,
+    });
     await protokolliereVersand(orderId, 'order_in_production', { status: 'fulfilled', value: versand });
   } catch (err) {
     await protokolliereVersand(orderId, 'order_in_production', { status: 'rejected', reason: err });
   }
 }
 
-async function sendeCompletedMail(orderId: string, email: string): Promise<void> {
+async function sendeCompletedMail(orderId: string, email: string, orderNumber?: string | null): Promise<void> {
   try {
-    const versand = await sendOrderCompletedEmail({ orderId, orderNumber: buildOrderNumber(orderId), empfaenger: email });
+    const versand = await sendOrderCompletedEmail({
+      orderId,
+      orderNumber: orderNumber ?? buildOrderNumber(orderId),
+      empfaenger: email,
+    });
     await protokolliereVersand(orderId, 'order_completed', { status: 'fulfilled', value: versand });
   } catch (err) {
     await protokolliereVersand(orderId, 'order_completed', { status: 'rejected', reason: err });
   }
+}
+
+export type VorschauFreigabeAnfrageErgebnis =
+  | { ok: true }
+  | { ok: false; grund: 'nicht-gefunden' | 'keine-email' | 'kein-link' };
+
+/**
+ * Löst den Kundenfreigabe-Schritt aus: verschickt die Bitte um Freigabe der
+ * bereits in Phase 2 gerenderten Druckvorschau (siehe orderCompletion.ts)
+ * und merkt den Anfragezeitpunkt vor (`orders.freigabe_angefragt_am`).
+ *
+ * Admin-ausgelöst (RequestProofApprovalButton → proofRequestActions.ts),
+ * NICHT bei einem Statusübergang – die Bestellung steht zu diesem Zeitpunkt
+ * noch auf 'new'. Erst die anschließende Freigabe durch die Kundschaft
+ * (freigebeVorschauDurchKunden unten) schaltet den Übergang nach
+ * 'in_production' frei, siehe die freigabe-fehlt-Prüfung in
+ * setzeBestellstatus() oben.
+ *
+ * Bewusst OHNE eigenen Claim: derselbe Grund wie bei sendeStatusmailErneut()
+ * unten – ein Doppelklick verschickt zweimal dieselbe Bitte, das ist die
+ * einzige denkbare Auswirkung und liegt in der Natur einer bewusst vom Admin
+ * ausgelösten Aktion.
+ */
+export async function sendeVorschauFreigabeAnfrage(
+  orderId: string,
+  jetzt: Date = new Date()
+): Promise<VorschauFreigabeAnfrageErgebnis> {
+  const db = createAdminClient();
+  const { data: bestellung, error } = await db
+    .from('orders')
+    .select('email, order_number')
+    .eq('id', orderId)
+    .maybeSingle<{ email: string | null; order_number: string | null }>();
+
+  if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
+  if (!bestellung.email) return { ok: false, grund: 'keine-email' };
+
+  // Derselbe signierte Link wie in der Bestellbestätigung
+  // (orderIntake.ts::bestellansichtUrl) – hier bewusst lokal nachgebaut statt
+  // von dort importiert: orderIntake.ts importiert bereits protokolliereBestell-
+  // ereignis/protokolliereVersand von HIER, ein Import in die Gegenrichtung
+  // wäre ein Zirkelimport (siehe Kopfkommentar von protokolliereVersand oben).
+  const token = erzeugeBestellToken(orderId);
+  if (!token) {
+    console.warn(
+      `[orders] Freigabeanfrage ${orderId} nicht versendet: kein Bestellansicht-Link (ORDER_TOKEN_SECRET fehlt oder ist zu kurz).`
+    );
+    return { ok: false, grund: 'kein-link' };
+  }
+
+  await db.from('orders').update({ freigabe_angefragt_am: jetzt.toISOString() }).eq('id', orderId);
+  await protokolliereBestellereignis(
+    { orderId, eventType: 'proof_requested', reason: 'Vorschau zur Freigabe an die Kundschaft gesendet.' },
+    db
+  );
+
+  try {
+    const versand = await sendOrderProofRequestEmail({
+      orderId,
+      orderNumber: bestellung.order_number ?? buildOrderNumber(orderId),
+      empfaenger: bestellung.email,
+      bestellansichtUrl: `${basisUrl()}/bestellung/${token}`,
+    });
+    await protokolliereVersand(orderId, 'order_proof_request', { status: 'fulfilled', value: versand });
+  } catch (err) {
+    await protokolliereVersand(orderId, 'order_proof_request', { status: 'rejected', reason: err });
+  }
+
+  return { ok: true };
 }
 
 export type StatusmailErneutErgebnis =
@@ -344,22 +486,28 @@ export async function sendeStatusmailErneut(orderId: string): Promise<Statusmail
   const db = createAdminClient();
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('email, status, tracking_number, carrier')
+    .select('email, status, tracking_number, carrier, order_number')
     .eq('id', orderId)
-    .maybeSingle<{ email: string | null; status: OrderStatus; tracking_number: string | null; carrier: string | null }>();
+    .maybeSingle<{
+      email: string | null;
+      status: OrderStatus;
+      tracking_number: string | null;
+      carrier: string | null;
+      order_number: string | null;
+    }>();
 
   if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
   if (!bestellung.email) return { ok: false, grund: 'keine-email' };
 
   switch (bestellung.status) {
     case 'shipped':
-      await sendeShippedMail(orderId, bestellung.email, bestellung.tracking_number, bestellung.carrier);
+      await sendeShippedMail(orderId, bestellung.email, bestellung.tracking_number, bestellung.carrier, bestellung.order_number);
       return { ok: true, anlass: 'order_shipped' };
     case 'in_production':
-      await sendeInProductionMail(orderId, bestellung.email);
+      await sendeInProductionMail(orderId, bestellung.email, bestellung.order_number);
       return { ok: true, anlass: 'order_in_production' };
     case 'completed':
-      await sendeCompletedMail(orderId, bestellung.email);
+      await sendeCompletedMail(orderId, bestellung.email, bestellung.order_number);
       return { ok: true, anlass: 'order_completed' };
     default:
       return { ok: false, grund: 'kein-status-mit-mail' };
@@ -564,7 +712,9 @@ export async function storniereBestellungDurchKunden(
 
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('id, email, created_at, status, order_type, internal_notification_email_id, accounting_ready_at, payment_status')
+    .select(
+      'id, email, created_at, status, order_type, internal_notification_email_id, accounting_ready_at, payment_status, order_number'
+    )
     .eq('id', orderId)
     .maybeSingle<{
       id: string;
@@ -575,6 +725,7 @@ export async function storniereBestellungDurchKunden(
       internal_notification_email_id: string | null;
       accounting_ready_at: string | null;
       payment_status: string | null;
+      order_number: string | null;
     }>();
 
   if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
@@ -699,8 +850,7 @@ export async function storniereBestellungDurchKunden(
     try {
       const versand = await sendOrderCancellationEmail({
         orderId,
-        // Bestellnummer wird abgeleitet, sie ist keine Spalte.
-        orderNumber: buildOrderNumber(orderId),
+        orderNumber: bestellung.order_number ?? buildOrderNumber(orderId),
         empfaenger: bestellung.email,
         storniertAm: formatiereZeitpunkt(jetzt, { dateStyle: 'long', timeStyle: 'short' }),
         erstattungFaellig: bestellung.payment_status === 'paid',
@@ -722,6 +872,228 @@ export async function storniereBestellungDurchKunden(
   // eine Funktion, die nichts tut, sieht nach Funktionalität aus.
 
   return { ok: true, bereitsStorniert: false, erstattungAusstehend: bestellung.payment_status === 'paid' };
+}
+
+export type KundenfreigabeErgebnis =
+  | { ok: true; bereitsErteilt: boolean }
+  | { ok: false; grund: 'nicht-gefunden' | 'nicht-angefragt' | 'fehler' };
+
+/**
+ * Freigabe der Druckvorschau durch die Kundschaft – der verbindliche
+ * Bestätigungsschritt, den FAQ/Über-uns versprechen. Setzt
+ * `orders.freigabe_erteilt_am`, was `setzeBestellstatus()` oben als
+ * zusätzliche, von der Stornofrist/Zahlung unabhängige Bedingung für den
+ * Übergang nach 'in_production' prüft.
+ *
+ * Dieselbe Absicherung gegen einen doppelten Effekt wie bei
+ * storniereBestellungDurchKunden oben: bedingtes Update
+ * (`.is('freigabe_erteilt_am', null)`), ein erneuter Klick auf denselben
+ * Link ist kein Fehler.
+ */
+export async function freigebeVorschauDurchKunden(
+  orderId: string,
+  jetzt: Date = new Date()
+): Promise<KundenfreigabeErgebnis> {
+  const db = createAdminClient();
+  const { data: bestellung, error } = await db
+    .from('orders')
+    .select('id, email, freigabe_angefragt_am, freigabe_erteilt_am, order_number')
+    .eq('id', orderId)
+    .maybeSingle<{
+      id: string;
+      email: string | null;
+      freigabe_angefragt_am: string | null;
+      freigabe_erteilt_am: string | null;
+      order_number: string | null;
+    }>();
+
+  if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
+  // Ohne Anfrage keine Freigabe – schützt zusätzlich zur UI (die den Bereich
+  // nur bei gesetztem freigabeAngefragtAm zeigt) auch einen direkten Aufruf.
+  if (!bestellung.freigabe_angefragt_am) return { ok: false, grund: 'nicht-angefragt' };
+  if (bestellung.freigabe_erteilt_am) return { ok: true, bereitsErteilt: true };
+
+  const { data: geaendert, error: updateFehler } = await db
+    .from('orders')
+    .update({ freigabe_erteilt_am: jetzt.toISOString() })
+    .eq('id', orderId)
+    .is('freigabe_erteilt_am', null)
+    .select('id');
+
+  if (updateFehler) {
+    console.error(`[orders] Kundenfreigabe ${orderId} fehlgeschlagen:`, updateFehler);
+    return { ok: false, grund: 'fehler' };
+  }
+  if ((geaendert?.length ?? 0) === 0) {
+    // Eine parallele Freigabe (zweiter Tab, Doppelklick) war schneller – aus
+    // Kundensicht ebenfalls ein Erfolg, kein zweites Ereignis/keine zweite Mail.
+    return { ok: true, bereitsErteilt: true };
+  }
+
+  await protokolliereBestellereignis(
+    { orderId, eventType: 'proof_approved', reason: 'Druckvorschau durch die Kundschaft freigegeben.' },
+    db
+  );
+
+  // Interne Benachrichtigung, nicht-fatal: Die Freigabe steht bereits fest
+  // und gilt unabhängig davon, ob der Betreiber sofort davon erfährt – die
+  // Bestell-Historie (order_events) ist der maßgebliche Nachweis.
+  if (bestellung.email) {
+    try {
+      const versand = await sendProofFeedbackEmail({
+        orderId,
+        orderNumber: bestellung.order_number ?? buildOrderNumber(orderId),
+        adminUrl: `${basisUrl()}/admin/bestellung/${orderId}`,
+        art: 'freigegeben',
+        kundeEmail: bestellung.email,
+      });
+      await protokolliereVersand(orderId, 'proof_feedback', { status: 'fulfilled', value: versand });
+    } catch (err) {
+      await protokolliereVersand(orderId, 'proof_feedback', { status: 'rejected', reason: err });
+    }
+  }
+
+  return { ok: true, bereitsErteilt: false };
+}
+
+export type AenderungswunschErgebnis =
+  | { ok: true }
+  | { ok: false; grund: 'nicht-gefunden' | 'nicht-angefragt' };
+
+/**
+ * Änderungswunsch der Kundschaft zur Druckvorschau – reines
+ * Kommunikationssignal, KEINE Bestellbearbeitung. Setzt bewusst KEINEN
+ * Zeitstempel (anders als freigebeVorschauDurchKunden): der Übergang nach
+ * 'in_production' bleibt einfach so lange blockiert, bis der Betreiber die
+ * Angelegenheit geklärt hat und (bei Bedarf nach einer neuen Vorschau) die
+ * Freigabe erneut anfragt. Die Klärung selbst bleibt ein manueller Vorgang
+ * außerhalb dieser Funktion, wie jede andere Ausnahme im System.
+ *
+ * Kein Claim-Lock nötig: mehrere Änderungswünsche sind fachlich unbedenklich
+ * (mehrere Kommentare zur selben Bestellung), anders als eine Freigabe mit
+ * ihrer EINEN maßgeblichen Wirkung.
+ */
+export async function wuenscheAenderungDurchKunden(
+  orderId: string,
+  kommentar: string
+): Promise<AenderungswunschErgebnis> {
+  const db = createAdminClient();
+  const { data: bestellung, error } = await db
+    .from('orders')
+    .select('id, email, freigabe_angefragt_am, order_number')
+    .eq('id', orderId)
+    .maybeSingle<{ id: string; email: string | null; freigabe_angefragt_am: string | null; order_number: string | null }>();
+
+  if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
+  if (!bestellung.freigabe_angefragt_am) return { ok: false, grund: 'nicht-angefragt' };
+
+  await protokolliereBestellereignis(
+    {
+      orderId,
+      eventType: 'proof_change_requested',
+      reason: 'Kundschaft wünscht eine Änderung an der Druckvorschau.',
+      detail: { kommentar },
+    },
+    db
+  );
+
+  if (bestellung.email) {
+    try {
+      const versand = await sendProofFeedbackEmail({
+        orderId,
+        orderNumber: bestellung.order_number ?? buildOrderNumber(orderId),
+        adminUrl: `${basisUrl()}/admin/bestellung/${orderId}`,
+        art: 'aenderung_gewuenscht',
+        kundeEmail: bestellung.email,
+        kommentar,
+      });
+      await protokolliereVersand(orderId, 'proof_feedback', { status: 'fulfilled', value: versand });
+    } catch (err) {
+      await protokolliereVersand(orderId, 'proof_feedback', { status: 'rejected', reason: err });
+    }
+  }
+
+  return { ok: true };
+}
+
+export interface LieferadresseKorrektur {
+  customerName?: string;
+  strasse?: string;
+  plz?: string;
+  ort?: string;
+  land?: string;
+}
+
+export type LieferadresseKorrekturErgebnis =
+  | { ok: true }
+  | { ok: false; grund: 'nicht-gefunden' | 'bereits-label-erstellt' | 'fehler' };
+
+/**
+ * Korrigiert Name/Lieferadresse einer Bestellung durch den Betreiber – der
+ * häufigste Support-Fall ("habe mich bei der Hausnummer vertippt") ließ sich
+ * bislang nur per direktem Datenbankzugriff oder per vollständigem Storno
+ * beheben (Ausbauplan, quickwins).
+ *
+ * Bewusst NUR erlaubt, solange noch KEIN DHL-Label erzeugt wurde: Ein bereits
+ * gedrucktes Label trägt die alte Adresse physisch – eine nachträgliche
+ * Korrektur in der Datenbank würde dann nur eine falsche Erwartung wecken,
+ * ohne das reale Problem (falsches Label bereits an DHL übergeben) zu lösen.
+ * Für diesen selteneren Fall bleibt der bestehende Weg (Kulanzstornierung +
+ * neue Bestellung) der richtige.
+ */
+export async function korrigiereLieferadresseDurchAdmin(
+  orderId: string,
+  korrektur: LieferadresseKorrektur
+): Promise<LieferadresseKorrekturErgebnis> {
+  const db = createAdminClient();
+  const { data: bestellung, error } = await db
+    .from('orders')
+    .select('id, dhl_label_url, customer_name, shipping_street, shipping_zip, shipping_city, shipping_country')
+    .eq('id', orderId)
+    .maybeSingle<{
+      id: string;
+      dhl_label_url: string | null;
+      customer_name: string;
+      shipping_street: string | null;
+      shipping_zip: string | null;
+      shipping_city: string | null;
+      shipping_country: string | null;
+    }>();
+
+  if (error || !bestellung) return { ok: false, grund: 'nicht-gefunden' };
+  if (bestellung.dhl_label_url) return { ok: false, grund: 'bereits-label-erstellt' };
+
+  const patch: Record<string, unknown> = {};
+  if (korrektur.customerName?.trim()) patch.customer_name = korrektur.customerName.trim();
+  if (korrektur.strasse?.trim()) patch.shipping_street = korrektur.strasse.trim();
+  if (korrektur.plz?.trim()) patch.shipping_zip = korrektur.plz.trim();
+  if (korrektur.ort?.trim()) patch.shipping_city = korrektur.ort.trim();
+  if (korrektur.land?.trim()) patch.shipping_country = korrektur.land.trim();
+
+  if (Object.keys(patch).length === 0) return { ok: true };
+
+  const { error: updateFehler } = await db.from('orders').update(patch).eq('id', orderId);
+  if (updateFehler) {
+    console.error(`[orders] Adresskorrektur ${orderId} fehlgeschlagen:`, updateFehler);
+    return { ok: false, grund: 'fehler' };
+  }
+
+  const vorher = [
+    bestellung.customer_name,
+    bestellung.shipping_street,
+    [bestellung.shipping_zip, bestellung.shipping_city].filter(Boolean).join(' '),
+    bestellung.shipping_country,
+  ]
+    .filter(Boolean)
+    .join(', ');
+  await protokolliereBestellereignis({
+    orderId,
+    eventType: 'address_corrected',
+    reason: 'Name/Lieferadresse durch den Betreiber korrigiert.',
+    detail: { vorher, geaenderteFelder: Object.keys(patch) },
+  });
+
+  return { ok: true };
 }
 
 export type LoescheBestellungErgebnis =

@@ -46,6 +46,7 @@ export async function aendereBestellstatus(
         : 'Dieser Statuswechsel ist nicht zulässig.',
       'noch-nicht-freigegeben':
         'Noch nicht möglich: Die Stornofrist für diese Bestellung läuft noch (oder die Zahlung steht aus). Der Kunde kann in dieser Zeit noch selbst stornieren.',
+      'freigabe-fehlt': 'Noch nicht möglich: Die Kundschaft hat die Druckvorschau noch nicht freigegeben.',
       fehler: 'Der Statuswechsel ist fehlgeschlagen.',
     };
     return { ok: false, meldung: texte[ergebnis.grund] ?? 'Unbekannter Fehler.' };

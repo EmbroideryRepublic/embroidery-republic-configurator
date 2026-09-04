@@ -43,7 +43,7 @@ export function OrderConfirmationEmail({
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>{intro}</Text>
-      <OrderItemsTable order={order} />
+      <OrderItemsTable items={order.items} />
 
       {isOrder && order.subtotal !== undefined && (
         <>

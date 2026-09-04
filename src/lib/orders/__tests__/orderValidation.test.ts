@@ -298,6 +298,50 @@ test('ein einzelnes Textelement genügt bereits als Personalisierung', async () 
   assert.equal(ergebnis.valid, true, `unerwartete Befunde: ${JSON.stringify(ergebnis.issues)}`);
 });
 
+// ── Vorlagen-Platzhalter (Ausbauplan, quickwins) ─────────────────────────
+//
+// "Euer Firmenname" aus einer Vorlage darf nicht unverändert bis in die
+// Produktion gelangen – bei personalisierter, vom Widerruf ausgeschlossener
+// Ware träfen Fehlproduktionskosten den Betrieb.
+
+test('ein unbearbeiteter Vorlagen-Platzhalter wird bei einer Bestellung abgewiesen', async () => {
+  const gefunden = await codes({
+    ...gueltigeBestellung,
+    items: [
+      position({
+        elements: [logo({ id: 'el-platzhalter', type: 'text', content: 'Euer Firmenname', isTemplatePlaceholder: true })],
+      }),
+    ],
+  });
+  assert.ok(gefunden.includes('platzhalter_nicht_ersetzt'), gefunden.join(','));
+});
+
+test('ein bearbeiteter Vorlagentext (isTemplatePlaceholder: false) wird akzeptiert', async () => {
+  const ergebnis = await validateSubmission({
+    ...gueltigeBestellung,
+    items: [
+      position({
+        elements: [logo({ id: 'el-bearbeitet', type: 'text', content: 'Mustermann GmbH', isTemplatePlaceholder: false })],
+      }),
+    ],
+  });
+  assert.equal(ergebnis.valid, true, `unerwartete Befunde: ${JSON.stringify(ergebnis.issues)}`);
+});
+
+test('ein unbearbeiteter Platzhalter blockiert eine unverbindliche Anfrage NICHT (nur echte Bestellungen)', async () => {
+  const ergebnis = await validateSubmission({
+    orderType: 'inquiry',
+    email: 'interessent@example.de',
+    customerName: 'Chris Beispiel',
+    items: [
+      position({
+        elements: [logo({ id: 'el-platzhalter', type: 'text', content: 'Euer Firmenname', isTemplatePlaceholder: true })],
+      }),
+    ],
+  });
+  assert.equal(ergebnis.valid, true, `unerwartete Befunde: ${JSON.stringify(ergebnis.issues)}`);
+});
+
 test('eine unverbindliche Anfrage darf weiterhin ganz ohne Motiv gesendet werden', async () => {
   const ergebnis = await validateSubmission({
     orderType: 'inquiry',

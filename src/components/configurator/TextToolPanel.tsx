@@ -83,6 +83,7 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
       outlineColor: '#ffffff',
       inkCoverageRatio,
       estimatedStitches: estimateTextStitches(box.widthCm * box.heightCm, inkCoverageRatio),
+      isTemplatePlaceholder: false,
     };
 
     addElement(element);

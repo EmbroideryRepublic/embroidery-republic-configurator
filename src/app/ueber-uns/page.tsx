@@ -6,7 +6,7 @@ export const metadata = {
   alternates: { canonical: '/ueber-uns' },
   title: 'Über uns',
   description:
-    'Embroidery Republic Germany veredelt Firmen- und Teambekleidung per DTF-Transferdruck und Stickerei – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
+    'Embroidery Republic Germany veredelt in Köln Firmen- und Teambekleidung per DTF-Transferdruck und Stickerei – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
   openGraph: {
     title: 'Über Embroidery Republic Germany',
     description:

@@ -113,7 +113,11 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
     // bei schnellem Tippen dauerhaft) außerhalb der noch zu kleinen Box
     // landen und dadurch unsichtbar wirken. Nur die separate, reine
     // Preisberechnung (Tintenflächen-Messung) wird unten entkoppelt.
-    updateText({ content: value }, { deferInkRatio: true });
+    // isTemplatePlaceholder erlischt HIER, an der einzigen Stelle, an der
+    // Nutzer:innen den Textinhalt selbst editieren (bestätigt per Grep) –
+    // andere updateText()-Aufrufe (Schriftart, Größe, fett/kursiv …) lassen
+    // einen noch unbearbeiteten Vorlagentext bewusst weiter blockiert.
+    updateText({ content: value, isTemplatePlaceholder: false }, { deferInkRatio: true });
 
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {

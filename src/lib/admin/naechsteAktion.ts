@@ -19,6 +19,20 @@ export interface NaechsteAktion {
   ton: NaechsteAktionTon;
 }
 
+/**
+ * Fehlt für mindestens eine Ansicht mit platzierten Elementen die
+ * Druckvorschau? Extrahiert aus `berechneNaechsteAktion()` (dort bis
+ * 2026-09-04 Inline-Logik), damit `RequestProofApprovalButton.tsx` dieselbe
+ * Bedingung nutzen kann, um den Freigabe-Versand zu deaktivieren, solange
+ * Vorschauen fehlen – keine zweite, potenziell abweichende Prüfung.
+ */
+export function fehlenVorschauen(order: AdminOrderDetail): boolean {
+  return order.items.some((item) => {
+    const ansichtenMitElementen = new Set(item.elements.map((e) => e.view));
+    return [...ansichtenMitElementen].some((view) => !item.previewUrlByView[view]);
+  });
+}
+
 export function berechneNaechsteAktion(order: AdminOrderDetail): NaechsteAktion | null {
   if (order.orderType !== 'order') return null; // Anfrage: kein Bestellstatus
 
@@ -54,11 +68,7 @@ export function berechneNaechsteAktion(order: AdminOrderDetail): NaechsteAktion 
   }
 
   // Ab hier: produktionsbereit (weder storniert noch stornierbar, Zahlung ok).
-  const fehlendeVorschau = order.items.some((item) => {
-    const ansichtenMitElementen = new Set(item.elements.map((e) => e.view));
-    return [...ansichtenMitElementen].some((view) => !item.previewUrlByView[view]);
-  });
-  if (fehlendeVorschau) {
+  if (fehlenVorschauen(order)) {
     return { text: 'Für mindestens eine Ansicht fehlt die Druckvorschau – im Bereich „Personalisierung" erzeugen.', ton: 'kritisch' };
   }
 
@@ -75,6 +85,19 @@ export function berechneNaechsteAktion(order: AdminOrderDetail): NaechsteAktion 
   }
 
   if (order.status === 'new') {
+    // Erreicht diese Stelle die Ausführung, sind Stornofrist, Zahlung,
+    // Vorschauen und Rechnung bereits sichergestellt (siehe Prüfungen oben).
+    // Die Freigabeprüfung gilt bewusst NUR für 'new': eine bereits
+    // in_production/shipped/completed gesetzte Bestellung hat den Übergang
+    // längst hinter sich (bei älteren Bestellungen ggf. von vor Einführung
+    // dieses Schritts) – sie hier erneut "wartet auf Freigabe" zu melden,
+    // wäre irreführend.
+    if (!order.freigabeAngefragtAm) {
+      return { text: 'Vorschau zur Freigabe an die Kundschaft senden.', ton: 'ok' };
+    }
+    if (!order.freigabeErteiltAm) {
+      return { text: 'Wartet auf Kundenfreigabe der Druckvorschau.', ton: 'hinweis' };
+    }
     return { text: 'Auf „In Produktion" setzen.', ton: 'ok' };
   }
   if (order.status === 'in_production') {

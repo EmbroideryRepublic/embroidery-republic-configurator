@@ -338,6 +338,21 @@ async function persistAndNotifyCore(params: {
   // arbeiten ab hier ausschließlich mit `items`, nie mehr mit params.items.
   const stichzahlen = mitVertrauenswuerdigerStichzahl(params.items);
   const items = stichzahlen.items;
+  // Ein Stickerei-Logo ohne lesbaren Inhalt (PNG-Header gültig, Bilddaten
+  // kaputt oder vollständig transparent) ist weder produzierbar noch
+  // ehrlich bepreisbar – resvg rendert solche Dateien stumm als leeres
+  // Bild, und die Upload-Prüfung sieht nur die Signatur. Blockieren statt
+  // raten: keine Bestellung auf einem leeren Motiv.
+  if (stichzahlen.unlesbar.length > 0) {
+    console.warn(
+      '[orders] Bestelleingang abgewiesen – Stickerei-Logo ohne lesbaren Inhalt:',
+      stichzahlen.unlesbar.map((u) => `${u.itemId}/${u.elementId}`).join(', ')
+    );
+    return {
+      success: false,
+      error: 'Ein Logo konnte nicht gelesen werden oder ist leer. Bitte laden Sie es im Konfigurator erneut hoch.',
+    };
+  }
   for (const k of stichzahlen.korrekturen) {
     console.warn(
       `[orders] Stichzahl vom Client ersetzt (${k.typ}, Position ${k.itemId}, Element ${k.elementId}): ` +

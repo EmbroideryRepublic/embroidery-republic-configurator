@@ -121,11 +121,60 @@ test('Server schätzt die Stichzahl eines Logos aus dem PNG selbst – determini
   assert.ok(gross > a * 3.5 && gross < a * 4.2, `größeres Motiv: ${gross} vs. ${a}`);
 });
 
+/** PNGs mit GÜLTIGEM Header, aber unbrauchbarem Inhalt – resvg rendert sie
+ *  stumm als leeres Bild statt einen Fehler zu werfen (geprüft). */
+function kaputtePngs(): [string, string][] {
+  const gut = Buffer.from(LOGO_PNG.split(',')[1]!, 'base64');
+  const url = (b: Buffer) => `data:image/png;base64,${b.toString('base64')}`;
+  const riesigerHeader = Buffer.from(gut.subarray(0, 33));
+  riesigerHeader.writeUInt32BE(8000, 16);
+  riesigerHeader.writeUInt32BE(8000, 20);
+  const leerAberGueltig = new Resvg('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200"></svg>').render().asPng();
+  const nurWeiss = new Resvg('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200"><rect width="300" height="200" fill="#ffffff"/></svg>').render().asPng();
+  return [
+    ['nach IHDR abgeschnitten', url(gut.subarray(0, 33))],
+    ['halb abgeschnitten', url(gut.subarray(0, Math.floor(gut.length / 2)))],
+    ['Bilddaten mit Müll überschrieben', url(Buffer.concat([gut.subarray(0, 60), Buffer.alloc(gut.length - 60, 0x5a)]))],
+    ['Header 8000×8000 ohne Bilddaten', url(riesigerHeader)],
+    ['gültiges, vollständig transparentes PNG', url(leerAberGueltig)],
+    ['gültiges, rein weißes PNG', url(nurWeiss)],
+  ];
+}
+
 test('Server-Schätzung fällt bei unlesbaren Bilddaten auf die bildlose Schätzung zurück – nie auf 0 oder den Clientwert', () => {
   for (const kaputt of ['', 'data:image/png;base64,', 'data:image/png;base64,QUJD', 'data:text/plain;base64,QUJD', 'https://example.com/x.png']) {
     assert.equal(schaetzeLogoSticheAusPng(kaputt, 8, 4), schaetzeLogoSticheOhneBild(32), `Eingabe ${JSON.stringify(kaputt)}`);
   }
   assert.ok(schaetzeLogoSticheOhneBild(32) > BASE_OVERHEAD_STITCHES);
+});
+
+test('PNG mit gültigem Header, aber leerem/kaputtem Inhalt: nie nur Grundstiche, sondern bildlose Schätzung (50 % Füllung)', () => {
+  for (const [name, url] of kaputtePngs()) {
+    assert.equal(schaetzeLogoSticheAusPng(url, 8, 4), schaetzeLogoSticheOhneBild(32), name);
+    assert.ok(schaetzeLogoSticheAusPng(url, 8, 4) > BASE_OVERHEAD_STITCHES, `${name}: mehr als die 500 Grundstiche`);
+  }
+});
+
+test('Leere oder unlesbare Stickerei-Logos werden als `unlesbar` gemeldet – die Bestellung wird abgewiesen, nicht bepreist', () => {
+  for (const [name, url] of kaputtePngs()) {
+    for (const clientWert of [500, 0, 26764]) {
+      const { unlesbar, items } = mitVertrauenswuerdigerStichzahl([position([logo({ fileUrl: url, estimatedStitches: clientWert })])]);
+      assert.equal(unlesbar.length, 1, `${name} (Client ${clientWert}) muss als unlesbar gemeldet werden`);
+      assert.deepEqual(unlesbar[0], { itemId: 'pos-1', elementId: 'el-logo' });
+      // Selbst wenn ein Aufrufer die Meldung ignorierte: der Wert läge nie unter der bildlosen Schätzung.
+      assert.ok(items[0]!.elements[0]!.estimatedStitches >= schaetzeLogoSticheOhneBild(32), `${name}: Rückfallwert`);
+    }
+  }
+  // Nicht-PNG-Daten (kein data:-URL, falsche Signatur) sind ebenfalls unlesbar –
+  // sie scheitern zusätzlich bereits beim Speichern (uploadProductionFile).
+  for (const url of ['', 'data:image/png;base64,QUJD', 'https://example.com/x.png']) {
+    assert.equal(mitVertrauenswuerdigerStichzahl([position([logo({ fileUrl: url })])]).unlesbar.length, 1, JSON.stringify(url));
+  }
+  // Ein echtes Motiv ist lesbar.
+  assert.equal(mitVertrauenswuerdigerStichzahl([position([logo()])]).unlesbar.length, 0);
+  // Texte und DTF-Positionen sind von dieser Prüfung nicht betroffen.
+  assert.equal(mitVertrauenswuerdigerStichzahl([position([text()])]).unlesbar.length, 0);
+  assert.equal(mitVertrauenswuerdigerStichzahl([position([logo({ fileUrl: 'data:image/png;base64,QUJD' })], 'dtf')]).unlesbar.length, 0);
 });
 
 test('Server misst den Tintenanteil eines Textes selbst (gebündelte Ersatzschriften) und schätzt daraus die Stiche', () => {

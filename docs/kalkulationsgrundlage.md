@@ -282,6 +282,35 @@ in die Preisbildung.
 > Serverwert. Ein manipulierter Request kann die Stichzahl damit nicht unter
 > den Serverwert drücken; die Toleranz existiert allein, damit Anzeige und
 > Rechnung bei ehrlichen Kundinnen exakt übereinstimmen.
+>
+> **Unlesbare oder leere Motivdaten (geprüft 2026-09-04).** Drei Stufen:
+>
+> 1. Keine PNG-Datei (kein `data:`-URL, falsche Signatur, zu groß, Header
+>    unlesbar): `pruefeDataUrl` lehnt ab. Solche Daten werden zwar in der
+>    Stichzahl-Prüfung mit der bildlosen Schätzung belegt, erreichen aber
+>    nie eine gespeicherte Bestellung – `uploadProductionFile` weist sie
+>    beim Ablegen ab, der Bestellvorgang bricht ab.
+> 2. Gültiger PNG-Header, aber kaputter oder leerer Inhalt (abgeschnitten,
+>    Müll statt Bilddaten, vollständig transparent, rein weiß): resvg wirft
+>    hier KEINEN Fehler, sondern rendert ein leeres Bild – die Upload-
+>    Prüfung sieht nur die Signatur. Deshalb prüft `logoHatInhalt()` mit
+>    demselben Verfahren wie die Preisberechnung, ob mindestens ein
+>    Motivpixel existiert. Fehlt er, meldet `mitVertrauenswuerdigerStichzahl`
+>    das Element als `unlesbar` und `orders.ts` weist die Bestellung ab
+>    („Ein Logo konnte nicht gelesen werden oder ist leer …"). Es gibt
+>    nichts zu besticken und nichts, woraus sich ein ehrlicher Preis
+>    ableiten ließe – blockieren statt raten.
+> 3. Zweite Sicherung, falls ein solches Element je bis zur Preisberechnung
+>    käme: Der numerische Rückfall ist die bildlose Schätzung (50 % Füllung
+>    + 500 Grundstiche, z.B. 7.220 Stiche für 8×4 cm), nie nur die 500
+>    Grundstiche und nie der Clientwert. Vor dieser Prüfung lag der Wert
+>    für ein leeres Bild bei 500 – ein Clientwert 500 wäre akzeptiert
+>    worden (0,60 € Aufpreis für beliebig große Motive).
+>
+> Bepreist und produziert wird die DISPLAY-Datei (was Vorschau und
+> Produktionsblatt zeigen); die archivierte Originaldatei ist Referenz. Die
+> Werkstatt digitalisiert nach der freigegebenen Vorschau, nicht nach einer
+> davon abweichenden Originaldatei.
 
 ---
 

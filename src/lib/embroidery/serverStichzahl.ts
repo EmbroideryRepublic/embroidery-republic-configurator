@@ -48,10 +48,12 @@ import type { CartItem, ConfigElement, LogoElement, TextElement } from '@/types'
 import { pruefeDataUrl } from '@/lib/upload/pruefeUpload';
 import { getFontFiles, resolveFontFamily } from '@/lib/rendering/fonts';
 import {
+  analysiereMotiv,
   dekodierMasse,
   schaetzeLogoStiche,
   schaetzeLogoSticheOhneBild,
   schaetzeTextStiche,
+  verkleinereAufRaster,
   type PixelDaten,
 } from './stichschaetzung';
 
@@ -103,20 +105,19 @@ function istEndlicheZahl(wert: unknown): wert is number {
 }
 
 /**
- * Stichzahl eines Logos aus seinem Display-PNG (Data-URL), wie sie der
- * Browser für dieselbe Datei ermittelt: PNG in Originalgröße dekodieren
- * (resvg), Alpha entmultiplizieren, dann der gemeinsame Rechenkern
- * (deterministische Verkleinerung + Füll-/Kantenanteil). Nicht lesbare
- * Daten → Rückfall auf die bildlose Schätzung (mittlere Füllung) – niemals
- * 0 oder ein Clientwert.
+ * Dekodiert ein Display-PNG (Data-URL) zu Pixeln – in Originalgröße (bis
+ * MAX_NATIV_PX), Alpha entmultipliziert. `null`, wenn die Daten keine
+ * gültige PNG-Datei sind (Signatur/Header, siehe pruefeUpload.ts) oder
+ * resvg sie nicht rendern kann.
+ *
+ * ACHTUNG (geprüft): resvg wirft bei einem PNG mit gültigem Header, aber
+ * kaputtem Inhalt (abgeschnitten, Müll statt Bilddaten) KEINEN Fehler,
+ * sondern liefert ein vollständig transparentes Bild. Deshalb entscheidet
+ * nicht der Dekodier-Erfolg über „lesbar", sondern logoHatInhalt().
  */
-export function schaetzeLogoSticheAusPng(dataUrl: string, widthCm: number, heightCm: number): number {
-  const areaCm2 = widthCm * heightCm;
-  if (!(areaCm2 > 0)) return 0;
-
+export function dekodiereLogoPixel(dataUrl: string): PixelDaten | null {
   const pruefung = pruefeDataUrl(dataUrl);
-  if (!pruefung.ok) return schaetzeLogoSticheOhneBild(areaCm2);
-
+  if (!pruefung.ok) return null;
   try {
     const { width, height } = dekodierMasse(pruefung.breitePx, pruefung.hoehePx);
     const svg =
@@ -124,11 +125,43 @@ export function schaetzeLogoSticheAusPng(dataUrl: string, widthCm: number, heigh
       `<image href="data:image/png;base64,${pruefung.bytes.toString('base64')}" x="0" y="0" width="${width}" height="${height}" preserveAspectRatio="none"/>` +
       `</svg>`;
     const gerendert = new Resvg(svg, { fitTo: { mode: 'original' } }).render();
-    const px: PixelDaten = { data: entmultipliziere(gerendert.pixels), width: gerendert.width, height: gerendert.height };
-    return schaetzeLogoStiche(px, areaCm2);
+    return { data: entmultipliziere(gerendert.pixels), width: gerendert.width, height: gerendert.height };
   } catch {
-    return schaetzeLogoSticheOhneBild(areaCm2);
+    return null;
   }
+}
+
+/**
+ * Enthält das Motiv überhaupt etwas Stickbares? Geprüft mit demselben
+ * Verfahren wie die Preisberechnung (Verkleinerung auf das Analyse-Raster,
+ * Pixel gilt als Motiv bei Alpha ≥ 40 und nicht weiß). Ein Bild ohne einen
+ * einzigen Motivpixel ist entweder unlesbar (siehe dekodiereLogoPixel) oder
+ * leer – in beiden Fällen gibt es nichts zu besticken und nichts, woraus
+ * sich ein ehrlicher Preis ableiten ließe.
+ */
+export function logoHatInhalt(px: PixelDaten): boolean {
+  return analysiereMotiv(verkleinereAufRaster(px)).fillRatio > 0;
+}
+
+/**
+ * Stichzahl eines Logos aus seinem Display-PNG (Data-URL), wie sie der
+ * Browser für dieselbe Datei ermittelt: dekodieren, dann der gemeinsame
+ * Rechenkern (deterministische Verkleinerung + Füll-/Kantenanteil).
+ *
+ * Rückfall auf die bildlose Schätzung (50 % Füllung + Grundstiche) bei
+ * unlesbaren ODER leeren Daten – niemals 0, niemals nur die Grundstiche und
+ * niemals ein Clientwert. Dieser Rückfall ist eine zweite Sicherung: Solche
+ * Elemente werden von mitVertrauenswuerdigerStichzahl() als `unlesbar`
+ * gemeldet und die Bestellung wird abgewiesen (lib/actions/orders.ts),
+ * der Wert kommt also in einer angenommenen Bestellung nicht vor.
+ */
+export function schaetzeLogoSticheAusPng(dataUrl: string, widthCm: number, heightCm: number): number {
+  const areaCm2 = widthCm * heightCm;
+  if (!(areaCm2 > 0)) return 0;
+
+  const px = dekodiereLogoPixel(dataUrl);
+  if (!px || !logoHatInhalt(px)) return schaetzeLogoSticheOhneBild(areaCm2);
+  return schaetzeLogoStiche(px, areaCm2);
 }
 
 /**
@@ -219,19 +252,31 @@ export interface VertrauenswuerdigeStichzahlen {
   items: CartItem[];
   /** Elemente, deren Clientwert durch den Serverwert ersetzt wurde. */
   korrekturen: StichzahlKorrektur[];
+  /**
+   * Stickerei-Logos, deren Display-PNG unlesbar oder leer ist (siehe
+   * dekodiereLogoPixel/logoHatInhalt). Eine Bestellung mit solchen Elementen
+   * darf NICHT angenommen werden: Es gibt nichts zu besticken, und jede
+   * Stichzahl dafür wäre geraten – lib/actions/orders.ts weist sie ab.
+   */
+  unlesbar: { itemId: string; elementId: string }[];
 }
 
 /**
  * Ersetzt in allen Stickerei-Positionen die vom Browser übermittelte
- * Stichzahl durch den vertrauenswürdigen Wert (siehe Kopfkommentar).
- * DTF-Positionen bleiben unverändert – dort wird nicht nach Stichen
- * abgerechnet.
+ * Stichzahl durch den vertrauenswürdigen Wert (siehe Kopfkommentar) und
+ * meldet Logos ohne lesbaren Inhalt. DTF-Positionen bleiben unverändert –
+ * dort wird nicht nach Stichen abgerechnet.
  */
 export function mitVertrauenswuerdigerStichzahl(items: CartItem[]): VertrauenswuerdigeStichzahlen {
   const korrekturen: StichzahlKorrektur[] = [];
+  const unlesbar: { itemId: string; elementId: string }[] = [];
   const geprueft = items.map((item) => {
     if (item.printMethod !== 'embroidery' || !Array.isArray(item.elements)) return item;
     const elements = item.elements.map((element): ConfigElement => {
+      if (element.type !== 'text') {
+        const px = dekodiereLogoPixel((element as LogoElement).fileUrl);
+        if (!px || !logoHatInhalt(px)) unlesbar.push({ itemId: item.id, elementId: element.id });
+      }
       const serverWert =
         element.type === 'text'
           ? schaetzeTextSticheServer(element)
@@ -252,5 +297,5 @@ export function mitVertrauenswuerdigerStichzahl(items: CartItem[]): Vertrauenswu
     });
     return { ...item, elements };
   });
-  return { items: geprueft, korrekturen };
+  return { items: geprueft, korrekturen, unlesbar };
 }

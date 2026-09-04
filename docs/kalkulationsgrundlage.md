@@ -242,22 +242,34 @@ Fachlich sind das zwei verschiedene Größen: 1,40 € ist ein
 Deckungsbeitrag der Auslagerung – sie gehört in die Nachkalkulation, nicht
 in die Preisbildung.
 
-> **OFFENE PREISENTSCHEIDUNG – bewusst nicht entschieden.**
+> **PREISENTSCHEIDUNG 2026-09-03 (Betreiber).**
 >
-> In `config/pricingRules.ts` steht eine aktive Verkaufsregel `emb-stitches`
-> mit **ebenfalls 1,40 € je 1.000 Stiche** – dort als Betrag, den die
-> **Kundschaft zahlt**.
+> Bis dahin stand in `config/pricingRules.ts` eine Verkaufsregel `emb-stitches`
+> mit **1,40 € je 1.000 Stiche**, die die DTF-Positionsstaffel für Stickerei
+> **vollständig ersetzte** – ohne Grundgebühr und mit dem vollen
+> Veredelungsrabatt der Mengenstaffel (bis 90 %). Folge, mit dem echten
+> Rechenkern nachgerechnet: ein 8×4-cm-Brustlogo (~6.400 Stiche) kostete
+> bestickt 25,95 € gegenüber 25,99 € bedruckt, ab 5 Stück war Stickerei
+> günstiger als DTF, kleine Logos waren bestickt immer ~5 € günstiger, und ab
+> 20 Stück lag der Stich-Erlös auf bzw. unter den Fremdkosten von 0,76 €.
 >
-> Dass beide Werte derzeit gleich sind, ist **der aktuelle Stand und keine
-> Preisstrategie**. Daraus ist ausdrücklich **nicht** abzuleiten, dass die
-> Stickerei dauerhaft ohne Aufschlag angeboten werden soll.
+> Seitdem gilt für Stickerei:
 >
-> Offen sind alle Wege: ein Verkaufssatz über dem internen Satz, ein neu
-> festgelegter interner Satz, oder eine ganz andere Zusammensetzung des
-> internen Satzes. Entschieden wird auf Grundlage der vollständigen
-> Kalkulation und der gewünschten Marktpositionierung.
+> 1. **Dieselbe Positionsstaffel wie DTF** (`DTF_POSITION_TIERS`: 9 € erste
+>    Ansicht, 5 € zweite, 4 € jede weitere, je Stückzahlstufe günstiger) –
+>    über die Regeln `emb-erste-position`/`emb-zusatz-position`. Die früheren
+>    Je-Ansicht-Aufschläge (`emb-pos-*`) sind deaktiviert.
+> 2. **Zusätzlich 1,20 € je 1.000 geschätzte Stiche** (`emb-stitches`).
+>    Stickerei ist damit bei gleichem Motiv immer teurer als DTF – um genau
+>    den Stichaufpreis.
+> 3. **Rabattdeckel** (`maxDiscountPercent` an der Stichregel, berechnet aus
+>    `STICKKOSTEN_JE_1000_STICHE`): Der Mengenrabatt auf den Stichaufpreis ist
+>    auf 36,6 % begrenzt, damit der Erlös je 1.000 Stiche nie unter die
+>    Fremdkosten von 0,76 € fällt. Die DTF-Positionsstaffel bleibt davon
+>    unberührt.
 >
-> **Bis dahin wird hier nichts geändert.**
+> Der interne Verrechnungssatz von 1,40 € oben bleibt eine Kalkulationsgröße
+> und ist kein Verkaufspreis.
 
 ---
 

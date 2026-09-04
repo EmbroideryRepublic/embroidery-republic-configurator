@@ -60,6 +60,15 @@ export const GRENZEN = {
 
 const ERLAUBTE_VEREDELUNGEN: readonly PrintMethod[] = ['dtf', 'embroidery'];
 
+/**
+ * Kleinste Stichzahl, die die Browser-Schätzung je Elementtyp überhaupt
+ * liefern kann (lib/embroidery/estimateStitches.ts: BASE_OVERHEAD_STITCHES
+ * = 500 für Logos, Math.max(150, …) für Text). Ein Wert darunter kann nur
+ * aus einem manipulierten oder defekten Request stammen. Ein Wächtertest
+ * (orderValidation.test.ts) hält beide Stellen zusammen.
+ */
+export const STICH_UNTERGRENZE = { logo: 500, text: 150 } as const;
+
 export interface OrderValidationIssue {
   /** Maschinenlesbar, für Protokoll und Auswertung. */
   code: string;
@@ -359,6 +368,28 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
         itemId,
       });
       continue;
+    }
+
+    // ── Stichzahl (nur Stickerei) ────────────────────────────────────
+    // Der Stichaufpreis (seit 2026-09-03 der einzige Preisunterschied
+    // zwischen Stickerei und DTF) wird aus der vom Browser GESCHÄTZTEN
+    // Stichzahl berechnet – auch serverseitig (serverPricing.ts rechnet mit
+    // den übermittelten Elementen). Ohne diese Prüfung ließe sich der
+    // Aufpreis mit 0, einer negativen Zahl oder NaN im Request abschalten
+    // oder sogar ins Negative drehen. Untergrenze = das, was die Schätzung
+    // selbst nie unterschreitet (estimateStitches.ts: Logo ≥ 500 Grund-
+    // stiche, Text ≥ 150) – ein ehrlicher Konfigurator liefert nie weniger.
+    if (item.printMethod === 'embroidery') {
+      const stiche = element.estimatedStitches;
+      const untergrenze = element.type === 'text' ? STICH_UNTERGRENZE.text : STICH_UNTERGRENZE.logo;
+      if (!istZahl(stiche) || stiche < untergrenze) {
+        issues.push({
+          code: 'stichzahl_ungueltig',
+          message: `Für ein Motiv auf „${name}" fehlt eine gültige Stichzahl-Schätzung. Bitte öffnen Sie das Produkt noch einmal im Konfigurator und legen Sie es erneut in den Warenkorb.`,
+          itemId,
+        });
+        continue;
+      }
     }
 
     if (element.type === 'text' && element.content.length > GRENZEN.maxTextLaenge) {

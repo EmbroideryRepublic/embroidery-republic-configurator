@@ -80,6 +80,32 @@ test('Auch mit Zuschlägen, Rabatten und Einrichtung stimmt die Summe', async ()
   assert.equal(sumLines(r.lines), r.grandTotal, 'Aufschlüsselung und Endbetrag dürfen nie auseinanderlaufen');
 });
 
+test('Stickerei (Positionsstaffel + Stichaufpreis, zwei Ansichten): Summe aller Posten = Endbetrag, Posten je Ansicht nachrechenbar', async () => {
+  const regeln = await getPricingRules('embroidery');
+  const elemente = [
+    { ...logo('front', 'a'), estimatedStitches: 6000 } as ConfigElement,
+    { ...logo('back', 'b'), estimatedStitches: 4000 } as ConfigElement,
+  ];
+  for (const menge of [1, 20, 100]) {
+    const r = calculatePipeline({
+      positions: [await position({ pricingRules: regeln, elements: elemente, quantity: menge, basePrice: 16.99 })],
+      shippingCountry: 'Deutschland',
+    });
+    assert.equal(sumLines(r.lines), r.grandTotal, `${menge} Stück: Aufschlüsselung und Endbetrag dürfen nie auseinanderlaufen`);
+
+    const veredelung = r.lines.filter((l) => l.category === 'veredelung' && l.origin.ruleType === 'per_1000_stitches');
+    assert.equal(veredelung.length, 2, 'je bestickter Ansicht genau ein Posten');
+    for (const line of veredelung) {
+      const basis = line.origin.basis as Record<string, number>;
+      // Posten = Positionsanteil + rabattierter Stichaufpreis DIESER Ansicht
+      const erwartet = basis.positionspreis! + (basis.stiche! / 1000) * basis.satzJe1000Stiche! * (1 - basis.veredelungsrabattProzent! / 100);
+      assert.ok(Math.abs(line.amount - erwartet) < 0.011, `${line.label} bei ${menge} Stück: ${line.amount} statt ${erwartet.toFixed(2)}`);
+    }
+    const stiche = veredelung.map((l) => (l.origin.basis as Record<string, number>).stiche).sort((a, b) => a! - b!);
+    assert.deepEqual(stiche, [4000, 6000], 'jeder Posten trägt die Stichzahl seiner eigenen Ansicht');
+  }
+});
+
 test('Mehrere Positionen summieren sich korrekt', async () => {
   const r = calculatePipeline({
     positions: [await position({ itemId: 'a' }), await position({ itemId: 'b', quantity: 5 })],

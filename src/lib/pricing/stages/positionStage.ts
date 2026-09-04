@@ -1,5 +1,6 @@
 import type { ConfigElement, PricingRule } from '@/types';
 import { positionLabel } from '@/config/decorationPositions';
+import { formatiereGeld } from '@/lib/format';
 import { calculatePrice } from '../calculatePrice';
 import { buildStageResult, makeLine, roundCents, sumLines, type PriceLine, type StageResult } from '../priceLine';
 
@@ -74,6 +75,20 @@ export function calculatePositionStage(input: PositionInput): PositionResult {
   // Nach Ansicht getrennt, damit im Warenkorb sichtbar ist, wofür gezahlt
   // wird („Brust", „Rücken" …) statt nur einer Sammelzeile. Anzeigename kommt
   // aus der zentralen View-Registry (kein dupliziertes Label-Mapping).
+  //
+  // Damit sich jeder Posten aus seiner Herkunft NACHRECHNEN lässt, tragen
+  // Beschreibung und Basis die Werte DIESER Ansicht: ihre Stichzahl und –
+  // bei Positionsstaffel – ihren Positionsanteil. Die Zuordnung erste/
+  // zweite/weitere Ansicht folgt derselben Regel wie calculatePrice
+  // (Reihenfolge, in der die Ansichten erstmals belegt wurden).
+  const ansichtenReihenfolge = [...new Set(elements.map((el) => el.view))];
+  const positionsanteil = (view: string) => {
+    const i = ansichtenReihenfolge.indexOf(view as ConfigElement['view']);
+    return i === 0 ? b.firstPositionPrice : i === 1 ? b.additionalPositionPrice : b.furtherPositionPrice;
+  };
+  const sticheAuf = (view: string) =>
+    elements.filter((el) => el.view === view).reduce((s, el) => s + (el.estimatedStitches ?? 0), 0);
+
   for (const [view, betrag] of Object.entries(b.areaPriceByView)) {
     if (betrag === 0) continue;
     lines.push(
@@ -81,17 +96,29 @@ export function calculatePositionStage(input: PositionInput): PositionResult {
         id: `${itemId}:veredelung:${view}`,
         label: `Veredelung ${positionLabel(view)}`,
         category: 'veredelung',
-        description: b.isStitchBased
-          ? `Stickerei nach Stichzahl (${b.totalEstimatedStitches.toLocaleString('de-DE')} Stiche gesamt)`
-          : 'Transferdruck nach bedruckter Fläche',
+        // Stickerei (seit 2026-09-03): Positionspreis der Staffel PLUS
+        // Stichaufpreis – beide stecken im Betrag dieser Ansicht, deshalb
+        // nennt der Posten ausdrücklich beide Bestandteile.
+        description:
+          b.isStitchBased && b.isPositionBased
+            ? `Stickerei: Positionspreis zzgl. Stichaufpreis (${sticheAuf(view).toLocaleString('de-DE')} Stiche auf dieser Ansicht)`
+            : b.isStitchBased
+              ? `Stickerei nach Stichzahl (${b.totalEstimatedStitches.toLocaleString('de-DE')} Stiche gesamt)`
+              : 'Transferdruck nach bedruckter Fläche',
         origin: herkunft(
           b.isStitchBased ? 'per_1000_stitches' : 'per_cm2',
+          b.isStitchBased && b.isPositionBased
+            ? `Stickerei auf der Ansicht „${positionLabel(view)}": Positionspreis ${formatiereGeld(positionsanteil(view))} der Mengenstaffel zuzüglich ${formatiereGeld(b.pricePer1000Stitches)} je 1.000 geschätzte Stiche`
+            : b.isStitchBased
+              ? `Stickerei auf der Ansicht „${positionLabel(view)}", abgerechnet nach Stichzahl`
+              : `Transferdruck auf der Ansicht „${positionLabel(view)}", abgerechnet nach bedruckter Fläche`,
           b.isStitchBased
-            ? `Stickerei auf der Ansicht „${positionLabel(view)}", abgerechnet nach Stichzahl`
-            : `Transferdruck auf der Ansicht „${positionLabel(view)}", abgerechnet nach bedruckter Fläche`,
-          b.isStitchBased
-            ? { stiche: b.totalEstimatedStitches, satzJe1000Stiche: b.pricePer1000Stitches,
-                veredelungsrabattProzent: b.veredelungDiscountPercent }
+            ? {
+                stiche: b.isPositionBased ? sticheAuf(view) : b.totalEstimatedStitches,
+                satzJe1000Stiche: b.pricePer1000Stitches,
+                veredelungsrabattProzent: b.veredelungDiscountPercent,
+                ...(b.isPositionBased ? { positionspreis: positionsanteil(view) } : {}),
+              }
             : { satzJeCm2: b.areaPricePerCm2, veredelungsrabattProzent: b.veredelungDiscountPercent }
         ),
         amount: betrag,

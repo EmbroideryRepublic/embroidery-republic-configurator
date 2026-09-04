@@ -216,16 +216,20 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
                 .map((view, i) => (
                   <div key={view} className="flex items-center justify-between">
                     <span className="flex items-center gap-1">
-                      {breakdown.isStitchBased
-                        ? 'Stichpreis'
-                        : breakdown.isPositionBased
-                          ? 'Bedruckung'
-                          : t('summary_area_price')}{' '}
+                      {breakdown.isStitchBased && breakdown.isPositionBased
+                        ? 'Bestickung'
+                        : breakdown.isStitchBased
+                          ? 'Stichpreis'
+                          : breakdown.isPositionBased
+                            ? 'Bedruckung'
+                            : t('summary_area_price')}{' '}
                       {t(positionTranslationKey(view))}
                       {i === 0 && (
                         <InfoTooltip
                           text={
-                            breakdown.isStitchBased
+                            breakdown.isStitchBased && breakdown.isPositionBased
+                              ? `${formatPrice(breakdown.firstPositionPrice)} für die erste bestickte Ansicht, ${formatPrice(breakdown.additionalPositionPrice)} für die zweite, ${formatPrice(breakdown.furtherPositionPrice)} für jede weitere ab der dritten – zuzüglich ${formatPrice(breakdown.pricePer1000Stitches)} pro 1.000 geschätzte Stiche (≈ ${breakdown.totalEstimatedStitches.toLocaleString('de-DE')} Stiche insgesamt${breakdown.veredelungDiscountPercent > 0 ? `, Stichaufpreis um ${breakdown.veredelungDiscountPercent.toLocaleString('de-DE')} % mengenrabattiert` : ''}). Die Stichzahl ist nur eine Näherung – für die verbindliche Zahl zählt die Digitalisierung (z.B. Chroma Inspire).`
+                              : breakdown.isStitchBased
                               ? `Berechnet nach geschätzter Stichzahl (≈ ${breakdown.totalEstimatedStitches.toLocaleString('de-DE')} Stiche insgesamt) × ${formatPrice(breakdown.pricePer1000Stitches)} pro 1.000 Stiche. Nur eine Näherung – für die verbindliche Zahl zählt die Digitalisierung (z.B. Chroma Inspire).`
                               : breakdown.isPositionBased
                                 ? `${formatPrice(breakdown.firstPositionPrice)} für die erste bedruckte Ansicht, ${formatPrice(breakdown.additionalPositionPrice)} für die zweite, ${formatPrice(breakdown.furtherPositionPrice)} für jede weitere ab der dritten – unabhängig von der Größe der Motive.`

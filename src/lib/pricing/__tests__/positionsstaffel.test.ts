@@ -126,7 +126,16 @@ test('der Positionsaufschlag wird mit der Stückzahl multipliziert', async () =>
   assert.ok(r.totalPrice < (BASIS_PREIS + 14) * 10, 'der Mengenrabatt auf die Veredelung muss greifen');
 });
 
-test('Stickerei bleibt unverändert stichzahlbasiert, nicht positionsgestaffelt', async () => {
+// ── Stickerei = Positionsstaffel + Stichaufpreis (Betreiber-Entscheidung 2026-09-03) ──
+//
+// Vorher ERSETZTE der Stichpreis (1,40 €/1.000) die Positionsstaffel: ein
+// typisches 8×4-cm-Brustlogo (~6.400 Stiche) kostete bestickt praktisch
+// dasselbe wie bedruckt (25,95 € statt 25,99 €), kleine Logos bestickt sogar
+// weniger. Jetzt zahlt Stickerei dieselbe Positionsstaffel wie DTF PLUS
+// 1,20 € je 1.000 geschätzte Stiche – Stickerei ist damit bei gleichem Motiv
+// immer teurer als DTF, um exakt den Stichaufpreis.
+
+test('Stickerei nutzt BEIDE Preisquellen: Positionsstaffel wie DTF und zusätzlich den Stichaufpreis', async () => {
   const rules = await getPricingRules('embroidery');
   const r = calculatePrice({
     basePrice: BASIS_PREIS,
@@ -134,8 +143,95 @@ test('Stickerei bleibt unverändert stichzahlbasiert, nicht positionsgestaffelt'
     elements: [{ ...logo('front'), estimatedStitches: 8000 } as ConfigElement],
     pricingRules: rules,
   });
-  assert.equal(r.breakdown.isPositionBased, false, 'Stickerei darf nicht auf das Positionsmodell umgestellt sein');
-  assert.equal(r.breakdown.isStitchBased, true);
+  assert.equal(r.breakdown.isPositionBased, true, 'die Positionsstaffel muss auch für Stickerei aktiv sein');
+  assert.equal(r.breakdown.isStitchBased, true, 'der Stichaufpreis muss weiterhin aktiv sein');
+  assert.equal(r.breakdown.firstPositionPrice, 9);
+  assert.equal(r.breakdown.pricePer1000Stitches, 1.2);
+});
+
+test('Stickerei kostet bei gleichem Motiv genau den Stichaufpreis (1,20 €/1.000 Stiche, Rabatt laut Staffel bzw. Deckel) mehr als DTF', async () => {
+  const dtf = await getPricingRules('dtf');
+  const stick = await getPricingRules('embroidery');
+  // Erwarteter Rabatt FEST vorgegeben (nicht aus dem Prüfling abgeleitet):
+  // Staffel 0/20/35 %, ab 20 Stück greift der Deckel 36,6 % statt 46–93 %.
+  const faelle: [number, number, number][] = [
+    [2700, 1, 0], [6400, 1, 0], [26700, 1, 0], [6400, 3, 0],
+    [6400, 5, 20], [6400, 10, 35], [6400, 20, 36.6], [6400, 50, 36.6], [6400, 100, 36.6], [26700, 1000, 36.6],
+  ];
+  for (const [stiche, menge, rabatt] of faelle) {
+    const el = { ...logo('front'), estimatedStitches: stiche } as ConfigElement;
+    const d = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: dtf });
+    const s = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: stick });
+    assert.equal(s.breakdown.veredelungDiscountPercent, rabatt, `${menge} Stück: Rabatt auf den Stichaufpreis`);
+    const erwartet = (stiche / 1000) * 1.2 * (1 - rabatt / 100);
+    assert.ok(s.unitPrice > d.unitPrice, `${stiche} Stiche / ${menge} Stück: Stickerei muss teurer sein als DTF`);
+    assert.ok(
+      Math.abs(s.unitPrice - d.unitPrice - erwartet) < 0.011,
+      `${stiche} Stiche / ${menge} Stück: Aufpreis ${(s.unitPrice - d.unitPrice).toFixed(2)} €, erwartet ${erwartet.toFixed(2)} €`
+    );
+  }
+});
+
+test('Rabattdeckel: nextTier wird gedeckelt ausgewiesen, eine Deckel-Regel für eine ungenutzte Ansicht wirkt nicht', async () => {
+  const stick = await getPricingRules('embroidery');
+  const el = { ...logo('front'), estimatedStitches: 10000 } as ConfigElement;
+  const r = calculatePrice({ basePrice: BASIS_PREIS, quantity: 100, elements: [el], pricingRules: stick });
+  assert.equal(r.breakdown.nextTier?.veredelungDiscountPercent, 36.6, 'die nächste Staffel darf keinen Rabatt über dem Deckel versprechen');
+
+  // Deckel nur an einer Rücken-Regel, Motiv nur vorn: der Deckel gehört zu
+  // einer Regel, die gar nicht in den Preis eingeht, und darf nicht wirken.
+  const ohneDeckel = stick.map((x) => (x.ruleType === 'per_1000_stitches' ? { ...x, maxDiscountPercent: undefined } : x));
+  const rules = [
+    ...ohneDeckel,
+    { id: 'deckel-ruecken', ruleType: 'per_1000_stitches' as const, printView: 'back' as const, price: 1.2, maxDiscountPercent: 10, label: 'Test', isActive: true },
+  ];
+  const nurVorne = calculatePrice({ basePrice: BASIS_PREIS, quantity: 100, elements: [el], pricingRules: rules });
+  assert.equal(nurVorne.breakdown.veredelungDiscountPercent, 90, 'ohne wirksame Deckel-Regel gilt der Staffelwert');
+});
+
+test('Stichaufpreis: der Mengenrabatt ist gedeckelt, der Erlös fällt nie unter 0,76 €/1.000 Stiche', async () => {
+  const rules = await getPricingRules('embroidery');
+  const stichRegel = rules.find((r) => r.ruleType === 'per_1000_stitches');
+  assert.ok(stichRegel?.maxDiscountPercent !== undefined, 'die Stichregel muss einen Rabattdeckel tragen');
+  for (const menge of [1, 5, 10, 20, 50, 100, 250, 500, 1000]) {
+    const r = calculatePrice({
+      basePrice: BASIS_PREIS,
+      quantity: menge,
+      elements: [{ ...logo('front'), estimatedStitches: 10000 } as ConfigElement],
+      pricingRules: rules,
+    });
+    const erloesJe1000 = 1.2 * (1 - r.breakdown.veredelungDiscountPercent / 100);
+    assert.ok(
+      erloesJe1000 >= 0.76 - 0.0001,
+      `bei ${menge} Stück: ${r.breakdown.veredelungDiscountPercent} % Rabatt → ${erloesJe1000.toFixed(3)} €/1.000 Stiche liegt unter den Fremdkosten`
+    );
+    assert.ok(r.breakdown.veredelungDiscountPercent <= stichRegel.maxDiscountPercent);
+  }
+  // Der Deckel greift erst, wo die Staffel ihn überschreitet (ab 20 Stück, 46 %) –
+  // darunter gilt der Staffelwert unverändert (10 Stück: 35 %).
+  const zehn = calculatePrice({ basePrice: BASIS_PREIS, quantity: 10, elements: [{ ...logo('front'), estimatedStitches: 10000 } as ConfigElement], pricingRules: rules });
+  assert.equal(zehn.breakdown.veredelungDiscountPercent, 35);
+  const hundert = calculatePrice({ basePrice: BASIS_PREIS, quantity: 100, elements: [{ ...logo('front'), estimatedStitches: 10000 } as ConfigElement], pricingRules: rules });
+  assert.equal(hundert.breakdown.veredelungDiscountPercent, stichRegel.maxDiscountPercent);
+});
+
+test('Stickerei auf zwei Ansichten: Positionsstaffel wie DTF, kein zusätzlicher Je-Ansicht-Aufschlag mehr', async () => {
+  const dtf = await getPricingRules('dtf');
+  const stick = await getPricingRules('embroidery');
+  const elemente = [
+    { ...logo('front'), estimatedStitches: 6000 } as ConfigElement,
+    { ...logo('back'), estimatedStitches: 4000 } as ConfigElement,
+  ];
+  const d = calculatePrice({ basePrice: BASIS_PREIS, quantity: 1, elements: elemente, pricingRules: dtf });
+  const s = calculatePrice({ basePrice: BASIS_PREIS, quantity: 1, elements: elemente, pricingRules: stick });
+  assert.equal(s.breakdown.positionFeeTotal, 0, 'die alten Rücken-/Ärmelaufschläge (per_position) dürfen nicht mehr greifen');
+  assert.ok(Math.abs(s.unitPrice - d.unitPrice - (10000 / 1000) * 1.2) < 0.011, 'Differenz = nur der Stichaufpreis beider Motive');
+});
+
+test('DTF bleibt vom Rabattdeckel unberührt (keine per_1000_stitches-Regel aktiv)', async () => {
+  const rules = await getPricingRules('dtf');
+  const r = calculatePrice({ basePrice: BASIS_PREIS, quantity: 100, elements: [logo('front')], pricingRules: rules });
+  assert.equal(r.breakdown.veredelungDiscountPercent, 90, 'ohne Deckel-Regel gilt der rohe Staffelwert');
 });
 
 // ── Feste DTF-Positionsstaffel (Betreiber-Vorgabe 2026-08-09) ─────────

@@ -48,18 +48,19 @@ export interface PriceCalculationResult {
     perElement: { elementId: string; price: number }[];
     elementBaseFeeTotal: number;
     positionFeeTotal: number;
-    /** Je Ansicht: entweder Flächen-/Stichzahl-Kosten ODER (bei aktiver
-     *  Positionsstaffel) der Positionsanteil dieser Ansicht – siehe
-     *  isPositionBased. Nie beide Quellen gleichzeitig ungleich 0. */
+    /** Je Ansicht: die rabattierten Flächen-/Stichzahl-Kosten dieser Ansicht
+     *  PLUS (bei aktiver Positionsstaffel) ihr Positionsanteil – siehe
+     *  isPositionBased. Bei DTF ist nur der Positionsanteil ungleich 0, bei
+     *  Stickerei (seit 2026-09-03) sind es beide Anteile zusammen. */
     areaPriceByView: Record<PrintView, number>;
     areaPricePerCm2: number;
     pricePer1000Stitches: number;
     isStitchBased: boolean;
-    /** True, wenn first_position/additional_position aktiv sind (DTF) –
-     *  areaPriceByView zeigt dann den Positionsanteil je Ansicht, nicht
-     *  Fläche/Stichzahl. Anzeige nutzt dafür firstPositionPrice/
-     *  additionalPositionPrice/furtherPositionPrice statt
-     *  areaPricePerCm2/pricePer1000Stitches. */
+    /** True, wenn first_position/additional_position aktiv sind (DTF und
+     *  Stickerei) – areaPriceByView enthält dann je Ansicht den
+     *  Positionsanteil. Die Anzeige nutzt firstPositionPrice/
+     *  additionalPositionPrice/furtherPositionPrice und, wenn zugleich
+     *  isStitchBased gilt, zusätzlich pricePer1000Stitches. */
     isPositionBased: boolean;
     /** Preis für die erste bedruckte Ansicht (nur informativ für die
      *  Anzeige, z.B. im Tooltip „9 € für die erste Position"). */
@@ -233,10 +234,12 @@ function getDtfPositionTier(quantity: number): DtfPositionTier {
 }
 
 /**
- * Ob für diese Preisregeln/Menge überhaupt die DTF-Positionsstaffel gilt
- * (aktive first_position/additional_position-Regel vorhanden). Bei
- * Stickerei sind diese Regeln nicht aktiv – dort läuft die Veredelung
- * stattdessen über getVariableCost()/per_1000_stitches weiter wie bisher.
+ * Ob für diese Preisregeln/Menge überhaupt die Positionsstaffel gilt
+ * (aktive first_position/additional_position-Regel vorhanden). Seit
+ * 2026-09-03 sind diese Regeln für DTF UND Stickerei aktiv; bei Stickerei
+ * kommt über getVariableCost()/per_1000_stitches zusätzlich der
+ * Stichaufpreis hinzu (die Tabelle heißt aus Kompatibilitätsgründen
+ * weiterhin DTF_POSITION_TIERS).
  *
  * Nutzt dieselbe Anwendbarkeitsprüfung wie die übrigen Getter (Mengenfenster,
  * Gültigkeitszeitraum) – nur um FESTZUSTELLEN, ob DTF-Preisregeln aktiv
@@ -305,6 +308,27 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   const quantity = Math.max(input.quantity, 1);
   const tier = getTierForQuantity(quantity);
 
+  // Mengenrabatt auf den Veredelungsanteil (Fläche/Stichzahl) – je Regel
+  // deckelbar (PricingRule.maxDiscountPercent): Der Stichaufpreis der
+  // Stickerei darf auch bei großen Mengen nie unter die Fremdkosten des
+  // Stickpartners fallen (siehe config/pricingRules.ts). Der Deckel gilt für
+  // den GESAMTEN variablen Anteil, weil je Veredelungsart nur EIN variabler
+  // Regeltyp aktiv ist (Fläche ODER Stichzahl, siehe getVariableCost).
+  // Berücksichtigt werden nur Regeln, die tatsächlich in den Preis eingehen
+  // (anwendbar UND – bei printView – auf einer genutzten Ansicht); der Wert
+  // ist auf 0–100 begrenzt.
+  const genutzteAnsichten = new Set(elements.map((el) => el.view));
+  const rabattDeckel = pricingRules
+    .filter(
+      (r) =>
+        r.maxDiscountPercent !== undefined &&
+        (r.ruleType === 'per_1000_stitches' || r.ruleType === 'per_cm2') &&
+        isRuleApplicable(r, quantity) &&
+        (!r.printView || genutzteAnsichten.has(r.printView))
+    )
+    .reduce((min, r) => Math.min(min, Math.max(0, Math.min(100, r.maxDiscountPercent!))), Number.POSITIVE_INFINITY);
+  const veredelungRabattProzent = Math.min(tier.veredelungDiscountPercent, rabattDeckel);
+
   // Positionsaufschlag nur, wenn TATSÄCHLICH mehrere unterschiedliche
   // Ansichten gleichzeitig bedruckt/bestickt werden (z.B. Vorderseite UND
   // Rücken). Nutzt der Kunde nur EINE Ansicht – egal welche, auch nur
@@ -333,12 +357,12 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   );
   const positionFeeTotal = elements.reduce((sum, el) => sum + getEffectivePositionPrice(el.view), 0);
 
-  // Positionsgestaffelter DTF-Aufschlag (erste/zweite/weitere Ansicht) –
-  // fällt je Stück GENAU EINMAL an, nicht je Element (siehe
-  // DTF_POSITION_TIERS oben). Ohne aktive first_position/additional_position-
-  // Regeln bleiben alle drei Preise 0, das Produkt bleibt dann unverändert
-  // (z.B. Stickerei, die stattdessen über per_1000_stitches in
-  // getVariableCost() unten läuft).
+  // Positionsgestaffelter Aufschlag (erste/zweite/weitere Ansicht) – fällt
+  // je Stück GENAU EINMAL an, nicht je Element (siehe DTF_POSITION_TIERS
+  // oben). Gilt für DTF und – seit 2026-09-03 – auch für Stickerei, die
+  // darüber hinaus den Stichaufpreis aus getVariableCost() unten trägt. Ohne
+  // aktive first_position/additional_position-Regeln bleiben alle drei
+  // Preise 0, das Produkt bleibt dann unverändert.
   const dtfPositionPricingActive = isDtfPositionPricingActive(pricingRules, quantity);
   const dtfTier = dtfPositionPricingActive ? getDtfPositionTier(quantity) : null;
   const erstePositionPreis = dtfTier?.erste ?? 0;
@@ -372,17 +396,17 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   for (const el of elements) {
     areaPriceByView[el.view] =
       (areaPriceByView[el.view] ?? 0) +
-      getVariableCost(el, pricingRules, quantity) * (1 - tier.veredelungDiscountPercent / 100);
+      getVariableCost(el, pricingRules, quantity) * (1 - veredelungRabattProzent / 100);
   }
   // Positionsgestaffelter Aufschlag PRO ANSICHT für die Anzeige: die zuerst
   // bedruckte Ansicht (Reihenfolge der platzierten Elemente) bekommt
   // erstePositionPreis, die zweite zweitePositionPreis, jede weitere ab der
   // dritten weiterePositionPreis – eine reine Anzeige-Zuordnung, der
   // GESAMTPREIS (positionTierTotal oben) ist davon unabhängig immer korrekt.
-  // Nur eine der beiden Quellen (Fläche/Stichzahl ODER Positionsstaffel) ist
-  // je Veredelungsart aktiv, in der Praxis also nie beides gleichzeitig
-  // ungleich 0 für dieselbe Ansicht. Die DTF-Positionsstaffel ist bereits
-  // der fertige Endpreis (siehe DTF_POSITION_TIERS) – hier kommt KEIN
+  // Bei DTF ist nur der Positionsanteil ungleich 0; bei Stickerei (seit
+  // 2026-09-03) kommen Positionsanteil UND rabattierter Stichaufpreis
+  // derselben Ansicht zusammen. Die Positionsstaffel ist bereits der
+  // fertige Endpreis (siehe DTF_POSITION_TIERS) – hier kommt KEIN
   // Rabattfaktor mehr drauf.
   distinctViewsOrdered.forEach((view, i) => {
     const anteil = i === 0 ? erstePositionPreis : i === 1 ? zweitePositionPreis : weiterePositionPreis;
@@ -399,7 +423,7 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   const fixedPortion = basePrice + elementBaseFeeTotal + positionFeeTotal;
   const discountedFixed = fixedPortion * (1 - tier.baseDiscountPercent / 100);
   const discountedVariable =
-    (variableCostTotal - positionTierTotal) * (1 - tier.veredelungDiscountPercent / 100) + positionTierTotal;
+    (variableCostTotal - positionTierTotal) * (1 - veredelungRabattProzent / 100) + positionTierTotal;
 
   // EINMALIGE Kosten des Auftrags (z.B. Rüsten/Digitalisieren). Kommen
   // vollständig aus den Preisregeln – ohne konfigurierte Regel ist der Wert 0.
@@ -438,9 +462,18 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // Einrichtung darin, bei 100 Stück ein Hundertstel.
   const effectiveUnitPrice = totalPrice / quantity;
 
-  const stitchRule = pricingRules.find((r) => r.isActive && r.ruleType === 'per_1000_stitches');
-  const areaRule = pricingRules.find((r) => r.isActive && r.ruleType === 'per_cm2');
+  // Dieselbe Anwendbarkeitsprüfung wie in getVariableCost() – sonst meldete
+  // die Anzeige einen Stich-/Flächenpreis, der (z.B. außerhalb eines
+  // Mengenfensters) gar nicht berechnet wird.
+  const stitchRule = pricingRules.find((r) => r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, quantity));
+  const areaRule = pricingRules.find((r) => r.ruleType === 'per_cm2' && isRuleApplicable(r, quantity));
   const totalEstimatedStitches = elements.reduce((sum, el) => sum + (el.estimatedStitches ?? 0), 0);
+  // Auch die NÄCHSTE Staffel gedeckelt ausweisen – sonst verspräche die
+  // Anzeige einen Rabatt, den der Deckel nie gewährt.
+  const naechsteStaffel = getNextTier(quantity);
+  const nextTier = naechsteStaffel
+    ? { ...naechsteStaffel, veredelungDiscountPercent: Math.min(naechsteStaffel.veredelungDiscountPercent, rabattDeckel) }
+    : null;
 
   return {
     unitPrice: roundToCents(effectiveUnitPrice),
@@ -465,9 +498,11 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       furtherPositionPrice: weiterePositionPreis,
       totalEstimatedStitches,
       baseDiscountPercent: tier.baseDiscountPercent,
-      veredelungDiscountPercent: tier.veredelungDiscountPercent,
+      // Der TATSÄCHLICH angewandte Satz (ggf. gedeckelt) – nicht der rohe
+      // Staffelwert, sonst zeigte die Oberfläche einen Rabatt, den es nicht gibt.
+      veredelungDiscountPercent: veredelungRabattProzent,
       savingsAmount: roundToCents(savingsAmount),
-      nextTier: getNextTier(quantity),
+      nextTier,
       setupTotal: roundToCents(setupTotal),
       setupPerUnit: roundToCents(setupTotal / quantity),
       surchargePerUnit: roundToCents(surchargePerUnit),

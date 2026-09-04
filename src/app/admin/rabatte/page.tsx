@@ -20,6 +20,8 @@
  */
 import { istAdmin } from '@/lib/admin/auth';
 import { QUANTITY_TIERS, DTF_POSITION_TIERS } from '@/lib/pricing/calculatePrice';
+import { STICH_RABATT_MAX_PROZENT, STICH_AUFPREIS_JE_1000 } from '@/config/pricingRules';
+import { STICKKOSTEN_JE_1000_STICHE } from '@/config/pricing/selbstkosten';
 import { formatiereGeld } from '@/lib/format';
 
 export const dynamic = 'force-dynamic';
@@ -57,12 +59,20 @@ export default async function AdminRabattePage() {
           </tbody>
         </table>
       </div>
+      <p className="text-xs text-gray-500">
+        Stickerei: Der Veredelungsrabatt gilt nur für den Stichaufpreis ({formatiereGeld(STICH_AUFPREIS_JE_1000)} je
+        1.000 Stiche) und ist bei {STICH_RABATT_MAX_PROZENT.toLocaleString('de-DE')} % gedeckelt, damit der Erlös nie
+        unter die Fremdkosten des Stickpartners ({formatiereGeld(STICKKOSTEN_JE_1000_STICHE)} je 1.000 Stiche) fällt –
+        Staffelwerte oberhalb des Deckels wirken dort nicht mehr voll (seit 2026-09-03,{' '}
+        <code className="rounded bg-gray-100 px-1">src/config/pricingRules.ts</code>).
+      </p>
 
       <div>
-        <h2 className="text-base font-semibold">DTF-Positionsstaffel</h2>
+        <h2 className="text-base font-semibold">Positionsstaffel (DTF und Stickerei)</h2>
         <p className="mt-1 text-sm text-gray-500">
-          Feste Preise je bedruckter Ansicht (kein Prozentrabatt) – Stufenfunktion: die erreichte Stückzahl gilt für
-          die gesamte Bestellung, kein Gleiten innerhalb einer Stufe. Pflege ebenfalls in{' '}
+          Feste Preise je veredelter Ansicht (kein Prozentrabatt) – Stufenfunktion: die erreichte Stückzahl gilt für
+          die gesamte Bestellung, kein Gleiten innerhalb einer Stufe. Seit 2026-09-03 auch Grundlage der Stickerei,
+          dort zuzüglich Stichaufpreis. Pflege ebenfalls in{' '}
           <code className="rounded bg-gray-100 px-1">src/lib/pricing/calculatePrice.ts</code> (DTF_POSITION_TIERS).
         </p>
       </div>

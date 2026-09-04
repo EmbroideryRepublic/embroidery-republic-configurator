@@ -1,4 +1,5 @@
 import type { PricingRule, PrintMethod } from '@/types';
+import { STICKKOSTEN_JE_1000_STICHE } from './pricing/selbstkosten';
 
 /**
  * MOCK-Preisregeln – getrennt nach Veredelungsart. Gleiche Architektur wie
@@ -7,13 +8,31 @@ import type { PricingRule, PrintMethod } from '@/types';
  * nur `PricingRule[]`, nicht die Datenquelle oder Veredelungsart selbst –
  * dadurch funktioniert exakt derselbe Rechenkern für beide Konfiguratoren.
  *
- * DTF: Preis richtet sich vor allem nach Fläche und Position.
- * Stickerei: höhere Grundkosten durch Digitalisierung (einmalige
- * Einrichtung des Stickmusters), danach vor allem Flächen-/Stichzahl-
- * getrieben – bei kleinen Logos oft teurer als DTF, bei sehr großen
- * Flächen unwirtschaftlich (deshalb auch kleinere Druckbereiche, siehe
- * printAreas.ts).
+ * DTF: Positionsstaffel (erste/zweite/weitere Ansicht, je Stückzahlstufe).
+ * Stickerei (seit 2026-09-03): DIESELBE Positionsstaffel wie DTF plus ein
+ * Aufpreis je 1.000 geschätzte Stiche – Stickerei ist damit bei gleichem
+ * Motiv immer teurer als DTF, und zwar umso mehr, je stichreicher das Motiv
+ * ist. Bei sehr großen Flächen unwirtschaftlich (deshalb auch kleinere
+ * Druckbereiche, siehe printAreas.ts).
  */
+
+/** Verkaufssatz je 1.000 geschätzte Stiche (Betreiber-Entscheidung 2026-09-03). */
+export const STICH_AUFPREIS_JE_1000 = 1.2;
+
+/**
+ * Deckel für den Mengenrabatt auf den Stichaufpreis (PricingRule.maxDiscountPercent).
+ *
+ * Die Mengenstaffel QUANTITY_TIERS rabattiert die Veredelung bis zu 90 %. Auf
+ * den Stichaufpreis angewandt fiele der Erlös je 1.000 Stiche ab 20 Stück auf
+ * bzw. unter die Fremdkosten des Stickpartners (STICKKOSTEN_JE_1000_STICHE,
+ * 0,76 €). Der Deckel begrenzt den Rabatt so, dass genau diese Untergrenze
+ * nie unterschritten wird: bei 1,20 € Satz sind das 36,6 % (exakt 36,67 %,
+ * auf eine Nachkommastelle ABgerundet – aufgerundet läge der Erlös mit
+ * 0,7596 € knapp unter der Grenze). Ändert sich einer der beiden Beträge,
+ * folgt der Deckel automatisch.
+ */
+export const STICH_RABATT_MAX_PROZENT =
+  Math.floor((1 - STICKKOSTEN_JE_1000_STICHE / STICH_AUFPREIS_JE_1000) * 1000) / 10;
 const DTF_PRICING_RULES: PricingRule[] = [
   // Grundgebühren deaktiviert (auf Wunsch nicht mehr separat ausgewiesen)
   // – stattdessen in den Flächenpreis eingerechnet (0,02 € → 0,05 €/cm²).
@@ -101,17 +120,40 @@ const EMBROIDERY_PRICING_RULES: PricingRule[] = [
   // Konfiguration abbildbar.
   { id: 'emb-setup', ruleType: 'setup_fee', multiplier: 'per_position', price: 0, label: 'Digitalisierung & Einrichtung (einmalig je Position)', isActive: false },
 
-  { id: 'emb-pos-front', ruleType: 'per_position', printView: 'front', price: 0, label: 'Position: Brust', isActive: true },
-  { id: 'emb-pos-back', ruleType: 'per_position', printView: 'back', price: 2.5, label: 'Position: Rücken', isActive: true },
-  { id: 'emb-pos-sleeve-l', ruleType: 'per_position', printView: 'sleeve_left', price: 2, label: 'Position: Ärmel links', isActive: true },
-  { id: 'emb-pos-sleeve-r', ruleType: 'per_position', printView: 'sleeve_right', price: 2, label: 'Position: Ärmel rechts', isActive: true },
+  // ── Je-Ansicht-Aufschläge – ABGELÖST (2026-09-03) durch die Positionsstaffel
+  // unten (dieselbe wie bei DTF). Deaktiviert statt gelöscht, damit die
+  // vorherige Kalkulationsgrundlage im Code nachvollziehbar bleibt.
+  { id: 'emb-pos-front', ruleType: 'per_position', printView: 'front', price: 0, label: 'Position: Brust', isActive: false },
+  { id: 'emb-pos-back', ruleType: 'per_position', printView: 'back', price: 2.5, label: 'Position: Rücken', isActive: false },
+  { id: 'emb-pos-sleeve-l', ruleType: 'per_position', printView: 'sleeve_left', price: 2, label: 'Position: Ärmel links', isActive: false },
+  { id: 'emb-pos-sleeve-r', ruleType: 'per_position', printView: 'sleeve_right', price: 2, label: 'Position: Ärmel rechts', isActive: false },
 
   { id: 'emb-area', ruleType: 'per_cm2', price: 0.15, label: 'Flächenpreis Stickerei (0,15 €/cm²) – ersetzt durch Stichzahl-Preis', isActive: false },
 
-  // Erhöht von 1,25 € auf 1,40 € pro 1.000 Stiche, um die entfallene
-  // Digitalisierungs-Grundgebühr aufzufangen. Bitte an eure echte
-  // Kalkulation anpassen, das ist nur ein plausibler Ausgangswert.
-  { id: 'emb-stitches', ruleType: 'per_1000_stitches', price: 1.4, label: 'Stichpreis (1,40 € / 1.000 Stiche)', isActive: true },
+  // ── Positionsstaffel (seit 2026-09-03 auch für Stickerei) ────────────
+  // Betreiber-Entscheidung: Stickerei kostet dieselbe Positionsstaffel wie
+  // DTF (DTF_POSITION_TIERS in calculatePrice.ts – 9 € erste Ansicht, 5 €
+  // zweite, 4 € jede weitere, je Stückzahlstufe günstiger) PLUS den
+  // Stichaufpreis unten. Vorher ERSETZTE der Stichpreis (1,40 €/1.000) die
+  // Positionsstaffel vollständig – ein typisches 8×4-cm-Brustlogo (~6.400
+  // Stiche) kostete bestickt praktisch dasselbe wie bedruckt (25,95 € statt
+  // 25,99 €) und ab 5 Stück weniger; kleine Logos waren bestickt immer
+  // günstiger. Der `price` hier ist wie bei DTF nur der Aktivierungswert –
+  // die tatsächlichen Beträge je Stufe stehen in DTF_POSITION_TIERS.
+  { id: 'emb-erste-position', ruleType: 'first_position', price: 9, label: 'Bestickung – erste Ansicht', isActive: true },
+  { id: 'emb-zusatz-position', ruleType: 'additional_position', price: 5, label: 'Bestickung – jede weitere Ansicht', isActive: true },
+
+  // Stichaufpreis ZUSÄTZLICH zur Positionsstaffel: 1,20 € je 1.000 geschätzte
+  // Stiche (vorher 1,40 € als alleiniger Stickpreis). Der Mengenrabatt der
+  // Staffel ist auf STICH_RABATT_MAX_PROZENT gedeckelt (siehe oben).
+  {
+    id: 'emb-stitches',
+    ruleType: 'per_1000_stitches',
+    price: STICH_AUFPREIS_JE_1000,
+    maxDiscountPercent: STICH_RABATT_MAX_PROZENT,
+    label: 'Stichaufpreis (1,20 € / 1.000 Stiche)',
+    isActive: true,
+  },
 ];
 
 /** Asynchrone Signatur beibehalten (spätere DB-Anbindung = reiner

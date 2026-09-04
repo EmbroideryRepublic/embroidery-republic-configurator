@@ -13,7 +13,9 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateSubmission, istPlausibleEmail, istGueltigePlz, GRENZEN } from '../orderValidation';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+import { validateSubmission, istPlausibleEmail, istGueltigePlz, GRENZEN, STICH_UNTERGRENZE } from '../orderValidation';
 import { PRODUCTS } from '@/config/products';
 import type { CartItem } from '@/types';
 
@@ -75,6 +77,49 @@ async function codes(input: Parameters<typeof validateSubmission>[0]): Promise<s
   const ergebnis = await validateSubmission(input);
   return ergebnis.issues.map((i) => i.code);
 }
+
+// ── Stichzahl bei Stickerei (Fund der Preisumstellung 2026-09-03) ────────
+//
+// Der Stichaufpreis wird aus der vom Browser geschätzten Stichzahl berechnet,
+// auch serverseitig. Ohne Prüfung ließ sich der Aufpreis per Request mit 0,
+// einer negativen Zahl oder NaN abschalten bzw. der Preis ins Negative drehen.
+
+const stickProdukt = PRODUCTS.find((p) => p.views?.includes('front')) ?? produkt;
+function stickPosition(stiche: unknown, elementTyp: 'logo' | 'text' = 'logo'): CartItem {
+  const element =
+    elementTyp === 'text'
+      ? logo({ id: 'el-t', type: 'text', content: 'Hallo', fontFamily: 'Arial', fontSize: 20, color: '#000', estimatedStitches: stiche })
+      : logo({ estimatedStitches: stiche });
+  return position({ productId: stickProdukt.id, colorId: stickProdukt.colors[0]!.id, sizeQuantities: { [stickProdukt.sizes[0]!]: 1 }, printMethod: 'embroidery', elements: [element] });
+}
+
+test('Stickerei: eine plausible Stichzahl geht durch', async () => {
+  const c = await codes({ ...gueltigeBestellung, items: [stickPosition(6400)] });
+  assert.ok(!c.includes('stichzahl_ungueltig'), `unerwartete Befunde: ${c.join(', ')}`);
+});
+
+test('Stickerei: 0, negative, fehlende oder unsinnige Stichzahlen werden abgewiesen', async () => {
+  for (const wert of [0, -50000, Number.NaN, undefined, null, 'abc', 499]) {
+    const c = await codes({ ...gueltigeBestellung, items: [stickPosition(wert)] });
+    assert.ok(c.includes('stichzahl_ungueltig'), `Stichzahl ${String(wert)} muss abgewiesen werden (Befunde: ${c.join(', ') || 'keine'})`);
+  }
+  // Text hat eine niedrigere Untergrenze (150) als ein Logo (500).
+  assert.ok(!(await codes({ ...gueltigeBestellung, items: [stickPosition(150, 'text')] })).includes('stichzahl_ungueltig'));
+  assert.ok((await codes({ ...gueltigeBestellung, items: [stickPosition(149, 'text')] })).includes('stichzahl_ungueltig'));
+});
+
+test('DTF braucht keine Stichzahl – dort wird nicht nach Stichen abgerechnet', async () => {
+  const c = await codes({ ...gueltigeBestellung, items: [position({ elements: [logo({ estimatedStitches: 0 })] })] });
+  assert.ok(!c.includes('stichzahl_ungueltig'));
+});
+
+test('Wächter: die Untergrenzen entsprechen den Konstanten der Browser-Schätzung', () => {
+  const quelle = readFileSync(path.join(process.cwd(), 'src', 'lib', 'embroidery', 'estimateStitches.ts'), 'utf8');
+  const overhead = Number(/const BASE_OVERHEAD_STITCHES = (\d+);/.exec(quelle)?.[1]);
+  const textMin = Number(/Math\.max\((\d+), stitches\)/.exec(quelle)?.[1]);
+  assert.equal(STICH_UNTERGRENZE.logo, overhead, 'Logo-Untergrenze muss BASE_OVERHEAD_STITCHES entsprechen');
+  assert.equal(STICH_UNTERGRENZE.text, textMin, 'Text-Untergrenze muss dem Minimum aus estimateTextStitches entsprechen');
+});
 
 // ── Der gültige Fall muss durchgehen ─────────────────────────────────────
 

@@ -203,6 +203,14 @@ export interface PricingRule {
   /** ISO-Datum – Aktionen mit Start-/Enddatum. */
   validFrom?: string;
   validUntil?: string;
+  /**
+   * Deckelt den MENGENRABATT der Staffel (QUANTITY_TIERS.veredelungDiscountPercent)
+   * auf den Betrag DIESER Regel – in Prozent (0–100). Ohne Angabe gilt die
+   * Staffel ungedeckelt. Beispiel Stickerei: Der Stichaufpreis darf auch bei
+   * großen Mengen nie unter die Fremdkosten des Stickpartners fallen (siehe
+   * config/pricingRules.ts, STICH_RABATT_MAX_PROZENT).
+   */
+  maxDiscountPercent?: number;
 }
 
 // ---------------------------------------------------------------

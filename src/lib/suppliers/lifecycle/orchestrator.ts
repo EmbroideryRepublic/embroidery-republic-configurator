@@ -25,6 +25,7 @@ import type { SupplierAutomationJob, SupplierId, SupplierJobMode, SupplierOrderP
 import { canTransition, classifyRunFailure, decideOutcome, type SupplierOrderStatus } from './status';
 import { acquireLock, LOCK_TTL_MS, recordEvent, releaseLock, transition } from './store';
 import { istTestmodus, meldeAbgefangen } from '@/config/testmodus';
+import { meldeEreignis } from '@/lib/observability/ereignis';
 
 /** Master-Schalter Test/Prod: nur bei '1' läuft echte Browser-Automatisierung.
  *  Default AUS – im Test-/Dev-Betrieb wird nichts real beim Lieferanten
@@ -70,6 +71,12 @@ export async function reclaimStaleLocks(client: ReturnType<typeof createAdminCli
 
   if (error) {
     console.error('[lifecycle] reclaimStaleLocks fehlgeschlagen:', error.message);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'SUPPLIER',
+      ereignis: 'verwaiste_sperren_reaktivierung_fehlgeschlagen',
+      meldung: error.message,
+    });
     return 0;
   }
   for (const r of data ?? []) {
@@ -109,6 +116,13 @@ export async function processDueSupplierOrders(
 
   if (error) {
     console.error('[lifecycle] processDueSupplierOrders – Auswahl fehlgeschlagen:', error.message);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'SUPPLIER',
+      ereignis: 'lieferantenlauf_auswahl_fehlgeschlagen',
+      meldung: error.message,
+      felder: { limit: opts.limit ?? 25 },
+    });
     return { reclaimed, processed: [] };
   }
 
@@ -344,10 +358,13 @@ export async function processSupplierOrder(
     }
 
     // ── Echter Lauf ──────────────────────────────────────────────────────
+    // Migration 0036 (Bestellnummer-Jahreswechsel-Fix): gespeicherter Wert
+    // bevorzugt, buildOrderNumber(orderId) nur als Rückfall.
+    const { data: orderRow } = await client.from('orders').select('order_number').eq('id', orderId).maybeSingle();
     const job: SupplierAutomationJob = {
       jobId: `${orderId}:${supplierId}`,
       orderId,
-      orderNumber: buildOrderNumber(orderId),
+      orderNumber: (orderRow?.order_number as string | null) ?? buildOrderNumber(orderId),
       supplierId,
       mode: row.mode,
       positions: row.positions,
@@ -413,6 +430,17 @@ export async function processSupplierOrder(
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     await recordEvent(client, { orderId, supplierId, eventType: 'error', reason: `Unerwarteter Fehler: ${message}` });
+    // Bislang landete dieser Fall AUSSCHLIESSLICH im fachlichen Audit-Log
+    // (supplier_order_events) – für die Betriebsbeobachtung unsichtbar, obwohl
+    // es sich um einen der klarsten Fälle von "Lieferantenlauf fehlgeschlagen"
+    // handelt (docs/betriebsbeobachtung.md Abschnitt 3).
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'SUPPLIER',
+      ereignis: 'lieferantenlauf_unerwarteter_fehler',
+      fehler: err,
+      felder: { supplierId, attemptCount },
+    });
     // Unerwarteter Fehler (außerhalb des klassifizierten Worker-Laufs, z.B.
     // beim Laden/Transition) → bewusst 'failed', KEIN Auto-Retry: solche Fehler
     // sind eher Code-/Infrastrukturprobleme als transiente Netzfehler; der Admin

@@ -235,7 +235,8 @@ keine verlässliche Quelle.
 | PII-Fund in `sendEmail.ts` behoben | **fertig** |
 | Bestellpfad auf Ereignisse umgestellt | **fertig** |
 | Cron-Route: Wartung + strukturierte Logs | **fertig** |
-| Übrige ~100 `console.*`-Aufrufe | **offen** |
+| Alle acht Zeilen aus Abschnitt 3 erreichen `system_ereignisse` | **fertig** (2026-09-04) |
+| Übrige ~100 `console.*`-Aufrufe außerhalb kritischer Pfade | **offen** |
 | Auswertung im Adminbereich | **offen** |
 
 ### Die drei Ergänzungen

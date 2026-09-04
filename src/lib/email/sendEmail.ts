@@ -19,6 +19,7 @@
  */
 import type { ReactElement } from 'react';
 import { protokoll } from '@/lib/observability/log';
+import { meldeEreignis } from '@/lib/observability/ereignis';
 import { render } from '@react-email/render';
 import { getResendClient, getFromAddress, getInternalNotificationAddress } from './resendClient';
 import { istTestmodus, meldeAbgefangen, testmodusKennung } from '@/config/testmodus';
@@ -103,7 +104,16 @@ export async function sendEmail({
   }
 
   const resend = getResendClient();
-  if (!resend) return { success: false, error: 'RESEND_API_KEY fehlt' };
+  if (!resend) {
+    await meldeEreignis({
+      schwere: 'CRITICAL',
+      kategorie: 'EMAIL',
+      ereignis: 'versand_fehlgeschlagen',
+      meldung: 'RESEND_API_KEY fehlt',
+      felder: { anlass: kontext.anlass, bestellId: kontext.orderId },
+    });
+    return { success: false, error: 'RESEND_API_KEY fehlt' };
+  }
 
   const testMode = isTestMode();
   const originalTo = Array.isArray(to) ? to.join(', ') : to;
@@ -131,7 +141,14 @@ export async function sendEmail({
       ...(attachments?.length ? { attachments: attachments.map((a) => ({ filename: a.filename, content: a.content })) } : {}),
     });
     if (error) {
-      protokoll.fehler('EMAIL', 'versand_fehlgeschlagen', effectiveSubject, error);
+      await meldeEreignis({
+        schwere: 'ERROR',
+        kategorie: 'EMAIL',
+        ereignis: 'versand_fehlgeschlagen',
+        meldung: effectiveSubject,
+        fehler: error,
+        felder: { anlass: kontext.anlass, bestellId: kontext.orderId },
+      });
       return { success: false, error: error.message };
     }
     // Bewusst beibehalten: die Resend-Nachrichten-ID ist der einzige Weg, eine
@@ -148,7 +165,14 @@ export async function sendEmail({
     return { success: true, ...(data?.id ? { messageId: data.id } : {}) };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    protokoll.fehler('EMAIL', 'versand_fehlgeschlagen', effectiveSubject, err);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'EMAIL',
+      ereignis: 'versand_fehlgeschlagen',
+      meldung: effectiveSubject,
+      fehler: err,
+      felder: { anlass: kontext.anlass, bestellId: kontext.orderId },
+    });
     return { success: false, error: message };
   }
 }

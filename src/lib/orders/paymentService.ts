@@ -43,6 +43,7 @@ import type { ZahlungsAnbieterId, ZahlungsEreignis } from '@/lib/payments/types'
 import { formatiereGeld } from '@/lib/format';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { protokolliereBestellereignis } from './orderService';
+import { meldeEreignis } from '@/lib/observability/ereignis';
 import { bestaetigeErstattungViaWebhook } from './refundService';
 import { ladeBestellungFuerAbschluss, schliesseBestellungAb } from './orderCompletion';
 import { sendEmail } from '@/lib/email/sendEmail';
@@ -61,10 +62,10 @@ import { erzeugeBestellToken } from './orderAccessToken';
 async function ladeEmailUndBetrag(
   db: ReturnType<typeof createAdminClient>,
   orderId: string
-): Promise<{ email: string; totalPrice: number } | null> {
-  const { data, error } = await db.from('orders').select('email, total_price').eq('id', orderId).maybeSingle();
+): Promise<{ email: string; totalPrice: number; orderNumber: string | null } | null> {
+  const { data, error } = await db.from('orders').select('email, total_price, order_number').eq('id', orderId).maybeSingle();
   if (error || !data) return null;
-  return { email: data.email as string, totalPrice: Number(data.total_price ?? 0) };
+  return { email: data.email as string, totalPrice: Number(data.total_price ?? 0), orderNumber: (data.order_number as string | null) ?? null };
 }
 
 /**
@@ -130,7 +131,7 @@ export async function starteZahlung({
 
   const { data: bestellung, error } = await db
     .from('orders')
-    .select('id, order_type, status, total_price, payment_status, payment_reference, payment_provider')
+    .select('id, order_number, order_type, status, total_price, payment_status, payment_reference, payment_provider')
     .eq('id', orderId)
     .maybeSingle();
 
@@ -158,6 +159,13 @@ export async function starteZahlung({
   });
   if (!pruefung.ok) {
     console.error(`[zahlung] Betrag für ${orderId} nicht belastbar: ${pruefung.grund}`);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'PAYMENT',
+      ereignis: 'zahlbetrag_abgelehnt',
+      meldung: pruefung.grund,
+      felder: { bestellId: orderId },
+    });
     await protokolliereBestellereignis({
       orderId,
       eventType: 'payment_blocked',
@@ -178,6 +186,13 @@ export async function starteZahlung({
     // protokolliert wäre (Review vom 2026-08-20).
     const text = err instanceof Error ? err.message : String(err);
     console.error(`[zahlung] Anbieterauswahl für ${orderId} fehlgeschlagen:`, err);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'PAYMENT',
+      ereignis: 'zahlungsanbieter_auswahl_fehlgeschlagen',
+      fehler: err,
+      felder: { bestellId: orderId },
+    });
     await protokolliereBestellereignis({ orderId, eventType: 'payment_blocked', reason: text });
     return {
       ok: false,
@@ -201,11 +216,18 @@ export async function starteZahlung({
       // einem fehlerhaften Adapter. Ein bereits abgelaufener Vorgang ist
       // kein Grund, die Wiederaufnahme zu verhindern.
       console.warn(`[zahlung] Alter Vorgang ${alteReferenz} nicht verworfen:`, err);
+      await meldeEreignis({
+        schwere: 'WARNING',
+        kategorie: 'PAYMENT',
+        ereignis: 'alter_zahlungsvorgang_nicht_verworfen',
+        fehler: err,
+        felder: { bestellId: orderId },
+      });
     }
   }
 
   // ── Vorgang eröffnen ────────────────────────────────────────────────
-  const bestellnummer = buildOrderNumber(orderId);
+  const bestellnummer = (bestellung.order_number as string | null) ?? buildOrderNumber(orderId);
   // Signierter Zugriffstoken statt der rohen Bestell-ID in der Rückkehr-URL
   // (Fund vom 2026-08-26, Produktionsreife-Audit): Die Seite selbst prüft
   // KEINE Autorisierung – wer die rohe ID kennt (Browser-Verlauf, geteilter
@@ -234,6 +256,13 @@ export async function starteZahlung({
   } catch (err) {
     const text = err instanceof Error ? err.message : String(err);
     console.error(`[zahlung] Vorgang für ${orderId} nicht eröffnet:`, err);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'PAYMENT',
+      ereignis: 'zahlungsvorgang_nicht_eroeffnet',
+      fehler: err,
+      felder: { bestellId: orderId },
+    });
     return {
       ok: false,
       meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es in ein paar Minuten erneut.',
@@ -254,6 +283,16 @@ export async function starteZahlung({
 
   if (updateFehler) {
     console.error(`[zahlung] Zustand für ${orderId} nicht gespeichert:`, updateFehler);
+    // CRITICAL statt ERROR: beim Anbieter existiert bereits eine offene
+    // Zahlungsreferenz, die im System nirgends vermerkt ist ("verwaister"
+    // Vorgang) – echte Geldbetroffenheit, nicht nur ein technischer Fehlschlag.
+    await meldeEreignis({
+      schwere: 'CRITICAL',
+      kategorie: 'PAYMENT',
+      ereignis: 'zahlungszustand_nicht_gespeichert',
+      fehler: updateFehler,
+      felder: { bestellId: orderId, referenz: eroeffnung.referenz },
+    });
     return {
       ok: false,
       meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es erneut.',
@@ -313,6 +352,13 @@ export async function verarbeiteZahlungsEreignis(ereignis: ZahlungsEreignis): Pr
   if (error) {
     // Datenbank nicht erreichbar → TECHNISCH, erneut zustellen lassen.
     console.error(`[zahlung] Bestellung ${ereignis.bestellId} nicht ladbar (technisch):`, error);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'PAYMENT',
+      ereignis: 'zahlungsereignis_bestellung_nicht_ladbar',
+      fehler: error,
+      felder: { bestellId: ereignis.bestellId, ereignisId: ereignis.ereignisId },
+    });
     return { ok: false, wiederholen: true, grund: `DB-Fehler beim Laden: ${error.message}` };
   }
   if (!bestellung) {
@@ -343,6 +389,13 @@ export async function verarbeiteZahlungsEreignis(ereignis: ZahlungsEreignis): Pr
       console.error(
         `[zahlung] Betragsabweichung bei ${ereignis.bestellId}: gemeldet ${ereignis.betragCent}, erwartet ${erwartetCent} Cent.`
       );
+      await meldeEreignis({
+        schwere: 'CRITICAL',
+        kategorie: 'PAYMENT',
+        ereignis: 'zahlungsbetrag_abweichung',
+        meldung: `gemeldet ${ereignis.betragCent} Cent, erwartet ${erwartetCent} Cent`,
+        felder: { bestellId: ereignis.bestellId, ereignisId: ereignis.ereignisId },
+      });
       await protokolliereBestellereignis({
         orderId: ereignis.bestellId,
         eventType: 'payment_amount_mismatch',
@@ -391,6 +444,13 @@ async function bestaetigeZahlung(
     // TECHNISCH: Die Zahlung IST beim Anbieter erfolgt – wir konnten sie nur
     // nicht verbuchen. Erneut zustellen lassen, sonst geht sie verloren.
     console.error(`[zahlung] Bestätigung für ${ereignis.bestellId} fehlgeschlagen:`, error);
+    await meldeEreignis({
+      schwere: 'CRITICAL',
+      kategorie: 'PAYMENT',
+      ereignis: 'zahlungsbestaetigung_nicht_gespeichert',
+      fehler: error,
+      felder: { bestellId: ereignis.bestellId, ereignisId: ereignis.ereignisId, referenz: ereignis.referenz },
+    });
     return { ok: false, wiederholen: true, grund: error.message };
   }
 
@@ -580,6 +640,13 @@ async function markiereZahlungAlsGescheitert(
   if (error) {
     // TECHNISCH: erneut zustellen lassen.
     console.error(`[zahlung] Fehlschlag für ${ereignis.bestellId} nicht gespeichert:`, error);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'PAYMENT',
+      ereignis: 'zahlungsfehlschlag_nicht_gespeichert',
+      fehler: error,
+      felder: { bestellId: ereignis.bestellId, ereignisId: ereignis.ereignisId, art: ereignis.art },
+    });
     return { ok: false, wiederholen: true, grund: error.message };
   }
 
@@ -600,7 +667,7 @@ async function markiereZahlungAlsGescheitert(
   // bereits gespeicherten Zahlungszustand.
   const bestellinfo = await ladeEmailUndBetrag(db, ereignis.bestellId);
   if (bestellinfo) {
-    const orderNumber = buildOrderNumber(ereignis.bestellId);
+    const orderNumber = bestellinfo.orderNumber ?? buildOrderNumber(ereignis.bestellId);
     await sendEmail({
       to: bestellinfo.email,
       subject: `Zahlung nicht erfolgreich: ${orderNumber}`,

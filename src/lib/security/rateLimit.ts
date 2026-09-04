@@ -27,6 +27,7 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { istTestmodus } from '@/config/testmodus';
 import { istAdmin } from '@/lib/admin/auth';
 import { RATE_LIMITS, type RateLimitName } from '@/config/rateLimits';
+import { meldeEreignis } from '@/lib/observability/ereignis';
 
 export interface RateLimitErgebnis {
   erlaubt: boolean;
@@ -154,10 +155,18 @@ export async function pruefeRateLimit(name: RateLimitName, merkmal?: string): Pr
     if (zeile.erlaubt) return ERLAUBT;
 
     // Auffälliges Verhalten festhalten – mit gekürzter Adresse.
-    console.warn(
-      `[ratelimit] ÜBERSCHRITTEN ${limit.id}: ${kuerzeIp(ip)} bei ${zeile.anzahl} Zugriffen ` +
-        `(Grenze ${limit.max} je ${limit.fensterSekunden}s), frei in ${zeile.zuruecksetzen_in}s`
-    );
+    await meldeEreignis({
+      schwere: 'WARNING',
+      kategorie: 'RATE_LIMIT',
+      ereignis: 'rate_limit_ausgeloest',
+      felder: {
+        limitId: limit.id,
+        ipGekuerzt: kuerzeIp(ip),
+        anzahl: zeile.anzahl as number,
+        max: limit.max,
+        fensterSekunden: limit.fensterSekunden,
+      },
+    });
 
     return {
       erlaubt: false,

@@ -26,6 +26,7 @@ import { createHash, timingSafeEqual } from 'node:crypto';
 import { NextResponse, type NextRequest } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/server';
 import { protokoll } from '@/lib/observability/log';
+import { meldeEreignis } from '@/lib/observability/ereignis';
 import { processDueSupplierOrders } from '@/lib/suppliers/lifecycle/orchestrator';
 import { holeOffeneRechnungenNach } from '@/lib/orders/orderCompletion';
 import { holeOffeneBestellbestaetigungenNach } from '@/lib/orders/orderCompletion';
@@ -67,7 +68,25 @@ async function handle(req: NextRequest): Promise<NextResponse> {
   }
 
   const limit = Number(req.nextUrl.searchParams.get('limit') ?? '25') || 25;
-  const { reclaimed, processed } = await processDueSupplierOrders({ limit });
+  let reclaimed: number;
+  let processed: Awaited<ReturnType<typeof processDueSupplierOrders>>['processed'];
+  try {
+    ({ reclaimed, processed } = await processDueSupplierOrders({ limit }));
+  } catch (fehler) {
+    const meldung = fehler instanceof Error ? fehler.message : String(fehler);
+    // Bislang komplett ungefangen: Ein Wurf hier hätte den Lauf mit einem
+    // generischen 500er beendet, ohne jede Protokollierung – der schwerste
+    // denkbare Fall von "Cron fehlgeschlagen" (docs/betriebsbeobachtung.md
+    // Abschnitt 3) war damit gerade der unsichtbarste.
+    protokoll.fehler('CRON', 'lieferantenverarbeitung_fehlgeschlagen', meldung);
+    await meldeEreignis({
+      schwere: 'ERROR',
+      kategorie: 'CRON',
+      ereignis: 'lieferantenverarbeitung_fehlgeschlagen',
+      fehler,
+    });
+    return NextResponse.json({ ok: false, error: meldung }, { status: 500 });
+  }
 
   // ── Wartung ───────────────────────────────────────────────────────
   // Mehrere Tabellen wachsen ohne Pflege (Rate-Limit-Fenster, Sitzungen,
@@ -91,6 +110,7 @@ async function handle(req: NextRequest): Promise<NextResponse> {
   } catch (fehler) {
     const meldung = fehler instanceof Error ? fehler.message : String(fehler);
     protokoll.fehler('CRON', 'abschluss_retry_fehlgeschlagen', meldung);
+    await meldeEreignis({ schwere: 'ERROR', kategorie: 'CRON', ereignis: 'abschluss_retry_fehlgeschlagen', fehler });
     abschluesseNachgeholt = { fehler: meldung };
   }
 
@@ -104,6 +124,7 @@ async function handle(req: NextRequest): Promise<NextResponse> {
   } catch (fehler) {
     const meldung = fehler instanceof Error ? fehler.message : String(fehler);
     protokoll.fehler('CRON', 'rechnungs_retry_fehlgeschlagen', meldung);
+    await meldeEreignis({ schwere: 'ERROR', kategorie: 'CRON', ereignis: 'rechnungs_retry_fehlgeschlagen', fehler });
     rechnungenNachgeholt = { fehler: meldung };
   }
 
@@ -117,6 +138,7 @@ async function handle(req: NextRequest): Promise<NextResponse> {
   } catch (fehler) {
     const meldung = fehler instanceof Error ? fehler.message : String(fehler);
     protokoll.fehler('CRON', 'erstattungs_retry_fehlgeschlagen', meldung);
+    await meldeEreignis({ schwere: 'ERROR', kategorie: 'CRON', ereignis: 'erstattungs_retry_fehlgeschlagen', fehler });
     erstattungenNachgeholt = { fehler: meldung };
   }
 
@@ -131,6 +153,7 @@ async function handle(req: NextRequest): Promise<NextResponse> {
   } catch (fehler) {
     const meldung = fehler instanceof Error ? fehler.message : String(fehler);
     protokoll.fehler('CRON', 'bestaetigungs_retry_fehlgeschlagen', meldung);
+    await meldeEreignis({ schwere: 'ERROR', kategorie: 'CRON', ereignis: 'bestaetigungs_retry_fehlgeschlagen', fehler });
     bestaetigungenNachgeholt = { fehler: meldung };
   }
 
@@ -217,6 +240,7 @@ async function raeumeAuf(): Promise<{
       anfragen.error || anonymisiert.error;
     if (fehlerObj) {
       protokoll.fehler('CRON', 'aufraeumen_fehlgeschlagen', fehlerObj.message);
+      await meldeEreignis({ schwere: 'ERROR', kategorie: 'CRON', ereignis: 'aufraeumen_fehlgeschlagen', meldung: fehlerObj.message });
       return { ...leer, fehler: fehlerObj.message };
     }
     return {
@@ -235,6 +259,7 @@ async function raeumeAuf(): Promise<{
   } catch (fehler) {
     const meldung = fehler instanceof Error ? fehler.message : String(fehler);
     protokoll.fehler('CRON', 'aufraeumen_fehlgeschlagen', meldung);
+    await meldeEreignis({ schwere: 'ERROR', kategorie: 'CRON', ereignis: 'aufraeumen_fehlgeschlagen', fehler });
     return { ...leer, fehler: meldung };
   }
 }

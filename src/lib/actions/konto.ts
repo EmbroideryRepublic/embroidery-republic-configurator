@@ -26,6 +26,7 @@ import { createClient, createAdminClient } from '@/lib/supabase/server';
 import { basisUrl } from '@/lib/seo/basisUrl';
 import { pruefeRateLimit } from '@/lib/security/rateLimit';
 import { protokoll } from '@/lib/observability/log';
+import { meldeEreignis } from '@/lib/observability/ereignis';
 import { sendEmail } from '@/lib/email/sendEmail';
 import { aktuellerKunde, istRecoverySitzung } from '@/lib/account/session';
 import {
@@ -187,8 +188,12 @@ export async function anmeldenAction(_prev: KontoActionResult | null, formData: 
   const { error } = await supabase.auth.signInWithPassword({ email, password: passwort });
   if (error) {
     // Nie verraten, WAS falsch war (E-Mail unbekannt vs. Passwort falsch) –
-    // dieselbe Zusammenfassung wie orderAccess.ts bei einem Token.
-    protokoll.info('AUTH', 'anmeldung_fehlgeschlagen', email);
+    // dieselbe Zusammenfassung wie orderAccess.ts bei einem Token. Ebenso
+    // bewusst KEINE E-Mail-Adresse in meldeEreignis (weder meldung noch
+    // felder) – anders als beim Plattformprotokoll (dort von bereinige()
+    // automatisch geschwärzt) soll hier gar nichts Identifizierendes
+    // entstehen, das in system_ereignisse landet.
+    await meldeEreignis({ schwere: 'WARNING', kategorie: 'AUTH', ereignis: 'anmeldung_fehlgeschlagen' });
     return { success: false, error: 'E-Mail-Adresse oder Passwort ist falsch.' };
   }
 

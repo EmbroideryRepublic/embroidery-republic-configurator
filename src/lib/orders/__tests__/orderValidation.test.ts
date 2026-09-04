@@ -16,6 +16,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { validateSubmission, istPlausibleEmail, istGueltigePlz, GRENZEN, STICH_UNTERGRENZE } from '../orderValidation';
+import { BASE_OVERHEAD_STITCHES, TEXT_MIN_STITCHES, schaetzeLogoStiche, schaetzeTextStiche } from '@/lib/embroidery/stichschaetzung';
 import { PRODUCTS } from '@/config/products';
 import type { CartItem } from '@/types';
 
@@ -113,12 +114,18 @@ test('DTF braucht keine Stichzahl – dort wird nicht nach Stichen abgerechnet',
   assert.ok(!c.includes('stichzahl_ungueltig'));
 });
 
-test('Wächter: die Untergrenzen entsprechen den Konstanten der Browser-Schätzung', () => {
+test('Wächter: die Untergrenzen sind die Minima des gemeinsamen Schätzkerns (Browser und Server)', () => {
+  assert.equal(STICH_UNTERGRENZE.logo, BASE_OVERHEAD_STITCHES);
+  assert.equal(STICH_UNTERGRENZE.text, TEXT_MIN_STITCHES);
+  // Der Rechenkern kann diese Werte tatsächlich nie unterschreiten.
+  assert.equal(schaetzeLogoStiche({ data: new Uint8ClampedArray(4 * 4), width: 2, height: 2 }, 100), BASE_OVERHEAD_STITCHES);
+  // Text: die Formel addiert stets 250 Grundstiche, das Minimum 150 ist also
+  // eine sichere Untergrenze, nie ein erreichter Wert.
+  assert.ok(schaetzeTextStiche(0.0001, 0.1) >= TEXT_MIN_STITCHES);
+  // Und der Browser-Wrapper nutzt denselben Kern (kein zweiter Rechenweg).
   const quelle = readFileSync(path.join(process.cwd(), 'src', 'lib', 'embroidery', 'estimateStitches.ts'), 'utf8');
-  const overhead = Number(/const BASE_OVERHEAD_STITCHES = (\d+);/.exec(quelle)?.[1]);
-  const textMin = Number(/Math\.max\((\d+), stitches\)/.exec(quelle)?.[1]);
-  assert.equal(STICH_UNTERGRENZE.logo, overhead, 'Logo-Untergrenze muss BASE_OVERHEAD_STITCHES entsprechen');
-  assert.equal(STICH_UNTERGRENZE.text, textMin, 'Text-Untergrenze muss dem Minimum aus estimateTextStitches entsprechen');
+  assert.match(quelle, /from '\.\/stichschaetzung'/);
+  assert.doesNotMatch(quelle, /STITCHES_PER_CM2 = \d/, 'keine eigenen Dichtewerte mehr im Browser-Wrapper');
 });
 
 // ── Der gültige Fall muss durchgehen ─────────────────────────────────────

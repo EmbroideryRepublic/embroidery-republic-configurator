@@ -87,8 +87,10 @@ Erzeugt allein aus den Metadaten der Posten (`explainLines`):
 ```
 Gildan Heavy T-Shirt · 25 × 12.26 € · 306.50 € – Grundpreis abzüglich 5 %
   Mengenrabatt ab 25 Stück (menge: 25, mengenrabattProzent: 5) [Stufe position]
-Veredelung Vorderseite · 25 × 14.45 € · 361.25 € – Stickerei, abgerechnet nach
-  Stichzahl (stiche: 12000, satzJe1000Stiche: 1.4, …) [Stufe position]
+Veredelung Vorderseite · 25 × 16.63 € · 415.75 € – Stickerei auf der Ansicht
+  „Vorderseite": Positionspreis 7,50 € der Mengenstaffel zuzüglich 1,20 € je
+  1.000 geschätzte Stiche (stiche: 12000, satzJe1000Stiche: 1.2,
+  veredelungsrabattProzent: 36.6, positionspreis: 7.5) [Stufe position]
 Einrichtung · 25.00 € – Einmaliger Rüstaufwand, verteilt sich auf 25 Stück
 Rabatt verein · -69.26 € – Rabatt für die Kundengruppe „verein" [Regel kundengruppe:verein]
 Versand · 0.00 € – Versandkostenfrei, weil der Warenwert die Freigrenze erreicht

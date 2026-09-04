@@ -270,6 +270,18 @@ in die Preisbildung.
 >
 > Der interne Verrechnungssatz von 1,40 € oben bleibt eine Kalkulationsgröße
 > und ist kein Verkaufspreis.
+>
+> **Vertrauenswürdige Stichzahl (2026-09-04).** Die Stichzahl kommt als
+> Schätzung aus dem Browser (`estimatedStitches`). Bei der Bestellung
+> rechnet der Server sie aus den übermittelten Motivdaten selbst nach
+> (`lib/embroidery/serverStichzahl.ts`, gleicher Rechenkern
+> `stichschaetzung.ts` wie im Browser; Logo-Pixel aus dem gespeicherten
+> Display-PNG über resvg, Text über resvg mit den gebündelten Schriften).
+> Preisrelevant ist der Clientwert nur, wenn er den Serverwert höchstens um
+> die Messtoleranz (Logo 5 %, Text 25 %) unterschreitet – sonst der
+> Serverwert. Ein manipulierter Request kann die Stichzahl damit nicht unter
+> den Serverwert drücken; die Toleranz existiert allein, damit Anzeige und
+> Rechnung bei ehrlichen Kundinnen exakt übereinstimmen.
 
 ---
 

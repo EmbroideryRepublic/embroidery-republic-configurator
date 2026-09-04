@@ -70,9 +70,10 @@ gemeinsamen Resolver gezogen werden:
   geschlossen – das Farbspektrum wächst nicht) vs. Größenleitern (geordnet, typisiert).
 - **Kategoriales vs. numerisches Material:** `MaterialGruppe` (disjunkte Klassen)
   gehört **nicht** in einen generischen `attributes`-Blob mit `weightGsm`.
-- **Rechenmodelle der Veredelung:** DTF (flächenbasiert, cm²) vs. Stickerei
-  (stichbasiert, `per_1000_stitches`) – getrennte Rechenpfade; die Registry hält nur
-  einen **Zeiger** auf das jeweilige Regel-Set + einen Modell-Tag.
+- **Rechenmodelle der Veredelung:** DTF (Positionsstaffel, `first_position`/
+  `additional_position`) vs. Stickerei (dieselbe Positionsstaffel PLUS Stichaufpreis
+  `per_1000_stitches` mit Rabattdeckel, seit 2026-09-03) – getrennte Regel-Sets; die
+  Registry hält nur einen **Zeiger** auf das jeweilige Regel-Set + einen Modell-Tag.
 - **Kostenkern-Union vs. `PrintMethod`:** `selbstkosten.ts` (`'dtf'|'stick'`) und
   `PrintMethod` (`'dtf'|'embroidery'`) bleiben getrennt, gekoppelt **ausschließlich**
   über EINEN Resolver `veredelungZuKostenart()`, nie per gegenseitigem Import.

@@ -26,6 +26,7 @@
 import { getProduct } from '@/config/products';
 import { getPrintAreas } from '@/config/printAreas';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
+import { BASE_OVERHEAD_STITCHES, TEXT_MIN_STITCHES } from '@/lib/embroidery/stichschaetzung';
 import type { CartItem, PrintMethod } from '@/types';
 
 /**
@@ -61,13 +62,14 @@ export const GRENZEN = {
 const ERLAUBTE_VEREDELUNGEN: readonly PrintMethod[] = ['dtf', 'embroidery'];
 
 /**
- * Kleinste Stichzahl, die die Browser-Schätzung je Elementtyp überhaupt
- * liefern kann (lib/embroidery/estimateStitches.ts: BASE_OVERHEAD_STITCHES
- * = 500 für Logos, Math.max(150, …) für Text). Ein Wert darunter kann nur
- * aus einem manipulierten oder defekten Request stammen. Ein Wächtertest
- * (orderValidation.test.ts) hält beide Stellen zusammen.
+ * Kleinste Stichzahl, die die Schätzung je Elementtyp überhaupt liefern
+ * kann (lib/embroidery/stichschaetzung.ts – derselbe Rechenkern im Browser
+ * und auf dem Server). Ein Wert darunter kann nur aus einem manipulierten
+ * oder defekten Request stammen. Diese Prüfung ist das billige erste Sieb;
+ * die preisrelevante Stichzahl bestimmt anschließend der Server selbst aus
+ * den Motivdaten (lib/embroidery/serverStichzahl.ts).
  */
-export const STICH_UNTERGRENZE = { logo: 500, text: 150 } as const;
+export const STICH_UNTERGRENZE = { logo: BASE_OVERHEAD_STITCHES, text: TEXT_MIN_STITCHES } as const;
 
 export interface OrderValidationIssue {
   /** Maschinenlesbar, für Protokoll und Auswertung. */

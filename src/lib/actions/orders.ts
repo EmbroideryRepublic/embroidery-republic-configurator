@@ -16,6 +16,7 @@ import { getProduct } from '@/config/products';
 import type { CartItem, ConfigElement } from '@/types';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { priceCart, priceClaimDeviation, type ServerItemPrice } from '@/lib/pricing/serverPricing';
+import { mitVertrauenswuerdigerStichzahl } from '@/lib/embroidery/serverStichzahl';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
 import { formatiereGeld } from '@/lib/format';
 import { aktuellerKunde } from '@/lib/account/session';
@@ -329,6 +330,21 @@ async function persistAndNotifyCore(params: {
     return { success: false, error: validierung.customerMessage };
   }
 
+  // ── VERTRAUENSWÜRDIGE STICHZAHL ─────────────────────────────────────────
+  // Die Stichzahl (Grundlage des Stickaufpreises) kommt als Schätzung aus
+  // dem Browser. Der Server rechnet sie hier aus den übermittelten Motivdaten
+  // SELBST nach (lib/embroidery/serverStichzahl.ts) und ersetzt einen zu
+  // niedrigen Clientwert – Preisberechnung, Speicherung und alles Weitere
+  // arbeiten ab hier ausschließlich mit `items`, nie mehr mit params.items.
+  const stichzahlen = mitVertrauenswuerdigerStichzahl(params.items);
+  const items = stichzahlen.items;
+  for (const k of stichzahlen.korrekturen) {
+    console.warn(
+      `[orders] Stichzahl vom Client ersetzt (${k.typ}, Position ${k.itemId}, Element ${k.elementId}): ` +
+        `übermittelt ${String(k.clientWert)}, serverseitig ${k.serverWert} → verwendet ${k.verwendet}.`
+    );
+  }
+
   // ── AUTORITATIVE, serverseitige Preisberechnung ─────────────────────────
   // Der vom Client übermittelte Preis wird NIE gespeichert. Menge und Preis
   // werden ausschließlich aus Katalog (basePrice) + Konfiguration (Elemente,
@@ -336,7 +352,7 @@ async function persistAndNotifyCore(params: {
   // Client-Preis ist damit wirkungslos; er wird nur zur Prüfung protokolliert.
   // Versand wird ebenfalls serverseitig aus Lieferland + Warenwert ermittelt
   // (config/shipping.ts). Bei Anfragen ohne Lieferadresse entfällt er.
-  const pricing = await priceCart(params.items, params.shipping?.country);
+  const pricing = await priceCart(items, params.shipping?.country);
 
   const clientClaimedTotal = params.items.reduce((sum, it) => sum + (Number(it.totalPrice) || 0), 0);
   const deviation = priceClaimDeviation(clientClaimedTotal, pricing.totalPrice);
@@ -440,7 +456,7 @@ async function persistAndNotifyCore(params: {
 
   let itemRecords;
   try {
-    itemRecords = await buildItemRecords(params.items, orderId, pricing.items);
+    itemRecords = await buildItemRecords(items, orderId, pricing.items);
   } catch (fehler) {
     await meldeEreignis({
       schwere: 'ERROR',
@@ -512,7 +528,7 @@ async function persistAndNotifyCore(params: {
     terms_accepted_at: validierung.termsAcceptedAt ?? null,
   };
 
-  const itemsPayload = params.items.map((item, i) => ({
+  const itemsPayload = items.map((item, i) => ({
     product_id: item.productId,
     product_name: itemRecords[i]?.productName ?? item.productId,
     color_id: item.colorId,

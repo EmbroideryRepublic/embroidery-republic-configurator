@@ -46,20 +46,29 @@ test('unklare Farbe: Produkt-Link bleibt UNVERÄNDERT (kein Hex zum Anhängen)',
   assert.equal(toManualPosition(unklar).productUrl, navyPosition.productUrl);
 });
 
-test('needen: Produkt-Link bleibt UNVERÄNDERT (der ?color=-Trick ist nur bei textil-grosshandel geprüft)', () => {
-  const needenPosition: SupplierOrderPosition = {
-    supplierId: 'needen',
-    productId: 'gildan-ladies-heavy-t',
-    productName: 'Heavy Cotton Damen T-Shirt',
-    articleNumber: 'GN182',
-    productUrl: 'https://www.needen.de/gildan-gn182-t-shirt-mit-rundhalsausschnitt-180-fur-damen-411244',
-    colorId: 'black',
-    colorName: 'Schwarz',
-    sizes: [{ size: 'M', quantity: 1 }],
-  };
-  const pos = toManualPosition(needenPosition);
-  assert.equal(pos.shopColor.kind, 'eindeutig', 'Voraussetzung: die Farbe löst hier überhaupt auf');
-  assert.equal(pos.productUrl, needenPosition.productUrl);
+const needenBasis: SupplierOrderPosition = {
+  supplierId: 'needen',
+  productId: 'gildan-ladies-heavy-t',
+  productName: 'Heavy Cotton Damen T-Shirt',
+  articleNumber: 'GN182',
+  productUrl: 'https://www.needen.de/gildan-gn182-t-shirt-mit-rundhalsausschnitt-180-fur-damen-411244',
+  colorId: 'black',
+  colorName: 'Schwarz',
+  sizes: [{ size: 'M', quantity: 1 }],
+};
+
+test('needen: Produkt-Link bekommt die produktspezifische Farb-ID als /c<id>-Pfadsegment (Shop wählt die Farbe dann vor)', () => {
+  const pos = toManualPosition(needenBasis);
+  assert.equal(pos.shopColor.kind, 'eindeutig');
+  assert.equal(pos.productUrl, `${needenBasis.productUrl}/c20-farbe`, 'Schwarz = data-color-id 20 bei GN182 (productOverride)');
+});
+
+test('needen: OHNE verifizierte Farb-ID (nur Basis-Näherung) bleibt der Produkt-Link UNVERÄNDERT', () => {
+  // 'charcoal' hat für GN182 KEINEN productOverride (siehe needen.ts – GN182
+  // bietet zwei ähnlich dunkle Kandidaten, keine eindeutige Zuordnung).
+  const pos = toManualPosition({ ...needenBasis, colorId: 'charcoal', colorName: 'Anthrazit' });
+  assert.equal(pos.shopColor.kind, 'eindeutig', 'Voraussetzung: die Farbe löst trotzdem auf (Label-Näherung)');
+  assert.equal(pos.productUrl, needenBasis.productUrl);
 });
 
 test('Gesamtmenge ist die Summe der Größen', () => {

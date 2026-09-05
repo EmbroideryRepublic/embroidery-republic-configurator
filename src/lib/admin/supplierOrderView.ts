@@ -76,16 +76,23 @@ function bekannteFarbenDesProdukts(supplierId: SupplierId, productId: string): {
 }
 
 /**
- * textil-grosshandel.eu wählt die Farbe serverseitig vor, wenn die
- * Produkt-URL den Hex-Wert als `?color=`-Parameter trägt (live am Shop
- * geprüft, 2026-09-05: `?color=224D8F` lädt die Seite direkt mit "Royal"
- * ausgewählt statt nur den Swatch-Button anzuzeigen). Andere Lieferanten
- * (aktuell needen.de) haben dafür keinen geprüften Mechanismus – deshalb
- * NUR für textil-grosshandel anhängen, nicht pauschal für jede URL.
+ * ZWEI Lieferanten wählen die Farbe serverseitig vor, wenn ihre stabile
+ * Farb-ID (dieselbe, die für die Anzeige ohnehin aufgelöst wird –
+ * resolved.colorVariant.variantId) in der URL steht – beide live geprüft
+ * (2026-09-05):
+ *  - textil-grosshandel.eu: `?color=<Hex>` (z.B. `?color=224D8F` lädt die
+ *    Seite direkt mit "Royal" ausgewählt statt nur den Swatch anzuzeigen).
+ *  - needen.de: `/c<data-color-id>-<beliebiger-slug>` (z.B. `/c2305-navy`
+ *    lädt direkt mit "Navy" – der Slug ist kosmetisch, needen wertet nur
+ *    die Zahl aus, siehe NeedenAdapter.ts).
+ * Andere/künftige Lieferanten haben dafür keinen geprüften Mechanismus –
+ * deshalb explizit je Lieferant, nicht pauschal für jede URL.
  */
-function mitVorausgewaehlterFarbe(url: string, supplierId: string, hex: string | undefined): string {
-  if (supplierId !== 'textil-grosshandel' || !hex) return url;
-  return `${url}?color=${hex}`;
+function mitVorausgewaehlterFarbe(url: string, supplierId: string, variantId: string | undefined): string {
+  if (!variantId) return url;
+  if (supplierId === 'textil-grosshandel') return `${url}?color=${variantId}`;
+  if (supplierId === 'needen') return `${url}/c${variantId}-farbe`;
+  return url;
 }
 
 /** Übersetzt EINE Position in die Ansicht für die manuelle Bestellung. */

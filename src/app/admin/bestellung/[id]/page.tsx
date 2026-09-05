@@ -416,7 +416,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
                           rel="noreferrer"
                           className="rounded bg-gold px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
                         >
-                          Produkt bei Textil-Großhandel öffnen ↗
+                          Produkt bei {gruppe.supplierLabel} öffnen ↗
                         </a>
                         {order.productionSheetUrl && (
                           <a

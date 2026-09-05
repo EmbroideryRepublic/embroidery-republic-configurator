@@ -16,8 +16,15 @@
  * je Produktseite eindeutig – deshalb label-basierte Auswahl über `title`.
  * Verifiziert: Klick auf das Label selektiert das zugehörige Radio.
  * `data-color-id` (im `for="farbe_<id>"`) ist PRODUKTSPEZIFISCH (Navy=2305 bei
- * GN182, =345 bei GN960) und wird daher nicht als variantId gepflegt; der
- * variant-id-Selektor zielt dennoch – korrekt – auf dasselbe sichtbare Label.
+ * GN182, =343 bei GN647/GN960 – live geprüft 2026-09-05, siehe
+ * mapping/tables/needen.ts → productOverrides) und wird daher NICHT hier,
+ * sondern dort je Katalog-Produkt gepflegt; der variant-id-Selektor zielt
+ * dennoch – korrekt – auf dasselbe sichtbare Label.
+ *
+ * Praktischer Nutzen derselben ID: needen lädt `<productUrl>/c<id>-<slug>`
+ * bereits mit dieser Farbe vorausgewählt (der Slug ist kosmetisch), analog
+ * zu textil-grosshandels `?color=<hex>` – genutzt vom admin-seitigen
+ * Produkt-Link (supplierOrderView.ts).
  *
  * ── Größe/Menge ────────────────────────────────────────────────────────
  * Mengen-Matrix je Größe als Tabellenzeile:

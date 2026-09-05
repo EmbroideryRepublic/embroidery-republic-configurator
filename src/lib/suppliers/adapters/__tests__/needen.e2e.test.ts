@@ -163,8 +163,12 @@ test('E2E-Dry-Run: interne Bestellung → needen prepare-cart vollständig im ec
       'alle übrigen Schritte laufen fehlerfrei'
     );
 
-    // 3. Protokollierte Selektionsmethoden (Label-Fallback, verifizierte Werte).
-    assert.deepEqual(byStep('selectColor')[0]?.selection, { strategy: 'label', value: 'Navy' });
+    // 3. Protokollierte Selektionsmethoden. Farbe: seit dem productOverride für
+    //    gildan-ladies-heavy-t (mapping/tables/needen.ts, 2026-09-05, echte
+    //    data-color-id 2305 für Navy bei GN182) bevorzugt der Resolver jetzt
+    //    die stabile variant-id vor dem Label-Fallback – robuster gegenüber
+    //    Umbenennungen im Shop. Größen bleiben beim Label (keine IDs gepflegt).
+    assert.deepEqual(byStep('selectColor')[0]?.selection, { strategy: 'variant-id', value: '2305' });
     const qtyM = setQty.find((s) => s.size === 'M');
     const qtyXXL = setQty.find((s) => s.size === 'XXL');
     assert.deepEqual(qtyM?.selection, { strategy: 'label', value: 'M' });

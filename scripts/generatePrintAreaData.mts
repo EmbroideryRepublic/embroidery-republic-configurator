@@ -197,16 +197,35 @@ const ABSTAND = {
 // lässt sich nicht beliebig groß produzieren). DTF und Stickerei nutzen bewusst
 // dieselben Werte (Mehraufwand der Stickerei über den €/cm²-Satz in pricingRules).
 
-/** Oberarmbreite für Schnitte ohne messbare Ärmelkontur.
- *  Aus den 28 validierten Produkten gemessener MITTELWERT (10,9 cm).
+/**
+ * KORREKTUR (2026-09-04, Befund: „Ärmelbereiche müssen angepasst werden"):
+ * Die Motivgrößen-Obergrenze für Ärmel war bislang auf einen FLACHEN,
+ * produktübergreifenden Wert gedeckelt (vormals 8,9 cm, aus dem an den 28
+ * T-Shirts/Polos gemessenen Mittelwert 10,9 cm minus 2×1,0 cm Naht) –
+ * unabhängig davon, wie viel Stoff die einzelne Ärmelaufnahme tatsächlich
+ * sicher hergab. Das betraf ALLE Ärmelprodukte gleichermaßen, war aber bei
+ * bauschigeren Schnitten (Hoodies, Sweatshirts) am sichtbarsten, weil deren
+ * Bewegungsbereich (boxWidthCm, aus der Kontur der jeweiligen Ärmelaufnahme
+ * berechnet, siehe berechneBox() unten) sichtbar breiter ausfällt als 8,9 cm.
  *
- *  KORREKTUR: Vorher stand hier 9,3 cm (Mittelwert minus eine
- *  Standardabweichung) und davon wurden nochmals 2×1,5 cm Naht abgezogen –
- *  übrig blieben 6,3 cm nutzbare Breite. Das war doppelt konservativ und
- *  lag deutlich unter jeder realen Ärmelveredelung. Mit dem Mittelwert und
- *  1,0 cm Naht je Seite ergeben sich 8,9 cm, was der Zielvorgabe des
- *  Auftraggebers (8–11 cm) entspricht. */
-const AERMEL_KONSERVATIV_CM = 10.9;
+ * Der Bewegungsbereich ist bereits die für DIESES Produkt geprüfte sichere
+ * Fläche (Silhouette minus Nahtabstand, siehe `vollX0`/`vollX1` unten) – und
+ * zur Laufzeit (ConfiguratorCanvas.tsx, clampDragPositionCentered) kann ein
+ * Motiv ohnehin NIE über diesen Bereich hinausragen, unabhängig davon, wie
+ * groß maxWidthCm erlaubt: Der erlaubte Mittelpunkt-Bereich schrumpft mit der
+ * Motivgröße, die Kante bleibt innerhalb areaPx. Ein größeres maxWidthCm
+ * verschenkt also keine Sicherheit, sondern nur ungenutzten Bewegungsspielraum
+ * (weniger Freiheit, das Motiv zu verschieben) gegen mehr mögliche Motivgröße.
+ *
+ * Deshalb gilt für Ärmel jetzt dieselbe Regel wie für Torso-Ansichten: die
+ * Obergrenze ist die PROZESSGRENZE der Veredelung (`grenze.maxWidthCm`, aus
+ * decorationPositions.ts, aktuell 11 cm) – begrenzt durch die tatsächliche,
+ * für DIESES Produkt gemessene Bewegungsbereichsbreite (Zeile ~1428,
+ * `Math.min(breiteCmLokal, (x1pxLokal - x0pxLokal) / pxProCm)`), exakt wie
+ * bei front/back. Geprüft (2026-09-04): bei allen 141 aktuell erzeugten
+ * Ärmelansichten liegt die gemessene Bewegungsbereichsbreite bei mindestens
+ * 12,2 cm – die Prozessgrenze 11 cm bleibt also überall die bindende Grenze,
+ * nie eine erfundene Schätzung für ein einzelnes Produkt. */
 
 /** Nutzbares Oberarm-Band, als Anteil der Kleidungsstückhöhe ab Oberkante.
  *
@@ -1181,8 +1200,8 @@ for (const p of PRODUCTS) {
     // Maßstab würde dasselbe Foto fälschlich als unterschiedlich groß
     // interpretieren. Es ändert sich nur, WIE VIEL cm Fläche für die
     // jeweilige Größe angefordert wird (massZeile.breiteCm/hoeheCm) – die
-    // Ärmelfläche bleibt davon ohnehin unberührt (AERMEL_KONSERVATIV_CM ist
-    // bereits größenunabhängig, siehe Kommentar dort).
+    // Ärmelfläche bleibt davon ohnehin unberührt (die Prozessgrenze
+    // grenze.maxWidthCm ist größenunabhängig, siehe Kommentar oben).
     function berechneBox(massZeile: { breiteCm: number; hoeheCm: number }) {
       // ── Größenverhältnis zur Referenzgröße ──────────────────────────────
       // Das Foto zeigt EIN reales Kleidungsstück (die Referenzgröße, i.d.R.
@@ -1211,7 +1230,11 @@ for (const p of PRODUCTS) {
         breiteCmLokal = Math.min(massZeile.breiteCm - 2 * ABSTAND.seitennaht, grenze.maxWidthCm);
         hoeheNutzbarCmLokal = Math.min(massZeile.hoeheCm - ABSTAND.kragen - ABSTAND.saum, grenze.maxHeightCm);
       } else {
-        breiteCmLokal = Math.min(AERMEL_KONSERVATIV_CM - 2 * ABSTAND.aermelnaht, grenze.maxWidthCm);
+        // Prozessgrenze als Startwert – die tatsächliche Bewegungsbereichs-
+        // breite dieses Produkts (vollX0/vollX1 unten) deckelt am Ende
+        // erneut (Zeile ~1428), exakt wie bei front/back. Siehe Kommentar
+        // an der ehemaligen AERMEL_KONSERVATIV_CM-Definition oben.
+        breiteCmLokal = grenze.maxWidthCm;
         hoeheNutzbarCmLokal = grenze.maxHeightCm;
       }
 
@@ -1455,8 +1478,8 @@ for (const p of PRODUCTS) {
     // Berechnung wie referenzBox, nur mit den cm-Maßen dieser Größe statt
     // der Referenzgröße) – eine XL bekommt dadurch tatsächlich mehr nutzbare
     // Breite als eine S, eine S nie mehr, als ihr Schnitt hergibt. Ärmel
-    // bleiben bewusst außen vor (AERMEL_KONSERVATIV_CM ist bereits
-    // größenunabhängig, siehe Kommentar dort) – kein bySize für Ärmelansichten.
+    // bleiben bewusst außen vor (die Prozessgrenze ist bereits
+    // größenunabhängig, siehe Kommentar oben) – kein bySize für Ärmelansichten.
     let bySize: Record<string, GroessenBox> | undefined;
     if (!istAermel && sizeTabelle && sizeTabelle.length > 0) {
       bySize = {};
@@ -1476,7 +1499,7 @@ for (const p of PRODUCTS) {
     }
 
     proProdukt[view] = {
-      garmentWidthCm: Number((istAermel ? AERMEL_KONSERVATIV_CM : mass.breiteCm - 2 * ABSTAND.seitennaht).toFixed(1)),
+      garmentWidthCm: Number((istAermel ? grenze.maxWidthCm : mass.breiteCm - 2 * ABSTAND.seitennaht).toFixed(1)),
       garmentHeightCm: Number((istAermel ? grenze.maxHeightCm : mass.hoeheCm - ABSTAND.kragen - ABSTAND.saum).toFixed(1)),
       x0: proz(referenzBox.x0px, w),
       y0: proz(referenzBox.y0px, h),

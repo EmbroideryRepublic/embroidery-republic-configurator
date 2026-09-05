@@ -247,9 +247,13 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
  * Siehe scripts/generatePrintAreaData.mts und
  * docs/recherche-herstellermasse.md.
  *
- * DTF und Stickerei erhalten dieselbe Fläche – der Mehraufwand der
- * Stickerei steckt im €/cm²-Satz (pricingRules), nicht in einer künstlich
- * kleineren Fläche. Bestehende Festlegung, unverändert übernommen.
+ * DTF und Stickerei erhalten grundsätzlich dieselbe Fläche – der Mehraufwand
+ * der Stickerei steckt im €/cm²-Satz (pricingRules), nicht in einer künstlich
+ * kleineren Fläche. EINE Ausnahme (seit 2026-09-04): auf Ärmelansichten
+ * deckelt der echte Stickrahmen (STICKRAHMEN_AERMEL_CM unten) die
+ * Stickerei-Motivgröße zusätzlich – das ist keine künstliche Verengung,
+ * sondern eine reale Maschinengrenze, die DTF (Presse ohne Formatobergrenze
+ * für Ärmel) nicht hat. Front/Back bleiben von dieser Ausnahme unberührt.
  */
 /** Übersetzt die je-Größe-Flächen des Generators (x0/x1/y0/y1, Prozent der
  *  Bildkante) ins Laufzeitformat (xPercent/widthPercent) – dieselbe
@@ -275,6 +279,18 @@ function uebersetzeBySize(
   }
   return uebersetzt;
 }
+
+/**
+ * Echter Stickrahmen für Ärmelmotive (Betreiber-Auskunft, 2026-09-04):
+ * maximal 30 cm in der Länge, 19 cm in der Höhe. Anders als bei DTF (siehe
+ * scripts/generatePrintAreaData.mts – dort bewusst OHNE Formatobergrenze,
+ * "die Grenze ist nur so groß wie der Ärmel an sich") ist das eine ECHTE
+ * Maschinengrenze der Stickerei und gilt unabhängig vom Produkt. Front/Back
+ * bleiben unverändert außen vor – dort wurde die DTF/Stickerei-Gleichsetzung
+ * ("Mehraufwand steckt im €/cm²-Satz") bislang nicht infrage gestellt.
+ */
+const STICKRAHMEN_AERMEL_CM = { breite: 30, hoehe: 19 };
+const AERMEL_VIEWS = new Set<PrintView>(['sleeve_left', 'sleeve_right']);
 
 function buildAreasForProduct(productId: string, method: PrintMethod): PrintArea[] {
   // Klassen-Übernahme: Hat das Produkt keine eigene gemessene Geometrie, aber
@@ -313,6 +329,12 @@ function buildAreasForProduct(productId: string, method: PrintMethod): PrintArea
     const boxWidthCm = a.boxWidthCm;
 
     const exclusionZones = EXCLUSION_ZONES[`${exclId}-${view}`];
+    // Stickrahmen deckelt NUR die Stickerei-Ärmelfläche, nie DTF – siehe
+    // STICKRAHMEN_AERMEL_CM oben. a.maxWidthCm/maxHeightCm sind für Ärmel
+    // bereits die DTF-Werte (nur durch den Bewegungsbereich begrenzt).
+    const istStickereiAermel = method === 'embroidery' && AERMEL_VIEWS.has(view);
+    const maxWidthCm = istStickereiAermel ? Math.min(a.maxWidthCm, STICKRAHMEN_AERMEL_CM.breite) : a.maxWidthCm;
+    const maxHeightCm = istStickereiAermel ? Math.min(a.maxHeightCm, STICKRAHMEN_AERMEL_CM.hoehe) : a.maxHeightCm;
     return {
       id: `${productId}-${method}-${view}`,
       productId,
@@ -321,8 +343,8 @@ function buildAreasForProduct(productId: string, method: PrintMethod): PrintArea
       yPercent: a.y0,
       widthPercent,
       heightPercent,
-      maxWidthCm: a.maxWidthCm,
-      maxHeightCm: a.maxHeightCm,
+      maxWidthCm,
+      maxHeightCm,
       seamMarginCm: seamMarginCmVon(view),
       boxHeightCm: a.boxHeightCm,
       boxWidthCm,

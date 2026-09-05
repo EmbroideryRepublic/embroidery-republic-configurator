@@ -15,14 +15,17 @@ import { GEOMETRY_ALIAS } from '../printAreaAlias.generated';
 import { PRODUCTS } from '../products';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 import { groessenRang } from '../products/groessen';
+import { DECORATION_POSITIONS } from '../decorationPositions';
 
-/** Prozessgrenzen aus dem Generator – hier gespiegelt als Obergrenze. */
-const GRENZE = {
-  front: { w: 30, h: 47 },
-  back: { w: 30, h: 47 },
-  sleeve_left: { w: 11, h: 13 },
-  sleeve_right: { w: 11, h: 13 },
-} as const;
+/** Prozessgrenzen NICHT mehr hier gespiegelt (eine frühere Kopie lief mit
+ *  sleeve h:13 bereits am realen Wert 10 vorbei) – stattdessen direkt aus der
+ *  echten Quelle gelesen, damit ein künftiger Wertwechsel dort nie wieder
+ *  unbemerkt an dieser Kopie vorbeilaufen kann. */
+function prozessgrenzeVon(view: string) {
+  const g = DECORATION_POSITIONS[view]?.prozessgrenze;
+  assert.ok(g, `${view}: keine Prozessgrenze in decorationPositions.ts hinterlegt`);
+  return g;
+}
 
 test('jedes Katalogprodukt hat Druckflächen', () => {
   for (const p of PRODUCTS) {
@@ -69,15 +72,86 @@ test('alle Flächen liegen innerhalb des Bildes', () => {
   }
 });
 
-test('keine Fläche überschreitet die Prozessgrenzen der Veredelung', () => {
+test('front/back überschreiten nie die Prozessgrenze der Veredelung', () => {
+  // Für Ärmel gilt seit der Betreiber-Auskunft vom 2026-09-04 eine andere
+  // Regel (DTF-Presse hat dort KEINE Formatobergrenze) – eigener Test unten.
   for (const [id, views] of Object.entries(PRINT_AREA_DATA)) {
-    for (const [view, a] of Object.entries(views)) {
-      const g = GRENZE[view as keyof typeof GRENZE];
-      assert.ok(a!.maxWidthCm <= g.w, `${id}/${view}: ${a!.maxWidthCm} cm > ${g.w} cm`);
-      assert.ok(a!.maxHeightCm <= g.h, `${id}/${view}: ${a!.maxHeightCm} cm > ${g.h} cm`);
-      assert.ok(a!.maxWidthCm > 0 && a!.maxHeightCm > 0, `${id}/${view}: Maß <= 0`);
+    for (const view of ['front', 'back'] as const) {
+      const a = views[view];
+      if (!a) continue;
+      const g = prozessgrenzeVon(view);
+      assert.ok(a.maxWidthCm <= g.maxWidthCm, `${id}/${view}: ${a.maxWidthCm} cm > ${g.maxWidthCm} cm`);
+      assert.ok(a.maxHeightCm <= g.maxHeightCm, `${id}/${view}: ${a.maxHeightCm} cm > ${g.maxHeightCm} cm`);
+      assert.ok(a.maxWidthCm > 0 && a.maxHeightCm > 0, `${id}/${view}: Maß <= 0`);
     }
   }
+});
+
+test('Ärmel (DTF-Rohdaten): maxWidthCm ist exakt der gemessene Bewegungsbereich, nie mehr', () => {
+  // Betreiber-Auskunft 2026-09-04: DTF-Transfers haben keine eigene Format-
+  // obergrenze für Ärmel ("die Grenze ist nur so groß wie der Ärmel an
+  // sich") – PRINT_AREA_DATA (Generator-Rohdaten, methodenneutral = DTF)
+  // darf die Breite deshalb NIE über den für dieses Produkt gemessenen
+  // Bewegungsbereich (boxWidthCm) hinaus melden. Die Höhe bleibt bewusst an
+  // der Prozessgrenze gedeckelt (siehe Kommentar in generatePrintAreaData.mts
+  // zur zurückgestellten, gesondert zu prüfenden Höhen-Korrektur).
+  const hoeheGrenze = prozessgrenzeVon('sleeve_left').maxHeightCm;
+  let geprueft = 0;
+  for (const [id, views] of Object.entries(PRINT_AREA_DATA)) {
+    for (const view of ['sleeve_left', 'sleeve_right'] as const) {
+      const a = views[view];
+      if (!a) continue;
+      geprueft++;
+      assert.ok(
+        Math.abs(a.maxWidthCm - a.boxWidthCm) < 0.05,
+        `${id}/${view}: maxWidthCm (${a.maxWidthCm}) weicht vom gemessenen Bewegungsbereich (${a.boxWidthCm}) ab`
+      );
+      assert.ok(a.maxHeightCm <= hoeheGrenze, `${id}/${view}: ${a.maxHeightCm} cm > ${hoeheGrenze} cm`);
+      assert.ok(a.maxWidthCm > 0 && a.maxHeightCm > 0, `${id}/${view}: Maß <= 0`);
+    }
+  }
+  assert.ok(geprueft > 0, 'keine Ärmelansicht gefunden – Test liefe sonst grün, ohne etwas zu prüfen');
+});
+
+test('Ärmel (Laufzeit): Stickerei respektiert den echten Stickrahmen (30×19cm), DTF bleibt beim vollen Bewegungsbereich', async () => {
+  // Stickrahmen laut Betreiber-Auskunft 2026-09-04: 30 cm Länge, 19 cm Höhe
+  // – eine echte Maschinengrenze, die NUR Stickerei betrifft (siehe
+  // STICKRAHMEN_AERMEL_CM in printAreas.ts). DTF bleibt ungedeckelt (bis auf
+  // den je Produkt gemessenen Bewegungsbereich, siehe Test oben) – aktuell
+  // liegt kein einziger gemessener Bewegungsbereich über 30 cm, die
+  // Rahmengrenze greift heute also nirgends sichtbar, MUSS aber als
+  // Obergrenze bestehen bleiben, sobald ein breiteres Produkt hinzukommt.
+  const STICKRAHMEN = { breite: 30, hoehe: 19 };
+  let geprueft = 0;
+  for (const id of Object.keys(PRINT_AREA_DATA)) {
+    const [dtf, stick] = await Promise.all([getPrintAreas(id, 'dtf'), getPrintAreas(id, 'embroidery')]);
+    for (const view of ['sleeve_left', 'sleeve_right'] as const) {
+      const dtfArea = dtf.find((a) => a.view === view);
+      const stickArea = stick.find((a) => a.view === view);
+      if (!dtfArea || !stickArea) continue;
+      geprueft++;
+      assert.ok(
+        stickArea.maxWidthCm <= STICKRAHMEN.breite + 0.05,
+        `${id}/${view}: Stickerei-Breite ${stickArea.maxWidthCm}cm > Stickrahmen ${STICKRAHMEN.breite}cm`
+      );
+      assert.ok(
+        stickArea.maxHeightCm <= STICKRAHMEN.hoehe + 0.05,
+        `${id}/${view}: Stickerei-Höhe ${stickArea.maxHeightCm}cm > Stickrahmen ${STICKRAHMEN.hoehe}cm`
+      );
+      // DTF darf gleich groß oder größer als Stickerei sein, nie kleiner –
+      // der Stickrahmen ist eine zusätzliche Deckelung, keine Verengung der
+      // gemeinsamen Basisfläche.
+      assert.ok(
+        dtfArea.maxWidthCm >= stickArea.maxWidthCm,
+        `${id}/${view}: DTF-Breite (${dtfArea.maxWidthCm}) kleiner als Stickerei (${stickArea.maxWidthCm})`
+      );
+      assert.ok(
+        dtfArea.maxHeightCm >= stickArea.maxHeightCm,
+        `${id}/${view}: DTF-Höhe (${dtfArea.maxHeightCm}) kleiner als Stickerei (${stickArea.maxHeightCm})`
+      );
+    }
+  }
+  assert.ok(geprueft > 0, 'keine Ärmelansicht gefunden – Test liefe sonst grün, ohne etwas zu prüfen');
 });
 
 test('die Fläche bleibt schmaler als das Kleidungsstück', () => {
@@ -216,11 +290,14 @@ test('bySize-Flächen respektieren dieselben Grenzen wie die Referenzgröße', (
   for (const [id, views] of Object.entries(PRINT_AREA_DATA)) {
     for (const [view, a] of Object.entries(views)) {
       if (!a!.bySize) continue;
-      const g = GRENZE[view as keyof typeof GRENZE];
+      // bySize existiert ohnehin nur für front/back (siehe 'Ärmelansichten
+      // führen nie größenabhängige Flächen' oben) – prozessgrenzeVon direkt
+      // aus decorationPositions.ts statt einer lokalen Kopie.
+      const g = prozessgrenzeVon(view);
       for (const [groesse, box] of Object.entries(a!.bySize)) {
         assert.ok(box.maxWidthCm > 0 && box.maxHeightCm > 0, `${id}/${view}/${groesse}: Maß <= 0`);
-        assert.ok(box.maxWidthCm <= g.w + 0.05, `${id}/${view}/${groesse}: ${box.maxWidthCm} cm > Prozessgrenze ${g.w} cm`);
-        assert.ok(box.maxHeightCm <= g.h + 0.05, `${id}/${view}/${groesse}: ${box.maxHeightCm} cm > Prozessgrenze ${g.h} cm`);
+        assert.ok(box.maxWidthCm <= g.maxWidthCm + 0.05, `${id}/${view}/${groesse}: ${box.maxWidthCm} cm > Prozessgrenze ${g.maxWidthCm} cm`);
+        assert.ok(box.maxHeightCm <= g.maxHeightCm + 0.05, `${id}/${view}/${groesse}: ${box.maxHeightCm} cm > Prozessgrenze ${g.maxHeightCm} cm`);
         assert.ok(box.x0 >= 0 && box.x1 <= 100, `${id}/${view}/${groesse}: x außerhalb (${box.x0}..${box.x1})`);
         assert.ok(box.y0 >= 0 && box.y1 <= 100, `${id}/${view}/${groesse}: y außerhalb (${box.y0}..${box.y1})`);
       }

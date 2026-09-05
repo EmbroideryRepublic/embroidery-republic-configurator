@@ -217,15 +217,28 @@ const ABSTAND = {
  * verschenkt also keine Sicherheit, sondern nur ungenutzten Bewegungsspielraum
  * (weniger Freiheit, das Motiv zu verschieben) gegen mehr mögliche Motivgröße.
  *
- * Deshalb gilt für Ärmel jetzt dieselbe Regel wie für Torso-Ansichten: die
- * Obergrenze ist die PROZESSGRENZE der Veredelung (`grenze.maxWidthCm`, aus
- * decorationPositions.ts, aktuell 11 cm) – begrenzt durch die tatsächliche,
- * für DIESES Produkt gemessene Bewegungsbereichsbreite (Zeile ~1428,
- * `Math.min(breiteCmLokal, (x1pxLokal - x0pxLokal) / pxProCm)`), exakt wie
- * bei front/back. Geprüft (2026-09-04): bei allen 141 aktuell erzeugten
- * Ärmelansichten liegt die gemessene Bewegungsbereichsbreite bei mindestens
- * 12,2 cm – die Prozessgrenze 11 cm bleibt also überall die bindende Grenze,
- * nie eine erfundene Schätzung für ein einzelnes Produkt. */
+ * NACHTRAG (2026-09-04, Betreiber-Auskunft): Ein erster Zwischenstand hatte
+ * hier stattdessen `grenze.maxWidthCm` (11 cm) als Obergrenze gesetzt – die
+ * Prozessgrenze der VEREDELUNG, aus decorationPositions.ts. Das war falsch
+ * verallgemeinert: Der Betreiber hat bestätigt, dass DTF-Transfers KEINE
+ * eigene Formatobergrenze der Presse haben ("die Grenze ist nur so groß wie
+ * die Ärmel an sich"). Diese Datei erzeugt bewusst nur EINE, methodenneutrale
+ * Fläche (siehe Kopfkommentar der Datei) – die hier erzeugten Werte sind
+ * also die DTF-Werte, ausschließlich durch die tatsächliche, für DIESES
+ * Produkt gemessene Bewegungsbereichsbreite begrenzt (Zeile ~1428,
+ * `Math.min(breiteCmLokal, (x1pxLokal - x0pxLokal) / pxProCm)`) – echte
+ * Einzelfallprüfung statt eines produktübergreifenden Werts, exakt wie bei
+ * front/back mit der Herstellermaßtabelle.
+ *
+ * Stickerei hat dagegen einen echten Stickrahmen (Betreiber-Auskunft:
+ * 30 cm × 19 cm) – diese methodenspezifische Zusatzgrenze für Ärmel sitzt
+ * NICHT hier, sondern in printAreas.ts (buildAreasForProduct), wo DTF- und
+ * Stickereiflächen bereits als getrennte Arrays gebaut werden. Geprüft
+ * (2026-09-04): bei allen 141 aktuell erzeugten Ärmelansichten liegt die
+ * gemessene Bewegungsbereichsbreite zwischen 12,2 cm und 23,5 cm – die
+ * 30-cm-Stickrahmengrenze bleibt damit für die Breite überall unkritisch
+ * (nie die bindende Grenze), wird aber dennoch als echte, methodenspezifische
+ * Prüfung geführt statt stillschweigend vorausgesetzt. */
 
 /** Nutzbares Oberarm-Band, als Anteil der Kleidungsstückhöhe ab Oberkante.
  *
@@ -1230,11 +1243,30 @@ for (const p of PRODUCTS) {
         breiteCmLokal = Math.min(massZeile.breiteCm - 2 * ABSTAND.seitennaht, grenze.maxWidthCm);
         hoeheNutzbarCmLokal = Math.min(massZeile.hoeheCm - ABSTAND.kragen - ABSTAND.saum, grenze.maxHeightCm);
       } else {
-        // Prozessgrenze als Startwert – die tatsächliche Bewegungsbereichs-
-        // breite dieses Produkts (vollX0/vollX1 unten) deckelt am Ende
-        // erneut (Zeile ~1428), exakt wie bei front/back. Siehe Kommentar
-        // an der ehemaligen AERMEL_KONSERVATIV_CM-Definition oben.
-        breiteCmLokal = grenze.maxWidthCm;
+        // KORREKTUR (2026-09-04, Betreiber-Auskunft): DTF-Transfers haben
+        // laut Betreiber KEINE eigene Formatobergrenze der Presse – die
+        // einzige echte Grenze ist der Ärmel selbst. `grenze.maxWidthCm`
+        // (Stickerei-Stickrahmen-Breite, siehe DECORATION_POSITIONS) ist
+        // deshalb für DTF NICHT die richtige Obergrenze; Infinity lässt die
+        // Breite ausschließlich durch die tatsächliche, für DIESES Produkt
+        // gemessene Bewegungsbereichsbreite (vollX0/vollX1 unten, deckelt
+        // am Ende erneut bei Zeile ~1428) begrenzen – echte Einzelfall-
+        // Prüfung statt eines produktübergreifenden Werts. Die methoden-
+        // spezifische Stickerei-Deckelung (Stickrahmen 30×19cm) sitzt in
+        // printAreas.ts (buildAreasForProduct), wo DTF/Stickerei bereits
+        // getrennt gebaut werden – hier im Generator entsteht bewusst nur
+        // EINE, methodenneutrale (= DTF-taugliche) Fläche.
+        //
+        // Bewusst ein großer ENDLICHER Platzhalter statt Infinity: weiter
+        // unten geht `breitePxLokal` (= breiteCmLokal * pxProCm) über
+        // `x0pxLokal = mitteX - breitePxLokal/2` in die Berechnung von
+        // `startXCmLokal` ein – dort hebt sich breitePxLokal rechnerisch
+        // exakt wieder heraus (x0pxLokal + breitePxLokal/2 = mitteX für
+        // JEDEN endlichen Wert), mit Infinity entstünde dagegen NaN
+        // (-Infinity + Infinity). 500 cm liegt weit über jedem denkbaren
+        // Kleidungsstück – die tatsächlich bindende Grenze bleibt in jedem
+        // Fall der Bewegungsbereich (Zeile ~1428).
+        breiteCmLokal = 500;
         hoeheNutzbarCmLokal = grenze.maxHeightCm;
       }
 
@@ -1499,7 +1531,12 @@ for (const p of PRODUCTS) {
     }
 
     proProdukt[view] = {
-      garmentWidthCm: Number((istAermel ? grenze.maxWidthCm : mass.breiteCm - 2 * ABSTAND.seitennaht).toFixed(1)),
+      // Ärmel: rein informativ inzwischen identisch zu maxWidthCm (siehe
+      // referenzBox.maxWidthCm unten) – es gibt keinen separaten "Rohwert"
+      // mehr, seit die Breite ausschließlich aus dem Bewegungsbereich
+      // dieses Produkts abgeleitet wird (kein Rückgriff auf eine
+      // Prozessgrenze für DTF).
+      garmentWidthCm: Number((istAermel ? referenzBox.maxWidthCm : mass.breiteCm - 2 * ABSTAND.seitennaht).toFixed(1)),
       garmentHeightCm: Number((istAermel ? grenze.maxHeightCm : mass.hoeheCm - ABSTAND.kragen - ABSTAND.saum).toFixed(1)),
       x0: proz(referenzBox.x0px, w),
       y0: proz(referenzBox.y0px, h),

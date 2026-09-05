@@ -36,6 +36,32 @@ test('verifizierte Farbe: Shop-Name und Hex werden geliefert', () => {
   assert.ok(pos.shopColor.name.length > 0);
 });
 
+test('textil-grosshandel: Produkt-Link bekommt den Hex als ?color=-Parameter (Shop wählt die Farbe dann vor)', () => {
+  const pos = toManualPosition(navyPosition);
+  assert.equal(pos.productUrl, `${navyPosition.productUrl}?color=263147`);
+});
+
+test('unklare Farbe: Produkt-Link bleibt UNVERÄNDERT (kein Hex zum Anhängen)', () => {
+  const unklar: SupplierOrderPosition = { ...navyPosition, colorId: 'nichtvorhanden', colorName: 'Fantasiefarbe' };
+  assert.equal(toManualPosition(unklar).productUrl, navyPosition.productUrl);
+});
+
+test('needen: Produkt-Link bleibt UNVERÄNDERT (der ?color=-Trick ist nur bei textil-grosshandel geprüft)', () => {
+  const needenPosition: SupplierOrderPosition = {
+    supplierId: 'needen',
+    productId: 'gildan-ladies-heavy-t',
+    productName: 'Heavy Cotton Damen T-Shirt',
+    articleNumber: 'GN182',
+    productUrl: 'https://www.needen.de/gildan-gn182-t-shirt-mit-rundhalsausschnitt-180-fur-damen-411244',
+    colorId: 'black',
+    colorName: 'Schwarz',
+    sizes: [{ size: 'M', quantity: 1 }],
+  };
+  const pos = toManualPosition(needenPosition);
+  assert.equal(pos.shopColor.kind, 'eindeutig', 'Voraussetzung: die Farbe löst hier überhaupt auf');
+  assert.equal(pos.productUrl, needenPosition.productUrl);
+});
+
 test('Gesamtmenge ist die Summe der Größen', () => {
   assert.equal(toManualPosition(navyPosition).totalQuantity, 6);
 });

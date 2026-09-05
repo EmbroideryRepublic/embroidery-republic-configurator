@@ -75,6 +75,19 @@ function bekannteFarbenDesProdukts(supplierId: SupplierId, productId: string): {
     .sort((a, b) => a.name.localeCompare(b.name, 'de'));
 }
 
+/**
+ * textil-grosshandel.eu wählt die Farbe serverseitig vor, wenn die
+ * Produkt-URL den Hex-Wert als `?color=`-Parameter trägt (live am Shop
+ * geprüft, 2026-09-05: `?color=224D8F` lädt die Seite direkt mit "Royal"
+ * ausgewählt statt nur den Swatch-Button anzuzeigen). Andere Lieferanten
+ * (aktuell needen.de) haben dafür keinen geprüften Mechanismus – deshalb
+ * NUR für textil-grosshandel anhängen, nicht pauschal für jede URL.
+ */
+function mitVorausgewaehlterFarbe(url: string, supplierId: string, hex: string | undefined): string {
+  if (supplierId !== 'textil-grosshandel' || !hex) return url;
+  return `${url}?color=${hex}`;
+}
+
 /** Übersetzt EINE Position in die Ansicht für die manuelle Bestellung. */
 export function toManualPosition(position: SupplierOrderPosition): ManualSupplierPosition {
   const totalQuantity = position.sizes.reduce((sum, s) => sum + s.quantity, 0);
@@ -90,6 +103,7 @@ export function toManualPosition(position: SupplierOrderPosition): ManualSupplie
     const resolved = resolveSupplierPosition(position);
     return {
       ...basis,
+      productUrl: mitVorausgewaehlterFarbe(position.productUrl, position.supplierId, resolved.colorVariant.variantId),
       articleNumber: resolved.articleNumber,
       shopColor: {
         kind: 'eindeutig',

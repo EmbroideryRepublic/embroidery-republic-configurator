@@ -421,6 +421,14 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   'bundc-inspire-v-t-women-back': { x0: 28, x1: 71, y1: 82 },
   'stedman-classic-t-v-neck-front': { x0: 28, x1: 72, y0: 21, y1: 86 },
   'stedman-classic-t-v-neck-back': { x0: 29, x1: 71, y1: 86 },
+  // Ärmelansicht (2026-09-05, nach der Suchbereichs-Begrenzung auf den
+  // Oberarm entdeckt): die automatisch berechnete Box hatte an der linken
+  // oberen Ecke (x33.6, y26.6) einen hauchdünnen Übergriff über die
+  // Schulterrundung hinaus – validateCorners.mjs fand dort echten Stoff erst
+  // ab x34, Vorschlag y0=27.7 (die Randsuche prüft nur zwei Zeilen, nicht
+  // die volle Kontur, und übersieht so die steil abfallende Schulterkurve).
+  // y0 mit Sicherheitsspielraum auf 28 korrigiert.
+  'stedman-classic-t-v-neck-sleeve_left': { y0: 28 },
   'stedman-classic-t-v-neck-for-women-front': { x0: 30, x1: 70, y0: 30, y1: 82 },
   'stedman-classic-t-v-neck-for-women-back': { x0: 31, x1: 70, y1: 82 },
   // jamesnicholson-ladies-bio-workwear-t-shirt: als "T-Shirt" katalogisiert,
@@ -1327,6 +1335,33 @@ for (const p of PRODUCTS) {
         // andere Pixelmaße) genutzten Foto ab, die exakt an der Kante sonst
         // vereinzelt als hauchdünne Verletzung durchrutschten.
         const randPuffer = naht * 0.5;
+
+        // KORREKTUR (2026-09-05, Nutzer-Feedback anhand Screenshot): Die
+        // Höhen-Suche unten prüfte bisher den GESAMTEN Silhouetten-Bereich
+        // [yOben, yUnten] – bei einer Ärmel-Seitenaufnahme ist das Schulter
+        // bis fast zum Saum, also praktisch die ganze Seite des Kleidungs-
+        // stücks. Da zwischen Ärmel und Torso-Seitenteil im Foto KEINE Lücke
+        // sichtbar ist (beides ist durchgehend Stoff), fand die "größte
+        // sichere Fläche"-Suche dort scheinbar sicheren Platz und zog die Box
+        // bis weit in den Torso-Seitenbereich – sichtbar u.a. bei
+        // fotl-pure-cotton-t/sleeve_left, wo die Box praktisch die gesamte
+        // Seitenansicht abdeckte statt nur den Arm. Die Box MUSS aber auf den
+        // Ärmel fokussiert bleiben, nicht auf die ganze Seite.
+        //
+        // Deshalb wird der Suchbereich hart auf den anatomisch plausiblen
+        // Ärmelbereich begrenzt: ab der Schulter (ySchulter) bis zur Achsel
+        // (Schulter + gemessene aermelLaengeCm, mit 15% Spielraum für die
+        // Randsuche selbst – z.B. falls exakt auf Achsel-Höhe eine Naht/ein
+        // Bund die Kontur stört). Ohne validierte Achselerkennung greift
+        // dieselbe Bandbreiten-Näherung wie bei bandMitteLokal oben
+        // (AERMEL_BAND_BIS als Anteil der Kleidungshöhe). yOben/yUnten
+        // bleiben NUR noch die äußerste, nie überschreitbare Notbremse.
+        const aermelUntenPxLokal = laenge
+          ? ySchulter + laenge * 1.15 * pxProCm
+          : ySchulter + AERMEL_BAND_BIS * 1.15 * massZeile.hoeheCm * pxProCm;
+        const sucheYOben = yOben;
+        const sucheYUnten = Math.min(yUnten, Math.round(aermelUntenPxLokal));
+
         const sicherBeiY = (y: number, x0: number, x1: number, seite: 'links' | 'rechts') => {
           for (const prof of profile) {
             const skalaY = prof.h / h;
@@ -1359,19 +1394,19 @@ for (const p of PRODUCTS) {
         // aber schmalere/flachere Alternative verdrängen (die eigentliche
         // Ursache der zunächst übersehenen Restfälle).
         const sichererHoehenbereich = (x0: number, x1: number) => {
-          const linksAbOben = ersteSichereZeile(yOben, yUnten, 1, x0, x1, 'links');
-          const rechtsAbOben = ersteSichereZeile(yOben, yUnten, 1, x0, x1, 'rechts');
+          const linksAbOben = ersteSichereZeile(sucheYOben, sucheYUnten, 1, x0, x1, 'links');
+          const rechtsAbOben = ersteSichereZeile(sucheYOben, sucheYUnten, 1, x0, x1, 'rechts');
           if (linksAbOben === null || rechtsAbOben === null) return null;
           const yObenSicher = Math.max(linksAbOben, rechtsAbOben);
 
-          const linksAbUnten = ersteSichereZeile(yUnten, yOben, -1, x0, x1, 'links');
-          const rechtsAbUnten = ersteSichereZeile(yUnten, yOben, -1, x0, x1, 'rechts');
+          const linksAbUnten = ersteSichereZeile(sucheYUnten, sucheYOben, -1, x0, x1, 'links');
+          const rechtsAbUnten = ersteSichereZeile(sucheYUnten, sucheYOben, -1, x0, x1, 'rechts');
           if (linksAbUnten === null || rechtsAbUnten === null) return null;
           const yUntenSicher = Math.min(linksAbUnten, rechtsAbUnten);
 
           return {
-            y0: Math.max(yOben + naht, yObenSicher + naht * 0.3),
-            y1: Math.min(yUnten - naht, yUntenSicher - naht * 0.3),
+            y0: Math.max(sucheYOben + naht, yObenSicher + naht * 0.3),
+            y1: Math.min(sucheYUnten - naht, yUntenSicher - naht * 0.3),
           };
         };
 
@@ -1400,7 +1435,7 @@ for (const p of PRODUCTS) {
           const flaeche = Math.max(0, x1 - x0) * Math.max(0, ergebnis.y1 - ergebnis.y0);
           if (!beste || flaeche > beste.flaeche) beste = { x0, x1, y0: ergebnis.y0, y1: ergebnis.y1, flaeche };
         }
-        if (!beste) beste = { x0: vollX0, x1: vollX1, y0: yOben + naht, y1: yUnten - naht, flaeche: 0 };
+        if (!beste) beste = { x0: vollX0, x1: vollX1, y0: sucheYOben + naht, y1: sucheYUnten - naht, flaeche: 0 };
 
         startXCmLokal = (x0pxLokal + breitePxLokal / 2 - beste.x0) / pxProCm;
         startYCmLokal = (y0pxLokal + hoehePxBoxLokal / 2 - beste.y0) / pxProCm;

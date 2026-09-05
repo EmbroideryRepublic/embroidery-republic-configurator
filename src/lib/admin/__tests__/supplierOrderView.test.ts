@@ -8,8 +8,9 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { toManualPosition, buildManualSupplierGroups } from '../supplierOrderView';
+import { toManualPosition, buildManualSupplierGroups, buildPreisvergleich } from '../supplierOrderView';
 import type { SupplierOrderPosition } from '@/lib/suppliers';
+import type { EinkaufspreisNachweis } from '@/config/pricing/einkaufspreise';
 
 /** Gildan Heavy Cotton in Navy – im Mapping verifiziert (Hex 263147). */
 const navyPosition: SupplierOrderPosition = {
@@ -69,6 +70,71 @@ test('needen: OHNE verifizierte Farb-ID (nur Basis-Näherung) bleibt der Produkt
   const pos = toManualPosition({ ...needenBasis, colorId: 'charcoal', colorName: 'Anthrazit' });
   assert.equal(pos.shopColor.kind, 'eindeutig', 'Voraussetzung: die Farbe löst trotzdem auf (Label-Näherung)');
   assert.equal(pos.productUrl, needenBasis.productUrl);
+});
+
+test('nur EIN bekannter Preis: kein Preisvergleich (sols-imperial-t hat noch keinen needen-Fund)', () => {
+  const solsPosition: SupplierOrderPosition = { ...navyPosition, productId: 'sols-imperial-t' };
+  assert.equal(toManualPosition(solsPosition).preisvergleich, undefined);
+});
+
+test('echte, live recherchierte Daten: gildan-heavy-t zeigt textil-grosshandel als günstigsten (2026-09-05 gegen needen geprüft)', () => {
+  const pos = toManualPosition(navyPosition);
+  assert.equal(pos.preisvergleich?.length, 2);
+  assert.equal(pos.preisvergleich?.[0]?.lieferant, 'textil-grosshandel');
+  assert.equal(pos.preisvergleich?.[0]?.istGuenstigster, true);
+  assert.equal(pos.preisvergleich?.[1]?.lieferant, 'needen');
+});
+
+test('buildPreisvergleich: unter zwei Preispunkten kein Vergleich (auch bei genau einem)', () => {
+  const einPreis: EinkaufspreisNachweis = {
+    stufe: 'bekannt',
+    preis: 3.5,
+    preisImKatalog: 3.5,
+    lieferant: 'textil-grosshandel',
+  };
+  assert.equal(buildPreisvergleich(einPreis), undefined);
+  assert.equal(buildPreisvergleich(undefined), undefined);
+});
+
+test('buildPreisvergleich: zwei Preispunkte, günstigster wird markiert und steht zuerst', () => {
+  const nachweis: EinkaufspreisNachweis = {
+    stufe: 'bekannt',
+    preis: 3.56,
+    preisImKatalog: 3.56,
+    lieferant: 'textil-grosshandel',
+    alternativen: [
+      { lieferant: 'needen', preis: 2.9, productUrl: 'https://www.needen.de/beispiel' },
+    ],
+  };
+  const vergleich = buildPreisvergleich(nachweis);
+  assert.equal(vergleich?.length, 2);
+  assert.equal(vergleich?.[0]?.lieferant, 'needen', 'günstigster (2,90€) steht zuerst');
+  assert.equal(vergleich?.[0]?.istGuenstigster, true);
+  assert.equal(vergleich?.[0]?.productUrl, 'https://www.needen.de/beispiel');
+  assert.equal(vergleich?.[0]?.supplierLabel, 'Needen (needen.de)');
+  assert.equal(vergleich?.[1]?.lieferant, 'textil-grosshandel');
+  assert.equal(vergleich?.[1]?.istGuenstigster, false);
+});
+
+test('buildPreisvergleich: mehrere Alternativen – nur EINE bekommt istGuenstigster', () => {
+  const nachweis: EinkaufspreisNachweis = {
+    stufe: 'bekannt',
+    preis: 5,
+    preisImKatalog: 5,
+    lieferant: 'textil-grosshandel',
+    alternativen: [
+      { lieferant: 'needen', preis: 4.5 },
+      { lieferant: 'wordans', preis: 3.9 },
+    ],
+  };
+  const vergleich = buildPreisvergleich(nachweis);
+  assert.equal(vergleich?.length, 3);
+  assert.deepEqual(
+    vergleich?.map((v) => v.lieferant),
+    ['wordans', 'needen', 'textil-grosshandel'],
+    'aufsteigend sortiert'
+  );
+  assert.equal(vergleich?.filter((v) => v.istGuenstigster).length, 1);
 });
 
 test('Gesamtmenge ist die Summe der Größen', () => {

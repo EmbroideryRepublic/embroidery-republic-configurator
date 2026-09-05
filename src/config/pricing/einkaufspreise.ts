@@ -79,6 +79,25 @@ export interface EinkaufspreisNachweis {
   /** Abnahmemenge, für die der Preis gilt, z.B. „ab 10 Stück". */
   staffel?: string;
   notiz?: string;
+  /**
+   * Preis DESSELBEN Produkts bei EINEM WEITEREN Lieferanten – rein
+   * informativ für den Preisvergleich im Admin (Lieferanten-Bestellung auf
+   * der Bestell-Detailseite, siehe supplierOrderView.ts). Ändert NICHT die
+   * Kalkulationsgrundlage (die bleibt `preis`/`preisImKatalog`) und NICHT,
+   * welcher Lieferant für die Automatisierung/den Produkt-Link zuständig
+   * ist (das bestimmt weiterhin ausschließlich supplierRefs.ts) – nur ein
+   * zusätzlicher, sichtbarer Vergleichswert.
+   */
+  alternativen?: EinkaufspreisAlternative[];
+}
+
+export interface EinkaufspreisAlternative {
+  lieferant: string;
+  preis: number;
+  artikelnummer?: string;
+  productUrl?: string;
+  quelle?: string;
+  stand?: string;
 }
 
 /** Nachweis je Katalog-Produkt-ID. Stand der Erhebung: 2026-07-21. */
@@ -102,6 +121,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'BCWU35B',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 36.99,
+        artikelnummer: 'BCU35B',
+        productUrl: 'https://needen.de/b-c-bcu35b-bio-kapuzenjacke-mit-reissverschluss-410936',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Baseball Longsleeve
   'fotl-baseball-longsleeve': {
@@ -124,6 +153,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 6,38 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 7.99,
+        artikelnummer: 'SC237',
+        productUrl: 'https://needen.de/fruit-of-the-loom-sc237-baseball-t-shirt-54351',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Heavy T
   'fotl-heavy-t': {
@@ -135,6 +174,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 4,63 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 4.39,
+        artikelnummer: 'SC190',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc190-t-shirt-aus-100-schwerer-baumwolle-54324',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Iconic 195 Ringspun Premium Long Sleeve T
   'fotl-iconic195-longsleeve': {
@@ -146,6 +195,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL-5XL 8,25 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 11.99,
+        artikelnummer: 'SC152',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc152-ikonisch-195-langarm-t-427611',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Deep Navy; in Weiß günstiger, 8,99 €)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Iconic 195 Ringspun Premium T
   'fotl-iconic195-t': {
@@ -175,6 +234,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'F111',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 4.09,
+        artikelnummer: 'SC600',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc600-damen-t-shirt-rundhalsausschnitt-160-54369',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Ladies Valueweight T
   'fotl-ladies-valueweight-t': {
@@ -185,6 +254,17 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'F288N',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 4.09,
+        artikelnummer: 'SC600',
+        productUrl: 'https://needen.de/fruit-of-the-loom-sc600-damen-t-shirt-rundhalsausschnitt-160-54369',
+        quelle:
+          'needen.de – Produktseite, 1-11-Stück-Staffel (netto). ACHTUNG: dieselbe needen-Artikelnummer wie fotl-ladies-original-t – needen fuehrt moeglicherweise keine separate "Valueweight"-Damenlinie, unabhaengig recherchiert und beide als plausibel bewertet.',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Ladies Valueweight V-Neck T
   'fotl-ladies-valueweight-vneck': {
@@ -195,6 +275,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'F271N',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 5.99,
+        artikelnummer: 'SC601',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc601-valueweight-t-shirt-mit-v-ausschnitt-damen-54372',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Original Long Sleeve T
   'fotl-original-longsleeve': {
@@ -206,6 +296,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 4,79 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 6.99,
+        artikelnummer: 'SC223',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc223-original-t-lsl-410819',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Original T
   'fotl-original-t': {
@@ -217,6 +317,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 4,02 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 3.49,
+        artikelnummer: 'SC220',
+        productUrl: 'https://needen.de/fruit-of-the-loom-sc220-herren-t-shirt-mit-rundem-hals-54330',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto); needen-Referenz 61-082-0 = FOTL "Original T"',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Original V-Neck T
   'fotl-original-vneck': {
@@ -227,6 +337,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'F272',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 4.39,
+        artikelnummer: 'SC224',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc224-original-v-ausschnitt-t-410820',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Premium Polo
   'fotl-premium-polo': {
@@ -270,6 +390,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "4XL/5XL 5,58 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 5.99,
+        artikelnummer: 'SC210',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc210-premium-quality-t-shirt-54327',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Valueweight T
   'fotl-valueweight-t': {
@@ -281,6 +411,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 4,48 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 3.99,
+        artikelnummer: 'SC230',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc230-54336',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Fruit of the Loom · Valueweight V-Neck T
   'fotl-valueweight-vneck': {
@@ -292,6 +432,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 5,38 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 5.99,
+        artikelnummer: 'SC234',
+        productUrl: 'https://www.needen.de/fruit-of-the-loom-sc234-valueweight-t-shirt-mit-v-ausschnitt-fur-herren-54345',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Gildan · Heavy Blend Full-Zip Hoodie
   'gildan-zip-hoodie': {
@@ -325,6 +475,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 5,28 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 4.39,
+        artikelnummer: 'GN180',
+        productUrl: 'https://needen.de/gildan-gn180-schweres-baumwoll-t-shirt-fur-erwachsene-53850',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto), live gegengeprüft',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Gildan · Softstyle Double Piqué Polo
   'gildan-softstyle-polo': {
@@ -336,6 +496,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL/4XL 10,49 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 9.99,
+        artikelnummer: 'GN480',
+        productUrl: 'https://www.needen.de/gildan-gn480-herren-pique-polo-63809',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Weiß)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Gildan · Softstyle Ladies Double Piqué Polo
   'gildan-ladies-polo': {
@@ -346,6 +516,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'G64800L',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 9.99,
+        artikelnummer: 'GN48L',
+        productUrl: 'https://www.needen.de/gildan-gn48l-poloshirt-fur-damen-pique-63812',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Weiß)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Gildan · Softstyle Ladies T-Shirt
   'gildan-ladies-t': {
@@ -356,6 +536,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'G64000L',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 4.09,
+        artikelnummer: 'GN641',
+        productUrl: 'https://www.needen.de/gildan-gn641-damen-t-shirt-150-53886',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Weiß)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Gildan · Softstyle Ladies V-Neck T-Shirt
   'gildan-ladies-vneck-t': {
@@ -378,6 +568,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 6,33 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 5.99,
+        artikelnummer: 'GN646',
+        productUrl: 'https://www.needen.de/gildan-gn646-herren-t-shirt-mit-v-ausschnitt-53898',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Weiß)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // James+Nicholson · Men's Active-T
   'jn-active-t': {
@@ -410,6 +610,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "im Shop \"Sophomore 1/4 Zip Sweat\"",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 28.99,
+        artikelnummer: 'JH046',
+        productUrl: 'https://needen.de/awdis-jh046-sweatshirt-mit-1-4-reissverschluss-434264',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Burgund)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Just Hoods · AWDis Sweat
   'justhoods-awdis-sweat': {
@@ -420,6 +630,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'JH030',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 16.99,
+        artikelnummer: 'JH030',
+        productUrl: 'https://needen.de/awdis-jh030-sweatshirt-mit-rundhalsausschnitt-280-419196',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Arctic White)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Just Hoods · College Hoodie
   'justhoods-college-hoodie': {
@@ -431,6 +651,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "3XL 17,23 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 21.99,
+        artikelnummer: 'JH001',
+        productUrl: 'https://www.needen.de/awdis-just-hoods-jh001-kapuzensweatshirt-1726',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto), live gegengeprüft',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Just Hoods · Kontrast-Hoodie
   'justhoods-contrast-hoodie': {
@@ -442,6 +672,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "im Shop \"Varsity Hoodie\"",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 26.99,
+        artikelnummer: 'JH003',
+        productUrl: 'https://needen.de/awdis-jh003-kapuzensweatshirt-mit-farbkontrasten-419238',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Arctic White/French Navy)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Just Hoods · Zoodie
   'justhoods-zoodie': {
@@ -452,6 +692,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'JH050',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 29.99,
+        artikelnummer: 'JH050',
+        productUrl: 'https://needen.de/awdis-jh050-sweatshirt-mit-reissverschluss-419197',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Arctic White)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Neutral · Men's Classic Polo
   'neutral-classic-polo': {
@@ -463,6 +713,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
     notiz: "4XL/5XL 23,65 €",
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 32.99,
+        artikelnummer: 'O20080',
+        productUrl: 'https://www.needen.de/neutral-o20080-pique-polohemd-herren-419234',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Neutral · Men's Roll Up Sleeve T-Shirt
   'neutral-rollsleeve-t': {
@@ -483,6 +743,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'Z108M',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 10.99,
+        artikelnummer: 'RU108M',
+        productUrl: 'https://www.needen.de/russell-ru108m-bio-t-shirt-herren-411527',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Weiß)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Russell · Ladies Authentic Tee Pure Organic
   'russell-ladies-authentic-t': {
@@ -493,6 +763,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'Z108F',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 10.99,
+        artikelnummer: 'RU108F',
+        productUrl: 'https://www.needen.de/russell-ru108f-bio-t-shirt-frau-411526',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto, Farbe Weiß)',
+        stand: '2026-09-05',
+      },
+    ],
   },
   // Russell · Workwear T-Shirt
   'russell-workwear-t': {
@@ -536,6 +816,16 @@ export const EINKAUFSPREIS_NACHWEISE: Record<string, EinkaufspreisNachweis> = {
     artikelnummer: 'S2010',
     quelle: "textil-grosshandel.eu – Produktseite, Stückpreis Standardgrößen (netto, ausgewiesen als zzgl. Umsatzsteuer)",
     stand: '2026-07-21',
+    alternativen: [
+      {
+        lieferant: 'needen',
+        preis: 6.99,
+        artikelnummer: 'ST2010',
+        productUrl: 'https://needen.de/stedman-st2010-rundhals-t-shirt-fur-herren-427713',
+        quelle: 'needen.de – Produktseite, 1-11-Stück-Staffel (netto)',
+        stand: '2026-09-05',
+      },
+    ],
   },
 };
 

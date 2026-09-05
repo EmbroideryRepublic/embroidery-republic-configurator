@@ -409,6 +409,33 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
                         </div>
                       </div>
 
+                      {pos.preisvergleich && (
+                        <div className="mt-3">
+                          <p className="mb-1 text-xs uppercase tracking-wide text-gray-500">
+                            Preisvergleich (netto, je Stück)
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {pos.preisvergleich.map((v) => (
+                              <span
+                                key={v.lieferant}
+                                title={v.istGuenstigster ? 'günstigster bekannter Preis' : undefined}
+                                className={`rounded border px-2 py-1 text-sm ${
+                                  v.istGuenstigster
+                                    ? 'border-green-300 bg-green-50 text-green-800'
+                                    : 'border-gray-200 bg-gray-50 text-gray-600'
+                                }`}
+                              >
+                                <span className={v.istGuenstigster ? 'font-semibold' : 'font-medium'}>
+                                  {v.supplierLabel}
+                                </span>{' '}
+                                {formatiereGeld(v.preis)}
+                                {v.istGuenstigster && ' ✓'}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3">
                         <a
                           href={pos.productUrl}

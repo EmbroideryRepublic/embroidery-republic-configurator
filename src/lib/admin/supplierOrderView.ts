@@ -15,6 +15,18 @@
 import { resolveSupplierPosition, SupplierMappingError, SUPPLIER_VARIANT_MAPS } from '@/lib/suppliers/mapping';
 import { SUPPLIERS } from '@/lib/suppliers';
 import type { SupplierId, SupplierOrderPosition } from '@/lib/suppliers';
+import { EINKAUFSPREIS_NACHWEISE } from '@/config/pricing/einkaufspreise';
+import type { EinkaufspreisNachweis } from '@/config/pricing/einkaufspreise';
+
+/** Ein bekannter Preispunkt für dasselbe Produkt bei EINEM Lieferanten. */
+export interface PreisvergleichEintrag {
+  lieferant: SupplierId;
+  supplierLabel: string;
+  preis: number;
+  productUrl?: string;
+  /** true = dieser Eintrag ist der günstigste bekannte – wird grün markiert. */
+  istGuenstigster: boolean;
+}
 
 /** Wie die Farbe beim Lieferanten zu finden ist. */
 export type ShopColor =
@@ -43,6 +55,14 @@ export interface ManualSupplierPosition {
   shopColor: ShopColor;
   sizes: { size: string; quantity: number }[];
   totalQuantity: number;
+  /**
+   * Bekannte Preise DESSELBEN Produkts bei mehreren Lieferanten, günstigster
+   * zuerst – nur gesetzt, wenn WIRKLICH mehr als einer bekannt ist (siehe
+   * buildPreisvergleich). Rein informativ, ändert nichts an productUrl/
+   * articleNumber oben (die bleiben beim für DIESE Position zuständigen
+   * Lieferanten).
+   */
+  preisvergleich?: PreisvergleichEintrag[];
 }
 
 export interface ManualSupplierGroup {
@@ -95,6 +115,41 @@ function mitVorausgewaehlterFarbe(url: string, supplierId: string, variantId: st
   return url;
 }
 
+/**
+ * Baut den Preisvergleich für EIN Produkt: alle in einem Einkaufspreis-
+ * Nachweis bekannten Preispunkte (Haupt-Nachweis + alternativen),
+ * aufsteigend sortiert, günstigster markiert. Nimmt den Nachweis bewusst
+ * als Parameter (nicht die globale Tabelle) – dieselbe Testbarkeit-durch-
+ * Injektion wie resolveColorVariant() & Co. in mapping/resolve.ts.
+ *
+ * Bewusst NUR ab zwei bekannten Preispunkten (Betreiber-Vorgabe,
+ * 2026-09-05: "nur wenn mehr als 1 Lieferant zu sehen ist soll dieser
+ * Vergleich gemacht werden") – bei nur einem bekannten Preis gibt es nichts
+ * zu vergleichen, die Funktion liefert dann undefined statt einer Liste mit
+ * einem einzelnen (zwangsläufig "günstigsten") Eintrag.
+ */
+export function buildPreisvergleich(nachweis: EinkaufspreisNachweis | undefined): PreisvergleichEintrag[] | undefined {
+  if (!nachweis) return undefined;
+
+  const punkte: { lieferant: string; preis: number; productUrl?: string }[] = [];
+  if (nachweis.lieferant) {
+    punkte.push({ lieferant: nachweis.lieferant, preis: nachweis.preis });
+  }
+  for (const alt of nachweis.alternativen ?? []) {
+    punkte.push({ lieferant: alt.lieferant, preis: alt.preis, productUrl: alt.productUrl });
+  }
+  if (punkte.length < 2) return undefined;
+
+  const sortiert = [...punkte].sort((a, b) => a.preis - b.preis);
+  return sortiert.map((p, i) => ({
+    lieferant: p.lieferant as SupplierId,
+    supplierLabel: SUPPLIERS[p.lieferant as SupplierId]?.label ?? p.lieferant,
+    preis: p.preis,
+    productUrl: p.productUrl,
+    istGuenstigster: i === 0,
+  }));
+}
+
 /** Übersetzt EINE Position in die Ansicht für die manuelle Bestellung. */
 export function toManualPosition(position: SupplierOrderPosition): ManualSupplierPosition {
   const totalQuantity = position.sizes.reduce((sum, s) => sum + s.quantity, 0);
@@ -104,6 +159,7 @@ export function toManualPosition(position: SupplierOrderPosition): ManualSupplie
     colorName: position.colorName,
     sizes: position.sizes.map((s) => ({ size: s.size, quantity: s.quantity })),
     totalQuantity,
+    preisvergleich: buildPreisvergleich(EINKAUFSPREIS_NACHWEISE[position.productId]),
   };
 
   try {

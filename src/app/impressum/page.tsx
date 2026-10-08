@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { COMPANY } from '@/config/company';
 import { LegalPageNotice } from '@/components/legal/LegalPageNotice';
+import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 
 export const metadata = {
   title: 'Impressum',
@@ -11,6 +12,7 @@ export const metadata = {
     title: 'Impressum',
     description:
       'Anbieterkennzeichnung nach § 5 DDG: Kontaktdaten und Vertretungsberechtigte von Embroidery Republic Germany.',
+    images: [STANDARD_VORSCHAUBILD],
   },
 };
 

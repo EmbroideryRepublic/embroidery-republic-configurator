@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
 import { Scissors, Shirt, Clock, ShieldCheck, Palette, Users } from 'lucide-react';
+import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 
 export const metadata = {
   alternates: { canonical: '/ueber-uns' },
@@ -11,6 +12,7 @@ export const metadata = {
     title: 'Über Embroidery Republic Germany',
     description:
       'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
+    images: [STANDARD_VORSCHAUBILD],
   },
 };
 

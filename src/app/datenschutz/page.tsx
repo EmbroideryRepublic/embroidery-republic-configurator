@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { TodoNote, Todo } from '@/components/legal/TodoNote';
 import { LegalPageNotice } from '@/components/legal/LegalPageNotice';
 import { COMPANY } from '@/config/company';
+import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 
 export const metadata = {
   title: 'Datenschutz',
@@ -13,6 +14,7 @@ export const metadata = {
     title: 'Datenschutzerklärung',
     description:
       'Welche Daten Embroidery Republic Germany verarbeitet, wofür, wie lange und welche Rechte Sie haben.',
+    images: [STANDARD_VORSCHAUBILD],
   },
 };
 

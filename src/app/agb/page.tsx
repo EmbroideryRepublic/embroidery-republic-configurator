@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { LegalPageNotice } from '@/components/legal/LegalPageNotice';
+import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 
 export const metadata = {
   title: 'AGB',
@@ -11,6 +12,7 @@ export const metadata = {
     title: 'Allgemeine Geschäftsbedingungen',
     description:
       'Vertragsschluss, Preise, Versand, Widerrufsrecht und Gewährleistung bei Embroidery Republic Germany.',
+    images: [STANDARD_VORSCHAUBILD],
   },
 };
 

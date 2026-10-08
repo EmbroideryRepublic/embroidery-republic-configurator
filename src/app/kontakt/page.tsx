@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { KontaktKopf, KontaktHelfer, KontaktDirektUeberschrift, KontaktFusszeile } from '@/components/contact/KontaktInhalt';
 import { COMPANY } from '@/config/company';
+import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 
 export const metadata = {
   alternates: { canonical: '/kontakt' },
@@ -12,6 +13,7 @@ export const metadata = {
     title: 'Kontakt',
     description:
       'Fragen zu Firmenbekleidung, Mengenrabatten oder einem individuellen Projekt? Wir melden uns persönlich zurück.',
+    images: [STANDARD_VORSCHAUBILD],
   },
 };
 

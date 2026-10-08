@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ConfiguratorPrototype } from '@/components/configurator/ConfiguratorPrototype';
+import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 
 /**
  * Der Konfigurator.
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     title: 'Konfigurator',
     description:
       'Logo oder Text platzieren, Farbe und Größe wählen, Preis sofort sehen – veredelt per DTF-Transferdruck oder Stickerei.',
+    images: [STANDARD_VORSCHAUBILD],
   },
 };
 

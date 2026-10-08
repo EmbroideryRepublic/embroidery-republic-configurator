@@ -18,7 +18,7 @@
  *   4. robots.txt: `Sitemap:`-Zeile zeigt auf den Haupt-Host.
  *   5. Sitemap: jede URL liegt auf dem Haupt-Host und antwortet DIREKT mit 200.
  *   6. Jede Seite: genau ein Canonical = die eigene URL, ein <title>, eine
- *      Meta-Description, genau ein <h1>; Titel/Descriptions sind einmalig.
+ *      Meta-Description, ein og:image, genau ein <h1>; Titel/Descriptions einmalig.
  *   7. Strukturierte Daten (JSON-LD) sind gültiges JSON und zeigen auf den
  *      Haupt-Host.
  *   8. Die technischen *.vercel.app-Adressen sind per X-Robots-Tag gesperrt.
@@ -128,6 +128,11 @@ async function pruefeSeite(url) {
   const h1 = (html.match(/<h1[\s>]/g) ?? []).length;
   if (h1 !== 1) eintrag.probleme.push(`${h1} <h1>`);
   if (/<meta name="robots" content="[^"]*noindex/i.test(html)) eintrag.probleme.push('noindex trotz Sitemap-Eintrag');
+  // Vorschaubild für geteilte Links: Seiten mit eigenem `openGraph` verlieren das
+  // geerbte Standardbild still (siehe src/lib/seo/vorschau.ts).
+  const ogBild = grab(html, /<meta property="og:image" content="([^"]+)"/);
+  if (!ogBild) eintrag.probleme.push('kein og:image (geteilte Links ohne Vorschaubild)');
+  else if (hostVon(ogBild) !== host) eintrag.probleme.push(`og:image auf fremdem Host (${ogBild})`);
   for (const block of alle(html, /<script type="application\/ld\+json">([^<]*)<\/script>/g)) {
     try {
       const daten = JSON.parse(block);

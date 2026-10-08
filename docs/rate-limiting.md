@@ -111,8 +111,34 @@ Endpunkt kombiniert:
 | Admin-Login | IP, streng | ein einziger Nutzerkreis, keine NAT-Problematik |
 | Kontaktformular | IP + E-Mail-Adresse | trennt Personen hinter derselben Adresse |
 | Stornierung | IP + Bestell-Token | ein Token gehört zu einer Bestellung |
+| Besucherzähler | **gehashte** IP (`ip_gehasht`) | jeder Besucher löst ihn bei jedem Seitenaufruf aus – seine Adresse gehört nicht in die Datenbank |
 
 Die IP allein ist nie das einzige Merkmal, wo ein besseres verfügbar ist.
+
+#### `ip_gehasht` – Kennwert statt Adresse
+
+Die Schlüssel der übrigen Limits tragen die Adresse im Klartext
+(`bestellung:ip:203.0.113.7`) und liegen bis zu 24 Stunden in
+`rate_limit_zaehler` – das ist für Formulare, die nur wenige Menschen absenden,
+in der Datenschutzerklärung (Ziffer 8) benannt. Für den **Besucherzähler**
+(`/api/besuch`) wäre das untragbar: Jeder Seitenaufruf jedes Besuchers würde
+dessen Adresse ablegen.
+
+`ip_gehasht` bildet den Schlüssel stattdessen aus einem Kennwert
+(`besuch:h:<24 Hexzeichen>`, HMAC-SHA-256 mit einem aus `ORDER_TOKEN_SECRET`
+abgeleiteten, zweckgebundenen Schlüssel). Zwei Folgen, beide Absicht:
+
+- **Ohne ausreichendes Geheimnis (< 16 Zeichen) wird nicht begrenzt**, statt die
+  Adresse doch im Klartext abzulegen („Verfügbarkeit vor Sicherheit", wie beim
+  Ausfall des Zählers).
+- **Überschreitungen erzeugen keine Zeile in `system_ereignisse`.** Dort würde ein
+  Roboter mit jedem abgewiesenen Aufruf eine Zeile schreiben – bei einem Endpunkt,
+  den die ganze Welt aufrufen kann, ein Weg, die Ereignistabelle zu fluten.
+
+Festgehalten durch Tests (`rateLimit.test.ts`): Schlüssel der übrigen Limits bleiben
+unverändert (sonst begänne jedes Limit beim Deployen bei null), der Kennwert enthält
+keinen Teil der Adresse, und das Merkmal von `besuch` kann nicht unbemerkt auf `ip`
+zurückgestellt werden.
 
 ### Ausnahmen
 
@@ -135,6 +161,7 @@ Interne Systeme und der angemeldete Betreiber werden übersprungen:
 | **Anfrage** | 15 | 1 h | Unverbindlich, kein Zahlungsvorgang, günstiger im Ablauf – darf etwas höher liegen. |
 | **Kontaktformular** | 5 | 10 min | Wie bisher; der Wert hat sich bewährt. |
 | **Stornierung** | 10 | 1 h | Ein Token gehört zu einer Bestellung; wiederholte Versuche deuten auf Raten hin. |
+| **Besucherzähler** | 120 | 1 min | Ein Mensch löst je Seitenwechsel eine Zählung aus; selbst schnelles Durchklicken bleibt weit darunter – auch ein Büro hinter einer gemeinsamen Adresse. Deckelt Datenbanklast und das Aufblähen der Zahlen von einer Adresse aus. Überschreitungen werden still ignoriert (HTTP 204), siehe [besucherzaehler.md](besucherzaehler.md). |
 
 Alle Werte stehen in `config/rateLimits.ts` – eine Stelle, ohne Codeänderung
 anpassbar.

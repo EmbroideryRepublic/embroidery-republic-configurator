@@ -182,6 +182,7 @@ export const POST = handle;
  */
 async function raeumeAuf(): Promise<{
   rateLimitFenster: number;
+  besuchKennungen: number;
   sitzungen: number;
   ereignisse: number;
   zahlungenVerfallen: number;
@@ -196,6 +197,7 @@ async function raeumeAuf(): Promise<{
 }> {
   const leer = {
     rateLimitFenster: 0,
+    besuchKennungen: 0,
     sitzungen: 0,
     ereignisse: 0,
     zahlungenVerfallen: 0,
@@ -209,8 +211,11 @@ async function raeumeAuf(): Promise<{
   };
   try {
     const db = createAdminClient();
-    const [limits, sitzungen, ereignisse, verfall, haengend, rechnungHaengend, versandHaengend, erstattungHaengend, bestaetigungHaengend, anfragen, anonymisiert] = await Promise.all([
+    const [limits, besuch, sitzungen, ereignisse, verfall, haengend, rechnungHaengend, versandHaengend, erstattungHaengend, bestaetigungHaengend, anfragen, anonymisiert] = await Promise.all([
       db.rpc('raeume_rate_limit_auf'),
+      // Migration 0037: Tageskennungen des Besucherzählers früherer Tage entfernen
+      // (Datenschutz: nur Zahlen bleiben, siehe docs/besucherzaehler.md).
+      db.rpc('raeume_besuch_kennungen_auf'),
       db.rpc('raeume_admin_sitzungen_auf'),
       db.rpc('raeume_system_ereignisse_auf'),
       // Z3: offene Zahlungen nach der Frist auf 'failed'.
@@ -235,7 +240,7 @@ async function raeumeAuf(): Promise<{
       db.rpc('anonymisiere_alte_bestellungen', { p_jahre: BESTELLUNG_ANONYMISIERT_NACH_JAHREN }),
     ]);
     const fehlerObj =
-      limits.error || sitzungen.error || ereignisse.error || verfall.error || haengend.error ||
+      limits.error || besuch.error || sitzungen.error || ereignisse.error || verfall.error || haengend.error ||
       rechnungHaengend.error || versandHaengend.error || erstattungHaengend.error || bestaetigungHaengend.error ||
       anfragen.error || anonymisiert.error;
     if (fehlerObj) {
@@ -245,6 +250,7 @@ async function raeumeAuf(): Promise<{
     }
     return {
       rateLimitFenster: (limits.data as number) ?? 0,
+      besuchKennungen: (besuch.data as number) ?? 0,
       sitzungen: (sitzungen.data as number) ?? 0,
       ereignisse: (ereignisse.data as number) ?? 0,
       zahlungenVerfallen: (verfall.data as number) ?? 0,

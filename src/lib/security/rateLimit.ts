@@ -22,11 +22,12 @@
  * lahmlegen – der Vorfall wird protokolliert. Bewusste Abwägung, siehe
  * docs/rate-limiting.md.
  */
+import { createHmac } from 'node:crypto';
 import { headers } from 'next/headers';
 import { createAdminClient } from '@/lib/supabase/server';
 import { istTestmodus } from '@/config/testmodus';
 import { istAdmin } from '@/lib/admin/auth';
-import { RATE_LIMITS, type RateLimitName } from '@/config/rateLimits';
+import { RATE_LIMITS, type RateLimit, type RateLimitName } from '@/config/rateLimits';
 import { meldeEreignis } from '@/lib/observability/ereignis';
 
 export interface RateLimitErgebnis {
@@ -98,6 +99,36 @@ export function kuerzeIp(ip: string): string {
   return teile.length === 4 ? `${teile[0]}.${teile[1]}.${teile[2]}.x` : ip;
 }
 
+/**
+ * Der Zählerschlüssel eines Zugriffs.
+ *
+ * `ip` und `ip_und_merkmal` tragen die Adresse im Klartext (kurzlebig, siehe
+ * Datenschutzerklärung zum Kontaktformular). `ip_gehasht` ersetzt sie durch
+ * einen Kennwert: HMAC mit einem aus dem Betriebsgeheimnis abgeleiteten,
+ * zweckgebundenen Schlüssel – ohne das Geheimnis lässt sich weder die Adresse
+ * zurückgewinnen noch prüfen, ob eine bestimmte Adresse dahintersteckt.
+ *
+ * Gibt `null` zurück, wenn ein Kennwert verlangt ist, aber kein ausreichend
+ * langes Geheimnis vorliegt: Dann wird lieber nicht begrenzt, als die Adresse
+ * doch im Klartext abzulegen (Verfügbarkeit vor Sicherheit, wie bei einem
+ * Ausfall des Zählers).
+ */
+export function baueRateLimitSchluessel(
+  limit: Pick<RateLimit, 'id' | 'merkmal'>,
+  ip: string,
+  merkmal?: string,
+  geheimnis?: string
+): string | null {
+  if (limit.merkmal === 'ip_gehasht') {
+    if (!geheimnis || geheimnis.length < 16) return null;
+    const zweckSchluessel = createHmac('sha256', geheimnis).update('ratelimit-adresse-v1').digest();
+    return `${limit.id}:h:${createHmac('sha256', zweckSchluessel).update(ip).digest('hex').slice(0, 24)}`;
+  }
+  return limit.merkmal === 'ip_und_merkmal' && merkmal
+    ? `${limit.id}:ip:${ip}:m:${merkmal.toLowerCase().slice(0, 120)}`
+    : `${limit.id}:ip:${ip}`;
+}
+
 function meldungFuer(sekunden: number): string {
   const minuten = Math.max(1, Math.ceil(sekunden / 60));
   return `Zu viele Versuche. Bitte versuchen Sie es in ${minuten} ${minuten === 1 ? 'Minute' : 'Minuten'} erneut.`;
@@ -128,10 +159,9 @@ export async function pruefeRateLimit(name: RateLimitName, merkmal?: string): Pr
   }
 
   const ip = ermittleIp();
-  const schluessel =
-    limit.merkmal === 'ip_und_merkmal' && merkmal
-      ? `${limit.id}:ip:${ip}:m:${merkmal.toLowerCase().slice(0, 120)}`
-      : `${limit.id}:ip:${ip}`;
+  const schluessel = baueRateLimitSchluessel(limit, ip, merkmal, process.env.ORDER_TOKEN_SECRET);
+  // Kein Kennwert möglich → nicht begrenzen, statt die Adresse im Klartext zu speichern.
+  if (schluessel === null) return ERLAUBT;
 
   try {
     const db = createAdminClient();
@@ -154,19 +184,24 @@ export async function pruefeRateLimit(name: RateLimitName, merkmal?: string): Pr
 
     if (zeile.erlaubt) return ERLAUBT;
 
-    // Auffälliges Verhalten festhalten – mit gekürzter Adresse.
-    await meldeEreignis({
-      schwere: 'WARNING',
-      kategorie: 'RATE_LIMIT',
-      ereignis: 'rate_limit_ausgeloest',
-      felder: {
-        limitId: limit.id,
-        ipGekuerzt: kuerzeIp(ip),
-        anzahl: zeile.anzahl as number,
-        max: limit.max,
-        fensterSekunden: limit.fensterSekunden,
-      },
-    });
+    // Auffälliges Verhalten festhalten – mit gekürzter Adresse. Nicht bei
+    // `ip_gehasht` (Massenendpunkt): Dort würde jeder abgewiesene Aufruf eines
+    // Roboters eine Zeile in der Ereignistabelle erzeugen, und die Adresse soll
+    // gerade nirgends im Klartext stehen.
+    if (limit.merkmal !== 'ip_gehasht') {
+      await meldeEreignis({
+        schwere: 'WARNING',
+        kategorie: 'RATE_LIMIT',
+        ereignis: 'rate_limit_ausgeloest',
+        felder: {
+          limitId: limit.id,
+          ipGekuerzt: kuerzeIp(ip),
+          anzahl: zeile.anzahl as number,
+          max: limit.max,
+          fensterSekunden: limit.fensterSekunden,
+        },
+      });
+    }
 
     return {
       erlaubt: false,

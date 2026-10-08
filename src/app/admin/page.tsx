@@ -2,12 +2,14 @@
  * Admin: Bestellliste – Einstiegsseite des Adminbereichs.
  * Reiner Server-Component-Leser (Daten aus lib/admin/data.ts).
  */
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { listOrders, type BestellungsListenFilter } from '@/lib/admin/data';
 import { istAdmin } from '@/lib/admin/auth';
 import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 import { PAYMENT_STATUS_LABELS, type OrderPaymentStatus } from '@/lib/actions/orderTypes';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
+import { BesucherStreifen } from '@/components/admin/BesucherStreifen';
 import { DeleteOrderButton } from '@/components/admin/DeleteOrderButton';
 
 const FILTER_LABELS: Record<BestellungsListenFilter, string> = {
@@ -58,6 +60,12 @@ export default async function AdminOrdersPage({
 
   return (
     <div>
+      {/* Besucherzahlen auf einen Blick. Eigenes Suspense, damit eine langsame
+          Auswertung die Bestellliste nicht aufhält; fehlt die Auswertung,
+          erscheint der Streifen einfach nicht. */}
+      <Suspense fallback={null}>
+        <BesucherStreifen />
+      </Suspense>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-lg font-semibold">
           Bestellungen &amp; Anfragen ({gesamt}

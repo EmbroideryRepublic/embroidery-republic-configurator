@@ -13,7 +13,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { RATE_LIMITS } from '../../../config/rateLimits';
-import { kuerzeIp } from '../rateLimit';
+import { baueRateLimitSchluessel, kuerzeIp } from '../rateLimit';
 
 // ── Konfiguration ────────────────────────────────────────────────────────
 
@@ -68,6 +68,67 @@ test('Adressen werden fürs Protokoll gekürzt', () => {
   assert.equal(kuerzeIp('203.0.113.42'), '203.0.113.x');
   assert.match(kuerzeIp('2001:db8:85a3:1234:5678:8a2e:370:7334'), /^2001:db8:85a3:…$/);
   assert.equal(kuerzeIp('unbekannt'), 'unbekannt');
+});
+
+// ── Zählerschlüssel ──────────────────────────────────────────────────────
+
+const GEHEIMNIS = 'ein-ausreichend-langes-testgeheimnis-0123456789';
+
+test('Schlüssel der Limits mit Klartext-Adresse bleiben unverändert (Regression)', () => {
+  // Die Zähler laufender Fenster liegen unter diesen Schlüsseln. Änderte sich
+  // das Format, begänne jedes Limit beim Deployen kurz bei null.
+  assert.equal(baueRateLimitSchluessel(RATE_LIMITS.bestellung, '203.0.113.7'), 'bestellung:ip:203.0.113.7');
+  assert.equal(
+    baueRateLimitSchluessel(RATE_LIMITS.kontakt, '203.0.113.7', 'Max@Example.org'),
+    'kontakt:ip:203.0.113.7:m:max@example.org'
+  );
+  // Ohne Merkmal fällt ip_und_merkmal auf die Adresse zurück.
+  assert.equal(baueRateLimitSchluessel(RATE_LIMITS.kontakt, '203.0.113.7'), 'kontakt:ip:203.0.113.7');
+  // Das Merkmal wird gekürzt (Schlüssellänge ist begrenzt).
+  assert.equal(
+    baueRateLimitSchluessel(RATE_LIMITS.kontakt, '203.0.113.7', 'x'.repeat(300)),
+    `kontakt:ip:203.0.113.7:m:${'x'.repeat(120)}`
+  );
+});
+
+test('ip_gehasht: der Schlüssel enthält die Adresse nicht – weder ganz noch in Teilen', () => {
+  const ip = '203.0.113.77';
+  const schluessel = baueRateLimitSchluessel(RATE_LIMITS.besuch, ip, undefined, GEHEIMNIS);
+  assert.ok(schluessel !== null);
+  assert.match(schluessel, /^besuch:h:[0-9a-f]{24}$/);
+  assert.ok(!schluessel.includes(ip));
+  assert.ok(!schluessel.includes('203'));
+});
+
+test('ip_gehasht: gleiche Adresse → gleicher Schlüssel; andere Adresse oder anderes Geheimnis → anderer', () => {
+  const a = baueRateLimitSchluessel(RATE_LIMITS.besuch, '203.0.113.7', undefined, GEHEIMNIS);
+  assert.equal(baueRateLimitSchluessel(RATE_LIMITS.besuch, '203.0.113.7', undefined, GEHEIMNIS), a);
+  assert.notEqual(baueRateLimitSchluessel(RATE_LIMITS.besuch, '203.0.113.8', undefined, GEHEIMNIS), a);
+  assert.notEqual(baueRateLimitSchluessel(RATE_LIMITS.besuch, '203.0.113.7', undefined, `${GEHEIMNIS}x`), a);
+});
+
+test('ip_gehasht ohne ausreichendes Geheimnis: kein Schlüssel – die Adresse wird NIE ersatzweise im Klartext abgelegt', () => {
+  for (const geheimnis of [undefined, '', 'kurz', 'abcdefghijklmno' /* 15 Zeichen: knapp zu kurz */]) {
+    assert.equal(baueRateLimitSchluessel(RATE_LIMITS.besuch, '203.0.113.7', undefined, geheimnis), null);
+  }
+});
+
+test('ip_gehasht: das Merkmal wird nicht in den Schlüssel gemischt', () => {
+  const ohne = baueRateLimitSchluessel(RATE_LIMITS.besuch, '203.0.113.7', undefined, GEHEIMNIS);
+  const mit = baueRateLimitSchluessel(RATE_LIMITS.besuch, '203.0.113.7', 'irgendwas@example.org', GEHEIMNIS);
+  assert.equal(mit, ohne);
+});
+
+test('der Besucherzähler legt die Adresse eines Besuchers nie im Klartext ab', () => {
+  // Jeder Besucher löst diesen Zähler aus. Würde jemand das Merkmal auf „ip"
+  // zurückstellen, stünde plötzlich jede Besucheradresse 24 Stunden lang in
+  // der Datenbank – und die Datenschutzerklärung stimmte nicht mehr.
+  assert.equal(RATE_LIMITS.besuch.merkmal, 'ip_gehasht');
+});
+
+test('Überschreitungen von ip_gehasht-Limits erzeugen keine Ereigniszeile', () => {
+  const quelle = readFileSync(join('src', 'lib', 'security', 'rateLimit.ts'), 'utf8');
+  assert.match(quelle, /if \(limit\.merkmal !== 'ip_gehasht'\)\s*\{\s*await meldeEreignis\(/);
 });
 
 // ── Wächter: nur EINE Infrastruktur ──────────────────────────────────────

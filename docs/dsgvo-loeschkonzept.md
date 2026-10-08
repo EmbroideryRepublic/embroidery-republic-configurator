@@ -61,6 +61,21 @@ betroffen ist. Dieselbe Vorsicht wie beim bereits bestehenden
 `scripts/verwaisteDateien.mts`, nur mit einer zusätzlichen Stufe (die
 Bestellung existiert ja weiterhin – nur ihre Dateien nicht mehr).
 
+### 1.4 Besucherzähler
+
+Der cookielose Besucherzähler ([besucherzaehler.md](besucherzaehler.md)) legt
+keine IP-Adressen ab. Aufbewahrung je Tabelle:
+
+| Daten | Frist | Mechanismus |
+|---|---|---|
+| Tageskennung (`besuch_kennungen`): Hashwert aus IP + Browserkennung, täglich wechselnder Schlüssel | **bis zum Ende des Tages** | `raeume_besuch_kennungen_auf()` im Cron (alle 10 Minuten) **und** Löschung durch den ersten Besucher des nächsten Tages (`erfasse_besuch`) |
+| Zähler-Schlüssel des Rate-Limits `besuch`: Kennwert (Hash) der Adresse | **höchstens 24 Stunden** | `raeume_rate_limit_auf()` (wie alle Rate-Limit-Zähler) |
+| Zahlen (`besuch_summe`, `besuch_seiten`, `besuch_quellen`) | unbefristet | enthalten keine Personen – nur Besucher-/Aufrufzahlen je Tag, Seite, Kampagnen-Quelle |
+
+Mit der Löschung der Tageskennungen sind die verbleibenden Daten anonym: Eine
+Zahl lässt sich keiner Person mehr zuordnen. Die Zusage in der Datenschutzerklärung
+muss genau diese Fristen nennen (Entwurf: `docs/seo/datenschutz-besucherzaehler-wortlaut.md`).
+
 ---
 
 ## 2. Warum automatisiert UND vorsichtig zugleich

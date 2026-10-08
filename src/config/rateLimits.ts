@@ -18,7 +18,16 @@ export type Merkmal =
    * hinter derselben NAT-Adresse – Firmen und Mobilfunk werden dadurch
    * nicht benachteiligt.
    */
-  | 'ip_und_merkmal';
+  | 'ip_und_merkmal'
+  /**
+   * Nur die Adresse – aber als Kennwert (HMAC) statt im Klartext. Für Endpunkte,
+   * die JEDER Besucher bei JEDEM Seitenaufruf auslöst (Besucherzähler): Die
+   * Adresse eines Besuchers gehört dann nicht in die Datenbank, auch nicht für
+   * die 24 Stunden, die ein Zählerschlüssel dort liegt. Überschreitungen werden
+   * zudem nicht als Systemereignis festgehalten – ein Roboter würde sonst die
+   * Ereignistabelle fluten.
+   */
+  | 'ip_gehasht';
 
 export interface RateLimit {
   /** Kennung, erscheint im Schlüssel und im Protokoll. */
@@ -170,6 +179,21 @@ export const RATE_LIMITS = {
     begruendung:
       'Zwanzig schreibende Änderungen je Stunde je Konto decken jede reale Nutzung ab (mehrere Adressen ' +
       'anlegen, Profil anpassen) und bremsen automatisiertes Schreiben über eine gekaperte Sitzung.',
+  },
+
+  /** Besucherzähler (POST /api/besuch): Jeder Seitenwechsel meldet sich einmal.
+   *  Überschreitungen werden still ignoriert (204) – die Zählung ist nie
+   *  wichtiger als die Seite selbst. */
+  besuch: {
+    id: 'besuch',
+    max: 120,
+    fensterSekunden: MINUTE,
+    merkmal: 'ip_gehasht',
+    begruendung:
+      'Ein Mensch löst je Seitenwechsel eine Zählung aus, selbst schnelles Durchklicken bleibt weit unter ' +
+      '120 je Minute – auch ein Büro hinter einer gemeinsamen Adresse. Der Wert deckelt die Datenbanklast ' +
+      'und verhindert, dass sich die Zahlen von einer Adresse aus aufblähen lassen. Die Adresse wird nur als ' +
+      'Kennwert gespeichert (ip_gehasht): Jeder Besucher löst diesen Zähler aus, seine IP gehört nicht in die Tabelle.',
   },
 
   /** Buchhaltungs-Synchronisierung (GET /api/accounting/v1/orders): ein

@@ -21,7 +21,8 @@
     "test:e2e:adminauth": "tsx --tsconfig tsconfig.scripts.json scripts/e2eAdminAuth.mts",
     "test:e2e:stripe": "tsx --tsconfig tsconfig.scripts.json scripts/e2eStripe.mts",
     "seo:pruefen": "node scripts/seoPruefen.mjs",
-    "seo:indexnow": "node scripts/indexNowSenden.mjs"
+    "seo:indexnow": "node scripts/indexNowSenden.mjs",
+    "besuch:pruefen": "node scripts/pruefeBesuchszaehler.mjs"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",

@@ -141,6 +141,15 @@ als `check`-Bedingung. Enthält **keine** personenbezogenen Daten – die
 Bereinigung erfolgt vor dem Schreiben. Siehe
 [betriebsbeobachtung.md](betriebsbeobachtung.md).
 
+### `besuch_summe` · `besuch_seiten` · `besuch_quellen` · `besuch_kennungen` — Migration 0037
+Cookieloser Besucherzähler. Die ersten drei halten **nur Zahlen** (Besucher/Aufrufe
+je Tag, je Tag und Seite, je Tag und Kampagnen-Quelle). `besuch_kennungen`
+`(tag, kennung, quelle)` enthält je Besucher und Tag **einen Hashwert** (HMAC aus
+IP + Browserkennung mit täglich wechselndem Schlüssel – die IP selbst wird nie
+gespeichert) und wird nach Tagesende geleert. Alle vier: Row Level Security ohne
+Policy, Zugriff nur über den Service-Role-Client. Siehe
+[besucherzaehler.md](besucherzaehler.md).
+
 ---
 
 ## Datenbankfunktionen
@@ -163,6 +172,9 @@ nur dort **Atomarität** über gleichzeitige Anfragen garantiert ist.
 | `loesche_alte_anfragen(int)` | 0022 | Anfragen (`order_type = 'inquiry'`) ohne Vertrag nach Frist hart löschen (DSGVO) |
 | `anonymisiere_alte_bestellungen(int)` | 0022 | Bestellungen nach Ablauf der Aufbewahrungsfrist (§ 147 AO) anonymisieren (DSGVO) |
 | `lege_kundenprofil_an()` | 0023 | Trigger auf `auth.users`: legt automatisch ein `customer_profiles`-Profil an |
+| `erfasse_besuch(date, text, text, text)` | 0037 | einen Seitenaufruf atomar zählen (Besucher = neue Tageskennung) |
+| `lade_besuchsstatistik(date)` | 0037 | Admin-Auswertung (Tage, Top-15-Seiten, Quellen) als JSON – Aggregation in SQL, weil PostgREST bei 1 000 Zeilen abschneidet |
+| `raeume_besuch_kennungen_auf()` | 0037 | Tageskennungen früherer Tage entfernen (Cron; zusätzlich beim ersten Besucher jedes neuen Tages) |
 
 Die Aufräum-, Verfalls- und Löschfunktionen laufen über die Cron-Route
 (siehe [deployment.md](deployment.md)).

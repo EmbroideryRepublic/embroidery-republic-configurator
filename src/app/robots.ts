@@ -9,10 +9,10 @@
  * `/auth/` (der Supabase-Callback – kein Inhalt, nur ein Umleitungssprung).
  */
 import type { MetadataRoute } from 'next';
-import { basisUrl } from '@/lib/seo/basisUrl';
+import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 
 export default function robots(): MetadataRoute.Robots {
-  const basis = basisUrl();
+  const basis = kanonischeBasisUrl();
 
   return {
     rules: {

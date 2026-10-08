@@ -3,7 +3,7 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { GlobaleKopfzeile } from '@/components/layout/GlobaleKopfzeile';
 import { CartDrawerHost } from '@/components/layout/CartDrawerHost';
-import { basisUrl } from '@/lib/seo/basisUrl';
+import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { websiteSchema } from '@/lib/seo/strukturierteDaten';
 import { JsonLd } from '@/components/seo/JsonLd';
 import './globals.css';
@@ -15,8 +15,10 @@ export const metadata: Metadata = {
   // Basis für ALLE relativen Metadaten-URLs (Open-Graph-Bilder, Canonical).
   // Ohne sie fällt Next auf `http://localhost:3000` zurück – geteilte Links
   // trügen dann ein Vorschaubild, das nirgends erreichbar ist. Gleiche Quelle
-  // wie sitemap.ts und robots.ts.
-  metadataBase: new URL(basisUrl()),
+  // wie sitemap.ts und robots.ts: die KANONISCHE Adresse (der Host, der
+  // tatsächlich ausliefert) – sonst zeigten Canonicals und Vorschaubilder auf
+  // eine Weiterleitung, siehe basisUrl.ts.
+  metadataBase: new URL(kanonischeBasisUrl()),
   // Unterseiten setzen nur ihren eigenen Titel; die Marke hängt das Template an.
   title: {
     default: 'Embroidery Republic Germany | Firmenbekleidung bedrucken & besticken',
@@ -72,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${inter.variable} ${playfair.variable} flex min-h-screen flex-col bg-cream font-sans text-brand antialiased`}
       >
-        <JsonLd daten={websiteSchema(basisUrl())} />
+        <JsonLd daten={websiteSchema(kanonischeBasisUrl())} />
         {/* Erstes fokussierbares Element der Seite: für Tastatur-/Screenreader-
             Nutzung, die sonst durch die gesamte Kopfzeile/Navigation tabben
             müsste, um zum eigentlichen Inhalt zu gelangen. Visuell versteckt,

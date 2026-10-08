@@ -33,7 +33,7 @@ import { cm } from '@/lib/format';
 import { SHIPPING_RATES } from '@/config/shipping';
 import { PRODUKTIONSZEIT_TEXT } from '@/config/company';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { basisUrl } from '@/lib/seo/basisUrl';
+import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { brotkrumenSchema, produktSchema } from '@/lib/seo/strukturierteDaten';
 import type { ProductConfig } from '@/config/products/types';
 
@@ -174,7 +174,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
   const { produkt, artLabel, stufeLabel, veredelungsflaechen, aehnliche, empfehlungen } = daten;
   const d = produkt.detailedDescription;
 
-  const basis = basisUrl();
+  const basis = kanonischeBasisUrl();
 
   return (
     <main className="min-h-screen bg-brand-light">

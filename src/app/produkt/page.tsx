@@ -23,7 +23,7 @@ import { produktAbfrage, ALLE_MERKMALE } from '@/lib/catalog/abfrage';
 import { ladeBeliebtheit } from '@/lib/catalog/beliebtheit';
 import { hatAktiveFilter, leseKriterien, schreibeKriterien, type SuchParameter } from '@/lib/catalog/kriterien';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { basisUrl } from '@/lib/seo/basisUrl';
+import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { katalogBrotkrumenSchema, sammlungSchema } from '@/lib/seo/strukturierteDaten';
 
 export const dynamic = 'force-dynamic';
@@ -71,7 +71,7 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
   // Strukturierte Daten nur für die ungefilterte, indexierbare Übersicht –
   // gefilterte Ansichten sind noindex und beschreiben keine eigene Sammlung.
   const gefiltert = hatAktiveFilter(kriterien);
-  const basis = basisUrl();
+  const basis = kanonischeBasisUrl();
 
   return (
     <main className="min-h-screen bg-brand-light">

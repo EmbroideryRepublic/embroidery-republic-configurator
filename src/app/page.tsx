@@ -51,7 +51,7 @@ import { Kundenstimmen } from '@/components/shop/Kundenstimmen';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { Produktkachel } from '@/components/shop/Produktkachel';
 import { HeroText } from '@/components/home/HeroText';
-import { basisUrl } from '@/lib/seo/basisUrl';
+import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { organisationSchema } from '@/lib/seo/strukturierteDaten';
 import type { ProductType } from '@/types';
 
@@ -143,7 +143,7 @@ export default async function Startseite() {
 
   return (
     <main className="bg-brand-light">
-      <JsonLd daten={organisationSchema(basisUrl())} />
+      <JsonLd daten={organisationSchema(kanonischeBasisUrl())} />
 
       {/* ══ Vertrauensleiste ════════════════════════════════════════════
           Direkt unter der Navigation, vor der Bühne. Vier belegte Fakten,

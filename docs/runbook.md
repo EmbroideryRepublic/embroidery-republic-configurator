@@ -121,6 +121,28 @@ Konto-E-Mail.
   die Domain einmal besucht haben, verweigern HTTP. Ein Zurückschalten auf
   HTTP ist praktisch nicht möglich – HTTPS muss laufen.
 
+### 2.6 Seite ist bei Google nicht (oder doppelt) zu finden
+
+Erst `npm run seo:pruefen` ausführen – es prüft die Live-Seite nur lesend
+(Weiterleitungen, Canonicals, Sitemap, robots.txt, Titel/Descriptions,
+JSON-LD, 404-Verhalten) und nennt konkret, was nicht stimmt.
+
+**Welcher Host ist der „richtige"?** Vercel leitet `ergermany.de` per 308 auf
+`www.ergermany.de` um (Stand 2026-10-08). Alles, was Suchmaschinen liest
+(Canonical, Sitemap, `robots.txt`, JSON-LD, Vorschaubilder), nutzt deshalb
+`kanonischeBasisUrl()` aus `src/lib/seo/basisUrl.ts` – es hebt `ergermany.de`
+auf `www.ergermany.de`. Zahlung, Login und E-Mail-Links nutzen weiter
+`basisUrl()` (= `NEXT_PUBLIC_SITE_URL`), weil deren Zieladressen bei Supabase
+und den Zahlungsanbietern hinterlegt sind.
+
+- Wird in Vercel (*Domains*) stattdessen die Domain **ohne** `www` zur
+  Hauptadresse gemacht, muss der Eintrag in `AUSLIEFERUNGS_HOST`
+  (`basisUrl.ts`) entfernt werden – sonst zeigen die Canonicals wieder auf
+  eine Weiterleitung. `seo:pruefen` schlägt dann sofort an.
+- Die technischen Adressen `*.vercel.app` liefern denselben Shop aus und sind
+  deshalb per `X-Robots-Tag: noindex` gesperrt (`next.config.js`).
+- Neue Seiten, die in die Sitemap sollen, gehören in `src/app/sitemap.ts`.
+
 ---
 
 ## 3. Wiederkehrende Aufgaben

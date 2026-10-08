@@ -17,10 +17,12 @@
  */
 import type { MetadataRoute } from 'next';
 import { alleProduktSlugs } from '@/lib/products/productPage';
-import { basisUrl } from '@/lib/seo/basisUrl';
+import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const basis = basisUrl();
+  // Kanonische Adresse (nicht die Betriebsadresse): Jede Sitemap-URL muss
+  // direkt mit 200 antworten, nicht über eine Weiterleitung – siehe basisUrl.ts.
+  const basis = kanonischeBasisUrl();
 
   const statisch: { pfad: string; prioritaet: number }[] = [
     { pfad: '', prioritaet: 1 },

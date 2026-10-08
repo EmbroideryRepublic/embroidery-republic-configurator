@@ -34,6 +34,17 @@ const nextConfig = {
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
         ],
       },
+      // Die technischen Vercel-Adressen (ergermany.vercel.app, die Branch- und
+      // Vorschau-Adressen) liefern denselben Shop aus wie die echte Domain.
+      // Ohne diese Zeile könnte Google dieselben Seiten ein zweites Mal unter
+      // fremder Adresse indexieren (Duplicate Content, verwässerte Signale).
+      // `X-Robots-Tag` gilt auch für Bilder/PDFs, anders als ein Meta-Tag.
+      // Betrifft NUR *.vercel.app – nicht www.ergermany.de / ergermany.de.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: '.*\\.vercel\\.app' }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
     ];
   },
   images: {

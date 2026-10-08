@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/Footer';
 import { GlobaleKopfzeile } from '@/components/layout/GlobaleKopfzeile';
 import { CartDrawerHost } from '@/components/layout/CartDrawerHost';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
+import { suchmaschinenBestaetigung } from '@/lib/seo/bestaetigung';
 import { websiteSchema } from '@/lib/seo/strukturierteDaten';
 import { JsonLd } from '@/components/seo/JsonLd';
 import './globals.css';
@@ -55,6 +56,10 @@ export const metadata: Metadata = {
       'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung. Motiv hochladen, platzieren, Preis in Echtzeit sehen – ab 1 Stück.',
   },
   robots: { index: true, follow: true },
+  // Bestätigung bei Google Search Console / Bing Webmaster Tools. Gibt nur etwas
+  // aus, wenn die Vercel-Variablen GOOGLE_SITE_VERIFICATION bzw.
+  // BING_SITE_VERIFICATION gesetzt sind – siehe lib/seo/bestaetigung.ts.
+  verification: suchmaschinenBestaetigung(process.env),
 };
 
 /**

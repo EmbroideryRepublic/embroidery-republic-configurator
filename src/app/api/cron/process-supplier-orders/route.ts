@@ -173,6 +173,9 @@ async function handle(req: NextRequest): Promise<NextResponse> {
 export const GET = handle;
 export const POST = handle;
 
+/** Fehlercodes für „Datenbankfunktion existiert nicht" (PostgREST bzw. Postgres). */
+const FUNKTION_FEHLT = new Set(['PGRST202', '42883']);
+
 /**
  * Wartung: Aufräumen, Zahlungsverfall, Freigabe verwaister Ansprüche.
  *
@@ -239,8 +242,15 @@ async function raeumeAuf(): Promise<{
       db.rpc('loesche_alte_anfragen', { p_monate: ANFRAGE_LOESCHT_NACH_MONATEN }),
       db.rpc('anonymisiere_alte_bestellungen', { p_jahre: BESTELLUNG_ANONYMISIERT_NACH_JAHREN }),
     ]);
+    // Der Besucherzähler ist optional (Migration 0037): Läuft der Code vor der
+    // Migration, existiert die Aufräumfunktion noch nicht – dann gibt es nichts
+    // aufzuräumen und das ist KEIN Fehler. Sonst entstünde bei jedem Lauf (alle
+    // 10 Minuten) ein ERROR-Ereignis, das echte Alarme überdeckt. Nur genau
+    // „Funktion nicht gefunden" wird so behandelt (PostgREST: PGRST202,
+    // Postgres: 42883); jeder andere Fehler bleibt einer.
+    const besuchFehler = besuch.error && !FUNKTION_FEHLT.has(besuch.error.code) ? besuch.error : null;
     const fehlerObj =
-      limits.error || besuch.error || sitzungen.error || ereignisse.error || verfall.error || haengend.error ||
+      limits.error || besuchFehler || sitzungen.error || ereignisse.error || verfall.error || haengend.error ||
       rechnungHaengend.error || versandHaengend.error || erstattungHaengend.error || bestaetigungHaengend.error ||
       anfragen.error || anonymisiert.error;
     if (fehlerObj) {

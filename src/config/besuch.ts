@@ -37,6 +37,8 @@ export const BESUCH_QUELLEN = [
   'presse',
   'verzeichnis',
   'empfehlung',
+  'paketbeilage',
+  'messe',
 ] as const;
 
 /** Aufruf ohne (bekannte) Kennzeichnung: Suchmaschine, direkter Aufruf, Verweise … */
@@ -66,6 +68,8 @@ export const BESUCH_QUELLEN_NAMEN = {
   presse: 'Presse',
   verzeichnis: 'Branchenverzeichnis',
   empfehlung: 'Empfehlung',
+  paketbeilage: 'Paketbeilage',
+  messe: 'Messe / Veranstaltung',
   [QUELLE_OHNE_KENNZEICHNUNG]: 'Ohne Kennzeichnung',
   [QUELLE_SONSTIGE]: 'Sonstige Kennzeichnung',
 } as const satisfies Record<(typeof BESUCH_QUELLEN)[number] | typeof QUELLE_OHNE_KENNZEICHNUNG | typeof QUELLE_SONSTIGE, string>;

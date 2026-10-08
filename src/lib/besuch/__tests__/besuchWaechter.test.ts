@@ -127,6 +127,17 @@ test('die Aufräumung der Tageskennungen hängt am Cron', () => {
   assert.ok(cron.includes("rpc('raeume_besuch_kennungen_auf')"), 'ohne diesen Aufruf bliebe die Löschzusage allein an der Datenbank-Sicherung hängen');
 });
 
+test('die Aufräumung hängt den Cron nicht auf, solange die Migration fehlt – und verschluckt keine anderen Fehler', () => {
+  // Der Code darf vor der Migration live gehen, ohne dass der Cron alle zehn
+  // Minuten ein ERROR-Ereignis erzeugt, das echte Alarme überdeckt.
+  const cron = ohneKommentare(lies('src', 'app', 'api', 'cron', 'process-supplier-orders', 'route.ts'));
+  assert.match(cron, /FUNKTION_FEHLT\s*=\s*new Set\(\['PGRST202',\s*'42883'\]\)/, 'die zwei Codes für „Funktion nicht gefunden"');
+  assert.match(cron, /besuchFehler\s*=\s*besuch\.error\s*&&\s*!FUNKTION_FEHLT\.has\(besuch\.error\.code\)/);
+  // In der Fehlerkette darf nicht mehr der rohe Fehler stehen – sonst greift die Ausnahme nicht.
+  assert.ok(!/limits\.error\s*\|\|\s*besuch\.error/.test(cron), 'die Fehlerkette nutzt noch den rohen besuch.error');
+  assert.match(cron, /limits\.error\s*\|\|\s*besuchFehler/);
+});
+
 // ── Adminbereich ─────────────────────────────────────────────────────────
 
 test('die Auswertung ist nur für angemeldete Betreiber lesbar', () => {

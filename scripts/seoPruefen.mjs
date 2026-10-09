@@ -23,6 +23,7 @@
  *      Haupt-Host.
  *   8. Die technischen *.vercel.app-Adressen sind per X-Robots-Tag gesperrt.
  *   9. Unbekannte Adressen liefern echtes 404 (kein Soft-404).
+ *  10. Die Search-Console-Bestätigungsdatei liegt unverändert auf dem Server.
  *
  * Exit-Code 1, sobald eine Prüfung fehlschlägt.
  */
@@ -191,6 +192,17 @@ async function pruefeSeite(url) {
 {
   const r = await hole(`${basis}/diese-seite-gibt-es-garantiert-nicht-xyz`);
   pruefe(r.status === 404, 'Unbekannte Adresse liefert echtes 404', `Status ${r.status}`);
+}
+
+// ── 10. Search-Console-Bestätigungsdatei ─────────────────────────────────
+// Google bestätigt die Inhaberschaft von www.ergermany.de über diese Datei
+// (public/). Fehlt sie oder ändert sich ihr Inhalt, geht die Bestätigung still
+// verloren – und mit ihr Leistungsdaten, Sitemap-Status und Indexierungsanträge.
+{
+  const datei = 'google8f45b1489b720d22.html';
+  const r = await hole(`${basis}/${datei}`);
+  const text = (await r.text()).trim();
+  pruefe(r.status === 200 && text === `google-site-verification: ${datei}`, 'Search-Console-Bestätigungsdatei liegt unverändert auf dem Server', `Status ${r.status}${r.status === 200 && text !== `google-site-verification: ${datei}` ? `, Inhalt weicht ab: ${text.slice(0, 60)}` : ''}`);
 }
 
 // ── Ausgabe ──────────────────────────────────────────────────────────────

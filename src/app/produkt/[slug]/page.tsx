@@ -34,6 +34,9 @@ import { SHIPPING_RATES } from '@/config/shipping';
 import { PRODUKTIONSZEIT_TEXT } from '@/config/company';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
+import { kategorieLink } from '@/lib/seo/kategorieAdresse';
+import { kuerzenAufLaenge } from '@/lib/seo/kuerzen';
+import { produktTitel } from '@/lib/seo/produktTitel';
 import { brotkrumenSchema, produktSchema } from '@/lib/seo/strukturierteDaten';
 import type { ProductConfig } from '@/config/products/types';
 
@@ -49,33 +52,9 @@ export function generateStaticParams() {
 // und mit demselben einjährigen s-maxage zu cachen (Soft-404-Risiko).
 export const dynamicParams = false;
 
-// Google zeigt den <title>-Tag ab ca. 60 Zeichen abgeschnitten an – und das
-// Root-Layout hängt an JEDEN Titel automatisch den Marken-Suffix aus seinem
-// Template an (src/app/layout.tsx: `%s | Embroidery Republic Germany`). Der
-// Suffix zählt für die Darstellung mit, also bleibt für den hier erzeugten
-// Titel nur der Rest des Budgets übrig.
-const ROOT_TITEL_SUFFIX_LAENGE = ' | Embroidery Republic Germany'.length;
-const GOOGLE_TITEL_ZIELLAENGE = 60;
-const PRODUKT_TITEL_BUDGET = GOOGLE_TITEL_ZIELLAENGE - ROOT_TITEL_SUFFIX_LAENGE;
-
 // Richtwert für Meta-Descriptions in der Google-Trefferliste; etwas Puffer
 // unter den üblichen 160 Zeichen, damit das „…"-Kürzen selten zuschlägt.
 const GOOGLE_DESCRIPTION_ZIELLAENGE = 155;
-
-/**
- * Kürzt Text hart auf `maxLaenge`, bevorzugt an einer Wortgrenze, und hängt
- * bei tatsächlicher Kürzung ein „…" an. Einziger Ort für diese Regel, damit
- * Titel und Description dieselbe Kürzungslogik teilen.
- */
-function kuerzenAufLaenge(text: string, maxLaenge: number): string {
-  if (text.length <= maxLaenge) return text;
-  const budget = maxLaenge - 1; // Platz für das „…"
-  const abschnitt = text.slice(0, budget);
-  const letzteLeerstelle = abschnitt.lastIndexOf(' ');
-  // Nur an der Wortgrenze abschneiden, wenn dabei nicht zu viel verloren geht.
-  const gekuerzt = letzteLeerstelle > budget * 0.6 ? abschnitt.slice(0, letzteLeerstelle) : abschnitt;
-  return `${gekuerzt.trimEnd()}…`;
-}
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const daten = ladeProduktseite(params.slug);
@@ -103,23 +82,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     `Mit DTF-Transferdruck oder Stickerei veredeln, ab 1 Stück.`;
   const beschreibung = kuerzenAufLaenge(beschreibungRoh, GOOGLE_DESCRIPTION_ZIELLAENGE);
 
-  // Titel bevorzugt mit Marke ("{Name} | {Marke}"); passt das nicht ins
-  // Budget, erst die Marke weglassen, erst als letzter Ausweg den Namen
-  // selbst kürzen – "bedrucken & besticken" fällt komplett weg, das steht
-  // schon sichtbar in H1/Beschreibung.
-  const titelMitMarke = `${produkt.name} | ${produkt.brand}`;
-  const titel =
-    titelMitMarke.length <= PRODUKT_TITEL_BUDGET
-      ? titelMitMarke
-      : produkt.name.length <= PRODUKT_TITEL_BUDGET
-        ? produkt.name
-        : kuerzenAufLaenge(produkt.name, PRODUKT_TITEL_BUDGET);
+  // Stufen und Begründung: lib/seo/produktTitel.ts.
+  const titel = produktTitel(produkt.name, produkt.brand);
 
   // Platzhalter (Bildimport noch offen) NIE als OpenGraph-Vorschaubild
   // ausliefern (ADR 0004): kein Platzhalter in externen Ausgaben.
   const ogBild = produkt.colors.length ? produktBild(produkt.id, produkt.colors) : undefined;
   return {
-    title: titel,
+    // `absolute`: Der Marken-Anhang des Root-Layouts ließe dem Produkt nur 31
+    // Zeichen (Namen wurden mitten im Wort abgeschnitten, Titel doppelt).
+    title: { absolute: titel },
     description: beschreibung,
     alternates: { canonical: `/produkt/${produkt.id}` },
     openGraph: {
@@ -197,7 +169,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
           </Link>
           <span className="mx-2">/</span>
           <Link
-            href={`/produkt?kategorie=${produkt.productType}`}
+            href={kategorieLink(produkt.productType)}
             className="transition-colors hover:text-gold-dark"
           >
             {artLabel}

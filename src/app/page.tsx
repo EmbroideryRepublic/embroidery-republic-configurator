@@ -52,6 +52,7 @@ import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { Produktkachel } from '@/components/shop/Produktkachel';
 import { HeroText } from '@/components/home/HeroText';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
+import { kategorieLink } from '@/lib/seo/kategorieAdresse';
 import { organisationSchema } from '@/lib/seo/strukturierteDaten';
 import type { ProductType } from '@/types';
 
@@ -251,7 +252,7 @@ export default async function Startseite() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_1.55fr] lg:gap-8">
           {featured?.bild && (
-            <Link href={`/produkt?kategorie=${featured.art}`} className="group block">
+            <Link href={kategorieLink(featured.art)} className="group block">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-white ring-1 ring-brand/[0.05] transition-shadow duration-300 group-hover:shadow-[0_28px_60px_-28px_rgba(43,36,28,0.3)] lg:aspect-auto lg:h-full lg:min-h-[420px]">
                 <Image
                   src={featured.bild}
@@ -280,7 +281,7 @@ export default async function Startseite() {
 
           <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3">
             {kleinereKategorien.map(({ art, anzahl, bild }) => (
-              <Link key={art} href={`/produkt?kategorie=${art}`} className="group block">
+              <Link key={art} href={kategorieLink(art)} className="group block">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-white ring-1 ring-brand/[0.05] transition-shadow duration-300 group-hover:shadow-[0_22px_44px_-24px_rgba(43,36,28,0.28)]">
                   {bild && (
                     <Image

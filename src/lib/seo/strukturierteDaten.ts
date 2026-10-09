@@ -23,6 +23,7 @@ import { waehlbareFarben, formatiereFarbname } from '@/lib/products/farben';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ermittleVerfuegbarkeit } from '@/lib/catalog/verfuegbarkeit';
 import { COMPANY } from '@/config/company';
+import { kategorieLink } from '@/lib/seo/kategorieAdresse';
 
 /** Schema.org-Verfügbarkeit aus dem Katalogstatus. */
 function schemaVerfuegbarkeit(produkt: ProductConfig): string {
@@ -82,7 +83,14 @@ export function produktSchema(produkt: ProductConfig, basis: string): Record<str
   return schema;
 }
 
-/** Brotkrumenpfad einer Produktseite: Start → Produkte → Produkt. */
+/**
+ * Brotkrumenpfad einer Produktseite: Start → Produkte → Produktart → Produkt.
+ *
+ * Die Produktart zeigt auf die indexierbare Kategorie-Landingpage, sofern es
+ * eine gibt (kategorieLink). Vorher zeigte sie IMMER auf die Filteransicht
+ * `/produkt?kategorie=…` – eine `noindex`-Seite; ein Brotkrumenpfad, der auf
+ * eine nicht indexierbare Seite führt, ist für Suchmaschinen ein Widerspruch.
+ */
 export function brotkrumenSchema(
   produkt: ProductConfig,
   artLabel: string,
@@ -91,7 +99,7 @@ export function brotkrumenSchema(
   const stationen = [
     { name: 'Start', url: basis },
     { name: 'Produkte', url: `${basis}/produkt` },
-    { name: artLabel, url: `${basis}/produkt?kategorie=${produkt.productType}` },
+    { name: artLabel, url: `${basis}${kategorieLink(produkt.productType)}` },
     { name: produkt.name, url: `${basis}/produkt/${produkt.id}` },
   ];
 
@@ -190,6 +198,49 @@ export function katalogBrotkrumenSchema(basis: string): Record<string, unknown> 
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Start', item: basis },
       { '@type': 'ListItem', position: 2, name: 'Produkte', item: `${basis}/produkt` },
+    ],
+  };
+}
+
+/**
+ * Kategorie-Landingpage als CollectionPage mit den dort gezeigten Produkten als
+ * ItemList. Nur Produkte, die auf der Seite auch sichtbar stehen – die
+ * Auszeichnung beschreibt die Seite, nicht den ganzen Katalog.
+ */
+export function kategorieSchema(
+  basis: string,
+  seite: { slug: string; name: string; beschreibung: string },
+  produkte: { name: string; id: string }[]
+): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: seite.name,
+    description: seite.beschreibung,
+    url: `${basis}/${seite.slug}`,
+    inLanguage: 'de-DE',
+    isPartOf: { '@type': 'WebSite', name: 'Embroidery Republic Germany', url: basis },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: produkte.length,
+      itemListElement: produkte.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: p.name,
+        url: `${basis}/produkt/${p.id}`,
+      })),
+    },
+  };
+}
+
+/** Brotkrumenpfad einer Kategorie-Landingpage: Start → Kategorie. */
+export function kategorieBrotkrumenSchema(basis: string, seite: { slug: string; name: string }): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: basis },
+      { '@type': 'ListItem', position: 2, name: seite.name, item: `${basis}/${seite.slug}` },
     ],
   };
 }

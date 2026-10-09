@@ -18,6 +18,7 @@
 import type { MetadataRoute } from 'next';
 import { alleProduktSlugs } from '@/lib/products/productPage';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
+import { alleKategorieSlugs } from '@/lib/seo/kategorieAdresse';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Kanonische Adresse (nicht die Betriebsadresse): Jede Sitemap-URL muss
@@ -41,6 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${basis}${s.pfad}`,
       changeFrequency: 'monthly' as const,
       priority: s.prioritaet,
+    })),
+    // Kategorie-Landingpages (config/seo/kategorieSeiten.ts) – die indexierbaren
+    // Einstiege für Suchanfragen wie „Hoodies bedrucken lassen".
+    ...alleKategorieSlugs().map((slug) => ({
+      url: `${basis}/${slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
     })),
     ...alleProduktSlugs().map((slug) => ({
       url: `${basis}/produkt/${slug}`,

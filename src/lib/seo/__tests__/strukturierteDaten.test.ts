@@ -11,7 +11,7 @@ import { PRODUCTS } from '@/config/products';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { produktTypLabel } from '@/config/products/types';
 import { assetVerfuegbarkeit, PLATZHALTER_BILD } from '@/lib/assets';
-import { brotkrumenSchema, organisationSchema, produktSchema } from '../strukturierteDaten';
+import { brotkrumenSchema, kategorieBrotkrumenSchema, kategorieSchema, organisationSchema, produktSchema } from '../strukturierteDaten';
 import { COMPANY } from '@/config/company';
 
 const BASIS = 'https://example.test';
@@ -113,4 +113,34 @@ test('Organisationsschema nennt nur Belegtes – Adresse/Telefon/USt-IdNr. jetzt
     addressCountry: 'DE',
   });
   assert.equal(s['vatID'], COMPANY.vatId);
+});
+
+test('Produkt-Brotkrume führt zur indexierbaren Kategorieseite, nicht zur noindex-Filteransicht', () => {
+  const hoodie = PRODUCTS.find((p) => p.productType === 'hoodie')!;
+  const s = brotkrumenSchema(hoodie, 'Hoodie', BASIS) as { itemListElement: Record<string, unknown>[] };
+  assert.equal(s.itemListElement[2]!.item, `${BASIS}/hoodies-bedrucken-besticken`);
+  assert.ok(s.itemListElement.every((e) => !String(e.item).includes('?kategorie=')), 'keine noindex-Filteradresse im Brotkrumenpfad');
+});
+
+test('Produktart OHNE Kategorieseite fällt auf die Filteransicht zurück (kein toter Link)', () => {
+  const ohne = PRODUCTS.find((p) => !['hoodie', 'tshirt', 'polo'].includes(p.productType))!;
+  const s = brotkrumenSchema(ohne, 'Art', BASIS) as { itemListElement: Record<string, unknown>[] };
+  assert.equal(s.itemListElement[2]!.item, `${BASIS}/produkt?kategorie=${ohne.productType}`);
+});
+
+test('Kategorieschema: CollectionPage mit ItemList der gezeigten Produkte', () => {
+  const produkte = PRODUCTS.slice(0, 3).map((p) => ({ name: p.name, id: p.id }));
+  const s = kategorieSchema(BASIS, { slug: 'beispiel-seite', name: 'Beispiel', beschreibung: 'Text' }, produkte) as Record<string, any>;
+  assert.equal(s['@type'], 'CollectionPage');
+  assert.equal(s.url, `${BASIS}/beispiel-seite`);
+  assert.equal(s.mainEntity.numberOfItems, 3);
+  assert.deepEqual(s.mainEntity.itemListElement.map((e: any) => e.position), [1, 2, 3]);
+  assert.equal(s.mainEntity.itemListElement[0].url, `${BASIS}/produkt/${produkte[0]!.id}`);
+  assert.equal(s['aggregateRating'], undefined);
+});
+
+test('Kategorie-Brotkrume: Start → Kategorie', () => {
+  const s = kategorieBrotkrumenSchema(BASIS, { slug: 'beispiel-seite', name: 'Beispiel' }) as { itemListElement: Record<string, unknown>[] };
+  assert.deepEqual(s.itemListElement.map((e) => e.name), ['Start', 'Beispiel']);
+  assert.equal(s.itemListElement[1]!.item, `${BASIS}/beispiel-seite`);
 });

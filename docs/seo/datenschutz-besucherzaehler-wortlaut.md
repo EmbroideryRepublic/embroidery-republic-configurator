@@ -1,10 +1,13 @@
-# Datenschutzerklärung – Wortlaut zum Besucherzähler (ENTWURF, nicht freigegeben)
+# Datenschutzerklärung – Wortlaut zum Besucherzähler (FREIGEGEBEN 2026-10-09, umgesetzt)
 
 Datei: `src/app/datenschutz/page.tsx` · Sprache: nur Deutsch (die Seite hat keine
 Übersetzung) · Anrede: „Wir/Sie“ wie im bisherigen Text.
 
-**Nichts davon ist in der Datenschutzerklärung eingebaut.** Der Zähler ist ebenfalls
-noch nicht eingebunden; ein Wächter-Test verhindert das, solange diese Änderung fehlt
+**Freigabe:** vom Betreiber am 2026-10-09 ausdrücklich erteilt („A B und C -> JA“), nachdem
+der vollständige Wortlaut im Chat vorgelegt wurde. **Umsetzung:** wortgleich in
+`src/app/datenschutz/page.tsx` (maschinell gegen dieses Dokument geprüft: alle sechs neuen
+Absätze identisch, alter Satz „keine Analyse-Werkzeuge“ entfernt, „Stand: Oktober 2026“).
+Ein Wächter-Test (`besuchWaechter.test.ts`) hält diese Bedingung dauerhaft fest
 (siehe `docs/besucherzaehler.md`, § 6).
 
 Änderungen an fünf Stellen. Alles andere bleibt unverändert.

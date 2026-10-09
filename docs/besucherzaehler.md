@@ -185,11 +185,14 @@ sonst ab – so erscheint nie ein rohes Kürzel im Adminbereich).
 
 ## 6. Aktivieren (Reihenfolge einhalten)
 
-Der Zähler ist **fertig gebaut, aber nicht eingebunden** – `Besuchszaehler` steht
-noch nicht im Root-Layout. Das ist Absicht: Er darf erst laufen, wenn die
-Datenschutzerklärung ihn nennt. Ein Wächter-Test (`besuchWaechter.test.ts`) schlägt
-an, sobald `<Besuchszaehler />` im Layout steht, die Datenschutzerklärung aber
-keine „Reichweitenmessung" nennt oder weiterhin „keine Analyse-Werkzeuge" behauptet.
+**Stand: am 2026-10-09 nach Freigabe des Wortlauts durchgeführt** (alle Schritte unten
+erledigt, Migration angewendet, Zähler eingebunden). Die Anleitung bleibt für Neuaufbau
+und Nachvollziehbarkeit stehen.
+
+Der Zähler darf nur laufen, wenn die Datenschutzerklärung ihn nennt. Ein Wächter-Test
+(`besuchWaechter.test.ts`) schlägt an, sobald `<Besuchszaehler />` im Layout steht, die
+Datenschutzerklärung aber keine „Reichweitenmessung" nennt oder weiterhin „keine
+Analyse-Werkzeuge" behauptet.
 
 1. **Wortlaut freigeben:** `docs/seo/datenschutz-besucherzaehler-wortlaut.md` prüfen
    (Textfreigabepflicht), Änderung in `src/app/datenschutz/page.tsx` einarbeiten
@@ -227,15 +230,16 @@ bleiben (sie enthalten keine Personen); die Tageskennungen verschwinden von selb
 
 ---
 
-## 8. Umsetzungsstand (2026-10-08)
+## 8. Umsetzungsstand (2026-10-09)
 
 | Baustein | Stand |
 |---|---|
 | Migration 0037 geschrieben | **fertig** |
 | Migration gegen die echte Datenbank geprüft (zurückgerollt, 40 Prüfungen) | **fertig** (`npm run besuch:pruefen`) |
-| Migration **angewendet** | **offen** – wartet auf Freigabe |
+| Migration **angewendet** | **fertig** (2026-10-09; Bestand vorher/nachher identisch: 25 Bestellungen, 1 891,71 €) |
+| Migration nach dem Anwenden verifiziert | **fertig** (40 von 40 Prüfungen, Migrationsfolge 0001–0037 lückenlos) |
 | Erfassung, Route, Meldekomponente, Auswertung, Admin-Anzeige | **fertig** |
 | Rate-Limit ohne Klartext-IP (`ip_gehasht`) | **fertig** |
 | Tests (Erfassung, Auswertung, Anzeige, Wächter, Rate-Limit-Schlüssel) | **fertig** |
-| Datenschutz-Wortlaut | **Entwurf liegt vor, nicht freigegeben** |
-| Einbindung ins Layout (= Aktivierung) | **offen** – wartet auf Freigabe des Wortlauts |
+| Datenschutz-Wortlaut | **freigegeben 2026-10-09**, wortgleich eingearbeitet (Ziffer 2, 3, 7, 13, „Stand") |
+| Einbindung ins Layout (= Aktivierung) | **fertig** – mit der Veröffentlichung am 2026-10-09 |

@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { GlobaleKopfzeile } from '@/components/layout/GlobaleKopfzeile';
 import { CartDrawerHost } from '@/components/layout/CartDrawerHost';
+import { Besuchszaehler } from '@/components/layout/Besuchszaehler';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { suchmaschinenBestaetigung } from '@/lib/seo/bestaetigung';
 import { websiteSchema } from '@/lib/seo/strukturierteDaten';
@@ -101,6 +102,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Globale Warenkorb-Schublade: auf allen Seiten außer dem Konfigurator
             (der bringt seine eigene mit). Rendert nur, wenn geöffnet. */}
         <CartDrawerHost />
+        {/* Eigener, cookieloser Besucherzähler (siehe Datenschutzerklärung,
+            Ziffer 3 „Reichweitenmessung", und docs/besucherzaehler.md). */}
+        <Besuchszaehler />
       </body>
     </html>
   );

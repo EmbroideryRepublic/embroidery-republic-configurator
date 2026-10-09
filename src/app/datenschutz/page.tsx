@@ -37,7 +37,7 @@ export default function DatenschutzPage() {
       </Link>
 
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Datenschutzerklärung</h1>
-      <p className="mb-6 text-xs text-brand/50">Stand: Juli 2026</p>
+      <p className="mb-6 text-xs text-brand/50">Stand: Oktober 2026</p>
 
       <LegalPageNotice />
 
@@ -82,11 +82,15 @@ export default function DatenschutzPage() {
           </p>
           <p>
             <strong className="font-medium text-brand">
-              Wir setzen kein Tracking, keine Analyse-Werkzeuge, keine Werbe-Netzwerke und keine
-              Social-Media-Plugins ein.
+              Wir setzen keine Werbe-Netzwerke, keine Social-Media-Plugins und keine Analyse-Dienste
+              von Drittanbietern ein und verfolgen Sie weder über mehrere Tage noch über andere
+              Websites hinweg.
             </strong>{' '}
-            Es findet kein Profiling und keine automatisierte Entscheidungsfindung statt. Ein
-            Cookie-Banner ist daher nicht erforderlich (siehe Ziffer 7).
+            Lediglich die Zahl der Besucherinnen und Besucher messen wir mit einem eigenen,
+            cookielosen Zähler, der Ihre IP-Adresse nicht speichert (siehe Ziffer 3,
+            „Reichweitenmessung“). Es findet kein Profiling und keine automatisierte
+            Entscheidungsfindung statt. Ein Cookie-Banner ist daher nicht erforderlich (siehe
+            Ziffer 7).
           </p>
         </Section>
 
@@ -104,6 +108,35 @@ export default function DatenschutzPage() {
             Sämtliche Schriftarten werden lokal von unserem Server ausgeliefert. Es besteht{' '}
             <strong className="font-medium text-brand">keine Verbindung zu Google Fonts</strong> oder
             anderen externen Anbietern beim Seitenaufruf.
+          </p>
+          <p>
+            <strong className="font-medium text-brand">Reichweitenmessung.</strong> Um zu erfahren,
+            wie viele Menschen unsere Website besuchen und welche Seiten sie aufrufen, nutzen wir
+            einen eigenen Zähler. Bei jedem Seitenaufruf wird dazu nur die Adresse der aufgerufenen
+            Seite (ohne Suchbegriffe und Anker) an unseren Server gemeldet und – falls in der
+            aufgerufenen Adresse enthalten – die Kennzeichnung des Links, über den Sie zu uns
+            gelangt sind (z. B. „instagram“). Auf Ihrem Endgerät wird dafür nichts gespeichert und
+            nichts ausgelesen: Wir setzen keine Cookies und nutzen weder Local Storage noch
+            Merkmale Ihres Geräts wie die Bildschirmgröße.
+          </p>
+          <p>
+            Aus Ihrer IP-Adresse und der Kennung Ihres Browsers bildet unser Server kurzzeitig einen
+            nicht umkehrbaren Kennwert (Hash). Der dazu verwendete geheime Schlüssel wechselt
+            täglich. Der Kennwert dient allein dazu, mehrere Seitenaufrufe desselben Tages als einen
+            Besucher zu zählen. Ihre IP-Adresse selbst wird für die Reichweitenmessung nicht in
+            unserer Datenbank gespeichert, und eine Wiedererkennung an einem anderen Tag ist nicht
+            möglich. Dauerhaft bleiben ausschließlich Zahlen ohne Personenbezug (z. B. Zahl der
+            Besucher je Tag und Seite). Zur Abwehr massenhafter automatisierter Aufrufe wird
+            zusätzlich ein weiterer Kennwert Ihrer IP-Adresse (nicht die Adresse im Klartext) für
+            höchstens 24 Stunden gespeichert.
+          </p>
+          <p>
+            Nicht gezählt werden Aufrufe, bei denen Ihr Browser „Do Not Track“ oder „Global Privacy
+            Control“ signalisiert, sowie Aufrufe durch Suchmaschinen und andere automatische
+            Programme. Die Verarbeitung erfolgt bei den in den Ziffern 4 und 5 genannten
+            Dienstleistern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse
+            an einer datensparsamen Erfolgskontrolle unseres Angebots). Sie können dieser
+            Verarbeitung jederzeit widersprechen (Art. 21 DSGVO, siehe Ziffer 14).
           </p>
         </Section>
 
@@ -203,6 +236,10 @@ export default function DatenschutzPage() {
             können jederzeit über die Einstellungen Ihres Browsers gelöscht werden. Die Speicherung ist
             technisch erforderlich, um die von Ihnen aufgerufene Funktion bereitzustellen
             (§ 25 Abs. 2 Nr. 2 TDDDG); Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+          <p>
+            Die Reichweitenmessung (Ziffer 3) speichert nichts auf Ihrem Endgerät und setzt keine
+            Cookies.
           </p>
         </Section>
 
@@ -312,6 +349,12 @@ export default function DatenschutzPage() {
             nicht zu den aufbewahrungspflichtigen Rechnungsunterlagen. Wir entfernen sie bereits
             deutlich früher aus unserem Dateispeicher – 24 Monate, nachdem die zugehörige Bestellung
             abgeschlossen oder storniert wurde.
+          </p>
+          <p>
+            Die für die Reichweitenmessung gebildeten Kennwerte (Ziffer 3) löschen wir mit Ablauf
+            des jeweiligen Tages, den zur Abwehr automatisierter Aufrufe gebildeten Kennwert
+            spätestens 24 Stunden nach der jeweiligen Zählung. Die verbleibenden Besucherzahlen
+            enthalten keinen Personenbezug und werden unbefristet gespeichert.
           </p>
         </Section>
 

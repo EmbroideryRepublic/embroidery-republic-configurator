@@ -1,9 +1,10 @@
 # Seitentitel – Wortlaut (Produkttitel FREIGEGEBEN 2026-10-09)
 
 **Freigabe:** Die Produkttitel-Regel (§ 1) hat der Betreiber am 2026-10-09 ausdrücklich
-freigegeben („A B und C -> JA") und ist umgesetzt. **Der Startseitentitel (§ 2) ist NICHT
-umgesetzt:** Es wurde keine der vorgeschlagenen Varianten ausgewählt; er bleibt unverändert,
-bis der Betreiber eine Variante nennt (inzwischen mit Köln-Option, siehe Fahrplan).
+freigegeben („A B und C -> JA") und ist umgesetzt. **Der Startseitentitel (§ 2) ist am
+2026-10-09 umgesetzt:** Der Betreiber hat die Auswahl unter vier vorgelegten Varianten mir überlassen
+(„alle OK"). Gewählt: **„Textilien bedrucken & besticken lassen | Embroidery Republic"** (60 Zeichen);
+bewusst ohne Ortsbezug, weil der Betreiber auf der Website nichts zu Köln veröffentlichen will.
 
 Der `<title>` ist die blaue Überschrift in der Google-Trefferliste und der Text im
 Browser-Tab. Er gehört zu den stärksten Signalen, wofür eine Seite gefunden wird – und
@@ -80,7 +81,7 @@ hinzu, schlägt der Test an.
 
 ---
 
-## 2. Startseite – OPTIONAL, nicht umgesetzt
+## 2. Startseite – UMGESETZT 2026-10-09 (Variante „Textilien bedrucken & besticken lassen")
 
 **Heute (72 Zeichen, in Google hinten abgeschnitten):**
 

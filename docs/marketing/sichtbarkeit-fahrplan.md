@@ -85,7 +85,7 @@ konfigurierbar, mit Preis in Echtzeit" ist damit ein echtes Alleinstellungsmerkm
 in allen Titeln und Beschreibungen der Kategorieseiten. Seit der Bestätigung vom 2026-10-09
 kommt hinzu: **in Köln produziert, Abholung möglich** (Printful fertigt Stickerei laut eigener
 Angabe in Riga und Barcelona). Das ist für lokale Suchen und für Vertrauen ein weiteres
-Argument – als Kundentext aber erst nach Ihrer Freigabe.
+Argument – für die Website bewusst **nicht** genutzt (Entscheidung 2026-10-09); für Verzeichnisse und Profile ja.
 
 ### Phase 1 – fertig und live seit 2026-10-09 (Freigabe B)
 
@@ -211,17 +211,18 @@ Quellen nicht eindeutig. Entscheidung:
 
 | Ihre Situation | Empfehlung |
 |---|---|
-| Kunden können in Köln abholen/beraten (mit festen Zeiten oder nach Termin) | **Trifft zu (bestätigt 2026-10-09: Abholung möglich).** Profil anlegen; die Bedingung „angegebene Zeiten bzw. Termin" muss erfüllt sein, die Adresse wird öffentlich angezeigt; vorab die aktuelle Richtlinie lesen oder Google fragen |
+| Kunden können in Köln abholen/beraten (mit festen Zeiten oder nach Termin) | **Trifft eingeschränkt zu (bestätigt 2026-10-09: Abholung nur nach Terminvereinbarung).** Google verlangt persönlichen Kundenkontakt zu angegebenen Zeiten; ob „nach Termin" genügt (Attribut „Termin erforderlich"), vorab in Googles aktueller Richtlinie prüfen oder Google fragen. Ist die Adresse eine Wohn-/Betriebsadresse ohne Laufkundschaft, bietet sich die Führung als Unternehmen mit Einzugsgebiet ohne sichtbare Adresse an |
 | Nur Versand, kein Kundenverkehr | **Kein Profil erzwingen** (Sperrrisiko). Stattdessen Verzeichnisse (§ 4.1) und Google Merchant Center (§ 7.3) |
 
 ### Köln-Bezug auf der Website
 
 „Köln" steht im Impressum und auf der Kontaktseite. **Bestätigt (2026-10-09):** in Köln
-produziert, Abholung möglich. **Offen:** wie die Abholung abläuft (feste Zeiten, nach Termin,
-nach Anruf) und an welcher Adresse – davon hängen der Text und das Google-Profil ab (§ 12).
-Neuer Kundentext zu Köln braucht Ihre Freigabe; nichts davon ist veröffentlicht.
+produziert, Abholung **nur nach Terminvereinbarung**. **Entscheidung des Betreibers (2026-10-09):
+auf der Website nichts zu Köln veröffentlichen** – die Köln-Fakten nutzen nur Verzeichnisse und
+Profile, dort immer mit „nach Terminvereinbarung". Die Ortsseite (unten) bleibt eine Option für
+später; ohne Freigabe wird nichts dazu veröffentlicht.
 
-**Warum das wichtig ist:** Eine Seite „Stickerei & Textildruck in Köln – Produktion und
+**Zurückgestellt auf Wunsch des Betreibers – und warum sie eine Option bleibt:** Eine Seite „Stickerei & Textildruck in Köln – Produktion und
 Abholung" ist **keine Brückenseite**, weil Produktion und Abholung tatsächlich dort stattfinden.
 Sie bedient Suchen wie „Stickerei Köln" und „T-Shirts bedrucken Köln", bei denen heute vor
 allem Verzeichnisse stehen (§ 4).
@@ -372,9 +373,9 @@ veröffentlichen · die Domain wechseln, ohne die Weiterleitungen zu planen.
 
 1. **Wo wird produziert?** → **In Köln** (bestätigt). Damit ist „in Köln produziert" eine wahre
    Aussage und darf – nach Freigabe des Wortlauts – auf der Website stehen.
-2. **Abholung möglich?** → **Ja** (bestätigt). **Noch offen:** Zeiten oder Termin? An welcher
-   Adresse (Ingendorferweg 81)? Gibt es dabei Beratung vor Ort? (Entscheidet über Text und
-   Google-Unternehmensprofil.)
+2. **Abholung möglich?** → **Ja, nur nach Terminvereinbarung** (bestätigt 2026-10-09). Offen und für das
+   Google-Unternehmensprofil relevant: ist die Abholadresse Ingendorferweg 81, und wäre sie dort
+   öffentlich sichtbar akzeptabel (sonst Führung ohne sichtbare Adresse)?
 3. **Ist die Digitalisierung der Stickerei im Preis enthalten?** → **Nein**; sie „ergibt sich erst
    nach dem Hinzufügen der Motive". Folge: **nicht** als „inklusive/kostenlos" bewerben; die
    Website sagt weiterhin nur, dass das Team das Logo digitalisiert und der Preis live im

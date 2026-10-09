@@ -5,8 +5,10 @@ Stand: 2026-10-09 · **Alles hier sind ENTWÜRFE zur Prüfung** – nichts davon
 - **Platzhalter in [eckigen Klammern]** sind Fakten, die ich nicht kenne (siehe Fahrplan § 12).
 - Jede Aussage ist durch die Website gedeckt: *ab 1 Stück · Preis in Echtzeit im Konfigurator ·
   Dateiprüfung kostenlos · Vorschau zur Freigabe · reguläre Produktion 3–4 Werktage ·
-  Versand innerhalb Deutschlands in 1–2 Werktagen · versandkostenfrei ab 75 € · in Köln produziert · Abholung möglich
-  (bestätigt 2026-10-09, Abholzeiten noch offen).* Die **Digitalisierung der Stickerei ist nicht im Preis
+  Versand innerhalb Deutschlands in 1–2 Werktagen · versandkostenfrei ab 75 € · in Köln produziert · Abholung **nur nach Terminvereinbarung**
+  (bestätigt 2026-10-09).* Auf der **Website** soll nach Entscheidung des Betreibers (2026-10-09) **nichts zu
+  Köln** stehen – Köln und Abholung nutzen nur Verzeichnisse und Profile, und dort immer mit „nach
+  Terminvereinbarung". Die **Digitalisierung der Stickerei ist nicht im Preis
   inbegriffen** – nicht als „inklusive" oder „kostenlos" bewerben.
 - **Versand nur innerhalb Deutschlands** – Anzeigen und Profile nicht auf andere Länder ausrichten.
 - Die Zeichenlängen der Zeilen mit Marke (`KURZ:`, `H1:` …) wurden maschinell gegen die Limits
@@ -37,15 +39,15 @@ gehören **nie** in Verzeichnisse oder Beiträge.
 ## 2. Beschreibungen
 
 ```
-KURZ: Hoodies, T-Shirts, Polos & mehr mit Logo besticken oder bedrucken – ab 1 Stück, Preis live. In Köln produziert, Abholung möglich. Embroidery Republic Germany.
+KURZ: Hoodies, T-Shirts, Polos & mehr besticken oder bedrucken – ab 1 Stück, Preis live. In Köln produziert, Abholung nach Termin. Embroidery Republic Germany.
 ```
 
 ```
-MITTEL: Embroidery Republic Germany veredelt Textilien mit Stickerei und DTF-Transferdruck – ab einem einzelnen Stück, in Köln produziert, Abholung möglich. Logo hochladen, im Konfigurator platzieren, Preis sofort sehen. Dateiprüfung kostenlos, Vorschau zur Freigabe, reguläre Produktion 3 bis 4 Werktage. Für Firmen, Vereine und Teams.
+MITTEL: Embroidery Republic Germany veredelt Textilien mit Stickerei und DTF-Transferdruck – ab einem einzelnen Stück, in Köln produziert, Abholung nach Terminvereinbarung. Logo hochladen, im Konfigurator platzieren, Preis sofort sehen. Dateiprüfung kostenlos, Vorschau zur Freigabe, reguläre Produktion 3 bis 4 Werktage. Für Firmen, Vereine und Teams.
 ```
 
 ```
-LANG: Embroidery Republic Germany veredelt Textilien mit Stickerei und DTF-Transferdruck – in Köln produziert, schon ab einem einzelnen Stück. So geht's: Modell und Farbe wählen, Logo oder Motiv hochladen, im Online-Konfigurator platzieren und den Preis in Echtzeit sehen. Zur Auswahl stehen über 150 Modelle bekannter Textilmarken – T-Shirts, Poloshirts, Hoodies, Longsleeves und Jacken. Vor der Produktion prüfen wir Ihre Datei kostenlos; bei Stickerei digitalisiert unser Team Ihr Logo und legt Ihnen eine finale Vorschau zur Freigabe vor. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage. Versand innerhalb Deutschlands in 1 bis 2 Werktagen, ab 75 € versandkostenfrei – oder Abholung in Köln. Für Firmen, Vereine, Teams und Einzelwünsche.
+LANG: Embroidery Republic Germany veredelt Textilien mit Stickerei und DTF-Transferdruck – in Köln produziert, schon ab einem einzelnen Stück. So geht's: Modell und Farbe wählen, Logo oder Motiv hochladen, im Online-Konfigurator platzieren und den Preis in Echtzeit sehen. Zur Auswahl stehen über 150 Modelle – T-Shirts, Poloshirts, Hoodies, Longsleeves und Jacken. Vor der Produktion prüfen wir Ihre Datei kostenlos; bei Stickerei digitalisiert unser Team Ihr Logo und legt Ihnen eine finale Vorschau zur Freigabe vor. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage. Versand innerhalb Deutschlands in 1 bis 2 Werktagen, ab 75 € versandkostenfrei – oder Abholung in Köln nach Terminvereinbarung. Für Firmen, Vereine, Teams und Einzelwünsche.
 ```
 
 **Über uns** (für Profile, Presse): [Gründungsjahr, Idee, wer Sie sind – 2–3 Sätze. Nur Tatsachen.]
@@ -58,9 +60,8 @@ LANG: Embroidery Republic Germany veredelt Textilien mit Stickerei und DTF-Trans
   Berufsbekleidung · Vereinsbedarf
 - **Stichworte:** besticken lassen, bedrucken lassen, Firmenlogo, Vereinskleidung, Teamkleidung,
   DTF-Transferdruck, Poloshirts, Hoodies, T-Shirts, ab 1 Stück
-- **Abholung:** möglich (bestätigt 2026-10-09). Zeiten bzw. „nach Terminvereinbarung" erst angeben, wenn
-  geklärt [Fahrplan § 12, Frage 2]. Nicht als Ladengeschäft mit Laufkundschaft ausgeben, solange das
-  nicht stimmt.
+- **Abholung:** **nur nach Terminvereinbarung** (bestätigt 2026-10-09). Das immer dazuschreiben; keine
+  Öffnungszeiten angeben und nicht als Ladengeschäft mit Laufkundschaft auftreten.
 - **Website-Link:** `https://www.ergermany.de/?utm_source=verzeichnis` – so zeigt der
   Besucherzähler, ob Verzeichnisse Besucher bringen.
 
@@ -128,7 +129,7 @@ Sie durchhalten, schlägt tägliche Beiträge für zwei Wochen.
 >
 > Köln, [Datum]. Embroidery Republic Germany bietet [seit …] Stickerei und DTF-Transferdruck für
 > Firmen-, Vereins- und Teamkleidung an – ohne Mindestbestellmenge. Produziert wird in Köln; Bestellungen
-> können dort auch abgeholt werden. Kunden wählen im
+> können dort nach Terminvereinbarung auch abgeholt werden. Kunden wählen im
 > Online-Konfigurator Textil und Farbe, laden ihr Logo hoch, platzieren es auf dem Kleidungsstück
 > und sehen den Preis sofort.
 >
@@ -238,14 +239,14 @@ die jeweilige Kategorieseite (später die Köln-Seite, falls freigegeben).
 
 ```
 KH1: Stickerei in Köln – ab 1 Stück
-KH2: In Köln produziert & abholbar
+KH2: In Köln produziert, ab 1 Stück
 KH3: T-Shirts bedrucken in Köln
 KH4: Polos besticken in Köln
 KH5: Hoodies bedrucken in Köln
 KD1: Stickerei & DTF-Druck, in Köln produziert. Logo hochladen, Preis sofort sehen.
-KD2: Ab 1 Stück, Abholung in Köln möglich oder Versand. Dateiprüfung kostenlos.
+KD2: Ab 1 Stück, Versand oder Abholung nach Termin in Köln. Dateiprüfung kostenlos.
 KC1: In Köln produziert
-KC2: Abholung in Köln möglich
+KC2: Abholung nach Termin
 ```
 
 (KH = Überschrift ≤ 30 · KD = Beschreibung ≤ 90 · KC = Zusatzinformation ≤ 25.)

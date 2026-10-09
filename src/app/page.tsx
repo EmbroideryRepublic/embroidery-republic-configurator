@@ -62,7 +62,14 @@ export const metadata: Metadata = {
   // das Root-Layout bekommt den Marken-Suffix sonst NICHT automatisch, im
   // Unterschied zu jeder anderen Seite des Projekts. Deshalb hier `absolute`
   // statt eines einfachen Strings.
-  title: { absolute: 'Textilveredelung mit Stickerei & DTF-Druck | Embroidery Republic Germany' },
+  //
+  // Titel (Freigabe des Betreibers 2026-10-09, Auswahl ihm überlassen): trägt
+  // die Suchbegriffe „bedrucken" und „besticken lassen" und passt mit 60 Zeichen
+  // in die Trefferliste (der frühere Titel hatte 72 und wurde hinten
+  // abgeschnitten; „Textilveredelung" ist Fachsprache, die kaum jemand sucht).
+  // Bewusst OHNE Ortsbezug: Der Betreiber will auf der Website nichts zu Köln
+  // veröffentlichen. Produktbezogene Suchen bedienen die Kategorieseiten.
+  title: { absolute: 'Textilien bedrucken & besticken lassen | Embroidery Republic' },
   description:
     'Hochwertige Stickerei und DTF-Transferdruck für Unternehmen, Vereine und Marken. Selbst gestalten im Konfigurator – ab 1 Stück, ohne Mindestbestellmenge.',
   alternates: { canonical: '/' },

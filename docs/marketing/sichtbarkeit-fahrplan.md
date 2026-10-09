@@ -1,6 +1,7 @@
 # Sichtbarkeit in Suchmaschinen und KI-Assistenten – Fahrplan
 
-Stand: 2026-10-08 · Ziel: Die Suchalgorithmen (Google, Bing und die KI-Assistenten, die auf diese
+Stand: 2026-10-09 (A/B/C am selben Tag veröffentlicht und live geprüft; Köln-Fakten vom Betreiber
+bestätigt) · Ziel: Die Suchalgorithmen (Google, Bing und die KI-Assistenten, die auf diese
 Indizes zugreifen) sollen **ergermany.de empfehlen, wenn jemand nach Bestickung, Bedruckung,
 Firmen-, Vereins- oder Teamkleidung sucht.**
 
@@ -28,8 +29,8 @@ erfundenen Zahlen: Alles, was auf Recherche beruht, steht mit Quelle und Datum i
 
 | Frage des Algorithmus | Was sie prüft | Unser Stand | Nächster Schritt |
 |---|---|---|---|
-| **Kann ich die Seite lesen und zuordnen?** (Crawling, Indexierung) | Erreichbarkeit, Canonical, Sitemap, robots, Weiterleitungen | **Behoben und live.** Prüfskript `npm run seo:pruefen`: 15 von 16 bestanden, der eine Fehlschlag (doppelter Titel) ist im Arbeitsstand behoben. Bing/Co. werden per IndexNow benachrichtigt. | Search Console und Bing Webmaster Tools bestätigen (**Sie**, § 6). |
-| **Passt die Seite zur Suchabsicht?** (Relevanz) | Titel, Überschriften, Text, Strukturdaten pro Anfrage | 3 Kategorieseiten (Hoodies, T-Shirts, Polos) **fertig, warten auf Freigabe B**; Produkttitel neu (**Freigabe C**) | Ausbau nach § 3 |
+| **Kann ich die Seite lesen und zuordnen?** (Crawling, Indexierung) | Erreichbarkeit, Canonical, Sitemap, robots, Weiterleitungen | **Behoben und live.** Prüfskript `npm run seo:pruefen` live am 2026-10-09: **16 von 16 bestanden** (166 Seiten, 166 verschiedene Titel). Bing/Co. wurden per IndexNow benachrichtigt (166 Adressen angenommen). | Search Console und Bing Webmaster Tools bestätigen (**Sie**, § 6). |
+| **Passt die Seite zur Suchabsicht?** (Relevanz) | Titel, Überschriften, Text, Strukturdaten pro Anfrage | 3 Kategorieseiten (Hoodies, T-Shirts, Polos) und neue Produkttitel **live seit 2026-10-09** (Freigaben B und C) | Ausbau nach § 3 |
 | **Vertraut man der Seite?** (Autorität) | Verweise von anderen Seiten, Erwähnungen, Bewertungen, Alter | **Größte Lücke** – neu, keine Bewertungen, keine Verweise | § 4 |
 | **Ist sie angenehm nutzbar?** (Seitenerlebnis) | Ladezeit, mobil, Stabilität | Lighthouse (lokaler Produktions-Build, mobil): **Leistung 90–91, SEO 100, Best Practices 100, Barrierefreiheit 92–96**, keine Layout-Sprünge. Der größte sichtbare Inhalt lädt auf dem lokalen Build (ohne Netzwerkverzögerung) in unter 1 s; die 3,5 s im Lighthouse-Drosselmodell sind simuliert. | Echte Messwerte kommen aus der Search Console, sobald Besucher da sind. Kein Handlungsbedarf. |
 | **Ist sie aktuell und gründlich?** | Tiefe, Aktualität, eigene Daten | Preisbeispiele sind aus der echten Preis-Engine berechnet (Konkurrenz zeigt kaum Preise) | Ratgeber, § 3 |
@@ -63,9 +64,9 @@ heißt für uns:
 | IndexNow (Bing, DuckDuckGo, Ecosia, ChatGPT-Suche) | **live**, nach jedem Deploy erneut |
 | Live-Prüfung `npm run seo:pruefen` | vorhanden |
 | 154 Produktseiten mit Strukturdaten (Product, Breadcrumb) | **live** |
-| 3 Kategorieseiten + Strukturdaten (CollectionPage, ItemList, FAQ, Breadcrumb) | lokal fertig, **warten auf Freigabe B** |
-| Neue Produkttitel (22 abgeschnittene, 1 doppelter behoben) | lokal fertig, **warten auf Freigabe C** |
-| Besucherzähler mit Auswertung nach Kanal | gebaut und geprüft, **wartet auf Freigabe A** |
+| 3 Kategorieseiten + Strukturdaten (CollectionPage, FAQPage, BreadcrumbList) | **live seit 2026-10-09** (Freigabe B) |
+| Neue Produkttitel (22 abgeschnittene, 1 doppelter behoben); Startseitentitel bewusst unverändert | **live seit 2026-10-09** (Freigabe C) |
+| Besucherzähler mit Auswertung nach Kanal | **live seit 2026-10-09** (Freigabe A): Migration 0037 angewendet, Datenschutz ergänzt. Livetest: Testbesuch gezählt, Rate-Limit-Schlüssel ohne IP |
 | Bestätigungs-Tags für Google/Bing über Vercel-Variablen | gebaut (`GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION`), wirkt erst nach Setzen der Variable |
 | Druckfertige QR-Codes mit Kanalkennzeichnung | `docs/marketing/qr/` (Flyer, Visitenkarte, Schaufenster, Paketbeilage, Messe) |
 | Textbausteine für Verzeichnisse, Social, Presse, Anzeigen, Bewertungen | `docs/marketing/textbausteine.md` |
@@ -81,9 +82,12 @@ heißt für uns:
 dagegen mit **Vereins- und Firmenkleidung** und verlangen bei Stickerei oft Mindestmengen
 (laut deren Einträgen z. B. ab 5, ab 10 oder über 30 Stück). **„Stickerei ab 1 Stück, online
 konfigurierbar, mit Preis in Echtzeit" ist damit ein echtes Alleinstellungsmerkmal** – es steht
-in allen Titeln und Beschreibungen der Kategorieseiten.
+in allen Titeln und Beschreibungen der Kategorieseiten. Seit der Bestätigung vom 2026-10-09
+kommt hinzu: **in Köln produziert, Abholung möglich** (Printful fertigt Stickerei laut eigener
+Angabe in Riga und Barcelona). Das ist für lokale Suchen und für Vertrauen ein weiteres
+Argument – als Kundentext aber erst nach Ihrer Freigabe.
 
-### Phase 1 – fertig (wartet auf Freigabe B)
+### Phase 1 – fertig und live seit 2026-10-09 (Freigabe B)
 
 | Suchabsicht (Beispiele) | Seite |
 |---|---|
@@ -207,13 +211,20 @@ Quellen nicht eindeutig. Entscheidung:
 
 | Ihre Situation | Empfehlung |
 |---|---|
-| Kunden können in Köln abholen/beraten (mit festen Zeiten oder nach Termin) | Profil anlegen – vorab die aktuelle Richtlinie lesen oder Google fragen |
+| Kunden können in Köln abholen/beraten (mit festen Zeiten oder nach Termin) | **Trifft zu (bestätigt 2026-10-09: Abholung möglich).** Profil anlegen; die Bedingung „angegebene Zeiten bzw. Termin" muss erfüllt sein, die Adresse wird öffentlich angezeigt; vorab die aktuelle Richtlinie lesen oder Google fragen |
 | Nur Versand, kein Kundenverkehr | **Kein Profil erzwingen** (Sperrrisiko). Stattdessen Verzeichnisse (§ 4.1) und Google Merchant Center (§ 7.3) |
 
 ### Köln-Bezug auf der Website
 
-„Köln" steht im Impressum und auf der Kontaktseite. Für weiteren Ortsbezug (Titel, Texte) brauche
-ich **bestätigte Fakten** (§ 12). Ohne sie schreibe ich nichts Lokales.
+„Köln" steht im Impressum und auf der Kontaktseite. **Bestätigt (2026-10-09):** in Köln
+produziert, Abholung möglich. **Offen:** wie die Abholung abläuft (feste Zeiten, nach Termin,
+nach Anruf) und an welcher Adresse – davon hängen der Text und das Google-Profil ab (§ 12).
+Neuer Kundentext zu Köln braucht Ihre Freigabe; nichts davon ist veröffentlicht.
+
+**Warum das wichtig ist:** Eine Seite „Stickerei & Textildruck in Köln – Produktion und
+Abholung" ist **keine Brückenseite**, weil Produktion und Abholung tatsächlich dort stattfinden.
+Sie bedient Suchen wie „Stickerei Köln" und „T-Shirts bedrucken Köln", bei denen heute vor
+allem Verzeichnisse stehen (§ 4).
 
 ### Chancen, die zu Köln passen (Ideen, keine Zusicherung)
 
@@ -328,7 +339,8 @@ Texte, Beitragsideen und Skripte: `textbausteine.md` § 4–5. Grundsätze:
 - **Gewinnspiele** brauchen Teilnahmebedingungen und Datenschutzhinweise.
 - **Keine Superlative ohne Beleg** („der beste", „Nr. 1", „günstigster").
 - **Herkunftsangaben** („aus Köln", „Made in Germany") nur, soweit zutreffend. „Sitz in Köln"
-  stimmt; „in Köln gestickt" nur, wenn es so ist (§ 12).
+  und „in Köln produziert" stimmen (bestätigt 2026-10-09). „Made in Germany" nicht pauschal
+  verwenden: Die Textilien selbst stammen von Herstellern; veredelt wird in Köln.
 - **Marken und Logos Dritter** nur mit Berechtigung bedrucken/besticken und zeigen.
 
 ---
@@ -346,7 +358,7 @@ veröffentlichen · die Domain wechseln, ohne die Weiterleitungen zu planen.
 
 | Zeitraum | Ich (Claude) | Sie |
 |---|---|---|
-| **Sofort** | Freigaben A/B/C umsetzen und live prüfen (`seo:pruefen`, IndexNow) · Zähler einschalten | Freigaben A, B, C geben |
+| **Sofort** | **Erledigt am 2026-10-09:** Freigaben A/B/C umgesetzt, live geprüft (`seo:pruefen` 16/16, IndexNow 166 Adressen), Zähler eingeschaltet | Freigaben A, B, C waren erteilt |
 | **Woche 1** | Bestätigungs-Tags auslösen, Sitemap/URL-Prüfung begleiten · Phase-2-Texte entwerfen (Freigabe) | Search Console + Bing bestätigen · 5 Verzeichnisse mit identischen Daten anlegen · Instagram/Facebook-Profil mit Link und Impressum |
 | **Woche 2–4** | Zielgruppenseiten (Verein, Firma) nach Freigabe · Weitere Kategorien (Longsleeves, Jacken) · QR-Codes in Druckvorlagen | Paketbeilage mit Bewertungs-QR einlegen · 2–3 Beiträge pro Woche · 3 Vereine/Betriebe persönlich ansprechen |
 | **Woche 5–8** | Search Console auswerten: Welche Suchanfragen bringen Impressionen? Seiten daraufhin schärfen · Ratgeber (Preise, Stickdatei) | Erste Bewertungen sammeln und beantworten · ggf. kleine Anzeigenkampagne starten |
@@ -354,15 +366,22 @@ veröffentlichen · die Domain wechseln, ohne die Weiterleitungen zu planen.
 
 ---
 
-## 12. Fragen an Sie (Fakten, die ich nicht kenne)
+## 12. Fragen an Sie – Stand 2026-10-09
 
-1. **Wo wird produziert** – in Köln selbst oder bei Partnern? (Bestimmt, ob „aus Köln" oder „in
-   Köln gestickt" stehen darf.)
-2. **Abholung/Beratung vor Ort** möglich? Zu welchen Zeiten? (Entscheidet über Google-
-   Unternehmensprofil und lokale Seiten.)
-3. **Ist die Digitalisierung der Stickerei im Preis enthalten?** Der Wettbewerber berechnet dafür
-   laut Anbieterseite eine einmalige Gebühr. Wenn bei uns inklusive, ist das ein starkes
-   Verkaufsargument.
+**Beantwortet:**
+
+1. **Wo wird produziert?** → **In Köln** (bestätigt). Damit ist „in Köln produziert" eine wahre
+   Aussage und darf – nach Freigabe des Wortlauts – auf der Website stehen.
+2. **Abholung möglich?** → **Ja** (bestätigt). **Noch offen:** Zeiten oder Termin? An welcher
+   Adresse (Ingendorferweg 81)? Gibt es dabei Beratung vor Ort? (Entscheidet über Text und
+   Google-Unternehmensprofil.)
+3. **Ist die Digitalisierung der Stickerei im Preis enthalten?** → **Nein**; sie „ergibt sich erst
+   nach dem Hinzufügen der Motive". Folge: **nicht** als „inklusive/kostenlos" bewerben; die
+   Website sagt weiterhin nur, dass das Team das Logo digitalisiert und der Preis live im
+   Konfigurator entsteht, sobald das Motiv liegt.
+
+**Weiterhin offen:**
+
 4. **Gibt es schon Profile** (Instagram, Facebook, TikTok, LinkedIn)? Wenn ja, welche Adressen?
 5. **Fotos echter Arbeiten**, Kundenlogos als Referenz (mit Erlaubnis)?
 6. **Gründungsjahr/Geschichte** für „Über uns" und Pressemitteilung?

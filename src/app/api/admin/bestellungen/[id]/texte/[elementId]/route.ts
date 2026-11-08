@@ -5,6 +5,7 @@
  *   …/texte/<elementId>?format=png    PNG mit TRANSPARENTEM Hintergrund – die Datei für
  *                                     die DTF-Bestellung: Ein JPG-Hintergrund würde mitgedruckt.
  *   …&ansicht=1                       im Browser anzeigen statt herunterladen
+ *   …?vorschau=1                      kleines JPG-Vorschaubild (72 dpi) für die Kundendateien-Zeile
  *
  * Der Text entsteht auf Abruf aus den gespeicherten Bestelldaten (Schrift,
  * Größe, Farbe, Zeilenumbrüche …) – siehe lib/rendering/renderTextJpg.ts, beide
@@ -24,6 +25,9 @@ import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
 // Text mit Schatten braucht beim Rastern in Druckgröße einige Sekunden.
 export const maxDuration = 30;
 
+/** Auflösung des Vorschaubilds (kleinster Wert, den der Renderer zulässt). */
+const VORSCHAU_DPI = 72;
+
 export async function GET(request: Request, { params }: { params: { id: string; elementId: string } }): Promise<NextResponse> {
   if (!(await istAdmin())) {
     return NextResponse.json({ fehler: 'Nicht angemeldet.' }, { status: 401 });
@@ -41,12 +45,15 @@ export async function GET(request: Request, { params }: { params: { id: string; 
   }
 
   const abfrage = new URL(request.url).searchParams;
-  const alsPng = abfrage.get('format') === 'png';
-  const anzeigen = abfrage.get('ansicht') === '1';
+  // Vorschaubild für die Zeile in den Kundendateien: klein (72 dpi, schnell) und nur zur Anzeige.
+  const nurVorschau = abfrage.get('vorschau') === '1';
+  const alsPng = !nurVorschau && abfrage.get('format') === 'png';
+  const anzeigen = nurVorschau || abfrage.get('ansicht') === '1';
 
   let bytes: Buffer;
   try {
-    const ergebnis = alsPng ? await renderTextAlsPng(geladen.eingabe) : await renderTextAlsJpg(geladen.eingabe);
+    const eingabe = nurVorschau ? { ...geladen.eingabe, dpi: VORSCHAU_DPI } : geladen.eingabe;
+    const ergebnis = alsPng ? await renderTextAlsPng(eingabe) : await renderTextAlsJpg(eingabe);
     if (!ergebnis.ok) {
       return NextResponse.json({ fehler: ergebnis.grund }, { status: 422 });
     }
@@ -63,7 +70,9 @@ export async function GET(request: Request, { params }: { params: { id: string; 
     headers: {
       'content-type': alsPng ? 'image/png' : 'image/jpeg',
       'content-disposition': `${anzeigen ? 'inline' : 'attachment'}; filename="${asciiName}"; filename*=UTF-8''${encodeURIComponent(dateiname)}`,
-      'cache-control': 'private, no-store',
+      // Die Dateien selbst nie zwischenspeichern; das kleine Vorschaubild darf der Browser kurz behalten,
+      // damit die Seite beim Neuladen nicht jedes Mal neu rendert (nur privat, nie in einem gemeinsamen Cache).
+      'cache-control': nurVorschau ? 'private, max-age=300' : 'private, no-store',
     },
   });
 }

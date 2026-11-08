@@ -16,6 +16,12 @@ export function textPngHref(orderId: string, elementId: string, ansehen = false)
   return ansehen ? `${pfad}&ansicht=1` : pfad;
 }
 
+/** Adresse des kleinen Vorschaubilds eines Textes (72 dpi, wird im Browser angezeigt) –
+ *  für die Zeile in den Kundendateien. Die Download-Dateien haben 300 dpi. */
+export function textVorschauHref(orderId: string, elementId: string): string {
+  return `/api/admin/bestellungen/${encodeURIComponent(orderId)}/texte/${encodeURIComponent(elementId)}?vorschau=1`;
+}
+
 /** Anzahl der Zeilen eines Textes – ein Zeilenumbruch beginnt eine neue Zeile. */
 export function zeilenAnzahl(inhalt: string): number {
   return inhalt.split(/\r\n|\r|\n/).length;

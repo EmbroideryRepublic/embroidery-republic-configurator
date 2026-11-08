@@ -26,7 +26,7 @@ transparentem Hintergrund** (ein JPG-Hintergrund würde im DTF-Druck mitgedruckt
 | Vorschau/Produktionsblatt | `lib/rendering/svgScene.ts`: jede Zeile ein eigenes `<text>`, der Zeilenblock sitzt wie bei Konva (`verticalAlign=middle`) mittig, Abstand = `lineHeight × Schriftgröße`. Einzeiliger Text bleibt Zeichen für Zeichen wie vorher. |
 | Kursiv | Fehlt der Ersatzschrift ein Kursiv-Schnitt (nur Anton), wird die Zeile um 14° geschert (`fonts.ts::hatEchtenSchnitt`). Alle anderen Schriften unverändert. |
 | Gemeinsamer Maßstab | `lib/rendering/ansichtGrundlage.ts` – aus `renderPrintView.ts` herausgelöst; Vorschau und Text-Download rechnen exakt gleich. Geprüft: Vorschau-Bilder einzeiliger Texte sind vorher/nachher Byte für Byte gleich – außer „Impact + kursiv“, wo die Schrägstellung bewusst neu dazukommt. |
-| Text-Download | `lib/rendering/renderTextJpg.ts`, Route `GET /api/admin/bestellungen/[id]/texte/[elementId]`, Bereich „Texte als Bilddatei (JPG)“ und Links an jedem Text in der Personalisierung. |
+| Text-Download | `lib/rendering/renderTextJpg.ts`, Route `GET /api/admin/bestellungen/[id]/texte/[elementId]`; jeder Text steht im Block **„Kundendateien“** wie ein Logo (Vorschaubild, Bezeichnung, „Herunterladen“ = PNG, „Als JPG“), außerdem liegen die Texte als PNG im **ZIP „Alle Kundendateien“**; zusätzlich Links an jedem Text in der Personalisierung. |
 | Neu erzeugen | Knopf „Vorschau & Produktionsblatt neu erzeugen“ (`orderCompletion.ts::erzeugeProduktionsunterlagenNeu`) für bestehende Bestellungen. Verschickt nichts. |
 | Anzeige | Die Admin-Seite zeigt Zeilenumbrüche; „2 Zeilen“ als Hinweis. |
 
@@ -39,6 +39,12 @@ transparentem Hintergrund** (ein JPG-Hintergrund würde im DTF-Druck mitgedruckt
   dunkelgrau).
 * Zeilen im Text beginnen – wie im Editor – an der **oberen** Kante der gespeicherten Box (nicht
   mittig); ein zweizeiliger Text saß in der Vorschau sonst rund 1 cm höher als im Editor.
+
+## Wo der Text steht (wie das Logo)
+
+* **Kundendateien** (Admin-Bestellseite): Der Text hat dort eine eigene Zeile wie das Logo – Miniatur, „Text 1 · „…““, `PNG, transparent · 300 dpi`, Knopf **Herunterladen** (PNG, die Datei für die DTF-Bestellung) und darunter **Als JPG**. Beide zählen je Position und Ansicht neu ab 1, erst die Logos, dann die Texte.
+* **ZIP „Alle Kundendateien herunterladen“:** enthält je Text ein PNG (`Position-1_College_Hoodie_Ruckseite_Text-1.png`, benannt wie die Logos). Lässt sich ein Text nicht erzeugen, bricht das ZIP nicht ab, sondern nennt ihn in `FEHLENDE_DATEIEN.txt`. Das Limit von 300 Dateien gilt für Logos und Texte zusammen.
+* **Miniatur:** `?vorschau=1` liefert ein kleines JPG (72 dpi, rund 40 KB) und darf der Browser fünf Minuten privat behalten; die Downloads werden nie zwischengespeichert. Die Bilder laufen bewusst nicht über den Bildoptimierer von Next (er riefe die geschützte Route ohne Anmeldung ab).
 
 ## Die JPG-Datei
 
@@ -88,7 +94,8 @@ gespeicherten Daten neu.
   heller Text, Schatten/Kontur nicht abgeschnitten, Riesentext.
 * `lib/admin/__tests__/textDownload.test.ts` – Laden gegen Netz-Attrappe, **fremde
   Bestellung → nichts**, Route/Aktion nur für Admins, nichts wird versendet.
-* `components/admin/__tests__/textAnzeige.test.ts`.
+* `components/admin/__tests__/textAnzeige.test.ts` – Text-Zeilen in den Kundendateien (Zählung, PNG als Hauptknopf, Miniatur, ZIP-Hinweis).
+* ZIP-Einträge und echte PNG-Dateien (RGBA, 300 dpi) sowie Fehlerfälle in `textDownload.test.ts`.
 
 ## Neue Abhängigkeit
 

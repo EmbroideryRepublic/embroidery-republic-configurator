@@ -19,9 +19,9 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { zuElementRecord } from '@/lib/orders/orderCompletion';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
-import type { TextJpgEingabe } from '@/lib/rendering/renderTextJpg';
+import { renderTextAlsPng, type TextJpgEingabe } from '@/lib/rendering/renderTextJpg';
 import { ansichtLabel } from '@/lib/admin/ansichten';
-import { saeubereFuerDateisystem } from '@/lib/admin/kundendateien';
+import { saeubereFuerDateisystem, type ZipBauErgebnis } from '@/lib/admin/kundendateien';
 import type { PrintMethod, PrintView } from '@/types';
 
 /** Umlaute lesbar umschreiben ("Rückseite" → "Rueckseite"); die allgemeine
@@ -86,4 +86,92 @@ export async function ladeTextFuerJpg(orderId: string, elementId: string): Promi
       element: renderbar,
     },
   };
+}
+
+// ── Texte im ZIP-Sammel-Download ──────────────────────────────────────────
+//
+// "Alle Kundendateien herunterladen (ZIP)" soll auch die Texte enthalten – sie
+// stehen in derselben Liste wie die Logos. Im ZIP liegt je Text das PNG mit
+// transparentem Hintergrund (die Datei für die DTF-Bestellung); das JPG gibt es
+// weiterhin einzeln.
+
+export interface TextZipEintrag {
+  elementId: string;
+  /** Name der Datei im ZIP, aufgebaut wie bei den Logos ("Position-1_<Produkt>_<Ansicht>_Text-1.png"). */
+  zipEintragsname: string;
+}
+
+/**
+ * Listet alle Texte einer Bestellung für das ZIP. Gleiche Abfrageform und
+ * Zählweise wie kundendateien.ts::ladeKundendateienFuerZip ("Text N" je
+ * Position × Ansicht, nur Texte zählen), damit "Logo 1" und "Text 1" im ZIP
+ * dieselbe Position/Ansicht meinen wie auf der Admin-Seite. Liefert bei
+ * Ladefehlern eine leere Liste und wirft nicht.
+ */
+export async function ladeTexteFuerZip(orderId: string): Promise<TextZipEintrag[]> {
+  const db = createAdminClient();
+
+  const { data: positionen, error: positionenFehler } = await db.from('order_items').select('id, product_name').eq('order_id', orderId);
+  if (positionenFehler || !positionen || positionen.length === 0) return [];
+
+  const { data: elemente, error: elementeFehler } = await db
+    .from('configuration_elements')
+    .select('id, order_item_id, element_type, view')
+    .in('order_item_id', positionen.map((p) => p.id as string));
+  if (elementeFehler || !elemente) return [];
+
+  const eintraege: TextZipEintrag[] = [];
+  const vergeben = new Set<string>();
+  positionen.forEach((position, positionIndex) => {
+    const zaehlerJeAnsicht = new Map<string, number>();
+    for (const element of elemente) {
+      if (element.order_item_id !== position.id || element.element_type !== 'text') continue;
+      const ansicht = element.view as string;
+      const nummer = (zaehlerJeAnsicht.get(ansicht) ?? 0) + 1;
+      zaehlerJeAnsicht.set(ansicht, nummer);
+
+      const produkt = saeubereFuerDateisystem((position.product_name as string | null) ?? 'Produkt');
+      const basis = `Position-${positionIndex + 1}_${produkt}_${saeubereFuerDateisystem(ansichtLabel(ansicht))}_Text-${nummer}`;
+      let name = `${basis}.png`;
+      for (let zusatz = 2; vergeben.has(name.toLowerCase()); zusatz += 1) name = `${basis}-${zusatz}.png`;
+      vergeben.add(name.toLowerCase());
+      eintraege.push({ elementId: element.id as string, zipEintragsname: name });
+    }
+  });
+  return eintraege;
+}
+
+/**
+ * Rendert die PNG-Dateien zu den Einträgen. Nacheinander statt gleichzeitig:
+ * Das Rastern in Druckgröße ist rechenintensiv, mehrere Texte gleichzeitig
+ * würden den Arbeitsspeicher der Funktion unnötig belasten. Ein Text, der sich
+ * nicht erzeugen lässt, bricht das ZIP NICHT ab – er wird mit Grund gemeldet
+ * (wie fehlende Logo-Dateien, siehe kundendateien.ts::ZipBauErgebnis).
+ */
+export async function ladeTextBytesFuerZip(orderId: string, eintraege: TextZipEintrag[]): Promise<ZipBauErgebnis> {
+  const geladen: ZipBauErgebnis['geladen'] = [];
+  const fehlgeschlagen: ZipBauErgebnis['fehlgeschlagen'] = [];
+
+  for (const eintrag of eintraege) {
+    try {
+      const text = await ladeTextFuerJpg(orderId, eintrag.elementId);
+      if (!text) {
+        fehlgeschlagen.push({ zipEintragsname: eintrag.zipEintragsname, grund: 'Der Text gehört nicht (mehr) zu dieser Bestellung.' });
+        continue;
+      }
+      const ergebnis = await renderTextAlsPng(text.eingabe);
+      if (!ergebnis.ok) {
+        fehlgeschlagen.push({ zipEintragsname: eintrag.zipEintragsname, grund: ergebnis.grund });
+        continue;
+      }
+      geladen.push({ zipEintragsname: eintrag.zipEintragsname, bytes: ergebnis.png });
+    } catch (fehler) {
+      console.error(`[admin] Text ${eintrag.elementId} konnte nicht für das ZIP erzeugt werden:`, fehler);
+      fehlgeschlagen.push({
+        zipEintragsname: eintrag.zipEintragsname,
+        grund: fehler instanceof Error ? fehler.message : 'Die Bilddatei konnte nicht erzeugt werden.',
+      });
+    }
+  }
+  return { geladen, fehlgeschlagen };
 }

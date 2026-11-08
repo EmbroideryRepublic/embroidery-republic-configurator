@@ -10,6 +10,13 @@
  * still nichts einzupacken wäre die Sorte stiller Lücke, die dieses Projekt
  * an anderer Stelle bewusst vermeidet (siehe stripeKonfiguration.ts,
  * "keine stillen Ausweichwege").
+ *
+ * ── Texte im ZIP ───────────────────────────────────────────────────────
+ * Die Texte der Bestellung stehen in der Liste der Kundendateien wie die
+ * Logos – deshalb liegen sie auch im ZIP: je Text ein PNG mit transparentem
+ * Hintergrund in Druckgröße (die Datei für die DTF-Bestellung, siehe
+ * lib/admin/textDateien.ts). Ein Text, der sich nicht erzeugen lässt, steht
+ * wie eine fehlende Logo-Datei in FEHLENDE_DATEIEN.txt.
  */
 import JSZip from 'jszip';
 import { NextResponse } from 'next/server';
@@ -17,7 +24,11 @@ import { istAdmin } from '@/lib/admin/auth';
 import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { createAdminClient } from '@/lib/supabase/server';
-import { ladeKundendateienFuerZip, ladeKundendateiBytes } from '@/lib/admin/kundendateien';
+import { ladeKundendateienFuerZip, ladeKundendateiBytes, MAX_DATEIEN_IM_ZIP } from '@/lib/admin/kundendateien';
+import { ladeTexteFuerZip, ladeTextBytesFuerZip } from '@/lib/admin/textDateien';
+
+// Mehrere Texte werden beim Zusammenstellen in Druckgröße gerastert.
+export const maxDuration = 30;
 
 function sichererHeaderName(roh: string, ersatz: string): string {
   const bereinigt = roh.replace(/[\r\n"\\]/g, '').trim();
@@ -33,8 +44,20 @@ export async function GET(_request: Request, { params }: { params: { id: string 
   }
 
   const eintraege = await ladeKundendateienFuerZip(params.id);
-  if (eintraege.length === 0) {
-    return NextResponse.json({ fehler: 'Diese Bestellung hat keine Kundendateien (keine Logo-Elemente).' }, { status: 404 });
+  const texteintraege = await ladeTexteFuerZip(params.id);
+  const gesamt = eintraege.length + texteintraege.length;
+  if (gesamt === 0) {
+    return NextResponse.json({ fehler: 'Diese Bestellung hat keine Kundendateien (keine Logos und keine Texte).' }, { status: 404 });
+  }
+  if (gesamt > MAX_DATEIEN_IM_ZIP) {
+    return NextResponse.json(
+      {
+        fehler:
+          `Diese Bestellung hat ${gesamt} Dateien (Logos und Texte) – mehr als das Limit von ${MAX_DATEIEN_IM_ZIP} für den ` +
+          `ZIP-Sammel-Download. Bitte die Dateien einzeln herunterladen.`,
+      },
+      { status: 413 }
+    );
   }
 
   let geladen: Awaited<ReturnType<typeof ladeKundendateiBytes>>['geladen'];
@@ -51,14 +74,20 @@ export async function GET(_request: Request, { params }: { params: { id: string 
     );
   }
 
+  // Texte: erst nach den Logos und nacheinander gerastert (siehe textDateien.ts).
+  const texte = await ladeTextBytesFuerZip(params.id, texteintraege);
+  geladen.push(...texte.geladen);
+  fehlgeschlagen.push(...texte.fehlgeschlagen);
+
   const zip = new JSZip();
   for (const datei of geladen) {
     zip.file(datei.zipEintragsname, datei.bytes);
   }
   if (fehlgeschlagen.length > 0) {
     const hinweis =
-      `${fehlgeschlagen.length} von ${eintraege.length} Datei(en) konnten nicht eingepackt werden ` +
-      `(vermutlich im Storage gelöscht, siehe DSGVO-Löschroutine, oder ohne hinterlegten Original-Pfad):\n\n` +
+      `${fehlgeschlagen.length} von ${gesamt} Datei(en) konnten nicht eingepackt werden ` +
+      `(Logos: vermutlich im Storage gelöscht, siehe DSGVO-Löschroutine, oder ohne hinterlegten Original-Pfad; ` +
+      `Texte: Bilddatei konnte nicht erzeugt werden):\n\n` +
       fehlgeschlagen.map((f) => `- ${f.zipEintragsname}: ${f.grund}`).join('\n');
     zip.file('FEHLENDE_DATEIEN.txt', hinweis);
   }

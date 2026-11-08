@@ -12,8 +12,8 @@ import { test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { ladeTextFuerJpg } from '../textDateien';
-import { textJpgHref, textPngHref, zeilenAnzahl } from '../textLink';
+import { ladeTextFuerJpg, ladeTexteFuerZip, ladeTextBytesFuerZip } from '../textDateien';
+import { textJpgHref, textPngHref, textVorschauHref, zeilenAnzahl } from '../textLink';
 
 const DB = 'https://db.example.invalid';
 const ENV: Record<string, string> = { NEXT_PUBLIC_SUPABASE_URL: DB, SUPABASE_SECRET_KEY: 'sb_secret_test' };
@@ -77,8 +77,9 @@ function netz(eingabe: string | URL | Request): Promise<Response> {
   if (url.pathname === '/rest/v1/configuration_elements') {
     const id = gleich('id');
     if (id) return Promise.resolve(json(elemente[id] ? [elemente[id]] : []));
-    const position = gleich('order_item_id');
-    return Promise.resolve(json(Object.values(elemente).filter((e) => e.order_item_id === position)));
+    const roh = url.searchParams.get('order_item_id') ?? '';
+    const gesuchtePositionen = roh.startsWith('in.(') ? roh.slice(4, -1).split(',') : [roh.replace(/^eq\./, '')];
+    return Promise.resolve(json(Object.values(elemente).filter((e) => gesuchtePositionen.includes(e.order_item_id as string))));
   }
   if (url.pathname === '/rest/v1/order_items') {
     return Promise.resolve(json(positionen[gleich('order_id') ?? ''] ?? []));
@@ -93,10 +94,10 @@ function netz(eingabe: string | URL | Request): Promise<Response> {
 beforeEach(() => {
   positionen = {
     [BESTELLUNG]: [
-      { id: POSITION, product_id: 'justhoods-college-hoodie', color_id: 'grey', print_method: 'dtf', size_quantities: { M: 2 } },
+      { id: POSITION, product_name: 'College Hoodie', product_id: 'justhoods-college-hoodie', color_id: 'grey', print_method: 'dtf', size_quantities: { M: 2 } },
     ],
     [FREMDE_BESTELLUNG]: [
-      { id: FREMDE_POSITION, product_id: 'justhoods-college-hoodie', color_id: 'grey', print_method: 'dtf', size_quantities: { M: 1 } },
+      { id: FREMDE_POSITION, product_name: 'College Hoodie', product_id: 'justhoods-college-hoodie', color_id: 'grey', print_method: 'dtf', size_quantities: { M: 1 } },
     ],
   };
   elemente = {
@@ -170,6 +171,67 @@ test('Logos, unbekannte Kennungen und unbekannte Bestellungen liefern nichts', a
   assert.equal(await ladeTextFuerJpg('99999999-9999-4999-8999-999999999999', TEXT_1), null);
 });
 
+// ── Texte im ZIP-Sammel-Download ─────────────────────────────────────────
+
+test('ZIP: jeder Text der Bestellung bekommt einen Eintrag, benannt wie die Logos im ZIP', async () => {
+  const eintraege = await ladeTexteFuerZip(BESTELLUNG);
+  assert.deepEqual(eintraege, [
+    { elementId: TEXT_1, zipEintragsname: 'Position-1_College_Hoodie_Ruckseite_Text-1.png' },
+    { elementId: TEXT_2, zipEintragsname: 'Position-1_College_Hoodie_Ruckseite_Text-2.png' },
+  ]);
+});
+
+test('ZIP: Texte einer anderen Bestellung kommen nicht hinein; unbekannte Bestellung = leer', async () => {
+  const fremd = await ladeTexteFuerZip(FREMDE_BESTELLUNG);
+  assert.deepEqual(fremd.map((e) => e.elementId), [FREMDER_TEXT]);
+  assert.deepEqual(await ladeTexteFuerZip('99999999-9999-4999-8999-999999999999'), []);
+});
+
+test('ZIP: Logos zählen nicht als Text, jede Position zählt ihre Texte neu', async () => {
+  const ZWEITE_POSITION = 'a0000000-0000-4000-8000-000000000009';
+  const ZWEITER_TEXT = 'e0000000-0000-4000-8000-000000000009';
+  positionen[BESTELLUNG]!.push({ id: ZWEITE_POSITION, product_name: 'T-Shirt', product_id: 'justhoods-college-hoodie', color_id: 'grey', print_method: 'dtf', size_quantities: { M: 1 } });
+  elemente[ZWEITER_TEXT] = textZeile(ZWEITER_TEXT, ZWEITE_POSITION, { text_content: 'Zweite Position' });
+  const namen = (await ladeTexteFuerZip(BESTELLUNG)).map((e) => e.zipEintragsname);
+  assert.deepEqual(namen, [
+    'Position-1_College_Hoodie_Ruckseite_Text-1.png',
+    'Position-1_College_Hoodie_Ruckseite_Text-2.png',
+    'Position-2_T-Shirt_Ruckseite_Text-1.png',
+  ]);
+});
+
+test('ZIP: die Texte werden als echte PNG-Dateien erzeugt (transparent, 300 dpi)', async () => {
+  const eintraege = await ladeTexteFuerZip(BESTELLUNG);
+  const ergebnis = await ladeTextBytesFuerZip(BESTELLUNG, eintraege);
+  assert.equal(ergebnis.fehlgeschlagen.length, 0);
+  assert.deepEqual(ergebnis.geladen.map((d) => d.zipEintragsname), eintraege.map((e) => e.zipEintragsname));
+  for (const datei of ergebnis.geladen) {
+    assert.deepEqual([...datei.bytes.subarray(0, 8)], [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a], 'PNG-Kennung');
+    assert.ok(datei.bytes.includes(Buffer.from('pHYs')), '300 dpi stehen im Kopf');
+    assert.equal(datei.bytes[25], 6, 'Farbtyp RGBA – mit Alpha-Kanal, also transparenter Hintergrund');
+  }
+});
+
+test('ZIP: ein Text, der nicht (mehr) zur Bestellung gehört, bricht nichts ab, sondern wird mit Grund gemeldet', async () => {
+  const eintraege = [
+    { elementId: FREMDER_TEXT, zipEintragsname: 'Position-1_X_Text-1.png' },
+    { elementId: TEXT_1, zipEintragsname: 'Position-1_X_Text-2.png' },
+  ];
+  const ergebnis = await ladeTextBytesFuerZip(BESTELLUNG, eintraege);
+  assert.deepEqual(ergebnis.geladen.map((d) => d.zipEintragsname), ['Position-1_X_Text-2.png']);
+  assert.equal(ergebnis.fehlgeschlagen.length, 1);
+  assert.equal(ergebnis.fehlgeschlagen[0]!.zipEintragsname, 'Position-1_X_Text-1.png');
+  assert.match(ergebnis.fehlgeschlagen[0]!.grund, /nicht \(mehr\) zu dieser Bestellung/);
+});
+
+test('ZIP: ein Fehler beim Erzeugen eines Textes wird gemeldet, die übrigen Texte kommen trotzdem', async () => {
+  elemente[TEXT_2] = { ...elemente[TEXT_2], font_size: 'kaputt' }; // nicht renderbar
+  const eintraege = await ladeTexteFuerZip(BESTELLUNG);
+  const ergebnis = await ladeTextBytesFuerZip(BESTELLUNG, eintraege);
+  assert.equal(ergebnis.geladen.length + ergebnis.fehlgeschlagen.length, 2, 'jeder Eintrag landet entweder im ZIP oder in der Fehlerliste');
+  assert.ok(ergebnis.geladen.some((d) => d.zipEintragsname.endsWith('Text-1.png')), 'der intakte Text ist dabei');
+});
+
 // ── Quelltext-Prüfungen der Absicherung ──────────────────────────────────
 
 function quelltext(...teile: string[]): string {
@@ -186,7 +248,10 @@ test('Die Download-Route prüft die Admin-Sitzung VOR jedem Datenzugriff und bei
   assert.match(route, /istSicherePfadkomponente\(params\.elementId\)/);
   assert.match(route, /'content-type': alsPng \? 'image\/png' : 'image\/jpeg'/);
   assert.match(route, /\.get\('format'\) === 'png'/, 'PNG nur auf ausdrücklichen Wunsch, sonst wie bisher JPG');
-  assert.match(route, /'cache-control': 'private, no-store'/, 'Kundendaten gehören in keinen gemeinsamen Zwischenspeicher');
+  assert.match(route, /nurVorschau \? 'private, max-age=300' : 'private, no-store'/, 'Downloads nie, das kleine Vorschaubild nur privat und kurz zwischenspeichern');
+  assert.doesNotMatch(route, /'cache-control': '[^']*public/, 'Kundendaten gehören in keinen gemeinsamen Zwischenspeicher');
+  assert.match(route, /get\('vorschau'\) === '1'/);
+  assert.match(route, /dpi: VORSCHAU_DPI/, 'das Vorschaubild wird klein gerastert, nicht in Druckgröße');
   assert.match(route, /export const maxDuration = \d+/);
 });
 
@@ -207,9 +272,10 @@ test('Das Neuerzeugen der Produktionsunterlagen ist nur für Admins und verschic
   assert.match(neu, /probleme\.length > 0[\s\S]*?produktionsblattErneuert: false/, 'bei fehlgeschlagener Vorschau bleibt das alte Blatt');
 });
 
-test('Die Bestell-Detailseite bietet Text-Download und Neuerzeugen an', () => {
+test('Die Bestell-Detailseite bietet Text-Download (in den Kundendateien) und Neuerzeugen an', () => {
   const seite = quelltext('src', 'app', 'admin', 'bestellung', '[id]', 'page.tsx');
-  assert.match(seite, /<TextdateienPanel orderId=\{order\.id\} items=\{order\.items\} \/>/);
+  assert.match(seite, /<KundendateienPanel orderId=\{order\.id\} items=\{order\.items\} \/>/);
+  assert.doesNotMatch(seite, /TextdateienPanel/, 'die Texte stehen in den Kundendateien, nicht in einem eigenen Block');
   assert.match(seite, /<RegenerateAllPreviewsButton orderId=\{order\.id\} \/>/);
   const vorschau = quelltext('src', 'components', 'admin', 'ProductionPreview.tsx');
   assert.match(vorschau, /whitespace-pre-line/, 'Zeilenumbrüche des Textes bleiben in der Anzeige sichtbar');
@@ -224,8 +290,23 @@ test('Adresse des Downloads und Zeilenzählung', () => {
   assert.equal(textJpgHref('o1', 'e1', true), '/api/admin/bestellungen/o1/texte/e1?ansicht=1');
   assert.equal(textPngHref('o1', 'e1'), '/api/admin/bestellungen/o1/texte/e1?format=png');
   assert.equal(textPngHref('o1', 'e1', true), '/api/admin/bestellungen/o1/texte/e1?format=png&ansicht=1');
+  assert.equal(textVorschauHref('o1', 'e1'), '/api/admin/bestellungen/o1/texte/e1?vorschau=1');
   assert.equal(zeilenAnzahl('Team \nSchüplitz'), 2);
   assert.equal(zeilenAnzahl('Eine Zeile'), 1);
   assert.equal(zeilenAnzahl('a\r\nb\r\nc'), 3);
   assert.equal(zeilenAnzahl(''), 1);
+});
+
+test('Die ZIP-Route prüft die Admin-Sitzung zuerst und nimmt die Texte als PNG auf', () => {
+  const route = quelltext('src', 'app', 'api', 'admin', 'bestellungen', '[id]', 'kundendateien', 'route.ts');
+  const admin = route.indexOf('await istAdmin()');
+  const laden = route.indexOf('await ladeKundendateienFuerZip(');
+  const texte = route.indexOf('await ladeTexteFuerZip(');
+  assert.ok(admin > 0 && laden > admin && texte > admin, 'istAdmin() steht vor dem Laden');
+  assert.match(route, /await ladeTextBytesFuerZip\(params\.id, texteintraege\)/);
+  assert.match(route, /geladen\.push\(\.\.\.texte\.geladen\)/);
+  assert.match(route, /fehlgeschlagen\.push\(\.\.\.texte\.fehlgeschlagen\)/, 'fehlende Texte stehen in FEHLENDE_DATEIEN.txt');
+  assert.match(route, /gesamt > MAX_DATEIEN_IM_ZIP[\s\S]*?status: 413/, 'das Limit gilt für Logos und Texte zusammen');
+  assert.match(route, /gesamt === 0[\s\S]*?status: 404/, 'nur ohne Logo UND ohne Text gibt es nichts herunterzuladen');
+  assert.match(route, /export const maxDuration = \d+/);
 });

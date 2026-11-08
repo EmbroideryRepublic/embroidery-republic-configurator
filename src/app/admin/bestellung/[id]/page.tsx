@@ -33,7 +33,6 @@ import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 import { ProductionPreview } from '@/components/admin/ProductionPreview';
 import { KundendateienPanel } from '@/components/admin/KundendateienPanel';
-import { TextdateienPanel } from '@/components/admin/TextdateienPanel';
 import { RegenerateAllPreviewsButton } from '@/components/admin/RegenerateAllPreviewsButton';
 import { RequestProofApprovalButton } from '@/components/admin/RequestProofApprovalButton';
 import { BestellVerlauf } from '@/components/admin/BestellVerlauf';
@@ -201,17 +200,14 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
       </section>
 
       {/* Kundendateien: die ORIGINAL hochgeladenen Logo-Dateien (vor evtl.
-          Hintergrundentfernung) zum direkten Download für die Produktion –
-          getrennt von der Druckvorschau oben, siehe
+          Hintergrundentfernung) UND die Texte als Bilddatei (PNG/JPG, entsteht
+          beim Klick aus den Bestelldaten) zum direkten Download für die
+          Produktion – getrennt von der Druckvorschau oben, siehe
           components/admin/KundendateienPanel.tsx für die Abgrenzung. */}
       <section className="rounded-lg border border-gray-200 bg-white p-4">
         <h2 className="mb-2 text-sm font-semibold">Kundendateien</h2>
         <KundendateienPanel orderId={order.id} items={order.items} />
       </section>
-
-      {/* Texte: als JPG-Datei in Druckgröße abrufbar – entsteht beim Klick aus den
-          Bestelldaten, siehe components/admin/TextdateienPanel.tsx. */}
-      <TextdateienPanel orderId={order.id} items={order.items} />
 
       {/* Kontakt & Versand */}
       <div className="grid gap-4 sm:grid-cols-2">

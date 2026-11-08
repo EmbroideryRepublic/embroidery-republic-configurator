@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 
 const FONTS_DIR = path.join(process.cwd(), 'src', 'lib', 'rendering', 'assets', 'fonts');
@@ -63,11 +64,32 @@ export function hatEchtenSchnitt(fontFamily: string, schnitt: 'bold' | 'italic')
   return dateien.some((datei) => datei.includes(kennung));
 }
 
-/** Schrift-Optionen für resvg – für Produktionsvorschau und Text-Download
- *  dieselben, damit beide Wege dieselben Schriften nutzen. Systemschriften
- *  bleiben aus, sonst hinge das Ergebnis vom jeweiligen Server ab. */
-export function resvgSchriftOptionen(): { fontFiles: string[]; loadSystemFonts: boolean; defaultFontFamily: string } {
-  return { fontFiles: getFontFiles(), loadSystemFonts: false, defaultFontFamily: DEFAULT_SUBSTITUTE };
+/**
+ * Schrift-Optionen für resvg – für Produktionsvorschau und Text-Download
+ * dieselben, damit beide Wege dieselben Schriften nutzen. Systemschriften
+ * bleiben aus, sonst hinge das Ergebnis vom jeweiligen Server ab.
+ *
+ * Bricht mit einer klaren Meldung ab, wenn Schriftdateien auf dem Server fehlen.
+ * Das ist wichtig: resvg ignoriert fehlende Dateien lautlos und lässt Text ohne
+ * passende Schrift einfach weg – das Bild käme dann scheinbar fehlerfrei, aber
+ * OHNE Text zurück (so geschehen am 2026-11-08, als der Knopf "Vorschau neu
+ * erzeugen" ohne mitgepackte Schriften lief; die Kundschaft hätte eine leere
+ * Rückseite zur Freigabe bekommen). Lieber kein Bild als ein falsches.
+ */
+export function resvgSchriftOptionen(vorhanden: (pfad: string) => boolean = existsSync): {
+  fontFiles: string[];
+  loadSystemFonts: boolean;
+  defaultFontFamily: string;
+} {
+  const dateien = getFontFiles();
+  const fehlend = dateien.filter((datei) => !vorhanden(datei));
+  if (fehlend.length > 0) {
+    throw new Error(
+      `Schriftdateien fehlen auf dem Server (${fehlend.length} von ${dateien.length}, z. B. ${path.basename(fehlend[0]!)}) – ` +
+        'ohne sie würde der Text im Bild fehlen. Es wurde kein Bild erzeugt.'
+    );
+  }
+  return { fontFiles: dateien, loadSystemFonts: false, defaultFontFamily: DEFAULT_SUBSTITUTE };
 }
 
 /** Flache Liste aller gebündelten Schriftdatei-Pfade – wird komplett an

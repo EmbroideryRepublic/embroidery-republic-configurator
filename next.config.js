@@ -17,6 +17,19 @@ const nextConfig = {
     // require() – korrekt sowohl für den Dev-Server als auch für den
     // eigentlichen Produktions-Build.
     serverComponentsExternalPackages: ['@resvg/resvg-js'],
+    // Schriftdateien fürs serverseitige Rendern (Druckvorschau, Text-Download,
+    // src/lib/rendering/fonts.ts): Sie werden zur Laufzeit per Dateipfad gelesen
+    // und von Next nur für Routen mitgepackt, die das Rendern DIREKT einbinden
+    // (Webhook, Cron, Download-Routen). Der Knopf "Vorschau & Produktionsblatt neu
+    // erzeugen" ist aber eine Server-Action der SEITE /admin/bestellung/[id] –
+    // dort fehlten die Schriften (nur 24 statt rund 12.000 Dateien im Paket), und
+    // resvg lässt Text ohne passende Schrift stillschweigend weg: die neu erzeugte
+    // Vorschau zeigte die Rückseite ohne Text (2026-11-08, ER-2026-F5EE03).
+    // Die Produktbilder brauchen das nicht, sie werden notfalls per HTTP geholt
+    // (garmentImageInfo.ts). Die Schriften sind klein (rund 3 MB).
+    outputFileTracingIncludes: {
+      '/admin/bestellung/\\[id\\]': ['./src/lib/rendering/assets/fonts/**/*'],
+    },
   },
   // Basis-Sicherheitsheader (Produktion). Bewusst OHNE Content-Security-Policy:
   // eine CSP muss gegen Konva/Canvas, data:-Logo-URLs und Supabase getestet

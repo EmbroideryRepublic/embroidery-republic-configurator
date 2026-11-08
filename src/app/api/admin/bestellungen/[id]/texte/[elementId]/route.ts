@@ -6,6 +6,7 @@
  *                                     die DTF-Bestellung: Ein JPG-Hintergrund würde mitgedruckt.
  *   …&ansicht=1                       im Browser anzeigen statt herunterladen
  *   …?vorschau=1                      kleines JPG-Vorschaubild (72 dpi) für die Kundendateien-Zeile
+ *   …?einzeilig=1[&format=png]        alle Zeilen hintereinander in EINER Zeile (Dateiname …_eine-Zeile)
  *
  * Der Text entsteht auf Abruf aus den gespeicherten Bestelldaten (Schrift,
  * Größe, Farbe, Zeilenumbrüche …) – siehe lib/rendering/renderTextJpg.ts, beide
@@ -19,7 +20,8 @@
 import { NextResponse } from 'next/server';
 import { istAdmin } from '@/lib/admin/auth';
 import { ladeTextFuerJpg } from '@/lib/admin/textDateien';
-import { renderTextAlsJpg, renderTextAlsPng } from '@/lib/rendering/renderTextJpg';
+import { inEineZeile } from '@/lib/admin/textLink';
+import { renderTextAlsJpg, renderTextAlsPng, type TextJpgEingabe } from '@/lib/rendering/renderTextJpg';
 import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
 
 // Text mit Schatten braucht beim Rastern in Druckgröße einige Sekunden.
@@ -49,10 +51,14 @@ export async function GET(request: Request, { params }: { params: { id: string; 
   const nurVorschau = abfrage.get('vorschau') === '1';
   const alsPng = !nurVorschau && abfrage.get('format') === 'png';
   const anzeigen = nurVorschau || abfrage.get('ansicht') === '1';
+  // Alle Zeilen hintereinander, ohne Umbruch – wenn der Text so gewünscht ist, im Konfigurator aber
+  // mehrere Zeilen entstanden sind. Nur eine zusätzliche Fassung der Datei, die Bestelldaten bleiben.
+  const einzeilig = !nurVorschau && abfrage.get('einzeilig') === '1';
 
   let bytes: Buffer;
   try {
-    const eingabe = nurVorschau ? { ...geladen.eingabe, dpi: VORSCHAU_DPI } : geladen.eingabe;
+    let eingabe: TextJpgEingabe = nurVorschau ? { ...geladen.eingabe, dpi: VORSCHAU_DPI } : geladen.eingabe;
+    if (einzeilig) eingabe = { ...eingabe, element: { ...eingabe.element, content: inEineZeile(eingabe.element.content) } };
     const ergebnis = alsPng ? await renderTextAlsPng(eingabe) : await renderTextAlsJpg(eingabe);
     if (!ergebnis.ok) {
       return NextResponse.json({ fehler: ergebnis.grund }, { status: 422 });
@@ -64,7 +70,7 @@ export async function GET(request: Request, { params }: { params: { id: string; 
   }
 
   // Der Loader schlägt einen .jpg-Namen vor; die Endung folgt dem Format.
-  const dateiname = geladen.dateiname.replace(/\.jpg$/i, '') + (alsPng ? '.png' : '.jpg');
+  const dateiname = geladen.dateiname.replace(/\.jpg$/i, '') + (einzeilig ? '_eine-Zeile' : '') + (alsPng ? '.png' : '.jpg');
   const asciiName = dateiname.replace(/[^\x20-\x7E]/g, '_').replace(/["\\]/g, '');
   return new NextResponse(new Uint8Array(bytes), {
     headers: {

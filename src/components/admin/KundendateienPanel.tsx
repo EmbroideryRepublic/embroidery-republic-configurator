@@ -39,7 +39,7 @@
 import Image from 'next/image';
 import type { AdminOrderItemRow, AdminOrderElementRow } from '@/lib/admin/data';
 import { ansichtLabel, sortiereAnsichten } from '@/lib/admin/ansichten';
-import { textJpgHref, textPngHref, textVorschauHref, zeilenAnzahl } from '@/lib/admin/textLink';
+import { textEinzeiligHref, textJpgHref, textPngHref, textVorschauHref, zeilenAnzahl } from '@/lib/admin/textLink';
 
 function formatiereDateigroesse(bytes: number | null): string | null {
   if (bytes === null) return null;
@@ -61,6 +61,8 @@ function downloadHref(orderId: string, storageKey: string, kundenDateiname: stri
 
 const KNOPF_HAUPT =
   'flex-shrink-0 rounded border border-gray-300 px-2.5 py-1.5 text-center text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50';
+
+const TEXT_LINK = 'text-xs text-gray-500 underline decoration-gray-300 underline-offset-2 hover:text-gray-800';
 
 function KundendateiZeile({ orderId, element, nummer }: { orderId: string; element: AdminOrderElementRow; nummer: number }) {
   const groesse = formatiereDateigroesse(element.fileSizeBytes);
@@ -127,6 +129,20 @@ function TextZeile({ orderId, element, nummer }: { orderId: string; element: Adm
         <p className="text-xs text-gray-500">
           PNG, transparent{zeilen > 1 ? ` · ${zeilen} Zeilen` : ''} · 300 dpi
         </p>
+        {/* Nur bei mehreren Zeilen: dieselbe Datei mit allen Zeilen hintereinander. Für den Fall, dass die
+            Kundschaft den Text ohne Umbruch möchte, im Textfeld aber mit der Eingabetaste einen erzeugt hat. */}
+        {zeilen > 1 && (
+          <p className="text-xs text-gray-500">
+            Ohne Zeilenumbruch:{' '}
+            <a href={textEinzeiligHref(orderId, element.id, 'png')} className={TEXT_LINK}>
+              PNG
+            </a>
+            {' · '}
+            <a href={textEinzeiligHref(orderId, element.id, 'jpg')} className={TEXT_LINK}>
+              JPG
+            </a>
+          </p>
+        )}
       </div>
 
       {/* Hauptknopf = PNG: die Datei für die DTF-Bestellung (transparenter Hintergrund). */}
@@ -134,10 +150,7 @@ function TextZeile({ orderId, element, nummer }: { orderId: string; element: Adm
         <a href={textPngHref(orderId, element.id)} className={KNOPF_HAUPT}>
           Herunterladen
         </a>
-        <a
-          href={textJpgHref(orderId, element.id)}
-          className="text-center text-xs text-gray-500 underline decoration-gray-300 underline-offset-2 hover:text-gray-800"
-        >
+        <a href={textJpgHref(orderId, element.id)} className={`text-center ${TEXT_LINK}`}>
           Als JPG
         </a>
       </div>

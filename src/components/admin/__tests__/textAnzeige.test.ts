@@ -86,6 +86,21 @@ test('Kundendateien: der Text steht wie das Logo in der Liste – mit Vorschaubi
   assert.match(html, /transparenten Hintergrund[^<]*DTF-Bestellung \(auch im ZIP\)/);
 });
 
+test('Kundendateien: Bei mehreren Zeilen gibt es die Datei auch ohne Zeilenumbruch – bei einer Zeile nicht', () => {
+  const html = renderToStaticMarkup(
+    createElement(KundendateienPanel, {
+      orderId: BESTELLUNG,
+      items: [position([element({ id: 'e-zwei' }), element({ id: 'e-eine', content: 'Muster Sport' })])],
+    })
+  );
+  assert.match(html, new RegExp(`Ohne Zeilenumbruch:[^<]*<a href="/api/admin/bestellungen/${BESTELLUNG}/texte/e-zwei\\?einzeilig=1&amp;format=png"[^>]*>PNG</a>`));
+  assert.match(html, new RegExp(`href="/api/admin/bestellungen/${BESTELLUNG}/texte/e-zwei\\?einzeilig=1"[^>]*>JPG</a>`));
+  assert.equal((html.match(/Ohne Zeilenumbruch:/g) ?? []).length, 1, 'nur der zweizeilige Text bietet das an');
+  assert.doesNotMatch(html, /e-eine\?einzeilig/, 'ein Text, der ohnehin eine Zeile ist, braucht keine zweite Fassung');
+  // Die Standard-Downloads bleiben unverändert (Zeilen wie gespeichert).
+  assert.match(html, new RegExp(`href="/api/admin/bestellungen/${BESTELLUNG}/texte/e-zwei\\?format=png"[^>]*>Herunterladen<`));
+});
+
 test('Kundendateien: Logos sehen aus wie bisher, ein Logo bekommt keinen Text-Download', () => {
   const html = renderToStaticMarkup(createElement(KundendateienPanel, { orderId: BESTELLUNG, items: [position([logo])] }));
   assert.match(html, /1 Datei insgesamt/);

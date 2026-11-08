@@ -13,7 +13,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { ladeTextFuerJpg, ladeTexteFuerZip, ladeTextBytesFuerZip } from '../textDateien';
-import { textJpgHref, textPngHref, textVorschauHref, zeilenAnzahl } from '../textLink';
+import { textJpgHref, textPngHref, textVorschauHref, textEinzeiligHref, inEineZeile, zeilenAnzahl } from '../textLink';
+import { renderTextAlsPng } from '@/lib/rendering/renderTextJpg';
 
 const DB = 'https://db.example.invalid';
 const ENV: Record<string, string> = { NEXT_PUBLIC_SUPABASE_URL: DB, SUPABASE_SECRET_KEY: 'sb_secret_test' };
@@ -232,6 +233,33 @@ test('ZIP: ein Fehler beim Erzeugen eines Textes wird gemeldet, die übrigen Tex
   assert.ok(ergebnis.geladen.some((d) => d.zipEintragsname.endsWith('Text-1.png')), 'der intakte Text ist dabei');
 });
 
+// ── Download in EINER Zeile ──────────────────────────────────────────────
+
+test('In einer Zeile: die Zeilen stehen hintereinander, Leerzeichen am Zeilenrand entfallen', () => {
+  assert.equal(inEineZeile('Team \nSchüplitz'), 'Team Schüplitz', 'der Kundentext aus ER-2026-F5EE03');
+  assert.equal(inEineZeile('a\r\nb\rc\nd'), 'a b c d');
+  assert.equal(inEineZeile('  oben \n\n  unten  '), 'oben unten', 'leere Zeilen und Ränder fallen weg');
+  assert.equal(inEineZeile('Eine Zeile'), 'Eine Zeile', 'ein Text ohne Umbruch bleibt, wie er ist');
+  assert.equal(inEineZeile('Zwei  Wörter'), 'Zwei  Wörter', 'Abstände INNERHALB einer Zeile gehören dem Kunden');
+});
+
+test('Der Text in einer Zeile wird wirklich einzeilig gerendert – gleiche Schrift, deutlich flacher und breiter', async () => {
+  const geladen = (await ladeTextFuerJpg(BESTELLUNG, TEXT_1))!;
+  const zweizeilig = await renderTextAlsPng(geladen.eingabe);
+  const einzeilig = await renderTextAlsPng({
+    ...geladen.eingabe,
+    element: { ...geladen.eingabe.element, content: inEineZeile(geladen.eingabe.element.content) },
+  });
+  assert.ok(zweizeilig.ok && einzeilig.ok);
+  assert.equal(zweizeilig.zeilen, 2);
+  assert.equal(einzeilig.zeilen, 1);
+  assert.ok(einzeilig.hoeheCm < zweizeilig.hoeheCm * 0.65, `Höhe ${einzeilig.hoeheCm} vs. ${zweizeilig.hoeheCm}: eine Zeile statt zwei`);
+  assert.ok(einzeilig.breiteCm > zweizeilig.breiteCm * 1.2, `Breite ${einzeilig.breiteCm} vs. ${zweizeilig.breiteCm}: beide Wörter nebeneinander`);
+  // Seitenverhältnis eines Einzeilers: deutlich breiter als hoch (Team Schüplitz ≈ 6 : 1).
+  assert.ok(einzeilig.breitePx / einzeilig.hoehePx > 4, `Seitenverhältnis ${(einzeilig.breitePx / einzeilig.hoehePx).toFixed(1)} : 1`);
+  assert.equal(einzeilig.dpi, 300);
+});
+
 // ── Quelltext-Prüfungen der Absicherung ──────────────────────────────────
 
 function quelltext(...teile: string[]): string {
@@ -251,6 +279,9 @@ test('Die Download-Route prüft die Admin-Sitzung VOR jedem Datenzugriff und bei
   assert.match(route, /nurVorschau \? 'private, max-age=300' : 'private, no-store'/, 'Downloads nie, das kleine Vorschaubild nur privat und kurz zwischenspeichern');
   assert.doesNotMatch(route, /'cache-control': '[^']*public/, 'Kundendaten gehören in keinen gemeinsamen Zwischenspeicher');
   assert.match(route, /get\('vorschau'\) === '1'/);
+  assert.match(route, /get\('einzeilig'\) === '1'/, 'die Fassung in einer Zeile gibt es nur auf ausdrücklichen Wunsch');
+  assert.match(route, /inEineZeile\(eingabe\.element\.content\)/);
+  assert.match(route, /\(einzeilig \? '_eine-Zeile' : ''\)/, 'der Dateiname sagt, dass es die Fassung in einer Zeile ist');
   assert.match(route, /dpi: VORSCHAU_DPI/, 'das Vorschaubild wird klein gerastert, nicht in Druckgröße');
   assert.match(route, /export const maxDuration = \d+/);
 });
@@ -291,6 +322,8 @@ test('Adresse des Downloads und Zeilenzählung', () => {
   assert.equal(textPngHref('o1', 'e1'), '/api/admin/bestellungen/o1/texte/e1?format=png');
   assert.equal(textPngHref('o1', 'e1', true), '/api/admin/bestellungen/o1/texte/e1?format=png&ansicht=1');
   assert.equal(textVorschauHref('o1', 'e1'), '/api/admin/bestellungen/o1/texte/e1?vorschau=1');
+  assert.equal(textEinzeiligHref('o1', 'e1', 'png'), '/api/admin/bestellungen/o1/texte/e1?einzeilig=1&format=png');
+  assert.equal(textEinzeiligHref('o1', 'e1', 'jpg'), '/api/admin/bestellungen/o1/texte/e1?einzeilig=1');
   assert.equal(zeilenAnzahl('Team \nSchüplitz'), 2);
   assert.equal(zeilenAnzahl('Eine Zeile'), 1);
   assert.equal(zeilenAnzahl('a\r\nb\r\nc'), 3);

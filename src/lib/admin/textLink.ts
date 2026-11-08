@@ -22,6 +22,24 @@ export function textVorschauHref(orderId: string, elementId: string): string {
   return `/api/admin/bestellungen/${encodeURIComponent(orderId)}/texte/${encodeURIComponent(elementId)}?vorschau=1`;
 }
 
+/** Adresse des Downloads in EINER Zeile: alle Zeilen des Textes hintereinander, ohne Umbruch.
+ *  Für Fälle, in denen die Kundschaft den Text ohne Umbruch haben möchte, im Konfigurator aber
+ *  (z. B. mit der Eingabetaste im Textfeld) mehrere Zeilen entstanden sind. */
+export function textEinzeiligHref(orderId: string, elementId: string, format: 'png' | 'jpg'): string {
+  const pfad = `/api/admin/bestellungen/${encodeURIComponent(orderId)}/texte/${encodeURIComponent(elementId)}?einzeilig=1`;
+  return format === 'png' ? `${pfad}&format=png` : pfad;
+}
+
+/** Der Text ohne Zeilenumbrüche: Die Zeilen stehen hintereinander, getrennt durch ein Leerzeichen
+ *  (aus "Team ⏎ Schüplitz" wird "Team Schüplitz"; überzählige Leerzeichen am Zeilenrand entfallen). */
+export function inEineZeile(inhalt: string): string {
+  return inhalt
+    .split(/\r\n|\r|\n/)
+    .map((zeile) => zeile.trim())
+    .filter((zeile) => zeile.length > 0)
+    .join(' ');
+}
+
 /** Anzahl der Zeilen eines Textes – ein Zeilenumbruch beginnt eine neue Zeile. */
 export function zeilenAnzahl(inhalt: string): number {
   return inhalt.split(/\r\n|\r|\n/).length;

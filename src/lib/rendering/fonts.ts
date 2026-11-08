@@ -46,6 +46,30 @@ export function resolveFontFamily(fontFamily: string): string {
   return FONT_SUBSTITUTES[fontFamily] ?? DEFAULT_SUBSTITUTE;
 }
 
+/**
+ * Besitzt die gebündelte Ersatzschrift zu diesem Editor-Schriftnamen einen
+ * ECHTEN Fett- bzw. Kursiv-Schnitt?
+ *
+ * Nur dann kann die Vorschau die Wahl der Kundschaft ("fett"/"kursiv") durch
+ * die Schriftdatei selbst abbilden. Anton (Ersatz für Impact) hat nur eine
+ * einzige Variante: Im Editor stellt der Browser Impact trotzdem schräg dar
+ * (er schert die Schrift künstlich), die Vorschau zeigte den Text bisher
+ * aufrecht – "kursiv" ging auf dem Weg vom Editor zum Produktionsbild
+ * verloren. svgScene.ts bildet den fehlenden Kursiv-Schnitt deshalb nach.
+ */
+export function hatEchtenSchnitt(fontFamily: string, schnitt: 'bold' | 'italic'): boolean {
+  const dateien = FONT_FILES[resolveFontFamily(fontFamily)] ?? [];
+  const kennung = schnitt === 'bold' ? 'Bold' : 'Italic';
+  return dateien.some((datei) => datei.includes(kennung));
+}
+
+/** Schrift-Optionen für resvg – für Produktionsvorschau und Text-Download
+ *  dieselben, damit beide Wege dieselben Schriften nutzen. Systemschriften
+ *  bleiben aus, sonst hinge das Ergebnis vom jeweiligen Server ab. */
+export function resvgSchriftOptionen(): { fontFiles: string[]; loadSystemFonts: boolean; defaultFontFamily: string } {
+  return { fontFiles: getFontFiles(), loadSystemFonts: false, defaultFontFamily: DEFAULT_SUBSTITUTE };
+}
+
 /** Flache Liste aller gebündelten Schriftdatei-Pfade – wird komplett an
  *  resvgs `fontFiles`-Option übergeben (fontdb wählt anhand von
  *  font-family/font-weight/font-style selbst die passende Datei aus). */

@@ -9,11 +9,12 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getScaleFactors, elementToPixelRect, pxToCm, cmToPx, type PixelRect, type ScaleFactors } from '@/lib/canvas/cmConversion';
 import { getContainRect, computeAreaPx } from '@/lib/canvas/containRect';
 import { isNearSeam, overlapsExclusionZone, pushOutOfExclusionZones } from '@/lib/canvas/bounds';
-import { computeTextBoxCm } from '@/lib/canvas/textSizing';
+import { computeTextBoxCm, gleicheTextBoxAn } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateLogoStitches, estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import { CANVAS_WIDTH, CANVAS_HEIGHT } from '@/config/products';
-import { cm as formatCm } from '@/lib/format';
+import { cm as formatCm, motivMass, zahl } from '@/lib/format';
+import { useLanguageStore } from '@/stores/languageStore';
 import { gewebeTextur } from '@/lib/canvas/fabricTexture';
 
 /** Platz für die seitlichen/unteren Maß-Lineale (Linie + cm-Beschriftung),
@@ -298,6 +299,42 @@ export function ConfiguratorCanvas({
     }
   }, [viewElements, areaPx, scaleFactors, printArea, imageRect, updateElement]);
 
+  // ── Text-Boxen an den Maßstab angleichen ────────────────────────────
+  // Die Zentimeter-Maße eines Textes (Box) entstehen aus der gemessenen
+  // Textgröße in Pixeln. Umgerechnet wurde bisher mit einem Näherungsmaßstab
+  // (Prozente der Leinwand statt des Produktfotos, siehe computeTextBoxCm) –
+  // je nach Foto-Format um bis zu rund −20 % / +18 % neben dem, was die Lineale
+  // und die Vorschau zeigen. Logos waren davon nicht betroffen (sie werden im
+  // echten Maßstab gezogen). Hier wird jede Text-Box der aktiven Ansicht auf den
+  // tatsächlich gezeichneten Maßstab gebracht, damit die angezeigten Maße
+  // (Konfigurator, Admin, E-Mail, Produktionsblatt) den echten Abmessungen auf
+  // dem Kleidungsstück entsprechen.
+  //
+  // Position (obere linke Ecke) bleibt unverändert: Konva zeichnet den Text von
+  // dieser Ecke aus, er bewegt sich also nicht. updateElement statt
+  // commitElement – die Korrektur erzeugt keinen Undo-Schritt. Eine Toleranz
+  // verhindert eine Endlosschleife durch Rundung. Die Regel "Text größer als die
+  // empfohlene Maximalgröße wird verkleinert" gilt unverändert – nur mit den
+  // echten Maßen gemessen (lib/canvas/textSizing.ts::gleicheTextBoxAn).
+  const anzeigeMassstab = scaleFactors?.pxPerCmX ?? null;
+  const bleibtUnveraendert = hideGuides || viewOverride !== undefined;
+  useEffect(() => {
+    if (bleibtUnveraendert || !printArea || anzeigeMassstab === null) return;
+    for (const el of viewElements) {
+      if (el.type !== 'text') continue;
+      // Regel und Begründung (inkl. "Größenregel bleibt, wie sie war") stehen in
+      // gleicheTextBoxAn.
+      const neu = gleicheTextBoxAn(el, printArea, anzeigeMassstab);
+      if (!neu) continue;
+      updateElement(el.id, {
+        fontSizePx: neu.fontSizePx,
+        widthCm: neu.widthCm,
+        heightCm: neu.heightCm,
+        estimatedStitches: estimateTextStitches(neu.widthCm * neu.heightCm, el.inkCoverageRatio ?? 0.35),
+      });
+    }
+  }, [viewElements, printArea, anzeigeMassstab, bleibtUnveraendert, updateElement]);
+
   // Prüft, ob der Mittelpunkt eines gezogenen Elements nah genug am
   // Mittelpunkt des Druckbereichs liegt, um eine Hilfslinie einzublenden.
   // ALS useCallback (stabile Referenz, solange sich areaPx nicht ändert):
@@ -415,7 +452,7 @@ export function ConfiguratorCanvas({
                 <KonvaText
                   x={areaPx.x}
                   y={areaPx.y - 18}
-                  text={`Bewegungsbereich · Motiv max. ${printArea.maxWidthCm}×${printArea.maxHeightCm} cm`}
+                  text={`Bewegungsbereich · Motiv max. ${zahl(printArea.maxWidthCm)}×${zahl(printArea.maxHeightCm)} cm`}
                   fontSize={11}
                   fontFamily="Inter, sans-serif"
                   fill="#8a6a3a"
@@ -760,6 +797,7 @@ const LogoNode = memo(function LogoNode({
   onDragStop,
 }: LogoNodeProps) {
   const [rawImage] = useImage(element.fileUrl);
+  const sprache = useLanguageStore((s) => s.language);
   const shapeRef = useRef<Konva.Image>(null);
   const transformerRef = useRef<Konva.Transformer>(null);
 
@@ -970,7 +1008,7 @@ const LogoNode = memo(function LogoNode({
               Bedienfeld rechts, damit die tatsächliche Druckgröße beim
               Skalieren sofort sichtbar ist, ohne den Blick wechseln zu müssen. */}
           <KonvaText
-            text={`${element.widthCm.toFixed(1)} × ${element.heightCm.toFixed(1)} cm`}
+            text={`${motivMass(element.widthCm, sprache)} × ${motivMass(element.heightCm, sprache)} cm`}
             x={xPx}
             y={yPx - 20}
             fontSize={12}
@@ -1026,6 +1064,7 @@ const TextNode = memo(function TextNode({
   onDragCheck,
   onDragStop,
 }: TextNodeProps) {
+  const sprache = useLanguageStore((s) => s.language);
   const shapeRef = useRef<Konva.Text>(null);
   const transformerRef = useRef<Konva.Transformer>(null);
 
@@ -1123,7 +1162,7 @@ const TextNode = memo(function TextNode({
           // damit der berechnete Flächenpreis) beliebig größer werden als
           // der sichtbare Text – genau der gemeldete Fehler.
           const box = printArea
-            ? computeTextBoxCm(element.content, element.fontFamily, newFontSizePx, element.bold, element.italic, printArea)
+            ? computeTextBoxCm(element.content, element.fontFamily, newFontSizePx, element.bold, element.italic, printArea, scaleFactors.pxPerCmX)
             : { widthCm: pxToCm(newFontSizePx, scaleFactors.pxPerCmX), heightCm: pxToCm(newFontSizePx, scaleFactors.pxPerCmY) };
 
           const newWidthPx = cmToPx(box.widthCm, scaleFactors.pxPerCmX);
@@ -1180,7 +1219,7 @@ const TextNode = memo(function TextNode({
             boundBoxFunc={(oldBox, newBox) => (newBox.width < 15 || newBox.height < 15 ? oldBox : newBox)}
           />
           <KonvaText
-            text={`${element.widthCm.toFixed(1)} × ${element.heightCm.toFixed(1)} cm`}
+            text={`${motivMass(element.widthCm, sprache)} × ${motivMass(element.heightCm, sprache)} cm`}
             x={xPx}
             y={yPx - 20}
             fontSize={12}

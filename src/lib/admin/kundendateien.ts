@@ -68,7 +68,7 @@ const RAND_UNTERSTRICH = new RegExp('^_+|_+$', 'g');
  * separat in KundendateiEintrag.kundenDateiname erhalten – hier geht es nur
  * um den Namen INNERHALB des ZIP-Archivs.
  */
-function saeubereFuerDateisystem(wert: string): string {
+export function saeubereFuerDateisystem(wert: string): string {
   const bereinigt = wert
     .normalize('NFKD')
     .replace(KOMBINIERENDE_AKZENTE, '')

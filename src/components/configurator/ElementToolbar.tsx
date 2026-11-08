@@ -7,6 +7,7 @@ import { DECORATION_POSITIONS } from '@/config/decorationPositions';
 import { AVAILABLE_FONTS } from '@/config/fonts';
 import { THREAD_COLORS } from '@/config/threadColors';
 import { isNearSeam } from '@/lib/canvas/bounds';
+import { motivMass } from '@/lib/format';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
@@ -570,11 +571,11 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
       <div className="grid grid-cols-2 gap-2 rounded-md bg-gray-50 p-2 text-sm text-gray-700">
         <div>
           <span className="block text-xs text-gray-400">{t('element_width')}</span>
-          {selected.widthCm.toFixed(1)} cm
+          {motivMass(selected.widthCm, language)} cm
         </div>
         <div>
           <span className="block text-xs text-gray-400">{t('element_height')}</span>
-          {selected.heightCm.toFixed(1)} cm
+          {motivMass(selected.heightCm, language)} cm
         </div>
         <div>
           <span className="flex items-center gap-1 text-xs text-gray-400">

@@ -48,6 +48,9 @@ export interface AdminOrderListRow {
  * (lib/actions/orderTypes.ts), das dieselbe Zeile fürs Rendering nutzt.
  */
 export interface AdminOrderElementRow {
+  /** Kennung des Elements (configuration_elements.id) – Grundlage für den
+   *  Text-Download als JPG (app/api/admin/bestellungen/[id]/texte/[elementId]). */
+  id: string;
   type: 'logo' | 'text';
   view: string;
   xCm: number;
@@ -540,7 +543,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     ? await supabase
         .from('configuration_elements')
         .select(
-          'order_item_id, element_type, view, x_cm, y_cm, width_cm, height_cm, rotation_deg, text_content, font_family, font_size, font_color, font_weight, font_style, text_align, file_name, display_file_url, original_file_url'
+          'id, order_item_id, element_type, view, x_cm, y_cm, width_cm, height_cm, rotation_deg, text_content, font_family, font_size, font_color, font_weight, font_style, text_align, file_name, display_file_url, original_file_url'
         )
         .in('order_item_id', itemIds)
     : { data: [] as Record<string, unknown>[], error: null };
@@ -661,6 +664,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
           const originalKey = originalPath ? nodePath.basename(originalPath) : null;
           const originalInfo = originalKey ? (dateiInfo.get(originalKey) ?? null) : null;
           return {
+            id: el.id as string,
             type: istLogo ? 'logo' : 'text',
             view: el.view as string,
             xCm: Number(el.x_cm ?? 0),

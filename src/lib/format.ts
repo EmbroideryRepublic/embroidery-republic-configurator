@@ -68,6 +68,22 @@ export function cm(wert: number): string {
   return `${zahl(wert)} cm`;
 }
 
+/**
+ * Motivmaß in cm mit GENAU einer Nachkommastelle, z. B. „20,9" (ohne Einheit).
+ *
+ * Eine Schreibweise für alle Stellen, an denen dieselbe Zahl auftaucht –
+ * Konfigurator, Adminbereich, Produktionsblatt, Mail an den Betreiber –, damit
+ * "20.9" an der einen und "20,9" an der anderen Stelle nicht wie zwei
+ * verschiedene Maße wirkt. Deutsch mit Komma; der englische Konfigurator
+ * schreibt mit Punkt.
+ */
+export function motivMass(wert: number, sprache: 'de' | 'en' = 'de'): string {
+  return new Intl.NumberFormat(sprache === 'en' ? 'en-GB' : GEBIETSSCHEMA, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format(wert);
+}
+
 // ── Zeitpunkte ──────────────────────────────────────────────────────────
 //
 // Dieselbe Konsolidierung wie bei den Geldbeträgen oben, aus demselben

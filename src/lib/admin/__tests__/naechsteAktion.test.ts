@@ -34,6 +34,7 @@ function item(overrides: Partial<AdminOrderItemRow> = {}): AdminOrderItemRow {
     quantity: 1,
     elements: [
       {
+        id: 'element-1',
         type: 'logo',
         view: 'front',
         xCm: 10,

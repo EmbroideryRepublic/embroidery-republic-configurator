@@ -1,12 +1,9 @@
 import { Resvg } from '@resvg/resvg-js';
-import { CANVAS_WIDTH, CANVAS_HEIGHT, getProduct } from '@/config/products';
-import { bildFuerAnsicht } from '@/lib/assets';
-import { getPrintAreas, flaecheFuerGroesse } from '@/config/printAreas';
-import { kleinsteBestellteGroesse, groessenLeiterVon } from '@/config/products/groessen';
+import { CANVAS_WIDTH, CANVAS_HEIGHT } from '@/config/products';
 import { getContainRect, computeAreaPx } from '@/lib/canvas/containRect';
 import { getScaleFactors, elementToPixelRect } from '@/lib/canvas/cmConversion';
-import { getFontFiles } from './fonts';
-import { loadGarmentImageInfo } from './garmentImageInfo';
+import { ladeAnsichtGrundlage } from './ansichtGrundlage';
+import { resvgSchriftOptionen } from './fonts';
 import { buildSceneSvg, type PositionedElement } from './svgScene';
 import type { RenderPrintViewInput, RenderPrintViewResult } from './types';
 
@@ -17,8 +14,6 @@ const TARGET_PRINT_AREA_DPI = 150;
 const TARGET_PX_PER_CM = TARGET_PRINT_AREA_DPI / 2.54;
 const MIN_RENDER_SCALE = 3;
 const MAX_RENDER_SCALE = 10;
-
-const DEFAULT_FONT_FAMILY = 'Arimo';
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
@@ -39,34 +34,14 @@ function clamp(value: number, min: number, max: number): number {
 export async function renderPrintView(input: RenderPrintViewInput): Promise<RenderPrintViewResult | null> {
   if (input.elements.length === 0) return null;
 
-  const product = getProduct(input.productId);
-  if (!product) throw new Error(`Unbekannte Produkt-ID "${input.productId}".`);
-  const color = product.colors.find((c) => c.id === input.colorId);
-  if (!color) throw new Error(`Unbekannte Farb-ID "${input.colorId}" für Produkt "${input.productId}".`);
-  const imagePath = bildFuerAnsicht(input.productId, input.colorId, input.view);
-  // Kein Herstellerbild für diese Ansicht (offenes View-Modell: nicht jedes
-  // Produkt führt jede Ansicht) → keine Produktionsvorschau für diese Ansicht,
-  // analog zur fehlenden Druckfläche unten. Kein Fehler.
-  if (!imagePath) return null;
-
-  const printAreas = await getPrintAreas(input.productId, input.printMethod);
-  const printAreaRoh = printAreas.find((a) => a.view === input.view);
-  if (!printAreaRoh) return null;
-  // Dieselbe Fläche wie bei der Bestellprüfung (orderValidation.ts) und im
-  // Editor (ConfiguratorPrototype.tsx) – gegen die kleinste bestellte Größe
-  // dieser Position aufgelöst, sonst platziert das Produktionsbild die
-  // Elemente in einem anderen Maßstab als der, gegen den geprüft wurde.
-  const groesseFuerFlaeche = kleinsteBestellteGroesse(input.sizeQuantities, groessenLeiterVon(product));
-  const printArea = flaecheFuerGroesse(printAreaRoh, groesseFuerFlaeche);
-
-  const garment = await loadGarmentImageInfo(imagePath);
-
-  // Schritt 1: logische Geometrie (renderScale=1) NUR um pxPerCm zu
-  // ermitteln, damit die Ziel-DPI unabhängig vom tatsächlichen
+  // Schritt 1: Produktbild, (größenabhängige) Druckfläche und der logische
+  // Maßstab pxPerCm – damit die Ziel-DPI unabhängig vom tatsächlichen
   // Zuschnitt/Seitenverhältnis des jeweiligen Produktfotos konsistent ist.
-  const imageRectLogical = getContainRect(garment.naturalWidth, garment.naturalHeight, CANVAS_WIDTH, CANVAS_HEIGHT, printArea.heightPercent / 100);
-  const areaPxHeightLogical = (printArea.heightPercent / 100) * imageRectLogical.height;
-  const pxPerCmLogical = areaPxHeightLogical / printArea.boxHeightCm;
+  // Die Rechnung steckt in ansichtGrundlage.ts, weil der Text-Download
+  // (renderTextJpg.ts) exakt denselben Maßstab braucht.
+  const grundlage = await ladeAnsichtGrundlage(input);
+  if (!grundlage) return null;
+  const { garment, printArea, pxPerCmLogisch: pxPerCmLogical } = grundlage;
   const renderScale = clamp(TARGET_PX_PER_CM / pxPerCmLogical, MIN_RENDER_SCALE, MAX_RENDER_SCALE);
 
   const canvasWidthPx = CANVAS_WIDTH * renderScale;
@@ -91,9 +66,7 @@ export async function renderPrintView(input: RenderPrintViewInput): Promise<Rend
     elements: positionedElements,
   });
 
-  const resvg = new Resvg(svg, {
-    font: { fontFiles: getFontFiles(), loadSystemFonts: false, defaultFontFamily: DEFAULT_FONT_FAMILY },
-  });
+  const resvg = new Resvg(svg, { font: resvgSchriftOptionen() });
   const pngBuffer = resvg.render().asPng();
 
   return { pngBuffer, widthPx: canvasWidthPx, heightPx: canvasHeightPx };

@@ -491,8 +491,10 @@ export async function ladeBestellungFuerAbschluss(orderId: string): Promise<Orde
   };
 }
 
-/** Übersetzt eine gespeicherte Zeile zurück in einen Motiv-Datensatz. */
-function zuElementRecord(zeile: Record<string, unknown>): OrderElementRecord {
+/** Übersetzt eine gespeicherte Zeile zurück in einen Motiv-Datensatz.
+ *  Exportiert für den Text-Download im Adminbereich (lib/admin/textDateien.ts),
+ *  der EIN Element anhand seiner Kennung lädt und dieselbe Übersetzung braucht. */
+export function zuElementRecord(zeile: Record<string, unknown>): OrderElementRecord {
   const basis = {
     view: zeile.view as OrderElementRecord['view'],
     xCm: Number(zeile.x_cm ?? 0),
@@ -645,6 +647,48 @@ async function erzeugeDruckvorschauen(order: OrderRecord, probleme: string[]): P
   );
   console.info(`[orders] Druckvorschauen: ${erzeugt}/${aufgaben.length} Ansicht(en) in ${Date.now() - begonnen} ms.`);
   return erzeugt;
+}
+
+export interface ProduktionsunterlagenErgebnis {
+  ok: boolean;
+  /** Anzahl neu erzeugter Vorschauen (Position × Ansicht). */
+  vorschauen: number;
+  /** true, wenn auch das Produktionsblatt (PDF) ersetzt wurde. */
+  produktionsblattErneuert: boolean;
+  /** Gründe, warum etwas nicht erneuert werden konnte – leer bei ok. */
+  probleme: string[];
+}
+
+/**
+ * Erzeugt Druckvorschauen UND Produktionsblatt einer bestehenden Bestellung
+ * neu, aus den gespeicherten Bestelldaten und mit dem aktuellen Rendering.
+ *
+ * Gedacht für Bestellungen, deren Bilder mit einem inzwischen behobenen
+ * Darstellungsfehler entstanden sind (Beispiel ER-2026-F5EE03: ein Text mit
+ * Zeilenumbruch stand in Vorschau und Produktionsblatt auf EINER Zeile).
+ * Ändert keine Bestelldaten und verschickt nichts – weder an die Kundschaft
+ * noch an den Betreiber.
+ *
+ * Das Produktionsblatt wird nur ersetzt, wenn ALLE Vorschauen neu erzeugt
+ * werden konnten. Fehlt z. B. eine Logo-Datei im Speicher (DSGVO-Löschung),
+ * bliebe sonst ein Blatt mit fehlenden Bildern anstelle des vollständigen
+ * älteren; die Gründe stehen dann in `probleme`.
+ */
+export async function erzeugeProduktionsunterlagenNeu(orderId: string): Promise<ProduktionsunterlagenErgebnis> {
+  const order = await ladeBestellungFuerAbschluss(orderId);
+  if (!order) {
+    return { ok: false, vorschauen: 0, produktionsblattErneuert: false, probleme: ['Bestellung nicht gefunden.'] };
+  }
+
+  const probleme: string[] = [];
+  const vorschauen = await erzeugeDruckvorschauen(order, probleme);
+  if (probleme.length > 0) {
+    return { ok: false, vorschauen, produktionsblattErneuert: false, probleme };
+  }
+
+  const blatt = await erzeugeProduktionsblatt(order, probleme);
+  const produktionsblattErneuert = blatt.pfad !== null;
+  return { ok: produktionsblattErneuert && probleme.length === 0, vorschauen, produktionsblattErneuert, probleme };
 }
 
 /** Erzeugt das Produktionsblatt und vermerkt es an der Bestellung. */

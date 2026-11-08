@@ -19,9 +19,11 @@
 import Image from 'next/image';
 import type { AdminOrderItemRow, AdminOrderElementRow } from '@/lib/admin/data';
 import { ansichtLabel, sortiereAnsichten } from '@/lib/admin/ansichten';
+import { textJpgHref, textPngHref, zeilenAnzahl } from '@/lib/admin/textLink';
+import { motivMass } from '@/lib/format';
 import { RegeneratePreviewButton } from './RegeneratePreviewButton';
 
-function ElementZeile({ element, nummer }: { element: AdminOrderElementRow; nummer: number }) {
+function ElementZeile({ orderId, element, nummer }: { orderId: string; element: AdminOrderElementRow; nummer: number }) {
   const bezeichnung = element.type === 'logo' ? `Logo ${nummer}` : `Text ${nummer}`;
   return (
     <li className="flex items-start gap-2.5 border-t border-gray-100 py-2 first:border-t-0">
@@ -46,8 +48,11 @@ function ElementZeile({ element, nummer }: { element: AdminOrderElementRow; numm
           <p className="mt-0.5 truncate text-xs text-gray-500">{element.fileName ?? 'Dateiname unbekannt'}</p>
         ) : (
           <>
-            <p className="mt-0.5 break-words text-gray-800">&bdquo;{element.content}&ldquo;</p>
+            {/* whitespace-pre-line: ein Zeilenumbruch im Text bleibt sichtbar
+                ("Team ⏎ Schüplitz" sind zwei Zeilen, nicht "Team Schüplitz"). */}
+            <p className="mt-0.5 whitespace-pre-line break-words text-gray-800">&bdquo;{element.content}&ldquo;</p>
             <p className="mt-0.5 text-xs text-gray-500">
+              {zeilenAnzahl(element.content ?? '') > 1 ? `${zeilenAnzahl(element.content ?? '')} Zeilen, ` : ''}
               {element.fontFamily ?? 'Standardschrift'}
               {element.fontSizePx ? `, ${Math.round(element.fontSizePx)}px` : ''}
               {element.bold ? ', fett' : ''}
@@ -55,10 +60,33 @@ function ElementZeile({ element, nummer }: { element: AdminOrderElementRow; numm
               {element.align ? `, ${element.align}` : ''}
               {element.color ? ` · Farbe ${element.color}` : ''}
             </p>
+            <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
+              {/* PNG = transparenter Hintergrund, die Datei für die DTF-Bestellung; JPG hat immer einen Hintergrund. */}
+              <a
+                href={textPngHref(orderId, element.id)}
+                className="rounded bg-gold px-2 py-1 text-xs font-medium text-white transition-colors hover:bg-gold-dark"
+              >
+                PNG für DTF
+              </a>
+              <a
+                href={textJpgHref(orderId, element.id)}
+                className="rounded border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+              >
+                Als JPG herunterladen
+              </a>
+              <a
+                href={textJpgHref(orderId, element.id, true)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-500 underline decoration-gray-300 underline-offset-2 hover:text-gray-800"
+              >
+                Ansehen
+              </a>
+            </p>
           </>
         )}
         <p className="mt-0.5 text-xs text-gray-400">
-          {element.xCm.toFixed(1)}/{element.yCm.toFixed(1)} cm · {element.widthCm.toFixed(1)}×{element.heightCm.toFixed(1)} cm
+          {motivMass(element.xCm)}/{motivMass(element.yCm)} cm · {motivMass(element.widthCm)}×{motivMass(element.heightCm)} cm
           {element.rotationDeg ? ` · ${element.rotationDeg.toFixed(0)}°` : ''}
         </p>
       </div>
@@ -105,7 +133,7 @@ function AnsichtsKarte({
       <ul className="px-3 pb-1">
         {elements.map((element, i) => {
           zaehler[element.type] += 1;
-          return <ElementZeile key={i} element={element} nummer={zaehler[element.type]} />;
+          return <ElementZeile key={i} orderId={orderId} element={element} nummer={zaehler[element.type]} />;
         })}
       </ul>
     </div>

@@ -18,7 +18,11 @@
  */
 import { revalidatePath } from 'next/cache';
 import { istAdmin } from '@/lib/admin/auth';
-import { ladeBestellungFuerAbschluss, renderUndLadeEineDruckvorschauHoch } from '@/lib/orders/orderCompletion';
+import {
+  erzeugeProduktionsunterlagenNeu,
+  ladeBestellungFuerAbschluss,
+  renderUndLadeEineDruckvorschauHoch,
+} from '@/lib/orders/orderCompletion';
 import type { PrintView } from '@/types';
 
 export interface DruckvorschauAktionErgebnis {
@@ -55,4 +59,40 @@ export async function erzeugeDruckvorschauNeu(
 
   revalidatePath(`/admin/bestellung/${orderId}`);
   return { ok: true, meldung: 'Vorschau wurde erzeugt.' };
+}
+
+/**
+ * Erzeugt ALLE Druckvorschauen und das Produktionsblatt (PDF) einer
+ * bestehenden Bestellung aus den gespeicherten Daten neu – mit dem aktuellen
+ * Rendering. Sinnvoll, wenn die Bilder einer Bestellung mit einem inzwischen
+ * behobenen Darstellungsfehler entstanden sind (siehe
+ * orderCompletion.ts::erzeugeProduktionsunterlagenNeu).
+ *
+ * Verschickt nichts: weder Kundschaft noch Betreiber bekommen eine E-Mail.
+ * Eine bereits an die Kundschaft gesendete Vorschau-Freigabe bleibt, wie sie
+ * war – wer vorher eine Freigabe anfragen will, erzeugt zuerst neu.
+ */
+export async function erzeugeProduktionsunterlagenNeuAktion(orderId: string): Promise<DruckvorschauAktionErgebnis> {
+  if (!(await istAdmin())) {
+    return { ok: false, meldung: 'Nicht angemeldet.' };
+  }
+
+  const ergebnis = await erzeugeProduktionsunterlagenNeu(orderId);
+  // Auch ein Teilerfolg zeigt neue Vorschauen – Seite auffrischen.
+  if (ergebnis.vorschauen > 0 || ergebnis.produktionsblattErneuert) {
+    revalidatePath(`/admin/bestellung/${orderId}`);
+  }
+  if (!ergebnis.ok) {
+    const gruende = ergebnis.probleme.join(' · ') || 'Unbekannter Grund.';
+    return {
+      ok: false,
+      meldung: ergebnis.produktionsblattErneuert
+        ? `Vorschauen neu erzeugt, aber: ${gruende}`
+        : `Produktionsblatt nicht ersetzt. ${gruende}`,
+    };
+  }
+  return {
+    ok: true,
+    meldung: `${ergebnis.vorschauen} Vorschau${ergebnis.vorschauen === 1 ? '' : 'en'} und das Produktionsblatt wurden neu erzeugt.`,
+  };
 }

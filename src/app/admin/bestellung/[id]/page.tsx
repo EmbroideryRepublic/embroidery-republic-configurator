@@ -33,6 +33,8 @@ import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge';
 import { ProductionPreview } from '@/components/admin/ProductionPreview';
 import { KundendateienPanel } from '@/components/admin/KundendateienPanel';
+import { TextdateienPanel } from '@/components/admin/TextdateienPanel';
+import { RegenerateAllPreviewsButton } from '@/components/admin/RegenerateAllPreviewsButton';
 import { RequestProofApprovalButton } from '@/components/admin/RequestProofApprovalButton';
 import { BestellVerlauf } from '@/components/admin/BestellVerlauf';
 import { AdminAddressEditor } from '@/components/admin/AdminAddressEditor';
@@ -81,6 +83,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
           </p>
         )}
       </div>
+
 
       {/* Statussteuerung: bewusst ganz oben – es ist die Aktion, wegen der
           der Betreiber diese Seite in aller Regel öffnet. Anfragen haben
@@ -175,12 +178,17 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
       <section className="rounded-lg border border-gray-200 bg-white p-4">
         <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-sm font-semibold">Personalisierung</h2>
-          {/* Kundenfreigabe: siehe orderService.ts::sendeVorschauFreigabeAnfrage.
-              Nur für Bestellungen relevant (Anfragen haben keinen Produktions-
-              schritt) und blendet sich selbst aus, sobald bereits freigegeben. */}
-          {order.orderType === 'order' && !order.freigabeErteiltAm && (
-            <RequestProofApprovalButton orderId={order.id} deaktiviert={fehlenVorschauen(order)} />
-          )}
+          <div className="flex flex-wrap items-start gap-2">
+            {/* Bilder und Produktionsblatt aus den gespeicherten Daten neu rendern,
+                z.B. nach der Korrektur eines Darstellungsfehlers. Verschickt nichts. */}
+            {order.items.some((item) => item.elements.length > 0) && <RegenerateAllPreviewsButton orderId={order.id} />}
+            {/* Kundenfreigabe: siehe orderService.ts::sendeVorschauFreigabeAnfrage.
+                Nur für Bestellungen relevant (Anfragen haben keinen Produktions-
+                schritt) und blendet sich selbst aus, sobald bereits freigegeben. */}
+            {order.orderType === 'order' && !order.freigabeErteiltAm && (
+              <RequestProofApprovalButton orderId={order.id} deaktiviert={fehlenVorschauen(order)} />
+            )}
+          </div>
         </div>
         {order.orderType === 'order' && order.freigabeAngefragtAm && (
           <p className="mb-2 text-xs text-gray-500">
@@ -200,6 +208,10 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
         <h2 className="mb-2 text-sm font-semibold">Kundendateien</h2>
         <KundendateienPanel orderId={order.id} items={order.items} />
       </section>
+
+      {/* Texte: als JPG-Datei in Druckgröße abrufbar – entsteht beim Klick aus den
+          Bestelldaten, siehe components/admin/TextdateienPanel.tsx. */}
+      <TextdateienPanel orderId={order.id} items={order.items} />
 
       {/* Kontakt & Versand */}
       <div className="grid gap-4 sm:grid-cols-2">

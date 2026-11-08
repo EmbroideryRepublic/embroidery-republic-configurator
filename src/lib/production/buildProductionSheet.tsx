@@ -9,7 +9,7 @@
 import { Document, Page, View, Text, Image, StyleSheet, renderToBuffer } from '@react-pdf/renderer';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PRINT_VIEW_LABELS, PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
-import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
+import { formatiereGeld, formatiereZeitpunkt, motivMass } from '@/lib/format';
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 9, fontFamily: 'Helvetica', color: '#23211d' },
@@ -101,13 +101,13 @@ function ElementDetail({ element, index }: { element: OrderRecord['items'][numbe
       <View style={styles.row}>
         <Text style={styles.label}>Position</Text>
         <Text style={styles.value}>
-          x: {element.xCm.toFixed(1)} cm, y: {element.yCm.toFixed(1)} cm
+          x: {motivMass(element.xCm)} cm, y: {motivMass(element.yCm)} cm
         </Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>Größe</Text>
         <Text style={styles.value}>
-          {element.widthCm.toFixed(1)} × {element.heightCm.toFixed(1)} cm
+          {motivMass(element.widthCm)} × {motivMass(element.heightCm)} cm
           {element.rotationDeg ? `, gedreht ${element.rotationDeg.toFixed(0)}°` : ''}
         </Text>
       </View>

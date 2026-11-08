@@ -142,8 +142,12 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
                   return (
                     <Link
                       key={nr}
+                      // Ohne `scroll={false}`: Wer unten auf die nächste Seite klickt, soll
+                      // oben bei den ersten Produkten der neuen Seite ankommen – nicht in
+                      // der Fußzeile bleiben und die neue Seite erst wieder hochscrollen
+                      // müssen. (Die Filter oben behalten ihre Position bewusst, siehe
+                      // components/shop/filterNavigation.ts.)
                       href={abfrage ? `/produkt?${abfrage}` : '/produkt'}
-                      scroll={false}
                       aria-current={nr === ergebnis.seite ? 'page' : undefined}
                       className={`flex h-10 w-10 items-center justify-center rounded-full text-[13px] tabular-nums transition-all duration-300 ease-out ${
                         nr === ergebnis.seite

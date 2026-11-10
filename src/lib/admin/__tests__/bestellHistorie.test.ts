@@ -30,11 +30,18 @@ test('getOrderDetail lädt order_events ein zweites Mal, diesmal OHNE event_type
   const treffer = [...rumpf.matchAll(/\.from\('order_events'\)/g)];
   assert.equal(treffer.length, 2, 'ein gefilterter Query (problemEvents) plus ein ungefilterter (events) für die Zeitleiste');
 
-  const zweiterQueryIndex = rumpf.indexOf(".from('order_events')", treffer[0]!.index! + 1);
-  const zweiterQueryEnde = rumpf.indexOf(';', zweiterQueryIndex);
-  const zweiterQuery = rumpf.slice(zweiterQueryIndex, zweiterQueryEnde);
-  assert.doesNotMatch(zweiterQuery, /\.in\('event_type'/, 'die Zeitleiste darf keine Ereigniskategorie ausschließen');
-  assert.match(zweiterQuery, /\.order\('at', \{ ascending: false \}\)/, 'neueste zuerst');
+  // Seit dem Umbau in parallele Ebenen (2026-11-10) steht die ungefilterte Abfrage VOR der
+  // gefilterten – deshalb nicht mehr nach Position, sondern nach Eigenschaft unterscheiden:
+  // Jede Abfrage reicht bis zum Ende ihrer Verkettung (`.order(...)` bzw. `.limit(...)`).
+  const abfragen = treffer.map((t) => {
+    const ende = rumpf.indexOf('\n', rumpf.indexOf(".order('at', { ascending: false })", t.index!));
+    return rumpf.slice(t.index!, ende);
+  });
+  const ungefiltert = abfragen.filter((q) => !/\.in\('event_type'/.test(q));
+  const gefiltert = abfragen.filter((q) => /\.in\('event_type'/.test(q));
+  assert.equal(ungefiltert.length, 1, 'genau eine Abfrage ohne event_type-Filter: die Zeitleiste darf keine Kategorie ausschließen');
+  assert.equal(gefiltert.length, 1, 'genau eine gefilterte Abfrage für die Fehlerhinweise');
+  assert.match(ungefiltert[0]!, /\.order\('at', \{ ascending: false \}\)/, 'neueste zuerst');
 });
 
 test('AdminOrderDetail.events wird aus dem zweiten Query gebaut und im Rückgabeobjekt gesetzt', () => {

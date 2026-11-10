@@ -68,6 +68,32 @@ export const SUPPLIER_ORDER_TRANSITIONS: Readonly<Record<SupplierOrderStatus, re
  *  ob ein Datensatz verarbeitet werden darf. */
 export const PROCESSABLE_STATUSES: readonly SupplierOrderStatus[] = ['draft', 'queued'];
 
+/**
+ * Kann das Einreihen beim Öffnen der Bestell-Detailseite (enqueueSupplierOrdersForOrder)
+ * überhaupt etwas bewirken?
+ *
+ * Das Einreihen tut je erwartetem Lieferanten genau drei Dinge: einen fehlenden Auftrag anlegen,
+ * den Positions-Snapshot auffrischen (nur in PROCESSABLE_STATUSES) und 'draft' → 'queued' setzen.
+ * Steht der Auftrag eines Lieferanten schon in einem anderen Status (processing, cart_prepared,
+ * ordered, blocked, paused, failed, cancelled), ist keiner der drei Schritte wirksam – die Seite
+ * kann sich die dafür nötigen Datenbankaufrufe sparen. Fehlt dagegen ein Auftrag oder steht einer
+ * noch in 'draft'/'queued', bleibt es beim bisherigen Verhalten.
+ *
+ * Rein und ohne I/O, damit die Bedingung testbar ist. Unbekannte Status zählen als "nicht
+ * bearbeitbar" – genau wie in der Datenbankabfrage `.in('status', PROCESSABLE_STATUSES)`.
+ */
+export function einreihungNoetig(
+  erwarteteLieferanten: readonly string[],
+  vorhandeneAuftraege: readonly { supplierId: string; status: string }[]
+): boolean {
+  const statusJeLieferant = new Map(vorhandeneAuftraege.map((a) => [a.supplierId, a.status]));
+  const bearbeitbar: readonly string[] = PROCESSABLE_STATUSES;
+  return erwarteteLieferanten.some((id) => {
+    const status = statusJeLieferant.get(id);
+    return status === undefined || bearbeitbar.includes(status);
+  });
+}
+
 export function canTransition(from: SupplierOrderStatus, to: SupplierOrderStatus): boolean {
   return SUPPLIER_ORDER_TRANSITIONS[from].includes(to);
 }

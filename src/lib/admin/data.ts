@@ -12,6 +12,7 @@ import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/
 import { buildSupplierPositions } from '@/lib/suppliers';
 import { berechneAdminStatus, produktionsfreigabeErlaubt, type AdminStatus } from '@/lib/orders/orderVisibility';
 import { enqueueSupplierOrdersForOrder } from '@/lib/suppliers/lifecycle/enqueue';
+import { einreihungNoetig } from '@/lib/suppliers/lifecycle/status';
 import { getProductionFileSignedUrl, listProductionFileInfo } from '@/lib/supabase/storage';
 import type { SupplierOrderDraft, SupplierWorkerRunResult } from '@/lib/suppliers';
 
@@ -499,14 +500,54 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
 export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail | null> {
   const supabase = createAdminClient();
 
-  const { data: order, error: orderError } = await supabase
-    .from('orders')
-    .select(
-      'id, order_number, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at, order_confirmation_sent_at, freigabe_angefragt_am, freigabe_erteilt_am'
-    )
-    .eq('id', orderId)
-    .single();
+  // ── Drei Ebenen statt ~17 nacheinander laufender Abfragen ─────────────────
+  // Performance-Fund vom 2026-11-10: Das Öffnen einer Bestellung dauerte spürbar
+  // lange, weil hier alle Abfragen strikt hintereinander liefen (Bestellung,
+  // Positionen, Elemente, Dateiliste, Lieferantenaufträge, zwei Ereignislisten,
+  // dann Signed-URLs, dann bis zu vier Schreib-/Leseaufrufe der Einreihung).
+  // Jede Abfrage kostet einen vollen Netzwerk-Roundtrip; zusammen addierte sich
+  // das. Die meisten hängen aber nur von der Bestellkennung ab – oder von genau
+  // einer früheren Antwort. Deshalb:
+  //   Ebene 1: alles, was nur die Bestellkennung braucht (gleichzeitig)
+  //   Ebene 2: was die Bestellung bzw. die Positionen braucht (gleichzeitig)
+  //   Ebene 3: Signed-URLs je Logo/Ansicht (gleichzeitig) – und das Ende der
+  //            Einreihung, die seit Ebene 2 nebenher läuft
+  // Inhaltlich ändert sich nichts: dieselben Abfragen, dieselben Ergebnisse.
 
+  // ── Ebene 1 ───────────────────────────────────────────────────────────────
+  const [orderAntwort, itemsAntwort, dateiInfo, supplierAntwort, historieAntwort] = await Promise.all([
+    supabase
+      .from('orders')
+      .select(
+        'id, order_number, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at, order_confirmation_sent_at, freigabe_angefragt_am, freigabe_erteilt_am'
+      )
+      .eq('id', orderId)
+      .single(),
+    supabase
+      .from('order_items')
+      .select('id, product_id, product_name, color_id, color_name, print_method, size_quantities, unit_price, quantity')
+      .eq('order_id', orderId),
+    // EIN Listing-Aufruf für die gesamte Bestellung statt eines Downloads je
+    // Logo-Element – Grundlage für Dateigröße/-typ und die "Datei nicht mehr
+    // vorhanden"-Erkennung im neuen Kundendateien-Panel (siehe
+    // listProductionFileInfo, storage.ts). Läuft auch für Bestellungen ohne
+    // jedes Logo mit (leere Map), kein Sonderfall nötig.
+    listProductionFileInfo(`orders/${orderId}`),
+    supabase.from('supplier_orders').select('supplier_id, status, mode, updated_at, last_run').eq('order_id', orderId),
+    // Vollständige, UNGEFILTERTE Bestell-Historie für die Zeitleiste unten
+    // (BestellVerlauf.tsx) – bewusst ein eigener Query neben der gefilterten
+    // Fehlerabfrage in Ebene 2: Die Fehlerabfrage ist auf drei Fehlerkategorien
+    // UND (bei Versand/Bestätigung) auf "noch ungelöst" eingeschränkt, die
+    // Zeitleiste soll dagegen jedes Ereignis zeigen, inklusive erfolgreicher
+    // (status_changed, invoice_created, proof_approved, …).
+    supabase
+      .from('order_events')
+      .select('event_type, from_status, to_status, reason, detail, at')
+      .eq('order_id', orderId)
+      .order('at', { ascending: false }),
+  ]);
+
+  const { data: order, error: orderError } = orderAntwort;
   if (orderError || !order) {
     console.error('[admin] Bestellung nicht gefunden:', orderId, orderError);
     return null;
@@ -525,50 +566,56 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     refundStatus: (order.refund_status as string) ?? 'not_applicable',
   };
 
-  const { data: items, error: itemsError } = await supabase
-    .from('order_items')
-    .select('id, product_id, product_name, color_id, color_name, print_method, size_quantities, unit_price, quantity')
-    .eq('order_id', orderId);
-
+  const { data: items, error: itemsError } = itemsAntwort;
   if (itemsError) {
     console.error('[admin] order_items konnten nicht geladen werden:', itemsError);
   }
 
   const itemIds = (items ?? []).map((row) => row.id as string);
 
-  // Personalisierungselemente (Logo/Text) je Position – für die
-  // Produktionsvorschau unten. Keine neue Datenhaltung: dieselbe Tabelle,
-  // die auch das Rendering (Phase 2) und das Produktionsblatt-PDF nutzen.
-  const { data: elementRows, error: elementsError } = itemIds.length
-    ? await supabase
-        .from('configuration_elements')
-        .select(
-          'id, order_item_id, element_type, view, x_cm, y_cm, width_cm, height_cm, rotation_deg, text_content, font_family, font_size, font_color, font_weight, font_style, text_align, file_name, display_file_url, original_file_url'
-        )
-        .in('order_item_id', itemIds)
-    : { data: [] as Record<string, unknown>[], error: null };
-
-  if (elementsError) {
-    console.error('[admin] configuration_elements konnten nicht geladen werden:', elementsError);
-  }
-
-  // EIN Listing-Aufruf für die gesamte Bestellung statt eines Downloads je
-  // Logo-Element – Grundlage für Dateigröße/-typ und die "Datei nicht mehr
-  // vorhanden"-Erkennung im neuen Kundendateien-Panel (siehe
-  // listProductionFileInfo, storage.ts). Läuft auch für Bestellungen ohne
-  // jedes Logo mit (leere Map), kein Sonderfall nötig.
-  const dateiInfo = await listProductionFileInfo(`orders/${orderId}`);
-
-  const { data: supplierRows, error: supplierError } = await supabase
-    .from('supplier_orders')
-    .select('supplier_id, status, mode, updated_at, last_run')
-    .eq('order_id', orderId);
-
+  const { data: supplierRows, error: supplierError } = supplierAntwort;
   if (supplierError) {
     // Nicht fatal: Tabelle existiert erst ab Migration 0005 – der Rest der
     // Detailseite soll trotzdem funktionieren.
     console.error('[admin] supplier_orders konnten nicht geladen werden:', supplierError);
   }
+
+  const { data: eventRows, error: eventsError } = historieAntwort;
+  if (eventsError) {
+    console.error('[admin] order_events (Historie) konnten nicht geladen werden:', eventsError);
+  }
+  const events: AdminOrderEvent[] = (eventRows ?? []).map((ev) => ({
+    at: ev.at as string,
+    eventType: ev.event_type as string,
+    fromStatus: (ev.from_status as string | null) ?? null,
+    toStatus: (ev.to_status as string | null) ?? null,
+    reason: (ev.reason as string | null) ?? null,
+    detail: (ev.detail as Record<string, unknown> | null) ?? null,
+  }));
+
+  // Lieferantenpositionen – rein rechnerisch aus den Positionen, ohne Datenbank.
+  const supplierDraft = buildSupplierPositions(
+    orderId,
+    (items ?? []).map((row) => ({
+      productId: row.product_id as string,
+      colorId: row.color_id as string,
+      sizeQuantities: (row.size_quantities ?? {}) as Record<string, number>,
+    }))
+  );
+
+  // ── Ebene 2 ───────────────────────────────────────────────────────────────
+  // Personalisierungselemente (Logo/Text) je Position – für die
+  // Produktionsvorschau unten. Keine neue Datenhaltung: dieselbe Tabelle,
+  // die auch das Rendering (Phase 2) und das Produktionsblatt-PDF nutzen.
+  const ladeElemente = async () =>
+    itemIds.length
+      ? await supabase
+          .from('configuration_elements')
+          .select(
+            'id, order_item_id, element_type, view, x_cm, y_cm, width_cm, height_cm, rotation_deg, text_content, font_family, font_size, font_color, font_weight, font_style, text_align, file_name, display_file_url, original_file_url'
+          )
+          .in('order_item_id', itemIds)
+      : { data: [] as Record<string, unknown>[], error: null };
 
   // Letzte gescheiterte Vorgänge – dieselbe Grundidee wie schon bei DHL
   // (shippingService.ts loggt die TATSÄCHLICHE Fehlermeldung inkl. Anbieter-
@@ -579,10 +626,8 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   // seit Langem zuverlässig, nur las sie nie jemand aus. EIN gemeinsamer
   // Query statt drei getrennter Roundtrips (Performance-Audit vom selben
   // Datum: keine zusätzlichen N+1-Abfragen einführen).
-  let lastShippingError: string | null = null;
-  let lastConfirmationEmailError: string | null = null;
-  let lastInvoiceError: string | null = null;
-  if ((order.order_type as string) === 'order') {
+  const ladeProblemEreignisse = async () => {
+    if ((order.order_type as string) !== 'order') return [];
     const brauchtVersandPruefung = !order.tracking_number;
     const brauchtBestaetigungsPruefung = !order.order_confirmation_sent_at;
     // Rechnungsfehler bleiben relevant, auch wenn invoice_number inzwischen
@@ -602,105 +647,143 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
       .in('event_type', relevanteEventTypen)
       .order('at', { ascending: false })
       .limit(20);
+    return problemEvents ?? [];
+  };
 
-    for (const ev of problemEvents ?? []) {
-      const eventType = ev.event_type as string;
-      if (
-        !lastShippingError &&
-        (eventType === 'shipping_label_failed' || eventType === 'shipping_label_partial_failure')
-      ) {
-        lastShippingError = (ev.reason as string | null) ?? null;
-      }
-      if (
-        !lastConfirmationEmailError &&
-        eventType === 'email_failed' &&
-        (ev.detail as Record<string, unknown> | null)?.anlass === 'order_confirmation'
-      ) {
-        lastConfirmationEmailError = (ev.reason as string | null) ?? null;
-      }
-      if (
-        !lastInvoiceError &&
-        (eventType === 'invoice_creation_failed' ||
-          eventType === 'invoice_creation_partial_failure' ||
-          eventType === 'invoice_accounting_marking_failed')
-      ) {
-        lastInvoiceError = (ev.reason as string | null) ?? null;
-      }
+  // Lieferantenauftrag bedarfsgerecht anlegen: Der Aufruf ist idempotent
+  // (bestehende Snapshots werden nicht überschrieben) und läuft NUR, wenn
+  // produktionsfreigabeErlaubt() zustimmt (Stornofrist abgelaufen, bezahlt,
+  // nicht storniert) – seit der Trennung von Sichtbarkeit und Produktions-
+  // freigabe (2026-08-25) die alleinige Bedingung dafür, unabhängig davon,
+  // dass die Seite selbst jetzt immer ausgeliefert wird. Für stornierte oder
+  // unbezahlte Bestellungen entsteht damit weiterhin nie ein Auftrag.
+  // Nicht-fatal: die Detailseite muss auch ohne funktionieren.
+  //
+  // Performance (2026-11-10): Früher lief das bei JEDEM Öffnen einer bezahlten
+  // Bestellung nacheinander mit (zwei erneute Leseabfragen, je Lieferant zwei
+  // Schreibaufrufe plus Statuswechsel) – auch dann, wenn nichts mehr zu tun war.
+  // Jetzt: nur wenn ein erwarteter Lieferantenauftrag fehlt oder noch in
+  // 'draft'/'queued' steht (einreihungNoetig) – in allen anderen Fällen wären
+  // alle Schritte wirkungslos. Und wenn doch nötig, läuft sie NEBEN den
+  // Leseabfragen von Ebene 2/3 und wird erst am Ende abgewartet (auf Vercel
+  // darf nichts im Hintergrund weiterlaufen, was nach der Antwort noch fertig
+  // werden müsste).
+  const einreihungAbwarten: Promise<void> =
+    (order.order_type as string) === 'order' &&
+    produktionsfreigabeErlaubt(adminStatusEingabe) &&
+    einreihungNoetig(
+      Object.keys(supplierDraft.positionsBySupplier),
+      (supplierRows ?? []).map((row) => ({ supplierId: row.supplier_id as string, status: row.status as string }))
+    )
+      ? enqueueSupplierOrdersForOrder(orderId).then(
+          () => undefined,
+          (err) => {
+            console.error('[admin] Lieferanten-Einreihung fehlgeschlagen (nicht-fatal):', err);
+          }
+        )
+      : Promise.resolve();
+
+  // Drei voneinander unabhängige Signed-URLs – parallel statt nacheinander
+  // (Performance-Fund vom 2026-09-01: drei sequenzielle awaits verzögerten
+  // das Öffnen einer Bestellung um die Summe aller drei Netzwerk-Laufzeiten,
+  // obwohl keiner der drei Aufrufe vom Ergebnis eines anderen abhängt).
+  // Sie brauchen nur die Bestellung – also schon in Ebene 2 starten.
+  const dokumentUrlsAbwarten = Promise.all([
+    order.pdf_url ? getProductionFileSignedUrl(order.pdf_url as string) : Promise.resolve(null),
+    order.invoice_pdf_url ? getProductionFileSignedUrl(order.invoice_pdf_url as string) : Promise.resolve(null),
+    order.dhl_label_url ? getProductionFileSignedUrl(order.dhl_label_url as string) : Promise.resolve(null),
+  ]);
+
+  const [elementAntwort, problemEvents] = await Promise.all([ladeElemente(), ladeProblemEreignisse()]);
+
+  const { data: elementRows, error: elementsError } = elementAntwort;
+  if (elementsError) {
+    console.error('[admin] configuration_elements konnten nicht geladen werden:', elementsError);
+  }
+
+  let lastShippingError: string | null = null;
+  let lastConfirmationEmailError: string | null = null;
+  let lastInvoiceError: string | null = null;
+  for (const ev of problemEvents) {
+    const eventType = ev.event_type as string;
+    if (
+      !lastShippingError &&
+      (eventType === 'shipping_label_failed' || eventType === 'shipping_label_partial_failure')
+    ) {
+      lastShippingError = (ev.reason as string | null) ?? null;
+    }
+    if (
+      !lastConfirmationEmailError &&
+      eventType === 'email_failed' &&
+      (ev.detail as Record<string, unknown> | null)?.anlass === 'order_confirmation'
+    ) {
+      lastConfirmationEmailError = (ev.reason as string | null) ?? null;
+    }
+    if (
+      !lastInvoiceError &&
+      (eventType === 'invoice_creation_failed' ||
+        eventType === 'invoice_creation_partial_failure' ||
+        eventType === 'invoice_accounting_marking_failed')
+    ) {
+      lastInvoiceError = (ev.reason as string | null) ?? null;
     }
   }
 
-  // Vollständige, UNGEFILTERTE Bestell-Historie für die Zeitleiste unten
-  // (BestellVerlauf.tsx) – bewusst ein zweiter, eigener Query statt den
-  // gefilterten problemEvents-Query oben wiederzuverwenden: der obige ist auf
-  // drei Fehlerkategorien UND (bei Versand/Bestätigung) auf "noch ungelöst"
-  // eingeschränkt, die Zeitleiste soll dagegen jedes Ereignis zeigen,
-  // inklusive erfolgreicher (status_changed, invoice_created, proof_approved, …).
-  const { data: eventRows, error: eventsError } = await supabase
-    .from('order_events')
-    .select('event_type, from_status, to_status, reason, detail, at')
-    .eq('order_id', orderId)
-    .order('at', { ascending: false });
-  if (eventsError) {
-    console.error('[admin] order_events (Historie) konnten nicht geladen werden:', eventsError);
-  }
-  const events: AdminOrderEvent[] = (eventRows ?? []).map((ev) => ({
-    at: ev.at as string,
-    eventType: ev.event_type as string,
-    fromStatus: (ev.from_status as string | null) ?? null,
-    toStatus: (ev.to_status as string | null) ?? null,
-    reason: (ev.reason as string | null) ?? null,
-    detail: (ev.detail as Record<string, unknown> | null) ?? null,
-  }));
-
+  // ── Ebene 3 ───────────────────────────────────────────────────────────────
   const itemRows: AdminOrderItemRow[] = await Promise.all(
     (items ?? []).map(async (row, itemIndex) => {
       const eigeneElemente = (elementRows ?? []).filter((el) => el.order_item_id === row.id);
-
-      const elements: AdminOrderElementRow[] = await Promise.all(
-        eigeneElemente.map(async (el) => {
-          const istLogo = el.element_type === 'logo';
-          const displayPath = (el.display_file_url as string | null) ?? null;
-          const originalPath = (el.original_file_url as string | null) ?? null;
-          const originalKey = originalPath ? nodePath.basename(originalPath) : null;
-          const originalInfo = originalKey ? (dateiInfo.get(originalKey) ?? null) : null;
-          return {
-            id: el.id as string,
-            type: istLogo ? 'logo' : 'text',
-            view: el.view as string,
-            xCm: Number(el.x_cm ?? 0),
-            yCm: Number(el.y_cm ?? 0),
-            widthCm: Number(el.width_cm ?? 0),
-            heightCm: Number(el.height_cm ?? 0),
-            rotationDeg: Number(el.rotation_deg ?? 0),
-            content: (el.text_content as string | null) ?? undefined,
-            fontFamily: (el.font_family as string | null) ?? undefined,
-            fontSizePx: el.font_size !== null && el.font_size !== undefined ? Number(el.font_size) : undefined,
-            color: (el.font_color as string | null) ?? undefined,
-            bold: el.font_weight === 'bold',
-            italic: el.font_style === 'italic',
-            align: (el.text_align as string | null) ?? undefined,
-            fileName: (el.file_name as string | null) ?? undefined,
-            logoPreviewUrl: istLogo && displayPath ? await getProductionFileSignedUrl(displayPath) : null,
-            originalStorageKey: istLogo ? originalKey : null,
-            fileSizeBytes: istLogo ? (originalInfo?.size ?? null) : null,
-            fileMimeType: istLogo ? (originalInfo?.mimeType ?? null) : null,
-            originalDateiVorhanden: istLogo && originalInfo !== null,
-          } satisfies AdminOrderElementRow;
-        })
-      );
 
       // Bereits gerenderte Druckvorschau je Ansicht mit mindestens einem
       // Element – derselbe Speicherpfad, den orderCompletion.ts beim
       // Bestellabschluss befüllt (erzeugeDruckvorschauen). Kein neues
       // Rendering: getProductionFileSignedUrl liefert null, wenn die Datei
-      // (noch) nicht existiert, wirft nicht.
-      const ansichtenMitElementen = [...new Set(elements.map((e) => e.view))];
-      const previewEintraege = await Promise.all(
-        ansichtenMitElementen.map(async (view) => {
-          const pfad = `orders/${orderId}/preview-item${itemIndex}-${view}.png`;
-          return [view, await getProductionFileSignedUrl(pfad)] as const;
-        })
-      );
+      // (noch) nicht existiert, wirft nicht. Die Ansichten stehen schon an den
+      // Elementzeilen fest – die Vorschau-URLs müssen also nicht auf die
+      // Logo-URLs warten, beide werden gleichzeitig erzeugt.
+      const ansichtenMitElementen = [...new Set(eigeneElemente.map((el) => el.view as string))];
+
+      const [elements, previewEintraege] = await Promise.all([
+        Promise.all(
+          eigeneElemente.map(async (el) => {
+            const istLogo = el.element_type === 'logo';
+            const displayPath = (el.display_file_url as string | null) ?? null;
+            const originalPath = (el.original_file_url as string | null) ?? null;
+            const originalKey = originalPath ? nodePath.basename(originalPath) : null;
+            const originalInfo = originalKey ? (dateiInfo.get(originalKey) ?? null) : null;
+            return {
+              id: el.id as string,
+              type: istLogo ? 'logo' : 'text',
+              view: el.view as string,
+              xCm: Number(el.x_cm ?? 0),
+              yCm: Number(el.y_cm ?? 0),
+              widthCm: Number(el.width_cm ?? 0),
+              heightCm: Number(el.height_cm ?? 0),
+              rotationDeg: Number(el.rotation_deg ?? 0),
+              content: (el.text_content as string | null) ?? undefined,
+              fontFamily: (el.font_family as string | null) ?? undefined,
+              fontSizePx: el.font_size !== null && el.font_size !== undefined ? Number(el.font_size) : undefined,
+              color: (el.font_color as string | null) ?? undefined,
+              bold: el.font_weight === 'bold',
+              italic: el.font_style === 'italic',
+              align: (el.text_align as string | null) ?? undefined,
+              fileName: (el.file_name as string | null) ?? undefined,
+              logoPreviewUrl: istLogo && displayPath ? await getProductionFileSignedUrl(displayPath) : null,
+              originalStorageKey: istLogo ? originalKey : null,
+              fileSizeBytes: istLogo ? (originalInfo?.size ?? null) : null,
+              fileMimeType: istLogo ? (originalInfo?.mimeType ?? null) : null,
+              originalDateiVorhanden: istLogo && originalInfo !== null,
+            } satisfies AdminOrderElementRow;
+          })
+        ),
+        Promise.all(
+          ansichtenMitElementen.map(async (view) => {
+            const pfad = `orders/${orderId}/preview-item${itemIndex}-${view}.png`;
+            return [view, await getProductionFileSignedUrl(pfad)] as const;
+          })
+        ),
+      ]);
+
       const previewUrlByView: Partial<Record<string, string>> = {};
       for (const [view, url] of previewEintraege) {
         if (url) previewUrlByView[view] = url;
@@ -721,40 +804,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     })
   );
 
-  // Lieferantenauftrag bedarfsgerecht anlegen: Der Aufruf ist idempotent
-  // (bestehende Snapshots werden nicht überschrieben) und läuft NUR, wenn
-  // produktionsfreigabeErlaubt() zustimmt (Stornofrist abgelaufen, bezahlt,
-  // nicht storniert) – seit der Trennung von Sichtbarkeit und Produktions-
-  // freigabe (2026-08-25) die alleinige Bedingung dafür, unabhängig davon,
-  // dass die Seite selbst jetzt immer ausgeliefert wird. Für stornierte oder
-  // unbezahlte Bestellungen entsteht damit weiterhin nie ein Auftrag.
-  // Nicht-fatal: die Detailseite muss auch ohne funktionieren.
-  if ((order.order_type as string) === 'order' && produktionsfreigabeErlaubt(adminStatusEingabe)) {
-    try {
-      await enqueueSupplierOrdersForOrder(orderId);
-    } catch (err) {
-      console.error('[admin] Lieferanten-Einreihung fehlgeschlagen (nicht-fatal):', err);
-    }
-  }
-
-  const supplierDraft = buildSupplierPositions(
-    orderId,
-    itemRows.map((item) => ({
-      productId: item.productId,
-      colorId: item.colorId,
-      sizeQuantities: item.sizeQuantities,
-    }))
-  );
-
-  // Drei voneinander unabhängige Signed-URLs – parallel statt nacheinander
-  // (Performance-Fund vom 2026-09-01: drei sequenzielle awaits verzögerten
-  // das Öffnen einer Bestellung um die Summe aller drei Netzwerk-Laufzeiten,
-  // obwohl keiner der drei Aufrufe vom Ergebnis eines anderen abhängt).
-  const [productionSheetUrl, invoicePdfUrl, dhlLabelUrl] = await Promise.all([
-    order.pdf_url ? getProductionFileSignedUrl(order.pdf_url as string) : Promise.resolve(null),
-    order.invoice_pdf_url ? getProductionFileSignedUrl(order.invoice_pdf_url as string) : Promise.resolve(null),
-    order.dhl_label_url ? getProductionFileSignedUrl(order.dhl_label_url as string) : Promise.resolve(null),
-  ]);
+  const [[productionSheetUrl, invoicePdfUrl, dhlLabelUrl]] = await Promise.all([dokumentUrlsAbwarten, einreihungAbwarten]);
 
   return {
     id: order.id as string,

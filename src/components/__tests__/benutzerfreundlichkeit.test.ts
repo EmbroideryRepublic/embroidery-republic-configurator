@@ -181,3 +181,12 @@ test('Die „Noch offen“-Hinweise sind formatiert (Fehler vom 2026-11-10: clas
   assert.equal((warenkorb.match(/<p role="status" className="mb-2 text-center text-xs text-brand\/70">/g) ?? []).length, 2, 'Kasse und Anfrage');
   assert.match(quelltext('src', 'components', 'contact', 'ContactForm.tsx'), /<p role="status" className="mb-2 text-center text-xs text-brand\/70">/);
 });
+
+test('Das automatische Entfernen des weißen Hintergrunds ist beim Hochladen standardmäßig AUS (Wunsch des Betreibers 2026-11-10)', () => {
+  const k = quelltext('src', 'components', 'configurator', 'LogoUploader.tsx');
+  assert.match(k, /const \[removeBg, setRemoveBg\] = useState\(false\)/);
+  assert.doesNotMatch(k, /useState\(true\)/, 'kein Haken ist vorbelegt');
+  // Die Freistellung bleibt wählbar: beim Hochladen per Haken, später per Schalter im Design-Bereich.
+  assert.match(k, /checked=\{removeBg\}/);
+  assert.match(quelltext('src', 'components', 'configurator', 'ElementToolbar.tsx'), /t\('element_remove_bg'\)/);
+});

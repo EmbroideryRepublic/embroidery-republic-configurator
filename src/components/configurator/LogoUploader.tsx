@@ -30,7 +30,9 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [quality, setQuality] = useState<{ level: QualityLevel; dpi: number | null; message: string } | null>(null);
-  const [removeBg, setRemoveBg] = useState(true);
+  // Standardmäßig AUS (Wunsch des Betreibers 2026-11-10): Die einfache Freistellung sah bei vielen Logos schlecht aus.
+  // Wer sie braucht, setzt den Haken beim Hochladen oder schaltet sie danach im Design-Bereich um.
+  const [removeBg, setRemoveBg] = useState(false);
 
   const printMethod = useConfiguratorStore((s) => s.printMethod);
   const activeView = useConfiguratorStore((s) => s.activeView);

@@ -887,7 +887,7 @@ function CheckoutForm({ items, total, formatPrice, waehrungHinweis, onOrderPlace
           {t('trust_check')} · {t('trust_germany')} · {t('trust_express')}
         </p>
         {!isSubmitting && fehlendeAngaben.length > 0 && (
-          <p role="status" className="">
+          <p role="status" className="mb-2 text-center text-xs text-brand/70">
             {t('form_missing_hint', { fields: fehlendeAngaben.join(', ') })}
           </p>
         )}
@@ -1074,7 +1074,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
           </div>
         )}
         {!isSubmitting && fehlendeAngaben.length > 0 && (
-          <p role="status" className="">
+          <p role="status" className="mb-2 text-center text-xs text-brand/70">
             {t('form_missing_hint', { fields: fehlendeAngaben.join(', ') })}
           </p>
         )}

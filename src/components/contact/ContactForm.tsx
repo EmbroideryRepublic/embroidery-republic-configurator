@@ -307,7 +307,7 @@ export function ContactForm() {
       )}
 
       {status !== 'submitting' && fehlendeAngaben.length > 0 && (
-        <p role="status" className="">
+        <p role="status" className="mb-2 text-center text-xs text-brand/70">
           {t('form_missing_hint', { fields: fehlendeAngaben.join(', ') })}
         </p>
       )}

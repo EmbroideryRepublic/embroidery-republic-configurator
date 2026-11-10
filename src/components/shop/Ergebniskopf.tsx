@@ -93,7 +93,7 @@ export function Ergebniskopf({
                 aria-pressed={kriterien.ansicht === a}
                 aria-label={a === 'raster' ? 'Rasteransicht' : 'Listenansicht'}
                 className={`rounded-full p-2 transition-colors duration-300 ease-out ${
-                  kriterien.ansicht === a ? 'text-brand' : 'text-brand/70 hover:text-brand/50'
+                  kriterien.ansicht === a ? 'text-brand' : 'text-brand/70 hover:text-brand'
                 }`}
               >
                 {a === 'raster' ? <LayoutGrid className="h-[18px] w-[18px]" /> : <List className="h-[18px] w-[18px]" />}

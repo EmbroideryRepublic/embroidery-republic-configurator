@@ -168,3 +168,16 @@ test('„Deine Konfiguration“ ist standardmäßig eine schmale Zeile; die voll
     assert.ok(translations[sprache].konfig_details_show && translations[sprache].konfig_details_hide);
   }
 });
+
+test('Die „Noch offen“-Hinweise sind formatiert (Fehler vom 2026-11-10: className war leer, der Hinweis stand unformatiert über dem Knopf)', () => {
+  for (const datei of [
+    ['src', 'components', 'layout', 'CartDrawer.tsx'],
+    ['src', 'components', 'contact', 'ContactForm.tsx'],
+  ]) {
+    const k = quelltext(...datei);
+    assert.doesNotMatch(k, /role="status" className=""/, `${datei.join('/')}: Absatz ohne Klasse`);
+  }
+  const warenkorb = quelltext('src', 'components', 'layout', 'CartDrawer.tsx');
+  assert.equal((warenkorb.match(/<p role="status" className="mb-2 text-center text-xs text-brand\/70">/g) ?? []).length, 2, 'Kasse und Anfrage');
+  assert.match(quelltext('src', 'components', 'contact', 'ContactForm.tsx'), /<p role="status" className="mb-2 text-center text-xs text-brand\/70">/);
+});

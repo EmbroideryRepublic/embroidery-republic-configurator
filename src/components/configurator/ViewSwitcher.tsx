@@ -65,7 +65,7 @@ export function ViewSwitcher({ imageUrls, views }: ViewSwitcherProps) {
             <span
               className={clsx(
                 'mt-1 flex min-h-[1.7rem] w-[56px] items-start justify-center text-center text-[10px] font-medium leading-tight',
-                isActive ? 'text-gold-dark' : 'text-brand/70 group-hover:text-brand/60'
+                isActive ? 'text-gold-dark' : 'text-brand/70 group-hover:text-brand'
               )}
             >
               {label}

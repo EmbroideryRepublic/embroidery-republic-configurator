@@ -151,3 +151,20 @@ test('Produktübersicht zeigt die Trefferzahl; Konto-Passwortfelder lassen sich 
   assert.match(feld, /aria-label=\{klartext \? 'Passwort verbergen' : 'Passwort anzeigen'\}/);
   assert.match(feld, /type=\{istPasswort && klartext \? 'text' : type\}/);
 });
+
+// ── "Deine Konfiguration" ────────────────────────────────────────────────
+
+test('„Deine Konfiguration“ ist standardmäßig eine schmale Zeile; die volle Liste klappt auf Klick auf (Wunsch des Betreibers 2026-11-10)', () => {
+  const k = quelltext('src', 'components', 'configurator', 'KonfigUebersicht.tsx');
+  assert.match(k, /const \[offen, setOffen\] = useState\(false\)/, 'eingeklappt als Standard');
+  assert.match(k, /aria-expanded=\{offen\}/);
+  assert.match(k, /aria-controls="konfig-details"/);
+  assert.match(k, /\{!offen && kurzProdukt/, 'Kurzfassung nur im eingeklappten Zustand');
+  assert.match(k, /\{offen && \(\s*<dl id="konfig-details"/, 'die volle Liste nur im aufgeklappten Zustand');
+  assert.match(k, /\{kurzGroesse\.erledigt && \(/, 'ohne Größe kein „—“ in der Kurzzeile');
+  // Der Hinweis auf den nächsten Schritt bleibt auch eingeklappt sichtbar.
+  assert.ok(k.indexOf('{naechster && (') > k.indexOf('{offen && ('), 'Hinweis steht außerhalb des Aufklappbereichs');
+  for (const sprache of ['de', 'en'] as const) {
+    assert.ok(translations[sprache].konfig_details_show && translations[sprache].konfig_details_hide);
+  }
+});

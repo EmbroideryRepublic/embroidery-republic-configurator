@@ -10,8 +10,9 @@
  * werden. Die Beurteilung selbst kommt aus `lib/configurator/kauffortschritt`;
  * hier steht nur die Darstellung.
  */
+import { useState } from 'react';
 import clsx from 'clsx';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown } from 'lucide-react';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getProduct } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
@@ -57,6 +58,10 @@ export function KonfigUebersicht({ priceHasErrors = false }: { priceHasErrors?: 
     preisGueltig: !priceHasErrors,
   });
 
+  // Standardmäßig eingeklappt: Die Übersicht ist Orientierung, kein Arbeitsbereich – der Platz gehört den Werkzeugen
+  // (Wunsch des Betreibers 2026-11-10). Die volle Liste klappt mit einem Klick auf.
+  const [offen, setOffen] = useState(false);
+
   const zeilen: { label: string; wert: string; erledigt: boolean; farbe?: string }[] = [
     { label: t('konfig_product'), wert: product?.name ?? t('konfig_none'), erledigt: !!product },
     { label: t('konfig_color'), wert: farbe?.name ?? t('konfig_none'), erledigt: !!farbe, farbe: farbe?.hex },
@@ -74,13 +79,63 @@ export function KonfigUebersicht({ priceHasErrors = false }: { priceHasErrors?: 
     { label: t('konfig_price'), wert: preis(menge > 0 ? totalPrice : unitPrice), erledigt: menge > 0 },
   ];
 
-  return (
-    <div className="rounded-xl border border-gold/20 bg-white p-3 shadow-elegant">
-      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand/70">
-        {t('konfig_title')}
-      </p>
+  // Kurzfassung für die schmale Zeile: Produkt, Farbe, Größe, Veredelung (Preis und Position stehen weiter unten bzw. in den Ebenen).
+  const kurzProdukt = zeilen[0];
+  const kurzFarbe = zeilen[1];
+  const kurzGroesse = zeilen[2];
+  const kurzMethode = zeilen[3];
+  const erledigtAnzahl = zeilen.filter((z) => z.erledigt).length;
 
-      <dl className="space-y-1">
+  return (
+    <div className="rounded-xl border border-gold/20 bg-white px-3 py-2.5 shadow-elegant">
+      <button
+        type="button"
+        onClick={() => setOffen((an) => !an)}
+        aria-expanded={offen}
+        aria-controls="konfig-details"
+        className="flex w-full items-center justify-between gap-2 text-left"
+      >
+        <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-brand/70">{t('konfig_title')}</span>
+        <span className="flex items-center gap-2">
+          <span className="flex items-center gap-0.5" aria-hidden>
+            {zeilen.map((z) => (
+              <span key={z.label} className={clsx('h-1.5 w-1.5 rounded-full', z.erledigt ? 'bg-gold-btn' : 'bg-brand/20')} />
+            ))}
+          </span>
+          <span className="sr-only">
+            {erledigtAnzahl}/{zeilen.length}
+          </span>
+          <ChevronDown className={clsx('h-4 w-4 text-brand/70 transition-transform', offen && 'rotate-180')} aria-hidden />
+          <span className="sr-only">{offen ? t('konfig_details_hide') : t('konfig_details_show')}</span>
+        </span>
+      </button>
+
+      {!offen && kurzProdukt && kurzFarbe && kurzGroesse && kurzMethode && (
+        <p className="mt-1 truncate text-[13px] font-medium text-brand">
+          {kurzProdukt.wert}
+          <span className="text-brand/70"> · </span>
+          {kurzFarbe.farbe && (
+            <span
+              className="mr-1 inline-block h-3 w-3 rounded-full align-[-1px] ring-1 ring-inset ring-black/10"
+              style={{ backgroundColor: kurzFarbe.farbe }}
+              aria-hidden
+            />
+          )}
+          {kurzFarbe.wert}
+          {/* Ohne gewählte Größe entfällt das Stück, statt ein "—" in der Zeile zu zeigen. */}
+          {kurzGroesse.erledigt && (
+            <>
+              <span className="text-brand/70"> · </span>
+              {kurzGroesse.wert}
+            </>
+          )}
+          <span className="text-brand/70"> · </span>
+          {kurzMethode.wert}
+        </p>
+      )}
+
+      {offen && (
+      <dl id="konfig-details" className="mt-2 space-y-1">
         {zeilen.map((z) => (
           <div key={z.label} className="flex items-center gap-2 text-[13px]">
             <span
@@ -106,12 +161,13 @@ export function KonfigUebersicht({ priceHasErrors = false }: { priceHasErrors?: 
           </div>
         ))}
       </dl>
+      )}
 
       {/* Dezenter Hinweis auf den nächsten Schritt – führt, ohne zu drängen. */}
       {naechster && (
         <div
           className={clsx(
-            'mt-3 flex items-center gap-2 rounded-lg px-2.5 py-2 text-[12px] font-medium',
+            'mt-2 flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[12px] font-medium',
             naechster === 'bestellen'
               ? 'bg-green-50 text-green-700'
               : 'bg-gold-light/40 text-gold-dark'

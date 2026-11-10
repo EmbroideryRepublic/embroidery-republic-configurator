@@ -190,3 +190,28 @@ test('Das automatische Entfernen des weißen Hintergrunds ist beim Hochladen sta
   assert.match(k, /checked=\{removeBg\}/);
   assert.match(quelltext('src', 'components', 'configurator', 'ElementToolbar.tsx'), /t\('element_remove_bg'\)/);
 });
+
+// ── Sprachumschalter ─────────────────────────────────────────────────────
+
+test('Der Sprachumschalter ist ausgeblendet (Seiten nur teilweise übersetzt) und lässt sich über EINE Zeile wieder einschalten', async () => {
+  const { SPRACHUMSCHALTER_AKTIV } = await import('@/config/sprache');
+  assert.equal(SPRACHUMSCHALTER_AKTIV, false);
+  const kopf = quelltext('src', 'components', 'layout', 'SiteHeader.tsx');
+  assert.equal((kopf.match(/\{SPRACHUMSCHALTER_AKTIV && \(/g) ?? []).length, 2, 'Desktop-Kopf und Handy-Menü');
+  assert.match(kopf, /from '@\/config\/sprache'/);
+  // Die Währungsauswahl bleibt unberührt.
+  assert.match(kopf, /aria-label="Währung"/);
+});
+
+test('Ist der Umschalter aus, gilt für alle Besucher Deutsch – auch für solche, die früher „EN“ gespeichert haben', async () => {
+  const { waehleSprache } = await import('@/stores/languageStore');
+  assert.equal(waehleSprache('en', false), 'de', 'gespeichertes EN wird ignoriert');
+  assert.equal(waehleSprache('de', false), 'de');
+  assert.equal(waehleSprache(undefined, false), 'de');
+  // Wird er später wieder eingeschaltet, zählt die gespeicherte Wahl wieder.
+  assert.equal(waehleSprache('en', true), 'en');
+  assert.equal(waehleSprache('de', true), 'de');
+  assert.equal(waehleSprache(undefined, true), 'de');
+  const store = quelltext('src', 'stores', 'languageStore.ts');
+  assert.match(store, /merge: \(gespeichert, aktuell\)/, 'die Auswahl greift beim Laden der gespeicherten Daten');
+});

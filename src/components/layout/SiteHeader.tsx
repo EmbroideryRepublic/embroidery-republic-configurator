@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ShoppingCart, Scale, Menu, X, User } from 'lucide-react';
 import { useCartStore, getCartItemCount } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
+import { SPRACHUMSCHALTER_AKTIV } from '@/config/sprache';
 import { useCurrencyStore, type Currency } from '@/stores/currencyStore';
 import { useUiStore } from '@/stores/uiStore';
 import type { Language } from '@/lib/i18n/translations';
@@ -74,7 +75,8 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Sprachumschalter */}
+          {/* Sprachumschalter (derzeit ausgeblendet, siehe config/sprache.ts) */}
+          {SPRACHUMSCHALTER_AKTIV && (
           <div className="hidden items-center rounded-full border border-gold/30 text-xs sm:flex">
             {(['de', 'en'] as Language[]).map((lang) => (
               <button
@@ -89,6 +91,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
               </button>
             ))}
           </div>
+          )}
 
           {/* Währungsumschalter */}
           <select
@@ -154,6 +157,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
               sm:block komplett aus) – hier dieselben Umschalter, nur
               sichtbar solange die obigen es nicht sind. */}
           <div className="flex items-center gap-3 border-b border-gold/10 py-3 sm:hidden">
+            {SPRACHUMSCHALTER_AKTIV && (
             <div className="flex items-center rounded-full border border-gold/30 text-xs">
               {(['de', 'en'] as Language[]).map((lang) => (
                 <button
@@ -168,6 +172,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
                 </button>
               ))}
             </div>
+            )}
             <select
               value={currency}
               onChange={(e) => setCurrency(e.target.value as Currency)}

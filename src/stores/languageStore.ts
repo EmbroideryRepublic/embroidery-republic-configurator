@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { translations, type Language, type TranslationKey } from '@/lib/i18n/translations';
+import { SPRACHUMSCHALTER_AKTIV } from '@/config/sprache';
 
 /**
  * Eigenständige (Nicht-Hook-)Funktion außerhalb des Stores – aus demselben
@@ -23,6 +24,15 @@ export function translate(key: TranslationKey, language: Language, vars?: Record
   return text;
 }
 
+/**
+ * Welche Sprache gilt? Die gespeicherte Wahl zählt nur, solange der Sprachumschalter aktiv ist – sonst Deutsch.
+ * Ohne das bliebe ein Besucher, der früher "EN" gewählt hat, in der halb übersetzten Oberfläche hängen, ohne den
+ * Umschalter noch erreichen zu können.
+ */
+export function waehleSprache(gespeichert: Language | undefined, umschalterAktiv: boolean): Language {
+  return umschalterAktiv && gespeichert === 'en' ? 'en' : 'de';
+}
+
 interface LanguageState {
   language: Language;
   setLanguage: (lang: Language) => void;
@@ -34,6 +44,13 @@ export const useLanguageStore = create<LanguageState>()(
       language: 'de',
       setLanguage: (language) => set({ language }),
     }),
-    { name: 'konfigurator-language', partialize: (state) => ({ language: state.language }) }
+    {
+      name: 'konfigurator-language',
+      partialize: (state) => ({ language: state.language }),
+      merge: (gespeichert, aktuell) => ({
+        ...aktuell,
+        language: waehleSprache((gespeichert as { language?: Language } | undefined)?.language, SPRACHUMSCHALTER_AKTIV),
+      }),
+    }
   )
 );

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import dynamic from 'next/dynamic';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, ChevronDown } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { CartDrawer } from '@/components/layout/CartDrawer';
 import { Stepper } from '@/components/layout/Stepper';
@@ -84,6 +84,9 @@ export function ConfiguratorPrototype() {
   const [cartJustAdded, setCartJustAdded] = useState(false);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  // Nur Handy/Tablet (unter lg): Die Produktliste ist eingeklappt, damit nach dem Öffnen des Konfigurators
+  // zuerst die Vorschau kommt statt einer 700 px hohen Liste (Test 2026-11-10: Vorschau erst bei y=1138).
+  const [browserOffenMobil, setBrowserOffenMobil] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [syncNotice, setSyncNotice] = useState<string | null>(null);
 
@@ -181,6 +184,11 @@ export function ConfiguratorPrototype() {
   }, [isHydrated, productId, setProduct, setColor, setSizeQuantities]);
 
   const product = getProduct(productId ?? '') ?? DEFAULT_PRODUCT;
+
+  // Nach einem Produktwechsel die Liste (unter lg) wieder einklappen: Man will das gewählte Produkt sehen, nicht die Liste.
+  useEffect(() => {
+    setBrowserOffenMobil(false);
+  }, [product.id]);
 
   // ── Größenabhängige Druckflächen: EINZIGE Auflösungsstelle ─────────────
   // Ein Motiv wird einmal platziert und identisch auf jede bestellte Größe
@@ -469,20 +477,40 @@ export function ConfiguratorPrototype() {
               Höhe an den Viewport gebunden; gescrollt wird INNEN, damit die
               Seite nicht mitwandert. */}
           <div className="w-full lg:sticky lg:top-24 lg:h-[calc(100vh-7rem)] lg:w-auto lg:flex-shrink-0 lg:self-start">
-            <ProduktBrowser />
+            {/* Unter lg: Schalter statt offener Liste. Ab lg bleibt alles wie bisher (Schalter ausgeblendet). */}
+            <button
+              type="button"
+              onClick={() => setBrowserOffenMobil((offen) => !offen)}
+              aria-expanded={browserOffenMobil}
+              aria-controls="produkt-browser-bereich"
+              className="flex w-full items-center justify-between gap-3 rounded-xl border border-gold/20 bg-white px-4 py-3 text-left lg:hidden"
+            >
+              <span className="min-w-0">
+                <span className="block text-sm font-medium text-brand">{t('browser_mobile_toggle')}</span>
+                <span className="block truncate text-xs text-brand/70">{product.name}</span>
+              </span>
+              <ChevronDown className={`h-5 w-5 flex-shrink-0 text-brand/70 transition-transform ${browserOffenMobil ? 'rotate-180' : ''}`} aria-hidden />
+            </button>
+            <div id="produkt-browser-bereich" className={browserOffenMobil ? 'mt-3 lg:mt-0' : 'hidden lg:block'}>
+              <ProduktBrowser />
+            </div>
           </div>
 
           {/* Mitte: Farbe/Größe, Ansichts-Miniaturen + Canvas – größter Bereich */}
-          <div className="flex min-w-0 flex-1 flex-col items-center gap-2">
+          {/* Unter lg ohne eigenen Kasten (display: contents): So wird die Vorschau (sticky) ein direktes Kind der
+              ganzen Zeile und bleibt beim Scrollen durch die Werkzeuge sichtbar. Ab lg wie bisher. */}
+          <div className="contents lg:flex lg:min-w-0 lg:flex-1 lg:flex-col lg:items-center lg:gap-2">
             <div className="w-full animate-fade-in" key={`meta-${product.id}`}>
               <ColorSizeSelector product={product} />
             </div>
             <ProductDetails product={product} />
 
-            <div className="flex w-full max-w-full flex-col items-start gap-3 lg:flex-row">
+            <div className="contents lg:flex lg:w-full lg:max-w-full lg:flex-row lg:items-start lg:gap-3">
               <ViewSwitcher imageUrls={currentImages} views={produktViews} />
 
-              <div className="flex min-w-0 flex-1 flex-col items-center gap-2">
+              {/* Unter lg: klebt unter Kopfzeile + Schrittleiste fest (z-20, darunter die beiden), klein gehalten, damit
+                  darunter Platz für die Werkzeuge bleibt. Test 2026-11-10: Schrift/Farbe lagen 751 px unter der Vorschau. */}
+              <div className="sticky top-[96px] z-20 flex w-full flex-col items-center gap-2 bg-brand-light/95 pb-2 backdrop-blur lg:static lg:z-auto lg:min-w-0 lg:flex-1 lg:bg-transparent lg:pb-0 lg:backdrop-blur-none">
                 <CanvasToolbar
                   zoom={zoom}
                   onZoomIn={handleZoomIn}
@@ -512,7 +540,7 @@ export function ConfiguratorPrototype() {
                   // zeigt wie die Produktseite; genau dort lag der gemeldete
                   // Fehler ("Liste zeigt Foto, Konfigurator zeigt Silhouette").
                   data-konfigbild={`${currentColor?.id ?? '-'}/${activeView}/${currentImageUrl}`}
-                  className="relative w-full max-w-[820px] xl:max-w-[960px] 2xl:max-w-[1100px]"
+                  className="relative w-full max-w-[210px] sm:max-w-[260px] lg:max-w-[820px] xl:max-w-[960px] 2xl:max-w-[1100px]"
                   style={{ maxHeight: 'min(840px, calc(100vh - 20rem))' }}
                 >
                   {isLoadingContext ? (
@@ -538,7 +566,7 @@ export function ConfiguratorPrototype() {
                 </div>
 
                 {!isLoadingContext && !currentPrintArea && (
-                  <p className="text-xs text-amber-600">
+                  <p className="text-xs text-amber-800">
                     {t('canvas_no_print_area')}
                   </p>
                 )}

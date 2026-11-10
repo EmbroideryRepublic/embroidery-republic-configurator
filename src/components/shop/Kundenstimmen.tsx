@@ -15,7 +15,7 @@ export function Kundenstimmen() {
   return (
     <section className="border-y border-brand/[0.08] bg-white/50">
       <div className="mx-auto max-w-[1500px] px-4 py-24 sm:px-8">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Vertrauen</p>
+        <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Vertrauen</p>
         <h2 className="mt-6 max-w-2xl font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
           Was unsere Kundschaft sagt.
         </h2>
@@ -41,7 +41,7 @@ export function Kundenstimmen() {
                 <blockquote className="font-serif text-[19px] leading-relaxed text-brand">
                   {`„${s.text}"`}
                 </blockquote>
-                <figcaption className="mt-5 text-[13px] text-brand/50">
+                <figcaption className="mt-5 text-[13px] text-brand/70">
                   <span className="font-medium text-brand/70">{s.autor}</span>
                   {s.rolle ? ` · ${s.rolle}` : ''}
                 </figcaption>
@@ -53,7 +53,7 @@ export function Kundenstimmen() {
         {REFERENZEN.length > 0 && (
           <ul className="mt-16 flex flex-wrap items-center gap-x-12 gap-y-6">
             {REFERENZEN.map((r) => (
-              <li key={r.name} className="text-[15px] font-medium tracking-wide text-brand/40">
+              <li key={r.name} className="text-[15px] font-medium tracking-wide text-brand/70">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 {r.logo ? <img src={r.logo} alt={r.name} className="h-8 w-auto opacity-70" /> : r.name}
               </li>

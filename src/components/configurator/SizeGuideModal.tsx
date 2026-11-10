@@ -33,7 +33,7 @@ export function SizeGuideModal({ productName, sizeGuide, onClose }: SizeGuideMod
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full p-1.5 text-gray-400 hover:bg-gray-100"
+            className="rounded-full p-1.5 text-gray-600 hover:bg-gray-100"
             aria-label={t('common_close')}
           >
             <X className="h-5 w-5" />
@@ -43,13 +43,13 @@ export function SizeGuideModal({ productName, sizeGuide, onClose }: SizeGuideMod
         <div className="grid grid-cols-1 gap-8 p-6 sm:grid-cols-[1fr_auto]">
           {/* Maßtabelle */}
           <div>
-            <p className="mb-3 text-xs uppercase tracking-wide text-brand/40">
+            <p className="mb-3 text-xs uppercase tracking-wide text-brand/70">
               {productName} {t('size_guide_measurements_suffix')}
             </p>
             <div className="overflow-hidden rounded-xl border border-gray-100">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-cream/70 text-left text-xs uppercase tracking-wide text-brand/50">
+                  <tr className="bg-cream/70 text-left text-xs uppercase tracking-wide text-brand/70">
                     <th className="px-4 py-2.5 font-medium">{t('size_guide_col_size')}</th>
                     <th className="px-4 py-2.5 font-medium">{t('size_guide_col_width')}</th>
                     <th className="px-4 py-2.5 font-medium">{t('size_guide_col_height')}</th>
@@ -75,14 +75,14 @@ export function SizeGuideModal({ productName, sizeGuide, onClose }: SizeGuideMod
 
             {/* Passform-Skala */}
             <div className="mt-6">
-              <p className="mb-2 text-xs uppercase tracking-wide text-brand/40">{t('size_guide_fit_question')}</p>
+              <p className="mb-2 text-xs uppercase tracking-wide text-brand/70">{t('size_guide_fit_question')}</p>
               <div className="relative h-1.5 rounded-full bg-gray-100">
                 <div
                   className="absolute top-1/2 h-4 w-4 -translate-y-1/2 rounded-full border-2 border-white bg-gold shadow-md"
                   style={{ left: `calc(${sizeGuide.fitRating}% - 8px)` }}
                 />
               </div>
-              <div className="mt-1.5 flex justify-between text-[11px] text-brand/40">
+              <div className="mt-1.5 flex justify-between text-[11px] text-brand/70">
                 {fitLabels.map((label) => (
                   <span key={label}>{label}</span>
                 ))}
@@ -117,7 +117,7 @@ export function SizeGuideModal({ productName, sizeGuide, onClose }: SizeGuideMod
                 </marker>
               </defs>
             </svg>
-            <p className="mt-2 max-w-[160px] text-center text-[11px] leading-relaxed text-brand/40">
+            <p className="mt-2 max-w-[160px] text-center text-[11px] leading-relaxed text-brand/70">
               {t('size_guide_diagram_caption')}
             </p>
           </div>

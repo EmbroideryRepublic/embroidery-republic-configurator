@@ -60,7 +60,7 @@ function LinkNichtVerwendbar({ grund }: { grund: 'ungueltig' | 'abgelaufen' | 'n
     <main className="min-h-screen bg-brand-light px-4 py-10">
       <div className="mx-auto max-w-2xl space-y-6">
         <div>
-          <Link href="/" className="text-xs text-brand/50 hover:text-brand">
+          <Link href="/" className="text-xs text-brand/70 hover:text-brand">
             ← Zur Startseite
           </Link>
           <h1 className="mt-2 text-xl font-semibold text-brand">
@@ -109,11 +109,11 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
     <main className="min-h-screen bg-brand-light px-4 py-10">
       <div className="mx-auto max-w-2xl space-y-6">
         <div>
-          <Link href="/" className="text-xs text-brand/50 hover:text-brand">
+          <Link href="/" className="text-xs text-brand/70 hover:text-brand">
             ← Zur Startseite
           </Link>
           <h1 className="mt-2 text-xl font-semibold text-brand">Bestellung {bestellung.bestellnummer}</h1>
-          <p className="mt-1 text-sm text-brand/60">Eingegangen am {zeit(bestellung.bestelltAm)}</p>
+          <p className="mt-1 text-sm text-brand/70">Eingegangen am {zeit(bestellung.bestelltAm)}</p>
         </div>
 
         {/* Fortschritt zuerst: Das ist die Frage, wegen der der Kunde die
@@ -227,11 +227,11 @@ export default async function BestellAnsichtSeite({ params }: { params: { token:
         )}
         {bestellung.zustand !== 'storniert' &&
           (!bestellung.rechnungPdfUrl && (!bestellung.zahlungsart || bestellung.zahlungsart === 'invoice') ? (
-            <p className="text-xs text-brand/50">
+            <p className="text-xs text-brand/70">
               Die Rechnung erhalten Sie separat, zahlbar innerhalb von {PAYMENT_TERM_DAYS} Tagen ohne Abzug.
             </p>
           ) : !bestellung.rechnungPdfUrl && bestellung.zahlungsstatus === 'paid' ? (
-            <p className="text-xs text-brand/50">Die Zahlung ist bereits bei uns eingegangen – vielen Dank.</p>
+            <p className="text-xs text-brand/70">Die Zahlung ist bereits bei uns eingegangen – vielen Dank.</p>
           ) : null)}
       </div>
     </main>

@@ -76,7 +76,7 @@ export function KonfigUebersicht({ priceHasErrors = false }: { priceHasErrors?: 
 
   return (
     <div className="rounded-xl border border-gold/20 bg-white p-3 shadow-elegant">
-      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand/50">
+      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand/70">
         {t('konfig_title')}
       </p>
 
@@ -87,12 +87,12 @@ export function KonfigUebersicht({ priceHasErrors = false }: { priceHasErrors?: 
               aria-hidden
               className={clsx(
                 'flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full transition-colors',
-                z.erledigt ? 'bg-gold text-white' : 'border border-dashed border-brand/25 bg-transparent'
+                z.erledigt ? 'bg-gold-btn text-white' : 'border border-dashed border-brand/25 bg-transparent'
               )}
             >
               {z.erledigt && <Check className="h-2.5 w-2.5" strokeWidth={3} />}
             </span>
-            <dt className="w-[4.5rem] flex-shrink-0 text-brand/45">{z.label}</dt>
+            <dt className="w-[4.5rem] flex-shrink-0 text-brand/70">{z.label}</dt>
             <dd className="flex min-w-0 flex-1 items-center justify-end gap-1.5 text-right font-medium text-brand">
               {z.farbe && (
                 <span

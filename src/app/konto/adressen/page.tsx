@@ -18,9 +18,9 @@ export default async function AdressenPage() {
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Mein Konto</p>
+      <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Mein Konto</p>
       <h1 className="mt-2 font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal text-brand">Adressbuch</h1>
-      <p className="mt-2 text-sm text-brand/60">
+      <p className="mt-2 text-sm text-brand/70">
         Ihre Standardadresse wird beim nächsten Checkout automatisch vorgeschlagen.
       </p>
 

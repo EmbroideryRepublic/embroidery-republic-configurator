@@ -241,7 +241,7 @@ export default async function Kategorieseite({ params }: { params: { kategorie: 
           <ol className="mt-8 space-y-4">
             {ablaufSchritte(fakten).map((schritt, i) => (
               <li key={schritt} className="flex gap-4 text-[16px] leading-relaxed text-brand/70">
-                <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gold text-[13px] font-semibold text-white">
+                <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gold-btn text-[13px] font-semibold text-white">
                   {i + 1}
                 </span>
                 <span>{schritt}</span>

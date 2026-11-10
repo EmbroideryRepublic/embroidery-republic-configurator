@@ -70,13 +70,13 @@ export function FilterPanel({
               <button
                 type="button"
                 onClick={() => setEntwurf(setzeZurueck(entwurf))}
-                className="rounded-md border border-brand/20 px-2.5 py-1 text-xs text-brand/60"
+                className="rounded-md border border-brand/20 px-2.5 py-1 text-xs text-brand/70"
               >
                 Alle Filter löschen
               </button>
             )}
             <button type="button" onClick={onSchliessen} aria-label="Schließen">
-              <X className="h-5 w-5 text-brand/50" />
+              <X className="h-5 w-5 text-brand/70" />
             </button>
           </div>
         </div>
@@ -96,12 +96,12 @@ export function FilterPanel({
                     >
                       <span className="text-sm font-medium text-brand">{DIMENSION_LABELS[dim]}</span>
                       <span className="flex items-center gap-1.5">
-                        <span className="max-w-[10rem] truncate text-sm text-brand/50">
+                        <span className="max-w-[10rem] truncate text-sm text-brand/70">
                           {gewaehlt.length === 0
                             ? `Alle ${DIMENSION_PLURAL[dim]}`
                             : gewaehlt.map((w) => beschrifteWert(dim, w, bezeichnungen)).join(', ')}
                         </span>
-                        <ChevronRight className="h-4 w-4 shrink-0 text-brand/40" aria-hidden />
+                        <ChevronRight className="h-4 w-4 shrink-0 text-brand/70" aria-hidden />
                       </span>
                     </button>
                   </li>
@@ -170,7 +170,7 @@ function ZweiFelder({
         defaultValue={von ?? ''} onBlur={(e) => onAendern(lies(e.target.value), bis)}
         aria-label="von" className="w-full rounded-md border border-brand/20 px-2 py-1.5 text-sm"
       />
-      <span className="text-xs text-brand/40">bis</span>
+      <span className="text-xs text-brand/70">bis</span>
       <input
         type="number" inputMode="numeric" min={min} max={max} placeholder={String(max)}
         defaultValue={bis ?? ''} onBlur={(e) => onAendern(von, lies(e.target.value))}

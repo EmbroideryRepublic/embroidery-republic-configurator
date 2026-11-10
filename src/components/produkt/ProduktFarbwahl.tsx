@@ -70,7 +70,7 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
             className={`rounded-full border px-3 py-2 text-xs transition ${
               aktiveAnsicht === view
                 ? 'border-brand bg-brand text-white'
-                : 'border-brand/15 bg-white text-brand/60 hover:border-gold/50 hover:text-brand'
+                : 'border-brand/15 bg-white text-brand/70 hover:border-gold/50 hover:text-brand'
             }`}
           >
             {positionLabel(view)}
@@ -82,7 +82,7 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
         <p className="text-sm font-medium text-brand">
           Farbe: <span className="font-normal text-brand/70">{formatiereFarbname(farbe.name)}</span>
         </p>
-        <p className="mt-0.5 text-xs text-brand/50">{farben.length} Farben verfügbar</p>
+        <p className="mt-0.5 text-xs text-brand/70">{farben.length} Farben verfügbar</p>
         <div className="mt-2.5 flex flex-wrap gap-2">
           {farben.map((c, i) => (
             <button

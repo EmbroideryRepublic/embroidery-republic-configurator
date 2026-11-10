@@ -48,6 +48,30 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
   const formatPrice = (amount: number) => formatPriceWithCurrency(amount, currency);
   const dialogRef = useRef<HTMLDivElement>(null);
 
+  // Rückgängig nach dem Entfernen einer Position (Test 2026-11-10: Löschen ohne Rückfrage und ohne Rückweg).
+  const [entfernt, setEntfernt] = useState<{ item: CartItem; index: number } | null>(null);
+  const entferntTimer = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (entferntTimer.current !== null) window.clearTimeout(entferntTimer.current);
+    },
+    []
+  );
+  function entfernePosition(item: CartItem) {
+    const index = items.findIndex((eintrag) => eintrag.id === item.id);
+    removeItem(item.id);
+    setEntfernt({ item, index: Math.max(0, index) });
+    if (entferntTimer.current !== null) window.clearTimeout(entferntTimer.current);
+    entferntTimer.current = window.setTimeout(() => setEntfernt(null), 8000);
+  }
+  function macheRueckgaengig() {
+    if (!entfernt) return;
+    const neu = [...useCartStore.getState().items];
+    neu.splice(Math.min(entfernt.index, neu.length), 0, entfernt.item);
+    useCartStore.setState({ items: neu });
+    setEntfernt(null);
+  }
+
   // Fokusmanagement für den modalen Dialog: beim Öffnen den Fokus in die
   // Schublade setzen, beim Schliessen (Unmount) auf das auslösende Element
   // zurückgeben – ohne das verliert Tastatur-/Screenreader-Nutzung den Kontext.
@@ -151,7 +175,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
       className="fixed inset-0 z-50 flex justify-end bg-black/40"
       role="dialog"
       aria-modal="true"
-      aria-label={t('cart_title')}
+      aria-label={step === 'checkout' ? t('cart_checkout_title') : t('cart_title')}
       ref={dialogRef}
       tabIndex={-1}
       onClick={onClose}
@@ -185,7 +209,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
             type="button"
             onClick={onClose}
             aria-label={t('common_close')}
-            className="rounded-md p-1 text-brand/40 hover:bg-cream"
+            className="rounded-md p-1 text-brand/70 hover:bg-cream"
           >
             <X className="h-5 w-5" />
           </button>
@@ -209,8 +233,17 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
               </div>
             )}
             <div className="flex-1 overflow-y-auto px-4 py-3">
+              {/* Aus Versehen entfernt? Acht Sekunden lang lässt sich die Position zurückholen. */}
+              {entfernt && (
+                <div role="status" className="mb-3 flex items-center justify-between gap-3 rounded-lg bg-cream px-3 py-2 text-sm text-brand">
+                  <span>{t('cart_item_removed')}</span>
+                  <button type="button" onClick={macheRueckgaengig} className="flex-shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gold-dark underline-offset-2 hover:underline">
+                    {t('cart_undo')}
+                  </button>
+                </div>
+              )}
               {items.length === 0 ? (
-                <p className="mt-8 text-center text-sm text-brand/40">{t('cart_empty')}</p>
+                <p className="mt-8 text-center text-sm text-brand/70">{t('cart_empty')}</p>
               ) : (
                 <ul className="space-y-3">
                   {items.map((item) => {
@@ -227,25 +260,31 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                         <div className="flex items-start justify-between gap-2">
                           <div>
                             <p className="text-sm font-medium text-brand">{product?.name ?? t('konfig_product')}</p>
-                            <p className="text-xs text-brand/60">
+                            <p className="text-xs text-brand/70">
                               {color ? formatiereFarbname(color.name) : '–'} ·{' '}
                               {item.printMethod === 'embroidery' ? t('method_embroidery') : t('method_dtf')}
                             </p>
                             <p className="mt-0.5 text-xs font-medium text-brand/70">{sizeSummary || `${item.quantity}×`}</p>
-                            <p className="text-xs text-brand/40">
-                              {t('cart_item_summary', {
-                                logoCount,
-                                logoWord: t(logoCount === 1 ? 'cart_logo_singular' : 'cart_logo_plural'),
-                                textCount,
-                                textWord: t(textCount === 1 ? 'cart_text_singular' : 'cart_text_plural'),
-                              })}
+                            {/* Nur nennen, was es gibt ("1 Text" statt "0 Logos, 1 Text"); darunter die Motive selbst, damit man die Position wiedererkennt. */}
+                            <p className="text-xs text-brand/70">
+                              {logoCount > 0 && textCount > 0
+                                ? t('cart_item_summary', {
+                                    logoCount,
+                                    logoWord: t(logoCount === 1 ? 'cart_logo_singular' : 'cart_logo_plural'),
+                                    textCount,
+                                    textWord: t(textCount === 1 ? 'cart_text_singular' : 'cart_text_plural'),
+                                  })
+                                : logoCount > 0
+                                  ? `${logoCount} ${t(logoCount === 1 ? 'cart_logo_singular' : 'cart_logo_plural')}`
+                                  : `${textCount} ${t(textCount === 1 ? 'cart_text_singular' : 'cart_text_plural')}`}
                             </p>
+                            <MotivVorschau elements={item.elements} />
                           </div>
                           <div className="flex flex-shrink-0 items-center gap-0.5">
                             <button
                               type="button"
                               onClick={() => handleEditItem(item)}
-                              className="rounded-md p-1 text-brand/30 transition-colors hover:bg-gold-light hover:text-gold-dark"
+                              className="rounded-md p-1 text-brand/70 transition-colors hover:bg-gold-light hover:text-gold-dark"
                               title={t('cart_edit_item')}
                               aria-label={t('cart_edit_item')}
                             >
@@ -253,8 +292,8 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                             </button>
                             <button
                               type="button"
-                              onClick={() => removeItem(item.id)}
-                              className="rounded-md p-1 text-brand/30 transition-colors hover:bg-red-50 hover:text-red-500"
+                              onClick={() => entfernePosition(item)}
+                              className="rounded-md p-1 text-brand/70 transition-colors hover:bg-red-50 hover:text-red-500"
                               title={t('cart_remove_item')}
                               aria-label={t('cart_remove_item')}
                             >
@@ -264,7 +303,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                         </div>
 
                         <div className="mt-2 flex items-center justify-between">
-                          <span className="text-xs text-brand/40">
+                          <span className="text-xs text-brand/70">
                             {item.quantity} {t('size_table_total')}
                           </span>
                           <span className="text-sm font-medium">{formatPrice(item.totalPrice)}</span>
@@ -282,7 +321,11 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                   <span>{t('cart_total')}</span>
                   <span>{formatPrice(total)}</span>
                 </div>
-                <p className="mb-3 text-xs text-brand/60">
+                {/* Abgerechnet wird immer in Euro; CHF ist nur eine Näherung (currencyStore.ts). */}
+                {currency !== 'EUR' && (
+                  <p className="mb-2 text-xs text-brand/70">{t('currency_note_cart', { currency })}</p>
+                )}
+                <p className="mb-3 text-xs text-brand/70">
                   {/* Vor der Länderwahl gilt der DE-Tarif als Orientierung;
                       verbindlich wird der Versand im Checkout berechnet. */}
                   {total >= SHIPPING_RATES.DE.freeFrom
@@ -295,13 +338,13 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                 <button
                   type="button"
                   onClick={() => setStep('checkout')}
-                  className="w-full rounded-lg bg-gold py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
+                  className="w-full rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
                 >
                   {t('cart_go_checkout')}
                 </button>
 
                 <div className="mt-4 rounded-lg bg-cream/60 p-3 text-center">
-                  <p className="text-xs leading-relaxed text-brand/60">
+                  <p className="text-xs leading-relaxed text-brand/70">
                     {t('cart_unsure_hint')}
                   </p>
                   <button
@@ -321,7 +364,9 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
           <CheckoutForm
             items={items}
             total={total}
-            formatPrice={formatPrice}
+            // Die Kasse zeigt IMMER Euro: Abgerechnet wird in EUR, die CHF-Anzeige ist nur eine Näherung.
+            formatPrice={(amount: number) => formatPriceWithCurrency(amount, 'EUR')}
+            waehrungHinweis={currency !== 'EUR' ? t('currency_note_checkout') : null}
             onOrderPlaced={handleOrderPlaced}
             onSubmittingChange={setCheckoutSubmitting}
           />
@@ -338,10 +383,34 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
   );
 }
 
+/** Kleine Vorschau der Motive einer Position: Logo-Miniaturen und Textausschnitte (bis zu vier). */
+function MotivVorschau({ elements }: { elements: CartItem['elements'] }) {
+  const sichtbar = elements.filter((el) => el.type === 'logo' || el.type === 'text').slice(0, 4);
+  if (sichtbar.length === 0) return null;
+  return (
+    <ul className="mt-1.5 flex flex-wrap items-center gap-1.5" aria-hidden>
+      {sichtbar.map((el) =>
+        el.type === 'logo' ? (
+          <li key={el.id} className="h-8 w-8 overflow-hidden rounded border border-brand/10 bg-white">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={el.fileUrl} alt="" className="h-full w-full object-contain p-0.5" />
+          </li>
+        ) : (
+          <li key={el.id} className="max-w-[9rem] truncate rounded border border-brand/10 bg-white px-1.5 py-1 text-[11px] text-brand/80">
+            „{el.content.split(/\r\n|\r|\n/).map((z) => z.trim()).filter(Boolean).join(' / ')}“
+          </li>
+        )
+      )}
+    </ul>
+  );
+}
+
 interface CheckoutFormProps {
   items: CartItem[];
   total: number;
   formatPrice: (amount: number) => string;
+  /** Gesetzt, wenn die Kundschaft eine andere Anzeigewährung als Euro gewählt hat: erklärt, dass hier in Euro abgerechnet wird. */
+  waehrungHinweis?: string | null;
   onOrderPlaced: (orderNumber: string) => void;
   /** Meldet isSubmitting an die übergeordnete Schublade, damit der
    *  Zurück-Button im Header während der Übermittlung deaktiviert werden
@@ -361,7 +430,7 @@ interface CheckoutFormProps {
  * zeigen. Ob die Bestellung als bezahlt gilt, entscheidet ausschließlich der
  * Zahlungs-Webhook (paymentService.ts) – niemals dieser Redirect selbst.
  */
-function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingChange }: CheckoutFormProps) {
+function CheckoutForm({ items, total, formatPrice, waehrungHinweis, onOrderPlaced, onSubmittingChange }: CheckoutFormProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   const [paymentMethod, setPaymentMethod] = useState<OrderPaymentMethod>('invoice');
@@ -515,6 +584,17 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
     shipping !== null &&
     acceptedTerms;
 
+  // Was noch fehlt – steht unter dem gesperrten Bestell-Knopf, damit man nicht raten muss, warum er grau bleibt.
+  const fehlendeAngaben = [
+    !form.firstName.trim() && t('checkout_first_name'),
+    !form.lastName.trim() && t('checkout_last_name'),
+    !istPlausibleEmail(form.email) && t('checkout_email'),
+    !form.street.trim() && t('checkout_street'),
+    !istGueltigePlz(form.zip) && t('checkout_zip'),
+    !form.city.trim() && t('checkout_city'),
+    !acceptedTerms && t('checkout_missing_terms'),
+  ].filter((eintrag): eintrag is string => Boolean(eintrag));
+
   function update(field: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
   }
@@ -631,7 +711,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
     <form onSubmit={handleSubmit} className="flex flex-1 flex-col overflow-y-auto">
       <div className="flex-1 space-y-4 px-4 py-3">
         <section>
-          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/50">{t('checkout_contact_heading')}</h3>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/70">{t('checkout_contact_heading')}</h3>
           <div className="grid grid-cols-2 gap-2">
             <Feld id="vorname" label={t('checkout_first_name')} wert={form.firstName}
               onWert={(v) => update('firstName', v)} autoComplete="given-name" pflicht
@@ -663,13 +743,13 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
                 (submitOrder erwartet es), ist hier nur nicht mehr editierbar. */}
             <div className="col-span-2 rounded-lg border border-brand/10 bg-cream/50 px-3 py-2.5">
               <p className="text-sm font-medium text-brand">{form.country}</p>
-              <p className="mt-0.5 text-xs leading-relaxed text-brand/60">{t('checkout_country_notice')}</p>
+              <p className="mt-0.5 text-xs leading-relaxed text-brand/70">{t('checkout_country_notice')}</p>
             </div>
           </div>
         </section>
 
         <section>
-          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/50">{t('checkout_payment_heading')}</h3>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/70">{t('checkout_payment_heading')}</h3>
           {/* Echte Auswahl: Rechnung, Karte (Stripe) oder PayPal. Bei Karte/
               PayPal übernimmt der Server nach dem Speichern der Bestellung
               die Weiterleitung zum jeweiligen gehosteten Checkout – hier wird
@@ -692,7 +772,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
                     ausgewaehlt ? 'border-gold bg-gold-light/30' : 'border-brand/10 hover:border-brand/20'
                   }`}
                 >
-                  <Icon className={`h-4 w-4 ${ausgewaehlt ? 'text-gold-dark' : 'text-brand/50'}`} aria-hidden />
+                  <Icon className={`h-4 w-4 ${ausgewaehlt ? 'text-gold-dark' : 'text-brand/70'}`} aria-hidden />
                   <span className={`text-xs font-medium ${ausgewaehlt ? 'text-brand' : 'text-brand/70'}`}>
                     {t(
                       methode === 'invoice'
@@ -713,15 +793,20 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
                 <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0" aria-hidden />
                 {t('checkout_no_prepay')}
               </p>
-              <p className="mt-1 text-xs leading-relaxed text-brand/60">{t('checkout_payment_invoice_note')}</p>
+              <p className="mt-1 text-xs leading-relaxed text-brand/70">{t('checkout_payment_invoice_note')}</p>
             </div>
           ) : (
-            <p className="mt-2 text-xs leading-relaxed text-brand/60">{t('checkout_payment_redirect_note')}</p>
+            <p className="mt-2 text-xs leading-relaxed text-brand/70">{t('checkout_payment_redirect_note')}</p>
           )}
         </section>
 
         <section className="rounded-lg bg-cream/70 p-3 text-sm">
-          <div className="mb-2 space-y-1 text-xs text-brand/60">
+          {waehrungHinweis && (
+            <p role="note" className="mb-2 rounded-md bg-gold-light/60 px-2 py-1.5 text-xs text-brand/80">
+              {waehrungHinweis}
+            </p>
+          )}
+          <div className="mb-2 space-y-1 text-xs text-brand/70">
             {items.map((item) => {
               const product = getProduct(item.productId);
               return (
@@ -736,11 +821,11 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
           </div>
           {/* Versand transparent ausweisen: Zwischensumme, Versandkosten (mit
               Hinweis auf die Freigrenze) und erst dann die Endsumme. */}
-          <div className="flex items-center justify-between border-t border-gold/15 pt-1.5 text-xs text-brand/60">
+          <div className="flex items-center justify-between border-t border-gold/15 pt-1.5 text-xs text-brand/70">
             <span>{t('checkout_subtotal')}</span>
             <span>{formatPrice(total)}</span>
           </div>
-          <div className="mt-1 flex items-center justify-between text-xs text-brand/60">
+          <div className="mt-1 flex items-center justify-between text-xs text-brand/70">
             <span>{t('checkout_shipping')}</span>
             <span>
               {shipping
@@ -758,7 +843,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
           {/* Steuerzeile: bei Bruttopreisen (pricesIncludeTax) nur AUSGEWIESEN,
               verändert die Summe nicht – exakt dieselbe Semantik wie
               orderStage.ts. Pflicht gegenüber Verbrauchern (Preisangabenverordnung). */}
-          <div className="mt-1 flex items-center justify-between text-xs text-brand/60">
+          <div className="mt-1 flex items-center justify-between text-xs text-brand/70">
             <span>{IST_KLEINUNTERNEHMER ? t('checkout_tax_line_kleinunternehmer') : t('checkout_tax_line', { rate: taxRate })}</span>
             <span>{formatPrice(taxAmount)}</span>
           </div>
@@ -768,7 +853,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
           </div>
         </section>
 
-        <label className="flex items-start gap-2 text-xs text-brand/60">
+        <label className="flex items-start gap-2 text-xs text-brand/70">
           <input
             type="checkbox"
             checked={acceptedTerms}
@@ -798,13 +883,18 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
         )}
         {/* Dezente Vertrauenszeile am Entscheidungspunkt – aus den bestehenden
             zweisprachigen Trust-Schlüsseln, damit sie in DE wie EN stimmt. */}
-        <p className="mb-2.5 text-center text-[11px] leading-relaxed text-brand/45">
+        <p className="mb-2.5 text-center text-[11px] leading-relaxed text-brand/70">
           {t('trust_check')} · {t('trust_germany')} · {t('trust_express')}
         </p>
+        {!isSubmitting && fehlendeAngaben.length > 0 && (
+          <p role="status" className="">
+            {t('form_missing_hint', { fields: fehlendeAngaben.join(', ') })}
+          </p>
+        )}
         <button
           type="submit"
           disabled={!isValid || isSubmitting}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold py-2.5 text-sm font-medium text-white shadow-elegant transition-all duration-200 ease-out hover:bg-gold-dark active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white shadow-elegant transition-all duration-200 ease-out hover:bg-gold-dark active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100"
         >
           {isSubmitting ? (
             <>
@@ -817,7 +907,7 @@ function CheckoutForm({ items, total, formatPrice, onOrderPlaced, onSubmittingCh
         </button>
         {/* Dezente Sicherheitszusage direkt unter dem Absenden – nimmt die
             letzte Unsicherheit, ohne Badge-Lärm. */}
-        <p className="mt-2 text-center text-[11px] text-brand/40">{t('checkout_secure_note')}</p>
+        <p className="mt-2 text-center text-[11px] text-brand/70">{t('checkout_secure_note')}</p>
       </div>
     </form>
   );
@@ -879,6 +969,9 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
   }, []);
 
   const isValid = form.name.trim() && form.email.trim().includes('@');
+  const fehlendeAngaben = [!form.name.trim() && t('inquiry_name'), !form.email.trim().includes('@') && t('checkout_email')].filter(
+    (eintrag): eintrag is string => Boolean(eintrag)
+  );
 
   function update(field: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
@@ -914,7 +1007,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
         </p>
 
         <section>
-          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/50">{t('inquiry_contact_heading')}</h3>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand/70">{t('inquiry_contact_heading')}</h3>
           <div className="space-y-2">
             <Feld id="a-name" label={t('inquiry_name')} wert={form.name}
               onWert={(v) => update('name', v)} autoComplete="name" pflicht />
@@ -939,10 +1032,10 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
         </section>
 
         <section className="rounded-lg bg-cream/70 p-3 text-sm">
-          <p className="mb-2 text-xs font-medium text-brand/60">{t('inquiry_config_heading')}</p>
-          <div className="space-y-1 text-xs text-brand/60">
+          <p className="mb-2 text-xs font-medium text-brand/70">{t('inquiry_config_heading')}</p>
+          <div className="space-y-1 text-xs text-brand/70">
             {items.length === 0 ? (
-              <p className="text-brand/40">{t('inquiry_config_empty')}</p>
+              <p className="text-brand/70">{t('inquiry_config_empty')}</p>
             ) : (
               items.map((item) => {
                 const product = getProduct(item.productId);
@@ -963,7 +1056,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
                 <span>{t('inquiry_estimated_price')}</span>
                 <span>{formatPrice(total)}</span>
               </div>
-              <p className="mt-0.5 text-[11px] text-brand/40">
+              <p className="mt-0.5 text-[11px] text-brand/70">
                 {IST_KLEINUNTERNEHMER
                   ? t('checkout_tax_line_kleinunternehmer')
                   : t('checkout_tax_line', { rate: steuersatzFuer(STANDARDLAND).satz })}
@@ -979,6 +1072,11 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
             <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
             <span>{submitError}</span>
           </div>
+        )}
+        {!isSubmitting && fehlendeAngaben.length > 0 && (
+          <p role="status" className="">
+            {t('form_missing_hint', { fields: fehlendeAngaben.join(', ') })}
+          </p>
         )}
         <button
           type="submit"
@@ -1006,7 +1104,7 @@ function InquirySent({ onClose }: { onClose: () => void }) {
     <div className="flex flex-1 flex-col items-center justify-center gap-3 px-6 py-10 text-center">
       <CheckCircle2 className="h-12 w-12 text-gold-dark" />
       <h3 className="text-lg font-semibold text-brand">{t('cart_inquiry_sent_title')}</h3>
-      <p className="max-w-xs text-sm text-brand/60">
+      <p className="max-w-xs text-sm text-brand/70">
         {t('inquiry_sent_text')}
       </p>
       <button
@@ -1027,10 +1125,10 @@ function OrderConfirmed({ orderNumber, onClose }: { orderNumber: string; onClose
     <div className="flex flex-1 flex-col items-center justify-center gap-3 px-6 py-10 text-center">
       <CheckCircle2 className="h-12 w-12 text-green-600" />
       <h3 className="text-lg font-semibold text-brand">{t('cart_order_confirmed_title')}</h3>
-      <p className="text-sm text-brand/60">
+      <p className="text-sm text-brand/70">
         {t('checkout_order_number_label')} <span className="font-medium text-brand">{orderNumber}</span>
       </p>
-      <p className="max-w-xs text-xs text-brand/40">
+      <p className="max-w-xs text-xs text-brand/70">
         {t('checkout_order_confirmed_text')}
       </p>
       <button

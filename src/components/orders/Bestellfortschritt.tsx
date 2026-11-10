@@ -52,14 +52,14 @@ export function Bestellfortschritt({
                   erledigt
                     ? 'bg-brand text-white'
                     : hier
-                      ? 'bg-gold text-white ring-2 ring-gold/30'
-                      : 'bg-brand/[0.06] text-brand/40'
+                      ? 'bg-gold-btn text-white ring-2 ring-gold/30'
+                      : 'bg-brand/[0.06] text-brand/70'
                 }`}
               >
                 {erledigt ? <Check className="h-3 w-3" /> : i + 1}
               </span>
               <span
-                className={`text-sm ${hier ? 'font-medium text-brand' : erledigt ? 'text-brand/70' : 'text-brand/40'}`}
+                className={`text-sm ${hier ? 'font-medium text-brand' : erledigt ? 'text-brand/70' : 'text-brand/70'}`}
               >
                 {STATUS_LABELS[s]}
               </span>
@@ -74,7 +74,7 @@ export function Bestellfortschritt({
           {trackingNummer && (
             <>
               <br />
-              <span className="text-brand/50">Sendungsnummer:</span>{' '}
+              <span className="text-brand/70">Sendungsnummer:</span>{' '}
               <span className="font-medium">{trackingNummer}</span>
             </>
           )}

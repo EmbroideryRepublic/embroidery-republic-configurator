@@ -64,7 +64,7 @@ function ElementZeile({ orderId, element, nummer }: { orderId: string; element: 
               {/* PNG = transparenter Hintergrund, die Datei für die DTF-Bestellung; JPG hat immer einen Hintergrund. */}
               <a
                 href={textPngHref(orderId, element.id)}
-                className="rounded bg-gold px-2 py-1 text-xs font-medium text-white transition-colors hover:bg-gold-dark"
+                className="rounded bg-gold-btn px-2 py-1 text-xs font-medium text-white transition-colors hover:bg-gold-dark"
               >
                 PNG für DTF
               </a>

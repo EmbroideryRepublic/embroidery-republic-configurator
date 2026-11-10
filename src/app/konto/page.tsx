@@ -28,11 +28,11 @@ export default async function KontoUebersichtPage() {
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Mein Konto</p>
+      <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Mein Konto</p>
       <h1 className="mt-2 font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal text-brand">
         Willkommen{profil?.displayName ? `, ${profil.displayName}` : ''}
       </h1>
-      <p className="mt-2 text-sm text-brand/60">{kunde.email}</p>
+      <p className="mt-2 text-sm text-brand/70">{kunde.email}</p>
 
       <KontoNav />
 
@@ -43,7 +43,7 @@ export default async function KontoUebersichtPage() {
         >
           <Package className="h-5 w-5 text-gold-dark" />
           <p className="mt-2 text-sm font-semibold text-brand">{bestellungen.length} Bestellung(en)</p>
-          <p className="mt-0.5 text-xs text-brand/50">Historie & Status ansehen →</p>
+          <p className="mt-0.5 text-xs text-brand/70">Historie & Status ansehen →</p>
         </Link>
         <Link
           href="/konto/adressen"
@@ -51,7 +51,7 @@ export default async function KontoUebersichtPage() {
         >
           <MapPin className="h-5 w-5 text-gold-dark" />
           <p className="mt-2 text-sm font-semibold text-brand">{adressen.length} Adresse(n)</p>
-          <p className="mt-0.5 text-xs text-brand/50">Adressbuch verwalten →</p>
+          <p className="mt-0.5 text-xs text-brand/70">Adressbuch verwalten →</p>
         </Link>
         <Link
           href="/konto/profil"
@@ -59,13 +59,13 @@ export default async function KontoUebersichtPage() {
         >
           <User className="h-5 w-5 text-gold-dark" />
           <p className="mt-2 text-sm font-semibold text-brand">Profil</p>
-          <p className="mt-0.5 text-xs text-brand/50">Angaben & Passwort ändern →</p>
+          <p className="mt-0.5 text-xs text-brand/70">Angaben & Passwort ändern →</p>
         </Link>
       </div>
 
       {bestellungen.length > 0 && (
         <div className="mt-8">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/50">Letzte Bestellungen</h2>
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/70">Letzte Bestellungen</h2>
           <div className="divide-y divide-gold/10 rounded-xl border border-gold/20 bg-white shadow-elegant">
             {bestellungen.slice(0, 5).map((b) => (
               <Link
@@ -75,9 +75,9 @@ export default async function KontoUebersichtPage() {
               >
                 <span>
                   <span className="font-medium text-brand">{b.bestellnummer}</span>{' '}
-                  <span className="text-brand/40">· {zeit(b.bestelltAm)}</span>
+                  <span className="text-brand/70">· {zeit(b.bestelltAm)}</span>
                 </span>
-                <span className="text-brand/60">{formatiereGeld(b.totalPrice)}</span>
+                <span className="text-brand/70">{formatiereGeld(b.totalPrice)}</span>
               </Link>
             ))}
           </div>

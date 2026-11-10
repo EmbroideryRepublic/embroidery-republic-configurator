@@ -29,11 +29,11 @@ export function KontaktKopf() {
         {t('kontakt_back_link')}
       </Link>
 
-      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold">{t('kontakt_eyebrow')}</p>
+      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold-dark">{t('kontakt_eyebrow')}</p>
       <h1 className="mt-4 font-serif text-[clamp(2.25rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
         {t('kontakt_heading')}
       </h1>
-      <p className="mt-6 mb-8 max-w-xl text-[17px] leading-relaxed text-brand/60">{t('kontakt_intro')}</p>
+      <p className="mt-6 mb-8 max-w-xl text-[17px] leading-relaxed text-brand/70">{t('kontakt_intro')}</p>
     </>
   );
 }
@@ -52,7 +52,7 @@ export function KontaktHelfer() {
               <Icon className="h-4 w-4" />
             </span>
             <p className="text-sm font-semibold text-brand">{t(title)}</p>
-            <p className="mt-1 text-xs leading-relaxed text-brand/60">{t(text)}</p>
+            <p className="mt-1 text-xs leading-relaxed text-brand/70">{t(text)}</p>
           </div>
         );
       })}
@@ -63,7 +63,7 @@ export function KontaktHelfer() {
 export function KontaktDirektUeberschrift() {
   const language = useLanguageStore((s) => s.language);
   return (
-    <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/50">
+    <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/70">
       {translate('kontakt_direct_heading', language)}
     </h2>
   );
@@ -74,7 +74,7 @@ export function KontaktFusszeile() {
   const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
   return (
-    <p className="mt-8 text-center text-xs text-brand/50">
+    <p className="mt-8 text-center text-xs text-brand/70">
       {t('kontakt_footer_cta_prefix')}{' '}
       <Link href="/" className="font-medium text-gold-dark hover:underline">
         {t('kontakt_footer_configurator_link')}

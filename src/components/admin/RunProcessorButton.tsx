@@ -23,7 +23,7 @@ export function RunProcessorButton() {
             setMsg(r.error ?? (r.success ? 'fertig' : 'Fehler'));
           })
         }
-        className="rounded bg-gold px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-gold-dark disabled:opacity-50"
+        className="rounded bg-gold-btn px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-gold-dark disabled:opacity-50"
       >
         {isPending ? 'Verarbeite fällige …' : 'Fällige jetzt verarbeiten'}
       </button>

@@ -38,7 +38,7 @@ export function CancelOrderButton({ token, orderId, fristBis }: CancelOrderButto
         >
           Bestellung stornieren
         </button>
-        <p className="mt-2 text-xs text-brand/50">Möglich bis {fristBis}.</p>
+        <p className="mt-2 text-xs text-brand/70">Möglich bis {fristBis}.</p>
       </div>
     );
   }

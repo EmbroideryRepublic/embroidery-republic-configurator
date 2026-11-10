@@ -16,18 +16,18 @@ export function BestellPositionen({ bestellung }: { bestellung: BestellAnsicht }
         {bestellung.positionen.map((pos, i) => (
           <li key={i} className="border-b border-brand/[0.06] pb-3 last:border-0 last:pb-0">
             <p className="text-sm font-medium text-brand">{pos.produktName}</p>
-            <p className="text-xs text-brand/60">
+            <p className="text-xs text-brand/70">
               {pos.farbe} · {pos.veredelung}
             </p>
             <p className="mt-1 text-xs text-brand/70">
               {pos.groessen.map((g) => `${g.groesse} × ${g.menge}`).join(' · ')}
-              <span className="text-brand/50"> ({pos.menge} Stück)</span>
+              <span className="text-brand/70"> ({pos.menge} Stück)</span>
             </p>
           </li>
         ))}
       </ul>
       {bestellung.steuerbetrag !== null && bestellung.steuersatz !== null && (
-        <p className="mt-4 text-right text-xs text-brand/50">
+        <p className="mt-4 text-right text-xs text-brand/70">
           davon enthaltene USt. ({bestellung.steuersatz} %): {formatiereGeld(bestellung.steuerbetrag)}
         </p>
       )}

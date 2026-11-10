@@ -12,7 +12,8 @@ const config: Config = {
         // Akzent – orientiert am Firmenlogo (Tiger-Wappen in Gold/Bronze
         // auf Creme).
         //
-        // Kontrast (WCAG 1.4.3, per WCAG-Formel gegen cream/white geprüft):
+        // Kontrast (WCAG 1.4.3, per WCAG-Formel gegen cream/white geprüft; Stand 2026-11-10: alle
+        // text-brand/30…/60 sind auf /70 angehoben, kleine Goldtexte nutzen gold-dark):
         // text-brand ab Opacity 70 erreicht 4.5:1 (5.53–5.71:1), darunter
         // (30–60) nicht – auch eine dunklere DEFAULT-Farbe kann das bei so
         // niedriger Deckkraft rechnerisch nicht auffangen, ohne fast Schwarz
@@ -29,9 +30,10 @@ const config: Config = {
           accent: '#a8792f',  // Gold-Akzent für Buttons/aktive Elemente
         },
         gold: {
-          DEFAULT: '#b8935a',
-          dark: '#8a6a3a',
+          DEFAULT: '#aa864e', // war #b8935a (2,7:1) – jetzt 3,0–3,4:1 für große Schrift
+          dark: '#7d6035', // war #8a6a3a (4,4–4,7:1) – jetzt 5,2–5,8:1 für kleinen Text
           light: '#f3e6cc',
+          btn: '#8a6a3a', // Knopfhintergrund für weiße Schrift (5,0:1); hover: gold-dark
         },
         bronze: {
           DEFAULT: '#8b5e34',

@@ -13,7 +13,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-lg bg-gold py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
+      className="w-full rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pending ? 'Wird geprüft …' : 'Anmelden'}
     </button>
@@ -66,7 +66,7 @@ export function AnmeldenForm() {
       )}
       <SubmitButton />
       <div className="flex items-center justify-between text-xs">
-        <Link href="/konto/passwort-vergessen" className="text-brand/50 hover:text-gold-dark hover:underline">
+        <Link href="/konto/passwort-vergessen" className="text-brand/70 hover:text-gold-dark hover:underline">
           Passwort vergessen?
         </Link>
         <Link href="/konto/registrieren" className="font-medium text-gold-dark hover:underline">

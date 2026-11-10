@@ -5,6 +5,8 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { AVAILABLE_FONTS } from '@/config/fonts';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
+import { standardTextfarbe } from '@/lib/canvas/textfarbe';
+import { useTextilHex } from './useTextilHex';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import type { PrintArea, TextElement } from '@/types';
 import { useLanguageStore, translate } from '@/stores/languageStore';
@@ -23,6 +25,7 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
   const addElement = useConfiguratorStore((s) => s.addElement);
   const setSelectedElementId = useConfiguratorStore((s) => s.setSelectedElementId);
   const language = useLanguageStore((s) => s.language);
+  const textilHex = useTextilHex();
   const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
   function handleAdd() {
@@ -72,7 +75,9 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
       content,
       fontFamily: AVAILABLE_FONTS[0],
       fontSizePx,
-      color: '#000000',
+      // Schwarz oder Weiß – je nachdem, was sich von der Textilfarbe abhebt (sonst wäre der Text
+      // auf einem schwarzen Hoodie unsichtbar).
+      color: standardTextfarbe(textilHex),
       bold: false,
       italic: false,
       align: 'center',
@@ -103,21 +108,22 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
             if (e.key === 'Enter') handleAdd();
           }}
           placeholder={t('text_tool_placeholder')}
+          aria-label={t('text_tool_placeholder')}
           className="flex-1 rounded-md border border-gray-300 px-2 py-1.5 text-sm"
         />
         <button
           type="button"
           onClick={handleAdd}
           disabled={!value.trim() || !printArea}
-          className="rounded-md bg-gold px-3 py-1.5 text-sm text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-md bg-gold-btn px-3 py-1.5 text-sm text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
         >
           {t('text_tool_add_button')}
         </button>
       </div>
       {!printArea && (
-        <p className="text-xs text-amber-600">{t('text_tool_no_print_area')}</p>
+        <p className="text-xs text-amber-800">{t('text_tool_no_print_area')}</p>
       )}
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-gray-600">
         {t('text_tool_hint')}
       </p>
     </div>

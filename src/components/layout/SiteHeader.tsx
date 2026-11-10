@@ -65,7 +65,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-brand/70 lg:flex">
+        <nav aria-label="Hauptnavigation" className="hidden items-center gap-6 text-sm font-medium text-brand/70 lg:flex">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className="transition-colors hover:text-gold-dark">
               {link.label}

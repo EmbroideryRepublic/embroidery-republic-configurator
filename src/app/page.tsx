@@ -172,7 +172,8 @@ export default async function Startseite() {
           Keine Bedienelemente über dem Aufmacher – zuerst kommt die Ware. */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-[1500px] items-center gap-4 px-4 pb-16 pt-10 sm:px-8 lg:min-h-[84vh] lg:grid-cols-[1.15fr_1fr] lg:gap-8 lg:pb-24 lg:pt-6">
-          <div className="relative z-10 order-2 lg:order-1">
+          {/* Auch am Handy zuerst Überschrift und Knopf, danach das Bild (Test 2026-11-10: "Jetzt gestalten" lag bei 898 px, unter dem ersten Bildschirm). */}
+          <div className="relative z-10 order-1">
             <HeroText />
 
             <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -185,7 +186,7 @@ export default async function Startseite() {
               </Link>
               <Link
                 href="/produkt"
-                className="inline-flex items-center border-b border-brand/25 pb-1 text-[15px] text-brand/70 transition-colors duration-300 hover:border-brand hover:text-brand"
+                className="inline-flex items-center border-b border-brand/25 py-2.5 text-[15px] text-brand/70 transition-colors duration-300 hover:border-brand hover:text-brand"
               >
                 Produkte entdecken
               </Link>
@@ -197,7 +198,7 @@ export default async function Startseite() {
               weißen Studiohintergrund (scripts/buehneFreistellen.mts). Die
               Katalogdatei selbst bleibt unangetastet, der Konfigurator
               rechnet mit ihr. Originalauflösung, nichts hochskaliert. */}
-          <div className="relative order-1 flex items-center justify-center py-6 lg:order-2 lg:py-0">
+          <div className="relative order-2 flex items-center justify-center py-6 lg:py-0">
             <div
               aria-hidden
               className="absolute h-[min(88vw,640px)] w-[min(88vw,640px)] rounded-full bg-[radial-gradient(circle_at_50%_45%,#ffffff_0%,#f6efe2_55%,rgba(246,239,226,0)_72%)]"
@@ -334,7 +335,7 @@ export default async function Startseite() {
               </div>
               <Link
                 href="/produkt"
-                className="group inline-flex items-center gap-2 border-b border-brand/25 pb-1 text-[15px] text-brand/70 transition-colors duration-300 hover:border-brand hover:text-brand"
+                className="group inline-flex items-center gap-2 border-b border-brand/25 py-2.5 text-[15px] text-brand/70 transition-colors duration-300 hover:border-brand hover:text-brand"
               >
                 Alle Produkte ansehen
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -512,7 +513,7 @@ function Zielgruppe({
       <p className="mt-3 flex-1 text-[15px] leading-relaxed text-brand/70">{text}</p>
       <Link
         href={linkHref}
-        className="group mt-7 inline-flex items-center gap-2 self-start text-[14px] font-medium text-gold-dark transition-colors duration-300 hover:text-brand"
+        className="group mt-4 inline-flex items-center gap-2 self-start py-2.5 text-[14px] font-medium text-gold-dark transition-colors duration-300 hover:text-brand"
       >
         {linkLabel}
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />

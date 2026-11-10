@@ -22,30 +22,30 @@ export default async function ProfilPage() {
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Mein Konto</p>
+      <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Mein Konto</p>
       <h1 className="mt-2 font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal text-brand">Profil</h1>
 
       <KontoNav />
 
       <div className="space-y-6">
         <section className="rounded-xl border border-gold/20 bg-white p-5 shadow-elegant">
-          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-brand/50">Persönliche Angaben</h2>
+          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-brand/70">Persönliche Angaben</h2>
           <ProfilForm profil={profil} />
         </section>
 
         <section className="rounded-xl border border-gold/20 bg-white p-5 shadow-elegant">
-          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-brand/50">E-Mail-Adresse</h2>
+          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-brand/70">E-Mail-Adresse</h2>
           <EmailAendernForm aktuelleEmail={kunde.email} />
         </section>
 
         <section className="rounded-xl border border-gold/20 bg-white p-5 shadow-elegant">
-          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-brand/50">Passwort</h2>
+          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-brand/70">Passwort</h2>
           <PasswortAendernForm />
         </section>
 
         <section className="rounded-xl border border-red-200 bg-white p-5 shadow-elegant">
           <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-red-600/70">Konto löschen</h2>
-          <p className="mb-4 text-xs text-brand/60">
+          <p className="mb-4 text-xs text-brand/70">
             Sie können Ihr Konto jederzeit selbst und unwiderruflich löschen, statt auf die automatische Löschfrist zu
             warten.
           </p>

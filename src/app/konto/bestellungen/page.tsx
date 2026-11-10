@@ -34,7 +34,7 @@ export default async function BestellungenPage() {
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Mein Konto</p>
+      <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Mein Konto</p>
       <h1 className="mt-2 font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal text-brand">Bestellungen</h1>
 
       <KontoNav />
@@ -42,10 +42,10 @@ export default async function BestellungenPage() {
       {bestellungen.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-gold/30 bg-white p-10 text-center">
           <PackageOpen className="mx-auto h-8 w-8 text-brand/20" />
-          <p className="mt-3 text-sm text-brand/60">
+          <p className="mt-3 text-sm text-brand/70">
             Noch keine Bestellung mit diesem Konto verknüpft.
           </p>
-          <p className="mt-1 text-xs text-brand/40">
+          <p className="mt-1 text-xs text-brand/70">
             Frühere Gastbestellungen finden Sie über den Link in Ihrer Bestellbestätigung.
           </p>
           <Link href="/produkt" className="mt-4 inline-block text-sm font-medium text-gold-dark hover:underline">
@@ -62,9 +62,9 @@ export default async function BestellungenPage() {
             >
               <div>
                 <p className="font-medium text-brand">
-                  {b.bestellnummer} {b.orderType === 'inquiry' && <span className="text-brand/40">(Anfrage)</span>}
+                  {b.bestellnummer} {b.orderType === 'inquiry' && <span className="text-brand/70">(Anfrage)</span>}
                 </p>
-                <p className="text-xs text-brand/40">{zeit(b.bestelltAm)}</p>
+                <p className="text-xs text-brand/70">{zeit(b.bestelltAm)}</p>
               </div>
               <div className="flex items-center gap-3">
                 <span className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${STATUS_FARBE[b.status as OrderStatus] ?? 'bg-gray-100 text-gray-600'}`}>

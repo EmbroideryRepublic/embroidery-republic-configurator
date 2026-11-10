@@ -84,7 +84,7 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
       <div className="mx-auto max-w-[1500px] px-4 pb-24 pt-12 sm:px-8">
         {/* Sichtbares Gegenstück zu katalogBrotkrumenSchema oben – bislang gab
             es nur die JSON-LD-Auszeichnung, keine sichtbare Navigation. */}
-        <nav aria-label="Brotkrumen" className="mb-4 text-xs text-brand/45">
+        <nav aria-label="Brotkrumen" className="mb-4 text-xs text-brand/70">
           <Link href="/" className="transition-colors hover:text-gold-dark">
             Start
           </Link>
@@ -94,7 +94,7 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
         <h1 className="font-serif text-[clamp(2rem,3.6vw,2.75rem)] font-normal tracking-tight text-brand">
           Alle Produkte
         </h1>
-        <p className="mt-2.5 text-[13px] text-brand/50">
+        <p className="mt-2.5 text-[13px] text-brand/70">
           Veredelt per DTF-Transferdruck oder Stickerei · ohne Mindestbestellmenge
         </p>
 
@@ -105,11 +105,12 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
             spannen={ergebnis.spannen}
             bezeichnungen={ergebnis.bezeichnungen}
             merkmale={ALLE_MERKMALE}
+            gesamt={ergebnis.gesamt}
           >
             {ergebnis.produkte.length === 0 ? (
               <div className="py-24 text-center">
                 <p className="text-[17px] text-brand">Keine Produkte für diese Auswahl</p>
-                <p className="mt-2 text-[13px] text-brand/45">
+                <p className="mt-2 text-[13px] text-brand/70">
                   Entfernen Sie einzelne Filter – oder setzen Sie alle zurück.
                 </p>
                 <Link
@@ -152,7 +153,7 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
                       className={`flex h-10 w-10 items-center justify-center rounded-full text-[13px] tabular-nums transition-all duration-300 ease-out ${
                         nr === ergebnis.seite
                           ? 'bg-brand font-medium text-white'
-                          : 'border border-brand/[0.12] bg-white/70 text-brand/60 hover:border-gold/40 hover:bg-white hover:text-brand'
+                          : 'border border-brand/[0.12] bg-white/70 text-brand/70 hover:border-gold/40 hover:bg-white hover:text-brand'
                       }`}
                     >
                       {nr}

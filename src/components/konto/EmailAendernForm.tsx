@@ -22,7 +22,7 @@ export function EmailAendernForm({ aktuelleEmail }: { aktuelleEmail: string }) {
 
   return (
     <form action={formAction} className="space-y-3">
-      <p className="text-xs text-brand/50">Aktuell hinterlegt: {aktuelleEmail}</p>
+      <p className="text-xs text-brand/70">Aktuell hinterlegt: {aktuelleEmail}</p>
       <KontoFeld id="email" name="email" label="Neue E-Mail-Adresse" type="email" autoComplete="email" required />
       <KontoFeld
         id="aktuellesPasswort"

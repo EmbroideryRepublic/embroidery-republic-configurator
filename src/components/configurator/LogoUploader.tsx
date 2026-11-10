@@ -10,15 +10,16 @@ import { analyzeLogoContent, cropImageToContent } from '@/lib/upload/analyzeLogo
 import { InfoTooltip } from '@/components/ui/InfoTooltip';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
+import { berechneLogoDpi, stufeFuerDpi, logoQualitaetText, type QualityLevel as QualityStufe } from '@/lib/canvas/logoQualitaet';
 import type { LogoElement, PrintArea } from '@/types';
 
 const ACCEPTED_TYPES = ['image/png', 'image/svg+xml', 'application/pdf', 'image/jpeg'];
 const MAX_FILE_SIZE_MB = 10;
 const START_SIZE_RATIO = 0.5;
-const MIN_DPI = 150;
-const OK_DPI = 220;
 
-type QualityLevel = 'green' | 'yellow' | 'red' | null;
+// Die Schwellen (150/220 dpi) und die Texte der Ampel liegen in lib/canvas/logoQualitaet.ts – dieselben Regeln gelten
+// dauerhaft im Design-Bereich (ElementToolbar), nicht nur in den 1,8 Sekunden nach dem Hochladen.
+type QualityLevel = QualityStufe | null;
 
 interface LogoUploaderProps {
   printArea: PrintArea | null;
@@ -109,17 +110,9 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
       // Nur für Rasterbilder (PNG/JPEG) relevant (SVG/PDF sind verlustfrei
       // skalierbar).
       if (file.type === 'image/png' || file.type === 'image/jpeg') {
-        const widthInches = widthCm / 2.54;
-        const effectiveDpi = widthInches > 0 ? contentWidthPx / widthInches : 0;
-        let level: QualityLevel = 'green';
-        let message = 'Optimale Druckqualität bei dieser Größe.';
-        if (effectiveDpi < MIN_DPI) {
-          level = 'red';
-          message = `Auflösung zu niedrig für scharfen Druck (≈ ${Math.round(effectiveDpi)} dpi, empfohlen: ${MIN_DPI}+ dpi). Bitte kleiner platzieren, ein SVG verwenden oder eine höher aufgelöste Datei hochladen.`;
-        } else if (effectiveDpi < OK_DPI) {
-          level = 'yellow';
-          message = `Akzeptable Auflösung (≈ ${Math.round(effectiveDpi)} dpi), für sehr große Drucke aber eher knapp.`;
-        }
+        const effectiveDpi = berechneLogoDpi(contentWidthPx, widthCm);
+        const level = stufeFuerDpi(effectiveDpi);
+        const message = logoQualitaetText(level, effectiveDpi);
         // Eignung DTF vs. Stickerei: Stickerei verzeiht niedrigere
         // Bild-Auflösung eher (wird ohnehin manuell digitalisiert), dafür
         // sind sehr feine Farbverläufe/Fotos für Stickerei ungeeignet.
@@ -210,12 +203,12 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
       />
       <label
         htmlFor="logo-upload"
-        className="block cursor-pointer rounded-lg border border-dashed border-gold/30 p-4 text-center text-sm text-brand/50 transition-colors hover:border-gold hover:text-gold-dark peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand"
+        className="block cursor-pointer rounded-lg border border-dashed border-gold/30 p-4 text-center text-sm text-brand/70 transition-colors hover:border-gold hover:text-gold-dark peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand"
       >
         {isLoading ? t('logo_upload_loading') : t('logo_upload_label')}
       </label>
 
-      <label className="mt-2 flex items-center gap-1.5 text-xs text-brand/50">
+      <label className="mt-2 flex items-center gap-1.5 text-xs text-brand/70">
         <input
           type="checkbox"
           checked={removeBg}
@@ -242,7 +235,7 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
       )}
 
       {printMethod === 'embroidery' && (
-        <p className="mt-2 flex items-center gap-1 text-xs text-brand/40">
+        <p className="mt-2 flex items-center gap-1 text-xs text-brand/70">
           Hinweis zur Stickerei-Digitalisierung
           <InfoTooltip text={t('logo_embroidery_hint')} />
         </p>

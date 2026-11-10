@@ -43,7 +43,7 @@ export function CanvasToolbar({
         <ToolbarButton title={t('canvas_zoom_out')} onClick={onZoomOut} disabled={zoom <= 0.5}>
           <ZoomOut className="h-3.5 w-3.5" />
         </ToolbarButton>
-        <span className="w-10 text-center text-xs tabular-nums text-brand/60">
+        <span className="w-10 text-center text-xs tabular-nums text-brand/70">
           {Math.round(zoom * 100)}%
         </span>
         <ToolbarButton title={t('canvas_zoom_in')} onClick={onZoomIn} disabled={zoom >= 2.5}>
@@ -84,7 +84,7 @@ function ToolbarButton({
       onClick={onClick}
       title={title}
       disabled={disabled}
-      className="rounded-md p-1.5 text-brand/60 transition-colors hover:bg-cream hover:text-gold-dark disabled:cursor-not-allowed disabled:opacity-30"
+      className="rounded-md p-2.5 text-brand/70 transition-colors lg:p-1.5 hover:bg-cream hover:text-gold-dark disabled:cursor-not-allowed disabled:opacity-30"
     >
       {children}
     </button>

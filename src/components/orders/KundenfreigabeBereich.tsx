@@ -63,7 +63,7 @@ export function KundenfreigabeBereich({ token, orderId, positionen }: Kundenfrei
       </p>
 
       {hatStickerei && (
-        <p className="mt-2 text-xs text-brand/60">
+        <p className="mt-2 text-xs text-brand/70">
           Für Stickerei digitalisiert unser Team Ihr Logo anschließend manuell in Garnfarben – die Vorschau zeigt die
           Platzierung, nicht das finale Stickbild.
         </p>
@@ -86,7 +86,7 @@ export function KundenfreigabeBereich({ token, orderId, positionen }: Kundenfrei
                     <div className="relative h-32 w-32 overflow-hidden rounded border border-brand/10 bg-white">
                       <Image src={url} alt={`${pos.produktName} ${ansichtLabel(view)}`} fill sizes="128px" className="object-contain p-1" />
                     </div>
-                    <p className="mt-1 text-[10px] text-brand/50">{ansichtLabel(view)}</p>
+                    <p className="mt-1 text-[10px] text-brand/70">{ansichtLabel(view)}</p>
                   </div>
                 ))}
               </div>

@@ -54,7 +54,7 @@ export function AdressListe({ adressen }: { adressen: KundenAdresse[] }) {
       {adressen.map((adresse) =>
         bearbeiteId === adresse.id ? (
           <div key={adresse.id} className="rounded-2xl border border-gold/20 bg-white p-4 shadow-elegant">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/50">Adresse bearbeiten</p>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/70">Adresse bearbeiten</p>
             <AdressForm
               action={adresseAktualisierenAction.bind(null, adresse.id)}
               bestehend={adresse}
@@ -73,7 +73,7 @@ export function AdressListe({ adressen }: { adressen: KundenAdresse[] }) {
                     <Star className="h-2.5 w-2.5 fill-current" /> Standard
                   </span>
                 )}
-                {adresse.label && <p className="text-xs font-medium text-brand/50">{adresse.label}</p>}
+                {adresse.label && <p className="text-xs font-medium text-brand/70">{adresse.label}</p>}
                 <p className="font-medium text-brand">
                   {adresse.firstName} {adresse.lastName}
                 </p>
@@ -82,13 +82,13 @@ export function AdressListe({ adressen }: { adressen: KundenAdresse[] }) {
                 <p>
                   {adresse.zip} {adresse.city}, {adresse.country}
                 </p>
-                {adresse.phone && <p className="text-brand/50">{adresse.phone}</p>}
+                {adresse.phone && <p className="text-brand/70">{adresse.phone}</p>}
               </div>
               <div className="flex flex-shrink-0 flex-col items-end gap-2 text-xs">
                 <button
                   type="button"
                   onClick={() => setBearbeiteId(adresse.id)}
-                  className="inline-flex items-center gap-1 text-brand/50 hover:text-gold-dark"
+                  className="inline-flex items-center gap-1 text-brand/70 hover:text-gold-dark"
                 >
                   <Pencil className="h-3.5 w-3.5" /> Bearbeiten
                 </button>
@@ -96,7 +96,7 @@ export function AdressListe({ adressen }: { adressen: KundenAdresse[] }) {
                   <button
                     type="button"
                     onClick={() => ausloesen(() => adresseAlsStandardAction(adresse.id))}
-                    className="inline-flex items-center gap-1 text-brand/50 hover:text-gold-dark"
+                    className="inline-flex items-center gap-1 text-brand/70 hover:text-gold-dark"
                   >
                     <Star className="h-3.5 w-3.5" /> Als Standard
                   </button>
@@ -115,7 +115,7 @@ export function AdressListe({ adressen }: { adressen: KundenAdresse[] }) {
                       <button
                         type="button"
                         onClick={() => setLoescheBestaetigenId(null)}
-                        className="text-brand/50 hover:text-brand"
+                        className="text-brand/70 hover:text-brand"
                       >
                         Abbrechen
                       </button>
@@ -125,7 +125,7 @@ export function AdressListe({ adressen }: { adressen: KundenAdresse[] }) {
                   <button
                     type="button"
                     onClick={() => setLoescheBestaetigenId(adresse.id)}
-                    className="inline-flex items-center gap-1 text-brand/50 hover:text-red-600"
+                    className="inline-flex items-center gap-1 text-brand/70 hover:text-red-600"
                   >
                     <Trash2 className="h-3.5 w-3.5" /> Löschen
                   </button>
@@ -138,7 +138,7 @@ export function AdressListe({ adressen }: { adressen: KundenAdresse[] }) {
 
       {neuOffen ? (
         <div className="rounded-2xl border border-gold/20 bg-white p-4 shadow-elegant">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/50">Neue Adresse</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-brand/70">Neue Adresse</p>
           <AdressForm
             action={adresseAnlegenAction}
             onAbbrechen={adressen.length > 0 ? () => setNeuOffen(false) : undefined}

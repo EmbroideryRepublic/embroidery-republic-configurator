@@ -24,7 +24,7 @@ export function KontoNav() {
               key={tab.href}
               href={tab.href}
               className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                aktiv ? 'bg-gold text-white' : 'text-brand/60 hover:bg-gold-light/40 hover:text-brand'
+                aktiv ? 'bg-gold-btn text-white' : 'text-brand/70 hover:bg-gold-light/40 hover:text-brand'
               }`}
             >
               <tab.icon className="h-3.5 w-3.5" />

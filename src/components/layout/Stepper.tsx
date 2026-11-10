@@ -48,10 +48,10 @@ export function Stepper({ activeStep }: StepperProps) {
                 className={clsx(
                   'flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-[10px] font-semibold transition-colors',
                   isDone
-                    ? 'bg-gold text-white'
+                    ? 'bg-gold-btn text-white'
                     : isActive
                       ? 'bg-brand text-white'
-                      : 'bg-brand/10 text-brand/35'
+                      : 'bg-brand/10 text-brand/70'
                 )}
               >
                 {isDone ? <Check className="h-3 w-3" aria-hidden="true" /> : index + 1}
@@ -64,7 +64,7 @@ export function Stepper({ activeStep }: StepperProps) {
                   // ohne dass die ganze Leiste umbricht. Die übrigen Labels
                   // erscheinen erst ab sm.
                   isActive ? 'inline' : 'hidden sm:inline',
-                  isActive ? 'font-medium text-brand' : isDone ? 'text-brand/55' : 'text-brand/35'
+                  isActive ? 'font-medium text-brand' : isDone ? 'text-brand/70' : 'text-brand/70'
                 )}
               >
                 {label}

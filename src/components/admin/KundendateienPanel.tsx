@@ -214,7 +214,7 @@ export function KundendateienPanel({ orderId, items }: { orderId: string; items:
         </p>
         <a
           href={`/api/admin/bestellungen/${encodeURIComponent(orderId)}/kundendateien`}
-          className="rounded bg-gold px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
+          className="rounded bg-gold-btn px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
         >
           Alle Kundendateien herunterladen (ZIP)
         </a>

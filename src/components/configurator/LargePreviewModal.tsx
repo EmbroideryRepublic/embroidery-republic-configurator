@@ -72,7 +72,7 @@ export function LargePreviewModal({ imageUrls, printAreas, views, garmentLight =
               onClick={() => handleViewChange(view)}
               className={clsx(
                 'rounded-full px-3 py-1.5 text-sm font-medium transition-colors',
-                previewView === view ? 'bg-gold text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'
+                previewView === view ? 'bg-gold-btn text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'
               )}
             >
               {t(positionTranslationKey(view))}

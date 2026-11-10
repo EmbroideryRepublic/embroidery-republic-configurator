@@ -11,7 +11,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-lg bg-gold py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
+      className="w-full rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pending ? 'Wird gesendet …' : 'Link zum Zurücksetzen senden'}
     </button>
@@ -38,7 +38,7 @@ export function PasswortVergessenForm() {
         </p>
       )}
       <SubmitButton />
-      <p className="text-center text-xs text-brand/50">
+      <p className="text-center text-xs text-brand/70">
         <Link href="/konto/anmelden" className="font-medium text-gold-dark hover:underline">
           Zurück zur Anmeldung
         </Link>

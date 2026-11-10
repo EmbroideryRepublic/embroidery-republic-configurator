@@ -37,7 +37,7 @@ export default function Fehlerseite({
       <h1 className="mt-6 font-serif text-[clamp(2rem,4.5vw,3rem)] font-normal leading-tight tracking-tight text-brand">
         Da ist etwas schiefgelaufen.
       </h1>
-      <p className="mt-4 max-w-md text-[15px] leading-relaxed text-brand/60">
+      <p className="mt-4 max-w-md text-[15px] leading-relaxed text-brand/70">
         Der Fehler liegt bei uns, nicht bei Ihnen. Ein erneuter Versuch hilft meistens –
         andernfalls sind wir über das Kontaktformular erreichbar.
       </p>
@@ -66,7 +66,7 @@ export default function Fehlerseite({
       </div>
 
       {error.digest && (
-        <p className="mt-10 text-[12px] text-brand/35">
+        <p className="mt-10 text-[12px] text-brand/70">
           Kennung für den Support: <span className="font-mono">{error.digest}</span>
         </p>
       )}

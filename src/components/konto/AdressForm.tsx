@@ -12,7 +12,7 @@ function SubmitButton({ label, pendingLabel }: { label: string; pendingLabel: st
     <button
       type="submit"
       disabled={pending}
-      className="rounded-lg bg-gold px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
+      className="rounded-lg bg-gold-btn px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pending ? pendingLabel : label}
     </button>
@@ -63,7 +63,7 @@ export function AdressForm({
       {/* Land: dieselbe Begrenzung wie im Checkout (config/shipping.ts) –
           eine gespeicherte, aber nicht lieferbare Adresse wäre nutzlos. */}
       <input type="hidden" name="country" value="Deutschland" />
-      <p className="text-xs text-brand/50">Land: Deutschland (aktuell einziges Lieferland)</p>
+      <p className="text-xs text-brand/70">Land: Deutschland (aktuell einziges Lieferland)</p>
       {state?.error && (
         <p role="alert" className="text-xs text-red-600">
           {state.error}
@@ -72,7 +72,7 @@ export function AdressForm({
       <div className="flex items-center gap-2">
         <SubmitButton label={submitLabel} pendingLabel={submitPendingLabel} />
         {onAbbrechen && (
-          <button type="button" onClick={onAbbrechen} className="text-xs text-brand/50 hover:text-brand">
+          <button type="button" onClick={onAbbrechen} className="text-xs text-brand/70 hover:text-brand">
             Abbrechen
           </button>
         )}

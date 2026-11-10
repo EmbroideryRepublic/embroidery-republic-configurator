@@ -133,9 +133,9 @@ export function FilterMenues({
       <button
         type="button"
         onClick={onPanelOeffnen}
-        className="hidden items-center gap-2 rounded-full border border-brand/[0.09] bg-white/70 px-4 py-2 text-[13px] text-brand/60 transition-all duration-300 ease-out hover:border-brand/20 hover:bg-white hover:text-brand lg:inline-flex"
+        className="hidden items-center gap-2 rounded-full border border-brand/[0.09] bg-white/70 px-4 py-2 text-[13px] text-brand/70 transition-all duration-300 ease-out hover:border-brand/20 hover:bg-white hover:text-brand lg:inline-flex"
       >
-        <SlidersHorizontal className="h-4 w-4 text-brand/40" aria-hidden />
+        <SlidersHorizontal className="h-4 w-4 text-brand/70" aria-hidden />
         Mehr Filter
       </button>
     </div>
@@ -153,7 +153,7 @@ function Ausloeser({
       className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[13px] transition-all duration-300 ease-out ${
         anzahl > 0
           ? 'border-brand/30 bg-brand/[0.04] font-medium text-brand'
-          : 'border-brand/[0.09] bg-white/70 text-brand/60 hover:border-brand/20 hover:bg-white hover:text-brand'
+          : 'border-brand/[0.09] bg-white/70 text-brand/70 hover:border-brand/20 hover:bg-white hover:text-brand'
       }`}
     >
       {label}
@@ -163,7 +163,7 @@ function Ausloeser({
         </span>
       )}
       <ChevronDown
-        className={`h-3.5 w-3.5 text-brand/40 transition-transform duration-300 ease-out ${geoeffnet ? '' : 'rotate-180'}`}
+        className={`h-3.5 w-3.5 text-brand/70 transition-transform duration-300 ease-out ${geoeffnet ? '' : 'rotate-180'}`}
         aria-hidden
       />
     </button>

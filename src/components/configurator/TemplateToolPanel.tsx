@@ -4,6 +4,8 @@ import { Type, Trophy, Users, Sparkles } from 'lucide-react';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
+import { standardTextfarbe } from '@/lib/canvas/textfarbe';
+import { useTextilHex } from './useTextilHex';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import { AVAILABLE_FONTS } from '@/config/fonts';
 import type { PrintArea, PrintView, TextElement } from '@/types';
@@ -79,6 +81,7 @@ export function TemplateToolPanel({ printAreas, onApplied }: TemplateToolPanelPr
   const setActiveView = useConfiguratorStore((s) => s.setActiveView);
   const setSelectedElementId = useConfiguratorStore((s) => s.setSelectedElementId);
   const language = useLanguageStore((s) => s.language);
+  const textilHex = useTextilHex();
   const t = (key: TranslationKey) => translate(key, language);
 
   function applyTemplate(template: Template) {
@@ -114,7 +117,7 @@ export function TemplateToolPanel({ printAreas, onApplied }: TemplateToolPanelPr
       content: template.placeholder,
       fontFamily: AVAILABLE_FONTS[0],
       fontSizePx: finalFontSizePx,
-      color: '#000000',
+      color: standardTextfarbe(textilHex), // abgehoben von der Textilfarbe, nicht pauschal Schwarz
       bold: template.bold,
       italic: false,
       align: template.align,
@@ -136,7 +139,7 @@ export function TemplateToolPanel({ printAreas, onApplied }: TemplateToolPanelPr
 
   return (
     <div className="space-y-2">
-      <p className="text-xs text-brand/50">{t('template_hint')}</p>
+      <p className="text-xs text-brand/70">{t('template_hint')}</p>
       <div className="grid grid-cols-2 gap-2">
         {TEMPLATES.map((template) => {
           const Icon = template.icon;
@@ -151,7 +154,7 @@ export function TemplateToolPanel({ printAreas, onApplied }: TemplateToolPanelPr
             >
               <Icon className="h-4 w-4 text-gold-dark" />
               <span className="text-xs font-medium text-brand">{t(template.labelKey)}</span>
-              <span className="text-[10px] text-brand/50">{t(template.descriptionKey)}</span>
+              <span className="text-[10px] text-brand/70">{t(template.descriptionKey)}</span>
             </button>
           );
         })}

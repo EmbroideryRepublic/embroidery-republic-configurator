@@ -37,7 +37,7 @@ export default function DatenschutzPage() {
       </Link>
 
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Datenschutzerklärung</h1>
-      <p className="mb-6 text-xs text-brand/50">Stand: Oktober 2026</p>
+      <p className="mb-6 text-xs text-brand/70">Stand: Oktober 2026</p>
 
       <LegalPageNotice />
 

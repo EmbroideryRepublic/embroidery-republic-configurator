@@ -53,7 +53,7 @@ export function LayersPanel({ printArea }: LayersPanelProps) {
     return (
       <div>
         {pasteButton}
-        <p className="rounded-lg border border-dashed border-gold/20 bg-cream/40 p-3 text-center text-xs text-brand/40">
+        <p className="rounded-lg border border-dashed border-gold/20 bg-cream/40 p-3 text-center text-xs text-brand/70">
           {t('layers_empty')}
         </p>
       </div>
@@ -75,7 +75,7 @@ export function LayersPanel({ printArea }: LayersPanelProps) {
               isSelected ? 'border-gold bg-gold-light/50' : 'border-transparent bg-cream/50 hover:bg-cream'
             )}
           >
-            <Icon className="h-3.5 w-3.5 flex-shrink-0 text-brand/40" />
+            <Icon className="h-3.5 w-3.5 flex-shrink-0 text-brand/70" />
 
             {editingId === el.id ? (
               <input
@@ -189,7 +189,7 @@ function IconButton({
       onClick={onClick}
       title={title}
       className={clsx(
-        'rounded-md p-1 text-brand/40 transition-colors hover:bg-white',
+        'rounded-md p-1 text-brand/70 transition-colors hover:bg-white',
         danger ? 'hover:text-red-500' : 'hover:text-gold-dark'
       )}
     >

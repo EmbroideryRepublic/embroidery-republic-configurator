@@ -449,7 +449,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
                           href={pos.productUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="rounded bg-gold px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
+                          className="rounded bg-gold-btn px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
                         >
                           Produkt bei {gruppe.supplierLabel} öffnen ↗
                         </a>

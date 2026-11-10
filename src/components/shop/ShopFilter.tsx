@@ -27,13 +27,15 @@ import { Ergebniskopf } from './Ergebniskopf';
 import { FilterPanel } from './FilterPanel';
 
 export function ShopFilter({
-  kriterien, facetten, spannen, bezeichnungen, merkmale, children,
+  kriterien, facetten, spannen, bezeichnungen, merkmale, gesamt, children,
 }: {
   kriterien: FilterKriterien;
   facetten: Facetten;
   spannen: Spannen;
   bezeichnungen: Record<string, string>;
   merkmale: Merkmale[];
+  /** Anzahl aller Treffer über alle Seiten (für die Zeile über der Liste). */
+  gesamt: number;
   children: ReactNode;
 }) {
   const [panelOffen, setPanelOffen] = useState(false);
@@ -70,7 +72,7 @@ export function ShopFilter({
 
         <div className="min-w-0 flex-1">
           {/* Band 3 */}
-          <Ergebniskopf kriterien={kriterien} bezeichnungen={bezeichnungen} />
+          <Ergebniskopf kriterien={kriterien} bezeichnungen={bezeichnungen} gesamt={gesamt} />
           <div className="mt-10">{children}</div>
         </div>
       </div>

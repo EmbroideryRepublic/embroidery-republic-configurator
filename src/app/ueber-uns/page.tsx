@@ -56,11 +56,11 @@ export default function AboutPage() {
         ← Zurück zur Startseite
       </Link>
 
-      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold">Stickerei &amp; DTF-Druck</p>
+      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold-dark">Stickerei &amp; DTF-Druck</p>
       <h1 className="mt-4 font-serif text-[clamp(2.25rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
         Über Embroidery Republic Germany
       </h1>
-      <p className="mt-6 mb-12 max-w-xl text-[17px] leading-relaxed text-brand/60">
+      <p className="mt-6 mb-12 max-w-xl text-[17px] leading-relaxed text-brand/70">
         Wir veredeln Firmen- und Teambekleidung – per DTF-Transferdruck für vollfarbige Motive und
         per Stickerei für langlebige Firmenlogos. Statt langer Angebotsschleifen gestalten Sie Ihre
         Bekleidung direkt im Konfigurator: Motiv hochladen, platzieren, Farbe und Größen wählen – der
@@ -74,7 +74,7 @@ export default function AboutPage() {
               <c.icon className="h-4 w-4" />
             </span>
             <p className="text-sm font-semibold text-brand">{c.title}</p>
-            <p className="mt-1 text-xs leading-relaxed text-brand/60">{c.text}</p>
+            <p className="mt-1 text-xs leading-relaxed text-brand/70">{c.text}</p>
           </div>
         ))}
       </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             'Produktion und Versand – bei Kauf auf Rechnung erhalten Sie die Rechnung mit der Auftragsbearbeitung, bei Kreditkarte/PayPal haben Sie bereits im Checkout bezahlt.',
           ].map((step, i) => (
             <li key={step} className="flex gap-3">
-              <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold text-[11px] font-semibold text-white">
+              <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold-btn text-[11px] font-semibold text-white">
                 {i + 1}
               </span>
               <span>{step}</span>
@@ -102,7 +102,7 @@ export default function AboutPage() {
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
           href="/"
-          className="rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-white shadow-elegant transition-all duration-300 ease-out hover:bg-gold-dark active:scale-[0.98]"
+          className="rounded-full bg-gold-btn px-5 py-2.5 text-sm font-medium text-white shadow-elegant transition-all duration-300 ease-out hover:bg-gold-dark active:scale-[0.98]"
         >
           Jetzt konfigurieren
         </Link>

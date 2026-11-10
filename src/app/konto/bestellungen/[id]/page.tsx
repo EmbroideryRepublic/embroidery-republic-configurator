@@ -32,11 +32,11 @@ export default async function KontoBestellDetailPage({ params }: { params: { id:
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Mein Konto</p>
+      <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Mein Konto</p>
       <h1 className="mt-2 font-serif text-[clamp(1.5rem,3vw,2rem)] font-normal text-brand">
         Bestellung {bestellung.bestellnummer}
       </h1>
-      <p className="mt-1 text-sm text-brand/50">Eingegangen am {zeit(bestellung.bestelltAm)}</p>
+      <p className="mt-1 text-sm text-brand/70">Eingegangen am {zeit(bestellung.bestelltAm)}</p>
 
       <KontoNav />
 
@@ -118,7 +118,7 @@ export default async function KontoBestellDetailPage({ params }: { params: { id:
           </p>
         )}
 
-        <p className="text-xs text-brand/50">
+        <p className="text-xs text-brand/70">
           Fragen zu dieser Bestellung?{' '}
           <Link href="/kontakt" className="text-gold-dark hover:underline">
             Kontaktieren Sie uns direkt

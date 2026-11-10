@@ -151,7 +151,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
                   key={tier.minQuantity}
                   className={clsx(
                     'min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium',
-                    quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-cream text-brand/70'
+                    quantity >= tier.minQuantity ? 'bg-gold-btn text-white' : 'bg-cream text-brand/70'
                   )}
                   title={`ab ${tier.minQuantity} Stück: ${formatPrice(tier.erste)} für die erste Position, ${formatPrice(tier.zweite)} für die zweite, ${formatPrice(tier.abDritte)} für jede weitere`}
                 >
@@ -163,7 +163,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
                   key={tier.minQuantity}
                   className={clsx(
                     'min-w-0 flex-1 truncate rounded-md py-0.5 text-center text-[10px] font-medium',
-                    quantity >= tier.minQuantity ? 'bg-gold text-white' : 'bg-cream text-brand/70'
+                    quantity >= tier.minQuantity ? 'bg-gold-btn text-white' : 'bg-cream text-brand/70'
                   )}
                   title={`ab ${tier.minQuantity} Stück: -${tier.veredelungDiscountPercent}% auf Veredelung, -${tier.baseDiscountPercent}% auf Grundpreis`}
                 >
@@ -274,7 +274,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
                 ("20,79 €/Stk. × 22" statt einer nicht herleitbaren Summe) –
                 stärkt den Eindruck der Mengenstaffel als fair, reduziert
                 Rückfragen. */}
-            <p className="text-[11px] text-brand/60">
+            <p className="text-[11px] text-brand/70">
               {formatPrice(unitPrice)}/Stk. × {quantity}
             </p>
           </div>
@@ -309,7 +309,7 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
         )}
       </button>
       {!canAddToCart && (
-        <p className="text-center text-xs text-amber-600">
+        <p className="text-center text-xs text-amber-800">
           {hasUnbearbeitetenPlatzhalter
             ? t('summary_replace_placeholder_first')
             : quantity > 0 && !hasElement

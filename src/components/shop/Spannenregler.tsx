@@ -66,7 +66,7 @@ export function Spannenregler({
           vorher doppelt da (Felder + Skala darunter). */}
       <div className="mt-3 flex items-baseline justify-between text-[13px]">
         <span className="tabular-nums text-brand">{a} {einheit}</span>
-        <span className="text-brand/30">–</span>
+        <span className="text-brand/70">–</span>
         <span className="tabular-nums text-brand">{b} {einheit}</span>
       </div>
     </div>

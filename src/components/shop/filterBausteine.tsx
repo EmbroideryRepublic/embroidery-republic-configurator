@@ -55,7 +55,7 @@ export function WerteListe({
   bezeichnungen: Record<string, string>;
   onToggle: (wert: string) => void;
 }) {
-  if (werte.length === 0) return <p className="px-3 py-4 text-sm text-brand/50">Keine Werte vorhanden.</p>;
+  if (werte.length === 0) return <p className="px-3 py-4 text-sm text-brand/70">Keine Werte vorhanden.</p>;
 
   return (
     <ul className="max-h-80 space-y-0.5 overflow-y-auto">
@@ -67,7 +67,7 @@ export function WerteListe({
         return (
           <li key={wert}>
             <label className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] transition-colors duration-200 ${
-              leer ? 'cursor-not-allowed text-brand/30' : 'cursor-pointer text-brand/60 hover:bg-cream/60 hover:text-brand'
+              leer ? 'cursor-not-allowed text-brand/30' : 'cursor-pointer text-brand/70 hover:bg-cream/60 hover:text-brand'
             }`}>
               <Kaestchen an={an} leer={leer} onToggle={() => onToggle(wert)} />
               {dim === 'farbe' && (
@@ -80,7 +80,7 @@ export function WerteListe({
               <span className={`flex-1 ${an ? 'font-medium text-brand' : ''}`}>
                 {beschrifteWert(dim, wert, bezeichnungen)}
               </span>
-              <span className="text-[11px] tabular-nums text-brand/30">{anzahl}</span>
+              <span className="text-[11px] tabular-nums text-brand/70">{anzahl}</span>
             </label>
           </li>
         );
@@ -131,7 +131,7 @@ export function Chip({
     >
       {farbe && <span className="h-3 w-3 rounded-full border border-black/10" style={{ backgroundColor: farbe }} aria-hidden />}
       {text}
-      <X className="h-3.5 w-3.5 text-brand/40" aria-hidden />
+      <X className="h-3.5 w-3.5 text-brand/70" aria-hidden />
     </button>
   );
 }

@@ -42,7 +42,8 @@ const LEGAL: { href: string; key: TranslationKey }[] = [
 ];
 
 const UEBERSCHRIFT_KLASSE = 'mb-2.5 text-xs font-semibold uppercase tracking-wide text-brand/70';
-const LINK_KLASSE = 'text-xs text-brand/70 transition-colors hover:text-gold-dark';
+// py-3 am Handy: Tippfläche mindestens ~40 px hoch (Test 2026-11-10: 16 px); ab lg wie bisher kompakt.
+const LINK_KLASSE = 'py-3 text-xs text-brand/70 transition-colors hover:text-gold-dark lg:py-0';
 
 export function FooterDescription() {
   const language = useLanguageStore((s) => s.language);
@@ -67,7 +68,7 @@ export function FooterNavColumn() {
   return (
     <div>
       <p className={UEBERSCHRIFT_KLASSE}>{translate('footer_nav_heading', language)}</p>
-      <nav className="flex flex-col gap-1.5">
+      <nav aria-label={translate('footer_nav_heading', language)} className="flex flex-col gap-0 lg:gap-1.5">
         {NAV.map((l) => (
           <Link key={l.href} href={l.href} className={LINK_KLASSE}>
             {translate(l.key, language)}
@@ -83,7 +84,7 @@ export function FooterLegalColumn() {
   return (
     <div>
       <p className={UEBERSCHRIFT_KLASSE}>{translate('footer_legal_heading', language)}</p>
-      <nav className="flex flex-col gap-1.5">
+      <nav aria-label={translate('footer_legal_heading', language)} className="flex flex-col gap-0 lg:gap-1.5">
         {LEGAL.map((l) => (
           <Link key={l.href} href={l.href} className={LINK_KLASSE}>
             {translate(l.key, language)}

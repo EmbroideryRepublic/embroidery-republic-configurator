@@ -128,6 +128,13 @@ export const translations = {
     cart_submit: 'Anfrage abschicken',
     cart_free_shipping: '✓ Kostenloser Versand innerhalb Deutschlands.',
     cart_shipping_remaining: 'Noch {amount} bis zum kostenlosen Versand (DE, ab 75 €).',
+    currency_note_cart: 'Abgerechnet wird in Euro (EUR). Die Anzeige in {currency} ist nur ein Näherungswert.',
+    browser_mobile_toggle: 'Anderes Produkt wählen',
+    form_missing_hint: 'Noch offen: {fields}.',
+    cart_item_removed: 'Position entfernt.',
+    cart_undo: 'Rückgängig',
+    checkout_missing_terms: 'Zustimmung zu AGB und Datenschutzerklärung',
+    currency_note_checkout: 'Ihre Bestellung wird in Euro (EUR) abgerechnet – deshalb sind hier alle Beträge in Euro angegeben.',
     cart_no_returns: 'Alle Produkte werden mit Logo oder Text individuell für Sie gefertigt und sind vom Widerruf ausgeschlossen.',
 
     compare_title: 'Produkte vergleichen',
@@ -138,6 +145,7 @@ export const translations = {
     // Element-Bedienfeld
     element_text_placeholder: 'Text … (Enter für neue Zeile)',
     element_quick_colors: 'Schnellauswahl (Feinabstimmung über das Farbfeld oben)',
+    element_text_low_contrast: 'Text und Textilfarbe sind sehr ähnlich – der Text ist kaum zu erkennen. Bitte wählen Sie eine andere Textfarbe.',
     element_bold: 'Fett',
     element_italic: 'Kursiv',
     element_outline_color: 'Outline-Farbe',
@@ -509,6 +517,13 @@ export const translations = {
     cart_submit: 'Submit request',
     cart_free_shipping: '✓ Free shipping within Germany.',
     cart_shipping_remaining: '{amount} more until free shipping (DE, from €75).',
+    currency_note_cart: 'Billing is in euros (EUR). The display in {currency} is an approximate value only.',
+    browser_mobile_toggle: 'Choose another product',
+    form_missing_hint: 'Still needed: {fields}.',
+    cart_item_removed: 'Item removed.',
+    cart_undo: 'Undo',
+    checkout_missing_terms: 'Consent to the terms and privacy policy',
+    currency_note_checkout: 'Your order is billed in euros (EUR), so all amounts here are shown in euros.',
     cart_no_returns:
       'All products are individually made for you with a logo or text and are excluded from the statutory right of withdrawal.',
 
@@ -519,6 +534,7 @@ export const translations = {
 
     element_text_placeholder: 'Text … (press Enter for new line)',
     element_quick_colors: 'Quick selection (fine-tune with the color field above)',
+    element_text_low_contrast: 'Text and garment colour are very similar – the text is hard to see. Please choose a different text colour.',
     element_bold: 'Bold',
     element_italic: 'Italic',
     element_outline_color: 'Outline color',

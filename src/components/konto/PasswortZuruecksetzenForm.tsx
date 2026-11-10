@@ -12,7 +12,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-lg bg-gold py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
+      className="w-full rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pending ? 'Wird gespeichert …' : 'Neues Passwort speichern'}
     </button>
@@ -51,7 +51,7 @@ export function PasswortZuruecksetzenForm() {
           minLength={8}
           pattern="(?=.*[A-Za-z])(?=.*[0-9]).{8,}"
         />
-        <p className="mt-1 text-[11px] text-brand/40">Mindestens 8 Zeichen, mit Buchstabe und Ziffer.</p>
+        <p className="mt-1 text-[11px] text-brand/70">Mindestens 8 Zeichen, mit Buchstabe und Ziffer.</p>
       </div>
       <KontoFeld
         id="passwortWiederholung"

@@ -98,11 +98,11 @@ export default function FaqPage() {
         ← Zurück zur Startseite
       </Link>
 
-      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold">Hilfe &amp; Antworten</p>
+      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold-dark">Hilfe &amp; Antworten</p>
       <h1 className="mt-4 font-serif text-[clamp(2.25rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
         Häufige Fragen
       </h1>
-      <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-brand/60">
+      <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-brand/70">
         Die wichtigsten Antworten rund um Veredelung, Mengen, Produktion und Abwicklung. Ist Ihre
         Frage nicht dabei? Wir antworten persönlich – meist innerhalb eines Werktags.
       </p>
@@ -110,7 +110,7 @@ export default function FaqPage() {
       <div className="mt-12 space-y-12">
         {GRUPPEN.map((gruppe) => (
           <section key={gruppe.thema}>
-            <h2 className="text-[12px] font-medium uppercase tracking-[0.18em] text-brand/45">
+            <h2 className="text-[12px] font-medium uppercase tracking-[0.18em] text-brand/70">
               {gruppe.thema}
             </h2>
             <div className="mt-4 space-y-3">
@@ -127,14 +127,14 @@ export default function FaqPage() {
 
       <div className="mt-14 rounded-2xl bg-cream/70 p-6 text-center sm:p-8">
         <h2 className="font-serif text-xl font-normal text-brand">Noch eine Frage offen?</h2>
-        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-brand/60">
+        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-brand/70">
           Schreiben Sie uns kurz, worum es geht – wir melden uns persönlich mit einer konkreten
           Einschätzung zu Machbarkeit, Menge und Termin.
         </p>
         <div className="mt-5 flex flex-wrap justify-center gap-3">
           <Link
             href="/kontakt"
-            className="rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-white shadow-elegant transition-all duration-300 ease-out hover:bg-gold-dark active:scale-[0.98]"
+            className="rounded-full bg-gold-btn px-5 py-2.5 text-sm font-medium text-white shadow-elegant transition-all duration-300 ease-out hover:bg-gold-dark active:scale-[0.98]"
           >
             Kontakt aufnehmen
           </Link>

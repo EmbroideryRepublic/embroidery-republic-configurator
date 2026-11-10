@@ -253,11 +253,12 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
           </h2>
 
           <div className="relative">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-brand/30" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-brand/70" />
             <input
               value={suche}
               onChange={(e) => setSuche(e.target.value)}
               placeholder="Suche nach Produkten, Marken…"
+              aria-label="Suche nach Produkten, Marken…"
               className="w-full rounded-full border border-gray-200 py-2.5 pl-9 pr-9 text-[16px] transition-colors focus:border-gold/60 focus:outline-none"
             />
             {suche && (
@@ -265,7 +266,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                 type="button"
                 onClick={() => setSuche('')}
                 aria-label="Suche leeren"
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-brand/30 transition-colors hover:text-brand/70"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-brand/70 transition-colors hover:text-brand/70"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -291,7 +292,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                 'ml-auto flex flex-shrink-0 items-center gap-1 rounded-full border px-2 py-1 text-[14px] transition-colors',
                 aktiveFilter > 0
                   ? 'border-gold-dark bg-gold-dark text-white'
-                  : 'border-gray-200 text-brand/50 hover:border-gold/50 hover:text-brand'
+                  : 'border-gray-200 text-brand/70 hover:border-gold/50 hover:text-brand'
               )}
             >
               <SlidersHorizontal className="h-4 w-4" />
@@ -346,7 +347,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                       schließt oder etwas anderes tut. */}
                   <ChevronRight
                     className={clsx(
-                      'h-5 w-5 flex-shrink-0 text-brand/35 transition-transform duration-300',
+                      'h-5 w-5 flex-shrink-0 text-brand/70 transition-transform duration-300',
                       auf && 'rotate-90 group-hover:-rotate-90 group-focus-visible:-rotate-90'
                     )}
                     aria-hidden
@@ -410,7 +411,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
                 type="button"
                 onClick={() => setFilterOffen(false)}
                 aria-label="Filter schließen"
-                className="rounded-md p-1 text-brand/40 transition-colors hover:text-brand"
+                className="rounded-md p-1 text-brand/70 transition-colors hover:text-brand"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -476,7 +477,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               type="button"
               onClick={() => setGewaehlt(null)}
               aria-label="Zurück zur Übersicht"
-              className="rounded-md p-0.5 text-brand/40 transition-colors hover:text-brand"
+              className="rounded-md p-0.5 text-brand/70 transition-colors hover:text-brand"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -559,7 +560,7 @@ function Modellkarte({
         )}
         {/* Bestätigung: dieses Kleidungsstück liegt gerade im Konfigurator. */}
         {aktiv && (
-          <span className="animate-marke-auf absolute left-2.5 top-2.5 flex items-center gap-1 rounded-full bg-gold px-2 py-0.5 text-[10px] font-medium text-white shadow-sm">
+          <span className="animate-marke-auf absolute left-2.5 top-2.5 flex items-center gap-1 rounded-full bg-gold-btn px-2 py-0.5 text-[10px] font-medium text-white shadow-sm">
             <Check className="h-3 w-3" strokeWidth={3} />
             Ausgewählt
           </span>
@@ -580,7 +581,7 @@ function Modellkarte({
           }}
           className={clsx(
             'absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-white/85 backdrop-blur transition-all hover:bg-white',
-            gemerkt ? 'text-gold-dark opacity-100' : 'text-brand/35 opacity-0 group-hover:opacity-100'
+            gemerkt ? 'text-gold-dark opacity-100' : 'text-brand/70 opacity-0 group-hover:opacity-100'
           )}
         >
           <Star className={clsx('h-3.5 w-3.5', gemerkt && 'fill-gold-dark')} />

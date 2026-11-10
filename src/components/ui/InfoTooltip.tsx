@@ -62,7 +62,7 @@ export function InfoTooltip({ text }: InfoTooltipProps) {
             open();
           }
         }}
-        className="flex h-3.5 w-3.5 items-center justify-center rounded-full text-brand/30 hover:text-gold-dark"
+        className="flex h-3.5 w-3.5 items-center justify-center rounded-full text-brand/70 hover:text-gold-dark"
         aria-label="Mehr Informationen"
       >
         <Info className="h-3.5 w-3.5" />

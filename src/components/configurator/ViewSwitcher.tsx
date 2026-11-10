@@ -53,7 +53,7 @@ export function ViewSwitcher({ imageUrls, views }: ViewSwitcherProps) {
               className="h-14 w-14 object-contain"
             />
             {count > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[10px] font-semibold text-white">
+              <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-gold-btn text-[10px] font-semibold text-white">
                 {count}
               </span>
             )}
@@ -65,7 +65,7 @@ export function ViewSwitcher({ imageUrls, views }: ViewSwitcherProps) {
             <span
               className={clsx(
                 'mt-1 flex min-h-[1.7rem] w-[56px] items-start justify-center text-center text-[10px] font-medium leading-tight',
-                isActive ? 'text-gold-dark' : 'text-brand/40 group-hover:text-brand/60'
+                isActive ? 'text-gold-dark' : 'text-brand/70 group-hover:text-brand/60'
               )}
             >
               {label}

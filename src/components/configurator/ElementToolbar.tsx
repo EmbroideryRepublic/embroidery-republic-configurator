@@ -10,6 +10,10 @@ import { isNearSeam } from '@/lib/canvas/bounds';
 import { motivMass } from '@/lib/format';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
+import { textKaumSichtbar } from '@/lib/canvas/textfarbe';
+import { bewerteLogoQualitaet, logoQualitaetText } from '@/lib/canvas/logoQualitaet';
+import { AlertTriangle, XCircle } from 'lucide-react';
+import { useTextilHex } from './useTextilHex';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import { removeSimpleBackground } from '@/lib/upload/backgroundRemoval';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
@@ -50,6 +54,25 @@ const QUICK_COLORS: { name: string; hex: string }[] = [
   { name: 'Grau', hex: '#6b7280' },
 ];
 
+/** Bleibende Druckqualitäts-Warnung für ein Logo (die Ampel beim Hochladen stand nur 1,8 s): folgt der aktuellen Größe. */
+function LogoQualitaetHinweis({ logo, labelGelb, labelRot }: { logo: LogoElement; labelGelb: string; labelRot: string }) {
+  const q = bewerteLogoQualitaet(logo);
+  if (!q || q.level === 'green') return null;
+  const rot = q.level === 'red';
+  const Icon = rot ? XCircle : AlertTriangle;
+  return (
+    <div role="status" className={clsx('flex items-start gap-1.5 rounded-lg p-2 text-xs', rot ? 'bg-red-50 text-red-700' : 'bg-amber-50 text-amber-800')}>
+      <Icon className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" aria-hidden />
+      <span>
+        <strong>
+          {rot ? labelRot : labelGelb} (≈ {q.dpi} dpi):
+        </strong>{' '}
+        {logoQualitaetText(q.level, q.dpi)}
+      </span>
+    </div>
+  );
+}
+
 interface ElementToolbarProps {
   printArea: PrintArea | null;
 }
@@ -81,6 +104,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isRemovingBg, setIsRemovingBg] = useState(false);
   const [bgError, setBgError] = useState<string | null>(null);
+  const textilHex = useTextilHex();
 
   // Nur beim Wechsel des ausgewählten Elements synchronisieren, nicht bei
   // jeder Content-Änderung (sonst würde der eigene Entwurf während des
@@ -98,7 +122,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
 
   if (!selected) {
     return (
-      <p className="rounded-lg border border-dashed border-gray-200 p-3 text-center text-xs text-gray-400">
+      <p className="rounded-lg border border-dashed border-gray-200 p-3 text-center text-xs text-gray-600">
         {t('element_none_selected')}
       </p>
     );
@@ -275,6 +299,13 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
             className="w-full resize-y rounded-md border border-gray-300 px-2 py-1.5 text-sm"
           />
 
+          {/* Text und Textil fast gleichfarbig (z. B. nach einem Farbwechsel des Textils): sagen, warum man nichts sieht. */}
+          {textKaumSichtbar((selected as TextElement).color, textilHex) && (
+            <p role="status" className="rounded-md bg-amber-50 px-2 py-1.5 text-xs text-amber-800">
+              {t('element_text_low_contrast')}
+            </p>
+          )}
+
           <div className="grid grid-cols-2 gap-2">
             <select
               value={(selected as TextElement).fontFamily ?? AVAILABLE_FONTS[0]}
@@ -301,7 +332,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
 
           {printMethod === 'dtf' && (
             <div>
-              <p className="mb-1 text-xs text-gray-400">{t('element_quick_colors')}</p>
+              <p className="mb-1 text-xs text-gray-600">{t('element_quick_colors')}</p>
               <div className="flex flex-wrap gap-1.5">
                 {QUICK_COLORS.map((c) => (
                   <button
@@ -326,7 +357,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
 
           {printMethod === 'embroidery' && (
             <div>
-              <p className="mb-1 text-xs text-gray-400">
+              <p className="mb-1 text-xs text-gray-600">
                 {t('element_thread_color')}
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -387,7 +418,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               onClick={() => updateText({ bold: !(selected as TextElement).bold })}
               className={clsx(
                 'h-8 flex-1 rounded-md border text-sm font-bold',
-                (selected as TextElement).bold ? 'border-gold bg-gold text-white' : 'border-gray-300 text-gray-600'
+                (selected as TextElement).bold ? 'border-gold bg-gold-btn text-white' : 'border-gray-300 text-gray-600'
               )}
               title={t('element_bold')}
             >
@@ -398,7 +429,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               onClick={() => updateText({ italic: !(selected as TextElement).italic })}
               className={clsx(
                 'h-8 flex-1 rounded-md border text-sm italic',
-                (selected as TextElement).italic ? 'border-gold bg-gold text-white' : 'border-gray-300 text-gray-600'
+                (selected as TextElement).italic ? 'border-gold bg-gold-btn text-white' : 'border-gray-300 text-gray-600'
               )}
               title={t('element_italic')}
             >
@@ -415,7 +446,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 className={clsx(
                   'min-w-0 flex-1 truncate rounded-md border py-1 text-xs',
                   (selected as TextElement).align === align
-                    ? 'border-gold bg-gold text-white'
+                    ? 'border-gold bg-gold-btn text-white'
                     : 'border-gray-300 text-gray-600'
                 )}
               >
@@ -524,8 +555,12 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               />
             </button>
           </div>
-          {isRemovingBg && <p className="text-xs text-gray-400">{t('element_remove_bg_calculating')}</p>}
+          {isRemovingBg && <p className="text-xs text-gray-600">{t('element_remove_bg_calculating')}</p>}
           {bgError && <p className="text-xs text-red-600">{bgError}</p>}
+          {/* Nur für DTF: Bei Stickerei wird das Logo ohnehin von Hand digitalisiert. */}
+          {printMethod === 'dtf' && (
+            <LogoQualitaetHinweis logo={selected as LogoElement} labelGelb={t('logo_quality_yellow')} labelRot={t('logo_quality_red')} />
+          )}
         </div>
       )}
 
@@ -534,7 +569,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
           ein „normales" Ergebnis wollen. */}
       {printArea && (
         <div>
-          <p className="mb-1.5 text-xs text-gray-400">{t('element_position')}</p>
+          <p className="mb-1.5 text-xs text-gray-600">{t('element_position')}</p>
           <div className="flex flex-wrap gap-1.5">
             {[...(DECORATION_POSITIONS[printArea.view]?.presets ?? []), ...UNIVERSAL_PRESETS].map((preset) => (
               <button
@@ -553,7 +588,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
       {/* Rotation – für Logo und Text gleichermaßen direkt einstellbar,
           nicht nur per Ziehen am Drehgriff im Canvas. */}
       <div>
-        <div className="mb-1 flex items-center justify-between text-xs text-gray-400">
+        <div className="mb-1 flex items-center justify-between text-xs text-gray-600">
           <span>{t('element_rotation')}</span>
           <span>{Math.round(((selected.rotationDeg % 360) + 360) % 360)}°</span>
         </div>
@@ -570,15 +605,15 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
       {/* Live-Maße – gilt für Logo und Text gleichermaßen */}
       <div className="grid grid-cols-2 gap-2 rounded-md bg-gray-50 p-2 text-sm text-gray-700">
         <div>
-          <span className="block text-xs text-gray-400">{t('element_width')}</span>
+          <span className="block text-xs text-gray-600">{t('element_width')}</span>
           {motivMass(selected.widthCm, language)} cm
         </div>
         <div>
-          <span className="block text-xs text-gray-400">{t('element_height')}</span>
+          <span className="block text-xs text-gray-600">{t('element_height')}</span>
           {motivMass(selected.heightCm, language)} cm
         </div>
         <div>
-          <span className="flex items-center gap-1 text-xs text-gray-400">
+          <span className="flex items-center gap-1 text-xs text-gray-600">
             {printMethod === 'embroidery' ? 'Geschätzte Stiche' : 'Motivfläche (informativ)'}
             <InfoTooltip
               text={
@@ -608,7 +643,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
           )}
         </div>
         <div>
-          <span className="block text-xs text-gray-400">{t('element_extra_price')}</span>
+          <span className="block text-xs text-gray-600">{t('element_extra_price')}</span>
           {selected.extraPrice > 0 ? formatPrice(selected.extraPrice) : '–'}
         </div>
       </div>

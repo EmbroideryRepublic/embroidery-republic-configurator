@@ -29,11 +29,11 @@ const WEGE = [
 export default function NichtGefunden() {
   return (
     <main className="mx-auto flex max-w-2xl flex-col px-4 py-20">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Fehler 404</p>
+      <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Fehler 404</p>
       <h1 className="mt-5 font-serif text-[clamp(2.25rem,5vw,3.5rem)] font-normal leading-tight tracking-tight text-brand">
         Diese Seite gibt es nicht.
       </h1>
-      <p className="mt-4 max-w-md text-[15px] leading-relaxed text-brand/60">
+      <p className="mt-4 max-w-md text-[15px] leading-relaxed text-brand/70">
         Vielleicht wurde der Artikel ausgelistet oder die Adresse hat sich geändert.
         Hier geht es weiter:
       </p>
@@ -47,7 +47,7 @@ export default function NichtGefunden() {
             >
               <span>
                 <span className="block text-[15px] font-medium text-brand">{w.titel}</span>
-                <span className="mt-0.5 block text-[13px] text-brand/55">{w.text}</span>
+                <span className="mt-0.5 block text-[13px] text-brand/70">{w.text}</span>
               </span>
               <ArrowRight
                 className="h-4 w-4 flex-shrink-0 text-gold-dark transition-transform duration-300 group-hover:translate-x-1"

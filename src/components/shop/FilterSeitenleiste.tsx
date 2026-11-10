@@ -79,7 +79,7 @@ function Abschnitt({ titel, children }: { titel: string; children: React.ReactNo
       {/* h2, nicht h3: Auf der Shop-Seite folgt direkt die h1 der Seite –
           eine h3 dazwischen wäre ein Ebenensprung und bricht die
           Dokumentgliederung für Vorlesehilfen. */}
-      <h2 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand/40">
+      <h2 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand/70">
         {titel}
       </h2>
       {children}
@@ -116,7 +116,7 @@ function Werteabschnitt({
             <li key={wert}>
               <label
                 className={`group flex items-center gap-3 text-[13px] transition-colors duration-200 ${
-                  leer ? 'cursor-not-allowed text-brand/30' : 'cursor-pointer text-brand/60 hover:text-brand'
+                  leer ? 'cursor-not-allowed text-brand/30' : 'cursor-pointer text-brand/70 hover:text-brand'
                 }`}
               >
                 <Kaestchen an={an} leer={leer} onToggle={() => onToggle(wert)} />
@@ -130,7 +130,7 @@ function Werteabschnitt({
                 <span className={`flex-1 truncate ${an ? 'font-medium text-brand' : ''}`}>
                   {beschrifteWert(dim, wert, bezeichnungen)}
                 </span>
-                <span className="text-[11px] tabular-nums text-brand/30">{anzahl}</span>
+                <span className="text-[11px] tabular-nums text-brand/70">{anzahl}</span>
               </label>
             </li>
           );
@@ -140,7 +140,7 @@ function Werteabschnitt({
         <button
           type="button"
           onClick={() => setAlle(!alle)}
-          className="mt-4 text-[12px] text-brand/40 underline-offset-4 transition-colors duration-200 hover:text-brand hover:underline"
+          className="mt-4 text-[12px] text-brand/70 underline-offset-4 transition-colors duration-200 hover:text-brand hover:underline"
         >
           {alle ? 'Weniger anzeigen' : `+ ${werte.length - ANFANGS} weitere`}
         </button>

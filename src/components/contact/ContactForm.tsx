@@ -47,6 +47,12 @@ export function ContactForm() {
   const emailValid = EMAIL_RE.test(form.email.trim());
   const messageValid = form.message.trim().length >= 10;
   const isValid = nameValid && emailValid && messageValid;
+  // Was noch fehlt – steht über dem gesperrten Senden-Knopf, damit man nicht raten muss, warum er grau bleibt.
+  const fehlendeAngaben = [
+    !nameValid && t('contact_form_name_label'),
+    !emailValid && t('contact_form_email_label'),
+    !messageValid && t('contact_form_message_label'),
+  ].filter((eintrag): eintrag is string => Boolean(eintrag));
 
   function update(field: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
@@ -110,7 +116,7 @@ export function ContactForm() {
       <div className="rounded-xl border border-gold/20 bg-white p-6 text-center shadow-elegant">
         <CheckCircle2 className="mx-auto h-12 w-12 text-green-600" />
         <h2 className="mt-3 font-serif text-lg font-semibold text-brand">{t('contact_form_success_title')}</h2>
-        <p className="mx-auto mt-1 max-w-sm text-sm text-brand/60">{t('contact_form_success_text')}</p>
+        <p className="mx-auto mt-1 max-w-sm text-sm text-brand/70">{t('contact_form_success_text')}</p>
         <button
           type="button"
           onClick={() => {
@@ -154,7 +160,7 @@ export function ContactForm() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className="mb-1 block text-xs font-medium text-brand/70">
-            {t('contact_form_name_label')} <span className="text-red-400">*</span>
+            {t('contact_form_name_label')} <span className="text-red-700">*</span>
           </label>
           <input
             id="contact-name"
@@ -170,13 +176,13 @@ export function ContactForm() {
             className={`${inputClass} ${touched.name && !nameValid ? invalidClass : ''}`}
           />
           {touched.name && !nameValid && (
-            <p id="contact-name-fehler" className="mt-1 text-xs text-red-500">{t('contact_form_name_error')}</p>
+            <p id="contact-name-fehler" className="mt-1 text-xs text-red-700">{t('contact_form_name_error')}</p>
           )}
         </div>
 
         <div>
           <label htmlFor="contact-email" className="mb-1 block text-xs font-medium text-brand/70">
-            {t('contact_form_email_label')} <span className="text-red-400">*</span>
+            {t('contact_form_email_label')} <span className="text-red-700">*</span>
           </label>
           <input
             id="contact-email"
@@ -192,14 +198,14 @@ export function ContactForm() {
             className={`${inputClass} ${touched.email && !emailValid ? invalidClass : ''}`}
           />
           {touched.email && !emailValid && (
-            <p id="contact-email-fehler" className="mt-1 text-xs text-red-500">{t('contact_form_email_error')}</p>
+            <p id="contact-email-fehler" className="mt-1 text-xs text-red-700">{t('contact_form_email_error')}</p>
           )}
         </div>
       </div>
 
       <div>
         <label htmlFor="contact-subject" className="mb-1 block text-xs font-medium text-brand/70">
-          {t('contact_form_subject_label')} <span className="text-brand/30">{t('contact_form_subject_optional')}</span>
+          {t('contact_form_subject_label')} <span className="text-brand/70">{t('contact_form_subject_optional')}</span>
         </label>
         <input
           id="contact-subject"
@@ -214,7 +220,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="contact-message" className="mb-1 block text-xs font-medium text-brand/70">
-          {t('contact_form_message_label')} <span className="text-red-400">*</span>
+          {t('contact_form_message_label')} <span className="text-red-700">*</span>
         </label>
         <textarea
           id="contact-message"
@@ -231,13 +237,13 @@ export function ContactForm() {
         />
         <div className="mt-1 flex items-center justify-between">
           {touched.message && !messageValid ? (
-            <p id="contact-message-fehler" className="text-xs text-red-500">
+            <p id="contact-message-fehler" className="text-xs text-red-700">
               {t('contact_form_message_error')}
             </p>
           ) : (
             <span />
           )}
-          <span className="text-[11px] text-brand/30">
+          <span className="text-[11px] text-brand/70">
             {form.message.length}/{MESSAGE_MAX}
           </span>
         </div>
@@ -246,11 +252,11 @@ export function ContactForm() {
       <div>
         <label htmlFor="contact-anhang" className="mb-1 block text-xs font-medium text-brand/70">
           {t('contact_form_attachment_label')}{' '}
-          <span className="text-brand/30">{t('contact_form_attachment_optional', { maxMb: ANHANG_MAX_DATEIGROESSE_MB })}</span>
+          <span className="text-brand/70">{t('contact_form_attachment_optional', { maxMb: ANHANG_MAX_DATEIGROESSE_MB })}</span>
         </label>
         <label
           htmlFor="contact-anhang"
-          className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-brand/20 px-3 py-3 text-xs text-brand/50 transition-colors hover:border-gold/40 hover:text-gold-dark"
+          className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-brand/20 px-3 py-3 text-xs text-brand/70 transition-colors hover:border-gold/40 hover:text-gold-dark"
         >
           <Paperclip className="h-3.5 w-3.5" />
           {t('contact_form_attachment_dropzone')}
@@ -266,7 +272,7 @@ export function ContactForm() {
             e.target.value = '';
           }}
         />
-        {anhangFehler && <p className="mt-1 text-xs text-red-500">{anhangFehler}</p>}
+        {anhangFehler && <p className="mt-1 text-xs text-red-700">{anhangFehler}</p>}
         {anhaenge.length > 0 && (
           <ul className="mt-2 space-y-1">
             {anhaenge.map((datei, index) => (
@@ -275,15 +281,15 @@ export function ContactForm() {
                 className="flex items-center justify-between gap-2 rounded-md bg-cream/60 px-2.5 py-1.5 text-xs text-brand/70"
               >
                 <span className="flex min-w-0 items-center gap-1.5">
-                  <Paperclip className="h-3 w-3 flex-shrink-0 text-brand/30" />
+                  <Paperclip className="h-3 w-3 flex-shrink-0 text-brand/70" />
                   <span className="truncate">{datei.name}</span>
-                  <span className="flex-shrink-0 text-brand/30">({(datei.size / (1024 * 1024)).toFixed(1)} MB)</span>
+                  <span className="flex-shrink-0 text-brand/70">({(datei.size / (1024 * 1024)).toFixed(1)} MB)</span>
                 </span>
                 <button
                   type="button"
                   onClick={() => entferneAnhang(index)}
                   aria-label={`${datei.name} entfernen`}
-                  className="flex-shrink-0 rounded p-0.5 text-brand/30 hover:bg-red-50 hover:text-red-500"
+                  className="flex-shrink-0 rounded p-0.5 text-brand/70 hover:bg-red-50 hover:text-red-700"
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
@@ -300,10 +306,16 @@ export function ContactForm() {
         </div>
       )}
 
+      {status !== 'submitting' && fehlendeAngaben.length > 0 && (
+        <p role="status" className="">
+          {t('form_missing_hint', { fields: fehlendeAngaben.join(', ') })}
+        </p>
+      )}
+
       <button
         type="submit"
         disabled={!isValid || status === 'submitting'}
-        className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold py-2.5 text-sm font-medium text-white shadow-elegant transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white shadow-elegant transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-40"
       >
         {status === 'submitting' ? (
           <>
@@ -318,7 +330,7 @@ export function ContactForm() {
         )}
       </button>
 
-      <p className="text-center text-[11px] leading-relaxed text-brand/40">{t('contact_form_disclaimer')}</p>
+      <p className="text-center text-[11px] leading-relaxed text-brand/70">{t('contact_form_disclaimer')}</p>
     </form>
   );
 }

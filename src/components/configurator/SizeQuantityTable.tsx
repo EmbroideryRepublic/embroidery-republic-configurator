@@ -31,7 +31,7 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
       <div className="mb-1.5 flex items-center justify-between">
         <p className="text-xs font-medium text-brand">{t('size_table_title')}</p>
         {total > 0 && (
-          <p className="text-[11px] text-brand/50">
+          <p className="text-[11px] text-brand/70">
             {total} {t('size_table_total')}
           </p>
         )}

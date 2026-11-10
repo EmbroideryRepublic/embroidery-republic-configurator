@@ -75,7 +75,7 @@ export function CompareModal({ onClose }: CompareModalProps) {
             type="button"
             onClick={onClose}
             aria-label={t('common_close')}
-            className="rounded-md p-1 text-gray-400 hover:bg-gray-100"
+            className="rounded-md p-1 text-gray-600 hover:bg-gray-100"
           >
             <X className="h-5 w-5" />
           </button>

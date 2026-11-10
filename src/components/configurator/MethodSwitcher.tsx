@@ -56,16 +56,16 @@ export function MethodSwitcher({ currentUnitPrice, otherMethodUnitPrice }: Metho
             <span
               className={clsx(
                 'flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition-colors',
-                isActive ? 'bg-gold text-white' : 'bg-cream text-brand/50'
+                isActive ? 'bg-gold-btn text-white' : 'bg-cream text-brand/70'
               )}
             >
               <Icon className="h-[18px] w-[18px]" />
             </span>
             <span>
               <span className="block text-sm font-semibold text-brand">{method.title}</span>
-              <span className="block text-xs text-brand/50">{method.description}</span>
+              <span className="block text-xs text-brand/70">{method.description}</span>
               {delta !== null && Math.abs(delta) >= 0.01 && (
-                <span className={clsx('mt-0.5 block text-[11px] font-medium', delta > 0 ? 'text-brand/60' : 'text-green-700')}>
+                <span className={clsx('mt-0.5 block text-[11px] font-medium', delta > 0 ? 'text-brand/70' : 'text-green-700')}>
                   {t('method_price_delta', {
                     amount: `${delta > 0 ? '+' : '−'}${formatPrice(Math.abs(delta))}`,
                   })}

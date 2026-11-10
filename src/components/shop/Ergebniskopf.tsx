@@ -19,8 +19,8 @@ import { Chip, DIMENSION_LABELS, beschrifteWert } from './filterBausteine';
 import { useFilterNavigation } from './filterNavigation';
 
 export function Ergebniskopf({
-  kriterien, bezeichnungen,
-}: { kriterien: FilterKriterien; bezeichnungen: Record<string, string> }) {
+  kriterien, bezeichnungen, gesamt,
+}: { kriterien: FilterKriterien; bezeichnungen: Record<string, string>; gesamt: number }) {
   const { anwenden } = useFilterNavigation();
   const aktiv = hatAktiveFilter(kriterien);
 
@@ -63,14 +63,18 @@ export function Ergebniskopf({
           <button
             type="button"
             onClick={() => anwenden(setzeZurueck(kriterien))}
-            className="ml-2 text-[12px] text-brand/40 underline-offset-4 transition-colors duration-200 hover:text-brand hover:underline"
+            className="ml-2 text-[12px] text-brand/70 underline-offset-4 transition-colors duration-200 hover:text-brand hover:underline"
           >
             Alle Filter löschen
           </button>
         </div>
       )}
 
-      <div className="flex items-center justify-end gap-4 border-b border-brand/[0.07] pb-5">
+      <div className="flex items-center justify-between gap-4 border-b border-brand/[0.07] pb-5">
+        {/* Trefferzahl (Test 2026-11-10: fehlte): zeigt nach jedem Filter, wie viel übrig ist. */}
+        <p role="status" className="text-[13px] text-brand/70">
+          {gesamt} {gesamt === 1 ? 'Produkt' : 'Produkte'}
+        </p>
         <div className="flex items-center gap-3">
           <Sortierwahl
             wert={kriterien.sortierung}
@@ -89,7 +93,7 @@ export function Ergebniskopf({
                 aria-pressed={kriterien.ansicht === a}
                 aria-label={a === 'raster' ? 'Rasteransicht' : 'Listenansicht'}
                 className={`rounded-full p-2 transition-colors duration-300 ease-out ${
-                  kriterien.ansicht === a ? 'text-brand' : 'text-brand/30 hover:text-brand/50'
+                  kriterien.ansicht === a ? 'text-brand' : 'text-brand/70 hover:text-brand/50'
                 }`}
               >
                 {a === 'raster' ? <LayoutGrid className="h-[18px] w-[18px]" /> : <List className="h-[18px] w-[18px]" />}
@@ -134,10 +138,10 @@ function Sortierwahl({ wert, onWahl }: { wert: Sortierung; onWahl: (s: Sortierun
         aria-label="Sortieren nach"
         className="inline-flex items-center gap-2 rounded-full border border-brand/[0.09] bg-white/70 px-4 py-2 text-[13px] text-brand/70 transition-all duration-300 ease-out hover:border-brand/20 hover:bg-white hover:text-brand"
       >
-        <span className="hidden text-brand/40 sm:inline">Sortieren</span>
+        <span className="hidden text-brand/70 sm:inline">Sortieren</span>
         <span className="font-medium">{SORTIER_LABELS[wert]}</span>
         <ChevronDown
-          className={`h-3.5 w-3.5 text-brand/40 transition-transform duration-300 ease-out ${offen ? '' : 'rotate-180'}`}
+          className={`h-3.5 w-3.5 text-brand/70 transition-transform duration-300 ease-out ${offen ? '' : 'rotate-180'}`}
           aria-hidden
         />
       </button>
@@ -155,7 +159,7 @@ function Sortierwahl({ wert, onWahl }: { wert: Sortierung; onWahl: (s: Sortierun
                 aria-selected={k === wert}
                 onClick={() => { onWahl(k); setOffen(false); }}
                 className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-[13px] transition-colors duration-200 ${
-                  k === wert ? 'bg-cream/60 font-medium text-brand' : 'text-brand/60 hover:bg-cream/60 hover:text-brand'
+                  k === wert ? 'bg-cream/60 font-medium text-brand' : 'text-brand/70 hover:bg-cream/60 hover:text-brand'
                 }`}
               >
                 {label}

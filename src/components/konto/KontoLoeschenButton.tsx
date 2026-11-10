@@ -64,7 +64,7 @@ export function KontoLoeschenButton() {
       )}
       <div className="flex items-center gap-4">
         <LoeschenButton />
-        <button type="button" onClick={() => setOffen(false)} className="text-xs font-medium text-brand/50 hover:text-brand">
+        <button type="button" onClick={() => setOffen(false)} className="text-xs font-medium text-brand/70 hover:text-brand">
           Abbrechen
         </button>
       </div>

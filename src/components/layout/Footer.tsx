@@ -21,17 +21,17 @@ export function Footer() {
           <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-gold-dark">Germany</p>
           <FooterDescription />
           <FooterContactHeading />
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-0 lg:gap-1.5">
             <a
               href={COMPANY.phoneHref}
-              className="inline-flex items-center gap-2 text-xs text-brand/70 transition-colors hover:text-gold-dark"
+              className="inline-flex items-center gap-2 py-2 text-xs text-brand/70 transition-colors hover:text-gold-dark lg:py-0"
             >
               <Phone className="h-3.5 w-3.5 text-gold-dark" aria-hidden />
               {COMPANY.phone}
             </a>
             <a
               href={COMPANY.emailHref}
-              className="inline-flex items-center gap-2 text-xs text-brand/70 transition-colors hover:text-gold-dark"
+              className="inline-flex items-center gap-2 py-2 text-xs text-brand/70 transition-colors hover:text-gold-dark lg:py-0"
             >
               <Mail className="h-3.5 w-3.5 text-gold-dark" aria-hidden />
               {COMPANY.email}

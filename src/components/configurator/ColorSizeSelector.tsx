@@ -24,16 +24,16 @@ export function ColorSizeSelector({ product }: ColorSizeSelectorProps) {
   return (
     <div className="flex w-full flex-wrap items-center justify-between gap-4 rounded-xl border border-gold/20 bg-white px-4 py-3 shadow-elegant">
       <div>
-        <p className="text-xs uppercase tracking-wide text-brand/40">{product.brand}</p>
+        <p className="text-xs uppercase tracking-wide text-brand/70">{product.brand}</p>
         <p className="font-serif text-base font-semibold text-brand">{product.name}</p>
-        <p className="text-xs text-brand/50">{product.tagline}</p>
+        <p className="text-xs text-brand/70">{product.tagline}</p>
       </div>
 
       <div className="flex flex-col items-end gap-1.5">
         {/* Farbname statt reiner Beschriftung: Der Kunde soll benennen
             können, was er gewählt hat – die Farbfläche allein reicht dafür
             nicht (Navy und Schwarz sind auf kleinen Punkten kaum trennbar). */}
-        <span className="text-xs text-brand/50">
+        <span className="text-xs text-brand/70">
           {t('color_label')}{' '}
           <span className="font-medium text-brand">
             {aktiveFarbe ? formatiereFarbname(aktiveFarbe.name) : undefined}

@@ -23,6 +23,19 @@ import { aktuellerKunde } from '@/lib/account/session';
 import { ladeProfil as ladeProfilDb } from '@/lib/account/data';
 import { istAnbieterFuerKundschaftVerfuegbar } from '@/lib/payments/registry';
 
+/** Allgemeine Fehlermeldung, wenn eine Bestellung/Anfrage nicht verarbeitet werden konnte (unveränderter Wortlaut). */
+const ALLGEMEINER_FEHLER = 'Da ist etwas schiefgelaufen. Bitte versuchen Sie es in ein paar Minuten erneut.';
+
+/** Zeichenkette oder leer – Server Actions bekommen beliebiges JSON, ein Feld ohne Text gilt als nicht ausgefüllt. */
+function alsText(wert: unknown): string {
+  return typeof wert === 'string' ? wert : '';
+}
+
+/** Nicht-leere Zeichenkette oder undefined (optionale Felder). */
+function alsOptionalText(wert: unknown): string | undefined {
+  return typeof wert === 'string' && wert !== '' ? wert : undefined;
+}
+
 export interface SubmitResult {
   success: boolean;
   orderNumber?: string;
@@ -286,7 +299,7 @@ async function persistAndNotify(params: Parameters<typeof persistAndNotifyCore>[
     return await persistAndNotifyCore(params);
   } catch (err) {
     console.error('[orders] Unerwarteter Fehler bei der Bestellverarbeitung:', err);
-    return { success: false, error: 'Da ist etwas schiefgelaufen. Bitte versuchen Sie es in ein paar Minuten erneut.' };
+    return { success: false, error: ALLGEMEINER_FEHLER };
   }
 }
 
@@ -743,6 +756,13 @@ export async function istKarteVerfuegbar(): Promise<boolean> {
 }
 
 export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult> {
+  // Server Actions nehmen beliebiges JSON an. Ohne Kontaktblock lässt sich keine Bestellung bilden – kein TypeError, sondern
+  // dieselbe allgemeine Meldung wie bei jedem anderen unerwarteten Fehler (und kein Rate-Limit-Verbrauch).
+  const kontakt = input?.contact;
+  if (kontakt === null || typeof kontakt !== 'object') {
+    return { success: false, error: ALLGEMEINER_FEHLER };
+  }
+
   // Der teuerste Pfad des Systems: Datei-Uploads, Vorschau-Rendering,
   // Produktionsblatt und zwei E-Mails je Vorgang. Ohne Begrenzung kann ein
   // Skript beliebig viele davon auslösen.
@@ -754,7 +774,7 @@ export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult
     return { success: false, error: grenze.meldung };
   }
 
-  const customerName = `${input.contact.firstName} ${input.contact.lastName}`.trim();
+  const customerName = `${alsText(kontakt.firstName)} ${alsText(kontakt.lastName)}`.trim();
 
   // Menge + Preis werden serverseitig in persistAndNotifyCore aus Katalog +
   // Konfiguration berechnet, die Pflichtfelder dort geprüft (validateSubmission)
@@ -762,9 +782,9 @@ export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult
   return persistAndNotify({
     orderType: 'order',
     customerName,
-    company: input.contact.companyName || undefined,
-    email: input.contact.email,
-    phone: input.contact.phone || undefined,
+    company: alsOptionalText(kontakt.companyName),
+    email: alsText(kontakt.email),
+    phone: alsOptionalText(kontakt.phone),
     items: input.items,
     shipping: input.shipping,
     paymentMethod: input.paymentMethod,
@@ -774,6 +794,12 @@ export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult
 }
 
 export async function submitInquiry(input: SubmitInquiryInput): Promise<SubmitResult> {
+  // Siehe submitOrder: kaputter Eingang → allgemeine Meldung statt TypeError.
+  const kontakt = input?.contact;
+  if (kontakt === null || typeof kontakt !== 'object') {
+    return { success: false, error: ALLGEMEINER_FEHLER };
+  }
+
   // Eigenes, höheres Limit: unverbindlich, kein Zahlungsvorgang, im Ablauf
   // günstiger als eine Bestellung.
   const grenze = await pruefeRateLimit('anfrage');
@@ -785,11 +811,11 @@ export async function submitInquiry(input: SubmitInquiryInput): Promise<SubmitRe
   // Die Pflichtfeldprüfung liegt ebenfalls dort (validateSubmission).
   return persistAndNotify({
     orderType: 'inquiry',
-    customerName: input.contact.name,
-    company: input.contact.companyName || undefined,
-    email: input.contact.email,
-    phone: input.contact.phone || undefined,
-    message: input.message || undefined,
+    customerName: alsText(kontakt.name),
+    company: alsOptionalText(kontakt.companyName),
+    email: alsText(kontakt.email),
+    phone: alsOptionalText(kontakt.phone),
+    message: alsOptionalText(input.message),
     items: input.items,
     clientRequestId: input.clientRequestId,
   });

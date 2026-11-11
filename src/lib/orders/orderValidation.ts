@@ -27,7 +27,7 @@ import { getProduct } from '@/config/products';
 import { getPrintAreas } from '@/config/printAreas';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { BASE_OVERHEAD_STITCHES, TEXT_MIN_STITCHES } from '@/lib/embroidery/stichschaetzung';
-import type { CartItem, PrintMethod } from '@/types';
+import type { CartItem, ConfigElement, PrintMethod } from '@/types';
 
 /**
  * TECHNISCHE SCHUTZGRENZEN – ausdrücklich KEINE Geschäftsentscheidungen.
@@ -143,6 +143,18 @@ function istZahl(wert: unknown): wert is number {
 }
 
 /**
+ * Zeichenkette oder leer. Server Actions bekommen beliebiges JSON; ein Feld, das kein Text ist, gilt wie ein fehlendes
+ * Feld und führt zur gewohnten Prüfmeldung statt zu einem TypeError.
+ */
+function alsText(wert: unknown): string {
+  return typeof wert === 'string' ? wert : '';
+}
+
+/** Meldung für eine unbrauchbare Warenkorbposition (unbekanntes Produkt, kaputter Eintrag). */
+const ARTIKEL_NICHT_VERFUEGBAR =
+  'Ein Artikel in Ihrem Warenkorb ist nicht mehr verfügbar. Bitte entfernen Sie ihn und stellen Sie den Warenkorb neu zusammen.';
+
+/**
  * Prüft einen Bestelleingang vollständig gegen den Katalog.
  *
  * Reihenfolge: erst die Angaben zur Person (billig zu prüfen), dann der
@@ -150,24 +162,38 @@ function istZahl(wert: unknown): wert is number {
  * abgebrochen – so sieht die Kundschaft alle Probleme auf einmal, statt sie
  * nacheinander zu entdecken.
  */
-export async function validateSubmission(input: OrderValidationInput): Promise<OrderValidationResult> {
+export async function validateSubmission(roh: OrderValidationInput): Promise<OrderValidationResult> {
   const issues: OrderValidationIssue[] = [];
+  // Der Eingang stammt als JSON vom Client und ist nur der TYP nach vertrauenswürdig. Ein kaputter Eingang (null, Zahl statt
+  // Text, Warenkorb kein Array) liefert eine Prüfmeldung – er darf nie einen TypeError auslösen.
+  const input = (roh !== null && typeof roh === 'object' ? roh : {}) as Partial<OrderValidationInput>;
   const istBestellung = input.orderType === 'order';
+  const customerName = alsText(input.customerName);
+  const email = alsText(input.email);
+  const items: unknown[] = Array.isArray(input.items) ? input.items : [];
+  if (!Array.isArray(input.items)) {
+    issues.push({ code: 'produkt_unbekannt', message: ARTIKEL_NICHT_VERFUEGBAR });
+  }
 
   // ── 1. Angaben zur Person ───────────────────────────────────────────
-  if (!input.customerName.trim()) {
+  if (!customerName.trim()) {
     issues.push({ code: 'name_fehlt', message: 'Bitte geben Sie Ihren Namen an.' });
-  } else if (input.customerName.length > GRENZEN.maxFeldLaenge) {
+  } else if (customerName.length > GRENZEN.maxFeldLaenge) {
     issues.push({ code: 'name_zu_lang', message: 'Der eingegebene Name ist zu lang.' });
   }
 
-  if (!istPlausibleEmail(input.email)) {
+  if (!istPlausibleEmail(email)) {
     issues.push({ code: 'email_ungueltig', message: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' });
   }
 
   if (istBestellung) {
-    const versand = input.shipping;
-    if (!versand?.street?.trim() || !versand?.zip?.trim() || !versand?.city?.trim() || !versand?.country?.trim()) {
+    const versand = {
+      street: alsText(input.shipping?.street),
+      zip: alsText(input.shipping?.zip),
+      city: alsText(input.shipping?.city),
+      country: alsText(input.shipping?.country),
+    };
+    if (!versand.street.trim() || !versand.zip.trim() || !versand.city.trim() || !versand.country.trim()) {
       issues.push({ code: 'adresse_unvollstaendig', message: 'Bitte füllen Sie die Lieferadresse vollständig aus.' });
     } else {
       const zuLang = [versand.street, versand.zip, versand.city, versand.country].some(
@@ -195,10 +221,10 @@ export async function validateSubmission(input: OrderValidationInput): Promise<O
   // ── 2. Warenkorb als Ganzes ─────────────────────────────────────────
   // Eine unverbindliche Anfrage darf leer sein (reine Kontaktaufnahme),
   // eine echte Bestellung nicht.
-  if (istBestellung && input.items.length === 0) {
+  if (istBestellung && items.length === 0) {
     issues.push({ code: 'warenkorb_leer', message: 'Ihr Warenkorb ist leer.' });
   }
-  if (input.items.length > GRENZEN.maxPositionen) {
+  if (items.length > GRENZEN.maxPositionen) {
     issues.push({
       code: 'zu_viele_positionen',
       message: `Ihr Warenkorb enthält zu viele Positionen (maximal ${GRENZEN.maxPositionen}). Bitte fragen Sie größere Aufträge direkt bei uns an.`,
@@ -206,8 +232,8 @@ export async function validateSubmission(input: OrderValidationInput): Promise<O
   }
 
   // ── 3. Jede Position einzeln gegen den Katalog ──────────────────────
-  for (const item of input.items) {
-    issues.push(...(await pruefePosition(item, istBestellung)));
+  for (const item of items) {
+    issues.push(...(await pruefePosition(item as CartItem, istBestellung)));
   }
 
   const ergebnis = baueErgebnis(issues);
@@ -231,6 +257,10 @@ export async function validateSubmission(input: OrderValidationInput): Promise<O
  */
 async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<OrderValidationIssue[]> {
   const issues: OrderValidationIssue[] = [];
+  // Ein Eintrag, der kein Objekt ist (null, Zahl, Text), kann keine Position sein.
+  if (item === null || typeof item !== 'object') {
+    return [{ code: 'produkt_unbekannt', message: ARTIKEL_NICHT_VERFUEGBAR }];
+  }
   const itemId = item.id;
   // Für die Anzeige: der Produktname ist der Kundschaft vertraut, die ID nicht.
   const produkt = getProduct(item.productId);
@@ -239,7 +269,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     return [
       {
         code: 'produkt_unbekannt',
-        message: 'Ein Artikel in Ihrem Warenkorb ist nicht mehr verfügbar. Bitte entfernen Sie ihn und stellen Sie den Warenkorb neu zusammen.',
+        message: ARTIKEL_NICHT_VERFUEGBAR,
         itemId,
       },
     ];
@@ -310,7 +340,15 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
   }
 
   // ── Motive und Texte ──────────────────────────────────────────────
-  const elemente = item.elements ?? [];
+  const elementeRoh: unknown = item.elements;
+  const elemente = (Array.isArray(elementeRoh) ? elementeRoh : []) as ConfigElement[];
+  if (elementeRoh !== null && elementeRoh !== undefined && !Array.isArray(elementeRoh)) {
+    issues.push({
+      code: 'elementmasse_ungueltig',
+      message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platzieren Sie es im Konfigurator neu.`,
+      itemId,
+    });
+  }
   // Geschäftsregel vom 2026-08-19: Wir verkaufen ausschließlich
   // personalisierte Ware. Farbe, Größe, Menge und die Wahl von DTF oder
   // Stickerei zählen dabei NICHT als Personalisierung – erst mindestens
@@ -338,7 +376,9 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
   // mit einem direkten API-Aufruf umgehen lassen. Gilt wie 'kein_element'
   // nur für echte Bestellungen, nicht für eine unverbindliche Anfrage.
   if (istBestellung) {
-    const unbearbeiteterPlatzhalter = elemente.some((el) => el.type === 'text' && el.isTemplatePlaceholder);
+    const unbearbeiteterPlatzhalter = elemente.some(
+      (el) => el !== null && typeof el === 'object' && el.type === 'text' && el.isTemplatePlaceholder
+    );
     if (unbearbeiteterPlatzhalter) {
       issues.push({
         code: 'platzhalter_nicht_ersetzt',
@@ -354,6 +394,15 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     : [];
 
   for (const element of elemente) {
+    // Ein Eintrag, der kein Objekt ist, ist kein Motiv.
+    if (element === null || typeof element !== 'object') {
+      issues.push({
+        code: 'elementmasse_ungueltig',
+        message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platzieren Sie es im Konfigurator neu.`,
+        itemId,
+      });
+      continue;
+    }
     // Ansicht datengetrieben prüfen: gültig ist eine Ansicht genau dann, wenn
     // das PRODUKT für die gewählte Veredelung eine Druckfläche dieser Ansicht
     // führt (keine globale 4er-Whitelist mehr). Behebt zugleich, dass ein Motiv
@@ -408,6 +457,16 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
         });
         continue;
       }
+    }
+
+    // Der Textinhalt MUSS ein Text sein; sonst scheitert später das Vorschau-Rendering (content.split).
+    if (element.type === 'text' && typeof element.content !== 'string') {
+      issues.push({
+        code: 'elementmasse_ungueltig',
+        message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platzieren Sie es im Konfigurator neu.`,
+        itemId,
+      });
+      continue;
     }
 
     if (element.type === 'text' && element.content.length > GRENZEN.maxTextLaenge) {

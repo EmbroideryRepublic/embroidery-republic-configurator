@@ -40,17 +40,25 @@ export interface ContactFormResult {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export async function submitContactMessage(input: ContactFormInput): Promise<ContactFormResult> {
+/** Getrimmte Zeichenkette oder leer – Server Actions bekommen beliebiges JSON, ein Nicht-Text gilt als nicht ausgefüllt. */
+function textOderLeer(wert: unknown): string {
+  return typeof wert === 'string' ? wert.trim() : '';
+}
+
+export async function submitContactMessage(eingabe: ContactFormInput): Promise<ContactFormResult> {
+  // Kaputter Eingang (null, kein Objekt): wie ein leeres Formular behandeln, nicht mit einem TypeError abstürzen.
+  const input = (eingabe !== null && typeof eingabe === 'object' ? eingabe : {}) as Partial<ContactFormInput>;
+
   // 1) Honeypot: befülltes Feld => stiller "Erfolg" ohne Versand.
-  if (input.website && input.website.trim() !== '') {
+  if (textOderLeer(input.website) !== '') {
     return { success: true };
   }
 
   // 2) Serverseitige Validierung (autoritativ, unabhängig vom Client).
-  const name = input.name?.trim() ?? '';
-  const email = input.email?.trim() ?? '';
-  const subject = input.subject?.trim() ?? '';
-  const message = input.message?.trim() ?? '';
+  const name = textOderLeer(input.name);
+  const email = textOderLeer(input.email);
+  const subject = textOderLeer(input.subject);
+  const message = textOderLeer(input.message);
 
   if (name.length < 2 || name.length > 100) {
     return { success: false, error: 'Bitte geben Sie Ihren Namen an (2–100 Zeichen).' };
@@ -80,9 +88,13 @@ export async function submitContactMessage(input: ContactFormInput): Promise<Con
   // ungültigen Anhang wird als Ganzes abgelehnt, kein Anhang fällt
   // stillschweigend weg (§5 der Anforderung).
   let anhaenge: { filename: string; content: Buffer }[] | undefined;
-  if (input.attachments && input.attachments.length > 0) {
+  if (Array.isArray(input.attachments) && input.attachments.length > 0) {
+    // Felder ohne Text werden als leer geprüft und vom Anhangsprüfer mit seiner gewohnten Meldung abgewiesen.
     const gepruefteAnhaenge = pruefeKontaktAnhaenge(
-      input.attachments.map((a) => ({ dateiname: a.dateiname, dataUrl: a.dataUrl }))
+      input.attachments.map((a) => ({
+        dateiname: typeof a?.dateiname === 'string' ? a.dateiname : '',
+        dataUrl: typeof a?.dataUrl === 'string' ? a.dataUrl : '',
+      }))
     );
     if (!gepruefteAnhaenge.ok) {
       console.warn(`[kontakt] Anhang abgelehnt: ${gepruefteAnhaenge.protokoll}`);

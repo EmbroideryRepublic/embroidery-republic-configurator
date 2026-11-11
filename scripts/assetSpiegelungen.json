@@ -1,0 +1,3902 @@
+{
+ "/products/build-your-brand-fluffy-hoody-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-fluffy-hoody-bottle-green/sleeve-left.webp",
+  "sha": "c24c01db32dac9c6"
+ },
+ "/products/build-your-brand-fluffy-hoody-light-asphalt/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-fluffy-hoody-light-asphalt/sleeve-left.webp",
+  "sha": "edf6e31d1f35dbca"
+ },
+ "/products/build-your-brand-fluffy-hoody-white/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-fluffy-hoody-white/sleeve-left.webp",
+  "sha": "e0b42e58ded24dfc"
+ },
+ "/products/build-your-brand-heavy-hoody-baltic-blue/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-baltic-blue/sleeve-left.webp",
+  "sha": "a3c10256d5173ca7"
+ },
+ "/products/build-your-brand-heavy-hoody-bark/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-bark/sleeve-left.webp",
+  "sha": "c6bc6fe6116619ab"
+ },
+ "/products/build-your-brand-heavy-hoody-black/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-black/sleeve-left.webp",
+  "sha": "47f4ecb487439015"
+ },
+ "/products/build-your-brand-heavy-hoody-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-bottle-green/sleeve-left.webp",
+  "sha": "e4136d4d19da0e06"
+ },
+ "/products/build-your-brand-heavy-hoody-burgundy/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-burgundy/sleeve-left.webp",
+  "sha": "2442bc2d3c7e1402"
+ },
+ "/products/build-your-brand-heavy-hoody-charcoal-heather/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-charcoal-heather/sleeve-left.webp",
+  "sha": "11aabc70f70d8629"
+ },
+ "/products/build-your-brand-heavy-hoody-chocoloate-brown/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-chocoloate-brown/sleeve-left.webp",
+  "sha": "617350d529b131f2"
+ },
+ "/products/build-your-brand-heavy-hoody-city-red/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-city-red/sleeve-left.webp",
+  "sha": "227aeebc079b00cb"
+ },
+ "/products/build-your-brand-heavy-hoody-cobaltblue/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-cobaltblue/sleeve-left.webp",
+  "sha": "5e3b61eb7af9cfc8"
+ },
+ "/products/build-your-brand-heavy-hoody-dark-green/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-dark-green/sleeve-left.webp",
+  "sha": "50c3cb11270bea34"
+ },
+ "/products/build-your-brand-heavy-hoody-forest-green/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-forest-green/sleeve-left.webp",
+  "sha": "e6ba308205884cd0"
+ },
+ "/products/build-your-brand-heavy-hoody-frozen-yellow/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-frozen-yellow/sleeve-left.webp",
+  "sha": "25d7fd032f13fa45"
+ },
+ "/products/build-your-brand-heavy-hoody-heather-grey/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-heather-grey/sleeve-left.webp",
+  "sha": "8b7b808d3e9f0787"
+ },
+ "/products/build-your-brand-heavy-hoody-hibiskus-pink/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-hibiskus-pink/sleeve-left.webp",
+  "sha": "2db1a11498cc1455"
+ },
+ "/products/build-your-brand-heavy-hoody-light-asphalt/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-light-asphalt/sleeve-left.webp",
+  "sha": "fcd35e76cb55ce6b"
+ },
+ "/products/build-your-brand-heavy-hoody-light-navy/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-light-navy/sleeve-left.webp",
+  "sha": "41542d30c9f7c731"
+ },
+ "/products/build-your-brand-heavy-hoody-lilac/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-lilac/sleeve-left.webp",
+  "sha": "af0c3aa55ab13534"
+ },
+ "/products/build-your-brand-heavy-hoody-navy/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-navy/sleeve-left.webp",
+  "sha": "06f805b7f93301d3"
+ },
+ "/products/build-your-brand-heavy-hoody-neo-mint/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-neo-mint/sleeve-left.webp",
+  "sha": "eb2bdf9854b458c4"
+ },
+ "/products/build-your-brand-heavy-hoody-ocean-blue/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-ocean-blue/sleeve-left.webp",
+  "sha": "391a4a6a92e55334"
+ },
+ "/products/build-your-brand-heavy-hoody-olive/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-olive/sleeve-left.webp",
+  "sha": "c07cb1feb643f318"
+ },
+ "/products/build-your-brand-heavy-hoody-pale-leaf/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-pale-leaf/sleeve-left.webp",
+  "sha": "dd52f1f906fddda9"
+ },
+ "/products/build-your-brand-heavy-hoody-paradise-orange/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-paradise-orange/sleeve-left.webp",
+  "sha": "ed0289ad21c1879d"
+ },
+ "/products/build-your-brand-heavy-hoody-plum-purple/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-plum-purple/sleeve-left.webp",
+  "sha": "3c7231287c636b9a"
+ },
+ "/products/build-your-brand-heavy-hoody-powder-blue/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-powder-blue/sleeve-left.webp",
+  "sha": "03089d58f9c069a9"
+ },
+ "/products/build-your-brand-heavy-hoody-purple-night/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-purple-night/sleeve-left.webp",
+  "sha": "576b155b9c3b9489"
+ },
+ "/products/build-your-brand-heavy-hoody-ruby/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-ruby/sleeve-left.webp",
+  "sha": "e2252b804b0df53c"
+ },
+ "/products/build-your-brand-heavy-hoody-sand/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-sand/sleeve-left.webp",
+  "sha": "9966adc02572c3b0"
+ },
+ "/products/build-your-brand-heavy-hoody-soft-pink/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-soft-pink/sleeve-left.webp",
+  "sha": "972b49f11c322836"
+ },
+ "/products/build-your-brand-heavy-hoody-soft-yellow/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-soft-yellow/sleeve-left.webp",
+  "sha": "5e88007dd2673abe"
+ },
+ "/products/build-your-brand-heavy-hoody-taxi-yellow/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-taxi-yellow/sleeve-left.webp",
+  "sha": "b7d652a64f96b3aa"
+ },
+ "/products/build-your-brand-heavy-hoody-ultraviolett/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-ultraviolett/sleeve-left.webp",
+  "sha": "6c411ef1dd34030d"
+ },
+ "/products/build-your-brand-heavy-hoody-white-sand/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-white-sand/sleeve-left.webp",
+  "sha": "c4da12605b1107d5"
+ },
+ "/products/build-your-brand-heavy-hoody-white/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-heavy-hoody-white/sleeve-left.webp",
+  "sha": "7c91159b94a8ac80"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-black/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-black/sleeve-left.webp",
+  "sha": "f44ae4eb636e784c"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-charcoal-heather/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-charcoal-heather/sleeve-left.webp",
+  "sha": "020c2e1c98732d96"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-dusk-rose/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-dusk-rose/sleeve-left.webp",
+  "sha": "ad5a2c366cf86150"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-heather-grey/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-heather-grey/sleeve-left.webp",
+  "sha": "6d34be3ba9314950"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-olive/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-olive/sleeve-left.webp",
+  "sha": "3428f269450736aa"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-pink/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-pink/sleeve-left.webp",
+  "sha": "c44c7583b9a0d2af"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-soft-salvia/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-soft-salvia/sleeve-left.webp",
+  "sha": "893dbdf3f29c9ba9"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-soft-yellow/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-soft-yellow/sleeve-left.webp",
+  "sha": "eea5729463574fdc"
+ },
+ "/products/build-your-brand-ladies-heavy-hoody-white/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ladies-heavy-hoody-white/sleeve-left.webp",
+  "sha": "2c38aab92acc0b84"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-bark/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-bark/sleeve-left.webp",
+  "sha": "56a93b87842d5be3"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-beryl-blue/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-beryl-blue/sleeve-left.webp",
+  "sha": "a082f0091e5e551a"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-black/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-black/sleeve-left.webp",
+  "sha": "061b9b563f1816bd"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-city-red/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-city-red/sleeve-left.webp",
+  "sha": "05d4e079b5c16224"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-cloud/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-cloud/sleeve-left.webp",
+  "sha": "513f854b6c21f8b6"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-cobalt-blue/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-cobalt-blue/sleeve-left.webp",
+  "sha": "0db9e06457dc24e5"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-dark-grey/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-dark-grey/sleeve-left.webp",
+  "sha": "89af08f472921fe6"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-e8e7e3/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-e8e7e3/sleeve-left.webp",
+  "sha": "e81e7510b348c62d"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-forgotten-orange/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-forgotten-orange/sleeve-left.webp",
+  "sha": "5247bf718fc752b4"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-grey/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-grey/sleeve-left.webp",
+  "sha": "7e22a62f360b0ca8"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-light-mint/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-light-mint/sleeve-left.webp",
+  "sha": "6d491efcddfe2870"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-lilac/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-lilac/sleeve-left.webp",
+  "sha": "3869cd9b3f16a9b5"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-magnet/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-magnet/sleeve-left.webp",
+  "sha": "c193f08f5342eb0a"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-navy/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-navy/sleeve-left.webp",
+  "sha": "93f58eaae86622a9"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-ocean-blue/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-ocean-blue/sleeve-left.webp",
+  "sha": "27dea2b244aed2e4"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-olive/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-olive/sleeve-left.webp",
+  "sha": "fbe5d01f10c0ac38"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-ready-to-dye/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-ready-to-dye/sleeve-left.webp",
+  "sha": "e81e7510b348c62d"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-retro-green/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-retro-green/sleeve-left.webp",
+  "sha": "da80c57a520092c1"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-sand/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-sand/sleeve-left.webp",
+  "sha": "f98417ceb4b188be"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-soft-pink/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-soft-pink/sleeve-left.webp",
+  "sha": "884c250c04f72363"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-union-beige/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-union-beige/sleeve-left.webp",
+  "sha": "83245a73085fc5bb"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-vintage-blue/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-vintage-blue/sleeve-left.webp",
+  "sha": "9a26c432700d4746"
+ },
+ "/products/build-your-brand-ultra-heavy-cotton-box-hoody-white/sleeve-right.webp": {
+  "quelle": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-white/sleeve-left.webp",
+  "sha": "bca53b2d2982eaf8"
+ },
+ "/products/bundc-inspire-e150-t-shirt-navy-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-e150-t-shirt-navy-blue/sleeve-left.webp",
+  "sha": "e1bcce4c8d448dcd"
+ },
+ "/products/bundc-inspire-polo-women-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-black/sleeve-left.webp",
+  "sha": "c6d3fccb12aa36fb"
+ },
+ "/products/bundc-inspire-polo-women-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-bottle-green/sleeve-left.webp",
+  "sha": "8ff43b84dd505040"
+ },
+ "/products/bundc-inspire-polo-women-cobalt-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-cobalt-blue/sleeve-left.webp",
+  "sha": "1f7fb304259c9ee4"
+ },
+ "/products/bundc-inspire-polo-women-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-dark-grey-solid/sleeve-left.webp",
+  "sha": "3a0c8f333bd126ef"
+ },
+ "/products/bundc-inspire-polo-women-fire-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-fire-red/sleeve-left.webp",
+  "sha": "b86f1c42eaf50a11"
+ },
+ "/products/bundc-inspire-polo-women-heather-grey/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-heather-grey/sleeve-left.webp",
+  "sha": "4af2ddae5d5b55d9"
+ },
+ "/products/bundc-inspire-polo-women-millennial-lilac/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-millennial-lilac/sleeve-left.webp",
+  "sha": "a8f020560dfb3fd7"
+ },
+ "/products/bundc-inspire-polo-women-millennial-mint/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-millennial-mint/sleeve-left.webp",
+  "sha": "7aef574d3ba88ad3"
+ },
+ "/products/bundc-inspire-polo-women-orange/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-orange/sleeve-left.webp",
+  "sha": "470392b2d802122e"
+ },
+ "/products/bundc-inspire-polo-women-orchid-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-orchid-green/sleeve-left.webp",
+  "sha": "7cf2d67ceed7dec1"
+ },
+ "/products/bundc-inspire-polo-women-orchid-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-orchid-pink/sleeve-left.webp",
+  "sha": "bafb766b44ad463e"
+ },
+ "/products/bundc-inspire-polo-women-radiant-purple/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-radiant-purple/sleeve-left.webp",
+  "sha": "20fc758e3c0c770c"
+ },
+ "/products/bundc-inspire-polo-women-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-sky-blue/sleeve-left.webp",
+  "sha": "c30ee02d9184d37b"
+ },
+ "/products/bundc-inspire-polo-women-solar-yellow/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-solar-yellow/sleeve-left.webp",
+  "sha": "c714c6839a77c661"
+ },
+ "/products/bundc-inspire-polo-women-sorbet/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-sorbet/sleeve-left.webp",
+  "sha": "cda11982103d3e15"
+ },
+ "/products/bundc-inspire-polo-women-urban-khaki/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-urban-khaki/sleeve-left.webp",
+  "sha": "8bdba1130242865b"
+ },
+ "/products/bundc-inspire-polo-women-urban-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-urban-navy/sleeve-left.webp",
+  "sha": "5eb65be5cb927d12"
+ },
+ "/products/bundc-inspire-polo-women-urban-orange/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-urban-orange/sleeve-left.webp",
+  "sha": "7c09b120f6b8a925"
+ },
+ "/products/bundc-inspire-polo-women-very-turquoise/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-very-turquoise/sleeve-left.webp",
+  "sha": "51bf05f85a3d0d80"
+ },
+ "/products/bundc-inspire-polo-women-white/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-polo-women-white/sleeve-left.webp",
+  "sha": "283ac8d15d388973"
+ },
+ "/products/bundc-inspire-t-women-millennial-khaki/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-t-women-millennial-khaki/sleeve-left.webp",
+  "sha": "bf82b45fdf18de77"
+ },
+ "/products/bundc-inspire-t-women-millennial-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-t-women-millennial-pink/sleeve-left.webp",
+  "sha": "1d7ba28996873b23"
+ },
+ "/products/bundc-inspire-t-women-sport-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-t-women-sport-grey-heather/sleeve-left.webp",
+  "sha": "ff5593842918d3c2"
+ },
+ "/products/bundc-inspire-t-women-urban-orange/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-t-women-urban-orange/sleeve-left.webp",
+  "sha": "bea04309209dfe4f"
+ },
+ "/products/bundc-inspire-t-women-urban-purple/sleeve-right.webp": {
+  "quelle": "/products/bundc-inspire-t-women-urban-purple/sleeve-left.webp",
+  "sha": "e335617606ee0755"
+ },
+ "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-black/sleeve-left.webp",
+  "sha": "251f634cc23205f6"
+ },
+ "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-dark-grey-solid/sleeve-left.webp",
+  "sha": "14a6d21956b7909c"
+ },
+ "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-navy/sleeve-left.webp",
+  "sha": "0700dee9025f40f7"
+ },
+ "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-red/sleeve-left.webp",
+  "sha": "468658343995b469"
+ },
+ "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-royal-blue/sleeve-left.webp",
+  "sha": "f695350fb95d3d5b"
+ },
+ "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-sport-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-sport-grey-heather/sleeve-left.webp",
+  "sha": "2a4f2983cb39d282"
+ },
+ "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-white/sleeve-right.webp": {
+  "quelle": "/products/bundc-mens-t-shirt-e190-long-sleeve-exact-white/sleeve-left.webp",
+  "sha": "5835f2294393ee02"
+ },
+ "/products/bundc-my-eco-polo-6535-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-black/sleeve-left.webp",
+  "sha": "f00ca6e71102995a"
+ },
+ "/products/bundc-my-eco-polo-6535-burgundy/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-burgundy/sleeve-left.webp",
+  "sha": "a70a93c11c695e18"
+ },
+ "/products/bundc-my-eco-polo-6535-dark-forest/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-dark-forest/sleeve-left.webp",
+  "sha": "cbb75bc1246f4589"
+ },
+ "/products/bundc-my-eco-polo-6535-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-dark-grey-solid/sleeve-left.webp",
+  "sha": "52eb7f206d180e8b"
+ },
+ "/products/bundc-my-eco-polo-6535-lotus-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-lotus-blue/sleeve-left.webp",
+  "sha": "ef6bc20963db5d3c"
+ },
+ "/products/bundc-my-eco-polo-6535-lotus-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-lotus-pink/sleeve-left.webp",
+  "sha": "ee8242ca39f9d6f0"
+ },
+ "/products/bundc-my-eco-polo-6535-mastic/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-mastic/sleeve-left.webp",
+  "sha": "c84022f82713d9c6"
+ },
+ "/products/bundc-my-eco-polo-6535-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-navy/sleeve-left.webp",
+  "sha": "8f2c5f02624e1942"
+ },
+ "/products/bundc-my-eco-polo-6535-pacific-grey/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-pacific-grey/sleeve-left.webp",
+  "sha": "7f5109bfd0e900a7"
+ },
+ "/products/bundc-my-eco-polo-6535-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-red/sleeve-left.webp",
+  "sha": "c18e1c320fb12e2e"
+ },
+ "/products/bundc-my-eco-polo-6535-roasted-coffee/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-roasted-coffee/sleeve-left.webp",
+  "sha": "83376f7cfd354275"
+ },
+ "/products/bundc-my-eco-polo-6535-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-royal-blue/sleeve-left.webp",
+  "sha": "fe2d8dbafc9cd507"
+ },
+ "/products/bundc-my-eco-polo-6535-white/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-white/sleeve-left.webp",
+  "sha": "c303d8acefbc4629"
+ },
+ "/products/bundc-my-eco-polo-6535-women-lotus-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-women-lotus-pink/sleeve-left.webp",
+  "sha": "bf40e6fbd1aee6c2"
+ },
+ "/products/bundc-my-eco-polo-6535-women-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-eco-polo-6535-women-red/sleeve-left.webp",
+  "sha": "14c4a68270f266ba"
+ },
+ "/products/bundc-my-polo-180-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-black/sleeve-left.webp",
+  "sha": "cd0abb8d15813648"
+ },
+ "/products/bundc-my-polo-180-blush-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-blush-blue/sleeve-left.webp",
+  "sha": "57fd70c9215a0b07"
+ },
+ "/products/bundc-my-polo-180-blush-mint/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-blush-mint/sleeve-left.webp",
+  "sha": "69b9f13123a97b79"
+ },
+ "/products/bundc-my-polo-180-blush-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-blush-pink/sleeve-left.webp",
+  "sha": "6b5bbd1d614e6cdc"
+ },
+ "/products/bundc-my-polo-180-burgundy/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-burgundy/sleeve-left.webp",
+  "sha": "90a9acf2ce9c1929"
+ },
+ "/products/bundc-my-polo-180-dark-forest/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-dark-forest/sleeve-left.webp",
+  "sha": "cbb75bc1246f4589"
+ },
+ "/products/bundc-my-polo-180-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-dark-grey-solid/sleeve-left.webp",
+  "sha": "52eb7f206d180e8b"
+ },
+ "/products/bundc-my-polo-180-ivy-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-ivy-green/sleeve-left.webp",
+  "sha": "9532c9b7cbdea34f"
+ },
+ "/products/bundc-my-polo-180-mastic/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-mastic/sleeve-left.webp",
+  "sha": "c760ff4fff62fede"
+ },
+ "/products/bundc-my-polo-180-navy-pure/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-navy-pure/sleeve-left.webp",
+  "sha": "272d39b571bb382e"
+ },
+ "/products/bundc-my-polo-180-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-navy/sleeve-left.webp",
+  "sha": "58337e7c968661af"
+ },
+ "/products/bundc-my-polo-180-off-white/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-off-white/sleeve-left.webp",
+  "sha": "ce2256580a940d1b"
+ },
+ "/products/bundc-my-polo-180-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-red/sleeve-left.webp",
+  "sha": "2a96f355cc574e7a"
+ },
+ "/products/bundc-my-polo-180-roasted-coffee/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-roasted-coffee/sleeve-left.webp",
+  "sha": "e2ec4fe8400c21c2"
+ },
+ "/products/bundc-my-polo-180-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-royal-blue/sleeve-left.webp",
+  "sha": "fe2d8dbafc9cd507"
+ },
+ "/products/bundc-my-polo-180-sport-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-sport-grey-heather/sleeve-left.webp",
+  "sha": "b7679c0aeab1d5b2"
+ },
+ "/products/bundc-my-polo-180-white/sleeve-right.webp": {
+  "quelle": "/products/bundc-my-polo-180-white/sleeve-left.webp",
+  "sha": "e524b5d9a1b39e5f"
+ },
+ "/products/bundc-t-shirt-e150-101145/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-101145/sleeve-left.webp",
+  "sha": "ed4691bad8201732"
+ },
+ "/products/bundc-t-shirt-e150-apricot/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-apricot/sleeve-left.webp",
+  "sha": "4e2f1c8ac5130742"
+ },
+ "/products/bundc-t-shirt-e150-ash-heather/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-ash-heather/sleeve-left.webp",
+  "sha": "1f696d4b26849aee"
+ },
+ "/products/bundc-t-shirt-e150-atoll/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-atoll/sleeve-left.webp",
+  "sha": "68e648c0124be234"
+ },
+ "/products/bundc-t-shirt-e150-azure/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-azure/sleeve-left.webp",
+  "sha": "564fa633b3d87ecd"
+ },
+ "/products/bundc-t-shirt-e150-bear-brown/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-bear-brown/sleeve-left.webp",
+  "sha": "e8fcc14c7e84dbdd"
+ },
+ "/products/bundc-t-shirt-e150-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-black/sleeve-left.webp",
+  "sha": "00d28f6eeb29fa52"
+ },
+ "/products/bundc-t-shirt-e150-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-bottle-green/sleeve-left.webp",
+  "sha": "0e59c0d6342f9d26"
+ },
+ "/products/bundc-t-shirt-e150-burgundy/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-burgundy/sleeve-left.webp",
+  "sha": "9e2ba7b614ebd85f"
+ },
+ "/products/bundc-t-shirt-e150-cobalt-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-cobalt-blue/sleeve-left.webp",
+  "sha": "b368ec77f8d26158"
+ },
+ "/products/bundc-t-shirt-e150-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-dark-grey-solid/sleeve-left.webp",
+  "sha": "03b4306e60e19e37"
+ },
+ "/products/bundc-t-shirt-e150-deep-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-deep-red/sleeve-left.webp",
+  "sha": "20f6964c6085460a"
+ },
+ "/products/bundc-t-shirt-e150-denim/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-denim/sleeve-left.webp",
+  "sha": "077b69397f50d85c"
+ },
+ "/products/bundc-t-shirt-e150-diva-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-diva-blue/sleeve-left.webp",
+  "sha": "08aa553b04a64c9f"
+ },
+ "/products/bundc-t-shirt-e150-electric-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-electric-blue/sleeve-left.webp",
+  "sha": "455296123be5f7e9"
+ },
+ "/products/bundc-t-shirt-e150-fire-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-fire-red/sleeve-left.webp",
+  "sha": "c7092fbddec631ce"
+ },
+ "/products/bundc-t-shirt-e150-fuchsia/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-fuchsia/sleeve-left.webp",
+  "sha": "8f80c6c6bb24c7cf"
+ },
+ "/products/bundc-t-shirt-e150-gold/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-gold/sleeve-left.webp",
+  "sha": "36764b84739cc7fe"
+ },
+ "/products/bundc-t-shirt-e150-kelly-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-kelly-green/sleeve-left.webp",
+  "sha": "8c3a4896fc042a6b"
+ },
+ "/products/bundc-t-shirt-e150-light-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-light-navy/sleeve-left.webp",
+  "sha": "42b9444b852c003d"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-bear-brown/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-bear-brown/sleeve-left.webp",
+  "sha": "886da3a89f6bdf96"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-bottle-green/sleeve-left.webp",
+  "sha": "5106ca1e3b71c4f8"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-dark-grey-solid/sleeve-left.webp",
+  "sha": "dd282bd0d65b85e8"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-millennial-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-millennial-pink/sleeve-left.webp",
+  "sha": "feaf8a85ba1dd5e4"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-orange/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-orange/sleeve-left.webp",
+  "sha": "e37548caf4de6a1b"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-royal-blue/sleeve-left.webp",
+  "sha": "2aa3ff331651c6f8"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-sport-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-sport-grey-heather/sleeve-left.webp",
+  "sha": "37c82cb434a02a32"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-urban-khaki/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-unisex-exact-urban-khaki/sleeve-left.webp",
+  "sha": "affc22148b6bf348"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bear-brown/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bear-brown/sleeve-left.webp",
+  "sha": "49b8c4ab64a6c213"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-black/sleeve-left.webp",
+  "sha": "a671312ccb634e9b"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-bottle-green/sleeve-left.webp",
+  "sha": "a8afa4604af4cb45"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-dark-grey-solid/sleeve-left.webp",
+  "sha": "ba44f3416796987c"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-millennial-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-millennial-pink/sleeve-left.webp",
+  "sha": "baac6c7b2eba942a"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-navy/sleeve-left.webp",
+  "sha": "3ddedf73de200faf"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-orange/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-orange/sleeve-left.webp",
+  "sha": "8b37d4109919ed3b"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-red/sleeve-left.webp",
+  "sha": "9d19dc95a132b5bb"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-royal-blue/sleeve-left.webp",
+  "sha": "787e67e92ac973dc"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-sport-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-sport-grey-heather/sleeve-left.webp",
+  "sha": "d11d5ed5a1260308"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-urban-khaki/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-urban-khaki/sleeve-left.webp",
+  "sha": "961457c042f9e1c2"
+ },
+ "/products/bundc-t-shirt-e150-long-sleeve-women-exact-white/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-long-sleeve-women-exact-white/sleeve-left.webp",
+  "sha": "ca1303b962dbb010"
+ },
+ "/products/bundc-t-shirt-e150-millennial-khaki/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-millennial-khaki/sleeve-left.webp",
+  "sha": "9ab11ed322fc2530"
+ },
+ "/products/bundc-t-shirt-e150-millennial-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-millennial-pink/sleeve-left.webp",
+  "sha": "ef58e06cef3a80b0"
+ },
+ "/products/bundc-t-shirt-e150-natural/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-natural/sleeve-left.webp",
+  "sha": "981719d0cd3202e4"
+ },
+ "/products/bundc-t-shirt-e150-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-navy/sleeve-left.webp",
+  "sha": "ed4691bad8201732"
+ },
+ "/products/bundc-t-shirt-e150-orange/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-orange/sleeve-left.webp",
+  "sha": "909b92b6fa931162"
+ },
+ "/products/bundc-t-shirt-e150-orchid-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-orchid-green/sleeve-left.webp",
+  "sha": "5b59d2efff37dff1"
+ },
+ "/products/bundc-t-shirt-e150-pistachio/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-pistachio/sleeve-left.webp",
+  "sha": "23670bbf6efbe67a"
+ },
+ "/products/bundc-t-shirt-e150-radiant-purple/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-radiant-purple/sleeve-left.webp",
+  "sha": "1377b78e21bbc97c"
+ },
+ "/products/bundc-t-shirt-e150-real-turquoise/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-real-turquoise/sleeve-left.webp",
+  "sha": "5f072aea3248d71b"
+ },
+ "/products/bundc-t-shirt-e150-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-red/sleeve-left.webp",
+  "sha": "c529e98a036bb1ae"
+ },
+ "/products/bundc-t-shirt-e150-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-royal-blue/sleeve-left.webp",
+  "sha": "42d368d5cec76b6e"
+ },
+ "/products/bundc-t-shirt-e150-sand/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-sand/sleeve-left.webp",
+  "sha": "5568afaa72737930"
+ },
+ "/products/bundc-t-shirt-e150-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-sky-blue/sleeve-left.webp",
+  "sha": "2bcedf25ba79e256"
+ },
+ "/products/bundc-t-shirt-e150-solar-yellow/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-solar-yellow/sleeve-left.webp",
+  "sha": "55e04f10102e26a9"
+ },
+ "/products/bundc-t-shirt-e150-sport-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-sport-grey-heather/sleeve-left.webp",
+  "sha": "20b610c624d1d32b"
+ },
+ "/products/bundc-t-shirt-e150-turquoise/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-turquoise/sleeve-left.webp",
+  "sha": "e07a3a5591be262f"
+ },
+ "/products/bundc-t-shirt-e150-urban-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-urban-black/sleeve-left.webp",
+  "sha": "04872eaaedcd84c9"
+ },
+ "/products/bundc-t-shirt-e150-urban-khaki/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-urban-khaki/sleeve-left.webp",
+  "sha": "a308034d2d04a938"
+ },
+ "/products/bundc-t-shirt-e150-urban-purple/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-urban-purple/sleeve-left.webp",
+  "sha": "37042be10ee50893"
+ },
+ "/products/bundc-t-shirt-e150-used-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-used-black/sleeve-left.webp",
+  "sha": "46b5c1537428bff7"
+ },
+ "/products/bundc-t-shirt-e150-white/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-white/sleeve-left.webp",
+  "sha": "14385f06f9ed462a"
+ },
+ "/products/bundc-t-shirt-e150-women-apricot/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-apricot/sleeve-left.webp",
+  "sha": "0d7cc95dc57b7bbd"
+ },
+ "/products/bundc-t-shirt-e150-women-atoll/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-atoll/sleeve-left.webp",
+  "sha": "87e81fdf660c0b78"
+ },
+ "/products/bundc-t-shirt-e150-women-azure/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-azure/sleeve-left.webp",
+  "sha": "24831f34c3a957f6"
+ },
+ "/products/bundc-t-shirt-e150-women-bear-brown/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-bear-brown/sleeve-left.webp",
+  "sha": "a8ce246895d3b876"
+ },
+ "/products/bundc-t-shirt-e150-women-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-black/sleeve-left.webp",
+  "sha": "78fac399d4cec14b"
+ },
+ "/products/bundc-t-shirt-e150-women-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-bottle-green/sleeve-left.webp",
+  "sha": "277223bc26bf6d74"
+ },
+ "/products/bundc-t-shirt-e150-women-burgundy/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-burgundy/sleeve-left.webp",
+  "sha": "6d80716135a7b3e9"
+ },
+ "/products/bundc-t-shirt-e150-women-cobalt-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-cobalt-blue/sleeve-left.webp",
+  "sha": "2ac1b1a0ac465e05"
+ },
+ "/products/bundc-t-shirt-e150-women-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-dark-grey-solid/sleeve-left.webp",
+  "sha": "1f00c5c513569ce0"
+ },
+ "/products/bundc-t-shirt-e150-women-deep-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-deep-red/sleeve-left.webp",
+  "sha": "93dc58e3572de1fe"
+ },
+ "/products/bundc-t-shirt-e150-women-denim/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-denim/sleeve-left.webp",
+  "sha": "1650fff02183a812"
+ },
+ "/products/bundc-t-shirt-e150-women-diva-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-diva-blue/sleeve-left.webp",
+  "sha": "8d07bea7514206ba"
+ },
+ "/products/bundc-t-shirt-e150-women-electric-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-electric-blue/sleeve-left.webp",
+  "sha": "b906d8a1e249fb7f"
+ },
+ "/products/bundc-t-shirt-e150-women-fire-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-fire-red/sleeve-left.webp",
+  "sha": "cd7fec1cc6c3e3e3"
+ },
+ "/products/bundc-t-shirt-e150-women-fuchsia/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-fuchsia/sleeve-left.webp",
+  "sha": "5bce8127e8fbc0c3"
+ },
+ "/products/bundc-t-shirt-e150-women-gold/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-gold/sleeve-left.webp",
+  "sha": "dee607db20a9a809"
+ },
+ "/products/bundc-t-shirt-e150-women-kelly-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-kelly-green/sleeve-left.webp",
+  "sha": "ed5e31c31d9a7e80"
+ },
+ "/products/bundc-t-shirt-e150-women-light-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-light-navy/sleeve-left.webp",
+  "sha": "470e0b4eb3c6d189"
+ },
+ "/products/bundc-t-shirt-e150-women-millennial-khaki/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-millennial-khaki/sleeve-left.webp",
+  "sha": "7ab5c4fb2265e466"
+ },
+ "/products/bundc-t-shirt-e150-women-millennial-pink/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-millennial-pink/sleeve-left.webp",
+  "sha": "b3256d82db358f8c"
+ },
+ "/products/bundc-t-shirt-e150-women-natural/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-natural/sleeve-left.webp",
+  "sha": "48b9491ffbf1cf80"
+ },
+ "/products/bundc-t-shirt-e150-women-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-navy/sleeve-left.webp",
+  "sha": "43b5d9350a557556"
+ },
+ "/products/bundc-t-shirt-e150-women-orange/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-orange/sleeve-left.webp",
+  "sha": "d974aefe00cf226b"
+ },
+ "/products/bundc-t-shirt-e150-women-orchid-green/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-orchid-green/sleeve-left.webp",
+  "sha": "7ef5786e3738ed4a"
+ },
+ "/products/bundc-t-shirt-e150-women-pistachio/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-pistachio/sleeve-left.webp",
+  "sha": "76448449c2832910"
+ },
+ "/products/bundc-t-shirt-e150-women-radiant-purple/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-radiant-purple/sleeve-left.webp",
+  "sha": "d3bfceadfef26b13"
+ },
+ "/products/bundc-t-shirt-e150-women-real-turquoise/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-real-turquoise/sleeve-left.webp",
+  "sha": "fadfc81ab6169a88"
+ },
+ "/products/bundc-t-shirt-e150-women-red/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-red/sleeve-left.webp",
+  "sha": "134a3396f924982e"
+ },
+ "/products/bundc-t-shirt-e150-women-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-royal-blue/sleeve-left.webp",
+  "sha": "0ef3df4de1d9bd4d"
+ },
+ "/products/bundc-t-shirt-e150-women-sand/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-sand/sleeve-left.webp",
+  "sha": "9b5a66bf7e5ad4f8"
+ },
+ "/products/bundc-t-shirt-e150-women-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-sky-blue/sleeve-left.webp",
+  "sha": "e375a5b233e7893e"
+ },
+ "/products/bundc-t-shirt-e150-women-solar-yellow/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-solar-yellow/sleeve-left.webp",
+  "sha": "057389df8c4a553c"
+ },
+ "/products/bundc-t-shirt-e150-women-sport-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-sport-grey-heather/sleeve-left.webp",
+  "sha": "d989b9d19c3d303d"
+ },
+ "/products/bundc-t-shirt-e150-women-turquoise/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-turquoise/sleeve-left.webp",
+  "sha": "fe80fff68396d25e"
+ },
+ "/products/bundc-t-shirt-e150-women-urban-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-urban-black/sleeve-left.webp",
+  "sha": "4ec399c017e8483e"
+ },
+ "/products/bundc-t-shirt-e150-women-urban-khaki/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-urban-khaki/sleeve-left.webp",
+  "sha": "a1622eaabc05b2a5"
+ },
+ "/products/bundc-t-shirt-e150-women-urban-navy/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-urban-navy/sleeve-left.webp",
+  "sha": "875698bfd86c1b76"
+ },
+ "/products/bundc-t-shirt-e150-women-urban-purple/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-urban-purple/sleeve-left.webp",
+  "sha": "f0e57ee1a7238a88"
+ },
+ "/products/bundc-t-shirt-e150-women-used-black/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-used-black/sleeve-left.webp",
+  "sha": "185b54ae35fc066b"
+ },
+ "/products/bundc-t-shirt-e150-women-white/sleeve-right.webp": {
+  "quelle": "/products/bundc-t-shirt-e150-women-white/sleeve-left.webp",
+  "sha": "d91337aa80310a9a"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-azure-blue/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-azure-blue/sleeve-left.webp",
+  "sha": "94d0b86d5054c281"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-black/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-black/sleeve-left.webp",
+  "sha": "40361a1ff29c2c36"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-bottle-green/sleeve-left.webp",
+  "sha": "836944a2c931e644"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-burgundy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-burgundy/sleeve-left.webp",
+  "sha": "077c70c36e39365f"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-classic-olive/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-classic-olive/sleeve-left.webp",
+  "sha": "45176fc6d5070f00"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-dark-heather-grey/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-dark-heather-grey/sleeve-left.webp",
+  "sha": "7171d7226297dd42"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-deep-navy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-deep-navy/sleeve-left.webp",
+  "sha": "ac3fd60226d5c879"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-fuchsia/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-fuchsia/sleeve-left.webp",
+  "sha": "63ad2b7873688ece"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-heather-green/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-heather-green/sleeve-left.webp",
+  "sha": "9e1b613b3840c835"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-heather-grey/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-heather-grey/sleeve-left.webp",
+  "sha": "0c09eee9102675d2"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-heather-navy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-heather-navy/sleeve-left.webp",
+  "sha": "383720550d0827c0"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-heather-red/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-heather-red/sleeve-left.webp",
+  "sha": "9e8a8390acda3c98"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-heather-royal/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-heather-royal/sleeve-left.webp",
+  "sha": "ad4d576207700167"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-kelly-green/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-kelly-green/sleeve-left.webp",
+  "sha": "182d3c26358b5ee7"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-light-graphite-solid/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-light-graphite-solid/sleeve-left.webp",
+  "sha": "3ea3fcf95c91a787"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-light-pink/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-light-pink/sleeve-left.webp",
+  "sha": "4603648fccdfa55e"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-natural/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-natural/sleeve-left.webp",
+  "sha": "f8e6df020c3479af"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-navy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-navy/sleeve-left.webp",
+  "sha": "8048f38e21d1e034"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-orange/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-orange/sleeve-left.webp",
+  "sha": "7dd9e54a12a5c0ad"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-purple/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-purple/sleeve-left.webp",
+  "sha": "d329d8337ed5e523"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-red/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-red/sleeve-left.webp",
+  "sha": "9c2eb6a589bbc904"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-royal-blue/sleeve-left.webp",
+  "sha": "c74e237db43268a7"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-sky-blue/sleeve-left.webp",
+  "sha": "e29498703735eb62"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-sunflower/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-sunflower/sleeve-left.webp",
+  "sha": "c05e4965f7ff78ff"
+ },
+ "/products/fruit-of-the-loom-classic-hooded-sweat-white/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-classic-hooded-sweat-white/sleeve-left.webp",
+  "sha": "e30538eccabe5d78"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-athletic-heather/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-athletic-heather/sleeve-left.webp",
+  "sha": "aa81180e33d9b209"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-black/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-black/sleeve-left.webp",
+  "sha": "2d3d311fe1198803"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-burgundy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-burgundy/sleeve-left.webp",
+  "sha": "2861ad1cb2b7a050"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-college-green/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-college-green/sleeve-left.webp",
+  "sha": "019be81851d1a5f3"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-deep-navy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-deep-navy/sleeve-left.webp",
+  "sha": "0a9ae491495858bf"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-desert-sand/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-desert-sand/sleeve-left.webp",
+  "sha": "731bfd66440fe15b"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-ffffff/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-ffffff/sleeve-left.webp",
+  "sha": "4735888390f66327"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-light-graphite-solid/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-light-graphite-solid/sleeve-left.webp",
+  "sha": "7aa52a14bf0283bf"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-red/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-red/sleeve-left.webp",
+  "sha": "b9610adc5b6c5ae5"
+ },
+ "/products/fruit-of-the-loom-iconic-250-hooded-sweat-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-250-hooded-sweat-royal-blue/sleeve-left.webp",
+  "sha": "7da91c9f2c120f7b"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-athletic-heather/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-athletic-heather/sleeve-left.webp",
+  "sha": "8c9b4ecc252a9010"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-black/sleeve-left.webp",
+  "sha": "945075871aad98c3"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-burgundy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-burgundy/sleeve-left.webp",
+  "sha": "ceb3b2d83192ecd9"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-classic-olive/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-classic-olive/sleeve-left.webp",
+  "sha": "1082731dd3feb14b"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-deep-navy/sleeve-left.webp",
+  "sha": "32cc1b2e40cdc83d"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-desert-sand/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-desert-sand/sleeve-left.webp",
+  "sha": "86987d38e02c6d62"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-light-graphite-solid/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-light-graphite-solid/sleeve-left.webp",
+  "sha": "32ba26da267d6e3a"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-red/sleeve-left.webp",
+  "sha": "dc7331cfd75d8826"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-royal-blue/sleeve-left.webp",
+  "sha": "0c5099778e54f1a3"
+ },
+ "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-iconic-premium-hooded-sweat-white/sleeve-left.webp",
+  "sha": "78f63460977ee334"
+ },
+ "/products/fruit-of-the-loom-lightweight-hooded-sweat-black/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-lightweight-hooded-sweat-black/sleeve-left.webp",
+  "sha": "c4bd3d36573de6d0"
+ },
+ "/products/fruit-of-the-loom-lightweight-hooded-sweat-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-lightweight-hooded-sweat-bottle-green/sleeve-left.webp",
+  "sha": "d19788dd7c366434"
+ },
+ "/products/fruit-of-the-loom-lightweight-hooded-sweat-burgundy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-lightweight-hooded-sweat-burgundy/sleeve-left.webp",
+  "sha": "ed7280e57e7d1f9e"
+ },
+ "/products/fruit-of-the-loom-lightweight-hooded-sweat-deep-navy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-lightweight-hooded-sweat-deep-navy/sleeve-left.webp",
+  "sha": "0922f38cf80ae654"
+ },
+ "/products/fruit-of-the-loom-lightweight-hooded-sweat-heather-grey/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-lightweight-hooded-sweat-heather-grey/sleeve-left.webp",
+  "sha": "b4431c7045ba16bd"
+ },
+ "/products/fruit-of-the-loom-lightweight-hooded-sweat-red/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-lightweight-hooded-sweat-red/sleeve-left.webp",
+  "sha": "a4ad9319a209fadc"
+ },
+ "/products/fruit-of-the-loom-lightweight-hooded-sweat-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-lightweight-hooded-sweat-royal-blue/sleeve-left.webp",
+  "sha": "704ab1142815b436"
+ },
+ "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-lightweight-hooded-sweat-white/sleeve-left.webp",
+  "sha": "6318cad7a9e33072"
+ },
+ "/products/fruit-of-the-loom-premium-hooded-sweat-black/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-premium-hooded-sweat-black/sleeve-left.webp",
+  "sha": "c02e496a67548798"
+ },
+ "/products/fruit-of-the-loom-premium-hooded-sweat-burgundy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-premium-hooded-sweat-burgundy/sleeve-left.webp",
+  "sha": "64266021965f93fc"
+ },
+ "/products/fruit-of-the-loom-premium-hooded-sweat-charcoal-solid/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-premium-hooded-sweat-charcoal-solid/sleeve-left.webp",
+  "sha": "022d148c06949163"
+ },
+ "/products/fruit-of-the-loom-premium-hooded-sweat-classic-olive/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-premium-hooded-sweat-classic-olive/sleeve-left.webp",
+  "sha": "3e35077362ea5a7c"
+ },
+ "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-premium-hooded-sweat-deep-navy/sleeve-left.webp",
+  "sha": "d645e4a7dc3f7fb1"
+ },
+ "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-premium-hooded-sweat-heather-grey/sleeve-left.webp",
+  "sha": "ce00a3078a960891"
+ },
+ "/products/fruit-of-the-loom-premium-hooded-sweat-red/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-premium-hooded-sweat-red/sleeve-left.webp",
+  "sha": "b1125136574fb335"
+ },
+ "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/fruit-of-the-loom-premium-hooded-sweat-royal-blue/sleeve-left.webp",
+  "sha": "7431a8311f4b031d"
+ },
+ "/products/jamesnicholson-classic-polo-acid-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-acid-yellow/sleeve-left.webp",
+  "sha": "2085452528982467"
+ },
+ "/products/jamesnicholson-classic-polo-aqua/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-aqua/sleeve-left.webp",
+  "sha": "fbd4517fb06446a7"
+ },
+ "/products/jamesnicholson-classic-polo-aubergine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-aubergine/sleeve-left.webp",
+  "sha": "d7b093b4888f14c0"
+ },
+ "/products/jamesnicholson-classic-polo-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-black/sleeve-left.webp",
+  "sha": "b1afc68687b0d35c"
+ },
+ "/products/jamesnicholson-classic-polo-brown/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-brown/sleeve-left.webp",
+  "sha": "cc3e8ed725885846"
+ },
+ "/products/jamesnicholson-classic-polo-dark-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-dark-orange/sleeve-left.webp",
+  "sha": "8fb6e9b66779389f"
+ },
+ "/products/jamesnicholson-classic-polo-dark-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-dark-royal/sleeve-left.webp",
+  "sha": "2bfac4f412166528"
+ },
+ "/products/jamesnicholson-classic-polo-fern-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-fern-green/sleeve-left.webp",
+  "sha": "b5f79e5199e7f1d1"
+ },
+ "/products/jamesnicholson-classic-polo-gold-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-gold-yellow/sleeve-left.webp",
+  "sha": "316e5e4da9bdeca1"
+ },
+ "/products/jamesnicholson-classic-polo-graphite-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-graphite-solid/sleeve-left.webp",
+  "sha": "8816be760a9cd795"
+ },
+ "/products/jamesnicholson-classic-polo-grenadine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-grenadine/sleeve-left.webp",
+  "sha": "3cd26e7e3e202819"
+ },
+ "/products/jamesnicholson-classic-polo-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-grey-heather/sleeve-left.webp",
+  "sha": "4e8354ad8f271a52"
+ },
+ "/products/jamesnicholson-classic-polo-irish-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-irish-green/sleeve-left.webp",
+  "sha": "545f16436ebf6fca"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-acid-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-acid-yellow/sleeve-left.webp",
+  "sha": "7a9d4181238744c8"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-aqua/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-aqua/sleeve-left.webp",
+  "sha": "beb4981f35fa6c65"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-aubergine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-aubergine/sleeve-left.webp",
+  "sha": "462febb85c7277c7"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-black/sleeve-left.webp",
+  "sha": "0f6ceacacc66afa6"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-brown/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-brown/sleeve-left.webp",
+  "sha": "af86695862ff9616"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-dark-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-dark-orange/sleeve-left.webp",
+  "sha": "d76749bbb4a3de47"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-dark-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-dark-royal/sleeve-left.webp",
+  "sha": "fcddd6cfc68a357a"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-fern-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-fern-green/sleeve-left.webp",
+  "sha": "1135316e85e0b0d9"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-gold-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-gold-yellow/sleeve-left.webp",
+  "sha": "477d82faada15dd1"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-graphite-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-graphite-solid/sleeve-left.webp",
+  "sha": "8365fca687bf7095"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-grenadine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-grenadine/sleeve-left.webp",
+  "sha": "1c698303dd7cffbd"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-grey-heather/sleeve-left.webp",
+  "sha": "fb43ff5f2db2446e"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-irish-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-irish-green/sleeve-left.webp",
+  "sha": "46dcc01ecff6bfa7"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-light-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-light-blue/sleeve-left.webp",
+  "sha": "307a7429a01fc30e"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-light-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-light-yellow/sleeve-left.webp",
+  "sha": "ef2f35ee4def4d43"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-lilac/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-lilac/sleeve-left.webp",
+  "sha": "d5de89ce9e7035e3"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-lime-green/sleeve-left.webp",
+  "sha": "d1ffe4ad393f97bf"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-mint/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-mint/sleeve-left.webp",
+  "sha": "4688f120d5c8ffca"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-navy/sleeve-left.webp",
+  "sha": "d16fd997a9d436d4"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-olive/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-olive/sleeve-left.webp",
+  "sha": "e084ace0f4f62013"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-orange/sleeve-left.webp",
+  "sha": "a75fb74d8ba11c45"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-pacific/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-pacific/sleeve-left.webp",
+  "sha": "b56e5dad80746f3f"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-petrol/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-petrol/sleeve-left.webp",
+  "sha": "86883b4f40a40770"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-purple/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-purple/sleeve-left.webp",
+  "sha": "0178d709a86242b5"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-red/sleeve-left.webp",
+  "sha": "d4bd93e6d1aaa514"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-rose/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-rose/sleeve-left.webp",
+  "sha": "f4bc95bb6918fbd8"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-royal/sleeve-left.webp",
+  "sha": "9096304a2e64fd22"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-signal-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-signal-red/sleeve-left.webp",
+  "sha": "6d66dd97c57dc0dd"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-sky-blue/sleeve-left.webp",
+  "sha": "b9c3445be16108c0"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-stone/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-stone/sleeve-left.webp",
+  "sha": "9068b1818d14e4eb"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-tomato/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-tomato/sleeve-left.webp",
+  "sha": "52de8a59f690042e"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-turquoise/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-turquoise/sleeve-left.webp",
+  "sha": "6ce75d6a17aa6c5a"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-white/sleeve-left.webp",
+  "sha": "4de97aee0d13a81c"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-wine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-wine/sleeve-left.webp",
+  "sha": "7f75435fe116721e"
+ },
+ "/products/jamesnicholson-classic-polo-ladies-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-ladies-yellow/sleeve-left.webp",
+  "sha": "5a6afb6b175978a0"
+ },
+ "/products/jamesnicholson-classic-polo-light-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-light-blue/sleeve-left.webp",
+  "sha": "ab96d2ddfc6c3bec"
+ },
+ "/products/jamesnicholson-classic-polo-light-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-light-yellow/sleeve-left.webp",
+  "sha": "398a37e8acd311d2"
+ },
+ "/products/jamesnicholson-classic-polo-lilac/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-lilac/sleeve-left.webp",
+  "sha": "d7bc66250cbece7d"
+ },
+ "/products/jamesnicholson-classic-polo-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-lime-green/sleeve-left.webp",
+  "sha": "a5063a1e880eb217"
+ },
+ "/products/jamesnicholson-classic-polo-mint/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-mint/sleeve-left.webp",
+  "sha": "59c5da5265fa0029"
+ },
+ "/products/jamesnicholson-classic-polo-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-navy/sleeve-left.webp",
+  "sha": "0651cdbab0566070"
+ },
+ "/products/jamesnicholson-classic-polo-olive/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-olive/sleeve-left.webp",
+  "sha": "ffca8c7d0233ac96"
+ },
+ "/products/jamesnicholson-classic-polo-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-orange/sleeve-left.webp",
+  "sha": "5a35b8ba243de2d2"
+ },
+ "/products/jamesnicholson-classic-polo-pacific/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-pacific/sleeve-left.webp",
+  "sha": "37f288d7e6c9ba73"
+ },
+ "/products/jamesnicholson-classic-polo-petrol/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-petrol/sleeve-left.webp",
+  "sha": "4d5a01a941fd2457"
+ },
+ "/products/jamesnicholson-classic-polo-purple/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-purple/sleeve-left.webp",
+  "sha": "e7f3cac473b5e8ce"
+ },
+ "/products/jamesnicholson-classic-polo-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-red/sleeve-left.webp",
+  "sha": "ff8b0f51746e59bf"
+ },
+ "/products/jamesnicholson-classic-polo-rose/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-rose/sleeve-left.webp",
+  "sha": "17919c1893681e2b"
+ },
+ "/products/jamesnicholson-classic-polo-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-royal/sleeve-left.webp",
+  "sha": "715827cd7fc35abc"
+ },
+ "/products/jamesnicholson-classic-polo-signal-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-signal-red/sleeve-left.webp",
+  "sha": "7e98c821dd28ee7c"
+ },
+ "/products/jamesnicholson-classic-polo-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-sky-blue/sleeve-left.webp",
+  "sha": "996d2c5cec5af807"
+ },
+ "/products/jamesnicholson-classic-polo-stone/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-stone/sleeve-left.webp",
+  "sha": "445cf561bcc59ff6"
+ },
+ "/products/jamesnicholson-classic-polo-tomato/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-tomato/sleeve-left.webp",
+  "sha": "f6193912f39229ba"
+ },
+ "/products/jamesnicholson-classic-polo-turquoise/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-turquoise/sleeve-left.webp",
+  "sha": "61f92d9168ef7426"
+ },
+ "/products/jamesnicholson-classic-polo-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-white/sleeve-left.webp",
+  "sha": "5649d79c9b28e089"
+ },
+ "/products/jamesnicholson-classic-polo-wine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-wine/sleeve-left.webp",
+  "sha": "0c21da979267e4a6"
+ },
+ "/products/jamesnicholson-classic-polo-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-classic-polo-yellow/sleeve-left.webp",
+  "sha": "45656aec7ba2eff5"
+ },
+ "/products/jamesnicholson-ladies-active-t-acid-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-acid-yellow/sleeve-left.webp",
+  "sha": "f48093427ea7512e"
+ },
+ "/products/jamesnicholson-ladies-active-t-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-black/sleeve-left.webp",
+  "sha": "71212e85cab6e1e8"
+ },
+ "/products/jamesnicholson-ladies-active-t-dark-melange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-dark-melange/sleeve-left.webp",
+  "sha": "5e8f770903063ed0"
+ },
+ "/products/jamesnicholson-ladies-active-t-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-green/sleeve-left.webp",
+  "sha": "5b9e8b0775b538f5"
+ },
+ "/products/jamesnicholson-ladies-active-t-grenadine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-grenadine/sleeve-left.webp",
+  "sha": "f03c8581c547cb06"
+ },
+ "/products/jamesnicholson-ladies-active-t-light-melange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-light-melange/sleeve-left.webp",
+  "sha": "4632552939ed8e05"
+ },
+ "/products/jamesnicholson-ladies-active-t-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-lime-green/sleeve-left.webp",
+  "sha": "606446cb51e13aa0"
+ },
+ "/products/jamesnicholson-ladies-active-t-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-navy/sleeve-left.webp",
+  "sha": "bfe749ce1b9b7b78"
+ },
+ "/products/jamesnicholson-ladies-active-t-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-orange/sleeve-left.webp",
+  "sha": "72634be5bed8f3ce"
+ },
+ "/products/jamesnicholson-ladies-active-t-pacific/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-pacific/sleeve-left.webp",
+  "sha": "a3d87150b603feff"
+ },
+ "/products/jamesnicholson-ladies-active-t-pink/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-pink/sleeve-left.webp",
+  "sha": "ca4b4ce1c73f6fa6"
+ },
+ "/products/jamesnicholson-ladies-active-t-purple/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-purple/sleeve-left.webp",
+  "sha": "ee136d264caf77d3"
+ },
+ "/products/jamesnicholson-ladies-active-t-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-red/sleeve-left.webp",
+  "sha": "e3efd771f05ee08e"
+ },
+ "/products/jamesnicholson-ladies-active-t-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-royal/sleeve-left.webp",
+  "sha": "4bc8c52e7440e678"
+ },
+ "/products/jamesnicholson-ladies-active-t-turquoise/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-turquoise/sleeve-left.webp",
+  "sha": "3d9cdfe3b948b6cf"
+ },
+ "/products/jamesnicholson-ladies-active-t-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-white/sleeve-left.webp",
+  "sha": "ccc4124d843e266c"
+ },
+ "/products/jamesnicholson-ladies-active-t-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-active-t-yellow/sleeve-left.webp",
+  "sha": "dce77bf9fca51326"
+ },
+ "/products/jamesnicholson-ladies-basic-t-acid-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-acid-yellow/sleeve-left.webp",
+  "sha": "c51ac816052c9900"
+ },
+ "/products/jamesnicholson-ladies-basic-t-aqua/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-aqua/sleeve-left.webp",
+  "sha": "672a503da6df12dc"
+ },
+ "/products/jamesnicholson-ladies-basic-t-ash-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-ash-heather/sleeve-left.webp",
+  "sha": "c5ad5891222c9f9c"
+ },
+ "/products/jamesnicholson-ladies-basic-t-aubergine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-aubergine/sleeve-left.webp",
+  "sha": "ac88b38bd63039b6"
+ },
+ "/products/jamesnicholson-ladies-basic-t-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-black/sleeve-left.webp",
+  "sha": "6c03308daf33ad51"
+ },
+ "/products/jamesnicholson-ladies-basic-t-brown/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-brown/sleeve-left.webp",
+  "sha": "0988cd0ed3f14620"
+ },
+ "/products/jamesnicholson-ladies-basic-t-dark-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-dark-green/sleeve-left.webp",
+  "sha": "37a448907adf25c8"
+ },
+ "/products/jamesnicholson-ladies-basic-t-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-dark-grey-solid/sleeve-left.webp",
+  "sha": "284042e69545be86"
+ },
+ "/products/jamesnicholson-ladies-basic-t-dark-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-dark-orange/sleeve-left.webp",
+  "sha": "673790911788dd44"
+ },
+ "/products/jamesnicholson-ladies-basic-t-dark-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-dark-royal/sleeve-left.webp",
+  "sha": "850f9346f12e6a70"
+ },
+ "/products/jamesnicholson-ladies-basic-t-fern-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-fern-green/sleeve-left.webp",
+  "sha": "a65b8444bac3d9da"
+ },
+ "/products/jamesnicholson-ladies-basic-t-gold-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-gold-yellow/sleeve-left.webp",
+  "sha": "e23e1e32c421aee8"
+ },
+ "/products/jamesnicholson-ladies-basic-t-graphite-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-graphite-solid/sleeve-left.webp",
+  "sha": "912c0320a3f956cc"
+ },
+ "/products/jamesnicholson-ladies-basic-t-grenadine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-grenadine/sleeve-left.webp",
+  "sha": "b00eb8f284b7108f"
+ },
+ "/products/jamesnicholson-ladies-basic-t-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-grey-heather/sleeve-left.webp",
+  "sha": "829f830370448aa1"
+ },
+ "/products/jamesnicholson-ladies-basic-t-irish-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-irish-green/sleeve-left.webp",
+  "sha": "e915e78d89d7d214"
+ },
+ "/products/jamesnicholson-ladies-basic-t-khaki/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-khaki/sleeve-left.webp",
+  "sha": "d344c34754ce0a39"
+ },
+ "/products/jamesnicholson-ladies-basic-t-light-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-light-blue/sleeve-left.webp",
+  "sha": "dee989b75b4e7431"
+ },
+ "/products/jamesnicholson-ladies-basic-t-light-grey/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-light-grey/sleeve-left.webp",
+  "sha": "e2c55480f43390e8"
+ },
+ "/products/jamesnicholson-ladies-basic-t-light-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-light-yellow/sleeve-left.webp",
+  "sha": "d7acbdc8bb77e6c9"
+ },
+ "/products/jamesnicholson-ladies-basic-t-lilac/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-lilac/sleeve-left.webp",
+  "sha": "5cd00a0c82f07560"
+ },
+ "/products/jamesnicholson-ladies-basic-t-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-lime-green/sleeve-left.webp",
+  "sha": "a5edb066d8c59712"
+ },
+ "/products/jamesnicholson-ladies-basic-t-mint/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-mint/sleeve-left.webp",
+  "sha": "2e24201b84e8c2e7"
+ },
+ "/products/jamesnicholson-ladies-basic-t-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-navy/sleeve-left.webp",
+  "sha": "c1133edab88372f0"
+ },
+ "/products/jamesnicholson-ladies-basic-t-olive/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-olive/sleeve-left.webp",
+  "sha": "183b9e8668502a18"
+ },
+ "/products/jamesnicholson-ladies-basic-t-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-orange/sleeve-left.webp",
+  "sha": "91753e67bfcb7e65"
+ },
+ "/products/jamesnicholson-ladies-basic-t-pacific/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-pacific/sleeve-left.webp",
+  "sha": "7c577c0ca187e13b"
+ },
+ "/products/jamesnicholson-ladies-basic-t-petrol/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-petrol/sleeve-left.webp",
+  "sha": "1e0ce7c5cc93a791"
+ },
+ "/products/jamesnicholson-ladies-basic-t-pink/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-pink/sleeve-left.webp",
+  "sha": "a145dcfa45c37c0c"
+ },
+ "/products/jamesnicholson-ladies-basic-t-purple/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-purple/sleeve-left.webp",
+  "sha": "624e00c71de4f011"
+ },
+ "/products/jamesnicholson-ladies-basic-t-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-red/sleeve-left.webp",
+  "sha": "b1d89f75a0e47575"
+ },
+ "/products/jamesnicholson-ladies-basic-t-rose/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-rose/sleeve-left.webp",
+  "sha": "bda6e925057b1c60"
+ },
+ "/products/jamesnicholson-ladies-basic-t-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-royal/sleeve-left.webp",
+  "sha": "e5fb97ee0f861508"
+ },
+ "/products/jamesnicholson-ladies-basic-t-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-sky-blue/sleeve-left.webp",
+  "sha": "aee348661c0df12d"
+ },
+ "/products/jamesnicholson-ladies-basic-t-stone/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-stone/sleeve-left.webp",
+  "sha": "e95cbca729644683"
+ },
+ "/products/jamesnicholson-ladies-basic-t-tomato/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-tomato/sleeve-left.webp",
+  "sha": "6fab75640d3838fe"
+ },
+ "/products/jamesnicholson-ladies-basic-t-turquoise/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-turquoise/sleeve-left.webp",
+  "sha": "8a55d9e4dc17c3de"
+ },
+ "/products/jamesnicholson-ladies-basic-t-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-white/sleeve-left.webp",
+  "sha": "d8954d95ce5ed38a"
+ },
+ "/products/jamesnicholson-ladies-basic-t-wine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-wine/sleeve-left.webp",
+  "sha": "15d43c77f66cf48d"
+ },
+ "/products/jamesnicholson-ladies-basic-t-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-basic-t-yellow/sleeve-left.webp",
+  "sha": "6d8eabf441d421ef"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-aqua/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-aqua/sleeve-left.webp",
+  "sha": "34e32c5ab0de0e6f"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-black/sleeve-left.webp",
+  "sha": "bb252421fab04168"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-brown/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-brown/sleeve-left.webp",
+  "sha": "373b736ef92fcadc"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-carbon/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-carbon/sleeve-left.webp",
+  "sha": "b6efc7da0e4884ae"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-dark-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-dark-green/sleeve-left.webp",
+  "sha": "aabcbaee609706e2"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-dark-grey-solid/sleeve-left.webp",
+  "sha": "39e711f5adfef360"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-gold-yellow/sleeve-left.webp",
+  "sha": "76061adee1be9061"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-grey-heather/sleeve-left.webp",
+  "sha": "06a2adfb1d2f3b58"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-lime-green/sleeve-left.webp",
+  "sha": "fa562f3e97cbe832"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-navy/sleeve-left.webp",
+  "sha": "4df362b2cdd039a8"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-orange/sleeve-left.webp",
+  "sha": "5bc71e83f1051d3c"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-red/sleeve-left.webp",
+  "sha": "6544e7e49fabac32"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-royal/sleeve-left.webp",
+  "sha": "f7ff011bfbc7a94c"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-stone/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-stone/sleeve-left.webp",
+  "sha": "605adcc3e3bd01d2"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-turquoise/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-turquoise/sleeve-left.webp",
+  "sha": "f77776bccf75ecdc"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-white/sleeve-left.webp",
+  "sha": "7d3965e8f324bd85"
+ },
+ "/products/jamesnicholson-ladies-bio-workwear-t-shirt-wine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-ladies-bio-workwear-t-shirt-wine/sleeve-left.webp",
+  "sha": "8aa263ecf98d29e7"
+ },
+ "/products/jamesnicholson-men-s-basic-t-acid-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-acid-yellow/sleeve-left.webp",
+  "sha": "03e03ff99b12f589"
+ },
+ "/products/jamesnicholson-men-s-basic-t-ash-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-ash-heather/sleeve-left.webp",
+  "sha": "d7408577f66d1509"
+ },
+ "/products/jamesnicholson-men-s-basic-t-black-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-black-heather/sleeve-left.webp",
+  "sha": "8e355dfdd049911f"
+ },
+ "/products/jamesnicholson-men-s-basic-t-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-black/sleeve-left.webp",
+  "sha": "4281918ef0eaac02"
+ },
+ "/products/jamesnicholson-men-s-basic-t-cobalt/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-cobalt/sleeve-left.webp",
+  "sha": "b580a2086820ac74"
+ },
+ "/products/jamesnicholson-men-s-basic-t-coral/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-coral/sleeve-left.webp",
+  "sha": "98ca95e4c14c57be"
+ },
+ "/products/jamesnicholson-men-s-basic-t-dark-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-dark-green/sleeve-left.webp",
+  "sha": "5dd9e8276fda984b"
+ },
+ "/products/jamesnicholson-men-s-basic-t-dark-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-dark-royal/sleeve-left.webp",
+  "sha": "747b9926a55ae37d"
+ },
+ "/products/jamesnicholson-men-s-basic-t-gold-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-gold-yellow/sleeve-left.webp",
+  "sha": "b1091b10e59be26c"
+ },
+ "/products/jamesnicholson-men-s-basic-t-graphite-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-graphite-solid/sleeve-left.webp",
+  "sha": "4e2140169b77dcf1"
+ },
+ "/products/jamesnicholson-men-s-basic-t-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-grey-heather/sleeve-left.webp",
+  "sha": "bc1b2cc98063dcb5"
+ },
+ "/products/jamesnicholson-men-s-basic-t-jade-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-jade-green/sleeve-left.webp",
+  "sha": "40e87e4a321e57aa"
+ },
+ "/products/jamesnicholson-men-s-basic-t-light-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-light-blue/sleeve-left.webp",
+  "sha": "bbe1dd468be45d08"
+ },
+ "/products/jamesnicholson-men-s-basic-t-light-denim-melange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-light-denim-melange/sleeve-left.webp",
+  "sha": "6680c19fdb87390b"
+ },
+ "/products/jamesnicholson-men-s-basic-t-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-lime-green/sleeve-left.webp",
+  "sha": "b839637207408f48"
+ },
+ "/products/jamesnicholson-men-s-basic-t-natural/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-natural/sleeve-left.webp",
+  "sha": "e8d2f4288fbbc4c0"
+ },
+ "/products/jamesnicholson-men-s-basic-t-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-navy/sleeve-left.webp",
+  "sha": "aa7b28736c48c1d9"
+ },
+ "/products/jamesnicholson-men-s-basic-t-olive/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-olive/sleeve-left.webp",
+  "sha": "8cb886813f87bb5c"
+ },
+ "/products/jamesnicholson-men-s-basic-t-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-orange/sleeve-left.webp",
+  "sha": "55000fb7831870cc"
+ },
+ "/products/jamesnicholson-men-s-basic-t-petrol/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-petrol/sleeve-left.webp",
+  "sha": "39605b4c4feecdc3"
+ },
+ "/products/jamesnicholson-men-s-basic-t-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-red/sleeve-left.webp",
+  "sha": "f5006435af5d1a86"
+ },
+ "/products/jamesnicholson-men-s-basic-t-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-royal/sleeve-left.webp",
+  "sha": "6fdf913b326ed3b1"
+ },
+ "/products/jamesnicholson-men-s-basic-t-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-sky-blue/sleeve-left.webp",
+  "sha": "0ce38e71cb34ab54"
+ },
+ "/products/jamesnicholson-men-s-basic-t-soft-grey/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-soft-grey/sleeve-left.webp",
+  "sha": "0ea78b938fd18bb4"
+ },
+ "/products/jamesnicholson-men-s-basic-t-steel-grey/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-steel-grey/sleeve-left.webp",
+  "sha": "89cfca819e2b478a"
+ },
+ "/products/jamesnicholson-men-s-basic-t-vanilla/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-vanilla/sleeve-left.webp",
+  "sha": "2e10bac3d11e5173"
+ },
+ "/products/jamesnicholson-men-s-basic-t-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-white/sleeve-left.webp",
+  "sha": "abaa560523d5fdca"
+ },
+ "/products/jamesnicholson-men-s-basic-t-wine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-wine/sleeve-left.webp",
+  "sha": "fd00cf5a6f0c7aad"
+ },
+ "/products/jamesnicholson-men-s-basic-t-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-basic-t-yellow/sleeve-left.webp",
+  "sha": "9283bb4b7242b771"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-aqua/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-aqua/sleeve-left.webp",
+  "sha": "847edf8ff8e4d264"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-black/sleeve-left.webp",
+  "sha": "881296f7628ba981"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-brown/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-brown/sleeve-left.webp",
+  "sha": "a9e75a1955efe58c"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-carbon/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-carbon/sleeve-left.webp",
+  "sha": "bc646c600050cfd6"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-dark-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-dark-green/sleeve-left.webp",
+  "sha": "299108032619cd6b"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-dark-grey-solid/sleeve-left.webp",
+  "sha": "94bd24ef1149bc69"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-gold-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-gold-yellow/sleeve-left.webp",
+  "sha": "648be85658720578"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-grey-heather/sleeve-left.webp",
+  "sha": "beb96abe209d1711"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-lime-green/sleeve-left.webp",
+  "sha": "1cadd72271052d59"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-navy/sleeve-left.webp",
+  "sha": "fe367c110987b366"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-orange/sleeve-left.webp",
+  "sha": "abffe9dee4c9dfad"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-red/sleeve-left.webp",
+  "sha": "e8f2c0be01fc6535"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-royal/sleeve-left.webp",
+  "sha": "d31e3377422cfaa7"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-stone/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-stone/sleeve-left.webp",
+  "sha": "e84a03c1a91cd636"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-turquoise/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-turquoise/sleeve-left.webp",
+  "sha": "d2f619fdf4242f6d"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-white/sleeve-left.webp",
+  "sha": "56ed36e8f12e5226"
+ },
+ "/products/jamesnicholson-men-s-bio-workwear-polo-wine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-men-s-bio-workwear-polo-wine/sleeve-left.webp",
+  "sha": "47dda19b25257882"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-aqua/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-aqua/sleeve-left.webp",
+  "sha": "16d1e9b4769d54e7"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-black/sleeve-left.webp",
+  "sha": "8b7425072bf1ef3a"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-brown/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-brown/sleeve-left.webp",
+  "sha": "8fbf25fda7a019a1"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-carbon/sleeve-left.webp",
+  "sha": "a3518c19daa858a1"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-green/sleeve-left.webp",
+  "sha": "5a610fca554f6930"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-dark-grey-solid/sleeve-left.webp",
+  "sha": "6c3c85ec6f9e0ed7"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-gold-yellow/sleeve-left.webp",
+  "sha": "47fa0dce775741c3"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-grey-heather/sleeve-left.webp",
+  "sha": "a5b8f30a21e3f18d"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-lime-green/sleeve-left.webp",
+  "sha": "a370ea4591fc5423"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-navy/sleeve-left.webp",
+  "sha": "2181762734fbcf33"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-orange/sleeve-left.webp",
+  "sha": "60668e3ee5c9c994"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-red/sleeve-left.webp",
+  "sha": "2010c43cc4970daf"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-royal/sleeve-left.webp",
+  "sha": "b8835a0ed1a575e4"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-stone/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-stone/sleeve-left.webp",
+  "sha": "d5d0557b90c91811"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-turquoise/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-turquoise/sleeve-left.webp",
+  "sha": "d7bc0d718013af0d"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-white/sleeve-left.webp",
+  "sha": "60597cc6325a2eba"
+ },
+ "/products/jamesnicholson-mens-bio-workwear-t-shirt-wine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-mens-bio-workwear-t-shirt-wine/sleeve-left.webp",
+  "sha": "354f36b7ff03963c"
+ },
+ "/products/jamesnicholson-round-t-heavy-acid-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-acid-yellow/sleeve-left.webp",
+  "sha": "92a84e638cb7a60a"
+ },
+ "/products/jamesnicholson-round-t-heavy-aqua/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-aqua/sleeve-left.webp",
+  "sha": "176324bc57e2fe57"
+ },
+ "/products/jamesnicholson-round-t-heavy-ash-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-ash-heather/sleeve-left.webp",
+  "sha": "17e43b38a7562287"
+ },
+ "/products/jamesnicholson-round-t-heavy-aubergine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-aubergine/sleeve-left.webp",
+  "sha": "75dc1d1633f39017"
+ },
+ "/products/jamesnicholson-round-t-heavy-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-black/sleeve-left.webp",
+  "sha": "59c7932067ff52f0"
+ },
+ "/products/jamesnicholson-round-t-heavy-brown/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-brown/sleeve-left.webp",
+  "sha": "d6c4c976a98d1045"
+ },
+ "/products/jamesnicholson-round-t-heavy-dark-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-dark-green/sleeve-left.webp",
+  "sha": "07e385dee7417a06"
+ },
+ "/products/jamesnicholson-round-t-heavy-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-dark-grey-solid/sleeve-left.webp",
+  "sha": "9ecff25887a224e6"
+ },
+ "/products/jamesnicholson-round-t-heavy-dark-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-dark-orange/sleeve-left.webp",
+  "sha": "565c1b7cfa5244a6"
+ },
+ "/products/jamesnicholson-round-t-heavy-dark-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-dark-royal/sleeve-left.webp",
+  "sha": "41dc4fea9d60f59b"
+ },
+ "/products/jamesnicholson-round-t-heavy-fern-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-fern-green/sleeve-left.webp",
+  "sha": "a416e490dd2b9ced"
+ },
+ "/products/jamesnicholson-round-t-heavy-gold-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-gold-yellow/sleeve-left.webp",
+  "sha": "082f6b1814c94024"
+ },
+ "/products/jamesnicholson-round-t-heavy-graphite-solid/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-graphite-solid/sleeve-left.webp",
+  "sha": "78141985aadb60bf"
+ },
+ "/products/jamesnicholson-round-t-heavy-grenadine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-grenadine/sleeve-left.webp",
+  "sha": "340b24f422bd654a"
+ },
+ "/products/jamesnicholson-round-t-heavy-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-grey-heather/sleeve-left.webp",
+  "sha": "6866c24934f3245a"
+ },
+ "/products/jamesnicholson-round-t-heavy-irish-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-irish-green/sleeve-left.webp",
+  "sha": "4d23399e7cdd3b06"
+ },
+ "/products/jamesnicholson-round-t-heavy-khaki/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-khaki/sleeve-left.webp",
+  "sha": "fff9891173b29803"
+ },
+ "/products/jamesnicholson-round-t-heavy-light-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-light-blue/sleeve-left.webp",
+  "sha": "842f9fe56ed9b3db"
+ },
+ "/products/jamesnicholson-round-t-heavy-light-grey/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-light-grey/sleeve-left.webp",
+  "sha": "136c3473fa56c70d"
+ },
+ "/products/jamesnicholson-round-t-heavy-light-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-light-yellow/sleeve-left.webp",
+  "sha": "a62cba739597f42b"
+ },
+ "/products/jamesnicholson-round-t-heavy-lilac/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-lilac/sleeve-left.webp",
+  "sha": "4eeea7e6d1affd51"
+ },
+ "/products/jamesnicholson-round-t-heavy-lime-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-lime-green/sleeve-left.webp",
+  "sha": "d91c8ba5010a644c"
+ },
+ "/products/jamesnicholson-round-t-heavy-mint/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-mint/sleeve-left.webp",
+  "sha": "8fac903ffa4ff3fa"
+ },
+ "/products/jamesnicholson-round-t-heavy-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-navy/sleeve-left.webp",
+  "sha": "3223f17f24ddf256"
+ },
+ "/products/jamesnicholson-round-t-heavy-olive/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-olive/sleeve-left.webp",
+  "sha": "9c65429ed3725d87"
+ },
+ "/products/jamesnicholson-round-t-heavy-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-orange/sleeve-left.webp",
+  "sha": "84db4e02fc4abc0f"
+ },
+ "/products/jamesnicholson-round-t-heavy-pacific/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-pacific/sleeve-left.webp",
+  "sha": "0f9f1bca9b88435a"
+ },
+ "/products/jamesnicholson-round-t-heavy-petrol/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-petrol/sleeve-left.webp",
+  "sha": "4f73091c6ef8dc9f"
+ },
+ "/products/jamesnicholson-round-t-heavy-pink/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-pink/sleeve-left.webp",
+  "sha": "16d42cfd525262ad"
+ },
+ "/products/jamesnicholson-round-t-heavy-purple/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-purple/sleeve-left.webp",
+  "sha": "c9cb0c0caa362489"
+ },
+ "/products/jamesnicholson-round-t-heavy-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-red/sleeve-left.webp",
+  "sha": "c378e1b57a4fc0dd"
+ },
+ "/products/jamesnicholson-round-t-heavy-rose/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-rose/sleeve-left.webp",
+  "sha": "056860052e74600f"
+ },
+ "/products/jamesnicholson-round-t-heavy-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-royal/sleeve-left.webp",
+  "sha": "42c48e7c8b5139fe"
+ },
+ "/products/jamesnicholson-round-t-heavy-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-sky-blue/sleeve-left.webp",
+  "sha": "62ad2f32650bab5d"
+ },
+ "/products/jamesnicholson-round-t-heavy-stone/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-stone/sleeve-left.webp",
+  "sha": "860d98905b2e549f"
+ },
+ "/products/jamesnicholson-round-t-heavy-tomato/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-tomato/sleeve-left.webp",
+  "sha": "bc23db2783fb5b82"
+ },
+ "/products/jamesnicholson-round-t-heavy-turquoise/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-turquoise/sleeve-left.webp",
+  "sha": "0817f91aa9b477de"
+ },
+ "/products/jamesnicholson-round-t-heavy-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-white/sleeve-left.webp",
+  "sha": "f44836998b63af03"
+ },
+ "/products/jamesnicholson-round-t-heavy-wine/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-wine/sleeve-left.webp",
+  "sha": "b2e420341916e9a9"
+ },
+ "/products/jamesnicholson-round-t-heavy-yellow/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-round-t-heavy-yellow/sleeve-left.webp",
+  "sha": "07e04e31a43603ba"
+ },
+ "/products/jamesnicholson-workwear-polo-men-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-black/sleeve-left.webp",
+  "sha": "7b5243f7e51d9d18"
+ },
+ "/products/jamesnicholson-workwear-polo-men-carbon/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-carbon/sleeve-left.webp",
+  "sha": "3f0d0836148a9883"
+ },
+ "/products/jamesnicholson-workwear-polo-men-dark-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-dark-green/sleeve-left.webp",
+  "sha": "00dab9e36a10c8a0"
+ },
+ "/products/jamesnicholson-workwear-polo-men-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-grey-heather/sleeve-left.webp",
+  "sha": "7f97b6089b0ebca0"
+ },
+ "/products/jamesnicholson-workwear-polo-men-light-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-light-blue/sleeve-left.webp",
+  "sha": "7604eae5dd481eb3"
+ },
+ "/products/jamesnicholson-workwear-polo-men-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-navy/sleeve-left.webp",
+  "sha": "5b07c56c916f9a09"
+ },
+ "/products/jamesnicholson-workwear-polo-men-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-orange/sleeve-left.webp",
+  "sha": "e089418773d6050b"
+ },
+ "/products/jamesnicholson-workwear-polo-men-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-red/sleeve-left.webp",
+  "sha": "0ddcc7e9adc4b523"
+ },
+ "/products/jamesnicholson-workwear-polo-men-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-royal/sleeve-left.webp",
+  "sha": "e52859122fbf4ab6"
+ },
+ "/products/jamesnicholson-workwear-polo-men-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-polo-men-white/sleeve-left.webp",
+  "sha": "871c943a6d9dd1f4"
+ },
+ "/products/jamesnicholson-workwear-t-men-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-black/sleeve-left.webp",
+  "sha": "c496890f3f5f54bb"
+ },
+ "/products/jamesnicholson-workwear-t-men-carbon/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-carbon/sleeve-left.webp",
+  "sha": "3cbe72f71eeffeb2"
+ },
+ "/products/jamesnicholson-workwear-t-men-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-grey-heather/sleeve-left.webp",
+  "sha": "55cf0a35c4c45a65"
+ },
+ "/products/jamesnicholson-workwear-t-men-light-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-light-blue/sleeve-left.webp",
+  "sha": "a56e53e3a0c20d8a"
+ },
+ "/products/jamesnicholson-workwear-t-men-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-navy/sleeve-left.webp",
+  "sha": "dab35610a402ed2a"
+ },
+ "/products/jamesnicholson-workwear-t-men-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-orange/sleeve-left.webp",
+  "sha": "726f51b0e7d1ef0e"
+ },
+ "/products/jamesnicholson-workwear-t-men-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-red/sleeve-left.webp",
+  "sha": "5fed568549d108e3"
+ },
+ "/products/jamesnicholson-workwear-t-men-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-royal/sleeve-left.webp",
+  "sha": "d539e30cd62d97f7"
+ },
+ "/products/jamesnicholson-workwear-t-men-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-men-white/sleeve-left.webp",
+  "sha": "431bdc2309d9aa45"
+ },
+ "/products/jamesnicholson-workwear-t-women-black/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-black/sleeve-left.webp",
+  "sha": "58f83fb1194354ff"
+ },
+ "/products/jamesnicholson-workwear-t-women-carbon/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-carbon/sleeve-left.webp",
+  "sha": "df743c5a50952873"
+ },
+ "/products/jamesnicholson-workwear-t-women-dark-green/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-dark-green/sleeve-left.webp",
+  "sha": "44661535df63afb0"
+ },
+ "/products/jamesnicholson-workwear-t-women-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-grey-heather/sleeve-left.webp",
+  "sha": "1d6fb37fd5b00137"
+ },
+ "/products/jamesnicholson-workwear-t-women-light-blue/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-light-blue/sleeve-left.webp",
+  "sha": "3c7a075827f6e529"
+ },
+ "/products/jamesnicholson-workwear-t-women-navy/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-navy/sleeve-left.webp",
+  "sha": "dd972f0b2beeb4f4"
+ },
+ "/products/jamesnicholson-workwear-t-women-orange/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-orange/sleeve-left.webp",
+  "sha": "04de7ae2a9d8908f"
+ },
+ "/products/jamesnicholson-workwear-t-women-red/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-red/sleeve-left.webp",
+  "sha": "ce1442080e66de52"
+ },
+ "/products/jamesnicholson-workwear-t-women-royal/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-royal/sleeve-left.webp",
+  "sha": "26065b0143fbcaaa"
+ },
+ "/products/jamesnicholson-workwear-t-women-white/sleeve-right.webp": {
+  "quelle": "/products/jamesnicholson-workwear-t-women-white/sleeve-left.webp",
+  "sha": "d2ceb874e59afa43"
+ },
+ "/products/jhk-hooded-sweater-black/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-black/sleeve-left.webp",
+  "sha": "a5750e07f0611ed1"
+ },
+ "/products/jhk-hooded-sweater-dark-grey-melange/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-dark-grey-melange/sleeve-left.webp",
+  "sha": "0956d77431ddfa01"
+ },
+ "/products/jhk-hooded-sweater-grey-melange/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-grey-melange/sleeve-left.webp",
+  "sha": "84a5f821310e38c6"
+ },
+ "/products/jhk-hooded-sweater-kelly-green/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-kelly-green/sleeve-left.webp",
+  "sha": "61afd1a89ce25d85"
+ },
+ "/products/jhk-hooded-sweater-khaki/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-khaki/sleeve-left.webp",
+  "sha": "52046064405395c6"
+ },
+ "/products/jhk-hooded-sweater-mustard/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-mustard/sleeve-left.webp",
+  "sha": "ed63d6c305584381"
+ },
+ "/products/jhk-hooded-sweater-navy/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-navy/sleeve-left.webp",
+  "sha": "448f75a14ecede26"
+ },
+ "/products/jhk-hooded-sweater-red/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-red/sleeve-left.webp",
+  "sha": "56d0e89f3762301b"
+ },
+ "/products/jhk-hooded-sweater-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-royal-blue/sleeve-left.webp",
+  "sha": "f1a13b13724b7f0b"
+ },
+ "/products/jhk-hooded-sweater-white/sleeve-right.webp": {
+  "quelle": "/products/jhk-hooded-sweater-white/sleeve-left.webp",
+  "sha": "bba29956db45da4c"
+ },
+ "/products/neutral-ladies-classic-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-black/sleeve-left.webp",
+  "sha": "122bd20d36f4e78c"
+ },
+ "/products/neutral-ladies-classic-t-shirt-bordeaux/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-bordeaux/sleeve-left.webp",
+  "sha": "df61b681ef736f1d"
+ },
+ "/products/neutral-ladies-classic-t-shirt-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-bottle-green/sleeve-left.webp",
+  "sha": "112d4c9ddd25e42a"
+ },
+ "/products/neutral-ladies-classic-t-shirt-brown/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-brown/sleeve-left.webp",
+  "sha": "e7755e7159c0f227"
+ },
+ "/products/neutral-ladies-classic-t-shirt-dark-heather/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-dark-heather/sleeve-left.webp",
+  "sha": "fa1fef1f8e8ca196"
+ },
+ "/products/neutral-ladies-classic-t-shirt-dusty-indigo/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-dusty-indigo/sleeve-left.webp",
+  "sha": "58370f7992cc98c0"
+ },
+ "/products/neutral-ladies-classic-t-shirt-dusty-purple/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-dusty-purple/sleeve-left.webp",
+  "sha": "c69efb474b594c76"
+ },
+ "/products/neutral-ladies-classic-t-shirt-dusty-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-dusty-yellow/sleeve-left.webp",
+  "sha": "2ac315a39ffab3b3"
+ },
+ "/products/neutral-ladies-classic-t-shirt-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-green/sleeve-left.webp",
+  "sha": "b48494e95c320831"
+ },
+ "/products/neutral-ladies-classic-t-shirt-light-blue/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-light-blue/sleeve-left.webp",
+  "sha": "a57938602906762a"
+ },
+ "/products/neutral-ladies-classic-t-shirt-lime/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-lime/sleeve-left.webp",
+  "sha": "96f7d3a6c74f52b5"
+ },
+ "/products/neutral-ladies-classic-t-shirt-military/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-military/sleeve-left.webp",
+  "sha": "d6ea253c5c11df87"
+ },
+ "/products/neutral-ladies-classic-t-shirt-nature/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-nature/sleeve-left.webp",
+  "sha": "fe89184b8eb27354"
+ },
+ "/products/neutral-ladies-classic-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-navy/sleeve-left.webp",
+  "sha": "0e3332e83fba027e"
+ },
+ "/products/neutral-ladies-classic-t-shirt-okay-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-okay-orange/sleeve-left.webp",
+  "sha": "3cd271f1d0664689"
+ },
+ "/products/neutral-ladies-classic-t-shirt-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-orange/sleeve-left.webp",
+  "sha": "d6d4dc42b7a0d8fc"
+ },
+ "/products/neutral-ladies-classic-t-shirt-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-pink/sleeve-left.webp",
+  "sha": "41bae2e29fd33c80"
+ },
+ "/products/neutral-ladies-classic-t-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-red/sleeve-left.webp",
+  "sha": "b1c2c98cc657024a"
+ },
+ "/products/neutral-ladies-classic-t-shirt-royal/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-royal/sleeve-left.webp",
+  "sha": "35a174a269bb157a"
+ },
+ "/products/neutral-ladies-classic-t-shirt-sapphire/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-sapphire/sleeve-left.webp",
+  "sha": "efbb9277f904d59e"
+ },
+ "/products/neutral-ladies-classic-t-shirt-sports-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-sports-grey/sleeve-left.webp",
+  "sha": "5b7a079494258f99"
+ },
+ "/products/neutral-ladies-classic-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-white/sleeve-left.webp",
+  "sha": "f988a39ccb2ee5ab"
+ },
+ "/products/neutral-ladies-classic-t-shirt-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-classic-t-shirt-yellow/sleeve-left.webp",
+  "sha": "6483058aed17b401"
+ },
+ "/products/neutral-ladies-fit-t-shirt-ash-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-ash-grey/sleeve-left.webp",
+  "sha": "073fa0234e03f655"
+ },
+ "/products/neutral-ladies-fit-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-black/sleeve-left.webp",
+  "sha": "7790321ab5fda8b4"
+ },
+ "/products/neutral-ladies-fit-t-shirt-bordeaux/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-bordeaux/sleeve-left.webp",
+  "sha": "7ad0bda4fc7d254c"
+ },
+ "/products/neutral-ladies-fit-t-shirt-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-bottle-green/sleeve-left.webp",
+  "sha": "fa40cd3c04103e5a"
+ },
+ "/products/neutral-ladies-fit-t-shirt-brown/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-brown/sleeve-left.webp",
+  "sha": "5809a121e234d4b9"
+ },
+ "/products/neutral-ladies-fit-t-shirt-charcoal/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-charcoal/sleeve-left.webp",
+  "sha": "76acefd48cc9f22c"
+ },
+ "/products/neutral-ladies-fit-t-shirt-dark-heather/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-dark-heather/sleeve-left.webp",
+  "sha": "72cb74fc50ce5fe2"
+ },
+ "/products/neutral-ladies-fit-t-shirt-dusty-indigo/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-dusty-indigo/sleeve-left.webp",
+  "sha": "bdc5e61779b444b1"
+ },
+ "/products/neutral-ladies-fit-t-shirt-dusty-mint/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-dusty-mint/sleeve-left.webp",
+  "sha": "881319196c7bb019"
+ },
+ "/products/neutral-ladies-fit-t-shirt-dusty-purple/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-dusty-purple/sleeve-left.webp",
+  "sha": "69386d8c863e0549"
+ },
+ "/products/neutral-ladies-fit-t-shirt-dusty-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-dusty-yellow/sleeve-left.webp",
+  "sha": "14e13864fad33d67"
+ },
+ "/products/neutral-ladies-fit-t-shirt-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-green/sleeve-left.webp",
+  "sha": "afee2da46bb352fa"
+ },
+ "/products/neutral-ladies-fit-t-shirt-light-blue/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-light-blue/sleeve-left.webp",
+  "sha": "0b7d835b7fec32f5"
+ },
+ "/products/neutral-ladies-fit-t-shirt-light-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-light-pink/sleeve-left.webp",
+  "sha": "00a4c97510e4c0fe"
+ },
+ "/products/neutral-ladies-fit-t-shirt-lime/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-lime/sleeve-left.webp",
+  "sha": "f8c5428aeb1dff0f"
+ },
+ "/products/neutral-ladies-fit-t-shirt-military/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-military/sleeve-left.webp",
+  "sha": "cf1d5d235dd4883b"
+ },
+ "/products/neutral-ladies-fit-t-shirt-natural/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-natural/sleeve-left.webp",
+  "sha": "6ba374f53c26d3b2"
+ },
+ "/products/neutral-ladies-fit-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-navy/sleeve-left.webp",
+  "sha": "901095f484cf37d7"
+ },
+ "/products/neutral-ladies-fit-t-shirt-okay-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-okay-orange/sleeve-left.webp",
+  "sha": "cd158fd4b4563318"
+ },
+ "/products/neutral-ladies-fit-t-shirt-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-orange/sleeve-left.webp",
+  "sha": "86f87fe3d4b958c9"
+ },
+ "/products/neutral-ladies-fit-t-shirt-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-pink/sleeve-left.webp",
+  "sha": "f2dfbf08c7f12282"
+ },
+ "/products/neutral-ladies-fit-t-shirt-purple/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-purple/sleeve-left.webp",
+  "sha": "2a5a39d0bc6f7f07"
+ },
+ "/products/neutral-ladies-fit-t-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-red/sleeve-left.webp",
+  "sha": "4faf180c7c09354f"
+ },
+ "/products/neutral-ladies-fit-t-shirt-royal/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-royal/sleeve-left.webp",
+  "sha": "4b4fac2f5dff45af"
+ },
+ "/products/neutral-ladies-fit-t-shirt-sand/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-sand/sleeve-left.webp",
+  "sha": "29c6d7adf339cc3e"
+ },
+ "/products/neutral-ladies-fit-t-shirt-sapphire/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-sapphire/sleeve-left.webp",
+  "sha": "639f428fbf98e704"
+ },
+ "/products/neutral-ladies-fit-t-shirt-sports-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-sports-grey/sleeve-left.webp",
+  "sha": "a2b44e66c77ba207"
+ },
+ "/products/neutral-ladies-fit-t-shirt-teal/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-teal/sleeve-left.webp",
+  "sha": "9547751cbdc23cf8"
+ },
+ "/products/neutral-ladies-fit-t-shirt-white-navy-striped/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-white-navy-striped/sleeve-left.webp",
+  "sha": "991d0c8f07d02c4c"
+ },
+ "/products/neutral-ladies-fit-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-white/sleeve-left.webp",
+  "sha": "44ce9c9693c35996"
+ },
+ "/products/neutral-ladies-fit-t-shirt-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-ladies-fit-t-shirt-yellow/sleeve-left.webp",
+  "sha": "71d19892aadc7d8a"
+ },
+ "/products/neutral-men-s-fit-t-shirt-ash-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-ash-grey/sleeve-left.webp",
+  "sha": "1b4c074f8adb5150"
+ },
+ "/products/neutral-men-s-fit-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-black/sleeve-left.webp",
+  "sha": "d89d1db660b714c1"
+ },
+ "/products/neutral-men-s-fit-t-shirt-bordeaux/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-bordeaux/sleeve-left.webp",
+  "sha": "9aa3f8169c342ad9"
+ },
+ "/products/neutral-men-s-fit-t-shirt-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-bottle-green/sleeve-left.webp",
+  "sha": "ef780efb27cf775d"
+ },
+ "/products/neutral-men-s-fit-t-shirt-brown/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-brown/sleeve-left.webp",
+  "sha": "33626c1374b8c970"
+ },
+ "/products/neutral-men-s-fit-t-shirt-charcoal/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-charcoal/sleeve-left.webp",
+  "sha": "e9ee497128c396ff"
+ },
+ "/products/neutral-men-s-fit-t-shirt-dark-heather/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-dark-heather/sleeve-left.webp",
+  "sha": "042b33138f48be0e"
+ },
+ "/products/neutral-men-s-fit-t-shirt-dusty-indigo/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-dusty-indigo/sleeve-left.webp",
+  "sha": "82b546e1f719ceca"
+ },
+ "/products/neutral-men-s-fit-t-shirt-dusty-mint/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-dusty-mint/sleeve-left.webp",
+  "sha": "c2a46483084f95ce"
+ },
+ "/products/neutral-men-s-fit-t-shirt-dusty-purple/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-dusty-purple/sleeve-left.webp",
+  "sha": "375b9828ab85caef"
+ },
+ "/products/neutral-men-s-fit-t-shirt-dusty-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-dusty-yellow/sleeve-left.webp",
+  "sha": "3047d9565d4782b1"
+ },
+ "/products/neutral-men-s-fit-t-shirt-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-green/sleeve-left.webp",
+  "sha": "d8a9dcc767eb533a"
+ },
+ "/products/neutral-men-s-fit-t-shirt-light-blue/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-light-blue/sleeve-left.webp",
+  "sha": "0e3087b0763cc900"
+ },
+ "/products/neutral-men-s-fit-t-shirt-light-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-light-pink/sleeve-left.webp",
+  "sha": "4471643ed808f964"
+ },
+ "/products/neutral-men-s-fit-t-shirt-lime/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-lime/sleeve-left.webp",
+  "sha": "87f8126571a41e68"
+ },
+ "/products/neutral-men-s-fit-t-shirt-military/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-military/sleeve-left.webp",
+  "sha": "7e894006aa563fd2"
+ },
+ "/products/neutral-men-s-fit-t-shirt-natural/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-natural/sleeve-left.webp",
+  "sha": "bfc33e080b55340d"
+ },
+ "/products/neutral-men-s-fit-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-navy/sleeve-left.webp",
+  "sha": "51858c803a014df7"
+ },
+ "/products/neutral-men-s-fit-t-shirt-okay-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-okay-orange/sleeve-left.webp",
+  "sha": "ab5b5e089a5a8900"
+ },
+ "/products/neutral-men-s-fit-t-shirt-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-orange/sleeve-left.webp",
+  "sha": "e3591d1d74739516"
+ },
+ "/products/neutral-men-s-fit-t-shirt-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-pink/sleeve-left.webp",
+  "sha": "ce1d9dcd446a98bc"
+ },
+ "/products/neutral-men-s-fit-t-shirt-purple/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-purple/sleeve-left.webp",
+  "sha": "71f659b2306a36cb"
+ },
+ "/products/neutral-men-s-fit-t-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-red/sleeve-left.webp",
+  "sha": "968db1498ff21209"
+ },
+ "/products/neutral-men-s-fit-t-shirt-royal/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-royal/sleeve-left.webp",
+  "sha": "1495afb8423eee72"
+ },
+ "/products/neutral-men-s-fit-t-shirt-sand/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-sand/sleeve-left.webp",
+  "sha": "aa25fa306a01f8e5"
+ },
+ "/products/neutral-men-s-fit-t-shirt-sapphire/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-sapphire/sleeve-left.webp",
+  "sha": "ef72c8ff23778879"
+ },
+ "/products/neutral-men-s-fit-t-shirt-sports-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-sports-grey/sleeve-left.webp",
+  "sha": "68ad1f5cca080457"
+ },
+ "/products/neutral-men-s-fit-t-shirt-teal/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-teal/sleeve-left.webp",
+  "sha": "4cc9f2931447e234"
+ },
+ "/products/neutral-men-s-fit-t-shirt-white-navy-striped/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-white-navy-striped/sleeve-left.webp",
+  "sha": "1e25d9b8d6d70941"
+ },
+ "/products/neutral-men-s-fit-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-white/sleeve-left.webp",
+  "sha": "21959307c84a0414"
+ },
+ "/products/neutral-men-s-fit-t-shirt-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-fit-t-shirt-yellow/sleeve-left.webp",
+  "sha": "73508c765d515812"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-b8b8b8/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-b8b8b8/sleeve-left.webp",
+  "sha": "6550224ca3a3e104"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-black/sleeve-left.webp",
+  "sha": "0db53a8656b67b14"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-bordeaux/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-bordeaux/sleeve-left.webp",
+  "sha": "b7fa55c2d40a3b74"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-bottle-green/sleeve-left.webp",
+  "sha": "eebed97a93c23caa"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-charcoal/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-charcoal/sleeve-left.webp",
+  "sha": "dbda6768066b653f"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-dark-heather/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-dark-heather/sleeve-left.webp",
+  "sha": "2047fa5eb5f01ab9"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-dusty-indigo/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-dusty-indigo/sleeve-left.webp",
+  "sha": "2b737227b967d34c"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-dusty-mint/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-dusty-mint/sleeve-left.webp",
+  "sha": "ec2cc94f3a3c9336"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-green/sleeve-left.webp",
+  "sha": "8e075056808f15b8"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-light-blue/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-light-blue/sleeve-left.webp",
+  "sha": "7cd1f80563b3e48f"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-light-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-light-pink/sleeve-left.webp",
+  "sha": "3bd32b6dd864ac9e"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-lime/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-lime/sleeve-left.webp",
+  "sha": "5c13a985cb269f17"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-military/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-military/sleeve-left.webp",
+  "sha": "cd9b8c56da45661b"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-navy/sleeve-left.webp",
+  "sha": "9fbb7541fefc05bd"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-orange/sleeve-left.webp",
+  "sha": "0ad0441f61cad752"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-pink/sleeve-left.webp",
+  "sha": "a7797a6b9c03559d"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-red/sleeve-left.webp",
+  "sha": "7dc7dc76e8c079e2"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-royal/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-royal/sleeve-left.webp",
+  "sha": "16bc907b7fcf2efa"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-sapphire/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-sapphire/sleeve-left.webp",
+  "sha": "320de1798cc29992"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-sports-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-sports-grey/sleeve-left.webp",
+  "sha": "6550224ca3a3e104"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-teal/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-teal/sleeve-left.webp",
+  "sha": "3179095133ec1e92"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-white-navy-striped/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-white-navy-striped/sleeve-left.webp",
+  "sha": "587a3ea486bdf58e"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-white/sleeve-left.webp",
+  "sha": "dd0242666dd437d7"
+ },
+ "/products/neutral-men-s-long-sleeve-t-shirt-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-men-s-long-sleeve-t-shirt-yellow/sleeve-left.webp",
+  "sha": "5285132e64017ed9"
+ },
+ "/products/neutral-oversized-t-shirt-215732/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-215732/sleeve-left.webp",
+  "sha": "614de28a8fe4e608"
+ },
+ "/products/neutral-oversized-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-black/sleeve-left.webp",
+  "sha": "1684b2e788ffa77b"
+ },
+ "/products/neutral-oversized-t-shirt-brown/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-brown/sleeve-left.webp",
+  "sha": "88921ca318048edc"
+ },
+ "/products/neutral-oversized-t-shirt-dusty-indigo/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-dusty-indigo/sleeve-left.webp",
+  "sha": "a22e2c8a2bfa6220"
+ },
+ "/products/neutral-oversized-t-shirt-dusty-mint/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-dusty-mint/sleeve-left.webp",
+  "sha": "a7575c45e1e87417"
+ },
+ "/products/neutral-oversized-t-shirt-dusty-purple/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-dusty-purple/sleeve-left.webp",
+  "sha": "89f38c500a6a3494"
+ },
+ "/products/neutral-oversized-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-navy/sleeve-left.webp",
+  "sha": "19fcfaadde530f02"
+ },
+ "/products/neutral-oversized-t-shirt-raw/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-raw/sleeve-left.webp",
+  "sha": "29c514c1c2a092bb"
+ },
+ "/products/neutral-oversized-t-shirt-sand/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-sand/sleeve-left.webp",
+  "sha": "5ad78653b4a4b3d6"
+ },
+ "/products/neutral-oversized-t-shirt-sport-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-sport-grey/sleeve-left.webp",
+  "sha": "fd7a2a635b20ce79"
+ },
+ "/products/neutral-oversized-t-shirt-teal/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-teal/sleeve-left.webp",
+  "sha": "0e8d45372bf73d09"
+ },
+ "/products/neutral-oversized-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/neutral-oversized-t-shirt-white/sleeve-left.webp",
+  "sha": "c52ff200147561b0"
+ },
+ "/products/neutral-recycled-performance-long-sleeve-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/neutral-recycled-performance-long-sleeve-t-shirt-black/sleeve-left.webp",
+  "sha": "2323106783303140"
+ },
+ "/products/neutral-recycled-performance-long-sleeve-t-shirt-dusty-mint/sleeve-right.webp": {
+  "quelle": "/products/neutral-recycled-performance-long-sleeve-t-shirt-dusty-mint/sleeve-left.webp",
+  "sha": "c89fb7ef57c1f5c5"
+ },
+ "/products/neutral-recycled-performance-long-sleeve-t-shirt-lime/sleeve-right.webp": {
+  "quelle": "/products/neutral-recycled-performance-long-sleeve-t-shirt-lime/sleeve-left.webp",
+  "sha": "b09b322b945fefb9"
+ },
+ "/products/neutral-recycled-performance-long-sleeve-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/neutral-recycled-performance-long-sleeve-t-shirt-navy/sleeve-left.webp",
+  "sha": "c31b7b9ba0185c65"
+ },
+ "/products/neutral-recycled-performance-long-sleeve-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/neutral-recycled-performance-long-sleeve-t-shirt-white/sleeve-left.webp",
+  "sha": "49f6ccb40c526986"
+ },
+ "/products/neutral-unisex-performance-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-black/sleeve-left.webp",
+  "sha": "25cadfbb4015feae"
+ },
+ "/products/neutral-unisex-performance-t-shirt-bordeaux/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-bordeaux/sleeve-left.webp",
+  "sha": "1248a4fb40abc01b"
+ },
+ "/products/neutral-unisex-performance-t-shirt-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-bottle-green/sleeve-left.webp",
+  "sha": "64c61fceed3a7cc4"
+ },
+ "/products/neutral-unisex-performance-t-shirt-charcoal/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-charcoal/sleeve-left.webp",
+  "sha": "a6e01731e856df18"
+ },
+ "/products/neutral-unisex-performance-t-shirt-dusty-indigo/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-dusty-indigo/sleeve-left.webp",
+  "sha": "51929316d630c525"
+ },
+ "/products/neutral-unisex-performance-t-shirt-dusty-mint/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-dusty-mint/sleeve-left.webp",
+  "sha": "feebca4eaf2158b8"
+ },
+ "/products/neutral-unisex-performance-t-shirt-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-green/sleeve-left.webp",
+  "sha": "0d97974db980f87c"
+ },
+ "/products/neutral-unisex-performance-t-shirt-lime/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-lime/sleeve-left.webp",
+  "sha": "08d49529fbedcb29"
+ },
+ "/products/neutral-unisex-performance-t-shirt-military/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-military/sleeve-left.webp",
+  "sha": "937f13786c93494e"
+ },
+ "/products/neutral-unisex-performance-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-navy/sleeve-left.webp",
+  "sha": "862b66f5ee949cec"
+ },
+ "/products/neutral-unisex-performance-t-shirt-okay-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-okay-orange/sleeve-left.webp",
+  "sha": "6e0a705ac48801a8"
+ },
+ "/products/neutral-unisex-performance-t-shirt-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-pink/sleeve-left.webp",
+  "sha": "fc73685e4a6cc67d"
+ },
+ "/products/neutral-unisex-performance-t-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-red/sleeve-left.webp",
+  "sha": "565d98a5be1fbbe9"
+ },
+ "/products/neutral-unisex-performance-t-shirt-royal/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-royal/sleeve-left.webp",
+  "sha": "e015ac3eea3959c0"
+ },
+ "/products/neutral-unisex-performance-t-shirt-sand/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-sand/sleeve-left.webp",
+  "sha": "c383fa1a85c501cd"
+ },
+ "/products/neutral-unisex-performance-t-shirt-sapphire/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-sapphire/sleeve-left.webp",
+  "sha": "4b06f20fdfb0d069"
+ },
+ "/products/neutral-unisex-performance-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-performance-t-shirt-white/sleeve-left.webp",
+  "sha": "356dad5a6f16c323"
+ },
+ "/products/neutral-unisex-regular-t-shirt-ash-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-ash-grey/sleeve-left.webp",
+  "sha": "34dd4c5114df83b5"
+ },
+ "/products/neutral-unisex-regular-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-black/sleeve-left.webp",
+  "sha": "5318a978c6789c70"
+ },
+ "/products/neutral-unisex-regular-t-shirt-bordeaux/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-bordeaux/sleeve-left.webp",
+  "sha": "b2b4112b60058de4"
+ },
+ "/products/neutral-unisex-regular-t-shirt-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-bottle-green/sleeve-left.webp",
+  "sha": "ebde4a67c2106424"
+ },
+ "/products/neutral-unisex-regular-t-shirt-brown/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-brown/sleeve-left.webp",
+  "sha": "d3d57c9606109c9e"
+ },
+ "/products/neutral-unisex-regular-t-shirt-charcoal/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-charcoal/sleeve-left.webp",
+  "sha": "af039a8ed9c754c0"
+ },
+ "/products/neutral-unisex-regular-t-shirt-dark-heather/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-dark-heather/sleeve-left.webp",
+  "sha": "386a1ec8661f476b"
+ },
+ "/products/neutral-unisex-regular-t-shirt-dusty-indigo/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-dusty-indigo/sleeve-left.webp",
+  "sha": "376899c2def16ea3"
+ },
+ "/products/neutral-unisex-regular-t-shirt-dusty-mint/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-dusty-mint/sleeve-left.webp",
+  "sha": "ddd0708f481e457e"
+ },
+ "/products/neutral-unisex-regular-t-shirt-dusty-purple/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-dusty-purple/sleeve-left.webp",
+  "sha": "568333c6af3da230"
+ },
+ "/products/neutral-unisex-regular-t-shirt-dusty-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-dusty-yellow/sleeve-left.webp",
+  "sha": "e035d606dbc9f660"
+ },
+ "/products/neutral-unisex-regular-t-shirt-green/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-green/sleeve-left.webp",
+  "sha": "fb0dd52015250ad1"
+ },
+ "/products/neutral-unisex-regular-t-shirt-light-blue/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-light-blue/sleeve-left.webp",
+  "sha": "2a21835cadad49b8"
+ },
+ "/products/neutral-unisex-regular-t-shirt-light-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-light-pink/sleeve-left.webp",
+  "sha": "e35aaface9fedfe4"
+ },
+ "/products/neutral-unisex-regular-t-shirt-lime/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-lime/sleeve-left.webp",
+  "sha": "ff0ccb3e9a83b840"
+ },
+ "/products/neutral-unisex-regular-t-shirt-military/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-military/sleeve-left.webp",
+  "sha": "ff87496338aeb796"
+ },
+ "/products/neutral-unisex-regular-t-shirt-nature/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-nature/sleeve-left.webp",
+  "sha": "6ab22c05a42d432e"
+ },
+ "/products/neutral-unisex-regular-t-shirt-navy/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-navy/sleeve-left.webp",
+  "sha": "a5aaa774500a02a8"
+ },
+ "/products/neutral-unisex-regular-t-shirt-okay-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-okay-orange/sleeve-left.webp",
+  "sha": "15ee0f5b6de17f5d"
+ },
+ "/products/neutral-unisex-regular-t-shirt-orange/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-orange/sleeve-left.webp",
+  "sha": "110290b2bc43b140"
+ },
+ "/products/neutral-unisex-regular-t-shirt-pink/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-pink/sleeve-left.webp",
+  "sha": "656e70caaee0968d"
+ },
+ "/products/neutral-unisex-regular-t-shirt-purple/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-purple/sleeve-left.webp",
+  "sha": "c6d6f2e4c6d3c99d"
+ },
+ "/products/neutral-unisex-regular-t-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-red/sleeve-left.webp",
+  "sha": "e04a8f0d81ac1843"
+ },
+ "/products/neutral-unisex-regular-t-shirt-royal/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-royal/sleeve-left.webp",
+  "sha": "f2def8b752c1c9b7"
+ },
+ "/products/neutral-unisex-regular-t-shirt-sand/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-sand/sleeve-left.webp",
+  "sha": "2c5aff0e56f959d2"
+ },
+ "/products/neutral-unisex-regular-t-shirt-sapphire/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-sapphire/sleeve-left.webp",
+  "sha": "b50d42a5409fd509"
+ },
+ "/products/neutral-unisex-regular-t-shirt-sports-grey/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-sports-grey/sleeve-left.webp",
+  "sha": "e7fdc6a61d790273"
+ },
+ "/products/neutral-unisex-regular-t-shirt-teal/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-teal/sleeve-left.webp",
+  "sha": "56ddc9f42175a232"
+ },
+ "/products/neutral-unisex-regular-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-white/sleeve-left.webp",
+  "sha": "d83ec039cc198fc4"
+ },
+ "/products/neutral-unisex-regular-t-shirt-yellow/sleeve-right.webp": {
+  "quelle": "/products/neutral-unisex-regular-t-shirt-yellow/sleeve-left.webp",
+  "sha": "2e203a9edc3e8620"
+ },
+ "/products/russell-authentic-hooded-sweat-8fd491/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-8fd491/sleeve-left.webp",
+  "sha": "e6f81ae2f7b71d5e"
+ },
+ "/products/russell-authentic-hooded-sweat-black/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-black/sleeve-left.webp",
+  "sha": "836fdeed537471de"
+ },
+ "/products/russell-authentic-hooded-sweat-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-bottle-green/sleeve-left.webp",
+  "sha": "95f66f76fafa9370"
+ },
+ "/products/russell-authentic-hooded-sweat-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-bright-royal/sleeve-left.webp",
+  "sha": "81aa3aea5d92a050"
+ },
+ "/products/russell-authentic-hooded-sweat-burgundy/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-burgundy/sleeve-left.webp",
+  "sha": "2fcf526550d8c28b"
+ },
+ "/products/russell-authentic-hooded-sweat-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-classic-red/sleeve-left.webp",
+  "sha": "507942f9acfcddb4"
+ },
+ "/products/russell-authentic-hooded-sweat-convoy-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-convoy-grey-solid/sleeve-left.webp",
+  "sha": "7cf8c443e1350a69"
+ },
+ "/products/russell-authentic-hooded-sweat-fac511/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-fac511/sleeve-left.webp",
+  "sha": "0659801e6b8a6c39"
+ },
+ "/products/russell-authentic-hooded-sweat-ffffff/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-ffffff/sleeve-left.webp",
+  "sha": "778095bb131666e4"
+ },
+ "/products/russell-authentic-hooded-sweat-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-french-navy/sleeve-left.webp",
+  "sha": "eb2e49b298ee4ea6"
+ },
+ "/products/russell-authentic-hooded-sweat-fuchsia/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-fuchsia/sleeve-left.webp",
+  "sha": "169ae40adec23c30"
+ },
+ "/products/russell-authentic-hooded-sweat-indigo/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-indigo/sleeve-left.webp",
+  "sha": "bccb1b06a7e1581b"
+ },
+ "/products/russell-authentic-hooded-sweat-light-oxford-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-light-oxford-heather/sleeve-left.webp",
+  "sha": "9d7f3eeb202555ba"
+ },
+ "/products/russell-authentic-hooded-sweat-mineral-blue/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-mineral-blue/sleeve-left.webp",
+  "sha": "6781c79df94b13ca"
+ },
+ "/products/russell-authentic-hooded-sweat-mocha/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-mocha/sleeve-left.webp",
+  "sha": "25cfa847c352ba49"
+ },
+ "/products/russell-authentic-hooded-sweat-natural/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-natural/sleeve-left.webp",
+  "sha": "237d2fc307dc8168"
+ },
+ "/products/russell-authentic-hooded-sweat-olive/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-olive/sleeve-left.webp",
+  "sha": "eb5519586b3c9bb5"
+ },
+ "/products/russell-authentic-hooded-sweat-sport-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-sport-heather/sleeve-left.webp",
+  "sha": "6b2e18d09f853269"
+ },
+ "/products/russell-authentic-hooded-sweat-urban-grey/sleeve-right.webp": {
+  "quelle": "/products/russell-authentic-hooded-sweat-urban-grey/sleeve-left.webp",
+  "sha": "b758cf030e2cfc9d"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-black/sleeve-left.webp",
+  "sha": "620144022de1e27d"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-bright-royal/sleeve-left.webp",
+  "sha": "2106c0bba30b10a2"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-classic-red/sleeve-left.webp",
+  "sha": "86fea6e7a7783770"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-convoy-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-convoy-grey-solid/sleeve-left.webp",
+  "sha": "d00f3f6b4ffecfa8"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-french-navy/sleeve-left.webp",
+  "sha": "b106aa1d52150ba5"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-petrol-blue/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-petrol-blue/sleeve-left.webp",
+  "sha": "70d53469d0c88ba5"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-sport-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-sport-heather/sleeve-left.webp",
+  "sha": "c0438101380f12ee"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-tan/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-tan/sleeve-left.webp",
+  "sha": "d0ffed935b37f8c8"
+ },
+ "/products/russell-classic-heavyweight-t-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-heavyweight-t-shirt-white/sleeve-left.webp",
+  "sha": "17acfff56048018d"
+ },
+ "/products/russell-classic-t-long-sleeve-black/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-t-long-sleeve-black/sleeve-left.webp",
+  "sha": "22344b4c46b46cc2"
+ },
+ "/products/russell-classic-t-long-sleeve-convoy-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-t-long-sleeve-convoy-grey-solid/sleeve-left.webp",
+  "sha": "049752d0f5697138"
+ },
+ "/products/russell-classic-t-long-sleeve-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-t-long-sleeve-french-navy/sleeve-left.webp",
+  "sha": "fef8914aaf051631"
+ },
+ "/products/russell-classic-t-long-sleeve-white/sleeve-right.webp": {
+  "quelle": "/products/russell-classic-t-long-sleeve-white/sleeve-left.webp",
+  "sha": "351e8a8c722b2280"
+ },
+ "/products/russell-hooded-sweatshirt-black/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-black/sleeve-left.webp",
+  "sha": "26401a26d3ac5993"
+ },
+ "/products/russell-hooded-sweatshirt-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-bottle-green/sleeve-left.webp",
+  "sha": "4a1ed4a284406991"
+ },
+ "/products/russell-hooded-sweatshirt-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-bright-royal/sleeve-left.webp",
+  "sha": "8a844fda83de1e1d"
+ },
+ "/products/russell-hooded-sweatshirt-burgundy/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-burgundy/sleeve-left.webp",
+  "sha": "d6daafccc3ac8236"
+ },
+ "/products/russell-hooded-sweatshirt-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-classic-red/sleeve-left.webp",
+  "sha": "718cda6cad725341"
+ },
+ "/products/russell-hooded-sweatshirt-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-french-navy/sleeve-left.webp",
+  "sha": "85fe570d9baf5a9e"
+ },
+ "/products/russell-hooded-sweatshirt-fuchsia/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-fuchsia/sleeve-left.webp",
+  "sha": "f276a4e3ad23cc26"
+ },
+ "/products/russell-hooded-sweatshirt-light-oxford-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-light-oxford-heather/sleeve-left.webp",
+  "sha": "64c254a389ebe724"
+ },
+ "/products/russell-hooded-sweatshirt-orange/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-orange/sleeve-left.webp",
+  "sha": "f80fe45c6f457ab4"
+ },
+ "/products/russell-hooded-sweatshirt-purple/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-purple/sleeve-left.webp",
+  "sha": "035d6afb07336083"
+ },
+ "/products/russell-hooded-sweatshirt-sky/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-sky/sleeve-left.webp",
+  "sha": "b056c8049f207b31"
+ },
+ "/products/russell-hooded-sweatshirt-white/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-white/sleeve-left.webp",
+  "sha": "e6b7352e2f2bdd8f"
+ },
+ "/products/russell-hooded-sweatshirt-yellow/sleeve-right.webp": {
+  "quelle": "/products/russell-hooded-sweatshirt-yellow/sleeve-left.webp",
+  "sha": "221e243d4c2e9979"
+ },
+ "/products/russell-ladies-authentic-hood-black/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-black/sleeve-left.webp",
+  "sha": "565b479c010cdef0"
+ },
+ "/products/russell-ladies-authentic-hood-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-bottle-green/sleeve-left.webp",
+  "sha": "72615fe8c9a748ca"
+ },
+ "/products/russell-ladies-authentic-hood-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-bright-royal/sleeve-left.webp",
+  "sha": "4688c543bcdb930a"
+ },
+ "/products/russell-ladies-authentic-hood-burgundy/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-burgundy/sleeve-left.webp",
+  "sha": "785999251ae91641"
+ },
+ "/products/russell-ladies-authentic-hood-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-classic-red/sleeve-left.webp",
+  "sha": "12f3fa4a97b6e23e"
+ },
+ "/products/russell-ladies-authentic-hood-convoy-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-convoy-grey-solid/sleeve-left.webp",
+  "sha": "6df6a2dc37f9c588"
+ },
+ "/products/russell-ladies-authentic-hood-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-french-navy/sleeve-left.webp",
+  "sha": "10d3d0da2f92265f"
+ },
+ "/products/russell-ladies-authentic-hood-fuchsia/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-fuchsia/sleeve-left.webp",
+  "sha": "18792932adc7a673"
+ },
+ "/products/russell-ladies-authentic-hood-light-oxford-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-light-oxford-heather/sleeve-left.webp",
+  "sha": "907f4fa1a4e8ea76"
+ },
+ "/products/russell-ladies-authentic-hood-white/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-authentic-hood-white/sleeve-left.webp",
+  "sha": "a6ac866dc5354de8"
+ },
+ "/products/russell-ladies-poloshirt-6535-black/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-black/sleeve-left.webp",
+  "sha": "c1f4d9f6cab43150"
+ },
+ "/products/russell-ladies-poloshirt-6535-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-bottle-green/sleeve-left.webp",
+  "sha": "2f901395ff639d38"
+ },
+ "/products/russell-ladies-poloshirt-6535-bright-red/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-bright-red/sleeve-left.webp",
+  "sha": "88585b7cbd57760b"
+ },
+ "/products/russell-ladies-poloshirt-6535-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-bright-royal/sleeve-left.webp",
+  "sha": "c47aa60eb7d219cb"
+ },
+ "/products/russell-ladies-poloshirt-6535-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-classic-red/sleeve-left.webp",
+  "sha": "7466d7d245b6e337"
+ },
+ "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/sleeve-left.webp",
+  "sha": "74ff568635864ab7"
+ },
+ "/products/russell-ladies-poloshirt-6535-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-french-navy/sleeve-left.webp",
+  "sha": "679aa015e14304a2"
+ },
+ "/products/russell-ladies-poloshirt-6535-light-oxford-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/sleeve-left.webp",
+  "sha": "a746f5c4d2fe3942"
+ },
+ "/products/russell-ladies-poloshirt-6535-sky/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-sky/sleeve-left.webp",
+  "sha": "46d59b3cc9bc0f04"
+ },
+ "/products/russell-ladies-poloshirt-6535-white/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-poloshirt-6535-white/sleeve-left.webp",
+  "sha": "3fa0b85841f97119"
+ },
+ "/products/russell-ladies-pure-organic-heavy-tee-555b66/sleeve-right.webp": {
+  "quelle": "/products/russell-ladies-pure-organic-heavy-tee-555b66/sleeve-left.webp",
+  "sha": "a3906fae93cb178e"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-azure-blue/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-azure-blue/sleeve-left.webp",
+  "sha": "2b3329ad20affe63"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-black/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-black/sleeve-left.webp",
+  "sha": "0aef1a59db5e2c53"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/sleeve-left.webp",
+  "sha": "3dd10a48e5340b41"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-burgundy/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-burgundy/sleeve-left.webp",
+  "sha": "87175dff9bdcf559"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-classic-red/sleeve-left.webp",
+  "sha": "162abd462fc07578"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-french-navy/sleeve-left.webp",
+  "sha": "addbace0a038e038"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-sky/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-sky/sleeve-left.webp",
+  "sha": "14eba0adbabb4f3b"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-titanium-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-titanium-solid/sleeve-left.webp",
+  "sha": "dc62ce67c48f97fb"
+ },
+ "/products/russell-men-s-ultimate-cotton-polo-white/sleeve-right.webp": {
+  "quelle": "/products/russell-men-s-ultimate-cotton-polo-white/sleeve-left.webp",
+  "sha": "dbc97b81e5a686cd"
+ },
+ "/products/russell-mens-pure-organic-v-neck-tee-black/sleeve-right.webp": {
+  "quelle": "/products/russell-mens-pure-organic-v-neck-tee-black/sleeve-left.webp",
+  "sha": "68e1ba21a3af1ba1"
+ },
+ "/products/russell-mens-pure-organic-v-neck-tee-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-mens-pure-organic-v-neck-tee-french-navy/sleeve-left.webp",
+  "sha": "bf03a633d90b1a5a"
+ },
+ "/products/russell-mens-pure-organic-v-neck-tee-white/sleeve-right.webp": {
+  "quelle": "/products/russell-mens-pure-organic-v-neck-tee-white/sleeve-left.webp",
+  "sha": "52a6a6479449fb8b"
+ },
+ "/products/russell-poloshirt-6535-black/sleeve-right.webp": {
+  "quelle": "/products/russell-poloshirt-6535-black/sleeve-left.webp",
+  "sha": "24f5f1de4ece3aec"
+ },
+ "/products/russell-poloshirt-6535-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-poloshirt-6535-bright-royal/sleeve-left.webp",
+  "sha": "2bfa78c4d834e3ef"
+ },
+ "/products/russell-poloshirt-6535-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-poloshirt-6535-classic-red/sleeve-left.webp",
+  "sha": "807a3b8acc87068f"
+ },
+ "/products/russell-poloshirt-6535-convoy-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-poloshirt-6535-convoy-grey-solid/sleeve-left.webp",
+  "sha": "ca277eb2ba17fb80"
+ },
+ "/products/russell-poloshirt-6535-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-poloshirt-6535-french-navy/sleeve-left.webp",
+  "sha": "e9286ad014fada83"
+ },
+ "/products/russell-poloshirt-6535-light-oxford-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-poloshirt-6535-light-oxford-heather/sleeve-left.webp",
+  "sha": "233d0d6e45c23892"
+ },
+ "/products/russell-poloshirt-6535-white/sleeve-right.webp": {
+  "quelle": "/products/russell-poloshirt-6535-white/sleeve-left.webp",
+  "sha": "d2c08bcaa4d738be"
+ },
+ "/products/russell-russell-classic-t-0062ae/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-0062ae/sleeve-left.webp",
+  "sha": "41257c9e61fa6779"
+ },
+ "/products/russell-russell-classic-t-black/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-black/sleeve-left.webp",
+  "sha": "91906eec22e350bb"
+ },
+ "/products/russell-russell-classic-t-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-bottle-green/sleeve-left.webp",
+  "sha": "5397f2efdcba0095"
+ },
+ "/products/russell-russell-classic-t-bright-red/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-bright-red/sleeve-left.webp",
+  "sha": "c1d2f5508c313956"
+ },
+ "/products/russell-russell-classic-t-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-bright-royal/sleeve-left.webp",
+  "sha": "ffb51a1bb2d1631b"
+ },
+ "/products/russell-russell-classic-t-burgundy/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-burgundy/sleeve-left.webp",
+  "sha": "7cb3701116a01ffd"
+ },
+ "/products/russell-russell-classic-t-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-classic-red/sleeve-left.webp",
+  "sha": "1e717d3dc274b5ee"
+ },
+ "/products/russell-russell-classic-t-convoy-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-convoy-grey-solid/sleeve-left.webp",
+  "sha": "44bd2abd5ae66272"
+ },
+ "/products/russell-russell-classic-t-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-french-navy/sleeve-left.webp",
+  "sha": "f374c06c4f1f8424"
+ },
+ "/products/russell-russell-classic-t-indigo/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-indigo/sleeve-left.webp",
+  "sha": "700029d1615ef242"
+ },
+ "/products/russell-russell-classic-t-light-oxford-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-light-oxford-heather/sleeve-left.webp",
+  "sha": "c0d95418b3064d43"
+ },
+ "/products/russell-russell-classic-t-mineral-blue/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-mineral-blue/sleeve-left.webp",
+  "sha": "2b5cdd9233990b9d"
+ },
+ "/products/russell-russell-classic-t-mocha/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-mocha/sleeve-left.webp",
+  "sha": "238de34825b7ca8c"
+ },
+ "/products/russell-russell-classic-t-natural/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-natural/sleeve-left.webp",
+  "sha": "7e6375be465209be"
+ },
+ "/products/russell-russell-classic-t-olive/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-olive/sleeve-left.webp",
+  "sha": "c978dbf0f7b10461"
+ },
+ "/products/russell-russell-classic-t-powder-rose/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-powder-rose/sleeve-left.webp",
+  "sha": "2fc87b0e17a28d20"
+ },
+ "/products/russell-russell-classic-t-purple/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-purple/sleeve-left.webp",
+  "sha": "68ffb37b79c14492"
+ },
+ "/products/russell-russell-classic-t-sky/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-sky/sleeve-left.webp",
+  "sha": "527537a9f16821e4"
+ },
+ "/products/russell-russell-classic-t-tan/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-tan/sleeve-left.webp",
+  "sha": "bfb71c77288e3fe7"
+ },
+ "/products/russell-russell-classic-t-white/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-white/sleeve-left.webp",
+  "sha": "5d092329075bd1d7"
+ },
+ "/products/russell-russell-classic-t-yellow/sleeve-right.webp": {
+  "quelle": "/products/russell-russell-classic-t-yellow/sleeve-left.webp",
+  "sha": "8f9ef42b48ebfd84"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-black/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-black/sleeve-left.webp",
+  "sha": "166ab62fd9da5212"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-bottle-green/sleeve-left.webp",
+  "sha": "0dd10945ce48c30e"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-bright-red/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-bright-red/sleeve-left.webp",
+  "sha": "7a3e5cd5f4706334"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-bright-royal/sleeve-left.webp",
+  "sha": "9587049fc1460534"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-burgundy/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-burgundy/sleeve-left.webp",
+  "sha": "267cd4e55ca99690"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-classic-red/sleeve-left.webp",
+  "sha": "574c5d01df98cf70"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-convoy-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-convoy-grey-solid/sleeve-left.webp",
+  "sha": "a8c81bfae8c53999"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-french-navy/sleeve-left.webp",
+  "sha": "0ea958b4b052a313"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-light-oxford-heather/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-light-oxford-heather/sleeve-left.webp",
+  "sha": "621ad1d9064943be"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-sky/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-sky/sleeve-left.webp",
+  "sha": "1e18b20407712dc3"
+ },
+ "/products/russell-strapazierfaehiges-poloshirt-599-white/sleeve-right.webp": {
+  "quelle": "/products/russell-strapazierfaehiges-poloshirt-599-white/sleeve-left.webp",
+  "sha": "60871269b8ae2d45"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-bottle-green/sleeve-left.webp",
+  "sha": "d64aa57859c1fdf2"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-charcoal-melange/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-charcoal-melange/sleeve-left.webp",
+  "sha": "99aa32d1384a386a"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-dark-khaki/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-dark-khaki/sleeve-left.webp",
+  "sha": "0e6b02119f7bbade"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-deep-black/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-deep-black/sleeve-left.webp",
+  "sha": "c64a522bbdce4724"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-french-navy/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-french-navy/sleeve-left.webp",
+  "sha": "d6c0c6b8afa56721"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-grey-melange/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-grey-melange/sleeve-left.webp",
+  "sha": "0580636da571f22a"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-mouse-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-mouse-grey-solid/sleeve-left.webp",
+  "sha": "5599e8b0deb8ef2e"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-orange/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-orange/sleeve-left.webp",
+  "sha": "4caa273d9b917c7c"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-oxblood/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-oxblood/sleeve-left.webp",
+  "sha": "a130fa7abb93c3b1"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-red/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-red/sleeve-left.webp",
+  "sha": "00e8fa438e6f1f7c"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-royal-blue/sleeve-left.webp",
+  "sha": "afe7fc392b33afcb"
+ },
+ "/products/sols-men-s-long-sleeve-t-shirt-imperial-white/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-long-sleeve-t-shirt-imperial-white/sleeve-left.webp",
+  "sha": "5318bd4a8b15cd50"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-01509d/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-01509d/sleeve-left.webp",
+  "sha": "0c7d2f5311d9acc8"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-apple-green/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-apple-green/sleeve-left.webp",
+  "sha": "250b1cf5ed81d94c"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-aqua/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-aqua/sleeve-left.webp",
+  "sha": "60c6f63604550a40"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-ash-heather/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-ash-heather/sleeve-left.webp",
+  "sha": "109bf4920ac0d1d8"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-black/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-black/sleeve-left.webp",
+  "sha": "705135d2c5c2afcf"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-bottle-green/sleeve-left.webp",
+  "sha": "1b399fcb500c42f0"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-burgundy/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-burgundy/sleeve-left.webp",
+  "sha": "b7755f6c0ae03177"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-charcoal-melange/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-charcoal-melange/sleeve-left.webp",
+  "sha": "60bdec3f6dacc281"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-creamy-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-creamy-blue/sleeve-left.webp",
+  "sha": "59b11be2f69dbe66"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-creamy-pink/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-creamy-pink/sleeve-left.webp",
+  "sha": "3f1094c45e3ac445"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-dark-grey-solid/sleeve-left.webp",
+  "sha": "aef55f6d6ccbefe4"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-denim/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-denim/sleeve-left.webp",
+  "sha": "b0bcd18734e4d57f"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-french-navy/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-french-navy/sleeve-left.webp",
+  "sha": "831fe7a977a8acd0"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-gold/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-gold/sleeve-left.webp",
+  "sha": "6d6da6c4a4033478"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-grey-melange/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-grey-melange/sleeve-left.webp",
+  "sha": "c4c67428ed746d0d"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-heather-denim/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-heather-denim/sleeve-left.webp",
+  "sha": "cebf53e73fabde65"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-heather-oxblood/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-heather-oxblood/sleeve-left.webp",
+  "sha": "7d7a374e2e68e9a9"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-hibiscus/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-hibiscus/sleeve-left.webp",
+  "sha": "b460cc155678fcde"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-kelly-green/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-kelly-green/sleeve-left.webp",
+  "sha": "8688c5a24e95e0ed"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-orange/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-orange/sleeve-left.webp",
+  "sha": "3145c6b73e637edd"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-pure-grey/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-pure-grey/sleeve-left.webp",
+  "sha": "0b9e7d7b0085aae0"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-red/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-red/sleeve-left.webp",
+  "sha": "6cc679aa9946de12"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-royal-blue/sleeve-left.webp",
+  "sha": "0c7d2f5311d9acc8"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-sand/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-sand/sleeve-left.webp",
+  "sha": "2777fb8946acd8cb"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-sky-blue/sleeve-left.webp",
+  "sha": "6f288104299a8fb9"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-slate-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-slate-blue/sleeve-left.webp",
+  "sha": "89e563f5b3c574c0"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-spring-green/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-spring-green/sleeve-left.webp",
+  "sha": "84fecfe829465c04"
+ },
+ "/products/sols-men-s-polo-shirt-perfect-white/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-perfect-white/sleeve-left.webp",
+  "sha": "ad01a36e4d6ce3f1"
+ },
+ "/products/sols-men-s-polo-shirt-prime-apple-green/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-apple-green/sleeve-left.webp",
+  "sha": "c585eec0489308e9"
+ },
+ "/products/sols-men-s-polo-shirt-prime-aqua/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-aqua/sleeve-left.webp",
+  "sha": "44db0e344f5b972e"
+ },
+ "/products/sols-men-s-polo-shirt-prime-army/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-army/sleeve-left.webp",
+  "sha": "9d4c85a20547028e"
+ },
+ "/products/sols-men-s-polo-shirt-prime-ash-heather/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-ash-heather/sleeve-left.webp",
+  "sha": "7c7ef8fa1250ebc7"
+ },
+ "/products/sols-men-s-polo-shirt-prime-black/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-black/sleeve-left.webp",
+  "sha": "464b5ceee29a8a88"
+ },
+ "/products/sols-men-s-polo-shirt-prime-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-bottle-green/sleeve-left.webp",
+  "sha": "264adac750cf1d76"
+ },
+ "/products/sols-men-s-polo-shirt-prime-burgundy/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-burgundy/sleeve-left.webp",
+  "sha": "c5b93cb2c6b6e514"
+ },
+ "/products/sols-men-s-polo-shirt-prime-chocolate/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-chocolate/sleeve-left.webp",
+  "sha": "fb8bbec5175fbb51"
+ },
+ "/products/sols-men-s-polo-shirt-prime-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-dark-grey-solid/sleeve-left.webp",
+  "sha": "3740fdbd305d04fc"
+ },
+ "/products/sols-men-s-polo-shirt-prime-dark-purple/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-dark-purple/sleeve-left.webp",
+  "sha": "478830bf99d8d4e0"
+ },
+ "/products/sols-men-s-polo-shirt-prime-french-navy/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-french-navy/sleeve-left.webp",
+  "sha": "4e6a5f8c33cd19e6"
+ },
+ "/products/sols-men-s-polo-shirt-prime-gold/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-gold/sleeve-left.webp",
+  "sha": "3650c505249de76e"
+ },
+ "/products/sols-men-s-polo-shirt-prime-grey-melange/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-grey-melange/sleeve-left.webp",
+  "sha": "20132a81927e8f1c"
+ },
+ "/products/sols-men-s-polo-shirt-prime-kelly-green/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-kelly-green/sleeve-left.webp",
+  "sha": "59a9db4702b39e38"
+ },
+ "/products/sols-men-s-polo-shirt-prime-orange/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-orange/sleeve-left.webp",
+  "sha": "8a0b76d974f471be"
+ },
+ "/products/sols-men-s-polo-shirt-prime-pure-grey/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-pure-grey/sleeve-left.webp",
+  "sha": "e6eb4e5010482602"
+ },
+ "/products/sols-men-s-polo-shirt-prime-red/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-red/sleeve-left.webp",
+  "sha": "983854bbba6a696f"
+ },
+ "/products/sols-men-s-polo-shirt-prime-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-royal-blue/sleeve-left.webp",
+  "sha": "315408555d954741"
+ },
+ "/products/sols-men-s-polo-shirt-prime-sand/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-sand/sleeve-left.webp",
+  "sha": "8bfef198103f5d5b"
+ },
+ "/products/sols-men-s-polo-shirt-prime-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-sky-blue/sleeve-left.webp",
+  "sha": "b783947e1ebdceea"
+ },
+ "/products/sols-men-s-polo-shirt-prime-white/sleeve-right.webp": {
+  "quelle": "/products/sols-men-s-polo-shirt-prime-white/sleeve-left.webp",
+  "sha": "5e3239e83f7643a0"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-aqua/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-aqua/sleeve-left.webp",
+  "sha": "e74919e18c8fb41c"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-black/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-black/sleeve-left.webp",
+  "sha": "976b92291991ebf7"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-bottle-green/sleeve-left.webp",
+  "sha": "7e5c2d25e8844428"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-candy-pink/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-candy-pink/sleeve-left.webp",
+  "sha": "cf400e52315824f1"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-denim/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-denim/sleeve-left.webp",
+  "sha": "0f401857f2d9a809"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-french-navy/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-french-navy/sleeve-left.webp",
+  "sha": "beef0506ad4090e3"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-gold/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-gold/sleeve-left.webp",
+  "sha": "737c6855bd262049"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-grey-melange/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-grey-melange/sleeve-left.webp",
+  "sha": "42b1dc6bd0ea5bb8"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-kelly-green/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-kelly-green/sleeve-left.webp",
+  "sha": "7aaab672b8d6150e"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-lilac/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-lilac/sleeve-left.webp",
+  "sha": "78667ef484e93328"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-linen/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-linen/sleeve-left.webp",
+  "sha": "2f630c084f278b4c"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-mouse-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-mouse-grey-solid/sleeve-left.webp",
+  "sha": "e3469f375276b5b0"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-off-white/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-off-white/sleeve-left.webp",
+  "sha": "c901f9c3dad1756d"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-orange/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-orange/sleeve-left.webp",
+  "sha": "212e2530296a55cf"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-pure-grey/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-pure-grey/sleeve-left.webp",
+  "sha": "6e0d1ba5404be8b2"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-red/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-red/sleeve-left.webp",
+  "sha": "a387aae313bacbd9"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-rope/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-rope/sleeve-left.webp",
+  "sha": "a588ebc2bd905237"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-royal-blue-241/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-royal-blue-241/sleeve-left.webp",
+  "sha": "60952761dd6079e9"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-sky-blue/sleeve-left.webp",
+  "sha": "c500d9b1d295e7b1"
+ },
+ "/products/sols-unisex-pulse-polo-shirt-white/sleeve-right.webp": {
+  "quelle": "/products/sols-unisex-pulse-polo-shirt-white/sleeve-left.webp",
+  "sha": "d75c2bde30524dc1"
+ },
+ "/products/sols-women-s-polo-shirt-prime-4b271c/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-4b271c/sleeve-left.webp",
+  "sha": "7c3ef095ca00d0f9"
+ },
+ "/products/sols-women-s-polo-shirt-prime-army/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-army/sleeve-left.webp",
+  "sha": "a9223d6ae60efc55"
+ },
+ "/products/sols-women-s-polo-shirt-prime-ash-heather/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-ash-heather/sleeve-left.webp",
+  "sha": "e821656edbd37c8f"
+ },
+ "/products/sols-women-s-polo-shirt-prime-black/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-black/sleeve-left.webp",
+  "sha": "6de6ba4b6da04f6a"
+ },
+ "/products/sols-women-s-polo-shirt-prime-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-bottle-green/sleeve-left.webp",
+  "sha": "c91468abba241b95"
+ },
+ "/products/sols-women-s-polo-shirt-prime-burgundy/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-burgundy/sleeve-left.webp",
+  "sha": "077b88c2f7c45939"
+ },
+ "/products/sols-women-s-polo-shirt-prime-cdea80/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-cdea80/sleeve-left.webp",
+  "sha": "a650feae4a2ec9aa"
+ },
+ "/products/sols-women-s-polo-shirt-prime-dark-grey-solid/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-dark-grey-solid/sleeve-left.webp",
+  "sha": "7dee84973c132ea7"
+ },
+ "/products/sols-women-s-polo-shirt-prime-dark-purple/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-dark-purple/sleeve-left.webp",
+  "sha": "134f487e85d4b385"
+ },
+ "/products/sols-women-s-polo-shirt-prime-french-navy/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-french-navy/sleeve-left.webp",
+  "sha": "eae5950a0a57fa7b"
+ },
+ "/products/sols-women-s-polo-shirt-prime-grey-melange/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-grey-melange/sleeve-left.webp",
+  "sha": "edfef55d50127e5d"
+ },
+ "/products/sols-women-s-polo-shirt-prime-kelly-green/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-kelly-green/sleeve-left.webp",
+  "sha": "2265dbf1b08dff76"
+ },
+ "/products/sols-women-s-polo-shirt-prime-pure-grey/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-pure-grey/sleeve-left.webp",
+  "sha": "cffb069ac3d03b66"
+ },
+ "/products/sols-women-s-polo-shirt-prime-red/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-red/sleeve-left.webp",
+  "sha": "96ed26ead14ce2bc"
+ },
+ "/products/sols-women-s-polo-shirt-prime-royal-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-royal-blue/sleeve-left.webp",
+  "sha": "a4980528762dbf86"
+ },
+ "/products/sols-women-s-polo-shirt-prime-sand/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-sand/sleeve-left.webp",
+  "sha": "139f5fbb033b9099"
+ },
+ "/products/sols-women-s-polo-shirt-prime-sky-blue/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-sky-blue/sleeve-left.webp",
+  "sha": "afe3e63b671c3b30"
+ },
+ "/products/sols-women-s-polo-shirt-prime-white/sleeve-right.webp": {
+  "quelle": "/products/sols-women-s-polo-shirt-prime-white/sleeve-left.webp",
+  "sha": "648ceba1c014d3bb"
+ },
+ "/products/stedman-classic-t-v-neck-deep-berry/sleeve-right.webp": {
+  "quelle": "/products/stedman-classic-t-v-neck-deep-berry/sleeve-left.webp",
+  "sha": "1c3a44158461dacb"
+ },
+ "/products/stedman-classic-t-v-neck-for-women-bottle-green/sleeve-right.webp": {
+  "quelle": "/products/stedman-classic-t-v-neck-for-women-bottle-green/sleeve-left.webp",
+  "sha": "7cff107cf80d8d39"
+ },
+ "/products/stedman-classic-t-v-neck-for-women-grey-heather/sleeve-right.webp": {
+  "quelle": "/products/stedman-classic-t-v-neck-for-women-grey-heather/sleeve-left.webp",
+  "sha": "40b088d1ccd02e79"
+ },
+ "/products/stedman-stedman-classic-t-bright-royal/sleeve-right.webp": {
+  "quelle": "/products/stedman-stedman-classic-t-bright-royal/sleeve-left.webp",
+  "sha": "39b07ebbaa13a419"
+ }
+}

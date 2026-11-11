@@ -12,6 +12,13 @@ npx tsx --tsconfig tsconfig.scripts.json scripts/jobsOnModelFilter.mts scripts/i
 # 1. Bilder holen, normalisieren, ablegen
 npx tsx scripts/ingestDirect.mts scripts/import/<jobs>.json
 
+# 1b. Ärmelfotos: Seite prüfen, dann fehlende Gegenseite durch Spiegeln anlegen.
+#     Viele Lieferanten fotografieren nur EINEN Ärmel; ohne Gegenseite bleibt "Ärmel rechts"
+#     (bzw. links) im Konfigurator verborgen. Der Wächtertest aermelGegenseite.test.ts schlägt
+#     sonst an. Erst Seite korrigieren, dann spiegeln (die Spiegelung erbt die Seite der Quelle):
+node scripts/aermelSeiten.mjs korrigieren
+node scripts/spiegleAermel.mjs anlegen
+
 # 2. Manifest neu erzeugen (Wahrheit über Bildpfade je Farbe/Ansicht)
 npx tsx scripts/generateAssetManifest.mts
 

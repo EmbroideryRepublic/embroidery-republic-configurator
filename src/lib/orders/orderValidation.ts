@@ -27,7 +27,12 @@ import { getProduct } from '@/config/products';
 import { getPrintAreas } from '@/config/printAreas';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { BASE_OVERHEAD_STITCHES, TEXT_MIN_STITCHES } from '@/lib/embroidery/stichschaetzung';
-import { istNurAufAnfrage, MELDUNG_STICKEREI_NUR_AUF_ANFRAGE } from '@/config/bestellweg';
+import {
+  istNurAufAnfrage,
+  MELDUNG_STICKEREI_NUR_AUF_ANFRAGE,
+  MELDUNG_STICKEREI_PAUSIERT,
+  veredelungVerfuegbar,
+} from '@/config/bestellweg';
 import type { CartItem, ConfigElement, PrintMethod } from '@/types';
 
 /**
@@ -176,13 +181,23 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
     issues.push({ code: 'produkt_unbekannt', message: ARTIKEL_NICHT_VERFUEGBAR });
   }
 
+  // ── 0a. Pausierte Veredelung (Betriebsschalter, config/bestellweg.ts) ─
+  // Gilt für Bestellung UND Anfrage: Solange eine Veredelungsart pausiert ist, wird nichts damit angenommen. Steht
+  // bewusst ganz oben, damit die Kundschaft zuerst den eigentlichen Grund liest.
+  const pausiert = (items as CartItem[]).find(
+    (item) => item !== null && typeof item === 'object' && !veredelungVerfuegbar(item.printMethod)
+  );
+  if (pausiert) {
+    issues.push({ code: 'veredelung_pausiert', message: MELDUNG_STICKEREI_PAUSIERT, itemId: pausiert.id });
+  }
+
   // ── 0. Stickerei gibt es nur auf Anfrage ────────────────────────────
   // Steht bewusst GANZ OBEN: Der erste Befund wird der Kundschaft angezeigt
   // (customerMessage), und sie soll zuerst den eigentlichen Grund lesen statt
   // Adresse und Zustimmung nachzubessern, die den Weg ohnehin nicht öffnen.
   // Gilt NUR für Bestellungen – eine Anfrage darf Stickerei enthalten, das ist
   // ihr Zweck (config/bestellweg.ts).
-  if (istBestellung) {
+  if (istBestellung && !pausiert) {
     // `items` ist die abgesicherte Liste (kein Array → leer, siehe oben); ein Eintrag ohne Objekt wird später gemeldet.
     const stickerei = (items as CartItem[]).find(
       (item) => item !== null && typeof item === 'object' && istNurAufAnfrage(item.printMethod)

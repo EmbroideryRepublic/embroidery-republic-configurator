@@ -27,6 +27,34 @@ import type { PrintMethod } from '@/types';
 /** Veredelungsarten, die NICHT direkt bestellt, sondern nur angefragt werden. */
 export const NUR_AUF_ANFRAGE: readonly PrintMethod[] = ['embroidery'];
 
+/**
+ * BETRIEBSSCHALTER – Veredelungsarten, die vorübergehend NICHT angeboten werden (Wartung, Umbau).
+ *
+ * Solange eine Art hier steht, gilt: Im Konfigurator ist sie ausgegraut und nicht wählbar, ein gespeicherter Stand
+ * mit dieser Art fällt auf DTF zurück, ein Warenkorb mit solchen Positionen lässt sich weder bestellen noch als
+ * Anfrage senden, und der Server nimmt weder Bestellung noch Anfrage damit an (validateSubmission, Code
+ * `veredelung_pausiert`). Reine Kontaktaufnahme über das Kontaktformular bleibt möglich.
+ *
+ * Seit 2026-11-11: Stickerei pausiert (Wunsch des Betreibers, Wartungs- und Umbauarbeiten). WIEDER EINSCHALTEN: die
+ * Liste leeren (`[]`) und neu ausliefern – dann gilt wieder die Regel „Stickerei nur auf Anfrage“ (NUR_AUF_ANFRAGE).
+ *
+ * Ein Objekt statt einer Konstante, damit Tests den Schalter umlegen können; Programmcode ändert ihn nie (siehe
+ * stickereiPause.test.ts).
+ */
+export const BETRIEBSSCHALTER: { pausierteVeredelungen: PrintMethod[] } = {
+  pausierteVeredelungen: ['embroidery'],
+};
+
+/** Wird diese Veredelungsart gerade angeboten? */
+export function veredelungVerfuegbar(printMethod: PrintMethod): boolean {
+  return !BETRIEBSSCHALTER.pausierteVeredelungen.includes(printMethod);
+}
+
+/** Die gewünschte Veredelungsart, wenn sie angeboten wird – sonst DTF (z. B. für gespeicherte Stände). */
+export function erlaubteVeredelung(printMethod: PrintMethod): PrintMethod {
+  return veredelungVerfuegbar(printMethod) ? printMethod : 'dtf';
+}
+
 /** Läuft diese Veredelungsart ausschließlich über eine Anfrage? */
 export function istNurAufAnfrage(printMethod: PrintMethod): boolean {
   return NUR_AUF_ANFRAGE.includes(printMethod);
@@ -52,3 +80,11 @@ export function warenkorbNurAlsAnfrage(items: ReadonlyArray<{ printMethod: Print
  */
 export const MELDUNG_STICKEREI_NUR_AUF_ANFRAGE =
   'Stickerei bestellen wir nicht direkt, sondern nur auf Anfrage. Bitte senden Sie Ihren Warenkorb als Anfrage – wir prüfen ihn persönlich und melden uns mit einem verbindlichen Angebot.';
+
+/**
+ * Meldung an die Kundschaft, wenn ein Browser trotzdem eine Bestellung oder Anfrage mit einer pausierten
+ * Veredelungsart absendet (veralteter Stand im Browser, manipulierter Client). Die Oberfläche bietet diesen Weg gar
+ * nicht erst an – die Meldung ist das Sicherheitsnetz.
+ */
+export const MELDUNG_STICKEREI_PAUSIERT =
+  'Die Bestickung ist wegen Wartungs- und Umbauarbeiten vorübergehend nicht verfügbar. Bitte entfernen Sie die bestickten Positionen aus Ihrem Warenkorb oder wählen Sie DTF-Transferdruck.';

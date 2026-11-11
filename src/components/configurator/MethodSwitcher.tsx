@@ -5,6 +5,7 @@ import { Shirt, Scissors } from 'lucide-react';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 import type { PrintMethod } from '@/types';
 
 interface MethodSwitcherProps {
@@ -41,6 +42,32 @@ export function MethodSwitcher({ currentUnitPrice, otherMethodUnitPrice }: Metho
         // Reine Anzeige (useMemo in ConfiguratorPrototype.tsx), verändert
         // nie das Preismodell selbst.
         const delta = !isActive && otherMethodUnitPrice !== null ? otherMethodUnitPrice - currentUnitPrice : null;
+        // Pausierte Veredelungsart (Betriebsschalter, config/bestellweg.ts): leicht durchsichtig, nicht wählbar, mit
+        // einem gut lesbaren Hinweis DARUNTER – der Hinweis selbst ist nicht ausgegraut, nur die Kachel.
+        if (!veredelungVerfuegbar(method.id)) {
+          const hinweisId = `veredelung-pause-${method.id}`;
+          return (
+            <div key={method.id} className="rounded-xl border border-gray-200 bg-white p-3">
+              <button
+                type="button"
+                disabled
+                aria-describedby={hinweisId}
+                className="flex w-full cursor-not-allowed items-center gap-3 text-left opacity-50"
+              >
+                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-cream text-brand/70">
+                  <Icon className="h-[18px] w-[18px]" />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-brand">{method.title}</span>
+                  <span className="block text-xs text-brand/70">{method.description}</span>
+                </span>
+              </button>
+              <p id={hinweisId} className="mt-2 rounded-lg bg-amber-50 px-2.5 py-1.5 text-xs font-medium leading-snug text-amber-800">
+                {t('method_embroidery_paused')}
+              </p>
+            </div>
+          );
+        }
         return (
           <button
             key={method.id}

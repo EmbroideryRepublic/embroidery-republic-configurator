@@ -15,7 +15,7 @@ import { SHIPPING_RATES, calculateShipping, landCodeForCountry } from '@/config/
 import { steuersatzFuer, steueranteil, STANDARDLAND } from '@/config/pricing/steuer';
 import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { istPlausibleEmail, istGueltigePlz } from '@/lib/orders/orderValidation';
-import { istNurAufAnfrage, warenkorbNurAlsAnfrage } from '@/config/bestellweg';
+import { istNurAufAnfrage, veredelungVerfuegbar, warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 import { FELD_KLASSE } from '@/lib/ui/feldKlasse';
 import { formatiereFarbname } from '@/lib/products/farben';
 import type { OrderPaymentMethod } from '@/lib/actions/orderTypes';
@@ -142,6 +142,10 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
   const nurAnfrage = warenkorbNurAlsAnfrage(items);
   const hatStickerei = items.some((item) => istNurAufAnfrage(item.printMethod));
   const gemischterWarenkorb = hatStickerei && items.some((item) => !istNurAufAnfrage(item.printMethod));
+  // Betriebsschalter (config/bestellweg.ts): Liegt eine Position mit pausierter Veredelung im Warenkorb (z. B. aus der Zeit
+  // vor der Pause), lässt sich weder bestellen noch anfragen – die Position muss erst entfernt werden. Der Server lehnt
+  // sie ebenfalls ab (validateSubmission).
+  const pausierteVorhanden = items.some((item) => !veredelungVerfuegbar(item.printMethod));
   // Merkt, ob die soeben gesendete Anfrage Stickerei enthielt – nach dem
   // Leeren des Warenkorbs ließe sich das sonst nicht mehr ablesen.
   const [stickereiAnfrageGesendet, setStickereiAnfrageGesendet] = useState(false);
@@ -308,6 +312,11 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                                   : `${textCount} ${t(textCount === 1 ? 'cart_text_singular' : 'cart_text_plural')}`}
                             </p>
                             <MotivVorschau elements={item.elements} />
+                            {!veredelungVerfuegbar(item.printMethod) && (
+                              <p className="mt-1 inline-flex items-center gap-1 rounded bg-amber-100 px-1.5 py-0.5 text-[11px] font-medium text-amber-800">
+                                {t('cart_item_paused')}
+                              </p>
+                            )}
                           </div>
                           <div className="flex flex-shrink-0 items-center gap-0.5">
                             <button
@@ -355,7 +364,12 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                   // keine Kasse, kein Versand-/Widerrufshinweis des Kaufwegs –
                   // stattdessen die klare Aussage, was passiert.
                   <div className="mb-3 space-y-2">
-                    {hatStickerei && (
+                    {pausierteVorhanden && (
+                      <p role="alert" className="rounded-lg bg-amber-50 px-3 py-2 text-xs font-medium leading-relaxed text-amber-800">
+                        {t('cart_embroidery_paused')}
+                      </p>
+                    )}
+                    {hatStickerei && !pausierteVorhanden && (
                       <div className="rounded-lg border border-gold/30 bg-gold-light/30 p-3">
                         <p className="flex items-start gap-2 text-xs leading-relaxed text-brand/80">
                           <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-gold-dark" aria-hidden />
@@ -387,8 +401,9 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                 )}
                 <button
                   type="button"
+                  disabled={pausierteVorhanden}
                   onClick={() => setStep(nurAnfrage ? 'inquiry' : 'checkout')}
-                  className="w-full rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
+                  className="w-full rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-gold-btn"
                 >
                   {t(nurAnfrage ? 'cart_send_inquiry' : 'cart_go_checkout')}
                 </button>

@@ -11,13 +11,14 @@
  * hartcodierte Produkt-IDs, damit die Tests eine Sortimentsänderung
  * überleben.
  */
-import { test } from 'node:test';
+import { test, describe, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { validateSubmission, istPlausibleEmail, istGueltigePlz, GRENZEN, STICH_UNTERGRENZE } from '../orderValidation';
 import { BASE_OVERHEAD_STITCHES, TEXT_MIN_STITCHES, schaetzeLogoStiche, schaetzeTextStiche } from '@/lib/embroidery/stichschaetzung';
 import { PRODUCTS } from '@/config/products';
+import { BETRIEBSSCHALTER } from '@/config/bestellweg';
 import type { CartItem } from '@/types';
 
 const produkt = PRODUCTS[0]!;
@@ -452,6 +453,19 @@ const stickereiAnfrage = {
   customerName: 'Alex Beispiel',
 };
 
+// Diese vier Tests prüfen die Regel „Stickerei nur auf Anfrage“, die gilt, sobald Stickerei wieder angeboten wird. Seit
+// 2026-11-11 ist Stickerei pausiert (BETRIEBSSCHALTER in config/bestellweg.ts); das Verhalten während der Pause prüft
+// stickereiPause.test.ts. Hier wird die Pause für die Dauer dieser Tests aufgehoben.
+describe('Stickerei nur auf Anfrage (wenn Stickerei wieder angeboten wird)', () => {
+  let pauseVorher: typeof BETRIEBSSCHALTER.pausierteVeredelungen;
+  beforeEach(() => {
+    pauseVorher = BETRIEBSSCHALTER.pausierteVeredelungen;
+    BETRIEBSSCHALTER.pausierteVeredelungen = [];
+  });
+  afterEach(() => {
+    BETRIEBSSCHALTER.pausierteVeredelungen = pauseVorher;
+  });
+
 test('Stickerei als BESTELLUNG wird abgewiesen – mit dem Hinweis auf die Anfrage', async () => {
   const ergebnis = await validateSubmission({ ...gueltigeBestellung, items: [stickPosition(6400)] });
   assert.equal(ergebnis.valid, false);
@@ -483,6 +497,7 @@ test('dieselbe Stickerei-Konfiguration als ANFRAGE wird angenommen', async () =>
   const ergebnis = await validateSubmission({ ...stickereiAnfrage, items: [stickPosition(6400)] });
   assert.equal(ergebnis.valid, true, `unerwartete Befunde: ${JSON.stringify(ergebnis.issues)}`);
   assert.equal(ergebnis.termsAcceptedAt, undefined, 'eine Anfrage hat keine AGB-Zustimmung zu bestätigen');
+});
 });
 
 test('DTF-Druck bleibt unverändert direkt bestellbar', async () => {

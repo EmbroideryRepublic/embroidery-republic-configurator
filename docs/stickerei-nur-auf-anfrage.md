@@ -70,3 +70,19 @@ Kostenschätzung)“ und der Absatz „So geht es weiter“. Anfragen mit reinem
 `orders/__tests__/sofortigeMeldung.test.ts`, `email/__tests__/betreiberBenachrichtigung.test.ts`).
 **Keine Test-Bestellungen gegen die Produktionsdatenbank absenden:** Der Testmodus fängt nur
 E-Mails, Dateien und Lieferantenaufträge ab, die Datenbank bleibt echt.
+
+## Pause: Stickerei vorübergehend abgeschaltet (seit 2026-11-11)
+
+Auf Wunsch des Betreibers wird Stickerei wegen Wartungs- und Umbauarbeiten vorübergehend nicht angeboten. Der Schalter liegt
+an EINER Stelle: `BETRIEBSSCHALTER.pausierteVeredelungen` in `src/config/bestellweg.ts` (ausgeliefert: `['embroidery']`).
+
+| Wo | Verhalten solange pausiert |
+| --- | --- |
+| Konfigurator, Methodenwahl | Kachel „Stickerei“ ist ausgegraut (halb durchsichtig), nicht klickbar; darunter ein gut lesbarer Hinweis |
+| Gespeicherter Konfigurator-Stand, „Bearbeiten“ aus dem Warenkorb | fällt auf DTF zurück (`erlaubteVeredelung`) |
+| Warenkorb | Positionen mit Stickerei tragen den Hinweis „Derzeit nicht verfügbar“; „Anfrage senden“ bzw. „Zur Kasse“ sind gesperrt, bis sie entfernt sind; DTF-Positionen lassen sich danach bestellen |
+| Server (`validateSubmission`) | Bestellung UND Anfrage mit Stickerei werden abgelehnt (Code `veredelung_pausiert`), auch bei manipuliertem Client |
+| Unverändert | DTF-Bestellprozess, Preise, Kontaktformular, Rechtstexte, Marketingtexte |
+
+**Wieder einschalten:** `pausierteVeredelungen` auf `[]` setzen und ausliefern. Dann gilt wieder „Stickerei nur auf Anfrage“ (siehe oben).
+Abgesichert durch `src/config/__tests__/stickereiPause.test.ts`.

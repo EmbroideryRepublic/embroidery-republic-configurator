@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { assetVerfuegbarkeit } from '@/lib/assets';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { erlaubteVeredelung } from '@/config/bestellweg';
 import type { ConfigElement, ConfiguratorState, PrintArea, PrintMethod, PrintView } from '@/types';
 import { MINIMUM_QUANTITY } from '@/lib/pricing/calculatePrice';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
@@ -108,7 +109,8 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
       // das Design bleibt trotzdem erhalten, `syncElementsToPrintAreas`
       // (vom aufrufenden Code nach dem Laden der neuen Bereiche aufgerufen)
       // passt Position/Größe an bzw. entfernt nicht mehr passende Elemente.
-      setPrintMethod: (printMethod) => set({ printMethod, selectedElementId: null }),
+      // Eine pausierte Veredelungsart (Betriebsschalter, config/bestellweg.ts) lässt sich nicht wählen – es bleibt DTF.
+      setPrintMethod: (printMethod) => set({ printMethod: erlaubteVeredelung(printMethod), selectedElementId: null }),
 
       setProduct: (productId) => set({ productId, selectedElementId: null, previewSize: null }),
       setColor: (colorId) => set({ colorId }),
@@ -417,7 +419,7 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
         const produkt = getProduct(item.productId);
         const ersteView = (produkt && ansichtenVon(produkt)[0]) || 'front';
         set({
-          printMethod: item.printMethod,
+          printMethod: erlaubteVeredelung(item.printMethod),
           productId: item.productId,
           colorId: item.colorId,
           sizeQuantities: { ...item.sizeQuantities },
@@ -483,6 +485,16 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           }
         }
         return state;
+      },
+      // Ein gespeicherter Stand darf eine pausierte Veredelungsart (Betriebsschalter) nicht wiederherstellen: Wer vor
+      // der Pause Stickerei gewählt hatte, landet wieder bei DTF. Sonst bliebe die ausgegraute Kachel aktiv markiert.
+      merge: (persistedState, currentState) => {
+        const gespeichert = (persistedState ?? {}) as Partial<ConfiguratorState>;
+        return {
+          ...currentState,
+          ...gespeichert,
+          printMethod: erlaubteVeredelung(gespeichert.printMethod ?? currentState.printMethod),
+        };
       },
       // Nur die eigentliche Konfiguration zwischenspeichern, nicht die
       // Undo-Historie oder die UI-Auswahl (selectedElementId) – die machen

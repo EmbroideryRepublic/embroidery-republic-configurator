@@ -87,6 +87,33 @@ test('front/back überschreiten nie die Prozessgrenze der Veredelung', () => {
   }
 });
 
+test('Ärmel: keine Fläche schrumpft zu einem Streifen (Untergrenze 5 cm je Seite, 50 cm²)', () => {
+  // Regressionsschutz: Beim Fruit-of-the-Loom Valueweight V-Neck erkannte die
+  // Achselerkennung wegen des V-Ausschnitts eine Ärmellänge von 8,6 cm. Das
+  // Suchfenster der Ärmelfläche schrumpfte dadurch auf wenige Millimeter, die
+  // Fläche lag bei 7 × 2,1 cm (rechts 5,6 × 2,7 cm), obwohl der Ärmel rund
+  // 14 × 10 cm hergibt. Der Generator verwirft solche Erkennungen jetzt
+  // (AERMEL_LAENGE_MIN_CM). Die kleinste Ärmelfläche im Bestand liegt bei
+  // 6,4 × 10,9 cm (Damen-Polo); alles darunter ist praktisch eine Fehlmessung.
+  const MIN_SEITE_CM = 5;
+  const MIN_FLAECHE_CM2 = 50;
+  let geprueft = 0;
+  for (const [id, views] of Object.entries(PRINT_AREA_DATA)) {
+    for (const view of ['sleeve_left', 'sleeve_right'] as const) {
+      const a = views[view];
+      if (!a) continue;
+      geprueft++;
+      const kurz = Math.min(a.maxWidthCm, a.maxHeightCm);
+      assert.ok(kurz >= MIN_SEITE_CM, `${id}/${view}: Ärmelfläche ${a.maxWidthCm} × ${a.maxHeightCm} cm ist ein Streifen`);
+      assert.ok(
+        a.maxWidthCm * a.maxHeightCm >= MIN_FLAECHE_CM2,
+        `${id}/${view}: Ärmelfläche ${a.maxWidthCm} × ${a.maxHeightCm} cm unter ${MIN_FLAECHE_CM2} cm²`
+      );
+    }
+  }
+  assert.ok(geprueft > 0, 'keine Ärmelansicht gefunden – Test liefe sonst grün, ohne etwas zu prüfen');
+});
+
 test('Ärmel (DTF-Rohdaten): maxWidthCm ist exakt der gemessene Bewegungsbereich, nie mehr', () => {
   // Betreiber-Auskunft 2026-09-04: DTF-Transfers haben keine eigene Format-
   // obergrenze für Ärmel ("die Grenze ist nur so groß wie der Ärmel an

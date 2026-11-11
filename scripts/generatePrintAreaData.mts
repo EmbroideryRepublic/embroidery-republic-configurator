@@ -248,6 +248,8 @@ const ABSTAND = {
  *  liegt der Oberarm im selben Bereich – der Ärmel ist länger, die
  *  veredelbare Zone bleibt dieselbe. */
 const AERMEL_BAND_VON = 0.08;
+/** Kleinste glaubwürdige Länge Schulter→Achsel (cm); kürzere Erkennungen sind Fehlmessungen. */
+const AERMEL_LAENGE_MIN_CM = 14;
 const AERMEL_BAND_BIS = 0.26;
 
 // Zu erzeugende Ansichten DATENGETRIEBEN aus dem Katalog (M4): genau die von
@@ -927,7 +929,16 @@ for (const p of PRODUCTS) {
     if (abfall > besterAbfall) { besterAbfall = abfall; yAchsel = y + fenster; }
   }
   if (yAchsel !== null && besterAbfall >= maxB * 0.15) {
-    aermelLaengeCm.set(p.id, (yAchsel - fO) / fPxCm);
+    const cm = (yAchsel - fO) / fPxCm;
+    // Plausibilitätsgrenze: Über den ganzen Bestand liegt Schulter→Achsel zwischen
+    // 19 und 39 cm. Der V-Ausschnitt des Fruit-of-the-Loom Valueweight V-Neck
+    // verengt die Kontur oben so stark, dass die „Achsel" bei 8,6 cm erkannt wurde
+    // – das Suchfenster der Ärmelfläche schrumpfte dadurch auf wenige Millimeter
+    // (Fläche 7 × 2,1 cm statt eines ganzen Ärmels). Unter der Grenze gilt die
+    // Erkennung als gescheitert; dann greift wie bei fehlender Erkennung die
+    // Bandregel (AERMEL_BAND_BIS).
+    if (cm >= AERMEL_LAENGE_MIN_CM) aermelLaengeCm.set(p.id, cm);
+    else console.log(`Achselerkennung unplausibel (${cm.toFixed(1)} cm < ${AERMEL_LAENGE_MIN_CM} cm): ${p.id} – Bandregel`);
   }
 }
 
@@ -1690,6 +1701,12 @@ if (protokoll.length) {
 
 // Kopfteilhöhe je Produkt – macht sofort sichtbar, ob die Kapuzenerkennung
 // plausibel greift (T-Shirt nahe 0, Kapuze/Stehkragen deutlich darüber).
+// Ärmellänge Schulter→Achsel je Produkt (aus der Frontansicht gemessen) – macht sichtbar, ob die
+// Achselerkennung plausibel greift; sie bestimmt das Suchfenster der Ärmelfläche.
+if (process.argv.includes('--aermel')) {
+  console.log('\nÄrmellänge Schulter→Achsel (cm, aus der Frontansicht):');
+  for (const [id, cm] of [...aermelLaengeCm.entries()].sort((a, b) => a[1] - b[1])) console.log(`  ${cm.toFixed(1).padStart(5)}  ${id}`);
+}
 if (process.argv.includes('--kopfteil')) {
   console.log('\nKopfteilhöhe (Bildoberkante bis Schulterlinie):');
   for (const z of kopfteilProtokoll.filter((x) => x.includes('/front'))) console.log(`  ${z}`);

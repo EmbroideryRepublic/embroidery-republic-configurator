@@ -4,6 +4,7 @@ Im Admin, Bereich „Personalisierung“, hat jedes Text- und Logo-Motiv einer *
 
 | Knopf | Was passiert |
 | --- | --- |
+| **Weißen Hintergrund entfernen** (Schalter, nur Logos) | **An** (Standard): nur das Motiv wird gestickt, ein einfarbiger Hintergrund am Bildrand (meist weiß) bleibt weg. **Aus**: das Original des Kunden wird unverändert gestickt, ein deckender Hintergrund wird als **eigene Garnfarbe mitgestickt** (deutlich mehr Stiche). DST, PES, JEF, Vorschau und „Prüfen“ folgen dem Schalter; der Browser merkt sich die Wahl je Motiv. |
 | **DST** | Lädt die fertig digitalisierte Datei im Tajima-Format (Tajima, Barudan, ZSK, SWF, Happy und viele weitere Industriemaschinen). |
 | **PES** | Dieselbe Stickerei für Brother, Babylock und Bernina (Brother-Reihe). |
 | **JEF** | Dieselbe Stickerei für Janome. |
@@ -24,7 +25,10 @@ Nadeleinstiche mit Sprüngen, Fadenschnitten und Farbwechseln. DST, PES und JEF 
 
 - Text: eine Garnfarbe (die Schriftfarbe), Form aus der gerasterten Schrift (10 Bildpunkte je Millimeter). Schatten und Kontur
   sind Druckeffekte und werden nicht gestickt.
-- Logo: einfarbiger Hintergrund wird entfernt, Farben werden zu höchstens 6 Garnfarben zusammengefasst (Farbwechsel stehen in den Dateien).
+- Logo: einfarbiger Hintergrund wird entfernt (abschaltbar, siehe Schalter oben), Farben werden zu höchstens 6 Garnfarben
+  zusammengefasst (Farbwechsel stehen in den Dateien). Bei Schalter „an“ dient das **Anzeigebild** des Kunden als Quelle (ggf. schon
+  vom Kunden freigestellt) und es folgt die automatische Randentfernung; bei „aus“ das **Original** (vor jeder Hintergrundentfernung).
+  Route: `?hintergrund=aus` (Standard `an`).
 - Füllung (Tatami) mit 0,4 mm Reihenabstand, Stichlänge höchstens 3,5 mm mit versetzten Einstichen, Richtung 45° bzw. quer zu
   dünnen Strichen.
 - Unterlage bei breiten Flächen, Zugkompensation 0,15 mm, Sicherungsstiche am Anfang/Ende jeder Naht.

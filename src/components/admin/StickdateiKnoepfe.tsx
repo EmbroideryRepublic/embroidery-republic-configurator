@@ -2,13 +2,16 @@
 
 /**
  * Knöpfe der fertig digitalisierten Stickdatei eines Motivs (nur bei Positionen mit Stickerei):
+ *   Schalter „Weißen Hintergrund entfernen“ (nur Logos)  an: nur das Motiv wird gestickt, aus: der Hintergrund des Originals
+ *                          wird als eigene Garnfarbe mitgestickt – alle Dateien, die Vorschau und „Prüfen“ folgen dem Schalter,
  *   „DST“ / „PES“ / „JEF“  dieselbe Stickerei im Format der Maschine (Tajima & Co. / Brother / Janome),
  *   „Stickvorschau“        zeigt die Garnlinien als Bild,
  *   „Prüfen“               nennt Größe, Stichzahl, Fadenschnitte, Garnfarben und – wichtig – wo das Motiv an die Grenzen
  *                          der automatischen Digitalisierung stößt (zu dünne Linien, sehr kleine Schrift …).
  * Die Dateien entstehen auf Abruf (app/api/admin/bestellungen/[id]/stickdatei/[elementId]).
+ * Die Wahl des Schalters merkt sich der Browser je Motiv (nur als Komfort; ohne Speicher gilt „an“).
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { stickdateiHref, stickinfoHref, stickvorschauHref } from '@/lib/admin/stickdateiLink';
 
 interface Garn {
@@ -34,16 +37,32 @@ const FORMATE = [
   { format: 'jef', beschriftung: 'JEF', hilfe: 'Janome' },
 ] as const;
 
-export function StickdateiKnoepfe({ orderId, elementId }: { orderId: string; elementId: string }) {
+const speicherSchluessel = (elementId: string) => `stickdatei-hintergrund:${elementId}`;
+
+export function StickdateiKnoepfe({ orderId, elementId, istLogo }: { orderId: string; elementId: string; istLogo: boolean }) {
+  const [hintergrundEntfernen, setHintergrundEntfernen] = useState(true);
   const [info, setInfo] = useState<Info | null>(null);
   const [fehler, setFehler] = useState<string | null>(null);
   const [laedt, setLaedt] = useState(false);
 
-  async function pruefen() {
+  // Gemerkte Wahl dieses Motivs wiederherstellen (nur Komfort, der Speicher kann fehlen).
+  useEffect(() => {
+    if (!istLogo) return;
+    try {
+      if (window.localStorage.getItem(speicherSchluessel(elementId)) === 'aus') setHintergrundEntfernen(false);
+    } catch {
+      /* kein Speicher: Standard bleibt */
+    }
+  }, [elementId, istLogo]);
+
+  // Für Texte gibt es keinen Hintergrund – sie ignorieren den Schalter.
+  const entfernen = istLogo ? hintergrundEntfernen : true;
+
+  async function pruefen(wert: boolean = entfernen) {
     setLaedt(true);
     setFehler(null);
     try {
-      const antwort = await fetch(stickinfoHref(orderId, elementId), { cache: 'no-store' });
+      const antwort = await fetch(stickinfoHref(orderId, elementId, wert), { cache: 'no-store' });
       const daten = (await antwort.json()) as Info & { fehler?: string };
       if (!antwort.ok) {
         setInfo(null);
@@ -59,14 +78,46 @@ export function StickdateiKnoepfe({ orderId, elementId }: { orderId: string; ele
     }
   }
 
+  function umschalten() {
+    const neu = !hintergrundEntfernen;
+    setHintergrundEntfernen(neu);
+    try {
+      window.localStorage.setItem(speicherSchluessel(elementId), neu ? 'an' : 'aus');
+    } catch {
+      /* kein Speicher: gilt nur für diese Ansicht */
+    }
+    // Die angezeigten Kennzahlen gehören zur alten Einstellung: neu berechnen, wenn sie sichtbar waren.
+    setFehler(null);
+    if (info || fehler) void pruefen(neu);
+    else setInfo(null);
+  }
+
   return (
     <div className="mt-2 border-t border-dashed border-gray-200 pt-2">
       <p className="mb-1 text-[11px] font-medium uppercase tracking-wide text-gray-500">Stickdatei für die Maschine</p>
+      {istLogo && (
+        <label className="mb-2 flex cursor-pointer items-start gap-2">
+          <input type="checkbox" role="switch" className="peer sr-only" checked={hintergrundEntfernen} onChange={umschalten} />
+          <span
+            aria-hidden="true"
+            className="relative mt-0.5 h-5 w-9 flex-shrink-0 rounded-full bg-gray-300 transition-colors after:absolute after:left-0.5 after:top-0.5 after:h-4 after:w-4 after:rounded-full after:bg-white after:shadow after:transition-transform after:content-[''] peer-checked:bg-gold-btn peer-checked:after:translate-x-4 peer-focus-visible:ring-2 peer-focus-visible:ring-gray-400"
+          />
+          <span className="text-xs leading-snug text-gray-700">
+            <span className="font-medium">Weißen Hintergrund entfernen: {hintergrundEntfernen ? 'an' : 'aus'}</span>
+            <br />
+            <span className="text-[11px] text-gray-500">
+              {hintergrundEntfernen
+                ? 'Nur das Motiv wird gestickt; ein einfarbiger Hintergrund am Bildrand (meist weiß) bleibt weg.'
+                : 'Das Original wird unverändert gestickt: Ein deckender Hintergrund wird als eigene Garnfarbe mitgestickt.'}
+            </span>
+          </span>
+        </label>
+      )}
       <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
         {FORMATE.map(({ format, beschriftung, hilfe }) => (
           <a
             key={format}
-            href={stickdateiHref(orderId, elementId, format)}
+            href={stickdateiHref(orderId, elementId, format, entfernen)}
             title={hilfe}
             className="rounded bg-gold-btn px-2 py-1 text-xs font-medium text-white transition-colors hover:bg-gold-dark"
           >
@@ -74,7 +125,7 @@ export function StickdateiKnoepfe({ orderId, elementId }: { orderId: string; ele
           </a>
         ))}
         <a
-          href={stickvorschauHref(orderId, elementId)}
+          href={stickvorschauHref(orderId, elementId, entfernen)}
           target="_blank"
           rel="noopener noreferrer"
           className="rounded border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
@@ -83,7 +134,7 @@ export function StickdateiKnoepfe({ orderId, elementId }: { orderId: string; ele
         </a>
         <button
           type="button"
-          onClick={pruefen}
+          onClick={() => void pruefen()}
           disabled={laedt}
           className="text-xs text-gray-500 underline decoration-gray-300 underline-offset-2 hover:text-gray-800 disabled:opacity-60"
         >

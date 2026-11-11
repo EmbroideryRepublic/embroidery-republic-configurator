@@ -272,5 +272,5 @@ test('die Route liefert dst (Standard), pes und jef, lehnt andere Formate ab und
 test('die Oberfläche bietet DST, PES und JEF an', () => {
   const quelle = lies('src/components/admin/StickdateiKnoepfe.tsx');
   for (const beschriftung of ['DST', 'PES', 'JEF']) assert.ok(quelle.includes(`beschriftung: '${beschriftung}'`), `${beschriftung} fehlt`);
-  assert.match(quelle, /stickdateiHref\(orderId, elementId, format\)/);
+  assert.match(quelle, /stickdateiHref\(orderId, elementId, format, entfernen\)/);
 });

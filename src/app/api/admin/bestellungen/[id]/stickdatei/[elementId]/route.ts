@@ -6,6 +6,8 @@
  *   …/stickdatei/<elementId>?format=jef   dieselbe Stickerei als JEF (Janome)
  *   …/stickdatei/<elementId>?vorschau=1   Stickvorschau als PNG (Garnlinien in Garnfarbe, Sprünge rot gestrichelt)
  *   …/stickdatei/<elementId>?info=1     Kennzahlen und Hinweise als JSON (Größe, Stiche, Farben, Grenzen des Motivs)
+ *   …&hintergrund=aus                   (nur Logos) Hintergrundentfernung AUS: das Original wird samt Hintergrund gestickt;
+ *                                       ohne Angabe oder mit `an`: einfarbiger Hintergrund am Rand wird entfernt (Standard)
  *
  * Die Datei entsteht auf Abruf aus den gespeicherten Bestelldaten (lib/admin/stickdatei.ts); es wird nichts gespeichert.
  *
@@ -37,9 +39,13 @@ export async function GET(request: Request, { params }: { params: { id: string; 
     return NextResponse.json({ fehler: 'Unbekanntes Format. Möglich: dst, pes, jef.' }, { status: 400 });
   }
   const format: StickFormat = formatWunsch !== null ? formatWunsch : 'dst';
+  const hintergrundWunsch = abfrage.get('hintergrund');
+  if (hintergrundWunsch !== null && hintergrundWunsch !== 'an' && hintergrundWunsch !== 'aus') {
+    return NextResponse.json({ fehler: 'Ungültiger Wert für "hintergrund". Möglich: an, aus.' }, { status: 400 });
+  }
   let ergebnis;
   try {
-    ergebnis = await erzeugeStickdatei(params.id, params.elementId);
+    ergebnis = await erzeugeStickdatei(params.id, params.elementId, { hintergrundEntfernen: hintergrundWunsch !== 'aus' });
   } catch (fehler) {
     console.error(`[admin] Stickdatei für Element ${params.elementId} fehlgeschlagen:`, fehler);
     return NextResponse.json({ fehler: 'Die Stickdatei konnte nicht erzeugt werden.' }, { status: 500 });

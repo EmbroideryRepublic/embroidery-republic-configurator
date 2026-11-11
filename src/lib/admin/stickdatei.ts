@@ -81,7 +81,25 @@ export function rastereLogo(bild: Buffer, breiteCm: number, hoeheCm: number, dre
   return { breite: gerendert.width, hoehe: gerendert.height, rgba: new Uint8Array(gerendert.pixels) };
 }
 
-export async function erzeugeStickdatei(orderId: string, elementId: string): Promise<StickdateiErgebnis> {
+export interface StickdateiOptionen {
+  /**
+   * Bei Logos: einfarbigen Hintergrund am Rand (meist weiß) entfernen (Standard: ja). Bei "nein" wird das ORIGINAL des Kunden
+   * (vor jeder Hintergrundentfernung) verwendet und ein deckender Hintergrund als eigene Garnfarbe mitgestickt.
+   */
+  hintergrundEntfernen?: boolean;
+}
+
+/**
+ * Welche Bilddatei eines Logos gestickt wird. Hintergrund AN: das Anzeigebild des Kunden (ggf. schon freigestellt), danach die
+ * automatische Randentfernung. Hintergrund AUS: das Original des Kunden, unverändert (fehlt es, bleibt das Anzeigebild).
+ */
+export function logoQuelle<T extends { logoStoragePath?: string; logoDisplayStoragePath?: string }>(record: T, hintergrundEntfernen: boolean): T {
+  if (hintergrundEntfernen) return record;
+  return { ...record, logoDisplayStoragePath: record.logoStoragePath ?? record.logoDisplayStoragePath };
+}
+
+export async function erzeugeStickdatei(orderId: string, elementId: string, optionen: StickdateiOptionen = {}): Promise<StickdateiErgebnis> {
+  const hintergrundEntfernen = optionen.hintergrundEntfernen !== false;
   const db = createAdminClient();
   const { data: zeile, error: elementFehler } = await db.from('configuration_elements').select('*').eq('id', elementId).maybeSingle();
   if (elementFehler) console.error('[admin] Stick-Element nicht ladbar:', elementFehler.message);
@@ -117,14 +135,15 @@ export async function erzeugeStickdatei(orderId: string, elementId: string): Pro
     }
     ergebnis = digitalisiereText({ breite: raster.breitePx, hoehe: raster.hoehePx, rgba: raster.pixel }, text.eingabe.element.color, kopfName);
   } else {
-    const renderbar = await toRenderableElement(zuElementRecord(zeile as Record<string, unknown>));
+    const record = zuElementRecord(zeile as Record<string, unknown>);
+    const renderbar = await toRenderableElement(logoQuelle(record, hintergrundEntfernen));
     if (renderbar.type !== 'logo') return nichtGefunden;
     if (Math.max(renderbar.widthCm, renderbar.heightCm) > MAX_LOGO_KANTE_CM) {
       return { ok: false, status: 422, grund: `Das Logo ist mit ${Math.max(renderbar.widthCm, renderbar.heightCm).toFixed(0)} cm zu groß für die automatische Digitalisierung (Grenze ${STANDARD_PARAMETER.maxKanteMm / 10} cm).` };
     }
     const raster = rastereLogo(renderbar.imageBuffer, renderbar.widthCm, renderbar.heightCm, renderbar.rotationDeg ?? 0);
     if ('fehler' in raster) return { ok: false, status: 422, grund: raster.fehler };
-    ergebnis = digitalisiereLogo(raster, kopfName);
+    ergebnis = digitalisiereLogo(raster, kopfName, undefined, { hintergrundEntfernen });
   }
 
   if (!ergebnis.ok) return { ok: false, status: 422, grund: ergebnis.grund };

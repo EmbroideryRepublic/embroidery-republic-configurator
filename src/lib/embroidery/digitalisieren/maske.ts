@@ -95,6 +95,26 @@ function abstand(a: [number, number, number], b: [number, number, number]): numb
   return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) + Math.abs(a[2] - b[2]);
 }
 
+/** Füllt das Bild den Rand überwiegend deckend aus (z. B. weißer Grund ohne Transparenz)? Dann würde ein Hintergrund mitgestickt. */
+export function randIstDeckend(raster: Raster): boolean {
+  const { breite: b, hoehe: h, rgba } = raster;
+  let gesamt = 0;
+  let deckend = 0;
+  const pruefe = (i: number) => {
+    gesamt++;
+    if ((rgba[i * 4 + 3] ?? 0) >= ALPHA_SCHWELLE) deckend++;
+  };
+  for (let x = 0; x < b; x++) {
+    pruefe(x);
+    pruefe((h - 1) * b + x);
+  }
+  for (let y = 1; y < h - 1; y++) {
+    pruefe(y * b);
+    pruefe(y * b + b - 1);
+  }
+  return gesamt > 0 && deckend >= gesamt * 0.6;
+}
+
 /**
  * Entfernt einen einfarbigen Hintergrund, der den Bildrand füllt (z. B. weißer Grund eines Logos ohne Transparenz):
  * Gestickt wird das Motiv, nicht sein Hintergrundrechteck. Gibt true zurück, wenn etwas entfernt wurde.

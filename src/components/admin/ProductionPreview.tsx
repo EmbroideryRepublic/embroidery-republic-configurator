@@ -91,7 +91,7 @@ function ElementZeile({ orderId, element, nummer, gestickt }: { orderId: string;
           {element.rotationDeg ? ` · ${element.rotationDeg.toFixed(0)}°` : ''}
         </p>
         {/* Stickerei: fertig digitalisierte Stickdatei (DST) – die Maschine liest keine Bilder oder Vektoren. */}
-        {gestickt && <StickdateiKnoepfe orderId={orderId} elementId={element.id} />}
+        {gestickt && <StickdateiKnoepfe orderId={orderId} elementId={element.id} istLogo={element.type === 'logo'} />}
       </div>
     </li>
   );

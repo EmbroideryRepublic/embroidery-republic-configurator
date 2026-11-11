@@ -9,7 +9,7 @@
  * Ergebnisses sagen, wo das Motiv an die Grenzen stößt. Vor der Serie einmal auf Probestoff sticken.
  */
 import { STANDARD_PARAMETER, type StickParameter } from './parameter';
-import { ebeneAusAlpha, entferneRandHintergrund, farbEbenen, schneideZu, type Raster } from './maske';
+import { ebeneAusAlpha, entferneRandHintergrund, farbEbenen, randIstDeckend, schneideZu, type Raster } from './maske';
 import { erzeugeStickplan, StickGrenzeUeberschritten, type Stickplan } from './stickplan';
 import { schreibeStickdateien, type Stickdateien } from './formate';
 
@@ -37,13 +37,26 @@ export function digitalisiereText(raster: Raster, hex: string, name: string, p: 
   }
 }
 
-/** Logo: einfarbigen Hintergrund entfernen, in höchstens `maxFarben` Garnfarben zerlegen. */
-export function digitalisiereLogo(raster: Raster, name: string, p: StickParameter = STANDARD_PARAMETER): DigitalisierErgebnis {
+export interface LogoOptionen {
+  /**
+   * Einfarbigen Hintergrund am Bildrand (meist weiß) entfernen? Standard: ja – gestickt wird das Motiv, nicht sein Rechteck.
+   * Bei "nein" bleibt das Bild unverändert: ein deckender Hintergrund wird als eigene Garnfarbe MITGESTICKT.
+   */
+  hintergrundEntfernen?: boolean;
+}
+
+/** Logo: einfarbigen Hintergrund entfernen (abschaltbar), in höchstens `maxFarben` Garnfarben zerlegen. */
+export function digitalisiereLogo(raster: Raster, name: string, p: StickParameter = STANDARD_PARAMETER, optionen: LogoOptionen = {}): DigitalisierErgebnis {
   try {
     const hinweise: string[] = [];
+    const entfernen = optionen.hintergrundEntfernen !== false;
     // Eigene Kopie: der Hintergrund wird im Raster transparent gemacht.
     const kopie: Raster = { breite: raster.breite, hoehe: raster.hoehe, rgba: raster.rgba.slice() };
-    if (entferneRandHintergrund(kopie)) hinweise.push('Der einfarbige Hintergrund des Logos wurde nicht mitgestickt.');
+    if (!entfernen) {
+      if (randIstDeckend(kopie)) hinweise.push('Hintergrundentfernung ist aus: Der Hintergrund des Logos wird als eigene Garnfarbe mitgestickt (viele zusätzliche Stiche).');
+    } else if (entferneRandHintergrund(kopie)) {
+      hinweise.push('Der einfarbige Hintergrund des Logos wurde nicht mitgestickt.');
+    }
     const zugeschnitten = schneideZu(kopie);
     if (!zugeschnitten) return { ok: false, grund: 'Das Logo enthält nichts Sichtbares.' };
     const ebenen = farbEbenen(zugeschnitten, p.maxFarben);

@@ -20,6 +20,8 @@ const { getPrintAreas } = await import('../src/config/printAreas.ts');
 const { getPricingRules } = await import('../src/config/pricingRules.ts');
 const { calculatePrice } = await import('../src/lib/pricing/calculatePrice.ts');
 const { CANVAS_WIDTH, CANVAS_HEIGHT } = await import('../src/config/products/colorHelpers.ts');
+// Bildpfade kommen seit ADR 0004 ausschließlich aus der Asset-Schicht (Manifest), nicht mehr aus `color.images`.
+const { resolveColorImages } = await import('../src/lib/assets/index.ts');
 
 type Schwere = 'FEHLER' | 'WARNUNG';
 interface Befund {
@@ -102,9 +104,12 @@ for (const p of PRODUCTS) {
   // Farben: Hex gültig, Bilder vorhanden.
   for (const c of p.colors) {
     if (!/^#[0-9a-fA-F]{6}$/.test(c.hex)) melde('FEHLER', 'Farben', p.id, `${c.id}: ungültiger Hex "${c.hex}"`);
-    const noetig = p.views ?? VIEWS;
+    const bilder = resolveColorImages(p.id, c.id);
+    // Ärmelansichten gibt es nur mit eigenem Bild (sichtbareAnsichten in lib/products/ansichten.ts) – ein fehlendes
+    // Ärmelbild ist also kein Fehler, sondern bedeutet: die Ansicht wird gar nicht angeboten.
+    const noetig = (p.views ?? VIEWS).filter((v) => v === 'front' || v === 'back' || bilder[v] !== undefined);
     for (const v of noetig) {
-      const url = c.images[v];
+      const url = bilder[v];
       if (!url) {
         melde('FEHLER', 'Bilder', p.id, `${c.id}: ${v} fehlt`, v);
         continue;
@@ -142,7 +147,7 @@ for (const p of PRODUCTS) {
     if (a.x1 <= a.x0 || a.y1 <= a.y0) melde('FEHLER', 'Druckfläche', p.id, 'Breite oder Höhe <= 0', v);
 
     // KERNPRÜFUNG: gezeichnete Strecke muss den angezeigten cm entsprechen.
-    const bildUrl = p.colors[0]?.images[v];
+    const bildUrl = p.colors[0] ? resolveColorImages(p.id, p.colors[0].id)[v] : undefined;
     const pxProCm = bildUrl ? await pxProCmFuer(bildUrl, mass.hoeheCm) : null;
     if (pxProCm === null) {
       melde('WARNUNG', 'Skalierung', p.id, 'px/cm nicht messbar (Bild fehlt)', v);

@@ -24,6 +24,8 @@ import { existsSync } from 'node:fs';
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { PRODUCTS } from '../src/config/products/index';
+// Bildpfade kommen seit ADR 0004 aus der Asset-Schicht, nicht mehr aus `color.images`.
+import { resolveColorImages, PLATZHALTER_BILD } from '../src/lib/assets/index';
 import { PRINT_AREA_DATA } from '../src/config/printAreaData.generated';
 import { zeilenProfil } from './analyzeGarmentContour.mjs';
 import type { PrintView } from '../src/types';
@@ -158,8 +160,8 @@ async function main() {
     const views = p.views ?? VIEWS;
     for (const color of p.colors) {
       for (const view of views) {
-        const url = color.images[view];
-        if (!url) { fehlendeBilder++; continue; }
+        const url = resolveColorImages(p.id, color.id)[view];
+        if (!url || url === PLATZHALTER_BILD) { fehlendeBilder++; continue; }
         const b = await pruefeKombination(p.id, p.brand, p.productType, color.name, view, url);
         if (!b) { fehlendeBilder++; continue; }
         befunde.push(b);

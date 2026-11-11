@@ -38,6 +38,8 @@ import sharp from 'sharp';
 import path from 'node:path';
 import { existsSync } from 'node:fs';
 import { PRODUCTS } from '../src/config/products/index';
+// Bildpfade kommen seit ADR 0004 aus der Asset-Schicht, nicht mehr aus `color.images`.
+import { resolveColorImages, PLATZHALTER_BILD } from '../src/lib/assets/index';
 import { zeilenProfil } from './analyzeGarmentContour.mjs';
 import type { PrintView } from '../src/types';
 
@@ -124,8 +126,8 @@ for (const p of ziel) {
 
     const lagen: Lage[] = [];
     for (const c of p.colors) {
-      const url = c.images[view];
-      if (!url) continue;
+      const url = resolveColorImages(p.id, c.id)[view];
+      if (!url || url === PLATZHALTER_BILD) continue;
       const l = await lageVon(url);
       if (!l) continue;
       if (l.amRand) {

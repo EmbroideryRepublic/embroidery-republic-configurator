@@ -21,6 +21,8 @@ import { zeilenProfil } from './analyzeGarmentContour.mjs';
 
 const { PRODUCTS } = await import('../src/config/products/index.ts');
 const { PRINT_AREA_DATA } = await import('../src/config/printAreaData.generated.ts');
+// Bildpfade kommen seit ADR 0004 aus der Asset-Schicht, nicht mehr aus `color.images`.
+const { resolveColorImages } = await import('../src/lib/assets/index.ts');
 
 interface Messung {
   produkt: string;
@@ -74,7 +76,7 @@ for (const p of PRODUCTS) {
 
   const messungen: Messung[] = [];
   for (const c of p.colors) {
-    const pfad = pfadFuer(c.images.front);
+    const pfad = pfadFuer(resolveColorImages(p.id, c.id).front);
     if (!pfad) continue;
     const m = await miss(pfad);
     if (!m) continue;

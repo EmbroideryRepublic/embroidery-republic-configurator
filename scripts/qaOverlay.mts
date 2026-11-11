@@ -14,6 +14,8 @@ import sharp from 'sharp';
 import path from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { PRODUCTS } from '../src/config/products/index';
+// Bildpfade kommen seit ADR 0004 aus der Asset-Schicht, nicht mehr aus `color.images`.
+import { resolveColorImages } from '../src/lib/assets/index';
 import { PRINT_AREA_DATA } from '../src/config/printAreaData.generated';
 import { zeilenProfil } from './analyzeGarmentContour.mjs';
 import type { PrintView } from '../src/types';
@@ -25,7 +27,7 @@ export async function overlay(produktId: string, view: PrintView, farbIndex = 0,
   if (!produkt) throw new Error(`Produkt unbekannt: ${produktId}`);
   const farbe = produkt.colors[farbIndex];
   if (!farbe) throw new Error(`Farbindex ${farbIndex} existiert nicht`);
-  const bildUrl = farbe.images[view];
+  const bildUrl = resolveColorImages(produkt.id, farbe.id)[view];
   if (!bildUrl) throw new Error(`Keine Bild-URL für ${view}`);
 
   const bildPfad = path.join(PUBLIC, bildUrl.replace(/^\//, ''));

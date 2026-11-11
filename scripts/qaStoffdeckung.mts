@@ -21,6 +21,7 @@ import path from 'node:path';
 import { PRODUCTS } from '../src/config/products/index';
 import { PRINT_AREA_DATA } from '../src/config/printAreaData.generated';
 import type { PrintView } from '../src/types';
+import { resolveColorImages } from '../src/lib/assets/index';
 
 const VIEWS: PrintView[] = ['front', 'back', 'sleeve_left', 'sleeve_right'];
 const HG_TOL = 6;
@@ -51,7 +52,7 @@ for (const p of PRODUCTS) {
     if (!a) continue;
 
     for (const c of p.colors) {
-      const url = c.images[view];
+      const url = resolveColorImages(p.id, c.id)[view];
       if (!url) continue;
       const pf = path.join('public', url.replace(/^\//, ''));
 

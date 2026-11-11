@@ -10,7 +10,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { digitalisiereLogo } from '../digitalisiere';
-import { randIstDeckend, type Raster } from '../maske';
+import { hintergrundLaesstSichEntfernen, randIstDeckend, type Raster } from '../maske';
 import { logoQuelle } from '@/lib/admin/stickdatei';
 import { stickdateiHref, stickinfoHref, stickvorschauHref } from '@/lib/admin/stickdateiLink';
 import { dstZuBefehlen, leseJef, lesePes } from './leser';
@@ -99,12 +99,36 @@ test('ein transparentes Logo ist vom Schalter unberührt (nichts zu entfernen) u
   assert.equal(randIstDeckend(r), false);
 });
 
-test('Hintergrund AUS bei bereits freigestelltem Anzeigebild: das Original (mit Grund) ist die Quelle', () => {
+test('die Quelle ist IMMER das Original des Kunden, auch wenn er im Konfigurator „Hintergrund entfernen“ an hatte', () => {
   const record = { logoStoragePath: 'orders/x/item-0-logo-1-original.png', logoDisplayStoragePath: 'orders/x/item-0-logo-1-display.png' };
-  assert.equal(logoQuelle(record, true).logoDisplayStoragePath, record.logoDisplayStoragePath, 'an: Anzeigebild');
-  assert.equal(logoQuelle(record, false).logoDisplayStoragePath, record.logoStoragePath, 'aus: Original');
-  assert.equal(logoQuelle({ logoDisplayStoragePath: 'd.png' }, false).logoDisplayStoragePath, 'd.png', 'ohne Original bleibt das Anzeigebild');
+  assert.equal(logoQuelle(record).logoDisplayStoragePath, record.logoStoragePath, 'Original statt Anzeigebild');
+  assert.equal(logoQuelle({ logoDisplayStoragePath: 'd.png' }).logoDisplayStoragePath, 'd.png', 'ohne Original (sehr alte Bestellung) bleibt das Anzeigebild');
   assert.deepEqual(record, { logoStoragePath: 'orders/x/item-0-logo-1-original.png', logoDisplayStoragePath: 'orders/x/item-0-logo-1-display.png' }, 'Eingabe bleibt unverändert');
+});
+
+test('weißer Randhintergrund lässt sich entfernen, ein Foto-Hintergrund und transparente Bilder nicht (Prüfung ändert das Raster nicht)', () => {
+  const weiss = logoAufWeiss();
+  const vorher = weiss.rgba.slice();
+  assert.equal(hintergrundLaesstSichEntfernen(weiss), true);
+  assert.deepEqual(weiss.rgba, vorher, 'das Raster bleibt unverändert');
+
+  // "Foto": jede Randzeile in einer anderen Farbe – es gibt keine dominante Hintergrundfarbe
+  const foto = raster(40, 20, [255, 255, 255, 255]);
+  for (let y = 0; y < foto.hoehe; y++) for (let x = 0; x < foto.breite; x++) foto.rgba.set([(x * 7) % 256, (y * 13) % 256, ((x + y) * 5) % 256, 255], (y * foto.breite + x) * 4);
+  assert.equal(randIstDeckend(foto), true);
+  assert.equal(hintergrundLaesstSichEntfernen(foto), false);
+
+  const durchsichtig = raster(20, 20, [0, 0, 0, 0]);
+  kreis(durchsichtig, 10, 10, 8, [20, 120, 60]);
+  assert.equal(hintergrundLaesstSichEntfernen(durchsichtig), false, 'transparent: nichts zu entfernen');
+});
+
+test('Hintergrund AN, aber der Hintergrund ist nicht einfarbig: Hinweis statt stillem Mitsticken', () => {
+  const foto = raster(30, 20, [255, 255, 255, 255]);
+  for (let y = 0; y < foto.hoehe; y++) for (let x = 0; x < foto.breite; x++) foto.rgba.set([(x * 7) % 256, (y * 13) % 256, ((x + y) * 5) % 256, 255], (y * foto.breite + x) * 4);
+  const e = digitalisiereLogo(foto, 'FOTO');
+  assert.ok(e.ok || (!e.ok && /Stiche|Farb|detail/i.test(e.grund)));
+  if (e.ok) assert.ok(e.hinweise.some((h) => h.includes('nicht einfarbig')), 'Hinweis fehlt');
 });
 
 test('die Links tragen die Wahl in jeden Download, Vorschau und die Prüfung', () => {
@@ -131,10 +155,13 @@ test('die Route prüft den Wert von „hintergrund“ nach der Admin-Prüfung un
   assert.match(route, /hintergrundEntfernen: hintergrundWunsch !== 'aus'/);
 });
 
-test('der Lader nimmt bei „aus“ das Original und gibt die Option an den Digitalisierer', () => {
+test('der Lader nimmt in beiden Stellungen das Original, gibt die Option an den Digitalisierer und fällt nur bei nicht einfarbigem Hintergrund auf die Freistellung des Kunden zurück', () => {
   const lader = lies('src/lib/admin/stickdatei.ts');
-  assert.match(lader, /toRenderableElement\(logoQuelle\(record, hintergrundEntfernen\)\)/);
+  assert.match(lader, /toRenderableElement\(logoQuelle\(record\)\)/);
+  assert.doesNotMatch(lader, /logoQuelle\(record, /);
   assert.match(lader, /digitalisiereLogo\(raster, kopfName, undefined, \{ hintergrundEntfernen \}\)/);
+  assert.match(lader, /hintergrundEntfernen && randIstDeckend\(raster\) && !hintergrundLaesstSichEntfernen\(raster\)/);
+  assert.match(lader, /freigestellte Fassung verwendet/);
 });
 
 test('die Oberfläche zeigt den Schalter nur bei Logos und gibt die Wahl an alle Links weiter', () => {

@@ -56,6 +56,8 @@ export function digitalisiereLogo(raster: Raster, name: string, p: StickParamete
       if (randIstDeckend(kopie)) hinweise.push('Hintergrundentfernung ist aus: Der Hintergrund des Logos wird als eigene Garnfarbe mitgestickt (viele zusätzliche Stiche).');
     } else if (entferneRandHintergrund(kopie)) {
       hinweise.push('Der einfarbige Hintergrund des Logos wurde nicht mitgestickt.');
+    } else if (randIstDeckend(kopie)) {
+      hinweise.push('Der Hintergrund des Logos ist nicht einfarbig (z. B. Verlauf oder Foto) und ließ sich nicht automatisch entfernen: Er wird mitgestickt.');
     }
     const zugeschnitten = schneideZu(kopie);
     if (!zugeschnitten) return { ok: false, grund: 'Das Logo enthält nichts Sichtbares.' };

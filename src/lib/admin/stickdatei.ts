@@ -19,6 +19,7 @@ import { ansichtLabel } from '@/lib/admin/ansichten';
 import { saeubereFuerDateisystem } from '@/lib/admin/kundendateien';
 import { ladeTextFuerJpg } from '@/lib/admin/textDateien';
 import { digitalisiereLogo, digitalisiereText } from '@/lib/embroidery/digitalisieren/digitalisiere';
+import { hintergrundLaesstSichEntfernen, randIstDeckend } from '@/lib/embroidery/digitalisieren/maske';
 import { renderStickvorschau } from '@/lib/embroidery/digitalisieren/vorschau';
 import { STANDARD_PARAMETER } from '@/lib/embroidery/digitalisieren/parameter';
 import type { Raster } from '@/lib/embroidery/digitalisieren/maske';
@@ -83,18 +84,19 @@ export function rastereLogo(bild: Buffer, breiteCm: number, hoeheCm: number, dre
 
 export interface StickdateiOptionen {
   /**
-   * Bei Logos: einfarbigen Hintergrund am Rand (meist weiß) entfernen (Standard: ja). Bei "nein" wird das ORIGINAL des Kunden
-   * (vor jeder Hintergrundentfernung) verwendet und ein deckender Hintergrund als eigene Garnfarbe mitgestickt.
+   * Bei Logos: einfarbigen Hintergrund am Rand (meist weiß) entfernen (Standard: ja). Bei "nein" bleibt das Original des Kunden
+   * unverändert und ein deckender Hintergrund wird als eigene Garnfarbe mitgestickt. In BEIDEN Fällen ist die Quelle das
+   * ORIGINAL des Kunden – ob der Kunde im Konfigurator die Freistellung benutzt hat, ändert an der Stickdatei nichts.
    */
   hintergrundEntfernen?: boolean;
 }
 
 /**
- * Welche Bilddatei eines Logos gestickt wird. Hintergrund AN: das Anzeigebild des Kunden (ggf. schon freigestellt), danach die
- * automatische Randentfernung. Hintergrund AUS: das Original des Kunden, unverändert (fehlt es, bleibt das Anzeigebild).
+ * Welche Bilddatei eines Logos gestickt wird: IMMER das Original des Kunden (so wie hochgeladen, vor jeder Freistellung; fehlt
+ * es bei einer sehr alten Bestellung, bleibt das Anzeigebild). Das Anzeigebild ist die Fassung, die der Kunde im Konfigurator
+ * gesehen hat – war dort "Hintergrund entfernen" an, ist es freigestellt und würde die Entscheidung des Kunden festschreiben.
  */
-export function logoQuelle<T extends { logoStoragePath?: string; logoDisplayStoragePath?: string }>(record: T, hintergrundEntfernen: boolean): T {
-  if (hintergrundEntfernen) return record;
+export function logoQuelle<T extends { logoStoragePath?: string; logoDisplayStoragePath?: string }>(record: T): T {
   return { ...record, logoDisplayStoragePath: record.logoStoragePath ?? record.logoDisplayStoragePath };
 }
 
@@ -136,14 +138,31 @@ export async function erzeugeStickdatei(orderId: string, elementId: string, opti
     ergebnis = digitalisiereText({ breite: raster.breitePx, hoehe: raster.hoehePx, rgba: raster.pixel }, text.eingabe.element.color, kopfName);
   } else {
     const record = zuElementRecord(zeile as Record<string, unknown>);
-    const renderbar = await toRenderableElement(logoQuelle(record, hintergrundEntfernen));
+    const renderbar = await toRenderableElement(logoQuelle(record));
     if (renderbar.type !== 'logo') return nichtGefunden;
     if (Math.max(renderbar.widthCm, renderbar.heightCm) > MAX_LOGO_KANTE_CM) {
       return { ok: false, status: 422, grund: `Das Logo ist mit ${Math.max(renderbar.widthCm, renderbar.heightCm).toFixed(0)} cm zu groß für die automatische Digitalisierung (Grenze ${STANDARD_PARAMETER.maxKanteMm / 10} cm).` };
     }
-    const raster = rastereLogo(renderbar.imageBuffer, renderbar.widthCm, renderbar.heightCm, renderbar.rotationDeg ?? 0);
+    let raster = rastereLogo(renderbar.imageBuffer, renderbar.widthCm, renderbar.heightCm, renderbar.rotationDeg ?? 0);
     if ('fehler' in raster) return { ok: false, status: 422, grund: raster.fehler };
+    const zusatzHinweise: string[] = [];
+    // Hintergrund AN, aber der Hintergrund des Originals ist nicht einfarbig (Verlauf, Foto): Die einfache Randentfernung greift
+    // nicht. Dann bleibt die vom Kunden freigestellte Fassung, falls es sie gibt – besser als ein mitgesticktes Foto.
+    if (hintergrundEntfernen && randIstDeckend(raster) && !hintergrundLaesstSichEntfernen(raster)) {
+      const anzeigePfad = record.logoDisplayStoragePath;
+      if (anzeigePfad && anzeigePfad !== record.logoStoragePath) {
+        const anzeige = await toRenderableElement(record);
+        if (anzeige.type === 'logo') {
+          const freigestellt = rastereLogo(anzeige.imageBuffer, anzeige.widthCm, anzeige.heightCm, anzeige.rotationDeg ?? 0);
+          if (!('fehler' in freigestellt)) {
+            raster = freigestellt;
+            zusatzHinweise.push('Der Hintergrund des Originals ist nicht einfarbig und ließ sich nicht automatisch entfernen: Es wurde die vom Kunden freigestellte Fassung verwendet.');
+          }
+        }
+      }
+    }
     ergebnis = digitalisiereLogo(raster, kopfName, undefined, { hintergrundEntfernen });
+    if (ergebnis.ok) ergebnis.hinweise.unshift(...zusatzHinweise);
   }
 
   if (!ergebnis.ok) return { ok: false, status: 422, grund: ergebnis.grund };

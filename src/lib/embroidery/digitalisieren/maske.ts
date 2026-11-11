@@ -95,6 +95,11 @@ function abstand(a: [number, number, number], b: [number, number, number]): numb
   return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) + Math.abs(a[2] - b[2]);
 }
 
+/** Lässt sich ein einfarbiger Randhintergrund automatisch entfernen? (Prüfung an einer Kopie, das Raster bleibt unverändert.) */
+export function hintergrundLaesstSichEntfernen(raster: Raster): boolean {
+  return entferneRandHintergrund({ breite: raster.breite, hoehe: raster.hoehe, rgba: raster.rgba.slice() });
+}
+
 /** Füllt das Bild den Rand überwiegend deckend aus (z. B. weißer Grund ohne Transparenz)? Dann würde ein Hintergrund mitgestickt. */
 export function randIstDeckend(raster: Raster): boolean {
   const { breite: b, hoehe: h, rgba } = raster;

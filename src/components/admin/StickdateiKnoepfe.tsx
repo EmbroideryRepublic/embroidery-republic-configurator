@@ -107,8 +107,8 @@ export function StickdateiKnoepfe({ orderId, elementId, istLogo }: { orderId: st
             <br />
             <span className="text-[11px] text-gray-500">
               {hintergrundEntfernen
-                ? 'Nur das Motiv wird gestickt; ein einfarbiger Hintergrund am Bildrand (meist weiß) bleibt weg.'
-                : 'Das Original wird unverändert gestickt: Ein deckender Hintergrund wird als eigene Garnfarbe mitgestickt.'}
+                ? 'Original des Kunden, ein einfarbiger Hintergrund am Bildrand (meist weiß) bleibt weg – egal, ob der Kunde freigestellt hat.'
+                : 'Original des Kunden unverändert: Ein deckender Hintergrund wird als eigene Garnfarbe mitgestickt.'}
             </span>
           </span>
         </label>

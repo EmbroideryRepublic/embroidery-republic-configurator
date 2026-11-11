@@ -4,7 +4,7 @@ Im Admin, Bereich „Personalisierung“, hat jedes Text- und Logo-Motiv einer *
 
 | Knopf | Was passiert |
 | --- | --- |
-| **Weißen Hintergrund entfernen** (Schalter, nur Logos) | **An** (Standard): nur das Motiv wird gestickt, ein einfarbiger Hintergrund am Bildrand (meist weiß) bleibt weg. **Aus**: das Original des Kunden wird unverändert gestickt, ein deckender Hintergrund wird als **eigene Garnfarbe mitgestickt** (deutlich mehr Stiche). DST, PES, JEF, Vorschau und „Prüfen“ folgen dem Schalter; der Browser merkt sich die Wahl je Motiv. |
+| **Weißen Hintergrund entfernen** (Schalter, nur Logos) | Beide Stellungen gehen vom **Original des Kunden** aus (so wie hochgeladen) – ob der Kunde im Konfigurator „Hintergrund entfernen“ benutzt hat, ändert nichts. **An** (Standard): nur das Motiv wird gestickt, ein einfarbiger Hintergrund am Bildrand (meist weiß) bleibt weg. **Aus**: das Original wird unverändert gestickt, ein deckender Hintergrund wird als **eigene Garnfarbe mitgestickt** (deutlich mehr Stiche). DST, PES, JEF, Vorschau und „Prüfen“ folgen dem Schalter; der Browser merkt sich die Wahl je Motiv. |
 | **DST** | Lädt die fertig digitalisierte Datei im Tajima-Format (Tajima, Barudan, ZSK, SWF, Happy und viele weitere Industriemaschinen). |
 | **PES** | Dieselbe Stickerei für Brother, Babylock und Bernina (Brother-Reihe). |
 | **JEF** | Dieselbe Stickerei für Janome. |
@@ -26,9 +26,12 @@ Nadeleinstiche mit Sprüngen, Fadenschnitten und Farbwechseln. DST, PES und JEF 
 - Text: eine Garnfarbe (die Schriftfarbe), Form aus der gerasterten Schrift (10 Bildpunkte je Millimeter). Schatten und Kontur
   sind Druckeffekte und werden nicht gestickt.
 - Logo: einfarbiger Hintergrund wird entfernt (abschaltbar, siehe Schalter oben), Farben werden zu höchstens 6 Garnfarben
-  zusammengefasst (Farbwechsel stehen in den Dateien). Bei Schalter „an“ dient das **Anzeigebild** des Kunden als Quelle (ggf. schon
-  vom Kunden freigestellt) und es folgt die automatische Randentfernung; bei „aus“ das **Original** (vor jeder Hintergrundentfernung).
-  Route: `?hintergrund=aus` (Standard `an`).
+  zusammengefasst (Farbwechsel stehen in den Dateien). Quelle ist in beiden Stellungen das **Original** des Kunden (vor jeder
+  Freistellung; fehlt es bei einer sehr alten Bestellung, das Anzeigebild). Bei „an“ folgt die automatische Randentfernung; ist der
+  Hintergrund des Originals **nicht einfarbig** (Verlauf, Foto), greift sie nicht – dann wird, falls vorhanden, die **vom Kunden
+  freigestellte Fassung** verwendet und „Prüfen“ sagt es. Route: `?hintergrund=aus` (Standard `an`).
+  Hinweis: Das gespeicherte „Original“ ist das hochgeladene Bild, **zugeschnitten auf die Motivfläche** (der Konfigurator schneidet
+  den Leerraum außen ab) und als PNG gespeichert; die rohen Bytes der Datei werden nicht aufbewahrt.
 - Füllung (Tatami) mit 0,4 mm Reihenabstand, Stichlänge höchstens 3,5 mm mit versetzten Einstichen, Richtung 45° bzw. quer zu
   dünnen Strichen.
 - Unterlage bei breiten Flächen, Zugkompensation 0,15 mm, Sicherungsstiche am Anfang/Ende jeder Naht.

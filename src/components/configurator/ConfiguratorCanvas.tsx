@@ -440,10 +440,15 @@ export function ConfiguratorCanvas({
                 y={areaPx.y}
                 width={areaPx.width}
                 height={areaPx.height}
-                fill="transparent"
-                stroke={hasSelectionInView ? '#a8792f' : isAreaHovered ? '#c9b183' : 'rgba(201,177,131,0.35)'}
-                strokeWidth={hasSelectionInView ? 1.5 : 1}
-                dash={hasSelectionInView ? undefined : [5, 4]}
+                // Ruhezustand bewusst besser sichtbar als zuvor (Strich 70 % statt
+                // 35 % Deckkraft, vorher keine Füllung): Auf weißer Ware (Weiß,
+                // Creme, helle Melangen) war der Rahmen kaum zu erkennen, der Kunde
+                // sah nicht, WO er gestalten darf. Die zarte Füllung macht die
+                // Fläche als Ganzes lesbar; beim Bearbeiten wird sie kräftiger.
+                fill={hasSelectionInView || isAreaHovered ? 'rgba(201,177,131,0.12)' : 'rgba(201,177,131,0.07)'}
+                stroke={hasSelectionInView ? '#a8792f' : isAreaHovered ? 'rgba(168,121,47,0.9)' : 'rgba(168,121,47,0.7)'}
+                strokeWidth={hasSelectionInView ? 1.5 : 1.25}
+                dash={hasSelectionInView ? undefined : [6, 4]}
                 cornerRadius={4}
                 onMouseEnter={() => setIsAreaHovered(true)}
                 onMouseLeave={() => setIsAreaHovered(false)}

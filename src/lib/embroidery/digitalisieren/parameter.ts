@@ -32,6 +32,8 @@ export interface StickParameter {
   minLaufMm: number;
   /** Bis zu dieser Strecke wird innerhalb der Fläche direkt weitergestickt, darüber gesprungen. */
   maxVerbindungMm: number;
+  /** Längster Weg (mm) durch die Fläche, der statt eines Sprungs mit Fadenschnitt gestickt wird (Weg bleibt innerhalb der Form). */
+  maxUmwegMm: number;
   /** Länge der Sicherungsstiche am Anfang und Ende jeder Nähsequenz. */
   sicherungMm: number;
   /** Ab dieser Sprunglänge werden vor und nach dem Sprung Sicherungsstiche gesetzt. */
@@ -54,6 +56,7 @@ export const STANDARD_PARAMETER: StickParameter = {
   punktMaxMm: 2.5,
   minLaufMm: 0.5,
   maxVerbindungMm: 3.5,
+  maxUmwegMm: 25,
   sicherungMm: 0.6,
   sprungSicherungAbMm: 5,
   maxStiche: 150_000,
@@ -62,3 +65,9 @@ export const STANDARD_PARAMETER: StickParameter = {
 
 /** DST kennt Stichversätze bis ±121 Einheiten à 0,1 mm: größere Wege werden in mehrere Sprünge/Stiche zerlegt. */
 export const DST_MAX_SCHRITT_EINHEITEN = 121;
+/** JEF (Janome): Versatz je Achse als vorzeichenbehaftetes Byte, 0x80 ist als Befehlspräfix belegt → höchstens ±127. */
+export const JEF_MAX_SCHRITT_EINHEITEN = 127;
+/** PEC (PES/Brother): 12-Bit-Versatz, ±2047. */
+export const PEC_MAX_SCHRITT_EINHEITEN = 2047;
+/** Sprünge ab dieser Länge (mm) mitten in einer Farbe bekommen einen Fadenschnitt (kürzere bleiben ohne). */
+export const SCHNITT_AB_MM = 3;

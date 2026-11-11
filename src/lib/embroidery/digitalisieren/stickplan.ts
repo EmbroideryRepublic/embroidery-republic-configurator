@@ -86,13 +86,33 @@ class Naehbauer {
     this.inSequenz = false;
   }
 
-  /** Näht einen Pfad. `innen` entscheidet, ob ein kurzer Weg zum Pfadanfang ohne Sprung (innerhalb der Fläche) geht. */
-  naehe(punkte: Pt[], innen: (a: Pt, b: Pt) => boolean): void {
+  /** Näht einen Weg Punkt für Punkt; Strecken über der längsten Stichlänge werden gleichmäßig unterteilt. */
+  private laufeZu(weg: Pt[]): void {
+    for (const ziel of weg) {
+      const von = this.aktuell!;
+      const laenge = abstandMm(von, ziel);
+      const teile = Math.max(1, Math.ceil(laenge / this.p.maxStichMm));
+      for (let i = 1; i <= teile; i++) {
+        this.stichZu({ x: von.x + ((ziel.x - von.x) * i) / teile, y: von.y + ((ziel.y - von.y) * i) / teile });
+      }
+    }
+  }
+
+  /**
+   * Näht einen Pfad. `innen` entscheidet, ob ein kurzer Weg zum Pfadanfang ohne Sprung (innerhalb der Fläche) geht;
+   * `weg` liefert sonst (wenn vorhanden) einen Umweg durch die Fläche – das spart den Fadenschnitt und die Sicherungsstiche.
+   */
+  naehe(punkte: Pt[], innen: (a: Pt, b: Pt) => boolean, weg?: (a: Pt, b: Pt) => Pt[] | null): void {
     if (punkte.length === 0) return;
     const p0 = punkte[0]!;
-    const naehe = this.aktuell !== null && this.inSequenz && abstandMm(this.aktuell, p0) <= this.p.maxVerbindungMm && innen(this.aktuell, p0);
+    const abstand = this.aktuell !== null ? abstandMm(this.aktuell, p0) : Infinity;
+    const naehe = this.aktuell !== null && this.inSequenz && abstand <= this.p.maxVerbindungMm && innen(this.aktuell, p0);
+    let umweg: Pt[] | null = null;
+    if (!naehe && weg && this.aktuell !== null && this.inSequenz && abstand <= this.p.maxUmwegMm) umweg = weg(this.aktuell, p0);
     if (naehe) {
       if (abstandMm(this.aktuell!, p0) > 0.01) this.stichZu(p0);
+    } else if (umweg) {
+      this.laufeZu(umweg);
     } else {
       this.beendeSequenz();
       this.sprungZu(p0);
@@ -158,6 +178,84 @@ function sticheKleinteil(bauer: Naehbauer, gross: Maske, beschriftung: Int32Arra
   const punkt = (grad: number): Pt => ({ x: cx + r * Math.cos((grad * Math.PI) / 180), y: cy + r * Math.sin((grad * Math.PI) / 180) });
   bauer.naehe([punkt(0), punkt(180), punkt(240), punkt(60), punkt(120), punkt(300)], () => true);
   bauer.beendeSequenz();
+}
+
+/**
+ * Sucht einen Weg von a nach b, der innerhalb der Maske bleibt (Breitensuche auf dem Raster, dann Begradigen über
+ * Sichtlinien). Gibt die Wegpunkte OHNE den Start, MIT dem Ziel zurück – oder null, wenn es keinen Weg gibt oder er länger
+ * als `maxMm` wäre (dann ist ein Sprung mit Fadenschnitt günstiger).
+ */
+function findeWeg(maske: Maske, ppm: number, a: Pt, b: Pt, maxMm: number): Pt[] | null {
+  const ax = Math.floor(a.x * ppm);
+  const ay = Math.floor(a.y * ppm);
+  const bx = Math.floor(b.x * ppm);
+  const by = Math.floor(b.y * ppm);
+  const innenPx = (x: number, y: number) => x >= 0 && y >= 0 && x < maske.breite && y < maske.hoehe && maske.daten[y * maske.breite + x] === 1;
+  if (!innenPx(ax, ay) || !innenPx(bx, by)) return null;
+  const rand = Math.ceil(maxMm * ppm * 0.5);
+  const x0 = Math.max(0, Math.min(ax, bx) - rand);
+  const y0 = Math.max(0, Math.min(ay, by) - rand);
+  const x1 = Math.min(maske.breite - 1, Math.max(ax, bx) + rand);
+  const y1 = Math.min(maske.hoehe - 1, Math.max(ay, by) + rand);
+  const w = x1 - x0 + 1;
+  const h = y1 - y0 + 1;
+  const eltern = new Int32Array(w * h).fill(-2);
+  const start = (ay - y0) * w + (ax - x0);
+  const ziel = (by - y0) * w + (bx - x0);
+  const schlange = new Int32Array(w * h);
+  let kopf = 0;
+  let ende = 0;
+  schlange[ende++] = start;
+  eltern[start] = -1;
+  const grenze = Math.ceil(maxMm * ppm * 1.15);
+  const tiefe = new Int32Array(w * h);
+  let gefunden = false;
+  while (kopf < ende && !gefunden) {
+    const i = schlange[kopf++]!;
+    const x = i % w;
+    const y = (i - x) / w;
+    if (tiefe[i]! > grenze) continue;
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        if (dx === 0 && dy === 0) continue;
+        const nx = x + dx;
+        const ny = y + dy;
+        if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
+        const j = ny * w + nx;
+        if (eltern[j] !== -2 || !innenPx(nx + x0, ny + y0)) continue;
+        eltern[j] = i;
+        tiefe[j] = tiefe[i]! + 1;
+        schlange[ende++] = j;
+        if (j === ziel) gefunden = true;
+      }
+    }
+  }
+  if (!gefunden) return null;
+  const rueckwaerts: Pt[] = [];
+  for (let i = ziel; i !== -1; i = eltern[i]!) {
+    const x = i % w;
+    const y = (i - x) / w;
+    rueckwaerts.push({ x: (x + x0 + 0.5) / ppm, y: (y + y0 + 0.5) / ppm });
+  }
+  const pfad = rueckwaerts.reverse();
+  pfad[0] = a;
+  pfad[pfad.length - 1] = b;
+  // Begradigen: von jedem Punkt zum weitesten, der in direkter Sicht innerhalb der Maske liegt.
+  const gerade: Pt[] = [];
+  let ist = 0;
+  while (ist < pfad.length - 1) {
+    let weit = pfad.length - 1;
+    while (weit > ist + 1 && !streckeInnen(maske, ppm, pfad[ist]!, pfad[weit]!)) weit--;
+    gerade.push(pfad[weit]!);
+    ist = weit;
+  }
+  let laenge = 0;
+  let vor = a;
+  for (const pt of gerade) {
+    laenge += abstandMm(vor, pt);
+    vor = pt;
+  }
+  return laenge <= maxMm ? gerade : null;
 }
 
 function sticheEbene(bauer: Naehbauer, ebene: FarbEbene, p: StickParameter, hinweise: string[]): void {
@@ -245,7 +343,8 @@ function sticheEbene(bauer: Naehbauer, ebene: FarbEbene, p: StickParameter, hinw
       });
       const unterVerbindung = dilatiere(unterMaske, Math.max(1, Math.round(0.2 * ppm)));
       const innenUnter = (a: Pt, b: Pt) => streckeInnen(unterVerbindung, ppm, a, b);
-      for (const reihe of unterReihen) for (const lauf of reihe.laeufe) bauer.naehe(lauf.punkte, innenUnter);
+      const wegUnter = (a: Pt, b: Pt) => findeWeg(unterVerbindung, ppm, a, b, p.maxUmwegMm);
+      for (const reihe of unterReihen) for (const lauf of reihe.laeufe) bauer.naehe(lauf.punkte, innenUnter, wegUnter);
     }
 
     // Füllung
@@ -256,7 +355,8 @@ function sticheEbene(bauer: Naehbauer, ebene: FarbEbene, p: StickParameter, hinw
       maxStichMm: p.maxStichMm,
       minLaufMm: p.minLaufMm,
     });
-    for (const reihe of reihen) for (const lauf of reihe.laeufe) bauer.naehe(lauf.punkte, innen);
+    const weg = (a: Pt, b: Pt) => findeWeg(verbindung, ppm, a, b, p.maxUmwegMm);
+    for (const reihe of reihen) for (const lauf of reihe.laeufe) bauer.naehe(lauf.punkte, innen, weg);
     bauer.beendeSequenz();
   }
 }

@@ -22,6 +22,7 @@ import { digitalisiereLogo, digitalisiereText } from '@/lib/embroidery/digitalis
 import { renderStickvorschau } from '@/lib/embroidery/digitalisieren/vorschau';
 import { STANDARD_PARAMETER } from '@/lib/embroidery/digitalisieren/parameter';
 import type { Raster } from '@/lib/embroidery/digitalisieren/maske';
+import type { GarnZuordnung } from '@/lib/embroidery/digitalisieren/formate';
 import type { PrintView } from '@/types';
 
 /** Auflösung des Rasters: 254 dpi = 10 Bildpunkte je Millimeter (passt zu STANDARD_PARAMETER.pxProMm). */
@@ -34,12 +35,16 @@ export interface StickdateiKennzahlen {
   hoeheMm: number;
   stiche: number;
   sprunge: number;
+  /** Fadenschnitte in der Datei (vor jedem Sprung ab 3 mm). */
+  schnitte: number;
   farben: number;
+  /** Garnfarbe des Motivs und nächstliegender Palettenplatz bei Brother (PES) und Janome (JEF). */
+  garne: GarnZuordnung[];
   hinweise: string[];
 }
 
 export type StickdateiErgebnis =
-  | { ok: true; dst: Buffer; vorschauPng: Buffer; dateiname: string; kennzahlen: StickdateiKennzahlen }
+  | { ok: true; dateien: { dst: Buffer; pes: Buffer; jef: Buffer }; vorschauPng: Buffer; dateiname: string; kennzahlen: StickdateiKennzahlen }
   | { ok: false; status: 404 | 422; grund: string };
 
 function ohneUmlaute(wert: string): string {
@@ -97,8 +102,8 @@ export async function erzeugeStickdatei(orderId: string, elementId: string): Pro
   const dateiname =
     `${saeubereFuerDateisystem(bestellnummer)}_Position-${positionIndex + 1}_` +
     `${saeubereFuerDateisystem(ohneUmlaute(ansichtLabel(zeile.view as PrintView)))}_${art}-${nummer}_Stickdatei`;
-  // Im Kopf der DST steht ein kurzer Name (16 Zeichen, nur ASCII).
-  const kopfName = `${bestellnummer.replace(/[^A-Za-z0-9]/g, '')}${art[0]}${nummer}`.slice(-16);
+  // Im Kopf der Dateien steht ein kurzer Name (nur ASCII; PES zeigt 8 Zeichen): Art+Nummer, dann das Ende der Bestellnummer.
+  const kopfName = `${art[0]}${nummer}${bestellnummer.replace(/[^A-Za-z0-9]/g, '').slice(-6)}`;
 
   let ergebnis;
   if (zeile.element_type === 'text') {
@@ -125,7 +130,7 @@ export async function erzeugeStickdatei(orderId: string, elementId: string): Pro
   if (!ergebnis.ok) return { ok: false, status: 422, grund: ergebnis.grund };
   return {
     ok: true,
-    dst: ergebnis.dst,
+    dateien: { dst: ergebnis.dateien.dst, pes: ergebnis.dateien.pes, jef: ergebnis.dateien.jef },
     vorschauPng: renderStickvorschau(ergebnis.plan, { pxProMm: 8, zeigeSpruenge: true }),
     dateiname,
     kennzahlen: {
@@ -133,7 +138,9 @@ export async function erzeugeStickdatei(orderId: string, elementId: string): Pro
       hoeheMm: Math.round(ergebnis.plan.hoeheMm * 10) / 10,
       stiche: ergebnis.plan.stichzahl,
       sprunge: ergebnis.plan.sprungzahl,
+      schnitte: ergebnis.dateien.schnitte,
       farben: ergebnis.plan.bloecke.length,
+      garne: ergebnis.dateien.garne,
       hinweise: ergebnis.hinweise,
     },
   };

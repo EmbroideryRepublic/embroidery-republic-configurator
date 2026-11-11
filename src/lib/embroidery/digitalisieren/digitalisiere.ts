@@ -11,16 +11,17 @@
 import { STANDARD_PARAMETER, type StickParameter } from './parameter';
 import { ebeneAusAlpha, entferneRandHintergrund, farbEbenen, schneideZu, type Raster } from './maske';
 import { erzeugeStickplan, StickGrenzeUeberschritten, type Stickplan } from './stickplan';
-import { schreibeDst } from './dst';
+import { schreibeStickdateien, type Stickdateien } from './formate';
 
-export type DigitalisierErgebnis = { ok: true; plan: Stickplan; dst: Buffer; hinweise: string[] } | { ok: false; grund: string };
+export type DigitalisierErgebnis = { ok: true; plan: Stickplan; /** DST (Kurzform für dateien.dst) */ dst: Buffer; dateien: Stickdateien; hinweise: string[] } | { ok: false; grund: string };
 
 function baue(plan: Stickplan, name: string, zusatzHinweise: string[]): DigitalisierErgebnis {
   const hinweise = [...zusatzHinweise, ...plan.hinweise];
   if (plan.bloecke.length > 1) {
-    hinweise.push(`${plan.bloecke.length} Garnfarben: Die Farbwechsel sind in der Datei enthalten, die Garnzuordnung erfolgt an der Maschine.`);
+    hinweise.push(`${plan.bloecke.length} Garnfarben: Die Farbwechsel sind in allen Dateien enthalten; PES und JEF tragen die nächstliegende Palettenfarbe, bei DST erfolgt die Garnzuordnung an der Maschine.`);
   }
-  return { ok: true, plan, dst: schreibeDst(plan, name), hinweise };
+  const dateien = schreibeStickdateien(plan, name);
+  return { ok: true, plan, dst: dateien.dst, dateien, hinweise };
 }
 
 /** Text: eine Garnfarbe aus der Schriftfarbe, die Form aus dem Alphakanal. */

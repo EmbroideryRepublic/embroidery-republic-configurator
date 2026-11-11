@@ -12,7 +12,8 @@
  * DST kennt nur "Farbwechsel", keine Garnfarben. Die Reihenfolge der Farben steht in der Bestellung/Vorschau; die
  * Zuordnung zu Garnnummern geschieht an der Maschine oder in der Software.
  */
-import { DST_MAX_SCHRITT_EINHEITEN } from './parameter';
+import { planZuBefehlen, type Befehlsfolge } from './befehle';
+import { DST_MAX_SCHRITT_EINHEITEN, SCHNITT_AB_MM } from './parameter';
 import type { Stickplan } from './stickplan';
 
 export type DstArt = 'stich' | 'sprung' | 'farbwechsel' | 'ende';
@@ -82,55 +83,57 @@ function ascii(text: string, laenge: number): string {
   return text.replace(/[^\x20-\x7E]/g, '_').padEnd(laenge, ' ').slice(0, laenge);
 }
 
-/** Einheiten (0,1 mm) einer Position; y wird gespiegelt, weil DST nach oben zählt. */
-function inEinheiten(x: number, y: number): { x: number; y: number } {
-  return { x: Math.round(x * 10), y: -Math.round(y * 10) };
-}
+/**
+ * Fadenschnitt in DST: Das Format hat keinen eigenen Schnittbefehl. Üblich (Tajima-Konvention, auch von Wilcom und
+ * pyembroidery so geschrieben) sind drei Sprünge, die sich zu null aufheben; die Maschine schneidet dann den Faden.
+ */
+const SCHNITT_SPRUENGE: ReadonlyArray<readonly [number, number]> = [
+  [2, 2],
+  [-4, -4],
+  [2, 2],
+];
 
 /**
- * Schreibt den Stickplan als DST. Wege über ±12,1 mm werden in Sprünge (bzw. bei Stichen in mehrere Stiche) zerlegt;
- * Positionen werden absolut gerundet, damit sich keine Rundungsfehler aufsummieren.
+ * Schreibt die Befehlsfolge als DST. Wege über ±12,1 mm sind in der Befehlsfolge bereits in Schritte zerlegt (absolut gerundet,
+ * damit sich keine Rundungsfehler aufsummieren); y wird gespiegelt, weil DST nach OBEN zählt.
  */
-export function schreibeDst(plan: Stickplan, name: string): Buffer {
+export function schreibeDstAusBefehlen(folge: Befehlsfolge, name: string): Buffer {
   const eintraege: Array<{ dx: number; dy: number; art: Exclude<DstArt, 'ende'> }> = [];
   let px = 0;
   let py = 0;
   let farbwechsel = 0;
+  for (const b of folge.befehle) {
+    if (b.art === 'ende') break;
+    if (b.art === 'schnitt') {
+      for (const [dx, dy] of SCHNITT_SPRUENGE) eintraege.push({ dx, dy, art: 'sprung' });
+      continue;
+    }
+    if (b.art === 'farbwechsel') {
+      eintraege.push({ dx: 0, dy: 0, art: 'farbwechsel' });
+      farbwechsel++;
+      continue;
+    }
+    eintraege.push({ dx: b.x - px, dy: -(b.y - py), art: b.art });
+    px = b.x;
+    py = b.y;
+  }
+  // Ausdehnung aus den Einträgen selbst (inkl. der kleinen Ausschläge der Schnitt-Sprünge): So stimmt der Kopf mit der Datei überein.
   let minX = 0;
   let maxX = 0;
   let minY = 0;
   let maxY = 0;
-
-  const schiebe = (zx: number, zy: number, art: 'stich' | 'sprung') => {
-    const dx = zx - px;
-    const dy = zy - py;
-    const schritte = Math.max(1, Math.ceil(Math.max(Math.abs(dx), Math.abs(dy)) / DST_MAX_SCHRITT_EINHEITEN));
-    // Gleichmäßig zerlegen: Zwischenziele werden ABSOLUT gerundet, damit sich keine Rundungsfehler aufsummieren.
-    const startX = px;
-    const startY = py;
-    for (let i = 1; i <= schritte; i++) {
-      const zielX = startX + Math.round((dx * i) / schritte);
-      const zielY = startY + Math.round((dy * i) / schritte);
-      eintraege.push({ dx: zielX - px, dy: zielY - py, art });
-      px = zielX;
-      py = zielY;
-      minX = Math.min(minX, px);
-      maxX = Math.max(maxX, px);
-      minY = Math.min(minY, py);
-      maxY = Math.max(maxY, py);
+  {
+    let ax = 0;
+    let ay = 0;
+    for (const e of eintraege) {
+      ax += e.dx;
+      ay += e.dy;
+      minX = Math.min(minX, ax);
+      maxX = Math.max(maxX, ax);
+      minY = Math.min(minY, ay);
+      maxY = Math.max(maxY, ay);
     }
-  };
-
-  plan.bloecke.forEach((block, index) => {
-    if (index > 0) {
-      eintraege.push({ dx: 0, dy: 0, art: 'farbwechsel' });
-      farbwechsel++;
-    }
-    for (const s of block.stiche) {
-      const z = inEinheiten(s.x, s.y);
-      schiebe(z.x, z.y, s.art);
-    }
-  });
+  }
 
   const stichzahl = eintraege.length;
   const kopf = [
@@ -163,6 +166,11 @@ export function schreibeDst(plan: Stickplan, name: string): Buffer {
   daten[eintraege.length * 3 + 1] = ende[1];
   daten[eintraege.length * 3 + 2] = ende[2];
   return Buffer.concat([kopfBytes, daten]);
+}
+
+/** Schreibt den Stickplan als DST (siehe schreibeDstAusBefehlen). */
+export function schreibeDst(plan: Stickplan, name: string): Buffer {
+  return schreibeDstAusBefehlen(planZuBefehlen(plan, { maxSchritt: DST_MAX_SCHRITT_EINHEITEN, schnittAbMm: SCHNITT_AB_MM }), name);
 }
 
 export interface GelesenesDst {

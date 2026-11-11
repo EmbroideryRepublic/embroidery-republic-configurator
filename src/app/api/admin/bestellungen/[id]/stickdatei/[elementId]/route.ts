@@ -1,8 +1,10 @@
 /**
  * Admin-Download der fertig digitalisierten STICKDATEI EINES Motivs (Text oder Logo) einer Bestellung.
  *
- *   …/stickdatei/<elementId>            Stickdatei im Format DST (für die Stickmaschine, ohne Nacharbeit lesbar)
- *   …/stickdatei/<elementId>?vorschau=1 Stickvorschau als PNG (Garnlinien in Garnfarbe, Sprünge rot gestrichelt)
+ *   …/stickdatei/<elementId>              Stickdatei im Format DST (Tajima, Barudan, ZSK, SWF … – Standard)
+ *   …/stickdatei/<elementId>?format=pes   dieselbe Stickerei als PES (Brother, Babylock, Bernina Brother-Reihe)
+ *   …/stickdatei/<elementId>?format=jef   dieselbe Stickerei als JEF (Janome)
+ *   …/stickdatei/<elementId>?vorschau=1   Stickvorschau als PNG (Garnlinien in Garnfarbe, Sprünge rot gestrichelt)
  *   …/stickdatei/<elementId>?info=1     Kennzahlen und Hinweise als JSON (Größe, Stiche, Farben, Grenzen des Motivs)
  *
  * Die Datei entsteht auf Abruf aus den gespeicherten Bestelldaten (lib/admin/stickdatei.ts); es wird nichts gespeichert.
@@ -12,6 +14,7 @@
 import { NextResponse } from 'next/server';
 import { istAdmin } from '@/lib/admin/auth';
 import { erzeugeStickdatei } from '@/lib/admin/stickdatei';
+import { istStickFormat, type StickFormat } from '@/lib/embroidery/digitalisieren/formate';
 import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
 
 // Logos mit vielen Farben brauchen einige Sekunden.
@@ -29,6 +32,11 @@ export async function GET(request: Request, { params }: { params: { id: string; 
   }
 
   const abfrage = new URL(request.url).searchParams;
+  const formatWunsch = abfrage.get('format');
+  if (formatWunsch !== null && !istStickFormat(formatWunsch)) {
+    return NextResponse.json({ fehler: 'Unbekanntes Format. Möglich: dst, pes, jef.' }, { status: 400 });
+  }
+  const format: StickFormat = formatWunsch !== null ? formatWunsch : 'dst';
   let ergebnis;
   try {
     ergebnis = await erzeugeStickdatei(params.id, params.elementId);
@@ -42,7 +50,7 @@ export async function GET(request: Request, { params }: { params: { id: string; 
 
   const keinCache = { 'cache-control': 'private, no-store' };
   if (abfrage.get('info') === '1') {
-    return NextResponse.json({ ...ergebnis.kennzahlen, dateiname: `${ergebnis.dateiname}.dst` }, { headers: keinCache });
+    return NextResponse.json({ ...ergebnis.kennzahlen, dateiname: ergebnis.dateiname }, { headers: keinCache });
   }
   if (abfrage.get('vorschau') === '1') {
     return new NextResponse(new Uint8Array(ergebnis.vorschauPng), {
@@ -50,9 +58,9 @@ export async function GET(request: Request, { params }: { params: { id: string; 
     });
   }
 
-  const dateiname = `${ergebnis.dateiname}.dst`;
+  const dateiname = `${ergebnis.dateiname}.${format}`;
   const asciiName = dateiname.replace(/[^\x20-\x7E]/g, '_').replace(/["\\]/g, '');
-  return new NextResponse(new Uint8Array(ergebnis.dst), {
+  return new NextResponse(new Uint8Array(ergebnis.dateien[format]), {
     headers: {
       'content-type': 'application/octet-stream',
       'content-disposition': `attachment; filename="${asciiName}"; filename*=UTF-8''${encodeURIComponent(dateiname)}`,

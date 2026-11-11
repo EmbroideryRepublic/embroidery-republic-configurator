@@ -7,9 +7,9 @@ function basis(orderId: string, elementId: string): string {
   return `/api/admin/bestellungen/${encodeURIComponent(orderId)}/stickdatei/${encodeURIComponent(elementId)}`;
 }
 
-/** Die fertig digitalisierte Stickdatei (DST) zum Herunterladen. */
-export function stickdateiHref(orderId: string, elementId: string): string {
-  return basis(orderId, elementId);
+/** Die fertig digitalisierte Stickdatei zum Herunterladen: DST (Standard), PES (Brother) oder JEF (Janome). */
+export function stickdateiHref(orderId: string, elementId: string, format: 'dst' | 'pes' | 'jef' = 'dst'): string {
+  return format === 'dst' ? basis(orderId, elementId) : `${basis(orderId, elementId)}?format=${format}`;
 }
 
 /** Stickvorschau (PNG mit den Garnlinien) – zum Ansehen im Browser. */

@@ -15,6 +15,7 @@ import type { TranslationKey } from '@/lib/i18n/translations';
 import type { CartItem, PrintView } from '@/types';
 import { DECORATION_POSITION_ORDER, positionTranslationKey } from '@/config/decorationPositions';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
+import { istNurAufAnfrage } from '@/config/bestellweg';
 
 
 interface SummaryPanelProps {
@@ -42,6 +43,10 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
 
   const quantity = sumSizeQuantities(sizeQuantities);
   const product = productId ? getProduct(productId) : null;
+  // Stickerei gibt es nur auf Anfrage (config/bestellweg.ts): Der Preis bleibt
+  // sichtbar und dynamisch, gilt aber ausdrücklich nur als Kostenschätzung –
+  // statt "In den Warenkorb" wird die Position zur Anfrage hinzugefügt.
+  const nurAnfrage = istNurAufAnfrage(printMethod);
   // DTF hat seit 2026-08-09 eine eigene feste Positionsstaffel statt eines
   // Prozentrabatts (siehe DTF_POSITION_TIERS in calculatePrice.ts) – die
   // Chip-Leiste und der "Noch X Stück bis…"-Hinweis unten müssen deshalb
@@ -269,7 +274,9 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
           aria-atomic="true"
         >
           <div>
-            <span className="text-sm font-medium text-brand">{t('summary_total_price')}</span>
+            <span className="text-sm font-medium text-brand">
+              {t(nurAnfrage ? 'summary_total_price_estimate' : 'summary_total_price')}
+            </span>
             {/* Ausbauplan (quickwins): macht den Gesamtpreis nachvollziehbar
                 ("20,79 €/Stk. × 22" statt einer nicht herleitbaren Summe) –
                 stärkt den Eindruck der Mengenstaffel als fair, reduziert
@@ -278,7 +285,12 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
               {formatPrice(unitPrice)}/Stk. × {quantity}
             </p>
           </div>
-          <span className="font-serif text-xl font-bold text-gold-dark">{formatPrice(totalPrice)}</span>
+          {/* whitespace-nowrap: Die längere Bezeichnung bei Stickerei ("Geschätzter
+              Gesamtpreis (unverbindlich)") darf umbrechen, der Betrag nicht –
+              sonst steht in der schmalen Spalte das €-Zeichen allein in einer Zeile. */}
+          <span className={clsx('font-serif text-xl font-bold text-gold-dark', nurAnfrage && 'flex-shrink-0 whitespace-nowrap pl-2')}>
+            {formatPrice(totalPrice)}
+          </span>
         </div>
       ) : (
         <div className="rounded-lg bg-cream/70 px-3 py-2.5" aria-live="polite" aria-atomic="true">
@@ -288,6 +300,10 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
           </div>
           <p className="mt-1 text-xs text-amber-700">{t('summary_select_size_first')}</p>
         </div>
+      )}
+
+      {nurAnfrage && (
+        <p className="text-[11px] leading-relaxed text-brand/70">{t('summary_embroidery_inquiry_note')}</p>
       )}
 
       <button
@@ -302,10 +318,10 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
         {justAdded ? (
           <>
             <Check className="h-4 w-4" />
-            {t('summary_added')}
+            {t(nurAnfrage ? 'summary_added_inquiry' : 'summary_added')}
           </>
         ) : (
-          t('summary_add_to_cart')
+          t(nurAnfrage ? 'summary_add_to_inquiry' : 'summary_add_to_cart')
         )}
       </button>
       {!canAddToCart && (

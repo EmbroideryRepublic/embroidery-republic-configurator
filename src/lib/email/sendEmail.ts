@@ -59,6 +59,19 @@ interface SendEmailParams {
    * hat kein Aufrufer sie gebraucht, deshalb fehlte dieser Durchgriff.
    */
   attachments?: { filename: string; content: Buffer }[];
+  /**
+   * Weitere Versuche bei VORÜBERGEHENDEN Fehlern des Versanddienstes (kein
+   * Netz, Serverfehler, Ratenlimit). Standard 0 = ein Versuch, wie bisher.
+   *
+   * Nur für Nachrichten gedacht, deren Ausbleiben dem Betrieb schadet – die
+   * interne Meldung über eine neue Bestellung/Anfrage. Ein Fehler, der nichts
+   * mit dem Moment zu tun hat (ungültige Adresse, Absender nicht verifiziert),
+   * wird NICHT wiederholt. Ein erfolgloser Versuch hat keine Nachricht
+   * zugestellt, die Wiederholung kann also keine Doppelzustellung erzeugen.
+   */
+  wiederholungen?: number;
+  /** Pause vor jeder Wiederholung in ms (Standard 800, wächst mit jedem Versuch). */
+  wiederholungPauseMs?: number;
 }
 
 interface SendEmailResult {
@@ -78,6 +91,13 @@ export function isTestMode(): boolean {
   return process.env.EMAIL_TEST_MODE !== 'false';
 }
 
+/** Ist das ein Fehler, bei dem ein zweiter Versuch Sinn hat? */
+function istVorruebergehend(fehler: { name?: string; statusCode?: number | null }): boolean {
+  const status = fehler.statusCode ?? 0;
+  // 'application_error' meldet das Resend-SDK auch, wenn die Anfrage das Netz gar nicht verlassen hat.
+  return status >= 500 || status === 429 || ['application_error', 'rate_limit_exceeded', 'internal_server_error'].includes(fehler.name ?? '');
+}
+
 export async function sendEmail({
   to,
   subject,
@@ -86,6 +106,8 @@ export async function sendEmail({
   kontext,
   scheduledAt,
   attachments,
+  wiederholungen = 0,
+  wiederholungPauseMs = 800,
 }: SendEmailParams): Promise<SendEmailResult> {
   // ── Testmodus: nichts verlässt den Rechner ──────────────────────────
   // Bewusst {success: true} MIT Nachrichten-ID statt eines Fehlschlags: Ein
@@ -127,7 +149,7 @@ export async function sendEmail({
     const html = await render(react);
     const text = await render(react, { plainText: true });
 
-    const { data, error } = await resend.emails.send({
+    const nachricht = {
       from: getFromAddress(),
       to: effectiveTo,
       subject: effectiveSubject,
@@ -135,11 +157,24 @@ export async function sendEmail({
       text,
       ...(replyTo ? { replyTo } : {}),
       // Geplanter Versand: Resend hält die Nachricht bis zum Zeitpunkt
-      // zurück. Wird u.a. für die interne Benachrichtigung genutzt, die erst
-      // nach Ablauf der Stornofrist zugestellt werden soll.
+      // zurück. Nur nötig, wenn die interne Benachrichtigung bewusst später
+      // zugestellt werden soll (config/orderProcess.ts, Verzögerung > 0).
       ...(scheduledAt ? { scheduledAt } : {}),
       ...(attachments?.length ? { attachments: attachments.map((a) => ({ filename: a.filename, content: a.content })) } : {}),
-    });
+    };
+
+    let ergebnis = await resend.emails.send(nachricht);
+    for (let versuch = 1; versuch <= wiederholungen && ergebnis.error && istVorruebergehend(ergebnis.error); versuch++) {
+      protokoll.warnung('EMAIL', 'wiederholung', effectiveSubject, {
+        anlass: kontext.anlass,
+        bestellung: kontext.orderId,
+        versuch,
+        fehler: ergebnis.error.message,
+      });
+      await new Promise((weiter) => setTimeout(weiter, wiederholungPauseMs * versuch));
+      ergebnis = await resend.emails.send(nachricht);
+    }
+    const { data, error } = ergebnis;
     if (error) {
       await meldeEreignis({
         schwere: 'ERROR',

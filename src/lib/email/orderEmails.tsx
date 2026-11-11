@@ -26,6 +26,7 @@ import { sendEmail } from './sendEmail';
 import { getInternalNotificationAddress, getReplyToAddress } from './resendClient';
 import { OrderConfirmationEmail } from './templates/OrderConfirmationEmail';
 import { InternalOrderNotificationEmail } from './templates/InternalOrderNotificationEmail';
+import { InternalOrderCancelledEmail } from './templates/InternalOrderCancelledEmail';
 import { OrderCancellationEmail } from './templates/OrderCancellationEmail';
 import { OrderShippedEmail } from './templates/OrderShippedEmail';
 import { OrderInProductionEmail } from './templates/OrderInProductionEmail';
@@ -34,6 +35,7 @@ import { OrderProofRequestEmail } from './templates/OrderProofRequestEmail';
 import { ProofFeedbackEmail } from './templates/ProofFeedbackEmail';
 import type { OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
 import type { OrderItemsTableItem } from './templates/EmailLayout';
+import { warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 
 export async function sendOrderConfirmationEmail(
   order: OrderRecord,
@@ -47,7 +49,12 @@ export async function sendOrderConfirmationEmail(
   rechnung?: RechnungFuerEmail | null
 ): Promise<EmailVersandErgebnis> {
   const isOrder = order.orderType === 'order';
-  const subject = isOrder ? `Bestellbestätigung ${order.orderNumber}` : `Ihre Anfrage ${order.orderNumber}`;
+  // Stickerei-Anfrage: schon der Betreff sagt, dass nur der EINGANG bestätigt wird – keine Bestellung.
+  const subject = isOrder
+    ? `Bestellbestätigung ${order.orderNumber}`
+    : warenkorbNurAlsAnfrage(order.items)
+      ? `Ihre Anfrage ${order.orderNumber} ist eingegangen`
+      : `Ihre Anfrage ${order.orderNumber}`;
 
   // EIN gemeinsames Gültigkeits-Gate für Text UND Anhang – niemals getrennt
   // geprüft. Sonst könnte (z.B. bei einem leeren/defekten PDF-Puffer) der
@@ -79,22 +86,82 @@ export async function sendOrderConfirmationEmail(
 export async function sendInternalOrderNotificationEmail(
   order: OrderRecord,
   productionSheetSignedUrl: string | null,
-  /** Geplanter Zustellzeitpunkt (ISO). Bestellungen werden erst NACH Ablauf
-   *  der Stornofrist gemeldet – der Betreiber soll nicht über etwas
-   *  informiert werden, das Minuten später storniert wird. Anfragen haben
-   *  keine Frist und gehen sofort raus. */
-  scheduledAt?: string
+  /** Geplanter Zustellzeitpunkt (ISO). Ohne Angabe geht die Meldung SOFORT
+   *  raus – das ist der Regelfall für Bestellungen wie Anfragen
+   *  (config/orderProcess.ts, INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS = 0).
+   *  Nur wenn dort wieder eine Verzögerung eingestellt wird, wird sie hier
+   *  eingeplant und bei einer Stornierung zurückgezogen. */
+  scheduledAt?: string,
+  /** Download-Links auf die Originalmotive, Schlüssel = Speicherpfad
+   *  (orderIntake.ts, ladeMotivLinks). */
+  motivLinks?: Record<string, string>
 ): Promise<EmailVersandErgebnis> {
   const isOrder = order.orderType === 'order';
-  const subject = `${isOrder ? 'Neue Bestellung' : 'Neue Anfrage'}: ${order.orderNumber}`;
+  // Stickerei im Betreff: Der Betreiber erkennt im Posteingang, dass dort ein
+  // Angebot zu kalkulieren ist und keine fertige Bestellung wartet.
+  const art = isOrder ? 'Neue Bestellung' : warenkorbNurAlsAnfrage(order.items) ? 'Neue Anfrage (Stickerei)' : 'Neue Anfrage';
+  const subject = `${art}: ${order.orderNumber}`;
   const result = await sendEmail({
     to: getInternalNotificationAddress(),
     subject,
-    react: <InternalOrderNotificationEmail order={order} productionSheetSignedUrl={productionSheetSignedUrl} />,
-    // Direkt aus der Benachrichtigung heraus der Kundin/dem Kunden antworten.
+    react: (
+      <InternalOrderNotificationEmail
+        order={order}
+        productionSheetSignedUrl={productionSheetSignedUrl}
+        motivLinks={motivLinks}
+      />
+    ),
+    // Direkt aus der Benachrichtigung heraus der Kundin/dem Kunden antworten:
+    // "Antworten" im Mailprogramm geht an die Adresse der Kundschaft, nicht an
+    // den Absender – so entsteht das individuelle Angebot.
     replyTo: order.contact.email,
     kontext: { anlass: 'internal_order_notification', orderId: order.id },
+    // Diese Meldung darf nicht an einem kurzen Aussetzer des Versanddienstes
+    // scheitern (Netz, Serverfehler, Ratenlimit): zwei weitere Versuche.
+    wiederholungen: 2,
     ...(scheduledAt ? { scheduledAt } : {}),
+  });
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
+}
+
+/**
+ * Meldet dem Betreiber, dass die Kundschaft eine Bestellung innerhalb der
+ * Stornofrist selbst storniert hat.
+ *
+ * Gehört zur sofortigen Eingangsmeldung: Sie ist beim Betreiber bereits
+ * angekommen und lässt sich nicht mehr zurückziehen – also folgt diese
+ * Mitteilung, bevor Ware beschafft wird. Wird ausschließlich von orderService
+ * aufgerufen, NACH dem erfolgreichen Statuswechsel; ein Fehlschlag hier darf
+ * die Stornierung nicht in Frage stellen.
+ */
+export async function sendInternalOrderCancelledEmail(params: {
+  orderId: string;
+  orderNumber: string;
+  kundeName: string | null;
+  kundeEmail: string | null;
+  storniertAm: string;
+  erstattungFaellig: boolean;
+}): Promise<EmailVersandErgebnis> {
+  const result = await sendEmail({
+    to: getInternalNotificationAddress(),
+    subject: `Bestellung storniert: ${params.orderNumber}`,
+    react: (
+      <InternalOrderCancelledEmail
+        orderNumber={params.orderNumber}
+        kundeName={params.kundeName}
+        kundeEmail={params.kundeEmail}
+        storniertAm={params.storniertAm}
+        erstattungFaellig={params.erstattungFaellig}
+      />
+    ),
+    // Antworten gehen an die Kundschaft (auch hier möglich: kurze Rückfrage).
+    ...(params.kundeEmail ? { replyTo: params.kundeEmail } : {}),
+    kontext: { anlass: 'internal_order_cancelled', orderId: params.orderId },
+    wiederholungen: 2,
   });
   return {
     success: result.success,

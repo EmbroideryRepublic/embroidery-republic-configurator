@@ -27,8 +27,10 @@ const STUNDE = 60 * MINUTE;
  *
  * Dieser Wert bestimmt zugleich:
  *  - ab wann die Bestellung im Adminbereich erscheint,
- *  - wann die interne Benachrichtigung versendet wird,
  *  - ab wann Lieferantenprozesse überhaupt starten dürfen.
+ *
+ * (Die interne Benachrichtigung hängt seit 2026-11-08 NICHT mehr daran – siehe
+ * INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS.)
  *
  * Er steht so auch in den AGB (§ Stornierung) – eine Änderung hier
  * erfordert eine Anpassung des Rechtstextes.
@@ -49,13 +51,23 @@ export const STORNOFRIST_MS = 2 * STUNDE;
 export const BESTELLANSICHT_TOKEN_GUELTIGKEIT_MS = 90 * 24 * STUNDE;
 
 /**
- * Verzögerung der INTERNEN Benachrichtigung an den Betreiber.
+ * Verzögerung der INTERNEN Benachrichtigung an den Betreiber – 0 = sofort.
  *
- * Identisch zur Stornofrist: Der Betreiber soll nicht über Bestellungen
- * informiert werden, die Minuten später storniert werden. Als eigene
- * Konstante geführt, damit beide Werte später unabhängig einstellbar sind.
+ * ── Warum sofort (Entscheidung des Betreibers, 2026-11-08) ────────────────
+ * Der Betreiber will bei JEDEM Eingang unmittelbar informiert werden. Bis
+ * dahin wurde die Meldung zu Bestellungen um die Stornofrist (2 Stunden)
+ * zurückgehalten, damit niemand über etwas informiert wird, das Minuten später
+ * storniert wird – Anfragen gingen schon immer sofort raus.
+ *
+ * Der Schutz davor bleibt erhalten, nur an anderer Stelle: Die Meldung nennt
+ * das Ende der Stornofrist ausdrücklich ("erst danach beschaffen"), und
+ * storniert die Kundschaft innerhalb der Frist, folgt eine zweite Mail
+ * "Bestellung storniert" (orderService.storniereBestellungDurchKunden).
+ *
+ * Ein Wert größer 0 plant die Meldung wieder über Resend (`scheduledAt`) und
+ * zieht sie bei einer Stornierung zurück – dieser Weg ist weiterhin vorhanden.
  */
-export const INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS = STORNOFRIST_MS;
+export const INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS = 0;
 
 /** Ende der Stornofrist einer Bestellung. */
 export function stornofristEndet(createdAt: Date | string): Date {
@@ -75,8 +87,9 @@ export function stornofristLaeuftNoch(createdAt: Date | string, jetzt: Date = ne
 
 /**
  * Ist die Bestellung so weit, dass sie bearbeitet werden darf? Genau dann
- * erscheint sie im Adminbereich, geht die interne Benachrichtigung raus und
- * dürfen Lieferantenprozesse starten.
+ * erscheint sie im Adminbereich und dürfen Lieferantenprozesse starten (die
+ * interne E-Mail geht davon unabhängig sofort raus, siehe
+ * INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS).
  */
 export function bearbeitungFreigegeben(createdAt: Date | string, jetzt: Date = new Date()): boolean {
   return !stornofristLaeuftNoch(createdAt, jetzt);

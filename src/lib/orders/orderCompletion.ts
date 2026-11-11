@@ -37,7 +37,9 @@ import { uploadProductionFile, getProductionFileSignedUrl, downloadProductionFil
 import { renderProductionSheet } from '@/lib/production/buildProductionSheet';
 import { renderPrintView } from '@/lib/rendering/renderPrintView';
 import { toRenderableElement } from '@/lib/rendering/mapOrderElements';
-import { verarbeiteBestelleingang, versucheBestellbestaetigung } from './orderIntake';
+import { verarbeiteBestelleingang, versucheBestellbestaetigung, ladeMotivLinks } from './orderIntake';
+import { sendInternalOrderNotificationEmail } from '@/lib/email/orderEmails';
+import { BETREIBERMELDUNG_NACHHOLEN_BIS_STUNDEN, BETREIBERMELDUNG_NACHHOLEN_NACH_MINUTEN } from '@/config/betreibermeldung';
 import { protokolliereBestellereignis, protokolliereVersand, persistiereKritischMitWiederholung } from './orderService';
 import { buildOrderNumber, PRINT_VIEW_LABELS } from '@/lib/actions/orderTypes';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
@@ -380,6 +382,140 @@ export async function holeOffeneBestellbestaetigungenNach(
   }
 
   return { gefunden: (data ?? []).length, zugestellt, weiterhinOffen };
+}
+
+/**
+ * Holt die Meldung an den Betreiber nach, die zu einer Anfrage oder Bestellung
+ * NIE zugestellt wurde.
+ *
+ * ── Warum das nötig ist ────────────────────────────────────────────────────
+ * Die Meldung geht beim Eingang sofort raus – mit zwei weiteren Versuchen bei
+ * einem kurzen Aussetzer des Versanddienstes (sendEmail, wiederholungen).
+ * Danach gab es bisher keinen Weg zurück: Schlug der Versand dauerhaft fehl
+ * (Absender nicht verifiziert, Schlüssel ungültig) oder wurde die Anfrage mitten
+ * im Abschluss hart abgebrochen (Zeitüberschreitung der Funktion), blieb der
+ * Eingang unbemerkt, bis der Betreiber zufällig in den Adminbereich sah. Mit
+ * Stickerei NUR auf Anfrage ist die Meldung der Eingang des Geschäfts selbst.
+ *
+ * ── Wann eine Meldung als fällig gilt ──────────────────────────────────────
+ * Anfragen sowie Bestellungen, die bezahlt sind oder auf Rechnung laufen
+ * (eine noch unbezahlte Karten-/PayPal-Bestellung wird erst nach der Zahlung
+ * gemeldet), nicht storniert, nach mindestens BETREIBERMELDUNG_NACHHOLEN_NACH_
+ * MINUTEN und höchstens BETREIBERMELDUNG_NACHHOLEN_BIS_STUNDEN Stunden.
+ *
+ * Als bereits gemeldet gilt, wer entweder die Nachweis-ID
+ * (`internal_notification_email_id`) trägt ODER in der Bestell-Historie einen
+ * erfolgreichen Versand der Meldung hat. Das Zweite ist wichtig: Anfragen aus
+ * der Zeit VOR der sofortigen Meldung tragen keine Nachweis-ID, obwohl sie
+ * gemeldet wurden – ohne diese Prüfung gingen sie beim ersten Lauf alle noch
+ * einmal raus.
+ *
+ * Ruft bewusst NUR die Meldung auf, nicht die gesamte Phase 2 (kein erneutes
+ * Rendering/PDF) – dieselbe Begründung wie bei `holeOffeneBestellbestaetigungenNach`.
+ * Das Produktionsblatt wird verlinkt, sofern es existiert; die geschätzte
+ * Stichzahl ist nicht gespeichert und fehlt in einer nachgeholten Meldung.
+ *
+ * Von der Cron-Route aufgerufen (siehe process-supplier-orders/route.ts);
+ * wirft nie.
+ */
+export async function holeOffeneBetreibermeldungenNach(
+  limit: number
+): Promise<{ gefunden: number; zugestellt: number; weiterhinOffen: number }> {
+  const db = createAdminClient();
+  const jetzt = Date.now();
+  const fruehestens = new Date(jetzt - BETREIBERMELDUNG_NACHHOLEN_BIS_STUNDEN * 3_600_000).toISOString();
+  const spaetestens = new Date(jetzt - BETREIBERMELDUNG_NACHHOLEN_NACH_MINUTEN * 60_000).toISOString();
+
+  // Zwei einfache Abfragen statt einer verschachtelten Bedingung: leichter zu
+  // lesen und unabhängig von der Filter-Syntax des Datenbankdienstes.
+  const [anfragen, bestellungen] = await Promise.all([
+    db
+      .from('orders')
+      .select('id, internal_notification_email_id, pdf_url')
+      .eq('order_type', 'inquiry')
+      .neq('status', 'cancelled')
+      .gte('created_at', fruehestens)
+      .lte('created_at', spaetestens)
+      .order('created_at', { ascending: true })
+      .limit(100),
+    db
+      .from('orders')
+      .select('id, internal_notification_email_id, pdf_url')
+      .eq('order_type', 'order')
+      .in('payment_status', ['paid', 'not_required'])
+      .neq('status', 'cancelled')
+      .gte('created_at', fruehestens)
+      .lte('created_at', spaetestens)
+      .order('created_at', { ascending: true })
+      .limit(100),
+  ]);
+
+  const suchfehler = anfragen.error ?? bestellungen.error;
+  if (suchfehler) {
+    console.error('[orders] Suche nach offenen Betreibermeldungen fehlgeschlagen:', suchfehler.message);
+    return { gefunden: 0, zugestellt: 0, weiterhinOffen: 0 };
+  }
+
+  const ohneNachweis = [...(anfragen.data ?? []), ...(bestellungen.data ?? [])].filter(
+    (zeile) => !zeile.internal_notification_email_id
+  );
+  if (ohneNachweis.length === 0) return { gefunden: 0, zugestellt: 0, weiterhinOffen: 0 };
+
+  // Die Historie entscheidet endgültig – siehe oben (Altbestand ohne Nachweis-ID).
+  const { data: ereignisse, error: ereignisFehler } = await db
+    .from('order_events')
+    .select('order_id, detail')
+    .in(
+      'order_id',
+      ohneNachweis.map((zeile) => zeile.id as string)
+    )
+    .in('event_type', ['email_sent', 'email_scheduled']);
+  if (ereignisFehler) {
+    // Im Zweifel NICHT senden: eine ausgebliebene Meldung wird beim nächsten Lauf
+    // nachgeholt, eine doppelte lässt sich nicht zurückholen.
+    console.error('[orders] Historie für offene Betreibermeldungen nicht lesbar:', ereignisFehler.message);
+    return { gefunden: 0, zugestellt: 0, weiterhinOffen: 0 };
+  }
+  const bereitsGemeldet = new Set(
+    (ereignisse ?? [])
+      .filter((e) => (e.detail as { anlass?: string } | null)?.anlass === 'internal_order_notification')
+      .map((e) => e.order_id as string)
+  );
+  const offen = ohneNachweis.filter((zeile) => !bereitsGemeldet.has(zeile.id as string)).slice(0, limit);
+
+  let zugestellt = 0;
+  let weiterhinOffen = 0;
+  // Bewusst sequenziell: Regelfall ist 0 Treffer, und jeder Treffer löst einen
+  // echten Versandversuch aus – kein Durchsatz-Pfad.
+  for (const zeile of offen) {
+    const orderId = zeile.id as string;
+    const order = await ladeBestellungFuerAbschluss(orderId);
+    if (!order) {
+      weiterhinOffen++;
+      continue;
+    }
+    const blattUrl = zeile.pdf_url ? await getProductionFileSignedUrl(zeile.pdf_url as string).catch(() => null) : null;
+    const motivLinks = await ladeMotivLinks(order);
+    const ergebnis = await sendInternalOrderNotificationEmail(order, blattUrl, undefined, motivLinks);
+    await protokolliereVersand(orderId, 'internal_order_notification', { status: 'fulfilled', value: ergebnis }, undefined, {
+      quelle: 'nachgeholt',
+    });
+    if (ergebnis.success) {
+      if (ergebnis.messageId) {
+        await db
+          .from('orders')
+          .update({ internal_notification_email_id: ergebnis.messageId })
+          .eq('id', orderId)
+          .is('internal_notification_email_id', null);
+      }
+      zugestellt++;
+    } else {
+      weiterhinOffen++;
+      console.warn(`[orders] Nachgeholte Betreibermeldung für ${orderId} weiterhin ohne Erfolg.`);
+    }
+  }
+
+  return { gefunden: offen.length, zugestellt, weiterhinOffen };
 }
 
 /**

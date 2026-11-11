@@ -30,6 +30,7 @@ import { meldeEreignis } from '@/lib/observability/ereignis';
 import { processDueSupplierOrders } from '@/lib/suppliers/lifecycle/orchestrator';
 import { holeOffeneRechnungenNach } from '@/lib/orders/orderCompletion';
 import { holeOffeneBestellbestaetigungenNach } from '@/lib/orders/orderCompletion';
+import { holeOffeneBetreibermeldungenNach } from '@/lib/orders/orderCompletion';
 import { holeOffeneAbschluesseNach } from '@/lib/orders/paymentService';
 import { holeOffeneErstattungenNach } from '@/lib/orders/refundService';
 import {
@@ -42,6 +43,7 @@ import { RECHNUNG_CLAIM_VERWAIST_NACH_MINUTEN, RECHNUNG_RETRY_LIMIT } from '@/co
 import { VERSANDLABEL_CLAIM_VERWAIST_NACH_MINUTEN } from '@/config/versand';
 import { ERSTATTUNG_CLAIM_VERWAIST_NACH_MINUTEN, ERSTATTUNG_RETRY_LIMIT } from '@/config/rueckerstattung';
 import { BESTAETIGUNG_CLAIM_VERWAIST_NACH_MINUTEN, BESTAETIGUNG_RETRY_LIMIT } from '@/config/bestaetigung';
+import { BETREIBERMELDUNG_RETRY_LIMIT } from '@/config/betreibermeldung';
 
 export const dynamic = 'force-dynamic';
 // Läufe können (mit echter Browser-Automatisierung) länger dauern.
@@ -157,6 +159,19 @@ async function handle(req: NextRequest): Promise<NextResponse> {
     bestaetigungenNachgeholt = { fehler: meldung };
   }
 
+  // Meldung an den Betreiber über neue Bestellungen/Anfragen, die nie ankam
+  // (siehe holeOffeneBetreibermeldungenNach). Eigener Schritt und einzeln
+  // abgefangen, aus demselben Grund wie die Bestätigungen oben.
+  let betreibermeldungenNachgeholt: { gefunden: number; zugestellt: number; weiterhinOffen: number } | { fehler: string };
+  try {
+    betreibermeldungenNachgeholt = await holeOffeneBetreibermeldungenNach(BETREIBERMELDUNG_RETRY_LIMIT);
+  } catch (fehler) {
+    const meldung = fehler instanceof Error ? fehler.message : String(fehler);
+    protokoll.fehler('CRON', 'betreibermeldungs_retry_fehlgeschlagen', meldung);
+    await meldeEreignis({ schwere: 'ERROR', kategorie: 'CRON', ereignis: 'betreibermeldungs_retry_fehlgeschlagen', fehler });
+    betreibermeldungenNachgeholt = { fehler: meldung };
+  }
+
   return NextResponse.json({
     ok: true,
     reclaimed,
@@ -165,6 +180,7 @@ async function handle(req: NextRequest): Promise<NextResponse> {
     rechnungenNachgeholt,
     erstattungenNachgeholt,
     bestaetigungenNachgeholt,
+    betreibermeldungenNachgeholt,
     processed: processed.length,
     results: processed.map((r) => ({ supplierId: r.supplierId, skipped: r.skipped, status: r.status, reason: r.reason })),
   });

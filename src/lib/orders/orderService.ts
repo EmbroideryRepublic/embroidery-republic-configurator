@@ -39,6 +39,7 @@ import {
   sendOrderCompletedEmail,
   sendOrderProofRequestEmail,
   sendProofFeedbackEmail,
+  sendInternalOrderCancelledEmail,
   type EmailVersandErgebnis,
 } from '@/lib/email/orderEmails';
 import type { OrderItemsTableItem } from '@/lib/email/templates/EmailLayout';
@@ -713,12 +714,13 @@ export async function storniereBestellungDurchKunden(
   const { data: bestellung, error } = await db
     .from('orders')
     .select(
-      'id, email, created_at, status, order_type, internal_notification_email_id, accounting_ready_at, payment_status, order_number'
+      'id, email, customer_name, created_at, status, order_type, internal_notification_email_id, accounting_ready_at, payment_status, order_number'
     )
     .eq('id', orderId)
     .maybeSingle<{
       id: string;
       email: string | null;
+      customer_name: string | null;
       created_at: string;
       status: OrderStatus;
       order_type: string;
@@ -820,27 +822,59 @@ export async function storniereBestellungDurchKunden(
     db
   );
 
-  // Die geplante interne Benachrichtigung zurückziehen, damit der Betreiber
-  // nicht über eine stornierte Bestellung informiert wird.
+  // Die interne Benachrichtigung betrifft den Betreiber so:
   //
-  // Gelingt das nicht (z.B. weil der Resend-Schlüssel nur Senderechte hat),
-  // trifft die Meldung trotzdem ein. Sie ist dann irreführend, aber nicht
-  // gefährlich: Die Detailseite im Adminbereich verweigert stornierte
-  // Bestellungen, es kann also keine Ware beschafft werden. Der Ausgang wird
-  // hier festgehalten, damit ein solcher Fall später nachvollziehbar ist.
+  //  • Seit der sofortigen Benachrichtigung (config/orderProcess.ts) ist sie in
+  //    der Regel SCHON zugestellt. Dann lässt sie sich nicht zurückziehen, und
+  //    der Betreiber erfährt von der Stornierung stattdessen per eigener Mail –
+  //    bevor er Ware beschafft (siehe unten).
+  //  • Eine noch GEPLANTE Meldung (Bestellungen aus der Zeit vor der Umstellung
+  //    oder bei wieder eingestellter Verzögerung) wird weiterhin zurückgezogen;
+  //    dann erfährt der Betreiber gar nichts von der Bestellung und braucht
+  //    auch keine Storno-Mail.
+  //
+  // Beides bleibt für den Betrieb ungefährlich: Die Detailseite im Adminbereich
+  // verweigert stornierte Bestellungen, es kann also keine Ware beschafft
+  // werden. Der Ausgang wird festgehalten, damit er später nachvollziehbar ist.
+  let meldungZurueckgezogen = false;
   if (bestellung.internal_notification_email_id) {
-    const widerrufen = await widerrufeGeplanteEmail(bestellung.internal_notification_email_id);
+    meldungZurueckgezogen = await widerrufeGeplanteEmail(bestellung.internal_notification_email_id);
     await protokolliereBestellereignis(
       {
         orderId,
-        eventType: widerrufen ? 'scheduled_email_cancelled' : 'scheduled_email_cancel_failed',
-        reason: widerrufen
+        eventType: meldungZurueckgezogen ? 'scheduled_email_cancelled' : 'scheduled_email_cancel_failed',
+        reason: meldungZurueckgezogen
           ? 'Geplante interne Benachrichtigung zurückgezogen.'
-          : 'Geplante interne Benachrichtigung konnte NICHT zurückgezogen werden – sie wird zugestellt.',
+          : 'Interne Benachrichtigung war bereits zugestellt (oder ließ sich nicht zurückziehen) – der Betreiber wird per E-Mail über die Stornierung informiert.',
         detail: { anlass: 'internal_order_notification', messageId: bestellung.internal_notification_email_id },
       },
       db
     );
+  }
+
+  // Der Betreiber kennt die Bestellung aus der Eingangsmeldung und erfährt nun,
+  // dass sie storniert wurde. Ohne Eingangsmeldung (noch unbezahlte Karten-/
+  // PayPal-Bestellung, deren Meldung erst nach der Zahlung ausgelöst wird, oder
+  // ein fehlgeschlagener Versand) gibt es nichts zu berichtigen – dann bleibt
+  // auch die Storno-Mail aus. Nicht-fatal wie alles nach dem Statuswechsel.
+  if (bestellung.internal_notification_email_id && !meldungZurueckgezogen) {
+    try {
+      const versand = await sendInternalOrderCancelledEmail({
+        orderId,
+        orderNumber: bestellung.order_number ?? buildOrderNumber(orderId),
+        kundeName: bestellung.customer_name,
+        kundeEmail: bestellung.email,
+        storniertAm: formatiereZeitpunkt(jetzt, { dateStyle: 'long', timeStyle: 'short' }),
+        erstattungFaellig: bestellung.payment_status === 'paid',
+      });
+      await protokolliereVersand(orderId, 'internal_order_cancelled', { status: 'fulfilled', value: versand }, undefined, {
+        quelle: 'customer',
+      });
+    } catch (err) {
+      await protokolliereVersand(orderId, 'internal_order_cancelled', { status: 'rejected', reason: err }, undefined, {
+        quelle: 'customer',
+      });
+    }
   }
 
   // Bestätigung an den Kunden. Nicht-fatal: Die Stornierung steht bereits in

@@ -49,6 +49,14 @@ export interface OrderElementRecord {
   widthCm: number;
   heightCm: number;
   rotationDeg: number;
+  /**
+   * Geschätzte Stichzahl dieses Motivs – nur bei Stickerei und nur für die
+   * Benachrichtigung im Moment des Eingangs: Der Wert wird NICHT gespeichert
+   * (die Datenbank kennt dafür keine Spalte), sondern aus der serverseitig
+   * geprüften Stichzahl übernommen. Die verbindliche Zahl ergibt sich erst
+   * aus der Digitalisierung (siehe config/bestellweg.ts).
+   */
+  geschaetzteStiche?: number;
   // Text-spezifisch
   content?: string;
   fontFamily?: string;

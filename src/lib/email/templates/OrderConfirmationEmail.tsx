@@ -8,6 +8,7 @@ import type { OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
 import { PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
 import { PAYMENT_TERM_DAYS, IST_KLEINUNTERNEHMER } from '@/config/company';
 import { STORNOFRIST_MS } from '@/config/orderProcess';
+import { warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 import { EmailLayout, OrderItemsTable } from './EmailLayout';
 import { formatiereGeld } from '@/lib/format';
 
@@ -35,14 +36,24 @@ export function OrderConfirmationEmail({
 }) {
   const stornofristStunden = Math.round(STORNOFRIST_MS / (60 * 60 * 1000));
   const isOrder = order.orderType === 'order';
+  // Stickerei gibt es nur auf Anfrage (config/bestellweg.ts): Der Preis ist
+  // dann eine Kostenschätzung, und die Kundschaft erfährt, wie es weitergeht.
+  const stickereiAnfrage = !isOrder && warenkorbNurAlsAnfrage(order.items);
   const title = isOrder ? `Bestellbestätigung ${order.orderNumber}` : `Ihre Anfrage ${order.orderNumber}`;
   const intro = isOrder
     ? `Vielen Dank für Ihre Bestellung! Wir haben sie unter der Nummer ${order.orderNumber} erhalten und beginnen mit der Produktion, sobald alles final geprüft ist.`
-    : `Vielen Dank für Ihre Anfrage! Wir melden uns in Kürze persönlich bei Ihnen. Bis dahin ist nichts verbindlich bestellt und nichts bezahlt.`;
+    : stickereiAnfrage
+      ? `Vielen Dank für Ihre Anfrage! Sie ist bei uns eingegangen und wird jetzt von uns geprüft. Diese E-Mail bestätigt nur den Eingang – sie ist keine Auftragsbestätigung. Bis dahin ist nichts bestellt, nichts bezahlt und kein Vertrag geschlossen.`
+      : `Vielen Dank für Ihre Anfrage! Wir melden uns in Kürze persönlich bei Ihnen. Bis dahin ist nichts verbindlich bestellt und nichts bezahlt.`;
 
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>{intro}</Text>
+      {stickereiAnfrage && (
+        <Text style={{ margin: '12px 0 0', fontSize: 13 }}>
+          Ihre Anfrage im Überblick – alle Preise sind unverbindliche Schätzwerte:
+        </Text>
+      )}
       <OrderItemsTable items={order.items} />
 
       {isOrder && order.subtotal !== undefined && (
@@ -57,7 +68,8 @@ export function OrderConfirmationEmail({
       )}
 
       <Text style={{ marginTop: 8, textAlign: 'right', fontSize: 16, fontWeight: 600 }}>
-        {isOrder ? 'Gesamtsumme' : 'Ungefährer Richtpreis'}: {formatiereGeld(order.totalPrice)}
+        {isOrder ? 'Gesamtsumme' : stickereiAnfrage ? 'Geschätzter Preis (unverbindliche Kostenschätzung)' : 'Ungefährer Richtpreis'}:{' '}
+        {formatiereGeld(order.totalPrice)}
       </Text>
       {/* Steuerzeile: Pflichtangabe gegenüber Verbrauchern (Preisangabenverordnung).
           Bei Bruttopreisen nur AUSGEWIESEN, in der Gesamtsumme oben bereits
@@ -67,6 +79,15 @@ export function OrderConfirmationEmail({
           {IST_KLEINUNTERNEHMER
             ? 'Kein Steuerausweis (§ 19 UStG)'
             : `davon enthaltene USt. (${order.taxRate} %): ${formatiereGeld(order.taxAmount)}`}
+        </Text>
+      )}
+
+      {stickereiAnfrage && (
+        <Text style={{ marginTop: 16, fontSize: 13 }}>
+          <strong>So geht es weiter:</strong> Wir prüfen Ihre Anfrage und kalkulieren den endgültigen Preis – bei Stickerei
+          steht die genaue Stichzahl erst fest, wenn Ihr Motiv digitalisiert ist. Anschließend senden wir Ihnen ein
+          individuelles, verbindliches Angebot. Ein Vertrag kommt erst zustande, wenn Sie dieses Angebot annehmen und wir den
+          Auftrag bestätigen.
         </Text>
       )}
 

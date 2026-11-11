@@ -35,7 +35,7 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Kann ich mehrere unterschiedliche Produkte kombinieren?',
-        a: 'Ja. Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel T-Shirts und Hoodies im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.',
+        a: 'Ja. Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel T-Shirts und Hoodies im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst. Enthält der Warenkorb Stickerei, wird er insgesamt als Anfrage gesendet.',
       },
       {
         q: 'Sehe ich vor der Produktion eine Freigabe?',
@@ -47,7 +47,7 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Was ist der Unterschied zwischen Bestellung und unverbindlicher Anfrage?',
-        a: 'Mit der Bestellung erteilen Sie uns einen verbindlichen Auftrag. Bei der unverbindlichen Anfrage senden Sie uns lediglich Ihre Konfiguration – wir melden uns persönlich, klären offene Punkte und Sie entscheiden danach in Ruhe. Bei einer Anfrage werden keine Zahlungsdaten erhoben und es entsteht keine Verpflichtung.',
+        a: 'Mit der Bestellung erteilen Sie uns einen verbindlichen Auftrag. Bei der unverbindlichen Anfrage senden Sie uns lediglich Ihre Konfiguration – wir melden uns persönlich, klären offene Punkte und Sie entscheiden danach in Ruhe. Bei einer Anfrage werden keine Zahlungsdaten erhoben und es entsteht keine Verpflichtung. Stickerei gibt es ausschließlich auf Anfrage: Der angezeigte Preis ist dort eine unverbindliche Kostenschätzung, weil sich die genaue Stichzahl erst nach der Digitalisierung Ihres Motivs ergibt. Wir prüfen Ihre Anfrage, kalkulieren den endgültigen Preis und senden Ihnen ein verbindliches Angebot. Ein Vertrag kommt erst zustande, wenn Sie das Angebot annehmen und wir den Auftrag bestätigen.',
       },
     ],
   },
@@ -77,11 +77,11 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Kann ich personalisierte Produkte zurückgeben?',
-        a: 'Nein. Jedes Produkt wird ausschließlich mit mindestens einem von Ihnen festgelegten Logo oder Text individuell bedruckt oder bestickt – eine Bestellung ganz ohne eigenes Motiv ist bei uns nicht möglich. Diese personalisierten Artikel sind vom Widerrufsrecht ausgeschlossen und können nicht zurückgegeben werden. Bitte prüfen Sie Ihre Konfiguration daher sorgfältig – und nutzen Sie im Zweifel die unverbindliche Anfrage, bevor Sie verbindlich bestellen.',
+        a: 'Nicht aufgrund eines Widerrufs. Jedes Produkt wird ausschließlich mit mindestens einem von Ihnen festgelegten Logo oder Text individuell bedruckt oder bestickt – eine Bestellung ganz ohne eigenes Motiv ist bei uns nicht möglich. Diese personalisierten Artikel sind vom Widerrufsrecht ausgeschlossen. Die gesetzlichen Gewährleistungsrechte bei mangelhafter Ware bleiben unberührt (siehe AGB § 10). Bitte prüfen Sie Ihre Konfiguration daher sorgfältig – und nutzen Sie im Zweifel die unverbindliche Anfrage, bevor Sie verbindlich bestellen.',
       },
       {
         q: 'Welche Zahlungsmöglichkeiten gibt es?',
-        a: 'Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.',
+        a: 'Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug. Bei Stickerei wird im Anfragevorgang nichts abgebucht; Zahlungsweise und Zahlungsziel nennen wir in Ihrem individuellen Angebot.',
       },
     ],
   },

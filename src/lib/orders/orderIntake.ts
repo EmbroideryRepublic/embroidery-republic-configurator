@@ -23,10 +23,15 @@
  *     sie trotzdem erneut versuchen (siehe Vorfall 2026-08-21: vorher hing
  *     die gesamte Funktion an `internal_notification_email_id` und hätte in
  *     genau diesem Fall die Kundenbestätigung für immer übersprungen).
- *   – Interne Meldung: `internal_notification_email_id` an der Bestellung –
- *     ist sie gesetzt, wurde bereits geplant, der Schritt wird übersprungen.
+ *   – Interne Meldung: `internal_notification_email_id` an der Bestellung bzw.
+ *     Anfrage – ist sie gesetzt, wurde die Meldung bereits ausgelöst (seit der
+ *     Umstellung auf sofortige Benachrichtigung heißt das: bereits zugestellt),
+ *     der Schritt wird übersprungen. Gilt für Bestellungen UND Anfragen: Eine
+ *     wiederholte Absendung derselben Anfrage darf den Betreiber nicht ein
+ *     zweites Mal benachrichtigen.
  */
 import { createAdminClient } from '@/lib/supabase/server';
+import { getProductionFileSignedUrl } from '@/lib/supabase/storage';
 import { INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS } from '@/config/orderProcess';
 import { erzeugeBestellToken } from './orderAccessToken';
 import {
@@ -109,6 +114,38 @@ export async function versucheBestellbestaetigung(
 }
 
 /**
+ * Download-Links (7 Tage gültig) auf die ORIGINAL-Motivdateien einer
+ * Bestellung bzw. Anfrage – für die Mail an den Betreiber. Das Produktionsblatt
+ * zeigt nur Vorschauen; für Angebot und Digitalisierung braucht der Betreiber
+ * die Datei selbst.
+ *
+ * Schlüssel ist der Speicherpfad (`logoStoragePath`). Wirft nie: Ein Motiv ohne
+ * Link bleibt in der Mail trotzdem aufgeführt (Dateiname, Position, Größe) und
+ * ist im Adminbereich abrufbar.
+ */
+export async function ladeMotivLinks(order: OrderRecord): Promise<Record<string, string>> {
+  const pfade = [
+    ...new Set(
+      order.items.flatMap((item) =>
+        item.elements.map((el) => el.logoStoragePath).filter((pfad): pfad is string => Boolean(pfad))
+      )
+    ),
+  ];
+  const links: Record<string, string> = {};
+  await Promise.all(
+    pfade.map(async (pfad) => {
+      try {
+        const url = await getProductionFileSignedUrl(pfad);
+        if (url) links[pfad] = url;
+      } catch (err) {
+        console.warn(`[orders] Download-Link für Motiv ${pfad} nicht erzeugt (nicht-fatal):`, err);
+      }
+    })
+  );
+  return links;
+}
+
+/**
  * Versendet bzw. plant alle E-Mails zu einer eingegangenen Bestellung.
  *
  * Wirft NIE. Der Aufrufer braucht das Ergebnis nicht auszuwerten – die
@@ -129,24 +166,25 @@ export async function verarbeiteBestelleingang(
   // Idempotenz-Prüfung NUR für die interne Meldung – siehe Kopfkommentar.
   // Die Kundenbestätigung hat ihren eigenen Claim (versucheBestellbestaetigung)
   // und wird deshalb unten IMMER versucht, unabhängig davon, ob die interne
-  // Meldung bereits geplant ist.
-  let bereitsGeplant = false;
-  if (istBestellung) {
-    const { data } = await db
-      .from('orders')
-      .select('internal_notification_email_id')
-      .eq('id', order.id)
-      .maybeSingle<{ internal_notification_email_id: string | null }>();
-    bereitsGeplant = Boolean(data?.internal_notification_email_id);
-  }
+  // Meldung bereits ausgelöst ist. Die Prüfung gilt für Bestellungen UND
+  // Anfragen (früher nur Bestellungen: Eine wiederholte Absendung derselben
+  // Anfrage hätte den Betreiber ein zweites Mal benachrichtigt).
+  const { data: meldungsstand } = await db
+    .from('orders')
+    .select('internal_notification_email_id')
+    .eq('id', order.id)
+    .maybeSingle<{ internal_notification_email_id: string | null }>();
+  const bereitsGeplant = Boolean(meldungsstand?.internal_notification_email_id);
 
   const startedAt = Date.now();
 
-  // Bestellungen: interne Meldung ERST nach Ablauf der Stornofrist.
-  // Anfragen haben keine Frist und gehen sofort raus.
-  const geplantFuer = istBestellung
-    ? new Date(Date.now() + INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS).toISOString()
-    : undefined;
+  // Die interne Meldung geht standardmäßig SOFORT raus – bei Bestellungen wie
+  // bei Anfragen (config/orderProcess.ts). Nur ein Wert > 0 plant sie für
+  // später ein; dann wird sie bei einer Stornierung zurückgezogen.
+  const geplantFuer =
+    istBestellung && INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS > 0
+      ? new Date(Date.now() + INTERNE_BENACHRICHTIGUNG_VERZOEGERUNG_MS).toISOString()
+      : undefined;
 
   const [kunde, intern] = await Promise.allSettled([
     istBestellung
@@ -154,7 +192,9 @@ export async function verarbeiteBestelleingang(
       : sendOrderConfirmationEmail(order, bestellansichtUrl(order.id) ?? undefined),
     bereitsGeplant
       ? Promise.resolve<EmailVersandErgebnis>({ success: true })
-      : sendInternalOrderNotificationEmail(order, productionSheetSignedUrl, geplantFuer),
+      : ladeMotivLinks(order).then((motivLinks) =>
+          sendInternalOrderNotificationEmail(order, productionSheetSignedUrl, geplantFuer, motivLinks)
+        ),
   ]);
 
   // Jeder Versand hinterlässt eine Spur in der Bestell-Historie – auch der
@@ -174,11 +214,12 @@ export async function verarbeiteBestelleingang(
   if (!bereitsGeplant) {
     if (intern.status === 'rejected') {
       console.error('[orders] Interne Benachrichtigung fehlgeschlagen (nicht-fatal):', intern.reason);
-    } else if (intern.value.messageId && istBestellung) {
-      // Die ID wird gebraucht, um die geplante Mail bei einer Stornierung
-      // zurückziehen zu können. Schlägt das Speichern fehl, bleibt die
-      // Bestellung unberührt – im schlimmsten Fall geht später eine
-      // überflüssige interne Mail raus.
+    } else if (intern.value.messageId) {
+      // Die ID ist der Nachweis, dass die Meldung ausgelöst wurde (Schutz vor
+      // einer zweiten Meldung bei wiederholter Absendung) und – bei geplantem
+      // Versand – der Weg, sie bei einer Stornierung zurückzuziehen. Schlägt
+      // das Speichern fehl, bleibt die Bestellung unberührt – im schlimmsten
+      // Fall geht bei einer Wiederholung eine zweite interne Mail raus.
       const { error } = await db
         .from('orders')
         .update({ internal_notification_email_id: intern.value.messageId })

@@ -27,6 +27,7 @@ import { getProduct } from '@/config/products';
 import { getPrintAreas } from '@/config/printAreas';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { BASE_OVERHEAD_STITCHES, TEXT_MIN_STITCHES } from '@/lib/embroidery/stichschaetzung';
+import { istNurAufAnfrage, MELDUNG_STICKEREI_NUR_AUF_ANFRAGE } from '@/config/bestellweg';
 import type { CartItem, ConfigElement, PrintMethod } from '@/types';
 
 /**
@@ -173,6 +174,22 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
   const items: unknown[] = Array.isArray(input.items) ? input.items : [];
   if (!Array.isArray(input.items)) {
     issues.push({ code: 'produkt_unbekannt', message: ARTIKEL_NICHT_VERFUEGBAR });
+  }
+
+  // ── 0. Stickerei gibt es nur auf Anfrage ────────────────────────────
+  // Steht bewusst GANZ OBEN: Der erste Befund wird der Kundschaft angezeigt
+  // (customerMessage), und sie soll zuerst den eigentlichen Grund lesen statt
+  // Adresse und Zustimmung nachzubessern, die den Weg ohnehin nicht öffnen.
+  // Gilt NUR für Bestellungen – eine Anfrage darf Stickerei enthalten, das ist
+  // ihr Zweck (config/bestellweg.ts).
+  if (istBestellung) {
+    // `items` ist die abgesicherte Liste (kein Array → leer, siehe oben); ein Eintrag ohne Objekt wird später gemeldet.
+    const stickerei = (items as CartItem[]).find(
+      (item) => item !== null && typeof item === 'object' && istNurAufAnfrage(item.printMethod)
+    );
+    if (stickerei) {
+      issues.push({ code: 'nur_auf_anfrage', message: MELDUNG_STICKEREI_NUR_AUF_ANFRAGE, itemId: stickerei.id });
+    }
   }
 
   // ── 1. Angaben zur Person ───────────────────────────────────────────

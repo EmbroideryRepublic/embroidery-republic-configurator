@@ -71,7 +71,7 @@ export interface KategorieSeite {
 export const ABLAUF_SCHRITTE: string[] = [
   'Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.',
   'Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.',
-  'Bestellen oder unverbindlich anfragen – ganz wie Sie möchten.',
+  'DTF-Druck bestellen Sie direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.',
   'Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.',
   'Produktion in {produktion}, anschließend Versand innerhalb von {versand}.',
 ];

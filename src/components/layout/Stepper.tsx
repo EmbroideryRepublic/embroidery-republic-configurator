@@ -3,6 +3,8 @@
 import clsx from 'clsx';
 import { Check } from 'lucide-react';
 import { useLanguageStore, translate } from '@/stores/languageStore';
+import { useConfiguratorStore } from '@/stores/configuratorStore';
+import { istNurAufAnfrage } from '@/config/bestellweg';
 
 interface StepperProps {
   activeStep: number; // 0-basiert
@@ -25,7 +27,9 @@ export function Stepper({ activeStep }: StepperProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) =>
     translate(key, language, vars);
-  const steps = [t('step_product'), t('step_element'), t('step_position'), t('step_ready')];
+  // Stickerei gibt es nur auf Anfrage: Der letzte Schritt heißt dann "Bereit zur Anfrage".
+  const nurAnfrage = istNurAufAnfrage(useConfiguratorStore((s) => s.printMethod));
+  const steps = [t('step_product'), t('step_element'), t('step_position'), t(nurAnfrage ? 'step_ready_inquiry' : 'step_ready')];
 
   return (
     // top-[57px]: exakt unter der Kopfzeile (py-2.5 + 44px Logo + Rahmen).

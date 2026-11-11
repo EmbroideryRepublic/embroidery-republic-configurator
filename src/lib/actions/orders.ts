@@ -111,6 +111,9 @@ async function buildElementRecord(element: ConfigElement, orderId: string, itemI
     widthCm: element.widthCm,
     heightCm: element.heightCm,
     rotationDeg: element.rotationDeg,
+    // Nur für die Benachrichtigung (nicht gespeichert): die vom Server geprüfte
+    // Stichzahl – bei DTF bleibt sie 0 und entfällt.
+    ...(element.estimatedStitches > 0 ? { geschaetzteStiche: Math.round(element.estimatedStitches) } : {}),
   };
 
   if (element.type === 'text') {

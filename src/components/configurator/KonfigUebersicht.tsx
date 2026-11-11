@@ -19,6 +19,7 @@ import { useLanguageStore, translate } from '@/stores/languageStore';
 import { formatPriceWithCurrency, useCurrencyStore } from '@/stores/currencyStore';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { positionTranslationKey } from '@/config/decorationPositions';
+import { istNurAufAnfrage } from '@/config/bestellweg';
 import { belegteAnsichten, groessenText, naechsterSchritt, type SchrittId } from '@/lib/configurator/kauffortschritt';
 
 /** Der Hinweistext zum nächsten Schritt, je Schritt ein Übersetzungsschlüssel. */
@@ -48,6 +49,9 @@ export function KonfigUebersicht({ priceHasErrors = false }: { priceHasErrors?: 
   const menge = sumSizeQuantities(sizeQuantities);
   const groessen = groessenText(sizeQuantities);
   const ansichten = belegteAnsichten(elements);
+  // Stickerei gibt es nur auf Anfrage (config/bestellweg.ts): Der Preis ist eine
+  // Schätzung, der letzte Schritt heißt "zur Anfrage" statt "in den Warenkorb".
+  const nurAnfrage = istNurAufAnfrage(printMethod);
   const hatMotiv = elements.length > 0;
   const motivImRahmen = hatMotiv && elements.every((el) => !el.isOutOfBounds);
 
@@ -76,7 +80,7 @@ export function KonfigUebersicht({ priceHasErrors = false }: { priceHasErrors?: 
       wert: ansichten.length > 0 ? ansichten.map((v) => t(positionTranslationKey(v))).join(', ') : t('konfig_none'),
       erledigt: hatMotiv,
     },
-    { label: t('konfig_price'), wert: preis(menge > 0 ? totalPrice : unitPrice), erledigt: menge > 0 },
+    { label: t('konfig_price'), wert: `${nurAnfrage ? '≈ ' : ''}${preis(menge > 0 ? totalPrice : unitPrice)}`, erledigt: menge > 0 },
   ];
 
   // Kurzfassung für die schmale Zeile: Produkt, Farbe, Größe, Veredelung (Preis und Position stehen weiter unten bzw. in den Ebenen).
@@ -174,7 +178,7 @@ export function KonfigUebersicht({ priceHasErrors = false }: { priceHasErrors?: 
           )}
         >
           <ArrowRight className="h-3.5 w-3.5 flex-shrink-0" aria-hidden />
-          <span>{t(HINWEIS[naechster])}</span>
+          <span>{t(naechster === 'bestellen' && nurAnfrage ? 'next_ready_inquiry' : HINWEIS[naechster])}</span>
         </div>
       )}
     </div>

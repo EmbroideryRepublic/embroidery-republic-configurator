@@ -266,7 +266,6 @@ test('ein Motiv größer als die Druckfläche wird abgewiesen', async () => {
   });
   assert.ok(gefunden.includes('element_ueberschreitet_druckflaeche'), gefunden.join(','));
 });
-
 // ── Personalisierungspflicht (Geschäftsregel 2026-08-19) ──────────────────
 // Wir verkaufen ausschließlich personalisierte Ware – eine Bestellposition
 // ganz ohne Logo oder Text ist ungültig. Farbe, Größe, Menge und die Wahl
@@ -437,4 +436,57 @@ test('mehrere Befunde werden zusammengefasst angezeigt', async () => {
   assert.equal(ergebnis.valid, false);
   assert.ok(ergebnis.issues.length >= 2);
   assert.match(ergebnis.customerMessage!, /2 Punkte/);
+});
+
+// ── Stickerei gibt es nur auf Anfrage (Entscheidung des Betreibers) ───────
+//
+// Aus einer Stickerei-Konfiguration darf keine verbindliche Bestellung
+// entstehen: Die Stichzahl – und damit der Preis – steht erst nach der
+// Digitalisierung fest. Der Server erzwingt das UNABHÄNGIG von der Oberfläche
+// (config/bestellweg.ts), ein veralteter oder manipulierter Browser kommt nicht
+// daran vorbei.
+
+const stickereiAnfrage = {
+  orderType: 'inquiry' as const,
+  email: 'kundin@example.de',
+  customerName: 'Alex Beispiel',
+};
+
+test('Stickerei als BESTELLUNG wird abgewiesen – mit dem Hinweis auf die Anfrage', async () => {
+  const ergebnis = await validateSubmission({ ...gueltigeBestellung, items: [stickPosition(6400)] });
+  assert.equal(ergebnis.valid, false);
+  assert.ok(ergebnis.issues.some((i) => i.code === 'nur_auf_anfrage'), ergebnis.issues.map((i) => i.code).join(','));
+  assert.match(ergebnis.customerMessage!, /nur auf Anfrage/);
+});
+
+test('der Hinweis auf die Anfrage steht an erster Stelle, auch wenn weitere Angaben fehlen', async () => {
+  const ergebnis = await validateSubmission({
+    ...gueltigeBestellung,
+    acceptedTerms: false,
+    shipping: undefined,
+    items: [stickPosition(6400)],
+  });
+  assert.equal(ergebnis.issues[0]?.code, 'nur_auf_anfrage');
+  assert.match(ergebnis.customerMessage!, /nur auf Anfrage/);
+});
+
+test('ein gemischter Warenkorb (Druck + Stickerei) ist als Bestellung unzulässig', async () => {
+  const druck = position({ id: 'pos-druck' });
+  const stickerei = { ...stickPosition(6400), id: 'pos-stick' };
+  const ergebnis = await validateSubmission({ ...gueltigeBestellung, items: [druck, stickerei] });
+  assert.equal(ergebnis.valid, false);
+  const befund = ergebnis.issues.find((i) => i.code === 'nur_auf_anfrage');
+  assert.equal(befund?.itemId, 'pos-stick', 'der Befund nennt die Stickerei-Position, nicht den Druckartikel');
+});
+
+test('dieselbe Stickerei-Konfiguration als ANFRAGE wird angenommen', async () => {
+  const ergebnis = await validateSubmission({ ...stickereiAnfrage, items: [stickPosition(6400)] });
+  assert.equal(ergebnis.valid, true, `unerwartete Befunde: ${JSON.stringify(ergebnis.issues)}`);
+  assert.equal(ergebnis.termsAcceptedAt, undefined, 'eine Anfrage hat keine AGB-Zustimmung zu bestätigen');
+});
+
+test('DTF-Druck bleibt unverändert direkt bestellbar', async () => {
+  const ergebnis = await validateSubmission({ ...gueltigeBestellung, items: [position()] });
+  assert.equal(ergebnis.valid, true, `unerwartete Befunde: ${JSON.stringify(ergebnis.issues)}`);
+  assert.ok(!ergebnis.issues.some((i) => i.code === 'nur_auf_anfrage'));
 });

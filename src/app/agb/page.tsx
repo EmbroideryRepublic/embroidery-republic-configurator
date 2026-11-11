@@ -37,7 +37,7 @@ export default function AgbPage() {
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">
         Allgemeine Geschäftsbedingungen
       </h1>
-      <p className="mb-6 text-xs text-brand/70">Stand: Juli 2026</p>
+      <p className="mb-6 text-xs text-brand/70">Stand: November 2026</p>
 
       <LegalPageNotice />
 
@@ -89,6 +89,7 @@ export default function AgbPage() {
           <p>
             (2) Mit dem Absenden der Bestellung über die Schaltfläche &bdquo;Zahlungspflichtig
             bestellen&ldquo; gibt der Kunde ein verbindliches Angebot zum Abschluss eines Vertrages ab.
+            Diese Möglichkeit besteht für DTF-Transferdruck; für Stickerei gilt Absatz 5.
           </p>
           <p>
             (3) Der Eingang der Bestellung wird unverzüglich in Textform bestätigt. Diese
@@ -96,8 +97,18 @@ export default function AgbPage() {
             sobald wir die Bestellung ausdrücklich annehmen oder mit der Produktion beginnen.
           </p>
           <p>
-            (4) Über den Weg &bdquo;Unverbindlich anfragen&ldquo; übermittelte Konfigurationen sind
-            ausdrücklich unverbindlich. Es entsteht weder ein Vertrag noch eine Zahlungsverpflichtung.
+            (4) Über die Wege &bdquo;Unverbindlich anfragen&ldquo; und &bdquo;Anfrage senden&ldquo;
+            übermittelte Konfigurationen sind ausdrücklich unverbindlich. Es entsteht weder ein Vertrag
+            noch eine Zahlungsverpflichtung.
+          </p>
+          <p>
+            (5) Stickerei wird ausschließlich auf Anfrage ausgeführt; eine Bestellung über den
+            Konfigurator ist dafür nicht möglich. Der im Konfigurator angezeigte Preis ist bei Stickerei
+            eine unverbindliche Kostenschätzung, weil sich die tatsächliche Stichzahl erst nach der
+            Digitalisierung des Motivs ergibt. Wir prüfen die Anfrage, kalkulieren den endgültigen Preis
+            und unterbreiten dem Kunden ein individuelles Angebot. Der Vertrag kommt erst zustande, wenn
+            der Kunde das Angebot angenommen hat und wir den Auftrag in Textform bestätigt haben
+            (Auftragsbestätigung).
           </p>
         </Section>
 
@@ -105,7 +116,9 @@ export default function AgbPage() {
           <p>
             (1) Maßgeblich sind die zum Zeitpunkt der Bestellung im Konfigurator angezeigten Preise.
             Der Preis ergibt sich aus dem Grundpreis des Textils, der gewählten Veredelung, der
-            Motivgröße bzw. Stichzahl sowie der Bestellmenge (Mengenstaffel).
+            Motivgröße bzw. Stichzahl sowie der Bestellmenge (Mengenstaffel). Bei Stickerei ist der
+            angezeigte Preis nur eine unverbindliche Kostenschätzung; maßgeblich ist der im
+            individuellen Angebot genannte Preis (§ 3 Abs. 5).
           </p>
           <p>
             (2) Alle angegebenen Preise sind Endpreise. Wir sind Kleinunternehmer im Sinne von § 19
@@ -136,6 +149,10 @@ export default function AgbPage() {
             (4) Bei Zahlungsverzug gelten die gesetzlichen Regelungen. Gegenüber Unternehmern behalten
             wir uns die Geltendmachung von Verzugszinsen sowie der Verzugspauschale nach § 288 Abs. 5
             BGB vor.
+          </p>
+          <p>
+            (5) Bei Stickerei wird im Anfragevorgang nichts abgebucht und keine Zahlung verlangt;
+            Zahlungsweise und Zahlungsziel nennen wir im individuellen Angebot.
           </p>
         </Section>
 

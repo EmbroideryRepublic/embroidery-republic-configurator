@@ -85,7 +85,7 @@ export default function AboutPage() {
           {[
             'Produkt, Farbe und Größen im Konfigurator wählen.',
             'Logo hochladen oder Text gestalten und positionieren.',
-            'Bestellen oder unverbindlich anfragen – ganz wie Sie möchten.',
+            'DTF-Druck bestellen Sie direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.',
             'Wir prüfen das Design und melden uns mit der finalen Freigabe.',
             'Produktion und Versand – bei Kauf auf Rechnung erhalten Sie die Rechnung mit der Auftragsbearbeitung, bei Kreditkarte/PayPal haben Sie bereits im Checkout bezahlt.',
           ].map((step, i) => (

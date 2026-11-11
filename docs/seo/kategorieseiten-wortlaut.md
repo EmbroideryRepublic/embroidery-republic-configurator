@@ -47,7 +47,7 @@
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. Bestellen oder unverbindlich anfragen – ganz wie Sie möchten.
+3. DTF-Druck bestellen Sie direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.
 4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
@@ -112,7 +112,7 @@ Aktuell gibt es 30 Modelle von B&C, Fruit of the Loom, Build Your Brand, EarthPo
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. Bestellen oder unverbindlich anfragen – ganz wie Sie möchten.
+3. DTF-Druck bestellen Sie direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.
 4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
@@ -180,7 +180,7 @@ Aktuell gibt es 64 Modelle von Fruit of the Loom, B&C, James+Nicholson, Neutral,
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. Bestellen oder unverbindlich anfragen – ganz wie Sie möchten.
+3. DTF-Druck bestellen Sie direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.
 4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2, AlertCircle, Loader2, Receipt, CreditCard, Wallet } from 'lucide-react';
+import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2, AlertCircle, Info, Loader2, Receipt, CreditCard, Wallet } from 'lucide-react';
 import { useCartStore, getCartTotal, getCartItemCount } from '@/stores/cartStore';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getProduct } from '@/config/products';
@@ -15,6 +15,7 @@ import { SHIPPING_RATES, calculateShipping, landCodeForCountry } from '@/config/
 import { steuersatzFuer, steueranteil, STANDARDLAND } from '@/config/pricing/steuer';
 import { IST_KLEINUNTERNEHMER } from '@/config/company';
 import { istPlausibleEmail, istGueltigePlz } from '@/lib/orders/orderValidation';
+import { istNurAufAnfrage, warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 import { FELD_KLASSE } from '@/lib/ui/feldKlasse';
 import { formatiereFarbname } from '@/lib/products/farben';
 import type { OrderPaymentMethod } from '@/lib/actions/orderTypes';
@@ -133,10 +134,38 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
   // Warenkorb nicht zwei unterschiedliche Zahlen auftauchen.
   const positionCount = getCartItemCount(items);
 
+  // Stickerei gibt es nur auf Anfrage (config/bestellweg.ts): Liegt auch nur
+  // EINE bestickte Position im Warenkorb, gibt es keine Kasse – der gesamte
+  // Warenkorb geht als Anfrage raus, der Preis ist eine Kostenschätzung. Der
+  // Server erzwingt dieselbe Regel (validateSubmission); diese Oberfläche
+  // bietet den Bestellweg gar nicht erst an.
+  const nurAnfrage = warenkorbNurAlsAnfrage(items);
+  const hatStickerei = items.some((item) => istNurAufAnfrage(item.printMethod));
+  const gemischterWarenkorb = hatStickerei && items.some((item) => !istNurAufAnfrage(item.printMethod));
+  // Merkt, ob die soeben gesendete Anfrage Stickerei enthielt – nach dem
+  // Leeren des Warenkorbs ließe sich das sonst nicht mehr ablesen.
+  const [stickereiAnfrageGesendet, setStickereiAnfrageGesendet] = useState(false);
+
+  // Wurde während des Bestellschritts eine bestickte Position ergänzt (etwa
+  // durch einen zweiten Tab), führt kein Weg mehr in die Kasse.
+  useEffect(() => {
+    if (nurAnfrage && step === 'checkout') setStep('cart');
+  }, [nurAnfrage, step]);
+
   function handleOrderPlaced(realOrderNumber: string) {
     setOrderNumber(realOrderNumber);
     clearCart();
     setStep('confirmed');
+  }
+
+  function handleInquirySent() {
+    setStickereiAnfrageGesendet(hatStickerei);
+    // Eine Stickerei-Anfrage ist raus – der Warenkorb wird geleert, damit
+    // dieselbe Konfiguration nicht versehentlich ein zweites Mal gesendet
+    // wird. Die unverbindliche Anfrage für Druckartikel behält den Warenkorb
+    // wie bisher (die Kundschaft kann danach noch direkt bestellen).
+    if (nurAnfrage) clearCart();
+    setStep('inquiry-sent');
   }
 
   // "Bearbeiten": Design + Konfiguration aus dieser Warenkorb-Position
@@ -203,7 +232,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                   ? t('cart_inquiry_title')
                   : step === 'inquiry-sent'
                     ? t('cart_inquiry_sent_title')
-                    : `${t('cart_title')} ${positionCount > 0 ? `(${positionCount})` : ''}`}
+                    : `${t(nurAnfrage ? 'cart_title_inquiry' : 'cart_title')} ${positionCount > 0 ? `(${positionCount})` : ''}`}
           </h2>
           <button
             type="button"
@@ -221,7 +250,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
               <div className="flex items-center justify-between gap-3 border-b border-green-100 bg-green-50 px-4 py-2.5">
                 <p className="flex items-center gap-2 text-[13px] font-medium text-green-700">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0" aria-hidden />
-                  {t('cart_added_banner')}
+                  {t(nurAnfrage ? 'cart_added_banner_inquiry' : 'cart_added_banner')}
                 </p>
                 <button
                   type="button"
@@ -318,43 +347,66 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
             {items.length > 0 && (
               <div className="border-t border-brand/[0.08] px-4 py-3">
                 <div className="mb-3 flex items-center justify-between text-base font-semibold">
-                  <span>{t('cart_total')}</span>
+                  <span>{t(nurAnfrage ? 'cart_total_estimate' : 'cart_total')}</span>
                   <span>{formatPrice(total)}</span>
                 </div>
-                {/* Abgerechnet wird immer in Euro; CHF ist nur eine Näherung (currencyStore.ts). */}
-                {currency !== 'EUR' && (
-                  <p className="mb-2 text-xs text-brand/70">{t('currency_note_cart', { currency })}</p>
+                {nurAnfrage ? (
+                  // Stickerei:
+                  // keine Kasse, kein Versand-/Widerrufshinweis des Kaufwegs –
+                  // stattdessen die klare Aussage, was passiert.
+                  <div className="mb-3 space-y-2">
+                    {hatStickerei && (
+                      <div className="rounded-lg border border-gold/30 bg-gold-light/30 p-3">
+                        <p className="flex items-start gap-2 text-xs leading-relaxed text-brand/80">
+                          <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-gold-dark" aria-hidden />
+                          <span>{t('cart_inquiry_only_notice')}</span>
+                        </p>
+                        {gemischterWarenkorb && (
+                          <p className="mt-2 text-xs leading-relaxed text-brand/70">{t('cart_inquiry_only_mixed')}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <>
+                  {/* Abgerechnet wird immer in Euro; CHF ist nur eine Näherung (currencyStore.ts). */}
+                  {currency !== 'EUR' && (
+                    <p className="mb-2 text-xs text-brand/70">{t('currency_note_cart', { currency })}</p>
+                  )}
+                  <p className="mb-3 text-xs text-brand/70">
+                    {/* Vor der Länderwahl gilt der DE-Tarif als Orientierung;
+                        verbindlich wird der Versand im Checkout berechnet. */}
+                    {total >= SHIPPING_RATES.DE.freeFrom
+                      ? t('cart_free_shipping')
+                      : t('cart_shipping_remaining', {
+                          amount: formatPrice(SHIPPING_RATES.DE.freeFrom - total),
+                        })}{' '}
+                    {t('cart_no_returns')}
+                  </p>
+                  </>
                 )}
-                <p className="mb-3 text-xs text-brand/70">
-                  {/* Vor der Länderwahl gilt der DE-Tarif als Orientierung;
-                      verbindlich wird der Versand im Checkout berechnet. */}
-                  {total >= SHIPPING_RATES.DE.freeFrom
-                    ? t('cart_free_shipping')
-                    : t('cart_shipping_remaining', {
-                        amount: formatPrice(SHIPPING_RATES.DE.freeFrom - total),
-                      })}{' '}
-                  {t('cart_no_returns')}
-                </p>
                 <button
                   type="button"
-                  onClick={() => setStep('checkout')}
+                  onClick={() => setStep(nurAnfrage ? 'inquiry' : 'checkout')}
                   className="w-full rounded-lg bg-gold-btn py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark"
                 >
-                  {t('cart_go_checkout')}
+                  {t(nurAnfrage ? 'cart_send_inquiry' : 'cart_go_checkout')}
                 </button>
 
-                <div className="mt-4 rounded-lg bg-cream/60 p-3 text-center">
-                  <p className="text-xs leading-relaxed text-brand/70">
-                    {t('cart_unsure_hint')}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setStep('inquiry')}
-                    className="mt-1.5 text-xs font-semibold text-gold-dark underline decoration-gold/40 underline-offset-2 hover:text-gold"
-                  >
-                    {t('cart_inquiry_link')}
-                  </button>
-                </div>
+                {!nurAnfrage && (
+                  <div className="mt-4 rounded-lg bg-cream/60 p-3 text-center">
+                    <p className="text-xs leading-relaxed text-brand/70">
+                      {t('cart_unsure_hint')}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setStep('inquiry')}
+                      className="mt-1.5 text-xs font-semibold text-gold-dark underline decoration-gold/40 underline-offset-2 hover:text-gold"
+                    >
+                      {t('cart_inquiry_link')}
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </>
@@ -373,11 +425,18 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
         )}
 
         {step === 'inquiry' && (
-          <InquiryForm items={items} total={total} formatPrice={formatPrice} onSent={() => setStep('inquiry-sent')} />
+          <InquiryForm
+            items={items}
+            total={total}
+            formatPrice={formatPrice}
+            nurAnfrage={nurAnfrage}
+            hatStickerei={hatStickerei}
+            onSent={handleInquirySent}
+          />
         )}
 
         {step === 'confirmed' && <OrderConfirmed orderNumber={orderNumber} onClose={onClose} />}
-        {step === 'inquiry-sent' && <InquirySent onClose={onClose} />}
+        {step === 'inquiry-sent' && <InquirySent stickerei={stickereiAnfrageGesendet} onClose={onClose} />}
       </div>
     </div>
   );
@@ -917,6 +976,12 @@ interface InquiryFormProps {
   items: CartItem[];
   total: number;
   formatPrice: (amount: number) => string;
+  /** true = der Warenkorb enthält Stickerei und kann NUR als Anfrage gesendet
+   *  werden (config/bestellweg.ts). Die Anfrage selbst ist dieselbe; es ändern
+   *  sich nur Erklärtext und Preisbezeichnung ("Kostenschätzung"). */
+  nurAnfrage: boolean;
+  /** Der Warenkorb enthält Stickerei (steuert nur den Einleitungstext). */
+  hatStickerei: boolean;
   onSent: () => void;
 }
 
@@ -925,9 +990,11 @@ interface InquiryFormProps {
  * Lieferadresse, keine Zahlungsart, keine AGB-Zustimmung nötig, da noch
  * nichts verbindlich bestellt wird. Für Kund:innen, die vor einer
  * größeren Bestellung noch Fragen klären oder sich einfach noch nicht
- * sicher sind.
+ * sicher sind – und für Stickerei, die es ausschließlich auf Anfrage gibt:
+ * Dort prüft der Betrieb die Konfiguration persönlich, kalkuliert den
+ * endgültigen Preis und meldet sich mit einem verbindlichen Angebot.
  */
-function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
+function InquiryForm({ items, total, formatPrice, nurAnfrage, hatStickerei, onSent }: InquiryFormProps) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   // Gleiche Absicherung wie im Bestellformular (siehe useSubmitGuard).
@@ -1003,7 +1070,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
     <form onSubmit={handleSubmit} className="flex flex-1 flex-col overflow-y-auto">
       <div className="flex-1 space-y-4 px-4 py-3">
         <p className="rounded-lg bg-cream/70 p-3 text-xs leading-relaxed text-brand/70">
-          {t('inquiry_intro')}
+          {t(hatStickerei ? 'inquiry_intro_embroidery' : 'inquiry_intro')}
         </p>
 
         <section>
@@ -1053,7 +1120,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
           {items.length > 0 && (
             <div className="mt-2 border-t border-gold/15 pt-1.5">
               <div className="flex items-center justify-between text-sm font-semibold text-brand">
-                <span>{t('inquiry_estimated_price')}</span>
+                <span>{t(nurAnfrage ? 'inquiry_estimated_price_embroidery' : 'inquiry_estimated_price')}</span>
                 <span>{formatPrice(total)}</span>
               </div>
               <p className="mt-0.5 text-[11px] text-brand/70">
@@ -1073,6 +1140,14 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
             <span>{submitError}</span>
           </div>
         )}
+        {/* Hinweis auf die Datenschutzerklärung (§ 9 dort deckt Anfragen ab). */}
+        <p className="mb-2 text-[11px] leading-relaxed text-brand/70">
+          {t('inquiry_privacy_prefix')}{' '}
+          <a href="/datenschutz" target="_blank" className="text-gold-dark hover:underline">
+            {t('checkout_terms_privacy_link')}
+          </a>
+          .
+        </p>
         {!isSubmitting && fehlendeAngaben.length > 0 && (
           <p role="status" className="mb-2 text-center text-xs text-brand/70">
             {t('form_missing_hint', { fields: fehlendeAngaben.join(', ') })}
@@ -1089,7 +1164,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
               {t('inquiry_sending')}
             </>
           ) : (
-            t('inquiry_submit')
+            t(nurAnfrage ? 'cart_send_inquiry' : 'inquiry_submit')
           )}
         </button>
       </div>
@@ -1097,7 +1172,7 @@ function InquiryForm({ items, total, formatPrice, onSent }: InquiryFormProps) {
   );
 }
 
-function InquirySent({ onClose }: { onClose: () => void }) {
+function InquirySent({ stickerei, onClose }: { stickerei: boolean; onClose: () => void }) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   return (
@@ -1105,7 +1180,7 @@ function InquirySent({ onClose }: { onClose: () => void }) {
       <CheckCircle2 className="h-12 w-12 text-gold-dark" />
       <h3 className="text-lg font-semibold text-brand">{t('cart_inquiry_sent_title')}</h3>
       <p className="max-w-xs text-sm text-brand/70">
-        {t('inquiry_sent_text')}
+        {t(stickerei ? 'inquiry_sent_text_embroidery' : 'inquiry_sent_text')}
       </p>
       <button
         type="button"

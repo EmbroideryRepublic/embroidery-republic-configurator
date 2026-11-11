@@ -755,8 +755,15 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   'earthpositive-earthpositive-organic-mensunisex-pullover-hoodie-back': { x0: 29, x1: 71, y1: 91 },
   // Diagonale Eingrifftaschen statt zentraler Känguru-Tasche – keine
   // Mittelsperrzone nötig, Bündchen-Logik.
-  'earthpositive-unisex-organic-pullover-hood-ep-front': { x0: 27, x1: 73, y1: 86 },
-  'earthpositive-unisex-organic-pullover-hood-ep-back': { x0: 26, x1: 70, y1: 90 },
+  // Korrektur 2026-11-11 (Befund scripts/druckflaechePruefung.mts: Überstand bis 12,2 % der Bildbreite): Die Farben
+  // dieses Produkts sind aus zwei verschiedenen Aufnahmen zusammengesetzt. Schwarz/Bordeaux/Navy zeigen den Hoodie
+  // mit breiten Schultern, Salbeigrün/Blau/Weiß mit hochstehender Kapuze – dort ist der Stoff in Höhe von 29 bis 36 %
+  // nur etwa ein Viertel der Bildbreite breit (Kapuze und Hals). Die Fläche wurde auf der Schwarz-Aufnahme
+  // abgelesen und reichte deshalb bei den anderen Farben links und rechts in den Hintergrund. Ab y0 = 36 % liegt der
+  // Stoff in JEDER Farbe breit genug (gemessen: Vorderseite x 25,5–75,2 %, Rückseite x 27,3–74,2 %); x0/x1 bleiben
+  // bzw. werden an die Rückseite angepasst. Die Motivobergrenze (maxWidthCm/maxHeightCm) ändert sich dadurch nicht.
+  'earthpositive-unisex-organic-pullover-hood-ep-front': { x0: 27, x1: 73, y0: 36, y1: 86 },
+  'earthpositive-unisex-organic-pullover-hood-ep-back': { x0: 27.5, x1: 70, y0: 36, y1: 90 },
   'just-hoods-organic-hoodie-jh201-front': { x0: 30, x1: 70, y1: 60 },
   'just-hoods-organic-hoodie-jh201-back': { x0: 30, x1: 70, y1: 91 },
   'just-hoods-vision-heavyweight-hoodie-front': { x0: 30, x1: 70, y1: 59 },

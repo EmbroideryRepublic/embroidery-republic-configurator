@@ -406,3 +406,36 @@ export async function renderTextAlsPng(eingabe: TextJpgEingabe): Promise<TextPng
     zeilen: zerlegeInZeilen(v.element.content).length,
   };
 }
+
+export interface TextPixelDatei {
+  ok: true;
+  /** RGBA, 4 Byte je Bildpunkt, transparenter Hintergrund. */
+  pixel: Uint8Array;
+  breitePx: number;
+  hoehePx: number;
+  dpi: number;
+  breiteCm: number;
+  hoeheCm: number;
+}
+
+export type TextPixelErgebnis = TextPixelDatei | { ok: false; grund: string };
+
+/**
+ * Der Text als rohe Bildpunkte (RGBA, transparenter Hintergrund) in Druckgröße – dieselbe Darstellung wie
+ * renderTextAlsPng, nur ohne PNG-Kodierung. Grundlage der Stickdatei (lib/embroidery/digitalisieren): Dort wird aus den
+ * Bildpunkten die Stichfolge berechnet, ein PNG müsste erst wieder dekodiert werden.
+ */
+export async function renderTextAlsPixel(eingabe: TextJpgEingabe): Promise<TextPixelErgebnis> {
+  const v = await berechneAusschnitt(eingabe);
+  if (!v.ok) return v;
+  const bild = rastere(v.element, v.massstab, v.ausschnitt);
+  return {
+    ok: true,
+    pixel: new Uint8Array(bild.pixels),
+    breitePx: bild.width,
+    hoehePx: bild.height,
+    dpi: v.dpi,
+    breiteCm: bild.width / v.pxProCm,
+    hoeheCm: bild.height / v.pxProCm,
+  };
+}

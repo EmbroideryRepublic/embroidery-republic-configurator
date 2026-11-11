@@ -22,8 +22,9 @@ import { ansichtLabel, sortiereAnsichten } from '@/lib/admin/ansichten';
 import { textJpgHref, textPngHref, zeilenAnzahl } from '@/lib/admin/textLink';
 import { motivMass } from '@/lib/format';
 import { RegeneratePreviewButton } from './RegeneratePreviewButton';
+import { StickdateiKnoepfe } from './StickdateiKnoepfe';
 
-function ElementZeile({ orderId, element, nummer }: { orderId: string; element: AdminOrderElementRow; nummer: number }) {
+function ElementZeile({ orderId, element, nummer, gestickt }: { orderId: string; element: AdminOrderElementRow; nummer: number; gestickt: boolean }) {
   const bezeichnung = element.type === 'logo' ? `Logo ${nummer}` : `Text ${nummer}`;
   return (
     <li className="flex items-start gap-2.5 border-t border-gray-100 py-2 first:border-t-0">
@@ -89,6 +90,8 @@ function ElementZeile({ orderId, element, nummer }: { orderId: string; element: 
           {motivMass(element.xCm)}/{motivMass(element.yCm)} cm · {motivMass(element.widthCm)}×{motivMass(element.heightCm)} cm
           {element.rotationDeg ? ` · ${element.rotationDeg.toFixed(0)}°` : ''}
         </p>
+        {/* Stickerei: fertig digitalisierte Stickdatei (DST) – die Maschine liest keine Bilder oder Vektoren. */}
+        {gestickt && <StickdateiKnoepfe orderId={orderId} elementId={element.id} />}
       </div>
     </li>
   );
@@ -100,12 +103,14 @@ function AnsichtsKarte({
   view,
   previewUrl,
   elements,
+  gestickt,
 }: {
   orderId: string;
   itemIndex: number;
   view: string;
   previewUrl: string | undefined;
   elements: AdminOrderElementRow[];
+  gestickt: boolean;
 }) {
   const zaehler: Record<'logo' | 'text', number> = { logo: 0, text: 0 };
 
@@ -133,7 +138,7 @@ function AnsichtsKarte({
       <ul className="px-3 pb-1">
         {elements.map((element, i) => {
           zaehler[element.type] += 1;
-          return <ElementZeile key={i} orderId={orderId} element={element} nummer={zaehler[element.type]} />;
+          return <ElementZeile key={i} orderId={orderId} element={element} nummer={zaehler[element.type]} gestickt={gestickt} />;
         })}
       </ul>
     </div>
@@ -172,6 +177,7 @@ function PositionUebersicht({ item, index, orderId }: { item: AdminOrderItemRow;
               view={view}
               previewUrl={item.previewUrlByView[view]}
               elements={item.elements.filter((e) => e.view === view)}
+              gestickt={item.printMethod === 'embroidery'}
             />
           ))}
         </div>

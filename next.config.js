@@ -47,6 +47,22 @@ const nextConfig = {
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
         ],
       },
+      // Produktfotos, Marken- und Bühnenbilder (public/products, /brand, /buehne).
+      // Vercel liefert Dateien aus public/ standardmäßig mit
+      // `max-age=0, must-revalidate`: Jeder Seitenaufruf schickte für JEDES Foto
+      // eine Rückfrage an den Server (Katalogseite: ein Foto je Karte, Konfigurator:
+      // vier Ansichten plus Farbwechsel), auch wenn sich nichts geändert hatte.
+      // Zehn Minuten Zwischenspeicher sparen diese Rückfragen beim Blättern durch
+      // Katalog, Produktseite und Konfigurator; die Dateinamen sind nicht
+      // versioniert und Fotos werden gelegentlich korrigiert (Druckflächen hängen
+      // an den Bildkoordinaten), deshalb bewusst KEIN langer/immutable-Wert und
+      // danach höchstens eine Stunde „veraltet, aber sofort" mit Aktualisierung im
+      // Hintergrund. Die Fassung mit gleichem Namen ist also spätestens nach einer
+      // Stunde überall ersetzt.
+      {
+        source: '/:ordner(products|brand|buehne)/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=600, stale-while-revalidate=3600' }],
+      },
       // Die technischen Vercel-Adressen (ergermany.vercel.app, die Branch- und
       // Vorschau-Adressen) liefern denselben Shop aus wie die echte Domain.
       // Ohne diese Zeile könnte Google dieselben Seiten ein zweites Mal unter

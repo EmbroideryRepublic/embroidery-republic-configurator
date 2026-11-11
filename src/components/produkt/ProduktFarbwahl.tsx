@@ -67,7 +67,9 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
             data-ansicht={view}
             onClick={() => setAnsicht(view)}
             aria-pressed={aktiveAnsicht === view}
-            className={`rounded-full border px-3 py-2 text-xs transition ${
+            // 44 px hoch (Touch-Ziel): mit py-2 und 12-px-Schrift waren es nur 34 px;
+            // gemessen mit scripts/pruef/touchZielePruefung.mts auf 375 und 768 px.
+            className={`inline-flex min-h-[44px] items-center rounded-full border px-4 text-xs transition ${
               aktiveAnsicht === view
                 ? 'border-brand bg-brand text-white'
                 : 'border-brand/15 bg-white text-brand/70 hover:border-gold/50 hover:text-brand'

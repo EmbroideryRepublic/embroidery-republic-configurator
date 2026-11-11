@@ -36,6 +36,11 @@ const PRIORITAET_ANZAHL = 6;
 /** So viele Farbpunkte werden gezeigt, der Rest als „+N". */
 const PUNKTE = 6;
 
+/** Auf dem Handy zeigt der Katalog zwei Spalten; eine Kachel ist dort nur 136–163 px
+ *  breit. Sechs Punkte samt „+34" (rund 177 px) ragten über die Kachel und machten die
+ *  ganze Seite seitlich verschiebbar – dort passen vier. */
+const PUNKTE_KLEIN = 4;
+
 /** Farbpunkt mit leichtem Glanz und weichem Rand – wirkt wie Stoff, nicht
  *  wie ein Farbfeld aus einem Formular. */
 const PUNKT =
@@ -116,12 +121,20 @@ export function Produktkachel({
         </p>
 
         <div className="mt-3.5 flex items-center gap-2">
-          {farben.slice(0, PUNKTE).map((f) => (
-            <span key={f.id} title={formatiereFarbname(f.name)} className={PUNKT} style={{ backgroundColor: f.hex }} />
+          {farben.slice(0, PUNKTE).map((f, i) => (
+            <span
+              key={f.id}
+              title={formatiereFarbname(f.name)}
+              className={`${PUNKT} ${i >= PUNKTE_KLEIN ? 'hidden sm:block' : ''}`}
+              style={{ backgroundColor: f.hex }}
+            />
           ))}
-          {farben.length > PUNKTE && (
-            <span className="ml-1 text-[11px] tracking-wide text-brand/70">
-              +{farben.length - PUNKTE}
+          {/* Handy: vier Punkte, davor „+N" für alle weiteren; ab sm sechs Punkte.
+              Die Zählung folgt der jeweils sichtbaren Punktzahl. */}
+          {farben.length > PUNKTE_KLEIN && (
+            <span className={`ml-1 text-[11px] tracking-wide text-brand/70 ${farben.length > PUNKTE ? '' : 'sm:hidden'}`}>
+              <span className="sm:hidden">+{farben.length - PUNKTE_KLEIN}</span>
+              {farben.length > PUNKTE && <span className="hidden sm:inline">+{farben.length - PUNKTE}</span>}
             </span>
           )}
         </div>

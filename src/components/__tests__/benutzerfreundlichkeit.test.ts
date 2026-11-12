@@ -71,7 +71,8 @@ test('Handy-Konfigurator: Produktliste einklappbar, Vorschau klebt oben und die 
   assert.match(k, /sticky top-\[96px\] z-20/, 'Vorschau klebt unter Kopfzeile und Schrittleiste');
   assert.match(k, /lg:static/, 'ab lg wie bisher');
   assert.match(k, /contents lg:flex lg:min-w-0 lg:flex-1/, 'Mitte ohne eigenen Kasten, damit sticky über die ganze Zeile greift');
-  assert.match(k, /max-w-\[210px\] sm:max-w-\[260px\] lg:max-w-\[820px\]/, 'Vorschau am Handy klein, am Desktop unverändert groß');
+  // Handy klein, Tablet (md) etwas größer (2026-11-12: 226 px auf 768 px Breite waren verschenkter Platz), Desktop unverändert groß.
+  assert.match(k, /max-w-\[210px\] sm:max-w-\[260px\] md:max-w-\[340px\] lg:max-w-\[820px\]/, 'Vorschau am Handy klein, am Desktop unverändert groß');
   assert.match(k, /setBrowserOffenMobil\(false\);\s*\}, \[product\.id\]\)/, 'nach der Produktwahl wieder eingeklappt');
 });
 
@@ -214,4 +215,29 @@ test('Ist der Umschalter aus, gilt für alle Besucher Deutsch – auch für solc
   assert.equal(waehleSprache(undefined, true), 'de');
   const store = quelltext('src', 'stores', 'languageStore.ts');
   assert.match(store, /merge: \(gespeichert, aktuell\)/, 'die Auswahl greift beim Laden der gespeicherten Daten');
+});
+
+// ── Konfigurator: rechte Spalte (Prüfung 2026-11-12) ──────────────────────
+
+test('Konfigurator rechte Spalte: scrollt in sich, ragt nie über ihren Kasten und klebt nur die Kauf-Leiste an', () => {
+  const k = quelltext('src', 'components', 'configurator', 'ConfiguratorPrototype.tsx');
+  const s = quelltext('src', 'components', 'configurator', 'SummaryPanel.tsx');
+  // Feste Spaltenhöhe + Werkzeugbereich mit Mindesthöhe war die Ursache: Der Inhalt (~1080 px) ragte bei jedem Fenster
+  // unter ~1180 px aus dem Kasten, der Bestellknopf lag unter dem Sichtbereich und über der Fußzeile.
+  assert.doesNotMatch(k, /lg:h-\[calc\(100vh-6\.5rem\)\]/, 'keine feste Spaltenhöhe (der Inhalt darf höher sein als das Fenster)');
+  assert.doesNotMatch(k, /min-h-\[280px\]/, 'kein Werkzeugbereich mit Mindesthöhe in einem Flex-Container mit fester Höhe');
+  assert.match(k, /lg:max-h-\[calc\(100vh-6\.5rem\)\][^"]*lg:overflow-y-auto/, 'Spalte: höchstens Fensterhöhe, scrollt in sich');
+  // Nur die Kauf-Leiste (Preis + Bestellknopf) klebt unten; die Größentabelle scrollt mit den Werkzeugen.
+  assert.match(s, /lg:\[@media\(min-height:600px\)\]:sticky[^"]*lg:\[@media\(min-height:600px\)\]:bottom-0/, 'Kauf-Leiste klebt am Fuß der Spalte');
+  const kaufLeiste = s.slice(s.indexOf('lg:[@media(min-height:600px)]:sticky'));
+  assert.ok(kaufLeiste.includes('summary_add_to_cart'), 'der Bestellknopf liegt in der klebenden Kauf-Leiste');
+  const groessenKasten = s.slice(0, s.indexOf('lg:[@media(min-height:600px)]:sticky'));
+  assert.ok(groessenKasten.includes('<SizeQuantityTable'), 'die Größentabelle liegt NICHT in der klebenden Leiste');
+});
+
+test('Größentabelle: kein zweiter Rahmen im Rahmen der Zusammenfassung, dreispaltig bei kurzen Größenbezeichnungen', () => {
+  const t = quelltext('src', 'components', 'configurator', 'SizeQuantityTable.tsx');
+  assert.doesNotMatch(t, /rounded-lg border border-gold\/20 bg-white p-3 shadow-elegant/, 'kein eigener Kasten mehr');
+  assert.match(t, /grid-cols-3/, 'dreispaltig möglich');
+  assert.match(t, /size\.length <= 4/, 'nur bei kurzen Bezeichnungen (sonst läuft das Feld über)');
 });

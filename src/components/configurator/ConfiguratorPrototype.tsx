@@ -540,7 +540,7 @@ export function ConfiguratorPrototype() {
                   // zeigt wie die Produktseite; genau dort lag der gemeldete
                   // Fehler ("Liste zeigt Foto, Konfigurator zeigt Silhouette").
                   data-konfigbild={`${currentColor?.id ?? '-'}/${activeView}/${currentImageUrl}`}
-                  className="relative w-full max-w-[210px] sm:max-w-[260px] lg:max-w-[820px] xl:max-w-[960px] 2xl:max-w-[1100px]"
+                  className="relative w-full max-w-[210px] sm:max-w-[260px] md:max-w-[340px] lg:max-w-[820px] xl:max-w-[960px] 2xl:max-w-[1100px]"
                   style={{ maxHeight: 'min(840px, calc(100vh - 20rem))' }}
                 >
                   {isLoadingContext ? (
@@ -585,7 +585,14 @@ export function ConfiguratorPrototype() {
               und Bestellknopf sind am Fuß verankert und dadurch dauerhaft
               sichtbar. Vorher scrollte die ganze Spalte – der Bestellknopf
               lag je nach Produkt unterhalb des Sichtbereichs. */}
-          <div className="flex w-full flex-col gap-2 lg:sticky lg:top-24 lg:h-[calc(100vh-6.5rem)] lg:w-80 lg:flex-shrink-0 xl:w-[22rem] 2xl:w-96 lg:self-start">
+          {/* Ab lg ist die Spalte EIN eigener Scrollbereich (höchstens so hoch wie das Fenster, sticky unter der
+              Kopfzeile). Vorher hatte sie eine feste Höhe, und der Werkzeugbereich durfte nur bis auf 280 px
+              schrumpfen: Bei Fensterhöhen unter ca. 1180 px (1440×900, 1366×768, auch 1920×1080) ragte die Spalte
+              über ihren Kasten hinaus – Größen, Preis und „In den Warenkorb“ lagen unter dem Sichtbereich und
+              beim Scrollen über der Fußzeile (Prüfung 2026-11-12, live bestätigt). Jetzt scrollt die Spalte innen;
+              die Kauf-Leiste (Preis + Bestellknopf) klebt am Fuß der Spalte, solange das Fenster mindestens 600 px
+              hoch ist; Werkzeuge und Größentabelle scrollen darüber. */}
+          <div className="flex w-full flex-col gap-2 lg:sticky lg:top-24 lg:-mx-1 lg:max-h-[calc(100vh-6.5rem)] lg:w-[20.5rem] lg:flex-shrink-0 lg:self-start lg:overflow-y-auto lg:p-1 lg:[scrollbar-width:thin] xl:w-[22.5rem] 2xl:w-[24.5rem]">
             {/* Status-Übersicht zuerst: Der Kunde sieht auf einen Blick, wo er
                 steht und was als Nächstes ansteht – der geführte Einkauf
                 beginnt mit Orientierung, nicht mit Werkzeugen. */}
@@ -595,30 +602,16 @@ export function ConfiguratorPrototype() {
             <div className="flex-shrink-0">
               <MethodSwitcher currentUnitPrice={unitPrice} otherMethodUnitPrice={otherMethodUnitPrice} />
             </div>
-            {/* min-h-[280px] statt min-h-0: Ohne eine feste Untergrenze darf
-                dieser Bereich im Flex-Container bis auf 0 schrumpfen, sobald
-                KonfigUebersicht + MethodSwitcher + SummaryPanel bei knappen
-                Bildschirmhöhen (1366×768, 1440×900 – verbreitete Laptop-
-                Auflösungen) mehr Platz beanspruchen als die feste Spaltenhöhe
-                hergibt. Folge: Die Tab-Leiste (u.a. der „Logo"-Tab, der
-                Standardtab zum Motiv-Hinzufügen) wird auf einen nicht mehr
-                anklickbaren Streifen zusammengedrückt – live per
-                elementFromPoint() bestätigt. 280px sichert die Tab-Leiste
-                plus etwas Inhalt; reicht der Platz nicht, wächst die Spalte
-                über ihre sticky-Höhe hinaus und die Seite scrollt, statt die
-                Werkzeuge unbedienbar zu machen. Reicht der Platz, greift
-                overflow-y-auto weiterhin normal. */}
-            <div className="min-h-[280px] flex-1 overflow-y-auto lg:pr-0.5">
+            <div className="flex-shrink-0">
               <ToolPanelTabs printArea={currentPrintArea} printAreas={effectivePrintAreas} />
             </div>
-            <div className="flex-shrink-0">
-              <SummaryPanel
-                productName={product.name}
-                breakdown={priceBreakdown}
-                priceHasErrors={priceHasErrors}
-                onItemAdded={handleItemAddedToCart}
-              />
-            </div>
+            {/* Zwei Kästen (Größen/Staffel, Kauf-Leiste); die Kauf-Leiste klebt am Fuß der Spalte. */}
+            <SummaryPanel
+              productName={product.name}
+              breakdown={priceBreakdown}
+              priceHasErrors={priceHasErrors}
+              onItemAdded={handleItemAddedToCart}
+            />
           </div>
         </div>
       </div>

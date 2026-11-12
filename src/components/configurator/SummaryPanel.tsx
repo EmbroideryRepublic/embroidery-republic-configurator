@@ -115,7 +115,11 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
   }
 
   return (
-    <div className="space-y-2 rounded-xl border border-gold/20 bg-white p-3 shadow-elegant">
+    // Zwei Kästen als direkte Kinder der (scrollenden) rechten Spalte: oben Größen/Staffel, darunter die Kauf-Leiste
+    // mit Preis und Bestellknopf. Nur die Kauf-Leiste klebt unten fest (ab lg, Fensterhöhe ≥ 600 px) – so bleibt der
+    // Knopf immer erreichbar, und die Größentabelle scrollt mit den Werkzeugen, statt ihnen den Platz zu nehmen.
+    <>
+    <div className="flex-shrink-0 space-y-2 rounded-xl border border-gold/20 bg-white p-3 shadow-elegant">
       {/* Veredelung, Elemente und Position stehen jetzt in der Live-Übersicht
           (KonfigUebersicht) oben in der Spalte – hier bleibt der eigentliche
           Preis- und Bestellbereich, um Doppelungen zu vermeiden. */}
@@ -261,7 +265,9 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
           )}
         </div>
       )}
+    </div>
 
+    <div className="flex-shrink-0 space-y-2 rounded-xl border border-gold/20 bg-white p-3 shadow-elegant lg:[@media(min-height:600px)]:sticky lg:[@media(min-height:600px)]:bottom-0 lg:[@media(min-height:600px)]:z-10">
       {/* Gesamtpreis, sobald überhaupt eine Menge gewählt ist – auch bei
           einem einzigen Stück. Vorher erschien er erst ab 5 Stück. */}
       {quantity > 0 ? (
@@ -298,7 +304,8 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
             <span className="text-sm font-medium text-brand/70">{t('summary_unit_price')}</span>
             <span className="font-serif text-lg font-semibold text-brand">{formatPrice(unitPrice)}</span>
           </div>
-          <p className="mt-1 text-xs text-amber-700">{t('summary_select_size_first')}</p>
+          {/* Der Hinweis „Bitte zuerst eine Größe und Menge wählen.“ steht unter dem Knopf (!canAddToCart) –
+              hier zusätzlich wiederholt, stand er zweimal übereinander und kostete Höhe. */}
         </div>
       )}
 
@@ -334,5 +341,6 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
         </p>
       )}
     </div>
+    </>
   );
 }

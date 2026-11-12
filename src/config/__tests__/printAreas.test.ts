@@ -14,7 +14,7 @@ import { PRINT_AREA_DATA as GEMESSEN } from '../printAreaData.generated';
 import { GEOMETRY_ALIAS } from '../printAreaAlias.generated';
 import { PRODUCTS } from '../products';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
-import { groessenRang } from '../products/groessen';
+import { groessenRang, groessenLeiterVon } from '../products/groessen';
 import { DECORATION_POSITIONS } from '../decorationPositions';
 
 /** Prozessgrenzen NICHT mehr hier gespiegelt (eine frühere Kopie lief mit
@@ -187,7 +187,12 @@ test('die Fläche bleibt schmaler als das Kleidungsstück', () => {
   for (const p of PRODUCTS) {
     const a = PRINT_AREA_DATA[p.id]?.front;
     if (!a) continue;
-    const mass = p.sizeGuide?.measurements.find((m) => m.size === 'M') ?? p.sizeGuide?.measurements[0];
+    // Referenzgröße wie im Generator: 'M', sonst die Referenz der Größenleiter (Kinderware, z. B. '128'), sonst die erste Zeile.
+    // Bei Kinderware ist die erste Zeile die KLEINSTE Größe (92 cm) – gegen sie darf die Fläche der Referenzgröße nicht antreten.
+    const tabelle = p.sizeGuide?.measurements ?? [];
+    const ref = groessenLeiterVon(p).referenz?.toUpperCase();
+    const mass =
+      tabelle.find((m) => m.size === 'M') ?? (ref ? tabelle.find((m) => m.size.toUpperCase() === ref) : undefined) ?? tabelle[0];
     if (!mass) continue;
     assert.ok(
       a.maxWidthCm < mass.breiteCm,

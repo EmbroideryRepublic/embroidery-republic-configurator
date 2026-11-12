@@ -304,7 +304,26 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   // und fiele auf 9–13 cm. Am Foto abgelesen (alle 20 Farben): die Kapuze endet bei y≈30 %, darunter laufen die Schultern schräg ab; die Fläche beginnt erst auf dem Brustkorb.
   // Auch x0/x1 stehen hier: Die Zeilenmessung (Perzentil über die Zeilen ab dem Kapuzenscheitel) fände sonst nur die
   // Kapuze und lieferte x 40–60 % (9–13 cm Breite). Rumpfbreite am Foto abgelesen, symmetrisch um die Bildmitte.
-  'kinder-g18500k-front': { x0: 28, x1: 71, y0: 38 },
+  'kinder-g18500k-front': { x0: 28, x1: 71, y0: 38, y1: 65 },
+
+  // ── Kinder-Kapuzenware: Motiv nie auf Kapuze oder Känguru-Tasche (wie bei den Erwachsenen-Hoodies, siehe „Kapuzenware“ unten) ──
+  // Alle Werte am eigenen Foto abgelesen (Rasterhilfe, Prozent der Bildhöhe 720 px): Kapuzenausschnitt vorne, Kapuzenspitze hinten,
+  // Oberkante der Tasche (Känguru-Tasche bzw. Zip-Taschen) und Bündchen. Die Rumpfbreite (x) bleibt berechnet, außer wo die
+  // Zeilenmessung den Ärmelspalt statt des Rumpfes fände (Russell: Ärmel hängen am Körper).
+  // Vorderseite: Kapuzenausschnitt ≈ y22–31, Taschenoberkante y57–66. Rückseite: Kapuzenspitze y31–43, Bündchen ab y83–87.
+  'kinder-f421nk-front': { y0: 22, y1: 59 },
+  'kinder-f421nk-back': { y0: 40, y1: 82 },
+  'kinder-g18500k-back': { y0: 33, y1: 80 },
+  'kinder-f401nk-front': { y0: 26, y1: 58 },
+  'kinder-f401nk-back': { y0: 41, y1: 82 },
+  'kinder-jh001k-front': { y0: 29, y1: 58 },
+  'kinder-jh001k-back': { y0: 33, y1: 82 },
+  'kinder-jh050k-front': { y0: 28, y1: 57 },
+  'kinder-jh050k-back': { y0: 33, y1: 82 },
+  'kinder-z265k-front': { x0: 29, x1: 71, y0: 31, y1: 58 },
+  'kinder-z265k-back': { x0: 29, x1: 71, y0: 43, y1: 82 },
+  'kinder-z266k-front': { x0: 29, x1: 71, y0: 31, y1: 59 },
+  'kinder-z266k-back': { x0: 30, x1: 70, y0: 43, y1: 83 },
 
   // ── Raglan mit Kontrastaermeln ───────────────────────────────────────
   // Die Rumpfkante ist hier keine Silhouettenkante, sondern eine FARBGRENZE

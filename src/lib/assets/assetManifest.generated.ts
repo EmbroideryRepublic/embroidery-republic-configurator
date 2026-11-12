@@ -20149,5 +20149,1022 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
       },
       "status": "real"
     }
+  },
+  "kinder-jh001k": {
+    "arctic-white": {
+      "views": {
+        "front": "/products/kinder-jh001k-arctic-white/front.webp",
+        "back": "/products/kinder-jh001k-arctic-white/back.webp"
+      },
+      "status": "real"
+    },
+    "vanilla-milkshake": {
+      "views": {
+        "front": "/products/kinder-jh001k-vanilla-milkshake/front.webp",
+        "back": "/products/kinder-jh001k-vanilla-milkshake/back.webp"
+      },
+      "status": "real"
+    },
+    "desert-sand": {
+      "views": {
+        "front": "/products/kinder-jh001k-desert-sand/front.webp",
+        "back": "/products/kinder-jh001k-desert-sand/back.webp"
+      },
+      "status": "real"
+    },
+    "sun-yellow": {
+      "views": {
+        "front": "/products/kinder-jh001k-sun-yellow/front.webp",
+        "back": "/products/kinder-jh001k-sun-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "orange-crush": {
+      "views": {
+        "front": "/products/kinder-jh001k-orange-crush/front.webp",
+        "back": "/products/kinder-jh001k-orange-crush/back.webp"
+      },
+      "status": "real"
+    },
+    "fire-red": {
+      "views": {
+        "front": "/products/kinder-jh001k-fire-red/front.webp",
+        "back": "/products/kinder-jh001k-fire-red/back.webp"
+      },
+      "status": "real"
+    },
+    "red-hot-chilli": {
+      "views": {
+        "front": "/products/kinder-jh001k-red-hot-chilli/front.webp",
+        "back": "/products/kinder-jh001k-red-hot-chilli/back.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/kinder-jh001k-burgundy/front.webp",
+        "back": "/products/kinder-jh001k-burgundy/back.webp"
+      },
+      "status": "real"
+    },
+    "baby-pink": {
+      "views": {
+        "front": "/products/kinder-jh001k-baby-pink/front.webp",
+        "back": "/products/kinder-jh001k-baby-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "candyfloss-pink": {
+      "views": {
+        "front": "/products/kinder-jh001k-candyfloss-pink/front.webp",
+        "back": "/products/kinder-jh001k-candyfloss-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "dusty-pink": {
+      "views": {
+        "front": "/products/kinder-jh001k-dusty-pink/front.webp",
+        "back": "/products/kinder-jh001k-dusty-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "hot-pink": {
+      "views": {
+        "front": "/products/kinder-jh001k-hot-pink/front.webp",
+        "back": "/products/kinder-jh001k-hot-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "lilac": {
+      "views": {
+        "front": "/products/kinder-jh001k-lilac/front.webp",
+        "back": "/products/kinder-jh001k-lilac/back.webp"
+      },
+      "status": "real"
+    },
+    "digital-lavender": {
+      "views": {
+        "front": "/products/kinder-jh001k-digital-lavender/front.webp",
+        "back": "/products/kinder-jh001k-digital-lavender/back.webp"
+      },
+      "status": "real"
+    },
+    "plum": {
+      "views": {
+        "front": "/products/kinder-jh001k-plum/front.webp",
+        "back": "/products/kinder-jh001k-plum/back.webp"
+      },
+      "status": "real"
+    },
+    "purple": {
+      "views": {
+        "front": "/products/kinder-jh001k-purple/front.webp",
+        "back": "/products/kinder-jh001k-purple/back.webp"
+      },
+      "status": "real"
+    },
+    "ice-blue": {
+      "views": {
+        "front": "/products/kinder-jh001k-ice-blue/front.webp",
+        "back": "/products/kinder-jh001k-ice-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "sky-blue": {
+      "views": {
+        "front": "/products/kinder-jh001k-sky-blue/front.webp",
+        "back": "/products/kinder-jh001k-sky-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "hawaiian-blue": {
+      "views": {
+        "front": "/products/kinder-jh001k-hawaiian-blue/front.webp",
+        "back": "/products/kinder-jh001k-hawaiian-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "airforce-blue": {
+      "views": {
+        "front": "/products/kinder-jh001k-airforce-blue/front.webp",
+        "back": "/products/kinder-jh001k-airforce-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "sapphire-blue": {
+      "views": {
+        "front": "/products/kinder-jh001k-sapphire-blue/front.webp",
+        "back": "/products/kinder-jh001k-sapphire-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "bright-royal": {
+      "views": {
+        "front": "/products/kinder-jh001k-bright-royal/front.webp",
+        "back": "/products/kinder-jh001k-bright-royal/back.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/kinder-jh001k-royal-blue/front.webp",
+        "back": "/products/kinder-jh001k-royal-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "oxford-navy": {
+      "views": {
+        "front": "/products/kinder-jh001k-oxford-navy/front.webp",
+        "back": "/products/kinder-jh001k-oxford-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "new-french-navy": {
+      "views": {
+        "front": "/products/kinder-jh001k-new-french-navy/front.webp",
+        "back": "/products/kinder-jh001k-new-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "peppermint": {
+      "views": {
+        "front": "/products/kinder-jh001k-peppermint/front.webp",
+        "back": "/products/kinder-jh001k-peppermint/back.webp"
+      },
+      "status": "real"
+    },
+    "seafoam": {
+      "views": {
+        "front": "/products/kinder-jh001k-seafoam/front.webp",
+        "back": "/products/kinder-jh001k-seafoam/back.webp"
+      },
+      "status": "real"
+    },
+    "jade": {
+      "views": {
+        "front": "/products/kinder-jh001k-jade/front.webp",
+        "back": "/products/kinder-jh001k-jade/back.webp"
+      },
+      "status": "real"
+    },
+    "lime-green": {
+      "views": {
+        "front": "/products/kinder-jh001k-lime-green/front.webp",
+        "back": "/products/kinder-jh001k-lime-green/back.webp"
+      },
+      "status": "real"
+    },
+    "dusty-green": {
+      "views": {
+        "front": "/products/kinder-jh001k-dusty-green/front.webp",
+        "back": "/products/kinder-jh001k-dusty-green/back.webp"
+      },
+      "status": "real"
+    },
+    "kelly-green": {
+      "views": {
+        "front": "/products/kinder-jh001k-kelly-green/front.webp",
+        "back": "/products/kinder-jh001k-kelly-green/back.webp"
+      },
+      "status": "real"
+    },
+    "rainforest-green": {
+      "views": {
+        "front": "/products/kinder-jh001k-rainforest-green/front.webp",
+        "back": "/products/kinder-jh001k-rainforest-green/back.webp"
+      },
+      "status": "real"
+    },
+    "bottle-green": {
+      "views": {
+        "front": "/products/kinder-jh001k-bottle-green/front.webp",
+        "back": "/products/kinder-jh001k-bottle-green/back.webp"
+      },
+      "status": "real"
+    },
+    "forest-green": {
+      "views": {
+        "front": "/products/kinder-jh001k-forest-green/front.webp",
+        "back": "/products/kinder-jh001k-forest-green/back.webp"
+      },
+      "status": "real"
+    },
+    "khaki": {
+      "views": {
+        "front": "/products/kinder-jh001k-khaki/front.webp",
+        "back": "/products/kinder-jh001k-khaki/back.webp"
+      },
+      "status": "real"
+    },
+    "olive-green": {
+      "views": {
+        "front": "/products/kinder-jh001k-olive-green/front.webp",
+        "back": "/products/kinder-jh001k-olive-green/back.webp"
+      },
+      "status": "real"
+    },
+    "ash-heather": {
+      "views": {
+        "front": "/products/kinder-jh001k-ash-heather/front.webp",
+        "back": "/products/kinder-jh001k-ash-heather/back.webp"
+      },
+      "status": "real"
+    },
+    "natural-stone": {
+      "views": {
+        "front": "/products/kinder-jh001k-natural-stone/front.webp",
+        "back": "/products/kinder-jh001k-natural-stone/back.webp"
+      },
+      "status": "real"
+    },
+    "platinum-grey": {
+      "views": {
+        "front": "/products/kinder-jh001k-platinum-grey/front.webp",
+        "back": "/products/kinder-jh001k-platinum-grey/back.webp"
+      },
+      "status": "real"
+    },
+    "heather-grey": {
+      "views": {
+        "front": "/products/kinder-jh001k-heather-grey/front.webp",
+        "back": "/products/kinder-jh001k-heather-grey/back.webp"
+      },
+      "status": "real"
+    },
+    "solid-charcoal": {
+      "views": {
+        "front": "/products/kinder-jh001k-solid-charcoal/front.webp",
+        "back": "/products/kinder-jh001k-solid-charcoal/back.webp"
+      },
+      "status": "real"
+    },
+    "charcoal-heather": {
+      "views": {
+        "front": "/products/kinder-jh001k-charcoal-heather/front.webp",
+        "back": "/products/kinder-jh001k-charcoal-heather/back.webp"
+      },
+      "status": "real"
+    },
+    "storm-grey-solid": {
+      "views": {
+        "front": "/products/kinder-jh001k-storm-grey-solid/front.webp",
+        "back": "/products/kinder-jh001k-storm-grey-solid/back.webp"
+      },
+      "status": "real"
+    },
+    "black-smoke": {
+      "views": {
+        "front": "/products/kinder-jh001k-black-smoke/front.webp",
+        "back": "/products/kinder-jh001k-black-smoke/back.webp"
+      },
+      "status": "real"
+    },
+    "deep-black": {
+      "views": {
+        "front": "/products/kinder-jh001k-deep-black/front.webp",
+        "back": "/products/kinder-jh001k-deep-black/back.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/kinder-jh001k-jet-black/front.webp",
+        "back": "/products/kinder-jh001k-jet-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "kinder-jh050k": {
+    "arctic-white": {
+      "views": {
+        "front": "/products/kinder-jh050k-arctic-white/front.webp",
+        "back": "/products/kinder-jh050k-arctic-white/back.webp"
+      },
+      "status": "real"
+    },
+    "desert-sand": {
+      "views": {
+        "front": "/products/kinder-jh050k-desert-sand/front.webp",
+        "back": "/products/kinder-jh050k-desert-sand/back.webp"
+      },
+      "status": "real"
+    },
+    "sun-yellow": {
+      "views": {
+        "front": "/products/kinder-jh050k-sun-yellow/front.webp",
+        "back": "/products/kinder-jh050k-sun-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "fire-red": {
+      "views": {
+        "front": "/products/kinder-jh050k-fire-red/front.webp",
+        "back": "/products/kinder-jh050k-fire-red/back.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/kinder-jh050k-burgundy/front.webp",
+        "back": "/products/kinder-jh050k-burgundy/back.webp"
+      },
+      "status": "real"
+    },
+    "baby-pink": {
+      "views": {
+        "front": "/products/kinder-jh050k-baby-pink/front.webp",
+        "back": "/products/kinder-jh050k-baby-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "hot-pink": {
+      "views": {
+        "front": "/products/kinder-jh050k-hot-pink/front.webp",
+        "back": "/products/kinder-jh050k-hot-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "digital-lavender": {
+      "views": {
+        "front": "/products/kinder-jh050k-digital-lavender/front.webp",
+        "back": "/products/kinder-jh050k-digital-lavender/back.webp"
+      },
+      "status": "real"
+    },
+    "purple": {
+      "views": {
+        "front": "/products/kinder-jh050k-purple/front.webp",
+        "back": "/products/kinder-jh050k-purple/back.webp"
+      },
+      "status": "real"
+    },
+    "hawaiian-blue": {
+      "views": {
+        "front": "/products/kinder-jh050k-hawaiian-blue/front.webp",
+        "back": "/products/kinder-jh050k-hawaiian-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "sapphire-blue": {
+      "views": {
+        "front": "/products/kinder-jh050k-sapphire-blue/front.webp",
+        "back": "/products/kinder-jh050k-sapphire-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/kinder-jh050k-royal-blue/front.webp",
+        "back": "/products/kinder-jh050k-royal-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "oxford-navy": {
+      "views": {
+        "front": "/products/kinder-jh050k-oxford-navy/front.webp",
+        "back": "/products/kinder-jh050k-oxford-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "new-french-navy": {
+      "views": {
+        "front": "/products/kinder-jh050k-new-french-navy/front.webp",
+        "back": "/products/kinder-jh050k-new-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "kelly-green": {
+      "views": {
+        "front": "/products/kinder-jh050k-kelly-green/front.webp",
+        "back": "/products/kinder-jh050k-kelly-green/back.webp"
+      },
+      "status": "real"
+    },
+    "heather-grey": {
+      "views": {
+        "front": "/products/kinder-jh050k-heather-grey/front.webp",
+        "back": "/products/kinder-jh050k-heather-grey/back.webp"
+      },
+      "status": "real"
+    },
+    "deep-black": {
+      "views": {
+        "front": "/products/kinder-jh050k-deep-black/front.webp",
+        "back": "/products/kinder-jh050k-deep-black/back.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/kinder-jh050k-jet-black/front.webp",
+        "back": "/products/kinder-jh050k-jet-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "kinder-z265k": {
+    "classic-red": {
+      "views": {
+        "front": "/products/kinder-z265k-classic-red/front.webp",
+        "back": "/products/kinder-z265k-classic-red/back.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/kinder-z265k-burgundy/front.webp",
+        "back": "/products/kinder-z265k-burgundy/back.webp"
+      },
+      "status": "real"
+    },
+    "bright-royal": {
+      "views": {
+        "front": "/products/kinder-z265k-bright-royal/front.webp",
+        "back": "/products/kinder-z265k-bright-royal/back.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/kinder-z265k-french-navy/front.webp",
+        "back": "/products/kinder-z265k-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "bottle-green": {
+      "views": {
+        "front": "/products/kinder-z265k-bottle-green/front.webp",
+        "back": "/products/kinder-z265k-bottle-green/back.webp"
+      },
+      "status": "real"
+    },
+    "black": {
+      "views": {
+        "front": "/products/kinder-z265k-black/front.webp",
+        "back": "/products/kinder-z265k-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "kinder-z266k": {
+    "classic-red": {
+      "views": {
+        "front": "/products/kinder-z266k-classic-red/front.webp",
+        "back": "/products/kinder-z266k-classic-red/back.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/kinder-z266k-burgundy/front.webp",
+        "back": "/products/kinder-z266k-burgundy/back.webp"
+      },
+      "status": "real"
+    },
+    "bright-royal": {
+      "views": {
+        "front": "/products/kinder-z266k-bright-royal/front.webp",
+        "back": "/products/kinder-z266k-bright-royal/back.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/kinder-z266k-french-navy/front.webp",
+        "back": "/products/kinder-z266k-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "bottle-green": {
+      "views": {
+        "front": "/products/kinder-z266k-bottle-green/front.webp",
+        "back": "/products/kinder-z266k-bottle-green/back.webp"
+      },
+      "status": "real"
+    },
+    "black": {
+      "views": {
+        "front": "/products/kinder-z266k-black/front.webp",
+        "back": "/products/kinder-z266k-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "kinder-z180k": {
+    "white": {
+      "views": {
+        "front": "/products/kinder-z180k-white/front.webp",
+        "back": "/products/kinder-z180k-white/back.webp"
+      },
+      "status": "real"
+    },
+    "yellow": {
+      "views": {
+        "front": "/products/kinder-z180k-yellow/front.webp",
+        "back": "/products/kinder-z180k-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "bright-red": {
+      "views": {
+        "front": "/products/kinder-z180k-bright-red/front.webp",
+        "back": "/products/kinder-z180k-bright-red/back.webp"
+      },
+      "status": "real"
+    },
+    "classic-red": {
+      "views": {
+        "front": "/products/kinder-z180k-classic-red/front.webp",
+        "back": "/products/kinder-z180k-classic-red/back.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/kinder-z180k-burgundy/front.webp",
+        "back": "/products/kinder-z180k-burgundy/back.webp"
+      },
+      "status": "real"
+    },
+    "purple": {
+      "views": {
+        "front": "/products/kinder-z180k-purple/front.webp",
+        "back": "/products/kinder-z180k-purple/back.webp"
+      },
+      "status": "real"
+    },
+    "sky": {
+      "views": {
+        "front": "/products/kinder-z180k-sky/front.webp",
+        "back": "/products/kinder-z180k-sky/back.webp"
+      },
+      "status": "real"
+    },
+    "bright-royal": {
+      "views": {
+        "front": "/products/kinder-z180k-bright-royal/front.webp",
+        "back": "/products/kinder-z180k-bright-royal/back.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/kinder-z180k-french-navy/front.webp",
+        "back": "/products/kinder-z180k-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "bottle-green": {
+      "views": {
+        "front": "/products/kinder-z180k-bottle-green/front.webp",
+        "back": "/products/kinder-z180k-bottle-green/back.webp"
+      },
+      "status": "real"
+    },
+    "black": {
+      "views": {
+        "front": "/products/kinder-z180k-black/front.webp",
+        "back": "/products/kinder-z180k-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "kinder-jc001j": {
+    "arctic-white": {
+      "views": {
+        "front": "/products/kinder-jc001j-arctic-white/front.webp",
+        "back": "/products/kinder-jc001j-arctic-white/back.webp"
+      },
+      "status": "real"
+    },
+    "electric-yellow": {
+      "views": {
+        "front": "/products/kinder-jc001j-electric-yellow/front.webp",
+        "back": "/products/kinder-jc001j-electric-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "sun-yellow": {
+      "views": {
+        "front": "/products/kinder-jc001j-sun-yellow/front.webp",
+        "back": "/products/kinder-jc001j-sun-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "electric-orange": {
+      "views": {
+        "front": "/products/kinder-jc001j-electric-orange/front.webp",
+        "back": "/products/kinder-jc001j-electric-orange/back.webp"
+      },
+      "status": "real"
+    },
+    "fire-red": {
+      "views": {
+        "front": "/products/kinder-jc001j-fire-red/front.webp",
+        "back": "/products/kinder-jc001j-fire-red/back.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/kinder-jc001j-burgundy/front.webp",
+        "back": "/products/kinder-jc001j-burgundy/back.webp"
+      },
+      "status": "real"
+    },
+    "electric-pink": {
+      "views": {
+        "front": "/products/kinder-jc001j-electric-pink/front.webp",
+        "back": "/products/kinder-jc001j-electric-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "hot-pink": {
+      "views": {
+        "front": "/products/kinder-jc001j-hot-pink/front.webp",
+        "back": "/products/kinder-jc001j-hot-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "hyper-pink": {
+      "views": {
+        "front": "/products/kinder-jc001j-hyper-pink/front.webp",
+        "back": "/products/kinder-jc001j-hyper-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "digital-lavender": {
+      "views": {
+        "front": "/products/kinder-jc001j-digital-lavender/front.webp",
+        "back": "/products/kinder-jc001j-digital-lavender/back.webp"
+      },
+      "status": "real"
+    },
+    "magenta-magic": {
+      "views": {
+        "front": "/products/kinder-jc001j-magenta-magic/front.webp",
+        "back": "/products/kinder-jc001j-magenta-magic/back.webp"
+      },
+      "status": "real"
+    },
+    "purple": {
+      "views": {
+        "front": "/products/kinder-jc001j-purple/front.webp",
+        "back": "/products/kinder-jc001j-purple/back.webp"
+      },
+      "status": "real"
+    },
+    "sky-blue": {
+      "views": {
+        "front": "/products/kinder-jc001j-sky-blue/front.webp",
+        "back": "/products/kinder-jc001j-sky-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "sapphire-blue": {
+      "views": {
+        "front": "/products/kinder-jc001j-sapphire-blue/front.webp",
+        "back": "/products/kinder-jc001j-sapphire-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "cornflower-blue": {
+      "views": {
+        "front": "/products/kinder-jc001j-cornflower-blue/front.webp",
+        "back": "/products/kinder-jc001j-cornflower-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/kinder-jc001j-royal-blue/front.webp",
+        "back": "/products/kinder-jc001j-royal-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "oxford-navy": {
+      "views": {
+        "front": "/products/kinder-jc001j-oxford-navy/front.webp",
+        "back": "/products/kinder-jc001j-oxford-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/kinder-jc001j-french-navy/front.webp",
+        "back": "/products/kinder-jc001j-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "mint": {
+      "views": {
+        "front": "/products/kinder-jc001j-mint/front.webp",
+        "back": "/products/kinder-jc001j-mint/back.webp"
+      },
+      "status": "real"
+    },
+    "seafoam": {
+      "views": {
+        "front": "/products/kinder-jc001j-seafoam/front.webp",
+        "back": "/products/kinder-jc001j-seafoam/back.webp"
+      },
+      "status": "real"
+    },
+    "jade": {
+      "views": {
+        "front": "/products/kinder-jc001j-jade/front.webp",
+        "back": "/products/kinder-jc001j-jade/back.webp"
+      },
+      "status": "real"
+    },
+    "melon-green": {
+      "views": {
+        "front": "/products/kinder-jc001j-melon-green/front.webp",
+        "back": "/products/kinder-jc001j-melon-green/back.webp"
+      },
+      "status": "real"
+    },
+    "electric-green": {
+      "views": {
+        "front": "/products/kinder-jc001j-electric-green/front.webp",
+        "back": "/products/kinder-jc001j-electric-green/back.webp"
+      },
+      "status": "real"
+    },
+    "sour-green": {
+      "views": {
+        "front": "/products/kinder-jc001j-sour-green/front.webp",
+        "back": "/products/kinder-jc001j-sour-green/back.webp"
+      },
+      "status": "real"
+    },
+    "kelly-green": {
+      "views": {
+        "front": "/products/kinder-jc001j-kelly-green/front.webp",
+        "back": "/products/kinder-jc001j-kelly-green/back.webp"
+      },
+      "status": "real"
+    },
+    "earthy-green": {
+      "views": {
+        "front": "/products/kinder-jc001j-earthy-green/front.webp",
+        "back": "/products/kinder-jc001j-earthy-green/back.webp"
+      },
+      "status": "real"
+    },
+    "bottle-green": {
+      "views": {
+        "front": "/products/kinder-jc001j-bottle-green/front.webp",
+        "back": "/products/kinder-jc001j-bottle-green/back.webp"
+      },
+      "status": "real"
+    },
+    "heather-grey-solid": {
+      "views": {
+        "front": "/products/kinder-jc001j-heather-grey-solid/front.webp",
+        "back": "/products/kinder-jc001j-heather-grey-solid/back.webp"
+      },
+      "status": "real"
+    },
+    "charcoal-solid": {
+      "views": {
+        "front": "/products/kinder-jc001j-charcoal-solid/front.webp",
+        "back": "/products/kinder-jc001j-charcoal-solid/back.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/kinder-jc001j-jet-black/front.webp",
+        "back": "/products/kinder-jc001j-jet-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "kinder-e399": {
+    "white": {
+      "views": {
+        "front": "/products/kinder-e399-white/front.webp",
+        "back": "/products/kinder-e399-white/back.webp"
+      },
+      "status": "real"
+    },
+    "gold": {
+      "views": {
+        "front": "/products/kinder-e399-gold/front.webp",
+        "back": "/products/kinder-e399-gold/back.webp"
+      },
+      "status": "real"
+    },
+    "orange": {
+      "views": {
+        "front": "/products/kinder-e399-orange/front.webp",
+        "back": "/products/kinder-e399-orange/back.webp"
+      },
+      "status": "real"
+    },
+    "fire-red": {
+      "views": {
+        "front": "/products/kinder-e399-fire-red/front.webp",
+        "back": "/products/kinder-e399-fire-red/back.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/kinder-e399-burgundy/front.webp",
+        "back": "/products/kinder-e399-burgundy/back.webp"
+      },
+      "status": "real"
+    },
+    "chalk-pink": {
+      "views": {
+        "front": "/products/kinder-e399-chalk-pink/front.webp",
+        "back": "/products/kinder-e399-chalk-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "deep-pink": {
+      "views": {
+        "front": "/products/kinder-e399-deep-pink/front.webp",
+        "back": "/products/kinder-e399-deep-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "baby-blue": {
+      "views": {
+        "front": "/products/kinder-e399-baby-blue/front.webp",
+        "back": "/products/kinder-e399-baby-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "royal": {
+      "views": {
+        "front": "/products/kinder-e399-royal/front.webp",
+        "back": "/products/kinder-e399-royal/back.webp"
+      },
+      "status": "real"
+    },
+    "navy": {
+      "views": {
+        "front": "/products/kinder-e399-navy/front.webp",
+        "back": "/products/kinder-e399-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "jade": {
+      "views": {
+        "front": "/products/kinder-e399-jade/front.webp",
+        "back": "/products/kinder-e399-jade/back.webp"
+      },
+      "status": "real"
+    },
+    "wild-lime": {
+      "views": {
+        "front": "/products/kinder-e399-wild-lime/front.webp",
+        "back": "/products/kinder-e399-wild-lime/back.webp"
+      },
+      "status": "real"
+    },
+    "kelly-green": {
+      "views": {
+        "front": "/products/kinder-e399-kelly-green/front.webp",
+        "back": "/products/kinder-e399-kelly-green/back.webp"
+      },
+      "status": "real"
+    },
+    "forest": {
+      "views": {
+        "front": "/products/kinder-e399-forest/front.webp",
+        "back": "/products/kinder-e399-forest/back.webp"
+      },
+      "status": "real"
+    },
+    "khaki": {
+      "views": {
+        "front": "/products/kinder-e399-khaki/front.webp",
+        "back": "/products/kinder-e399-khaki/back.webp"
+      },
+      "status": "real"
+    },
+    "sports-grey-heather": {
+      "views": {
+        "front": "/products/kinder-e399-sports-grey-heather/front.webp",
+        "back": "/products/kinder-e399-sports-grey-heather/back.webp"
+      },
+      "status": "real"
+    },
+    "new-light-grey-solid": {
+      "views": {
+        "front": "/products/kinder-e399-new-light-grey-solid/front.webp",
+        "back": "/products/kinder-e399-new-light-grey-solid/back.webp"
+      },
+      "status": "real"
+    },
+    "steel-gray": {
+      "views": {
+        "front": "/products/kinder-e399-steel-gray/front.webp",
+        "back": "/products/kinder-e399-steel-gray/back.webp"
+      },
+      "status": "real"
+    },
+    "graphite-solid": {
+      "views": {
+        "front": "/products/kinder-e399-graphite-solid/front.webp",
+        "back": "/products/kinder-e399-graphite-solid/back.webp"
+      },
+      "status": "real"
+    },
+    "charcoal-solid": {
+      "views": {
+        "front": "/products/kinder-e399-charcoal-solid/front.webp",
+        "back": "/products/kinder-e399-charcoal-solid/back.webp"
+      },
+      "status": "real"
+    },
+    "black": {
+      "views": {
+        "front": "/products/kinder-e399-black/front.webp",
+        "back": "/products/kinder-e399-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "kinder-bctk003": {
+    "white": {
+      "views": {
+        "front": "/products/kinder-bctk003-white/front.webp",
+        "back": "/products/kinder-bctk003-white/back.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/kinder-bctk003-royal-blue/front.webp",
+        "back": "/products/kinder-bctk003-royal-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "navy": {
+      "views": {
+        "front": "/products/kinder-bctk003-navy/front.webp",
+        "back": "/products/kinder-bctk003-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "sport-grey-heather": {
+      "views": {
+        "front": "/products/kinder-bctk003-sport-grey-heather/front.webp",
+        "back": "/products/kinder-bctk003-sport-grey-heather/back.webp"
+      },
+      "status": "real"
+    },
+    "black": {
+      "views": {
+        "front": "/products/kinder-bctk003-black/front.webp",
+        "back": "/products/kinder-bctk003-black/back.webp"
+      },
+      "status": "real"
+    }
   }
 };

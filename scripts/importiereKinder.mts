@@ -38,10 +38,21 @@ type Kleidung = 'T-Shirt' | 'Hoodie' | 'Sweatshirt' | 'Zip-Hoodie' | 'Longsleeve
 /** Kleidungsart je Artikelnummer – die einzige Zuordnung, die dieses Skript selbst trifft. */
 const KLEIDUNG: Record<string, Kleidung> = {
   F140K: 'T-Shirt', F110K: 'T-Shirt', G5000K: 'T-Shirt', BCTK001: 'T-Shirt', BCTK002: 'T-Shirt', S140K: 'T-Shirt', NE30001: 'T-Shirt',
-  JH001K: 'Hoodie', F421NK: 'Hoodie', G18500K: 'Hoodie', BCWK002: 'Hoodie',
+  Z180K: 'T-Shirt', JC001J: 'T-Shirt', E399: 'T-Shirt',
+  JH001K: 'Hoodie', F421NK: 'Hoodie', G18500K: 'Hoodie', BCWK002: 'Hoodie', Z265K: 'Hoodie',
   JH030K: 'Sweatshirt', G18000K: 'Sweatshirt', BCWK001: 'Sweatshirt',
-  JH050K: 'Zip-Hoodie', F401NK: 'Zip-Hoodie',
-  F240K: 'Longsleeve',
+  JH050K: 'Zip-Hoodie', F401NK: 'Zip-Hoodie', Z266K: 'Zip-Hoodie',
+  F240K: 'Longsleeve', BCTK003: 'Longsleeve',
+};
+
+/**
+ * Offensichtliche Tippfehler in Lieferantentabellen – die EINZIGE Stelle, an der dieses Skript einen Quellwert ändert.
+ * Jeder Eintrag braucht eine Begründung aus einer zweiten Quelle; ohne sie bleibt der Lieferantenwert stehen.
+ *   Z265K 116 (5/6): Länge 59 cm bricht die Größenreihe (45 → 59 → 54). Das Schwesterprodukt Z266K (gleicher Schnitt, gleiche
+ *   Breiten in allen Größen) führt für dieselbe Größe 49 cm – die Folge 45/49/54/57/62/67 ist dort lückenlos.
+ */
+const MASS_KORREKTUR: Record<string, Record<string, { hoeheCm: number; grund: string }>> = {
+  Z265K: { '116 (5/6)': { hoeheCm: 49, grund: 'Lieferantentabelle 59 cm = Tippfehler; Z266K (gleicher Schnitt): 49 cm' } },
 };
 
 interface RohFarbe {
@@ -87,6 +98,13 @@ for (const p of roh) {
   const sizeGuide = tabelle
     .map((z) => ({ size: groessenOhneZusatz(z[0] ?? ''), breiteCm: zahl(z[1] ?? ''), hoeheCm: zahl(z[2] ?? '') }))
     .filter((m) => m.size && Number.isFinite(m.breiteCm) && Number.isFinite(m.hoeheCm));
+  for (const m of sizeGuide) {
+    const k = MASS_KORREKTUR[p.artNr]?.[m.size];
+    if (k) {
+      bericht.push(`! ${p.artNr} ${m.size}: Länge ${m.hoeheCm} → ${k.hoeheCm} cm (${k.grund})`);
+      m.hoeheCm = k.hoeheCm;
+    }
+  }
   const labels = sizeGuide.map((m) => m.size);
   if (labels.length === 0) throw new Error(`${p.artNr}: keine Größentabelle`);
   const leiterId = leiterFuer(labels);

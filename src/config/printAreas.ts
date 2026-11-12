@@ -92,6 +92,14 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
     { xPercent: 46.4, yPercent: 21, widthPercent: 6, heightPercent: 71, label: 'Reißverschluss' },
   ],
 
+  // Kinder-Zip-Hoodies Just Hoods Zoodie und Russell Authentic: Reißverschluss mittig, am eigenen Foto abgelesen.
+  'kinder-jh050k-front': [
+    { xPercent: 47, yPercent: 24, widthPercent: 6, heightPercent: 67, label: 'Reißverschluss' },
+  ],
+  'kinder-z266k-front': [
+    { xPercent: 46.5, yPercent: 29, widthPercent: 6, heightPercent: 63, label: 'Reißverschluss' },
+  ],
+
   // ── Voll-Reißverschluss (Zip-Hoodies/Jacken): Mittelstreifen bis Saum ─
   'justhoods-zoodie-front': [
     { xPercent: 47, yPercent: 21, widthPercent: 6, heightPercent: 72, label: 'Reißverschluss' },

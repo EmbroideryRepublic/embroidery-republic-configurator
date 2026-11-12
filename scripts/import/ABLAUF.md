@@ -123,6 +123,21 @@ Besonderheiten:
 - **Kleidungsart:** Tabelle `KLEIDUNG` in `importiereKinder.mts` (je Artikelnummer) – die einzige Zuordnung, die das
   Skript selbst trifft. Die Produktart ist für alle Kinderware `kids`, die Kleidungsart steht in
   `detailedDescription.productType`.
-- **Nur Produkte mit Vorder- UND Rückfoto** im Flachbildstil (Dateinamen `…-front…`/`…-back…`). Modelle mit nur einem Foto
-  oder Fotos ohne klare Vorder-/Rückseite (z. B. Just Hoods Kids' Hoodie JH001K, Neutral NE30001, B&C Kids ID.333/ID.332,
-  Stedman Kids) sind bewusst noch nicht importiert.
+- **Nur Produkte mit Vorder- UND Rückfoto** im Flachbildstil. Der Scraper erkennt je Lieferant: `…-front…`/`…-back…`
+  (Standard), Just Hoods Zoodie `…-torso-…`/`…-back-…`, Just Hoods Hoodie `…-0002…` (vorne) / `…-0001…` (hinten),
+  Stedman `…-f-20xx-…` (vorne) / `…-back-…`. Modelle mit nur EINEM Foto je Farbe oder uneindeutigen Fotos bleiben draußen
+  (Liste `PRODUKTE_GEPRUEFT_OHNE_RUECKSEITE` im Scraper mit Begründung; mit `node scripts/import/scrapeKinder.mjs <artnr>`
+  gezielt neu prüfbar). Ein Schwung läuft so: Kandidaten mit `OUT=…/roh-x.json node scripts/import/scrapeKinder.mjs <artnr,…>`
+  einlesen (mehrere Läufe parallel möglich), Rückseiten-Abdeckung je Modell prüfen (alle Farben mit Vorder- UND Rückbild),
+  die Aufgenommenen in `kinder-raw.json` übernehmen (oder `MERGE=1`), dann Schritte 2–3 oben, nur mit den NEUEN Aufträgen
+  (`kinder-jobs.json` auf die neuen `productId`s filtern, sonst werden alle Fotos erneut geholt).
+- **Größenbezeichnungen, die wie Erwachsenengrößen aussehen** (nur „XS … XL“, „3XS … XL“ ohne Alter/cm) werden NICHT
+  aufgenommen: Die Größenübernahme beim Produktwechsel arbeitet mit den Bezeichnungen und könnte Erwachsenen- und
+  Kindermengen verwechseln (Stedman S140K, Gildan Softstyle G64000K/G65000K/G3000K).
+- **Tippfehler in Lieferantentabellen:** Die Maße kommen unverändert aus der Quelle. Einzige Ausnahme ist die Tabelle
+  `MASS_KORREKTUR` in `importiereKinder.mts` – nur mit Begründung aus einer zweiten Quelle (heute: Z265K, 116 (5/6), Länge
+  59 → 49 cm, belegt durch das Schwesterprodukt Z266K).
+- **Kapuze und Taschen:** Der Generator findet bei Kinder-Hoodies die Kapuze/Tasche nicht zuverlässig. Für jedes Kinder-
+  Kapuzenprodukt stehen deshalb Ober-/Unterkante in `BEREICH_KORREKTUR` (`generatePrintAreaData.mts`): Vorderseite endet über
+  der Tasche (≈ y58), Rückseite beginnt unter der Kapuzenspitze; Zip-Hoodies bekommen in `printAreas.ts` eine Sperrzone für
+  den Reißverschluss. Werte am eigenen Foto mit Prozentraster ablesen (Prozent der Bildhöhe), nicht schätzen.

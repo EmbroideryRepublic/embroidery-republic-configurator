@@ -58,7 +58,9 @@ export const DEFAULT_GROESSEN_LEITER = 'konfektion-eu';
  * sie führt (nichts umgerechnet, nichts geraten); die Leiter-Ordnung muss GROSSBUCHSTABEN tragen (indexIn vergleicht so).
  *   kinder-cm      Körpergröße in cm                       (Fruit of the Loom, Just Hoods …)
  *   kinder-doppel  zwei Körpergrößen je Größe              (Neutral)
- *   kinder-alter   Alter mit Körpergröße in Klammern       (B&C)
+ *   kinder-alter   Alter mit Körpergröße in Klammern       (B&C; zusätzlich 1/2, 12/14, 15/16 je Modell)
+ *   kinder-alter-xs Alter mit Konfektionsgröße in Klammern    (Just Hoods Hoodie/Zoodie, Just Cool)
+ *   kinder-russell Körpergröße in cm mit Alter in Klammern   (Russell Athletic)
  *   kinder-jugend  Jugendgrößen XS … XL, ab 140 cm          (Gildan Youth T-Shirt)
  *   kinder-gildan  Kindergrößen XS … XL, 104 … 176 cm       (Gildan Youth Sweat/Hoodie)
  *   kinder-jahre   Kindergrößen XXS … XL mit Lebensjahren   (Just Hoods)
@@ -72,8 +74,18 @@ export const KINDER_LEITERN: Record<string, GroessenLeiter> = {
   'kinder-doppel': kinderLeiter('kinder-doppel', ['92/98', '104/110', '116/122', '128/134', '140/146', '152/158'], '128/134'),
   'kinder-alter': kinderLeiter(
     'kinder-alter',
-    ['3/4 (98/104)', '5/6 (110/116)', '7/8 (122/128)', '9/11 (134/146)', '12/13 (152/161)'],
+    ['1/2 (86/92)', '3/4 (98/104)', '5/6 (110/116)', '7/8 (122/128)', '9/11 (134/146)', '12/13 (152/161)', '12/14 (152/164)', '15/16'],
     '7/8 (122/128)'
+  ),
+  'kinder-alter-xs': kinderLeiter(
+    'kinder-alter-xs',
+    ['1/2 (XXS)', '3/4 (XS)', '5/6 (S)', '7/8 (M)', '9/11 (L)', '12/13 (XL)'],
+    '7/8 (M)'
+  ),
+  'kinder-russell': kinderLeiter(
+    'kinder-russell',
+    ['90 (1/2)', '104 (3/4)', '116 (5/6)', '128 (7/8)', '140 (9/10)', '152 (11/12)', '164 (13/14)'],
+    '128 (7/8)'
   ),
   'kinder-jugend': kinderLeiter('kinder-jugend', ['XS (140/152)', 'S (164)', 'M (170)', 'L (176)', 'XL (182+)'], 'S (164)'),
   'kinder-gildan': kinderLeiter('kinder-gildan', ['XS (104/110)', 'S (116/128)', 'M (140/152)', 'L (164)', 'XL (176)'], 'M (140/152)'),

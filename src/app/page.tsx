@@ -268,7 +268,7 @@ export default async function Startseite() {
                   fill
                   sizes="(max-width: 1024px) 90vw, 42vw"
                   priority
-                  className="object-contain p-10 transition-transform duration-[700ms] ease-out group-hover:scale-[1.04] sm:p-14"
+                  className="object-contain p-6 transition-transform duration-[700ms] ease-out group-hover:scale-[1.04] sm:p-9"
                 />
               </div>
               <div className="mt-5 flex items-start justify-between gap-3">
@@ -297,7 +297,7 @@ export default async function Startseite() {
                       alt={produktTypLabel(art)}
                       fill
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 24vw"
-                      className="object-contain p-8 transition-transform duration-[700ms] ease-out group-hover:scale-[1.05]"
+                      className="object-contain p-4 transition-transform duration-[700ms] ease-out group-hover:scale-[1.05]"
                     />
                   )}
                 </div>

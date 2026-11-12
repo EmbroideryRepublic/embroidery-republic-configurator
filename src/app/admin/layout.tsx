@@ -11,7 +11,8 @@ import { adminLogout } from '@/lib/actions/admin';
 import { AdminLoginForm } from '@/components/admin/AdminLoginForm';
 
 export const metadata: Metadata = {
-  title: 'Admin | Embroidery Republic',
+  // Die Marke hängt das Root-Layout selbst an („… | Embroidery Republic Germany“) – nicht doppelt nennen.
+  title: 'Admin',
   robots: { index: false, follow: false },
 };
 

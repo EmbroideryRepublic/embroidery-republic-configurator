@@ -24,9 +24,11 @@ import { alleProduktSlugs, ladeProduktseite } from '@/lib/products/productPage';
 import { produktTypLabelPlural } from '@/config/products/types';
 import { produktBild, PLATZHALTER_BILD } from '@/lib/assets';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
+import { echteHerkunft } from '@/lib/products/herkunft';
 import { ProduktFarbwahl } from '@/components/produkt/ProduktFarbwahl';
 import { ProduktFarbeProvider } from '@/components/produkt/ProduktFarbeContext';
 import { KonfiguratorCta } from '@/components/produkt/KonfiguratorCta';
+import { ProduktKaufleiste } from '@/components/produkt/ProduktKaufleiste';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { cm } from '@/lib/format';
@@ -119,7 +121,9 @@ function MiniKarte({ produkt }: { produkt: ProductConfig }) {
       href={`/produkt/${produkt.id}`}
       className="group rounded-2xl border border-brand/[0.08] bg-white p-3 transition-all duration-300 hover:border-gold/40 hover:shadow-[0_18px_44px_-28px_rgba(43,36,28,0.4)]"
     >
-      <div className="relative aspect-square overflow-hidden rounded-xl bg-cream/40">
+      {/* bg-white statt cream/40: Die Lieferantenfotos haben einen weißen Hintergrund – auf getöntem Grund
+          erschien das Foto als helles Rechteck im Kasten im Kasten. */}
+      <div className="relative aspect-square overflow-hidden rounded-xl bg-white">
         {produkt.colors[0] && (
           <Image
             src={produktBild(produkt.id, produkt.colors)}
@@ -208,7 +212,10 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
 
             <p className="mt-5 text-sm leading-relaxed text-brand/70">{produkt.description}</p>
 
-            <div className="mt-6 rounded-2xl border border-gold/25 bg-white p-5 shadow-[0_16px_40px_-30px_rgba(43,36,28,0.4)]">
+            <div
+              id="produkt-kaufkarte"
+              className="mt-6 rounded-2xl border border-gold/25 bg-white p-5 shadow-[0_16px_40px_-30px_rgba(43,36,28,0.4)]"
+            >
               <p className="text-sm text-brand/70">Ab</p>
               <p className="font-serif text-3xl font-normal text-brand">
                 <WaehrungsPreis betragInEur={produkt.basePrice} />
@@ -260,6 +267,10 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
             </div>
           </div>
         </div>
+        {/* Feste Bestellleiste am Handy, solange die Bestellkarte nicht im Bild ist. */}
+        <ProduktKaufleiste produktId={produkt.id} kartenId="produkt-kaufkarte">
+          <WaehrungsPreis betragInEur={produkt.basePrice} />
+        </ProduktKaufleiste>
         </ProduktFarbeProvider>
 
         {/* ── Veredelung ───────────────────────────────────────────────
@@ -289,7 +300,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
               <Datenzeile label="Flächengewicht" wert={produkt.weightGsm ? `${produkt.weightGsm} g/m²` : '–'} />
               <Datenzeile label="Passform" wert={produkt.fit} />
               {d?.gender && <Datenzeile label="Schnitt" wert={d.gender} />}
-              {d?.countryOfOrigin && <Datenzeile label="Herkunft" wert={d.countryOfOrigin} />}
+              {echteHerkunft(d?.countryOfOrigin) && <Datenzeile label="Herkunft" wert={echteHerkunft(d?.countryOfOrigin)!} />}
               {supplierRefVon(produkt.id)?.articleNumber && (
                 <Datenzeile label="Artikelnummer" wert={supplierRefVon(produkt.id)!.articleNumber} />
               )}

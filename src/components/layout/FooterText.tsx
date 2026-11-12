@@ -97,10 +97,10 @@ export function FooterLegalColumn() {
 
 /** `children`: der fertige Versand-Fakt (<li>) aus Footer.tsx, unverändert an
  *  seiner ursprünglichen Position zwischen Produktionszeit und Zahlungsziel. */
-export function FooterInfoColumn({ children }: { children: ReactNode }) {
+export function FooterInfoColumn({ children, className }: { children: ReactNode; className?: string }) {
   const language = useLanguageStore((s) => s.language);
   return (
-    <div>
+    <div className={className}>
       <p className={UEBERSCHRIFT_KLASSE}>{translate('footer_info_heading', language)}</p>
       <ul className="flex flex-col gap-1.5">
         <li className="text-xs text-brand/70">{translate('footer_fact_moq', language)}</li>

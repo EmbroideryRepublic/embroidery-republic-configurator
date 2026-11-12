@@ -7,6 +7,7 @@ import { useLanguageStore, translate } from '@/stores/languageStore';
 import { SizeGuideModal } from './SizeGuideModal';
 import type { ProductConfig } from '@/config/products';
 import { waehlbareFarben } from '@/lib/products/farben';
+import { echteHerkunft } from '@/lib/products/herkunft';
 
 interface ProductDetailsProps {
   product: ProductConfig;
@@ -140,10 +141,12 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                       <dt className="text-brand/70">Material</dt>
                       <dd className="text-brand/80">{dd.materialDetail}</dd>
                     </div>
-                    <div>
-                      <dt className="text-brand/70">Herstellungsland</dt>
-                      <dd className="text-brand/80">{dd.countryOfOrigin}</dd>
-                    </div>
+                    {echteHerkunft(dd.countryOfOrigin) && (
+                      <div>
+                        <dt className="text-brand/70">Herstellungsland</dt>
+                        <dd className="text-brand/80">{echteHerkunft(dd.countryOfOrigin)}</dd>
+                      </div>
+                    )}
                     <div>
                       <dt className="text-brand/70">Grammatur</dt>
                       <dd className="text-brand/80">{product.weightGsm ? `${product.weightGsm} g/m²` : '–'}</dd>

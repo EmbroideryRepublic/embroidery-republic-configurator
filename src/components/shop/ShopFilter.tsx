@@ -55,7 +55,7 @@ export function ShopFilter({
         <KategorieReiter kriterien={kriterien} werte={facetten.kategorie} />
 
         {/* Band 2 – die eigentlichen Filter, durch eine feine Linie getrennt. */}
-        <div className="border-t border-brand/[0.06] py-4">
+        <div className="border-t border-brand/[0.06] py-2.5 sm:py-4">
           <FilterMenues
             kriterien={kriterien} facetten={facetten} spannen={spannen}
             bezeichnungen={bezeichnungen} onPanelOeffnen={() => setPanelOffen(true)}

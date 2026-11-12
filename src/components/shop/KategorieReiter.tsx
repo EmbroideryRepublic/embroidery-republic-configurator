@@ -67,7 +67,7 @@ function Reiter({ aktiv, onClick, label }: { aktiv: boolean; onClick: () => void
       type="button"
       onClick={onClick}
       aria-current={aktiv ? 'page' : undefined}
-      className={`group relative shrink-0 whitespace-nowrap px-5 pb-4 pt-5 transition-colors duration-300 ease-out xl:px-7 ${
+      className={`group relative shrink-0 whitespace-nowrap px-5 pb-3 pt-3 sm:pb-4 sm:pt-5 transition-colors duration-300 ease-out xl:px-7 ${
         aktiv ? 'text-brand' : 'text-brand/70 hover:text-brand'
       }`}
     >

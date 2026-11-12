@@ -112,7 +112,14 @@ export function Produktkachel({
 
       <div className={liste ? 'min-w-0 flex-1' : 'pt-5'}>
         <p className="text-[11px] uppercase tracking-[0.14em] text-brand/70">{produkt.brand}</p>
-        <p className="mt-1.5 truncate text-[15px] leading-snug text-brand transition-colors duration-300 group-hover:text-gold-dark">
+        {/* Raster: bis xl zwei Zeilen (mit reservierter Höhe, damit die Preise nebeneinanderstehender Kacheln
+            fluchten) – am Handy kürzte „truncate“ gerade die Teile, die Varianten unterscheiden
+            („Ultra Cotton Long Sle…“, „Ladies Iconic 195 Ring…“). Ab xl reicht die Breite für eine Zeile. */}
+        <p
+          className={`mt-1.5 text-[15px] leading-snug text-brand transition-colors duration-300 group-hover:text-gold-dark ${
+            liste ? 'truncate' : 'line-clamp-2 min-h-[2.75rem] xl:line-clamp-1 xl:min-h-0'
+          }`}
+        >
           {produkt.name}
         </p>
         <p className="mt-2.5 text-[16px] font-medium tabular-nums text-brand">

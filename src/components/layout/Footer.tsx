@@ -15,8 +15,10 @@ import {
 export function Footer() {
   return (
     <footer className="mt-12 border-t border-gold/15 bg-white px-4 py-12 text-sm">
-      <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
+      {/* Handy: Navigation und Rechtliches stehen nebeneinander (zwei Spalten), Marke/Kontakt und
+          „Gut zu wissen“ über die volle Breite – statt vier Blöcke untereinander (spart rund 200 px). */}
+      <div className="mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 lg:grid-cols-4">
+        <div className="col-span-2 sm:col-span-1">
           <p className="font-serif text-base font-semibold text-brand">Embroidery Republic</p>
           <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-gold-dark">Germany</p>
           <FooterDescription />
@@ -46,7 +48,7 @@ export function Footer() {
         {/* Versand-Fakt bleibt hier: er enthält einen Geldbetrag und wird
             währungsbewusst über `WaehrungsPreis` gerendert (anderer Fund) –
             FooterInfoColumn reiht ihn nur an der richtigen Position ein. */}
-        <FooterInfoColumn>
+        <FooterInfoColumn className="col-span-2 sm:col-span-1">
           <li className="text-xs text-brand/70">
             <FooterFreeShippingLabel /> <WaehrungsPreis betragInEur={SHIPPING_RATES.DE.freeFrom} />
           </li>

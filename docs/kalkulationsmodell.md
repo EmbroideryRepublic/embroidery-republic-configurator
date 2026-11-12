@@ -38,7 +38,10 @@ gar nicht tragen.
 > Lieferantenrechnungen ist deshalb **echte Kostenlast** – der Satz oben („wir holen sie zurück“) gilt für ihn nicht.
 > Die Einkaufspreise im Katalog sind die Nettopreise der Lieferanten-Shops. Seit dem 2026-11-12 rechnet
 > `computeBasePrice()` (config/pricing/marginTiers.ts) deshalb **Einkaufspreis netto + 19 % + Aufschlag**,
-> aufgerundet auf x,99 €. Vorher fehlten die 19 %: Die Textilpreise lagen im Schnitt rund 2 € (9 %) zu niedrig.
+> aufgerundet auf x,99 €. Vorher fehlten die 19 %. **Goldene Mitte (selber Tag, Betreiber: „ein bisschen zu hoch“):** Der
+> Preis ist der HÖHERE von (1) dem bisherigen Preis und (2) Einkauf inkl. USt + Aufschlag, aufgerundet auf den NÄCHSTEN
+> ,99-Betrag (statt auf den nächsthöheren vollen Euro). Ergebnis: im Schnitt rund 1 € über früher, kein Produkt billiger als
+> vorher, keines teurer als in der ersten Fassung, Marge über dem tatsächlichen Einkauf mindestens 8 €.
 > Die übrigen Kostenbausteine unten (DTF-Bögen, Lieferantenversand, Verpackung) sind separat zu prüfen, ob sie netto
 > genannt wurden; die festen Positionspreise der Veredelung (9 € / 5 € / 4 €) sind Entscheidungen des Betreibers
 > und von dieser Korrektur unberührt.

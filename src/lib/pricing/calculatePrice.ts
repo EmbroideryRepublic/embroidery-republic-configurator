@@ -1,6 +1,6 @@
 import type { ConfigElement, PricingRule, PrintView } from '@/types';
 import { evaluateRules, isRuleApplicable, type PricingIssue } from './ruleEngine';
-import { aufNaechstesNeunundneunzig } from './ladenpreis';
+import { aufNaechsten99 } from './ladenpreis';
 
 /**
  * Zentrale Preisberechnung des Konfigurators.
@@ -444,17 +444,17 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   let unitPriceDiscounted = discountedFixed + discountedVariable + surchargePerUnit;
 
   // Ladenpreis (Festlegung des Betreibers 2026-11-12, lib/pricing/ladenpreis.ts): Der Stückpreis, den die Kundschaft
-  // sieht – INKLUSIVE anteiliger Rüstkosten –, wird auf den nächsten ,99-Betrag AUFGERUNDET (nie abgerundet).
+  // sieht – INKLUSIVE anteiliger Rüstkosten –, wird kaufmännisch auf den NÄCHSTEN ,99-Betrag gerundet (auf oder ab, höchstens ±0,50 €).
   // Die Rundung greift VOR den Nachlässen (Verein, Gutschein, Aktion): Ein Nachlass bezieht sich so auf den
   // angezeigten Listenpreis und wirkt in voller Höhe. Der Rundungsbetrag steckt wie ein Preisbaustein im festen
   // Anteil; „Stückpreis × Menge = Gesamtpreis“ bleibt für die Kundschaft nachrechenbar.
   if (input.ladenpreisRundung !== false) {
     const listenpreisRoh = unitPriceDiscounted + setupTotalVorab(charges.orderOnce, quantity);
-    const rundungJeStueck = aufNaechstesNeunundneunzig(listenpreisRoh) - listenpreisRoh;
+    const rundungJeStueck = aufNaechsten99(listenpreisRoh) - listenpreisRoh;
     unitPriceDiscounted += rundungJeStueck;
     // Auch der „ohne Mengenvorteil“-Vergleichspreis wird zum Ladenpreis, damit „Sie sparen“ stimmt.
     const vergleichRoh = unitPriceUndiscounted + setupTotalVorab(charges.orderOnce, quantity);
-    unitPriceUndiscounted += aufNaechstesNeunundneunzig(vergleichRoh) - vergleichRoh;
+    unitPriceUndiscounted += aufNaechsten99(vergleichRoh) - vergleichRoh;
   }
 
   // Betrag vor Nachlässen merken, damit der Nachlass unten als eigener

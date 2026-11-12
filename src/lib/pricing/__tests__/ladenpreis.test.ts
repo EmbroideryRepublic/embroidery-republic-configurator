@@ -1,15 +1,34 @@
 /**
  * Ladenpreis: Der Stückpreis, den die Kundschaft zahlt, endet auf ,99 € (Festlegung des Betreibers 2026-11-12).
  *
- * Aufgerundet wird nur nach oben (nie unter den Rechenwert), vor den Nachlässen, und „Stückpreis × Menge =
- * Gesamtpreis“ bleibt nachrechenbar.
+ * Gerundet wird kaufmännisch zum NÄCHSTEN ,99-Betrag (auf oder ab, höchstens ±0,50 €; „goldene Mitte“ – immer
+ * Aufrunden lag im Schnitt rund 0,35 € über dem Rechenwert), vor den Nachlässen, und „Stückpreis × Menge =
+ * Gesamtpreis“ bleibt nachrechenbar. Die Untergrenze des Grundpreises (Einkauf inkl. USt + Aufschlag) rundet dagegen immer
+ * nach oben (aufNaechstesNeunundneunzig).
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import type { ConfigElement } from '@/types';
 import { getPricingRules } from '@/config/pricingRules';
 import { calculatePrice } from '../calculatePrice';
-import { aufNaechstesNeunundneunzig } from '../ladenpreis';
+import { aufNaechsten99, aufNaechstesNeunundneunzig } from '../ladenpreis';
+
+test('aufNaechsten99: kaufmännisch zum nächsten ,99-Betrag, höchstens ±0,50 €', () => {
+  assert.equal(aufNaechsten99(19.13), 18.99);
+  assert.equal(aufNaechsten99(19.6), 19.99);
+  assert.equal(aufNaechsten99(19.99), 19.99);
+  assert.equal(aufNaechsten99(20.4), 19.99);
+  assert.equal(aufNaechsten99(20.6), 20.99);
+  assert.equal(aufNaechsten99(0.4), 0.99);
+  assert.equal(aufNaechsten99(0), 0);
+  assert.equal(aufNaechsten99(Number.NaN), 0);
+  for (let c = 1; c <= 20000; c++) {
+    const betrag = c / 100;
+    const r = aufNaechsten99(betrag);
+    assert.equal(Math.round(r * 100) % 100, 99, `${betrag} → ${r}`);
+    assert.ok(Math.abs(r - betrag) <= 0.5 + 0.0001 || betrag < 0.5, `${betrag} → ${r}: mehr als 0,50 € Abweichung`);
+  }
+});
 
 test('aufNaechstesNeunundneunzig: nächster ,99-Betrag, nie nach unten', () => {
   assert.equal(aufNaechstesNeunundneunzig(19.13), 19.99);
@@ -49,7 +68,7 @@ test('Jeder Stückpreis endet auf ,99 – für alle Mengen, Grundpreise und ein 
   }
 });
 
-test('Die Rundung geht nur nach oben und um weniger als einen Euro; Stückpreis × Menge = Gesamtpreis', async () => {
+test('Die Rundung weicht höchstens 0,50 € vom Rechenwert ab; Stückpreis × Menge = Gesamtpreis', async () => {
   const rules = await getPricingRules('dtf');
   for (const basis of BASEN) {
     for (const menge of MENGEN) {
@@ -57,8 +76,7 @@ test('Die Rundung geht nur nach oben und um weniger als einen Euro; Stückpreis 
       const laden = calculatePrice({ basePrice: basis, quantity: menge, elements: el, pricingRules: rules });
       const roh = calculatePrice({ basePrice: basis, quantity: menge, elements: el, pricingRules: rules, ladenpreisRundung: false });
       const aufschlag = laden.unitPrice - roh.unitPrice;
-      assert.ok(aufschlag >= -0.005, `${basis} × ${menge}: darf nicht unter den Rechenwert fallen (${roh.unitPrice} → ${laden.unitPrice})`);
-      assert.ok(aufschlag < 1.005, `${basis} × ${menge}: Rundung höchstens 1 € (${roh.unitPrice} → ${laden.unitPrice})`);
+      assert.ok(Math.abs(aufschlag) <= 0.505, `${basis} × ${menge}: Rundung höchstens ±0,50 € (${roh.unitPrice} → ${laden.unitPrice})`);
       assert.ok(Math.abs(laden.unitPrice * menge - laden.totalPrice) < 0.005 * menge + 0.01, `${basis} × ${menge}: Stück × Menge ≠ Gesamt`);
     }
   }

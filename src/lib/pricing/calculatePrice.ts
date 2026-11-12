@@ -1,5 +1,6 @@
 import type { ConfigElement, PricingRule, PrintView } from '@/types';
 import { evaluateRules, isRuleApplicable, type PricingIssue } from './ruleEngine';
+import { aufNaechstesNeunundneunzig } from './ladenpreis';
 
 /**
  * Zentrale Preisberechnung des Konfigurators.
@@ -25,6 +26,12 @@ export interface PriceCalculationInput {
   quantity: number;
   elements: ConfigElement[];
   pricingRules: PricingRule[];
+  /**
+   * Ladenpreis-Rundung auf ,99 (lib/pricing/ladenpreis.ts). Standard: AN – so rechnen Konfigurator, Warenkorb und Server.
+   * `false` liefert den ungerundeten Rechenwert; gedacht für Tests, die einzelne Preisbausteine exakt nachrechnen
+   * (z.B. „Stickerei kostet genau den Stichaufpreis mehr als DTF“), nie für die Anzeige.
+   */
+  ladenpreisRundung?: boolean;
 }
 
 export interface PriceCalculationResult {
@@ -433,8 +440,22 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // Anteil; einmalige Zuschläge (Express) stecken bereits in `orderOnce`.
   const surchargePerUnit = charges.perUnitFixed - elementBaseFeeTotal - positionFeeTotal;
 
-  const unitPriceUndiscounted = fixedPortion + variableCostTotal + surchargePerUnit;
+  let unitPriceUndiscounted = fixedPortion + variableCostTotal + surchargePerUnit;
   let unitPriceDiscounted = discountedFixed + discountedVariable + surchargePerUnit;
+
+  // Ladenpreis (Festlegung des Betreibers 2026-11-12, lib/pricing/ladenpreis.ts): Der Stückpreis, den die Kundschaft
+  // sieht – INKLUSIVE anteiliger Rüstkosten –, wird auf den nächsten ,99-Betrag AUFGERUNDET (nie abgerundet).
+  // Die Rundung greift VOR den Nachlässen (Verein, Gutschein, Aktion): Ein Nachlass bezieht sich so auf den
+  // angezeigten Listenpreis und wirkt in voller Höhe. Der Rundungsbetrag steckt wie ein Preisbaustein im festen
+  // Anteil; „Stückpreis × Menge = Gesamtpreis“ bleibt für die Kundschaft nachrechenbar.
+  if (input.ladenpreisRundung !== false) {
+    const listenpreisRoh = unitPriceDiscounted + setupTotalVorab(charges.orderOnce, quantity);
+    const rundungJeStueck = aufNaechstesNeunundneunzig(listenpreisRoh) - listenpreisRoh;
+    unitPriceDiscounted += rundungJeStueck;
+    // Auch der „ohne Mengenvorteil“-Vergleichspreis wird zum Ladenpreis, damit „Sie sparen“ stimmt.
+    const vergleichRoh = unitPriceUndiscounted + setupTotalVorab(charges.orderOnce, quantity);
+    unitPriceUndiscounted += aufNaechstesNeunundneunzig(vergleichRoh) - vergleichRoh;
+  }
 
   // Betrag vor Nachlässen merken, damit der Nachlass unten als eigener
   // Posten ausgewiesen werden kann.
@@ -509,6 +530,11 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       discountPerUnit: roundToCents(nachlassJeStueck),
     },
   };
+}
+
+/** Anteil der einmaligen Auftragskosten je Stück (steckt im angezeigten Stückpreis). */
+function setupTotalVorab(orderOnce: number, quantity: number): number {
+  return orderOnce / quantity;
 }
 
 function roundToCents(value: number): number {

@@ -160,8 +160,9 @@ test('Stickerei kostet bei gleichem Motiv genau den Stichaufpreis (1,20 €/1.00
   ];
   for (const [stiche, menge, rabatt] of faelle) {
     const el = { ...logo('front'), estimatedStitches: stiche } as ConfigElement;
-    const d = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: dtf });
-    const s = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: stick });
+    // Rechenwerte ohne Ladenpreis-Rundung: Geprüft wird der Preisbaustein „Stichaufpreis“ selbst.
+    const d = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: dtf, ladenpreisRundung: false });
+    const s = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: stick, ladenpreisRundung: false });
     assert.equal(s.breakdown.veredelungDiscountPercent, rabatt, `${menge} Stück: Rabatt auf den Stichaufpreis`);
     const erwartet = (stiche / 1000) * 1.2 * (1 - rabatt / 100);
     assert.ok(s.unitPrice > d.unitPrice, `${stiche} Stiche / ${menge} Stück: Stickerei muss teurer sein als DTF`);

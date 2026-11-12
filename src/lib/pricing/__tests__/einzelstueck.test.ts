@@ -74,11 +74,19 @@ test('Der Stückpreis steigt nie mit der Menge – und sinkt an jeder Staffelgre
     vorher = r.unitPrice;
   }
 
-  // An jeder Staffelgrenze muss er tatsächlich fallen.
+  // An jeder Staffelgrenze darf er nicht steigen – und er muss tatsächlich fallen, wenn der ROHE Rechenwert um mehr
+  // als einen Ladenpreis-Schritt (1 €) sinkt. Kleinere Staffelvorteile (z.B. 5 % → 6 % Grundrabatt ab 25 Stück,
+  // wenige Cent) können seit der Rundung auf ,99 im selben ,99-Betrag landen: Der Preis bleibt dann gleich.
   for (let i = 1; i < staffelgrenzen.length; i++) {
     const davor = calculatePrice({ ...BASIS, quantity: staffelgrenzen[i]! - 1, pricingRules: rules });
     const abGrenze = calculatePrice({ ...BASIS, quantity: staffelgrenzen[i]!, pricingRules: rules });
-    assert.ok(abGrenze.unitPrice < davor.unitPrice, `ab ${staffelgrenzen[i]} Stück muss es günstiger werden`);
+    const davorRoh = calculatePrice({ ...BASIS, quantity: staffelgrenzen[i]! - 1, pricingRules: rules, ladenpreisRundung: false });
+    const abGrenzeRoh = calculatePrice({ ...BASIS, quantity: staffelgrenzen[i]!, pricingRules: rules, ladenpreisRundung: false });
+    assert.ok(abGrenze.unitPrice <= davor.unitPrice, `ab ${staffelgrenzen[i]} Stück darf es nicht teurer werden`);
+    assert.ok(abGrenzeRoh.unitPrice < davorRoh.unitPrice, `ab ${staffelgrenzen[i]} Stück muss der Rechenwert sinken`);
+    if (davorRoh.unitPrice - abGrenzeRoh.unitPrice > 1) {
+      assert.ok(abGrenze.unitPrice < davor.unitPrice, `ab ${staffelgrenzen[i]} Stück muss es sichtbar günstiger werden`);
+    }
   }
 });
 
@@ -200,10 +208,10 @@ test('Rüstkosten fallen einmal an und verteilen sich auf die Menge', async () =
 
 test('Blankoware ohne Motiv trägt keine Rüstkosten', async () => {
   const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'per_position' })];
-  const r = calculatePrice({ basePrice: 12.9, elements: [], quantity: 1, pricingRules: rules });
+  const r = calculatePrice({ basePrice: 12.99, elements: [], quantity: 1, pricingRules: rules });
 
   assert.equal(r.breakdown.setupTotal, 0);
-  assert.equal(r.totalPrice, 12.9);
+  assert.equal(r.totalPrice, 12.99);
 });
 
 // ── Aktionen und Mengenfenster ────────────────────────────────────────
@@ -375,7 +383,7 @@ test('per_cm2-Regel mit printView gilt nur für Elemente auf dieser Ansicht', ()
     { id: 'flaeche-ruecken', ruleType: 'per_cm2', price: 0.05, printView: 'back', label: 'Flächenpreis Rücken', isActive: true },
   ];
 
-  const nurVorne = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: 1, pricingRules: rules });
+  const nurVorne = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: 1, pricingRules: rules, ladenpreisRundung: false });
   assert.equal(nurVorne.breakdown.areaPriceByView.front ?? 0, 0, 'die Regel gilt nur für den Rücken');
 
   const vorneUndHinten = calculatePrice({
@@ -383,6 +391,7 @@ test('per_cm2-Regel mit printView gilt nur für Elemente auf dieser Ansicht', ()
     elements: [logo('front', 'a'), logo('back', 'b')],
     quantity: 1,
     pricingRules: rules,
+    ladenpreisRundung: false,
   });
   assert.equal(vorneUndHinten.breakdown.areaPriceByView.front ?? 0, 0, 'Front bleibt weiterhin unbeteiligt');
   assert.ok((vorneUndHinten.breakdown.areaPriceByView.back ?? 0) > 0, 'Rücken trägt den Flächenpreis');
@@ -405,7 +414,7 @@ test('per_logo-Regel mit printView gilt nur für Logos auf dieser Ansicht', () =
   // dessen eigene Fläche/Stichzahl kosten – nicht zusätzlich denselben
   // Aufschlag nochmal für das (regelfremde) Front-Logo.
   const differenz = vorneUndHinten.totalPrice - nurVorne.totalPrice;
-  const nurRueckenLogo = calculatePrice({ basePrice: 0, elements: [logo('back', 'b')], quantity: 1, pricingRules: rules });
+  const nurRueckenLogo = calculatePrice({ basePrice: 0, elements: [logo('back', 'b')], quantity: 1, pricingRules: rules, ladenpreisRundung: false });
   assert.equal(
     Math.round(differenz * 100),
     Math.round(nurRueckenLogo.totalPrice * 100),
@@ -418,18 +427,20 @@ test('ansichtsbeschränkte per_logo-Regel bleibt auch bei Mengenrabatt korrekt (
     { id: 'logo-ruecken', ruleType: 'per_logo', price: 5, printView: 'back', label: 'Rücken-Aufschlag', isActive: true },
   ];
   const menge = 500; // höchste Rabattstufe – deckt die ehemals unrabattierte Korrektur auf
-  const nurVorne = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: menge, pricingRules: rules });
+  const nurVorne = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: menge, pricingRules: rules, ladenpreisRundung: false });
   const vorneUndHinten = calculatePrice({
     basePrice: 12.9,
     elements: [logo('front', 'a'), logo('back', 'b')],
     quantity: menge,
     pricingRules: rules,
+    ladenpreisRundung: false,
   });
   const nurRueckenLogo = calculatePrice({
     basePrice: 0,
     elements: [logo('back', 'b')],
     quantity: menge,
     pricingRules: rules,
+    ladenpreisRundung: false,
   });
 
   assert.equal(

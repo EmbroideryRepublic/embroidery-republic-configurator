@@ -34,6 +34,9 @@ import {
 } from '@/lib/seo/kategorieSeite';
 import { faqSchema, kategorieBrotkrumenSchema, kategorieSchema } from '@/lib/seo/strukturierteDaten';
 import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
+import { DtfLandingpage, dtfMetadata } from '@/components/seo/DtfLandingpage';
+import { MarkenChips } from '@/components/seo/MarkenChips';
+import { alleDtfSlugs, dtfSeiteVon } from '@/lib/seo/dtfAdresse';
 
 /** So viele Produkte zeigt die Seite; alle weiteren stehen in der Filteransicht. */
 const PRODUKTE_AUF_SEITE = 8;
@@ -43,10 +46,13 @@ const PRODUKTE_AUF_SEITE = 8;
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return alleKategorieSlugs().map((kategorie) => ({ kategorie }));
+  return [...alleKategorieSlugs(), ...alleDtfSlugs()].map((kategorie) => ({ kategorie }));
 }
 
 export function generateMetadata({ params }: { params: { kategorie: string } }): Metadata {
+  // DTF-Seiten (Marken, weitere Produktarten): eigene Texte und Komponente, siehe config/seo/dtfSeiten.ts.
+  const dtf = dtfSeiteVon(params.kategorie);
+  if (dtf) return dtfMetadata(dtf);
   const seite = kategorieSeiteVon(params.kategorie);
   if (!seite) return { title: 'Seite nicht gefunden' };
   const beschreibung = fuelleVorlage(seite.beschreibung, kategorieFakten(seite.art));
@@ -77,6 +83,8 @@ function VerfahrenKarte({ art, text }: { art: 'dtf' | 'embroidery'; text: string
 }
 
 export default async function Kategorieseite({ params }: { params: { kategorie: string } }) {
+  const dtf = dtfSeiteVon(params.kategorie);
+  if (dtf) return <DtfLandingpage seite={dtf} />;
   const seite = kategorieSeiteVon(params.kategorie);
   if (!seite) notFound();
 
@@ -274,6 +282,8 @@ export default async function Kategorieseite({ params }: { params: { kategorie: 
             .
           </p>
         </section>
+
+        <MarkenChips ueberschrift="Nach Marke stöbern" className="mt-24" />
 
         <section aria-labelledby="weitere" className="mt-24 border-t border-brand/[0.08] pt-12">
           <h2 id="weitere" className="font-serif text-[clamp(1.5rem,2.4vw,2rem)] font-normal tracking-tight text-brand">

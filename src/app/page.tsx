@@ -50,6 +50,7 @@ import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
 import { Kundenstimmen } from '@/components/shop/Kundenstimmen';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { Produktkachel } from '@/components/shop/Produktkachel';
+import { MarkenChips } from '@/components/seo/MarkenChips';
 import { HeroText } from '@/components/home/HeroText';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { kategorieLink } from '@/lib/seo/kategorieAdresse';
@@ -260,8 +261,8 @@ export default async function Startseite() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_1.55fr] lg:gap-8">
           {featured?.bild && (
-            <Link href={kategorieLink(featured.art)} className="group block">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-white ring-1 ring-brand/[0.05] transition-shadow duration-300 group-hover:shadow-[0_28px_60px_-28px_rgba(43,36,28,0.3)] lg:aspect-auto lg:h-full lg:min-h-[420px]">
+            <Link href={kategorieLink(featured.art)} className="group flex flex-col">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-white ring-1 ring-brand/[0.05] transition-shadow duration-300 group-hover:shadow-[0_28px_60px_-28px_rgba(43,36,28,0.3)] lg:aspect-auto lg:min-h-[420px] lg:flex-1">
                 <Image
                   src={featured.bild}
                   alt={produktTypLabel(featured.art)}
@@ -317,6 +318,9 @@ export default async function Startseite() {
           </div>
         </div>
       </section>
+
+      {/* Marken-Seiten: von der Startseite aus verlinkt, damit Suchmaschinen sie früh finden (config/seo/dtfSeiten.ts). */}
+      <MarkenChips ueberschrift="Nach Marke stöbern" className="mx-auto max-w-[1500px] px-4 pb-20 sm:px-8" />
 
       {/* ══ Beliebte Produkte ═══════════════════════════════════════════
           Echte Verkaufszahlen statt einer redaktionellen Auswahl – siehe

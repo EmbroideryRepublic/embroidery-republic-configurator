@@ -170,7 +170,7 @@ function positionAlsCartItem(b: KategorieBeispiel, produkt: ProductConfig): Cart
  * Checkout, ohne Lieferland (also ohne Versand). Der Stückpreis ist damit exakt
  * der, den der Konfigurator für diese Konfiguration anzeigt.
  */
-export async function berechneBeispiele(seite: KategorieSeite): Promise<BerechnetesBeispiel[]> {
+export async function berechneBeispiele(seite: Pick<KategorieSeite, 'slug' | 'beispiele'>): Promise<BerechnetesBeispiel[]> {
   const ergebnisse: BerechnetesBeispiel[] = [];
   for (const b of seite.beispiele) {
     const produkt = getProduct(b.produktId);

@@ -5,6 +5,7 @@
  */
 import type { ProductType } from '@/types';
 import { KATEGORIE_SEITEN, type KategorieSeite } from '@/config/seo/kategorieSeiten';
+import { dtfArtSeiteVon } from './dtfAdresse';
 
 export function alleKategorieSlugs(): string[] {
   return KATEGORIE_SEITEN.map((s) => s.slug);
@@ -22,5 +23,8 @@ export function kategorieSeiteVon(slug: string): KategorieSeite | undefined {
  */
 export function kategorieLink(art: ProductType): string {
   const seite = KATEGORIE_SEITEN.find((s) => s.art === art);
-  return seite ? `/${seite.slug}` : `/produkt?kategorie=${art}`;
+  if (seite) return `/${seite.slug}`;
+  // Longsleeve, Jacke, Zip-Hoodie: indexierbare DTF-Seite (config/seo/dtfSeiten.ts).
+  const dtf = dtfArtSeiteVon(art);
+  return dtf ? `/${dtf.slug}` : `/produkt?kategorie=${art}`;
 }

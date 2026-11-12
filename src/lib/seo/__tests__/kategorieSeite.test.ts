@@ -12,6 +12,7 @@ import assert from 'node:assert/strict';
 import { readdirSync } from 'node:fs';
 import { getProduct, PRODUCTS } from '@/config/products';
 import { ABLAUF_SCHRITTE, KATEGORIE_SEITEN } from '@/config/seo/kategorieSeiten';
+import { DTF_SEITEN } from '@/config/seo/dtfSeiten';
 import sitemap from '@/app/sitemap';
 import { kanonischeBasisUrl } from '../basisUrl';
 import { alleKategorieSlugs, kategorieLink, kategorieSeiteVon } from '../kategorieAdresse';
@@ -152,7 +153,10 @@ test('topProdukte liefert Produkte genau dieser Art und die Gesamtzahl', () => {
 
 test('kategorieLink: Landingpage, wo es sie gibt – sonst die Filteransicht', () => {
   for (const s of KATEGORIE_SEITEN) assert.equal(kategorieLink(s.art), `/${s.slug}`);
-  const ohneSeite = PRODUCTS.map((p) => p.productType).find((t) => !KATEGORIE_SEITEN.some((s) => s.art === t));
+  // Auch die DTF-Seiten (Longsleeve, Jacke, Zip-Hoodie, config/seo/dtfSeiten.ts) sind Landingpages.
+  const ohneSeite = PRODUCTS.map((p) => p.productType).find(
+    (t) => !KATEGORIE_SEITEN.some((s) => s.art === t) && !DTF_SEITEN.some((s) => s.art === t)
+  );
   if (ohneSeite) assert.equal(kategorieLink(ohneSeite), `/produkt?kategorie=${ohneSeite}`);
   assert.equal(kategorieSeiteVon('gibt-es-nicht'), undefined);
 });

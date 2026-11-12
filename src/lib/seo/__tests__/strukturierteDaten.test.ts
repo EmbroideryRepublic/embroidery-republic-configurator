@@ -123,7 +123,8 @@ test('Produkt-Brotkrume führt zur indexierbaren Kategorieseite, nicht zur noind
 });
 
 test('Produktart OHNE Kategorieseite fällt auf die Filteransicht zurück (kein toter Link)', () => {
-  const ohne = PRODUCTS.find((p) => !['hoodie', 'tshirt', 'polo'].includes(p.productType))!;
+  // Ohne eigene Seite: weder Kategorieseite (hoodie, tshirt, polo) noch DTF-Seite (longsleeve, jacket, zip-hoodie).
+  const ohne = PRODUCTS.find((p) => !['hoodie', 'tshirt', 'polo', 'longsleeve', 'jacket', 'zip-hoodie'].includes(p.productType))!;
   const s = brotkrumenSchema(ohne, 'Art', BASIS) as { itemListElement: Record<string, unknown>[] };
   assert.equal(s.itemListElement[2]!.item, `${BASIS}/produkt?kategorie=${ohne.productType}`);
 });

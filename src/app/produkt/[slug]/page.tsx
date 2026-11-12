@@ -25,6 +25,7 @@ import { produktTypLabelPlural } from '@/config/products/types';
 import { produktBild, PLATZHALTER_BILD } from '@/lib/assets';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { echteHerkunft } from '@/lib/products/herkunft';
+import { markenSeiteVon } from '@/lib/seo/dtfAdresse';
 import { ProduktFarbwahl } from '@/components/produkt/ProduktFarbwahl';
 import { ProduktFarbeProvider } from '@/components/produkt/ProduktFarbeContext';
 import { KonfiguratorCta } from '@/components/produkt/KonfiguratorCta';
@@ -192,7 +193,17 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
           <ProduktFarbwahl produkt={produkt} />
 
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-gold-dark">{produkt.brand}</p>
+            {/* Marken mit eigener Seite (config/seo/dtfSeiten.ts) sind verlinkt: interne Verlinkung und der kurze Weg zu allen Modellen der Marke. */}
+            {markenSeiteVon(produkt.brand) ? (
+              <Link
+                href={`/${markenSeiteVon(produkt.brand)!.slug}`}
+                className="text-xs uppercase tracking-[0.2em] text-gold-dark transition-colors hover:text-brand"
+              >
+                {produkt.brand}
+              </Link>
+            ) : (
+              <p className="text-xs uppercase tracking-[0.2em] text-gold-dark">{produkt.brand}</p>
+            )}
             <h1 className="mt-1.5 font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal leading-tight text-brand">
               {produkt.name}
             </h1>

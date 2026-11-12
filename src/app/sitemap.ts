@@ -19,6 +19,7 @@ import type { MetadataRoute } from 'next';
 import { alleProduktSlugs } from '@/lib/products/productPage';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { alleKategorieSlugs } from '@/lib/seo/kategorieAdresse';
+import { alleDtfSlugs } from '@/lib/seo/dtfAdresse';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Kanonische Adresse (nicht die Betriebsadresse): Jede Sitemap-URL muss
@@ -49,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${basis}/${slug}`,
       changeFrequency: 'monthly' as const,
       priority: 0.9,
+    })),
+    // DTF-Landingpages (config/seo/dtfSeiten.ts): Marken und weitere Produktarten.
+    ...alleDtfSlugs().map((slug) => ({
+      url: `${basis}/${slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
     })),
     ...alleProduktSlugs().map((slug) => ({
       url: `${basis}/produkt/${slug}`,

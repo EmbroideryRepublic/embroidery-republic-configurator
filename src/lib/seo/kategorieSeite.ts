@@ -16,7 +16,8 @@ import { PRODUCTS, getProduct } from '@/config/products';
 import type { ProductConfig } from '@/config/products/types';
 import type { CartItem, ConfigElement, ProductType } from '@/types';
 import { PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
-import { ABLAUF_SCHRITTE, type KategorieBeispiel, type KategorieSeite } from '@/config/seo/kategorieSeiten';
+import { ABLAUF_SCHRITTE, EINLEITUNG_ZWEI, type KategorieBeispiel, type KategorieSeite } from '@/config/seo/kategorieSeiten';
+import { DTF_ABLAUF_SCHRITTE, EINLEITUNG_DTF } from '@/config/seo/dtfSeiten';
 import { produktAbfrage } from '@/lib/catalog/abfrage';
 import { LEERE_KRITERIEN } from '@/lib/catalog/kriterien';
 import { priceCart } from '@/lib/pricing/serverPricing';
@@ -91,8 +92,33 @@ export function fuelleVorlage(text: string, f: KategorieFakten): string {
 }
 
 /** Ablaufschritte mit eingesetzten Zeiten. */
-export function ablaufSchritte(fakten: KategorieFakten): string[] {
-  return ABLAUF_SCHRITTE.map((s) => fuelleVorlage(s, fakten));
+export function ablaufSchritte(fakten: KategorieFakten, stickereiVerfuegbar = true): string[] {
+  // Pausierte Stickerei (BETRIEBSSCHALTER): derselbe, bereits freigegebene Schritt 3 wie auf den DTF-Seiten.
+  const schritte = stickereiVerfuegbar ? ABLAUF_SCHRITTE : DTF_ABLAUF_SCHRITTE;
+  return schritte.map((s) => fuelleVorlage(s, fakten));
+}
+
+/**
+ * Einleitungsabsätze der Seite. Ist die Stickerei pausiert, steht statt „Veredelt wird wahlweise per DTF-Transferdruck
+ * oder Stickerei …“ der DTF-Absatz der neuen DTF-Seiten (dort bereits freigegeben und live).
+ */
+export function einleitungAbsaetze(seite: Pick<KategorieSeite, 'einleitung'>, stickereiVerfuegbar: boolean): string[] {
+  if (stickereiVerfuegbar) return seite.einleitung;
+  return seite.einleitung.map((absatz) => (absatz === EINLEITUNG_ZWEI ? EINLEITUNG_DTF : absatz));
+}
+
+/**
+ * Welche Preisbeispiele die Seite zeigt. Ist die Stickerei pausiert, entfallen die Stickerei-Zeilen (ein Preis
+ * für etwas, das man gerade nicht bestellen kann, wäre irreführend); hat die Seite dann kein DTF-Beispiel,
+ * stehen die `beispieleBeiPause` an ihrer Stelle.
+ */
+export function sichtbareBeispiele(
+  seite: Pick<KategorieSeite, 'beispiele' | 'beispieleBeiPause'>,
+  stickereiVerfuegbar: boolean
+): KategorieBeispiel[] {
+  if (stickereiVerfuegbar) return seite.beispiele;
+  const nurDtf = seite.beispiele.filter((b) => b.methode === 'dtf');
+  return nurDtf.length > 0 ? nurDtf : seite.beispieleBeiPause ?? [];
 }
 
 // ── Produkte der Seite ──────────────────────────────────────────────────

@@ -67,7 +67,7 @@ const A_DTF =
   'DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Der Griff bleibt flexibel und bewegt sich mit dem Stoff.';
 
 /** Zweiter Einleitungsabsatz: DTF-Beschreibung der Kategorieseiten + Eckdaten (wie EINLEITUNG_ZWEI, ohne Stickerei). */
-const EINLEITUNG_DTF =
+export const EINLEITUNG_DTF =
   'Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.';
 
 /**

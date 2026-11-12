@@ -18,7 +18,8 @@ import { ArrowRight, Check, Scissors, Shirt } from 'lucide-react';
 import { Produktkachel } from '@/components/shop/Produktkachel';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { KATEGORIE_SEITEN } from '@/config/seo/kategorieSeiten';
+import { HINWEIS_STICKEREI_PAUSIERT, KARTE_STICKEREI_PAUSIERT, KATEGORIE_SEITEN } from '@/config/seo/kategorieSeiten';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 import { produktTypLabelPlural } from '@/config/products/types';
 import { SHIPPING_RATES } from '@/config/shipping';
 import { formatiereGeld, zahl } from '@/lib/format';
@@ -27,9 +28,11 @@ import {
   ablaufSchritte,
   alleKategorieSlugs,
   berechneBeispiele,
+  einleitungAbsaetze,
   fuelleVorlage,
   kategorieFakten,
   kategorieSeiteVon,
+  sichtbareBeispiele,
   topProdukte,
 } from '@/lib/seo/kategorieSeite';
 import { faqSchema, kategorieBrotkrumenSchema, kategorieSchema } from '@/lib/seo/strukturierteDaten';
@@ -67,16 +70,21 @@ export function generateMetadata({ params }: { params: { kategorie: string } }):
   };
 }
 
-function VerfahrenKarte({ art, text }: { art: 'dtf' | 'embroidery'; text: string }) {
+function VerfahrenKarte({ art, text, pausiert = false }: { art: 'dtf' | 'embroidery'; text: string; pausiert?: boolean }) {
   const Icon = art === 'dtf' ? Shirt : Scissors;
   return (
-    <div className="rounded-[24px] border border-brand/[0.08] bg-white p-8 sm:p-10">
+    <div className={`rounded-[24px] border border-brand/[0.08] bg-white p-8 sm:p-10 ${pausiert ? 'opacity-70' : ''}`}>
       <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white">
         <Icon className="h-5 w-5" aria-hidden />
       </span>
       <h3 className="mt-5 font-serif text-[24px] font-normal text-brand">
         {art === 'dtf' ? 'DTF-Transferdruck' : 'Stickerei'}
       </h3>
+      {pausiert && (
+        <p className="mt-2 inline-block rounded-full bg-brand/[0.06] px-3 py-1 text-[12px] font-medium text-brand/70">
+          {KARTE_STICKEREI_PAUSIERT}
+        </p>
+      )}
       <p className="mt-3 text-[15px] leading-relaxed text-brand/70">{text}</p>
     </div>
   );
@@ -91,7 +99,11 @@ export default async function Kategorieseite({ params }: { params: { kategorie: 
   const fakten = kategorieFakten(seite.art);
   const plural = produktTypLabelPlural(seite.art);
   const { produkte, gesamt } = topProdukte(seite.art, PRODUKTE_AUF_SEITE);
-  const beispiele = await berechneBeispiele(seite);
+  // Betriebsschalter (config/bestellweg.ts): Ist die Stickerei pausiert, zeigt die Seite einen Hinweis und keine
+  // Stickerei-Preise. Wird sie wieder angeboten, verschwindet das beim nächsten Deploy von selbst.
+  const stickereiVerfuegbar = veredelungVerfuegbar('embroidery');
+  const gezeigteBeispiele = sichtbareBeispiele(seite, stickereiVerfuegbar);
+  const beispiele = await berechneBeispiele({ slug: seite.slug, beispiele: gezeigteBeispiele });
   const basis = kanonischeBasisUrl();
 
   const fuelle = (t: string) => fuelleVorlage(t, fakten);
@@ -101,7 +113,7 @@ export default async function Kategorieseite({ params }: { params: { kategorie: 
 
   // Preis-Fußnote: nur Aussagen, die für DIESE Beispiele zutreffen.
   const beispielProdukte = [...new Map(beispiele.map((b) => [b.produktName, b.textilAb])).entries()];
-  const stiche = seite.beispiele.flatMap((b) => b.flaechen).find((f) => f.stiche)?.stiche;
+  const stiche = gezeigteBeispiele.flatMap((b) => b.flaechen).find((f) => f.stiche)?.stiche;
   const freiAb = formatiereGeld(SHIPPING_RATES.DE.freeFrom);
 
   const verfahrenKarten = (
@@ -133,15 +145,25 @@ export default async function Kategorieseite({ params }: { params: { kategorie: 
         </nav>
 
         <header className="mt-8 max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Stickerei &amp; DTF-Transferdruck</p>
+          <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">
+            {stickereiVerfuegbar ? 'Stickerei & DTF-Transferdruck' : 'DTF-Transferdruck'}
+          </p>
           <h1 className="mt-5 font-serif text-[clamp(2.25rem,4.6vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em] text-brand">
             {seite.h1}
           </h1>
-          {seite.einleitung.map((absatz) => (
+          {einleitungAbsaetze(seite, stickereiVerfuegbar).map((absatz) => (
             <p key={absatz} className="mt-6 text-[17px] leading-relaxed text-brand/70">
               {fuelle(absatz)}
             </p>
           ))}
+          {!stickereiVerfuegbar && (
+            <p
+              role="note"
+              className="mt-7 rounded-2xl border border-gold/30 bg-white px-5 py-4 text-[15px] leading-relaxed text-brand"
+            >
+              <strong className="font-semibold">Hinweis:</strong> {HINWEIS_STICKEREI_PAUSIERT}
+            </p>
+          )}
           <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link
               href="/konfigurator"
@@ -190,10 +212,13 @@ export default async function Kategorieseite({ params }: { params: { kategorie: 
           </h2>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {verfahrenKarten.map((k) => (
-              <VerfahrenKarte key={k.art} art={k.art} text={k.text} />
+              <VerfahrenKarte key={k.art} art={k.art} text={k.text} pausiert={k.art === 'embroidery' && !stickereiVerfuegbar} />
             ))}
           </div>
-          <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-brand/70">{seite.verfahren.hinweis}</p>
+          {/* „Im Konfigurator zwischen ihnen wechseln“ stimmt nur, solange beide Verfahren wählbar sind. */}
+          {stickereiVerfuegbar && (
+            <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-brand/70">{seite.verfahren.hinweis}</p>
+          )}
         </section>
 
         <section aria-labelledby="preise" className="mt-24 max-w-4xl">
@@ -247,7 +272,7 @@ export default async function Kategorieseite({ params }: { params: { kategorie: 
             So läuft Ihre Bestellung ab
           </h2>
           <ol className="mt-8 space-y-4">
-            {ablaufSchritte(fakten).map((schritt, i) => (
+            {ablaufSchritte(fakten, stickereiVerfuegbar).map((schritt, i) => (
               <li key={schritt} className="flex gap-4 text-[16px] leading-relaxed text-brand/70">
                 <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gold-btn text-[13px] font-semibold text-white">
                   {i + 1}

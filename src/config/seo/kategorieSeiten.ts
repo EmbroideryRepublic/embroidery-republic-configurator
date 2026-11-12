@@ -61,6 +61,9 @@ export interface KategorieSeite {
    *  Karte vorn steht (Poloshirt: Stickerei, T-Shirt/Hoodie: DTF). */
   verfahren: { zuerst: 'dtf' | 'embroidery'; dtf: string; stickerei: string; hinweis: string };
   beispiele: KategorieBeispiel[];
+  /** DTF-Preisbeispiele, die anstelle der Stickerei-Beispiele gezeigt werden, solange die Stickerei pausiert ist
+   *  (BETRIEBSSCHALTER in config/bestellweg.ts). Nur nötig, wenn `beispiele` ohne die Stickerei-Zeilen leer wäre. */
+  beispieleBeiPause?: KategorieBeispiel[];
   fragen: KategorieFrage[];
 }
 
@@ -88,8 +91,19 @@ const A_VERFAHREN =
 const A_MODELLE =
   'Aktuell gibt es {anzahl} Modelle von {marken}. Die Stoffgewichte reichen von {gewichtMin} bis {gewichtMax} g/m². Die Preise beginnen bei {abPreis} pro Stück zzgl. Veredelung. Material, Passform, Farben und Größen stehen auf der jeweiligen Produktseite.';
 
-const EINLEITUNG_ZWEI =
+export const EINLEITUNG_ZWEI =
   'Veredelt wird wahlweise per DTF-Transferdruck oder Stickerei. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.';
+
+/**
+ * Hinweis oben auf jeder Kategorieseite, solange die Stickerei pausiert ist (BETRIEBSSCHALTER in
+ * config/bestellweg.ts). Wortnah an der Meldung im Warenkorb („…wegen Wartungs- und Umbauarbeiten vorübergehend
+ * nicht verfügbar“). Verschwindet von selbst, sobald die Stickerei wieder angeboten wird.
+ */
+export const HINWEIS_STICKEREI_PAUSIERT =
+  'Die Stickerei ist wegen Wartungs- und Umbauarbeiten vorübergehend nicht verfügbar. DTF-Transferdruck können Sie weiterhin direkt im Konfigurator bestellen – ab 1 Stück.';
+
+/** Kennzeichnung der Stickerei-Karte („DTF-Transferdruck oder Stickerei?“), solange die Stickerei pausiert ist. */
+export const KARTE_STICKEREI_PAUSIERT = 'Derzeit nicht verfügbar';
 
 // ── Die Seiten ──────────────────────────────────────────────────────────
 
@@ -231,6 +245,29 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
         methode: 'embroidery',
         groessen: { S: 5, M: 8, L: 8, XL: 4 },
         flaechen: [{ ansicht: 'front', breiteCm: 8, hoeheCm: 6, stiche: 4000 }],
+      },
+    ],
+    beispieleBeiPause: [
+      {
+        beschriftung: '1 Poloshirt · DTF-Transferdruck, Brustlogo (ca. 8 × 6 cm)',
+        produktId: 'gildan-softstyle-polo',
+        methode: 'dtf',
+        groessen: { M: 1 },
+        flaechen: [{ ansicht: 'front', breiteCm: 8, hoeheCm: 6 }],
+      },
+      {
+        beschriftung: '10 Poloshirts · DTF-Transferdruck, Brustlogo (ca. 8 × 6 cm)',
+        produktId: 'gildan-softstyle-polo',
+        methode: 'dtf',
+        groessen: { M: 4, L: 4, XL: 2 },
+        flaechen: [{ ansicht: 'front', breiteCm: 8, hoeheCm: 6 }],
+      },
+      {
+        beschriftung: '25 Poloshirts · DTF-Transferdruck, Brustlogo (ca. 8 × 6 cm)',
+        produktId: 'gildan-softstyle-polo',
+        methode: 'dtf',
+        groessen: { S: 5, M: 8, L: 8, XL: 4 },
+        flaechen: [{ ansicht: 'front', breiteCm: 8, hoeheCm: 6 }],
       },
     ],
     fragen: [

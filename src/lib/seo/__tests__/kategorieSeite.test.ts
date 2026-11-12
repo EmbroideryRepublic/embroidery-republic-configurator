@@ -9,14 +9,28 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readdirSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { getProduct, PRODUCTS } from '@/config/products';
-import { ABLAUF_SCHRITTE, KATEGORIE_SEITEN } from '@/config/seo/kategorieSeiten';
+import {
+  ABLAUF_SCHRITTE,
+  HINWEIS_STICKEREI_PAUSIERT,
+  KARTE_STICKEREI_PAUSIERT,
+  KATEGORIE_SEITEN,
+} from '@/config/seo/kategorieSeiten';
+import { MELDUNG_STICKEREI_PAUSIERT } from '@/config/bestellweg';
 import { DTF_SEITEN } from '@/config/seo/dtfSeiten';
 import sitemap from '@/app/sitemap';
 import { kanonischeBasisUrl } from '../basisUrl';
 import { alleKategorieSlugs, kategorieLink, kategorieSeiteVon } from '../kategorieAdresse';
-import { ablaufSchritte, berechneBeispiele, fuelleVorlage, kategorieFakten, topProdukte } from '../kategorieSeite';
+import {
+  ablaufSchritte,
+  berechneBeispiele,
+  einleitungAbsaetze,
+  fuelleVorlage,
+  kategorieFakten,
+  sichtbareBeispiele,
+  topProdukte,
+} from '../kategorieSeite';
 
 test('es gibt mindestens eine Kategorieseite', () => {
   assert.ok(KATEGORIE_SEITEN.length > 0);
@@ -165,4 +179,87 @@ test('Sitemap führt jede Kategorieseite – auf dem kanonischen Host', () => {
   const urls = new Set(sitemap().map((e) => e.url));
   const basis = kanonischeBasisUrl();
   for (const s of KATEGORIE_SEITEN) assert.ok(urls.has(`${basis}/${s.slug}`), `${s.slug} fehlt in der Sitemap`);
+});
+
+// ── Pausierte Stickerei (BETRIEBSSCHALTER in config/bestellweg.ts) ───────────────────────────────
+// Die Kategorieseiten tragen noch Stickerei-Beispiele und -Texte. Solange die Stickerei pausiert ist, darf die
+// Seite keine Preise für sie zeigen und keine Bestellbarkeit versprechen – und das muss von selbst enden, wenn
+// der Schalter wieder auf [] steht.
+
+test('Stickerei pausiert: keine Stickerei-Preisbeispiele, aber nie eine leere Tabelle', () => {
+  for (const seite of KATEGORIE_SEITEN) {
+    const sichtbar = sichtbareBeispiele(seite, false);
+    assert.ok(sichtbar.length > 0, `${seite.slug}: ohne Stickerei bliebe die Preistabelle leer`);
+    for (const b of sichtbar) assert.equal(b.methode, 'dtf', `${seite.slug}: Stickerei-Beispiel trotz Pause: ${b.beschriftung}`);
+    // Die Stichzahl-Fußnote hängt an den gezeigten Beispielen und entfällt damit von selbst.
+    assert.ok(!sichtbar.some((b) => b.flaechen.some((f) => f.stiche)), `${seite.slug}: Stiche bei Pause`);
+  }
+});
+
+test('Stickerei verfügbar: alle Beispiele wie bisher', () => {
+  for (const seite of KATEGORIE_SEITEN) assert.deepEqual(sichtbareBeispiele(seite, true), seite.beispiele);
+});
+
+test('Gezeigte Beispiele bei Pause: berechenbar, richtige Produktart, Stückpreis fällt mit der Menge', async () => {
+  for (const seite of KATEGORIE_SEITEN) {
+    const sichtbar = sichtbareBeispiele(seite, false);
+    const berechnet = await berechneBeispiele({ slug: seite.slug, beispiele: sichtbar });
+    assert.equal(berechnet.length, sichtbar.length);
+    sichtbar.forEach((b, i) => {
+      assert.equal(getProduct(b.produktId)?.productType, seite.art, `${seite.slug}: ${b.produktId}`);
+      assert.ok(berechnet[i]!.stueckpreis > berechnet[i]!.textilAb, `${seite.slug}: "${b.beschriftung}" nicht teurer als das Textil`);
+    });
+    // Gleiches Produkt und gleiche Flächen, mehr Stück → Stückpreis darf nie steigen.
+    const gruppen = new Map<string, { menge: number; stueck: number }[]>();
+    sichtbar.forEach((b, i) => {
+      const schluessel = `${b.produktId}|${JSON.stringify(b.flaechen)}`;
+      gruppen.set(schluessel, [...(gruppen.get(schluessel) ?? []), { menge: berechnet[i]!.menge, stueck: berechnet[i]!.stueckpreis }]);
+    });
+    for (const [schluessel, liste] of gruppen) {
+      const sortiert = [...liste].sort((a, b) => a.menge - b.menge);
+      for (let i = 1; i < sortiert.length; i++) {
+        assert.ok(sortiert[i]!.stueck <= sortiert[i - 1]!.stueck, `${seite.slug}: Stückpreis steigt mit der Menge (${schluessel})`);
+      }
+    }
+  }
+});
+
+test('Stickerei pausiert: der Ablauf verspricht keine Stickerei-Anfrage mehr, sonst bleibt er gleich', () => {
+  const f = kategorieFakten(KATEGORIE_SEITEN[0]!.art);
+  const mit = ablaufSchritte(f, true);
+  const ohne = ablaufSchritte(f, false);
+  assert.equal(ohne.length, mit.length);
+  assert.ok(mit.some((t) => /Stickerei/.test(t)));
+  assert.ok(!ohne.some((t) => /Stickerei|Anfrage/.test(t)), 'Stickerei/Anfrage im pausierten Ablauf');
+  for (let i = 0; i < mit.length; i++) if (i !== 2) assert.equal(ohne[i], mit[i]);
+});
+
+test('Stickerei pausiert: die Einleitung bietet nicht mehr „wahlweise Stickerei“ an, sonst bleibt sie gleich', () => {
+  for (const seite of KATEGORIE_SEITEN) {
+    assert.deepEqual(einleitungAbsaetze(seite, true), seite.einleitung);
+    const ohne = einleitungAbsaetze(seite, false);
+    assert.equal(ohne.length, seite.einleitung.length);
+    assert.ok(!ohne.some((t) => /wahlweise|oder Stickerei/.test(t)), `${seite.slug}: Stickerei-Angebot in der Einleitung`);
+    assert.equal(ohne[0], seite.einleitung[0], `${seite.slug}: erster Absatz bleibt unverändert`);
+  }
+});
+
+test('Hinweistexte: benennen die Pause, nennen DTF als Alternative und passen zur Warenkorb-Meldung', () => {
+  assert.match(HINWEIS_STICKEREI_PAUSIERT, /Stickerei/);
+  assert.match(HINWEIS_STICKEREI_PAUSIERT, /Wartungs- und Umbauarbeiten vorübergehend nicht verfügbar/);
+  assert.match(HINWEIS_STICKEREI_PAUSIERT, /DTF-Transferdruck/);
+  assert.match(MELDUNG_STICKEREI_PAUSIERT, /Wartungs- und Umbauarbeiten vorübergehend nicht verfügbar/);
+  assert.ok(KARTE_STICKEREI_PAUSIERT.length > 0 && KARTE_STICKEREI_PAUSIERT.length < 40);
+});
+
+test('Die Seite liest den Betriebsschalter (kein fest eingebautes „pausiert“) und zeigt Hinweis, Karte und gefilterte Beispiele', () => {
+  const quelle = readFileSync('src/app/[kategorie]/page.tsx', 'utf8');
+  assert.match(quelle, /veredelungVerfuegbar\('embroidery'\)/);
+  assert.match(quelle, /sichtbareBeispiele\(seite, stickereiVerfuegbar\)/);
+  assert.match(quelle, /ablaufSchritte\(fakten, stickereiVerfuegbar\)/);
+  assert.match(quelle, /einleitungAbsaetze\(seite, stickereiVerfuegbar\)/);
+  assert.match(quelle, /HINWEIS_STICKEREI_PAUSIERT/);
+  assert.match(quelle, /KARTE_STICKEREI_PAUSIERT/);
+  // Der Hinweis erscheint nur bei Pause – nie dauerhaft.
+  assert.match(quelle, /!stickereiVerfuegbar && \(/);
 });

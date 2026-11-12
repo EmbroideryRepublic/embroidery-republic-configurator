@@ -33,18 +33,19 @@ Die Vorsteuer auf Einkäufe holen wir vom Finanzamt zurück. Ein
 Bruttoeinkaufspreis in der Kalkulation würde uns Kosten zurechnen, die wir
 gar nicht tragen.
 
-> **Korrektur vom 2026-11-12 (Kleinunternehmer):** Der Betreiber ist Kleinunternehmer nach § 19 UStG
-> (`IST_KLEINUNTERNEHMER`, config/company.ts) und **kann keine Vorsteuer abziehen**. Die Umsatzsteuer auf
-> Lieferantenrechnungen ist deshalb **echte Kostenlast** – der Satz oben („wir holen sie zurück“) gilt für ihn nicht.
-> Die Einkaufspreise im Katalog sind die Nettopreise der Lieferanten-Shops. Seit dem 2026-11-12 rechnet
-> `computeBasePrice()` (config/pricing/marginTiers.ts) deshalb **Einkaufspreis netto + 19 % + Aufschlag**,
-> aufgerundet auf x,99 €. Vorher fehlten die 19 %. **Goldene Mitte (selber Tag, Betreiber: „ein bisschen zu hoch“):** Der
-> Preis ist der HÖHERE von (1) dem bisherigen Preis und (2) Einkauf inkl. USt + Aufschlag, aufgerundet auf den NÄCHSTEN
-> ,99-Betrag (statt auf den nächsthöheren vollen Euro). Ergebnis: im Schnitt rund 1 € über früher, kein Produkt billiger als
-> vorher, keines teurer als in der ersten Fassung, Marge über dem tatsächlichen Einkauf mindestens 8 €.
-> Die übrigen Kostenbausteine unten (DTF-Bögen, Lieferantenversand, Verpackung) sind separat zu prüfen, ob sie netto
-> genannt wurden; die festen Positionspreise der Veredelung (9 € / 5 € / 4 €) sind Entscheidungen des Betreibers
-> und von dieser Korrektur unberührt.
+> **Korrektur vom 2026-11-12 (Kleinunternehmer, Betreiber-Entscheidung):** Der Betreiber ist Kleinunternehmer nach § 19 UStG
+> (`IST_KLEINUNTERNEHMER`, config/company.ts) und **kann keine Vorsteuer abziehen**; der Satz oben („wir holen sie zurück“) gilt
+> für ihn nicht. Die Einkaufspreise im Katalog sind die Nettopreise der Lieferanten-Shops. Der Betreiber wollte dafür
+> **keine Mehrwertsteuer-Rechnung im Preis, sondern einfach „das Geld draufpacken“**: Der Textil-Aufschlag
+> (`FLAT_MARKUP_EUR`, config/pricing/marginTiers.ts) steigt von 8 € auf 9 €, **pauschal +1 € je Produkt**. Dazu gelten zwei
+> Vorgaben: Nichts darf günstiger werden als vorher, nichts soll viel teurer werden. Der fertige Stückpreis im Shop wird auf den
+> nächsten ,99-Betrag gerundet (lib/pricing/ladenpreis.ts); ein Test (`grundpreis.test.ts`) prüft für alle Produkte und 21
+> Mengen, dass der Stückpreis nie unter dem früheren liegt und höchstens 2 € darüber (Schnitt rund +1 €).
+> **Zu wissen:** Der pauschale Euro deckt die Umsatzsteuer auf den Einkauf nur bei günstigen Textilien voll ab (19 % von
+> 5 € Einkauf ≈ 1 €); bei teuren Teilen (z. B. Einkauf 38,75 €, Steuer ≈ 7,36 €) bleibt die echte Marge deutlich unter dem
+> Aufschlag. Das ist die bewusste Entscheidung des Betreibers für „nicht viel teurer“. Die übrigen Kostenbausteine unten (DTF-Bögen,
+> Lieferantenversand, Verpackung) sind separat zu prüfen, ob sie netto genannt wurden; die festen Positionspreise der Veredelung
+> (9 € / 5 € / 4 € usw.) sind Entscheidungen des Betreibers und von dieser Korrektur unberührt.
 
 ### Gerundet wird brutto
 

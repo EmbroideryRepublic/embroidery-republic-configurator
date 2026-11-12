@@ -1,6 +1,4 @@
 import type { QualityTier } from '@/types';
-import { nettoZuBrutto } from './steuer';
-import { aufNaechstesNeunundneunzig } from '@/lib/pricing/ladenpreis';
 
 /**
  * Fester Aufschlag in Euro je Stück auf den Einkaufspreis – die gesamte
@@ -10,8 +8,14 @@ import { aufNaechstesNeunundneunzig } from '@/lib/pricing/ladenpreis';
  * von seiner Qualitätsstufe. `qualityTier` bleibt Parameter von
  * `computeBasePrice()` (Kennzeichnung/Filterkriterium im Katalog, siehe
  * QUALITY_TIER_LABELS), beeinflusst die Preisbildung aber nicht mehr.
+ *
+ * 9 € seit 2026-11-12 (vorher 8 €): Die Lieferanten-Einkaufspreise sind Nettopreise, das Unternehmen ist
+ * Kleinunternehmer und trägt die Umsatzsteuer darauf selbst. Der Betreiber wollte dafür ausdrücklich KEINE
+ * Mehrwertsteuer-Rechnung im Preis, sondern einfach „das Geld draufpacken“: pauschal +1 € je Produkt (jeder
+ * Verkaufspreis liegt damit genau 1 € über dem früheren), nichts darf günstiger werden als vorher und nichts
+ * soll viel teurer werden. Siehe docs/kalkulationsmodell.md.
  */
-export const FLAT_MARKUP_EUR = 8;
+export const FLAT_MARKUP_EUR = 9;
 
 /**
  * Rundet auf den NÄCHSTHÖHEREN vollen Euro plus 99 Cent – nie auf die
@@ -31,23 +35,10 @@ function roundUpToNextNinetyNine(value: number): number {
  * Produkt jeder Marke ruft ausschließlich diese Funktion auf, nie eine
  * eigene Formel.
  *
- * Verkaufspreis = der HÖHERE von zwei Werten:
- *   1. dem bisherigen Preis (Einkauf netto + Aufschlag, aufgerundet auf den nächsthöheren vollen Euro + 0,99 €), und
- *   2. dem kostendeckenden Preis: Einkauf inkl. Umsatzsteuer + Aufschlag, aufgerundet auf den nächsten ,99-Betrag.
- *
- * Warum zwei Werte (Festlegung des Betreibers 2026-11-12, „goldene Mitte“):
- * Die Einkaufspreise (`purchasePrice`) sind die Nettopreise der Lieferanten-Shops. Als Kleinunternehmer (§ 19 UStG,
- * `IST_KLEINUNTERNEHMER` in config/company.ts) kann das Unternehmen die Vorsteuer NICHT abziehen – die Umsatzsteuer auf
- * der Lieferantenrechnung ist echte Kostenlast und gehört in die Kalkulation (Wert 2: Marge von mindestens
- * `FLAT_MARKUP_EUR` über dem tatsächlichen Einkaufspreis). Die erste Fassung dieser Korrektur (gleich am selben Tag) rundete
- * zusätzlich auf den nächsthöheren vollen Euro und lag damit im Schnitt rund 2 € über den früheren Preisen – dem Betreiber
- * zu hoch. Wert 2 rundet auf den NÄCHSTEN ,99-Betrag, Wert 1 hält jeden Preis mindestens auf dem bisherigen Niveau:
- * Ergebnis im Schnitt rund 1 € über früher, kein Produkt billiger als vorher, keines teurer als in der ersten Fassung.
- * Der Satz kommt aus config/pricing/steuer.ts (Regelsatz Deutschland), nicht von hier.
+ * Verkaufspreis = Einkaufspreis (netto) + Aufschlag (`FLAT_MARKUP_EUR`), aufgerundet auf den nächsthöheren vollen
+ * Euro + 0,99 €. Keine Steuerrechnung im Preis.
  */
 export function computeBasePrice(purchasePrice: number, qualityTier: QualityTier): number {
   void qualityTier;
-  const bisherig = roundUpToNextNinetyNine(purchasePrice + FLAT_MARKUP_EUR);
-  const kostendeckend = aufNaechstesNeunundneunzig(nettoZuBrutto(purchasePrice) + FLAT_MARKUP_EUR);
-  return Math.max(bisherig, kostendeckend);
+  return roundUpToNextNinetyNine(purchasePrice + FLAT_MARKUP_EUR);
 }

@@ -47,6 +47,23 @@ gar nicht tragen.
 > Lieferantenversand, Verpackung) sind separat zu prüfen, ob sie netto genannt wurden; die festen Positionspreise der Veredelung
 > (9 € / 5 € / 4 € usw.) sind Entscheidungen des Betreibers und von dieser Korrektur unberührt.
 
+> **Preisanhebung vom 2026-11-12 (Betreiber: „Preise um 7–10 % erhöhen, mit richtiger Preispsychologie“):**
+> - **Textil-Grundpreis:** Der Vorgängerpreis (Einkauf + 9 €, aufgerundet auf ,99) wird in ein Fenster von **7–10 %** angehoben und
+>   landet auf einem ,99-Betrag (`anhebenInsFenster` und `computeBasePrice`, config/pricing/marginTiers.ts). Liegt ein ,99-Betrag im
+>   Fenster, gewinnt der nächste zur Mitte; sonst der mit dem kleinsten Abstand zum Fenster. Beispiele: 12,99 → 13,99 · 19,99 → 21,99 ·
+>   29,99 → 32,99 · 48,99 → 52,99.
+> - **Druckpositionen (DTF und Stickerei-Positionsanteil):** `DTF_POSITION_TIERS` (lib/pricing/calculatePrice.ts) liegt rund **9 %** höher,
+>   auf glatten Zehn-Cent-Beträgen (erste Position bei 1–2 Stück 9,80 € statt 9,00 €, zweite 5,50 € statt 5,00 €, ab der dritten 4,40 €
+>   statt 4,00 €; alle acht Stufen siehe Datei). Die Stufen bleiben streng fallend.
+> - **Unverändert:** Mengenrabatt auf den Grundpreis (`QUANTITY_TIERS`), Stichaufpreis der Stickerei (1,20 €/1.000 Stiche), Versandkosten
+>   (6,90 €) und Freigrenze (75 €), die ,99-Rundung des Stückpreises (lib/pricing/ladenpreis.ts).
+> - **Messung** (7.380 Preise: 164 Produkte × 15 Mengen × 1–3 Ansichten, DTF): Schnitt **+8,4 %**, Median +8,3 %, **79 %** der Preise
+>   liegen 6–11 % über dem früheren, **kein** Preis ist gleich geblieben oder billiger. Auf der ,99-Leiter liegen Preise 1 € auseinander
+>   (bei einem Stückpreis um 15 € rund 7 %); 7–10 % lassen sich deshalb nicht für jeden Einzelpreis treffen – einzelne Preise liegen bei
+>   +4 % oder +15 %. Der Test `grundpreis.test.ts` hält Schnitt (7,5–9,5 %), Anteil nahe am Fenster (mindestens 70 % zwischen 6 und 11 %)
+>   und „nie billiger“ fest.
+> - **Stickerei** (derzeit pausiert) trägt die höheren Positionspreise und den höheren Grundpreis automatisch mit.
+
 ### Gerundet wird brutto
 
 Ein psychologischer Preis wirkt dort, wo die Kundschaft ihn liest. 19,90 €

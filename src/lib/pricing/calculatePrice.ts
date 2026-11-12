@@ -221,15 +221,18 @@ export interface DtfPositionTier {
  * wie die dritte selbst (abDritte) – „dritte" und „jede weitere" fallen
  * also zusammen, es gibt keine eigene vierte Preisklasse.
  */
+// Anhebung 2026-11-12 (Betreiber: Preise um 7–10 % erhöhen): jede Stufe rund 9 % über der Vorgabe vom 2026-08-09
+// (vorher 9,0/5,0/4,0 · 8,0/4,5/3,5 · 7,5/4,0/3,0 · 6,0/3,0/2,5 · 5,5/2,5/2,0 · 5,0/2,5/2,0 · 4,5/2,0/1,5 · 4,0/2,0/1,5),
+// auf glatte Zehn-Cent-Beträge gerundet. Die Reihenfolge der Stufen bleibt streng fallend – mehr Stück sind nie teurer.
 export const DTF_POSITION_TIERS: DtfPositionTier[] = [
-  { minQuantity: 1, erste: 9.0, zweite: 5.0, abDritte: 4.0 },
-  { minQuantity: 3, erste: 8.0, zweite: 4.5, abDritte: 3.5 },
-  { minQuantity: 10, erste: 7.5, zweite: 4.0, abDritte: 3.0 },
-  { minQuantity: 50, erste: 6.0, zweite: 3.0, abDritte: 2.5 },
-  { minQuantity: 100, erste: 5.5, zweite: 2.5, abDritte: 2.0 },
-  { minQuantity: 250, erste: 5.0, zweite: 2.5, abDritte: 2.0 },
-  { minQuantity: 500, erste: 4.5, zweite: 2.0, abDritte: 1.5 },
-  { minQuantity: 1000, erste: 4.0, zweite: 2.0, abDritte: 1.5 },
+  { minQuantity: 1, erste: 9.8, zweite: 5.5, abDritte: 4.4 },
+  { minQuantity: 3, erste: 8.7, zweite: 4.9, abDritte: 3.8 },
+  { minQuantity: 10, erste: 8.2, zweite: 4.4, abDritte: 3.3 },
+  { minQuantity: 50, erste: 6.5, zweite: 3.3, abDritte: 2.7 },
+  { minQuantity: 100, erste: 6.0, zweite: 2.7, abDritte: 2.2 },
+  { minQuantity: 250, erste: 5.5, zweite: 2.7, abDritte: 2.2 },
+  { minQuantity: 500, erste: 4.9, zweite: 2.2, abDritte: 1.6 },
+  { minQuantity: 1000, erste: 4.4, zweite: 2.2, abDritte: 1.6 },
 ];
 
 function getDtfPositionTier(quantity: number): DtfPositionTier {

@@ -1,4 +1,5 @@
 import type { QualityTier } from '@/types';
+import { nettoZuBrutto } from './steuer';
 
 /**
  * Fester Aufschlag in Euro je Stück auf den Einkaufspreis – die gesamte
@@ -20,15 +21,25 @@ export const FLAT_MARKUP_EUR = 8;
  * nachvollziehbare Rundungsregel statt einer margenminimalen.
  */
 function roundUpToNextNinetyNine(value: number): number {
-  return Math.floor(value) + 1.99;
+  // Auf 4 Nachkommastellen runden, damit ein Wert wie 12,9999999999 (Gleitkomma) nicht eine Stufe zu tief landet.
+  return Math.floor(Math.round(value * 10000) / 10000) + 1.99;
 }
 
 /**
  * Einziger Ort, an dem basePrice aus purchasePrice abgeleitet wird. Jedes
  * Produkt jeder Marke ruft ausschließlich diese Funktion auf, nie eine
  * eigene Formel.
+ *
+ * Verkaufspreis = (Einkaufspreis NETTO + Umsatzsteuer darauf + Aufschlag), aufgerundet auf x,99 €.
+ *
+ * Die Einkaufspreise im Katalog (`purchasePrice`) sind die Nettopreise, wie die Lieferanten-Shops
+ * sie zeigen (B2B-Ansicht ohne MwSt.). Als Kleinunternehmer (§ 19 UStG, `IST_KLEINUNTERNEHMER`
+ * in config/company.ts) kann das Unternehmen die Vorsteuer NICHT abziehen: Die Umsatzsteuer auf
+ * der Lieferantenrechnung ist echte Kostenlast. Bis 2026-11-12 wurde sie nicht mitgerechnet –
+ * jeder Verkaufspreis lag dadurch im Schnitt rund 2 € zu niedrig (Betreiber: „wir sind zu
+ * günstig“). Der Satz kommt aus config/pricing/steuer.ts (Regelsatz Deutschland), nicht von hier.
  */
 export function computeBasePrice(purchasePrice: number, qualityTier: QualityTier): number {
   void qualityTier;
-  return roundUpToNextNinetyNine(purchasePrice + FLAT_MARKUP_EUR);
+  return roundUpToNextNinetyNine(nettoZuBrutto(purchasePrice) + FLAT_MARKUP_EUR);
 }

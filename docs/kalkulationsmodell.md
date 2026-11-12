@@ -33,6 +33,16 @@ Die Vorsteuer auf Einkäufe holen wir vom Finanzamt zurück. Ein
 Bruttoeinkaufspreis in der Kalkulation würde uns Kosten zurechnen, die wir
 gar nicht tragen.
 
+> **Korrektur vom 2026-11-12 (Kleinunternehmer):** Der Betreiber ist Kleinunternehmer nach § 19 UStG
+> (`IST_KLEINUNTERNEHMER`, config/company.ts) und **kann keine Vorsteuer abziehen**. Die Umsatzsteuer auf
+> Lieferantenrechnungen ist deshalb **echte Kostenlast** – der Satz oben („wir holen sie zurück“) gilt für ihn nicht.
+> Die Einkaufspreise im Katalog sind die Nettopreise der Lieferanten-Shops. Seit dem 2026-11-12 rechnet
+> `computeBasePrice()` (config/pricing/marginTiers.ts) deshalb **Einkaufspreis netto + 19 % + Aufschlag**,
+> aufgerundet auf x,99 €. Vorher fehlten die 19 %: Die Textilpreise lagen im Schnitt rund 2 € (9 %) zu niedrig.
+> Die übrigen Kostenbausteine unten (DTF-Bögen, Lieferantenversand, Verpackung) sind separat zu prüfen, ob sie netto
+> genannt wurden; die festen Positionspreise der Veredelung (9 € / 5 € / 4 €) sind Entscheidungen des Betreibers
+> und von dieser Korrektur unberührt.
+
 ### Gerundet wird brutto
 
 Ein psychologischer Preis wirkt dort, wo die Kundschaft ihn liest. 19,90 €

@@ -92,6 +92,7 @@ export function fuelleAnlass(text: string, seite: AnlassSeite, f: AnlassFakten):
       return listeMitUnd(f.arten.map((a) => produktTypLabelPlural(a)));
     },
     produktion: () => `${PRODUKTIONSTAGE.von} bis ${PRODUKTIONSTAGE.bis} Werktagen`,
+    produktionszeit: () => `${PRODUKTIONSTAGE.von} bis ${PRODUKTIONSTAGE.bis} Werktage`,
     versand: () => `${VERSANDTAGE.von} bis ${VERSANDTAGE.bis} Werktagen`,
     versandkosten: () => formatiereGeld(SHIPPING_RATES.DE.cost),
     frei: () => formatiereGeld(SHIPPING_RATES.DE.freeFrom),

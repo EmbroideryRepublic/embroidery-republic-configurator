@@ -181,7 +181,7 @@ Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Model
 
 ### Rechtzeitig planen
 
-Die reguläre Produktionszeit beträgt 3 bis 4 Werktagen, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Eine Sammelbestellung gelingt am besten, wenn Größen und Mengen vor der Bestellung feststehen – und vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
+Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Eine Sammelbestellung gelingt am besten, wenn Größen und Mengen vor der Bestellung feststehen – und vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
@@ -208,7 +208,7 @@ Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück 
 
 **Können wir die Größen mischen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Wie früh sollten wir bestellen?**
 
@@ -275,7 +275,7 @@ Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück 
 
 **Welche Dateiformate kann ich für das Foto hochladen?**
 
-SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.
+Für Fotos eignen sich JPG/JPEG und PNG; unterstützt werden außerdem SVG und PDF. Je höher die Auflösung des Fotos, desto schärfer wird der Druck.
 
 **Was passiert bei einem Foto mit zu niedriger Auflösung?**
 

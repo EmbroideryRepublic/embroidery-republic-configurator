@@ -11,7 +11,7 @@
  * Jede Aussage stammt aus bereits freigegebenen Texten (FAQ, Kategorie- und DTF-Seiten, Startseite) oder aus dem Code
  * (Auflösungs-Ampel, Versandsätze, Produktions- und Versandzeiten, Preis-Engine). Zahlen werden NICHT von Hand eingetragen,
  * sondern über Platzhalter aus Katalog und Konfiguration eingesetzt (lib/seo/anlassSeite.ts → fuelleAnlass):
- *   {anzahl} {arten} {produktion} {versand} {versandkosten} {frei} {dpiMin} {dpiOk} {abPreis_<art>}   (<art> z. B. tshirt, hoodie, polo, zip_hoodie)
+ *   {anzahl} {arten} {produktion} {produktionszeit} {versand} {versandkosten} {frei} {dpiMin} {dpiOk} {abPreis_<art>}   (<art> z. B. tshirt, hoodie, polo, zip_hoodie)
  * Preisbeispiele rechnet die Preis-Engine (berechneBeispiele) – dieselbe Funktion wie im Checkout.
  *
  * ── Warum NUR DTF-Transferdruck ────────────────────────────────────────
@@ -85,6 +85,9 @@ const A_ZAHLUNG =
 /** Wortnah aus den AGB (§ 4 Abs. 2 und 3): Endpreise, Kleinunternehmer, Versandkosten kommen hinzu. */
 const A_STEUER =
   'Nein. Alle angegebenen Preise sind Endpreise. Wir sind Kleinunternehmer im Sinne von § 19 UStG und weisen daher keine Umsatzsteuer aus. Versandkosten kommen zum Warenwert hinzu; ab {frei} Bestellwert liefern wir versandkostenfrei.';
+/** Aus A_EINZELSTUECK: Antwort auf „Können wir die Größen mischen?“. */
+const A_GROESSEN =
+  'Ja. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
 /** Wie A_EINZELSTUECK, als Antwort auf eine Frage, die nicht mit „Ja/Nein“ gestellt ist. */
 const A_MENGE_STAFFEL =
   'Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
@@ -304,7 +307,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Rechtzeitig planen',
         absaetze: [
-          'Die reguläre Produktionszeit beträgt {produktion}, der anschließende Versand erfolgt innerhalb von {versand}. Eine Sammelbestellung gelingt am besten, wenn Größen und Mengen vor der Bestellung feststehen – und vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.',
+          'Die reguläre Produktionszeit beträgt {produktionszeit}, der anschließende Versand erfolgt innerhalb von {versand}. Eine Sammelbestellung gelingt am besten, wenn Größen und Mengen vor der Bestellung feststehen – und vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.',
         ],
       },
     ],
@@ -330,7 +333,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         q: 'Können wir erst einen Hoodie als Muster bestellen?',
         a: 'Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen.',
       },
-      { q: 'Können wir die Größen mischen?', a: A_EINZELSTUECK },
+      { q: 'Können wir die Größen mischen?', a: A_GROESSEN },
       { q: 'Wie früh sollten wir bestellen?', a: A_DAUER },
       {
         q: 'Welche Dateien kann ich für das Motiv hochladen?',
@@ -404,7 +407,10 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     ],
     fragen: [
       { q: 'Kann ich nur ein einzelnes T-Shirt mit Foto bestellen?', a: A_EINZELSTUECK },
-      { q: 'Welche Dateiformate kann ich für das Foto hochladen?', a: A_DATEIEN },
+      {
+        q: 'Welche Dateiformate kann ich für das Foto hochladen?',
+        a: 'Für Fotos eignen sich JPG/JPEG und PNG; unterstützt werden außerdem SVG und PDF. Je höher die Auflösung des Fotos, desto schärfer wird der Druck.',
+      },
       {
         q: 'Was passiert bei einem Foto mit zu niedriger Auflösung?',
         a: 'Der Konfigurator zeigt dann eine Warnung: Die Auflösung ist zu niedrig für einen scharfen Druck (unter {dpiMin} dpi bei der gewählten Größe). Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',

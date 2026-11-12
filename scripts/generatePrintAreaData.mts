@@ -299,6 +299,13 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
   // die Fläche (33,8/65,2) bleibt mit Sicherheitsabstand innerhalb.
   'stedman-classic-t-for-women-back': { y1: 76 },
 
+  // ── Gildan Heavy Blend Youth Hoodie (Kinder): hohe, schmale Kapuze auf dem Vorderfoto ──────────
+  // Die Schulterlinie wird am Kapuzenscheitel gefunden; die Fläche begänne damit mitten in der Kapuze (rund 20 % breit)
+  // und fiele auf 9–13 cm. Am Foto abgelesen (alle 20 Farben): die Kapuze endet bei y≈30 %, darunter laufen die Schultern schräg ab; die Fläche beginnt erst auf dem Brustkorb.
+  // Auch x0/x1 stehen hier: Die Zeilenmessung (Perzentil über die Zeilen ab dem Kapuzenscheitel) fände sonst nur die
+  // Kapuze und lieferte x 40–60 % (9–13 cm Breite). Rumpfbreite am Foto abgelesen, symmetrisch um die Bildmitte.
+  'kinder-g18500k-front': { x0: 28, x1: 71, y0: 38 },
+
   // ── Raglan mit Kontrastaermeln ───────────────────────────────────────
   // Die Rumpfkante ist hier keine Silhouettenkante, sondern eine FARBGRENZE
   // (weisser Rumpf, navy Aermel). Die Silhouettenmessung sieht beides als
@@ -970,6 +977,22 @@ const echtesVerhaeltnis = new Map<string, number>();
 }
 
 const { GEOMETRY_ALIAS } = await import('../src/config/printAreaAlias.generated.ts');
+const { groessenLeiterVon } = await import('../src/config/products/groessen.ts');
+
+/**
+ * Referenzgröße einer Maßtabelle: 'M' (Konfektion, bisheriges Verhalten), sonst die Referenzgröße der Größenleiter des
+ * Produkts (Kinderware: z. B. '128'), sonst die erste Zeile. Bei Kinderware ist die ERSTE Zeile die kleinste Größe –
+ * als Referenz würden alle größeren Größen am Bildrand gekappt (92 → 164 cm ist fast das Doppelte).
+ */
+function referenzZeile<T extends { size: string }>(p: (typeof PRODUCTS)[number], tabelle: T[] | undefined): T | undefined {
+  if (!tabelle) return undefined;
+  const ref = groessenLeiterVon(p).referenz?.toUpperCase();
+  return (
+    tabelle.find((x) => x.size === 'M') ??
+    (ref ? tabelle.find((x) => x.size.toUpperCase() === ref) : undefined) ??
+    tabelle[0]
+  );
+}
 /** Maßtabelle des Klassenvertreters (gleicher Produkttyp) als Rückfallebene.
  *  Gibt zusätzlich die VOLLSTÄNDIGE Maßtabelle zurück, aus der `mass`
  *  stammt – Grundlage der größenabhängigen Torsoflächen (bySize) unten:
@@ -977,7 +1000,7 @@ const { GEOMETRY_ALIAS } = await import('../src/config/printAreaAlias.generated.
  *  selben Foto wie die Referenzgröße. */
 function massVon(p: (typeof PRODUCTS)[number]) {
   const eigeneTabelle = p.sizeGuide?.measurements;
-  const eigen = eigeneTabelle?.find((x) => x.size === 'M') ?? eigeneTabelle?.[0];
+  const eigen = referenzZeile(p, eigeneTabelle);
   if (eigen) return { mass: eigen, sizeTabelle: eigeneTabelle, geliehenVon: null as string | null };
   // Ohne eigene Maße wurde das Produkt bisher übersprungen und erbte die
   // Druckfläche des Klassenvertreters 1:1 – also dessen BILDrelative Koordinaten.
@@ -1267,7 +1290,18 @@ for (const p of PRODUCTS) {
       let hoeheNutzbarCmLokal: number;
       if (!istAermel) {
         breiteCmLokal = Math.min(massZeile.breiteCm - 2 * ABSTAND.seitennaht, grenze.maxWidthCm);
-        hoeheNutzbarCmLokal = Math.min(massZeile.hoeheCm - ABSTAND.kragen - ABSTAND.saum, grenze.maxHeightCm);
+        // Kinderware: Die Fläche bleibt im Brust-/Rumpfbereich und reicht nie in den Saum. Die Kinder-Größenreihe wächst je
+        // Stufe um rund 9 % in der Länge (Erwachsene: rund 3 %), und kurze Kinderkleidung ließe die volle Nutzhöhe bis in den
+        // schmaleren Saum-Rippenbereich des Fotos laufen; die „engste Kante“ dort machte die Fläche SCHMALER als bei der
+        // kleineren Größe (größere Größe, kleinere Fläche). Deshalb zwei Deckel: höchstens 65 % der Länge (bei Erwachsenen
+        // endet die Fläche ebenfalls bei rund 70 % der Länge, weil die 47-cm-Prozessgrenze davor greift) und nie höher als bei
+        // der Referenzgröße (das Foto zeigt nur DIESE Größe). So wächst die Breite stetig mit der Größe.
+        const hoeheMass = p.productType === 'kids' ? Math.min(massZeile.hoeheCm, mass.hoeheCm) : massZeile.hoeheCm;
+        hoeheNutzbarCmLokal = Math.min(
+          hoeheMass - ABSTAND.kragen - ABSTAND.saum,
+          grenze.maxHeightCm,
+          p.productType === 'kids' ? hoeheMass * 0.65 : Infinity
+        );
       } else {
         // KORREKTUR (2026-09-04, Betreiber-Auskunft): DTF-Transfers haben
         // laut Betreiber KEINE eigene Formatobergrenze der Presse – die

@@ -15,7 +15,7 @@ export type MaterialGruppe =
 
 export type Passform = 'regular' | 'slim' | 'tailliert' | 'weit' | 'oversized';
 
-export type Geschlecht = 'damen' | 'herren' | 'unisex';
+export type Geschlecht = 'damen' | 'herren' | 'unisex' | 'kinder';
 
 export type Farbgruppe =
   | 'schwarz' | 'weiss' | 'grau' | 'blau' | 'tuerkis' | 'gruen'

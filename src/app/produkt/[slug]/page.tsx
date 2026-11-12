@@ -149,6 +149,9 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
   if (!daten) notFound();
 
   const { produkt, artLabel, stufeLabel, veredelungsflaechen, aehnliche, empfehlungen } = daten;
+  // „So veredeln wir dein …“ braucht ein Wort, das nach „dein“ passt: Bei Kinderware ist die Produktart nur „Kinderbekleidung“,
+  // das Kleidungsstück selbst (T-Shirt, Hoodie, Sweatshirt …) steht in detailedDescription.productType.
+  const artWort = produkt.productType === 'kids' ? (produkt.detailedDescription?.productType ?? artLabel) : artLabel;
   const d = produkt.detailedDescription;
 
   const basis = kanonischeBasisUrl();
@@ -289,7 +292,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
             Komponente mit der Startseite. */}
         <section className="mt-14">
           <h2 className="font-serif text-xl font-normal text-brand">
-            So veredeln wir dein {artLabel}
+            So veredeln wir dein {artWort}
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-brand/70">
             Zwei Verfahren, dieselbe Fläche – du entscheidest im Konfigurator, was besser zu deinem

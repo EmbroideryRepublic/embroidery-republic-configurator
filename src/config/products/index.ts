@@ -32,6 +32,7 @@ import { PRODUCTS as BANDC_PRODUCTS } from './bAndC';
 import { PRODUCTS as STEDMAN_PRODUCTS } from './stedman';
 import { PRODUCTS as JAMES_NICHOLSON_PRODUCTS } from './jamesNicholson';
 import { PRODUCTS as IMPORTIERTE_PRODUCTS } from './importiert.generated';
+import { PRODUCTS as KINDER_PRODUCTS } from './kinder.generated';
 import type { ProductConfig } from './types';
 
 // Die Produktdefinitionen tragen KEIN Lieferanten-Wissen mehr (ADR 0004): die
@@ -50,6 +51,8 @@ export const PRODUCTS: ProductConfig[] = [
   // Neu importierte Produkte (verifizierte Quelldaten, Bilder folgen über die
   // Asset-Pipeline). Siehe importiert.generated.ts / scripts/importiereProdukte.mts.
   ...IMPORTIERTE_PRODUCTS,
+  // Kinderbekleidung (Produktart "kids"), eigene Importstrecke: scripts/importiereKinder.mts.
+  ...KINDER_PRODUCTS,
 ];
 
 // O(1)-Index statt linearer Suche: getProduct läuft in Render-Pfaden

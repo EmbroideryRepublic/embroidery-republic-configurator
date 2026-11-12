@@ -9,6 +9,7 @@ import assert from 'node:assert/strict';
 import { berechneFacetten, merkmaleVon, passt, sortiere, spannen, type Merkmale } from '../filter';
 import { LEERE_KRITERIEN, leseKriterien, schreibeKriterien, slug, type FilterKriterien } from '../kriterien';
 import { PRODUCTS } from '@/config/products';
+import { KONFEKTIONSGROESSEN, groessenFacettenRang } from '@/config/products/groessen';
 
 const ALLE: Merkmale[] = PRODUCTS.map(merkmaleVon);
 const mit = (teil: Partial<FilterKriterien>): FilterKriterien => ({ ...LEERE_KRITERIEN, ...teil });
@@ -156,4 +157,43 @@ test('Slugs sind adresstauglich', () => {
   assert.equal(slug('Fruit of the Loom'), 'fruit-of-the-loom');
   assert.equal(slug("SOL'S"), 'sol-s');
   assert.equal(slug('James+Nicholson'), 'james-nicholson');
+});
+
+// ── Kindergrößen (Produktart "kids") ──────────────────────────────────────
+// Kinder- und Konfektionsgrößen sind verschiedene Welten: Die Größen-Leiste führt Kindergrößen nur mit der Kategorie
+// „Kinder“ und dann ausschließlich diese – sonst hingen "92, 98, 3/4 (98/104) …" hinter "XXL" im Erwachsenenfilter.
+
+test('Größen-Leiste ohne Kategorie: nur Konfektionsgrößen, keine Kindergrößen', () => {
+  const groessen = berechneFacetten(ALLE, LEERE_KRITERIEN).groesse.map((f) => f.wert);
+  for (const g of groessen) assert.ok(KONFEKTIONSGROESSEN.includes(g), `Kindergröße im Erwachsenenfilter: ${g}`);
+});
+
+test('Größen-Leiste mit Kategorie Kinder: nur Kindergrößen, in fester Folge (je Leiter geordnet)', () => {
+  const groessen = berechneFacetten(ALLE, mit({ kategorie: ['kids'] })).groesse.map((f) => f.wert);
+  assert.ok(groessen.length > 5, 'Kinder-Leiste leer');
+  for (const g of groessen) assert.ok(!KONFEKTIONSGROESSEN.includes(g), `Konfektionsgröße im Kinderfilter: ${g}`);
+  const raenge = groessen.map((g) => groessenFacettenRang(g));
+  assert.deepEqual(raenge, [...raenge].sort((a, b) => a - b), `Kindergrößen nicht geordnet: ${groessen.join(', ')}`);
+});
+
+test('Größen-Leiste mit Kinder UND Erwachsenen-Kategorie zeigt beide Welten', () => {
+  const groessen = berechneFacetten(ALLE, mit({ kategorie: ['kids', 'tshirt'] })).groesse.map((f) => f.wert);
+  assert.ok(groessen.some((g) => KONFEKTIONSGROESSEN.includes(g)));
+  assert.ok(groessen.some((g) => !KONFEKTIONSGROESSEN.includes(g)));
+});
+
+test('Größenfilter findet Kinderprodukte über ihre Bezeichnung (92 → nur Modelle mit Größe 92)', () => {
+  const treffer = ALLE.filter((m) => passt(m, mit({ kategorie: ['kids'], groesse: ['92'] })));
+  assert.ok(treffer.length > 0);
+  for (const m of treffer) assert.ok(m.groesse.includes('92'));
+  // Ein Konfektionsfilter lässt Kinderware nie durch.
+  assert.equal(ALLE.filter((m) => passt(m, mit({ kategorie: ['kids'], groesse: ['M'] }))).length, 0);
+});
+
+test('Facettenrang: Konfektion vor Kinderleitern, je Leiter in deren Ordnung, unbekannt ganz hinten', () => {
+  assert.ok(groessenFacettenRang('XXL') < groessenFacettenRang('92'));
+  assert.ok(groessenFacettenRang('92') < groessenFacettenRang('104'));
+  assert.ok(groessenFacettenRang('3/4 (98/104)') < groessenFacettenRang('5/6 (110/116)'));
+  assert.ok(groessenFacettenRang('xs (3-4yrs)') < groessenFacettenRang('xl (12-13yrs)'));
+  assert.ok(groessenFacettenRang('gibt-es-nicht') > groessenFacettenRang('xl (12-13yrs)'));
 });

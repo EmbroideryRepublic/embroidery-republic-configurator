@@ -191,6 +191,9 @@ export const GEO_REP: Record<ProductType, string> = {
   sweater: 'justhoods-awdis-sweat',
   jacket: 'sols-north-fleece',
   vest: 'sols-north-fleece',
+  // Kinderbekleidung wird nie über die Klasse aliasiert: jedes Kinderprodukt hat Fotos und wird einzeln vermessen
+  // (scripts/importiereKinder.mts). Der Eintrag hält nur die Vollständigkeit der Tabelle (Wächtertest).
+  kids: 'fotl-valueweight-t',
 };
 export const TYP_LABEL: Record<ProductType, string> = {
   tshirt: 'T-Shirt',
@@ -201,4 +204,5 @@ export const TYP_LABEL: Record<ProductType, string> = {
   sweater: 'Sweatshirt',
   vest: 'Weste',
   jacket: 'Jacke',
+  kids: 'Kinderbekleidung',
 };

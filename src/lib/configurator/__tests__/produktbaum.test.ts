@@ -29,7 +29,8 @@ test('Herren führt dank der Unisex-Überschneidung alle Produktarten des Sortim
   // gruppenVon) – für den aktuellen Katalog deckt das alle Arten ab. Die
   // achsenspezifische Begründung steht im naviAchsen-Test; hier nur die
   // Baum-Eigenschaft für die eine Gruppe, für die sie gilt.
-  const alleArten = new Set(PRODUCTS.map((p) => p.productType));
+  // Kinderbekleidung (Produktart "kids") hat eine eigene Hauptgruppe „Kinder“ und gehört nicht zu Herren.
+  const alleArten = new Set(PRODUCTS.map((p) => p.productType).filter((art) => art !== 'kids'));
   const herren = BAUM.find((g) => g.gruppe === 'herren');
   assert.ok(herren, 'Gruppe "herren" muss im Baum existieren');
   const vorhanden = new Set(herren!.arten.map((a) => a.art));

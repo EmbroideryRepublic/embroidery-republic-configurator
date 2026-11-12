@@ -87,6 +87,11 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
     { xPercent: 47, yPercent: 20.5, widthPercent: 6, heightPercent: 72.5, label: 'Reißverschluss' },
   ],
 
+  // Kinder-Zip-Hoodie (Fruit of the Loom): am eigenen Foto abgelesen – Reißverschluss mittig vom Kapuzenansatz bis zum Saum.
+  'kinder-f401nk-front': [
+    { xPercent: 46.4, yPercent: 21, widthPercent: 6, heightPercent: 71, label: 'Reißverschluss' },
+  ],
+
   // ── Voll-Reißverschluss (Zip-Hoodies/Jacken): Mittelstreifen bis Saum ─
   'justhoods-zoodie-front': [
     { xPercent: 47, yPercent: 21, widthPercent: 6, heightPercent: 72, label: 'Reißverschluss' },

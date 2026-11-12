@@ -17,7 +17,7 @@ import {
   FARBGRUPPEN, geschlechterVon, materialGruppen, passformVon, aufnahmedatumVon,
   type Farbgruppe,
 } from '@/config/products/facetten';
-import { groessenRang } from '@/config/products/groessen';
+import { groessenFacettenRang } from '@/config/products/groessen';
 import { waehlbareFarben } from '@/lib/products/farben';
 import { istLieferbar } from './verfuegbarkeit';
 import {
@@ -177,6 +177,9 @@ const STUFEN_RANG: Record<string, number> = { basic: 0, standard: 1, premium: 2,
  */
 // ── Facetten ───────────────────────────────────────────────────────────
 
+/** Produktart der Kinderbekleidung (config/products/productTypes.ts). */
+const KINDER_KATEGORIE = 'kids';
+
 export interface FacettenWert {
   wert: string;
   anzahl: number;
@@ -199,12 +202,24 @@ export interface Spannen {
 export function berechneFacetten(alle: Merkmale[], k: FilterKriterien): Facetten {
   const facetten = {} as Facetten;
 
+  // Kindergrößen (Körpergröße, Alter, Jugendgrößen …) und Konfektionsgrößen sind verschiedene Welten: Die Größen-Leiste
+  // führt Kindergrößen nur, wenn die Kategorie „Kinder“ gewählt ist, und dann ausschließlich diese. Sonst stünde „92, 98,
+  // 3/4 (98/104) …“ hinter „XXL“ im Erwachsenen-Filter (und umgekehrt) – und das jedes Mal als Werte ohne Treffer.
+  const kinderGewaehlt = k.kategorie.includes(KINDER_KATEGORIE);
+  const erwachsenGewaehlt = k.kategorie.length === 0 || k.kategorie.some((c) => c !== KINDER_KATEGORIE);
+  const inGroessenWelt = (m: Merkmale): boolean =>
+    m.kategorie === KINDER_KATEGORIE ? kinderGewaehlt : erwachsenGewaehlt;
+
   for (const dim of MENGEN_DIMENSIONEN) {
     const zaehler = new Map<string, number>();
     // Erst alle im Bestand vorkommenden Werte anlegen (auch die mit 0) …
-    for (const m of alle) for (const w of werteVon(m, dim)) if (!zaehler.has(w)) zaehler.set(w, 0);
+    for (const m of alle) {
+      if (dim === 'groesse' && !inGroessenWelt(m)) continue;
+      for (const w of werteVon(m, dim)) if (!zaehler.has(w)) zaehler.set(w, 0);
+    }
     // … dann gegen die anderen Filter zählen.
     for (const m of alle) {
+      if (dim === 'groesse' && !inGroessenWelt(m)) continue;
       if (!passt(m, k, dim)) continue;
       for (const w of werteVon(m, dim)) zaehler.set(w, (zaehler.get(w) ?? 0) + 1);
     }
@@ -216,7 +231,7 @@ export function berechneFacetten(alle: Merkmale[], k: FilterKriterien): Facetten
     // nach Häufigkeit – dort ist das Übliche zuerst hilfreich.
     facetten[dim] =
       dim === 'groesse'
-        ? eintraege.sort((a, b) => groessenRang(a.wert) - groessenRang(b.wert))
+        ? eintraege.sort((a, b) => groessenFacettenRang(a.wert) - groessenFacettenRang(b.wert))
         : eintraege.sort((a, b) => b.anzahl - a.anzahl || a.wert.localeCompare(b.wert, 'de'));
   }
 

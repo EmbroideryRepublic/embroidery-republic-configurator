@@ -95,3 +95,34 @@ Wichtig: Next.js verpackt Bild-URLs in `/_next/image?url=…`. Wer auf den rohen
 const roh = s => { const u = new URL(s, location.href);
   return decodeURIComponent(u.searchParams.get('url') || u.pathname); };
 ```
+
+## Kinderbekleidung (Produktart `kids`)
+
+Kinderware läuft über eine EIGENE Strecke neben dem Erwachsenen-Import, weil `importiereProdukte.mts` die Katalogdatei
+`importiert.generated.ts` jedes Mal komplett neu schreibt (ihre Rohdatei liegt nicht im Repository) – ein Lauf nur mit
+Kinderprodukten würde den bestehenden Import löschen.
+
+```bash
+# 1. Rohdaten: öffentliche Produktseiten von textil-grosshandel.eu (kein Login) → scripts/import/kinder-raw.json
+node scripts/import/scrapeKinder.mjs
+
+# 2. Katalogdatei + Bild-Aufträge erzeugen (idempotent): src/config/products/kinder.generated.ts, scripts/import/kinder-jobs.json
+npx tsx --tsconfig tsconfig.scripts.json scripts/importiereKinder.mts
+
+# 3. Fotos holen (Vorder- und Rückseite je Farbe), dann weiter wie oben ab Schritt 2 (Manifest, Druckflächen, Dubletten, Audits)
+npx tsx scripts/ingestDirect.mts scripts/import/kinder-jobs.json
+```
+
+Besonderheiten:
+
+- **Größen:** Die Lieferanten bezeichnen Kindergrößen nicht einheitlich (cm, Doppelgrößen, Alter mit cm, Jugendgrößen, Jahre).
+  Jedes Schema hat eine eigene Leiter in `config/products/groessen.ts` (`KINDER_LEITERN`), das Produkt nennt sie über
+  `sizeScale`. Die Bezeichnungen stehen wortgleich wie beim Lieferanten – nichts wird umgerechnet. Ein neues Schema
+  braucht eine neue Leiter (Ordnung in GROSSBUCHSTABEN), sonst bricht der Import mit „Keine Kindergrößen-Leiter“ ab.
+- **Ansichten:** nur `front` und `back`. Für Kinderware gibt es keine verlässlichen Ärmelfotos.
+- **Kleidungsart:** Tabelle `KLEIDUNG` in `importiereKinder.mts` (je Artikelnummer) – die einzige Zuordnung, die das
+  Skript selbst trifft. Die Produktart ist für alle Kinderware `kids`, die Kleidungsart steht in
+  `detailedDescription.productType`.
+- **Nur Produkte mit Vorder- UND Rückfoto** im Flachbildstil (Dateinamen `…-front…`/`…-back…`). Modelle mit nur einem Foto
+  oder Fotos ohne klare Vorder-/Rückseite (z. B. Just Hoods Kids' Hoodie JH001K, Neutral NE30001, B&C Kids ID.333/ID.332,
+  Stedman Kids) sind bewusst noch nicht importiert.

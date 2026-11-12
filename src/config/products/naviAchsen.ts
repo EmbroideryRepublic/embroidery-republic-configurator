@@ -87,6 +87,15 @@ export const NAVI_ACHSEN: Record<string, NaviAchsenDef> = {
       return gruppen;
     },
   },
+  // Kinderbekleidung: eine eigene Hauptgruppe im Produktbrowser, unabhängig vom Geschlecht.
+  kinder: {
+    id: 'kinder',
+    label: 'Kinder',
+    gruppen: [{ id: 'kinder', label: 'Kinder' }],
+    gruppenVon() {
+      return ['kinder'];
+    },
+  },
 };
 
 /** Die Navigationsachse einer Produktart (aus dem Register), oder undefined. */

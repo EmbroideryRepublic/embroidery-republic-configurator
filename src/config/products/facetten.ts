@@ -28,6 +28,7 @@ import {
   GESCHLECHTER_GENERIERT,
   FARBGRUPPEN_GENERIERT,
 } from './facettenGeneriert.generated';
+import { KINDER_FACETTEN } from './kinder.generated';
 
 // ── Vokabulare ─────────────────────────────────────────────────────────
 // Definiert in types.ts (nicht hier) und nur re-exportiert: So teilen sich
@@ -58,6 +59,7 @@ export const GESCHLECHT_LABELS: Record<Geschlecht, string> = {
   damen: 'Damen',
   herren: 'Herren',
   unisex: 'Unisex',
+  kinder: 'Kinder',
 };
 
 export const FARBGRUPPE_LABELS: Record<Farbgruppe, string> = {
@@ -146,6 +148,8 @@ const GESCHLECHTER_BASIS: Record<string, Geschlecht[]> = {
   Herren: ['herren'],
   Unisex: ['unisex'],
   'Unisex/Herren': ['unisex', 'herren'],
+  // Kinderware (Produktart „kids“) – bewusst NICHT zusätzlich unter Herren/Unisex.
+  Kinder: ['kinder'],
 };
 
 // ── Zuordnung: Farbname → Grundfarbe ───────────────────────────────────
@@ -185,11 +189,13 @@ export const KATALOG_START = '2026-01-01';
 export const MATERIAL_GRUPPEN: Record<string, MaterialGruppe[]> = {
   ...MATERIAL_GRUPPEN_BASIS,
   ...MATERIAL_GRUPPEN_GENERIERT,
+  ...KINDER_FACETTEN.material,
 };
 
 export const PASSFORMEN: Record<string, Passform> = {
   ...PASSFORMEN_BASIS,
   ...PASSFORMEN_GENERIERT,
+  ...KINDER_FACETTEN.passform,
 };
 
 export const GESCHLECHTER: Record<string, Geschlecht[]> = {
@@ -200,6 +206,7 @@ export const GESCHLECHTER: Record<string, Geschlecht[]> = {
 export const FARBGRUPPEN: Record<string, Farbgruppe> = {
   ...FARBGRUPPEN_BASIS,
   ...FARBGRUPPEN_GENERIERT,
+  ...KINDER_FACETTEN.farbgruppen,
 };
 
 // ── Auflösung je Produkt ───────────────────────────────────────────────

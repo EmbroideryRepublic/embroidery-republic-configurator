@@ -116,6 +116,14 @@ export const PRODUCT_TYPES: Record<ProductType, ProductTypeDef> = {
     naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu',
     komplement: ['tshirt', 'jacket', 'hoodie'], kachelFarbe: ['rot'], kachelText: 'Der Layer für die Übergangszeit.',
   },
+  // Kinderbekleidung als EINE Produktart (T-Shirt, Hoodie, Sweater, Zip-Hoodie, Longsleeve in Kindergrößen): eigener
+  // Browser-Zweig „Kinder“ (naviAchse 'kinder'), eigene Größenleiter (Körpergröße in cm) und keine Vermischung mit den
+  // Erwachsenen-Kategorien (Kategorieseiten, Zähler, „ab“-Preise). Die Kleidungsart steht in detailedDescription.productType.
+  kids: {
+    labelSingular: 'Kinderbekleidung', labelPlural: 'Kinderbekleidung', order: 9, primaryView: 'front',
+    naviAchse: 'kinder', groessenLeiter: 'kinder-cm',
+    komplement: [], kachelFarbe: ['gelb', 'rot', 'blau'], kachelText: 'Kleine Größen, große Wirkung.',
+  },
 };
 
 /** Alle bekannten Produktart-IDs (Schlüssel des Registers). */

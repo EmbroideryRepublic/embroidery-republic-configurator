@@ -93,6 +93,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
             orderId={order.id}
             status={order.status as OrderStatus}
             trackingNummer={order.trackingNumber}
+            freigabeErteilt={Boolean(order.freigabeErteiltAm)}
           />
           <ShippingLabelControl
             orderId={order.id}

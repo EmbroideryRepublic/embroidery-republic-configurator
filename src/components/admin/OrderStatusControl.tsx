@@ -31,14 +31,19 @@ export function OrderStatusControl({
   orderId,
   status,
   trackingNummer,
+  freigabeErteilt = true,
 }: {
   orderId: string;
   status: OrderStatus;
   trackingNummer: string | null;
+  /** Hat die Kundschaft die Druckvorschau freigegeben? Fehlt die Freigabe, geht „In Produktion“ nur mit dem Häkchen
+   *  „Ohne Kundenfreigabe starten“ (Betreiber-Ausnahme, wird im Verlauf protokolliert). Standard true = bisheriges Verhalten. */
+  freigabeErteilt?: boolean;
 }) {
   const [meldung, setMeldung] = useState<{ ok: boolean; text: string } | null>(null);
   const [mailMeldung, setMailMeldung] = useState<{ ok: boolean; text: string } | null>(null);
   const [nummer, setNummer] = useState('');
+  const [ohneFreigabe, setOhneFreigabe] = useState(false);
   const [laeuft, starte] = useTransition();
   const [sendetMail, starteMailversand] = useTransition();
 
@@ -48,13 +53,24 @@ export function OrderStatusControl({
   // siehe AdminCancelControl.tsx, separat auf derselben Seite eingebunden.
   const naechste = ERLAUBTE_UEBERGAENGE[status].filter((s) => s !== 'cancelled');
   const aktuellerIndex = fortschrittIndex(status);
+  // Ohne Freigabe der Druckvorschau ist „In Produktion“ nur mit ausdrücklichem Häkchen möglich.
+  const fehlendeFreigabe = !freigabeErteilt && naechste.includes('in_production');
   const storniert = status === 'cancelled';
 
   function wechsle(nach: OrderStatus) {
     starte(async () => {
-      const r = await aendereBestellstatus(orderId, nach, nach === 'shipped' ? nummer : undefined);
+      const r = await aendereBestellstatus(
+        orderId,
+        nach,
+        nach === 'shipped' ? nummer : undefined,
+        undefined,
+        nach === 'in_production' && fehlendeFreigabe ? ohneFreigabe : undefined
+      );
       setMeldung({ ok: r.ok, text: r.meldung });
-      if (r.ok) setNummer('');
+      if (r.ok) {
+        setNummer('');
+        setOhneFreigabe(false);
+      }
     });
   }
 
@@ -145,11 +161,28 @@ export function OrderStatusControl({
                 </label>
               )}
 
+              {fehlendeFreigabe && (
+                <label className="flex cursor-pointer items-start gap-2 rounded border border-amber-300 bg-amber-50 px-3 py-2">
+                  <input
+                    type="checkbox"
+                    checked={ohneFreigabe}
+                    onChange={(e) => setOhneFreigabe(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 flex-shrink-0"
+                  />
+                  <span className="text-xs text-amber-900">
+                    <span className="font-semibold">Ohne Kundenfreigabe starten</span>
+                    <br />
+                    Die Kundschaft hat die Druckvorschau noch nicht freigegeben. Mit dem Häkchen geht „In Produktion“ trotzdem –
+                    der Verlauf hält fest, dass ohne Freigabe gestartet wurde.
+                  </span>
+                </label>
+              )}
+
               {naechste.map((s) => (
                 <button
                   key={s}
                   type="button"
-                  disabled={laeuft}
+                  disabled={laeuft || (s === 'in_production' && fehlendeFreigabe && !ohneFreigabe)}
                   onClick={() => wechsle(s)}
                   className="w-full rounded-md bg-brand px-4 py-2 text-sm font-medium text-white transition hover:bg-brand/90 disabled:opacity-50"
                 >

@@ -10,7 +10,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 const ORDER_SERVICE = path.join(process.cwd(), 'src', 'lib', 'orders', 'orderService.ts');
@@ -30,19 +30,87 @@ function funktionsRumpf(quelltext: string, name: string): string {
   return naechste > 0 ? quelltext.slice(start, naechste) : quelltext.slice(start);
 }
 
-test('setzeBestellstatus lehnt new→in_production ohne freigabe_erteilt_am ab', () => {
+test('setzeBestellstatus lehnt new→in_production ohne freigabe_erteilt_am ab – außer der Betreiber startet ausdrücklich ohne Freigabe', () => {
   const rumpf = funktionsRumpf(serviceQuelltext, 'setzeBestellstatus');
   assert.match(
     rumpf,
-    /if \(nach === 'in_production' && !bestellung\.freigabe_erteilt_am\) \{\s*\n\s*return \{ ok: false, grund: 'freigabe-fehlt', aktuell: von \};/,
-    'der Übergang nach in_production muss ohne erteilte Freigabe abgelehnt werden'
+    /if \(nach === 'in_production' && !bestellung\.freigabe_erteilt_am && !optionen\.ohneKundenfreigabe\) \{\s*\n\s*return \{ ok: false, grund: 'freigabe-fehlt', aktuell: von \};/,
+    'der Übergang nach in_production muss ohne erteilte Freigabe abgelehnt werden, wenn nicht ausdrücklich ohne Freigabe gestartet wird'
   );
   // Nur der Übergang NACH in_production ist betroffen – shipped/completed
   // können diesen Schritt laut Zustandsmaschine nie überspringen, eine
   // Prüfung dort wäre redundant und könnte fälschlich ältere Bestellungen
   // (freigabe_* dauerhaft null) blockieren.
-  const treffer = rumpf.match(/!bestellung\.freigabe_erteilt_am/g) ?? [];
-  assert.equal(treffer.length, 1, 'die Freigabeprüfung darf nur an genau einer Stelle (in_production) stehen');
+  const stellen = rumpf.split('\n').filter((zeile) => zeile.includes('!bestellung.freigabe_erteilt_am'));
+  assert.ok(stellen.length >= 1);
+  for (const zeile of stellen) {
+    assert.match(zeile, /nach === 'in_production'/, `die Freigabeprüfung darf nur den Übergang nach in_production betreffen: ${zeile.trim()}`);
+  }
+});
+
+// ── Betreiber-Ausnahme „Ohne Kundenfreigabe starten“ ──────────────────────
+// Der Betreiber darf die Produktion ausdrücklich ohne Freigabe der Druckvorschau starten (z. B. Zustimmung per Telefon).
+// Das ist eine bewusste, protokollierte Ausnahme – kein stilles Umgehen der Prüfung.
+
+const aktionenQuelltext = statusActionsQuelltext;
+const kontrolleQuelltext = readFileSync(path.join(process.cwd(), 'src', 'components', 'admin', 'OrderStatusControl.tsx'), 'utf8');
+const detailSeiteQuelltext = readFileSync(path.join(process.cwd(), 'src', 'app', 'admin', 'bestellung', '[id]', 'page.tsx'), 'utf8');
+
+test('Ausnahme gilt nur bei ausdrücklichem true, nur nach in_production und nur, wenn die Freigabe wirklich fehlt', () => {
+  const rumpf = funktionsRumpf(serviceQuelltext, 'setzeBestellstatus');
+  assert.match(
+    rumpf,
+    /const ohneFreigabeGestartet = nach === 'in_production' && !bestellung\.freigabe_erteilt_am && optionen\.ohneKundenfreigabe === true;/
+  );
+});
+
+test('die Ausnahme umgeht weder Stornofrist noch Zahlungsprüfung (die stehen davor und lehnen unabhängig ab)', () => {
+  const rumpf = funktionsRumpf(serviceQuelltext, 'setzeBestellstatus');
+  const frist = rumpf.indexOf("grund: 'noch-nicht-freigegeben'");
+  const ausnahme = rumpf.indexOf('const ohneFreigabeGestartet');
+  const uebergang = rumpf.indexOf("grund: 'uebergang-unzulaessig'");
+  assert.ok(uebergang > 0 && frist > uebergang && ausnahme > frist, 'Reihenfolge: Übergang erlaubt → Stornofrist/Zahlung → Freigabe-Ausnahme');
+});
+
+test('die Ausnahme steht im Verlauf (reason + detail.ohneKundenfreigabe) und setzt freigabe_erteilt_am NICHT', () => {
+  const rumpf = funktionsRumpf(serviceQuelltext, 'setzeBestellstatus');
+  assert.match(rumpf, /OHNE Freigabe der Druckvorschau durch die Kundschaft/);
+  assert.match(rumpf, /ohneKundenfreigabe: true/);
+  assert.ok(!/patch\.freigabe_erteilt_am|freigabe_erteilt_am:\s*jetzt/.test(rumpf), 'der Zustand „nie freigegeben“ darf nicht verfälscht werden');
+});
+
+test('Server Action: nur Admins, Flag nur für in_production und nur bei ausdrücklichem true', () => {
+  const start = aktionenQuelltext.indexOf('export async function aendereBestellstatus');
+  const ende = aktionenQuelltext.indexOf('export async function', start + 10);
+  const rumpf = aktionenQuelltext.slice(start, ende);
+  assert.ok(rumpf.indexOf('istAdmin()') > 0 && rumpf.indexOf('istAdmin()') < rumpf.indexOf('setzeBestellstatus('), 'Adminprüfung vor dem Statuswechsel');
+  assert.match(rumpf, /nach === 'in_production' && ohneKundenfreigabe === true \? \{ ohneKundenfreigabe: true \} : \{\}/);
+  assert.match(rumpf, /Ohne Kundenfreigabe starten/, 'die Fehlermeldung nennt den Weg über das Häkchen');
+});
+
+test('Steuerelement: Häkchen nur bei fehlender Freigabe, „In Produktion“ bleibt bis zum Häkchen gesperrt, Flag geht nur dann mit', () => {
+  assert.match(kontrolleQuelltext, /freigabeErteilt = true/, 'Standard = bisheriges Verhalten');
+  assert.match(kontrolleQuelltext, /const fehlendeFreigabe = !freigabeErteilt && naechste\.includes\('in_production'\);/);
+  assert.match(kontrolleQuelltext, /Ohne Kundenfreigabe starten/);
+  assert.match(kontrolleQuelltext, /disabled=\{laeuft \|\| \(s === 'in_production' && fehlendeFreigabe && !ohneFreigabe\)\}/);
+  assert.match(kontrolleQuelltext, /nach === 'in_production' && fehlendeFreigabe \? ohneFreigabe : undefined/);
+});
+
+test('Bestell-Detailseite gibt den Freigabe-Zustand an die Statussteuerung', () => {
+  assert.match(detailSeiteQuelltext, /freigabeErteilt=\{Boolean\(order\.freigabeErteiltAm\)\}/);
+});
+
+test('„ohneKundenfreigabe“ kommt im Programmcode nur im Dienst und in der Admin-Server-Action vor (die Oberfläche reicht nur das Häkchen durch)', () => {
+  const treffer: string[] = [];
+  const suche = (ordner: string) => {
+    for (const e of readdirSync(ordner, { withFileTypes: true })) {
+      const voll = path.join(ordner, e.name);
+      if (e.isDirectory()) { if (e.name !== '__tests__' && e.name !== 'node_modules') suche(voll); continue; }
+      if (/\.(ts|tsx)$/.test(e.name) && readFileSync(voll, 'utf8').includes('ohneKundenfreigabe')) treffer.push(path.relative(process.cwd(), voll).split(path.sep).join('/'));
+    }
+  };
+  suche(path.join(process.cwd(), 'src'));
+  assert.deepEqual(treffer.sort(), ['src/lib/actions/orderStatusActions.ts', 'src/lib/orders/orderService.ts']);
 });
 
 test('setzeBestellstatus lädt freigabe_erteilt_am mit und die freigabe-fehlt-Prüfung steht NACH der Stornofrist-/Zahlungsprüfung', () => {

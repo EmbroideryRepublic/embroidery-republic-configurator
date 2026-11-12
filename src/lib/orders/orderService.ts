@@ -100,7 +100,19 @@ const ZEITSTEMPEL_SPALTE: Partial<Record<OrderStatus, string>> = {
 export async function setzeBestellstatus(
   orderId: string,
   nach: OrderStatus,
-  optionen: { trackingNummer?: string; grund?: string; jetzt?: Date } = {}
+  optionen: {
+    trackingNummer?: string;
+    grund?: string;
+    jetzt?: Date;
+    /**
+     * Betreiber-Ausnahme: Produktion starten, OHNE dass die Kundschaft die Druckvorschau freigegeben hat (z. B. weil
+     * sie per Telefon oder E-Mail zugestimmt hat). Gilt NUR für den Übergang nach 'in_production' und nur, wenn die
+     * Freigabe tatsächlich fehlt; die Stornofrist-/Zahlungsprüfung davor bleibt unverändert. Die Ausnahme steht im
+     * Historien-Eintrag (reason + detail.ohneKundenfreigabe) – die Freigabe selbst (freigabe_erteilt_am) wird NICHT
+     * gesetzt, der Zustand bleibt wahrheitsgemäß „nie freigegeben“. Aufrufer: ausschließlich die Admin-Server-Action.
+     */
+    ohneKundenfreigabe?: boolean;
+  } = {}
 ): Promise<StatusErgebnis> {
   const jetzt = optionen.jetzt ?? new Date();
   const db = createAdminClient();
@@ -181,7 +193,9 @@ export async function setzeBestellstatus(
   // können. Nur der Übergang NACH 'in_production' braucht die Prüfung – die
   // Zustandsmaschine erlaubt ausschließlich new→in_production→shipped→
   // completed, ein späterer Übergang kann diesen Schritt nie überspringen.
-  if (nach === 'in_production' && !bestellung.freigabe_erteilt_am) {
+  // Ausnahme: der Betreiber startet ausdrücklich OHNE Kundenfreigabe (optionen.ohneKundenfreigabe, siehe oben).
+  const ohneFreigabeGestartet = nach === 'in_production' && !bestellung.freigabe_erteilt_am && optionen.ohneKundenfreigabe === true;
+  if (nach === 'in_production' && !bestellung.freigabe_erteilt_am && !optionen.ohneKundenfreigabe) {
     return { ok: false, grund: 'freigabe-fehlt', aktuell: von };
   }
 
@@ -236,7 +250,11 @@ export async function setzeBestellstatus(
       eventType: 'status_changed',
       fromStatus: von,
       toStatus: nach,
-      reason: optionen.grund ?? `Statuswechsel im Adminbereich: ${von} → ${nach}.`,
+      reason:
+        optionen.grund ??
+        (ohneFreigabeGestartet
+          ? 'In Produktion gesetzt OHNE Freigabe der Druckvorschau durch die Kundschaft (Entscheidung des Betreibers im Adminbereich).'
+          : `Statuswechsel im Adminbereich: ${von} → ${nach}.`),
       // Bei einer Stornierung wird `quelle: 'admin'` gespiegelt – dasselbe
       // Muster wie beim 'cancelled'-Ereignis der Kunden-Selbststornierung
       // (storniereBestellungDurchKunden, detail: { quelle: 'customer', ... }).
@@ -245,9 +263,11 @@ export async function setzeBestellstatus(
       detail:
         nach === 'cancelled'
           ? { quelle: 'admin', trackingNummer: optionen.trackingNummer }
-          : optionen.trackingNummer
-            ? { trackingNummer: optionen.trackingNummer }
-            : undefined,
+          : ohneFreigabeGestartet
+            ? { quelle: 'admin', ohneKundenfreigabe: true }
+            : optionen.trackingNummer
+              ? { trackingNummer: optionen.trackingNummer }
+              : undefined,
     },
     db
   );

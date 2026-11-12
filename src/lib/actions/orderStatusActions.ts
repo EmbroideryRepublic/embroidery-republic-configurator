@@ -27,7 +27,10 @@ export async function aendereBestellstatus(
   /** Begründung – bei einer Kulanzstornierung durch den Betreiber Pflicht
    *  (siehe AdminCancelControl.tsx), sonst optional. Landet unverändert im
    *  order_events-Eintrag (setzeBestellstatus → protokolliereBestellereignis). */
-  grund?: string
+  grund?: string,
+  /** Nur für „In Produktion“: starten, obwohl die Kundschaft die Druckvorschau nicht freigegeben hat. Kommt aus dem
+   *  ausdrücklichen Häkchen im Adminbereich (OrderStatusControl) und steht im Historien-Eintrag. */
+  ohneKundenfreigabe?: boolean
 ): Promise<StatusAktionErgebnis> {
   if (!(await istAdmin())) {
     return { ok: false, meldung: 'Nicht angemeldet.' };
@@ -36,6 +39,8 @@ export async function aendereBestellstatus(
   const ergebnis = await setzeBestellstatus(orderId, nach, {
     ...(trackingNummer ? { trackingNummer } : {}),
     ...(grund?.trim() ? { grund: grund.trim() } : {}),
+    // Nur ein ausdrückliches true zählt, und nur für den Weg nach „In Produktion“ (der Dienst prüft das zusätzlich).
+    ...(nach === 'in_production' && ohneKundenfreigabe === true ? { ohneKundenfreigabe: true } : {}),
   });
 
   if (!ergebnis.ok) {
@@ -46,7 +51,8 @@ export async function aendereBestellstatus(
         : 'Dieser Statuswechsel ist nicht zulässig.',
       'noch-nicht-freigegeben':
         'Noch nicht möglich: Die Stornofrist für diese Bestellung läuft noch (oder die Zahlung steht aus). Der Kunde kann in dieser Zeit noch selbst stornieren.',
-      'freigabe-fehlt': 'Noch nicht möglich: Die Kundschaft hat die Druckvorschau noch nicht freigegeben.',
+      'freigabe-fehlt':
+        'Noch nicht möglich: Die Kundschaft hat die Druckvorschau noch nicht freigegeben. Zum Starten ohne Freigabe das Häkchen „Ohne Kundenfreigabe starten“ setzen.',
       fehler: 'Der Statuswechsel ist fehlgeschlagen.',
     };
     return { ok: false, meldung: texte[ergebnis.grund] ?? 'Unbekannter Fehler.' };

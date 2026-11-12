@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/Footer';
 import { GlobaleKopfzeile } from '@/components/layout/GlobaleKopfzeile';
 import { CartDrawerHost } from '@/components/layout/CartDrawerHost';
 import { Besuchszaehler } from '@/components/layout/Besuchszaehler';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { suchmaschinenBestaetigung } from '@/lib/seo/bestaetigung';
 import { websiteSchema } from '@/lib/seo/strukturierteDaten';
@@ -12,6 +13,9 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', weight: ['400', '500', '600', '700'] });
+
+// Betriebsschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, verspricht keine Beschreibung sie.
+const STICKEREI_AN = veredelungVerfuegbar('embroidery');
 
 export const metadata: Metadata = {
   // Basis für ALLE relativen Metadaten-URLs (Open-Graph-Bilder, Canonical).
@@ -26,8 +30,9 @@ export const metadata: Metadata = {
     default: 'Embroidery Republic Germany | Firmenbekleidung bedrucken & besticken',
     template: '%s | Embroidery Republic Germany',
   },
-  description:
-    'Firmen- und Teambekleidung individuell veredeln: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet – ab 1 Stück, mit kostenloser Designprüfung.',
+  description: STICKEREI_AN
+    ? 'Firmen- und Teambekleidung individuell veredeln: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet – ab 1 Stück, mit kostenloser Designprüfung.'
+    : 'Firmen- und Teambekleidung individuell veredeln: DTF-Transferdruck, live im Konfigurator gestaltet – ab 1 Stück, mit kostenloser Designprüfung.',
   applicationName: 'Embroidery Republic Germany',
   keywords: [
     'Firmenbekleidung bedrucken',
@@ -42,19 +47,20 @@ export const metadata: Metadata = {
     locale: 'de_DE',
     siteName: 'Embroidery Republic Germany',
     title: 'Firmenbekleidung bedrucken & besticken – live konfigurieren',
-    description:
-      'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung. Motiv hochladen, platzieren, Preis in Echtzeit sehen – ab 1 Stück.',
+    description: STICKEREI_AN
+      ? 'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung. Motiv hochladen, platzieren, Preis in Echtzeit sehen – ab 1 Stück.'
+      : 'DTF-Transferdruck für Firmen- und Teambekleidung. Motiv hochladen, platzieren, Preis in Echtzeit sehen – ab 1 Stück.',
   },
   // Site-weiter Default (bislang komplett gefehlt – Twitter/X fiel dadurch
   // auf Open-Graph zurück, aber ohne die explizite Kartenart wählte die
   // Vorschau nicht zuverlässig das große Bildformat). Einzelne Seiten mit
   // eigenem `openGraph` (z.B. Produktseiten) erben dieses `twitter`-Objekt
   // unverändert mit – dieselbe Vererbung, die Next.js für `openGraph` nutzt.
+  // KORREKTUR 2026-11-12: Hier standen Titel und Beschreibung der Startseite. Weil Unterseiten das twitter-Objekt komplett erben,
+  // zeigte JEDE Produkt- und Kategorieseite beim Teilen auf X den Startseiten-Text (twitter:title hat dort Vorrang vor og:title).
+  // Jetzt nur noch die Kartenart: Ohne twitter:title/-description nimmt X den og:title und og:description der jeweiligen Seite.
   twitter: {
     card: 'summary_large_image',
-    title: 'Firmenbekleidung bedrucken & besticken – live konfigurieren',
-    description:
-      'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung. Motiv hochladen, platzieren, Preis in Echtzeit sehen – ab 1 Stück.',
   },
   robots: { index: true, follow: true },
   // Bestätigung bei Google Search Console / Bing Webmaster Tools. Gibt nur etwas

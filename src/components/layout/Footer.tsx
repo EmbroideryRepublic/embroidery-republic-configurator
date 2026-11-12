@@ -2,6 +2,7 @@ import { Phone, Mail } from 'lucide-react';
 import { COMPANY, COMPANY_ADDRESS_LINE } from '@/config/company';
 import { SHIPPING_RATES } from '@/config/shipping';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
+import { FooterSeoLinks } from '@/components/seo/FooterSeoLinks';
 import {
   FooterDescription,
   FooterContactHeading,
@@ -54,6 +55,9 @@ export function Footer() {
           </li>
         </FooterInfoColumn>
       </div>
+
+      {/* Sortiment, Anlässe, Marken: von jeder Seite aus verlinkt (interne Verlinkung für die Indexierung). */}
+      <FooterSeoLinks />
 
       <div className="mx-auto mt-10 flex max-w-5xl flex-col items-center gap-2 border-t border-gold/10 pt-5 sm:flex-row sm:justify-between">
         <p className="text-xs text-brand/70">

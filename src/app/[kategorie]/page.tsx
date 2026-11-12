@@ -40,6 +40,8 @@ import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 import { DtfLandingpage, dtfMetadata } from '@/components/seo/DtfLandingpage';
 import { MarkenChips } from '@/components/seo/MarkenChips';
 import { alleDtfSlugs, dtfSeiteVon } from '@/lib/seo/dtfAdresse';
+import { AnlassLandingpage, anlassMetadata } from '@/components/seo/AnlassLandingpage';
+import { alleAnlassSlugs, anlassSeiteVon } from '@/lib/seo/anlassAdresse';
 
 /** So viele Produkte zeigt die Seite; alle weiteren stehen in der Filteransicht. */
 const PRODUKTE_AUF_SEITE = 8;
@@ -49,10 +51,13 @@ const PRODUKTE_AUF_SEITE = 8;
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [...alleKategorieSlugs(), ...alleDtfSlugs()].map((kategorie) => ({ kategorie }));
+  return [...alleKategorieSlugs(), ...alleDtfSlugs(), ...alleAnlassSlugs()].map((kategorie) => ({ kategorie }));
 }
 
 export function generateMetadata({ params }: { params: { kategorie: string } }): Metadata {
+  // Anlass- und Ratgeberseiten: eigene Texte und Komponente, siehe config/seo/anlassSeiten.ts.
+  const anlass = anlassSeiteVon(params.kategorie);
+  if (anlass) return anlassMetadata(anlass);
   // DTF-Seiten (Marken, weitere Produktarten): eigene Texte und Komponente, siehe config/seo/dtfSeiten.ts.
   const dtf = dtfSeiteVon(params.kategorie);
   if (dtf) return dtfMetadata(dtf);
@@ -91,6 +96,8 @@ function VerfahrenKarte({ art, text, pausiert = false }: { art: 'dtf' | 'embroid
 }
 
 export default async function Kategorieseite({ params }: { params: { kategorie: string } }) {
+  const anlass = anlassSeiteVon(params.kategorie);
+  if (anlass) return <AnlassLandingpage seite={anlass} />;
   const dtf = dtfSeiteVon(params.kategorie);
   if (dtf) return <DtfLandingpage seite={dtf} />;
   const seite = kategorieSeiteVon(params.kategorie);

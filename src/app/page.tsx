@@ -52,6 +52,7 @@ import { Kundenstimmen } from '@/components/shop/Kundenstimmen';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { Produktkachel } from '@/components/shop/Produktkachel';
 import { MarkenChips } from '@/components/seo/MarkenChips';
+import { AnlassChips } from '@/components/seo/AnlassChips';
 import { HeroText } from '@/components/home/HeroText';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { kategorieLink } from '@/lib/seo/kategorieAdresse';
@@ -72,8 +73,10 @@ export const metadata: Metadata = {
   // Bewusst OHNE Ortsbezug: Der Betreiber will auf der Website nichts zu Köln
   // veröffentlichen. Produktbezogene Suchen bedienen die Kategorieseiten.
   title: { absolute: 'Textilien bedrucken & besticken lassen | Embroidery Republic' },
-  description:
-    'Hochwertige Stickerei und DTF-Transferdruck für Unternehmen, Vereine und Marken. Selbst gestalten im Konfigurator – ab 1 Stück, ohne Mindestbestellmenge.',
+  // Solange die Stickerei pausiert ist (config/bestellweg.ts), verspricht die Beschreibung nur DTF-Transferdruck.
+  description: veredelungVerfuegbar('embroidery')
+    ? 'Hochwertige Stickerei und DTF-Transferdruck für Unternehmen, Vereine und Marken. Selbst gestalten im Konfigurator – ab 1 Stück, ohne Mindestbestellmenge.'
+    : 'DTF-Transferdruck für Unternehmen, Vereine und Marken. Selbst gestalten im Konfigurator – ab 1 Stück, ohne Mindestbestellmenge.',
   alternates: { canonical: '/' },
 };
 
@@ -325,6 +328,9 @@ export default async function Startseite() {
 
       {/* Marken-Seiten: von der Startseite aus verlinkt, damit Suchmaschinen sie früh finden (config/seo/dtfSeiten.ts). */}
       <MarkenChips ueberschrift="Nach Marke stöbern" className="mx-auto max-w-[1500px] px-4 pb-20 sm:px-8" />
+
+      {/* Anlass- und Ratgeberseiten (config/seo/anlassSeiten.ts): ebenfalls von der Startseite aus verlinkt. */}
+      <AnlassChips ueberschrift="Anlässe & Ratgeber" className="mx-auto max-w-[1500px] px-4 pb-20 sm:px-8" />
 
       {/* ══ Beliebte Produkte ═══════════════════════════════════════════
           Echte Verkaufszahlen statt einer redaktionellen Auswahl – siehe

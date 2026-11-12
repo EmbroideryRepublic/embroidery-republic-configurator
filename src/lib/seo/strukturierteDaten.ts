@@ -23,6 +23,7 @@ import { waehlbareFarben, formatiereFarbname } from '@/lib/products/farben';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { ermittleVerfuegbarkeit } from '@/lib/catalog/verfuegbarkeit';
 import { COMPANY } from '@/config/company';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 import { kategorieLink } from '@/lib/seo/kategorieAdresse';
 
 /** Schema.org-Verfügbarkeit aus dem Katalogstatus. */
@@ -135,8 +136,11 @@ export function organisationSchema(basis: string): Record<string, unknown> {
     name: 'Embroidery Republic Germany',
     url: basis,
     logo: `${basis}/brand/logo.jpg`,
-    description:
-      'Firmen- und Teambekleidung individuell veredelt: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet.',
+    // Das öffentliche Profil des Unternehmens: verbindet die Website mit dem Instagram-Konto (Entitätssignal für Suchmaschinen).
+    sameAs: ['https://www.instagram.com/embroideryrepublic/'],
+    description: veredelungVerfuegbar('embroidery')
+      ? 'Firmen- und Teambekleidung individuell veredelt: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet.'
+      : 'Firmen- und Teambekleidung individuell veredelt: DTF-Transferdruck, live im Konfigurator gestaltet.',
     areaServed: 'DE',
     telephone: COMPANY.phone,
     address: {

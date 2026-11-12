@@ -83,7 +83,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const beschreibungRoh =
     `${produkt.name} von ${produkt.brand} – ${materialKurz}${produkt.weightGsm ? `, ${produkt.weightGsm} g/m²` : ''}, ` +
     `${produkt.colors.length} Farben${groessenText}. ` +
-    `Mit DTF-Transferdruck oder Stickerei veredeln, ab 1 Stück.`;
+    // Solange die Stickerei pausiert ist (config/bestellweg.ts), verspricht die Beschreibung nur DTF-Transferdruck.
+    (veredelungVerfuegbar('embroidery') ? 'Mit DTF-Transferdruck oder Stickerei veredeln, ab 1 Stück.' : 'Mit DTF-Transferdruck veredeln, ab 1 Stück.');
   const beschreibung = kuerzenAufLaenge(beschreibungRoh, GOOGLE_DESCRIPTION_ZIELLAENGE);
 
   // Stufen und Begründung: lib/seo/produktTitel.ts.

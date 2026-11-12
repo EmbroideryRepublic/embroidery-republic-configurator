@@ -317,7 +317,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
         </div>
 
         {/* Der Baum. Eigener Scroll-Bereich – Scrollen bewegt nicht die Seite. */}
-        <ul className="min-h-0 flex-1 overflow-y-auto p-1.5">
+        <ul className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain p-1.5">
           {baum.map((g) => {
             const auf = istOffen(g.gruppe);
             // Eine offene Gruppe zeigt IMMER alle ihre Produktarten – so bleibt
@@ -417,7 +417,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
               </button>
             </div>
 
-            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-3">
+            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-y-contain p-3">
               <Feld label="Größe">
                 <WerteListe dim="groesse" werte={facettenGroesse} gewaehlt={groesse} bezeichnungen={{}} onToggle={toggleGroesse} />
               </Feld>
@@ -491,7 +491,7 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
             onScroll={(e) => {
               if (!stelltWieder.current) setModellScrollTop(e.currentTarget.scrollTop);
             }}
-            className="min-h-0 flex-1 animate-fade-in space-y-4 overflow-y-auto p-3"
+            className="min-h-0 flex-1 animate-fade-in space-y-4 overflow-y-auto overscroll-y-contain p-3"
           >
             {modelle.map((p) => (
               <li key={p.id}>

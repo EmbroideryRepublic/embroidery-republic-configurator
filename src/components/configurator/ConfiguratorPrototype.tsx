@@ -491,7 +491,10 @@ export function ConfiguratorPrototype() {
               </span>
               <ChevronDown className={`h-5 w-5 flex-shrink-0 text-brand/70 transition-transform ${browserOffenMobil ? 'rotate-180' : ''}`} aria-hidden />
             </button>
-            <div id="produkt-browser-bereich" className={browserOffenMobil ? 'mt-3 lg:mt-0' : 'hidden lg:block'}>
+            {/* lg:h-full ist ZWINGEND: Der Produkt-Browser rechnet seine Höhe mit lg:h-full gegen diesen Container. Ohne feste Höhe
+                hier wuchs er auf die Länge der ganzen Modellliste (z. B. 11.952 px bei „Hoodie“), die Liste war nicht mehr scrollbar
+                und das Mausrad bewegte die ganze Seite (Fehler seit dem Handy-Umbau vom 2026-11-10, gemeldet 2026-11-12). */}
+            <div id="produkt-browser-bereich" className={browserOffenMobil ? 'mt-3 lg:mt-0 lg:h-full' : 'hidden lg:block lg:h-full'}>
               <ProduktBrowser />
             </div>
           </div>

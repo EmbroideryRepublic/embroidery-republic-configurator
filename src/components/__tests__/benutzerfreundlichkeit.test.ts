@@ -67,7 +67,7 @@ test('Kontrast: Die Goldtöne in der Konfiguration sind die geprüften Werte', (
 test('Handy-Konfigurator: Produktliste einklappbar, Vorschau klebt oben und die Mitte zerlegt sich ab lg nicht', () => {
   const k = quelltext('src', 'components', 'configurator', 'ConfiguratorPrototype.tsx');
   assert.match(k, /aria-expanded=\{browserOffenMobil\}/);
-  assert.match(k, /className=\{browserOffenMobil \? 'mt-3 lg:mt-0' : 'hidden lg:block'\}/, 'ab lg immer sichtbar');
+  assert.match(k, /className=\{browserOffenMobil \? 'mt-3 lg:mt-0 lg:h-full' : 'hidden lg:block lg:h-full'\}/, 'ab lg immer sichtbar – und mit Höhe (siehe Test unten)');
   assert.match(k, /sticky top-\[96px\] z-20/, 'Vorschau klebt unter Kopfzeile und Schrittleiste');
   assert.match(k, /lg:static/, 'ab lg wie bisher');
   assert.match(k, /contents lg:flex lg:min-w-0 lg:flex-1/, 'Mitte ohne eigenen Kasten, damit sticky über die ganze Zeile greift');
@@ -240,4 +240,19 @@ test('Größentabelle: kein zweiter Rahmen im Rahmen der Zusammenfassung, dreisp
   assert.doesNotMatch(t, /rounded-lg border border-gold\/20 bg-white p-3 shadow-elegant/, 'kein eigener Kasten mehr');
   assert.match(t, /grid-cols-3/, 'dreispaltig möglich');
   assert.match(t, /size\.length <= 4/, 'nur bei kurzen Bezeichnungen (sonst läuft das Feld über)');
+});
+
+// ── Konfigurator: Produkt-Browser scrollt in sich (Meldung 2026-11-12) ────
+
+test('Produkt-Browser: der Container hat ab lg eine Höhe und die Listen halten das Scrollen bei sich', () => {
+  const k = quelltext('src', 'components', 'configurator', 'ConfiguratorPrototype.tsx');
+  const b = quelltext('src', 'components', 'configurator', 'ProduktBrowser.tsx');
+  // Der Browser rechnet seine Höhe mit lg:h-full gegen den Container #produkt-browser-bereich. Ohne Höhe dort wuchs er auf die
+  // Länge der ganzen Modellliste (bei „Hoodie“ 11.952 px), die Liste war nicht scrollbar, das Mausrad bewegte die ganze Seite.
+  assert.match(k, /id="produkt-browser-bereich" className=\{browserOffenMobil \? 'mt-3 lg:mt-0 lg:h-full' : 'hidden lg:block lg:h-full'\}/, 'Container braucht lg:h-full');
+  assert.match(b, /flex h-\[70vh\] gap-2 lg:h-full/, 'Browser-Wurzel: 70vh am Handy, ab lg volle Höhe des Containers');
+  // Alle drei Scrollbereiche (Baum, Filter, Modellkarten): Am Listenende springt das Mausrad nicht auf die Seite über.
+  const scrollbereiche = b.match(/overflow-y-auto[^"]*/g) ?? [];
+  assert.ok(scrollbereiche.length >= 3, 'mindestens drei Scrollbereiche');
+  for (const klassen of scrollbereiche) assert.match(klassen, /overscroll-y-contain/, `Scrollbereich ohne overscroll-y-contain: ${klassen}`);
 });

@@ -124,8 +124,14 @@ export interface DtfBeispielWahl {
  * ein Einzelstück und zehn Stück mit je einem Brustmotiv (ca. 10 × 10 cm) – dieselben
  * Eckdaten wie auf den Kategorieseiten, damit die Preise vergleichbar sind.
  */
+/** Mehrzahl der Kleidungsarten von Kinderware (detailedDescription.productType), für die Beschriftung der Preisbeispiele. */
+const KINDER_KLEIDUNG_PLURAL: Record<string, string> = {
+  'T-Shirt': 'T-Shirts', Hoodie: 'Hoodies', Sweatshirt: 'Sweatshirts', 'Zip-Hoodie': 'Zip-Hoodies', Longsleeve: 'Longsleeves',
+};
+
 export function dtfBeispiele(seite: DtfSeite, f: DtfFakten): DtfBeispielWahl {
-  const art = BEISPIEL_ARTEN.find((a) => f.arten.includes(a));
+  // Die Kinderseite zeigt Kinderware; sonst die bevorzugte Erwachsenen-Art (BEISPIEL_ARTEN).
+  const art = seite.art === 'kids' ? 'kids' : BEISPIEL_ARTEN.find((a) => f.arten.includes(a));
   if (!art) throw new Error(`DTF-Seite "${seite.slug}": keine Art für ein Preisbeispiel.`);
   const produkt = [...f.produkte.filter((p) => p.productType === art)].sort((a, b) => a.basePrice - b.basePrice)[0];
   if (!produkt) throw new Error(`DTF-Seite "${seite.slug}": kein Beispielprodukt.`);
@@ -134,8 +140,10 @@ export function dtfBeispiele(seite: DtfSeite, f: DtfFakten): DtfBeispielWahl {
   const verfuegbar = gewuenscht.filter((g) => produkt.sizes.includes(g));
   const groessen = (verfuegbar.length === 3 ? verfuegbar : produkt.sizes.slice(0, 3)) as [string, string, string];
   const [g1, g2, g3] = groessen;
-  const teil = produktTypLabel(art);
-  const teile = produktTypLabelPlural(art);
+  // Kinderware: „Kinderbekleidung“ ist kein zählbares Wort – die Beispiele nennen das Kleidungsstück („1 Kinder-T-Shirt“).
+  const kleidung = produkt.detailedDescription?.productType ?? '';
+  const teil = art === 'kids' && kleidung ? `Kinder-${kleidung}` : produktTypLabel(art);
+  const teile = art === 'kids' && kleidung ? `Kinder-${KINDER_KLEIDUNG_PLURAL[kleidung] ?? kleidung}` : produktTypLabelPlural(art);
   const flaechen = [{ ansicht: 'front' as const, breiteCm: 10, hoeheCm: 10 }];
   return {
     produkt,

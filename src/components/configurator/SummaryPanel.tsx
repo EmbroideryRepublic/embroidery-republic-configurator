@@ -9,6 +9,7 @@ import { useCartStore } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { QUANTITY_TIERS, DTF_POSITION_TIERS, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
+import type { MengenTipp } from '@/lib/pricing/mengenTipp';
 import { getProduct } from '@/config/products';
 import { SizeQuantityTable } from './SizeQuantityTable';
 import type { TranslationKey } from '@/lib/i18n/translations';
@@ -21,6 +22,8 @@ import { istNurAufAnfrage } from '@/config/bestellweg';
 interface SummaryPanelProps {
   productName: string;
   breakdown: PriceCalculationResult['breakdown'] | null;
+  /** Staffelgrenze knapp über der gewählten Menge, bei der der Gesamtpreis sinkt (lib/pricing/mengenTipp.ts). */
+  mengenTipp?: MengenTipp | null;
   /** true = mindestens ein Preisbaustein konnte nicht verarbeitet werden.
    *  Der Preis ist dann ungültig und darf nicht bestellt werden. */
   priceHasErrors?: boolean;
@@ -31,7 +34,7 @@ interface SummaryPanelProps {
   onItemAdded?: () => void;
 }
 
-export function SummaryPanel({ productName, breakdown, priceHasErrors = false, onItemAdded }: SummaryPanelProps) {
+export function SummaryPanel({ productName, breakdown, mengenTipp = null, priceHasErrors = false, onItemAdded }: SummaryPanelProps) {
   const printMethod = useConfiguratorStore((s) => s.printMethod);
   const productId = useConfiguratorStore((s) => s.productId);
   const colorId = useConfiguratorStore((s) => s.colorId);
@@ -191,7 +194,12 @@ export function SummaryPanel({ productName, breakdown, priceHasErrors = false, o
           "Noch 1 Stück bis …" wäre dann unverständlich, weil "noch" eine
           bereits laufende Zählung suggeriert, die es noch gar nicht gibt.
           Alle drei Hinweise deshalb erst ab quantity > 0. */}
-      {quantity > 0 && nextDtfTier ? (
+      {quantity > 0 && mengenTipp ? (
+        <p className="text-[11px] font-medium text-green-700" data-testid="mengen-tipp">
+          Tipp: Mit {mengenTipp.menge} statt {quantity} Stück zahlen Sie insgesamt {formatPrice(mengenTipp.ersparnis)} weniger – und
+          erhalten {mengenTipp.mehrStueck} Stück mehr.
+        </p>
+      ) : quantity > 0 && nextDtfTier ? (
         <p className="text-[11px] text-brand/70">
           Noch {nextDtfTier.minQuantity - quantity} Stück bis {formatPrice(nextDtfTier.erste)} für die erste Position.
         </p>

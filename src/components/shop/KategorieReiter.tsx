@@ -17,6 +17,7 @@
  * Gewählt wird eine Art nach der anderen (wie in einer Navigation); ein
  * erneuter Klick auf den aktiven Reiter führt zurück zu „Alle Produkte".
  */
+import { useEffect, useRef } from 'react';
 import { produktTypLabel, PRODUCT_TYPE_ORDER } from '@/config/products/types';
 import type { ProductType } from '@/types';
 import type { FilterKriterien } from '@/lib/catalog/kriterien';
@@ -37,11 +38,25 @@ export function KategorieReiter({
   const arten = REIHENFOLGE.filter((a) => vorhanden.has(a));
   const alle = kriterien.kategorie.length === 0;
 
+  // Auf dem Handy ist die Reiterreihe breiter als der Bildschirm. Ist die gewählte Art weiter hinten (z. B. „Kinderbekleidung“), wäre
+  // sie unsichtbar und keiner der sichtbaren Reiter markiert – deshalb scrollt die Reihe (nur sie, nie die Seite) den aktiven Reiter
+  // in die Mitte.
+  const reihe = useRef<HTMLElement>(null);
+  const aktivKey = kriterien.kategorie.join(',');
+  useEffect(() => {
+    const nav = reihe.current;
+    const aktiv = nav?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!nav || !aktiv) return;
+    const ziel = aktiv.offsetLeft - (nav.clientWidth - aktiv.offsetWidth) / 2;
+    nav.scrollTo({ left: Math.max(0, ziel) });
+  }, [aktivKey]);
+
   const waehle = (art?: ProductType) =>
     anwenden({ ...kriterien, kategorie: art ? [art] : [], seite: 1 });
 
   return (
     <nav
+      ref={reihe}
       aria-label="Produktarten"
       className="-mx-2 flex items-stretch gap-1 overflow-x-auto px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >

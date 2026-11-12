@@ -1,9 +1,12 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import type { ProductConfig } from '@/config/products';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
+import { useGroessenHinweisStore } from '@/stores/groessenHinweisStore';
 
 interface SizeQuantityTableProps {
   product: ProductConfig;
@@ -25,6 +28,13 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
   const t = (key: Parameters<typeof translate>[0]) => translate(key, language);
 
   const total = sumSizeQuantities(sizeQuantities);
+  // Nach einem Produktwechsel mit anderen Größen: die nicht übernommene Stückzahl benennen, bis neue Stückzahlen eingetragen sind.
+  const verworfen = useGroessenHinweisStore((s) => s.verworfen);
+  const setzeVerworfen = useGroessenHinweisStore((s) => s.setze);
+  const hinweisSichtbar = verworfen > 0 && total === 0;
+  useEffect(() => {
+    if (total > 0 && verworfen > 0) setzeVerworfen(0);
+  }, [total, verworfen, setzeVerworfen]);
   // Kurze Größenbezeichnungen (S, XXL, 4XL …) passen zu dritt in eine Zeile:
   // bei 9–10 Größen sind das 3–4 statt 5 Zeilen und damit rund 100 px weniger Höhe in der
   // schmalen Spalte. Längere Bezeichnungen bleiben zweispaltig, damit nichts überläuft.
@@ -42,6 +52,12 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
           </p>
         )}
       </div>
+
+      {hinweisSichtbar && (
+        <p role="status" className="mb-1.5 rounded bg-amber-50 px-2 py-1 text-[11px] leading-snug text-amber-900" data-testid="groessen-hinweis">
+          Ihre bisherigen {verworfen} Stück wurden nicht übernommen – dieses Produkt hat andere Größen. Bitte wählen Sie die Größen neu.
+        </p>
+      )}
 
       <div className={dreispaltig ? 'grid grid-cols-3 gap-1.5' : 'grid grid-cols-2 gap-1.5'}>
         {product.sizes.map((size) => (

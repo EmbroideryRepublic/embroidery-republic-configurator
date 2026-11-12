@@ -130,6 +130,44 @@ function artSeite(art: ProductType, slug: string): DtfSeite {
   };
 }
 
+/**
+ * Kinderbekleidung: eigene Textform statt `artSeite`, weil „Kinderbekleidung“ kein zählbares Wort ist („10 Kinderbekleidung“ wäre
+ * falsch). Aussagen stammen aus dem Katalog: die Größen kommen je Hersteller als Körpergröße in cm, als Alter oder als Jugendgrößen
+ * (config/products/groessen.ts → KINDER_LEITERN) und stehen wortgleich auf der Produktseite.
+ */
+function kinderSeite(slug: string): DtfSeite {
+  return {
+    slug,
+    art: 'kids',
+    titel: 'Kinderbekleidung bedrucken lassen – ab 1 Stück',
+    h1: 'Kinderbekleidung bedrucken lassen',
+    beschreibung:
+      '{anzahl} Modelle Kinderbekleidung von {marken3} u. a. per DTF-Transferdruck bedrucken – ab 1 Stück, Preis live im Konfigurator.',
+    einleitung: [
+      'Kinder-T-Shirts, Hoodies, Sweatshirts und mehr: {anzahl} Modelle von {markenAnzahl} Marken in Kindergrößen. Laden Sie Ihr Logo oder Motiv hoch und sehen Sie das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+      EINLEITUNG_DTF,
+    ],
+    fragen: [
+      {
+        q: 'Kann ich auch nur ein einzelnes Kinderteil bedrucken lassen?',
+        // Wie A_EINZELSTUECK (freigegeben), nur mit einem Größenbeispiel, das bei Kinderware vorkommt.
+        a: A_EINZELSTUECK.replace('zum Beispiel 2× M, 2× L und 1× XL', 'bei Kindergrößen zum Beispiel 2× 104, 2× 116 und 1× 128'),
+      },
+      { q: 'Wofür eignet sich der DTF-Transferdruck?', a: A_DTF },
+      {
+        q: 'Welche Größen gibt es bei Kinderbekleidung?',
+        a: 'Die Hersteller geben Kindergrößen unterschiedlich an – als Körpergröße in cm (zum Beispiel 92 bis 164), als Alter (zum Beispiel 3/4 Jahre) oder in Jugendgrößen. Wir übernehmen die Angaben so, wie der Hersteller sie führt; die Größentabelle mit allen Maßen steht auf jeder Produktseite.',
+      },
+      { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN },
+      { q: 'Wie lange dauert es, bis meine Bestellung ankommt?', a: A_DAUER },
+      {
+        q: 'Welche Kinderbekleidung gibt es und wie schwer ist sie?',
+        a: 'Aktuell gibt es {anzahl} Modelle von {marken}. {gewichtSatz}Die Preise beginnen bei {abPreis} pro Stück zzgl. Veredelung. Material, Passform, Farben und Größen stehen auf der jeweiligen Produktseite.',
+      },
+    ],
+  };
+}
+
 // ── Die Seiten ──────────────────────────────────────────────────────────
 
 /** Auswahl nach Nachfrage (Search Console) und Sortimentsbreite (≥ 7 Modelle). */
@@ -143,4 +181,5 @@ export const DTF_SEITEN: DtfSeite[] = [
   artSeite('longsleeve', 'longsleeves-bedrucken'),
   artSeite('jacket', 'jacken-bedrucken'),
   artSeite('zip-hoodie', 'zip-hoodies-bedrucken'),
+  kinderSeite('kinderbekleidung-bedrucken'),
 ];

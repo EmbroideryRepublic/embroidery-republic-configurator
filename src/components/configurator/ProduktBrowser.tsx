@@ -32,7 +32,8 @@ import {
   LEERER_FILTER, anzahlAktiverFilter, baueBaum, modellBadges, modelleVon, passtZumFilter,
   type Badge, type Browserfilter, type Hauptgruppe,
 } from '@/lib/configurator/produktbaum';
-import { uebernehmeAuswahl } from '@/lib/configurator/uebernahme';
+import { uebernehmeAuswahl, verworfeneMenge } from '@/lib/configurator/uebernahme';
+import { useGroessenHinweisStore } from '@/stores/groessenHinweisStore';
 import { vorladenListe, vorladenModell } from '@/lib/configurator/vorladen';
 import { getProduct } from '@/config/products';
 import { produktBild } from '@/lib/assets';
@@ -223,6 +224,8 @@ export const ProduktBrowser = memo(function ProduktBrowser() {
     setProduct(p.id);
     if (uebernahme.colorId) setColor(uebernahme.colorId);
     setSizeQuantities(uebernahme.sizeQuantities);
+    // Konnte eine Stückzahl keiner Größe des neuen Produkts zugeordnet werden, sagt die Größentabelle das (statt sie still zu verlieren).
+    useGroessenHinweisStore.getState().setze(verworfeneMenge(sizeQuantities, uebernahme.sizeQuantities));
   }
 
   function setzeFilterZurueck() {

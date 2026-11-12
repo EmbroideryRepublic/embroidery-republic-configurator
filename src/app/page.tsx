@@ -32,8 +32,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import {
-  ArrowRight, Boxes, Building2, Scissors, Timer, Truck, UserRound, Users,
+  ArrowRight, Boxes, Building2, Scissors, Shirt, Timer, Truck, UserRound, Users,
 } from 'lucide-react';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 import type { LucideIcon } from 'lucide-react';
 import { PRODUCTS } from '@/config/products';
 import { repraesentativBildVon, produktBild } from '@/lib/assets';
@@ -162,7 +163,10 @@ export default async function Startseite() {
         <div className="mx-auto grid max-w-[1500px] grid-cols-2 items-center gap-x-6 gap-y-2.5 px-4 py-3 text-[12.5px] text-brand/70 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-8 sm:text-[13px] lg:justify-start sm:px-8">
           <Vertrauenspunkt icon={Boxes} text="Ab 1 Stück, ohne Mindestmenge" />
           <Vertrauenspunkt icon={Timer} text={`${PRODUKTIONSTAGE.von}–${PRODUKTIONSTAGE.bis} Werktage Produktion`} />
-          <Vertrauenspunkt icon={Scissors} text="Stickerei & DTF-Transferdruck" />
+          <Vertrauenspunkt
+            icon={veredelungVerfuegbar('embroidery') ? Scissors : Shirt}
+            text={veredelungVerfuegbar('embroidery') ? 'Stickerei & DTF-Transferdruck' : 'DTF-Transferdruck'}
+          />
           <Vertrauenspunkt icon={Truck}>
             Versandkostenfrei ab <WaehrungsPreis betragInEur={SHIPPING_RATES.DE.freeFrom} />
           </Vertrauenspunkt>

@@ -64,6 +64,20 @@ gar nicht tragen.
 >   und „nie billiger“ fest.
 > - **Stickerei** (derzeit pausiert) trägt die höheren Positionspreise und den höheren Grundpreis automatisch mit.
 
+> **Staffelgrenzen und Mengen-Tipp (2026-11-12):** Die Staffeln gelten als Stufenfunktion für die GESAMTE Bestellung. An jeder Grenze kostet
+> deshalb eine etwas größere Menge insgesamt WENIGER als die kleinere (gemessen mit den Preisen vom 2026-11-12: 49 → 50 Stück −79 € bis −171 €,
+> 99 → 100 Stück −181 € bis −464 €, 249 → 250 Stück −217 € bis −471 €, 499 → 500 Stück −473 € bis −1.470 €, 999 → 1000 Stück −983 € bis −3.969 €;
+> bei 24 → 25 Stück nur das T-Shirt mit einer Position, −3 €). Das ist gewollt, aber ohne Hinweis ein Rätsel. Der Konfigurator zeigt jetzt den
+> **Mengen-Tipp** („Mit 50 statt 49 Stück zahlen Sie insgesamt 79,01 € weniger – und erhalten 1 Stück mehr.“, `lib/pricing/mengenTipp.ts`; er
+> sucht bis zu 25 % über die gewählte Menge, mindestens 10 Stück, und nennt die kleinste Menge mit mindestens 1 € Ersparnis). Der Preis selbst
+> ändert sich dadurch nicht, die Bestellung rechnet mit der gewählten Menge. Eine Preis-Deckelung (49 Stück zum Preis von 50) bleibt bewusst
+> aus: Sie bräuchte eine eigene Rechnungszeile und krumme Stückpreise.
+>
+> **Warenkorb-Preise (2026-11-12):** Der Warenkorb speichert Preise zum Zeitpunkt des Hineinlegens; nach einer Preisänderung zeigte er alte Preise,
+> während der Server (autoritativ) die neuen berechnet. Nach dem Laden rechnet `lib/cart/preiseAktualisieren.ts` jede Position mit `calculatePrice`
+> und den aktuellen Preisen neu (Hinweis im Warenkorb, wenn sich etwas geändert hat). Ein bereits geöffneter Tab mit altem Programmstand bleibt
+> bis zum Neuladen auf dem alten Preis – der Server rechnet aber immer neu.
+
 ### Gerundet wird brutto
 
 Ein psychologischer Preis wirkt dort, wo die Kundschaft ihn liest. 19,90 €

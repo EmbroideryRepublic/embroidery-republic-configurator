@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { X, Trash2, Pencil, ShoppingCart, ArrowLeft, CheckCircle2, AlertCircle, Info, Loader2, Receipt, CreditCard, Wallet } from 'lucide-react';
 import { useCartStore, getCartTotal, getCartItemCount } from '@/stores/cartStore';
+import { useWarenkorbHinweisStore } from '@/stores/warenkorbHinweisStore';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { getProduct } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
@@ -130,6 +131,8 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
   }, [onClose]);
 
   const total = getCartTotal(items);
+  const preisHinweis = useWarenkorbHinweisStore((s) => s.geaenderte);
+  const schliessePreisHinweis = useWarenkorbHinweisStore((s) => s.schliesse);
   // Dieselbe Zahl wie das Header-Badge (SiteHeader), damit am selben
   // Warenkorb nicht zwei unterschiedliche Zahlen auftauchen.
   const positionCount = getCartItemCount(items);
@@ -272,6 +275,15 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                   <span>{t('cart_item_removed')}</span>
                   <button type="button" onClick={macheRueckgaengig} className="flex-shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gold-dark underline-offset-2 hover:underline">
                     {t('cart_undo')}
+                  </button>
+                </div>
+              )}
+              {/* Preise im Warenkorb gegen den aktuellen Stand neu gerechnet (stores/cartStore.ts, lib/cart/preiseAktualisieren.ts). */}
+              {preisHinweis > 0 && items.length > 0 && (
+                <div role="status" className="mb-3 flex items-start justify-between gap-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900" data-testid="preis-hinweis">
+                  <span>Die Preise in Ihrem Warenkorb wurden an den aktuellen Stand angepasst.</span>
+                  <button type="button" onClick={schliessePreisHinweis} className="flex-shrink-0 rounded-md px-2 py-1 text-sm font-medium underline underline-offset-2">
+                    OK
                   </button>
                 </div>
               )}

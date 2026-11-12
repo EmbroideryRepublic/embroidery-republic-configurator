@@ -16,6 +16,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { PRODUCTS } from '@/config/products';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
+import { shopBeschreibung } from '@/lib/seo/shopBeschreibung';
 import { produktTypLabelPlural, PRODUCT_TYPE_ORDER } from '@/config/products/types';
 import { ShopFilter } from '@/components/shop/ShopFilter';
 import { Produktkachel } from '@/components/shop/Produktkachel';
@@ -28,17 +30,11 @@ import { katalogBrotkrumenSchema, sammlungSchema } from '@/lib/seo/strukturierte
 
 export const dynamic = 'force-dynamic';
 
-/** „A, B und C" aus einer Liste. */
-function listeMitUnd(items: string[]): string {
-  if (items.length === 0) return 'Produkte';
-  if (items.length === 1) return items[0]!;
-  return `${items.slice(0, -1).join(', ')} und ${items[items.length - 1]!}`;
-}
 // Selbst-aktualisierende Katalog-Beschreibung: die tatsächlich vertretenen
 // Produktarten (in Registry-Reihenfolge) statt einer hartkodierten, veraltenden
 // Kleidungsliste – eine neue Produktgruppe (Tasche/Cap …) erscheint automatisch (M4).
 const VORHANDENE_ARTEN = PRODUCT_TYPE_ORDER.filter((t) => PRODUCTS.some((p) => p.productType === t));
-const BESCHREIBUNG = `${listeMitUnd(VORHANDENE_ARTEN.map(produktTypLabelPlural))} etablierter Marken – mit DTF-Transferdruck oder Stickerei veredelt, ab 1 Stück.`;
+const BESCHREIBUNG = shopBeschreibung(VORHANDENE_ARTEN.map(produktTypLabelPlural), veredelungVerfuegbar('embroidery'));
 
 /** So viele Produkte tragen die Auszeichnung „Bestseller". */
 const BESTSELLER_ANZAHL = 3;
@@ -95,7 +91,9 @@ export default async function Produktuebersicht({ searchParams }: { searchParams
           Alle Produkte
         </h1>
         <p className="mt-2.5 text-[13px] text-brand/70">
-          Veredelt per DTF-Transferdruck oder Stickerei · ohne Mindestbestellmenge
+          {veredelungVerfuegbar('embroidery')
+            ? 'Veredelt per DTF-Transferdruck oder Stickerei · ohne Mindestbestellmenge'
+            : 'Veredelt per DTF-Transferdruck · ohne Mindestbestellmenge'}
         </p>
 
         <div className="mt-10">

@@ -2,6 +2,8 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { CartItem } from '@/types';
 import { indexedDbStorage, getTabId } from '@/lib/storage/indexedDbStorage';
+import { berechnePreiseNeu } from '@/lib/cart/preiseAktualisieren';
+import { useWarenkorbHinweisStore } from '@/stores/warenkorbHinweisStore';
 
 interface CartState {
   items: CartItem[];
@@ -70,6 +72,22 @@ export const useCartStore = create<CartState>()(
       // Object.entries(undefined) in der Warenkorb-Anzeige hätte dann die
       // gesamte Warenkorb-Ansicht zum Absturz gebracht.
       version: 1,
+      // Preise ändern sich (z. B. Preisanhebung 2026-11-12), der Warenkorb überlebt aber den Seitenwechsel: Nach dem Laden werden alle
+      // Positionen gegen den AKTUELLEN Stand neu gerechnet, sonst zeigte der Warenkorb alte Preise, während der Server die neuen
+      // berechnet (lib/cart/preiseAktualisieren.ts). Geändert wird per ID, damit eine zwischenzeitlich hinzugefügte Position
+      // nicht überschrieben wird.
+      onRehydrateStorage: () => (state) => {
+        if (!state || state.items.length === 0) return;
+        const vorher = state.items;
+        void berechnePreiseNeu(vorher)
+          .then(({ items, geaendert }) => {
+            if (geaendert === 0) return;
+            const neuePreise = new Map(items.map((i) => [i.id, i]));
+            useCartStore.setState((s) => ({ items: s.items.map((i) => neuePreise.get(i.id) ?? i) }));
+            useWarenkorbHinweisStore.getState().setze(geaendert);
+          })
+          .catch((err) => console.warn('[warenkorb] Preise konnten nicht neu berechnet werden:', err));
+      },
       migrate: (persistedState) => {
         const state = persistedState as { items?: (CartItem & { sizeLabel?: string })[] };
         if (!state.items) return state;

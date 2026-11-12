@@ -31,6 +31,7 @@ import { ProduktFarbeProvider } from '@/components/produkt/ProduktFarbeContext';
 import { KonfiguratorCta } from '@/components/produkt/KonfiguratorCta';
 import { ProduktKaufleiste } from '@/components/produkt/ProduktKaufleiste';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { cm } from '@/lib/format';
 import { SHIPPING_RATES } from '@/config/shipping';
@@ -152,6 +153,8 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
   // „So veredeln wir dein …“ braucht ein Wort, das nach „dein“ passt: Bei Kinderware ist die Produktart nur „Kinderbekleidung“,
   // das Kleidungsstück selbst (T-Shirt, Hoodie, Sweatshirt …) steht in detailedDescription.productType.
   const artWort = produkt.productType === 'kids' ? (produkt.detailedDescription?.productType ?? artLabel) : artLabel;
+  // Betreiberschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, versprechen die Texte nur DTF-Transferdruck.
+  const stickereiVerfuegbar = veredelungVerfuegbar('embroidery');
   const d = produkt.detailedDescription;
 
   const basis = kanonischeBasisUrl();
@@ -294,10 +297,12 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
           <h2 className="font-serif text-xl font-normal text-brand">
             So veredeln wir dein {artWort}
           </h2>
-          <p className="mt-1 max-w-2xl text-sm text-brand/70">
-            Zwei Verfahren, dieselbe Fläche – du entscheidest im Konfigurator, was besser zu deinem
-            Motiv passt.
-          </p>
+          {stickereiVerfuegbar && (
+            <p className="mt-1 max-w-2xl text-sm text-brand/70">
+              Zwei Verfahren, dieselbe Fläche – du entscheidest im Konfigurator, was besser zu deinem
+              Motiv passt.
+            </p>
+          )}
           <div className="mt-6">
             <Veredelungsverfahren />
           </div>
@@ -336,7 +341,9 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
               ))}
             </dl>
             <p className="mt-3 text-xs text-brand/70">
-              Veredelung per DTF-Transferdruck oder Stickerei. Beide Verfahren nutzen dieselbe Fläche.
+              {stickereiVerfuegbar
+                ? 'Veredelung per DTF-Transferdruck oder Stickerei. Beide Verfahren nutzen dieselbe Fläche.'
+                : 'Veredelung per DTF-Transferdruck.'}
             </p>
           </div>
         </section>

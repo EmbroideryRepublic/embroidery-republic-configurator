@@ -92,6 +92,15 @@ export function passendeGroessen(
   return ergebnis;
 }
 
+/**
+ * Wie viele Stück beim Produktwechsel NICHT übernommen werden konnten (die Größen des Zielprodukts passen auf keine der
+ * bisherigen, z. B. Konfektionsgrößen → Kindergrößen). 0, wenn nichts verloren ging.
+ */
+export function verworfeneMenge(alt: Record<string, number>, neu: Record<string, number>): number {
+  const summe = (m: Record<string, number>) => Object.values(m).reduce((s, n) => s + (n > 0 ? n : 0), 0);
+  return Math.max(0, summe(alt) - summe(neu));
+}
+
 export type Uebernahme = {
   colorId: string | undefined;
   sizeQuantities: Record<string, number>;

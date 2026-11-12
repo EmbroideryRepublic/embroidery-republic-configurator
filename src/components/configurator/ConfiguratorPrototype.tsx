@@ -25,6 +25,7 @@ import { resolveColorImages, repraesentativeFarbe } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
+import { findeMengenTipp } from '@/lib/pricing/mengenTipp';
 import type { PricingRule, PrintArea, PrintMethod } from '@/types';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
@@ -311,6 +312,17 @@ export function ConfiguratorPrototype() {
       pricingRules: otherMethodPricingRules,
     }).unitPrice;
   }, [elements, quantity, otherMethodPricingRules, product.basePrice]);
+
+  // Mengen-Tipp (lib/pricing/mengenTipp.ts): Liegt knapp über der gewählten Menge eine Staffelgrenze, bei der der GESAMTpreis
+  // sinkt (z. B. 50 statt 49 Stück), zeigt die Kauf-Leiste das an. Reine Anzeige; die Bestellung rechnet mit der gewählten Menge.
+  // Bei Stickerei (nur Anfrage, Kostenschätzung) bewusst kein Tipp.
+  const mengenTipp = useMemo(
+    () =>
+      printMethod === 'embroidery' || pricingRules.length === 0
+        ? null
+        : findeMengenTipp({ basePrice: product.basePrice, quantity, elements, pricingRules }),
+    [printMethod, product.basePrice, quantity, elements, pricingRules]
+  );
 
   // Tastenkürzel: Strg/Cmd+Z = Rückgängig, Strg/Cmd+Y bzw. Strg+Shift+Z =
   // Wiederholen, Entf/Rücktaste = ausgewähltes Element löschen, Strg+D =
@@ -612,6 +624,7 @@ export function ConfiguratorPrototype() {
             <SummaryPanel
               productName={product.name}
               breakdown={priceBreakdown}
+              mengenTipp={mengenTipp}
               priceHasErrors={priceHasErrors}
               onItemAdded={handleItemAddedToCart}
             />

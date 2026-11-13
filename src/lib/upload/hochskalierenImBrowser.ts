@@ -8,9 +8,11 @@
  *
  * Größenwächter: Die Bestellung geht als EIN Aufruf an den Server (Grenze 15 MB, next.config.js), und das Logo reist doppelt mit
  * (Original + Anzeige). Wird das Ergebnis zu groß (ein Foto mit Rauschen ergibt große PNG-Dateien), geht es mit dem nächstkleineren
- * Faktor erneut; reicht auch Faktor 2 nicht, gibt es `HochskalierenZuGross` (verständliche Meldung) statt einer später abgelehnten Bestellung.
+ * Faktor erneut; reicht auch der kleinste sinnvolle nicht, gibt es `HochskalierenZuGross` (verständliche Meldung) statt einer später
+ * abgelehnten Bestellung.
  */
 import { loadImage } from '@/lib/browser/loadImage';
+import { removeSimpleBackground } from '@/lib/upload/backgroundRemoval';
 import { hochskaliereRgba, MIN_FAKTOR } from '@/lib/upload/hochskalieren';
 import type { LogoElement } from '@/types';
 
@@ -70,12 +72,18 @@ export const merkeVorHochskalierung = (logo: LogoElement) =>
 export const vorHochskalierung = (id: string) => VORHER.get(id);
 export const vergissVorHochskalierung = (id: string) => VORHER.delete(id);
 
+/** Mehr als so viele Anläufe mit kleinerem Faktor gibt es nicht (jeder rechnet beide Dateien neu). */
+const MAX_VERSUCHE = 4;
+
 /**
  * Hochskaliert beide Dateien eines Logos. Gibt die Änderungen für das Element zurück; das Element selbst wird hier nicht angefasst.
- * Wirft eine Fehlermeldung für die Oberfläche, wenn auch der kleinste Faktor ein zu großes Ergebnis ergäbe.
+ * Ist das Ergebnis zu groß für die Bestellung, geht es mit einem kleineren Faktor erneut (die Dateigröße wächst etwa mit der
+ * Pixelzahl, also mit dem Quadrat des Faktors – daher ein passender Sprung statt Zehntel für Zehntel); wirft `HochskalierenZuGross`,
+ * wenn auch das nicht reicht.
  */
 export async function hochskaliereLogo(logo: LogoElement, faktor: number): Promise<LogoAenderung> {
-  for (let f = faktor; f >= MIN_FAKTOR; f--) {
+  let f = faktor;
+  for (let versuch = 0; versuch < MAX_VERSUCHE && f >= MIN_FAKTOR - 1e-9; versuch++) {
     const anzeige = await hochskaliereDataUrl(logo.fileUrl, f);
     // Ohne Freistellung sind Anzeige- und Originaldatei dieselbe Datei: nur einmal rechnen.
     const original = logo.originalFileUrl === logo.fileUrl ? anzeige : await hochskaliereDataUrl(logo.originalFileUrl, f);
@@ -90,8 +98,25 @@ export async function hochskaliereLogo(logo: LogoElement, faktor: number): Promi
         urspruenglicheBreitePx: logo.urspruenglicheBreitePx ?? logo.originalWidthPx,
       };
     }
+    const sprung = Math.floor(f * Math.sqrt(MAX_ERGEBNIS_BYTES / bytes) * 0.95 * 10) / 10;
+    f = Math.min(sprung, Math.round((f - 0.1) * 10) / 10);
   }
   throw new HochskalierenZuGross();
+}
+
+/**
+ * Erneutes Hochskalieren eines schon hochgerechneten Logos (z. B. weil es danach größer gezogen wurde): rechnet vom gemerkten
+ * Ausgangsbild aus, NICHT vom hochgerechneten – sonst würde das Bild zweimal geglättet. Die aktuelle Freistellungswahl bleibt erhalten.
+ */
+export async function hochskaliereAusOriginal(logo: LogoElement, faktor: number): Promise<LogoAenderung> {
+  const vorher = VORHER.get(logo.id);
+  if (!vorher) throw new Error('Das Ausgangsbild ist nicht mehr gemerkt.');
+  const fileUrl = logo.backgroundRemoved
+    ? vorher.backgroundRemoved
+      ? vorher.fileUrl
+      : await removeSimpleBackground(vorher.originalFileUrl)
+    : vorher.originalFileUrl;
+  return hochskaliereLogo({ ...logo, ...vorher, fileUrl }, faktor);
 }
 
 /** Auch mit dem kleinsten Faktor wäre das Ergebnis für die Bestellung zu groß (typisch: verrauschtes Foto). Die Oberfläche übersetzt. */

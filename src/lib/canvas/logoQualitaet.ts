@@ -13,6 +13,8 @@
 export const MIN_DPI = 150;
 /** Ab diesem Wert ist die Qualität optimal (grün); dazwischen "akzeptabel" (gelb). */
 export const OK_DPI = 220;
+/** Wunschauflösung: Das Hochskalieren (lib/upload/hochskalieren.ts) rechnet auf diesen Wert, wenn technisch möglich. Die Ampel bleibt bei MIN_DPI/OK_DPI. */
+export const ZIEL_DPI = 300;
 
 export type QualityLevel = 'green' | 'yellow' | 'red';
 

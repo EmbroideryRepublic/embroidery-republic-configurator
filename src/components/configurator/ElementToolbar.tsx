@@ -12,9 +12,10 @@ import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { textKaumSichtbar } from '@/lib/canvas/textfarbe';
 import { berechneLogoDpi, bewerteLogoQualitaet, logoQualitaetText } from '@/lib/canvas/logoQualitaet';
-import { waehleHochskalierung } from '@/lib/upload/hochskalieren';
+import { bestimmeAngebot } from '@/lib/upload/hochskalieren';
 import {
   HochskalierenZuGross,
+  hochskaliereAusOriginal,
   hochskaliereLogo,
   merkeVorHochskalierung,
   vergissVorHochskalierung,
@@ -68,6 +69,7 @@ function LogoQualitaetHinweis({
   labelGelb,
   labelRot,
   t,
+  zahl,
   beschaeftigt,
   fehler,
   onHochskalieren,
@@ -77,6 +79,8 @@ function LogoQualitaetHinweis({
   labelGelb: string;
   labelRot: string;
   t: (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => string;
+  /** Zahl mit höchstens einer Nachkommastelle in der Schreibweise der Sprache (3,9 / 3.9). */
+  zahl: (n: number) => string;
   beschaeftigt: boolean;
   fehler: string | null;
   onHochskalieren: (faktor: number) => void;
@@ -85,15 +89,19 @@ function LogoQualitaetHinweis({
   const q = bewerteLogoQualitaet(logo);
   if (!q) return null;
   const hochskaliert = logo.hochskaliertFaktor !== undefined;
-  // Nach dem Hochrechnen NICHT noch einmal anbieten (würde nur weiter glätten): erst „Original wiederherstellen“.
-  const angebot =
-    !hochskaliert && q.level !== 'green'
-      ? waehleHochskalierung({ breitePx: logo.originalWidthPx, hoehePx: logo.originalHeightPx, dpi: q.dpi })
-      : null;
-  if (q.level === 'green' && !hochskaliert) return null;
+  const vorher = hochskaliert ? vorHochskalierung(logo.id) : undefined;
+  // Angebot vom echten Ausgangsbild aus, auch unterhalb der Ampel-Grenze (grün ab 220 dpi): Ziel ist 300 dpi (lib/upload/hochskalieren.ts).
+  const angebot = bestimmeAngebot({
+    breitePx: logo.originalWidthPx,
+    hoehePx: logo.originalHeightPx,
+    widthCm: logo.widthCm,
+    hochskaliertFaktor: logo.hochskaliertFaktor,
+    vorher: vorher && { breitePx: vorher.originalWidthPx, hoehePx: vorher.originalHeightPx },
+  });
+  if (q.level === 'green' && !hochskaliert && !angebot) return null;
   const rot = q.level === 'red';
   const Icon = rot ? XCircle : AlertTriangle;
-  const kannZurueck = hochskaliert && vorHochskalierung(logo.id) !== undefined;
+  const kannZurueck = hochskaliert && vorher !== undefined;
   return (
     <div className="space-y-1.5">
       {q.level !== 'green' && (
@@ -116,7 +124,7 @@ function LogoQualitaetHinweis({
             onClick={() => onHochskalieren(angebot.faktor)}
             className="rounded-md border border-brand-accent px-2.5 py-1 text-xs font-medium text-brand-accent hover:bg-brand-accent hover:text-white disabled:cursor-wait disabled:opacity-60"
           >
-            {t('logo_upscale_button', { factor: angebot.faktor })}
+            {t('logo_upscale_button', { factor: zahl(angebot.faktor) })}
           </button>
           <p className="text-xs text-gray-600">{t('logo_upscale_hint', { dpi: Math.round(angebot.erreichteDpi) })}</p>
         </div>
@@ -127,7 +135,7 @@ function LogoQualitaetHinweis({
         <div role="status" className="space-y-1 rounded-lg bg-gray-50 p-2 text-xs text-gray-700">
           <p data-testid="logo-hochskaliert-info">
             {t('logo_upscale_done', {
-              factor: logo.hochskaliertFaktor ?? 0,
+              factor: zahl(logo.hochskaliertFaktor ?? 0),
               dpi: Math.round(
                 berechneLogoDpi(logo.urspruenglicheBreitePx ?? logo.originalWidthPx, logo.widthCm)
               ),
@@ -637,6 +645,10 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               labelGelb={t('logo_quality_yellow')}
               labelRot={t('logo_quality_red')}
               t={t}
+              zahl={(n) => {
+                const text = Number.isInteger(n) ? String(n) : n.toFixed(1);
+                return language === 'en' ? text : text.replace('.', ',');
+              }}
               beschaeftigt={isUpscaling}
               fehler={upscaleError}
               onHochskalieren={async (faktor) => {
@@ -644,8 +656,10 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 setUpscaleError(null);
                 setIsUpscaling(true);
                 try {
-                  const aenderung = await hochskaliereLogo(logo, faktor);
-                  merkeVorHochskalierung(logo);
+                  // Schon hochgerechnet (z. B. danach größer gezogen): neu vom gemerkten Ausgangsbild aus rechnen, Ausgangsbild bleibt gemerkt.
+                  const nochmal = logo.hochskaliertFaktor !== undefined;
+                  const aenderung = nochmal ? await hochskaliereAusOriginal(logo, faktor) : await hochskaliereLogo(logo, faktor);
+                  if (!nochmal) merkeVorHochskalierung(logo);
                   // commitElement = Verlaufspunkt: Strg+Z bringt das kleine Original zurück.
                   commitElement(logo.id, aenderung);
                 } catch (e) {

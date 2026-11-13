@@ -12,6 +12,8 @@ import { ArrowRight, Check } from 'lucide-react';
 import { Produktkachel } from '@/components/shop/Produktkachel';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { AufloesungsRechner } from '@/components/seo/AufloesungsRechner';
+import { GewichtsKlassenBlock, GroessenTabelleBlock } from '@/components/seo/KatalogTabellen';
 import { DTF_ABLAUF_SCHRITTE } from '@/config/seo/dtfSeiten';
 import { dtfSeiteVon } from '@/lib/seo/dtfAdresse';
 import type { AnlassSeite } from '@/config/seo/anlassSeiten';
@@ -167,6 +169,9 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
                 {fuelle(absatz)}
               </p>
             ))}
+            {a.tabelle === 'rechner' && <AufloesungsRechner />}
+            {a.tabelle?.startsWith('groessen:') && <GroessenTabelleBlock art={a.tabelle.slice(9) as 'tshirt' | 'hoodie' | 'polo'} />}
+            {a.tabelle?.startsWith('gewicht:') && <GewichtsKlassenBlock art={a.tabelle.slice(8) as 'tshirt' | 'hoodie' | 'polo'} />}
             {a.tabelle === 'aufloesung' && (
               <div className="mt-8 overflow-x-auto rounded-[24px] border border-brand/[0.08] bg-white">
                 <table className="w-full border-collapse text-left text-[15px]">

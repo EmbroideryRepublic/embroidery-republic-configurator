@@ -18,6 +18,7 @@ import { ANLASS_SEITEN, type AnlassBeispiel, type AnlassSeite } from '@/config/s
 import type { KategorieBeispiel } from '@/config/seo/kategorieSeiten';
 import { produktAbfrage } from '@/lib/catalog/abfrage';
 import { LEERE_KRITERIEN } from '@/lib/catalog/kriterien';
+import { gewichtsSpanne, TABELLEN_ARTEN, type TabellenArt } from '@/lib/seo/katalogAuswertung';
 import { geschlechterVon } from '@/config/products/facetten';
 import { MIN_DPI, OK_DPI } from '@/lib/canvas/logoQualitaet';
 import { formatiereGeld } from '@/lib/format';
@@ -100,6 +101,13 @@ export function fuelleAnlass(text: string, seite: AnlassSeite, f: AnlassFakten):
     dpiOk: () => String(OK_DPI),
   };
   return text.replace(/\{(\w+)\}/g, (treffer, name: string) => {
+    const gewicht = /^gewicht(Min|Max)_(\w+)$/.exec(name);
+    if (gewicht) {
+      const art = gewicht[2] as TabellenArt;
+      if (!TABELLEN_ARTEN.includes(art)) throw new Error(`${treffer} in "${seite.slug}": für "${art}" gibt es keine Gewichtsauswertung.`);
+      const spanne = gewichtsSpanne(art);
+      return String(gewicht[1] === 'Min' ? spanne.min : spanne.max);
+    }
     const preis = /^abPreis_(\w+)$/.exec(name);
     if (preis) {
       const art = preis[1]!.replace(/_/g, '-') as ProductType;

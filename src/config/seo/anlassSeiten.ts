@@ -11,7 +11,8 @@
  * Jede Aussage stammt aus bereits freigegebenen Texten (FAQ, Kategorie- und DTF-Seiten, Startseite) oder aus dem Code
  * (Auflösungs-Ampel, Versandsätze, Produktions- und Versandzeiten, Preis-Engine). Zahlen werden NICHT von Hand eingetragen,
  * sondern über Platzhalter aus Katalog und Konfiguration eingesetzt (lib/seo/anlassSeite.ts → fuelleAnlass):
- *   {anzahl} {arten} {produktion} {produktionszeit} {versand} {versandkosten} {frei} {dpiMin} {dpiOk} {abPreis_<art>}   (<art> z. B. tshirt, hoodie, polo, zip_hoodie)
+ *   {anzahl} {arten} {produktion} {produktionszeit} {versand} {versandkosten} {frei} {dpiMin} {dpiOk} {abPreis_<art>}
+ *   {gewichtMin_<art>} {gewichtMax_<art>}   (nur tshirt, hoodie, polo)   (<art> z. B. tshirt, hoodie, polo, zip_hoodie)
  * Preisbeispiele rechnet die Preis-Engine (berechneBeispiele) – dieselbe Funktion wie im Checkout.
  *
  * ── Warum NUR DTF-Transferdruck ────────────────────────────────────────
@@ -30,8 +31,20 @@ export interface AnlassAbschnitt {
   ueberschrift: string;
   absaetze?: string[];
   punkte?: string[];
-  /** Tabelle „Mindestbreite des Bildes in Pixeln“ (nur die Ratgeberseite zu Druckdaten). */
-  tabelle?: 'aufloesung';
+  /**
+   * Berechneter Baustein statt Fließtext: 'aufloesung' = Tabelle „Mindestbreite des Bildes in Pixeln“, 'rechner' = Auflösungsrechner,
+   * 'groessen:<art>' = Größentabelle dreier Modelle, 'gewicht:<art>' = Gewichtsklassen der Art (beide aus dem Katalog,
+   * lib/seo/katalogAuswertung.ts).
+   */
+  tabelle?:
+    | 'aufloesung'
+    | 'rechner'
+    | 'groessen:tshirt'
+    | 'groessen:hoodie'
+    | 'groessen:polo'
+    | 'gewicht:tshirt'
+    | 'gewicht:hoodie'
+    | 'gewicht:polo';
 }
 
 export interface AnlassBeispiel {
@@ -535,6 +548,189 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       'vereinskleidung-bedrucken',
       'firmenkleidung-bedrucken',
       'druckdaten-vorbereiten',
+    ],
+  },
+
+  // ── Ratgeber: Auflösungsrechner ────────────────────────────────────
+  {
+    slug: 'druckaufloesung-rechner',
+    kurzname: 'Auflösungsrechner',
+    titel: 'Druckauflösung berechnen: dpi-Rechner für Textildruck',
+    h1: 'Druckauflösung berechnen',
+    eyebrow: 'Kostenloser Rechner',
+    beschreibung:
+      'Reicht die Auflösung Ihres Bildes? Bildbreite und Druckbreite eingeben, dpi berechnen und mit der Ampel des Konfigurators bewerten.',
+    einleitung: [
+      'Reicht die Auflösung Ihres Bildes für die gewünschte Druckgröße? Geben Sie die Breite Ihres Bildes in Pixeln und die Breite des Drucks in Zentimetern ein – der Rechner zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator.',
+    ],
+    kacheln: [],
+    abschnitte: [
+      { ueberschrift: 'Auflösung berechnen', tabelle: 'rechner' },
+      {
+        ueberschrift: 'So lesen Sie das Ergebnis',
+        punkte: [
+          'Grün ab {dpiOk} dpi: optimale Druckqualität bei dieser Größe.',
+          'Gelb von {dpiMin} bis {dpiOk} dpi: akzeptabel, für sehr große Drucke aber eher knapp.',
+          'Rot unter {dpiMin} dpi: zu unscharf. Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',
+        ],
+        absaetze: ['Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG); SVG und PDF bekommen keine Auflösungswarnung.'],
+      },
+      {
+        ueberschrift: 'So wird gerechnet',
+        absaetze: [
+          'Die Auflösung ergibt sich aus den Bildpunkten pro Zoll (1 Zoll = 2,54 cm): dpi = Bildbreite in Pixeln ÷ (Druckbreite in cm ÷ 2,54). Ein Bild mit 2.000 Pixeln Breite hat bei 20 cm Druckbreite rund 254 dpi.',
+        ],
+      },
+    ],
+    beispiele: [],
+    fragen: [
+      {
+        q: 'Was bedeutet dpi?',
+        a: 'dpi steht für „dots per inch“, also Bildpunkte pro Zoll (1 Zoll = 2,54 cm). Je mehr Bildpunkte auf einen Zoll der gedruckten Breite fallen, desto schärfer wirkt der Druck.',
+      },
+      {
+        q: 'Wie berechne ich die Auflösung meines Bildes?',
+        a: 'dpi = Bildbreite in Pixeln ÷ (Druckbreite in cm ÷ 2,54). Der Rechner oben übernimmt das für Sie.',
+      },
+      {
+        q: 'Ab wie vielen dpi ist ein Motiv scharf genug?',
+        a: 'Der Konfigurator bewertet ab {dpiOk} dpi die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb) und darunter als zu niedrig (rot).',
+      },
+      {
+        q: 'Brauchen SVG- und PDF-Dateien eine Mindestauflösung?',
+        a: 'Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG). SVG und PDF bekommen keine Auflösungswarnung; vektorbasierte Dateien skalieren verlustfrei.',
+      },
+      {
+        q: 'Was kann ich tun, wenn die Auflösung zu niedrig ist?',
+        a: 'Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',
+      },
+    ],
+    ohneAblauf: true,
+    verwandt: ['druckdaten-vorbereiten', 'tshirt-mit-foto-bedrucken', 'textildruck-preise', 'vereinskleidung-bedrucken'],
+  },
+
+  // ── Ratgeber: Größentabelle ────────────────────────────────────────
+  {
+    slug: 'groessentabelle-t-shirts-hoodies',
+    kurzname: 'Größentabelle',
+    titel: 'Größentabelle T-Shirt, Hoodie & Polo: Maße in cm',
+    h1: 'Größentabelle für T-Shirts, Hoodies und Polos',
+    eyebrow: 'Maße in Zentimetern',
+    beschreibung:
+      'Brustbreite und Länge je Größe in cm: Herstellermaße ausgewählter T-Shirts, Hoodies und Polos – plus Tipps, wie Sie richtig nachmessen.',
+    einleitung: [
+      'Welche Größe passt? Die Maße unterscheiden sich von Modell zu Modell. Diese Seite zeigt die Herstellermaße von je drei Modellen aus unserem Sortiment; die vollständige Größentabelle steht auf jeder Produktseite.',
+    ],
+    kacheln: [],
+    abschnitte: [
+      {
+        ueberschrift: 'So messen Sie richtig',
+        punkte: [
+          'Legen Sie ein T-Shirt, einen Hoodie oder ein Polo, das gut passt, flach hin.',
+          'Brustbreite: von Achselnaht zu Achselnaht gemessen. Der Brustumfang ist doppelt so groß.',
+          'Länge: vom höchsten Punkt der Schulter bis zum Saum.',
+          'Vergleichen Sie Ihre Werte mit der Tabelle des Modells, das Sie bestellen möchten.',
+        ],
+      },
+      { ueberschrift: 'T-Shirts', tabelle: 'groessen:tshirt' },
+      { ueberschrift: 'Hoodies', tabelle: 'groessen:hoodie' },
+      { ueberschrift: 'Polos', tabelle: 'groessen:polo' },
+      {
+        ueberschrift: 'Kindergrößen',
+        absaetze: [
+          'Kinderbekleidung führt je Hersteller eigene Größenangaben – als Körpergröße in cm, als Alter oder in Jugendgrößen. Wir übernehmen sie so, wie der Hersteller sie angibt; die Maße je Größe stehen auf der Produktseite.',
+        ],
+      },
+    ],
+    beispiele: [],
+    fragen: [
+      {
+        q: 'Wo finde ich die Größentabelle des Modells, das ich bestellen möchte?',
+        a: 'Auf der Produktseite des Modells unter „Größentabelle“. Dort stehen die Herstellermaße aller Größen.',
+      },
+      {
+        q: 'Fallen die Modelle groß oder klein aus?',
+        a: 'Das hängt vom Modell ab. Die Passform steht auf der Produktseite unter „Technische Daten“, die Maße je Größe in der Größentabelle. Messen Sie am besten ein Teil nach, das Ihnen gut passt, und vergleichen Sie.',
+      },
+      { q: 'Kann ich Größen in einer Bestellung mischen?', a: A_GROESSEN },
+      {
+        q: 'Wie lege ich die Größen für ein Team fest?',
+        a: 'Lassen Sie jede Person ein passendes Teil nachmessen und die Maße mit der Größentabelle des Modells vergleichen. Im Konfigurator tragen Sie die Stückzahl je Größe ein – Größen dürfen Sie frei mischen.',
+      },
+      {
+        q: 'Sind die Maße exakt?',
+        a: 'Es sind Herstellerangaben; kleine Abweichungen durch Fertigung und Material sind möglich.',
+      },
+    ],
+    ohneAblauf: true,
+    verwandt: [
+      't-shirts-bedrucken-besticken',
+      'hoodies-bedrucken-besticken',
+      'poloshirts-besticken-bedrucken',
+      'vereinskleidung-bedrucken',
+      'kinderbekleidung-bedrucken',
+    ],
+  },
+
+  // ── Ratgeber: Stoffgewicht ─────────────────────────────────────────
+  {
+    slug: 'stoffgewicht-t-shirt-hoodie',
+    kurzname: 'Stoffgewicht',
+    titel: 'Stoffgewicht erklärt: g/m² bei T-Shirt, Hoodie & Polo',
+    h1: 'Stoffgewicht erklärt: Was bedeuten g/m²?',
+    eyebrow: 'Material verstehen',
+    beschreibung:
+      'Was sagt das Stoffgewicht in g/m² aus? Gewichtsklassen von T-Shirts, Hoodies und Polos mit Beispielmodellen aus unserem Sortiment.',
+    einleitung: [
+      'Das Stoffgewicht, auch Flächengewicht genannt, gibt an, wie viel ein Quadratmeter Stoff wiegt. Ein höheres Gewicht bedeutet in der Regel einen dickeren, festeren Stoff. Hier steht, wie sich unser Sortiment auf die Gewichtsklassen verteilt.',
+    ],
+    kacheln: [],
+    abschnitte: [
+      {
+        ueberschrift: 'Was die Zahl bedeutet',
+        punkte: [
+          'Leichte Stoffe fühlen sich dünner und luftiger an.',
+          'Schwere Stoffe fühlen sich dicker, fester und wärmer an.',
+          'Das Stoffgewicht allein sagt nichts über Passform oder Verarbeitung aus.',
+        ],
+      },
+      { ueberschrift: 'T-Shirts nach Stoffgewicht', tabelle: 'gewicht:tshirt' },
+      { ueberschrift: 'Hoodies nach Stoffgewicht', tabelle: 'gewicht:hoodie' },
+      { ueberschrift: 'Polos nach Stoffgewicht', tabelle: 'gewicht:polo' },
+      {
+        ueberschrift: 'Stoffgewicht und Bedrucken',
+        absaetze: [
+          'Bedruckt wird per DTF-Transferdruck: vollfarbig, mit einem flexiblen Griff, der sich mit dem Stoff bewegt. Material und Stoffgewicht jedes Modells stehen auf der Produktseite.',
+        ],
+      },
+    ],
+    beispiele: [],
+    fragen: [
+      { q: 'Was bedeutet g/m²?', a: 'Gramm pro Quadratmeter: Die Angabe zeigt, wie viel ein Quadratmeter des Stoffes wiegt (Flächengewicht).' },
+      {
+        q: 'Welches Stoffgewicht haben die T-Shirts im Sortiment?',
+        a: 'Die T-Shirts haben Stoffgewichte von {gewichtMin_tshirt} bis {gewichtMax_tshirt} g/m². Das genaue Gewicht steht auf jeder Produktseite.',
+      },
+      {
+        q: 'Wie unterscheiden sich Hoodies im Stoffgewicht?',
+        a: 'Die Hoodies haben Stoffgewichte von {gewichtMin_hoodie} bis {gewichtMax_hoodie} g/m². Das genaue Gewicht steht auf jeder Produktseite.',
+      },
+      {
+        q: 'Wo finde ich das Stoffgewicht eines Modells?',
+        a: 'Auf der Produktseite unter „Technische Daten“ als „Flächengewicht“ in g/m².',
+      },
+      {
+        q: 'Welches Stoffgewicht haben die Polos?',
+        a: 'Die Polos haben Stoffgewichte von {gewichtMin_polo} bis {gewichtMax_polo} g/m². Material, Passform und Gewicht stehen auf jeder Produktseite.',
+      },
+    ],
+    ohneAblauf: true,
+    verwandt: [
+      't-shirts-bedrucken-besticken',
+      'hoodies-bedrucken-besticken',
+      'poloshirts-besticken-bedrucken',
+      'groessentabelle-t-shirts-hoodies',
+      'textildruck-preise',
     ],
   },
 

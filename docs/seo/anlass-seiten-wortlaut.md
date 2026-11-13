@@ -40,8 +40,8 @@ Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 10 T-Shirts · Vereinslogo auf der Brust (ca. 10 × 10 cm): **21,99 €** pro Stück, gesamt 219,90 €
-- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Vereinsname auf dem Rücken (ca. 20 × 25 cm): **35,99 €** pro Stück, gesamt 359,90 €
+- 10 T-Shirts · Vereinslogo auf der Brust (ca. 10 × 10 cm): **20,99 €** pro Stück, gesamt 209,90 €
+- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Vereinsname auf dem Rücken (ca. 20 × 25 cm): **33,99 €** pro Stück, gesamt 339,90 €
 - 20 Polos · Vereinslogo auf der Brust (ca. 10 × 10 cm): **23,99 €** pro Stück, gesamt 479,80 €
 
 Fußnote: Beispielrechnungen mit Fruit of the Loom Valueweight T, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
@@ -115,9 +115,9 @@ Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 1 Polo · Firmenlogo auf der Brust (ca. 10 × 10 cm): **26,99 €** pro Stück (Einzelstück)
-- 10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm): **24,99 €** pro Stück, gesamt 249,90 €
-- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **35,99 €** pro Stück, gesamt 359,90 €
+- 1 Polo · Firmenlogo auf der Brust (ca. 10 × 10 cm): **25,99 €** pro Stück (Einzelstück)
+- 10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm): **23,99 €** pro Stück, gesamt 239,90 €
+- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **33,99 €** pro Stück, gesamt 339,90 €
 
 Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -187,8 +187,8 @@ Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Vers
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 10 Hoodies · Motiv auf dem Rücken (ca. 20 × 25 cm): **30,99 €** pro Stück, gesamt 309,90 €
-- 25 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motto auf dem Rücken (ca. 20 × 25 cm): **34,99 €** pro Stück, gesamt 874,75 €
+- 10 Hoodies · Motiv auf dem Rücken (ca. 20 × 25 cm): **29,99 €** pro Stück, gesamt 299,90 €
+- 25 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motto auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 824,75 €
 
 Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -253,9 +253,9 @@ Der Konfigurator zeigt Ihr Motiv in Zentimetern; je Modell und Größe gilt eine
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 1 T-Shirt · Foto auf der Brust (ca. 20 × 20 cm): **23,99 €** pro Stück (Einzelstück)
-- 1 Hoodie · Foto auf der Brust (ca. 20 × 20 cm): **33,99 €** pro Stück (Einzelstück)
-- 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **22,99 €** pro Stück, gesamt 114,95 €
+- 1 T-Shirt · Foto auf der Brust (ca. 20 × 20 cm): **22,99 €** pro Stück (Einzelstück)
+- 1 Hoodie · Foto auf der Brust (ca. 20 × 20 cm): **31,99 €** pro Stück (Einzelstück)
+- 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **21,99 €** pro Stück, gesamt 109,95 €
 
 Fußnote: Beispielrechnungen mit Fruit of the Loom Valueweight T, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -299,7 +299,7 @@ Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bed
 - **Kleiner Vorspann über der Überschrift:** Preise und Beispiele
 - **Linktext zu dieser Seite:** Textildruck-Preise
 
-Der Preis setzt sich aus dem Textil und der Veredelung zusammen. Das Textil beginnt bei 13,99 € (T-Shirt), 23,99 € (Hoodie) bzw. 16,99 € (Polo) pro Stück. Hinzu kommt der Druck je bedruckter Fläche, und mit größerer Menge sinkt der Stückpreis.
+Der Preis setzt sich aus dem Textil und der Veredelung zusammen. Das Textil beginnt bei 13,99 € (T-Shirt), 22,99 € (Hoodie) bzw. 16,99 € (Polo) pro Stück. Hinzu kommt der Druck je bedruckter Fläche, und mit größerer Menge sinkt der Stückpreis.
 
 Die Beispiele auf dieser Seite werden mit derselben Preisberechnung ermittelt wie im Konfigurator. Ihren genauen Preis sehen Sie dort in Echtzeit, bevor Sie etwas in den Warenkorb legen.
 
@@ -319,14 +319,14 @@ Die Staffelgrenzen gelten für die gesamte Bestellung. Liegt Ihre Menge knapp da
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 1 T-Shirt · Brustmotiv (ca. 10 × 10 cm): **23,99 €** pro Stück (Einzelstück)
-- 10 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **21,99 €** pro Stück, gesamt 219,90 €
+- 1 T-Shirt · Brustmotiv (ca. 10 × 10 cm): **22,99 €** pro Stück (Einzelstück)
+- 10 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **20,99 €** pro Stück, gesamt 209,90 €
 - 50 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **18,99 €** pro Stück, gesamt 949,50 €
-- 1 Hoodie · Brustmotiv (ca. 10 × 10 cm): **33,99 €** pro Stück (Einzelstück)
-- 10 Hoodies · Brustmotiv (ca. 10 × 10 cm): **30,99 €** pro Stück, gesamt 309,90 €
-- 10 Hoodies · Brustmotiv (ca. 10 × 10 cm) und Rückenmotiv (ca. 20 × 25 cm): **35,99 €** pro Stück, gesamt 359,90 €
-- 1 Polo · Brustmotiv (ca. 10 × 10 cm): **26,99 €** pro Stück (Einzelstück)
-- 10 Polos · Brustmotiv (ca. 10 × 10 cm): **24,99 €** pro Stück, gesamt 249,90 €
+- 1 Hoodie · Brustmotiv (ca. 10 × 10 cm): **31,99 €** pro Stück (Einzelstück)
+- 10 Hoodies · Brustmotiv (ca. 10 × 10 cm): **29,99 €** pro Stück, gesamt 299,90 €
+- 10 Hoodies · Brustmotiv (ca. 10 × 10 cm) und Rückenmotiv (ca. 20 × 25 cm): **33,99 €** pro Stück, gesamt 339,90 €
+- 1 Polo · Brustmotiv (ca. 10 × 10 cm): **25,99 €** pro Stück (Einzelstück)
+- 10 Polos · Brustmotiv (ca. 10 × 10 cm): **23,99 €** pro Stück, gesamt 239,90 €
 
 Fußnote: Beispielrechnungen mit Fruit of the Loom Valueweight T, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -361,6 +361,212 @@ Nein. Alle angegebenen Preise sind Endpreise. Wir sind Kleinunternehmer im Sinne
 Ja. Im Konfigurator sehen Sie Stück- und Gesamtpreis in Echtzeit, bevor Sie etwas in den Warenkorb legen. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.
 
 Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /poloshirts-besticken-bedrucken, /vereinskleidung-bedrucken, /firmenkleidung-bedrucken, /druckdaten-vorbereiten
+
+## /druckaufloesung-rechner
+
+- **Titel** (53 Zeichen): Druckauflösung berechnen: dpi-Rechner für Textildruck
+- **Meta-Beschreibung** (131 Zeichen): Reicht die Auflösung Ihres Bildes? Bildbreite und Druckbreite eingeben, dpi berechnen und mit der Ampel des Konfigurators bewerten.
+- **Überschrift (H1):** Druckauflösung berechnen
+- **Kleiner Vorspann über der Überschrift:** Kostenloser Rechner
+- **Linktext zu dieser Seite:** Auflösungsrechner
+
+Reicht die Auflösung Ihres Bildes für die gewünschte Druckgröße? Geben Sie die Breite Ihres Bildes in Pixeln und die Breite des Drucks in Zentimetern ein – der Rechner zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator.
+
+### Auflösung berechnen
+
+*Interaktiver Auflösungsrechner: zwei Eingabefelder (Bildbreite in Pixeln, Druckbreite in cm), Ergebnis in dpi mit Ampel und dem Text des Konfigurators; Beispielwerte 2000 px / 20 cm.*
+
+### So lesen Sie das Ergebnis
+
+- Grün ab 220 dpi: optimale Druckqualität bei dieser Größe.
+- Gelb von 150 bis 220 dpi: akzeptabel, für sehr große Drucke aber eher knapp.
+- Rot unter 150 dpi: zu unscharf. Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.
+
+Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG); SVG und PDF bekommen keine Auflösungswarnung.
+
+### So wird gerechnet
+
+Die Auflösung ergibt sich aus den Bildpunkten pro Zoll (1 Zoll = 2,54 cm): dpi = Bildbreite in Pixeln ÷ (Druckbreite in cm ÷ 2,54). Ein Bild mit 2.000 Pixeln Breite hat bei 20 cm Druckbreite rund 254 dpi.
+
+### Häufige Fragen
+
+**Was bedeutet dpi?**
+
+dpi steht für „dots per inch“, also Bildpunkte pro Zoll (1 Zoll = 2,54 cm). Je mehr Bildpunkte auf einen Zoll der gedruckten Breite fallen, desto schärfer wirkt der Druck.
+
+**Wie berechne ich die Auflösung meines Bildes?**
+
+dpi = Bildbreite in Pixeln ÷ (Druckbreite in cm ÷ 2,54). Der Rechner oben übernimmt das für Sie.
+
+**Ab wie vielen dpi ist ein Motiv scharf genug?**
+
+Der Konfigurator bewertet ab 220 dpi die Qualität als optimal (grün), zwischen 150 und 220 dpi als akzeptabel (gelb) und darunter als zu niedrig (rot).
+
+**Brauchen SVG- und PDF-Dateien eine Mindestauflösung?**
+
+Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG). SVG und PDF bekommen keine Auflösungswarnung; vektorbasierte Dateien skalieren verlustfrei.
+
+**Was kann ich tun, wenn die Auflösung zu niedrig ist?**
+
+Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.
+
+Weiterführende Links am Seitenende: /druckdaten-vorbereiten, /tshirt-mit-foto-bedrucken, /textildruck-preise, /vereinskleidung-bedrucken
+
+## /groessentabelle-t-shirts-hoodies
+
+- **Titel** (48 Zeichen): Größentabelle T-Shirt, Hoodie & Polo: Maße in cm
+- **Meta-Beschreibung** (135 Zeichen): Brustbreite und Länge je Größe in cm: Herstellermaße ausgewählter T-Shirts, Hoodies und Polos – plus Tipps, wie Sie richtig nachmessen.
+- **Überschrift (H1):** Größentabelle für T-Shirts, Hoodies und Polos
+- **Kleiner Vorspann über der Überschrift:** Maße in Zentimetern
+- **Linktext zu dieser Seite:** Größentabelle
+
+Welche Größe passt? Die Maße unterscheiden sich von Modell zu Modell. Diese Seite zeigt die Herstellermaße von je drei Modellen aus unserem Sortiment; die vollständige Größentabelle steht auf jeder Produktseite.
+
+### So messen Sie richtig
+
+- Legen Sie ein T-Shirt, einen Hoodie oder ein Polo, das gut passt, flach hin.
+- Brustbreite: von Achselnaht zu Achselnaht gemessen. Der Brustumfang ist doppelt so groß.
+- Länge: vom höchsten Punkt der Schulter bis zum Saum.
+- Vergleichen Sie Ihre Werte mit der Tabelle des Modells, das Sie bestellen möchten.
+
+### T-Shirts
+
+| Größe | Fruit of the Loom Iconic 195 Ringspun Premium T | B&C T-Shirt #E150 | Stedman Classic-T V-Neck |
+|---|---|---|---|
+| S | 48,5 × 69,5 cm | 48 × 70 cm | 50 × 69 cm |
+| M | 53,5 × 72 cm | 51 × 72 cm | 53 × 71 cm |
+| L | 56 × 74,5 cm | 54 × 74 cm | 56 × 73 cm |
+| XL | 61 × 77 cm | 57 × 76 cm | 59 × 75 cm |
+| XXL | 66 × 78,5 cm | 60 × 78 cm | 62 × 77 cm |
+
+Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Fruit of the Loom Iconic 195 Ringspun Premium T – Classic Fit, Unisex · B&C T-Shirt #E150 – Unisex, normale Passform · Stedman Classic-T V-Neck – Unisex, normale Passform.
+
+### Hoodies
+
+| Größe | Gildan Heavy Blend Hooded Sweatshirt | Build Your Brand Heavy Hoody | JHK Hooded Sweater |
+|---|---|---|---|
+| S | 51 × 69 cm | 53 × 71 cm | 54 × 69 cm |
+| M | 56 × 71 cm | 56 × 73 cm | 56 × 70 cm |
+| L | 61 × 74 cm | 59 × 75 cm | 58 × 71 cm |
+| XL | 66 × 76 cm | 62 × 77 cm | 60 × 72 cm |
+| XXL | 71 × 79 cm | 65 × 79 cm | 62 × 74 cm |
+
+Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Gildan Heavy Blend Hooded Sweatshirt – Unisex, normale Passform · Build Your Brand Heavy Hoody – Unisex, normale Passform · JHK Hooded Sweater – Unisex, normale Passform.
+
+### Polos
+
+| Größe | Neutral Men's Classic Polo | SOL'S Unisex Pulse Polo Shirt | SOL'S Men's Polo Shirt Perfect |
+|---|---|---|---|
+| S | 50 × 68 cm | 49 × 70 cm | 49 × 70 cm |
+| M | 53 × 71 cm | 52 × 72 cm | 52 × 72 cm |
+| L | 56 × 74 cm | 55 × 74 cm | 55 × 74 cm |
+| XL | 59 × 77 cm | 58 × 76 cm | 58 × 76 cm |
+| XXL | 62 × 80 cm | 61 × 78 cm | 61 × 79 cm |
+
+Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Neutral Men's Classic Polo – Gerader Schnitt, normale Passform, Seitenschlitze · SOL'S Unisex Pulse Polo Shirt – Unisex, normale Passform · SOL'S Men's Polo Shirt Perfect – Unisex, normale Passform.
+
+### Kindergrößen
+
+Kinderbekleidung führt je Hersteller eigene Größenangaben – als Körpergröße in cm, als Alter oder in Jugendgrößen. Wir übernehmen sie so, wie der Hersteller sie angibt; die Maße je Größe stehen auf der Produktseite.
+
+### Häufige Fragen
+
+**Wo finde ich die Größentabelle des Modells, das ich bestellen möchte?**
+
+Auf der Produktseite des Modells unter „Größentabelle“. Dort stehen die Herstellermaße aller Größen.
+
+**Fallen die Modelle groß oder klein aus?**
+
+Das hängt vom Modell ab. Die Passform steht auf der Produktseite unter „Technische Daten“, die Maße je Größe in der Größentabelle. Messen Sie am besten ein Teil nach, das Ihnen gut passt, und vergleichen Sie.
+
+**Kann ich Größen in einer Bestellung mischen?**
+
+Ja. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+
+**Wie lege ich die Größen für ein Team fest?**
+
+Lassen Sie jede Person ein passendes Teil nachmessen und die Maße mit der Größentabelle des Modells vergleichen. Im Konfigurator tragen Sie die Stückzahl je Größe ein – Größen dürfen Sie frei mischen.
+
+**Sind die Maße exakt?**
+
+Es sind Herstellerangaben; kleine Abweichungen durch Fertigung und Material sind möglich.
+
+Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /poloshirts-besticken-bedrucken, /vereinskleidung-bedrucken, /kinderbekleidung-bedrucken
+
+## /stoffgewicht-t-shirt-hoodie
+
+- **Titel** (53 Zeichen): Stoffgewicht erklärt: g/m² bei T-Shirt, Hoodie & Polo
+- **Meta-Beschreibung** (130 Zeichen): Was sagt das Stoffgewicht in g/m² aus? Gewichtsklassen von T-Shirts, Hoodies und Polos mit Beispielmodellen aus unserem Sortiment.
+- **Überschrift (H1):** Stoffgewicht erklärt: Was bedeuten g/m²?
+- **Kleiner Vorspann über der Überschrift:** Material verstehen
+- **Linktext zu dieser Seite:** Stoffgewicht
+
+Das Stoffgewicht, auch Flächengewicht genannt, gibt an, wie viel ein Quadratmeter Stoff wiegt. Ein höheres Gewicht bedeutet in der Regel einen dickeren, festeren Stoff. Hier steht, wie sich unser Sortiment auf die Gewichtsklassen verteilt.
+
+### Was die Zahl bedeutet
+
+- Leichte Stoffe fühlen sich dünner und luftiger an.
+- Schwere Stoffe fühlen sich dicker, fester und wärmer an.
+- Das Stoffgewicht allein sagt nichts über Passform oder Verarbeitung aus.
+
+### T-Shirts nach Stoffgewicht
+
+17 Modelle mit Gewichtsangabe, von 140 bis 215 g/m².
+
+| Stoffgewicht | Modelle | Beispiele |
+|---|---|---|
+| unter 150 g/m² | 5 | B&C T-Shirt #E150 (145 g/m²), Fruit of the Loom Original T (145 g/m²), Fruit of the Loom Original V-Neck T (145 g/m²) |
+| 150 bis 169 g/m² | 4 | Gildan Light Cotton Adult T-Shirt (150 g/m²), Stedman Classic-T V-Neck (155 g/m²), Stedman Classic-T (155 g/m²) |
+| 170 bis 199 g/m² | 5 | Fruit of the Loom Iconic 195 Ringspun Premium T (195 g/m²), Stedman Comfort-T (185 g/m²), Russell Classic T (175 g/m²) |
+| ab 200 g/m² | 3 | Fruit of the Loom Super Premium T (205 g/m²), Gildan Ultra Cotton T-Shirt (203 g/m²), Russell Classic Heavyweight T-Shirt (215 g/m²) |
+
+### Hoodies nach Stoffgewicht
+
+20 Modelle mit Gewichtsangabe, von 240 bis 360 g/m².
+
+| Stoffgewicht | Modelle | Beispiele |
+|---|---|---|
+| unter 260 g/m² | 2 | Fruit of the Loom ICONIC 250 Hooded Sweat (240 g/m²), Fruit of the Loom Lightweight Hooded Sweat (240 g/m²) |
+| 260 bis 299 g/m² | 12 | Fruit of the Loom Classic Hooded Sweat (260 g/m²), Gildan Heavy Blend Hooded Sweatshirt (265 g/m²), B&C ID.223 Hoodie (280 g/m²) |
+| ab 300 g/m² | 6 | Fruit of the Loom Iconic Premium Hooded Sweat (300 g/m²), Build Your Brand Heavy Hoody (300 g/m²), Just Hoods Vision Heavyweight Hoodie (340 g/m²) |
+
+### Polos nach Stoffgewicht
+
+15 Modelle mit Gewichtsangabe, von 170 bis 240 g/m².
+
+| Stoffgewicht | Modelle | Beispiele |
+|---|---|---|
+| unter 180 g/m² | 3 | SOL'S Unisex Pulse Polo Shirt (170 g/m²), B&C Inspire Polo / Men (170 g/m²), Fruit of the Loom Premium Polo (170 g/m²) |
+| 180 bis 199 g/m² | 5 | B&C Unisex Polo ID.001 (180 g/m²), SOL'S Men's Polo Shirt Perfect (180 g/m²), B&C My Polo 180 (180 g/m²) |
+| ab 200 g/m² | 7 | Neutral Men's Classic Polo (235 g/m²), SOL'S Men's Polo Shirt Prime (200 g/m²), Russell Men's Classic Cotton Polo (200 g/m²) |
+
+### Stoffgewicht und Bedrucken
+
+Bedruckt wird per DTF-Transferdruck: vollfarbig, mit einem flexiblen Griff, der sich mit dem Stoff bewegt. Material und Stoffgewicht jedes Modells stehen auf der Produktseite.
+
+### Häufige Fragen
+
+**Was bedeutet g/m²?**
+
+Gramm pro Quadratmeter: Die Angabe zeigt, wie viel ein Quadratmeter des Stoffes wiegt (Flächengewicht).
+
+**Welches Stoffgewicht haben die T-Shirts im Sortiment?**
+
+Die T-Shirts haben Stoffgewichte von 140 bis 215 g/m². Das genaue Gewicht steht auf jeder Produktseite.
+
+**Wie unterscheiden sich Hoodies im Stoffgewicht?**
+
+Die Hoodies haben Stoffgewichte von 240 bis 360 g/m². Das genaue Gewicht steht auf jeder Produktseite.
+
+**Wo finde ich das Stoffgewicht eines Modells?**
+
+Auf der Produktseite unter „Technische Daten“ als „Flächengewicht“ in g/m².
+
+**Welches Stoffgewicht haben die Polos?**
+
+Die Polos haben Stoffgewichte von 170 bis 240 g/m². Material, Passform und Gewicht stehen auf jeder Produktseite.
+
+Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /poloshirts-besticken-bedrucken, /groessentabelle-t-shirts-hoodies, /textildruck-preise
 
 ## /druckdaten-vorbereiten
 
@@ -455,6 +661,9 @@ Weiterführende Links am Seitenende: /tshirt-mit-foto-bedrucken, /textildruck-pr
 - [Abschluss-Hoodies](https://www.ergermany.de/abschluss-hoodies-bedrucken)
 - [T-Shirt mit Foto](https://www.ergermany.de/tshirt-mit-foto-bedrucken)
 - [Textildruck-Preise](https://www.ergermany.de/textildruck-preise)
+- [Auflösungsrechner](https://www.ergermany.de/druckaufloesung-rechner)
+- [Größentabelle](https://www.ergermany.de/groessentabelle-t-shirts-hoodies)
+- [Stoffgewicht](https://www.ergermany.de/stoffgewicht-t-shirt-hoodie)
 - [Logo vorbereiten](https://www.ergermany.de/druckdaten-vorbereiten)
 
 ## Sortiment

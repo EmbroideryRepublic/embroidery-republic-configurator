@@ -14,6 +14,8 @@ import { alsKategorieBeispiele, anlassFakten, fuelleAnlass, AUFLOESUNG_BREITEN_C
 import { MIN_DPI, OK_DPI } from '../src/lib/canvas/logoQualitaet.ts';
 import { formatiereGeld } from '../src/lib/format.ts';
 import { llmsText } from '../src/lib/seo/llmsText.ts';
+import { gewichtsUebersicht, groessenTabelle, markeUndName, type TabellenArt } from '../src/lib/seo/katalogAuswertung.ts';
+import { zahl } from '../src/lib/format.ts';
 
 const zeilen: string[] = [];
 const z = (t = '') => zeilen.push(t);
@@ -48,6 +50,28 @@ for (const seite of ANLASS_SEITEN) {
     for (const p of a.punkte ?? []) z(`- ${fuelle(p)}`);
     if (a.punkte) z();
     for (const absatz of a.absaetze ?? []) z(fuelle(absatz)), z();
+    if (a.tabelle === 'rechner') {
+      z('*Interaktiver Auflösungsrechner: zwei Eingabefelder (Bildbreite in Pixeln, Druckbreite in cm), Ergebnis in dpi mit Ampel und dem Text des Konfigurators; Beispielwerte 2000 px / 20 cm.*');
+      z();
+    }
+    if (a.tabelle?.startsWith('groessen:')) {
+      const t = groessenTabelle(a.tabelle.slice(9) as TabellenArt);
+      z('| Größe | ' + t.modelle.map((m) => markeUndName(m)).join(' | ') + ' |');
+      z('|---|' + t.modelle.map(() => '---|').join(''));
+      for (const g of t.groessen) z(`| ${g} | ` + t.modelle.map((m) => `${zahl(m.masse[g]!.breiteCm)} × ${zahl(m.masse[g]!.laengeCm)} cm`).join(' | ') + ' |');
+      z();
+      z('Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: ' + t.modelle.map((m) => `${markeUndName(m)} – ${m.passform}`).join(' · ') + '.');
+      z();
+    }
+    if (a.tabelle?.startsWith('gewicht:')) {
+      const u = gewichtsUebersicht(a.tabelle.slice(8) as TabellenArt);
+      z(`${u.gesamt} Modelle mit Gewichtsangabe, von ${u.min} bis ${u.max} g/m².`);
+      z();
+      z('| Stoffgewicht | Modelle | Beispiele |');
+      z('|---|---|---|');
+      for (const k of u.klassen.filter((x) => x.anzahl > 0)) z(`| ${k.band.label} | ${k.anzahl} | ${k.beispiele.map((b) => `${markeUndName(b)} (${b.gewicht} g/m²)`).join(', ') || '–'} |`);
+      z();
+    }
     if (a.tabelle === 'aufloesung') {
       z('| Druckbreite | mindestens (' + MIN_DPI + ' dpi) | optimal (' + OK_DPI + ' dpi) |');
       z('|---|---|---|');

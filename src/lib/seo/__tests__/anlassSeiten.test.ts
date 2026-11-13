@@ -27,6 +27,16 @@ import {
   beispielProdukt,
 } from '../anlassSeite';
 import { llmsText } from '../llmsText';
+import {
+  GEWICHTS_BAENDER,
+  gewichtsSpanne,
+  gewichtsUebersicht,
+  groessenTabelle,
+  MODELLE_JE_TABELLE,
+  TABELLEN_ARTEN,
+  TABELLEN_GROESSEN,
+} from '../katalogAuswertung';
+import { berechneLogoDpi, stufeFuerDpi } from '@/lib/canvas/logoQualitaet';
 
 type Seite = (typeof ANLASS_SEITEN)[number];
 
@@ -203,4 +213,70 @@ test('llms.txt nennt jede Anlassseite und hat keine Rest-Platzhalter', () => {
   for (const s of ANLASS_SEITEN) assert.ok(text.includes(`${basis}/${s.slug}`), `/${s.slug} fehlt in llms.txt`);
   assert.match(text, /^# Embroidery Republic Germany/);
   assert.doesNotMatch(text, /\{[a-zA-Z_]+\}/, 'Rest-Platzhalter in llms.txt');
+});
+
+test('Größentabellen: je Art drei Modelle, vollständige Maße, Maße wachsen mit der Größe', () => {
+  for (const art of TABELLEN_ARTEN) {
+    const t = groessenTabelle(art);
+    assert.equal(t.modelle.length, MODELLE_JE_TABELLE, art);
+    assert.equal(new Set(t.modelle.map((m) => m.id)).size, t.modelle.length, `${art}: doppeltes Modell`);
+    for (const m of t.modelle) {
+      let davor = { breiteCm: 0, laengeCm: 0 };
+      for (const g of TABELLEN_GROESSEN) {
+        const x = m.masse[g];
+        assert.ok(x && x.breiteCm > 0 && x.laengeCm > 0, `${m.id}: Maß für ${g} fehlt`);
+        assert.ok(x.breiteCm >= davor.breiteCm && x.laengeCm >= davor.laengeCm, `${m.id}: Maße fallen bei ${g}`);
+        davor = x;
+      }
+    }
+  }
+});
+
+test('Gewichtsklassen: Bänder lückenlos, jedes Modell in genau einer Klasse, Spanne passt zur Auswertung', () => {
+  for (const art of TABELLEN_ARTEN) {
+    const baender = GEWICHTS_BAENDER[art];
+    assert.equal(baender[0]!.von, 0, `${art}: erstes Band beginnt nicht bei 0`);
+    assert.equal(baender[baender.length - 1]!.bis, Number.POSITIVE_INFINITY, `${art}: letztes Band ist nicht offen`);
+    for (let i = 1; i < baender.length; i++) assert.equal(baender[i]!.von, baender[i - 1]!.bis, `${art}: Lücke vor Band ${i}`);
+    const u = gewichtsUebersicht(art);
+    assert.equal(u.klassen.reduce((n, k) => n + k.anzahl, 0), u.gesamt, `${art}: Summe der Klassen`);
+    assert.ok(u.min <= u.max && u.gesamt >= 10, `${art}: zu wenige Modelle (${u.gesamt})`);
+    const spanne = gewichtsSpanne(art);
+    assert.deepEqual([spanne.min, spanne.max], [u.min, u.max]);
+    for (const k of u.klassen) {
+      assert.ok(k.beispiele.length <= 3 && k.beispiele.length <= k.anzahl, `${art}: Beispiele`);
+      for (const b of k.beispiele) assert.ok(b.gewicht >= k.band.von && b.gewicht < k.band.bis, `${art}: ${b.id} nicht in ${k.band.label}`);
+    }
+  }
+});
+
+test('Gewichts-Platzhalter in den Texten werden eingesetzt, für andere Arten werfen sie', () => {
+  const seite = ANLASS_SEITEN.find((x) => x.slug === 'stoffgewicht-t-shirt-hoodie')!;
+  const f = anlassFakten(seite);
+  const u = gewichtsUebersicht('tshirt');
+  assert.equal(fuelleAnlass('{gewichtMin_tshirt}–{gewichtMax_tshirt}', seite, f), `${u.min}–${u.max}`);
+  assert.throws(() => fuelleAnlass('{gewichtMin_jacket}', seite, f), /keine Gewichtsauswertung/);
+});
+
+test('Auflösungsrechner: 2.000 Pixel bei 20 cm sind rund 254 dpi und grün, 600 Pixel bei 20 cm rot', () => {
+  assert.equal(Math.round(berechneLogoDpi(2000, 20)), 254);
+  assert.equal(stufeFuerDpi(berechneLogoDpi(2000, 20)), 'green');
+  assert.equal(stufeFuerDpi(berechneLogoDpi(1500, 20)), 'yellow');
+  assert.equal(stufeFuerDpi(berechneLogoDpi(600, 20)), 'red');
+  // Der Beispielsatz auf der Seite („2.000 Pixel … 20 cm … rund 254 dpi“) muss stimmen.
+  const seite = ANLASS_SEITEN.find((x) => x.slug === 'druckaufloesung-rechner')!;
+  const text = seite.abschnitte.flatMap((a) => a.absaetze ?? []).join(' ');
+  assert.match(text, /2\.000 Pixeln Breite hat bei 20 cm Druckbreite rund 254 dpi/);
+});
+
+test('jede Seite mit berechneter Tabelle nennt nur Arten, für die es eine Auswertung gibt', () => {
+  for (const s of ANLASS_SEITEN) {
+    for (const a of s.abschnitte) {
+      const t = a.tabelle;
+      if (t?.startsWith('groessen:') || t?.startsWith('gewicht:')) {
+        const art = t.split(':')[1]!;
+        assert.ok((TABELLEN_ARTEN as readonly string[]).includes(art), `${s.slug}: unbekannte Art ${art}`);
+      }
+    }
+  }
 });

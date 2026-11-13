@@ -140,7 +140,7 @@ for (const p of roh) {
   if (farben.length === 0) throw new Error(`${p.artNr}: keine Farbe mit Bild`);
   jobs.push(job);
 
-  const desc = `${name} von ${brand}. ${material}${gm ? `, ${gm} g/m²` : ''}. Kindergrößen ${sizes[0]}–${sizes[sizes.length - 1]}. Verifizierte Lieferantendaten (${QUELLE}).`;
+  const desc = `${name} von ${brand}. ${material}${gm ? `, ${gm} g/m²` : ''}. Kindergrößen ${sizes[0]}–${sizes[sizes.length - 1]}.`; // kein Lieferantenhinweis im Kundentext (Nutzerwunsch 2026-11-13)
   const ms = sizeGuide.map((m) => `        { size: ${JSON.stringify(m.size)}, breiteCm: ${m.breiteCm}, hoeheCm: ${m.hoeheCm} }`).join(',\n');
   eintraege.push(`  {
     id: ${JSON.stringify(id)},

@@ -104,13 +104,13 @@ const uebersprungen: { name: string; grund: string }[] = [];
 const gesehen = new Set<string>();
 
 // ── Zentrale Verarbeitung – identisch für JEDE Quelle ───────────────────
-for (const { quelle, produkte } of quellen) {
+for (const { produkte } of quellen) {
   for (const p of produkte) {
-    verarbeite(p, quelle);
+    verarbeite(p);
   }
 }
 
-function verarbeite(p: RohProdukt, quelle: string): void {
+function verarbeite(p: RohProdukt): void {
   const id = idAusUrl(p.url);
   if (vorhandeneIds.has(id) || gesehen.has(id)) { uebersprungen.push({ name: p.name, grund: `ID ${id} existiert bereits` }); return; }
   gesehen.add(id);
@@ -149,7 +149,9 @@ function verarbeite(p: RohProdukt, quelle: string): void {
   // Kein "Produktfotos folgen" mehr: seit Abschluss des Bildimports
   // (docs/bildimport-abschlussbericht.md) hat jedes Katalogprodukt echte
   // Herstellerfotos – der Satz stand sonst dauerhaft falsch auf der Produktseite.
-  const desc = `${p.name} von ${brand}. ${p.material}${gm ? `, ${gm} g/m²` : ''}. Verifizierte Lieferantendaten (${quelle}).`;
+  // Auch kein Hinweis auf Lieferant/Quelle in der Kundenbeschreibung (Nutzerwunsch 2026-11-13): Die Provenienz bleibt in
+  // IMPORT_QUELLEN und im Importprotokoll, aber nicht im Text, den Kundschaft sieht.
+  const desc = `${p.name} von ${brand}. ${p.material}${gm ? `, ${gm} g/m²` : ''}.`;
   const tagline = `${TYP_LABEL[typ]} von ${brand}`;
   const sizesLit = JSON.stringify([...new Set(p.sizes.map(normSize))]);
   const weightLine = gm ? `\n    weightGsm: ${gm},` : '';

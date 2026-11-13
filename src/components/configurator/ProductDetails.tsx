@@ -13,6 +13,8 @@ interface ProductDetailsProps {
   product: ProductConfig;
 }
 
+const hatWert = (wert: string | undefined | null): boolean => typeof wert === 'string' && wert.trim() !== '' && wert.trim() !== '–';
+
 export function ProductDetails({ product }: ProductDetailsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
@@ -125,22 +127,31 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   </ul>
 
                   <dl className="grid grid-cols-2 gap-x-4 gap-y-1.5 rounded-lg bg-cream/50 p-3 text-[11px]">
-                    <div>
-                      <dt className="text-brand/70">Produktart</dt>
-                      <dd className="text-brand/80">{dd.productType}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-brand/70">Geschlecht</dt>
-                      <dd className="text-brand/80">{dd.gender}</dd>
-                    </div>
-                    <div className="col-span-2">
-                      <dt className="text-brand/70">Nachhaltigkeit/Ethik</dt>
-                      <dd className="text-brand/80">{dd.sustainability}</dd>
-                    </div>
-                    <div className="col-span-2">
-                      <dt className="text-brand/70">Material</dt>
-                      <dd className="text-brand/80">{dd.materialDetail}</dd>
-                    </div>
+                    {/* Zeilen ohne Wert (z. B. „Nachhaltigkeit/Ethik“ bei Produkten ohne Angabe) bleiben weg statt als leere Überschrift zu stehen. */}
+                    {hatWert(dd.productType) && (
+                      <div>
+                        <dt className="text-brand/70">Produktart</dt>
+                        <dd className="text-brand/80">{dd.productType}</dd>
+                      </div>
+                    )}
+                    {hatWert(dd.gender) && (
+                      <div>
+                        <dt className="text-brand/70">Geschlecht</dt>
+                        <dd className="text-brand/80">{dd.gender}</dd>
+                      </div>
+                    )}
+                    {hatWert(dd.sustainability) && (
+                      <div className="col-span-2">
+                        <dt className="text-brand/70">Nachhaltigkeit/Ethik</dt>
+                        <dd className="text-brand/80">{dd.sustainability}</dd>
+                      </div>
+                    )}
+                    {hatWert(dd.materialDetail) && (
+                      <div className="col-span-2">
+                        <dt className="text-brand/70">Material</dt>
+                        <dd className="text-brand/80">{dd.materialDetail}</dd>
+                      </div>
+                    )}
                     {echteHerkunft(dd.countryOfOrigin) && (
                       <div>
                         <dt className="text-brand/70">Herstellungsland</dt>

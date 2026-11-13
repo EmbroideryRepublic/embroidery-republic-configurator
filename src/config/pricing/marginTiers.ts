@@ -18,26 +18,28 @@ import type { QualityTier } from '@/types';
 export const FLAT_MARKUP_EUR = 9;
 
 /**
- * Preisanhebung vom 2026-11-12: Der Betreiber wollte alle Preise um 7–10 % erhöhen, mit Preispsychologie (,99-Endungen).
- * Der Textil-Grundpreis ist dafür der VORGÄNGERPREIS (Einkauf + FLAT_MARKUP_EUR, aufgerundet auf ,99), angehoben in dieses
- * Fenster (siehe anhebenInsFenster unten). Die Druckpositionen (DTF_POSITION_TIERS in lib/pricing/calculatePrice.ts)
- * wurden im selben Zug um rund 9 % angehoben. Versand und Freigrenze blieben unverändert.
+ * Preisanhebung vom 2026-11-13: Der Betreiber wollte zunächst 7–10 % (2026-11-12, live gewesen: Ø +8,4 %) und hat sie am
+ * 2026-11-13 auf 3–5 % zurückgenommen – mit natürlichen Preisen (,99-Endungen). Der Textil-Grundpreis ist der VORGÄNGERPREIS
+ * (Einkauf + FLAT_MARKUP_EUR, aufgerundet auf ,99), angehoben in dieses Fenster (siehe anhebenInsFenster unten).
+ * Die Druckpositionen (DTF_POSITION_TIERS in lib/pricing/calculatePrice.ts) stehen wieder auf dem Stand vom 2026-08-09
+ * (die Anhebung um rund 9 % ist zurückgenommen). Versand und Freigrenze blieben unverändert.
  */
-export const PREISANHEBUNG_MIN_PROZENT = 7;
-export const PREISANHEBUNG_MAX_PROZENT = 10;
+export const PREISANHEBUNG_MIN_PROZENT = 3;
+export const PREISANHEBUNG_MAX_PROZENT = 5;
 
 /**
- * Hebt einen Ladenpreis um 7–10 % (oder ein anderes Fenster) an und landet dabei auf einem ,99-Betrag.
+ * Hebt einen Ladenpreis um 3–5 % (oder ein anderes Fenster) an und landet dabei auf einem ,99-Betrag.
  *
- * Auf der ,99-Leiter liegen Preise 1 € auseinander; bei einem Preis um 15 € sind das rund 7 %. Ein Fenster von 3 Prozentpunkten
- * enthält deshalb erst ab rund 33 € sicher einen ,99-Betrag. Die Regel:
+ * Auf der ,99-Leiter liegen Preise 1 € auseinander; bei einem Preis um 15 € sind das rund 7 %, bei 40 € nur 2,5 %. Ein Fenster von
+ * 2 Prozentpunkten enthält deshalb nur für Preise zwischen rund 20 € und 33 € (+1 €) bzw. um 40–100 € (+2 € usw.) einen ,99-Betrag.
+ * Die Regel:
  *   1. Liegt ein ,99-Betrag im Fenster [preis × (1 + min), preis × (1 + max)], gewinnt der, der der Fenstermitte am nächsten ist.
  *   2. Sonst gewinnt der ,99-Betrag mit dem kleinsten Abstand zum Fenster (bei Gleichstand der näher an der Mitte).
  * Das Ergebnis liegt immer ÜBER dem Ausgangspreis, ist nie billiger und wächst mit dem Ausgangspreis monoton.
  *
  * Preispsychologie: Die ,99-Endung bleibt (Betreiber-Festlegung 2026-11-12), und es wird nie auf einen „krummen“ Betrag aufgerundet.
  */
-export function anhebenInsFenster(preis: number, minProzent = 7, maxProzent = 10): number {
+export function anhebenInsFenster(preis: number, minProzent = 3, maxProzent = 5): number {
   if (!Number.isFinite(preis) || preis <= 0.005) return 0;
   const lo = preis * (1 + minProzent / 100);
   const hi = preis * (1 + maxProzent / 100);

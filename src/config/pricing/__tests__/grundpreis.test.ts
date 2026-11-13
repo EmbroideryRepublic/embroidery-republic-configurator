@@ -2,15 +2,16 @@
  * Grundpreis eines Textils und die Preisleiter darüber.
  *
  * Preisstand bis 2026-11-12 (Betreiber-Festlegung): Einkauf + 9 €, aufgerundet auf ,99 – und Druckpositionen 9/5/4 € …
- * Anhebung 2026-11-12 (Betreiber: „Preise um 7–10 % erhöhen, mit Preispsychologie“):
- *   - Der Textil-Grundpreis ist der Vorgängerpreis, angehoben in ein Fenster von 7–10 % auf einen ,99-Betrag
- *     (anhebenInsFenster, config/pricing/marginTiers.ts).
- *   - Die Positionsstaffel (DTF_POSITION_TIERS) liegt rund 9 % höher, auf glatten Zehn-Cent-Beträgen.
+ * 2026-11-12: Anhebung um 7–10 % (live, Ø +8,4 %). 2026-11-13: zurückgenommen, stattdessen nur 3–5 % mehr
+ * (Betreiber: „nur 3–5 % mehr statt 7–10, mit natürlichen psychologischen Preisen“):
+ *   - Der Textil-Grundpreis ist der Vorgängerpreis (Einkauf + 9 €, auf ,99), angehoben in ein Fenster von 3–5 % auf einen
+ *     ,99-Betrag (anhebenInsFenster, config/pricing/marginTiers.ts).
+ *   - Die Positionsstaffel (DTF_POSITION_TIERS) steht wieder auf dem alten Stand 9/5/4 …
  *   - Alle Verkaufspreise enden weiter auf ,99 €; nichts wird günstiger als vorher; mehr Stück sind nie teurer.
  *
- * Auf der ,99-Leiter liegen Preise 1 € auseinander – bei einem Stückpreis um 15 € sind das rund 7 %. Deshalb lässt sich 7–10 %
- * nicht für JEDEN einzelnen Preis treffen; geprüft wird, dass der Schnitt im Zielfenster liegt, der große Teil der Preise nahe daran
- * und kein Preis weit daneben.
+ * Auf der ,99-Leiter liegen Preise 1 € auseinander – beim Textil-Grundpreis um 13 € sind das rund 7,7 %, bei einem Stückpreis
+ * um 25 € rund 4 %, bei 40 € nur 2,5 %. Deshalb lässt sich 3–5 % nicht für JEDEN einzelnen Preis treffen. Geprüft wird, dass der
+ * Schnitt der VERKAUFSPREISE im Zielfenster liegt, der große Teil der Preise nahe daran und kein Preis weit daneben.
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -30,7 +31,7 @@ import {
 /** Der Grundpreis VOR der Anhebung: Einkauf + 9 €, aufgerundet auf den nächsthöheren vollen Euro + 0,99 €. */
 const vorher = (ek: number) => Math.floor(Math.round((ek + FLAT_MARKUP_EUR) * 10000) / 10000) + 1.99;
 
-/** Positionsstaffel VOR der Anhebung (Preisstand 2026-08-09 bis 2026-11-12): [ab Menge, erste, zweite, ab dritte]. */
+/** Positionsstaffel des Vergleichsstands (2026-08-09, heute wieder gültig): [ab Menge, erste, zweite, ab dritte]. */
 const POSITIONEN_VORHER: [number, number, number, number][] = [
   [1, 9, 5, 4], [3, 8, 4.5, 3.5], [10, 7.5, 4, 3], [50, 6, 3, 2.5], [100, 5.5, 2.5, 2], [250, 5, 2.5, 2], [500, 4.5, 2, 1.5], [1000, 4, 2, 1.5],
 ];
@@ -45,21 +46,22 @@ function stueckpreisVorher(ek: number, menge: number, ansichten: number): number
   return aufNaechsten99(vorher(ek) * (1 - rabatt / 100) + positionen);
 }
 
-test('Anhebung: Fenster 7–10 %', () => {
-  assert.equal(PREISANHEBUNG_MIN_PROZENT, 7);
-  assert.equal(PREISANHEBUNG_MAX_PROZENT, 10);
+test('Anhebung: Fenster 3–5 %', () => {
+  assert.equal(PREISANHEBUNG_MIN_PROZENT, 3);
+  assert.equal(PREISANHEBUNG_MAX_PROZENT, 5);
 });
 
 test('anhebenInsFenster: liegt ein ,99-Betrag im Fenster, gewinnt der nächste zur Fenstermitte', () => {
-  assert.equal(anhebenInsFenster(12.99), 13.99); // Fenster 13,90–14,29 → 13,99 (+7,7 %)
-  assert.equal(anhebenInsFenster(19.99), 21.99); // Fenster 21,39–21,99 → 21,99 (+10,0 %)
-  assert.equal(anhebenInsFenster(29.99), 32.99); // Fenster 32,09–32,99 → 32,99
-  assert.equal(anhebenInsFenster(48.99), 52.99); // Fenster 52,42–53,89 → 52,99
+  assert.equal(anhebenInsFenster(19.99), 20.99); // Fenster 20,59–20,99 → 20,99 (+5,0 %)
+  assert.equal(anhebenInsFenster(25.99), 26.99); // Fenster 26,77–27,29 → 26,99 (+3,8 %)
+  assert.equal(anhebenInsFenster(29.99), 30.99); // Fenster 30,89–31,49 → 30,99 (+3,3 %)
+  assert.equal(anhebenInsFenster(39.99), 41.99); // Fenster 41,19–41,99 → 41,99 (+5,0 %)
+  assert.equal(anhebenInsFenster(48.99), 50.99); // Fenster 50,46–51,44 → 50,99 (+4,1 %)
 });
 
 test('anhebenInsFenster: ohne ,99-Betrag im Fenster gewinnt der mit dem kleinsten Abstand zum Fenster', () => {
-  assert.equal(anhebenInsFenster(16.99), 17.99); // Fenster 18,18–18,69: 17,99 (Abstand 0,19) vor 18,99 (0,30)
-  assert.equal(anhebenInsFenster(17.99), 19.99); // Fenster 19,25–19,79: 19,99 (0,20) vor 18,99 (0,26)
+  assert.equal(anhebenInsFenster(12.99), 13.99); // Fenster 13,38–13,64: 13,99 (Abstand 0,35) – der nächste ,99-Betrag über dem Preis
+  assert.equal(anhebenInsFenster(33.99), 34.99); // Fenster 35,01–35,69: 34,99 (Abstand 0,02) vor 35,99 (0,30)
 });
 
 test('anhebenInsFenster: immer teurer als vorher, immer ,99, monoton, nie krumm', () => {
@@ -75,26 +77,28 @@ test('anhebenInsFenster: immer teurer als vorher, immer ,99, monoton, nie krumm'
   assert.equal(anhebenInsFenster(Number.NaN), 0);
 });
 
-test('Grundpreis: Vorgängerpreis (Einkauf + 9 €, auf ,99) angehoben ins Fenster 7–10 %', () => {
-  assert.equal(computeBasePrice(2.37, 'basic'), 13.99); // vorher 12,99 €
+test('Grundpreis: Vorgängerpreis (Einkauf + 9 €, auf ,99) angehoben ins Fenster 3–5 %', () => {
+  assert.equal(computeBasePrice(2.37, 'basic'), 13.99); // vorher 12,99 € (kleinster Schritt der ,99-Leiter: +1 €)
   assert.equal(computeBasePrice(4.2, 'basic'), 15.99); // vorher 14,99 €
-  assert.equal(computeBasePrice(20, 'premium'), 33.99); // vorher 30,99 € (Fenster 33,16–34,09)
-  assert.equal(computeBasePrice(3, 'basic'), 14.99); // vorher 13,99 € (glatter Betrag springt auf den nächsten ,99)
+  assert.equal(computeBasePrice(20, 'premium'), 31.99); // vorher 30,99 € (Fenster 31,92–32,54 → 31,99, +3,2 %)
+  assert.equal(computeBasePrice(3, 'basic'), 14.99); // vorher 13,99 €
 });
 
-test('Grundpreis: jeder Katalogpreis endet auf ,99, ist teurer als vorher und im Schnitt 7–10 % darüber', () => {
+test('Grundpreis: jeder Katalogpreis endet auf ,99, ist teurer als vorher und höchstens 9 % darüber', () => {
   let summe = 0;
   for (const p of PRODUCTS) {
     const v = vorher(p.purchasePrice);
     const prozent = (p.basePrice / v - 1) * 100;
     assert.equal(Math.round(p.basePrice * 100) % 100, 99, `${p.id}: Preis endet nicht auf ,99 €`);
     assert.ok(p.basePrice > v, `${p.id}: ${p.basePrice} nicht teurer als vorher (${v})`);
-    assert.ok(prozent >= 5.5 && prozent <= 11.5, `${p.id}: ${v} → ${p.basePrice} (+${prozent.toFixed(1)} %) weit außerhalb 7–10 %`);
+    assert.ok(prozent >= 2 && prozent <= 9, `${p.id}: ${v} → ${p.basePrice} (+${prozent.toFixed(1)} %) weit außerhalb 3–5 %`);
     assert.ok(p.basePrice - p.purchasePrice >= FLAT_MARKUP_EUR, `${p.id}: Aufschlag unter ${FLAT_MARKUP_EUR} €`);
     summe += prozent;
   }
+  // Textil-Grundpreise liegen oft um 13–16 €, dort ist der kleinste Schritt der ,99-Leiter (+1 €) schon 6–8 % – der Schnitt über
+  // die Grundpreise liegt deshalb über dem der Verkaufspreise (siehe unten, dort zählt das Zielfenster).
   const schnitt = summe / PRODUCTS.length;
-  assert.ok(schnitt >= 7.5 && schnitt <= 9.5, `Schnitt +${schnitt.toFixed(2)} % liegt nicht im Zielfenster`);
+  assert.ok(schnitt >= 4 && schnitt <= 6.5, `Grundpreis-Schnitt +${schnitt.toFixed(2)} % unerwartet`);
 });
 
 function logo(view: 'front' | 'back' | 'sleeve_left'): ConfigElement {
@@ -108,7 +112,7 @@ function logo(view: 'front' | 'back' | 'sleeve_left'): ConfigElement {
 const MENGEN = [1, 2, 3, 4, 5, 9, 10, 19, 20, 24, 25, 49, 50, 99, 100, 249, 250, 499, 500, 999, 1000];
 const ANSICHTEN = [logo('front'), logo('back'), logo('sleeve_left')];
 
-test('Preisleiter: nie günstiger als vorher, immer ,99, im Schnitt 7–10 % teurer, kein Preis weit daneben', async () => {
+test('Preisleiter: nie günstiger als vorher, immer ,99, im Schnitt 3–5 % teurer, kein Preis weit daneben', async () => {
   const rules = await getPricingRules('dtf');
   const prozente: number[] = [];
   for (const p of PRODUCTS) {
@@ -117,18 +121,18 @@ test('Preisleiter: nie günstiger als vorher, immer ,99, im Schnitt 7–10 % teu
         const alt = stueckpreisVorher(p.purchasePrice, menge, n);
         const neu = calculatePrice({ basePrice: p.basePrice, quantity: menge, elements: ANSICHTEN.slice(0, n), pricingRules: rules });
         const beschreibung = `${p.id} × ${menge} (${n} Ansicht/en): ${alt} → ${neu.unitPrice}`;
-        assert.ok(neu.unitPrice > alt, `nicht teurer als vorher: ${beschreibung}`);
+        assert.ok(neu.unitPrice >= alt - 0.005, `günstiger als vorher: ${beschreibung}`);
         assert.equal(Math.round(neu.unitPrice * 100) % 100, 99, `nicht ,99: ${beschreibung}`);
         const prozent = (neu.unitPrice / alt - 1) * 100;
-        assert.ok(prozent <= 17, `mehr als 17 % teurer: ${beschreibung}`);
+        assert.ok(prozent <= 10, `mehr als 10 % teurer: ${beschreibung}`);
         prozente.push(prozent);
       }
     }
   }
   const schnitt = prozente.reduce((a, b) => a + b, 0) / prozente.length;
-  const nah = prozente.filter((x) => x >= 6 && x <= 11).length / prozente.length;
-  assert.ok(schnitt >= 7.5 && schnitt <= 9.5, `Schnitt +${schnitt.toFixed(2)} % liegt nicht im Zielfenster 7–10 %`);
-  assert.ok(nah >= 0.7, `nur ${(nah * 100).toFixed(0)} % der Preise liegen zwischen 6 und 11 % über dem früheren`);
+  const nah = prozente.filter((x) => x >= 2 && x <= 6).length / prozente.length;
+  assert.ok(schnitt >= 3 && schnitt <= 5, `Schnitt +${schnitt.toFixed(2)} % liegt nicht im Zielfenster 3–5 %`);
+  assert.ok(nah >= 0.75, `nur ${(nah * 100).toFixed(0)} % der Preise liegen zwischen 2 und 6 % über dem früheren`);
 });
 
 test('Preisleiter: der Stückpreis steigt mit der Menge nie', async () => {

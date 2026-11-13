@@ -11,7 +11,15 @@ import { motivMass } from '@/lib/format';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { textKaumSichtbar } from '@/lib/canvas/textfarbe';
-import { bewerteLogoQualitaet, logoQualitaetText } from '@/lib/canvas/logoQualitaet';
+import { berechneLogoDpi, bewerteLogoQualitaet, logoQualitaetText } from '@/lib/canvas/logoQualitaet';
+import { waehleHochskalierung } from '@/lib/upload/hochskalieren';
+import {
+  HochskalierenZuGross,
+  hochskaliereLogo,
+  merkeVorHochskalierung,
+  vergissVorHochskalierung,
+  vorHochskalierung,
+} from '@/lib/upload/hochskalierenImBrowser';
 import { AlertTriangle, XCircle } from 'lucide-react';
 import { useTextilHex } from './useTextilHex';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
@@ -55,20 +63,83 @@ const QUICK_COLORS: { name: string; hex: string }[] = [
 ];
 
 /** Bleibende Druckqualitäts-Warnung für ein Logo (die Ampel beim Hochladen stand nur 1,8 s): folgt der aktuellen Größe. */
-function LogoQualitaetHinweis({ logo, labelGelb, labelRot }: { logo: LogoElement; labelGelb: string; labelRot: string }) {
+function LogoQualitaetHinweis({
+  logo,
+  labelGelb,
+  labelRot,
+  t,
+  beschaeftigt,
+  fehler,
+  onHochskalieren,
+  onWiederherstellen,
+}: {
+  logo: LogoElement;
+  labelGelb: string;
+  labelRot: string;
+  t: (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => string;
+  beschaeftigt: boolean;
+  fehler: string | null;
+  onHochskalieren: (faktor: number) => void;
+  onWiederherstellen: () => void;
+}) {
   const q = bewerteLogoQualitaet(logo);
-  if (!q || q.level === 'green') return null;
+  if (!q) return null;
+  const hochskaliert = logo.hochskaliertFaktor !== undefined;
+  // Nach dem Hochrechnen NICHT noch einmal anbieten (würde nur weiter glätten): erst „Original wiederherstellen“.
+  const angebot =
+    !hochskaliert && q.level !== 'green'
+      ? waehleHochskalierung({ breitePx: logo.originalWidthPx, hoehePx: logo.originalHeightPx, dpi: q.dpi })
+      : null;
+  if (q.level === 'green' && !hochskaliert) return null;
   const rot = q.level === 'red';
   const Icon = rot ? XCircle : AlertTriangle;
+  const kannZurueck = hochskaliert && vorHochskalierung(logo.id) !== undefined;
   return (
-    <div role="status" className={clsx('flex items-start gap-1.5 rounded-lg p-2 text-xs', rot ? 'bg-red-50 text-red-700' : 'bg-amber-50 text-amber-800')}>
-      <Icon className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" aria-hidden />
-      <span>
-        <strong>
-          {rot ? labelRot : labelGelb} (≈ {q.dpi} dpi):
-        </strong>{' '}
-        {logoQualitaetText(q.level, q.dpi)}
-      </span>
+    <div className="space-y-1.5">
+      {q.level !== 'green' && (
+        <div role="status" className={clsx('flex items-start gap-1.5 rounded-lg p-2 text-xs', rot ? 'bg-red-50 text-red-700' : 'bg-amber-50 text-amber-800')}>
+          <Icon className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" aria-hidden />
+          <span>
+            <strong>
+              {rot ? labelRot : labelGelb} (≈ {q.dpi} dpi):
+            </strong>{' '}
+            {logoQualitaetText(q.level, q.dpi)}
+          </span>
+        </div>
+      )}
+      {angebot && (
+        <div className="space-y-1">
+          <button
+            type="button"
+            data-testid="logo-hochskalieren"
+            disabled={beschaeftigt}
+            onClick={() => onHochskalieren(angebot.faktor)}
+            className="rounded-md border border-brand-accent px-2.5 py-1 text-xs font-medium text-brand-accent hover:bg-brand-accent hover:text-white disabled:cursor-wait disabled:opacity-60"
+          >
+            {t('logo_upscale_button', { factor: angebot.faktor })}
+          </button>
+          <p className="text-xs text-gray-600">{t('logo_upscale_hint', { dpi: Math.round(angebot.erreichteDpi) })}</p>
+        </div>
+      )}
+      {beschaeftigt && <p className="text-xs text-gray-600">{t('logo_upscale_busy')}</p>}
+      {fehler && <p className="text-xs text-red-600">{fehler}</p>}
+      {hochskaliert && (
+        <div role="status" className="space-y-1 rounded-lg bg-gray-50 p-2 text-xs text-gray-700">
+          <p data-testid="logo-hochskaliert-info">
+            {t('logo_upscale_done', {
+              factor: logo.hochskaliertFaktor ?? 0,
+              dpi: Math.round(
+                berechneLogoDpi(logo.urspruenglicheBreitePx ?? logo.originalWidthPx, logo.widthCm)
+              ),
+            })}
+          </p>
+          {kannZurueck && (
+            <button type="button" data-testid="logo-hochskalieren-zurueck" onClick={onWiederherstellen} className="font-medium text-brand-accent underline">
+              {t('logo_upscale_restore')}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -104,6 +175,8 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isRemovingBg, setIsRemovingBg] = useState(false);
   const [bgError, setBgError] = useState<string | null>(null);
+  const [isUpscaling, setIsUpscaling] = useState(false);
+  const [upscaleError, setUpscaleError] = useState<string | null>(null);
   const textilHex = useTextilHex();
 
   // Nur beim Wechsel des ausgewählten Elements synchronisieren, nicht bei
@@ -527,7 +600,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
             </span>
             <button
               type="button"
-              disabled={isRemovingBg}
+              disabled={isRemovingBg || isUpscaling}
               onClick={async () => {
                 const logo = selected as LogoElement;
                 if (logo.backgroundRemoved) {
@@ -536,7 +609,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 }
                 setIsRemovingBg(true);
                 try {
-                  const cleaned = await removeSimpleBackground(logo.originalFileUrl);
+                  const cleaned = await removeSimpleBackground(logo.originalFileUrl, logo.hochskaliertFaktor);
                   updateElement(logo.id, { fileUrl: cleaned, backgroundRemoved: true });
                 } catch {
                   setBgError('Freistellung fehlgeschlagen.');
@@ -559,7 +632,37 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
           {bgError && <p className="text-xs text-red-600">{bgError}</p>}
           {/* Nur für DTF: Bei Stickerei wird das Logo ohnehin von Hand digitalisiert. */}
           {printMethod === 'dtf' && (
-            <LogoQualitaetHinweis logo={selected as LogoElement} labelGelb={t('logo_quality_yellow')} labelRot={t('logo_quality_red')} />
+            <LogoQualitaetHinweis
+              logo={selected as LogoElement}
+              labelGelb={t('logo_quality_yellow')}
+              labelRot={t('logo_quality_red')}
+              t={t}
+              beschaeftigt={isUpscaling}
+              fehler={upscaleError}
+              onHochskalieren={async (faktor) => {
+                const logo = selected as LogoElement;
+                setUpscaleError(null);
+                setIsUpscaling(true);
+                try {
+                  const aenderung = await hochskaliereLogo(logo, faktor);
+                  merkeVorHochskalierung(logo);
+                  // commitElement = Verlaufspunkt: Strg+Z bringt das kleine Original zurück.
+                  commitElement(logo.id, aenderung);
+                } catch (e) {
+                  setUpscaleError(e instanceof HochskalierenZuGross ? t('logo_upscale_too_big') : t('logo_upscale_error'));
+                } finally {
+                  setIsUpscaling(false);
+                }
+              }}
+              onWiederherstellen={() => {
+                const logo = selected as LogoElement;
+                const vorher = vorHochskalierung(logo.id);
+                if (!vorher) return;
+                commitElement(logo.id, { ...vorher, hochskaliertFaktor: undefined, urspruenglicheBreitePx: undefined });
+                vergissVorHochskalierung(logo.id);
+                setUpscaleError(null);
+              }}
+            />
           )}
         </div>
       )}

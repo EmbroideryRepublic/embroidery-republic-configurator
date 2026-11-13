@@ -261,6 +261,11 @@ export interface LogoElement extends BaseConfigElement {
    *  eckiger Box füllt nur ca. 78%. Reduziert die für den Preis
    *  berechnete Fläche, analog zu inkCoverageRatio bei Text. */
   contentFillRatio: number;
+  /** Gesetzt, wenn das Bild im Konfigurator hochgerechnet wurde (Faktor 2–4, Catmull-Rom + leichtes Nachschärfen).
+   *  originalWidthPx ist dann die NEUE Pixelzahl; die echte Auflösung der Datei war die ursprüngliche. */
+  hochskaliertFaktor?: number;
+  /** Breite der Datei VOR dem Hochrechnen (Pixel) – für den ehrlichen Hinweis „ursprünglich ca. X dpi“. */
+  urspruenglicheBreitePx?: number;
 }
 
 export interface TextElement extends BaseConfigElement {

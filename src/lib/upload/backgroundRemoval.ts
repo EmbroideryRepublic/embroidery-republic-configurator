@@ -42,13 +42,19 @@ import { loadImage } from '@/lib/browser/loadImage';
 
 const WORKING_MAX_DIM = 900; // Maskenberechnung läuft auf einer verkleinerten Kopie (Performance), Ergebnis wird auf Originalauflösung angewendet
 
-export async function removeSimpleBackground(dataUrl: string): Promise<string> {
+/**
+ * `hochskaliertFaktor`: War das Bild vorher im Konfigurator hochgerechnet (lib/upload/hochskalieren.ts), rechnet die Maske
+ * auf der ECHTEN Auflösung (Breite / Faktor). Das Fluten vergleicht nur Nachbarpixel; die weichen Kantenverläufe eines
+ * hochgerechneten Bildes bestehen aus vielen kleinen Schritten, durch die der Hintergrund ins Motiv „kriecht“ (im Test
+ * verschwand ein ganzer Kreis). Auf der ursprünglichen Auflösung sind die Kanten wieder steil wie beim Hochladen.
+ */
+export async function removeSimpleBackground(dataUrl: string, hochskaliertFaktor = 1): Promise<string> {
   const img = await loadImage(dataUrl);
   const fullW = img.naturalWidth || img.width;
   const fullH = img.naturalHeight || img.height;
 
   // --- 1. Maske auf verkleinerter Arbeitskopie berechnen (schnell) ---
-  const scale = Math.min(1, WORKING_MAX_DIM / Math.max(fullW, fullH));
+  const scale = Math.min(1, WORKING_MAX_DIM / Math.max(fullW, fullH), 1 / Math.max(1, hochskaliertFaktor));
   const workW = Math.max(1, Math.round(fullW * scale));
   const workH = Math.max(1, Math.round(fullH * scale));
 

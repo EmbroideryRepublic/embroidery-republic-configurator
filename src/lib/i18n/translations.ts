@@ -210,6 +210,16 @@ export const translations = {
     logo_quality_green: 'Optimale Qualität',
     logo_quality_yellow: 'Akzeptabel',
     logo_quality_red: 'Ungeeignet',
+    logo_upscale_button: 'Hochskalieren (×{factor})',
+    logo_upscale_hint:
+      'Rechnet das Bild auf ca. {dpi} dpi hoch. Kanten werden glatter und klarer – echte Details kommen dabei nicht dazu.',
+    logo_upscale_busy: 'Bild wird hochgerechnet …',
+    logo_upscale_done:
+      'Hochskaliert (×{factor}): Kanten geglättet und nachgeschärft, zusätzliche Details entstehen dabei nicht. Die Datei hatte ursprünglich ≈ {dpi} dpi.',
+    logo_upscale_restore: 'Original wiederherstellen',
+    logo_upscale_error: 'Hochskalieren fehlgeschlagen.',
+    logo_upscale_too_big:
+      'Das hochskalierte Bild wäre zu groß für die Bestellung. Bitte laden Sie eine größere Datei oder ein SVG hoch.',
     logo_embroidery_hint:
       'Hinweis: Bei Stickerei wird Ihr Logo von unserem Team in Garnfarben digitalisiert (max. 8 Farben, keine Farbverläufe/Fotos). Die Vorschau zeigt die Platzierung, nicht das finale Stickbild.',
 
@@ -619,6 +629,16 @@ export const translations = {
     logo_quality_green: 'Optimal quality',
     logo_quality_yellow: 'Acceptable',
     logo_quality_red: 'Not suitable',
+    logo_upscale_button: 'Upscale (×{factor})',
+    logo_upscale_hint:
+      'Recalculates the image to about {dpi} dpi. Edges become smoother and clearer – no real detail is added.',
+    logo_upscale_busy: 'Upscaling image …',
+    logo_upscale_done:
+      'Upscaled (×{factor}): edges smoothed and sharpened, no additional detail is created. The file originally had ≈ {dpi} dpi.',
+    logo_upscale_restore: 'Restore original',
+    logo_upscale_error: 'Upscaling failed.',
+    logo_upscale_too_big:
+      'The upscaled image would be too large for the order. Please upload a larger file or an SVG.',
     logo_embroidery_hint:
       'Note: For embroidery, your logo will be digitized into thread colors by our team (max. 8 colors, no gradients/photos). The preview shows placement only, not the final stitch result.',
 

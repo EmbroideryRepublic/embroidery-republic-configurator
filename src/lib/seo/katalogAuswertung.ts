@@ -4,12 +4,14 @@
  * Alle Zahlen stammen aus den Produktdaten (Herstellerangaben: `sizeGuide.measurements`, `weightGsm`) und werden beim Bau der
  * Seite berechnet – nichts davon steht von Hand im Text. Reine Funktionen, keine Datenbank, kein Netz.
  *
- * Reine Damenmodelle stehen nicht in der Auswahl (die Seiten sprechen alle an; Damenschnitte bleiben über die Produktseiten
- * erreichbar). Wie bei den übrigen Anlassseiten gilt: lieber ein roter Build als eine Seite mit leerer oder falscher Tabelle.
+ * Die Beispielmodelle der Größentabellen sind keine reinen Damenmodelle (die Seiten sprechen alle an); Gewichtsklassen und
+ * Spannen zählen das ganze Sortiment. Wie bei den übrigen Anlassseiten gilt: lieber ein roter Build als eine Seite mit leerer
+ * oder falscher Tabelle.
  */
 import type { ProductConfig } from '@/config/products/types';
 import { geschlechterVon } from '@/config/products/facetten';
-import { produktAbfrage } from '@/lib/catalog/abfrage';
+import { PRODUCTS } from '@/config/products';
+import { sortiere } from '@/lib/catalog/filter';
 import { LEERE_KRITERIEN } from '@/lib/catalog/kriterien';
 
 /** „Fruit of the Loom Valueweight T“ statt „Fruit of the Loom Fruit of the Loom Valueweight T“: manche Produktnamen tragen die Marke schon. */
@@ -27,11 +29,18 @@ function nurDamen(p: ProductConfig): boolean {
   return g.length > 0 && g.every((x) => x === 'damen');
 }
 
-/** Erwachsenenware einer Art ohne reine Damenmodelle, in der Standard-Sortierung des Katalogs. */
+/** ALLE Modelle einer Art in der Standard-Sortierung des Katalogs (nicht nur die erste Seite der Filteransicht). */
+function alleDerArt(art: TabellenArt): ProductConfig[] {
+  return sortiere(
+    PRODUCTS.filter((p) => p.productType === art),
+    LEERE_KRITERIEN.sortierung,
+    {}
+  );
+}
+
+/** Wie alleDerArt, ohne reine Damenmodelle (für die Beispielmodelle der Größentabellen). */
 function modelleDerArt(art: TabellenArt): ProductConfig[] {
-  return produktAbfrage()
-    .finde({ ...LEERE_KRITERIEN, kategorie: [art] })
-    .produkte.filter((p) => !nurDamen(p));
+  return alleDerArt(art).filter((p) => !nurDamen(p));
 }
 
 // ── Größentabellen ──────────────────────────────────────────────────────
@@ -112,7 +121,7 @@ export interface GewichtsKlasse {
 
 export interface GewichtsUebersicht {
   art: TabellenArt;
-  /** Alle Modelle der Art mit Gewichtsangabe (ohne reine Damenmodelle). */
+  /** Alle Modelle der Art mit Gewichtsangabe. */
   gesamt: number;
   min: number;
   max: number;
@@ -120,7 +129,8 @@ export interface GewichtsUebersicht {
 }
 
 export function gewichtsUebersicht(art: TabellenArt): GewichtsUebersicht {
-  const mitGewicht = modelleDerArt(art).filter((p): p is ProductConfig & { weightGsm: number } => typeof p.weightGsm === 'number');
+  // Gewichtsklassen gelten für das GANZE Sortiment der Art (auch Damenschnitte).
+  const mitGewicht = alleDerArt(art).filter((p): p is ProductConfig & { weightGsm: number } => typeof p.weightGsm === 'number');
   if (mitGewicht.length === 0) throw new Error(`Stoffgewicht "${art}": kein Modell mit Gewichtsangabe.`);
   const gewichte = mitGewicht.map((p) => p.weightGsm);
   const klassen = GEWICHTS_BAENDER[art].map((band) => {

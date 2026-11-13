@@ -16,7 +16,7 @@ import { PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
 import { SHIPPING_RATES } from '@/config/shipping';
 import { ANLASS_SEITEN, type AnlassBeispiel, type AnlassSeite } from '@/config/seo/anlassSeiten';
 import type { KategorieBeispiel } from '@/config/seo/kategorieSeiten';
-import { produktAbfrage } from '@/lib/catalog/abfrage';
+import { sortiere } from '@/lib/catalog/filter';
 import { LEERE_KRITERIEN } from '@/lib/catalog/kriterien';
 import { gewichtsSpanne, TABELLEN_ARTEN, type TabellenArt } from '@/lib/seo/katalogAuswertung';
 import { geschlechterVon } from '@/config/products/facetten';
@@ -55,13 +55,18 @@ function nurDamen(p: ProductConfig): boolean {
 }
 
 /**
- * Erwachsenenware einer Art in der Standard-Sortierung des Katalogs (dieselbe Abfrage wie die Filteransicht).
- * Reine Damenmodelle stehen nicht in der Auswahl der Anlassseiten – sie bleiben über Kategorie- und Filteransicht erreichbar.
+ * ALLE Modelle einer Art in der Standard-Sortierung des Katalogs (dieselbe Sortierung wie die Filteransicht).
+ *
+ * KORREKTUR 2026-11-13: Vorher kam die Liste aus `produktAbfrage().finde(…).produkte` – das ist nur die ERSTE SEITE (24 Treffer).
+ * „Es gibt 78 Modelle“ zählte deshalb höchstens 24 je Art und die „ab“-Preise sahen nur diese Seite. Gezählt und für „ab“-Preise
+ * herangezogen wird jetzt der ganze Katalog; die Modellauswahl (Kacheln) nimmt daraus die ersten Treffer ohne reine Damenmodelle.
  */
-function produkteDerArt(art: ProductType): ProductConfig[] {
-  return produktAbfrage()
-    .finde({ ...LEERE_KRITERIEN, kategorie: [art] })
-    .produkte.filter((p) => !nurDamen(p));
+function alleProdukteDerArt(art: ProductType): ProductConfig[] {
+  return sortiere(
+    PRODUCTS.filter((p) => p.productType === art),
+    LEERE_KRITERIEN.sortierung,
+    {}
+  );
 }
 
 export function anlassFakten(seite: AnlassSeite): AnlassFakten {
@@ -69,10 +74,11 @@ export function anlassFakten(seite: AnlassSeite): AnlassFakten {
   const kacheln: ProductConfig[] = [];
   let anzahl = 0;
   for (const k of seite.kacheln) {
-    const alle = produkteDerArt(k.art);
+    const alle = alleProdukteDerArt(k.art);
     if (alle.length === 0) throw new Error(`Anlassseite "${seite.slug}": im Katalog gibt es kein Produkt der Art "${k.art}".`);
     anzahl += alle.length;
-    for (const p of alle.slice(0, k.anzahl)) {
+    // Die Auswahl zeigt keine reinen Damenmodelle (für Vereine, Firmen und Jahrgänge nicht die erste Wahl); gezählt werden alle.
+    for (const p of alle.filter((x) => !nurDamen(x)).slice(0, k.anzahl)) {
       if (gesehen.has(p.id)) continue;
       gesehen.add(p.id);
       kacheln.push(p);
@@ -111,7 +117,7 @@ export function fuelleAnlass(text: string, seite: AnlassSeite, f: AnlassFakten):
     const preis = /^abPreis_(\w+)$/.exec(name);
     if (preis) {
       const art = preis[1]!.replace(/_/g, '-') as ProductType;
-      const preise = produkteDerArt(art).map((p) => p.basePrice);
+      const preise = alleProdukteDerArt(art).map((p) => p.basePrice);
       if (preise.length === 0) throw new Error(`${treffer} in "${seite.slug}": kein Produkt der Art "${art}".`);
       return formatiereGeld(Math.min(...preise));
     }

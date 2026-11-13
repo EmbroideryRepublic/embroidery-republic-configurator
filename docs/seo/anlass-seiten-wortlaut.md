@@ -11,7 +11,7 @@ Alle Seiten sind nur DTF-Transferdruck (die Stickerei ist pausiert) und verlinke
 - **Kleiner Vorspann über der Überschrift:** Für Vereine und Teams
 - **Linktext zu dieser Seite:** Vereinskleidung
 
-Hoodies fürs Trainerteam, T-Shirts für die Mannschaft, Polos für den Vorstand: Es gibt 62 Modelle (T-Shirts, Hoodies, Polos und Zip-Hoodies). Laden Sie Ihr Vereinslogo hoch und sehen Sie direkt im Konfigurator, wie es auf dem Textil sitzt – mit Preis in Echtzeit.
+Hoodies fürs Trainerteam, T-Shirts für die Mannschaft, Polos für den Vorstand: Es gibt 126 Modelle (T-Shirts, Hoodies, Polos und Zip-Hoodies). Laden Sie Ihr Vereinslogo hoch und sehen Sie direkt im Konfigurator, wie es auf dem Textil sitzt – mit Preis in Echtzeit.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -86,7 +86,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 - **Kleiner Vorspann über der Überschrift:** Für Unternehmen
 - **Linktext zu dieser Seite:** Firmenkleidung
 
-Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt 64 Modelle (Polos, Hoodies, Jacken und T-Shirts). Laden Sie Ihr Firmenlogo hoch, platzieren Sie es auf Brust, Rücken oder Ärmel und sehen Sie den Preis in Echtzeit.
+Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt 131 Modelle (Polos, Hoodies, Jacken und T-Shirts). Laden Sie Ihr Firmenlogo hoch, platzieren Sie es auf Brust, Rücken oder Ärmel und sehen Sie den Preis in Echtzeit.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -161,7 +161,7 @@ Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /hoodies-b
 - **Kleiner Vorspann über der Überschrift:** Für Jahrgänge und Klassen
 - **Linktext zu dieser Seite:** Abschluss-Hoodies
 
-Ein Hoodie für den ganzen Jahrgang: Wählen Sie unter 27 Modellen (Hoodies und Zip-Hoodies), setzen Sie Jahrgang, Motto oder Namen als Text oder laden Sie ein eigenes Motiv hoch. Der Konfigurator zeigt Vorder- und Rückseite mit Preis in Echtzeit.
+Ein Hoodie für den ganzen Jahrgang: Wählen Sie unter 36 Modellen (Hoodies und Zip-Hoodies), setzen Sie Jahrgang, Motto oder Namen als Text oder laden Sie ein eigenes Motiv hoch. Der Konfigurator zeigt Vorder- und Rückseite mit Preis in Echtzeit.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -232,7 +232,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /zip-hoodies-
 - **Kleiner Vorspann über der Überschrift:** Für Ihr Lieblingsbild
 - **Linktext zu dieser Seite:** T-Shirt mit Foto
 
-Familienfoto, Haustier oder Urlaubsmotiv: Laden Sie Ihr Foto hoch, platzieren Sie es auf Vorder- oder Rückseite und sehen Sie das Ergebnis samt Preis direkt im Konfigurator. Es gibt 52 Modelle (T-Shirts, Hoodies und Longsleeves).
+Familienfoto, Haustier oder Urlaubsmotiv: Laden Sie Ihr Foto hoch, platzieren Sie es auf Vorder- oder Rückseite und sehen Sie das Ergebnis samt Preis direkt im Konfigurator. Es gibt 109 Modelle (T-Shirts, Hoodies und Longsleeves).
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -511,34 +511,34 @@ Das Stoffgewicht, auch Flächengewicht genannt, gibt an, wie viel ein Quadratmet
 
 ### T-Shirts nach Stoffgewicht
 
-17 Modelle mit Gewichtsangabe, von 140 bis 215 g/m².
+64 Modelle mit Gewichtsangabe, von 130 bis 220 g/m².
 
 | Stoffgewicht | Modelle | Beispiele |
 |---|---|---|
-| unter 150 g/m² | 5 | B&C T-Shirt #E150 (145 g/m²), Fruit of the Loom Original T (145 g/m²), Fruit of the Loom Original V-Neck T (145 g/m²) |
-| 150 bis 169 g/m² | 4 | Gildan Light Cotton Adult T-Shirt (150 g/m²), Stedman Classic-T V-Neck (155 g/m²), Stedman Classic-T (155 g/m²) |
-| 170 bis 199 g/m² | 5 | Fruit of the Loom Iconic 195 Ringspun Premium T (195 g/m²), Stedman Comfort-T (185 g/m²), Russell Classic T (175 g/m²) |
-| ab 200 g/m² | 3 | Fruit of the Loom Super Premium T (205 g/m²), Gildan Ultra Cotton T-Shirt (203 g/m²), Russell Classic Heavyweight T-Shirt (215 g/m²) |
+| unter 150 g/m² | 12 | B&C T-Shirt #E150 (145 g/m²), B&C T-Shirt #E150 / Women (145 g/m²), Fruit of the Loom Original T (145 g/m²) |
+| 150 bis 169 g/m² | 27 | Gildan Light Cotton Adult T-Shirt (150 g/m²), Stedman Classic-T for women (155 g/m²), Stedman Classic-T V-Neck (155 g/m²) |
+| 170 bis 199 g/m² | 17 | Fruit of the Loom Iconic 195 Ringspun Premium T (195 g/m²), Fruit of the Loom Ladies Iconic 195 Ringspun Premium T (195 g/m²), Stedman Comfort-T (185 g/m²) |
+| ab 200 g/m² | 8 | Fruit of the Loom Super Premium T (205 g/m²), Gildan Ultra Cotton T-Shirt (203 g/m²), Russell Classic Heavyweight T-Shirt (215 g/m²) |
 
 ### Hoodies nach Stoffgewicht
 
-20 Modelle mit Gewichtsangabe, von 240 bis 360 g/m².
+27 Modelle mit Gewichtsangabe, von 240 bis 540 g/m².
 
 | Stoffgewicht | Modelle | Beispiele |
 |---|---|---|
 | unter 260 g/m² | 2 | Fruit of the Loom ICONIC 250 Hooded Sweat (240 g/m²), Fruit of the Loom Lightweight Hooded Sweat (240 g/m²) |
-| 260 bis 299 g/m² | 12 | Fruit of the Loom Classic Hooded Sweat (260 g/m²), Gildan Heavy Blend Hooded Sweatshirt (265 g/m²), B&C ID.223 Hoodie (280 g/m²) |
-| ab 300 g/m² | 6 | Fruit of the Loom Iconic Premium Hooded Sweat (300 g/m²), Build Your Brand Heavy Hoody (300 g/m²), Just Hoods Vision Heavyweight Hoodie (340 g/m²) |
+| 260 bis 299 g/m² | 14 | Fruit of the Loom Classic Hooded Sweat (260 g/m²), Gildan Heavy Blend Hooded Sweatshirt (265 g/m²), B&C ID.223 Hoodie (280 g/m²) |
+| ab 300 g/m² | 11 | Fruit of the Loom Iconic Premium Hooded Sweat (300 g/m²), Build Your Brand Ladies' Heavy Hoody (300 g/m²), Build Your Brand Heavy Hoody (300 g/m²) |
 
 ### Polos nach Stoffgewicht
 
-15 Modelle mit Gewichtsangabe, von 170 bis 240 g/m².
+22 Modelle mit Gewichtsangabe, von 170 bis 240 g/m².
 
 | Stoffgewicht | Modelle | Beispiele |
 |---|---|---|
-| unter 180 g/m² | 3 | SOL'S Unisex Pulse Polo Shirt (170 g/m²), B&C Inspire Polo / Men (170 g/m²), Fruit of the Loom Premium Polo (170 g/m²) |
-| 180 bis 199 g/m² | 5 | B&C Unisex Polo ID.001 (180 g/m²), SOL'S Men's Polo Shirt Perfect (180 g/m²), B&C My Polo 180 (180 g/m²) |
-| ab 200 g/m² | 7 | Neutral Men's Classic Polo (235 g/m²), SOL'S Men's Polo Shirt Prime (200 g/m²), Russell Men's Classic Cotton Polo (200 g/m²) |
+| unter 180 g/m² | 6 | SOL'S Unisex Pulse Polo Shirt (170 g/m²), B&C Inspire Polo / Men (170 g/m²), B&C Inspire Polo / Women (170 g/m²) |
+| 180 bis 199 g/m² | 8 | B&C Unisex Polo ID.001 (180 g/m²), SOL'S Men's Polo Shirt Perfect (180 g/m²), B&C My Polo 180 (180 g/m²) |
+| ab 200 g/m² | 8 | Neutral Men's Classic Polo (235 g/m²), SOL'S Women's Polo Shirt Prime (200 g/m²), SOL'S Men's Polo Shirt Prime (200 g/m²) |
 
 ### Stoffgewicht und Bedrucken
 
@@ -552,11 +552,11 @@ Gramm pro Quadratmeter: Die Angabe zeigt, wie viel ein Quadratmeter des Stoffes 
 
 **Welches Stoffgewicht haben die T-Shirts im Sortiment?**
 
-Die T-Shirts haben Stoffgewichte von 140 bis 215 g/m². Das genaue Gewicht steht auf jeder Produktseite.
+Die T-Shirts haben Stoffgewichte von 130 bis 220 g/m². Das genaue Gewicht steht auf jeder Produktseite.
 
 **Wie unterscheiden sich Hoodies im Stoffgewicht?**
 
-Die Hoodies haben Stoffgewichte von 240 bis 360 g/m². Das genaue Gewicht steht auf jeder Produktseite.
+Die Hoodies haben Stoffgewichte von 240 bis 540 g/m². Das genaue Gewicht steht auf jeder Produktseite.
 
 **Wo finde ich das Stoffgewicht eines Modells?**
 

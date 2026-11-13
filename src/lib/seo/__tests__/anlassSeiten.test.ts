@@ -27,6 +27,8 @@ import {
   beispielProdukt,
 } from '../anlassSeite';
 import { llmsText } from '../llmsText';
+import { PRODUCTS } from '@/config/products';
+import { formatiereGeld } from '@/lib/format';
 import {
   GEWICHTS_BAENDER,
   gewichtsSpanne,
@@ -213,6 +215,27 @@ test('llms.txt nennt jede Anlassseite und hat keine Rest-Platzhalter', () => {
   for (const s of ANLASS_SEITEN) assert.ok(text.includes(`${basis}/${s.slug}`), `/${s.slug} fehlt in llms.txt`);
   assert.match(text, /^# Embroidery Republic Germany/);
   assert.doesNotMatch(text, /\{[a-zA-Z_]+\}/, 'Rest-Platzhalter in llms.txt');
+});
+
+test('Modellzahlen auf den Seiten zählen den ganzen Katalog, nicht nur die erste Seite der Filteransicht', () => {
+  for (const s of ANLASS_SEITEN.filter((x) => x.kacheln.length > 0)) {
+    const erwartet = s.kacheln.reduce((n, k) => n + PRODUCTS.filter((p) => p.productType === k.art).length, 0);
+    assert.equal(anlassFakten(s).anzahl, erwartet, `${s.slug}: Modellzahl`);
+  }
+  for (const art of TABELLEN_ARTEN) {
+    const mitGewicht = PRODUCTS.filter((p) => p.productType === art && typeof p.weightGsm === 'number').length;
+    assert.equal(gewichtsUebersicht(art).gesamt, mitGewicht, `${art}: Modelle mit Gewichtsangabe`);
+  }
+});
+
+test('„ab“-Preise der Platzhalter sind die niedrigsten Grundpreise der ganzen Art', () => {
+  const seite = ANLASS_SEITEN.find((x) => x.slug === 'textildruck-preise')!;
+  const f = anlassFakten(seite);
+  for (const art of ['tshirt', 'hoodie', 'polo'] as const) {
+    const niedrigster = Math.min(...PRODUCTS.filter((p) => p.productType === art).map((p) => p.basePrice));
+    const text = fuelleAnlass(`{abPreis_${art}}`, seite, f);
+    assert.equal(text, formatiereGeld(niedrigster), art);
+  }
 });
 
 test('Größentabellen: je Art drei Modelle, vollständige Maße, Maße wachsen mit der Größe', () => {

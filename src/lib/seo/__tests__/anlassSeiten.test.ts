@@ -13,7 +13,7 @@ import { ANLASS_SEITEN } from '@/config/seo/anlassSeiten';
 import { DTF_ABLAUF_SCHRITTE, DTF_SEITEN } from '@/config/seo/dtfSeiten';
 import { KATEGORIE_SEITEN } from '@/config/seo/kategorieSeiten';
 import { veredelungVerfuegbar } from '@/config/bestellweg';
-import { MIN_DPI, OK_DPI } from '@/lib/canvas/logoQualitaet';
+import { MIN_DPI, OK_DPI, ZIEL_DPI } from '@/lib/canvas/logoQualitaet';
 import sitemap from '@/app/sitemap';
 import { kanonischeBasisUrl } from '../basisUrl';
 import { berechneBeispiele } from '../kategorieSeite';
@@ -301,5 +301,28 @@ test('jede Seite mit berechneter Tabelle nennt nur Arten, für die es eine Auswe
         assert.ok((TABELLEN_ARTEN as readonly string[]).includes(art), `${s.slug}: unbekannte Art ${art}`);
       }
     }
+  }
+});
+
+test('{dpiZiel} setzt die Wunschauflösung des Hochskalierens ein (300 dpi)', () => {
+  const s = ANLASS_SEITEN.find((x) => x.slug === 'druckdatei-pruefen')!;
+  assert.equal(fuelleAnlass('{dpiZiel}', s, anlassFakten(s)), String(ZIEL_DPI));
+  assert.equal(ZIEL_DPI, 300);
+});
+
+test('das Datei-Werkzeug gibt es genau einmal und die Ratgeber zur Auflösung verweisen darauf', () => {
+  const mitWerkzeug = ANLASS_SEITEN.filter((s) => s.abschnitte.some((a) => a.tabelle === 'dateipruefung'));
+  assert.deepEqual(mitWerkzeug.map((s) => s.slug), ['druckdatei-pruefen']);
+  for (const slug of ['druckaufloesung-rechner', 'druckdaten-vorbereiten']) {
+    assert.ok(ANLASS_SEITEN.find((s) => s.slug === slug)!.verwandt.includes('druckdatei-pruefen'), `${slug} verweist nicht auf das Werkzeug`);
+  }
+});
+
+test('die Auflösungs-Ratgeber nennen das Hochskalieren ehrlich: keine neuen Details', () => {
+  for (const slug of ['druckdatei-pruefen']) {
+    const s = ANLASS_SEITEN.find((x) => x.slug === slug)!;
+    const text = texteVon(s).join(' ');
+    assert.match(text, /Zusätzliche Details entstehen dabei nicht|keine neuen Details/);
+    assert.match(text, /nicht hochgeladen|verlässt Ihren Rechner nicht/);
   }
 });

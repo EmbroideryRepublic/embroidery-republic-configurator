@@ -11,7 +11,7 @@
  * Jede Aussage stammt aus bereits freigegebenen Texten (FAQ, Kategorie- und DTF-Seiten, Startseite) oder aus dem Code
  * (Auflösungs-Ampel, Versandsätze, Produktions- und Versandzeiten, Preis-Engine). Zahlen werden NICHT von Hand eingetragen,
  * sondern über Platzhalter aus Katalog und Konfiguration eingesetzt (lib/seo/anlassSeite.ts → fuelleAnlass):
- *   {anzahl} {arten} {produktion} {produktionszeit} {versand} {versandkosten} {frei} {dpiMin} {dpiOk} {abPreis_<art>}
+ *   {anzahl} {arten} {produktion} {produktionszeit} {versand} {versandkosten} {frei} {dpiMin} {dpiOk} {dpiZiel} {abPreis_<art>}
  *   {gewichtMin_<art>} {gewichtMax_<art>}   (nur tshirt, hoodie, polo)   (<art> z. B. tshirt, hoodie, polo, zip_hoodie)
  * Preisbeispiele rechnet die Preis-Engine (berechneBeispiele) – dieselbe Funktion wie im Checkout.
  *
@@ -32,13 +32,14 @@ export interface AnlassAbschnitt {
   absaetze?: string[];
   punkte?: string[];
   /**
-   * Berechneter Baustein statt Fließtext: 'aufloesung' = Tabelle „Mindestbreite des Bildes in Pixeln“, 'rechner' = Auflösungsrechner,
+   * Berechneter Baustein statt Fließtext: 'aufloesung' = Tabelle „Mindestbreite des Bildes in Pixeln“, 'rechner' = Auflösungsrechner, 'dateipruefung' = Datei prüfen + hochskalieren (Browser, nichts wird hochgeladen),
    * 'groessen:<art>' = Größentabelle dreier Modelle, 'gewicht:<art>' = Gewichtsklassen der Art (beide aus dem Katalog,
    * lib/seo/katalogAuswertung.ts).
    */
   tabelle?:
     | 'aufloesung'
     | 'rechner'
+    | 'dateipruefung'
     | 'groessen:tshirt'
     | 'groessen:hoodie'
     | 'groessen:polo'
@@ -81,13 +82,13 @@ export interface AnlassSeite {
 // ── Bausteine (wortgleich oder Auszug aus freigegebenen Texten) ─────────
 
 /** Wortgleich: FAQ „Ab welcher Menge …“ / Kategorie- und DTF-Seiten. */
-const A_EINZELSTUECK =
+export const A_EINZELSTUECK =
   'Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
 /** Wortgleich wie auf den DTF-Seiten. */
 const A_DATEIEN =
   'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.';
 /** Wortgleich wie auf den DTF-Seiten. */
-const A_DAUER =
+export const A_DAUER =
   'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.';
 /** Wortgleich: FAQ „Wie hoch sind die Versandkosten?“ (Beträge als Platzhalter, damit sie nie veralten). */
 const A_VERSAND =
@@ -426,7 +427,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Was passiert bei einem Foto mit zu niedriger Auflösung?',
-        a: 'Der Konfigurator zeigt dann eine Warnung: Die Auflösung ist zu niedrig für einen scharfen Druck (unter {dpiMin} dpi bei der gewählten Größe). Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',
+        a: 'Der Konfigurator zeigt dann eine Warnung: Die Auflösung ist zu niedrig für einen scharfen Druck (unter {dpiMin} dpi bei der gewählten Größe). Platzieren Sie das Bild kleiner, verwenden Sie ein SVG, laden Sie eine höher aufgelöste Datei hoch oder nutzen Sie den Button „Hochskalieren“, der das Bild auf {dpiZiel} dpi hochrechnet, wenn das möglich ist. Zusätzliche Details entstehen dabei nicht.',
       },
       {
         q: 'Kann ich das Foto auf Vorder- und Rückseite drucken?',
@@ -602,11 +603,11 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Was kann ich tun, wenn die Auflösung zu niedrig ist?',
-        a: 'Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',
+        a: 'Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch. Oder skalieren Sie das Bild hoch: Das Werkzeug zum Prüfen der Druckdatei und der Button „Hochskalieren“ im Konfigurator rechnen auf {dpiZiel} dpi, wenn das möglich ist.',
       },
     ],
     ohneAblauf: true,
-    verwandt: ['druckdaten-vorbereiten', 'tshirt-mit-foto-bedrucken', 'textildruck-preise', 'vereinskleidung-bedrucken'],
+    verwandt: ['druckdaten-vorbereiten', 'druckdatei-pruefen', 'tshirt-mit-foto-bedrucken', 'textildruck-preise', 'vereinskleidung-bedrucken'],
   },
 
   // ── Ratgeber: Größentabelle ────────────────────────────────────────
@@ -788,7 +789,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Mein Bild ist zu klein – was kann ich tun?',
-        a: 'Der Konfigurator warnt, wenn die Auflösung bei der gewählten Größe zu niedrig ist (unter {dpiMin} dpi). Platzieren Sie das Bild dann kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',
+        a: 'Der Konfigurator warnt, wenn die Auflösung bei der gewählten Größe zu niedrig ist (unter {dpiMin} dpi). Platzieren Sie das Bild dann kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch. Alternativ können Sie das Bild hochskalieren: Der Button „Hochskalieren“ rechnet es auf {dpiZiel} dpi hoch, wenn das möglich ist – Kanten werden dabei glatter, zusätzliche Details entstehen nicht.',
       },
       {
         q: 'Kann ich auch Fotos drucken lassen?',
@@ -805,6 +806,523 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       'textildruck-preise',
       'vereinskleidung-bedrucken',
       'firmenkleidung-bedrucken',
+      'druckdatei-pruefen',
+    ],
+  },
+
+  // ── Werkzeug: Datei prüfen und hochskalieren ───────────────────────
+  {
+    slug: 'druckdatei-pruefen',
+    kurzname: 'Druckdatei prüfen',
+    titel: 'Druckdatei prüfen: dpi-Check & Hochskalieren kostenlos',
+    h1: 'Druckdatei prüfen und für den Druck hochskalieren',
+    eyebrow: 'Kostenloses Werkzeug',
+    beschreibung:
+      'Bild auswählen, Druckbreite eingeben, dpi prüfen und bei Bedarf auf ca. 300 dpi hochskalieren – kostenlos, direkt im Browser, ohne Upload.',
+    einleitung: [
+      'Reicht die Auflösung Ihres Bildes für die gewünschte Druckgröße? Wählen Sie eine Datei aus und geben Sie die Druckbreite ein – das Werkzeug zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator. Ist sie zu niedrig, können Sie das Bild hochskalieren und als PNG speichern.',
+      'Alles geschieht in Ihrem Browser: Ihr Bild wird nicht hochgeladen und nicht gespeichert.',
+    ],
+    kacheln: [],
+    abschnitte: [
+      { ueberschrift: 'Datei prüfen', tabelle: 'dateipruefung' },
+      {
+        ueberschrift: 'So lesen Sie das Ergebnis',
+        punkte: [
+          'Grün ab {dpiOk} dpi: optimale Druckqualität bei dieser Größe.',
+          'Gelb von {dpiMin} bis {dpiOk} dpi: akzeptabel, für sehr große Drucke aber eher knapp.',
+          'Rot unter {dpiMin} dpi: zu unscharf. Platzieren Sie das Bild kleiner, skalieren Sie es hoch, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',
+        ],
+        absaetze: ['Das Hochskalieren rechnet auf {dpiZiel} dpi, wenn das technisch möglich ist. Wo nicht, nennt das Werkzeug vorher den Wert, der erreicht wird.'],
+      },
+      {
+        ueberschrift: 'Was Hochskalieren kann – und was nicht',
+        absaetze: [
+          'Beim Hochskalieren werden aus den vorhandenen Bildpunkten mehr Bildpunkte berechnet: Kanten werden glatter und klarer, Treppenstufen und Unschärfe nehmen ab. Zusätzliche Details entstehen dabei nicht – ein sehr kleines oder verwaschenes Bild bleibt ein kleines oder verwaschenes Bild, nur mit mehr Bildpunkten.',
+          'Am deutlichsten wirkt es bei Logos, Schriftzügen und Grafiken. Wenn möglich, laden Sie eine vektorbasierte Datei (SVG, PDF) oder ein höher aufgelöstes Original hoch – sie skalieren verlustfrei.',
+        ],
+      },
+      {
+        ueberschrift: 'Hochskalieren im Konfigurator',
+        absaetze: [
+          'Dieselbe Berechnung steckt im Konfigurator: Ist die Auflösung eines hochgeladenen Bildes bei der gewählten Größe niedrig, erscheint neben dem Hinweis ein Button „Hochskalieren“. Über „Original wiederherstellen“ können Sie das ursprüngliche Bild zurückholen.',
+        ],
+      },
+    ],
+    beispiele: [],
+    fragen: [
+      {
+        q: 'Wie viele dpi braucht ein Bild für den Textildruck?',
+        a: 'Der Konfigurator bewertet ab {dpiOk} dpi die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb) und darunter als zu niedrig (rot). Das Hochskalieren rechnet auf {dpiZiel} dpi, wenn das technisch möglich ist.',
+      },
+      {
+        q: 'Wird mein Bild hochgeladen?',
+        a: 'Nein. Das Werkzeug rechnet vollständig in Ihrem Browser; das Bild verlässt Ihren Rechner nicht.',
+      },
+      {
+        q: 'Macht Hochskalieren ein unscharfes Foto scharf?',
+        a: 'Nein. Es werden keine neuen Details erzeugt, sondern Kanten geglättet und nachgeschärft. Ein unscharfes Foto bleibt unscharf; bei Logos, Schriftzügen und Grafiken ist der Unterschied am deutlichsten.',
+      },
+      {
+        q: 'Welche Dateiformate kann das Werkzeug lesen?',
+        a: 'Rasterbilder im Format PNG, JPG/JPEG und WebP. Für den Druck selbst unterstützt der Konfigurator SVG, PNG, JPG/JPEG und PDF.',
+      },
+      {
+        q: 'Wie speichere ich das hochskalierte Bild?',
+        a: 'Nach dem Hochskalieren erscheint der Link „Als PNG speichern“. Die gespeicherte Datei können Sie anschließend im Konfigurator hochladen.',
+      },
+    ],
+    ohneAblauf: true,
+    verwandt: ['druckaufloesung-rechner', 'druckdaten-vorbereiten', 'tshirt-mit-foto-bedrucken', 'dtf-druck-erklaert', 'textildruck-preise'],
+  },
+
+  // ── Ratgeber: DTF-Druck erklärt ────────────────────────────────────
+  {
+    slug: 'dtf-druck-erklaert',
+    kurzname: 'DTF-Druck erklärt',
+    titel: 'Was ist DTF-Druck? Direct-to-Film einfach erklärt',
+    h1: 'Was ist DTF-Druck?',
+    eyebrow: 'Ratgeber',
+    beschreibung:
+      'DTF-Druck (Direct-to-Film) einfach erklärt: So entsteht der Transferdruck, wofür er sich eignet und worauf Sie bei der Datei achten sollten.',
+    einleitung: [
+      'DTF steht für „Direct-to-Film“: Das Motiv wird zuerst auf eine Folie gedruckt und danach mit Hitze und Druck auf das Textil übertragen. So entstehen vollfarbige Drucke – auch mit Farbverläufen und Fotos.',
+      'Hier steht, wie ein DTF-Druck entsteht, wofür er sich eignet und was Sie bei der Datei beachten sollten. Bei uns bestellen Sie ihn ab einem einzelnen Stück.',
+    ],
+    kacheln: [],
+    abschnitte: [
+      {
+        ueberschrift: 'So entsteht ein DTF-Druck',
+        punkte: [
+          'Das Motiv wird spiegelverkehrt auf eine spezielle Transferfolie gedruckt.',
+          'Auf die noch feuchte Farbe wird ein Klebepulver aufgetragen und angeschmolzen.',
+          'Die Folie wird mit Hitze und Druck auf das Textil gepresst; dabei verbindet sich der Druck mit dem Stoff.',
+          'Danach wird die Trägerfolie abgezogen – das Motiv bleibt auf dem Textil.',
+        ],
+      },
+      {
+        ueberschrift: 'Wofür sich DTF eignet',
+        punkte: [
+          'Vollfarbig: Fotorealistische Motive und weiche Farbverläufe lassen sich in einem Druck umsetzen.',
+          'Flexibel: Der Griff bleibt flexibel und bewegt sich mit dem Stoff.',
+          'Große Flächen: Auch großflächige Motive sind möglich.',
+          'Kleine Mengen: Es gibt keine Mindestbestellmenge – ein einzelnes Stück genügt.',
+        ],
+      },
+      {
+        ueberschrift: 'Was bei der Datei zählt',
+        absaetze: [
+          'Für Logos und Schriftzüge eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Rasterbilder (PNG, JPG) brauchen genug Bildpunkte für die gewünschte Druckgröße: Ab {dpiOk} dpi gilt die Qualität im Konfigurator als optimal.',
+          'Wie hoch die Auflösung Ihres Bildes bei einer bestimmten Druckbreite ist, zeigt das Werkzeug zum Prüfen der Druckdatei. Vor der Produktion prüfen wir Ihre Datei kostenlos, und Sie erhalten eine finale Vorschau zur Freigabe.',
+        ],
+      },
+      {
+        ueberschrift: 'DTF bei uns',
+        absaetze: [
+          'Wir bedrucken T-Shirts, Hoodies, Polos, Jacken und Kinderbekleidung per DTF-Transferdruck. Im Konfigurator laden Sie Ihr Motiv hoch, platzieren es auf Brust, Rücken oder Ärmel und sehen den Preis in Echtzeit.',
+        ],
+      },
+    ],
+    beispiele: [],
+    fragen: [
+      {
+        q: 'Was bedeutet DTF?',
+        a: 'DTF steht für „Direct-to-Film“: Das Motiv wird auf eine Folie gedruckt und anschließend mit Hitze und Druck auf das Textil übertragen.',
+      },
+      {
+        q: 'Wofür eignet sich der DTF-Transferdruck?',
+        a: 'DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Der Griff bleibt flexibel und bewegt sich mit dem Stoff.',
+      },
+      {
+        q: 'Worin unterscheidet sich DTF vom Siebdruck?',
+        a: 'Beim Siebdruck wird die Farbe durch ein Sieb auf das Textil gedrückt, und für jede Farbe gibt es ein eigenes Sieb. DTF druckt vollfarbig auf Folie und eignet sich auch für kleine Mengen. Mehr dazu im Vergleich von DTF-Druck und Siebdruck.',
+      },
+      { q: 'Kann ich auch nur ein einzelnes Teil bedrucken lassen?', a: A_EINZELSTUECK },
+      { q: 'Welche Dateien kann ich hochladen?', a: A_DATEIEN },
+      { q: 'Wie lange dauert es, bis die Bestellung ankommt?', a: A_DAUER },
+    ],
+    ohneAblauf: true,
+    verwandt: ['dtf-druck-vs-siebdruck', 'bedruckte-textilien-pflege', 'druckdaten-vorbereiten', 'druckdatei-pruefen', 'textildruck-preise'],
+  },
+
+  // ── Ratgeber: DTF oder Siebdruck ───────────────────────────────────
+  {
+    slug: 'dtf-druck-vs-siebdruck',
+    kurzname: 'DTF oder Siebdruck',
+    titel: 'DTF-Druck oder Siebdruck? Unterschiede im Überblick',
+    h1: 'DTF-Druck oder Siebdruck – was passt zu Ihrem Motiv?',
+    eyebrow: 'Verfahren im Vergleich',
+    beschreibung:
+      'DTF-Druck und Siebdruck im Vergleich: Motive, Mengen, Farben und Kosten – damit Sie das passende Verfahren für Ihr Textil auswählen.',
+    einleitung: [
+      'Beide Verfahren bringen Motive auf Textil, arbeiten aber grundverschieden. Welches passt, hängt vor allem von Motiv und Stückzahl ab.',
+      'Wir bieten DTF-Transferdruck an. Der Überblick erklärt die Unterschiede sachlich – auch dort, wo Siebdruck Vorteile hat.',
+    ],
+    kacheln: [],
+    abschnitte: [
+      {
+        ueberschrift: 'So funktioniert Siebdruck',
+        absaetze: [
+          'Beim Siebdruck wird die Farbe mit einer Rakel durch ein feinmaschiges Sieb auf das Textil gedrückt. Für jede Farbe wird ein eigenes Sieb vorbereitet.',
+        ],
+      },
+      {
+        ueberschrift: 'So funktioniert DTF-Transferdruck',
+        absaetze: [
+          'Beim DTF-Transferdruck wird das Motiv vollfarbig auf eine Folie gedruckt und anschließend mit Hitze und Druck auf das Textil übertragen.',
+        ],
+      },
+      {
+        ueberschrift: 'Die Unterschiede im Überblick',
+        punkte: [
+          'Farben: Siebdruck braucht je Farbe ein Sieb und eignet sich daher für Motive mit wenigen Farben. Beim DTF-Druck spielt die Zahl der Farben für den Aufwand keine Rolle – Farbverläufe und Fotos sind möglich.',
+          'Menge: Die Siebe müssen für jede Bestellung vorbereitet werden, deshalb lohnt sich Siebdruck meist erst bei größeren Stückzahlen. DTF eignet sich auch für Einzelstücke – bei uns ab 1 Stück.',
+          'Motiv: Fotorealistische Motive und weiche Verläufe sprechen für DTF; ein einfarbiges Motiv in hoher Stückzahl kann für Siebdruck sprechen.',
+          'Griff: Beim DTF-Transferdruck bleibt der Griff flexibel und bewegt sich mit dem Stoff.',
+        ],
+      },
+      {
+        ueberschrift: 'Welches Verfahren passt?',
+        absaetze: [
+          'Für ein einzelnes Teil, eine kleine Gruppe oder ein vollfarbiges Motiv ist DTF die praktische Wahl. Für mehrere hundert Teile mit einem einfarbigen Motiv kann Siebdruck wirtschaftlicher sein – Siebdruck bieten wir nicht an.',
+        ],
+      },
+    ],
+    beispiele: [],
+    fragen: [
+      {
+        q: 'Was ist der Unterschied zwischen DTF-Druck und Siebdruck?',
+        a: 'Beim Siebdruck wird die Farbe durch ein Sieb gedrückt, für jede Farbe gibt es ein eigenes Sieb. Beim DTF-Transferdruck wird das Motiv vollfarbig auf eine Folie gedruckt und mit Hitze und Druck auf das Textil übertragen.',
+      },
+      {
+        q: 'Ab wie vielen Stück lohnt sich Siebdruck?',
+        a: 'Weil für jede Farbe Siebe vorbereitet werden, lohnt sich Siebdruck meist erst bei größeren Stückzahlen. Eine feste Grenze gibt es nicht; sie hängt von Motiv, Farbanzahl und Anbieter ab. Wir bieten Siebdruck nicht an.',
+      },
+      {
+        q: 'Kann ich ein Foto drucken lassen?',
+        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive. Laden Sie das Foto im Konfigurator hoch; die Auflösungs-Ampel zeigt, ob es für die gewählte Größe scharf genug ist.',
+      },
+      { q: 'Kann ich auch nur ein einzelnes Teil bedrucken lassen?', a: A_EINZELSTUECK },
+      { q: 'Welche Dateien brauche ich für den Druck?', a: A_DATEIEN },
+    ],
+    ohneAblauf: true,
+    verwandt: ['dtf-druck-erklaert', 'textildruck-preise', 'druckdaten-vorbereiten', 'vereinskleidung-bedrucken', 'firmenkleidung-bedrucken'],
+  },
+
+  // ── Ratgeber: Pflege ───────────────────────────────────────────────
+  {
+    slug: 'bedruckte-textilien-pflege',
+    kurzname: 'Pflege bedruckter Textilien',
+    titel: 'Bedruckte Textilien waschen: Pflegetipps für DTF-Drucke',
+    h1: 'Bedruckte Textilien richtig waschen und pflegen',
+    eyebrow: 'Pflege',
+    beschreibung:
+      'So pflegen Sie bedruckte T-Shirts und Hoodies: von links waschen, schonende Temperatur, kein Weichspüler – allgemeine Tipps für DTF-Drucke.',
+    einleitung: [
+      'Mit der richtigen Pflege bleibt ein bedrucktes Textil länger schön. Die folgenden Hinweise sind allgemeine Empfehlungen für Textildruck. Verbindlich ist immer das Pflegeetikett des jeweiligen Textils.',
+    ],
+    kacheln: [],
+    abschnitte: [
+      {
+        ueberschrift: 'Waschen',
+        punkte: [
+          'Wenden Sie das Teil vor dem Waschen auf links.',
+          'Waschen Sie schonend bei niedriger Temperatur – das Pflegeetikett nennt die zulässige Höchsttemperatur.',
+          'Verwenden Sie mildes Waschmittel; verzichten Sie auf Bleichmittel und Weichspüler.',
+          'Waschen Sie bedruckte Teile nicht zusammen mit Textilien, die Reißverschlüsse, Klettverschlüsse oder raue Oberflächen haben.',
+        ],
+      },
+      {
+        ueberschrift: 'Trocknen und Bügeln',
+        punkte: [
+          'Lufttrocknen schont das Textil am meisten. Im Wäschetrockner nur bei niedriger Temperatur und nur, wenn das Pflegeetikett es erlaubt.',
+          'Bügeln Sie bei Bedarf von links und bei niedriger Temperatur – nicht direkt auf dem Druck.',
+        ],
+      },
+      {
+        ueberschrift: 'Pflegehinweise zu Ihrem Modell',
+        absaetze: [
+          'Jedes Modell hat auf seiner Produktseite einen Abschnitt „Pflegehinweise“ mit den Angaben des Herstellers. Bei Fragen zu Ihrer Bestellung erreichen Sie uns über das Kontaktformular.',
+        ],
+      },
+    ],
+    beispiele: [],
+    fragen: [
+      {
+        q: 'Wie wasche ich ein bedrucktes T-Shirt richtig?',
+        a: 'Auf links wenden, schonend bei niedriger Temperatur mit mildem Waschmittel waschen, kein Bleichmittel und kein Weichspüler. Verbindlich ist das Pflegeetikett des Textils.',
+      },
+      {
+        q: 'Darf ein bedruckter Hoodie in den Trockner?',
+        a: 'Schonender ist Lufttrocknen. Im Trockner nur bei niedriger Temperatur und nur, wenn das Pflegeetikett es erlaubt.',
+      },
+      {
+        q: 'Kann ich über den Druck bügeln?',
+        a: 'Besser nicht direkt: Bügeln Sie von links und bei niedriger Temperatur, oder legen Sie ein Tuch zwischen Bügeleisen und Druck.',
+      },
+      {
+        q: 'Welche Waschtemperatur ist für bedruckte Textilien geeignet?',
+        a: 'Das Pflegeetikett nennt die zulässige Höchsttemperatur des Textils. Für bedruckte Teile ist eine niedrige Temperatur schonender.',
+      },
+      {
+        q: 'Wo finde ich die Pflegehinweise zu einem Modell?',
+        a: 'Auf der Produktseite des Modells im Abschnitt „Pflegehinweise“.',
+      },
+    ],
+    ohneAblauf: true,
+    verwandt: ['dtf-druck-erklaert', 't-shirts-bedrucken-besticken', 'hoodies-bedrucken-besticken', 'stoffgewicht-t-shirt-hoodie', 'textildruck-preise'],
+  },
+
+  // ── Saison: Weihnachtsgeschenke ────────────────────────────────────
+  {
+    slug: 'weihnachtsgeschenke-bedrucken',
+    kurzname: 'Weihnachtsgeschenke',
+    titel: 'Weihnachtsgeschenke bedrucken lassen – ab 1 Stück',
+    h1: 'Personalisierte Weihnachtsgeschenke: Hoodie, T-Shirt & mehr',
+    eyebrow: 'Geschenkideen',
+    beschreibung:
+      'Hoodies, T-Shirts und Longsleeves als persönliches Weihnachtsgeschenk bedrucken – ab 1 Stück, Preis live im Konfigurator.',
+    einleitung: [
+      'Ein Hoodie mit Lieblingsmotiv, T-Shirts für die ganze Familie, ein Foto auf dem Longsleeve: Es gibt {anzahl} Modelle ({arten}). Sie laden Ihr Motiv hoch, sehen im Konfigurator, wie es auf dem Textil sitzt, und der Preis erscheint in Echtzeit.',
+      EINLEITUNG_DTF,
+    ],
+    kacheln: [
+      { art: 'hoodie', anzahl: 2 },
+      { art: 'tshirt', anzahl: 2 },
+      { art: 'longsleeve', anzahl: 2 },
+    ],
+    abschnitte: [
+      {
+        ueberschrift: 'Ideen für persönliche Geschenke',
+        punkte: [
+          'Partner-Hoodies: zwei Teile mit demselben oder mit zwei verschiedenen Motiven.',
+          'Familien-Shirts: ein Motiv, alle Größen – Größen lassen sich frei mischen.',
+          'Foto-Geschenk: Lieblingsfoto, Haustier oder Kinderzeichnung auf T-Shirt oder Longsleeve.',
+          'Teamgeschenk: Hoodies mit Firmen- oder Vereinslogo für Kolleginnen, Kollegen und Mitglieder.',
+        ],
+      },
+      {
+        ueberschrift: 'Rechtzeitig planen',
+        absaetze: [
+          'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen, und dauert regulär {produktionszeit}; der Versand erfolgt anschließend innerhalb von {versand}. Dazu kommt die Laufzeit des Pakets. Je früher Sie bestellen, desto mehr Spielraum haben Sie.',
+          A_FREIGABE,
+        ],
+      },
+      {
+        ueberschrift: 'Auch für Kinder',
+        absaetze: [
+          'Auch Kinderbekleidung lässt sich bedrucken. Die Größen führen wir so, wie die Hersteller sie angeben – die Größentabelle steht auf jeder Produktseite.',
+        ],
+      },
+      {
+        ueberschrift: 'Mehrere Geschenke in einer Bestellung',
+        absaetze: [ABSATZ_MEHRERE_PRODUKTE],
+      },
+    ],
+    beispiele: [
+      {
+        beschriftung: '1 Hoodie · Motiv auf der Brust (ca. 10 × 10 cm)',
+        art: 'hoodie',
+        menge: 1,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '2 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm)',
+        art: 'hoodie',
+        menge: 2,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm)',
+        art: 'tshirt',
+        menge: 5,
+        flaechen: [{ ansicht: 'front', breiteCm: 20, hoeheCm: 20 }],
+      },
+    ],
+    fragen: [
+      { q: 'Kann ich ein einzelnes Geschenk bedrucken lassen?', a: A_EINZELSTUECK },
+      { q: 'Wie lange dauert es, bis das Geschenk ankommt?', a: A_DAUER },
+      {
+        q: 'Sehe ich das Ergebnis vor der Produktion?',
+        a: `${A_FREIGABE} Im Konfigurator sehen Sie außerdem schon vor dem Bestellen, wie das Motiv auf dem Textil sitzt.`,
+      },
+      {
+        q: 'Welche Dateien kann ich für Foto oder Motiv hochladen?',
+        a: `${A_DATEIEN} Je höher die Auflösung des Fotos, desto schärfer wird der Druck.`,
+      },
+      { q: 'Können Familienmitglieder verschiedene Größen bekommen?', a: A_GROESSEN },
+      { q: 'Wie hoch sind die Versandkosten?', a: A_VERSAND },
+    ],
+    verwandt: [
+      'hoodies-bedrucken-besticken',
+      't-shirts-bedrucken-besticken',
+      'longsleeves-bedrucken',
+      'tshirt-mit-foto-bedrucken',
+      'kinderbekleidung-bedrucken',
+      'textildruck-preise',
+    ],
+  },
+
+  // ── Gruppen und Feiern ─────────────────────────────────────────────
+  {
+    slug: 'gruppen-shirts-bedrucken',
+    kurzname: 'JGA & Gruppenshirts',
+    titel: 'JGA-Shirts & Gruppenshirts bedrucken – ab 1 Stück',
+    h1: 'JGA-Shirts und Gruppenshirts bedrucken lassen',
+    eyebrow: 'Für Gruppen und Feiern',
+    beschreibung:
+      'T-Shirts und Hoodies für JGA, Geburtstag, Klassentreffen oder Familienfeier bedrucken – Größen frei mischbar, Preis live im Konfigurator.',
+    einleitung: [
+      'Gleiche Shirts für die ganze Gruppe: JGA, Geburtstag, Klassentreffen oder Familienfeier. Es gibt {anzahl} Modelle ({arten}); Sie laden Ihr Motiv hoch und sehen im Konfigurator, wie es sitzt – mit Preis in Echtzeit.',
+      EINLEITUNG_DTF,
+    ],
+    kacheln: [
+      { art: 'tshirt', anzahl: 3 },
+      { art: 'hoodie', anzahl: 2 },
+    ],
+    abschnitte: [
+      {
+        ueberschrift: 'Eine Bestellung, viele Größen',
+        absaetze: [
+          'Alle bekommen dasselbe Motiv, jede Person ihre Größe: Im Konfigurator tragen Sie die Stückzahl je Größe ein – Größen dürfen Sie frei mischen, zum Beispiel 2× M, 6× L und 2× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.',
+        ],
+      },
+      {
+        ueberschrift: 'Motiv vorn, Spruch hinten',
+        absaetze: [ABSATZ_POSITIONEN, 'Ein mögliches Layout: ein kleines Motiv auf der Brust, der Spruch oder der Name der Gruppe groß auf dem Rücken.'],
+      },
+      {
+        ueberschrift: 'Unterschiedliche Motive in einer Bestellung',
+        absaetze: [ABSATZ_MEHRERE_PRODUKTE],
+      },
+      {
+        ueberschrift: 'Rechtzeitig planen',
+        absaetze: [
+          'Die Produktion dauert regulär {produktionszeit}, der anschließende Versand erfolgt innerhalb von {versand}. Planen Sie bei Feiern mit festem Termin entsprechend Zeit ein. Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.',
+        ],
+      },
+    ],
+    beispiele: [
+      {
+        beschriftung: '8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm)',
+        art: 'tshirt',
+        menge: 8,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm) und Spruch auf dem Rücken (ca. 25 × 10 cm)',
+        art: 'tshirt',
+        menge: 8,
+        flaechen: [
+          { ansicht: 'front', breiteCm: 10, hoeheCm: 10 },
+          { ansicht: 'back', breiteCm: 25, hoeheCm: 10 },
+        ],
+      },
+      {
+        beschriftung: '10 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm)',
+        art: 'hoodie',
+        menge: 10,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+    ],
+    fragen: [
+      { q: 'Ab wie vielen Teilen lohnt sich eine Gruppenbestellung?', a: A_MENGE_STAFFEL },
+      { q: 'Können wir die Größen mischen?', a: A_GROESSEN },
+      {
+        q: 'Können wir unterschiedliche Motive oder Namen bestellen?',
+        a: 'Jedes Motiv ist eine eigene Position: Konfigurieren Sie ein Teil, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.',
+      },
+      { q: 'Wie früh sollten wir bestellen?', a: A_DAUER },
+      { q: 'Wie hoch sind die Versandkosten?', a: A_VERSAND },
+    ],
+    verwandt: [
+      't-shirts-bedrucken-besticken',
+      'hoodies-bedrucken-besticken',
+      'tshirt-mit-foto-bedrucken',
+      'abschluss-hoodies-bedrucken',
+      'groessentabelle-t-shirts-hoodies',
+      'textildruck-preise',
+    ],
+  },
+
+  // ── Merch und eigene Marke ─────────────────────────────────────────
+  {
+    slug: 'eigene-marke-merch-bedrucken',
+    kurzname: 'Merch & eigene Marke',
+    titel: 'Merch & eigene Marke: Textilien ab 1 Stück bedrucken',
+    h1: 'Merch und eigene Marke: Textilien bedrucken lassen',
+    eyebrow: 'Für Creator, Bands und kleine Labels',
+    beschreibung:
+      'Eigenes Merch testen: Hoodies, T-Shirts und mehr ab 1 Stück bedrucken, Staffelpreise ab 5 Stück, Preis live im Konfigurator.',
+    einleitung: [
+      'Sie möchten Merch für Ihre Community, Ihre Band oder Ihr kleines Label ausprobieren? Mit DTF-Transferdruck bestellen Sie ab einem einzelnen Stück – ohne Mindestmenge. Es gibt {anzahl} Modelle ({arten}).',
+      EINLEITUNG_DTF,
+    ],
+    kacheln: [
+      { art: 'hoodie', anzahl: 2 },
+      { art: 'tshirt', anzahl: 2 },
+      { art: 'zip-hoodie', anzahl: 2 },
+    ],
+    abschnitte: [
+      {
+        ueberschrift: 'Erst ein Muster, dann die Menge',
+        absaetze: [
+          'Bestellen Sie zuerst ein einzelnes Teil, prüfen Sie Sitz, Farbe und Druck in der Hand und erhöhen Sie danach die Menge. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.',
+        ],
+      },
+      {
+        ueberschrift: 'Was Sie vorbereiten sollten',
+        punkte: [
+          'Ihr Motiv als SVG, PDF oder PNG – vektorbasierte Dateien skalieren verlustfrei.',
+          'Bei Rasterbildern genug Bildpunkte für die gewünschte Druckgröße: Ab {dpiOk} dpi gilt die Qualität im Konfigurator als optimal.',
+          'Die gewünschten Positionen: Brust, Rücken und – je nach Modell – Ärmel.',
+        ],
+      },
+      {
+        ueberschrift: 'Mehrere Designs und Teile',
+        absaetze: [ABSATZ_MEHRERE_PRODUKTE, A_FREIGABE],
+      },
+    ],
+    beispiele: [
+      {
+        beschriftung: '1 Hoodie · Logo auf der Brust (ca. 10 × 10 cm)',
+        art: 'hoodie',
+        menge: 1,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '5 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm)',
+        art: 'tshirt',
+        menge: 5,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motiv auf dem Rücken (ca. 20 × 25 cm)',
+        art: 'hoodie',
+        menge: 10,
+        flaechen: [
+          { ansicht: 'front', breiteCm: 10, hoeheCm: 10 },
+          { ansicht: 'back', breiteCm: 20, hoeheCm: 25 },
+        ],
+      },
+    ],
+    fragen: [
+      { q: 'Kann ich einen einzelnen Prototyp bestellen?', a: A_EINZELSTUECK },
+      { q: 'Welche Dateien brauche ich für mein Motiv?', a: A_DATEIEN },
+      {
+        q: 'Wie sehe ich den Preis für meine Merch-Bestellung?',
+        a: 'Im Konfigurator sehen Sie Stück- und Gesamtpreis in Echtzeit, bevor Sie etwas in den Warenkorb legen. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.',
+      },
+      { q: 'Wie lange dauert es, bis die Bestellung ankommt?', a: A_DAUER },
+      { q: 'Welche Zahlungsmöglichkeiten gibt es?', a: A_ZAHLUNG },
+    ],
+    verwandt: [
+      'hoodies-bedrucken-besticken',
+      't-shirts-bedrucken-besticken',
+      'zip-hoodies-bedrucken',
+      'druckdaten-vorbereiten',
+      'textildruck-preise',
+      'vereinskleidung-bedrucken',
     ],
   },
 ];

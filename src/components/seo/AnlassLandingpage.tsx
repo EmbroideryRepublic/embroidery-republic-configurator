@@ -13,6 +13,7 @@ import { Produktkachel } from '@/components/shop/Produktkachel';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { AufloesungsRechner } from '@/components/seo/AufloesungsRechner';
+import { DateiPruefung } from '@/components/seo/DateiPruefung';
 import { GewichtsKlassenBlock, GroessenTabelleBlock } from '@/components/seo/KatalogTabellen';
 import { DTF_ABLAUF_SCHRITTE } from '@/config/seo/dtfSeiten';
 import { dtfSeiteVon } from '@/lib/seo/dtfAdresse';
@@ -170,6 +171,7 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
               </p>
             ))}
             {a.tabelle === 'rechner' && <AufloesungsRechner />}
+            {a.tabelle === 'dateipruefung' && <DateiPruefung />}
             {a.tabelle?.startsWith('groessen:') && <GroessenTabelleBlock art={a.tabelle.slice(9) as 'tshirt' | 'hoodie' | 'polo'} />}
             {a.tabelle?.startsWith('gewicht:') && <GewichtsKlassenBlock art={a.tabelle.slice(8) as 'tshirt' | 'hoodie' | 'polo'} />}
             {a.tabelle === 'aufloesung' && (

@@ -178,6 +178,11 @@ export const DTF_SEITEN: DtfSeite[] = [
   markenSeite('Stedman', 'stedman-bedrucken'),
   markenSeite('B&C', 'bc-bedrucken'),
   markenSeite('Russell', 'russell-bedrucken'),
+  // Seit 2026-11-14: die übrigen Marken mit ≥ 9 Modellen (Neutral 12, SOL'S 11, James+Nicholson 16, EarthPositive 9).
+  markenSeite('James+Nicholson', 'james-nicholson-bedrucken'),
+  markenSeite('Neutral', 'neutral-bedrucken'),
+  markenSeite("SOL'S", 'sols-bedrucken'),
+  markenSeite('EarthPositive', 'earthpositive-bedrucken'),
   artSeite('longsleeve', 'longsleeves-bedrucken'),
   artSeite('jacket', 'jacken-bedrucken'),
   artSeite('zip-hoodie', 'zip-hoodies-bedrucken'),

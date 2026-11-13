@@ -20,7 +20,7 @@ import { sortiere } from '@/lib/catalog/filter';
 import { LEERE_KRITERIEN } from '@/lib/catalog/kriterien';
 import { gewichtsSpanne, TABELLEN_ARTEN, type TabellenArt } from '@/lib/seo/katalogAuswertung';
 import { geschlechterVon } from '@/config/products/facetten';
-import { MIN_DPI, OK_DPI } from '@/lib/canvas/logoQualitaet';
+import { MIN_DPI, OK_DPI, ZIEL_DPI } from '@/lib/canvas/logoQualitaet';
 import { formatiereGeld } from '@/lib/format';
 import type { ProductType } from '@/types';
 
@@ -105,6 +105,7 @@ export function fuelleAnlass(text: string, seite: AnlassSeite, f: AnlassFakten):
     frei: () => formatiereGeld(SHIPPING_RATES.DE.freeFrom),
     dpiMin: () => String(MIN_DPI),
     dpiOk: () => String(OK_DPI),
+    dpiZiel: () => String(ZIEL_DPI),
   };
   return text.replace(/\{(\w+)\}/g, (treffer, name: string) => {
     const gewicht = /^gewicht(Min|Max)_(\w+)$/.exec(name);

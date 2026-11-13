@@ -41,8 +41,18 @@ import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { kategorieLink } from '@/lib/seo/kategorieAdresse';
 import { kuerzenAufLaenge } from '@/lib/seo/kuerzen';
 import { produktTitel } from '@/lib/seo/produktTitel';
-import { brotkrumenSchema, produktSchema } from '@/lib/seo/strukturierteDaten';
+import { brotkrumenSchema, faqSchema, produktSchema } from '@/lib/seo/strukturierteDaten';
+import { produktFakten } from '@/lib/seo/produktFakten';
 import type { ProductConfig } from '@/config/products/types';
+
+/** Ratgeberseiten, auf die jede Produktseite verlinkt (interne Verlinkung; Zielseiten: config/seo/anlassSeiten.ts). */
+const RATGEBER_LINKS: { slug: string; label: string; nur?: (p: ProductConfig) => boolean }[] = [
+  { slug: 'groessentabelle-t-shirts-hoodies', label: 'Größentabelle erklärt' },
+  { slug: 'stoffgewicht-t-shirt-hoodie', label: 'Stoffgewicht erklärt' },
+  { slug: 'dtf-druck-erklaert', label: 'Was ist DTF-Druck?' },
+  { slug: 'bedruckte-textilien-pflege', label: 'Pflege bedruckter Textilien' },
+  { slug: 'druckdatei-pruefen', label: 'Druckdatei prüfen' },
+];
 
 export function generateStaticParams() {
   return alleProduktSlugs().map((slug) => ({ slug }));
@@ -157,6 +167,8 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
   // Betreiberschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, versprechen die Texte nur DTF-Transferdruck.
   const stickereiVerfuegbar = veredelungVerfuegbar('embroidery');
   const d = produkt.detailedDescription;
+  // Eigener Text und Fragen je Modell, aus den Katalogdaten berechnet (lib/seo/produktFakten.ts).
+  const fakten = produktFakten(produkt, artWort, veredelungsflaechen, stickereiVerfuegbar);
 
   const basis = kanonischeBasisUrl();
 
@@ -166,6 +178,7 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
           Bild verstehen – Grundlage für ein angereichertes Suchergebnis. */}
       <JsonLd daten={produktSchema(produkt, basis)} />
       <JsonLd daten={brotkrumenSchema(produkt, artLabel, basis)} />
+      <JsonLd daten={faqSchema(fakten.fragen)} />
       <div className="mx-auto max-w-5xl px-4 py-8">
         {/* Sichtbare Brotkrume und strukturierte Brotkrume müssen denselben Weg
             zeigen – vorher begann sie beim Konfigurator, die Auszeichnung aber
@@ -290,6 +303,32 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
           <WaehrungsPreis betragInEur={produkt.basePrice} />
         </ProduktKaufleiste>
         </ProduktFarbeProvider>
+
+        {/* ── Auf einen Blick ───────────────────────────────────────────
+            Eigener Text je Modell, vollständig aus den Katalogdaten berechnet (lib/seo/produktFakten.ts): Material, Gewicht im
+            Vergleich zum Sortiment, Größen, Farben, Druckflächen. Die Links führen zu den passenden Ratgebern. */}
+        <section className="mt-14 max-w-3xl" aria-labelledby="auf-einen-blick">
+          <h2 id="auf-einen-blick" className="font-serif text-xl font-normal text-brand">
+            {produkt.name} auf einen Blick
+          </h2>
+          <div className="mt-3 space-y-3 text-sm leading-relaxed text-brand/70">
+            {fakten.absaetze.map((absatz) => (
+              <p key={absatz}>{absatz}</p>
+            ))}
+          </div>
+          <ul className="mt-4 flex flex-wrap gap-2 text-xs">
+            {RATGEBER_LINKS.filter((l) => (l.nur ? l.nur(produkt) : true)).map((l) => (
+              <li key={l.slug}>
+                <Link
+                  href={`/${l.slug}`}
+                  className="inline-flex items-center rounded-full border border-brand/[0.12] bg-white px-3 py-1.5 text-brand/80 transition-colors hover:border-gold/40 hover:text-brand"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* ── Veredelung ───────────────────────────────────────────────
             Überzeugende Darstellung der zwei Verfahren – gemeinsame
@@ -435,6 +474,21 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
             </div>
           </section>
         )}
+
+        {/* ── Häufige Fragen zu diesem Modell (Auszeichnung: faqSchema oben) ── */}
+        <section className="mt-14 max-w-3xl" aria-labelledby="fragen-zum-modell">
+          <h2 id="fragen-zum-modell" className="font-serif text-xl font-normal text-brand">
+            Häufige Fragen zu {produkt.name}
+          </h2>
+          <div className="mt-4 space-y-3">
+            {fakten.fragen.map((f) => (
+              <div key={f.q} className="rounded-xl border border-gold/20 bg-white p-5 shadow-elegant">
+                <h3 className="mb-1.5 font-medium text-brand">{f.q}</h3>
+                <p className="text-sm leading-relaxed text-brand/70">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* ── Ähnliche Produkte (gleiche Art) ──────────────────────── */}
         {aehnliche.length > 0 && (

@@ -90,12 +90,20 @@ Supabase-Fehlerseite statt der Zielseite, Kundschaft erhält keine
 Konto-E-Mail.
 
 **Prüfen, in dieser Reihenfolge:**
-1. **Link führt ins Leere / Supabase-Fehlerseite statt zur App:**
-   Supabase-Dashboard → *Authentication → URL Configuration* – *Site URL*
-   und die *Redirect URLs*-Allowlist müssen `<domain>/auth/callback`
-   enthalten. `admin.generateLink()` erzeugt den Link serverseitig (siehe
-   `src/lib/actions/konto.ts`); weicht die dort verwendete Domain von der
-   Allowlist ab, weist Supabase den Redirect zurück.
+1. **Link führt auf die Hauptseite / `localhost` / „Link ungültig":**
+   Die Konto-Links zeigen auf `/auth/callback?typ=…&token_hash=…` (Aufbau in
+   `src/lib/account/authLink.ts`) und werden dort mit `verifyOtp`
+   eingelöst. „Link ungültig" heißt: Token abgelaufen oder schon benutzt
+   (auch E-Mail-Programme, die Links vorab aufrufen, verbrauchen es) – neuen
+   Link anfordern. Landet jemand dagegen auf `localhost:3000` oder der
+   Hauptseite mit `#access_token=…` in der Adresse, stammt der Link aus der
+   Zeit vor 2026-11-14 (Supabase-`action_link`) oder die **Site URL** im
+   Supabase-Dashboard (*Authentication → URL Configuration*) steht wieder
+   auf `http://localhost:3000` – dann auf `https://www.ergermany.de`
+   setzen. Prüfbar ohne Konto: `curl -s -o /dev/null -D -
+   "https://<projekt>.supabase.co/auth/v1/verify?token=x&type=signup&redirect_to=<url-kodiert>"`
+   – der `Location`-Header zeigt, ob `redirect_to` gilt (Änderungen im
+   Dashboard brauchen ~30 s).
 2. **„Zu viele Versuche" / Aktion wird stillschweigend abgelehnt:**
    Registrierung, Anmeldung, Passwort-vergessen und Kontoänderungen laufen
    über `pruefeRateLimit()` (Tabelle `rate_limit_zaehler`, Funktion

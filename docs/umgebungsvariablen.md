@@ -36,15 +36,25 @@ nur den Datenbankzugriff, sondern auch das komplette Kundenkonto-System:
 Registrierung, Login/Logout, Passwort vergessen/zurücksetzen, E-Mail ändern.
 Die Bestätigungs- und Reset-Links selbst entstehen serverseitig über
 `admin.generateLink()` (`lib/actions/konto.ts`) und werden als eigene
-gebrandete Mails über Resend verschickt; der Link führt auf den
-PKCE-Callback unter `/auth/callback`.
+gebrandete Mails über Resend verschickt; der Link führt auf die eigene Route
+`/auth/callback?typ=…&token_hash=…`, die das Einmal-Token serverseitig mit
+`verifyOtp` einlöst (`lib/account/authLink.ts`).
 
-**Go-live-Voraussetzung, ohne die diese Links in Produktion nicht
-funktionieren:** Im Supabase-Dashboard muss unter *Authentication → URL
-Configuration* die Redirect-URL `<eigene-domain>/auth/callback` eingetragen
-sein (zusätzlich zur `Site URL`). Fehlt dieser Eintrag, weist Supabase jeden
-Bestätigungs- und Reset-Link ab – das Konto-System wirkt in der lokalen
-Entwicklung unauffällig, scheitert aber beim ersten Produktivversand.
+**Supabase-Dashboard (Stand 2026-11-14):** Unter *Authentication → URL
+Configuration* gehört die **Site URL** auf die öffentliche Adresse
+(`https://www.ergermany.de`) – NICHT auf den Standardwert
+`http://localhost:3000`; sie ist der Rückfall für jeden Supabase-eigenen
+Link (z. B. die Bestätigung bei „E-Mail ändern"). Die Redirect-URL-Allowlist
+wird für Registrierung und Passwort-Reset nicht mehr gebraucht (die Links
+laufen nicht mehr über Supabases Weiterleitung); eingetragen sind trotzdem
+`https://www.ergermany.de/auth/callback` und
+`https://ergermany.de/auth/callback**` (das `**` ist nötig, weil die
+Allowlist sonst exakt inkl. Query-Teil vergleicht).
+
+*Warum nicht mehr der Supabase-`action_link`:* Er leitete nur weiter, wenn
+`redirectTo` exakt in der Allowlist stand (sonst Rückfall auf die Site URL –
+real beobachtet: Hauptseite bzw. `localhost:3000`), und lieferte die
+Sitzung im URL-Fragment, das der Server nicht lesen kann.
 
 ---
 

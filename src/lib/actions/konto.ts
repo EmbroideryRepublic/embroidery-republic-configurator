@@ -13,17 +13,24 @@
  * geprüft hat.
  *
  * ── Eigene, gebrandete E-Mails statt Supabases Standard-Vorlagen ───────
- * `admin.generateLink()` erzeugt den Bestätigungs-/Reset-Link, OHNE dass
- * Supabase selbst eine E-Mail verschickt – verschickt wird sie über den
- * immer schon vorhandenen `sendEmail()`-Weg (Resend), mit den gleichen
- * Marken-Vorlagen wie die Bestellbestätigung. Ein Konto, ohne diesen Weg,
- * bekäme Supabases generische Vorlage – nicht das „Premium"-Niveau, das für
- * jede andere Mail in diesem Projekt gilt.
+ * `admin.generateLink()` erzeugt das Einmal-Token, OHNE dass Supabase selbst
+ * eine E-Mail verschickt – verschickt wird sie über den immer schon
+ * vorhandenen `sendEmail()`-Weg (Resend), mit den gleichen Marken-Vorlagen
+ * wie die Bestellbestätigung. Ein Konto, ohne diesen Weg, bekäme Supabases
+ * generische Vorlage – nicht das „Premium"-Niveau, das für jede andere Mail
+ * in diesem Projekt gilt.
+ *
+ * Verlinkt wird dabei NICHT Supabases `action_link`, sondern der eigene
+ * Link `/auth/callback?typ=…&token_hash=…` (`baueKontoLink`, aus dem
+ * `hashed_token`): Der action_link hing an der Redirect-Allowlist im
+ * Supabase-Dashboard und lieferte die Sitzung im URL-Fragment, das der
+ * Server nicht lesen kann. Beleg und Begründung: lib/account/authLink.ts.
  */
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { createClient, createAdminClient } from '@/lib/supabase/server';
-import { basisUrl } from '@/lib/seo/basisUrl';
+import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
+import { baueKontoLink } from '@/lib/account/authLink';
 import { pruefeRateLimit } from '@/lib/security/rateLimit';
 import { protokoll } from '@/lib/observability/log';
 import { meldeEreignis } from '@/lib/observability/ereignis';
@@ -129,17 +136,16 @@ export async function registrierenAction(_prev: KontoActionResult | null, formDa
   const admin = sichererClient(createAdminClient);
   if (!admin) return { success: false, error: 'Die Registrierung ist derzeit nicht möglich. Bitte versuchen Sie es später erneut.' };
   // Die Newsletter-Absicht wandert nur als Query-Parameter im Bestätigungs-
-  // link mit – geschrieben und verschickt wird sie ERST im Callback, NACHDEM
-  // der Klick auf den Link die E-Mail-Adresse tatsächlich bestätigt hat
-  // (siehe app/auth/callback/route.ts → aktiviereNewsletterNachBestaetigung).
-  // Vorher zu schreiben hieße, eine noch unbestätigte Adresse in den
-  // Newsletterverteiler aufzunehmen und ihr sofort eine Mail zu schicken.
-  const redirectTo = `${basisUrl()}/auth/callback?typ=registrierung${newsletterOptIn ? '&newsletter=1' : ''}`;
+  // link mit (siehe baueKontoLink) – geschrieben und verschickt wird sie ERST
+  // im Callback, NACHDEM der Klick auf den Link die E-Mail-Adresse
+  // tatsächlich bestätigt hat (siehe app/auth/callback/route.ts →
+  // aktiviereNewsletterNachBestaetigung). Vorher zu schreiben hieße, eine
+  // noch unbestätigte Adresse in den Newsletterverteiler aufzunehmen und ihr
+  // sofort eine Mail zu schicken.
   const { data, error } = await admin.auth.admin.generateLink({
     type: 'signup',
     email,
     password: passwort,
-    options: { redirectTo },
   });
 
   if (error) {
@@ -158,16 +164,18 @@ export async function registrierenAction(_prev: KontoActionResult | null, formDa
     };
   }
 
-  const bestaetigungsLink = data.properties?.action_link;
-  if (bestaetigungsLink) {
+  const tokenHash = data.properties?.hashed_token;
+  if (tokenHash) {
     await sendEmail({
       to: email,
       subject: 'Bitte bestätigen Sie Ihre E-Mail-Adresse',
-      react: KontoBestaetigenEmail({ bestaetigungsUrl: bestaetigungsLink }),
+      react: KontoBestaetigenEmail({
+        bestaetigungsUrl: baueKontoLink(kanonischeBasisUrl(), 'registrierung', tokenHash, { newsletter: newsletterOptIn }),
+      }),
       kontext: { anlass: 'konto_registrierung' },
     });
   } else {
-    protokoll.fehler('AUTH', 'registrierung_ohne_link', 'generateLink lieferte keinen action_link.');
+    protokoll.fehler('AUTH', 'registrierung_ohne_link', 'generateLink lieferte keinen hashed_token.');
   }
 
   return { success: true };
@@ -236,14 +244,15 @@ export async function passwortVergessenAction(_prev: KontoActionResult | null, f
   // Fehlerfall weiter unten, nur eine Ursache früher.
   const admin = sichererClient(createAdminClient);
   if (admin) {
-    const redirectTo = `${basisUrl()}/auth/callback?typ=zuruecksetzen`;
-    const { data, error } = await admin.auth.admin.generateLink({ type: 'recovery', email, options: { redirectTo } });
+    const { data, error } = await admin.auth.admin.generateLink({ type: 'recovery', email });
 
-    if (!error && data.properties?.action_link) {
+    if (!error && data.properties?.hashed_token) {
       await sendEmail({
         to: email,
         subject: 'Passwort zurücksetzen',
-        react: PasswortVergessenEmail({ zuruecksetzenUrl: data.properties.action_link }),
+        react: PasswortVergessenEmail({
+          zuruecksetzenUrl: baueKontoLink(kanonischeBasisUrl(), 'zuruecksetzen', data.properties.hashed_token),
+        }),
         kontext: { anlass: 'konto_passwort_vergessen' },
       });
     } else if (error) {
@@ -693,7 +702,7 @@ export async function sendeWillkommensMailFuerBestaetigung(email: string): Promi
 /**
  * Wird vom Auth-Callback aufgerufen, NACHDEM eine Registrierung bestätigt
  * wurde UND die Person beim Registrieren den Newsletter-Haken gesetzt hatte
- * (die Absicht reist dafür als `newsletter=1` im redirectTo aus
+ * (die Absicht reist dafür als `newsletter=1` im Link aus
  * registrierenAction bis hierher mit). Erst der bestätigte Klick beweist,
  * dass die E-Mail-Adresse wirklich dieser Person gehört – vorher darf weder
  * das Profil geschrieben noch die Bestätigungsmail verschickt werden.

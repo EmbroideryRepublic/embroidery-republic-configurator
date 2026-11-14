@@ -14,6 +14,7 @@
  * das der einzig sichere Weg – von Supabase selbst so empfohlen.
  */
 import { createClient } from '@/lib/supabase/server';
+import { istFrischeLinkSitzung } from '@/lib/account/authLink';
 
 export interface AngemeldeterKunde {
   id: string;
@@ -44,10 +45,11 @@ export async function aktuellerKunde(): Promise<AngemeldeterKunde | null> {
  * Gerät vergessene – ein neues Passwort setzen, ohne das alte zu kennen.
  * `getClaims()` verifiziert das Access Token (serverseitig bei symmetrischem
  * Signing, sonst per WebCrypto) und liefert den `amr`-Claim (Authentication
- * Method Reference) – bei einem über den Recovery-Link getauschten Code
- * enthält er `recovery`, bei einer normalen Anmeldung z.B. `password`. Jeder
- * Fehler oder unklare Zustand fällt auf "keine Recovery-Sitzung" zurück
- * (fail-closed, wie überall sonst bei Zugriffsentscheidungen).
+ * Method Reference) – bei einem frisch eingelösten E-Mail-Link steht dort
+ * `otp` (mit Zeitstempel) bzw. im PKCE-Ablauf `recovery`, bei einer normalen
+ * Anmeldung `password`. Jeder Fehler oder unklare Zustand fällt auf "keine
+ * Recovery-Sitzung" zurück (fail-closed, wie überall sonst bei
+ * Zugriffsentscheidungen).
  *
  * WICHTIG: Diese Funktion muss sowohl von der Seite (UI-Gating) ALS AUCH von
  * `passwortZuruecksetzenAction` (der eigentlichen Mutation) aufgerufen
@@ -61,9 +63,10 @@ export async function istRecoverySitzung(): Promise<boolean> {
     const supabase = createClient();
     const { data, error } = await supabase.auth.getClaims();
     if (error || !data?.claims) return false;
-    const amr = data.claims.amr;
-    if (!Array.isArray(amr)) return false;
-    return amr.some((eintrag) => (typeof eintrag === 'string' ? eintrag === 'recovery' : eintrag?.method === 'recovery'));
+    // Die Auswertung (inkl. Zeitgrenze für `otp`) liegt als reine Funktion in
+    // authLink.ts, damit sie getestet ist – siehe dort, warum `recovery` allein
+    // nach dem Einlösen per verifyOtp nicht mehr vorkommt.
+    return istFrischeLinkSitzung(data.claims.amr, Math.floor(Date.now() / 1000));
   } catch {
     return false;
   }

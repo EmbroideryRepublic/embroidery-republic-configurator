@@ -22,6 +22,11 @@ node scripts/spiegleAermel.mjs anlegen
 # 2. Manifest neu erzeugen (Wahrheit über Bildpfade je Farbe/Ansicht)
 npx tsx scripts/generateAssetManifest.mts
 
+# 3a. Neues Produkt MIT Ärmelfoto: Ärmelfläche ablesen (siehe docs/aermelflaechen.md):
+#     Kontaktbogen mit Prozent-Gitter erzeugen, Kanten [x0, y0, x1, y1] (Prozent des Bildes)
+#     des LINKEN Ärmels ablesen und in scripts/aermelBereiche.json eintragen. Der rechte
+#     Ärmel wird vom Generator gespiegelt. Ohne Eintrag gilt nur die grobe Berechnung.
+
 # 3. Druckflächen neu erzeugen – PFLICHT, nicht optional:
 #    Neue Ärmel-/Rückbilder schalten Ansichten frei, die vorher keine
 #    Druckfläche hatten. Ohne diesen Schritt zeigt der Konfigurator eine

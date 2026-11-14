@@ -110,7 +110,14 @@ export const DECORATION_POSITIONS: Record<string, DecorationPositionDefinition> 
     gruppe: 'aermel',
     seamMarginCm: 1.5,
     geometrieRezept: 'oberarm-band',
-    prozessgrenze: { maxWidthCm: 11, maxHeightCm: 10 },
+    // Keine Formatobergrenze der DTF-Presse am Ärmel (Betreiber-Auskunft
+    // 2026-09-04: „die Grenze ist nur so groß wie der Ärmel an sich"); 2026-11-14
+    // hat der Betreiber ausdrücklich größere Flächen verlangt. Die frühere Höhe
+    // 10 cm (und Breite 11 cm) war nie freigegeben und deckelte jedes Ärmelmotiv.
+    // 60 cm ist nur ein Platzhalter über jedem real möglichen Ärmel – bindend ist
+    // der Bewegungsbereich (boxWidthCm/boxHeightCm) aus dem Generator. Die echte
+    // Stickrahmen-Grenze (30 × 19 cm) steht weiter in printAreas.ts.
+    prozessgrenze: { maxWidthCm: 60, maxHeightCm: 60 },
   },
   sleeve_right: {
     id: 'sleeve_right',
@@ -121,7 +128,7 @@ export const DECORATION_POSITIONS: Record<string, DecorationPositionDefinition> 
     seamMarginCm: 1.5,
     geometrieRezept: 'oberarm-band',
     gespiegeltVon: 'sleeve_left',
-    prozessgrenze: { maxWidthCm: 11, maxHeightCm: 10 },
+    prozessgrenze: { maxWidthCm: 60, maxHeightCm: 60 }, // wie sleeve_left, Begründung dort
   },
 
   // ── Positionen weiterer Produktgruppen (Groundwork Taschen/Schürzen) ──

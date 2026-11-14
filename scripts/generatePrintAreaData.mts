@@ -31,7 +31,7 @@
  *
  * Aufruf: npx tsx --tsconfig tsconfig.scripts.json scripts/generatePrintAreaData.mts
  */
-import { existsSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { zeilenProfil } from './analyzeGarmentContour.mjs';
 
 const { PRODUCTS } = await import('../src/config/products/index.ts');
@@ -815,6 +815,51 @@ const BEREICH_KORREKTUR: Record<string, { x0?: number; y0?: number; x1?: number;
 };
 
 /**
+ * ÄRMEL-BEREICHE, Sichtprüfung 2026-11-14 (Auftrag des Betreibers: „alle Produkte
+ * in jeder Ansicht durchgehen und die Grenzen richtig ziehen – lieber größere
+ * Flächen als zu kleine").
+ *
+ * ── Befund ────────────────────────────────────────────────────────────
+ * Die berechnete Ärmelfläche (Suchfenster Schulter → Achsel × 1,15, größte
+ * „sichere" Fläche in der Silhouette) traf die tatsächliche Ärmelform nur grob:
+ *   • Ganzansichten von Langarm-/Kapuzenprodukten: der Ärmel hängt bis zum
+ *     Bündchen (~55 cm), die Fläche deckte nur die Schulterkappe (~10 × 12 cm).
+ *   • Kurzarm-Ganzansichten: Fläche oft nur über der oberen Hälfte des Ärmels
+ *     ODER (Polos, Gildan, Russell) bis weit unter den Ärmelsaum auf den Rumpf.
+ *   • Nahaufnahmen: Oberkante zu tief (Armkugel nicht abgedeckt), Unterkante
+ *     unter dem Saum.
+ * Eine Formel trennt Ärmel und Rumpf im Seitenfoto nicht zuverlässig (dunkle
+ * oder weiße Ware, kein Spalt zwischen Arm und Körper – dreimal geprüft, siehe
+ * Kommentar bei `aermelUntenPxLokal`). Deshalb sind die Kanten hier je Produkt
+ * am Foto mit Prozent-Gitter abgelesen (`scripts/aermelBereiche.json`, Format
+ * `id: [x0, y0, x1, y1]`, Prozent des GESAMTEN Bildes wie BEREICH_KORREKTUR).
+ *
+ * ── Regel der Ablesung ────────────────────────────────────────────────
+ *   • Kurzarm: von der Armkugel (Schulternaht) bis zum Ärmelsaum, seitlich
+ *     komplett über den Ärmel; im Zweifel eher größer.
+ *   • Langarm/Kapuze: von der Schulternaht rund 40 cm den Arm hinunter (nicht
+ *     bis zum Bündchen – dort druckt niemand), Breite = Armbreite.
+ *
+ * ── Rechter Ärmel ─────────────────────────────────────────────────────
+ * Das Foto „Ärmel rechts" ist bei 98 von 101 Produkten die gespiegelte linke
+ * Aufnahme (gleiche Maße, nachgewiesen: Abweichung ≤ 2,5 %). Die rechte Fläche
+ * wird daher exakt gespiegelt (x0' = 100 − x1, x1' = 100 − x0, y unverändert) –
+ * eine einzige Quelle der Wahrheit je Produkt statt zweier auseinanderlaufender
+ * Handwerte. Ein bereits vorhandener Handeintrag in BEREICH_KORREKTUR wird von
+ * diesen Werten überschrieben.
+ */
+{
+  const aermelBereiche = JSON.parse(readFileSync(new URL('./aermelBereiche.json', import.meta.url), 'utf8')) as Record<
+    string,
+    [number, number, number, number]
+  >;
+  for (const [id, [x0, y0, x1, y1]] of Object.entries(aermelBereiche)) {
+    BEREICH_KORREKTUR[`${id}-sleeve_left`] = { x0, y0, x1, y1 };
+    BEREICH_KORREKTUR[`${id}-sleeve_right`] = { x0: Number((100 - x1).toFixed(1)), y0, x1: Number((100 - x0).toFixed(1)), y1 };
+  }
+}
+
+/**
  * Oberhalb dieses Verhältnisses Tiefe/Breite ist eine „Seitenansicht" keine
  * Ganzansicht, sondern eine NAHAUFNAHME.
  *
@@ -1573,6 +1618,15 @@ for (const p of PRODUCTS) {
         if (istAermel && startXCmLokal !== undefined && startYCmLokal !== undefined) {
           startXCmLokal -= (x0pxLokal - x0Vorher) / pxProCm;
           startYCmLokal -= (y0pxLokal - y0Vorher) / pxProCm;
+          // Von Hand abgelesene Ärmelfläche (aermelBereiche.json, 2026-11-14): Das
+          // Motiv startet waagerecht MITTIG auf dem Ärmel, senkrecht an der
+          // berechneten Oberarmmitte, aber nie außerhalb der Fläche. Vorher folgte
+          // der Startpunkt der Silhouettenmitte – bei Damenschnitten (Ärmel am
+          // Bildrand) lag er dadurch außerhalb der neuen Fläche.
+          if (korrektur.x0 !== undefined && korrektur.x1 !== undefined) {
+            startXCmLokal = (x1pxLokal - x0pxLokal) / 2 / pxProCm;
+          }
+          startYCmLokal = Math.min(startYCmLokal, (y1pxLokal - y0pxLokal) / pxProCm);
         }
       }
 

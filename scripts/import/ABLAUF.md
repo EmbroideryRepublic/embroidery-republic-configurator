@@ -146,3 +146,38 @@ Besonderheiten:
   Kapuzenprodukt stehen deshalb Ober-/Unterkante in `BEREICH_KORREKTUR` (`generatePrintAreaData.mts`): Vorderseite endet über
   der Tasche (≈ y58), Rückseite beginnt unter der Kapuzenspitze; Zip-Hoodies bekommen in `printAreas.ts` eine Sperrzone für
   den Reißverschluss. Werte am eigenen Foto mit Prozentraster ablesen (Prozent der Bildhöhe), nicht schätzen.
+
+## Sportbekleidung (Produktart `sport`)
+
+Sportware läuft wie die Kinderware über eine EIGENE Strecke neben dem Erwachsenen-Import (aus demselben Grund: `importiereProdukte.mts`
+schreibt seine Katalogdatei komplett neu). Die Produktart `sport` gehört zur Navigationsachse „geschlecht“ (Herren/Damen/Unisex) mit den
+Konfektionsgrößen – es gibt also keine eigene Achse und keine eigene Größenleiter.
+
+```bash
+# 1. Rohdaten: öffentliche Produktseiten von textil-grosshandel.eu (kein Login) → scripts/import/sport-raw.json
+node scripts/import/scrapeSport.mjs
+# 2. Katalogdatei + Bild-Aufträge (idempotent): src/config/products/sport.generated.ts, scripts/import/sport-jobs.json
+npx tsx --tsconfig tsconfig.scripts.json scripts/importiereSport.mts
+# 3. Torwächter (On-Model), Fotos holen (front, back, Seite), Ärmelseiten prüfen + Gegenseite spiegeln, Manifest, Ärmelflächen
+#    ablesen (scripts/aermelBereiche.json), Druckflächen, Farbdubletten, Audits – genau wie oben ab Schritt 0.
+npx tsx --tsconfig tsconfig.scripts.json scripts/jobsOnModelFilter.mts scripts/import/sport-jobs.json --schreiben
+npx tsx scripts/ingestDirect.mts scripts/import/sport-jobs.json
+```
+
+Besonderheiten:
+
+- **Nur Modelle mit Vorder- UND Rückfoto** im Flachbildstil (…-front/…-back). Die Sport-Marken des Lieferanten (PROACT, Roly Sport, TriDri,
+  Spiro, Tee Jays, Stedman Sports, Henbury …) führen überwiegend nur EIN Foto je Farbe und bleiben draußen (Prüfung 2026-11-18: von 528
+  Modellen der Lieferantenrubrik „Sportbekleidung“ in T-Shirts, Langarm, Polo, Sweat, Jacken, Tanktops und Trainingsanzügen haben 33 Vorder-
+  und Rückfoto in der ersten Farbe; Schwung 1 nimmt davon 10 Erwachsenen-Modelle auf, Begründungen für den Rest: docs/sportbekleidung.md).
+- **Vor jeder Aufnahme gegen den Bestand prüfen:** Gleiche Artikelnummer = gleiches Produkt, auch unter anderem Markennamen (Daiber = James+Nicholson).
+  Das Bilddubletten-Audit findet es, aber erst nach dem Foto-Import.
+- **Ausgeschlossene Farben** (unbrauchbares Foto, Foto einer Schwesterfarbe) stehen mit Begründung in `FARBEN_AUSSCHLUSS` im Import; der Farbpunkt folgt
+  dem Foto, wenn der Lieferantenwert stark abweicht (`sport-farbmessung.json`).
+- **Ärmelansichten** (sleeve_left/right) nur, wenn mindestens 80 % der Farben ein Seitenfoto haben; die übrigen Farben des Modells entfallen
+  dann (damit keine Farbe eine Ansicht ohne Foto hat). Tanktops haben nie Ärmelansichten. Das Seitenfoto wird als `sleeve-left` abgelegt,
+  danach `node scripts/aermelSeiten.mjs korrigieren` (Seite prüfen) und `node scripts/spiegleAermel.mjs anlegen` (rechte Seite).
+- **Kleidungsart:** Tabelle `KLEIDUNG` in `importiereSport.mts` (je Artikelnummer, z. B. „Sport-T-Shirt“) → `detailedDescription.productType`.
+- **Passform/Geschlecht:** Tabellen `PASSFORM_FACETTE` und `GESCHLECHT` im Import – nur Wörter, die der Lieferant selbst nennt; ein unbekannter
+  Text bricht den Lauf ab, statt zu raten.
+- **Einkaufspreis:** günstigste aufgenommene Farbe, Preis der Standardgrößen netto (nie der JSON-LD-Preis der Produktseite).

@@ -163,7 +163,8 @@ export default function Produktseite({ params }: { params: { slug: string } }) {
   const { produkt, artLabel, stufeLabel, veredelungsflaechen, aehnliche, empfehlungen } = daten;
   // „So veredeln wir dein …“ braucht ein Wort, das nach „dein“ passt: Bei Kinderware ist die Produktart nur „Kinderbekleidung“,
   // das Kleidungsstück selbst (T-Shirt, Hoodie, Sweatshirt …) steht in detailedDescription.productType.
-  const artWort = produkt.productType === 'kids' ? (produkt.detailedDescription?.productType ?? artLabel) : artLabel;
+  // Gleiches gilt für „Sportbekleidung“ (Sport-T-Shirt, Sport-Langarmshirt, Tanktop …).
+  const artWort = produkt.productType === 'kids' || produkt.productType === 'sport' ? (produkt.detailedDescription?.productType ?? artLabel) : artLabel;
   // Betreiberschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, versprechen die Texte nur DTF-Transferdruck.
   const stickereiVerfuegbar = veredelungVerfuegbar('embroidery');
   const d = produkt.detailedDescription;

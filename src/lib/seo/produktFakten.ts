@@ -14,7 +14,7 @@
  */
 import { PRODUCTS } from '@/config/products';
 import type { ProductConfig } from '@/config/products/types';
-import { produktTypLabelPlural } from '@/config/products/types';
+import { PRODUCT_TYPES, produktTypLabelPlural } from '@/config/products/types';
 import { A_DAUER, A_EINZELSTUECK } from '@/config/seo/anlassSeiten';
 import { cm } from '@/lib/format';
 
@@ -99,12 +99,16 @@ export function produktFakten(
   let material = `${produkt.name} (${artLabel} von ${produkt.brand}) besteht aus ${materialKurz(produkt)}${gm ? ` und hat ein Flächengewicht von ${gm} g/m²` : ''}.`;
   if (einordnung) {
     const plural = produktTypLabelPlural(produkt.productType);
+    // Sammelbegriffe („Sportbekleidung“) haben keine Mehrzahl: „zu den schwereren Modellen der Sportbekleidung“.
+    const sammel = PRODUCT_TYPES[produkt.productType]?.sammelbegriff === true;
+    const dativ = sammel ? `Modellen der ${plural}` : plural;
+    const genitiv = sammel ? `Modelle der ${plural}` : plural;
     const lage =
       einordnung.lage === 'schwerer'
-        ? `gehört damit zu den schwereren ${plural} im Sortiment`
+        ? `gehört damit zu den schwereren ${dativ} im Sortiment`
         : einordnung.lage === 'leichter'
-          ? `gehört damit zu den leichteren ${plural} im Sortiment`
-          : `liegt damit im mittleren Gewichtsbereich der ${plural} im Sortiment`;
+          ? `gehört damit zu den leichteren ${dativ} im Sortiment`
+          : `liegt damit im mittleren Gewichtsbereich der ${genitiv} im Sortiment`;
     material += ` Das Modell ${lage} (Spanne im Sortiment: ${einordnung.min} bis ${einordnung.max} g/m²).`;
   }
   absaetze.push(material);

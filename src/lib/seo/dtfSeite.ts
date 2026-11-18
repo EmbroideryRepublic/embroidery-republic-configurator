@@ -124,26 +124,37 @@ export interface DtfBeispielWahl {
  * ein Einzelstück und zehn Stück mit je einem Brustmotiv (ca. 10 × 10 cm) – dieselben
  * Eckdaten wie auf den Kategorieseiten, damit die Preise vergleichbar sind.
  */
-/** Mehrzahl der Kleidungsarten von Kinderware (detailedDescription.productType), für die Beschriftung der Preisbeispiele. */
-const KINDER_KLEIDUNG_PLURAL: Record<string, string> = {
+/** Mehrzahl der Kleidungsarten von Kinder- und Sportware (detailedDescription.productType), für die Beschriftung der Preisbeispiele. */
+const KLEIDUNG_PLURAL: Record<string, string> = {
   'T-Shirt': 'T-Shirts', Hoodie: 'Hoodies', Sweatshirt: 'Sweatshirts', 'Zip-Hoodie': 'Zip-Hoodies', Longsleeve: 'Longsleeves',
+  'Sport-T-Shirt': 'Sport-T-Shirts', 'Sport-Langarmshirt': 'Sport-Langarmshirts', Tanktop: 'Tanktops',
 };
 
 export function dtfBeispiele(seite: DtfSeite, f: DtfFakten): DtfBeispielWahl {
-  // Die Kinderseite zeigt Kinderware; sonst die bevorzugte Erwachsenen-Art (BEISPIEL_ARTEN).
-  const art = seite.art === 'kids' ? 'kids' : BEISPIEL_ARTEN.find((a) => f.arten.includes(a));
+  // Die Kinder-/Sportseite zeigt Kinder-/Sportware; sonst die bevorzugte Erwachsenen-Art (BEISPIEL_ARTEN).
+  const sammelArt = seite.art === 'kids' || seite.art === 'sport';
+  const art = sammelArt ? seite.art! : BEISPIEL_ARTEN.find((a) => f.arten.includes(a));
   if (!art) throw new Error(`DTF-Seite "${seite.slug}": keine Art für ein Preisbeispiel.`);
-  const produkt = [...f.produkte.filter((p) => p.productType === art)].sort((a, b) => a.basePrice - b.basePrice)[0];
+  const dieser = f.produkte.filter((p) => p.productType === art);
+  // Sportseite: das T-Shirt ist auch hier das gebräuchlichste Vergleichsteil (günstigstes Sport-T-Shirt, sonst günstigstes Modell).
+  const bevorzugt = art === 'sport' ? dieser.filter((p) => p.detailedDescription?.productType === 'Sport-T-Shirt') : [];
+  const produkt = [...(bevorzugt.length > 0 ? bevorzugt : dieser)].sort((a, b) => a.basePrice - b.basePrice)[0];
   if (!produkt) throw new Error(`DTF-Seite "${seite.slug}": kein Beispielprodukt.`);
 
   const gewuenscht = ['M', 'L', 'XL'];
   const verfuegbar = gewuenscht.filter((g) => produkt.sizes.includes(g));
   const groessen = (verfuegbar.length === 3 ? verfuegbar : produkt.sizes.slice(0, 3)) as [string, string, string];
   const [g1, g2, g3] = groessen;
-  // Kinderware: „Kinderbekleidung“ ist kein zählbares Wort – die Beispiele nennen das Kleidungsstück („1 Kinder-T-Shirt“).
+  // Kinder-/Sportware: „Kinderbekleidung“ bzw. „Sportbekleidung“ ist kein zählbares Wort – die Beispiele nennen das Kleidungsstück
+  // („1 Kinder-T-Shirt“, „1 Sport-T-Shirt“).
   const kleidung = produkt.detailedDescription?.productType ?? '';
-  const teil = art === 'kids' && kleidung ? `Kinder-${kleidung}` : produktTypLabel(art);
-  const teile = art === 'kids' && kleidung ? `Kinder-${KINDER_KLEIDUNG_PLURAL[kleidung] ?? kleidung}` : produktTypLabelPlural(art);
+  const teil = art === 'kids' && kleidung ? `Kinder-${kleidung}` : art === 'sport' && kleidung ? kleidung : produktTypLabel(art);
+  const teile =
+    art === 'kids' && kleidung
+      ? `Kinder-${KLEIDUNG_PLURAL[kleidung] ?? kleidung}`
+      : art === 'sport' && kleidung
+        ? (KLEIDUNG_PLURAL[kleidung] ?? kleidung)
+        : produktTypLabelPlural(art);
   const flaechen = [{ ansicht: 'front' as const, breiteCm: 10, hoeheCm: 10 }];
   return {
     produkt,

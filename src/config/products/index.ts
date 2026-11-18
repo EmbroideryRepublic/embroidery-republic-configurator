@@ -33,6 +33,7 @@ import { PRODUCTS as STEDMAN_PRODUCTS } from './stedman';
 import { PRODUCTS as JAMES_NICHOLSON_PRODUCTS } from './jamesNicholson';
 import { PRODUCTS as IMPORTIERTE_PRODUCTS } from './importiert.generated';
 import { PRODUCTS as KINDER_PRODUCTS } from './kinder.generated';
+import { PRODUCTS as SPORT_PRODUCTS } from './sport.generated';
 import type { ProductConfig } from './types';
 
 // Die Produktdefinitionen tragen KEIN Lieferanten-Wissen mehr (ADR 0004): die
@@ -53,6 +54,8 @@ export const PRODUCTS: ProductConfig[] = [
   ...IMPORTIERTE_PRODUCTS,
   // Kinderbekleidung (Produktart "kids"), eigene Importstrecke: scripts/importiereKinder.mts.
   ...KINDER_PRODUCTS,
+  // Sportbekleidung (Produktart "sport"), eigene Importstrecke: scripts/importiereSport.mts.
+  ...SPORT_PRODUCTS,
 ];
 
 // O(1)-Index statt linearer Suche: getProduct läuft in Render-Pfaden

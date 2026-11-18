@@ -91,5 +91,12 @@
  "bundc-t-shirt-e150-long-sleeve-women-exact": [42, 17, 57, 63],
  "bundc-mens-t-shirt-e190-long-sleeve-exact": [41, 15, 58, 63],
  "neutral-recycled-performance-long-sleeve-t-shirt": [41, 19, 58, 66],
- "neutral-men-s-long-sleeve-t-shirt": [40, 17, 59, 65]
+ "neutral-men-s-long-sleeve-t-shirt": [40, 17, 59, 65],
+ "sport-jc001": [43, 16, 64, 45],
+ "sport-jc005": [45, 13, 63, 40],
+ "sport-jc012": [47, 12, 65, 68],
+ "sport-jc023": [42, 12, 64, 62],
+ "sport-jc230": [40, 15, 66, 64],
+ "sport-l02071": [46, 12, 66, 62],
+ "sport-bctg003": [41, 15, 62, 49]
 }

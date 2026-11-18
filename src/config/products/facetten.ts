@@ -29,6 +29,7 @@ import {
   FARBGRUPPEN_GENERIERT,
 } from './facettenGeneriert.generated';
 import { KINDER_FACETTEN } from './kinder.generated';
+import { SPORT_FACETTEN } from './sport.generated';
 
 // ── Vokabulare ─────────────────────────────────────────────────────────
 // Definiert in types.ts (nicht hier) und nur re-exportiert: So teilen sich
@@ -190,12 +191,14 @@ export const MATERIAL_GRUPPEN: Record<string, MaterialGruppe[]> = {
   ...MATERIAL_GRUPPEN_BASIS,
   ...MATERIAL_GRUPPEN_GENERIERT,
   ...KINDER_FACETTEN.material,
+  ...SPORT_FACETTEN.material,
 };
 
 export const PASSFORMEN: Record<string, Passform> = {
   ...PASSFORMEN_BASIS,
   ...PASSFORMEN_GENERIERT,
   ...KINDER_FACETTEN.passform,
+  ...SPORT_FACETTEN.passform,
 };
 
 export const GESCHLECHTER: Record<string, Geschlecht[]> = {
@@ -207,6 +210,7 @@ export const FARBGRUPPEN: Record<string, Farbgruppe> = {
   ...FARBGRUPPEN_BASIS,
   ...FARBGRUPPEN_GENERIERT,
   ...KINDER_FACETTEN.farbgruppen,
+  ...SPORT_FACETTEN.farbgruppen,
 };
 
 // ── Auflösung je Produkt ───────────────────────────────────────────────

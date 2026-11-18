@@ -1,0 +1,1059 @@
+[
+ {
+  "produkt": "sport-jc001",
+  "farbe": "arctic-white",
+  "lieferantenHex": "#FFFFFF",
+  "frontDom": "#f1f1f1",
+  "deltaE": 24
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "vanilla",
+  "lieferantenHex": "#F0E8D6",
+  "frontDom": "#d1c6bb",
+  "deltaE": 53
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "desert-sand",
+  "lieferantenHex": "#B0AA7E",
+  "frontDom": "#b6b386",
+  "deltaE": 13
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "citrus",
+  "lieferantenHex": "#C2FA0F",
+  "frontDom": "#d5d61b",
+  "deltaE": 42
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "electric-yellow",
+  "lieferantenHex": "#E3E829",
+  "frontDom": "#e0f033",
+  "deltaE": 13
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "sun-yellow",
+  "lieferantenHex": "#FFD100",
+  "frontDom": "#f4d722",
+  "deltaE": 36
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "sherbet-lemon",
+  "lieferantenHex": "#FBDB65",
+  "frontDom": "#edd87c",
+  "deltaE": 27
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "gold",
+  "lieferantenHex": "#FFA300",
+  "frontDom": "#efbe1c",
+  "deltaE": 42
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "electric-orange",
+  "lieferantenHex": "#FF8F6C",
+  "frontDom": "#eb6c3a",
+  "deltaE": 64
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "orange-crush",
+  "lieferantenHex": "#FF6A13",
+  "frontDom": "#dc7213",
+  "deltaE": 36
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "orange-flame",
+  "lieferantenHex": "#FF2124",
+  "frontDom": "#e44024",
+  "deltaE": 41
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "fire-red",
+  "lieferantenHex": "#C8102E",
+  "frontDom": "#a62d2b",
+  "deltaE": 45
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "red-hot-chilli",
+  "lieferantenHex": "#8A1538",
+  "frontDom": "#852033",
+  "deltaE": 13
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "burgundy",
+  "lieferantenHex": "#6F263D",
+  "frontDom": "#582b38",
+  "deltaE": 24
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "baby-pink",
+  "lieferantenHex": "#FABBCB",
+  "frontDom": "#f8c3da",
+  "deltaE": 17
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "peach-sorbet",
+  "lieferantenHex": "#FF8791",
+  "frontDom": "#fb9d86",
+  "deltaE": 25
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "electric-pink",
+  "lieferantenHex": "#FF3EB5",
+  "frontDom": "#e070a7",
+  "deltaE": 60
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "dusty-pink",
+  "lieferantenHex": "#CE6EAD",
+  "frontDom": "#c5848d",
+  "deltaE": 40
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "hot-pink",
+  "lieferantenHex": "#CE0F69",
+  "frontDom": "#a83460",
+  "deltaE": 54
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "hyper-pink",
+  "lieferantenHex": "#FF12FF",
+  "frontDom": "#f52c8c",
+  "deltaE": 118
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "digital-lavender",
+  "lieferantenHex": "#7870F5",
+  "frontDom": "#8c7db4",
+  "deltaE": 69
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "magenta-magic",
+  "lieferantenHex": "#8C4799",
+  "frontDom": "#78448f",
+  "deltaE": 23
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "purple",
+  "lieferantenHex": "#512D6D",
+  "frontDom": "#4e3f6a",
+  "deltaE": 18
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "plum",
+  "lieferantenHex": "#512A44",
+  "frontDom": "#5a324d",
+  "deltaE": 15
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "sky-blue",
+  "lieferantenHex": "#9BB8D3",
+  "frontDom": "#b4c7d6",
+  "deltaE": 29
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "hawaiian-blue",
+  "lieferantenHex": "#5BC2E7",
+  "frontDom": "#53cbd5",
+  "deltaE": 22
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "sapphire-blue",
+  "lieferantenHex": "#009CDE",
+  "frontDom": "#2394c5",
+  "deltaE": 44
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "cornflower-blue",
+  "lieferantenHex": "#5E8FCB",
+  "frontDom": "#478cc2",
+  "deltaE": 25
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "airforce-blue",
+  "lieferantenHex": "#4F758B",
+  "frontDom": "#415262",
+  "deltaE": 56
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "reflex-blue",
+  "lieferantenHex": "#0034CD",
+  "frontDom": "#3939b4",
+  "deltaE": 62
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "royal-blue",
+  "lieferantenHex": "#003594",
+  "frontDom": "#354279",
+  "deltaE": 61
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "ink-blue",
+  "lieferantenHex": "#123955",
+  "frontDom": "#194772",
+  "deltaE": 33
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "oxford-navy",
+  "lieferantenHex": "#13294B",
+  "frontDom": "#2e3448",
+  "deltaE": 29
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "french-navy",
+  "lieferantenHex": "#041C2C",
+  "frontDom": "#2b2e40",
+  "deltaE": 47
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "mint",
+  "lieferantenHex": "#BAFADE",
+  "frontDom": "#b6e2eb",
+  "deltaE": 28
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "seafoam",
+  "lieferantenHex": "#61BBAA",
+  "frontDom": "#73a6aa",
+  "deltaE": 28
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "turquoise-blue",
+  "lieferantenHex": "#0092BC",
+  "frontDom": "#1eabc0",
+  "deltaE": 39
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "jade",
+  "lieferantenHex": "#00685E",
+  "frontDom": "#136b6c",
+  "deltaE": 24
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "melon-green",
+  "lieferantenHex": "#B7EDA4",
+  "frontDom": "#d1fbcb",
+  "deltaE": 49
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "electric-green",
+  "lieferantenHex": "#44D62C",
+  "frontDom": "#a1e056",
+  "deltaE": 103
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "lime-green",
+  "lieferantenHex": "#78BE20",
+  "frontDom": "#7eb84b",
+  "deltaE": 44
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "sour-green",
+  "lieferantenHex": "#00FFA3",
+  "frontDom": "#47d284",
+  "deltaE": 90
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "kelly-green",
+  "lieferantenHex": "#00832F",
+  "frontDom": "#178a5d",
+  "deltaE": 52
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "earthy-green",
+  "lieferantenHex": "#476240",
+  "frontDom": "#616954",
+  "deltaE": 34
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "bottle-green",
+  "lieferantenHex": "#154734",
+  "frontDom": "#164736",
+  "deltaE": 2
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "combat-green",
+  "lieferantenHex": "#1A2711",
+  "frontDom": "#313921",
+  "deltaE": 33
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "olive-green",
+  "lieferantenHex": "#4A412A",
+  "frontDom": "#444236",
+  "deltaE": 13
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "hot-chocolate",
+  "lieferantenHex": "#382E2C",
+  "frontDom": "#493f3d",
+  "deltaE": 29
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "ash-solid",
+  "lieferantenHex": "#D9D9D6",
+  "frontDom": "#dcdbe0",
+  "deltaE": 11
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "heather-grey-solid",
+  "lieferantenHex": "#A7A8AA",
+  "frontDom": "#b8b8c2",
+  "deltaE": 33
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "charcoal-solid",
+  "lieferantenHex": "#3F4444",
+  "frontDom": "#5a5a5a",
+  "deltaE": 41
+ },
+ {
+  "produkt": "sport-jc001",
+  "farbe": "jet-black",
+  "lieferantenHex": "#000710",
+  "frontDom": "#333334",
+  "deltaE": 76
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "arctic-white",
+  "lieferantenHex": "#FFFFFF",
+  "frontDom": "#f8f8f8",
+  "deltaE": 12
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "electric-yellow",
+  "lieferantenHex": "#E3E829",
+  "frontDom": "#e2f71a",
+  "deltaE": 21
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "sun-yellow",
+  "lieferantenHex": "#FFD100",
+  "frontDom": "#ffdc46",
+  "deltaE": 71
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "electric-orange",
+  "lieferantenHex": "#FF8F6C",
+  "frontDom": "#e06427",
+  "deltaE": 87
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "fire-red",
+  "lieferantenHex": "#C8102E",
+  "frontDom": "#da353a",
+  "deltaE": 43
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "burgundy",
+  "lieferantenHex": "#6F263D",
+  "frontDom": "#6c1638",
+  "deltaE": 17
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "electric-pink",
+  "lieferantenHex": "#FF3EB5",
+  "frontDom": "#dc699c",
+  "deltaE": 61
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "hot-pink",
+  "lieferantenHex": "#CE0F69",
+  "frontDom": "#eb3071",
+  "deltaE": 45
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "hyper-pink",
+  "lieferantenHex": "#FF12FF",
+  "frontDom": "#fa3596",
+  "deltaE": 111
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "digital-lavender",
+  "lieferantenHex": "#7870F5",
+  "frontDom": "#9081b5",
+  "deltaE": 70
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "magenta-magic",
+  "lieferantenHex": "#8C4799",
+  "frontDom": "#703c8c",
+  "deltaE": 33
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "purple",
+  "lieferantenHex": "#512D6D",
+  "frontDom": "#483866",
+  "deltaE": 16
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "sky-blue",
+  "lieferantenHex": "#9BB8D3",
+  "frontDom": "#c4d3e5",
+  "deltaE": 52
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "sapphire-blue",
+  "lieferantenHex": "#009CDE",
+  "frontDom": "#1c9fca",
+  "deltaE": 35
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "royal-blue",
+  "lieferantenHex": "#003594",
+  "frontDom": "#2b3c77",
+  "deltaE": 52
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "oxford-navy",
+  "lieferantenHex": "#13294B",
+  "frontDom": "#1c1a46",
+  "deltaE": 18
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "french-navy",
+  "lieferantenHex": "#041C2C",
+  "frontDom": "#2e2d3f",
+  "deltaE": 49
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "mint",
+  "lieferantenHex": "#BAFADE",
+  "frontDom": "#b6dce5",
+  "deltaE": 31
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "jade",
+  "lieferantenHex": "#00685E",
+  "frontDom": "#0f7b7d",
+  "deltaE": 39
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "electric-green",
+  "lieferantenHex": "#44D62C",
+  "frontDom": "#8bc83d",
+  "deltaE": 74
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "kelly-green",
+  "lieferantenHex": "#00832F",
+  "frontDom": "#157f43",
+  "deltaE": 29
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "bottle-green",
+  "lieferantenHex": "#154734",
+  "frontDom": "#0c5038",
+  "deltaE": 13
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "heather-grey-solid",
+  "lieferantenHex": "#A7A8AA",
+  "frontDom": "#bebfc1",
+  "deltaE": 40
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "charcoal-solid",
+  "lieferantenHex": "#3F4444",
+  "frontDom": "#515153",
+  "deltaE": 27
+ },
+ {
+  "produkt": "sport-jc005",
+  "farbe": "jet-black",
+  "lieferantenHex": "#000710",
+  "frontDom": "#282828",
+  "deltaE": 57
+ },
+ {
+  "produkt": "sport-jc012",
+  "farbe": "arctic-white",
+  "lieferantenHex": "#FFFFFF",
+  "frontDom": "#f6f6f6",
+  "deltaE": 16
+ },
+ {
+  "produkt": "sport-jc012",
+  "farbe": "electric-yellow",
+  "lieferantenHex": "#E3E829",
+  "frontDom": "#f3f748",
+  "deltaE": 38
+ },
+ {
+  "produkt": "sport-jc012",
+  "farbe": "sapphire-blue",
+  "lieferantenHex": "#009CDE",
+  "frontDom": "#61a3db",
+  "deltaE": 97
+ },
+ {
+  "produkt": "sport-jc012",
+  "farbe": "jet-black",
+  "lieferantenHex": "#000710",
+  "frontDom": "#292929",
+  "deltaE": 59
+ },
+ {
+  "produkt": "sport-jc023",
+  "farbe": "electric-yellow",
+  "lieferantenHex": "#E3E829",
+  "frontDom": "#f7fd58",
+  "deltaE": 55
+ },
+ {
+  "produkt": "sport-jc023",
+  "farbe": "royal-blue",
+  "lieferantenHex": "#003594",
+  "frontDom": "#355197",
+  "deltaE": 60
+ },
+ {
+  "produkt": "sport-jc023",
+  "farbe": "french-navy",
+  "lieferantenHex": "#041C2C",
+  "frontDom": "#323443",
+  "deltaE": 57
+ },
+ {
+  "produkt": "sport-jc023",
+  "farbe": "jet-black",
+  "lieferantenHex": "#000710",
+  "frontDom": "#2e2e2e",
+  "deltaE": 67
+ },
+ {
+  "produkt": "sport-jc230",
+  "farbe": "french-navy",
+  "lieferantenHex": "#041C2C",
+  "frontDom": "#222738",
+  "deltaE": 34
+ },
+ {
+  "produkt": "sport-jc230",
+  "farbe": "jet-black",
+  "lieferantenHex": "#000710",
+  "frontDom": "#02070f",
+  "deltaE": 2
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "arctic-white",
+  "lieferantenHex": "#FFFFFF",
+  "frontDom": "#f3f3f3",
+  "deltaE": 21
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "electric-yellow",
+  "lieferantenHex": "#E3E829",
+  "frontDom": "#e1fa44",
+  "deltaE": 33
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "sun-yellow",
+  "lieferantenHex": "#FFD100",
+  "frontDom": "#fed206",
+  "deltaE": 6
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "fire-red",
+  "lieferantenHex": "#C8102E",
+  "frontDom": "#ca2129",
+  "deltaE": 18
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "electric-pink",
+  "lieferantenHex": "#FF3EB5",
+  "frontDom": "#fc86ab",
+  "deltaE": 73
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "sapphire-blue",
+  "lieferantenHex": "#009CDE",
+  "frontDom": "#0883ae",
+  "deltaE": 55
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "royal-blue",
+  "lieferantenHex": "#003594",
+  "frontDom": "#1a4d9e",
+  "deltaE": 37
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "french-navy",
+  "lieferantenHex": "#041C2C",
+  "frontDom": "#26273d",
+  "deltaE": 40
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "jade",
+  "lieferantenHex": "#00685E",
+  "frontDom": "#056d72",
+  "deltaE": 21
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "kelly-green",
+  "lieferantenHex": "#00832F",
+  "frontDom": "#0c6e2b",
+  "deltaE": 25
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "bottle-green",
+  "lieferantenHex": "#154734",
+  "frontDom": "#203c2e",
+  "deltaE": 17
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "charcoal-solid",
+  "lieferantenHex": "#3F4444",
+  "frontDom": "#3e3e3e",
+  "deltaE": 9
+ },
+ {
+  "produkt": "sport-jc007",
+  "farbe": "jet-black",
+  "lieferantenHex": "#000710",
+  "frontDom": "#1e1e1e",
+  "deltaE": 40
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "white",
+  "lieferantenHex": "#FFFFFF",
+  "frontDom": "#e9e9e9",
+  "deltaE": 38
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "neon-yellow",
+  "lieferantenHex": "#F0FF3D",
+  "frontDom": "#d4d21f",
+  "deltaE": 61
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "lemon",
+  "lieferantenHex": "#FFE654",
+  "frontDom": "#deda1f",
+  "deltaE": 64
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "orange",
+  "lieferantenHex": "#F08800",
+  "frontDom": "#e37d1d",
+  "deltaE": 34
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "neon-orange",
+  "lieferantenHex": "#F7A600",
+  "frontDom": "#e37d1d",
+  "deltaE": 54
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "red",
+  "lieferantenHex": "#C4082D",
+  "frontDom": "#d13945",
+  "deltaE": 56
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "neon-coral",
+  "lieferantenHex": "#FF3B7D",
+  "frontDom": "#e2607f",
+  "deltaE": 47
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "neon-pink",
+  "lieferantenHex": "#E41762",
+  "frontDom": "#dc4185",
+  "deltaE": 55
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "dark-purple",
+  "lieferantenHex": "#55117B",
+  "frontDom": "#5e317e",
+  "deltaE": 33
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "aqua",
+  "lieferantenHex": "#0095C3",
+  "frontDom": "#2aa6c6",
+  "deltaE": 45
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "royal-blue-241",
+  "lieferantenHex": "#01509D",
+  "frontDom": "#284f9d",
+  "deltaE": 39
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "petroleum-blue",
+  "lieferantenHex": "#0D2E30",
+  "frontDom": "#1f3441",
+  "deltaE": 25
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "french-navy",
+  "lieferantenHex": "#011F45",
+  "frontDom": "#283652",
+  "deltaE": 47
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "apple-green",
+  "lieferantenHex": "#CDEA80",
+  "frontDom": "#bbd856",
+  "deltaE": 49
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "neon-green",
+  "lieferantenHex": "#C5E86C",
+  "frontDom": "#acc41f",
+  "deltaE": 89
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "forest-green",
+  "lieferantenHex": "#495853",
+  "frontDom": "#2a3e33",
+  "deltaE": 52
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "army",
+  "lieferantenHex": "#746142",
+  "frontDom": "#5e5f45",
+  "deltaE": 22
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "pure-grey",
+  "lieferantenHex": "#ADB2B6",
+  "frontDom": "#99a3ac",
+  "deltaE": 27
+ },
+ {
+  "produkt": "sport-l198",
+  "farbe": "black",
+  "lieferantenHex": "#180F12",
+  "frontDom": "#373634",
+  "deltaE": 60
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "white",
+  "lieferantenHex": "#FFFFFF",
+  "frontDom": "#dadada",
+  "deltaE": 64
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "neon-yellow",
+  "lieferantenHex": "#F0FF3D",
+  "frontDom": "#e9e112",
+  "deltaE": 53
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "neon-orange",
+  "lieferantenHex": "#F7A600",
+  "frontDom": "#f1781c",
+  "deltaE": 54
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "red",
+  "lieferantenHex": "#C4082D",
+  "frontDom": "#e02d32",
+  "deltaE": 47
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "neon-coral",
+  "lieferantenHex": "#FF3B7D",
+  "frontDom": "#ef6583",
+  "deltaE": 45
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "neon-pink",
+  "lieferantenHex": "#E41762",
+  "frontDom": "#e13d85",
+  "deltaE": 52
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "dark-purple",
+  "lieferantenHex": "#55117B",
+  "frontDom": "#5e3281",
+  "deltaE": 35
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "aqua",
+  "lieferantenHex": "#0095C3",
+  "frontDom": "#589cbc",
+  "deltaE": 89
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "royal-blue-241",
+  "lieferantenHex": "#01509D",
+  "frontDom": "#2b478a",
+  "deltaE": 47
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "petroleum-blue",
+  "lieferantenHex": "#0D2E30",
+  "frontDom": "#223845",
+  "deltaE": 31
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "french-navy",
+  "lieferantenHex": "#011F45",
+  "frontDom": "#21314b",
+  "deltaE": 37
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "apple-green",
+  "lieferantenHex": "#CDEA80",
+  "frontDom": "#b6c74e",
+  "deltaE": 65
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "neon-green",
+  "lieferantenHex": "#C5E86C",
+  "frontDom": "#bbd124",
+  "deltaE": 76
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "forest-green",
+  "lieferantenHex": "#495853",
+  "frontDom": "#293f33",
+  "deltaE": 52
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "pure-grey",
+  "lieferantenHex": "#ADB2B6",
+  "frontDom": "#97a5b0",
+  "deltaE": 26
+ },
+ {
+  "produkt": "sport-l200",
+  "farbe": "black",
+  "lieferantenHex": "#180F12",
+  "frontDom": "#656565",
+  "deltaE": 142
+ },
+ {
+  "produkt": "sport-l02071",
+  "farbe": "white",
+  "lieferantenHex": "#FFFFFF",
+  "frontDom": "#e8e8e8",
+  "deltaE": 40
+ },
+ {
+  "produkt": "sport-l02071",
+  "farbe": "neon-yellow",
+  "lieferantenHex": "#F0FF3D",
+  "frontDom": "#ecd912",
+  "deltaE": 58
+ },
+ {
+  "produkt": "sport-l02071",
+  "farbe": "red",
+  "lieferantenHex": "#C4082D",
+  "frontDom": "#c50b21",
+  "deltaE": 12
+ },
+ {
+  "produkt": "sport-l02071",
+  "farbe": "aqua",
+  "lieferantenHex": "#0095C3",
+  "frontDom": "#0a83a9",
+  "deltaE": 33
+ },
+ {
+  "produkt": "sport-l02071",
+  "farbe": "royal-blue-241",
+  "lieferantenHex": "#01509D",
+  "frontDom": "#2b497f",
+  "deltaE": 52
+ },
+ {
+  "produkt": "sport-l02071",
+  "farbe": "french-navy",
+  "lieferantenHex": "#011F45",
+  "frontDom": "#212a4b",
+  "deltaE": 34
+ },
+ {
+  "produkt": "sport-l02071",
+  "farbe": "neon-green",
+  "lieferantenHex": "#C5E86C",
+  "frontDom": "#5bab31",
+  "deltaE": 136
+ },
+ {
+  "produkt": "sport-l02071",
+  "farbe": "black",
+  "lieferantenHex": "#180F12",
+  "frontDom": "#292929",
+  "deltaE": 39
+ },
+ {
+  "produkt": "sport-bctg003",
+  "farbe": "white",
+  "lieferantenHex": "#FFFFFF",
+  "frontDom": "#efefef",
+  "deltaE": 28
+ },
+ {
+  "produkt": "sport-bctg003",
+  "farbe": "ultra-yellow",
+  "lieferantenHex": "#FFED00",
+  "frontDom": "#d5fa5b",
+  "deltaE": 101
+ },
+ {
+  "produkt": "sport-bctg003",
+  "farbe": "meta-orange",
+  "lieferantenHex": "#F08000",
+  "frontDom": "#fe9a2a",
+  "deltaE": 51
+ },
+ {
+  "produkt": "sport-bctg003",
+  "farbe": "red",
+  "lieferantenHex": "#DB001B",
+  "frontDom": "#d00a29",
+  "deltaE": 20
+ },
+ {
+  "produkt": "sport-bctg003",
+  "farbe": "royal-blue",
+  "lieferantenHex": "#154E8F",
+  "frontDom": "#134f8f",
+  "deltaE": 2
+ },
+ {
+  "produkt": "sport-bctg003",
+  "farbe": "navy",
+  "lieferantenHex": "#1F2532",
+  "frontDom": "#232937",
+  "deltaE": 8
+ },
+ {
+  "produkt": "sport-bctg003",
+  "farbe": "kelly-green",
+  "lieferantenHex": "#009149",
+  "frontDom": "#0d825f",
+  "deltaE": 30
+ },
+ {
+  "produkt": "sport-bctg003",
+  "farbe": "black",
+  "lieferantenHex": "#000000",
+  "frontDom": "#2c2a2b",
+  "deltaE": 74
+ }
+]

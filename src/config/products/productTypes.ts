@@ -57,6 +57,9 @@ export interface ProductTypeDef {
   kachelFarbe: string[];
   /** Kurzcharakterisierung auf der Startseiten-Kachel. */
   kachelText: string;
+  /** Die Bezeichnung ist ein Sammelbegriff ohne eigene Mehrzahl („Sportbekleidung“): Sätze mit „zu den schwereren …“ werden dann
+   *  als „zu den schwereren Modellen der Sportbekleidung“ gebaut (lib/seo/produktFakten.ts). Ohne Angabe: normales Mehrzahlwort. */
+  sammelbegriff?: boolean;
   /** Diese Art trägt die Startseiten-Bühne (großer Aufmacher). Höchstens eine.
    *  Ohne Angabe: keine Bühne. */
   hero?: boolean;
@@ -119,8 +122,17 @@ export const PRODUCT_TYPES: Record<ProductType, ProductTypeDef> = {
   // Kinderbekleidung als EINE Produktart (T-Shirt, Hoodie, Sweater, Zip-Hoodie, Longsleeve in Kindergrößen): eigener
   // Browser-Zweig „Kinder“ (naviAchse 'kinder'), eigene Größenleiter (Körpergröße in cm) und keine Vermischung mit den
   // Erwachsenen-Kategorien (Kategorieseiten, Zähler, „ab“-Preise). Die Kleidungsart steht in detailedDescription.productType.
+  // Sportbekleidung als EINE Produktart (Sport-T-Shirt, Sport-Langarmshirt, Tanktop, Viertelreißverschluss-Shirt …): eigener Reiter
+  // „Sportbekleidung“ neben den klassischen Baumwoll-Kategorien. Gegliedert wird wie die übrige Erwachsenenware nach Geschlecht
+  // (Herren/Damen/Unisex, gleiche Achse) mit den Konfektionsgrößen; das Kleidungsstück steht in detailedDescription.productType.
+  // `sammelbegriff`: „Sportbekleidung“ ist kein zählbares Wort („zu den schwereren Sportbekleidung“ wäre falsch).
+  sport: {
+    labelSingular: 'Sportbekleidung', labelPlural: 'Sportbekleidung', order: 9, primaryView: 'front',
+    naviAchse: 'geschlecht', groessenLeiter: 'konfektion-eu', sammelbegriff: true,
+    komplement: ['hoodie', 'jacket', 'tshirt'], kachelFarbe: ['blau', 'schwarz'], kachelText: 'Sportliche Shirts für Team, Verein und Training.',
+  },
   kids: {
-    labelSingular: 'Kinderbekleidung', labelPlural: 'Kinderbekleidung', order: 9, primaryView: 'front',
+    labelSingular: 'Kinderbekleidung', labelPlural: 'Kinderbekleidung', order: 10, primaryView: 'front',
     naviAchse: 'kinder', groessenLeiter: 'kinder-cm',
     komplement: [], kachelFarbe: ['gelb', 'rot', 'blau'], kachelText: 'Kleine Größen, große Wirkung.',
   },

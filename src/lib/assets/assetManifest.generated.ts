@@ -21166,5 +21166,1274 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
       },
       "status": "real"
     }
+  },
+  "sport-jc001": {
+    "arctic-white": {
+      "views": {
+        "front": "/products/sport-jc001-arctic-white/front.webp",
+        "back": "/products/sport-jc001-arctic-white/back.webp",
+        "sleeve_left": "/products/sport-jc001-arctic-white/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-arctic-white/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "vanilla": {
+      "views": {
+        "front": "/products/sport-jc001-vanilla/front.webp",
+        "back": "/products/sport-jc001-vanilla/back.webp",
+        "sleeve_left": "/products/sport-jc001-vanilla/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-vanilla/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "desert-sand": {
+      "views": {
+        "front": "/products/sport-jc001-desert-sand/front.webp",
+        "back": "/products/sport-jc001-desert-sand/back.webp",
+        "sleeve_left": "/products/sport-jc001-desert-sand/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-desert-sand/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "citrus": {
+      "views": {
+        "front": "/products/sport-jc001-citrus/front.webp",
+        "back": "/products/sport-jc001-citrus/back.webp",
+        "sleeve_left": "/products/sport-jc001-citrus/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-citrus/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-yellow": {
+      "views": {
+        "front": "/products/sport-jc001-electric-yellow/front.webp",
+        "back": "/products/sport-jc001-electric-yellow/back.webp",
+        "sleeve_left": "/products/sport-jc001-electric-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-electric-yellow/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sun-yellow": {
+      "views": {
+        "front": "/products/sport-jc001-sun-yellow/front.webp",
+        "back": "/products/sport-jc001-sun-yellow/back.webp",
+        "sleeve_left": "/products/sport-jc001-sun-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-sun-yellow/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sherbet-lemon": {
+      "views": {
+        "front": "/products/sport-jc001-sherbet-lemon/front.webp",
+        "back": "/products/sport-jc001-sherbet-lemon/back.webp",
+        "sleeve_left": "/products/sport-jc001-sherbet-lemon/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-sherbet-lemon/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "gold": {
+      "views": {
+        "front": "/products/sport-jc001-gold/front.webp",
+        "back": "/products/sport-jc001-gold/back.webp",
+        "sleeve_left": "/products/sport-jc001-gold/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-gold/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-orange": {
+      "views": {
+        "front": "/products/sport-jc001-electric-orange/front.webp",
+        "back": "/products/sport-jc001-electric-orange/back.webp",
+        "sleeve_left": "/products/sport-jc001-electric-orange/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-electric-orange/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "orange-crush": {
+      "views": {
+        "front": "/products/sport-jc001-orange-crush/front.webp",
+        "back": "/products/sport-jc001-orange-crush/back.webp",
+        "sleeve_left": "/products/sport-jc001-orange-crush/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-orange-crush/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "orange-flame": {
+      "views": {
+        "front": "/products/sport-jc001-orange-flame/front.webp",
+        "back": "/products/sport-jc001-orange-flame/back.webp",
+        "sleeve_left": "/products/sport-jc001-orange-flame/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-orange-flame/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "fire-red": {
+      "views": {
+        "front": "/products/sport-jc001-fire-red/front.webp",
+        "back": "/products/sport-jc001-fire-red/back.webp",
+        "sleeve_left": "/products/sport-jc001-fire-red/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-fire-red/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "red-hot-chilli": {
+      "views": {
+        "front": "/products/sport-jc001-red-hot-chilli/front.webp",
+        "back": "/products/sport-jc001-red-hot-chilli/back.webp",
+        "sleeve_left": "/products/sport-jc001-red-hot-chilli/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-red-hot-chilli/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/sport-jc001-burgundy/front.webp",
+        "back": "/products/sport-jc001-burgundy/back.webp",
+        "sleeve_left": "/products/sport-jc001-burgundy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-burgundy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "baby-pink": {
+      "views": {
+        "front": "/products/sport-jc001-baby-pink/front.webp",
+        "back": "/products/sport-jc001-baby-pink/back.webp",
+        "sleeve_left": "/products/sport-jc001-baby-pink/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-baby-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "peach-sorbet": {
+      "views": {
+        "front": "/products/sport-jc001-peach-sorbet/front.webp",
+        "back": "/products/sport-jc001-peach-sorbet/back.webp",
+        "sleeve_left": "/products/sport-jc001-peach-sorbet/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-peach-sorbet/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-pink": {
+      "views": {
+        "front": "/products/sport-jc001-electric-pink/front.webp",
+        "back": "/products/sport-jc001-electric-pink/back.webp",
+        "sleeve_left": "/products/sport-jc001-electric-pink/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-electric-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "dusty-pink": {
+      "views": {
+        "front": "/products/sport-jc001-dusty-pink/front.webp",
+        "back": "/products/sport-jc001-dusty-pink/back.webp",
+        "sleeve_left": "/products/sport-jc001-dusty-pink/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-dusty-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "hot-pink": {
+      "views": {
+        "front": "/products/sport-jc001-hot-pink/front.webp",
+        "back": "/products/sport-jc001-hot-pink/back.webp",
+        "sleeve_left": "/products/sport-jc001-hot-pink/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-hot-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "hyper-pink": {
+      "views": {
+        "front": "/products/sport-jc001-hyper-pink/front.webp",
+        "back": "/products/sport-jc001-hyper-pink/back.webp",
+        "sleeve_left": "/products/sport-jc001-hyper-pink/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-hyper-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "digital-lavender": {
+      "views": {
+        "front": "/products/sport-jc001-digital-lavender/front.webp",
+        "back": "/products/sport-jc001-digital-lavender/back.webp",
+        "sleeve_left": "/products/sport-jc001-digital-lavender/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-digital-lavender/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "magenta-magic": {
+      "views": {
+        "front": "/products/sport-jc001-magenta-magic/front.webp",
+        "back": "/products/sport-jc001-magenta-magic/back.webp",
+        "sleeve_left": "/products/sport-jc001-magenta-magic/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-magenta-magic/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "purple": {
+      "views": {
+        "front": "/products/sport-jc001-purple/front.webp",
+        "back": "/products/sport-jc001-purple/back.webp",
+        "sleeve_left": "/products/sport-jc001-purple/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-purple/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "plum": {
+      "views": {
+        "front": "/products/sport-jc001-plum/front.webp",
+        "back": "/products/sport-jc001-plum/back.webp",
+        "sleeve_left": "/products/sport-jc001-plum/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-plum/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sky-blue": {
+      "views": {
+        "front": "/products/sport-jc001-sky-blue/front.webp",
+        "back": "/products/sport-jc001-sky-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-sky-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-sky-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "hawaiian-blue": {
+      "views": {
+        "front": "/products/sport-jc001-hawaiian-blue/front.webp",
+        "back": "/products/sport-jc001-hawaiian-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-hawaiian-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-hawaiian-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sapphire-blue": {
+      "views": {
+        "front": "/products/sport-jc001-sapphire-blue/front.webp",
+        "back": "/products/sport-jc001-sapphire-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-sapphire-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-sapphire-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "cornflower-blue": {
+      "views": {
+        "front": "/products/sport-jc001-cornflower-blue/front.webp",
+        "back": "/products/sport-jc001-cornflower-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-cornflower-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-cornflower-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "airforce-blue": {
+      "views": {
+        "front": "/products/sport-jc001-airforce-blue/front.webp",
+        "back": "/products/sport-jc001-airforce-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-airforce-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-airforce-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "reflex-blue": {
+      "views": {
+        "front": "/products/sport-jc001-reflex-blue/front.webp",
+        "back": "/products/sport-jc001-reflex-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-reflex-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-reflex-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/sport-jc001-royal-blue/front.webp",
+        "back": "/products/sport-jc001-royal-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-royal-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "ink-blue": {
+      "views": {
+        "front": "/products/sport-jc001-ink-blue/front.webp",
+        "back": "/products/sport-jc001-ink-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-ink-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-ink-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "oxford-navy": {
+      "views": {
+        "front": "/products/sport-jc001-oxford-navy/front.webp",
+        "back": "/products/sport-jc001-oxford-navy/back.webp",
+        "sleeve_left": "/products/sport-jc001-oxford-navy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-oxford-navy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/sport-jc001-french-navy/front.webp",
+        "back": "/products/sport-jc001-french-navy/back.webp",
+        "sleeve_left": "/products/sport-jc001-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-french-navy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "mint": {
+      "views": {
+        "front": "/products/sport-jc001-mint/front.webp",
+        "back": "/products/sport-jc001-mint/back.webp",
+        "sleeve_left": "/products/sport-jc001-mint/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-mint/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "seafoam": {
+      "views": {
+        "front": "/products/sport-jc001-seafoam/front.webp",
+        "back": "/products/sport-jc001-seafoam/back.webp",
+        "sleeve_left": "/products/sport-jc001-seafoam/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-seafoam/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "turquoise-blue": {
+      "views": {
+        "front": "/products/sport-jc001-turquoise-blue/front.webp",
+        "back": "/products/sport-jc001-turquoise-blue/back.webp",
+        "sleeve_left": "/products/sport-jc001-turquoise-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-turquoise-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "jade": {
+      "views": {
+        "front": "/products/sport-jc001-jade/front.webp",
+        "back": "/products/sport-jc001-jade/back.webp",
+        "sleeve_left": "/products/sport-jc001-jade/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-jade/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "melon-green": {
+      "views": {
+        "front": "/products/sport-jc001-melon-green/front.webp",
+        "back": "/products/sport-jc001-melon-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-melon-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-melon-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-green": {
+      "views": {
+        "front": "/products/sport-jc001-electric-green/front.webp",
+        "back": "/products/sport-jc001-electric-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-electric-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-electric-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "lime-green": {
+      "views": {
+        "front": "/products/sport-jc001-lime-green/front.webp",
+        "back": "/products/sport-jc001-lime-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-lime-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-lime-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sour-green": {
+      "views": {
+        "front": "/products/sport-jc001-sour-green/front.webp",
+        "back": "/products/sport-jc001-sour-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-sour-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-sour-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "kelly-green": {
+      "views": {
+        "front": "/products/sport-jc001-kelly-green/front.webp",
+        "back": "/products/sport-jc001-kelly-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-kelly-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-kelly-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "earthy-green": {
+      "views": {
+        "front": "/products/sport-jc001-earthy-green/front.webp",
+        "back": "/products/sport-jc001-earthy-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-earthy-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-earthy-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "bottle-green": {
+      "views": {
+        "front": "/products/sport-jc001-bottle-green/front.webp",
+        "back": "/products/sport-jc001-bottle-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-bottle-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-bottle-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "combat-green": {
+      "views": {
+        "front": "/products/sport-jc001-combat-green/front.webp",
+        "back": "/products/sport-jc001-combat-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-combat-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-combat-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "olive-green": {
+      "views": {
+        "front": "/products/sport-jc001-olive-green/front.webp",
+        "back": "/products/sport-jc001-olive-green/back.webp",
+        "sleeve_left": "/products/sport-jc001-olive-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-olive-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "hot-chocolate": {
+      "views": {
+        "front": "/products/sport-jc001-hot-chocolate/front.webp",
+        "back": "/products/sport-jc001-hot-chocolate/back.webp",
+        "sleeve_left": "/products/sport-jc001-hot-chocolate/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-hot-chocolate/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "ash-solid": {
+      "views": {
+        "front": "/products/sport-jc001-ash-solid/front.webp",
+        "back": "/products/sport-jc001-ash-solid/back.webp",
+        "sleeve_left": "/products/sport-jc001-ash-solid/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-ash-solid/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "heather-grey-solid": {
+      "views": {
+        "front": "/products/sport-jc001-heather-grey-solid/front.webp",
+        "back": "/products/sport-jc001-heather-grey-solid/back.webp",
+        "sleeve_left": "/products/sport-jc001-heather-grey-solid/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-heather-grey-solid/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "charcoal-solid": {
+      "views": {
+        "front": "/products/sport-jc001-charcoal-solid/front.webp",
+        "back": "/products/sport-jc001-charcoal-solid/back.webp",
+        "sleeve_left": "/products/sport-jc001-charcoal-solid/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-charcoal-solid/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/sport-jc001-jet-black/front.webp",
+        "back": "/products/sport-jc001-jet-black/back.webp",
+        "sleeve_left": "/products/sport-jc001-jet-black/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc001-jet-black/sleeve-right.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-jc005": {
+    "arctic-white": {
+      "views": {
+        "front": "/products/sport-jc005-arctic-white/front.webp",
+        "back": "/products/sport-jc005-arctic-white/back.webp",
+        "sleeve_left": "/products/sport-jc005-arctic-white/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-arctic-white/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-yellow": {
+      "views": {
+        "front": "/products/sport-jc005-electric-yellow/front.webp",
+        "back": "/products/sport-jc005-electric-yellow/back.webp",
+        "sleeve_left": "/products/sport-jc005-electric-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-electric-yellow/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sun-yellow": {
+      "views": {
+        "front": "/products/sport-jc005-sun-yellow/front.webp",
+        "back": "/products/sport-jc005-sun-yellow/back.webp",
+        "sleeve_left": "/products/sport-jc005-sun-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-sun-yellow/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-orange": {
+      "views": {
+        "front": "/products/sport-jc005-electric-orange/front.webp",
+        "back": "/products/sport-jc005-electric-orange/back.webp",
+        "sleeve_left": "/products/sport-jc005-electric-orange/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-electric-orange/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "fire-red": {
+      "views": {
+        "front": "/products/sport-jc005-fire-red/front.webp",
+        "back": "/products/sport-jc005-fire-red/back.webp",
+        "sleeve_left": "/products/sport-jc005-fire-red/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-fire-red/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "burgundy": {
+      "views": {
+        "front": "/products/sport-jc005-burgundy/front.webp",
+        "back": "/products/sport-jc005-burgundy/back.webp",
+        "sleeve_left": "/products/sport-jc005-burgundy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-burgundy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-pink": {
+      "views": {
+        "front": "/products/sport-jc005-electric-pink/front.webp",
+        "back": "/products/sport-jc005-electric-pink/back.webp",
+        "sleeve_left": "/products/sport-jc005-electric-pink/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-electric-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "hot-pink": {
+      "views": {
+        "front": "/products/sport-jc005-hot-pink/front.webp",
+        "back": "/products/sport-jc005-hot-pink/back.webp",
+        "sleeve_left": "/products/sport-jc005-hot-pink/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-hot-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "hyper-pink": {
+      "views": {
+        "front": "/products/sport-jc005-hyper-pink/front.webp",
+        "back": "/products/sport-jc005-hyper-pink/back.webp",
+        "sleeve_left": "/products/sport-jc005-hyper-pink/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-hyper-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "digital-lavender": {
+      "views": {
+        "front": "/products/sport-jc005-digital-lavender/front.webp",
+        "back": "/products/sport-jc005-digital-lavender/back.webp",
+        "sleeve_left": "/products/sport-jc005-digital-lavender/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-digital-lavender/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "magenta-magic": {
+      "views": {
+        "front": "/products/sport-jc005-magenta-magic/front.webp",
+        "back": "/products/sport-jc005-magenta-magic/back.webp",
+        "sleeve_left": "/products/sport-jc005-magenta-magic/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-magenta-magic/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "purple": {
+      "views": {
+        "front": "/products/sport-jc005-purple/front.webp",
+        "back": "/products/sport-jc005-purple/back.webp",
+        "sleeve_left": "/products/sport-jc005-purple/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-purple/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sky-blue": {
+      "views": {
+        "front": "/products/sport-jc005-sky-blue/front.webp",
+        "back": "/products/sport-jc005-sky-blue/back.webp",
+        "sleeve_left": "/products/sport-jc005-sky-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-sky-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sapphire-blue": {
+      "views": {
+        "front": "/products/sport-jc005-sapphire-blue/front.webp",
+        "back": "/products/sport-jc005-sapphire-blue/back.webp",
+        "sleeve_left": "/products/sport-jc005-sapphire-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-sapphire-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/sport-jc005-royal-blue/front.webp",
+        "back": "/products/sport-jc005-royal-blue/back.webp",
+        "sleeve_left": "/products/sport-jc005-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-royal-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "oxford-navy": {
+      "views": {
+        "front": "/products/sport-jc005-oxford-navy/front.webp",
+        "back": "/products/sport-jc005-oxford-navy/back.webp",
+        "sleeve_left": "/products/sport-jc005-oxford-navy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-oxford-navy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/sport-jc005-french-navy/front.webp",
+        "back": "/products/sport-jc005-french-navy/back.webp",
+        "sleeve_left": "/products/sport-jc005-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-french-navy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "mint": {
+      "views": {
+        "front": "/products/sport-jc005-mint/front.webp",
+        "back": "/products/sport-jc005-mint/back.webp",
+        "sleeve_left": "/products/sport-jc005-mint/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-mint/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "jade": {
+      "views": {
+        "front": "/products/sport-jc005-jade/front.webp",
+        "back": "/products/sport-jc005-jade/back.webp",
+        "sleeve_left": "/products/sport-jc005-jade/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-jade/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-green": {
+      "views": {
+        "front": "/products/sport-jc005-electric-green/front.webp",
+        "back": "/products/sport-jc005-electric-green/back.webp",
+        "sleeve_left": "/products/sport-jc005-electric-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-electric-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "kelly-green": {
+      "views": {
+        "front": "/products/sport-jc005-kelly-green/front.webp",
+        "back": "/products/sport-jc005-kelly-green/back.webp",
+        "sleeve_left": "/products/sport-jc005-kelly-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-kelly-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "bottle-green": {
+      "views": {
+        "front": "/products/sport-jc005-bottle-green/front.webp",
+        "back": "/products/sport-jc005-bottle-green/back.webp",
+        "sleeve_left": "/products/sport-jc005-bottle-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-bottle-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "heather-grey-solid": {
+      "views": {
+        "front": "/products/sport-jc005-heather-grey-solid/front.webp",
+        "back": "/products/sport-jc005-heather-grey-solid/back.webp",
+        "sleeve_left": "/products/sport-jc005-heather-grey-solid/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-heather-grey-solid/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "charcoal-solid": {
+      "views": {
+        "front": "/products/sport-jc005-charcoal-solid/front.webp",
+        "back": "/products/sport-jc005-charcoal-solid/back.webp",
+        "sleeve_left": "/products/sport-jc005-charcoal-solid/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-charcoal-solid/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/sport-jc005-jet-black/front.webp",
+        "back": "/products/sport-jc005-jet-black/back.webp",
+        "sleeve_left": "/products/sport-jc005-jet-black/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc005-jet-black/sleeve-right.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-jc012": {
+    "arctic-white": {
+      "views": {
+        "front": "/products/sport-jc012-arctic-white/front.webp",
+        "back": "/products/sport-jc012-arctic-white/back.webp",
+        "sleeve_left": "/products/sport-jc012-arctic-white/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc012-arctic-white/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "electric-yellow": {
+      "views": {
+        "front": "/products/sport-jc012-electric-yellow/front.webp",
+        "back": "/products/sport-jc012-electric-yellow/back.webp",
+        "sleeve_left": "/products/sport-jc012-electric-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc012-electric-yellow/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "sapphire-blue": {
+      "views": {
+        "front": "/products/sport-jc012-sapphire-blue/front.webp",
+        "back": "/products/sport-jc012-sapphire-blue/back.webp",
+        "sleeve_left": "/products/sport-jc012-sapphire-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc012-sapphire-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/sport-jc012-jet-black/front.webp",
+        "back": "/products/sport-jc012-jet-black/back.webp",
+        "sleeve_left": "/products/sport-jc012-jet-black/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc012-jet-black/sleeve-right.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-jc023": {
+    "electric-yellow": {
+      "views": {
+        "front": "/products/sport-jc023-electric-yellow/front.webp",
+        "back": "/products/sport-jc023-electric-yellow/back.webp",
+        "sleeve_left": "/products/sport-jc023-electric-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc023-electric-yellow/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/sport-jc023-royal-blue/front.webp",
+        "back": "/products/sport-jc023-royal-blue/back.webp",
+        "sleeve_left": "/products/sport-jc023-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc023-royal-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/sport-jc023-french-navy/front.webp",
+        "back": "/products/sport-jc023-french-navy/back.webp",
+        "sleeve_left": "/products/sport-jc023-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc023-french-navy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/sport-jc023-jet-black/front.webp",
+        "back": "/products/sport-jc023-jet-black/back.webp",
+        "sleeve_left": "/products/sport-jc023-jet-black/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc023-jet-black/sleeve-right.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-jc230": {
+    "french-navy": {
+      "views": {
+        "front": "/products/sport-jc230-french-navy/front.webp",
+        "back": "/products/sport-jc230-french-navy/back.webp",
+        "sleeve_left": "/products/sport-jc230-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc230-french-navy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/sport-jc230-jet-black/front.webp",
+        "back": "/products/sport-jc230-jet-black/back.webp",
+        "sleeve_left": "/products/sport-jc230-jet-black/sleeve-left.webp",
+        "sleeve_right": "/products/sport-jc230-jet-black/sleeve-right.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-jc007": {
+    "arctic-white": {
+      "views": {
+        "front": "/products/sport-jc007-arctic-white/front.webp",
+        "back": "/products/sport-jc007-arctic-white/back.webp"
+      },
+      "status": "real"
+    },
+    "electric-yellow": {
+      "views": {
+        "front": "/products/sport-jc007-electric-yellow/front.webp",
+        "back": "/products/sport-jc007-electric-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "sun-yellow": {
+      "views": {
+        "front": "/products/sport-jc007-sun-yellow/front.webp",
+        "back": "/products/sport-jc007-sun-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "fire-red": {
+      "views": {
+        "front": "/products/sport-jc007-fire-red/front.webp",
+        "back": "/products/sport-jc007-fire-red/back.webp"
+      },
+      "status": "real"
+    },
+    "electric-pink": {
+      "views": {
+        "front": "/products/sport-jc007-electric-pink/front.webp",
+        "back": "/products/sport-jc007-electric-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "sapphire-blue": {
+      "views": {
+        "front": "/products/sport-jc007-sapphire-blue/front.webp",
+        "back": "/products/sport-jc007-sapphire-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/sport-jc007-royal-blue/front.webp",
+        "back": "/products/sport-jc007-royal-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/sport-jc007-french-navy/front.webp",
+        "back": "/products/sport-jc007-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "jade": {
+      "views": {
+        "front": "/products/sport-jc007-jade/front.webp",
+        "back": "/products/sport-jc007-jade/back.webp"
+      },
+      "status": "real"
+    },
+    "kelly-green": {
+      "views": {
+        "front": "/products/sport-jc007-kelly-green/front.webp",
+        "back": "/products/sport-jc007-kelly-green/back.webp"
+      },
+      "status": "real"
+    },
+    "bottle-green": {
+      "views": {
+        "front": "/products/sport-jc007-bottle-green/front.webp",
+        "back": "/products/sport-jc007-bottle-green/back.webp"
+      },
+      "status": "real"
+    },
+    "charcoal-solid": {
+      "views": {
+        "front": "/products/sport-jc007-charcoal-solid/front.webp",
+        "back": "/products/sport-jc007-charcoal-solid/back.webp"
+      },
+      "status": "real"
+    },
+    "jet-black": {
+      "views": {
+        "front": "/products/sport-jc007-jet-black/front.webp",
+        "back": "/products/sport-jc007-jet-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-l198": {
+    "white": {
+      "views": {
+        "front": "/products/sport-l198-white/front.webp",
+        "back": "/products/sport-l198-white/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-yellow": {
+      "views": {
+        "front": "/products/sport-l198-neon-yellow/front.webp",
+        "back": "/products/sport-l198-neon-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "lemon": {
+      "views": {
+        "front": "/products/sport-l198-lemon/front.webp",
+        "back": "/products/sport-l198-lemon/back.webp"
+      },
+      "status": "real"
+    },
+    "orange": {
+      "views": {
+        "front": "/products/sport-l198-orange/front.webp",
+        "back": "/products/sport-l198-orange/back.webp"
+      },
+      "status": "real"
+    },
+    "red": {
+      "views": {
+        "front": "/products/sport-l198-red/front.webp",
+        "back": "/products/sport-l198-red/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-coral": {
+      "views": {
+        "front": "/products/sport-l198-neon-coral/front.webp",
+        "back": "/products/sport-l198-neon-coral/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-pink": {
+      "views": {
+        "front": "/products/sport-l198-neon-pink/front.webp",
+        "back": "/products/sport-l198-neon-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "dark-purple": {
+      "views": {
+        "front": "/products/sport-l198-dark-purple/front.webp",
+        "back": "/products/sport-l198-dark-purple/back.webp"
+      },
+      "status": "real"
+    },
+    "aqua": {
+      "views": {
+        "front": "/products/sport-l198-aqua/front.webp",
+        "back": "/products/sport-l198-aqua/back.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue-241": {
+      "views": {
+        "front": "/products/sport-l198-royal-blue-241/front.webp",
+        "back": "/products/sport-l198-royal-blue-241/back.webp"
+      },
+      "status": "real"
+    },
+    "petroleum-blue": {
+      "views": {
+        "front": "/products/sport-l198-petroleum-blue/front.webp",
+        "back": "/products/sport-l198-petroleum-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/sport-l198-french-navy/front.webp",
+        "back": "/products/sport-l198-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "apple-green": {
+      "views": {
+        "front": "/products/sport-l198-apple-green/front.webp",
+        "back": "/products/sport-l198-apple-green/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-green": {
+      "views": {
+        "front": "/products/sport-l198-neon-green/front.webp",
+        "back": "/products/sport-l198-neon-green/back.webp"
+      },
+      "status": "real"
+    },
+    "forest-green": {
+      "views": {
+        "front": "/products/sport-l198-forest-green/front.webp",
+        "back": "/products/sport-l198-forest-green/back.webp"
+      },
+      "status": "real"
+    },
+    "army": {
+      "views": {
+        "front": "/products/sport-l198-army/front.webp",
+        "back": "/products/sport-l198-army/back.webp"
+      },
+      "status": "real"
+    },
+    "pure-grey": {
+      "views": {
+        "front": "/products/sport-l198-pure-grey/front.webp",
+        "back": "/products/sport-l198-pure-grey/back.webp"
+      },
+      "status": "real"
+    },
+    "black": {
+      "views": {
+        "front": "/products/sport-l198-black/front.webp",
+        "back": "/products/sport-l198-black/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-l200": {
+    "white": {
+      "views": {
+        "front": "/products/sport-l200-white/front.webp",
+        "back": "/products/sport-l200-white/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-yellow": {
+      "views": {
+        "front": "/products/sport-l200-neon-yellow/front.webp",
+        "back": "/products/sport-l200-neon-yellow/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-orange": {
+      "views": {
+        "front": "/products/sport-l200-neon-orange/front.webp",
+        "back": "/products/sport-l200-neon-orange/back.webp"
+      },
+      "status": "real"
+    },
+    "red": {
+      "views": {
+        "front": "/products/sport-l200-red/front.webp",
+        "back": "/products/sport-l200-red/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-coral": {
+      "views": {
+        "front": "/products/sport-l200-neon-coral/front.webp",
+        "back": "/products/sport-l200-neon-coral/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-pink": {
+      "views": {
+        "front": "/products/sport-l200-neon-pink/front.webp",
+        "back": "/products/sport-l200-neon-pink/back.webp"
+      },
+      "status": "real"
+    },
+    "dark-purple": {
+      "views": {
+        "front": "/products/sport-l200-dark-purple/front.webp",
+        "back": "/products/sport-l200-dark-purple/back.webp"
+      },
+      "status": "real"
+    },
+    "aqua": {
+      "views": {
+        "front": "/products/sport-l200-aqua/front.webp",
+        "back": "/products/sport-l200-aqua/back.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue-241": {
+      "views": {
+        "front": "/products/sport-l200-royal-blue-241/front.webp",
+        "back": "/products/sport-l200-royal-blue-241/back.webp"
+      },
+      "status": "real"
+    },
+    "petroleum-blue": {
+      "views": {
+        "front": "/products/sport-l200-petroleum-blue/front.webp",
+        "back": "/products/sport-l200-petroleum-blue/back.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/sport-l200-french-navy/front.webp",
+        "back": "/products/sport-l200-french-navy/back.webp"
+      },
+      "status": "real"
+    },
+    "apple-green": {
+      "views": {
+        "front": "/products/sport-l200-apple-green/front.webp",
+        "back": "/products/sport-l200-apple-green/back.webp"
+      },
+      "status": "real"
+    },
+    "neon-green": {
+      "views": {
+        "front": "/products/sport-l200-neon-green/front.webp",
+        "back": "/products/sport-l200-neon-green/back.webp"
+      },
+      "status": "real"
+    },
+    "forest-green": {
+      "views": {
+        "front": "/products/sport-l200-forest-green/front.webp",
+        "back": "/products/sport-l200-forest-green/back.webp"
+      },
+      "status": "real"
+    },
+    "pure-grey": {
+      "views": {
+        "front": "/products/sport-l200-pure-grey/front.webp",
+        "back": "/products/sport-l200-pure-grey/back.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-l02071": {
+    "white": {
+      "views": {
+        "front": "/products/sport-l02071-white/front.webp",
+        "back": "/products/sport-l02071-white/back.webp",
+        "sleeve_left": "/products/sport-l02071-white/sleeve-left.webp",
+        "sleeve_right": "/products/sport-l02071-white/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "neon-yellow": {
+      "views": {
+        "front": "/products/sport-l02071-neon-yellow/front.webp",
+        "back": "/products/sport-l02071-neon-yellow/back.webp",
+        "sleeve_left": "/products/sport-l02071-neon-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/sport-l02071-neon-yellow/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "red": {
+      "views": {
+        "front": "/products/sport-l02071-red/front.webp",
+        "back": "/products/sport-l02071-red/back.webp",
+        "sleeve_left": "/products/sport-l02071-red/sleeve-left.webp",
+        "sleeve_right": "/products/sport-l02071-red/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "aqua": {
+      "views": {
+        "front": "/products/sport-l02071-aqua/front.webp",
+        "back": "/products/sport-l02071-aqua/back.webp",
+        "sleeve_left": "/products/sport-l02071-aqua/sleeve-left.webp",
+        "sleeve_right": "/products/sport-l02071-aqua/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue-241": {
+      "views": {
+        "front": "/products/sport-l02071-royal-blue-241/front.webp",
+        "back": "/products/sport-l02071-royal-blue-241/back.webp",
+        "sleeve_left": "/products/sport-l02071-royal-blue-241/sleeve-left.webp",
+        "sleeve_right": "/products/sport-l02071-royal-blue-241/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "french-navy": {
+      "views": {
+        "front": "/products/sport-l02071-french-navy/front.webp",
+        "back": "/products/sport-l02071-french-navy/back.webp",
+        "sleeve_left": "/products/sport-l02071-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-l02071-french-navy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "neon-green": {
+      "views": {
+        "front": "/products/sport-l02071-neon-green/front.webp",
+        "back": "/products/sport-l02071-neon-green/back.webp",
+        "sleeve_left": "/products/sport-l02071-neon-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-l02071-neon-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "black": {
+      "views": {
+        "front": "/products/sport-l02071-black/front.webp",
+        "back": "/products/sport-l02071-black/back.webp",
+        "sleeve_left": "/products/sport-l02071-black/sleeve-left.webp",
+        "sleeve_right": "/products/sport-l02071-black/sleeve-right.webp"
+      },
+      "status": "real"
+    }
+  },
+  "sport-bctg003": {
+    "white": {
+      "views": {
+        "front": "/products/sport-bctg003-white/front.webp",
+        "back": "/products/sport-bctg003-white/back.webp",
+        "sleeve_left": "/products/sport-bctg003-white/sleeve-left.webp",
+        "sleeve_right": "/products/sport-bctg003-white/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "ultra-yellow": {
+      "views": {
+        "front": "/products/sport-bctg003-ultra-yellow/front.webp",
+        "back": "/products/sport-bctg003-ultra-yellow/back.webp",
+        "sleeve_left": "/products/sport-bctg003-ultra-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/sport-bctg003-ultra-yellow/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "meta-orange": {
+      "views": {
+        "front": "/products/sport-bctg003-meta-orange/front.webp",
+        "back": "/products/sport-bctg003-meta-orange/back.webp",
+        "sleeve_left": "/products/sport-bctg003-meta-orange/sleeve-left.webp",
+        "sleeve_right": "/products/sport-bctg003-meta-orange/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "red": {
+      "views": {
+        "front": "/products/sport-bctg003-red/front.webp",
+        "back": "/products/sport-bctg003-red/back.webp",
+        "sleeve_left": "/products/sport-bctg003-red/sleeve-left.webp",
+        "sleeve_right": "/products/sport-bctg003-red/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "royal-blue": {
+      "views": {
+        "front": "/products/sport-bctg003-royal-blue/front.webp",
+        "back": "/products/sport-bctg003-royal-blue/back.webp",
+        "sleeve_left": "/products/sport-bctg003-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/sport-bctg003-royal-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "navy": {
+      "views": {
+        "front": "/products/sport-bctg003-navy/front.webp",
+        "back": "/products/sport-bctg003-navy/back.webp",
+        "sleeve_left": "/products/sport-bctg003-navy/sleeve-left.webp",
+        "sleeve_right": "/products/sport-bctg003-navy/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "kelly-green": {
+      "views": {
+        "front": "/products/sport-bctg003-kelly-green/front.webp",
+        "back": "/products/sport-bctg003-kelly-green/back.webp",
+        "sleeve_left": "/products/sport-bctg003-kelly-green/sleeve-left.webp",
+        "sleeve_right": "/products/sport-bctg003-kelly-green/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "black": {
+      "views": {
+        "front": "/products/sport-bctg003-black/front.webp",
+        "back": "/products/sport-bctg003-black/back.webp",
+        "sleeve_left": "/products/sport-bctg003-black/sleeve-left.webp",
+        "sleeve_right": "/products/sport-bctg003-black/sleeve-right.webp"
+      },
+      "status": "real"
+    }
   }
 };

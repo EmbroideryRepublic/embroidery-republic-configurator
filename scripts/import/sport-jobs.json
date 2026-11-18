@@ -1,0 +1,1059 @@
+[
+ {
+  "productId": "sport-jc001",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "arctic-white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.textil-grosshandel.eu/public/media/24/72/d1/1785158803/jc001-arctic-white-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/0c/72/69/1785158803/jc001-arctic-white-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/13/1e/6e/1785158803/jc001-arctic-white-left.png"
+   },
+   {
+    "id": "vanilla",
+    "erwarteterHex": "#F0E8D6",
+    "front": "https://www.textil-grosshandel.eu/public/media/bd/79/19/1785159217/jc001-vanilla-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/c9/f5/da/1785159216/jc001-vanilla-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/cc/ba/94/1785159216/jc001-vanilla-left.png"
+   },
+   {
+    "id": "desert-sand",
+    "erwarteterHex": "#B0AA7E",
+    "front": "https://www.textil-grosshandel.eu/public/media/03/0d/33/1785158866/jc001-desert-sand-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/9c/94/05/1785158865/jc001-desert-sand-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/2f/77/07/1785158865/jc001-desert-sand-left.png"
+   },
+   {
+    "id": "citrus",
+    "erwarteterHex": "#C2FA0F",
+    "front": "https://www.textil-grosshandel.eu/public/media/5f/de/2b/1785159236/jc001-citrus-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/4d/64/40/1785159236/jc001-citrus-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/36/cd/cb/1785159235/jc001-citrus-left.png"
+   },
+   {
+    "id": "electric-yellow",
+    "erwarteterHex": "#E3E829",
+    "front": "https://www.textil-grosshandel.eu/public/media/15/df/36/1785158906/jc001-electric-yellow-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/3b/08/a8/1785158906/jc001-electric-yellow-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/c5/53/34/1785158905/jc001-electric-yellow-left.png"
+   },
+   {
+    "id": "sun-yellow",
+    "erwarteterHex": "#FFD100",
+    "front": "https://www.textil-grosshandel.eu/public/media/99/f8/f8/1785159158/jc001-sun-yellow-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/f2/ff/1b/1785159157/jc001-sun-yellow-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/3d/00/01/1785159157/jc001-sun-yellow-left.png"
+   },
+   {
+    "id": "sherbet-lemon",
+    "erwarteterHex": "#FBDB65",
+    "front": "https://www.textil-grosshandel.eu/public/media/78/50/7f/1785159137/jc001-sherbet-lemon-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/84/4e/84/1785159137/jc001-sherbet-lemon-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/2c/14/2d/1785159137/jc001-sherbet-lemon-left.png"
+   },
+   {
+    "id": "gold",
+    "erwarteterHex": "#FFA300",
+    "front": "https://www.textil-grosshandel.eu/public/media/76/cf/ce/1785158941/jc001-gold-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/35/f4/62/1785158941/jc001-gold-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/74/78/5b/1785158941/jc001-gold-left.png"
+   },
+   {
+    "id": "electric-orange",
+    "erwarteterHex": "#FF8F6C",
+    "front": "https://www.textil-grosshandel.eu/public/media/7e/c7/ff/1785158886/jc001-electric-orange-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/91/e7/ff/1785158885/jc001-electric-orange-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/91/ca/69/1785158885/jc001-electric-orange-left.png"
+   },
+   {
+    "id": "orange-crush",
+    "erwarteterHex": "#FF6A13",
+    "front": "https://www.textil-grosshandel.eu/public/media/64/fc/d8/1785159062/jc001-orange-crush-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/03/4d/91/1785159061/jc001-orange-crush-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/ae/70/3a/1785159061/jc001-orange-crush-left.png"
+   },
+   {
+    "id": "orange-flame",
+    "erwarteterHex": "#FF2124",
+    "front": "https://www.textil-grosshandel.eu/public/media/ff/78/60/1785159295/jc001-orange-flame-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/ae/40/9d/1785159294/jc001-orange-flame-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/e7/16/1a/1785159294/jc001-orange-flame-left.png"
+   },
+   {
+    "id": "fire-red",
+    "erwarteterHex": "#C8102E",
+    "front": "https://www.textil-grosshandel.eu/public/media/d7/b1/7b/1785158916/jc001-fire-red-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/f2/d3/99/1785158915/jc001-fire-red-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/01/10/9b/1785158915/jc001-fire-red-left.png"
+   },
+   {
+    "id": "red-hot-chilli",
+    "erwarteterHex": "#8A1538",
+    "front": "https://www.textil-grosshandel.eu/public/media/1b/1f/25/1785159104/jc001-red-hot-chilli-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/9c/56/c0/1785159104/jc001-red-hot-chilli-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/9e/92/54/1785159103/jc001-red-hot-chilli-left.png"
+   },
+   {
+    "id": "burgundy",
+    "erwarteterHex": "#6F263D",
+    "front": "https://www.textil-grosshandel.eu/public/media/6f/d9/59/1785158847/jc001-burgundy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/96/cc/5d/1785158847/jc001-burgundy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/4d/a8/ae/1785158846/jc001-burgundy-left.png"
+   },
+   {
+    "id": "baby-pink",
+    "erwarteterHex": "#FABBCB",
+    "front": "https://www.textil-grosshandel.eu/public/media/7f/2f/f2/1785158826/jc001-baby-pink-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/58/1d/b3/1785158826/jc001-baby-pink-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/0f/bb/ea/1785158826/jc001-baby-pink-left.png"
+   },
+   {
+    "id": "peach-sorbet",
+    "erwarteterHex": "#FF8791",
+    "front": "https://www.textil-grosshandel.eu/public/media/83/04/fc/1785159305/jc001-peach-sorbet-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/e4/76/f4/1785159305/jc001-peach-sorbet-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/78/ed/96/1785159305/jc001-peach-sorbet-left.png"
+   },
+   {
+    "id": "electric-pink",
+    "erwarteterHex": "#FF3EB5",
+    "front": "https://www.textil-grosshandel.eu/public/media/6a/d0/19/1785158896/jc001-electric-pink-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/41/c4/66/1785158895/jc001-electric-pink-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/84/88/f7/1785158895/jc001-electric-pink-left.png"
+   },
+   {
+    "id": "dusty-pink",
+    "erwarteterHex": "#CE6EAD",
+    "front": "https://www.textil-grosshandel.eu/public/media/ab/28/e1/1785159265/jc001-dusty-pink-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/6e/09/90/1785159265/jc001-dusty-pink-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/70/1b/41/1785159265/jc001-dusty-pink-left.png"
+   },
+   {
+    "id": "hot-pink",
+    "erwarteterHex": "#CE0F69",
+    "front": "https://www.textil-grosshandel.eu/public/media/c9/ee/f0/1785158982/jc001-hot-pink-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/44/68/29/1785158981/jc001-hot-pink-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/dc/7b/d2/1785158981/jc001-hot-pink-left.png"
+   },
+   {
+    "id": "hyper-pink",
+    "erwarteterHex": "#F52C8C",
+    "front": "https://www.textil-grosshandel.eu/public/media/89/70/c6/1785159275/jc001-hyper-pink-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/8c/e3/3e/1785159275/jc001-hyper-pink-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/5b/d9/90/1785159275/jc001-hyper-pink-left.png"
+   },
+   {
+    "id": "digital-lavender",
+    "erwarteterHex": "#7870F5",
+    "front": "https://www.textil-grosshandel.eu/public/media/6d/0b/83/1785159256/jc001-digital-lavender-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/7d/fa/31/1785159256/jc001-digital-lavender-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/c3/d2/ba/1785159255/jc001-digital-lavender-left.png"
+   },
+   {
+    "id": "magenta-magic",
+    "erwarteterHex": "#8C4799",
+    "front": "https://www.textil-grosshandel.eu/public/media/f0/f5/17/1785159041/jc001-magenta-magic-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/0d/be/1b/1785159040/jc001-magenta-magic-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/8a/d4/a9/1785159040/jc001-magenta-magic-left.png"
+   },
+   {
+    "id": "purple",
+    "erwarteterHex": "#512D6D",
+    "front": "https://www.textil-grosshandel.eu/public/media/2e/40/1b/1785159093/jc001-purple-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/c0/g0/g0/1785159093/jc001-purple-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/2e/a1/6a/1785159093/jc001-purple-left.png"
+   },
+   {
+    "id": "plum",
+    "erwarteterHex": "#512A44",
+    "front": "https://www.textil-grosshandel.eu/public/media/79/95/28/1785159083/jc001-plum-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/0d/59/ec/1785159082/jc001-plum-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/3e/0a/13/1785159082/jc001-plum-left.png"
+   },
+   {
+    "id": "sky-blue",
+    "erwarteterHex": "#9BB8D3",
+    "front": "https://www.textil-grosshandel.eu/public/media/ba/51/a6/1785159148/jc001-sky-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/1e/65/79/1785159147/jc001-sky-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/98/ed/08/1785159147/jc001-sky-blue-left.png"
+   },
+   {
+    "id": "hawaiian-blue",
+    "erwarteterHex": "#5BC2E7",
+    "front": "https://www.textil-grosshandel.eu/public/media/31/2a/08/1785158953/jc001-hawaiian-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/ea/0a/c9/1785158952/jc001-hawaiian-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/a4/6b/17/1785158952/jc001-hawaiian-blue-left.png"
+   },
+   {
+    "id": "sapphire-blue",
+    "erwarteterHex": "#009CDE",
+    "front": "https://www.textil-grosshandel.eu/public/media/68/c6/81/1785159126/jc001-sapphire-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/e6/98/8e/1785159126/jc001-sapphire-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/10/38/b1/1785159125/jc001-sapphire-blue-left.png"
+   },
+   {
+    "id": "cornflower-blue",
+    "erwarteterHex": "#5E8FCB",
+    "front": "https://www.textil-grosshandel.eu/public/media/d9/7f/4a/1785159246/jc001-cornflower-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/7c/29/21/1785159246/jc001-cornflower-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/d3/1b/e7/1785159246/jc001-cornflower-blue-left.png"
+   },
+   {
+    "id": "airforce-blue",
+    "erwarteterHex": "#4F758B",
+    "front": "https://www.textil-grosshandel.eu/public/media/3d/7c/c8/1785158794/jc001-airforce-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/3c/f1/4c/1785158793/jc001-airforce-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/f2/a8/da/1785158793/jc001-airforce-blue-left.png"
+   },
+   {
+    "id": "reflex-blue",
+    "erwarteterHex": "#0034CD",
+    "front": "https://www.textil-grosshandel.eu/public/media/0c/fe/ec/1785159187/jc001-reflex-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/0a/bb/dd/1785159186/jc001-reflex-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/26/c3/82/1785159186/jc001-reflex-blue-left.png"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#003594",
+    "front": "https://www.textil-grosshandel.eu/public/media/b5/df/26/1785159114/jc001-royal-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/cf/dd/e4/1785159114/jc001-royal-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/e6/6b/4e/1785159114/jc001-royal-blue-left.png"
+   },
+   {
+    "id": "ink-blue",
+    "erwarteterHex": "#123955",
+    "front": "https://www.textil-grosshandel.eu/public/media/d6/c7/94/1785159226/jc001-ink-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/be/bb/2b/1785159226/jc001-ink-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/7b/da/45/1785159226/jc001-ink-blue-left.png"
+   },
+   {
+    "id": "oxford-navy",
+    "erwarteterHex": "#13294B",
+    "front": "https://www.textil-grosshandel.eu/public/media/11/71/24/1785159072/jc001-oxford-navy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/38/cf/63/1785159072/jc001-oxford-navy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/9d/ff/c7/1785159071/jc001-oxford-navy-left.png"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#041C2C",
+    "front": "https://www.textil-grosshandel.eu/public/media/b7/33/52/1785158927/jc001-french-navy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/09/fc/ae/1785158927/jc001-french-navy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/f9/94/b4/1785158926/jc001-french-navy-left.png"
+   },
+   {
+    "id": "mint",
+    "erwarteterHex": "#BAFADE",
+    "front": "https://www.textil-grosshandel.eu/public/media/6e/78/ed/1785159207/jc001-mint-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/74/4c/57/1785159206/jc001-mint-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/4f/5e/10/1785159206/jc001-mint-left.png"
+   },
+   {
+    "id": "seafoam",
+    "erwarteterHex": "#61BBAA",
+    "front": "https://www.textil-grosshandel.eu/public/media/5c/2c/8e/1785159338/jc001-seafoam-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/2e/65/9f/1785159337/jc001-seafoam-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/68/20/d9/1785159337/jc001-seafoam-left.png"
+   },
+   {
+    "id": "turquoise-blue",
+    "erwarteterHex": "#0092BC",
+    "front": "https://www.textil-grosshandel.eu/public/media/c3/23/2c/1785159176/jc001-turquoise-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/fd/76/4b/1785159176/jc001-turquoise-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/5e/e8/15/1785159176/jc001-turquoise-blue-left.png"
+   },
+   {
+    "id": "jade",
+    "erwarteterHex": "#00685E",
+    "front": "https://www.textil-grosshandel.eu/public/media/da/92/9b/1785158992/jc001-jade-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/8f/54/90/1785158991/jc001-jade-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/97/d2/af/1785158991/jc001-jade-left.png"
+   },
+   {
+    "id": "melon-green",
+    "erwarteterHex": "#B7EDA4",
+    "front": "https://www.textil-grosshandel.eu/public/media/ce/51/01/1785159328/jc001-melon-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/95/26/1d/1785159327/jc001-melon-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/97/a5/7f/1785159327/jc001-melon-green-left.png"
+   },
+   {
+    "id": "electric-green",
+    "erwarteterHex": "#A1E056",
+    "front": "https://www.textil-grosshandel.eu/public/media/a7/95/7d/1785158876/jc001-electric-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/e4/9e/88/1785158875/jc001-electric-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/00/49/10/1785158875/jc001-electric-green-left.png"
+   },
+   {
+    "id": "lime-green",
+    "erwarteterHex": "#78BE20",
+    "front": "https://www.textil-grosshandel.eu/public/media/66/38/74/1785159030/jc001-lime-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/cc/be/9e/1785159030/jc001-lime-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/c2/fd/7c/1785159030/jc001-lime-green-left.png"
+   },
+   {
+    "id": "sour-green",
+    "erwarteterHex": "#47D284",
+    "front": "https://www.textil-grosshandel.eu/public/media/93/68/6d/1785159348/jc001-sour-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/8e/35/34/1785159347/jc001-sour-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/c2/e0/a9/1785159347/jc001-sour-green-left.png"
+   },
+   {
+    "id": "kelly-green",
+    "erwarteterHex": "#00832F",
+    "front": "https://www.textil-grosshandel.eu/public/media/8e/e8/41/1785159020/jc001-kelly-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/69/91/ee/1785159019/jc001-kelly-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/65/e7/30/1785159019/jc001-kelly-green-left.png"
+   },
+   {
+    "id": "earthy-green",
+    "erwarteterHex": "#476240",
+    "front": "https://www.textil-grosshandel.eu/public/media/c1/ef/88/1785159285/jc001-earthy-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/a7/18/09/1785159285/jc001-earthy-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/de/6a/de/1785159284/jc001-earthy-green-left.png"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#154734",
+    "front": "https://www.textil-grosshandel.eu/public/media/69/e3/20/1785158837/jc001-bottle-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/f3/cf/50/1785158837/jc001-bottle-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/b8/30/c1/1785158836/jc001-bottle-green-left.png"
+   },
+   {
+    "id": "combat-green",
+    "erwarteterHex": "#1A2711",
+    "front": "https://www.textil-grosshandel.eu/public/media/f7/ae/b4/1785159197/jc001-combat-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/af/b3/a8/1785159196/jc001-combat-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/38/13/6a/1785159196/jc001-combat-green-left.png"
+   },
+   {
+    "id": "olive-green",
+    "erwarteterHex": "#4A412A",
+    "front": "https://www.textil-grosshandel.eu/public/media/99/d5/d1/1785159051/jc001-olive-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/07/b0/53/1785159051/jc001-olive-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/a8/d7/fc/1785159050/jc001-olive-green-left.png"
+   },
+   {
+    "id": "hot-chocolate",
+    "erwarteterHex": "#382E2C",
+    "front": "https://www.textil-grosshandel.eu/public/media/b5/a7/a6/1785158972/jc001-hot-chocolate-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/04/3e/3b/1785158971/jc001-hot-chocolate-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/70/fd/47/1785158971/jc001-hot-chocolate-left.png"
+   },
+   {
+    "id": "ash-solid",
+    "erwarteterHex": "#D9D9D6",
+    "front": "https://www.textil-grosshandel.eu/public/media/21/fa/c5/1785158817/jc001-ash-solid-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/33/fc/1a/1788903703/jc001-ash-solid-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/4b/35/3f/1785158817/jc001-ash-solid-left.png"
+   },
+   {
+    "id": "heather-grey-solid",
+    "erwarteterHex": "#A7A8AA",
+    "front": "https://www.textil-grosshandel.eu/public/media/14/eb/3b/1785158962/jc001-heather-grey-solid-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/d2/d4/8b/1788903840/jc001-heather-grey-solid-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/48/ca/8c/1785158962/jc001-heather-grey-solid-left.png"
+   },
+   {
+    "id": "charcoal-solid",
+    "erwarteterHex": "#3F4444",
+    "front": "https://www.textil-grosshandel.eu/public/media/39/b3/0e/1785158857/jc001-charcoal-solid-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/fc/2d/94/1788903732/jc001-charcoal-solid-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/45/c6/19/1785158857/jc001-charcoal-solid-left.png"
+   },
+   {
+    "id": "jet-black",
+    "erwarteterHex": "#000710",
+    "front": "https://www.textil-grosshandel.eu/public/media/90/20/18/1785159002/jc001-jet-black-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/df/f1/ea/1785159002/jc001-jet-black-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/c4/45/ae/1785159001/jc001-jet-black-left.png"
+   }
+  ]
+ },
+ {
+  "productId": "sport-jc005",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "arctic-white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.textil-grosshandel.eu/public/media/fb/8a/7e/1793375507/jc005-arctic-white-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/ca/e3/ea/1793375507/jc005-arctic-white-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/05/93/13/1793375506/jc005-arctic-white-left.png"
+   },
+   {
+    "id": "electric-yellow",
+    "erwarteterHex": "#E3E829",
+    "front": "https://www.textil-grosshandel.eu/public/media/9b/b0/79/1793375515/jc005-electric-yellow-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/a5/d6/94/1793375515/jc005-electric-yellow-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/da/52/7e/1793375514/jc005-electric-yellow-left.png"
+   },
+   {
+    "id": "sun-yellow",
+    "erwarteterHex": "#FFD100",
+    "front": "https://www.textil-grosshandel.eu/public/media/bd/e4/38/1793375528/jc005-sun-yellow-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/74/6f/6c/1793375528/jc005-sun-yellow-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/fd/b3/40/1793375528/jc005-sun-yellow-left.png"
+   },
+   {
+    "id": "electric-orange",
+    "erwarteterHex": "#E06427",
+    "front": "https://www.textil-grosshandel.eu/public/media/e4/23/59/1793375512/jc005-electric-orange-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/bb/6f/64/1793375512/jc005-electric-orange-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/d2/d5/35/1793375512/jc005-electric-orange-left.png"
+   },
+   {
+    "id": "fire-red",
+    "erwarteterHex": "#C8102E",
+    "front": "https://www.textil-grosshandel.eu/public/media/62/a6/32/1793375516/jc005-fire-red-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/72/32/81/1793375516/jc005-fire-red-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/b4/02/d8/1793375516/jc005-fire-red-left.png"
+   },
+   {
+    "id": "burgundy",
+    "erwarteterHex": "#6F263D",
+    "front": "https://www.textil-grosshandel.eu/public/media/ca/6f/91/1793375530/jc005-burgundy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/28/97/c1/1793375529/jc005-burgundy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/7c/ba/57/1793375529/jc005-burgundy-left.png"
+   },
+   {
+    "id": "electric-pink",
+    "erwarteterHex": "#FF3EB5",
+    "front": "https://www.textil-grosshandel.eu/public/media/3a/48/42/1793375513/jc005-electric-pink-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/e9/94/e4/1793375513/jc005-electric-pink-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/c8/d3/b0/1793375513/jc005-electric-pink-left.png"
+   },
+   {
+    "id": "hot-pink",
+    "erwarteterHex": "#CE0F69",
+    "front": "https://www.textil-grosshandel.eu/public/media/42/50/44/1793375519/jc005-hot-pink-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/7a/ea/1a/1793375519/jc005-hot-pink-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/9a/73/a7/1793375518/jc005-hot-pink-left.png"
+   },
+   {
+    "id": "hyper-pink",
+    "erwarteterHex": "#FA3596",
+    "front": "https://www.textil-grosshandel.eu/public/media/99/e7/7c/1793375540/jc005-hyper-pink-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/23/e6/6a/1793375540/jc005-hyper-pink-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/b2/8e/51/1793375540/jc005-hyper-pink-left.png"
+   },
+   {
+    "id": "digital-lavender",
+    "erwarteterHex": "#7870F5",
+    "front": "https://www.textil-grosshandel.eu/public/media/64/ec/9a/1793375539/jc005-digital-lavender-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/0e/d8/e5/1793375538/jc005-digital-lavender-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/e4/fb/28/1793375538/jc005-digital-lavender-left.png"
+   },
+   {
+    "id": "magenta-magic",
+    "erwarteterHex": "#8C4799",
+    "front": "https://www.textil-grosshandel.eu/public/media/d3/73/e8/1793375523/jc005-magenta-magic-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/86/64/c9/1793375523/jc005-magenta-magic-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/72/37/2f/1793375522/jc005-magenta-magic-left.png"
+   },
+   {
+    "id": "purple",
+    "erwarteterHex": "#512D6D",
+    "front": "https://www.textil-grosshandel.eu/public/media/e3/5e/af/1793375524/jc005-purple-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/48/8a/ab/1793375524/jc005-purple-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/8e/e8/11/1793375524/jc005-purple-left.png"
+   },
+   {
+    "id": "sky-blue",
+    "erwarteterHex": "#9BB8D3",
+    "front": "https://www.textil-grosshandel.eu/public/media/c2/62/9f/1793375536/jc005-sky-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/0b/63/55/1793375535/jc005-sky-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/2c/4a/d0/1793375535/jc005-sky-blue-left.png"
+   },
+   {
+    "id": "sapphire-blue",
+    "erwarteterHex": "#009CDE",
+    "front": "https://www.textil-grosshandel.eu/public/media/10/ca/96/1793375527/jc005-sapphire-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/48/d4/52/1793375527/jc005-sapphire-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/b5/d4/7a/1793375526/jc005-sapphire-blue-left.png"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#003594",
+    "front": "https://www.textil-grosshandel.eu/public/media/fa/8b/4d/1793375526/jc005-royal-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/2b/9c/dd/1793375525/jc005-royal-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/5d/d0/d0/1793375525/jc005-royal-blue-left.png"
+   },
+   {
+    "id": "oxford-navy",
+    "erwarteterHex": "#13294B",
+    "front": "https://www.textil-grosshandel.eu/public/media/fd/ff/7e/1793375533/jc005-oxford-navy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/1c/37/13/1793375533/jc005-oxford-navy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/fc/05/85/1793375532/jc005-oxford-navy-left.png"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#041C2C",
+    "front": "https://www.textil-grosshandel.eu/public/media/b7/g0/77/1793375518/jc005-french-navy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/f2/79/65/1793375517/jc005-french-navy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/3c/54/47/1793375517/jc005-french-navy-left.png"
+   },
+   {
+    "id": "mint",
+    "erwarteterHex": "#BAFADE",
+    "front": "https://www.textil-grosshandel.eu/public/media/c8/61/07/1793375534/jc005-mint-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/5b/80/49/1793375534/jc005-mint-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/7d/5d/f4/1793375534/jc005-mint-left.png"
+   },
+   {
+    "id": "jade",
+    "erwarteterHex": "#00685E",
+    "front": "https://www.textil-grosshandel.eu/public/media/cf/00/30/1793375537/jc005-jade-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/56/53/33/1793375537/jc005-jade-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/8b/e3/af/1793375537/jc005-jade-left.png"
+   },
+   {
+    "id": "electric-green",
+    "erwarteterHex": "#44D62C",
+    "front": "https://www.textil-grosshandel.eu/public/media/fd/90/30/1793375511/jc005-electric-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/06/07/35/1793375511/jc005-electric-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/5c/67/e6/1793375510/jc005-electric-green-left.png"
+   },
+   {
+    "id": "kelly-green",
+    "erwarteterHex": "#00832F",
+    "front": "https://www.textil-grosshandel.eu/public/media/72/a0/a2/1793375522/jc005-kelly-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/54/d4/09/1793375521/jc005-kelly-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/3c/14/2a/1793375521/jc005-kelly-green-left.png"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#154734",
+    "front": "https://www.textil-grosshandel.eu/public/media/b0/3c/f5/1793375508/jc005-bottle-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/78/54/ed/1793375508/jc005-bottle-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/b4/72/46/1793375507/jc005-bottle-green-left.png"
+   },
+   {
+    "id": "heather-grey-solid",
+    "erwarteterHex": "#A7A8AA",
+    "front": "https://www.textil-grosshandel.eu/public/media/c8/fc/1f/1793375531/jc005-heather-grey-solid-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/cd/25/6d/1793375531/jc005-heather-grey-solid-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/2b/be/6a/1793375531/jc005-heather-grey-solid-left.png"
+   },
+   {
+    "id": "charcoal-solid",
+    "erwarteterHex": "#3F4444",
+    "front": "https://www.textil-grosshandel.eu/public/media/1e/38/d8/1793375509/jc005-charcoal-solid-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/33/1d/2f/1793375509/jc005-charcoal-solid-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/b1/03/f9/1793375509/jc005-charcoal-solid-left.png"
+   },
+   {
+    "id": "jet-black",
+    "erwarteterHex": "#000710",
+    "front": "https://www.textil-grosshandel.eu/public/media/84/fa/7b/1793375520/jc005-jet-black-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/bb/29/a2/1793375520/jc005-jet-black-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/ae/b9/03/1793375520/jc005-jet-black-left.png"
+   }
+  ]
+ },
+ {
+  "productId": "sport-jc012",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "arctic-white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.textil-grosshandel.eu/public/media/5f/ab/83/1793377658/jc012-arctic-white-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/8c/3e/ef/1793377657/jc012-arctic-white-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/66/51/da/1793377657/jc012-arctic-white-left.png"
+   },
+   {
+    "id": "electric-yellow",
+    "erwarteterHex": "#E3E829",
+    "front": "https://www.textil-grosshandel.eu/public/media/ff/d2/38/1793377667/jc012-electric-yellow-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/b0/21/e8/1793377667/jc012-electric-yellow-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/17/57/9c/1793377667/jc012-electric-yellow-left.png"
+   },
+   {
+    "id": "sapphire-blue",
+    "erwarteterHex": "#61A3DB",
+    "front": "https://www.textil-grosshandel.eu/public/media/50/71/16/1793377687/jc012-sapphire-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/bb/71/7b/1793377686/jc012-sapphire-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/39/c3/ea/1793377686/jc012-sapphire-blue-left.png"
+   },
+   {
+    "id": "jet-black",
+    "erwarteterHex": "#000710",
+    "front": "https://www.textil-grosshandel.eu/public/media/6a/52/e1/1793377677/jc012-jet-black-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/be/bb/24/1793377677/jc012-jet-black-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/g0/50/14/1793377677/jc012-jet-black-left.png"
+   }
+  ]
+ },
+ {
+  "productId": "sport-jc023",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "electric-yellow",
+    "erwarteterHex": "#E3E829",
+    "front": "https://www.textil-grosshandel.eu/public/media/55/a2/37/1785159908/jc023-electric-yellow-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/74/77/d1/1785159908/jc023-electric-yellow-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/17/17/f1/1785159908/jc023-electric-yellow-left.png"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#003594",
+    "front": "https://www.textil-grosshandel.eu/public/media/dd/8c/a1/1785159931/jc023-royal-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/dc/62/d4/1785159931/jc023-royal-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/7e/24/30/1785159931/jc023-royal-blue-left.png"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#041C2C",
+    "front": "https://www.textil-grosshandel.eu/public/media/ef/09/0a/1785159917/jc023-french-navy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/bb/43/85/1785159917/jc023-french-navy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/c8/f6/e5/1785159916/jc023-french-navy-left.png"
+   },
+   {
+    "id": "jet-black",
+    "erwarteterHex": "#000710",
+    "front": "https://www.textil-grosshandel.eu/public/media/45/49/01/1785159924/jc023-jet-black-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/de/71/95/1785159924/jc023-jet-black-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/31/20/d6/1785159924/jc023-jet-black-left.png"
+   }
+  ]
+ },
+ {
+  "productId": "sport-jc230",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#041C2C",
+    "front": "https://www.textil-grosshandel.eu/public/media/54/e8/b5/1794983315/jc230-navy-jc230-1-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/f7/bb/42/1794983314/jc230-french-navy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/df/df/b4/1794983314/jc230-navy-jc230-3-side-left.png"
+   },
+   {
+    "id": "jet-black",
+    "erwarteterHex": "#000710",
+    "front": "https://www.textil-grosshandel.eu/public/media/4f/a2/eb/1794983339/jc230-jet-black-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/0c/25/34/1794983339/jc230-jet-black-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/a1/6f/e5/1794983338/jc230-jet-black-left.png"
+   }
+  ]
+ },
+ {
+  "productId": "sport-jc007",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "arctic-white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.textil-grosshandel.eu/public/media/ca/66/b7/1794377927/jc007-arctic-white-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/e5/9b/1e/1794377927/jc007-arctic-white-back.webp"
+   },
+   {
+    "id": "electric-yellow",
+    "erwarteterHex": "#E3E829",
+    "front": "https://www.textil-grosshandel.eu/public/media/07/cb/08/1794377987/jc007-electric-yellow-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/35/d7/7c/1794377987/jc007-electric-yellow-back.webp"
+   },
+   {
+    "id": "sun-yellow",
+    "erwarteterHex": "#FFD100",
+    "front": "https://www.textil-grosshandel.eu/public/media/47/42/25/1794378088/jc007-sun-yellow-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/d8/26/dc/1794378088/jc007-sun-yellow-back.webp"
+   },
+   {
+    "id": "fire-red",
+    "erwarteterHex": "#C8102E",
+    "front": "https://www.textil-grosshandel.eu/public/media/23/a7/a5/1794378001/jc007-fire-red-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/ff/d3/2d/1794378000/jc007-fire-red-back.webp"
+   },
+   {
+    "id": "electric-pink",
+    "erwarteterHex": "#FF3EB5",
+    "front": "https://www.textil-grosshandel.eu/public/media/5c/ac/20/1794378102/jc007-electric-pink-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/9f/52/92/1794378101/jc007-electric-pink-back.webp"
+   },
+   {
+    "id": "sapphire-blue",
+    "erwarteterHex": "#009CDE",
+    "front": "https://www.textil-grosshandel.eu/public/media/0e/c2/ca/1794378074/jc007-sapphire-blue-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/ab/d8/f8/1794378074/jc007-sapphire-blue-back.webp"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#003594",
+    "front": "https://www.textil-grosshandel.eu/public/media/72/dd/18/1794378059/jc007-royal-blue-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/e5/fb/d6/1794378059/jc007-royal-blue-back.webp"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#041C2C",
+    "front": "https://www.textil-grosshandel.eu/public/media/c6/16/1d/1794378016/jc007-french-navy-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/ac/2f/36/1794378015/jc007-french-navy-back.webp"
+   },
+   {
+    "id": "jade",
+    "erwarteterHex": "#00685E",
+    "front": "https://www.textil-grosshandel.eu/public/media/7a/25/6f/1794378116/jc007-jade-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/76/8d/12/1794378116/jc007-jade-back.webp"
+   },
+   {
+    "id": "kelly-green",
+    "erwarteterHex": "#00832F",
+    "front": "https://www.textil-grosshandel.eu/public/media/c1/9f/f2/1794378044/jc007-kelly-green-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/84/ab/f5/1794378044/jc007-kelly-green-back.webp"
+   },
+   {
+    "id": "bottle-green",
+    "erwarteterHex": "#154734",
+    "front": "https://www.textil-grosshandel.eu/public/media/4b/34/75/1794377928/jc007-bottle-green-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/70/95/ed/1794377928/jc007-bottle-green-back.webp"
+   },
+   {
+    "id": "charcoal-solid",
+    "erwarteterHex": "#3F4444",
+    "front": "https://www.textil-grosshandel.eu/public/media/91/44/e5/1794377929/jc007-charcoal-solid-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/43/a0/7d/1794377973/jc007-charcoal-solid-back.webp"
+   },
+   {
+    "id": "jet-black",
+    "erwarteterHex": "#000710",
+    "front": "https://www.textil-grosshandel.eu/public/media/d9/20/3a/1794378030/jc007-jet-black-front.webp",
+    "back": "https://www.textil-grosshandel.eu/public/media/98/67/55/1794378030/jc007-jet-black-back.webp"
+   }
+  ]
+ },
+ {
+  "productId": "sport-l198",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.textil-grosshandel.eu/public/media/5f/92/d7/1785168944/l198-white-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/30/49/6b/1785168944/l198-white-back.png"
+   },
+   {
+    "id": "neon-yellow",
+    "erwarteterHex": "#F0FF3D",
+    "front": "https://www.textil-grosshandel.eu/public/media/80/fb/3c/1788944991/l198-neon-yellow-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/ea/15/6e/1788944990/l198-neon-yellow-back-1.png"
+   },
+   {
+    "id": "lemon",
+    "erwarteterHex": "#FFE654",
+    "front": "https://www.textil-grosshandel.eu/public/media/db/df/e5/1788944937/l198-lemon-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/b5/07/23/1788944936/l198-lemon-back-1.png"
+   },
+   {
+    "id": "orange",
+    "erwarteterHex": "#F08800",
+    "front": "https://www.textil-grosshandel.eu/public/media/c0/a3/e2/1788945003/l198-orange-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/58/d2/ca/1788945002/l198-orange-back-1.png"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://www.textil-grosshandel.eu/public/media/93/2d/96/1785168919/l198-red-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/6f/be/8c/1785168919/l198-red-back.png"
+   },
+   {
+    "id": "neon-coral",
+    "erwarteterHex": "#FF3B7D",
+    "front": "https://www.textil-grosshandel.eu/public/media/10/44/2c/1788944947/l198-neon-coral-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/ce/ee/9b/1788944947/l198-neon-coral-back-1.png"
+   },
+   {
+    "id": "neon-pink",
+    "erwarteterHex": "#E41762",
+    "front": "https://www.textil-grosshandel.eu/public/media/46/f6/6e/1788944980/l198-neon-pink-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/2c/e2/27/1788944979/l198-neon-pink-back-1.png"
+   },
+   {
+    "id": "dark-purple",
+    "erwarteterHex": "#55117B",
+    "front": "https://www.textil-grosshandel.eu/public/media/87/dc/2d/1785168799/l198-dark-purple-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/6c/3d/0c/1785168799/l198-dark-purple-back.png"
+   },
+   {
+    "id": "aqua",
+    "erwarteterHex": "#0095C3",
+    "front": "https://www.textil-grosshandel.eu/public/media/9e/83/56/1785168775/l198-aqua-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/57/5b/ab/1785168775/l198-aqua-back.png"
+   },
+   {
+    "id": "royal-blue-241",
+    "erwarteterHex": "#01509D",
+    "front": "https://www.textil-grosshandel.eu/public/media/61/ff/d7/1785168932/l198-royal-blue-241-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/89/e5/6c/1785168932/l198-royal-blue-241-back.png"
+   },
+   {
+    "id": "petroleum-blue",
+    "erwarteterHex": "#0D2E30",
+    "front": "https://www.textil-grosshandel.eu/public/media/f5/19/61/1785168956/l198-petroleum-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/ce/6c/8d/1785168956/l198-petroleum-blue-back.png"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#011F45",
+    "front": "https://www.textil-grosshandel.eu/public/media/89/74/be/1785168812/l198-french-navy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/1d/52/2e/1785168812/l198-french-navy-back.png"
+   },
+   {
+    "id": "apple-green",
+    "erwarteterHex": "#CDEA80",
+    "front": "https://www.textil-grosshandel.eu/public/media/54/a4/df/1788944926/l198-apple-green-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/85/39/bb/1788944926/l198-apple-green-back-1.png"
+   },
+   {
+    "id": "neon-green",
+    "erwarteterHex": "#ACC41F",
+    "front": "https://www.textil-grosshandel.eu/public/media/5c/61/bf/1788944958/l198-neon-green-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/9f/73/d2/1788944958/l198-neon-green-back-1.png"
+   },
+   {
+    "id": "forest-green",
+    "erwarteterHex": "#495853",
+    "front": "https://www.textil-grosshandel.eu/public/media/fa/b6/de/1785168969/l198-forest-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/74/b7/0c/1785168969/l198-forest-green-back.png"
+   },
+   {
+    "id": "army",
+    "erwarteterHex": "#746142",
+    "front": "https://www.textil-grosshandel.eu/public/media/28/b9/c5/1785168981/l198-army-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/9d/46/29/1785168981/l198-army-back.png"
+   },
+   {
+    "id": "pure-grey",
+    "erwarteterHex": "#ADB2B6",
+    "front": "https://www.textil-grosshandel.eu/public/media/fe/7f/68/1785168907/l198-pure-grey-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/d2/f0/0e/1785168907/l198-pure-grey-back.png"
+   },
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://www.textil-grosshandel.eu/public/media/19/2a/1c/1785168787/l198-black-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/83/0b/a7/1785168787/l198-black-back.png"
+   }
+  ]
+ },
+ {
+  "productId": "sport-l200",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.textil-grosshandel.eu/public/media/43/00/37/1788945185/l200-white-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/6b/da/97/1788945185/l200-white-back-1.png"
+   },
+   {
+    "id": "neon-yellow",
+    "erwarteterHex": "#F0FF3D",
+    "front": "https://www.textil-grosshandel.eu/public/media/8c/67/83/1788945151/l200-neon-yellow-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/e0/0a/3c/1788945150/l200-neon-yellow-back-1.png"
+   },
+   {
+    "id": "neon-orange",
+    "erwarteterHex": "#F7A600",
+    "front": "https://www.textil-grosshandel.eu/public/media/38/4c/bc/1788945133/l200-neon-orange-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/34/3c/22/1788945132/l200-neon-orange-back-1.png"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://www.textil-grosshandel.eu/public/media/5b/04/bb/1788945168/l200-red-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/0f/27/32/1788945167/l200-red-back-1.png"
+   },
+   {
+    "id": "neon-coral",
+    "erwarteterHex": "#FF3B7D",
+    "front": "https://www.textil-grosshandel.eu/public/media/bc/05/5e/1788945114/l200-neon-coral-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/20/ed/30/1788945114/l200-neon-coral-back-1.png"
+   },
+   {
+    "id": "neon-pink",
+    "erwarteterHex": "#E41762",
+    "front": "https://www.textil-grosshandel.eu/public/media/32/43/f8/1788945142/l200-neon-pink-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/d9/49/35/1788945142/l200-neon-pink-back-1.png"
+   },
+   {
+    "id": "dark-purple",
+    "erwarteterHex": "#55117B",
+    "front": "https://www.textil-grosshandel.eu/public/media/11/e3/13/1788945098/l200-dark-purple-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/07/02/11/1788945098/l200-dark-purple-back-1.png"
+   },
+   {
+    "id": "aqua",
+    "erwarteterHex": "#589CBC",
+    "front": "https://www.textil-grosshandel.eu/public/media/36/a7/ee/1788945083/l200-aqua-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/e4/2c/a5/1788945083/l200-aqua-back-1.png"
+   },
+   {
+    "id": "royal-blue-241",
+    "erwarteterHex": "#01509D",
+    "front": "https://www.textil-grosshandel.eu/public/media/6d/c4/a1/1788945176/l200-royal-blue-241-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/9c/b6/05/1788945176/l200-royal-blue-241-back.png"
+   },
+   {
+    "id": "petroleum-blue",
+    "erwarteterHex": "#0D2E30",
+    "front": "https://www.textil-grosshandel.eu/public/media/34/bf/40/1788945193/l200-petroleum-blue-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/2c/9d/ba/1788945193/l200-petroleum-blue-back-1.png"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#011F45",
+    "front": "https://www.textil-grosshandel.eu/public/media/1b/6b/0c/1788945106/l200-french-navy-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/31/4f/b1/1788945106/l200-french-navy-back-1.png"
+   },
+   {
+    "id": "apple-green",
+    "erwarteterHex": "#CDEA80",
+    "front": "https://www.textil-grosshandel.eu/public/media/20/a8/a1/1788945075/l200-apple-green-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/c3/f5/b2/1788945075/l200-apple-green-back-1.png"
+   },
+   {
+    "id": "neon-green",
+    "erwarteterHex": "#C5E86C",
+    "front": "https://www.textil-grosshandel.eu/public/media/34/5c/a3/1788945123/l200-neon-green-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/5e/06/42/1788945123/l200-neon-green-back-1.png"
+   },
+   {
+    "id": "forest-green",
+    "erwarteterHex": "#495853",
+    "front": "https://www.textil-grosshandel.eu/public/media/53/98/2e/1788945202/l200-forest-green-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/c9/5b/d8/1788945202/l200-forest-green-back-1.png"
+   },
+   {
+    "id": "pure-grey",
+    "erwarteterHex": "#ADB2B6",
+    "front": "https://www.textil-grosshandel.eu/public/media/c9/c4/cf/1788945159/l200-pure-grey-front-1.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/21/80/27/1788945159/l200-pure-grey-back-1.png"
+   }
+  ]
+ },
+ {
+  "productId": "sport-l02071",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.textil-grosshandel.eu/public/media/ef/78/23/1785166322/l02071-white-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/77/77/d3/1785166322/l02071-white-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/80/e5/af/1785166322/l02071-white-left.png"
+   },
+   {
+    "id": "neon-yellow",
+    "erwarteterHex": "#F0FF3D",
+    "front": "https://www.textil-grosshandel.eu/public/media/3d/dc/ae/1785166305/l02071-neon-yellow-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/10/00/55/1785166304/l02071-neon-yellow-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/15/fe/05/1785166304/l02071-neon-yellow-left.png"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#C4082D",
+    "front": "https://www.textil-grosshandel.eu/public/media/2e/85/30/1785166331/l02071-red-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/ec/fe/97/1785166331/l02071-red-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/e0/4b/16/1785166331/l02071-red-left.png"
+   },
+   {
+    "id": "aqua",
+    "erwarteterHex": "#0095C3",
+    "front": "https://www.textil-grosshandel.eu/public/media/23/1e/17/1785166357/l02071-aqua-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/2d/40/70/1785166357/l02071-aqua-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/b2/32/f6/1785166357/l02071-aqua-left.png"
+   },
+   {
+    "id": "royal-blue-241",
+    "erwarteterHex": "#01509D",
+    "front": "https://www.textil-grosshandel.eu/public/media/29/da/a1/1785166340/l02071-royal-blue-241-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/67/a3/11/1785166340/l02071-royal-blue-241-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/42/43/9a/1785166340/l02071-royal-blue-241-left.png"
+   },
+   {
+    "id": "french-navy",
+    "erwarteterHex": "#011F45",
+    "front": "https://www.textil-grosshandel.eu/public/media/04/33/4b/1785166366/l02071-french-navy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/07/b3/31/1785166366/l02071-french-navy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/8f/be/6a/1785166365/l02071-french-navy-left.png"
+   },
+   {
+    "id": "neon-green",
+    "erwarteterHex": "#5BAB31",
+    "front": "https://www.textil-grosshandel.eu/public/media/57/2c/6a/1785166313/l02071-neon-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/a5/18/55/1785166313/l02071-neon-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/22/06/e6/1785166313/l02071-neon-green-left.png"
+   },
+   {
+    "id": "black",
+    "erwarteterHex": "#180F12",
+    "front": "https://www.textil-grosshandel.eu/public/media/77/84/af/1785166349/l02071-black-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/09/04/b3/1785166348/l02071-black-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/79/d0/2e/1785166348/l02071-black-left.png"
+   }
+  ]
+ },
+ {
+  "productId": "sport-bctg003",
+  "quelle": "textil-grosshandel.eu",
+  "colors": [
+   {
+    "id": "white",
+    "erwarteterHex": "#FFFFFF",
+    "front": "https://www.textil-grosshandel.eu/public/media/53/8c/2b/1785144267/bctg003-white-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/36/e2/31/1785144267/bctg003-white-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/70/3d/79/1785144267/bctg003-white-left.png"
+   },
+   {
+    "id": "ultra-yellow",
+    "erwarteterHex": "#D5FA5B",
+    "front": "https://www.textil-grosshandel.eu/public/media/11/cb/3e/1785144318/bctg003-ultra-yellow-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/b3/ba/8c/1785144318/bctg003-ultra-yellow-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/9c/48/b4/1785144318/bctg003-ultra-yellow-left.png"
+   },
+   {
+    "id": "meta-orange",
+    "erwarteterHex": "#F08000",
+    "front": "https://www.textil-grosshandel.eu/public/media/3b/7e/d5/1785144328/bctg003-meta-orange-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/1a/b7/1d/1785144328/bctg003-meta-orange-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/e9/13/d9/1785144328/bctg003-meta-orange-left.png"
+   },
+   {
+    "id": "red",
+    "erwarteterHex": "#DB001B",
+    "front": "https://www.textil-grosshandel.eu/public/media/df/45/58/1785144296/bctg003-red-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/05/98/cc/1785144296/bctg003-red-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/2f/48/aa/1785144296/bctg003-red-left.png"
+   },
+   {
+    "id": "royal-blue",
+    "erwarteterHex": "#154E8F",
+    "front": "https://www.textil-grosshandel.eu/public/media/21/4f/ce/1785144286/bctg003-royal-blue-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/70/97/9c/1785144286/bctg003-royal-blue-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/a1/37/28/1785144286/bctg003-royal-blue-left.png"
+   },
+   {
+    "id": "navy",
+    "erwarteterHex": "#1F2532",
+    "front": "https://www.textil-grosshandel.eu/public/media/8e/00/de/1785144276/bctg003-navy-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/15/98/ff/1785144276/bctg003-navy-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/de/1c/a3/1785144276/bctg003-navy-left.png"
+   },
+   {
+    "id": "kelly-green",
+    "erwarteterHex": "#009149",
+    "front": "https://www.textil-grosshandel.eu/public/media/71/5a/07/1785144307/bctg003-kelly-green-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/81/fe/20/1785144306/bctg003-kelly-green-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/e1/7f/13/1785144306/bctg003-kelly-green-left.png"
+   },
+   {
+    "id": "black",
+    "erwarteterHex": "#000000",
+    "front": "https://www.textil-grosshandel.eu/public/media/cf/91/6e/1785144257/bctg003-black-front.png",
+    "back": "https://www.textil-grosshandel.eu/public/media/da/91/3b/1785144257/bctg003-black-back.png",
+    "side": "https://www.textil-grosshandel.eu/public/media/53/9f/65/1785144257/bctg003-black-left.png"
+   }
+  ]
+ }
+]

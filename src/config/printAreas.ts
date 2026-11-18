@@ -176,6 +176,11 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
   'justhoods-quarterzip-sweat-front': [
     { xPercent: 47, yPercent: 11, widthPercent: 6, heightPercent: 25, label: 'Reißverschluss' },
   ],
+  // Just Cool Lightweight Active 1/4 Zip (Sportbekleidung): kurzer Reißverschluss am Stehkragen, am eigenen Foto mit
+  // Prozentraster abgelesen (Zipper bei x ≈ 49 %, y ≈ 13–30 % des Bildes).
+  'sport-jc230-front': [
+    { xPercent: 46.5, yPercent: 11, widthPercent: 6, heightPercent: 22, label: 'Reißverschluss' },
+  ],
   // Damen-Half-Zip-Hoodie: kurzer Reißverschluss nur im oberen Brustbereich,
   // keine Känguru-Tasche darunter (per Bildausschnitt kalibriert, 2026-08-09).
   'earthpositive-earth-positive-women-s-half-zip-hoodie-front': [

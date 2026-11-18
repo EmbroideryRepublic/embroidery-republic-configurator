@@ -168,6 +168,36 @@ function kinderSeite(slug: string): DtfSeite {
   };
 }
 
+/**
+ * Sportbekleidung: eigene Textform statt `artSeite`, weil „Sportbekleidung“ ein Sammelbegriff ohne Mehrzahl ist („10 Sportbekleidung“
+ * wäre falsch). Die Bausteine sind dieselben freigegebenen Antworten wie bei den anderen Seiten; neu sind nur Titel, Überschrift,
+ * Beschreibung und der erste Einleitungsabsatz. Genannt werden nur Kleidungsstücke, die es im Katalog gibt (Test: sportSeite.test.ts).
+ */
+function sportSeite(slug: string): DtfSeite {
+  return {
+    slug,
+    art: 'sport',
+    titel: 'Sportbekleidung bedrucken lassen – ab 1 Stück',
+    h1: 'Sportbekleidung bedrucken lassen',
+    beschreibung:
+      '{anzahl} Modelle Sportbekleidung von {marken3} u. a. per DTF-Transferdruck bedrucken – ab 1 Stück, Preis live im Konfigurator.',
+    einleitung: [
+      'Sport-T-Shirts, Langarmshirts und Tanktops: {anzahl} Modelle von {markenAnzahl} Marken. Laden Sie Ihr Logo oder Motiv hoch und sehen Sie das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+      EINLEITUNG_DTF,
+    ],
+    fragen: [
+      { q: 'Kann ich auch nur ein einzelnes Sportteil bedrucken lassen?', a: A_EINZELSTUECK },
+      { q: 'Wofür eignet sich der DTF-Transferdruck?', a: A_DTF },
+      { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN },
+      { q: 'Wie lange dauert es, bis meine Bestellung ankommt?', a: A_DAUER },
+      {
+        q: 'Welche Sportbekleidung gibt es und wie schwer ist sie?',
+        a: 'Aktuell gibt es {anzahl} Modelle von {marken}. {gewichtSatz}Die Preise beginnen bei {abPreis} pro Stück zzgl. Veredelung. Material, Passform, Farben und Größen stehen auf der jeweiligen Produktseite.',
+      },
+    ],
+  };
+}
+
 // ── Die Seiten ──────────────────────────────────────────────────────────
 
 /** Auswahl nach Nachfrage (Search Console) und Sortimentsbreite (≥ 7 Modelle). */
@@ -183,8 +213,11 @@ export const DTF_SEITEN: DtfSeite[] = [
   markenSeite('Neutral', 'neutral-bedrucken'),
   markenSeite("SOL'S", 'sols-bedrucken'),
   markenSeite('EarthPositive', 'earthpositive-bedrucken'),
+  // Seit 2026-11-18: Just Cool (mit den Sport-Shirts 8 Modelle).
+  markenSeite('Just Cool', 'just-cool-bedrucken'),
   artSeite('longsleeve', 'longsleeves-bedrucken'),
   artSeite('jacket', 'jacken-bedrucken'),
   artSeite('zip-hoodie', 'zip-hoodies-bedrucken'),
   kinderSeite('kinderbekleidung-bedrucken'),
+  sportSeite('sportbekleidung-bedrucken'),
 ];

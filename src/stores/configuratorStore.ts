@@ -10,12 +10,55 @@ import { indexedDbStorage, getTabId } from '@/lib/storage/indexedDbStorage';
 import { getProduct } from '@/config/products';
 import { ansichtenVon } from '@/lib/products/ansichten';
 import { istGueltigeView } from '@/config/decorationPositions';
+import { useEntwuerfeStore } from '@/stores/entwuerfeStore';
+import { erzeugeEntwurf, istEntwurfswuerdig, istHandbearbeitung } from '@/lib/configurator/entwuerfe';
 
 const MAX_HISTORY = 30;
 
+/**
+ * Das Produkt, an dem die Person zuletzt SELBST etwas geändert hat (Motiv
+ * hinzugefügt, verschoben, Text geändert, Menge eingetippt …).
+ *
+ * Nur ein solches Produkt wird beim Verlassen zum Entwurf. Das Design wandert
+ * beim Produktwechsel auf das neue Produkt mit; ohne diese Unterscheidung bekäme
+ * jedes bloß durchgeblätterte Produkt eine Karte „Zuletzt bearbeitet" und
+ * verdrängte den Stand, an dem wirklich gearbeitet wurde. Welche Änderung als
+ * Handarbeit gilt, entscheidet `istHandbearbeitung` (lib/configurator/entwuerfe.ts);
+ * Mengen werden in den Aktionen `setSizeQuantity`/`resetSizeQuantities` markiert
+ * (die Übernahme beim Produktwechsel nutzt bewusst `setSizeQuantities`).
+ *
+ * Bewusst nicht gespeichert: Nach einem Neuladen gilt der wiederhergestellte
+ * Stand als bearbeitet (siehe `onRehydrateStorage` unten).
+ */
+let bearbeitetBei: string | null = null;
+
+function markiereBearbeitet(productId: string | null) {
+  bearbeitetBei = productId;
+}
+
+/**
+ * Merkt den gerade bearbeiteten Stand als Entwurf („Zuletzt bearbeitet"), wenn
+ * er einen lohnt (mindestens ein Motiv oder ein Stück, siehe
+ * lib/configurator/entwuerfe.ts) UND die Person an diesem Produkt selbst etwas
+ * geändert hat (siehe `bearbeitetBei`). `wechselZu`: Das Produkt, zu dem gerade
+ * gewechselt wird – bleibt es dasselbe, ist es kein Verlassen und es wird nichts
+ * gemerkt.
+ */
+function merkeStandAlsEntwurf(stand: ConfiguratorState, wechselZu: string | null) {
+  if (!stand.productId || stand.productId === wechselZu) return;
+  if (bearbeitetBei !== stand.productId) return;
+  const entwurf = erzeugeEntwurf(stand, Date.now(), crypto.randomUUID());
+  if (entwurf) useEntwuerfeStore.getState().merke(entwurf);
+}
+
 interface ConfiguratorActions {
   setPrintMethod: (method: PrintMethod) => void;
+  /** Wechselt das Produkt. Der bisherige Stand wird – sofern bearbeitet – als
+   *  Entwurf gemerkt, damit er sich über „Zuletzt bearbeitet" zurückholen lässt. */
   setProduct: (productId: string) => void;
+  /** Lädt einen Entwurf zurück in den Editor. Der gerade bearbeitete Stand wird
+   *  dabei selbst zum Entwurf (Tausch) – nichts geht verloren. */
+  resumeDraft: (entwurfId: string) => void;
   setColor: (colorId: string) => void;
   /** Menge für eine einzelne Größe setzen (0 = aus der Auswahl entfernen). */
   setSizeQuantity: (size: string, quantity: number) => void;
@@ -112,10 +155,37 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
       // Eine pausierte Veredelungsart (Betriebsschalter, config/bestellweg.ts) lässt sich nicht wählen – es bleibt DTF.
       setPrintMethod: (printMethod) => set({ printMethod: erlaubteVeredelung(printMethod), selectedElementId: null }),
 
-      setProduct: (productId) => set({ productId, selectedElementId: null, previewSize: null }),
+      setProduct: (productId) => {
+        // Reihenfolge ist wichtig: erst den alten Stand merken, dann wechseln.
+        // Farbe und Größen des neuen Produkts werden vom Aufrufer erst DANACH gesetzt.
+        merkeStandAlsEntwurf(get(), productId);
+        set({ productId, selectedElementId: null, previewSize: null });
+      },
+      resumeDraft: (entwurfId) => {
+        const entwurf = useEntwuerfeStore.getState().entwuerfe.find((e) => e.id === entwurfId);
+        if (!entwurf) return;
+        // Erst den Entwurf aus der Liste nehmen, dann den aktuellen Stand merken
+        // (Tausch). Andersherum würde der aktuelle Stand bei demselben Produkt den
+        // Entwurf ersetzen, den wir gerade laden wollen.
+        useEntwuerfeStore.getState().entferne(entwurfId);
+        merkeStandAlsEntwurf(get(), null);
+        get().loadCartItemForEditing({
+          printMethod: entwurf.printMethod,
+          productId: entwurf.productId,
+          colorId: entwurf.colorId ?? '',
+          sizeQuantities: entwurf.sizeQuantities,
+          elements: entwurf.elements,
+        });
+        // Ein Entwurf ohne Farbe bleibt ohne Farbe (die Startauswahl greift dann wie beim ersten Besuch).
+        set({ colorId: entwurf.colorId });
+        // Die Ansicht, in der man aufgehört hat – falls es sie beim Produkt noch gibt.
+        const produkt = getProduct(entwurf.productId);
+        if (produkt && ansichtenVon(produkt).includes(entwurf.activeView)) set({ activeView: entwurf.activeView });
+      },
       setColor: (colorId) => set({ colorId }),
       setSizeQuantity: (size, quantity) =>
         set((state) => {
+          markiereBearbeitet(state.productId);
           const next = { ...state.sizeQuantities };
           if (quantity <= 0) {
             delete next[size];
@@ -124,7 +194,10 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
           }
           return { sizeQuantities: next };
         }),
-      resetSizeQuantities: () => set({ sizeQuantities: {} }),
+      resetSizeQuantities: () => {
+        markiereBearbeitet(get().productId);
+        set({ sizeQuantities: {} });
+      },
       // Ganze Größen-/Mengenauswahl auf einmal setzen – beim Produktwechsel
       // wird die übernommene Auswahl in einem Rutsch geschrieben, statt sie
       // Größe für Größe zu setzen (das löste sonst mehrere Renders aus).
@@ -418,6 +491,8 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
         // statt fix 'front' – funktioniert auch für Produkte ohne Vorderseite.
         const produkt = getProduct(item.productId);
         const ersteView = (produkt && ansichtenVon(produkt)[0]) || 'front';
+        // Ein zum Bearbeiten geladener Stand (aus dem Warenkorb oder ein Entwurf) ist Handarbeit.
+        markiereBearbeitet(item.productId);
         set({
           printMethod: erlaubteVeredelung(item.printMethod),
           productId: item.productId,
@@ -449,6 +524,11 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
       // Bedienelemente (die genau dieses Feld lesen/schreiben) würden ins
       // Leere laufen, ohne dass ein Fehler sichtbar wird.
       version: 10,
+      // Nach einem Neuladen gilt der wiederhergestellte Stand als bearbeitet, sofern er etwas enthält
+      // (sonst ginge ein Entwurf verloren, wenn man nach dem Neuladen das Produkt wechselt).
+      onRehydrateStorage: () => (state) => {
+        if (state && istEntwurfswuerdig(state)) markiereBearbeitet(state.productId);
+      },
       migrate: (persistedState, storedVersion) => {
         let state = persistedState as Partial<ConfiguratorState> & { sizeLabel?: string | null; quantity?: number };
         if (storedVersion < 7) {
@@ -510,3 +590,10 @@ export const useConfiguratorStore = create<ConfiguratorState & ConfiguratorActio
     }
   )
 );
+
+// Handarbeit erkennen (siehe `bearbeitetBei`): Jede Zustandsänderung am selben Produkt wird geprüft. Ein
+// Produktwechsel selbst zählt nicht – die Übernahme von Design, Farbe und Größen danach ist keine Handarbeit.
+useConfiguratorStore.subscribe((nachher, vorher) => {
+  if (!nachher.productId || nachher.productId !== vorher.productId) return;
+  if (istHandbearbeitung(vorher, nachher)) markiereBearbeitet(nachher.productId);
+});

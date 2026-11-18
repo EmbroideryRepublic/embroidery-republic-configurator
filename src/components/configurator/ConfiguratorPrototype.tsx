@@ -10,6 +10,7 @@ import { MethodSwitcher } from './MethodSwitcher';
 import { KonfigUebersicht } from './KonfigUebersicht';
 import { ProduktBrowser } from './ProduktBrowser';
 import { ColorSizeSelector } from './ColorSizeSelector';
+import { EntwuerfeLeiste } from './EntwuerfeLeiste';
 import { ProductDetails } from './ProductDetails';
 import { ViewSwitcher } from './ViewSwitcher';
 import { CanvasToolbar } from './CanvasToolbar';
@@ -515,6 +516,8 @@ export function ConfiguratorPrototype() {
           {/* Unter lg ohne eigenen Kasten (display: contents): So wird die Vorschau (sticky) ein direktes Kind der
               ganzen Zeile und bleibt beim Scrollen durch die Werkzeuge sichtbar. Ab lg wie bisher. */}
           <div className="contents lg:flex lg:min-w-0 lg:flex-1 lg:flex-col lg:items-center lg:gap-2">
+            {/* „Zuletzt bearbeitet": Entwürfe, die man beim Produktwechsel hinter sich gelassen hat. Erscheint nur, wenn es welche gibt. */}
+            <EntwuerfeLeiste />
             <div className="w-full animate-fade-in" key={`meta-${product.id}`}>
               <ColorSizeSelector product={product} />
             </div>

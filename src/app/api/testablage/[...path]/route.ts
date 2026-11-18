@@ -43,7 +43,8 @@ const CONTENT_TYPES: Record<string, string> = {
   pdf: 'application/pdf',
 };
 
-export async function GET(_request: Request, { params }: { params: { path: string[] } }) {
+export async function GET(_request: Request, props: { params: Promise<{ path: string[] }> }) {
+  const params = await props.params;
   if (!istTestmodus()) {
     return new NextResponse(null, { status: 404 });
   }

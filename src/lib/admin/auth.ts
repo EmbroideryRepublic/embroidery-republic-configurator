@@ -72,9 +72,9 @@ function hashe(token: string): string {
  * Bewusst gekürzt: Eine vollständige IP-Adresse ist ein personenbezogenes
  * Datum. Für „von wo war das?" genügt der gekürzte Teil.
  */
-function herkunft(): string {
+async function herkunft(): Promise<string> {
   try {
-    const ip = ermittleIp();
+    const ip = await ermittleIp();
     const teile = ip.split('.');
     return teile.length === 4 ? `${teile[0]}.${teile[1]}.${teile[2]}.x` : ip.slice(0, 24);
   } catch {
@@ -113,7 +113,7 @@ export async function meldeAdminAn(eingabe: string): Promise<AnmeldeErgebnis> {
     const { error } = await db.from('admin_sitzungen').insert({
       token_hash: hashe(token),
       laeuft_ab_am: laeuftAb.toISOString(),
-      herkunft: herkunft(),
+      herkunft: await herkunft(),
     });
     if (error) {
       console.error('[admin] Sitzung konnte nicht angelegt werden:', error.message);
@@ -124,7 +124,7 @@ export async function meldeAdminAn(eingabe: string): Promise<AnmeldeErgebnis> {
     return { ok: false, fehler: 'Die Anmeldung ist derzeit nicht möglich. Bitte später erneut versuchen.' };
   }
 
-  cookies().set(ADMIN_COOKIE_NAME, token, {
+  (await cookies()).set(ADMIN_COOKIE_NAME, token, {
     httpOnly: true, // kein Zugriff aus JavaScript
     sameSite: 'lax', // schützt vor CSRF; 'strict' bräche Links aus E-Mails
     secure: process.env.NODE_ENV === 'production',
@@ -145,7 +145,7 @@ export async function meldeAdminAn(eingabe: string): Promise<AnmeldeErgebnis> {
 export async function istAdmin(): Promise<boolean> {
   if (!isAdminConfigured()) return false;
 
-  const token = cookies().get(ADMIN_COOKIE_NAME)?.value;
+  const token = (await cookies()).get(ADMIN_COOKIE_NAME)?.value;
   if (!token) return false;
 
   try {
@@ -182,7 +182,7 @@ export async function istAdmin(): Promise<boolean> {
 
 /** Beendet genau diese Sitzung. Andere Zugänge bleiben bestehen. */
 export async function meldeAdminAb(): Promise<void> {
-  const token = cookies().get(ADMIN_COOKIE_NAME)?.value;
+  const token = (await cookies()).get(ADMIN_COOKIE_NAME)?.value;
   if (token) {
     try {
       const db = createAdminClient();
@@ -196,7 +196,7 @@ export async function meldeAdminAb(): Promise<void> {
       console.error('[admin] Sitzung konnte nicht widerrufen werden:', fehler);
     }
   }
-  cookies().delete(ADMIN_COOKIE_NAME);
+  (await cookies()).delete(ADMIN_COOKIE_NAME);
 }
 
 /**
@@ -219,7 +219,7 @@ export async function beendeAlleAdminSitzungen(): Promise<number> {
       console.error('[admin] Sitzungen konnten nicht beendet werden:', error.message);
       return 0;
     }
-    cookies().delete(ADMIN_COOKIE_NAME);
+    (await cookies()).delete(ADMIN_COOKIE_NAME);
     return data?.length ?? 0;
   } catch (fehler) {
     console.error('[admin] Sitzungen konnten nicht beendet werden:', fehler);
@@ -239,7 +239,7 @@ export interface SitzungsUebersicht {
 
 /** Alle gültigen Sitzungen – für die Übersicht im Adminbereich. */
 export async function aktiveSitzungen(): Promise<SitzungsUebersicht[]> {
-  const token = cookies().get(ADMIN_COOKIE_NAME)?.value;
+  const token = (await cookies()).get(ADMIN_COOKIE_NAME)?.value;
   const eigenerHash = token ? hashe(token) : null;
 
   try {

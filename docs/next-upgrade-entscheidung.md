@@ -6,7 +6,107 @@ anschließendem Rollback. Bezug: [betriebsreview-2026-07-23.md](betriebsreview-2
 
 ---
 
-## Entscheidung
+> **Stand 2026-11-18: überholt.** Das Upgrade wurde durchgeführt (Next.js 14.2.35 → **16.4.6**,
+> React 18.3.1 → **19.3.1**). Maßgeblich ist der Abschnitt „Update 2026-11-18“ direkt darunter; die
+> weiteren Abschnitte (Entscheidung vom Juli, Analyse, Versuch) bleiben als Historie stehen.
+
+---
+
+## Update 2026-11-18 – Upgrade durchgeführt
+
+### Auslöser
+
+`npm audit --omit=dev` meldete 5 Funde (4 hoch, 1 kritisch): `next` mit rund 25 Einzel-Advisories
+(seit Juli u. a. mehrere kritische Remote-Code-Ausführungen im Image-Optimizer und auf Windows-Servern,
+SSRF in Server Actions, Offenlegung interner Server-Function-Endpunkte), dazu `postcss` (in `next`),
+`image-size`, `nanoid`, `source-map-js`. Innerhalb der 14er-Linie gibt es keinen Patch mehr.
+
+### Zielversion: Next.js 16.4.6
+
+Geprüft gegen die Advisory-Datenbank von npm (`/-/npm/v1/security/advisories/bulk`, je Version):
+
+| Version | offene Advisories |
+|---|---|
+| 15.5.29 | keine – bringt aber `postcss@8.4.31` mit; `npm audit` bliebe „hoch“, es bräuchte `overrides` |
+| 16.2.12 | 12 (darunter 5 kritische) |
+| 16.3.8 | 5 (darunter 2 kritische RCE, bis 16.4.0) |
+| **16.4.6** (neueste) | **keine**, bringt `postcss@8.5.23` mit – keine `overrides` nötig |
+
+Gewählt wurde 16.4.6: kein Workaround an Abhängigkeiten, aktuelle Linie, und der Juli-Blocker entfällt
+(nächster Abschnitt). Die 15er-Linie wurde nicht weiterverfolgt.
+
+### Warum der Juli-Blocker (react-konva ↔ React 19) entfällt
+
+Der App Router nutzt das in Next mitgelieferte React (`next/dist/compiled/react`), nicht das aus
+`node_modules`. Next 16.4.6 bringt React **19.3.0-canary** mit; `react-konva@19.3.2` verlangt
+`react@^19.3.0` (react-reconciler 0.34) – das passt. Gemessen im Browser: Der Konfigurator-Canvas
+rendert (kein `ReactCurrentOwner`-Fehler), Text-Motiv, Größe/Menge, Preisberechnung und Warenkorb
+funktionieren.
+
+### Durchgeführte Änderungen (alle technisch erzwungen)
+
+- **Pakete:** `next ^16.4.6`, `react`/`react-dom ^19.3.1`, `react-konva ^19.3.2` (vorher 18.2.16),
+  `lucide-react ^0.469.0` (kleinste Version mit React-19-Peer; 0.383 erlaubte nur ≤ 18),
+  `@types/react(-dom) ^19`, `eslint ^9.39.5` und `eslint-config-next ^16.4.6` (16 verlangt ESLint ≥ 9).
+  Nur in der Sperrdatei (`npm audit fix --omit=dev`): `image-size` 2.1.0, `nanoid` 3.3.20,
+  `source-map-js` 1.2.2, `baseline-browser-mapping` 2.11.38.
+- **Asynchrone Request-APIs** (Codemod `next-async-request-api`, jede Änderung durchgesehen):
+  `params`/`searchParams` als Promise in 14 Seiten- und Routen-Dateien; `cookies()` in `lib/admin/auth.ts`.
+  Von Hand: `ermittleIp()` (`lib/security/rateLimit.ts`) und `herkunft()` (`lib/admin/auth.ts`) sind jetzt
+  asynchron; `createClient()` in `lib/supabase/server.ts` ist asynchron (Aufrufer: `auth/callback`, `account/session`,
+  `actions/konto` über `sichererClient` – alle in try/catch);
+  `sichererClient()` in `lib/actions/konto.ts` ist asynchron, alle 9 Aufrufe mit `await`;
+  ein Testaufruf in `api/testablage/__tests__/route.test.ts`.
+- **`next.config.js`:** `serverComponentsExternalPackages` → `serverExternalPackages`,
+  `outputFileTracingIncludes` aus `experimental` nach oben; `images.minimumCacheTTL: 60` (Next 16 setzt
+  4 Stunden – die Foto-Cache-Regel oben bleibt damit wirksam); `images.dangerouslyAllowLocalIP` nur
+  außerhalb der Produktion (Testmodus-Vorschau über `localhost`).
+- **Bundler:** `dev`/`build` laufen mit `--webpack`. Next 16 baut standardmäßig mit Turbopack und bricht bei
+  vorhandener `webpack`-Konfiguration (`canvas: false`) ab. `tsconfig.json`: `jsx: react-jsx` (für Next 16
+  verpflichtend) und `.next/dev/types` im `include`.
+- **ESLint:** `.eslintrc.json` → `eslint.config.mjs` (flache Konfiguration). Die bisherige Regelmenge bleibt:
+  drei neue React-Compiler-Hinweisregeln (`react-hooks/purity`, `set-state-in-effect`, `refs`) sind aus,
+  ebenso `no-html-link-for-pages` für `global-error.tsx`; ungenutzte Disable-Kommentare werden nicht gemeldet.
+- **CI (`pruefung.yml`):** `npx next lint` (in Next 16 entfernt) → `npm run lint`; `npx next build` →
+  `npm run build`. **`scripts/pruefeNpmAudit.mjs`:** Ausnahmeliste leer (Einträge `next`, `postcss`, `glob`,
+  ESLint-Kette erledigt).
+
+### Verifikation (Arbeitsordner `arbeit-next`, Basis `origin/main` 3c15cb22)
+
+| Prüfung | Ergebnis |
+|---|---|
+| `npm test` | 1542/1542 grün (vorher im selben Ordner: 1542/1542) |
+| `npx tsc --noEmit` (ohne `.next`) | 0 Fehler |
+| `npm run lint` | 0 Probleme |
+| `npm run build` (Dummy-Umgebung) | erfolgreich, 235 statische Seiten |
+| `npm audit --omit=dev` | **0 Schwachstellen** (vorher 5: 4 hoch, 1 kritisch) |
+| Schriften für `/admin/bestellung/[id]` (`outputFileTracingIncludes`) | 21 Schriftdateien im Trace (321 → 342 Einträge) |
+| SEO-Ausgabe Build ↔ Live (Titel, Description, Canonical, Robots, og:image, H1, JSON-LD) | 226/226 Sitemap-Seiten identisch; `robots.txt`, `sitemap.xml`, `llms.txt`, Manifest identisch |
+| Sicherheits-Header, Foto-Cache-Header, Bildoptimierer | identisch zur Live-Seite |
+| Stripe-Webhook (Rohtext-Signaturprüfung, Platzhalter-Geheimnis) | 7/7: gültig → 200, manipulierter Body/falsches Geheimnis/fehlende Signatur → 400 |
+| E-Mail-Rendern im Next-Server (Kontaktformular → `@react-email/render`, Versand auf unerreichbare Adresse umgeleitet) | beide Mails (Anfrage + Auto-Antwort) gerendert und bis zum Versandaufruf gekommen; dort erwarteter Netzwerkfehler |
+| Browser (Dev-Server, unerreichbare Supabase-URL) | Startseite, Produktübersicht + Filter, Produktseite, Konfigurator (Canvas, Text-Motiv, Größe/Menge, Preis), Warenkorb, Kassenschritt, Konto-Login (inkl. Server-Action-Durchlauf), Admin-Login |
+
+### Offen / Restrisiken
+
+1. **Nicht lokal prüfbar:** die E2E-Suiten (`test:e2e*`, sie schreiben in die Produktions-Datenbank), Admin-Seiten
+   hinter dem Login, PayPal-Webhook, der echte Vercel-Build. Vor dem Live-Gang beachten: Vercel-Vorschau-Deployment.
+2. **`middleware.ts`** funktioniert, Next 16 meldet sie als veraltet (Umbenennung in `proxy.ts` hieße:
+   Node- statt Edge-Laufzeit). Bewusst unverändert; eigener, getesteter Schritt.
+3. **Webpack statt Turbopack** (`--webpack`): bisheriges Verhalten, aber nicht die Standardrichtung von Next.
+4. **`useFormState`** (React 19: umbenannt in `useActionState`) steht noch in 8 Formularen; funktioniert,
+   meldet im Dev-Modus einen Hinweis. Mechanische Folgeaufgabe.
+5. **`/_next/image` akzeptiert nur Qualität 75** (Next-16-Standard `images.qualities`); die App setzt keine
+   abweichende Qualität.
+6. **Dev-Werkzeug-Funde:** `npm audit` (mit Dev-Paketen) meldet weiter 23 hohe Funde in Build-/Lint-Werkzeugen
+   (`picomatch`, `brace-expansion`, `tailwindcss`-Kette, `zod`, …). Sie laufen nie in der Produktion und
+   bestanden schon vorher; der CI-Schritt `pruefeNpmAudit.mjs` war aus diesem Grund bereits vor dem Upgrade rot.
+7. **Rollback:** sauber möglich – Vercel hält frühere Deployments (Zurücksetzen im Dashboard), alternativ den
+   Commit per `git revert` zurücknehmen und pushen. Es gibt keine Migration und keinen Schemawechsel.
+
+---
+
+## Entscheidung (Juli 2026 – historisch)
 
 **Das Upgrade wird für Version 1.0 bewusst NICHT durchgeführt.** Es bleibt bei
 `next@14.2.35`. Grund ist kein Aufwandsargument, sondern ein **nachgewiesener

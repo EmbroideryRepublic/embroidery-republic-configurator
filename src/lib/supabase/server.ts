@@ -6,8 +6,12 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { createClient as createSupabaseAdminClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 
-export function createClient() {
-  const cookieStore = cookies();
+// Seit Next.js 15 liefert `cookies()` ein Promise (synchroner Zugriff ist in
+// Next.js 16 entfernt) – deshalb ist diese Funktion asynchron. Aufrufer:
+// auth/callback, account/session und actions/konto (über `sichererClient`) –
+// alle in try/catch.
+export async function createClient() {
+  const cookieStore = await cookies();
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

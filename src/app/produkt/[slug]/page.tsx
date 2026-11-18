@@ -70,7 +70,8 @@ export const dynamicParams = false;
 // unter den üblichen 160 Zeichen, damit das „…"-Kürzen selten zuschlägt.
 const GOOGLE_DESCRIPTION_ZIELLAENGE = 155;
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const daten = ladeProduktseite(params.slug);
   if (!daten) return { title: 'Produkt nicht gefunden' };
 
@@ -156,7 +157,8 @@ function MiniKarte({ produkt }: { produkt: ProductConfig }) {
   );
 }
 
-export default function Produktseite({ params }: { params: { slug: string } }) {
+export default async function Produktseite(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const daten = ladeProduktseite(params.slug);
   if (!daten) notFound();
 

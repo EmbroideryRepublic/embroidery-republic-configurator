@@ -35,7 +35,8 @@ function sichererHeaderName(roh: string, ersatz: string): string {
   return bereinigt.length > 0 && bereinigt.length <= 200 ? bereinigt : ersatz;
 }
 
-export async function GET(_request: Request, { params }: { params: { id: string } }): Promise<NextResponse> {
+export async function GET(_request: Request, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   if (!(await istAdmin())) {
     return NextResponse.json({ fehler: 'Nicht angemeldet.' }, { status: 401 });
   }

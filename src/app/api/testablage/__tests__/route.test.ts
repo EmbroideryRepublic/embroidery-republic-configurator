@@ -36,7 +36,7 @@ function setzeTestmodus(aktiv: boolean): void {
 test('außerhalb des Testmodus liefert die Route immer 404 – unabhängig vom Pfad', async () => {
   setzeTestmodus(false);
   const res = await GET(new Request('http://localhost/api/testablage/x'), {
-    params: { path: ['orders', 'irgendeine-id', 'produktionsblatt.pdf'] },
+    params: Promise.resolve({ path: ['orders', 'irgendeine-id', 'produktionsblatt.pdf'] }),
   });
   assert.equal(res.status, 404, 'die Testablage existiert außerhalb des Testmodus nicht – nie ausliefern');
 });
@@ -45,7 +45,7 @@ test('im Testmodus: ein unsicherer Pfad (Verzeichniswechsel) wird abgewiesen', a
   setzeTestmodus(true);
   try {
     const res = await GET(new Request('http://localhost/api/testablage/x'), {
-      params: { path: ['..', '..', 'etwas-ausserhalb'] },
+      params: Promise.resolve({ path: ['..', '..', 'etwas-ausserhalb'] }),
     });
     assert.equal(res.status, 404, 'istSichererSpeicherpfad muss denselben Schutz wie beim echten Storage-Bucket bieten');
   } finally {
@@ -57,7 +57,7 @@ test('im Testmodus: eine nicht existierende Datei liefert 404, keine Ausnahme', 
   setzeTestmodus(true);
   try {
     const res = await GET(new Request('http://localhost/api/testablage/x'), {
-      params: { path: ['orders', 'nicht-vorhanden', 'datei.png'] },
+      params: Promise.resolve({ path: ['orders', 'nicht-vorhanden', 'datei.png'] }),
     });
     assert.equal(res.status, 404);
   } finally {
@@ -74,7 +74,7 @@ test('im Testmodus: eine vorhandene Datei wird mit korrektem Content-Type ausgel
   setzeTestmodus(true);
   try {
     const res = await GET(new Request('http://localhost/api/testablage/x'), {
-      params: { path: relativerPfad.split('/') },
+      params: Promise.resolve({ path: relativerPfad.split('/') }),
     });
     assert.equal(res.status, 200);
     assert.equal(res.headers.get('content-type'), 'application/pdf');

@@ -10,26 +10,30 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '15mb',
     },
-    // @resvg/resvg-js (Druckvorschau-Rendering, src/lib/rendering/) bringt
-    // eine native .node-Binärdatei mit, die Webpack nicht bundeln kann
-    // ("Unexpected character" beim Build). Als externes Server-Paket
-    // markiert, lädt Next es stattdessen zur Laufzeit ganz normal per
-    // require() – korrekt sowohl für den Dev-Server als auch für den
-    // eigentlichen Produktions-Build.
-    serverComponentsExternalPackages: ['@resvg/resvg-js'],
-    // Schriftdateien fürs serverseitige Rendern (Druckvorschau, Text-Download,
-    // src/lib/rendering/fonts.ts): Sie werden zur Laufzeit per Dateipfad gelesen
-    // und von Next nur für Routen mitgepackt, die das Rendern DIREKT einbinden
-    // (Webhook, Cron, Download-Routen). Der Knopf "Vorschau & Produktionsblatt neu
-    // erzeugen" ist aber eine Server-Action der SEITE /admin/bestellung/[id] –
-    // dort fehlten die Schriften (nur 24 statt rund 12.000 Dateien im Paket), und
-    // resvg lässt Text ohne passende Schrift stillschweigend weg: die neu erzeugte
-    // Vorschau zeigte die Rückseite ohne Text (2026-11-08, ER-2026-F5EE03).
-    // Die Produktbilder brauchen das nicht, sie werden notfalls per HTTP geholt
-    // (garmentImageInfo.ts). Die Schriften sind klein (rund 3 MB).
-    outputFileTracingIncludes: {
-      '/admin/bestellung/\\[id\\]': ['./src/lib/rendering/assets/fonts/**/*'],
-    },
+  },
+  // @resvg/resvg-js (Druckvorschau-Rendering, src/lib/rendering/) bringt
+  // eine native .node-Binärdatei mit, die Webpack nicht bundeln kann
+  // ("Unexpected character" beim Build). Als externes Server-Paket
+  // markiert, lädt Next es stattdessen zur Laufzeit ganz normal per
+  // require() – korrekt sowohl für den Dev-Server als auch für den
+  // eigentlichen Produktions-Build.
+  // (Next 15: aus `experimental.serverComponentsExternalPackages` in die
+  // reguläre Option `serverExternalPackages` umbenannt.)
+  serverExternalPackages: ['@resvg/resvg-js'],
+  // Schriftdateien fürs serverseitige Rendern (Druckvorschau, Text-Download,
+  // src/lib/rendering/fonts.ts): Sie werden zur Laufzeit per Dateipfad gelesen
+  // und von Next nur für Routen mitgepackt, die das Rendern DIREKT einbinden
+  // (Webhook, Cron, Download-Routen). Der Knopf "Vorschau & Produktionsblatt neu
+  // erzeugen" ist aber eine Server-Action der SEITE /admin/bestellung/[id] –
+  // dort fehlten die Schriften (nur 24 statt rund 12.000 Dateien im Paket), und
+  // resvg lässt Text ohne passende Schrift stillschweigend weg: die neu erzeugte
+  // Vorschau zeigte die Rückseite ohne Text (2026-11-08, ER-2026-F5EE03).
+  // Die Produktbilder brauchen das nicht, sie werden notfalls per HTTP geholt
+  // (garmentImageInfo.ts). Die Schriften sind klein (rund 3 MB).
+  // (Next 15: aus `experimental.outputFileTracingIncludes` in die reguläre
+  // Option verschoben; Schlüssel unverändert.)
+  outputFileTracingIncludes: {
+    '/admin/bestellung/\\[id\\]': ['./src/lib/rendering/assets/fonts/**/*'],
   },
   // Basis-Sicherheitsheader (Produktion). Bewusst OHNE Content-Security-Policy:
   // eine CSP muss gegen Konva/Canvas, data:-Logo-URLs und Supabase getestet
@@ -77,6 +81,17 @@ const nextConfig = {
     ];
   },
   images: {
+    // Next 16 hebt den Standard von 60 s auf 4 Stunden. Die Fotos unter /products,
+    // /brand, /buehne werden gelegentlich korrigiert und sollen laut Cache-Regel
+    // oben (max-age=600) spätestens nach einer Stunde überall ersetzt sein – der
+    // Bildoptimierer würde sonst bis zu vier Stunden die alte Fassung ausliefern.
+    // 60 = bisheriges Verhalten (Obergrenze bleibt der max-age des Originals).
+    minimumCacheTTL: 60,
+    // Next 16 blockiert die Bildoptimierung für lokale/private Adressen. Der
+    // Testmodus (nur außerhalb der Produktion) liefert Vorschauen von
+    // http://localhost/api/testablage/ (siehe remotePatterns unten) – dafür
+    // bleibt die Freigabe NUR dort offen, in der Produktion ist sie zu.
+    dangerouslyAllowLocalIP: process.env.NODE_ENV !== 'production',
     // Jede Freigabe erlaubt es, fremde Bilder über den eigenen Optimierer zu
     // leiten – deshalb bewusst knapp halten. Der Produktkatalog liegt lokal
     // unter public/ und braucht hier keinen Eintrag.

@@ -70,7 +70,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     if (!limit.erlaubt) return OHNE_INHALT();
 
     const tag = berlinTag();
-    const kennung = bildeKennung(ermittleIp(), h.get('user-agent') ?? '', tag, geheimnis);
+    const kennung = bildeKennung(await ermittleIp(), h.get('user-agent') ?? '', tag, geheimnis);
 
     const { error } = await createAdminClient().rpc('erfasse_besuch', {
       p_tag: tag,

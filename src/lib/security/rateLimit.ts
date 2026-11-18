@@ -79,9 +79,9 @@ function istVertrauenswuerdigerProxy(): boolean {
  * strukturell nicht zuverlässig möglich (siehe docs/rate-limiting.md,
  * Abschnitt „Gefälschte IP-Kopfzeilen").
  */
-export function ermittleIp(): string {
+export async function ermittleIp(): Promise<string> {
   if (!istVertrauenswuerdigerProxy()) return 'unbekannt';
-  const h = headers();
+  const h = await headers();
   const weitergeleitet = h.get('x-forwarded-for');
   return weitergeleitet?.split(',')[0]?.trim() || h.get('x-real-ip') || 'unbekannt';
 }
@@ -158,7 +158,7 @@ export async function pruefeRateLimit(name: RateLimitName, merkmal?: string): Pr
     // gilt das Limit ganz normal.
   }
 
-  const ip = ermittleIp();
+  const ip = await ermittleIp();
   const schluessel = baueRateLimitSchluessel(limit, ip, merkmal, process.env.ORDER_TOKEN_SECRET);
   // Kein Kennwert möglich → nicht begrenzen, statt die Adresse im Klartext zu speichern.
   if (schluessel === null) return ERLAUBT;

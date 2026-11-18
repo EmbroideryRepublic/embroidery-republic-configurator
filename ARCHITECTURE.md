@@ -10,9 +10,9 @@
 
 | Bereich          | Technologie                          |
 |-------------------|---------------------------------------|
-| Framework         | Next.js 14 (App Router)              |
+| Framework         | Next.js 16 (App Router)              |
 | Sprache           | TypeScript (strict mode)             |
-| UI / Styling      | React 18, Tailwind CSS               |
+| UI / Styling      | React 19, Tailwind CSS               |
 | 2D-Canvas         | Konva.js + react-konva               |
 | Backend / DB      | Supabase (Postgres, Auth, Storage)   |
 | PDF-Generierung   | @react-pdf/renderer oder pdf-lib     |

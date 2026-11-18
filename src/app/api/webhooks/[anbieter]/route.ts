@@ -40,7 +40,8 @@ import { pruefeRateLimit } from '@/lib/security/rateLimit';
 /** Bekannte Anbieterkennungen – schützt vor Aufrufen mit Fantasienamen. */
 const BEKANNTE_ANBIETER: readonly string[] = ['test', 'stripe', 'paypal'];
 
-export async function POST(request: Request, { params }: { params: { anbieter: string } }): Promise<NextResponse> {
+export async function POST(request: Request, props: { params: Promise<{ anbieter: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   const anbieterId = params.anbieter;
 
   if (!BEKANNTE_ANBIETER.includes(anbieterId)) {

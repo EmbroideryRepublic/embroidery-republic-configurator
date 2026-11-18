@@ -33,7 +33,7 @@ import { sendeWillkommensMailFuerBestaetigung, aktiviereNewsletterNachBestaetigu
  */
 async function loeseLinkEin(searchParams: URLSearchParams): Promise<User | null> {
   try {
-    const supabase = createClient();
+    const supabase = await createClient();
 
     const tokenHash = searchParams.get('token_hash');
     if (tokenHash) {

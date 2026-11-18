@@ -100,13 +100,14 @@ const INHALT: Record<Anzeige, { icon: typeof CheckCircle2; farbe: string; titel:
   },
 };
 
-export default async function ZahlungsRueckkehr({
-  params,
-  searchParams,
-}: {
-  params: { orderId: string };
-  searchParams: { abgebrochen?: string };
-}) {
+export default async function ZahlungsRueckkehr(
+  props: {
+    params: Promise<{ orderId: string }>;
+    searchParams: Promise<{ abgebrochen?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const abgebrochen = searchParams.abgebrochen === '1';
   const orderId = aufgeloesteOrderId(params.orderId);
 

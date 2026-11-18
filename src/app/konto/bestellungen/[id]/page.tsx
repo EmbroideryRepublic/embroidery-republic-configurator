@@ -20,7 +20,8 @@ function zeit(iso: string): string {
   return formatiereZeitpunkt(iso, { dateStyle: 'long', timeStyle: 'short' });
 }
 
-export default async function KontoBestellDetailPage({ params }: { params: { id: string } }) {
+export default async function KontoBestellDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const kunde = await aktuellerKunde();
   if (!kunde) redirect(`/konto/anmelden?weiter=/konto/bestellungen/${params.id}`);
 

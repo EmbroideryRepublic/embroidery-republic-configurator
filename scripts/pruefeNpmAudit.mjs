@@ -32,23 +32,20 @@
 import { execSync } from 'node:child_process';
 
 /**
- * Stand 2026-08-07 (siehe docs/next-upgrade-entscheidung.md für die
- * vollständige Analyse, welche Advisories tatsächlich anwendbar sind – die
- * meisten sind es NICHT, mangels Middleware/Pages-Router/rewrites/Edge/CSP-
- * Nonces/custom Server in diesem Projekt. Das verbleibende Restrisiko ist
- * überwiegend Verfügbarkeit (DoS), kein Datenabfluss, keine Codeausführung).
+ * Stand 2026-11-18: Die Liste ist LEER.
+ *
+ * Das Next.js-Upgrade (14.2.35 → 16.4.6, React 19, siehe
+ * docs/next-upgrade-entscheidung.md, Abschnitt „Update 2026-11-18") hat alle
+ * bis dahin akzeptierten Einträge erledigt – `next`, `postcss`, `glob` und die
+ * ESLint-Kette der alten Next-14-Linie. Die frühere Begründung („Upgrade bricht
+ * den Konfigurator-Canvas“) gilt nicht mehr.
  *
  * Jeder Eintrag: welches Paket, welche Versionsspanne (exakt wie von
  * `npm audit --json` gemeldet – ändert sie sich, ist es vermutlich ein NEUES
- * Advisory und soll NICHT stillschweigend durchgehen).
+ * Advisory und soll NICHT stillschweigend durchgehen). Neue Ausnahmen nur mit
+ * Datum und Begründung ergänzen.
  */
-const AKZEPTIERTE_AUSNAHMEN = [
-  { name: 'next', range: '9.3.4-canary.0 - 16.3.0-preview.10' },
-  { name: 'postcss', range: '<=8.5.22' },
-  { name: '@next/eslint-plugin-next', range: '14.0.5-canary.0 - 15.0.0-rc.1' },
-  { name: 'eslint-config-next', range: '14.0.5-canary.0 - 15.0.0-rc.1' },
-  { name: 'glob', range: '10.2.0 - 10.4.5' },
-];
+const AKZEPTIERTE_AUSNAHMEN = [];
 
 function istAkzeptiert(name, range) {
   return AKZEPTIERTE_AUSNAHMEN.some((a) => a.name === name && a.range === range);

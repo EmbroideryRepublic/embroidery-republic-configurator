@@ -45,8 +45,10 @@ jobs:
         run: npx tsc --noEmit
 
       # ── Stil ─────────────────────────────────────────────────────────
+      # `next lint` wurde mit Next.js 16 entfernt; ESLint läuft direkt
+      # (`eslint .`, Konfiguration: eslint.config.mjs).
       - name: ESLint
-        run: npx next lint
+        run: npm run lint
 
       # ── Tests ────────────────────────────────────────────────────────
       # Enthält die Wächter: keine console-Aufrufe, keine zweite
@@ -58,8 +60,11 @@ jobs:
       # ── Build ────────────────────────────────────────────────────────
       # Findet Fehler, die tsc nicht sieht: fehlende Umgebungsvariablen zur
       # Bauzeit, ungültige Routen, Probleme beim Vorabrendern.
+      # `npm run build` = `next build --webpack`: Next.js 16 baut standardmäßig mit
+      # Turbopack und bricht bei vorhandener webpack-Konfiguration (next.config.js,
+      # `canvas: false`) ab – das Projekt bleibt bewusst beim bisherigen Bundler.
       - name: Build
-        run: npx next build
+        run: npm run build
         env:
           # Platzhalter: Der Build darf keine echten Zugangsdaten brauchen.
           # Schlägt er ohne sie fehl, ist das selbst ein Befund.

@@ -70,23 +70,25 @@ function ersterFehler(befunde: { meldung: string }[]): string | undefined {
  * Kapselt die Erstellung eines Supabase-Clients fehlersicher.
  *
  * Fehlt oder stimmt die Supabase-Konfiguration nicht, werfen
- * `createServerClient`/`createClient` (lib/supabase/server.ts) SYNCHRON –
+ * `createServerClient`/`createClient` (lib/supabase/server.ts) – seit Next.js 15
+ * ist `createClient` asynchron (`await cookies()`), der Fehler tritt also als
+ * abgelehntes Promise statt synchron auf, die Wirkung ist dieselbe –
  * ungefangen würde das die komplette Server Action (und damit die aufrufende
  * Formular-Komponente) mit einer unbehandelten Exception abstürzen lassen,
  * statt die im Code sorgfältig entworfene Fehlermeldung zu zeigen. Dasselbe
  * Prinzip wie `aktuellerKunde()` (lib/account/session.ts) und `istAdmin()`
  * (lib/admin/auth.ts): bei Zweifel fail-closed, nie ungefangen durchreichen.
  */
-function sichererClient<T>(fabrik: () => T): T | null {
+async function sichererClient<T>(fabrik: () => T | Promise<T>): Promise<T | null> {
   try {
-    return fabrik();
+    return await fabrik();
   } catch (fehler) {
     protokoll.fehler('AUTH', 'supabase_client_fehlgeschlagen', 'Supabase-Client konnte nicht erstellt werden.', fehler);
     return null;
   }
 }
 
-type SupabaseServerClient = ReturnType<typeof createClient>;
+type SupabaseServerClient = Awaited<ReturnType<typeof createClient>>;
 
 /**
  * Bestätigt per erneuter Anmeldung, dass die anfragende Person das aktuelle
@@ -133,7 +135,7 @@ export async function registrierenAction(_prev: KontoActionResult | null, formDa
   const grenze = await pruefeRateLimit('kontoRegistrierung');
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
-  const admin = sichererClient(createAdminClient);
+  const admin = await sichererClient(createAdminClient);
   if (!admin) return { success: false, error: 'Die Registrierung ist derzeit nicht möglich. Bitte versuchen Sie es später erneut.' };
   // Die Newsletter-Absicht wandert nur als Query-Parameter im Bestätigungs-
   // link mit (siehe baueKontoLink) – geschrieben und verschickt wird sie ERST
@@ -191,7 +193,7 @@ export async function anmeldenAction(_prev: KontoActionResult | null, formData: 
   const grenze = await pruefeRateLimit('kontoAnmeldung', email);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
-  const supabase = sichererClient(createClient);
+  const supabase = await sichererClient(createClient);
   if (!supabase) return { success: false, error: 'Die Anmeldung ist derzeit nicht möglich. Bitte versuchen Sie es später erneut.' };
   const { error } = await supabase.auth.signInWithPassword({ email, password: passwort });
   if (error) {
@@ -216,7 +218,7 @@ export async function abmeldenAction(): Promise<void> {
   // intern über einen geworfenen Spezialfehler umsetzt, den ein umschließendes
   // catch sonst verschlucken und die Navigation damit stillschweigend
   // verhindern würde.
-  const supabase = sichererClient(createClient);
+  const supabase = await sichererClient(createClient);
   if (supabase) {
     try {
       await supabase.auth.signOut();
@@ -242,7 +244,7 @@ export async function passwortVergessenAction(_prev: KontoActionResult | null, f
   // neutrale Standardmeldung zurückgegeben statt eine abweichende
   // Fehlermeldung – dieselbe Enumeration-Schutz-Logik wie beim fachlichen
   // Fehlerfall weiter unten, nur eine Ursache früher.
-  const admin = sichererClient(createAdminClient);
+  const admin = await sichererClient(createAdminClient);
   if (admin) {
     const { data, error } = await admin.auth.admin.generateLink({ type: 'recovery', email });
 
@@ -276,7 +278,7 @@ export async function passwortZuruecksetzenAction(_prev: KontoActionResult | nul
   if (passwort !== passwortWiederholung) befunde.push({ feld: 'passwortWiederholung', meldung: 'Die Passwörter stimmen nicht überein.' });
   if (befunde.length > 0) return { success: false, error: ersterFehler(befunde) };
 
-  const supabase = sichererClient(createClient);
+  const supabase = await sichererClient(createClient);
   if (!supabase) return { success: false, error: 'Das Passwort konnte nicht geändert werden. Bitte versuchen Sie es erneut.' };
   const {
     data: { user },
@@ -395,7 +397,7 @@ export async function emailAendernAction(_prev: KontoActionResult | null, formDa
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
-  const supabase = sichererClient(createClient);
+  const supabase = await sichererClient(createClient);
   if (!supabase) return { success: false, error: 'Die E-Mail-Adresse konnte derzeit nicht geändert werden. Bitte versuchen Sie es später erneut.' };
 
   // Re-Authentifizierung vor der Änderung: Ohne erneute Prüfung des aktuellen
@@ -436,7 +438,7 @@ export async function passwortAendernAction(_prev: KontoActionResult | null, for
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
-  const supabase = sichererClient(createClient);
+  const supabase = await sichererClient(createClient);
   if (!supabase) return { success: false, error: 'Das Passwort konnte derzeit nicht geändert werden. Bitte versuchen Sie es später erneut.' };
 
   // Re-Authentifizierung vor der eigentlichen Änderung: Ohne erneute Prüfung
@@ -495,7 +497,7 @@ export async function kontoLoeschenAction(_prev: KontoActionResult | null, formD
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
-  const supabase = sichererClient(createClient);
+  const supabase = await sichererClient(createClient);
   if (!supabase) return { success: false, error: 'Das Konto konnte derzeit nicht gelöscht werden. Bitte versuchen Sie es später erneut.' };
 
   // Re-Authentifizierung vor der Löschung – dieselbe Begründung wie bei
@@ -505,7 +507,7 @@ export async function kontoLoeschenAction(_prev: KontoActionResult | null, formD
   const reauth = await bestaetigePasswort(supabase, kunde.email, passwort, 'konto_loeschen');
   if (!reauth.ok) return { success: false, error: reauth.fehler };
 
-  const admin = sichererClient(createAdminClient);
+  const admin = await sichererClient(createAdminClient);
   if (!admin) return { success: false, error: 'Das Konto konnte derzeit nicht gelöscht werden. Bitte versuchen Sie es später erneut.' };
 
   const { error } = await admin.auth.admin.deleteUser(kunde.id);

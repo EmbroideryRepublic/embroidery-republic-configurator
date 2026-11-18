@@ -30,11 +30,12 @@ const STATUS_LABELS: Record<string, string> = {
 
 const JE_SEITE = 50;
 
-export default async function AdminOrdersPage({
-  searchParams,
-}: {
-  searchParams: { q?: string; seite?: string; status?: string };
-}) {
+export default async function AdminOrdersPage(
+  props: {
+    searchParams: Promise<{ q?: string; seite?: string; status?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
   // rendert Seite und Layout parallel und serialisiert das Seitenergebnis in
   // den RSC-Payload des HTML – auch wenn das Layout `children` verwirft.

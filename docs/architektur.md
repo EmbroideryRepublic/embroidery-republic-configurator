@@ -12,9 +12,9 @@ Einstieg: [README.md](README.md). Der Weg einer Bestellung:
 
 | Bereich | Technologie | Anmerkung |
 |---|---|---|
-| Framework | Next.js 14, App Router | Server Actions statt eigener API-Schicht |
+| Framework | Next.js 16, App Router | Server Actions statt eigener API-Schicht |
 | Sprache | TypeScript, strict | Ziel ES2017 |
-| UI | React 18, Tailwind CSS | |
+| UI | React 19, Tailwind CSS | |
 | 2D-Canvas | Konva.js + react-konva | der Konfigurator |
 | Datenbank & Storage | Supabase (Postgres) | Zugriff serverseitig über Service-Role |
 | Kundenkonto-Auth | Supabase Auth | additiv zum Gastkauf; `middleware.ts` frischt nur `/konto/*` und `/auth/*` auf, macht selbst keine Redirects; eigene gebrandete E-Mails (Resend) statt Supabase-Standardmails |

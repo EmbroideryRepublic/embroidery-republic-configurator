@@ -30,7 +30,11 @@ export const maxDuration = 30;
 /** Auflösung des Vorschaubilds (kleinster Wert, den der Renderer zulässt). */
 const VORSCHAU_DPI = 72;
 
-export async function GET(request: Request, { params }: { params: { id: string; elementId: string } }): Promise<NextResponse> {
+export async function GET(
+  request: Request,
+  props: { params: Promise<{ id: string; elementId: string }> }
+): Promise<NextResponse> {
+  const params = await props.params;
   if (!(await istAdmin())) {
     return NextResponse.json({ fehler: 'Nicht angemeldet.' }, { status: 401 });
   }

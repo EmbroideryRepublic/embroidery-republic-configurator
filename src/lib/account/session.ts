@@ -23,7 +23,7 @@ export interface AngemeldeterKunde {
 
 export async function aktuellerKunde(): Promise<AngemeldeterKunde | null> {
   try {
-    const supabase = createClient();
+    const supabase = await createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
@@ -60,7 +60,7 @@ export async function aktuellerKunde(): Promise<AngemeldeterKunde | null> {
  */
 export async function istRecoverySitzung(): Promise<boolean> {
   try {
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data, error } = await supabase.auth.getClaims();
     if (error || !data?.claims) return false;
     // Die Auswertung (inkl. Zeitgrenze für `otp`) liegt als reine Funktion in

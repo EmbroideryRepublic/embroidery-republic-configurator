@@ -39,7 +39,8 @@ const BESCHREIBUNG = shopBeschreibung(VORHANDENE_ARTEN.map(produktTypLabelPlural
 /** So viele Produkte tragen die Auszeichnung „Bestseller". */
 const BESTSELLER_ANZAHL = 3;
 
-export function generateMetadata({ searchParams }: { searchParams: SuchParameter }): Metadata {
+export async function generateMetadata(props: { searchParams: Promise<SuchParameter> }): Promise<Metadata> {
+  const searchParams = await props.searchParams;
   const gefiltert = hatAktiveFilter(leseKriterien(searchParams));
   return {
     title: 'Alle Produkte',
@@ -49,7 +50,8 @@ export function generateMetadata({ searchParams }: { searchParams: SuchParameter
   };
 }
 
-export default async function Produktuebersicht({ searchParams }: { searchParams: SuchParameter }) {
+export default async function Produktuebersicht(props: { searchParams: Promise<SuchParameter> }) {
+  const searchParams = await props.searchParams;
   const kriterien = leseKriterien(searchParams);
   const beliebtheit = await ladeBeliebtheit();
   const ergebnis = produktAbfrage().finde(kriterien, beliebtheit);

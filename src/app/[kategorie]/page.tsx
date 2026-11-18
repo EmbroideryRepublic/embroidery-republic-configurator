@@ -54,7 +54,8 @@ export function generateStaticParams() {
   return [...alleKategorieSlugs(), ...alleDtfSlugs(), ...alleAnlassSlugs()].map((kategorie) => ({ kategorie }));
 }
 
-export function generateMetadata({ params }: { params: { kategorie: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ kategorie: string }> }): Promise<Metadata> {
+  const params = await props.params;
   // Anlass- und Ratgeberseiten: eigene Texte und Komponente, siehe config/seo/anlassSeiten.ts.
   const anlass = anlassSeiteVon(params.kategorie);
   if (anlass) return anlassMetadata(anlass);
@@ -95,7 +96,8 @@ function VerfahrenKarte({ art, text, pausiert = false }: { art: 'dtf' | 'embroid
   );
 }
 
-export default async function Kategorieseite({ params }: { params: { kategorie: string } }) {
+export default async function Kategorieseite(props: { params: Promise<{ kategorie: string }> }) {
+  const params = await props.params;
   const anlass = anlassSeiteVon(params.kategorie);
   if (anlass) return <AnlassLandingpage seite={anlass} />;
   const dtf = dtfSeiteVon(params.kategorie);

@@ -22,7 +22,11 @@ import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
 // Logos mit vielen Farben brauchen einige Sekunden.
 export const maxDuration = 30;
 
-export async function GET(request: Request, { params }: { params: { id: string; elementId: string } }): Promise<NextResponse> {
+export async function GET(
+  request: Request,
+  props: { params: Promise<{ id: string; elementId: string }> }
+): Promise<NextResponse> {
+  const params = await props.params;
   if (!(await istAdmin())) {
     return NextResponse.json({ fehler: 'Nicht angemeldet.' }, { status: 401 });
   }

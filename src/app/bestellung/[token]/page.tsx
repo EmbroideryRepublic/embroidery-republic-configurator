@@ -95,7 +95,8 @@ function LinkNichtVerwendbar({ grund }: { grund: 'ungueltig' | 'abgelaufen' | 'n
   );
 }
 
-export default async function BestellAnsichtSeite({ params }: { params: { token: string } }) {
+export default async function BestellAnsichtSeite(props: { params: Promise<{ token: string }> }) {
+  const params = await props.params;
   const zugriff = await pruefeBestellzugriff({ art: 'token', token: params.token });
   if (!zugriff.erlaubt) return <LinkNichtVerwendbar grund={zugriff.grund} />;
 

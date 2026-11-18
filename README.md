@@ -1,7 +1,7 @@
 # Embroidery Republic
 
 Webshop mit 2D-Live-Konfigurator für personalisierte Textilien
-(T-Shirts, Hoodies, Polos …). Next.js 14 · TypeScript · Supabase.
+(T-Shirts, Hoodies, Polos …). Next.js 16 · TypeScript · Supabase.
 
 ## Dokumentation
 

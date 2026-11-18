@@ -45,7 +45,8 @@ const AKTION_STIL: Record<NaechsteAktionTon, string> = {
   kritisch: 'border-red-200 bg-red-50 text-red-800',
 };
 
-export default async function AdminOrderDetailPage({ params }: { params: { id: string } }) {
+export default async function AdminOrderDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   // SICHERHEIT: Die Prüfung MUSS hier stehen, nicht nur im Layout. Next.js
   // rendert Seite und Layout parallel und serialisiert das Seitenergebnis in
   // den RSC-Payload des HTML – auch wenn das Layout `children` verwirft.

@@ -29,6 +29,46 @@ export function suchfenster(menge: number): number {
   return Math.max(10, Math.ceil(menge * 0.25));
 }
 
+export interface NaechsteStufe {
+  /** Kleinste Menge über der gewählten, ab der der Stückpreis sinkt. */
+  menge: number;
+  /** Wie viele Stück mehr das sind. */
+  mehrStueck: number;
+  /** Stückpreis ab dieser Menge (inkl. anteiliger Einrichtung, wie im Konfigurator angezeigt). */
+  stueckpreis: number;
+}
+
+/** Kleinster Rückgang des Stückpreises (in Euro), den die Anzeige als „nächste Stufe“ meldet. */
+export const MIN_STUECKPREIS_SCHRITT_EUR = 0.5;
+
+/**
+ * „Noch 2 Stück – dann nur noch 26,99 € pro Stück.“ Zeigt die Kundschaft die nächste Menge, ab der der STÜCKPREIS sinkt
+ * (bei den Staffeln 3, 5, 10, 20, 50 und 100 Stück). Reine Anzeige-Hilfe auf Basis derselben `calculatePrice`-Funktion wie
+ * der Warenkorb – ändert nie einen Preis. Sucht bis zur doppelten Menge (mindestens 60 Stück) voraus.
+ */
+export function findeNaechsteStufe(eingabe: {
+  basePrice: number;
+  quantity: number;
+  elements: ConfigElement[];
+  pricingRules: PricingRule[];
+}): NaechsteStufe | null {
+  const { basePrice, quantity, elements, pricingRules } = eingabe;
+  if (!Number.isFinite(quantity) || quantity < 1 || pricingRules.length === 0) return null;
+
+  const stueckpreis = (menge: number) => calculatePrice({ basePrice, quantity: menge, elements, pricingRules }).unitPrice;
+  const aktuell = stueckpreis(quantity);
+  if (!(aktuell > 0)) return null;
+
+  const ende = quantity + Math.max(60, quantity);
+  for (let menge = quantity + 1; menge <= ende; menge++) {
+    const preis = stueckpreis(menge);
+    if (aktuell - preis >= MIN_STUECKPREIS_SCHRITT_EUR) {
+      return { menge, mehrStueck: menge - quantity, stueckpreis: preis };
+    }
+  }
+  return null;
+}
+
 export function findeMengenTipp(eingabe: {
   basePrice: number;
   quantity: number;

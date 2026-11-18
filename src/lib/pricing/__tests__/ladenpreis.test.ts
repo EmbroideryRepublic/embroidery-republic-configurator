@@ -111,8 +111,10 @@ test('Nachlässe beziehen sich auf den Ladenpreis und wirken in voller Höhe', a
 
 test('Ohne Schalter (Standard) wird gerundet, mit ladenpreisRundung:false nicht', async () => {
   const rules = await getPricingRules('dtf');
-  const standard = calculatePrice({ basePrice: 16.99, quantity: 10, elements: [logo('front')], pricingRules: rules });
-  const roh = calculatePrice({ basePrice: 16.99, quantity: 10, elements: [logo('front')], pricingRules: rules, ladenpreisRundung: false });
+  // 17,49 € statt 16,99 €: Mit dem festen Mengenrabatt der DTF-Staffel (1,50 € ab 10 Stück) ergäbe 16,99 € rechnerisch schon einen
+  // glatten ,99-Betrag – dann unterschiede sich der Rohpreis nicht vom gerundeten und der Test prüfte nichts.
+  const standard = calculatePrice({ basePrice: 17.49, quantity: 10, elements: [logo('front')], pricingRules: rules });
+  const roh = calculatePrice({ basePrice: 17.49, quantity: 10, elements: [logo('front')], pricingRules: rules, ladenpreisRundung: false });
   assert.notEqual(standard.unitPrice, roh.unitPrice);
   assert.equal(Math.round(roh.unitPrice * 100) % 100 === 99, false);
 });

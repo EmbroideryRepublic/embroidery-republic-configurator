@@ -9,7 +9,7 @@ import { useCartStore } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { QUANTITY_TIERS, DTF_POSITION_TIERS, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
-import type { MengenTipp } from '@/lib/pricing/mengenTipp';
+import type { MengenTipp, NaechsteStufe } from '@/lib/pricing/mengenTipp';
 import { getProduct } from '@/config/products';
 import { SizeQuantityTable } from './SizeQuantityTable';
 import type { TranslationKey } from '@/lib/i18n/translations';
@@ -24,6 +24,8 @@ interface SummaryPanelProps {
   breakdown: PriceCalculationResult['breakdown'] | null;
   /** Staffelgrenze knapp über der gewählten Menge, bei der der Gesamtpreis sinkt (lib/pricing/mengenTipp.ts). */
   mengenTipp?: MengenTipp | null;
+  /** Nächste Menge, ab der der Stückpreis sinkt (lib/pricing/mengenTipp.ts) – „Noch 2 Stück – dann nur noch 26,99 €“. */
+  naechsteStufe?: NaechsteStufe | null;
   /** true = mindestens ein Preisbaustein konnte nicht verarbeitet werden.
    *  Der Preis ist dann ungültig und darf nicht bestellt werden. */
   priceHasErrors?: boolean;
@@ -34,7 +36,14 @@ interface SummaryPanelProps {
   onItemAdded?: () => void;
 }
 
-export function SummaryPanel({ productName, breakdown, mengenTipp = null, priceHasErrors = false, onItemAdded }: SummaryPanelProps) {
+export function SummaryPanel({
+  productName,
+  breakdown,
+  mengenTipp = null,
+  naechsteStufe = null,
+  priceHasErrors = false,
+  onItemAdded,
+}: SummaryPanelProps) {
   const printMethod = useConfiguratorStore((s) => s.printMethod);
   const productId = useConfiguratorStore((s) => s.productId);
   const colorId = useConfiguratorStore((s) => s.colorId);
@@ -198,6 +207,11 @@ export function SummaryPanel({ productName, breakdown, mengenTipp = null, priceH
         <p className="text-[11px] font-medium text-green-700" data-testid="mengen-tipp">
           Tipp: Mit {mengenTipp.menge} statt {quantity} Stück zahlen Sie insgesamt {formatPrice(mengenTipp.ersparnis)} weniger – und
           erhalten {mengenTipp.mehrStueck} Stück mehr.
+        </p>
+      ) : quantity > 0 && naechsteStufe ? (
+        <p className="text-[11px] font-medium text-green-700" data-testid="naechste-stufe">
+          Noch {naechsteStufe.mehrStueck} Stück – dann nur noch {formatPrice(naechsteStufe.stueckpreis)} pro Stück (jetzt{' '}
+          {formatPrice(unitPrice)}).
         </p>
       ) : quantity > 0 && nextDtfTier ? (
         <p className="text-[11px] text-brand/70">

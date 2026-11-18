@@ -551,6 +551,37 @@ und ist deshalb keine technische, sondern eine geschäftliche.
 
 **Wirkung für die Kundschaft:** Ein Einzelstück kostet 10 € mehr (Einrichtung), bei 2 Stück 5 € mehr je Stück; ab 3 Stück ändern sich nur die Grundpreise (T-Shirts günstiger, einzelne teure Hoodies und Jacken teurer). Die Einrichtung fällt je Warenkorbposition an, also auch zweimal bei zwei verschiedenen Einzelstücken im selben Warenkorb.
 
-**Grenzen:** Die L-Shop-Preise stammen aus drei Farben je Produkt (günstigste gelesene Farbe, Größe M); bei den textil-grosshandel-Katalogpreisen handelt es sich teils um Ab-Preise. Ist der echte Einkauf 5 % höher, liegen 57 der Fälle knapp unter 3 € (weiter im Gewinn, Ausnahme ID Microfleece Jacke bei 100 Stück mit rund 2 % Marge). Bei L-Shop gilt der Versand je Karton; mehrere Kartons bei großen Mengen sind nicht eingerechnet. Nicht verändert: Mengenrabatt (`QUANTITY_TIERS`), DTF-Positionspreise, Stickerei-Kalkulation (Positionsstaffel plus 1,20 € je 1.000 Stiche), Versandtarif, Rechnungs- und Bestelllogik.
+**Grenzen:** Die L-Shop-Preise stammen aus drei Farben je Produkt (günstigste gelesene Farbe, Größe M); bei den textil-grosshandel-Katalogpreisen handelt es sich teils um Ab-Preise. Ist der echte Einkauf 5 % höher, liegen 57 der Fälle knapp unter 3 €. Berichtigung vom selben Tag: Die ID Microfleece Jacke bei 100 Stück verdient schon beim planmäßigen Einkauf nur 95,51 € (rund 2 % Marge) und rutscht bei +5 % Einkauf ins Minus (−101,51 €), weil dort der Mengenrabatt von 20 % (9,60 € je Stück) den Aufschlag von 9 € fast aufzehrt und kein L-Shop-Preis hinterlegt ist. Das gilt unverändert seit dem Stand 3c15cb22 und betrifft nur diese Größenordnung (100 Stück eines teuren Modells); es wurde nicht verändert. Bei L-Shop gilt der Versand je Karton; mehrere Kartons bei großen Mengen sind nicht eingerechnet. Nicht verändert: Mengenrabatt (`QUANTITY_TIERS`), DTF-Positionspreise, Stickerei-Kalkulation (Positionsstaffel plus 1,20 € je 1.000 Stiche), Versandtarif, Rechnungs- und Bestelllogik.
 
 **Rückgängig machen:** Regel `dtf-kleinauftrag` auf `isActive: false` setzen und/oder Einträge in `GRUNDPREIS_ANPASSUNG_EUR` streichen. Die Herleitung (Skripte und Daten) liegt außerhalb des Repos in `E:\Embroidery Republic\preispruefung-2026-11-18\`.
+
+## Mengenstaffel vom 2026-11-18: auf jeder Stufe sichtbar günstiger, Gewinn steigt mit der Menge
+
+**Vorgabe des Betreibers:** Nicht nur 3 € je Bestellung verdienen. Mit mehr Artikeln soll die Marge etwas steigen, und die Kundschaft soll sehen, dass es mit jedem zusätzlichen Artikel günstiger wird.
+
+**Befund (Katalogmedian, 1 DTF-Position 20 × 25 cm):** Der Gewinn je Stück steigt mit der Menge von selbst (1 Stück 3,96 €, 5 Stück rund 9 €, 20 Stück rund 12,60 €), denn Lieferanten- und DTF-Versand, DHL und Verpackung teilen sich auf. Der Stückpreis blieb aber zwischen 3 und 9 Stück bei 27,99 €, zwischen 10 und 24 Stück bei 26,99 €: Wer fünf statt drei bestellte, sah keinen Vorteil, obwohl unsere Kosten je Stück dort von rund 21,60 € auf 14,60 € fallen. Die Ersparnis ging vollständig an uns.
+
+**Maßnahme** (`lib/pricing/calculatePrice.ts`, Tabelle `DTF_GRUNDPREIS_STAFFEL`): eigener Grundpreis-Rabatt nur für DTF, je Stufe der größere Wert aus Prozent und Mindest-Euro je Stück. Ab 5 Stück 1,00 €, ab 10 Stück 1,50 €, ab 20 Stück 3,00 €, ab 50 Stück 8 % (mindestens 3,00 €), ab 100 Stück 20 % (mindestens 4,00 €), darüber wie bisher 23/26/36 %. Feste Euro-Beträge statt reiner Prozente, weil unsere Ersparnis in Euro anfällt und weil ein Prozentrabatt bei einem 12-€-Shirt (4 % = 0,48 €) in der ,99-Rundung verschwindet: Mit Prozent sank der Stückpreis bei 5 Stück nur bei 150 von 182 Modellen, bei 20 Stück nur bei 121.
+
+**Garantie, im Test fixiert** (`lib/pricing/__tests__/dtfStaffel.test.ts`): Bei 3, 5, 10, 20, 50 und 100 Stück sinkt der Stückpreis für jedes der 182 Modelle um mindestens 1 €, und er steigt mit der Menge nirgends (Mengen 1 bis 150).
+
+| Menge | Stückpreis vorher | Stückpreis jetzt | Gewinn je Stück vorher → jetzt | Marge vorher → jetzt | Gewinn je Bestellung (Median) vorher → jetzt |
+|---|---|---|---|---|---|
+| 1 | 38,99 € | 38,99 € | 3,96 € | 9 % | 3,96 € |
+| 2 | 33,99 € | 33,99 € | 7,92 € | 24 % | 15,84 € |
+| 3–4 | 27,99 € | 27,99 € | 6,38 € / 8,06 € | 23 % / 32 % | 19,14 € / 32,24 € |
+| 5 | 27,99 € | 26,99 € | 8,83 → 7,86 € | 35 → 32 % | 44,15 → 39,28 € |
+| 10 | 26,99 € | 25,99 € | 10,71 → 9,77 € | 44 → 41 % | 107,12 → 97,72 € |
+| 20 | 26,99 € | 24,99 € | 12,61 → 10,74 € | 51 → 47 % | 252,11 → 214,83 € |
+| 50 | 23,99 € | 22,99 € | 12,24 → 11,04 € | 52 → 49 % | 611,85 → 551,92 € |
+| 100 | 21,99 € | 21,99 € | 10,06 → 9,83 € | 50 → 50 % | 1.006,23 → 982,93 € |
+
+Preise: Warenwert je Stück ohne Versand, Modell um 28 € bei 3 Stück. Gerechnet mit Einkaufspreisen und Versandkosten beider Lieferanten wie oben. Die Marge steigt mit der Menge von 9 % (1 Stück) über 24 % (2) und 32 % (4) auf 47 bis 50 % ab 20 Stück. Kleinster Gewinn je Bestellung über alle 182 Modelle und Mengen 1 bis 120: weiterhin 3,04 € (Einzelstück); bei 5 Stück mindestens 30,39 €.
+
+**Kosten für uns:** Zwischen 5 und 50 Stück rund 1 € weniger Gewinn je Stück (etwa 10 % des Gewinns), dafür sinkt der Preis für die Kundschaft an jeder Stufe. Wo die Menge zu einer Stufe knapp fehlt, zeigt der Konfigurator jetzt „Noch 2 Stück – dann nur noch 26,99 € pro Stück (jetzt 27,99 €).“ (`findeNaechsteStufe` in `lib/pricing/mengenTipp.ts`; Text vor dem Livegang vom Betreiber freizugeben).
+
+**Stickerei unverändert:** Die Stickerei-Preise sind in 60 Vergleichsfällen bitgenau gleich geblieben (Test `Stickerei: Preise unverändert`). Folge: „Stickerei = DTF plus Stichaufpreis“ gilt weiterhin exakt bei 1 bis 4 Stück; ab 5 Stück ist DTF um den Grundpreis-Unterschied günstiger (bis rund 2 € je Stück, bei 20 Stück). Wenn die Stickerei wieder freigegeben wird, ist zu entscheiden, ob sie dieselbe Grundpreis-Staffel bekommt (dann ändern sich ihre Gesamtpreise).
+
+**Grenzen:** Die Tabelle ab 100 Stück ist nur dort verändert, wo günstige Modelle sonst keine sichtbare Stufe hätten (Mindest-Euro 4,00 €). Bei sehr großen Mengen teurer Modelle bleibt die Marge dünn (siehe Berichtigung oben, ID Microfleece Jacke).
+
+**Rückgängig machen:** In `calculatePrice()` den Aufruf von `getDtfGrundpreisStufe` entfernen, dann gilt für DTF wieder `QUANTITY_TIERS`. Die Herleitung (Skripte `staffel2.mts` und weitere) liegt außerhalb des Repos im Arbeitsverzeichnis der Sitzung.

@@ -26,7 +26,7 @@ import { resolveColorImages, repraesentativeFarbe } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
-import { findeMengenTipp } from '@/lib/pricing/mengenTipp';
+import { findeMengenTipp, findeNaechsteStufe } from '@/lib/pricing/mengenTipp';
 import type { PricingRule, PrintArea, PrintMethod } from '@/types';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
@@ -322,6 +322,16 @@ export function ConfiguratorPrototype() {
       printMethod === 'embroidery' || pricingRules.length === 0
         ? null
         : findeMengenTipp({ basePrice: product.basePrice, quantity, elements, pricingRules }),
+    [printMethod, product.basePrice, quantity, elements, pricingRules]
+  );
+
+  // Nächste Preisstufe (lib/pricing/mengenTipp.ts): „Noch 2 Stück – dann nur noch 26,99 € pro Stück.“ Zeigt der Kundschaft, dass
+  // der Stückpreis mit der Menge sinkt. Reine Anzeige, rechnet mit derselben calculatePrice wie der Warenkorb.
+  const naechsteStufe = useMemo(
+    () =>
+      printMethod === 'embroidery' || pricingRules.length === 0
+        ? null
+        : findeNaechsteStufe({ basePrice: product.basePrice, quantity, elements, pricingRules }),
     [printMethod, product.basePrice, quantity, elements, pricingRules]
   );
 
@@ -628,6 +638,7 @@ export function ConfiguratorPrototype() {
               productName={product.name}
               breakdown={priceBreakdown}
               mengenTipp={mengenTipp}
+              naechsteStufe={naechsteStufe}
               priceHasErrors={priceHasErrors}
               onItemAdded={handleItemAddedToCart}
             />

@@ -173,10 +173,15 @@ test('Stickerei kostet bei gleichem Motiv genau den Stichaufpreis (1,20 €/1.00
     const s = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: stick, ladenpreisRundung: false });
     assert.equal(s.breakdown.veredelungDiscountPercent, rabatt, `${menge} Stück: Rabatt auf den Stichaufpreis`);
     const erwartet = (stiche / 1000) * 1.2 * (1 - rabatt / 100);
+    // Seit 2026-11-18 hat DTF eine eigene Grundpreis-Mengenstaffel (DTF_GRUNDPREIS_STAFFEL: ab 5 Stück feste Euro-Beträge), die
+    // Stickerei bleibt bei QUANTITY_TIERS – ihre Preise ändern sich dadurch bewusst nicht. Ab 5 Stück ist DTF deshalb um genau
+    // diesen Grundpreis-Unterschied günstiger; der Stichaufpreis selbst bleibt exakt wie vorgegeben.
+    const grundpreisUnterschied =
+      (BASIS_PREIS * (d.breakdown.baseDiscountPercent - s.breakdown.baseDiscountPercent)) / 100;
     assert.ok(s.unitPrice > d.unitPrice, `${stiche} Stiche / ${menge} Stück: Stickerei muss teurer sein als DTF`);
     assert.ok(
-      Math.abs(s.unitPrice - d.unitPrice - erwartet) < 0.011,
-      `${stiche} Stiche / ${menge} Stück: Aufpreis ${(s.unitPrice - d.unitPrice).toFixed(2)} €, erwartet ${erwartet.toFixed(2)} €`
+      Math.abs(s.unitPrice - d.unitPrice - erwartet - grundpreisUnterschied) < 0.02,
+      `${stiche} Stiche / ${menge} Stück: Aufpreis ${(s.unitPrice - d.unitPrice).toFixed(2)} €, erwartet ${(erwartet + grundpreisUnterschied).toFixed(2)} €`
     );
   }
 });

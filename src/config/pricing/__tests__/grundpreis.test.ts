@@ -21,7 +21,7 @@ import assert from 'node:assert/strict';
 import type { ConfigElement } from '@/types';
 import { PRODUCTS } from '@/config/products';
 import { getPricingRules, KLEINAUFTRAG_REGEL_ID } from '@/config/pricingRules';
-import { calculatePrice, QUANTITY_TIERS } from '@/lib/pricing/calculatePrice';
+import { calculatePrice, getDtfGrundpreisStufe } from '@/lib/pricing/calculatePrice';
 import { aufNaechsten99 } from '@/lib/pricing/ladenpreis';
 import { GRUNDPREIS_ANPASSUNG_EUR } from '../preiskorrektur';
 import {
@@ -40,14 +40,25 @@ const POSITIONEN_VORHER: [number, number, number, number][] = [
   [1, 9, 5, 4], [3, 8, 4.5, 3.5], [10, 7.5, 4, 3], [50, 6, 3, 2.5], [100, 5.5, 2.5, 2], [250, 5, 2.5, 2], [500, 4.5, 2, 1.5], [1000, 4, 2, 1.5],
 ];
 
-/** Der Stückpreis VOR der Anhebung, nachgerechnet (Grundpreis mit Mengenrabatt + Positionen, auf den nächsten ,99-Betrag). */
+/**
+ * Der Stückpreis VOR der Anhebung, nachgerechnet (Grundpreis mit Mengenrabatt + Positionen, auf den nächsten ,99-Betrag).
+ * Verglichen wird nur die ANHEBUNG DES GRUNDPREISES: Den Mengenrabatt rechnet der Vergleichspreis deshalb mit der heute gültigen
+ * DTF-Staffel (DTF_GRUNDPREIS_STAFFEL, seit 2026-11-18) – die ältere Tabelle QUANTITY_TIERS würde die Mengenstaffel mit der
+ * Anhebung vermischen.
+ */
 function stueckpreisVorher(ek: number, menge: number, ansichten: number): number {
-  let rabatt = 0;
-  for (const t of QUANTITY_TIERS) if (menge >= t.minQuantity) rabatt = t.baseDiscountPercent;
-  let stufe = POSITIONEN_VORHER[0]!;
-  for (const s of POSITIONEN_VORHER) if (menge >= s[0]) stufe = s;
-  const positionen = ansichten === 1 ? stufe[1] : ansichten === 2 ? stufe[1] + stufe[2] : stufe[1] + stufe[2] + stufe[3];
-  return aufNaechsten99(vorher(ek) * (1 - rabatt / 100) + positionen);
+  const fest = vorher(ek);
+  const stufe = getDtfGrundpreisStufe(menge);
+  const rabatt = Math.min(fest, Math.max((fest * stufe.prozent) / 100, stufe.mindestensEuro));
+  let positionsStufe = POSITIONEN_VORHER[0]!;
+  for (const s of POSITIONEN_VORHER) if (menge >= s[0]) positionsStufe = s;
+  const positionen =
+    ansichten === 1
+      ? positionsStufe[1]
+      : ansichten === 2
+        ? positionsStufe[1] + positionsStufe[2]
+        : positionsStufe[1] + positionsStufe[2] + positionsStufe[3];
+  return aufNaechsten99(fest - rabatt + positionen);
 }
 
 test('Anhebung: Fenster 3–5 %', () => {

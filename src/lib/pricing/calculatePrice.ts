@@ -11,7 +11,9 @@ import { aufNaechsten99 } from './ladenpreis';
  *
  * MENGENRABATT – mehrere getrennte Staffeln statt einer einzelnen:
  * - QUANTITY_TIERS.baseDiscountPercent: leichter Rabatt auf Grundpreis +
- *   Grundgebühren, für ALLE Veredelungsarten.
+ *   Grundgebühren – für alles außer DTF (Stickerei u. a.).
+ * - DTF_GRUNDPREIS_STAFFEL: dasselbe für DTF, mit festen Euro-Beträgen, damit der
+ *   Stückpreis bei 5/10/20/50 Stück für jedes Modell sichtbar sinkt (siehe dortiger Kommentar).
  * - QUANTITY_TIERS.veredelungDiscountPercent: steiler Rabatt auf Fläche/
  *   Stichzahl-Kosten – gilt seit 2026-08-09 NUR NOCH für Stickerei
  *   (stichzahlbasiert).
@@ -134,6 +136,61 @@ export const QUANTITY_TIERS: QuantityTier[] = [
   { minQuantity: 500, baseDiscountPercent: 26, veredelungDiscountPercent: 90 },
   { minQuantity: 1000, baseDiscountPercent: 36, veredelungDiscountPercent: 93 },
 ];
+
+export interface DtfGrundpreisStufe {
+  minQuantity: number;
+  /** Rabatt auf den festen Anteil (Grundpreis + Grundgebühren) in Prozent. */
+  prozent: number;
+  /** Mindestens so viele Euro je Stück gehen vom festen Anteil ab – größer von beiden gilt (Prozent ODER Euro). */
+  mindestensEuro: number;
+}
+
+/**
+ * Grundpreis-Rabatt für DTF-Transferdruck je Stückzahl (Festlegung 2026-11-18).
+ *
+ * ZIEL (Betreiber): Mit mehr Stück soll der Stückpreis auf JEDER Stufe sichtbar sinken und der Gewinn je Bestellung
+ * (und die Marge) trotzdem mit der Menge steigen. Die ältere Tabelle QUANTITY_TIERS ließ den Preis zwischen 3 und 9 Stück
+ * völlig flach (27,99 €), obwohl unsere Kosten je Stück dort von rund 21,6 € auf 14,6 € fallen (Versand und DTF-Bogen teilen
+ * sich auf) – wer fünf statt drei bestellte, sah keinen Vorteil.
+ *
+ * WARUM FESTE EURO-BETRÄGE STATT NUR PROZENT: Unsere Ersparnis durch Menge (geteilter Versand, besser gefüllter DTF-Bogen,
+ * Lieferantenstaffel) fällt in Euro an, nicht in Prozent vom Textilpreis. Ein reiner Prozentsatz (z. B. 4 % bei 5 Stück) ergäbe
+ * bei einem 12-€-Shirt nur 0,48 € – und das verschwindet in der ,99-Rundung (Ladenpreis): Bei 5 Stück sank der Stückpreis dann
+ * nur bei 150 von 182 Modellen, bei 20 Stück nur bei 121. Ein Euro-Betrag von mindestens 1 € Zuwachs je Stufe (zusammen mit der
+ * DTF-Positionsstaffel) garantiert dagegen für JEDES Modell einen niedrigeren Stückpreis – das prüft dtfStaffel.test.ts.
+ * Ab 50 Stück gilt weiter der größere Wert aus Prozent und Euro, damit teure Modelle (Hoodies) nicht schlechter wegkommen
+ * als bisher.
+ *
+ * Ladenpreis je Stück (Warenwert, ohne Versand) für ein Modell um 28 € bei 3 Stück (Median des Katalogs, 1 Position 20×25 cm):
+ *   1 Stück 38,99 € (mit Einrichtung) · 2: 33,99 € · 3–4: 27,99 € · 5–9: 26,99 € · 10–19: 25,99 € · 20–49: 24,99 €
+ *   · 50–99: 22,99 € · ab 100: 21,99 €. Marge (Median): 9 % → 24 % → 23 % → 32 % → 41 % → 48 % → 49 % → 50 %.
+ * Gerechnet mit Einkaufspreisen und Versandkosten beider Lieferanten; kleinster Gewinn je Bestellung über alle 182 Modelle
+ * und Mengen 1–120 siehe docs/kalkulationsmodell.md.
+ *
+ * Gilt NUR für DTF. Die Stickerei (Positionsstaffel + Stichaufpreis) bleibt bei QUANTITY_TIERS und ändert sich nicht –
+ * abgesichert durch src/lib/pricing/__tests__/dtfStaffel.test.ts. Zurücksetzen: in calculatePrice() getDtfGrundpreisStufe
+ * nicht mehr verwenden (dann gilt wieder QUANTITY_TIERS).
+ */
+export const DTF_GRUNDPREIS_STAFFEL: ReadonlyArray<DtfGrundpreisStufe> = [
+  { minQuantity: 1, prozent: 0, mindestensEuro: 0 },
+  { minQuantity: 5, prozent: 0, mindestensEuro: 1.0 },
+  { minQuantity: 10, prozent: 0, mindestensEuro: 1.5 },
+  { minQuantity: 20, prozent: 0, mindestensEuro: 3.0 },
+  { minQuantity: 50, prozent: 8, mindestensEuro: 3.0 },
+  { minQuantity: 100, prozent: 20, mindestensEuro: 4.0 },
+  { minQuantity: 250, prozent: 23, mindestensEuro: 4.0 },
+  { minQuantity: 500, prozent: 26, mindestensEuro: 4.0 },
+  { minQuantity: 1000, prozent: 36, mindestensEuro: 4.0 },
+];
+
+/** Die DTF-Grundpreisstufe, die bei dieser Stückzahl gilt. */
+export function getDtfGrundpreisStufe(quantity: number): DtfGrundpreisStufe {
+  let aktuell = DTF_GRUNDPREIS_STAFFEL[0]!;
+  for (const stufe of DTF_GRUNDPREIS_STAFFEL) {
+    if (quantity >= stufe.minQuantity) aktuell = stufe;
+  }
+  return aktuell;
+}
 
 function getTierForQuantity(quantity: number): QuantityTier {
   let current: QuantityTier = { minQuantity: 0, baseDiscountPercent: 0, veredelungDiscountPercent: 0 };
@@ -431,7 +488,17 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // (variableCostTotal), ist aber selbst bereits der fertige Preis und wird
   // deshalb vor der Rabattierung wieder herausgerechnet.
   const fixedPortion = basePrice + elementBaseFeeTotal + positionFeeTotal;
-  const discountedFixed = fixedPortion * (1 - tier.baseDiscountPercent / 100);
+
+  // Grundpreis-Rabatt: DTF hat eine eigene Staffel (DTF_GRUNDPREIS_STAFFEL: Prozent ODER Mindest-Euro, der größere gilt).
+  // Alles mit Stichaufpreis (Stickerei) und alles ohne Positionsstaffel bleibt bei QUANTITY_TIERS – unverändert.
+  const stichRegelAktiv = pricingRules.some((r) => r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, quantity));
+  let baseDiscountPercent = tier.baseDiscountPercent;
+  if (dtfPositionPricingActive && !stichRegelAktiv && fixedPortion > 0) {
+    const stufe = getDtfGrundpreisStufe(quantity);
+    const rabattEuro = Math.min(fixedPortion, Math.max((fixedPortion * stufe.prozent) / 100, stufe.mindestensEuro));
+    baseDiscountPercent = (rabattEuro / fixedPortion) * 100;
+  }
+  const discountedFixed = fixedPortion * (1 - baseDiscountPercent / 100);
   const discountedVariable =
     (variableCostTotal - positionTierTotal) * (1 - veredelungRabattProzent / 100) + positionTierTotal;
 
@@ -505,11 +572,11 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
     hasErrors: charges.issues.length > 0,
     issues: charges.issues,
     breakdown: {
-      basePrice: roundToCents(basePrice * (1 - tier.baseDiscountPercent / 100)),
+      basePrice: roundToCents(basePrice * (1 - baseDiscountPercent / 100)),
       elementsPrice: roundToCents(elementBaseFeeTotal + positionFeeTotal + variableCostTotal),
       perElement,
-      elementBaseFeeTotal: roundToCents(elementBaseFeeTotal * (1 - tier.baseDiscountPercent / 100)),
-      positionFeeTotal: roundToCents(positionFeeTotal * (1 - tier.baseDiscountPercent / 100)),
+      elementBaseFeeTotal: roundToCents(elementBaseFeeTotal * (1 - baseDiscountPercent / 100)),
+      positionFeeTotal: roundToCents(positionFeeTotal * (1 - baseDiscountPercent / 100)),
       areaPriceByView: Object.fromEntries(
         Object.entries(areaPriceByView).map(([view, betrag]) => [view, roundToCents(betrag)])
       ),
@@ -521,7 +588,9 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       additionalPositionPrice: zweitePositionPreis,
       furtherPositionPrice: weiterePositionPreis,
       totalEstimatedStitches,
-      baseDiscountPercent: tier.baseDiscountPercent,
+      // Auf eine Nachkommastelle gerundet, weil bei den festen Euro-Beträgen der DTF-Staffel ein krummer Prozentwert entsteht
+      // (die Preise selbst rechnen mit dem ungerundeten Wert, damit Anteile und Summe zusammenpassen).
+      baseDiscountPercent: Math.round(baseDiscountPercent * 10) / 10,
       // Der TATSÄCHLICH angewandte Satz (ggf. gedeckelt) – nicht der rohe
       // Staffelwert, sonst zeigte die Oberfläche einen Rabatt, den es nicht gibt.
       veredelungDiscountPercent: veredelungRabattProzent,

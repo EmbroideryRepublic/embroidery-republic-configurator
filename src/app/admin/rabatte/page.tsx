@@ -19,7 +19,7 @@
  * Bestehendem.
  */
 import { istAdmin } from '@/lib/admin/auth';
-import { QUANTITY_TIERS, DTF_POSITION_TIERS } from '@/lib/pricing/calculatePrice';
+import { QUANTITY_TIERS, DTF_POSITION_TIERS, DTF_GRUNDPREIS_STAFFEL } from '@/lib/pricing/calculatePrice';
 import { STICH_RABATT_MAX_PROZENT, STICH_AUFPREIS_JE_1000 } from '@/config/pricingRules';
 import { STICKKOSTEN_JE_1000_STICHE } from '@/config/pricing/selbstkosten';
 import { formatiereGeld } from '@/lib/format';
@@ -35,7 +35,8 @@ export default async function AdminRabattePage() {
         <h1 className="text-lg font-semibold">Rabatte</h1>
         <p className="mt-1 text-sm text-gray-500">
           Automatische Mengenstaffel, angewendet auf jede Bestellung – kein manueller Gutscheincode nötig. Pflege in{' '}
-          <code className="rounded bg-gray-100 px-1">src/lib/pricing/calculatePrice.ts</code> (QUANTITY_TIERS).
+          <code className="rounded bg-gray-100 px-1">src/lib/pricing/calculatePrice.ts</code> (QUANTITY_TIERS). Diese
+          Tabelle gilt für die Stickerei; beim DTF-Druck gilt der Grundpreis-Rabatt aus der DTF-Staffel weiter unten.
         </p>
       </div>
 
@@ -94,6 +95,37 @@ export default async function AdminRabattePage() {
                 <td className="px-3 py-2 text-right">{formatiereGeld(tier.erste)}</td>
                 <td className="px-3 py-2 text-right">{formatiereGeld(tier.zweite)}</td>
                 <td className="px-3 py-2 text-right">{formatiereGeld(tier.abDritte)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h2 className="text-base font-semibold">Grundpreis-Rabatt DTF (seit 2026-11-18)</h2>
+        <p className="mt-1 text-sm text-gray-500">
+          Rabatt auf den Grundpreis des Textils beim DTF-Druck, Stufenfunktion für die gesamte Bestellung. Es gilt der
+          größere Wert aus Prozent und Mindest-Euro je Stück – so wird der Stückpreis auf jeder Stufe für jedes Modell
+          sichtbar günstiger. Pflege in{' '}
+          <code className="rounded bg-gray-100 px-1">src/lib/pricing/calculatePrice.ts</code> (DTF_GRUNDPREIS_STAFFEL).
+        </p>
+      </div>
+
+      <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+        <table className="w-full text-left text-sm">
+          <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wide text-gray-500">
+            <tr>
+              <th className="px-3 py-2">Ab Stückzahl</th>
+              <th className="px-3 py-2 text-right">Rabatt in Prozent</th>
+              <th className="px-3 py-2 text-right">Mindestens je Stück</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DTF_GRUNDPREIS_STAFFEL.map((stufe) => (
+              <tr key={stufe.minQuantity} className="border-b border-gray-100 last:border-0">
+                <td className="px-3 py-2 font-medium">{stufe.minQuantity}</td>
+                <td className="px-3 py-2 text-right">{stufe.prozent} %</td>
+                <td className="px-3 py-2 text-right">{formatiereGeld(stufe.mindestensEuro)}</td>
               </tr>
             ))}
           </tbody>

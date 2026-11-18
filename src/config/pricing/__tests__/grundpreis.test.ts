@@ -9,6 +9,9 @@
  *   - Die Positionsstaffel (DTF_POSITION_TIERS) steht wieder auf dem alten Stand 9/5/4 …
  *   - Alle Verkaufspreise enden weiter auf ,99 €; nichts wird günstiger als vorher; mehr Stück sind nie teurer.
  *
+ * 2026-11-18: Bei 104 Produkten wird der Grundpreis gezielt angepasst (80 günstiger um 1–3 €, 24 teurer; Betreiberfreigabe, config/pricing/preiskorrektur.ts),
+ * dazu kommt die Einrichtung für Kleinaufträge bis 2 Stück (config/pricingRules.ts). Die übrigen Preise bleiben auf dem Stand vom 2026-11-13.
+ *
  * Auf der ,99-Leiter liegen Preise 1 € auseinander – beim Textil-Grundpreis um 13 € sind das rund 7,7 %, bei einem Stückpreis
  * um 25 € rund 4 %, bei 40 € nur 2,5 %. Deshalb lässt sich 3–5 % nicht für JEDEN einzelnen Preis treffen. Geprüft wird, dass der
  * Schnitt der VERKAUFSPREISE im Zielfenster liegt, der große Teil der Preise nahe daran und kein Preis weit daneben.
@@ -17,9 +20,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import type { ConfigElement } from '@/types';
 import { PRODUCTS } from '@/config/products';
-import { getPricingRules } from '@/config/pricingRules';
+import { getPricingRules, KLEINAUFTRAG_REGEL_ID } from '@/config/pricingRules';
 import { calculatePrice, QUANTITY_TIERS } from '@/lib/pricing/calculatePrice';
 import { aufNaechsten99 } from '@/lib/pricing/ladenpreis';
+import { GRUNDPREIS_ANPASSUNG_EUR } from '../preiskorrektur';
 import {
   anhebenInsFenster,
   computeBasePrice,
@@ -84,21 +88,45 @@ test('Grundpreis: Vorgängerpreis (Einkauf + 9 €, auf ,99) angehoben ins Fenst
   assert.equal(computeBasePrice(3, 'basic'), 14.99); // vorher 13,99 €
 });
 
-test('Grundpreis: jeder Katalogpreis endet auf ,99, ist teurer als vorher und höchstens 9 % darüber', () => {
+test('Grundpreis: Katalogpreis = Formel plus gezielte Anpassung, endet auf ,99; ohne Anpassung teurer als vorher und höchstens 9 % darüber', () => {
   let summe = 0;
+  let anzahl = 0;
   for (const p of PRODUCTS) {
+    const formel = computeBasePrice(p.purchasePrice, p.qualityTier);
+    const anpassung = GRUNDPREIS_ANPASSUNG_EUR[p.id] ?? 0;
+    assert.equal(p.basePrice, Math.round((formel + anpassung) * 100) / 100, `${p.id}: Katalogpreis ist nicht Formel plus Anpassung`);
+    assert.equal(Math.round(p.basePrice * 100) % 100, 99, `${p.id}: Preis endet nicht auf ,99 €`);
+    if (anpassung !== 0) {
+      // Gezielt angepasst (Betreiberfreigabe 2026-11-18): volle Euro, nie unter 7 € über dem Katalog-Einkauf.
+      assert.ok(Number.isInteger(anpassung) && Math.abs(anpassung) <= 12, `${p.id}: Anpassung ${anpassung} außerhalb ±12 €`);
+      assert.ok(p.basePrice - p.purchasePrice >= 7, `${p.id}: Aufschlag nach der Anpassung unter 7 €`);
+      continue;
+    }
     const v = vorher(p.purchasePrice);
     const prozent = (p.basePrice / v - 1) * 100;
-    assert.equal(Math.round(p.basePrice * 100) % 100, 99, `${p.id}: Preis endet nicht auf ,99 €`);
     assert.ok(p.basePrice > v, `${p.id}: ${p.basePrice} nicht teurer als vorher (${v})`);
     assert.ok(prozent >= 2 && prozent <= 9, `${p.id}: ${v} → ${p.basePrice} (+${prozent.toFixed(1)} %) weit außerhalb 3–5 %`);
     assert.ok(p.basePrice - p.purchasePrice >= FLAT_MARKUP_EUR, `${p.id}: Aufschlag unter ${FLAT_MARKUP_EUR} €`);
     summe += prozent;
+    anzahl += 1;
   }
-  // Textil-Grundpreise liegen oft um 13–16 €, dort ist der kleinste Schritt der ,99-Leiter (+1 €) schon 6–8 % – der Schnitt über
-  // die Grundpreise liegt deshalb über dem der Verkaufspreise (siehe unten, dort zählt das Zielfenster).
-  const schnitt = summe / PRODUCTS.length;
+  // Schnitt über die NICHT angepassten Grundpreise (bei Preisen um 13–16 € ist der kleinste ,99-Schritt schon 6–8 %).
+  const schnitt = summe / anzahl;
   assert.ok(schnitt >= 4 && schnitt <= 6.5, `Grundpreis-Schnitt +${schnitt.toFixed(2)} % unerwartet`);
+});
+
+test('Anpassungsliste: nur vorhandene Produkte, volle Euro, Senkung höchstens 3 €, Hoodies, Zip-Hoodies, Jacken und Sweater nie gesenkt', () => {
+  const nichtGesenkt = new Set(['hoodie', 'zip-hoodie', 'jacket', 'sweater']);
+  const ids = new Set(PRODUCTS.map((p) => p.id));
+  for (const [id, euro] of Object.entries(GRUNDPREIS_ANPASSUNG_EUR)) {
+    assert.ok(ids.has(id), `${id}: Eintrag ohne Produkt`);
+    assert.ok(Number.isInteger(euro) && euro !== 0, `${id}: Anpassung ${euro} ist kein voller Euro-Betrag`);
+    if (euro < 0) {
+      assert.ok(euro >= -3, `${id}: Senkung ${euro} größer als 3 €`);
+      const art = PRODUCTS.find((p) => p.id === id)!.productType;
+      assert.ok(!nichtGesenkt.has(art), `${id}: ${art} darf nicht gesenkt werden (Marge dort schon knapp)`);
+    }
+  }
 });
 
 function logo(view: 'front' | 'back' | 'sleeve_left'): ConfigElement {
@@ -112,17 +140,23 @@ function logo(view: 'front' | 'back' | 'sleeve_left'): ConfigElement {
 const MENGEN = [1, 2, 3, 4, 5, 9, 10, 19, 20, 24, 25, 49, 50, 99, 100, 249, 250, 499, 500, 999, 1000];
 const ANSICHTEN = [logo('front'), logo('back'), logo('sleeve_left')];
 
-test('Preisleiter: nie günstiger als vorher, immer ,99, im Schnitt 3–5 % teurer, kein Preis weit daneben', async () => {
-  const rules = await getPricingRules('dtf');
+test('Preisleiter: ohne Anpassung nie günstiger als vorher, immer ,99, im Schnitt 3–5 % teurer; mit Anpassung höchstens um die Anpassung (plus Rundung) anders', async () => {
+  const rules = (await getPricingRules('dtf')).filter((r) => r.id !== KLEINAUFTRAG_REGEL_ID);
   const prozente: number[] = [];
   for (const p of PRODUCTS) {
+    const anpassung = GRUNDPREIS_ANPASSUNG_EUR[p.id] ?? 0;
     for (const menge of MENGEN) {
       for (const n of [1, 2, 3]) {
         const alt = stueckpreisVorher(p.purchasePrice, menge, n);
         const neu = calculatePrice({ basePrice: p.basePrice, quantity: menge, elements: ANSICHTEN.slice(0, n), pricingRules: rules });
         const beschreibung = `${p.id} × ${menge} (${n} Ansicht/en): ${alt} → ${neu.unitPrice}`;
-        assert.ok(neu.unitPrice >= alt - 0.005, `günstiger als vorher: ${beschreibung}`);
         assert.equal(Math.round(neu.unitPrice * 100) % 100, 99, `nicht ,99: ${beschreibung}`);
+        if (anpassung !== 0) {
+          // Die Anpassung wirkt auf den Grundpreis (minus Mengenrabatt), dazu höchstens ein ,99-Schritt Rundung.
+          assert.ok(Math.abs(neu.unitPrice - alt - anpassung) <= Math.abs(anpassung) + 1.005, `Anpassung ${anpassung} € weicht zu stark ab: ${beschreibung}`);
+          continue;
+        }
+        assert.ok(neu.unitPrice >= alt - 0.005, `günstiger als vorher: ${beschreibung}`);
         const prozent = (neu.unitPrice / alt - 1) * 100;
         assert.ok(prozent <= 10, `mehr als 10 % teurer: ${beschreibung}`);
         prozente.push(prozent);

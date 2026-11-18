@@ -35,11 +35,12 @@ import { PRODUCTS as IMPORTIERTE_PRODUCTS } from './importiert.generated';
 import { PRODUCTS as KINDER_PRODUCTS } from './kinder.generated';
 import { PRODUCTS as SPORT_PRODUCTS } from './sport.generated';
 import type { ProductConfig } from './types';
+import { grundpreisNachAnpassung } from '@/config/pricing/preiskorrektur';
 
 // Die Produktdefinitionen tragen KEIN Lieferanten-Wissen mehr (ADR 0004): die
 // Bezugsquelle liegt ausschließlich in der Lieferantenschicht
 // (lib/suppliers/supplierRefs.ts, Resolver supplierRefVon).
-export const PRODUCTS: ProductConfig[] = [
+const PRODUKTE_ROH: ProductConfig[] = [
   ...FRUIT_OF_THE_LOOM_PRODUCTS,
   ...SOLS_PRODUCTS,
   ...GILDAN_PRODUCTS,
@@ -57,6 +58,13 @@ export const PRODUCTS: ProductConfig[] = [
   // Sportbekleidung (Produktart "sport"), eigene Importstrecke: scripts/importiereSport.mts.
   ...SPORT_PRODUCTS,
 ];
+
+// Gezielte Grundpreis-Anpassung je Produkt (Betreiberfreigabe 2026-11-18, config/pricing/preiskorrektur.ts). Alles, was den Preis
+// liest (Konfigurator, Warenkorb, Server, Seiten), sieht ab hier den angepassten Grundpreis.
+export const PRODUCTS: ProductConfig[] = PRODUKTE_ROH.map((p) => {
+  const preis = grundpreisNachAnpassung(p.id, p.basePrice);
+  return preis === p.basePrice ? p : { ...p, basePrice: preis };
+});
 
 // O(1)-Index statt linearer Suche: getProduct läuft in Render-Pfaden
 // (ConfiguratorPrototype, SummaryPanel …) und skaliert sonst mit dem Katalog.

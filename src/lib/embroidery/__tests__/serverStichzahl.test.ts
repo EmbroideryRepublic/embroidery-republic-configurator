@@ -4,6 +4,7 @@
  * den Stickaufpreis NICHT nach unten drücken. Der Server bestimmt die
  * preisrelevante Zahl selbst aus den Motivdaten (serverStichzahl.ts).
  */
+import { KLEINAUFTRAG_PAUSCHALE_EUR } from '@/config/pricingRules';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { Resvg } from '@resvg/resvg-js';
@@ -265,6 +266,7 @@ test('Ende-zu-Ende: ein manipulierter Warenkorb kostet nach der Absicherung exak
   // genau der Angriff, den diese Schicht schließt.
   const ungesichert = await priceCart([position([logo({ estimatedStitches: 0 })])], 'Deutschland');
   const dtf = await priceCart([position([logo({ estimatedStitches: 0 })], 'dtf')], 'Deutschland');
-  assert.equal(ungesichert.totalPrice, dtf.totalPrice, 'Kontrolle: der Rechenkern allein vertraut dem Clientwert');
-  assert.ok(ehrlichPreis.totalPrice > dtf.totalPrice, 'abgesichert kostet Stickerei mehr als DTF');
+  // DTF trägt bis 2 Stück die Kleinauftragspauschale (seit 2026-11-18), Stickerei nicht – sonst sind beide Preise gleich.
+  assert.equal(ungesichert.totalPrice, dtf.totalPrice - KLEINAUFTRAG_PAUSCHALE_EUR, 'Kontrolle: der Rechenkern allein vertraut dem Clientwert');
+  assert.ok(ehrlichPreis.totalPrice > dtf.totalPrice - KLEINAUFTRAG_PAUSCHALE_EUR, 'abgesichert kostet Stickerei mehr als DTF (ohne Kleinauftragspauschale)');
 });

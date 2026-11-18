@@ -18,7 +18,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { getPricingRules } from '@/config/pricingRules';
+import { getPricingRules, KLEINAUFTRAG_REGEL_ID } from '@/config/pricingRules';
 import { calculatePrice, MINIMUM_QUANTITY, QUANTITY_TIERS } from '../calculatePrice';
 import { evaluateRules, isRuleApplicable, PricingConfigError } from '../ruleEngine';
 import type { ConfigElement, PricingRule } from '@/types';
@@ -43,6 +43,15 @@ function logo(view: ConfigElement['view'] = 'front', id = `el-${view}`): ConfigE
   } as unknown as ConfigElement;
 }
 
+
+/**
+ * DTF-Regeln OHNE die Kleinauftragspauschale (dtf-kleinauftrag, seit 2026-11-18 aktiv): Die Architektur-Tests hier prüfen den Rechenkern
+ * in Reinform. Die Pauschale selbst wird in kleinauftrag.test.ts geprüft.
+ */
+async function dtfRegeln(): Promise<PricingRule[]> {
+  return (await getPricingRules('dtf')).filter((r) => r.id !== KLEINAUFTRAG_REGEL_ID);
+}
+
 const BASIS = { basePrice: 12.9, elements: [logo()] };
 
 // ── Einzelbestellungen ────────────────────────────────────────────────
@@ -53,7 +62,7 @@ test('Mindestmenge ist 1 – Einzelbestellungen sind ausdrücklich erlaubt', () 
 });
 
 test('1 Stück wird als 1 Stück berechnet, nicht auf eine Mindestmenge hochgesetzt', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const eins = calculatePrice({ ...BASIS, quantity: 1, pricingRules: rules });
   const fuenf = calculatePrice({ ...BASIS, quantity: 5, pricingRules: rules });
 
@@ -91,7 +100,7 @@ test('Der Stückpreis steigt nie mit der Menge – und sinkt an jeder Staffelgre
 });
 
 test('MIT Rüstkosten sinkt der Stückpreis auch innerhalb einer Staffel', async () => {
-  const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'per_position' })];
+  const rules = [...(await dtfRegeln()), setupRegel({ multiplier: 'per_position' })];
   const eins = calculatePrice({ ...BASIS, quantity: 1, pricingRules: rules });
   const zwei = calculatePrice({ ...BASIS, quantity: 2, pricingRules: rules });
   const drei = calculatePrice({ ...BASIS, quantity: 3, pricingRules: rules });
@@ -105,16 +114,17 @@ test('MIT Rüstkosten sinkt der Stückpreis auch innerhalb einer Staffel', async
 // ── Rüstkosten sind standardmäßig AUS ─────────────────────────────────
 
 test('Ohne konfigurierte Regel fallen KEINE Rüstkosten an (Standardzustand)', async () => {
-  for (const methode of ['dtf', 'embroidery'] as const) {
+  // Stickerei: keine Rüstkosten. DTF: außerhalb der Kleinauftragspauschale (ab 3 Stück) keine; die Pauschale selbst: kleinauftrag.test.ts.
+  for (const [methode, menge] of [['dtf', 3], ['embroidery', 1]] as const) {
     const rules = await getPricingRules(methode);
-    const r = calculatePrice({ ...BASIS, quantity: 1, pricingRules: rules });
+    const r = calculatePrice({ ...BASIS, quantity: menge, pricingRules: rules });
     assert.equal(r.breakdown.setupTotal, 0, `${methode}: Rüstkosten müssen im Standard 0 sein`);
     assert.equal(r.breakdown.setupPerUnit, 0);
   }
 });
 
 test('Ohne Rüstkosten ist der Stückpreis mengenunabhängig linear', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const eins = calculatePrice({ ...BASIS, quantity: 1, pricingRules: rules });
   const zehn = calculatePrice({ ...BASIS, quantity: 10, pricingRules: rules });
   // Ohne Einmalkosten kommt der Unterschied allein aus der Mengenstaffel.
@@ -135,7 +145,7 @@ function setupRegel(overrides: Partial<PricingRule> = {}): PricingRule {
 }
 
 test('Strategie: Rüstkosten je Position', async () => {
-  const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'per_position' })];
+  const rules = [...(await dtfRegeln()), setupRegel({ multiplier: 'per_position' })];
   const einePos = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: 10, pricingRules: rules });
   const zweiPos = calculatePrice({
     basePrice: 12.9,
@@ -149,7 +159,7 @@ test('Strategie: Rüstkosten je Position', async () => {
 });
 
 test('Strategie: Rüstkosten je Motiv', async () => {
-  const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'per_element' })];
+  const rules = [...(await dtfRegeln()), setupRegel({ multiplier: 'per_element' })];
   // Zwei Motive auf DERSELBEN Position
   const r = calculatePrice({
     basePrice: 12.9,
@@ -161,7 +171,7 @@ test('Strategie: Rüstkosten je Motiv', async () => {
 });
 
 test('Strategie: Rüstkosten einmal je Auftrag', async () => {
-  const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'once' })];
+  const rules = [...(await dtfRegeln()), setupRegel({ multiplier: 'once' })];
   const r = calculatePrice({
     basePrice: 12.9,
     elements: [logo('front'), logo('back'), logo('sleeve_left')],
@@ -173,7 +183,7 @@ test('Strategie: Rüstkosten einmal je Auftrag', async () => {
 
 test('Strategie: Rüstkosten nur für eine Veredelungsart', async () => {
   const nurStick = [...(await getPricingRules('embroidery')), setupRegel()];
-  const dtfOhne = await getPricingRules('dtf');
+  const dtfOhne = await dtfRegeln();
 
   const stick = calculatePrice({ ...BASIS, quantity: 5, pricingRules: nurStick });
   const dtf = calculatePrice({ ...BASIS, quantity: 5, pricingRules: dtfOhne });
@@ -183,7 +193,7 @@ test('Strategie: Rüstkosten nur für eine Veredelungsart', async () => {
 });
 
 test('Strategie: Rüstkosten nur für eine bestimmte Position', async () => {
-  const rules = [...(await getPricingRules('dtf')), setupRegel({ printView: 'back', multiplier: 'per_position' })];
+  const rules = [...(await dtfRegeln()), setupRegel({ printView: 'back', multiplier: 'per_position' })];
   const nurBrust = calculatePrice({ basePrice: 12.9, elements: [logo('front')], quantity: 5, pricingRules: rules });
   const mitRuecken = calculatePrice({
     basePrice: 12.9,
@@ -197,7 +207,7 @@ test('Strategie: Rüstkosten nur für eine bestimmte Position', async () => {
 });
 
 test('Rüstkosten fallen einmal an und verteilen sich auf die Menge', async () => {
-  const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'per_position' })];
+  const rules = [...(await dtfRegeln()), setupRegel({ multiplier: 'per_position' })];
   const eins = calculatePrice({ ...BASIS, quantity: 1, pricingRules: rules });
   const hundert = calculatePrice({ ...BASIS, quantity: 100, pricingRules: rules });
 
@@ -207,7 +217,7 @@ test('Rüstkosten fallen einmal an und verteilen sich auf die Menge', async () =
 });
 
 test('Blankoware ohne Motiv trägt keine Rüstkosten', async () => {
-  const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'per_position' })];
+  const rules = [...(await dtfRegeln()), setupRegel({ multiplier: 'per_position' })];
   const r = calculatePrice({ basePrice: 12.99, elements: [], quantity: 1, pricingRules: rules });
 
   assert.equal(r.breakdown.setupTotal, 0);
@@ -247,7 +257,7 @@ test('FAIL FAST: unbekannter Preisbaustein wirft in Entwicklung/Test sofort', as
     isActive: true,
   } as unknown as PricingRule;
 
-  const rules = [...(await getPricingRules('dtf')), unbekannt];
+  const rules = [...(await dtfRegeln()), unbekannt];
 
   assert.throws(
     () => calculatePrice({ ...BASIS, quantity: 5, pricingRules: rules }),
@@ -260,7 +270,7 @@ test('FAIL FAST: in Produktion wird protokolliert und der Preis als fehlerhaft m
   const unbekannt = {
     id: 'x', ruleType: 'irgendwas_neues', price: 99, label: 'Zukunft', isActive: true,
   } as unknown as PricingRule;
-  const rules = [...(await getPricingRules('dtf')), unbekannt];
+  const rules = [...(await dtfRegeln()), unbekannt];
 
   // NODE_ENV ist in den Typen schreibgeschützt – für diesen Test bewusst
   // über eine getypte Sicht gesetzt und danach wiederhergestellt.
@@ -284,7 +294,7 @@ test('FAIL FAST: in Produktion wird protokolliert und der Preis als fehlerhaft m
 });
 
 test('Ein gültiger Preis meldet keine Fehler', async () => {
-  const r = calculatePrice({ ...BASIS, quantity: 5, pricingRules: await getPricingRules('dtf') });
+  const r = calculatePrice({ ...BASIS, quantity: 5, pricingRules: await dtfRegeln() });
   assert.equal(r.hasErrors, false);
   assert.deepEqual(r.issues, []);
 });
@@ -292,7 +302,7 @@ test('Ein gültiger Preis meldet keine Fehler', async () => {
 // ── Weitere Preisbausteine ────────────────────────────────────────────
 
 test('Baustein: Zuschlag je Stück (z.B. Premiumgarn, Spezialfolie)', async () => {
-  const basis = await getPricingRules('dtf');
+  const basis = await dtfRegeln();
   const ohne = calculatePrice({ ...BASIS, quantity: 10, pricingRules: basis });
   const mit = calculatePrice({
     ...BASIS, quantity: 10,
@@ -307,7 +317,7 @@ test('Baustein: Zuschlag je Stück (z.B. Premiumgarn, Spezialfolie)', async () =
 });
 
 test('Baustein: einmaliger Zuschlag (z.B. Expressproduktion)', async () => {
-  const basis = await getPricingRules('dtf');
+  const basis = await dtfRegeln();
   const eins = calculatePrice({
     ...BASIS, quantity: 1,
     pricingRules: [...basis, { id: 'e', ruleType: 'surcharge_per_order', price: 15, label: 'Express', isActive: true }],
@@ -322,7 +332,7 @@ test('Baustein: einmaliger Zuschlag (z.B. Expressproduktion)', async () => {
 });
 
 test('Baustein: prozentualer Nachlass (Verein/Geschaeftskunde/Aktion)', async () => {
-  const basis = await getPricingRules('dtf');
+  const basis = await dtfRegeln();
   const ohne = calculatePrice({ ...BASIS, quantity: 10, pricingRules: basis });
   const mit = calculatePrice({
     ...BASIS, quantity: 10,
@@ -334,7 +344,7 @@ test('Baustein: prozentualer Nachlass (Verein/Geschaeftskunde/Aktion)', async ()
 });
 
 test('Baustein: absoluter Nachlass je Stueck (Gutschein)', async () => {
-  const basis = await getPricingRules('dtf');
+  const basis = await dtfRegeln();
   const ohne = calculatePrice({ ...BASIS, quantity: 10, pricingRules: basis });
   const mit = calculatePrice({
     ...BASIS, quantity: 10,
@@ -345,7 +355,7 @@ test('Baustein: absoluter Nachlass je Stueck (Gutschein)', async () => {
 });
 
 test('Nachlass kann den Preis nicht unter 0 druecken', async () => {
-  const basis = await getPricingRules('dtf');
+  const basis = await dtfRegeln();
   const r = calculatePrice({
     ...BASIS, quantity: 5,
     pricingRules: [...basis, { id: 'g', ruleType: 'discount_per_unit', price: 9999, label: 'zu viel', isActive: true }],
@@ -354,7 +364,7 @@ test('Nachlass kann den Preis nicht unter 0 druecken', async () => {
 });
 
 test('Rabatt-Bausteine respektieren Aktionszeitraum und Mengenfenster', async () => {
-  const basis = await getPricingRules('dtf');
+  const basis = await dtfRegeln();
   const aktion: PricingRule = {
     id: 'a', ruleType: 'discount_percent', price: 20, label: 'Sommeraktion', isActive: true,
     minQuantity: 20, validUntil: '2020-01-01',
@@ -451,7 +461,7 @@ test('ansichtsbeschränkte per_logo-Regel bleibt auch bei Mengenrabatt korrekt (
 });
 
 test('evaluateRules trennt Beträge in die drei Töpfe', async () => {
-  const rules = [...(await getPricingRules('dtf')), setupRegel({ multiplier: 'once' })];
+  const rules = [...(await dtfRegeln()), setupRegel({ multiplier: 'once' })];
   const charges = evaluateRules(rules, {
     elements: [logo()],
     distinctViews: ['front'],

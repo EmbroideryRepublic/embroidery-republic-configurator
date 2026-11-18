@@ -15,9 +15,17 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { getPricingRules } from '@/config/pricingRules';
+import { getPricingRules, KLEINAUFTRAG_REGEL_ID } from '@/config/pricingRules';
 import { calculatePrice, DTF_POSITION_TIERS } from '../calculatePrice';
-import type { ConfigElement } from '@/types';
+import type { ConfigElement, PricingRule } from '@/types';
+
+/**
+ * DTF-Regeln OHNE die Kleinauftragspauschale (dtf-kleinauftrag, seit 2026-11-18): Diese Tests prüfen die Positionsstaffel und den Stickerei-
+ * Vergleich. Die Pauschale selbst steht in kleinauftrag.test.ts.
+ */
+async function dtfRegeln(): Promise<PricingRule[]> {
+  return (await getPricingRules('dtf')).filter((r) => r.id !== KLEINAUFTRAG_REGEL_ID);
+}
 
 function logo(view: ConfigElement['view'], breiteCm = 20, hoeheCm = 15, id = `el-${view}-${Math.random()}`): ConfigElement {
   return {
@@ -41,7 +49,7 @@ function logo(view: ConfigElement['view'], breiteCm = 20, hoeheCm = 15, id = `el
 const BASIS_PREIS = 12.99;
 
 test('eine bedruckte Ansicht kostet nur den Aufschlag für die erste Position (9 €)', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const r = calculatePrice({ basePrice: BASIS_PREIS, quantity: 1, elements: [logo('front')], pricingRules: rules });
   assert.equal(r.breakdown.isPositionBased, true);
   assert.equal(r.breakdown.firstPositionPrice, 9);
@@ -51,7 +59,7 @@ test('eine bedruckte Ansicht kostet nur den Aufschlag für die erste Position (9
 });
 
 test('zwei bedruckte Ansichten kosten 9 € + 5 € = 14 € Aufschlag', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const r = calculatePrice({
     basePrice: BASIS_PREIS,
     quantity: 1,
@@ -62,7 +70,7 @@ test('zwei bedruckte Ansichten kosten 9 € + 5 € = 14 € Aufschlag', async (
 });
 
 test('drei bedruckte Ansichten kosten 9 € + 5 € + 4 € = 18 € Aufschlag (1–2 Stück: dritte Position günstiger als zweite)', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const r = calculatePrice({
     basePrice: BASIS_PREIS,
     quantity: 1,
@@ -76,7 +84,7 @@ test('drei bedruckte Ansichten kosten 9 € + 5 € + 4 € = 18 € Aufschlag (
 });
 
 test('mehrere Motive auf DERSELBEN Ansicht zählen nur als eine Position', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const r = calculatePrice({
     basePrice: BASIS_PREIS,
     quantity: 1,
@@ -88,7 +96,7 @@ test('mehrere Motive auf DERSELBEN Ansicht zählen nur als eine Position', async
 });
 
 test('die Motivgröße hat keinen Einfluss mehr auf den Preis', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const klein = calculatePrice({
     basePrice: BASIS_PREIS,
     quantity: 1,
@@ -105,14 +113,14 @@ test('die Motivgröße hat keinen Einfluss mehr auf den Preis', async () => {
 });
 
 test('ohne Motive entsteht kein Positionsaufschlag', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const r = calculatePrice({ basePrice: BASIS_PREIS, quantity: 1, elements: [], pricingRules: rules });
   assert.ok(Math.abs(r.unitPrice - BASIS_PREIS) < 0.01, `Stückpreis ${r.unitPrice}, erwartet ${BASIS_PREIS} (kein Motiv, kein Aufschlag)`);
   assert.equal(r.breakdown.isPositionBased, true, 'die Regeln sind aktiv, greifen aber nur mit Motiv');
 });
 
 test('der Positionsaufschlag wird mit der Stückzahl multipliziert', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const r = calculatePrice({
     basePrice: BASIS_PREIS,
     quantity: 10,
@@ -150,7 +158,7 @@ test('Stickerei nutzt BEIDE Preisquellen: Positionsstaffel wie DTF und zusätzli
 });
 
 test('Stickerei kostet bei gleichem Motiv genau den Stichaufpreis (1,20 €/1.000 Stiche, Rabatt laut Staffel bzw. Deckel) mehr als DTF', async () => {
-  const dtf = await getPricingRules('dtf');
+  const dtf = await dtfRegeln();
   const stick = await getPricingRules('embroidery');
   // Erwarteter Rabatt FEST vorgegeben (nicht aus dem Prüfling abgeleitet):
   // Staffel 0/20/35 %, ab 20 Stück greift der Deckel 36,6 % statt 46–93 %.
@@ -217,7 +225,7 @@ test('Stichaufpreis: der Mengenrabatt ist gedeckelt, der Erlös fällt nie unter
 });
 
 test('Stickerei auf zwei Ansichten: Positionsstaffel wie DTF, kein zusätzlicher Je-Ansicht-Aufschlag mehr', async () => {
-  const dtf = await getPricingRules('dtf');
+  const dtf = await dtfRegeln();
   const stick = await getPricingRules('embroidery');
   const elemente = [
     { ...logo('front'), estimatedStitches: 6000 } as ConfigElement,
@@ -230,7 +238,7 @@ test('Stickerei auf zwei Ansichten: Positionsstaffel wie DTF, kein zusätzlicher
 });
 
 test('DTF bleibt vom Rabattdeckel unberührt (keine per_1000_stitches-Regel aktiv)', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const r = calculatePrice({ basePrice: BASIS_PREIS, quantity: 100, elements: [logo('front')], pricingRules: rules });
   assert.equal(r.breakdown.veredelungDiscountPercent, 90, 'ohne Deckel-Regel gilt der rohe Staffelwert');
 });
@@ -257,7 +265,7 @@ test('DTF-Positionsstaffel: alle 8 Stufen exakt wie vom Betreiber vorgegeben (20
 });
 
 test('DTF-Positionsstaffel ist eine reine Stufenfunktion: 10, 25 und 49 Stück kosten je Position exakt dasselbe, ab 50 Stück springt der gesamte Auftrag in die nächste Stufe', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const erstePreis = (menge: number) =>
     calculatePrice({ basePrice: 0, quantity: menge, elements: [logo('front')], pricingRules: rules }).breakdown
       .firstPositionPrice;
@@ -269,7 +277,7 @@ test('DTF-Positionsstaffel ist eine reine Stufenfunktion: 10, 25 und 49 Stück k
 });
 
 test('Stufengrenzen: bei der niedrigeren Stückzahl wird nie WENIGER pro Position verlangt als eine Stufe höher', async () => {
-  const rules = await getPricingRules('dtf');
+  const rules = await dtfRegeln();
   const erstePreis = (menge: number) =>
     calculatePrice({ basePrice: 0, quantity: menge, elements: [logo('front')], pricingRules: rules }).breakdown
       .firstPositionPrice;

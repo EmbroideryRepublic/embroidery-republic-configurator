@@ -1,0 +1,133 @@
+/**
+ * Gezielte Anpassung des Textil-Grundpreises je Produkt – Betreiberfreigabe 2026-11-18.
+ *
+ * Hintergrund: Der Betreiber verlangt, dass JEDE Bestellung mindestens rund 3 € Gewinn bringt. Die Kostenprüfung (Einkauf plus 19 % Umsatzsteuer,
+ * Lieferanten- und DTF-Versand, DTF-Bogen, DHL, Verpackung, Zahlungsgebühr, 2 % Ausschuss; Einkauf je Menge beim günstigeren der beiden
+ * Lieferanten textil-grosshandel.eu und L-Shop) zeigte: Einzelstücke und Kleinstaufträge decken die Fixkosten je Bestellung nicht. Deshalb
+ * gibt es zusammen mit dieser Liste die Einrichtung für Kleinaufträge (config/pricingRules.ts, Regel dtf-kleinauftrag, 10 € bis 2 Stück).
+ *
+ * Wert = Änderung des Grundpreises in vollen Euro; NEGATIV = günstiger, POSITIV = teurer. Der Grundpreis bleibt ein ,99-Betrag.
+ *   – Anhebung (24 Produkte): Auch mit der Einrichtung bliebe der Gewinn bei mindestens einer Menge unter 3 € (vor allem teure Hoodies,
+ *     Zip-Hoodies und Jacken).
+ *   – Senkung (80 Produkte): Die Marge ist so hoch, dass der Grundpreis sinken kann und trotzdem bei JEDER Menge mindestens 3 € Gewinn bleiben,
+ *     bei 3 Stück mindestens 25 % und bei 5 Stück mindestens 30 % Marge.
+ * Alle übrigen Produkte bleiben beim Preis der Formel computeBasePrice().
+ *
+ * Geprüfte Mengen: 1, 2, 3, 4, 5, 10, 25, 50, 100 Stück, ein DTF-Brustmotiv 20 × 25 cm, je Menge der günstigere Lieferant. DTF-Positionspreise,
+ * Mengenrabatt, Stickerei-Kalkulation (Positionsstaffel plus 1,20 € je 1.000 Stiche), Versand sowie Zahlungs-, DHL-, Rechnungs- und
+ * Bestelllogik sind nicht berührt.
+ *
+ * Rückgängig machen: Eintrag streichen oder auf 0 setzen. Herleitung: docs/kalkulationsmodell.md (Abschnitt 2026-11-18).
+ */
+export const GRUNDPREIS_ANPASSUNG_EUR: Readonly<Record<string, number>> = {
+  'bandc-inspire-zip-hood': 2,
+  'build-your-brand-ultra-heavy-cotton-box-hoody': 2,
+  'bundc-e220-t': -1,
+  'bundc-influence-hoodie': 2,
+  'bundc-inspire-e150-t-shirt': -3,
+  'bundc-inspire-e150-t-shirt-women': -3,
+  'bundc-inspire-t-men': -3,
+  'bundc-inspire-t-women': -3,
+  'bundc-inspire-v-t-men': -2,
+  'bundc-inspire-v-t-women': -2,
+  'bundc-king-hooded-sweat': 1,
+  'bundc-mens-t-shirt-e190-long-sleeve-exact': -2,
+  'bundc-t-shirt-e150': -3,
+  'bundc-t-shirt-e150-long-sleeve-unisex-exact': -3,
+  'bundc-t-shirt-e150-long-sleeve-women-exact': -3,
+  'bundc-t-shirt-e150-women': -3,
+  'bundc-t-shirt-e190': -3,
+  'bundc-t-shirt-e190-women': -3,
+  'bundc-unisex-polo-id-001': -3,
+  'earthpositive-earth-positive-pullover-hoodie': 2,
+  'earthpositive-earth-positive-super-heavy-hoodie': 12,
+  'earthpositive-earth-positive-women-s-half-zip-hoodie': 3,
+  'earthpositive-earthpositive-organic-mensunisex-pullover-hoodie': 2,
+  'earthpositive-unisex-organic-longsleeve-t-shirt': -1,
+  'earthpositive-unisex-organic-pullover-hood-ep': 1,
+  'fotl-baseball-longsleeve': -2,
+  'fotl-baseball-t': -2,
+  'fotl-heavy-t': -3,
+  'fotl-iconic195-longsleeve': -2,
+  'fotl-iconic195-t': -2,
+  'fotl-ladies-iconic195-t': -3,
+  'fotl-ladies-original-t': -3,
+  'fotl-ladies-valueweight-t': -2,
+  'fotl-ladies-valueweight-vneck': -1,
+  'fotl-original-longsleeve': -3,
+  'fotl-original-t': -3,
+  'fotl-original-vneck': -3,
+  'fotl-pure-cotton-t': -2,
+  'fotl-super-premium-t': -3,
+  'fotl-valueweight-t': -2,
+  'fotl-valueweight-vneck': -1,
+  'gildan-hammer-maxweight-adult-hooded-sweatshirt': 1,
+  'gildan-heavy-t': -2,
+  'gildan-ladies-heavy-t': -3,
+  'gildan-ladies-t': -2,
+  'gildan-ladies-vneck-t': -1,
+  'gildan-light-cotton-adult-t-shirt': -3,
+  'gildan-ultra-cotton-t-shirt': -3,
+  'gildan-vneck-t': -1,
+  'gildan-zip-hoodie': 1,
+  'id-identity-microfleece-jacke': 3,
+  'jamesnicholson-ladies-active-t': -3,
+  'jamesnicholson-ladies-basic-t': -2,
+  'jamesnicholson-men-s-basic-t': -2,
+  'jamesnicholson-round-t-heavy': -1,
+  'jn-active-t': -3,
+  'just-cool-long-sleeve-cool-t': -1,
+  'just-hoods-organic-hoodie-jh201': 1,
+  'just-hoods-signature-heavyweight-sweat': 1,
+  'just-hoods-vision-heavyweight-hoodie': 1,
+  'justhoods-zoodie': 1,
+  'kinder-bctk001': -3,
+  'kinder-bctk002': -3,
+  'kinder-bctk003': -3,
+  'kinder-e399': -3,
+  'kinder-f140k': -3,
+  'kinder-f240k': -3,
+  'kinder-g5000k': -3,
+  'kinder-jc001j': -2,
+  'kinder-z180k': -3,
+  'kinder-z265k': 1,
+  'kinder-z266k': 1,
+  'neutral-classic-polo': 1,
+  'russell-authentic-hooded-sweat': 1,
+  'russell-authentic-t': -3,
+  'russell-classic-heavyweight-t-shirt': -3,
+  'russell-classic-t-long-sleeve': -2,
+  'russell-hooded-sweatshirt': 1,
+  'russell-ladies-authentic-hood': 1,
+  'russell-ladies-authentic-t': -3,
+  'russell-ladies-pure-organic-heavy-tee': -1,
+  'russell-mens-pure-organic-v-neck-tee': -1,
+  'russell-outdoor-fleece-jacke': 2,
+  'russell-russell-classic-t': -3,
+  'sols-imperial-t': -3,
+  'sols-men-s-long-sleeve-t-shirt-imperial': -3,
+  'sols-mens-factor-zipped-fleece-jacket': 1,
+  'sols-unisex-pulse-polo-shirt': -2,
+  'sols-women-s-polo-shirt-prime': -2,
+  'sport-bctg003': -3,
+  'sport-jc001': -3,
+  'sport-jc005': -3,
+  'sport-jc007': -3,
+  'sport-jc012': -1,
+  'sport-l02071': -3,
+  'sport-l198': -3,
+  'sport-l200': -3,
+  'stedman-classic-t-for-women': -3,
+  'stedman-classic-t-v-neck': -3,
+  'stedman-classic-t-v-neck-for-women': -3,
+  'stedman-clive-crew-neck': -3,
+  'stedman-comfort-t': -3,
+  'stedman-slimfit-t': -2,
+  'stedman-stedman-classic-t': -3,
+};
+
+/** Der Grundpreis eines Katalogprodukts nach der Anpassung (volle Euro, bleibt ein ,99-Betrag). */
+export function grundpreisNachAnpassung(produktId: string, grundpreis: number): number {
+  const euro = GRUNDPREIS_ANPASSUNG_EUR[produktId] ?? 0;
+  return euro === 0 ? grundpreis : Math.round((grundpreis + euro) * 100) / 100;
+}

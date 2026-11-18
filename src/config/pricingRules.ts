@@ -20,6 +20,14 @@ import { STICKKOSTEN_JE_1000_STICHE } from './pricing/selbstkosten';
 export const STICH_AUFPREIS_JE_1000 = 1.2;
 
 /**
+ * Einrichtung für Kleinaufträge bei DTF (Betreiberfreigabe 2026-11-18): einmalig 10 € je Warenkorbposition bis zu 2 Stück, ab 3 Stück
+ * entfällt sie. Regel: dtf-kleinauftrag unten. Eine Stelle für Regel UND Tests.
+ */
+export const KLEINAUFTRAG_PAUSCHALE_EUR = 10;
+export const KLEINAUFTRAG_MAX_STUECK = 2;
+export const KLEINAUFTRAG_REGEL_ID = 'dtf-kleinauftrag';
+
+/**
  * Deckel für den Mengenrabatt auf den Stichaufpreis (PricingRule.maxDiscountPercent).
  *
  * Die Mengenstaffel QUANTITY_TIERS rabattiert die Veredelung bis zu 90 %. Auf
@@ -55,6 +63,14 @@ const DTF_PRICING_RULES: PricingRule[] = [
   // `minQuantity`/`maxQuantity` auf ein Mengenfenster, mit `validFrom`/
   // `validUntil` auf einen Aktionszeitraum.
   { id: 'dtf-setup', ruleType: 'setup_fee', multiplier: 'per_position', price: 0, label: 'Einrichtung DTF (einmalig je Position)', isActive: false },
+
+  // ── Einrichtung für Kleinaufträge – AKTIV seit 2026-11-18 (Betreiberfreigabe) ─────
+  // Jede Bestellung muss Gewinn bringen. Bei 1–2 Stück decken Stückpreis und Kundenversand die Fixkosten je Bestellung (Lieferanten- und
+  // DTF-Versand, DTF-Bogen, DHL, Verpackung) nicht. Deshalb fällt bei bis zu 2 Stück einmalig 10 € an, die sich auf die Stückzahl
+  // verteilen (Einzelstück 10 €, 2 Stück 5 € je Stück); ab 3 Stück entfällt sie. Der Kunde sieht sie als Zeile „Einrichtung (einmalig)“
+  // im Konfigurator, im Warenkorb und auf der Rechnung – wie auf der FAQ-Seite beschrieben. Gilt je Warenkorbposition. Nur DTF, die
+  // Stickerei-Regeln bleiben unberührt. Herleitung: docs/kalkulationsmodell.md (Abschnitt 2026-11-18), Grundpreise: config/pricing/preiskorrektur.ts.
+  { id: KLEINAUFTRAG_REGEL_ID, ruleType: 'setup_fee', multiplier: 'once', price: KLEINAUFTRAG_PAUSCHALE_EUR, maxQuantity: KLEINAUFTRAG_MAX_STUECK, label: 'Einrichtung (Kleinauftrag, bis 2 Stück)', isActive: true },
 
   // ── Je-Ansicht-Aufschläge (front/back/sleeve, unterschiedlich hoch je
   // Position) – ABGELÖST durch das Positionsstaffel-Modell unten (erste

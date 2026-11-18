@@ -530,3 +530,27 @@ Das Modell **berechnet** Preise, es **setzt** sie nicht. Die `basePrice`-Werte
 der Produkte stammen weiterhin aus `computeBasePrice()` und sind unverändert.
 Die Verbindung beider Wege ist die nächste Entscheidung – sie ändert Preise
 und ist deshalb keine technische, sondern eine geschäftliche.
+
+---
+
+## Preisanpassung vom 2026-11-18: Gewinn bei jeder Bestellung (Einkauf bei L-Shop, Einrichtung für Kleinaufträge)
+
+**Vorgabe des Betreibers:** Jede Bestellung muss Gewinn bringen, auch wenn es nur 2 bis 3 € sind. Bestellungen zu bündeln ist nicht möglich, weil zu wenige Aufträge eingehen (der Betreiber wartet schon 1 bis 2 Tage mit der Bestellung).
+
+**Einkauf:** Ein Abgleich im L-Shop-Konto (nur gelesen, 168 von 182 Produkten gelistet) zeigte: L-Shop ist bei 156 Produkten günstiger als textil-grosshandel.eu, im Median um 17,6 % (James+Nicholson −27 %, Fruit of the Loom −20 %, Gildan −5 %). Die Katalogpreise beruhen auf textil-grosshandel.eu. Der Betreiber bestellt je Menge beim günstigeren Lieferanten.
+
+**Kostenannahmen** (ein DTF-Brustmotiv 20 × 25 cm, Kleinunternehmer ohne Vorsteuerabzug): Einkauf plus 19 %; Lieferantenversand je Bestellung bei textil-grosshandel.eu 4,90 € (frei ab 150 € Textilwert), bei L-Shop 9,76 € (8,20 € netto je Karton; ab 200 € netto 6,20 €, ab 350 € 4,20 €, ab 500 € frei) plus Mengenstaffel bei L-Shop; DTF-Bogen 6,29 / 9,69 / 13,99 / 18,99 € inklusive Umsatzsteuer; DTF-Versand 7,90 € (frei ab 75 € Bogenwert); Verpackung 0,50 €; DHL 5,50 €; Zahlungsgebühr 2,5 % plus 0,35 €; Ausschuss 2 %; Erlös inklusive 6,90 € Kundenversand (frei ab 75 €). Je Produkt und Menge gilt der Lieferant mit den niedrigeren Gesamtkosten für Textil plus Versand.
+
+**Befund:** Ohne Maßnahme verliert jede Einzelbestellung Geld (Median −4,67 €, −1,10 bis −11,03 €), denn die Fixkosten je Bestellung (Lieferanten- und DTF-Versand, DTF-Bogen, DHL, Verpackung) betragen rund 21 € nach Abzug des Kundenversands. Ab 5 Stück erreichen mit dem günstigeren Lieferanten 163 von 182 Produkten das Gewinnziel von 25 % Marge.
+
+**Maßnahme 1 – Einrichtung für Kleinaufträge** (`config/pricingRules.ts`, Regel `dtf-kleinauftrag`): einmalig 10 € je Warenkorbposition bis 2 Stück, ab 3 Stück entfällt sie. Sie nutzt den vorhandenen Regeltyp `setup_fee` (Rechenkern unverändert) und erscheint als „Einrichtung (einmalig)“ im Konfigurator, im Warenkorb und auf der Rechnung. Das passt zur FAQ („einmalige Einrichtungskosten … verteilen sich auf die Stückzahl“). Nur DTF; Stickerei-Regeln bleiben unberührt (Stickerei ist pausiert).
+
+**Maßnahme 2 – Grundpreise** (`config/pricing/preiskorrektur.ts`, angewendet in `config/products/index.ts`): Bei 104 Produkten wird der Grundpreis in vollen Euro angepasst, 80 günstiger (1 bis 3 €, vor allem T-Shirts, Longsleeves, Kinder, Sport, wo die Marge hoch genug ist) und 24 teurer (vor allem teure Hoodies, Zip-Hoodies und Jacken, bei denen auch mit der Einrichtung noch eine Menge unter 3 € Gewinn bliebe). Regel: Bei den geprüften Mengen 1, 2, 3, 4, 5, 10, 25, 50 und 100 Stück bleibt der Gewinn je Bestellung mindestens 3 €. Senkungen gibt es nur, wenn zusätzlich die Marge bei 3 Stück mindestens 25 % und bei 5 Stück mindestens 30 % beträgt. Die übrigen 78 Produkte bleiben beim Preis der Formel.
+
+**Ergebnis der Gegenprobe am echten Katalog** (alle 182 Produkte, 12 Mengen von 1 bis 100 Stück, mit den hinterlegten Einkaufspreisen): kein Fall unter 3 € Gewinn, kleinster Gewinn 3,04 €. Median-Gewinn eines Auftrags: 1 Stück 3,96 €, 2 Stück 15,84 €, 3 Stück 19,14 €, 10 Stück 107,12 €.
+
+**Wirkung für die Kundschaft:** Ein Einzelstück kostet 10 € mehr (Einrichtung), bei 2 Stück 5 € mehr je Stück; ab 3 Stück ändern sich nur die Grundpreise (T-Shirts günstiger, einzelne teure Hoodies und Jacken teurer). Die Einrichtung fällt je Warenkorbposition an, also auch zweimal bei zwei verschiedenen Einzelstücken im selben Warenkorb.
+
+**Grenzen:** Die L-Shop-Preise stammen aus drei Farben je Produkt (günstigste gelesene Farbe, Größe M); bei den textil-grosshandel-Katalogpreisen handelt es sich teils um Ab-Preise. Ist der echte Einkauf 5 % höher, liegen 57 der Fälle knapp unter 3 € (weiter im Gewinn, Ausnahme ID Microfleece Jacke bei 100 Stück mit rund 2 % Marge). Bei L-Shop gilt der Versand je Karton; mehrere Kartons bei großen Mengen sind nicht eingerechnet. Nicht verändert: Mengenrabatt (`QUANTITY_TIERS`), DTF-Positionspreise, Stickerei-Kalkulation (Positionsstaffel plus 1,20 € je 1.000 Stiche), Versandtarif, Rechnungs- und Bestelllogik.
+
+**Rückgängig machen:** Regel `dtf-kleinauftrag` auf `isActive: false` setzen und/oder Einträge in `GRUNDPREIS_ANPASSUNG_EUR` streichen. Die Herleitung (Skripte und Daten) liegt außerhalb des Repos in `E:\Embroidery Republic\preispruefung-2026-11-18\`.

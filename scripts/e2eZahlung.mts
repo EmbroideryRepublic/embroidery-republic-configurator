@@ -135,7 +135,8 @@ try {
   }
 
   console.log(`\n── Server mit Testmodus auf Port ${PORT} ──`);
-  server = spawn('npx', ['next', 'dev', '-p', String(PORT)], {
+  // --webpack: Next 16 startet sonst mit Turbopack und bricht bei der vorhandenen webpack-Konfiguration ab (siehe package.json "dev").
+  server = spawn('npx', ['next', 'dev', '--webpack', '-p', String(PORT)], {
     env: { ...process.env, E2E_TESTMODUS: 'aktiv' },
     shell: true,
     stdio: ['ignore', 'pipe', 'pipe'],

@@ -15,6 +15,11 @@ flachen Textil rund 35 cm breit. Bestellt wurde nach dem gezeichneten Maß, also
    Das Foto zeigt die Brust gewölbt, die gezeichnete Breite dazu ist `p = 2·r·sin(w / 2r)` mit `r = Brustbreite / π`.
    Die Fläche liegt zusätzlich innerhalb der Fotokontur bzw. der von Hand abgelesenen Torsokanten (`BEREICH_KORREKTUR`), mit 0,4 cm Puffer.
    Höhe unverändert (Größentabelle − Kragen − Saum, höchstens 47 cm).
+   **Fehlende Größen:** Hersteller führen oft nur XS, M, XL, 3XL. Die übrigen Größen bekommen Brustbreite und Länge durch Interpolation
+   zwischen den Nachbarn auf der Größenleiter, am Rand durch Fortschreiben der letzten Stufe (bei Tabellen mit nur einer Zeile über die Stufung
+   eines Produkts derselben Art). Jede der 1.229 Größen im Katalog hat damit eine eigene Fläche, keine fällt auf M zurück. Nur für die DTF-Datei.
+   Das Motiv wird einmal platziert und auf jede bestellte Größe gleich groß gedruckt, das echte Maß gilt deshalb für die **kleinste bestellte
+   Größe** (Admin, PDF und Mail nennen sie).
 2. **Echtes Maß = Abwicklung:** Breite `r · (asin((x₂ − mitte) / r) − asin((x₁ − mitte) / r))`, Höhe wie gezeichnet. Implementiert in
    `src/config/abwicklung.ts`, abgeleitet beim Lesen (`src/config/echteMasse.ts`), **nichts davon wird gespeichert oder vom Client übernommen**.
 3. **Preis:** Großformat-Zuschlag nach den Folienkosten des Motivs (`src/config/pricing/grossformat.ts`), berechnet mit den echten Maßen,

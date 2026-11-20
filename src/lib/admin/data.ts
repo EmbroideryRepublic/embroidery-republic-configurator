@@ -10,7 +10,7 @@ import nodePath from 'node:path';
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/lib/actions/orderTypes';
 import { bereinigeAnmerkung } from '@/config/anmerkung';
-import { echteMassePosition } from '@/config/echteMasse';
+import { echteMassePosition, massgeblicheGroesse } from '@/config/echteMasse';
 import { rundeMassCm } from '@/config/abwicklung';
 import { buildSupplierPositions } from '@/lib/suppliers';
 import { berechneAdminStatus, produktionsfreigabeErlaubt, type AdminStatus } from '@/lib/orders/orderVisibility';
@@ -67,6 +67,8 @@ export interface AdminOrderElementRow {
   /** ECHTE flache Maße (DTF vorne/hinten): Das Foto zeigt die Brust gewölbt, die gespeicherte Breite ist die gezeichnete
    *  (config/abwicklung.ts). Beim Lesen aus Katalog + Geometrie abgeleitet, nicht gespeichert. Ohne Angabe gilt widthCm/heightCm. */
   echteBreiteCm?: number;
+  /** Größe, nach der das echte Maß gilt: die kleinste bestellte (ein Motiv wird auf jede Größe gleich groß gedruckt). */
+  echteGroesse?: string;
   echteHoeheCm?: number;
   rotationDeg: number;
   // Text-spezifisch
@@ -809,7 +811,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
       });
       const elementeMitEchtenMassen = elements.map((el) => {
         const echt = echteMasse[el.id];
-        return echt ? { ...el, echteBreiteCm: rundeMassCm(echt.breiteCm), echteHoeheCm: rundeMassCm(echt.hoeheCm) } : el;
+        return echt ? { ...el, echteBreiteCm: rundeMassCm(echt.breiteCm), echteHoeheCm: rundeMassCm(echt.hoeheCm), echteGroesse: massgeblicheGroesse({ productId: row.product_id as string, sizeQuantities: (row.size_quantities ?? {}) as Record<string, number> }) } : el;
       });
 
       return {

@@ -91,7 +91,7 @@ function ElementZeile({ orderId, element, nummer, gestickt }: { orderId: string;
           <span className="font-medium text-gray-600">
             {motivMass(element.echteBreiteCm ?? element.widthCm)}×{motivMass(element.echteHoeheCm ?? element.heightCm)} cm
           </span>
-          {element.echteBreiteCm !== undefined && ' (echtes Maß, flach)'}
+          {element.echteBreiteCm !== undefined && ` (echtes Maß, flach${element.echteGroesse ? `, nach Größe ${element.echteGroesse}` : ''})`}
           {element.rotationDeg ? ` · ${element.rotationDeg.toFixed(0)}°` : ''}
         </p>
         {element.echteBreiteCm !== undefined && (

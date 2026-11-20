@@ -40,6 +40,16 @@ export function echteMassePosition(position: {
   return ergebnis;
 }
 
+/**
+ * Die Größe, nach der die echten Maße einer Position gelten: die KLEINSTE bestellte. Ein Motiv wird einmal platziert und auf jede
+ * bestellte Größe gleich groß gedruckt – es muss auf der kleinsten passen. Für die Anzeige („gerechnet für Größe S“).
+ */
+export function massgeblicheGroesse(position: { productId: string; sizeQuantities: Record<string, number> }): string | undefined {
+  const product = getProduct(position.productId);
+  if (!product) return undefined;
+  return kleinsteBestellteGroesse(position.sizeQuantities, groessenLeiterVon(product));
+}
+
 /** Wie `echteMassePosition`, für Elemente ohne eigene ID (Bestellsatz, Mail): Ergebnis in der Reihenfolge der Elemente, `undefined` = keine Abwicklung. */
 export function echteMasseJeElement(position: {
   productId: string;

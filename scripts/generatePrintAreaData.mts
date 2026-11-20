@@ -1084,6 +1084,79 @@ function referenzZeile<T extends { size: string }>(p: (typeof PRODUCTS)[number],
  *  stammt – Grundlage der größenabhängigen Torsoflächen (bySize) unten:
  *  jede Größe DIESER Tabelle bekommt eine eigene Fläche, kalibriert am
  *  selben Foto wie die Referenzgröße. */
+/**
+ * DTF-TORSOFLÄCHE: Größen, die in der Maßtabelle des Herstellers fehlen (Tabellen führen oft nur XS, M, XL, 3XL), bekommen
+ * Brustbreite und Länge durch Interpolation zwischen den Nachbarn auf der Größenleiter, am Rand durch Fortschreiben der letzten
+ * Stufe. Ohne das fiele z. B. ein XXL auf die Fläche der Referenzgröße M zurück (falsche Breite, falscher Zuschlag). Nur für die
+ * DTF-Datei: die Ursprungsdaten (Stickerei) bleiben unverändert.
+ */
+function ergaenzeFehlendeGroessen<T extends { size: string; breiteCm: number; hoeheCm: number }>(
+  p: (typeof PRODUCTS)[number],
+  tabelle: T[]
+): Array<{ size: string; breiteCm: number; hoeheCm: number }> {
+  const leiter = groessenLeiterVon(p);
+  const rang = (s: string) => leiter.ordnung.findIndex((o) => o.toUpperCase() === s.toUpperCase());
+  const bekannt = tabelle
+    .map((z) => ({ size: z.size, breiteCm: z.breiteCm, hoeheCm: z.hoeheCm, r: rang(z.size) }))
+    .filter((z) => z.r >= 0)
+    .sort((a, b) => a.r - b.r);
+  const ergebnis: Array<{ size: string; breiteCm: number; hoeheCm: number }> = tabelle.map((z) => ({
+    size: z.size,
+    breiteCm: z.breiteCm,
+    hoeheCm: z.hoeheCm,
+  }));
+  if (bekannt.length === 1) {
+    // Nur EINE Zeile (z. B. nur L): Die Stufung der Größen übernimmt ein Produkt derselben Art mit vollständiger Tabelle, skaliert
+    // auf die bekannte Zeile.
+    const einzig = bekannt[0]!;
+    const vorlage = PRODUCTS.find((x) => {
+      if (x.id === p.id || x.productType !== p.productType) return false;
+      const zeilen = (x.sizeGuide?.measurements ?? []).filter((z) => rang(z.size) >= 0);
+      return zeilen.length >= 4 && zeilen.some((z) => z.size.toUpperCase() === einzig.size.toUpperCase());
+    });
+    if (vorlage) {
+      // Die Vorlage selbst wird vorher um ihre fehlenden Größen ergänzt (XS, 4XL, 5XL …), damit auch Randgrößen eine Stufe haben.
+      const vz = ergaenzeFehlendeGroessen(vorlage, vorlage.sizeGuide?.measurements ?? []).filter((z) => rang(z.size) >= 0);
+      const bezug = vz.find((z) => z.size.toUpperCase() === einzig.size.toUpperCase())!;
+      for (const s of new Set([...p.sizes, ...leiter.ordnung])) {
+        if (ergebnis.some((z) => z.size.toUpperCase() === s.toUpperCase())) continue;
+        const zeile = vz.find((z) => z.size.toUpperCase() === s.toUpperCase());
+        if (zeile && p.sizes.some((g) => g.toUpperCase() === s.toUpperCase())) {
+          const name = p.sizes.find((g) => g.toUpperCase() === s.toUpperCase())!;
+          ergebnis.push({
+            size: name,
+            breiteCm: Number(((einzig.breiteCm * zeile.breiteCm) / bezug.breiteCm).toFixed(1)),
+            hoeheCm: Number(((einzig.hoeheCm * zeile.hoeheCm) / bezug.hoeheCm).toFixed(1)),
+          });
+        }
+      }
+    }
+    return ergebnis;
+  }
+  if (bekannt.length < 2) return ergebnis;
+  // Ziele: alle Größen des Produkts; bei Konfektion zusätzlich die ganze Leiter, damit auch Produkte, die diese Fläche per
+  // Klassenübernahme erben und andere Größen führen, nicht auf M zurückfallen.
+  const ziele = new Map<string, string>();
+  for (const s of [...p.sizes, ...(leiter.id === 'konfektion-eu' ? leiter.ordnung : [])]) {
+    if (!ziele.has(s.toUpperCase())) ziele.set(s.toUpperCase(), s);
+  }
+  for (const [grossSchluessel, s] of ziele) {
+    if (tabelle.some((z) => z.size.toUpperCase() === grossSchluessel)) continue;
+    const r = rang(s);
+    if (r < 0) continue;
+    const unten = [...bekannt].reverse().find((z) => z.r < r);
+    const oben = bekannt.find((z) => z.r > r);
+    const a = unten && oben ? unten : oben ? bekannt[0]! : bekannt[bekannt.length - 2]!;
+    const b = unten && oben ? oben : oben ? bekannt[1]! : bekannt[bekannt.length - 1]!;
+    const t = (r - a.r) / (b.r - a.r);
+    const breite = a.breiteCm + (b.breiteCm - a.breiteCm) * t;
+    const hoehe = a.hoeheCm + (b.hoeheCm - a.hoeheCm) * t;
+    if (!(breite > 10) || !(hoehe > 10)) continue;
+    ergebnis.push({ size: s, breiteCm: Number(breite.toFixed(1)), hoeheCm: Number(hoehe.toFixed(1)) });
+  }
+  return ergebnis;
+}
+
 function massVon(p: (typeof PRODUCTS)[number]) {
   const eigeneTabelle = p.sizeGuide?.measurements;
   const eigen = referenzZeile(p, eigeneTabelle);
@@ -1753,7 +1826,7 @@ for (const p of PRODUCTS) {
       };
       const dtfBySize: Record<string, GroessenBox> | undefined =
         sizeTabelle && sizeTabelle.length > 0
-          ? Object.fromEntries(sizeTabelle.map((z) => [z.size, dtfBox(z)]))
+          ? Object.fromEntries(ergaenzeFehlendeGroessen(p, sizeTabelle).map((z) => [z.size, dtfBox(z)]))
           : undefined;
       (ergebnisDtf[p.id] ??= {})[view] = { ...dtfBox(mass), ...(dtfBySize ? { bySize: dtfBySize } : {}) };
     }

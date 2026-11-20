@@ -51,7 +51,7 @@ test('interne Mail nennt bei DTF vorne das echte flache Maß und das gezeichnete
   assert.ok(echt.breiteCm > 30, 'abgewickelt breiter als gezeichnet');
   const html = ohneMarken(await render(InternalOrderNotificationEmail({ order: bestellung('front'), productionSheetSignedUrl: null })));
   const text = echt.breiteCm.toFixed(1).replace('.', ',');
-  assert.ok(html.includes(`${text} × 20,0 cm (echtes Maß, flach; im Foto 30,0 × 20,0 cm)`), `Maß fehlt – erwartet ${text} × 20,0 cm`);
+  assert.ok(html.includes(`${text} × 20,0 cm (echtes Maß, flach, nach Größe M; im Foto 30,0 × 20,0 cm)`), `Maß fehlt – erwartet ${text} × 20,0 cm`);
 });
 
 test('Ärmel und Stickerei bleiben beim gezeichneten Maß (keine Abwicklung)', async () => {

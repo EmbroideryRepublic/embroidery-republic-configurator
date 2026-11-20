@@ -24,7 +24,7 @@ import { formatiereGeld, formatiereZeitpunkt, motivMass } from '@/lib/format';
 import { warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 import { stornofristEndet, stornofristLaeuftNoch } from '@/config/orderProcess';
 import { bestellhilfe, groessenText } from '@/lib/suppliers/bestelllinks';
-import { echteMasseJeElement } from '@/config/echteMasse';
+import { echteMasseJeElement, massgeblicheGroesse } from '@/config/echteMasse';
 
 const VEREDELUNG: Record<OrderItemRecord['printMethod'], string> = {
   dtf: 'DTF-Transferdruck',
@@ -46,7 +46,18 @@ function zeilen(inhalt: string): string[] {
   return inhalt.split(/\r\n|\r|\n/);
 }
 
-function Motiv({ el, link, echt }: { el: OrderElementRecord; link?: string; echt?: { breiteCm: number; hoeheCm: number } }) {
+function Motiv({
+  el,
+  link,
+  echt,
+  groesse,
+}: {
+  el: OrderElementRecord;
+  link?: string;
+  echt?: { breiteCm: number; hoeheCm: number };
+  /** Größe, nach der das echte Maß gilt (die kleinste bestellte). */
+  groesse?: string;
+}) {
   const textZeilen = el.type === 'text' ? zeilen(el.content ?? '') : [];
   const art =
     el.type === 'logo' ? (
@@ -66,7 +77,7 @@ function Motiv({ el, link, echt }: { el: OrderElementRecord; link?: string; echt
   const einzelheiten = [
     textZeilen.length > 1 ? `${textZeilen.length} Zeilen` : null,
     echt
-      ? `${cm(echt.breiteCm)} × ${cm(echt.hoeheCm)} cm (echtes Maß, flach; im Foto ${cm(el.widthCm)} × ${cm(el.heightCm)} cm)`
+      ? `${cm(echt.breiteCm)} × ${cm(echt.hoeheCm)} cm (echtes Maß, flach${groesse ? `, nach Größe ${groesse}` : ''}; im Foto ${cm(el.widthCm)} × ${cm(el.heightCm)} cm)`
       : `${cm(el.widthCm)} × ${cm(el.heightCm)} cm`,
     el.geschaetzteStiche ? `ca. ${zahl(el.geschaetzteStiche)} Stiche` : null,
   ]
@@ -113,6 +124,7 @@ function Position({ item, motivLinks }: { item: OrderItemRecord; motivLinks: Rec
                     key={index}
                     el={el}
                     echt={echteMasse[index]}
+                    groesse={massgeblicheGroesse(item)}
                     link={el.logoStoragePath ? motivLinks[el.logoStoragePath] : undefined}
                   />
                 ))}

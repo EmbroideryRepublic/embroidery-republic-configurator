@@ -10,7 +10,7 @@ import { Document, Page, View, Text, Image, StyleSheet, renderToBuffer } from '@
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PRINT_VIEW_LABELS, PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
 import { formatiereGeld, formatiereZeitpunkt, motivMass } from '@/lib/format';
-import { echteMasseJeElement } from '@/config/echteMasse';
+import { echteMasseJeElement, massgeblicheGroesse } from '@/config/echteMasse';
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 9, fontFamily: 'Helvetica', color: '#23211d' },
@@ -97,11 +97,14 @@ function ElementDetail({
   element,
   index,
   echt,
+  groesse,
 }: {
   element: OrderRecord['items'][number]['elements'][number];
   index: number;
   /** Echte (flache) Maße, falls für diese Ansicht abgewickelt (DTF vorne/hinten). */
   echt?: { breiteCm: number; hoeheCm: number };
+  /** Größe, nach der das echte Maß gilt (die kleinste bestellte). */
+  groesse?: string;
 }) {
   return (
     <View style={styles.elementBlock}>
@@ -118,7 +121,7 @@ function ElementDetail({
         <Text style={styles.label}>Größe</Text>
         <Text style={styles.value}>
           {echt
-            ? `${motivMass(echt.breiteCm)} × ${motivMass(echt.hoeheCm)} cm (echtes Maß, flach; im Foto gezeichnet ${motivMass(element.widthCm)} × ${motivMass(element.heightCm)} cm)`
+            ? `${motivMass(echt.breiteCm)} × ${motivMass(echt.hoeheCm)} cm (echtes Maß, flach${groesse ? `, nach Größe ${groesse}` : ''}; im Foto gezeichnet ${motivMass(element.widthCm)} × ${motivMass(element.heightCm)} cm)`
             : `${motivMass(element.widthCm)} × ${motivMass(element.heightCm)} cm`}
           {element.rotationDeg ? `, gedreht ${element.rotationDeg.toFixed(0)}°` : ''}
         </Text>
@@ -200,6 +203,7 @@ function ProductionSheetDocument({ order }: { order: OrderRecord }) {
                 element={element}
                 index={elementIndex}
                 echt={echteMasseJeElement(item)[elementIndex]}
+                groesse={massgeblicheGroesse(item)}
               />
             ))}
           </View>

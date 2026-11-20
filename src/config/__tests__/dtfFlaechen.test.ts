@@ -103,3 +103,32 @@ test('DTF-Daten: Radius entspricht der Brustbreite der Größe, die Brustmitte l
     }
   }
 });
+
+test('DTF: JEDE Größe eines Produkts hat eine eigene Fläche und größere Größen bekommen nie eine schmalere', () => {
+  let groessen = 0;
+  const ohneEintrag: string[] = [];
+  const nichtMonoton: string[] = [];
+  for (const p of PRODUCTS) {
+    const roh = getPrintAreasSync(p.id, 'dtf').find((a) => a.view === 'front');
+    if (!roh?.bySize) continue;
+    let vorher = 0;
+    let vorherGroesse = '';
+    for (const g of p.sizes) {
+      groessen++;
+      const v = roh.bySize[g];
+      if (!v) {
+        ohneEintrag.push(`${p.id}/${g}`);
+        continue;
+      }
+      const flach = flacheFlaechenBreiteCm({ boxWidthCm: v.boxWidthCm, abwicklung: v.abwicklung });
+      if (flach + 0.3 < vorher) nichtMonoton.push(`${p.id} ${vorherGroesse}→${g}: ${vorher.toFixed(1)}→${flach.toFixed(1)}`);
+      vorher = flach;
+      vorherGroesse = g;
+    }
+  }
+  assert.ok(groessen > 1000);
+  // Kinder-Leitern mit Zusatzgrößen (Jahre, Alter) werden nicht aus der Konfektionsleiter ergänzt; dort gilt der Rückfall auf die Referenz.
+  const konfektion = ohneEintrag.filter((e) => /\/(XXS|XS|S|M|L|XL|XXL|[3-6]XL)$/.test(e));
+  assert.deepEqual(konfektion, [], `Konfektionsgrößen ohne eigene Fläche: ${konfektion.slice(0, 10).join(', ')}`);
+  assert.deepEqual(nichtMonoton, [], `größere Größe mit schmalerer Fläche: ${nichtMonoton.slice(0, 10).join(' | ')}`);
+});

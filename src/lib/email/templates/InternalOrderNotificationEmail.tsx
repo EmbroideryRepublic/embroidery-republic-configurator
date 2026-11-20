@@ -196,8 +196,25 @@ export function InternalOrderNotificationEmail({
         </Text>
       )}
       {order.customerVatId && <Text style={{ margin: '4px 0 0' }}>USt-IdNr.: {order.customerVatId}</Text>}
+      {/* Anmerkung/Nachricht der Kundschaft: violett wie im Adminbereich (components/admin/KundenAnmerkung.tsx), damit sie in
+          der Mail nicht überlesen wird. Nur als Text ausgegeben (React escaped), Zeilenumbrüche bleiben erhalten. */}
       {order.message && (
-        <Text style={{ backgroundColor: COLORS.background, padding: 10, borderRadius: 6, margin: '8px 0 0' }}>{order.message}</Text>
+        <Text
+          style={{
+            backgroundColor: '#f5f3ff',
+            border: '2px solid #7c3aed',
+            padding: 12,
+            borderRadius: 6,
+            margin: '12px 0 0',
+            whiteSpace: 'pre-wrap',
+          }}
+        >
+          <strong style={{ color: '#4c1d95' }}>
+            ✎ {order.orderType === 'order' ? 'Anmerkung der Kundschaft – bitte lesen' : 'Nachricht der Kundschaft'}
+          </strong>
+          <br />
+          {order.message}
+        </Text>
       )}
 
       {order.items.length > 0 ? (

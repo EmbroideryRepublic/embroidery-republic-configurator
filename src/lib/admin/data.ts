@@ -9,6 +9,7 @@
 import nodePath from 'node:path';
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/lib/actions/orderTypes';
+import { bereinigeAnmerkung } from '@/config/anmerkung';
 import { buildSupplierPositions } from '@/lib/suppliers';
 import { berechneAdminStatus, produktionsfreigabeErlaubt, type AdminStatus } from '@/lib/orders/orderVisibility';
 import { enqueueSupplierOrdersForOrder } from '@/lib/suppliers/lifecycle/enqueue';
@@ -33,6 +34,9 @@ export interface AdminOrderListRow {
   /** Einordnung für Farbe/Badge in der Liste – siehe lib/orders/orderVisibility.ts.
    *  Entscheidet NIE, ob die Zeile erscheint, nur wie sie beschriftet ist. */
   adminStatus: AdminStatus;
+  /** Anmerkung (Bestellung) bzw. Nachricht (Anfrage) der Kundschaft; null = keine. Die Liste hebt solche Zeilen farbig hervor
+   *  (components/admin/KundenAnmerkung.tsx) und zeigt den Anfang des Textes. */
+  anmerkung: string | null;
   /** true, wenn für diese Bestellung ein ungelöster Fehlschlag vorliegt
    *  (Versandlabel, Bestellbestätigung oder Rechnung – dieselben Kategorien
    *  wie lastShippingError/lastConfirmationEmailError/lastInvoiceError auf
@@ -392,7 +396,7 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
   let query = supabase
     .from('orders')
     .select(
-      'id, created_at, order_type, customer_name, company, email, total_price, status, payment_status, refund_status, tracking_number, order_confirmation_sent_at, invoice_number, order_number',
+      'id, created_at, order_type, customer_name, company, email, message, total_price, status, payment_status, refund_status, tracking_number, order_confirmation_sent_at, invoice_number, order_number',
       { count: 'exact' }
     );
 
@@ -490,6 +494,7 @@ export async function listOrders(optionen: ListOrdersOptions = {}): Promise<List
       paymentStatus,
       invoiceNumber: (row.invoice_number as string | null) ?? null,
       adminStatus: berechneAdminStatus({ createdAt, status, orderType, paymentStatus, refundStatus }),
+      anmerkung: bereinigeAnmerkung(row.message) ?? null,
       brauchtAufmerksamkeit: problemOrderIds.has(row.id as string),
     };
   });

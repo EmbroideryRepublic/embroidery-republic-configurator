@@ -22,6 +22,7 @@ import { formatiereGeld } from '@/lib/format';
 import { aktuellerKunde } from '@/lib/account/session';
 import { ladeProfil as ladeProfilDb } from '@/lib/account/data';
 import { istAnbieterFuerKundschaftVerfuegbar } from '@/lib/payments/registry';
+import { bereinigeAnmerkung } from '@/config/anmerkung';
 
 /** Allgemeine Fehlermeldung, wenn eine Bestellung/Anfrage nicht verarbeitet werden konnte (unveränderter Wortlaut). */
 const ALLGEMEINER_FEHLER = 'Da ist etwas schiefgelaufen. Bitte versuchen Sie es in ein paar Minuten erneut.';
@@ -73,6 +74,12 @@ export interface SubmitOrderInput {
    * durch einen manipulierten oder älteren Client zustande kommt.
    */
   acceptedTerms: boolean;
+  /**
+   * Freiwillige Anmerkung der Kundschaft zur Bestellung (Wunschtermin, Hinweise zum Motiv oder zur Lieferung).
+   * Wird serverseitig bereinigt und auf ANMERKUNG_MAX_ZEICHEN geprüft (config/anmerkung.ts); im Adminbereich farblich
+   * hervorgehoben (components/admin/KundenAnmerkung.tsx). Ältere Clients ohne dieses Feld bleiben funktionsfähig.
+   */
+  message?: string;
   /**
    * Kennung DIESES Absendevorgangs, im Browser erzeugt und über alle
    * Wiederholungen hinweg unverändert. Verhindert, dass Doppelklick,
@@ -337,6 +344,7 @@ async function persistAndNotifyCore(params: {
     customerName: params.customerName,
     shipping: params.shipping,
     acceptedTerms: params.acceptedTerms,
+    message: params.message,
   });
   if (!validierung.valid) {
     console.warn(
@@ -788,6 +796,7 @@ export async function submitOrder(input: SubmitOrderInput): Promise<SubmitResult
     company: alsOptionalText(kontakt.companyName),
     email: alsText(kontakt.email),
     phone: alsOptionalText(kontakt.phone),
+    message: bereinigeAnmerkung(input.message),
     items: input.items,
     shipping: input.shipping,
     paymentMethod: input.paymentMethod,
@@ -818,7 +827,7 @@ export async function submitInquiry(input: SubmitInquiryInput): Promise<SubmitRe
     company: alsOptionalText(kontakt.companyName),
     email: alsText(kontakt.email),
     phone: alsOptionalText(kontakt.phone),
-    message: alsOptionalText(input.message),
+    message: bereinigeAnmerkung(input.message),
     items: input.items,
     clientRequestId: input.clientRequestId,
   });

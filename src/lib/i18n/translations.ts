@@ -309,6 +309,8 @@ export const translations = {
     checkout_zip: 'PLZ',
     checkout_city: 'Stadt',
     checkout_country: 'Land',
+    checkout_note_label: 'Anmerkung zur Bestellung (optional)',
+    checkout_note_placeholder: 'z. B. Wunschtermin, Hinweise zum Motiv oder zur Lieferung …',
     checkout_country_notice: 'Aktuell liefern wir ausschließlich innerhalb Deutschlands. Weitere Länder folgen in Kürze.',
     // Fehlermeldungen je Pflichtfeld – erscheinen erst nach Berühren (onBlur)
     // des jeweiligen Feldes, siehe CartDrawer.tsx `feldFehler`.
@@ -727,6 +729,8 @@ export const translations = {
     checkout_zip: 'ZIP code',
     checkout_city: 'City',
     checkout_country: 'Country',
+    checkout_note_label: 'Note on your order (optional)',
+    checkout_note_placeholder: 'e.g. desired date, notes on the design or delivery …',
     checkout_country_notice: 'We currently ship within Germany only. More countries are coming soon.',
     checkout_payment_heading: 'Payment method',
     checkout_payment_card: 'Credit card',

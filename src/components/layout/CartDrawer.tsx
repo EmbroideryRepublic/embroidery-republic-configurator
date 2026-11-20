@@ -15,6 +15,7 @@ import { useSubmitGuard, verwirfGespeicherteKennung } from '@/lib/hooks/useSubmi
 import { SHIPPING_RATES, calculateShipping, landCodeForCountry } from '@/config/shipping';
 import { steuersatzFuer, steueranteil, STANDARDLAND } from '@/config/pricing/steuer';
 import { IST_KLEINUNTERNEHMER } from '@/config/company';
+import { ANMERKUNG_MAX_ZEICHEN } from '@/config/anmerkung';
 import { istPlausibleEmail, istGueltigePlz } from '@/lib/orders/orderValidation';
 import { istNurAufAnfrage, veredelungVerfuegbar, warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 import { FELD_KLASSE } from '@/lib/ui/feldKlasse';
@@ -597,6 +598,7 @@ function CheckoutForm({ items, total, formatPrice, waehrungHinweis, onOrderPlace
     zip: '',
     city: '',
     country: 'Deutschland',
+    message: '',
   });
 
   // Vorbelegung für angemeldete Kund:innen aus der Standardadresse des
@@ -737,6 +739,7 @@ function CheckoutForm({ items, total, formatPrice, waehrungHinweis, onOrderPlace
         shipping: { street: form.street, zip: form.zip, city: form.city, country: form.country },
         paymentMethod,
         acceptedTerms,
+        message: form.message,
         clientRequestId,
       })
     );
@@ -832,6 +835,26 @@ function CheckoutForm({ items, total, formatPrice, waehrungHinweis, onOrderPlace
               <p className="mt-0.5 text-xs leading-relaxed text-brand/70">{t('checkout_country_notice')}</p>
             </div>
           </div>
+        </section>
+
+        {/* Freiwillige Anmerkung zur Bestellung (Wunschtermin, Hinweise zum Motiv oder zur Lieferung). Landet im
+            Adminbereich farblich hervorgehoben, damit sie nicht übersehen wird (components/admin/KundenAnmerkung.tsx). */}
+        <section>
+          <label htmlFor="anmerkung" className="mb-2 block text-xs font-semibold uppercase tracking-wide text-brand/70">
+            {t('checkout_note_label')}
+          </label>
+          <textarea
+            id="anmerkung"
+            value={form.message}
+            onChange={(e) => update('message', e.target.value)}
+            placeholder={t('checkout_note_placeholder')}
+            maxLength={ANMERKUNG_MAX_ZEICHEN}
+            rows={3}
+            className={`${FELD_KLASSE} resize-y`}
+          />
+          <p className="mt-1 text-right text-[11px] text-brand/70" aria-hidden="true">
+            {form.message.length}/{ANMERKUNG_MAX_ZEICHEN}
+          </p>
         </section>
 
         <section>
@@ -1118,6 +1141,7 @@ function InquiryForm({ items, total, formatPrice, nurAnfrage, hatStickerei, onSe
                 placeholder={t('inquiry_message_placeholder')}
                 value={form.message}
                 onChange={(e) => update('message', e.target.value)}
+                maxLength={ANMERKUNG_MAX_ZEICHEN}
                 rows={4}
                 className={`${FELD_KLASSE} resize-y`}
               />

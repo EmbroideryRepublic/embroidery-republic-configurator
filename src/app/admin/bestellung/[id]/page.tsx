@@ -37,6 +37,8 @@ import { RegenerateAllPreviewsButton } from '@/components/admin/RegenerateAllPre
 import { RequestProofApprovalButton } from '@/components/admin/RequestProofApprovalButton';
 import { BestellVerlauf } from '@/components/admin/BestellVerlauf';
 import { AdminAddressEditor } from '@/components/admin/AdminAddressEditor';
+import { KundenAnmerkung } from '@/components/admin/KundenAnmerkung';
+import { bereinigeAnmerkung } from '@/config/anmerkung';
 import { berechneNaechsteAktion, fehlenVorschauen, type NaechsteAktionTon } from '@/lib/admin/naechsteAktion';
 
 const AKTION_STIL: Record<NaechsteAktionTon, string> = {
@@ -84,6 +86,11 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
         )}
       </div>
 
+      {/* Anmerkung/Nachricht der Kundschaft: direkt unter dem Kopf, violett und mit „bitte lesen“ – sie kann den Auftrag ändern
+          (Wunschtermin, Motivhinweis, Lieferhinweis) und darf nicht in der Kontakt-Karte weiter unten untergehen. */}
+      {bereinigeAnmerkung(order.message) && (
+        <KundenAnmerkung text={bereinigeAnmerkung(order.message)!} orderType={order.orderType} />
+      )}
 
       {/* Statussteuerung: bewusst ganz oben – es ist die Aktion, wegen der
           der Betreiber diese Seite in aller Regel öffnet. Anfragen haben
@@ -222,7 +229,6 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
             </div>
             <div>{order.email}</div>
             {order.phone && <div>{order.phone}</div>}
-            {order.message && <p className="pt-2 text-xs text-gray-500">&bdquo;{order.message}&ldquo;</p>}
             {/* Fund vom 2026-08-26 (Produktionsreife-Audit): protokolliereVersand()
                 loggt einen Fehlschlag der Bestellbestätigung bereits zuverlässig in
                 order_events – bisher zeigte keine Admin-Seite ihn an. */}

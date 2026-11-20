@@ -24,6 +24,7 @@
  * stillschweigend zurechtgebogen.
  */
 import { getProduct } from '@/config/products';
+import { ANMERKUNG_MAX_ZEICHEN } from '@/config/anmerkung';
 import { getPrintAreas } from '@/config/printAreas';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { BASE_OVERHEAD_STITCHES, TEXT_MIN_STITCHES } from '@/lib/embroidery/stichschaetzung';
@@ -114,6 +115,8 @@ export interface OrderValidationInput {
   shipping?: { street: string; zip: string; city: string; country: string };
   /** Nur bei echten Bestellungen relevant – ohne Zustimmung keine Bestellung. */
   acceptedTerms?: boolean;
+  /** Anmerkung (Bestellung) bzw. Nachricht (Anfrage) der Kundschaft, bereits bereinigt (config/anmerkung.ts). */
+  message?: string;
 }
 
 /**
@@ -216,6 +219,15 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
 
   if (!istPlausibleEmail(email)) {
     issues.push({ code: 'email_ungueltig', message: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' });
+  }
+
+  // Freitext der Kundschaft: nach oben begrenzt, damit die Datenbank nicht mit Riesen-Eingaben gefüllt wird (der Browser
+  // setzt dieselbe Grenze als maxLength, ein manipulierter Aufruf kommt hier nicht durch).
+  if (alsText(input.message).length > ANMERKUNG_MAX_ZEICHEN) {
+    issues.push({
+      code: 'anmerkung_zu_lang',
+      message: `Ihre Anmerkung ist zu lang (höchstens ${ANMERKUNG_MAX_ZEICHEN.toLocaleString('de-DE')} Zeichen).`,
+    });
   }
 
   if (istBestellung) {

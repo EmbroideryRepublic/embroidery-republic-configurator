@@ -132,10 +132,13 @@ export default async function AdminOrdersPage(
                 <tr
                   key={order.id}
                   className={`border-b border-gray-100 last:border-0 hover:bg-brand-light/50 ${
-                    order.brauchtAufmerksamkeit ? 'bg-red-50/60' : ''
+                    order.brauchtAufmerksamkeit ? 'bg-red-50/60' : order.anmerkung ? 'bg-violet-50' : ''
                   }`}
                 >
-                  <td className="px-3 py-2 font-medium">
+                  {/* Violett = Anmerkung/Nachricht der Kundschaft (components/admin/KundenAnmerkung.tsx): Zeile getönt,
+                      dicker Balken links, Marke hinter der Nummer und der Textanfang beim Kunden – damit sie beim Überfliegen
+                      der Liste nicht untergeht. Ein Fehlschlag (rot) hat Vorrang bei der Tönung, die Marke bleibt. */}
+                  <td className={`px-3 py-2 font-medium ${order.anmerkung ? 'border-l-4 border-l-violet-500' : ''}`}>
                     {/* Fund vom 2026-08-26 (admin_workflow_ux-Audit): ohne
                         dieses Signal war ein Fehlschlag (Versandlabel,
                         Bestellbestätigung, Rechnung) nur sichtbar, wenn man
@@ -153,6 +156,15 @@ export default async function AdminOrdersPage(
                     <Link href={`/admin/bestellung/${order.id}`} className="text-gold-dark hover:underline">
                       {order.orderNumber}
                     </Link>
+                    {order.anmerkung && (
+                      <span
+                        title={order.anmerkung}
+                        data-testid="anmerkung-marke"
+                        className="ml-2 inline-block whitespace-nowrap rounded-full bg-violet-600 px-2 py-0.5 text-[11px] font-semibold text-white"
+                      >
+                        ✎ {order.orderType === 'order' ? 'Anmerkung' : 'Nachricht'}
+                      </span>
+                    )}
                   </td>
                   <td className="whitespace-nowrap px-3 py-2 text-gray-500">
                     {formatiereZeitpunkt(order.createdAt)}
@@ -161,6 +173,11 @@ export default async function AdminOrdersPage(
                   <td className="px-3 py-2">
                     {order.customerName}
                     {order.company && <span className="block text-xs text-gray-400">{order.company}</span>}
+                    {order.anmerkung && (
+                      <span className="mt-1 block max-w-[16rem] truncate text-xs font-medium text-violet-800" title={order.anmerkung}>
+                        &bdquo;{order.anmerkung}&ldquo;
+                      </span>
+                    )}
                   </td>
                   <td className="whitespace-nowrap px-3 py-2 text-right">
                     {formatiereGeld(order.totalPrice)}

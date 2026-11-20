@@ -100,7 +100,8 @@ export async function sendInternalOrderNotificationEmail(
   // Stickerei im Betreff: Der Betreiber erkennt im Posteingang, dass dort ein
   // Angebot zu kalkulieren ist und keine fertige Bestellung wartet.
   const art = isOrder ? 'Neue Bestellung' : warenkorbNurAlsAnfrage(order.items) ? 'Neue Anfrage (Stickerei)' : 'Neue Anfrage';
-  const subject = `${art}: ${order.orderNumber}`;
+  // „· mit Anmerkung“: Wer im Posteingang nur die Betreffzeile liest, sieht, dass die Kundschaft etwas dazugeschrieben hat.
+  const subject = `${art}: ${order.orderNumber}${isOrder && order.message ? ' · mit Anmerkung' : ''}`;
   const result = await sendEmail({
     to: getInternalNotificationAddress(),
     subject,

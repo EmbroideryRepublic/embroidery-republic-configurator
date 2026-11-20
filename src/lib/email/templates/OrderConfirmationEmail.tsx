@@ -112,6 +112,15 @@ export function OrderConfirmationEmail({
         </Text>
       )}
 
+      {/* Die Anmerkung der Kundschaft wird zur Kontrolle zurückgespiegelt: So sieht sie, dass sie bei uns angekommen ist. */}
+      {order.message && (
+        <Text style={{ marginTop: 16, fontSize: 13, whiteSpace: 'pre-wrap' }}>
+          <strong>{isOrder ? 'Ihre Anmerkung zur Bestellung' : 'Ihre Nachricht'}</strong>
+          <br />
+          {order.message}
+        </Text>
+      )}
+
       {isOrder && (
         <Text style={{ marginTop: 16, fontSize: 13 }}>
           {!order.paymentMethod || order.paymentMethod === 'invoice' ? (

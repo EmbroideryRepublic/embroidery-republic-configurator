@@ -32,6 +32,7 @@ import { formatiereGeld } from '@/lib/format';
 import {
   GEWICHTS_BAENDER,
   gewichtsSpanne,
+  druckflaechenTabelle,
   gewichtsUebersicht,
   groessenTabelle,
   MODELLE_JE_TABELLE,
@@ -296,7 +297,7 @@ test('jede Seite mit berechneter Tabelle nennt nur Arten, für die es eine Auswe
   for (const s of ANLASS_SEITEN) {
     for (const a of s.abschnitte) {
       const t = a.tabelle;
-      if (t?.startsWith('groessen:') || t?.startsWith('gewicht:')) {
+      if (t?.startsWith('groessen:') || t?.startsWith('gewicht:') || t?.startsWith('druck:')) {
         const art = t.split(':')[1]!;
         assert.ok((TABELLEN_ARTEN as readonly string[]).includes(art), `${s.slug}: unbekannte Art ${art}`);
       }
@@ -325,4 +326,43 @@ test('die Auflösungs-Ratgeber nennen das Hochskalieren ehrlich: keine neuen Det
     assert.match(text, /Zusätzliche Details entstehen dabei nicht|keine neuen Details/);
     assert.match(text, /nicht hochgeladen|verlässt Ihren Rechner nicht/);
   }
+});
+
+test('Druckflächen: je Art drei Modelle, Vorder- und Rückseite für S bis XXL, Flächen wachsen mit der Größe und passen zur Brustbreite', () => {
+  for (const art of TABELLEN_ARTEN) {
+    const flaechen = druckflaechenTabelle(art);
+    const groessen = groessenTabelle(art);
+    assert.equal(flaechen.modelle.length, MODELLE_JE_TABELLE, art);
+    flaechen.modelle.forEach((m, i) => {
+      assert.equal(m.id, groessen.modelle[i]!.id, `${art}: dieselben Modelle wie die Größentabelle`);
+      for (const seite of ['vorne', 'hinten'] as const) {
+        let davor = { breiteCm: 0, hoeheCm: 0 };
+        for (const g of TABELLEN_GROESSEN) {
+          const f = m[seite][g];
+          assert.ok(f && f.breiteCm > 0 && f.hoeheCm > 0, `${m.id}: ${seite}/${g} fehlt`);
+          assert.ok(f.breiteCm >= davor.breiteCm && f.hoeheCm >= davor.hoeheCm, `${m.id}: ${seite} fällt bei ${g}`);
+          // Das Motiv darf nie breiter sein als das Textil: flache Fläche ≤ Brustbreite der Größe.
+          assert.ok(f.breiteCm <= groessen.modelle[i]!.masse[g]!.breiteCm + 0.05, `${m.id}: ${seite}/${g} breiter als das Textil`);
+          davor = f;
+        }
+      }
+    });
+  }
+});
+
+test('Druckgröße-Ratgeber: Seite vorhanden, alle drei Tabellen, in den Verweisen der Größentabelle', () => {
+  const s = ANLASS_SEITEN.find((x) => x.slug === 'druckgroesse-t-shirt-hoodie')!;
+  assert.ok(s);
+  assert.deepEqual(
+    s.abschnitte.filter((a) => a.tabelle?.startsWith('druck:')).map((a) => a.tabelle),
+    ['druck:tshirt', 'druck:hoodie', 'druck:polo']
+  );
+  assert.ok(ANLASS_SEITEN.find((x) => x.slug === 'groessentabelle-t-shirts-hoodies')!.verwandt.includes(s.slug));
+});
+
+test('Abi-Seite trägt „Abi“ im Titel (so wird gesucht) und bleibt unter 60 Zeichen', () => {
+  const s = ANLASS_SEITEN.find((x) => x.slug === 'abschluss-hoodies-bedrucken')!;
+  const titel = fuelleAnlass(s.titel, s, anlassFakten(s));
+  assert.match(titel, /Abi/);
+  assert.ok(titel.length <= 60, titel);
 });

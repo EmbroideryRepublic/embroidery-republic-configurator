@@ -11,6 +11,8 @@
 import type { ProductConfig } from '@/config/products/types';
 import { geschlechterVon } from '@/config/products/facetten';
 import { PRODUCTS } from '@/config/products';
+import { PRINT_AREA_DATA_DTF } from '@/config/printAreaData';
+import { flacheBreiteCm, rundeMassCm } from '@/config/abwicklung';
 import { sortiere } from '@/lib/catalog/filter';
 import { LEERE_KRITERIEN } from '@/lib/catalog/kriterien';
 
@@ -148,4 +150,42 @@ export function gewichtsUebersicht(art: TabellenArt): GewichtsUebersicht {
 export function gewichtsSpanne(art: TabellenArt): { min: number; max: number } {
   const u = gewichtsUebersicht(art);
   return { min: u.min, max: u.max };
+}
+
+// ── Druckflächen (DTF, Vorder- und Rückseite) ───────────────────────────
+
+export interface Druckflaeche {
+  breiteCm: number;
+  hoeheCm: number;
+}
+
+export interface DruckflaechenTabelle {
+  art: TabellenArt;
+  modelle: { id: string; name: string; brand: string; vorne: Record<string, Druckflaeche>; hinten: Record<string, Druckflaeche> }[];
+  groessen: readonly string[];
+}
+
+/**
+ * Größtmögliche DTF-Druckfläche je Größe für dieselben drei Modelle wie die Größentabelle. Breite = echte flache Breite (Abwicklung, wie auf
+ * der Produktseite und im Konfigurator), Höhe = Motivgrenze des Modells. Die Zahlen stammen aus `printAreaDataDtf.generated.ts` (erzeugt aus
+ * den Herstellermaßen), nichts davon steht von Hand im Text. Fehlt für eine Größe die Fläche, bricht der Build ab.
+ */
+export function druckflaechenTabelle(art: TabellenArt): DruckflaechenTabelle {
+  const modelle = groessenTabelle(art).modelle.map((m) => {
+    const flaechen = PRINT_AREA_DATA_DTF[m.id];
+    const je = (ansicht: 'front' | 'back'): Record<string, Druckflaeche> => {
+      const aus: Record<string, Druckflaeche> = {};
+      for (const g of TABELLEN_GROESSEN) {
+        const box = flaechen?.[ansicht]?.bySize?.[g];
+        if (!box) throw new Error(`Druckflächentabelle "${art}": ${m.id} hat für ${ansicht}/${g} keine DTF-Fläche.`);
+        aus[g] = {
+          breiteCm: rundeMassCm(flacheBreiteCm(0, box.boxWidthCm, { radiusCm: box.radiusCm, mitteCm: box.mitteCm })),
+          hoeheCm: box.maxHeightCm,
+        };
+      }
+      return aus;
+    };
+    return { id: m.id, name: m.name, brand: m.brand, vorne: je('front'), hinten: je('back') };
+  });
+  return { art, modelle, groessen: TABELLEN_GROESSEN };
 }

@@ -15,7 +15,7 @@ Hoodies fürs Trainerteam, T-Shirts für die Mannschaft, Polos für den Vorstand
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
-**Abschnitt „Passende Modelle“:** Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom Super Premium T · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · B&C Inspire Zipped Hood Jacket · James+Nicholson Workwear Half Zip Sweat
+**Abschnitt „Passende Modelle“:** Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · B&C Inspire Zipped Hood Jacket · James+Nicholson Workwear Half Zip Sweat
 
 ### Warum sich DTF-Transferdruck für Vereine eignet
 
@@ -40,11 +40,11 @@ Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 10 T-Shirts · Vereinslogo auf der Brust (ca. 10 × 10 cm): **20,99 €** pro Stück, gesamt 209,90 €
-- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Vereinsname auf dem Rücken (ca. 20 × 25 cm): **33,99 €** pro Stück, gesamt 339,90 €
-- 20 Polos · Vereinslogo auf der Brust (ca. 10 × 10 cm): **23,99 €** pro Stück, gesamt 479,80 €
+- 10 T-Shirts · Vereinslogo auf der Brust (ca. 10 × 10 cm): **16,99 €** pro Stück, gesamt 169,90 €
+- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Vereinsname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
+- 20 Polos · Vereinslogo auf der Brust (ca. 10 × 10 cm): **18,99 €** pro Stück, gesamt 379,80 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Valueweight T, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
 ### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
@@ -90,7 +90,7 @@ Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt 1
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
-**Abschnitt „Passende Modelle“:** Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · SOL'S Men's Plain Fleece Jacket Norman · B&C Microfleece-Duo ID501 · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom Super Premium T
+**Abschnitt „Passende Modelle“:** Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · SOL'S Men's Plain Fleece Jacket Norman · B&C Microfleece-Duo ID501 · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T
 
 ### Was für Unternehmen wichtig ist
 
@@ -115,9 +115,9 @@ Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 1 Polo · Firmenlogo auf der Brust (ca. 10 × 10 cm): **25,99 €** pro Stück (Einzelstück)
-- 10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm): **23,99 €** pro Stück, gesamt 239,90 €
-- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **33,99 €** pro Stück, gesamt 339,90 €
+- 1 Polo · Firmenlogo auf der Brust (ca. 10 × 10 cm): **32,99 €** pro Stück (Einzelstück)
+- 10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
+- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
 
 Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -155,8 +155,8 @@ Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /hoodies-b
 
 ## /abschluss-hoodies-bedrucken
 
-- **Titel** (47 Zeichen): Abschluss-Hoodies bedrucken lassen – ab 1 Stück
-- **Meta-Beschreibung** (137 Zeichen): Abi- und Abschluss-Hoodies mit Jahrgang, Namen oder Motto per DTF-Transferdruck bedrucken – ab 1 Stück, Größen frei mischbar, Preis live.
+- **Titel** (55 Zeichen): Abi-Pullover & Abschluss-Hoodies bedrucken – ab 1 Stück
+- **Meta-Beschreibung** (133 Zeichen): Abi-Pullover und Abschluss-Hoodies mit Jahrgang, Namen oder Motto per DTF-Transferdruck bedrucken – ab 1 Stück, Größen frei mischbar.
 - **Überschrift (H1):** Abschluss-Hoodies und Abi-Pullis bedrucken lassen
 - **Kleiner Vorspann über der Überschrift:** Für Jahrgänge und Klassen
 - **Linktext zu dieser Seite:** Abschluss-Hoodies
@@ -187,8 +187,8 @@ Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Vers
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 10 Hoodies · Motiv auf dem Rücken (ca. 20 × 25 cm): **29,99 €** pro Stück, gesamt 299,90 €
-- 25 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motto auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 824,75 €
+- 10 Hoodies · Motiv auf dem Rücken (ca. 20 × 25 cm): **28,99 €** pro Stück, gesamt 289,90 €
+- 25 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motto auf dem Rücken (ca. 20 × 25 cm): **31,99 €** pro Stück, gesamt 799,75 €
 
 Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -236,7 +236,7 @@ Familienfoto, Haustier oder Urlaubsmotiv: Laden Sie Ihr Foto hoch, platzieren Si
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
-**Abschnitt „Passende Modelle“:** Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom Super Premium T · Gildan Light Cotton Adult T-Shirt · B&C T-Shirt #E150 · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Iconic 195 Ringspun Premium Long Sleeve T · SOL'S Men's Long-Sleeve T-Shirt Imperial
+**Abschnitt „Passende Modelle“:** Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Gildan Light Cotton Adult T-Shirt · B&C T-Shirt #E150 · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Iconic 195 Ringspun Premium Long Sleeve T · SOL'S Men's Long-Sleeve T-Shirt Imperial
 
 ### So wird aus Ihrem Foto ein scharfer Druck
 
@@ -253,11 +253,11 @@ Der Konfigurator zeigt Ihr Motiv in Zentimetern; je Modell und Größe gilt eine
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 1 T-Shirt · Foto auf der Brust (ca. 20 × 20 cm): **22,99 €** pro Stück (Einzelstück)
-- 1 Hoodie · Foto auf der Brust (ca. 20 × 20 cm): **31,99 €** pro Stück (Einzelstück)
-- 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **21,99 €** pro Stück, gesamt 109,95 €
+- 1 T-Shirt · Foto auf der Brust (ca. 20 × 20 cm): **29,99 €** pro Stück (Einzelstück)
+- 1 Hoodie · Foto auf der Brust (ca. 20 × 20 cm): **41,99 €** pro Stück (Einzelstück)
+- 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **17,99 €** pro Stück, gesamt 89,95 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Valueweight T, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
 ### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
@@ -299,7 +299,7 @@ Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bed
 - **Kleiner Vorspann über der Überschrift:** Preise und Beispiele
 - **Linktext zu dieser Seite:** Textildruck-Preise
 
-Der Preis setzt sich aus dem Textil und der Veredelung zusammen. Das Textil beginnt bei 13,99 € (T-Shirt), 22,99 € (Hoodie) bzw. 16,99 € (Polo) pro Stück. Hinzu kommt der Druck je bedruckter Fläche, und mit größerer Menge sinkt der Stückpreis.
+Der Preis setzt sich aus dem Textil und der Veredelung zusammen. Das Textil beginnt bei 10,99 € (T-Shirt), 22,99 € (Hoodie) bzw. 13,99 € (Polo) pro Stück. Hinzu kommt der Druck je bedruckter Fläche, und mit größerer Menge sinkt der Stückpreis.
 
 Die Beispiele auf dieser Seite werden mit derselben Preisberechnung ermittelt wie im Konfigurator. Ihren genauen Preis sehen Sie dort in Echtzeit, bevor Sie etwas in den Warenkorb legen.
 
@@ -319,16 +319,16 @@ Die Staffelgrenzen gelten für die gesamte Bestellung. Liegt Ihre Menge knapp da
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 1 T-Shirt · Brustmotiv (ca. 10 × 10 cm): **22,99 €** pro Stück (Einzelstück)
-- 10 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **20,99 €** pro Stück, gesamt 209,90 €
-- 50 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **18,99 €** pro Stück, gesamt 949,50 €
-- 1 Hoodie · Brustmotiv (ca. 10 × 10 cm): **31,99 €** pro Stück (Einzelstück)
-- 10 Hoodies · Brustmotiv (ca. 10 × 10 cm): **29,99 €** pro Stück, gesamt 299,90 €
-- 10 Hoodies · Brustmotiv (ca. 10 × 10 cm) und Rückenmotiv (ca. 20 × 25 cm): **33,99 €** pro Stück, gesamt 339,90 €
-- 1 Polo · Brustmotiv (ca. 10 × 10 cm): **25,99 €** pro Stück (Einzelstück)
-- 10 Polos · Brustmotiv (ca. 10 × 10 cm): **23,99 €** pro Stück, gesamt 239,90 €
+- 1 T-Shirt · Brustmotiv (ca. 10 × 10 cm): **29,99 €** pro Stück (Einzelstück)
+- 10 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **16,99 €** pro Stück, gesamt 169,90 €
+- 50 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **13,99 €** pro Stück, gesamt 699,50 €
+- 1 Hoodie · Brustmotiv (ca. 10 × 10 cm): **41,99 €** pro Stück (Einzelstück)
+- 10 Hoodies · Brustmotiv (ca. 10 × 10 cm): **28,99 €** pro Stück, gesamt 289,90 €
+- 10 Hoodies · Brustmotiv (ca. 10 × 10 cm) und Rückenmotiv (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
+- 1 Polo · Brustmotiv (ca. 10 × 10 cm): **32,99 €** pro Stück (Einzelstück)
+- 10 Polos · Brustmotiv (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Valueweight T, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
 ### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
@@ -431,39 +431,39 @@ Welche Größe passt? Die Maße unterscheiden sich von Modell zu Modell. Diese S
 
 ### T-Shirts
 
-| Größe | Fruit of the Loom Iconic 195 Ringspun Premium T | B&C T-Shirt #E150 | Stedman Classic-T V-Neck |
+| Größe | Fruit of the Loom Super Premium T | Gildan Light Cotton Adult T-Shirt | B&C T-Shirt #E150 |
 |---|---|---|---|
-| S | 48,5 × 69,5 cm | 48 × 70 cm | 50 × 69 cm |
-| M | 53,5 × 72 cm | 51 × 72 cm | 53 × 71 cm |
-| L | 56 × 74,5 cm | 54 × 74 cm | 56 × 73 cm |
-| XL | 61 × 77 cm | 57 × 76 cm | 59 × 75 cm |
-| XXL | 66 × 78,5 cm | 60 × 78 cm | 62 × 77 cm |
+| S | 48,5 × 69,5 cm | 45,7 × 71,1 cm | 48 × 70 cm |
+| M | 53,5 × 72 cm | 50,8 × 73,7 cm | 51 × 72 cm |
+| L | 56 × 74,5 cm | 55,9 × 76,2 cm | 54 × 74 cm |
+| XL | 61 × 77 cm | 61 × 78,7 cm | 57 × 76 cm |
+| XXL | 66 × 78,5 cm | 66 × 81,3 cm | 60 × 78 cm |
 
-Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Fruit of the Loom Iconic 195 Ringspun Premium T – Classic Fit, Unisex · B&C T-Shirt #E150 – Unisex, normale Passform · Stedman Classic-T V-Neck – Unisex, normale Passform.
+Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Fruit of the Loom Super Premium T – Classic Fit, Unisex · Gildan Light Cotton Adult T-Shirt – Unisex, normale Passform · B&C T-Shirt #E150 – Unisex, normale Passform.
 
 ### Hoodies
 
-| Größe | Gildan Heavy Blend Hooded Sweatshirt | Build Your Brand Heavy Hoody | JHK Hooded Sweater |
+| Größe | Fruit of the Loom ICONIC 250 Hooded Sweat | Gildan Heavy Blend Hooded Sweatshirt | Fruit of the Loom Iconic Premium Hooded Sweat |
 |---|---|---|---|
-| S | 51 × 69 cm | 53 × 71 cm | 54 × 69 cm |
-| M | 56 × 71 cm | 56 × 73 cm | 56 × 70 cm |
-| L | 61 × 74 cm | 59 × 75 cm | 58 × 71 cm |
-| XL | 66 × 76 cm | 62 × 77 cm | 60 × 72 cm |
-| XXL | 71 × 79 cm | 65 × 79 cm | 62 × 74 cm |
+| S | 51 × 67 cm | 51 × 69 cm | 51 × 68 cm |
+| M | 56 × 69,5 cm | 56 × 71 cm | 56 × 70,5 cm |
+| L | 61 × 73,5 cm | 61 × 74 cm | 61 × 73 cm |
+| XL | 63,5 × 77 cm | 66 × 76 cm | 66 × 75,5 cm |
+| XXL | 68,5 × 80 cm | 71 × 79 cm | 71 × 78 cm |
 
-Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Gildan Heavy Blend Hooded Sweatshirt – Unisex, normale Passform · Build Your Brand Heavy Hoody – Unisex, normale Passform · JHK Hooded Sweater – Unisex, normale Passform.
+Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Fruit of the Loom ICONIC 250 Hooded Sweat – Unisex, normale Passform · Gildan Heavy Blend Hooded Sweatshirt – Unisex, normale Passform · Fruit of the Loom Iconic Premium Hooded Sweat – Unisex, normale Passform.
 
 ### Polos
 
-| Größe | Neutral Men's Classic Polo | SOL'S Unisex Pulse Polo Shirt | SOL'S Men's Polo Shirt Perfect |
+| Größe | Neutral Men's Classic Polo | B&C Unisex Polo ID.001 | SOL'S Unisex Pulse Polo Shirt |
 |---|---|---|---|
-| S | 50 × 68 cm | 49 × 70 cm | 49 × 70 cm |
-| M | 53 × 71 cm | 52 × 72 cm | 52 × 72 cm |
-| L | 56 × 74 cm | 55 × 74 cm | 55 × 74 cm |
-| XL | 59 × 77 cm | 58 × 76 cm | 58 × 76 cm |
-| XXL | 62 × 80 cm | 61 × 78 cm | 61 × 79 cm |
+| S | 50 × 68 cm | 49 × 69,5 cm | 49 × 70 cm |
+| M | 53 × 71 cm | 52,5 × 72 cm | 52 × 72 cm |
+| L | 56 × 74 cm | 56 × 74,5 cm | 55 × 74 cm |
+| XL | 59 × 77 cm | 59,5 × 77 cm | 58 × 76 cm |
+| XXL | 62 × 80 cm | 63 × 79,5 cm | 61 × 78 cm |
 
-Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Neutral Men's Classic Polo – Gerader Schnitt, normale Passform, Seitenschlitze · SOL'S Unisex Pulse Polo Shirt – Unisex, normale Passform · SOL'S Men's Polo Shirt Perfect – Unisex, normale Passform.
+Brustbreite × Länge in Zentimetern, Herstellerangaben. Passform: Neutral Men's Classic Polo – Gerader Schnitt, normale Passform, Seitenschlitze · B&C Unisex Polo ID.001 – Unisex, normale Passform · SOL'S Unisex Pulse Polo Shirt – Unisex, normale Passform.
 
 ### Kindergrößen
 
@@ -491,7 +491,131 @@ Lassen Sie jede Person ein passendes Teil nachmessen und die Maße mit der Grö�
 
 Es sind Herstellerangaben; kleine Abweichungen durch Fertigung und Material sind möglich.
 
-Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /poloshirts-besticken-bedrucken, /vereinskleidung-bedrucken, /kinderbekleidung-bedrucken
+Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /poloshirts-besticken-bedrucken, /druckgroesse-t-shirt-hoodie, /vereinskleidung-bedrucken, /kinderbekleidung-bedrucken
+
+## /druckgroesse-t-shirt-hoodie
+
+- **Titel** (52 Zeichen): Druckgröße T-Shirt, Hoodie & Polo: Druckfläche in cm
+- **Meta-Beschreibung** (146 Zeichen): Größtmögliche Druckfläche je Größe in cm: Vorder- und Rückseite von T-Shirts, Hoodies und Polos beim DTF-Druck, berechnet aus den Herstellermaßen.
+- **Überschrift (H1):** Wie groß darf der Druck auf T-Shirt, Hoodie und Polo sein?
+- **Kleiner Vorspann über der Überschrift:** Maße in Zentimetern
+- **Linktext zu dieser Seite:** Druckgröße
+
+Wie groß ein Motiv werden darf, hängt vom Modell und von der Größe ab: Ein Hoodie in S bietet weniger Platz als ein Hoodie in XXL. Diese Seite zeigt für je drei Modelle aus unserem Sortiment die größtmögliche Druckfläche in Zentimetern, getrennt nach Vorder- und Rückseite. Die Flächen aller weiteren Modelle und Größen sehen Sie im Konfigurator.
+
+### So entsteht die Druckfläche
+
+Die Breite folgt der Größentabelle des Herstellers: Sie reicht über die Brustbreite bis kurz vor die Seitennähte. Die Höhe hängt von der Form des Modells ab, zum Beispiel von Kragen und Saum.
+
+Ein Textil ist rund, ein breites Motiv wölbt sich beim Tragen deshalb leicht. Die Zahlen unten sind die flachen Maße – so, wie das Motiv auf die Folie gedruckt wird.
+
+### Beispiele für Motivgrößen
+
+- Vereinslogo oder Wappen klein auf der Brust: ca. 10 × 10 cm.
+- Motto, Name oder Jahrgang groß auf dem Rücken: ca. 20 × 25 cm.
+- Ein Motiv über die ganze Fläche: bis zu den Maßen aus den Tabellen unten.
+
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+
+### Druckfläche bei T-Shirts
+
+| Vorderseite | Fruit of the Loom Super Premium T | Gildan Light Cotton Adult T-Shirt | B&C T-Shirt #E150 |
+|---|---|---|---|
+| S | 38,9 × 47 cm | 41,5 × 47 cm | 44 × 47 cm |
+| M | 43,2 × 47 cm | 46,9 × 47 cm | 46,9 × 47 cm |
+| L | 45,5 × 47 cm | 52,3 × 47 cm | 49,6 × 47 cm |
+| XL | 49,7 × 47 cm | 56,7 × 47 cm | 53,4 × 47 cm |
+| XXL | 54 × 47 cm | 61,7 × 47 cm | 56,1 × 47 cm |
+
+| Rückseite | Fruit of the Loom Super Premium T | Gildan Light Cotton Adult T-Shirt | B&C T-Shirt #E150 |
+|---|---|---|---|
+| S | 44,3 × 47 cm | 41,5 × 47 cm | 41,7 × 47 cm |
+| M | 49,3 × 47 cm | 46,9 × 47 cm | 44,6 × 47 cm |
+| L | 51,7 × 47 cm | 52,3 × 47 cm | 46,7 × 47 cm |
+| XL | 56,7 × 47 cm | 56,7 × 47 cm | 49,6 × 47 cm |
+| XXL | 61,7 × 47 cm | 61,7 × 47 cm | 52,3 × 47 cm |
+
+Breite × Höhe der größtmöglichen Druckfläche in Zentimetern, flach gemessen – so, wie das Motiv auf die Folie gedruckt wird.
+
+### Druckfläche bei Hoodies
+
+| Vorderseite | Fruit of the Loom ICONIC 250 Hooded Sweat | Gildan Heavy Blend Hooded Sweatshirt | Fruit of the Loom Iconic Premium Hooded Sweat |
+|---|---|---|---|
+| S | 46,9 × 31,2 cm | 46,9 × 34,9 cm | 46,9 × 29,3 cm |
+| M | 51,7 × 32,3 cm | 51,7 × 35,9 cm | 51,7 × 30,4 cm |
+| L | 56,7 × 34,2 cm | 56,7 × 37,5 cm | 56,7 × 31,4 cm |
+| XL | 59,3 × 35,8 cm | 61,7 × 38,5 cm | 61,7 × 32,5 cm |
+| XXL | 64,3 × 37,2 cm | 66,8 × 40 cm | 66,8 × 33,6 cm |
+
+| Rückseite | Fruit of the Loom ICONIC 250 Hooded Sweat | Gildan Heavy Blend Hooded Sweatshirt | Fruit of the Loom Iconic Premium Hooded Sweat |
+|---|---|---|---|
+| S | 46,9 × 47 cm | 46,9 × 47 cm | 46,9 × 47 cm |
+| M | 51,7 × 47 cm | 51,7 × 47 cm | 51,7 × 47 cm |
+| L | 56,7 × 47 cm | 56,7 × 47 cm | 56,7 × 47 cm |
+| XL | 59,3 × 47 cm | 60,9 × 47 cm | 61,7 × 47 cm |
+| XXL | 64,3 × 47 cm | 65,9 × 47 cm | 66,8 × 47 cm |
+
+Breite × Höhe der größtmöglichen Druckfläche in Zentimetern, flach gemessen – so, wie das Motiv auf die Folie gedruckt wird.
+
+### Druckfläche bei Polos
+
+| Vorderseite | Neutral Men's Classic Polo | B&C Unisex Polo ID.001 | SOL'S Unisex Pulse Polo Shirt |
+|---|---|---|---|
+| S | 46,1 × 47 cm | 44,7 × 47 cm | 44,7 × 47 cm |
+| M | 49 × 47 cm | 48,7 × 47 cm | 48,4 × 47 cm |
+| L | 51,7 × 47 cm | 51,7 × 47 cm | 51,1 × 47 cm |
+| XL | 54,6 × 47 cm | 55,8 × 47 cm | 54 × 47 cm |
+| XXL | 58,3 × 47 cm | 59 × 47 cm | 56,7 × 47 cm |
+
+| Rückseite | Neutral Men's Classic Polo | B&C Unisex Polo ID.001 | SOL'S Unisex Pulse Polo Shirt |
+|---|---|---|---|
+| S | 46,1 × 47 cm | 44,7 × 47 cm | 44,7 × 47 cm |
+| M | 49 × 47 cm | 48,7 × 47 cm | 48,4 × 47 cm |
+| L | 51,7 × 47 cm | 51,7 × 47 cm | 51,1 × 47 cm |
+| XL | 54,6 × 47 cm | 55,8 × 47 cm | 54 × 47 cm |
+| XXL | 58,3 × 47 cm | 59 × 47 cm | 56,7 × 47 cm |
+
+Breite × Höhe der größtmöglichen Druckfläche in Zentimetern, flach gemessen – so, wie das Motiv auf die Folie gedruckt wird.
+
+### Mehrere Größen in einem Auftrag
+
+Ein Motiv wird einmal platziert und auf jeder bestellten Größe gleich groß gedruckt. Deshalb gilt die Druckfläche der kleinsten Größe im Auftrag: Dort muss das Motiv noch passen.
+
+### Passt die Datei zur Druckgröße?
+
+Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt. Wie viele, rechnet der Auflösungsrechner vor; im Konfigurator zeigt eine Ampel die Qualität Ihrer Datei bei der gewählten Größe.
+
+### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+
+1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
+2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
+3. DTF-Druck bestellen Sie direkt im Konfigurator.
+4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
+
+### Häufige Fragen
+
+**Wie groß darf ein Motiv auf einem T-Shirt höchstens sein?**
+
+Das hängt vom Modell und von der Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei T-Shirts in den Größen S bis XXL; für jedes Modell sehen Sie die Fläche samt Maßen in Zentimetern im Konfigurator.
+
+**Ist die Druckfläche in allen Größen gleich groß?**
+
+Nein. Sie wächst mit der Größe, weil die Brustbreite wächst. Die Tabellen zeigen die Fläche für S bis XXL.
+
+**Wie groß ist die Druckfläche, wenn ich mehrere Größen bestelle?**
+
+Es gilt die Fläche der kleinsten Größe im Auftrag, denn das Motiv wird auf jeder Größe gleich groß gedruckt.
+
+**Kann ich auch auf die Ärmel drucken?**
+
+Bei vielen Modellen gibt es zusätzlich Ärmelflächen. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+
+**Welche Dateien kann ich für ein großes Motiv hochladen?**
+
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Prüfen Sie mit dem Auflösungsrechner, wie viele Pixel Ihr Bild für die gewünschte Breite braucht.
+
+Weiterführende Links am Seitenende: /groessentabelle-t-shirts-hoodies, /druckaufloesung-rechner, /druckdaten-vorbereiten, /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /poloshirts-besticken-bedrucken
 
 ## /stoffgewicht-t-shirt-hoodie
 
@@ -517,7 +641,7 @@ Das Stoffgewicht, auch Flächengewicht genannt, gibt an, wie viel ein Quadratmet
 |---|---|---|
 | unter 150 g/m² | 12 | B&C T-Shirt #E150 (145 g/m²), B&C T-Shirt #E150 / Women (145 g/m²), Fruit of the Loom Original T (145 g/m²) |
 | 150 bis 169 g/m² | 27 | Gildan Light Cotton Adult T-Shirt (150 g/m²), Stedman Classic-T for women (155 g/m²), Stedman Classic-T V-Neck (155 g/m²) |
-| 170 bis 199 g/m² | 17 | Fruit of the Loom Iconic 195 Ringspun Premium T (195 g/m²), Fruit of the Loom Ladies Iconic 195 Ringspun Premium T (195 g/m²), Stedman Comfort-T (185 g/m²) |
+| 170 bis 199 g/m² | 17 | Fruit of the Loom Ladies Iconic 195 Ringspun Premium T (195 g/m²), Fruit of the Loom Iconic 195 Ringspun Premium T (195 g/m²), Stedman Comfort-T (185 g/m²) |
 | ab 200 g/m² | 8 | Fruit of the Loom Super Premium T (205 g/m²), Gildan Ultra Cotton T-Shirt (203 g/m²), Russell Classic Heavyweight T-Shirt (215 g/m²) |
 
 ### Hoodies nach Stoffgewicht
@@ -872,7 +996,7 @@ Ein Hoodie mit Lieblingsmotiv, T-Shirts für die ganze Familie, ein Foto auf dem
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
-**Abschnitt „Passende Modelle“:** Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium Long Sleeve T · SOL'S Men's Long-Sleeve T-Shirt Imperial
+**Abschnitt „Passende Modelle“:** Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom Iconic 195 Ringspun Premium Long Sleeve T · SOL'S Men's Long-Sleeve T-Shirt Imperial
 
 ### Ideen für persönliche Geschenke
 
@@ -899,11 +1023,11 @@ Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren S
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 1 Hoodie · Motiv auf der Brust (ca. 10 × 10 cm): **31,99 €** pro Stück (Einzelstück)
-- 2 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm): **31,99 €** pro Stück, gesamt 63,98 €
-- 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **21,99 €** pro Stück, gesamt 109,95 €
+- 1 Hoodie · Motiv auf der Brust (ca. 10 × 10 cm): **41,99 €** pro Stück (Einzelstück)
+- 2 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm): **36,99 €** pro Stück, gesamt 73,98 €
+- 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **17,99 €** pro Stück, gesamt 89,95 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, Fruit of the Loom Valueweight T. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C T-Shirt #E150. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
 ### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
@@ -953,7 +1077,7 @@ Gleiche Shirts für die ganze Gruppe: JGA, Geburtstag, Klassentreffen oder Famil
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
-**Abschnitt „Passende Modelle“:** Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom Super Premium T · Gildan Light Cotton Adult T-Shirt · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat
+**Abschnitt „Passende Modelle“:** Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Gildan Light Cotton Adult T-Shirt · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat
 
 ### Eine Bestellung, viele Größen
 
@@ -977,11 +1101,11 @@ Die Produktion dauert regulär 3 bis 4 Werktage, der anschließende Versand erfo
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm): **21,99 €** pro Stück, gesamt 175,92 €
-- 8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm) und Spruch auf dem Rücken (ca. 25 × 10 cm): **25,99 €** pro Stück, gesamt 207,92 €
-- 10 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm): **29,99 €** pro Stück, gesamt 299,90 €
+- 8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm): **17,99 €** pro Stück, gesamt 143,92 €
+- 8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm) und Spruch auf dem Rücken (ca. 25 × 10 cm): **22,99 €** pro Stück, gesamt 183,92 €
+- 10 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm): **28,99 €** pro Stück, gesamt 289,90 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Valueweight T, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
 ### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
@@ -1027,7 +1151,7 @@ Sie möchten Merch für Ihre Community, Ihre Band oder Ihr kleines Label ausprob
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
-**Abschnitt „Passende Modelle“:** Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom Super Premium T · B&C Inspire Zipped Hood Jacket · James+Nicholson Workwear Half Zip Sweat
+**Abschnitt „Passende Modelle“:** Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · B&C Inspire Zipped Hood Jacket · James+Nicholson Workwear Half Zip Sweat
 
 ### Erst ein Muster, dann die Menge
 
@@ -1049,11 +1173,11 @@ Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
 
 Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 
-- 1 Hoodie · Logo auf der Brust (ca. 10 × 10 cm): **31,99 €** pro Stück (Einzelstück)
-- 5 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm): **21,99 €** pro Stück, gesamt 109,95 €
-- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motiv auf dem Rücken (ca. 20 × 25 cm): **33,99 €** pro Stück, gesamt 339,90 €
+- 1 Hoodie · Logo auf der Brust (ca. 10 × 10 cm): **41,99 €** pro Stück (Einzelstück)
+- 5 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm): **17,99 €** pro Stück, gesamt 89,95 €
+- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motiv auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, Fruit of the Loom Valueweight T. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C T-Shirt #E150. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
 ### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
@@ -1115,6 +1239,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 - [Textildruck-Preise](https://www.ergermany.de/textildruck-preise)
 - [Auflösungsrechner](https://www.ergermany.de/druckaufloesung-rechner)
 - [Größentabelle](https://www.ergermany.de/groessentabelle-t-shirts-hoodies)
+- [Druckgröße](https://www.ergermany.de/druckgroesse-t-shirt-hoodie)
 - [Stoffgewicht](https://www.ergermany.de/stoffgewicht-t-shirt-hoodie)
 - [Logo vorbereiten](https://www.ergermany.de/druckdaten-vorbereiten)
 - [Druckdatei prüfen](https://www.ergermany.de/druckdatei-pruefen)
@@ -1133,6 +1258,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 - [Jacken](https://www.ergermany.de/jacken-bedrucken)
 - [Zip-Hoodies](https://www.ergermany.de/zip-hoodies-bedrucken)
 - [Kinderbekleidung](https://www.ergermany.de/kinderbekleidung-bedrucken)
+- [Sportbekleidung](https://www.ergermany.de/sportbekleidung-bedrucken)
 
 ## Marken
 - [Gildan](https://www.ergermany.de/gildan-bedrucken)
@@ -1145,6 +1271,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 - [Neutral](https://www.ergermany.de/neutral-bedrucken)
 - [SOL'S](https://www.ergermany.de/sols-bedrucken)
 - [EarthPositive](https://www.ergermany.de/earthpositive-bedrucken)
+- [Just Cool](https://www.ergermany.de/just-cool-bedrucken)
 
 ```
 

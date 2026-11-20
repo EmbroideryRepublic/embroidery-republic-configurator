@@ -14,7 +14,7 @@ import { alsKategorieBeispiele, anlassFakten, fuelleAnlass, AUFLOESUNG_BREITEN_C
 import { MIN_DPI, OK_DPI } from '../src/lib/canvas/logoQualitaet.ts';
 import { formatiereGeld } from '../src/lib/format.ts';
 import { llmsText } from '../src/lib/seo/llmsText.ts';
-import { gewichtsUebersicht, groessenTabelle, markeUndName, type TabellenArt } from '../src/lib/seo/katalogAuswertung.ts';
+import { druckflaechenTabelle, gewichtsUebersicht, groessenTabelle, markeUndName, type TabellenArt } from '../src/lib/seo/katalogAuswertung.ts';
 import { zahl } from '../src/lib/format.ts';
 
 const zeilen: string[] = [];
@@ -70,6 +70,17 @@ for (const seite of ANLASS_SEITEN) {
       z('| Stoffgewicht | Modelle | Beispiele |');
       z('|---|---|---|');
       for (const k of u.klassen.filter((x) => x.anzahl > 0)) z(`| ${k.band.label} | ${k.anzahl} | ${k.beispiele.map((b) => `${markeUndName(b)} (${b.gewicht} g/m²)`).join(', ') || '–'} |`);
+      z();
+    }
+    if (a.tabelle?.startsWith('druck:')) {
+      const t = druckflaechenTabelle(a.tabelle.slice(6) as TabellenArt);
+      for (const [schluessel, titel] of [['vorne', 'Vorderseite'], ['hinten', 'Rückseite']] as const) {
+        z('| ' + titel + ' | ' + t.modelle.map((m) => markeUndName(m)).join(' | ') + ' |');
+        z('|---|' + t.modelle.map(() => '---|').join(''));
+        for (const g of t.groessen) z(`| ${g} | ` + t.modelle.map((m) => `${zahl(m[schluessel][g]!.breiteCm)} × ${zahl(m[schluessel][g]!.hoeheCm)} cm`).join(' | ') + ' |');
+        z();
+      }
+      z('Breite × Höhe der größtmöglichen Druckfläche in Zentimetern, flach gemessen – so, wie das Motiv auf die Folie gedruckt wird.');
       z();
     }
     if (a.tabelle === 'aufloesung') {

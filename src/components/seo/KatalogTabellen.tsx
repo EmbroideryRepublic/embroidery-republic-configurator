@@ -4,7 +4,7 @@
  */
 import Link from 'next/link';
 import { zahl } from '@/lib/format';
-import { gewichtsUebersicht, groessenTabelle, markeUndName, type TabellenArt } from '@/lib/seo/katalogAuswertung';
+import { druckflaechenTabelle, gewichtsUebersicht, groessenTabelle, markeUndName, type TabellenArt } from '@/lib/seo/katalogAuswertung';
 import { produktTypLabelPlural } from '@/config/products/types';
 
 const TABELLE = 'mt-8 overflow-x-auto rounded-[24px] border border-brand/[0.08] bg-white';
@@ -110,6 +110,58 @@ export function GewichtsKlassenBlock({ art }: { art: TabellenArt }) {
           </tbody>
         </table>
       </div>
+    </>
+  );
+}
+
+export function DruckflaechenBlock({ art }: { art: TabellenArt }) {
+  const t = druckflaechenTabelle(art);
+  const seiten = [
+    { schluessel: 'vorne' as const, titel: 'Vorderseite' },
+    { schluessel: 'hinten' as const, titel: 'Rückseite' },
+  ];
+  return (
+    <>
+      {seiten.map((s) => (
+        <div key={s.schluessel} className={TABELLE}>
+          <table className="w-full min-w-[480px] border-collapse text-left text-[15px]">
+            <caption className="sr-only">
+              Größtmögliche Druckfläche {produktTypLabelPlural(art)}, {s.titel}: Breite × Höhe in Zentimetern je Größe und Beispielmodell
+            </caption>
+            <thead>
+              <tr className="border-b border-brand/[0.08]">
+                <th scope="col" className={TH}>
+                  {s.titel}
+                </th>
+                {t.modelle.map((m) => (
+                  <th key={m.id} scope="col" className={TH}>
+                    <Link href={`/produkt/${m.id}`} className="text-gold-dark underline underline-offset-2 hover:text-gold">
+                      {markeUndName(m)}
+                    </Link>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className={ZEILE}>
+              {t.groessen.map((g) => (
+                <tr key={g}>
+                  <th scope="row" className="px-4 py-4 font-medium text-brand sm:px-6">
+                    {g}
+                  </th>
+                  {t.modelle.map((m) => (
+                    <td key={m.id} className="px-4 py-4 tabular-nums text-brand/80 sm:px-6">
+                      {zahl(m[s.schluessel][g]!.breiteCm)} × {zahl(m[s.schluessel][g]!.hoeheCm)} cm
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
+      <p className="mt-4 text-[13px] leading-relaxed text-brand/70">
+        Breite × Höhe der größtmöglichen Druckfläche in Zentimetern, flach gemessen – so, wie das Motiv auf die Folie gedruckt wird.
+      </p>
     </>
   );
 }

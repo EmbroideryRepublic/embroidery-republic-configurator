@@ -33,8 +33,8 @@ export interface AnlassAbschnitt {
   punkte?: string[];
   /**
    * Berechneter Baustein statt Fließtext: 'aufloesung' = Tabelle „Mindestbreite des Bildes in Pixeln“, 'rechner' = Auflösungsrechner, 'dateipruefung' = Datei prüfen + hochskalieren (Browser, nichts wird hochgeladen),
-   * 'groessen:<art>' = Größentabelle dreier Modelle, 'gewicht:<art>' = Gewichtsklassen der Art (beide aus dem Katalog,
-   * lib/seo/katalogAuswertung.ts).
+   * 'groessen:<art>' = Größentabelle dreier Modelle, 'gewicht:<art>' = Gewichtsklassen der Art, 'druck:<art>' = größtmögliche
+   * DTF-Druckfläche je Größe (alle drei aus dem Katalog bzw. den erzeugten Flächendaten, lib/seo/katalogAuswertung.ts).
    */
   tabelle?:
     | 'aufloesung'
@@ -45,7 +45,10 @@ export interface AnlassAbschnitt {
     | 'groessen:polo'
     | 'gewicht:tshirt'
     | 'gewicht:hoodie'
-    | 'gewicht:polo';
+    | 'gewicht:polo'
+    | 'druck:tshirt'
+    | 'druck:hoodie'
+    | 'druck:polo';
 }
 
 export interface AnlassBeispiel {
@@ -289,11 +292,11 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
   {
     slug: 'abschluss-hoodies-bedrucken',
     kurzname: 'Abschluss-Hoodies',
-    titel: 'Abschluss-Hoodies bedrucken lassen – ab 1 Stück',
+    titel: 'Abi-Pullover & Abschluss-Hoodies bedrucken – ab 1 Stück',
     h1: 'Abschluss-Hoodies und Abi-Pullis bedrucken lassen',
     eyebrow: 'Für Jahrgänge und Klassen',
     beschreibung:
-      'Abi- und Abschluss-Hoodies mit Jahrgang, Namen oder Motto per DTF-Transferdruck bedrucken – ab 1 Stück, Größen frei mischbar, Preis live.',
+      'Abi-Pullover und Abschluss-Hoodies mit Jahrgang, Namen oder Motto per DTF-Transferdruck bedrucken – ab 1 Stück, Größen frei mischbar.',
     einleitung: [
       'Ein Hoodie für den ganzen Jahrgang: Wählen Sie unter {anzahl} Modellen ({arten}), setzen Sie Jahrgang, Motto oder Namen als Text oder laden Sie ein eigenes Motiv hoch. Der Konfigurator zeigt Vorder- und Rückseite mit Preis in Echtzeit.',
       EINLEITUNG_DTF,
@@ -668,8 +671,88 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       't-shirts-bedrucken-besticken',
       'hoodies-bedrucken-besticken',
       'poloshirts-besticken-bedrucken',
+      'druckgroesse-t-shirt-hoodie',
       'vereinskleidung-bedrucken',
       'kinderbekleidung-bedrucken',
+    ],
+  },
+
+  // ── Ratgeber: Druckgröße ───────────────────────────────────────────
+  {
+    slug: 'druckgroesse-t-shirt-hoodie',
+    kurzname: 'Druckgröße',
+    titel: 'Druckgröße T-Shirt, Hoodie & Polo: Druckfläche in cm',
+    h1: 'Wie groß darf der Druck auf T-Shirt, Hoodie und Polo sein?',
+    eyebrow: 'Maße in Zentimetern',
+    beschreibung:
+      'Größtmögliche Druckfläche je Größe in cm: Vorder- und Rückseite von T-Shirts, Hoodies und Polos beim DTF-Druck, berechnet aus den Herstellermaßen.',
+    einleitung: [
+      'Wie groß ein Motiv werden darf, hängt vom Modell und von der Größe ab: Ein Hoodie in S bietet weniger Platz als ein Hoodie in XXL. Diese Seite zeigt für je drei Modelle aus unserem Sortiment die größtmögliche Druckfläche in Zentimetern, getrennt nach Vorder- und Rückseite. Die Flächen aller weiteren Modelle und Größen sehen Sie im Konfigurator.',
+    ],
+    kacheln: [],
+    abschnitte: [
+      {
+        ueberschrift: 'So entsteht die Druckfläche',
+        absaetze: [
+          'Die Breite folgt der Größentabelle des Herstellers: Sie reicht über die Brustbreite bis kurz vor die Seitennähte. Die Höhe hängt von der Form des Modells ab, zum Beispiel von Kragen und Saum.',
+          'Ein Textil ist rund, ein breites Motiv wölbt sich beim Tragen deshalb leicht. Die Zahlen unten sind die flachen Maße – so, wie das Motiv auf die Folie gedruckt wird.',
+        ],
+      },
+      {
+        ueberschrift: 'Beispiele für Motivgrößen',
+        punkte: [
+          'Vereinslogo oder Wappen klein auf der Brust: ca. 10 × 10 cm.',
+          'Motto, Name oder Jahrgang groß auf dem Rücken: ca. 20 × 25 cm.',
+          'Ein Motiv über die ganze Fläche: bis zu den Maßen aus den Tabellen unten.',
+        ],
+        absaetze: [ABSATZ_POSITIONEN],
+      },
+      { ueberschrift: 'Druckfläche bei T-Shirts', tabelle: 'druck:tshirt' },
+      { ueberschrift: 'Druckfläche bei Hoodies', tabelle: 'druck:hoodie' },
+      { ueberschrift: 'Druckfläche bei Polos', tabelle: 'druck:polo' },
+      {
+        ueberschrift: 'Mehrere Größen in einem Auftrag',
+        absaetze: [
+          'Ein Motiv wird einmal platziert und auf jeder bestellten Größe gleich groß gedruckt. Deshalb gilt die Druckfläche der kleinsten Größe im Auftrag: Dort muss das Motiv noch passen.',
+        ],
+      },
+      {
+        ueberschrift: 'Passt die Datei zur Druckgröße?',
+        absaetze: [
+          'Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt. Wie viele, rechnet der Auflösungsrechner vor; im Konfigurator zeigt eine Ampel die Qualität Ihrer Datei bei der gewählten Größe.',
+        ],
+      },
+    ],
+    beispiele: [],
+    fragen: [
+      {
+        q: 'Wie groß darf ein Motiv auf einem T-Shirt höchstens sein?',
+        a: 'Das hängt vom Modell und von der Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei T-Shirts in den Größen S bis XXL; für jedes Modell sehen Sie die Fläche samt Maßen in Zentimetern im Konfigurator.',
+      },
+      {
+        q: 'Ist die Druckfläche in allen Größen gleich groß?',
+        a: 'Nein. Sie wächst mit der Größe, weil die Brustbreite wächst. Die Tabellen zeigen die Fläche für S bis XXL.',
+      },
+      {
+        q: 'Wie groß ist die Druckfläche, wenn ich mehrere Größen bestelle?',
+        a: 'Es gilt die Fläche der kleinsten Größe im Auftrag, denn das Motiv wird auf jeder Größe gleich groß gedruckt.',
+      },
+      {
+        q: 'Kann ich auch auf die Ärmel drucken?',
+        a: 'Bei vielen Modellen gibt es zusätzlich Ärmelflächen. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.',
+      },
+      {
+        q: 'Welche Dateien kann ich für ein großes Motiv hochladen?',
+        a: `${A_DATEIEN} Prüfen Sie mit dem Auflösungsrechner, wie viele Pixel Ihr Bild für die gewünschte Breite braucht.`,
+      },
+    ],
+    verwandt: [
+      'groessentabelle-t-shirts-hoodies',
+      'druckaufloesung-rechner',
+      'druckdaten-vorbereiten',
+      't-shirts-bedrucken-besticken',
+      'hoodies-bedrucken-besticken',
+      'poloshirts-besticken-bedrucken',
     ],
   },
 

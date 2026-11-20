@@ -28,6 +28,7 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { protokoll } from '@/lib/observability/log';
 import { meldeEreignis } from '@/lib/observability/ereignis';
 import { processDueSupplierOrders } from '@/lib/suppliers/lifecycle/orchestrator';
+import { loescheAlteZwischenablage } from '@/lib/upload/zwischenablage';
 import { holeOffeneRechnungenNach } from '@/lib/orders/orderCompletion';
 import { holeOffeneBestellbestaetigungenNach } from '@/lib/orders/orderCompletion';
 import { holeOffeneBetreibermeldungenNach } from '@/lib/orders/orderCompletion';
@@ -172,10 +173,22 @@ async function handle(req: NextRequest): Promise<NextResponse> {
     betreibermeldungenNachgeholt = { fehler: meldung };
   }
 
+  // Zwischenablage großer Logo-Dateien: Teile aus abgebrochenen Bestellungen (älter als zwei Tage) entfernen (lib/upload/zwischenablage.ts).
+  // Einzeln abgefangen wie die Schritte oben: Eine misslungene Aufräumung ist kein Grund, die Lieferantenverarbeitung scheitern zu lassen.
+  let zwischenablageGeleert: number | { fehler: string };
+  try {
+    zwischenablageGeleert = await loescheAlteZwischenablage();
+  } catch (fehler) {
+    const meldung = fehler instanceof Error ? fehler.message : String(fehler);
+    protokoll.fehler('CRON', 'zwischenablage_aufraeumen_fehlgeschlagen', meldung);
+    zwischenablageGeleert = { fehler: meldung };
+  }
+
   return NextResponse.json({
     ok: true,
     reclaimed,
     wartung,
+    zwischenablageGeleert,
     abschluesseNachgeholt,
     rechnungenNachgeholt,
     erstattungenNachgeholt,

@@ -4,7 +4,7 @@
  * ausschließlich serverseitig (Server Actions) über den Admin-Client, da
  * der Bucket bewusst privat ist (siehe supabase/migrations/0002_...).
  */
-import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 // Als nodePath eingebunden: die Funktionen dieser Datei haben einen
 // Parameter namens `path` (den Storage-Pfad), der sonst verdeckt würde.
 import nodePath from 'node:path';
@@ -263,10 +263,44 @@ export async function removeProductionFiles(prefix: string): Promise<void> {
   const dateien = await listProductionFileInfo(prefix);
   if (dateien.size === 0) return;
 
+  // Testmodus: die lokale Ablage wird gelöscht, nicht der echte Speicher.
+  if (istTestmodus()) {
+    await Promise.all([...dateien.keys()].map((name) => rm(testPfad(`${prefix}/${name}`), { force: true })));
+    return;
+  }
+
   const pfade = [...dateien.keys()].map((name) => `${prefix}/${name}`);
   const admin = createAdminClient();
   const { error } = await admin.storage.from(PRODUCTION_FILES_BUCKET).remove(pfade);
   if (error) {
     console.error(`[removeFiles] Löschen unter ${prefix} teilweise/vollständig fehlgeschlagen:`, error.message);
   }
+}
+
+/**
+ * Namen der UNTERORDNER direkt unter einem Präfix (z. B. alle Tagesordner unter „staging“). Der Speicher kennt Ordner nur als Namensteile;
+ * in der Liste erscheinen sie ohne Metadaten. Für die Aufräumregel der Zwischenablage. Leere Liste bei unsicherem Präfix oder fehlendem Ordner.
+ */
+export async function listeUnterordner(prefix: string): Promise<string[]> {
+  if (!istSichererSpeicherpfad(prefix)) return [];
+
+  if (istTestmodus()) {
+    try {
+      const eintraege = await readdir(testPfad(prefix), { withFileTypes: true });
+      return eintraege.filter((e) => e.isDirectory()).map((e) => e.name);
+    } catch {
+      return [];
+    }
+  }
+
+  const admin = createAdminClient();
+  const namen: string[] = [];
+  const SEITENGROESSE = 1000;
+  for (let offset = 0; ; offset += SEITENGROESSE) {
+    const { data, error } = await admin.storage.from(PRODUCTION_FILES_BUCKET).list(prefix, { limit: SEITENGROESSE, offset });
+    if (error || !data) break;
+    for (const eintrag of data) if (!eintrag.metadata) namen.push(eintrag.name);
+    if (data.length < SEITENGROESSE) break;
+  }
+  return namen;
 }

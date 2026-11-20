@@ -12,10 +12,12 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { berechneLogoDpi, stufeFuerDpi, logoQualitaetText, type QualityLevel as QualityStufe } from '@/lib/canvas/logoQualitaet';
 import { flacheBreiteCm } from '@/config/abwicklung';
+import { QUELLDATEI_MAX_MB } from '@/config/upload';
 import type { LogoElement, PrintArea } from '@/types';
 
 const ACCEPTED_TYPES = ['image/png', 'image/svg+xml', 'application/pdf', 'image/jpeg'];
-const MAX_FILE_SIZE_MB = 10;
+// Quelldateien bis 25 MB (config/upload.ts); große Dateien gehen beim Absenden in Teilen an den Server.
+const MAX_FILE_SIZE_MB = QUELLDATEI_MAX_MB;
 const START_SIZE_RATIO = 0.5;
 const START_BEZUG_BREITE_CM = 30;
 

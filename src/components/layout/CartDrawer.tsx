@@ -10,6 +10,7 @@ import { getProduct } from '@/config/products';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { submitOrder, submitInquiry, istPaypalVerfuegbar, istKarteVerfuegbar } from '@/lib/actions/orders';
+import { uebertrageGrosseLogos } from '@/lib/upload/zwischenablageClient';
 import { ladeCheckoutVorbelegung } from '@/lib/actions/konto';
 import { useSubmitGuard, verwirfGespeicherteKennung } from '@/lib/hooks/useSubmitGuard';
 import { SHIPPING_RATES, calculateShipping, landCodeForCountry } from '@/config/shipping';
@@ -726,9 +727,10 @@ function CheckoutForm({ items, total, formatPrice, waehrungHinweis, onOrderPlace
     // `submit` lässt nur einen Vorgang gleichzeitig zu und reicht dieselbe
     // Absendekennung an jede Wiederholung weiter – daraus entsteht auf dem
     // Server niemals eine zweite Bestellung.
-    const result = await submit((clientRequestId) =>
+    const result = await submit(async (clientRequestId) =>
       submitOrder({
-        items,
+        // Große Logos gehen vorab in Teilen in die Zwischenablage; die Bestellung trägt nur Verweise (config/upload.ts).
+        items: await uebertrageGrosseLogos(items),
         contact: {
           firstName: form.firstName,
           lastName: form.lastName,
@@ -1098,9 +1100,9 @@ function InquiryForm({ items, total, formatPrice, nurAnfrage, hatStickerei, onSe
     e.preventDefault();
     if (!isValid) return;
 
-    const result = await submit((clientRequestId) =>
+    const result = await submit(async (clientRequestId) =>
       submitInquiry({
-        items,
+        items: await uebertrageGrosseLogos(items),
         contact: { name: form.name, companyName: form.companyName, email: form.email, phone: form.phone },
         message: form.message,
         clientRequestId,

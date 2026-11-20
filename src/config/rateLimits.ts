@@ -82,6 +82,20 @@ export const RATE_LIMITS = {
     begruendung: 'Kein Zahlungsvorgang, geringerer Aufwand je Vorgang – darf höher liegen als die Bestellung.',
   },
 
+  /**
+   * Teile großer Logo-Dateien (POST /api/upload/teil, je höchstens 3 MB). Eine 45-MB-Datei sind 15 Teile; Original und Anzeigebild eines
+   * Logos zusammen 30, zehn große Logos in einer Bestellung 300.
+   */
+  uploadTeil: {
+    id: 'upload_teil',
+    max: 600,
+    fensterSekunden: STUNDE,
+    merkmal: 'ip',
+    begruendung:
+      'Zwei Dateien je Logo zu je bis zu 15 Teilen, mehrere Logos, dazu Wiederholungen bei schwacher Verbindung. 600 Teile je Stunde ' +
+      '(rund 1,8 GB) reichen für jede echte Bestellung und begrenzen, wie viel ein Skript in den Zwischenspeicher schreiben kann.',
+  },
+
   /** Übernimmt den bisher im Prozessspeicher gehaltenen Wert. */
   kontakt: {
     id: 'kontakt',

@@ -7,7 +7,7 @@ Vom Hochladen bis zur Löschung. Stand 2026-07-22.
 ## 1. Der Weg einer Datei — Ist-Aufnahme
 
 ```
-Kundschaft wählt Datei (SVG · PNG · PDF, max. 10 MB)
+Kundschaft wählt Datei (SVG · PNG · JPG · PDF, max. 25 MB)
         ↓  LogoUploader.tsx – Prüfung im Browser
 fileToImage()      PDF → PNG (pdfjs) · PNG/SVG direkt
         ↓
@@ -52,7 +52,7 @@ sich auf den Ablauf zu verlassen.
 | Prüfung | Browser | Server |
 |---|---|---|
 | Dateityp | ja (`ACCEPTED_TYPES`) | **nein** |
-| Größe | ja (10 MB) | **nein** |
+| Größe | ja (25 MB Quelldatei) | **nein** |
 | tatsächlicher Inhalt | nein | **nein** |
 | Bildabmessungen | nein | **nein** |
 | Löschung / Aufräumen | – | **nein** |
@@ -74,8 +74,8 @@ Anfragen genügen für einen Absturz der Serverinstanz.
 
 **Maßnahme:** Größe **vor** dem Dekodieren an der Länge der Base64-Zeichenkette
 prüfen. Base64 wächst um Faktor 4/3; aus der Zeichenlänge lässt sich die
-Bytegröße berechnen, ohne einen einzigen Byte zu dekodieren. Grenze: **10 MB**,
-identisch zum Browser.
+Bytegröße berechnen, ohne einen einzigen Byte zu dekodieren. Grenze: **45 MB** für das PNG, das der Server
+speichert (der Browser erlaubt Quelldateien bis 25 MB und wandelt sie ausnahmslos in PNG um; siehe Abschnitt 8).
 
 ### B2 — Falsch deklarierter Inhalt
 
@@ -211,7 +211,7 @@ nur Ordner ohne Bestellung.
 
 | Grenze | Wert | Begründung |
 |---|---|---|
-| Dateigröße | 10 MB | identisch zur Browserprüfung; ein PNG-Logo liegt weit darunter |
+| Dateigröße (PNG, gespeichert) | 45 MB | Quelldateien bis 25 MB; ein JPEG wird als PNG leicht doppelt so groß. Unter den 50 MB je Datei des Speichers |
 | Bildbreite | 8.000 px | bei 300 dpi ≈ 68 cm, größer als jede Druckfläche |
 | Bildhöhe | 8.000 px | dito |
 | erlaubter Typ | ausschließlich `image/png` | einziges Format, das der Client erzeugt |
@@ -289,3 +289,37 @@ Ursache benennt statt erst tief im Upload aufzutreten.
 Abgewiesen werden: `..` in jeder Form, absolute Pfade, Backslashes,
 Null-Bytes, Leer- und Sonderzeichen, übermäßig lange Pfade und Segmente.
 29 Tests.
+
+---
+
+## 8. Große Dateien (bis 25 MB) – Zwischenablage in Teilen
+
+Stand 2026-11-20 (Betreiberwunsch: mindestens 25 MB Bild-Upload).
+
+**Warum eine Umstellung nötig war:** Die Logos reisten als Data-URL im Aufruf der Server-Action `submitOrder`/`submitInquiry` mit, Original und
+Anzeigebild jeweils einmal. Vercel nimmt je Funktionsaufruf aber höchstens **4,5 MB** Anfragekörper an (gemessen am 2026-11-20 gegen
+ergermany.de: 4 MB gehen durch, 5 MB werden mit 413 `FUNCTION_PAYLOAD_TOO_LARGE` abgewiesen). Das frühere 10-MB-Limit hat daher nie bis zur
+Bestellung getragen; schon ein Logo ab etwa 1,7 MB sprengte den Bestell-Aufruf.
+
+**Ablauf jetzt:**
+
+```
+Browser: Data-URL > 256 KB (DIREKT_MAX_ZEICHEN)?
+   ja  → in Teile zu 3 MB zerlegen → POST /api/upload/teil (3 gleichzeitig, 3 Wiederholungen je Teil)
+         → Verweis  staged:<Tag>:<Ticket>:<Teile>:<Bytes>  ersetzt die Data-URL in der Kopie der Bestellung
+   nein → Data-URL bleibt wie bisher in der Bestellung
+Server:  pruefeZwischenablageVerweise()  Form, Anzahl (≤ 24), Gesamtgröße (≤ 200 MB)
+         loeseZwischenablageAuf()        Teile laden, Größen prüfen, zusammensetzen, pruefeBytes() (Größe, PNG-Signatur, Abmessungen)
+         uploadProductionFile()          am endgültigen Ort ablegen, danach Teile löschen
+```
+
+- Die Teile liegen unter `staging/<Tag>/<Ticket>/<Nr>.part` im Bucket `production-files`. Der Tag (UTC, JJJJMMTT) ist Ordnername und Grundlage der
+  Aufräumregel; angenommen werden nur heute und gestern.
+- Aufräumen: Der Wartungsaufruf (`/api/cron/process-supplier-orders`) löscht Tagesordner, die älter als zwei Tage sind
+  (`loescheAlteZwischenablage`). Nach einer erfolgreichen Bestellung werden die Teile sofort gelöscht.
+- Zusammensetzen läuft nacheinander (nie parallel), damit eine 45-MB-Datei nicht mehrfach gleichzeitig im Speicher liegt.
+- Rate-Limit `upload_teil`: 600 Teile je Stunde und Adresse (`config/rateLimits.ts`).
+- Stickerei: Das Anzeigebild wird für die serverseitige Stichzahl schon vor der Preisberechnung aufgelöst (`loeseStickereiVerweiseAuf`).
+- Bewusst NICHT geändert: Das Kontaktformular (Anhänge bis 5 MB als Data-URL) hat dieselbe 4,5-MB-Grenze und scheitert ab etwa 3 MB.
+
+Konfiguration: `src/config/upload.ts`. Tests: `zwischenablage.test.ts`, `zwischenablageSpeicher.test.ts`.

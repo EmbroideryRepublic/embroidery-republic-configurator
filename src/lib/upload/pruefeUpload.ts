@@ -29,8 +29,14 @@
 
 /** Grenzwerte an einer Stelle – anpassbar ohne Eingriff in die Logik. */
 export const UPLOAD_GRENZEN = {
-  /** Höchstgröße der dekodierten Datei in Bytes. Wie im Browser: 10 MB. */
-  maxBytes: 10 * 1024 * 1024,
+  /**
+   * Höchstgröße der dekodierten PNG-Datei in Bytes.
+   *
+   * Der Browser lässt Quelldateien bis 25 MB zu (QUELLDATEI_MAX_MB in config/upload.ts), wandelt sie aber ausnahmslos in PNG um
+   * (Zuschnitt, ggf. Freistellung). Ein 25-MB-JPEG ergibt als PNG leicht das Doppelte; deshalb die Grenze hier höher. Sie bleibt
+   * unter den 50 MB, die der Speicher je Datei annimmt.
+   */
+  maxBytes: 45 * 1024 * 1024,
   /** Höchste Bildbreite. Bei 300 dpi rund 68 cm – größer als jede Druckfläche. */
   maxBreitePx: 8000,
   /** Höchste Bildhöhe. */
@@ -58,7 +64,8 @@ export type Ablehnungsgrund =
   | 'leer'
   | 'unbekanntes_format'
   | 'abmessungen_unlesbar'
-  | 'zu_grosse_abmessungen';
+  | 'zu_grosse_abmessungen'
+  | 'zwischenablage_unvollstaendig';
 
 export interface UploadGeprueft {
   ok: true;
@@ -89,13 +96,14 @@ export type UploadPruefung = UploadGeprueft | UploadAbgelehnt;
 const KUNDEN_MELDUNGEN: Record<Ablehnungsgrund, string> = {
   kein_data_url: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
   leer: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
-  zu_gross: 'Die Datei ist zu groß. Bitte verwenden Sie eine Datei bis 10 MB.',
+  zu_gross: 'Das Bild ist nach der Aufbereitung zu groß. Bitte verwenden Sie eine Datei mit geringerer Auflösung.',
   unbekanntes_format: 'Dieses Dateiformat wird nicht unterstützt. Bitte laden Sie eine PNG-Datei hoch.',
   abmessungen_unlesbar: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
   zu_grosse_abmessungen: 'Das Bild hat zu große Abmessungen. Bitte verwenden Sie eine kleinere Datei.',
+  zwischenablage_unvollstaendig: 'Die Datei wurde nicht vollständig übertragen. Bitte versuchen Sie es erneut.',
 };
 
-function ablehnen(grund: Ablehnungsgrund, protokoll: string): UploadAbgelehnt {
+export function ablehnen(grund: Ablehnungsgrund, protokoll: string): UploadAbgelehnt {
   return { ok: false, grund, kundenMeldung: KUNDEN_MELDUNGEN[grund], protokoll };
 }
 
@@ -161,7 +169,23 @@ export function pruefeDataUrl(dataUrl: string): UploadPruefung {
     );
   }
 
-  const bytes = Buffer.from(base64, 'base64');
+  return pruefeBytes(Buffer.from(base64, 'base64'), deklarierterTyp);
+}
+
+/**
+ * Prüft bereits dekodierte Bytes: Größe, Signatur, Abmessungen.
+ *
+ * Gemeinsamer Kern von `pruefeDataUrl` (Datei kam als Data-URL) und dem Zwischenspeicher (große Dateien kommen in Teilen und werden
+ * auf dem Server zusammengesetzt, siehe lib/upload/zwischenablage.ts). Jede Datei, die gespeichert wird, läuft hier durch.
+ */
+export function pruefeBytes(bytes: Buffer, deklarierterTyp = ''): UploadPruefung {
+  if (bytes.length === 0) {
+    return ablehnen('leer', 'Die Datei enthält keine Daten.');
+  }
+  if (bytes.length > UPLOAD_GRENZEN.maxBytes) {
+    return ablehnen('zu_gross', `${bytes.length} Bytes überschreiten die Grenze von ${UPLOAD_GRENZEN.maxBytes} Bytes.`);
+  }
+
 
   // ── 2. Tatsächliches Format über die Signatur ──────────────────────
   // Der deklarierte Typ wird bewusst ignoriert; er stammt vom Aufrufer.
@@ -169,7 +193,7 @@ export function pruefeDataUrl(dataUrl: string): UploadPruefung {
   if (!format) {
     return ablehnen(
       'unbekanntes_format',
-      `Signatur passt zu keinem erlaubten Format. Deklariert war „${deklarierterTyp}", ` +
+      `Signatur passt zu keinem erlaubten Format${deklarierterTyp ? ` (deklariert: „${deklarierterTyp}")` : ''}, ` +
         `gefunden: ${[...bytes.subarray(0, 8)].map((b) => b.toString(16).padStart(2, '0')).join(' ')}.`
     );
   }

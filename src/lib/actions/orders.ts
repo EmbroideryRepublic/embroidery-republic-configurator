@@ -2,8 +2,10 @@
 
 import { randomUUID } from 'node:crypto';
 import { createAdminClient } from '@/lib/supabase/server';
-import { uploadProductionFile } from '@/lib/supabase/storage';
-import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
+import { UploadAbgelehntFehler, uploadProductionFile } from '@/lib/supabase/storage';
+import { istSicherePfadkomponente, type UploadPruefung } from '@/lib/upload/pruefeUpload';
+import { loeseZwischenablageAuf, pruefeZwischenablageVerweise, verwerfeZwischenablage } from '@/lib/upload/zwischenablage';
+import { istZwischenablageRef } from '@/lib/upload/zwischenablageRef';
 import { meldeEreignis } from '@/lib/observability/ereignis';
 import { merkeBestellung } from '@/lib/observability/kontext';
 import { anfangsZahlungsstatus, brauchtVorabZahlung } from '@/config/zahlung';
@@ -105,12 +107,64 @@ export interface SubmitInquiryInput {
   clientRequestId?: string;
 }
 
+/** Zählt, wie oft jeder Verweis in der Bestellung vorkommt (Original und Anzeigebild sind oft dieselbe Datei). */
+function zaehleVerweise(items: CartItem[]): Map<string, number> {
+  const zaehler = new Map<string, number>();
+  for (const item of items) {
+    for (const element of item.elements) {
+      if (element.type !== 'logo') continue;
+      for (const url of [element.fileUrl, element.originalFileUrl]) {
+        if (istZwischenablageRef(url)) zaehler.set(url, (zaehler.get(url) ?? 0) + 1);
+      }
+    }
+  }
+  return zaehler;
+}
+
+/** Zusammengesetzte Dateien einer Bestellung: je Verweis die Prüfung und wie viele Verwendungen noch ausstehen (Speicher früh freigeben). */
+interface ZwischenablageStand {
+  geladen: Map<string, Promise<UploadPruefung>>;
+  offen: Map<string, number>;
+}
+
+/**
+ * Legt EIN Logo am endgültigen Ort ab. Eine Data-URL geht den bisherigen Weg (volle Prüfung in uploadProductionFile); ein Verweis wird
+ * zusammengesetzt, über dieselbe Prüfung (pruefeBytes) geführt und danach gespeichert. Nach der letzten Verwendung eines Verweises werden
+ * der Speicher freigegeben und die Teile gelöscht.
+ */
+async function speichereLogo(path: string, quelle: string, stand: ZwischenablageStand): Promise<void> {
+  if (!istZwischenablageRef(quelle)) {
+    await uploadProductionFile(path, quelle);
+    return;
+  }
+  let geladen = stand.geladen.get(quelle);
+  if (!geladen) {
+    geladen = loeseZwischenablageAuf(quelle);
+    stand.geladen.set(quelle, geladen);
+  }
+  const pruefung = await geladen;
+  if (!pruefung.ok) throw new UploadAbgelehntFehler(pruefung.kundenMeldung, pruefung.grund, pruefung.protokoll);
+  await uploadProductionFile(path, pruefung.bytes, pruefung.mime);
+
+  const uebrig = (stand.offen.get(quelle) ?? 1) - 1;
+  stand.offen.set(quelle, uebrig);
+  if (uebrig <= 0) {
+    stand.geladen.delete(quelle);
+    await verwerfeZwischenablage(quelle);
+  }
+}
+
 /** Wandelt ein rohes ConfigElement (inkl. UI-Feldern wie isOutOfBounds)
  *  in den schlanken Produktions-Schnappschuss um, der PDF und E-Mail
  *  gemeinsam nutzen. Logo-Dateien werden dabei in Storage hochgeladen –
  *  `logoStoragePath` zeigt danach auf die dauerhaft gespeicherte Datei
  *  statt auf die (nur im Browser gültige) Data-URL. */
-async function buildElementRecord(element: ConfigElement, orderId: string, itemIndex: number): Promise<OrderElementRecord> {
+async function buildElementRecord(
+  element: ConfigElement,
+  orderId: string,
+  itemIndex: number,
+  stand: ZwischenablageStand
+): Promise<OrderElementRecord> {
   const base = {
     view: element.view,
     xCm: element.xCm,
@@ -162,8 +216,8 @@ async function buildElementRecord(element: ConfigElement, orderId: string, itemI
   const displayPath = `orders/${orderId}/item-${itemIndex}-logo-${element.id}-display.png`;
   // Beide Uploads sind voneinander unabhängig → parallel statt nacheinander.
   await Promise.all([
-    uploadProductionFile(originalPath, element.originalFileUrl),
-    uploadProductionFile(displayPath, element.fileUrl),
+    speichereLogo(originalPath, element.originalFileUrl, stand),
+    speichereLogo(displayPath, element.fileUrl, stand),
   ]);
 
   return {
@@ -175,16 +229,46 @@ async function buildElementRecord(element: ConfigElement, orderId: string, itemI
   };
 }
 
+/**
+ * Stickerei: ersetzt Verweise im ANZEIGEBILD durch die zusammengesetzte Datei (als Data-URL), damit die serverseitige Stichzahl-Rechnung
+ * (lib/embroidery/serverStichzahl.ts) wie bisher arbeiten kann. Alle übrigen Positionen bleiben unverändert.
+ */
+async function loeseStickereiVerweiseAuf(items: CartItem[]): Promise<{ ok: true; items: CartItem[] } | { ok: false; fehler: string }> {
+  const ergebnis: CartItem[] = [];
+  for (const item of items) {
+    if (item.printMethod !== 'embroidery' || !item.elements.some((e) => e.type === 'logo' && istZwischenablageRef(e.fileUrl))) {
+      ergebnis.push(item);
+      continue;
+    }
+    const elemente: ConfigElement[] = [];
+    for (const element of item.elements) {
+      if (element.type !== 'logo' || !istZwischenablageRef(element.fileUrl)) {
+        elemente.push(element);
+        continue;
+      }
+      const pruefung = await loeseZwischenablageAuf(element.fileUrl);
+      if (!pruefung.ok) {
+        console.warn(`[orders] Verweis nicht auflösbar (${pruefung.grund}): ${pruefung.protokoll}`);
+        return { ok: false, fehler: pruefung.kundenMeldung };
+      }
+      elemente.push({ ...element, fileUrl: `data:${pruefung.mime};base64,${pruefung.bytes.toString('base64')}` });
+    }
+    ergebnis.push({ ...item, elements: elemente });
+  }
+  return { ok: true, items: ergebnis };
+}
+
 async function buildItemRecords(
   items: CartItem[],
   orderId: string,
   serverPrices: ServerItemPrice[]
 ): Promise<OrderItemRecord[]> {
+  const stand: ZwischenablageStand = { geladen: new Map(), offen: zaehleVerweise(items) };
   return Promise.all(
     items.map(async (item, itemIndex) => {
       const product = getProduct(item.productId);
       const color = product?.colors.find((c) => c.id === item.colorId);
-      const elements = await Promise.all(item.elements.map((el) => buildElementRecord(el, orderId, itemIndex)));
+      const elements = await Promise.all(item.elements.map((el) => buildElementRecord(el, orderId, itemIndex, stand)));
       // AUSSCHLIESSLICH serverseitig berechnete Preise/Menge – der Client-Preis
       // (item.unitPrice/totalPrice/quantity) wird bewusst NICHT übernommen.
       const priced = serverPrices[itemIndex];
@@ -354,13 +438,25 @@ async function persistAndNotifyCore(params: {
     return { success: false, error: validierung.customerMessage };
   }
 
+  // ── VERWEISE AUF GROSSE DATEIEN ─────────────────────────────────────────
+  // Große Logos liegen als Teile in der Zwischenablage und kommen als Verweis (`staged:…`) statt als Data-URL (config/upload.ts).
+  // Form, Anzahl und Gesamtgröße werden geprüft, bevor irgendetwas zusammengesetzt wird; die Datei selbst läuft später durch dieselbe
+  // Prüfung wie jede andere (pruefeBytes).
+  const verweisFehler = pruefeZwischenablageVerweise(params.items);
+  if (verweisFehler) return { success: false, error: verweisFehler };
+
+  // Die Stichzahl der STICKEREI wird aus dem Anzeigebild gerechnet – dafür muss ein Verweis hier schon aufgelöst werden. DTF braucht die
+  // Bilddaten erst beim Speichern und liest sie dort Verweis für Verweis.
+  const stickereiItems = await loeseStickereiVerweiseAuf(params.items);
+  if (!stickereiItems.ok) return { success: false, error: stickereiItems.fehler };
+
   // ── VERTRAUENSWÜRDIGE STICHZAHL ─────────────────────────────────────────
   // Die Stichzahl (Grundlage des Stickaufpreises) kommt als Schätzung aus
   // dem Browser. Der Server rechnet sie hier aus den übermittelten Motivdaten
   // SELBST nach (lib/embroidery/serverStichzahl.ts) und ersetzt einen zu
   // niedrigen Clientwert – Preisberechnung, Speicherung und alles Weitere
   // arbeiten ab hier ausschließlich mit `items`, nie mehr mit params.items.
-  const stichzahlen = mitVertrauenswuerdigerStichzahl(params.items);
+  const stichzahlen = mitVertrauenswuerdigerStichzahl(stickereiItems.items);
   const items = stichzahlen.items;
   // Ein Stickerei-Logo ohne lesbaren Inhalt (PNG-Header gültig, Bilddaten
   // kaputt oder vollständig transparent) ist weder produzierbar noch

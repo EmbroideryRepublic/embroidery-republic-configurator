@@ -1,0 +1,40 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════
+ * LOGO-UPLOAD – Grenzen an einer Stelle
+ * ═══════════════════════════════════════════════════════════════════════
+ *
+ * Kundschaft darf Bilder bis 25 MB hochladen (Betreiberwunsch 2026-11-20).
+ *
+ * ── Warum es einen Zwischenspeicher gibt ──────────────────────────────
+ * Die Logos reisten bisher als Data-URL im Aufruf der Server-Action `submitOrder` mit (Original UND Anzeigebild). Vercel lässt für
+ * einen Funktionsaufruf aber höchstens 4,5 MB Anfragekörper zu (gemessen am 2026-11-20 gegen ergermany.de: 4 MB gehen durch, 5 MB
+ * werden mit 413 FUNCTION_PAYLOAD_TOO_LARGE abgewiesen) – das alte 10-MB-Limit hat also nie bis zur Bestellung getragen.
+ *
+ * Große Dateien gehen deshalb in Teilen von höchstens 3 MB an `POST /api/upload/teil` und liegen unter `staging/` im Speicher. Die
+ * Bestellung trägt nur noch eine Referenz (`staged:…`); der Server setzt die Teile zusammen, prüft die Datei vollständig
+ * (lib/upload/pruefeUpload.ts) und legt sie am endgültigen Ort ab. Kleine Dateien reisen weiter direkt in der Bestellung.
+ */
+
+/** Größte Quelldatei, die der Browser annimmt (PNG, JPG, SVG, PDF). */
+export const QUELLDATEI_MAX_MB = 25;
+
+/** Größe eines Teils in Bytes. Durch 3 teilbar, damit ein Teil genau 4/3 so viele Base64-Zeichen ergibt (Teile ohne Rest-Füllzeichen). */
+export const TEIL_MAX_BYTES = 3 * 1024 * 1024;
+
+/**
+ * Data-URLs bis zu dieser Länge (Zeichen) reisen weiter direkt in der Bestellung. Alles darüber geht über den Zwischenspeicher, damit
+ * der Bestell-Aufruf mit vielen Logos sicher unter 4,5 MB bleibt.
+ */
+export const DIREKT_MAX_ZEICHEN = 256 * 1024;
+
+/** Mehr Teile akzeptiert der Server je Datei nicht: 15 × 3 MB = 45 MB, passend zu UPLOAD_GRENZEN.maxBytes (lib/upload/pruefeUpload.ts). */
+export const MAX_TEILE = 15;
+
+/** Speicherordner der Zwischenablage im Bucket „production-files“. */
+export const ZWISCHENABLAGE_ORDNER = 'staging';
+
+/** Zwischenablage-Ordner (je Kalendertag) werden nach so vielen Tagen gelöscht. Verwaiste Teile aus abgebrochenen Bestellungen. */
+export const ZWISCHENABLAGE_VERFALL_TAGE = 2;
+
+/** Ein Aufruf der Bestellung darf höchstens so viele Dateien aus der Zwischenablage zusammensetzen (Speicher des Servers). */
+export const MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG = 24;

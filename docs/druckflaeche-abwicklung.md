@@ -20,6 +20,12 @@ flachen Textil rund 35 cm breit. Bestellt wurde nach dem gezeichneten Maß, also
    eines Produkts derselben Art). Jede der 1.229 Größen im Katalog hat damit eine eigene Fläche, keine fällt auf M zurück. Nur für die DTF-Datei.
    Das Motiv wird einmal platziert und auf jede bestellte Größe gleich groß gedruckt, das echte Maß gilt deshalb für die **kleinste bestellte
    Größe** (Admin, PDF und Mail nennen sie).
+   **Herstellermaße nachgetragen (2026-11-20):** 19 importierte Produkte hatten keine eigene Tabelle (ein Damenshirt lieh sich die Tabelle eines
+   Herrenshirts), zwei nur eine Zeile. Ihre Tabellen stammen jetzt von der Lieferantenseite (Dialog „Größentabelle“: A = Breite über die Brust,
+   B = Länge, Richtwerte ±2 cm), Quelle und Abrufdatum je Produkt in `scripts/import/masse-nachtrag.json`, eingespielt mit
+   `scripts/masseNachtragen.mts` (idempotent). Ohne Tabelle bleiben `russell-ladies-pure-organic-heavy-tee` (bei keinem Lieferanten gelistet) und
+   `id-identity-microfleece-jacke` (Seite ohne Maßtabelle). Folge: Auch die Ursprungsdaten (Stickerei-Flächen) dieser 19 Produkte ändern sich, weil
+   ihre Eingangsmaße jetzt die eigenen sind; die Stickerei-Berechnung selbst ist unverändert.
 2. **Echtes Maß = Abwicklung:** Breite `r · (asin((x₂ − mitte) / r) − asin((x₁ − mitte) / r))`, Höhe wie gezeichnet. Implementiert in
    `src/config/abwicklung.ts`, abgeleitet beim Lesen (`src/config/echteMasse.ts`), **nichts davon wird gespeichert oder vom Client übernommen**.
 3. **Preis:** Großformat-Zuschlag nach den Folienkosten des Motivs (`src/config/pricing/grossformat.ts`), berechnet mit den echten Maßen,

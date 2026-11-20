@@ -705,6 +705,17 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 43.5, hoeheCm: 60 },
+        { size: "S", breiteCm: 46.5, hoeheCm: 62 },
+        { size: "M", breiteCm: 49.5, hoeheCm: 64 },
+        { size: "L", breiteCm: 52.5, hoeheCm: 66 },
+        { size: "XL", breiteCm: 55.5, hoeheCm: 68 },
+        { size: "XXL", breiteCm: 58.5, hoeheCm: 70 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "B&C",
       productType: "T-Shirt",
@@ -1603,6 +1614,17 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "S", breiteCm: 45.7, hoeheCm: 71.1 },
+        { size: "M", breiteCm: 50.8, hoeheCm: 73.7 },
+        { size: "L", breiteCm: 55.9, hoeheCm: 76.2 },
+        { size: "XL", breiteCm: 61, hoeheCm: 78.7 },
+        { size: "XXL", breiteCm: 66, hoeheCm: 81.3 },
+        { size: "3XL", breiteCm: 71.1, hoeheCm: 83.8 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Gildan",
       productType: "T-Shirt",
@@ -2523,6 +2545,19 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 45.5, hoeheCm: 67 },
+        { size: "S", breiteCm: 49, hoeheCm: 69.5 },
+        { size: "M", breiteCm: 52.5, hoeheCm: 72 },
+        { size: "L", breiteCm: 56, hoeheCm: 74.5 },
+        { size: "XL", breiteCm: 59.5, hoeheCm: 77 },
+        { size: "XXL", breiteCm: 63, hoeheCm: 79.5 },
+        { size: "3XL", breiteCm: 66.5, hoeheCm: 82 },
+        { size: "4XL", breiteCm: 70, hoeheCm: 84.5 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "B&C",
       productType: "Poloshirt",
@@ -2646,6 +2681,17 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "S", breiteCm: 49.5, hoeheCm: 70 },
+        { size: "M", breiteCm: 52.5, hoeheCm: 72 },
+        { size: "L", breiteCm: 55.5, hoeheCm: 74 },
+        { size: "XL", breiteCm: 58.5, hoeheCm: 76 },
+        { size: "XXL", breiteCm: 61.5, hoeheCm: 78 },
+        { size: "3XL", breiteCm: 64.5, hoeheCm: 80 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "B&C",
       productType: "Poloshirt",
@@ -2697,6 +2743,17 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 40.5, hoeheCm: 61.5 },
+        { size: "S", breiteCm: 43.5, hoeheCm: 63.5 },
+        { size: "M", breiteCm: 46.5, hoeheCm: 65.5 },
+        { size: "L", breiteCm: 49.5, hoeheCm: 67.5 },
+        { size: "XL", breiteCm: 52.5, hoeheCm: 69.5 },
+        { size: "XXL", breiteCm: 55.5, hoeheCm: 71.5 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "B&C",
       productType: "Poloshirt",
@@ -3423,6 +3480,19 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 43.5, hoeheCm: 59 },
+        { size: "S", breiteCm: 46.5, hoeheCm: 61.5 },
+        { size: "M", breiteCm: 49.5, hoeheCm: 64 },
+        { size: "L", breiteCm: 52.5, hoeheCm: 66.5 },
+        { size: "XL", breiteCm: 55.5, hoeheCm: 69 },
+        { size: "XXL", breiteCm: 58.5, hoeheCm: 71.5 },
+        { size: "3XL", breiteCm: 61.5, hoeheCm: 74 },
+        { size: "4XL", breiteCm: 64.5, hoeheCm: 76.5 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Russell",
       productType: "Poloshirt",
@@ -3806,6 +3876,19 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "S", breiteCm: 50.8, hoeheCm: 71.1 },
+        { size: "M", breiteCm: 55.9, hoeheCm: 73.7 },
+        { size: "L", breiteCm: 61, hoeheCm: 76.2 },
+        { size: "XL", breiteCm: 66, hoeheCm: 78.7 },
+        { size: "XXL", breiteCm: 71.1, hoeheCm: 81.3 },
+        { size: "3XL", breiteCm: 76.2, hoeheCm: 83.8 },
+        { size: "4XL", breiteCm: 81.3, hoeheCm: 86.4 },
+        { size: "5XL", breiteCm: 86.4, hoeheCm: 88.9 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Gildan",
       productType: "Hoodie",
@@ -3875,6 +3958,18 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "S", breiteCm: 50.8, hoeheCm: 76.2 },
+        { size: "M", breiteCm: 55.9, hoeheCm: 77.5 },
+        { size: "L", breiteCm: 61, hoeheCm: 78.7 },
+        { size: "XL", breiteCm: 66, hoeheCm: 81.3 },
+        { size: "XXL", breiteCm: 71.1, hoeheCm: 83.8 },
+        { size: "3XL", breiteCm: 76.2, hoeheCm: 86.4 },
+        { size: "4XL", breiteCm: 81.3, hoeheCm: 88.9 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Gildan",
       productType: "Hoodie",
@@ -4076,6 +4171,18 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "S", breiteCm: 51, hoeheCm: 68 },
+        { size: "M", breiteCm: 56, hoeheCm: 70.5 },
+        { size: "L", breiteCm: 61, hoeheCm: 73 },
+        { size: "XL", breiteCm: 66, hoeheCm: 75.5 },
+        { size: "XXL", breiteCm: 71, hoeheCm: 78 },
+        { size: "3XL", breiteCm: 76, hoeheCm: 80.5 },
+        { size: "4XL", breiteCm: 81, hoeheCm: 83 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Fruit of the Loom",
       productType: "Hoodie",
@@ -4117,6 +4224,17 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "S", breiteCm: 51, hoeheCm: 67 },
+        { size: "M", breiteCm: 56, hoeheCm: 69.5 },
+        { size: "L", breiteCm: 61, hoeheCm: 73.5 },
+        { size: "XL", breiteCm: 63.5, hoeheCm: 77 },
+        { size: "XXL", breiteCm: 68.5, hoeheCm: 80 },
+        { size: "3XL", breiteCm: 73.5, hoeheCm: 83 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Fruit of the Loom",
       productType: "Hoodie",
@@ -4291,6 +4409,20 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 62, hoeheCm: 69.5 },
+        { size: "S", breiteCm: 65, hoeheCm: 70.5 },
+        { size: "M", breiteCm: 68, hoeheCm: 71.5 },
+        { size: "L", breiteCm: 71, hoeheCm: 73.5 },
+        { size: "XL", breiteCm: 74, hoeheCm: 75.5 },
+        { size: "XXL", breiteCm: 77, hoeheCm: 77.5 },
+        { size: "3XL", breiteCm: 81.5, hoeheCm: 78.5 },
+        { size: "4XL", breiteCm: 86, hoeheCm: 79.5 },
+        { size: "5XL", breiteCm: 90.5, hoeheCm: 80.5 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Build Your Brand",
       productType: "Hoodie",
@@ -4698,6 +4830,18 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 53.5, hoeheCm: 68.5 },
+        { size: "S", breiteCm: 56.5, hoeheCm: 71.5 },
+        { size: "M", breiteCm: 59.5, hoeheCm: 73.5 },
+        { size: "L", breiteCm: 62.5, hoeheCm: 75.5 },
+        { size: "XL", breiteCm: 65.5, hoeheCm: 77.5 },
+        { size: "XXL", breiteCm: 68.5, hoeheCm: 79.5 },
+        { size: "3XL", breiteCm: 71.5, hoeheCm: 80.5 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "EarthPositive",
       productType: "Hoodie",
@@ -4763,7 +4907,12 @@ export const PRODUCTS: ProductConfig[] = [
     views: ["front","back","sleeve_left","sleeve_right"],
     sizeGuide: {
       measurements: [
+        { size: "XS", breiteCm: 52, hoeheCm: 60.5 },
         { size: "S", breiteCm: 55, hoeheCm: 62 },
+        { size: "M", breiteCm: 58, hoeheCm: 63.5 },
+        { size: "L", breiteCm: 61, hoeheCm: 65.5 },
+        { size: "XL", breiteCm: 64, hoeheCm: 67.5 },
+        { size: "XXL", breiteCm: 67, hoeheCm: 68.5 },
       ],
       fitRating: 50,
     },
@@ -4809,6 +4958,18 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 53.5, hoeheCm: 66.5 },
+        { size: "S", breiteCm: 56.5, hoeheCm: 70.5 },
+        { size: "M", breiteCm: 59.5, hoeheCm: 73.5 },
+        { size: "L", breiteCm: 62.5, hoeheCm: 75.5 },
+        { size: "XL", breiteCm: 65.5, hoeheCm: 77.5 },
+        { size: "XXL", breiteCm: 68.5, hoeheCm: 79.5 },
+        { size: "3XL", breiteCm: 71.5, hoeheCm: 80.5 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "EarthPositive",
       productType: "Hoodie",
@@ -4994,6 +5155,20 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 51, hoeheCm: 66 },
+        { size: "S", breiteCm: 55, hoeheCm: 69 },
+        { size: "M", breiteCm: 60, hoeheCm: 72 },
+        { size: "L", breiteCm: 65, hoeheCm: 75 },
+        { size: "XL", breiteCm: 70, hoeheCm: 77 },
+        { size: "XXL", breiteCm: 75, hoeheCm: 79 },
+        { size: "3XL", breiteCm: 80, hoeheCm: 81 },
+        { size: "4XL", breiteCm: 85, hoeheCm: 84 },
+        { size: "5XL", breiteCm: 90, hoeheCm: 87 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Just Hoods",
       productType: "Hoodie",
@@ -5094,6 +5269,16 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 45, hoeheCm: 65.5 },
+        { size: "S", breiteCm: 48, hoeheCm: 67.5 },
+        { size: "M", breiteCm: 51, hoeheCm: 69.5 },
+        { size: "L", breiteCm: 54, hoeheCm: 71.5 },
+        { size: "XL", breiteCm: 57, hoeheCm: 73.5 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "Russell",
       productType: "Hoodie",
@@ -5289,6 +5474,18 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back","sleeve_left","sleeve_right"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 47, hoeheCm: 68 },
+        { size: "S", breiteCm: 50, hoeheCm: 70 },
+        { size: "M", breiteCm: 53, hoeheCm: 72 },
+        { size: "L", breiteCm: 56, hoeheCm: 74 },
+        { size: "XL", breiteCm: 60, hoeheCm: 76 },
+        { size: "XXL", breiteCm: 64, hoeheCm: 78 },
+        { size: "3XL", breiteCm: 68, hoeheCm: 80 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "EarthPositive",
       productType: "Longsleeve",
@@ -5336,7 +5533,11 @@ export const PRODUCTS: ProductConfig[] = [
     views: ["front","back","sleeve_left","sleeve_right"],
     sizeGuide: {
       measurements: [
-        { size: "L", breiteCm: 56, hoeheCm: 76 },
+        { size: "S", breiteCm: 45.7, hoeheCm: 71.1 },
+        { size: "M", breiteCm: 50.8, hoeheCm: 73.7 },
+        { size: "L", breiteCm: 55.9, hoeheCm: 76.2 },
+        { size: "XL", breiteCm: 61, hoeheCm: 78.7 },
+        { size: "XXL", breiteCm: 66, hoeheCm: 81.3 },
       ],
       fitRating: 50,
     },
@@ -6373,6 +6574,18 @@ export const PRODUCTS: ProductConfig[] = [
     aufgenommenAm: "2026-08-04",
     bildStatus: 'fehlt',
     views: ["front","back"],
+    sizeGuide: {
+      measurements: [
+        { size: "XS", breiteCm: 43.5, hoeheCm: 60 },
+        { size: "S", breiteCm: 46.5, hoeheCm: 61.5 },
+        { size: "M", breiteCm: 49.5, hoeheCm: 63 },
+        { size: "L", breiteCm: 52.5, hoeheCm: 64.5 },
+        { size: "XL", breiteCm: 55.5, hoeheCm: 66 },
+        { size: "XXL", breiteCm: 58.5, hoeheCm: 67.5 },
+        { size: "3XL", breiteCm: 61.5, hoeheCm: 69 },
+      ],
+      fitRating: 50,
+    },
     detailedDescription: {
       supplierBrand: "B&C",
       productType: "Jacke",

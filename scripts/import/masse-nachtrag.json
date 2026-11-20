@@ -1,0 +1,785 @@
+{
+ "bundc-inspire-t-women": {
+  "quelle": "https://www.textil-grosshandel.eu/inspire-t-women-0/bctw043",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 43.5,
+    "hoeheCm": 60.0
+   },
+   {
+    "size": "S",
+    "breiteCm": 46.5,
+    "hoeheCm": 62.0
+   },
+   {
+    "size": "M",
+    "breiteCm": 49.5,
+    "hoeheCm": 64.0
+   },
+   {
+    "size": "L",
+    "breiteCm": 52.5,
+    "hoeheCm": 66.0
+   },
+   {
+    "size": "XL",
+    "breiteCm": 55.5,
+    "hoeheCm": 68.0
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 58.5,
+    "hoeheCm": 70.0
+   }
+  ]
+ },
+ "gildan-light-cotton-adult-t-shirt": {
+  "quelle": "https://www.textil-grosshandel.eu/light-cotton-adult-t-shirt/g3000",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "S",
+    "breiteCm": 45.7,
+    "hoeheCm": 71.1
+   },
+   {
+    "size": "M",
+    "breiteCm": 50.8,
+    "hoeheCm": 73.7
+   },
+   {
+    "size": "L",
+    "breiteCm": 55.9,
+    "hoeheCm": 76.2
+   },
+   {
+    "size": "XL",
+    "breiteCm": 61.0,
+    "hoeheCm": 78.7
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 66.0,
+    "hoeheCm": 81.3
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 71.1,
+    "hoeheCm": 83.8
+   }
+  ]
+ },
+ "bundc-unisex-polo-id-001": {
+  "quelle": "https://www.textil-grosshandel.eu/unisex-polo-id.001/bcpui10",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 45.5,
+    "hoeheCm": 67.0
+   },
+   {
+    "size": "S",
+    "breiteCm": 49.0,
+    "hoeheCm": 69.5
+   },
+   {
+    "size": "M",
+    "breiteCm": 52.5,
+    "hoeheCm": 72.0
+   },
+   {
+    "size": "L",
+    "breiteCm": 56.0,
+    "hoeheCm": 74.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 59.5,
+    "hoeheCm": 77.0
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 63.0,
+    "hoeheCm": 79.5
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 66.5,
+    "hoeheCm": 82.0
+   },
+   {
+    "size": "4XL",
+    "breiteCm": 70.0,
+    "hoeheCm": 84.5
+   }
+  ]
+ },
+ "bundc-inspire-polo-men": {
+  "quelle": "https://www.textil-grosshandel.eu/inspire-polo-men-0/bcpm430",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "S",
+    "breiteCm": 49.5,
+    "hoeheCm": 70.0
+   },
+   {
+    "size": "M",
+    "breiteCm": 52.5,
+    "hoeheCm": 72.0
+   },
+   {
+    "size": "L",
+    "breiteCm": 55.5,
+    "hoeheCm": 74.0
+   },
+   {
+    "size": "XL",
+    "breiteCm": 58.5,
+    "hoeheCm": 76.0
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 61.5,
+    "hoeheCm": 78.0
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 64.5,
+    "hoeheCm": 80.0
+   }
+  ]
+ },
+ "bundc-inspire-polo-women": {
+  "quelle": "https://www.textil-grosshandel.eu/inspire-polo-women-0/bcpw440",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 40.5,
+    "hoeheCm": 61.5
+   },
+   {
+    "size": "S",
+    "breiteCm": 43.5,
+    "hoeheCm": 63.5
+   },
+   {
+    "size": "M",
+    "breiteCm": 46.5,
+    "hoeheCm": 65.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 49.5,
+    "hoeheCm": 67.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 52.5,
+    "hoeheCm": 69.5
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 55.5,
+    "hoeheCm": 71.5
+   }
+  ]
+ },
+ "russell-ladies-poloshirt-6535": {
+  "quelle": "https://www.textil-grosshandel.eu/ladies-classic-polycotton-polo/z539f",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 43.5,
+    "hoeheCm": 59.0
+   },
+   {
+    "size": "S",
+    "breiteCm": 46.5,
+    "hoeheCm": 61.5
+   },
+   {
+    "size": "M",
+    "breiteCm": 49.5,
+    "hoeheCm": 64.0
+   },
+   {
+    "size": "L",
+    "breiteCm": 52.5,
+    "hoeheCm": 66.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 55.5,
+    "hoeheCm": 69.0
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 58.5,
+    "hoeheCm": 71.5
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 61.5,
+    "hoeheCm": 74.0
+   },
+   {
+    "size": "4XL",
+    "breiteCm": 64.5,
+    "hoeheCm": 76.5
+   }
+  ]
+ },
+ "gildan-softstyle-midweight-sweat-adult-hoodie": {
+  "quelle": "https://www.textil-grosshandel.eu/softstyle-midweight-sweat-adult-hoodie/gsf500",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "S",
+    "breiteCm": 50.8,
+    "hoeheCm": 71.1
+   },
+   {
+    "size": "M",
+    "breiteCm": 55.9,
+    "hoeheCm": 73.7
+   },
+   {
+    "size": "L",
+    "breiteCm": 61.0,
+    "hoeheCm": 76.2
+   },
+   {
+    "size": "XL",
+    "breiteCm": 66.0,
+    "hoeheCm": 78.7
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 71.1,
+    "hoeheCm": 81.3
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 76.2,
+    "hoeheCm": 83.8
+   },
+   {
+    "size": "4XL",
+    "breiteCm": 81.3,
+    "hoeheCm": 86.4
+   },
+   {
+    "size": "5XL",
+    "breiteCm": 86.4,
+    "hoeheCm": 88.9
+   }
+  ]
+ },
+ "gildan-hammer-maxweight-adult-hooded-sweatshirt": {
+  "quelle": "https://www.textil-grosshandel.eu/hammer-maxweight-adult-hooded-sweatshirt/g19500",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "S",
+    "breiteCm": 50.8,
+    "hoeheCm": 76.2
+   },
+   {
+    "size": "M",
+    "breiteCm": 55.9,
+    "hoeheCm": 77.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 61.0,
+    "hoeheCm": 78.7
+   },
+   {
+    "size": "XL",
+    "breiteCm": 66.0,
+    "hoeheCm": 81.3
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 71.1,
+    "hoeheCm": 83.8
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 76.2,
+    "hoeheCm": 86.4
+   },
+   {
+    "size": "4XL",
+    "breiteCm": 81.3,
+    "hoeheCm": 88.9
+   }
+  ]
+ },
+ "fruit-of-the-loom-iconic-premium-hooded-sweat": {
+  "quelle": "https://www.textil-grosshandel.eu/iconic-premium-hooded-sweat/f431",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "S",
+    "breiteCm": 51.0,
+    "hoeheCm": 68.0
+   },
+   {
+    "size": "M",
+    "breiteCm": 56.0,
+    "hoeheCm": 70.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 61.0,
+    "hoeheCm": 73.0
+   },
+   {
+    "size": "XL",
+    "breiteCm": 66.0,
+    "hoeheCm": 75.5
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 71.0,
+    "hoeheCm": 78.0
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 76.0,
+    "hoeheCm": 80.5
+   },
+   {
+    "size": "4XL",
+    "breiteCm": 81.0,
+    "hoeheCm": 83.0
+   }
+  ]
+ },
+ "fruit-of-the-loom-iconic-250-hooded-sweat": {
+  "quelle": "https://www.textil-grosshandel.eu/iconic-250-hooded-sweat/f432",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "S",
+    "breiteCm": 51.0,
+    "hoeheCm": 67.0
+   },
+   {
+    "size": "M",
+    "breiteCm": 56.0,
+    "hoeheCm": 69.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 61.0,
+    "hoeheCm": 73.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 63.5,
+    "hoeheCm": 77.0
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 68.5,
+    "hoeheCm": 80.0
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 73.5,
+    "hoeheCm": 83.0
+   }
+  ]
+ },
+ "build-your-brand-ultra-heavy-cotton-box-hoody": {
+  "quelle": "https://www.textil-grosshandel.eu/ultra-heavy-cotton-box-hoody/by162",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "S",
+    "breiteCm": 65.0,
+    "hoeheCm": 70.5
+   },
+   {
+    "size": "M",
+    "breiteCm": 68.0,
+    "hoeheCm": 71.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 71.0,
+    "hoeheCm": 73.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 74.0,
+    "hoeheCm": 75.5
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 77.0,
+    "hoeheCm": 77.5
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 81.5,
+    "hoeheCm": 78.5
+   },
+   {
+    "size": "4XL",
+    "breiteCm": 86.0,
+    "hoeheCm": 79.5
+   },
+   {
+    "size": "5XL",
+    "breiteCm": 90.5,
+    "hoeheCm": 80.5
+   },
+   {
+    "size": "XS",
+    "breiteCm": 62.0,
+    "hoeheCm": 69.5
+   }
+  ]
+ },
+ "earthpositive-earth-positive-pullover-hoodie": {
+  "quelle": "https://www.textil-grosshandel.eu/pullover-hoodie/ep301",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 53.5,
+    "hoeheCm": 68.5
+   },
+   {
+    "size": "S",
+    "breiteCm": 56.5,
+    "hoeheCm": 71.5
+   },
+   {
+    "size": "M",
+    "breiteCm": 59.5,
+    "hoeheCm": 73.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 62.5,
+    "hoeheCm": 75.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 65.5,
+    "hoeheCm": 77.5
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 68.5,
+    "hoeheCm": 79.5
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 71.5,
+    "hoeheCm": 80.5
+   }
+  ]
+ },
+ "earthpositive-earth-positive-women-s-half-zip-hoodie": {
+  "quelle": "https://www.textil-grosshandel.eu/women-s-half-zip-hoodie/ep314",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 52.0,
+    "hoeheCm": 60.5
+   },
+   {
+    "size": "S",
+    "breiteCm": 55.0,
+    "hoeheCm": 62.0
+   },
+   {
+    "size": "M",
+    "breiteCm": 58.0,
+    "hoeheCm": 63.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 61.0,
+    "hoeheCm": 65.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 64.0,
+    "hoeheCm": 67.5
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 67.0,
+    "hoeheCm": 68.5
+   }
+  ]
+ },
+ "earthpositive-earth-positive-super-heavy-hoodie": {
+  "quelle": "https://www.textil-grosshandel.eu/super-heavy-hoodie/ep540",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 53.5,
+    "hoeheCm": 66.5
+   },
+   {
+    "size": "S",
+    "breiteCm": 56.5,
+    "hoeheCm": 70.5
+   },
+   {
+    "size": "M",
+    "breiteCm": 59.5,
+    "hoeheCm": 73.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 62.5,
+    "hoeheCm": 75.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 65.5,
+    "hoeheCm": 77.5
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 68.5,
+    "hoeheCm": 79.5
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 71.5,
+    "hoeheCm": 80.5
+   }
+  ]
+ },
+ "just-hoods-vision-heavyweight-hoodie": {
+  "quelle": "https://www.textil-grosshandel.eu/vision-heavyweight-hoodie/jh111",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 51.0,
+    "hoeheCm": 66.0
+   },
+   {
+    "size": "S",
+    "breiteCm": 55.0,
+    "hoeheCm": 69.0
+   },
+   {
+    "size": "M",
+    "breiteCm": 60.0,
+    "hoeheCm": 72.0
+   },
+   {
+    "size": "L",
+    "breiteCm": 65.0,
+    "hoeheCm": 75.0
+   },
+   {
+    "size": "XL",
+    "breiteCm": 70.0,
+    "hoeheCm": 77.0
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 75.0,
+    "hoeheCm": 79.0
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 80.0,
+    "hoeheCm": 81.0
+   },
+   {
+    "size": "4XL",
+    "breiteCm": 85.0,
+    "hoeheCm": 84.0
+   },
+   {
+    "size": "5XL",
+    "breiteCm": 90.0,
+    "hoeheCm": 87.0
+   }
+  ]
+ },
+ "russell-ladies-authentic-hood": {
+  "quelle": "https://www.textil-grosshandel.eu/ladies-authentic-hooded-sweat/z265f",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 45.0,
+    "hoeheCm": 65.5
+   },
+   {
+    "size": "S",
+    "breiteCm": 48.0,
+    "hoeheCm": 67.5
+   },
+   {
+    "size": "M",
+    "breiteCm": 51.0,
+    "hoeheCm": 69.5
+   },
+   {
+    "size": "L",
+    "breiteCm": 54.0,
+    "hoeheCm": 71.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 57.0,
+    "hoeheCm": 73.5
+   }
+  ]
+ },
+ "earthpositive-premium-long-sleeve-t-shirt": {
+  "quelle": "https://www.textil-grosshandel.eu/premium-long-sleeve-t-shirt/ep185l",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 47.0,
+    "hoeheCm": 68.0
+   },
+   {
+    "size": "S",
+    "breiteCm": 50.0,
+    "hoeheCm": 70.0
+   },
+   {
+    "size": "M",
+    "breiteCm": 53.0,
+    "hoeheCm": 72.0
+   },
+   {
+    "size": "L",
+    "breiteCm": 56.0,
+    "hoeheCm": 74.0
+   },
+   {
+    "size": "XL",
+    "breiteCm": 60.0,
+    "hoeheCm": 76.0
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 64.0,
+    "hoeheCm": 78.0
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 68.0,
+    "hoeheCm": 80.0
+   }
+  ]
+ },
+ "gildan-ultra-cotton-long-sleeve-t-shirt": {
+  "quelle": "https://www.textil-grosshandel.eu/ultra-cotton-long-sleeve-t-shirt/g2400",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "S",
+    "breiteCm": 45.7,
+    "hoeheCm": 71.1
+   },
+   {
+    "size": "M",
+    "breiteCm": 50.8,
+    "hoeheCm": 73.7
+   },
+   {
+    "size": "L",
+    "breiteCm": 55.9,
+    "hoeheCm": 76.2
+   },
+   {
+    "size": "XL",
+    "breiteCm": 61.0,
+    "hoeheCm": 78.7
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 66.0,
+    "hoeheCm": 81.3
+   }
+  ]
+ },
+ "bundc-microfleece-duo-id501-women": {
+  "quelle": "https://www.textil-grosshandel.eu/women-s-microfleece-duo-id.501/bcfwi51",
+  "abgerufen": "2026-11-20",
+  "bedeutung": "A = Breite über die Brust (ca. 1 cm unter dem Armansatz), B = Länge vom höchsten Schulterpunkt bis zum Saum; Lieferantenangabe, Richtwerte ±2 cm",
+  "zeilen": [
+   {
+    "size": "XS",
+    "breiteCm": 43.5,
+    "hoeheCm": 60.0
+   },
+   {
+    "size": "S",
+    "breiteCm": 46.5,
+    "hoeheCm": 61.5
+   },
+   {
+    "size": "M",
+    "breiteCm": 49.5,
+    "hoeheCm": 63.0
+   },
+   {
+    "size": "L",
+    "breiteCm": 52.5,
+    "hoeheCm": 64.5
+   },
+   {
+    "size": "XL",
+    "breiteCm": 55.5,
+    "hoeheCm": 66.0
+   },
+   {
+    "size": "XXL",
+    "breiteCm": 58.5,
+    "hoeheCm": 67.5
+   },
+   {
+    "size": "3XL",
+    "breiteCm": 61.5,
+    "hoeheCm": 69.0
+   }
+  ]
+ }
+}

@@ -5,9 +5,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { MAX_TEILE, MAX_ZUSAMMENSETZEN_GLEICHZEITIG, MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG, TEIL_MAX_BYTES } from '@/config/upload';
+import {
+  MAX_TEILE,
+  MAX_ZUSAMMENSETZEN_GLEICHZEITIG,
+  MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG,
+  MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG,
+  TEIL_MAX_BYTES,
+} from '@/config/upload';
 import { baueRef, tagVon } from '../zwischenablageRef';
-import { Plaetze, loeseZwischenablageAuf, pruefeZwischenablageVerweise } from '../zwischenablage';
+import { Plaetze, ladeUndPruefe, loeseZwischenablageAuf, pruefeZwischenablageVerweise } from '../zwischenablage';
 import type { CartItem, ConfigElement } from '@/types';
 
 const TAG = tagVon();
@@ -85,4 +91,54 @@ test('dieselbe Datei als Original und Anzeigebild zählt im Budget nur einmal', 
   const eine = baueRef({ tag: TAG, ticket: ticket(200), teile: MAX_TEILE, bytes: 45 * 1024 * 1024 });
   assert.equal(pruefeZwischenablageVerweise([position([eine])]), null);
   assert.ok(TEIL_MAX_BYTES * MAX_TEILE >= 45 * 1024 * 1024);
+});
+
+// ── Platz bis zur letzten Verwendung, Gesamt-Zeitlimit, Verweiszahl ──────
+
+test('Plaetze.belege: der Platz bleibt belegt, bis er freigegeben wird – und die Freigabe wirkt nur einmal', async () => {
+  const plaetze = new Plaetze(1);
+  const freigeben = await plaetze.belege();
+  let zweiterLaeuft = false;
+  const zweiter = plaetze.fuehreAus(async () => {
+    zweiterLaeuft = true;
+  });
+  await warte(30);
+  assert.equal(zweiterLaeuft, false, 'solange der erste Platz gehalten wird, wartet der zweite');
+  freigeben();
+  freigeben(); // doppelt: darf keinen zweiten Platz erzeugen
+  await zweiter;
+  assert.equal(zweiterLaeuft, true);
+
+  // Es gibt weiterhin genau EINEN Platz: Zwei gleichzeitige Aufgaben laufen nacheinander.
+  let aktiv = 0;
+  let spitze = 0;
+  const aufgabe = () =>
+    plaetze.fuehreAus(async () => {
+      aktiv++;
+      spitze = Math.max(spitze, aktiv);
+      await warte(15);
+      aktiv--;
+    });
+  await Promise.all([aufgabe(), aufgabe(), aufgabe()]);
+  assert.equal(spitze, 1);
+});
+
+test('das Gesamt-Zeitlimit gilt für alle Teile zusammen, nicht je Teil', async () => {
+  const teile = 5;
+  const ref = baueRef({ tag: TAG, ticket: ticket(300), teile, bytes: (teile - 1) * TEIL_MAX_BYTES + 10 });
+  // Jedes Teil braucht 40 ms (unter dem Teil-Limit von 200 ms), zusammen aber 200 ms – über dem Gesamtlimit von 90 ms.
+  const langsam = { lade: async () => (await warte(40), Buffer.alloc(TEIL_MAX_BYTES)) };
+  const t0 = Date.now();
+  const r = await ladeUndPruefe(ref, langsam, { timeoutMs: 200, gesamtTimeoutMs: 90 });
+  assert.equal(r.ok ? 'ok' : r.grund, 'zwischenablage_unvollstaendig');
+  assert.match(r.ok ? '' : r.protokoll, /Zeitüberschreitung/);
+  assert.ok(Date.now() - t0 < 400, 'nach dem Gesamtlimit nicht weiter geladen');
+});
+
+test('Mehrfachverwendung desselben Verweises zählt bei der Verweiszahl mit (eine Datei in vielen Elementen)', () => {
+  const eine = baueRef({ tag: TAG, ticket: ticket(400), teile: 1, bytes: 1000 });
+  const viele = Array.from({ length: MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG / 2 + 1 }, () => eine);
+  // Jedes Element zählt Original und Anzeigebild: 25 Elemente = 50 Verweise > 48
+  assert.ok(pruefeZwischenablageVerweise([position(viele)]), 'zu viele Verweise');
+  assert.equal(pruefeZwischenablageVerweise([position(viele.slice(0, MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG / 2))]), null, 'genau an der Grenze');
 });

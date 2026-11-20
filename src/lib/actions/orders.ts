@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { createAdminClient } from '@/lib/supabase/server';
 import { UploadAbgelehntFehler, uploadProductionFile } from '@/lib/supabase/storage';
 import { istSicherePfadkomponente, type UploadPruefung } from '@/lib/upload/pruefeUpload';
-import { loeseZwischenablageAuf, pruefeZwischenablageVerweise, verwerfeZwischenablage } from '@/lib/upload/zwischenablage';
+import { belegeZusammensetzen, ladeUndPruefe, pruefeZwischenablageVerweise, verwerfeZwischenablage } from '@/lib/upload/zwischenablage';
 import { istZwischenablageRef } from '@/lib/upload/zwischenablageRef';
 import { meldeEreignis } from '@/lib/observability/ereignis';
 import { merkeBestellung } from '@/lib/observability/kontext';
@@ -123,7 +123,8 @@ function zaehleVerweise(items: CartItem[]): Map<string, number> {
 
 /** Zusammengesetzte Dateien einer Bestellung: je Verweis die Prüfung und wie viele Verwendungen noch ausstehen (Speicher früh freigeben). */
 interface ZwischenablageStand {
-  geladen: Map<string, Promise<UploadPruefung>>;
+  /** Je Verweis die zusammengesetzte Datei UND der Platz, den sie belegt – frei erst nach der letzten Verwendung. */
+  geladen: Map<string, { pruefung: Promise<UploadPruefung>; freigeben: () => void }>;
   offen: Map<string, number>;
   /** Verweise einer Bestellung laufen strikt nacheinander: zusammensetzen → speichern → freigeben, dann der nächste. */
   serie: Promise<void>;
@@ -145,12 +146,15 @@ async function speichereLogo(path: string, quelle: string, stand: Zwischenablage
 }
 
 async function speichereVerweis(path: string, quelle: string, stand: ZwischenablageStand): Promise<void> {
-  let geladen = stand.geladen.get(quelle);
-  if (!geladen) {
-    geladen = loeseZwischenablageAuf(quelle);
-    stand.geladen.set(quelle, geladen);
+  let eintrag = stand.geladen.get(quelle);
+  if (!eintrag) {
+    // Der Platz gehört zum Speicher der zusammengesetzten Datei: Er wird erst nach der letzten Verwendung frei (oder im finally von
+    // buildItemRecords, falls etwas dazwischen scheitert).
+    const freigeben = await belegeZusammensetzen();
+    eintrag = { pruefung: ladeUndPruefe(quelle), freigeben };
+    stand.geladen.set(quelle, eintrag);
   }
-  const pruefung = await geladen;
+  const pruefung = await eintrag.pruefung;
   if (!pruefung.ok) throw new UploadAbgelehntFehler(pruefung.kundenMeldung, pruefung.grund, pruefung.protokoll);
   await uploadProductionFile(path, pruefung.bytes, pruefung.mime);
 
@@ -158,6 +162,7 @@ async function speichereVerweis(path: string, quelle: string, stand: Zwischenabl
   stand.offen.set(quelle, uebrig);
   if (uebrig <= 0) {
     stand.geladen.delete(quelle);
+    eintrag.freigeben();
     await verwerfeZwischenablage(quelle);
   }
 }
@@ -238,32 +243,60 @@ async function buildElementRecord(
 }
 
 /**
- * Stickerei: ersetzt Verweise im ANZEIGEBILD durch die zusammengesetzte Datei (als Data-URL), damit die serverseitige Stichzahl-Rechnung
- * (lib/embroidery/serverStichzahl.ts) wie bisher arbeiten kann. Alle übrigen Positionen bleiben unverändert.
+ * Stickerei: Die Stichzahl wird aus dem Anzeigebild gerechnet (lib/embroidery/serverStichzahl.ts), das dafür als Data-URL vorliegen muss.
+ * Dieser Helfer löst die Verweise auf, rechnet und STELLT DIE VERWEISE WIEDER HER, damit die große Data-URL nicht bis zum Speichern im
+ * Speicher bleibt (dort wird sie erneut zusammengesetzt). Gleiche Verweise teilen sich EINE Data-URL. Je Verweis wird ein Platz zum
+ * Zusammensetzen gehalten, bis die Data-URL verworfen ist (finally, kein Leck möglich).
  */
-async function loeseStickereiVerweiseAuf(items: CartItem[]): Promise<{ ok: true; items: CartItem[] } | { ok: false; fehler: string }> {
-  const ergebnis: CartItem[] = [];
-  for (const item of items) {
-    if (item.printMethod !== 'embroidery' || !item.elements.some((e) => e.type === 'logo' && istZwischenablageRef(e.fileUrl))) {
-      ergebnis.push(item);
-      continue;
-    }
-    const elemente: ConfigElement[] = [];
-    for (const element of item.elements) {
-      if (element.type !== 'logo' || !istZwischenablageRef(element.fileUrl)) {
-        elemente.push(element);
+async function berechneStickereiStichzahlen(
+  items: CartItem[]
+): Promise<{ ok: true; stichzahlen: ReturnType<typeof mitVertrauenswuerdigerStichzahl> } | { ok: false; fehler: string }> {
+  const freigaben: Array<() => void> = [];
+  const ersetzt: Array<{ item: number; element: number; ref: string }> = [];
+  try {
+    const dataUrls = new Map<string, string>();
+    const aufgeloest: CartItem[] = [];
+    for (const [itemIndex, item] of items.entries()) {
+      if (item.printMethod !== 'embroidery') {
+        aufgeloest.push(item);
         continue;
       }
-      const pruefung = await loeseZwischenablageAuf(element.fileUrl);
-      if (!pruefung.ok) {
-        console.warn(`[orders] Verweis nicht auflösbar (${pruefung.grund}): ${pruefung.protokoll}`);
-        return { ok: false, fehler: pruefung.kundenMeldung };
+      const elemente: ConfigElement[] = [];
+      for (const [elementIndex, element] of item.elements.entries()) {
+        if (element.type !== 'logo' || !istZwischenablageRef(element.fileUrl)) {
+          elemente.push(element);
+          continue;
+        }
+        let url = dataUrls.get(element.fileUrl);
+        if (url === undefined) {
+          freigaben.push(await belegeZusammensetzen());
+          const pruefung = await ladeUndPruefe(element.fileUrl);
+          if (!pruefung.ok) {
+            console.warn(`[orders] Verweis nicht auflösbar (${pruefung.grund}): ${pruefung.protokoll}`);
+            return { ok: false, fehler: pruefung.kundenMeldung };
+          }
+          url = `data:${pruefung.mime};base64,${pruefung.bytes.toString('base64')}`;
+          dataUrls.set(element.fileUrl, url);
+        }
+        ersetzt.push({ item: itemIndex, element: elementIndex, ref: element.fileUrl });
+        elemente.push({ ...element, fileUrl: url });
       }
-      elemente.push({ ...element, fileUrl: `data:${pruefung.mime};base64,${pruefung.bytes.toString('base64')}` });
+      aufgeloest.push({ ...item, elements: elemente });
     }
-    ergebnis.push({ ...item, elements: elemente });
+
+    const stichzahlen = mitVertrauenswuerdigerStichzahl(aufgeloest);
+    // Verweise wiederherstellen (gleiche Reihenfolge und Länge wie die Eingabe; sonst lieber abbrechen als falsch zuordnen).
+    const wiederhergestellt = stichzahlen.items.map((item) => ({ ...item, elements: [...item.elements] }));
+    if (wiederhergestellt.length !== items.length) return { ok: false, fehler: ALLGEMEINER_FEHLER };
+    for (const { item, element, ref } of ersetzt) {
+      const ziel = wiederhergestellt[item]?.elements[element];
+      if (!ziel || ziel.type !== 'logo') return { ok: false, fehler: ALLGEMEINER_FEHLER };
+      wiederhergestellt[item]!.elements[element] = { ...ziel, fileUrl: ref };
+    }
+    return { ok: true, stichzahlen: { ...stichzahlen, items: wiederhergestellt } };
+  } finally {
+    for (const freigeben of freigaben) freigeben();
   }
-  return { ok: true, items: ergebnis };
 }
 
 async function buildItemRecords(
@@ -272,29 +305,35 @@ async function buildItemRecords(
   serverPrices: ServerItemPrice[]
 ): Promise<OrderItemRecord[]> {
   const stand: ZwischenablageStand = { geladen: new Map(), offen: zaehleVerweise(items), serie: Promise.resolve() };
-  return Promise.all(
-    items.map(async (item, itemIndex) => {
-      const product = getProduct(item.productId);
-      const color = product?.colors.find((c) => c.id === item.colorId);
-      const elements = await Promise.all(item.elements.map((el) => buildElementRecord(el, orderId, itemIndex, stand)));
-      // AUSSCHLIESSLICH serverseitig berechnete Preise/Menge – der Client-Preis
-      // (item.unitPrice/totalPrice/quantity) wird bewusst NICHT übernommen.
-      const priced = serverPrices[itemIndex];
+  try {
+    return await Promise.all(
+      items.map(async (item, itemIndex) => {
+        const product = getProduct(item.productId);
+        const color = product?.colors.find((c) => c.id === item.colorId);
+        const elements = await Promise.all(item.elements.map((el) => buildElementRecord(el, orderId, itemIndex, stand)));
+        // AUSSCHLIESSLICH serverseitig berechnete Preise/Menge – der Client-Preis
+        // (item.unitPrice/totalPrice/quantity) wird bewusst NICHT übernommen.
+        const priced = serverPrices[itemIndex];
 
-      return {
-        productId: item.productId,
-        colorId: item.colorId,
-        productName: product?.name ?? item.productId,
-        colorName: color?.name ?? item.colorId,
-        printMethod: item.printMethod,
-        sizeQuantities: item.sizeQuantities,
-        quantity: priced?.quantity ?? 0,
-        unitPrice: priced?.unitPrice ?? 0,
-        totalPrice: priced?.totalPrice ?? 0,
-        elements,
-      } satisfies OrderItemRecord;
-    })
-  );
+        return {
+          productId: item.productId,
+          colorId: item.colorId,
+          productName: product?.name ?? item.productId,
+          colorName: color?.name ?? item.colorId,
+          printMethod: item.printMethod,
+          sizeQuantities: item.sizeQuantities,
+          quantity: priced?.quantity ?? 0,
+          unitPrice: priced?.unitPrice ?? 0,
+          totalPrice: priced?.totalPrice ?? 0,
+          elements,
+        } satisfies OrderItemRecord;
+      })
+    );
+  } finally {
+    // Jeder noch gehaltene Platz wird frei – auch wenn ein Upload scheiterte und die letzte Verwendung nie kam.
+    for (const eintrag of stand.geladen.values()) eintrag.freigeben();
+    stand.geladen.clear();
+  }
 }
 
 /**
@@ -453,10 +492,10 @@ async function persistAndNotifyCore(params: {
   const verweisFehler = pruefeZwischenablageVerweise(params.items);
   if (verweisFehler) return { success: false, error: verweisFehler };
 
-  // Die Stichzahl der STICKEREI wird aus dem Anzeigebild gerechnet – dafür muss ein Verweis hier schon aufgelöst werden. DTF braucht die
-  // Bilddaten erst beim Speichern und liest sie dort Verweis für Verweis.
-  const stickereiItems = await loeseStickereiVerweiseAuf(params.items);
-  if (!stickereiItems.ok) return { success: false, error: stickereiItems.fehler };
+  // Die Stichzahl der STICKEREI wird aus dem Anzeigebild gerechnet – dafür wird ein Verweis kurz aufgelöst (berechneStickereiStichzahlen).
+  // DTF braucht die Bilddaten erst beim Speichern und liest sie dort Verweis für Verweis.
+  const stickerei = await berechneStickereiStichzahlen(params.items);
+  if (!stickerei.ok) return { success: false, error: stickerei.fehler };
 
   // ── VERTRAUENSWÜRDIGE STICHZAHL ─────────────────────────────────────────
   // Die Stichzahl (Grundlage des Stickaufpreises) kommt als Schätzung aus
@@ -464,7 +503,7 @@ async function persistAndNotifyCore(params: {
   // SELBST nach (lib/embroidery/serverStichzahl.ts) und ersetzt einen zu
   // niedrigen Clientwert – Preisberechnung, Speicherung und alles Weitere
   // arbeiten ab hier ausschließlich mit `items`, nie mehr mit params.items.
-  const stichzahlen = mitVertrauenswuerdigerStichzahl(stickereiItems.items);
+  const stichzahlen = stickerei.stichzahlen;
   const items = stichzahlen.items;
   // Ein Stickerei-Logo ohne lesbaren Inhalt (PNG-Header gültig, Bilddaten
   // kaputt oder vollständig transparent) ist weder produzierbar noch

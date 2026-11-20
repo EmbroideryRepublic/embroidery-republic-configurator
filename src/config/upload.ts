@@ -50,3 +50,9 @@ export const MAX_ZUSAMMENSETZEN_GLEICHZEITIG = 2;
 
 /** Zeitlimit für das Laden EINES Teils aus dem Speicher. Eine hängende Verbindung hält sonst einen Platz für alle anderen Bestellungen. */
 export const TEIL_LADE_TIMEOUT_MS = 30_000;
+
+/** Zeitlimit für das Zusammensetzen EINER Datei insgesamt (alle Teile). Kürzer als die Laufzeit einer Funktion, damit der Platz sicher frei wird. */
+export const ZUSAMMENSETZEN_GESAMT_TIMEOUT_MS = 45_000;
+
+/** Höchstzahl der Verweise EINER Bestellung, Mehrfachverwendungen mitgezählt (Original und Anzeigebild je Logo). */
+export const MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG = 48;

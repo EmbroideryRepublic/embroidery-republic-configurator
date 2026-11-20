@@ -19,8 +19,10 @@ import {
   MAX_ZUSAMMENSETZEN_GLEICHZEITIG,
   MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG,
   MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG,
+  MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG,
   TEIL_LADE_TIMEOUT_MS,
   TEIL_MAX_BYTES,
+  ZUSAMMENSETZEN_GESAMT_TIMEOUT_MS,
   ZWISCHENABLAGE_ORDNER,
   ZWISCHENABLAGE_VERFALL_TAGE,
 } from '@/config/upload';
@@ -69,20 +71,45 @@ export class Plaetze {
   constructor(plaetze: number) {
     this.frei = plaetze;
   }
-  async fuehreAus<T>(aufgabe: () => Promise<T>): Promise<T> {
+
+  /**
+   * Belegt einen Platz und gibt die Funktion zurück, die ihn wieder freigibt. Die Freigabe wirkt nur EINMAL (mehrfaches Aufrufen ist
+   * unschädlich) – so kann ein Platz weder doppelt frei werden noch durch eine vergessene Freigabe verloren gehen, wenn der Aufrufer sie
+   * in ein `finally` legt.
+   */
+  async belege(): Promise<() => void> {
     if (this.frei > 0) this.frei--;
     else await new Promise<void>((weiter) => this.warteschlange.push(weiter));
-    try {
-      return await aufgabe();
-    } finally {
+    let freigegeben = false;
+    return () => {
+      if (freigegeben) return;
+      freigegeben = true;
       const naechster = this.warteschlange.shift();
       if (naechster) naechster();
       else this.frei++;
+    };
+  }
+
+  async fuehreAus<T>(aufgabe: () => Promise<T>): Promise<T> {
+    const freigeben = await this.belege();
+    try {
+      return await aufgabe();
+    } finally {
+      freigeben();
     }
   }
 }
 
 const ZUSAMMENSETZEN = new Plaetze(MAX_ZUSAMMENSETZEN_GLEICHZEITIG);
+
+/**
+ * Belegt einen Platz zum Zusammensetzen und gibt ihn erst wieder her, wenn der Aufrufer `freigeben()` ruft. Der Platz zählt den SPEICHER, nicht
+ * nur die Ladezeit: Er muss gehalten werden, solange die zusammengesetzte Datei (Puffer oder Data-URL) noch gebraucht wird, und gehört in ein
+ * `finally`. Die Freigabe wirkt nur einmal.
+ */
+export function belegeZusammensetzen(): Promise<() => void> {
+  return ZUSAMMENSETZEN.belege();
+}
 
 /** Bricht ein Laden nach `ms` Millisekunden ab, statt ewig zu warten. */
 function mitZeitlimit<T>(arbeit: Promise<T>, ms: number): Promise<T> {
@@ -94,44 +121,57 @@ function mitZeitlimit<T>(arbeit: Promise<T>, ms: number): Promise<T> {
 }
 
 /**
- * Setzt die Teile hinter einem Verweis zusammen und prüft die Datei vollständig.
- * Gibt dieselbe Prüfung zurück wie `pruefeDataUrl` – der Aufrufer behandelt beide Wege gleich.
+ * Setzt die Teile hinter einem Verweis zusammen und prüft die Datei vollständig – OHNE einen Platz zu belegen. Der Aufrufer belegt vorher einen
+ * (`belegeZusammensetzen`) und hält ihn, solange das Ergebnis lebt. Gibt dieselbe Prüfung zurück wie `pruefeDataUrl`.
+ *
+ * Zeitlimits: je Teil `TEIL_LADE_TIMEOUT_MS`, für alle Teile zusammen `ZUSAMMENSETZEN_GESAMT_TIMEOUT_MS`. Ein Abbruch beendet das Warten, nicht die
+ * Übertragung selbst; liegen gebliebene Reste sind höchstens ein Teil (3 MB) je abgebrochenem Zusammensetzen.
  */
+export async function ladeUndPruefe(
+  ref: string,
+  ein: ZwischenablageEinAus = STANDARD_EIN_AUS,
+  optionen: { timeoutMs?: number; gesamtTimeoutMs?: number } = {}
+): Promise<UploadPruefung> {
+  const timeoutMs = optionen.timeoutMs ?? TEIL_LADE_TIMEOUT_MS;
+  const frist = Date.now() + (optionen.gesamtTimeoutMs ?? ZUSAMMENSETZEN_GESAMT_TIMEOUT_MS);
+  const r = liesRef(ref);
+  if (!r) return ablehnen('zwischenablage_unvollstaendig', `Ungültiger Verweis: ${JSON.stringify(String(ref).slice(0, 80))}`);
+
+  const teile: Buffer[] = [];
+  let summe = 0;
+  for (let nr = 0; nr < r.teile; nr++) {
+    const uebrig = frist - Date.now();
+    if (uebrig <= 0) return ablehnen('zwischenablage_unvollstaendig', `Zeitüberschreitung beim Zusammensetzen (Teil ${nr} von ${r.teile}).`);
+    let teil: Buffer;
+    try {
+      teil = await mitZeitlimit(ein.lade(teilPfad(r, nr)), Math.min(timeoutMs, uebrig));
+    } catch (fehler) {
+      return ablehnen('zwischenablage_unvollstaendig', `Teil ${nr} von ${r.teile} fehlt: ${fehler instanceof Error ? fehler.message : fehler}`);
+    }
+    const letzt = nr === r.teile - 1;
+    // Alle Teile außer dem letzten sind voll; der letzte ist nicht größer als ein voller.
+    if (teil.length === 0 || teil.length > TEIL_MAX_BYTES || (!letzt && teil.length !== TEIL_MAX_BYTES)) {
+      return ablehnen(
+        'zwischenablage_unvollstaendig',
+        `Teil ${nr} hat ${teil.length} Bytes, erwartet ${letzt ? 'höchstens ' : ''}${TEIL_MAX_BYTES}.`
+      );
+    }
+    teile.push(teil);
+    summe += teil.length;
+  }
+  if (summe !== r.bytes) {
+    return ablehnen('zwischenablage_unvollstaendig', `Summe der Teile ${summe} Bytes, angegeben ${r.bytes}.`);
+  }
+  return pruefeBytes(Buffer.concat(teile, summe));
+}
+
+/** Zusammensetzen mit eigenem Platz, der nach dem Ergebnis wieder frei ist. Für Aufrufer, die das Ergebnis sofort verbrauchen oder nur prüfen. */
 export function loeseZwischenablageAuf(
   ref: string,
   ein: ZwischenablageEinAus = STANDARD_EIN_AUS,
-  optionen: { timeoutMs?: number } = {}
+  optionen: { timeoutMs?: number; gesamtTimeoutMs?: number } = {}
 ): Promise<UploadPruefung> {
-  const timeoutMs = optionen.timeoutMs ?? TEIL_LADE_TIMEOUT_MS;
-  return ZUSAMMENSETZEN.fuehreAus(async () => {
-    const r = liesRef(ref);
-    if (!r) return ablehnen('zwischenablage_unvollstaendig', `Ungültiger Verweis: ${JSON.stringify(String(ref).slice(0, 80))}`);
-
-    const teile: Buffer[] = [];
-    let summe = 0;
-    for (let nr = 0; nr < r.teile; nr++) {
-      let teil: Buffer;
-      try {
-        teil = await mitZeitlimit(ein.lade(teilPfad(r, nr)), timeoutMs);
-      } catch (fehler) {
-        return ablehnen('zwischenablage_unvollstaendig', `Teil ${nr} von ${r.teile} fehlt: ${fehler instanceof Error ? fehler.message : fehler}`);
-      }
-      const letzt = nr === r.teile - 1;
-      // Alle Teile außer dem letzten sind voll; der letzte ist nicht größer als ein voller.
-      if (teil.length === 0 || teil.length > TEIL_MAX_BYTES || (!letzt && teil.length !== TEIL_MAX_BYTES)) {
-        return ablehnen(
-          'zwischenablage_unvollstaendig',
-          `Teil ${nr} hat ${teil.length} Bytes, erwartet ${letzt ? 'höchstens ' : ''}${TEIL_MAX_BYTES}.`
-        );
-      }
-      teile.push(teil);
-      summe += teil.length;
-    }
-    if (summe !== r.bytes) {
-      return ablehnen('zwischenablage_unvollstaendig', `Summe der Teile ${summe} Bytes, angegeben ${r.bytes}.`);
-    }
-    return pruefeBytes(Buffer.concat(teile, summe));
-  });
+  return ZUSAMMENSETZEN.fuehreAus(() => ladeUndPruefe(ref, ein, optionen));
 }
 
 /** Löscht die Teile hinter einem Verweis. Nicht-fatal: Reste räumt die Wartung nach spätestens zwei Tagen auf. */
@@ -171,6 +211,7 @@ export async function loescheAlteZwischenablage(jetzt: Date = new Date()): Promi
 export function pruefeZwischenablageVerweise(items: CartItem[]): string | null {
   const verschieden = new Set<string>();
   let gesamtBytes = 0;
+  let verweise = 0;
   for (const item of items ?? []) {
     for (const element of item?.elements ?? []) {
       if (element?.type !== 'logo') continue;
@@ -178,6 +219,7 @@ export function pruefeZwischenablageVerweise(items: CartItem[]): string | null {
         if (!istZwischenablageRef(url)) continue;
         const ref = liesRef(url);
         if (!ref) return 'Eine Datei wurde nicht vollständig übertragen. Bitte versuchen Sie es erneut.';
+        verweise++;
         if (!verschieden.has(url)) {
           verschieden.add(url);
           gesamtBytes += ref.bytes;
@@ -186,7 +228,11 @@ export function pruefeZwischenablageVerweise(items: CartItem[]): string | null {
     }
   }
   // Je Datei höchstens 45 MB; insgesamt höchstens MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG (der Spitzenbedarf im Speicher ist ein Mehrfaches).
-  if (verschieden.size > MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG || gesamtBytes > MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG) {
+  if (
+    verschieden.size > MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG ||
+    verweise > MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG ||
+    gesamtBytes > MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG
+  ) {
     return 'Die Bestellung enthält zu viele oder zu große Dateien. Bitte verkleinern Sie die Logos oder bestellen Sie in mehreren Schritten.';
   }
   return null;

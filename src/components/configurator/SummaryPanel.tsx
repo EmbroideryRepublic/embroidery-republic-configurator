@@ -274,7 +274,7 @@ export function SummaryPanel({
                               : breakdown.isStitchBased
                               ? `Berechnet nach geschätzter Stichzahl (≈ ${breakdown.totalEstimatedStitches.toLocaleString('de-DE')} Stiche insgesamt) × ${formatPrice(breakdown.pricePer1000Stitches)} pro 1.000 Stiche. Nur eine Näherung – für die verbindliche Zahl zählt die Digitalisierung (z.B. Chroma Inspire).`
                               : breakdown.isPositionBased
-                                ? `${formatPrice(breakdown.firstPositionPrice)} für die erste bedruckte Ansicht, ${formatPrice(breakdown.additionalPositionPrice)} für die zweite, ${formatPrice(breakdown.furtherPositionPrice)} für jede weitere ab der dritten – unabhängig von der Größe der Motive.`
+                                ? `${formatPrice(breakdown.firstPositionPrice)} für die erste bedruckte Ansicht, ${formatPrice(breakdown.additionalPositionPrice)} für die zweite, ${formatPrice(breakdown.furtherPositionPrice)} für jede weitere ab der dritten – bis zum Standardformat unabhängig von der Größe der Motive. Sehr große Motive kosten zusätzlich einen Großformat-Zuschlag.`
                                 : `Je größer ein Logo oder Text, desto mehr Material wird verbraucht – automatisch berechnet mit ${formatPrice(breakdown.areaPricePerCm2)} pro cm².`
                           }
                         />
@@ -283,6 +283,15 @@ export function SummaryPanel({
                     <span>{formatPrice(breakdown.areaPriceByView[view] ?? 0)}</span>
                   </div>
                 ))}
+              {breakdown.grossformatPerUnit > 0 && (
+                <div className="flex items-center justify-between" data-testid="grossformat-zuschlag">
+                  <span className="flex items-center gap-1">
+                    Großformat-Zuschlag
+                    <InfoTooltip text="Mehrkosten für die Transferfolie bei großen Motiven. Maßgeblich ist das echte, flache Maß des Motivs (im Foto erscheint die Brust gewölbt, das Motiv ist in echt breiter als gezeichnet). Bis ca. 26 × 32 cm fällt kein Zuschlag an." />
+                  </span>
+                  <span>{formatPrice(breakdown.grossformatPerUnit)}</span>
+                </div>
+              )}
             </div>
           )}
         </div>

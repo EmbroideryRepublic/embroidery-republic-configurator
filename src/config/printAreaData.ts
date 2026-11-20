@@ -12,6 +12,11 @@
  * generierten Datei – so gibt es genau eine Wahrheit über die Flächen.
  */
 import { PRINT_AREA_DATA as GEMESSEN, type GeneratedArea } from './printAreaData.generated';
+import {
+  PRINT_AREA_DATA_DTF as GEMESSEN_DTF,
+  type GeneratedDtfArea,
+  type GeneratedDtfBox,
+} from './printAreaDataDtf.generated';
 import { GEOMETRY_ALIAS } from './printAreaAlias.generated';
 
 const merged: Record<string, Partial<Record<import('@/types').PrintView, GeneratedArea>>> = { ...GEMESSEN };
@@ -27,3 +32,14 @@ for (const [neu, rep] of Object.entries(GEOMETRY_ALIAS)) {
 
 export const PRINT_AREA_DATA = merged;
 export type { GeneratedArea };
+
+// DTF-Torsoflächen (Vorder-/Rückseite, Breite aus der Größentabelle statt Prozessgrenze) – gleiche Alias-Regel wie oben.
+const mergedDtf: Record<string, Partial<Record<import('@/types').PrintView, GeneratedDtfArea>>> = { ...GEMESSEN_DTF };
+for (const [neu, rep] of Object.entries(GEOMETRY_ALIAS)) {
+  if (mergedDtf[neu] || GEMESSEN[neu]) continue;
+  const flaechen = GEMESSEN_DTF[rep];
+  if (flaechen) mergedDtf[neu] = flaechen;
+}
+
+export const PRINT_AREA_DATA_DTF = mergedDtf;
+export type { GeneratedDtfArea, GeneratedDtfBox };

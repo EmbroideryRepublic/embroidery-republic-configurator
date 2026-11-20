@@ -30,6 +30,8 @@ export interface PositionInput {
   quantity: number;
   elements: ConfigElement[];
   pricingRules: PricingRule[];
+  /** Echte flache Motivmaße je Element-ID (config/echteMasse.ts) – für den Großformat-Zuschlag. */
+  echteMasse?: Record<string, { breiteCm: number; hoeheCm: number }>;
 }
 
 export interface PositionResult extends StageResult {
@@ -40,9 +42,9 @@ export interface PositionResult extends StageResult {
 }
 
 export function calculatePositionStage(input: PositionInput): PositionResult {
-  const { itemId, productName, basePrice, quantity, elements, pricingRules } = input;
+  const { itemId, productName, basePrice, quantity, elements, pricingRules, echteMasse } = input;
 
-  const berechnet = calculatePrice({ basePrice, quantity, elements, pricingRules });
+  const berechnet = calculatePrice({ basePrice, quantity, elements, pricingRules, echteMasse });
   const b = berechnet.breakdown;
   const lines: PriceLine[] = [];
 
@@ -166,6 +168,24 @@ export function calculatePositionStage(input: PositionInput): PositionResult {
         category: 'zuschlag',
         origin: herkunft('surcharge_per_unit', 'Materialzuschlag laut Preisregel'),
         amount: b.surchargePerUnit,
+        quantity,
+      })
+    );
+  }
+
+  // ── Großformat-Zuschlag (DTF, Motive über dem Standardformat) ───────
+  if (b.grossformatPerUnit > 0) {
+    lines.push(
+      makeLine({
+        id: `${itemId}:grossformat`,
+        label: 'Großformat-Zuschlag',
+        category: 'zuschlag',
+        description: 'Mehrkosten der Transferfolie bei großen Motiven',
+        origin: herkunft(
+          'surcharge_per_unit',
+          'Das Motiv ist in echten, flachen Maßen größer als das Standardformat und braucht deutlich mehr Transferfolie'
+        ),
+        amount: b.grossformatPerUnit,
         quantity,
       })
     );

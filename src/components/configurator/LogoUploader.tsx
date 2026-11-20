@@ -11,11 +11,13 @@ import { InfoTooltip } from '@/components/ui/InfoTooltip';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { berechneLogoDpi, stufeFuerDpi, logoQualitaetText, type QualityLevel as QualityStufe } from '@/lib/canvas/logoQualitaet';
+import { flacheBreiteCm } from '@/config/abwicklung';
 import type { LogoElement, PrintArea } from '@/types';
 
 const ACCEPTED_TYPES = ['image/png', 'image/svg+xml', 'application/pdf', 'image/jpeg'];
 const MAX_FILE_SIZE_MB = 10;
 const START_SIZE_RATIO = 0.5;
+const START_BEZUG_BREITE_CM = 30;
 
 // Die Schwellen (150/220 dpi) und die Texte der Ampel liegen in lib/canvas/logoQualitaet.ts – dieselben Regeln gelten
 // dauerhaft im Design-Bereich (ElementToolbar), nicht nur in den 1,8 Sekunden nach dem Hochladen.
@@ -100,7 +102,9 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
 
       const aspectRatio =
         contentWidthPx > 0 && contentHeightPx > 0 ? contentWidthPx / contentHeightPx : 1;
-      let widthCm = printArea.maxWidthCm * START_SIZE_RATIO;
+      // Startgröße bezieht sich auf höchstens 30 cm Fläche: Die Fläche ist für DTF vorne/hinten gewachsen (Größentabelle statt
+      // fester Grenze), ein neues Logo soll aber nicht größer starten als bisher.
+      let widthCm = Math.min(printArea.maxWidthCm, START_BEZUG_BREITE_CM) * START_SIZE_RATIO;
       let heightCm = widthCm / aspectRatio;
       const maxHeightCm = printArea.maxHeightCm * START_SIZE_RATIO;
       if (heightCm > maxHeightCm) {
@@ -112,7 +116,9 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
       // Nur für Rasterbilder (PNG/JPEG) relevant (SVG/PDF sind verlustfrei
       // skalierbar).
       if (file.type === 'image/png' || file.type === 'image/jpeg') {
-        const effectiveDpi = berechneLogoDpi(contentWidthPx, widthCm);
+        // Auflösung bezogen auf die ECHTE (flache) Druckbreite, nicht auf die gezeichnete (config/abwicklung.ts).
+        const echteStartBreiteCm = flacheBreiteCm(Math.max(0, (printArea.boxWidthCm - widthCm) / 2), widthCm, printArea.abwicklung);
+        const effectiveDpi = berechneLogoDpi(contentWidthPx, Math.max(widthCm, echteStartBreiteCm));
         const level = stufeFuerDpi(effectiveDpi);
         const message = logoQualitaetText(level, effectiveDpi);
         // Eignung DTF vs. Stickerei: Stickerei verzeiht niedrigere

@@ -1,5 +1,11 @@
 import type { ExclusionZone, PrintArea, PrintMethod, PrintView } from '@/types';
-import { PRINT_AREA_DATA, type GeneratedArea } from './printAreaData';
+import {
+  PRINT_AREA_DATA,
+  PRINT_AREA_DATA_DTF,
+  type GeneratedArea,
+  type GeneratedDtfArea,
+  type GeneratedDtfBox,
+} from './printAreaData';
 import { GEOMETRY_ALIAS } from './printAreaAlias.generated';
 import { seamMarginCmVon } from './decorationPositions';
 
@@ -279,11 +285,12 @@ const EXCLUSION_ZONES: Record<string, ExclusionZone[]> = {
  *  bei Ärmelansichten und Produkten ohne eigene Maßtabelle (der Generator
  *  lässt bySize dort ganz weg). */
 function uebersetzeBySize(
-  bySize: GeneratedArea['bySize']
+  bySize: GeneratedArea['bySize'] | GeneratedDtfArea['bySize']
 ): PrintArea['bySize'] {
   if (!bySize) return undefined;
   const uebersetzt: NonNullable<PrintArea['bySize']> = {};
   for (const [groesse, g] of Object.entries(bySize)) {
+    const dtf = g as GeneratedDtfBox;
     uebersetzt[groesse] = {
       xPercent: g.x0,
       yPercent: g.y0,
@@ -293,6 +300,9 @@ function uebersetzeBySize(
       maxHeightCm: g.maxHeightCm,
       boxWidthCm: g.boxWidthCm,
       boxHeightCm: g.boxHeightCm,
+      ...(dtf.radiusCm !== undefined && dtf.mitteCm !== undefined
+        ? { abwicklung: { radiusCm: dtf.radiusCm, mitteCm: dtf.mitteCm } }
+        : {}),
     };
   }
   return uebersetzt;
@@ -328,7 +338,14 @@ function buildAreasForProduct(productId: string, method: PrintMethod): PrintArea
   if (!views) return [];
 
   return (Object.keys(views) as PrintView[]).map((view) => {
-    const a = views[view]!;
+    // DTF auf Vorder-/Rückseite: eigene Fläche mit Breite aus der Größentabelle (statt Prozessgrenze 30 cm) und Krümmung der
+    // Brust für die Abwicklung. Stickerei und alle übrigen Ansichten bleiben bei den Ursprungsdaten.
+    const dtfFlaeche = method === 'dtf' ? PRINT_AREA_DATA_DTF[productId]?.[view] : undefined;
+    const a = (dtfFlaeche ?? views[view]!) as Omit<GeneratedArea, 'bySize'> & {
+      bySize?: GeneratedArea['bySize'] | GeneratedDtfArea['bySize'];
+      radiusCm?: number;
+      mitteCm?: number;
+    };
     const exclId = EXCLUSION_ZONES[`${productId}-${view}`] ? productId : (GEOMETRY_ALIAS[productId] ?? productId);
     const widthPercent = a.x1 - a.x0;
     const heightPercent = a.y1 - a.y0;
@@ -371,6 +388,7 @@ function buildAreasForProduct(productId: string, method: PrintMethod): PrintArea
         : {}),
       ...(exclusionZones ? { exclusionZones } : {}),
       ...(a.bySize ? { bySize: uebersetzeBySize(a.bySize) } : {}),
+      ...(dtfFlaeche ? { abwicklung: { radiusCm: dtfFlaeche.radiusCm, mitteCm: dtfFlaeche.mitteCm } } : {}),
     };
   });
 }
@@ -399,6 +417,11 @@ const EMBROIDERY_BY_PRODUCT = indexByProduct(EMBROIDERY_PRINT_AREAS);
  *  Wartezeit: die bremste jeden Produkt-/Methoden-Wechsel im Konfigurator
  *  spürbar aus, ohne irgendetwas zu testen. */
 export async function getPrintAreas(productId: string, printMethod: PrintMethod): Promise<PrintArea[]> {
+  return getPrintAreasSync(productId, printMethod);
+}
+
+/** Dieselben Flächen ohne Promise – für reine Rechenstellen (Preis, Anzeige der echten Maße), die synchron arbeiten. */
+export function getPrintAreasSync(productId: string, printMethod: PrintMethod): PrintArea[] {
   const map = printMethod === 'embroidery' ? EMBROIDERY_BY_PRODUCT : DTF_BY_PRODUCT;
   return map.get(productId) ?? [];
 }
@@ -427,5 +450,6 @@ export function flaecheFuerGroesse(area: PrintArea, groesse: string | null | und
     maxHeightCm: variante.maxHeightCm,
     boxWidthCm: variante.boxWidthCm,
     boxHeightCm: variante.boxHeightCm,
+    ...(variante.abwicklung ? { abwicklung: variante.abwicklung } : {}),
   };
 }

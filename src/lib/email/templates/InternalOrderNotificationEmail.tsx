@@ -24,6 +24,7 @@ import { formatiereGeld, formatiereZeitpunkt, motivMass } from '@/lib/format';
 import { warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 import { stornofristEndet, stornofristLaeuftNoch } from '@/config/orderProcess';
 import { bestellhilfe, groessenText } from '@/lib/suppliers/bestelllinks';
+import { echteMasseJeElement } from '@/config/echteMasse';
 
 const VEREDELUNG: Record<OrderItemRecord['printMethod'], string> = {
   dtf: 'DTF-Transferdruck',
@@ -45,7 +46,7 @@ function zeilen(inhalt: string): string[] {
   return inhalt.split(/\r\n|\r|\n/);
 }
 
-function Motiv({ el, link }: { el: OrderElementRecord; link?: string }) {
+function Motiv({ el, link, echt }: { el: OrderElementRecord; link?: string; echt?: { breiteCm: number; hoeheCm: number } }) {
   const textZeilen = el.type === 'text' ? zeilen(el.content ?? '') : [];
   const art =
     el.type === 'logo' ? (
@@ -64,7 +65,9 @@ function Motiv({ el, link }: { el: OrderElementRecord; link?: string }) {
     );
   const einzelheiten = [
     textZeilen.length > 1 ? `${textZeilen.length} Zeilen` : null,
-    `${cm(el.widthCm)} × ${cm(el.heightCm)} cm`,
+    echt
+      ? `${cm(echt.breiteCm)} × ${cm(echt.hoeheCm)} cm (echtes Maß, flach; im Foto ${cm(el.widthCm)} × ${cm(el.heightCm)} cm)`
+      : `${cm(el.widthCm)} × ${cm(el.heightCm)} cm`,
     el.geschaetzteStiche ? `ca. ${zahl(el.geschaetzteStiche)} Stiche` : null,
   ]
     .filter(Boolean)
@@ -90,6 +93,8 @@ function Position({ item, motivLinks }: { item: OrderItemRecord; motivLinks: Rec
     .map(([groesse, menge]) => `${menge}× ${groesse}`)
     .join(', ');
   const stichzahlJeStueck = item.elements.reduce((summe, el) => summe + (el.geschaetzteStiche ?? 0), 0);
+  // Echte (flache) Maße je Motiv: das Foto im Konfigurator zeigt die Brust gewölbt, produziert wird nach dem flachen Maß.
+  const echteMasse = echteMasseJeElement(item);
 
   return (
     <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 14 }}>
@@ -107,6 +112,7 @@ function Position({ item, motivLinks }: { item: OrderItemRecord; motivLinks: Rec
                   <Motiv
                     key={index}
                     el={el}
+                    echt={echteMasse[index]}
                     link={el.logoStoragePath ? motivLinks[el.logoStoragePath] : undefined}
                   />
                 ))}

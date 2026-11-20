@@ -14,6 +14,7 @@ import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { estimateLogoStitches, estimateTextStitches } from '@/lib/embroidery/estimateStitches';
 import { CANVAS_WIDTH, CANVAS_HEIGHT } from '@/config/products';
 import { cm as formatCm, motivMass, zahl } from '@/lib/format';
+import { echteMasse, flacheFlaechenBreiteCm } from '@/config/abwicklung';
 import { useLanguageStore } from '@/stores/languageStore';
 import { gewebeTextur } from '@/lib/canvas/fabricTexture';
 
@@ -240,7 +241,10 @@ export function ConfiguratorCanvas({
   // gezeichnete Fläche: printArea.maxWidthCm/maxHeightCm und areaPx. Damit
   // ist ein Auseinanderlaufen konstruktiv ausgeschlossen – die Linie IST
   // die Kante der Fläche.
-  const druckBreiteCm = printArea?.maxWidthCm ?? null;
+  //
+  // Breite in ECHTEN flachen Zentimetern (DTF auf Vorder-/Rückseite): Das Foto zeigt die Brust gewölbt, die gezeichnete Breite ist
+  // kleiner als die flache (config/abwicklung.ts). Ohne Abwicklung (Ärmel, Stickerei) gilt das gezeichnete Maß.
+  const druckBreiteCm = printArea ? (printArea.abwicklung ? flacheFlaechenBreiteCm(printArea) : printArea.maxWidthCm) : null;
   const druckHoeheCm = printArea?.maxHeightCm ?? null;
   const heightRulerPx = areaPx ? areaPx.height * stageScale : null;
   const widthRulerPx = areaPx ? areaPx.width * stageScale : null;
@@ -457,7 +461,7 @@ export function ConfiguratorCanvas({
                 <KonvaText
                   x={areaPx.x}
                   y={areaPx.y - 18}
-                  text={`Bewegungsbereich · Motiv max. ${zahl(printArea.maxWidthCm)}×${zahl(printArea.maxHeightCm)} cm`}
+                  text={`Bewegungsbereich · Motiv max. ${zahl(druckBreiteCm ?? printArea.maxWidthCm)}×${zahl(printArea.maxHeightCm)} cm`}
                   fontSize={11}
                   fontFamily="Inter, sans-serif"
                   fill="#8a6a3a"
@@ -1013,7 +1017,7 @@ const LogoNode = memo(function LogoNode({
               Bedienfeld rechts, damit die tatsächliche Druckgröße beim
               Skalieren sofort sichtbar ist, ohne den Blick wechseln zu müssen. */}
           <KonvaText
-            text={`${motivMass(element.widthCm, sprache)} × ${motivMass(element.heightCm, sprache)} cm`}
+            text={`${motivMass(echteMasse(element, printArea).breiteCm, sprache)} × ${motivMass(echteMasse(element, printArea).hoeheCm, sprache)} cm`}
             x={xPx}
             y={yPx - 20}
             fontSize={12}
@@ -1224,7 +1228,7 @@ const TextNode = memo(function TextNode({
             boundBoxFunc={(oldBox, newBox) => (newBox.width < 15 || newBox.height < 15 ? oldBox : newBox)}
           />
           <KonvaText
-            text={`${motivMass(element.widthCm, sprache)} × ${motivMass(element.heightCm, sprache)} cm`}
+            text={`${motivMass(echteMasse(element, printArea).breiteCm, sprache)} × ${motivMass(echteMasse(element, printArea).hoeheCm, sprache)} cm`}
             x={xPx}
             y={yPx - 20}
             fontSize={12}

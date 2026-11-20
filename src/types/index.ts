@@ -104,8 +104,16 @@ export interface PrintArea {
       maxHeightCm: number;
       boxWidthCm: number;
       boxHeightCm: number;
+      abwicklung?: { radiusCm: number; mitteCm: number };
     }
   >;
+  /**
+   * Krümmung der Brust (nur DTF auf Vorder-/Rückseite): Radius (flache Brustbreite der Größe / π) und Lage der Brustmitte in cm
+   * ab linker Flächenkante. Damit rechnet `config/abwicklung.ts` die GEZEICHNETE Breite in die ECHTE flache Breite um, denn
+   * das Foto zeigt die gewölbte Brust von vorn. maxWidthCm/boxWidthCm bleiben gezeichnete (projizierte) Zentimeter. Ohne Angabe
+   * (Ärmel, Stickerei) gilt das gezeichnete Maß unverändert.
+   */
+  abwicklung?: { radiusCm: number; mitteCm: number };
 }
 
 /** Rechteckige Sperrzone (Standardfall, z.B. Reißverschluss-Streifen,

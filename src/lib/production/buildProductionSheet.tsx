@@ -10,6 +10,7 @@ import { Document, Page, View, Text, Image, StyleSheet, renderToBuffer } from '@
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PRINT_VIEW_LABELS, PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
 import { formatiereGeld, formatiereZeitpunkt, motivMass } from '@/lib/format';
+import { echteMasseJeElement } from '@/config/echteMasse';
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 9, fontFamily: 'Helvetica', color: '#23211d' },
@@ -92,7 +93,16 @@ function SizeTable({ sizeQuantities }: { sizeQuantities: Record<string, number> 
   );
 }
 
-function ElementDetail({ element, index }: { element: OrderRecord['items'][number]['elements'][number]; index: number }) {
+function ElementDetail({
+  element,
+  index,
+  echt,
+}: {
+  element: OrderRecord['items'][number]['elements'][number];
+  index: number;
+  /** Echte (flache) Maße, falls für diese Ansicht abgewickelt (DTF vorne/hinten). */
+  echt?: { breiteCm: number; hoeheCm: number };
+}) {
   return (
     <View style={styles.elementBlock}>
       <Text style={styles.elementTitle}>
@@ -107,7 +117,9 @@ function ElementDetail({ element, index }: { element: OrderRecord['items'][numbe
       <View style={styles.row}>
         <Text style={styles.label}>Größe</Text>
         <Text style={styles.value}>
-          {motivMass(element.widthCm)} × {motivMass(element.heightCm)} cm
+          {echt
+            ? `${motivMass(echt.breiteCm)} × ${motivMass(echt.hoeheCm)} cm (echtes Maß, flach; im Foto gezeichnet ${motivMass(element.widthCm)} × ${motivMass(element.heightCm)} cm)`
+            : `${motivMass(element.widthCm)} × ${motivMass(element.heightCm)} cm`}
           {element.rotationDeg ? `, gedreht ${element.rotationDeg.toFixed(0)}°` : ''}
         </Text>
       </View>
@@ -183,7 +195,12 @@ function ProductionSheetDocument({ order }: { order: OrderRecord }) {
             <SizeTable sizeQuantities={item.sizeQuantities} />
             <ItemPreviews item={item} />
             {item.elements.map((element, elementIndex) => (
-              <ElementDetail key={elementIndex} element={element} index={elementIndex} />
+              <ElementDetail
+                key={elementIndex}
+                element={element}
+                index={elementIndex}
+                echt={echteMasseJeElement(item)[elementIndex]}
+              />
             ))}
           </View>
         ))}

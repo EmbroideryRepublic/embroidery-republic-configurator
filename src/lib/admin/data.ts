@@ -10,6 +10,8 @@ import nodePath from 'node:path';
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/lib/actions/orderTypes';
 import { bereinigeAnmerkung } from '@/config/anmerkung';
+import { echteMassePosition } from '@/config/echteMasse';
+import { rundeMassCm } from '@/config/abwicklung';
 import { buildSupplierPositions } from '@/lib/suppliers';
 import { berechneAdminStatus, produktionsfreigabeErlaubt, type AdminStatus } from '@/lib/orders/orderVisibility';
 import { enqueueSupplierOrdersForOrder } from '@/lib/suppliers/lifecycle/enqueue';
@@ -62,6 +64,10 @@ export interface AdminOrderElementRow {
   yCm: number;
   widthCm: number;
   heightCm: number;
+  /** ECHTE flache Maße (DTF vorne/hinten): Das Foto zeigt die Brust gewölbt, die gespeicherte Breite ist die gezeichnete
+   *  (config/abwicklung.ts). Beim Lesen aus Katalog + Geometrie abgeleitet, nicht gespeichert. Ohne Angabe gilt widthCm/heightCm. */
+  echteBreiteCm?: number;
+  echteHoeheCm?: number;
   rotationDeg: number;
   // Text-spezifisch
   content?: string;
@@ -794,6 +800,18 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
         if (url) previewUrlByView[view] = url;
       }
 
+      // Echte (flache) Maße je Motiv – für die Produktion zählt das flache Maß, nicht die gezeichnete Breite im Foto.
+      const echteMasse = echteMassePosition({
+        productId: row.product_id as string,
+        printMethod: row.print_method as string | null,
+        sizeQuantities: (row.size_quantities ?? {}) as Record<string, number>,
+        elements,
+      });
+      const elementeMitEchtenMassen = elements.map((el) => {
+        const echt = echteMasse[el.id];
+        return echt ? { ...el, echteBreiteCm: rundeMassCm(echt.breiteCm), echteHoeheCm: rundeMassCm(echt.hoeheCm) } : el;
+      });
+
       return {
         productId: row.product_id as string,
         productName: row.product_name as string,
@@ -803,7 +821,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
         sizeQuantities: (row.size_quantities ?? {}) as Record<string, number>,
         unitPrice: Number(row.unit_price ?? 0),
         quantity: Number(row.quantity ?? 0),
-        elements,
+        elements: elementeMitEchtenMassen,
         previewUrlByView,
       } satisfies AdminOrderItemRow;
     })

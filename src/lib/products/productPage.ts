@@ -14,7 +14,8 @@
 import { PRODUCTS, getProduct, produkteVomTyp } from '@/config/products';
 import { produktTypLabel, PRODUCT_TYPES } from '@/config/products/types';
 import { QUALITY_TIER_LABELS } from '@/config/qualityTiers';
-import { PRINT_AREA_DATA } from '@/config/printAreaData';
+import { PRINT_AREA_DATA, PRINT_AREA_DATA_DTF } from '@/config/printAreaData';
+import { flacheBreiteCm, rundeMassCm } from '@/config/abwicklung';
 import { positionLabel } from '@/config/decorationPositions';
 import type { ProductConfig } from '@/config/products/types';
 
@@ -46,11 +47,18 @@ export function ladeProduktseite(slug: string): ProduktseitenDaten | null {
   if (!produkt) return null;
 
   const flaechen = PRINT_AREA_DATA[produkt.id] ?? {};
-  const veredelungsflaechen = Object.entries(flaechen).map(([ansicht, a]) => ({
-    ansicht: positionLabel(ansicht),
-    breiteCm: a!.maxWidthCm,
-    hoeheCm: a!.maxHeightCm,
-  }));
+  const dtfFlaechen = PRINT_AREA_DATA_DTF[produkt.id] ?? {};
+  const veredelungsflaechen = Object.entries(flaechen).map(([ansicht, a]) => {
+    // Vorder-/Rückseite (DTF): echte flache Breite laut Größentabelle, nicht die gezeichnete (config/abwicklung.ts).
+    const dtf = dtfFlaechen[ansicht as keyof typeof dtfFlaechen];
+    return {
+      ansicht: positionLabel(ansicht),
+      breiteCm: dtf
+        ? rundeMassCm(flacheBreiteCm(0, dtf.boxWidthCm, { radiusCm: dtf.radiusCm, mitteCm: dtf.mitteCm }))
+        : a!.maxWidthCm,
+      hoeheCm: dtf ? dtf.maxHeightCm : a!.maxHeightCm,
+    };
+  });
 
   const aehnliche = produkteVomTyp(produkt.productType)
     .filter((p) => p.id !== produkt.id)

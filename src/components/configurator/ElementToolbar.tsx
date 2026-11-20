@@ -8,6 +8,7 @@ import { AVAILABLE_FONTS } from '@/config/fonts';
 import { THREAD_COLORS } from '@/config/threadColors';
 import { isNearSeam } from '@/lib/canvas/bounds';
 import { motivMass } from '@/lib/format';
+import { echteMasse } from '@/config/abwicklung';
 import { computeTextBoxCm } from '@/lib/canvas/textSizing';
 import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { textKaumSichtbar } from '@/lib/canvas/textfarbe';
@@ -66,6 +67,7 @@ const QUICK_COLORS: { name: string; hex: string }[] = [
 /** Bleibende Druckqualitäts-Warnung für ein Logo (die Ampel beim Hochladen stand nur 1,8 s): folgt der aktuellen Größe. */
 function LogoQualitaetHinweis({
   logo,
+  breiteCm,
   labelGelb,
   labelRot,
   t,
@@ -76,6 +78,8 @@ function LogoQualitaetHinweis({
   onWiederherstellen,
 }: {
   logo: LogoElement;
+  /** ECHTE (flache) Druckbreite in cm – maßgeblich für die Auflösung, nicht die gezeichnete Breite (config/abwicklung.ts). */
+  breiteCm: number;
   labelGelb: string;
   labelRot: string;
   t: (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => string;
@@ -86,7 +90,7 @@ function LogoQualitaetHinweis({
   onHochskalieren: (faktor: number) => void;
   onWiederherstellen: () => void;
 }) {
-  const q = bewerteLogoQualitaet(logo);
+  const q = bewerteLogoQualitaet({ fileName: logo.fileName, originalWidthPx: logo.originalWidthPx, widthCm: breiteCm });
   if (!q) return null;
   const hochskaliert = logo.hochskaliertFaktor !== undefined;
   const vorher = hochskaliert ? vorHochskalierung(logo.id) : undefined;
@@ -94,7 +98,7 @@ function LogoQualitaetHinweis({
   const angebot = bestimmeAngebot({
     breitePx: logo.originalWidthPx,
     hoehePx: logo.originalHeightPx,
-    widthCm: logo.widthCm,
+    widthCm: breiteCm,
     hochskaliertFaktor: logo.hochskaliertFaktor,
     vorher: vorher && { breitePx: vorher.originalWidthPx, hoehePx: vorher.originalHeightPx },
   });
@@ -137,7 +141,7 @@ function LogoQualitaetHinweis({
             {t('logo_upscale_done', {
               factor: zahl(logo.hochskaliertFaktor ?? 0),
               dpi: Math.round(
-                berechneLogoDpi(logo.urspruenglicheBreitePx ?? logo.originalWidthPx, logo.widthCm)
+                berechneLogoDpi(logo.urspruenglicheBreitePx ?? logo.originalWidthPx, breiteCm)
               ),
             })}
           </p>
@@ -642,6 +646,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
           {printMethod === 'dtf' && (
             <LogoQualitaetHinweis
               logo={selected as LogoElement}
+              breiteCm={echteMasse(selected, printArea).breiteCm}
               labelGelb={t('logo_quality_yellow')}
               labelRot={t('logo_quality_red')}
               t={t}
@@ -723,11 +728,11 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
       <div className="grid grid-cols-2 gap-2 rounded-md bg-gray-50 p-2 text-sm text-gray-700">
         <div>
           <span className="block text-xs text-gray-600">{t('element_width')}</span>
-          {motivMass(selected.widthCm, language)} cm
+          {motivMass(echteMasse(selected, printArea).breiteCm, language)} cm
         </div>
         <div>
           <span className="block text-xs text-gray-600">{t('element_height')}</span>
-          {motivMass(selected.heightCm, language)} cm
+          {motivMass(echteMasse(selected, printArea).hoeheCm, language)} cm
         </div>
         <div>
           <span className="flex items-center gap-1 text-xs text-gray-600">
@@ -736,7 +741,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               text={
                 printMethod === 'embroidery'
                   ? 'Schätzung nach Branchenwert, keine echte Digitalisierung – siehe Chroma Inspire für die verbindliche Zahl.'
-                  : `Box: ${(selected.widthCm * selected.heightCm).toFixed(1)} cm² – rein informativ. Der Preis richtet sich bei DTF nach der Zahl der bedruckten Ansichten, nicht nach der Motivgröße.`
+                  : `Box: ${(echteMasse(selected, printArea).breiteCm * echteMasse(selected, printArea).hoeheCm).toFixed(1)} cm² – rein informativ. Der Preis richtet sich bei DTF nach der Zahl der bedruckten Ansichten; nur bei sehr großen Motiven kommt ein Großformat-Zuschlag hinzu.`
               }
             />
           </span>
@@ -746,13 +751,13 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
             <>
               {isText
                 ? (
-                    selected.widthCm *
-                    selected.heightCm *
+                    echteMasse(selected, printArea).breiteCm *
+                    echteMasse(selected, printArea).hoeheCm *
                     ((selected as TextElement).inkCoverageRatio ?? 0.35)
                   ).toFixed(1)
                 : (
-                    selected.widthCm *
-                    selected.heightCm *
+                    echteMasse(selected, printArea).breiteCm *
+                    echteMasse(selected, printArea).hoeheCm *
                     ((selected as LogoElement).contentFillRatio ?? 0.85)
                   ).toFixed(1)}{' '}
               cm²

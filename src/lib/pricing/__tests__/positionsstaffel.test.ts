@@ -95,7 +95,7 @@ test('mehrere Motive auf DERSELBEN Ansicht zählen nur als eine Position', async
   assert.ok(Math.abs(r.unitPrice - (BASIS_PREIS + 9)) < 0.01, `Stückpreis ${r.unitPrice}, erwartet ${BASIS_PREIS + 9}`);
 });
 
-test('die Motivgröße hat keinen Einfluss mehr auf den Preis', async () => {
+test('im Standardformat hat die Motivgröße keinen Einfluss auf den Preis', async () => {
   const rules = await dtfRegeln();
   const klein = calculatePrice({
     basePrice: BASIS_PREIS,
@@ -103,13 +103,62 @@ test('die Motivgröße hat keinen Einfluss mehr auf den Preis', async () => {
     elements: [logo('front', 5, 5)],
     pricingRules: rules,
   });
-  const gross = calculatePrice({
+  const standard = calculatePrice({
     basePrice: BASIS_PREIS,
     quantity: 1,
-    elements: [logo('front', 28, 44)],
+    elements: [logo('front', 20, 25)],
     pricingRules: rules,
   });
-  assert.equal(klein.unitPrice, gross.unitPrice, 'ein kleines und ein großes Motiv auf derselben Ansicht müssen gleich teuer sein');
+  assert.equal(klein.unitPrice, standard.unitPrice, 'ein kleines und ein Standardmotiv auf derselben Ansicht müssen gleich teuer sein');
+  assert.equal(standard.breakdown.grossformatPerUnit, 0);
+});
+
+test('große Motive kosten nur über den Großformat-Zuschlag mehr, nicht über die Fläche', async () => {
+  const rules = await dtfRegeln();
+  const standard = calculatePrice({ basePrice: BASIS_PREIS, quantity: 10, elements: [logo('front', 20, 25)], pricingRules: rules });
+  const gross = calculatePrice({ basePrice: BASIS_PREIS, quantity: 10, elements: [logo('front', 28, 44)], pricingRules: rules });
+  assert.equal(gross.breakdown.grossformatPerUnit, 4, '28 × 44 cm = 1.232 cm² → Stufe bis 1.500 cm²');
+  // Mehrpreis = Zuschlag (der Rest bleibt in der Rundung auf ,99 stecken: höchstens ±0,50 €)
+  assert.ok(Math.abs(gross.unitPrice - standard.unitPrice - 4) <= 0.5, `${gross.unitPrice} − ${standard.unitPrice}`);
+});
+
+test('der Zuschlag richtet sich nach den ECHTEN flachen Maßen, nicht nach der gezeichneten Größe', async () => {
+  const rules = await dtfRegeln();
+  const element = logo('front', 28, 25, 'a'); // gezeichnet 700 cm² → kein Zuschlag
+  const ohne = calculatePrice({ basePrice: BASIS_PREIS, quantity: 10, elements: [element], pricingRules: rules });
+  const mit = calculatePrice({
+    basePrice: BASIS_PREIS,
+    quantity: 10,
+    elements: [element],
+    pricingRules: rules,
+    echteMasse: { a: { breiteCm: 41, hoeheCm: 25 } }, // abgewickelt 1.025 cm² → Stufe 1
+  });
+  assert.equal(ohne.breakdown.grossformatPerUnit, 0);
+  assert.equal(mit.breakdown.grossformatPerUnit, 4);
+  assert.ok(mit.unitPrice > ohne.unitPrice);
+});
+
+test('Stickerei bekommt keinen Großformat-Zuschlag (die Veredelung rechnet nach Stichzahl)', async () => {
+  const stick = await getPricingRules('embroidery');
+  const r = calculatePrice({
+    basePrice: BASIS_PREIS,
+    quantity: 10,
+    elements: [logo('front', 40, 47, 'g')],
+    pricingRules: stick,
+    echteMasse: { g: { breiteCm: 55, hoeheCm: 47 } },
+  });
+  assert.equal(r.breakdown.grossformatPerUnit, 0);
+});
+
+test('der Großformat-Zuschlag gilt je Stück und je Motiv', async () => {
+  const rules = await dtfRegeln();
+  const r = calculatePrice({
+    basePrice: BASIS_PREIS,
+    quantity: 10,
+    elements: [logo('front', 40, 47, 'a'), logo('back', 40, 47, 'b')],
+    pricingRules: rules,
+  });
+  assert.equal(r.breakdown.grossformatPerUnit, 14, 'zweimal Stufe 2 (7 €)');
 });
 
 test('ohne Motive entsteht kein Positionsaufschlag', async () => {

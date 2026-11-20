@@ -51,6 +51,22 @@ const PRINTAREA_OUT = process.env.PRINTAREA_OUT ?? 'src/config/printAreaData.gen
 const ZYLINDER_PROJEKTION = 2 / Math.PI;
 
 /**
+ * DTF-TORSOFLÄCHE (vorne/hinten) – Ausgabe in `printAreaDataDtf.generated.ts`.
+ *
+ * Die Stickerei-Fläche (`printAreaData.generated.ts`) bleibt unverändert: dort gilt weiter die Prozessgrenze (30 × 47 cm)
+ * der Registry, Stickerei ist vorübergehend pausiert und wurde ausdrücklich nicht angefasst.
+ *
+ * Für DTF gibt es KEINE feste Breitengrenze mehr. Die nutzbare Breite kommt aus der Größentabelle des Produkts und der Größe:
+ * Brustbreite − 2 × Nahtabstand (flach gemessen). Das Foto zeigt die gewölbte Brust von vorn (Projektion, Faktor
+ * ZYLINDER_PROJEKTION), deshalb wird die flache Breite in die gezeichnete Breite umgerechnet: p = 2·r·sin(w / 2r) mit
+ * r = Brustbreite / π. Die Rückrechnung (Abwicklung) macht `src/config/abwicklung.ts` zur Laufzeit mit radiusCm/mitteCm.
+ *
+ * Der Nahtabstand wirkt in FLACHEN Zentimetern. In der Projektion verschwindet er fast (2 cm flach ≈ 0,1 cm am Rand), der
+ * Sicherheitsabstand zur Fotokontur ist deshalb nur noch ein kleiner Puffer gegen Messrauschen der Kontur.
+ */
+const DTF_KONTUR_PUFFER_CM = 0.4;
+
+/**
  * KOPFTEIL: Anteil der Bildkontur OBERHALB der Schulterlinie.
  *
  * ── Warum diese Tabelle existiert ─────────────────────────────────────
@@ -903,6 +919,10 @@ interface GroessenBox {
   maxHeightCm: number;
   boxWidthCm: number;
   boxHeightCm: number;
+  /** NUR DTF-Torsofläche (siehe `berechneBox(…, true)`): Krümmung der Brust,
+   *  aus der die echte flache Breite abgewickelt wird. */
+  radiusCm?: number;
+  mitteCm?: number;
 }
 
 interface Box {
@@ -928,6 +948,8 @@ interface Box {
 }
 
 const ergebnis: Record<string, Partial<Record<View, Box>>> = {};
+/** DTF-Torsoflächen (nur front/back), Ausgabe in printAreaDataDtf.generated.ts. */
+const ergebnisDtf: Record<string, Partial<Record<View, GroessenBox & { bySize?: Record<string, GroessenBox> }>>> = {};
 const protokoll: string[] = [];
 const kopfteilProtokoll: string[] = [];
 let ohneBild = 0;
@@ -1328,7 +1350,9 @@ for (const p of PRODUCTS) {
     // jeweilige Größe angefordert wird (massZeile.breiteCm/hoeheCm) – die
     // Ärmelfläche bleibt davon ohnehin unberührt (die Prozessgrenze
     // grenze.maxWidthCm ist größenunabhängig, siehe Kommentar oben).
-    function berechneBox(massZeile: { breiteCm: number; hoeheCm: number }) {
+    function berechneBox(massZeile: { breiteCm: number; hoeheCm: number }, dtf = false) {
+      // DTF-Torsofläche: Puffer zur Fotokontur in cm statt des 2-cm-Nahtabstands (der gilt flach, nicht projiziert).
+      const konturPufferPx = (dtf ? DTF_KONTUR_PUFFER_CM : ABSTAND.seitennaht) * pxProCm;
       // ── Größenverhältnis zur Referenzgröße ──────────────────────────────
       // Das Foto zeigt EIN reales Kleidungsstück (die Referenzgröße, i.d.R.
       // 'M'). Alle aus dem Foto GEMESSENEN Sicherheitsgrenzen (engste Kante,
@@ -1352,8 +1376,18 @@ for (const p of PRODUCTS) {
 
       let breiteCmLokal: number;
       let hoeheNutzbarCmLokal: number;
+      // DTF: größte gezeichnete Breite, die die Größentabelle hergibt (siehe unten) – gilt auch nach Handkorrekturen als Obergrenze.
+      let dtfBreiteMaxCm = Infinity;
       if (!istAermel) {
-        breiteCmLokal = Math.min(massZeile.breiteCm - 2 * ABSTAND.seitennaht, grenze.maxWidthCm);
+        if (dtf) {
+          // Keine Prozessgrenze: flache Breite laut Größentabelle (− Nähte), in die gezeichnete (projizierte) Breite umgerechnet.
+          const radius = massZeile.breiteCm / Math.PI;
+          const flachMax = massZeile.breiteCm - 2 * ABSTAND.seitennaht;
+          breiteCmLokal = 2 * radius * Math.sin(Math.min(flachMax / (2 * radius), Math.PI / 2));
+          dtfBreiteMaxCm = breiteCmLokal;
+        } else {
+          breiteCmLokal = Math.min(massZeile.breiteCm - 2 * ABSTAND.seitennaht, grenze.maxWidthCm);
+        }
         // Kinderware: Die Fläche bleibt im Brust-/Rumpfbereich und reicht nie in den Saum. Die Kinder-Größenreihe wächst je
         // Stufe um rund 9 % in der Länge (Erwachsene: rund 3 %), und kurze Kinderkleidung ließe die volle Nutzhöhe bis in den
         // schmaleren Saum-Rippenbereich des Fotos laufen; die „engste Kante“ dort machte die Fläche SCHMALER als bei der
@@ -1405,7 +1439,7 @@ for (const p of PRODUCTS) {
       // Nie über die (größenskalierte) engste Stoffkante hinaus – auch nicht,
       // wenn das Herstellermaß mehr zuließe.
       if (!istAermel) {
-        const naht = ABSTAND.seitennaht * pxProCm;
+        const naht = konturPufferPx;
         x0pxLokal = Math.max(x0pxLokal, skaliereX(grenzeLinksPx) + naht);
         x1pxLokal = Math.min(x1pxLokal, skaliereX(grenzeRechtsPx) - naht);
       }
@@ -1563,7 +1597,7 @@ for (const p of PRODUCTS) {
       }
 
       if (!istAermel) {
-        const naht = ABSTAND.seitennaht * pxProCm;
+        const naht = konturPufferPx;
         const linksWerte: number[] = [];
         const rechtsWerte: number[] = [];
         for (const prof of profile) {
@@ -1630,6 +1664,13 @@ for (const p of PRODUCTS) {
         }
       }
 
+      // DTF-Torsofläche: Auch eine von Hand abgelesene Breite darf die Größentabelle (Brustbreite − Nähte) nicht überschreiten –
+      // sonst ließe sich ein Motiv über den Schnitt hinaus platzieren, das es auf dem Kleidungsstück so nicht gibt.
+      if (dtf && !istAermel && Number.isFinite(dtfBreiteMaxCm)) {
+        x0pxLokal = Math.max(x0pxLokal, mitteX - (dtfBreiteMaxCm * pxProCm) / 2);
+        x1pxLokal = Math.min(x1pxLokal, mitteX + (dtfBreiteMaxCm * pxProCm) / 2);
+      }
+
       // Letzte, unbedingte Grenze: nie über den Bildrand hinaus. Für die
       // Referenzgröße (ratio=1) unwirksam (die bisherige Kontur-Klemme sitzt
       // immer innerhalb des Bildes); erst bei stark skalierten Größen
@@ -1654,6 +1695,9 @@ for (const p of PRODUCTS) {
         boxHeightCm: Number(((y1pxLokal - y0pxLokal) / pxProCm).toFixed(1)),
         startXCm: startXCmLokal !== undefined ? Number(Math.max(0, startXCmLokal).toFixed(1)) : undefined,
         startYCm: startYCmLokal !== undefined ? Number(Math.max(0, startYCmLokal).toFixed(1)) : undefined,
+        // Nur für die DTF-Torsofläche: Brustradius (flache Brustbreite / π) und Lage der Brustmitte in der Fläche (cm ab linker Kante).
+        radiusCm: Number((massZeile.breiteCm / Math.PI).toFixed(2)),
+        mitteCm: Number(((mitteX - x0pxLokal) / pxProCm).toFixed(2)),
       };
     }
 
@@ -1688,6 +1732,30 @@ for (const p of PRODUCTS) {
           boxHeightCm: box.boxHeightCm,
         };
       }
+    }
+
+    // ── DTF-Torsofläche (nur front/back): gleiche Berechnung, aber Breite aus Größentabelle statt Prozessgrenze ──
+    if (!istAermel) {
+      const dtfBox = (z: { breiteCm: number; hoeheCm: number }): GroessenBox => {
+        const b = berechneBox(z, true);
+        return {
+          x0: proz(b.x0px, w),
+          y0: proz(b.y0px, h),
+          x1: proz(b.x1px, w),
+          y1: proz(b.y1px, h),
+          maxWidthCm: b.maxWidthCm,
+          maxHeightCm: b.maxHeightCm,
+          boxWidthCm: b.boxWidthCm,
+          boxHeightCm: b.boxHeightCm,
+          radiusCm: b.radiusCm,
+          mitteCm: b.mitteCm,
+        };
+      };
+      const dtfBySize: Record<string, GroessenBox> | undefined =
+        sizeTabelle && sizeTabelle.length > 0
+          ? Object.fromEntries(sizeTabelle.map((z) => [z.size, dtfBox(z)]))
+          : undefined;
+      (ergebnisDtf[p.id] ??= {})[view] = { ...dtfBox(mass), ...(dtfBySize ? { bySize: dtfBySize } : {}) };
     }
 
     proProdukt[view] = {
@@ -1797,6 +1865,59 @@ for (const [id, views] of Object.entries(ergebnis)) {
 zeilenAus.push('};', '');
 
 writeFileSync(PRINTAREA_OUT, zeilenAus.join('\n'), 'utf8');
+
+// ── Zweite Ausgabe: DTF-Torsoflächen ────────────────────────────────────
+const PRINTAREA_DTF_OUT = process.env.PRINTAREA_DTF_OUT ?? 'src/config/printAreaDataDtf.generated.ts';
+const dtfZeilen: string[] = [
+  '/**',
+  ' * ERZEUGTE DATEI – nicht von Hand bearbeiten.',
+  ' *',
+  ' * Quelle: scripts/generatePrintAreaData.mts (Modus „dtf“ in berechneBox)',
+  ' * Inhalt: Druckflächen für DTF-Transferdruck auf VORDER- und RÜCKSEITE. Die Breite kommt aus der Größentabelle des Produkts',
+  ' *         (Brustbreite − 2 × Nahtabstand, flach gemessen), NICHT aus einer festen Prozessgrenze. Die Stickerei-Flächen bleiben',
+  ' *         unverändert in printAreaData.generated.ts.',
+  ' *',
+  ' * Alle Werte in gezeichneten (projizierten) Zentimetern wie dort; `radiusCm` (flache Brustbreite / π) und `mitteCm` (Brustmitte,',
+  ' * cm ab linker Flächenkante) erlauben die Abwicklung auf die echte flache Breite (src/config/abwicklung.ts).',
+  ' * Neu erzeugen: npx tsx --tsconfig tsconfig.scripts.json scripts/generatePrintAreaData.mts',
+  ' */',
+  "import type { PrintView } from '@/types';",
+  '',
+  'export interface GeneratedDtfBox {',
+  '  /** Position im Bild, Prozent der Bildkante. */',
+  '  x0: number; y0: number; x1: number; y1: number;',
+  '  /** Motivgrenze und gezeichnete Fläche in cm (projiziert, wie in GeneratedArea). */',
+  '  maxWidthCm: number; maxHeightCm: number;',
+  '  boxWidthCm: number; boxHeightCm: number;',
+  '  /** Brustradius = flache Brustbreite der Größe / π. */',
+  '  radiusCm: number;',
+  '  /** Brustmitte, cm ab linker Flächenkante. */',
+  '  mitteCm: number;',
+  '}',
+  '',
+  'export interface GeneratedDtfArea extends GeneratedDtfBox {',
+  '  /** Je Konfektionsgröße (sizeGuide.measurements[].size). */',
+  '  bySize?: Record<string, GeneratedDtfBox>;',
+  '}',
+  '',
+  'export const PRINT_AREA_DATA_DTF: Record<string, Partial<Record<PrintView, GeneratedDtfArea>>> = {',
+];
+const dtfBox = (g: GroessenBox): string =>
+  `x0: ${g.x0}, y0: ${g.y0}, x1: ${g.x1}, y1: ${g.y1}, maxWidthCm: ${g.maxWidthCm}, maxHeightCm: ${g.maxHeightCm}, boxWidthCm: ${g.boxWidthCm}, boxHeightCm: ${g.boxHeightCm}, radiusCm: ${g.radiusCm}, mitteCm: ${g.mitteCm}`;
+for (const [id, views] of Object.entries(ergebnisDtf)) {
+  dtfZeilen.push(`  '${id}': {`);
+  for (const [view, b] of Object.entries(views)) {
+    const bySize = b!.bySize
+      ? ` bySize: { ${Object.entries(b!.bySize)
+          .map(([gr, g]) => `'${gr}': { ${dtfBox(g)} }`)
+          .join(', ')} },`
+      : '';
+    dtfZeilen.push(`    ${view}: { ${dtfBox(b!)},${bySize} },`);
+  }
+  dtfZeilen.push('  },');
+}
+dtfZeilen.push('};', '');
+writeFileSync(PRINTAREA_DTF_OUT, dtfZeilen.join('\n'), 'utf8');
 
 console.log(`Produkte mit Flächen : ${Object.keys(ergebnis).length} von ${PRODUCTS.length}`);
 console.log(`Ansichten gesamt     : ${Object.values(ergebnis).reduce((s, v) => s + Object.keys(v).length, 0)}`);

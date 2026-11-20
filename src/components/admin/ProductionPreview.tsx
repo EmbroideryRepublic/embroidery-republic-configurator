@@ -87,9 +87,18 @@ function ElementZeile({ orderId, element, nummer, gestickt }: { orderId: string;
           </>
         )}
         <p className="mt-0.5 text-xs text-gray-400">
-          {motivMass(element.xCm)}/{motivMass(element.yCm)} cm · {motivMass(element.widthCm)}×{motivMass(element.heightCm)} cm
+          {motivMass(element.xCm)}/{motivMass(element.yCm)} cm ·{' '}
+          <span className="font-medium text-gray-600">
+            {motivMass(element.echteBreiteCm ?? element.widthCm)}×{motivMass(element.echteHoeheCm ?? element.heightCm)} cm
+          </span>
+          {element.echteBreiteCm !== undefined && ' (echtes Maß, flach)'}
           {element.rotationDeg ? ` · ${element.rotationDeg.toFixed(0)}°` : ''}
         </p>
+        {element.echteBreiteCm !== undefined && (
+          <p className="text-[11px] leading-snug text-gray-400">
+            Im Foto gezeichnet {motivMass(element.widthCm)}×{motivMass(element.heightCm)} cm – die Brust ist dort gewölbt. Für die Produktion gilt das echte Maß.
+          </p>
+        )}
         {/* Stickerei: fertig digitalisierte Stickdatei (DST) – die Maschine liest keine Bilder oder Vektoren. */}
         {gestickt && <StickdateiKnoepfe orderId={orderId} elementId={element.id} istLogo={element.type === 'logo'} />}
       </div>

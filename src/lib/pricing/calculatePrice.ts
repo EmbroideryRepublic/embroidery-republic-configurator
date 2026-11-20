@@ -1,6 +1,7 @@
 import type { ConfigElement, PricingRule, PrintView } from '@/types';
 import { evaluateRules, isRuleApplicable, type PricingIssue } from './ruleEngine';
 import { aufNaechsten99 } from './ladenpreis';
+import { grossformatZuschlag } from '@/config/pricing/grossformat';
 
 /**
  * Zentrale Preisberechnung des Konfigurators.
@@ -34,6 +35,12 @@ export interface PriceCalculationInput {
    * (z.B. „Stickerei kostet genau den Stichaufpreis mehr als DTF“), nie für die Anzeige.
    */
   ladenpreisRundung?: boolean;
+  /**
+   * ECHTE flache Motivmaße je Element-ID (config/echteMasse.ts) – nur für DTF auf Vorder-/Rückseite gesetzt. Das
+   * Foto zeigt die Brust gewölbt, die gezeichnete Breite ist deshalb kleiner als die flache; für den Großformat-Zuschlag zählt die
+   * echte Fläche. Ohne Eintrag gilt das gezeichnete Maß des Elements.
+   */
+  echteMasse?: Record<string, { breiteCm: number; hoeheCm: number }>;
 }
 
 export interface PriceCalculationResult {
@@ -94,6 +101,8 @@ export interface PriceCalculationResult {
     setupPerUnit: number;
     /** Zuschläge je Stück (Premiumgarn, Spezialfolie …). */
     surchargePerUnit: number;
+    /** Großformat-Zuschlag je Stück (nur DTF, nach echter Motivfläche, config/pricing/grossformat.ts) – im unitPrice enthalten. */
+    grossformatPerUnit: number;
     /** Nachlässe je Stück als POSITIVER Betrag (Rabatt, Gutschein). */
     discountPerUnit: number;
   };
@@ -510,8 +519,18 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // Anteil; einmalige Zuschläge (Express) stecken bereits in `orderOnce`.
   const surchargePerUnit = charges.perUnitFixed - elementBaseFeeTotal - positionFeeTotal;
 
-  let unitPriceUndiscounted = fixedPortion + variableCostTotal + surchargePerUnit;
-  let unitPriceDiscounted = discountedFixed + discountedVariable + surchargePerUnit;
+  // Großformat-Zuschlag (nur DTF): Mehrkosten der Transferfolie für Motive über dem Standardformat, nach der ECHTEN flachen Fläche
+  // (config/pricing/grossformat.ts). Kein Mengenrabatt – er deckt Materialkosten, die je Stück anfallen.
+  const grossformatPerUnit =
+    dtfPositionPricingActive && !stichRegelAktiv
+      ? elements.reduce((sum, el) => {
+          const echt = input.echteMasse?.[el.id];
+          return sum + grossformatZuschlag(echt?.breiteCm ?? el.widthCm, echt?.hoeheCm ?? el.heightCm);
+        }, 0)
+      : 0;
+
+  let unitPriceUndiscounted = fixedPortion + variableCostTotal + surchargePerUnit + grossformatPerUnit;
+  let unitPriceDiscounted = discountedFixed + discountedVariable + surchargePerUnit + grossformatPerUnit;
 
   // Ladenpreis (Festlegung des Betreibers 2026-11-12, lib/pricing/ladenpreis.ts): Der Stückpreis, den die Kundschaft
   // sieht – INKLUSIVE anteiliger Rüstkosten –, wird kaufmännisch auf den NÄCHSTEN ,99-Betrag gerundet (auf oder ab, höchstens ±0,50 €).
@@ -599,6 +618,7 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       setupTotal: roundToCents(setupTotal),
       setupPerUnit: roundToCents(setupTotal / quantity),
       surchargePerUnit: roundToCents(surchargePerUnit),
+      grossformatPerUnit: roundToCents(grossformatPerUnit),
       discountPerUnit: roundToCents(nachlassJeStueck),
     },
   };

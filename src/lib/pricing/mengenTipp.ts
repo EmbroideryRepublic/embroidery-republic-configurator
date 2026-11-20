@@ -51,11 +51,13 @@ export function findeNaechsteStufe(eingabe: {
   quantity: number;
   elements: ConfigElement[];
   pricingRules: PricingRule[];
+  echteMasse?: Record<string, { breiteCm: number; hoeheCm: number }>;
 }): NaechsteStufe | null {
-  const { basePrice, quantity, elements, pricingRules } = eingabe;
+  const { basePrice, quantity, elements, pricingRules, echteMasse } = eingabe;
   if (!Number.isFinite(quantity) || quantity < 1 || pricingRules.length === 0) return null;
 
-  const stueckpreis = (menge: number) => calculatePrice({ basePrice, quantity: menge, elements, pricingRules }).unitPrice;
+  const stueckpreis = (menge: number) =>
+    calculatePrice({ basePrice, quantity: menge, elements, pricingRules, echteMasse }).unitPrice;
   const aktuell = stueckpreis(quantity);
   if (!(aktuell > 0)) return null;
 
@@ -74,11 +76,13 @@ export function findeMengenTipp(eingabe: {
   quantity: number;
   elements: ConfigElement[];
   pricingRules: PricingRule[];
+  echteMasse?: Record<string, { breiteCm: number; hoeheCm: number }>;
 }): MengenTipp | null {
-  const { basePrice, quantity, elements, pricingRules } = eingabe;
+  const { basePrice, quantity, elements, pricingRules, echteMasse } = eingabe;
   if (!Number.isFinite(quantity) || quantity < 1 || pricingRules.length === 0) return null;
 
-  const gesamt = (menge: number) => calculatePrice({ basePrice, quantity: menge, elements, pricingRules }).totalPrice;
+  const gesamt = (menge: number) =>
+    calculatePrice({ basePrice, quantity: menge, elements, pricingRules, echteMasse }).totalPrice;
   const aktuell = gesamt(quantity);
   if (!(aktuell > 0)) return null;
 

@@ -19,6 +19,7 @@ import { SummaryPanel } from './SummaryPanel';
 import { CompareModal } from './CompareModal';
 import { LargePreviewModal } from './LargePreviewModal';
 import { getPrintAreas, flaecheFuerGroesse } from '@/config/printAreas';
+import { echteMassePosition } from '@/config/echteMasse';
 import { getPricingRules } from '@/config/pricingRules';
 import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
 import { kleinsteBestellteGroesse, groessenLeiterVon } from '@/config/products/groessen';
@@ -285,6 +286,13 @@ export function ConfiguratorPrototype() {
     };
   }, [isHydrated, productId, printMethod, syncElementsToPrintAreas, setActiveView, product]);
 
+  // Echte (flache) Motivmaße für den Großformat-Zuschlag: das Foto zeigt die Brust gewölbt, die gezeichnete Breite ist kleiner
+  // als die flache (config/abwicklung.ts). Dieselbe Ableitung rechnen Warenkorb und Server.
+  const echteMasse = useMemo(
+    () => echteMassePosition({ productId: product.id, printMethod, sizeQuantities, elements }),
+    [product.id, printMethod, sizeQuantities, elements]
+  );
+
   // Preis live neu berechnen – einzige Stelle, die calculatePrice aufruft.
   useEffect(() => {
     if (pricingRules.length === 0) return;
@@ -293,11 +301,12 @@ export function ConfiguratorPrototype() {
       quantity,
       elements,
       pricingRules,
+      echteMasse,
     });
     setPrices(result.unitPrice, result.totalPrice);
     setPriceBreakdown(result.breakdown);
     setPriceHasErrors(result.hasErrors);
-  }, [elements, quantity, pricingRules, product.basePrice, setPrices]);
+  }, [elements, quantity, pricingRules, product.basePrice, setPrices, echteMasse]);
 
   // Vergleichspreis der JEWEILS ANDEREN Veredelungsart für den
   // MethodSwitcher (Ausbauplan, quickwins) – reine Anzeige, verändert nie
@@ -321,8 +330,8 @@ export function ConfiguratorPrototype() {
     () =>
       printMethod === 'embroidery' || pricingRules.length === 0
         ? null
-        : findeMengenTipp({ basePrice: product.basePrice, quantity, elements, pricingRules }),
-    [printMethod, product.basePrice, quantity, elements, pricingRules]
+        : findeMengenTipp({ basePrice: product.basePrice, quantity, elements, pricingRules, echteMasse }),
+    [printMethod, product.basePrice, quantity, elements, pricingRules, echteMasse]
   );
 
   // Nächste Preisstufe (lib/pricing/mengenTipp.ts): „Noch 2 Stück – dann nur noch 26,99 € pro Stück.“ Zeigt der Kundschaft, dass
@@ -331,8 +340,8 @@ export function ConfiguratorPrototype() {
     () =>
       printMethod === 'embroidery' || pricingRules.length === 0
         ? null
-        : findeNaechsteStufe({ basePrice: product.basePrice, quantity, elements, pricingRules }),
-    [printMethod, product.basePrice, quantity, elements, pricingRules]
+        : findeNaechsteStufe({ basePrice: product.basePrice, quantity, elements, pricingRules, echteMasse }),
+    [printMethod, product.basePrice, quantity, elements, pricingRules, echteMasse]
   );
 
   // Tastenkürzel: Strg/Cmd+Z = Rückgängig, Strg/Cmd+Y bzw. Strg+Shift+Z =

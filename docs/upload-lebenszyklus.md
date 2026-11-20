@@ -308,7 +308,7 @@ Browser: Data-URL > 256 KB (DIREKT_MAX_ZEICHEN)?
    ja  → in Teile zu 3 MB zerlegen → POST /api/upload/teil (3 gleichzeitig, 3 Wiederholungen je Teil)
          → Verweis  staged:<Tag>:<Ticket>:<Teile>:<Bytes>  ersetzt die Data-URL in der Kopie der Bestellung
    nein → Data-URL bleibt wie bisher in der Bestellung
-Server:  pruefeZwischenablageVerweise()  Form, Anzahl (≤ 24), Gesamtgröße (≤ 200 MB)
+Server:  pruefeZwischenablageVerweise()  Form, Anzahl (≤ 24), Gesamtgröße je Bestellung (≤ 100 MB)
          loeseZwischenablageAuf()        Teile laden, Größen prüfen, zusammensetzen, pruefeBytes() (Größe, PNG-Signatur, Abmessungen)
          uploadProductionFile()          am endgültigen Ort ablegen, danach Teile löschen
 ```
@@ -317,7 +317,11 @@ Server:  pruefeZwischenablageVerweise()  Form, Anzahl (≤ 24), Gesamtgröße (�
   Aufräumregel; angenommen werden nur heute und gestern.
 - Aufräumen: Der Wartungsaufruf (`/api/cron/process-supplier-orders`) löscht Tagesordner, die älter als zwei Tage sind
   (`loescheAlteZwischenablage`). Nach einer erfolgreichen Bestellung werden die Teile sofort gelöscht.
-- Zusammensetzen läuft nacheinander (nie parallel), damit eine 45-MB-Datei nicht mehrfach gleichzeitig im Speicher liegt.
+- Zusammensetzen: höchstens zwei Dateien gleichzeitig je Instanz (begrenzte Warteschlange, `Plaetze`), jedes Laden eines Teils mit Zeitlimit von 30 s.
+  Eine hängende Verbindung blockiert so keine anderen Bestellungen. Innerhalb EINER Bestellung laufen die Verweise strikt nacheinander
+  (zusammensetzen → speichern → freigeben), damit nie mehrere große Dateien einer Bestellung gleichzeitig im Speicher liegen.
+- Speicherbedarf: Beim Zusammensetzen liegen Teile und Ergebnis zugleich im Speicher (rund das Doppelte der Dateigröße); bei Stickerei wird das
+  Anzeigebild für die Stichzahl zusätzlich als Data-URL (4/3 der Größe) vorgehalten. Deshalb das knappe Budget von 100 MB je Bestellung.
 - Rate-Limit `upload_teil`: 600 Teile je Stunde und Adresse (`config/rateLimits.ts`).
 - Stickerei: Das Anzeigebild wird für die serverseitige Stichzahl schon vor der Preisberechnung aufgelöst (`loeseStickereiVerweiseAuf`).
 - Bewusst NICHT geändert: Das Kontaktformular (Anhänge bis 5 MB als Data-URL) hat dieselbe 4,5-MB-Grenze und scheitert ab etwa 3 MB.

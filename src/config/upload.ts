@@ -36,5 +36,17 @@ export const ZWISCHENABLAGE_ORDNER = 'staging';
 /** Zwischenablage-Ordner (je Kalendertag) werden nach so vielen Tagen gelöscht. Verwaiste Teile aus abgebrochenen Bestellungen. */
 export const ZWISCHENABLAGE_VERFALL_TAGE = 2;
 
-/** Ein Aufruf der Bestellung darf höchstens so viele Dateien aus der Zwischenablage zusammensetzen (Speicher des Servers). */
+/** Ein Aufruf der Bestellung darf höchstens so viele verschiedene Dateien aus der Zwischenablage zusammensetzen. */
 export const MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG = 24;
+
+/**
+ * Gesamtgröße aller Zwischenablage-Dateien EINER Bestellung. Bewusst knapp: Bei Stickerei wird das Anzeigebild für die Stichzahl als Data-URL
+ * (4/3 der Größe) vorgehalten, beim Zusammensetzen liegen Teile UND Ergebnis gleichzeitig im Speicher – der Spitzenbedarf ist ein Mehrfaches.
+ */
+export const MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG = 100 * 1024 * 1024;
+
+/** Wie viele Dateien der Server gleichzeitig (über alle Bestellungen einer Instanz) zusammensetzt. Weitere warten in der Reihe. */
+export const MAX_ZUSAMMENSETZEN_GLEICHZEITIG = 2;
+
+/** Zeitlimit für das Laden EINES Teils aus dem Speicher. Eine hängende Verbindung hält sonst einen Platz für alle anderen Bestellungen. */
+export const TEIL_LADE_TIMEOUT_MS = 30_000;

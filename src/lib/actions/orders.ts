@@ -125,6 +125,8 @@ function zaehleVerweise(items: CartItem[]): Map<string, number> {
 interface ZwischenablageStand {
   geladen: Map<string, Promise<UploadPruefung>>;
   offen: Map<string, number>;
+  /** Verweise einer Bestellung laufen strikt nacheinander: zusammensetzen → speichern → freigeben, dann der nächste. */
+  serie: Promise<void>;
 }
 
 /**
@@ -137,6 +139,12 @@ async function speichereLogo(path: string, quelle: string, stand: Zwischenablage
     await uploadProductionFile(path, quelle);
     return;
   }
+  const lauf = stand.serie.then(() => speichereVerweis(path, quelle, stand));
+  stand.serie = lauf.catch(() => undefined);
+  return lauf;
+}
+
+async function speichereVerweis(path: string, quelle: string, stand: ZwischenablageStand): Promise<void> {
   let geladen = stand.geladen.get(quelle);
   if (!geladen) {
     geladen = loeseZwischenablageAuf(quelle);
@@ -263,7 +271,7 @@ async function buildItemRecords(
   orderId: string,
   serverPrices: ServerItemPrice[]
 ): Promise<OrderItemRecord[]> {
-  const stand: ZwischenablageStand = { geladen: new Map(), offen: zaehleVerweise(items) };
+  const stand: ZwischenablageStand = { geladen: new Map(), offen: zaehleVerweise(items), serie: Promise.resolve() };
   return Promise.all(
     items.map(async (item, itemIndex) => {
       const product = getProduct(item.productId);

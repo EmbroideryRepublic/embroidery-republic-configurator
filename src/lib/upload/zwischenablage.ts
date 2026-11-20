@@ -9,12 +9,17 @@
  *    ausschließlich aus Werten, die hier streng geprüft werden.
  *  • Beim Zusammensetzen zählt nur der Verweis aus der Bestellung: Teilzahl, Teilgrößen und Gesamtgröße müssen stimmen, danach läuft die
  *    Datei durch dieselbe Prüfung wie jede andere (pruefeBytes: Größe, PNG-Signatur, Abmessungen).
- *  • Zusammensetzen läuft nacheinander, nie parallel: Eine 45-MB-Datei belegt beim Zusammenfügen etwa das Doppelte im Speicher.
+ *  • Zusammensetzen läuft über eine begrenzte Warteschlange (MAX_ZUSAMMENSETZEN_GLEICHZEITIG Plätze je Instanz): Eine 45-MB-Datei belegt beim
+ *    Zusammenfügen etwa das Doppelte im Speicher. Jedes Laden eines Teils hat ein Zeitlimit, damit eine hängende Verbindung keinen Platz dauerhaft
+ *    besetzt und andere Bestellungen nicht blockiert.
  */
 import { downloadProductionFile, listeUnterordner, removeProductionFiles, uploadProductionFile } from '@/lib/supabase/storage';
 import {
   MAX_TEILE,
+  MAX_ZUSAMMENSETZEN_GLEICHZEITIG,
+  MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG,
   MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG,
+  TEIL_LADE_TIMEOUT_MS,
   TEIL_MAX_BYTES,
   ZWISCHENABLAGE_ORDNER,
   ZWISCHENABLAGE_VERFALL_TAGE,
@@ -57,20 +62,48 @@ export interface ZwischenablageEinAus {
 
 const STANDARD_EIN_AUS: ZwischenablageEinAus = { lade: downloadProductionFile };
 
-let kette: Promise<unknown> = Promise.resolve();
-/** Führt Aufgaben nacheinander aus (Speicherschutz). Ein Fehler einer Aufgabe stoppt die nächste nicht. */
-function nacheinander<T>(aufgabe: () => Promise<T>): Promise<T> {
-  const ergebnis = kette.then(aufgabe, aufgabe);
-  kette = ergebnis.catch(() => undefined);
-  return ergebnis;
+/** Begrenzte Warteschlange: höchstens `plaetze` Aufgaben gleichzeitig, die übrigen warten der Reihe nach. Ein Platz wird immer wieder frei. */
+export class Plaetze {
+  private frei: number;
+  private readonly warteschlange: Array<() => void> = [];
+  constructor(plaetze: number) {
+    this.frei = plaetze;
+  }
+  async fuehreAus<T>(aufgabe: () => Promise<T>): Promise<T> {
+    if (this.frei > 0) this.frei--;
+    else await new Promise<void>((weiter) => this.warteschlange.push(weiter));
+    try {
+      return await aufgabe();
+    } finally {
+      const naechster = this.warteschlange.shift();
+      if (naechster) naechster();
+      else this.frei++;
+    }
+  }
+}
+
+const ZUSAMMENSETZEN = new Plaetze(MAX_ZUSAMMENSETZEN_GLEICHZEITIG);
+
+/** Bricht ein Laden nach `ms` Millisekunden ab, statt ewig zu warten. */
+function mitZeitlimit<T>(arbeit: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout>;
+  const frist = new Promise<never>((_, abgelehnt) => {
+    timer = setTimeout(() => abgelehnt(new Error(`Zeitüberschreitung nach ${ms} ms`)), ms);
+  });
+  return Promise.race([arbeit, frist]).finally(() => clearTimeout(timer));
 }
 
 /**
  * Setzt die Teile hinter einem Verweis zusammen und prüft die Datei vollständig.
  * Gibt dieselbe Prüfung zurück wie `pruefeDataUrl` – der Aufrufer behandelt beide Wege gleich.
  */
-export function loeseZwischenablageAuf(ref: string, ein: ZwischenablageEinAus = STANDARD_EIN_AUS): Promise<UploadPruefung> {
-  return nacheinander(async () => {
+export function loeseZwischenablageAuf(
+  ref: string,
+  ein: ZwischenablageEinAus = STANDARD_EIN_AUS,
+  optionen: { timeoutMs?: number } = {}
+): Promise<UploadPruefung> {
+  const timeoutMs = optionen.timeoutMs ?? TEIL_LADE_TIMEOUT_MS;
+  return ZUSAMMENSETZEN.fuehreAus(async () => {
     const r = liesRef(ref);
     if (!r) return ablehnen('zwischenablage_unvollstaendig', `Ungültiger Verweis: ${JSON.stringify(String(ref).slice(0, 80))}`);
 
@@ -79,7 +112,7 @@ export function loeseZwischenablageAuf(ref: string, ein: ZwischenablageEinAus = 
     for (let nr = 0; nr < r.teile; nr++) {
       let teil: Buffer;
       try {
-        teil = await ein.lade(teilPfad(r, nr));
+        teil = await mitZeitlimit(ein.lade(teilPfad(r, nr)), timeoutMs);
       } catch (fehler) {
         return ablehnen('zwischenablage_unvollstaendig', `Teil ${nr} von ${r.teile} fehlt: ${fehler instanceof Error ? fehler.message : fehler}`);
       }
@@ -152,8 +185,8 @@ export function pruefeZwischenablageVerweise(items: CartItem[]): string | null {
       }
     }
   }
-  // Je Datei höchstens 45 MB; insgesamt so viel, wie der Server beim Zusammensetzen nacheinander bewältigt.
-  if (verschieden.size > MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG || gesamtBytes > 200 * 1024 * 1024) {
+  // Je Datei höchstens 45 MB; insgesamt höchstens MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG (der Spitzenbedarf im Speicher ist ein Mehrfaches).
+  if (verschieden.size > MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG || gesamtBytes > MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG) {
     return 'Die Bestellung enthält zu viele oder zu große Dateien. Bitte verkleinern Sie die Logos oder bestellen Sie in mehreren Schritten.';
   }
   return null;

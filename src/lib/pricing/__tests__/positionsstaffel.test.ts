@@ -131,7 +131,7 @@ test('der Zuschlag richtet sich nach den ECHTEN flachen Maßen, nicht nach der g
     quantity: 10,
     elements: [element],
     pricingRules: rules,
-    echteMasse: { a: { breiteCm: 41, hoeheCm: 25 } }, // abgewickelt 1.025 cm² → Stufe 1
+    echteMasse: [{ breiteCm: 41, hoeheCm: 25 }], // abgewickelt 1.025 cm² → Stufe 1
   });
   assert.equal(ohne.breakdown.grossformatPerUnit, 0);
   assert.equal(mit.breakdown.grossformatPerUnit, 4);
@@ -145,7 +145,7 @@ test('Stickerei bekommt keinen Großformat-Zuschlag (die Veredelung rechnet nach
     quantity: 10,
     elements: [logo('front', 40, 47, 'g')],
     pricingRules: stick,
-    echteMasse: { g: { breiteCm: 55, hoeheCm: 47 } },
+    echteMasse: [{ breiteCm: 55, hoeheCm: 47 }],
   });
   assert.equal(r.breakdown.grossformatPerUnit, 0);
 });

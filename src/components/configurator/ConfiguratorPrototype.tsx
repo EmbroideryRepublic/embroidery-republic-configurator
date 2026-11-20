@@ -19,7 +19,7 @@ import { SummaryPanel } from './SummaryPanel';
 import { CompareModal } from './CompareModal';
 import { LargePreviewModal } from './LargePreviewModal';
 import { getPrintAreas, flaecheFuerGroesse } from '@/config/printAreas';
-import { echteMassePosition } from '@/config/echteMasse';
+import { echteMasseJeElement } from '@/config/echteMasse';
 import { getPricingRules } from '@/config/pricingRules';
 import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
 import { kleinsteBestellteGroesse, groessenLeiterVon } from '@/config/products/groessen';
@@ -289,7 +289,7 @@ export function ConfiguratorPrototype() {
   // Echte (flache) Motivmaße für den Großformat-Zuschlag: das Foto zeigt die Brust gewölbt, die gezeichnete Breite ist kleiner
   // als die flache (config/abwicklung.ts). Dieselbe Ableitung rechnen Warenkorb und Server.
   const echteMasse = useMemo(
-    () => echteMassePosition({ productId: product.id, printMethod, sizeQuantities, elements }),
+    () => echteMasseJeElement({ productId: product.id, printMethod, sizeQuantities, elements }),
     [product.id, printMethod, sizeQuantities, elements]
   );
 

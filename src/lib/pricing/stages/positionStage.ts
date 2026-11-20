@@ -30,8 +30,8 @@ export interface PositionInput {
   quantity: number;
   elements: ConfigElement[];
   pricingRules: PricingRule[];
-  /** Echte flache Motivmaße je Element-ID (config/echteMasse.ts) – für den Großformat-Zuschlag. */
-  echteMasse?: Record<string, { breiteCm: number; hoeheCm: number }>;
+  /** Echte flache Motivmaße je Element in der Reihenfolge von `elements` (config/echteMasse.ts) – für den Großformat-Zuschlag. */
+  echteMasse?: ReadonlyArray<{ breiteCm: number; hoeheCm: number } | undefined>;
 }
 
 export interface PositionResult extends StageResult {

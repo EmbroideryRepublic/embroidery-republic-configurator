@@ -10,7 +10,7 @@ import nodePath from 'node:path';
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/lib/actions/orderTypes';
 import { bereinigeAnmerkung } from '@/config/anmerkung';
-import { echteMassePosition, massgeblicheGroesse } from '@/config/echteMasse';
+import { echteMasseJeElement, massgeblicheGroesse } from '@/config/echteMasse';
 import { rundeMassCm } from '@/config/abwicklung';
 import { buildSupplierPositions } from '@/lib/suppliers';
 import { berechneAdminStatus, produktionsfreigabeErlaubt, type AdminStatus } from '@/lib/orders/orderVisibility';
@@ -803,14 +803,14 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
       }
 
       // Echte (flache) Maße je Motiv – für die Produktion zählt das flache Maß, nicht die gezeichnete Breite im Foto.
-      const echteMasse = echteMassePosition({
+      const echteMasse = echteMasseJeElement({
         productId: row.product_id as string,
         printMethod: row.print_method as string | null,
         sizeQuantities: (row.size_quantities ?? {}) as Record<string, number>,
         elements,
       });
-      const elementeMitEchtenMassen = elements.map((el) => {
-        const echt = echteMasse[el.id];
+      const elementeMitEchtenMassen = elements.map((el, i) => {
+        const echt = echteMasse[i];
         return echt ? { ...el, echteBreiteCm: rundeMassCm(echt.breiteCm), echteHoeheCm: rundeMassCm(echt.hoeheCm), echteGroesse: massgeblicheGroesse({ productId: row.product_id as string, sizeQuantities: (row.size_quantities ?? {}) as Record<string, number> }) } : el;
       });
 

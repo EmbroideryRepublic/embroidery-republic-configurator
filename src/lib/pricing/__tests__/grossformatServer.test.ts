@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { priceCart, priceCartItem } from '../serverPricing';
-import { echteMassePosition } from '@/config/echteMasse';
+import { echteMasseJeElement } from '@/config/echteMasse';
 import { getPrintAreasSync, flaecheFuerGroesse } from '@/config/printAreas';
 import type { CartItem, ConfigElement } from '@/types';
 
@@ -27,14 +27,27 @@ function position(elements: ConfigElement[], menge = 10, method: CartItem['print
   } as CartItem;
 }
 
-test('echteMassePosition: DTF vorne bekommt abgewickelte Maße, Ärmel und Stickerei nicht', () => {
+test('echteMasseJeElement: DTF vorne bekommt abgewickelte Maße, Ärmel und Stickerei nicht', () => {
   const flaeche = flaecheFuerGroesse(getPrintAreasSync(PRODUKT, 'dtf').find((a) => a.view === 'front')!, 'M');
   const e = element('a', (flaeche.boxWidthCm - 28) / 2, 28, 20);
-  const echt = echteMassePosition(position([e]))['a']!;
+  const echt = echteMasseJeElement(position([e]))[0]!;
   assert.ok(echt.breiteCm > 28, `${echt.breiteCm}`);
   assert.equal(echt.hoeheCm, 20);
-  assert.deepEqual(echteMassePosition(position([e], 10, 'embroidery')), {}, 'Stickerei hat keine Abwicklung');
-  assert.deepEqual(echteMassePosition(position([element('s', 0, 10, 10, 'sleeve_left')])), {}, 'Ärmel: gezeichnet = echt');
+  assert.deepEqual(echteMasseJeElement(position([e], 10, 'embroidery')), [undefined], 'Stickerei hat keine Abwicklung');
+  assert.deepEqual(echteMasseJeElement(position([element('s', 0, 10, 10, 'sleeve_left')])), [undefined], 'Ärmel: gezeichnet = echt');
+});
+
+test('doppelte Element-IDs können den Zuschlag nicht senken: die Zuordnung läuft nach Position, nicht nach ID', async () => {
+  const flaeche = flaecheFuerGroesse(getPrintAreasSync(PRODUKT, 'dtf').find((a) => a.view === 'front')!, 'M');
+  const gross = element('gleich', (flaeche.boxWidthCm - 30) / 2, 30, 28);
+  const klein = element('gleich', 0, 5, 5, 'back'); // dieselbe ID, kleines Motiv
+  const ehrlich = await priceCartItem(position([gross, { ...klein, id: 'anders' }]));
+  const getarnt = await priceCartItem(position([gross, klein]));
+  assert.equal(getarnt.unitPrice, ehrlich.unitPrice, 'gleiche ID darf den Preis nicht verändern');
+  const echt = echteMasseJeElement(position([gross, klein]));
+  assert.ok(echt[0] && echt[0].breiteCm > 30, 'das große Motiv behält sein eigenes echtes Maß');
+  // Am Rand der Brust ist dieselbe gezeichnete Breite in echt deutlich breiter – hier zählt nur: eigenes Maß, nicht das des großen Motivs.
+  assert.ok(echt[1] && echt[1].breiteCm >= 5 && echt[1].breiteCm < echt[0]!.breiteCm, 'das kleine Motiv behält sein eigenes Maß');
 });
 
 test('der Serverpreis enthält den Großformat-Zuschlag als eigenen Posten und die Posten ergeben den Preis', async () => {

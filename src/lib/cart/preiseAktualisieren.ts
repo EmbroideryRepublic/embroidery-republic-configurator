@@ -14,7 +14,7 @@ import { getProduct } from '@/config/products';
 import { getPricingRules } from '@/config/pricingRules';
 import { calculatePrice } from '@/lib/pricing/calculatePrice';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
-import { echteMassePosition } from '@/config/echteMasse';
+import { echteMasseJeElement } from '@/config/echteMasse';
 
 const CENT = 0.005;
 
@@ -40,7 +40,7 @@ export async function berechnePreiseNeu(items: CartItem[]): Promise<PreiseNeuErg
       quantity: menge,
       elements: item.elements,
       pricingRules: regeln,
-      echteMasse: echteMassePosition(item),
+      echteMasse: echteMasseJeElement(item),
     });
     if (r.hasErrors || !(r.totalPrice > 0)) {
       ergebnis.push(item);

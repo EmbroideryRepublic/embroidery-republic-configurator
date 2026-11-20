@@ -36,11 +36,11 @@ export interface PriceCalculationInput {
    */
   ladenpreisRundung?: boolean;
   /**
-   * ECHTE flache Motivmaße je Element-ID (config/echteMasse.ts) – nur für DTF auf Vorder-/Rückseite gesetzt. Das
+   * ECHTE flache Motivmaße je Element, in der Reihenfolge von `elements` (config/echteMasse.ts) – nur für DTF auf Vorder-/Rückseite gesetzt. Das
    * Foto zeigt die Brust gewölbt, die gezeichnete Breite ist deshalb kleiner als die flache; für den Großformat-Zuschlag zählt die
    * echte Fläche. Ohne Eintrag gilt das gezeichnete Maß des Elements.
    */
-  echteMasse?: Record<string, { breiteCm: number; hoeheCm: number }>;
+  echteMasse?: ReadonlyArray<{ breiteCm: number; hoeheCm: number } | undefined>;
 }
 
 export interface PriceCalculationResult {
@@ -523,9 +523,10 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // (config/pricing/grossformat.ts). Kein Mengenrabatt – er deckt Materialkosten, die je Stück anfallen.
   const grossformatPerUnit =
     dtfPositionPricingActive && !stichRegelAktiv
-      ? elements.reduce((sum, el) => {
-          const echt = input.echteMasse?.[el.id];
-          return sum + grossformatZuschlag(echt?.breiteCm ?? el.widthCm, echt?.hoeheCm ?? el.heightCm);
+      ? elements.reduce((sum, el, index) => {
+          // Nach POSITION zugeordnet, nicht nach Element-ID (die kommt vom Client und könnte doppelt vergeben sein). Nie kleiner als gezeichnet.
+          const echt = input.echteMasse?.[index];
+          return sum + grossformatZuschlag(Math.max(echt?.breiteCm ?? 0, el.widthCm), Math.max(echt?.hoeheCm ?? 0, el.heightCm));
         }, 0)
       : 0;
 

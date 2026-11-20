@@ -25,7 +25,7 @@ import { sumSizeQuantities } from './quantity';
 import type { PriceLine } from './priceLine';
 import { groupByCategory } from './priceLine';
 import { calculatePrice } from './calculatePrice';
-import { echteMassePosition } from '@/config/echteMasse';
+import { echteMasseJeElement } from '@/config/echteMasse';
 import type { CartItem } from '@/types';
 
 function round2(value: number): number {
@@ -66,7 +66,7 @@ export async function priceCartItem(item: CartItem): Promise<ServerItemPrice> {
     elements: item.elements,
     pricingRules,
     // Echte flache Motivmaße IMMER serverseitig aus Katalog + Geometrie abgeleitet, nie vom Client übernommen.
-    echteMasse: echteMassePosition(item),
+    echteMasse: echteMasseJeElement(item),
   });
   return { productId: item.productId, quantity, unitPrice, totalPrice, priced: true };
 }
@@ -132,7 +132,7 @@ export async function priceCart(items: CartItem[], shippingCountry?: string): Pr
           quantity: ergebnis.quantity,
           elements: item.elements,
           pricingRules: await getPricingRules(item.printMethod),
-          echteMasse: echteMassePosition(item),
+          echteMasse: echteMasseJeElement(item),
         };
       })
   );

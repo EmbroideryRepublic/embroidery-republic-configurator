@@ -23,6 +23,7 @@ import { EmailLayout, COLORS } from './EmailLayout';
 import { formatiereGeld, formatiereZeitpunkt, motivMass } from '@/lib/format';
 import { warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 import { stornofristEndet, stornofristLaeuftNoch } from '@/config/orderProcess';
+import { bestellhilfe, groessenText } from '@/lib/suppliers/bestelllinks';
 
 const VEREDELUNG: Record<OrderItemRecord['printMethod'], string> = {
   dtf: 'DTF-Transferdruck',
@@ -242,6 +243,35 @@ export function InternalOrderNotificationEmail({
             Geschätzter Gesamtpreis (unverbindlich): {formatiereGeld(order.totalPrice)}
           </Text>
         )
+      )}
+
+      {/* Ware bestellen: je Position Artikelnummer, Farbe, Größen und der Direktlink zum Lieferanten, damit sofort klar ist, was
+          eingekauft werden muss (lib/suppliers/bestelllinks.ts). Nur bei echten Bestellungen, nicht bei Anfragen. */}
+      {order.orderType === 'order' && order.items.length > 0 && (
+        <>
+          <Text style={{ margin: '20px 0 4px', fontWeight: 700 }}>Ware bestellen – Direktlinks</Text>
+          {order.items.map((item, index) => {
+            const hilfe = bestellhilfe(item.productId);
+            return (
+              <Text key={index} style={{ margin: '0 0 10px', fontSize: 13 }}>
+                <strong>{item.productName}</strong>
+                {hilfe.artikelnummer ? ` · Art.-Nr. ${hilfe.artikelnummer}` : ''}
+                <br />
+                Farbe: {item.colorName} · Größen: {groessenText(item.sizeQuantities) || '–'} · zusammen {item.quantity} Stück
+                <br />
+                {hilfe.links.map((link, i) => (
+                  <Fragment key={link.url}>
+                    {i > 0 ? ' · ' : ''}
+                    <Link href={link.url} style={{ color: COLORS.gold }}>
+                      {link.label}
+                    </Link>
+                  </Fragment>
+                ))}
+                {hilfe.hinweis ? <span style={{ color: '#b3402f' }}>{hilfe.links.length > 0 ? ' – ' : ''}{hilfe.hinweis}</span> : null}
+              </Text>
+            );
+          })}
+        </>
       )}
 
       {productionSheetSignedUrl ? (

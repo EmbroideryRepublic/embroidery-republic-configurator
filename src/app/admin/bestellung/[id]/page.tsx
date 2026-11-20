@@ -38,6 +38,7 @@ import { RequestProofApprovalButton } from '@/components/admin/RequestProofAppro
 import { BestellVerlauf } from '@/components/admin/BestellVerlauf';
 import { AdminAddressEditor } from '@/components/admin/AdminAddressEditor';
 import { KundenAnmerkung } from '@/components/admin/KundenAnmerkung';
+import { EinkaufsLinks } from '@/components/admin/EinkaufsLinks';
 import { bereinigeAnmerkung } from '@/config/anmerkung';
 import { berechneNaechsteAktion, fehlenVorschauen, type NaechsteAktionTon } from '@/lib/admin/naechsteAktion';
 
@@ -90,6 +91,20 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
           (Wunschtermin, Motivhinweis, Lieferhinweis) und darf nicht in der Kontakt-Karte weiter unten untergehen. */}
       {bereinigeAnmerkung(order.message) && (
         <KundenAnmerkung text={bereinigeAnmerkung(order.message)!} orderType={order.orderType} />
+      )}
+
+      {/* Ware bestellen: je Position Artikelnummer, Farbe, Größen und der Direktlink zum Lieferanten (Textil-Großhandel, L-Shop …)
+          – damit der Betreiber nach Eingang sofort weiß, was er einkaufen muss. Nur bei echten Bestellungen. */}
+      {order.orderType === 'order' && order.items.length > 0 && (
+        <EinkaufsLinks
+          items={order.items.map((item) => ({
+            productId: item.productId,
+            productName: item.productName,
+            colorName: item.colorName,
+            sizeQuantities: item.sizeQuantities,
+            quantity: item.quantity,
+          }))}
+        />
       )}
 
       {/* Statussteuerung: bewusst ganz oben – es ist die Aktion, wegen der

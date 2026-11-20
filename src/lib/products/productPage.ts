@@ -60,9 +60,15 @@ export function ladeProduktseite(slug: string): ProduktseitenDaten | null {
     };
   });
 
-  const aehnliche = produkteVomTyp(produkt.productType)
-    .filter((p) => p.id !== produkt.id)
-    .slice(0, 4);
+  // Die vier folgenden Modelle der Art in Katalogreihenfolge (am Ende wieder von vorn). Früher zeigte jede Seite dieselben ersten vier – dann
+  // bekamen nur diese Modelle interne Links, und Suchmaschinen fanden die übrigen nur über die Sitemap. So hat jedes Modell vier Verweise
+  // von Nachbarseiten, und die Kette durch die ganze Art ist lückenlos.
+  const gleicheArt = produkteVomTyp(produkt.productType);
+  const eigenePosition = gleicheArt.findIndex((p) => p.id === produkt.id);
+  const aehnliche: ProductConfig[] = [];
+  for (let schritt = 1; schritt < gleicheArt.length && aehnliche.length < 4; schritt++) {
+    aehnliche.push(gleicheArt[(eigenePosition + schritt) % gleicheArt.length]!);
+  }
 
   // „Passt dazu": je komplementärer Produktart ein Vorschlag (günstigster
   // Vertreter), maximal vier – so bleibt die Reihe vielfältig statt viermal

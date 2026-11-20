@@ -9,7 +9,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { alleProduktSlugs, ladeProduktseite } from '../productPage';
-import { PRODUCTS } from '@/config/products';
+import { PRODUCTS, getProduct, produkteVomTyp } from '@/config/products';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 import { bildFuerAnsicht } from '@/lib/assets';
 
@@ -88,4 +88,20 @@ test('ähnliche Produkte sind derselben Art und schließen das Produkt selbst au
 
 test('unbekannter Slug liefert null statt zu werfen', () => {
   assert.equal(ladeProduktseite('gibt-es-nicht'), null);
+});
+
+test('ähnliche Produkte: vier je Seite, und jedes Modell wird von Nachbarseiten verlinkt (keine Waisen im Verweisnetz)', () => {
+  const eingehend = new Map<string, number>();
+  for (const slug of alleProduktSlugs()) eingehend.set(slug, 0);
+  for (const slug of alleProduktSlugs()) {
+    const d = ladeProduktseite(slug)!;
+    const artGroesse = produkteVomTyp(d.produkt.productType).length;
+    assert.equal(d.aehnliche.length, Math.min(4, artGroesse - 1), `${slug}: Anzahl ähnlicher Produkte`);
+    assert.equal(new Set(d.aehnliche.map((a) => a.id)).size, d.aehnliche.length, `${slug}: doppelter Verweis`);
+    for (const a of d.aehnliche) eingehend.set(a.id, (eingehend.get(a.id) ?? 0) + 1);
+  }
+  for (const [slug, n] of eingehend) {
+    const artGroesse = produkteVomTyp(getProduct(slug)!.productType).length;
+    assert.equal(n, Math.min(4, artGroesse - 1), `${slug}: ${n} Verweise von Nachbarseiten`);
+  }
 });

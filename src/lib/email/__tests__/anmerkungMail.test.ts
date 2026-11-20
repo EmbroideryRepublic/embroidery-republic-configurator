@@ -71,13 +71,24 @@ test('HTML in der Anmerkung wird als Text ausgegeben, nicht ausgeführt', async 
   assert.ok(html.includes('&lt;script&gt;'), 'Skript nicht als Text maskiert');
 });
 
-test('Bestellbestätigung spiegelt die Anmerkung an die Kundschaft zurück', async () => {
-  const html = await render(OrderConfirmationEmail({ order: bestellung }));
-  assert.ok(html.includes('Ihre Anmerkung zur Bestellung'), 'Überschrift fehlt');
-  assert.ok(html.includes('Bitte bis Freitag liefern.'), 'Text fehlt');
+test('Bestellbestätigung bestätigt nur den Eingang der Anmerkung und wiederholt ihren Wortlaut NICHT', async () => {
+  // Sicherheit: Die E-Mail-Adresse einer Gast-Bestellung ist nicht bestätigt. Würde der Freitext zurückgespiegelt, ließe sich
+  // über unsere Bestätigungsmail ein beliebiger Text (Betrug, Links) an eine fremde Adresse schicken.
+  const gefaehrlich = 'Bitte hier bestätigen: https://boese.example.invalid/login <b>sofort</b>';
+  const html = await render(OrderConfirmationEmail({ order: { ...bestellung, message: gefaehrlich } }));
+  assert.ok(html.includes('Ihre Anmerkung zur Bestellung ist bei uns angekommen.'), 'Eingangsbestätigung fehlt');
+  assert.ok(!html.includes('boese.example.invalid'), 'Link aus der Anmerkung steht in der Kundenmail');
+  assert.ok(!html.includes('Bitte hier bestätigen'), 'Wortlaut der Anmerkung steht in der Kundenmail');
+  assert.ok(!html.includes('Bitte bis Freitag liefern.'), 'Wortlaut der Anmerkung steht in der Kundenmail');
 });
 
-test('Bestellbestätigung ohne Anmerkung zeigt den Block nicht', async () => {
+test('Bestellbestätigung bei einer Anfrage: „Ihre Nachricht ist bei uns angekommen“, ebenfalls ohne Wortlaut', async () => {
+  const html = await render(OrderConfirmationEmail({ order: { ...bestellung, orderType: 'inquiry' } }));
+  assert.ok(html.includes('Ihre Nachricht ist bei uns angekommen.'));
+  assert.ok(!html.includes('Bitte bis Freitag liefern.'));
+});
+
+test('Bestellbestätigung ohne Anmerkung zeigt den Satz nicht', async () => {
   const html = await render(OrderConfirmationEmail({ order: { ...bestellung, message: undefined } }));
-  assert.ok(!html.includes('Ihre Anmerkung zur Bestellung'));
+  assert.ok(!html.includes('ist bei uns angekommen.'));
 });

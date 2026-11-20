@@ -112,12 +112,14 @@ export function OrderConfirmationEmail({
         </Text>
       )}
 
-      {/* Die Anmerkung der Kundschaft wird zur Kontrolle zurückgespiegelt: So sieht sie, dass sie bei uns angekommen ist. */}
+      {/* Die Anmerkung der Kundschaft wird hier BEWUSST NICHT im Wortlaut wiederholt, nur ihr Eingang bestätigt. Grund
+          (Sicherheitsprüfung 2026-11-20): Im Gast-Checkout ist die E-Mail-Adresse nicht bestätigt. Wer eine fremde Adresse
+          einträgt und in die Anmerkung einen Betrugstext mit Link schreibt, ließe unsere Bestätigung diesen Text von unserer
+          Domain an das Opfer senden (Spam-/Phishing-Weiterleitung). Der Wortlaut bleibt im Adminbereich und in der internen
+          Mail an den Betreiber – nicht hier. */}
       {order.message && (
-        <Text style={{ marginTop: 16, fontSize: 13, whiteSpace: 'pre-wrap' }}>
-          <strong>{isOrder ? 'Ihre Anmerkung zur Bestellung' : 'Ihre Nachricht'}</strong>
-          <br />
-          {order.message}
+        <Text style={{ marginTop: 16, fontSize: 13 }}>
+          {isOrder ? 'Ihre Anmerkung zur Bestellung ist bei uns angekommen.' : 'Ihre Nachricht ist bei uns angekommen.'}
         </Text>
       )}
 

@@ -13,13 +13,22 @@
  *    Zusammenfügen etwa das Doppelte im Speicher. Jedes Laden eines Teils hat ein Zeitlimit, damit eine hängende Verbindung keinen Platz dauerhaft
  *    besetzt und andere Bestellungen nicht blockiert.
  */
-import { downloadProductionFile, listeUnterordner, removeProductionFiles, uploadProductionFile } from '@/lib/supabase/storage';
+import { createHash } from 'node:crypto';
+import {
+  PfadBelegtFehler,
+  UploadAbgelehntFehler,
+  downloadProductionFile,
+  listeUnterordner,
+  removeProductionFiles,
+  uploadProductionFile,
+} from '@/lib/supabase/storage';
 import {
   MAX_TEILE,
   MAX_ZUSAMMENSETZEN_GLEICHZEITIG,
   MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG,
   MAX_ZWISCHENABLAGE_DATEIEN_JE_BESTELLUNG,
   MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG,
+  PLATZ_WARTEZEIT_MS,
   TEIL_LADE_TIMEOUT_MS,
   TEIL_MAX_BYTES,
   ZUSAMMENSETZEN_GESAMT_TIMEOUT_MS,
@@ -27,7 +36,7 @@ import {
   ZWISCHENABLAGE_VERFALL_TAGE,
 } from '@/config/upload';
 import type { CartItem } from '@/types';
-import { ablehnen, pruefeBytes, type UploadPruefung } from './pruefeUpload';
+import { ablehnen, istSicherePfadkomponente, pruefeBytes, type UploadPruefung } from './pruefeUpload';
 import {
   istGueltigesTicket,
   istTagFrisch,
@@ -39,7 +48,12 @@ import {
   type ZwischenablageRef,
 } from './zwischenablageRef';
 
-export type TeilErgebnis = { ok: true } | { ok: false; status: 400 | 413; grund: string };
+export type TeilErgebnis = { ok: true } | { ok: false; status: 400 | 409 | 413; grund: string };
+
+/** SHA-256 der Bytes (Hex). Hält fest, WELCHE geprüfte Datei die Stichzahl-Rechnung gesehen hat. */
+export function pruefsumme(bytes: Buffer): string {
+  return createHash('sha256').update(bytes).digest('hex');
+}
 
 /** Legt EIN Teil ab. Größe, Tag, Ticket und Teilnummer werden hier geprüft – der Aufrufer reicht die Rohwerte aus der Anfrage durch. */
 export async function speichereTeil(
@@ -53,7 +67,14 @@ export async function speichereTeil(
   if (daten.length === 0) return { ok: false, status: 400, grund: 'Leeres Teil.' };
   if (daten.length > TEIL_MAX_BYTES) return { ok: false, status: 413, grund: 'Teil zu groß.' };
 
-  await uploadProductionFile(teilPfad({ tag, ticket }, nr), daten, 'application/octet-stream');
+  // Ein Teil wird nur EINMAL geschrieben: Was einmal abgelegt ist, kann nicht mehr ausgetauscht werden – auch nicht zwischen der Prüfung
+  // einer Bestellung und ihrer Speicherung.
+  try {
+    await uploadProductionFile(teilPfad({ tag, ticket }, nr), daten, 'application/octet-stream', { ueberschreiben: false });
+  } catch (fehler) {
+    if (fehler instanceof PfadBelegtFehler) return { ok: false, status: 409, grund: 'Teil existiert bereits.' };
+    throw fehler;
+  }
   return { ok: true };
 }
 
@@ -77,9 +98,32 @@ export class Plaetze {
    * unschädlich) – so kann ein Platz weder doppelt frei werden noch durch eine vergessene Freigabe verloren gehen, wenn der Aufrufer sie
    * in ein `finally` legt.
    */
-  async belege(): Promise<() => void> {
+  async belege(wartezeitMs?: number): Promise<() => void> {
     if (this.frei > 0) this.frei--;
-    else await new Promise<void>((weiter) => this.warteschlange.push(weiter));
+    else {
+      let eintrag: () => void;
+      const warten = new Promise<void>((weiter) => {
+        eintrag = weiter;
+        this.warteschlange.push(weiter);
+      });
+      if (wartezeitMs === undefined) await warten;
+      else {
+        let timer: ReturnType<typeof setTimeout>;
+        const frist = new Promise<never>((_, abgelehnt) => {
+          timer = setTimeout(() => {
+            // Aus der Reihe nehmen: Ein später frei werdender Platz darf nicht an eine Aufgabe gehen, die nicht mehr wartet.
+            const stelle = this.warteschlange.indexOf(eintrag);
+            if (stelle >= 0) this.warteschlange.splice(stelle, 1);
+            abgelehnt(new Error(`Kein Platz frei nach ${wartezeitMs} ms`));
+          }, wartezeitMs);
+        });
+        try {
+          await Promise.race([warten, frist]);
+        } finally {
+          clearTimeout(timer!);
+        }
+      }
+    }
     let freigegeben = false;
     return () => {
       if (freigegeben) return;
@@ -107,8 +151,8 @@ const ZUSAMMENSETZEN = new Plaetze(MAX_ZUSAMMENSETZEN_GLEICHZEITIG);
  * nur die Ladezeit: Er muss gehalten werden, solange die zusammengesetzte Datei (Puffer oder Data-URL) noch gebraucht wird, und gehört in ein
  * `finally`. Die Freigabe wirkt nur einmal.
  */
-export function belegeZusammensetzen(): Promise<() => void> {
-  return ZUSAMMENSETZEN.belege();
+export function belegeZusammensetzen(wartezeitMs: number = PLATZ_WARTEZEIT_MS): Promise<() => void> {
+  return ZUSAMMENSETZEN.belege(wartezeitMs);
 }
 
 /** Bricht ein Laden nach `ms` Millisekunden ab, statt ewig zu warten. */
@@ -236,4 +280,77 @@ export function pruefeZwischenablageVerweise(items: CartItem[]): string | null {
     return 'Die Bestellung enthält zu viele oder zu große Dateien. Bitte verkleinern Sie die Logos oder bestellen Sie in mehreren Schritten.';
   }
   return null;
+}
+
+/** Endgültige Speicherpfade der beiden Dateien eines Logos in einer Bestellung. Eine Stelle für den Aufbau, damit Übernahme und Eintrag identisch bleiben. */
+export function logoPfade(orderId: string, itemIndex: number, elementId: string): { original: string; display: string } {
+  return {
+    original: `orders/${orderId}/item-${itemIndex}-logo-${elementId}-original.png`,
+    display: `orders/${orderId}/item-${itemIndex}-logo-${elementId}-display.png`,
+  };
+}
+
+/** Ein- und Ausgabe der Übernahme – austauschbar für Tests. */
+export interface UebernahmeEinAus extends ZwischenablageEinAus {
+  speichere: (pfad: string, bytes: Buffer, mime: string) => Promise<unknown>;
+}
+
+const STANDARD_UEBERNAHME: UebernahmeEinAus = {
+  lade: downloadProductionFile,
+  speichere: (pfad, bytes, mime) => uploadProductionFile(pfad, bytes, mime),
+};
+
+/**
+ * Übernimmt alle Verweise einer Bestellung an ihren endgültigen Ort: Je Verweis wird die Datei EINMAL zusammengesetzt und geprüft, an alle
+ * Zielpfade (Original und Anzeigebild, oft dieselbe Datei) gespeichert, dann freigegeben und die Teile gelöscht – ein Verweis nach dem anderen.
+ *
+ * Die Bestellung belegt dafür genau EINEN Platz, und zwar für die gesamte Übernahme (Wartezeit begrenzt): Sie hält nie mehrere Plätze zugleich,
+ * wartet also nie auf einen zweiten, während sie den ersten hält – damit können sich Bestellungen nicht gegenseitig festsetzen. Die Freigabe
+ * steht im `finally`. Wirft `UploadAbgelehntFehler` bei einer abgelehnten Datei, sonst den ursprünglichen Fehler.
+ */
+export async function uebernehmeZwischenablage(
+  items: CartItem[],
+  orderId: string,
+  ein: UebernahmeEinAus = STANDARD_UEBERNAHME,
+  optionen: { wartezeitMs?: number; timeoutMs?: number; gesamtTimeoutMs?: number; summen?: ReadonlyMap<string, string> } = {}
+): Promise<void> {
+  const ziele = new Map<string, string[]>();
+  const merke = (ref: unknown, pfad: string) => {
+    if (!istZwischenablageRef(ref)) return;
+    const liste = ziele.get(ref);
+    if (liste) liste.push(pfad);
+    else ziele.set(ref, [pfad]);
+  };
+  items.forEach((item, itemIndex) => {
+    for (const element of item.elements) {
+      // Ungültige Element-IDs weist buildElementRecord mit eigener Meldung ab; hier entsteht für sie kein Pfad.
+      if (element.type !== 'logo' || !istSicherePfadkomponente(element.id)) continue;
+      const pfade = logoPfade(orderId, itemIndex, element.id);
+      merke(element.originalFileUrl, pfade.original);
+      merke(element.fileUrl, pfade.display);
+    }
+  });
+  if (ziele.size === 0) return;
+
+  const freigeben = await belegeZusammensetzen(optionen.wartezeitMs ?? PLATZ_WARTEZEIT_MS);
+  try {
+    for (const [ref, pfade] of ziele) {
+      const pruefung = await ladeUndPruefe(ref, ein, optionen);
+      if (!pruefung.ok) throw new UploadAbgelehntFehler(pruefung.kundenMeldung, pruefung.grund, pruefung.protokoll);
+      // Hat die Stichzahl-Rechnung diese Datei schon gesehen, muss es BYTE FÜR BYTE dieselbe sein – sonst wäre der Preis auf einer anderen
+      // Datei gerechnet worden als der, die produziert wird.
+      const erwartet = optionen.summen?.get(ref);
+      if (erwartet !== undefined && erwartet !== pruefsumme(pruefung.bytes)) {
+        throw new UploadAbgelehntFehler(
+          'Eine Datei wurde nicht vollständig übertragen. Bitte versuchen Sie es erneut.',
+          'zwischenablage_unvollstaendig',
+          'Die Datei weicht von der Datei ab, auf der die Stichzahl gerechnet wurde (Prüfsumme).'
+        );
+      }
+      await Promise.all(pfade.map((pfad) => ein.speichere(pfad, pruefung.bytes, pruefung.mime)));
+      await verwerfeZwischenablage(ref);
+    }
+  } finally {
+    freigeben();
+  }
 }

@@ -2,9 +2,16 @@
 
 import { randomUUID } from 'node:crypto';
 import { createAdminClient } from '@/lib/supabase/server';
-import { UploadAbgelehntFehler, uploadProductionFile } from '@/lib/supabase/storage';
-import { istSicherePfadkomponente, type UploadPruefung } from '@/lib/upload/pruefeUpload';
-import { belegeZusammensetzen, ladeUndPruefe, pruefeZwischenablageVerweise, verwerfeZwischenablage } from '@/lib/upload/zwischenablage';
+import { uploadProductionFile } from '@/lib/supabase/storage';
+import { istSicherePfadkomponente } from '@/lib/upload/pruefeUpload';
+import {
+  belegeZusammensetzen,
+  ladeUndPruefe,
+  logoPfade,
+  pruefeZwischenablageVerweise,
+  pruefsumme,
+  uebernehmeZwischenablage,
+} from '@/lib/upload/zwischenablage';
 import { istZwischenablageRef } from '@/lib/upload/zwischenablageRef';
 import { meldeEreignis } from '@/lib/observability/ereignis';
 import { merkeBestellung } from '@/lib/observability/kontext';
@@ -107,64 +114,13 @@ export interface SubmitInquiryInput {
   clientRequestId?: string;
 }
 
-/** Zählt, wie oft jeder Verweis in der Bestellung vorkommt (Original und Anzeigebild sind oft dieselbe Datei). */
-function zaehleVerweise(items: CartItem[]): Map<string, number> {
-  const zaehler = new Map<string, number>();
-  for (const item of items) {
-    for (const element of item.elements) {
-      if (element.type !== 'logo') continue;
-      for (const url of [element.fileUrl, element.originalFileUrl]) {
-        if (istZwischenablageRef(url)) zaehler.set(url, (zaehler.get(url) ?? 0) + 1);
-      }
-    }
-  }
-  return zaehler;
-}
-
-/** Zusammengesetzte Dateien einer Bestellung: je Verweis die Prüfung und wie viele Verwendungen noch ausstehen (Speicher früh freigeben). */
-interface ZwischenablageStand {
-  /** Je Verweis die zusammengesetzte Datei UND der Platz, den sie belegt – frei erst nach der letzten Verwendung. */
-  geladen: Map<string, { pruefung: Promise<UploadPruefung>; freigeben: () => void }>;
-  offen: Map<string, number>;
-  /** Verweise einer Bestellung laufen strikt nacheinander: zusammensetzen → speichern → freigeben, dann der nächste. */
-  serie: Promise<void>;
-}
-
 /**
- * Legt EIN Logo am endgültigen Ort ab. Eine Data-URL geht den bisherigen Weg (volle Prüfung in uploadProductionFile); ein Verweis wird
- * zusammengesetzt, über dieselbe Prüfung (pruefeBytes) geführt und danach gespeichert. Nach der letzten Verwendung eines Verweises werden
- * der Speicher freigegeben und die Teile gelöscht.
+ * Legt EIN Logo am endgültigen Ort ab, wenn es als Data-URL kommt (volle Prüfung in uploadProductionFile). Verweise auf die Zwischenablage hat
+ * `uebernehmeZwischenablage` schon VOR dem Aufbau der Einträge übernommen (ein Platz je Bestellung, ein Verweis nach dem anderen).
  */
-async function speichereLogo(path: string, quelle: string, stand: ZwischenablageStand): Promise<void> {
-  if (!istZwischenablageRef(quelle)) {
-    await uploadProductionFile(path, quelle);
-    return;
-  }
-  const lauf = stand.serie.then(() => speichereVerweis(path, quelle, stand));
-  stand.serie = lauf.catch(() => undefined);
-  return lauf;
-}
-
-async function speichereVerweis(path: string, quelle: string, stand: ZwischenablageStand): Promise<void> {
-  let eintrag = stand.geladen.get(quelle);
-  if (!eintrag) {
-    // Der Platz gehört zum Speicher der zusammengesetzten Datei: Er wird erst nach der letzten Verwendung frei (oder im finally von
-    // buildItemRecords, falls etwas dazwischen scheitert).
-    const freigeben = await belegeZusammensetzen();
-    eintrag = { pruefung: ladeUndPruefe(quelle), freigeben };
-    stand.geladen.set(quelle, eintrag);
-  }
-  const pruefung = await eintrag.pruefung;
-  if (!pruefung.ok) throw new UploadAbgelehntFehler(pruefung.kundenMeldung, pruefung.grund, pruefung.protokoll);
-  await uploadProductionFile(path, pruefung.bytes, pruefung.mime);
-
-  const uebrig = (stand.offen.get(quelle) ?? 1) - 1;
-  stand.offen.set(quelle, uebrig);
-  if (uebrig <= 0) {
-    stand.geladen.delete(quelle);
-    eintrag.freigeben();
-    await verwerfeZwischenablage(quelle);
-  }
+async function speichereLogo(path: string, quelle: string): Promise<void> {
+  if (istZwischenablageRef(quelle)) return;
+  await uploadProductionFile(path, quelle);
 }
 
 /** Wandelt ein rohes ConfigElement (inkl. UI-Feldern wie isOutOfBounds)
@@ -172,12 +128,7 @@ async function speichereVerweis(path: string, quelle: string, stand: Zwischenabl
  *  gemeinsam nutzen. Logo-Dateien werden dabei in Storage hochgeladen –
  *  `logoStoragePath` zeigt danach auf die dauerhaft gespeicherte Datei
  *  statt auf die (nur im Browser gültige) Data-URL. */
-async function buildElementRecord(
-  element: ConfigElement,
-  orderId: string,
-  itemIndex: number,
-  stand: ZwischenablageStand
-): Promise<OrderElementRecord> {
+async function buildElementRecord(element: ConfigElement, orderId: string, itemIndex: number): Promise<OrderElementRecord> {
   const base = {
     view: element.view,
     xCm: element.xCm,
@@ -225,12 +176,11 @@ async function buildElementRecord(
     throw new Error(`Ungültige Element-Kennung: ${JSON.stringify(element.id)}`);
   }
 
-  const originalPath = `orders/${orderId}/item-${itemIndex}-logo-${element.id}-original.png`;
-  const displayPath = `orders/${orderId}/item-${itemIndex}-logo-${element.id}-display.png`;
+  const { original: originalPath, display: displayPath } = logoPfade(orderId, itemIndex, element.id);
   // Beide Uploads sind voneinander unabhängig → parallel statt nacheinander.
   await Promise.all([
-    speichereLogo(originalPath, element.originalFileUrl, stand),
-    speichereLogo(displayPath, element.fileUrl, stand),
+    speichereLogo(originalPath, element.originalFileUrl),
+    speichereLogo(displayPath, element.fileUrl),
   ]);
 
   return {
@@ -250,10 +200,19 @@ async function buildElementRecord(
  */
 async function berechneStickereiStichzahlen(
   items: CartItem[]
-): Promise<{ ok: true; stichzahlen: ReturnType<typeof mitVertrauenswuerdigerStichzahl> } | { ok: false; fehler: string }> {
-  const freigaben: Array<() => void> = [];
+): Promise<
+  | { ok: true; stichzahlen: ReturnType<typeof mitVertrauenswuerdigerStichzahl>; summen: Map<string, string> }
+  | { ok: false; fehler: string }
+> {
   const ersetzt: Array<{ item: number; element: number; ref: string }> = [];
+  // Prüfsumme je Verweis: Beim Speichern muss dieselbe Datei wieder herauskommen (siehe uebernehmeZwischenablage).
+  const summen = new Map<string, string>();
+  // EIN Platz für die ganze Berechnung, nie mehrere zugleich (kein Warten auf einen zweiten bei gehaltenem ersten); Freigabe im finally.
+  let freigeben: (() => void) | undefined;
   try {
+    if (items.some((item) => item.printMethod === 'embroidery' && item.elements.some((e) => e.type === 'logo' && istZwischenablageRef(e.fileUrl)))) {
+      freigeben = await belegeZusammensetzen();
+    }
     const dataUrls = new Map<string, string>();
     const aufgeloest: CartItem[] = [];
     for (const [itemIndex, item] of items.entries()) {
@@ -269,7 +228,6 @@ async function berechneStickereiStichzahlen(
         }
         let url = dataUrls.get(element.fileUrl);
         if (url === undefined) {
-          freigaben.push(await belegeZusammensetzen());
           const pruefung = await ladeUndPruefe(element.fileUrl);
           if (!pruefung.ok) {
             console.warn(`[orders] Verweis nicht auflösbar (${pruefung.grund}): ${pruefung.protokoll}`);
@@ -277,6 +235,7 @@ async function berechneStickereiStichzahlen(
           }
           url = `data:${pruefung.mime};base64,${pruefung.bytes.toString('base64')}`;
           dataUrls.set(element.fileUrl, url);
+          summen.set(element.fileUrl, pruefsumme(pruefung.bytes));
         }
         ersetzt.push({ item: itemIndex, element: elementIndex, ref: element.fileUrl });
         elemente.push({ ...element, fileUrl: url });
@@ -293,47 +252,47 @@ async function berechneStickereiStichzahlen(
       if (!ziel || ziel.type !== 'logo') return { ok: false, fehler: ALLGEMEINER_FEHLER };
       wiederhergestellt[item]!.elements[element] = { ...ziel, fileUrl: ref };
     }
-    return { ok: true, stichzahlen: { ...stichzahlen, items: wiederhergestellt } };
+    return { ok: true, stichzahlen: { ...stichzahlen, items: wiederhergestellt }, summen };
+  } catch (fehler) {
+    // Kein Platz frei innerhalb der Wartezeit oder anderer Fehler beim Auflösen: allgemeine Meldung statt eines Absturzes.
+    console.warn('[orders] Stichzahl-Auflösung fehlgeschlagen:', fehler instanceof Error ? fehler.message : fehler);
+    return { ok: false, fehler: ALLGEMEINER_FEHLER };
   } finally {
-    for (const freigeben of freigaben) freigeben();
+    freigeben?.();
   }
 }
 
 async function buildItemRecords(
   items: CartItem[],
   orderId: string,
-  serverPrices: ServerItemPrice[]
+  serverPrices: ServerItemPrice[],
+  summen?: ReadonlyMap<string, string>
 ): Promise<OrderItemRecord[]> {
-  const stand: ZwischenablageStand = { geladen: new Map(), offen: zaehleVerweise(items), serie: Promise.resolve() };
-  try {
-    return await Promise.all(
-      items.map(async (item, itemIndex) => {
-        const product = getProduct(item.productId);
-        const color = product?.colors.find((c) => c.id === item.colorId);
-        const elements = await Promise.all(item.elements.map((el) => buildElementRecord(el, orderId, itemIndex, stand)));
-        // AUSSCHLIESSLICH serverseitig berechnete Preise/Menge – der Client-Preis
-        // (item.unitPrice/totalPrice/quantity) wird bewusst NICHT übernommen.
-        const priced = serverPrices[itemIndex];
+  // Große Dateien aus der Zwischenablage zuerst: ein Platz je Bestellung, ein Verweis nach dem anderen (lib/upload/zwischenablage.ts).
+  await uebernehmeZwischenablage(items, orderId, undefined, { summen });
+  return Promise.all(
+    items.map(async (item, itemIndex) => {
+      const product = getProduct(item.productId);
+      const color = product?.colors.find((c) => c.id === item.colorId);
+      const elements = await Promise.all(item.elements.map((el) => buildElementRecord(el, orderId, itemIndex)));
+      // AUSSCHLIESSLICH serverseitig berechnete Preise/Menge – der Client-Preis
+      // (item.unitPrice/totalPrice/quantity) wird bewusst NICHT übernommen.
+      const priced = serverPrices[itemIndex];
 
-        return {
-          productId: item.productId,
-          colorId: item.colorId,
-          productName: product?.name ?? item.productId,
-          colorName: color?.name ?? item.colorId,
-          printMethod: item.printMethod,
-          sizeQuantities: item.sizeQuantities,
-          quantity: priced?.quantity ?? 0,
-          unitPrice: priced?.unitPrice ?? 0,
-          totalPrice: priced?.totalPrice ?? 0,
-          elements,
-        } satisfies OrderItemRecord;
-      })
-    );
-  } finally {
-    // Jeder noch gehaltene Platz wird frei – auch wenn ein Upload scheiterte und die letzte Verwendung nie kam.
-    for (const eintrag of stand.geladen.values()) eintrag.freigeben();
-    stand.geladen.clear();
-  }
+      return {
+        productId: item.productId,
+        colorId: item.colorId,
+        productName: product?.name ?? item.productId,
+        colorName: color?.name ?? item.colorId,
+        printMethod: item.printMethod,
+        sizeQuantities: item.sizeQuantities,
+        quantity: priced?.quantity ?? 0,
+        unitPrice: priced?.unitPrice ?? 0,
+        totalPrice: priced?.totalPrice ?? 0,
+        elements,
+      } satisfies OrderItemRecord;
+    })
+  );
 }
 
 /**
@@ -638,7 +597,7 @@ async function persistAndNotifyCore(params: {
 
   let itemRecords;
   try {
-    itemRecords = await buildItemRecords(items, orderId, pricing.items);
+    itemRecords = await buildItemRecords(items, orderId, pricing.items, stickerei.summen);
   } catch (fehler) {
     await meldeEreignis({
       schwere: 'ERROR',

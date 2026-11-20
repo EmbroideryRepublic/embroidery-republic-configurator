@@ -46,6 +46,14 @@ function testPfad(schluessel: string): string {
  * ausschließlich ins Serverprotokoll. Ein Angreifer soll aus der Antwort nicht
  * ableiten können, welche Prüfung gegriffen hat.
  */
+/** Der Speicherpfad ist schon belegt und durfte nicht überschrieben werden (siehe `uploadProductionFile`, Option `ueberschreiben`). */
+export class PfadBelegtFehler extends Error {
+  constructor(pfad: string) {
+    super(`Speicherpfad schon belegt: ${JSON.stringify(pfad)}`);
+    this.name = 'PfadBelegtFehler';
+  }
+}
+
 export class UploadAbgelehntFehler extends Error {
   readonly protokoll: string;
   readonly grund: string;
@@ -66,7 +74,8 @@ export class UploadAbgelehntFehler extends Error {
 export async function uploadProductionFile(
   path: string,
   content: string | Buffer,
-  contentType?: string
+  contentType?: string,
+  optionen: { ueberschreiben?: boolean } = {}
 ): Promise<string> {
   // Der Pfad enthält Werte, die mittelbar vom Client stammen (Element-IDs).
   // Geprüft wird hier an der Engstelle statt bei jedem Aufrufer – so ist auch
@@ -105,7 +114,12 @@ export async function uploadProductionFile(
   if (istTestmodus()) {
     const ziel = testPfad(path);
     await mkdir(nodePath.dirname(ziel), { recursive: true });
-    await writeFile(ziel, bytes);
+    try {
+      await writeFile(ziel, bytes, { flag: optionen.ueberschreiben === false ? 'wx' : 'w' });
+    } catch (fehler) {
+      if ((fehler as NodeJS.ErrnoException).code === 'EEXIST') throw new PfadBelegtFehler(path);
+      throw fehler;
+    }
     meldeAbgefangen('Datei-Upload', `${path} (${bytes.length} Bytes) → lokale Testablage`);
     return path;
   }
@@ -113,10 +127,15 @@ export async function uploadProductionFile(
   const admin = createAdminClient();
   const { error } = await admin.storage.from(PRODUCTION_FILES_BUCKET).upload(path, bytes, {
     contentType: resolvedContentType,
-    upsert: true,
+    upsert: optionen.ueberschreiben !== false,
   });
 
   if (error) {
+    // Belegter Pfad bei verbotenem Überschreiben: eigener Fehler (Supabase meldet 409 bzw. „already exists“).
+    const meldung = error.message ?? '';
+    if (optionen.ueberschreiben === false && (/already exists|duplicate/i.test(meldung) || String((error as { statusCode?: unknown }).statusCode) === '409')) {
+      throw new PfadBelegtFehler(path);
+    }
     throw new Error(`uploadProductionFile: Upload nach "${path}" fehlgeschlagen: ${error.message}`);
   }
 

@@ -50,7 +50,8 @@ async function sendeTeil(tag: string, ticket: string, nr: number, daten: Uint8Ar
         headers: { 'content-type': 'application/octet-stream', 'x-tag': tag, 'x-ticket': ticket, 'x-nr': String(nr) },
         body: daten as unknown as BodyInit,
       });
-      if (antwort.ok) return;
+      // 409: Dieses Teil liegt schon da (eine frühere Antwort ging verloren und wir senden es erneut) – das Ticket ist nur dem Browser bekannt.
+      if (antwort.ok || antwort.status === 409) return;
       // Eine klare Ablehnung (400/413/429) wird durch Wiederholen nicht besser.
       if (antwort.status >= 400 && antwort.status < 500) throw new UebertragungFehler();
       letzterFehler = new UebertragungFehler();

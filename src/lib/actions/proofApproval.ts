@@ -34,13 +34,13 @@ export interface FreigabeAktionErgebnis {
 export type FreigabeAnfrage = { art: 'token'; token: string } | { art: 'konto'; orderId: string };
 
 const FREIGABE_MELDUNGEN: Record<Extract<KundenfreigabeErgebnis, { ok: false }>['grund'], string> = {
-  'nicht-gefunden': 'Die Bestellung wurde nicht gefunden. Bitte kontaktieren Sie uns direkt.',
+  'nicht-gefunden': 'Die Bestellung wurde nicht gefunden. Bitte kontaktiere uns direkt.',
   'nicht-angefragt': 'Für diese Bestellung liegt aktuell keine Freigabeanfrage vor.',
-  fehler: 'Die Freigabe konnte technisch nicht abgeschlossen werden. Bitte kontaktieren Sie uns direkt.',
+  fehler: 'Die Freigabe konnte technisch nicht abgeschlossen werden. Bitte kontaktiere uns direkt.',
 };
 
 const AENDERUNG_MELDUNGEN: Record<Extract<AenderungswunschErgebnis, { ok: false }>['grund'], string> = {
-  'nicht-gefunden': 'Die Bestellung wurde nicht gefunden. Bitte kontaktieren Sie uns direkt.',
+  'nicht-gefunden': 'Die Bestellung wurde nicht gefunden. Bitte kontaktiere uns direkt.',
   'nicht-angefragt': 'Für diese Bestellung liegt aktuell keine Freigabeanfrage vor.',
 };
 
@@ -52,7 +52,7 @@ async function loeseZugriffAuf(
   if (anfrage.art === 'konto') {
     const kunde = await aktuellerKunde();
     if (!kunde) {
-      return { ok: false, fehler: 'Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.' };
+      return { ok: false, fehler: 'Deine Sitzung ist abgelaufen. Bitte melde dich erneut an.' };
     }
     const grenze = await pruefeRateLimit('kundenfreigabe', kunde.id);
     if (!grenze.erlaubt) return { ok: false, fehler: grenze.meldung };
@@ -66,7 +66,7 @@ async function loeseZugriffAuf(
   if (!grenze.erlaubt) return { ok: false, fehler: grenze.meldung };
 
   const zugriff = await pruefeBestellzugriff({ art: 'token', token: anfrage.token });
-  if (!zugriff.erlaubt) return { ok: false, fehler: 'Dieser Link ist nicht mehr gültig. Bitte kontaktieren Sie uns direkt.' };
+  if (!zugriff.erlaubt) return { ok: false, fehler: 'Dieser Link ist nicht mehr gültig. Bitte kontaktiere uns direkt.' };
   return { ok: true, orderId: zugriff.orderId };
 }
 
@@ -92,7 +92,7 @@ export async function freigebeVorschauAction(anfrage: FreigabeAnfrage): Promise<
 export async function wuenscheAenderungAction(anfrage: FreigabeAnfrage, kommentar: string): Promise<FreigabeAktionErgebnis> {
   const bereinigterKommentar = kommentar.trim();
   if (!bereinigterKommentar) {
-    return { ok: false, fehler: 'Bitte beschreiben Sie kurz, was geändert werden soll.' };
+    return { ok: false, fehler: 'Bitte beschreibe kurz, was geändert werden soll.' };
   }
 
   const zugriff = await loeseZugriffAuf(anfrage);

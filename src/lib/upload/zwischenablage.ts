@@ -262,7 +262,7 @@ export function pruefeZwischenablageVerweise(items: CartItem[]): string | null {
       for (const url of [element.fileUrl, element.originalFileUrl]) {
         if (!istZwischenablageRef(url)) continue;
         const ref = liesRef(url);
-        if (!ref) return 'Eine Datei wurde nicht vollständig übertragen. Bitte versuchen Sie es erneut.';
+        if (!ref) return 'Eine Datei wurde nicht vollständig übertragen. Bitte versuche es erneut.';
         verweise++;
         if (!verschieden.has(url)) {
           verschieden.add(url);
@@ -277,7 +277,7 @@ export function pruefeZwischenablageVerweise(items: CartItem[]): string | null {
     verweise > MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG ||
     gesamtBytes > MAX_ZWISCHENABLAGE_BYTES_JE_BESTELLUNG
   ) {
-    return 'Die Bestellung enthält zu viele oder zu große Dateien. Bitte verkleinern Sie die Logos oder bestellen Sie in mehreren Schritten.';
+    return 'Die Bestellung enthält zu viele oder zu große Dateien. Bitte verkleinere die Logos oder bestelle in mehreren Schritten.';
   }
   return null;
 }
@@ -342,7 +342,7 @@ export async function uebernehmeZwischenablage(
       const erwartet = optionen.summen?.get(ref);
       if (erwartet !== undefined && erwartet !== pruefsumme(pruefung.bytes)) {
         throw new UploadAbgelehntFehler(
-          'Eine Datei wurde nicht vollständig übertragen. Bitte versuchen Sie es erneut.',
+          'Eine Datei wurde nicht vollständig übertragen. Bitte versuche es erneut.',
           'zwischenablage_unvollstaendig',
           'Die Datei weicht von der Datei ab, auf der die Stichzahl gerechnet wurde (Prüfsumme).'
         );

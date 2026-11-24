@@ -70,7 +70,7 @@ for (const [name, mach, erwarteterCode] of KAPUTT) {
   });
 }
 
-const ALLGEMEIN = 'Da ist etwas schiefgelaufen. Bitte versuchen Sie es in ein paar Minuten erneut.';
+const ALLGEMEIN = 'Da ist etwas schiefgelaufen. Bitte versuche es in ein paar Minuten erneut.';
 
 test('submitOrder und submitInquiry ohne Kontaktblock: allgemeine Meldung statt TypeError', async () => {
   for (const eingang of [null, undefined, 42, {}, { contact: null }, { contact: 'x' }]) {
@@ -82,15 +82,15 @@ test('submitOrder und submitInquiry ohne Kontaktblock: allgemeine Meldung statt 
 });
 
 test('Kontaktformular: kaputte Felder ergeben die gewohnte Meldung statt eines TypeError', async () => {
-  const NAME = 'Bitte geben Sie Ihren Namen an (2–100 Zeichen).';
+  const NAME = 'Bitte gib deinen Namen an (2–100 Zeichen).';
   for (const eingang of [null, undefined, 42, {}, { name: 5, email: 'a@b.de', message: 'x'.repeat(20) }]) {
     const r = await submitContactMessage(eingang as never);
     assert.deepEqual(r, { success: false, error: NAME }, JSON.stringify(eingang));
   }
   const mail = await submitContactMessage({ name: 'Max Muster', email: { a: 1 } as never, message: 'Eine ganz normale Nachricht.' });
-  assert.deepEqual(mail, { success: false, error: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' });
+  assert.deepEqual(mail, { success: false, error: 'Bitte gib eine gültige E-Mail-Adresse an.' });
   const nachricht = await submitContactMessage({ name: 'Max Muster', email: 'max@example.com', message: 12345 as never });
-  assert.deepEqual(nachricht, { success: false, error: 'Bitte formulieren Sie Ihre Nachricht (10–5000 Zeichen).' });
+  assert.deepEqual(nachricht, { success: false, error: 'Bitte formuliere deine Nachricht (10–5000 Zeichen).' });
 });
 
 test('Honeypot mit Nicht-Text-Wert löst keinen Absturz aus und gilt nicht als befüllt', async () => {

@@ -14,7 +14,7 @@ const GLEICHZEITIG = 3;
 const WIEDERHOLUNGEN = 3;
 
 export class UebertragungFehler extends Error {
-  constructor(nachricht = 'Die Datei konnte nicht übertragen werden. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut.') {
+  constructor(nachricht = 'Die Datei konnte nicht übertragen werden. Bitte prüfe deine Verbindung und versuche es erneut.') {
     super(nachricht);
     this.name = 'UebertragungFehler';
   }
@@ -68,9 +68,9 @@ async function sendeTeil(tag: string, ticket: string, nr: number, daten: Uint8Ar
 /** Lädt EINE Data-URL in Teilen hoch und gibt den Verweis zurück. */
 export async function ladeDataUrlHoch(dataUrl: string): Promise<string> {
   const teile = zerlegeDataUrl(dataUrl);
-  if (!teile) throw new UebertragungFehler('Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.');
+  if (!teile) throw new UebertragungFehler('Diese Datei konnte nicht gelesen werden. Bitte lade sie erneut hoch.');
   const anzahl = Math.ceil(teile.bytes / TEIL_MAX_BYTES);
-  if (anzahl > MAX_TEILE) throw new UebertragungFehler('Das Bild ist nach der Aufbereitung zu groß. Bitte verwenden Sie eine Datei mit geringerer Auflösung.');
+  if (anzahl > MAX_TEILE) throw new UebertragungFehler('Das Bild ist nach der Aufbereitung zu groß. Bitte verwende eine Datei mit geringerer Auflösung.');
 
   const tag = tagVon();
   const ticket = crypto.randomUUID();

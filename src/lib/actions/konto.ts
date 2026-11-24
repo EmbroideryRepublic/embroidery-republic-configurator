@@ -116,7 +116,7 @@ async function bestaetigePasswort(
     return { ok: true };
   } catch (fehler) {
     protokoll.fehler('AUTH', `${kontext}_reauth_fehlgeschlagen`, email, fehler);
-    return { ok: false, fehler: 'Diese Aktion ist derzeit nicht möglich. Bitte versuchen Sie es später erneut.' };
+    return { ok: false, fehler: 'Diese Aktion ist derzeit nicht möglich. Bitte versuche es später erneut.' };
   }
 }
 
@@ -136,7 +136,7 @@ export async function registrierenAction(_prev: KontoActionResult | null, formDa
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
   const admin = await sichererClient(createAdminClient);
-  if (!admin) return { success: false, error: 'Die Registrierung ist derzeit nicht möglich. Bitte versuchen Sie es später erneut.' };
+  if (!admin) return { success: false, error: 'Die Registrierung ist derzeit nicht möglich. Bitte versuche es später erneut.' };
   // Die Newsletter-Absicht wandert nur als Query-Parameter im Bestätigungs-
   // link mit (siehe baueKontoLink) – geschrieben und verschickt wird sie ERST
   // im Callback, NACHDEM der Klick auf den Link die E-Mail-Adresse
@@ -161,8 +161,8 @@ export async function registrierenAction(_prev: KontoActionResult | null, formDa
     return {
       success: false,
       error: bekannt
-        ? 'Für diese E-Mail-Adresse besteht bereits ein Konto. Bitte melden Sie sich an oder setzen Sie Ihr Passwort zurück.'
-        : 'Die Registrierung ist fehlgeschlagen. Bitte versuchen Sie es erneut.',
+        ? 'Für diese E-Mail-Adresse besteht bereits ein Konto. Bitte melde dich an oder setze dein Passwort zurück.'
+        : 'Die Registrierung ist fehlgeschlagen. Bitte versuche es erneut.',
     };
   }
 
@@ -194,7 +194,7 @@ export async function anmeldenAction(_prev: KontoActionResult | null, formData: 
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
   const supabase = await sichererClient(createClient);
-  if (!supabase) return { success: false, error: 'Die Anmeldung ist derzeit nicht möglich. Bitte versuchen Sie es später erneut.' };
+  if (!supabase) return { success: false, error: 'Die Anmeldung ist derzeit nicht möglich. Bitte versuche es später erneut.' };
   const { error } = await supabase.auth.signInWithPassword({ email, password: passwort });
   if (error) {
     // Nie verraten, WAS falsch war (E-Mail unbekannt vs. Passwort falsch) –
@@ -279,12 +279,12 @@ export async function passwortZuruecksetzenAction(_prev: KontoActionResult | nul
   if (befunde.length > 0) return { success: false, error: ersterFehler(befunde) };
 
   const supabase = await sichererClient(createClient);
-  if (!supabase) return { success: false, error: 'Das Passwort konnte nicht geändert werden. Bitte versuchen Sie es erneut.' };
+  if (!supabase) return { success: false, error: 'Das Passwort konnte nicht geändert werden. Bitte versuche es erneut.' };
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    return { success: false, error: 'Der Link ist abgelaufen oder wurde bereits verwendet. Bitte fordern Sie einen neuen an.' };
+    return { success: false, error: 'Der Link ist abgelaufen oder wurde bereits verwendet. Bitte fordere einen neuen an.' };
   }
 
   // Dieselbe Prüfung wie beim Rendern der Seite (siehe istRecoverySitzung):
@@ -294,13 +294,13 @@ export async function passwortZuruecksetzenAction(_prev: KontoActionResult | nul
   // Zweig die Seite gerendert hat. Ohne diese Prüfung in der Mutation selbst
   // schützt die Seiten-Prüfung nur die eigene Oberfläche, nicht die Aktion.
   if (!(await istRecoverySitzung())) {
-    return { success: false, error: 'Der Link ist abgelaufen oder wurde bereits verwendet. Bitte fordern Sie einen neuen an.' };
+    return { success: false, error: 'Der Link ist abgelaufen oder wurde bereits verwendet. Bitte fordere einen neuen an.' };
   }
 
   const { error } = await supabase.auth.updateUser({ password: passwort });
   if (error) {
     protokoll.fehler('AUTH', 'passwort_zuruecksetzen_fehlgeschlagen', error.message);
-    return { success: false, error: 'Das Passwort konnte nicht geändert werden. Bitte versuchen Sie es erneut.' };
+    return { success: false, error: 'Das Passwort konnte nicht geändert werden. Bitte versuche es erneut.' };
   }
 
   if (user.email) {
@@ -318,7 +318,7 @@ export async function passwortZuruecksetzenAction(_prev: KontoActionResult | nul
 
 export async function profilAktualisierenAction(_prev: KontoActionResult | null, formData: FormData): Promise<KontoActionResult> {
   const kunde = await aktuellerKunde();
-  if (!kunde) return { success: false, error: 'Bitte melden Sie sich an.' };
+  if (!kunde) return { success: false, error: 'Bitte melde dich an.' };
 
   const feld = (name: string) => {
     const wert = String(formData.get(name) ?? '').trim();
@@ -386,19 +386,19 @@ export async function profilAktualisierenAction(_prev: KontoActionResult | null,
 
 export async function emailAendernAction(_prev: KontoActionResult | null, formData: FormData): Promise<KontoActionResult> {
   const kunde = await aktuellerKunde();
-  if (!kunde) return { success: false, error: 'Bitte melden Sie sich an.' };
+  if (!kunde) return { success: false, error: 'Bitte melde dich an.' };
 
   const neueEmail = String(formData.get('email') ?? '').trim().toLowerCase();
   const aktuellesPasswort = String(formData.get('aktuellesPasswort') ?? '');
   const befunde = pruefeEmail(neueEmail);
-  if (!aktuellesPasswort) befunde.push({ feld: 'aktuellesPasswort', meldung: 'Bitte geben Sie Ihr aktuelles Passwort ein.' });
+  if (!aktuellesPasswort) befunde.push({ feld: 'aktuellesPasswort', meldung: 'Bitte gib dein aktuelles Passwort ein.' });
   if (befunde.length > 0) return { success: false, error: ersterFehler(befunde) };
 
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
   const supabase = await sichererClient(createClient);
-  if (!supabase) return { success: false, error: 'Die E-Mail-Adresse konnte derzeit nicht geändert werden. Bitte versuchen Sie es später erneut.' };
+  if (!supabase) return { success: false, error: 'Die E-Mail-Adresse konnte derzeit nicht geändert werden. Bitte versuche es später erneut.' };
 
   // Re-Authentifizierung vor der Änderung: Ohne erneute Prüfung des aktuellen
   // Passworts könnte eine gekaperte, aber noch gültige Sitzung die Konto-
@@ -425,21 +425,21 @@ export async function emailAendernAction(_prev: KontoActionResult | null, formDa
 
 export async function passwortAendernAction(_prev: KontoActionResult | null, formData: FormData): Promise<KontoActionResult> {
   const kunde = await aktuellerKunde();
-  if (!kunde) return { success: false, error: 'Bitte melden Sie sich an.' };
+  if (!kunde) return { success: false, error: 'Bitte melde dich an.' };
 
   const aktuellesPasswort = String(formData.get('aktuellesPasswort') ?? '');
   const passwort = String(formData.get('passwort') ?? '');
   const passwortWiederholung = String(formData.get('passwortWiederholung') ?? '');
   const befunde = pruefePasswort(passwort);
   if (passwort !== passwortWiederholung) befunde.push({ feld: 'passwortWiederholung', meldung: 'Die Passwörter stimmen nicht überein.' });
-  if (!aktuellesPasswort) befunde.push({ feld: 'aktuellesPasswort', meldung: 'Bitte geben Sie Ihr aktuelles Passwort ein.' });
+  if (!aktuellesPasswort) befunde.push({ feld: 'aktuellesPasswort', meldung: 'Bitte gib dein aktuelles Passwort ein.' });
   if (befunde.length > 0) return { success: false, error: ersterFehler(befunde) };
 
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
   const supabase = await sichererClient(createClient);
-  if (!supabase) return { success: false, error: 'Das Passwort konnte derzeit nicht geändert werden. Bitte versuchen Sie es später erneut.' };
+  if (!supabase) return { success: false, error: 'Das Passwort konnte derzeit nicht geändert werden. Bitte versuche es später erneut.' };
 
   // Re-Authentifizierung vor der eigentlichen Änderung: Ohne erneute Prüfung
   // des aktuellen Passworts könnte eine noch gültige, aber z.B. an einem
@@ -489,16 +489,16 @@ export async function passwortAendernAction(_prev: KontoActionResult | null, for
  */
 export async function kontoLoeschenAction(_prev: KontoActionResult | null, formData: FormData): Promise<KontoActionResult> {
   const kunde = await aktuellerKunde();
-  if (!kunde) return { success: false, error: 'Bitte melden Sie sich an.' };
+  if (!kunde) return { success: false, error: 'Bitte melde dich an.' };
 
   const passwort = String(formData.get('passwort') ?? '');
-  if (!passwort) return { success: false, error: 'Bitte geben Sie Ihr Passwort ein, um die Löschung zu bestätigen.' };
+  if (!passwort) return { success: false, error: 'Bitte gib dein Passwort ein, um die Löschung zu bestätigen.' };
 
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
 
   const supabase = await sichererClient(createClient);
-  if (!supabase) return { success: false, error: 'Das Konto konnte derzeit nicht gelöscht werden. Bitte versuchen Sie es später erneut.' };
+  if (!supabase) return { success: false, error: 'Das Konto konnte derzeit nicht gelöscht werden. Bitte versuche es später erneut.' };
 
   // Re-Authentifizierung vor der Löschung – dieselbe Begründung wie bei
   // passwortAendernAction: Eine derart folgenreiche, unwiderrufliche Aktion
@@ -508,12 +508,12 @@ export async function kontoLoeschenAction(_prev: KontoActionResult | null, formD
   if (!reauth.ok) return { success: false, error: reauth.fehler };
 
   const admin = await sichererClient(createAdminClient);
-  if (!admin) return { success: false, error: 'Das Konto konnte derzeit nicht gelöscht werden. Bitte versuchen Sie es später erneut.' };
+  if (!admin) return { success: false, error: 'Das Konto konnte derzeit nicht gelöscht werden. Bitte versuche es später erneut.' };
 
   const { error } = await admin.auth.admin.deleteUser(kunde.id);
   if (error) {
     protokoll.fehler('AUTH', 'konto_loeschen_fehlgeschlagen', kunde.email, error);
-    return { success: false, error: 'Das Konto konnte nicht gelöscht werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns.' };
+    return { success: false, error: 'Das Konto konnte nicht gelöscht werden. Bitte versuche es erneut oder kontaktiere uns.' };
   }
 
   protokoll.info('AUTH', 'konto_geloescht', kunde.email);
@@ -572,7 +572,7 @@ function adresseAusFormular(formData: FormData): KundenAdresseEingabe & { label?
 
 export async function adresseAnlegenAction(_prev: KontoActionResult | null, formData: FormData): Promise<KontoActionResult> {
   const kunde = await aktuellerKunde();
-  if (!kunde) return { success: false, error: 'Bitte melden Sie sich an.' };
+  if (!kunde) return { success: false, error: 'Bitte melde dich an.' };
 
   const eingabe = adresseAusFormular(formData);
   const befunde = pruefeAdresse(eingabe);
@@ -594,7 +594,7 @@ export async function adresseAktualisierenAction(
   formData: FormData
 ): Promise<KontoActionResult> {
   const kunde = await aktuellerKunde();
-  if (!kunde) return { success: false, error: 'Bitte melden Sie sich an.' };
+  if (!kunde) return { success: false, error: 'Bitte melde dich an.' };
 
   const eingabe = adresseAusFormular(formData);
   const befunde = pruefeAdresse(eingabe);
@@ -612,7 +612,7 @@ export async function adresseAktualisierenAction(
 
 export async function adresseLoeschenAction(adresseId: string): Promise<KontoActionResult> {
   const kunde = await aktuellerKunde();
-  if (!kunde) return { success: false, error: 'Bitte melden Sie sich an.' };
+  if (!kunde) return { success: false, error: 'Bitte melde dich an.' };
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
   const ergebnis = await sicherAusgefuehrteAdressAktion('Die Adresse konnte nicht gelöscht werden.', () =>
@@ -624,7 +624,7 @@ export async function adresseLoeschenAction(adresseId: string): Promise<KontoAct
 
 export async function adresseAlsStandardAction(adresseId: string): Promise<KontoActionResult> {
   const kunde = await aktuellerKunde();
-  if (!kunde) return { success: false, error: 'Bitte melden Sie sich an.' };
+  if (!kunde) return { success: false, error: 'Bitte melde dich an.' };
   const grenze = await pruefeRateLimit('kontoAenderung', kunde.id);
   if (!grenze.erlaubt) return { success: false, error: grenze.meldung };
   const ergebnis = await sicherAusgefuehrteAdressAktion('Die Standardadresse konnte nicht geändert werden.', () =>

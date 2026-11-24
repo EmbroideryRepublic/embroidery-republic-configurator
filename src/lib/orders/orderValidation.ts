@@ -161,7 +161,7 @@ function alsText(wert: unknown): string {
 
 /** Meldung für eine unbrauchbare Warenkorbposition (unbekanntes Produkt, kaputter Eintrag). */
 const ARTIKEL_NICHT_VERFUEGBAR =
-  'Ein Artikel in Ihrem Warenkorb ist nicht mehr verfügbar. Bitte entfernen Sie ihn und stellen Sie den Warenkorb neu zusammen.';
+  'Ein Artikel in deinem Warenkorb ist nicht mehr verfügbar. Bitte entferne ihn und stelle den Warenkorb neu zusammen.';
 
 /**
  * Prüft einen Bestelleingang vollständig gegen den Katalog.
@@ -212,13 +212,13 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
 
   // ── 1. Angaben zur Person ───────────────────────────────────────────
   if (!customerName.trim()) {
-    issues.push({ code: 'name_fehlt', message: 'Bitte geben Sie Ihren Namen an.' });
+    issues.push({ code: 'name_fehlt', message: 'Bitte gib deinen Namen an.' });
   } else if (customerName.length > GRENZEN.maxFeldLaenge) {
     issues.push({ code: 'name_zu_lang', message: 'Der eingegebene Name ist zu lang.' });
   }
 
   if (!istPlausibleEmail(email)) {
-    issues.push({ code: 'email_ungueltig', message: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' });
+    issues.push({ code: 'email_ungueltig', message: 'Bitte gib eine gültige E-Mail-Adresse an.' });
   }
 
   // Freitext der Kundschaft: nach oben begrenzt, damit die Datenbank nicht mit Riesen-Eingaben gefüllt wird (der Browser
@@ -226,7 +226,7 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
   if (alsText(input.message).length > ANMERKUNG_MAX_ZEICHEN) {
     issues.push({
       code: 'anmerkung_zu_lang',
-      message: `Ihre Anmerkung ist zu lang (höchstens ${ANMERKUNG_MAX_ZEICHEN.toLocaleString('de-DE')} Zeichen).`,
+      message: `Deine Anmerkung ist zu lang (höchstens ${ANMERKUNG_MAX_ZEICHEN.toLocaleString('de-DE')} Zeichen).`,
     });
   }
 
@@ -238,7 +238,7 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
       country: alsText(input.shipping?.country),
     };
     if (!versand.street.trim() || !versand.zip.trim() || !versand.city.trim() || !versand.country.trim()) {
-      issues.push({ code: 'adresse_unvollstaendig', message: 'Bitte füllen Sie die Lieferadresse vollständig aus.' });
+      issues.push({ code: 'adresse_unvollstaendig', message: 'Bitte fülle die Lieferadresse vollständig aus.' });
     } else {
       const zuLang = [versand.street, versand.zip, versand.city, versand.country].some(
         (feld) => feld.trim().length > GRENZEN.maxFeldLaenge
@@ -246,7 +246,7 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
       if (zuLang) {
         issues.push({ code: 'adresse_zu_lang', message: 'Eine Angabe in der Lieferadresse ist zu lang.' });
       } else if (!istGueltigePlz(versand.zip)) {
-        issues.push({ code: 'plz_ungueltig', message: 'Bitte geben Sie eine gültige Postleitzahl an (5 Ziffern).' });
+        issues.push({ code: 'plz_ungueltig', message: 'Bitte gib eine gültige Postleitzahl an (5 Ziffern).' });
       }
     }
 
@@ -266,12 +266,12 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
   // Eine unverbindliche Anfrage darf leer sein (reine Kontaktaufnahme),
   // eine echte Bestellung nicht.
   if (istBestellung && items.length === 0) {
-    issues.push({ code: 'warenkorb_leer', message: 'Ihr Warenkorb ist leer.' });
+    issues.push({ code: 'warenkorb_leer', message: 'Dein Warenkorb ist leer.' });
   }
   if (items.length > GRENZEN.maxPositionen) {
     issues.push({
       code: 'zu_viele_positionen',
-      message: `Ihr Warenkorb enthält zu viele Positionen (maximal ${GRENZEN.maxPositionen}). Bitte fragen Sie größere Aufträge direkt bei uns an.`,
+      message: `Dein Warenkorb enthält zu viele Positionen (maximal ${GRENZEN.maxPositionen}). Bitte frage größere Aufträge direkt bei uns an.`,
     });
   }
 
@@ -333,7 +333,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
   if (!produkt.colors.some((c) => c.id === item.colorId)) {
     issues.push({
       code: 'farbe_unbekannt',
-      message: `Die gewählte Farbe ist für „${name}" nicht verfügbar. Bitte wählen Sie eine andere Farbe.`,
+      message: `Die gewählte Farbe ist für „${name}" nicht verfügbar. Bitte wähle eine andere Farbe.`,
       itemId,
     });
   }
@@ -344,7 +344,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     if (!produkt.sizes.includes(groesse)) {
       issues.push({
         code: 'groesse_unbekannt',
-        message: `Die Größe „${groesse}" gibt es bei „${name}" nicht. Bitte passen Sie die Auswahl an.`,
+        message: `Die Größe „${groesse}" gibt es bei „${name}" nicht. Bitte passe die Auswahl an.`,
         itemId,
       });
       continue;
@@ -352,7 +352,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     if (!istZahl(menge) || !Number.isInteger(menge) || menge < 0) {
       issues.push({
         code: 'menge_ungueltig',
-        message: `Bitte geben Sie für „${name}" in Größe „${groesse}" eine gültige Stückzahl an.`,
+        message: `Bitte gib für „${name}" in Größe „${groesse}" eine gültige Stückzahl an.`,
         itemId,
       });
       continue;
@@ -360,7 +360,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     if (menge > GRENZEN.maxMengeJeGroesse) {
       issues.push({
         code: 'menge_zu_gross',
-        message: `Die Stückzahl für „${name}" in Größe „${groesse}" ist zu hoch. Für Großaufträge erstellen wir Ihnen gern ein persönliches Angebot.`,
+        message: `Die Stückzahl für „${name}" in Größe „${groesse}" ist zu hoch. Für Großaufträge erstellen wir dir gern ein persönliches Angebot.`,
         itemId,
       });
     }
@@ -372,13 +372,13 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
   if (menge <= 0) {
     issues.push({
       code: 'menge_null',
-      message: `Bitte wählen Sie für „${name}" mindestens ein Stück in einer Größe.`,
+      message: `Bitte wähle für „${name}" mindestens ein Stück in einer Größe.`,
       itemId,
     });
   } else if (menge > GRENZEN.maxMengeJePosition) {
     issues.push({
       code: 'positionsmenge_zu_gross',
-      message: `Die Gesamtstückzahl für „${name}" ist zu hoch. Für Großaufträge erstellen wir Ihnen gern ein persönliches Angebot.`,
+      message: `Die Gesamtstückzahl für „${name}" ist zu hoch. Für Großaufträge erstellen wir dir gern ein persönliches Angebot.`,
       itemId,
     });
   }
@@ -389,7 +389,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
   if (elementeRoh !== null && elementeRoh !== undefined && !Array.isArray(elementeRoh)) {
     issues.push({
       code: 'elementmasse_ungueltig',
-      message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platzieren Sie es im Konfigurator neu.`,
+      message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platziere es im Konfigurator neu.`,
       itemId,
     });
   }
@@ -402,7 +402,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
   if (istBestellung && elemente.length === 0) {
     issues.push({
       code: 'kein_element',
-      message: `Für „${name}" fehlt noch ein Logo oder ein Text. Bitte fügen Sie mindestens ein Element hinzu, bevor Sie bestellen.`,
+      message: `Für „${name}" fehlt noch ein Logo oder ein Text. Bitte füge mindestens ein Element hinzu, bevor du bestellst.`,
       itemId,
     });
   }
@@ -442,7 +442,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     if (element === null || typeof element !== 'object') {
       issues.push({
         code: 'elementmasse_ungueltig',
-        message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platzieren Sie es im Konfigurator neu.`,
+        message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platziere es im Konfigurator neu.`,
         itemId,
       });
       continue;
@@ -475,7 +475,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     if (!masseGueltig) {
       issues.push({
         code: 'elementmasse_ungueltig',
-        message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platzieren Sie es im Konfigurator neu.`,
+        message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platziere es im Konfigurator neu.`,
         itemId,
       });
       continue;
@@ -496,7 +496,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
       if (!istZahl(stiche) || stiche < untergrenze) {
         issues.push({
           code: 'stichzahl_ungueltig',
-          message: `Für ein Motiv auf „${name}" fehlt eine gültige Stichzahl-Schätzung. Bitte öffnen Sie das Produkt noch einmal im Konfigurator und legen Sie es erneut in den Warenkorb.`,
+          message: `Für ein Motiv auf „${name}" fehlt eine gültige Stichzahl-Schätzung. Bitte öffne das Produkt noch einmal im Konfigurator und lege es erneut in den Warenkorb.`,
           itemId,
         });
         continue;
@@ -507,7 +507,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
     if (element.type === 'text' && typeof element.content !== 'string') {
       issues.push({
         code: 'elementmasse_ungueltig',
-        message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platzieren Sie es im Konfigurator neu.`,
+        message: `Ein Motiv auf „${name}" hat ungültige Maße. Bitte platziere es im Konfigurator neu.`,
         itemId,
       });
       continue;
@@ -534,7 +534,7 @@ async function pruefePosition(item: CartItem, istBestellung: boolean): Promise<O
           code: 'element_ueberschreitet_druckflaeche',
           message:
             `Ein Motiv auf „${name}" ist größer als die bedruckbare Fläche ` +
-            `(maximal ${flaeche.maxWidthCm} × ${flaeche.maxHeightCm} cm). Bitte verkleinern Sie es im Konfigurator.`,
+            `(maximal ${flaeche.maxWidthCm} × ${flaeche.maxHeightCm} cm). Bitte verkleinere es im Konfigurator.`,
           itemId,
         });
       }

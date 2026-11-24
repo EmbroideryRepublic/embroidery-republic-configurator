@@ -34,7 +34,7 @@ import { istAnbieterFuerKundschaftVerfuegbar } from '@/lib/payments/registry';
 import { bereinigeAnmerkung } from '@/config/anmerkung';
 
 /** Allgemeine Fehlermeldung, wenn eine Bestellung/Anfrage nicht verarbeitet werden konnte (unveränderter Wortlaut). */
-const ALLGEMEINER_FEHLER = 'Da ist etwas schiefgelaufen. Bitte versuchen Sie es in ein paar Minuten erneut.';
+const ALLGEMEINER_FEHLER = 'Da ist etwas schiefgelaufen. Bitte versuche es in ein paar Minuten erneut.';
 
 /** Zeichenkette oder leer – Server Actions bekommen beliebiges JSON, ein Feld ohne Text gilt als nicht ausgefüllt. */
 function alsText(wert: unknown): string {
@@ -362,7 +362,7 @@ async function ergebnisFuerBestehendeBestellung(
     console.error(`[orders] Zahlungsstatus für Retry ${bestehende} nicht ladbar – sicherheitshalber als Fehler behandelt:`, error);
     return {
       success: false,
-      error: 'Ihre Bestellung ist gespeichert, der aktuelle Status konnte aber gerade nicht geladen werden. Bitte versuchen Sie es in ein paar Minuten erneut.',
+      error: 'Deine Bestellung ist gespeichert, der aktuelle Status konnte aber gerade nicht geladen werden. Bitte versuche es in ein paar Minuten erneut.',
     };
   }
 
@@ -476,7 +476,7 @@ async function persistAndNotifyCore(params: {
     );
     return {
       success: false,
-      error: 'Ein Logo konnte nicht gelesen werden oder ist leer. Bitte laden Sie es im Konfigurator erneut hoch.',
+      error: 'Ein Logo konnte nicht gelesen werden oder ist leer. Bitte lade es im Konfigurator erneut hoch.',
     };
   }
   for (const k of stichzahlen.korrekturen) {
@@ -518,7 +518,7 @@ async function persistAndNotifyCore(params: {
     return {
       success: false,
       error:
-        'Für das gewählte Lieferland ist noch kein Versand hinterlegt. Bitte kontaktieren Sie uns – wir erstellen Ihnen ein individuelles Angebot.',
+        'Für das gewählte Lieferland ist noch kein Versand hinterlegt. Bitte kontaktiere uns – wir erstellen dir ein individuelles Angebot.',
     };
   }
 
@@ -536,7 +536,7 @@ async function persistAndNotifyCore(params: {
       success: false,
       error:
         'Der Gesamtpreis konnte für diese Zusammenstellung nicht verbindlich ermittelt werden. ' +
-        'Bitte kontaktieren Sie uns kurz – wir klären das und schließen Ihre Bestellung persönlich ab.',
+        'Bitte kontaktiere uns kurz – wir klären das und schließen deine Bestellung persönlich ab.',
     };
   }
 
@@ -549,7 +549,7 @@ async function persistAndNotifyCore(params: {
       menge: pricing.totalQuantity,
       summe: pricing.totalPrice,
     });
-    return { success: false, error: 'Ihre Bestellung konnte nicht berechnet werden. Bitte stellen Sie den Warenkorb neu zusammen.' };
+    return { success: false, error: 'Deine Bestellung konnte nicht berechnet werden. Bitte stelle den Warenkorb neu zusammen.' };
   }
 
   // Admin-Client (Service Role) statt des Publishable-Keys: dieser Code läuft
@@ -607,7 +607,7 @@ async function persistAndNotifyCore(params: {
     });
     return {
       success: false,
-      error: 'Ihre Motivdateien konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.',
+      error: 'Deine Motivdateien konnten nicht gespeichert werden. Bitte versuche es erneut.',
     };
   }
 
@@ -747,7 +747,7 @@ async function persistAndNotifyCore(params: {
       meldung: transaktionsFehler.message,
       felder: { code, positionen: itemsPayload.length },
     });
-    return { success: false, error: 'Die Bestellung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.' };
+    return { success: false, error: 'Die Bestellung konnte nicht gespeichert werden. Bitte versuche es erneut.' };
   }
 
   const angelegt = Array.isArray(rpcRows) ? rpcRows[0] : rpcRows;
@@ -761,7 +761,7 @@ async function persistAndNotifyCore(params: {
       ereignis: 'transaktion_ohne_ergebnis',
       meldung: 'Die Transaktion meldete keinen Fehler, lieferte aber keine Bestellkennung.',
     });
-    return { success: false, error: 'Die Bestellung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.' };
+    return { success: false, error: 'Die Bestellung konnte nicht gespeichert werden. Bitte versuche es erneut.' };
   }
 
   // ── ENDE PHASE 1: die Bestellung EXISTIERT ──────────────────────────

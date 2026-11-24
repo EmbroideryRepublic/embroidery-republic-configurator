@@ -131,7 +131,7 @@ export function baueRateLimitSchluessel(
 
 function meldungFuer(sekunden: number): string {
   const minuten = Math.max(1, Math.ceil(sekunden / 60));
-  return `Zu viele Versuche. Bitte versuchen Sie es in ${minuten} ${minuten === 1 ? 'Minute' : 'Minuten'} erneut.`;
+  return `Zu viele Versuche. Bitte versuche es in ${minuten} ${minuten === 1 ? 'Minute' : 'Minuten'} erneut.`;
 }
 
 /**

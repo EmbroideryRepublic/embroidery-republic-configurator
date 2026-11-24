@@ -61,12 +61,12 @@ export interface KontaktAnhangAbgelehnt {
 export type KontaktAnhangPruefung = KontaktAnhangGeprueft | KontaktAnhangAbgelehnt;
 
 const KUNDEN_MELDUNGEN: Record<KontaktAnhangAblehnungsgrund, string> = {
-  kein_data_url: 'Ein Anhang konnte nicht gelesen werden. Bitte laden Sie ihn erneut hoch.',
-  leer: 'Ein Anhang konnte nicht gelesen werden. Bitte laden Sie ihn erneut hoch.',
-  zu_gross: `Ein Anhang ist zu groß. Bitte verwenden Sie Dateien bis ${KONTAKT_ANHANG_GRENZEN.maxBytesProDatei / (1024 * 1024)} MB.`,
+  kein_data_url: 'Ein Anhang konnte nicht gelesen werden. Bitte lade ihn erneut hoch.',
+  leer: 'Ein Anhang konnte nicht gelesen werden. Bitte lade ihn erneut hoch.',
+  zu_gross: `Ein Anhang ist zu groß. Bitte verwende Dateien bis ${KONTAKT_ANHANG_GRENZEN.maxBytesProDatei / (1024 * 1024)} MB.`,
   unbekanntes_format: 'Dieses Dateiformat wird nicht unterstützt. Erlaubt sind PNG, JPEG und PDF.',
-  zu_viele_dateien: `Bitte fügen Sie höchstens ${KONTAKT_ANHANG_GRENZEN.maxDateien} Dateien an.`,
-  gesamtgroesse_zu_gross: 'Die Anhänge sind zusammen zu groß. Bitte entfernen Sie eine Datei.',
+  zu_viele_dateien: `Bitte füge höchstens ${KONTAKT_ANHANG_GRENZEN.maxDateien} Dateien an.`,
+  gesamtgroesse_zu_gross: 'Die Anhänge sind zusammen zu groß. Bitte entferne eine Datei.',
 };
 
 function hatSignatur(bytes: Buffer, signatur: readonly number[]): boolean {

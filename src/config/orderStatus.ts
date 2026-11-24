@@ -50,10 +50,10 @@ export const STATUS_LABELS: Record<OrderStatus, string> = {
 
 /** Was der Kunde in der Bestellansicht dazu liest. */
 export const STATUS_KUNDENTEXT: Record<OrderStatus, string> = {
-  new: 'Ihre Bestellung ist bei uns eingegangen und wird vorbereitet.',
-  in_production: 'Ihre Bestellung ist in Produktion. Wir veredeln Ihre Ware.',
-  shipped: 'Ihre Bestellung ist unterwegs.',
-  completed: 'Ihre Bestellung ist abgeschlossen. Vielen Dank!',
+  new: 'Deine Bestellung ist bei uns eingegangen und wird vorbereitet.',
+  in_production: 'Deine Bestellung ist in Produktion. Wir veredeln deine Ware.',
+  shipped: 'Deine Bestellung ist unterwegs.',
+  completed: 'Deine Bestellung ist abgeschlossen. Vielen Dank!',
   cancelled: 'Diese Bestellung wurde storniert.',
 };
 

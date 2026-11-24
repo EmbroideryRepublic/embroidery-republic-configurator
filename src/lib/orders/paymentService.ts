@@ -196,7 +196,7 @@ export async function starteZahlung({
     await protokolliereBestellereignis({ orderId, eventType: 'payment_blocked', reason: text });
     return {
       ok: false,
-      meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es in ein paar Minuten erneut.',
+      meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuche es in ein paar Minuten erneut.',
       grund: text,
     };
   }
@@ -265,7 +265,7 @@ export async function starteZahlung({
     });
     return {
       ok: false,
-      meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es in ein paar Minuten erneut.',
+      meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuche es in ein paar Minuten erneut.',
       grund: text,
     };
   }
@@ -295,7 +295,7 @@ export async function starteZahlung({
     });
     return {
       ok: false,
-      meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es erneut.',
+      meldung: 'Die Zahlung konnte nicht gestartet werden. Bitte versuche es erneut.',
       grund: updateFehler.message,
     };
   }

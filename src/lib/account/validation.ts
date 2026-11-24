@@ -34,7 +34,7 @@ export function pruefePasswort(passwort: string): ValidierungsBefund[] {
 }
 
 export function pruefeEmail(email: string): ValidierungsBefund[] {
-  if (!email.trim()) return [{ feld: 'email', meldung: 'Bitte geben Sie Ihre E-Mail-Adresse an.' }];
+  if (!email.trim()) return [{ feld: 'email', meldung: 'Bitte gib deine E-Mail-Adresse an.' }];
   if (!EMAIL_MUSTER.test(email.trim())) return [{ feld: 'email', meldung: 'Diese E-Mail-Adresse sieht nicht gültig aus.' }];
   return [];
 }
@@ -80,7 +80,7 @@ export function pruefeAdresse(eingabe: KundenAdresseEingabe): ValidierungsBefund
   // Dieselbe Regel wie im Gast-Checkout (orderValidation.ts istGueltigePlz) –
   // nur geprüft, wenn die PLZ nicht schon oben als fehlend gemeldet wurde.
   if (eingabe.zip?.toString().trim() && !istGueltigePlz(eingabe.zip.toString())) {
-    befunde.push({ feld: 'zip', meldung: 'Bitte geben Sie eine gültige Postleitzahl an (5 Ziffern).' });
+    befunde.push({ feld: 'zip', meldung: 'Bitte gib eine gültige Postleitzahl an (5 Ziffern).' });
   }
   // Dieselbe Obergrenze wie im Gast-Checkout (orderValidation.ts
   // GRENZEN.maxFeldLaenge) – schützt die Datenbank vor Riesen-Eingaben, auch

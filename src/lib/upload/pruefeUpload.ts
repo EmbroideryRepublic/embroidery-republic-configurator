@@ -94,13 +94,13 @@ export type UploadPruefung = UploadGeprueft | UploadAbgelehnt;
  * Hürde als Nächstes zu umgehen wäre.
  */
 const KUNDEN_MELDUNGEN: Record<Ablehnungsgrund, string> = {
-  kein_data_url: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
-  leer: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
-  zu_gross: 'Das Bild ist nach der Aufbereitung zu groß. Bitte verwenden Sie eine Datei mit geringerer Auflösung.',
-  unbekanntes_format: 'Dieses Dateiformat wird nicht unterstützt. Bitte laden Sie eine PNG-Datei hoch.',
-  abmessungen_unlesbar: 'Diese Datei konnte nicht gelesen werden. Bitte laden Sie sie erneut hoch.',
-  zu_grosse_abmessungen: 'Das Bild hat zu große Abmessungen. Bitte verwenden Sie eine kleinere Datei.',
-  zwischenablage_unvollstaendig: 'Die Datei wurde nicht vollständig übertragen. Bitte versuchen Sie es erneut.',
+  kein_data_url: 'Diese Datei konnte nicht gelesen werden. Bitte lade sie erneut hoch.',
+  leer: 'Diese Datei konnte nicht gelesen werden. Bitte lade sie erneut hoch.',
+  zu_gross: 'Das Bild ist nach der Aufbereitung zu groß. Bitte verwende eine Datei mit geringerer Auflösung.',
+  unbekanntes_format: 'Dieses Dateiformat wird nicht unterstützt. Bitte lade eine PNG-Datei hoch.',
+  abmessungen_unlesbar: 'Diese Datei konnte nicht gelesen werden. Bitte lade sie erneut hoch.',
+  zu_grosse_abmessungen: 'Das Bild hat zu große Abmessungen. Bitte verwende eine kleinere Datei.',
+  zwischenablage_unvollstaendig: 'Die Datei wurde nicht vollständig übertragen. Bitte versuche es erneut.',
 };
 
 export function ablehnen(grund: Ablehnungsgrund, protokoll: string): UploadAbgelehnt {

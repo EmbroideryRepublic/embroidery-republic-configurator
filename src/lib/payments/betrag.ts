@@ -98,7 +98,7 @@ export function pruefeZahlbetrag({ neuBerechnetEuro, gespeichertEuro }: BetragsP
   } catch (fehler) {
     return {
       ok: false,
-      meldung: 'Der Zahlbetrag konnte nicht ermittelt werden. Bitte kontaktieren Sie uns – wir klären das persönlich.',
+      meldung: 'Der Zahlbetrag konnte nicht ermittelt werden. Bitte kontaktiere uns – wir klären das persönlich.',
       grund: fehler instanceof Error ? fehler.message : String(fehler),
       erwartetCent: 0,
       gespeichertCent: 0,
@@ -110,7 +110,7 @@ export function pruefeZahlbetrag({ neuBerechnetEuro, gespeichertEuro }: BetragsP
   if (erwartetCent <= 0) {
     return {
       ok: false,
-      meldung: 'Für diese Bestellung lässt sich kein Zahlbetrag ermitteln. Bitte stellen Sie den Warenkorb neu zusammen.',
+      meldung: 'Für diese Bestellung lässt sich kein Zahlbetrag ermitteln. Bitte stelle den Warenkorb neu zusammen.',
       grund: `Berechneter Betrag ist ${erwartetCent} Cent.`,
       erwartetCent,
       gespeichertCent,
@@ -122,7 +122,7 @@ export function pruefeZahlbetrag({ neuBerechnetEuro, gespeichertEuro }: BetragsP
       ok: false,
       meldung:
         'Der Preis dieser Bestellung hat sich zwischenzeitlich geändert. ' +
-        'Aus Sicherheitsgründen wurde die Zahlung nicht gestartet – bitte kontaktieren Sie uns kurz, wir klären das persönlich.',
+        'Aus Sicherheitsgründen wurde die Zahlung nicht gestartet – bitte kontaktiere uns kurz, wir klären das persönlich.',
       grund:
         `Neuberechnung (${erwartetCent} Cent) weicht vom gespeicherten Bestellbetrag ` +
         `(${gespeichertCent} Cent) ab – Zahlung nicht eröffnet.`,

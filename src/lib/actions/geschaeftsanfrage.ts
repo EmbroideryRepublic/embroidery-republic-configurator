@@ -25,7 +25,7 @@ export async function submitGeschaeftsanfrage(eingabe: unknown): Promise<Geschae
   if (typeof input.website === 'string' && input.website.trim() !== '') return { success: true };
 
   const geprueft = pruefeGeschaeftsanfrage(input);
-  if (!geprueft.ok) return { success: false, error: 'Bitte prüfen Sie Ihre Angaben.', felder: geprueft.felder };
+  if (!geprueft.ok) return { success: false, error: 'Bitte prüfe deine Angaben.', felder: geprueft.felder };
 
   // Anhänge: höchstens 2 Dateien, zusammen höchstens 3 MB (Plattformgrenze je Anfrage ca. 4,5 MB). Format und Inhalt prüft submitContactMessage.
   let attachments: { dateiname: string; dataUrl: string }[] | undefined;

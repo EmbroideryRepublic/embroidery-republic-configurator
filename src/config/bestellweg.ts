@@ -79,7 +79,7 @@ export function warenkorbNurAlsAnfrage(items: ReadonlyArray<{ printMethod: Print
  * ist das Sicherheitsnetz.
  */
 export const MELDUNG_STICKEREI_NUR_AUF_ANFRAGE =
-  'Stickerei bestellen wir nicht direkt, sondern nur auf Anfrage. Bitte senden Sie Ihren Warenkorb als Anfrage – wir prüfen ihn persönlich und melden uns mit einem verbindlichen Angebot.';
+  'Stickerei bestellen wir nicht direkt, sondern nur auf Anfrage. Bitte sende deinen Warenkorb als Anfrage – wir prüfen ihn persönlich und melden uns mit einem verbindlichen Angebot.';
 
 /**
  * Meldung an die Kundschaft, wenn ein Browser trotzdem eine Bestellung oder Anfrage mit einer pausierten
@@ -87,4 +87,4 @@ export const MELDUNG_STICKEREI_NUR_AUF_ANFRAGE =
  * nicht erst an – die Meldung ist das Sicherheitsnetz.
  */
 export const MELDUNG_STICKEREI_PAUSIERT =
-  'Die Bestickung ist wegen Wartungs- und Umbauarbeiten vorübergehend nicht verfügbar. Bitte entfernen Sie die bestickten Positionen aus Ihrem Warenkorb oder wählen Sie DTF-Transferdruck.';
+  'Die Bestickung ist wegen Wartungs- und Umbauarbeiten vorübergehend nicht verfügbar. Bitte entferne die bestickten Positionen aus deinem Warenkorb oder wähle DTF-Transferdruck.';

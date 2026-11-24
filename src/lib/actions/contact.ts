@@ -61,16 +61,16 @@ export async function submitContactMessage(eingabe: ContactFormInput): Promise<C
   const message = textOderLeer(input.message);
 
   if (name.length < 2 || name.length > 100) {
-    return { success: false, error: 'Bitte geben Sie Ihren Namen an (2–100 Zeichen).' };
+    return { success: false, error: 'Bitte gib deinen Namen an (2–100 Zeichen).' };
   }
   if (!EMAIL_RE.test(email) || email.length > 200) {
-    return { success: false, error: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' };
+    return { success: false, error: 'Bitte gib eine gültige E-Mail-Adresse an.' };
   }
   if (subject.length > 150) {
     return { success: false, error: 'Der Betreff ist zu lang (max. 150 Zeichen).' };
   }
   if (message.length < 10 || message.length > 5000) {
-    return { success: false, error: 'Bitte formulieren Sie Ihre Nachricht (10–5000 Zeichen).' };
+    return { success: false, error: 'Bitte formuliere deine Nachricht (10–5000 Zeichen).' };
   }
 
   // 3) Rate-Limit erst NACH erfolgreicher Validierung – Tippfehler eines
@@ -115,7 +115,7 @@ export async function submitContactMessage(eingabe: ContactFormInput): Promise<C
     return {
       success: false,
       error:
-        'Ihre Nachricht konnte gerade nicht gesendet werden. Bitte versuchen Sie es später erneut oder schreiben Sie uns direkt per E-Mail.',
+        'Deine Nachricht konnte gerade nicht gesendet werden. Bitte versuche es später erneut oder schreib uns direkt per E-Mail.',
     };
   }
   return { success: true };

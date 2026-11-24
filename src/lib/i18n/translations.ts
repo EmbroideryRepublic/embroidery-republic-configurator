@@ -22,8 +22,8 @@ export const translations = {
     // Zeile 1/2 der Bühnenüberschrift, getrennt durch "\n" (HeroText.tsx) –
     // wortgleich mit dem bisherigen, fest verdrahteten Markup der Startseite.
     hero_tagline: 'Stickerei & DTF-Druck',
-    hero_title: 'Dein Design.\nUnsere Qualität.',
-    hero_subtitle: 'Veredelte Textilien für alle, die nicht von der Stange tragen.',
+    hero_title: 'Dein Design.\nDein Textil.\nDein Statement.',
+    hero_subtitle: 'Hochwertige Textilien individuell bedrucken lassen – ab 1 Stück, direkt online gestaltet.',
 
     trust_germany: 'Veredelung in Deutschland',
     trust_check: 'Kostenlose Designprüfung',
@@ -459,8 +459,8 @@ export const translations = {
     nav_products: 'Products',
 
     hero_tagline: 'Embroidery & DTF printing',
-    hero_title: 'Your design.\nOur quality.',
-    hero_subtitle: "Finished garments for everyone who doesn't wear off-the-rack.",
+    hero_title: 'Your design.\nYour textile.\nYour statement.',
+    hero_subtitle: 'Premium garments, custom printed – from a single piece, designed online.',
 
     trust_germany: 'Finishing in Germany',
     trust_check: 'Free design check',

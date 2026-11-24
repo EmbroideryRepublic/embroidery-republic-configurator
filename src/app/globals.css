@@ -158,3 +158,23 @@ body {
 .animate-marke-auf {
   animation: marke-auf 0.25s ease-out;
 }
+
+/* ── Überschriftenschrift (Redesign 2026-11) ───────────────────────────
+   `font-serif` ist der Name der Überschriften-Klasse (80 Verwendungen). Seit dem Redesign ist es keine Serifenschrift
+   mehr, sondern Inter in kräftigem Schnitt: eng gesetzt, kompromisslos schwarz. Das Gewicht gilt für ALLE Verwendungen
+   einheitlich (daher !important – die einzelnen font-normal/-semibold-Angaben stammen aus der Serifenzeit). Eine
+   einzige Schriftfamilie statt zwei spart eine Schriftdatei. */
+@layer utilities {
+  .font-serif {
+    font-weight: 800 !important;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Orange Unterstreichung für Aufmacher (Hero, Bänder): nur Dekoration, kein Inhalt. */
+.unterstrich-orange {
+  background-image: linear-gradient(theme('colors.gold.DEFAULT'), theme('colors.gold.DEFAULT'));
+  background-repeat: no-repeat;
+  background-position: 0 92%;
+  background-size: 100% 0.14em;
+}

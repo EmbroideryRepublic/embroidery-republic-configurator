@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { GlobaleKopfzeile } from '@/components/layout/GlobaleKopfzeile';
 import { CartDrawerHost } from '@/components/layout/CartDrawerHost';
@@ -12,7 +12,6 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', weight: ['400', '500', '600', '700'] });
 
 // Betriebsschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, verspricht keine Beschreibung sie.
 const STICKEREI_AN = veredelungVerfuegbar('embroidery');
@@ -75,7 +74,7 @@ export const metadata: Metadata = {
  * dort das Browsergrau stehen.
  */
 export const viewport: Viewport = {
-  themeColor: '#b8935a',
+  themeColor: '#faf7f2',
   width: 'device-width',
   initialScale: 1,
 };
@@ -84,7 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de">
       <body
-        className={`${inter.variable} ${playfair.variable} flex min-h-screen flex-col bg-cream font-sans text-brand antialiased`}
+        className={`${inter.variable} flex min-h-screen flex-col bg-cream font-sans text-brand antialiased`}
       >
         <JsonLd daten={websiteSchema(kanonischeBasisUrl())} />
         {/* Erstes fokussierbares Element der Seite: für Tastatur-/Screenreader-

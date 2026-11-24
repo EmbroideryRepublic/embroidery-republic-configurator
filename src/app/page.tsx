@@ -40,7 +40,7 @@ import { PRODUCTS } from '@/config/products';
 import { repraesentativBildVon, produktBild } from '@/lib/assets';
 import { waehlbareFarben } from '@/lib/products/farben';
 import { FARBGRUPPEN } from '@/config/products/facetten';
-import { produktTypLabel, PRODUCT_TYPE_ORDER, PRODUCT_TYPES } from '@/config/products/types';
+import { produktTypLabelPlural, PRODUCT_TYPE_ORDER, PRODUCT_TYPES } from '@/config/products/types';
 import { SHIPPING_RATES } from '@/config/shipping';
 import { PRODUKTIONSTAGE } from '@/config/company';
 import { sortiere } from '@/lib/catalog/filter';
@@ -128,8 +128,13 @@ export default async function Startseite() {
   const buehne = kategorien.find((k) => PRODUCT_TYPES[k.art]?.hero) ?? kategorien[0];
   const buehneDef = buehne ? PRODUCT_TYPES[buehne.art] : undefined;
 
-  const featured = kategorien.find((k) => k.art === buehne?.art) ?? kategorien[0];
-  const kleinereKategorien = kategorien.filter((k) => k.art !== featured?.art);
+  // Kategoriekacheln der Startseite (Referenz „Finde dein Teil.“): die vier häufigsten Arten in fester Reihenfolge; alle
+  // übrigen Arten stehen darunter als Auswahlzeile. Beides sind Verweise auf die bestehenden Kategorieseiten.
+  const HAUPT_ARTEN: ProductType[] = ['tshirt', 'hoodie', 'polo', 'jacket'];
+  const hauptKategorien = HAUPT_ARTEN.map((art) => kategorien.find((k) => k.art === art)).filter(
+    (k): k is (typeof kategorien)[number] => Boolean(k)
+  );
+  const weitereKategorien = kategorien.filter((k) => !HAUPT_ARTEN.includes(k.art));
 
   // Bild für den Marken-Akzent in der „Für deine Marke"-Karte – ein echtes,
   // freigestelltes Katalogfoto (Jacke: passt thematisch zu Team-/Firmenwear),
@@ -160,43 +165,25 @@ export default async function Startseite() {
     <main className="bg-brand-light">
       <JsonLd daten={organisationSchema(kanonischeBasisUrl())} />
 
-      {/* ══ Vertrauensleiste ════════════════════════════════════════════
-          Direkt unter der Navigation, vor der Bühne. Vier belegte Fakten,
-          keine Behauptung – bewusst keine Kunden-/Sternezahl, da echte
-          Kundenstimmen aktuell nicht vorliegen (siehe Kopfkommentar). */}
-      <div className="border-b border-gold/15 bg-cream/60">
-        <div className="mx-auto grid max-w-[1500px] grid-cols-2 items-center gap-x-6 gap-y-2.5 px-4 py-3 text-[12.5px] text-brand/70 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-8 sm:text-[13px] lg:justify-start sm:px-8">
-          <Vertrauenspunkt icon={Boxes} text="Ab 1 Stück, ohne Mindestmenge" />
-          <Vertrauenspunkt icon={Timer} text={`${PRODUKTIONSTAGE.von}–${PRODUKTIONSTAGE.bis} Werktage Produktion`} />
-          <Vertrauenspunkt
-            icon={veredelungVerfuegbar('embroidery') ? Scissors : Shirt}
-            text={veredelungVerfuegbar('embroidery') ? 'Stickerei & DTF-Transferdruck' : 'DTF-Transferdruck'}
-          />
-          <Vertrauenspunkt icon={Truck}>
-            Versandkostenfrei ab <WaehrungsPreis betragInEur={SHIPPING_RATES.DE.freeFrom} />
-          </Vertrauenspunkt>
-        </div>
-      </div>
-
       {/* ══ Bühne ═══════════════════════════════════════════════════════
           Keine Bedienelemente über dem Aufmacher – zuerst kommt die Ware. */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-[1500px] items-center gap-4 px-4 pb-16 pt-10 sm:px-8 lg:min-h-[84vh] lg:grid-cols-[1.15fr_1fr] lg:gap-8 lg:pb-24 lg:pt-6">
+      <section className="relative overflow-hidden bg-cream-dark">
+        <div className="mx-auto grid max-w-[1500px] items-center gap-4 px-4 pb-12 pt-10 sm:px-8 lg:min-h-[600px] lg:grid-cols-[1.1fr_1fr] lg:gap-8 lg:pb-14 lg:pt-12">
           {/* Auch am Handy zuerst Überschrift und Knopf, danach das Bild (Test 2026-11-10: "Jetzt gestalten" lag bei 898 px, unter dem ersten Bildschirm). */}
           <div className="relative z-10 order-1">
             <HeroText />
 
-            <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link
                 href="/konfigurator"
-                className="group inline-flex items-center gap-3 rounded-full bg-brand px-9 py-4 text-[15px] font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-[0_16px_36px_-12px_rgba(43,36,28,0.5)] active:scale-[0.98]"
+                className="group inline-flex items-center gap-3 rounded-full bg-gold-btn px-8 py-4 text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-gold-dark active:scale-[0.98]"
               >
                 Jetzt gestalten
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
               <Link
                 href="/produkt"
-                className="inline-flex items-center border-b border-brand/25 py-2.5 text-[15px] text-brand/70 transition-colors duration-300 hover:border-brand hover:text-brand"
+                className="inline-flex items-center rounded-full border-2 border-brand px-7 py-3.5 text-[15px] font-semibold text-brand transition-colors duration-200 hover:bg-brand hover:text-white"
               >
                 Produkte entdecken
               </Link>
@@ -211,11 +198,11 @@ export default async function Startseite() {
           <div className="relative order-2 flex items-center justify-center py-6 lg:py-0">
             <div
               aria-hidden
-              className="absolute h-[min(88vw,640px)] w-[min(88vw,640px)] rounded-full bg-[radial-gradient(circle_at_50%_45%,#ffffff_0%,#f6efe2_55%,rgba(246,239,226,0)_72%)]"
+              className="absolute h-[min(88vw,640px)] w-[min(88vw,640px)] rounded-full bg-[radial-gradient(circle_at_50%_45%,#ffffff_0%,rgba(255,255,255,0.55)_55%,rgba(255,255,255,0)_72%)]"
             />
             <div
               aria-hidden
-              className="absolute h-[min(74vw,540px)] w-[min(74vw,540px)] rounded-full border border-gold/20 blur-[1px]"
+              className="absolute h-[min(74vw,540px)] w-[min(74vw,540px)] rounded-full border border-brand/10"
             />
 
             {/* Bild und schwebende Karte teilen sich EINEN Wrapper in der
@@ -231,7 +218,7 @@ export default async function Startseite() {
                   height={720}
                   priority
                   sizes="(max-width: 1024px) 76vw, 540px"
-                  className="relative h-auto w-full drop-shadow-[0_46px_60px_rgba(43,36,28,0.16)]"
+                  className="relative h-auto w-full drop-shadow-[0_46px_60px_rgba(20,18,16,0.16)]"
                 />
               )}
 
@@ -252,114 +239,98 @@ export default async function Startseite() {
         </div>
       </section>
 
+      {/* ══ Vorteilsleiste ══════════════════════════════════════════════
+          Vier belegte Fakten direkt unter der Bühne (Referenz): Menge, Produktionszeit, Verfahren, Versandgrenze – alle Zahlen
+          stammen aus der Konfiguration, keine Behauptung, keine Kunden-/Sternezahl. */}
+      <div className="border-b border-brand/10 bg-cream">
+        <div className="mx-auto grid max-w-[1500px] grid-cols-2 gap-x-6 gap-y-4 px-4 py-5 sm:px-8 lg:grid-cols-4 lg:gap-0">
+          <Vertrauenspunkt icon={Boxes} text="Ab 1 Stück" />
+          <Vertrauenspunkt icon={Shirt} text="Live-Konfigurator" />
+          <Vertrauenspunkt icon={Timer} text={`${PRODUKTIONSTAGE.von}–${PRODUKTIONSTAGE.bis} Werktage Produktion`} />
+          <Vertrauenspunkt icon={Truck}>
+            Versandkostenfrei ab <WaehrungsPreis betragInEur={SHIPPING_RATES.DE.freeFrom} />
+          </Vertrauenspunkt>
+        </div>
+      </div>
+
       {/* ══ Kategorien ══════════════════════════════════════════════════
-          Eine große, führende Kategorie neben einem kompakteren Feld der
-          übrigen – asymmetrisch statt eines gleichförmigen Rasters. */}
-      <section className="mx-auto max-w-[1500px] px-4 pb-24 pt-6 sm:px-8">
-        <div className="max-w-xl">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Kategorien entdecken</p>
-          <h2 className="mt-6 font-serif text-[clamp(2.25rem,4.5vw,3.75rem)] font-normal leading-[1.02] tracking-[-0.025em] text-brand">
-            Ihre Lieblingsstücke.
-            <span className="block">Ihre Marke.</span>
-          </h2>
-          <p className="mt-4 text-[16px] leading-relaxed text-brand/70">
-            Wähle dein Textil und gestalte es mit deinem Logo, Motiv oder Schriftzug.
-            Basics mit Substanz, perfekt veredelt – für Einzelpersonen, Teams und Marken.
-          </p>
+          „Finde dein Teil.“ (Referenz): die vier häufigsten Arten als gleich große Kacheln mit Bild, darunter die übrigen Arten als
+          Auswahlzeile. Alle Ziele sind die bestehenden Kategorieseiten (Verlinkung für Suchmaschinen unverändert). */}
+      <section className="mx-auto max-w-[1500px] px-4 pb-16 pt-16 sm:px-8 sm:pt-20">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="font-serif text-[clamp(2.25rem,4.4vw,3.5rem)] leading-[1.02] text-brand">Finde dein Teil.</h2>
+          <Link
+            href="/produkt"
+            className="group inline-flex items-center gap-2 py-2.5 text-[15px] font-semibold text-gold-dark transition-colors hover:text-brand"
+          >
+            Alle Produkte ansehen
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+          </Link>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_1.55fr] lg:gap-8">
-          {featured?.bild && (
-            <Link href={kategorieLink(featured.art)} className="group flex flex-col">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-white ring-1 ring-brand/[0.05] transition-shadow duration-300 group-hover:shadow-[0_28px_60px_-28px_rgba(43,36,28,0.3)] lg:aspect-auto lg:min-h-[420px] lg:flex-1">
-                <Image
-                  src={featured.bild}
-                  alt={produktTypLabel(featured.art)}
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 42vw"
-                  className="object-contain p-6 transition-transform duration-[700ms] ease-out group-hover:scale-[1.04] sm:p-9"
-                />
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+          {hauptKategorien.map(({ art, anzahl, bild }) => (
+            <Link key={art} href={kategorieLink(art)} className="group block overflow-hidden rounded-2xl border border-brand/10 bg-white transition-shadow duration-300 hover:shadow-elegant">
+              <div className="relative aspect-[4/5] bg-white">
+                {bild && (
+                  <Image
+                    src={bild}
+                    alt={produktTypLabelPlural(art)}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 24vw"
+                    className="object-contain p-5 transition-transform duration-500 ease-out group-hover:scale-[1.04] sm:p-8"
+                  />
+                )}
               </div>
-              <div className="mt-5 flex items-start justify-between gap-3">
-                <div>
-                  <p className="font-serif text-[26px] leading-snug text-brand transition-colors duration-300 group-hover:text-gold-dark">
-                    {produktTypLabel(featured.art)}
-                  </p>
-                  <p className="mt-1.5 max-w-xs text-[14px] leading-relaxed text-brand/70">
-                    {PRODUCT_TYPES[featured.art]?.kachelText}
-                  </p>
-                </div>
-                <span className="mt-1 inline-flex h-7 min-w-[1.75rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2.5 text-[13px] tabular-nums text-gold-dark">
-                  {featured.anzahl}
+              <div className="flex items-center justify-between gap-2 border-t border-brand/10 bg-cream px-4 py-3.5">
+                <span className="font-serif text-[18px] text-brand transition-colors group-hover:text-gold-dark sm:text-[21px]">{produktTypLabelPlural(art)}</span>
+                <span className="flex items-center gap-2 text-brand">
+                  <span className="rounded-full bg-brand/[0.07] px-2 py-0.5 text-[12px] font-semibold tabular-nums">{anzahl}</span>
+                  <ArrowRight className="h-4 w-4 text-gold-dark transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
                 </span>
               </div>
             </Link>
-          )}
-
-          <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3">
-            {kleinereKategorien.map(({ art, anzahl, bild }) => (
-              <Link key={art} href={kategorieLink(art)} className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-white ring-1 ring-brand/[0.05] transition-shadow duration-300 group-hover:shadow-[0_22px_44px_-24px_rgba(43,36,28,0.28)]">
-                  {bild && (
-                    <Image
-                      src={bild}
-                      alt={produktTypLabel(art)}
-                      fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 24vw"
-                      className="object-contain p-4 transition-transform duration-[700ms] ease-out group-hover:scale-[1.05]"
-                    />
-                  )}
-                </div>
-                <div className="mt-4 flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="font-serif text-[19px] text-brand transition-colors duration-300 group-hover:text-gold-dark">
-                      {produktTypLabel(art)}
-                    </p>
-                    <p className="mt-1 text-[13px] leading-relaxed text-brand/70">{PRODUCT_TYPES[art]?.kachelText}</p>
-                  </div>
-                  <span className="mt-0.5 inline-flex h-6 min-w-[1.5rem] flex-shrink-0 items-center justify-center rounded-full bg-gold-light/60 px-2 text-[12px] tabular-nums text-gold-dark">
-                    {anzahl}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          ))}
         </div>
+
+        {weitereKategorien.length > 0 && (
+          <ul className="mt-5 flex flex-wrap gap-2.5" aria-label="Weitere Kategorien">
+            {weitereKategorien.map(({ art, anzahl }) => (
+              <li key={art}>
+                <Link
+                  href={kategorieLink(art)}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-brand/15 bg-white px-5 py-2.5 text-[14px] font-semibold text-brand transition-colors hover:border-brand hover:bg-brand hover:text-white"
+                >
+                  {produktTypLabelPlural(art)}
+                  <span className="text-[12px] font-medium tabular-nums text-brand/70">{anzahl}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
-
-      {/* Marken-Seiten: von der Startseite aus verlinkt, damit Suchmaschinen sie früh finden (config/seo/dtfSeiten.ts). */}
-      <MarkenChips ueberschrift="Nach Marke stöbern" className="mx-auto max-w-[1500px] px-4 pb-20 sm:px-8" />
-
-      {/* Anlass- und Ratgeberseiten (config/seo/anlassSeiten.ts): ebenfalls von der Startseite aus verlinkt. */}
-      <AnlassChips ueberschrift="Anlässe & Ratgeber" className="mx-auto max-w-[1500px] px-4 pb-20 sm:px-8" />
 
       {/* ══ Beliebte Produkte ═══════════════════════════════════════════
           Echte Verkaufszahlen statt einer redaktionellen Auswahl – siehe
           Kopfkommentar. Ohne Verkaufsdaten ein nachvollziehbarer Ersatz,
           niemals eine erfundene Reihenfolge. */}
       {beliebteProdukte.length > 0 && (
-        <section className="border-t border-brand/[0.06] bg-sand/25">
-          <div className="mx-auto max-w-[1500px] px-4 py-20 sm:px-8">
+        <section className="border-t border-brand/10">
+          <div className="mx-auto max-w-[1500px] px-4 py-16 sm:px-8 sm:py-20">
             <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Beliebte Produkte</p>
-                <h2 className="mt-6 font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
-                  Häufig gewählt.
-                  <span className="block text-gold-dark">Immer mit Substanz.</span>
-                </h2>
-              </div>
+              <h2 className="font-serif text-[clamp(2.25rem,4.4vw,3.5rem)] leading-[1.02] text-brand">Beliebte Produkte.</h2>
               <Link
                 href="/produkt"
-                className="group inline-flex items-center gap-2 border-b border-brand/25 py-2.5 text-[15px] text-brand/70 transition-colors duration-300 hover:border-brand hover:text-brand"
+                className="group inline-flex items-center gap-2 py-2.5 text-[15px] font-semibold text-gold-dark transition-colors hover:text-brand"
               >
-                Alle Produkte ansehen
+                Weitere Bestseller
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
             </div>
 
             {/* Kein `index` an die Kacheln: Sie liegen unterhalb des Falzes. Mit `index` bekäme jede der ersten sechs ein Vorlade-Signal mit hoher
                 Priorität und würde auf dem Handy mit dem Hero-Bild (dem LCP-Element) um die Leitung konkurrieren (Lighthouse 2026-11-24: LCP 4,1 s). */}
-            <div className="mt-14 grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-8 md:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-10 sm:gap-x-6 md:grid-cols-4">
               {beliebteProdukte.map((p) => (
                 <Produktkachel
                   key={p.id}
@@ -372,6 +343,12 @@ export default async function Startseite() {
           </div>
         </section>
       )}
+
+      {/* Marken-Seiten: von der Startseite aus verlinkt, damit Suchmaschinen sie früh finden (config/seo/dtfSeiten.ts). */}
+      <MarkenChips ueberschrift="Nach Marke stöbern" className="mx-auto max-w-[1500px] px-4 pb-20 sm:px-8" />
+
+      {/* Anlass- und Ratgeberseiten (config/seo/anlassSeiten.ts): ebenfalls von der Startseite aus verlinkt. */}
+      <AnlassChips ueberschrift="Anlässe & Ratgeber" className="mx-auto max-w-[1500px] px-4 pb-20 sm:px-8" />
 
       {/* ══ Veredelung ══════════════════════════════════════════════════
           Zwei Verfahren, klar erklärt – Verständnis schafft Vertrauen und
@@ -451,23 +428,21 @@ export default async function Startseite() {
           der Seite ist auch optisch der lauteste. Vier Schritte erklären
           zugleich, wie der Konfigurator funktioniert, und münden im
           stärksten Aufruf der Seite. */}
-      <section className="fokus-hell bg-brand text-white">
+      <section id="so-funktionierts" className="fokus-hell scroll-mt-20 bg-brand text-white">
         <div className="mx-auto max-w-[1500px] px-4 py-28 sm:px-8">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Selbst gestalten</p>
+          <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-gold">So funktioniert’s</p>
           <div className="mt-7 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <h2 className="font-serif text-[clamp(2.25rem,5vw,4.75rem)] font-normal leading-[0.98] tracking-[-0.025em]">
-              Deine Idee.
-              <span className="block text-gold">Dein Statement.</span>
+            <h2 className="font-serif text-[clamp(2.25rem,5vw,4.75rem)] leading-[0.98]">
+              Dein Motiv.
+              <span className="block text-gold">Perfekt platziert.</span>
             </h2>
             <div>
-              <p className="max-w-md text-[16px] leading-relaxed text-white/60">
-                Logo hochladen oder Text setzen, auf Vorderseite, Rückseite und beiden
-                Ärmeln platzieren. Die Vorschau zeigt jede Änderung sofort – samt Maßen
-                in Zentimetern und aktuellem Preis.
+              <p className="max-w-md text-[16px] leading-relaxed text-white/75">
+                Gestalte dein Textil direkt online – mit unserem Konfigurator für hochwertigen DTF-Druck. Logo hochladen oder Text setzen, auf Vorderseite, Rückseite und Ärmeln platzieren. Die Vorschau zeigt jede Änderung sofort – samt Maßen in Zentimetern und aktuellem Preis.
               </p>
               <Link
                 href="/konfigurator"
-                className="group mt-9 inline-flex items-center gap-3 rounded-full bg-white px-9 py-4 text-[15px] font-medium text-brand transition-all duration-300 ease-out hover:bg-gold hover:text-white active:scale-[0.98]"
+                className="group mt-9 inline-flex items-center gap-3 rounded-full bg-gold-btn px-8 py-4 text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-gold active:scale-[0.98]"
               >
                 Konfigurator öffnen
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -495,9 +470,9 @@ function Vertrauenspunkt({ icon: Icon, text, children }: { icon: LucideIcon; tex
     // Ab sm: wechselt das Layout zu flex-wrap und bricht ganze Elemente um,
     // nicht mehr Wörter innerhalb eines Elements – dort bleibt der Text bewusst
     // einzeilig.
-    <span className="flex flex-shrink-0 items-center gap-2 sm:whitespace-nowrap">
-      <Icon className="h-[15px] w-[15px] flex-shrink-0 text-gold-dark" strokeWidth={1.75} aria-hidden />
-      {text ?? children}
+    <span className="flex flex-shrink-0 items-center justify-start gap-3 text-[14px] font-semibold text-brand lg:justify-center lg:whitespace-nowrap lg:[&:not(:first-child)]:border-l lg:[&:not(:first-child)]:border-brand/10">
+      <Icon className="h-7 w-7 flex-shrink-0 text-gold" strokeWidth={1.5} aria-hidden />
+      <span>{text ?? children}</span>
     </span>
   );
 }

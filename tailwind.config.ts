@@ -8,51 +8,51 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Markenpalette: warme Beige-/Creme-Grundfarben, Gold/Bronze als
-        // Akzent – orientiert am Firmenlogo (Tiger-Wappen in Gold/Bronze
-        // auf Creme).
+        // Designsystem 2026-11 (docs/redesign/DESIGN-VORSCHLAG.md): warmes Off-White, kräftiges Schwarz, Orange als einziger
+        // Akzent. Die Token-NAMEN blieben bewusst erhalten (brand, gold, cream, sand): Sie sind an über 1.500 Stellen
+        // im Einsatz, und ihre Rollen sind festgelegt – nur die Werte wurden getauscht, damit der ganze Shop in einem
+        // Schritt einheitlich umgefärbt ist.
         //
-        // Kontrast (WCAG 1.4.3, per WCAG-Formel gegen cream/white geprüft; Stand 2026-11-10: alle
-        // text-brand/30…/60 sind auf /70 angehoben, kleine Goldtexte nutzen gold-dark):
-        // text-brand ab Opacity 70 erreicht 4.5:1 (5.53–5.71:1), darunter
-        // (30–60) nicht – auch eine dunklere DEFAULT-Farbe kann das bei so
-        // niedriger Deckkraft rechnerisch nicht auffangen, ohne fast Schwarz
-        // zu werden (erst ab ca. 65% der jetzigen Helligkeit läge /60 knapp
-        // über 4.5:1 – zu große, ungeprüfte Farbänderung für alle rund 266
-        // Fundstellen auf einmal). Für Fließtext/Labels daher mindestens
-        // text-brand/70 verwenden, nicht niedriger. bg-gold mit text-white
-        // liegt bei 2.85:1 (fehlschlägt); bg-gold-dark mit text-white bei
-        // 5.00:1 (besteht) – für Buttons/Badges mit weißer Schrift
-        // gold-dark statt gold als Hintergrund verwenden.
+        // Rollen und Kontrast (WCAG-Formel, gegen Papier #FAF7F2 bzw. Weiß gerechnet):
+        //  - brand        Schrift und dunkle Flächen, 17,5:1. Nebentext mit /70 erreicht rund 7:1; darunter (/30…/60)
+        //                 weiterhin NICHT für Fließtext oder Beschriftungen verwenden.
+        //  - gold         Orange #E8590C nur für große Flächen und Grafiken (Unterstreichungen, Abzeichen, Symbole ab
+        //                 24 px): 3,35:1 – genügt für Grafik (≥ 3:1), NICHT für kleinen Text.
+        //  - gold-dark    Orange #B93A0A für kleinen Text und Links: 5,35:1.
+        //  - gold-btn     Orange #C2410C als Knopfhintergrund mit weißer Schrift: 5,18:1 (Hover: gold-dark).
+        //                 (bg-gold mit text-white läge bei 3,6:1 und scheitert – dafür gold-btn/gold-dark nehmen.)
         brand: {
-          DEFAULT: '#2b241c', // warmes Anthrazit-Braun für Text (kein reines Schwarz)
-          light: '#faf7f1',   // Creme-Hintergrund
-          accent: '#a8792f',  // Gold-Akzent für Buttons/aktive Elemente
+          DEFAULT: '#141210', // kräftiges, warmes Schwarz für Text und dunkle Flächen
+          light: '#faf7f2',   // Papier: Seitenhintergrund
+          accent: '#c2410c',  // Orange für Knöpfe/aktive Elemente
         },
         gold: {
-          DEFAULT: '#aa864e', // war #b8935a (2,7:1) – jetzt 3,0–3,4:1 für große Schrift
-          dark: '#7d6035', // war #8a6a3a (4,4–4,7:1) – jetzt 5,2–5,8:1 für kleinen Text
-          light: '#f3e6cc',
-          btn: '#8a6a3a', // Knopfhintergrund für weiße Schrift (5,0:1); hover: gold-dark
+          DEFAULT: '#e8590c',
+          dark: '#b93a0a',
+          light: '#fde6d6',
+          btn: '#c2410c',
         },
         bronze: {
-          DEFAULT: '#8b5e34',
-          dark: '#6b4526',
+          DEFAULT: '#b93a0a',
+          dark: '#8f2d08',
         },
         cream: {
-          DEFAULT: '#f7f1e6',
-          dark: '#ece0c9',
+          DEFAULT: '#faf7f2', // Papier (Seitenhintergrund)
+          dark: '#f0ebe3',    // Sand: Hero, Bänder, ruhige Flächen
         },
         sand: {
-          DEFAULT: '#e8ddc8',
+          DEFAULT: '#eae3d8',
         },
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
+        // „serif“ ist die Überschriftenschrift. Der Name blieb, weil 80 Stellen ihn nutzen; seit dem Redesign ist es
+        // dieselbe Familie wie der Fließtext (Inter) in kräftigem Schnitt – siehe `.font-serif` in globals.css.
+        serif: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        elegant: '0 4px 24px -4px rgba(139, 94, 52, 0.15)',
+        // Ruhige, fast flache Karten (statt des früheren warmen Goldschattens).
+        elegant: '0 1px 2px rgba(20, 18, 16, 0.04), 0 10px 28px -14px rgba(20, 18, 16, 0.16)',
       },
     },
   },

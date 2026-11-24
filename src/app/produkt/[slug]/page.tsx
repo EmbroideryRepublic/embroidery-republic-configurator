@@ -133,7 +133,7 @@ function MiniKarte({ produkt }: { produkt: ProductConfig }) {
   return (
     <Link
       href={`/produkt/${produkt.id}`}
-      className="group rounded-2xl border border-brand/[0.08] bg-white p-3 transition-all duration-300 hover:border-gold/40 hover:shadow-[0_18px_44px_-28px_rgba(43,36,28,0.4)]"
+      className="group rounded-2xl border border-brand/[0.08] bg-white p-3 transition-all duration-300 hover:border-gold/40 hover:shadow-[0_18px_44px_-28px_rgba(20,18,16,0.4)]"
     >
       {/* bg-white statt cream/40: Die Lieferantenfotos haben einen weißen Hintergrund – auf getöntem Grund
           erschien das Foto als helles Rechteck im Kasten im Kasten. */}
@@ -248,7 +248,7 @@ export default async function Produktseite(props: { params: Promise<{ slug: stri
 
             <div
               id="produkt-kaufkarte"
-              className="mt-6 rounded-2xl border border-gold/25 bg-white p-5 shadow-[0_16px_40px_-30px_rgba(43,36,28,0.4)]"
+              className="mt-6 rounded-2xl border border-gold/25 bg-white p-5 shadow-[0_16px_40px_-30px_rgba(20,18,16,0.4)]"
             >
               <p className="text-sm text-brand/70">Ab</p>
               <p className="font-serif text-3xl font-normal text-brand">

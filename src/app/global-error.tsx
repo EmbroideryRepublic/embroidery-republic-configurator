@@ -20,27 +20,27 @@ export default function GlobalError({
 }) {
   return (
     <html lang="de">
-      <body style={{ margin: 0, background: '#f7f1e6', color: '#2b241c', fontFamily: 'system-ui, sans-serif' }}>
+      <body style={{ margin: 0, background: '#faf7f2', color: '#141210', fontFamily: 'system-ui, sans-serif' }}>
         <main style={{ maxWidth: '36rem', margin: '0 auto', padding: '5rem 1rem' }}>
           <h1 style={{ fontSize: '1.75rem', fontWeight: 600, lineHeight: 1.2, margin: 0 }}>
             Die Seite konnte nicht geladen werden.
           </h1>
-          <p style={{ marginTop: '1rem', lineHeight: 1.6, color: 'rgba(43,36,28,0.65)' }}>
+          <p style={{ marginTop: '1rem', lineHeight: 1.6, color: 'rgba(20,18,16,0.65)' }}>
             Bitte laden Sie die Seite neu. Besteht das Problem weiter, erreichen Sie uns
-            unter <a href="/kontakt" style={{ color: '#8a6a3a' }}>Kontakt</a>.
+            unter <a href="/kontakt" style={{ color: '#b93a0a' }}>Kontakt</a>.
           </p>
           <button
             type="button"
             onClick={reset}
             style={{
               marginTop: '2rem', padding: '0.75rem 1.75rem', borderRadius: '9999px',
-              border: 'none', background: '#2b241c', color: '#fff', fontSize: '0.9rem', cursor: 'pointer',
+              border: 'none', background: '#141210', color: '#fff', fontSize: '0.9rem', cursor: 'pointer',
             }}
           >
             Erneut versuchen
           </button>
           {error.digest && (
-            <p style={{ marginTop: '2.5rem', fontSize: '0.75rem', color: 'rgba(43,36,28,0.4)' }}>
+            <p style={{ marginTop: '2.5rem', fontSize: '0.75rem', color: 'rgba(20,18,16,0.4)' }}>
               Kennung für den Support: {error.digest}
             </p>
           )}

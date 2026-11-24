@@ -62,7 +62,7 @@ export function Veredelungsverfahren() {
         return (
           <div
             key={v.titel}
-            className={`rounded-[24px] border border-brand/[0.08] bg-white p-8 transition-shadow duration-300 hover:shadow-[0_24px_60px_-30px_rgba(43,36,28,0.35)] sm:p-10 `}
+            className={`rounded-[24px] border border-brand/[0.08] bg-white p-8 transition-shadow duration-300 hover:shadow-[0_24px_60px_-30px_rgba(20,18,16,0.35)] sm:p-10 `}
           >
             <span className={`flex h-14 w-14 items-center justify-center rounded-full text-white ${pausiert ? 'bg-brand/50' : 'bg-brand'}`}>
               <Icon className="h-6 w-6" aria-hidden />

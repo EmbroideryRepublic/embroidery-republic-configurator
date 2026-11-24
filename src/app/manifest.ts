@@ -26,8 +26,8 @@ export default function manifest(): MetadataRoute.Manifest {
     display: 'browser',
     lang: 'de',
     // Creme-Hintergrund und Gold-Akzent aus tailwind.config.ts.
-    background_color: '#f7f1e6',
-    theme_color: '#b8935a',
+    background_color: '#faf7f2',
+    theme_color: '#c2410c',
     icons: [
       { src: '/icon.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
       { src: '/apple-icon.png', sizes: '180x180', type: 'image/png' },

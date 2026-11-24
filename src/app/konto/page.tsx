@@ -39,7 +39,7 @@ export default async function KontoUebersichtPage() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Link
           href="/konto/bestellungen"
-          className="rounded-xl border border-gold/20 bg-white p-4 shadow-elegant transition-shadow hover:shadow-[0_8px_32px_-6px_rgba(139,94,52,0.28)]"
+          className="rounded-xl border border-gold/20 bg-white p-4 shadow-elegant transition-shadow hover:shadow-[0_8px_32px_-6px_rgba(20,18,16,0.28)]"
         >
           <Package className="h-5 w-5 text-gold-dark" />
           <p className="mt-2 text-sm font-semibold text-brand">{bestellungen.length} Bestellung(en)</p>
@@ -47,7 +47,7 @@ export default async function KontoUebersichtPage() {
         </Link>
         <Link
           href="/konto/adressen"
-          className="rounded-xl border border-gold/20 bg-white p-4 shadow-elegant transition-shadow hover:shadow-[0_8px_32px_-6px_rgba(139,94,52,0.28)]"
+          className="rounded-xl border border-gold/20 bg-white p-4 shadow-elegant transition-shadow hover:shadow-[0_8px_32px_-6px_rgba(20,18,16,0.28)]"
         >
           <MapPin className="h-5 w-5 text-gold-dark" />
           <p className="mt-2 text-sm font-semibold text-brand">{adressen.length} Adresse(n)</p>
@@ -55,7 +55,7 @@ export default async function KontoUebersichtPage() {
         </Link>
         <Link
           href="/konto/profil"
-          className="rounded-xl border border-gold/20 bg-white p-4 shadow-elegant transition-shadow hover:shadow-[0_8px_32px_-6px_rgba(139,94,52,0.28)]"
+          className="rounded-xl border border-gold/20 bg-white p-4 shadow-elegant transition-shadow hover:shadow-[0_8px_32px_-6px_rgba(20,18,16,0.28)]"
         >
           <User className="h-5 w-5 text-gold-dark" />
           <p className="mt-2 text-sm font-semibold text-brand">Profil</p>

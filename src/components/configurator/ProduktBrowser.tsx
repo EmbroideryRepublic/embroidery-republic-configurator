@@ -547,7 +547,7 @@ function Modellkarte({
         'group relative block w-full overflow-hidden rounded-2xl border text-left transition-all duration-300 ease-out',
         aktiv
           ? 'border-gold bg-gold-light/25 shadow-[0_0_0_1px_theme(colors.gold.DEFAULT),0_18px_38px_-16px_rgba(168,121,47,0.55)]'
-          : 'border-gray-900/[0.07] bg-white hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_22px_44px_-20px_rgba(43,36,28,0.32)]'
+          : 'border-gray-900/[0.07] bg-white hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_22px_44px_-20px_rgba(20,18,16,0.32)]'
       )}
     >
       {/* Vorschaubild – bewusst groß, damit die Ware wirkt. */}

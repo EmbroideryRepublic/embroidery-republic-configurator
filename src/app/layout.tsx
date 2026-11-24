@@ -26,7 +26,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(kanonischeBasisUrl()),
   // Unterseiten setzen nur ihren eigenen Titel; die Marke hängt das Template an.
   title: {
-    default: 'Embroidery Republic Germany | Firmenbekleidung bedrucken & besticken',
+    // Solange die Stickerei pausiert ist (config/bestellweg.ts), nennt kein Titel sie (Freigabe 2026-11-24).
+    default: STICKEREI_AN
+      ? 'Embroidery Republic Germany | Firmenbekleidung bedrucken & besticken'
+      : 'Embroidery Republic Germany | Firmenbekleidung bedrucken',
     template: '%s | Embroidery Republic Germany',
   },
   description: STICKEREI_AN
@@ -35,9 +38,9 @@ export const metadata: Metadata = {
   applicationName: 'Embroidery Republic Germany',
   keywords: [
     'Firmenbekleidung bedrucken',
-    'Arbeitskleidung besticken',
+    ...(STICKEREI_AN ? ['Arbeitskleidung besticken'] : ['Arbeitskleidung bedrucken']),
     'DTF-Transferdruck',
-    'Stickerei Firmenlogo',
+    ...(STICKEREI_AN ? ['Stickerei Firmenlogo'] : []),
     'Teambekleidung',
     'Textilveredelung',
   ],
@@ -45,7 +48,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'de_DE',
     siteName: 'Embroidery Republic Germany',
-    title: 'Firmenbekleidung bedrucken & besticken – live konfigurieren',
+    title: STICKEREI_AN
+      ? 'Firmenbekleidung bedrucken & besticken – live konfigurieren'
+      : 'Firmenbekleidung bedrucken – live konfigurieren',
     description: STICKEREI_AN
       ? 'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung. Motiv hochladen, platzieren, Preis in Echtzeit sehen – ab 1 Stück.'
       : 'DTF-Transferdruck für Firmen- und Teambekleidung. Motiv hochladen, platzieren, Preis in Echtzeit sehen – ab 1 Stück.',

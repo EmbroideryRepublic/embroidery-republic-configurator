@@ -10,10 +10,26 @@
  * Ausnahme Konfigurator: Der bringt seine EIGENE Schublade mit (v1.0, mit
  * eigener Zustandsführung). Hier wird auf `/konfigurator` deshalb nichts
  * gerendert – sonst gäbe es zwei Schubladen übereinander.
+ *
+ * Ladezeit: Die Schublade zieht den kompletten Produktkatalog nach sich
+ * (getProduct) und war bisher in JEDER Seite fest eingebunden – auch wenn der
+ * Korb nie geöffnet wird. Sie wird deshalb erst beim Öffnen nachgeladen
+ * (`ladeWarenkorbSchublade`); die Kopfzeile stößt das Laden schon beim
+ * Darüberfahren/Antippen des Warenkorb-Knopfes an, sodass es beim Klick
+ * praktisch ohne Wartezeit aufgeht.
  */
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { CartDrawer } from './CartDrawer';
 import { useUiStore } from '@/stores/uiStore';
+
+/** Lädt den Baustein der Schublade vor (mehrfacher Aufruf ist unschädlich). */
+export function ladeWarenkorbSchublade() {
+  return import('./CartDrawer');
+}
+
+const CartDrawer = dynamic(() => ladeWarenkorbSchublade().then((m) => m.CartDrawer), {
+  ssr: false,
+});
 
 export function CartDrawerHost() {
   const pfad = usePathname();

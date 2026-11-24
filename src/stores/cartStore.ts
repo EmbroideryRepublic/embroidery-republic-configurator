@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { CartItem } from '@/types';
 import { indexedDbStorage, getTabId } from '@/lib/storage/indexedDbStorage';
-import { berechnePreiseNeu } from '@/lib/cart/preiseAktualisieren';
 import { useWarenkorbHinweisStore } from '@/stores/warenkorbHinweisStore';
 
 interface CartState {
@@ -79,7 +78,11 @@ export const useCartStore = create<CartState>()(
       onRehydrateStorage: () => (state) => {
         if (!state || state.items.length === 0) return;
         const vorher = state.items;
-        void berechnePreiseNeu(vorher)
+        // Die Neuberechnung zieht die Preisengine samt komplettem Produktkatalog (~110 KB gzip) nach sich. Sie wird deshalb
+        // erst hier nachgeladen – und nur, wenn überhaupt Positionen im Korb liegen –, statt in jede Seite fest eingebunden
+        // zu sein (der Warenkorb-Speicher steckt über die Kopfzeile in jeder Seite).
+        void import('@/lib/cart/preiseAktualisieren')
+          .then(({ berechnePreiseNeu }) => berechnePreiseNeu(vorher))
           .then(({ items, geaendert }) => {
             if (geaendert === 0) return;
             const neuePreise = new Map(items.map((i) => [i.id, i]));

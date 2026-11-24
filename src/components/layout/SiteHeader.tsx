@@ -9,6 +9,7 @@ import { useLanguageStore, translate } from '@/stores/languageStore';
 import { SPRACHUMSCHALTER_AKTIV } from '@/config/sprache';
 import { useCurrencyStore, type Currency } from '@/stores/currencyStore';
 import { useUiStore } from '@/stores/uiStore';
+import { ladeWarenkorbSchublade } from './CartDrawerHost';
 import type { Language } from '@/lib/i18n/translations';
 
 interface SiteHeaderProps {
@@ -33,6 +34,10 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
   // die globale Warenkorb-Schublade.
   const oeffneWarenkorb = useUiStore((s) => s.oeffneWarenkorb);
   const warenkorbOeffnen = onCartClick ?? oeffneWarenkorb;
+  // Die globale Schublade wird erst bei Bedarf geladen (Ladezeit, siehe
+  // CartDrawerHost): Darüberfahren/Fokus/Antippen stößt das Laden schon vor
+  // dem Klick an. Im Konfigurator (eigene Schublade) entfällt das.
+  const warenkorbVorladen = onCartClick ? undefined : () => void ladeWarenkorbSchublade();
 
   const navLinks: { href: string; label: string }[] = [
     { href: '/konfigurator', label: t('nav_configurator') },
@@ -143,7 +148,15 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
 
           {/* Öffnet überall dieselbe Schublade: im Konfigurator dessen eigene
               (onCartClick), sonst die globale (CartDrawerHost via UI-Store). */}
-          <button type="button" onClick={warenkorbOeffnen} aria-label={t('nav_cart')} className={WARENKORB_KLASSE}>
+          <button
+            type="button"
+            onClick={warenkorbOeffnen}
+            onPointerEnter={warenkorbVorladen}
+            onFocus={warenkorbVorladen}
+            onTouchStart={warenkorbVorladen}
+            aria-label={t('nav_cart')}
+            className={WARENKORB_KLASSE}
+          >
             <Warenkorbinhalt count={count} label={t('nav_cart')} />
           </button>
         </div>

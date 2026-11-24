@@ -87,36 +87,36 @@ export interface AnlassSeite {
 
 /** Wortgleich: FAQ „Ab welcher Menge …“ / Kategorie- und DTF-Seiten. */
 export const A_EINZELSTUECK =
-  'Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
+  'Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
 /** Wortgleich wie auf den DTF-Seiten. */
 const A_DATEIEN =
   'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.';
 /** Wortgleich wie auf den DTF-Seiten. */
 export const A_DAUER =
-  'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.';
+  'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.';
 /** Wortgleich: FAQ „Wie hoch sind die Versandkosten?“ (Beträge als Platzhalter, damit sie nie veralten). */
 const A_VERSAND =
   'Wir liefern aktuell ausschließlich innerhalb Deutschlands. Die Versandkosten betragen {versandkosten} – ab einem Bestellwert von {frei} liefern wir versandkostenfrei.';
 /** Wortgleich: FAQ „Welche Zahlungsmöglichkeiten gibt es?“, ohne den Stickerei-Satz. */
 const A_ZAHLUNG =
-  'Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.';
+  'Du kannst zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; du erhältst die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.';
 /** Wortnah aus den AGB (§ 4 Abs. 2 und 3): Endpreise, Kleinunternehmer, Versandkosten kommen hinzu. */
 const A_STEUER =
   'Nein. Alle angegebenen Preise sind Endpreise. Wir sind Kleinunternehmer im Sinne von § 19 UStG und weisen daher keine Umsatzsteuer aus. Versandkosten kommen zum Warenwert hinzu; ab {frei} Bestellwert liefern wir versandkostenfrei.';
 /** Aus A_EINZELSTUECK: Antwort auf „Können wir die Größen mischen?“. */
 const A_GROESSEN =
-  'Ja. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
+  'Ja. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
 /** Wie A_EINZELSTUECK, als Antwort auf eine Frage, die nicht mit „Ja/Nein“ gestellt ist. */
 const A_MENGE_STAFFEL =
-  'Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
+  'Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
 /** Aus der FAQ („Sehe ich vor der Produktion eine Freigabe?“), ohne den Stickerei-Halbsatz. */
-const A_FREIGABE = 'Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.';
+const A_FREIGABE = 'Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.';
 
 /** Zwei freigegebene Bausteine der Startseite: Positionen und Maße. */
 const ABSATZ_POSITIONEN =
-  'Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.';
+  'Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.';
 const ABSATZ_MEHRERE_PRODUKTE =
-  'Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.';
+  'Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.';
 
 // ── Die Seiten ──────────────────────────────────────────────────────────
 
@@ -131,7 +131,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Hoodies, T-Shirts und Polos mit Vereinslogo per DTF-Transferdruck bedrucken – ab 1 Stück, Größen frei mischbar, Preis live im Konfigurator.',
     einleitung: [
-      'Hoodies fürs Trainerteam, T-Shirts für die Mannschaft, Polos für den Vorstand: Es gibt {anzahl} Modelle ({arten}). Laden Sie Ihr Vereinslogo hoch und sehen Sie direkt im Konfigurator, wie es auf dem Textil sitzt – mit Preis in Echtzeit.',
+      'Hoodies fürs Trainerteam, T-Shirts für die Mannschaft, Polos für den Vorstand: Es gibt {anzahl} Modelle ({arten}). Lade dein Vereinslogo hoch und sieh direkt im Konfigurator, wie es auf dem Textil sitzt – mit Preis in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -145,13 +145,13 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ueberschrift: 'Warum sich DTF-Transferdruck für Vereine eignet',
         punkte: [
           'Vollfarbig: Vereinsfarben, Wappen und Farbverläufe lassen sich in einem Druck umsetzen.',
-          'Keine Mindestmenge: Sie können ab einem einzelnen Stück bestellen.',
+          'Keine Mindestmenge: Du kannst ab einem einzelnen Stück bestellen.',
           'Größen frei mischen: Ein Motiv, beliebig viele Größen – zum Beispiel 2× M, 6× L und 2× XL in einem Auftrag.',
           'Staffelpreise: Mit größerer Menge sinkt der Stückpreis, die Staffel beginnt bei 5 Stück.',
         ],
       },
       {
-        ueberschrift: 'Brust, Rücken, Ärmel: So platzieren Sie das Vereinslogo',
+        ueberschrift: 'Brust, Rücken, Ärmel: So platzierst du das Vereinslogo',
         absaetze: [
           ABSATZ_POSITIONEN,
           'Ein klassisches Layout: das Wappen klein auf der Brust, der Vereinsname groß auf dem Rücken.',
@@ -189,7 +189,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       { q: 'Ab wie vielen Teilen lohnt sich eine Vereinsbestellung?', a: A_MENGE_STAFFEL },
       {
         q: 'Welche Dateien brauchen wir für das Vereinslogo?',
-        a: `${A_DATEIEN} Vor der Produktion prüfen wir Ihre Datei kostenlos.`,
+        a: `${A_DATEIEN} Vor der Produktion prüfen wir deine Datei kostenlos.`,
       },
       { q: 'Wie lange dauert es, bis die Bestellung ankommt?', a: A_DAUER },
       { q: 'Können Vereine auf Rechnung bezahlen?', a: `Ja. ${A_ZAHLUNG}` },
@@ -215,7 +215,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Polos, Hoodies und Jacken mit Firmenlogo per DTF-Transferdruck bedrucken – ab 1 Stück, Kauf auf Rechnung, Preis live im Konfigurator.',
     einleitung: [
-      'Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt {anzahl} Modelle ({arten}). Laden Sie Ihr Firmenlogo hoch, platzieren Sie es auf Brust, Rücken oder Ärmel und sehen Sie den Preis in Echtzeit.',
+      'Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt {anzahl} Modelle ({arten}). Lade dein Firmenlogo hoch, platziere es auf Brust, Rücken oder Ärmel und sieh den Preis in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -229,9 +229,9 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ueberschrift: 'Was für Unternehmen wichtig ist',
         punkte: [
           'Auch einzelne Teile: Es gibt keine Mindestbestellmenge – zum Beispiel für neue Mitarbeitende oder einen ersten Probedruck.',
-          'Kauf auf Rechnung: Neben Kreditkarte und PayPal können Sie auf Rechnung bezahlen, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.',
+          'Kauf auf Rechnung: Neben Kreditkarte und PayPal kannst du auf Rechnung bezahlen, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.',
           'Endpreise ohne Steuerausweis: Wir sind Kleinunternehmer im Sinne von § 19 UStG und weisen keine Umsatzsteuer aus.',
-          'Dateiprüfung: Vor der Produktion prüfen wir Ihr Logo kostenlos.',
+          'Dateiprüfung: Vor der Produktion prüfen wir dein Logo kostenlos.',
         ],
       },
       {
@@ -275,7 +275,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       { q: 'Wird die Umsatzsteuer ausgewiesen?', a: A_STEUER },
       {
         q: 'Welche Dateien brauchen wir für das Firmenlogo?',
-        a: `${A_DATEIEN} Vor der Produktion prüfen wir Ihre Datei kostenlos.`,
+        a: `${A_DATEIEN} Vor der Produktion prüfen wir deine Datei kostenlos.`,
       },
       { q: 'Wie lange dauert es, bis die Bestellung ankommt?', a: A_DAUER },
     ],
@@ -299,7 +299,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Abi-Pullover und Abschluss-Hoodies mit Jahrgang, Namen oder Motto per DTF-Transferdruck bedrucken – ab 1 Stück, Größen frei mischbar.',
     einleitung: [
-      'Ein Hoodie für den ganzen Jahrgang: Wählen Sie unter {anzahl} Modellen ({arten}), setzen Sie Jahrgang, Motto oder Namen als Text oder laden Sie ein eigenes Motiv hoch. Der Konfigurator zeigt Vorder- und Rückseite mit Preis in Echtzeit.',
+      'Ein Hoodie für den ganzen Jahrgang: Wähle unter {anzahl} Modellen ({arten}), setze Jahrgang, Motto oder Namen als Text oder lade ein eigenes Motiv hoch. Der Konfigurator zeigt Vorder- und Rückseite mit Preis in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -325,7 +325,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Rechtzeitig planen',
         absaetze: [
-          'Die reguläre Produktionszeit beträgt {produktionszeit}, der anschließende Versand erfolgt innerhalb von {versand}. Eine Sammelbestellung gelingt am besten, wenn Größen und Mengen vor der Bestellung feststehen – und vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.',
+          'Die reguläre Produktionszeit beträgt {produktionszeit}, der anschließende Versand erfolgt innerhalb von {versand}. Eine Sammelbestellung gelingt am besten, wenn Größen und Mengen vor der Bestellung feststehen – und vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.',
         ],
       },
     ],
@@ -349,13 +349,13 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     fragen: [
       {
         q: 'Können wir erst einen Hoodie als Muster bestellen?',
-        a: 'Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen.',
+        a: 'Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen.',
       },
       { q: 'Können wir die Größen mischen?', a: A_GROESSEN },
       { q: 'Wie früh sollten wir bestellen?', a: A_DAUER },
       {
         q: 'Welche Dateien kann ich für das Motiv hochladen?',
-        a: `${A_DATEIEN} Reicht ein Schriftzug, können Sie ihn auch direkt im Konfigurator als Text setzen.`,
+        a: `${A_DATEIEN} Reicht ein Schriftzug, kannst du ihn auch direkt im Konfigurator als Text setzen.`,
       },
       { q: 'Wie hoch sind die Versandkosten?', a: A_VERSAND },
     ],
@@ -374,11 +374,11 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     kurzname: 'T-Shirt mit Foto',
     titel: 'T-Shirt mit eigenem Foto bedrucken – ab 1 Stück',
     h1: 'T-Shirt mit eigenem Foto bedrucken lassen',
-    eyebrow: 'Für Ihr Lieblingsbild',
+    eyebrow: 'Für dein Lieblingsbild',
     beschreibung:
       'Eigenes Foto auf T-Shirt, Hoodie oder Longsleeve drucken lassen – vollfarbig per DTF-Transferdruck, ab 1 Stück, Preis live im Konfigurator.',
     einleitung: [
-      'Familienfoto, Haustier oder Urlaubsmotiv: Laden Sie Ihr Foto hoch, platzieren Sie es auf Vorder- oder Rückseite und sehen Sie das Ergebnis samt Preis direkt im Konfigurator. Es gibt {anzahl} Modelle ({arten}).',
+      'Familienfoto, Haustier oder Urlaubsmotiv: Lade dein Foto hoch, platziere es auf Vorder- oder Rückseite und sieh das Ergebnis samt Preis direkt im Konfigurator. Es gibt {anzahl} Modelle ({arten}).',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -388,18 +388,18 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     ],
     abschnitte: [
       {
-        ueberschrift: 'So wird aus Ihrem Foto ein scharfer Druck',
+        ueberschrift: 'So wird aus deinem Foto ein scharfer Druck',
         punkte: [
           'Hochauflösende Datei: JPG und PNG werden unterstützt. Je mehr Bildpunkte das Foto hat, desto schärfer wird der Druck.',
-          'Auflösungs-Ampel: Der Konfigurator bewertet Ihr Bild bei der gewählten Druckgröße – grün ab {dpiOk} dpi, gelb ab {dpiMin} dpi, darunter rot mit dem Hinweis, das Bild kleiner zu platzieren oder eine höher aufgelöste Datei zu verwenden.',
-          'Weißer Hintergrund: Bei Bildern mit weißem Hintergrund können Sie diesen beim Hochladen automatisch entfernen lassen (einfache Freistellung).',
-          'Freigabe: Vor der Produktion prüfen wir Ihre Datei kostenlos, und Sie erhalten eine finale Vorschau zur Freigabe.',
+          'Auflösungs-Ampel: Der Konfigurator bewertet dein Bild bei der gewählten Druckgröße – grün ab {dpiOk} dpi, gelb ab {dpiMin} dpi, darunter rot mit dem Hinweis, das Bild kleiner zu platzieren oder eine höher aufgelöste Datei zu verwenden.',
+          'Weißer Hintergrund: Bei Bildern mit weißem Hintergrund kannst du diesen beim Hochladen automatisch entfernen lassen (einfache Freistellung).',
+          'Freigabe: Vor der Produktion prüfen wir deine Datei kostenlos, und du erhältst eine finale Vorschau zur Freigabe.',
         ],
       },
       {
         ueberschrift: 'Wie groß darf das Foto sein?',
         absaetze: [
-          'Der Konfigurator zeigt Ihr Motiv in Zentimetern; je Modell und Größe gilt eine maximale Druckfläche. Auf Vorder- und Rückseite lässt sich je ein Foto platzieren, bei vielen Modellen zusätzlich auf den Ärmeln.',
+          'Der Konfigurator zeigt dein Motiv in Zentimetern; je Modell und Größe gilt eine maximale Druckfläche. Auf Vorder- und Rückseite lässt sich je ein Foto platzieren, bei vielen Modellen zusätzlich auf den Ärmeln.',
         ],
       },
     ],
@@ -431,7 +431,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Was passiert bei einem Foto mit zu niedriger Auflösung?',
-        a: 'Der Konfigurator zeigt dann eine Warnung: Die Auflösung ist zu niedrig für einen scharfen Druck (unter {dpiMin} dpi bei der gewählten Größe). Platzieren Sie das Bild kleiner, verwenden Sie ein SVG, laden Sie eine höher aufgelöste Datei hoch oder nutzen Sie den Button „Hochskalieren“, der das Bild auf {dpiZiel} dpi hochrechnet, wenn das möglich ist. Zusätzliche Details entstehen dabei nicht.',
+        a: 'Der Konfigurator zeigt dann eine Warnung: Die Auflösung ist zu niedrig für einen scharfen Druck (unter {dpiMin} dpi bei der gewählten Größe). Platziere das Bild kleiner, verwende ein SVG, lade eine höher aufgelöste Datei hoch oder nutze den Button „Hochskalieren“, der das Bild auf {dpiZiel} dpi hochrechnet, wenn das möglich ist. Zusätzliche Details entstehen dabei nicht.',
       },
       {
         q: 'Kann ich das Foto auf Vorder- und Rückseite drucken?',
@@ -459,7 +459,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       'Preisbeispiele für DTF-Transferdruck auf T-Shirt, Hoodie und Polo: ein Einzelstück oder 10 bis 50 Stück – berechnet wie im Konfigurator, ab 1 Stück.',
     einleitung: [
       'Der Preis setzt sich aus dem Textil und der Veredelung zusammen. Das Textil beginnt bei {abPreis_tshirt} (T-Shirt), {abPreis_hoodie} (Hoodie) bzw. {abPreis_polo} (Polo) pro Stück. Hinzu kommt der Druck je bedruckter Fläche, und mit größerer Menge sinkt der Stückpreis.',
-      'Die Beispiele auf dieser Seite werden mit derselben Preisberechnung ermittelt wie im Konfigurator. Ihren genauen Preis sehen Sie dort in Echtzeit, bevor Sie etwas in den Warenkorb legen.',
+      'Die Beispiele auf dieser Seite werden mit derselben Preisberechnung ermittelt wie im Konfigurator. Deinen genauen Preis siehst du dort in Echtzeit, bevor du etwas in den Warenkorb legst.',
     ],
     kacheln: [],
     abschnitte: [
@@ -476,7 +476,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Bei größeren Mengen lohnt ein Blick auf die Staffeln',
         absaetze: [
-          'Die Staffelgrenzen gelten für die gesamte Bestellung. Liegt Ihre Menge knapp darunter, kann eine etwas größere Menge insgesamt günstiger sein – der Konfigurator weist Sie darauf hin, wenn das der Fall ist.',
+          'Die Staffelgrenzen gelten für die gesamte Bestellung. Liegt deine Menge knapp darunter, kann eine etwas größere Menge insgesamt günstiger sein – der Konfigurator weist dich darauf hin, wenn das der Fall ist.',
         ],
       },
     ],
@@ -543,7 +543,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       { q: 'Wird auf die angezeigten Preise noch Umsatzsteuer aufgeschlagen?', a: A_STEUER },
       {
         q: 'Kann ich den Preis vorab sehen, ohne zu bestellen?',
-        a: 'Ja. Im Konfigurator sehen Sie Stück- und Gesamtpreis in Echtzeit, bevor Sie etwas in den Warenkorb legen. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.',
+        a: 'Ja. Im Konfigurator siehst du Stück- und Gesamtpreis in Echtzeit, bevor du etwas in den Warenkorb legst. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.',
       },
     ],
     verwandt: [
@@ -564,19 +564,19 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     h1: 'Druckauflösung berechnen',
     eyebrow: 'Kostenloser Rechner',
     beschreibung:
-      'Reicht die Auflösung Ihres Bildes? Bildbreite und Druckbreite eingeben, dpi berechnen und mit der Ampel des Konfigurators bewerten.',
+      'Reicht die Auflösung deines Bildes? Bildbreite und Druckbreite eingeben, dpi berechnen und mit der Ampel des Konfigurators bewerten.',
     einleitung: [
-      'Reicht die Auflösung Ihres Bildes für die gewünschte Druckgröße? Geben Sie die Breite Ihres Bildes in Pixeln und die Breite des Drucks in Zentimetern ein – der Rechner zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator.',
+      'Reicht die Auflösung deines Bildes für die gewünschte Druckgröße? Gib die Breite deines Bildes in Pixeln und die Breite des Drucks in Zentimetern ein – der Rechner zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator.',
     ],
     kacheln: [],
     abschnitte: [
       { ueberschrift: 'Auflösung berechnen', tabelle: 'rechner' },
       {
-        ueberschrift: 'So lesen Sie das Ergebnis',
+        ueberschrift: 'So liest du das Ergebnis',
         punkte: [
           'Grün ab {dpiOk} dpi: optimale Druckqualität bei dieser Größe.',
           'Gelb von {dpiMin} bis {dpiOk} dpi: akzeptabel, für sehr große Drucke aber eher knapp.',
-          'Rot unter {dpiMin} dpi: zu unscharf. Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',
+          'Rot unter {dpiMin} dpi: zu unscharf. Platziere das Bild kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch.',
         ],
         absaetze: ['Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG); SVG und PDF bekommen keine Auflösungswarnung.'],
       },
@@ -595,7 +595,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Wie berechne ich die Auflösung meines Bildes?',
-        a: 'dpi = Bildbreite in Pixeln ÷ (Druckbreite in cm ÷ 2,54). Der Rechner oben übernimmt das für Sie.',
+        a: 'dpi = Bildbreite in Pixeln ÷ (Druckbreite in cm ÷ 2,54). Der Rechner oben übernimmt das für dich.',
       },
       {
         q: 'Ab wie vielen dpi ist ein Motiv scharf genug?',
@@ -607,7 +607,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Was kann ich tun, wenn die Auflösung zu niedrig ist?',
-        a: 'Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch. Oder skalieren Sie das Bild hoch: Das Werkzeug zum Prüfen der Druckdatei und der Button „Hochskalieren“ im Konfigurator rechnen auf {dpiZiel} dpi, wenn das möglich ist.',
+        a: 'Platziere das Bild kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch. Oder skaliere das Bild hoch: Das Werkzeug zum Prüfen der Druckdatei und der Button „Hochskalieren“ im Konfigurator rechnen auf {dpiZiel} dpi, wenn das möglich ist.',
       },
     ],
     ohneAblauf: true,
@@ -619,12 +619,12 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     slug: 'geschaeftskunden',
     kurzname: 'Geschäftskunden',
     titel: 'Firmenkleidung bedrucken lassen – Angebot, ab 1 Stück',
-    h1: 'Firmenkleidung für Ihr Unternehmen – Geschäftsanfrage in wenigen Minuten',
+    h1: 'Firmenkleidung für dein Unternehmen – Geschäftsanfrage in wenigen Minuten',
     eyebrow: 'Für Geschäftskunden',
     beschreibung:
       'Firmenkleidung mit Logo per DTF-Transferdruck: ab 1 Stück, Staffelpreise, Vorschau zur Freigabe, Kauf auf Rechnung. Jetzt Geschäftsanfrage stellen.',
     einleitung: [
-      'Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit Ihrem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Fordern Sie unten ein unverbindliches, individuelles Angebot an – wir melden uns persönlich.',
+      'Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit deinem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Fordere unten ein unverbindliches, individuelles Angebot an – wir melden uns persönlich.',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -640,7 +640,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
           'Ab 1 Stück, keine Mindestbestellmenge: für die Erstausstattung ebenso wie für einzelne neue Mitarbeitende.',
           'Staffelpreise ab 5 Stück, Größen frei mischbar – ein Motiv, beliebig viele Größen in einem Auftrag.',
           'Vollfarbiger DTF-Transferdruck: Logos, Wappen und Farbverläufe in einem Druck.',
-          'Vor der Produktion erhalten Sie eine finale Vorschau zur Freigabe.',
+          'Vor der Produktion erhältst du eine finale Vorschau zur Freigabe.',
           'Kauf auf Rechnung ist möglich.',
           'Reguläre Produktionszeit {produktionszeit}, Versand innerhalb von {versand}.',
           'Persönliche Betreuung: Antwort meist innerhalb eines Werktags.',
@@ -649,12 +649,12 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Unverbindliches Angebot anfordern',
         absaetze: [
-          'Wenige Angaben genügen: Branche, gewünschte Kleidung, ungefähre Stückzahl und Ihre Kontaktdaten. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto Ihres bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot, das für Sie unverbindlich ist.',
+          'Wenige Angaben genügen: Branche, gewünschte Kleidung, ungefähre Stückzahl und deine Kontaktdaten. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto deines bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot, das für dich unverbindlich ist.',
         ],
         tabelle: 'geschaeftsanfrage',
       },
       {
-        ueberschrift: 'Passende Kleidung für Ihre Branche',
+        ueberschrift: 'Passende Kleidung für deine Branche',
         punkte: [
           'Praxen: Poloshirts und T-Shirts für das Team, dezent mit Praxislogo.',
           'Handwerk: schwere T-Shirts, Hoodies, Poloshirts und Jacken als Arbeitskleidung.',
@@ -690,7 +690,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     ],
     fragen: [
       { q: 'Gibt es eine Mindestbestellmenge?', a: A_MENGE_STAFFEL },
-      { q: 'Welche Dateien brauche ich für mein Logo?', a: `${A_DATEIEN} Vor der Produktion prüfen wir Ihre Datei kostenlos.` },
+      { q: 'Welche Dateien brauche ich für mein Logo?', a: `${A_DATEIEN} Vor der Produktion prüfen wir deine Datei kostenlos.` },
       { q: 'Kann ich auf Rechnung bezahlen?', a: `Ja. ${A_ZAHLUNG}` },
       { q: 'Wie lange dauert es bis zur Lieferung?', a: A_DAUER },
       { q: 'Wie hoch sind die Versandkosten?', a: A_VERSAND },
@@ -713,19 +713,19 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     h1: 'Größentabelle für T-Shirts, Hoodies und Polos',
     eyebrow: 'Maße in Zentimetern',
     beschreibung:
-      'Brustbreite und Länge je Größe in cm: Herstellermaße ausgewählter T-Shirts, Hoodies und Polos – plus Tipps, wie Sie richtig nachmessen.',
+      'Brustbreite und Länge je Größe in cm: Herstellermaße ausgewählter T-Shirts, Hoodies und Polos – plus Tipps, wie du richtig nachmisst.',
     einleitung: [
       'Welche Größe passt? Die Maße unterscheiden sich von Modell zu Modell. Diese Seite zeigt die Herstellermaße von je drei Modellen aus unserem Sortiment; die vollständige Größentabelle steht auf jeder Produktseite.',
     ],
     kacheln: [],
     abschnitte: [
       {
-        ueberschrift: 'So messen Sie richtig',
+        ueberschrift: 'So misst du richtig',
         punkte: [
-          'Legen Sie ein T-Shirt, einen Hoodie oder ein Polo, das gut passt, flach hin.',
+          'Lege ein T-Shirt, einen Hoodie oder ein Polo, das gut passt, flach hin.',
           'Brustbreite: von Achselnaht zu Achselnaht gemessen. Der Brustumfang ist doppelt so groß.',
           'Länge: vom höchsten Punkt der Schulter bis zum Saum.',
-          'Vergleichen Sie Ihre Werte mit der Tabelle des Modells, das Sie bestellen möchten.',
+          'Vergleiche deine Werte mit der Tabelle des Modells, das du bestellen möchtest.',
         ],
       },
       { ueberschrift: 'T-Shirts', tabelle: 'groessen:tshirt' },
@@ -746,12 +746,12 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Fallen die Modelle groß oder klein aus?',
-        a: 'Das hängt vom Modell ab. Die Passform steht auf der Produktseite unter „Technische Daten“, die Maße je Größe in der Größentabelle. Messen Sie am besten ein Teil nach, das Ihnen gut passt, und vergleichen Sie.',
+        a: 'Das hängt vom Modell ab. Die Passform steht auf der Produktseite unter „Technische Daten“, die Maße je Größe in der Größentabelle. Miss am besten ein Teil nach, das dir gut passt, und vergleiche.',
       },
       { q: 'Kann ich Größen in einer Bestellung mischen?', a: A_GROESSEN },
       {
         q: 'Wie lege ich die Größen für ein Team fest?',
-        a: 'Lassen Sie jede Person ein passendes Teil nachmessen und die Maße mit der Größentabelle des Modells vergleichen. Im Konfigurator tragen Sie die Stückzahl je Größe ein – Größen dürfen Sie frei mischen.',
+        a: 'Lass jede Person ein passendes Teil nachmessen und die Maße mit der Größentabelle des Modells vergleichen. Im Konfigurator trägst du die Stückzahl je Größe ein – Größen darfst du frei mischen.',
       },
       {
         q: 'Sind die Maße exakt?',
@@ -779,7 +779,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Größtmögliche Druckfläche je Größe in cm: Vorder- und Rückseite von T-Shirts, Hoodies und Polos beim DTF-Druck, berechnet aus den Herstellermaßen.',
     einleitung: [
-      'Wie groß ein Motiv werden darf, hängt vom Modell und von der Größe ab: Ein Hoodie in S bietet weniger Platz als ein Hoodie in XXL. Diese Seite zeigt für je drei Modelle aus unserem Sortiment die größtmögliche Druckfläche in Zentimetern, getrennt nach Vorder- und Rückseite. Die Flächen aller weiteren Modelle und Größen sehen Sie im Konfigurator.',
+      'Wie groß ein Motiv werden darf, hängt vom Modell und von der Größe ab: Ein Hoodie in S bietet weniger Platz als ein Hoodie in XXL. Diese Seite zeigt für je drei Modelle aus unserem Sortiment die größtmögliche Druckfläche in Zentimetern, getrennt nach Vorder- und Rückseite. Die Flächen aller weiteren Modelle und Größen siehst du im Konfigurator.',
     ],
     kacheln: [],
     abschnitte: [
@@ -811,7 +811,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Passt die Datei zur Druckgröße?',
         absaetze: [
-          'Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt. Wie viele, rechnet der Auflösungsrechner vor; im Konfigurator zeigt eine Ampel die Qualität Ihrer Datei bei der gewählten Größe.',
+          'Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt. Wie viele, rechnet der Auflösungsrechner vor; im Konfigurator zeigt eine Ampel die Qualität deiner Datei bei der gewählten Größe.',
         ],
       },
     ],
@@ -819,7 +819,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     fragen: [
       {
         q: 'Wie groß darf ein Motiv auf einem T-Shirt höchstens sein?',
-        a: 'Das hängt vom Modell und von der Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei T-Shirts in den Größen S bis XXL; für jedes Modell sehen Sie die Fläche samt Maßen in Zentimetern im Konfigurator.',
+        a: 'Das hängt vom Modell und von der Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei T-Shirts in den Größen S bis XXL; für jedes Modell siehst du die Fläche samt Maßen in Zentimetern im Konfigurator.',
       },
       {
         q: 'Ist die Druckfläche in allen Größen gleich groß?',
@@ -831,11 +831,11 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Kann ich auch auf die Ärmel drucken?',
-        a: 'Bei vielen Modellen gibt es zusätzlich Ärmelflächen. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.',
+        a: 'Bei vielen Modellen gibt es zusätzlich Ärmelflächen. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.',
       },
       {
         q: 'Welche Dateien kann ich für ein großes Motiv hochladen?',
-        a: `${A_DATEIEN} Prüfen Sie mit dem Auflösungsrechner, wie viele Pixel Ihr Bild für die gewünschte Breite braucht.`,
+        a: `${A_DATEIEN} Prüfe mit dem Auflösungsrechner, wie viele Pixel dein Bild für die gewünschte Breite braucht.`,
       },
     ],
     verwandt: [
@@ -918,9 +918,9 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     h1: 'Logo für den Textildruck vorbereiten',
     eyebrow: 'Ratgeber',
     beschreibung:
-      'Welche Dateiformate eignen sich, wie hoch muss die Auflösung sein, was tun bei weißem Hintergrund? So bereiten Sie Ihr Logo für den DTF-Druck vor.',
+      'Welche Dateiformate eignen sich, wie hoch muss die Auflösung sein, was tun bei weißem Hintergrund? So bereitest du dein Logo für den DTF-Druck vor.',
     einleitung: [
-      'Ein scharfer Druck beginnt mit der richtigen Datei. Hier steht, welche Formate Sie hochladen können, wie viele Bildpunkte Ihr Motiv braucht und was der Konfigurator Ihnen zur Qualität anzeigt.',
+      'Ein scharfer Druck beginnt mit der richtigen Datei. Hier steht, welche Formate du hochladen kannst, wie viele Bildpunkte dein Motiv braucht und was der Konfigurator dir zur Qualität anzeigt.',
     ],
     kacheln: [],
     abschnitte: [
@@ -935,24 +935,24 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Wie hoch muss die Auflösung sein?',
         absaetze: [
-          'Bei Rasterbildern (PNG, JPG) zählt, wie viele Bildpunkte auf einen Zoll der gedruckten Breite fallen. Der Konfigurator bewertet das für Ihre gewählte Druckgröße: ab {dpiOk} dpi gilt die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb), darunter als zu niedrig (rot). Vektordateien (SVG, PDF) bekommen nie eine Warnung.',
-          'Die Tabelle zeigt, wie breit Ihr Bild mindestens sein sollte, wenn das Motiv in der jeweiligen Breite gedruckt wird.',
+          'Bei Rasterbildern (PNG, JPG) zählt, wie viele Bildpunkte auf einen Zoll der gedruckten Breite fallen. Der Konfigurator bewertet das für deine gewählte Druckgröße: ab {dpiOk} dpi gilt die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb), darunter als zu niedrig (rot). Vektordateien (SVG, PDF) bekommen nie eine Warnung.',
+          'Die Tabelle zeigt, wie breit dein Bild mindestens sein sollte, wenn das Motiv in der jeweiligen Breite gedruckt wird.',
         ],
         tabelle: 'aufloesung',
       },
       {
         ueberschrift: 'Weißer Hintergrund und Freistellung',
         absaetze: [
-          'Hat Ihr Bild einen weißen Hintergrund, der nicht mitgedruckt werden soll, können Sie ihn beim Hochladen automatisch entfernen lassen (einfache Freistellung). Am saubersten gelingt es mit einer Datei, die bereits transparent freigestellt ist.',
+          'Hat dein Bild einen weißen Hintergrund, der nicht mitgedruckt werden soll, kannst du ihn beim Hochladen automatisch entfernen lassen (einfache Freistellung). Am saubersten gelingt es mit einer Datei, die bereits transparent freigestellt ist.',
         ],
       },
       {
         ueberschrift: 'Ein Schriftzug ohne Datei',
-        absaetze: ['Reicht ein Schriftzug, setzen Sie ihn direkt im Konfigurator als Text – dafür brauchen Sie keine Datei.'],
+        absaetze: ['Reicht ein Schriftzug, setze ihn direkt im Konfigurator als Text – dafür brauchst du keine Datei.'],
       },
       {
-        ueberschrift: 'Wir prüfen Ihre Datei',
-        absaetze: [`Vor der Produktion prüfen wir Ihre Datei kostenlos. ${A_FREIGABE}`],
+        ueberschrift: 'Wir prüfen deine Datei',
+        absaetze: [`Vor der Produktion prüfen wir deine Datei kostenlos. ${A_FREIGABE}`],
       },
     ],
     beispiele: [],
@@ -964,15 +964,15 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Mein Bild ist zu klein – was kann ich tun?',
-        a: 'Der Konfigurator warnt, wenn die Auflösung bei der gewählten Größe zu niedrig ist (unter {dpiMin} dpi). Platzieren Sie das Bild dann kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch. Alternativ können Sie das Bild hochskalieren: Der Button „Hochskalieren“ rechnet es auf {dpiZiel} dpi hoch, wenn das möglich ist – Kanten werden dabei glatter, zusätzliche Details entstehen nicht.',
+        a: 'Der Konfigurator warnt, wenn die Auflösung bei der gewählten Größe zu niedrig ist (unter {dpiMin} dpi). Platziere das Bild dann kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch. Alternativ kannst du das Bild hochskalieren: Der Button „Hochskalieren“ rechnet es auf {dpiZiel} dpi hoch, wenn das möglich ist – Kanten werden dabei glatter, zusätzliche Details entstehen nicht.',
       },
       {
         q: 'Kann ich auch Fotos drucken lassen?',
-        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Laden Sie das Foto als JPG oder PNG hoch; die Auflösungs-Ampel zeigt Ihnen, ob es für die gewählte Größe scharf genug ist.',
+        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Lade das Foto als JPG oder PNG hoch; die Auflösungs-Ampel zeigt dir, ob es für die gewählte Größe scharf genug ist.',
       },
       {
         q: 'Kann ich einen Schriftzug drucken lassen, ohne eine Datei zu haben?',
-        a: 'Ja. Im Konfigurator können Sie Text direkt setzen und platzieren – ohne Datei.',
+        a: 'Ja. Im Konfigurator kannst du Text direkt setzen und platzieren – ohne Datei.',
       },
     ],
     ohneAblauf: true,
@@ -995,18 +995,18 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Bild auswählen, Druckbreite eingeben, dpi prüfen und bei Bedarf auf ca. 300 dpi hochskalieren – kostenlos, direkt im Browser, ohne Upload.',
     einleitung: [
-      'Reicht die Auflösung Ihres Bildes für die gewünschte Druckgröße? Wählen Sie eine Datei aus und geben Sie die Druckbreite ein – das Werkzeug zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator. Ist sie zu niedrig, können Sie das Bild hochskalieren und als PNG speichern.',
-      'Alles geschieht in Ihrem Browser: Ihr Bild wird nicht hochgeladen und nicht gespeichert.',
+      'Reicht die Auflösung deines Bildes für die gewünschte Druckgröße? Wähle eine Datei aus und gib die Druckbreite ein – das Werkzeug zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator. Ist sie zu niedrig, kannst du das Bild hochskalieren und als PNG speichern.',
+      'Alles geschieht in deinem Browser: Dein Bild wird nicht hochgeladen und nicht gespeichert.',
     ],
     kacheln: [],
     abschnitte: [
       { ueberschrift: 'Datei prüfen', tabelle: 'dateipruefung' },
       {
-        ueberschrift: 'So lesen Sie das Ergebnis',
+        ueberschrift: 'So liest du das Ergebnis',
         punkte: [
           'Grün ab {dpiOk} dpi: optimale Druckqualität bei dieser Größe.',
           'Gelb von {dpiMin} bis {dpiOk} dpi: akzeptabel, für sehr große Drucke aber eher knapp.',
-          'Rot unter {dpiMin} dpi: zu unscharf. Platzieren Sie das Bild kleiner, skalieren Sie es hoch, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.',
+          'Rot unter {dpiMin} dpi: zu unscharf. Platziere das Bild kleiner, skaliere es hoch, verwende ein SVG oder lade eine höher aufgelöste Datei hoch.',
         ],
         absaetze: ['Das Hochskalieren rechnet auf {dpiZiel} dpi, wenn das technisch möglich ist. Wo nicht, nennt das Werkzeug vorher den Wert, der erreicht wird.'],
       },
@@ -1014,13 +1014,13 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ueberschrift: 'Was Hochskalieren kann – und was nicht',
         absaetze: [
           'Beim Hochskalieren werden aus den vorhandenen Bildpunkten mehr Bildpunkte berechnet: Kanten werden glatter und klarer, Treppenstufen und Unschärfe nehmen ab. Zusätzliche Details entstehen dabei nicht – ein sehr kleines oder verwaschenes Bild bleibt ein kleines oder verwaschenes Bild, nur mit mehr Bildpunkten.',
-          'Am deutlichsten wirkt es bei Logos, Schriftzügen und Grafiken. Wenn möglich, laden Sie eine vektorbasierte Datei (SVG, PDF) oder ein höher aufgelöstes Original hoch – sie skalieren verlustfrei.',
+          'Am deutlichsten wirkt es bei Logos, Schriftzügen und Grafiken. Wenn möglich, lade eine vektorbasierte Datei (SVG, PDF) oder ein höher aufgelöstes Original hoch – sie skalieren verlustfrei.',
         ],
       },
       {
         ueberschrift: 'Hochskalieren im Konfigurator',
         absaetze: [
-          'Dieselbe Berechnung steckt im Konfigurator: Ist die Auflösung eines hochgeladenen Bildes bei der gewählten Größe niedrig, erscheint neben dem Hinweis ein Button „Hochskalieren“. Über „Original wiederherstellen“ können Sie das ursprüngliche Bild zurückholen.',
+          'Dieselbe Berechnung steckt im Konfigurator: Ist die Auflösung eines hochgeladenen Bildes bei der gewählten Größe niedrig, erscheint neben dem Hinweis ein Button „Hochskalieren“. Über „Original wiederherstellen“ kannst du das ursprüngliche Bild zurückholen.',
         ],
       },
     ],
@@ -1032,7 +1032,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Wird mein Bild hochgeladen?',
-        a: 'Nein. Das Werkzeug rechnet vollständig in Ihrem Browser; das Bild verlässt Ihren Rechner nicht.',
+        a: 'Nein. Das Werkzeug rechnet vollständig in deinem Browser; das Bild verlässt deinen Rechner nicht.',
       },
       {
         q: 'Macht Hochskalieren ein unscharfes Foto scharf?',
@@ -1044,7 +1044,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Wie speichere ich das hochskalierte Bild?',
-        a: 'Nach dem Hochskalieren erscheint der Link „Als PNG speichern“. Die gespeicherte Datei können Sie anschließend im Konfigurator hochladen.',
+        a: 'Nach dem Hochskalieren erscheint der Link „Als PNG speichern“. Die gespeicherte Datei kannst du anschließend im Konfigurator hochladen.',
       },
     ],
     ohneAblauf: true,
@@ -1059,10 +1059,10 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     h1: 'Was ist DTF-Druck?',
     eyebrow: 'Ratgeber',
     beschreibung:
-      'DTF-Druck (Direct-to-Film) einfach erklärt: So entsteht der Transferdruck, wofür er sich eignet und worauf Sie bei der Datei achten sollten.',
+      'DTF-Druck (Direct-to-Film) einfach erklärt: So entsteht der Transferdruck, wofür er sich eignet und worauf du bei der Datei achten solltest.',
     einleitung: [
       'DTF steht für „Direct-to-Film“: Das Motiv wird zuerst auf eine Folie gedruckt und danach mit Hitze und Druck auf das Textil übertragen. So entstehen vollfarbige Drucke – auch mit Farbverläufen und Fotos.',
-      'Hier steht, wie ein DTF-Druck entsteht, wofür er sich eignet und was Sie bei der Datei beachten sollten. Bei uns bestellen Sie ihn ab einem einzelnen Stück.',
+      'Hier steht, wie ein DTF-Druck entsteht, wofür er sich eignet und was du bei der Datei beachten solltest. Bei uns bestellst du ihn ab einem einzelnen Stück.',
     ],
     kacheln: [],
     abschnitte: [
@@ -1088,13 +1088,13 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ueberschrift: 'Was bei der Datei zählt',
         absaetze: [
           'Für Logos und Schriftzüge eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Rasterbilder (PNG, JPG) brauchen genug Bildpunkte für die gewünschte Druckgröße: Ab {dpiOk} dpi gilt die Qualität im Konfigurator als optimal.',
-          'Wie hoch die Auflösung Ihres Bildes bei einer bestimmten Druckbreite ist, zeigt das Werkzeug zum Prüfen der Druckdatei. Vor der Produktion prüfen wir Ihre Datei kostenlos, und Sie erhalten eine finale Vorschau zur Freigabe.',
+          'Wie hoch die Auflösung deines Bildes bei einer bestimmten Druckbreite ist, zeigt das Werkzeug zum Prüfen der Druckdatei. Vor der Produktion prüfen wir deine Datei kostenlos, und du erhältst eine finale Vorschau zur Freigabe.',
         ],
       },
       {
         ueberschrift: 'DTF bei uns',
         absaetze: [
-          'Wir bedrucken T-Shirts, Hoodies, Polos, Jacken und Kinderbekleidung per DTF-Transferdruck. Im Konfigurator laden Sie Ihr Motiv hoch, platzieren es auf Brust, Rücken oder Ärmel und sehen den Preis in Echtzeit.',
+          'Wir bedrucken T-Shirts, Hoodies, Polos, Jacken und Kinderbekleidung per DTF-Transferdruck. Im Konfigurator lädst du dein Motiv hoch, platzierst es auf Brust, Rücken oder Ärmel und siehst den Preis in Echtzeit.',
         ],
       },
     ],
@@ -1125,10 +1125,10 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     slug: 'dtf-druck-vs-siebdruck',
     kurzname: 'DTF oder Siebdruck',
     titel: 'DTF-Druck oder Siebdruck? Unterschiede im Überblick',
-    h1: 'DTF-Druck oder Siebdruck – was passt zu Ihrem Motiv?',
+    h1: 'DTF-Druck oder Siebdruck – was passt zu deinem Motiv?',
     eyebrow: 'Verfahren im Vergleich',
     beschreibung:
-      'DTF-Druck und Siebdruck im Vergleich: Motive, Mengen, Farben und Kosten – damit Sie das passende Verfahren für Ihr Textil auswählen.',
+      'DTF-Druck und Siebdruck im Vergleich: Motive, Mengen, Farben und Kosten – damit du das passende Verfahren für dein Textil auswählst.',
     einleitung: [
       'Beide Verfahren bringen Motive auf Textil, arbeiten aber grundverschieden. Welches passt, hängt vor allem von Motiv und Stückzahl ab.',
       'Wir bieten DTF-Transferdruck an. Der Überblick erklärt die Unterschiede sachlich – auch dort, wo Siebdruck Vorteile hat.',
@@ -1175,7 +1175,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Kann ich ein Foto drucken lassen?',
-        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive. Laden Sie das Foto im Konfigurator hoch; die Auflösungs-Ampel zeigt, ob es für die gewählte Größe scharf genug ist.',
+        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive. Lade das Foto im Konfigurator hoch; die Auflösungs-Ampel zeigt, ob es für die gewählte Größe scharf genug ist.',
       },
       { q: 'Kann ich auch nur ein einzelnes Teil bedrucken lassen?', a: A_EINZELSTUECK },
       { q: 'Welche Dateien brauche ich für den Druck?', a: A_DATEIEN },
@@ -1192,7 +1192,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     h1: 'Bedruckte Textilien richtig waschen und pflegen',
     eyebrow: 'Pflege',
     beschreibung:
-      'So pflegen Sie bedruckte T-Shirts und Hoodies: von links waschen, schonende Temperatur, kein Weichspüler – allgemeine Tipps für DTF-Drucke.',
+      'So pflegst du bedruckte T-Shirts und Hoodies: von links waschen, schonende Temperatur, kein Weichspüler – allgemeine Tipps für DTF-Drucke.',
     einleitung: [
       'Mit der richtigen Pflege bleibt ein bedrucktes Textil länger schön. Die folgenden Hinweise sind allgemeine Empfehlungen für Textildruck. Verbindlich ist immer das Pflegeetikett des jeweiligen Textils.',
     ],
@@ -1201,23 +1201,23 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Waschen',
         punkte: [
-          'Wenden Sie das Teil vor dem Waschen auf links.',
-          'Waschen Sie schonend bei niedriger Temperatur – das Pflegeetikett nennt die zulässige Höchsttemperatur.',
-          'Verwenden Sie mildes Waschmittel; verzichten Sie auf Bleichmittel und Weichspüler.',
-          'Waschen Sie bedruckte Teile nicht zusammen mit Textilien, die Reißverschlüsse, Klettverschlüsse oder raue Oberflächen haben.',
+          'Wende das Teil vor dem Waschen auf links.',
+          'Wasche schonend bei niedriger Temperatur – das Pflegeetikett nennt die zulässige Höchsttemperatur.',
+          'Verwende mildes Waschmittel; verzichte auf Bleichmittel und Weichspüler.',
+          'Wasche bedruckte Teile nicht zusammen mit Textilien, die Reißverschlüsse, Klettverschlüsse oder raue Oberflächen haben.',
         ],
       },
       {
         ueberschrift: 'Trocknen und Bügeln',
         punkte: [
           'Lufttrocknen schont das Textil am meisten. Im Wäschetrockner nur bei niedriger Temperatur und nur, wenn das Pflegeetikett es erlaubt.',
-          'Bügeln Sie bei Bedarf von links und bei niedriger Temperatur – nicht direkt auf dem Druck.',
+          'Bügle bei Bedarf von links und bei niedriger Temperatur – nicht direkt auf dem Druck.',
         ],
       },
       {
-        ueberschrift: 'Pflegehinweise zu Ihrem Modell',
+        ueberschrift: 'Pflegehinweise zu deinem Modell',
         absaetze: [
-          'Jedes Modell hat auf seiner Produktseite einen Abschnitt „Pflegehinweise“ mit den Angaben des Herstellers. Bei Fragen zu Ihrer Bestellung erreichen Sie uns über das Kontaktformular.',
+          'Jedes Modell hat auf seiner Produktseite einen Abschnitt „Pflegehinweise“ mit den Angaben des Herstellers. Bei Fragen zu deiner Bestellung erreichst du uns über das Kontaktformular.',
         ],
       },
     ],
@@ -1233,7 +1233,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Kann ich über den Druck bügeln?',
-        a: 'Besser nicht direkt: Bügeln Sie von links und bei niedriger Temperatur, oder legen Sie ein Tuch zwischen Bügeleisen und Druck.',
+        a: 'Besser nicht direkt: Bügle von links und bei niedriger Temperatur, oder lege ein Tuch zwischen Bügeleisen und Druck.',
       },
       {
         q: 'Welche Waschtemperatur ist für bedruckte Textilien geeignet?',
@@ -1258,7 +1258,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Hoodies, T-Shirts und Longsleeves als persönliches Weihnachtsgeschenk bedrucken – ab 1 Stück, Preis live im Konfigurator.',
     einleitung: [
-      'Ein Hoodie mit Lieblingsmotiv, T-Shirts für die ganze Familie, ein Foto auf dem Longsleeve: Es gibt {anzahl} Modelle ({arten}). Sie laden Ihr Motiv hoch, sehen im Konfigurator, wie es auf dem Textil sitzt, und der Preis erscheint in Echtzeit.',
+      'Ein Hoodie mit Lieblingsmotiv, T-Shirts für die ganze Familie, ein Foto auf dem Longsleeve: Es gibt {anzahl} Modelle ({arten}). Du lädst dein Motiv hoch, siehst im Konfigurator, wie es auf dem Textil sitzt, und der Preis erscheint in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -1279,7 +1279,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Rechtzeitig planen',
         absaetze: [
-          'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen, und dauert regulär {produktionszeit}; der Versand erfolgt anschließend innerhalb von {versand}. Dazu kommt die Laufzeit des Pakets. Je früher Sie bestellen, desto mehr Spielraum haben Sie.',
+          'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen, und dauert regulär {produktionszeit}; der Versand erfolgt anschließend innerhalb von {versand}. Dazu kommt die Laufzeit des Pakets. Je früher du bestellst, desto mehr Spielraum hast du.',
           A_FREIGABE,
         ],
       },
@@ -1319,7 +1319,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       { q: 'Wie lange dauert es, bis das Geschenk ankommt?', a: A_DAUER },
       {
         q: 'Sehe ich das Ergebnis vor der Produktion?',
-        a: `${A_FREIGABE} Im Konfigurator sehen Sie außerdem schon vor dem Bestellen, wie das Motiv auf dem Textil sitzt.`,
+        a: `${A_FREIGABE} Im Konfigurator siehst du außerdem schon vor dem Bestellen, wie das Motiv auf dem Textil sitzt.`,
       },
       {
         q: 'Welche Dateien kann ich für Foto oder Motiv hochladen?',
@@ -1348,7 +1348,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'T-Shirts und Hoodies für JGA, Geburtstag, Klassentreffen oder Familienfeier bedrucken – Größen frei mischbar, Preis live im Konfigurator.',
     einleitung: [
-      'Gleiche Shirts für die ganze Gruppe: JGA, Geburtstag, Klassentreffen oder Familienfeier. Es gibt {anzahl} Modelle ({arten}); Sie laden Ihr Motiv hoch und sehen im Konfigurator, wie es sitzt – mit Preis in Echtzeit.',
+      'Gleiche Shirts für die ganze Gruppe: JGA, Geburtstag, Klassentreffen oder Familienfeier. Es gibt {anzahl} Modelle ({arten}); du lädst dein Motiv hoch und siehst im Konfigurator, wie es sitzt – mit Preis in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -1359,7 +1359,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Eine Bestellung, viele Größen',
         absaetze: [
-          'Alle bekommen dasselbe Motiv, jede Person ihre Größe: Im Konfigurator tragen Sie die Stückzahl je Größe ein – Größen dürfen Sie frei mischen, zum Beispiel 2× M, 6× L und 2× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.',
+          'Alle bekommen dasselbe Motiv, jede Person ihre Größe: Im Konfigurator trägst du die Stückzahl je Größe ein – Größen darfst du frei mischen, zum Beispiel 2× M, 6× L und 2× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.',
         ],
       },
       {
@@ -1373,7 +1373,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Rechtzeitig planen',
         absaetze: [
-          'Die Produktion dauert regulär {produktionszeit}, der anschließende Versand erfolgt innerhalb von {versand}. Planen Sie bei Feiern mit festem Termin entsprechend Zeit ein. Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.',
+          'Die Produktion dauert regulär {produktionszeit}, der anschließende Versand erfolgt innerhalb von {versand}. Plane bei Feiern mit festem Termin entsprechend Zeit ein. Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.',
         ],
       },
     ],
@@ -1405,7 +1405,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       { q: 'Können wir die Größen mischen?', a: A_GROESSEN },
       {
         q: 'Können wir unterschiedliche Motive oder Namen bestellen?',
-        a: 'Jedes Motiv ist eine eigene Position: Konfigurieren Sie ein Teil, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.',
+        a: 'Jedes Motiv ist eine eigene Position: Konfiguriere ein Teil, lege es in den Warenkorb und konfiguriere anschließend das nächste. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.',
       },
       { q: 'Wie früh sollten wir bestellen?', a: A_DAUER },
       { q: 'Wie hoch sind die Versandkosten?', a: A_VERSAND },
@@ -1430,7 +1430,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Eigenes Merch testen: Hoodies, T-Shirts und mehr ab 1 Stück bedrucken, Staffelpreise ab 5 Stück, Preis live im Konfigurator.',
     einleitung: [
-      'Sie möchten Merch für Ihre Community, Ihre Band oder Ihr kleines Label ausprobieren? Mit DTF-Transferdruck bestellen Sie ab einem einzelnen Stück – ohne Mindestmenge. Es gibt {anzahl} Modelle ({arten}).',
+      'Du möchtest Merch für deine Community, deine Band oder dein kleines Label ausprobieren? Mit DTF-Transferdruck bestellst du ab einem einzelnen Stück – ohne Mindestmenge. Es gibt {anzahl} Modelle ({arten}).',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -1442,13 +1442,13 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Erst ein Muster, dann die Menge',
         absaetze: [
-          'Bestellen Sie zuerst ein einzelnes Teil, prüfen Sie Sitz, Farbe und Druck in der Hand und erhöhen Sie danach die Menge. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.',
+          'Bestelle zuerst ein einzelnes Teil, prüfe Sitz, Farbe und Druck in der Hand und erhöhe danach die Menge. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.',
         ],
       },
       {
-        ueberschrift: 'Was Sie vorbereiten sollten',
+        ueberschrift: 'Was du vorbereiten solltest',
         punkte: [
-          'Ihr Motiv als SVG, PDF oder PNG – vektorbasierte Dateien skalieren verlustfrei.',
+          'Dein Motiv als SVG, PDF oder PNG – vektorbasierte Dateien skalieren verlustfrei.',
           'Bei Rasterbildern genug Bildpunkte für die gewünschte Druckgröße: Ab {dpiOk} dpi gilt die Qualität im Konfigurator als optimal.',
           'Die gewünschten Positionen: Brust, Rücken und – je nach Modell – Ärmel.',
         ],
@@ -1486,7 +1486,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       { q: 'Welche Dateien brauche ich für mein Motiv?', a: A_DATEIEN },
       {
         q: 'Wie sehe ich den Preis für meine Merch-Bestellung?',
-        a: 'Im Konfigurator sehen Sie Stück- und Gesamtpreis in Echtzeit, bevor Sie etwas in den Warenkorb legen. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.',
+        a: 'Im Konfigurator siehst du Stück- und Gesamtpreis in Echtzeit, bevor du etwas in den Warenkorb legst. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.',
       },
       { q: 'Wie lange dauert es, bis die Bestellung ankommt?', a: A_DAUER },
       { q: 'Welche Zahlungsmöglichkeiten gibt es?', a: A_ZAHLUNG },

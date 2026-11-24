@@ -135,11 +135,11 @@ for (const seite of ANLASS_SEITEN) {
       z(`- ${e.beschriftung}: **${formatiereGeld(e.stueckpreis)}** pro Stück${e.menge > 1 ? `, gesamt ${formatiereGeld(e.gesamt)}` : ' (Einzelstück)'}`);
     }
     z();
-    z(`Fußnote: Beispielrechnungen mit ${[...new Set(ergebnis.map((e) => e.produktName))].join(', ')}. Preise pro Stück zzgl. Versand – versandkostenfrei ab ${fuelle('{frei}')}. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.`);
+    z(`Fußnote: Beispielrechnungen mit ${[...new Set(ergebnis.map((e) => e.produktName))].join(', ')}. Preise pro Stück zzgl. Versand – versandkostenfrei ab ${fuelle('{frei}')}. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.`);
     z();
   }
   if (!seite.ohneAblauf) {
-    z('### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)');
+    z('### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)');
     z();
     DTF_ABLAUF_SCHRITTE.forEach((s, i) => z(`${i + 1}. ${fuelle(s)}`));
     z();

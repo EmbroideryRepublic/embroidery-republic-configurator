@@ -11,7 +11,7 @@ Alle Seiten sind nur DTF-Transferdruck (die Stickerei ist pausiert) und verlinke
 - **Kleiner Vorspann über der Überschrift:** Für Vereine und Teams
 - **Linktext zu dieser Seite:** Vereinskleidung
 
-Hoodies fürs Trainerteam, T-Shirts für die Mannschaft, Polos für den Vorstand: Es gibt 126 Modelle (T-Shirts, Hoodies, Polos und Zip-Hoodies). Laden Sie Ihr Vereinslogo hoch und sehen Sie direkt im Konfigurator, wie es auf dem Textil sitzt – mit Preis in Echtzeit.
+Hoodies fürs Trainerteam, T-Shirts für die Mannschaft, Polos für den Vorstand: Es gibt 126 Modelle (T-Shirts, Hoodies, Polos und Zip-Hoodies). Lade dein Vereinslogo hoch und sieh direkt im Konfigurator, wie es auf dem Textil sitzt – mit Preis in Echtzeit.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -20,21 +20,21 @@ Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fot
 ### Warum sich DTF-Transferdruck für Vereine eignet
 
 - Vollfarbig: Vereinsfarben, Wappen und Farbverläufe lassen sich in einem Druck umsetzen.
-- Keine Mindestmenge: Sie können ab einem einzelnen Stück bestellen.
+- Keine Mindestmenge: Du kannst ab einem einzelnen Stück bestellen.
 - Größen frei mischen: Ein Motiv, beliebig viele Größen – zum Beispiel 2× M, 6× L und 2× XL in einem Auftrag.
 - Staffelpreise: Mit größerer Menge sinkt der Stückpreis, die Staffel beginnt bei 5 Stück.
 
-### Brust, Rücken, Ärmel: So platzieren Sie das Vereinslogo
+### Brust, Rücken, Ärmel: So platzierst du das Vereinslogo
 
-Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.
 
 Ein klassisches Layout: das Wappen klein auf der Brust, der Vereinsname groß auf dem Rücken.
 
 ### Bestellen für die ganze Mannschaft
 
-Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
+Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
 
-Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
+Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
@@ -44,9 +44,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Vereinsname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
 - 20 Polos · Vereinslogo auf der Brust (ca. 10 × 10 cm): **18,99 €** pro Stück, gesamt 379,80 €
 
-Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -58,19 +58,19 @@ Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweigh
 
 **Ab wie vielen Teilen lohnt sich eine Vereinsbestellung?**
 
-Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Welche Dateien brauchen wir für das Vereinslogo?**
 
-SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir Ihre Datei kostenlos.
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Wie lange dauert es, bis die Bestellung ankommt?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 **Können Vereine auf Rechnung bezahlen?**
 
-Ja. Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+Ja. Du kannst zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; du erhältst die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
 
 **Wie hoch sind die Versandkosten?**
 
@@ -86,7 +86,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 - **Kleiner Vorspann über der Überschrift:** Für Unternehmen
 - **Linktext zu dieser Seite:** Firmenkleidung
 
-Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt 131 Modelle (Polos, Hoodies, Jacken und T-Shirts). Laden Sie Ihr Firmenlogo hoch, platzieren Sie es auf Brust, Rücken oder Ärmel und sehen Sie den Preis in Echtzeit.
+Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt 131 Modelle (Polos, Hoodies, Jacken und T-Shirts). Lade dein Firmenlogo hoch, platziere es auf Brust, Rücken oder Ärmel und sieh den Preis in Echtzeit.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -95,21 +95,21 @@ Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fot
 ### Was für Unternehmen wichtig ist
 
 - Auch einzelne Teile: Es gibt keine Mindestbestellmenge – zum Beispiel für neue Mitarbeitende oder einen ersten Probedruck.
-- Kauf auf Rechnung: Neben Kreditkarte und PayPal können Sie auf Rechnung bezahlen, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+- Kauf auf Rechnung: Neben Kreditkarte und PayPal kannst du auf Rechnung bezahlen, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
 - Endpreise ohne Steuerausweis: Wir sind Kleinunternehmer im Sinne von § 19 UStG und weisen keine Umsatzsteuer aus.
-- Dateiprüfung: Vor der Produktion prüfen wir Ihr Logo kostenlos.
+- Dateiprüfung: Vor der Produktion prüfen wir dein Logo kostenlos.
 
 ### Das Firmenlogo richtig platzieren
 
-Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.
 
 Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.
 
 ### Bestellung für das ganze Unternehmen
 
-Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
+Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
 
-Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
+Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
@@ -119,9 +119,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
 
-Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -133,11 +133,11 @@ Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, Fruit of the Loom Light
 
 **Können wir auch einzelne Teile bedrucken lassen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Können Unternehmen auf Rechnung bezahlen?**
 
-Ja. Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+Ja. Du kannst zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; du erhältst die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
 
 **Wird die Umsatzsteuer ausgewiesen?**
 
@@ -145,11 +145,11 @@ Nein. Alle angegebenen Preise sind Endpreise. Wir sind Kleinunternehmer im Sinne
 
 **Welche Dateien brauchen wir für das Firmenlogo?**
 
-SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir Ihre Datei kostenlos.
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Wie lange dauert es, bis die Bestellung ankommt?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /hoodies-bedrucken-besticken, /jacken-bedrucken, /vereinskleidung-bedrucken, /textildruck-preise, /druckdaten-vorbereiten
 
@@ -161,7 +161,7 @@ Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /hoodies-b
 - **Kleiner Vorspann über der Überschrift:** Für Jahrgänge und Klassen
 - **Linktext zu dieser Seite:** Abschluss-Hoodies
 
-Ein Hoodie für den ganzen Jahrgang: Wählen Sie unter 36 Modellen (Hoodies und Zip-Hoodies), setzen Sie Jahrgang, Motto oder Namen als Text oder laden Sie ein eigenes Motiv hoch. Der Konfigurator zeigt Vorder- und Rückseite mit Preis in Echtzeit.
+Ein Hoodie für den ganzen Jahrgang: Wähle unter 36 Modellen (Hoodies und Zip-Hoodies), setze Jahrgang, Motto oder Namen als Text oder lade ein eigenes Motiv hoch. Der Konfigurator zeigt Vorder- und Rückseite mit Preis in Echtzeit.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -177,11 +177,11 @@ Größen lassen sich frei mischen: Ein Auftrag mit 2× S, 8× M, 10× L und 4× 
 - Rücken: Jahrgang und Motto groß.
 - Ärmel: Jahreszahl oder Kürzel – bei Modellen mit Ärmelfläche.
 
-Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.
 
 ### Rechtzeitig planen
 
-Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Eine Sammelbestellung gelingt am besten, wenn Größen und Mengen vor der Bestellung feststehen – und vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
+Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Eine Sammelbestellung gelingt am besten, wenn Größen und Mengen vor der Bestellung feststehen – und vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
@@ -190,9 +190,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 10 Hoodies · Motiv auf dem Rücken (ca. 20 × 25 cm): **28,99 €** pro Stück, gesamt 289,90 €
 - 25 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motto auf dem Rücken (ca. 20 × 25 cm): **31,99 €** pro Stück, gesamt 799,75 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -204,19 +204,19 @@ Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat. Pre
 
 **Können wir erst einen Hoodie als Muster bestellen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen.
 
 **Können wir die Größen mischen?**
 
-Ja. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Wie früh sollten wir bestellen?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 **Welche Dateien kann ich für das Motiv hochladen?**
 
-SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Reicht ein Schriftzug, können Sie ihn auch direkt im Konfigurator als Text setzen.
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Reicht ein Schriftzug, kannst du ihn auch direkt im Konfigurator als Text setzen.
 
 **Wie hoch sind die Versandkosten?**
 
@@ -229,25 +229,25 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /zip-hoodies-
 - **Titel** (47 Zeichen): T-Shirt mit eigenem Foto bedrucken – ab 1 Stück
 - **Meta-Beschreibung** (139 Zeichen): Eigenes Foto auf T-Shirt, Hoodie oder Longsleeve drucken lassen – vollfarbig per DTF-Transferdruck, ab 1 Stück, Preis live im Konfigurator.
 - **Überschrift (H1):** T-Shirt mit eigenem Foto bedrucken lassen
-- **Kleiner Vorspann über der Überschrift:** Für Ihr Lieblingsbild
+- **Kleiner Vorspann über der Überschrift:** Für dein Lieblingsbild
 - **Linktext zu dieser Seite:** T-Shirt mit Foto
 
-Familienfoto, Haustier oder Urlaubsmotiv: Laden Sie Ihr Foto hoch, platzieren Sie es auf Vorder- oder Rückseite und sehen Sie das Ergebnis samt Preis direkt im Konfigurator. Es gibt 109 Modelle (T-Shirts, Hoodies und Longsleeves).
+Familienfoto, Haustier oder Urlaubsmotiv: Lade dein Foto hoch, platziere es auf Vorder- oder Rückseite und sieh das Ergebnis samt Preis direkt im Konfigurator. Es gibt 109 Modelle (T-Shirts, Hoodies und Longsleeves).
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Gildan Light Cotton Adult T-Shirt · B&C T-Shirt #E150 · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Iconic 195 Ringspun Premium Long Sleeve T · SOL'S Men's Long-Sleeve T-Shirt Imperial
 
-### So wird aus Ihrem Foto ein scharfer Druck
+### So wird aus deinem Foto ein scharfer Druck
 
 - Hochauflösende Datei: JPG und PNG werden unterstützt. Je mehr Bildpunkte das Foto hat, desto schärfer wird der Druck.
-- Auflösungs-Ampel: Der Konfigurator bewertet Ihr Bild bei der gewählten Druckgröße – grün ab 220 dpi, gelb ab 150 dpi, darunter rot mit dem Hinweis, das Bild kleiner zu platzieren oder eine höher aufgelöste Datei zu verwenden.
-- Weißer Hintergrund: Bei Bildern mit weißem Hintergrund können Sie diesen beim Hochladen automatisch entfernen lassen (einfache Freistellung).
-- Freigabe: Vor der Produktion prüfen wir Ihre Datei kostenlos, und Sie erhalten eine finale Vorschau zur Freigabe.
+- Auflösungs-Ampel: Der Konfigurator bewertet dein Bild bei der gewählten Druckgröße – grün ab 220 dpi, gelb ab 150 dpi, darunter rot mit dem Hinweis, das Bild kleiner zu platzieren oder eine höher aufgelöste Datei zu verwenden.
+- Weißer Hintergrund: Bei Bildern mit weißem Hintergrund kannst du diesen beim Hochladen automatisch entfernen lassen (einfache Freistellung).
+- Freigabe: Vor der Produktion prüfen wir deine Datei kostenlos, und du erhältst eine finale Vorschau zur Freigabe.
 
 ### Wie groß darf das Foto sein?
 
-Der Konfigurator zeigt Ihr Motiv in Zentimetern; je Modell und Größe gilt eine maximale Druckfläche. Auf Vorder- und Rückseite lässt sich je ein Foto platzieren, bei vielen Modellen zusätzlich auf den Ärmeln.
+Der Konfigurator zeigt dein Motiv in Zentimetern; je Modell und Größe gilt eine maximale Druckfläche. Auf Vorder- und Rückseite lässt sich je ein Foto platzieren, bei vielen Modellen zusätzlich auf den Ärmeln.
 
 ### Preisbeispiele
 
@@ -257,9 +257,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 1 Hoodie · Foto auf der Brust (ca. 20 × 20 cm): **41,99 €** pro Stück (Einzelstück)
 - 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **17,99 €** pro Stück, gesamt 89,95 €
 
-Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -271,7 +271,7 @@ Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweigh
 
 **Kann ich nur ein einzelnes T-Shirt mit Foto bestellen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Welche Dateiformate kann ich für das Foto hochladen?**
 
@@ -279,7 +279,7 @@ Für Fotos eignen sich JPG/JPEG und PNG; unterstützt werden außerdem SVG und P
 
 **Was passiert bei einem Foto mit zu niedriger Auflösung?**
 
-Der Konfigurator zeigt dann eine Warnung: Die Auflösung ist zu niedrig für einen scharfen Druck (unter 150 dpi bei der gewählten Größe). Platzieren Sie das Bild kleiner, verwenden Sie ein SVG, laden Sie eine höher aufgelöste Datei hoch oder nutzen Sie den Button „Hochskalieren“, der das Bild auf 300 dpi hochrechnet, wenn das möglich ist. Zusätzliche Details entstehen dabei nicht.
+Der Konfigurator zeigt dann eine Warnung: Die Auflösung ist zu niedrig für einen scharfen Druck (unter 150 dpi bei der gewählten Größe). Platziere das Bild kleiner, verwende ein SVG, lade eine höher aufgelöste Datei hoch oder nutze den Button „Hochskalieren“, der das Bild auf 300 dpi hochrechnet, wenn das möglich ist. Zusätzliche Details entstehen dabei nicht.
 
 **Kann ich das Foto auf Vorder- und Rückseite drucken?**
 
@@ -287,7 +287,7 @@ Ja. Auf der Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei viel
 
 **Wie lange dauert es, bis das Shirt ankommt?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /longsleeves-bedrucken, /druckdaten-vorbereiten, /textildruck-preise
 
@@ -301,7 +301,7 @@ Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bed
 
 Der Preis setzt sich aus dem Textil und der Veredelung zusammen. Das Textil beginnt bei 10,99 € (T-Shirt), 22,99 € (Hoodie) bzw. 13,99 € (Polo) pro Stück. Hinzu kommt der Druck je bedruckter Fläche, und mit größerer Menge sinkt der Stückpreis.
 
-Die Beispiele auf dieser Seite werden mit derselben Preisberechnung ermittelt wie im Konfigurator. Ihren genauen Preis sehen Sie dort in Echtzeit, bevor Sie etwas in den Warenkorb legen.
+Die Beispiele auf dieser Seite werden mit derselben Preisberechnung ermittelt wie im Konfigurator. Deinen genauen Preis siehst du dort in Echtzeit, bevor du etwas in den Warenkorb legst.
 
 ### Woraus sich der Preis zusammensetzt
 
@@ -313,7 +313,7 @@ Die Beispiele auf dieser Seite werden mit derselben Preisberechnung ermittelt wi
 
 ### Bei größeren Mengen lohnt ein Blick auf die Staffeln
 
-Die Staffelgrenzen gelten für die gesamte Bestellung. Liegt Ihre Menge knapp darunter, kann eine etwas größere Menge insgesamt günstiger sein – der Konfigurator weist Sie darauf hin, wenn das der Fall ist.
+Die Staffelgrenzen gelten für die gesamte Bestellung. Liegt deine Menge knapp darunter, kann eine etwas größere Menge insgesamt günstiger sein – der Konfigurator weist dich darauf hin, wenn das der Fall ist.
 
 ### Preisbeispiele
 
@@ -328,9 +328,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 1 Polo · Brustmotiv (ca. 10 × 10 cm): **32,99 €** pro Stück (Einzelstück)
 - 10 Polos · Brustmotiv (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
 
-Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -346,7 +346,7 @@ Vom Textil (jedes Modell hat einen eigenen Grundpreis), von der Zahl der bedruck
 
 **Gibt es eine Mindestbestellmenge?**
 
-Nein, es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Nein, es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Wie hoch sind die Versandkosten?**
 
@@ -358,29 +358,29 @@ Nein. Alle angegebenen Preise sind Endpreise. Wir sind Kleinunternehmer im Sinne
 
 **Kann ich den Preis vorab sehen, ohne zu bestellen?**
 
-Ja. Im Konfigurator sehen Sie Stück- und Gesamtpreis in Echtzeit, bevor Sie etwas in den Warenkorb legen. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.
+Ja. Im Konfigurator siehst du Stück- und Gesamtpreis in Echtzeit, bevor du etwas in den Warenkorb legst. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.
 
 Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /poloshirts-besticken-bedrucken, /vereinskleidung-bedrucken, /firmenkleidung-bedrucken, /druckdaten-vorbereiten
 
 ## /druckaufloesung-rechner
 
 - **Titel** (53 Zeichen): Druckauflösung berechnen: dpi-Rechner für Textildruck
-- **Meta-Beschreibung** (131 Zeichen): Reicht die Auflösung Ihres Bildes? Bildbreite und Druckbreite eingeben, dpi berechnen und mit der Ampel des Konfigurators bewerten.
+- **Meta-Beschreibung** (132 Zeichen): Reicht die Auflösung deines Bildes? Bildbreite und Druckbreite eingeben, dpi berechnen und mit der Ampel des Konfigurators bewerten.
 - **Überschrift (H1):** Druckauflösung berechnen
 - **Kleiner Vorspann über der Überschrift:** Kostenloser Rechner
 - **Linktext zu dieser Seite:** Auflösungsrechner
 
-Reicht die Auflösung Ihres Bildes für die gewünschte Druckgröße? Geben Sie die Breite Ihres Bildes in Pixeln und die Breite des Drucks in Zentimetern ein – der Rechner zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator.
+Reicht die Auflösung deines Bildes für die gewünschte Druckgröße? Gib die Breite deines Bildes in Pixeln und die Breite des Drucks in Zentimetern ein – der Rechner zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator.
 
 ### Auflösung berechnen
 
 *Interaktiver Auflösungsrechner: zwei Eingabefelder (Bildbreite in Pixeln, Druckbreite in cm), Ergebnis in dpi mit Ampel und dem Text des Konfigurators; Beispielwerte 2000 px / 20 cm.*
 
-### So lesen Sie das Ergebnis
+### So liest du das Ergebnis
 
 - Grün ab 220 dpi: optimale Druckqualität bei dieser Größe.
 - Gelb von 150 bis 220 dpi: akzeptabel, für sehr große Drucke aber eher knapp.
-- Rot unter 150 dpi: zu unscharf. Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.
+- Rot unter 150 dpi: zu unscharf. Platziere das Bild kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch.
 
 Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG); SVG und PDF bekommen keine Auflösungswarnung.
 
@@ -396,7 +396,7 @@ dpi steht für „dots per inch“, also Bildpunkte pro Zoll (1 Zoll = 2,54 cm).
 
 **Wie berechne ich die Auflösung meines Bildes?**
 
-dpi = Bildbreite in Pixeln ÷ (Druckbreite in cm ÷ 2,54). Der Rechner oben übernimmt das für Sie.
+dpi = Bildbreite in Pixeln ÷ (Druckbreite in cm ÷ 2,54). Der Rechner oben übernimmt das für dich.
 
 **Ab wie vielen dpi ist ein Motiv scharf genug?**
 
@@ -408,7 +408,7 @@ Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG). SVG u
 
 **Was kann ich tun, wenn die Auflösung zu niedrig ist?**
 
-Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch. Oder skalieren Sie das Bild hoch: Das Werkzeug zum Prüfen der Druckdatei und der Button „Hochskalieren“ im Konfigurator rechnen auf 300 dpi, wenn das möglich ist.
+Platziere das Bild kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch. Oder skaliere das Bild hoch: Das Werkzeug zum Prüfen der Druckdatei und der Button „Hochskalieren“ im Konfigurator rechnen auf 300 dpi, wenn das möglich ist.
 
 Weiterführende Links am Seitenende: /druckdaten-vorbereiten, /druckdatei-pruefen, /tshirt-mit-foto-bedrucken, /textildruck-preise, /vereinskleidung-bedrucken
 
@@ -416,11 +416,11 @@ Weiterführende Links am Seitenende: /druckdaten-vorbereiten, /druckdatei-pruefe
 
 - **Titel** (53 Zeichen): Firmenkleidung bedrucken lassen – Angebot, ab 1 Stück
 - **Meta-Beschreibung** (147 Zeichen): Firmenkleidung mit Logo per DTF-Transferdruck: ab 1 Stück, Staffelpreise, Vorschau zur Freigabe, Kauf auf Rechnung. Jetzt Geschäftsanfrage stellen.
-- **Überschrift (H1):** Firmenkleidung für Ihr Unternehmen – Geschäftsanfrage in wenigen Minuten
+- **Überschrift (H1):** Firmenkleidung für dein Unternehmen – Geschäftsanfrage in wenigen Minuten
 - **Kleiner Vorspann über der Überschrift:** Für Geschäftskunden
 - **Linktext zu dieser Seite:** Geschäftskunden
 
-Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit Ihrem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Fordern Sie unten ein unverbindliches, individuelles Angebot an – wir melden uns persönlich.
+Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit deinem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Fordere unten ein unverbindliches, individuelles Angebot an – wir melden uns persönlich.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -431,14 +431,14 @@ Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fot
 - Ab 1 Stück, keine Mindestbestellmenge: für die Erstausstattung ebenso wie für einzelne neue Mitarbeitende.
 - Staffelpreise ab 5 Stück, Größen frei mischbar – ein Motiv, beliebig viele Größen in einem Auftrag.
 - Vollfarbiger DTF-Transferdruck: Logos, Wappen und Farbverläufe in einem Druck.
-- Vor der Produktion erhalten Sie eine finale Vorschau zur Freigabe.
+- Vor der Produktion erhältst du eine finale Vorschau zur Freigabe.
 - Kauf auf Rechnung ist möglich.
 - Reguläre Produktionszeit 3 bis 4 Werktage, Versand innerhalb von 1 bis 2 Werktagen.
 - Persönliche Betreuung: Antwort meist innerhalb eines Werktags.
 
 ### Unverbindliches Angebot anfordern
 
-Wenige Angaben genügen: Branche, gewünschte Kleidung, ungefähre Stückzahl und Ihre Kontaktdaten. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto Ihres bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot, das für Sie unverbindlich ist.
+Wenige Angaben genügen: Branche, gewünschte Kleidung, ungefähre Stückzahl und deine Kontaktdaten. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto deines bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot, das für dich unverbindlich ist.
 
 *Formular mit festen Auswahlfeldern (Pflichtfelder mit *). Es wird nur DTF-Transferdruck angeboten; die Stickerei kommt nicht vor.*
 
@@ -483,7 +483,7 @@ Anmerkung:
 Bitte bis Ende Januar.
 ```
 
-### Passende Kleidung für Ihre Branche
+### Passende Kleidung für deine Branche
 
 - Praxen: Poloshirts und T-Shirts für das Team, dezent mit Praxislogo.
 - Handwerk: schwere T-Shirts, Hoodies, Poloshirts und Jacken als Arbeitskleidung.
@@ -500,9 +500,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 25 T-Shirts · Firmenlogo auf der Brust (ca. 10 × 10 cm): **15,99 €** pro Stück, gesamt 399,75 €
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
 
-Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -514,19 +514,19 @@ Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Frui
 
 **Gibt es eine Mindestbestellmenge?**
 
-Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Welche Dateien brauche ich für mein Logo?**
 
-SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir Ihre Datei kostenlos.
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Kann ich auf Rechnung bezahlen?**
 
-Ja. Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+Ja. Du kannst zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; du erhältst die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
 
 **Wie lange dauert es bis zur Lieferung?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 **Wie hoch sind die Versandkosten?**
 
@@ -537,19 +537,19 @@ Weiterführende Links am Seitenende: /firmenkleidung-bedrucken, /vereinskleidung
 ## /groessentabelle-t-shirts-hoodies
 
 - **Titel** (48 Zeichen): Größentabelle T-Shirt, Hoodie & Polo: Maße in cm
-- **Meta-Beschreibung** (135 Zeichen): Brustbreite und Länge je Größe in cm: Herstellermaße ausgewählter T-Shirts, Hoodies und Polos – plus Tipps, wie Sie richtig nachmessen.
+- **Meta-Beschreibung** (133 Zeichen): Brustbreite und Länge je Größe in cm: Herstellermaße ausgewählter T-Shirts, Hoodies und Polos – plus Tipps, wie du richtig nachmisst.
 - **Überschrift (H1):** Größentabelle für T-Shirts, Hoodies und Polos
 - **Kleiner Vorspann über der Überschrift:** Maße in Zentimetern
 - **Linktext zu dieser Seite:** Größentabelle
 
 Welche Größe passt? Die Maße unterscheiden sich von Modell zu Modell. Diese Seite zeigt die Herstellermaße von je drei Modellen aus unserem Sortiment; die vollständige Größentabelle steht auf jeder Produktseite.
 
-### So messen Sie richtig
+### So misst du richtig
 
-- Legen Sie ein T-Shirt, einen Hoodie oder ein Polo, das gut passt, flach hin.
+- Lege ein T-Shirt, einen Hoodie oder ein Polo, das gut passt, flach hin.
 - Brustbreite: von Achselnaht zu Achselnaht gemessen. Der Brustumfang ist doppelt so groß.
 - Länge: vom höchsten Punkt der Schulter bis zum Saum.
-- Vergleichen Sie Ihre Werte mit der Tabelle des Modells, das Sie bestellen möchten.
+- Vergleiche deine Werte mit der Tabelle des Modells, das du bestellen möchtest.
 
 ### T-Shirts
 
@@ -599,15 +599,15 @@ Auf der Produktseite des Modells unter „Größentabelle“. Dort stehen die He
 
 **Fallen die Modelle groß oder klein aus?**
 
-Das hängt vom Modell ab. Die Passform steht auf der Produktseite unter „Technische Daten“, die Maße je Größe in der Größentabelle. Messen Sie am besten ein Teil nach, das Ihnen gut passt, und vergleichen Sie.
+Das hängt vom Modell ab. Die Passform steht auf der Produktseite unter „Technische Daten“, die Maße je Größe in der Größentabelle. Miss am besten ein Teil nach, das dir gut passt, und vergleiche.
 
 **Kann ich Größen in einer Bestellung mischen?**
 
-Ja. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Wie lege ich die Größen für ein Team fest?**
 
-Lassen Sie jede Person ein passendes Teil nachmessen und die Maße mit der Größentabelle des Modells vergleichen. Im Konfigurator tragen Sie die Stückzahl je Größe ein – Größen dürfen Sie frei mischen.
+Lass jede Person ein passendes Teil nachmessen und die Maße mit der Größentabelle des Modells vergleichen. Im Konfigurator trägst du die Stückzahl je Größe ein – Größen darfst du frei mischen.
 
 **Sind die Maße exakt?**
 
@@ -623,7 +623,7 @@ Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bed
 - **Kleiner Vorspann über der Überschrift:** Maße in Zentimetern
 - **Linktext zu dieser Seite:** Druckgröße
 
-Wie groß ein Motiv werden darf, hängt vom Modell und von der Größe ab: Ein Hoodie in S bietet weniger Platz als ein Hoodie in XXL. Diese Seite zeigt für je drei Modelle aus unserem Sortiment die größtmögliche Druckfläche in Zentimetern, getrennt nach Vorder- und Rückseite. Die Flächen aller weiteren Modelle und Größen sehen Sie im Konfigurator.
+Wie groß ein Motiv werden darf, hängt vom Modell und von der Größe ab: Ein Hoodie in S bietet weniger Platz als ein Hoodie in XXL. Diese Seite zeigt für je drei Modelle aus unserem Sortiment die größtmögliche Druckfläche in Zentimetern, getrennt nach Vorder- und Rückseite. Die Flächen aller weiteren Modelle und Größen siehst du im Konfigurator.
 
 ### So entsteht die Druckfläche
 
@@ -637,7 +637,7 @@ Ein Textil ist rund, ein breites Motiv wölbt sich beim Tragen deshalb leicht. D
 - Motto, Name oder Jahrgang groß auf dem Rücken: ca. 20 × 25 cm.
 - Ein Motiv über die ganze Fläche: bis zu den Maßen aus den Tabellen unten.
 
-Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.
 
 ### Druckfläche bei T-Shirts
 
@@ -705,9 +705,9 @@ Ein Motiv wird einmal platziert und auf jeder bestellten Größe gleich groß ge
 
 ### Passt die Datei zur Druckgröße?
 
-Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt. Wie viele, rechnet der Auflösungsrechner vor; im Konfigurator zeigt eine Ampel die Qualität Ihrer Datei bei der gewählten Größe.
+Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt. Wie viele, rechnet der Auflösungsrechner vor; im Konfigurator zeigt eine Ampel die Qualität deiner Datei bei der gewählten Größe.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -719,7 +719,7 @@ Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt
 
 **Wie groß darf ein Motiv auf einem T-Shirt höchstens sein?**
 
-Das hängt vom Modell und von der Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei T-Shirts in den Größen S bis XXL; für jedes Modell sehen Sie die Fläche samt Maßen in Zentimetern im Konfigurator.
+Das hängt vom Modell und von der Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei T-Shirts in den Größen S bis XXL; für jedes Modell siehst du die Fläche samt Maßen in Zentimetern im Konfigurator.
 
 **Ist die Druckfläche in allen Größen gleich groß?**
 
@@ -731,11 +731,11 @@ Es gilt die Fläche der kleinsten Größe im Auftrag, denn das Motiv wird auf je
 
 **Kann ich auch auf die Ärmel drucken?**
 
-Bei vielen Modellen gibt es zusätzlich Ärmelflächen. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+Bei vielen Modellen gibt es zusätzlich Ärmelflächen. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.
 
 **Welche Dateien kann ich für ein großes Motiv hochladen?**
 
-SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Prüfen Sie mit dem Auflösungsrechner, wie viele Pixel Ihr Bild für die gewünschte Breite braucht.
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Prüfe mit dem Auflösungsrechner, wie viele Pixel dein Bild für die gewünschte Breite braucht.
 
 Weiterführende Links am Seitenende: /groessentabelle-t-shirts-hoodies, /druckaufloesung-rechner, /druckdaten-vorbereiten, /t-shirts-bedrucken-besticken, /hoodies-bedrucken-besticken, /poloshirts-besticken-bedrucken
 
@@ -817,12 +817,12 @@ Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bed
 ## /druckdaten-vorbereiten
 
 - **Titel** (57 Zeichen): Logo für den Textildruck vorbereiten: Dateien & Auflösung
-- **Meta-Beschreibung** (146 Zeichen): Welche Dateiformate eignen sich, wie hoch muss die Auflösung sein, was tun bei weißem Hintergrund? So bereiten Sie Ihr Logo für den DTF-Druck vor.
+- **Meta-Beschreibung** (147 Zeichen): Welche Dateiformate eignen sich, wie hoch muss die Auflösung sein, was tun bei weißem Hintergrund? So bereitest du dein Logo für den DTF-Druck vor.
 - **Überschrift (H1):** Logo für den Textildruck vorbereiten
 - **Kleiner Vorspann über der Überschrift:** Ratgeber
 - **Linktext zu dieser Seite:** Logo vorbereiten
 
-Ein scharfer Druck beginnt mit der richtigen Datei. Hier steht, welche Formate Sie hochladen können, wie viele Bildpunkte Ihr Motiv braucht und was der Konfigurator Ihnen zur Qualität anzeigt.
+Ein scharfer Druck beginnt mit der richtigen Datei. Hier steht, welche Formate du hochladen kannst, wie viele Bildpunkte dein Motiv braucht und was der Konfigurator dir zur Qualität anzeigt.
 
 ### Welche Dateiformate werden unterstützt?
 
@@ -832,9 +832,9 @@ Ein scharfer Druck beginnt mit der richtigen Datei. Hier steht, welche Formate S
 
 ### Wie hoch muss die Auflösung sein?
 
-Bei Rasterbildern (PNG, JPG) zählt, wie viele Bildpunkte auf einen Zoll der gedruckten Breite fallen. Der Konfigurator bewertet das für Ihre gewählte Druckgröße: ab 220 dpi gilt die Qualität als optimal (grün), zwischen 150 und 220 dpi als akzeptabel (gelb), darunter als zu niedrig (rot). Vektordateien (SVG, PDF) bekommen nie eine Warnung.
+Bei Rasterbildern (PNG, JPG) zählt, wie viele Bildpunkte auf einen Zoll der gedruckten Breite fallen. Der Konfigurator bewertet das für deine gewählte Druckgröße: ab 220 dpi gilt die Qualität als optimal (grün), zwischen 150 und 220 dpi als akzeptabel (gelb), darunter als zu niedrig (rot). Vektordateien (SVG, PDF) bekommen nie eine Warnung.
 
-Die Tabelle zeigt, wie breit Ihr Bild mindestens sein sollte, wenn das Motiv in der jeweiligen Breite gedruckt wird.
+Die Tabelle zeigt, wie breit dein Bild mindestens sein sollte, wenn das Motiv in der jeweiligen Breite gedruckt wird.
 
 | Druckbreite | mindestens (150 dpi) | optimal (220 dpi) |
 |---|---|---|
@@ -847,15 +847,15 @@ Die Tabelle zeigt, wie breit Ihr Bild mindestens sein sollte, wenn das Motiv in 
 
 ### Weißer Hintergrund und Freistellung
 
-Hat Ihr Bild einen weißen Hintergrund, der nicht mitgedruckt werden soll, können Sie ihn beim Hochladen automatisch entfernen lassen (einfache Freistellung). Am saubersten gelingt es mit einer Datei, die bereits transparent freigestellt ist.
+Hat dein Bild einen weißen Hintergrund, der nicht mitgedruckt werden soll, kannst du ihn beim Hochladen automatisch entfernen lassen (einfache Freistellung). Am saubersten gelingt es mit einer Datei, die bereits transparent freigestellt ist.
 
 ### Ein Schriftzug ohne Datei
 
-Reicht ein Schriftzug, setzen Sie ihn direkt im Konfigurator als Text – dafür brauchen Sie keine Datei.
+Reicht ein Schriftzug, setze ihn direkt im Konfigurator als Text – dafür brauchst du keine Datei.
 
-### Wir prüfen Ihre Datei
+### Wir prüfen deine Datei
 
-Vor der Produktion prüfen wir Ihre Datei kostenlos. Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
+Vor der Produktion prüfen wir deine Datei kostenlos. Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Häufige Fragen
 
@@ -869,15 +869,15 @@ Vektordateien (SVG, PDF) bestehen aus Linien und Flächen und lassen sich belieb
 
 **Mein Bild ist zu klein – was kann ich tun?**
 
-Der Konfigurator warnt, wenn die Auflösung bei der gewählten Größe zu niedrig ist (unter 150 dpi). Platzieren Sie das Bild dann kleiner, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch. Alternativ können Sie das Bild hochskalieren: Der Button „Hochskalieren“ rechnet es auf 300 dpi hoch, wenn das möglich ist – Kanten werden dabei glatter, zusätzliche Details entstehen nicht.
+Der Konfigurator warnt, wenn die Auflösung bei der gewählten Größe zu niedrig ist (unter 150 dpi). Platziere das Bild dann kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch. Alternativ kannst du das Bild hochskalieren: Der Button „Hochskalieren“ rechnet es auf 300 dpi hoch, wenn das möglich ist – Kanten werden dabei glatter, zusätzliche Details entstehen nicht.
 
 **Kann ich auch Fotos drucken lassen?**
 
-Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Laden Sie das Foto als JPG oder PNG hoch; die Auflösungs-Ampel zeigt Ihnen, ob es für die gewählte Größe scharf genug ist.
+Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Lade das Foto als JPG oder PNG hoch; die Auflösungs-Ampel zeigt dir, ob es für die gewählte Größe scharf genug ist.
 
 **Kann ich einen Schriftzug drucken lassen, ohne eine Datei zu haben?**
 
-Ja. Im Konfigurator können Sie Text direkt setzen und platzieren – ohne Datei.
+Ja. Im Konfigurator kannst du Text direkt setzen und platzieren – ohne Datei.
 
 Weiterführende Links am Seitenende: /tshirt-mit-foto-bedrucken, /textildruck-preise, /vereinskleidung-bedrucken, /firmenkleidung-bedrucken, /druckdatei-pruefen
 
@@ -889,17 +889,17 @@ Weiterführende Links am Seitenende: /tshirt-mit-foto-bedrucken, /textildruck-pr
 - **Kleiner Vorspann über der Überschrift:** Kostenloses Werkzeug
 - **Linktext zu dieser Seite:** Druckdatei prüfen
 
-Reicht die Auflösung Ihres Bildes für die gewünschte Druckgröße? Wählen Sie eine Datei aus und geben Sie die Druckbreite ein – das Werkzeug zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator. Ist sie zu niedrig, können Sie das Bild hochskalieren und als PNG speichern.
+Reicht die Auflösung deines Bildes für die gewünschte Druckgröße? Wähle eine Datei aus und gib die Druckbreite ein – das Werkzeug zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator. Ist sie zu niedrig, kannst du das Bild hochskalieren und als PNG speichern.
 
-Alles geschieht in Ihrem Browser: Ihr Bild wird nicht hochgeladen und nicht gespeichert.
+Alles geschieht in deinem Browser: Dein Bild wird nicht hochgeladen und nicht gespeichert.
 
 ### Datei prüfen
 
-### So lesen Sie das Ergebnis
+### So liest du das Ergebnis
 
 - Grün ab 220 dpi: optimale Druckqualität bei dieser Größe.
 - Gelb von 150 bis 220 dpi: akzeptabel, für sehr große Drucke aber eher knapp.
-- Rot unter 150 dpi: zu unscharf. Platzieren Sie das Bild kleiner, skalieren Sie es hoch, verwenden Sie ein SVG oder laden Sie eine höher aufgelöste Datei hoch.
+- Rot unter 150 dpi: zu unscharf. Platziere das Bild kleiner, skaliere es hoch, verwende ein SVG oder lade eine höher aufgelöste Datei hoch.
 
 Das Hochskalieren rechnet auf 300 dpi, wenn das technisch möglich ist. Wo nicht, nennt das Werkzeug vorher den Wert, der erreicht wird.
 
@@ -907,11 +907,11 @@ Das Hochskalieren rechnet auf 300 dpi, wenn das technisch möglich ist. Wo nicht
 
 Beim Hochskalieren werden aus den vorhandenen Bildpunkten mehr Bildpunkte berechnet: Kanten werden glatter und klarer, Treppenstufen und Unschärfe nehmen ab. Zusätzliche Details entstehen dabei nicht – ein sehr kleines oder verwaschenes Bild bleibt ein kleines oder verwaschenes Bild, nur mit mehr Bildpunkten.
 
-Am deutlichsten wirkt es bei Logos, Schriftzügen und Grafiken. Wenn möglich, laden Sie eine vektorbasierte Datei (SVG, PDF) oder ein höher aufgelöstes Original hoch – sie skalieren verlustfrei.
+Am deutlichsten wirkt es bei Logos, Schriftzügen und Grafiken. Wenn möglich, lade eine vektorbasierte Datei (SVG, PDF) oder ein höher aufgelöstes Original hoch – sie skalieren verlustfrei.
 
 ### Hochskalieren im Konfigurator
 
-Dieselbe Berechnung steckt im Konfigurator: Ist die Auflösung eines hochgeladenen Bildes bei der gewählten Größe niedrig, erscheint neben dem Hinweis ein Button „Hochskalieren“. Über „Original wiederherstellen“ können Sie das ursprüngliche Bild zurückholen.
+Dieselbe Berechnung steckt im Konfigurator: Ist die Auflösung eines hochgeladenen Bildes bei der gewählten Größe niedrig, erscheint neben dem Hinweis ein Button „Hochskalieren“. Über „Original wiederherstellen“ kannst du das ursprüngliche Bild zurückholen.
 
 ### Häufige Fragen
 
@@ -921,7 +921,7 @@ Der Konfigurator bewertet ab 220 dpi die Qualität als optimal (grün), zwischen
 
 **Wird mein Bild hochgeladen?**
 
-Nein. Das Werkzeug rechnet vollständig in Ihrem Browser; das Bild verlässt Ihren Rechner nicht.
+Nein. Das Werkzeug rechnet vollständig in deinem Browser; das Bild verlässt deinen Rechner nicht.
 
 **Macht Hochskalieren ein unscharfes Foto scharf?**
 
@@ -933,21 +933,21 @@ Rasterbilder im Format PNG, JPG/JPEG und WebP. Für den Druck selbst unterstütz
 
 **Wie speichere ich das hochskalierte Bild?**
 
-Nach dem Hochskalieren erscheint der Link „Als PNG speichern“. Die gespeicherte Datei können Sie anschließend im Konfigurator hochladen.
+Nach dem Hochskalieren erscheint der Link „Als PNG speichern“. Die gespeicherte Datei kannst du anschließend im Konfigurator hochladen.
 
 Weiterführende Links am Seitenende: /druckaufloesung-rechner, /druckdaten-vorbereiten, /tshirt-mit-foto-bedrucken, /dtf-druck-erklaert, /textildruck-preise
 
 ## /dtf-druck-erklaert
 
 - **Titel** (49 Zeichen): Was ist DTF-Druck? Direct-to-Film einfach erklärt
-- **Meta-Beschreibung** (140 Zeichen): DTF-Druck (Direct-to-Film) einfach erklärt: So entsteht der Transferdruck, wofür er sich eignet und worauf Sie bei der Datei achten sollten.
+- **Meta-Beschreibung** (140 Zeichen): DTF-Druck (Direct-to-Film) einfach erklärt: So entsteht der Transferdruck, wofür er sich eignet und worauf du bei der Datei achten solltest.
 - **Überschrift (H1):** Was ist DTF-Druck?
 - **Kleiner Vorspann über der Überschrift:** Ratgeber
 - **Linktext zu dieser Seite:** DTF-Druck erklärt
 
 DTF steht für „Direct-to-Film“: Das Motiv wird zuerst auf eine Folie gedruckt und danach mit Hitze und Druck auf das Textil übertragen. So entstehen vollfarbige Drucke – auch mit Farbverläufen und Fotos.
 
-Hier steht, wie ein DTF-Druck entsteht, wofür er sich eignet und was Sie bei der Datei beachten sollten. Bei uns bestellen Sie ihn ab einem einzelnen Stück.
+Hier steht, wie ein DTF-Druck entsteht, wofür er sich eignet und was du bei der Datei beachten solltest. Bei uns bestellst du ihn ab einem einzelnen Stück.
 
 ### So entsteht ein DTF-Druck
 
@@ -967,11 +967,11 @@ Hier steht, wie ein DTF-Druck entsteht, wofür er sich eignet und was Sie bei de
 
 Für Logos und Schriftzüge eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Rasterbilder (PNG, JPG) brauchen genug Bildpunkte für die gewünschte Druckgröße: Ab 220 dpi gilt die Qualität im Konfigurator als optimal.
 
-Wie hoch die Auflösung Ihres Bildes bei einer bestimmten Druckbreite ist, zeigt das Werkzeug zum Prüfen der Druckdatei. Vor der Produktion prüfen wir Ihre Datei kostenlos, und Sie erhalten eine finale Vorschau zur Freigabe.
+Wie hoch die Auflösung deines Bildes bei einer bestimmten Druckbreite ist, zeigt das Werkzeug zum Prüfen der Druckdatei. Vor der Produktion prüfen wir deine Datei kostenlos, und du erhältst eine finale Vorschau zur Freigabe.
 
 ### DTF bei uns
 
-Wir bedrucken T-Shirts, Hoodies, Polos, Jacken und Kinderbekleidung per DTF-Transferdruck. Im Konfigurator laden Sie Ihr Motiv hoch, platzieren es auf Brust, Rücken oder Ärmel und sehen den Preis in Echtzeit.
+Wir bedrucken T-Shirts, Hoodies, Polos, Jacken und Kinderbekleidung per DTF-Transferdruck. Im Konfigurator lädst du dein Motiv hoch, platzierst es auf Brust, Rücken oder Ärmel und siehst den Preis in Echtzeit.
 
 ### Häufige Fragen
 
@@ -989,7 +989,7 @@ Beim Siebdruck wird die Farbe durch ein Sieb auf das Textil gedrückt, und für 
 
 **Kann ich auch nur ein einzelnes Teil bedrucken lassen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Welche Dateien kann ich hochladen?**
 
@@ -997,15 +997,15 @@ SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasi
 
 **Wie lange dauert es, bis die Bestellung ankommt?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 Weiterführende Links am Seitenende: /dtf-druck-vs-siebdruck, /bedruckte-textilien-pflege, /druckdaten-vorbereiten, /druckdatei-pruefen, /textildruck-preise
 
 ## /dtf-druck-vs-siebdruck
 
 - **Titel** (51 Zeichen): DTF-Druck oder Siebdruck? Unterschiede im Überblick
-- **Meta-Beschreibung** (132 Zeichen): DTF-Druck und Siebdruck im Vergleich: Motive, Mengen, Farben und Kosten – damit Sie das passende Verfahren für Ihr Textil auswählen.
-- **Überschrift (H1):** DTF-Druck oder Siebdruck – was passt zu Ihrem Motiv?
+- **Meta-Beschreibung** (132 Zeichen): DTF-Druck und Siebdruck im Vergleich: Motive, Mengen, Farben und Kosten – damit du das passende Verfahren für dein Textil auswählst.
+- **Überschrift (H1):** DTF-Druck oder Siebdruck – was passt zu deinem Motiv?
 - **Kleiner Vorspann über der Überschrift:** Verfahren im Vergleich
 - **Linktext zu dieser Seite:** DTF oder Siebdruck
 
@@ -1044,11 +1044,11 @@ Weil für jede Farbe Siebe vorbereitet werden, lohnt sich Siebdruck meist erst b
 
 **Kann ich ein Foto drucken lassen?**
 
-Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive. Laden Sie das Foto im Konfigurator hoch; die Auflösungs-Ampel zeigt, ob es für die gewählte Größe scharf genug ist.
+Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive. Lade das Foto im Konfigurator hoch; die Auflösungs-Ampel zeigt, ob es für die gewählte Größe scharf genug ist.
 
 **Kann ich auch nur ein einzelnes Teil bedrucken lassen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Welche Dateien brauche ich für den Druck?**
 
@@ -1059,7 +1059,7 @@ Weiterführende Links am Seitenende: /dtf-druck-erklaert, /textildruck-preise, /
 ## /bedruckte-textilien-pflege
 
 - **Titel** (55 Zeichen): Bedruckte Textilien waschen: Pflegetipps für DTF-Drucke
-- **Meta-Beschreibung** (139 Zeichen): So pflegen Sie bedruckte T-Shirts und Hoodies: von links waschen, schonende Temperatur, kein Weichspüler – allgemeine Tipps für DTF-Drucke.
+- **Meta-Beschreibung** (138 Zeichen): So pflegst du bedruckte T-Shirts und Hoodies: von links waschen, schonende Temperatur, kein Weichspüler – allgemeine Tipps für DTF-Drucke.
 - **Überschrift (H1):** Bedruckte Textilien richtig waschen und pflegen
 - **Kleiner Vorspann über der Überschrift:** Pflege
 - **Linktext zu dieser Seite:** Pflege bedruckter Textilien
@@ -1068,19 +1068,19 @@ Mit der richtigen Pflege bleibt ein bedrucktes Textil länger schön. Die folgen
 
 ### Waschen
 
-- Wenden Sie das Teil vor dem Waschen auf links.
-- Waschen Sie schonend bei niedriger Temperatur – das Pflegeetikett nennt die zulässige Höchsttemperatur.
-- Verwenden Sie mildes Waschmittel; verzichten Sie auf Bleichmittel und Weichspüler.
-- Waschen Sie bedruckte Teile nicht zusammen mit Textilien, die Reißverschlüsse, Klettverschlüsse oder raue Oberflächen haben.
+- Wende das Teil vor dem Waschen auf links.
+- Wasche schonend bei niedriger Temperatur – das Pflegeetikett nennt die zulässige Höchsttemperatur.
+- Verwende mildes Waschmittel; verzichte auf Bleichmittel und Weichspüler.
+- Wasche bedruckte Teile nicht zusammen mit Textilien, die Reißverschlüsse, Klettverschlüsse oder raue Oberflächen haben.
 
 ### Trocknen und Bügeln
 
 - Lufttrocknen schont das Textil am meisten. Im Wäschetrockner nur bei niedriger Temperatur und nur, wenn das Pflegeetikett es erlaubt.
-- Bügeln Sie bei Bedarf von links und bei niedriger Temperatur – nicht direkt auf dem Druck.
+- Bügle bei Bedarf von links und bei niedriger Temperatur – nicht direkt auf dem Druck.
 
-### Pflegehinweise zu Ihrem Modell
+### Pflegehinweise zu deinem Modell
 
-Jedes Modell hat auf seiner Produktseite einen Abschnitt „Pflegehinweise“ mit den Angaben des Herstellers. Bei Fragen zu Ihrer Bestellung erreichen Sie uns über das Kontaktformular.
+Jedes Modell hat auf seiner Produktseite einen Abschnitt „Pflegehinweise“ mit den Angaben des Herstellers. Bei Fragen zu deiner Bestellung erreichst du uns über das Kontaktformular.
 
 ### Häufige Fragen
 
@@ -1094,7 +1094,7 @@ Schonender ist Lufttrocknen. Im Trockner nur bei niedriger Temperatur und nur, w
 
 **Kann ich über den Druck bügeln?**
 
-Besser nicht direkt: Bügeln Sie von links und bei niedriger Temperatur, oder legen Sie ein Tuch zwischen Bügeleisen und Druck.
+Besser nicht direkt: Bügle von links und bei niedriger Temperatur, oder lege ein Tuch zwischen Bügeleisen und Druck.
 
 **Welche Waschtemperatur ist für bedruckte Textilien geeignet?**
 
@@ -1114,7 +1114,7 @@ Weiterführende Links am Seitenende: /dtf-druck-erklaert, /t-shirts-bedrucken-be
 - **Kleiner Vorspann über der Überschrift:** Geschenkideen
 - **Linktext zu dieser Seite:** Weihnachtsgeschenke
 
-Ein Hoodie mit Lieblingsmotiv, T-Shirts für die ganze Familie, ein Foto auf dem Longsleeve: Es gibt 109 Modelle (Hoodies, T-Shirts und Longsleeves). Sie laden Ihr Motiv hoch, sehen im Konfigurator, wie es auf dem Textil sitzt, und der Preis erscheint in Echtzeit.
+Ein Hoodie mit Lieblingsmotiv, T-Shirts für die ganze Familie, ein Foto auf dem Longsleeve: Es gibt 109 Modelle (Hoodies, T-Shirts und Longsleeves). Du lädst dein Motiv hoch, siehst im Konfigurator, wie es auf dem Textil sitzt, und der Preis erscheint in Echtzeit.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -1129,9 +1129,9 @@ Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fot
 
 ### Rechtzeitig planen
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen, und dauert regulär 3 bis 4 Werktage; der Versand erfolgt anschließend innerhalb von 1 bis 2 Werktagen. Dazu kommt die Laufzeit des Pakets. Je früher Sie bestellen, desto mehr Spielraum haben Sie.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen, und dauert regulär 3 bis 4 Werktage; der Versand erfolgt anschließend innerhalb von 1 bis 2 Werktagen. Dazu kommt die Laufzeit des Pakets. Je früher du bestellst, desto mehr Spielraum hast du.
 
-Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
+Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Auch für Kinder
 
@@ -1139,7 +1139,7 @@ Auch Kinderbekleidung lässt sich bedrucken. Die Größen führen wir so, wie di
 
 ### Mehrere Geschenke in einer Bestellung
 
-Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
+Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
 
 ### Preisbeispiele
 
@@ -1149,9 +1149,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 2 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm): **36,99 €** pro Stück, gesamt 73,98 €
 - 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **17,99 €** pro Stück, gesamt 89,95 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C T-Shirt #E150. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C T-Shirt #E150. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -1163,15 +1163,15 @@ Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C
 
 **Kann ich ein einzelnes Geschenk bedrucken lassen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Wie lange dauert es, bis das Geschenk ankommt?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 **Sehe ich das Ergebnis vor der Produktion?**
 
-Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe. Im Konfigurator sehen Sie außerdem schon vor dem Bestellen, wie das Motiv auf dem Textil sitzt.
+Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe. Im Konfigurator siehst du außerdem schon vor dem Bestellen, wie das Motiv auf dem Textil sitzt.
 
 **Welche Dateien kann ich für Foto oder Motiv hochladen?**
 
@@ -1179,7 +1179,7 @@ SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasi
 
 **Können Familienmitglieder verschiedene Größen bekommen?**
 
-Ja. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Wie hoch sind die Versandkosten?**
 
@@ -1195,7 +1195,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 - **Kleiner Vorspann über der Überschrift:** Für Gruppen und Feiern
 - **Linktext zu dieser Seite:** JGA & Gruppenshirts
 
-Gleiche Shirts für die ganze Gruppe: JGA, Geburtstag, Klassentreffen oder Familienfeier. Es gibt 94 Modelle (T-Shirts und Hoodies); Sie laden Ihr Motiv hoch und sehen im Konfigurator, wie es sitzt – mit Preis in Echtzeit.
+Gleiche Shirts für die ganze Gruppe: JGA, Geburtstag, Klassentreffen oder Familienfeier. Es gibt 94 Modelle (T-Shirts und Hoodies); du lädst dein Motiv hoch und siehst im Konfigurator, wie es sitzt – mit Preis in Echtzeit.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -1203,21 +1203,21 @@ Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fot
 
 ### Eine Bestellung, viele Größen
 
-Alle bekommen dasselbe Motiv, jede Person ihre Größe: Im Konfigurator tragen Sie die Stückzahl je Größe ein – Größen dürfen Sie frei mischen, zum Beispiel 2× M, 6× L und 2× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Alle bekommen dasselbe Motiv, jede Person ihre Größe: Im Konfigurator trägst du die Stückzahl je Größe ein – Größen darfst du frei mischen, zum Beispiel 2× M, 6× L und 2× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 ### Motiv vorn, Spruch hinten
 
-Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.
 
 Ein mögliches Layout: ein kleines Motiv auf der Brust, der Spruch oder der Name der Gruppe groß auf dem Rücken.
 
 ### Unterschiedliche Motive in einer Bestellung
 
-Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
+Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
 
 ### Rechtzeitig planen
 
-Die Produktion dauert regulär 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Planen Sie bei Feiern mit festem Termin entsprechend Zeit ein. Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
+Die Produktion dauert regulär 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Plane bei Feiern mit festem Termin entsprechend Zeit ein. Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
@@ -1227,9 +1227,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm) und Spruch auf dem Rücken (ca. 25 × 10 cm): **22,99 €** pro Stück, gesamt 183,92 €
 - 10 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm): **28,99 €** pro Stück, gesamt 289,90 €
 
-Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -1241,19 +1241,19 @@ Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweigh
 
 **Ab wie vielen Teilen lohnt sich eine Gruppenbestellung?**
 
-Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Können wir die Größen mischen?**
 
-Ja. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Können wir unterschiedliche Motive oder Namen bestellen?**
 
-Jedes Motiv ist eine eigene Position: Konfigurieren Sie ein Teil, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
+Jedes Motiv ist eine eigene Position: Konfiguriere ein Teil, lege es in den Warenkorb und konfiguriere anschließend das nächste. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
 
 **Wie früh sollten wir bestellen?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 **Wie hoch sind die Versandkosten?**
 
@@ -1269,7 +1269,7 @@ Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bed
 - **Kleiner Vorspann über der Überschrift:** Für Creator, Bands und kleine Labels
 - **Linktext zu dieser Seite:** Merch & eigene Marke
 
-Sie möchten Merch für Ihre Community, Ihre Band oder Ihr kleines Label ausprobieren? Mit DTF-Transferdruck bestellen Sie ab einem einzelnen Stück – ohne Mindestmenge. Es gibt 100 Modelle (Hoodies, T-Shirts und Zip-Hoodies).
+Du möchtest Merch für deine Community, deine Band oder dein kleines Label ausprobieren? Mit DTF-Transferdruck bestellst du ab einem einzelnen Stück – ohne Mindestmenge. Es gibt 100 Modelle (Hoodies, T-Shirts und Zip-Hoodies).
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -1277,19 +1277,19 @@ Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fot
 
 ### Erst ein Muster, dann die Menge
 
-Bestellen Sie zuerst ein einzelnes Teil, prüfen Sie Sitz, Farbe und Druck in der Hand und erhöhen Sie danach die Menge. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Bestelle zuerst ein einzelnes Teil, prüfe Sitz, Farbe und Druck in der Hand und erhöhe danach die Menge. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
-### Was Sie vorbereiten sollten
+### Was du vorbereiten solltest
 
-- Ihr Motiv als SVG, PDF oder PNG – vektorbasierte Dateien skalieren verlustfrei.
+- Dein Motiv als SVG, PDF oder PNG – vektorbasierte Dateien skalieren verlustfrei.
 - Bei Rasterbildern genug Bildpunkte für die gewünschte Druckgröße: Ab 220 dpi gilt die Qualität im Konfigurator als optimal.
 - Die gewünschten Positionen: Brust, Rücken und – je nach Modell – Ärmel.
 
 ### Mehrere Designs und Teile
 
-Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
+Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
 
-Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe.
+Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
@@ -1299,9 +1299,9 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 5 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm): **17,99 €** pro Stück, gesamt 89,95 €
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motiv auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
 
-Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C T-Shirt #E150. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C T-Shirt #E150. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
@@ -1313,7 +1313,7 @@ Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C
 
 **Kann ich einen einzelnen Prototyp bestellen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Welche Dateien brauche ich für mein Motiv?**
 
@@ -1321,15 +1321,15 @@ SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasi
 
 **Wie sehe ich den Preis für meine Merch-Bestellung?**
 
-Im Konfigurator sehen Sie Stück- und Gesamtpreis in Echtzeit, bevor Sie etwas in den Warenkorb legen. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.
+Im Konfigurator siehst du Stück- und Gesamtpreis in Echtzeit, bevor du etwas in den Warenkorb legst. Der Preis ändert sich mit jeder Anpassung von Motiv, Fläche und Menge.
 
 **Wie lange dauert es, bis die Bestellung ankommt?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 **Welche Zahlungsmöglichkeiten gibt es?**
 
-Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+Du kannst zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; du erhältst die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
 
 Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bedrucken-besticken, /zip-hoodies-bedrucken, /druckdaten-vorbereiten, /textildruck-preise, /vereinskleidung-bedrucken
 

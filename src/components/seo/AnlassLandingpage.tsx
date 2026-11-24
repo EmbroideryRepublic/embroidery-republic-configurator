@@ -271,7 +271,7 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
             </ul>
             <p className="mt-5 text-[13px] leading-relaxed text-brand/70">
               Beispielrechnungen mit {beispielProdukte.join(', ')}. Preise pro Stück zzgl. Versand – versandkostenfrei ab{' '}
-              {freiAb}. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im
+              {freiAb}. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im
               Konfigurator live berechnet.
             </p>
           </section>
@@ -280,7 +280,7 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
         {!seite.ohneAblauf && (
           <section aria-labelledby="ablauf" className="mt-24 max-w-3xl">
             <h2 id="ablauf" className={H2_KLASSE}>
-              So läuft Ihre Bestellung ab
+              So läuft deine Bestellung ab
             </h2>
             <ol className="mt-8 space-y-4">
               {ablauf.map((schritt, i) => (
@@ -308,13 +308,13 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
             ))}
           </div>
           <p className="mt-6 text-sm text-brand/70">
-            Weitere Antworten finden Sie in den{' '}
+            Weitere Antworten findest du in den{' '}
             <Link href="/faq" className="text-gold-dark underline underline-offset-2 hover:text-gold">
               häufigen Fragen
             </Link>{' '}
             – oder{' '}
             <Link href="/kontakt" className="text-gold-dark underline underline-offset-2 hover:text-gold">
-              schreiben Sie uns
+              schreib uns
             </Link>
             .
           </p>
@@ -322,7 +322,7 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
 
         <section aria-labelledby="weiterlesen" className="mt-24 border-t border-brand/[0.08] pt-12">
           <h2 id="weiterlesen" className="font-serif text-[clamp(1.5rem,2.4vw,2rem)] font-normal tracking-tight text-brand">
-            Das könnte Sie auch interessieren
+            Das könnte dich auch interessieren
           </h2>
           <ul className="mt-6 flex flex-wrap gap-3">
             {verwandt.map((v) => (

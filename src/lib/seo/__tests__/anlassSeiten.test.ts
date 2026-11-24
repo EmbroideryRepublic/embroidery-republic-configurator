@@ -325,7 +325,7 @@ test('die Auflösungs-Ratgeber nennen das Hochskalieren ehrlich: keine neuen Det
     const s = ANLASS_SEITEN.find((x) => x.slug === slug)!;
     const text = texteVon(s).join(' ');
     assert.match(text, /Zusätzliche Details entstehen dabei nicht|keine neuen Details/);
-    assert.match(text, /nicht hochgeladen|verlässt Ihren Rechner nicht/);
+    assert.match(text, /nicht hochgeladen|verlässt deinen Rechner nicht/);
   }
 });
 

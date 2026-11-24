@@ -13,7 +13,7 @@ Alle Seiten sind nur DTF-Transferdruck (die Stickerei ist pausiert) und verlinke
 
 Hoodies fürs Trainerteam, T-Shirts für die Mannschaft, Polos für den Vorstand: Es gibt 126 Modelle (T-Shirts, Hoodies, Polos und Zip-Hoodies). Lade dein Vereinslogo hoch und sieh direkt im Konfigurator, wie es auf dem Textil sitzt – mit Preis in Echtzeit.
 
-Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · B&C Inspire Zipped Hood Jacket · James+Nicholson Workwear Half Zip Sweat
 
@@ -50,8 +50,8 @@ Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweigh
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -88,7 +88,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 
 Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt 131 Modelle (Polos, Hoodies, Jacken und T-Shirts). Lade dein Firmenlogo hoch, platziere es auf Brust, Rücken oder Ärmel und sieh den Preis in Echtzeit.
 
-Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · SOL'S Men's Plain Fleece Jacket Norman · B&C Microfleece-Duo ID501 · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T
 
@@ -125,8 +125,8 @@ Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, Fruit of the Loom Light
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -163,7 +163,7 @@ Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /hoodies-b
 
 Ein Hoodie für den ganzen Jahrgang: Wähle unter 36 Modellen (Hoodies und Zip-Hoodies), setze Jahrgang, Motto oder Namen als Text oder lade ein eigenes Motiv hoch. Der Konfigurator zeigt Vorder- und Rückseite mit Preis in Echtzeit.
 
-Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Classic Hooded Sweat · Gildan Heavy Blend Hooded Sweatshirt · B&C ID.223 Hoodie · Fruit of the Loom Iconic Premium Hooded Sweat · B&C Inspire Zipped Hood Jacket · James+Nicholson Workwear Half Zip Sweat
 
@@ -196,8 +196,8 @@ Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat. Pre
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -234,7 +234,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /zip-hoodies-
 
 Familienfoto, Haustier oder Urlaubsmotiv: Lade dein Foto hoch, platziere es auf Vorder- oder Rückseite und sieh das Ergebnis samt Preis direkt im Konfigurator. Es gibt 109 Modelle (T-Shirts, Hoodies und Longsleeves).
 
-Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Gildan Light Cotton Adult T-Shirt · B&C T-Shirt #E150 · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Iconic 195 Ringspun Premium Long Sleeve T · SOL'S Men's Long-Sleeve T-Shirt Imperial
 
@@ -263,8 +263,8 @@ Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweigh
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -334,8 +334,8 @@ Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweigh
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -422,7 +422,7 @@ Weiterführende Links am Seitenende: /druckdaten-vorbereiten, /druckdatei-pruefe
 
 Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit deinem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Fordere unten ein unverbindliches, individuelles Angebot an – wir melden uns persönlich.
 
-Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · SOL'S Men's Plain Fleece Jacket Norman · B&C Microfleece-Duo ID501
 
@@ -445,18 +445,18 @@ Wenige Angaben genügen: Branche, gewünschte Kleidung, ungefähre Stückzahl un
 - **Unternehmen** * (Platzhalter: „z. B. Mustermann Heizung GmbH“)
 - **Branche** * – Handwerk (z. B. Maler, Elektro, Sanitär und Heizung) · Gebäudereinigung und Dienstleistung · Gastronomie und Hotel · Praxis und Therapie · Verein · Fitness und Kampfsport · Salon und Studio · Sonstige Branche
 - **Ungefähre Stückzahl** * – 1–9 Stück · 10–24 Stück · 25–49 Stück · 50–99 Stück · 100 Stück und mehr · Weiß ich noch nicht
-- **Gewünschte Kleidung** * (Mehrfachauswahl möglich) – Poloshirts · T-Shirts · Hoodies und Sweatshirts · Jacken · Weiß ich noch nicht – bitte beraten Sie mich
-- **Gewünschte Veredelung** * (vorausgewählt: DTF) – DTF-Transferdruck (vollfarbiges Logo oder Motiv) · Weiß ich noch nicht – bitte beraten Sie mich
-- **Ihr Name** *, **E-Mail** *
-- **Telefon** (optional – falls wir Sie zurückrufen sollen)
-- **Logo hochladen** – optional – PNG, JPEG oder PDF, zusammen höchstens 3 MB. Ein Foto oder eine Skizze Ihres bisherigen Logos genügt. (Grenze: höchstens 2 Dateien, zusammen 3 MB; Knopf: „Datei auswählen“)
+- **Gewünschte Kleidung** * (Mehrfachauswahl möglich) – Poloshirts · T-Shirts · Hoodies und Sweatshirts · Jacken · Weiß ich noch nicht – bitte berate mich
+- **Gewünschte Veredelung** * (vorausgewählt: DTF) – DTF-Transferdruck (vollfarbiges Logo oder Motiv) · Weiß ich noch nicht – bitte berate mich
+- **Dein Name** *, **E-Mail** *
+- **Telefon** (optional – falls wir dich zurückrufen sollen)
+- **Logo hochladen** – optional – PNG, JPEG oder PDF, zusammen höchstens 3 MB. Ein Foto oder eine Skizze deines bisherigen Logos genügt. (Grenze: höchstens 2 Dateien, zusammen 3 MB; Knopf: „Datei auswählen“)
 - **Anmerkung** (optional – z. B. Wunschtermin, Farben oder besondere Wünsche)
-- **Kennung aus Ihrem Brief** (optional – steht unter dem QR-Code); mit Kennung aus dem QR-Link vorbelegt, dazu der Hinweis: „Aus Ihrem Brief übernommen.“
+- **Kennung aus deinem Brief** (optional – steht unter dem QR-Code); mit Kennung aus dem QR-Link vorbelegt, dazu der Hinweis: „Aus deinem Brief übernommen.“
 - Knopf: **Unverbindlich anfragen** (beim Senden: „Wird gesendet …“)
-- Hinweis unter dem Knopf: Mit dem Absenden werden Ihre Angaben zur Bearbeitung Ihrer Anfrage verarbeitet. Es entsteht keine Bestellung und keine Zahlungsverpflichtung.
-- Erfolg: **Anfrage gesendet** – Vielen Dank für Ihre Anfrage! Wir melden uns persönlich bei Ihnen zurück – in der Regel innerhalb eines Werktags. (Knopf: „Weitere Anfrage stellen“)
-- Fehlermeldungen: „Bitte nennen Sie Ihr Unternehmen (mindestens 2 Zeichen).“ · „Bitte wählen Sie Ihre Branche.“ · „Bitte wählen Sie mindestens eine Kleidungsart – oder „Weiß ich noch nicht“.“ · „Bitte wählen Sie eine ungefähre Stückzahl – oder „Weiß ich noch nicht“.“ · „Bitte wählen Sie eine Veredelung.“ · „Bitte geben Sie Ihren Namen an (mindestens 2 Zeichen).“ · „Bitte geben Sie eine gültige E-Mail-Adresse an.“ · „Bitte prüfen Sie die Telefonnummer (nur Ziffern, Leerzeichen und + - / ( )).“ · „Die Anmerkung ist zu lang (höchstens 1.500 Zeichen).“ · „Die Kennung hat das Format B2B-0000 und steht unter dem QR-Code Ihres Briefes.“ · „Bitte hängen Sie höchstens 2 Dateien an.“ · „Die Dateien sind zusammen zu groß (höchstens 3 MB). Größere Dateien schicken Sie uns bitte per E-Mail an info@ergermany.de.“ · „Dieses Dateiformat wird nicht unterstützt. Erlaubt sind PNG, JPEG und PDF.“
-- Sammelhinweis: „Bitte prüfen Sie die markierten Felder.“ · Sendefehler: „Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es später erneut oder schreiben Sie uns direkt per E-Mail an info@ergermany.de.“
+- Hinweis unter dem Knopf: Mit dem Absenden werden deine Angaben zur Bearbeitung deiner Anfrage verarbeitet. Es entsteht keine Bestellung und keine Zahlungsverpflichtung.
+- Erfolg: **Anfrage gesendet** – Vielen Dank für deine Anfrage! Wir melden uns persönlich bei dir zurück – in der Regel innerhalb eines Werktags. (Knopf: „Weitere Anfrage stellen“)
+- Fehlermeldungen: „Bitte nenne dein Unternehmen (mindestens 2 Zeichen).“ · „Bitte wähle deine Branche.“ · „Bitte wähle mindestens eine Kleidungsart – oder „Weiß ich noch nicht“.“ · „Bitte wähle eine ungefähre Stückzahl – oder „Weiß ich noch nicht“.“ · „Bitte wähle eine Veredelung.“ · „Bitte gib deinen Namen an (mindestens 2 Zeichen).“ · „Bitte gib eine gültige E-Mail-Adresse an.“ · „Bitte prüfe die Telefonnummer (nur Ziffern, Leerzeichen und + - / ( )).“ · „Die Anmerkung ist zu lang (höchstens 1.500 Zeichen).“ · „Die Kennung hat das Format B2B-0000 und steht unter dem QR-Code deines Briefes.“ · „Bitte hänge höchstens 2 Dateien an.“ · „Die Dateien sind zusammen zu groß (höchstens 3 MB). Größere Dateien schick uns bitte per E-Mail an info@ergermany.de.“ · „Dieses Dateiformat wird nicht unterstützt. Erlaubt sind PNG, JPEG und PDF.“
+- Sammelhinweis: „Bitte prüfe die markierten Felder.“ · Sendefehler: „Deine Anfrage konnte gerade nicht gesendet werden. Bitte versuche es später erneut oder schreib uns direkt per E-Mail an info@ergermany.de.“
 
 Schaltfläche im Kopf der Seite: **Unverbindlich Angebot anfordern** (springt zum Formular), daneben der Link „Oder selbst im Konfigurator gestalten“.
 
@@ -506,8 +506,8 @@ Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Frui
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -711,8 +711,8 @@ Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -1116,7 +1116,7 @@ Weiterführende Links am Seitenende: /dtf-druck-erklaert, /t-shirts-bedrucken-be
 
 Ein Hoodie mit Lieblingsmotiv, T-Shirts für die ganze Familie, ein Foto auf dem Longsleeve: Es gibt 109 Modelle (Hoodies, T-Shirts und Longsleeves). Du lädst dein Motiv hoch, siehst im Konfigurator, wie es auf dem Textil sitzt, und der Preis erscheint in Echtzeit.
 
-Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom Iconic 195 Ringspun Premium Long Sleeve T · SOL'S Men's Long-Sleeve T-Shirt Imperial
 
@@ -1155,8 +1155,8 @@ Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -1197,7 +1197,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 
 Gleiche Shirts für die ganze Gruppe: JGA, Geburtstag, Klassentreffen oder Familienfeier. Es gibt 94 Modelle (T-Shirts und Hoodies); du lädst dein Motiv hoch und siehst im Konfigurator, wie es sitzt – mit Preis in Echtzeit.
 
-Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Gildan Light Cotton Adult T-Shirt · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat
 
@@ -1233,8 +1233,8 @@ Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweigh
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -1271,7 +1271,7 @@ Weiterführende Links am Seitenende: /t-shirts-bedrucken-besticken, /hoodies-bed
 
 Du möchtest Merch für deine Community, deine Band oder dein kleines Label ausprobieren? Mit DTF-Transferdruck bestellst du ab einem einzelnen Stück – ohne Mindestmenge. Es gibt 100 Modelle (Hoodies, T-Shirts und Zip-Hoodies).
 
-Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Abschnitt „Passende Modelle“:** Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · B&C Inspire Zipped Hood Jacket · James+Nicholson Workwear Half Zip Sweat
 
@@ -1305,8 +1305,8 @@ Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen

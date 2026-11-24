@@ -235,7 +235,7 @@ export default async function Startseite() {
                   <span className="block text-[14px] font-semibold text-brand">
                     {PRODUKTIONSTAGE.von}–{PRODUKTIONSTAGE.bis} Werktage
                   </span>
-                  <span className="block text-[12px] text-brand/70">von Bestellung bis Versand</span>
+                  <span className="block text-[12px] text-brand/70">Produktion ab Bestellfreigabe</span>
                 </span>
               </div>
             </div>
@@ -368,12 +368,14 @@ export default async function Startseite() {
               Eigenes – die ruhigere, zweispaltige Form markiert sie als
               Zwischenschritt, nicht als dritten Verkaufsblock in Folge. */}
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            {/* Betreiberschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, verspricht der Abschnitt nur den DTF-Transferdruck. */}
             <h2 className="max-w-md font-serif text-[clamp(1.75rem,2.8vw,2.5rem)] font-normal leading-[1.15] tracking-[-0.015em] text-brand">
-              Zwei Wege zu deinem Motiv.
+              {veredelungVerfuegbar('embroidery') ? 'Zwei Wege zu deinem Motiv.' : 'So kommt dein Motiv aufs Textil.'}
             </h2>
             <p className="max-w-md text-[15px] leading-relaxed text-brand/70 lg:text-right">
-              Je nach Material und Motiv fällt die Wahl unterschiedlich aus – DTF-Transferdruck für
-              Farbverläufe und große Flächen, Stickerei für Logos, die lange halten sollen.
+              {veredelungVerfuegbar('embroidery')
+                ? 'Je nach Material und Motiv fällt die Wahl unterschiedlich aus – DTF-Transferdruck für Farbverläufe und große Flächen, Stickerei für Logos, die lange halten sollen.'
+                : 'DTF-Transferdruck eignet sich für Farbverläufe und große Flächen. Die Stickerei ist vorübergehend nicht verfügbar.'}
             </p>
           </div>
 
@@ -412,7 +414,7 @@ export default async function Startseite() {
           <Zielgruppe
             icon={Building2}
             titel="Für deine Marke"
-            text="Baue dein eigenes Label auf: dein Logo, gestickt oder gedruckt, auf Teilen, die auch ohne Logo überzeugen."
+            text={veredelungVerfuegbar('embroidery') ? 'Baue dein eigenes Label auf: dein Logo, gestickt oder gedruckt, auf Teilen, die auch ohne Logo überzeugen.' : 'Baue dein eigenes Label auf: dein Logo, gedruckt, auf Teilen, die auch ohne Logo überzeugen.'}
             linkHref="/kontakt"
             linkLabel="Anfrage stellen"
             bild={markenBild}
@@ -442,7 +444,7 @@ export default async function Startseite() {
                 <span className="block text-gold">Perfekt platziert.</span>
               </h2>
               <p className="mt-7 max-w-md text-[16px] leading-relaxed text-white/75">
-                Gestalte dein Textil direkt online – mit unserem Konfigurator für hochwertigen DTF-Druck. Logo hochladen oder Text setzen, auf Vorderseite, Rückseite und Ärmeln platzieren. Die Vorschau zeigt jede Änderung sofort – samt Maßen in Zentimetern und aktuellem Preis.
+                Gestalte dein Textil direkt online – mit unserem Konfigurator für hochwertigen DTF-Druck. Logo hochladen oder Text setzen, auf Vorderseite, Rückseite und – je nach Modell – den Ärmeln platzieren. Die Vorschau zeigt jede Änderung sofort – samt Maßen in Zentimetern und aktuellem Preis.
               </p>
               <Link
                 href="/konfigurator"
@@ -475,7 +477,7 @@ export default async function Startseite() {
           </div>
 
           <ul className="mt-20 grid gap-x-10 gap-y-12 border-t border-white/10 pt-14 sm:grid-cols-2 lg:grid-cols-4">
-            <Schritt nr="01" titel="Vier Ansichten" text="Vorne, hinten und beide Ärmel – jede Fläche einzeln gestaltbar." />
+            <Schritt nr="01" titel="Bis zu vier Ansichten" text="Vorne, hinten und – je nach Modell – beide Ärmel: jede Fläche einzeln gestaltbar." />
             <Schritt nr="02" titel="Echte Maße" text="Jedes Motiv erscheint in Zentimetern, nicht in Pixeln." />
             <Schritt nr="03" titel="Preis in Echtzeit" text="Stück- und Gesamtpreis ändern sich mit jeder Anpassung." />
             <Schritt nr="04" titel="Kein Minimum" text="Ein Stück reicht – ab fünf zahlst du den Staffelpreis." />

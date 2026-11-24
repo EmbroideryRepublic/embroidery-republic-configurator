@@ -18,6 +18,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { PAYMENT_TERM_DAYS, PRODUKTIONSTAGE } from '@/config/company';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 import type { TranslationKey } from '@/lib/i18n/translations';
 
 // Spiegelt die Kopfzeile (SiteHeader) plus Startseite – damit Haupt- und
@@ -49,7 +50,7 @@ export function FooterDescription() {
   const language = useLanguageStore((s) => s.language);
   return (
     <p className="mt-3 max-w-xs text-xs leading-relaxed text-brand/70">
-      {translate('footer_description', language)}
+      {translate(veredelungVerfuegbar('embroidery') ? 'footer_description' : 'footer_description_dtf', language)}
     </p>
   );
 }
@@ -125,5 +126,5 @@ export function FooterFreeShippingLabel() {
 
 export function FooterBottomTagline({ city }: { city: string }) {
   const language = useLanguageStore((s) => s.language);
-  return <p className="text-xs text-brand/70">{translate('footer_bottom_tagline', language, { city })}</p>;
+  return <p className="text-xs text-brand/70">{translate(veredelungVerfuegbar('embroidery') ? 'footer_bottom_tagline' : 'footer_bottom_tagline_dtf', language, { city })}</p>;
 }

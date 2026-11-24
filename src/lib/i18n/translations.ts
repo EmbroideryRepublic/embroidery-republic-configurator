@@ -39,6 +39,9 @@ export const translations = {
     footer_info_heading: 'Gut zu wissen',
     footer_description:
       'Firmen- und Teambekleidung veredelt per DTF-Transferdruck und Stickerei – live konfigurierbar, ab kleiner Menge.',
+    // Solange die Stickerei pausiert ist (config/bestellweg.ts), nennt die Fußzeile nur den DTF-Transferdruck.
+    footer_description_dtf:
+      'Firmen- und Teambekleidung veredelt per DTF-Transferdruck – live konfigurierbar, ab kleiner Menge.',
     footer_nav_home: 'Startseite',
     footer_legal_impressum: 'Impressum',
     footer_legal_datenschutz: 'Datenschutz',
@@ -50,6 +53,7 @@ export const translations = {
     footer_fact_free_shipping: 'Versandkostenfrei ab',
     footer_fact_invoice: 'Rechnung, Karte & PayPal',
     footer_bottom_tagline: 'DTF-Transferdruck & Stickerei · Made to order in {city}',
+    footer_bottom_tagline_dtf: 'DTF-Transferdruck · Made to order in {city}',
 
     step_product: 'Produkt & Größe',
     step_element: 'Motiv hinzufügen',
@@ -472,6 +476,8 @@ export const translations = {
     footer_info_heading: 'Good to know',
     footer_description:
       'Corporate and team apparel finished with DTF transfer printing and embroidery – configure it live, from a small quantity.',
+    footer_description_dtf:
+      'Corporate and team apparel finished with DTF transfer printing – configure it live, from a small quantity.',
     footer_nav_home: 'Home',
     footer_legal_impressum: 'Legal notice',
     footer_legal_datenschutz: 'Privacy policy',
@@ -481,6 +487,7 @@ export const translations = {
     footer_fact_free_shipping: 'Free shipping from',
     footer_fact_invoice: 'Invoice, card & PayPal',
     footer_bottom_tagline: 'DTF transfer printing & embroidery · Made to order in {city}',
+    footer_bottom_tagline_dtf: 'DTF transfer printing · Made to order in {city}',
 
     step_product: 'Product & size',
     step_element: 'Add artwork',

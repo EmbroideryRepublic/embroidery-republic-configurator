@@ -64,7 +64,7 @@ Die bisherige Rollenaufteilung des Projekts (`gold` für Große, `gold-dark` fü
 | **Produktseite** | größeres Bild, ruhige Kaufleiste, Preisstaffel als Tabelle, Abschnitte als Karten | Farbwahl, Preise, Staffelpreise, JSON-LD, Größentabellen |
 | **Konfigurator** | nur Gestaltung: Farben, Tabs, Knöpfe, Preisfeld, Kopfzeile; **Layout und Leinwand bleiben unverändert** (eingefrorenes v1.0, Konva) | alles |
 | **Warenkorb und Kasse** | Schublade und Formular im neuen Stil, Zahlungsarten, Preiszeilen und Hinweise unverändert | alles |
-| **Fußzeile** | dunkle Fußzeile (brand), Spalten: Shop, Ratgeber, Unternehmen, Rechtliches; Zahlungsarten und Kontakt wie bisher | Impressum, Datenschutz, AGB, Verlinkung |
+| **Fußzeile** | sandfarbene Fußzeile (umgesetzt; eine dunkle Fußzeile hätte die Linkfarben der 40 Verweise neu verlangt), Wortmarke wie in der Kopfzeile; Spalten, Kontakt und SEO-Verweise unverändert | Impressum, Datenschutz, AGB, Verlinkung |
 
 ## 4. Wortlaut (Freigabe nötig)
 
@@ -107,3 +107,7 @@ Die Auslieferung erfolgt etappenweise nach bestandener Prüfung (Push auf `main`
 3. **Ton (Du/Sie):** siehe Abschnitt 4.
 4. **Schriftwechsel:** Fehlt Playfair, ändert sich der Gesamteindruck bewusst von „klassisch-edel“ zu „modern-kräftig“; das ist der Kern der Referenz.
 5. **Konfigurator:** nur Farben und Knöpfe; das Layout bleibt, weil die Leinwand an feste Maße gekoppelt ist.
+
+## 8. Umsetzungsstand (24.11.2026, spät)
+
+Etappen 1 bis 3 sind umgesetzt und lokal geprüft (Branch arbeit-redesign): Designsystem über die Tailwind-Token, neue Kopfzeile mit Shop-Menü und Konfigurator-Knopf, Startseite nach Referenz, Fußzeile. Alle 1.711 Tests bestehen (zwei Tests wurden an die neue Farbpalette und den neuen Startseitenaufbau angepasst, ohne ihre Schutzfunktion zu verändern). Etappen 4 bis 6 (Feinschliff Kategorie-, Anlass-, Ratgeber- und Produktseiten, Kasse und Warenkorb, Gesamtprüfung) folgen; die Gestaltung dieser Seiten kommt bereits über die Token.

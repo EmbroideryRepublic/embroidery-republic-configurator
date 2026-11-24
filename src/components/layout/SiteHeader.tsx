@@ -46,7 +46,7 @@ const HAUPT_LINKS: { href: string; label: string }[] = [
 ];
 
 const NAV_KLASSE =
-  'rounded-md px-1 py-2 text-[14px] font-semibold text-brand transition-colors hover:text-gold-dark focus-visible:text-gold-dark';
+  'whitespace-nowrap rounded-md px-1 py-2 text-[14px] font-semibold text-brand transition-colors hover:text-gold-dark focus-visible:text-gold-dark';
 
 export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
   // Unter lg gibt es keinen Platz für die Navigationsleiste; ohne dieses Menü war auf dem Telefon KEINE Seite erreichbar.
@@ -93,7 +93,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
           </span>
         </Link>
 
-        <nav aria-label="Hauptnavigation" className="hidden items-center gap-7 border-l border-brand/10 pl-7 lg:flex">
+        <nav aria-label="Hauptnavigation" className="hidden items-center gap-6 border-l border-brand/10 pl-6 xl:flex 2xl:gap-7">
           {/* Shop-Menü: öffnet bei Hover UND bei Tastaturfokus (focus-within); ohne JavaScript bedienbar. */}
           <div className="group relative">
             <Link href="/produkt" className={`${NAV_KLASSE} inline-flex items-center gap-1`}>
@@ -206,7 +206,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
             onClick={() => setMenueOffen(!menueOffen)}
             aria-expanded={menueOffen}
             aria-label="Menü"
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-full border border-brand/15 bg-white p-2 text-brand transition-colors hover:border-brand lg:hidden"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full border border-brand/15 bg-white p-2 text-brand transition-colors hover:border-brand xl:hidden"
           >
             {menueOffen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -215,7 +215,7 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
 
       {/* Mobile Navigation – erscheint unter der Kopfzeile. */}
       {menueOffen && (
-        <nav className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-brand/10 bg-cream px-4 pb-4 lg:hidden" aria-label="Hauptnavigation">
+        <nav className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-brand/10 bg-cream px-4 pb-4 xl:hidden" aria-label="Hauptnavigation">
           {/* Unter 640px sind Sprach- und Währungsumschalter sonst nirgends erreichbar (die Fassung oben blendet sich dort
               per sm:flex/sm:block komplett aus) – hier dieselben Umschalter, nur sichtbar solange die obigen es nicht sind. */}
           <div className="flex items-center gap-3 border-b border-brand/10 py-3 sm:hidden">

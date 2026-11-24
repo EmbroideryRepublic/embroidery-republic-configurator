@@ -111,7 +111,8 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
   {
     art: 'hoodie',
     slug: 'hoodies-bedrucken-besticken',
-    titel: 'Hoodies bedrucken & besticken lassen – ab 1 Stück',
+    // Titel ohne „besticken“ (Freigabe 2026-11-24, Stickerei pausiert); Wiederaufnahme: „Hoodies bedrucken & besticken lassen – ab 1 Stück“.
+    titel: 'Hoodies bedrucken lassen – ab 1 Stück, DTF-Druck',
     h1: 'Hoodies bedrucken & besticken lassen',
     beschreibung:
       '{anzahl} Hoodies von {marken3} u. a. mit Logo oder Motiv veredeln: DTF-Transferdruck oder Stickerei, live im Konfigurator, ab 1 Stück.',
@@ -153,7 +154,8 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
   {
     art: 'tshirt',
     slug: 't-shirts-bedrucken-besticken',
-    titel: 'T-Shirts bedrucken & besticken lassen – ab 1 Stück',
+    // Wiederaufnahme der Stickerei: „T-Shirts bedrucken & besticken lassen – ab 1 Stück“.
+    titel: 'T-Shirts bedrucken lassen – ab 1 Stück, DTF-Druck',
     h1: 'T-Shirts bedrucken & besticken lassen',
     beschreibung:
       '{anzahl} T-Shirts von {marken3} u. a. mit Logo oder Motiv veredeln: DTF-Transferdruck oder Stickerei, live im Konfigurator, ab 1 Stück.',
@@ -209,7 +211,8 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
   {
     art: 'polo',
     slug: 'poloshirts-besticken-bedrucken',
-    titel: 'Poloshirts besticken & bedrucken lassen – ab 1 Stück',
+    // Wiederaufnahme der Stickerei: „Poloshirts besticken & bedrucken lassen – ab 1 Stück“.
+    titel: 'Poloshirts bedrucken lassen – ab 1 Stück, DTF-Druck',
     h1: 'Poloshirts besticken & bedrucken lassen',
     beschreibung:
       '{anzahl} Poloshirts von {marken3} u. a. mit Firmenlogo besticken oder bedrucken: live im Konfigurator gestalten, ab 1 Stück, ohne Mindestmenge.',

@@ -9,15 +9,16 @@ import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
  * hat er eine sprechende Adresse – Einstiege aus Katalog, FAQ und Navigation
  * zeigen hierher, Produktvorwahl weiterhin über `?produkt=<id>`.
  */
+// Titel/Beschreibung ohne Stickerei (Freigabe 2026-11-24, Stickerei pausiert; Wortlaut: seo-bestandsaufnahme-2026-11-24.md).
 export const metadata: Metadata = {
-  title: 'Konfigurator',
+  title: { absolute: 'T-Shirt, Hoodie & Polo online gestalten | Konfigurator' },
   description:
-    'Gestalte deine Textilien selbst: Logo oder Text platzieren, Farbe und Größe wählen, Preis sofort sehen. Veredelt per DTF-Transferdruck oder Stickerei.',
+    'Logo oder Text auf T-Shirt, Hoodie oder Polo platzieren, Farbe und Größe wählen, Preis sofort sehen – DTF-Transferdruck ab 1 Stück, ohne Mindestmenge.',
   alternates: { canonical: '/konfigurator' },
   openGraph: {
-    title: 'Konfigurator',
+    title: 'T-Shirt, Hoodie & Polo online gestalten | Konfigurator',
     description:
-      'Logo oder Text platzieren, Farbe und Größe wählen, Preis sofort sehen – veredelt per DTF-Transferdruck oder Stickerei.',
+      'Logo oder Text platzieren, Farbe und Größe wählen, Preis sofort sehen – DTF-Transferdruck ab 1 Stück, ohne Mindestmenge.',
     images: [STANDARD_VORSCHAUBILD],
   },
 };
@@ -28,7 +29,7 @@ export default function KonfiguratorSeite() {
       {/* Für Screenreader und Dokumentstruktur: der Konfigurator brachte bisher
           keine h1 mit. Visuell versteckt, damit das eingefrorene v1.0-Layout
           unberührt bleibt. */}
-      <h1 className="sr-only">Konfigurator – Textilien mit Druck oder Stickerei gestalten</h1>
+      <h1 className="sr-only">Konfigurator – Textilien mit Logo oder Motiv gestalten</h1>
       <ConfiguratorPrototype />
     </main>
   );

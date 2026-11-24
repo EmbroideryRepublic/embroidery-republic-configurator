@@ -72,7 +72,9 @@ export const metadata: Metadata = {
   // abgeschnitten; „Textilveredelung" ist Fachsprache, die kaum jemand sucht).
   // Bewusst OHNE Ortsbezug: Der Betreiber will auf der Website nichts zu Köln
   // veröffentlichen. Produktbezogene Suchen bedienen die Kategorieseiten.
-  title: { absolute: 'Textilien bedrucken & besticken lassen | Embroidery Republic' },
+  // Freigabe des Betreibers 2026-11-24: „besticken“ aus dem Titel, solange die Stickerei pausiert ist (Wiederaufnahme: zurück auf
+  // „Textilien bedrucken & besticken lassen | Embroidery Republic“). Suchanfragen „besticken“ ließen sich ohnehin nicht bedienen.
+  title: { absolute: 'Textilien bedrucken lassen ab 1 Stück | Embroidery Republic' },
   // Solange die Stickerei pausiert ist (config/bestellweg.ts), verspricht die Beschreibung nur DTF-Transferdruck.
   description: veredelungVerfuegbar('embroidery')
     ? 'Hochwertige Stickerei und DTF-Transferdruck für Unternehmen, Vereine und Marken. Selbst gestalten im Konfigurator – ab 1 Stück, ohne Mindestbestellmenge.'

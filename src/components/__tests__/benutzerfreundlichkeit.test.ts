@@ -49,7 +49,8 @@ test('Kontrast: Weiße Schrift steht auf bg-gold-btn (5,0:1), nicht auf dem hell
     quelltext(path.relative(process.cwd(), datei))
       .split('\n')
       .forEach((zeile, i) => {
-        if (/text-white/.test(zeile) && /(^|[\s"'`{])bg-gold([\s"'`}]|$)/.test(zeile)) verstoesse.push(`${path.relative(process.cwd(), datei)}:${i + 1}`);
+        // Auch Zustandspräfixe (hover:, focus:, group-hover: …) zählen: Das Orange #e8590c trägt weiße Schrift nur mit 3,58:1.
+        if (/text-white/.test(zeile) && /(^|[\s"'`{:])bg-gold([\s"'`}]|$)/.test(zeile)) verstoesse.push(`${path.relative(process.cwd(), datei)}:${i + 1}`);
       });
   }
   assert.deepEqual(verstoesse, []);

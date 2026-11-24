@@ -53,6 +53,14 @@ test('Produktseite, Shop und Startseite lesen den Betreiberschalter für ihre St
   // Startseite (Redesign 2026-11): Die Vorteilsleiste nennt kein Verfahren mehr; die Beschreibung der Seite liest den Schalter weiter.
   assert.match(start, /veredelungVerfuegbar\('embroidery'\)\s*\? 'Hochwertige Stickerei und DTF-Transferdruck/);
   assert.match(start, /: 'DTF-Transferdruck für Unternehmen, Vereine und Marken/);
+  // Die übrigen Stickerei-Stellen der Startseite und die Fußzeile lesen den Schalter ebenfalls (Review 2026-11-24).
+  assert.match(start, /veredelungVerfuegbar\('embroidery'\) \? 'Zwei Wege zu deinem Motiv\.'/, 'Abschnittsüberschrift');
+  assert.match(start, /veredelungVerfuegbar\('embroidery'\)\s*\? 'Baue dein eigenes Label auf: dein Logo, gestickt oder gedruckt/, 'Marken-Karte');
+  const fusszeile = readFileSync('src/components/layout/FooterText.tsx', 'utf8');
+  assert.match(fusszeile, /veredelungVerfuegbar\('embroidery'\) \? 'footer_description' : 'footer_description_dtf'/, 'Fußzeilen-Beschreibung');
+  assert.match(fusszeile, /veredelungVerfuegbar\('embroidery'\) \? 'footer_bottom_tagline' : 'footer_bottom_tagline_dtf'/, 'Fußzeilen-Zeile');
+  const layout = readFileSync('src/app/layout.tsx', 'utf8');
+  assert.match(layout, /default: STICKEREI_AN/, 'Standardtitel liest den Schalter');
 });
 
 test('Kategorie-Reiter scrollt den aktiven Reiter in die Mitte der Reihe (nicht die Seite)', () => {

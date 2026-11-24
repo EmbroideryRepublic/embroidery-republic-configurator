@@ -55,20 +55,20 @@ async function stosseErstattungAnFallsNoetig(orderId: string, erstattungAusstehe
 }
 
 const STORNO_MELDUNGEN: Record<Extract<StornoErgebnis, { ok: false }>['grund'], string> = {
-  'nicht-gefunden': 'Die Bestellung wurde nicht gefunden. Bitte kontaktiere uns direkt.',
+  'nicht-gefunden': 'Die Bestellung wurde nicht gefunden. Bitte kontaktieren Sie uns direkt.',
   'frist-abgelaufen':
-    'Die Stornofrist ist inzwischen abgelaufen. Bitte kontaktiere uns – wir prüfen, was sich noch machen lässt.',
-  'keine-bestellung': 'Für Anfragen gibt es keine Stornierung. Bitte kontaktiere uns direkt.',
+    'Die Stornofrist ist inzwischen abgelaufen. Bitte kontaktieren Sie uns – wir prüfen, was sich noch machen lässt.',
+  'keine-bestellung': 'Für Anfragen gibt es keine Stornierung. Bitte kontaktieren Sie uns direkt.',
   'nicht-stornierbar':
-    'Diese Bestellung ist bereits abgeschlossen und kann nicht mehr storniert werden. Bitte kontaktiere uns direkt.',
-  fehler: 'Die Stornierung konnte technisch nicht abgeschlossen werden. Bitte kontaktiere uns direkt.',
+    'Diese Bestellung ist bereits abgeschlossen und kann nicht mehr storniert werden. Bitte kontaktieren Sie uns direkt.',
+  fehler: 'Die Stornierung konnte technisch nicht abgeschlossen werden. Bitte kontaktieren Sie uns direkt.',
 };
 
 export async function storniereBestellungAction(anfrage: StornoAnfrage): Promise<StornoAktionErgebnis> {
   if (anfrage.art === 'konto') {
     const kunde = await aktuellerKunde();
     if (!kunde) {
-      return { ok: false, fehler: 'Deine Sitzung ist abgelaufen. Bitte melde dich erneut an.' };
+      return { ok: false, fehler: 'Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.' };
     }
 
     // Wie beim Token: wiederholte Fehlversuche deuten auf Raten hin.
@@ -103,7 +103,7 @@ export async function storniereBestellungAction(anfrage: StornoAnfrage): Promise
 
   const zugriff = await pruefeBestellzugriff({ art: 'token', token });
   if (!zugriff.erlaubt) {
-    return { ok: false, fehler: 'Dieser Link ist nicht mehr gültig. Bitte kontaktiere uns direkt.' };
+    return { ok: false, fehler: 'Dieser Link ist nicht mehr gültig. Bitte kontaktieren Sie uns direkt.' };
   }
 
   const ergebnis = await storniereBestellungDurchKunden(zugriff.orderId);

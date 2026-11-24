@@ -33,7 +33,7 @@ export function SupplierOrderActions({ orderId, supplierId }: { orderId: string;
         type="button"
         disabled={isPending}
         onClick={() => run(retrySupplierOrderAction as ActionFn, 'Erneut angestoßen')}
-        className={`${btn} border-gold text-gold-dark hover:bg-gold hover:text-white`}
+        className={`${btn} border-gold text-gold-dark hover:bg-gold-dark hover:text-white`}
       >
         Erneut anstoßen
       </button>

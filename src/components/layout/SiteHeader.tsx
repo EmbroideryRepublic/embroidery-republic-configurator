@@ -21,7 +21,8 @@ interface SiteHeaderProps {
 /**
  * Kopfzeile (Redesign 2026-11, nach der Designreferenz): Wortmarke links, Hauptnavigation mittig, rechts Konfigurator-Knopf,
  * Konto und Warenkorb mit Zähler. Alle bisherigen Ziele bleiben erreichbar: Konfigurator, Produkte, Über uns, FAQ, Kontakt und
- * Konto stehen im „Shop“-Menü bzw. im Mobilmenü; Über uns, FAQ und Kontakt zusätzlich in der Fußzeile.
+ * Konto stehen im Mobilmenü (unter 1280 px); auf dem Desktop führen Über uns, FAQ und Kontakt über die Fußzeile (Konto über das Symbol),
+ * der Konfigurator über den Knopf, die Produkte über das „Shop“-Menü.
  * Funktion unverändert: Der Warenkorb-Knopf öffnet im Konfigurator dessen eigene Schublade (onCartClick), sonst die globale.
  */
 
@@ -100,15 +101,19 @@ export function SiteHeader({ onCartClick, onCompareClick }: SiteHeaderProps) {
               Shop
               <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden />
             </Link>
-            <ul className="invisible absolute left-0 top-full z-50 mt-1 min-w-[15rem] rounded-2xl border border-brand/10 bg-white p-2 opacity-0 shadow-elegant transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-              {SHOP_LINKS.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="block rounded-xl px-3.5 py-2.5 text-[14px] font-medium text-brand transition-colors hover:bg-cream-dark hover:text-gold-dark">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Der Wrapper trägt den Abstand als Innenabstand (pt-1) statt als Außenabstand: Zwischen „Shop“ und Liste gibt es keine Lücke,
+                in der .group:hover endet – sonst schloss sich das Menü beim langsamen Hinabfahren (Review 2026-11-24). */}
+            <div className="invisible absolute left-0 top-full z-50 min-w-[15rem] pt-1 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+              <ul className="rounded-2xl border border-brand/10 bg-white p-2 shadow-elegant">
+                {SHOP_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="block rounded-xl px-3.5 py-2.5 text-[14px] font-medium text-brand transition-colors hover:bg-cream-dark hover:text-gold-dark">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           {HAUPT_LINKS.map((link) => (
             <Link key={link.label} href={link.href} className={NAV_KLASSE}>

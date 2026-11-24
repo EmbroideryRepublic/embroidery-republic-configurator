@@ -47,7 +47,7 @@ export function CancelOrderButton({ token, orderId, fristBis }: CancelOrderButto
     <div className="rounded-md border border-red-200 bg-red-50 p-4">
       <p className="text-sm font-medium text-red-900">Bestellung wirklich stornieren?</p>
       <p className="mt-1 text-xs text-red-800">
-        Die Stornierung kann nicht rückgängig gemacht werden. Du erhältst anschließend eine Bestätigung per E-Mail.
+        Die Stornierung kann nicht rückgängig gemacht werden. Sie erhalten anschließend eine Bestätigung per E-Mail.
       </p>
       {fehler && <p className="mt-2 text-xs font-medium text-red-900">{fehler}</p>}
       <div className="mt-3 flex flex-wrap gap-2">

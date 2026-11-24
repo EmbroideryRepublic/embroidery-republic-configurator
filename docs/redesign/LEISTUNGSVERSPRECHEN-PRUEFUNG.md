@@ -15,3 +15,10 @@ Quellen der Wahrheit: `src/config/company.ts` (`PRODUKTIONSTAGE` 3–4 Werktage,
 | Preise, Staffelpreise, Vorschau und Gesamtpreis im Konfigurator | Durchlauf im Produktions-Build: 12 × 17,99 € = 215,88 € (Staffelhinweis „Noch 8 Stück – dann nur noch 16,99 €“) | stimmt, unverändert |
 
 **Noch offen (Entscheidung des Betreibers):** Die Produkttitel „… bedrucken & besticken | Marke“ auf 182 Produktseiten nennen weiter die Stickerei (`src/lib/seo/produktTitel.ts`). Vorschlag „{Name} bedrucken | {Marke}“, Wortlaut zur Freigabe.
+
+## Nachtrag nach dem unabhängigen Review (24.11.2026)
+
+- **Stickerei in FAQ und „Über uns“ ohne Betriebsschalter** (`src/app/faq/page.tsx`, `src/app/ueber-uns/page.tsx`, `kontakt_helper_1_text` in den Übersetzungen): Sie sagen „Stickerei gibt es nur auf Anfrage“. Solange die Stickerei pausiert ist, lehnen Bestellung und Anfrage sie ab. Das lag schon vor dem Redesign so und ist **offen**; Vorschlag: gleiche Schalterlogik wie auf der Startseite, Wortlaut zur Freigabe.
+- **Gefunden und behoben:** weiße Schrift auf dem hellen Orange beim Hover (3,58 : 1) am Knopf „Konfigurator öffnen“ und im Admin; der Kontrasttest erkennt jetzt auch Zustandspräfixe (`hover:` usw.).
+- **Gefunden und behoben:** Shop-Menü schloss sich beim langsamen Hinabfahren mit der Maus (Lücke zwischen Link und Liste).
+- **Gefunden und behoben:** im Storno-Kasten standen „Sie“ und „du“ nebeneinander. Der Storno-Bereich bleibt bis zur Freigabe vollständig in der Sie-Form (`WORTLAUT-ZUR-FREIGABE-DU.md`).

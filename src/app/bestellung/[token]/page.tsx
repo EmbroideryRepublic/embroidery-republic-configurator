@@ -186,7 +186,7 @@ export default async function BestellAnsichtSeite(props: { params: Promise<{ tok
               inzwischen in Bearbeitung.
             </p>
             <p className="mt-2 text-sm text-brand/70">
-              Du hast trotzdem eine Frage oder einen Sonderfall? Melde dich gern direkt bei uns – wir schauen,
+              Sie haben trotzdem eine Frage oder einen Sonderfall? Melden Sie sich gern direkt bei uns – wir schauen,
               was sich machen lässt.
             </p>
             <div className="mt-3 flex flex-wrap gap-4 text-sm">

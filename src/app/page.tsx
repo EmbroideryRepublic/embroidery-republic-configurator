@@ -407,7 +407,7 @@ export default async function Startseite() {
           <Zielgruppe
             icon={Users}
             titel="Für dein Team"
-            text="Einheitliche Kleidung für Verein, Firma oder Event – mit Staffelpreisen und eurem Logo auf jedem Teil."
+            text="Einheitliche Kleidung für Verein, Firma oder Event – mit Staffelpreisen und deinem Logo auf jedem Teil."
             linkHref="/konfigurator"
             linkLabel="Team ausstatten"
           />
@@ -448,7 +448,7 @@ export default async function Startseite() {
               </p>
               <Link
                 href="/konfigurator"
-                className="group mt-9 inline-flex items-center gap-3 rounded-full bg-gold-btn px-8 py-4 text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-gold active:scale-[0.98]"
+                className="group mt-9 inline-flex items-center gap-3 rounded-full bg-gold-btn px-8 py-4 text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-gold-dark active:scale-[0.98]"
               >
                 Konfigurator öffnen
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />

@@ -34,3 +34,8 @@ Wortlaut im Shop von „Sie“ auf „du“ umgestellt; die Tests hielten den al
 ## C. Nicht angefasst
 
 Tests, die E-Mail-Wortlaut festhalten (`src/lib/orders/__tests__/mailfluss.test.ts`): E-Mail-Vorlagen und rechtsnahe Texte werden erst mit der Wortlaut-Freigabe umgestellt.
+
+## D. Ergänzungen nach dem unabhängigen Review (24.11.2026)
+
+- `benutzerfreundlichkeit.test.ts`, Test „Kontrast: Weiße Schrift steht auf bg-gold-btn …“: Der Suchausdruck erkennt jetzt auch Zustandspräfixe (`hover:bg-gold`, `focus:bg-gold`). Das **verschärft** den Test; er fand zwei Stellen, die behoben wurden.
+- `veredelungsverfahren.test.ts`: fünf zusätzliche Assertions, dass Abschnittsüberschrift, Marken-Karte, Fußzeilenbeschreibung, Fußzeilenzeile und Standardtitel im Layout den Betriebsschalter lesen. Das **erweitert** die Abdeckung der Stickerei-Pause.

@@ -287,10 +287,10 @@ export default async function Startseite() {
                 )}
               </div>
               <div className="flex items-center justify-between gap-2 border-t border-brand/10 bg-cream px-4 py-3.5">
-                <span className="font-serif text-[18px] text-brand transition-colors group-hover:text-gold-dark sm:text-[21px]">{produktTypLabelPlural(art)}</span>
+                <span className="whitespace-nowrap font-serif text-[16px] text-brand transition-colors group-hover:text-gold-dark sm:text-[21px]">{produktTypLabelPlural(art)}</span>
                 <span className="flex items-center gap-2 text-brand">
                   <span className="rounded-full bg-brand/[0.07] px-2 py-0.5 text-[12px] font-semibold tabular-nums">{anzahl}</span>
-                  <ArrowRight className="h-4 w-4 text-gold-dark transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                  <ArrowRight className="hidden h-4 w-4 text-gold-dark transition-transform duration-300 group-hover:translate-x-1 sm:block" aria-hidden />
                 </span>
               </div>
             </Link>

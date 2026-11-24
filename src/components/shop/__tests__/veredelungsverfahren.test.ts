@@ -50,7 +50,9 @@ test('Produktseite, Shop und Startseite lesen den Betreiberschalter für ihre St
   const shop = readFileSync('src/app/produkt/page.tsx', 'utf8');
   assert.match(shop, /'Veredelt per DTF-Transferdruck · ohne Mindestbestellmenge'/);
   const start = readFileSync('src/app/page.tsx', 'utf8');
-  assert.match(start, /veredelungVerfuegbar\('embroidery'\) \? 'Stickerei & DTF-Transferdruck' : 'DTF-Transferdruck'/);
+  // Startseite (Redesign 2026-11): Die Vorteilsleiste nennt kein Verfahren mehr; die Beschreibung der Seite liest den Schalter weiter.
+  assert.match(start, /veredelungVerfuegbar\('embroidery'\)\s*\? 'Hochwertige Stickerei und DTF-Transferdruck/);
+  assert.match(start, /: 'DTF-Transferdruck für Unternehmen, Vereine und Marken/);
 });
 
 test('Kategorie-Reiter scrollt den aktiven Reiter in die Mitte der Reihe (nicht die Seite)', () => {

@@ -20,7 +20,7 @@ export function HeroText() {
     <>
       <h1
         aria-label={titel.replace(/\n/g, ' ')}
-        className="font-serif text-[clamp(2.5rem,5.4vw,5.25rem)] font-black uppercase leading-[1.02] tracking-[-0.03em] text-brand"
+        className="font-serif text-[clamp(1.9rem,5.4vw,5.25rem)] font-black uppercase leading-[1.02] tracking-[-0.03em] text-brand"
       >
         {zeilen.map((zeile, i) => (
           <span key={i} className="block">

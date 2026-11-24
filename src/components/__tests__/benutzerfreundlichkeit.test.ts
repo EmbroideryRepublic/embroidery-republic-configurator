@@ -57,9 +57,10 @@ test('Kontrast: Weiße Schrift steht auf bg-gold-btn (5,0:1), nicht auf dem hell
 
 test('Kontrast: Die Goldtöne in der Konfiguration sind die geprüften Werte', () => {
   const konfig = quelltext('tailwind.config.ts');
-  assert.match(konfig, /DEFAULT: '#aa864e'/, 'große Goldschrift: 3,0–3,4:1');
-  assert.match(konfig, /dark: '#7d6035'/, 'kleine Goldschrift: 5,2–5,8:1');
-  assert.match(konfig, /btn: '#8a6a3a'/, 'Knopfhintergrund für weiße Schrift: 5,0:1');
+  // Redesign 2026-11: Orange statt Gold, gleiche Rollen. Werte nach WCAG-Formel gegen Papier #faf7f2 bzw. Weiß gerechnet.
+  assert.match(konfig, /DEFAULT: '#e8590c'/, 'große Orange-Flächen und Grafiken: 3,35:1 (Grafik genügt ab 3:1, kleiner Text NICHT)');
+  assert.match(konfig, /dark: '#b93a0a'/, 'kleine Orange-Schrift: 5,35:1');
+  assert.match(konfig, /btn: '#c2410c'/, 'Knopfhintergrund für weiße Schrift: 5,18:1');
 });
 
 // ── Handy ────────────────────────────────────────────────────────────────

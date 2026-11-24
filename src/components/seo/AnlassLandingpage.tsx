@@ -14,6 +14,7 @@ import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { AufloesungsRechner } from '@/components/seo/AufloesungsRechner';
 import { DateiPruefung } from '@/components/seo/DateiPruefung';
+import { GeschaeftsanfrageForm } from '@/components/seo/GeschaeftsanfrageForm';
 import { GewichtsKlassenBlock, GroessenTabelleBlock, DruckflaechenBlock } from '@/components/seo/KatalogTabellen';
 import { DTF_ABLAUF_SCHRITTE } from '@/config/seo/dtfSeiten';
 import { dtfSeiteVon } from '@/lib/seo/dtfAdresse';
@@ -172,6 +173,11 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
             ))}
             {a.tabelle === 'rechner' && <AufloesungsRechner />}
             {a.tabelle === 'dateipruefung' && <DateiPruefung />}
+            {a.tabelle === 'geschaeftsanfrage' && (
+              <div className="mt-8 rounded-[24px] border border-brand/[0.08] bg-white p-6 sm:p-8">
+                <GeschaeftsanfrageForm />
+              </div>
+            )}
             {a.tabelle?.startsWith('groessen:') && <GroessenTabelleBlock art={a.tabelle.slice(9) as 'tshirt' | 'hoodie' | 'polo'} />}
             {a.tabelle?.startsWith('gewicht:') && <GewichtsKlassenBlock art={a.tabelle.slice(8) as 'tshirt' | 'hoodie' | 'polo'} />}
             {a.tabelle?.startsWith('druck:') && <DruckflaechenBlock art={a.tabelle.slice(6) as 'tshirt' | 'hoodie' | 'polo'} />}

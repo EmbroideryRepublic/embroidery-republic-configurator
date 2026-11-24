@@ -48,7 +48,8 @@ export interface AnlassAbschnitt {
     | 'gewicht:polo'
     | 'druck:tshirt'
     | 'druck:hoodie'
-    | 'druck:polo';
+    | 'druck:polo'
+    | 'geschaeftsanfrage';
 }
 
 export interface AnlassBeispiel {
@@ -611,6 +612,97 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     ],
     ohneAblauf: true,
     verwandt: ['druckdaten-vorbereiten', 'druckdatei-pruefen', 'tshirt-mit-foto-bedrucken', 'textildruck-preise', 'vereinskleidung-bedrucken'],
+  },
+
+  // ── Geschäftskunden (Ziel des QR-Codes in den Anschreiben) ─────────
+  {
+    slug: 'geschaeftskunden',
+    kurzname: 'Geschäftskunden',
+    titel: 'Firmenkleidung bedrucken lassen – Angebot, ab 1 Stück',
+    h1: 'Firmenkleidung für Ihr Unternehmen – Geschäftsanfrage in wenigen Minuten',
+    eyebrow: 'Für Geschäftskunden',
+    beschreibung:
+      'Firmenkleidung mit Logo per DTF-Transferdruck: ab 1 Stück, Staffelpreise, Vorschau zur Freigabe, Kauf auf Rechnung. Jetzt Geschäftsanfrage stellen.',
+    einleitung: [
+      'Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit Ihrem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Beschreiben Sie unten kurz, was Sie brauchen; wir erstellen Ihnen ein persönliches Angebot.',
+      EINLEITUNG_DTF,
+    ],
+    kacheln: [
+      { art: 'polo', anzahl: 2 },
+      { art: 'tshirt', anzahl: 2 },
+      { art: 'hoodie', anzahl: 2 },
+      { art: 'jacket', anzahl: 2 },
+    ],
+    abschnitte: [
+      {
+        ueberschrift: 'Das spricht für uns als Partner für Firmenkleidung',
+        punkte: [
+          'Ab 1 Stück, keine Mindestbestellmenge: für die Erstausstattung ebenso wie für einzelne neue Mitarbeitende.',
+          'Staffelpreise ab 5 Stück, Größen frei mischbar – ein Motiv, beliebig viele Größen in einem Auftrag.',
+          'Vollfarbiger DTF-Transferdruck: Logos, Wappen und Farbverläufe in einem Druck.',
+          'Vor der Produktion erhalten Sie eine finale Vorschau zur Freigabe.',
+          'Kauf auf Rechnung ist möglich.',
+          'Reguläre Produktionszeit {produktionszeit}, Versand innerhalb von {versand}.',
+          'Persönliche Betreuung: Antwort meist innerhalb eines Werktags.',
+        ],
+      },
+      {
+        ueberschrift: 'Passende Kleidung für Ihre Branche',
+        punkte: [
+          'Praxen: Poloshirts und T-Shirts für das Team, dezent mit Praxislogo.',
+          'Handwerk: schwere T-Shirts, Hoodies, Poloshirts und Jacken als Arbeitskleidung.',
+          'Gastronomie und Hotel: Poloshirts, T-Shirts und Hoodies für Service und Küche.',
+          'Fitness und Kampfsport: Sport-T-Shirts, Hoodies und Longsleeves.',
+          'Vereine: Hoodies, T-Shirts und Sportshirts mit Wappen und Sponsorenlogo.',
+          'Reinigung und Dienstleistung: Poloshirts, T-Shirts und Jacken für wachsende Teams.',
+        ],
+      },
+      {
+        ueberschrift: 'Geschäftsanfrage stellen',
+        absaetze: [
+          'Beschreiben Sie kurz Ihr Vorhaben: Kleidung, ungefähre Menge und Logo. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto Ihres bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot.',
+        ],
+        tabelle: 'geschaeftsanfrage',
+      },
+    ],
+    beispiele: [
+      {
+        beschriftung: '10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm)',
+        art: 'polo',
+        menge: 10,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '25 T-Shirts · Firmenlogo auf der Brust (ca. 10 × 10 cm)',
+        art: 'tshirt',
+        menge: 25,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm)',
+        art: 'hoodie',
+        menge: 10,
+        flaechen: [
+          { ansicht: 'front', breiteCm: 10, hoeheCm: 10 },
+          { ansicht: 'back', breiteCm: 20, hoeheCm: 25 },
+        ],
+      },
+    ],
+    fragen: [
+      { q: 'Gibt es eine Mindestbestellmenge?', a: A_MENGE_STAFFEL },
+      { q: 'Welche Dateien brauche ich für mein Logo?', a: `${A_DATEIEN} Vor der Produktion prüfen wir Ihre Datei kostenlos.` },
+      { q: 'Kann ich auf Rechnung bezahlen?', a: `Ja. ${A_ZAHLUNG}` },
+      { q: 'Wie lange dauert es bis zur Lieferung?', a: A_DAUER },
+      { q: 'Wie hoch sind die Versandkosten?', a: A_VERSAND },
+    ],
+    verwandt: [
+      'firmenkleidung-bedrucken',
+      'vereinskleidung-bedrucken',
+      'poloshirts-besticken-bedrucken',
+      'hoodies-bedrucken-besticken',
+      'textildruck-preise',
+      'druckdaten-vorbereiten',
+    ],
   },
 
   // ── Ratgeber: Größentabelle ────────────────────────────────────────

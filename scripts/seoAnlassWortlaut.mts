@@ -14,6 +14,7 @@ import { alsKategorieBeispiele, anlassFakten, fuelleAnlass, AUFLOESUNG_BREITEN_C
 import { MIN_DPI, OK_DPI } from '../src/lib/canvas/logoQualitaet.ts';
 import { formatiereGeld } from '../src/lib/format.ts';
 import { llmsText } from '../src/lib/seo/llmsText.ts';
+import { geschaeftsanfrageText } from '../src/config/seo/geschaeftsanfrage.ts';
 import { druckflaechenTabelle, gewichtsUebersicht, groessenTabelle, markeUndName, type TabellenArt } from '../src/lib/seo/katalogAuswertung.ts';
 import { zahl } from '../src/lib/format.ts';
 
@@ -81,6 +82,14 @@ for (const seite of ANLASS_SEITEN) {
         z();
       }
       z('Breite × Höhe der größtmöglichen Druckfläche in Zentimetern, flach gemessen – so, wie das Motiv auf die Folie gedruckt wird.');
+      z();
+    }
+    if (a.tabelle === 'geschaeftsanfrage') {
+      z('*Das vorhandene Kontaktformular, vorbelegt mit dem Betreff „Geschäftsanfrage Firmenkleidung“ und dieser Vorlage im Nachrichtenfeld (mit gültiger Kennung aus dem Brief, z. B. B2B-0011, zusätzlich „Kennung aus Ihrem Schreiben: …“):*');
+      z();
+      z('```');
+      z(geschaeftsanfrageText('B2B-0011'));
+      z('```');
       z();
     }
     if (a.tabelle === 'aufloesung') {

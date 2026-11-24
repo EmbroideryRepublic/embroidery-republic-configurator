@@ -412,6 +412,97 @@ Platzieren Sie das Bild kleiner, verwenden Sie ein SVG oder laden Sie eine höhe
 
 Weiterführende Links am Seitenende: /druckdaten-vorbereiten, /druckdatei-pruefen, /tshirt-mit-foto-bedrucken, /textildruck-preise, /vereinskleidung-bedrucken
 
+## /geschaeftskunden
+
+- **Titel** (53 Zeichen): Firmenkleidung bedrucken lassen – Angebot, ab 1 Stück
+- **Meta-Beschreibung** (147 Zeichen): Firmenkleidung mit Logo per DTF-Transferdruck: ab 1 Stück, Staffelpreise, Vorschau zur Freigabe, Kauf auf Rechnung. Jetzt Geschäftsanfrage stellen.
+- **Überschrift (H1):** Firmenkleidung für Ihr Unternehmen – Geschäftsanfrage in wenigen Minuten
+- **Kleiner Vorspann über der Überschrift:** Für Geschäftskunden
+- **Linktext zu dieser Seite:** Geschäftskunden
+
+Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit Ihrem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Beschreiben Sie unten kurz, was Sie brauchen; wir erstellen Ihnen ein persönliches Angebot.
+
+Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
+
+**Abschnitt „Passende Modelle“:** Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · Fruit of the Loom ICONIC 250 Hooded Sweat · Fruit of the Loom Lightweight Hooded Sweat · SOL'S Men's Plain Fleece Jacket Norman · B&C Microfleece-Duo ID501
+
+### Das spricht für uns als Partner für Firmenkleidung
+
+- Ab 1 Stück, keine Mindestbestellmenge: für die Erstausstattung ebenso wie für einzelne neue Mitarbeitende.
+- Staffelpreise ab 5 Stück, Größen frei mischbar – ein Motiv, beliebig viele Größen in einem Auftrag.
+- Vollfarbiger DTF-Transferdruck: Logos, Wappen und Farbverläufe in einem Druck.
+- Vor der Produktion erhalten Sie eine finale Vorschau zur Freigabe.
+- Kauf auf Rechnung ist möglich.
+- Reguläre Produktionszeit 3 bis 4 Werktage, Versand innerhalb von 1 bis 2 Werktagen.
+- Persönliche Betreuung: Antwort meist innerhalb eines Werktags.
+
+### Passende Kleidung für Ihre Branche
+
+- Praxen: Poloshirts und T-Shirts für das Team, dezent mit Praxislogo.
+- Handwerk: schwere T-Shirts, Hoodies, Poloshirts und Jacken als Arbeitskleidung.
+- Gastronomie und Hotel: Poloshirts, T-Shirts und Hoodies für Service und Küche.
+- Fitness und Kampfsport: Sport-T-Shirts, Hoodies und Longsleeves.
+- Vereine: Hoodies, T-Shirts und Sportshirts mit Wappen und Sponsorenlogo.
+- Reinigung und Dienstleistung: Poloshirts, T-Shirts und Jacken für wachsende Teams.
+
+### Geschäftsanfrage stellen
+
+Beschreiben Sie kurz Ihr Vorhaben: Kleidung, ungefähre Menge und Logo. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto Ihres bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot.
+
+*Das vorhandene Kontaktformular, vorbelegt mit dem Betreff „Geschäftsanfrage Firmenkleidung“ und dieser Vorlage im Nachrichtenfeld (mit gültiger Kennung aus dem Brief, z. B. B2B-0011, zusätzlich „Kennung aus Ihrem Schreiben: …“):*
+
+```
+Unternehmen / Branche:
+Gewünschte Kleidung (z. B. Poloshirts, Hoodies):
+Ungefähre Menge:
+Logo vorhanden (ja/nein):
+Gewünschter Termin:
+
+Kennung aus Ihrem Schreiben: B2B-0011
+```
+
+### Preisbeispiele
+
+Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+
+- 10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
+- 25 T-Shirts · Firmenlogo auf der Brust (ca. 10 × 10 cm): **15,99 €** pro Stück, gesamt 399,75 €
+- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
+
+Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+
+### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+
+1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
+2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
+3. DTF-Druck bestellen Sie direkt im Konfigurator.
+4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
+
+### Häufige Fragen
+
+**Gibt es eine Mindestbestellmenge?**
+
+Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+
+**Welche Dateien brauche ich für mein Logo?**
+
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir Ihre Datei kostenlos.
+
+**Kann ich auf Rechnung bezahlen?**
+
+Ja. Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+
+**Wie lange dauert es bis zur Lieferung?**
+
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+
+**Wie hoch sind die Versandkosten?**
+
+Wir liefern aktuell ausschließlich innerhalb Deutschlands. Die Versandkosten betragen 6,90 € – ab einem Bestellwert von 75,00 € liefern wir versandkostenfrei.
+
+Weiterführende Links am Seitenende: /firmenkleidung-bedrucken, /vereinskleidung-bedrucken, /poloshirts-besticken-bedrucken, /hoodies-bedrucken-besticken, /textildruck-preise, /druckdaten-vorbereiten
+
 ## /groessentabelle-t-shirts-hoodies
 
 - **Titel** (48 Zeichen): Größentabelle T-Shirt, Hoodie & Polo: Maße in cm
@@ -1238,6 +1329,7 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 - [T-Shirt mit Foto](https://www.ergermany.de/tshirt-mit-foto-bedrucken)
 - [Textildruck-Preise](https://www.ergermany.de/textildruck-preise)
 - [Auflösungsrechner](https://www.ergermany.de/druckaufloesung-rechner)
+- [Geschäftskunden](https://www.ergermany.de/geschaeftskunden)
 - [Größentabelle](https://www.ergermany.de/groessentabelle-t-shirts-hoodies)
 - [Druckgröße](https://www.ergermany.de/druckgroesse-t-shirt-hoodie)
 - [Stoffgewicht](https://www.ergermany.de/stoffgewicht-t-shirt-hoodie)

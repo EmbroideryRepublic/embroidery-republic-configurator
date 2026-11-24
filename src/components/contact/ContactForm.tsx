@@ -32,11 +32,11 @@ function liesAlsDataUrl(datei: File): Promise<string> {
 const inputClass = FELD_KLASSE;
 const invalidClass = 'border-red-300 focus:border-red-400 focus:ring-red-300';
 
-export function ContactForm() {
+export function ContactForm({ vorbelegung }: { vorbelegung?: { subject?: string; message?: string } } = {}) {
   const language = useLanguageStore((s) => s.language);
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
 
-  const [form, setForm] = useState(EMPTY);
+  const [form, setForm] = useState({ ...EMPTY, ...(vorbelegung ?? {}) });
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);

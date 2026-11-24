@@ -23,6 +23,7 @@ import { NextResponse } from 'next/server';
 import { istAdmin } from '@/lib/admin/auth';
 import { downloadProductionFile } from '@/lib/supabase/storage';
 import { istSicherePfadkomponente, istSichererSpeicherpfad } from '@/lib/upload/pruefeUpload';
+import { downloadNameFuerInhalt } from '@/lib/admin/kundendateiName';
 
 const CONTENT_TYPES: Record<string, string> = {
   png: 'image/png',
@@ -72,7 +73,8 @@ export async function GET(
   // derselbe Aufbau wie /api/testablage. Der übergebene Wunschname ist nur
   // Kosmetik für den Download-Dialog, niemals Grundlage einer Entscheidung.
   const wunschName = new URL(request.url).searchParams.get('name');
-  const anzeigeName = sichererHeaderName(wunschName, params.dateiname);
+  // Die Endung folgt dem Inhalt: ein Wunschname „logo.svg“ (so hieß die hochgeladene Datei) wird zu „logo.png“, weil die Datei ein PNG ist.
+  const anzeigeName = sichererHeaderName(wunschName ? downloadNameFuerInhalt(wunschName, params.dateiname) : null, params.dateiname);
   const asciiFallback = anzeigeName.replace(/[^\x20-\x7E]/g, '_');
 
   return new NextResponse(new Uint8Array(bytes), {

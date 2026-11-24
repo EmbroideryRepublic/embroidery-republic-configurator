@@ -327,3 +327,18 @@ Server:  pruefeZwischenablageVerweise()  Form, Anzahl (≤ 24), Gesamtgröße je
 - Bewusst NICHT geändert: Das Kontaktformular (Anhänge bis 5 MB als Data-URL) hat dieselbe 4,5-MB-Grenze und scheitert ab etwa 3 MB.
 
 Konfiguration: `src/config/upload.ts`. Tests: `zwischenablage.test.ts`, `zwischenablageSpeicher.test.ts`.
+
+## 9. SVG-Uploads und Downloads der Kundendateien (2026-11-24)
+
+**Gespeichert wird immer PNG.** Der Browser wandelt SVG, JPG und PDF vor dem Absenden in PNG um (`cropImageToContent`); Pfad `…-original.png`.
+Eine Vektordatei wird nicht gespeichert (Sicherheitsentscheidung, siehe Kopfkommentar von `lib/upload/pruefeUpload.ts`).
+
+**SVG wird in Zielauflösung gerastert** (`lib/upload/svgRaster.ts`): längere Kante 3000 Pixel, wenn das SVG kleiner ist; eine größere eigene Größe bleibt,
+höchstens 8000 Pixel (Prüfung des Servers). Vorher in Eigengröße: ein SVG mit `width="100"` ergab ein 100-Pixel-PNG – die Datei, die bestellt wurde –,
+während der Konfigurator „Vektordatei – verlustfrei skalierbar“ zeigte. Der Ausschnitt wird aus der großen Fläche geschnitten, nicht aus der kleinen Eigengröße.
+
+**Download-Namen folgen dem Inhalt** (`lib/admin/kundendateiName.ts`): Ein hochgeladenes `logo.svg` lag als PNG vor und hieß beim Download trotzdem
+`logo.svg` (Einzel-Download und ZIP). Jetzt `logo.png`; die Endung kommt vom Speicherpfad, ältere Bestellungen mit anderem Format behalten ihres.
+Die Admin-Zeile zeigt „PNG · … · hochgeladen als SVG“. Zusätzlich „Als JPG“ (`components/admin/LogoAlsJpgKnopf.tsx`): entsteht beim Klick im Browser des
+Admins (weiße Fläche, Qualität 0,95, bis 100 Megapixel) – der Server decodiert keine Bilder. PNG behält die Transparenz (Datei für DTF), JPG hat Weiß.
+

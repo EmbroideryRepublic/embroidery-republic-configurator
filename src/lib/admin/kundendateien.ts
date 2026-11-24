@@ -31,6 +31,7 @@
 import { createAdminClient } from '@/lib/supabase/server';
 import { downloadProductionFile } from '@/lib/supabase/storage';
 import { ansichtLabel } from '@/lib/admin/ansichten';
+import { speicherEndung } from '@/lib/admin/kundendateiName';
 
 export interface KundendateiEintrag {
   /** Vorgeschlagener, eindeutiger Dateiname innerhalb des ZIPs. */
@@ -137,9 +138,15 @@ export async function ladeKundendateienFuerZip(orderId: string): Promise<Kundend
 
       const produktName = saeubereFuerDateisystem((item.product_name as string) ?? 'Produkt');
       const kundenDateiname = ((el.file_name as string | null) ?? 'logo.png').trim() || 'logo.png';
-      const endung = kundenDateiname.includes('.') ? kundenDateiname.split('.').pop() : null;
-      const basisOhneEndung = endung ? kundenDateiname.slice(0, -(endung.length + 1)) : kundenDateiname;
-      const endungSicher = endung ? endung.toLowerCase().replace(new RegExp('[^a-z0-9]', 'g'), '') : '';
+      // Endung des GESPEICHERTEN Formats (PNG), nicht der hochgeladenen Datei: ein hochgeladenes „logo.svg“ liegt als PNG vor
+      // und darf im ZIP nicht .svg heißen (siehe lib/admin/kundendateiName.ts). Ohne Original-Pfad bleibt es bei der Kundenendung.
+      const kundenEndung = kundenDateiname.includes('.') ? kundenDateiname.split('.').pop() : null;
+      const basisOhneEndung = kundenEndung ? kundenDateiname.slice(0, -(kundenEndung.length + 1)) : kundenDateiname;
+      const endungSicher = originalPath
+        ? speicherEndung(originalPath)
+        : kundenEndung
+          ? kundenEndung.toLowerCase().replace(new RegExp('[^a-z0-9]', 'g'), '')
+          : '';
 
       let zipEintragsname =
         `Position-${itemIndex + 1}_${produktName}_${saeubereFuerDateisystem(ansichtLabel(view))}_Logo-${logoNummer}_` +

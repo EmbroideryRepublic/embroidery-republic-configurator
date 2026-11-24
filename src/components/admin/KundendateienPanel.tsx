@@ -40,6 +40,8 @@ import Image from 'next/image';
 import type { AdminOrderItemRow, AdminOrderElementRow } from '@/lib/admin/data';
 import { ansichtLabel, sortiereAnsichten } from '@/lib/admin/ansichten';
 import { textEinzeiligHref, textJpgHref, textPngHref, textVorschauHref, zeilenAnzahl } from '@/lib/admin/textLink';
+import { downloadNameFuerInhalt, hochgeladenAls, jpgName, speicherEndung } from '@/lib/admin/kundendateiName';
+import { LogoAlsJpgKnopf } from '@/components/admin/LogoAlsJpgKnopf';
 
 function formatiereDateigroesse(bytes: number | null): string | null {
   if (bytes === null) return null;
@@ -66,6 +68,10 @@ const TEXT_LINK = 'text-xs text-gray-500 underline decoration-gray-300 underline
 
 function KundendateiZeile({ orderId, element, nummer }: { orderId: string; element: AdminOrderElementRow; nummer: number }) {
   const groesse = formatiereDateigroesse(element.fileSizeBytes);
+  // Der Download trägt die Endung des GESPEICHERTEN Formats (PNG), nicht die der hochgeladenen Datei („logo.svg“ war ein PNG).
+  const endung = speicherEndung(element.originalStorageKey);
+  const umgewandeltAus = hochgeladenAls(element.fileName, element.originalStorageKey);
+  const alsJpgMoeglich = endung === 'png' || endung === 'webp';
 
   return (
     <li className="flex items-center gap-3 border-t border-gray-100 py-2.5 first:border-t-0">
@@ -85,6 +91,7 @@ function KundendateiZeile({ orderId, element, nummer }: { orderId: string; eleme
           <p className="text-xs text-gray-500">
             {dateiTypLabel(element.fileMimeType, element.originalStorageKey)}
             {groesse ? ` · ${groesse}` : ''}
+            {umgewandeltAus ? ` · hochgeladen als ${umgewandeltAus}` : ''}
           </p>
         ) : (
           <p className="text-xs font-medium text-red-700">Datei nicht mehr vorhanden</p>
@@ -92,9 +99,21 @@ function KundendateiZeile({ orderId, element, nummer }: { orderId: string; eleme
       </div>
 
       {element.originalDateiVorhanden && element.originalStorageKey ? (
-        <a href={downloadHref(orderId, element.originalStorageKey, element.fileName ?? element.originalStorageKey)} className={KNOPF_HAUPT}>
-          Herunterladen
-        </a>
+        <div className="flex flex-shrink-0 flex-col items-stretch gap-1">
+          <a
+            href={downloadHref(orderId, element.originalStorageKey, downloadNameFuerInhalt(element.fileName, element.originalStorageKey))}
+            className={KNOPF_HAUPT}
+          >
+            Herunterladen ({endung.toUpperCase()})
+          </a>
+          {alsJpgMoeglich && (
+            <LogoAlsJpgKnopf
+              quelle={downloadHref(orderId, element.originalStorageKey, downloadNameFuerInhalt(element.fileName, element.originalStorageKey))}
+              dateiname={jpgName(element.fileName)}
+              klasse={`text-center ${TEXT_LINK}`}
+            />
+          )}
+        </div>
       ) : null}
     </li>
   );
@@ -201,6 +220,7 @@ function PositionsGruppe({ item, index, orderId }: { item: AdminOrderItemRow; in
 export function KundendateienPanel({ orderId, items }: { orderId: string; items: AdminOrderItemRow[] }) {
   const gesamtAnzahl = items.reduce((summe, item) => summe + zaehleDateien(item), 0);
   const hatTexte = items.some((item) => item.elements.some((e) => e.type === 'text'));
+  const hatLogos = items.some((item) => item.elements.some((e) => e.type === 'logo'));
 
   if (gesamtAnzahl === 0) {
     return <p className="text-sm text-gray-400">Keine hochgeladenen Logo-Dateien und keine Texte an dieser Bestellung.</p>;
@@ -222,6 +242,14 @@ export function KundendateienPanel({ orderId, items }: { orderId: string; items:
       {items.map((item, i) => (
         <PositionsGruppe key={i} item={item} index={i} orderId={orderId} />
       ))}
+      {hatLogos && (
+        <p className="mt-4 text-xs text-gray-500">
+          Logos werden schon beim Hochladen im Browser in PNG umgewandelt – auch SVG-, JPG- und PDF-Dateien. Eine Vektordatei wird nicht
+          gespeichert; der Download trägt deshalb immer die Endung .png. <strong className="font-medium text-gray-700">PNG</strong> behält die
+          Transparenz – das ist die Datei für die DTF-Bestellung. <strong className="font-medium text-gray-700">JPG</strong> entsteht erst beim
+          Klick in Ihrem Browser und hat einen weißen Hintergrund, der im Druck mitkäme.
+        </p>
+      )}
       {hatTexte && (
         <p className="mt-4 text-xs text-gray-500">
           Texte entstehen beim Herunterladen aus den Bestelldaten: unverdreht, in Druckgröße (300 dpi), mit schmalem Rand, in der

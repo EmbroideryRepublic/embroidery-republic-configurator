@@ -1,6 +1,7 @@
 'use client';
 
 import { loadImage } from '@/lib/browser/loadImage';
+import { istSvgDataUrl, svgRasterSkala } from '@/lib/upload/svgRaster';
 
 export interface LogoContentAnalysis {
   /** Beschnittene Box relativ zum Originalbild, in Prozent (0-100). */
@@ -94,33 +95,48 @@ export async function cropImageToContent(
   dataUrl: string,
   bounds: { x0: number; y0: number; x1: number; y1: number }
 ): Promise<{ dataUrl: string; width: number; height: number }> {
+  const img = await loadImage(dataUrl);
+  const natW = img.naturalWidth || img.width;
+  const natH = img.naturalHeight || img.height;
+  // Ein SVG ist ein Vektor und wird in Zielauflösung gerastert (lib/upload/svgRaster.ts) – in seiner eigenen Größe ergäbe es oft nur
+  // 100 bis 300 Pixel und damit einen unscharfen Druck. Alle anderen Formate behalten ihre Größe (Faktor 1).
+  const skala = istSvgDataUrl(dataUrl) ? svgRasterSkala(natW, natH) : 1;
+  const fullW = Math.max(1, Math.round(natW * skala));
+  const fullH = Math.max(1, Math.round(natH * skala));
+
   // Kein spürbarer Leerraum -> nicht zuschneiden (vermeidet unnötige
   // Neukodierung bei Bildern, die ohnehin schon eng zugeschnitten sind).
   const margin = 1.5; // Prozentpunkte Toleranz
   if (bounds.x0 < margin && bounds.y0 < margin && bounds.x1 > 100 - margin && bounds.y1 > 100 - margin) {
-    const img = await loadImage(dataUrl);
-    const width = img.naturalWidth || img.width;
-    const height = img.naturalHeight || img.height;
     // Die Serverseite akzeptiert ausschließlich PNG (pruefeUpload.ts prüft die
     // PNG-Signatur, nicht den deklarierten MIME-Typ). Ein SVG ohne Leerraum
     // würde diesen Zuschnittspfad sonst unverändert durchlaufen und beim
     // Bestellabschluss mit einer generischen Fehlermeldung scheitern. Über
     // Canvas re-encodieren, auch wenn kein tatsächlicher Zuschnitt nötig ist.
     if (dataUrl.startsWith('data:image/png')) {
-      return { dataUrl, width, height };
+      return { dataUrl, width: fullW, height: fullH };
     }
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = fullW;
+    canvas.height = fullH;
     const ctx = canvas.getContext('2d');
-    if (!ctx) return { dataUrl, width, height };
-    ctx.drawImage(img, 0, 0, width, height);
-    return { dataUrl: canvas.toDataURL('image/png'), width, height };
+    if (!ctx) return { dataUrl, width: fullW, height: fullH };
+    ctx.drawImage(img, 0, 0, fullW, fullH);
+    return { dataUrl: canvas.toDataURL('image/png'), width: fullW, height: fullH };
   }
 
-  const img = await loadImage(dataUrl);
-  const fullW = img.naturalWidth || img.width;
-  const fullH = img.naturalHeight || img.height;
+  // Quelle des Zuschnitts: das Bild selbst – bei einem SVG zuerst als große Fläche gerastert und DARAUS zugeschnitten (so entsteht der
+  // Ausschnitt scharf, auch wenn ein Browser den Zuschnitt eines Vektors sonst in der kleinen Eigengröße rechnen würde).
+  let quelle: CanvasImageSource = img;
+  if (skala !== 1) {
+    const voll = document.createElement('canvas');
+    voll.width = fullW;
+    voll.height = fullH;
+    const vollCtx = voll.getContext('2d');
+    if (!vollCtx) return { dataUrl, width: natW, height: natH };
+    vollCtx.drawImage(img, 0, 0, fullW, fullH);
+    quelle = voll;
+  }
 
   const cropX = Math.round((bounds.x0 / 100) * fullW);
   const cropY = Math.round((bounds.y0 / 100) * fullH);
@@ -133,7 +149,7 @@ export async function cropImageToContent(
   const ctx = canvas.getContext('2d');
   if (!ctx) return { dataUrl, width: fullW, height: fullH };
 
-  ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, cropW, cropH);
+  ctx.drawImage(quelle, cropX, cropY, cropW, cropH, 0, 0, cropW, cropH);
 
   return { dataUrl: canvas.toDataURL('image/png'), width: cropW, height: cropH };
 }

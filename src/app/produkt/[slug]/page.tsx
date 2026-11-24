@@ -52,6 +52,9 @@ const RATGEBER_LINKS: { slug: string; label: string; nur?: (p: ProductConfig) =>
   { slug: 'dtf-druck-erklaert', label: 'Was ist DTF-Druck?' },
   { slug: 'bedruckte-textilien-pflege', label: 'Pflege bedruckter Textilien' },
   { slug: 'druckdatei-pruefen', label: 'Druckdatei prüfen' },
+  // Themenpassende Ratgeber nur dort, wo sie zum Produkt gehören (Poloshirts; Modelle, die der Hersteller als „Workwear“ führt).
+  { slug: 'poloshirt-mit-logo-bedrucken', label: 'Poloshirt mit Logo: Worauf es ankommt', nur: (p) => p.productType === 'polo' },
+  { slug: 'arbeitskleidung-bedrucken', label: 'Arbeitskleidung mit Logo bedrucken', nur: (p) => /workwear/i.test(p.id) },
 ];
 
 export function generateStaticParams() {

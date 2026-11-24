@@ -283,9 +283,225 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       'poloshirts-besticken-bedrucken',
       'hoodies-bedrucken-besticken',
       'jacken-bedrucken',
+      'arbeitskleidung-bedrucken',
+      'poloshirt-mit-logo-bedrucken',
       'vereinskleidung-bedrucken',
       'textildruck-preise',
       'druckdaten-vorbereiten',
+    ],
+  },
+
+  // ── Ratgeber: Poloshirt mit Logo ───────────────────────────────────
+  // Ergänzt die Kategorieseite /poloshirts-besticken-bedrucken (Modellliste) um die Frage „Worauf kommt es an?“.
+  {
+    slug: 'poloshirt-mit-logo-bedrucken',
+    kurzname: 'Poloshirt mit Logo',
+    titel: 'Poloshirt mit Logo bedrucken: Gewebe, Größe, Position',
+    h1: 'Poloshirts mit Logo bedrucken lassen: Worauf es ankommt',
+    eyebrow: 'Ratgeber',
+    beschreibung:
+      'Welches Poloshirt eignet sich fürs Firmenlogo? Gewebe, Gewicht, Logo-Position und Druckfläche im Überblick – mit Preisbeispielen ab 1 Stück.',
+    einleitung: [
+      'Ein Poloshirt mit Logo ist für viele Teams die Standardausstattung: im Außendienst, am Empfang, im Service oder im Verein. Damit es gut aussieht und lange hält, kommt es auf drei Dinge an: das passende Modell, die richtige Position und eine Logo-Datei in ausreichender Qualität.',
+      'Es gibt {anzahl} Poloshirts von mehreren Marken, Preise ab {abPreis_polo} pro Stück zzgl. Veredelung. Bedruckt wird per DTF-Transferdruck, ab einem einzelnen Stück.',
+    ],
+    kacheln: [{ art: 'polo', anzahl: 4 }],
+    abschnitte: [
+      {
+        ueberschrift: 'Das passende Poloshirt finden',
+        punkte: [
+          'Gewebe: Piqué ist ein Strickgewebe mit feiner Wabenstruktur und der Klassiker bei Poloshirts. Daneben gibt es glattere Jersey-Qualitäten.',
+          'Material: 100 % Baumwolle fühlt sich angenehm an. Mischgewebe aus Polyester und Baumwolle, zum Beispiel 65 % zu 35 %, knittern weniger und gelten als pflegeleichter. Es gibt auch Poloshirts aus Bio-Baumwolle; Zertifizierungen wie GOTS oder OEKO-TEX Standard 100 stehen bei den betreffenden Modellen auf der Produktseite.',
+          'Gewicht: Die Poloshirts im Sortiment wiegen {gewichtMin_polo} bis {gewichtMax_polo} g/m². Leichtere Stoffe sind luftiger, schwerere fester.',
+          'Schnitt: Es gibt Unisex-Modelle in normaler Passform und taillierte Damenmodelle mit Seitennähten. Die Größentabelle steht auf jeder Produktseite.',
+        ],
+      },
+      { ueberschrift: 'Gewicht der Poloshirts im Überblick', tabelle: 'gewicht:polo' },
+      {
+        ueberschrift: 'Wo das Logo sitzt',
+        absaetze: [
+          ABSATZ_POSITIONEN,
+          'Üblich ist ein kleines Logo auf der Brust (ca. 10 × 10 cm). Wer zusätzlich einen Firmennamen oder Slogan zeigen möchte, setzt ihn auf den Rücken (ca. 20 × 25 cm).',
+          'Ein Poloshirt hat Kragen und Knopfleiste. Das Logo sollte deshalb weder zu hoch noch zu breit sitzen. Im Konfigurator sehen Sie die Fläche samt Maßen und können das Motiv direkt verschieben.',
+        ],
+      },
+      { ueberschrift: 'Größtmögliche Druckfläche bei Poloshirts', tabelle: 'druck:polo' },
+      {
+        ueberschrift: 'Logo-Datei und Stoffstruktur',
+        absaetze: [
+          'Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Bei PNG oder JPG braucht das Bild genug Bildpunkte: Ab {dpiOk} dpi gilt die Qualität im Konfigurator als optimal. Der Auflösungsrechner zeigt, wie viele Pixel Ihre Druckbreite braucht.',
+          'Auf strukturiertem Piqué wirken sehr feine Linien und sehr kleine Schrift weniger scharf als auf glattem Stoff. Ein klar gezeichnetes Logo ohne feinste Details gelingt zuverlässiger. Vor der Produktion prüfen wir Ihre Datei kostenlos.',
+        ],
+      },
+      {
+        ueberschrift: 'Menge und Preis',
+        absaetze: [A_MENGE_STAFFEL],
+      },
+      {
+        ueberschrift: 'Pflege',
+        absaetze: [
+          'Die Pflegehinweise des Herstellers stehen auf der Produktseite des jeweiligen Modells. Allgemeine Tipps zum Waschen bedruckter Textilien finden Sie in der Pflegeanleitung.',
+        ],
+      },
+    ],
+    beispiele: [
+      {
+        beschriftung: '1 Poloshirt · Logo auf der Brust (ca. 10 × 10 cm)',
+        art: 'polo',
+        menge: 1,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '10 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm)',
+        art: 'polo',
+        menge: 10,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '25 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm)',
+        art: 'polo',
+        menge: 25,
+        flaechen: [
+          { ansicht: 'front', breiteCm: 10, hoeheCm: 10 },
+          { ansicht: 'back', breiteCm: 20, hoeheCm: 25 },
+        ],
+      },
+    ],
+    fragen: [
+      {
+        q: 'Welches Poloshirt eignet sich für ein Firmenlogo?',
+        a: 'Das hängt vom Einsatz. Für Büro und Außendienst sind Poloshirts aus Baumwolle üblich, für häufiges Waschen und wenig Knittern eher Mischgewebe aus Polyester und Baumwolle. Material, Gewicht, Schnitt und Pflegehinweise stehen auf jeder Produktseite.',
+      },
+      {
+        q: 'Wie groß darf das Logo auf einem Poloshirt sein?',
+        a: 'Das hängt von Modell und Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei Poloshirts; für jedes Modell sehen Sie die Fläche samt Maßen in Zentimetern im Konfigurator. Für ein Brustlogo sind etwa 10 × 10 cm üblich.',
+      },
+      { q: 'Kann ich ein einzelnes Poloshirt bedrucken lassen?', a: A_EINZELSTUECK },
+      {
+        q: 'Welche Dateien brauche ich für das Logo?',
+        a: `${A_DATEIEN} Vor der Produktion prüfen wir Ihre Datei kostenlos.`,
+      },
+      { q: 'Wie lange dauert es, bis die Poloshirts ankommen?', a: A_DAUER },
+    ],
+    verwandt: [
+      'poloshirts-besticken-bedrucken',
+      'firmenkleidung-bedrucken',
+      'arbeitskleidung-bedrucken',
+      'druckgroesse-t-shirt-hoodie',
+      'druckaufloesung-rechner',
+      'bedruckte-textilien-pflege',
+    ],
+  },
+
+  // ── Ratgeber: Arbeitskleidung mit Logo ─────────────────────────────
+  // Einzige Suchbegriff-Lücke der Zielseiten-Zuordnung (seo-unterlagen/seo-zielseiten-content-gbp-links-2026-11-24.md).
+  // Grenzt ehrlich ab: bedruckt werden Textilien aus dem Sortiment, keine Schutz- oder Warnschutzkleidung.
+  {
+    slug: 'arbeitskleidung-bedrucken',
+    kurzname: 'Arbeitskleidung',
+    titel: 'Arbeitskleidung mit Logo bedrucken lassen – ab 1 Stück',
+    h1: 'Arbeitskleidung mit Logo bedrucken lassen',
+    eyebrow: 'Für Handwerk, Service und Betrieb',
+    beschreibung:
+      'Polos, T-Shirts, Hoodies und Fleecejacken für den Arbeitsalltag mit Firmenlogo per DTF-Transferdruck bedrucken – ab 1 Stück, Kauf auf Rechnung.',
+    einleitung: [
+      'Ob Handwerksbetrieb, Reinigungsfirma, Praxis oder Gastronomie: Einheitliche Kleidung mit Logo macht ein Team erkennbar und wirkt vor Kunden professionell. Wir bedrucken dafür {arten} – auch einzelne Teile, etwa für neue Mitarbeitende.',
+      'Wichtig vorab: Wir bedrucken Textilien aus unserem Sortiment. Schutz- und Warnschutzkleidung, zum Beispiel nach EN ISO 20471, gehört nicht dazu.',
+    ],
+    kacheln: [
+      { art: 'polo', anzahl: 2 },
+      { art: 'tshirt', anzahl: 2 },
+      { art: 'zip-hoodie', anzahl: 2 },
+      { art: 'jacket', anzahl: 2 },
+    ],
+    abschnitte: [
+      {
+        ueberschrift: 'Welche Textilien sich für den Arbeitsalltag eignen',
+        punkte: [
+          'Poloshirts: der Klassiker für Außendienst, Service und Empfang, aus Baumwolle oder als Mischgewebe aus Polyester und Baumwolle.',
+          'T-Shirts: robust und günstig, auch als Zweitteil unter Jacke oder Pullover. Mehrere Hersteller führen Modelle unter der Bezeichnung „Workwear“; sie gehören zu unserem Sortiment.',
+          'Hoodies und Zip-Hoodies: für Lager, Werkstatt und kühle Tage.',
+          'Fleecejacken: warme Jacken aus Polyester für draußen und für den Wechsel zwischen drinnen und draußen.',
+        ],
+      },
+      {
+        ueberschrift: 'Gewebe und Gewicht',
+        absaetze: [
+          'Baumwolle fühlt sich angenehm an. Mischgewebe mit Polyester, zum Beispiel 65 % Polyester zu 35 % Baumwolle, knittern weniger und gelten als pflegeleichter. Beides gibt es im Sortiment.',
+          'Je höher das Gewicht in g/m², desto fester und schwerer ist der Stoff. Bei Poloshirts reicht es im Sortiment von {gewichtMin_polo} bis {gewichtMax_polo} g/m². Material und Gewicht stehen bei jedem Modell auf der Produktseite.',
+        ],
+      },
+      {
+        ueberschrift: 'Logo und Position',
+        absaetze: [
+          ABSATZ_POSITIONEN,
+          'Häufig steht das Firmenlogo klein auf der Brust (ca. 10 × 10 cm), Firmenname oder Kontaktangaben stehen groß auf dem Rücken (ca. 20 × 25 cm). Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.',
+        ],
+      },
+      {
+        ueberschrift: 'Mehrere Mitarbeitende, mehrere Größen',
+        punkte: [
+          'Ein Motiv, beliebig viele Größen: zum Beispiel 2× M, 6× L und 2× XL in einem Auftrag.',
+          'Auch einzelne Teile: Es gibt keine Mindestbestellmenge, zum Beispiel für neue Mitarbeitende.',
+          'Staffelpreise: Mit größerer Menge sinkt der Stückpreis, die Staffel beginnt bei 5 Stück.',
+          'Kauf auf Rechnung: zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.',
+        ],
+        absaetze: [ABSATZ_MEHRERE_PRODUKTE],
+      },
+      {
+        ueberschrift: 'Pflege',
+        absaetze: [
+          'Es gelten die Pflegehinweise des Herstellers, die auf der Produktseite des jeweiligen Modells stehen. Allgemeine Tipps zum Waschen bedruckter Textilien finden Sie in der Pflegeanleitung.',
+        ],
+      },
+    ],
+    beispiele: [
+      {
+        beschriftung: '5 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm)',
+        art: 'polo',
+        menge: 5,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '10 T-Shirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm)',
+        art: 'tshirt',
+        menge: 10,
+        flaechen: [
+          { ansicht: 'front', breiteCm: 10, hoeheCm: 10 },
+          { ansicht: 'back', breiteCm: 20, hoeheCm: 25 },
+        ],
+      },
+      {
+        beschriftung: '10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm)',
+        art: 'hoodie',
+        menge: 10,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+    ],
+    fragen: [
+      {
+        q: 'Bedrucken Sie auch Schutz- oder Warnschutzkleidung?',
+        a: 'Nein. Wir bedrucken Textilien aus unserem Sortiment: T-Shirts, Poloshirts, Hoodies und Jacken. Schutz- und Warnschutzkleidung, zum Beispiel nach EN ISO 20471, bieten wir nicht an.',
+      },
+      {
+        q: 'Welche Textilien eignen sich für Arbeitskleidung?',
+        a: 'Das hängt vom Einsatz. Poloshirts und T-Shirts aus Baumwolle oder Mischgewebe sind verbreitet, Hoodies und Fleecejacken für kühlere Bereiche. Mehrere Hersteller führen Modelle unter der Bezeichnung „Workwear“. Material, Gewicht und Pflegehinweise stehen auf jeder Produktseite.',
+      },
+      { q: 'Können wir einzelne Teile bestellen, zum Beispiel für neue Mitarbeitende?', a: A_EINZELSTUECK },
+      {
+        q: 'Kann die Kleidung gewerblich gewaschen werden?',
+        a: 'Das können wir nicht allgemein zusagen. Die zulässige Waschtemperatur nennt das Pflegeetikett des Textils. Wird die Kleidung gewerblich aufbereitet, fragen Sie uns bitte vor der Bestellung über das Kontaktformular.',
+      },
+      { q: 'Können Unternehmen auf Rechnung bezahlen?', a: `Ja. ${A_ZAHLUNG}` },
+      { q: 'Wie lange dauert es, bis die Bestellung ankommt?', a: A_DAUER },
+    ],
+    verwandt: [
+      'firmenkleidung-bedrucken',
+      'poloshirt-mit-logo-bedrucken',
+      'poloshirts-besticken-bedrucken',
+      'jacken-bedrucken',
+      'geschaeftskunden',
+      'bedruckte-textilien-pflege',
     ],
   },
 

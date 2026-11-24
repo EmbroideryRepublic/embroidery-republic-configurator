@@ -15,13 +15,13 @@ import {
 
 export function Footer() {
   return (
-    <footer className="mt-12 border-t border-gold/15 bg-white px-4 py-12 text-sm">
+    <footer className="mt-12 border-t border-brand/10 bg-cream-dark px-4 py-14 text-sm">
       {/* Handy: Navigation und Rechtliches stehen nebeneinander (zwei Spalten), Marke/Kontakt und
           „Gut zu wissen“ über die volle Breite – statt vier Blöcke untereinander (spart rund 200 px). */}
       <div className="mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 lg:grid-cols-4">
         <div className="col-span-2 sm:col-span-1">
-          <p className="font-serif text-base font-semibold text-brand">Embroidery Republic</p>
-          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-gold-dark">Germany</p>
+          <p className="text-[19px] font-black uppercase leading-[0.95] tracking-[-0.01em] text-brand">Embroidery<br />Republic</p>
+          <p className="mt-1 flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.28em] text-gold-dark"><span aria-hidden className="h-[2px] w-3 bg-gold" />Germany</p>
           <FooterDescription />
           <FooterContactHeading />
           <div className="flex flex-col gap-0 lg:gap-1.5">
@@ -59,7 +59,7 @@ export function Footer() {
       {/* Sortiment, Anlässe, Marken: von jeder Seite aus verlinkt (interne Verlinkung für die Indexierung). */}
       <FooterSeoLinks />
 
-      <div className="mx-auto mt-10 flex max-w-5xl flex-col items-center gap-2 border-t border-gold/10 pt-5 sm:flex-row sm:justify-between">
+      <div className="mx-auto mt-10 flex max-w-5xl flex-col items-center gap-2 border-t border-brand/10 pt-5 sm:flex-row sm:justify-between">
         <p className="text-xs text-brand/70">
           © {new Date().getFullYear()} {COMPANY.tradeName}
         </p>

@@ -260,7 +260,7 @@ export default async function Produktseite(props: { params: Promise<{ slug: stri
               </p>
               <KonfiguratorCta
                 produktId={produkt.id}
-                className="mt-4 block rounded-full bg-brand px-4 py-3 text-center text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 active:scale-[0.98]"
+                className="mt-4 block rounded-full bg-gold-btn px-4 py-3.5 text-center text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-gold-dark active:scale-[0.98]"
               >
                 Jetzt konfigurieren
               </KonfiguratorCta>

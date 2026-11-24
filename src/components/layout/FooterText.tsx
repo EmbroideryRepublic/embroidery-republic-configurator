@@ -41,9 +41,9 @@ const LEGAL: { href: string; key: TranslationKey }[] = [
   { href: '/agb', key: 'footer_legal_agb' },
 ];
 
-const UEBERSCHRIFT_KLASSE = 'mb-2.5 text-xs font-semibold uppercase tracking-wide text-brand/70';
+const UEBERSCHRIFT_KLASSE = 'mb-2.5 text-xs font-bold uppercase tracking-[0.12em] text-brand';
 // py-3 am Handy: Tippfläche mindestens ~40 px hoch (Test 2026-11-10: 16 px); ab lg wie bisher kompakt.
-const LINK_KLASSE = 'py-3 text-xs text-brand/70 transition-colors hover:text-gold-dark lg:py-0';
+const LINK_KLASSE = 'py-3 text-xs text-brand/75 transition-colors hover:text-gold-dark lg:py-0';
 
 export function FooterDescription() {
   const language = useLanguageStore((s) => s.language);

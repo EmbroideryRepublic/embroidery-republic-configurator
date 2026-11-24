@@ -139,6 +139,10 @@ export default async function Startseite() {
   // Bild für den Marken-Akzent in der „Für deine Marke"-Karte – ein echtes,
   // freigestelltes Katalogfoto (Jacke: passt thematisch zu Team-/Firmenwear),
   // kein fabriziertes Bild.
+  // Bild für das Beispiel im dunklen Konfigurator-Band: das erste T-Shirt des Katalogs in seiner ersten Farbe.
+  const bandProdukt = PRODUCTS.find((p) => p.productType === 'tshirt' && p.colors.length > 0);
+  const bandBild = bandProdukt ? produktBild(bandProdukt.id, bandProdukt.colors) : undefined;
+
   const markenProdukt = PRODUCTS.find((p) => p.productType === 'jacket');
   const markenBild = markenProdukt?.colors.length
     ? produktBild(markenProdukt.id, markenProdukt.colors)
@@ -431,13 +435,13 @@ export default async function Startseite() {
       <section id="so-funktionierts" className="fokus-hell scroll-mt-20 bg-brand text-white">
         <div className="mx-auto max-w-[1500px] px-4 py-28 sm:px-8">
           <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-gold">So funktioniert’s</p>
-          <div className="mt-7 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <h2 className="font-serif text-[clamp(2.25rem,5vw,4.75rem)] leading-[0.98]">
-              Dein Motiv.
-              <span className="block text-gold">Perfekt platziert.</span>
-            </h2>
+          <div className="mt-7 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="max-w-md text-[16px] leading-relaxed text-white/75">
+              <h2 className="font-serif text-[clamp(2.25rem,5vw,4.75rem)] leading-[0.98]">
+                Dein Motiv.
+                <span className="block text-gold">Perfekt platziert.</span>
+              </h2>
+              <p className="mt-7 max-w-md text-[16px] leading-relaxed text-white/75">
                 Gestalte dein Textil direkt online – mit unserem Konfigurator für hochwertigen DTF-Druck. Logo hochladen oder Text setzen, auf Vorderseite, Rückseite und Ärmeln platzieren. Die Vorschau zeigt jede Änderung sofort – samt Maßen in Zentimetern und aktuellem Preis.
               </p>
               <Link
@@ -448,6 +452,26 @@ export default async function Startseite() {
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
             </div>
+
+            {/* Beispiel für die Platzierung: echtes Katalogfoto mit einem selbst gezeichneten Motiv (Vektor). Ausdrücklich als
+                Beispielmotiv gekennzeichnet – es ist kein Kundenauftrag. */}
+            {bandBild && (
+              <figure className="relative mx-auto w-[min(78vw,400px)] lg:ml-auto lg:mr-0">
+                <div className="relative aspect-[620/720] overflow-hidden rounded-2xl bg-white">
+                  <Image src={bandBild} alt="" fill sizes="(max-width: 1024px) 78vw, 400px" className="object-contain p-4" />
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 120 90"
+                    className="absolute left-[33%] top-[30%] w-[34%]"
+                  >
+                    <circle cx="82" cy="30" r="22" fill="#e8590c" />
+                    <path d="M4 84 L42 26 L58 50 L72 34 L116 84 Z" fill="#141210" stroke="#141210" strokeWidth="2.5" strokeLinejoin="round" />
+                    <path d="M42 26 L52 41 L46 39 L40 46 L35 38 Z" fill="#f4f0ea" />
+                  </svg>
+                </div>
+                <figcaption className="mt-3 text-center text-[12px] text-white/70">Beispielmotiv – so platzierst du dein Logo im Konfigurator</figcaption>
+              </figure>
+            )}
           </div>
 
           <ul className="mt-20 grid gap-x-10 gap-y-12 border-t border-white/10 pt-14 sm:grid-cols-2 lg:grid-cols-4">

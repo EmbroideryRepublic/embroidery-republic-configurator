@@ -67,7 +67,7 @@ export function ProduktKaufleiste({
       </p>
       <Link
         href={`/konfigurator?produkt=${produktId}&farbe=${farbeId}`}
-        className="inline-flex min-h-[44px] flex-shrink-0 items-center rounded-full bg-brand px-6 text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 active:scale-[0.98]"
+        className="inline-flex min-h-[44px] flex-shrink-0 items-center rounded-full bg-gold-btn px-6 text-sm font-semibold text-white transition-colors duration-200 hover:bg-gold-dark active:scale-[0.98]"
       >
         Jetzt konfigurieren
       </Link>

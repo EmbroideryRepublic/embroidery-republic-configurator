@@ -46,7 +46,7 @@ export default async function BestellungenPage() {
             Noch keine Bestellung mit diesem Konto verknüpft.
           </p>
           <p className="mt-1 text-xs text-brand/70">
-            Frühere Gastbestellungen finden Sie über den Link in Ihrer Bestellbestätigung.
+            Frühere Gastbestellungen findest du über den Link in deiner Bestellbestätigung.
           </p>
           <Link href="/produkt" className="mt-4 inline-block text-sm font-medium text-gold-dark hover:underline">
             Zum Sortiment →

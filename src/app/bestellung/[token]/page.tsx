@@ -31,7 +31,7 @@ import { BestellPositionen } from '@/components/orders/BestellPositionen';
 import { formatiereZeitpunkt } from '@/lib/format';
 
 export const metadata = {
-  title: 'Ihre Bestellung',
+  title: 'Deine Bestellung',
   robots: { index: false, follow: false },
 };
 
@@ -71,11 +71,11 @@ function LinkNichtVerwendbar({ grund }: { grund: 'ungueltig' | 'abgelaufen' | 'n
         <section className="rounded-lg border border-brand/20 bg-white p-4">
           <p className="text-sm text-brand/70">
             {abgelaufen
-              ? 'Links zur Bestellansicht sind aus Sicherheitsgründen zeitlich begrenzt. Ihre Bestellung ist davon nicht betroffen – sie bleibt selbstverständlich bestehen.'
+              ? 'Links zur Bestellansicht sind aus Sicherheitsgründen zeitlich begrenzt. Deine Bestellung ist davon nicht betroffen – sie bleibt selbstverständlich bestehen.'
               : 'Der Link ist unvollständig oder wurde beim Kopieren abgeschnitten. Das passiert häufig, wenn er über mehrere Zeilen umgebrochen wurde.'}
           </p>
           <p className="mt-3 text-sm text-brand/70">
-            Schreiben Sie uns kurz – am besten mit Ihrer Bestellnummer aus der Bestätigungsmail. Wir senden Ihnen den
+            Schreib uns kurz – am besten mit deiner Bestellnummer aus der Bestätigungsmail. Wir senden dir den
             aktuellen Stand umgehend zu.
           </p>
 
@@ -186,7 +186,7 @@ export default async function BestellAnsichtSeite(props: { params: Promise<{ tok
               inzwischen in Bearbeitung.
             </p>
             <p className="mt-2 text-sm text-brand/70">
-              Sie haben trotzdem eine Frage oder einen Sonderfall? Melden Sie sich gern direkt bei uns – wir schauen,
+              Du hast trotzdem eine Frage oder einen Sonderfall? Melde dich gern direkt bei uns – wir schauen,
               was sich machen lässt.
             </p>
             <div className="mt-3 flex flex-wrap gap-4 text-sm">

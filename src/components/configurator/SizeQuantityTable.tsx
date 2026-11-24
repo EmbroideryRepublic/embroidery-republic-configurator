@@ -55,7 +55,7 @@ export function SizeQuantityTable({ product }: SizeQuantityTableProps) {
 
       {hinweisSichtbar && (
         <p role="status" className="mb-1.5 rounded bg-amber-50 px-2 py-1 text-[11px] leading-snug text-amber-900" data-testid="groessen-hinweis">
-          Ihre bisherigen {verworfen} Stück wurden nicht übernommen – dieses Produkt hat andere Größen. Bitte wählen Sie die Größen neu.
+          Deine bisherigen {verworfen} Stück wurden nicht übernommen – dieses Produkt hat andere Größen. Bitte wähle die Größen neu.
         </p>
       )}
 

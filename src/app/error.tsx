@@ -38,7 +38,7 @@ export default function Fehlerseite({
         Da ist etwas schiefgelaufen.
       </h1>
       <p className="mt-4 max-w-md text-[15px] leading-relaxed text-brand/70">
-        Der Fehler liegt bei uns, nicht bei Ihnen. Ein erneuter Versuch hilft meistens –
+        Der Fehler liegt bei uns, nicht bei dir. Ein erneuter Versuch hilft meistens –
         andernfalls sind wir über das Kontaktformular erreichbar.
       </p>
 

@@ -11,7 +11,7 @@ import type { BestellAnsicht } from '@/lib/orders/orderView';
 export function BestellPositionen({ bestellung }: { bestellung: BestellAnsicht }) {
   return (
     <section className="rounded-lg border border-brand/[0.08] bg-white p-4">
-      <h2 className="mb-3 text-sm font-semibold text-brand">Ihre Positionen</h2>
+      <h2 className="mb-3 text-sm font-semibold text-brand">Deine Positionen</h2>
       <ul className="space-y-3">
         {bestellung.positionen.map((pos, i) => (
           <li key={i} className="border-b border-brand/[0.06] pb-3 last:border-0 last:pb-0">

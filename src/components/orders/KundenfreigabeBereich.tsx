@@ -48,7 +48,7 @@ export function KundenfreigabeBereich({ token, orderId, positionen }: Kundenfrei
   if (erfolg) {
     return (
       <section className="rounded-lg border border-green-200 bg-green-50 p-4">
-        <h2 className="text-sm font-semibold text-green-900">Danke für Ihre Rückmeldung</h2>
+        <h2 className="text-sm font-semibold text-green-900">Danke für deine Rückmeldung</h2>
         <p className="mt-1 text-sm text-green-800">{erfolg}</p>
       </section>
     );
@@ -58,13 +58,13 @@ export function KundenfreigabeBereich({ token, orderId, positionen }: Kundenfrei
     <section className="rounded-lg border border-gold/40 bg-gold-light/30 p-4">
       <h2 className="text-sm font-semibold text-brand">Bitte Druckvorschau freigeben</h2>
       <p className="mt-1 text-sm text-brand/70">
-        So werden Ihre Motive tatsächlich platziert. Bitte prüfen Sie die Vorschau und geben Sie sie frei, damit wir
+        So werden deine Motive tatsächlich platziert. Bitte prüfe die Vorschau und gib sie frei, damit wir
         mit der Produktion beginnen können.
       </p>
 
       {hatStickerei && (
         <p className="mt-2 text-xs text-brand/70">
-          Für Stickerei digitalisiert unser Team Ihr Logo anschließend manuell in Garnfarben – die Vorschau zeigt die
+          Für Stickerei digitalisiert unser Team dein Logo anschließend manuell in Garnfarben – die Vorschau zeigt die
           Platzierung, nicht das finale Stickbild.
         </p>
       )}
@@ -167,7 +167,7 @@ export function KundenfreigabeBereich({ token, orderId, positionen }: Kundenfrei
             value={kommentar}
             onChange={(e) => setKommentar(e.target.value)}
             rows={3}
-            placeholder="Was möchten Sie geändert haben?"
+            placeholder="Was möchtest du geändert haben?"
             className="w-full rounded-md border border-brand/20 p-2 text-sm"
           />
           <div className="mt-2 flex flex-wrap gap-2">
@@ -179,7 +179,7 @@ export function KundenfreigabeBereich({ token, orderId, positionen }: Kundenfrei
                   setFehler(null);
                   const r = await wuenscheAenderungAction(anfrage, kommentar);
                   if (!r.ok) setFehler(r.fehler ?? 'Die Rückmeldung konnte nicht übermittelt werden.');
-                  else setErfolg('Vielen Dank – wir melden uns bei Ihnen, um die gewünschte Änderung zu klären.');
+                  else setErfolg('Vielen Dank – wir melden uns bei dir, um die gewünschte Änderung zu klären.');
                 })
               }
               className="rounded-md bg-brand px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand/90 disabled:opacity-50"

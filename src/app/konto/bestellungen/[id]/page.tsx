@@ -122,7 +122,7 @@ export default async function KontoBestellDetailPage(props: { params: Promise<{ 
         <p className="text-xs text-brand/70">
           Fragen zu dieser Bestellung?{' '}
           <Link href="/kontakt" className="text-gold-dark hover:underline">
-            Kontaktieren Sie uns direkt
+            Kontaktiere uns direkt
           </Link>
           .
         </p>

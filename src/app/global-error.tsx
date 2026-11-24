@@ -26,7 +26,7 @@ export default function GlobalError({
             Die Seite konnte nicht geladen werden.
           </h1>
           <p style={{ marginTop: '1rem', lineHeight: 1.6, color: 'rgba(20,18,16,0.65)' }}>
-            Bitte laden Sie die Seite neu. Besteht das Problem weiter, erreichen Sie uns
+            Bitte lade die Seite neu. Besteht das Problem weiter, erreichst du uns
             unter <a href="/kontakt" style={{ color: '#b93a0a' }}>Kontakt</a>.
           </p>
           <button

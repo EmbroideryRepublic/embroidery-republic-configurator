@@ -26,7 +26,7 @@ export function RegistrierenForm() {
       <div className="rounded-lg border border-gold/30 bg-gold-light/30 p-4 text-sm text-brand">
         <p className="font-medium">Fast geschafft!</p>
         <p className="mt-1 text-brand/70">
-          Wir haben Ihnen eine E-Mail geschickt. Bitte bestätigen Sie darüber Ihre E-Mail-Adresse, um Ihr Konto zu
+          Wir haben dir eine E-Mail geschickt. Bitte bestätige darüber deine E-Mail-Adresse, um dein Konto zu
           aktivieren.
         </p>
       </div>

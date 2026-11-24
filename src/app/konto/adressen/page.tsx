@@ -21,7 +21,7 @@ export default async function AdressenPage() {
       <p className="text-[11px] uppercase tracking-[0.3em] text-gold-dark">Mein Konto</p>
       <h1 className="mt-2 font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal text-brand">Adressbuch</h1>
       <p className="mt-2 text-sm text-brand/70">
-        Ihre Standardadresse wird beim nächsten Checkout automatisch vorgeschlagen.
+        Deine Standardadresse wird beim nächsten Checkout automatisch vorgeschlagen.
       </p>
 
       <KontoNav />

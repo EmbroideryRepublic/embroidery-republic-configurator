@@ -46,7 +46,7 @@ export default async function ProfilPage() {
         <section className="rounded-xl border border-red-200 bg-white p-5 shadow-elegant">
           <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-red-600/70">Konto löschen</h2>
           <p className="mb-4 text-xs text-brand/70">
-            Sie können Ihr Konto jederzeit selbst und unwiderruflich löschen, statt auf die automatische Löschfrist zu
+            Du kannst dein Konto jederzeit selbst und unwiderruflich löschen, statt auf die automatische Löschfrist zu
             warten.
           </p>
           <KontoLoeschenButton />

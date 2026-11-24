@@ -44,9 +44,9 @@ export function KontoLoeschenButton() {
       <p className="flex items-start gap-2 text-xs font-medium text-red-900">
         <AlertTriangle className="mt-0.5 h-4 w-4 flex-shrink-0" />
         <span>
-          Diese Aktion löscht Ihr Konto, Ihr Profil und alle gespeicherten Adressen unwiderruflich. Bereits getätigte
+          Diese Aktion löscht dein Konto, dein Profil und alle gespeicherten Adressen unwiderruflich. Bereits getätigte
           Bestellungen bleiben aus rechtlichen Gründen (Rechnungs-/Buchführungspflicht) erhalten, werden aber von
-          Ihrem Konto getrennt.
+          deinem Konto getrennt.
         </span>
       </p>
       <KontoFeld

@@ -283,7 +283,7 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
               {/* Preise im Warenkorb gegen den aktuellen Stand neu gerechnet (stores/cartStore.ts, lib/cart/preiseAktualisieren.ts). */}
               {preisHinweis > 0 && items.length > 0 && (
                 <div role="status" className="mb-3 flex items-start justify-between gap-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900" data-testid="preis-hinweis">
-                  <span>Die Preise in Ihrem Warenkorb wurden an den aktuellen Stand angepasst.</span>
+                  <span>Die Preise in deinem Warenkorb wurden an den aktuellen Stand angepasst.</span>
                   <button type="button" onClick={schliessePreisHinweis} className="flex-shrink-0 rounded-md px-2 py-1 text-sm font-medium underline underline-offset-2">
                     OK
                   </button>

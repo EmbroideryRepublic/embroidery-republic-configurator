@@ -26,7 +26,7 @@ export default async function RegistrierenPage() {
         <RegistrierenForm />
       </div>
       <p className="mt-6 text-center text-xs text-brand/70">
-        Ein Konto ist nie Voraussetzung fürs Bestellen – Sie können auch jederzeit als Gast bestellen.
+        Ein Konto ist nie Voraussetzung fürs Bestellen – du kannst auch jederzeit als Gast bestellen.
       </p>
     </main>
   );

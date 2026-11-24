@@ -79,24 +79,24 @@ const INHALT: Record<Anzeige, { icon: typeof CheckCircle2; farbe: string; titel:
   bezahlt: {
     icon: CheckCircle2,
     farbe: 'text-green-600',
-    titel: 'Vielen Dank – Ihre Zahlung ist eingegangen.',
-    text: 'Ihre Bestellung ist bestätigt. Die Bestellbestätigung mit allen Details erhalten Sie in Kürze per E-Mail.',
+    titel: 'Vielen Dank – deine Zahlung ist eingegangen.',
+    text: 'Deine Bestellung ist bestätigt. Die Bestellbestätigung mit allen Details erhältst du in Kürze per E-Mail.',
   },
   ausstehend: {
     icon: Clock,
     farbe: 'text-amber-800',
-    titel: 'Ihre Zahlung wird geprüft.',
+    titel: 'Deine Zahlung wird geprüft.',
     text:
-      'Das kann einen Moment dauern. Sie müssen nichts weiter tun – sobald die Zahlung bestätigt ist, ' +
-      'erhalten Sie die Bestellbestätigung per E-Mail. Sie können diese Seite schließen.',
+      'Das kann einen Moment dauern. Du musst nichts weiter tun – sobald die Zahlung bestätigt ist, ' +
+      'erhältst du die Bestellbestätigung per E-Mail. Du kannst diese Seite schließen.',
   },
   gescheitert: {
     icon: XCircle,
     farbe: 'text-red-600',
     titel: 'Der Bezahlvorgang wurde nicht abgeschlossen.',
     text:
-      'Es wurde nichts abgebucht. Sie können die Zahlung aus Ihrem Warenkorb heraus erneut starten. ' +
-      'Ihre Bestellung ist gespeichert und geht nicht verloren.',
+      'Es wurde nichts abgebucht. Du kannst die Zahlung aus deinem Warenkorb heraus erneut starten. ' +
+      'Deine Bestellung ist gespeichert und geht nicht verloren.',
   },
 };
 

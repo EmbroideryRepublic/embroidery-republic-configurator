@@ -67,7 +67,7 @@ export function ContactForm({ vorbelegung }: { vorbelegung?: { subject?: string;
     const neu = Array.from(dateien);
 
     if (anhaenge.length + neu.length > ANHANG_MAX_ANZAHL) {
-      setAnhangFehler(`Bitte fügen Sie höchstens ${ANHANG_MAX_ANZAHL} Dateien an.`);
+      setAnhangFehler(`Bitte füge höchstens ${ANHANG_MAX_ANZAHL} Dateien an.`);
       return;
     }
     for (const datei of neu) {

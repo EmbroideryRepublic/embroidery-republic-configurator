@@ -205,8 +205,8 @@ export function SummaryPanel({
           Alle drei Hinweise deshalb erst ab quantity > 0. */}
       {quantity > 0 && mengenTipp ? (
         <p className="text-[11px] font-medium text-green-700" data-testid="mengen-tipp">
-          Tipp: Mit {mengenTipp.menge} statt {quantity} Stück zahlen Sie insgesamt {formatPrice(mengenTipp.ersparnis)} weniger – und
-          erhalten {mengenTipp.mehrStueck} Stück mehr.
+          Tipp: Mit {mengenTipp.menge} statt {quantity} Stück zahlst du insgesamt {formatPrice(mengenTipp.ersparnis)} weniger – und
+          erhältst {mengenTipp.mehrStueck} Stück mehr.
         </p>
       ) : quantity > 0 && naechsteStufe ? (
         <p className="text-[11px] font-medium text-green-700" data-testid="naechste-stufe">
@@ -223,7 +223,7 @@ export function SummaryPanel({
         </p>
       ) : quantity > 0 && breakdown && breakdown.savingsAmount > 0 ? (
         <p className="text-[11px] font-medium text-green-700">
-          Sie sparen {formatPrice(breakdown.savingsAmount)}.
+          Du sparst {formatPrice(breakdown.savingsAmount)}.
         </p>
       ) : null}
 

@@ -21,7 +21,7 @@ export default async function AnmeldenPage() {
       </Link>
       <h1 className="mt-4 font-serif text-2xl font-semibold text-brand">Anmelden</h1>
       <p className="mt-1 mb-6 text-sm text-brand/70">
-        Melden Sie sich an, um Ihre Bestellungen und Adressen zu verwalten.
+        Melde dich an, um deine Bestellungen und Adressen zu verwalten.
       </p>
       <div className="rounded-2xl border border-gold/20 bg-white p-5 shadow-elegant">
         <Suspense>
@@ -29,7 +29,7 @@ export default async function AnmeldenPage() {
         </Suspense>
       </div>
       <p className="mt-6 text-center text-xs text-brand/70">
-        Ein Konto ist nie Voraussetzung fürs Bestellen – Sie können auch jederzeit als Gast bestellen.
+        Ein Konto ist nie Voraussetzung fürs Bestellen – du kannst auch jederzeit als Gast bestellen.
       </p>
     </main>
   );

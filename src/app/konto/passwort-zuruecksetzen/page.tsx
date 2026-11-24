@@ -24,7 +24,7 @@ export default async function PasswortZuruecksetzenPage() {
       {!kunde || !erlaubt ? (
         <div className="mt-6 rounded-2xl border border-gold/20 bg-white p-5 shadow-elegant">
           <p className="text-sm text-brand/70">
-            Dieser Link ist abgelaufen oder ungültig. Bitte fordern Sie einen neuen Link an.
+            Dieser Link ist abgelaufen oder ungültig. Bitte fordere einen neuen Link an.
           </p>
           <Link href="/konto/passwort-vergessen" className="mt-3 inline-block text-sm font-medium text-gold-dark hover:underline">
             Neuen Link anfordern →
@@ -32,7 +32,7 @@ export default async function PasswortZuruecksetzenPage() {
         </div>
       ) : (
         <>
-          <p className="mt-1 mb-6 text-sm text-brand/70">Bitte vergeben Sie ein neues Passwort für {kunde.email}.</p>
+          <p className="mt-1 mb-6 text-sm text-brand/70">Bitte vergib ein neues Passwort für {kunde.email}.</p>
           <div className="rounded-2xl border border-gold/20 bg-white p-5 shadow-elegant">
             <PasswortZuruecksetzenForm />
           </div>

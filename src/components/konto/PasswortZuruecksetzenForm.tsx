@@ -33,7 +33,7 @@ export function PasswortZuruecksetzenForm() {
   if (state?.success) {
     return (
       <div className="rounded-lg border border-gold/30 bg-gold-light/30 p-4 text-sm text-brand">
-        Ihr Passwort wurde geändert. Sie werden weitergeleitet …
+        Dein Passwort wurde geändert. Du wirst weitergeleitet …
       </div>
     );
   }

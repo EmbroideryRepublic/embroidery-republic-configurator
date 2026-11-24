@@ -177,6 +177,6 @@ test('Die Hinweistexte stehen auf Deutsch und Englisch und nennen den Grund', ()
     }
   }
   assert.match(translations.de.method_embroidery_paused, /Wartungs- und Umbauarbeiten/);
-  assert.match(translations.de.cart_embroidery_paused, /DTF-Transferdruck können Sie weiterhin bestellen/);
+  assert.match(translations.de.cart_embroidery_paused, /DTF-Transferdruck kannst du weiterhin bestellen/);
   assert.match(translations.en.method_embroidery_paused, /maintenance and renovation work/);
 });

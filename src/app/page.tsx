@@ -275,7 +275,6 @@ export default async function Startseite() {
                   alt={produktTypLabel(featured.art)}
                   fill
                   sizes="(max-width: 1024px) 90vw, 42vw"
-                  priority
                   className="object-contain p-6 transition-transform duration-[700ms] ease-out group-hover:scale-[1.04] sm:p-9"
                 />
               </div>
@@ -356,14 +355,15 @@ export default async function Startseite() {
               </Link>
             </div>
 
+            {/* Kein `index` an die Kacheln: Sie liegen unterhalb des Falzes. Mit `index` bekäme jede der ersten sechs ein Vorlade-Signal mit hoher
+                Priorität und würde auf dem Handy mit dem Hero-Bild (dem LCP-Element) um die Leitung konkurrieren (Lighthouse 2026-11-24: LCP 4,1 s). */}
             <div className="mt-14 grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-8 md:grid-cols-4">
-              {beliebteProdukte.map((p, index) => (
+              {beliebteProdukte.map((p) => (
                 <Produktkachel
                   key={p.id}
                   produkt={p}
                   bestseller={bestsellerIds.has(p.id)}
                   ansicht="raster"
-                  index={index}
                 />
               ))}
             </div>

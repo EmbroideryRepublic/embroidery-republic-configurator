@@ -29,14 +29,17 @@ test('Stickerei pausiert: Hinweis, Karte „Derzeit nicht verfügbar“, DTF-Kar
   assert.ok(sichtbar(html).includes(HINWEIS_STICKEREI_PAUSIERT), 'Hinweis fehlt');
   assert.ok(html.includes(KARTE_STICKEREI_PAUSIERT), 'Kartenlabel fehlt');
   assert.match(html, /DTF-Transferdruck/);
-  assert.match(html, /opacity-70/, 'die Stickerei-Karte ist abgeblendet');
+  // Abgeblendet wird nur das Symbol, nicht die ganze Karte: Eine durchscheinende Karte (opacity-70) drückte den Text unter das Kontrastverhältnis
+  // 4,5 : 1 (Lighthouse 2026-11-24, 3,1 : 1) – gerade der Hinweis „Derzeit nicht verfügbar“ muss lesbar sein.
+  assert.match(html, /bg-brand\/50/, 'das Symbol der Stickerei-Karte ist abgeblendet');
+  assert.ok(!html.includes('opacity-70'), 'die Karte selbst ist nicht durchscheinend (Lesbarkeit)');
 });
 
 test('Stickerei verfügbar (Schalter leer): wie bisher, ohne Hinweis und ohne Label', () => {
   const html = mitSchalter([], rendere);
   assert.ok(!sichtbar(html).includes(HINWEIS_STICKEREI_PAUSIERT));
   assert.ok(!html.includes(KARTE_STICKEREI_PAUSIERT));
-  assert.ok(!html.includes('opacity-70'));
+  assert.ok(!html.includes('opacity-70') && !html.includes('bg-brand/50'));
   assert.match(html, /Stickerei/);
 });
 

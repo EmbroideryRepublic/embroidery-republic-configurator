@@ -151,7 +151,214 @@ SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasi
 
 Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
-Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /hoodies-bedrucken-besticken, /jacken-bedrucken, /vereinskleidung-bedrucken, /textildruck-preise, /druckdaten-vorbereiten
+Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /hoodies-bedrucken-besticken, /jacken-bedrucken, /arbeitskleidung-bedrucken, /poloshirt-mit-logo-bedrucken, /vereinskleidung-bedrucken, /textildruck-preise, /druckdaten-vorbereiten
+
+## /poloshirt-mit-logo-bedrucken
+
+- **Titel** (50 Zeichen): Poloshirt mit Logo: Worauf es ankommt – ab 1 Stück
+- **Meta-Beschreibung** (140 Zeichen): Welches Poloshirt eignet sich fürs Firmenlogo? Gewebe, Gewicht, Logo-Position und Druckfläche im Überblick – mit Preisbeispielen ab 1 Stück.
+- **Überschrift (H1):** Poloshirts mit Logo bedrucken lassen: Worauf es ankommt
+- **Kleiner Vorspann über der Überschrift:** Ratgeber
+- **Linktext zu dieser Seite:** Poloshirt mit Logo
+
+Ein Poloshirt mit Logo ist für viele Teams die Standardausstattung: im Außendienst, am Empfang, im Service oder im Verein. Damit es gut aussieht und lange hält, kommt es auf drei Dinge an: das passende Modell, die richtige Position und eine Logo-Datei in ausreichender Qualität.
+
+Es gibt 26 Poloshirts von mehreren Marken, Preise ab 13,99 € pro Stück zzgl. Veredelung. Bedruckt wird per DTF-Transferdruck, ab einem einzelnen Stück.
+
+**Abschnitt „Passende Modelle“:** Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · SOL'S Unisex Pulse Polo Shirt · B&C Inspire Polo / Men
+
+### Das passende Poloshirt finden
+
+- Gewebe: Piqué ist ein Strickgewebe mit feiner Wabenstruktur und der Klassiker bei Poloshirts. Daneben gibt es glattere Jersey-Qualitäten.
+- Material: 100 % Baumwolle fühlt sich angenehm an. Mischgewebe aus Polyester und Baumwolle, zum Beispiel 65 % zu 35 %, knittern weniger und gelten als pflegeleichter. Es gibt auch Poloshirts aus Bio-Baumwolle; Zertifizierungen wie GOTS oder OEKO-TEX Standard 100 stehen bei den betreffenden Modellen auf der Produktseite.
+- Gewicht: Die Poloshirts im Sortiment wiegen 170 bis 240 g/m². Leichtere Stoffe sind luftiger, schwerere fester.
+- Schnitt: Es gibt Unisex-Modelle in normaler Passform und taillierte Damenmodelle mit Seitennähten. Die Größentabelle steht auf jeder Produktseite.
+
+### Gewicht der Poloshirts im Überblick
+
+22 Modelle mit Gewichtsangabe, von 170 bis 240 g/m².
+
+| Stoffgewicht | Modelle | Beispiele |
+|---|---|---|
+| unter 180 g/m² | 6 | SOL'S Unisex Pulse Polo Shirt (170 g/m²), B&C Inspire Polo / Men (170 g/m²), B&C Inspire Polo / Women (170 g/m²) |
+| 180 bis 199 g/m² | 8 | B&C Unisex Polo ID.001 (180 g/m²), SOL'S Men's Polo Shirt Perfect (180 g/m²), B&C My Polo 180 (180 g/m²) |
+| ab 200 g/m² | 8 | Neutral Men's Classic Polo (235 g/m²), SOL'S Women's Polo Shirt Prime (200 g/m²), SOL'S Men's Polo Shirt Prime (200 g/m²) |
+
+### Wo das Logo sitzt
+
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+
+Üblich ist ein kleines Logo auf der Brust (ca. 10 × 10 cm). Wer zusätzlich einen Firmennamen oder Slogan zeigen möchte, setzt ihn auf den Rücken (ca. 20 × 25 cm).
+
+Ein Poloshirt hat Kragen und Knopfleiste. Das Logo sollte deshalb weder zu hoch noch zu breit sitzen. Im Konfigurator sehen Sie die Fläche samt Maßen und können das Motiv direkt verschieben.
+
+### Größtmögliche Druckfläche bei Poloshirts
+
+| Vorderseite | Neutral Men's Classic Polo | B&C Unisex Polo ID.001 | SOL'S Unisex Pulse Polo Shirt |
+|---|---|---|---|
+| S | 46,1 × 47 cm | 44,7 × 47 cm | 44,7 × 47 cm |
+| M | 49 × 47 cm | 48,7 × 47 cm | 48,4 × 47 cm |
+| L | 51,7 × 47 cm | 51,7 × 47 cm | 51,1 × 47 cm |
+| XL | 54,6 × 47 cm | 55,8 × 47 cm | 54 × 47 cm |
+| XXL | 58,3 × 47 cm | 59 × 47 cm | 56,7 × 47 cm |
+
+| Rückseite | Neutral Men's Classic Polo | B&C Unisex Polo ID.001 | SOL'S Unisex Pulse Polo Shirt |
+|---|---|---|---|
+| S | 46,1 × 47 cm | 44,7 × 47 cm | 44,7 × 47 cm |
+| M | 49 × 47 cm | 48,7 × 47 cm | 48,4 × 47 cm |
+| L | 51,7 × 47 cm | 51,7 × 47 cm | 51,1 × 47 cm |
+| XL | 54,6 × 47 cm | 55,8 × 47 cm | 54 × 47 cm |
+| XXL | 58,3 × 47 cm | 59 × 47 cm | 56,7 × 47 cm |
+
+Breite × Höhe der größtmöglichen Druckfläche in Zentimetern, flach gemessen – so, wie das Motiv auf die Folie gedruckt wird.
+
+### Logo-Datei und Stoffstruktur
+
+Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Bei PNG oder JPG braucht das Bild genug Bildpunkte: Ab 220 dpi gilt die Qualität im Konfigurator als optimal. Der Auflösungsrechner zeigt, wie viele Pixel Ihre Druckbreite braucht.
+
+Auf strukturiertem Piqué wirken sehr feine Linien und sehr kleine Schrift weniger scharf als auf glattem Stoff. Ein klar gezeichnetes Logo ohne feinste Details gelingt zuverlässiger. Vor der Produktion prüfen wir Ihre Datei kostenlos.
+
+### Menge und Preis
+
+Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+
+### Pflege
+
+Die Pflegehinweise des Herstellers stehen auf der Produktseite des jeweiligen Modells. Allgemeine Tipps zum Waschen bedruckter Textilien finden Sie in der Pflegeanleitung.
+
+### Preisbeispiele
+
+Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+
+- 1 Poloshirt · Logo auf der Brust (ca. 10 × 10 cm): **32,99 €** pro Stück (Einzelstück)
+- 10 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
+- 25 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **22,99 €** pro Stück, gesamt 574,75 €
+
+Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+
+### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+
+1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
+2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
+3. DTF-Druck bestellen Sie direkt im Konfigurator.
+4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
+
+### Häufige Fragen
+
+**Welches Poloshirt eignet sich für ein Firmenlogo?**
+
+Das hängt vom Einsatz. Für Büro und Außendienst sind Poloshirts aus Baumwolle üblich, für häufiges Waschen und wenig Knittern eher Mischgewebe aus Polyester und Baumwolle. Material, Gewicht, Schnitt und Pflegehinweise stehen auf jeder Produktseite.
+
+**Wie groß darf das Logo auf einem Poloshirt sein?**
+
+Das hängt von Modell und Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei Poloshirts; für jedes Modell sehen Sie die Fläche samt Maßen in Zentimetern im Konfigurator. Für ein Brustlogo sind etwa 10 × 10 cm üblich.
+
+**Kann ich ein einzelnes Poloshirt bedrucken lassen?**
+
+Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+
+**Welche Dateien brauche ich für das Logo?**
+
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir Ihre Datei kostenlos.
+
+**Wie lange dauert es, bis die Poloshirts ankommen?**
+
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+
+Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /firmenkleidung-bedrucken, /arbeitskleidung-bedrucken, /druckgroesse-t-shirt-hoodie, /druckaufloesung-rechner, /bedruckte-textilien-pflege
+
+## /arbeitskleidung-bedrucken
+
+- **Titel** (54 Zeichen): Arbeitskleidung mit Logo bedrucken lassen – ab 1 Stück
+- **Meta-Beschreibung** (143 Zeichen): Polos, T-Shirts, Hoodies und Fleecejacken für den Arbeitsalltag mit Firmenlogo per DTF-Transferdruck bedrucken – ab 1 Stück, Kauf auf Rechnung.
+- **Überschrift (H1):** Arbeitskleidung mit Logo bedrucken lassen
+- **Kleiner Vorspann über der Überschrift:** Für Handwerk, Service und Betrieb
+- **Linktext zu dieser Seite:** Arbeitskleidung
+
+Ob Handwerksbetrieb, Reinigungsfirma, Praxis oder Gastronomie: Einheitliche Kleidung mit Logo macht ein Team erkennbar und wirkt vor Kunden professionell. Wir bedrucken dafür Polos, T-Shirts, Zip-Hoodies und Jacken – auch einzelne Teile, etwa für neue Mitarbeitende.
+
+Wichtig vorab: Wir bedrucken Textilien aus unserem Sortiment. Schutz- und Warnschutzkleidung, zum Beispiel nach EN ISO 20471, gehört nicht dazu.
+
+**Abschnitt „Passende Modelle“:** Neutral Men's Classic Polo · B&C Unisex Polo ID.001 · Fruit of the Loom Super Premium T · Fruit of the Loom Iconic 195 Ringspun Premium T · B&C Inspire Zipped Hood Jacket · James+Nicholson Workwear Half Zip Sweat · SOL'S Men's Plain Fleece Jacket Norman · B&C Microfleece-Duo ID501
+
+### Welche Textilien sich für den Arbeitsalltag eignen
+
+- Poloshirts: der Klassiker für Außendienst, Service und Empfang, aus Baumwolle oder als Mischgewebe aus Polyester und Baumwolle.
+- T-Shirts: robust und günstig, auch als Zweitteil unter Jacke oder Pullover. Mehrere Hersteller führen Modelle unter der Bezeichnung „Workwear“; sie gehören zu unserem Sortiment.
+- Hoodies und Zip-Hoodies: für Lager, Werkstatt und kühle Tage.
+- Fleecejacken: warme Jacken aus Polyester für draußen und für den Wechsel zwischen drinnen und draußen.
+
+### Gewebe und Gewicht
+
+Baumwolle fühlt sich angenehm an. Mischgewebe mit Polyester, zum Beispiel 65 % Polyester zu 35 % Baumwolle, knittern weniger und gelten als pflegeleichter. Beides gibt es im Sortiment.
+
+Je höher das Gewicht in g/m², desto fester und schwerer ist der Stoff. Bei Poloshirts reicht es im Sortiment von 170 bis 240 g/m². Material und Gewicht stehen bei jedem Modell auf der Produktseite.
+
+### Logo und Position
+
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+
+Häufig steht das Firmenlogo klein auf der Brust (ca. 10 × 10 cm), Firmenname oder Kontaktangaben stehen groß auf dem Rücken (ca. 20 × 25 cm). Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.
+
+### Mehrere Mitarbeitende, mehrere Größen
+
+- Ein Motiv, beliebig viele Größen: zum Beispiel 2× M, 6× L und 2× XL in einem Auftrag.
+- Auch einzelne Teile: Es gibt keine Mindestbestellmenge, zum Beispiel für neue Mitarbeitende.
+- Staffelpreise: Mit größerer Menge sinkt der Stückpreis, die Staffel beginnt bei 5 Stück.
+- Kauf auf Rechnung: zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+
+Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
+
+### Pflege
+
+Es gelten die Pflegehinweise des Herstellers, die auf der Produktseite des jeweiligen Modells stehen. Allgemeine Tipps zum Waschen bedruckter Textilien finden Sie in der Pflegeanleitung.
+
+### Preisbeispiele
+
+Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+
+- 5 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm): **20,99 €** pro Stück, gesamt 104,95 €
+- 10 T-Shirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **20,99 €** pro Stück, gesamt 209,90 €
+- 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm): **28,99 €** pro Stück, gesamt 289,90 €
+
+Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+
+### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+
+1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
+2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
+3. DTF-Druck bestellen Sie direkt im Konfigurator.
+4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
+
+### Häufige Fragen
+
+**Bedrucken Sie auch Schutz- oder Warnschutzkleidung?**
+
+Nein. Wir bedrucken Textilien aus unserem Sortiment: T-Shirts, Poloshirts, Hoodies und Jacken. Schutz- und Warnschutzkleidung, zum Beispiel nach EN ISO 20471, bieten wir nicht an.
+
+**Welche Textilien eignen sich für Arbeitskleidung?**
+
+Das hängt vom Einsatz. Poloshirts und T-Shirts aus Baumwolle oder Mischgewebe sind verbreitet, Hoodies und Fleecejacken für kühlere Bereiche. Mehrere Hersteller führen Modelle unter der Bezeichnung „Workwear“. Material, Gewicht und Pflegehinweise stehen auf jeder Produktseite.
+
+**Können wir einzelne Teile bestellen, zum Beispiel für neue Mitarbeitende?**
+
+Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+
+**Kann die Kleidung gewerblich gewaschen werden?**
+
+Das können wir nicht allgemein zusagen. Die zulässige Waschtemperatur nennt das Pflegeetikett des Textils. Wird die Kleidung gewerblich aufbereitet, fragen Sie uns bitte vor der Bestellung über das Kontaktformular.
+
+**Können Unternehmen auf Rechnung bezahlen?**
+
+Ja. Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+
+**Wie lange dauert es, bis die Bestellung ankommt?**
+
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+
+Weiterführende Links am Seitenende: /firmenkleidung-bedrucken, /poloshirt-mit-logo-bedrucken, /poloshirts-besticken-bedrucken, /jacken-bedrucken, /geschaeftskunden, /bedruckte-textilien-pflege
 
 ## /abschluss-hoodies-bedrucken
 
@@ -1356,6 +1563,8 @@ Weiterführende Links am Seitenende: /hoodies-bedrucken-besticken, /t-shirts-bed
 ## Anlässe und Ratgeber
 - [Vereinskleidung](https://www.ergermany.de/vereinskleidung-bedrucken)
 - [Firmenkleidung](https://www.ergermany.de/firmenkleidung-bedrucken)
+- [Poloshirt mit Logo](https://www.ergermany.de/poloshirt-mit-logo-bedrucken)
+- [Arbeitskleidung](https://www.ergermany.de/arbeitskleidung-bedrucken)
 - [Abschluss-Hoodies](https://www.ergermany.de/abschluss-hoodies-bedrucken)
 - [T-Shirt mit Foto](https://www.ergermany.de/tshirt-mit-foto-bedrucken)
 - [Textildruck-Preise](https://www.ergermany.de/textildruck-preise)

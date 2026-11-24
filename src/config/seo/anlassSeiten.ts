@@ -296,7 +296,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
   {
     slug: 'poloshirt-mit-logo-bedrucken',
     kurzname: 'Poloshirt mit Logo',
-    titel: 'Poloshirt mit Logo bedrucken: Gewebe, Größe, Position',
+    titel: 'Poloshirt mit Logo: Worauf es ankommt – ab 1 Stück',
     h1: 'Poloshirts mit Logo bedrucken lassen: Worauf es ankommt',
     eyebrow: 'Ratgeber',
     beschreibung:

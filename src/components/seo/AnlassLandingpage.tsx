@@ -82,6 +82,7 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
   const ablauf = DTF_ABLAUF_SCHRITTE.map(fuelle);
   const verwandt = seite.verwandt.map(verwandterLink);
   const freiAb = formatiereGeld(SHIPPING_RATES.DE.freeFrom);
+  const hatAnfrage = seite.abschnitte.some((a) => a.tabelle === 'geschaeftsanfrage');
 
   const beispiele = seite.beispiele.length > 0 ? await berechneBeispiele({ slug: seite.slug, beispiele: alsKategorieBeispiele(seite.beispiele) }) : [];
   const beispielProdukte = [...new Set(beispiele.map((b) => b.produktName))];
@@ -120,13 +121,31 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
             </p>
           ))}
           <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <Link
-              href="/konfigurator"
-              className="group inline-flex items-center gap-3 rounded-full bg-brand px-8 py-3.5 text-[15px] font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 active:scale-[0.98]"
-            >
-              Jetzt gestalten
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-            </Link>
+            {hatAnfrage ? (
+              <>
+                <a
+                  href="#anfrage"
+                  className="group inline-flex min-h-[48px] items-center gap-3 rounded-full bg-brand px-8 py-3.5 text-[15px] font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 active:scale-[0.98]"
+                >
+                  Unverbindlich Angebot anfordern
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                </a>
+                <Link
+                  href="/konfigurator"
+                  className="inline-flex items-center border-b border-brand/25 pb-1 text-[15px] text-brand/70 transition-colors duration-300 hover:border-brand hover:text-brand"
+                >
+                  Oder selbst im Konfigurator gestalten
+                </Link>
+              </>
+            ) : (
+              <Link
+                href="/konfigurator"
+                className="group inline-flex items-center gap-3 rounded-full bg-brand px-8 py-3.5 text-[15px] font-medium text-white transition-all duration-300 ease-out hover:bg-brand/90 active:scale-[0.98]"
+              >
+                Jetzt gestalten
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              </Link>
+            )}
             {fakten.kacheln.length > 0 && (
               <Link
                 href="/produkt"
@@ -152,7 +171,7 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
         )}
 
         {seite.abschnitte.map((a) => (
-          <section key={a.ueberschrift} className="mt-24 max-w-3xl">
+          <section key={a.ueberschrift} id={a.tabelle === 'geschaeftsanfrage' ? 'anfrage' : undefined} className="mt-24 max-w-3xl scroll-mt-24">
             <h2 className={H2_KLASSE}>{fuelle(a.ueberschrift)}</h2>
             {a.punkte && (
               <ul className="mt-8 space-y-4">

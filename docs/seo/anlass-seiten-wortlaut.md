@@ -420,7 +420,7 @@ Weiterführende Links am Seitenende: /druckdaten-vorbereiten, /druckdatei-pruefe
 - **Kleiner Vorspann über der Überschrift:** Für Geschäftskunden
 - **Linktext zu dieser Seite:** Geschäftskunden
 
-Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit Ihrem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Beschreiben Sie unten kurz, was Sie brauchen; wir erstellen Ihnen ein persönliches Angebot.
+Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit Ihrem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Fordern Sie unten ein unverbindliches, individuelles Angebot an – wir melden uns persönlich.
 
 Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.
 
@@ -436,6 +436,53 @@ Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fot
 - Reguläre Produktionszeit 3 bis 4 Werktage, Versand innerhalb von 1 bis 2 Werktagen.
 - Persönliche Betreuung: Antwort meist innerhalb eines Werktags.
 
+### Unverbindliches Angebot anfordern
+
+Wenige Angaben genügen: Branche, gewünschte Kleidung, ungefähre Stückzahl und Ihre Kontaktdaten. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto Ihres bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot, das für Sie unverbindlich ist.
+
+*Formular mit festen Auswahlfeldern (Pflichtfelder mit *). Es wird nur DTF-Transferdruck angeboten; die Stickerei kommt nicht vor.*
+
+- **Unternehmen** * (Platzhalter: „z. B. Mustermann Heizung GmbH“)
+- **Branche** * – Handwerk (z. B. Maler, Elektro, Sanitär und Heizung) · Gebäudereinigung und Dienstleistung · Gastronomie und Hotel · Praxis und Therapie · Verein · Fitness und Kampfsport · Salon und Studio · Sonstige Branche
+- **Ungefähre Stückzahl** * – 1–9 Stück · 10–24 Stück · 25–49 Stück · 50–99 Stück · 100 Stück und mehr · Weiß ich noch nicht
+- **Gewünschte Kleidung** * (Mehrfachauswahl möglich) – Poloshirts · T-Shirts · Hoodies und Sweatshirts · Jacken · Weiß ich noch nicht – bitte beraten Sie mich
+- **Gewünschte Veredelung** * (vorausgewählt: DTF) – DTF-Transferdruck (vollfarbiges Logo oder Motiv) · Weiß ich noch nicht – bitte beraten Sie mich
+- **Ihr Name** *, **E-Mail** *
+- **Telefon** (optional – falls wir Sie zurückrufen sollen)
+- **Logo hochladen** – optional – PNG, JPEG oder PDF, zusammen höchstens 3 MB. Ein Foto oder eine Skizze Ihres bisherigen Logos genügt. (Grenze: höchstens 2 Dateien, zusammen 3 MB; Knopf: „Datei auswählen“)
+- **Anmerkung** (optional – z. B. Wunschtermin, Farben oder besondere Wünsche)
+- **Kennung aus Ihrem Brief** (optional – steht unter dem QR-Code); mit Kennung aus dem QR-Link vorbelegt, dazu der Hinweis: „Aus Ihrem Brief übernommen.“
+- Knopf: **Unverbindlich anfragen** (beim Senden: „Wird gesendet …“)
+- Hinweis unter dem Knopf: Mit dem Absenden werden Ihre Angaben zur Bearbeitung Ihrer Anfrage verarbeitet. Es entsteht keine Bestellung und keine Zahlungsverpflichtung.
+- Erfolg: **Anfrage gesendet** – Vielen Dank für Ihre Anfrage! Wir melden uns persönlich bei Ihnen zurück – in der Regel innerhalb eines Werktags. (Knopf: „Weitere Anfrage stellen“)
+- Fehlermeldungen: „Bitte nennen Sie Ihr Unternehmen (mindestens 2 Zeichen).“ · „Bitte wählen Sie Ihre Branche.“ · „Bitte wählen Sie mindestens eine Kleidungsart – oder „Weiß ich noch nicht“.“ · „Bitte wählen Sie eine ungefähre Stückzahl – oder „Weiß ich noch nicht“.“ · „Bitte wählen Sie eine Veredelung.“ · „Bitte geben Sie Ihren Namen an (mindestens 2 Zeichen).“ · „Bitte geben Sie eine gültige E-Mail-Adresse an.“ · „Bitte prüfen Sie die Telefonnummer (nur Ziffern, Leerzeichen und + - / ( )).“ · „Die Anmerkung ist zu lang (höchstens 1.500 Zeichen).“ · „Die Kennung hat das Format B2B-0000 und steht unter dem QR-Code Ihres Briefes.“ · „Bitte hängen Sie höchstens 2 Dateien an.“ · „Die Dateien sind zusammen zu groß (höchstens 3 MB). Größere Dateien schicken Sie uns bitte per E-Mail an info@ergermany.de.“ · „Dieses Dateiformat wird nicht unterstützt. Erlaubt sind PNG, JPEG und PDF.“
+- Sammelhinweis: „Bitte prüfen Sie die markierten Felder.“ · Sendefehler: „Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es später erneut oder schreiben Sie uns direkt per E-Mail an info@ergermany.de.“
+
+Schaltfläche im Kopf der Seite: **Unverbindlich Angebot anfordern** (springt zum Formular), daneben der Link „Oder selbst im Konfigurator gestalten“.
+
+So kommt eine Anfrage bei uns an (Beispiel mit Kennung B2B-0011; E-Mail an info@ergermany.de, Antwort geht an die angegebene Adresse):
+
+Betreff: Geschäftsanfrage Firmenkleidung [B2B-0011] – Mustermann Heizung GmbH
+
+```
+GESCHÄFTSANFRAGE FIRMENKLEIDUNG
+Kennung aus dem Brief: B2B-0011 (aus dem QR-Code übernommen)
+
+Unternehmen: Mustermann Heizung GmbH
+Branche: Handwerk (z. B. Maler, Elektro, Sanitär und Heizung)
+Gewünschte Kleidung: Poloshirts, T-Shirts
+Ungefähre Stückzahl: 25–49 Stück
+Veredelung: DTF-Transferdruck (vollfarbiges Logo oder Motiv)
+
+Ansprechpartner: Erika Mustermann
+E-Mail: erika@mustermann-heizung.de
+Telefon: 0173 1234567
+Logo: nicht angehängt
+
+Anmerkung:
+Bitte bis Ende Januar.
+```
+
 ### Passende Kleidung für Ihre Branche
 
 - Praxen: Poloshirts und T-Shirts für das Team, dezent mit Praxislogo.
@@ -444,22 +491,6 @@ Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fot
 - Fitness und Kampfsport: Sport-T-Shirts, Hoodies und Longsleeves.
 - Vereine: Hoodies, T-Shirts und Sportshirts mit Wappen und Sponsorenlogo.
 - Reinigung und Dienstleistung: Poloshirts, T-Shirts und Jacken für wachsende Teams.
-
-### Geschäftsanfrage stellen
-
-Beschreiben Sie kurz Ihr Vorhaben: Kleidung, ungefähre Menge und Logo. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto Ihres bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot.
-
-*Das vorhandene Kontaktformular, vorbelegt mit dem Betreff „Geschäftsanfrage Firmenkleidung“ und dieser Vorlage im Nachrichtenfeld (mit gültiger Kennung aus dem Brief, z. B. B2B-0011, zusätzlich „Kennung aus Ihrem Schreiben: …“):*
-
-```
-Unternehmen / Branche:
-Gewünschte Kleidung (z. B. Poloshirts, Hoodies):
-Ungefähre Menge:
-Logo vorhanden (ja/nein):
-Gewünschter Termin:
-
-Kennung aus Ihrem Schreiben: B2B-0011
-```
 
 ### Preisbeispiele
 

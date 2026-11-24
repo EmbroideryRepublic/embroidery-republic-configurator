@@ -14,7 +14,8 @@ import { alsKategorieBeispiele, anlassFakten, fuelleAnlass, AUFLOESUNG_BREITEN_C
 import { MIN_DPI, OK_DPI } from '../src/lib/canvas/logoQualitaet.ts';
 import { formatiereGeld } from '../src/lib/format.ts';
 import { llmsText } from '../src/lib/seo/llmsText.ts';
-import { geschaeftsanfrageText } from '../src/config/seo/geschaeftsanfrage.ts';
+import { BRANCHEN, FORMULAR_TEXTE as FT, KLEIDUNG, MENGEN, VEREDELUNG, LOGO_GRENZEN } from '../src/config/seo/geschaeftsanfrage.ts';
+import { pruefeGeschaeftsanfrage } from '../src/lib/seo/geschaeftsanfrage.ts';
 import { druckflaechenTabelle, gewichtsUebersicht, groessenTabelle, markeUndName, type TabellenArt } from '../src/lib/seo/katalogAuswertung.ts';
 import { zahl } from '../src/lib/format.ts';
 
@@ -85,12 +86,37 @@ for (const seite of ANLASS_SEITEN) {
       z();
     }
     if (a.tabelle === 'geschaeftsanfrage') {
-      z('*Das vorhandene Kontaktformular, vorbelegt mit dem Betreff „Geschäftsanfrage Firmenkleidung“ und dieser Vorlage im Nachrichtenfeld (mit gültiger Kennung aus dem Brief, z. B. B2B-0011, zusätzlich „Kennung aus Ihrem Schreiben: …“):*');
+      z('*Formular mit festen Auswahlfeldern (Pflichtfelder mit *). Es wird nur DTF-Transferdruck angeboten; die Stickerei kommt nicht vor.*');
       z();
-      z('```');
-      z(geschaeftsanfrageText('B2B-0011'));
-      z('```');
+      z(`- **${FT.firma}** * (Platzhalter: „${FT.firmaPlatzhalter}“)`);
+      z(`- **${FT.branche}** * – ${BRANCHEN.map((x) => x.label).join(' · ')}`);
+      z(`- **${FT.menge}** * – ${MENGEN.map((x) => x.label).join(' · ')}`);
+      z(`- **${FT.kleidung}** * (${FT.kleidungHinweis}) – ${KLEIDUNG.map((x) => x.label).join(' · ')}`);
+      z(`- **${FT.veredelung}** * (vorausgewählt: DTF) – ${VEREDELUNG.map((x) => x.label).join(' · ')}`);
+      z(`- **${FT.name}** *, **${FT.email}** *`);
+      z(`- **${FT.telefon}** (${FT.telefonHinweis})`);
+      z(`- **${FT.logo}** – ${FT.logoHinweis} (Grenze: höchstens ${LOGO_GRENZEN.maxDateien} Dateien, zusammen ${LOGO_GRENZEN.maxBytesGesamt / 1024 / 1024} MB; Knopf: „${FT.logoWaehlen}“)`);
+      z(`- **${FT.anmerkung}** (${FT.anmerkungHinweis})`);
+      z(`- **${FT.kennung}** (${FT.kennungHinweis}); mit Kennung aus dem QR-Link vorbelegt, dazu der Hinweis: „${FT.kennungUebernommen}“`);
+      z(`- Knopf: **${FT.senden}** (beim Senden: „${FT.sendet}“)`);
+      z(`- Hinweis unter dem Knopf: ${FT.datenschutz}`);
+      z(`- Erfolg: **${FT.erfolgTitel}** – ${FT.erfolgText} (Knopf: „${FT.erfolgNochmal}“)`);
+      z(`- Fehlermeldungen: ${Object.values(FT.fehler).map((m) => `„${m}“`).join(' · ')}`);
+      z(`- Sammelhinweis: „${FT.sammelfehler}“ · Sendefehler: „${FT.sendefehler}“`);
       z();
+      z('Schaltfläche im Kopf der Seite: **Unverbindlich Angebot anfordern** (springt zum Formular), daneben der Link „Oder selbst im Konfigurator gestalten“.');
+      z();
+      z('So kommt eine Anfrage bei uns an (Beispiel mit Kennung B2B-0011; E-Mail an info@ergermany.de, Antwort geht an die angegebene Adresse):');
+      z();
+      const beispiel = pruefeGeschaeftsanfrage({ firma: 'Mustermann Heizung GmbH', branche: 'handwerk', kleidung: ['polo', 'tshirt'], menge: '25-49', veredelung: 'dtf', name: 'Erika Mustermann', email: 'erika@mustermann-heizung.de', telefon: '0173 1234567', anmerkung: 'Bitte bis Ende Januar.', kennung: 'B2B-0011', kennungQuelle: 'qr' });
+      if (beispiel.ok) {
+        z(`Betreff: ${beispiel.betreff}`);
+        z();
+        z('```');
+        z(beispiel.nachricht);
+        z('```');
+        z();
+      }
     }
     if (a.tabelle === 'aufloesung') {
       z('| Druckbreite | mindestens (' + MIN_DPI + ' dpi) | optimal (' + OK_DPI + ' dpi) |');

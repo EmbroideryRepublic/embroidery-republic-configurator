@@ -10,7 +10,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync } from 'node:fs';
 import { ANLASS_SEITEN } from '@/config/seo/anlassSeiten';
-import { geschaeftsanfrageText, GESCHAEFTSANFRAGE_BETREFF, istGueltigeKennung } from '@/config/seo/geschaeftsanfrage';
+import { GESCHAEFTSANFRAGE_BETREFF, istGueltigeKennung } from '@/config/seo/geschaeftsanfrage';
 import { DTF_ABLAUF_SCHRITTE, DTF_SEITEN } from '@/config/seo/dtfSeiten';
 import { KATEGORIE_SEITEN } from '@/config/seo/kategorieSeiten';
 import { veredelungVerfuegbar } from '@/config/bestellweg';
@@ -368,14 +368,12 @@ test('Abi-Seite trägt „Abi“ im Titel (so wird gesucht) und bleibt unter 60 
   assert.ok(titel.length <= 60, titel);
 });
 
-test('Geschäftskunden-Seite: genau ein Formular, Kennung nur im Format B2B-0000, Vorlage trägt die Kennung', () => {
+test('Geschäftskunden-Seite: genau ein Formular direkt nach den Vorteilen, Kennung nur im Format B2B-0000', () => {
   const mitFormular = ANLASS_SEITEN.filter((s) => s.abschnitte.some((a) => a.tabelle === 'geschaeftsanfrage'));
   assert.deepEqual(mitFormular.map((s) => s.slug), ['geschaeftskunden']);
+  const abschnitte = mitFormular[0]!.abschnitte;
+  assert.equal(abschnitte.findIndex((a) => a.tabelle === 'geschaeftsanfrage'), 1, 'Das Formular steht an zweiter Stelle, nicht am Ende der Seite');
   for (const gut of ['B2B-0001', 'B2B-0011', 'B2B-9999']) assert.equal(istGueltigeKennung(gut), true, gut);
   for (const schlecht of ['', 'B2B-1', 'b2b-0011', 'B2B-00111', 'B2B-0011\nCC: x', '<script>', null, undefined]) assert.equal(istGueltigeKennung(schlecht as string), false, String(schlecht));
-  assert.match(geschaeftsanfrageText('B2B-0011'), /Kennung aus Ihrem Schreiben: B2B-0011$/);
-  assert.doesNotMatch(geschaeftsanfrageText(null), /Kennung/);
-  assert.doesNotMatch(geschaeftsanfrageText('B2B-0011\nBCC: x@y.de'), /BCC/, 'Eine manipulierte Kennung wird nicht übernommen');
-  assert.ok(geschaeftsanfrageText().length >= 10, 'Die Vorlage erfüllt die Mindestlänge des Nachrichtenfelds');
   assert.ok(GESCHAEFTSANFRAGE_BETREFF.length > 0);
 });

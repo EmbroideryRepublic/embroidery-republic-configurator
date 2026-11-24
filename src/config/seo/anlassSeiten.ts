@@ -624,7 +624,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Firmenkleidung mit Logo per DTF-Transferdruck: ab 1 Stück, Staffelpreise, Vorschau zur Freigabe, Kauf auf Rechnung. Jetzt Geschäftsanfrage stellen.',
     einleitung: [
-      'Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit Ihrem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Beschreiben Sie unten kurz, was Sie brauchen; wir erstellen Ihnen ein persönliches Angebot.',
+      'Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit Ihrem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Fordern Sie unten ein unverbindliches, individuelles Angebot an – wir melden uns persönlich.',
       EINLEITUNG_DTF,
     ],
     kacheln: [
@@ -647,6 +647,13 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ],
       },
       {
+        ueberschrift: 'Unverbindliches Angebot anfordern',
+        absaetze: [
+          'Wenige Angaben genügen: Branche, gewünschte Kleidung, ungefähre Stückzahl und Ihre Kontaktdaten. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto Ihres bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot, das für Sie unverbindlich ist.',
+        ],
+        tabelle: 'geschaeftsanfrage',
+      },
+      {
         ueberschrift: 'Passende Kleidung für Ihre Branche',
         punkte: [
           'Praxen: Poloshirts und T-Shirts für das Team, dezent mit Praxislogo.',
@@ -656,13 +663,6 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
           'Vereine: Hoodies, T-Shirts und Sportshirts mit Wappen und Sponsorenlogo.',
           'Reinigung und Dienstleistung: Poloshirts, T-Shirts und Jacken für wachsende Teams.',
         ],
-      },
-      {
-        ueberschrift: 'Geschäftsanfrage stellen',
-        absaetze: [
-          'Beschreiben Sie kurz Ihr Vorhaben: Kleidung, ungefähre Menge und Logo. Ein fertiges Logo ist nicht nötig – auch eine Skizze oder ein Foto Ihres bisherigen Logos hilft. Wir melden uns persönlich mit einem Angebot.',
-        ],
-        tabelle: 'geschaeftsanfrage',
       },
     ],
     beispiele: [

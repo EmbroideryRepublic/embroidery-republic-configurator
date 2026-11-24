@@ -99,7 +99,7 @@ export function DateiPruefung() {
     if (!datei) return;
     if (!/^image\/(png|jpeg|webp)$/.test(datei.type)) {
       setBild(null);
-      setFehler('Bitte wählen Sie ein Bild im Format PNG, JPG/JPEG oder WebP aus.');
+      setFehler('Bitte wähle ein Bild im Format PNG, JPG/JPEG oder WebP aus.');
       return;
     }
     if (datei.size > MAX_DATEI_BYTES) {
@@ -144,7 +144,7 @@ export function DateiPruefung() {
       bildUrl.current = url;
       setErgebnis({ url, breite: neu.breite, hoehe: neu.hoehe, faktor: angebot.faktor, bytes: blob.size });
     } catch {
-      setFehler('Das Hochskalieren hat nicht geklappt. Versuchen Sie es mit einer kleineren Datei oder einem anderen Browser.');
+      setFehler('Das Hochskalieren hat nicht geklappt. Versuche es mit einer kleineren Datei oder einem anderen Browser.');
     } finally {
       setRechnet(false);
     }
@@ -169,7 +169,7 @@ export function DateiPruefung() {
             aria-describedby="datei-pruefen-datei-hinweis"
           />
           <p id="datei-pruefen-datei-hinweis" className="mt-2 text-[13px] text-brand/70">
-            PNG, JPG/JPEG oder WebP bis {groesseText(MAX_DATEI_BYTES)}. Das Bild bleibt in Ihrem Browser.
+            PNG, JPG/JPEG oder WebP bis {groesseText(MAX_DATEI_BYTES)}. Das Bild bleibt in deinem Browser.
           </p>
         </div>
         <div>
@@ -200,13 +200,13 @@ export function DateiPruefung() {
 
         {!bild && !fehler && (
           <p className="rounded-2xl border border-brand/[0.1] bg-brand-light p-5 text-[15px] text-brand/70">
-            Wählen Sie ein Bild aus, um die Auflösung zu prüfen.
+            Wähle ein Bild aus, um die Auflösung zu prüfen.
           </p>
         )}
 
         {bild && !gueltig && (
           <p className="rounded-2xl border border-brand/[0.1] bg-brand-light p-5 text-[15px] text-brand/70">
-            Bitte geben Sie die Druckbreite als Zahl größer als 0 ein.
+            Bitte gib die Druckbreite als Zahl größer als 0 ein.
           </p>
         )}
 
@@ -216,7 +216,7 @@ export function DateiPruefung() {
             <p className="mt-1 text-[15px] font-semibold">{STUFEN[stufe].name}</p>
             <p className="mt-3 text-[15px] leading-relaxed">{logoQualitaetText(stufe, dpi)}</p>
             <p className="mt-3 text-[14px] leading-relaxed opacity-90">
-              Ihr Bild hat {zahl(bild.breite, 0)} × {zahl(bild.hoehe, 0)} Pixel. Bei {zahl(cm)} cm Breite wäre der Druck{' '}
+              Dein Bild hat {zahl(bild.breite, 0)} × {zahl(bild.hoehe, 0)} Pixel. Bei {zahl(cm)} cm Breite wäre der Druck{' '}
               {zahl(hoeheCm)} cm hoch.
             </p>
           </div>
@@ -238,8 +238,8 @@ export function DateiPruefung() {
 
         {bild && stufe && !angebot && stufe !== 'green' && !ergebnis && (
           <p className="rounded-2xl border border-brand/[0.1] bg-brand-light p-5 text-[15px] leading-relaxed text-brand/80">
-            Dieses Bild lässt sich hier nicht sinnvoll hochskalieren (das Ergebnis wäre zu groß für den Browser). Platzieren Sie es kleiner, verwenden Sie ein SVG
-            oder laden Sie eine höher aufgelöste Datei hoch.
+            Dieses Bild lässt sich hier nicht sinnvoll hochskalieren (das Ergebnis wäre zu groß für den Browser). Platziere es kleiner, verwende ein SVG
+            oder lade eine höher aufgelöste Datei hoch.
           </p>
         )}
 
@@ -268,7 +268,7 @@ export function DateiPruefung() {
               Als PNG speichern
             </a>
             <p className="mt-3 text-[13px] leading-relaxed opacity-90">
-              Die gespeicherte Datei können Sie anschließend im Konfigurator hochladen. Das hochskalierte Bild hat mehr Bildpunkte, aber nicht mehr Details als das
+              Die gespeicherte Datei kannst du anschließend im Konfigurator hochladen. Das hochskalierte Bild hat mehr Bildpunkte, aber nicht mehr Details als das
               Original.
             </p>
           </div>

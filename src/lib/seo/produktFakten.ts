@@ -125,10 +125,10 @@ export function produktFakten(
   // 3) Veredelung und Flächen.
   if (flaechen.length > 0) {
     absaetze.push(
-      `Bedruckt wird das Modell ${verfahren}, ab 1 Stück. Die maximal nutzbare Fläche beträgt: ${flaechenText(flaechen)}. Welche Fläche Sie nutzen, legen Sie im Konfigurator fest – den Preis sehen Sie dort in Echtzeit.`
+      `Bedruckt wird das Modell ${verfahren}, ab 1 Stück. Die maximal nutzbare Fläche beträgt: ${flaechenText(flaechen)}. Welche Fläche du nutzt, legst du im Konfigurator fest – den Preis siehst du dort in Echtzeit.`
     );
   } else {
-    absaetze.push(`Bedruckt wird das Modell ${verfahren}, ab 1 Stück. Im Konfigurator sehen Sie die nutzbaren Flächen und den Preis in Echtzeit.`);
+    absaetze.push(`Bedruckt wird das Modell ${verfahren}, ab 1 Stück. Im Konfigurator siehst du die nutzbaren Flächen und den Preis in Echtzeit.`);
   }
 
   const fragen: ProduktFrage[] = [
@@ -145,7 +145,7 @@ export function produktFakten(
   if (flaechen.length > 0) {
     fragen.push({
       q: `Wie groß darf das Motiv auf ${produkt.name} sein?`,
-      a: `Die maximal nutzbare Fläche beträgt: ${flaechenText(flaechen)}. Nähte, Kragen und Saum sind dabei bereits abgezogen. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.`,
+      a: `Die maximal nutzbare Fläche beträgt: ${flaechenText(flaechen)}. Nähte, Kragen und Saum sind dabei bereits abgezogen. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.`,
     });
   }
   const pflege = produkt.careInstructions?.trim();

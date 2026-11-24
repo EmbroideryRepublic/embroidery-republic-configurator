@@ -46,7 +46,7 @@ export function AufloesungsRechner() {
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="rechner-pixel" className="text-[15px] font-medium text-brand">
-            Breite Ihres Bildes in Pixeln
+            Breite deines Bildes in Pixeln
           </label>
           <input
             id="rechner-pixel"
@@ -59,7 +59,7 @@ export function AufloesungsRechner() {
             aria-describedby="rechner-pixel-hinweis"
           />
           <p id="rechner-pixel-hinweis" className="mt-2 text-[13px] text-brand/70">
-            In den Dateieigenschaften Ihres Bildes oder in einem Bildprogramm zu finden.
+            In den Dateieigenschaften deines Bildes oder in einem Bildprogramm zu finden.
           </p>
         </div>
         <div>
@@ -89,13 +89,13 @@ export function AufloesungsRechner() {
             <p className="mt-1 text-[15px] font-semibold">{STUFEN[stufe].name}</p>
             <p className="mt-3 text-[15px] leading-relaxed">{logoQualitaetText(stufe, dpi)}</p>
             <p className="mt-3 text-[14px] leading-relaxed opacity-90">
-              Bei {zahl(px, 0)} Pixeln Breite können Sie bis {zahl(maxOptimal)} cm optimal (ab {OK_DPI} dpi) und bis{' '}
+              Bei {zahl(px, 0)} Pixeln Breite kannst du bis {zahl(maxOptimal)} cm optimal (ab {OK_DPI} dpi) und bis{' '}
               {zahl(maxAkzeptabel)} cm noch akzeptabel (ab {MIN_DPI} dpi) drucken.
             </p>
           </div>
         ) : (
           <p className="rounded-2xl border border-brand/[0.1] bg-brand-light p-5 text-[15px] text-brand/70">
-            Bitte geben Sie beide Werte als Zahl größer als 0 ein.
+            Bitte gib beide Werte als Zahl größer als 0 ein.
           </p>
         )}
       </div>

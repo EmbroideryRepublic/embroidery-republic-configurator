@@ -111,7 +111,7 @@ export default async function Produktuebersicht(props: { searchParams: Promise<S
               <div className="py-24 text-center">
                 <p className="text-[17px] text-brand">Keine Produkte für diese Auswahl</p>
                 <p className="mt-2 text-[13px] text-brand/70">
-                  Entfernen Sie einzelne Filter – oder setzen Sie alle zurück.
+                  Entferne einzelne Filter – oder setze alle zurück.
                 </p>
                 <Link
                   href="/produkt"

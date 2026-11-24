@@ -8,7 +8,7 @@ export const metadata = {
   alternates: { canonical: '/kontakt' },
   title: 'Kontakt',
   description:
-    'Fragen zu Firmenbekleidung, Mengenrabatten oder einem individuellen Projekt? Schreiben Sie Embroidery Republic Germany in Köln – Antwort meist innerhalb eines Werktags.',
+    'Fragen zu Firmenbekleidung, Mengenrabatten oder einem individuellen Projekt? Schreib Embroidery Republic Germany in Köln – Antwort meist innerhalb eines Werktags.',
   openGraph: {
     title: 'Kontakt',
     description:

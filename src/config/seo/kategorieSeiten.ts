@@ -74,25 +74,25 @@ export interface KategorieSeite {
 export const ABLAUF_SCHRITTE: string[] = [
   'Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.',
   'Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.',
-  'DTF-Druck bestellen Sie direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.',
-  'Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.',
+  'DTF-Druck bestellst du direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.',
+  'Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.',
   'Produktion in {produktion}, anschließend Versand innerhalb von {versand}.',
 ];
 
 /** Bausteine der FAQ-Antworten, wortgleich mit /faq (dort freigegeben). */
 const A_EINZELSTUECK =
-  'Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
+  'Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
 const A_DATEIEN =
-  'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Für Stickerei digitalisiert unser Team Ihr Logo anschließend manuell in Garnfarben – die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.';
+  'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Für Stickerei digitalisiert unser Team dein Logo anschließend manuell in Garnfarben – die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.';
 const A_DAUER =
-  'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druck- bzw. Stickdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.';
+  'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druck- bzw. Stickdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.';
 const A_VERFAHREN =
   'Das hängt vom Motiv ab. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Stickerei ist langlebiger und hochwertiger in der Haptik, arbeitet aber mit einer begrenzten Anzahl fester Garnfarben (keine Farbverläufe) und eignet sich vor allem für kompaktere Motive wie Brustlogos.';
 const A_MODELLE =
   'Aktuell gibt es {anzahl} Modelle von {marken}. Die Stoffgewichte reichen von {gewichtMin} bis {gewichtMax} g/m². Die Preise beginnen bei {abPreis} pro Stück zzgl. Veredelung. Material, Passform, Farben und Größen stehen auf der jeweiligen Produktseite.';
 
 export const EINLEITUNG_ZWEI =
-  'Veredelt wird wahlweise per DTF-Transferdruck oder Stickerei. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.';
+  'Veredelt wird wahlweise per DTF-Transferdruck oder Stickerei. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.';
 
 /**
  * Hinweis oben auf jeder Kategorieseite, solange die Stickerei pausiert ist (BETRIEBSSCHALTER in
@@ -100,7 +100,7 @@ export const EINLEITUNG_ZWEI =
  * nicht verfügbar“). Verschwindet von selbst, sobald die Stickerei wieder angeboten wird.
  */
 export const HINWEIS_STICKEREI_PAUSIERT =
-  'Die Stickerei ist wegen Wartungs- und Umbauarbeiten vorübergehend nicht verfügbar. DTF-Transferdruck können Sie weiterhin direkt im Konfigurator bestellen – ab 1 Stück.';
+  'Die Stickerei ist wegen Wartungs- und Umbauarbeiten vorübergehend nicht verfügbar. DTF-Transferdruck kannst du weiterhin direkt im Konfigurator bestellen – ab 1 Stück.';
 
 /** Kennzeichnung der Stickerei-Karte („DTF-Transferdruck oder Stickerei?“), solange die Stickerei pausiert ist. */
 export const KARTE_STICKEREI_PAUSIERT = 'Derzeit nicht verfügbar';
@@ -117,7 +117,7 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
     beschreibung:
       '{anzahl} Hoodies von {marken3} u. a. mit Logo oder Motiv veredeln: DTF-Transferdruck oder Stickerei, live im Konfigurator, ab 1 Stück.',
     einleitung: [
-      'Ob einzelner Lieblings-Hoodie, Vereinskollektion oder Teamkleidung für den Betrieb: Wählen Sie aus {anzahl} Hoodie-Modellen von {markenAnzahl} Marken, laden Sie Ihr Logo oder Motiv hoch und sehen Sie das Ergebnis direkt im Konfigurator – mit Preis in Echtzeit.',
+      'Ob einzelner Lieblings-Hoodie, Vereinskollektion oder Teamkleidung für den Betrieb: Wähle aus {anzahl} Hoodie-Modellen von {markenAnzahl} Marken, lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator – mit Preis in Echtzeit.',
       EINLEITUNG_ZWEI,
     ],
     verfahren: {
@@ -125,7 +125,7 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       dtf: 'Hoodies bieten große, ruhige Flächen – ideal für vollfarbige Motive auf Brust oder Rücken. Mit DTF-Transferdruck lassen sich auch Farbverläufe und fotorealistische Motive großflächig umsetzen; der Griff bleibt flexibel und bewegt sich mit dem Stoff.',
       stickerei:
         'Für Logos, Monogramme und Schriftzüge ist die Stickerei die hochwertige Wahl: Sie wirkt erhaben, besteht aus echtem Garn und ist besonders langlebig und waschbeständig. Sie arbeitet mit einer begrenzten Zahl fester Garnfarben und eignet sich vor allem für kompaktere Motive wie ein Brustlogo.',
-      hinweis: 'Beide Verfahren nutzen dieselbe Veredelungsfläche – im Konfigurator können Sie zwischen ihnen wechseln.',
+      hinweis: 'Beide Verfahren nutzen dieselbe Veredelungsfläche – im Konfigurator kannst du zwischen ihnen wechseln.',
     },
     beispiele: [
       {
@@ -160,7 +160,7 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
     beschreibung:
       '{anzahl} T-Shirts von {marken3} u. a. mit Logo oder Motiv veredeln: DTF-Transferdruck oder Stickerei, live im Konfigurator, ab 1 Stück.',
     einleitung: [
-      'Vom Einzelstück bis zur Teamausstattung: Wählen Sie aus {anzahl} T-Shirt-Modellen von {markenAnzahl} Marken mit Stoffgewichten von {gewichtMin} bis {gewichtMax} g/m², gestalten Sie Ihr Motiv live im Konfigurator und sehen Sie den Preis in Echtzeit.',
+      'Vom Einzelstück bis zur Teamausstattung: Wähle aus {anzahl} T-Shirt-Modellen von {markenAnzahl} Marken mit Stoffgewichten von {gewichtMin} bis {gewichtMax} g/m², gestalte dein Motiv live im Konfigurator und sieh den Preis in Echtzeit.',
       EINLEITUNG_ZWEI,
     ],
     verfahren: {
@@ -168,7 +168,7 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       dtf: 'T-Shirts tragen oft größere, bunte Motive – dafür ist der DTF-Transferdruck gemacht: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Der Griff bleibt flexibel und bewegt sich mit dem Stoff.',
       stickerei:
         'Ein dezentes Brustlogo oder ein Schriftzug wirkt gestickt besonders hochwertig: erhaben, aus echtem Garn, langlebig und waschbeständig. Stickerei arbeitet mit einer begrenzten Zahl fester Garnfarben ohne Farbverläufe und eignet sich für kompaktere Motive.',
-      hinweis: 'Beide Verfahren nutzen dieselbe Veredelungsfläche – im Konfigurator können Sie zwischen ihnen wechseln.',
+      hinweis: 'Beide Verfahren nutzen dieselbe Veredelungsfläche – im Konfigurator kannst du zwischen ihnen wechseln.',
     },
     beispiele: [
       {
@@ -200,7 +200,7 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       { q: 'Kann ich auch nur ein einzelnes T-Shirt bedrucken oder besticken lassen?', a: A_EINZELSTUECK },
       {
         q: 'Wo auf dem T-Shirt kann ich mein Motiv platzieren?',
-        a: 'Im Konfigurator stehen Brust und Rücken sowie – je nach Modell – der Ärmel zur Verfügung. Zu jeder Position sehen Sie die zulässige Veredelungsfläche. Der Preis richtet sich nach der Anzahl der veredelten Positionen und der Menge und wird im Konfigurator live berechnet.',
+        a: 'Im Konfigurator stehen Brust und Rücken sowie – je nach Modell – der Ärmel zur Verfügung. Zu jeder Position siehst du die zulässige Veredelungsfläche. Der Preis richtet sich nach der Anzahl der veredelten Positionen und der Menge und wird im Konfigurator live berechnet.',
       },
       { q: 'Was ist besser für ein T-Shirt: Druck oder Stickerei?', a: A_VERFAHREN },
       { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN },
@@ -217,15 +217,15 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
     beschreibung:
       '{anzahl} Poloshirts von {marken3} u. a. mit Firmenlogo besticken oder bedrucken: live im Konfigurator gestalten, ab 1 Stück, ohne Mindestmenge.',
     einleitung: [
-      'Das Poloshirt ist der klassische Auftritt für Betrieb, Verein und Team – mit gesticktem Logo auf der Brust wirkt es sofort einheitlich. Wählen Sie aus {anzahl} Polo-Modellen von {markenAnzahl} Marken, platzieren Sie Ihr Logo live im Konfigurator und sehen Sie den Preis in Echtzeit.',
+      'Das Poloshirt ist der klassische Auftritt für Betrieb, Verein und Team – mit gesticktem Logo auf der Brust wirkt es sofort einheitlich. Wähle aus {anzahl} Polo-Modellen von {markenAnzahl} Marken, platziere dein Logo live im Konfigurator und sieh den Preis in Echtzeit.',
       EINLEITUNG_ZWEI,
     ],
     verfahren: {
       zuerst: 'embroidery',
-      dtf: 'Ist Ihr Motiv farbenreich, hat Verläufe oder ist ein Foto, ist der DTF-Transferdruck die bessere Wahl: vollfarbig, auch großflächig, mit flexiblem Griff, der sich mit dem Stoff bewegt.',
+      dtf: 'Ist dein Motiv farbenreich, hat Verläufe oder ist ein Foto, ist der DTF-Transferdruck die bessere Wahl: vollfarbig, auch großflächig, mit flexiblem Griff, der sich mit dem Stoff bewegt.',
       stickerei:
-        'Ein gesticktes Brustlogo ist der Klassiker auf dem Poloshirt: erhaben, aus echtem Garn, besonders langlebig und waschbeständig. Stickerei arbeitet mit einer begrenzten Zahl fester Garnfarben ohne Farbverläufe. Ihr Logo digitalisiert unser Team vor der Produktion in Garnfarben und legt es Ihnen zur Freigabe vor.',
-      hinweis: 'Beide Verfahren nutzen dieselbe Veredelungsfläche – im Konfigurator können Sie zwischen ihnen wechseln.',
+        'Ein gesticktes Brustlogo ist der Klassiker auf dem Poloshirt: erhaben, aus echtem Garn, besonders langlebig und waschbeständig. Stickerei arbeitet mit einer begrenzten Zahl fester Garnfarben ohne Farbverläufe. Dein Logo digitalisiert unser Team vor der Produktion in Garnfarben und legt es dir zur Freigabe vor.',
+      hinweis: 'Beide Verfahren nutzen dieselbe Veredelungsfläche – im Konfigurator kannst du zwischen ihnen wechseln.',
     },
     beispiele: [
       {
@@ -278,7 +278,7 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       { q: 'Was ist besser für ein Poloshirt: Stickerei oder Druck?', a: A_VERFAHREN },
       {
         q: 'Wie läuft die Digitalisierung meines Logos für die Stickerei ab?',
-        a: 'Für Stickerei digitalisiert unser Team Ihr Logo manuell in Garnfarben. Vor Produktionsstart erhalten Sie eine finale Vorschau zur Freigabe. Die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.',
+        a: 'Für Stickerei digitalisiert unser Team dein Logo manuell in Garnfarben. Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe. Die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.',
       },
       { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN },
       { q: 'Wie lange dauert es, bis meine Poloshirts ankommen?', a: A_DAUER },

@@ -55,27 +55,27 @@ export interface DtfSeite {
 
 /** Wortgleich: FAQ „Ab welcher Menge …" / Kategorieseiten. */
 const A_EINZELSTUECK =
-  'Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
+  'Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.';
 /** Auszug (erste zwei Sätze) aus der freigegebenen Dateien-Antwort; der Stickerei-Satz entfällt. */
 const A_DATEIEN =
   'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.';
 /** Wie FAQ/Kategorieseiten; einzige Abweichung: „Druckdaten“ statt „Druck- bzw. Stickdaten“. */
 const A_DAUER =
-  'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.';
+  'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.';
 /** Auszug aus der freigegebenen Verfahren-Antwort und den DTF-Stichpunkten der Startseite. */
 const A_DTF =
   'DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Der Griff bleibt flexibel und bewegt sich mit dem Stoff.';
 
 /** Zweiter Einleitungsabsatz: DTF-Beschreibung der Kategorieseiten + Eckdaten (wie EINLEITUNG_ZWEI, ohne Stickerei). */
 export const EINLEITUNG_DTF =
-  'Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir Ihre Datei kostenlos.';
+  'Bedruckt wird per DTF-Transferdruck: vollfarbig, auch mit Farbverläufen und Fotos, auf Brust und Rücken sowie – je nach Modell – am Ärmel. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.';
 
 /**
  * Ablauf: die freigegebenen Schritte, nur Schritt 3 ohne die Stickerei-Hälfte
  * („DTF-Druck bestellen Sie direkt, Stickerei gibt es nur auf Anfrage – …").
  */
 export const DTF_ABLAUF_SCHRITTE: string[] = ABLAUF_SCHRITTE.map((schritt, i) =>
-  i === 2 ? 'DTF-Druck bestellen Sie direkt im Konfigurator.' : schritt
+  i === 2 ? 'DTF-Druck bestellst du direkt im Konfigurator.' : schritt
 );
 
 // ── Fabriken: dieselbe Textform für jede Marke bzw. Produktart ──────────
@@ -89,7 +89,7 @@ function markenSeite(marke: string, slug: string): DtfSeite {
     beschreibung:
       '{anzahl} Modelle von {marke} per DTF-Transferdruck mit Logo oder Motiv bedrucken – ab 1 Stück, Preis live im Konfigurator.',
     einleitung: [
-      'Wählen Sie aus {anzahl} Modellen von {marke} – {arten} –, laden Sie Ihr Logo oder Motiv hoch und sehen Sie das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+      'Wähle aus {anzahl} Modellen von {marke} – {arten} –, lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     fragen: [
@@ -114,7 +114,7 @@ function artSeite(art: ProductType, slug: string): DtfSeite {
     beschreibung:
       '{anzahl} {artPlural} von {marken3} u. a. per DTF-Transferdruck mit Logo oder Motiv bedrucken – ab 1 Stück, Preis live im Konfigurator.',
     einleitung: [
-      'Es gibt {anzahl} {artPlural} von {markenAnzahl} Marken. Laden Sie Ihr Logo oder Motiv hoch und sehen Sie das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+      'Es gibt {anzahl} {artPlural} von {markenAnzahl} Marken. Lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     fragen: [
@@ -144,7 +144,7 @@ function kinderSeite(slug: string): DtfSeite {
     beschreibung:
       '{anzahl} Modelle Kinderbekleidung von {marken3} u. a. per DTF-Transferdruck bedrucken – ab 1 Stück, Preis live im Konfigurator.',
     einleitung: [
-      'Kinder-T-Shirts, Hoodies, Sweatshirts und mehr: {anzahl} Modelle von {markenAnzahl} Marken in Kindergrößen. Laden Sie Ihr Logo oder Motiv hoch und sehen Sie das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+      'Kinder-T-Shirts, Hoodies, Sweatshirts und mehr: {anzahl} Modelle von {markenAnzahl} Marken in Kindergrößen. Lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     fragen: [
@@ -182,7 +182,7 @@ function sportSeite(slug: string): DtfSeite {
     beschreibung:
       '{anzahl} Modelle Sportbekleidung von {marken3} u. a. per DTF-Transferdruck bedrucken – ab 1 Stück, Preis live im Konfigurator.',
     einleitung: [
-      'Sport-T-Shirts, Langarmshirts und Tanktops: {anzahl} Modelle von {markenAnzahl} Marken. Laden Sie Ihr Logo oder Motiv hoch und sehen Sie das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+      'Sport-T-Shirts, Langarmshirts und Tanktops: {anzahl} Modelle von {markenAnzahl} Marken. Lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
       EINLEITUNG_DTF,
     ],
     fragen: [

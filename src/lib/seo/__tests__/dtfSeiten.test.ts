@@ -145,7 +145,7 @@ test('Ablauf: Zeiten kommen aus der Konfiguration; Schritt 3 verspricht keine St
   const f = dtfFakten(s);
   const schritte = DTF_ABLAUF_SCHRITTE.map((t) => fuelleDtf(t, s, f));
   assert.match(schritte.at(-1)!, /^Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen\.$/);
-  assert.equal(schritte[2], 'DTF-Druck bestellen Sie direkt im Konfigurator.');
+  assert.equal(schritte[2], 'DTF-Druck bestellst du direkt im Konfigurator.');
 });
 
 test('Sitemap enthält jede DTF-Seite genau einmal, auf der kanonischen Adresse', () => {

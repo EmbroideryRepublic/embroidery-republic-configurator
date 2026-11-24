@@ -35,7 +35,7 @@ const CAPABILITIES = [
   {
     icon: Clock,
     title: 'Planbare Produktion',
-    text: `Produktion in ${PRODUKTIONSTAGE.von} bis ${PRODUKTIONSTAGE.bis} Werktagen ab Bestellfreigabe, Versand innerhalb von ${VERSANDTAGE.von} bis ${VERSANDTAGE.bis} Werktagen. Bei großen Mengen informieren wir Sie vorab.`,
+    text: `Produktion in ${PRODUKTIONSTAGE.von} bis ${PRODUKTIONSTAGE.bis} Werktagen ab Bestellfreigabe, Versand innerhalb von ${VERSANDTAGE.von} bis ${VERSANDTAGE.bis} Werktagen. Bei großen Mengen informieren wir dich vorab.`,
   },
   {
     icon: Users,
@@ -62,7 +62,7 @@ export default function AboutPage() {
       </h1>
       <p className="mt-6 mb-12 max-w-xl text-[17px] leading-relaxed text-brand/70">
         Wir veredeln Firmen- und Teambekleidung – per DTF-Transferdruck für vollfarbige Motive und
-        per Stickerei für langlebige Firmenlogos. Statt langer Angebotsschleifen gestalten Sie Ihre
+        per Stickerei für langlebige Firmenlogos. Statt langer Angebotsschleifen gestaltest du deine
         Bekleidung direkt im Konfigurator: Motiv hochladen, platzieren, Farbe und Größen wählen – der
         Preis ist dabei jederzeit sichtbar.
       </p>
@@ -85,9 +85,9 @@ export default function AboutPage() {
           {[
             'Produkt, Farbe und Größen im Konfigurator wählen.',
             'Logo hochladen oder Text gestalten und positionieren.',
-            'DTF-Druck bestellen Sie direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.',
+            'DTF-Druck bestellst du direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.',
             'Wir prüfen das Design und melden uns mit der finalen Freigabe.',
-            'Produktion und Versand – bei Kauf auf Rechnung erhalten Sie die Rechnung mit der Auftragsbearbeitung, bei Kreditkarte/PayPal haben Sie bereits im Checkout bezahlt.',
+            'Produktion und Versand – bei Kauf auf Rechnung erhältst du die Rechnung mit der Auftragsbearbeitung, bei Kreditkarte/PayPal hast du bereits im Checkout bezahlt.',
           ].map((step, i) => (
             <li key={step} className="flex gap-3">
               <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold-btn text-[11px] font-semibold text-white">

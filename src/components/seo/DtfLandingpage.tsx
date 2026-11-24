@@ -209,14 +209,14 @@ export async function DtfLandingpage({ seite }: { seite: DtfSeite }) {
           <p className="mt-5 text-[13px] leading-relaxed text-brand/70">
             Beispielrechnungen mit {markeUndName(beispielProdukt)} (Textil ab{' '}
             <WaehrungsPreis betragInEur={beispielProdukt.basePrice} />
-            ). Preise pro Stück zzgl. Versand – versandkostenfrei ab {freiAb}. Kein Steuerausweis (§ 19 UStG). Ihr Preis
+            ). Preise pro Stück zzgl. Versand – versandkostenfrei ab {freiAb}. Kein Steuerausweis (§ 19 UStG). Dein Preis
             hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
           </p>
         </section>
 
         <section aria-labelledby="ablauf" className="mt-24 max-w-3xl">
           <h2 id="ablauf" className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal tracking-tight text-brand">
-            So läuft Ihre Bestellung ab
+            So läuft deine Bestellung ab
           </h2>
           <ol className="mt-8 space-y-4">
             {ablauf.map((schritt, i) => (
@@ -243,13 +243,13 @@ export async function DtfLandingpage({ seite }: { seite: DtfSeite }) {
             ))}
           </div>
           <p className="mt-6 text-sm text-brand/70">
-            Weitere Antworten finden Sie in den{' '}
+            Weitere Antworten findest du in den{' '}
             <Link href="/faq" className="text-gold-dark underline underline-offset-2 hover:text-gold">
               häufigen Fragen
             </Link>{' '}
             – oder{' '}
             <Link href="/kontakt" className="text-gold-dark underline underline-offset-2 hover:text-gold">
-              schreiben Sie uns
+              schreib uns
             </Link>
             .
           </p>

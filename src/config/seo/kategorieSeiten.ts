@@ -249,7 +249,7 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       },
     ],
     beispieleEinleitungBeiPause:
-      'Alle Zeilen zeigen dasselbe T-Shirt. Die Zeile mit 25 Stück hat Brust- und Rückenmotiv, also zwei bedruckte Positionen, und das Rückenmotiv ist zusätzlich im Großformat. Sie liegt deshalb trotz größerer Menge über der Zeile mit 10 Stück. Staffelpreise gelten ab 5 Stück.',
+      'Alle Zeilen zeigen dasselbe T-Shirt. Die Zeile mit 25 Stück hat Brust- und Rückenmotiv, also zwei bedruckte Positionen, und das Rückenmotiv ist zusätzlich im Großformat. Die Zeile liegt deshalb trotz größerer Menge über der Zeile mit 10 Stück. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       {
         q: 'Kann ich auch nur ein einzelnes T-Shirt bedrucken oder besticken lassen?',

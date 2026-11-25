@@ -133,3 +133,22 @@ test('Auf keiner Seite steckt ein Großformat-Zuschlag in einer Beispielzeile, o
   }
   assert.ok(mitGross >= 1);
 });
+
+test('Alle neuen Erklärsätze sprechen Du: kein „Sie“, auch nicht als Fürwort (Einleitungen der Anlass- und Kategorieseiten, Zeilenhinweise)', () => {
+  const SIE = /\b(Sie|Ihnen|Ihre|Ihren|Ihrem|Ihrer|Ihres|Ihr)\b/;
+  const texte: { wo: string; text: string }[] = [];
+  for (const s of ANLASS_SEITEN) {
+    if (s.beispieleEinleitung) texts(texte, `${s.slug} Einleitung`, s.beispieleEinleitung);
+    for (const b of s.beispiele) if (b.hinweis) texts(texte, `${s.slug} Zeilenhinweis`, b.hinweis);
+  }
+  for (const s of KATEGORIE_SEITEN) if (s.beispieleEinleitungBeiPause) texts(texte, `${s.slug} Einleitung`, s.beispieleEinleitungBeiPause);
+  for (const menge of [1, 2]) texts(texte, `Einrichtung ${menge} Stück`, einrichtungsHinweis(menge) ?? '');
+  texts(texte, 'zwei Positionen', HINWEIS_ZWEI_POSITIONEN);
+  texts(texte, 'Großformat', grossformatHinweis(4) ?? '');
+  assert.ok(texte.length >= 14, `zu wenige Texte geprüft: ${texte.length}`);
+  for (const t of texte) assert.equal(t.text.match(SIE), null, `${t.wo}: „Sie“ gefunden`);
+});
+
+function texts(liste: { wo: string; text: string }[], wo: string, text: string) {
+  liste.push({ wo, text });
+}

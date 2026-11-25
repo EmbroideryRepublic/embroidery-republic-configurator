@@ -228,11 +228,14 @@ Die Pflegehinweise des Herstellers stehen auf der Produktseite des jeweiligen Mo
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Bei gleicher Konfiguration sinkt der Stückpreis mit der Menge – Staffelpreise gelten ab 5 Stück. Jede weitere bedruckte Position, zum Beispiel der Rücken, kommt je Stück hinzu.
 
 - 1 Poloshirt · Logo auf der Brust (ca. 10 × 10 cm): **32,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Sie fällt bei bis zu 2 Stück an und entfällt ab 3 Stück.
 - 10 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
+- 25 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm): **18,99 €** pro Stück, gesamt 474,75 €
 - 25 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **22,99 €** pro Stück, gesamt 574,75 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken). Der Rücken kommt je Stück zum Preis der Zeile darüber hinzu – deshalb liegt dieser Stückpreis über dem der 10-Stück-Zeile, obwohl die Menge größer ist.
 
 Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -316,10 +319,11 @@ Es gelten die Pflegehinweise des Herstellers, die auf der Produktseite des jewei
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Die Beispiele zeigen unterschiedliche Textilien und eine bzw. zwei bedruckte Positionen. Sie lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.
 
 - 5 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm): **20,99 €** pro Stück, gesamt 104,95 €
 - 10 T-Shirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **20,99 €** pro Stück, gesamt 209,90 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm): **28,99 €** pro Stück, gesamt 289,90 €
 
 Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.

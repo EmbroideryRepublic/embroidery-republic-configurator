@@ -129,11 +129,13 @@ for (const seite of ANLASS_SEITEN) {
     const ergebnis = await berechneBeispiele({ slug: seite.slug, beispiele: alsKategorieBeispiele(seite.beispiele) });
     z('### Preisbeispiele');
     z();
-    z('Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.');
+    z(seite.beispieleEinleitung ?? 'Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.');
     z();
-    for (const e of ergebnis) {
+    ergebnis.forEach((e, i) => {
       z(`- ${e.beschriftung}: **${formatiereGeld(e.stueckpreis)}** pro Stück${e.menge > 1 ? `, gesamt ${formatiereGeld(e.gesamt)}` : ' (Einzelstück)'}`);
-    }
+      const hinweis = seite.beispiele[i]?.hinweis;
+      if (hinweis) z(`  - *Hinweis unter der Zeile:* ${hinweis}`);
+    });
     z();
     z(`Fußnote: Beispielrechnungen mit ${[...new Set(ergebnis.map((e) => e.produktName))].join(', ')}. Preise pro Stück zzgl. Versand – versandkostenfrei ab ${fuelle('{frei}')}. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.`);
     z();

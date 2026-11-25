@@ -26,6 +26,7 @@
 import type { ProductType } from '@/types';
 import type { KategorieFrage } from '@/config/seo/kategorieSeiten';
 import { EINLEITUNG_DTF } from '@/config/seo/dtfSeiten';
+import { KLEINAUFTRAG_MAX_STUECK, KLEINAUFTRAG_PAUSCHALE_EUR } from '@/config/pricingRules';
 
 export interface AnlassAbschnitt {
   ueberschrift: string;
@@ -58,6 +59,8 @@ export interface AnlassBeispiel {
   art: ProductType;
   menge: number;
   flaechen: { ansicht: 'front' | 'back'; breiteCm: number; hoeheCm: number }[];
+  /** Erklärt, woraus sich der Preis dieser Zeile zusammensetzt, wenn er ohne Erklärung missverständlich wäre (steht unter der Zeile). */
+  hinweis?: string;
 }
 
 export interface AnlassSeite {
@@ -76,6 +79,8 @@ export interface AnlassSeite {
   kacheln: { art: ProductType; anzahl: number }[];
   abschnitte: AnlassAbschnitt[];
   beispiele: AnlassBeispiel[];
+  /** Ersetzt den Standardsatz über den Preisbeispielen („Mit steigender Menge sinkt der Stückpreis …“), wenn die Beispiele nicht in einer Reihe vergleichbar sind. */
+  beispieleEinleitung?: string;
   fragen: KategorieFrage[];
   /** Ratgeber ohne Bestellbezug zeigen den Bestellablauf nicht. */
   ohneAblauf?: boolean;
@@ -117,6 +122,12 @@ const ABSATZ_POSITIONEN =
   'Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.';
 const ABSATZ_MEHRERE_PRODUKTE =
   'Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.';
+
+/**
+ * Erklärung für das Einzelstück-Beispiel: Der Stückpreis enthält die einmalige Einrichtung (Regel dtf-kleinauftrag).
+ * Betrag und Stückzahl stammen aus der Regel selbst (config/pricingRules.ts), nicht von Hand.
+ */
+const HINWEIS_EINRICHTUNG = `Der Preis enthält die einmalige Einrichtung von ${KLEINAUFTRAG_PAUSCHALE_EUR} €. Sie fällt bei bis zu ${KLEINAUFTRAG_MAX_STUECK} Stück an und entfällt ab ${KLEINAUFTRAG_MAX_STUECK + 1} Stück.`;
 
 // ── Die Seiten ──────────────────────────────────────────────────────────
 
@@ -350,11 +361,18 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         art: 'polo',
         menge: 1,
         flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+        hinweis: HINWEIS_EINRICHTUNG,
       },
       {
         beschriftung: '10 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm)',
         art: 'polo',
         menge: 10,
+        flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
+      },
+      {
+        beschriftung: '25 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm)',
+        art: 'polo',
+        menge: 25,
         flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
       },
       {
@@ -365,8 +383,12 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
           { ansicht: 'front', breiteCm: 10, hoeheCm: 10 },
           { ansicht: 'back', breiteCm: 20, hoeheCm: 25 },
         ],
+        hinweis:
+          'Das sind zwei bedruckte Positionen (Brust und Rücken). Der Rücken kommt je Stück zum Preis der Zeile darüber hinzu – deshalb liegt dieser Stückpreis über dem der 10-Stück-Zeile, obwohl die Menge größer ist.',
       },
     ],
+    beispieleEinleitung:
+      'Bei gleicher Konfiguration sinkt der Stückpreis mit der Menge – Staffelpreise gelten ab 5 Stück. Jede weitere bedruckte Position, zum Beispiel der Rücken, kommt je Stück hinzu.',
     fragen: [
       {
         q: 'Welches Poloshirt eignet sich für ein Firmenlogo?',
@@ -470,6 +492,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
           { ansicht: 'front', breiteCm: 10, hoeheCm: 10 },
           { ansicht: 'back', breiteCm: 20, hoeheCm: 25 },
         ],
+        hinweis: 'Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.',
       },
       {
         beschriftung: '10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm)',
@@ -478,6 +501,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
       },
     ],
+    beispieleEinleitung:
+      'Die Beispiele zeigen unterschiedliche Textilien und eine bzw. zwei bedruckte Positionen. Sie lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       {
         q: 'Wird auch Schutz- oder Warnschutzkleidung bedruckt?',

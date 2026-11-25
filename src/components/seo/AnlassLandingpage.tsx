@@ -242,15 +242,20 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
               Preisbeispiele
             </h2>
             <p className="mt-4 text-[16px] leading-relaxed text-brand/70">
-              Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+              {seite.beispieleEinleitung ?? 'Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.'}
             </p>
             <ul className="mt-8 divide-y divide-brand/[0.08] rounded-[24px] border border-brand/[0.08] bg-white">
-              {beispiele.map((b) => (
+              {beispiele.map((b, i) => (
                 <li
                   key={b.beschriftung}
                   className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 px-6 py-5 sm:px-8"
                 >
-                  <p className="max-w-xl text-[15px] leading-snug text-brand">{b.beschriftung}</p>
+                  <div className="max-w-xl">
+                    <p className="text-[15px] leading-snug text-brand">{b.beschriftung}</p>
+                    {seite.beispiele[i]?.hinweis && (
+                      <p className="mt-1.5 text-[13px] leading-relaxed text-brand/70">{seite.beispiele[i]?.hinweis}</p>
+                    )}
+                  </div>
                   <p className="text-right">
                     <span className="font-serif text-[26px] tabular-nums text-brand">
                       <WaehrungsPreis betragInEur={b.stueckpreis} />

@@ -52,7 +52,7 @@ export function pruefeRegistrierung(eingabe: RegistrierungsEingabe): Validierung
     befunde.push({ feld: 'passwortWiederholung', meldung: 'Die Passwörter stimmen nicht überein.' });
   }
   if (!eingabe.einwilligungAgb) {
-    befunde.push({ feld: 'einwilligungAgb', meldung: 'Bitte bestätigen Sie die AGB und die Datenschutzerklärung.' });
+    befunde.push({ feld: 'einwilligungAgb', meldung: 'Bitte bestätige die AGB und die Datenschutzerklärung.' });
   }
   return befunde;
 }

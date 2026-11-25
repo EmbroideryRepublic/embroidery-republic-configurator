@@ -126,7 +126,7 @@ export function KundenfreigabeBereich({ token, orderId, positionen }: Kundenfrei
         <div className="mt-4 rounded-md border border-brand/20 bg-white p-4">
           <p className="text-sm font-medium text-brand">Vorschau wirklich freigeben?</p>
           <p className="mt-1 text-xs text-brand/70">
-            Mit der Freigabe bestätigen Sie, dass die Vorschau genau dem entspricht, was produziert werden soll. Wir
+            Mit der Freigabe bestätigst du, dass die Vorschau genau dem entspricht, was produziert werden soll. Wir
             beginnen danach mit der Fertigung.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">

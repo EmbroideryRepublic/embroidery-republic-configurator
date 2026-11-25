@@ -257,7 +257,7 @@ export async function validateSubmission(roh: OrderValidationInput): Promise<Ord
     if (!input.acceptedTerms) {
       issues.push({
         code: 'agb_nicht_akzeptiert',
-        message: 'Bitte akzeptieren Sie die AGB und die Datenschutzerklärung, um die Bestellung abzuschließen.',
+        message: 'Bitte akzeptiere die AGB und die Datenschutzerklärung, um die Bestellung abzuschließen.',
       });
     }
   }

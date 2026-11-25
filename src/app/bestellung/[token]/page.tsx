@@ -158,18 +158,18 @@ export default async function BestellAnsichtSeite(props: { params: Promise<{ tok
                   Ware.
                 </>
               ) : (
-                <>Es entstehen Ihnen keine Kosten.</>
+                <>Es entstehen dir keine Kosten.</>
               )}{' '}
-              Eine Bestätigung haben wir Ihnen per E-Mail gesendet.
+              Eine Bestätigung haben wir dir per E-Mail gesendet.
             </p>
           </section>
         )}
 
         {bestellung.zustand === 'stornierbar' && (
           <section className="rounded-lg border border-gold/40 bg-gold-light/30 p-4">
-            <h2 className="text-sm font-semibold text-brand">Sie können diese Bestellung noch stornieren</h2>
+            <h2 className="text-sm font-semibold text-brand">Du kannst diese Bestellung noch stornieren</h2>
             <p className="mt-1 text-sm text-brand/70">
-              Innerhalb von zwei Stunden nach Bestelleingang können Sie Ihre Bestellung selbst stornieren. Danach geht
+              Innerhalb von zwei Stunden nach Bestelleingang kannst du deine Bestellung selbst stornieren. Danach geht
               sie in die Bearbeitung und wir beschaffen die Ware.
             </p>
             <div className="mt-3">
@@ -182,11 +182,11 @@ export default async function BestellAnsichtSeite(props: { params: Promise<{ tok
           <section className="rounded-lg border border-brand/[0.08] bg-white p-4">
             <h2 className="text-sm font-semibold text-brand">Selbststornierung nicht mehr möglich</h2>
             <p className="mt-1 text-sm text-brand/70">
-              Die zweistündige Stornofrist ist am {zeit(bestellung.stornofristBis)} abgelaufen. Ihre Bestellung ist
+              Die zweistündige Stornofrist ist am {zeit(bestellung.stornofristBis)} abgelaufen. Deine Bestellung ist
               inzwischen in Bearbeitung.
             </p>
             <p className="mt-2 text-sm text-brand/70">
-              Sie haben trotzdem eine Frage oder einen Sonderfall? Melden Sie sich gern direkt bei uns – wir schauen,
+              Du hast trotzdem eine Frage oder einen Sonderfall? Melde dich gern direkt bei uns – wir schauen,
               was sich machen lässt.
             </p>
             <div className="mt-3 flex flex-wrap gap-4 text-sm">
@@ -229,7 +229,7 @@ export default async function BestellAnsichtSeite(props: { params: Promise<{ tok
         {bestellung.zustand !== 'storniert' &&
           (!bestellung.rechnungPdfUrl && (!bestellung.zahlungsart || bestellung.zahlungsart === 'invoice') ? (
             <p className="text-xs text-brand/70">
-              Die Rechnung erhalten Sie separat, zahlbar innerhalb von {PAYMENT_TERM_DAYS} Tagen ohne Abzug.
+              Die Rechnung erhältst du separat, zahlbar innerhalb von {PAYMENT_TERM_DAYS} Tagen ohne Abzug.
             </p>
           ) : !bestellung.rechnungPdfUrl && bestellung.zahlungsstatus === 'paid' ? (
             <p className="text-xs text-brand/70">Die Zahlung ist bereits bei uns eingegangen – vielen Dank.</p>

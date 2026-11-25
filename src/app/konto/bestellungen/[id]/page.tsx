@@ -65,16 +65,16 @@ export default async function KontoBestellDetailPage(props: { params: Promise<{ 
             <p className="mt-1 text-sm text-brand/70">
               {bestellung.erstattungsstatus !== 'not_applicable'
                 ? 'Der bereits gezahlte Betrag wird vollständig zurückerstattet. Die Rückerstattung erfolgt über den ursprünglichen Zahlungsweg. Für diesen Auftrag wird keine Rechnung gestellt und wir beschaffen keine Ware.'
-                : 'Es sind Ihnen keine Kosten entstanden.'}
+                : 'Es sind dir keine Kosten entstanden.'}
             </p>
           </section>
         )}
 
         {bestellung.zustand === 'stornierbar' && (
           <section className="rounded-lg border border-gold/40 bg-gold-light/30 p-4">
-            <h2 className="text-sm font-semibold text-brand">Sie können diese Bestellung noch stornieren</h2>
+            <h2 className="text-sm font-semibold text-brand">Du kannst diese Bestellung noch stornieren</h2>
             <p className="mt-1 text-sm text-brand/70">
-              Innerhalb von zwei Stunden nach Bestelleingang können Sie Ihre Bestellung selbst stornieren. Danach geht
+              Innerhalb von zwei Stunden nach Bestelleingang kannst du deine Bestellung selbst stornieren. Danach geht
               sie in die Bearbeitung und wir beschaffen die Ware.
             </p>
             <div className="mt-3">
@@ -87,7 +87,7 @@ export default async function KontoBestellDetailPage(props: { params: Promise<{ 
           <section className="rounded-lg border border-brand/[0.08] bg-white p-4">
             <h2 className="text-sm font-semibold text-brand">Selbststornierung nicht mehr möglich</h2>
             <p className="mt-1 text-sm text-brand/70">
-              Die zweistündige Stornofrist ist am {zeit(bestellung.stornofristBis)} abgelaufen. Ihre Bestellung ist
+              Die zweistündige Stornofrist ist am {zeit(bestellung.stornofristBis)} abgelaufen. Deine Bestellung ist
               inzwischen in Bearbeitung.
             </p>
           </section>
@@ -122,7 +122,7 @@ export default async function KontoBestellDetailPage(props: { params: Promise<{ 
         <p className="text-xs text-brand/70">
           Fragen zu dieser Bestellung?{' '}
           <Link href="/kontakt" className="text-gold-dark hover:underline">
-            Kontaktieren Sie uns direkt
+            Kontaktiere uns direkt
           </Link>
           .
         </p>

@@ -231,7 +231,7 @@ test('Storno-Mail sagt klar: nichts beschaffen, und nennt den Stand der Zahlung'
 
 test('Bestätigung einer Stickerei-Anfrage: Kostenschätzung, kein Vertrag, so geht es weiter', async () => {
   const text = await render(OrderConfirmationEmail({ order: stickereiAnfrage }), { plainText: true });
-  assert.match(text, /Ihre Anfrage ER-2026-ANF001/);
+  assert.match(text, /Deine Anfrage ER-2026-ANF001/);
   // Nur der EINGANG wird bestätigt – der Eindruck einer Auftragsannahme darf nirgends entstehen.
   assert.match(text, /ist bei uns eingegangen und wird jetzt von uns geprüft/);
   assert.match(text, /keine Auftragsbestätigung/);
@@ -241,7 +241,7 @@ test('Bestätigung einer Stickerei-Anfrage: Kostenschätzung, kein Vertrag, so g
   assert.match(text, /Geschätzter Preis \(unverbindliche Kostenschätzung\): 123,45 €/);
   assert.match(text, /So geht es weiter/);
   assert.match(text, /Motiv digitalisiert ist/);
-  assert.match(text, /Vertrag kommt erst zustande, wenn Sie dieses Angebot annehmen und wir den\s+Auftrag bestätigen/);
+  assert.match(text, /Vertrag kommt erst zustande, wenn du dieses Angebot annimmst und wir den\s+Auftrag bestätigen/);
   // Es ist keine Bestellung: keine Zahlungs-, Storno- oder Lieferangaben.
   assert.doesNotMatch(text, /Bestellbestätigung|Zahlungsart|stornieren|Lieferadresse/);
 });

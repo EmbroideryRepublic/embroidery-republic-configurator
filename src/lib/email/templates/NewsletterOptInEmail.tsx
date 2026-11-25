@@ -16,14 +16,14 @@ export function NewsletterOptInEmail(_props: Record<string, never>) {
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Sie erhalten ab sofort gelegentlich Neuigkeiten und Angebote von Embroidery Republic per E-Mail.
+        Du erhältst ab sofort gelegentlich Neuigkeiten und Angebote von Embroidery Republic per E-Mail.
       </Text>
       <Text style={{ marginTop: 16, fontSize: 12, color: COLORS.muted }}>
-        Sie können die Newsletter-Einwilligung jederzeit widerrufen – öffnen Sie dazu einfach{' '}
+        Du kannst die Newsletter-Einwilligung jederzeit widerrufen – öffne dazu einfach{' '}
         <a href={`${basisUrl()}/konto/profil`} style={{ color: COLORS.gold }}>
-          Ihr Profil
+          dein Profil
         </a>{' '}
-        und deaktivieren die entsprechende Option.
+        und deaktiviere die entsprechende Option.
       </Text>
     </EmailLayout>
   );

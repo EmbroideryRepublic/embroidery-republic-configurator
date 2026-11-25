@@ -23,19 +23,19 @@ export function OrderProofRequestEmail({
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Für Ihre Bestellung <strong>{orderNumber}</strong> liegt jetzt die finale Druckvorschau vor – so, wie
-        Ihre Motive tatsächlich auf dem Kleidungsstück platziert werden.
+        Für deine Bestellung <strong>{orderNumber}</strong> liegt jetzt die finale Druckvorschau vor – so, wie
+        deine Motive tatsächlich auf dem Kleidungsstück platziert werden.
       </Text>
       <Text style={{ marginTop: 12 }}>
-        Bitte sehen Sie sich die Vorschau kurz an und geben Sie sie frei, damit wir mit der Produktion beginnen
+        Bitte sieh dir die Vorschau kurz an und gib sie frei, damit wir mit der Produktion beginnen
         können:
       </Text>
       <Text style={{ marginTop: 12 }}>
         <Link href={bestellansichtUrl}>Vorschau ansehen und freigeben</Link>
       </Text>
       <Text style={{ marginTop: 16, fontSize: 12, color: COLORS.muted }}>
-        Passt etwas nicht, können Sie dort statt der Freigabe auch eine Änderung wünschen – wir melden uns dann
-        umgehend bei Ihnen.
+        Passt etwas nicht, kannst du dort statt der Freigabe auch eine Änderung wünschen – wir melden uns dann
+        umgehend bei dir.
       </Text>
     </EmailLayout>
   );

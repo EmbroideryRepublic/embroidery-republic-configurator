@@ -170,7 +170,7 @@ export async function registrierenAction(_prev: KontoActionResult | null, formDa
   if (tokenHash) {
     await sendEmail({
       to: email,
-      subject: 'Bitte bestätigen Sie Ihre E-Mail-Adresse',
+      subject: 'Bitte bestätige deine E-Mail-Adresse',
       react: KontoBestaetigenEmail({
         bestaetigungsUrl: baueKontoLink(kanonischeBasisUrl(), 'registrierung', tokenHash, { newsletter: newsletterOptIn }),
       }),
@@ -306,7 +306,7 @@ export async function passwortZuruecksetzenAction(_prev: KontoActionResult | nul
   if (user.email) {
     await sendEmail({
       to: user.email,
-      subject: 'Ihr Passwort wurde geändert',
+      subject: 'Dein Passwort wurde geändert',
       react: PasswortGeaendertEmail({}),
       kontext: { anlass: 'konto_passwort_geaendert' },
     });
@@ -454,7 +454,7 @@ export async function passwortAendernAction(_prev: KontoActionResult | null, for
 
   await sendEmail({
     to: kunde.email,
-    subject: 'Ihr Passwort wurde geändert',
+    subject: 'Dein Passwort wurde geändert',
     react: PasswortGeaendertEmail({}),
     kontext: { anlass: 'konto_passwort_geaendert' },
   });

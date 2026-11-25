@@ -13,8 +13,8 @@ export function PasswortVergessenEmail({ zuruecksetzenUrl }: { zuruecksetzenUrl:
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Wir haben eine Anfrage erhalten, das Passwort Ihres Kontos bei Embroidery Republic zurückzusetzen. Klicken
-        Sie auf die Schaltfläche unten, um ein neues Passwort zu vergeben.
+        Wir haben eine Anfrage erhalten, das Passwort deines Kontos bei Embroidery Republic zurückzusetzen. Klicke
+        auf die Schaltfläche unten, um ein neues Passwort zu vergeben.
       </Text>
       <Button
         href={zuruecksetzenUrl}
@@ -32,14 +32,14 @@ export function PasswortVergessenEmail({ zuruecksetzenUrl }: { zuruecksetzenUrl:
         Neues Passwort vergeben
       </Button>
       <Text style={{ marginTop: 20, fontSize: 12, color: COLORS.muted }}>
-        Funktioniert die Schaltfläche nicht? Kopieren Sie diesen Link in Ihren Browser:
+        Funktioniert die Schaltfläche nicht? Kopiere diesen Link in deinen Browser:
         <br />
         <a href={zuruecksetzenUrl} style={{ color: COLORS.gold }}>
           {zuruecksetzenUrl}
         </a>
       </Text>
       <Text style={{ marginTop: 20, fontSize: 12, color: COLORS.muted }}>
-        Haben Sie diese Anfrage nicht gestellt? Dann können Sie diese Nachricht ignorieren – Ihr Passwort bleibt
+        Hast du diese Anfrage nicht gestellt? Dann kannst du diese Nachricht ignorieren – dein Passwort bleibt
         unverändert.
       </Text>
     </EmailLayout>

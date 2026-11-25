@@ -53,8 +53,8 @@ export async function sendOrderConfirmationEmail(
   const subject = isOrder
     ? `Bestellbestätigung ${order.orderNumber}`
     : warenkorbNurAlsAnfrage(order.items)
-      ? `Ihre Anfrage ${order.orderNumber} ist eingegangen`
-      : `Ihre Anfrage ${order.orderNumber}`;
+      ? `Deine Anfrage ${order.orderNumber} ist eingegangen`
+      : `Deine Anfrage ${order.orderNumber}`;
 
   // EIN gemeinsames Gültigkeits-Gate für Text UND Anhang – niemals getrennt
   // geprüft. Sonst könnte (z.B. bei einem leeren/defekten PDF-Puffer) der
@@ -228,7 +228,7 @@ export async function sendOrderShippedEmail(params: {
 }): Promise<EmailVersandErgebnis> {
   const result = await sendEmail({
     to: params.empfaenger,
-    subject: `Ihre Bestellung ${params.orderNumber} ist unterwegs`,
+    subject: `Deine Bestellung ${params.orderNumber} ist unterwegs`,
     react: (
       <OrderShippedEmail
         orderNumber={params.orderNumber}
@@ -264,7 +264,7 @@ export async function sendOrderInProductionEmail(params: {
 }): Promise<EmailVersandErgebnis> {
   const result = await sendEmail({
     to: params.empfaenger,
-    subject: `Ihre Bestellung ${params.orderNumber} ist in Produktion`,
+    subject: `Deine Bestellung ${params.orderNumber} ist in Produktion`,
     react: (
       <OrderInProductionEmail
         orderNumber={params.orderNumber}

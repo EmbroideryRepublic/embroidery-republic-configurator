@@ -13,8 +13,8 @@ export function KontoWillkommenEmail(_props: Record<string, never>) {
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Ihre E-Mail-Adresse ist bestätigt und Ihr Konto ist ab sofort einsatzbereit. Sie können jetzt Adressen
-        hinterlegen, Ihre Bestellungen an einem Ort verfolgen und beim nächsten Einkauf schneller zur Kasse gehen.
+        Deine E-Mail-Adresse ist bestätigt und dein Konto ist ab sofort einsatzbereit. Du kannst jetzt Adressen
+        hinterlegen, deine Bestellungen an einem Ort verfolgen und beim nächsten Einkauf schneller zur Kasse gehen.
       </Text>
       <Button
         href={kontoUrl}
@@ -32,7 +32,7 @@ export function KontoWillkommenEmail(_props: Record<string, never>) {
         Zu meinem Konto
       </Button>
       <Text style={{ marginTop: 20, fontSize: 12, color: COLORS.muted }}>
-        Hinweis: Ein Konto ist bei uns nie Voraussetzung fürs Bestellen – Sie können jederzeit auch als Gast
+        Hinweis: Ein Konto ist bei uns nie Voraussetzung fürs Bestellen – du kannst jederzeit auch als Gast
         bestellen. Das Konto ist ein zusätzlicher, bequemer Weg, keine Pflicht.
       </Text>
     </EmailLayout>

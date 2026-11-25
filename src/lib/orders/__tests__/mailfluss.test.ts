@@ -330,12 +330,12 @@ test('Anfrage mit Stickerei: Die Kundschaft bekommt nur eine Eingangsbestätigun
   const kunde = anKundschaft('erika@example.invalid');
   assert.equal(kunde.length, 1);
   const mail = kunde[0]!;
-  assert.equal(mail.subject, 'Ihre Anfrage ER-2026-ANF001 ist eingegangen');
+  assert.equal(mail.subject, 'Deine Anfrage ER-2026-ANF001 ist eingegangen');
   assert.equal(mail.reply_to, ABSENDER, 'Rückfragen der Kundschaft erreichen den Betrieb');
   assert.match(mail.text, /ist bei uns eingegangen und wird jetzt von uns geprüft/);
   assert.match(mail.text, /keine Auftragsbestätigung/);
   assert.match(mail.text, /kein Vertrag geschlossen/);
-  assert.match(mail.text, /Ein Vertrag kommt erst zustande, wenn Sie dieses Angebot annehmen und wir den\s+Auftrag bestätigen/);
+  assert.match(mail.text, /Ein Vertrag kommt erst zustande, wenn du dieses Angebot annimmst und wir den\s+Auftrag bestätigen/);
   assert.doesNotMatch(mail.subject + mail.text, /Bestellbestätigung|Zahlungsart|Lieferadresse|stornieren/);
 });
 

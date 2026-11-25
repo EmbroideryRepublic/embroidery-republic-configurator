@@ -39,19 +39,19 @@ export function OrderConfirmationEmail({
   // Stickerei gibt es nur auf Anfrage (config/bestellweg.ts): Der Preis ist
   // dann eine Kostenschätzung, und die Kundschaft erfährt, wie es weitergeht.
   const stickereiAnfrage = !isOrder && warenkorbNurAlsAnfrage(order.items);
-  const title = isOrder ? `Bestellbestätigung ${order.orderNumber}` : `Ihre Anfrage ${order.orderNumber}`;
+  const title = isOrder ? `Bestellbestätigung ${order.orderNumber}` : `Deine Anfrage ${order.orderNumber}`;
   const intro = isOrder
-    ? `Vielen Dank für Ihre Bestellung! Wir haben sie unter der Nummer ${order.orderNumber} erhalten und beginnen mit der Produktion, sobald alles final geprüft ist.`
+    ? `Vielen Dank für deine Bestellung! Wir haben sie unter der Nummer ${order.orderNumber} erhalten und beginnen mit der Produktion, sobald alles final geprüft ist.`
     : stickereiAnfrage
-      ? `Vielen Dank für Ihre Anfrage! Sie ist bei uns eingegangen und wird jetzt von uns geprüft. Diese E-Mail bestätigt nur den Eingang – sie ist keine Auftragsbestätigung. Bis dahin ist nichts bestellt, nichts bezahlt und kein Vertrag geschlossen.`
-      : `Vielen Dank für Ihre Anfrage! Wir melden uns in Kürze persönlich bei Ihnen. Bis dahin ist nichts verbindlich bestellt und nichts bezahlt.`;
+      ? `Vielen Dank für deine Anfrage! Sie ist bei uns eingegangen und wird jetzt von uns geprüft. Diese E-Mail bestätigt nur den Eingang – sie ist keine Auftragsbestätigung. Bis dahin ist nichts bestellt, nichts bezahlt und kein Vertrag geschlossen.`
+      : `Vielen Dank für deine Anfrage! Wir melden uns in Kürze persönlich bei dir. Bis dahin ist nichts verbindlich bestellt und nichts bezahlt.`;
 
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>{intro}</Text>
       {stickereiAnfrage && (
         <Text style={{ margin: '12px 0 0', fontSize: 13 }}>
-          Ihre Anfrage im Überblick – alle Preise sind unverbindliche Schätzwerte:
+          Deine Anfrage im Überblick – alle Preise sind unverbindliche Schätzwerte:
         </Text>
       )}
       <OrderItemsTable items={order.items} />
@@ -84,9 +84,9 @@ export function OrderConfirmationEmail({
 
       {stickereiAnfrage && (
         <Text style={{ marginTop: 16, fontSize: 13 }}>
-          <strong>So geht es weiter:</strong> Wir prüfen Ihre Anfrage und kalkulieren den endgültigen Preis – bei Stickerei
-          steht die genaue Stichzahl erst fest, wenn Ihr Motiv digitalisiert ist. Anschließend senden wir Ihnen ein
-          individuelles, verbindliches Angebot. Ein Vertrag kommt erst zustande, wenn Sie dieses Angebot annehmen und wir den
+          <strong>So geht es weiter:</strong> Wir prüfen deine Anfrage und kalkulieren den endgültigen Preis – bei Stickerei
+          steht die genaue Stichzahl erst fest, wenn dein Motiv digitalisiert ist. Anschließend senden wir dir ein
+          individuelles, verbindliches Angebot. Ein Vertrag kommt erst zustande, wenn du dieses Angebot annimmst und wir den
           Auftrag bestätigen.
         </Text>
       )}
@@ -119,7 +119,7 @@ export function OrderConfirmationEmail({
           Mail an den Betreiber – nicht hier. */}
       {order.message && (
         <Text style={{ marginTop: 16, fontSize: 13 }}>
-          {isOrder ? 'Ihre Anmerkung zur Bestellung ist bei uns angekommen.' : 'Ihre Nachricht ist bei uns angekommen.'}
+          {isOrder ? 'Deine Anmerkung zur Bestellung ist bei uns angekommen.' : 'Deine Nachricht ist bei uns angekommen.'}
         </Text>
       )}
 
@@ -130,13 +130,13 @@ export function OrderConfirmationEmail({
               <strong>Zahlungsart: Kauf auf Rechnung.</strong>{' '}
               {rechnung ? (
                 <>
-                  Die Rechnung {rechnung.rechnungsnummer} finden Sie als PDF im Anhang dieser E-Mail;
+                  Die Rechnung {rechnung.rechnungsnummer} findest du als PDF im Anhang dieser E-Mail;
                   sie ist innerhalb von {PAYMENT_TERM_DAYS} Tagen ab Rechnungsdatum ohne Abzug zu
                   begleichen.{' '}
                 </>
               ) : (
                 <>
-                  Die Rechnung senden wir Ihnen separat mit der Auftragsbearbeitung zu; sie ist
+                  Die Rechnung senden wir dir separat mit der Auftragsbearbeitung zu; sie ist
                   innerhalb von {PAYMENT_TERM_DAYS} Tagen ab Rechnungsdatum ohne Abzug zu
                   begleichen.{' '}
                 </>
@@ -144,13 +144,13 @@ export function OrderConfirmationEmail({
             </>
           ) : (
             <>
-              <strong>Zahlung eingegangen.</strong> Ihre Zahlung per{' '}
+              <strong>Zahlung eingegangen.</strong> Deine Zahlung per{' '}
               {PAYMENT_METHOD_LABELS[order.paymentMethod]} über {formatiereGeld(order.totalPrice)} ist bei
               uns eingegangen – vielen Dank!{' '}
               {rechnung ? (
-                <>Die Rechnung {rechnung.rechnungsnummer} finden Sie als PDF im Anhang dieser E-Mail. </>
+                <>Die Rechnung {rechnung.rechnungsnummer} findest du als PDF im Anhang dieser E-Mail. </>
               ) : (
-                <>Die Rechnung erhalten Sie in Kürze in einer separaten E-Mail. </>
+                <>Die Rechnung erhältst du in Kürze in einer separaten E-Mail. </>
               )}
             </>
           )}
@@ -164,15 +164,15 @@ export function OrderConfirmationEmail({
       {isOrder && (
         <>
           <Text style={{ marginTop: 16, fontSize: 13 }}>
-            <strong>Sie können diese Bestellung noch stornieren.</strong> Innerhalb von{' '}
-            {stornofristStunden} Stunden nach Bestelleingang können Sie sie ohne Angabe von Gründen
-            selbst stornieren – es entstehen Ihnen dann keine Kosten. Nach Ablauf dieser Frist
+            <strong>Du kannst diese Bestellung noch stornieren.</strong> Innerhalb von{' '}
+            {stornofristStunden} Stunden nach Bestelleingang kannst du sie ohne Angabe von Gründen
+            selbst stornieren – es entstehen dir dann keine Kosten. Nach Ablauf dieser Frist
             beginnen wir mit der Bearbeitung und beschaffen die Ware; eine Selbststornierung ist
             dann nicht mehr möglich.
           </Text>
           {bestellansichtUrl && (
             <Text style={{ marginTop: 12, fontSize: 13 }}>
-              Ihre Bestellung ansehen und bei Bedarf stornieren:{' '}
+              Deine Bestellung ansehen und bei Bedarf stornieren:{' '}
               <a href={bestellansichtUrl} style={{ color: '#8a6d3b' }}>
                 {bestellansichtUrl}
               </a>

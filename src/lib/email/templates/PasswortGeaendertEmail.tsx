@@ -9,14 +9,14 @@ import { COMPANY } from '@/config/company';
 import { COLORS, EmailLayout } from './EmailLayout';
 
 export function PasswortGeaendertEmail(_props: Record<string, never>) {
-  const title = 'Ihr Passwort wurde geändert';
+  const title = 'Dein Passwort wurde geändert';
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Das Passwort Ihres Kontos bei Embroidery Republic wurde soeben geändert.
+        Das Passwort deines Kontos bei Embroidery Republic wurde soeben geändert.
       </Text>
       <Text style={{ marginTop: 16, fontSize: 13, color: COLORS.muted }}>
-        Waren Sie das nicht? Kontaktieren Sie uns bitte umgehend – wir helfen Ihnen, Ihr Konto abzusichern.
+        Warst du das nicht? Kontaktiere uns bitte umgehend – wir helfen dir, dein Konto abzusichern.
       </Text>
       <Text style={{ marginTop: 16, fontSize: 13 }}>
         Telefon: {COMPANY.phone}

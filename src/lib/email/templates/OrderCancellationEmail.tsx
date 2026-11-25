@@ -42,7 +42,7 @@ export function OrderCancellationEmail({
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Ihre Bestellung <strong>{orderNumber}</strong> wurde am {storniertAm} storniert.
+        Deine Bestellung <strong>{orderNumber}</strong> wurde am {storniertAm} storniert.
       </Text>
 
       {erstattungFaellig ? (
@@ -52,14 +52,14 @@ export function OrderCancellationEmail({
         </Text>
       ) : (
         <Text style={{ marginTop: 12 }}>
-          Es entstehen Ihnen dadurch <strong>keine Kosten</strong>. Eine Rechnung wird nicht gestellt, und wir beschaffen
+          Es entstehen dir dadurch <strong>keine Kosten</strong>. Eine Rechnung wird nicht gestellt, und wir beschaffen
           keine Ware für diesen Auftrag.
         </Text>
       )}
 
       <Text style={{ marginTop: 12 }}>
-        Falls Sie die Bestellung versehentlich storniert haben oder etwas anpassen möchten, geben Sie uns gern kurz
-        Bescheid – wir helfen Ihnen weiter.
+        Falls du die Bestellung versehentlich storniert hast oder etwas anpassen möchtest, gib uns gern kurz
+        Bescheid – wir helfen dir weiter.
       </Text>
 
       <Text style={{ marginTop: 12, fontSize: 13 }}>

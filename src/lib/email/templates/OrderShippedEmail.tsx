@@ -31,14 +31,14 @@ export function OrderShippedEmail({
   carrier: string | null;
   bestellansichtUrl: string | null;
 }) {
-  const title = `Ihre Bestellung ${orderNumber} ist unterwegs`;
+  const title = `Deine Bestellung ${orderNumber} ist unterwegs`;
   const trackingLink = trackingNummer && carrier === 'dhl' ? dhlTrackingUrl(trackingNummer) : null;
 
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Gute Nachrichten: Ihre Bestellung <strong>{orderNumber}</strong> hat unser Haus verlassen und
-        ist auf dem Weg zu Ihnen.
+        Gute Nachrichten: Deine Bestellung <strong>{orderNumber}</strong> hat unser Haus verlassen und
+        ist auf dem Weg zu dir.
       </Text>
 
       {trackingNummer && (
@@ -65,7 +65,7 @@ export function OrderShippedEmail({
       )}
 
       <Text style={{ marginTop: 12 }}>
-        Sollte etwas nicht stimmen, melden Sie sich bitte kurz bei uns — wir kümmern uns darum.
+        Sollte etwas nicht stimmen, melde dich bitte kurz bei uns — wir kümmern uns darum.
       </Text>
 
       <Text style={{ marginTop: 12, fontSize: 13 }}>

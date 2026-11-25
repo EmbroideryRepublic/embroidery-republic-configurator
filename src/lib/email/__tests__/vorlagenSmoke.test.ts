@@ -121,7 +121,11 @@ const VERDAECHTIG: Array<[string, RegExp]> = [
   ['"NaN"', /\bNaN\b/],
   ['"[object Object]"', /\[object Object\]/],
   ['leerer Link', /href=""/],
-  ['Du-Anrede statt Sie', /\b(Du|Dein|Deine|Deinem|Deinen|Dir)\b/],
+  // Kundenmails sprechen wie der übrige Shop per Du (Entscheidung des Betreibers vom 24.11.2026): keine Sie-Anrede mehr.
+  // Einzige Ausnahme: „Sie ist bei uns eingegangen“ – dort ist „Sie“ die Anfrage (dritte Person), keine Anrede.
+  ['Sie-Anrede statt Du', /\b(Ihr|Ihre|Ihren|Ihrem|Ihrer|Ihres|Ihnen)\b|\bSie\b(?! ist bei uns eingegangen)/],
+  // „du/dein/dir“ steht im Satz klein; groß nur am Satzanfang (auch nach Doppelpunkt). Großes Du mitten im Satz wäre Briefform.
+  ['groß geschriebenes Du mitten im Satz', /[a-zäöüß,;–—] (Du|Dein|Deine|Deinem|Deinen|Deiner|Deines|Dir|Dich)\b/],
   ['Adresse mit "undefined"', /undefinedhttps?|https?:\/\/undefined/],
 ];
 

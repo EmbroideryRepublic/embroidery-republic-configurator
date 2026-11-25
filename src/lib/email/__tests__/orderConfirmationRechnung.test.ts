@@ -51,7 +51,7 @@ const rechnung: RechnungFuerEmail = {
 test('OHNE rechnung-Prop behauptet der Text NICHT, eine Rechnung sei angehängt (PayPal/Karte)', async () => {
   const text = await render(OrderConfirmationEmail({ order: bestellung }), { plainText: true });
   assert.doesNotMatch(text, /Anhang/i);
-  assert.match(text, /Rechnung erhalten Sie in Kürze/);
+  assert.match(text, /Rechnung erhältst du in Kürze/);
 });
 
 test('MIT rechnung-Prop nennt der Text Rechnungsnummer und Anhang (PayPal/Karte)', async () => {

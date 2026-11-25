@@ -8,11 +8,11 @@ import { Button, Text } from '@react-email/components';
 import { COLORS, EmailLayout } from './EmailLayout';
 
 export function KontoBestaetigenEmail({ bestaetigungsUrl }: { bestaetigungsUrl: string }) {
-  const title = 'Bitte bestätigen Sie Ihre E-Mail-Adresse';
+  const title = 'Bitte bestätige deine E-Mail-Adresse';
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Vielen Dank für Ihre Registrierung bei Embroidery Republic! Bitte bestätigen Sie Ihre E-Mail-Adresse, um Ihr
+        Vielen Dank für deine Registrierung bei Embroidery Republic! Bitte bestätige deine E-Mail-Adresse, um dein
         Konto zu aktivieren.
       </Text>
       <Button
@@ -31,14 +31,14 @@ export function KontoBestaetigenEmail({ bestaetigungsUrl }: { bestaetigungsUrl: 
         E-Mail-Adresse bestätigen
       </Button>
       <Text style={{ marginTop: 20, fontSize: 12, color: COLORS.muted }}>
-        Funktioniert die Schaltfläche nicht? Kopieren Sie diesen Link in Ihren Browser:
+        Funktioniert die Schaltfläche nicht? Kopiere diesen Link in deinen Browser:
         <br />
         <a href={bestaetigungsUrl} style={{ color: COLORS.gold }}>
           {bestaetigungsUrl}
         </a>
       </Text>
       <Text style={{ marginTop: 20, fontSize: 12, color: COLORS.muted }}>
-        Haben Sie sich nicht registriert? Dann können Sie diese Nachricht ignorieren – es wurde kein Konto ohne
+        Hast du dich nicht registriert? Dann kannst du diese Nachricht ignorieren – es wurde kein Konto ohne
         diesen Bestätigungsschritt angelegt.
       </Text>
     </EmailLayout>

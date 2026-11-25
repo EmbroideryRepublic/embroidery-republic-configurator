@@ -16,11 +16,11 @@ export function PaymentFailedEmail({ orderNumber, bestellansichtUrl }: { orderNu
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Die Zahlung für Ihre Bestellung <strong>{orderNumber}</strong> konnte leider nicht abgeschlossen werden – sei
-        es durch einen Abbruch, eine Ablehnung durch Ihre Bank oder eine Zeitüberschreitung.
+        Die Zahlung für deine Bestellung <strong>{orderNumber}</strong> konnte leider nicht abgeschlossen werden – sei
+        es durch einen Abbruch, eine Ablehnung durch deine Bank oder eine Zeitüberschreitung.
       </Text>
       <Text style={{ marginTop: 12 }}>
-        Keine Sorge: Es wurde <strong>nichts abgebucht</strong> und es läuft noch keine Produktion. Sie können es
+        Keine Sorge: Es wurde <strong>nichts abgebucht</strong> und es läuft noch keine Produktion. Du kannst es
         gern erneut versuchen.
       </Text>
       <Button

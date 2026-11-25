@@ -31,7 +31,7 @@ export function InvoiceEmail({
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Zu Ihrer Bestellung {orderNumber} finden Sie anbei die Rechnung {invoiceNumber} vom {invoiceDate} als
+        Zu deiner Bestellung {orderNumber} findest du anbei die Rechnung {invoiceNumber} vom {invoiceDate} als
         PDF.
       </Text>
     </EmailLayout>

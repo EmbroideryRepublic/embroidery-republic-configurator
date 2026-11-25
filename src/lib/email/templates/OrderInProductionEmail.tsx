@@ -29,15 +29,15 @@ export function OrderInProductionEmail({
    *  die Mail bleibt dann ohne Link, aber inhaltlich vollständig. */
   bestellansichtUrl?: string | null;
 }) {
-  const title = `Ihre Bestellung ${orderNumber} ist in Produktion`;
+  const title = `Deine Bestellung ${orderNumber} ist in Produktion`;
   return (
     <EmailLayout previewText={title} title={title}>
       <Text style={{ margin: 0 }}>
-        Gute Nachrichten: Wir haben mit der Fertigung Ihrer Bestellung <strong>{orderNumber}</strong> begonnen.
+        Gute Nachrichten: Wir haben mit der Fertigung deiner Bestellung <strong>{orderNumber}</strong> begonnen.
       </Text>
       <OrderItemsTable items={items} />
       <Text style={{ marginTop: 12 }}>
-        Sobald die Ware versandbereit ist, erhalten Sie von uns eine Versandbestätigung mit
+        Sobald die Ware versandbereit ist, erhältst du von uns eine Versandbestätigung mit
         Sendungsverfolgung.
       </Text>
       {bestellansichtUrl && (

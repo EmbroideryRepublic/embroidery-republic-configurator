@@ -39,7 +39,7 @@ export async function sendContactMessageEmail(payload: ContactMessagePayload): P
   // Bestätigung würde die Anfrage selbst trotzdem ankommen.
   await sendEmail({
     to: payload.email,
-    subject: 'Ihre Nachricht ist bei uns angekommen',
+    subject: 'Deine Nachricht ist bei uns angekommen',
     react: <ContactAutoReplyEmail name={payload.name} message={payload.message} />,
     kontext: { anlass: 'contact_form_autoreply' },
     replyTo: getReplyToAddress(),

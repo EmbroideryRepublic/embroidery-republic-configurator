@@ -22,3 +22,22 @@ Quellen der Wahrheit: `src/config/company.ts` (`PRODUKTIONSTAGE` 3–4 Werktage,
 - **Gefunden und behoben:** weiße Schrift auf dem hellen Orange beim Hover (3,58 : 1) am Knopf „Konfigurator öffnen“ und im Admin; der Kontrasttest erkennt jetzt auch Zustandspräfixe (`hover:` usw.).
 - **Gefunden und behoben:** Shop-Menü schloss sich beim langsamen Hinabfahren mit der Maus (Lücke zwischen Link und Liste).
 - **Gefunden und behoben:** im Storno-Kasten standen „Sie“ und „du“ nebeneinander. Der Storno-Bereich bleibt bis zur Freigabe vollständig in der Sie-Form (`WORTLAUT-ZUR-FREIGABE-DU.md`).
+
+## Nachtrag 25.11.2026: Stickerei-Aussagen vollständig bereinigt (Betreiber-Auftrag)
+
+Auftrag: „Korrigiere sämtliche sichtbaren Hinweise auf Stickerei, die eine verfügbare Leistung suggerieren, obwohl sie technisch nicht angeboten wird – FAQ, Über uns, Kontakt, Produkttitel.“ Umsetzung: Alle Stellen lesen den Betriebsschalter (`veredelungVerfuegbar('embroidery')`). Der bisherige Wortlaut bleibt unverändert im Code und kehrt zurück, sobald die Liste in `config/bestellweg.ts` geleert wird.
+
+| Bereich | Stand bei pausierter Stickerei |
+|---|---|
+| FAQ (Antworten, Meta, JSON-LD) | keine Stickerei-Aussage; Frage „Unterschied DTF und Stickerei“ ersetzt durch „Für welche Motive eignet sich DTF-Transferdruck?“ |
+| Über uns | „DTF-Transferdruck“ statt „Zwei Veredelungsarten“; Ablauf-Schritt 3: „DTF-Druck bestellst du direkt im Konfigurator.“ |
+| Kontakt | Hinweis „Das hilft uns weiter“ ohne „Druck oder Stickerei“ |
+| 182 Produkttitel | „{Name} bedrucken \| {Marke}“ statt „… bedrucken & besticken …“ (Katalog-Test: alle Titel ≤ 60 Zeichen, eindeutig, vollständiger Name) |
+| Kategorieseiten (H1, Meta, FAQ, Preisbeispiele, JSON-LD) | ohne Stickerei; URLs unverändert |
+| Startseite/Kategorien: Karte „Stickerei“ | nur Name und „Derzeit nicht verfügbar“, kein Werbetext |
+| Konfigurator: Methodenkachel | Name und Grund (Wartungs- und Umbauarbeiten), keine Werbebeschreibung |
+| Manifest, Sammlungs-Schema, llms.txt | ohne Stickerei bzw. mit dem ehrlichen Pausenhinweis |
+
+**Prüfung:** 232 öffentliche Seiten des Produktions-Builds (Sitemap + FAQ, Über uns, Kontakt, Konfigurator) gelesen: In sichtbarem Text, Meta-Tags und JSON-LD kommt Stickerei nur noch auf `/agb` vor (Rechtstext, siehe unten) und in den ausdrücklichen Pausenhinweisen.
+
+**Bewusst nicht geändert:** Die AGB (§ 2 „Stickverfahren“, Stickerei „ausschließlich auf Anfrage“, Garnfarben) beschreiben den vertraglichen Leistungsumfang, sie sind ein Rechtstext und bleiben bis zu einer rechtlich geprüften Fassung unverändert. Die Filterleiste kennt den Wert „Stickerei“ nur über die Adresszeile (`?veredelung=embroidery`); das Menü ist ausgeblendet, weil alle Produkte beide Verfahren zulassen.

@@ -38,10 +38,11 @@ Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Die Beispiele zeigen unterschiedliche Textilien (T-Shirt, Hoodie, Polo) und eine bzw. zwei bedruckte Positionen und lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.
 
 - 10 T-Shirts · Vereinslogo auf der Brust (ca. 10 × 10 cm): **16,99 €** pro Stück, gesamt 169,90 €
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Vereinsname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.
 - 20 Polos · Vereinslogo auf der Brust (ca. 10 × 10 cm): **18,99 €** pro Stück, gesamt 379,80 €
 
 Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
@@ -113,11 +114,13 @@ Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Die ersten beiden Zeilen zeigen dasselbe Poloshirt in verschiedenen Mengen, dort sinkt der Stückpreis mit der Menge. Die dritte Zeile zeigt einen Hoodie mit zwei bedruckten Positionen und ist deshalb nicht direkt vergleichbar. Staffelpreise gelten ab 5 Stück.
 
 - 1 Polo · Firmenlogo auf der Brust (ca. 10 × 10 cm): **32,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.
 
 Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -396,10 +399,11 @@ Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Vers
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Beide Zeilen zeigen denselben Hoodie, aber unterschiedlich viele bedruckte Positionen: nur den Rücken in der ersten, Brust und Rücken in der zweiten. Deshalb liegt der Stückpreis der zweiten Zeile trotz größerer Menge höher. Staffelpreise gelten ab 5 Stück.
 
 - 10 Hoodies · Motiv auf dem Rücken (ca. 20 × 25 cm): **28,99 €** pro Stück, gesamt 289,90 €
 - 25 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motto auf dem Rücken (ca. 20 × 25 cm): **31,99 €** pro Stück, gesamt 799,75 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.
 
 Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -462,10 +466,12 @@ Der Konfigurator zeigt dein Motiv in Zentimetern; je Modell und Größe gilt ein
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Die ersten beiden Zeilen zeigen Einzelstücke in zwei Textilien (T-Shirt, Hoodie), die dritte fünf T-Shirts. Der Stückpreis hängt vom Textil ab; beim T-Shirt sinkt er mit der Menge. Staffelpreise gelten ab 5 Stück.
 
 - 1 T-Shirt · Foto auf der Brust (ca. 20 × 20 cm): **29,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 1 Hoodie · Foto auf der Brust (ca. 20 × 20 cm): **41,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **17,99 €** pro Stück, gesamt 89,95 €
 
 Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
@@ -528,15 +534,19 @@ Die Staffelgrenzen gelten für die gesamte Bestellung. Liegt deine Menge knapp d
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Je Textil zeigen die Zeilen, wie der Stückpreis mit der Menge sinkt. Die letzte Hoodie-Zeile (10 Stück) hat zwei bedruckte Positionen und kostet deshalb je Stück mehr als die Hoodie-Zeile mit einer Position. Staffelpreise gelten ab 5 Stück.
 
 - 1 T-Shirt · Brustmotiv (ca. 10 × 10 cm): **29,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 10 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **16,99 €** pro Stück, gesamt 169,90 €
 - 50 T-Shirts · Brustmotiv (ca. 10 × 10 cm): **13,99 €** pro Stück, gesamt 699,50 €
 - 1 Hoodie · Brustmotiv (ca. 10 × 10 cm): **41,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 10 Hoodies · Brustmotiv (ca. 10 × 10 cm): **28,99 €** pro Stück, gesamt 289,90 €
 - 10 Hoodies · Brustmotiv (ca. 10 × 10 cm) und Rückenmotiv (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.
 - 1 Polo · Brustmotiv (ca. 10 × 10 cm): **32,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 10 Polos · Brustmotiv (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
 
 Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat, B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
@@ -705,11 +715,12 @@ Bitte bis Ende Januar.
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Die Beispiele zeigen unterschiedliche Textilien (Polo, T-Shirt, Hoodie) und eine bzw. zwei bedruckte Positionen und lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.
 
 - 10 Polos · Firmenlogo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
 - 25 T-Shirts · Firmenlogo auf der Brust (ca. 10 × 10 cm): **15,99 €** pro Stück, gesamt 399,75 €
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.
 
 Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
@@ -1354,10 +1365,12 @@ Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließen
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Die ersten beiden Zeilen zeigen denselben Hoodie in verschiedenen Mengen, die dritte zeigt ein T-Shirt und ist deshalb nicht direkt vergleichbar. Staffelpreise gelten ab 5 Stück.
 
 - 1 Hoodie · Motiv auf der Brust (ca. 10 × 10 cm): **41,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 2 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm): **36,99 €** pro Stück, gesamt 73,98 €
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €, auf die 2 Stück verteilt (5 € je Stück). Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 5 T-Shirts · Foto auf der Brust (ca. 20 × 20 cm): **17,99 €** pro Stück, gesamt 89,95 €
 
 Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C T-Shirt #E150. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
@@ -1432,10 +1445,11 @@ Die Produktion dauert regulär 3 bis 4 Werktage, der anschließende Versand erfo
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Die ersten beiden Zeilen zeigen dasselbe T-Shirt mit einer bzw. zwei bedruckten Positionen, die dritte einen Hoodie. Die Zeilen lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.
 
 - 8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm): **17,99 €** pro Stück, gesamt 143,92 €
 - 8 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm) und Spruch auf dem Rücken (ca. 25 × 10 cm): **22,99 €** pro Stück, gesamt 183,92 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.
 - 10 Hoodies · Motiv auf der Brust (ca. 10 × 10 cm): **28,99 €** pro Stück, gesamt 289,90 €
 
 Fußnote: Beispielrechnungen mit B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
@@ -1504,11 +1518,13 @@ Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.
 
 ### Preisbeispiele
 
-Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+Die Beispiele zeigen unterschiedliche Textilien (Hoodie, T-Shirt) und eine bzw. zwei bedruckte Positionen und lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.
 
 - 1 Hoodie · Logo auf der Brust (ca. 10 × 10 cm): **41,99 €** pro Stück (Einzelstück)
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Die Einrichtung fällt nur bei bis zu 2 Stück an; ab 3 Stück entfällt sie.
 - 5 T-Shirts · Motiv auf der Brust (ca. 10 × 10 cm): **17,99 €** pro Stück, gesamt 89,95 €
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm) und Motiv auf dem Rücken (ca. 20 × 25 cm): **32,99 €** pro Stück, gesamt 329,90 €
+  - *Hinweis unter der Zeile:* Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.
 
 Fußnote: Beispielrechnungen mit Fruit of the Loom Lightweight Hooded Sweat, B&C T-Shirt #E150. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 

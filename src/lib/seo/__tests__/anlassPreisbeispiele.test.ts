@@ -12,6 +12,7 @@ import { ANLASS_SEITEN } from '@/config/seo/anlassSeiten';
 import { KLEINAUFTRAG_MAX_STUECK, KLEINAUFTRAG_PAUSCHALE_EUR } from '@/config/pricingRules';
 import { berechneBeispiele } from '../kategorieSeite';
 import { alsKategorieBeispiele } from '../anlassSeite';
+import { zeilenHinweise } from '@/config/seo/preisHinweise';
 
 const RATGEBER = ['poloshirt-mit-logo-bedrucken', 'arbeitskleidung-bedrucken'];
 
@@ -31,7 +32,7 @@ test('Ratgeber: Beispiele mit Einrichtung (bis zur Kleinauftrags-Grenze) erklär
     const ergebnis = await rechne(slug);
     ergebnis.forEach((e, i) => {
       if (e.menge > KLEINAUFTRAG_MAX_STUECK) return;
-      const hinweis = (s.beispiele[i]?.hinweis ?? '').replace(/ /g, ' '); // geschützte Leerzeichen wie normale behandeln
+      const hinweis = zeilenHinweise({ menge: e.menge, positionen: s.beispiele[i]?.flaechen.length ?? 1, eigener: s.beispiele[i]?.hinweis }).join(' ').replace(/ /g, ' '); // geschützte Leerzeichen wie normale behandeln
       assert.ok(hinweis.includes(`${KLEINAUFTRAG_PAUSCHALE_EUR} €`), `${slug}: Zeile „${e.beschriftung}“ nennt die Einrichtung nicht`);
       assert.ok(hinweis.includes(`${KLEINAUFTRAG_MAX_STUECK} Stück`), `${slug}: Zeile „${e.beschriftung}“ nennt die Grenze nicht`);
     });
@@ -42,7 +43,8 @@ test('Ratgeber: Jede Zeile mit zwei bedruckten Positionen erklärt, dass die zwe
   for (const slug of RATGEBER) {
     const s = seite(slug);
     for (const b of s.beispiele.filter((x) => x.flaechen.length > 1)) {
-      assert.match(b.hinweis ?? '', /zwei bedruckte Positionen/, `${slug}: „${b.beschriftung}“ erklärt die zweite Position nicht`);
+      const hinweise = zeilenHinweise({ menge: b.menge, positionen: b.flaechen.length, eigener: b.hinweis }).join(' ');
+      assert.match(hinweise, /zwei bedruckte Positionen/, `${slug}: „${b.beschriftung}“ erklärt die zweite Position nicht`);
     }
   }
 });

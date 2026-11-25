@@ -9,6 +9,7 @@
 import { writeFileSync } from 'node:fs';
 import { ANLASS_SEITEN } from '../src/config/seo/anlassSeiten.ts';
 import { DTF_ABLAUF_SCHRITTE } from '../src/config/seo/dtfSeiten.ts';
+import { zeilenHinweise } from '../src/config/seo/preisHinweise.ts';
 import { berechneBeispiele } from '../src/lib/seo/kategorieSeite.ts';
 import { alsKategorieBeispiele, anlassFakten, fuelleAnlass, AUFLOESUNG_BREITEN_CM, mindestPixel } from '../src/lib/seo/anlassSeite.ts';
 import { MIN_DPI, OK_DPI } from '../src/lib/canvas/logoQualitaet.ts';
@@ -133,8 +134,7 @@ for (const seite of ANLASS_SEITEN) {
     z();
     ergebnis.forEach((e, i) => {
       z(`- ${e.beschriftung}: **${formatiereGeld(e.stueckpreis)}** pro Stück${e.menge > 1 ? `, gesamt ${formatiereGeld(e.gesamt)}` : ' (Einzelstück)'}`);
-      const hinweis = seite.beispiele[i]?.hinweis;
-      if (hinweis) z(`  - *Hinweis unter der Zeile:* ${hinweis}`);
+      for (const h of zeilenHinweise({ menge: e.menge, positionen: seite.beispiele[i]!.flaechen.length, eigener: seite.beispiele[i]?.hinweis })) z(`  - *Hinweis unter der Zeile:* ${h}`);
     });
     z();
     z(`Fußnote: Beispielrechnungen mit ${[...new Set(ergebnis.map((e) => e.produktName))].join(', ')}. Preise pro Stück zzgl. Versand – versandkostenfrei ab ${fuelle('{frei}')}. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.`);

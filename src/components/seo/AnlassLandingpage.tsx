@@ -26,6 +26,7 @@ import { MIN_DPI, OK_DPI } from '@/lib/canvas/logoQualitaet';
 import { formatiereGeld } from '@/lib/format';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { berechneBeispiele } from '@/lib/seo/kategorieSeite';
+import { ZeilenHinweise } from '@/components/seo/ZeilenHinweise';
 import {
   alsKategorieBeispiele,
   anlassFakten,
@@ -252,9 +253,7 @@ export async function AnlassLandingpage({ seite }: { seite: AnlassSeite }) {
                 >
                   <div className="max-w-xl">
                     <p className="text-[15px] leading-snug text-brand">{b.beschriftung}</p>
-                    {seite.beispiele[i]?.hinweis && (
-                      <p className="mt-1.5 text-[13px] leading-relaxed text-brand/70">{seite.beispiele[i]?.hinweis}</p>
-                    )}
+                    <ZeilenHinweise menge={b.menge} positionen={seite.beispiele[i]?.flaechen.length ?? 1} eigener={seite.beispiele[i]?.hinweis} grossformat={b.grossformatJeStueck} />
                   </div>
                   <p className="text-right">
                     <span className="font-serif text-[26px] tabular-nums text-brand">

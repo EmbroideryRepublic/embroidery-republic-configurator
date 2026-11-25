@@ -21,6 +21,7 @@ import { SHIPPING_RATES } from '@/config/shipping';
 import { formatiereGeld } from '@/lib/format';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { berechneBeispiele } from '@/lib/seo/kategorieSeite';
+import { ZeilenHinweise } from '@/components/seo/ZeilenHinweise';
 import { dtfBeispiele, dtfFakten, fuelleDtf } from '@/lib/seo/dtfSeite';
 import { alleMarkenSeiten, dtfArtSeiteVon } from '@/lib/seo/dtfAdresse';
 import { LEERE_KRITERIEN, schreibeKriterien, slug as filterSlug } from '@/lib/catalog/kriterien';
@@ -182,12 +183,15 @@ export async function DtfLandingpage({ seite }: { seite: DtfSeite }) {
             Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
           </p>
           <ul className="mt-8 divide-y divide-brand/[0.08] rounded-[24px] border border-brand/[0.08] bg-white">
-            {beispiele.map((b) => (
+            {beispiele.map((b, i) => (
               <li
                 key={b.beschriftung}
                 className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 px-6 py-5 sm:px-8"
               >
-                <p className="max-w-xl text-[15px] leading-snug text-brand">{b.beschriftung}</p>
+                <div className="max-w-xl">
+                  <p className="text-[15px] leading-snug text-brand">{b.beschriftung}</p>
+                  <ZeilenHinweise menge={b.menge} positionen={beispielDefs[i]?.flaechen.length ?? 1} grossformat={b.grossformatJeStueck} />
+                </div>
                 <p className="text-right">
                   <span className="font-serif text-[26px] tabular-nums text-brand">
                     <WaehrungsPreis betragInEur={b.stueckpreis} />

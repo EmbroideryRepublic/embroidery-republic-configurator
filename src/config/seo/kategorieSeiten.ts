@@ -77,6 +77,8 @@ export interface KategorieSeite {
   /** DTF-Preisbeispiele, die anstelle der Stickerei-Beispiele gezeigt werden, solange die Stickerei pausiert ist
    *  (BETRIEBSSCHALTER in config/bestellweg.ts). Nur nötig, wenn `beispiele` ohne die Stickerei-Zeilen leer wäre. */
   beispieleBeiPause?: KategorieBeispiel[];
+  /** Satz über den Preisbeispielen anstelle des Standardsatzes, solange die Stickerei pausiert ist (nur wenn die DTF-Zeilen keine Reihe bilden). */
+  beispieleEinleitungBeiPause?: string;
   /**
    * Wortlaut, solange die Stickerei pausiert ist (BETRIEBSSCHALTER in config/bestellweg.ts): ohne jeden Hinweis auf
    * Stickerei. `einleitung` ersetzt die normale Einleitung (nur nötig, wenn schon der erste Absatz Stickerei nennt),
@@ -246,6 +248,8 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
         ],
       },
     ],
+    beispieleEinleitungBeiPause:
+      'Alle Zeilen zeigen dasselbe T-Shirt. Die Zeile mit 25 Stück hat Brust- und Rückenmotiv, also zwei bedruckte Positionen, und das Rückenmotiv ist zusätzlich im Großformat. Sie liegt deshalb trotz größerer Menge über der Zeile mit 10 Stück. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       {
         q: 'Kann ich auch nur ein einzelnes T-Shirt bedrucken oder besticken lassen?',

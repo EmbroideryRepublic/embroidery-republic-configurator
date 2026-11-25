@@ -26,7 +26,6 @@
 import type { ProductType } from '@/types';
 import type { KategorieFrage } from '@/config/seo/kategorieSeiten';
 import { EINLEITUNG_DTF } from '@/config/seo/dtfSeiten';
-import { KLEINAUFTRAG_MAX_STUECK, KLEINAUFTRAG_PAUSCHALE_EUR } from '@/config/pricingRules';
 
 export interface AnlassAbschnitt {
   ueberschrift: string;
@@ -123,12 +122,6 @@ const ABSATZ_POSITIONEN =
 const ABSATZ_MEHRERE_PRODUKTE =
   'Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.';
 
-/**
- * Erklärung für das Einzelstück-Beispiel: Der Stückpreis enthält die einmalige Einrichtung (Regel dtf-kleinauftrag).
- * Betrag und Stückzahl stammen aus der Regel selbst (config/pricingRules.ts), nicht von Hand.
- */
-const HINWEIS_EINRICHTUNG = `Der Preis enthält die einmalige Einrichtung von ${KLEINAUFTRAG_PAUSCHALE_EUR} €. Die Einrichtung fällt nur bei bis zu ${KLEINAUFTRAG_MAX_STUECK} Stück an; ab ${KLEINAUFTRAG_MAX_STUECK + 1} Stück entfällt sie.`; // geschützte Leerzeichen: kein Umbruch zwischen Zahl und Einheit
-
 // ── Die Seiten ──────────────────────────────────────────────────────────
 
 export const ANLASS_SEITEN: AnlassSeite[] = [
@@ -196,6 +189,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
       },
     ],
+    beispieleEinleitung:
+      'Die Beispiele zeigen unterschiedliche Textilien (T-Shirt, Hoodie, Polo) und eine bzw. zwei bedruckte Positionen und lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       { q: 'Ab wie vielen Teilen lohnt sich eine Vereinsbestellung?', a: A_MENGE_STAFFEL },
       {
@@ -280,6 +275,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ],
       },
     ],
+    beispieleEinleitung:
+      'Die ersten beiden Zeilen zeigen dasselbe Poloshirt in verschiedenen Mengen, dort sinkt der Stückpreis mit der Menge. Die dritte Zeile zeigt einen Hoodie mit zwei bedruckten Positionen und ist deshalb nicht direkt vergleichbar. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       { q: 'Können wir auch einzelne Teile bedrucken lassen?', a: A_EINZELSTUECK },
       { q: 'Können Unternehmen auf Rechnung bezahlen?', a: `Ja. ${A_ZAHLUNG}` },
@@ -361,7 +358,6 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         art: 'polo',
         menge: 1,
         flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
-        hinweis: HINWEIS_EINRICHTUNG,
       },
       {
         beschriftung: '10 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm)',
@@ -492,7 +488,6 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
           { ansicht: 'front', breiteCm: 10, hoeheCm: 10 },
           { ansicht: 'back', breiteCm: 20, hoeheCm: 25 },
         ],
-        hinweis: 'Das sind zwei bedruckte Positionen (Brust und Rücken); die zweite Position kommt je Stück hinzu.',
       },
       {
         beschriftung: '10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm)',
@@ -587,6 +582,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ],
       },
     ],
+    beispieleEinleitung:
+      'Beide Zeilen zeigen denselben Hoodie, aber unterschiedlich viele bedruckte Positionen: nur den Rücken in der ersten, Brust und Rücken in der zweiten. Deshalb liegt der Stückpreis der zweiten Zeile trotz größerer Menge höher. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       {
         q: 'Können wir erst einen Hoodie als Muster bestellen?',
@@ -664,6 +661,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         flaechen: [{ ansicht: 'front', breiteCm: 20, hoeheCm: 20 }],
       },
     ],
+    beispieleEinleitung:
+      'Die ersten beiden Zeilen zeigen Einzelstücke in zwei Textilien (T-Shirt, Hoodie), die dritte fünf T-Shirts. Der Stückpreis hängt vom Textil ab; beim T-Shirt sinkt er mit der Menge. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       { q: 'Kann ich nur ein einzelnes T-Shirt mit Foto bestellen?', a: A_EINZELSTUECK },
       {
@@ -774,6 +773,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
       },
     ],
+    beispieleEinleitung:
+      'Je Textil zeigen die Zeilen, wie der Stückpreis mit der Menge sinkt. Die letzte Hoodie-Zeile (10 Stück) hat zwei bedruckte Positionen und kostet deshalb je Stück mehr als die Hoodie-Zeile mit einer Position. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       {
         q: 'Wovon hängt der Preis für bedruckte Textilien ab?',
@@ -929,6 +930,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ],
       },
     ],
+    beispieleEinleitung:
+      'Die Beispiele zeigen unterschiedliche Textilien (Polo, T-Shirt, Hoodie) und eine bzw. zwei bedruckte Positionen und lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       { q: 'Gibt es eine Mindestbestellmenge?', a: A_MENGE_STAFFEL },
       { q: 'Welche Dateien brauche ich für mein Logo?', a: `${A_DATEIEN} Vor der Produktion prüfen wir deine Datei kostenlos.` },
@@ -1555,6 +1558,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         flaechen: [{ ansicht: 'front', breiteCm: 20, hoeheCm: 20 }],
       },
     ],
+    beispieleEinleitung:
+      'Die ersten beiden Zeilen zeigen denselben Hoodie in verschiedenen Mengen, die dritte zeigt ein T-Shirt und ist deshalb nicht direkt vergleichbar. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       { q: 'Kann ich ein einzelnes Geschenk bedrucken lassen?', a: A_EINZELSTUECK },
       { q: 'Wie lange dauert es, bis das Geschenk ankommt?', a: A_DAUER },
@@ -1641,6 +1646,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         flaechen: [{ ansicht: 'front', breiteCm: 10, hoeheCm: 10 }],
       },
     ],
+    beispieleEinleitung:
+      'Die ersten beiden Zeilen zeigen dasselbe T-Shirt mit einer bzw. zwei bedruckten Positionen, die dritte einen Hoodie. Die Zeilen lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       { q: 'Ab wie vielen Teilen lohnt sich eine Gruppenbestellung?', a: A_MENGE_STAFFEL },
       { q: 'Können wir die Größen mischen?', a: A_GROESSEN },
@@ -1722,6 +1729,8 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ],
       },
     ],
+    beispieleEinleitung:
+      'Die Beispiele zeigen unterschiedliche Textilien (Hoodie, T-Shirt) und eine bzw. zwei bedruckte Positionen und lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       { q: 'Kann ich einen einzelnen Prototyp bestellen?', a: A_EINZELSTUECK },
       { q: 'Welche Dateien brauche ich für mein Motiv?', a: A_DATEIEN },

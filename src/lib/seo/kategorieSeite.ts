@@ -27,6 +27,9 @@ import { DTF_ABLAUF_SCHRITTE, EINLEITUNG_DTF } from '@/config/seo/dtfSeiten';
 import { produktAbfrage } from '@/lib/catalog/abfrage';
 import { LEERE_KRITERIEN } from '@/lib/catalog/kriterien';
 import { priceCart } from '@/lib/pricing/serverPricing';
+import { calculatePrice } from '@/lib/pricing/calculatePrice';
+import { getPricingRules } from '@/config/pricingRules';
+import { echteMasseJeElement } from '@/config/echteMasse';
 import { formatiereGeld } from '@/lib/format';
 
 // Adress-Funktionen liegen in einer leichten Datei (siehe dort) und werden hier
@@ -188,6 +191,8 @@ export interface BerechnetesBeispiel {
   gesamt: number;
   produktName: string;
   textilAb: number;
+  /** Großformat-Zuschlag je Stück (0 bei Standardformat) – nur zur Erklärung des Preises unter der Zeile. */
+  grossformatJeStueck: number;
 }
 
 const runde2 = (n: number) => Math.round(n * 100) / 100;
@@ -247,10 +252,18 @@ export async function berechneBeispiele(seite: Pick<KategorieSeite, 'slug' | 'be
   for (const b of seite.beispiele) {
     const produkt = getProduct(b.produktId);
     if (!produkt) throw new Error(`Beispielprodukt "${b.produktId}" (${seite.slug}) nicht im Katalog.`);
-    const preis = await priceCart([positionAlsCartItem(b, produkt)]);
+    const cartItem = positionAlsCartItem(b, produkt);
+    const preis = await priceCart([cartItem]);
     if (preis.blocked || preis.unpriceable.length > 0 || preis.totalQuantity < 1) {
       throw new Error(`Beispiel "${b.beschriftung}" ist nicht berechenbar: ${preis.issues.join('; ') || 'blockiert'}`);
     }
+    const detail = calculatePrice({
+      basePrice: produkt.basePrice,
+      quantity: preis.totalQuantity,
+      elements: cartItem.elements,
+      pricingRules: await getPricingRules(b.methode),
+      echteMasse: echteMasseJeElement(cartItem),
+    });
     ergebnisse.push({
       beschriftung: b.beschriftung,
       menge: preis.totalQuantity,
@@ -258,6 +271,7 @@ export async function berechneBeispiele(seite: Pick<KategorieSeite, 'slug' | 'be
       gesamt: runde2(preis.subtotal),
       produktName: `${produkt.brand} ${produkt.name}`,
       textilAb: produkt.basePrice,
+      grossformatJeStueck: detail.breakdown.grossformatPerUnit,
     });
   }
   return ergebnisse;

@@ -99,6 +99,8 @@ export interface PriceCalculationResult {
     setupTotal: number;
     /** Auf die Stückzahl verteilte Rüstkosten – im unitPrice enthalten. */
     setupPerUnit: number;
+    /** Rundung auf den nächsten ,99-€-Betrag je Stück (positiv oder negativ, höchstens ± 0,50 €) – im unitPrice enthalten; nur Anzeige der Preisdetails. */
+    rundungPerUnit: number;
     /** Zuschläge je Stück (Premiumgarn, Spezialfolie …). */
     surchargePerUnit: number;
     /** Großformat-Zuschlag je Stück (nur DTF, nach echter Motivfläche, config/pricing/grossformat.ts) – im unitPrice enthalten. */
@@ -538,9 +540,10 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // Die Rundung greift VOR den Nachlässen (Verein, Gutschein, Aktion): Ein Nachlass bezieht sich so auf den
   // angezeigten Listenpreis und wirkt in voller Höhe. Der Rundungsbetrag steckt wie ein Preisbaustein im festen
   // Anteil; „Stückpreis × Menge = Gesamtpreis“ bleibt für die Kundschaft nachrechenbar.
+  let rundungJeStueck = 0; // nur für die Anzeige der Preisdetails weitergereicht (breakdown.rundungPerUnit)
   if (input.ladenpreisRundung !== false) {
     const listenpreisRoh = unitPriceDiscounted + setupTotalVorab(charges.orderOnce, quantity);
-    const rundungJeStueck = aufNaechsten99(listenpreisRoh) - listenpreisRoh;
+    rundungJeStueck = aufNaechsten99(listenpreisRoh) - listenpreisRoh;
     unitPriceDiscounted += rundungJeStueck;
     // Auch der „ohne Mengenvorteil“-Vergleichspreis wird zum Ladenpreis, damit „Sie sparen“ stimmt.
     const vergleichRoh = unitPriceUndiscounted + setupTotalVorab(charges.orderOnce, quantity);
@@ -586,6 +589,19 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
     ? { ...naechsteStaffel, veredelungDiscountPercent: Math.min(naechsteStaffel.veredelungDiscountPercent, rabattDeckel) }
     : null;
 
+  // Rundung auf ,99 € für die „Preisdetails“ (reine Anzeige, ändert keinen Preis): Die Einzelposten stehen dort auf Cent gerundet; der Rundungs-
+  // posten gleicht aus, damit die Summe der angezeigten Zeilen genau den angezeigten Stückpreis ergibt. Weicht der Ausgleich um mehr als 2 Cent
+  // vom echten Rundungsbetrag ab (z. B. weil ein hier nicht angezeigter Zuschlag oder Nachlass im Preis steckt), gilt der echte Betrag.
+  const rundungEcht = roundToCents(rundungJeStueck);
+  const summeAngezeigterPosten =
+    roundToCents(basePrice * (1 - baseDiscountPercent / 100)) +
+    roundToCents(positionFeeTotal * (1 - baseDiscountPercent / 100)) +
+    Object.values(areaPriceByView).reduce((summe, betrag) => summe + roundToCents(betrag), 0) +
+    roundToCents(grossformatPerUnit) +
+    roundToCents(setupTotal / quantity);
+  const rundungAusgleich = roundToCents(roundToCents(effectiveUnitPrice) - summeAngezeigterPosten);
+  const rundungPerUnit = Math.abs(rundungAusgleich - rundungEcht) <= 0.02 ? rundungAusgleich : rundungEcht;
+
   return {
     unitPrice: roundToCents(effectiveUnitPrice),
     totalPrice: roundToCents(totalPrice),
@@ -618,6 +634,7 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       nextTier,
       setupTotal: roundToCents(setupTotal),
       setupPerUnit: roundToCents(setupTotal / quantity),
+      rundungPerUnit,
       surchargePerUnit: roundToCents(surchargePerUnit),
       grossformatPerUnit: roundToCents(grossformatPerUnit),
       discountPerUnit: roundToCents(nachlassJeStueck),

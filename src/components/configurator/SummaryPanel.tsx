@@ -292,6 +292,27 @@ export function SummaryPanel({
                   <span>{formatPrice(breakdown.grossformatPerUnit)}</span>
                 </div>
               )}
+              {breakdown.setupPerUnit > 0 && (
+                <div className="flex items-center justify-between" data-testid="einrichtung-zeile">
+                  <span className="flex items-center gap-1">
+                    Einrichtung (einmalig)
+                    <InfoTooltip text={`Einmalig ${formatPrice(breakdown.setupTotal)} je Position bei kleinen Mengen (bis 2 Stück), auf die Stückzahl verteilt. Hier steht der Anteil je Stück.`} />
+                  </span>
+                  <span>{formatPrice(breakdown.setupPerUnit)}</span>
+                </div>
+              )}
+              {Math.abs(breakdown.rundungPerUnit) >= 0.005 && (
+                <div className="flex items-center justify-between" data-testid="rundung-zeile">
+                  <span className="flex items-center gap-1">
+                    Rundung auf ,99 €
+                    <InfoTooltip text="Der Stückpreis wird auf den nächsten ,99-€-Betrag gerundet (höchstens ± 0,50 €)." />
+                  </span>
+                  <span>
+                    {breakdown.rundungPerUnit > 0 ? '+' : '−'}
+                    {formatPrice(Math.abs(breakdown.rundungPerUnit))}
+                  </span>
+                </div>
+              )}
             </div>
           )}
         </div>

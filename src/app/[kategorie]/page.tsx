@@ -40,6 +40,7 @@ import { faqSchema, kategorieBrotkrumenSchema, kategorieSchema } from '@/lib/seo
 import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 import { DtfLandingpage, dtfMetadata } from '@/components/seo/DtfLandingpage';
 import { MarkenChips } from '@/components/seo/MarkenChips';
+import { ZeilenHinweise } from '@/components/seo/ZeilenHinweise';
 import { alleDtfSlugs, dtfSeiteVon } from '@/lib/seo/dtfAdresse';
 import { AnlassLandingpage, anlassMetadata } from '@/components/seo/AnlassLandingpage';
 import { alleAnlassSlugs, anlassSeiteVon } from '@/lib/seo/anlassAdresse';
@@ -247,15 +248,25 @@ export default async function Kategorieseite(props: { params: Promise<{ kategori
             Preisbeispiele
           </h2>
           <p className="mt-4 text-[16px] leading-relaxed text-brand/70">
-            Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
+            {!stickereiVerfuegbar && seite.beispieleEinleitungBeiPause
+              ? seite.beispieleEinleitungBeiPause
+              : 'Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.'}
           </p>
           <ul className="mt-8 divide-y divide-brand/[0.08] rounded-[24px] border border-brand/[0.08] bg-white">
-            {beispiele.map((b) => (
+            {beispiele.map((b, i) => (
               <li
                 key={b.beschriftung}
                 className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 px-6 py-5 sm:px-8"
               >
-                <p className="max-w-xl text-[15px] leading-snug text-brand">{b.beschriftung}</p>
+                <div className="max-w-xl">
+                  <p className="text-[15px] leading-snug text-brand">{b.beschriftung}</p>
+                  <ZeilenHinweise
+                    menge={b.menge}
+                    positionen={gezeigteBeispiele[i]?.flaechen.length ?? 1}
+                    dtf={gezeigteBeispiele[i]?.methode !== 'embroidery'}
+                    grossformat={gezeigteBeispiele[i]?.methode !== 'embroidery' ? b.grossformatJeStueck : 0}
+                  />
+                </div>
                 <p className="text-right">
                   <span className="font-serif text-[26px] tabular-nums text-brand">
                     <WaehrungsPreis betragInEur={b.stueckpreis} />

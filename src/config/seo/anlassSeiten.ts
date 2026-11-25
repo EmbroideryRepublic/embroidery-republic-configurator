@@ -322,15 +322,15 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         absaetze: [
           ABSATZ_POSITIONEN,
           'Üblich ist ein kleines Logo auf der Brust (ca. 10 × 10 cm). Wer zusätzlich einen Firmennamen oder Slogan zeigen möchte, setzt ihn auf den Rücken (ca. 20 × 25 cm).',
-          'Ein Poloshirt hat Kragen und Knopfleiste. Das Logo sollte deshalb weder zu hoch noch zu breit sitzen. Im Konfigurator sehen Sie die Fläche samt Maßen und können das Motiv direkt verschieben.',
+          'Ein Poloshirt hat Kragen und Knopfleiste. Das Logo sollte deshalb weder zu hoch noch zu breit sitzen. Im Konfigurator siehst du die Fläche samt Maßen und kannst das Motiv direkt verschieben.',
         ],
       },
       { ueberschrift: 'Größtmögliche Druckfläche bei Poloshirts', tabelle: 'druck:polo' },
       {
         ueberschrift: 'Logo-Datei und Stoffstruktur',
         absaetze: [
-          'Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Bei PNG oder JPG braucht das Bild genug Bildpunkte: Ab {dpiOk} dpi gilt die Qualität im Konfigurator als optimal. Der Auflösungsrechner zeigt, wie viele Pixel Ihre Druckbreite braucht.',
-          'Auf strukturiertem Piqué wirken sehr feine Linien und sehr kleine Schrift weniger scharf als auf glattem Stoff. Ein klar gezeichnetes Logo ohne feinste Details gelingt zuverlässiger. Vor der Produktion prüfen wir Ihre Datei kostenlos.',
+          'Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Bei PNG oder JPG braucht das Bild genug Bildpunkte: Ab {dpiOk} dpi gilt die Qualität im Konfigurator als optimal. Der Auflösungsrechner zeigt, wie viele Pixel deine Druckbreite braucht.',
+          'Auf strukturiertem Piqué wirken sehr feine Linien und sehr kleine Schrift weniger scharf als auf glattem Stoff. Ein klar gezeichnetes Logo ohne feinste Details gelingt zuverlässiger. Vor der Produktion prüfen wir deine Datei kostenlos.',
         ],
       },
       {
@@ -340,7 +340,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Pflege',
         absaetze: [
-          'Die Pflegehinweise des Herstellers stehen auf der Produktseite des jeweiligen Modells. Allgemeine Tipps zum Waschen bedruckter Textilien finden Sie in der Pflegeanleitung.',
+          'Die Pflegehinweise des Herstellers stehen auf der Produktseite des jeweiligen Modells. Allgemeine Tipps zum Waschen bedruckter Textilien findest du in der Pflegeanleitung.',
         ],
       },
     ],
@@ -374,12 +374,12 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Wie groß darf das Logo auf einem Poloshirt sein?',
-        a: 'Das hängt von Modell und Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei Poloshirts; für jedes Modell sehen Sie die Fläche samt Maßen in Zentimetern im Konfigurator. Für ein Brustlogo sind etwa 10 × 10 cm üblich.',
+        a: 'Das hängt von Modell und Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei Poloshirts; für jedes Modell siehst du die Fläche samt Maßen in Zentimetern im Konfigurator. Für ein Brustlogo sind etwa 10 × 10 cm üblich.',
       },
       { q: 'Kann ich ein einzelnes Poloshirt bedrucken lassen?', a: A_EINZELSTUECK },
       {
         q: 'Welche Dateien brauche ich für das Logo?',
-        a: `${A_DATEIEN} Vor der Produktion prüfen wir Ihre Datei kostenlos.`,
+        a: `${A_DATEIEN} Vor der Produktion prüfen wir deine Datei kostenlos.`,
       },
       { q: 'Wie lange dauert es, bis die Poloshirts ankommen?', a: A_DAUER },
     ],
@@ -451,7 +451,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Pflege',
         absaetze: [
-          'Es gelten die Pflegehinweise des Herstellers, die auf der Produktseite des jeweiligen Modells stehen. Allgemeine Tipps zum Waschen bedruckter Textilien finden Sie in der Pflegeanleitung.',
+          'Es gelten die Pflegehinweise des Herstellers, die auf der Produktseite des jeweiligen Modells stehen. Allgemeine Tipps zum Waschen bedruckter Textilien findest du in der Pflegeanleitung.',
         ],
       },
     ],
@@ -480,7 +480,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     ],
     fragen: [
       {
-        q: 'Bedrucken Sie auch Schutz- oder Warnschutzkleidung?',
+        q: 'Wird auch Schutz- oder Warnschutzkleidung bedruckt?',
         a: 'Nein. Wir bedrucken Textilien aus unserem Sortiment: T-Shirts, Poloshirts, Hoodies und Jacken. Schutz- und Warnschutzkleidung, zum Beispiel nach EN ISO 20471, bieten wir nicht an.',
       },
       {
@@ -490,7 +490,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       { q: 'Können wir einzelne Teile bestellen, zum Beispiel für neue Mitarbeitende?', a: A_EINZELSTUECK },
       {
         q: 'Kann die Kleidung gewerblich gewaschen werden?',
-        a: 'Das können wir nicht allgemein zusagen. Die zulässige Waschtemperatur nennt das Pflegeetikett des Textils. Wird die Kleidung gewerblich aufbereitet, fragen Sie uns bitte vor der Bestellung über das Kontaktformular.',
+        a: 'Das können wir nicht allgemein zusagen. Die zulässige Waschtemperatur nennt das Pflegeetikett des Textils. Wird die Kleidung gewerblich aufbereitet, frag uns bitte vor der Bestellung über das Kontaktformular.',
       },
       { q: 'Können Unternehmen auf Rechnung bezahlen?', a: `Ja. ${A_ZAHLUNG}` },
       { q: 'Wie lange dauert es, bis die Bestellung ankommt?', a: A_DAUER },

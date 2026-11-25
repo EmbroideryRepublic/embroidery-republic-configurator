@@ -186,11 +186,11 @@ Es gibt 26 Poloshirts von mehreren Marken, Preise ab 13,99 € pro Stück zzgl. 
 
 ### Wo das Logo sitzt
 
-Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.
 
 Üblich ist ein kleines Logo auf der Brust (ca. 10 × 10 cm). Wer zusätzlich einen Firmennamen oder Slogan zeigen möchte, setzt ihn auf den Rücken (ca. 20 × 25 cm).
 
-Ein Poloshirt hat Kragen und Knopfleiste. Das Logo sollte deshalb weder zu hoch noch zu breit sitzen. Im Konfigurator sehen Sie die Fläche samt Maßen und können das Motiv direkt verschieben.
+Ein Poloshirt hat Kragen und Knopfleiste. Das Logo sollte deshalb weder zu hoch noch zu breit sitzen. Im Konfigurator siehst du die Fläche samt Maßen und kannst das Motiv direkt verschieben.
 
 ### Größtmögliche Druckfläche bei Poloshirts
 
@@ -214,17 +214,17 @@ Breite × Höhe der größtmöglichen Druckfläche in Zentimetern, flach gemesse
 
 ### Logo-Datei und Stoffstruktur
 
-Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Bei PNG oder JPG braucht das Bild genug Bildpunkte: Ab 220 dpi gilt die Qualität im Konfigurator als optimal. Der Auflösungsrechner zeigt, wie viele Pixel Ihre Druckbreite braucht.
+Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Bei PNG oder JPG braucht das Bild genug Bildpunkte: Ab 220 dpi gilt die Qualität im Konfigurator als optimal. Der Auflösungsrechner zeigt, wie viele Pixel deine Druckbreite braucht.
 
-Auf strukturiertem Piqué wirken sehr feine Linien und sehr kleine Schrift weniger scharf als auf glattem Stoff. Ein klar gezeichnetes Logo ohne feinste Details gelingt zuverlässiger. Vor der Produktion prüfen wir Ihre Datei kostenlos.
+Auf strukturiertem Piqué wirken sehr feine Linien und sehr kleine Schrift weniger scharf als auf glattem Stoff. Ein klar gezeichnetes Logo ohne feinste Details gelingt zuverlässiger. Vor der Produktion prüfen wir deine Datei kostenlos.
 
 ### Menge und Preis
 
-Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 ### Pflege
 
-Die Pflegehinweise des Herstellers stehen auf der Produktseite des jeweiligen Modells. Allgemeine Tipps zum Waschen bedruckter Textilien finden Sie in der Pflegeanleitung.
+Die Pflegehinweise des Herstellers stehen auf der Produktseite des jeweiligen Modells. Allgemeine Tipps zum Waschen bedruckter Textilien findest du in der Pflegeanleitung.
 
 ### Preisbeispiele
 
@@ -234,14 +234,14 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 10 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
 - 25 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **22,99 €** pro Stück, gesamt 574,75 €
 
-Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
@@ -252,19 +252,19 @@ Das hängt vom Einsatz. Für Büro und Außendienst sind Poloshirts aus Baumwoll
 
 **Wie groß darf das Logo auf einem Poloshirt sein?**
 
-Das hängt von Modell und Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei Poloshirts; für jedes Modell sehen Sie die Fläche samt Maßen in Zentimetern im Konfigurator. Für ein Brustlogo sind etwa 10 × 10 cm üblich.
+Das hängt von Modell und Größe ab. Die Tabelle auf dieser Seite zeigt die größtmögliche Fläche für drei Poloshirts; für jedes Modell siehst du die Fläche samt Maßen in Zentimetern im Konfigurator. Für ein Brustlogo sind etwa 10 × 10 cm üblich.
 
 **Kann ich ein einzelnes Poloshirt bedrucken lassen?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Welche Dateien brauche ich für das Logo?**
 
-SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir Ihre Datei kostenlos.
+SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Vor der Produktion prüfen wir deine Datei kostenlos.
 
 **Wie lange dauert es, bis die Poloshirts ankommen?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 Weiterführende Links am Seitenende: /poloshirts-besticken-bedrucken, /firmenkleidung-bedrucken, /arbeitskleidung-bedrucken, /druckgroesse-t-shirt-hoodie, /druckaufloesung-rechner, /bedruckte-textilien-pflege
 
@@ -297,7 +297,7 @@ Je höher das Gewicht in g/m², desto fester und schwerer ist der Stoff. Bei Pol
 
 ### Logo und Position
 
-Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator sehen Sie jede Fläche samt Maßen in Zentimetern.
+Auf Vorder- und Rückseite lässt sich je ein Motiv platzieren, bei vielen Modellen zusätzlich auf den Ärmeln. Im Konfigurator siehst du jede Fläche samt Maßen in Zentimetern.
 
 Häufig steht das Firmenlogo klein auf der Brust (ca. 10 × 10 cm), Firmenname oder Kontaktangaben stehen groß auf dem Rücken (ca. 20 × 25 cm). Für Logos eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.
 
@@ -308,11 +308,11 @@ Häufig steht das Firmenlogo klein auf der Brust (ca. 10 × 10 cm), Firmenname o
 - Staffelpreise: Mit größerer Menge sinkt der Stückpreis, die Staffel beginnt bei 5 Stück.
 - Kauf auf Rechnung: zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
 
-Konfigurieren Sie ein Produkt, legen Sie es in den Warenkorb und konfigurieren Sie anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
+Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel Hoodies und T-Shirts im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.
 
 ### Pflege
 
-Es gelten die Pflegehinweise des Herstellers, die auf der Produktseite des jeweiligen Modells stehen. Allgemeine Tipps zum Waschen bedruckter Textilien finden Sie in der Pflegeanleitung.
+Es gelten die Pflegehinweise des Herstellers, die auf der Produktseite des jeweiligen Modells stehen. Allgemeine Tipps zum Waschen bedruckter Textilien findest du in der Pflegeanleitung.
 
 ### Preisbeispiele
 
@@ -322,19 +322,19 @@ Mit steigender Menge sinkt der Stückpreis – Staffelpreise gelten ab 5 Stück.
 - 10 T-Shirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **20,99 €** pro Stück, gesamt 209,90 €
 - 10 Hoodies · Logo auf der Brust (ca. 10 × 10 cm): **28,99 €** pro Stück, gesamt 289,90 €
 
-Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Ihr Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
+Fußnote: Beispielrechnungen mit B&C Unisex Polo ID.001, B&C T-Shirt #E150, Fruit of the Loom Lightweight Hooded Sweat. Preise pro Stück zzgl. Versand – versandkostenfrei ab 75,00 €. Kein Steuerausweis (§ 19 UStG). Dein Preis hängt von Motiv, Größe, Position und Menge ab und wird im Konfigurator live berechnet.
 
-### So läuft Ihre Bestellung ab (freigegebener Ablauf der DTF-Seiten)
+### So läuft deine Bestellung ab (freigegebener Ablauf der DTF-Seiten)
 
 1. Modell, Farbe und Größen wählen – Größen lassen sich frei mischen.
 2. Logo hochladen oder Text gestalten und im Konfigurator platzieren. Der Preis ist dabei jederzeit sichtbar.
-3. DTF-Druck bestellen Sie direkt im Konfigurator.
-4. Wir prüfen Ihr Design und legen Ihnen vor Produktionsstart eine finale Vorschau zur Freigabe vor.
+3. DTF-Druck bestellst du direkt im Konfigurator.
+4. Wir prüfen dein Design und legen dir vor Produktionsstart eine finale Vorschau zur Freigabe vor.
 5. Produktion in 3 bis 4 Werktagen, anschließend Versand innerhalb von 1 bis 2 Werktagen.
 
 ### Häufige Fragen
 
-**Bedrucken Sie auch Schutz- oder Warnschutzkleidung?**
+**Wird auch Schutz- oder Warnschutzkleidung bedruckt?**
 
 Nein. Wir bedrucken Textilien aus unserem Sortiment: T-Shirts, Poloshirts, Hoodies und Jacken. Schutz- und Warnschutzkleidung, zum Beispiel nach EN ISO 20471, bieten wir nicht an.
 
@@ -344,19 +344,19 @@ Das hängt vom Einsatz. Poloshirts und T-Shirts aus Baumwolle oder Mischgewebe s
 
 **Können wir einzelne Teile bestellen, zum Beispiel für neue Mitarbeitende?**
 
-Ja. Es gibt keine Mindestbestellmenge – Sie können ab einem einzelnen Stück bestellen. Größen dürfen Sie frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
+Ja. Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du frei mischen, zum Beispiel 2× M, 2× L und 1× XL. Mit größerer Menge sinkt der Stückpreis: Staffelpreise gelten ab 5 Stück.
 
 **Kann die Kleidung gewerblich gewaschen werden?**
 
-Das können wir nicht allgemein zusagen. Die zulässige Waschtemperatur nennt das Pflegeetikett des Textils. Wird die Kleidung gewerblich aufbereitet, fragen Sie uns bitte vor der Bestellung über das Kontaktformular.
+Das können wir nicht allgemein zusagen. Die zulässige Waschtemperatur nennt das Pflegeetikett des Textils. Wird die Kleidung gewerblich aufbereitet, frag uns bitte vor der Bestellung über das Kontaktformular.
 
 **Können Unternehmen auf Rechnung bezahlen?**
 
-Ja. Sie können zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; Sie erhalten die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
+Ja. Du kannst zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; du erhältst die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.
 
 **Wie lange dauert es, bis die Bestellung ankommt?**
 
-Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren Sie in diesem Fall.
+Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.
 
 Weiterführende Links am Seitenende: /firmenkleidung-bedrucken, /poloshirt-mit-logo-bedrucken, /poloshirts-besticken-bedrucken, /jacken-bedrucken, /geschaeftskunden, /bedruckte-textilien-pflege
 

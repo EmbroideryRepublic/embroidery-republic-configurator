@@ -11,10 +11,15 @@
 import Link from 'next/link';
 import { Clock, ListChecks, ShieldCheck } from 'lucide-react';
 import { useLanguageStore, translate } from '@/stores/languageStore';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 
 const HELPER_ICONS = [ListChecks, Clock, ShieldCheck] as const;
 const HELPER_KEYS = [
-  { title: 'kontakt_helper_1_title', text: 'kontakt_helper_1_text' },
+  {
+    title: 'kontakt_helper_1_title',
+    // Betreiberschalter (config/bestellweg.ts): Ohne Stickerei nennt die Kachel keine zweite Veredelungsart.
+    text: veredelungVerfuegbar('embroidery') ? 'kontakt_helper_1_text' : 'kontakt_helper_1_text_dtf',
+  },
   { title: 'kontakt_helper_2_title', text: 'kontakt_helper_2_text' },
   { title: 'kontakt_helper_3_title', text: 'kontakt_helper_3_text' },
 ] as const;

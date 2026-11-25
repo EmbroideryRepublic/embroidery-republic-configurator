@@ -6,6 +6,7 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { produktTitel, TITEL_ZIELLAENGE } from '../produktTitel';
 import { kuerzenAufLaenge } from '../kuerzen';
 import { alleProduktSlugs, ladeProduktseite } from '../../products/productPage';
@@ -117,4 +118,27 @@ test('Katalog: alle Titel sind verschieden (Google wertet doppelte Titel als Dup
 test('Katalog: der überwiegende Teil der Titel trägt den Suchbegriff „bedrucken"', () => {
   const mit = katalog.filter((p) => p.titel.includes('bedrucken')).length;
   assert.ok(mit / katalog.length > 0.8, `nur ${mit} von ${katalog.length}`);
+});
+
+// ── Stickerei pausiert (Betreiberschalter, config/bestellweg.ts) ─────────
+
+test('Stickerei pausiert: kein Titel verspricht „besticken", die übrigen Stufen bleiben', () => {
+  assert.equal(produktTitel('Heavy T', 'Fruit of the Loom', false), 'Heavy T bedrucken | Fruit of the Loom');
+  assert.equal(produktTitel('X'.repeat(45), 'B&C', false), `${'X'.repeat(45)} | B&C`);
+  assert.equal(produktTitel('Y'.repeat(55), 'B&C', false), 'Y'.repeat(55));
+  assert.equal(produktTitel('Heavy T', 'Fruit of the Loom'), 'Heavy T bedrucken & besticken | Fruit of the Loom', 'Standard (Stickerei an) unverändert');
+});
+
+test('Stickerei pausiert: im ganzen Katalog kein „besticken", alle Titel passen, vollständig und verschieden', () => {
+  const titel = katalog.map((p) => ({ ...p, titel: produktTitel(p.name, p.marke, false) }));
+  assert.deepEqual(titel.filter((p) => /besticken|Stickerei/i.test(p.titel)).map((p) => p.slug), []);
+  assert.deepEqual(titel.filter((p) => p.titel.length > TITEL_ZIELLAENGE).map((p) => p.slug), []);
+  assert.deepEqual(titel.filter((p) => !p.titel.includes(p.name)).map((p) => p.slug), []);
+  assert.equal(new Set(titel.map((p) => p.titel)).size, titel.length, 'doppelte Titel');
+  assert.ok(titel.filter((p) => p.titel.includes('bedrucken')).length / titel.length > 0.8);
+});
+
+test('Die Produktseite übergibt den Betreiberschalter an den Titel', () => {
+  const quelle = readFileSync('src/app/produkt/[slug]/page.tsx', 'utf8');
+  assert.match(quelle, /produktTitel\(produkt\.name, produkt\.brand, veredelungVerfuegbar\('embroidery'\)\)/);
 });

@@ -414,6 +414,8 @@ export const translations = {
     kontakt_intro: 'Fragen zu deiner Konfiguration, zu Mengenrabatten oder ein individuelles Projekt? Schreib uns – wir melden uns persönlich zurück, meist innerhalb eines Werktags.',
     kontakt_helper_1_title: 'Das hilft uns weiter',
     kontakt_helper_1_text: 'Ungefähre Stückzahl, gewünschtes Produkt, Veredelungsart (Druck oder Stickerei) und ob es einen Wunschtermin gibt.',
+    // Solange die Stickerei pausiert ist (config/bestellweg.ts), nennt der Hinweis nur das, was wir anbieten.
+    kontakt_helper_1_text_dtf: 'Ungefähre Stückzahl, gewünschtes Produkt und ob es einen Wunschtermin gibt.',
     kontakt_helper_2_title: 'Antwortzeit',
     kontakt_helper_2_text: 'Wir melden uns persönlich zurück – in der Regel innerhalb eines Werktags, bei terminkritischen Anfragen schneller.',
     kontakt_helper_3_title: 'Unverbindlich',
@@ -831,6 +833,7 @@ export const translations = {
     kontakt_intro: 'Questions about your configuration, volume discounts, or an individual project? Write to us – we’ll get back to you personally, usually within one business day.',
     kontakt_helper_1_title: 'This helps us',
     kontakt_helper_1_text: 'Approximate quantity, desired product, decoration method (print or embroidery), and whether you have a preferred date.',
+    kontakt_helper_1_text_dtf: 'Approximate quantity, desired product, and whether you have a preferred date.',
     kontakt_helper_2_title: 'Response time',
     kontakt_helper_2_text: 'We reply personally – usually within one business day, faster for time-critical requests.',
     kontakt_helper_3_title: 'No obligation',

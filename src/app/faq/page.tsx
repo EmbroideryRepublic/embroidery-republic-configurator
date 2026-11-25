@@ -2,16 +2,25 @@ import Link from 'next/link';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { faqSchema } from '@/lib/seo/strukturierteDaten';
 import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
+
+/**
+ * Betreiberschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, darf keine Antwort sie als verfügbare
+ * Leistung nahelegen. Der bisherige Wortlaut bleibt unverändert erhalten und kehrt zurück, sobald der Schalter geleert wird.
+ */
+const STICKEREI_AN = veredelungVerfuegbar('embroidery');
 
 export const metadata = {
   title: 'Häufige Fragen',
-  description:
-    'Antworten zu Bestellmengen, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung bei Embroidery Republic Germany.',
+  description: STICKEREI_AN
+    ? 'Antworten zu Bestellmengen, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung bei Embroidery Republic Germany.'
+    : 'Antworten zu Bestellmengen, DTF-Transferdruck, Dateiformaten, Produktionszeit, Versand und Zahlung bei Embroidery Republic Germany.',
   alternates: { canonical: '/faq' },
   openGraph: {
     title: 'Häufige Fragen',
-    description:
-      'Antworten zu Bestellmengen, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung.',
+    description: STICKEREI_AN
+      ? 'Antworten zu Bestellmengen, DTF-Transferdruck vs. Stickerei, Dateiformaten, Produktionszeit, Versand und Zahlung.'
+      : 'Antworten zu Bestellmengen, DTF-Transferdruck, Dateiformaten, Produktionszeit, Versand und Zahlung.',
     images: [STANDARD_VORSCHAUBILD],
   },
 };
@@ -31,15 +40,17 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Ab welcher Menge kann ich bestellen?',
-        a: 'Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du dabei frei mischen (z.B. 2× M, 2× L, 1× XL). Die einmaligen Einrichtungskosten (Stickdatei bzw. Transferbogen) fallen pro Auftrag nur einmal an und verteilen sich auf die Stückzahl – deshalb sinkt der Stückpreis mit größerer Menge deutlich.',
+        a: `Es gibt keine Mindestbestellmenge – du kannst ab einem einzelnen Stück bestellen. Größen darfst du dabei frei mischen (z.B. 2× M, 2× L, 1× XL). Die einmaligen Einrichtungskosten (${STICKEREI_AN ? 'Stickdatei bzw. Transferbogen' : 'Transferbogen'}) fallen pro Auftrag nur einmal an und verteilen sich auf die Stückzahl – deshalb sinkt der Stückpreis mit größerer Menge deutlich.`,
       },
       {
         q: 'Kann ich mehrere unterschiedliche Produkte kombinieren?',
-        a: 'Ja. Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel T-Shirts und Hoodies im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst. Enthält der Warenkorb Stickerei, wird er insgesamt als Anfrage gesendet.',
+        a: 'Ja. Konfiguriere ein Produkt, lege es in den Warenkorb und konfiguriere anschließend das nächste – zum Beispiel T-Shirts und Hoodies im selben Auftrag. Alle Positionen werden gemeinsam im Warenkorb zusammengefasst.' + (STICKEREI_AN ? ' Enthält der Warenkorb Stickerei, wird er insgesamt als Anfrage gesendet.' : ''),
       },
       {
         q: 'Sehe ich vor der Produktion eine Freigabe?',
-        a: 'Ja. Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe – besonders relevant bei Stickerei, da hier zuvor eine Digitalisierung durch unser Team erfolgt.',
+        a: STICKEREI_AN
+          ? 'Ja. Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe – besonders relevant bei Stickerei, da hier zuvor eine Digitalisierung durch unser Team erfolgt.'
+          : 'Ja. Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe.',
       },
       {
         q: 'Kann ich eine Bestellung noch stornieren?',
@@ -47,7 +58,11 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Was ist der Unterschied zwischen Bestellung und unverbindlicher Anfrage?',
-        a: 'Mit der Bestellung erteilst du uns einen verbindlichen Auftrag. Bei der unverbindlichen Anfrage sendest du uns lediglich deine Konfiguration – wir melden uns persönlich, klären offene Punkte und du entscheidest danach in Ruhe. Bei einer Anfrage werden keine Zahlungsdaten erhoben und es entsteht keine Verpflichtung. Stickerei gibt es ausschließlich auf Anfrage: Der angezeigte Preis ist dort eine unverbindliche Kostenschätzung, weil sich die genaue Stichzahl erst nach der Digitalisierung deines Motivs ergibt. Wir prüfen deine Anfrage, kalkulieren den endgültigen Preis und senden dir ein verbindliches Angebot. Ein Vertrag kommt erst zustande, wenn du das Angebot annimmst und wir den Auftrag bestätigen.',
+        a:
+          'Mit der Bestellung erteilst du uns einen verbindlichen Auftrag. Bei der unverbindlichen Anfrage sendest du uns lediglich deine Konfiguration – wir melden uns persönlich, klären offene Punkte und du entscheidest danach in Ruhe. Bei einer Anfrage werden keine Zahlungsdaten erhoben und es entsteht keine Verpflichtung.' +
+          (STICKEREI_AN
+            ? ' Stickerei gibt es ausschließlich auf Anfrage: Der angezeigte Preis ist dort eine unverbindliche Kostenschätzung, weil sich die genaue Stichzahl erst nach der Digitalisierung deines Motivs ergibt. Wir prüfen deine Anfrage, kalkulieren den endgültigen Preis und senden dir ein verbindliches Angebot. Ein Vertrag kommt erst zustande, wenn du das Angebot annimmst und wir den Auftrag bestätigen.'
+            : ''),
       },
     ],
   },
@@ -55,12 +70,18 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
     thema: 'Veredelung & Dateien',
     fragen: [
       {
-        q: 'Was ist der Unterschied zwischen DTF-Transferdruck und Stickerei?',
-        a: 'DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen – etwa einen großflächigen Rückendruck. Stickerei ist langlebiger und hochwertiger in der Haptik, arbeitet aber mit einer begrenzten Anzahl fester Garnfarben (keine Farbverläufe) und eignet sich vor allem für kompaktere Motive wie Brustlogos.',
+        q: STICKEREI_AN
+          ? 'Was ist der Unterschied zwischen DTF-Transferdruck und Stickerei?'
+          : 'Für welche Motive eignet sich DTF-Transferdruck?',
+        a:
+          'DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen – etwa einen großflächigen Rückendruck.' +
+          (STICKEREI_AN
+            ? ' Stickerei ist langlebiger und hochwertiger in der Haptik, arbeitet aber mit einer begrenzten Anzahl fester Garnfarben (keine Farbverläufe) und eignet sich vor allem für kompaktere Motive wie Brustlogos.'
+            : ''),
       },
       {
         q: 'Welche Dateiformate kann ich für mein Logo hochladen?',
-        a: 'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren. Für Stickerei digitalisiert unser Team dein Logo anschließend manuell in Garnfarben – die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.',
+        a: 'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.' + (STICKEREI_AN ? ' Für Stickerei digitalisiert unser Team dein Logo anschließend manuell in Garnfarben – die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.' : ''),
       },
     ],
   },
@@ -69,7 +90,7 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
     fragen: [
       {
         q: 'Wie lange dauert die Produktion?',
-        a: 'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druck- bzw. Stickdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.',
+        a: `Die Produktion beginnt nach Bestellfreigabe, sobald alle ${STICKEREI_AN ? 'Druck- bzw. Stickdaten' : 'Druckdaten'} vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.`,
       },
       {
         q: 'Wie hoch sind die Versandkosten?',
@@ -77,11 +98,11 @@ const GRUPPEN: { thema: string; fragen: { q: string; a: string }[] }[] = [
       },
       {
         q: 'Kann ich personalisierte Produkte zurückgeben?',
-        a: 'Nicht aufgrund eines Widerrufs. Jedes Produkt wird ausschließlich mit mindestens einem von dir festgelegten Logo oder Text individuell bedruckt oder bestickt – eine Bestellung ganz ohne eigenes Motiv ist bei uns nicht möglich. Diese personalisierten Artikel sind vom Widerrufsrecht ausgeschlossen. Die gesetzlichen Gewährleistungsrechte bei mangelhafter Ware bleiben unberührt (siehe AGB § 10). Bitte prüfe deine Konfiguration daher sorgfältig – und nutze im Zweifel die unverbindliche Anfrage, bevor du verbindlich bestellst.',
+        a: 'Nicht aufgrund eines Widerrufs. Jedes Produkt wird ausschließlich mit mindestens einem von dir festgelegten Logo oder Text individuell ' + (STICKEREI_AN ? 'bedruckt oder bestickt' : 'bedruckt') + ' – eine Bestellung ganz ohne eigenes Motiv ist bei uns nicht möglich. Diese personalisierten Artikel sind vom Widerrufsrecht ausgeschlossen. Die gesetzlichen Gewährleistungsrechte bei mangelhafter Ware bleiben unberührt (siehe AGB § 10). Bitte prüfe deine Konfiguration daher sorgfältig – und nutze im Zweifel die unverbindliche Anfrage, bevor du verbindlich bestellst.',
       },
       {
         q: 'Welche Zahlungsmöglichkeiten gibt es?',
-        a: 'Du kannst zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; du erhältst die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug. Bei Stickerei wird im Anfragevorgang nichts abgebucht; Zahlungsweise und Zahlungsziel nennen wir in deinem individuellen Angebot.',
+        a: 'Du kannst zwischen Kreditkarte, PayPal und Kauf auf Rechnung wählen. Bei Kreditkarte und PayPal wird der Betrag direkt im Bestellvorgang über den jeweiligen Anbieter abgebucht. Bei Kauf auf Rechnung wird im Bestellvorgang selbst nichts abgebucht; du erhältst die Rechnung separat im Zuge der Auftragsbearbeitung, zahlbar innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug.' + (STICKEREI_AN ? ' Bei Stickerei wird im Anfragevorgang nichts abgebucht; Zahlungsweise und Zahlungsziel nennen wir in deinem individuellen Angebot.' : ''),
       },
     ],
   },

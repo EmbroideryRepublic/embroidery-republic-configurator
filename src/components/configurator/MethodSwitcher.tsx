@@ -59,7 +59,8 @@ export function MethodSwitcher({ currentUnitPrice, otherMethodUnitPrice }: Metho
                 </span>
                 <span>
                   <span className="block text-sm font-semibold text-brand">{method.title}</span>
-                  <span className="block text-xs text-brand/70">{method.description}</span>
+                  {/* Keine Beschreibung der pausierten Art: „ideal für Firmenlogos · nur auf Anfrage“ legte nahe, dass sie
+                      verfügbar ist. Der Hinweis darunter nennt den Grund. */}
                 </span>
               </button>
               <p id={hinweisId} className="mt-2 rounded-lg bg-amber-50 px-2.5 py-1.5 text-xs font-medium leading-snug text-amber-800">

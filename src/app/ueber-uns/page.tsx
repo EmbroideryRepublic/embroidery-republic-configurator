@@ -2,16 +2,25 @@ import Link from 'next/link';
 import { PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
 import { Scissors, Shirt, Clock, ShieldCheck, Palette, Users } from 'lucide-react';
 import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
+
+/**
+ * Betreiberschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, nennt die Seite sie nicht als Leistung.
+ * Der bisherige Wortlaut bleibt erhalten und kehrt zurück, sobald der Schalter geleert wird.
+ */
+const STICKEREI_AN = veredelungVerfuegbar('embroidery');
 
 export const metadata = {
   alternates: { canonical: '/ueber-uns' },
   title: 'Über uns',
-  description:
-    'Embroidery Republic Germany veredelt in Köln Firmen- und Teambekleidung per DTF-Transferdruck und Stickerei – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
+  description: STICKEREI_AN
+    ? 'Embroidery Republic Germany veredelt in Köln Firmen- und Teambekleidung per DTF-Transferdruck und Stickerei – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.'
+    : 'Embroidery Republic Germany veredelt in Köln Firmen- und Teambekleidung per DTF-Transferdruck – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
   openGraph: {
     title: 'Über Embroidery Republic Germany',
-    description:
-      'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
+    description: STICKEREI_AN
+      ? 'DTF-Transferdruck und Stickerei für Firmen- und Teambekleidung – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.'
+      : 'DTF-Transferdruck für Firmen- und Teambekleidung – mit Live-Konfigurator, Markentextilien und persönlicher Betreuung.',
     images: [STANDARD_VORSCHAUBILD],
   },
 };
@@ -19,8 +28,10 @@ export const metadata = {
 const CAPABILITIES = [
   {
     icon: Shirt,
-    title: 'Zwei Veredelungsarten',
-    text: 'DTF-Transferdruck für vollfarbige Motive und Stickerei für langlebige, hochwertige Firmenlogos – aus einer Hand.',
+    title: STICKEREI_AN ? 'Zwei Veredelungsarten' : 'DTF-Transferdruck',
+    text: STICKEREI_AN
+      ? 'DTF-Transferdruck für vollfarbige Motive und Stickerei für langlebige, hochwertige Firmenlogos – aus einer Hand.'
+      : 'Vollfarbige, auch fotorealistische Motive und große Flächen – direkt im Konfigurator bestellbar.',
   },
   {
     icon: Palette,
@@ -56,13 +67,15 @@ export default function AboutPage() {
         ← Zurück zur Startseite
       </Link>
 
-      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold-dark">Stickerei &amp; DTF-Druck</p>
+      <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-gold-dark">{STICKEREI_AN ? 'Stickerei & DTF-Druck' : 'DTF-Transferdruck'}</p>
       <h1 className="mt-4 font-serif text-[clamp(2.25rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] text-brand">
         Über Embroidery Republic Germany
       </h1>
       <p className="mt-6 mb-12 max-w-xl text-[17px] leading-relaxed text-brand/70">
-        Wir veredeln Firmen- und Teambekleidung – per DTF-Transferdruck für vollfarbige Motive und
-        per Stickerei für langlebige Firmenlogos. Statt langer Angebotsschleifen gestaltest du deine
+        {STICKEREI_AN
+          ? 'Wir veredeln Firmen- und Teambekleidung – per DTF-Transferdruck für vollfarbige Motive und per Stickerei für langlebige Firmenlogos.'
+          : 'Wir veredeln Firmen- und Teambekleidung per DTF-Transferdruck für vollfarbige Motive.'}{' '}
+        Statt langer Angebotsschleifen gestaltest du deine
         Bekleidung direkt im Konfigurator: Motiv hochladen, platzieren, Farbe und Größen wählen – der
         Preis ist dabei jederzeit sichtbar.
       </p>
@@ -85,7 +98,9 @@ export default function AboutPage() {
           {[
             'Produkt, Farbe und Größen im Konfigurator wählen.',
             'Logo hochladen oder Text gestalten und positionieren.',
-            'DTF-Druck bestellst du direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.',
+            STICKEREI_AN
+              ? 'DTF-Druck bestellst du direkt, Stickerei gibt es nur auf Anfrage – wir melden uns mit einem verbindlichen Angebot.'
+              : 'DTF-Druck bestellst du direkt im Konfigurator.',
             'Wir prüfen das Design und melden uns mit der finalen Freigabe.',
             'Produktion und Versand – bei Kauf auf Rechnung erhältst du die Rechnung mit der Auftragsbearbeitung, bei Kreditkarte/PayPal hast du bereits im Checkout bezahlt.',
           ].map((step, i) => (

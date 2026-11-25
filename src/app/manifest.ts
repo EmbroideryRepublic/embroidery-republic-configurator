@@ -15,13 +15,16 @@
  */
 import type { MetadataRoute } from 'next';
 import { COMPANY } from '@/config/company';
+import { veredelungVerfuegbar } from '@/config/bestellweg';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: COMPANY.tradeName,
     short_name: 'Embroidery Republic',
-    description:
-      'Firmen- und Teambekleidung individuell veredeln: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet.',
+    // Betreiberschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, nennt die Beschreibung sie nicht.
+    description: veredelungVerfuegbar('embroidery')
+      ? 'Firmen- und Teambekleidung individuell veredeln: DTF-Transferdruck und Stickerei, live im Konfigurator gestaltet.'
+      : 'Firmen- und Teambekleidung individuell veredeln: DTF-Transferdruck, live im Konfigurator gestaltet.',
     start_url: '/',
     display: 'browser',
     lang: 'de',

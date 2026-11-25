@@ -27,9 +27,14 @@ import { kuerzenAufLaenge } from './kuerzen';
 /** Google schneidet Titel in der Trefferliste ab ca. 60 Zeichen ab. */
 export const TITEL_ZIELLAENGE = 60;
 
-export function produktTitel(name: string, marke: string): string {
+/**
+ * `stickereiVerfuegbar` (Betreiberschalter, config/bestellweg.ts): Solange die Stickerei pausiert ist, nennt der Titel
+ * sie nicht – „besticken“ wäre ein Leistungsversprechen, das wir derzeit nicht einhalten. Die erste Stufe entfällt dann;
+ * der Standardwert `true` ist der bisherige Wortlaut und kehrt mit dem Schalter zurück.
+ */
+export function produktTitel(name: string, marke: string, stickereiVerfuegbar = true): string {
   const stufen = [
-    `${name} bedrucken & besticken | ${marke}`,
+    ...(stickereiVerfuegbar ? [`${name} bedrucken & besticken | ${marke}`] : []),
     `${name} bedrucken | ${marke}`,
     `${name} | ${marke}`,
     `${name} bedrucken`,

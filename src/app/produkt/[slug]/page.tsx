@@ -99,7 +99,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   const beschreibung = kuerzenAufLaenge(beschreibungRoh, GOOGLE_DESCRIPTION_ZIELLAENGE);
 
   // Stufen und Begründung: lib/seo/produktTitel.ts.
-  const titel = produktTitel(produkt.name, produkt.brand);
+  const titel = produktTitel(produkt.name, produkt.brand, veredelungVerfuegbar('embroidery'));
 
   // Platzhalter (Bildimport noch offen) NIE als OpenGraph-Vorschaubild
   // ausliefern (ADR 0004): kein Platzhalter in externen Ausgaben.

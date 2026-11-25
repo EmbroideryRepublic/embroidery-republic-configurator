@@ -88,3 +88,13 @@ test('Ratgeber: Der Satz über den Preisbeispielen verspricht keine durchgehend 
     assert.ok(!/^Mit steigender Menge sinkt der Stückpreis –/.test(text), `${slug}: Standardsatz passt nicht zu den Zeilen`);
   }
 });
+
+test('Die beiden Ratgeber sprechen durchgehend Du (auch die Erklärsätze zu den Preisbeispielen, „Sie“ auch nicht als Fürwort)', () => {
+  // Gilt bewusst nur für diese beiden Seiten: /druckgroesse-t-shirt-hoodie (live) enthält zwei Sätze mit „Sie“ als Fürwort
+  // („Sie reicht über die Brustbreite …“), die der Betreiber bisher nicht beanstandet hat.
+  const SIE = /\b(Sie|Ihnen|Ihre|Ihren|Ihrem|Ihrer|Ihres|Ihr)\b/;
+  for (const slug of RATGEBER) {
+    const treffer = JSON.stringify(seite(slug)).match(SIE);
+    assert.equal(treffer, null, `${slug}: formelle Anrede/„Sie“ gefunden: ${treffer?.[0]}`);
+  }
+});

@@ -127,7 +127,7 @@ const ABSATZ_MEHRERE_PRODUKTE =
  * Erklärung für das Einzelstück-Beispiel: Der Stückpreis enthält die einmalige Einrichtung (Regel dtf-kleinauftrag).
  * Betrag und Stückzahl stammen aus der Regel selbst (config/pricingRules.ts), nicht von Hand.
  */
-const HINWEIS_EINRICHTUNG = `Der Preis enthält die einmalige Einrichtung von ${KLEINAUFTRAG_PAUSCHALE_EUR} €. Sie fällt bei bis zu ${KLEINAUFTRAG_MAX_STUECK} Stück an und entfällt ab ${KLEINAUFTRAG_MAX_STUECK + 1} Stück.`; // geschützte Leerzeichen: kein Umbruch zwischen Zahl und Einheit
+const HINWEIS_EINRICHTUNG = `Der Preis enthält die einmalige Einrichtung von ${KLEINAUFTRAG_PAUSCHALE_EUR} €. Die Einrichtung fällt nur bei bis zu ${KLEINAUFTRAG_MAX_STUECK} Stück an; ab ${KLEINAUFTRAG_MAX_STUECK + 1} Stück entfällt sie.`; // geschützte Leerzeichen: kein Umbruch zwischen Zahl und Einheit
 
 // ── Die Seiten ──────────────────────────────────────────────────────────
 
@@ -502,7 +502,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
     ],
     beispieleEinleitung:
-      'Die Beispiele zeigen unterschiedliche Textilien und eine bzw. zwei bedruckte Positionen. Sie lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.',
+      'Die Beispiele zeigen unterschiedliche Textilien und eine bzw. zwei bedruckte Positionen und lassen sich deshalb nicht direkt miteinander vergleichen. Staffelpreise gelten ab 5 Stück.',
     fragen: [
       {
         q: 'Wird auch Schutz- oder Warnschutzkleidung bedruckt?',

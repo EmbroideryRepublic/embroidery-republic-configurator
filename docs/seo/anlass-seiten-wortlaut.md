@@ -231,7 +231,7 @@ Die Pflegehinweise des Herstellers stehen auf der Produktseite des jeweiligen Mo
 Bei gleicher Konfiguration sinkt der Stückpreis mit der Menge – Staffelpreise gelten ab 5 Stück. Jede weitere bedruckte Position, zum Beispiel der Rücken, kommt je Stück hinzu.
 
 - 1 Poloshirt · Logo auf der Brust (ca. 10 × 10 cm): **32,99 €** pro Stück (Einzelstück)
-  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Sie fällt bei bis zu 2 Stück an und entfällt ab 3 Stück.
+  - *Hinweis unter der Zeile:* Der Preis enthält die einmalige Einrichtung von 10 €. Sie fällt bei bis zu 2 Stück an und entfällt ab 3 Stück.
 - 10 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm): **19,99 €** pro Stück, gesamt 199,90 €
 - 25 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm): **18,99 €** pro Stück, gesamt 474,75 €
 - 25 Poloshirts · Logo auf der Brust (ca. 10 × 10 cm) und Firmenname auf dem Rücken (ca. 20 × 25 cm): **22,99 €** pro Stück, gesamt 574,75 €

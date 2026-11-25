@@ -31,7 +31,7 @@ test('Ratgeber: Beispiele mit Einrichtung (bis zur Kleinauftrags-Grenze) erklär
     const ergebnis = await rechne(slug);
     ergebnis.forEach((e, i) => {
       if (e.menge > KLEINAUFTRAG_MAX_STUECK) return;
-      const hinweis = s.beispiele[i]?.hinweis ?? '';
+      const hinweis = (s.beispiele[i]?.hinweis ?? '').replace(/ /g, ' '); // geschützte Leerzeichen wie normale behandeln
       assert.ok(hinweis.includes(`${KLEINAUFTRAG_PAUSCHALE_EUR} €`), `${slug}: Zeile „${e.beschriftung}“ nennt die Einrichtung nicht`);
       assert.ok(hinweis.includes(`${KLEINAUFTRAG_MAX_STUECK} Stück`), `${slug}: Zeile „${e.beschriftung}“ nennt die Grenze nicht`);
     });

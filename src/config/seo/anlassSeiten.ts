@@ -127,7 +127,7 @@ const ABSATZ_MEHRERE_PRODUKTE =
  * Erklärung für das Einzelstück-Beispiel: Der Stückpreis enthält die einmalige Einrichtung (Regel dtf-kleinauftrag).
  * Betrag und Stückzahl stammen aus der Regel selbst (config/pricingRules.ts), nicht von Hand.
  */
-const HINWEIS_EINRICHTUNG = `Der Preis enthält die einmalige Einrichtung von ${KLEINAUFTRAG_PAUSCHALE_EUR} €. Sie fällt bei bis zu ${KLEINAUFTRAG_MAX_STUECK} Stück an und entfällt ab ${KLEINAUFTRAG_MAX_STUECK + 1} Stück.`;
+const HINWEIS_EINRICHTUNG = `Der Preis enthält die einmalige Einrichtung von ${KLEINAUFTRAG_PAUSCHALE_EUR} €. Sie fällt bei bis zu ${KLEINAUFTRAG_MAX_STUECK} Stück an und entfällt ab ${KLEINAUFTRAG_MAX_STUECK + 1} Stück.`; // geschützte Leerzeichen: kein Umbruch zwischen Zahl und Einheit
 
 // ── Die Seiten ──────────────────────────────────────────────────────────
 

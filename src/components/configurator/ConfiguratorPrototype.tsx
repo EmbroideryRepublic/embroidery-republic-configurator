@@ -465,7 +465,10 @@ export function ConfiguratorPrototype() {
     return (
       <>
         <SiteHeader onCartClick={handleOpenCart} />
-        <div className="flex min-h-[500px] w-full items-center justify-center">
+        {/* Mindesthöhe = Bildschirmhöhe, nicht 500 px: Die fertige Seite ist viel höher als der Platzhalter. Bei 500 px stand die Fußzeile im
+            ersten Bild noch im sichtbaren Bereich und sprang nach dem Laden unter den Rand (Layout-Verschiebung CLS 0,254 mobil, Lighthouse
+            2026-11-25). Mit voller Bildschirmhöhe liegt sie vor und nach dem Laden außerhalb des Sichtbereichs – nichts springt sichtbar. */}
+        <div className="flex min-h-screen w-full items-center justify-center">
           <p className="text-sm text-brand/70">{t('canvas_loading')}</p>
         </div>
       </>

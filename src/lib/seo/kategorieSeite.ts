@@ -16,7 +16,13 @@ import { PRODUCTS, getProduct } from '@/config/products';
 import type { ProductConfig } from '@/config/products/types';
 import type { CartItem, ConfigElement, ProductType } from '@/types';
 import { PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
-import { ABLAUF_SCHRITTE, EINLEITUNG_ZWEI, type KategorieBeispiel, type KategorieSeite } from '@/config/seo/kategorieSeiten';
+import {
+  ABLAUF_SCHRITTE,
+  EINLEITUNG_ZWEI,
+  type KategorieBeispiel,
+  type KategorieFrage,
+  type KategorieSeite,
+} from '@/config/seo/kategorieSeiten';
 import { DTF_ABLAUF_SCHRITTE, EINLEITUNG_DTF } from '@/config/seo/dtfSeiten';
 import { produktAbfrage } from '@/lib/catalog/abfrage';
 import { LEERE_KRITERIEN } from '@/lib/catalog/kriterien';
@@ -100,11 +106,51 @@ export function ablaufSchritte(fakten: KategorieFakten, stickereiVerfuegbar = tr
 
 /**
  * Einleitungsabsätze der Seite. Ist die Stickerei pausiert, steht statt „Veredelt wird wahlweise per DTF-Transferdruck
- * oder Stickerei …“ der DTF-Absatz der neuen DTF-Seiten (dort bereits freigegeben und live).
+ * oder Stickerei …“ der DTF-Absatz der neuen DTF-Seiten (dort bereits freigegeben und live); nennt schon der erste Absatz
+ * die Stickerei, ersetzt `beiPause.einleitung` die normale Einleitung.
  */
-export function einleitungAbsaetze(seite: Pick<KategorieSeite, 'einleitung'>, stickereiVerfuegbar: boolean): string[] {
+export function einleitungAbsaetze(seite: Pick<KategorieSeite, 'einleitung' | 'beiPause'>, stickereiVerfuegbar: boolean): string[] {
   if (stickereiVerfuegbar) return seite.einleitung;
-  return seite.einleitung.map((absatz) => (absatz === EINLEITUNG_ZWEI ? EINLEITUNG_DTF : absatz));
+  return (seite.beiPause.einleitung ?? seite.einleitung).map((absatz) => (absatz === EINLEITUNG_ZWEI ? EINLEITUNG_DTF : absatz));
+}
+
+/** Alle Texte einer Kategorieseite, die bei pausierter Stickerei anders lauten können (noch mit {Platzhaltern}). */
+export interface KategorieTexte {
+  titel: string;
+  h1: string;
+  beschreibung: string;
+  einleitung: string[];
+  /** Text der DTF-Karte im Abschnitt „Verfahren“. */
+  dtf: string;
+  fragen: KategorieFrage[];
+}
+
+/**
+ * Die Texte der Seite für den aktuellen Stand des Betriebsschalters. Wird die Stickerei angeboten, gilt der normale
+ * Wortlaut unverändert; ist sie pausiert, gilt überall der `beiPause`-Wortlaut (ohne jeden Hinweis auf Stickerei), und
+ * Fragen mit `beiPause: null` entfallen. Titel, Überschrift, Beschreibung, FAQ-Sichtbares und JSON-LD kommen alle von hier –
+ * so können sie nicht auseinanderlaufen.
+ */
+export function seitenTexte(seite: KategorieSeite, stickereiVerfuegbar: boolean): KategorieTexte {
+  if (stickereiVerfuegbar) {
+    return {
+      titel: seite.titel,
+      h1: seite.h1,
+      beschreibung: seite.beschreibung,
+      einleitung: einleitungAbsaetze(seite, true),
+      dtf: seite.verfahren.dtf,
+      fragen: seite.fragen.map((f) => ({ q: f.q, a: f.a })),
+    };
+  }
+  const pause = seite.beiPause;
+  return {
+    titel: pause.titel,
+    h1: pause.h1,
+    beschreibung: pause.beschreibung,
+    einleitung: einleitungAbsaetze(seite, false),
+    dtf: pause.dtf ?? seite.verfahren.dtf,
+    fragen: seite.fragen.flatMap((f) => (f.beiPause === null ? [] : [f.beiPause ?? { q: f.q, a: f.a }])),
+  };
 }
 
 /**

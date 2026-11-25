@@ -32,6 +32,7 @@ import {
   fuelleVorlage,
   kategorieFakten,
   kategorieSeiteVon,
+  seitenTexte,
   sichtbareBeispiele,
   topProdukte,
 } from '@/lib/seo/kategorieSeite';
@@ -64,23 +65,30 @@ export async function generateMetadata(props: { params: Promise<{ kategorie: str
   if (dtf) return dtfMetadata(dtf);
   const seite = kategorieSeiteVon(params.kategorie);
   if (!seite) return { title: 'Seite nicht gefunden' };
-  const beschreibung = fuelleVorlage(seite.beschreibung, kategorieFakten(seite.art));
+  // Betriebsschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, nennen Titel und Beschreibung sie nicht.
+  const texte = seitenTexte(seite, veredelungVerfuegbar('embroidery'));
+  const beschreibung = fuelleVorlage(texte.beschreibung, kategorieFakten(seite.art));
   return {
     // `absolute`: der Titel trägt die Suchbegriffe, der Marken-Suffix des Root-
     // Layouts würde das 60-Zeichen-Budget sprengen. Der Seitenname erscheint in
     // Google ohnehin separat (WebSite-Daten).
-    title: { absolute: seite.titel },
+    title: { absolute: texte.titel },
     description: beschreibung,
     alternates: { canonical: `/${seite.slug}` },
-    openGraph: { title: seite.titel, description: beschreibung, type: 'website', images: [STANDARD_VORSCHAUBILD] },
+    openGraph: { title: texte.titel, description: beschreibung, type: 'website', images: [STANDARD_VORSCHAUBILD] },
   };
 }
 
+/**
+ * Karte eines Verfahrens. Ist die Stickerei pausiert, trägt ihre Karte nur Name und Kennzeichnung „Derzeit nicht
+ * verfügbar“ – ihre Beschreibung würde sie als Leistung anpreisen. Abgeblendet wird nur das Symbol, nicht die ganze
+ * Karte (eine durchscheinende Karte unterschritte das Kontrastverhältnis, siehe components/shop/Veredelungsverfahren.tsx).
+ */
 function VerfahrenKarte({ art, text, pausiert = false }: { art: 'dtf' | 'embroidery'; text: string; pausiert?: boolean }) {
   const Icon = art === 'dtf' ? Shirt : Scissors;
   return (
-    <div className={`rounded-[24px] border border-brand/[0.08] bg-white p-8 sm:p-10 ${pausiert ? 'opacity-70' : ''}`}>
-      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white">
+    <div className="rounded-[24px] border border-brand/[0.08] bg-white p-8 sm:p-10">
+      <span className={`flex h-12 w-12 items-center justify-center rounded-full text-white ${pausiert ? 'bg-brand/50' : 'bg-brand'}`}>
         <Icon className="h-5 w-5" aria-hidden />
       </span>
       <h3 className="mt-5 font-serif text-[24px] font-normal text-brand">
@@ -91,7 +99,7 @@ function VerfahrenKarte({ art, text, pausiert = false }: { art: 'dtf' | 'embroid
           {KARTE_STICKEREI_PAUSIERT}
         </p>
       )}
-      <p className="mt-3 text-[15px] leading-relaxed text-brand/70">{text}</p>
+      {!pausiert && <p className="mt-3 text-[15px] leading-relaxed text-brand/70">{text}</p>}
     </div>
   );
 }
@@ -111,13 +119,15 @@ export default async function Kategorieseite(props: { params: Promise<{ kategori
   // Betriebsschalter (config/bestellweg.ts): Ist die Stickerei pausiert, zeigt die Seite einen Hinweis und keine
   // Stickerei-Preise. Wird sie wieder angeboten, verschwindet das beim nächsten Deploy von selbst.
   const stickereiVerfuegbar = veredelungVerfuegbar('embroidery');
+  // Titel, Überschrift, Beschreibung, DTF-Text und FAQ: bei Pause der Wortlaut ohne Stickerei (seitenTexte).
+  const texte = seitenTexte(seite, stickereiVerfuegbar);
   const gezeigteBeispiele = sichtbareBeispiele(seite, stickereiVerfuegbar);
   const beispiele = await berechneBeispiele({ slug: seite.slug, beispiele: gezeigteBeispiele });
   const basis = kanonischeBasisUrl();
 
   const fuelle = (t: string) => fuelleVorlage(t, fakten);
-  const fragen = seite.fragen.map((f) => ({ q: fuelle(f.q), a: fuelle(f.a) }));
-  const beschreibung = fuelle(seite.beschreibung);
+  const fragen = texte.fragen.map((f) => ({ q: fuelle(f.q), a: fuelle(f.a) }));
+  const beschreibung = fuelle(texte.beschreibung);
   const weitere = KATEGORIE_SEITEN.filter((s) => s.art !== seite.art);
 
   // Preis-Fußnote: nur Aussagen, die für DIESE Beispiele zutreffen.
@@ -125,19 +135,21 @@ export default async function Kategorieseite(props: { params: Promise<{ kategori
   const stiche = gezeigteBeispiele.flatMap((b) => b.flaechen).find((f) => f.stiche)?.stiche;
   const freiAb = formatiereGeld(SHIPPING_RATES.DE.freeFrom);
 
+  // Bei Pause steht DTF vorn, auch auf der Poloshirt-Seite (dort steht sonst die Stickerei zuerst).
+  const zuerst = stickereiVerfuegbar ? seite.verfahren.zuerst : 'dtf';
   const verfahrenKarten = (
     [
-      { art: 'dtf' as const, text: seite.verfahren.dtf },
+      { art: 'dtf' as const, text: texte.dtf },
       { art: 'embroidery' as const, text: seite.verfahren.stickerei },
     ] satisfies { art: 'dtf' | 'embroidery'; text: string }[]
-  ).sort((a, b) => (a.art === seite.verfahren.zuerst ? -1 : b.art === seite.verfahren.zuerst ? 1 : 0));
+  ).sort((a, b) => (a.art === zuerst ? -1 : b.art === zuerst ? 1 : 0));
 
   return (
     <main className="min-h-screen bg-brand-light">
       <JsonLd
         daten={kategorieSchema(
           basis,
-          { slug: seite.slug, name: seite.h1, beschreibung },
+          { slug: seite.slug, name: texte.h1, beschreibung },
           produkte.map((p) => ({ name: `${p.brand} ${p.name}`, id: p.id }))
         )}
       />
@@ -158,7 +170,7 @@ export default async function Kategorieseite(props: { params: Promise<{ kategori
             {stickereiVerfuegbar ? 'Stickerei & DTF-Transferdruck' : 'DTF-Transferdruck'}
           </p>
           <h1 className="mt-5 font-serif text-[clamp(2.25rem,4.6vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em] text-brand">
-            {seite.h1}
+            {texte.h1}
           </h1>
           {einleitungAbsaetze(seite, stickereiVerfuegbar).map((absatz) => (
             <p key={absatz} className="mt-6 text-[17px] leading-relaxed text-brand/70">
@@ -217,7 +229,7 @@ export default async function Kategorieseite(props: { params: Promise<{ kategori
 
         <section aria-labelledby="verfahren" className="mt-24">
           <h2 id="verfahren" className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal tracking-tight text-brand">
-            DTF-Transferdruck oder Stickerei?
+            {stickereiVerfuegbar ? 'DTF-Transferdruck oder Stickerei?' : 'So kommt dein Motiv aufs Textil'}
           </h2>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {verfahrenKarten.map((k) => (

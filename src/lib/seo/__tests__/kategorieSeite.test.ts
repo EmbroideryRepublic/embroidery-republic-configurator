@@ -240,7 +240,8 @@ test('Stickerei pausiert: die Einleitung bietet nicht mehr „wahlweise Stickere
     const ohne = einleitungAbsaetze(seite, false);
     assert.equal(ohne.length, seite.einleitung.length);
     assert.ok(!ohne.some((t) => /wahlweise|oder Stickerei/.test(t)), `${seite.slug}: Stickerei-Angebot in der Einleitung`);
-    assert.equal(ohne[0], seite.einleitung[0], `${seite.slug}: erster Absatz bleibt unverändert`);
+    // Der erste Absatz bleibt unverändert – außer dort, wo er selbst die Stickerei nennt (Poloshirt: „gesticktem Logo“, `beiPause.einleitung`).
+    assert.equal(ohne[0], seite.beiPause.einleitung?.[0] ?? seite.einleitung[0], `${seite.slug}: erster Absatz`);
   }
 });
 

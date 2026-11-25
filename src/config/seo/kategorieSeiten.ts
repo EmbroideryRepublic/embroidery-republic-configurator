@@ -25,12 +25,25 @@
  *   Preisbeispiele → aus `priceCart()`, derselben Funktion wie im Checkout
  * Bewusst NICHT behauptet, weil nicht belegt: Standort der Produktion,
  * Kundenzahlen, Bewertungen, Auszeichnungen, Lieferzusagen über die FAQ hinaus.
+ *
+ * ── Pausierte Stickerei ───────────────────────────────────────────────
+ * Solange die Stickerei pausiert ist (BETRIEBSSCHALTER in config/bestellweg.ts), darf kein sichtbarer Text sie als
+ * verfügbare Leistung nahelegen (Betreiberauftrag: „keine falschen Leistungsversprechen“). Deshalb trägt jede Seite
+ * `beiPause` (Titel, Überschrift, Beschreibung, wo nötig Einleitung und DTF-Text) und jede Frage optional `beiPause`
+ * (anderer Wortlaut oder `null` = die Frage entfällt). Der normale Wortlaut mit dem Stickerei-Angebot bleibt unverändert
+ * stehen: Wird der Schalter geleert, kommt er vollständig zurück (Auswahl: lib/seo/kategorieSeite.ts → seitenTexte).
+ * Erlaubt bleiben nur die ausdrücklichen Pause-Hinweise HINWEIS_STICKEREI_PAUSIERT und KARTE_STICKEREI_PAUSIERT.
  */
 import type { ProductType } from '@/types';
 
 export interface KategorieFrage {
   q: string;
   a: string;
+}
+
+/** Frage einer Kategorieseite; `beiPause` = anderer Wortlaut, solange die Stickerei pausiert ist (`null`: die Frage entfällt dann). */
+export interface KategorieSeitenFrage extends KategorieFrage {
+  beiPause?: KategorieFrage | null;
 }
 
 /** Eine Beispielrechnung. Enthält KEINE Preise – die kommen aus der Preis-Engine. */
@@ -64,7 +77,13 @@ export interface KategorieSeite {
   /** DTF-Preisbeispiele, die anstelle der Stickerei-Beispiele gezeigt werden, solange die Stickerei pausiert ist
    *  (BETRIEBSSCHALTER in config/bestellweg.ts). Nur nötig, wenn `beispiele` ohne die Stickerei-Zeilen leer wäre. */
   beispieleBeiPause?: KategorieBeispiel[];
-  fragen: KategorieFrage[];
+  /**
+   * Wortlaut, solange die Stickerei pausiert ist (BETRIEBSSCHALTER in config/bestellweg.ts): ohne jeden Hinweis auf
+   * Stickerei. `einleitung` ersetzt die normale Einleitung (nur nötig, wenn schon der erste Absatz Stickerei nennt),
+   * `dtf` den DTF-Text der Verfahrenskarte (nur nötig, wenn er sich auf die Stickerei bezieht).
+   */
+  beiPause: { titel: string; h1: string; beschreibung: string; einleitung?: string[]; dtf?: string };
+  fragen: KategorieSeitenFrage[];
 }
 
 // ── Gemeinsame Bausteine ────────────────────────────────────────────────
@@ -91,6 +110,18 @@ const A_VERFAHREN =
 const A_MODELLE =
   'Aktuell gibt es {anzahl} Modelle von {marken}. Die Stoffgewichte reichen von {gewichtMin} bis {gewichtMax} g/m². Die Preise beginnen bei {abPreis} pro Stück zzgl. Veredelung. Material, Passform, Farben und Größen stehen auf der jeweiligen Produktseite.';
 
+/**
+ * Pausen-Wortlaut der FAQ-Antworten (Stickerei pausiert): wortgleich mit den DTF-Seiten (config/seo/dtfSeiten.ts, dort
+ * freigegeben und live). Abweichungen von den normalen Antworten: Dateien ohne den Stickerei-Satz, Dauer mit „Druckdaten“
+ * statt „Druck- bzw. Stickdaten“. Ein Test (kategorieSeite.test.ts) hält die Gleichheit mit den DTF-Seiten fest.
+ */
+export const A_DTF =
+  'DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Der Griff bleibt flexibel und bewegt sich mit dem Stoff.';
+export const A_DATEIEN_DTF =
+  'SVG, PNG, JPG/JPEG und PDF werden unterstützt. Am besten eignen sich vektorbasierte Dateien (SVG, PDF), da sie verlustfrei skalieren.';
+export const A_DAUER_DTF =
+  'Die Produktion beginnt nach Bestellfreigabe, sobald alle Druckdaten vollständig vorliegen. Die reguläre Produktionszeit beträgt 3 bis 4 Werktage, der anschließende Versand erfolgt innerhalb von 1 bis 2 Werktagen. Bei größeren Bestellmengen oder besonders aufwendigen Produktionen kann sich die Produktionszeit verlängern – wir informieren dich in diesem Fall.';
+
 export const EINLEITUNG_ZWEI =
   'Veredelt wird wahlweise per DTF-Transferdruck oder Stickerei. Es gibt keine Mindestbestellmenge, Größen lassen sich frei mischen, und vor der Produktion prüfen wir deine Datei kostenlos.';
 
@@ -111,11 +142,17 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
   {
     art: 'hoodie',
     slug: 'hoodies-bedrucken-besticken',
-    // Titel ohne „besticken“ (Freigabe 2026-11-24, Stickerei pausiert); Wiederaufnahme: „Hoodies bedrucken & besticken lassen – ab 1 Stück“.
-    titel: 'Hoodies bedrucken lassen – ab 1 Stück, DTF-Druck',
+    titel: 'Hoodies bedrucken & besticken lassen – ab 1 Stück',
     h1: 'Hoodies bedrucken & besticken lassen',
     beschreibung:
       '{anzahl} Hoodies von {marken3} u. a. mit Logo oder Motiv veredeln: DTF-Transferdruck oder Stickerei, live im Konfigurator, ab 1 Stück.',
+    beiPause: {
+      // Titel: Freigabe 2026-11-24 (Stickerei pausiert); Überschrift und Beschreibung: Betreiberauftrag „keine falschen Leistungsversprechen“.
+      titel: 'Hoodies bedrucken lassen – ab 1 Stück, DTF-Druck',
+      h1: 'Hoodies bedrucken lassen',
+      beschreibung:
+        '{anzahl} Hoodies von {marken3} u. a. per DTF-Transferdruck mit Logo oder Motiv bedrucken – ab 1 Stück, live im Konfigurator.',
+    },
     einleitung: [
       'Ob einzelner Lieblings-Hoodie, Vereinskollektion oder Teamkleidung für den Betrieb: Wähle aus {anzahl} Hoodie-Modellen von {markenAnzahl} Marken, lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator – mit Preis in Echtzeit.',
       EINLEITUNG_ZWEI,
@@ -144,21 +181,34 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       },
     ],
     fragen: [
-      { q: 'Kann ich auch nur einen einzelnen Hoodie bedrucken oder besticken lassen?', a: A_EINZELSTUECK },
-      { q: 'Was ist besser für einen Hoodie: Druck oder Stickerei?', a: A_VERFAHREN },
-      { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN },
-      { q: 'Wie lange dauert es, bis mein Hoodie ankommt?', a: A_DAUER },
+      {
+        q: 'Kann ich auch nur einen einzelnen Hoodie bedrucken oder besticken lassen?',
+        a: A_EINZELSTUECK,
+        beiPause: { q: 'Kann ich auch nur einen einzelnen Hoodie bedrucken lassen?', a: A_EINZELSTUECK },
+      },
+      {
+        q: 'Was ist besser für einen Hoodie: Druck oder Stickerei?',
+        a: A_VERFAHREN,
+        beiPause: { q: 'Wofür eignet sich der DTF-Transferdruck bei einem Hoodie?', a: A_DTF },
+      },
+      { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN, beiPause: { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN_DTF } },
+      { q: 'Wie lange dauert es, bis mein Hoodie ankommt?', a: A_DAUER, beiPause: { q: 'Wie lange dauert es, bis mein Hoodie ankommt?', a: A_DAUER_DTF } },
       { q: 'Welche Hoodies gibt es und wie schwer sind sie?', a: A_MODELLE },
     ],
   },
   {
     art: 'tshirt',
     slug: 't-shirts-bedrucken-besticken',
-    // Wiederaufnahme der Stickerei: „T-Shirts bedrucken & besticken lassen – ab 1 Stück“.
-    titel: 'T-Shirts bedrucken lassen – ab 1 Stück, DTF-Druck',
+    titel: 'T-Shirts bedrucken & besticken lassen – ab 1 Stück',
     h1: 'T-Shirts bedrucken & besticken lassen',
     beschreibung:
       '{anzahl} T-Shirts von {marken3} u. a. mit Logo oder Motiv veredeln: DTF-Transferdruck oder Stickerei, live im Konfigurator, ab 1 Stück.',
+    beiPause: {
+      titel: 'T-Shirts bedrucken lassen – ab 1 Stück, DTF-Druck',
+      h1: 'T-Shirts bedrucken lassen',
+      beschreibung:
+        '{anzahl} T-Shirts von {marken3} u. a. per DTF-Transferdruck mit Logo oder Motiv bedrucken – ab 1 Stück, live im Konfigurator.',
+    },
     einleitung: [
       'Vom Einzelstück bis zur Teamausstattung: Wähle aus {anzahl} T-Shirt-Modellen von {markenAnzahl} Marken mit Stoffgewichten von {gewichtMin} bis {gewichtMax} g/m², gestalte dein Motiv live im Konfigurator und sieh den Preis in Echtzeit.',
       EINLEITUNG_ZWEI,
@@ -197,25 +247,45 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       },
     ],
     fragen: [
-      { q: 'Kann ich auch nur ein einzelnes T-Shirt bedrucken oder besticken lassen?', a: A_EINZELSTUECK },
+      {
+        q: 'Kann ich auch nur ein einzelnes T-Shirt bedrucken oder besticken lassen?',
+        a: A_EINZELSTUECK,
+        beiPause: { q: 'Kann ich auch nur ein einzelnes T-Shirt bedrucken lassen?', a: A_EINZELSTUECK },
+      },
       {
         q: 'Wo auf dem T-Shirt kann ich mein Motiv platzieren?',
         a: 'Im Konfigurator stehen Brust und Rücken sowie – je nach Modell – der Ärmel zur Verfügung. Zu jeder Position siehst du die zulässige Veredelungsfläche. Der Preis richtet sich nach der Anzahl der veredelten Positionen und der Menge und wird im Konfigurator live berechnet.',
       },
-      { q: 'Was ist besser für ein T-Shirt: Druck oder Stickerei?', a: A_VERFAHREN },
-      { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN },
-      { q: 'Wie lange dauert es, bis meine T-Shirts ankommen?', a: A_DAUER },
+      {
+        q: 'Was ist besser für ein T-Shirt: Druck oder Stickerei?',
+        a: A_VERFAHREN,
+        beiPause: { q: 'Wofür eignet sich der DTF-Transferdruck bei einem T-Shirt?', a: A_DTF },
+      },
+      { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN, beiPause: { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN_DTF } },
+      { q: 'Wie lange dauert es, bis meine T-Shirts ankommen?', a: A_DAUER, beiPause: { q: 'Wie lange dauert es, bis meine T-Shirts ankommen?', a: A_DAUER_DTF } },
       { q: 'Welche T-Shirts gibt es und wie schwer sind sie?', a: A_MODELLE },
     ],
   },
   {
     art: 'polo',
     slug: 'poloshirts-besticken-bedrucken',
-    // Wiederaufnahme der Stickerei: „Poloshirts besticken & bedrucken lassen – ab 1 Stück“.
-    titel: 'Poloshirts bedrucken lassen – ab 1 Stück, DTF-Druck',
+    titel: 'Poloshirts besticken & bedrucken lassen – ab 1 Stück',
     h1: 'Poloshirts besticken & bedrucken lassen',
     beschreibung:
       '{anzahl} Poloshirts von {marken3} u. a. mit Firmenlogo besticken oder bedrucken: live im Konfigurator gestalten, ab 1 Stück, ohne Mindestmenge.',
+    beiPause: {
+      titel: 'Poloshirts bedrucken lassen – ab 1 Stück, DTF-Druck',
+      h1: 'Poloshirts bedrucken lassen',
+      beschreibung:
+        '{anzahl} Poloshirts von {marken3} u. a. per DTF-Transferdruck mit Firmenlogo bedrucken – ab 1 Stück, live im Konfigurator, ohne Mindestmenge.',
+      // Der erste Absatz nennt das gestickte Logo; der zweite (EINLEITUNG_ZWEI) wird wie bei den anderen Seiten durch EINLEITUNG_DTF ersetzt.
+      einleitung: [
+        'Das Poloshirt ist der klassische Auftritt für Betrieb, Verein und Team – mit dem Logo auf der Brust wirkt es sofort einheitlich. Wähle aus {anzahl} Polo-Modellen von {markenAnzahl} Marken, platziere dein Logo live im Konfigurator und sieh den Preis in Echtzeit.',
+        EINLEITUNG_ZWEI,
+      ],
+      // „…die bessere Wahl“ setzt die Stickerei als Gegenstück voraus.
+      dtf: 'Auch farbenreiche Motive, Verläufe und Fotos gelingen auf dem Poloshirt mit DTF-Transferdruck: vollfarbig, auch großflächig, mit flexiblem Griff, der sich mit dem Stoff bewegt.',
+    },
     einleitung: [
       'Das Poloshirt ist der klassische Auftritt für Betrieb, Verein und Team – mit gesticktem Logo auf der Brust wirkt es sofort einheitlich. Wähle aus {anzahl} Polo-Modellen von {markenAnzahl} Marken, platziere dein Logo live im Konfigurator und sieh den Preis in Echtzeit.',
       EINLEITUNG_ZWEI,
@@ -274,14 +344,24 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       },
     ],
     fragen: [
-      { q: 'Kann ich auch nur ein einzelnes Poloshirt besticken lassen?', a: A_EINZELSTUECK },
-      { q: 'Was ist besser für ein Poloshirt: Stickerei oder Druck?', a: A_VERFAHREN },
+      {
+        q: 'Kann ich auch nur ein einzelnes Poloshirt besticken lassen?',
+        a: A_EINZELSTUECK,
+        beiPause: { q: 'Kann ich auch nur ein einzelnes Poloshirt bedrucken lassen?', a: A_EINZELSTUECK },
+      },
+      {
+        q: 'Was ist besser für ein Poloshirt: Stickerei oder Druck?',
+        a: A_VERFAHREN,
+        beiPause: { q: 'Wofür eignet sich der DTF-Transferdruck bei einem Poloshirt?', a: A_DTF },
+      },
       {
         q: 'Wie läuft die Digitalisierung meines Logos für die Stickerei ab?',
         a: 'Für Stickerei digitalisiert unser Team dein Logo manuell in Garnfarben. Vor Produktionsstart erhältst du eine finale Vorschau zur Freigabe. Die Vorschau im Konfigurator zeigt die Platzierung, nicht das finale Stickbild.',
+        // Ohne Stickerei gibt es nichts zu digitalisieren: Die Frage entfällt.
+        beiPause: null,
       },
-      { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN },
-      { q: 'Wie lange dauert es, bis meine Poloshirts ankommen?', a: A_DAUER },
+      { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN, beiPause: { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN_DTF } },
+      { q: 'Wie lange dauert es, bis meine Poloshirts ankommen?', a: A_DAUER, beiPause: { q: 'Wie lange dauert es, bis meine Poloshirts ankommen?', a: A_DAUER_DTF } },
       { q: 'Welche Poloshirts gibt es und wie schwer sind sie?', a: A_MODELLE },
     ],
   },

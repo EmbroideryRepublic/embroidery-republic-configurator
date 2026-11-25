@@ -189,7 +189,10 @@ export function sammlungSchema(basis: string, anzahl: number): Record<string, un
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Alle Produkte',
-    description: `${anzahl} individuell veredelbare Produkte etablierter Marken – mit DTF-Transferdruck oder Stickerei, ab 1 Stück.`,
+    // Betriebsschalter (config/bestellweg.ts): Solange die Stickerei pausiert ist, verspricht die Beschreibung nur DTF-Transferdruck.
+    description: `${anzahl} individuell veredelbare Produkte etablierter Marken – mit ${
+      veredelungVerfuegbar('embroidery') ? 'DTF-Transferdruck oder Stickerei' : 'DTF-Transferdruck'
+    }, ab 1 Stück.`,
     url: `${basis}/produkt`,
     isPartOf: { '@type': 'WebSite', name: 'Embroidery Republic Germany', url: basis },
   };

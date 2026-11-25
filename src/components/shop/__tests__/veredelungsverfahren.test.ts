@@ -33,6 +33,10 @@ test('Stickerei pausiert: Hinweis, Karte „Derzeit nicht verfügbar“, DTF-Kar
   // 4,5 : 1 (Lighthouse 2026-11-24, 3,1 : 1) – gerade der Hinweis „Derzeit nicht verfügbar“ muss lesbar sein.
   assert.match(html, /bg-brand\/50/, 'das Symbol der Stickerei-Karte ist abgeblendet');
   assert.ok(!html.includes('opacity-70'), 'die Karte selbst ist nicht durchscheinend (Lesbarkeit)');
+  // Keine Werbung für die pausierte Leistung (Betreiber-Auftrag 25.11.2026: keine falschen Leistungsversprechen).
+  const text = sichtbar(html);
+  assert.ok(!/ideal für Firmenlogos|aus echtem Garn|waschbeständig|Monogramme/.test(text), 'Werbetext der Stickerei steht nicht mehr da');
+  assert.match(text, /Vollfarbig, ideal für große Motive/, 'die DTF-Karte behält ihren Text');
 });
 
 test('Stickerei verfügbar (Schalter leer): wie bisher, ohne Hinweis und ohne Label', () => {

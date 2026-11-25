@@ -31,11 +31,29 @@ Wortlaut im Shop von „Sie“ auf „du“ umgestellt; die Tests hielten den al
 
 **Schutzfunktion:** Alle vier prüfen weiter dasselbe (Auflösungs-Ratgeber ohne unbelegte Versprechen, Ablauf ohne Stickerei-Zusage, Pausen-Hinweis nennt den Grund, Fehlerfälle liefern eine freundliche Meldung statt eines `TypeError`). Geändert ist nur die Anrede im erwarteten Text.
 
-## C. Nicht angefasst
+## C. Du-Umstellung der E-Mails (Betreiber-Freigabe 25.11.2026)
 
-Tests, die E-Mail-Wortlaut festhalten (`src/lib/orders/__tests__/mailfluss.test.ts`): E-Mail-Vorlagen und rechtsnahe Texte werden erst mit der Wortlaut-Freigabe umgestellt.
+Der Betreiber hat die Du-Form im gesamten Bestellablauf freigegeben (Rechtstexte AGB, Datenschutz und Impressum bleiben förmlich). Die E-Mails sind umgestellt; Tests, die den Mail-Wortlaut als erwarteten Wert festhielten, haben nur den erwarteten Text bekommen:
 
-## D. Ergänzungen nach dem unabhängigen Review (24.11.2026)
+| Datei | was sich im erwarteten Wert ändert |
+|---|---|
+| `src/lib/orders/__tests__/mailfluss.test.ts` | Betreff „Deine Anfrage ER-2026-ANF001 ist eingegangen“; Vertragssatz „… wenn du dieses Angebot annimmst …“ |
+| `src/lib/email/__tests__/betreiberBenachrichtigung.test.ts` | „Deine Anfrage ER-2026-ANF001“ und derselbe Vertragssatz |
+| `src/lib/email/__tests__/anmerkungMail.test.ts` | „Deine Anmerkung zur Bestellung …“, „Deine Nachricht ist bei uns angekommen.“ (auch im Testnamen) |
+| `src/lib/email/__tests__/orderConfirmationRechnung.test.ts` | „Rechnung erhältst du in Kürze“ |
+
+**Eine Regel dreht die Richtung (`src/lib/email/__tests__/vorlagenSmoke.test.ts`).** Die Schutzregel „Du-Anrede statt Sie“ verbot ein großes „Du/Dein/Dir“ in den Mails, weil die Mails förmlich waren. Sie wurde in zwei Regeln mit gleicher Strenge aufgeteilt: Eine Sie-Anrede (Sie, Ihr, Ihre, Ihnen, …) lässt den Test scheitern (Ausnahme: „Sie ist bei uns eingegangen“, dort ist „Sie“ die Anfrage), und ein groß geschriebenes „Du/Dein/Dir“ mitten im Satz lässt ihn scheitern (am Satzanfang und nach Doppelpunkt ist es richtig). Keine Assertion wurde gelöscht; geprüft werden weiterhin alle Mailvorlagen gegen verdächtige Muster. Die neue Regel fängt außerdem die alte Förmlichkeit, die sich in neue Vorlagen einschleichen könnte.
+
+## D. Stickerei-Pause: keine falschen Leistungsversprechen (Betreiber-Auftrag 25.11.2026)
+
+- `src/config/__tests__/stickereiAussagen.test.ts` (neu): Mit pausierter Stickerei darf in FAQ, Über uns, Kontakt-Hinweis, Manifest und der Methodenkachel des Konfigurators kein Wort „besticken/Stickerei/gestickt/Stickdaten/Garnfarben/Digitalisierung“ stehen, auch nicht im strukturierten FAQ-Datenblock; zusätzlich prüft er, dass der bisherige Wortlaut hinter dem Schalter erhalten bleibt (Wiederaufnahme).
+- `src/lib/seo/__tests__/produktTitel.test.ts` (erweitert, nichts geändert): Bei pausierter Stickerei kein Titel mit „besticken“; im ganzen Katalog passen alle Titel in 60 Zeichen, enthalten den vollen Produktnamen, sind verschieden und tragen zu über 80 % „bedrucken“.
+
+## E. Nicht angefasst
+
+Rechtstexte AGB, Datenschutzerklärung und Impressum und die zugehörigen Tests; Rechnungs-PDF.
+
+## F. Ergänzungen nach dem unabhängigen Review (24.11.2026)
 
 - `benutzerfreundlichkeit.test.ts`, Test „Kontrast: Weiße Schrift steht auf bg-gold-btn …“: Der Suchausdruck erkennt jetzt auch Zustandspräfixe (`hover:bg-gold`, `focus:bg-gold`). Das **verschärft** den Test; er fand zwei Stellen, die behoben wurden.
 - `veredelungsverfahren.test.ts`: fünf zusätzliche Assertions, dass Abschnittsüberschrift, Marken-Karte, Fußzeilenbeschreibung, Fußzeilenzeile und Standardtitel im Layout den Betriebsschalter lesen. Das **erweitert** die Abdeckung der Stickerei-Pause.

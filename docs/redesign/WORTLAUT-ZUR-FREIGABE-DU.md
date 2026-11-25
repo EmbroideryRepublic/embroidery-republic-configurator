@@ -1,6 +1,8 @@
-# Wortlaut zur Freigabe: rechtsnahe Texte in der Du-Form
+# Wortlaut: rechtsnahe Texte in der Du-Form
 
-Stand 24.11.2026. Der Shop spricht überall per Du, **außer** den folgenden Texten. Sie regeln Widerruf, Zahlung, Storno, Haftung oder Datenschutz und gehen deshalb erst nach Ihrer Freigabe in die Du-Form. Der Inhalt bleibt jeweils exakt gleich, geändert ist nur die Anrede. Mit „go“ stelle ich alle Texte dieser Liste in einem Schritt um (Stellen im Code stehen jeweils dabei).
+> **Erledigt am 25.11.2026.** Der Betreiber hat die Du-Form im gesamten Bestellablauf freigegeben (Punkte 1 bis 6). Die geänderten Sätze stehen vollständig in `DU-BESTELLABLAUF-AENDERUNGEN.md` und `DU-EMAILS-AENDERUNGEN.md`. Punkt 7 (AGB, Datenschutzerklärung, Impressum) bleibt förmlich, wie vom Betreiber festgelegt.
+
+Ursprünglicher Stand 24.11.2026. Der Shop spricht überall per Du, **außer** den folgenden Texten. Sie regeln Widerruf, Zahlung, Storno, Haftung oder Datenschutz und gehen deshalb erst nach Ihrer Freigabe in die Du-Form. Der Inhalt bleibt jeweils exakt gleich, geändert ist nur die Anrede. Mit „go“ stelle ich alle Texte dieser Liste in einem Schritt um (Stellen im Code stehen jeweils dabei).
 
 ## 1. Widerrufsausschluss (Warenkorb und Kasse)
 - `src/lib/i18n/translations.ts` `cart_no_returns` und `checkout_terms_no_withdrawal` (deutsche Tabelle).

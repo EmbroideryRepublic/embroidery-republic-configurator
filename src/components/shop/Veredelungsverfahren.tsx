@@ -73,15 +73,21 @@ export function Veredelungsverfahren() {
                 {KARTE_STICKEREI_PAUSIERT}
               </p>
             )}
-            <p className="mt-2 text-[15px] leading-relaxed text-brand/70">{v.claim}</p>
-            <ul className="mt-6 space-y-3 border-t border-brand/[0.06] pt-6">
-              {v.punkte.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-[14px] leading-relaxed text-brand/70">
-                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold-dark" aria-hidden />
-                  {p}
-                </li>
-              ))}
-            </ul>
+            {/* Pausierte Art: nur Name und Kennzeichnung. Werbetext und Merkmale („Hochwertig & langlebig, ideal für Firmenlogos“)
+                würden eine Leistung bewerben, die derzeit nicht angeboten wird. Sie kehren mit dem Schalter zurück. */}
+            {!pausiert && (
+              <>
+                <p className="mt-2 text-[15px] leading-relaxed text-brand/70">{v.claim}</p>
+                <ul className="mt-6 space-y-3 border-t border-brand/[0.06] pt-6">
+                  {v.punkte.map((p) => (
+                    <li key={p} className="flex items-start gap-3 text-[14px] leading-relaxed text-brand/70">
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold-dark" aria-hidden />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         );
       })}

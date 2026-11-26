@@ -27,6 +27,8 @@ import { OrderProofRequestEmail } from '../templates/OrderProofRequestEmail';
 import { ProofFeedbackEmail } from '../templates/ProofFeedbackEmail';
 import { PaymentFailedEmail } from '../templates/PaymentFailedEmail';
 import { InvoiceEmail } from '../templates/InvoiceEmail';
+import { OrderEditedEmail } from '../templates/OrderEditedEmail';
+import type { KundenmailDaten } from '@/lib/orders/orderEdit';
 import { KontoBestaetigenEmail } from '../templates/KontoBestaetigenEmail';
 import { KontoWillkommenEmail } from '../templates/KontoWillkommenEmail';
 import { PasswortVergessenEmail } from '../templates/PasswortVergessenEmail';
@@ -69,7 +71,25 @@ const order: OrderRecord = {
 const URL_BESTELLUNG = 'https://www.ergermany.de/bestellung/abc123token';
 
 /** Dateiname der Vorlage (ohne .tsx) → so viele Fälle (Name, Element) werden gerendert. */
+const GEAENDERT: KundenmailDaten = {
+  orderNumber: order.orderNumber,
+  aenderungen: ['1 × Inspire Hooded Sweat · Black Pure entfernt (L: 2 → 1; jetzt 1 statt 2 Stück)'],
+  altGesamtCent: 8598,
+  neuGesamtCent: 5489,
+  differenzCent: 3109,
+  versandAltCent: 0,
+  versandNeuCent: 690,
+  zahlung: 'rechnung',
+  rechnung: { art: 'entsteht' },
+  bestellansichtUrl: URL_BESTELLUNG,
+};
+
 const FAELLE: Record<string, Array<[string, ReactElement]>> = {
+  OrderEditedEmail: [
+    ['Rechnungskauf, noch keine Rechnung', OrderEditedEmail({ daten: GEAENDERT })],
+    ['Rechnungskauf mit bestehender Rechnung, ohne Link', OrderEditedEmail({ daten: { ...GEAENDERT, rechnung: { art: 'folgt-separat', rechnungsnummer: 'RE-2026-000123' }, bestellansichtUrl: null } })],
+    ['bezahlt, Erstattung, Versand bleibt frei', OrderEditedEmail({ daten: { ...GEAENDERT, zahlung: 'bezahlt', rechnung: { art: 'folgt-separat', rechnungsnummer: 'RE-2026-000123' }, versandNeuCent: 0 } })],
+  ],
   OrderConfirmationEmail: [
     ['Bestellung mit Link', OrderConfirmationEmail({ order, bestellansichtUrl: URL_BESTELLUNG })],
     ['Bestellung ohne Link', OrderConfirmationEmail({ order })],

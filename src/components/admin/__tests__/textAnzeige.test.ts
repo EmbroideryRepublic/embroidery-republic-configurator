@@ -41,6 +41,7 @@ function element(ueberschreibe: Partial<AdminOrderElementRow>): AdminOrderElemen
 
 function position(elements: AdminOrderElementRow[]): AdminOrderItemRow {
   return {
+    id: 'position-1',
     productId: 'justhoods-college-hoodie',
     productName: 'College Hoodie',
     colorId: 'grey',

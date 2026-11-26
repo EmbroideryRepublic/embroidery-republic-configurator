@@ -109,6 +109,8 @@ export interface AdminOrderElementRow {
 }
 
 export interface AdminOrderItemRow {
+  /** order_items.id – die Auftragsänderung (OrderEditControl) adressiert Positionen über diese Kennung. */
+  id: string;
   productId: string;
   productName: string;
   colorId: string;
@@ -815,6 +817,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
       });
 
       return {
+        id: row.id as string,
         productId: row.product_id as string,
         productName: row.product_name as string,
         colorId: row.color_id as string,

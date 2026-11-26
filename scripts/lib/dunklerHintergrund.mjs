@@ -82,7 +82,27 @@ export async function dunkel(pfad, opt = {}) {
   const verschlussR = opt.verschluss ?? (kernMin >= 240 ? 5 : 0);
   const tb = opt.tb ?? (kernMin >= 240 ? 250 : Math.max(225, Math.min(250, Math.round(255 - Math.max(6, 0.5 * (255 - kernMin))))));
   const weissStoff = kernMin >= 240; // fast weißer Stoff: nur kleine, deutlich umrandete Löcher entfernen (große weiße Flächen im Stoff sind Überbelichtung)
-  const bg = hintergrund(maskenData, w, h, tb, opt.tbExakt ?? 254, 120, weissStoff ? 0 : 30000, weissStoff ? 212 : 225);
+  // Mit Modellmaske (ISNet, Graustufen 0–255, gleiche Maße) statt Flutfüllung: für fast weiße Stoffe, bei denen weiß auf weiß
+  // keine Schwelle trägt. bg = Modell sagt „kein Kleidungsstück“.
+  let bg; let grosseLoecher = 0;
+  if (opt.maske) {
+    const m = await sharp(opt.maske).resize(w, h).greyscale().raw().toBuffer();
+    bg = new Uint8Array(w * h); for (let i = 0; i < w * h; i++) bg[i] = m[i] < 128 ? 1 : 0;
+    // Abgeschlossene Hintergrundflächen (nicht vom Rand erreichbar): unter 1.200 px sind Fehler der Maske → als Stoff füllen; größere melden
+    const vomRand = new Uint8Array(w * h); const st = [];
+    for (let x = 0; x < w; x++) for (const y of [0, h - 1]) { const i = y * w + x; if (bg[i] && !vomRand[i]) { vomRand[i] = 1; st.push(i); } }
+    for (let y = 0; y < h; y++) for (const x of [0, w - 1]) { const i = y * w + x; if (bg[i] && !vomRand[i]) { vomRand[i] = 1; st.push(i); } }
+    while (st.length) { const i = st.pop(); const x = i % w, y = (i / w) | 0; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy; if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue; const j = ny * w + nx; if (bg[j] && !vomRand[j]) { vomRand[j] = 1; st.push(j); } } }
+    const besucht = new Uint8Array(w * h);
+    for (let s0 = 0; s0 < w * h; s0++) {
+      if (!bg[s0] || vomRand[s0] || besucht[s0]) continue;
+      const reg = []; const q = [s0]; besucht[s0] = 1;
+      while (q.length) { const i = q.pop(); reg.push(i); const x = i % w, y = (i / w) | 0; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy; if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue; const j = ny * w + nx; if (bg[j] && !vomRand[j] && !besucht[j]) { besucht[j] = 1; q.push(j); } } }
+      if (reg.length < 1200) for (const i of reg) bg[i] = 0; else grosseLoecher++;
+    }
+  } else {
+    bg = hintergrund(maskenData, w, h, tb, opt.tbExakt ?? 254, 120, weissStoff ? 0 : 30000, weissStoff ? 212 : 225);
+  }
   // Streupunkte außerhalb des Kleidungsstücks (Rauschen im Hintergrund) entfernen: nur zusammenhängende Stoffflächen ≥ 800 px bleiben
   {
     const gesehen = new Uint8Array(w * h);
@@ -160,5 +180,5 @@ export async function dunkel(pfad, opt = {}) {
   let bx0 = w, by0 = h, bx1 = -1, by1 = -1;
   for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (stoffEnde[y * w + x]) { if (x < bx0) bx0 = x; if (x > bx1) bx1 = x; if (y < by0) by0 = y; if (y > by1) by1 = y; }
   const kastenFuellung = bx1 < 0 ? 0 : flaeche / ((bx1 - bx0 + 1) * (by1 - by0 + 1));
-  return { png: bild, fuellung, kastenFuellung, webp: await sharp(bild).webp({ quality: 85, effort: 5 }).toBuffer(), anteilHintergrund: anteil, rahmen: rahmenStoff / rahmenN, symmetrie: vv ? ue / vv : 0, kernMin: Math.round(kernMin) };
+  return { png: bild, fuellung, kastenFuellung, grosseLoecher, webp: await sharp(bild).webp({ quality: 85, effort: 5 }).toBuffer(), anteilHintergrund: anteil, rahmen: rahmenStoff / rahmenN, symmetrie: vv ? ue / vv : 0, kernMin: Math.round(kernMin) };
 }

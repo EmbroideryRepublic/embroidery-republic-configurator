@@ -15,6 +15,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back"
     ]
   },
+  "bandc-inspire-zip-hood": {
+    "white": [
+      "front",
+      "back"
+    ]
+  },
   "build-your-brand-fluffy-hoody": {
     "beryl-blue": [
       "front",
@@ -97,6 +103,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "sleeve_right"
     ],
     "taxi-yellow": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -435,6 +447,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "bundc-inspire-t-men": {
@@ -525,6 +543,14 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "sleeve_right"
     ],
     "yellow-fizz": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
+  "bundc-mens-t-shirt-e190-long-sleeve-exact": {
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -675,10 +701,30 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
+  "bundc-t-shirt-e150-long-sleeve-unisex-exact": {
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "bundc-t-shirt-e150-long-sleeve-women-exact": {
     "millennial-pink": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -797,10 +843,22 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "bundc-unisex-polo-id-001": {
     "sand": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -831,6 +889,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "earthpositive-earth-positive-women-s-half-zip-hoodie": {
@@ -847,6 +911,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "sleeve_right"
     ],
     "sueded-miami-pink": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "sueded-off-white": [
       "front",
       "back",
       "sleeve_left",
@@ -909,10 +979,22 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "fotl-heavy-t": {
     "heather-grey": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -989,10 +1071,22 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "fotl-ladies-original-t": {
     "heather-grey": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -1047,6 +1141,20 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
   },
   "fotl-ladies-valueweight-vneck": {
     "heather-grey": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
+  "fotl-original-longsleeve": {
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -1171,6 +1279,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "fruit-of-the-loom-classic-hooded-sweat": {
@@ -1193,6 +1307,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "sleeve_right"
     ],
     "sunflower": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -1293,6 +1413,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "gildan-heavy-t": {
@@ -1324,6 +1450,14 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "gildan-ladies-polo": {
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
+  "gildan-ladies-t": {
     "white": [
       "front",
       "back",
@@ -1461,6 +1595,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "sleeve_right"
     ],
     "sport-grey-heather": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -1663,6 +1803,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
   },
   "jamesnicholson-ladies-active-t": {
     "acid-yellow": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -2040,6 +2186,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "just-hoods-organic-hoodie-jh201": {
+    "arctic-white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
     "baby-pink": [
       "front",
       "back",
@@ -2080,6 +2232,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "just-hoods-vision-heavyweight-hoodie": {
+    "arctic-white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
     "ice-blue": [
       "front",
       "back",
@@ -2095,6 +2253,20 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
   },
   "justhoods-awdis-sweat": {
     "grey": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
+  "justhoods-college-hoodie": {
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -2135,6 +2307,16 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back"
     ],
     "sport-grey-heather": [
+      "front",
+      "back"
+    ],
+    "white": [
+      "front",
+      "back"
+    ]
+  },
+  "kinder-bctk002": {
+    "white": [
       "front",
       "back"
     ]
@@ -2215,6 +2397,10 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     "sunflower": [
       "front",
       "back"
+    ],
+    "white": [
+      "front",
+      "back"
     ]
   },
   "kinder-g18000k": {
@@ -2231,9 +2417,17 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     "sport-grey-heather": [
       "front",
       "back"
+    ],
+    "white": [
+      "front",
+      "back"
     ]
   },
   "kinder-g5000k": {
+    "ash-grey-heather": [
+      "front",
+      "back"
+    ],
     "daisy": [
       "front",
       "back"
@@ -2310,6 +2504,10 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "kinder-jh001k": {
+    "arctic-white": [
+      "front",
+      "back"
+    ],
     "ash-heather": [
       "front",
       "back"
@@ -2344,6 +2542,10 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "kinder-jh030k": {
+    "arctic-white": [
+      "front",
+      "back"
+    ],
     "baby-pink": [
       "front",
       "back"
@@ -2370,6 +2572,10 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "kinder-jh050k": {
+    "arctic-white": [
+      "front",
+      "back"
+    ],
     "baby-pink": [
       "front",
       "back"
@@ -2717,6 +2923,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "neutral-recycled-performance-long-sleeve-t-shirt": {
@@ -2727,6 +2939,14 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "sleeve_right"
     ],
     "yellow": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
+  "neutral-rollsleeve-t": {
+    "white": [
       "front",
       "back",
       "sleeve_left",
@@ -2871,6 +3091,14 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "sleeve_right"
     ]
   },
+  "russell-authentic-t": {
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
   "russell-classic-heavyweight-t-shirt": {
     "white": [
       "front",
@@ -2915,7 +3143,23 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "sleeve_right"
     ]
   },
+  "russell-ladies-authentic-t": {
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
   "russell-ladies-poloshirt-6535": {
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
+  "russell-ladies-pure-organic-heavy-tee": {
     "white": [
       "front",
       "back",
@@ -2932,6 +3176,14 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "russell-men-s-ultimate-cotton-polo": {
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ]
+  },
+  "russell-mens-pure-organic-heavy-tee": {
     "white": [
       "front",
       "back",
@@ -3099,6 +3351,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
       "back",
       "sleeve_left",
       "sleeve_right"
+    ],
+    "white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
     ]
   },
   "sols-mens-factor-zipped-fleece-jacket": {
@@ -3262,6 +3520,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "sport-jc005": {
+    "arctic-white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
     "electric-yellow": [
       "front",
       "back",
@@ -3304,6 +3568,12 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "sport-jc012": {
+    "arctic-white": [
+      "front",
+      "back",
+      "sleeve_left",
+      "sleeve_right"
+    ],
     "electric-yellow": [
       "front",
       "back",

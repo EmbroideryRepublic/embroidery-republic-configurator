@@ -323,8 +323,9 @@ export function ConfiguratorPrototype() {
     }).unitPrice;
   }, [elements, quantity, otherMethodPricingRules, product.basePrice]);
 
-  // Mengen-Tipp (lib/pricing/mengenTipp.ts): Liegt knapp über der gewählten Menge eine Staffelgrenze, bei der der GESAMTpreis
-  // sinkt (z. B. 50 statt 49 Stück), zeigt die Kauf-Leiste das an. Reine Anzeige; die Bestellung rechnet mit der gewählten Menge.
+  // Mengen-Tipp (lib/pricing/mengenTipp.ts): Liegt die gewählte Menge knapp unter einer Staffelgrenze, deckelt der Mengenpreis-Deckel den
+  // Gesamtpreis auf den der Grenzmenge (z. B. 48 Stück kosten so viel wie 50); die Kauf-Leiste zeigt „für denselben Preis 50 Stück“.
+  // Reine Anzeige; die Bestellung rechnet mit der gewählten Menge.
   // Bei Stickerei (nur Anfrage, Kostenschätzung) bewusst kein Tipp.
   const mengenTipp = useMemo(
     () =>

@@ -19,7 +19,13 @@
  * Bestehendem.
  */
 import { istAdmin } from '@/lib/admin/auth';
-import { QUANTITY_TIERS, DTF_POSITION_TIERS, DTF_GRUNDPREIS_STAFFEL } from '@/lib/pricing/calculatePrice';
+import {
+  QUANTITY_TIERS,
+  DTF_POSITION_TIERS,
+  STICKEREI_POSITION_TIERS,
+  DTF_GRUNDPREIS_STAFFEL,
+  type DtfPositionTier,
+} from '@/lib/pricing/calculatePrice';
 import { STICH_RABATT_MAX_PROZENT, STICH_AUFPREIS_JE_1000 } from '@/config/pricingRules';
 import { STICKKOSTEN_JE_1000_STICHE } from '@/config/pricing/selbstkosten';
 import { formatiereGeld } from '@/lib/format';
@@ -69,37 +75,29 @@ export default async function AdminRabattePage() {
       </p>
 
       <div>
-        <h2 className="text-base font-semibold">Positionsstaffel (DTF und Stickerei)</h2>
+        <h2 className="text-base font-semibold">Positionsstaffel DTF</h2>
         <p className="mt-1 text-sm text-gray-500">
           Feste Preise je veredelter Ansicht (kein Prozentrabatt) – Stufenfunktion: die erreichte Stückzahl gilt für
-          die gesamte Bestellung, kein Gleiten innerhalb einer Stufe. Seit 2026-09-03 auch Grundlage der Stickerei,
-          dort zuzüglich Stichaufpreis. Pflege ebenfalls in{' '}
+          die gesamte Bestellung. Damit eine größere Bestellung nie weniger kostet als eine kleinere, deckelt die
+          Preisberechnung den Gesamtpreis kurz vor jeder Stufe auf den Preis der Stufenmenge (Mengenpreis-Deckel, in
+          den Preisdetails als „Mengenpreis wie bei N Stück“). Seit 2026-11-26 liegt die erste Position ab 3 Stück
+          auf jeder Stufe 1 € höher als zuvor (weniger Mengenrabatt). Pflege in{' '}
           <code className="rounded bg-gray-100 px-1">src/lib/pricing/calculatePrice.ts</code> (DTF_POSITION_TIERS).
         </p>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
-        <table className="w-full text-left text-sm">
-          <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wide text-gray-500">
-            <tr>
-              <th className="px-3 py-2">Ab Stückzahl</th>
-              <th className="px-3 py-2 text-right">1. Position</th>
-              <th className="px-3 py-2 text-right">2. Position</th>
-              <th className="px-3 py-2 text-right">ab 3. Position</th>
-            </tr>
-          </thead>
-          <tbody>
-            {DTF_POSITION_TIERS.map((tier) => (
-              <tr key={tier.minQuantity} className="border-b border-gray-100 last:border-0">
-                <td className="px-3 py-2 font-medium">{tier.minQuantity}</td>
-                <td className="px-3 py-2 text-right">{formatiereGeld(tier.erste)}</td>
-                <td className="px-3 py-2 text-right">{formatiereGeld(tier.zweite)}</td>
-                <td className="px-3 py-2 text-right">{formatiereGeld(tier.abDritte)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <PositionsTabelle stufen={DTF_POSITION_TIERS} />
+
+      <div>
+        <h2 className="text-base font-semibold">Positionsstaffel Stickerei</h2>
+        <p className="mt-1 text-sm text-gray-500">
+          Eigene, unveränderte Tabelle (Stand 2026-08-09) zuzüglich Stichaufpreis; ohne Mengenpreis-Deckel. Stickerei ist
+          derzeit pausiert. Pflege in{' '}
+          <code className="rounded bg-gray-100 px-1">src/lib/pricing/calculatePrice.ts</code> (STICKEREI_POSITION_TIERS).
+        </p>
       </div>
+
+      <PositionsTabelle stufen={STICKEREI_POSITION_TIERS} />
 
       <div>
         <h2 className="text-base font-semibold">Grundpreis-Rabatt DTF (seit 2026-11-18)</h2>
@@ -137,5 +135,32 @@ export default async function AdminRabattePage() {
         (eigene Verwaltung, Einlösungslogik, Missbrauchsschutz) – bislang bewusst nicht gebaut.
       </div>
     </section>
+  );
+}
+
+function PositionsTabelle({ stufen }: { stufen: ReadonlyArray<DtfPositionTier> }) {
+  return (
+    <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+      <table className="w-full text-left text-sm">
+        <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wide text-gray-500">
+          <tr>
+            <th className="px-3 py-2">Ab Stückzahl</th>
+            <th className="px-3 py-2 text-right">1. Position</th>
+            <th className="px-3 py-2 text-right">2. Position</th>
+            <th className="px-3 py-2 text-right">ab 3. Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stufen.map((tier) => (
+            <tr key={tier.minQuantity} className="border-b border-gray-100 last:border-0">
+              <td className="px-3 py-2 font-medium">{tier.minQuantity}</td>
+              <td className="px-3 py-2 text-right">{formatiereGeld(tier.erste)}</td>
+              <td className="px-3 py-2 text-right">{formatiereGeld(tier.zweite)}</td>
+              <td className="px-3 py-2 text-right">{formatiereGeld(tier.abDritte)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

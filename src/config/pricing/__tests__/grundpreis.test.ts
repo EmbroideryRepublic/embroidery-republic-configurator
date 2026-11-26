@@ -6,7 +6,8 @@
  * (Betreiber: „nur 3–5 % mehr statt 7–10, mit natürlichen psychologischen Preisen“):
  *   - Der Textil-Grundpreis ist der Vorgängerpreis (Einkauf + 9 €, auf ,99), angehoben in ein Fenster von 3–5 % auf einen
  *     ,99-Betrag (anhebenInsFenster, config/pricing/marginTiers.ts).
- *   - Die Positionsstaffel (DTF_POSITION_TIERS) steht wieder auf dem alten Stand 9/5/4 …
+ *   - Die Positionsstaffel (DTF_POSITION_TIERS) stand wieder auf dem alten Stand 9/5/4 … (seit 2026-11-26 erste Position ab 3 Stück +1 €; der
+ *     Vergleich unten nutzt die heutige Staffel und misst nur die Grundpreis-Anhebung)
  *   - Alle Verkaufspreise enden weiter auf ,99 €; nichts wird günstiger als vorher; mehr Stück sind nie teurer.
  *
  * 2026-11-18: Bei 104 Produkten wird der Grundpreis gezielt angepasst (80 günstiger um 1–3 €, 24 teurer; Betreiberfreigabe, config/pricing/preiskorrektur.ts),
@@ -21,7 +22,7 @@ import assert from 'node:assert/strict';
 import type { ConfigElement } from '@/types';
 import { PRODUCTS } from '@/config/products';
 import { getPricingRules, KLEINAUFTRAG_REGEL_ID } from '@/config/pricingRules';
-import { calculatePrice, getDtfGrundpreisStufe } from '@/lib/pricing/calculatePrice';
+import { calculatePrice, DTF_POSITION_TIERS, getDtfGrundpreisStufe } from '@/lib/pricing/calculatePrice';
 import { aufNaechsten99 } from '@/lib/pricing/ladenpreis';
 import { GRUNDPREIS_ANPASSUNG_EUR } from '../preiskorrektur';
 import {
@@ -35,10 +36,12 @@ import {
 /** Der Grundpreis VOR der Anhebung: Einkauf + 9 €, aufgerundet auf den nächsthöheren vollen Euro + 0,99 €. */
 const vorher = (ek: number) => Math.floor(Math.round((ek + FLAT_MARKUP_EUR) * 10000) / 10000) + 1.99;
 
-/** Positionsstaffel des Vergleichsstands (2026-08-09, heute wieder gültig): [ab Menge, erste, zweite, ab dritte]. */
-const POSITIONEN_VORHER: [number, number, number, number][] = [
-  [1, 9, 5, 4], [3, 8, 4.5, 3.5], [10, 7.5, 4, 3], [50, 6, 3, 2.5], [100, 5.5, 2.5, 2], [250, 5, 2.5, 2], [500, 4.5, 2, 1.5], [1000, 4, 2, 1.5],
-];
+/**
+ * Positionsstaffel des Vergleichs: die HEUTIGE DTF-Staffel [ab Menge, erste, zweite, ab dritte]. Bis 2026-11-25 stand hier der Stand vom 2026-08-09
+ * (erste Position 9/8/7,5/6/5,5/5/4,5/4 €); seit 2026-11-26 liegt die erste Position ab 3 Stück 1 € höher (weniger Mengenrabatt, eigene Änderung:
+ * positionsstaffel.test.ts, dtfStaffel.test.ts). Dieser Test misst nur die ANHEBUNG DES GRUNDPREISES und darf die neue Staffel deshalb nicht mitzählen.
+ */
+const POSITIONEN_VORHER: [number, number, number, number][] = DTF_POSITION_TIERS.map((t) => [t.minQuantity, t.erste, t.zweite, t.abDritte]);
 
 /**
  * Der Stückpreis VOR der Anhebung, nachgerechnet (Grundpreis mit Mengenrabatt + Positionen, auf den nächsten ,99-Betrag).
@@ -159,7 +162,8 @@ test('Preisleiter: ohne Anpassung nie günstiger als vorher, immer ,99, im Schni
     for (const menge of MENGEN) {
       for (const n of [1, 2, 3]) {
         const alt = stueckpreisVorher(p.purchasePrice, menge, n);
-        const neu = calculatePrice({ basePrice: p.basePrice, quantity: menge, elements: ANSICHTEN.slice(0, n), pricingRules: rules });
+        // Reguläre Staffelpreise (ohne Mengenpreis-Deckel kurz vor einer Staffelgrenze): Verglichen wird die Grundpreis-Anhebung.
+        const neu = calculatePrice({ basePrice: p.basePrice, quantity: menge, elements: ANSICHTEN.slice(0, n), pricingRules: rules, mengenDeckel: false });
         const beschreibung = `${p.id} × ${menge} (${n} Ansicht/en): ${alt} → ${neu.unitPrice}`;
         assert.equal(Math.round(neu.unitPrice * 100) % 100, 99, `nicht ,99: ${beschreibung}`);
         if (anpassung !== 0) {

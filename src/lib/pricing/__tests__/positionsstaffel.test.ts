@@ -16,7 +16,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { getPricingRules, KLEINAUFTRAG_REGEL_ID } from '@/config/pricingRules';
-import { calculatePrice, DTF_POSITION_TIERS } from '../calculatePrice';
+import { calculatePrice, DTF_POSITION_TIERS, STICKEREI_POSITION_TIERS } from '../calculatePrice';
 import type { ConfigElement, PricingRule } from '@/types';
 
 /**
@@ -218,7 +218,7 @@ test('Stickerei kostet bei gleichem Motiv genau den Stichaufpreis (1,20 €/1.00
   for (const [stiche, menge, rabatt] of faelle) {
     const el = { ...logo('front'), estimatedStitches: stiche } as ConfigElement;
     // Rechenwerte ohne Ladenpreis-Rundung: Geprüft wird der Preisbaustein „Stichaufpreis“ selbst.
-    const d = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: dtf, ladenpreisRundung: false });
+    const d = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: dtf, ladenpreisRundung: false, mengenDeckel: false });
     const s = calculatePrice({ basePrice: BASIS_PREIS, quantity: menge, elements: [el], pricingRules: stick, ladenpreisRundung: false });
     assert.equal(s.breakdown.veredelungDiscountPercent, rabatt, `${menge} Stück: Rabatt auf den Stichaufpreis`);
     const erwartet = (stiche / 1000) * 1.2 * (1 - rabatt / 100);
@@ -227,10 +227,14 @@ test('Stickerei kostet bei gleichem Motiv genau den Stichaufpreis (1,20 €/1.00
     // diesen Grundpreis-Unterschied günstiger; der Stichaufpreis selbst bleibt exakt wie vorgegeben.
     const grundpreisUnterschied =
       (BASIS_PREIS * (d.breakdown.baseDiscountPercent - s.breakdown.baseDiscountPercent)) / 100;
+    // Seit 2026-11-26 haben DTF und Stickerei getrennte Positionstabellen (weniger Mengenrabatt bei DTF: erste Position ab 3 Stück 1 € höher,
+    // Stickerei unverändert). Der Unterschied der ersten Position gehört deshalb ebenfalls zur erwarteten Differenz (DTF ist dort teurer, also negativ).
+    const stufeFuer = (tabelle: ReadonlyArray<{ minQuantity: number; erste: number }>) => [...tabelle].reverse().find((t) => menge >= t.minQuantity)!;
+    const positionsUnterschied = stufeFuer(STICKEREI_POSITION_TIERS).erste - stufeFuer(DTF_POSITION_TIERS).erste;
     assert.ok(s.unitPrice > d.unitPrice, `${stiche} Stiche / ${menge} Stück: Stickerei muss teurer sein als DTF`);
     assert.ok(
-      Math.abs(s.unitPrice - d.unitPrice - erwartet - grundpreisUnterschied) < 0.02,
-      `${stiche} Stiche / ${menge} Stück: Aufpreis ${(s.unitPrice - d.unitPrice).toFixed(2)} €, erwartet ${(erwartet + grundpreisUnterschied).toFixed(2)} €`
+      Math.abs(s.unitPrice - d.unitPrice - erwartet - grundpreisUnterschied - positionsUnterschied) < 0.02,
+      `${stiche} Stiche / ${menge} Stück: Aufpreis ${(s.unitPrice - d.unitPrice).toFixed(2)} €, erwartet ${(erwartet + grundpreisUnterschied + positionsUnterschied).toFixed(2)} €`
     );
   }
 });
@@ -302,9 +306,25 @@ test('DTF bleibt vom Rabattdeckel unberührt (keine per_1000_stitches-Regel akti
 // Ersetzt die vorherige prozentuale Veredelungsrabattierung für DTF: feste
 // Preise je Position und Mengenbereich, keine weitere Rabattierung mehr.
 
-test('DTF-Positionsstaffel: alle 8 Stufen exakt wie vom Betreiber vorgegeben (2026-08-09)', () => {
+test('DTF-Positionsstaffel: alle 8 Stufen wie festgelegt (Stand 2026-08-09, erste Position seit 2026-11-26 ab 3 Stück um 1 € höher: weniger Mengenrabatt)', () => {
   assert.deepEqual(
     DTF_POSITION_TIERS.map((t) => [t.minQuantity, t.erste, t.zweite, t.abDritte]),
+    [
+      [1, 9, 5, 4],
+      [3, 9, 4.5, 3.5],
+      [10, 8.5, 4, 3],
+      [50, 7, 3, 2.5],
+      [100, 6.5, 2.5, 2],
+      [250, 6, 2.5, 2],
+      [500, 5.5, 2, 1.5],
+      [1000, 5, 2, 1.5],
+    ]
+  );
+});
+
+test('Stickerei-Positionsstaffel: eingefroren auf dem Stand vom 2026-08-09 (die DTF-Anpassung darf sie nicht berühren)', () => {
+  assert.deepEqual(
+    STICKEREI_POSITION_TIERS.map((t) => [t.minQuantity, t.erste, t.zweite, t.abDritte]),
     [
       [1, 9, 5, 4],
       [3, 8, 4.5, 3.5],
@@ -318,16 +338,34 @@ test('DTF-Positionsstaffel: alle 8 Stufen exakt wie vom Betreiber vorgegeben (20
   );
 });
 
+test('Beide Positionsstaffeln: Stufen aufsteigend, Positionspreise nie steigend; DTF liegt ab 3 Stück bei der ersten Position genau 1 € über dem alten Stand', () => {
+  for (const tabelle of [DTF_POSITION_TIERS, STICKEREI_POSITION_TIERS]) {
+    for (let i = 1; i < tabelle.length; i++) {
+      const a = tabelle[i - 1]!;
+      const b = tabelle[i]!;
+      assert.ok(b.minQuantity > a.minQuantity, 'Stufen müssen aufsteigen');
+      assert.ok(b.erste <= a.erste && b.zweite <= a.zweite && b.abDritte <= a.abDritte, `Position steigt bei ${b.minQuantity} Stück`);
+    }
+  }
+  DTF_POSITION_TIERS.forEach((t, i) => {
+    const alt = STICKEREI_POSITION_TIERS[i]!;
+    assert.equal(t.minQuantity, alt.minQuantity);
+    assert.equal(t.erste - alt.erste, i === 0 ? 0 : 1, `erste Position bei ${t.minQuantity} Stück`);
+    assert.equal(t.zweite, alt.zweite);
+    assert.equal(t.abDritte, alt.abDritte);
+  });
+});
+
 test('DTF-Positionsstaffel ist eine reine Stufenfunktion: 10, 25 und 49 Stück kosten je Position exakt dasselbe, ab 50 Stück springt der gesamte Auftrag in die nächste Stufe', async () => {
   const rules = await dtfRegeln();
   const erstePreis = (menge: number) =>
     calculatePrice({ basePrice: 0, quantity: menge, elements: [logo('front')], pricingRules: rules }).breakdown
       .firstPositionPrice;
 
-  assert.equal(erstePreis(10), 7.5);
-  assert.equal(erstePreis(25), 7.5);
-  assert.equal(erstePreis(49), 7.5);
-  assert.equal(erstePreis(50), 6);
+  assert.equal(erstePreis(10), 8.5);
+  assert.equal(erstePreis(25), 8.5);
+  assert.equal(erstePreis(49), 8.5);
+  assert.equal(erstePreis(50), 7);
 });
 
 test('Stufengrenzen: bei der niedrigeren Stückzahl wird nie WENIGER pro Position verlangt als eine Stufe höher', async () => {

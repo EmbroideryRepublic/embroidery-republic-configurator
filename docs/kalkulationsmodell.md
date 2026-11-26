@@ -73,6 +73,10 @@ gar nicht tragen.
 > sucht bis zu 25 % über die gewählte Menge, mindestens 10 Stück, und nennt die kleinste Menge mit mindestens 1 € Ersparnis). Der Preis selbst
 > ändert sich dadurch nicht, die Bestellung rechnet mit der gewählten Menge. Eine Preis-Deckelung (49 Stück zum Preis von 50) bleibt bewusst
 > aus: Sie bräuchte eine eigene Rechnungszeile und krumme Stückpreise.
+> **Überholt seit 2026-11-26:** Der Betreiber fand den Widerspruch „weniger Stück sind teurer als mehr Stück“ unsinnig und wollte ihn beseitigt haben.
+> Seit dem Abschnitt „Mengenstaffel vom 2026-11-26“ (ganz unten) kostet eine größere Menge nie weniger als eine kleinere: Der Gesamtpreis wird kurz
+> vor jeder Grenze auf den Preis der Grenzmenge gedeckelt (eigene Zeile „Mengenpreis wie bei N Stück“, Zwischenpreise ohne ,99 in der kurzen Zone);
+> der Mengen-Tipp sagt jetzt „genauso viel für mehr Stück“. Die Aussagen dieses Absatzes über günstigere Grenzmengen gelten nicht mehr.
 >
 > **Warenkorb-Preise (2026-11-12):** Der Warenkorb speichert Preise zum Zeitpunkt des Hineinlegens; nach einer Preisänderung zeigte er alte Preise,
 > während der Server (autoritativ) die neuen berechnet. Nach dem Laden rechnet `lib/cart/preiseAktualisieren.ts` jede Position mit `calculatePrice`
@@ -585,3 +589,89 @@ Preise: Warenwert je Stück ohne Versand, Modell um 28 € bei 3 Stück. Gerechn
 **Grenzen:** Die Tabelle ab 100 Stück ist nur dort verändert, wo günstige Modelle sonst keine sichtbare Stufe hätten (Mindest-Euro 4,00 €). Bei sehr großen Mengen teurer Modelle bleibt die Marge dünn (siehe Berichtigung oben, ID Microfleece Jacke).
 
 **Rückgängig machen:** In `calculatePrice()` den Aufruf von `getDtfGrundpreisStufe` entfernen, dann gilt für DTF wieder `QUANTITY_TIERS`. Die Herleitung (Skripte `staffel2.mts` und weitere) liegt außerhalb des Repos im Arbeitsverzeichnis der Sitzung.
+
+## Mengenstaffel vom 2026-11-26: Gesamtpreis nie rückwärts (Mengenpreis-Deckel) und etwas weniger Mengenrabatt
+
+**Vorgabe des Betreibers:** „Staffelpreise sollen Sinn ergeben. Der Mengenrabatt sollte etwas weniger sein, sodass das Produkt am Ende leicht teurer ist, ca. 5 %.“ Auslöser: Beim Fruit of the Loom Heavy-T kosteten 19 Stück zusammen 360,81 €, 20 Stück nur 359,80 € – weniger Stück waren teurer als mehr Stück. **Stand: Code und Zahlen liegen vor, der Betreiber muss die Preise noch freigeben, bevor sie live gehen.**
+
+### Teil 1: Gesamtpreis steigt mit der Menge nie rückwärts
+
+**Befund (Stand vor der Änderung, alle 182 Modelle × 1–3 Positionen × Mengen 1–1500):** Der Gesamtpreis sank in 2.556 Fällen mit mehr Stück: an der Grenze 20 Stück bei 63, an 50 Stück bei 546, an 100 bei 546, an 250 bei 386, an 500 bei 477 und an 1000 Stück bei 538 Fällen (546 = jedes Modell mit 1, 2 und 3 Positionen). Beispiel Katalogmedian (Russell Men's Pure Organic Heavy Tee, 1 Position): 49 Stück 1.224,51 €, 50 Stück 1.149,50 €. Der Stückpreis stieg nirgends mit der Menge.
+
+**Mathematik, am echten Rechenkern geprüft:** Jede Stufe gilt für die ganze Bestellung. Springt der Stückpreis an der Grenze g von u auf u − s, kostet g Stück genau dann nicht weniger als g − 1 Stück, wenn g · (u − s) ≥ (g − 1) · u, also s ≤ (u − s)/(g − 1). Auf der ,99-Leiter ist der kleinste Sprung s = 1 €. Dann muss u ≥ g sein: Bei Stückpreisen um 20–40 € hält die Gesamtsumme nur bis etwa 20–40 Stück. Ab 50 Stück gäbe es mit festen ,99-Preisen und steigenden Gesamtpreisen **gar keinen Mengenrabatt mehr** (der Stückpreis dürfte sich nie ändern); jeder Rabattschritt dort verlangt Zwischenpreise, die nicht auf ,99 enden. Strikt steigende Gesamtpreise, größere Staffelsprünge bei hohen Mengen und die ,99-Rundung des Stückpreises schließen sich also aus. Eine der drei Vorgaben muss für eine kurze Zone nachgeben.
+
+**Entscheidung: Mengenpreis-Deckel** (`calculatePrice()`, Funktion `staffelgrenzen`): Der Gesamtpreis für q Stück ist der **kleinste Staffelpreis aller Mengen von q bis zur letzten Grenze**, also höchstens der Preis der nächsten Grenzmenge. Wer 47 bis 49 Stück bestellt, zahlt so viel wie für 50 Stück (Russell-Beispiel: 47 bis 49 Stück 1.199,50 €, 50 Stück 1.199,50 €, 51 Stück 1.223,49 €). Gilt nur für DTF; die Stickerei rechnet unverändert.
+- **Gesamtpreis sinkt nie, Stückpreis steigt nie:** geprüft für alle Modelle, Mengen 1–1500, 1–3 Positionen, mit und ohne Großformat (`staffelMonoton.test.ts`, gut 1,6 Mio. Preise); davor sank er in 2.556 Fällen, danach in 0.
+- **Die Grenzmengen selbst bleiben unberührt:** Bei 3, 5, 10, 20, 50, 100, 250, 500 und 1000 Stück gilt weiter der reguläre Stufenpreis auf ,99 (für jedes Modell geprüft). Die runden Bestellmengen, die am häufigsten vorkommen, kosten also genau, was die Staffel verspricht.
+- **Nur kurz vor einer Grenze weicht der Stückpreis ab:** Dort ist er Gesamtpreis ÷ Menge und endet nicht auf ,99 (z. B. 49 Stück à 24,48 €). Länge der Zone je Grenze (1 Position, Ø / längste über alle Modelle): 20 Stück 0,3 / 1 · 50 Stück 3,7 / 6 · 100 Stück 6,8 / 13 · 250 Stück 13,3 / 21 · 500 Stück 14,2 / 37 · 1000 Stück 117 / 150. Die Länge folgt aus der Höhe des Sprungs: Ein Euro bei einem Stückpreis von 22 € verlangt rund 4,5 % der Grenzmenge. Die Zone vor 1000 Stück ist lang, weil der alte Rabatt dort steil ist (36 % auf den Grundpreis); Bestellungen von 880 bis 999 Stück sind sehr selten.
+- **Anzeige und Rechnung:** In den Preisdetails erscheint die Zeile „Mengenpreis wie bei N Stück“ (negativ, `breakdown.mengenDeckelPerUnit`), sodass die Zeilen weiter genau den Stückpreis ergeben (`preisdetails.test.ts`). Im Warenkorb und auf der Rechnung ist es ein eigener Posten in der Kategorie „Rabatt“ (`positionStage.ts`), nichts landet unter „Rundung“. Der Server (`priceCart`) rechnet mit demselben Kern; die Preisbeispiele der Seiten laufen über `priceCart` und stimmen deshalb automatisch.
+- **Mengen-Tipp neu:** Statt „mit 50 statt 49 Stück zahlst du weniger“ (das gibt es nicht mehr) sagt der Konfigurator in der Zone: „Tipp: Mit 50 statt 48 Stück zahlst du genauso viel (1.199,50 €) – und erhältst 2 Stück mehr.“ (`lib/pricing/mengenTipp.ts`). „Noch N Stück – dann nur noch X pro Stück“ sucht weiter die nächste reguläre Stufe. **Alle drei neuen Kundentexte (Zeile samt Erklärung, Tipp, Posten) vor dem Livegang vom Betreiber freizugeben.**
+
+**Verworfene Alternativen:**
+- *Untergrenze hinter der Grenze* (50 Stück kosten so viel wie 49, danach greift der Stufenpreis): Die Zone ist gleich lang, trifft aber genau die runden Bestellmengen. Auf der Grenzmenge läge der Stückpreis im Schnitt 6,8 % (bis 13,9 %) über dem versprochenen Stufenpreis (bei 100 Stück z. B. 23,75 € statt 22,99 €), bei 1000 Stück 13 %; „ab 100 Stück 22,99 €“ wäre bei 100 Stück falsch, und die Preisbeispiele mit 50 und 100 Stück verlören ihre ,99-Preise. Dafür sänke der Gewinn nie unter den alten Stand. Der Deckel senkt den Preis in der Zone dagegen (siehe Gewinnprüfung unten).
+- *Sprünge so klein legen, dass die Bedingung ohne Zone gilt*: Bei 50 Stück und 23 € wären höchstens 0,47 € Sprung erlaubt, bei 1000 Stück 0,02 €. Das verlangt krumme Preise auf jeder Stufe und widerspricht der ,99-Festlegung des Betreibers.
+- *Gleitende Staffel* (nur die Stücke ab der Grenze günstiger): Gesamtpreis steigt immer, aber kein Stückpreis endet mehr auf ,99.
+
+### Teil 2: etwas weniger Mengenrabatt (ca. 5 % teurer)
+
+**Maßnahme** (`DTF_POSITION_TIERS`, Spalte `erste`): Die erste Druckposition kostet ab 3 Stück auf jeder Stufe **genau 1,00 € mehr**: 9 / 9 / 8,50 / 7 / 6,50 / 6 / 5,50 / 5 € statt 9 / 8 / 7,50 / 6 / 5,50 / 5 / 4,50 / 4 € (Stufen 1, 3, 10, 50, 100, 250, 500, 1000). 1 und 2 Stück, die Einrichtung (10 €), zweite und weitere Position, `DTF_GRUNDPREIS_STAFFEL` und die Textil-Grundpreise sind unverändert.
+
+**Warum ein fester Euro statt eines Prozentfaktors:** Auf der ,99-Leiter ist 1 € der kleinste mögliche Schritt (bei 22 € rund 4,5 %), kleinere Änderungen verschwinden in der Rundung. Ein fester Euro je Stufe lässt alle Abstände zwischen den Stufen unverändert, jede Stufe bis 100 Stück bleibt für jedes Modell mindestens 1 € günstiger als die davor (`dtfStaffel.test.ts`), und die Zonenlängen des Deckels bleiben wie zuvor. Ein gemeinsamer Faktor auf den Rabatt (getestet mit 0,8) hätte die Stufen 5, 10 und 20 unverändert gelassen (ihr Abstand von 1 € lässt sich nicht verkleinern, sonst fielen zwei Stufen auf einen Preis) und die Stufe 1000 um 14 % verteuert; das Mittel von 5,7 % käme so nur durch wenige große Sprünge in den oberen Stufen zustande.
+
+**Messung** (alle 182 Modelle, Stückpreis der Stufenmenge, vorher → nachher; ein Motiv 20 × 25 cm):
+
+| Stufe | Ø Änderung | Median | kleinste | größte |
+|---:|---:|---:|---:|---:|
+| 3 | +3,8 % | +3,7 % | +1,4 % | +5,6 % |
+| 5 | +3,9 % | +3,8 % | +1,4 % | +5,9 % |
+| 10 | +4,1 % | +4,0 % | +1,4 % | +6,3 % |
+| 20 | +4,3 % | +4,2 % | +1,5 % | +6,7 % |
+| 50 | +4,7 % | +4,5 % | +1,6 % | +7,7 % |
+| 100 | +5,1 % | +4,8 % | +1,8 % | +8,3 % |
+| 250 | +5,4 % | +5,0 % | +1,9 % | +9,1 % |
+| 500 | +5,5 % | +5,3 % | +2,0 % | +9,1 % |
+| 1000 | +6,3 % | +6,3 % | +2,3 % | +10,0 % |
+
+**Mittel über die Stufen ab 5 Stück: +4,9 %** (ein Motiv), +4,3 % bei zwei und +3,9 % bei drei Motiven, weil dort der Gesamtpreis höher liegt und der Euro weniger zählt. Absolut ist es immer genau +1,00 € je Stück (Test `staffelMonoton.test.ts` rechnet den alten Stand unabhängig nach). Günstige Modelle (Grundpreis um 12 €) werden um 5 bis 8 % teurer, die teuersten um 1,4 bis 2,3 %.
+
+| Menge | FOTL Valueweight T (11,99 €) vorher → nachher, Stück | Gesamt | Russell Heavy Tee (19,99 €, Katalogmedian) Stück | Gesamt | Just Hoods College Hoodie (25,99 €) Stück | Gesamt |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 30,99 → 30,99 | 30,99 | 38,99 → 38,99 | 38,99 | 44,99 → 44,99 | 44,99 |
+| 2 | 25,99 → 25,99 | 51,98 | 33,99 → 33,99 | 67,98 | 39,99 → 39,99 | 79,98 |
+| 3 | 19,99 → 20,99 | 59,97 → 62,97 | 27,99 → 28,99 | 83,97 → 86,97 | 33,99 → 34,99 | 101,97 → 104,97 |
+| 5 | 18,99 → 19,99 | 94,95 → 99,95 | 26,99 → 27,99 | 134,95 → 139,95 | 32,99 → 33,99 | 164,95 → 169,95 |
+| 10 | 17,99 → 18,99 | 179,90 → 189,90 | 25,99 → 26,99 | 259,90 → 269,90 | 31,99 → 32,99 | 319,90 → 329,90 |
+| 20 | 16,99 → 17,99 | 339,80 → 359,80 | 24,99 → 25,99 | 499,80 → 519,80 | 30,99 → 31,99 | 619,80 → 639,80 |
+| 25 | 16,99 → 17,99 | 424,75 → 449,75 | 24,99 → 25,99 | 624,75 → 649,75 | 30,99 → 31,99 | 774,75 → 799,75 |
+| 50 | 14,99 → 15,99 | 749,50 → 799,50 | 22,99 → 23,99 | 1.149,50 → 1.199,50 | 28,99 → 29,99 | 1.449,50 → 1.499,50 |
+| 100 | 13,99 → 14,99 | 1.399 → 1.499 | 21,99 → 22,99 | 2.199 → 2.299 | 25,99 → 26,99 | 2.599 → 2.699 |
+| 250 | 12,99 → 13,99 | 3.247,50 → 3.497,50 | 19,99 → 20,99 | 4.997,50 → 5.247,50 | 24,99 → 25,99 | 6.247,50 → 6.497,50 |
+| 500 | 12,99 → 13,99 | 6.495 → 6.995 | 18,99 → 19,99 | 9.495 → 9.995 | 23,99 → 24,99 | 11.995 → 12.495 |
+| 1000 | 11,99 → 12,99 | 11.990 → 12.990 | 16,99 → 17,99 | 16.990 → 17.990 | 20,99 → 21,99 | 20.990 → 21.990 |
+
+(Die Gesamtpreise gelten an den Stufenmengen selbst; in der Zone davor gilt der Deckel, z. B. Russell 49 Stück: vorher 1.224,51 €, nachher 1.199,50 €. Warenwert ohne Versand.) Das Heavy-T-Beispiel des Betreibers: 19 Stück 360,81 € und 20 Stück 359,80 € werden zu 379,80 € und 379,80 € (19 Stück kosten wie 20).
+
+### Gewinn- und Margenprüfung (Kostenmodell vom 2026-11-18, ein Motiv 20 × 25 cm, günstigerer Lieferant je Menge)
+
+| Menge | Gewinn je Bestellung, Median vorher → nachher | kleinster Gewinn | Marge, Median | Modelle mit sinkendem Gewinn |
+|---:|---:|---:|---:|---:|
+| 1 | 3,96 → 3,96 € | 3,04 → 3,04 € | 9,3 → 9,3 % | 0 von 182 |
+| 2 | 15,84 → 15,84 € | 7,90 → 7,90 € | 24,2 → 24,2 % | 0 |
+| 3 | 19,14 → 21,76 € | 11,51 → 14,43 € | 22,7 → 24,1 % | 7 (Versandgrenze, s. u.) |
+| 5 | 39,28 → 44,15 € | 30,39 → 35,27 € | 32,3 → 35,0 % | 0 |
+| 10 | 97,72 → 107,47 € | 75,45 → 85,20 € | 41,3 → 43,7 % | 0 |
+| 20 | 214,83 → 234,33 € | 164,98 → 184,48 € | 47,2 → 49,2 % | 0 |
+| 50 | 551,92 → 600,67 € | 329,94 → 378,69 € | 49,4 → 51,4 % | 0 |
+| 100 | 982,93 → 1.080,43 € | 95,51 → 193,01 € | 49,6 → 51,8 % | 0 |
+
+- **Auf allen Stufenmengen steigt der Gewinn je Bestellung** um 1 € je Stück (Median bei 100 Stück +97,50 €). Der Doku-Mindestwert (mindestens 3 € bei 1, 2, 3, 4, 5, 10, 25, 50 und 100 Stück) bleibt für alle 182 Modelle erfüllt (kleinster Wert 3,04 € bei einem Stück, unverändert). Die Marge-Bedingungen der Preiskorrektur (mindestens 25 % bei 3 Stück, 30 % bei 5 Stück) erfüllen jetzt 84 statt 81 (bei 3) bzw. 134 statt 129 Modelle (bei 5).
+- **Ausnahme Versandgrenze:** Bei 3 Stück sinkt der Gewinn bei 7 Modellen (4 Stück bei einem) um 3,80 € (bei 4 Stück 2,83 €), z. B. James & Nicholson Round-T-Heavy 21,90 → 18,10 €. Der Warenwert springt dort von 74,97 € auf 77,97 € und überschreitet die Freigrenze von 75 €: Das Paket wird versandkostenfrei (−6,90 €), die Bestellung ist 3 € teurer, die Kundschaft zahlt insgesamt 3,90 € weniger. Das ist eine Eigenschaft der Freigrenze, kein Fehler der Staffel; die Bestellungen bleiben mit 17 bis 31 € Gewinn im Plus.
+- **Ausnahme Deckelzonen:** Bei 13.794 von 273.000 Fällen (182 Modelle × Mengen 1–1500, 1 Position; 5,1 %) liegt der Gewinn unter dem alten Wert, und zwar ausschließlich in den Zonen vor 50/100/250/500/1000 Stück. Dort war der alte Preis der Widersinn, den der Deckel beseitigt (49 Stück kosteten bis zu 80 € mehr als 50). Fälle und Rückgang je Grenze: vor 50 Stück 288 (Ø 19 €, größter 80 €), vor 100 Stück 473 (Ø 110 €, 620 €), vor 250 Stück 331 (Ø 114 €, 222 €), vor 500 Stück 350 (Ø 249 €, 922 €), vor 1000 Stück 12.352 (Ø 950 €, 5.800 €). Bis 250 Stück bleibt jede dieser Bestellungen bei mindestens 3 € Gewinn; darüber sind es 11 von 350 Fällen vor 500 Stück und 588 von 12.352 vor 1000 Stück darunter (alles Modelle, die schon bei der Grenzmenge selbst wenig oder nichts verdienen, siehe nächster Punkt).
+- **Schon vorher vorhandene Verluste bei sehr großen Mengen** (nicht Teil dieser Änderung, hier nur ausgewiesen): Mit dem Kostenmodell macht bei 250 Stück 1 Modell Verlust (neu 0), bei 500 Stück 3 (neu 1: ID Microfleece Jacke), bei 1000 Stück 7 Modelle (neu weiter 7, aber um rund 975 € je Bestellung kleinerer Verlust): die Earth-Positive-Hoodies (5 Modelle), der Build-Your-Brand Ultra Heavy Cotton Box Hoody und die ID Microfleece Jacke. Ihr Grundpreis-Rabatt von 36 % bei 1000 Stück übersteigt den Aufschlag von rund 9 € weit. Der Deckel dehnt diesen Verlustbereich auf die Zone vor 1000 Stück aus: 299 Fälle (887 bis 999 Stück) bei 4 dieser Modelle (Build-Your-Brand Ultra Heavy Cotton Box Hoody und drei Earth-Positive-Hoodies) rutschen neu ins Minus, bei allen anderen Modellen und Mengen entsteht kein neuer Verlust. Empfehlung: den Prozentrabatt ab 500 Stück für teure Modelle senken (Betreiberentscheidung, hier nicht umgesetzt).
+
+### Prüfung und Rückgängig machen
+
+- **Wächter** (`src/lib/pricing/__tests__/staffelMonoton.test.ts`): Gesamtpreis nie fallend und Stückpreis nie steigend (alle Modelle, 1–1500 Stück, 1–3 Positionen, mit/ohne Großformat); der Deckel wirkt nur vor einer Staffelgrenze und hält den Preis flach; die Grenzmengen behalten ,99; genau +1,00 € ab 3 Stück gegen den unabhängig nachgerechneten alten Stand; Server (`priceCart`) und Posten stimmen mit dem Rechenkern überein, der Deckel ist ein eigener Posten; Stickerei ohne Deckel. Die 60 eingefrorenen Stickerei-Vergleichspreise (`dtfStaffel.test.ts`) sind unverändert grün.
+- **Stickerei:** bekommt eine eigene, eingefrorene Positionstabelle (`STICKEREI_POSITION_TIERS`, Stand 2026-08-09); vorher teilten sich DTF und Stickerei die Tabelle. „Stickerei = DTF plus Stichaufpreis“ gilt deshalb nur noch bis auf den Unterschied der ersten Position (DTF ab 3 Stück 1 € teurer). Ob die Stickerei beim Wiederöffnen dieselbe Staffel bekommt, ist offen.
+- **Rückgängig machen, Teil 2:** Spalte `erste` in `DTF_POSITION_TIERS` zurück auf 9 / 8 / 7,5 / 6 / 5,5 / 5 / 4,5 / 4. **Teil 1:** In `calculatePrice()` den Deckel-Zweig (alles nach `if (input.mengenDeckel === false || roh.hasErrors) return roh;`) entfernen.
+- **Nicht geprüft:** Kundentexte (Freigabe offen); Preise zwei und drei Positionen im Kostenmodell (Gewinn nur für ein Motiv gerechnet); Mehrfach-Kartons bei L-Shop für große Mengen.

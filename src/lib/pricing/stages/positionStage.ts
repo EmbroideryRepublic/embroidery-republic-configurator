@@ -207,6 +207,27 @@ export function calculatePositionStage(input: PositionInput): PositionResult {
     );
   }
 
+  // ── Mengenpreis-Deckel (nur DTF, kurz vor einer Staffelgrenze) ──────
+  // NEGATIVER Betrag, einmalig je Position: Der Gesamtpreis liegt höchstens beim Preis der Grenzmenge (calculatePrice, „Mengenpreis-Deckel“).
+  // Eigener Posten statt Teil der „Rundung“, damit auf Warenkorb und Rechnung nichts still verschwindet.
+  if (b.mengenDeckelTotal < 0 && b.mengenDeckelAufMenge !== null) {
+    lines.push(
+      makeLine({
+        id: `${itemId}:mengenpreis`,
+        label: `Mengenpreis wie bei ${b.mengenDeckelAufMenge} Stück`,
+        category: 'rabatt',
+        description: `Für ${quantity} Stück gilt höchstens der Gesamtpreis von ${b.mengenDeckelAufMenge} Stück`,
+        origin: herkunft(
+          undefined,
+          `Ab ${b.mengenDeckelAufMenge} Stück gilt der günstigere Staffelpreis für die ganze Bestellung. Damit eine größere Bestellung nie weniger kostet als eine kleinere, gilt für ${quantity} Stück höchstens der Gesamtpreis von ${b.mengenDeckelAufMenge} Stück.`,
+          { menge: quantity, grenzmenge: b.mengenDeckelAufMenge }
+        ),
+        amount: b.mengenDeckelTotal,
+        quantity: 1,
+      })
+    );
+  }
+
   // ── Einmalige Einrichtungskosten ────────────────────────────────────
   if (b.setupTotal > 0) {
     lines.push(

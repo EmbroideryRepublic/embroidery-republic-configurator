@@ -5514,7 +5514,7 @@ export const PRODUCTS: ProductConfig[] = [
   },
   {
     id: "gildan-ultra-cotton-long-sleeve-t-shirt",
-    name: "Ultra Cotton Long Sleeve T- Shirt",
+    name: "Ultra Cotton Long Sleeve T-Shirt",
     brand: "Gildan",
     productType: "longsleeve",
     qualityTier: "standard",
@@ -5525,7 +5525,7 @@ export const PRODUCTS: ProductConfig[] = [
     material: "100% Baumwolle (Ash Grey: 99% Baumwolle / 1% Polyester; Sport Grey: 90% Baumwolle / 10% Polyester; Dark Heather, Safety Green, Safety Orange: 50% Baumwolle / 50% Polyester)",
     weightGsm: 190,
     fit: "Unisex, normale Passform",
-    description: "Ultra Cotton Long Sleeve T- Shirt von Gildan. 100% Baumwolle (Ash Grey: 99% Baumwolle / 1% Polyester; Sport Grey: 90% Baumwolle / 10% Polyester; Dark Heather, Safety Green, Safety Orange: 50% Baumwolle / 50% Polyester), 190 g/m².",
+    description: "Ultra Cotton Long Sleeve T-Shirt von Gildan. 100% Baumwolle (Ash Grey: 99% Baumwolle / 1% Polyester; Sport Grey: 90% Baumwolle / 10% Polyester; Dark Heather, Safety Green, Safety Orange: 50% Baumwolle / 50% Polyester), 190 g/m².",
     certifications: [],
     careInstructions: 'Pflege gemäß Herstelleretikett',
     aufgenommenAm: "2026-08-04",

@@ -31,7 +31,7 @@
  *
  * Platzhalter (lib/seo/dtfSeite.ts → fuelleDtf):
  *   {marke} {anzahl} {arten} {artPlural} {markenAnzahl} {marken} {marken3}
- *   {gewichtSatz} {abPreis} {produktion} {versand}
+ *   {gewichtSatz} {abPreis} {produktion} {versand} {hervorgehoben}
  */
 import type { ProductType } from '@/types';
 import { ABLAUF_SCHRITTE, type KategorieFrage } from '@/config/seo/kategorieSeiten';
@@ -49,6 +49,8 @@ export interface DtfSeite {
   beschreibung: string;
   einleitung: string[];
   fragen: KategorieFrage[];
+  /** Produkt-IDs, die {hervorgehoben} im Text einsetzt („Ultra Cotton T-Shirt (203 g/m²), …“) – Namen und Gewichte kommen aus dem Katalog. */
+  hervorgehoben?: string[];
 }
 
 // ── Bausteine (wortgleich oder Auszug aus freigegebenen Texten) ─────────
@@ -80,7 +82,38 @@ export const DTF_ABLAUF_SCHRITTE: string[] = ABLAUF_SCHRITTE.map((schritt, i) =>
 
 // ── Fabriken: dieselbe Textform für jede Marke bzw. Produktart ──────────
 
-function markenSeite(marke: string, slug: string): DtfSeite {
+/**
+ * Gezielte Abweichungen von der Standardform (Stand 26.11.2026, Suchanfragen aus der Search Console): Titel, Beschreibung und ein
+ * Einleitungsabsatz tragen die Wörter, mit denen tatsächlich gesucht wird; `zusatzFragen` beantworten Fragen, die nur diese Seite betreffen.
+ * Alles bleibt DTF-only (Test: dtfSeiten.test.ts) und wortnah an bereits freigegebenen Aussagen.
+ */
+interface Abweichung {
+  titel?: string;
+  h1?: string;
+  beschreibung?: string;
+  /** Ersetzt den ERSTEN Einleitungsabsatz. */
+  einleitung?: string;
+  zusatzFragen?: KategorieFrage[];
+  hervorgehoben?: string[];
+}
+
+function mit(seite: DtfSeite, a: Abweichung = {}): DtfSeite {
+  return {
+    ...seite,
+    ...(a.titel ? { titel: a.titel } : {}),
+    ...(a.h1 ? { h1: a.h1 } : {}),
+    ...(a.beschreibung ? { beschreibung: a.beschreibung } : {}),
+    ...(a.einleitung ? { einleitung: [a.einleitung, ...seite.einleitung.slice(1)] } : {}),
+    ...(a.zusatzFragen ? { fragen: [...seite.fragen.slice(0, -1), ...a.zusatzFragen, ...seite.fragen.slice(-1)] } : {}),
+    ...(a.hervorgehoben ? { hervorgehoben: a.hervorgehoben } : {}),
+  };
+}
+
+function markenSeite(marke: string, slug: string, abweichung?: Abweichung): DtfSeite {
+  return mit(markenSeiteStandard(marke, slug), abweichung);
+}
+
+function markenSeiteStandard(marke: string, slug: string): DtfSeite {
   return {
     slug,
     marke,
@@ -105,7 +138,11 @@ function markenSeite(marke: string, slug: string): DtfSeite {
   };
 }
 
-function artSeite(art: ProductType, slug: string): DtfSeite {
+function artSeite(art: ProductType, slug: string, abweichung?: Abweichung): DtfSeite {
+  return mit(artSeiteStandard(art, slug), abweichung);
+}
+
+function artSeiteStandard(art: ProductType, slug: string): DtfSeite {
   return {
     slug,
     art,
@@ -202,7 +239,15 @@ function sportSeite(slug: string): DtfSeite {
 
 /** Auswahl nach Nachfrage (Search Console) und Sortimentsbreite (≥ 7 Modelle). */
 export const DTF_SEITEN: DtfSeite[] = [
-  markenSeite('Gildan', 'gildan-bedrucken'),
+  markenSeite('Gildan', 'gildan-bedrucken', {
+    // Gesucht wird „gildan t shirt bedrucken“, „gildan hoodie bedrucken“, „gildan ultra cotton“ (zusammen rund 250 Impressionen in 90 Tagen).
+    titel: 'Gildan T-Shirts & Hoodies bedrucken lassen – ab 1 Stück',
+    beschreibung:
+      'Gildan Ultra Cotton, Heavy Cotton, Hoodies und mehr: {anzahl} Modelle per DTF-Transferdruck bedrucken – ab 1 Stück, Preis live im Konfigurator.',
+    einleitung:
+      'Wähle aus {anzahl} Modellen von {marke} – {arten} –, lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit. Zum Einstieg: {hervorgehoben}.',
+    hervorgehoben: ['gildan-ultra-cotton-t-shirt', 'gildan-heavy-t', 'gildan-heavy-blend-hooded-sweatshirt', 'gildan-ultra-cotton-long-sleeve-t-shirt'],
+  }),
   markenSeite('Just Hoods', 'just-hoods-bedrucken'),
   markenSeite('Fruit of the Loom', 'fruit-of-the-loom-bedrucken'),
   markenSeite('Stedman', 'stedman-bedrucken'),
@@ -215,9 +260,36 @@ export const DTF_SEITEN: DtfSeite[] = [
   markenSeite('EarthPositive', 'earthpositive-bedrucken'),
   // Seit 2026-11-18: Just Cool (mit den Sport-Shirts 8 Modelle).
   markenSeite('Just Cool', 'just-cool-bedrucken'),
-  artSeite('longsleeve', 'longsleeves-bedrucken'),
-  artSeite('jacket', 'jacken-bedrucken'),
-  artSeite('zip-hoodie', 'zip-hoodies-bedrucken'),
+  artSeite('longsleeve', 'longsleeves-bedrucken', {
+    // Gesucht wird „longsleeve(s) bedrucken (lassen)“, „long sleeve bedrucken“, „longshirt bedrucken“ (zusammen rund 330 Impressionen, Position 30–63).
+    titel: 'Longsleeve bedrucken lassen – ab 1 Stück, Langarmshirts',
+    beschreibung:
+      '{anzahl} Longsleeves (Langarmshirts) von {marken3} u. a. per DTF-Transferdruck bedrucken – je nach Modell auch am Ärmel, ab 1 Stück.',
+    einleitung:
+      'Longsleeve, Long Sleeve, Longshirt oder Langarmshirt – gemeint ist dasselbe: ein Shirt mit langen Ärmeln. Es gibt {anzahl} Modelle von {markenAnzahl} Marken. Lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+    zusatzFragen: [
+      {
+        q: 'Kann ich ein Longsleeve auch am Ärmel bedrucken lassen?',
+        a: 'Je nach Modell stehen neben Brust und Rücken auch die Ärmel zur Verfügung. Zu jeder Position siehst du im Konfigurator die zulässige Veredelungsfläche samt Maßen in Zentimetern. Der Preis richtet sich nach der Anzahl der veredelten Positionen und der Menge.',
+      },
+    ],
+  }),
+  artSeite('jacket', 'jacken-bedrucken', {
+    // Alle Jacken im Katalog sind Fleece-/Microfleece-Jacken (Test: dtfSeiten.test.ts hält das fest). Gesucht wird „jacken bedrucken (lassen)“, „jacken mit eigenem aufdruck“.
+    titel: 'Jacken bedrucken lassen – Fleecejacken ab 1 Stück',
+    beschreibung:
+      '{anzahl} Fleecejacken von {marken3} u. a. per DTF-Transferdruck mit eigenem Aufdruck bedrucken – ab 1 Stück, Preis live im Konfigurator.',
+    einleitung:
+      'Das Jackensortiment besteht aus {anzahl} Fleece- und Microfleece-Jacken von {markenAnzahl} Marken, für Betrieb, Team und Verein. Lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+  }),
+  artSeite('zip-hoodie', 'zip-hoodies-bedrucken', {
+    // Sweatjacken mit Reißverschluss: Gesucht wird „sweatjacken bedrucken ab 1 stück“ (Position 34), „zip hoodie bedrucken lassen“.
+    titel: 'Zip-Hoodies & Sweatjacken bedrucken lassen – ab 1 Stück',
+    beschreibung:
+      '{anzahl} Zip-Hoodies, Sweatjacken und Half-Zip-Sweats von {marken3} u. a. per DTF-Transferdruck bedrucken – ab 1 Stück, live im Konfigurator.',
+    einleitung:
+      'Zip-Hoodies, Sweatjacken und Half-Zip-Sweats: Es gibt {anzahl} Modelle von {markenAnzahl} Marken. Lade dein Logo oder Motiv hoch und sieh das Ergebnis direkt im Konfigurator, mit Preis in Echtzeit.',
+  }),
   kinderSeite('kinderbekleidung-bedrucken'),
   sportSeite('sportbekleidung-bedrucken'),
 ];

@@ -23,6 +23,7 @@
     "seo:pruefen": "node scripts/seoPruefen.mjs",
     "seo:indexnow": "node scripts/indexNowSenden.mjs",
     "besuch:pruefen": "node scripts/pruefeBesuchszaehler.mjs",
+    "besuch:ereignisse-pruefen": "node scripts/pruefeEreignisse.mjs",
     "marketing:qr": "node scripts/qrCodesErzeugen.mjs"
   },
   "dependencies": {

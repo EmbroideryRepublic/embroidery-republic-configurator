@@ -85,3 +85,29 @@ export const PFAD_SONSTIGE = '(sonstige Seiten)';
 
 /** So viele Tage zeigt die Admin-Auswertung. */
 export const BESUCH_ANZEIGE_TAGE = 30;
+
+// ═══════════════════════════════════════════════════════════════════════
+// EREIGNISSE – „Weg zur Bestellung“ (Migration 0040)
+// ═══════════════════════════════════════════════════════════════════════
+
+/**
+ * Schalter der Ereignis-Messung. AUS, bis der Betreiber den ergänzten Satz der Datenschutzerklärung (Ziffer 3, Reichweitenmessung;
+ * Wortlaut: docs/besucherzaehler.md → „Ereignisse“) freigegeben hat: Die Messung meldet zusätzlich zur Seitenadresse den Namen eines
+ * Ereignisses („Konfigurator geöffnet“). Ist der Schalter aus, sendet der Browser nichts und der Server speichert nichts.
+ */
+export const EREIGNIS_MESSUNG_AKTIV = false;
+
+/**
+ * Die Schritte, die gezählt werden – feste Liste wie die Quellen: Der Client kann nur diese Namen melden, alles andere wird verworfen.
+ * Gezählt werden BESUCHER (Tageskennung), nicht Klicks: Wer fünfmal in den Warenkorb legt, zählt einmal pro Tag.
+ * Bewusst NICHT erfasst: Inhalt, Dateiname, Größe oder Vorschau des Motivs, Produkt, Farbe, Menge, Preis, Name oder Bestelldaten.
+ */
+export const BESUCH_EREIGNISSE = ['konfigurator_geoeffnet', 'motiv_hochgeladen', 'text_hinzugefuegt', 'in_den_warenkorb'] as const;
+export type BesuchEreignis = (typeof BESUCH_EREIGNISSE)[number];
+
+export const BESUCH_EREIGNIS_NAMEN = {
+  konfigurator_geoeffnet: 'Konfigurator geöffnet',
+  motiv_hochgeladen: 'Motiv hochgeladen',
+  text_hinzugefuegt: 'Text hinzugefügt',
+  in_den_warenkorb: 'In den Warenkorb gelegt',
+} as const satisfies Record<BesuchEreignis, string>;

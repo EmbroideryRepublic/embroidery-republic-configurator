@@ -40,6 +40,8 @@ import { faqSchema, kategorieBrotkrumenSchema, kategorieSchema } from '@/lib/seo
 import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 import { DtfLandingpage, dtfMetadata } from '@/components/seo/DtfLandingpage';
 import { MarkenChips } from '@/components/seo/MarkenChips';
+import { Auswahlhilfe } from '@/components/seo/Auswahlhilfe';
+import { auswahlhilfe } from '@/lib/seo/auswahlhilfe';
 import { ZeilenHinweise } from '@/components/seo/ZeilenHinweise';
 import { alleDtfSlugs, dtfSeiteVon } from '@/lib/seo/dtfAdresse';
 import { AnlassLandingpage, anlassMetadata } from '@/components/seo/AnlassLandingpage';
@@ -227,6 +229,12 @@ export default async function Kategorieseite(props: { params: Promise<{ kategori
             </p>
           )}
         </section>
+
+        {(() => {
+          // „Welches Modell passt?“: Eckpunkte der Art aus dem Katalog (lib/seo/auswahlhilfe.ts).
+          const punkte = auswahlhilfe(topProdukte(seite.art, 1000).produkte);
+          return punkte ? <Auswahlhilfe name={plural} anzahl={gesamt} punkte={punkte} /> : null;
+        })()}
 
         <section aria-labelledby="verfahren" className="mt-24">
           <h2 id="verfahren" className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal tracking-tight text-brand">

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
+import { COMPANY, PRODUKTIONSTAGE, VERSANDTAGE } from '@/config/company';
 import { Scissors, Shirt, Clock, ShieldCheck, Palette, Users } from 'lucide-react';
 import { STANDARD_VORSCHAUBILD } from '@/lib/seo/vorschau';
 import { veredelungVerfuegbar } from '@/config/bestellweg';
@@ -92,7 +92,20 @@ export default function AboutPage() {
         ))}
       </div>
 
-      <div className="mt-12 rounded-2xl bg-cream/70 p-6 sm:p-8">
+      {/* Nur belegte Angaben: Sitz laut Impressum (config/company.ts), Lieferung laut FAQ. Keine Aussage zu Abholung, Ladengeschäft oder Terminen. */}
+      <p className="mt-10 text-sm leading-relaxed text-brand/70">
+        Unser Sitz ist in {COMPANY.city}. Bestellt wird online im Konfigurator, geliefert wird innerhalb Deutschlands. Alle Angaben zum Unternehmen stehen im{' '}
+        <Link href="/impressum" className="text-gold-dark underline underline-offset-2 hover:text-gold">
+          Impressum
+        </Link>
+        , Fragen beantworten wir über die{' '}
+        <Link href="/kontakt" className="text-gold-dark underline underline-offset-2 hover:text-gold">
+          Kontaktseite
+        </Link>
+        .
+      </p>
+
+      <div className="mt-8 rounded-2xl bg-cream/70 p-6 sm:p-8">
         <h2 className="font-serif text-xl font-normal text-brand">So läuft ein Auftrag ab</h2>
         <ol className="mt-3 space-y-2.5 text-sm text-brand/70">
           {[

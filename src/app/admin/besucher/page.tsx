@@ -7,7 +7,8 @@
 import { istAdmin } from '@/lib/admin/auth';
 import { ladeBesuchsstatistik, type BesuchTag } from '@/lib/besuch/statistik';
 import { achsenSkala, anteilText, kurzesDatum, langesDatum, seitenName } from '@/lib/besuch/anzeige';
-import { BESUCH_QUELLEN, quellenName } from '@/config/besuch';
+import { BESUCH_EREIGNIS_NAMEN, BESUCH_QUELLEN, EREIGNIS_MESSUNG_AKTIV, quellenName } from '@/config/besuch';
+import { ladeEreignisstatistik, type Ereignisstatistik } from '@/lib/besuch/ereignisse';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { zahl } from '@/lib/format';
 
@@ -112,10 +113,102 @@ function Verlauf({ tage }: { tage: BesuchTag[] }) {
   );
 }
 
+/** „Weg zur Bestellung“: Wie viele Besucher welchen Schritt erreichen (Migration 0040, lib/besuch/ereignisse.ts). */
+function Bestellweg({ e, besucher }: { e: Ereignisstatistik | null; besucher: number }) {
+  if (!EREIGNIS_MESSUNG_AKTIV) {
+    return (
+      <div className="rounded-lg border border-gray-200 bg-white p-4">
+        <h2 className="text-sm font-semibold">Weg zur Bestellung (30 Tage)</h2>
+        <p className="mt-2 text-sm text-gray-600">
+          Die Messung ist vorbereitet, aber noch <strong>nicht eingeschaltet</strong>: Sie wartet auf die Freigabe des ergänzten
+          Satzes in der Datenschutzerklärung (Wortlaut: <code>docs/besucherzaehler.md</code>, Abschnitt „Ereignisse“). Danach
+          zählt sie, wie viele Besucher den Konfigurator öffnen, ein Motiv hochladen oder einen Text hinzufügen und etwas in den
+          Warenkorb legen – ohne Inhalte, ohne Produkt, ohne Preis.
+        </p>
+      </div>
+    );
+  }
+  if (e === null) {
+    return (
+      <div role="alert" className="rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+        <p className="font-semibold">Die Zahlen zum Weg zur Bestellung konnten nicht geladen werden.</p>
+        <p className="mt-1">
+          Wahrscheinlichste Ursache: Die Datenbank-Migration <code>0040_besuch_ereignisse.sql</code> ist noch nicht eingespielt.
+        </p>
+      </div>
+    );
+  }
+  const prozent = (a: number | null) => (a === null ? '–' : `${zahl(a * 100, a < 0.1 ? 1 : 0)} %`);
+  return (
+    <div className="rounded-lg border border-gray-200 bg-white p-4">
+      <h2 className="text-sm font-semibold">Weg zur Bestellung (30 Tage)</h2>
+      <div className="mt-3 overflow-x-auto">
+        <table className="w-full text-left text-sm tabular-nums">
+          <thead className="border-b border-gray-200 text-xs uppercase tracking-wide text-gray-500">
+            <tr>
+              <th className="py-1.5 pr-3">Schritt</th>
+              <th className="whitespace-nowrap px-3 py-1.5 text-right">Besucher</th>
+              <th className="whitespace-nowrap px-3 py-1.5 text-right">von allen Besuchern</th>
+              <th className="whitespace-nowrap py-1.5 pl-3 text-right">von „Konfigurator geöffnet“</th>
+            </tr>
+          </thead>
+          <tbody className="align-top">
+            <tr className="border-b border-gray-100">
+              <td className="py-1.5 pr-3 text-gray-700">Besucher der Website</td>
+              <td className="whitespace-nowrap px-3 py-1.5 text-right">{zahl(besucher, 0)}</td>
+              <td className="px-3 py-1.5 text-right text-gray-500">100 %</td>
+              <td className="py-1.5 pl-3 text-right text-gray-400">–</td>
+            </tr>
+            {e.trichter.map((s) => (
+              <tr key={s.ereignis} className="border-b border-gray-100 last:border-0">
+                <td className="py-1.5 pr-3 text-gray-700">{s.name}</td>
+                <td className="whitespace-nowrap px-3 py-1.5 text-right">{zahl(s.besucher, 0)}</td>
+                <td className="px-3 py-1.5 text-right text-gray-500">{prozent(s.anteilAnAllen)}</td>
+                <td className="py-1.5 pl-3 text-right text-gray-500">{prozent(s.anteilAnGeoeffnet)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {e.quellen.length > 0 && (
+        <div className="mt-4 overflow-x-auto">
+          <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-gray-500">Nach Quelle</h3>
+          <table className="w-full text-left text-sm tabular-nums">
+            <thead className="border-b border-gray-200 text-xs uppercase tracking-wide text-gray-500">
+              <tr>
+                <th className="py-1.5 pr-3">Quelle</th>
+                {Object.values(BESUCH_EREIGNIS_NAMEN).map((n) => (
+                  <th key={n} className="whitespace-nowrap px-3 py-1.5 text-right">{n}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="align-top">
+              {e.quellen.map((q) => (
+                <tr key={q.quelle} className="border-b border-gray-100 last:border-0">
+                  <td className="py-1.5 pr-3 text-gray-700">{quellenName(q.quelle)}</td>
+                  {(Object.keys(BESUCH_EREIGNIS_NAMEN) as (keyof typeof BESUCH_EREIGNIS_NAMEN)[]).map((k) => (
+                    <td key={k} className="whitespace-nowrap px-3 py-1.5 text-right">{zahl(q.je[k], 0)}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      <p className="mt-3 text-xs text-gray-500">
+        Gezählt werden Besucher je Tag, nicht Klicks: Wer an einem Tag fünfmal in den Warenkorb legt, zählt einmal. Es werden nur die Namen
+        der Schritte gezählt – nie Dateien, Produkte, Mengen, Preise oder Bestelldaten. Die Bestellungen selbst stehen unter Statistik.
+      </p>
+    </div>
+  );
+}
+
 export default async function AdminBesucherPage() {
   // Eigene Prüfung wie bei allen Admin-Seiten (siehe app/admin/page.tsx).
   if (!(await istAdmin())) return null;
   const s = await ladeBesuchsstatistik();
+  // Bestellweg nur laden, wenn die Messung an ist (sonst gäbe es ohnehin nichts zu zeigen).
+  const ereignisse = s && EREIGNIS_MESSUNG_AKTIV ? await ladeEreignisstatistik(s.letzte30.besucher) : null;
   const basis = kanonischeBasisUrl();
 
   return (
@@ -172,6 +265,8 @@ export default async function AdminBesucherPage() {
             <h2 className="mb-3 text-sm font-semibold">Besucher pro Tag (letzte {s.tage.length} Tage)</h2>
             <Verlauf tage={s.tage} />
           </div>
+
+          <Bestellweg e={ereignisse} besucher={s.letzte30.besucher} />
 
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-lg border border-gray-200 bg-white p-4">

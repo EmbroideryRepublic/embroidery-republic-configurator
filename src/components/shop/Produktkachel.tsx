@@ -17,6 +17,7 @@
  * Prüfstrecke. Sie stehen bewusst als Attribut und nicht als sichtbarer
  * Text: Die Prüfung soll die Gestaltung nicht diktieren.
  */
+import { markeUndName } from '@/lib/seo/auswahlhilfe';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Leaf } from 'lucide-react';
@@ -82,7 +83,7 @@ export function Produktkachel({
         {produkt.colors[0] && (
           <Image
             src={anzeigeProduktBild(produkt.id, produkt.colors)}
-            alt={produkt.name}
+            alt={markeUndName(produkt)}
             fill
             sizes={liste ? '176px' : '(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw'}
             priority={index !== undefined && index < PRIORITAET_ANZAHL}

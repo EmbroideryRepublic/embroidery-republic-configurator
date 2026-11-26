@@ -196,6 +196,10 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN, beiPause: { q: 'Welche Dateien kann ich für mein Logo hochladen?', a: A_DATEIEN_DTF } },
       { q: 'Wie lange dauert es, bis mein Hoodie ankommt?', a: A_DAUER, beiPause: { q: 'Wie lange dauert es, bis mein Hoodie ankommt?', a: A_DAUER_DTF } },
       { q: 'Welche Hoodies gibt es und wie schwer sind sie?', a: A_MODELLE },
+      {
+        q: 'Was kostet es, einen Hoodie bedrucken zu lassen?',
+        a: 'Der Preis setzt sich aus dem Textil, der Veredelung (Position, Fläche) und der Menge zusammen; ab 5 Stück gelten Staffelpreise. Hoodies beginnen bei {abPreis} pro Stück zzgl. Veredelung. Die Preisbeispiele auf dieser Seite sind echte Rechnungen aus dem Konfigurator – den Preis für dein Motiv siehst du dort in Echtzeit.',
+      },
     ],
   },
   {
@@ -281,10 +285,10 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       titel: 'Poloshirts bedrucken lassen – ab 1 Stück, DTF-Druck',
       h1: 'Poloshirts bedrucken lassen',
       beschreibung:
-        '{anzahl} Poloshirts von {marken3} u. a. per DTF-Transferdruck mit Firmenlogo bedrucken – ab 1 Stück, live im Konfigurator, ohne Mindestmenge.',
+        '{anzahl} Poloshirts (Polohemden) von {marken3} u. a. mit Firmenlogo per DTF-Druck bedrucken – ab 1 Stück, ohne Mindestmenge.',
       // Der erste Absatz nennt das gestickte Logo; der zweite (EINLEITUNG_ZWEI) wird wie bei den anderen Seiten durch EINLEITUNG_DTF ersetzt.
       einleitung: [
-        'Das Poloshirt ist der klassische Auftritt für Betrieb, Verein und Team – mit dem Logo auf der Brust wirkt es sofort einheitlich. Wähle aus {anzahl} Polo-Modellen von {markenAnzahl} Marken, platziere dein Logo live im Konfigurator und sieh den Preis in Echtzeit.',
+        'Das Poloshirt – auch Polohemd oder Polo-Shirt genannt – ist der klassische Auftritt für Betrieb, Verein und Team: Mit dem Logo auf der Brust wirkt es sofort einheitlich. Wähle aus {anzahl} Polo-Modellen von {markenAnzahl} Marken, platziere dein Logo live im Konfigurator und sieh den Preis in Echtzeit.',
         EINLEITUNG_ZWEI,
       ],
       // „…die bessere Wahl“ setzt die Stickerei als Gegenstück voraus.
@@ -351,7 +355,11 @@ export const KATEGORIE_SEITEN: KategorieSeite[] = [
       {
         q: 'Kann ich auch nur ein einzelnes Poloshirt besticken lassen?',
         a: A_EINZELSTUECK,
-        beiPause: { q: 'Kann ich auch nur ein einzelnes Poloshirt bedrucken lassen?', a: A_EINZELSTUECK },
+        beiPause: { q: 'Kann ich ein Poloshirt ab 1 Stück bedrucken lassen?', a: A_EINZELSTUECK },
+      },
+      {
+        q: 'Was ist der Unterschied zwischen Poloshirt und Polohemd?',
+        a: 'Keiner: „Poloshirt“, „Polohemd“ und „Polo-Shirt“ bezeichnen dasselbe Kleidungsstück mit Kragen und Knopfleiste.',
       },
       {
         q: 'Was ist besser für ein Poloshirt: Stickerei oder Druck?',

@@ -99,6 +99,18 @@ export function fuelleDtf(text: string, seite: DtfSeite, f: DtfFakten): string {
         : `Die Stoffgewichte reichen von ${f.gewichtMin} bis ${f.gewichtMax} g/m². `;
     },
     abPreis: () => formatiereGeld(f.abPreis),
+    // „Ultra Cotton T-Shirt (203 g/m²), Heavy Cotton T-Shirt (180 g/m²) und …“: Namen und Gewichte aus dem Katalog.
+    hervorgehoben: () => {
+      const ids = seite.hervorgehoben ?? [];
+      if (ids.length === 0) throw new Error(`{hervorgehoben} in "${seite.slug}" verwendet, die Seite hat keine hervorgehobenen Modelle.`);
+      return listeMitUnd(
+        ids.map((id) => {
+          const p = PRODUCTS.find((x) => x.id === id);
+          if (!p) throw new Error(`DTF-Seite "${seite.slug}": hervorgehobenes Modell "${id}" gibt es nicht im Katalog.`);
+          return typeof p.weightGsm === 'number' && p.weightGsm > 0 ? `${p.name} (${p.weightGsm} g/m²)` : p.name;
+        })
+      );
+    },
     produktion: () => `${PRODUKTIONSTAGE.von} bis ${PRODUKTIONSTAGE.bis} Werktagen`,
     versand: () => `${VERSANDTAGE.von} bis ${VERSANDTAGE.bis} Werktagen`,
   };

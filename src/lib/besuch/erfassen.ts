@@ -18,7 +18,9 @@
 import { createHmac } from 'node:crypto';
 import {
   BESUCH_AUSGESCHLOSSEN,
+  BESUCH_EREIGNISSE,
   BESUCH_QUELLEN,
+  type BesuchEreignis,
   PFAD_SONSTIGE,
   QUELLE_OHNE_KENNZEICHNUNG,
   QUELLE_SONSTIGE,
@@ -56,6 +58,13 @@ export function bereinigeQuelle(roh: unknown): string {
   const quelle = roh.trim().toLowerCase().slice(0, 40);
   if (!quelle) return QUELLE_OHNE_KENNZEICHNUNG;
   return (BESUCH_QUELLEN as readonly string[]).includes(quelle) ? quelle : QUELLE_SONSTIGE;
+}
+
+/** Macht aus dem gemeldeten Ereignisnamen einen Wert der festen Liste – alles andere ist `null` (wird nicht gezählt). */
+export function bereinigeEreignis(roh: unknown): BesuchEreignis | null {
+  if (typeof roh !== 'string') return null;
+  const name = roh.trim().toLowerCase();
+  return (BESUCH_EREIGNISSE as readonly string[]).includes(name) ? (name as BesuchEreignis) : null;
 }
 
 /**

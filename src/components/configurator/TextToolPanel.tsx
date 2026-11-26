@@ -1,5 +1,6 @@
 'use client';
 
+import { meldeBestellwegSchritt } from '@/lib/besuch/ereignisMelden';
 import { useRef, useState } from 'react';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { AVAILABLE_FONTS } from '@/config/fonts';
@@ -95,6 +96,7 @@ export function TextToolPanel({ printArea, onElementAdded }: TextToolPanelProps)
     setSelectedElementId(element.id);
     setValue('');
     onElementAdded?.();
+    meldeBestellwegSchritt('text_hinzugefuegt');
     isAddingRef.current = false;
   }
 

@@ -219,7 +219,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     h1: 'Firmenkleidung bedrucken lassen',
     eyebrow: 'Für Unternehmen',
     beschreibung:
-      'Polos, Hoodies und Jacken mit Firmenlogo per DTF-Transferdruck bedrucken – ab 1 Stück, Kauf auf Rechnung, Preis live im Konfigurator.',
+      'Firmenlogo selbst gestalten: Polos, Hoodies und Jacken per DTF-Transferdruck bedrucken – ab 1 Stück, Kauf auf Rechnung, Preis live im Konfigurator.',
     einleitung: [
       'Polos für den Außendienst, Hoodies fürs Team, Jacken für draußen: Es gibt {anzahl} Modelle ({arten}). Lade dein Firmenlogo hoch, platziere es auf Brust, Rücken oder Ärmel und sieh den Preis in Echtzeit.',
       EINLEITUNG_DTF,
@@ -249,7 +249,11 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         ueberschrift: 'Bestellung für das ganze Unternehmen',
-        absaetze: [ABSATZ_MEHRERE_PRODUKTE, A_FREIGABE],
+        absaetze: [
+          ABSATZ_MEHRERE_PRODUKTE,
+          A_FREIGABE,
+          'Du möchtest lieber ein individuelles Angebot, etwa für größere Mengen oder mehrere Teile auf einmal? Dafür gibt es die Seite für Geschäftskunden mit der Geschäftsanfrage.',
+        ],
       },
     ],
     beispiele: [
@@ -288,6 +292,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       { q: 'Wie lange dauert es, bis die Bestellung ankommt?', a: A_DAUER },
     ],
     verwandt: [
+      'geschaeftskunden',
       'poloshirts-besticken-bedrucken',
       'hoodies-bedrucken-besticken',
       'jacken-bedrucken',
@@ -860,11 +865,11 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
   {
     slug: 'geschaeftskunden',
     kurzname: 'Geschäftskunden',
-    titel: 'Firmenkleidung bedrucken lassen – Angebot, ab 1 Stück',
-    h1: 'Firmenkleidung für dein Unternehmen – Geschäftsanfrage in wenigen Minuten',
+    titel: 'Geschäftskunden: Angebot für Firmenkleidung, ab 1 Stück',
+    h1: 'Angebot für Firmenkleidung – Geschäftsanfrage in wenigen Minuten',
     eyebrow: 'Für Geschäftskunden',
     beschreibung:
-      'Firmenkleidung mit Logo per DTF-Transferdruck: ab 1 Stück, Staffelpreise, Vorschau zur Freigabe, Kauf auf Rechnung. Jetzt Geschäftsanfrage stellen.',
+      'Unverbindliches Angebot für Firmenkleidung mit Logo anfordern: ab 1 Stück, Staffelpreise, Vorschau zur Freigabe, Kauf auf Rechnung.',
     einleitung: [
       'Ob Praxis, Handwerksbetrieb, Hotel, Studio oder Verein: Wir bedrucken Poloshirts, T-Shirts, Hoodies und Jacken mit deinem Logo – für das ganze Team oder einzeln für neue Mitarbeitende. Fordere unten ein unverbindliches, individuelles Angebot an – wir melden uns persönlich.',
       EINLEITUNG_DTF,

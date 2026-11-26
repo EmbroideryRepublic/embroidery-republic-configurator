@@ -12,6 +12,7 @@ import assert from 'node:assert/strict';
 import { readdirSync } from 'node:fs';
 import { PRODUCTS } from '@/config/products';
 import { DTF_ABLAUF_SCHRITTE, DTF_SEITEN } from '@/config/seo/dtfSeiten';
+import { LETZTE_AENDERUNG } from '@/config/seo/aenderungen';
 import { KATEGORIE_SEITEN } from '@/config/seo/kategorieSeiten';
 import { veredelungVerfuegbar } from '@/config/bestellweg';
 import sitemap from '@/app/sitemap';
@@ -166,4 +167,41 @@ test('Verlinkung: Marken- und Art-Seiten werden intern gefunden', () => {
   }
   // Arten mit eigener Kategorieseite bleiben unverändert.
   for (const k of KATEGORIE_SEITEN) assert.equal(kategorieLink(k.art), `/${k.slug}`);
+});
+
+test('Gezielte Texte (26.11.2026): Aussagen über das Sortiment stimmen mit dem Katalog überein', () => {
+  const seite = (slug: string) => DTF_SEITEN.find((x) => x.slug === slug)!;
+  // „Fleecejacken“ / „Fleece- und Microfleece-Jacken“ steht in Titel und Einleitung: Gilt nur, solange jede Jacke eine Fleecejacke ist.
+  const jacken = PRODUCTS.filter((p) => p.productType === 'jacket');
+  for (const j of jacken) assert.match(j.name, /fleece/i, `Jacke ohne „Fleece“ im Namen: ${j.name} – Titel und Einleitung von /jacken-bedrucken müssen angepasst werden`);
+  // „Ultra Cotton“ und „Heavy Cotton“ stehen in der Beschreibung der Gildan-Seite.
+  const gildan = PRODUCTS.filter((p) => p.brand === 'Gildan').map((p) => p.name);
+  assert.ok(gildan.some((n) => /ultra cotton/i.test(n)) && gildan.some((n) => /heavy cotton/i.test(n)), 'Gildan-Beschreibung nennt Modelle, die es nicht mehr gibt');
+  // Hervorgehobene Modelle gibt es, gehören zur Marke der Seite und werden mit Gewicht eingesetzt.
+  const g = seite('gildan-bedrucken');
+  assert.ok((g.hervorgehoben ?? []).length >= 3);
+  for (const id of g.hervorgehoben ?? []) assert.equal(PRODUCTS.find((p) => p.id === id)?.brand, 'Gildan', id);
+  assert.match(fuelleDtf('{hervorgehoben}', g, dtfFakten(g)), /Ultra Cotton T-Shirt \(203 g\/m²\)/);
+  assert.throws(() => fuelleDtf('{hervorgehoben}', seite('longsleeves-bedrucken'), dtfFakten(seite('longsleeves-bedrucken'))), /keine hervorgehobenen Modelle/);
+  // Sweatjacken-Seite: nur Zip-Modelle; Longsleeve-Zusatzfrage bleibt DTF-only und steht vor der letzten Frage.
+  const l = seite('longsleeves-bedrucken');
+  assert.ok(l.fragen.some((f) => /Ärmel/.test(f.q)));
+  assert.match(l.fragen[l.fragen.length - 1]!.q, /schwer/);
+});
+
+test('Sitemap: lastmod nur bei bewusst überarbeiteten Seiten, gültiges Datum, Seite existiert, nie in der Zukunft', () => {
+  const eintraege = sitemap();
+  const nachPfad = new Map(eintraege.map((e) => [new URL(e.url).pathname.replace(/^$/, '/'), e]));
+  for (const [pfad, tag] of Object.entries(LETZTE_AENDERUNG)) {
+    assert.match(tag, /^\d{4}-\d{2}-\d{2}$/, `${pfad}: ${tag}`);
+    assert.ok(!Number.isNaN(Date.parse(tag)), `${pfad}: kein Datum`);
+    assert.ok(Date.parse(`${tag}T00:00:00Z`) <= Date.now() + 36 * 3600 * 1000, `${pfad}: Datum liegt in der Zukunft`);
+    const e = nachPfad.get(pfad);
+    assert.ok(e, `${pfad}: steht nicht in der Sitemap`);
+    assert.equal((e!.lastModified as Date).toISOString().slice(0, 10), tag, `${pfad}: lastmod stimmt nicht`);
+  }
+  const mitDatum = eintraege.filter((e) => e.lastModified);
+  assert.equal(mitDatum.length, Object.keys(LETZTE_AENDERUNG).length, 'lastmod bei einer Seite ohne Eintrag');
+  // Die Sitemap-Funktion selbst darf nie den Abrufzeitpunkt einsetzen: Zweimal aufgerufen liefert sie dasselbe.
+  assert.deepEqual(JSON.stringify(sitemap()), JSON.stringify(sitemap()));
 });

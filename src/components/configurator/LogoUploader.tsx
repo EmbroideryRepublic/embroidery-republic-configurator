@@ -1,5 +1,6 @@
 'use client';
 
+import { meldeBestellwegSchritt } from '@/lib/besuch/ereignisMelden';
 import { useRef, useState } from 'react';
 import { AlertTriangle, CheckCircle2, XCircle } from 'lucide-react';
 import clsx from 'clsx';
@@ -184,6 +185,8 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
       // oben kurz sichtbar, statt sofort wieder aus dem DOM zu verschwinden.
       addElement(element);
       setSelectedElementId(element.id);
+      // Nur der Name des Schritts wird gezählt – nie die Datei (lib/besuch/ereignisMelden.ts).
+      meldeBestellwegSchritt('motiv_hochgeladen');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Datei konnte nicht verarbeitet werden.');
     } finally {

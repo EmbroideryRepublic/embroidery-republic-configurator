@@ -243,3 +243,34 @@ bleiben (sie enthalten keine Personen); die Tageskennungen verschwinden von selb
 | Tests (Erfassung, Auswertung, Anzeige, Wächter, Rate-Limit-Schlüssel) | **fertig** |
 | Datenschutz-Wortlaut | **freigegeben 2026-10-09**, wortgleich eingearbeitet (Ziffer 2, 3, 7, 13, „Stand") |
 | Einbindung ins Layout (= Aktivierung) | **fertig** – mit der Veröffentlichung am 2026-10-09 |
+
+---
+
+## 9. Ereignisse: „Weg zur Bestellung“ (Migration 0040, Stand 2026-11-26)
+
+**Wozu:** Der Besucherzähler zeigt Seitenaufrufe, aber nicht, an welcher Stelle Besucher auf dem Weg zur Bestellung abspringen. Vier Schritte werden gezählt:
+`konfigurator_geoeffnet`, `motiv_hochgeladen`, `text_hinzugefuegt`, `in_den_warenkorb` (Liste und Anzeigenamen: `config/besuch.ts`).
+
+**Datensparsam und getrennt:**
+- Gezählt werden **Besucher je Tag und Schritt** (Tageskennung wie im Besucherzähler): Wer fünfmal in den Warenkorb legt, zählt einmal pro Tag.
+- Der Browser meldet **nur den Namen des Schrittes** (`lib/besuch/ereignisMelden.ts`, POST `/api/ereignis`). Nie gemeldet oder gespeichert: Dateiinhalt oder -name, Produkt, Farbe, Menge, Preis, Name, E-Mail, Bestell- oder Kundendaten.
+- Kein Cookie, kein Local/Session Storage, keine Geräteangaben. Roboter, „Do Not Track“, „Global Privacy Control“, Vorab-Laden, Betreiber und fremde Hosts zählen nicht (gleiche Regeln wie `/api/besuch`).
+- Tabellen `besuch_ereignisse` (Zahlen) und `besuch_ereignis_kennungen` (Tageskennung je Schritt, nach Tagesende gelöscht – die bestehende Funktion `raeume_besuch_kennungen_auf` räumt sie mit ab, der Cron-Code bleibt unverändert). Row Level Security ohne Policy, Funktionen für Browser-Rollen gesperrt, **keine** Fremdschlüssel zu Bestellungen oder Kunden.
+- Die vier Messpunkte stehen im Konfigurator **nach** der jeweiligen Aktion (Wächtertest `ereignisse.test.ts`); Bestell-, Zahlungs-, Warenkorb-Speicher- und Webhook-Code sind unberührt.
+
+**Schalter:** `EREIGNIS_MESSUNG_AKTIV` in `config/besuch.ts` ist **false**. Solange er aus ist, sendet der Browser nichts und die Route speichert nichts; der Adminbereich zeigt einen Hinweis. Einschalten erst, wenn (1) der Satz unten in die Datenschutzerklärung (Ziffer 3, „Reichweitenmessung“) übernommen ist und (2) die Migration angewendet und verifiziert ist. Danach den Schalter auf `true` setzen und den Wächtertest („Schalter: AUS …“) anpassen.
+
+**Entwurf für die Datenschutzerklärung** (Ziffer 3, nach dem Absatz „Nicht gezählt werden …“; Freigabe des Betreibers nötig, ggf. rechtlich prüfen lassen):
+
+> Zusätzlich zählen wir, wie viele Besucherinnen und Besucher bestimmte Schritte im Konfigurator erreichen: den Konfigurator öffnen, ein Motiv hochladen oder einen Text hinzufügen und einen Artikel in den Warenkorb legen. Dazu wird nur der Name des jeweiligen Schrittes an unseren Server gemeldet – nicht der Inhalt oder Name Ihrer Datei, nicht das Produkt, die Menge oder der Preis und keine Bestell- oder Kontaktdaten. Gezählt wird mit demselben Kennwert wie oben (ein Schritt zählt je Besucher und Tag einmal); dauerhaft bleiben ausschließlich Zahlen ohne Personenbezug.
+
+**Einspielen** (Betreiberfreigabe nötig, weil es die Produktionsdatenbank ändert; rein additiv):
+
+```
+node scripts/applyMigration.mjs supabase/migrations/0040_besuch_ereignisse.sql --dry
+node scripts/applyMigration.mjs supabase/migrations/0040_besuch_ereignisse.sql
+node scripts/pruefeEreignisse.mjs        (npm run besuch:ereignisse-pruefen; zurückgerollt, 30 Prüfungen)
+node scripts/pruefeMigrationen.mjs       (Nummernfolge)
+```
+
+Stand: Migration geschrieben, **in zurückgerollter Transaktion gegen die echte Datenbank geprüft (30 von 30)**, Trockenlauf sauber (Bestand 37 Bestellungen vorher = nachher), **noch nicht angewendet**.

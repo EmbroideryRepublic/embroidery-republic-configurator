@@ -43,6 +43,10 @@ import { kuerzenAufLaenge } from '@/lib/seo/kuerzen';
 import { produktTitel } from '@/lib/seo/produktTitel';
 import { brotkrumenSchema, faqSchema, produktSchema } from '@/lib/seo/strukturierteDaten';
 import { produktFakten } from '@/lib/seo/produktFakten';
+import { produktVergleich } from '@/lib/seo/produktVergleich';
+import { markeUndName } from '@/lib/seo/auswahlhilfe';
+import { hatVergleichsBaustein } from '@/config/seo/produktPilot';
+import { ProduktVergleichBlock } from '@/components/produkt/ProduktVergleichBlock';
 import type { ProductConfig } from '@/config/products/types';
 
 /** Ratgeberseiten, auf die jede Produktseite verlinkt (interne Verlinkung; Zielseiten: config/seo/anlassSeiten.ts). */
@@ -147,7 +151,7 @@ function MiniKarte({ produkt }: { produkt: ProductConfig }) {
         {produkt.colors[0] && (
           <Image
             src={anzeigeProduktBild(produkt.id, produkt.colors)}
-            alt={produkt.name}
+            alt={markeUndName(produkt)}
             fill
             sizes="(max-width: 768px) 50vw, 25vw"
             className="object-contain p-3 transition-transform duration-500 ease-out group-hover:scale-105"
@@ -338,6 +342,18 @@ export default async function Produktseite(props: { params: Promise<{ slug: stri
             ))}
           </ul>
         </section>
+
+        {/* ── Im Vergleich + Druckfläche je Größe (Pilot: config/seo/produktPilot.ts) ──
+            Alles aus den Katalogdaten berechnet (lib/seo/produktVergleich.ts). */}
+        {hatVergleichsBaustein(produkt.id) && (
+          <ProduktVergleichBlock
+            produkt={produkt}
+            vergleich={produktVergleich(produkt)}
+            artPlural={produktTypLabelPlural(produkt.productType)}
+            kategorieHref={kategorieLink(produkt.productType)}
+            markenHref={markenSeiteVon(produkt.brand) ? `/${markenSeiteVon(produkt.brand)!.slug}` : undefined}
+          />
+        )}
 
         {/* ── Veredelung ───────────────────────────────────────────────
             Überzeugende Darstellung der zwei Verfahren – gemeinsame

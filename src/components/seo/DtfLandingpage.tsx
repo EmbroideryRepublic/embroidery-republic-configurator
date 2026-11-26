@@ -16,7 +16,9 @@ import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { DTF_ABLAUF_SCHRITTE, type DtfSeite } from '@/config/seo/dtfSeiten';
 import { KATEGORIE_SEITEN } from '@/config/seo/kategorieSeiten';
-import { PRODUCT_TYPE_ORDER, produktTypLabelPlural } from '@/config/products/types';
+import { PRODUCT_TYPES, PRODUCT_TYPE_ORDER, produktTypLabelPlural } from '@/config/products/types';
+import { Auswahlhilfe } from '@/components/seo/Auswahlhilfe';
+import { auswahlhilfe } from '@/lib/seo/auswahlhilfe';
 import { SHIPPING_RATES } from '@/config/shipping';
 import { formatiereGeld } from '@/lib/format';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
@@ -174,6 +176,12 @@ export async function DtfLandingpage({ seite }: { seite: DtfSeite }) {
             </p>
           )}
         </section>
+
+        {/* „Welches Modell passt?“ nur für echte Produktarten: Sammelbegriffe (Kinder, Sport) und Marken mischen Arten, Gewicht und Preis sind dort nicht vergleichbar. */}
+        {!seite.marke && PRODUCT_TYPES[seite.art as ProductType]?.sammelbegriff !== true && (() => {
+          const punkte = auswahlhilfe(fakten.produkte);
+          return punkte ? <Auswahlhilfe name={name} anzahl={fakten.anzahl} punkte={punkte} /> : null;
+        })()}
 
         <section aria-labelledby="preise" className="mt-24 max-w-4xl">
           <h2 id="preise" className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal tracking-tight text-brand">

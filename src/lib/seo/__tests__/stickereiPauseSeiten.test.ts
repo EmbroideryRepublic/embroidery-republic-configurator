@@ -225,6 +225,7 @@ const BISHERIG: Record<string, { titel: string; h1: string; beschreibung: string
       'Welche Dateien kann ich für mein Logo hochladen?',
       'Wie lange dauert es, bis mein Hoodie ankommt?',
       'Welche Hoodies gibt es und wie schwer sind sie?',
+      'Was kostet es, einen Hoodie bedrucken zu lassen?',
     ],
     zuerst: 'dtf',
   },
@@ -250,6 +251,7 @@ const BISHERIG: Record<string, { titel: string; h1: string; beschreibung: string
       '{anzahl} Poloshirts von {marken3} u. a. mit Firmenlogo besticken oder bedrucken: live im Konfigurator gestalten, ab 1 Stück, ohne Mindestmenge.',
     fragen: [
       'Kann ich auch nur ein einzelnes Poloshirt besticken lassen?',
+      'Was ist der Unterschied zwischen Poloshirt und Polohemd?',
       'Was ist besser für ein Poloshirt: Stickerei oder Druck?',
       'Wie läuft die Digitalisierung meines Logos für die Stickerei ab?',
       'Welche Dateien kann ich für mein Logo hochladen?',

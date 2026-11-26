@@ -1,5 +1,6 @@
 'use client';
 
+import { meldeBestellwegSchritt } from '@/lib/besuch/ereignisMelden';
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Check, ChevronDown, TrendingDown } from 'lucide-react';
@@ -125,6 +126,8 @@ export function SummaryPanel({
       addedAt: Date.now(),
     };
     addCartItem(item);
+    // Nur der Name des Schritts wird gezählt – kein Produkt, keine Menge, kein Preis (lib/besuch/ereignisMelden.ts).
+    meldeBestellwegSchritt('in_den_warenkorb');
     resetDesign();
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 2500);

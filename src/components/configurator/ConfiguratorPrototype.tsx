@@ -1,5 +1,6 @@
 'use client';
 
+import { meldeBestellwegSchritt } from '@/lib/besuch/ereignisMelden';
 import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { AlertCircle, ChevronDown } from 'lucide-react';
@@ -100,6 +101,10 @@ export function ConfiguratorPrototype() {
   // localStorage-Zwischenspeicherung (zustand/persist) lädt asynchron NACH
   // dem ersten Render. Bis dahin nicht auf productId==null reagieren, sonst
   // würde eine wiederhergestellte Konfiguration sofort wieder überschrieben.
+  // Weg zur Bestellung (cookieloser Zähler, siehe lib/besuch/ereignisMelden.ts): Der Konfigurator wurde geöffnet.
+  useEffect(() => {
+    meldeBestellwegSchritt('konfigurator_geoeffnet');
+  }, []);
   const [isHydrated, setIsHydrated] = useState(false);
   useEffect(() => {
     if (useConfiguratorStore.persist.hasHydrated()) {

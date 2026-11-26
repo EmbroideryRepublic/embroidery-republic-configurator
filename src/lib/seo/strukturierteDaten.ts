@@ -64,6 +64,10 @@ export function produktSchema(produkt: ProductConfig, basis: string): Record<str
     url,
     brand: { '@type': 'Brand', name: produkt.brand },
     material: produkt.material,
+    // Flächengewicht als eigene Eigenschaft (Stoffgewicht ist ein häufiges Suchkriterium: „g/m²“).
+    ...(typeof produkt.weightGsm === 'number' && produkt.weightGsm > 0
+      ? { additionalProperty: [{ '@type': 'PropertyValue', name: 'Flächengewicht', value: produkt.weightGsm, unitText: 'g/m²' }] }
+      : {}),
     color: farben.map((f) => formatiereFarbname(f.name)),
     // Einheitsgrößen-/größenlose Produkte (künftig) zeichnen KEIN leeres size-Array aus.
     ...(produkt.sizes.length > 0 ? { size: produkt.sizes } : {}),

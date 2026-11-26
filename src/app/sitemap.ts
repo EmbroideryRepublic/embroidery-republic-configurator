@@ -9,8 +9,9 @@
  * Beide sind nicht öffentlich und in ihren Metadaten bereits auf `noindex`
  * gesetzt.
  *
- * `lastModified` wird bewusst weggelassen: Ohne ein echtes, gepflegtes
- * Änderungsdatum je Seite würde hier sonst der Abrufzeitpunkt der Sitemap
+ * `lastModified` steht NUR bei Seiten, deren Inhalt bewusst überarbeitet wurde
+ * (config/seo/aenderungen.ts, mit dem Tag der Überarbeitung). Ohne ein echtes,
+ * gepflegtes Änderungsdatum würde hier sonst der Abrufzeitpunkt der Sitemap
  * selbst landen — bei jedem Crawl ein neuer Wert für dieselbe URL. Das ist
  * ein falsches Signal, das Suchmaschinen dazu bringen kann, das
  * lastmod-Signal für die ganze Sitemap zu ignorieren.
@@ -23,6 +24,13 @@ import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { alleKategorieSlugs } from '@/lib/seo/kategorieAdresse';
 import { alleDtfSlugs } from '@/lib/seo/dtfAdresse';
 import { alleAnlassSlugs } from '@/lib/seo/anlassAdresse';
+import { LETZTE_AENDERUNG } from '@/config/seo/aenderungen';
+
+/** `lastModified`-Feld für eine Seite – nur, wenn ein Änderungsdatum gepflegt ist. */
+function letzteAenderung(pfad: string): { lastModified: Date } | Record<string, never> {
+  const tag = LETZTE_AENDERUNG[pfad];
+  return tag ? { lastModified: new Date(`${tag}T00:00:00Z`) } : {};
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Kanonische Adresse (nicht die Betriebsadresse): Jede Sitemap-URL muss
@@ -44,6 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...statisch.map((s) => ({
       url: `${basis}${s.pfad}`,
+      ...letzteAenderung(s.pfad),
       changeFrequency: 'monthly' as const,
       priority: s.prioritaet,
     })),
@@ -51,18 +60,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Einstiege für Suchanfragen wie „Hoodies bedrucken lassen".
     ...alleKategorieSlugs().map((slug) => ({
       url: `${basis}/${slug}`,
+      ...letzteAenderung(`/${slug}`),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     })),
     // DTF-Landingpages (config/seo/dtfSeiten.ts): Marken und weitere Produktarten.
     ...alleDtfSlugs().map((slug) => ({
       url: `${basis}/${slug}`,
+      ...letzteAenderung(`/${slug}`),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
     // Anlass- und Ratgeberseiten (config/seo/anlassSeiten.ts).
     ...alleAnlassSlugs().map((slug) => ({
       url: `${basis}/${slug}`,
+      ...letzteAenderung(`/${slug}`),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -72,6 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const images = produkt ? sitemapBilder(produkt, basis) : [];
       return {
         url: `${basis}/produkt/${slug}`,
+        ...letzteAenderung(`/produkt/${slug}`),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
         ...(images.length > 0 ? { images } : {}),

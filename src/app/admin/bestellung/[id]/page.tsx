@@ -41,6 +41,9 @@ import { KundenAnmerkung } from '@/components/admin/KundenAnmerkung';
 import { EinkaufsLinks } from '@/components/admin/EinkaufsLinks';
 import { bereinigeAnmerkung } from '@/config/anmerkung';
 import { berechneNaechsteAktion, fehlenVorschauen, type NaechsteAktionTon } from '@/lib/admin/naechsteAktion';
+import { OrderEditControl, OffeneErstattung } from '@/components/admin/OrderEditControl';
+import { ErsatzRechnungPanel } from '@/components/admin/ErsatzRechnungPanel';
+import { berechneOffeneErstattungCent, ermittleAusstehendeErsetzung, pruefeAenderbarkeit } from '@/lib/orders/orderEdit';
 
 const AKTION_STIL: Record<NaechsteAktionTon, string> = {
   ok: 'border-brand/20 bg-brand/5 text-brand',
@@ -65,6 +68,33 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
   // Reine Ableitung aus bereits geladenen Feldern, keine neue Datenhaltung –
   // siehe naechsteAktion.ts (Fund vom 2026-08-26, Produktionsreife-Audit).
   const naechsteAktion = berechneNaechsteAktion(order);
+  // Auftrag nachträglich ändern (Position entfernen / Stückzahl verringern): Die Seite zeigt nur, OB es jetzt geht und
+  // warum nicht – die verbindliche Prüfung läuft erneut im Server (lib/orders/orderEditService.ts) und in der
+  // Datenbankfunktion (Migration 0038). Die offene Erstattung wird aus der Historie abgeleitet, nicht gespeichert.
+  const aenderbarkeit = pruefeAenderbarkeit({
+    bestellung: {
+      orderType: order.orderType,
+      status: order.status,
+      paymentStatus: order.paymentStatus,
+      invoiceNumber: order.invoiceNumber,
+    },
+    lieferantenStatus: order.supplierOrders.map((so) => so.status),
+  });
+  const offeneErstattungCent = berechneOffeneErstattungCent(order.events.map((e) => ({ eventType: e.eventType, detail: e.detail })));
+  // Ersatzrechnung (Migration 0039): Steht nach der letzten Änderung noch eine aus, leitet die Seite das aus der Historie
+  // ab (dasselbe, was die Schaltfläche serverseitig noch einmal tut). Bei einer stornierten Bestellung gibt es keine.
+  const ausstehendeErsetzung =
+    order.status === 'cancelled'
+      ? null
+      : ermittleAusstehendeErsetzung(
+          order.events.map((e) => ({ eventType: e.eventType, at: e.at, detail: e.detail })),
+          order.invoiceNumber
+        );
+  // Nummer → PDF-Adresse (aktuelle und abgelöste Rechnungen) für „Rechnung X ersetzt Rechnung Y“ in der Historie.
+  const rechnungsLinks: Record<string, string> = {};
+  for (const h of order.rechnungsHistorie) if (h.altePdfUrl) rechnungsLinks[h.alteNummer] = h.altePdfUrl;
+  if (order.invoiceNumber && order.invoicePdfUrl) rechnungsLinks[order.invoiceNumber] = order.invoicePdfUrl;
+  const ersetzteVorgaenger = order.rechnungsHistorie.find((h) => h.status === 'completed' && h.neueNummer === order.invoiceNumber);
 
   return (
     <div className="space-y-6">
@@ -133,7 +163,11 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
           mehr ist (Anfragen haben ohnehin keinen Bestellstatus). */}
       {order.orderType === 'order' && (
         <div className="mb-4">
-          <AdminCancelControl orderId={order.id} status={order.status as OrderStatus} />
+          <AdminCancelControl
+            orderId={order.id}
+            status={order.status as OrderStatus}
+            offeneErstattungCent={offeneErstattungCent}
+          />
         </div>
       )}
 
@@ -189,6 +223,34 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
           </table>
         </div>
       </section>
+
+      {/* Auftrag bearbeiten + offene Erstattung: erscheint nur bei Bestellungen. Stornierte Bestellungen bekommen
+          den Änderungsblock nicht (nichts mehr zu ändern), die offene Erstattung bleibt aber sichtbar. */}
+      {order.orderType === 'order' && (
+        <div className="space-y-4">
+          <OffeneErstattung orderId={order.id} offenCent={offeneErstattungCent} storniert={order.status === 'cancelled'} />
+          {order.status !== 'cancelled' && (
+            <OrderEditControl
+              orderId={order.id}
+              positionen={order.items.map((item) => ({
+                id: item.id,
+                name: `${item.productName} · ${item.colorName}`,
+                sizeQuantities: item.sizeQuantities,
+              }))}
+              sperren={aenderbarkeit.sperren.map((s) => s.text)}
+            />
+          )}
+          {/* „Neue Rechnung fehlt“ mit Schaltfläche – bzw. „Rechnung X ersetzt Rechnung Y“ mit beiden PDFs. Erscheint nur,
+              wenn es etwas zu zeigen gibt. */}
+          <ErsatzRechnungPanel
+            orderId={order.id}
+            ausstehend={ausstehendeErsetzung}
+            kundenEmailVorhanden={Boolean(order.email?.trim())}
+            aktuelleRechnung={{ nummer: order.invoiceNumber, datum: order.invoiceDate, pdfUrl: order.invoicePdfUrl }}
+            historie={order.rechnungsHistorie}
+          />
+        </div>
+      )}
 
       {/* Personalisierung: bereits in Phase 2 gerenderte Druckvorschauen
           (Kleidungsstück + Motive exakt wie im Editor platziert) plus die
@@ -321,6 +383,7 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
               {order.invoiceNumber ? (
                 <>
                   {order.invoiceNumber}
+                  {ersetzteVorgaenger && <span className="text-xs text-gray-500"> (ersetzt {ersetzteVorgaenger.alteNummer})</span>}
                   {order.invoicePdfUrl && (
                     <>
                       {' '}
@@ -564,7 +627,7 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
       <details className="rounded-lg border border-gray-200 bg-white p-4">
         <summary className="cursor-pointer text-sm font-semibold">Bestell-Historie ({order.events.length})</summary>
         <div className="mt-3">
-          <BestellVerlauf events={order.events} />
+          <BestellVerlauf events={order.events} rechnungsLinks={rechnungsLinks} />
         </div>
       </details>
     </div>

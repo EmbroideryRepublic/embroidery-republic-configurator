@@ -61,7 +61,8 @@ test('DTF: die gezeichnete Breite wächst gegenüber Stickerei – außer dort, 
       const stick = getPrintAreasSync(id, 'embroidery').find((a) => a.view === 'front')!;
       gesamt++;
       // 0,95 · Durchmesser: Die Fläche endet 2 cm (flach) vor der Naht, das sind knapp 1–2 % des Durchmessers weniger.
-      if (stick.maxWidthCm <= 0.95 * 2 * dtf.abwicklung.radiusCm) {
+      // Ausnahme: JN781 (Damen-Fleecejacke) – das Lieferantenfoto (seit 2026-11-26) zeigt eine taillierte Jacke; die Kontur ist in der Brust schmaler als der Durchmesser.
+      if (id !== 'jamesnicholson-ladies-fleece-jacket-jn781' && stick.maxWidthCm <= 0.95 * 2 * dtf.abwicklung.radiusCm) {
         assert.ok(dtf.maxWidthCm >= stick.maxWidthCm - 0.05, `${id}: DTF ${dtf.maxWidthCm} < Stickerei ${stick.maxWidthCm}`);
       }
       if (dtf.maxWidthCm > stick.maxWidthCm + 0.05) groesser++;

@@ -34,6 +34,7 @@ import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
 import { vorladenAlleFarben } from '@/lib/configurator/vorladen';
 import { passendeGroessen } from '@/lib/configurator/uebernahme';
 import { istHellesTextil } from '@/lib/canvas/garmentLuminance';
+import { hatSichtbaresMotiv } from './lupe';
 
 // Konva greift auf `window` zu und darf deshalb nicht serverseitig gerendert
 // werden – dynamischer Import mit ssr:false ist bei react-konva in Next.js
@@ -91,6 +92,9 @@ export function ConfiguratorPrototype() {
   // zuerst die Vorschau kommt statt einer 700 px hohen Liste (Test 2026-11-10: Vorschau erst bei y=1138).
   const [browserOffenMobil, setBrowserOffenMobil] = useState(false);
   const [zoom, setZoom] = useState(1);
+  // Lupe über der Vorschau (reine Anzeige, siehe VorschauLupe.tsx). Der Wunsch „Lupe an“ bleibt beim Ansichtswechsel erhalten;
+  // wirksam ist sie nur, solange die aktuelle Ansicht ein sichtbares Motiv hat (lupeWirksam).
+  const [lupeAn, setLupeAn] = useState(false);
   const [syncNotice, setSyncNotice] = useState<string | null>(null);
 
   // localStorage-Zwischenspeicherung (zustand/persist) lädt asynchron NACH
@@ -418,6 +422,8 @@ export function ConfiguratorPrototype() {
   const handleZoomIn = useCallback(() => setZoom((z) => Math.min(ZOOM_MAX, +(z + ZOOM_STEP).toFixed(2))), []);
   const handleZoomOut = useCallback(() => setZoom((z) => Math.max(ZOOM_MIN, +(z - ZOOM_STEP).toFixed(2))), []);
   const handleZoomReset = useCallback(() => setZoom(1), []);
+  const handleLupeToggle = useCallback(() => setLupeAn((an) => !an), []);
+  const handleLupeSchliessen = useCallback(() => setLupeAn(false), []);
   const handleOpenCart = useCallback(() => setIsCartOpen(true), []);
   const handleCloseCart = useCallback(() => {
     setIsCartOpen(false);
@@ -453,6 +459,10 @@ export function ConfiguratorPrototype() {
   // Realistische Vorschau: auf hellen Textilien werden Motive per multiply mit
   // dem Stoff verrechnet – abgeleitet aus der echten Farbe, nicht dem Foto.
   const garmentLight = currentColor ? istHellesTextil(currentColor.hex) : false;
+
+  // Lupe: nur mit sichtbarem Motiv (Logo, Bild oder Text) in der aktuellen Ansicht.
+  const lupeMoeglich = hatSichtbaresMotiv(elements, activeView);
+  const lupeWirksam = lupeAn && lupeMoeglich;
 
   const progressStep = quantity === 0
     ? 0
@@ -562,6 +572,9 @@ export function ConfiguratorPrototype() {
                   onUndo={undo}
                   onRedo={redo}
                   onOpenPreview={() => setIsPreviewOpen(true)}
+                  lupeAn={lupeWirksam}
+                  lupeMoeglich={lupeMoeglich}
+                  onLupeToggle={handleLupeToggle}
                 />
 
                 {/* Canvas-Wrapper: max-Höhe orientiert sich am verfügbaren
@@ -587,7 +600,15 @@ export function ConfiguratorPrototype() {
                   {isLoadingContext ? (
                     <CanvasSkeleton />
                   ) : (
-                    <ConfiguratorCanvas productImageUrl={currentImageUrl} printArea={currentPrintArea} zoom={zoom} governingSize={governingSize} garmentLight={garmentLight} />
+                    <ConfiguratorCanvas
+                      productImageUrl={currentImageUrl}
+                      printArea={currentPrintArea}
+                      zoom={zoom}
+                      governingSize={governingSize}
+                      garmentLight={garmentLight}
+                      lupeAn={lupeWirksam}
+                      onLupeSchliessen={handleLupeSchliessen}
+                    />
                   )}
                   {/* Eleganter Produktwechsel: Eine Ebene mit dem neuen Teil
                       gleitet herein und löst sich auf; darunter liegt bereits

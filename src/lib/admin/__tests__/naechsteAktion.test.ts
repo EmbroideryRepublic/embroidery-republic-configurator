@@ -24,6 +24,7 @@ import type { AdminOrderDetail, AdminOrderItemRow } from '../data';
 
 function item(overrides: Partial<AdminOrderItemRow> = {}): AdminOrderItemRow {
   return {
+    id: 'position-1',
     productId: 'gildan-heavy-t',
     productName: 'Heavy T-Shirt',
     colorId: 'navy',
@@ -85,6 +86,8 @@ function basis(overrides: Partial<AdminOrderDetail> = {}): AdminOrderDetail {
     shippedAt: null,
     invoiceNumber: 'RE-2026-000001',
     invoicePdfUrl: null,
+    invoiceDate: null,
+    rechnungsHistorie: [],
     dhlLabelUrl: null,
     lastShippingError: null,
     orderConfirmationSentAt: '2026-09-01T10:01:00.000Z',

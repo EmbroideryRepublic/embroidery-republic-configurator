@@ -221,24 +221,27 @@ const lesungen = (tabelle: string) => aufrufe.filter((a) => a.methode === 'GET' 
 
 // ── Parallelität ──────────────────────────────────────────────────────────
 
-test('Die fünf Abfragen, die nur die Bestellkennung brauchen, starten alle, bevor die erste antwortet', async () => {
+test('Die sechs Abfragen, die nur die Bestellkennung brauchen, starten alle, bevor die erste antwortet', async () => {
   bestellung = bestellZeile({ created_at: new Date(Date.now() - 10 * 60 * 1000).toISOString() }); // Stornofrist läuft noch
   const detail = await getOrderDetail(BESTELLUNG);
   assert.ok(detail);
 
-  const ersteFuenf = aufrufe.slice(0, 5);
+  // Die sechste ist die Liste der abgelösten Rechnungen (order_invoice_history, Migration 0039) – sie hängt nur an der
+  // Bestellkennung und läuft deshalb in DERSELBEN ersten Welle mit, nicht als zusätzliche Welle dahinter.
+  const ersteSechs = aufrufe.slice(0, 6);
   assert.deepEqual(
-    ersteFuenf.map((a) => a.pfad).sort(),
+    ersteSechs.map((a) => a.pfad).sort(),
     [
       '/rest/v1/order_events',
+      '/rest/v1/order_invoice_history',
       '/rest/v1/order_items',
       '/rest/v1/orders',
       '/rest/v1/supplier_orders',
       '/storage/v1/object/list/production-files',
     ],
-    'Bestellung, Positionen, Dateiliste, Lieferantenaufträge und Historie – in genau dieser Gruppe'
+    'Bestellung, Positionen, Dateiliste, Lieferantenaufträge, Historie und abgelöste Rechnungen – in genau dieser Gruppe'
   );
-  for (const a of ersteFuenf) {
+  for (const a of ersteSechs) {
     assert.equal(a.fertigBeiStart, 0, `${a.pfad} musste warten, obwohl es nur die Bestellkennung braucht`);
   }
 });

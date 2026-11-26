@@ -45,9 +45,10 @@ import { buildOrderNumber, PRINT_VIEW_LABELS } from '@/lib/actions/orderTypes';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
 import { brauchtVorabZahlung } from '@/config/zahlung';
 import { waehleRechnungsAnbieter, istRechnungserstellungMoeglich } from '@/lib/invoicing/registry';
-import { RechnungsTeilerfolgFehler, type Rechnungsauftrag, type Rechnungserstellung } from '@/lib/invoicing/types';
-import { PAYMENT_TERM_DAYS, IST_KLEINUNTERNEHMER } from '@/config/company';
+import { RechnungsTeilerfolgFehler, type Rechnungserstellung } from '@/lib/invoicing/types';
+import { PAYMENT_TERM_DAYS } from '@/config/company';
 import { ziehNaechsteRechnungsnummer } from './rechnungsnummer';
+import { baueRechnungsauftrag } from './rechnungsauftrag';
 import { sendEmail } from '@/lib/email/sendEmail';
 import { InvoiceEmail } from '@/lib/email/templates/InvoiceEmail';
 import type { PrintView } from '@/types';
@@ -918,97 +919,20 @@ async function erzeugeRechnung(
   let rechnung: Rechnungserstellung | undefined;
 
   try {
-    if (!order.shipping) {
-      throw new Error('Bestellung ohne Lieferadresse – Rechnungsadresse fehlt.');
-    }
-
-    // Kleinunternehmer nach § 19 UStG: niemals eine Steuer ausweisen, auch
-    // wenn orders.tax_rate (pauschal 19 %, siehe Migration 0014) etwas
-    // anderes sagt – das war bislang ein echter, unbemerkter Fehler auf
-    // jeder erstellten Rechnung.
-    const steuersatz = IST_KLEINUNTERNEHMER ? 0 : (order.taxRate ?? 19);
-    const zahlungszielTage = !order.paymentMethod || order.paymentMethod === 'invoice' ? PAYMENT_TERM_DAYS : 0;
-
-    // Positionen: der bereits validierte POSITIONSGESAMTPREIS als
-    // "Einzelpreis" mit menge=1, NICHT unitPrice × echte Menge. Lexware
-    // multipliziert unitPrice × quantity selbst, und unit_price ist ein auf
-    // den Cent gerundeter EFFEKTIVER Stückpreis, der laut
-    // Migration-0013-Kommentar (orders.ts) je nach Menge um mehrere Cent vom
-    // gespeicherten Positionsgesamtpreis abweichen kann. menge=1 mit dem
-    // vollen, validierten Positionspreis garantiert eine centgenaue
-    // Rechnungszeile unabhängig von dieser Rundung; die tatsächliche
-    // Stückzahl steht stattdessen lesbar in der Bezeichnung (siehe
-    // Review-Bericht vom 2026-08-11, Punkt 4).
-    const positionen = order.items.map((item) => ({
-      bezeichnung: `${item.productName} · ${item.colorName} (${item.quantity}×)`,
-      menge: 1,
-      einzelpreisBruttoCent: Math.round(item.totalPrice * 100),
-      steuersatzProzent: steuersatz,
-    }));
-
-    // Versandzeile als ECHTER REST (Gesamtbetrag minus Positionssumme), nicht
-    // aus dem separat abgeleiteten order.shippingCost übernommen: So
-    // summieren sich Positionen + Versand IMMER exakt auf den tatsächlich
-    // autoritativen, bereits geprüften Bestellbetrag – unabhängig von jeder
-    // Rundung an anderer Stelle.
-    const positionenSummeCent = positionen.reduce((summe, p) => summe + p.einzelpreisBruttoCent, 0);
-    const gesamtCent = Math.round(order.totalPrice * 100);
-    const versandRestCent = gesamtCent - positionenSummeCent;
-    const abgeleiteterVersandCent = Math.round((order.shippingCost ?? 0) * 100);
-
-    // Reale Versandkosten sind in diesem Shop nie negativ und liegen aktuell
-    // nie über ca. 12 € (config/shipping.ts) – ein Rest außerhalb dieses
-    // Rahmens ist keine ungewöhnliche Versandgebühr, sondern beweist eine
-    // Inkonsistenz zwischen order.totalPrice und der Summe der Positions-
-    // preise (z.B. ein nicht auf Positionsebene abgebildeter Rabatt). Ein
-    // solcher Rest wird NICHT mehr (wie zuvor) still auf 0 geklemmt oder nur
-    // gewarnt und trotzdem verschickt – Math.max(0, …) hätte den
-    // ausgewiesenen Betrag unbemerkt zu hoch ausfallen lassen, und eine reine
-    // Log-Zeile verhindert nicht, dass ein inhaltlich falscher, unwiderruf-
-    // licher Beleg beim Kunden landet. Stattdessen wird die Erstellung HART
-    // abgebrochen, BEVOR Lexware überhaupt kontaktiert wird (rechnung bleibt
-    // undefined) – der Claim wird dadurch im catch-Block unten sicher
-    // freigegeben, ein korrigierter Retry ist jederzeit möglich, sobald die
-    // zugrundeliegende Dateninkonsistenz behoben ist.
-    const VERSANDREST_OBERGRENZE_CENT = 2000; // 20,00 € – großzügig über dem höchsten realen Satz
-    if (versandRestCent < -1 || versandRestCent > VERSANDREST_OBERGRENZE_CENT) {
-      throw new Error(
-        `Versandrest ${versandRestCent}ct ist unplausibel (Positionssumme ${positionenSummeCent}ct, ` +
-          `Bestellbetrag ${gesamtCent}ct, separat abgeleiteter Versandanteil ${abgeleiteterVersandCent}ct) – ` +
-          `Rechnungserstellung abgebrochen statt eines falschen Betrags. Bestellung manuell prüfen.`
-      );
-    }
-    if (Math.abs(versandRestCent - abgeleiteterVersandCent) > 50) {
-      console.warn(
-        `[orders] Rechnung ${order.id}: Versandrest (${versandRestCent}ct) weicht deutlich vom separat ` +
-          `abgeleiteten Versandanteil (${abgeleiteterVersandCent}ct) ab – Positionssumme möglicherweise inkonsistent.`
-      );
-    }
-
-    const auftrag: Rechnungsauftrag = {
-      bestellId: order.id,
-      bestellnummer: order.orderNumber,
+    // Positionen, Versandrest, Kleinunternehmer-/Steuerweg und Zahlungsziel stehen seit 2026-11-26 in
+    // rechnungsauftrag.ts (dieselben Regeln, unverändert – dort ausführlich begründet), weil auch die
+    // Ersatzrechnung nach einer Auftragsänderung (orderInvoiceReplacement.ts) sie braucht. Ein Fehler dort
+    // (keine Lieferadresse, unplausibler Versandrest) wirft HIER im try-Block, BEVOR ein Beleg entsteht –
+    // der Anspruch wird im catch-Block unten also wie bisher sicher freigegeben.
+    const auftrag = baueRechnungsauftrag(order, {
       rechnungsdatum: new Date().toISOString().slice(0, 10),
-      kaeufer: {
-        name: order.contact.name,
-        firma: order.contact.company,
-        strasse: order.shipping.street,
-        plz: order.shipping.zip,
-        ort: order.shipping.city,
-        land: order.shipping.country,
-        ustIdNr: order.customerVatId,
-      },
-      positionen,
-      versandkostenBruttoCent: versandRestCent,
-      gesamtBruttoCent: gesamtCent,
-      waehrung: 'EUR',
-      zahlungszielTage,
       // Reine Closure, kein Datenbankzugriff innerhalb von lib/invoicing/
       // selbst (siehe Kopfkommentar dort und __tests__/architektur.test.ts).
       // Anbieter mit eigener Nummernvergabe (Lexware, Test) rufen das
       // schlicht nie auf.
       naechsteRechnungsnummer: () => ziehNaechsteRechnungsnummer(db, new Date().getFullYear()),
-    };
+    });
+    const zahlungszielTage = auftrag.zahlungszielTage;
 
     rechnung = await waehleRechnungsAnbieter().erstelle(auftrag);
 

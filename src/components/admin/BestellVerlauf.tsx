@@ -16,7 +16,7 @@
  * bleibt.
  */
 import type { AdminOrderEvent } from '@/lib/admin/data';
-import { formatiereZeitpunkt } from '@/lib/format';
+import { formatiereGeld, formatiereZeitpunkt } from '@/lib/format';
 
 const EVENT_LABELS: Record<string, string> = {
   status_changed: 'Statuswechsel',
@@ -48,6 +48,10 @@ const EVENT_LABELS: Record<string, string> = {
   payment_expired: 'Zahlung abgelaufen',
   supplier_process_started: 'Lieferantenprozess gestartet',
   address_corrected: 'Name/Adresse korrigiert',
+  order_items_edited: 'Auftrag geändert (Position entfernt/verringert)',
+  manual_refund_noted: 'Teilerstattung von Hand vermerkt',
+  invoice_replaced: 'Rechnung ersetzt',
+  invoice_replacement_failed: 'Ersatzrechnung fehlgeschlagen',
 };
 
 function istFehlschlag(eventType: string): boolean {
@@ -59,7 +63,14 @@ function istFehlschlag(eventType: string): boolean {
   );
 }
 
-export function BestellVerlauf({ events }: { events: AdminOrderEvent[] }) {
+export function BestellVerlauf({
+  events,
+  rechnungsLinks = {},
+}: {
+  events: AdminOrderEvent[];
+  /** Rechnungsnummer → befristete PDF-Adresse (aktuelle Rechnung und abgelöste). Für „Rechnung X ersetzt Rechnung Y“. */
+  rechnungsLinks?: Record<string, string>;
+}) {
   if (events.length === 0) {
     return <p className="text-sm text-gray-400">Für diese Bestellung liegen noch keine Ereignisse vor.</p>;
   }
@@ -76,6 +87,20 @@ export function BestellVerlauf({ events }: { events: AdminOrderEvent[] }) {
         // geändert werden soll – das wäre der Punkt der ganzen Funktion.
         const kommentar = (ev.detail?.kommentar as string | null | undefined) ?? null;
         const vorherigeAdresse = (ev.detail?.vorher as string | null | undefined) ?? null;
+        // Auftragsänderung (orderEditService.ts): Was danach noch von Hand zu tun bleibt, soll in der Historie
+        // sichtbar sein – das System erledigt weder die Rechnungskorrektur noch die Teilerstattung.
+        const erstattungNoetigCent = ev.eventType === 'order_items_edited' ? Number(ev.detail?.erstattungNoetigCent ?? 0) : 0;
+        // Löst die Änderung eine automatische Ersatzrechnung aus (detail.rechnungErsatz), gibt es nichts von Hand zu
+        // korrigieren – dann steht der Ersatz als eigenes Ereignis „Rechnung ersetzt“ in der Historie.
+        const rechnungKorrektur =
+          ev.eventType === 'order_items_edited' &&
+          ev.detail?.rechnungKorrekturNoetig === true &&
+          ev.detail?.rechnungErsatz !== 'automatisch';
+        const ersatzAusgeloest = ev.eventType === 'order_items_edited' && ev.detail?.rechnungErsatz === 'automatisch';
+        const ersetzt =
+          ev.eventType === 'invoice_replaced'
+            ? { neu: String(ev.detail?.neueNummer ?? ''), alt: String(ev.detail?.alteNummer ?? '') }
+            : null;
         return (
           <li
             key={i}
@@ -95,6 +120,35 @@ export function BestellVerlauf({ events }: { events: AdminOrderEvent[] }) {
             )}
             {trackingNummer && <p className="mt-0.5 font-mono text-xs opacity-70">Sendungsnummer: {trackingNummer}</p>}
             {vorherigeAdresse && <p className="mt-0.5 text-xs opacity-70">Zuvor: {vorherigeAdresse}</p>}
+            {erstattungNoetigCent > 0 && (
+              <p className="mt-0.5 text-xs font-medium text-red-800">
+                Von Hand zu erstatten: {formatiereGeld(erstattungNoetigCent / 100)} (bezahlte Bestellung)
+              </p>
+            )}
+            {ersatzAusgeloest && (
+              <p className="mt-0.5 text-xs text-gray-600">
+                Löste eine neue Rechnung aus (ersetzt Rechnung {String(ev.detail?.rechnungsnummer ?? '')}) – siehe Eintrag „Rechnung ersetzt“.
+              </p>
+            )}
+            {ersetzt && (
+              <p className="mt-1 flex flex-wrap gap-x-4 gap-y-0.5 text-xs">
+                {rechnungsLinks[ersetzt.neu] && (
+                  <a href={rechnungsLinks[ersetzt.neu]} target="_blank" rel="noreferrer" className="text-gold-dark hover:underline">
+                    PDF der neuen Rechnung {ersetzt.neu} ↗
+                  </a>
+                )}
+                {rechnungsLinks[ersetzt.alt] && (
+                  <a href={rechnungsLinks[ersetzt.alt]} target="_blank" rel="noreferrer" className="text-gold-dark hover:underline">
+                    PDF der ersetzten Rechnung {ersetzt.alt} ↗
+                  </a>
+                )}
+              </p>
+            )}
+            {rechnungKorrektur && (
+              <p className="mt-0.5 text-xs font-medium text-amber-800">
+                Rechnung {String(ev.detail?.rechnungsnummer ?? '')} wurde nicht automatisch korrigiert – Korrektur von Hand nötig
+              </p>
+            )}
           </li>
         );
       })}

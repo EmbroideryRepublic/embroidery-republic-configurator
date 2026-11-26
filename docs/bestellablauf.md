@@ -222,6 +222,76 @@ nur über `WHERE pending`-Bedingungen bewegt, nie rückwärts.
 
 ---
 
+## 9. Auftrag nachträglich ändern (Betreiber)
+
+Im Adminbereich (`/admin/bestellung/[id]`, Block „Auftrag bearbeiten“) kann der
+Betreiber eine Position **entfernen** oder die Stückzahl je Größe **verringern**
+– nie erhöhen oder hinzufügen. Fachlogik: `lib/orders/orderEdit.ts` (rein),
+Ablauf: `lib/orders/orderEditService.ts`, Server Actions:
+`lib/actions/orderEditActions.ts`, Schreibweg: Datenbankfunktion
+`aendere_bestellpositionen` (Migration 0038, **als Datei angelegt, noch nicht
+angewendet**).
+
+```
+Vorschau (schreibt nichts)      berechnen → Gegenprobe → alt/neu/Differenz + Mailtext
+Speichern                       Grund + Bestätigungen → EINE Transaktion
+                                (Positionen + Bestellsumme + order_events 'order_items_edited')
+  danach, nicht-fatal           Kundenmail (abwählbar) · Lieferantenaufträge angleichen
+  danach, im Browser            Druckvorschauen + Produktionsblatt neu erzeugen
+```
+
+**Wann änderbar:** Bestellung (keine Anfrage), Status `new`, Zahlung
+`not_required` oder `paid`, kein Lieferantenauftrag in Verarbeitung. Nicht
+änderbar: ab `in_production`, `pending`/`failed` (der Betrag liegt beim
+Zahlungsanbieter fest).
+
+**Preis:** über `priceCart` (Staffeln, ,99-Rundung, Einrichtung, Versandfreigrenze
+75 €). Weil `priceCart` mit dem Katalog von HEUTE rechnet, wird zuerst die
+unveränderte Bestellung neu berechnet; stimmt sie nicht auf den Cent mit dem
+gespeicherten Stand überein, wird nicht geändert (`preis-abweichung`). Steigt der
+Preis durch die Verringerung (Staffelsprung, Versand unter 75 €), wird ebenfalls
+abgelehnt (`preis-steigt`). Stickerei wird nicht neu berechnet (Stichzahl nicht
+gespeichert). Gutscheine gibt es in diesem Shop nicht.
+
+**Ersatzrechnung (seit 2026-11-26, Migration 0039):** Gibt es zur Bestellung schon
+eine Rechnung und ist der interne Rechnungsanbieter aktiv, erzeugt der Ablauf nach
+dem Speichern automatisch eine NEUE Rechnung mit den geänderten Positionen und
+Beträgen (`lib/orders/orderInvoiceReplacement.ts`; Positionen, Versand,
+Kleinunternehmer-/Steuerweg und Zahlungsziel kommen aus `rechnungsauftrag.ts`, derselben
+Stelle wie die erste Rechnung). Das PDF trägt „Diese Rechnung ersetzt die Rechnung
+Nr. … vom …“ und hängt – wenn die Mail nicht abgewählt ist – an der Mail „Dein Auftrag
+wurde geändert“. Die alte Rechnung bleibt als PDF erhalten und steht mit Nummer,
+Datum und Nachfolgerin in `order_invoice_history`; `orders` trägt weiter nur die
+aktuelle Rechnung.
+
+```
+Änderung gespeichert    Ereignis order_items_edited trägt detail.rechnungErsatz = 'automatisch'
+                        und detail.rechnungsnummer = die abzulösende Rechnung (atomar, 0038)
+  reservieren           reserviere_ersatzrechnung: Anspruch + Nachfolgenummer in EINER
+                        Transaktion; pro (Bestellung, abgelöste Nummer) genau eine Nummer
+  rendern + ablegen     eigener Pfad rechnung-<Nummer>.pdf, die alte wird nie überschrieben
+  tauschen              ersetze_rechnung: orders → neue Rechnung, Historie, Ereignis 'invoice_replaced'
+```
+
+Schlägt etwas fehl, bleibt die Änderung gespeichert. Der Admin zeigt dann „Neue Rechnung
+fehlt“ mit der Schaltfläche „Neue Rechnung erzeugen“; ob eine aussteht, folgt aus dem
+Ereignis der Änderung und der aktuellen Rechnungsnummer (`ermittleAusstehendeErsetzung`).
+Ein erneuter Versuch bekommt dieselbe reservierte Nummer, ein Doppelklick erzeugt keine
+zweite Rechnung.
+
+**Was das System NICHT tut:** keine Teilerstattung (`refundService` kennt nur die volle
+Erstattung bei Storno – der Betreiber bestätigt das vor dem Speichern). Keine Änderung am
+Buchhaltungs-Cursor `accounting_ready_at`: Die lokale Buchhaltungs-App übernimmt eine
+Bestellung nur einmal und führt keine Ersatzrechnung nach – siehe Bericht zur
+Ersatzrechnung. Ohne internen Anbieter (oder bei gesetztem `rechnung_unklarer_zustand`)
+bleibt es bei der manuellen Rechnungskorrektur mit Bestätigung. Die bei bezahlten
+Bestellungen offene Differenz steht im Historien-Eintrag
+(`erstattungNoetigCent`), wird im Admin als „offene Erstattung“ gezeigt und kann
+dort als von Hand erstattet vermerkt werden (`manual_refund_noted`, bewegt kein
+Geld).
+
+---
+
 ## Was wo passiert – die Kurzreferenz
 
 | Frage | Antwort |

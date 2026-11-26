@@ -26,7 +26,8 @@ const IDS = Object.keys(bereiche);
 const TOLERANZ = 0.2; // Prozentpunkte (Rundung auf 0,1 im Generator)
 
 test('aermelBereiche.json: nicht leer, jede ID ist ein Produkt, Kanten sind plausibel', () => {
-  assert.ok(IDS.length >= 90, `nur ${IDS.length} Einträge – es fehlen abgelesene Ärmel`);
+  // Seit 2026-11-26 (nur Lieferantenfotos) fehlen bei 13 Produkten die Ärmelfotos, weil der Lieferant keine liefert: Mindestzahl 90 -> 80.
+  assert.ok(IDS.length >= 80, `nur ${IDS.length} Einträge – es fehlen abgelesene Ärmel`);
   const produktIds = new Set(PRODUCTS.map((p) => p.id));
   for (const id of IDS) {
     assert.ok(produktIds.has(id), `${id}: kein Produkt dieses Namens`);
@@ -79,7 +80,7 @@ test('keine Ärmelfläche ist zu klein, der Startpunkt liegt in der Fläche, Mot
       }
     }
   }
-  assert.ok(geprueft >= 180, `nur ${geprueft} Ärmelflächen geprüft`);
+  assert.ok(geprueft >= 160, `nur ${geprueft} Ärmelflächen geprüft`);
 });
 
 test('Ärmel: die frühere Motivhöhen-Grenze von 10 cm ist weg (Langarm/Kapuze > 30 cm, Kurzarm > 15 cm)', () => {

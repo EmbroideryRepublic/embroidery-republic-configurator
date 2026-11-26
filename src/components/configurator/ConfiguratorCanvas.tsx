@@ -17,6 +17,8 @@ import { cm as formatCm, motivMass, zahl } from '@/lib/format';
 import { echteMasse, flacheFlaechenBreiteCm } from '@/config/abwicklung';
 import { useLanguageStore } from '@/stores/languageStore';
 import { gewebeTextur } from '@/lib/canvas/fabricTexture';
+import { VorschauLupe } from './VorschauLupe';
+import { schnappschussSchluessel, waehleStartMotiv } from './lupe';
 
 /** Platz für die seitlichen/unteren Maß-Lineale (Linie + cm-Beschriftung),
  *  in CSS-Pixeln – bewusst klein gehalten, damit die Leinwand selbst kaum
@@ -72,6 +74,11 @@ interface ConfiguratorCanvasProps {
    *  (realistische Vorschau). Aus der echten Kleidungsfarbe abgeleitet
    *  (lib/canvas/garmentLuminance). Ohne Angabe: kein Effekt (sicher). */
   garmentLight?: boolean;
+  /** Lupe eingeschaltet (nur Bearbeitungsansicht; die Großansicht reicht nichts durch und bekommt keine Lupe).
+   *  Reine Anzeige – siehe VorschauLupe.tsx: verändert weder Motive noch Bestellung. */
+  lupeAn?: boolean;
+  /** Schließt die Lupe (Knopf „x“ an der Vorschau, Escape). Ohne diese Funktion wird keine Lupe eingebaut. */
+  onLupeSchliessen?: () => void;
 }
 
 export function ConfiguratorCanvas({
@@ -82,8 +89,14 @@ export function ConfiguratorCanvas({
   viewOverride,
   governingSize,
   garmentLight = false,
+  lupeAn = false,
+  onLupeSchliessen,
 }: ConfiguratorCanvasProps) {
   const [productImage] = useImage(productImageUrl);
+  // Zugriff für die Lupe: Stage (für die hochauflösende Aufnahme), der scrollbare Stage-Rahmen und die äußere Hülle
+  // (darin wird die Linse positioniert, ohne vom Scrollrahmen abgeschnitten zu werden).
+  const stageRef = useRef<Konva.Stage>(null);
+  const huelleRef = useRef<HTMLDivElement>(null);
   const storeActiveView = useConfiguratorStore((s) => s.activeView);
   const activeView = viewOverride ?? storeActiveView;
   const elements = useConfiguratorStore((s) => s.elements);
@@ -366,8 +379,31 @@ export function ConfiguratorCanvas({
   // Abhängigkeits-Array hält auch den Wrapper dauerhaft stabil).
   const clearCenterGuides = useCallback(() => setCenterGuides({ x: false, y: false }), []);
 
+  // ── Lupe: Eingaben ──────────────────────────────────────────────────
+  // Der Schlüssel ändert sich nur, wenn sich das BILD ändert (Ansicht, Foto, Textilart, Motive) – nicht bei Auswahl
+  // oder Rand-Warnung. Nur dann wird der hochauflösende Zwischenspeicher der Lupe neu gezeichnet (entprellt).
+  const lupeSchluessel = useMemo(
+    () =>
+      schnappschussSchluessel({
+        ansicht: activeView,
+        produktBildUrl: productImageUrl,
+        produktBildGeladen: !!productImage,
+        textilHell: garmentLight,
+        elemente: viewElements,
+      }),
+    [activeView, productImageUrl, productImage, garmentLight, viewElements]
+  );
+  // Startpunkt beim Einschalten: Mitte des ausgewählten (sonst ersten) Motivs, als Anteil an der Leinwand.
+  const lupeStart = useMemo(() => {
+    if (!areaPx || !scaleFactors) return null;
+    const motiv = waehleStartMotiv(viewElements, activeView, selectedElementId);
+    if (!motiv) return null;
+    const r = elementToPixelRect(areaPx, scaleFactors, motiv);
+    return { x: (r.x + r.width / 2) / CANVAS_WIDTH, y: (r.y + r.height / 2) / CANVAS_HEIGHT };
+  }, [areaPx, scaleFactors, viewElements, activeView, selectedElementId]);
+
   return (
-    <div className="flex w-full max-w-[820px] flex-col items-center xl:max-w-[960px] 2xl:max-w-[1100px]">
+    <div ref={huelleRef} className="relative flex w-full max-w-[820px] flex-col items-center xl:max-w-[960px] 2xl:max-w-[1100px]">
       <div className="flex w-full flex-row items-start justify-center">
         {hasRulers && heightRulerPx !== null && (
           <div
@@ -402,6 +438,7 @@ export function ConfiguratorCanvas({
           style={{ maxHeight: zoom > 1 ? CANVAS_HEIGHT * scale + 20 : undefined }}
         >
           <Stage
+        ref={stageRef}
         width={CANVAS_WIDTH * scale * zoom}
         height={CANVAS_HEIGHT * scale * zoom}
         scaleX={scale * zoom}
@@ -459,6 +496,7 @@ export function ConfiguratorCanvas({
               />
               {(isAreaHovered || hasSelectionInView) && printArea && (
                 <KonvaText
+                  name="steuerung"
                   x={areaPx.x}
                   y={areaPx.y - 18}
                   text={`Bewegungsbereich · Motiv max. ${zahl(druckBreiteCm ?? printArea.maxWidthCm)}×${zahl(printArea.maxHeightCm)} cm`}
@@ -483,6 +521,7 @@ export function ConfiguratorCanvas({
                   return (
                     <Circle
                       key={i}
+                      name="steuerung"
                       x={centerX}
                       y={centerY}
                       radius={radiusPx}
@@ -502,7 +541,7 @@ export function ConfiguratorCanvas({
                   height: (zone.heightPercent / 100) * imageRect.height,
                 };
                 return (
-                  <Group key={i} listening={false}>
+                  <Group key={i} name="steuerung" listening={false}>
                     <Rect
                       x={zonePx.x}
                       y={zonePx.y}
@@ -531,6 +570,7 @@ export function ConfiguratorCanvas({
               {/* Mittig-Hilfslinien */}
               {centerGuides.x && (
                 <Rect
+                  name="steuerung"
                   x={areaPx.x + areaPx.width / 2 - 0.5}
                   y={areaPx.y - 10}
                   width={1}
@@ -541,6 +581,7 @@ export function ConfiguratorCanvas({
               )}
               {centerGuides.y && (
                 <Rect
+                  name="steuerung"
                   x={areaPx.x - 10}
                   y={areaPx.y + areaPx.height / 2 - 0.5}
                   width={areaPx.width + 20}
@@ -631,6 +672,20 @@ export function ConfiguratorCanvas({
             {formatCm(druckBreiteCm!)}
           </span>
         </div>
+      )}
+
+      {/* Lupe: reine Anzeige über der Vorschau (Linse + kleine Bedienleiste). Nicht in der Großansicht (dort kein Callback). */}
+      {onLupeSchliessen && (
+        <VorschauLupe
+          aktiv={lupeAn && !hideGuides}
+          onSchliessen={onLupeSchliessen}
+          stageRef={stageRef}
+          containerRef={containerRef}
+          huelleRef={huelleRef}
+          schluessel={lupeSchluessel}
+          stageScale={stageScale}
+          start={lupeStart}
+        />
       )}
     </div>
   );
@@ -883,6 +938,7 @@ const LogoNode = memo(function LogoNode({
     <>
       <KonvaImage
         ref={shapeRef}
+        name="motiv"
         image={image}
         x={centerXPx}
         y={centerYPx}
@@ -1017,6 +1073,7 @@ const LogoNode = memo(function LogoNode({
               Bedienfeld rechts, damit die tatsächliche Druckgröße beim
               Skalieren sofort sichtbar ist, ohne den Blick wechseln zu müssen. */}
           <KonvaText
+            name="steuerung"
             text={`${motivMass(echteMasse(element, printArea).breiteCm, sprache)} × ${motivMass(echteMasse(element, printArea).hoeheCm, sprache)} cm`}
             x={xPx}
             y={yPx - 20}
@@ -1103,6 +1160,7 @@ const TextNode = memo(function TextNode({
     <>
       <KonvaText
         ref={shapeRef}
+        name="motiv"
         text={element.content}
         x={centerXPxForRender}
         y={centerYPxForRender}
@@ -1228,6 +1286,7 @@ const TextNode = memo(function TextNode({
             boundBoxFunc={(oldBox, newBox) => (newBox.width < 15 || newBox.height < 15 ? oldBox : newBox)}
           />
           <KonvaText
+            name="steuerung"
             text={`${motivMass(echteMasse(element, printArea).breiteCm, sprache)} × ${motivMass(echteMasse(element, printArea).hoeheCm, sprache)} cm`}
             x={xPx}
             y={yPx - 20}

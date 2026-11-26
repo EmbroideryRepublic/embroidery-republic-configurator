@@ -86,6 +86,8 @@ function basis(overrides: Partial<AdminOrderDetail> = {}): AdminOrderDetail {
     shippedAt: null,
     invoiceNumber: 'RE-2026-000001',
     invoicePdfUrl: null,
+    invoiceDate: null,
+    rechnungsHistorie: [],
     dhlLabelUrl: null,
     lastShippingError: null,
     orderConfirmationSentAt: '2026-09-01T10:01:00.000Z',

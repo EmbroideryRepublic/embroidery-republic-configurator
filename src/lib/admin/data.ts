@@ -153,6 +153,23 @@ export interface AdminSupplierOrderRow {
   lastRun: SupplierWorkerRunResult | null;
 }
 
+/**
+ * Eine abgelöste Rechnung der Bestellung (`order_invoice_history`, Migration 0039) samt ihrer Nachfolgerin.
+ * `status 'reserved'` = die Nachfolgenummer ist vergeben, der Tausch steht aus (noch nicht abgeschlossen).
+ */
+export interface AdminInvoiceHistoryRow {
+  alteNummer: string;
+  /** ISO-Datum (yyyy-mm-dd) der abgelösten Rechnung. */
+  altesDatum: string | null;
+  /** Befristete Download-URL des PDFs der abgelösten Rechnung; null, wenn nicht signierbar. */
+  altePdfUrl: string | null;
+  neueNummer: string;
+  neuesDatum: string;
+  /** Zeitpunkt des Tauschs; null, solange der Tausch aussteht. */
+  ersetztAm: string | null;
+  status: 'reserved' | 'completed';
+}
+
 export interface AdminOrderDetail {
   id: string;
   orderNumber: string;
@@ -197,6 +214,13 @@ export interface AdminOrderDetail {
   invoiceNumber: string | null;
   /** Zeitlich befristete Download-URL der Lexware-Rechnung. */
   invoicePdfUrl: string | null;
+  /** Datum der aktuellen Rechnung (ISO yyyy-mm-dd). */
+  invoiceDate: string | null;
+  /**
+   * Frühere Rechnungen, die durch eine neue ersetzt wurden (Auftragsänderung), älteste zuerst. Leer, wenn es keine
+   * gab – und leer, wenn die Tabelle (Migration 0039) noch nicht angewendet ist: Die Seite funktioniert dann wie vorher.
+   */
+  rechnungsHistorie: AdminInvoiceHistoryRow[];
   /** Zeitlich befristete Download-URL des DHL-Versandlabels. */
   dhlLabelUrl: string | null;
   /** Grund des letzten gescheiterten Label-Versuchs (order_events,
@@ -530,11 +554,11 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   // Inhaltlich ändert sich nichts: dieselben Abfragen, dieselben Ergebnisse.
 
   // ── Ebene 1 ───────────────────────────────────────────────────────────────
-  const [orderAntwort, itemsAntwort, dateiInfo, supplierAntwort, historieAntwort] = await Promise.all([
+  const [orderAntwort, itemsAntwort, dateiInfo, supplierAntwort, historieAntwort, rechnungsHistorieAntwort] = await Promise.all([
     supabase
       .from('orders')
       .select(
-        'id, order_number, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at, order_confirmation_sent_at, freigabe_angefragt_am, freigabe_erteilt_am'
+        'id, order_number, created_at, order_type, status, payment_status, payment_method, customer_name, company, email, phone, message, total_price, tax_amount, tax_rate, net_total, shipping_street, shipping_zip, shipping_city, shipping_country, pdf_url, tracking_number, shipped_at, invoice_number, invoice_date, invoice_pdf_url, dhl_label_url, cancellation_source, refund_status, refund_amount_cent, refund_reference, refunded_at, order_confirmation_sent_at, freigabe_angefragt_am, freigabe_erteilt_am'
       )
       .eq('id', orderId)
       .single(),
@@ -560,6 +584,12 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
       .select('event_type, from_status, to_status, reason, detail, at')
       .eq('order_id', orderId)
       .order('at', { ascending: false }),
+    // Abgelöste Rechnungen (Migration 0039). Ein Fehler – etwa weil die Migration noch fehlt – ist NICHT fatal.
+    supabase
+      .from('order_invoice_history')
+      .select('invoice_number, invoice_date, invoice_pdf_url, replaced_by_invoice_number, replaced_by_invoice_date, status, superseded_at, created_at')
+      .eq('order_id', orderId)
+      .order('created_at', { ascending: true }),
   ]);
 
   const { data: order, error: orderError } = orderAntwort;
@@ -703,6 +733,22 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
   // das Öffnen einer Bestellung um die Summe aller drei Netzwerk-Laufzeiten,
   // obwohl keiner der drei Aufrufe vom Ergebnis eines anderen abhängt).
   // Sie brauchen nur die Bestellung – also schon in Ebene 2 starten.
+  const { data: historieZeilen, error: rechnungsHistorieFehler } = rechnungsHistorieAntwort;
+  if (rechnungsHistorieFehler) {
+    console.error('[admin] order_invoice_history konnte nicht geladen werden (Migration 0039 angewendet?):', rechnungsHistorieFehler.message);
+  }
+  const rechnungsHistorieAbwarten: Promise<AdminInvoiceHistoryRow[]> = Promise.all(
+    (rechnungsHistorieFehler ? [] : (historieZeilen ?? [])).map(async (zeile) => ({
+      alteNummer: zeile.invoice_number as string,
+      altesDatum: (zeile.invoice_date as string | null) ?? null,
+      altePdfUrl: zeile.invoice_pdf_url ? await getProductionFileSignedUrl(zeile.invoice_pdf_url as string) : null,
+      neueNummer: zeile.replaced_by_invoice_number as string,
+      neuesDatum: zeile.replaced_by_invoice_date as string,
+      ersetztAm: (zeile.superseded_at as string | null) ?? null,
+      status: zeile.status === 'completed' ? ('completed' as const) : ('reserved' as const),
+    }))
+  );
+
   const dokumentUrlsAbwarten = Promise.all([
     order.pdf_url ? getProductionFileSignedUrl(order.pdf_url as string) : Promise.resolve(null),
     order.invoice_pdf_url ? getProductionFileSignedUrl(order.invoice_pdf_url as string) : Promise.resolve(null),
@@ -832,7 +878,10 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     })
   );
 
-  const [[productionSheetUrl, invoicePdfUrl, dhlLabelUrl]] = await Promise.all([dokumentUrlsAbwarten, einreihungAbwarten]);
+  const [[productionSheetUrl, invoicePdfUrl, dhlLabelUrl], rechnungsHistorie] = await Promise.all([
+    Promise.all([dokumentUrlsAbwarten, einreihungAbwarten]).then(([urls]) => urls),
+    rechnungsHistorieAbwarten,
+  ]);
 
   return {
     id: order.id as string,
@@ -867,6 +916,8 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
     shippedAt: (order.shipped_at as string | null) ?? null,
     invoiceNumber: (order.invoice_number as string | null) ?? null,
     invoicePdfUrl,
+    invoiceDate: (order.invoice_date as string | null) ?? null,
+    rechnungsHistorie,
     dhlLabelUrl,
     lastShippingError,
     orderConfirmationSentAt: (order.order_confirmation_sent_at as string | null) ?? null,

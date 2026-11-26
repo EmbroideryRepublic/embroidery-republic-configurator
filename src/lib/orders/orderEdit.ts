@@ -102,6 +102,13 @@ export interface AenderungsBestellung {
   taxRate: number | null;
   shippingCountry: string | null;
   invoiceNumber: string | null;
+  /** ISO-Datum (yyyy-mm-dd) der aktuellen Rechnung – für den Satz „ersetzt die Rechnung … vom …“ in der Mail. */
+  invoiceDate?: string | null;
+  /**
+   * `orders.rechnung_unklarer_zustand` (Migration 0026): Der manuelle Klärungsfall der ersten Rechnung. Dann
+   * gibt es keine automatische Ersatzrechnung (die Datenbankfunktion lehnt sie ab).
+   */
+  rechnungUnklarerZustand?: boolean;
   email: string | null;
 }
 
@@ -222,6 +229,25 @@ export interface Aenderbarkeit {
 const WARE_BESTELLT: readonly string[] = ['cart_prepared', 'ordered'];
 
 /**
+ * Was mit der Rechnung der Bestellung geschieht:
+ *  - `keine`:       Es gibt noch keine. Sie entsteht später ohnehin mit den neuen Beträgen.
+ *  - `automatisch`: Es gibt eine, und das System erzeugt eine NEUE, die sie ersetzt
+ *                   (orderInvoiceReplacement.ts) – nur mit dem internen Rechnungsanbieter und
+ *                   solange der manuelle Klärungsfall der ersten Rechnung (Migration 0026) nicht gesetzt ist.
+ *  - `manuell`:     Es gibt eine, das System kann keine Ersatzrechnung erzeugen – der Betreiber
+ *                   korrigiert selbst und bestätigt das (BestaetigungsCode 'rechnung-korrektur').
+ */
+export type RechnungsErsatzArt = 'keine' | 'automatisch' | 'manuell';
+
+export function bestimmeRechnungErsatz(
+  bestellung: { invoiceNumber: string | null; rechnungUnklarerZustand?: boolean },
+  ersatzMoeglich: boolean
+): RechnungsErsatzArt {
+  if (!bestellung.invoiceNumber) return 'keine';
+  return ersatzMoeglich && !bestellung.rechnungUnklarerZustand ? 'automatisch' : 'manuell';
+}
+
+/**
  * Entscheidet, ob eine Bestellung geändert werden darf. Rein lesend.
  *
  * ── Warum diese Zustände ──────────────────────────────────────────────────
@@ -236,11 +262,15 @@ const WARE_BESTELLT: readonly string[] = ['cart_prepared', 'ordered'];
  *  - Lieferantenauftrag nicht in Verarbeitung: Der Worker liest den
  *    gespeicherten Stand und würde ihn mitten im Lauf überholt sehen.
  */
-export function pruefeAenderbarkeit(stand: {
-  /** Nur diese Felder entscheiden – die Detailseite kennt sie schon, ohne die Positionen laden zu müssen. */
-  bestellung: Pick<AenderungsBestellung, 'orderType' | 'status' | 'paymentStatus' | 'invoiceNumber'>;
-  lieferantenStatus: LieferantenStatus[];
-}): Aenderbarkeit {
+export function pruefeAenderbarkeit(
+  stand: {
+    /** Nur diese Felder entscheiden – die Detailseite kennt sie schon, ohne die Positionen laden zu müssen. */
+    bestellung: Pick<AenderungsBestellung, 'orderType' | 'status' | 'paymentStatus' | 'invoiceNumber'> &
+      Partial<Pick<AenderungsBestellung, 'rechnungUnklarerZustand'>>;
+    lieferantenStatus: LieferantenStatus[];
+  },
+  optionen: { rechnungsErsatzMoeglich?: boolean } = {}
+): Aenderbarkeit {
   const { bestellung, lieferantenStatus } = stand;
   const sperren: Sperre[] = [];
 
@@ -299,7 +329,16 @@ export function pruefeAenderbarkeit(stand: {
 
   const bestaetigungen: BestaetigungsCode[] = [];
   const hinweise: string[] = [];
-  if (bestellung.invoiceNumber) {
+  if (bestimmeRechnungErsatz(bestellung, optionen.rechnungsErsatzMoeglich ?? false) === 'automatisch') {
+    // Seit 2026-11-26: Das System erzeugt die Ersatzrechnung selbst – nichts zu bestätigen, aber zwei Dinge zu wissen.
+    hinweise.push(
+      `Zu dieser Bestellung gibt es bereits die Rechnung ${bestellung.invoiceNumber}. Es wird eine NEUE Rechnung mit den ` +
+        'geänderten Positionen und Beträgen erzeugt, die sie ersetzt (die bisherige bleibt als PDF erhalten). ' +
+        'Sie wird der Kundschaft mit der Mail geschickt.',
+      'Die lokale Buchhaltungs-App übernimmt die neue Rechnung nicht von selbst: Ist die Bestellung dort schon importiert, ' +
+        'bleibt dort die bisherige Rechnung stehen und muss von Hand angepasst werden.'
+    );
+  } else if (bestellung.invoiceNumber) {
     bestaetigungen.push('rechnung-korrektur');
     hinweise.push(
       `Zu dieser Bestellung gibt es bereits die Rechnung ${bestellung.invoiceNumber}. Sie wird NICHT automatisch korrigiert – ` +
@@ -406,6 +445,8 @@ export interface AenderungsPlan {
   /** Bei bezahlten Bestellungen: Betrag, den der Betreiber selbst erstatten muss. 0 sonst. */
   erstattungNoetigCent: number;
   rechnungKorrekturNoetig: boolean;
+  /** Was mit der Rechnung geschieht – siehe RechnungsErsatzArt. */
+  rechnungErsatz: RechnungsErsatzArt;
   /** Existiert nach der Änderung noch eine Position je Lieferant? Für das Aufräumen der Lieferantenaufträge. */
   verbleibendePositionen: Array<{ productId: string; colorId: string; sizeQuantities: Record<string, number> }>;
 }
@@ -425,6 +466,7 @@ export interface AenderungsVorschau {
   hinweise: string[];
   erstattungNoetigCent: number;
   rechnungKorrekturNoetig: boolean;
+  rechnungErsatz: RechnungsErsatzArt;
   rechnungsnummer: string | null;
   zahlungsstatus: string;
   kundenmail: {
@@ -580,15 +622,21 @@ function berechnungsProblem(pricing: ServerCartPricing, land: string | null): Ab
  * Reihenfolge: Zulässigkeit des Zustands → Gültigkeit der Änderung → Gegenprobe
  * → Neuberechnung → Plausibilität (Preis darf nicht steigen). Jede Stufe, die
  * nicht aufgeht, lehnt mit Grund ab – es gibt keinen Ausweichpreis.
+ *
+ * `rechnungsErsatzMoeglich`: Kann das System zu einer vorhandenen Rechnung eine
+ * Ersatzrechnung erzeugen (interner Rechnungsanbieter)? Entscheidet nur, was der
+ * Plan der Rechnung zuordnet (`rechnungErsatz`) – gerechnet wird davon nichts.
  */
 export async function berechneAenderung(
   stand: AenderungsStand,
-  aenderungen: Aenderung[]
+  aenderungen: Aenderung[],
+  optionen: { rechnungsErsatzMoeglich?: boolean } = {}
 ): Promise<{ ok: true; plan: AenderungsPlan } | Abgelehnt> {
   const { bestellung, positionen } = stand;
+  const rechnungErsatz = bestimmeRechnungErsatz(bestellung, optionen.rechnungsErsatzMoeglich ?? false);
 
   // ── Zustand ───────────────────────────────────────────────────────────
-  const zustand = pruefeAenderbarkeit(stand);
+  const zustand = pruefeAenderbarkeit(stand, { rechnungsErsatzMoeglich: optionen.rechnungsErsatzMoeglich });
   if (!zustand.erlaubt) {
     const erste = zustand.sperren[0]!;
     return { ok: false, grund: erste.code, meldung: zustand.sperren.map((s) => s.text).join(' ') };
@@ -842,6 +890,7 @@ export async function berechneAenderung(
       hinweise,
       erstattungNoetigCent,
       rechnungKorrekturNoetig: Boolean(bestellung.invoiceNumber),
+      rechnungErsatz,
       verbleibendePositionen: verbleibend.map((p) => ({
         productId: p.productId,
         colorId: p.colorId,
@@ -918,6 +967,10 @@ export function baueEreignisDetail(
     zahlungsstatus: zusatz.zahlungsstatus,
     rechnungsnummer: zusatz.rechnungsnummer,
     rechnungKorrekturNoetig: plan.rechnungKorrekturNoetig,
+    // 'automatisch' = die Änderung hat eine Ersatzrechnung ausgelöst (orderInvoiceReplacement.ts). Dieses Feld IST der
+    // atomar mitgespeicherte Auftrag dazu: Fehlt die Ersatzrechnung später (Absturz, Fehlschlag), leitet
+    // ermittleAusstehendeErsetzung() daraus ab, dass noch eine aussteht. 'manuell'/'keine' lösen nichts aus.
+    rechnungErsatz: plan.rechnungErsatz,
     // Nur bei bezahlten Bestellungen > 0. Grundlage der Anzeige „Differenz X € muss erstattet werden“.
     erstattungNoetigCent: plan.erstattungNoetigCent,
     kundenmail: zusatz.kundenmail,
@@ -957,9 +1010,27 @@ export function baueEreignisGrund(plan: AenderungsPlan, begruendung: string): st
  *    Stand. Eine angepasste schickt der Betreiber von Hand nach (das System
  *    erzeugt keine Korrekturrechnung). Die Mail sagt deshalb nur, dass eine
  *    angepasste Rechnung separat folgt – nicht, dass die alte „ungültig“ oder
- *    „storniert“ wäre (das wäre eine rechtliche Aussage).
+ *    „storniert“ wäre (das wäre eine rechtliche Aussage). Dasselbe gilt, wenn
+ *    die automatische Ersatzrechnung gescheitert ist: Der Betreiber holt sie
+ *    über die Schaltfläche im Admin nach und schickt sie dann mit.
+ *  - `ersetzt`: Die Ersatzrechnung ist erzeugt und hängt als PDF an der Mail.
+ *    Die Mail nennt die neue und die ersetzte Rechnung – mehr nicht.
+ *    `neueRechnungsnummer` ist nur in der Vorschau null (die Nummer wird erst
+ *    beim Speichern vergeben).
  */
-export type RechnungsHinweis = { art: 'entsteht' } | { art: 'folgt-separat'; rechnungsnummer: string };
+export type RechnungsHinweis =
+  | { art: 'entsteht' }
+  | { art: 'folgt-separat'; rechnungsnummer: string }
+  | {
+      art: 'ersetzt';
+      neueRechnungsnummer: string | null;
+      alteRechnungsnummer: string;
+      /** ISO-Datum (yyyy-mm-dd) der ersetzten Rechnung; null, wenn nicht bekannt. */
+      alteRechnungsdatum: string | null;
+    };
+
+/** Wie weit die Ersatzrechnung ist, wenn die Mail gebaut wird. */
+export type ErsatzFuerMail = { status: 'vorschau' } | { status: 'erstellt'; neueNummer: string } | { status: 'fehlgeschlagen' };
 
 export interface KundenmailDaten {
   orderNumber: string;
@@ -978,9 +1049,20 @@ export interface KundenmailDaten {
 
 export function baueKundenmailDaten(
   plan: AenderungsPlan,
-  bestellung: Pick<AenderungsBestellung, 'orderNumber' | 'paymentStatus' | 'invoiceNumber'>,
-  bestellansichtUrl?: string | null
+  bestellung: Pick<AenderungsBestellung, 'orderNumber' | 'paymentStatus' | 'invoiceNumber'> & Partial<Pick<AenderungsBestellung, 'invoiceDate'>>,
+  bestellansichtUrl?: string | null,
+  /** Nur bei `plan.rechnungErsatz === 'automatisch'` von Bedeutung. Ohne Angabe wie in der Vorschau. */
+  ersatz: ErsatzFuerMail = { status: 'vorschau' }
 ): KundenmailDaten {
+  const ersetzt =
+    plan.rechnungErsatz === 'automatisch' && bestellung.invoiceNumber && ersatz.status !== 'fehlgeschlagen'
+      ? ({
+          art: 'ersetzt',
+          neueRechnungsnummer: ersatz.status === 'erstellt' ? ersatz.neueNummer : null,
+          alteRechnungsnummer: bestellung.invoiceNumber,
+          alteRechnungsdatum: bestellung.invoiceDate ?? null,
+        } satisfies RechnungsHinweis)
+      : null;
   return {
     orderNumber: bestellung.orderNumber,
     aenderungen: plan.aenderungszeilen,
@@ -990,9 +1072,11 @@ export function baueKundenmailDaten(
     versandAltCent: plan.alt.versandCent,
     versandNeuCent: plan.neu.versandCent,
     zahlung: bestellung.paymentStatus === 'paid' ? 'bezahlt' : 'rechnung',
-    rechnung: bestellung.invoiceNumber
-      ? { art: 'folgt-separat', rechnungsnummer: bestellung.invoiceNumber }
-      : { art: 'entsteht' },
+    rechnung:
+      ersetzt ??
+      (bestellung.invoiceNumber
+        ? { art: 'folgt-separat', rechnungsnummer: bestellung.invoiceNumber }
+        : { art: 'entsteht' }),
     bestellansichtUrl: bestellansichtUrl ?? null,
   };
 }
@@ -1025,4 +1109,50 @@ export function berechneOffeneErstattungCent(
     }
   }
   return Math.max(0, offen);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// 6. Steht noch eine Ersatzrechnung aus? (aus der Historie abgeleitet)
+// ═══════════════════════════════════════════════════════════════════════
+
+export interface AusstehendeErsetzung {
+  /** Die Rechnung, die noch ersetzt werden muss (= die aktuelle Rechnung der Bestellung). */
+  alteNummer: string;
+  /** Hatte der Betreiber beim Speichern die Kundenmail vorgesehen? Vorgabe für „Rechnung auch per Mail senden“. */
+  kundenmailVorgesehen: boolean;
+}
+
+/**
+ * Leitet aus der Bestell-Historie ab, ob nach der LETZTEN Auftragsänderung noch
+ * eine automatische Ersatzrechnung aussteht.
+ *
+ * Regel: Die jüngste Änderung (`order_items_edited`) hat eine Ersatzrechnung
+ * ausgelöst (`detail.rechnungErsatz === 'automatisch'`) und merkt sich, welche
+ * Rechnung sie ablösen soll (`detail.rechnungsnummer`). Trägt die Bestellung
+ * noch GENAU diese Rechnung, ist der Ersatz offen. Trägt sie schon eine andere
+ * (der Tausch in Migration 0039 hat stattgefunden), ist er erledigt.
+ *
+ * Warum aus der Historie statt aus einem Merker an der Bestellung: Das Ereignis
+ * entsteht in DERSELBEN Transaktion wie die Änderung (Migration 0038). Es kann
+ * also weder fehlen, wenn die Änderung gespeichert ist, noch vorhanden sein,
+ * wenn sie es nicht ist – anders als ein Merker, den die Anwendung hinterher
+ * setzen müsste und der bei einem Absturz dazwischen verloren ginge.
+ *
+ * Ältere Änderungen (vor Einführung der Ersatzrechnung) tragen das Feld nicht
+ * und lösen nichts aus; für sie bleibt es bei der manuellen Korrektur.
+ *
+ * `ereignisse`: neueste zuerst (wie `getOrderDetail`); fehlt `at`, zählt die Reihenfolge.
+ */
+export function ermittleAusstehendeErsetzung(
+  ereignisse: Array<{ eventType: string; at?: string | null; detail: Record<string, unknown> | null }>,
+  aktuelleRechnungsnummer: string | null
+): AusstehendeErsetzung | null {
+  if (!aktuelleRechnungsnummer) return null;
+  const aenderungen = ereignisse.filter((e) => e.eventType === 'order_items_edited');
+  if (aenderungen.length === 0) return null;
+  const neueste = [...aenderungen].sort((a, b) => String(b.at ?? '').localeCompare(String(a.at ?? '')))[0]!;
+  const detail = neueste.detail;
+  if (!detail || detail.rechnungErsatz !== 'automatisch') return null;
+  if (typeof detail.rechnungsnummer !== 'string' || detail.rechnungsnummer !== aktuelleRechnungsnummer) return null;
+  return { alteNummer: detail.rechnungsnummer, kundenmailVorgesehen: detail.kundenmail === 'geplant' };
 }

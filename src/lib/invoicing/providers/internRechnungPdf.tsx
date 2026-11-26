@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
   partyLine: { fontSize: 9.5, marginBottom: 2, lineHeight: 1.35 },
   partyLineMuted: { fontSize: 8.5, color: FARBEN.muted, marginTop: 4, lineHeight: 1.4 },
   refLine: { fontSize: 8.5, color: FARBEN.muted, marginTop: 24, marginBottom: 24 },
+  // Hinweis „ersetzt die frühere Rechnung“ – bewusst gut sichtbar (Goldton, fett), aber ohne Kasten.
+  replacesLine: { fontSize: 10, fontFamily: 'Helvetica-Bold', color: FARBEN.gold, marginBottom: 22 },
 
   // ── Positionstabelle ──────────────────────────────────────────────────
   theadRow: { flexDirection: 'row', borderBottom: `1pt solid ${FARBEN.text}`, paddingBottom: 6 },
@@ -112,6 +114,13 @@ function Kopfbereich({ auftrag, rechnungsnummer }: { auftrag: Rechnungsauftrag; 
         <Text style={styles.invoiceMeta}>{formatiereDatum(auftrag.rechnungsdatum)}</Text>
       </View>
       <View style={styles.goldRule} />
+
+      {auftrag.ersetzt ? (
+        <Text style={styles.replacesLine}>
+          Diese Rechnung ersetzt die Rechnung Nr. {auftrag.ersetzt.rechnungsnummer}
+          {auftrag.ersetzt.rechnungsdatum ? ` vom ${formatiereDatum(auftrag.ersetzt.rechnungsdatum)}` : ''}.
+        </Text>
+      ) : null}
 
       <View style={styles.headerRow}>
         <View style={styles.headerCol}>

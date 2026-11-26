@@ -86,6 +86,19 @@ export interface Rechnungsauftrag {
    * (Lexware, Test) ignorieren dieses Feld.
    */
   naechsteRechnungsnummer: () => Promise<string>;
+  /**
+   * Nur gesetzt, wenn diese Rechnung eine frühere Rechnung derselben Bestellung
+   * ERSETZT (nachträgliche Auftragsänderung, siehe lib/orders/
+   * orderInvoiceReplacement.ts). Der interne Anbieter druckt dann gut sichtbar
+   * „Diese Rechnung ersetzt die Rechnung Nr. … vom …“ auf den Beleg. Mehr
+   * sagt das Dokument bewusst nicht – insbesondere keine Aussage dazu, wie die
+   * frühere Rechnung buchhalterisch oder rechtlich zu behandeln ist.
+   */
+  ersetzt?: {
+    rechnungsnummer: string;
+    /** ISO-Datum (yyyy-mm-dd) der früheren Rechnung; null, wenn nicht bekannt. */
+    rechnungsdatum: string | null;
+  };
 }
 
 /** Was nach der Rechnungserstellung zurückkommt. */

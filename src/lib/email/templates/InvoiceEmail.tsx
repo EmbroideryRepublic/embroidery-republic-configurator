@@ -22,10 +22,16 @@ export function InvoiceEmail({
   orderNumber,
   invoiceNumber,
   invoiceDate,
+  replaces,
 }: {
   orderNumber: string;
   invoiceNumber: string;
   invoiceDate: string;
+  /**
+   * Nur bei einer Ersatzrechnung nach einer Auftragsänderung (orderInvoiceReplacement.ts): die Rechnung, die diese
+   * ersetzt. Die Mail nennt sie – mehr nicht (keine Aussage dazu, wie sie rechtlich zu behandeln ist).
+   */
+  replaces?: { invoiceNumber: string; invoiceDate: string | null };
 }) {
   const title = `Rechnung ${invoiceNumber}`;
   return (
@@ -33,6 +39,9 @@ export function InvoiceEmail({
       <Text style={{ margin: 0 }}>
         Zu deiner Bestellung {orderNumber} findest du anbei die Rechnung {invoiceNumber} vom {invoiceDate} als
         PDF.
+        {replaces
+          ? ` Diese Rechnung ersetzt die Rechnung ${replaces.invoiceNumber}${replaces.invoiceDate ? ` vom ${replaces.invoiceDate}` : ''}.`
+          : null}
       </Text>
     </EmailLayout>
   );

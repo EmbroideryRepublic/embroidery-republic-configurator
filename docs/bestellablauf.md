@@ -253,10 +253,38 @@ Preis durch die Verringerung (Staffelsprung, Versand unter 75 €), wird ebenfal
 abgelehnt (`preis-steigt`). Stickerei wird nicht neu berechnet (Stichzahl nicht
 gespeichert). Gutscheine gibt es in diesem Shop nicht.
 
-**Was das System NICHT tut** (der Betreiber bestätigt es vor dem Speichern):
-keine Teilerstattung (`refundService` kennt nur die volle Erstattung bei Storno),
-keine Rechnungskorrektur (der Rechnungs-Port kennt nur `erstelle`), keine
-Änderung am Buchhaltungs-Cursor `accounting_ready_at`. Die bei bezahlten
+**Ersatzrechnung (seit 2026-11-26, Migration 0039):** Gibt es zur Bestellung schon
+eine Rechnung und ist der interne Rechnungsanbieter aktiv, erzeugt der Ablauf nach
+dem Speichern automatisch eine NEUE Rechnung mit den geänderten Positionen und
+Beträgen (`lib/orders/orderInvoiceReplacement.ts`; Positionen, Versand,
+Kleinunternehmer-/Steuerweg und Zahlungsziel kommen aus `rechnungsauftrag.ts`, derselben
+Stelle wie die erste Rechnung). Das PDF trägt „Diese Rechnung ersetzt die Rechnung
+Nr. … vom …“ und hängt – wenn die Mail nicht abgewählt ist – an der Mail „Dein Auftrag
+wurde geändert“. Die alte Rechnung bleibt als PDF erhalten und steht mit Nummer,
+Datum und Nachfolgerin in `order_invoice_history`; `orders` trägt weiter nur die
+aktuelle Rechnung.
+
+```
+Änderung gespeichert    Ereignis order_items_edited trägt detail.rechnungErsatz = 'automatisch'
+                        und detail.rechnungsnummer = die abzulösende Rechnung (atomar, 0038)
+  reservieren           reserviere_ersatzrechnung: Anspruch + Nachfolgenummer in EINER
+                        Transaktion; pro (Bestellung, abgelöste Nummer) genau eine Nummer
+  rendern + ablegen     eigener Pfad rechnung-<Nummer>.pdf, die alte wird nie überschrieben
+  tauschen              ersetze_rechnung: orders → neue Rechnung, Historie, Ereignis 'invoice_replaced'
+```
+
+Schlägt etwas fehl, bleibt die Änderung gespeichert. Der Admin zeigt dann „Neue Rechnung
+fehlt“ mit der Schaltfläche „Neue Rechnung erzeugen“; ob eine aussteht, folgt aus dem
+Ereignis der Änderung und der aktuellen Rechnungsnummer (`ermittleAusstehendeErsetzung`).
+Ein erneuter Versuch bekommt dieselbe reservierte Nummer, ein Doppelklick erzeugt keine
+zweite Rechnung.
+
+**Was das System NICHT tut:** keine Teilerstattung (`refundService` kennt nur die volle
+Erstattung bei Storno – der Betreiber bestätigt das vor dem Speichern). Keine Änderung am
+Buchhaltungs-Cursor `accounting_ready_at`: Die lokale Buchhaltungs-App übernimmt eine
+Bestellung nur einmal und führt keine Ersatzrechnung nach – siehe Bericht zur
+Ersatzrechnung. Ohne internen Anbieter (oder bei gesetztem `rechnung_unklarer_zustand`)
+bleibt es bei der manuellen Rechnungskorrektur mit Bestätigung. Die bei bezahlten
 Bestellungen offene Differenz steht im Historien-Eintrag
 (`erstattungNoetigCent`), wird im Admin als „offene Erstattung“ gezeigt und kann
 dort als von Hand erstattet vermerkt werden (`manual_refund_noted`, bewegt kein

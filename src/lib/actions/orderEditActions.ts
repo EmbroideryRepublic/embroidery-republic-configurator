@@ -10,9 +10,12 @@
  * unvertrauenswürdiges JSON gelesen, die Fachlogik liegt vollständig in
  * lib/orders/orderEdit.ts (rein) und orderEditService.ts (Ablauf).
  *
- * Es gibt drei Actions:
+ * Es gibt vier Actions:
  *  • `berechneAuftragsaenderung`  – Vorschau, schreibt und versendet NICHTS.
- *  • `wendeAuftragsaenderungAn`   – speichert atomar, danach Mail (wählbar).
+ *  • `wendeAuftragsaenderungAn`   – speichert atomar, erzeugt bei vorhandener
+ *                                   Rechnung die Ersatzrechnung, danach Mail (wählbar).
+ *  • `erzeugeErsatzrechnungNeu`   – holt eine fehlgeschlagene Ersatzrechnung nach
+ *                                   (Schaltfläche „Neue Rechnung erzeugen“; idempotent).
  *  • `vermerkeErstattungVonHand`  – hält eine vom Betreiber selbst ausgelöste
  *                                   Teilerstattung fest (bewegt kein Geld).
  */
@@ -25,6 +28,7 @@ import {
   wendeAenderungAn,
   type AenderungsAusgang,
 } from '@/lib/orders/orderEditService';
+import { erzeugeErsatzrechnungNach } from '@/lib/orders/orderInvoiceReplacement';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const BESTAETIGUNGEN: readonly BestaetigungsCode[] = ['rechnung-korrektur', 'erstattung-manuell', 'ware-bereits-bestellt'];
@@ -106,7 +110,36 @@ export async function wendeAuftragsaenderungAn(
     abgewaehlt: 'Es wurde keine Mail an die Kundschaft versendet (abgewählt).',
     'keine-adresse': 'Es wurde keine Mail versendet (keine Adresse hinterlegt).',
   };
-  return { ok: true, meldung: `Auftrag geändert. ${mailText[ausgang.kundenmail]}`, ausgang };
+  const rechnungText =
+    ausgang.rechnung.status === 'ersetzt' && ausgang.rechnung.neueNummer
+      ? ` Neue Rechnung ${ausgang.rechnung.neueNummer} ersetzt Rechnung ${ausgang.rechnung.alteNummer}.`
+      : ausgang.rechnung.status === 'fehlgeschlagen'
+        ? ` NEUE RECHNUNG FEHLT – bitte unter „Ersatzrechnung“ erneut erzeugen.`
+        : '';
+  return { ok: true, meldung: `Auftrag geändert.${rechnungText} ${mailText[ausgang.kundenmail]}`, ausgang };
+}
+
+export interface ErsatzrechnungAntwort {
+  ok: boolean;
+  meldung: string;
+}
+
+/**
+ * Schaltfläche „Neue Rechnung erzeugen“: holt eine fehlgeschlagene (oder durch einen
+ * Absturz ausgebliebene) Ersatzrechnung nach. Welche Rechnung zu ersetzen ist, leitet
+ * der Server selbst aus der Historie ab – der Browser nennt keine Rechnungsnummer.
+ * Idempotent: Ein zweiter Klick erzeugt keine zweite Rechnung (siehe Migration 0039).
+ */
+export async function erzeugeErsatzrechnungNeu(orderId: string, mailSenden: boolean): Promise<ErsatzrechnungAntwort> {
+  if (!(await istAdmin())) return { ok: false, meldung: 'Nicht angemeldet.' };
+  if (typeof orderId !== 'string' || !UUID.test(orderId)) return { ok: false, meldung: 'Ungültige Bestellung.' };
+  if (typeof mailSenden !== 'boolean') return { ok: false, meldung: 'Ungültige Angaben.' };
+
+  const ergebnis = await erzeugeErsatzrechnungNach(orderId, mailSenden);
+
+  // Auch bei einem Fehlschlag auffrischen: Das Ereignis „Ersatzrechnung fehlgeschlagen“ steht dann in der Historie.
+  revalidatePath(`/admin/bestellung/${orderId}`);
+  return { ok: ergebnis.ok, meldung: ergebnis.meldung };
 }
 
 export async function vermerkeErstattungVonHand(orderId: string, betragCent: number, notiz: string): Promise<ErstattungsVermerkAntwort> {

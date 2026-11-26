@@ -18,6 +18,8 @@ import {
   baueRpcNutzlast,
   berechneAenderung,
   berechneOffeneErstattungCent,
+  bestimmeRechnungErsatz,
+  ermittleAusstehendeErsetzung,
   liesAenderungen,
   pruefeAenderbarkeit,
   type Aenderung,
@@ -576,4 +578,170 @@ test('offene Erstattung: Summe der Änderungs-Ereignisse minus vermerkte Erstatt
   assert.equal(berechneOffeneErstattungCent([e('order_items_edited', { erstattungNoetigCent: 'viel' })]), 0);
   assert.equal(berechneOffeneErstattungCent([e('manual_refund_noted', { betragCent: 99999 })]), 0, 'nie negativ');
   assert.equal(berechneOffeneErstattungCent([e('status_changed', { erstattungNoetigCent: 5000 })]), 0, 'fremde Ereignisse zählen nicht');
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+// Ersatzrechnung (Migration 0039): Plan, Mail-Daten, „steht noch eine aus?“
+// ═══════════════════════════════════════════════════════════════════════
+
+test('bestimmeRechnungErsatz: keine Rechnung / automatisch / manuell', () => {
+  assert.equal(bestimmeRechnungErsatz({ invoiceNumber: null }, true), 'keine');
+  assert.equal(bestimmeRechnungErsatz({ invoiceNumber: null }, false), 'keine');
+  assert.equal(bestimmeRechnungErsatz({ invoiceNumber: 'RE-2026-000001' }, true), 'automatisch');
+  assert.equal(bestimmeRechnungErsatz({ invoiceNumber: 'RE-2026-000001' }, false), 'manuell');
+  assert.equal(bestimmeRechnungErsatz({ invoiceNumber: 'RE-2026-000001', rechnungUnklarerZustand: true }, true), 'manuell');
+});
+
+test('Plan: Mit Ersatz-Möglichkeit wird aus der Rechnungskorrektur von Hand eine automatische Ersatzrechnung', async () => {
+  const stand = await gespeicherterStand([{ id: 'p1', productId: HOODIE, sizeQuantities: { L: 2 } }], { invoiceNumber: 'RE-2026-000007' });
+  const aenderung: Aenderung[] = [{ art: 'verringern', positionId: 'p1', neueMengen: { L: 1 } }];
+
+  const manuell = plan(await berechneAenderung(stand, aenderung));
+  assert.equal(manuell.rechnungErsatz, 'manuell', 'ohne Option bleibt alles wie bisher');
+  assert.deepEqual(manuell.bestaetigungen, ['rechnung-korrektur']);
+
+  const automatisch = plan(await berechneAenderung(stand, aenderung, { rechnungsErsatzMoeglich: true }));
+  assert.equal(automatisch.rechnungErsatz, 'automatisch');
+  assert.deepEqual(automatisch.bestaetigungen, [], 'nichts mehr von Hand zu bestätigen – das System erzeugt die Rechnung');
+  assert.equal(automatisch.rechnungKorrekturNoetig, true, 'es gab eine Rechnung, die nach der Änderung nicht mehr stimmt');
+  assert.match(automatisch.hinweise.join(' '), /NEUE Rechnung/);
+  assert.match(automatisch.hinweise.join(' '), /RE-2026-000007/);
+  // Gerechnet wird in beiden Fällen identisch.
+  assert.equal(automatisch.neu.gesamtCent, manuell.neu.gesamtCent);
+  assert.deepEqual(automatisch.schreibungen, manuell.schreibungen);
+
+  const ohneRechnung = await gespeicherterStand([{ id: 'p1', productId: HOODIE, sizeQuantities: { L: 2 } }]);
+  const keine = plan(await berechneAenderung(ohneRechnung, aenderung, { rechnungsErsatzMoeglich: true }));
+  assert.equal(keine.rechnungErsatz, 'keine');
+  assert.deepEqual(keine.bestaetigungen, []);
+});
+
+test('Plan: Bezahlte Bestellung mit Rechnung – Ersatz automatisch, Erstattung bleibt die einzige Bestätigung', async () => {
+  const stand = await gespeicherterStand(
+    [{ id: 'p1', productId: HOODIE, sizeQuantities: { L: 2 } }],
+    { invoiceNumber: 'RE-2026-000007', paymentStatus: 'paid', paymentMethod: 'card' }
+  );
+  const p = plan(await berechneAenderung(stand, [{ art: 'verringern', positionId: 'p1', neueMengen: { L: 1 } }], { rechnungsErsatzMoeglich: true }));
+  assert.equal(p.rechnungErsatz, 'automatisch');
+  assert.deepEqual(p.bestaetigungen, ['erstattung-manuell']);
+  assert.equal(p.erstattungNoetigCent, p.differenzCent);
+});
+
+test('Plan: Der manuelle Klärungsfall der ersten Rechnung sperrt den automatischen Ersatz', async () => {
+  const stand = await gespeicherterStand(
+    [{ id: 'p1', productId: HOODIE, sizeQuantities: { L: 2 } }],
+    { invoiceNumber: 'RE-2026-000007', rechnungUnklarerZustand: true }
+  );
+  const p = plan(await berechneAenderung(stand, [{ art: 'verringern', positionId: 'p1', neueMengen: { L: 1 } }], { rechnungsErsatzMoeglich: true }));
+  assert.equal(p.rechnungErsatz, 'manuell');
+  assert.deepEqual(p.bestaetigungen, ['rechnung-korrektur']);
+});
+
+test('Ereignis-Detail trägt rechnungErsatz und die abzulösende Rechnung – der atomar gespeicherte Auftrag zur Ersatzrechnung', async () => {
+  const stand = await gespeicherterStand([{ id: 'p1', productId: HOODIE, sizeQuantities: { L: 2 } }], { invoiceNumber: 'RE-2026-000007' });
+  const p = plan(await berechneAenderung(stand, [{ art: 'verringern', positionId: 'p1', neueMengen: { L: 1 } }], { rechnungsErsatzMoeglich: true }));
+  const detail = baueEreignisDetail(p, { begruendung: 'x', zahlungsstatus: 'not_required', rechnungsnummer: 'RE-2026-000007', kundenmail: 'geplant' });
+  assert.equal(detail.rechnungErsatz, 'automatisch');
+  assert.equal(detail.rechnungsnummer, 'RE-2026-000007');
+});
+
+test('Kundenmail-Daten: ersetzt / folgt separat / entsteht je nach Stand der Ersatzrechnung', async () => {
+  const stand = await gespeicherterStand([{ id: 'p1', productId: HOODIE, sizeQuantities: { L: 2 } }], { invoiceNumber: 'RE-2026-000007', invoiceDate: '2026-11-20' });
+  const p = plan(await berechneAenderung(stand, [{ art: 'verringern', positionId: 'p1', neueMengen: { L: 1 } }], { rechnungsErsatzMoeglich: true }));
+  const bestellung = stand.bestellung;
+
+  // Vorschau: die Nummer gibt es erst beim Speichern.
+  assert.deepEqual(baueKundenmailDaten(p, bestellung, null).rechnung, {
+    art: 'ersetzt',
+    neueRechnungsnummer: null,
+    alteRechnungsnummer: 'RE-2026-000007',
+    alteRechnungsdatum: '2026-11-20',
+  });
+  assert.deepEqual(baueKundenmailDaten(p, bestellung, null, { status: 'vorschau' }).rechnung.art, 'ersetzt');
+  // Erzeugt: beide Nummern.
+  assert.deepEqual(baueKundenmailDaten(p, bestellung, null, { status: 'erstellt', neueNummer: 'RE-2026-000099' }).rechnung, {
+    art: 'ersetzt',
+    neueRechnungsnummer: 'RE-2026-000099',
+    alteRechnungsnummer: 'RE-2026-000007',
+    alteRechnungsdatum: '2026-11-20',
+  });
+  // Fehlgeschlagen: ehrlich „folgt separat“, kein Anhang behauptet.
+  assert.deepEqual(baueKundenmailDaten(p, bestellung, null, { status: 'fehlgeschlagen' }).rechnung, {
+    art: 'folgt-separat',
+    rechnungsnummer: 'RE-2026-000007',
+  });
+
+  // Ohne automatischen Ersatz (manuell) ändert der Parameter nichts.
+  const manuell = plan(await berechneAenderung(stand, [{ art: 'verringern', positionId: 'p1', neueMengen: { L: 1 } }]));
+  assert.deepEqual(baueKundenmailDaten(manuell, bestellung, null, { status: 'erstellt', neueNummer: 'RE-2026-000099' }).rechnung, {
+    art: 'folgt-separat',
+    rechnungsnummer: 'RE-2026-000007',
+  });
+});
+
+test('pruefeAenderbarkeit: Hinweise zur Ersatzrechnung nur mit der Option – sonst die manuelle Bestätigung', () => {
+  const eingabe = {
+    bestellung: { orderType: 'order', status: 'new', paymentStatus: 'not_required', invoiceNumber: 'RE-2026-000001' },
+    lieferantenStatus: [],
+  };
+  const manuell = pruefeAenderbarkeit(eingabe);
+  assert.deepEqual(manuell.bestaetigungen, ['rechnung-korrektur']);
+  const auto = pruefeAenderbarkeit(eingabe, { rechnungsErsatzMoeglich: true });
+  assert.deepEqual(auto.bestaetigungen, []);
+  assert.equal(auto.hinweise.length, 2, 'neue Rechnung + Hinweis zur Buchhaltungs-App');
+  assert.match(auto.hinweise[1]!, /Buchhaltungs-App/);
+  // Ohne Rechnung gibt es weder Hinweis noch Bestätigung.
+  const keine = pruefeAenderbarkeit({ ...eingabe, bestellung: { ...eingabe.bestellung, invoiceNumber: null } }, { rechnungsErsatzMoeglich: true });
+  assert.deepEqual(keine.hinweise, []);
+});
+
+test('ermittleAusstehendeErsetzung: offen, solange die Bestellung noch die Rechnung der letzten Änderung trägt', () => {
+  const aenderung = (at: string, rechnungsnummer: string | null, rechnungErsatz: string, kundenmail = 'geplant') => ({
+    eventType: 'order_items_edited',
+    at,
+    detail: { rechnungErsatz, rechnungsnummer, kundenmail } as Record<string, unknown>,
+  });
+
+  // Änderung ausgelöst, Rechnung noch die alte → offen.
+  assert.deepEqual(ermittleAusstehendeErsetzung([aenderung('2026-11-26T10:00:00Z', 'RE-2026-000007', 'automatisch')], 'RE-2026-000007'), {
+    alteNummer: 'RE-2026-000007',
+    kundenmailVorgesehen: true,
+  });
+  // Mail abgewählt → die Vorgabe für „Rechnung auch per Mail“ ist aus.
+  assert.equal(
+    ermittleAusstehendeErsetzung([aenderung('2026-11-26T10:00:00Z', 'RE-2026-000007', 'automatisch', 'abgewaehlt')], 'RE-2026-000007')?.kundenmailVorgesehen,
+    false
+  );
+  // Rechnung bereits getauscht → erledigt.
+  assert.equal(ermittleAusstehendeErsetzung([aenderung('2026-11-26T10:00:00Z', 'RE-2026-000007', 'automatisch')], 'RE-2026-000099'), null);
+  // Keine Rechnung (mehr) vorhanden.
+  assert.equal(ermittleAusstehendeErsetzung([aenderung('2026-11-26T10:00:00Z', 'RE-2026-000007', 'automatisch')], null), null);
+});
+
+test('ermittleAusstehendeErsetzung: nur die JÜNGSTE Änderung zählt – zwei Änderungen ergeben EINE offene Ersetzung', () => {
+  const e1 = { eventType: 'order_items_edited', at: '2026-11-26T10:00:00Z', detail: { rechnungErsatz: 'automatisch', rechnungsnummer: 'RE-2026-000007', kundenmail: 'geplant' } };
+  const e2 = { eventType: 'order_items_edited', at: '2026-11-26T11:00:00Z', detail: { rechnungErsatz: 'automatisch', rechnungsnummer: 'RE-2026-000007', kundenmail: 'geplant' } };
+  // Erste Änderung nicht ersetzt, zweite auch nicht: Die Rechnung ist noch RE-…07 → eine Ersetzung für den neuesten Stand.
+  assert.equal(ermittleAusstehendeErsetzung([e2, e1], 'RE-2026-000007')?.alteNummer, 'RE-2026-000007');
+  // Reihenfolge der Eingabe egal (nach `at` sortiert).
+  assert.equal(ermittleAusstehendeErsetzung([e1, e2], 'RE-2026-000007')?.alteNummer, 'RE-2026-000007');
+  // Erste ersetzt (→ …99), zweite Änderung danach, Rechnung …99 trägt noch: offen für …99.
+  const e3 = { eventType: 'order_items_edited', at: '2026-11-27T09:00:00Z', detail: { rechnungErsatz: 'automatisch', rechnungsnummer: 'RE-2026-000099', kundenmail: 'geplant' } };
+  assert.equal(ermittleAusstehendeErsetzung([e3, e2, e1], 'RE-2026-000099')?.alteNummer, 'RE-2026-000099');
+  assert.equal(ermittleAusstehendeErsetzung([e3, e2, e1], 'RE-2026-000150'), null);
+});
+
+test('ermittleAusstehendeErsetzung: ältere Änderungen (ohne das Feld), manuelle und fremde Ereignisse lösen nichts aus', () => {
+  const alt = { eventType: 'order_items_edited', at: '2026-11-26T10:00:00Z', detail: { rechnungsnummer: 'RE-2026-000007', rechnungKorrekturNoetig: true } };
+  assert.equal(ermittleAusstehendeErsetzung([alt], 'RE-2026-000007'), null, 'Altbestand: bleibt bei der manuellen Korrektur');
+  const manuell = { eventType: 'order_items_edited', at: '2026-11-26T10:00:00Z', detail: { rechnungErsatz: 'manuell', rechnungsnummer: 'RE-2026-000007' } };
+  assert.equal(ermittleAusstehendeErsetzung([manuell], 'RE-2026-000007'), null);
+  const keine = { eventType: 'order_items_edited', at: '2026-11-26T10:00:00Z', detail: { rechnungErsatz: 'keine', rechnungsnummer: null } };
+  assert.equal(ermittleAusstehendeErsetzung([keine], 'RE-2026-000007'), null);
+  assert.equal(ermittleAusstehendeErsetzung([{ eventType: 'status_changed', at: '2026-11-26T10:00:00Z', detail: { rechnungErsatz: 'automatisch', rechnungsnummer: 'RE-2026-000007' } }], 'RE-2026-000007'), null);
+  assert.equal(ermittleAusstehendeErsetzung([], 'RE-2026-000007'), null);
+  assert.equal(ermittleAusstehendeErsetzung([{ eventType: 'order_items_edited', detail: null }], 'RE-2026-000007'), null);
+  // Eine NEUERE manuelle Änderung überstimmt eine ältere automatische.
+  const aelterAutomatisch = { eventType: 'order_items_edited', at: '2026-11-26T09:00:00Z', detail: { rechnungErsatz: 'automatisch', rechnungsnummer: 'RE-2026-000007' } };
+  assert.equal(ermittleAusstehendeErsetzung([manuell, aelterAutomatisch], 'RE-2026-000007'), null);
 });

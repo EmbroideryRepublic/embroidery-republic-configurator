@@ -135,7 +135,7 @@ export function OrderEditControl({
         return;
       }
 
-      const zeilen = [r.meldung, ...r.ausgang.probleme];
+      const zeilen = [r.meldung, ...r.ausgang.hinweise, ...r.ausgang.probleme];
       setOffen(false);
       setVorschau(null);
 
@@ -408,6 +408,15 @@ export function OrderEditControl({
                   : 'Keine E-Mail-Adresse hinterlegt – es kann keine Mail an die Kundschaft gehen.'}
               </span>
             </label>
+            {/* Ersatzrechnung: Der Betreiber sieht VOR dem Speichern, dass eine neue Rechnung entsteht – und ob sie mit der Mail
+                zur Kundschaft geht oder (Mail abgewählt) nur im Admin zum Download bereitsteht. */}
+            {vorschau.rechnungErsatz === 'automatisch' && (
+              <p className="mt-2 rounded bg-gray-50 px-2 py-1.5 text-xs text-gray-700">
+                {mailSenden && vorschau.kundenmail.empfaenger
+                  ? 'Es wird eine neue Rechnung erzeugt und der Kundschaft mit dieser Mail als PDF geschickt.'
+                  : 'Es wird eine neue Rechnung erzeugt. Mit abgewählter Mail geht sie NICHT an die Kundschaft – sie steht danach im Admin zum Download bereit.'}
+              </p>
+            )}
             <details className="mt-2">
               <summary className="cursor-pointer text-xs text-gray-500 hover:text-gray-800">Wortlaut der Mail ansehen</summary>
               <pre className="mt-2 max-h-72 overflow-auto whitespace-pre-wrap rounded bg-gray-50 p-2 text-xs text-gray-800">

@@ -34,6 +34,7 @@ import { OrderCompletedEmail } from './templates/OrderCompletedEmail';
 import { OrderProofRequestEmail } from './templates/OrderProofRequestEmail';
 import { ProofFeedbackEmail } from './templates/ProofFeedbackEmail';
 import { OrderEditedEmail } from './templates/OrderEditedEmail';
+import { InvoiceEmail } from './templates/InvoiceEmail';
 import { render } from '@react-email/render';
 import type { KundenmailDaten } from '@/lib/orders/orderEdit';
 import type { OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
@@ -399,14 +400,73 @@ export async function sendOrderEditedEmail(params: {
   orderId: string;
   empfaenger: string;
   daten: KundenmailDaten;
+  /**
+   * Die Ersatzrechnung als PDF-Anhang – nur zusammen mit `daten.rechnung.art === 'ersetzt'`. EIN gemeinsames
+   * Gültigkeits-Gate für Text UND Anhang (wie in sendOrderConfirmationEmail): Ist das PDF leer oder fehlt es, geht
+   * die Mail mit dem Text „folgt separat“ raus statt mit einem Text, der einen Anhang behauptet.
+   */
+  rechnung?: { pdf: Buffer; rechnungsnummer: string } | null;
 }): Promise<EmailVersandErgebnis> {
+  const anhang = params.rechnung && params.rechnung.pdf && params.rechnung.pdf.length > 0 ? params.rechnung : null;
+  const daten: KundenmailDaten =
+    params.daten.rechnung.art === 'ersetzt' && !anhang
+      ? {
+          ...params.daten,
+          rechnung: { art: 'folgt-separat', rechnungsnummer: params.daten.rechnung.alteRechnungsnummer },
+        }
+      : params.daten;
   const result = await sendEmail({
     to: params.empfaenger,
-    subject: betreffAuftragGeaendert(params.daten.orderNumber),
-    react: <OrderEditedEmail daten={params.daten} />,
+    subject: betreffAuftragGeaendert(daten.orderNumber),
+    react: <OrderEditedEmail daten={daten} />,
     // Antworten (z. B. „das war so nicht abgesprochen“) sollen bei uns landen.
     replyTo: getReplyToAddress(),
     kontext: { anlass: 'order_edited', orderId: params.orderId },
+    ...(anhang && daten.rechnung.art === 'ersetzt'
+      ? { attachments: [{ filename: `Rechnung-${anhang.rechnungsnummer}.pdf`, content: anhang.pdf }] }
+      : {}),
+  });
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
+}
+
+/**
+ * Schickt die Ersatzrechnung nach, wenn sie erst NACH der Mail zur Auftragsänderung
+ * entstanden ist (die erste Erzeugung scheiterte, der Betreiber hat sie über die
+ * Schaltfläche im Adminbereich nachgeholt). Kurze Mail mit dem PDF im Anhang –
+ * dieselbe Vorlage wie die Rechnungs-Nachtragsmail, ergänzt um den Satz zur ersetzten Rechnung.
+ */
+export async function sendInvoiceReplacementEmail(params: {
+  orderId: string;
+  empfaenger: string;
+  bestellnummer: string;
+  neueNummer: string;
+  /** Bereits für die Anzeige formatiert (z. B. „26.11.2026“). */
+  neuesDatum: string;
+  alteNummer: string;
+  altesDatum: string | null;
+  pdf: Buffer;
+}): Promise<EmailVersandErgebnis> {
+  if (!params.pdf || params.pdf.length === 0) {
+    return { success: false, error: 'Rechnungs-PDF fehlt oder ist leer – Mail nicht versendet.' };
+  }
+  const result = await sendEmail({
+    to: params.empfaenger,
+    subject: `Neue Rechnung ${params.neueNummer} zu Bestellung ${params.bestellnummer}`,
+    react: (
+      <InvoiceEmail
+        orderNumber={params.bestellnummer}
+        invoiceNumber={params.neueNummer}
+        invoiceDate={params.neuesDatum}
+        replaces={{ invoiceNumber: params.alteNummer, invoiceDate: params.altesDatum }}
+      />
+    ),
+    replyTo: getReplyToAddress(),
+    kontext: { anlass: 'invoice_replaced', orderId: params.orderId },
+    attachments: [{ filename: `Rechnung-${params.neueNummer}.pdf`, content: params.pdf }],
   });
   return {
     success: result.success,

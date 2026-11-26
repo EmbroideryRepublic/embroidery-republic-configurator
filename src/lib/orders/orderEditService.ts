@@ -47,6 +47,7 @@ import { erzeugeBestellToken } from '@/lib/orders/orderAccessToken';
 import { basisUrl } from '@/lib/seo/basisUrl';
 import { formatiereGeld } from '@/lib/format';
 import { protokolliereVersand } from './orderService';
+import { ersatzrechnungMoeglich, ersetzeRechnung, type ErsatzRechnungsErgebnis } from './orderInvoiceReplacement';
 import {
   baueEreignisDetail,
   baueEreignisGrund,
@@ -62,6 +63,7 @@ import {
   type AenderungsStand,
   type AenderungsVorschau,
   type BestaetigungsCode,
+  type ErsatzFuerMail,
   type KundenmailDaten,
   type Summen,
 } from './orderEdit';
@@ -77,8 +79,16 @@ export interface AenderungsAbhaengigkeiten {
   ladeStand(orderId: string): Promise<AenderungsStand | null>;
   /** Schreibt die Änderung atomar (Migration 0038). Wirft nicht. */
   speichere(orderId: string, nutzlast: Record<string, unknown>): Promise<SpeicherErgebnis>;
-  /** Verschickt die Kundenmail. Darf nicht werfen müssen – der Aufrufer fängt es trotzdem ab. */
-  sendeKundenmail(params: { orderId: string; empfaenger: string; daten: KundenmailDaten }): Promise<EmailVersandErgebnis>;
+  /**
+   * Verschickt die Kundenmail – bei einer erzeugten Ersatzrechnung mit dem PDF im Anhang. Darf nicht werfen müssen –
+   * der Aufrufer fängt es trotzdem ab.
+   */
+  sendeKundenmail(params: {
+    orderId: string;
+    empfaenger: string;
+    daten: KundenmailDaten;
+    rechnung?: { pdf: Buffer; rechnungsnummer: string } | null;
+  }): Promise<EmailVersandErgebnis>;
   /** Klartext der Mail für die Vorschau. */
   mailText(daten: KundenmailDaten): Promise<string>;
   /** Hält den Versandausgang in der Bestell-Historie fest. */
@@ -87,6 +97,13 @@ export interface AenderungsAbhaengigkeiten {
   gleicheLieferantenAn(orderId: string, plan: AenderungsPlan): Promise<void>;
   /** Link auf die Bestellansicht der Kundschaft, falls ein signierter Link möglich ist. */
   bestellansichtUrl(orderId: string): string | null;
+  /** Kann das System zu einer vorhandenen Rechnung eine Ersatzrechnung erzeugen? (Nur der interne Anbieter.) */
+  rechnungsErsatzMoeglich(): boolean;
+  /**
+   * Erzeugt die Ersatzrechnung für `alteNummer` (orderInvoiceReplacement.ts). Wirft nicht. NUR nach der gespeicherten
+   * Änderung aufrufen – sie baut aus dem dann gespeicherten, neuen Stand.
+   */
+  ersetzeRechnung(orderId: string, alteNummer: string): Promise<ErsatzRechnungsErgebnis>;
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -112,11 +129,12 @@ export async function erstelleAenderungsVorschau(
   }
   if (!stand) return { ok: false, grund: 'nicht-gefunden', meldung: 'Bestellung nicht gefunden.' };
 
-  const ergebnis = await berechneAenderung(stand, aenderungen);
+  const ergebnis = await berechneAenderung(stand, aenderungen, { rechnungsErsatzMoeglich: deps.rechnungsErsatzMoeglich() });
   if (!ergebnis.ok) return ergebnis;
   const plan = ergebnis.plan;
 
-  const mailDaten = baueKundenmailDaten(plan, stand.bestellung, deps.bestellansichtUrl(orderId));
+  // Die Vorschau der Mail zeigt schon die Ersatzrechnung im Anhang – ihre Nummer gibt es erst beim Speichern.
+  const mailDaten = baueKundenmailDaten(plan, stand.bestellung, deps.bestellansichtUrl(orderId), { status: 'vorschau' });
   let text: string;
   try {
     text = await deps.mailText(mailDaten);
@@ -137,6 +155,7 @@ export async function erstelleAenderungsVorschau(
       hinweise: plan.hinweise,
       erstattungNoetigCent: plan.erstattungNoetigCent,
       rechnungKorrekturNoetig: plan.rechnungKorrekturNoetig,
+      rechnungErsatz: plan.rechnungErsatz,
       rechnungsnummer: stand.bestellung.invoiceNumber,
       zahlungsstatus: stand.bestellung.paymentStatus,
       kundenmail: {
@@ -166,6 +185,19 @@ export interface AenderungsAnfrage {
 
 export type KundenmailAusgang = 'gesendet' | 'fehlgeschlagen' | 'abgewaehlt' | 'keine-adresse';
 
+/**
+ * Was aus der Rechnung geworden ist:
+ *  - `keine`:          Es gab noch keine – sie entsteht später mit den neuen Beträgen.
+ *  - `manuell`:        Es gibt eine, das System kann keine Ersatzrechnung erzeugen (Betreiber korrigiert selbst).
+ *  - `ersetzt`:        Die Ersatzrechnung ist erzeugt (`neueNummer` null nur, wenn sie schon vorher erzeugt war).
+ *  - `fehlgeschlagen`: Die Änderung ist gespeichert, die neue Rechnung FEHLT – im Admin erneut erzeugen.
+ */
+export type RechnungsAusgang =
+  | { status: 'keine' }
+  | { status: 'manuell' }
+  | { status: 'ersetzt'; neueNummer: string | null; alteNummer: string }
+  | { status: 'fehlgeschlagen'; alteNummer: string; meldung: string };
+
 export type AenderungsAusgang =
   | {
       ok: true;
@@ -176,8 +208,11 @@ export type AenderungsAusgang =
       rechnungKorrekturNoetig: boolean;
       aenderungszeilen: string[];
       kundenmail: KundenmailAusgang;
-      /** Nicht-fatale Folgeprobleme (Mail, Lieferanten) – die Änderung selbst ist gespeichert. */
+      rechnung: RechnungsAusgang;
+      /** Nicht-fatale Folgeprobleme (Mail, Rechnung, Lieferanten) – die Änderung selbst ist gespeichert. */
       probleme: string[];
+      /** Dinge, die der Betreiber jetzt wissen oder tun sollte, ohne dass etwas schiefging. */
+      hinweise: string[];
     }
   | Abgelehnt;
 
@@ -220,7 +255,7 @@ export async function wendeAenderungAn(
   }
   if (!stand) return { ok: false, grund: 'nicht-gefunden', meldung: 'Bestellung nicht gefunden.' };
 
-  const berechnet = await berechneAenderung(stand, anfrage.aenderungen);
+  const berechnet = await berechneAenderung(stand, anfrage.aenderungen, { rechnungsErsatzMoeglich: deps.rechnungsErsatzMoeglich() });
   if (!berechnet.ok) return berechnet;
   const plan = berechnet.plan;
 
@@ -265,13 +300,51 @@ export async function wendeAenderungAn(
 
   // ── 5. Ab hier ist die Änderung gespeichert – alles Weitere ist nicht-fatal ──
   const probleme: string[] = [];
-  let kundenmail: KundenmailAusgang;
+  const hinweise: string[] = [];
 
+  // 5a. Ersatzrechnung VOR der Mail: Nur so kann die Mail sie als PDF mitschicken. Dass eine aussteht, steht schon
+  //     atomar im Ereignis der Änderung (detail.rechnungErsatz) – scheitert hier etwas oder bricht der Prozess ab, zeigt
+  //     der Admin „neue Rechnung fehlt“ mit der Schaltfläche zum erneuten Erzeugen.
+  let rechnung: RechnungsAusgang;
+  let ersatzFuerMail: ErsatzFuerMail = { status: 'vorschau' };
+  let rechnungAnhang: { pdf: Buffer; rechnungsnummer: string } | null = null;
+  const alteNummer = stand.bestellung.invoiceNumber;
+  if (plan.rechnungErsatz === 'automatisch' && alteNummer) {
+    let ersatz: ErsatzRechnungsErgebnis;
+    try {
+      ersatz = await deps.ersetzeRechnung(orderId, alteNummer);
+    } catch (err) {
+      console.error(`[auftragsaenderung] Ersatzrechnung ${orderId} nicht erzeugt:`, err);
+      ersatz = { ok: false, grund: 'fehler', meldung: 'Die neue Rechnung konnte nicht erzeugt werden.' };
+    }
+    if (ersatz.ok && ersatz.status === 'ersetzt') {
+      rechnung = { status: 'ersetzt', neueNummer: ersatz.neueNummer, alteNummer };
+      ersatzFuerMail = { status: 'erstellt', neueNummer: ersatz.neueNummer };
+      rechnungAnhang = { pdf: ersatz.pdf, rechnungsnummer: ersatz.neueNummer };
+    } else if (ersatz.ok) {
+      rechnung = { status: 'ersetzt', neueNummer: null, alteNummer };
+      ersatzFuerMail = { status: 'fehlgeschlagen' };
+    } else {
+      rechnung = { status: 'fehlgeschlagen', alteNummer, meldung: ersatz.meldung };
+      ersatzFuerMail = { status: 'fehlgeschlagen' };
+      probleme.push(
+        `NEUE RECHNUNG FEHLT: ${ersatz.meldung} Die Änderung ist gespeichert; bitte unter „Ersatzrechnung“ erneut erzeugen – die bisherige Rechnung ${alteNummer} gilt bis dahin für den alten Stand.`
+      );
+    }
+  } else {
+    rechnung = plan.rechnungErsatz === 'manuell' ? { status: 'manuell' } : { status: 'keine' };
+  }
+
+  // 5b. Mail
+  let kundenmail: KundenmailAusgang;
   if (kundenmailPlan === 'geplant' && email) {
-    const daten = baueKundenmailDaten(plan, stand.bestellung, deps.bestellansichtUrl(orderId));
+    const daten = baueKundenmailDaten(plan, stand.bestellung, deps.bestellansichtUrl(orderId), ersatzFuerMail);
     let ergebnis: PromiseSettledResult<EmailVersandErgebnis>;
     try {
-      ergebnis = { status: 'fulfilled', value: await deps.sendeKundenmail({ orderId, empfaenger: email, daten }) };
+      ergebnis = {
+        status: 'fulfilled',
+        value: await deps.sendeKundenmail({ orderId, empfaenger: email, daten, rechnung: rechnungAnhang }),
+      };
     } catch (err) {
       ergebnis = { status: 'rejected', reason: err };
     }
@@ -284,11 +357,18 @@ export async function wendeAenderungAn(
     kundenmail = zugestellt ? 'gesendet' : 'fehlgeschlagen';
     if (!zugestellt) {
       probleme.push('Die Mail an die Kundschaft konnte nicht versendet werden (Details in der Bestell-Historie). Bitte selbst Bescheid geben.');
+    } else if (rechnung.status === 'fehlgeschlagen') {
+      hinweise.push('Die Mail ist ohne die neue Rechnung rausgegangen (Text: „folgt separat“). Beim erneuten Erzeugen lässt sie sich der Kundschaft nachschicken.');
     }
   } else {
     kundenmail = kundenmailPlan === 'keine-adresse' ? 'keine-adresse' : 'abgewaehlt';
     if (kundenmailPlan === 'keine-adresse') {
       probleme.push('Zu dieser Bestellung ist keine E-Mail-Adresse hinterlegt – die Kundschaft wurde nicht informiert.');
+    }
+    if (rechnung.status === 'ersetzt') {
+      hinweise.push(
+        `Die neue Rechnung${rechnung.neueNummer ? ` ${rechnung.neueNummer}` : ''} ist NICHT an die Kundschaft gegangen – sie steht im Admin zum Download bereit.`
+      );
     }
   }
 
@@ -308,7 +388,9 @@ export async function wendeAenderungAn(
     rechnungKorrekturNoetig: plan.rechnungKorrekturNoetig,
     aenderungszeilen: plan.aenderungszeilen,
     kundenmail,
+    rechnung,
     probleme,
+    hinweise,
   };
 }
 
@@ -379,7 +461,7 @@ export async function ladeAenderungsStand(orderId: string, db: AdminClient = cre
   const { data: order, error } = await db
     .from('orders')
     .select(
-      'id, order_number, order_type, status, payment_status, payment_method, total_price, quantity, tax_rate, shipping_country, invoice_number, email'
+      'id, order_number, order_type, status, payment_status, payment_method, total_price, quantity, tax_rate, shipping_country, invoice_number, invoice_date, rechnung_unklarer_zustand, email'
     )
     .eq('id', orderId)
     .maybeSingle();
@@ -446,6 +528,8 @@ export async function ladeAenderungsStand(orderId: string, db: AdminClient = cre
       taxRate: order.tax_rate === null || order.tax_rate === undefined ? null : Number(order.tax_rate),
       shippingCountry: (order.shipping_country as string | null) ?? null,
       invoiceNumber: (order.invoice_number as string | null) ?? null,
+      invoiceDate: (order.invoice_date as string | null) ?? null,
+      rechnungUnklarerZustand: Boolean(order.rechnung_unklarer_zustand),
       email: (order.email as string | null) ?? null,
     },
     positionen,
@@ -528,5 +612,7 @@ export function standardAbhaengigkeiten(): AenderungsAbhaengigkeiten {
     protokolliereMail: (orderId, ergebnis) => protokolliereVersand(orderId, 'order_edited', ergebnis),
     gleicheLieferantenAn,
     bestellansichtUrl,
+    rechnungsErsatzMoeglich: ersatzrechnungMoeglich,
+    ersetzeRechnung: (orderId, alteNummer) => ersetzeRechnung(orderId, alteNummer),
   };
 }

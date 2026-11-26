@@ -89,6 +89,9 @@ const FAELLE: Record<string, Array<[string, ReactElement]>> = {
     ['Rechnungskauf, noch keine Rechnung', OrderEditedEmail({ daten: GEAENDERT })],
     ['Rechnungskauf mit bestehender Rechnung, ohne Link', OrderEditedEmail({ daten: { ...GEAENDERT, rechnung: { art: 'folgt-separat', rechnungsnummer: 'RE-2026-000123' }, bestellansichtUrl: null } })],
     ['bezahlt, Erstattung, Versand bleibt frei', OrderEditedEmail({ daten: { ...GEAENDERT, zahlung: 'bezahlt', rechnung: { art: 'folgt-separat', rechnungsnummer: 'RE-2026-000123' }, versandNeuCent: 0 } })],
+    ['Ersatzrechnung im Anhang, Rechnungskauf', OrderEditedEmail({ daten: { ...GEAENDERT, rechnung: { art: 'ersetzt', neueRechnungsnummer: 'RE-2026-000124', alteRechnungsnummer: 'RE-2026-000123', alteRechnungsdatum: '2026-11-20' } } })],
+    ['Ersatzrechnung im Anhang, bezahlt, ohne Datum', OrderEditedEmail({ daten: { ...GEAENDERT, zahlung: 'bezahlt', rechnung: { art: 'ersetzt', neueRechnungsnummer: 'RE-2026-000124', alteRechnungsnummer: 'RE-2026-000123', alteRechnungsdatum: null } } })],
+    ['Ersatzrechnung in der Vorschau (Nummer noch offen)', OrderEditedEmail({ daten: { ...GEAENDERT, rechnung: { art: 'ersetzt', neueRechnungsnummer: null, alteRechnungsnummer: 'RE-2026-000123', alteRechnungsdatum: '2026-11-20' } } })],
   ],
   OrderConfirmationEmail: [
     ['Bestellung mit Link', OrderConfirmationEmail({ order, bestellansichtUrl: URL_BESTELLUNG })],
@@ -122,6 +125,8 @@ const FAELLE: Record<string, Array<[string, ReactElement]>> = {
   InvoiceEmail: [
     ['mit USt-IdNr.', InvoiceEmail({ order, orderNumber: order.orderNumber, invoiceNumber: 'RE-2026-000123', invoiceDate: '11.11.2026', vatId: 'DE123456789' } as Parameters<typeof InvoiceEmail>[0])],
     ['ohne USt-IdNr.', InvoiceEmail({ order, orderNumber: order.orderNumber, invoiceNumber: 'RE-2026-000123', invoiceDate: '11.11.2026', vatId: null } as Parameters<typeof InvoiceEmail>[0])],
+    ['Ersatzrechnung', InvoiceEmail({ orderNumber: order.orderNumber, invoiceNumber: 'RE-2026-000124', invoiceDate: '26.11.2026', replaces: { invoiceNumber: 'RE-2026-000123', invoiceDate: '11.11.2026' } })],
+    ['Ersatzrechnung ohne Datum der alten', InvoiceEmail({ orderNumber: order.orderNumber, invoiceNumber: 'RE-2026-000124', invoiceDate: '26.11.2026', replaces: { invoiceNumber: 'RE-2026-000123', invoiceDate: null } })],
   ],
   KontoBestaetigenEmail: [['Bestätigung', KontoBestaetigenEmail({ bestaetigungsUrl: 'https://www.ergermany.de/auth/callback?typ=registrierung&token=xyz' })]],
   KontoWillkommenEmail: [['Willkommen', KontoWillkommenEmail({})]],

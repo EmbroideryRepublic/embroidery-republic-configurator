@@ -385,12 +385,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "graphite": {
       "views": {
-        "front": "/products/fotl-super-premium-t-graphite/front.webp",
-        "back": "/products/fotl-super-premium-t-graphite/back.webp",
-        "sleeve_left": "/products/fotl-super-premium-t-graphite/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-super-premium-t-graphite/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
@@ -853,9 +851,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "azure": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -869,135 +865,105 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "solar-yellow": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-solar-yellow/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-solar-yellow/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-solar-yellow/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-solar-yellow/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-black/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-black/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-black/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-black/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-red/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-red/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-red/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-royal/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-royal/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-royal/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-royal/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-burgundy/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-burgundy/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-burgundy/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-burgundy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "pink": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-pink/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-pink/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-pink/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-pink/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "natural": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-natural/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-natural/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-natural/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-natural/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "deep-navy": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-deep-navy/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-deep-navy/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-deep-navy/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-deep-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "cranberry": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-cranberry/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-cranberry/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-cranberry/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-cranberry/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-sand/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-sand/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-sand/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-sand/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "graphite": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-graphite/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-graphite/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-graphite/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-graphite/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-white/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-white/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-white/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "blush": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-blush/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-blush/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-blush/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-blush/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "millennial-lilac": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-millennial-lilac/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-millennial-lilac/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-millennial-lilac/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-millennial-lilac/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "very-turquoise": {
       "views": {
         "front": "/products/fotl-ladies-iconic195-t-very-turquoise/front.webp",
-        "back": "/products/fotl-ladies-iconic195-t-very-turquoise/back.webp",
-        "sleeve_left": "/products/fotl-ladies-iconic195-t-very-turquoise/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-iconic195-t-very-turquoise/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -1295,12 +1261,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "cranberry": {
       "views": {
-        "front": "/products/fotl-ladies-valueweight-t-cranberry/front.webp",
-        "back": "/products/fotl-ladies-valueweight-t-cranberry/back.webp",
-        "sleeve_left": "/products/fotl-ladies-valueweight-t-cranberry/sleeve-left.webp",
-        "sleeve_right": "/products/fotl-ladies-valueweight-t-cranberry/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "white": {
       "views": {
@@ -1739,63 +1703,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-softstyle-polo/front.webp",
-        "back": "/products/gildan-softstyle-polo/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-polo/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-softstyle-polo/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-softstyle-polo-white/front.webp",
-        "back": "/products/gildan-softstyle-polo-white/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-polo-white/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-softstyle-polo-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/gildan-softstyle-polo-navy/front.webp",
-        "back": "/products/gildan-softstyle-polo-navy/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-polo-navy/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-softstyle-polo-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey": {
       "views": {
         "front": "/products/gildan-softstyle-polo-grey/front.webp",
-        "back": "/products/gildan-softstyle-polo-grey/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-polo-grey/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-softstyle-polo-grey/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-softstyle-polo-royal/front.webp",
-        "back": "/products/gildan-softstyle-polo-royal/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-polo-royal/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-softstyle-polo-royal/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-softstyle-polo-red/front.webp",
-        "back": "/products/gildan-softstyle-polo-red/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-polo-red/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-softstyle-polo-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "green": {
       "views": {
         "front": "/products/gildan-softstyle-polo-green/front.webp",
-        "back": "/products/gildan-softstyle-polo-green/back.webp",
-        "sleeve_left": "/products/gildan-softstyle-polo-green/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-softstyle-polo-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -1804,54 +1754,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-vneck-t/front.webp",
-        "back": "/products/gildan-vneck-t/back.webp",
-        "sleeve_left": "/products/gildan-vneck-t/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-vneck-t/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/gildan-vneck-t-navy/front.webp",
-        "back": "/products/gildan-vneck-t-navy/back.webp",
-        "sleeve_left": "/products/gildan-vneck-t-navy/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-vneck-t-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-vneck-t-royal/front.webp",
-        "back": "/products/gildan-vneck-t-royal/back.webp",
-        "sleeve_left": "/products/gildan-vneck-t-royal/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-vneck-t-royal/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey": {
       "views": {
         "front": "/products/gildan-vneck-t-grey/front.webp",
-        "back": "/products/gildan-vneck-t-grey/back.webp",
-        "sleeve_left": "/products/gildan-vneck-t-grey/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-vneck-t-grey/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-vneck-t-white/front.webp",
-        "back": "/products/gildan-vneck-t-white/back.webp",
-        "sleeve_left": "/products/gildan-vneck-t-white/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-vneck-t-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-vneck-t-red/front.webp",
-        "back": "/products/gildan-vneck-t-red/back.webp",
-        "sleeve_left": "/products/gildan-vneck-t-red/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-vneck-t-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -1904,12 +1842,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "red": {
       "views": {
-        "front": "/products/gildan-ladies-t-red/front.webp",
-        "back": "/products/gildan-ladies-t-red/back.webp",
-        "sleeve_left": "/products/gildan-ladies-t-red/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-ladies-t-red/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "kelly-green": {
       "views": {
@@ -2046,45 +1982,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-ladies-polo/front.webp",
-        "back": "/products/gildan-ladies-polo/back.webp",
-        "sleeve_left": "/products/gildan-ladies-polo/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-ladies-polo/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-ladies-polo-white/front.webp",
-        "back": "/products/gildan-ladies-polo-white/back.webp",
-        "sleeve_left": "/products/gildan-ladies-polo-white/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-ladies-polo-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/gildan-ladies-polo-navy/front.webp",
-        "back": "/products/gildan-ladies-polo-navy/back.webp",
-        "sleeve_left": "/products/gildan-ladies-polo-navy/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-ladies-polo-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey": {
       "views": {
         "front": "/products/gildan-ladies-polo-grey/front.webp",
-        "back": "/products/gildan-ladies-polo-grey/back.webp",
-        "sleeve_left": "/products/gildan-ladies-polo-grey/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-ladies-polo-grey/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-ladies-polo-royal/front.webp",
-        "back": "/products/gildan-ladies-polo-royal/back.webp",
-        "sleeve_left": "/products/gildan-ladies-polo-royal/sleeve-left.webp",
-        "sleeve_right": "/products/gildan-ladies-polo-royal/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -2193,12 +2119,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey": {
       "views": {
-        "front": "/products/russell-authentic-t-grey/front.webp",
-        "back": "/products/russell-authentic-t-grey/back.webp",
-        "sleeve_left": "/products/russell-authentic-t-grey/sleeve-left.webp",
-        "sleeve_right": "/products/russell-authentic-t-grey/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "royal": {
       "views": {
@@ -2249,12 +2173,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey": {
       "views": {
-        "front": "/products/russell-workwear-t-grey/front.webp",
-        "back": "/products/russell-workwear-t-grey/back.webp",
-        "sleeve_left": "/products/russell-workwear-t-grey/sleeve-left.webp",
-        "sleeve_right": "/products/russell-workwear-t-grey/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "white": {
       "views": {
@@ -2314,12 +2236,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey": {
       "views": {
-        "front": "/products/russell-ladies-authentic-t-grey/front.webp",
-        "back": "/products/russell-ladies-authentic-t-grey/back.webp",
-        "sleeve_left": "/products/russell-ladies-authentic-t-grey/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-authentic-t-grey/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "red": {
       "views": {
@@ -2825,10 +2745,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grey": {
       "views": {
-        "front": "/products/bandc-inspire-zip-hood-grey/front.webp",
-        "back": "/products/bandc-inspire-zip-hood-grey/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "royal": {
       "views": {
@@ -2909,21 +2829,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "olive": {
       "views": {
-        "front": "/products/stedman-slimfit-t-olive/front.webp",
-        "back": "/products/stedman-slimfit-t-olive/back.webp",
-        "sleeve_left": "/products/stedman-slimfit-t-olive/sleeve-left.webp",
-        "sleeve_right": "/products/stedman-slimfit-t-olive/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "graphite": {
       "views": {
-        "front": "/products/stedman-slimfit-t-graphite/front.webp",
-        "back": "/products/stedman-slimfit-t-graphite/back.webp",
-        "sleeve_left": "/products/stedman-slimfit-t-graphite/sleeve-left.webp",
-        "sleeve_right": "/products/stedman-slimfit-t-graphite/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     }
   },
   "jn-active-t": {
@@ -3087,10 +3003,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sand": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-sand/front.webp",
-        "back": "/products/bundc-t-shirt-e190-sand/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
@@ -3108,10 +3024,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "apricot": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-apricot/front.webp",
-        "back": "/products/bundc-t-shirt-e190-apricot/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orange": {
       "views": {
@@ -3150,10 +3066,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sorbet": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-sorbet/front.webp",
-        "back": "/products/bundc-t-shirt-e190-sorbet/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "burgundy": {
       "views": {
@@ -3164,10 +3080,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "swimming-pool": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-swimming-pool/front.webp",
-        "back": "/products/bundc-t-shirt-e190-swimming-pool/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "atoll": {
       "views": {
@@ -3178,10 +3094,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "diva-blue": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-diva-blue/front.webp",
-        "back": "/products/bundc-t-shirt-e190-diva-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sky-blue": {
       "views": {
@@ -3206,10 +3122,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "urban-purple": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-urban-purple/front.webp",
-        "back": "/products/bundc-t-shirt-e190-urban-purple/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "pixel-lime": {
       "views": {
@@ -3220,17 +3136,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "orchid-green": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-orchid-green/front.webp",
-        "back": "/products/bundc-t-shirt-e190-orchid-green/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "millennial-mint": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-millennial-mint/front.webp",
-        "back": "/products/bundc-t-shirt-e190-millennial-mint/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "kelly-green": {
       "views": {
@@ -3255,10 +3171,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "pacific-grey": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-pacific-grey/front.webp",
-        "back": "/products/bundc-t-shirt-e190-pacific-grey/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
@@ -3369,10 +3285,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sand": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-sand/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-sand/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
@@ -3390,10 +3306,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "apricot": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-apricot/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-apricot/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orange": {
       "views": {
@@ -3432,10 +3348,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sorbet": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-sorbet/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-sorbet/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "burgundy": {
       "views": {
@@ -3446,10 +3362,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "swimming-pool": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-swimming-pool/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-swimming-pool/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "atoll": {
       "views": {
@@ -3460,10 +3376,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "diva-blue": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-diva-blue/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-diva-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sky-blue": {
       "views": {
@@ -3488,10 +3404,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "urban-purple": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-urban-purple/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-urban-purple/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "pixel-lime": {
       "views": {
@@ -3502,17 +3418,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "orchid-green": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-orchid-green/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-orchid-green/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "millennial-mint": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-millennial-mint/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-millennial-mint/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "kelly-green": {
       "views": {
@@ -3537,10 +3453,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "pacific-grey": {
       "views": {
-        "front": "/products/bundc-t-shirt-e190-women-pacific-grey/front.webp",
-        "back": "/products/bundc-t-shirt-e190-women-pacific-grey/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dark-grey-solid": {
       "views": {
@@ -3806,12 +3722,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sand": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-sand/front.webp",
-        "back": "/products/bundc-t-shirt-e150-sand/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-sand/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-sand/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "solar-yellow": {
       "views": {
@@ -3833,12 +3747,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "apricot": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-apricot/front.webp",
-        "back": "/products/bundc-t-shirt-e150-apricot/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-apricot/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-apricot/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orange": {
       "views": {
@@ -3860,12 +3772,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "deep-red": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-deep-red/front.webp",
-        "back": "/products/bundc-t-shirt-e150-deep-red/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-deep-red/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-deep-red/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "fuchsia": {
       "views": {
@@ -3905,39 +3815,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "real-turquoise": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-real-turquoise/front.webp",
-        "back": "/products/bundc-t-shirt-e150-real-turquoise/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-real-turquoise/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-real-turquoise/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "diva-blue": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-diva-blue/front.webp",
-        "back": "/products/bundc-t-shirt-e150-diva-blue/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-diva-blue/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-diva-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sky-blue": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-sky-blue/front.webp",
-        "back": "/products/bundc-t-shirt-e150-sky-blue/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-sky-blue/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-sky-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "azure": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-azure/front.webp",
-        "back": "/products/bundc-t-shirt-e150-azure/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-azure/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-azure/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "denim": {
       "views": {
@@ -3968,12 +3870,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "pistachio": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-pistachio/front.webp",
-        "back": "/products/bundc-t-shirt-e150-pistachio/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-pistachio/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-pistachio/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orchid-green": {
       "views": {
@@ -4049,21 +3949,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "electric-blue": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-electric-blue/front.webp",
-        "back": "/products/bundc-t-shirt-e150-electric-blue/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-electric-blue/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-electric-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "urban-black": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-urban-black/front.webp",
-        "back": "/products/bundc-t-shirt-e150-urban-black/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-urban-black/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-urban-black/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "millennial-pink": {
       "views": {
@@ -4326,12 +4222,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sand": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-sand/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-sand/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-sand/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-sand/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "millennial-pink": {
       "views": {
@@ -4362,12 +4256,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "apricot": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-apricot/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-apricot/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-apricot/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-apricot/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orange": {
       "views": {
@@ -4389,12 +4281,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "deep-red": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-deep-red/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-deep-red/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-deep-red/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-deep-red/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "fuchsia": {
       "views": {
@@ -4434,39 +4324,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "real-turquoise": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-real-turquoise/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-real-turquoise/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-real-turquoise/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-real-turquoise/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "diva-blue": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-diva-blue/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-diva-blue/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-diva-blue/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-diva-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sky-blue": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-sky-blue/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-sky-blue/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-sky-blue/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-sky-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "azure": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-azure/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-azure/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-azure/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-azure/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "denim": {
       "views": {
@@ -4488,12 +4370,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "electric-blue": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-electric-blue/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-electric-blue/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-electric-blue/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-electric-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "radiant-purple": {
       "views": {
@@ -4515,12 +4395,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "pistachio": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-pistachio/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-pistachio/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-pistachio/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-pistachio/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orchid-green": {
       "views": {
@@ -4585,12 +4463,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "urban-black": {
       "views": {
-        "front": "/products/bundc-t-shirt-e150-women-urban-black/front.webp",
-        "back": "/products/bundc-t-shirt-e150-women-urban-black/back.webp",
-        "sleeve_left": "/products/bundc-t-shirt-e150-women-urban-black/sleeve-left.webp",
-        "sleeve_right": "/products/bundc-t-shirt-e150-women-urban-black/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "bear-brown": {
       "views": {
@@ -5148,12 +5024,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "fern-green": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-fern-green/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-fern-green/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-fern-green/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-fern-green/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "gold-yellow": {
       "views": {
@@ -5175,12 +5049,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grenadine": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-grenadine/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-grenadine/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-grenadine/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-grenadine/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "grey-heather": {
       "views": {
@@ -5220,21 +5092,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "light-grey": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-light-grey/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-light-grey/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-light-grey/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-light-grey/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "light-yellow": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-light-yellow/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-light-yellow/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-light-yellow/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-light-yellow/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "lilac": {
       "views": {
@@ -5256,12 +5124,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "mint": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-mint/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-mint/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-mint/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-mint/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "navy": {
       "views": {
@@ -5328,12 +5194,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "rose": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-rose/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-rose/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-rose/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-rose/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "royal": {
       "views": {
@@ -5346,12 +5210,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sky-blue": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-sky-blue/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-sky-blue/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-sky-blue/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-sky-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "stone": {
       "views": {
@@ -5364,21 +5226,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "tomato": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-tomato/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-tomato/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-tomato/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-tomato/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "turquoise": {
       "views": {
-        "front": "/products/jamesnicholson-round-t-heavy-turquoise/front.webp",
-        "back": "/products/jamesnicholson-round-t-heavy-turquoise/back.webp",
-        "sleeve_left": "/products/jamesnicholson-round-t-heavy-turquoise/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-round-t-heavy-turquoise/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "white": {
       "views": {
@@ -5928,12 +5786,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "fern-green": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-fern-green/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-fern-green/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-fern-green/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-fern-green/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "gold-yellow": {
       "views": {
@@ -5955,12 +5811,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grenadine": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-grenadine/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-grenadine/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-grenadine/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-grenadine/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "grey-heather": {
       "views": {
@@ -6000,21 +5854,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "light-grey": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-light-grey/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-light-grey/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-light-grey/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-light-grey/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "light-yellow": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-light-yellow/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-light-yellow/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-light-yellow/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-light-yellow/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "lilac": {
       "views": {
@@ -6036,12 +5886,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "mint": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-mint/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-mint/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-mint/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-mint/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "navy": {
       "views": {
@@ -6108,12 +5956,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "rose": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-rose/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-rose/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-rose/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-rose/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "royal": {
       "views": {
@@ -6126,12 +5972,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sky-blue": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-sky-blue/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-sky-blue/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-sky-blue/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-sky-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "stone": {
       "views": {
@@ -6144,21 +5988,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "tomato": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-tomato/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-tomato/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-tomato/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-tomato/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "turquoise": {
       "views": {
-        "front": "/products/jamesnicholson-ladies-basic-t-turquoise/front.webp",
-        "back": "/products/jamesnicholson-ladies-basic-t-turquoise/back.webp",
-        "sleeve_left": "/products/jamesnicholson-ladies-basic-t-turquoise/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-ladies-basic-t-turquoise/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "white": {
       "views": {
@@ -6767,7 +6607,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "purple": {
       "views": {
         "front": "/products/russell-russell-classic-t-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/russell-russell-classic-t-purple/back.webp",
         "sleeve_left": "/products/russell-russell-classic-t-purple/sleeve-left.webp",
         "sleeve_right": "/products/russell-russell-classic-t-purple/sleeve-right.webp"
       },
@@ -7039,358 +6879,416 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "metro-blue": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-metro-blue/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dark-chocolate": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-dark-chocolate/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-dark-chocolate/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-dark-chocolate/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-dark-chocolate/sleeve-right.webp"
       },
       "status": "real"
     },
     "stone-blue": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-stone-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-stone-blue/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-stone-blue/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-stone-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "azalea": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-azalea/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-azalea/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-azalea/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-azalea/sleeve-right.webp"
       },
       "status": "real"
     },
     "blue-dusk": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-blue-dusk/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "cardinal-red": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-cardinal-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-cardinal-red/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-cardinal-red/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-cardinal-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "carolina-blue": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-carolina-blue/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-charcoal-solid/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-charcoal-solid/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-charcoal-solid/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-charcoal-solid/sleeve-right.webp"
       },
       "status": "real"
     },
     "cherry-red": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-cherry-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-cherry-red/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-cherry-red/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-cherry-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "cornsilk": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-cornsilk/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "daisy": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-daisy/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dark-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-dark-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-dark-heather/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-dark-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-dark-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-forest-green/front.webp",
-        "back": "/products/gildan-ultra-cotton-t-shirt-forest-green/back.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-forest-green/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-forest-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-forest-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "gold": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-gold/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-gold/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-gold/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-gold/sleeve-right.webp"
       },
       "status": "real"
     },
     "heather-cardinal": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-heather-cardinal/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "heather-navy": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-heather-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-heather-navy/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-heather-navy/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-heather-navy/sleeve-right.webp"
       },
       "status": "real"
     },
     "heliconia": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-heliconia/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "ice-grey-solid": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-ice-grey-solid/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "indigo-blue": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-indigo-blue/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "iris": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-iris/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "irish-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-irish-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-irish-green/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-irish-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-irish-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "jade-dome": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-jade-dome/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-kelly-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-kelly-green/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-kelly-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-kelly-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "kiwi": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-kiwi/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "light-blue": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-light-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-light-blue/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-light-blue/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-light-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-light-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-light-pink/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-light-pink/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-light-pink/sleeve-right.webp"
       },
       "status": "real"
     },
     "lime": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-lime/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "maroon": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-maroon/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-maroon/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-maroon/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-maroon/sleeve-right.webp"
       },
       "status": "real"
     },
     "military-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-military-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-military-green/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-military-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-military-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "natural": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-natural/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-natural/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-natural/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-natural/sleeve-right.webp"
       },
       "status": "real"
     },
     "olive": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-olive/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-olive/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-olive/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-olive/sleeve-right.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-orange/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-orange/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "orchid": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-orchid/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "pistachio": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-pistachio/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "prairie-dust": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-prairie-dust/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "purple": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-purple/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-purple/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-purple/sleeve-right.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-sand/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sapphire": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-sapphire/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sky": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-sky/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "tan": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-tan/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "tangerine": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-tangerine/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "texas-orange": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-texas-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-texas-orange/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-texas-orange/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-texas-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "vegas-gold": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-vegas-gold/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-vegas-gold/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-vegas-gold/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-vegas-gold/sleeve-right.webp"
       },
       "status": "real"
     },
     "ash-grey-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-ash-grey-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-ash-grey-heather/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-ash-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-ash-grey-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-black/front.webp",
-        "back": "/products/gildan-ultra-cotton-t-shirt-black/back.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-black/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-black/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-black/sleeve-right.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-red/front.webp",
-        "back": "/products/gildan-ultra-cotton-t-shirt-red/back.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-red/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-red/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-royal/front.webp",
-        "back": "/products/gildan-ultra-cotton-t-shirt-royal/back.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-royal/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-royal/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-royal/sleeve-right.webp"
       },
       "status": "real"
     },
     "safety-green-neon": {
       "views": {
-        "front": "/products/gildan-ultra-cotton-t-shirt-safety-green-neon/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "safety-orange-neon": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-safety-orange-neon/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-safety-orange-neon/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-safety-orange-neon/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-safety-orange-neon/sleeve-right.webp"
       },
       "status": "real"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-sport-grey-heather/front.webp",
-        "back": "/products/gildan-ultra-cotton-t-shirt-sport-grey-heather/back.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-sport-grey-heather/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-sport-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-sport-grey-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-ultra-cotton-t-shirt-white/front.webp",
-        "back": "/products/gildan-ultra-cotton-t-shirt-white/back.webp"
+        "back": "/products/gildan-ultra-cotton-t-shirt-white/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-t-shirt-white/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-t-shirt-white/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -7475,10 +7373,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "ash-grey-heather": {
       "views": {
-        "front": "/products/_platzhalter/platzhalter.webp",
+        "front": "/products/gildan-light-cotton-adult-t-shirt-ash-grey-heather/front.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "placeholder"
+      "status": "real"
     },
     "cherry-red": {
       "views": {
@@ -7511,7 +7409,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "irish-green": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-irish-green/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-irish-green/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -7525,21 +7423,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "off-white": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-off-white/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-off-white/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-orange/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-orange/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "purple": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-purple/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-purple/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -7553,21 +7451,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sage": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-sage/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-sage/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sapphire": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-sapphire/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-sapphire/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sky": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-sky/front.webp",
-        "back": "/products/gildan-light-cotton-adult-t-shirt-sky/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -8366,12 +8264,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sapphire": {
       "views": {
-        "front": "/products/neutral-men-s-fit-t-shirt-sapphire/front.webp",
-        "back": "/products/neutral-men-s-fit-t-shirt-sapphire/back.webp",
-        "sleeve_left": "/products/neutral-men-s-fit-t-shirt-sapphire/sleeve-left.webp",
-        "sleeve_right": "/products/neutral-men-s-fit-t-shirt-sapphire/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "yellow": {
       "views": {
@@ -8626,7 +8522,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-yellow": {
       "views": {
         "front": "/products/neutral-ladies-fit-t-shirt-dusty-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/neutral-ladies-fit-t-shirt-dusty-yellow/back.webp",
         "sleeve_left": "/products/neutral-ladies-fit-t-shirt-dusty-yellow/sleeve-left.webp",
         "sleeve_right": "/products/neutral-ladies-fit-t-shirt-dusty-yellow/sleeve-right.webp"
       },
@@ -8635,7 +8531,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "okay-orange": {
       "views": {
         "front": "/products/neutral-ladies-fit-t-shirt-okay-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/neutral-ladies-fit-t-shirt-okay-orange/back.webp",
         "sleeve_left": "/products/neutral-ladies-fit-t-shirt-okay-orange/sleeve-left.webp",
         "sleeve_right": "/products/neutral-ladies-fit-t-shirt-okay-orange/sleeve-right.webp"
       },
@@ -8805,12 +8701,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sapphire": {
       "views": {
-        "front": "/products/neutral-ladies-fit-t-shirt-sapphire/front.webp",
-        "back": "/products/neutral-ladies-fit-t-shirt-sapphire/back.webp",
-        "sleeve_left": "/products/neutral-ladies-fit-t-shirt-sapphire/sleeve-left.webp",
-        "sleeve_right": "/products/neutral-ladies-fit-t-shirt-sapphire/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sports-grey": {
       "views": {
@@ -9159,28 +9053,36 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ash-heather": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-ash-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-ash-heather/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-ash-heather/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-ash-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "black-opal": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-black-opal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-black-opal/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-black-opal/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-black-opal/sleeve-right.webp"
       },
       "status": "real"
     },
     "blue-midnight": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-blue-midnight/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-blue-midnight/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-blue-midnight/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-blue-midnight/sleeve-right.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-bottle-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-bottle-green/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-bottle-green/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-bottle-green/sleeve-right.webp"
       },
       "status": "real"
     },
@@ -9196,196 +9098,244 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "burgundy-red": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-burgundy-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-burgundy-red/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-burgundy-red/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-burgundy-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "deep-berry": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-deep-berry/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-deep-berry/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-deep-berry/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-deep-berry/sleeve-right.webp"
       },
       "status": "real"
     },
     "grey-heather": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-grey-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-grey-heather/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-grey-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "hunters-green": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-hunters-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-hunters-green/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-hunters-green/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-hunters-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "kelly-green": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-kelly-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-kelly-green/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-kelly-green/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-kelly-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "kiwi-green": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-kiwi-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-kiwi-green/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-kiwi-green/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-kiwi-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-light-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-light-blue/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-light-blue/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-light-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "navy-blue": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-navy-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-navy-blue/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-navy-blue/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-navy-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "ocean-blue": {
       "views": {
-        "front": "/products/stedman-stedman-classic-t-ocean-blue/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-orange/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-orange/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "real-grey": {
       "views": {
-        "front": "/products/stedman-stedman-classic-t-real-grey/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "scarlet-red": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-scarlet-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-scarlet-red/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-scarlet-red/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-scarlet-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-white/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-white/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-white/sleeve-right.webp"
       },
       "status": "real"
     },
     "yellow": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-yellow/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-yellow/sleeve-right.webp"
       },
       "status": "real"
     },
     "bright-lime": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-bright-lime/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-bright-lime/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-bright-lime/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-bright-lime/sleeve-right.webp"
       },
       "status": "real"
     },
     "brilliant-orange": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-brilliant-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-brilliant-orange/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-brilliant-orange/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-brilliant-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "soft-grey": {
       "views": {
-        "front": "/products/stedman-stedman-classic-t-soft-grey/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dark-chocolate": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-dark-chocolate/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-dark-chocolate/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-dark-chocolate/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-dark-chocolate/sleeve-right.webp"
       },
       "status": "real"
     },
     "sunflower-yellow": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-sunflower-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-sunflower-yellow/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-sunflower-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-sunflower-yellow/sleeve-right.webp"
       },
       "status": "real"
     },
     "denim-blue": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-denim-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-denim-blue/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-denim-blue/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-denim-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "marina-blue": {
       "views": {
-        "front": "/products/stedman-stedman-classic-t-marina-blue/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-bordeaux/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-bordeaux/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-bordeaux/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-bordeaux/sleeve-right.webp"
       },
       "status": "real"
     },
     "natural": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-natural/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-natural/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-natural/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-natural/sleeve-right.webp"
       },
       "status": "real"
     },
     "sweet-pink": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-sweet-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-sweet-pink/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-sweet-pink/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-sweet-pink/sleeve-right.webp"
       },
       "status": "real"
     },
     "f7a30a": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-f7a30a/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-f7a30a/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-f7a30a/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-f7a30a/sleeve-right.webp"
       },
       "status": "real"
     },
     "5a6f5e": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-5a6f5e/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-5a6f5e/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-5a6f5e/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-5a6f5e/sleeve-right.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-sand/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-sand/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-sand/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-sand/sleeve-right.webp"
       },
       "status": "real"
     },
     "teal": {
       "views": {
         "front": "/products/stedman-stedman-classic-t-teal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-stedman-classic-t-teal/back.webp",
+        "sleeve_left": "/products/stedman-stedman-classic-t-teal/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-stedman-classic-t-teal/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -9401,231 +9351,289 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black-opal": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-black-opal/front.webp",
-        "back": "/products/stedman-classic-t-for-women-black-opal/back.webp"
+        "back": "/products/stedman-classic-t-for-women-black-opal/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-black-opal/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-black-opal/sleeve-right.webp"
       },
       "status": "real"
     },
     "bright-royal": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-bright-royal/front.webp",
-        "back": "/products/stedman-classic-t-for-women-bright-royal/back.webp"
+        "back": "/products/stedman-classic-t-for-women-bright-royal/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-bright-royal/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-bright-royal/sleeve-right.webp"
       },
       "status": "real"
     },
     "burgundy-red": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-burgundy-red/front.webp",
-        "back": "/products/stedman-classic-t-for-women-burgundy-red/back.webp"
+        "back": "/products/stedman-classic-t-for-women-burgundy-red/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-burgundy-red/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-burgundy-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "deep-berry": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-deep-berry/front.webp",
-        "back": "/products/stedman-classic-t-for-women-deep-berry/back.webp"
+        "back": "/products/stedman-classic-t-for-women-deep-berry/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-deep-berry/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-deep-berry/sleeve-right.webp"
       },
       "status": "real"
     },
     "grey-heather": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-grey-heather/front.webp",
-        "back": "/products/stedman-classic-t-for-women-grey-heather/back.webp"
+        "back": "/products/stedman-classic-t-for-women-grey-heather/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-grey-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "hunters-green": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-hunters-green/front.webp",
-        "back": "/products/stedman-classic-t-for-women-hunters-green/back.webp"
+        "back": "/products/stedman-classic-t-for-women-hunters-green/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-hunters-green/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-hunters-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "kelly-green": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-kelly-green/front.webp",
-        "back": "/products/stedman-classic-t-for-women-kelly-green/back.webp"
+        "back": "/products/stedman-classic-t-for-women-kelly-green/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-kelly-green/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-kelly-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "kiwi-green": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-kiwi-green/front.webp",
-        "back": "/products/stedman-classic-t-for-women-kiwi-green/back.webp"
+        "back": "/products/stedman-classic-t-for-women-kiwi-green/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-kiwi-green/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-kiwi-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-light-blue/front.webp",
-        "back": "/products/stedman-classic-t-for-women-light-blue/back.webp"
+        "back": "/products/stedman-classic-t-for-women-light-blue/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-light-blue/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-light-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "navy-blue": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-navy-blue/front.webp",
-        "back": "/products/stedman-classic-t-for-women-navy-blue/back.webp"
+        "back": "/products/stedman-classic-t-for-women-navy-blue/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-navy-blue/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-navy-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "ocean-blue": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-ocean-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-classic-t-for-women-ocean-blue/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-ocean-blue/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-ocean-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-orange/front.webp",
-        "back": "/products/stedman-classic-t-for-women-orange/back.webp"
+        "back": "/products/stedman-classic-t-for-women-orange/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-orange/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "real-grey": {
       "views": {
-        "front": "/products/stedman-classic-t-for-women-real-grey/front.webp",
-        "back": "/products/stedman-classic-t-for-women-real-grey/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "scarlet-red": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-scarlet-red/front.webp",
-        "back": "/products/stedman-classic-t-for-women-scarlet-red/back.webp"
+        "back": "/products/stedman-classic-t-for-women-scarlet-red/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-scarlet-red/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-scarlet-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "sweet-pink": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-sweet-pink/front.webp",
-        "back": "/products/stedman-classic-t-for-women-sweet-pink/back.webp"
+        "back": "/products/stedman-classic-t-for-women-sweet-pink/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-sweet-pink/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-sweet-pink/sleeve-right.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-white/front.webp",
-        "back": "/products/stedman-classic-t-for-women-white/back.webp"
+        "back": "/products/stedman-classic-t-for-women-white/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-white/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-white/sleeve-right.webp"
       },
       "status": "real"
     },
     "yellow": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-yellow/front.webp",
-        "back": "/products/stedman-classic-t-for-women-yellow/back.webp"
+        "back": "/products/stedman-classic-t-for-women-yellow/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-yellow/sleeve-right.webp"
       },
       "status": "real"
     },
     "bright-lime": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-bright-lime/front.webp",
-        "back": "/products/stedman-classic-t-for-women-bright-lime/back.webp"
+        "back": "/products/stedman-classic-t-for-women-bright-lime/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-bright-lime/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-bright-lime/sleeve-right.webp"
       },
       "status": "real"
     },
     "brilliant-orange": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-brilliant-orange/front.webp",
-        "back": "/products/stedman-classic-t-for-women-brilliant-orange/back.webp"
+        "back": "/products/stedman-classic-t-for-women-brilliant-orange/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-brilliant-orange/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-brilliant-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "soft-grey": {
       "views": {
-        "front": "/products/stedman-classic-t-for-women-soft-grey/front.webp",
-        "back": "/products/stedman-classic-t-for-women-soft-grey/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dark-chocolate": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-dark-chocolate/front.webp",
-        "back": "/products/stedman-classic-t-for-women-dark-chocolate/back.webp"
+        "back": "/products/stedman-classic-t-for-women-dark-chocolate/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-dark-chocolate/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-dark-chocolate/sleeve-right.webp"
       },
       "status": "real"
     },
     "sunflower-yellow": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-sunflower-yellow/front.webp",
-        "back": "/products/stedman-classic-t-for-women-sunflower-yellow/back.webp"
+        "back": "/products/stedman-classic-t-for-women-sunflower-yellow/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-sunflower-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-sunflower-yellow/sleeve-right.webp"
       },
       "status": "real"
     },
     "blue-midnight": {
       "views": {
-        "front": "/products/stedman-classic-t-for-women-blue-midnight/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "denim-blue": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-denim-blue/front.webp",
-        "back": "/products/stedman-classic-t-for-women-denim-blue/back.webp"
+        "back": "/products/stedman-classic-t-for-women-denim-blue/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-denim-blue/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-denim-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "ash-heather": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-ash-heather/front.webp",
-        "back": "/products/stedman-classic-t-for-women-ash-heather/back.webp"
+        "back": "/products/stedman-classic-t-for-women-ash-heather/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-ash-heather/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-ash-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-bottle-green/front.webp",
-        "back": "/products/stedman-classic-t-for-women-bottle-green/back.webp"
+        "back": "/products/stedman-classic-t-for-women-bottle-green/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-bottle-green/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-bottle-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "marina-blue": {
       "views": {
-        "front": "/products/stedman-classic-t-for-women-marina-blue/front.webp",
-        "back": "/products/stedman-classic-t-for-women-marina-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "bordeaux": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-bordeaux/front.webp",
-        "back": "/products/stedman-classic-t-for-women-bordeaux/back.webp"
+        "back": "/products/stedman-classic-t-for-women-bordeaux/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-bordeaux/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-bordeaux/sleeve-right.webp"
       },
       "status": "real"
     },
     "natural": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-natural/front.webp",
-        "back": "/products/stedman-classic-t-for-women-natural/back.webp"
+        "back": "/products/stedman-classic-t-for-women-natural/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-natural/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-natural/sleeve-right.webp"
       },
       "status": "real"
     },
     "f7a30a": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-f7a30a/front.webp",
-        "back": "/products/stedman-classic-t-for-women-f7a30a/back.webp"
+        "back": "/products/stedman-classic-t-for-women-f7a30a/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-f7a30a/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-f7a30a/sleeve-right.webp"
       },
       "status": "real"
     },
     "5a6f5e": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-5a6f5e/front.webp",
-        "back": "/products/stedman-classic-t-for-women-5a6f5e/back.webp"
+        "back": "/products/stedman-classic-t-for-women-5a6f5e/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-5a6f5e/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-5a6f5e/sleeve-right.webp"
       },
       "status": "real"
     },
     "teal": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-teal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-classic-t-for-women-teal/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-teal/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-teal/sleeve-right.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/stedman-classic-t-for-women-sand/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/stedman-classic-t-for-women-sand/back.webp",
+        "sleeve_left": "/products/stedman-classic-t-for-women-sand/sleeve-left.webp",
+        "sleeve_right": "/products/stedman-classic-t-for-women-sand/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -9669,9 +9677,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "deep-berry": {
       "views": {
         "front": "/products/stedman-classic-t-v-neck-deep-berry/front.webp",
-        "back": "/products/stedman-classic-t-v-neck-deep-berry/back.webp",
-        "sleeve_left": "/products/stedman-classic-t-v-neck-deep-berry/sleeve-left.webp",
-        "sleeve_right": "/products/stedman-classic-t-v-neck-deep-berry/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -9778,9 +9784,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "grey-heather": {
       "views": {
         "front": "/products/stedman-classic-t-v-neck-for-women-grey-heather/front.webp",
-        "back": "/products/stedman-classic-t-v-neck-for-women-grey-heather/back.webp",
-        "sleeve_left": "/products/stedman-classic-t-v-neck-for-women-grey-heather/sleeve-left.webp",
-        "sleeve_right": "/products/stedman-classic-t-v-neck-for-women-grey-heather/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -9793,10 +9797,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "light-blue": {
       "views": {
-        "front": "/products/stedman-classic-t-v-neck-for-women-light-blue/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "navy-blue": {
       "views": {
@@ -9850,9 +9854,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/stedman-classic-t-v-neck-for-women-bottle-green/front.webp",
-        "back": "/products/stedman-classic-t-v-neck-for-women-bottle-green/back.webp",
-        "sleeve_left": "/products/stedman-classic-t-v-neck-for-women-bottle-green/sleeve-left.webp",
-        "sleeve_right": "/products/stedman-classic-t-v-neck-for-women-bottle-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -9923,10 +9925,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "light-blue": {
       "views": {
-        "front": "/products/stedman-comfort-t-light-blue/front.webp",
-        "back": "/products/stedman-comfort-t-light-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "navy-blue": {
       "views": {
@@ -9965,10 +9967,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "yellow": {
       "views": {
-        "front": "/products/stedman-comfort-t-yellow/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "kelly-green": {
       "views": {
@@ -10045,23 +10047,23 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bordeaux": {
       "views": {
         "front": "/products/stedman-clive-crew-neck-bordeaux/front.webp",
-        "back": "/products/stedman-clive-crew-neck-bordeaux/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey-heather": {
       "views": {
-        "front": "/products/stedman-clive-crew-neck-grey-heather/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "king-blue": {
       "views": {
-        "front": "/products/stedman-clive-crew-neck-king-blue/front.webp",
-        "back": "/products/stedman-clive-crew-neck-king-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "marina-blue": {
       "views": {
@@ -10845,7 +10847,9 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "camo-green": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-camo-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-camo-green/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-camo-green/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-camo-green/sleeve-right.webp"
       },
       "status": "real"
     },
@@ -10933,7 +10937,9 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "melon-orange": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-melon-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-melon-orange/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-melon-orange/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-melon-orange/sleeve-right.webp"
       },
       "status": "real"
     },
@@ -10958,7 +10964,9 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "acid-lime": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-acid-lime/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-acid-lime/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-acid-lime/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-acid-lime/sleeve-right.webp"
       },
       "status": "real"
     },
@@ -10974,28 +10982,36 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "pop-yellow": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-pop-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-pop-yellow/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-pop-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-pop-yellow/sleeve-right.webp"
       },
       "status": "real"
     },
     "pop-tomato": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-pop-tomato/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-pop-tomato/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-pop-tomato/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-pop-tomato/sleeve-right.webp"
       },
       "status": "real"
     },
     "pop-turquoise": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-pop-turquoise/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-pop-turquoise/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-pop-turquoise/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-pop-turquoise/sleeve-right.webp"
       },
       "status": "real"
     },
     "pop-green": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-pop-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-pop-green/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-pop-green/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-pop-green/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -11011,35 +11027,45 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "camo-green": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-camo-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-camo-green/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-camo-green/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-camo-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-white/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-white/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-white/sleeve-right.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-black/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-black/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-black/sleeve-right.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-navy/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-navy/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-navy/sleeve-right.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-royal-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-royal-blue/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-royal-blue/sleeve-right.webp"
       },
       "status": "real"
     },
@@ -11055,35 +11081,45 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-dark-grey-solid/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-dark-grey-solid/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-dark-grey-solid/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-dark-grey-solid/sleeve-right.webp"
       },
       "status": "real"
     },
     "mastic": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-mastic/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-mastic/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-mastic/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-mastic/sleeve-right.webp"
       },
       "status": "real"
     },
     "roasted-coffee": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-roasted-coffee/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-roasted-coffee/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-roasted-coffee/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-roasted-coffee/sleeve-right.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-burgundy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-burgundy/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-burgundy/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-burgundy/sleeve-right.webp"
       },
       "status": "real"
     },
     "melon-orange": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-melon-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-melon-orange/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-melon-orange/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-melon-orange/sleeve-right.webp"
       },
       "status": "real"
     },
@@ -11099,49 +11135,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "lotus-blue": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-lotus-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-lotus-blue/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-lotus-blue/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-lotus-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "acid-lime": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-acid-lime/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-acid-lime/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-acid-lime/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-acid-lime/sleeve-right.webp"
       },
       "status": "real"
     },
     "pacific-grey": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-pacific-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-pacific-grey/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-pacific-grey/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-pacific-grey/sleeve-right.webp"
       },
       "status": "real"
     },
     "pop-yellow": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-pop-yellow/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-pop-yellow/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-pop-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-pop-yellow/sleeve-right.webp"
       },
       "status": "real"
     },
     "pop-tomato": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-pop-tomato/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-pop-tomato/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-pop-tomato/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-pop-tomato/sleeve-right.webp"
       },
       "status": "real"
     },
     "pop-turquoise": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-pop-turquoise/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-pop-turquoise/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-pop-turquoise/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-pop-turquoise/sleeve-right.webp"
       },
       "status": "real"
     },
     "pop-green": {
       "views": {
         "front": "/products/bundc-my-eco-polo-6535-women-pop-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-my-eco-polo-6535-women-pop-green/back.webp",
+        "sleeve_left": "/products/bundc-my-eco-polo-6535-women-pop-green/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-my-eco-polo-6535-women-pop-green/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -11257,12 +11307,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grenadine": {
       "views": {
-        "front": "/products/jamesnicholson-classic-polo-grenadine/front.webp",
-        "back": "/products/jamesnicholson-classic-polo-grenadine/back.webp",
-        "sleeve_left": "/products/jamesnicholson-classic-polo-grenadine/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-classic-polo-grenadine/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "grey-heather": {
       "views": {
@@ -11320,12 +11368,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "mint": {
       "views": {
-        "front": "/products/jamesnicholson-classic-polo-mint/front.webp",
-        "back": "/products/jamesnicholson-classic-polo-mint/back.webp",
-        "sleeve_left": "/products/jamesnicholson-classic-polo-mint/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-classic-polo-mint/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "navy": {
       "views": {
@@ -11383,12 +11429,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "rose": {
       "views": {
-        "front": "/products/jamesnicholson-classic-polo-rose/front.webp",
-        "back": "/products/jamesnicholson-classic-polo-rose/back.webp",
-        "sleeve_left": "/products/jamesnicholson-classic-polo-rose/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-classic-polo-rose/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "royal": {
       "views": {
@@ -11428,12 +11472,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "tomato": {
       "views": {
-        "front": "/products/jamesnicholson-classic-polo-tomato/front.webp",
-        "back": "/products/jamesnicholson-classic-polo-tomato/back.webp",
-        "sleeve_left": "/products/jamesnicholson-classic-polo-tomato/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-classic-polo-tomato/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "turquoise": {
       "views": {
@@ -11574,12 +11616,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "grenadine": {
       "views": {
-        "front": "/products/jamesnicholson-classic-polo-ladies-grenadine/front.webp",
-        "back": "/products/jamesnicholson-classic-polo-ladies-grenadine/back.webp",
-        "sleeve_left": "/products/jamesnicholson-classic-polo-ladies-grenadine/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-classic-polo-ladies-grenadine/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "grey-heather": {
       "views": {
@@ -11637,12 +11677,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "mint": {
       "views": {
-        "front": "/products/jamesnicholson-classic-polo-ladies-mint/front.webp",
-        "back": "/products/jamesnicholson-classic-polo-ladies-mint/back.webp",
-        "sleeve_left": "/products/jamesnicholson-classic-polo-ladies-mint/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-classic-polo-ladies-mint/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "navy": {
       "views": {
@@ -11700,12 +11738,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "rose": {
       "views": {
-        "front": "/products/jamesnicholson-classic-polo-ladies-rose/front.webp",
-        "back": "/products/jamesnicholson-classic-polo-ladies-rose/back.webp",
-        "sleeve_left": "/products/jamesnicholson-classic-polo-ladies-rose/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-classic-polo-ladies-rose/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "royal": {
       "views": {
@@ -11745,12 +11781,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "tomato": {
       "views": {
-        "front": "/products/jamesnicholson-classic-polo-ladies-tomato/front.webp",
-        "back": "/products/jamesnicholson-classic-polo-ladies-tomato/back.webp",
-        "sleeve_left": "/products/jamesnicholson-classic-polo-ladies-tomato/sleeve-left.webp",
-        "sleeve_right": "/products/jamesnicholson-classic-polo-ladies-tomato/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "turquoise": {
       "views": {
@@ -12159,81 +12193,65 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-black/front.webp",
-        "back": "/products/russell-men-s-ultimate-cotton-polo-black/back.webp",
-        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-black/sleeve-left.webp",
-        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-black/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "bright-royal": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/front.webp",
-        "back": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/back.webp",
-        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/sleeve-left.webp",
-        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-bright-royal/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-burgundy/front.webp",
-        "back": "/products/russell-men-s-ultimate-cotton-polo-burgundy/back.webp",
-        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-burgundy/sleeve-left.webp",
-        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-burgundy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "classic-red": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-classic-red/front.webp",
-        "back": "/products/russell-men-s-ultimate-cotton-polo-classic-red/back.webp",
-        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-classic-red/sleeve-left.webp",
-        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-classic-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-french-navy/front.webp",
-        "back": "/products/russell-men-s-ultimate-cotton-polo-french-navy/back.webp",
-        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-french-navy/sleeve-left.webp",
-        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-french-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sky": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-sky/front.webp",
-        "back": "/products/russell-men-s-ultimate-cotton-polo-sky/back.webp",
-        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-sky/sleeve-left.webp",
-        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-sky/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "titanium-solid": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-titanium-solid/front.webp",
-        "back": "/products/russell-men-s-ultimate-cotton-polo-titanium-solid/back.webp",
-        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-titanium-solid/sleeve-left.webp",
-        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-titanium-solid/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/russell-men-s-ultimate-cotton-polo-white/front.webp",
-        "back": "/products/russell-men-s-ultimate-cotton-polo-white/back.webp",
-        "sleeve_left": "/products/russell-men-s-ultimate-cotton-polo-white/sleeve-left.webp",
-        "sleeve_right": "/products/russell-men-s-ultimate-cotton-polo-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "00461c": {
       "views": {
-        "front": "/products/russell-men-s-ultimate-cotton-polo-00461c/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     }
   },
   "russell-men-s-classic-cotton-polo": {
@@ -12321,9 +12339,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bright-royal": {
       "views": {
         "front": "/products/russell-poloshirt-6535-bright-royal/front.webp",
-        "back": "/products/russell-poloshirt-6535-bright-royal/back.webp",
-        "sleeve_left": "/products/russell-poloshirt-6535-bright-royal/sleeve-left.webp",
-        "sleeve_right": "/products/russell-poloshirt-6535-bright-royal/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -12337,27 +12353,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "classic-red": {
       "views": {
         "front": "/products/russell-poloshirt-6535-classic-red/front.webp",
-        "back": "/products/russell-poloshirt-6535-classic-red/back.webp",
-        "sleeve_left": "/products/russell-poloshirt-6535-classic-red/sleeve-left.webp",
-        "sleeve_right": "/products/russell-poloshirt-6535-classic-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/russell-poloshirt-6535-french-navy/front.webp",
-        "back": "/products/russell-poloshirt-6535-french-navy/back.webp",
-        "sleeve_left": "/products/russell-poloshirt-6535-french-navy/sleeve-left.webp",
-        "sleeve_right": "/products/russell-poloshirt-6535-french-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "light-oxford-heather": {
       "views": {
         "front": "/products/russell-poloshirt-6535-light-oxford-heather/front.webp",
-        "back": "/products/russell-poloshirt-6535-light-oxford-heather/back.webp",
-        "sleeve_left": "/products/russell-poloshirt-6535-light-oxford-heather/sleeve-left.webp",
-        "sleeve_right": "/products/russell-poloshirt-6535-light-oxford-heather/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -12378,9 +12388,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/russell-poloshirt-6535-white/front.webp",
-        "back": "/products/russell-poloshirt-6535-white/back.webp",
-        "sleeve_left": "/products/russell-poloshirt-6535-white/sleeve-left.webp",
-        "sleeve_right": "/products/russell-poloshirt-6535-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
@@ -12394,9 +12402,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "convoy-grey-solid": {
       "views": {
         "front": "/products/russell-poloshirt-6535-convoy-grey-solid/front.webp",
-        "back": "/products/russell-poloshirt-6535-convoy-grey-solid/back.webp",
-        "sleeve_left": "/products/russell-poloshirt-6535-convoy-grey-solid/sleeve-left.webp",
-        "sleeve_right": "/products/russell-poloshirt-6535-convoy-grey-solid/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -12414,81 +12420,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-bottle-green/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-bottle-green/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-bottle-green/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-bottle-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "bright-red": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-bright-red/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-bright-red/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-bright-red/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-bright-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "bright-royal": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-bright-royal/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-bright-royal/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-bright-royal/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-bright-royal/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "classic-red": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-classic-red/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-classic-red/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-classic-red/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-classic-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-french-navy/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-french-navy/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-french-navy/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-french-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sky": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-sky/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-sky/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-sky/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-sky/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-white/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-white/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-white/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "convoy-grey-solid": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-convoy-grey-solid/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "light-oxford-heather": {
       "views": {
         "front": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/front.webp",
-        "back": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/back.webp",
-        "sleeve_left": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/sleeve-left.webp",
-        "sleeve_right": "/products/russell-ladies-poloshirt-6535-light-oxford-heather/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -12861,243 +12849,189 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-dark-grey-solid/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-dark-grey-solid/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-dark-grey-solid/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-dark-grey-solid/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-black/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-black/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-black/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-black/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-french-navy/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-french-navy/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-french-navy/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-french-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey-melange": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-grey-melange/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-grey-melange/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-grey-melange/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-grey-melange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "kelly-green": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-kelly-green/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-kelly-green/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-kelly-green/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-kelly-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-red/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-red/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-red/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-white/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-white/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-white/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-bottle-green/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-bottle-green/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-bottle-green/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-bottle-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "creamy-pink": {
       "views": {
-        "front": "/products/sols-men-s-polo-shirt-perfect-creamy-pink/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-creamy-pink/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-creamy-pink/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-creamy-pink/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "creamy-blue": {
       "views": {
-        "front": "/products/sols-men-s-polo-shirt-perfect-creamy-blue/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-creamy-blue/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-creamy-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-creamy-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "spring-green": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-spring-green/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-spring-green/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-spring-green/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-spring-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "01509d": {
       "views": {
-        "front": "/products/sols-men-s-polo-shirt-perfect-01509d/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-01509d/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-01509d/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-01509d/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "apple-green": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-apple-green/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-apple-green/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-apple-green/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-apple-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "aqua": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-aqua/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-aqua/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-aqua/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-aqua/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "ash-heather": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-ash-heather/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-ash-heather/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-ash-heather/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-ash-heather/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-burgundy/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-burgundy/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-burgundy/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-burgundy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "denim": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-denim/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-denim/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-denim/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-denim/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "gold": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-gold/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-gold/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-gold/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-gold/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "hibiscus": {
       "views": {
-        "front": "/products/sols-men-s-polo-shirt-perfect-hibiscus/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-hibiscus/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-hibiscus/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-hibiscus/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orange": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-orange/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-orange/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-orange/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-orange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-sand/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-sand/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-sand/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-sand/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sky-blue": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-sky-blue/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-sky-blue/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-sky-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-sky-blue/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "slate-blue": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-slate-blue/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-slate-blue/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-slate-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-slate-blue/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "pure-grey": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-pure-grey/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-pure-grey/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-pure-grey/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-pure-grey/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "charcoal-melange": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-charcoal-melange/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-charcoal-melange/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-charcoal-melange/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-charcoal-melange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-oxblood": {
       "views": {
-        "front": "/products/sols-men-s-polo-shirt-perfect-heather-oxblood/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-heather-oxblood/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-heather-oxblood/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-heather-oxblood/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "heather-denim": {
       "views": {
         "front": "/products/sols-men-s-polo-shirt-perfect-heather-denim/front.webp",
-        "back": "/products/sols-men-s-polo-shirt-perfect-heather-denim/back.webp",
-        "sleeve_left": "/products/sols-men-s-polo-shirt-perfect-heather-denim/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-polo-shirt-perfect-heather-denim/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -13115,171 +13049,133 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "rope": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-rope/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-rope/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-rope/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-rope/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "linen": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-linen/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-linen/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-linen/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-linen/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "candy-pink": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-candy-pink/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-candy-pink/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-candy-pink/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-candy-pink/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "lilac": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-lilac/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-lilac/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-lilac/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-lilac/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-orange/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-orange/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-orange/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-orange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-red/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-red/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-red/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "gold": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-gold/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-gold/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-gold/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-gold/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "kelly-green": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-kelly-green/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-kelly-green/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-kelly-green/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-kelly-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-bottle-green/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-bottle-green/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-bottle-green/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-bottle-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "aqua": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-aqua/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-aqua/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-aqua/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-aqua/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sky-blue": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-sky-blue/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-sky-blue/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-sky-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-sky-blue/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "royal-blue-241": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-royal-blue-241/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-royal-blue-241/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-royal-blue-241/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-royal-blue-241/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-french-navy/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-french-navy/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-french-navy/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-french-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "denim": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-denim/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-denim/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-denim/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-denim/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "pure-grey": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-pure-grey/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-pure-grey/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-pure-grey/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-pure-grey/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey-melange": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-grey-melange/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-grey-melange/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-grey-melange/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-grey-melange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "mouse-grey-solid": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-mouse-grey-solid/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-mouse-grey-solid/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-mouse-grey-solid/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-mouse-grey-solid/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-black/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-black/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-black/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-black/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "off-white": {
       "views": {
         "front": "/products/sols-unisex-pulse-polo-shirt-off-white/front.webp",
-        "back": "/products/sols-unisex-pulse-polo-shirt-off-white/back.webp",
-        "sleeve_left": "/products/sols-unisex-pulse-polo-shirt-off-white/sleeve-left.webp",
-        "sleeve_right": "/products/sols-unisex-pulse-polo-shirt-off-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -13295,238 +13191,286 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-chocolate": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-chocolate/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-chocolate/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-chocolate/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-chocolate/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-chocolate/sleeve-right.webp"
       },
       "status": "real"
     },
     "graphite-heather": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-graphite-heather/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-graphite-heather/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-graphite-heather/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-graphite-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-graphite-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "azalea": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-azalea/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-azalea/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-azalea/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-azalea/sleeve-right.webp"
       },
       "status": "real"
     },
     "mint-green": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-mint-green/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-mint-green/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-mint-green/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-mint-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-mint-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "old-gold": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-old-gold/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-old-gold/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-old-gold/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-old-gold/sleeve-right.webp"
       },
       "status": "real"
     },
     "orchid": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-orchid/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-orchid/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "b23730": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-b23730/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-b23730/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "violet": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-violet/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-violet/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "antique-cherry-red-heather": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-antique-cherry-red-heather/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-antique-cherry-red-heather/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-antique-cherry-red-heather/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-antique-cherry-red-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-antique-cherry-red-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "antique-sapphire-heather": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-antique-sapphire-heather/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-antique-sapphire-heather/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "ash-heather": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-ash-heather/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-ash-heather/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-ash-heather/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-ash-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-ash-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "carolina-blue": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-carolina-blue/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-carolina-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-charcoal-solid/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-charcoal-solid/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-charcoal-solid/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-charcoal-solid/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-charcoal-solid/sleeve-right.webp"
       },
       "status": "real"
     },
     "cherry-red": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-cherry-red/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-cherry-red/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-cherry-red/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-cherry-red/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-cherry-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "dark-heather": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-heather/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-heather/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-heather/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-dark-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-forest-green/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-forest-green/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-forest-green/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-forest-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-forest-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "garnet": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-garnet/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-garnet/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "eead1a": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-eead1a/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-eead1a/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-eead1a/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-eead1a/sleeve-right.webp"
       },
       "status": "real"
     },
     "heliconia": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-heliconia/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-heliconia/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "indigo-blue": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-indigo-blue/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-indigo-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "irish-green": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-irish-green/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-irish-green/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-irish-green/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-irish-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-irish-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-light-blue/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-light-blue/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-light-blue/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-light-blue/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-light-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-light-pink/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-light-pink/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-light-pink/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-light-pink/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-light-pink/sleeve-right.webp"
       },
       "status": "real"
     },
     "maroon": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-maroon/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-maroon/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-maroon/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-maroon/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-maroon/sleeve-right.webp"
       },
       "status": "real"
     },
     "military-green": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-military-green/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-military-green/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-military-green/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-military-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-military-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-orange/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-orange/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-orange/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-orange/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "purple": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-purple/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-purple/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-purple/sleeve-right.webp"
       },
       "status": "real"
     },
     "safety-green": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-green/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-green/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-green/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "safety-orange": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-orange/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-orange/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-orange/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-orange/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-safety-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-sand/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-sand/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-sand/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-sand/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-sand/sleeve-right.webp"
       },
       "status": "real"
     },
     "sapphire": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-sapphire/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-sapphire/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "005683": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-005683/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-005683/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-005683/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-005683/sleeve-right.webp"
       },
       "status": "real"
     },
     "205c40": {
       "views": {
-        "front": "/products/gildan-heavy-blend-hooded-sweatshirt-205c40/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "1c3775": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-1c3775/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-1c3775/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-1c3775/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-1c3775/sleeve-right.webp"
       },
       "status": "real"
     },
@@ -13542,14 +13486,18 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "red": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-red/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-red/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-red/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-red/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-heavy-blend-hooded-sweatshirt-royal/front.webp",
-        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-royal/back.webp"
+        "back": "/products/gildan-heavy-blend-hooded-sweatshirt-royal/back.webp",
+        "sleeve_left": "/products/gildan-heavy-blend-hooded-sweatshirt-royal/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-heavy-blend-hooded-sweatshirt-royal/sleeve-right.webp"
       },
       "status": "real"
     },
@@ -13582,213 +13530,255 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "cobalt": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cobalt/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "real"
-    },
-    "stone-blue": {
-      "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-stone-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "real"
-    },
-    "paragon": {
-      "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
+    "stone-blue": {
+      "views": {
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-stone-blue/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-stone-blue/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-stone-blue/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-stone-blue/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "paragon": {
+      "views": {
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-paragon/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-paragon/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-paragon/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-paragon/sleeve-right.webp"
+      },
+      "status": "real"
+    },
     "black": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-black/sleeve-right.webp"
       },
       "status": "real"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-charcoal-solid/sleeve-right.webp"
       },
       "status": "real"
     },
     "dark-heather": {
-      "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dark-heather/back.webp"
-      },
-      "status": "real"
-    },
-    "light-pink": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
+    "light-pink": {
+      "views": {
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-light-pink/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-light-pink/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-light-pink/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-light-pink/sleeve-right.webp"
+      },
+      "status": "real"
+    },
     "maroon": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-maroon/sleeve-right.webp"
       },
       "status": "real"
     },
     "military-green": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-military-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-red/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-red/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sport-grey-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sport-grey-heather/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sport-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sport-grey-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-royal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-royal/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-royal/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-royal/sleeve-right.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sand/sleeve-right.webp"
       },
       "status": "real"
     },
     "white": {
+      "views": {
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-white/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "yellow-haze": {
+      "views": {
+        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-yellow-haze/front.webp",
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-yellow-haze/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-yellow-haze/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-yellow-haze/sleeve-right.webp"
+      },
+      "status": "real"
+    },
+    "cement": {
       "views": {
         "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "placeholder"
     },
-    "yellow-haze": {
-      "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-yellow-haze/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "real"
-    },
-    "cement": {
-      "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cement/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
-      },
-      "status": "real"
-    },
     "cocoa": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cocoa/sleeve-right.webp"
       },
       "status": "real"
     },
     "daisy": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-daisy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-daisy/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-daisy/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-daisy/sleeve-right.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-forest-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-forest-green/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-forest-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-forest-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "mustard": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-mustard/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-mustard/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-mustard/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-mustard/sleeve-right.webp"
       },
       "status": "real"
     },
     "pink-lemonade": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pink-lemonade/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pink-lemonade/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pink-lemonade/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pink-lemonade/sleeve-right.webp"
       },
       "status": "real"
     },
     "pistachio": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-pistachio/sleeve-right.webp"
       },
       "status": "real"
     },
     "purple": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/front.webp",
-        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/back.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-purple/sleeve-right.webp"
       },
       "status": "real"
     },
     "sky": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sky/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "tangerine": {
       "views": {
         "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-tangerine/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-tangerine/back.webp",
+        "sleeve_left": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-tangerine/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-tangerine/sleeve-right.webp"
       },
       "status": "real"
     },
     "aquatic": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-aquatic/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "ash-grey-heather": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-ash-grey-heather/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "blue-dusk": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-blue-dusk/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "brown-savana": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-brown-savana/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "cardinal-red": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-cardinal-red/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "carolina-blue": {
       "views": {
@@ -13799,45 +13789,45 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "dusty-rose": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-dusty-rose/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "off-white": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-off-white/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sage": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-sage/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "smoke": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-smoke/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "t-orange": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-t-orange/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "393d47": {
       "views": {
-        "front": "/products/gildan-softstyle-midweight-sweat-adult-hoodie-393d47/front.webp",
+        "front": "/products/_platzhalter/platzhalter.webp",
         "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     }
   },
   "gildan-hammer-maxweight-adult-hooded-sweatshirt": {
@@ -13851,56 +13841,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "cherry-red": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-cherry-red/front.webp",
-        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-cherry-red/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "deep-royal": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-deep-royal/front.webp",
-        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-deep-royal/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "garnet": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-garnet/front.webp",
-        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-garnet/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "888b8d": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-888b8d/front.webp",
-        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-888b8d/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "off-white": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-off-white/front.webp",
-        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-off-white/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "olive": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-olive/front.webp",
-        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-olive/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "2d2926": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-2d2926/front.webp",
-        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-2d2926/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "tan": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-tan/front.webp",
-        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-tan/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -14648,12 +14638,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "frozen-yellow": {
       "views": {
-        "front": "/products/build-your-brand-heavy-hoody-frozen-yellow/front.webp",
-        "back": "/products/build-your-brand-heavy-hoody-frozen-yellow/back.webp",
-        "sleeve_left": "/products/build-your-brand-heavy-hoody-frozen-yellow/sleeve-left.webp",
-        "sleeve_right": "/products/build-your-brand-heavy-hoody-frozen-yellow/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "city-red": {
       "views": {
@@ -14702,12 +14690,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "bark": {
       "views": {
-        "front": "/products/build-your-brand-heavy-hoody-bark/front.webp",
-        "back": "/products/build-your-brand-heavy-hoody-bark/back.webp",
-        "sleeve_left": "/products/build-your-brand-heavy-hoody-bark/sleeve-left.webp",
-        "sleeve_right": "/products/build-your-brand-heavy-hoody-bark/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "light-asphalt": {
       "views": {
@@ -14729,12 +14715,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "pale-leaf": {
       "views": {
-        "front": "/products/build-your-brand-heavy-hoody-pale-leaf/front.webp",
-        "back": "/products/build-your-brand-heavy-hoody-pale-leaf/back.webp",
-        "sleeve_left": "/products/build-your-brand-heavy-hoody-pale-leaf/sleeve-left.webp",
-        "sleeve_right": "/products/build-your-brand-heavy-hoody-pale-leaf/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "white-sand": {
       "views": {
@@ -14756,12 +14740,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "baltic-blue": {
       "views": {
-        "front": "/products/build-your-brand-heavy-hoody-baltic-blue/front.webp",
-        "back": "/products/build-your-brand-heavy-hoody-baltic-blue/back.webp",
-        "sleeve_left": "/products/build-your-brand-heavy-hoody-baltic-blue/sleeve-left.webp",
-        "sleeve_right": "/products/build-your-brand-heavy-hoody-baltic-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "chocoloate-brown": {
       "views": {
@@ -15073,12 +15055,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "e8e7e3": {
       "views": {
-        "front": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-e8e7e3/front.webp",
-        "back": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-e8e7e3/back.webp",
-        "sleeve_left": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-e8e7e3/sleeve-left.webp",
-        "sleeve_right": "/products/build-your-brand-ultra-heavy-cotton-box-hoody-e8e7e3/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "cloud": {
       "views": {
@@ -15330,140 +15310,180 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "white": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-white/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-white/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-white/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-white/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-white/sleeve-right.webp"
       },
       "status": "real"
     },
     "yellow-fizz": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-yellow-fizz/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-yellow-fizz/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-yellow-fizz/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-yellow-fizz/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-yellow-fizz/sleeve-right.webp"
       },
       "status": "real"
     },
     "pure-orange": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-pure-orange/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-pure-orange/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-pure-orange/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-pure-orange/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-pure-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-red/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-red/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-red/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-red/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "dark-cherry": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-dark-cherry/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-dark-cherry/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-dark-cherry/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-dark-cherry/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-dark-cherry/sleeve-right.webp"
       },
       "status": "real"
     },
     "soft-rose": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-soft-rose/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-soft-rose/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-soft-rose/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-soft-rose/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-soft-rose/sleeve-right.webp"
       },
       "status": "real"
     },
     "magenta-pink": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-magenta-pink/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-magenta-pink/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-magenta-pink/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-magenta-pink/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-magenta-pink/sleeve-right.webp"
       },
       "status": "real"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-radiant-purple/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-radiant-purple/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-radiant-purple/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-radiant-purple/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-radiant-purple/sleeve-right.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-royal-blue/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-royal-blue/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-royal-blue/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-royal-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "pure-sky": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-pure-sky/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-pure-sky/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-pure-sky/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-pure-sky/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-pure-sky/sleeve-right.webp"
       },
       "status": "real"
     },
     "nordic-blue": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-nordic-blue/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-nordic-blue/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-nordic-blue/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-nordic-blue/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-nordic-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "aqua-green": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-aqua-green/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-aqua-green/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-aqua-green/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-aqua-green/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-aqua-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "khaki": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-khaki/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-khaki/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-khaki/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-khaki/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-khaki/sleeve-right.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-bottle-green/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-bottle-green/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-bottle-green/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-bottle-green/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-bottle-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "grey-fog": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-grey-fog/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-grey-fog/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-grey-fog/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-grey-fog/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-grey-fog/sleeve-right.webp"
       },
       "status": "real"
     },
     "asphalt": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-asphalt/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-asphalt/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-asphalt/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-asphalt/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-asphalt/sleeve-right.webp"
       },
       "status": "real"
     },
     "black-pure": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-black-pure/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-black-pure/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-black-pure/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-black-pure/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-black-pure/sleeve-right.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-heather-grey/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-heather-grey/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-heather-grey/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-heather-grey/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-heather-grey/sleeve-right.webp"
       },
       "status": "real"
     },
     "heather-mid-grey": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-heather-mid-grey/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-heather-mid-grey/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-heather-mid-grey/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-heather-mid-grey/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-heather-mid-grey/sleeve-right.webp"
       },
       "status": "real"
     },
     "1f2532": {
       "views": {
         "front": "/products/bundc-king-hooded-sweat-1f2532/front.webp",
-        "back": "/products/bundc-king-hooded-sweat-1f2532/back.webp"
+        "back": "/products/bundc-king-hooded-sweat-1f2532/back.webp",
+        "sleeve_left": "/products/bundc-king-hooded-sweat-1f2532/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-king-hooded-sweat-1f2532/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -15565,35 +15585,45 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/bundc-influence-hoodie-navy/front.webp",
-        "back": "/products/bundc-influence-hoodie-navy/back.webp"
+        "back": "/products/bundc-influence-hoodie-navy/back.webp",
+        "sleeve_left": "/products/bundc-influence-hoodie-navy/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-influence-hoodie-navy/sleeve-right.webp"
       },
       "status": "real"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/bundc-influence-hoodie-sport-grey-heather/front.webp",
-        "back": "/products/bundc-influence-hoodie-sport-grey-heather/back.webp"
+        "back": "/products/bundc-influence-hoodie-sport-grey-heather/back.webp",
+        "sleeve_left": "/products/bundc-influence-hoodie-sport-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-influence-hoodie-sport-grey-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-influence-hoodie-white/front.webp",
-        "back": "/products/bundc-influence-hoodie-white/back.webp"
+        "back": "/products/bundc-influence-hoodie-white/back.webp",
+        "sleeve_left": "/products/bundc-influence-hoodie-white/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-influence-hoodie-white/sleeve-right.webp"
       },
       "status": "real"
     },
     "mastic": {
       "views": {
         "front": "/products/bundc-influence-hoodie-mastic/front.webp",
-        "back": "/products/bundc-influence-hoodie-mastic/back.webp"
+        "back": "/products/bundc-influence-hoodie-mastic/back.webp",
+        "sleeve_left": "/products/bundc-influence-hoodie-mastic/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-influence-hoodie-mastic/sleeve-right.webp"
       },
       "status": "real"
     },
     "amalfi-teal": {
       "views": {
         "front": "/products/bundc-influence-hoodie-amalfi-teal/front.webp",
-        "back": "/products/bundc-influence-hoodie-amalfi-teal/back.webp"
+        "back": "/products/bundc-influence-hoodie-amalfi-teal/back.webp",
+        "sleeve_left": "/products/bundc-influence-hoodie-amalfi-teal/sleeve-left.webp",
+        "sleeve_right": "/products/bundc-influence-hoodie-amalfi-teal/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -15609,238 +15639,238 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "elephant-grey": {
       "views": {
         "front": "/products/bundc-hoodie-elephant-grey/front.webp",
-        "back": "/products/bundc-hoodie-elephant-grey/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/bundc-hoodie-white/front.webp",
-        "back": "/products/bundc-hoodie-white/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "desert": {
       "views": {
         "front": "/products/bundc-hoodie-desert/front.webp",
-        "back": "/products/bundc-hoodie-desert/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "melon-orange": {
       "views": {
         "front": "/products/bundc-hoodie-melon-orange/front.webp",
-        "back": "/products/bundc-hoodie-melon-orange/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "pale-yellow": {
       "views": {
         "front": "/products/bundc-hoodie-pale-yellow/front.webp",
-        "back": "/products/bundc-hoodie-pale-yellow/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "solar-yellow": {
       "views": {
         "front": "/products/bundc-hoodie-solar-yellow/front.webp",
-        "back": "/products/bundc-hoodie-solar-yellow/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "nude": {
       "views": {
         "front": "/products/bundc-hoodie-nude/front.webp",
-        "back": "/products/bundc-hoodie-nude/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "pure-orange": {
       "views": {
         "front": "/products/bundc-hoodie-pure-orange/front.webp",
-        "back": "/products/bundc-hoodie-pure-orange/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/bundc-hoodie-red/front.webp",
-        "back": "/products/bundc-hoodie-red/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "wine": {
       "views": {
         "front": "/products/bundc-hoodie-wine/front.webp",
-        "back": "/products/bundc-hoodie-wine/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "candy-pink": {
       "views": {
         "front": "/products/bundc-hoodie-candy-pink/front.webp",
-        "back": "/products/bundc-hoodie-candy-pink/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "pale-pink": {
       "views": {
         "front": "/products/bundc-hoodie-pale-pink/front.webp",
-        "back": "/products/bundc-hoodie-pale-pink/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "pink-fizz": {
       "views": {
         "front": "/products/bundc-hoodie-pink-fizz/front.webp",
-        "back": "/products/bundc-hoodie-pink-fizz/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "lavender": {
       "views": {
         "front": "/products/bundc-hoodie-lavender/front.webp",
-        "back": "/products/bundc-hoodie-lavender/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "radiant-purple": {
       "views": {
         "front": "/products/bundc-hoodie-radiant-purple/front.webp",
-        "back": "/products/bundc-hoodie-radiant-purple/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "hawaiian-blue": {
       "views": {
         "front": "/products/bundc-hoodie-hawaiian-blue/front.webp",
-        "back": "/products/bundc-hoodie-hawaiian-blue/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/bundc-hoodie-royal-blue/front.webp",
-        "back": "/products/bundc-hoodie-royal-blue/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "pure-sky": {
       "views": {
-        "front": "/products/bundc-hoodie-pure-sky/front.webp",
-        "back": "/products/bundc-hoodie-pure-sky/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sage": {
       "views": {
-        "front": "/products/bundc-hoodie-sage/front.webp",
-        "back": "/products/bundc-hoodie-sage/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "light-jade": {
       "views": {
-        "front": "/products/bundc-hoodie-light-jade/front.webp",
-        "back": "/products/bundc-hoodie-light-jade/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "kelly-green": {
       "views": {
         "front": "/products/bundc-hoodie-kelly-green/front.webp",
-        "back": "/products/bundc-hoodie-kelly-green/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "millennial-khaki": {
       "views": {
         "front": "/products/bundc-hoodie-millennial-khaki/front.webp",
-        "back": "/products/bundc-hoodie-millennial-khaki/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey-fog": {
       "views": {
-        "front": "/products/bundc-hoodie-grey-fog/front.webp",
-        "back": "/products/bundc-hoodie-grey-fog/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "forest-green": {
       "views": {
         "front": "/products/bundc-hoodie-forest-green/front.webp",
-        "back": "/products/bundc-hoodie-forest-green/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "asphalt": {
       "views": {
         "front": "/products/bundc-hoodie-asphalt/front.webp",
-        "back": "/products/bundc-hoodie-asphalt/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "black-pure": {
       "views": {
         "front": "/products/bundc-hoodie-black-pure/front.webp",
-        "back": "/products/bundc-hoodie-black-pure/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/bundc-hoodie-heather-grey/front.webp",
-        "back": "/products/bundc-hoodie-heather-grey/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-mid-grey": {
       "views": {
-        "front": "/products/bundc-hoodie-heather-mid-grey/front.webp",
-        "back": "/products/bundc-hoodie-heather-mid-grey/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "heather-red": {
       "views": {
         "front": "/products/bundc-hoodie-heather-red/front.webp",
-        "back": "/products/bundc-hoodie-heather-red/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-asphalt": {
       "views": {
         "front": "/products/bundc-hoodie-heather-asphalt/front.webp",
-        "back": "/products/bundc-hoodie-heather-asphalt/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-purple": {
       "views": {
         "front": "/products/bundc-hoodie-heather-purple/front.webp",
-        "back": "/products/bundc-hoodie-heather-purple/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-royal-blue": {
       "views": {
         "front": "/products/bundc-hoodie-heather-royal-blue/front.webp",
-        "back": "/products/bundc-hoodie-heather-royal-blue/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-navy": {
       "views": {
         "front": "/products/bundc-hoodie-heather-navy/front.webp",
-        "back": "/products/bundc-hoodie-heather-navy/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-dark-green": {
       "views": {
         "front": "/products/bundc-hoodie-heather-dark-green/front.webp",
-        "back": "/products/bundc-hoodie-heather-dark-green/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -16002,10 +16032,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "light-beige-sand": {
       "views": {
-        "front": "/products/earthpositive-earth-positive-pullover-hoodie-light-beige-sand/front.webp",
-        "back": "/products/earthpositive-earth-positive-pullover-hoodie-light-beige-sand/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "stone-washed-black": {
       "views": {
@@ -16044,17 +16074,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "stone-washed-sage-green": {
       "views": {
-        "front": "/products/earthpositive-earth-positive-pullover-hoodie-stone-washed-sage-green/front.webp",
-        "back": "/products/earthpositive-earth-positive-pullover-hoodie-stone-washed-sage-green/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "stone-washed-white": {
       "views": {
-        "front": "/products/earthpositive-earth-positive-pullover-hoodie-stone-washed-white/front.webp",
-        "back": "/products/earthpositive-earth-positive-pullover-hoodie-stone-washed-white/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "white": {
       "views": {
@@ -16251,98 +16281,98 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "ink-blue": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-ink-blue/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-ink-blue/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "charcoal-heather": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-charcoal-heather/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-charcoal-heather/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "arctic-white": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-arctic-white/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-arctic-white/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "baby-pink": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-baby-pink/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-baby-pink/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-burgundy/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-burgundy/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "deep-black": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-deep-black/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-deep-black/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "fire-red": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-fire-red/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-fire-red/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-heather-grey/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-heather-grey/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "mustard": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-mustard/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-mustard/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "new-french-navy": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-new-french-navy/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-new-french-navy/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-royal-blue/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-royal-blue/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "lavender": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-lavender/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-lavender/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "natural-stone": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-natural-stone/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-natural-stone/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sky-blue": {
       "views": {
         "front": "/products/just-hoods-organic-hoodie-jh201-sky-blue/front.webp",
-        "back": "/products/just-hoods-organic-hoodie-jh201-sky-blue/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -16711,108 +16741,84 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "bottle-green": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-bottle-green/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-bottle-green/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-bottle-green/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-bottle-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "bright-royal": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-bright-royal/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-bright-royal/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-bright-royal/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-bright-royal/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "classic-red": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-classic-red/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-classic-red/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-classic-red/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-classic-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-french-navy/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-french-navy/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-french-navy/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-french-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "fuchsia": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-fuchsia/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-fuchsia/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-fuchsia/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-fuchsia/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "light-oxford-heather": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-light-oxford-heather/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-light-oxford-heather/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-light-oxford-heather/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-light-oxford-heather/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-orange/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-orange/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-orange/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-orange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "purple": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-purple/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-purple/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-purple/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-purple/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "sky": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-sky/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-sky/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-sky/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-sky/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-white/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-white/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-white/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "yellow": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-yellow/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-yellow/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-yellow/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-yellow/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "burgundy": {
       "views": {
         "front": "/products/russell-hooded-sweatshirt-burgundy/front.webp",
-        "back": "/products/russell-hooded-sweatshirt-burgundy/back.webp",
-        "sleeve_left": "/products/russell-hooded-sweatshirt-burgundy/sleeve-left.webp",
-        "sleeve_right": "/products/russell-hooded-sweatshirt-burgundy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -16828,63 +16834,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "arctic-white": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-arctic-white/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-arctic-white/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "bright-royal": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-bright-royal/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-bright-royal/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "deep-black": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-deep-black/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-deep-black/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "heather-grey": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-heather-grey/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-heather-grey/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "natural-stone": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-natural-stone/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-natural-stone/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "new-french-navy": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-new-french-navy/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-new-french-navy/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "solid-charcoal": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-solid-charcoal/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-solid-charcoal/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "4f758b": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-4f758b/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-4f758b/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "4f413c": {
       "views": {
         "front": "/products/just-hoods-signature-heavyweight-sweat-4f413c/front.webp",
-        "back": "/products/just-hoods-signature-heavyweight-sweat-4f413c/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -16902,81 +16908,63 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-melange": {
       "views": {
         "front": "/products/jhk-hooded-sweater-dark-grey-melange/front.webp",
-        "back": "/products/jhk-hooded-sweater-dark-grey-melange/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-dark-grey-melange/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-dark-grey-melange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey-melange": {
       "views": {
         "front": "/products/jhk-hooded-sweater-grey-melange/front.webp",
-        "back": "/products/jhk-hooded-sweater-grey-melange/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-grey-melange/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-grey-melange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "khaki": {
       "views": {
         "front": "/products/jhk-hooded-sweater-khaki/front.webp",
-        "back": "/products/jhk-hooded-sweater-khaki/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-khaki/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-khaki/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/jhk-hooded-sweater-navy/front.webp",
-        "back": "/products/jhk-hooded-sweater-navy/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-navy/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/jhk-hooded-sweater-red/front.webp",
-        "back": "/products/jhk-hooded-sweater-red/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-red/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/jhk-hooded-sweater-royal-blue/front.webp",
-        "back": "/products/jhk-hooded-sweater-royal-blue/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-royal-blue/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-royal-blue/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/jhk-hooded-sweater-white/front.webp",
-        "back": "/products/jhk-hooded-sweater-white/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-white/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "kelly-green": {
       "views": {
         "front": "/products/jhk-hooded-sweater-kelly-green/front.webp",
-        "back": "/products/jhk-hooded-sweater-kelly-green/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-kelly-green/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-kelly-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "mustard": {
       "views": {
         "front": "/products/jhk-hooded-sweater-mustard/front.webp",
-        "back": "/products/jhk-hooded-sweater-mustard/back.webp",
-        "sleeve_left": "/products/jhk-hooded-sweater-mustard/sleeve-left.webp",
-        "sleeve_right": "/products/jhk-hooded-sweater-mustard/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -17092,140 +17080,180 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-chocolate": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-chocolate/sleeve-right.webp"
       },
       "status": "real"
     },
     "ash-grey-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-ash-grey-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-black/sleeve-right.webp"
       },
       "status": "real"
     },
     "cardinal-red": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-cardinal-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "carolina-blue": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-carolina-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-charcoal-solid/sleeve-right.webp"
       },
       "status": "real"
     },
     "dark-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-dark-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-forest-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "gold": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-gold/sleeve-right.webp"
       },
       "status": "real"
     },
     "irish-green": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-irish-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-light-pink/sleeve-right.webp"
       },
       "status": "real"
     },
     "maroon": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-maroon/sleeve-right.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-royal/sleeve-right.webp"
       },
       "status": "real"
     },
     "safety-green-neon": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-green-neon/sleeve-right.webp"
       },
       "status": "real"
     },
     "safety-orange-neon": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-safety-orange-neon/sleeve-right.webp"
       },
       "status": "real"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-sport-grey-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/front.webp",
-        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/back.webp"
+        "back": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/back.webp",
+        "sleeve_left": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/sleeve-left.webp",
+        "sleeve_right": "/products/gildan-ultra-cotton-long-sleeve-t-shirt-white/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -17242,100 +17270,78 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "oxblood": {
       "views": {
-        "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-oxblood/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-oxblood/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-oxblood/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-oxblood/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dark-khaki": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-dark-khaki/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-dark-khaki/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-dark-khaki/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-dark-khaki/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "charcoal-melange": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-charcoal-melange/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-charcoal-melange/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-charcoal-melange/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-charcoal-melange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "deep-black": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-deep-black/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-deep-black/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-deep-black/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-deep-black/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-french-navy/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-french-navy/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-french-navy/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-french-navy/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "grey-melange": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-grey-melange/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-grey-melange/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-grey-melange/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-grey-melange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-red/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-red/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-red/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-red/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-white/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-white/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-white/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-white/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "bottle-green": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-bottle-green/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-bottle-green/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-bottle-green/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-bottle-green/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "mouse-grey-solid": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-mouse-grey-solid/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-mouse-grey-solid/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-mouse-grey-solid/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-mouse-grey-solid/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/sols-men-s-long-sleeve-t-shirt-imperial-orange/front.webp",
-        "back": "/products/sols-men-s-long-sleeve-t-shirt-imperial-orange/back.webp",
-        "sleeve_left": "/products/sols-men-s-long-sleeve-t-shirt-imperial-orange/sleeve-left.webp",
-        "sleeve_right": "/products/sols-men-s-long-sleeve-t-shirt-imperial-orange/sleeve-right.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -17351,154 +17357,198 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dusty-indigo": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-indigo/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-indigo/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-indigo/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-indigo/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-indigo/sleeve-right.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-orange/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-orange/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-orange/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-orange/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-orange/sleeve-right.webp"
       },
       "status": "real"
     },
     "dusty-mint": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-mint/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-mint/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-mint/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-mint/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-dusty-mint/sleeve-right.webp"
       },
       "status": "real"
     },
     "lime": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-lime/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-lime/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-lime/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-lime/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-lime/sleeve-right.webp"
       },
       "status": "real"
     },
     "charcoal": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-charcoal/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-charcoal/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-charcoal/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-charcoal/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-charcoal/sleeve-right.webp"
       },
       "status": "real"
     },
     "teal": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-teal/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-teal/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-teal/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-teal/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-teal/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-blue": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-light-blue/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-light-blue/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-light-blue/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-light-blue/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-light-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "pink": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-pink/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-pink/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-pink/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-pink/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-pink/sleeve-right.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-light-pink/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-light-pink/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-light-pink/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-light-pink/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-light-pink/sleeve-right.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-black/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-black/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-black/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-black/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-black/sleeve-right.webp"
       },
       "status": "real"
     },
     "bordeaux": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-bordeaux/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-bordeaux/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-bordeaux/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-bordeaux/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-bordeaux/sleeve-right.webp"
       },
       "status": "real"
     },
     "military": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-military/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-military/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-military/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-military/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-military/sleeve-right.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-navy/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-navy/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-navy/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-navy/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-navy/sleeve-right.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-red/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-red/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "sports-grey": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-sports-grey/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-sports-grey/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-sports-grey/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-sports-grey/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-sports-grey/sleeve-right.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-white/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-white/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-white/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-white/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-white/sleeve-right.webp"
       },
       "status": "real"
     },
     "dark-heather": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-dark-heather/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dark-heather/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-dark-heather/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-dark-heather/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-dark-heather/sleeve-right.webp"
       },
       "status": "real"
     },
     "white-navy-striped": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-white-navy-striped/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-white-navy-striped/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-white-navy-striped/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-white-navy-striped/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-white-navy-striped/sleeve-right.webp"
       },
       "status": "real"
     },
     "yellow": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-yellow/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-yellow/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-yellow/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-yellow/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-yellow/sleeve-right.webp"
       },
       "status": "real"
     },
     "sapphire": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-sapphire/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-sapphire/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-sapphire/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-sapphire/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-sapphire/sleeve-right.webp"
       },
       "status": "real"
     },
     "green": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-green/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-green/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-green/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-green/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-green/sleeve-right.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/neutral-ladies-long-sleeve-t-shirt-royal/front.webp",
-        "back": "/products/neutral-ladies-long-sleeve-t-shirt-royal/back.webp"
+        "back": "/products/neutral-ladies-long-sleeve-t-shirt-royal/back.webp",
+        "sleeve_left": "/products/neutral-ladies-long-sleeve-t-shirt-royal/sleeve-left.webp",
+        "sleeve_right": "/products/neutral-ladies-long-sleeve-t-shirt-royal/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -17712,70 +17762,90 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "sapphire-blue": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-sapphire-blue/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-sapphire-blue/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-sapphire-blue/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-sapphire-blue/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-sapphire-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "arctic-white": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-arctic-white/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-arctic-white/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-arctic-white/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-arctic-white/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-arctic-white/sleeve-right.webp"
       },
       "status": "real"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-charcoal-solid/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-charcoal-solid/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-charcoal-solid/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-charcoal-solid/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-charcoal-solid/sleeve-right.webp"
       },
       "status": "real"
     },
     "electric-yellow-neon": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-electric-yellow-neon/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-electric-yellow-neon/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-electric-yellow-neon/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-electric-yellow-neon/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-electric-yellow-neon/sleeve-right.webp"
       },
       "status": "real"
     },
     "fire-red": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-fire-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-fire-red/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-fire-red/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-fire-red/sleeve-right.webp"
       },
       "status": "real"
     },
     "french-navy": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-french-navy/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-french-navy/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-french-navy/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-french-navy/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-french-navy/sleeve-right.webp"
       },
       "status": "real"
     },
     "jet-black": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-jet-black/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-jet-black/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-jet-black/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-jet-black/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-jet-black/sleeve-right.webp"
       },
       "status": "real"
     },
     "royal-blue": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-royal-blue/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-royal-blue/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-royal-blue/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-royal-blue/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-royal-blue/sleeve-right.webp"
       },
       "status": "real"
     },
     "electric-green-neon": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-electric-green-neon/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-electric-green-neon/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-electric-green-neon/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-electric-green-neon/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-electric-green-neon/sleeve-right.webp"
       },
       "status": "real"
     },
     "electric-orange-neon": {
       "views": {
         "front": "/products/just-cool-long-sleeve-cool-t-electric-orange-neon/front.webp",
-        "back": "/products/just-cool-long-sleeve-cool-t-electric-orange-neon/back.webp"
+        "back": "/products/just-cool-long-sleeve-cool-t-electric-orange-neon/back.webp",
+        "sleeve_left": "/products/just-cool-long-sleeve-cool-t-electric-orange-neon/sleeve-left.webp",
+        "sleeve_right": "/products/just-cool-long-sleeve-cool-t-electric-orange-neon/sleeve-right.webp"
       },
       "status": "real"
     }
@@ -18159,12 +18229,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "b8b8b8": {
       "views": {
-        "front": "/products/neutral-men-s-long-sleeve-t-shirt-b8b8b8/front.webp",
-        "back": "/products/neutral-men-s-long-sleeve-t-shirt-b8b8b8/back.webp",
-        "sleeve_left": "/products/neutral-men-s-long-sleeve-t-shirt-b8b8b8/sleeve-left.webp",
-        "sleeve_right": "/products/neutral-men-s-long-sleeve-t-shirt-b8b8b8/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "bordeaux": {
       "views": {
@@ -18259,21 +18327,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "charcoal-grey-solid": {
       "views": {
         "front": "/products/sols-men-s-plain-fleece-jacket-norman-charcoal-grey-solid/front.webp",
-        "back": "/products/sols-men-s-plain-fleece-jacket-norman-charcoal-grey-solid/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/sols-men-s-plain-fleece-jacket-norman-navy/front.webp",
-        "back": "/products/sols-men-s-plain-fleece-jacket-norman-navy/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/sols-men-s-plain-fleece-jacket-norman-red/front.webp",
-        "back": "/products/sols-men-s-plain-fleece-jacket-norman-red/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -18289,21 +18357,21 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "charcoal-grey-solid": {
       "views": {
         "front": "/products/sols-women-s-plain-fleece-jacket-norman-charcoal-grey-solid/front.webp",
-        "back": "/products/sols-women-s-plain-fleece-jacket-norman-charcoal-grey-solid/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/sols-women-s-plain-fleece-jacket-norman-navy/front.webp",
-        "back": "/products/sols-women-s-plain-fleece-jacket-norman-navy/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/sols-women-s-plain-fleece-jacket-norman-red/front.webp",
-        "back": "/products/sols-women-s-plain-fleece-jacket-norman-red/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -18440,49 +18508,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "forest-green": {
       "views": {
         "front": "/products/sols-mens-factor-zipped-fleece-jacket-forest-green/front.webp",
-        "back": "/products/sols-mens-factor-zipped-fleece-jacket-forest-green/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/sols-mens-factor-zipped-fleece-jacket-black/front.webp",
-        "back": "/products/sols-mens-factor-zipped-fleece-jacket-black/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/sols-mens-factor-zipped-fleece-jacket-navy/front.webp",
-        "back": "/products/sols-mens-factor-zipped-fleece-jacket-navy/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "charcoal-grey-solid": {
       "views": {
-        "front": "/products/sols-mens-factor-zipped-fleece-jacket-charcoal-grey-solid/front.webp",
-        "back": "/products/sols-mens-factor-zipped-fleece-jacket-charcoal-grey-solid/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "red": {
       "views": {
         "front": "/products/sols-mens-factor-zipped-fleece-jacket-red/front.webp",
-        "back": "/products/sols-mens-factor-zipped-fleece-jacket-red/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/sols-mens-factor-zipped-fleece-jacket-orange/front.webp",
-        "back": "/products/sols-mens-factor-zipped-fleece-jacket-orange/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "rope": {
       "views": {
         "front": "/products/sols-mens-factor-zipped-fleece-jacket-rope/front.webp",
-        "back": "/products/sols-mens-factor-zipped-fleece-jacket-rope/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -18621,35 +18689,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "weiss": {
       "views": {
         "front": "/products/id-identity-microfleece-jacke-weiss/front.webp",
-        "back": "/products/id-identity-microfleece-jacke-weiss/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "rot": {
       "views": {
         "front": "/products/id-identity-microfleece-jacke-rot/front.webp",
-        "back": "/products/id-identity-microfleece-jacke-rot/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "hellblau": {
       "views": {
         "front": "/products/id-identity-microfleece-jacke-hellblau/front.webp",
-        "back": "/products/id-identity-microfleece-jacke-hellblau/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/id-identity-microfleece-jacke-navy/front.webp",
-        "back": "/products/id-identity-microfleece-jacke-navy/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     },
     "schwarz": {
       "views": {
         "front": "/products/id-identity-microfleece-jacke-schwarz/front.webp",
-        "back": "/products/id-identity-microfleece-jacke-schwarz/back.webp"
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
       "status": "real"
     }
@@ -18744,14 +18812,14 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "dark-grey-solid": {
       "views": {
         "front": "/products/bundc-microfleece-duo-id501-dark-grey-solid/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-microfleece-duo-id501-dark-grey-solid/back.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/bundc-microfleece-duo-id501-forest-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-microfleece-duo-id501-forest-green/back.webp"
       },
       "status": "real"
     },
@@ -18765,7 +18833,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "pumpkin-orange": {
       "views": {
         "front": "/products/bundc-microfleece-duo-id501-pumpkin-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-microfleece-duo-id501-pumpkin-orange/back.webp"
       },
       "status": "real"
     },
@@ -18779,7 +18847,7 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "royal-blue": {
       "views": {
         "front": "/products/bundc-microfleece-duo-id501-royal-blue/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/bundc-microfleece-duo-id501-royal-blue/back.webp"
       },
       "status": "real"
     },
@@ -19185,10 +19253,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "gold": {
       "views": {
-        "front": "/products/kinder-bctk002-gold/front.webp",
-        "back": "/products/kinder-bctk002-gold/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "orange": {
       "views": {
@@ -19227,17 +19295,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "kelly-green": {
       "views": {
-        "front": "/products/kinder-bctk002-kelly-green/front.webp",
-        "back": "/products/kinder-bctk002-kelly-green/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "bottle-green": {
       "views": {
-        "front": "/products/kinder-bctk002-bottle-green/front.webp",
-        "back": "/products/kinder-bctk002-bottle-green/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sport-grey-heather": {
       "views": {
@@ -19248,17 +19316,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "dark-grey-solid": {
       "views": {
-        "front": "/products/kinder-bctk002-dark-grey-solid/front.webp",
-        "back": "/products/kinder-bctk002-dark-grey-solid/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "black": {
       "views": {
-        "front": "/products/kinder-bctk002-black/front.webp",
-        "back": "/products/kinder-bctk002-black/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     }
   },
   "kinder-g5000k": {
@@ -19390,17 +19458,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sapphire": {
       "views": {
-        "front": "/products/kinder-g5000k-sapphire/front.webp",
-        "back": "/products/kinder-g5000k-sapphire/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "indigo-blue": {
       "views": {
-        "front": "/products/kinder-g5000k-indigo-blue/front.webp",
-        "back": "/products/kinder-g5000k-indigo-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "royal": {
       "views": {
@@ -19432,10 +19500,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "kiwi": {
       "views": {
-        "front": "/products/kinder-g5000k-kiwi/front.webp",
-        "back": "/products/kinder-g5000k-kiwi/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "irish-green": {
       "views": {
@@ -20216,17 +20284,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "candyfloss-pink": {
       "views": {
-        "front": "/products/kinder-jh001k-candyfloss-pink/front.webp",
-        "back": "/products/kinder-jh001k-candyfloss-pink/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dusty-pink": {
       "views": {
-        "front": "/products/kinder-jh001k-dusty-pink/front.webp",
-        "back": "/products/kinder-jh001k-dusty-pink/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "hot-pink": {
       "views": {
@@ -20244,10 +20312,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "digital-lavender": {
       "views": {
-        "front": "/products/kinder-jh001k-digital-lavender/front.webp",
-        "back": "/products/kinder-jh001k-digital-lavender/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "plum": {
       "views": {
@@ -20258,17 +20326,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "purple": {
       "views": {
-        "front": "/products/kinder-jh001k-purple/front.webp",
-        "back": "/products/kinder-jh001k-purple/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "ice-blue": {
       "views": {
-        "front": "/products/kinder-jh001k-ice-blue/front.webp",
-        "back": "/products/kinder-jh001k-ice-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sky-blue": {
       "views": {
@@ -20279,17 +20347,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "hawaiian-blue": {
       "views": {
-        "front": "/products/kinder-jh001k-hawaiian-blue/front.webp",
-        "back": "/products/kinder-jh001k-hawaiian-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "airforce-blue": {
       "views": {
-        "front": "/products/kinder-jh001k-airforce-blue/front.webp",
-        "back": "/products/kinder-jh001k-airforce-blue/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sapphire-blue": {
       "views": {
@@ -20328,24 +20396,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "peppermint": {
       "views": {
-        "front": "/products/kinder-jh001k-peppermint/front.webp",
-        "back": "/products/kinder-jh001k-peppermint/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "seafoam": {
       "views": {
-        "front": "/products/kinder-jh001k-seafoam/front.webp",
-        "back": "/products/kinder-jh001k-seafoam/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "jade": {
       "views": {
-        "front": "/products/kinder-jh001k-jade/front.webp",
-        "back": "/products/kinder-jh001k-jade/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "lime-green": {
       "views": {
@@ -20356,10 +20424,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "dusty-green": {
       "views": {
-        "front": "/products/kinder-jh001k-dusty-green/front.webp",
-        "back": "/products/kinder-jh001k-dusty-green/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "kelly-green": {
       "views": {
@@ -20370,10 +20438,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "rainforest-green": {
       "views": {
-        "front": "/products/kinder-jh001k-rainforest-green/front.webp",
-        "back": "/products/kinder-jh001k-rainforest-green/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "bottle-green": {
       "views": {
@@ -20412,17 +20480,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "natural-stone": {
       "views": {
-        "front": "/products/kinder-jh001k-natural-stone/front.webp",
-        "back": "/products/kinder-jh001k-natural-stone/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "platinum-grey": {
       "views": {
-        "front": "/products/kinder-jh001k-platinum-grey/front.webp",
-        "back": "/products/kinder-jh001k-platinum-grey/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "heather-grey": {
       "views": {
@@ -20433,10 +20501,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "solid-charcoal": {
       "views": {
-        "front": "/products/kinder-jh001k-solid-charcoal/front.webp",
-        "back": "/products/kinder-jh001k-solid-charcoal/back.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "charcoal-heather": {
       "views": {
@@ -21197,12 +21265,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "citrus": {
       "views": {
-        "front": "/products/sport-jc001-citrus/front.webp",
-        "back": "/products/sport-jc001-citrus/back.webp",
-        "sleeve_left": "/products/sport-jc001-citrus/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-citrus/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "electric-yellow": {
       "views": {
@@ -21224,12 +21290,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sherbet-lemon": {
       "views": {
-        "front": "/products/sport-jc001-sherbet-lemon/front.webp",
-        "back": "/products/sport-jc001-sherbet-lemon/back.webp",
-        "sleeve_left": "/products/sport-jc001-sherbet-lemon/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-sherbet-lemon/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "gold": {
       "views": {
@@ -21296,39 +21360,31 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "baby-pink": {
       "views": {
-        "front": "/products/sport-jc001-baby-pink/front.webp",
-        "back": "/products/sport-jc001-baby-pink/back.webp",
-        "sleeve_left": "/products/sport-jc001-baby-pink/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-baby-pink/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "peach-sorbet": {
       "views": {
-        "front": "/products/sport-jc001-peach-sorbet/front.webp",
-        "back": "/products/sport-jc001-peach-sorbet/back.webp",
-        "sleeve_left": "/products/sport-jc001-peach-sorbet/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-peach-sorbet/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "electric-pink": {
       "views": {
-        "front": "/products/sport-jc001-electric-pink/front.webp",
-        "back": "/products/sport-jc001-electric-pink/back.webp",
-        "sleeve_left": "/products/sport-jc001-electric-pink/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-electric-pink/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "dusty-pink": {
       "views": {
-        "front": "/products/sport-jc001-dusty-pink/front.webp",
-        "back": "/products/sport-jc001-dusty-pink/back.webp",
-        "sleeve_left": "/products/sport-jc001-dusty-pink/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-dusty-pink/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "hot-pink": {
       "views": {
@@ -21350,21 +21406,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "digital-lavender": {
       "views": {
-        "front": "/products/sport-jc001-digital-lavender/front.webp",
-        "back": "/products/sport-jc001-digital-lavender/back.webp",
-        "sleeve_left": "/products/sport-jc001-digital-lavender/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-digital-lavender/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "magenta-magic": {
       "views": {
-        "front": "/products/sport-jc001-magenta-magic/front.webp",
-        "back": "/products/sport-jc001-magenta-magic/back.webp",
-        "sleeve_left": "/products/sport-jc001-magenta-magic/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-magenta-magic/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "purple": {
       "views": {
@@ -21395,12 +21447,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "hawaiian-blue": {
       "views": {
-        "front": "/products/sport-jc001-hawaiian-blue/front.webp",
-        "back": "/products/sport-jc001-hawaiian-blue/back.webp",
-        "sleeve_left": "/products/sport-jc001-hawaiian-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-hawaiian-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "sapphire-blue": {
       "views": {
@@ -21413,30 +21463,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "cornflower-blue": {
       "views": {
-        "front": "/products/sport-jc001-cornflower-blue/front.webp",
-        "back": "/products/sport-jc001-cornflower-blue/back.webp",
-        "sleeve_left": "/products/sport-jc001-cornflower-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-cornflower-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "airforce-blue": {
       "views": {
-        "front": "/products/sport-jc001-airforce-blue/front.webp",
-        "back": "/products/sport-jc001-airforce-blue/back.webp",
-        "sleeve_left": "/products/sport-jc001-airforce-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-airforce-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "reflex-blue": {
       "views": {
-        "front": "/products/sport-jc001-reflex-blue/front.webp",
-        "back": "/products/sport-jc001-reflex-blue/back.webp",
-        "sleeve_left": "/products/sport-jc001-reflex-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-reflex-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "royal-blue": {
       "views": {
@@ -21449,12 +21493,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "ink-blue": {
       "views": {
-        "front": "/products/sport-jc001-ink-blue/front.webp",
-        "back": "/products/sport-jc001-ink-blue/back.webp",
-        "sleeve_left": "/products/sport-jc001-ink-blue/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-ink-blue/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "oxford-navy": {
       "views": {
@@ -21476,21 +21518,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "mint": {
       "views": {
-        "front": "/products/sport-jc001-mint/front.webp",
-        "back": "/products/sport-jc001-mint/back.webp",
-        "sleeve_left": "/products/sport-jc001-mint/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-mint/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "seafoam": {
       "views": {
-        "front": "/products/sport-jc001-seafoam/front.webp",
-        "back": "/products/sport-jc001-seafoam/back.webp",
-        "sleeve_left": "/products/sport-jc001-seafoam/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-seafoam/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "turquoise-blue": {
       "views": {
@@ -21503,21 +21541,17 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "jade": {
       "views": {
-        "front": "/products/sport-jc001-jade/front.webp",
-        "back": "/products/sport-jc001-jade/back.webp",
-        "sleeve_left": "/products/sport-jc001-jade/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-jade/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "melon-green": {
       "views": {
-        "front": "/products/sport-jc001-melon-green/front.webp",
-        "back": "/products/sport-jc001-melon-green/back.webp",
-        "sleeve_left": "/products/sport-jc001-melon-green/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-melon-green/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "electric-green": {
       "views": {
@@ -21539,30 +21573,24 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "sour-green": {
       "views": {
-        "front": "/products/sport-jc001-sour-green/front.webp",
-        "back": "/products/sport-jc001-sour-green/back.webp",
-        "sleeve_left": "/products/sport-jc001-sour-green/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-sour-green/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "kelly-green": {
       "views": {
-        "front": "/products/sport-jc001-kelly-green/front.webp",
-        "back": "/products/sport-jc001-kelly-green/back.webp",
-        "sleeve_left": "/products/sport-jc001-kelly-green/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-kelly-green/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "earthy-green": {
       "views": {
-        "front": "/products/sport-jc001-earthy-green/front.webp",
-        "back": "/products/sport-jc001-earthy-green/back.webp",
-        "sleeve_left": "/products/sport-jc001-earthy-green/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-earthy-green/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "bottle-green": {
       "views": {
@@ -21575,12 +21603,10 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     },
     "combat-green": {
       "views": {
-        "front": "/products/sport-jc001-combat-green/front.webp",
-        "back": "/products/sport-jc001-combat-green/back.webp",
-        "sleeve_left": "/products/sport-jc001-combat-green/sleeve-left.webp",
-        "sleeve_right": "/products/sport-jc001-combat-green/sleeve-right.webp"
+        "front": "/products/_platzhalter/platzhalter.webp",
+        "back": "/products/_platzhalter/platzhalter.webp"
       },
-      "status": "real"
+      "status": "placeholder"
     },
     "olive-green": {
       "views": {

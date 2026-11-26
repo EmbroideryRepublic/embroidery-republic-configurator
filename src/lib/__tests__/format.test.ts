@@ -76,6 +76,9 @@ const ERLAUBT_EIGENE_FORMATIERUNG = [
   // Kategorie Ausnahme wie payments/betrag.ts: keine Darstellung für
   // Menschen, sondern ein Datenformat mit eigener, fremdbestimmter Syntax.
   path.join(SRC, 'lib', 'invoicing', 'providers', 'sepaQrCode.ts'),
+  // Google-Merchant-Feed: Der Preis steht im Datenformat des Feeds ("12.99 EUR", Punkt als Dezimaltrenner, ISO-Währung
+  // nachgestellt) – eine Maschinen-Syntax, keine Darstellung für Menschen, daher dieselbe Ausnahme wie beim GiroCode.
+  path.join(SRC, 'lib', 'seo', 'merchantFeed.ts'),
 ];
 
 function quelldateien(dir: string): string[] {

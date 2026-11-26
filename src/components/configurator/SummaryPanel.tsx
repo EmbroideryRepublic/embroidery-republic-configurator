@@ -8,7 +8,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useCartStore } from '@/stores/cartStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
-import { QUANTITY_TIERS, DTF_POSITION_TIERS, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
+import { QUANTITY_TIERS, DTF_POSITION_TIERS, STICKEREI_POSITION_TIERS, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
 import type { MengenTipp, NaechsteStufe } from '@/lib/pricing/mengenTipp';
 import { getProduct } from '@/config/products';
 import { SizeQuantityTable } from './SizeQuantityTable';
@@ -22,7 +22,7 @@ import { istNurAufAnfrage } from '@/config/bestellweg';
 interface SummaryPanelProps {
   productName: string;
   breakdown: PriceCalculationResult['breakdown'] | null;
-  /** Staffelgrenze knapp über der gewählten Menge, bei der der Gesamtpreis sinkt (lib/pricing/mengenTipp.ts). */
+  /** Staffelgrenze knapp über der gewählten Menge, für die derselbe Gesamtpreis gilt (Mengenpreis-Deckel, lib/pricing/mengenTipp.ts). */
   mengenTipp?: MengenTipp | null;
   /** Nächste Menge, ab der der Stückpreis sinkt (lib/pricing/mengenTipp.ts) – „Noch 2 Stück – dann nur noch 26,99 €“. */
   naechsteStufe?: NaechsteStufe | null;
@@ -64,8 +64,13 @@ export function SummaryPanel({
   // Chip-Leiste und der "Noch X Stück bis…"-Hinweis unten müssen deshalb
   // wissen, welche der beiden Staffeln gerade gilt. QUANTITY_TIERS.
   // veredelungDiscountPercent beschreibt nur noch Stickerei korrekt.
+  // Seit 2026-11-26 haben DTF und Stickerei getrennte Positionstabellen (STICKEREI_POSITION_TIERS); Stufen, bei denen die erste Position
+  // gleich bleibt (ab 3 Stück 9,00 € wie bei 1 Stück), taugen weder als Chip noch als „Noch N Stück bis …“.
+  const positionsStufen = (breakdown?.isStitchBased ? STICKEREI_POSITION_TIERS : DTF_POSITION_TIERS).filter(
+    (t, i, alle) => i === 0 || t.erste !== alle[i - 1]!.erste
+  );
   const nextDtfTier = breakdown?.isPositionBased
-    ? DTF_POSITION_TIERS.find((t) => t.minQuantity > quantity)
+    ? positionsStufen.find((t) => t.minQuantity > quantity)
     : undefined;
 
   const addCartItem = useCartStore((s) => s.addItem);
@@ -167,7 +172,7 @@ export function SummaryPanel({
         <TrendingDown className="h-3.5 w-3.5 flex-shrink-0 text-gold-dark" aria-hidden="true" />
         <div className="flex min-w-0 flex-1 gap-0.5">
           {breakdown?.isPositionBased
-            ? DTF_POSITION_TIERS.map((tier) => (
+            ? positionsStufen.map((tier) => (
                 <div
                   key={tier.minQuantity}
                   className={clsx(
@@ -205,7 +210,7 @@ export function SummaryPanel({
           Alle drei Hinweise deshalb erst ab quantity > 0. */}
       {quantity > 0 && mengenTipp ? (
         <p className="text-[11px] font-medium text-green-700" data-testid="mengen-tipp">
-          Tipp: Mit {mengenTipp.menge} statt {quantity} Stück zahlst du insgesamt {formatPrice(mengenTipp.ersparnis)} weniger – und
+          Tipp: Mit {mengenTipp.menge} statt {quantity} Stück zahlst du genauso viel ({formatPrice(mengenTipp.gesamtpreis)}) – und
           erhältst {mengenTipp.mehrStueck} Stück mehr.
         </p>
       ) : quantity > 0 && naechsteStufe ? (
@@ -301,6 +306,15 @@ export function SummaryPanel({
                   <span>{formatPrice(breakdown.setupPerUnit)}</span>
                 </div>
               )}
+              {breakdown.mengenDeckelPerUnit < -0.005 && breakdown.mengenDeckelAufMenge !== null && (
+                <div className="flex items-center justify-between" data-testid="mengenpreis-zeile">
+                  <span className="flex items-center gap-1">
+                    Mengenpreis wie bei {breakdown.mengenDeckelAufMenge} Stück
+                    <InfoTooltip text={`Ab ${breakdown.mengenDeckelAufMenge} Stück gilt der günstigere Staffelpreis für die ganze Bestellung. Damit eine größere Bestellung nie weniger kostet als eine kleinere, zahlst du für ${quantity} Stück höchstens so viel wie für ${breakdown.mengenDeckelAufMenge} Stück. Hier steht die Ersparnis je Stück.`} />
+                  </span>
+                  <span>−{formatPrice(Math.abs(breakdown.mengenDeckelPerUnit))}</span>
+                </div>
+              )}
               {Math.abs(breakdown.rundungPerUnit) >= 0.005 && (
                 <div className="flex items-center justify-between" data-testid="rundung-zeile">
                   <span className="flex items-center gap-1">
@@ -339,8 +353,12 @@ export function SummaryPanel({
                 ("20,79 €/Stk. × 22" statt einer nicht herleitbaren Summe) –
                 stärkt den Eindruck der Mengenstaffel als fair, reduziert
                 Rückfragen. */}
-            <p className="text-[11px] text-brand/70">
-              {formatPrice(unitPrice)}/Stk. × {quantity}
+            {/* Kurz vor einer Staffelgrenze (Mengenpreis-Deckel) ergibt „Stückpreis × Menge“ wegen der Rundung des Stückpreises nicht
+                mehr genau den Gesamtpreis – dort steht stattdessen, wessen Preis gilt. */}
+            <p className="text-[11px] text-brand/70" data-testid="gesamtpreis-herleitung">
+              {breakdown && breakdown.mengenDeckelAufMenge !== null
+                ? `Preis wie bei ${breakdown.mengenDeckelAufMenge} Stück (≈ ${formatPrice(unitPrice)}/Stk.)`
+                : `${formatPrice(unitPrice)}/Stk. × ${quantity}`}
             </p>
           </div>
           {/* whitespace-nowrap: Die längere Bezeichnung bei Stickerei ("Geschätzter

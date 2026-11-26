@@ -69,18 +69,35 @@ test('Staffeltabelle: aufsteigende Stufen, Rabatt wird nie kleiner, ab 100 Stüc
   }
 });
 
-test('DTF: Stückpreis sinkt für JEDES Modell auf jeder Stufe um mindestens 1 € und steigt nie mit der Menge', async () => {
+test('DTF: der reguläre Stückpreis sinkt für JEDES Modell auf jeder Stufe um mindestens 1 € und steigt nie mit der Menge', async () => {
   const regeln = await getPricingRules('dtf');
   const stufen = [3, 5, 10, 20, 50, 100];
   for (const p of PRODUCTS) {
     let vorher = Number.POSITIVE_INFINITY;
     for (let menge = 1; menge <= 150; menge++) {
-      const stueck = calculatePrice({ basePrice: p.basePrice, quantity: menge, elements: [element('front', 0, 20, 25)], pricingRules: regeln }).unitPrice;
+      // Reguläre Staffel ohne Mengenpreis-Deckel: Der Deckel glättet den Übergang kurz VOR einer Stufe (der Stückpreis sinkt dort schon
+      // in mehreren Schritten); der Preis der Stufe selbst und der davor gültige reguläre Preis unterscheiden sich weiterhin um mindestens 1 €.
+      const stueck = calculatePrice({ basePrice: p.basePrice, quantity: menge, elements: [element('front', 0, 20, 25)], pricingRules: regeln, mengenDeckel: false }).unitPrice;
       assert.ok(stueck <= vorher + 0.005, `${p.id}: Stückpreis steigt bei ${menge} Stück (${stueck} > ${vorher})`);
       if (stufen.includes(menge)) {
         assert.ok(vorher - stueck >= 0.99, `${p.id}: bei ${menge} Stück sinkt der Stückpreis nicht um 1 € (${vorher} → ${stueck})`);
       }
       vorher = stueck;
+    }
+  }
+});
+
+test('DTF: mit Mengenpreis-Deckel steigt der Stückpreis nie und der Gesamtpreis sinkt nie (Mengen 1–150, alle Modelle)', async () => {
+  const regeln = await getPricingRules('dtf');
+  for (const p of PRODUCTS) {
+    let stueckVorher = Number.POSITIVE_INFINITY;
+    let gesamtVorher = 0;
+    for (let menge = 1; menge <= 150; menge++) {
+      const r = calculatePrice({ basePrice: p.basePrice, quantity: menge, elements: [element('front', 0, 20, 25)], pricingRules: regeln });
+      assert.ok(r.unitPrice <= stueckVorher + 0.005, `${p.id}: Stückpreis steigt bei ${menge} Stück (${r.unitPrice} > ${stueckVorher})`);
+      assert.ok(r.totalPrice >= gesamtVorher - 0.005, `${p.id}: Gesamtpreis sinkt bei ${menge} Stück (${r.totalPrice} < ${gesamtVorher})`);
+      stueckVorher = r.unitPrice;
+      gesamtVorher = r.totalPrice;
     }
   }
 });

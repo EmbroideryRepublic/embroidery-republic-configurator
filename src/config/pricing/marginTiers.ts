@@ -21,8 +21,10 @@ export const FLAT_MARKUP_EUR = 9;
  * Preisanhebung vom 2026-11-13: Der Betreiber wollte zunächst 7–10 % (2026-11-12, live gewesen: Ø +8,4 %) und hat sie am
  * 2026-11-13 auf 3–5 % zurückgenommen – mit natürlichen Preisen (,99-Endungen). Der Textil-Grundpreis ist der VORGÄNGERPREIS
  * (Einkauf + FLAT_MARKUP_EUR, aufgerundet auf ,99), angehoben in dieses Fenster (siehe anhebenInsFenster unten).
- * Die Druckpositionen (DTF_POSITION_TIERS in lib/pricing/calculatePrice.ts) stehen wieder auf dem Stand vom 2026-08-09
+ * Die Druckpositionen (DTF_POSITION_TIERS in lib/pricing/calculatePrice.ts) standen wieder auf dem Stand vom 2026-08-09
  * (die Anhebung um rund 9 % ist zurückgenommen). Versand und Freigrenze blieben unverändert.
+ * Seit 2026-11-26 liegt die ERSTE Druckposition ab 3 Stück 1 € höher (weniger Mengenrabatt, Betreiberwunsch „ca. 5 % teurer am Ende“); das ist
+ * eine eigene Änderung der Mengenstaffel und ändert den Textil-Grundpreis hier nicht.
  */
 export const PREISANHEBUNG_MIN_PROZENT = 3;
 export const PREISANHEBUNG_MAX_PROZENT = 5;

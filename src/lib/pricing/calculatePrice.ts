@@ -21,7 +21,11 @@ import { grossformatZuschlag } from '@/config/pricing/grossformat';
  * - DTF_POSITION_TIERS: eigene, FESTE (nicht prozentual rabattierte)
  *   Preisstaffel je Position für DTF-Transferdruck (siehe dortiger
  *   Kommentar) – ersetzt seit 2026-08-09 die vorherige prozentuale
- *   Veredelungsrabattierung für DTF vollständig.
+ *   Veredelungsrabattierung für DTF vollständig. Die Stickerei rechnet seit
+ *   2026-11-26 mit der eigenen, unveränderten Tabelle STICKEREI_POSITION_TIERS.
+ * - MENGENPREIS-DECKEL (nur DTF, calculatePrice() unten): Kurz vor einer Staffelgrenze
+ *   gilt höchstens der Gesamtpreis der Grenzmenge – eine größere Bestellung kostet
+ *   so nie weniger als eine kleinere.
  */
 
 export interface PriceCalculationInput {
@@ -35,6 +39,12 @@ export interface PriceCalculationInput {
    * (z.B. „Stickerei kostet genau den Stichaufpreis mehr als DTF“), nie für die Anzeige.
    */
   ladenpreisRundung?: boolean;
+  /**
+   * Mengenpreis-Deckel (siehe `staffelgrenzen` unten): Standard AN – so rechnen Konfigurator, Warenkorb und Server. `false` liefert die
+   * reine Staffel ohne Deckel; gedacht für Tests und Auswertungen, die die regulären Stufenpreise (Stückpreis auf ,99) vergleichen, und
+   * für die Suche nach der nächsten Stufe (mengenTipp.ts) – nie für die Anzeige.
+   */
+  mengenDeckel?: boolean;
   /**
    * ECHTE flache Motivmaße je Element, in der Reihenfolge von `elements` (config/echteMasse.ts) – nur für DTF auf Vorder-/Rückseite gesetzt. Das
    * Foto zeigt die Brust gewölbt, die gezeichnete Breite ist deshalb kleiner als die flache; für den Großformat-Zuschlag zählt die
@@ -107,6 +117,16 @@ export interface PriceCalculationResult {
     grossformatPerUnit: number;
     /** Nachlässe je Stück als POSITIVER Betrag (Rabatt, Gutschein). */
     discountPerUnit: number;
+    /**
+     * Mengenpreis-Deckel (nur DTF, siehe `staffelgrenzen`): Betrag des Gesamtpreises, um den die Bestellung günstiger ist als ihre reine
+     * Staffelrechnung – NEGATIV oder 0. Er entsteht nur kurz VOR einer Staffelgrenze: Dort würde eine kleinere Menge sonst mehr kosten als die
+     * Menge der Grenze (z. B. 49 Stück 1.224,51 €, 50 Stück 1.149,50 €); der Deckel setzt den Preis auf den der Grenzmenge.
+     */
+    mengenDeckelTotal: number;
+    /** Dasselbe je Stück (NEGATIV oder 0) – im unitPrice enthalten, eigene Zeile in den Preisdetails; die Zeilen ergeben so wieder den Stückpreis. */
+    mengenDeckelPerUnit: number;
+    /** Die Menge, deren Preis gilt (Staffelgrenze), solange der Deckel wirkt; sonst null. Für den Mengen-Tipp („genauso viel für N Stück“). */
+    mengenDeckelAufMenge: number | null;
   };
 }
 
@@ -172,9 +192,11 @@ export interface DtfGrundpreisStufe {
  * Ab 50 Stück gilt weiter der größere Wert aus Prozent und Euro, damit teure Modelle (Hoodies) nicht schlechter wegkommen
  * als bisher.
  *
- * Ladenpreis je Stück (Warenwert, ohne Versand) für ein Modell um 28 € bei 3 Stück (Median des Katalogs, 1 Position 20×25 cm):
+ * Ladenpreis je Stück (Warenwert, ohne Versand) für ein Modell um 28 € bei 3 Stück (Median des Katalogs, 1 Position 20×25 cm), Stand
+ * 2026-11-18 (vor der Anpassung vom 2026-11-26: alle Stufen ab 3 Stück liegen seither 1 € höher, siehe DTF_POSITION_TIERS):
  *   1 Stück 38,99 € (mit Einrichtung) · 2: 33,99 € · 3–4: 27,99 € · 5–9: 26,99 € · 10–19: 25,99 € · 20–49: 24,99 €
  *   · 50–99: 22,99 € · ab 100: 21,99 €. Marge (Median): 9 % → 24 % → 23 % → 32 % → 41 % → 48 % → 49 % → 50 %.
+ *   Stand 2026-11-26: 38,99 · 33,99 · 28,99 · 27,99 · 26,99 · 25,99 · 23,99 · 22,99 €; Marge (Median) 9 % → 24 % → 24 % → 35 % → 44 % → 49 % → 51 % → 52 %.
  * Gerechnet mit Einkaufspreisen und Versandkosten beider Lieferanten; kleinster Gewinn je Bestellung über alle 182 Modelle
  * und Mengen 1–120 siehe docs/kalkulationsmodell.md.
  *
@@ -281,18 +303,47 @@ export interface DtfPositionTier {
  * STUFENFUNKTION, kein Gleiten: Die erreichte Mengenschwelle bestimmt den
  * Veredelungspreis für die GESAMTE Bestellung. 10, 25 und 49 Stück kosten
  * also exakt denselben Preis je Position; erst ab 50 Stück springt die
- * komplette Bestellung in die nächste (günstigere) Stufe. Das gilt
- * ausdrücklich auch an den Stufengrenzen: bei 49 Stück wird nie mehr pro
- * Stück verlangt als bei 50 Stück.
+ * komplette Bestellung in die nächste (günstigere) Stufe. Weil ein Sprung an
+ * der Grenze die Menge davor teurer machen kann als die Grenzmenge selbst,
+ * deckelt calculatePrice() den Gesamtpreis kurz vor jeder Grenze (Mengenpreis-
+ * Deckel, siehe dort) – die Tabelle selbst bleibt reine Stufenfunktion.
  *
  * Jede weitere Position ab der dritten kostet in jeder Stufe genauso viel
  * wie die dritte selbst (abDritte) – „dritte" und „jede weitere" fallen
  * also zusammen, es gibt keine eigene vierte Preisklasse.
+ *
+ * WENIGER MENGENRABATT (Festlegung 2026-11-26): Gegenüber dem Stand vom 2026-08-09 (erste Position 9 / 8 / 7,5 / 6 / 5,5 / 5 / 4,5 / 4 €)
+ * liegt die erste Position ab 3 Stück auf JEDER Stufe genau 1,00 € höher. Der Betreiber wollte den Mengenrabatt kleiner, sodass der
+ * Stückpreis ab 5 Stück im Mittel rund 5 % höher liegt. Auf der ,99-Leiter ist 1 € der kleinste mögliche Schritt (bei einem Stückpreis um
+ * 22 € rund 4,5 %); ein fester Euro je Stufe lässt alle Abstände zwischen den Stufen unverändert (jede Stufe bis 100 Stück bleibt für jedes
+ * Modell mindestens 1 € günstiger als die davor, dtfStaffel.test.ts) und trifft den Zielwert: Mittel über die Stufen ab 5 Stück +4,9 %
+ * (ein Motiv), 1 und 2 Stück bleiben unverändert. Zweite und weitere Position, die Grundpreis-Staffel (DTF_GRUNDPREIS_STAFFEL) und die
+ * Einrichtung bleiben, wie sie waren. Die Stickerei rechnet mit der eigenen, unveränderten Tabelle STICKEREI_POSITION_TIERS.
+ * Rückgängig machen: die Spalte `erste` auf 9 / 8 / 7,5 / 6 / 5,5 / 5 / 4,5 / 4 zurücksetzen (dann gilt wieder der Stand vom 2026-08-09).
  */
-// Stand der Vorgabe vom 2026-08-09. Die Anhebung um rund 9 % vom 2026-11-12 (9,8/5,5/4,4 · 8,7/4,9/3,8 · 8,2/4,4/3,3 · 6,5/3,3/2,7 ·
-// 6,0/2,7/2,2 · 5,5/2,7/2,2 · 4,9/2,2/1,6 · 4,4/2,2/1,6) ist am 2026-11-13 zurückgenommen (Betreiber: nur 3–5 % mehr, siehe
-// config/pricing/marginTiers.ts – dort steigt nur der Textil-Grundpreis). Die Reihenfolge der Stufen bleibt streng fallend.
+// Stand der Vorgabe vom 2026-08-09 (erste Position): 9 / 8 / 7,5 / 6 / 5,5 / 5 / 4,5 / 4 €. Die Anhebung um rund 9 % vom 2026-11-12 ist am
+// 2026-11-13 zurückgenommen (Betreiber: nur 3–5 % mehr, siehe config/pricing/marginTiers.ts – dort stieg nur der Textil-Grundpreis). Seit
+// 2026-11-26 ist die erste Position ab 3 Stück 1 € höher (siehe oben). Die Reihenfolge der Stufen bleibt streng fallend.
 export const DTF_POSITION_TIERS: DtfPositionTier[] = [
+  { minQuantity: 1, erste: 9.0, zweite: 5.0, abDritte: 4.0 },
+  { minQuantity: 3, erste: 9.0, zweite: 4.5, abDritte: 3.5 },
+  { minQuantity: 10, erste: 8.5, zweite: 4.0, abDritte: 3.0 },
+  { minQuantity: 50, erste: 7.0, zweite: 3.0, abDritte: 2.5 },
+  { minQuantity: 100, erste: 6.5, zweite: 2.5, abDritte: 2.0 },
+  { minQuantity: 250, erste: 6.0, zweite: 2.5, abDritte: 2.0 },
+  { minQuantity: 500, erste: 5.5, zweite: 2.0, abDritte: 1.5 },
+  { minQuantity: 1000, erste: 5.0, zweite: 2.0, abDritte: 1.5 },
+];
+
+/**
+ * Positionsstaffel der STICKEREI – eingefrorene Kopie des Stands vom 2026-08-09 (Stickerei = Positionsstaffel + Stichaufpreis).
+ *
+ * Bis 2026-11-26 teilten sich DTF und Stickerei die Tabelle DTF_POSITION_TIERS. Seit die DTF-Staffel angepasst wird (weniger Mengenrabatt,
+ * docs/kalkulationsmodell.md, Abschnitt 2026-11-26), bekommt die Stickerei ihre eigene, unveränderte Tabelle: Ihre Preise dürfen sich nicht
+ * ändern (Stickerei ist derzeit pausiert; Test dtfStaffel.test.ts friert 60 Vergleichspreise ein). Ob sie später wieder dieselbe Staffel
+ * wie DTF bekommt, ist eine eigene Betreiber-Entscheidung.
+ */
+export const STICKEREI_POSITION_TIERS: ReadonlyArray<DtfPositionTier> = [
   { minQuantity: 1, erste: 9.0, zweite: 5.0, abDritte: 4.0 },
   { minQuantity: 3, erste: 8.0, zweite: 4.5, abDritte: 3.5 },
   { minQuantity: 10, erste: 7.5, zweite: 4.0, abDritte: 3.0 },
@@ -303,9 +354,9 @@ export const DTF_POSITION_TIERS: DtfPositionTier[] = [
   { minQuantity: 1000, erste: 4.0, zweite: 2.0, abDritte: 1.5 },
 ];
 
-function getDtfPositionTier(quantity: number): DtfPositionTier {
-  let current: DtfPositionTier = DTF_POSITION_TIERS[0]!;
-  for (const tier of DTF_POSITION_TIERS) {
+function getPositionTier(quantity: number, tiers: ReadonlyArray<DtfPositionTier>): DtfPositionTier {
+  let current: DtfPositionTier = tiers[0]!;
+  for (const tier of tiers) {
     if (quantity >= tier.minQuantity) current = tier;
   }
   return current;
@@ -378,12 +429,96 @@ function getVariableCost(element: ConfigElement, rules: PricingRule[], quantity:
   return 0;
 }
 
+/**
+ * Alle Mengen, ab denen sich der Stückpreis dieser Regeln ändern kann (Staffelgrenzen): die Stufen der DTF-Grundpreis- und der
+ * Positionsstaffel, dazu jedes Mengenfenster einer aktiven Preisregel (minQuantity und maxQuantity + 1 – z. B. das Ende der Einrichtung
+ * für Kleinaufträge). Aufsteigend, ohne Doppelte, ohne die 1. Nur für DTF aussagekräftig; die Stickerei hat keinen Mengenpreis-Deckel.
+ */
+export function staffelgrenzen(pricingRules: PricingRule[]): number[] {
+  const grenzen = new Set<number>();
+  for (const s of DTF_GRUNDPREIS_STAFFEL) grenzen.add(s.minQuantity);
+  for (const t of DTF_POSITION_TIERS) grenzen.add(t.minQuantity);
+  for (const r of pricingRules) {
+    if (!r.isActive) continue;
+    if (r.minQuantity !== undefined) grenzen.add(r.minQuantity);
+    if (r.maxQuantity !== undefined) grenzen.add(r.maxQuantity + 1);
+  }
+  return [...grenzen].filter((g) => Number.isInteger(g) && g > 1).sort((a, b) => a - b);
+}
+
+/**
+ * Zentrale Preisberechnung – siehe Kopfkommentar der Datei. Rechnet die Staffel (`berechneStaffelpreis`) und setzt für DTF den
+ * MENGENPREIS-DECKEL darauf.
+ *
+ * MENGENPREIS-DECKEL (Festlegung 2026-11-26, Aufgabe „Staffelpreise sollen Sinn ergeben“): Jede Staffelstufe gilt für die GESAMTE
+ * Bestellung. Springt der Stückpreis an einer Grenze um u → u − 1 €, kostet die Menge g der Grenze weniger als g − 1 Stück davor, sobald
+ * u < g (z. B. 19 Stück 360,81 €, 20 Stück 359,80 €). Auf der ,99-Leiter ist ein Sprung mindestens 1 € – ein kleinerer Sprung ist nicht
+ * darstellbar –, bei Stückpreisen von 20–40 € lässt sich das Ansteigen der Gesamtsumme also nur bis etwa 20–40 Stück halten; ab
+ * der Grenze 50 Stück gäbe es sonst keinen Mengenrabatt mehr. Deshalb gilt:
+ *
+ *     Gesamtpreis(q) = kleinster Staffelpreis aller Mengen von q bis zur letzten Staffelgrenze
+ *                    = min( Staffelpreis(q), Staffelpreis(g) für jede Staffelgrenze g > q ).
+ *
+ * Wer knapp unter einer Grenze bestellt, zahlt also höchstens den Preis der Grenzmenge (47 bis 49 Stück zum Preis von 50 – „genauso viel
+ * für mehr Stück“). Folgen, die der Wächtertest (staffelMonoton.test.ts) für ALLE Modelle prüft: Der Gesamtpreis sinkt mit der Menge nie, der
+ * Stückpreis steigt nie, und an den Grenzmengen selbst (3, 5, 10, 20, 50 … Stück) bleibt der reguläre Stufenpreis auf ,99 stehen. Nur in der
+ * kurzen Zone VOR einer Grenze ist der Stückpreis Gesamtpreis ÷ Menge und endet nicht auf ,99; die Preisdetails weisen den Betrag als eigene
+ * Zeile („Mengenpreis wie bei N Stück“, breakdown.mengenDeckelPerUnit, NEGATIV) aus. Alternative, die verworfen wurde: eine Untergrenze HINTER
+ * der Grenze (50 Stück kosten so viel wie 49) – sie träfe genau die runden Bestellmengen 50, 100, 250, 500 und 1000 mit einem Aufschlag
+ * und machte „ab 100 Stück 21,99 €“ bei 100 Stück falsch (Begründung und Zahlen: docs/kalkulationsmodell.md, Abschnitt 2026-11-26).
+ *
+ * Gilt NUR für DTF (Positionsstaffel ohne Stichaufpreis); die Stickerei rechnet unverändert.
+ */
 export function calculatePrice(input: PriceCalculationInput): PriceCalculationResult {
+  const quantity = Math.max(input.quantity, 1);
+  const roh = berechneStaffelpreis(input, quantity);
+  // Ein fehlerhafter Preis (unbekannter Baustein) ist ohnehin nicht verwendbar – dann kein Deckel und keine weiteren Rechnungen,
+  // damit der Fehler nicht für jede Staffelgrenze erneut protokolliert wird.
+  if (input.mengenDeckel === false || roh.hasErrors) return roh;
+  const regeln = input.pricingRules;
+  const dtfAktiv = isDtfPositionPricingActive(regeln, quantity);
+  const stichAktiv = regeln.some((r) => r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, quantity));
+  if (!dtfAktiv || stichAktiv) return roh;
+
+  // Niedrigster Staffelpreis aller späteren Staffelgrenzen (die kleinste Grenze gewinnt bei Gleichstand: dort endet die Zone).
+  let deckel = roh.totalPrice;
+  let aufMenge: number | null = null;
+  for (const g of staffelgrenzen(regeln)) {
+    if (g <= quantity) continue;
+    // Nur Mengen, für die dieselbe DTF-Positionsstaffel gilt (Mengenfenster der Regeln): Ein anderes Preismodell ist kein Vergleichspreis.
+    if (!isDtfPositionPricingActive(regeln, g) || regeln.some((r) => r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, g))) continue;
+    const spaeter = berechneStaffelpreis(input, g);
+    if (spaeter.hasErrors) return roh;
+    if (spaeter.totalPrice < deckel - 0.004) {
+      deckel = spaeter.totalPrice;
+      aufMenge = g;
+    }
+  }
+  if (aufMenge === null) return roh;
+
+  const stueck = roundToCents(deckel / quantity);
+  const deckelTotal = roundToCents(deckel - roh.totalPrice);
+  const deckelJeStueck = roundToCents(stueck - roh.unitPrice);
+  return {
+    ...roh,
+    unitPrice: stueck,
+    totalPrice: roundToCents(deckel),
+    breakdown: {
+      ...roh.breakdown,
+      savingsAmount: roundToCents(roh.breakdown.savingsAmount - deckelTotal),
+      mengenDeckelTotal: deckelTotal,
+      mengenDeckelPerUnit: deckelJeStueck,
+      mengenDeckelAufMenge: aufMenge,
+    },
+  };
+}
+
+function berechneStaffelpreis(input: PriceCalculationInput, quantity: number): PriceCalculationResult {
   const { basePrice, elements, pricingRules } = input;
   // Die TATSÄCHLICHE Menge wird berechnet – kein Hochsetzen auf eine
-  // Mindestmenge mehr (siehe MINIMUM_QUANTITY). Nur gegen 0/negativ
-  // abgesichert, damit unten nicht durch null geteilt wird.
-  const quantity = Math.max(input.quantity, 1);
+  // Mindestmenge mehr (siehe MINIMUM_QUANTITY). `quantity` kommt von
+  // calculatePrice() und ist bereits gegen 0/negativ abgesichert, damit
+  // unten nicht durch null geteilt wird.
   const tier = getTierForQuantity(quantity);
 
   // Mengenrabatt auf den Veredelungsanteil (Fläche/Stichzahl) – je Regel
@@ -442,7 +577,11 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
   // aktive first_position/additional_position-Regeln bleiben alle drei
   // Preise 0, das Produkt bleibt dann unverändert.
   const dtfPositionPricingActive = isDtfPositionPricingActive(pricingRules, quantity);
-  const dtfTier = dtfPositionPricingActive ? getDtfPositionTier(quantity) : null;
+  const stichRegelAktiv = pricingRules.some((r) => r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, quantity));
+  // DTF und Stickerei haben getrennte Positionstabellen (siehe STICKEREI_POSITION_TIERS): Mit Stichaufpreis gilt die der Stickerei.
+  const dtfTier = dtfPositionPricingActive
+    ? getPositionTier(quantity, stichRegelAktiv ? STICKEREI_POSITION_TIERS : DTF_POSITION_TIERS)
+    : null;
   const erstePositionPreis = dtfTier?.erste ?? 0;
   const zweitePositionPreis = dtfTier?.zweite ?? 0;
   const weiterePositionPreis = dtfTier?.abDritte ?? 0;
@@ -502,7 +641,6 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
 
   // Grundpreis-Rabatt: DTF hat eine eigene Staffel (DTF_GRUNDPREIS_STAFFEL: Prozent ODER Mindest-Euro, der größere gilt).
   // Alles mit Stichaufpreis (Stickerei) und alles ohne Positionsstaffel bleibt bei QUANTITY_TIERS – unverändert.
-  const stichRegelAktiv = pricingRules.some((r) => r.ruleType === 'per_1000_stitches' && isRuleApplicable(r, quantity));
   let baseDiscountPercent = tier.baseDiscountPercent;
   if (dtfPositionPricingActive && !stichRegelAktiv && fixedPortion > 0) {
     const stufe = getDtfGrundpreisStufe(quantity);
@@ -638,6 +776,10 @@ export function calculatePrice(input: PriceCalculationInput): PriceCalculationRe
       surchargePerUnit: roundToCents(surchargePerUnit),
       grossformatPerUnit: roundToCents(grossformatPerUnit),
       discountPerUnit: roundToCents(nachlassJeStueck),
+      // Setzt calculatePrice() nachträglich, wenn der Mengenpreis-Deckel wirkt (siehe dort).
+      mengenDeckelTotal: 0,
+      mengenDeckelPerUnit: 0,
+      mengenDeckelAufMenge: null,
     },
   };
 }

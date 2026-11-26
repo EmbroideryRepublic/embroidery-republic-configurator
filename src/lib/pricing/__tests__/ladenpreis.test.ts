@@ -54,18 +54,34 @@ function logo(view: 'front' | 'back' | 'sleeve_left' = 'front', id = 'l1'): Conf
 const MENGEN = [1, 2, 3, 4, 5, 9, 10, 24, 25, 49, 50, 99, 100, 249, 250, 499, 500, 999, 1000];
 const BASEN = [11.99, 12.99, 16.99, 29.99, 55.99];
 
-test('Jeder Stückpreis endet auf ,99 – für alle Mengen, Grundpreise und ein bzw. zwei Ansichten', async () => {
+test('Jeder Stückpreis endet auf ,99 – für alle Mengen, Grundpreise und ein bzw. zwei Ansichten (DTF: außer kurz vor einer Staffelgrenze)', async () => {
+  let ausnahmen = 0;
   for (const art of ['dtf', 'embroidery'] as const) {
     const rules = await getPricingRules(art);
     for (const basis of BASEN) {
       for (const menge of MENGEN) {
         for (const elemente of [[logo('front')], [logo('front', 'a'), logo('back', 'b')]]) {
-          const r = calculatePrice({ basePrice: basis, quantity: menge, elements: elemente, pricingRules: rules });
-          assert.equal(Math.round(r.unitPrice * 100) % 100, 99, `${art} ${basis} € × ${menge} (${elemente.length} Ansicht/en): ${r.unitPrice}`);
+          const eingabe = { basePrice: basis, quantity: menge, elements: elemente, pricingRules: rules };
+          // Die reguläre Staffel (ohne Mengenpreis-Deckel) endet immer auf ,99.
+          const regulaer = calculatePrice({ ...eingabe, mengenDeckel: false });
+          assert.equal(Math.round(regulaer.unitPrice * 100) % 100, 99, `${art} ${basis} € × ${menge} (${elemente.length} Ansicht/en): ${regulaer.unitPrice}`);
+          const r = calculatePrice(eingabe);
+          if (r.breakdown.mengenDeckelAufMenge === null) {
+            assert.equal(r.unitPrice, regulaer.unitPrice, `${art} ${basis} € × ${menge}: ohne Deckel muss der Preis der regulären Staffel entsprechen`);
+            assert.equal(Math.round(r.unitPrice * 100) % 100, 99);
+          } else {
+            // Kurz vor einer Staffelgrenze (nur DTF): Gesamtpreis der Grenzmenge, Stückpreis = Gesamtpreis ÷ Menge, nicht mehr auf ,99.
+            ausnahmen++;
+            assert.equal(art, 'dtf', 'die Stickerei hat keinen Mengenpreis-Deckel');
+            const grenze = calculatePrice({ ...eingabe, quantity: r.breakdown.mengenDeckelAufMenge, mengenDeckel: false });
+            assert.equal(r.totalPrice, grenze.totalPrice, `${basis} € × ${menge}: Gesamtpreis muss dem der Grenzmenge entsprechen`);
+            assert.ok(Math.abs(r.unitPrice * menge - r.totalPrice) < 0.005 * menge + 0.01);
+          }
         }
       }
     }
   }
+  assert.ok(ausnahmen > 0, 'die Zone vor einer Staffelgrenze (49, 99, … Stück) muss vorkommen');
 });
 
 test('Die Rundung weicht höchstens 0,50 € vom Rechenwert ab; Stückpreis × Menge = Gesamtpreis', async () => {

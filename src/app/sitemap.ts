@@ -17,6 +17,8 @@
  */
 import type { MetadataRoute } from 'next';
 import { alleProduktSlugs } from '@/lib/products/productPage';
+import { getProduct } from '@/config/products';
+import { sitemapBilder } from '@/lib/seo/sitemapBilder';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { alleKategorieSlugs } from '@/lib/seo/kategorieAdresse';
 import { alleDtfSlugs } from '@/lib/seo/dtfAdresse';
@@ -64,10 +66,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
-    ...alleProduktSlugs().map((slug) => ({
-      url: `${basis}/produkt/${slug}`,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    })),
+    // Produktseiten samt ihren Fotos (Vorderseiten mehrerer Farben, Rück-/Ärmelansicht) für die Bildersuche.
+    ...alleProduktSlugs().map((slug) => {
+      const produkt = getProduct(slug);
+      const images = produkt ? sitemapBilder(produkt, basis) : [];
+      return {
+        url: `${basis}/produkt/${slug}`,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+        ...(images.length > 0 ? { images } : {}),
+      };
+    }),
   ];
 }

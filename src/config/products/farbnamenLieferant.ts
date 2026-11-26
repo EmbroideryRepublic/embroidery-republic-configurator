@@ -62,6 +62,12 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
   'earthpositive-unisex-organic-longsleeve-t-shirt': {
     f4f4ec: 'Stone Washed White',
   },
+  'fotl-baseball-longsleeve': {
+    'white-navy': 'White/Deep Navy',
+  },
+  'fotl-baseball-t': {
+    'white-navy': 'White/Deep Navy',
+  },
   'fotl-iconic195-longsleeve': {
     navy: 'Deep Navy',
   },
@@ -73,6 +79,7 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
     graphite: 'Light Graphite (Solid)',
     khaki: 'Truffle',
     'solar-yellow': 'Sunflower',
+    'powder-blue': 'Mineral Blue',
   },
   'fotl-ladies-iconic195-t': {
     azure: 'Azure Blue',
@@ -83,6 +90,7 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
     'solar-yellow': 'Sunflower',
     pink: 'Fuchsia',
     'very-turquoise': 'Ocean Teal',
+    'millennial-lilac': 'Soft Lavender',
   },
   'fotl-ladies-original-t': {
     royal: 'Royal Blue',
@@ -98,6 +106,9 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
     pink: 'Fuchsia',
     graphite: 'Light Graphite (Solid)',
     'lime-green': 'Lime',
+    'heather-charcoal': 'Dark Grey Heather',
+    blush: 'Light Pink',
+    'heather-royal': 'Retro Heather Royal',
   },
   'fotl-original-t': {
     'solar-yellow': 'Sunflower',
@@ -106,6 +117,7 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
     azure: 'Azure Blue',
     'lime-green': 'Lime',
     pink: 'Fuchsia',
+    'urban-khaki': 'Classic Olive',
   },
   'fotl-premium-polo': {
     royal: 'Royal Blue',
@@ -114,6 +126,9 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
     royal: 'Royal Blue',
     sand: 'Desert Sand',
     'very-turquoise': 'Ocean Teal',
+    grey: 'Light Graphite (Solid)',
+    petrol: 'Mountain Blue',
+    'sky-blue': 'Mineral Blue',
   },
   'fotl-super-premium-t': {
     royal: 'Royal Blue',
@@ -127,12 +142,14 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
     graphite: 'Light Graphite (Solid)',
     'solar-yellow': 'Yellow',
     azure: 'Azure Blue',
+    'heather-royal': 'Retro Heather Royal',
   },
   'fotl-valueweight-vneck': {
     royal: 'Royal Blue',
     graphite: 'Light Graphite (Solid)',
     azure: 'Azure Blue',
     'solar-yellow': 'Sunflower',
+    'heather-charcoal': 'Dark Grey Heather',
   },
   'fruit-of-the-loom-iconic-250-hooded-sweat': {
     ffffff: 'White',
@@ -145,6 +162,7 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
     eead1a: 'Gold',
     '205c40': 'Fan Dark Green',
     '1c3775': 'Fan Deep Royal',
+    '005683': 'Fan Charcoal Heather',
   },
   'gildan-heavy-t': {
     grey: 'Ash Grey (Heather)',
@@ -159,9 +177,11 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
   },
   'gildan-ladies-t': {
     grey: 'Sport Grey (Heather)',
+    'kelly-green': 'Irish Green',
   },
   'gildan-ladies-vneck-t': {
     grey: 'Sport Grey (Heather)',
+    pink: 'Azalea',
   },
   'gildan-softstyle-midweight-sweat-adult-hoodie': {
     '393d47': 'Black (Heather)',
@@ -171,15 +191,19 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
   },
   'gildan-ultra-cotton-long-sleeve-t-shirt': {
     'safety-green-neon': 'Safety Green',
+    'safety-orange-neon': 'Safety Orange',
   },
   'gildan-ultra-cotton-t-shirt': {
     'safety-green-neon': 'Safety Green',
+    'safety-orange-neon': 'Safety Orange',
   },
   'gildan-vneck-t': {
     grey: 'Sport Grey (Heather)',
   },
   'gildan-zip-hoodie': {
     grey: 'Ash (Heather)',
+    burgundy: 'Maroon',
+    'bottle-green': 'Forest Green',
   },
   'id-identity-microfleece-jacke': {
     hellblau: 'Light blue',
@@ -199,11 +223,18 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
   'justhoods-awdis-sweat': {
     white: 'Arctic White',
     red: 'Fire Red',
+    royal: 'Royal Blue',
   },
   'justhoods-college-hoodie': {
     white: 'Arctic White',
     royal: 'Royal Blue',
     red: 'Fire Red',
+  },
+  'justhoods-contrast-hoodie': {
+    'navy-grey': 'New French Navy/Heather Grey',
+    'black-red': 'Jet Black/Fire Red',
+    'grey-navy': 'Heather Grey/French Navy',
+    'red-white': 'Fire Red/Arctic White',
   },
   'justhoods-zoodie': {
     royal: 'Royal Blue',
@@ -240,6 +271,8 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
   'neutral-rollsleeve-t': {
     grey: 'Sport Grey',
     olive: 'Military',
+    anthracite: 'Dark Heather',
+    burgundy: 'Bordeaux',
   },
   'neutral-unisex-regular-t-shirt': {
     'sports-grey': 'Sport Grey',
@@ -269,6 +302,7 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
   },
   'sols-imperial-t': {
     black: 'Deep Black',
+    yellow: 'Gold',
   },
   'sols-men-s-long-sleeve-t-shirt-imperial': {
     'royal-blue': 'Royal Blue 241',
@@ -325,10 +359,12 @@ export const FARBNAMEN_LIEFERANT: Readonly<Record<string, Readonly<Record<string
 
 /**
  * Korrektur einzelner Farbpunkte (Hex der Farbkachel), wo der feste Katalogwert nicht zum Foto passt.
- * Stand 2026-11-26: SOL'S Women's Fleece North, Lime – der Katalog trug ein fast weißes Grün (#D0DEBB), das Foto zeigt ein kräftiges Lime.
+ * Stand 2026-11-26: SOL'S Women's Fleece North, Lime (Katalog: fast weißes Grün #D0DEBB, Foto: kräftiges Lime); Gildan Heavy Blend
+ * Hooded Sweatshirt, Fan Charcoal Heather (Katalog: Blau #005683, Foto: dunkles Grau).
  */
 export const FARBPUNKTE_KORREKTUR: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   'sols-women-s-fleecejacket-north': { lime: '#94C22B' },
+  'gildan-heavy-blend-hooded-sweatshirt': { '005683': '#444348' },
 };
 
 /**
@@ -337,6 +373,7 @@ export const FARBPUNKTE_KORREKTUR: Readonly<Record<string, Readonly<Record<strin
  * Anzeigename jetzt ein anderer ist (siehe facetten.test.ts).
  */
 export const ERSETZTE_FARBNAMEN: readonly string[] = [
+  '005683',
   '0062AE',
   '009149',
   '051733',
@@ -359,6 +396,8 @@ export const ERSETZTE_FARBNAMEN: readonly string[] = [
   'Anthrazit',
   'Azure',
   'Blush',
+  'Bottle Green',
+  'Burgundy',
   'Burnt Yellow (Mango)',
   'Chocoloate Brown',
   'Cobaltblue',
@@ -376,25 +415,39 @@ export const ERSETZTE_FARBNAMEN: readonly string[] = [
   'Faded Black',
   'Graphite',
   'Grau',
+  'Grau meliert/Navy',
   'Grün',
+  'Heather Charcoal',
+  'Heather Royal',
   'Hellblau',
   'Kelly Green',
   'Khaki',
   'Lime Green',
   'Miami Pink (Purple Rose)',
+  'Millennial Lilac',
   'Navy',
+  'Navy/Grau meliert',
   'Olive',
+  'Petrol',
   'Pink',
+  'Powder Blue',
   'Rot',
+  'Rot/Weiß',
   'Royal',
   'Royal Blue',
   'Safety Green (Neon)',
+  'Safety Orange (Neon)',
   'Sand',
   'Schwarz',
+  'Schwarz/Rot',
+  'Sky Blue',
   'Solar Yellow',
   'Sports Grey',
   'Union Beige',
+  'Urban Khaki',
   'Urban Navy',
   'Very Turquoise',
   'Weiß',
+  'Weiß/Navy',
+  'Yellow',
 ];

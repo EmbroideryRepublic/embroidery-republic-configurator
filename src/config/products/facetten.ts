@@ -174,6 +174,13 @@ const FARBGRUPPEN_BASIS: Record<string, Farbgruppe> = {
   'Weiß/Navy': 'weiss', 'Weiß/Royalblau': 'weiss', 'Weiß/Schwarz': 'weiss',
   Yellow: 'gelb',
   // Namen nach dem Lieferantennamen (farbnamenLieferant.ts): Gruppe der früheren Bezeichnung übernommen.
+  'Mountain Blue': 'blau',
+  'Soft Lavender': 'lila',
+  'White/Deep Navy': 'weiss',
+  'New French Navy/Heather Grey': 'blau',
+  'Jet Black/Fire Red': 'schwarz',
+  'Heather Grey/French Navy': 'grau',
+  'Fire Red/Arctic White': 'rot',
   'Chocolate Brown': 'braun',
   'Faded Olive Black': 'schwarz',
   'Burnt Yellow': 'gelb',

@@ -41,6 +41,8 @@ import { KundenAnmerkung } from '@/components/admin/KundenAnmerkung';
 import { EinkaufsLinks } from '@/components/admin/EinkaufsLinks';
 import { bereinigeAnmerkung } from '@/config/anmerkung';
 import { berechneNaechsteAktion, fehlenVorschauen, type NaechsteAktionTon } from '@/lib/admin/naechsteAktion';
+import { OrderEditControl, OffeneErstattung } from '@/components/admin/OrderEditControl';
+import { berechneOffeneErstattungCent, pruefeAenderbarkeit } from '@/lib/orders/orderEdit';
 
 const AKTION_STIL: Record<NaechsteAktionTon, string> = {
   ok: 'border-brand/20 bg-brand/5 text-brand',
@@ -65,6 +67,19 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
   // Reine Ableitung aus bereits geladenen Feldern, keine neue Datenhaltung –
   // siehe naechsteAktion.ts (Fund vom 2026-08-26, Produktionsreife-Audit).
   const naechsteAktion = berechneNaechsteAktion(order);
+  // Auftrag nachträglich ändern (Position entfernen / Stückzahl verringern): Die Seite zeigt nur, OB es jetzt geht und
+  // warum nicht – die verbindliche Prüfung läuft erneut im Server (lib/orders/orderEditService.ts) und in der
+  // Datenbankfunktion (Migration 0038). Die offene Erstattung wird aus der Historie abgeleitet, nicht gespeichert.
+  const aenderbarkeit = pruefeAenderbarkeit({
+    bestellung: {
+      orderType: order.orderType,
+      status: order.status,
+      paymentStatus: order.paymentStatus,
+      invoiceNumber: order.invoiceNumber,
+    },
+    lieferantenStatus: order.supplierOrders.map((so) => so.status),
+  });
+  const offeneErstattungCent = berechneOffeneErstattungCent(order.events.map((e) => ({ eventType: e.eventType, detail: e.detail })));
 
   return (
     <div className="space-y-6">
@@ -133,7 +148,11 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
           mehr ist (Anfragen haben ohnehin keinen Bestellstatus). */}
       {order.orderType === 'order' && (
         <div className="mb-4">
-          <AdminCancelControl orderId={order.id} status={order.status as OrderStatus} />
+          <AdminCancelControl
+            orderId={order.id}
+            status={order.status as OrderStatus}
+            offeneErstattungCent={offeneErstattungCent}
+          />
         </div>
       )}
 
@@ -189,6 +208,25 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
           </table>
         </div>
       </section>
+
+      {/* Auftrag bearbeiten + offene Erstattung: erscheint nur bei Bestellungen. Stornierte Bestellungen bekommen
+          den Änderungsblock nicht (nichts mehr zu ändern), die offene Erstattung bleibt aber sichtbar. */}
+      {order.orderType === 'order' && (
+        <div className="space-y-4">
+          <OffeneErstattung orderId={order.id} offenCent={offeneErstattungCent} storniert={order.status === 'cancelled'} />
+          {order.status !== 'cancelled' && (
+            <OrderEditControl
+              orderId={order.id}
+              positionen={order.items.map((item) => ({
+                id: item.id,
+                name: `${item.productName} · ${item.colorName}`,
+                sizeQuantities: item.sizeQuantities,
+              }))}
+              sperren={aenderbarkeit.sperren.map((s) => s.text)}
+            />
+          )}
+        </div>
+      )}
 
       {/* Personalisierung: bereits in Phase 2 gerenderte Druckvorschauen
           (Kleidungsstück + Motive exakt wie im Editor platziert) plus die

@@ -24,6 +24,7 @@ import type { AdminOrderDetail, AdminOrderItemRow } from '../data';
 
 function item(overrides: Partial<AdminOrderItemRow> = {}): AdminOrderItemRow {
   return {
+    id: 'position-1',
     productId: 'gildan-heavy-t',
     productName: 'Heavy T-Shirt',
     colorId: 'navy',

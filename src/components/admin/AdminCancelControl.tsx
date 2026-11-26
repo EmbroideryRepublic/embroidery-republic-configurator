@@ -19,8 +19,22 @@ import { useState, useTransition } from 'react';
 import { aendereBestellstatus } from '@/lib/actions/orderStatusActions';
 import { ERLAUBTE_UEBERGAENGE } from '@/config/orderStatus';
 import type { OrderStatus } from '@/lib/actions/orderTypes';
+import { formatiereGeld } from '@/lib/format';
 
-export function AdminCancelControl({ orderId, status }: { orderId: string; status: OrderStatus }) {
+export function AdminCancelControl({
+  orderId,
+  status,
+  offeneErstattungCent = 0,
+}: {
+  orderId: string;
+  status: OrderStatus;
+  /**
+   * Noch nicht von Hand erstattete Differenz aus einer Auftragsänderung (OrderEditControl). Die automatische
+   * Erstattung bei der Stornierung zahlt nur `orders.total_price` zurück – also den Betrag NACH der Änderung. Die
+   * Differenz bliebe sonst unbemerkt zusätzlich offen.
+   */
+  offeneErstattungCent?: number;
+}) {
   const [offen, setOffen] = useState(false);
   const [grund, setGrund] = useState('');
   const [meldung, setMeldung] = useState<{ ok: boolean; text: string } | null>(null);
@@ -44,6 +58,13 @@ export function AdminCancelControl({ orderId, status }: { orderId: string; statu
           Storniert die Bestellung durch den Betreiber, z.B. bei Lieferausfall. War die Bestellung bereits bezahlt,
           wird automatisch eine Rückerstattung angestoßen.
         </p>
+        {offeneErstattungCent > 0 && (
+          <p className="mt-2 rounded border border-red-300 bg-red-50 px-3 py-2 text-xs text-red-800">
+            Achtung: Nach einer Auftragsänderung ist noch eine Differenz von{' '}
+            {formatiereGeld(offeneErstattungCent / 100)} von Hand zu erstatten. Die automatische Rückerstattung bei der
+            Stornierung zahlt nur die aktuelle Bestellsumme zurück – diese Differenz bleibt zusätzlich offen.
+          </p>
+        )}
         <button
           type="button"
           onClick={() => setOffen(true)}

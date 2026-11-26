@@ -33,6 +33,9 @@ import { OrderInProductionEmail } from './templates/OrderInProductionEmail';
 import { OrderCompletedEmail } from './templates/OrderCompletedEmail';
 import { OrderProofRequestEmail } from './templates/OrderProofRequestEmail';
 import { ProofFeedbackEmail } from './templates/ProofFeedbackEmail';
+import { OrderEditedEmail } from './templates/OrderEditedEmail';
+import { render } from '@react-email/render';
+import type { KundenmailDaten } from '@/lib/orders/orderEdit';
 import type { OrderRecord, RechnungFuerEmail } from '@/lib/actions/orderTypes';
 import type { OrderItemsTableItem } from './templates/EmailLayout';
 import { warenkorbNurAlsAnfrage } from '@/config/bestellweg';
@@ -361,6 +364,49 @@ export async function sendProofFeedbackEmail(params: {
     ),
     replyTo: params.kundeEmail,
     kontext: { anlass: 'proof_feedback', orderId: params.orderId },
+  });
+  return {
+    success: result.success,
+    ...(result.messageId ? { messageId: result.messageId } : {}),
+    ...(result.error ? { error: result.error } : {}),
+  };
+}
+
+/** Betreff der „Dein Auftrag wurde geändert“-Mail – eine Stelle für Versand und Vorschau im Adminbereich. */
+export function betreffAuftragGeaendert(orderNumber: string): string {
+  return `Dein Auftrag ${orderNumber} wurde geändert`;
+}
+
+/**
+ * Klartext der „Auftrag geändert“-Mail, genau wie sie versendet würde – für die
+ * Vorschau im Adminbereich, damit der Betreiber VOR dem Speichern sieht, was
+ * die Kundschaft bekommt. Versendet nichts.
+ */
+export async function renderAuftragGeaendertText(daten: KundenmailDaten): Promise<string> {
+  return render(<OrderEditedEmail daten={daten} />, { plainText: true });
+}
+
+/**
+ * Teilt der Kundschaft mit, dass der Betreiber ihren Auftrag geändert hat
+ * (Position entfernt oder Stückzahl verringert).
+ *
+ * Wird ausschließlich von orderEditService aufgerufen – NACH der erfolgreichen
+ * Datenbankänderung und nur, wenn der Betreiber den Versand im Adminbereich
+ * nicht abgewählt hat. Ein Fehlschlag hier macht die Änderung nicht
+ * rückgängig; er steht als `email_failed` in der Bestell-Historie.
+ */
+export async function sendOrderEditedEmail(params: {
+  orderId: string;
+  empfaenger: string;
+  daten: KundenmailDaten;
+}): Promise<EmailVersandErgebnis> {
+  const result = await sendEmail({
+    to: params.empfaenger,
+    subject: betreffAuftragGeaendert(params.daten.orderNumber),
+    react: <OrderEditedEmail daten={params.daten} />,
+    // Antworten (z. B. „das war so nicht abgesprochen“) sollen bei uns landen.
+    replyTo: getReplyToAddress(),
+    kontext: { anlass: 'order_edited', orderId: params.orderId },
   });
   return {
     success: result.success,

@@ -222,6 +222,48 @@ nur über `WHERE pending`-Bedingungen bewegt, nie rückwärts.
 
 ---
 
+## 9. Auftrag nachträglich ändern (Betreiber)
+
+Im Adminbereich (`/admin/bestellung/[id]`, Block „Auftrag bearbeiten“) kann der
+Betreiber eine Position **entfernen** oder die Stückzahl je Größe **verringern**
+– nie erhöhen oder hinzufügen. Fachlogik: `lib/orders/orderEdit.ts` (rein),
+Ablauf: `lib/orders/orderEditService.ts`, Server Actions:
+`lib/actions/orderEditActions.ts`, Schreibweg: Datenbankfunktion
+`aendere_bestellpositionen` (Migration 0038, **als Datei angelegt, noch nicht
+angewendet**).
+
+```
+Vorschau (schreibt nichts)      berechnen → Gegenprobe → alt/neu/Differenz + Mailtext
+Speichern                       Grund + Bestätigungen → EINE Transaktion
+                                (Positionen + Bestellsumme + order_events 'order_items_edited')
+  danach, nicht-fatal           Kundenmail (abwählbar) · Lieferantenaufträge angleichen
+  danach, im Browser            Druckvorschauen + Produktionsblatt neu erzeugen
+```
+
+**Wann änderbar:** Bestellung (keine Anfrage), Status `new`, Zahlung
+`not_required` oder `paid`, kein Lieferantenauftrag in Verarbeitung. Nicht
+änderbar: ab `in_production`, `pending`/`failed` (der Betrag liegt beim
+Zahlungsanbieter fest).
+
+**Preis:** über `priceCart` (Staffeln, ,99-Rundung, Einrichtung, Versandfreigrenze
+75 €). Weil `priceCart` mit dem Katalog von HEUTE rechnet, wird zuerst die
+unveränderte Bestellung neu berechnet; stimmt sie nicht auf den Cent mit dem
+gespeicherten Stand überein, wird nicht geändert (`preis-abweichung`). Steigt der
+Preis durch die Verringerung (Staffelsprung, Versand unter 75 €), wird ebenfalls
+abgelehnt (`preis-steigt`). Stickerei wird nicht neu berechnet (Stichzahl nicht
+gespeichert). Gutscheine gibt es in diesem Shop nicht.
+
+**Was das System NICHT tut** (der Betreiber bestätigt es vor dem Speichern):
+keine Teilerstattung (`refundService` kennt nur die volle Erstattung bei Storno),
+keine Rechnungskorrektur (der Rechnungs-Port kennt nur `erstelle`), keine
+Änderung am Buchhaltungs-Cursor `accounting_ready_at`. Die bei bezahlten
+Bestellungen offene Differenz steht im Historien-Eintrag
+(`erstattungNoetigCent`), wird im Admin als „offene Erstattung“ gezeigt und kann
+dort als von Hand erstattet vermerkt werden (`manual_refund_noted`, bewegt kein
+Geld).
+
+---
+
 ## Was wo passiert – die Kurzreferenz
 
 | Frage | Antwort |

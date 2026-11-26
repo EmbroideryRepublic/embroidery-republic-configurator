@@ -36,7 +36,9 @@ import { PRODUCTS as KINDER_PRODUCTS } from './kinder.generated';
 import { PRODUCTS as SPORT_PRODUCTS } from './sport.generated';
 import type { ProductConfig } from './types';
 import { grundpreisNachAnpassung } from '@/config/pricing/preiskorrektur';
-import { FARBNAMEN_LIEFERANT, FARBPUNKTE_KORREKTUR } from './farbnamenLieferant';
+import { FARBPUNKTE_KORREKTUR } from './farbnamenLieferant';
+import { FARBNAMEN_DEUTSCH } from './farbnamenDeutsch';
+import { LIEFERANTENFARBEN } from './lieferantenfarben.generated';
 
 // Die Produktdefinitionen tragen KEIN Lieferanten-Wissen mehr (ADR 0004): die
 // Bezugsquelle liegt ausschließlich in der Lieferantenschicht
@@ -60,22 +62,34 @@ const PRODUKTE_ROH: ProductConfig[] = [
   ...SPORT_PRODUCTS,
 ];
 
-// Gezielte Grundpreis-Anpassung je Produkt (Betreiberfreigabe 2026-11-18, config/pricing/preiskorrektur.ts). Alles, was den Preis
-// liest (Konfigurator, Warenkorb, Server, Seiten), sieht ab hier den angepassten Grundpreis.
-// Anzeigenamen der Farben nach dem Namen des Lieferanten (farbnamenLieferant.ts, Betreiberwunsch 2026-11-26): Nur der Name ändert sich,
-// die Farb-ID bleibt – Bildordner, Warenkorb, bestehende Bestellungen und die Lieferantenzuordnung hängen an der ID.
-function mitLieferantenfarbnamen(p: ProductConfig): ProductConfig {
-  const namen = FARBNAMEN_LIEFERANT[p.id];
+// Farbnamen: Kundinnen und Kunden sehen deutsche Namen (farbnamenDeutsch.ts), der Adminbereich den Namen des Lieferanten (lieferantenfarben.generated.ts,
+// Feld lieferantenName). Nur die Namen ändern sich, die Farb-ID bleibt – Bildordner, Warenkorb, bestehende Bestellungen und die Lieferantenzuordnung
+// hängen an der ID. Hat ein Produkt zwei Farben mit demselben deutschen Namen, steht der Lieferantenname in Klammern dahinter.
+function mitFarbnamen(p: ProductConfig): ProductConfig {
+  const lieferanten = LIEFERANTENFARBEN[p.id];
   const punkte = FARBPUNKTE_KORREKTUR[p.id];
-  if (!namen && !punkte) return p;
+  if (!lieferanten && !punkte) return p;
+  const zeilen = p.colors.map((c) => {
+    const lieferant = lieferanten?.[c.id] ?? c.name;
+    return { c, lieferant, deutsch: FARBNAMEN_DEUTSCH[lieferant] ?? c.name };
+  });
+  const haeufigkeit = new Map<string, number>();
+  for (const z of zeilen) haeufigkeit.set(z.deutsch.toLowerCase(), (haeufigkeit.get(z.deutsch.toLowerCase()) ?? 0) + 1);
   return {
     ...p,
-    colors: p.colors.map((c) => (namen?.[c.id] || punkte?.[c.id] ? { ...c, name: namen?.[c.id] ?? c.name, hex: punkte?.[c.id] ?? c.hex } : c)),
+    colors: zeilen.map(({ c, lieferant, deutsch }) => ({
+      ...c,
+      name: (haeufigkeit.get(deutsch.toLowerCase()) ?? 0) > 1 && lieferant !== deutsch ? `${deutsch} (${lieferant})` : deutsch,
+      lieferantenName: lieferant,
+      hex: punkte?.[c.id] ?? c.hex,
+    })),
   };
 }
 
+// Gezielte Grundpreis-Anpassung je Produkt (Betreiberfreigabe 2026-11-18, config/pricing/preiskorrektur.ts). Alles, was den Preis
+// liest (Konfigurator, Warenkorb, Server, Seiten), sieht ab hier den angepassten Grundpreis.
 export const PRODUCTS: ProductConfig[] = PRODUKTE_ROH.map((roh) => {
-  const p = mitLieferantenfarbnamen(roh);
+  const p = mitFarbnamen(roh);
   const preis = grundpreisNachAnpassung(p.id, p.basePrice);
   return preis === p.basePrice ? p : { ...p, basePrice: preis };
 });

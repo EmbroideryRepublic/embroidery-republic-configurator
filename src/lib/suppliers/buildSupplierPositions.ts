@@ -59,7 +59,7 @@ export function buildSupplierPositions(orderId: string, items: SupplierSourceIte
       articleNumber: supplierRef.articleNumber,
       productUrl: supplierRef.productUrl,
       colorId: item.colorId,
-      colorName: color?.name ?? item.colorId,
+      colorName: color?.lieferantenName ?? color?.name ?? item.colorId,
       sizes,
     };
 

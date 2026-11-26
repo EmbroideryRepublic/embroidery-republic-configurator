@@ -130,7 +130,7 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
           items={order.items.map((item) => ({
             productId: item.productId,
             productName: item.productName,
-            colorName: item.colorName,
+            colorName: item.lieferantenFarbe,
             sizeQuantities: item.sizeQuantities,
             quantity: item.quantity,
           }))}
@@ -208,7 +208,12 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
               {order.items.map((item, i) => (
                 <tr key={i} className="border-t border-gray-100">
                   <td className="py-1.5 pr-3">{item.productName}</td>
-                  <td className="py-1.5 pr-3">{item.colorName}</td>
+                  <td className="py-1.5 pr-3">
+                    {item.lieferantenFarbe}
+                    {item.lieferantenFarbe !== item.colorName && (
+                      <span className="block text-xs text-gray-500">Kunde: {item.colorName}</span>
+                    )}
+                  </td>
                   <td className="py-1.5 pr-3">{item.printMethod === 'embroidery' ? 'Stickerei' : 'DTF'}</td>
                   <td className="py-1.5 pr-3 text-xs text-gray-600">
                     {Object.entries(item.sizeQuantities)
@@ -234,7 +239,7 @@ export default async function AdminOrderDetailPage(props: { params: Promise<{ id
               orderId={order.id}
               positionen={order.items.map((item) => ({
                 id: item.id,
-                name: `${item.productName} · ${item.colorName}`,
+                name: `${item.productName} · ${item.lieferantenFarbe}`,
                 sizeQuantities: item.sizeQuantities,
               }))}
               sperren={aenderbarkeit.sperren.map((s) => s.text)}

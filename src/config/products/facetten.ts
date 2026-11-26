@@ -173,6 +173,7 @@ const FARBGRUPPEN_BASIS: Record<string, Farbgruppe> = {
   'Very Turquoise': 'tuerkis', 'Weinrot/Anthrazit': 'rot', 'Weiß': 'weiss',
   'Weiß/Navy': 'weiss', 'Weiß/Royalblau': 'weiss', 'Weiß/Schwarz': 'weiss',
   Yellow: 'gelb',
+  'Dark Melange': 'grau', 'Ready For Dye': 'weiss',
   // Namen nach dem Lieferantennamen (farbnamenLieferant.ts): Gruppe der früheren Bezeichnung übernommen.
   'Mountain Blue': 'blau',
   'Soft Lavender': 'lila',

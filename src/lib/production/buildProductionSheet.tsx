@@ -6,6 +6,7 @@
  * Größe/Rotation in cm sowie (bei Text) Schriftart/-größe/-farbe. Bild und
  * Zahlen ergänzen sich bewusst, ersetzen sich nicht.
  */
+import { lieferantenFarbname } from '@/lib/products/farbnamen';
 import { Document, Page, View, Text, Image, StyleSheet, renderToBuffer } from '@react-pdf/renderer';
 import type { OrderRecord } from '@/lib/actions/orderTypes';
 import { PRINT_VIEW_LABELS, PAYMENT_METHOD_LABELS } from '@/lib/actions/orderTypes';
@@ -189,7 +190,7 @@ function ProductionSheetDocument({ order }: { order: OrderRecord }) {
               Position {itemIndex + 1} von {order.items.length}
             </Text>
             <Text style={styles.itemHeading}>
-              {item.productName} · {item.colorName}
+              {item.productName} · {lieferantenFarbname(item.productId, item.colorId, item.colorName)}
             </Text>
             <Text style={styles.itemSub}>
               {item.printMethod === 'embroidery' ? 'Stickerei' : 'DTF-Transferdruck'} · {item.quantity} Stück gesamt · Einzelpreis{' '}

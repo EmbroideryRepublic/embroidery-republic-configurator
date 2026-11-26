@@ -49,7 +49,7 @@ test('jedes Produkt hat mindestens ein Geschlecht', () => {
 
 test('jede Farbe ist einer Grundfarbe zugeordnet', () => {
   const fehlend = new Set<string>();
-  for (const p of PRODUCTS) for (const f of p.colors) if (!FARBGRUPPEN[f.name]) fehlend.add(f.name);
+  for (const p of PRODUCTS) for (const f of p.colors) if (!FARBGRUPPEN[f.lieferantenName ?? f.name]) fehlend.add(f.lieferantenName ?? f.name);
   assert.deepEqual([...fehlend], [], 'Farbname fehlt in FARBGRUPPEN (facetten.ts).');
 });
 
@@ -62,7 +62,7 @@ test('die Zuordnungstabellen enthalten keine toten Einträge', () => {
   const materialien = new Set(PRODUCTS.map((p) => p.material));
   const passformen = new Set(PRODUCTS.map((p) => p.fit));
   const geschlechter = new Set(PRODUCTS.map((p) => p.detailedDescription?.gender).filter(Boolean));
-  const farben = new Set([...PRODUCTS.flatMap((p) => p.colors.map((f) => f.name)), ...ERSETZTE_FARBNAMEN]);
+  const farben = new Set([...PRODUCTS.flatMap((p) => p.colors.flatMap((f) => [f.name, f.lieferantenName ?? f.name])), ...ERSETZTE_FARBNAMEN]);
   // ERSETZTE_FARBNAMEN: Die Gruppen sind nach dem Rohnamen geführt; der Anzeigename kommt aus farbnamenLieferant.ts.
 
   // Tote Einträge sind kein Fehler, aber ein Hinweis auf Sortimentsreste.

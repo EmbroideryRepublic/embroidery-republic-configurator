@@ -15,6 +15,7 @@
  * Der Betreiber prüft, kalkuliert und antwortet mit einem verbindlichen
  * Angebot. Die Antwort-Adresse der Mail ist deshalb die der Kundschaft.
  */
+import { lieferantenFarbname } from '@/lib/products/farbnamen';
 import { Fragment } from 'react';
 import { Text, Link } from '@react-email/components';
 import type { OrderElementRecord, OrderItemRecord, OrderRecord } from '@/lib/actions/orderTypes';
@@ -112,7 +113,7 @@ function Position({ item, motivLinks }: { item: OrderItemRecord; motivLinks: Rec
       <tbody>
         <tr>
           <td style={{ padding: '8px 0', borderBottom: `1px solid ${COLORS.border}`, verticalAlign: 'top' }}>
-            <strong>{item.productName}</strong> · {item.colorName}
+            <strong>{item.productName}</strong> · {lieferantenFarbname(item.productId, item.colorId, item.colorName)}
             <br />
             <span style={{ color: COLORS.muted, fontSize: 13 }}>
               {VEREDELUNG[item.printMethod]} · {item.quantity} Stück{groessen ? ` (${groessen})` : ''}
@@ -275,7 +276,7 @@ export function InternalOrderNotificationEmail({
                 <strong>{item.productName}</strong>
                 {hilfe.artikelnummer ? ` · Art.-Nr. ${hilfe.artikelnummer}` : ''}
                 <br />
-                Farbe: {item.colorName} · Größen: {groessenText(item.sizeQuantities) || '–'} · zusammen {item.quantity} Stück
+                Farbe: {lieferantenFarbname(item.productId, item.colorId, item.colorName)} · Größen: {groessenText(item.sizeQuantities) || '–'} · zusammen {item.quantity} Stück
                 <br />
                 {hilfe.links.map((link, i) => (
                   <Fragment key={link.url}>

@@ -23,7 +23,10 @@ export type Farbgruppe =
 
 export interface ProductColorConfig {
   id: string;
+  /** Anzeigename für Kundinnen und Kunden (deutsch, siehe farbnamenDeutsch.ts). */
   name: string;
+  /** Name der Farbe beim Lieferanten (Textil-Großhandel, ersatzweise L-Shop) – für den Adminbereich und die Einkaufsbestellung. */
+  lieferantenName?: string;
   hex: string;
   // KEINE Bildpfade mehr (ADR 0004): die Produktdefinition kennt nur die
   // Farb-Identität; Bilder löst die Asset-Schicht über (productId, colorId, view)

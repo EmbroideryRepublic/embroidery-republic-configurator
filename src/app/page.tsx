@@ -103,7 +103,7 @@ function findeBild(treffer: typeof PRODUCTS, art: ProductType): string | undefin
     for (const p of treffer) {
       // Nur wählbare Farben: sonst zeigt die Kachel einen Ton, den es beim
       // Öffnen des Produkts gar nicht zur Auswahl gibt.
-      const farbe = waehlbareFarben(p.id, p.colors).find((c) => FARBGRUPPEN[c.name] === wunsch);
+      const farbe = waehlbareFarben(p.id, p.colors).find((c) => FARBGRUPPEN[c.lieferantenName ?? c.name] === wunsch);
       if (farbe) return repraesentativBildVon(p.id, farbe.id);
     }
   }

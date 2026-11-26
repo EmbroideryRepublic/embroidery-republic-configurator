@@ -6,6 +6,7 @@
  * Funktionen sind reine Leser für Server Components, die Actions sind
  * die einzigen Schreiber.
  */
+import { lieferantenFarbname } from '@/lib/products/farbnamen';
 import nodePath from 'node:path';
 import { createAdminClient } from '@/lib/supabase/server';
 import { buildOrderNumber, type OrderPaymentMethod, type RefundStatus } from '@/lib/actions/orderTypes';
@@ -115,6 +116,8 @@ export interface AdminOrderItemRow {
   productName: string;
   colorId: string;
   colorName: string;
+  /** Name der Farbe beim Lieferanten (für den Einkauf); colorName ist der Name, den die Kundschaft zum Bestellzeitpunkt sah. */
+  lieferantenFarbe: string;
   printMethod: string | null;
   sizeQuantities: Record<string, number>;
   unitPrice: number;
@@ -868,6 +871,7 @@ export async function getOrderDetail(orderId: string): Promise<AdminOrderDetail 
         productName: row.product_name as string,
         colorId: row.color_id as string,
         colorName: row.color_name as string,
+        lieferantenFarbe: lieferantenFarbname(row.product_id as string, row.color_id as string, row.color_name as string),
         printMethod: (row.print_method as string | null) ?? null,
         sizeQuantities: (row.size_quantities ?? {}) as Record<string, number>,
         unitPrice: Number(row.unit_price ?? 0),

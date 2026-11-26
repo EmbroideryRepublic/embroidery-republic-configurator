@@ -16,7 +16,7 @@ import { renderTextAlsJpg, renderTextAlsPng, TEXT_JPG_DPI, type TextJpgEingabe, 
 import type { RenderableTextElement } from '../types';
 
 const PRODUKT_ID = 'justhoods-college-hoodie';
-const FARBE_ID = getProduct(PRODUKT_ID)!.colors.find((c) => c.name === 'Grau')!.id;
+const FARBE_ID = getProduct(PRODUKT_ID)!.colors.find((c) => c.id === 'grey')!.id;
 
 function text(ueberschreibe: Partial<RenderableTextElement> = {}): RenderableTextElement {
   return {

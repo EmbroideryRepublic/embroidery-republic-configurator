@@ -190,7 +190,7 @@ function PositionsGruppe({ item, index, orderId }: { item: AdminOrderItemRow; in
   return (
     <div className={index > 0 ? 'mt-5 border-t border-gray-100 pt-5' : ''}>
       <p className="mb-2 text-sm font-semibold text-gray-900">
-        Position {index + 1}: {item.productName} · {item.colorName}
+        Position {index + 1}: {item.productName} · {item.lieferantenFarbe}
       </p>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {views.map((view) => {

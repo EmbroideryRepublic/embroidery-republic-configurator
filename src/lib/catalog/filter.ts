@@ -62,7 +62,7 @@ export interface Merkmale {
 export function farbgruppenVon(p: ProductConfig): Farbgruppe[] {
   const gruppen = new Set<Farbgruppe>();
   for (const farbe of waehlbareFarben(p.id, p.colors)) {
-    const g = FARBGRUPPEN[farbe.name];
+    const g = FARBGRUPPEN[farbe.lieferantenName ?? farbe.name];
     if (g) gruppen.add(g);
   }
   return [...gruppen];

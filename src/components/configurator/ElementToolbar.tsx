@@ -691,14 +691,15 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
           ein „normales" Ergebnis wollen. */}
       {printArea && (
         <div>
-          <p className="mb-1.5 text-xs text-gray-600">{t('element_position')}</p>
-          <div className="flex flex-wrap gap-1.5">
+          {/* Beschriftung in derselben Zeile wie die Schaltflächen: spart eine Zeile im Panel. */}
+          <div className="flex flex-wrap items-center gap-1">
+            <span className="mr-0.5 text-[11px] font-medium text-gray-600">{t('element_position')}</span>
             {[...(DECORATION_POSITIONS[printArea.view]?.presets ?? []), ...UNIVERSAL_PRESETS].map((preset) => (
               <button
                 key={preset.labelKey}
                 type="button"
                 onClick={() => applyPreset(preset)}
-                className="rounded-md border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-brand-accent hover:text-brand-accent"
+                className="rounded border border-gray-300 px-1.5 py-0.5 text-[11px] leading-4 text-gray-600 hover:border-brand-accent hover:text-brand-accent"
               >
                 {t(preset.labelKey)}
               </button>
@@ -709,19 +710,19 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
 
       {/* Rotation – für Logo und Text gleichermaßen direkt einstellbar,
           nicht nur per Ziehen am Drehgriff im Canvas. */}
-      <div>
-        <div className="mb-1 flex items-center justify-between text-xs text-gray-600">
-          <span>{t('element_rotation')}</span>
-          <span>{Math.round(((selected.rotationDeg % 360) + 360) % 360)}°</span>
-        </div>
+      {/* Eine Zeile statt zwei: Beschriftung, Regler und Gradzahl nebeneinander (spart Platz im Panel). */}
+      <div className="flex items-center gap-2 text-[11px] text-gray-600">
+        <span className="w-14 shrink-0 font-medium">{t('element_rotation')}</span>
         <input
           type="range"
           min={0}
           max={359}
           value={((selected.rotationDeg % 360) + 360) % 360}
           onChange={(e) => handleRotationChange(Number(e.target.value))}
-          className="w-full"
+          aria-label={t('element_rotation')}
+          className="h-4 min-w-0 flex-1"
         />
+        <span className="w-9 shrink-0 text-right tabular-nums">{Math.round(((selected.rotationDeg % 360) + 360) % 360)}°</span>
       </div>
 
       {/* Live-Maße – gilt für Logo und Text gleichermaßen */}

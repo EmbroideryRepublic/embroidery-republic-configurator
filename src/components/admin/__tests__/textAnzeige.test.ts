@@ -46,6 +46,7 @@ function position(elements: AdminOrderElementRow[]): AdminOrderItemRow {
     productName: 'College Hoodie',
     colorId: 'grey',
     colorName: 'Grau',
+    lieferantenFarbe: 'Grey',
     printMethod: 'dtf',
     sizeQuantities: { M: 2 },
     unitPrice: 37.99,
@@ -66,7 +67,8 @@ test('Kundendateien: der Text steht wie das Logo in der Liste – mit Vorschaubi
     })
   );
   // Gleicher Block, gleiche Zählung: Logo vorn, beide Texte hinten.
-  assert.match(html, /Position 1: College Hoodie · Grau/);
+  // Der Adminbereich zeigt den Farbnamen des Lieferanten (nicht den deutschen Kundennamen "Grau").
+  assert.match(html, /Position 1: College Hoodie · Grey/);
   assert.match(html, /Vorderseite/i);
   assert.match(html, /R(ü|ue)ckseite/i);
   assert.match(html, /3 Dateien insgesamt/, 'Logos und Texte werden zusammen gezählt');

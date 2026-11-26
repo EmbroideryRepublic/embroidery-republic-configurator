@@ -29,6 +29,7 @@ function item(overrides: Partial<AdminOrderItemRow> = {}): AdminOrderItemRow {
     productName: 'Heavy T-Shirt',
     colorId: 'navy',
     colorName: 'Navy',
+    lieferantenFarbe: 'Navy',
     printMethod: 'dtf',
     sizeQuantities: { M: 1 },
     unitPrice: 20,

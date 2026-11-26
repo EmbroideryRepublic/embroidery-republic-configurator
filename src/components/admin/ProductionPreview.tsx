@@ -165,7 +165,7 @@ function PositionUebersicht({ item, index, orderId }: { item: AdminOrderItemRow;
     <div className={index > 0 ? 'mt-8 border-t border-gray-100 pt-8' : ''}>
       <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <p className="text-base font-semibold text-gray-900">
-          Position {index + 1}: {item.productName} · {item.colorName}
+          Position {index + 1}: {item.productName} · {item.lieferantenFarbe}
         </p>
         <p className="text-xs text-gray-500">
           {groessen}

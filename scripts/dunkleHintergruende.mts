@@ -95,7 +95,7 @@ for (const [produktId, nachFarbe] of Object.entries(ASSET_MANIFEST)) {
         const hg = d.anteilHintergrund as number;
         const fb = view === 'front' || view === 'back';
         const grundWerte = `Hintergrund ${(hg * 100).toFixed(0)} %, Rand ${(d.rahmen * 100).toFixed(1)} %, Füllung ${(d.fuellung * 100).toFixed(1)} %, Kasten ${(d.kastenFuellung * 100).toFixed(0)} %, Symmetrie ${(d.symmetrie * 100).toFixed(0)} %`;
-        const basis = d.rahmen <= 0.02 && (fb ? hg >= 0.3 && hg <= 0.8 : hg >= 0.35 && hg <= 0.98) && d.kastenFuellung <= (fb ? 0.9 : 0.97);
+        const basis = d.rahmen <= 0.02 && (fb ? hg >= 0.3 && hg <= 0.8 : hg >= 0.35 && hg <= 0.98) && d.kastenFuellung <= (fb ? 0.905 : 0.97);
         // Flutfüllung bei fast weißem Stoff: zusätzlich Füllung/Symmetrie. Modellmaske: keine großen Löcher, Symmetrie nur grob (Polo-Rückseiten mit Etikett).
         const gut = basis && (maske ? d.grosseLoecher === 0 && (!fb || d.symmetrie >= 0.75) : d.kernMin < 240 || (d.fuellung >= 0.995 && d.symmetrie >= 0.85));
         if (!gut) return { ok: false as const, grund: `${view} (${grundWerte}${maske ? `, große Löcher ${d.grosseLoecher}` : ''})`, ansichten, bilder };

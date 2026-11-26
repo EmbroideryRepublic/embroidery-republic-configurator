@@ -119,6 +119,15 @@ export async function dunkel(pfad, opt = {}) {
     const zu = boxMorph(boxMorph(st0, w, h, verschlussR, true), w, h, verschlussR, false);
     for (let i = 0; i < w * h; i++) if (zu[i]) bg[i] = 0;
   }
+  // Konturglättung: Die Flutfüllung folgt dem Rauschen am hellen Stoffrand und hinterlässt Treppenstufen (an weißen Ärmeln und Säumen
+  // sichtbar ausgefranst). Die binäre Maske wird weichgezeichnet und bei 0,5 neu geschnitten: das rundet die Kontur, ohne ihre Lage zu
+  // verschieben. Strukturen, die breiter als etwa 2σ sind (Träger, Kordeln, Ärmel), bleiben erhalten.
+  const glaetten = opt.glaetten ?? 3.5;
+  if (glaetten > 0) {
+    const stoffMaske = Buffer.alloc(w * h); for (let i = 0; i < w * h; i++) stoffMaske[i] = bg[i] ? 0 : 255;
+    const weich = await sharp(stoffMaske, { raw: { width: w, height: h, channels: 1 } }).blur(glaetten).extractChannel(0).raw().toBuffer();
+    for (let i = 0; i < w * h; i++) bg[i] = weich[i] >= 128 ? 0 : 1;
+  }
   // Randband: Stoffpixel höchstens 3 px vom Hintergrund entfernt. Innen (≥ 3 px) bleibt unverändert.
   const stoff = new Uint8Array(w * h); for (let i = 0; i < w * h; i++) stoff[i] = bg[i] ? 0 : 1;
   let innen = Uint8Array.from(stoff);

@@ -3558,6 +3558,10 @@ export const DUNKLER_HINTERGRUND: Record<string, Record<string, readonly string[
     ]
   },
   "sport-jc007": {
+    "arctic-white": [
+      "front",
+      "back"
+    ],
     "electric-yellow": [
       "front",
       "back"

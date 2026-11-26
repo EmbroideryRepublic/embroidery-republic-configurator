@@ -14,7 +14,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import type { PrintView } from '@/types';
 import type { ProductConfig } from '@/config/products/types';
-import { bildFuerAnsicht, repraesentativBildVon } from '@/lib/assets';
+import { anzeigeBildFuerAnsicht, anzeigeRepraesentativBildVon, hatDunkleAnsicht, DUNKEL_RANDFARBE } from '@/lib/assets';
 import { sichtbareAnsichten } from '@/lib/products/ansichten';
 import { waehlbareFarben, formatiereFarbname } from '@/lib/products/farben';
 import { positionLabel } from '@/config/decorationPositions';
@@ -44,13 +44,16 @@ export function ProduktFarbwahl({ produkt }: { produkt: ProductConfig }) {
 
   return (
     <div>
-      <div className="relative aspect-square overflow-hidden rounded-2xl border border-brand/[0.08] bg-white">
+      <div
+        className="relative aspect-square overflow-hidden rounded-2xl border border-brand/[0.08] bg-white"
+        style={hatDunkleAnsicht(produkt.id, farbe.id, aktiveAnsicht) ? { backgroundColor: DUNKEL_RANDFARBE } : undefined}
+      >
         <Image
           // Prüfanker wie `data-preis` an der Kachel: Die Sichtprüfung muss das
           // Produktbild eindeutig greifen können – über `img[alt]` erwischte sie
           // das Seitenlogo. Diktiert die Gestaltung nicht.
           data-produktbild={`${farbe.id}/${aktiveAnsicht}`}
-          src={bildFuerAnsicht(produkt.id, farbe.id, aktiveAnsicht) ?? repraesentativBildVon(produkt.id, farbe.id)}
+          src={anzeigeBildFuerAnsicht(produkt.id, farbe.id, aktiveAnsicht) ?? anzeigeRepraesentativBildVon(produkt.id, farbe.id)}
           alt={`${produkt.name} in ${formatiereFarbname(farbe.name)}, ${positionLabel(aktiveAnsicht)}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"

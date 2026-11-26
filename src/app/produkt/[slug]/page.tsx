@@ -22,7 +22,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { alleProduktSlugs, ladeProduktseite } from '@/lib/products/productPage';
 import { produktTypLabelPlural } from '@/config/products/types';
-import { produktBild, PLATZHALTER_BILD } from '@/lib/assets';
+import { produktBild, PLATZHALTER_BILD, anzeigeProduktBild, zeigtProduktDunkel, DUNKEL_RANDFARBE } from '@/lib/assets';
 import { supplierRefVon } from '@/lib/suppliers/supplierRefs';
 import { echteHerkunft } from '@/lib/products/herkunft';
 import { markenSeiteVon } from '@/lib/seo/dtfAdresse';
@@ -140,10 +140,13 @@ function MiniKarte({ produkt }: { produkt: ProductConfig }) {
     >
       {/* bg-white statt cream/40: Die Lieferantenfotos haben einen weißen Hintergrund – auf getöntem Grund
           erschien das Foto als helles Rechteck im Kasten im Kasten. */}
-      <div className="relative aspect-square overflow-hidden rounded-xl bg-white">
+      <div
+        className="relative aspect-square overflow-hidden rounded-xl bg-white"
+        style={zeigtProduktDunkel(produkt.id, produkt.colors) ? { backgroundColor: DUNKEL_RANDFARBE } : undefined}
+      >
         {produkt.colors[0] && (
           <Image
-            src={produktBild(produkt.id, produkt.colors)}
+            src={anzeigeProduktBild(produkt.id, produkt.colors)}
             alt={produkt.name}
             fill
             sizes="(max-width: 768px) 50vw, 25vw"

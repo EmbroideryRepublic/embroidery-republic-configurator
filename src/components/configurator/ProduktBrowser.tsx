@@ -36,7 +36,7 @@ import { uebernehmeAuswahl, verworfeneMenge } from '@/lib/configurator/uebernahm
 import { useGroessenHinweisStore } from '@/stores/groessenHinweisStore';
 import { vorladenListe, vorladenModell } from '@/lib/configurator/vorladen';
 import { getProduct } from '@/config/products';
-import { produktBild } from '@/lib/assets';
+import { anzeigeProduktBild, zeigtProduktDunkel, DUNKEL_RANDFARBE } from '@/lib/assets';
 import { formatiereFarbname, waehlbareFarben } from '@/lib/products/farben';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useBrowserStore } from '@/stores/browserStore';
@@ -48,7 +48,7 @@ import { WerteListe } from '@/components/shop/filterBausteine';
 const ARTBILD = new Map<ProductType, string | undefined>();
 for (const p of PRODUCTS) {
   if (!ARTBILD.has(p.productType)) {
-    ARTBILD.set(p.productType, p.colors.length ? produktBild(p.id, p.colors) : undefined);
+    ARTBILD.set(p.productType, p.colors.length ? anzeigeProduktBild(p.id, p.colors) : undefined);
   }
 }
 
@@ -551,11 +551,14 @@ function Modellkarte({
       )}
     >
       {/* Vorschaubild – bewusst groß, damit die Ware wirkt. */}
-      <div className="relative aspect-square bg-gradient-to-b from-white to-cream/30">
+      <div
+        className={`relative aspect-square ${zeigtProduktDunkel(produkt.id, produkt.colors) ? '' : 'bg-gradient-to-b from-white to-cream/30'}`}
+        style={zeigtProduktDunkel(produkt.id, produkt.colors) ? { backgroundColor: DUNKEL_RANDFARBE } : undefined}
+      >
         {produkt.colors[0] && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={produktBild(produkt.id, produkt.colors)}
+            src={anzeigeProduktBild(produkt.id, produkt.colors)}
             alt={produkt.name}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.05]"

@@ -21,7 +21,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Leaf } from 'lucide-react';
 import type { ProductConfig } from '@/config/products/types';
-import { produktBild } from '@/lib/assets';
+import { anzeigeProduktBild, zeigtProduktDunkel, DUNKEL_RANDFARBE } from '@/lib/assets';
 import { formatiereFarbname, waehlbareFarben } from '@/lib/products/farben';
 import { materialGruppen } from '@/config/products/facetten';
 import { WaehrungsPreis } from '@/components/shop/WaehrungsPreis';
@@ -72,14 +72,16 @@ export function Produktkachel({
       <div
         // Weiße Bildfläche mit Absicht: Die Produktfotos haben selbst einen
         // weißen Hintergrund. Auf einer getönten Fläche stünde das Foto als
-        // sichtbares weißes Rechteck darin – so geht es nahtlos auf.
+        // sichtbares weißes Rechteck darin – so geht es nahtlos auf. Helle Ware (Weiß, Creme, Pastell) steht dagegen
+        // auf dunklem Grund (siehe lib/assets: Anzeige-Bilder); dann nimmt die Fläche dessen Randfarbe an.
+        style={zeigtProduktDunkel(produkt.id, produkt.colors) ? { backgroundColor: DUNKEL_RANDFARBE } : undefined}
         className={`relative overflow-hidden bg-white transition-shadow duration-300 ease-out group-hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.22)] ${
           liste ? 'h-44 w-44 shrink-0 rounded-2xl' : 'aspect-[3/4] rounded-2xl'
         }`}
       >
         {produkt.colors[0] && (
           <Image
-            src={produktBild(produkt.id, produkt.colors)}
+            src={anzeigeProduktBild(produkt.id, produkt.colors)}
             alt={produkt.name}
             fill
             sizes={liste ? '176px' : '(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw'}

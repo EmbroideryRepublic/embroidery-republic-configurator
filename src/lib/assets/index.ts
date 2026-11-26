@@ -18,6 +18,7 @@
  */
 
 import { ASSET_MANIFEST } from './assetManifest.generated';
+import { DUNKLER_HINTERGRUND } from './dunklerHintergrund.generated';
 
 /** Neutraler Übergangs-Platzhalter für Produkte ohne echte Fotos.
  *  AUSDRÜCKLICH TEMPORÄR – der echte Bildimport ersetzt ihn; er ist nie ein
@@ -78,6 +79,64 @@ export function bildFuerAnsicht(productId: string, colorId: string, view: string
 /** Repräsentatives Bild einer Produktfarbe (Kacheln, Produktkarten, SEO). */
 export function repraesentativBildVon(productId: string, colorId: string): string {
   return repraesentativesBild(resolveColorImages(productId, colorId));
+}
+
+// ── Anzeige-Bilder: helle Ware auf dunklem Hintergrund ──────────────────
+// Weiße, cremefarbene, hellgraue, pastellige Kleidungsstücke gehen auf dem weißen Studiohintergrund der Lieferantenfotos
+// (und auf weißen Kacheln) fast unter. Für diese Farben liegt neben jedem Foto eine Variante `<ansicht>-dunkel.webp`:
+// dasselbe Kleidungsstück freigestellt auf einem dunklen Verlauf (gleiche Maße, Lage und Größe – Druckflächen bleiben gültig).
+// Welche Farben/Ansichten sie haben, steht in `dunklerHintergrund.generated.ts` (scripts/dunkleHintergruende.mts).
+//
+// NUR die ANZEIGE (Kacheln, Produktseite, Konfigurator) nutzt diese Varianten. Alles, was ein Foto weiterverarbeitet oder
+// weitergibt, bleibt bei den Originalen: Druckflächen-Vermessung, Produktionsblätter/Kundendateien (resvg), Strukturierte
+// Daten, Sitemap, Merchant-Feed (Google erwartet dort weißen Grund).
+
+/** Dateiendung der Variante mit dunklem Hintergrund. */
+export const DUNKEL_ENDUNG = '-dunkel';
+/** Randfarbe des dunklen Verlaufs – Container hinter dem Bild nehmen sie an, damit kein Rahmen sichtbar wird. */
+export const DUNKEL_RANDFARBE = '#141210';
+
+/** Hat diese Ansicht der Farbe eine Variante mit dunklem Hintergrund? */
+export function hatDunkleAnsicht(productId: string, colorId: string, view: string): boolean {
+  return DUNKLER_HINTERGRUND[productId]?.[colorId]?.includes(view) ?? false;
+}
+
+/** Zeigt diese Farbe (in ihrer Vorderansicht) auf dunklem Hintergrund? Für Container-Hintergründe. */
+export function hatDunklenHintergrund(productId: string, colorId: string): boolean {
+  return hatDunkleAnsicht(productId, colorId, 'front');
+}
+
+function alsDunklesBild(productId: string, colorId: string, view: string, pfad: string): string {
+  return hatDunkleAnsicht(productId, colorId, view) ? pfad.replace(/\.webp$/i, `${DUNKEL_ENDUNG}.webp`) : pfad;
+}
+
+/** Bildpfade einer Farbe für die ANZEIGE (helle Ware auf dunklem Grund). */
+export function resolveAnzeigeBilder(productId: string, colorId: string): Record<string, string> {
+  const original = resolveColorImages(productId, colorId);
+  return Object.fromEntries(Object.entries(original).map(([view, pfad]) => [view, alsDunklesBild(productId, colorId, view, pfad)]));
+}
+
+/** Anzeige-Bildpfad einer einzelnen Ansicht (oder undefined). */
+export function anzeigeBildFuerAnsicht(productId: string, colorId: string, view: string): string | undefined {
+  const pfad = bildFuerAnsicht(productId, colorId, view);
+  return pfad ? alsDunklesBild(productId, colorId, view, pfad) : undefined;
+}
+
+/** Repräsentatives Anzeige-Bild einer Farbe (Kacheln, Produktkarten). */
+export function anzeigeRepraesentativBildVon(productId: string, colorId: string): string {
+  return repraesentativesBild(resolveAnzeigeBilder(productId, colorId));
+}
+
+/** Repräsentatives Anzeige-Bild eines Produkts (Kacheln, Produktkarten). */
+export function anzeigeProduktBild(productId: string, colors: readonly { id: string }[]): string {
+  const farbe = repraesentativeFarbe(productId, colors);
+  return farbe ? anzeigeRepraesentativBildVon(productId, farbe.id) : PLATZHALTER_BILD;
+}
+
+/** Stellt ein Produkt (in seiner repräsentativen Farbe) hell auf dunklem Grund dar? Für Kachel-Hintergründe. */
+export function zeigtProduktDunkel(productId: string, colors: readonly { id: string }[]): boolean {
+  const farbe = repraesentativeFarbe(productId, colors);
+  return farbe ? hatDunklenHintergrund(productId, farbe.id) : false;
 }
 
 /**

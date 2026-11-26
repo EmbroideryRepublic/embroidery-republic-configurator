@@ -20,7 +20,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { getProduct } from '@/config/products';
-import { bildFuerAnsicht, repraesentativBildVon, repraesentativeFarbe } from '@/lib/assets';
+import { anzeigeBildFuerAnsicht, anzeigeRepraesentativBildVon, repraesentativeFarbe } from '@/lib/assets';
 import { formatiereFarbname } from '@/lib/products/farben';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import type { Entwurf } from '@/lib/configurator/entwuerfe';
@@ -37,7 +37,7 @@ function EntwurfKarte({ entwurf, t }: { entwurf: Entwurf; t: Uebersetze }) {
   if (!produkt) return null;
 
   const farbe = produkt.colors.find((c) => c.id === entwurf.colorId) ?? repraesentativeFarbe(produkt.id, produkt.colors);
-  const bild = farbe ? (bildFuerAnsicht(produkt.id, farbe.id, 'front') ?? repraesentativBildVon(produkt.id, farbe.id)) : undefined;
+  const bild = farbe ? (anzeigeBildFuerAnsicht(produkt.id, farbe.id, 'front') ?? anzeigeRepraesentativBildVon(produkt.id, farbe.id)) : undefined;
   const stueck = sumSizeQuantities(entwurf.sizeQuantities);
   const motive = entwurf.elements.length;
 

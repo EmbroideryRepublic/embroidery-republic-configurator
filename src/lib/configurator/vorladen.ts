@@ -13,7 +13,7 @@
  * `window` da ist (SSR).
  */
 import type { ProductConfig } from '@/config/products/types';
-import { resolveColorImages, produktBild, repraesentativeFarbe } from '@/lib/assets';
+import { resolveAnzeigeBilder, anzeigeProduktBild, repraesentativeFarbe } from '@/lib/assets';
 
 const angestossen = new Set<string>();
 
@@ -32,7 +32,7 @@ export function vorladenModell(p: ProductConfig): void {
   if (typeof window === 'undefined') return;
   const farbe = repraesentativeFarbe(p.id, p.colors);
   if (!farbe) return;
-  for (const url of Object.values(resolveColorImages(p.id, farbe.id))) lade(url);
+  for (const url of Object.values(resolveAnzeigeBilder(p.id, farbe.id))) lade(url);
 }
 
 /** Repräsentativbilder mehrerer Modelle – beim Öffnen einer Produktart. */
@@ -40,7 +40,7 @@ export function vorladenListe(produkte: ProductConfig[]): void {
   if (typeof window === 'undefined') return;
   for (const p of produkte) {
     if (!p.colors.length) continue;
-    const rep = produktBild(p.id, p.colors);
+    const rep = anzeigeProduktBild(p.id, p.colors);
     if (rep) lade(rep);
   }
 }
@@ -49,7 +49,7 @@ export function vorladenListe(produkte: ProductConfig[]): void {
 export function vorladenAlleFarben(p: ProductConfig): void {
   if (typeof window === 'undefined') return;
   for (const farbe of p.colors) {
-    for (const url of Object.values(resolveColorImages(p.id, farbe.id))) lade(url);
+    for (const url of Object.values(resolveAnzeigeBilder(p.id, farbe.id))) lade(url);
   }
 }
 

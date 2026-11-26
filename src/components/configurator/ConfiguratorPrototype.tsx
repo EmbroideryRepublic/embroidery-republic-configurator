@@ -23,7 +23,7 @@ import { echteMasseJeElement } from '@/config/echteMasse';
 import { getPricingRules } from '@/config/pricingRules';
 import { PRODUCTS, getProduct, type ProductConfig } from '@/config/products';
 import { kleinsteBestellteGroesse, groessenLeiterVon } from '@/config/products/groessen';
-import { resolveColorImages, repraesentativeFarbe } from '@/lib/assets';
+import { resolveAnzeigeBilder, repraesentativeFarbe } from '@/lib/assets';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
@@ -441,7 +441,7 @@ export function ConfiguratorPrototype() {
 
   const currentPrintArea = effectivePrintAreas.find((area) => area.view === activeView) ?? null;
   const currentColor = product.colors.find((c) => c.id === colorId) ?? repraesentativeFarbe(product.id, product.colors);
-  const currentImages: Record<string, string> = currentColor ? resolveColorImages(product.id, currentColor.id) : {};
+  const currentImages: Record<string, string> = currentColor ? resolveAnzeigeBilder(product.id, currentColor.id) : {};
   const currentImageUrl = currentImages[activeView] ?? '';
   // Die dem Kunden ZEIGBAREN Ansichten – einzige Quelle für Ansichtswechsler und
   // Großvorschau. Ärmelansichten ohne eigenes Bild werden ausgeblendet, statt sie

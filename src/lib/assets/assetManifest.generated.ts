@@ -1703,49 +1703,49 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-softstyle-polo/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-polo/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-softstyle-polo-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-polo-white/back.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/gildan-softstyle-polo-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-polo-navy/back.webp"
       },
       "status": "real"
     },
     "grey": {
       "views": {
         "front": "/products/gildan-softstyle-polo-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-polo-grey/back.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-softstyle-polo-royal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-polo-royal/back.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-softstyle-polo-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-polo-red/back.webp"
       },
       "status": "real"
     },
     "green": {
       "views": {
         "front": "/products/gildan-softstyle-polo-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-softstyle-polo-green/back.webp"
       },
       "status": "real"
     }
@@ -1754,42 +1754,42 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-vneck-t/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-vneck-t/back.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/gildan-vneck-t-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-vneck-t-navy/back.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-vneck-t-royal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-vneck-t-royal/back.webp"
       },
       "status": "real"
     },
     "grey": {
       "views": {
         "front": "/products/gildan-vneck-t-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-vneck-t-grey/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-vneck-t-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-vneck-t-white/back.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-vneck-t-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-vneck-t-red/back.webp"
       },
       "status": "real"
     }
@@ -1982,35 +1982,35 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "black": {
       "views": {
         "front": "/products/gildan-ladies-polo/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ladies-polo/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-ladies-polo-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ladies-polo-white/back.webp"
       },
       "status": "real"
     },
     "navy": {
       "views": {
         "front": "/products/gildan-ladies-polo-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ladies-polo-navy/back.webp"
       },
       "status": "real"
     },
     "grey": {
       "views": {
         "front": "/products/gildan-ladies-polo-grey/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ladies-polo-grey/back.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-ladies-polo-royal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-ladies-polo-royal/back.webp"
       },
       "status": "real"
     }
@@ -7297,175 +7297,175 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "navy": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-navy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-navy/back.webp"
       },
       "status": "real"
     },
     "graphite-heather": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-graphite-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-graphite-heather/back.webp"
       },
       "status": "real"
     },
     "black": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-black/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-black/back.webp"
       },
       "status": "real"
     },
     "charcoal-solid": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-charcoal-solid/back.webp"
       },
       "status": "real"
     },
     "light-pink": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-light-pink/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-light-pink/back.webp"
       },
       "status": "real"
     },
     "military-green": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-military-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-military-green/back.webp"
       },
       "status": "real"
     },
     "red": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-red/back.webp"
       },
       "status": "real"
     },
     "royal": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-royal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-royal/back.webp"
       },
       "status": "real"
     },
     "sand": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-sand/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-sand/back.webp"
       },
       "status": "real"
     },
     "sport-grey-heather": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-sport-grey-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-sport-grey-heather/back.webp"
       },
       "status": "real"
     },
     "white": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-white/back.webp"
       },
       "status": "real"
     },
     "ash-grey-heather": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-ash-grey-heather/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-ash-grey-heather/back.webp"
       },
       "status": "real"
     },
     "cherry-red": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-cherry-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-cherry-red/back.webp"
       },
       "status": "real"
     },
     "daisy": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-daisy/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-daisy/back.webp"
       },
       "status": "real"
     },
     "forest-green": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-forest-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-forest-green/back.webp"
       },
       "status": "real"
     },
     "heliconia": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-heliconia/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-heliconia/back.webp"
       },
       "status": "real"
     },
     "irish-green": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-irish-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-irish-green/back.webp"
       },
       "status": "real"
     },
     "maroon": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-maroon/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-maroon/back.webp"
       },
       "status": "real"
     },
     "off-white": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-off-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-off-white/back.webp"
       },
       "status": "real"
     },
     "orange": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-orange/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-orange/back.webp"
       },
       "status": "real"
     },
     "purple": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-purple/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-purple/back.webp"
       },
       "status": "real"
     },
     "safety-green": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-safety-green/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-safety-green/back.webp"
       },
       "status": "real"
     },
     "sage": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-sage/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-sage/back.webp"
       },
       "status": "real"
     },
     "sapphire": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-sapphire/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-sapphire/back.webp"
       },
       "status": "real"
     },
     "sky": {
       "views": {
         "front": "/products/gildan-light-cotton-adult-t-shirt-sky/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-light-cotton-adult-t-shirt-sky/back.webp"
       },
       "status": "real"
     }
@@ -13841,56 +13841,56 @@ export const ASSET_MANIFEST: Record<string, Record<string, AssetManifestEintrag>
     "cherry-red": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-cherry-red/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-cherry-red/back.webp"
       },
       "status": "real"
     },
     "deep-royal": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-deep-royal/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-deep-royal/back.webp"
       },
       "status": "real"
     },
     "garnet": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-garnet/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-garnet/back.webp"
       },
       "status": "real"
     },
     "888b8d": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-888b8d/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-888b8d/back.webp"
       },
       "status": "real"
     },
     "off-white": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-off-white/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-off-white/back.webp"
       },
       "status": "real"
     },
     "olive": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-olive/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-olive/back.webp"
       },
       "status": "real"
     },
     "2d2926": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-2d2926/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-2d2926/back.webp"
       },
       "status": "real"
     },
     "tan": {
       "views": {
         "front": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-tan/front.webp",
-        "back": "/products/_platzhalter/platzhalter.webp"
+        "back": "/products/gildan-hammer-maxweight-adult-hooded-sweatshirt-tan/back.webp"
       },
       "status": "real"
     }

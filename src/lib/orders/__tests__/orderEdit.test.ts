@@ -432,14 +432,13 @@ test('unbekanntes Produkt und fehlender Versandtarif werden abgelehnt', async ()
   assert.equal((await abgelehnt(ohneLand, [{ art: 'verringern', positionId: 'p1', neueMengen: { L: 1 } }])).grund, 'versandland');
 });
 
-test('der Preis darf durch eine Verringerung nicht steigen (Staffelsprung bei 20 Stück)', async () => {
-  // Echter Fall im Katalog: 20 Fruit-of-the-Loom-T-Shirts sind durch die Staffel BILLIGER als 19.
+test('Staffelsprung bei 20 Stück: durch den Mengenpreis-Deckel wird eine Verringerung nie teurer (früher war 19 teurer als 20)', async () => {
+  // Vor der Staffelreform vom 2026-11-26 waren 20 Fruit-of-the-Loom-T-Shirts BILLIGER als 19; eine Verringerung hätte den Preis erhöht.
+  // Jetzt gilt: Mehr Stück kosten nie weniger als weniger Stück – 19 und 20 Stück kosten gleich viel.
   const stand = await gespeicherterStand([{ id: 'p1', productId: 'fotl-heavy-t', sizeQuantities: { M: 20 } }]);
-  const r = await abgelehnt(stand, [{ art: 'verringern', positionId: 'p1', neueMengen: { M: 19 } }]);
-  assert.equal(r.grund, 'preis-steigt');
-  assert.match(r.meldung, /ERHÖHEN/);
-  assert.match(r.meldung, /Zustimmung/);
-  // Mit einer größeren Verringerung wird es wieder billiger – dann ist die Änderung zulässig.
+  const gleich = plan(await berechneAenderung(stand, [{ art: 'verringern', positionId: 'p1', neueMengen: { M: 19 } }]));
+  assert.ok(gleich.differenzCent >= 0, 'die Verringerung darf den Preis nicht erhöhen');
+  // Mit einer größeren Verringerung wird es billiger.
   const ok = plan(await berechneAenderung(stand, [{ art: 'verringern', positionId: 'p1', neueMengen: { M: 10 } }]));
   assert.ok(ok.differenzCent > 0);
 });

@@ -123,6 +123,9 @@ export const PRODUCTS: ProductConfig[] = [
         'Weiches, gebürstetes Innenvlies',
       ],
     },
+    // BILDQUELLE ZOODIE (JH050) seit 2026-11-26: textil-grosshandel.eu, die echten Fotos des Artikels JH050 je Farbe
+    // (Vorderseite, Rückseite, Seitenprofil; rechter Ärmel gespiegelt). Die frühere Spreadshirt-Aufnahme zeigte ein anderes
+    // Kleidungsstück (andere Kordel, Taschen, Naht) und passte nicht zu dem, was der Einkauf liefert.
     // Alle 4 Ansichten sind bei jeder Farbe echte, farblich passende Fotos
     // (siehe Kommentar oben) – die Ärmel-/Seitenansicht ist hier sogar ein
     // echtes Ganzkörper-Seitenprofil mit sichtbarem Reißverschluss.

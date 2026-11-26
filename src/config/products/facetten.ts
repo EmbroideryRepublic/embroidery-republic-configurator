@@ -173,6 +173,22 @@ const FARBGRUPPEN_BASIS: Record<string, Farbgruppe> = {
   'Very Turquoise': 'tuerkis', 'Weinrot/Anthrazit': 'rot', 'Weiß': 'weiss',
   'Weiß/Navy': 'weiss', 'Weiß/Royalblau': 'weiss', 'Weiß/Schwarz': 'weiss',
   Yellow: 'gelb',
+  // Namen nach dem Lieferantennamen (farbnamenLieferant.ts): Gruppe der früheren Bezeichnung übernommen.
+  'Chocolate Brown': 'braun',
+  'Faded Olive Black': 'schwarz',
+  'Burnt Yellow': 'gelb',
+  'Miami Pink': 'rosa',
+  'Sueded Bamboo Green': 'gruen',
+  Truffle: 'braun',
+  'Ocean Teal': 'tuerkis',
+  Gravel: 'grau',
+  'Pitch Black': 'schwarz',
+  'Fan Deep Royal': 'blau',
+  'Black (Heather)': 'grau',
+  'Light blue': 'blau',
+  Espresso: 'braun',
+  'Eucalyptus Green': 'gruen',
+  'Mustard Yellow': 'gelb',
 };
 
 /** Katalog-Startdatum – gilt für Produkte ohne eigenes `aufgenommenAm`.

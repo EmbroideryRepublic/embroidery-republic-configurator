@@ -72,6 +72,8 @@ export const PRODUCTS: ProductConfig[] = [
     // Alle 4 Ansichten sind bei jeder Farbe echte, farblich passende Fotos
     // (siehe Kommentar oben) – anders als bei den meisten anderen Marken
     // im Katalog ist hier auch die Ärmelansicht kein Kompromiss.
+    // BILDQUELLE seit 2026-11-26: textil-grosshandel.eu (Artikel NE20080, alle Farben, Vorderseite/Rückseite/Seitenprofil;
+    // rechter Ärmel gespiegelt). Vorher Spreadshirt-Aufnahmen mit abweichendem Blauton bei Royal.
     colors: realPhotoColorSet('neutral-classic-polo', 'black', [
       'white',
       'navy',

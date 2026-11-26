@@ -36,6 +36,7 @@ import { PRODUCTS as KINDER_PRODUCTS } from './kinder.generated';
 import { PRODUCTS as SPORT_PRODUCTS } from './sport.generated';
 import type { ProductConfig } from './types';
 import { grundpreisNachAnpassung } from '@/config/pricing/preiskorrektur';
+import { FARBNAMEN_LIEFERANT, FARBPUNKTE_KORREKTUR } from './farbnamenLieferant';
 
 // Die Produktdefinitionen tragen KEIN Lieferanten-Wissen mehr (ADR 0004): die
 // Bezugsquelle liegt ausschließlich in der Lieferantenschicht
@@ -61,7 +62,20 @@ const PRODUKTE_ROH: ProductConfig[] = [
 
 // Gezielte Grundpreis-Anpassung je Produkt (Betreiberfreigabe 2026-11-18, config/pricing/preiskorrektur.ts). Alles, was den Preis
 // liest (Konfigurator, Warenkorb, Server, Seiten), sieht ab hier den angepassten Grundpreis.
-export const PRODUCTS: ProductConfig[] = PRODUKTE_ROH.map((p) => {
+// Anzeigenamen der Farben nach dem Namen des Lieferanten (farbnamenLieferant.ts, Betreiberwunsch 2026-11-26): Nur der Name ändert sich,
+// die Farb-ID bleibt – Bildordner, Warenkorb, bestehende Bestellungen und die Lieferantenzuordnung hängen an der ID.
+function mitLieferantenfarbnamen(p: ProductConfig): ProductConfig {
+  const namen = FARBNAMEN_LIEFERANT[p.id];
+  const punkte = FARBPUNKTE_KORREKTUR[p.id];
+  if (!namen && !punkte) return p;
+  return {
+    ...p,
+    colors: p.colors.map((c) => (namen?.[c.id] || punkte?.[c.id] ? { ...c, name: namen?.[c.id] ?? c.name, hex: punkte?.[c.id] ?? c.hex } : c)),
+  };
+}
+
+export const PRODUCTS: ProductConfig[] = PRODUKTE_ROH.map((roh) => {
+  const p = mitLieferantenfarbnamen(roh);
   const preis = grundpreisNachAnpassung(p.id, p.basePrice);
   return preis === p.basePrice ? p : { ...p, basePrice: preis };
 });

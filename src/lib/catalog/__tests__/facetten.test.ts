@@ -7,6 +7,7 @@
  * den Zuordnungstabellen fehlt, schlägt hier ein Test an – und die Einordnung
  * wird EINMAL bewusst getroffen, statt dass das Produkt unauffindbar bleibt.
  */
+import { ERSETZTE_FARBNAMEN } from '@/config/products/farbnamenLieferant';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -61,7 +62,8 @@ test('die Zuordnungstabellen enthalten keine toten Einträge', () => {
   const materialien = new Set(PRODUCTS.map((p) => p.material));
   const passformen = new Set(PRODUCTS.map((p) => p.fit));
   const geschlechter = new Set(PRODUCTS.map((p) => p.detailedDescription?.gender).filter(Boolean));
-  const farben = new Set(PRODUCTS.flatMap((p) => p.colors.map((f) => f.name)));
+  const farben = new Set([...PRODUCTS.flatMap((p) => p.colors.map((f) => f.name)), ...ERSETZTE_FARBNAMEN]);
+  // ERSETZTE_FARBNAMEN: Die Gruppen sind nach dem Rohnamen geführt; der Anzeigename kommt aus farbnamenLieferant.ts.
 
   // Tote Einträge sind kein Fehler, aber ein Hinweis auf Sortimentsreste.
   // Der Test hält sie sichtbar, statt sie unbemerkt anwachsen zu lassen.

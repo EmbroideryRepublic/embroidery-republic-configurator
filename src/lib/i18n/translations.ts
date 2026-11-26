@@ -279,6 +279,8 @@ export const translations = {
     // Größenauswahl
     size_label: 'Größe',
     color_label: 'Farbe:',
+    color_more: 'weitere Farben',
+    color_less: 'Weniger Farben',
 
     view_front: 'Vorderseite',
     view_back: 'Rückseite',
@@ -721,6 +723,8 @@ export const translations = {
 
     size_label: 'Size',
     color_label: 'Color:',
+    color_more: 'more colors',
+    color_less: 'Fewer colors',
 
     view_front: 'Front',
     view_back: 'Back',

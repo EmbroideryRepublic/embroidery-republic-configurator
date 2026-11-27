@@ -8,7 +8,9 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readdirSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import path from 'node:path';
+import { AUFLOESUNGSHINWEISE_IM_KONFIGURATOR } from '@/config/upload';
 import { ANLASS_SEITEN } from '@/config/seo/anlassSeiten';
 import { GESCHAEFTSANFRAGE_BETREFF, istGueltigeKennung } from '@/config/seo/geschaeftsanfrage';
 import { DTF_ABLAUF_SCHRITTE, DTF_SEITEN } from '@/config/seo/dtfSeiten';
@@ -376,4 +378,27 @@ test('Geschäftskunden-Seite: genau ein Formular direkt nach den Vorteilen, Kenn
   for (const gut of ['B2B-0001', 'B2B-0011', 'B2B-9999']) assert.equal(istGueltigeKennung(gut), true, gut);
   for (const schlecht of ['', 'B2B-1', 'b2b-0011', 'B2B-00111', 'B2B-0011\nCC: x', '<script>', null, undefined]) assert.equal(istGueltigeKennung(schlecht as string), false, String(schlecht));
   assert.ok(GESCHAEFTSANFRAGE_BETREFF.length > 0);
+});
+
+test('Auflösungshinweise im Konfigurator aus (Betreiberwunsch 2026-11-27): Ratgeber versprechen keine Ampel und keinen Hochskalieren-Knopf dort', () => {
+  assert.equal(AUFLOESUNGSHINWEISE_IM_KONFIGURATOR, false);
+  const verboten =
+    /Konfigurator (warnt|bewertet|zeigt dann eine Warnung|zeigt eine Ampel)|Ampel des Konfigurators|Ampel wie der Konfigurator|Auflösungs-Ampel|Button „Hochskalieren“|„Hochskalieren“ im Konfigurator|im Konfigurator zeigt eine Ampel|Original wiederherstellen/;
+  for (const s of ANLASS_SEITEN) {
+    for (const t of texteVon(s)) assert.doesNotMatch(t, verboten, `${s.slug}: „${t.slice(0, 80)}…“ verspricht einen Auflösungshinweis im Konfigurator`);
+  }
+  // Das Werkzeug selbst (eigene Seite) behält Ampel und Hochskalieren.
+  const werkzeug = texteVon(ANLASS_SEITEN.find((x) => x.slug === 'druckdatei-pruefen')!).join(' ');
+  assert.match(werkzeug, /hochskalier/i);
+});
+
+test('Konfigurator: Auflösungs-Ampel und Hochskalieren-Knopf sind hinter dem Betreiberschalter, die Logik bleibt erhalten', () => {
+  const lies = (rel: string) => readFileSync(path.join(process.cwd(), rel), 'utf8');
+  const leiste = lies('src/components/configurator/ElementToolbar.tsx');
+  assert.match(leiste, /AUFLOESUNGSHINWEISE_IM_KONFIGURATOR && printMethod === 'dtf' && \(\s*<LogoQualitaetHinweis/, 'Hinweis in der Elementleiste nicht hinter dem Schalter');
+  const upload = lies('src/components/configurator/LogoUploader.tsx');
+  assert.match(upload, /AUFLOESUNGSHINWEISE_IM_KONFIGURATOR && quality && quality\.level/, 'Ampel nach dem Upload nicht hinter dem Schalter');
+  // Die Rechenlogik ist nicht gelöscht (auf true gestellt, erscheint alles wieder).
+  assert.ok(lies('src/lib/canvas/logoQualitaet.ts').includes('bewerteLogoQualitaet'));
+  assert.ok(lies('src/lib/upload/hochskalieren.ts').includes('bestimmeAngebot'));
 });

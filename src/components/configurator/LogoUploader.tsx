@@ -13,7 +13,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { berechneLogoDpi, stufeFuerDpi, logoQualitaetText, type QualityLevel as QualityStufe } from '@/lib/canvas/logoQualitaet';
 import { flacheBreiteCm } from '@/config/abwicklung';
-import { QUELLDATEI_MAX_MB } from '@/config/upload';
+import { AUFLOESUNGSHINWEISE_IM_KONFIGURATOR, QUELLDATEI_MAX_MB } from '@/config/upload';
 import type { LogoElement, PrintArea } from '@/types';
 
 const ACCEPTED_TYPES = ['image/png', 'image/svg+xml', 'application/pdf', 'image/jpeg'];
@@ -234,7 +234,8 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
 
       {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
 
-      {quality && quality.level && (
+      {/* Betreiberschalter (config/upload.ts): keine Auflösungs-Ampel für Kundschaft. */}
+      {AUFLOESUNGSHINWEISE_IM_KONFIGURATOR && quality && quality.level && (
         <div className={clsx('mt-2 flex items-start gap-1.5 rounded-lg p-2 text-xs', QUALITY_STYLES[quality.level].bg, QUALITY_STYLES[quality.level].text)}>
           {(() => {
             const Icon = QUALITY_STYLES[quality.level].icon;

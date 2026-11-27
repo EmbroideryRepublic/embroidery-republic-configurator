@@ -634,7 +634,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ueberschrift: 'So wird aus deinem Foto ein scharfer Druck',
         punkte: [
           'Hochauflösende Datei: JPG und PNG werden unterstützt. Je mehr Bildpunkte das Foto hat, desto schärfer wird der Druck.',
-          'Auflösungs-Ampel: Der Konfigurator bewertet dein Bild bei der gewählten Druckgröße – grün ab {dpiOk} dpi, gelb ab {dpiMin} dpi, darunter rot mit dem Hinweis, das Bild kleiner zu platzieren oder eine höher aufgelöste Datei zu verwenden.',
+          'Auflösung: Je nach Druckgröße braucht dein Foto genug Bildpunkte – ab {dpiOk} dpi ist die Qualität optimal, ab {dpiMin} dpi akzeptabel; darunter wird der Druck unscharf. Dann platzierst du das Bild kleiner oder verwendest eine höher aufgelöste Datei.',
           'Weißer Hintergrund: Bei Bildern mit weißem Hintergrund kannst du diesen beim Hochladen automatisch entfernen lassen (einfache Freistellung).',
           'Freigabe: Vor der Produktion prüfen wir deine Datei kostenlos, und du erhältst eine finale Vorschau zur Freigabe.',
         ],
@@ -676,7 +676,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Was passiert bei einem Foto mit zu niedriger Auflösung?',
-        a: 'Der Konfigurator zeigt dann eine Warnung: Die Auflösung ist zu niedrig für einen scharfen Druck (unter {dpiMin} dpi bei der gewählten Größe). Platziere das Bild kleiner, verwende ein SVG, lade eine höher aufgelöste Datei hoch oder nutze den Button „Hochskalieren“, der das Bild auf {dpiZiel} dpi hochrechnet, wenn das möglich ist. Zusätzliche Details entstehen dabei nicht.',
+        a: 'Dann ist die Auflösung zu niedrig für einen scharfen Druck (unter {dpiMin} dpi bei der gewählten Größe). Platziere das Bild kleiner, verwende ein SVG, lade eine höher aufgelöste Datei hoch oder skaliere das Bild vorher hoch, zum Beispiel mit dem kostenlosen Werkzeug „Druckdatei prüfen“: Es rechnet das Bild auf {dpiZiel} dpi hoch, wenn das möglich ist. Zusätzliche Details entstehen dabei nicht.',
       },
       {
         q: 'Kann ich das Foto auf Vorder- und Rückseite drucken?',
@@ -811,9 +811,9 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     h1: 'Druckauflösung berechnen',
     eyebrow: 'Kostenloser Rechner',
     beschreibung:
-      'Reicht die Auflösung deines Bildes? Bildbreite und Druckbreite eingeben, dpi berechnen und mit der Ampel des Konfigurators bewerten.',
+      'Reicht die Auflösung deines Bildes? Bildbreite und Druckbreite eingeben, dpi berechnen und mit einer Ampel bewerten.',
     einleitung: [
-      'Reicht die Auflösung deines Bildes für die gewünschte Druckgröße? Gib die Breite deines Bildes in Pixeln und die Breite des Drucks in Zentimetern ein – der Rechner zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator.',
+      'Reicht die Auflösung deines Bildes für die gewünschte Druckgröße? Gib die Breite deines Bildes in Pixeln und die Breite des Drucks in Zentimetern ein – der Rechner zeigt die Auflösung in dpi und bewertet sie mit einer Ampel (grün, gelb, rot).',
     ],
     kacheln: [],
     abschnitte: [
@@ -825,7 +825,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
           'Gelb von {dpiMin} bis {dpiOk} dpi: akzeptabel, für sehr große Drucke aber eher knapp.',
           'Rot unter {dpiMin} dpi: zu unscharf. Platziere das Bild kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch.',
         ],
-        absaetze: ['Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG); SVG und PDF bekommen keine Auflösungswarnung.'],
+        absaetze: ['Die Auflösung ist nur bei Rasterbildern (PNG, JPG) ein Thema; vektorbasierte Dateien (SVG, PDF) skalieren verlustfrei.'],
       },
       {
         ueberschrift: 'So wird gerechnet',
@@ -846,15 +846,15 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Ab wie vielen dpi ist ein Motiv scharf genug?',
-        a: 'Der Konfigurator bewertet ab {dpiOk} dpi die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb) und darunter als zu niedrig (rot).',
+        a: 'Ab {dpiOk} dpi gilt die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb) und darunter als zu niedrig (rot).',
       },
       {
         q: 'Brauchen SVG- und PDF-Dateien eine Mindestauflösung?',
-        a: 'Der Konfigurator bewertet die Auflösung nur bei Rasterbildern (PNG, JPG). SVG und PDF bekommen keine Auflösungswarnung; vektorbasierte Dateien skalieren verlustfrei.',
+        a: 'Die Auflösung zählt nur bei Rasterbildern (PNG, JPG). Für SVG und PDF gibt es keine Mindestauflösung; vektorbasierte Dateien skalieren verlustfrei.',
       },
       {
         q: 'Was kann ich tun, wenn die Auflösung zu niedrig ist?',
-        a: 'Platziere das Bild kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch. Oder skaliere das Bild hoch: Das Werkzeug zum Prüfen der Druckdatei und der Button „Hochskalieren“ im Konfigurator rechnen auf {dpiZiel} dpi, wenn das möglich ist.',
+        a: 'Platziere das Bild kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch. Oder skaliere das Bild vorher hoch: Das Werkzeug zum Prüfen der Druckdatei rechnet auf {dpiZiel} dpi, wenn das möglich ist.',
       },
     ],
     ohneAblauf: true,
@@ -1060,7 +1060,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Passt die Datei zur Druckgröße?',
         absaetze: [
-          'Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt. Wie viele, rechnet der Auflösungsrechner vor; im Konfigurator zeigt eine Ampel die Qualität deiner Datei bei der gewählten Größe.',
+          'Je größer der Druck, desto mehr Pixel braucht das Bild, damit es scharf bleibt. Wie viele, rechnet der Auflösungsrechner vor.',
         ],
       },
     ],
@@ -1184,7 +1184,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       {
         ueberschrift: 'Wie hoch muss die Auflösung sein?',
         absaetze: [
-          'Bei Rasterbildern (PNG, JPG) zählt, wie viele Bildpunkte auf einen Zoll der gedruckten Breite fallen. Der Konfigurator bewertet das für deine gewählte Druckgröße: ab {dpiOk} dpi gilt die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb), darunter als zu niedrig (rot). Vektordateien (SVG, PDF) bekommen nie eine Warnung.',
+          'Bei Rasterbildern (PNG, JPG) zählt, wie viele Bildpunkte auf einen Zoll der gedruckten Breite fallen. Für deine gewählte Druckgröße gilt: ab {dpiOk} dpi ist die Qualität optimal, zwischen {dpiMin} und {dpiOk} dpi akzeptabel, darunter zu niedrig. Vektordateien (SVG, PDF) brauchen keine Mindestauflösung.',
           'Die Tabelle zeigt, wie breit dein Bild mindestens sein sollte, wenn das Motiv in der jeweiligen Breite gedruckt wird.',
         ],
         tabelle: 'aufloesung',
@@ -1213,11 +1213,11 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Mein Bild ist zu klein – was kann ich tun?',
-        a: 'Der Konfigurator warnt, wenn die Auflösung bei der gewählten Größe zu niedrig ist (unter {dpiMin} dpi). Platziere das Bild dann kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch. Alternativ kannst du das Bild hochskalieren: Der Button „Hochskalieren“ rechnet es auf {dpiZiel} dpi hoch, wenn das möglich ist – Kanten werden dabei glatter, zusätzliche Details entstehen nicht.',
+        a: 'Ist die Auflösung bei der gewählten Größe zu niedrig (unter {dpiMin} dpi), wird der Druck unscharf. Platziere das Bild dann kleiner, verwende ein SVG oder lade eine höher aufgelöste Datei hoch. Alternativ kannst du das Bild vorher hochskalieren, zum Beispiel mit dem kostenlosen Werkzeug „Druckdatei prüfen“: Es rechnet das Bild auf {dpiZiel} dpi hoch, wenn das möglich ist – Kanten werden dabei glatter, zusätzliche Details entstehen nicht.',
       },
       {
         q: 'Kann ich auch Fotos drucken lassen?',
-        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Lade das Foto als JPG oder PNG hoch; die Auflösungs-Ampel zeigt dir, ob es für die gewählte Größe scharf genug ist.',
+        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive und große Flächen. Lade das Foto als JPG oder PNG hoch; ob es für die gewählte Größe scharf genug ist, prüfst du vorher mit dem kostenlosen Werkzeug „Druckdatei prüfen“.',
       },
       {
         q: 'Kann ich einen Schriftzug drucken lassen, ohne eine Datei zu haben?',
@@ -1244,7 +1244,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     beschreibung:
       'Bild auswählen, Druckbreite eingeben, dpi prüfen und bei Bedarf auf ca. 300 dpi hochskalieren – kostenlos, direkt im Browser, ohne Upload.',
     einleitung: [
-      'Reicht die Auflösung deines Bildes für die gewünschte Druckgröße? Wähle eine Datei aus und gib die Druckbreite ein – das Werkzeug zeigt die Auflösung in dpi und bewertet sie mit derselben Ampel wie der Konfigurator. Ist sie zu niedrig, kannst du das Bild hochskalieren und als PNG speichern.',
+      'Reicht die Auflösung deines Bildes für die gewünschte Druckgröße? Wähle eine Datei aus und gib die Druckbreite ein – das Werkzeug zeigt die Auflösung in dpi und bewertet sie mit einer Ampel (grün, gelb, rot). Ist sie zu niedrig, kannst du das Bild hochskalieren und als PNG speichern.',
       'Alles geschieht in deinem Browser: Dein Bild wird nicht hochgeladen und nicht gespeichert.',
     ],
     kacheln: [],
@@ -1267,9 +1267,9 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
         ],
       },
       {
-        ueberschrift: 'Hochskalieren im Konfigurator',
+        ueberschrift: 'Nach dem Hochskalieren',
         absaetze: [
-          'Dieselbe Berechnung steckt im Konfigurator: Ist die Auflösung eines hochgeladenen Bildes bei der gewählten Größe niedrig, erscheint neben dem Hinweis ein Button „Hochskalieren“. Über „Original wiederherstellen“ kannst du das ursprüngliche Bild zurückholen.',
+          'Speichere das Ergebnis als PNG und lade es anschließend im Konfigurator hoch. Dort legst du fest, wie groß das Motiv gedruckt wird.',
         ],
       },
     ],
@@ -1277,7 +1277,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
     fragen: [
       {
         q: 'Wie viele dpi braucht ein Bild für den Textildruck?',
-        a: 'Der Konfigurator bewertet ab {dpiOk} dpi die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb) und darunter als zu niedrig (rot). Das Hochskalieren rechnet auf {dpiZiel} dpi, wenn das technisch möglich ist.',
+        a: 'Ab {dpiOk} dpi gilt die Qualität als optimal (grün), zwischen {dpiMin} und {dpiOk} dpi als akzeptabel (gelb) und darunter als zu niedrig (rot). Das Hochskalieren rechnet auf {dpiZiel} dpi, wenn das technisch möglich ist.',
       },
       {
         q: 'Wird mein Bild hochgeladen?',
@@ -1424,7 +1424,7 @@ export const ANLASS_SEITEN: AnlassSeite[] = [
       },
       {
         q: 'Kann ich ein Foto drucken lassen?',
-        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive. Lade das Foto im Konfigurator hoch; die Auflösungs-Ampel zeigt, ob es für die gewählte Größe scharf genug ist.',
+        a: 'Ja. DTF-Transferdruck eignet sich für vollfarbige, auch fotorealistische Motive. Lade das Foto im Konfigurator hoch; ob es für die gewählte Größe scharf genug ist, prüfst du vorher mit dem kostenlosen Werkzeug „Druckdatei prüfen“.',
       },
       { q: 'Kann ich auch nur ein einzelnes Teil bedrucken lassen?', a: A_EINZELSTUECK },
       { q: 'Welche Dateien brauche ich für den Druck?', a: A_DATEIEN },

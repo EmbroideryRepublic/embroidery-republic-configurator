@@ -59,3 +59,15 @@ export const ZUSAMMENSETZEN_GESAMT_TIMEOUT_MS = 45_000;
 
 /** Höchstzahl der Verweise EINER Bestellung, Mehrfachverwendungen mitgezählt (Original und Anzeigebild je Logo). */
 export const MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG = 48;
+
+/**
+ * Auflösungshinweise im Konfigurator (Betreiberwunsch 2026-11-27): AUS.
+ *
+ * Der Betreiber skaliert hochgeladene Bilder bei Bedarf selbst hoch. Deshalb zeigt der Konfigurator Kundinnen und Kunden weder die
+ * Auflösungs-Ampel („Ungeeignet (≈ 97 dpi) …“, direkt nach dem Hochladen und dauerhaft am Logo) noch den Knopf „Hochskalieren (×n)“ samt
+ * „Original wiederherstellen“. Die Hinweis-Logik (lib/canvas/logoQualitaet.ts, lib/upload/hochskalieren*.ts) bleibt vollständig erhalten;
+ * auf `true` gestellt, erscheint alles wieder. Nicht betroffen: das kostenlose Werkzeug „Druckdatei prüfen“ und der Auflösungsrechner
+ * (eigene Seiten) sowie der Hinweis „Zu nah an Naht/Rand“. Die Ratgebertexte (config/seo/anlassSeiten.ts) versprechen deshalb keine
+ * Ampel und keinen Hochskalieren-Knopf im Konfigurator – ein Test hält das fest (anlassSeiten.test.ts).
+ */
+export const AUFLOESUNGSHINWEISE_IM_KONFIGURATOR = false;

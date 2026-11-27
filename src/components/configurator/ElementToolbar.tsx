@@ -14,7 +14,7 @@ import { measureInkCoverageRatio } from '@/lib/canvas/measureText';
 import { textKaumSichtbar } from '@/lib/canvas/textfarbe';
 import { berechneLogoDpi, bewerteLogoQualitaet, logoQualitaetText } from '@/lib/canvas/logoQualitaet';
 import { bestimmeAngebot } from '@/lib/upload/hochskalieren';
-import { AUFLOESUNGSHINWEISE_IM_KONFIGURATOR, HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR } from '@/config/upload';
+import { AUFLOESUNGSHINWEISE_IM_KONFIGURATOR } from '@/config/upload';
 import {
   HochskalierenZuGross,
   hochskaliereAusOriginal,
@@ -604,11 +604,8 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
         </div>
       )}
 
-      {selected.type === 'logo' && (HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR || AUFLOESUNGSHINWEISE_IM_KONFIGURATOR) && (
+      {selected.type === 'logo' && (
         <div className="space-y-2 border-b border-gray-100 pb-3">
-          {/* Betreiberschalter (config/upload.ts, HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR): Der Betreiber bereitet Bilder selbst auf – kein Schalter für Kundschaft. */}
-          {HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR && (
-          <>
           <div className="flex items-start gap-3">
             <span className="flex min-w-0 flex-1 items-center gap-1 text-sm text-gray-600">
               {t('element_remove_bg')}
@@ -646,8 +643,6 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
           </div>
           {isRemovingBg && <p className="text-xs text-gray-600">{t('element_remove_bg_calculating')}</p>}
           {bgError && <p className="text-xs text-red-600">{bgError}</p>}
-          </>
-          )}
           {/* Nur für DTF: Bei Stickerei wird das Logo ohnehin von Hand digitalisiert. */}
           {/* Betreiberschalter (config/upload.ts): Der Betreiber skaliert Bilder selbst hoch – keine Auflösungswarnung und kein Hochskalieren-Knopf für Kundschaft. */}
           {AUFLOESUNGSHINWEISE_IM_KONFIGURATOR && printMethod === 'dtf' && (

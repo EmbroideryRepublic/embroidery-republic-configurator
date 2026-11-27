@@ -13,7 +13,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { berechneLogoDpi, stufeFuerDpi, logoQualitaetText, type QualityLevel as QualityStufe } from '@/lib/canvas/logoQualitaet';
 import { flacheBreiteCm } from '@/config/abwicklung';
-import { AUFLOESUNGSHINWEISE_IM_KONFIGURATOR, HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR, QUELLDATEI_MAX_MB } from '@/config/upload';
+import { AUFLOESUNGSHINWEISE_IM_KONFIGURATOR, QUELLDATEI_MAX_MB } from '@/config/upload';
 import type { LogoElement, PrintArea } from '@/types';
 
 const ACCEPTED_TYPES = ['image/png', 'image/svg+xml', 'application/pdf', 'image/jpeg'];
@@ -221,19 +221,16 @@ export function LogoUploader({ printArea }: LogoUploaderProps) {
         {isLoading ? t('logo_upload_loading') : t('logo_upload_label')}
       </label>
 
-      {/* Betreiberschalter (config/upload.ts, HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR): Der Betreiber bereitet Bilder selbst auf – kein Häkchen für Kundschaft. */}
-      {HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR && (
-        <label className="mt-2 flex items-center gap-1.5 text-xs text-brand/70">
-          <input
-            type="checkbox"
-            checked={removeBg}
-            onChange={(e) => setRemoveBg(e.target.checked)}
-            className="h-3.5 w-3.5 rounded-md border-gray-300"
-          />
-          {t('logo_remove_bg_checkbox')}
-          <InfoTooltip text={t('logo_remove_bg_hint')} />
-        </label>
-      )}
+      <label className="mt-2 flex items-center gap-1.5 text-xs text-brand/70">
+        <input
+          type="checkbox"
+          checked={removeBg}
+          onChange={(e) => setRemoveBg(e.target.checked)}
+          className="h-3.5 w-3.5 rounded-md border-gray-300"
+        />
+        {t('logo_remove_bg_checkbox')}
+        <InfoTooltip text={t('logo_remove_bg_hint')} />
+      </label>
 
       {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
 

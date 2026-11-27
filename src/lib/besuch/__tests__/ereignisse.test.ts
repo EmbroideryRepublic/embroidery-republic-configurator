@@ -7,7 +7,7 @@
  *   • die Migration speichert keine IP, keine Datei-, Produkt-, Preis- oder Personendaten und hat keine Bindung an Bestellungen
  *   • der Client schreibt nichts auf das Endgerät
  *   • die Messpunkte stehen nur an den vier vorgesehenen Stellen – nie in Bestell-, Zahlungs- oder Warenkorb-Logik
- *   • der Schalter ist AUS, solange die Datenschutzerklärung nicht ergänzt wurde
+ *   • der Schalter darf nur AN sein, wenn die Datenschutzerklärung die zusätzlichen Meldungen nennt
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -135,9 +135,14 @@ test('Messpunkte: genau die vier vorgesehenen Dateien, nie in Bestell-, Zahlungs
   }
 });
 
-test('Schalter: AUS, bis der ergänzte Datenschutz-Satz freigegeben ist – dann bewusst auf true setzen und diesen Test anpassen', () => {
-  assert.equal(EREIGNIS_MESSUNG_AKTIV, false);
-  // Die Route antwortet auch bei „aus“ immer mit 204 und speichert nichts (der Schalter ist die erste Prüfung).
+test('Schalter: AN nur zusammen mit dem Datenschutz-Absatz zu den Schritten im Konfigurator', () => {
+  // Wird die Messung eingeschaltet, muss die Datenschutzerklärung die zusätzlichen Meldungen nennen (Ziffer 3).
+  const datenschutz = lies('src/app/datenschutz/page.tsx').replace(/\s+/g, ' ');
+  if (EREIGNIS_MESSUNG_AKTIV) {
+    assert.match(datenschutz, /Zusätzlich zählen wir, wie viele Besucherinnen und Besucher bestimmte Schritte im Konfigurator erreichen/);
+    assert.match(datenschutz, /nicht der Inhalt oder Name Ihrer Datei, nicht das Produkt, die Menge oder der Preis und keine Bestell- oder Kontaktdaten/);
+  }
+  // Die Route prüft den Schalter vor allem anderen: Bei „aus“ wird weder gelesen noch geschrieben.
   const route = lies('src/app/api/ereignis/route.ts');
   assert.ok(route.indexOf('EREIGNIS_MESSUNG_AKTIV') < route.indexOf('createAdminClient()'), 'Schalter wird nicht vor dem Schreiben geprüft');
   assert.ok(route.indexOf('EREIGNIS_MESSUNG_AKTIV') < route.indexOf('request.text()'), 'Schalter wird nicht vor dem Lesen geprüft');

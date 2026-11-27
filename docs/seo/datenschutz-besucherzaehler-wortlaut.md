@@ -82,3 +82,13 @@ Jede technische Aussage im Wortlaut ist durch Code oder Test belegt:
    ich sie so fassen.
 3. **Vercel-Logs** (IP-Adresse in Server-Logfiles, bereits in Ziffer 3, erster Absatz) bleiben
    unverändert; der Zähler ändert daran nichts.
+
+---
+
+## Nachtrag 2026-11-27: Schritte im Konfigurator (Ereignisse, Migration 0040)
+
+**Freigabe:** vom Betreiber am 2026-11-27 ausdrücklich erteilt („ja bitte punkt 1 und 2 durchführen“: Migration anwenden und Datenschutz-Satz freigeben), nachdem der Wortlaut im Chat vorgelegt wurde. **Umsetzung:** wortgleich als eigener Absatz in Ziffer 3 „Reichweitenmessung“ (`src/app/datenschutz/page.tsx`), **nach** dem Absatz mit dem Kennwert (Hash) und **vor** dem Absatz „Nicht gezählt werden …“. So gelten „Nicht gezählt werden …“, Rechtsgrundlage und Widerspruch auch für diese Zählung, und „demselben Kennwert wie oben“ steht direkt nach dem Absatz, auf den er sich bezieht. „Stand“ unter der Überschrift: Oktober 2026 → November 2026. Ziffer 7 (keine Cookies, nichts auf dem Endgerät) und Ziffer 13 (Kennwerte mit Ablauf des Tages gelöscht, Zahlen unbefristet) gelten unverändert auch für die Schritte.
+
+> Zusätzlich zählen wir, wie viele Besucherinnen und Besucher bestimmte Schritte im Konfigurator erreichen: den Konfigurator öffnen, ein Motiv hochladen oder einen Text hinzufügen und einen Artikel in den Warenkorb legen. Dazu wird nur der Name des jeweiligen Schrittes an unseren Server gemeldet – nicht der Inhalt oder Name Ihrer Datei, nicht das Produkt, die Menge oder der Preis und keine Bestell- oder Kontaktdaten. Gezählt wird mit demselben Kennwert wie oben (ein Schritt zählt je Besucher und Tag einmal); dauerhaft bleiben ausschließlich Zahlen ohne Personenbezug.
+
+Belege: `ereignisse.test.ts` (nur der Ereignisname wird gesendet, kein Storage/Cookie, Migration ohne IP/Datei/Produkt/Preis/Person, keine Bindung an Bestellungen, Messpunkte nur im Konfigurator nach der Aktion), `npm run besuch:ereignisse-pruefen` (30 Prüfungen gegen die echte Datenbank, zurückgerollt).

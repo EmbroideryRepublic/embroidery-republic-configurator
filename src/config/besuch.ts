@@ -91,11 +91,12 @@ export const BESUCH_ANZEIGE_TAGE = 30;
 // ═══════════════════════════════════════════════════════════════════════
 
 /**
- * Schalter der Ereignis-Messung. AUS, bis der Betreiber den ergänzten Satz der Datenschutzerklärung (Ziffer 3, Reichweitenmessung;
- * Wortlaut: docs/besucherzaehler.md → „Ereignisse“) freigegeben hat: Die Messung meldet zusätzlich zur Seitenadresse den Namen eines
- * Ereignisses („Konfigurator geöffnet“). Ist der Schalter aus, sendet der Browser nichts und der Server speichert nichts.
+ * Schalter der Ereignis-Messung (seit 2026-11-27 AN). Die Messung meldet zusätzlich zur Seitenadresse den Namen eines Ereignisses
+ * („Konfigurator geöffnet“). Voraussetzungen, die erfüllt sind: Migration 0040 angewendet und verifiziert, und der ergänzte Absatz in
+ * der Datenschutzerklärung (Ziffer 3, „Reichweitenmessung“, vom Betreiber freigegeben; Wortlaut: docs/seo/datenschutz-besucherzaehler-wortlaut.md).
+ * Ist der Schalter aus, sendet der Browser nichts und der Server speichert nichts.
  */
-export const EREIGNIS_MESSUNG_AKTIV = false;
+export const EREIGNIS_MESSUNG_AKTIV = true;
 
 /**
  * Die Schritte, die gezählt werden – feste Liste wie die Quellen: Der Client kann nur diese Namen melden, alles andere wird verworfen.

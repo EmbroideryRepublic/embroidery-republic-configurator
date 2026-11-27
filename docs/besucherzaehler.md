@@ -258,13 +258,13 @@ bleiben (sie enthalten keine Personen); die Tageskennungen verschwinden von selb
 - Tabellen `besuch_ereignisse` (Zahlen) und `besuch_ereignis_kennungen` (Tageskennung je Schritt, nach Tagesende gelöscht – die bestehende Funktion `raeume_besuch_kennungen_auf` räumt sie mit ab, der Cron-Code bleibt unverändert). Row Level Security ohne Policy, Funktionen für Browser-Rollen gesperrt, **keine** Fremdschlüssel zu Bestellungen oder Kunden.
 - Die vier Messpunkte stehen im Konfigurator **nach** der jeweiligen Aktion (Wächtertest `ereignisse.test.ts`); Bestell-, Zahlungs-, Warenkorb-Speicher- und Webhook-Code sind unberührt.
 
-**Schalter:** `EREIGNIS_MESSUNG_AKTIV` in `config/besuch.ts` ist **false**. Solange er aus ist, sendet der Browser nichts und die Route speichert nichts; der Adminbereich zeigt einen Hinweis. Einschalten erst, wenn (1) der Satz unten in die Datenschutzerklärung (Ziffer 3, „Reichweitenmessung“) übernommen ist und (2) die Migration angewendet und verifiziert ist. Danach den Schalter auf `true` setzen und den Wächtertest („Schalter: AUS …“) anpassen.
+**Schalter:** `EREIGNIS_MESSUNG_AKTIV` in `config/besuch.ts` ist seit 2026-11-27 **true**. Ist er aus, sendet der Browser nichts und die Route speichert nichts; der Adminbereich zeigt dann einen Hinweis. Er darf nur an sein, wenn der Satz unten in der Datenschutzerklärung steht (Wächtertest `ereignisse.test.ts`).
 
-**Entwurf für die Datenschutzerklärung** (Ziffer 3, nach dem Absatz „Nicht gezählt werden …“; Freigabe des Betreibers nötig, ggf. rechtlich prüfen lassen):
+**Datenschutzerklärung** (Ziffer 3, freigegeben und eingearbeitet am 2026-11-27, siehe `docs/seo/datenschutz-besucherzaehler-wortlaut.md`, Nachtrag):
 
 > Zusätzlich zählen wir, wie viele Besucherinnen und Besucher bestimmte Schritte im Konfigurator erreichen: den Konfigurator öffnen, ein Motiv hochladen oder einen Text hinzufügen und einen Artikel in den Warenkorb legen. Dazu wird nur der Name des jeweiligen Schrittes an unseren Server gemeldet – nicht der Inhalt oder Name Ihrer Datei, nicht das Produkt, die Menge oder der Preis und keine Bestell- oder Kontaktdaten. Gezählt wird mit demselben Kennwert wie oben (ein Schritt zählt je Besucher und Tag einmal); dauerhaft bleiben ausschließlich Zahlen ohne Personenbezug.
 
-**Einspielen** (Betreiberfreigabe nötig, weil es die Produktionsdatenbank ändert; rein additiv):
+**Einspielen** (rein additiv; am 2026-11-27 mit Freigabe des Betreibers angewendet):
 
 ```
 node scripts/applyMigration.mjs supabase/migrations/0040_besuch_ereignisse.sql --dry
@@ -273,4 +273,4 @@ node scripts/pruefeEreignisse.mjs        (npm run besuch:ereignisse-pruefen; zur
 node scripts/pruefeMigrationen.mjs       (Nummernfolge)
 ```
 
-Stand: Migration geschrieben, **in zurückgerollter Transaktion gegen die echte Datenbank geprüft (30 von 30)**, Trockenlauf sauber (Bestand 37 Bestellungen vorher = nachher), **noch nicht angewendet**.
+Stand 2026-11-27: Migration **angewendet** (Bestand vorher/nachher identisch: 37 Bestellungen, 3368,91 €) und **verifiziert** (30 von 30 Prüfungen), Datenschutz-Absatz eingearbeitet, Schalter an.

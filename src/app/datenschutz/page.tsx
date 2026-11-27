@@ -37,7 +37,7 @@ export default function DatenschutzPage() {
       </Link>
 
       <h1 className="mb-1 mt-4 font-serif text-2xl font-semibold text-brand">Datenschutzerklärung</h1>
-      <p className="mb-6 text-xs text-brand/70">Stand: Oktober 2026</p>
+      <p className="mb-6 text-xs text-brand/70">Stand: November 2026</p>
 
       <LegalPageNotice />
 
@@ -129,6 +129,15 @@ export default function DatenschutzPage() {
             Besucher je Tag und Seite). Zur Abwehr massenhafter automatisierter Aufrufe wird
             zusätzlich ein weiterer Kennwert Ihrer IP-Adresse (nicht die Adresse im Klartext) für
             höchstens 24 Stunden gespeichert.
+          </p>
+          <p>
+            Zusätzlich zählen wir, wie viele Besucherinnen und Besucher bestimmte Schritte im
+            Konfigurator erreichen: den Konfigurator öffnen, ein Motiv hochladen oder einen Text
+            hinzufügen und einen Artikel in den Warenkorb legen. Dazu wird nur der Name des
+            jeweiligen Schrittes an unseren Server gemeldet – nicht der Inhalt oder Name Ihrer
+            Datei, nicht das Produkt, die Menge oder der Preis und keine Bestell- oder
+            Kontaktdaten. Gezählt wird mit demselben Kennwert wie oben (ein Schritt zählt je
+            Besucher und Tag einmal); dauerhaft bleiben ausschließlich Zahlen ohne Personenbezug.
           </p>
           <p>
             Nicht gezählt werden Aufrufe, bei denen Ihr Browser „Do Not Track“ oder „Global Privacy

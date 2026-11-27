@@ -324,39 +324,6 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
     commitElement(selected.id, { xCm, yCm, isOutOfBounds: false });
   }
 
-  /** Achsenparallele Bounding-Box eines um `rotationDeg` gedrehten
-   *  Rechtecks – ein z.B. um 90° gedrehtes, breites Element wird schmal
-   *  und hoch und kann dadurch aus dem Druckbereich ragen, auch wenn das
-   *  UNGEDREHTE Rechteck (xCm/yCm/widthCm/heightCm) vollständig hineinpasst. */
-  function rotatedBoundingBoxCm(widthCm: number, heightCm: number, rotationDeg: number) {
-    const rad = (rotationDeg * Math.PI) / 180;
-    const cos = Math.abs(Math.cos(rad));
-    const sin = Math.abs(Math.sin(rad));
-    return { width: widthCm * cos + heightCm * sin, height: widthCm * sin + heightCm * cos };
-  }
-
-  // Der Rotations-Regler änderte bisher NUR rotationDeg, ohne isOutOfBounds
-  // neu zu prüfen – ein gedrehtes Element konnte dadurch sichtbar über den
-  // Druckbereich hinausragen, ohne dass die rote Warnung erscheint. Die
-  // Sperrzonen-Prüfung (Kragen/Reißverschluss) bleibt hier bewusst außen
-  // vor: sie braucht die Bild-Pixelgeometrie (imageRect), die in dieser
-  // Werkzeugleiste nicht vorliegt – dafür bleibt es beim nächsten Ziehen des
-  // Elements aktuell (siehe ConfiguratorCanvas.tsx onDragMove/onTransformEnd).
-  function handleRotationChange(rotationDeg: number) {
-    if (!selected) return;
-    if (!printArea) {
-      updateElement(selected.id, { rotationDeg });
-      return;
-    }
-    const { width, height } = rotatedBoundingBoxCm(selected.widthCm, selected.heightCm, rotationDeg);
-    const centerXCm = selected.xCm + selected.widthCm / 2;
-    const centerYCm = selected.yCm + selected.heightCm / 2;
-    const rotatedRect = { x: centerXCm - width / 2, y: centerYCm - height / 2, width, height };
-    const area = { x: 0, y: 0, width: printArea.boxWidthCm, height: printArea.boxHeightCm };
-    const isOutOfBounds = isNearSeam(rotatedRect, area, printArea.seamMarginCm);
-    updateElement(selected.id, { rotationDeg, isOutOfBounds });
-  }
-
   return (
     <div className="space-y-3 rounded-lg border border-gray-200 p-3">
       <div className="flex items-center justify-between gap-2">
@@ -605,9 +572,10 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
       )}
 
       {selected.type === 'logo' && (
-        <div className="space-y-2 border-b border-gray-100 pb-3">
-          <div className="flex items-start gap-3">
-            <span className="flex min-w-0 flex-1 items-center gap-1 text-sm text-gray-600">
+        // Kompakt (Betreiberwunsch 2026-11-27): eine schmale Zeile mit kleinem Schalter, wenig Abstand.
+        <div className="space-y-1 border-b border-gray-100 pb-2">
+          <div className="flex items-center gap-2">
+            <span className="flex min-w-0 flex-1 items-center gap-1 text-xs text-gray-600">
               {t('element_remove_bg')}
               <InfoTooltip text={t('element_remove_bg_hint')} />
             </span>
@@ -631,13 +599,13 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
                 }
               }}
               className={clsx(
-                'relative h-6 w-11 flex-shrink-0 rounded-full transition-colors',
+                'relative h-5 w-9 flex-shrink-0 rounded-full transition-colors',
                 (selected as LogoElement).backgroundRemoved ? 'bg-gold' : 'bg-gray-300'
               )}
             >
               <span
-                className="absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all"
-                style={{ left: (selected as LogoElement).backgroundRemoved ? '22px' : '2px' }}
+                className="absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all"
+                style={{ left: (selected as LogoElement).backgroundRemoved ? '18px' : '2px' }}
               />
             </button>
           </div>
@@ -710,22 +678,7 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
         </div>
       )}
 
-      {/* Rotation – für Logo und Text gleichermaßen direkt einstellbar,
-          nicht nur per Ziehen am Drehgriff im Canvas. */}
-      {/* Eine Zeile statt zwei: Beschriftung, Regler und Gradzahl nebeneinander (spart Platz im Panel). */}
-      <div className="flex items-center gap-2 text-[11px] text-gray-600">
-        <span className="w-14 shrink-0 font-medium">{t('element_rotation')}</span>
-        <input
-          type="range"
-          min={0}
-          max={359}
-          value={((selected.rotationDeg % 360) + 360) % 360}
-          onChange={(e) => handleRotationChange(Number(e.target.value))}
-          aria-label={t('element_rotation')}
-          className="h-4 min-w-0 flex-1"
-        />
-        <span className="w-9 shrink-0 text-right tabular-nums">{Math.round(((selected.rotationDeg % 360) + 360) % 360)}°</span>
-      </div>
+      {/* Der Regler „Rotation“ ist bewusst entfernt (Betreiberwunsch 2026-11-27): gedreht wird am Drehgriff im Canvas, das Panel bleibt kurz. */}
 
       {/* Live-Maße – gilt für Logo und Text gleichermaßen */}
       <div className="grid grid-cols-2 gap-2 rounded-md bg-gray-50 p-2 text-sm text-gray-700">

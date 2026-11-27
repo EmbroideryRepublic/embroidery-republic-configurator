@@ -229,7 +229,10 @@ export default function DatenschutzPage() {
           </p>
           <ul className="ml-4 list-disc space-y-1">
             <li>Inhalt des Warenkorbs</li>
-            <li>aktuelle Konfiguration inklusive hochgeladener Motive (IndexedDB)</li>
+            <li>
+              aktuelle Konfiguration inklusive hochgeladener Motive sowie die zuletzt bearbeiteten
+              Entwürfe (bis zu sechs, je Produkt einer; IndexedDB)
+            </li>
             <li>gewählte Währung, gewählte Sprache sowie markierte Favoriten</li>
             <li>
               zuletzt geöffnete Produktgruppe im Produktbrowser, damit Sie dort weitermachen können,

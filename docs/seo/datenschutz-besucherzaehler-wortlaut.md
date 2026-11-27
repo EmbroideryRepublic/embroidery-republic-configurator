@@ -92,3 +92,17 @@ Jede technische Aussage im Wortlaut ist durch Code oder Test belegt:
 > Zusätzlich zählen wir, wie viele Besucherinnen und Besucher bestimmte Schritte im Konfigurator erreichen: den Konfigurator öffnen, ein Motiv hochladen oder einen Text hinzufügen und einen Artikel in den Warenkorb legen. Dazu wird nur der Name des jeweiligen Schrittes an unseren Server gemeldet – nicht der Inhalt oder Name Ihrer Datei, nicht das Produkt, die Menge oder der Preis und keine Bestell- oder Kontaktdaten. Gezählt wird mit demselben Kennwert wie oben (ein Schritt zählt je Besucher und Tag einmal); dauerhaft bleiben ausschließlich Zahlen ohne Personenbezug.
 
 Belege: `ereignisse.test.ts` (nur der Ereignisname wird gesendet, kein Storage/Cookie, Migration ohne IP/Datei/Produkt/Preis/Person, keine Bindung an Bestellungen, Messpunkte nur im Konfigurator nach der Aktion), `npm run besuch:ereignisse-pruefen` (30 Prüfungen gegen die echte Datenbank, zurückgerollt).
+
+---
+
+## Nachtrag 2026-11-27 (2): „Zuletzt bearbeitet“-Entwürfe in Ziffer 7
+
+**Freigabe:** vom Betreiber am 2026-11-27 erteilt („mach das was mehrwert hat“), nachdem der Wortlaut im Chat vorgelegt wurde. **Umsetzung:** wortgleich in `src/app/datenschutz/page.tsx`, Ziffer 7, zweiter Aufzählungspunkt. Beleg: `MAX_ENTWUERFE = 6` und „ein Entwurf je Produkt“ (`src/lib/configurator/entwuerfe.ts`), Speicherung in IndexedDB (`src/stores/entwuerfeStore.ts`).
+
+**Bisher:**
+
+> aktuelle Konfiguration inklusive hochgeladener Motive (IndexedDB)
+
+**Neu:**
+
+> aktuelle Konfiguration inklusive hochgeladener Motive sowie die zuletzt bearbeiteten Entwürfe (bis zu sechs, je Produkt einer; IndexedDB)

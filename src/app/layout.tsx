@@ -4,6 +4,8 @@ import { Footer } from '@/components/layout/Footer';
 import { GlobaleKopfzeile } from '@/components/layout/GlobaleKopfzeile';
 import { CartDrawerHost } from '@/components/layout/CartDrawerHost';
 import { Besuchszaehler } from '@/components/layout/Besuchszaehler';
+import { AktionsLeiste } from '@/components/aktion/AktionsLeiste';
+import { aktuelleAktion } from '@/config/aktion';
 import { veredelungVerfuegbar } from '@/config/bestellweg';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { suchmaschinenBestaetigung } from '@/lib/seo/bestaetigung';
@@ -85,6 +87,8 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Preisaktion (config/aktion.ts, z. B. Black Week): Der Server liefert die Leiste nur, solange sie läuft; der Browser blendet sie bei Ablauf selbst aus.
+  const aktion = aktuelleAktion();
   return (
     <html lang="de">
       <body
@@ -101,6 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Zum Inhalt springen
         </a>
+        {aktion && <AktionsLeiste aktion={aktion} />}
         <GlobaleKopfzeile />
         {/* tabindex=-1: macht den Container programmatisch fokussierbar
             (ohne ihn in die normale Tab-Reihenfolge aufzunehmen), damit der

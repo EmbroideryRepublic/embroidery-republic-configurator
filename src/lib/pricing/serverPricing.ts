@@ -26,6 +26,7 @@ import type { PriceLine } from './priceLine';
 import { groupByCategory } from './priceLine';
 import { calculatePrice } from './calculatePrice';
 import { echteMasseJeElement } from '@/config/echteMasse';
+import type { PreisAktion } from '@/config/aktion';
 import type { CartItem } from '@/types';
 
 function round2(value: number): number {
@@ -51,8 +52,14 @@ export interface ServerItemPrice {
   priced: boolean;
 }
 
-/** Berechnet den Preis EINER Position autoritativ aus Katalog + Konfiguration. */
-export async function priceCartItem(item: CartItem): Promise<ServerItemPrice> {
+/**
+ * Berechnet den Preis EINER Position autoritativ aus Katalog + Konfiguration.
+ *
+ * `aktion`: die zum Rechenzeitpunkt gültige Preisaktion (config/aktion.ts, `aktuelleAktion()`; bei bestehenden Bestellungen die zum
+ * Bestelldatum gültige). Ohne Angabe wird NICHT rabattiert – Tests und statische Preisbeispiele bleiben so vom Datum unabhängig; die echte
+ * Bestellung (lib/actions/orders.ts) und die Bestellbearbeitung (lib/orders/orderEdit.ts) übergeben sie ausdrücklich.
+ */
+export async function priceCartItem(item: CartItem, aktion: PreisAktion | null = null): Promise<ServerItemPrice> {
   const product = getProduct(item.productId);
   const quantity = trustedQuantity(item.sizeQuantities);
   if (!product) {
@@ -67,6 +74,7 @@ export async function priceCartItem(item: CartItem): Promise<ServerItemPrice> {
     pricingRules,
     // Echte flache Motivmaße IMMER serverseitig aus Katalog + Geometrie abgeleitet, nie vom Client übernommen.
     echteMasse: echteMasseJeElement(item),
+    aktion,
   });
   return { productId: item.productId, quantity, unitPrice, totalPrice, priced: true };
 }
@@ -112,8 +120,13 @@ export interface ServerCartPricing {
  * serverseitigem Warenwert (shipping.ts). Ohne Lieferland (z.B. unverbindliche
  * Anfrage) wird kein Versand angesetzt.
  */
-export async function priceCart(items: CartItem[], shippingCountry?: string): Promise<ServerCartPricing> {
-  const priced = await Promise.all(items.map((it) => priceCartItem(it)));
+export async function priceCart(
+  items: CartItem[],
+  shippingCountry?: string,
+  /** Die zum Rechenzeitpunkt gültige Preisaktion (siehe priceCartItem); ohne Angabe keine Aktion. */
+  aktion: PreisAktion | null = null
+): Promise<ServerCartPricing> {
+  const priced = await Promise.all(items.map((it) => priceCartItem(it, aktion)));
 
   // Die Stufen 1–3 laufen über die PIPELINE (lib/pricing/pipeline.ts) – es
   // gibt bewusst keine zweite Rechenlogik für den Warenkorb. Positionen, die
@@ -133,6 +146,7 @@ export async function priceCart(items: CartItem[], shippingCountry?: string): Pr
           elements: item.elements,
           pricingRules: await getPricingRules(item.printMethod),
           echteMasse: echteMasseJeElement(item),
+          aktion,
         };
       })
   );

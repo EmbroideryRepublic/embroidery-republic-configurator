@@ -29,6 +29,8 @@ import { markenSeiteVon } from '@/lib/seo/dtfAdresse';
 import { ProduktFarbwahl } from '@/components/produkt/ProduktFarbwahl';
 import { ProduktFarbeProvider } from '@/components/produkt/ProduktFarbeContext';
 import { KonfiguratorCta } from '@/components/produkt/KonfiguratorCta';
+import { AktionsPlakette } from '@/components/aktion/AktionsPlakette';
+import { aktuelleAktion } from '@/config/aktion';
 import { ProduktKaufleiste } from '@/components/produkt/ProduktKaufleiste';
 import { Veredelungsverfahren } from '@/components/shop/Veredelungsverfahren';
 import { veredelungVerfuegbar } from '@/config/bestellweg';
@@ -268,6 +270,8 @@ export default async function Produktseite(props: { params: Promise<{ slug: stri
                 {IST_KLEINUNTERNEHMER ? 'Kein Steuerausweis (§ 19 UStG)' : `inkl. ${steuersatzFuer().satz} % MwSt.`} ·
                 pro Stück zzgl. Veredelung · ohne Mindestmenge · Staffelpreise ab 5 Stück
               </p>
+              {/* Preisaktion (config/aktion.ts, z. B. Black Week): läuft eine, steht sie hier neben dem Preis – der Rabatt kommt im Warenkorb automatisch. */}
+              {aktuelleAktion() && <AktionsPlakette aktion={aktuelleAktion()!} className="mt-3" />}
               <KonfiguratorCta
                 produktId={produkt.id}
                 className="mt-4 block rounded-full bg-gold-btn px-4 py-3.5 text-center text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-gold-dark active:scale-[0.98]"

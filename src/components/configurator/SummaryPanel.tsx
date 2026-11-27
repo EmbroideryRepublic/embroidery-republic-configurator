@@ -3,7 +3,7 @@
 import { meldeBestellwegSchritt } from '@/lib/besuch/ereignisMelden';
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { Check, ChevronDown, TrendingDown } from 'lucide-react';
+import { Check, ChevronDown, Tag, TrendingDown } from 'lucide-react';
 import { InfoTooltip } from '@/components/ui/InfoTooltip';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useCartStore } from '@/stores/cartStore';
@@ -18,6 +18,7 @@ import type { CartItem, PrintView } from '@/types';
 import { DECORATION_POSITION_ORDER, positionTranslationKey } from '@/config/decorationPositions';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { istNurAufAnfrage } from '@/config/bestellweg';
+import { useAktuelleAktion } from '@/components/aktion/useAktion';
 
 
 interface SummaryPanelProps {
@@ -80,6 +81,9 @@ export function SummaryPanel({
   const t = (key: Parameters<typeof translate>[0], vars?: Record<string, string | number>) => translate(key, language, vars);
   const currency = useCurrencyStore((s) => s.currency);
   const formatPrice = (amount: number) => formatPriceWithCurrency(amount, currency);
+  // Preisaktion (config/aktion.ts, z. B. Black Week): Der Rabatt steckt schon im angezeigten Preis (breakdown.aktion*); Name und Code für die Anzeige.
+  const aktion = useAktuelleAktion();
+  const aktionAngewendet = Boolean(aktion && breakdown && breakdown.aktionTotal < 0);
 
   const [isPriceChanged, setIsPriceChanged] = useState(false);
   const [showBreakdown, setShowBreakdown] = useState(false);
@@ -123,6 +127,8 @@ export function SummaryPanel({
       unitPrice,
       totalPrice,
       setupTotal: breakdown?.setupTotal ?? 0,
+      // Anzeige im Warenkorb („Black Week: −X €“); der Server rechnet den Rabatt immer selbst.
+      ...(breakdown && breakdown.aktionTotal < 0 ? { aktionErsparnis: Math.round(-breakdown.aktionTotal * 100) / 100 } : {}),
       addedAt: Date.now(),
     };
     addCartItem(item);
@@ -330,6 +336,15 @@ export function SummaryPanel({
                   </span>
                 </div>
               )}
+              {aktionAngewendet && aktion && breakdown.aktionPerUnit < -0.005 && (
+                <div className="flex items-center justify-between font-medium text-gold-dark" data-testid="aktion-details-zeile">
+                  <span className="flex items-center gap-1">
+                    {aktion.name} −{breakdown.aktionProzent} % ({aktion.code})
+                    <InfoTooltip text={`${aktion.name}: ${breakdown.aktionProzent} % auf den Preis dieser Position (Textil, Veredelung und Einrichtung), automatisch angewendet – nichts einzugeben. Gilt bis einschließlich ${aktion.letzterTag}. Der Versand ist ausgenommen.`} />
+                  </span>
+                  <span>−{formatPrice(Math.abs(breakdown.aktionPerUnit))}</span>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -339,6 +354,20 @@ export function SummaryPanel({
     <div className="flex-shrink-0 space-y-2 rounded-xl border border-gold/20 bg-white p-3 shadow-elegant lg:[@media(min-height:600px)]:sticky lg:[@media(min-height:600px)]:bottom-0 lg:[@media(min-height:600px)]:z-10">
       {/* Gesamtpreis, sobald überhaupt eine Menge gewählt ist – auch bei
           einem einzigen Stück. Vorher erschien er erst ab 5 Stück. */}
+      {/* Preisaktion: macht sichtbar, dass der Code automatisch gilt – ohne Eingabefeld. Der Gesamtpreis darunter enthält den Rabatt bereits. */}
+      {quantity > 0 && aktionAngewendet && aktion && breakdown && (
+        <p
+          data-testid="aktion-hinweis"
+          className="flex items-center justify-between gap-2 rounded-lg bg-brand px-3 py-1.5 text-[11px] font-semibold text-white"
+        >
+          <span className="flex min-w-0 items-center gap-1.5">
+            <Tag className="h-3.5 w-3.5 flex-shrink-0 text-gold" aria-hidden="true" />
+            <span className="font-mono tracking-[0.08em]">{aktion.code}</span>
+            <span className="truncate font-medium text-white/80">angewendet · −{breakdown.aktionProzent} %</span>
+          </span>
+          <span className="flex-shrink-0 tabular-nums text-gold">−{formatPrice(Math.abs(breakdown.aktionTotal))}</span>
+        </p>
+      )}
       {quantity > 0 ? (
         <div
           className={clsx(
@@ -361,13 +390,13 @@ export function SummaryPanel({
             <p className="text-[11px] text-brand/70" data-testid="gesamtpreis-herleitung">
               {breakdown && breakdown.mengenDeckelAufMenge !== null
                 ? `Preis wie bei ${breakdown.mengenDeckelAufMenge} Stück (≈ ${formatPrice(unitPrice)}/Stk.)`
-                : `${formatPrice(unitPrice)}/Stk. × ${quantity}`}
+                : `${aktionAngewendet && Math.abs(unitPrice * quantity - totalPrice) >= 0.005 ? '≈ ' : ''}${formatPrice(unitPrice)}/Stk. × ${quantity}`}
             </p>
           </div>
           {/* whitespace-nowrap: Die längere Bezeichnung bei Stickerei ("Geschätzter
               Gesamtpreis (unverbindlich)") darf umbrechen, der Betrag nicht –
               sonst steht in der schmalen Spalte das €-Zeichen allein in einer Zeile. */}
-          <span className={clsx('font-serif text-xl font-bold text-gold-dark', nurAnfrage && 'flex-shrink-0 whitespace-nowrap pl-2')}>
+          <span className={clsx('flex-shrink-0 whitespace-nowrap pl-2 font-serif text-xl font-bold text-gold-dark')}>
             {formatPrice(totalPrice)}
           </span>
         </div>

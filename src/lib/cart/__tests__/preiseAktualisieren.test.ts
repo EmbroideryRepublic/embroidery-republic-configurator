@@ -82,7 +82,8 @@ test('unbekanntes Produkt und leere Menge bleiben unangetastet, der Rest wird ge
 test('Warenkorb-Speicher rechnet nach dem Laden neu (per ID, ohne Zwischenzeitliches zu überschreiben); der Warenkorb sagt es', () => {
   const store = readFileSync('src/stores/cartStore.ts', 'utf8');
   assert.match(store, /onRehydrateStorage: \(\) => \(state\) =>/);
-  assert.match(store, /berechnePreiseNeu\(vorher\)/);
+  // Die Preisaktion (Black Week) kommt vom Browser-Warenkorb mit: ohne sie zeigte der Korb nach dem Laden die Preise OHNE Rabatt.
+  assert.match(store, /berechnePreiseNeu\(vorher, aktuelleAktion\(\)\)/);
   assert.match(store, /s\.items\.map\(\(i\) => neuePreise\.get\(i\.id\) \?\? i\)/);
   assert.match(store, /useWarenkorbHinweisStore\.getState\(\)\.setze\(geaendert\)/);
   const drawer = readFileSync('src/components/layout/CartDrawer.tsx', 'utf8');

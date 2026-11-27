@@ -15,6 +15,7 @@ import { getPricingRules } from '@/config/pricingRules';
 import { calculatePrice } from '@/lib/pricing/calculatePrice';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { echteMasseJeElement } from '@/config/echteMasse';
+import type { PreisAktion } from '@/config/aktion';
 
 const CENT = 0.005;
 
@@ -24,7 +25,11 @@ export interface PreiseNeuErgebnis {
   geaendert: number;
 }
 
-export async function berechnePreiseNeu(items: CartItem[]): Promise<PreiseNeuErgebnis> {
+/**
+ * `aktion`: die jetzt gültige Preisaktion (config/aktion.ts, `aktuelleAktion()`; der Warenkorb übergibt sie). Ohne Angabe wird nicht rabattiert.
+ * Beginnt oder endet eine Aktion, während der Warenkorb noch offen ist, ändern sich damit die Preise – genau wie bei einer Preisänderung.
+ */
+export async function berechnePreiseNeu(items: CartItem[], aktion: PreisAktion | null = null): Promise<PreiseNeuErgebnis> {
   let geaendert = 0;
   const ergebnis: CartItem[] = [];
   for (const item of items) {
@@ -41,21 +46,32 @@ export async function berechnePreiseNeu(items: CartItem[]): Promise<PreiseNeuErg
       elements: item.elements,
       pricingRules: regeln,
       echteMasse: echteMasseJeElement(item),
+      aktion,
     });
     if (r.hasErrors || !(r.totalPrice > 0)) {
       ergebnis.push(item);
       continue;
     }
+    // Gespart durch die Aktion (positiv) – wird mit der Position gespeichert, damit der Warenkorb den Rabatt zeigen kann, ohne zurückzurechnen.
+    const aktionErsparnis = r.breakdown.aktionTotal < 0 ? Math.round(-r.breakdown.aktionTotal * 100) / 100 : undefined;
     const anders =
       Math.abs(r.unitPrice - item.unitPrice) > CENT ||
       Math.abs(r.totalPrice - item.totalPrice) > CENT ||
-      Math.abs(r.breakdown.setupTotal - (item.setupTotal ?? 0)) > CENT;
+      Math.abs(r.breakdown.setupTotal - (item.setupTotal ?? 0)) > CENT ||
+      Math.abs((aktionErsparnis ?? 0) - (item.aktionErsparnis ?? 0)) > CENT;
     if (!anders) {
       ergebnis.push(item);
       continue;
     }
     geaendert++;
-    ergebnis.push({ ...item, unitPrice: r.unitPrice, totalPrice: r.totalPrice, setupTotal: r.breakdown.setupTotal });
+    const { aktionErsparnis: _alt, ...ohneAktion } = item;
+    ergebnis.push({
+      ...ohneAktion,
+      unitPrice: r.unitPrice,
+      totalPrice: r.totalPrice,
+      setupTotal: r.breakdown.setupTotal,
+      ...(aktionErsparnis !== undefined ? { aktionErsparnis } : {}),
+    });
   }
   return { items: ergebnis, geaendert };
 }

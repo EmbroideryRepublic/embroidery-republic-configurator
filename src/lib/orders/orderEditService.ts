@@ -461,7 +461,7 @@ export async function ladeAenderungsStand(orderId: string, db: AdminClient = cre
   const { data: order, error } = await db
     .from('orders')
     .select(
-      'id, order_number, order_type, status, payment_status, payment_method, total_price, quantity, tax_rate, shipping_country, invoice_number, invoice_date, rechnung_unklarer_zustand, email'
+      'id, order_number, order_type, status, payment_status, payment_method, total_price, quantity, tax_rate, shipping_country, invoice_number, invoice_date, rechnung_unklarer_zustand, email, created_at'
     )
     .eq('id', orderId)
     .maybeSingle();
@@ -531,6 +531,7 @@ export async function ladeAenderungsStand(orderId: string, db: AdminClient = cre
       invoiceDate: (order.invoice_date as string | null) ?? null,
       rechnungUnklarerZustand: Boolean(order.rechnung_unklarer_zustand),
       email: (order.email as string | null) ?? null,
+      createdAt: (order.created_at as string | null) ?? null,
     },
     positionen,
     lieferantenStatus: (lieferanten ?? []).map((l) => l.status as string),

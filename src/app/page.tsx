@@ -54,6 +54,8 @@ import { Produktkachel } from '@/components/shop/Produktkachel';
 import { MarkenChips } from '@/components/seo/MarkenChips';
 import { AnlassChips } from '@/components/seo/AnlassChips';
 import { HeroText } from '@/components/home/HeroText';
+import { BlackWeekBand } from '@/components/aktion/BlackWeekBand';
+import { aktuelleAktion } from '@/config/aktion';
 import { kanonischeBasisUrl } from '@/lib/seo/basisUrl';
 import { kategorieLink } from '@/lib/seo/kategorieAdresse';
 import { organisationSchema } from '@/lib/seo/strukturierteDaten';
@@ -112,6 +114,8 @@ function findeBild(treffer: typeof PRODUCTS, art: ProductType): string | undefin
 }
 
 export default async function Startseite() {
+  // Preisaktion (config/aktion.ts): läuft eine, steht ihr Band direkt unter der Bühne.
+  const aktion = aktuelleAktion();
   const guenstigster = Math.min(...PRODUCTS.map((p) => p.basePrice));
 
   const kategorien = REIHENFOLGE.map((art) => {
@@ -242,6 +246,10 @@ export default async function Startseite() {
           </div>
         </div>
       </section>
+
+      {/* ══ Preisaktion (z. B. Black Week) ═══════════════════════════════
+          Nur solange sie läuft (config/aktion.ts). Der Code ist reine Anzeige, der Rabatt kommt automatisch in den Warenkorb. */}
+      {aktion && <BlackWeekBand aktion={aktion} />}
 
       {/* ══ Vorteilsleiste ══════════════════════════════════════════════
           Vier belegte Fakten direkt unter der Bühne (Referenz): Menge, Produktionszeit, Verfahren, Versandgrenze – alle Zahlen

@@ -51,6 +51,12 @@ export interface PriceCalculationInput {
    * echte Fläche. Ohne Eintrag gilt das gezeichnete Maß des Elements.
    */
   echteMasse?: ReadonlyArray<{ breiteCm: number; hoeheCm: number } | undefined>;
+  /**
+   * Zeitlich begrenzte Prozent-Aktion (config/aktion.ts, z. B. Black Week): `prozent` Rabatt auf den GESAMTPREIS der Position – Textil,
+   * Veredelung und Einrichtung, nach Mengenstaffel und Mengenpreis-Deckel, ohne Versand. Standard: KEINE – wer die Aktion will, übergibt
+   * `aktuelleAktion()` (Konfigurator, Warenkorb, Server). So bleiben Tests und statische Preisbeispiele unabhängig vom Datum.
+   */
+  aktion?: { prozent: number } | null;
 }
 
 export interface PriceCalculationResult {
@@ -127,6 +133,12 @@ export interface PriceCalculationResult {
     mengenDeckelPerUnit: number;
     /** Die Menge, deren Preis gilt (Staffelgrenze), solange der Deckel wirkt; sonst null. Für den Mengen-Tipp („genauso viel für N Stück“). */
     mengenDeckelAufMenge: number | null;
+    /** Satz der angewandten Aktion in Prozent (config/aktion.ts), sonst 0. */
+    aktionProzent: number;
+    /** Aktionsrabatt auf den Gesamtpreis der Position (NEGATIV oder 0) – im Gesamtpreis enthalten; in den Preisposten eine eigene Zeile. */
+    aktionTotal: number;
+    /** Dasselbe je Stück (NEGATIV oder 0) – im unitPrice enthalten, eigene Zeile in den Preisdetails; die Zeilen ergeben so wieder den Stückpreis. */
+    aktionPerUnit: number;
   };
 }
 
@@ -468,9 +480,17 @@ export function staffelgrenzen(pricingRules: PricingRule[]): number[] {
  * und machte „ab 100 Stück 21,99 €“ bei 100 Stück falsch (Begründung und Zahlen: docs/kalkulationsmodell.md, Abschnitt 2026-11-26).
  *
  * Gilt NUR für DTF (Positionsstaffel ohne Stichaufpreis); die Stickerei rechnet unverändert.
+ *
+ * AKTION (`input.aktion`, config/aktion.ts): Ein zeitlich begrenzter Prozent-Rabatt kommt als LETZTER Schritt auf den fertigen Positionspreis
+ * (siehe wendeAktionAn). Er verändert weder Staffel noch Deckel – beide rechnen mit dem regulären Preis, dadurch bleibt „größere Menge kostet nie
+ * weniger Stück für Stück“ unberührt, und ohne Aktion ist das Ergebnis Cent für Cent das bisherige.
  */
 export function calculatePrice(input: PriceCalculationInput): PriceCalculationResult {
   const quantity = Math.max(input.quantity, 1);
+  return wendeAktionAn(berechneMitDeckel(input, quantity), quantity, input.aktion);
+}
+
+function berechneMitDeckel(input: PriceCalculationInput, quantity: number): PriceCalculationResult {
   const roh = berechneStaffelpreis(input, quantity);
   // Ein fehlerhafter Preis (unbekannter Baustein) ist ohnehin nicht verwendbar – dann kein Deckel und keine weiteren Rechnungen,
   // damit der Fehler nicht für jede Staffelgrenze erneut protokolliert wird.
@@ -780,6 +800,39 @@ function berechneStaffelpreis(input: PriceCalculationInput, quantity: number): P
       mengenDeckelTotal: 0,
       mengenDeckelPerUnit: 0,
       mengenDeckelAufMenge: null,
+      // Setzt calculatePrice() nachträglich, wenn eine Aktion übergeben wurde (siehe wendeAktionAn).
+      aktionProzent: 0,
+      aktionTotal: 0,
+      aktionPerUnit: 0,
+    },
+  };
+}
+
+/**
+ * Aktionsrabatt (config/aktion.ts) auf das fertige Ergebnis einer Position – NACH Mengenstaffel und Mengenpreis-Deckel, auf den ganzen
+ * Positionspreis (Textil + Veredelung + Einrichtung).
+ *
+ * Rundung: Rabattiert wird immer der GESAMTPREIS (auf Cent gerundet); der Stückpreis ist daraus abgeleitet (Gesamtpreis ÷ Menge, auf Cent). Damit
+ * sind es exakt die Prozent auf den Betrag, den die Kundschaft zahlt, und die Zusage „eine größere Bestellung kostet nie weniger“ (Staffel und
+ * Mengenpreis-Deckel, staffelMonoton.test.ts) bleibt auch mit Aktion bestehen – die Rundung ist monoton, rabattierte Einzelstückpreise mal Menge
+ * wären es um einige Cent nicht. Folge: „Stückpreis × Menge“ kann um bis zu eine halbe Cent-Einheit je Stück vom Gesamtpreis abweichen; die
+ * Anzeige weist das mit „≈“ aus. Die Summe der Posten (positionStage) gleicht den Rest über die Zeile „Rundung“ aus; es geht nie ein Cent verloren.
+ */
+function wendeAktionAn(roh: PriceCalculationResult, quantity: number, aktion: PriceCalculationInput['aktion']): PriceCalculationResult {
+  const prozent = aktion ? Math.min(100, Math.max(0, aktion.prozent)) : 0;
+  if (!(prozent > 0) || roh.hasErrors || !(roh.totalPrice > 0)) return roh;
+
+  const neuGesamt = roundToCents(roh.totalPrice * (1 - prozent / 100));
+  const neuStueck = roundToCents(neuGesamt / quantity);
+  return {
+    ...roh,
+    unitPrice: neuStueck,
+    totalPrice: neuGesamt,
+    breakdown: {
+      ...roh.breakdown,
+      aktionProzent: prozent,
+      aktionTotal: roundToCents(neuGesamt - roh.totalPrice),
+      aktionPerUnit: roundToCents(neuStueck - roh.unitPrice),
     },
   };
 }

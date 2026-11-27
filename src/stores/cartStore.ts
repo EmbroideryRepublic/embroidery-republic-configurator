@@ -3,6 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import type { CartItem } from '@/types';
 import { indexedDbStorage, getTabId } from '@/lib/storage/indexedDbStorage';
 import { useWarenkorbHinweisStore } from '@/stores/warenkorbHinweisStore';
+import { aktuelleAktion } from '@/config/aktion';
 
 interface CartState {
   items: CartItem[];
@@ -82,7 +83,7 @@ export const useCartStore = create<CartState>()(
         // erst hier nachgeladen – und nur, wenn überhaupt Positionen im Korb liegen –, statt in jede Seite fest eingebunden
         // zu sein (der Warenkorb-Speicher steckt über die Kopfzeile in jeder Seite).
         void import('@/lib/cart/preiseAktualisieren')
-          .then(({ berechnePreiseNeu }) => berechnePreiseNeu(vorher))
+          .then(({ berechnePreiseNeu }) => berechnePreiseNeu(vorher, aktuelleAktion()))
           .then(({ items, geaendert }) => {
             if (geaendert === 0) return;
             const neuePreise = new Map(items.map((i) => [i.id, i]));

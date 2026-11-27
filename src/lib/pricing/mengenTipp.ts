@@ -61,8 +61,10 @@ export function findeNaechsteStufe(eingabe: {
   elements: ConfigElement[];
   pricingRules: PricingRule[];
   echteMasse?: ReadonlyArray<{ breiteCm: number; hoeheCm: number } | undefined>;
+  /** Preisaktion (config/aktion.ts), damit die genannten Preise die der Anzeige sind; die Suche selbst vergleicht reguläre Preise. */
+  aktion?: { prozent: number } | null;
 }): NaechsteStufe | null {
-  const { basePrice, quantity, elements, pricingRules, echteMasse } = eingabe;
+  const { basePrice, quantity, elements, pricingRules, echteMasse, aktion } = eingabe;
   if (!Number.isFinite(quantity) || quantity < 1 || pricingRules.length === 0) return null;
 
   const regulaer = (menge: number) =>
@@ -73,7 +75,7 @@ export function findeNaechsteStufe(eingabe: {
   const ende = quantity + Math.max(60, quantity);
   for (let menge = quantity + 1; menge <= ende; menge++) {
     if (aktuell - regulaer(menge) >= MIN_STUECKPREIS_SCHRITT_EUR) {
-      const echt = calculatePrice({ basePrice, quantity: menge, elements, pricingRules, echteMasse }).unitPrice;
+      const echt = calculatePrice({ basePrice, quantity: menge, elements, pricingRules, echteMasse, aktion }).unitPrice;
       return { menge, mehrStueck: menge - quantity, stueckpreis: echt };
     }
   }
@@ -86,14 +88,17 @@ export function findeMengenTipp(eingabe: {
   elements: ConfigElement[];
   pricingRules: PricingRule[];
   echteMasse?: ReadonlyArray<{ breiteCm: number; hoeheCm: number } | undefined>;
+  /** Preisaktion (config/aktion.ts), damit die genannten Preise die der Anzeige sind; die Suche selbst vergleicht reguläre Preise. */
+  aktion?: { prozent: number } | null;
 }): MengenTipp | null {
-  const { basePrice, quantity, elements, pricingRules, echteMasse } = eingabe;
+  const { basePrice, quantity, elements, pricingRules, echteMasse, aktion } = eingabe;
   if (!Number.isFinite(quantity) || quantity < 1 || pricingRules.length === 0) return null;
 
-  const r = calculatePrice({ basePrice, quantity, elements, pricingRules, echteMasse });
+  const r = calculatePrice({ basePrice, quantity, elements, pricingRules, echteMasse, aktion });
   const grenze = r.breakdown.mengenDeckelAufMenge;
   if (grenze === null || !(r.totalPrice > 0)) return null;
-  const ersparnis = Math.round(-r.breakdown.mengenDeckelTotal * 100) / 100;
+  // Mit Aktion ist auch die Ersparnis durch den Deckel um den Aktionssatz kleiner (der Deckel selbst steht im Ergebnis vor der Aktion).
+  const ersparnis = Math.round(-r.breakdown.mengenDeckelTotal * (1 - r.breakdown.aktionProzent / 100) * 100) / 100;
   const mehrStueck = grenze - quantity;
   if (ersparnis < MIN_ERSPARNIS_EUR || mehrStueck < 1 || mehrStueck > suchfenster(quantity)) return null;
   return { menge: grenze, mehrStueck, ersparnis, gesamtpreis: r.totalPrice };

@@ -1,6 +1,7 @@
 import type { ConfigElement, PricingRule } from '@/types';
 import { positionLabel } from '@/config/decorationPositions';
 import { formatiereGeld } from '@/lib/format';
+import type { PreisAktion } from '@/config/aktion';
 import { calculatePrice } from '../calculatePrice';
 import { buildStageResult, makeLine, roundCents, sumLines, type PriceLine, type StageResult } from '../priceLine';
 
@@ -32,6 +33,8 @@ export interface PositionInput {
   pricingRules: PricingRule[];
   /** Echte flache Motivmaße je Element in der Reihenfolge von `elements` (config/echteMasse.ts) – für den Großformat-Zuschlag. */
   echteMasse?: ReadonlyArray<{ breiteCm: number; hoeheCm: number } | undefined>;
+  /** Aktion, die zum Zeitpunkt der Berechnung gilt (config/aktion.ts: `aktuelleAktion()`); ohne Angabe wird NICHT rabattiert. */
+  aktion?: PreisAktion | null;
 }
 
 export interface PositionResult extends StageResult {
@@ -42,9 +45,9 @@ export interface PositionResult extends StageResult {
 }
 
 export function calculatePositionStage(input: PositionInput): PositionResult {
-  const { itemId, productName, basePrice, quantity, elements, pricingRules, echteMasse } = input;
+  const { itemId, productName, basePrice, quantity, elements, pricingRules, echteMasse, aktion } = input;
 
-  const berechnet = calculatePrice({ basePrice, quantity, elements, pricingRules, echteMasse });
+  const berechnet = calculatePrice({ basePrice, quantity, elements, pricingRules, echteMasse, aktion });
   const b = berechnet.breakdown;
   const lines: PriceLine[] = [];
 
@@ -242,6 +245,27 @@ export function calculatePositionStage(input: PositionInput): PositionResult {
           { jeStueck: b.setupPerUnit, menge: quantity }
         ),
         amount: b.setupTotal,
+        quantity: 1,
+      })
+    );
+  }
+
+  // ── Aktionsrabatt (z. B. Black Week, config/aktion.ts) ─────────────
+  // NEGATIVER Betrag, einmalig je Position, auf den GANZEN Positionspreis (Textil, Veredelung, Einrichtung – ohne Versand). Eigener Posten,
+  // damit Warenkorb und Auswertung den Rabatt samt Code zeigen können, statt dass er in den Einzelposten verschwindet.
+  if (aktion && b.aktionTotal < 0) {
+    lines.push(
+      makeLine({
+        id: `${itemId}:aktion`,
+        label: `${aktion.name}: −${b.aktionProzent} % (Code ${aktion.code})`,
+        category: 'rabatt',
+        description: `${aktion.name}-Rabatt auf diese Position, automatisch angewendet – bis ${aktion.letzterTag}`,
+        origin: herkunft(
+          undefined,
+          `${b.aktionProzent} % Aktionsrabatt (${aktion.name}) auf den Preis dieser Position; gilt bis einschließlich ${aktion.letzterTag} und wird im Warenkorb automatisch angewendet.`,
+          { aktion: aktion.id, code: aktion.code, prozent: b.aktionProzent }
+        ),
+        amount: b.aktionTotal,
         quantity: 1,
       })
     );

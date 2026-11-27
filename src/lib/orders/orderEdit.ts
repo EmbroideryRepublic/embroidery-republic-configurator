@@ -50,6 +50,7 @@
  * abgelehnt; der Betreiber klärt sie mit der Kundschaft.
  */
 import { priceCart, type ServerCartPricing } from '@/lib/pricing/serverPricing';
+import { aktuelleAktion } from '@/config/aktion';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { euroZuCent } from '@/lib/payments/betrag';
 import { formatiereGeld } from '@/lib/format';
@@ -110,6 +111,12 @@ export interface AenderungsBestellung {
    */
   rechnungUnklarerZustand?: boolean;
   email: string | null;
+  /**
+   * `orders.created_at` (ISO). Bestimmt, welche Preisaktion (config/aktion.ts) beim Nachrechnen gilt: die zum BESTELLDATUM gültige – eine
+   * Bestellung aus der Black Week wird auch nach deren Ende mit dem Aktionsrabatt nachgerechnet, sonst stimmte die Gegenprobe nie. Ohne
+   * Angabe (alte Datensätze, Tests) wird ohne Aktion gerechnet.
+   */
+  createdAt?: string | null;
 }
 
 /** Status der Lieferantenaufträge dieser Bestellung (`supplier_orders.status`). */
@@ -727,9 +734,13 @@ export async function berechneAenderung(
   // ── Gegenprobe: stimmt die unveränderte Bestellung auf den Cent? ──────────
   const land = bestellung.shippingCountry;
   const gespeichertCent = cent(bestellung.totalPrice);
+  // Die zum Bestelldatum gültige Preisaktion (z. B. Black Week) – die Bestellung behält ihren Rabatt, auch wenn die Aktion inzwischen endete.
+  const bestelldatum = bestellung.createdAt ? new Date(bestellung.createdAt) : null;
+  const aktion = bestelldatum && Number.isFinite(bestelldatum.getTime()) ? aktuelleAktion(bestelldatum) : null;
   const urspruenglich = await priceCart(
     positionen.map((p) => alsCartItem(p, p.sizeQuantities)),
-    land ?? undefined
+    land ?? undefined,
+    aktion
   );
   const problemAlt = berechnungsProblem(urspruenglich, land);
   if (problemAlt) return problemAlt;
@@ -765,7 +776,7 @@ export async function berechneAenderung(
     if (ziel === null) continue; // entfernt
     neueItems.push(alsCartItem(p, ziel ?? p.sizeQuantities));
   }
-  const neuePreise = await priceCart(neueItems, land ?? undefined);
+  const neuePreise = await priceCart(neueItems, land ?? undefined, aktion);
   const problemNeu = berechnungsProblem(neuePreise, land);
   if (problemNeu) return problemNeu;
 

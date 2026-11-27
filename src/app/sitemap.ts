@@ -43,6 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pfad: '/produkt', prioritaet: 0.9 },
     { pfad: '/ueber-uns', prioritaet: 0.5 },
     { pfad: '/faq', prioritaet: 0.5 },
+    // Aktionsseite (config/aktion.ts): bleibt als feste Adresse erhalten; nach Aktionsende zeigt sie „beendet“ und kehrt im nächsten Jahr zurück.
+    { pfad: '/black-week', prioritaet: 0.6 },
     { pfad: '/kontakt', prioritaet: 0.5 },
     { pfad: '/impressum', prioritaet: 0.2 },
     { pfad: '/datenschutz', prioritaet: 0.2 },

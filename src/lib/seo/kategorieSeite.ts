@@ -197,7 +197,7 @@ export interface BerechnetesBeispiel {
 
 const runde2 = (n: number) => Math.round(n * 100) / 100;
 
-function positionAlsCartItem(b: KategorieBeispiel, produkt: ProductConfig): CartItem {
+export function positionAlsCartItem(b: KategorieBeispiel, produkt: ProductConfig): CartItem {
   const farbe = produkt.colors[0];
   if (!farbe) throw new Error(`Beispielprodukt ${produkt.id} hat keine Farbe.`);
   const menge = Object.values(b.groessen).reduce((a, n) => a + n, 0);

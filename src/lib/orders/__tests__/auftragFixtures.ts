@@ -13,6 +13,7 @@ import assert from 'node:assert/strict';
 import { getProduct } from '@/config/products';
 import { priceCart } from '@/lib/pricing/serverPricing';
 import type { CartItem } from '@/types';
+import type { PreisAktion } from '@/config/aktion';
 import type { AenderungsBestellung, AenderungsElement, AenderungsPosition, AenderungsStand } from '../orderEdit';
 
 export const HOODIE = 'bandc-inspire-hoodie';
@@ -40,7 +41,9 @@ export interface PositionsSpez {
 export async function gespeicherterStand(
   spezifikationen: PositionsSpez[],
   bestellungUeberschreibungen: Partial<AenderungsBestellung> = {},
-  lieferantenStatus: string[] = []
+  lieferantenStatus: string[] = [],
+  /** Preisaktion, die beim „Bestelleingang“ galt (z. B. Black Week) – im Stand steckt sie dann in den gespeicherten Preisen. */
+  aktion: PreisAktion | null = null
 ): Promise<AenderungsStand> {
   const items: CartItem[] = spezifikationen.map((s) => ({
     id: s.id,
@@ -76,7 +79,7 @@ export async function gespeicherterStand(
     totalPrice: 0,
     addedAt: 0,
   }));
-  const preise = await priceCart(items, 'Deutschland');
+  const preise = await priceCart(items, 'Deutschland', aktion);
   assert.equal(preise.blocked, false, 'Testaufbau: die Ausgangsbestellung muss bepreisbar sein');
 
   const positionen: AenderungsPosition[] = spezifikationen.map((s, i) => ({

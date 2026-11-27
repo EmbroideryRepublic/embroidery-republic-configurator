@@ -25,6 +25,7 @@ import { getProduct } from '@/config/products';
 import type { CartItem, ConfigElement } from '@/types';
 import { buildOrderNumber } from '@/lib/actions/orderTypes';
 import { priceCart, priceClaimDeviation, type ServerItemPrice } from '@/lib/pricing/serverPricing';
+import { aktuelleAktion } from '@/config/aktion';
 import { mitVertrauenswuerdigerStichzahl } from '@/lib/embroidery/serverStichzahl';
 import type { OrderElementRecord, OrderItemRecord, OrderPaymentMethod, OrderRecord } from '@/lib/actions/orderTypes';
 import { formatiereGeld } from '@/lib/format';
@@ -493,7 +494,9 @@ async function persistAndNotifyCore(params: {
   // Client-Preis ist damit wirkungslos; er wird nur zur Prüfung protokolliert.
   // Versand wird ebenfalls serverseitig aus Lieferland + Warenwert ermittelt
   // (config/shipping.ts). Bei Anfragen ohne Lieferadresse entfällt er.
-  const pricing = await priceCart(items, params.shipping?.country);
+  // Preisaktion (z. B. Black Week, config/aktion.ts): Der Server entscheidet nach SEINER Uhr, ob sie gilt – der Rabatt steckt dann in den
+  // Positionspreisen und damit in Bestellsumme, Positionsgesamtpreisen und Rechnung (Versand = Endsumme minus Positionen bleibt richtig).
+  const pricing = await priceCart(items, params.shipping?.country, aktuelleAktion());
 
   const clientClaimedTotal = params.items.reduce((sum, it) => sum + (Number(it.totalPrice) || 0), 0);
   const deviation = priceClaimDeviation(clientClaimedTotal, pricing.totalPrice);

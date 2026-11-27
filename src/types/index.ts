@@ -366,5 +366,10 @@ export interface CartItem {
    *  mitgeführt, damit eine Mengenänderung im Warenkorb sie NICHT
    *  vervielfacht – sie fällt pro Auftrag genau einmal an. */
   setupTotal?: number;
+  /**
+   * Betrag in Euro (positiv), den der Aktionsrabatt (config/aktion.ts, z. B. Black Week) dieser Position spart – nur zur Anzeige im Warenkorb.
+   * Der Preis selbst (`totalPrice`) enthält den Rabatt bereits; der Server rechnet immer neu und vertraut diesem Wert nie.
+   */
+  aktionErsparnis?: number;
   addedAt: number;
 }

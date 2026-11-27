@@ -29,6 +29,7 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useLanguageStore, translate } from '@/stores/languageStore';
 import { calculatePrice, type PriceCalculationResult } from '@/lib/pricing/calculatePrice';
 import { findeMengenTipp, findeNaechsteStufe } from '@/lib/pricing/mengenTipp';
+import { aktuelleAktion } from '@/config/aktion';
 import type { PricingRule, PrintArea, PrintMethod } from '@/types';
 import { sumSizeQuantities } from '@/lib/pricing/quantity';
 import { ansichtenVon, sichtbareAnsichten } from '@/lib/products/ansichten';
@@ -311,6 +312,8 @@ export function ConfiguratorPrototype() {
       elements,
       pricingRules,
       echteMasse,
+      // Preisaktion (z. B. Black Week, config/aktion.ts): dieselbe Funktion wie Warenkorb und Server – der Rabatt steckt im angezeigten Preis.
+      aktion: aktuelleAktion(),
     });
     setPrices(result.unitPrice, result.totalPrice);
     setPriceBreakdown(result.breakdown);
@@ -329,6 +332,7 @@ export function ConfiguratorPrototype() {
       quantity,
       elements,
       pricingRules: otherMethodPricingRules,
+      aktion: aktuelleAktion(),
     }).unitPrice;
   }, [elements, quantity, otherMethodPricingRules, product.basePrice]);
 
@@ -340,7 +344,7 @@ export function ConfiguratorPrototype() {
     () =>
       printMethod === 'embroidery' || pricingRules.length === 0
         ? null
-        : findeMengenTipp({ basePrice: product.basePrice, quantity, elements, pricingRules, echteMasse }),
+        : findeMengenTipp({ basePrice: product.basePrice, quantity, elements, pricingRules, echteMasse, aktion: aktuelleAktion() }),
     [printMethod, product.basePrice, quantity, elements, pricingRules, echteMasse]
   );
 
@@ -350,7 +354,7 @@ export function ConfiguratorPrototype() {
     () =>
       printMethod === 'embroidery' || pricingRules.length === 0
         ? null
-        : findeNaechsteStufe({ basePrice: product.basePrice, quantity, elements, pricingRules, echteMasse }),
+        : findeNaechsteStufe({ basePrice: product.basePrice, quantity, elements, pricingRules, echteMasse, aktion: aktuelleAktion() }),
     [printMethod, product.basePrice, quantity, elements, pricingRules, echteMasse]
   );
 

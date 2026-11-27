@@ -21,6 +21,7 @@ import { istPlausibleEmail, istGueltigePlz } from '@/lib/orders/orderValidation'
 import { istNurAufAnfrage, veredelungVerfuegbar, warenkorbNurAlsAnfrage } from '@/config/bestellweg';
 import { FELD_KLASSE } from '@/lib/ui/feldKlasse';
 import { formatiereFarbname } from '@/lib/products/farben';
+import { WarenkorbAktionBox, AktionsZeile, PositionsAktion } from '@/components/aktion/WarenkorbAktion';
 import type { OrderPaymentMethod } from '@/lib/actions/orderTypes';
 import type { CartItem } from '@/types';
 
@@ -360,6 +361,8 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
                           </span>
                           <span className="text-sm font-medium">{formatPrice(item.totalPrice)}</span>
                         </div>
+                        {/* Preisaktion (z. B. Black Week): was diese Position spart; der Preis oben enthält den Rabatt bereits. */}
+                        <PositionsAktion item={item} formatPrice={formatPrice} />
                       </li>
                     );
                   })}
@@ -369,6 +372,8 @@ export function CartDrawer({ onClose, geradeHinzugefuegt = false }: CartDrawerPr
 
             {items.length > 0 && (
               <div className="border-t border-brand/[0.08] px-4 py-3">
+                {/* Preisaktion (config/aktion.ts): „BLACK10 angewendet“ – automatisch, ohne Eingabe; erscheint nur, wenn die Aktion läuft und etwas spart. */}
+                <WarenkorbAktionBox items={items} formatPrice={formatPrice} />
                 <div className="mb-3 flex items-center justify-between text-base font-semibold">
                   <span>{t(nurAnfrage ? 'cart_total_estimate' : 'cart_total')}</span>
                   <span>{formatPrice(total)}</span>
@@ -936,6 +941,7 @@ function CheckoutForm({ items, total, formatPrice, waehrungHinweis, onOrderPlace
             <span>{t('checkout_subtotal')}</span>
             <span>{formatPrice(total)}</span>
           </div>
+          <AktionsZeile items={items} formatPrice={formatPrice} />
           <div className="mt-1 flex items-center justify-between text-xs text-brand/70">
             <span>{t('checkout_shipping')}</span>
             <span>

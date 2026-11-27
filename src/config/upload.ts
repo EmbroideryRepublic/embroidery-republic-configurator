@@ -71,3 +71,14 @@ export const MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG = 48;
  * Ampel und keinen Hochskalieren-Knopf im Konfigurator – ein Test hält das fest (anlassSeiten.test.ts).
  */
 export const AUFLOESUNGSHINWEISE_IM_KONFIGURATOR = false;
+
+/**
+ * „Weißen Hintergrund entfernen“ im Konfigurator (Betreiberwunsch 2026-11-27): AUS.
+ *
+ * Die einfache, regelbasierte Freistellung im Browser liefert nur mäßige Ergebnisse; die DTF-Software des Betreibers kann das deutlich besser
+ * und arbeitet mit dem Originalbild. Der Betreiber bereitet hochgeladene Bilder deshalb selbst auf. Deshalb gibt es für Kundinnen und Kunden weder den Schalter am ausgewählten
+ * Logo („Weißen Hintergrund entfernen“) noch das Häkchen beim Hochladen („Weißen Hintergrund automatisch entfernen“); hochgeladene Bilder
+ * werden unverändert übernommen. Die Freistellung selbst (lib/canvas/removeBackground) bleibt erhalten; auf `true` gestellt, erscheinen beide
+ * Bedienelemente wieder. Nicht betroffen: der Schalter in der Admin-Stickdatei (components/admin/StickdateiKnoepfe.tsx).
+ */
+export const HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR = false;

@@ -368,6 +368,17 @@ export function SummaryPanel({
           <span className="flex-shrink-0 tabular-nums text-gold">−{formatPrice(Math.abs(breakdown.aktionTotal))}</span>
         </p>
       )}
+      {/* Noch keine Menge gewählt (z. B. Besucher über den Instagram-Link): Die Aktion steht schon vorher da, nicht erst nach der Eingabe. */}
+      {quantity === 0 && aktion && !nurAnfrage && (
+        <p data-testid="aktion-hinweis-leer" className="flex flex-col gap-0.5 rounded-lg bg-brand px-3 py-2 text-white">
+          <span className="flex items-center gap-2 text-[11px] font-semibold">
+            <Tag className="h-3.5 w-3.5 flex-shrink-0 text-gold" aria-hidden="true" />
+            <span className="whitespace-nowrap font-black uppercase tracking-[0.12em]">{aktion.name}</span>
+            <span className="whitespace-nowrap rounded-full bg-gold px-2 py-0.5 text-[10px] font-extrabold tabular-nums text-brand">−{aktion.prozent} %</span>
+          </span>
+          <span className="text-[11px] font-medium leading-snug text-white/80">automatisch im Warenkorb · bis {aktion.letzterTagKurz}</span>
+        </p>
+      )}
       {quantity > 0 ? (
         <div
           className={clsx(

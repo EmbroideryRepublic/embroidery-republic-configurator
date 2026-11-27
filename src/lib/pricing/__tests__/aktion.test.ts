@@ -336,6 +336,12 @@ test('Wächter: Die echten Aufrufstellen übergeben die Aktion – sonst zeigte 
   assert.doesNotMatch(lies('src/lib/seo/kategorieSeite.ts'), /aktuelleAktion/);
 });
 
+test('Konfigurator: Der Black-Week-Hinweis steht auch vor der Mengenwahl (Besucher über Social-Links sehen die Aktion sofort)', () => {
+  const panel = readFileSync('src/components/configurator/SummaryPanel.tsx', 'utf8');
+  assert.match(panel, /quantity === 0 && aktion && !nurAnfrage/);
+  assert.match(panel, /data-testid="aktion-hinweis-leer"/);
+});
+
 test('Wächter: kein Eingabefeld und kein Gutscheinmechanismus – der Code wird nur angezeigt', () => {
   // Kommentare bleiben außen vor: Sie erklären gerade, dass es kein Eingabefeld gibt.
   const ohneKommentare = (quelle: string) => quelle.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');

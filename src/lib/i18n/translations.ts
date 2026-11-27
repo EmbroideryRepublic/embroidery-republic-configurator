@@ -182,7 +182,11 @@ export const translations = {
     element_remove_bg: 'Weißen Hintergrund entfernen',
     element_remove_bg_calculating: 'Freistellung wird berechnet …',
     element_remove_bg_hint:
-      'Direkter Vorher/Nachher-Vergleich – schaltet sofort um, ohne die Datei erneut hochzuladen. Funktioniert am besten bei einfarbigem Hintergrund.',
+      'Direkter Vorher/Nachher-Vergleich – schaltet sofort um, ohne die Datei erneut hochzuladen. Funktioniert bei einfarbigem oder sanft verlaufendem Hintergrund (z. B. Weiß); weiße Flächen innerhalb großer Formen bleiben erhalten.',
+    element_remove_bg_inner: 'Auch Innenflächen entfernen (O, A, B …)',
+    element_remove_bg_inner_hint:
+      'Entfernt auch eingeschlossene Flächen in der Hintergrundfarbe, etwa im Inneren von O, A oder B. Achtung: Weißer Text in einer farbigen Form verschwindet dann ebenfalls.',
+    element_remove_bg_not_plain: 'Kein einfarbiger Hintergrund erkannt – Freistellung nicht möglich.',
     element_position: 'Position',
     element_position_top_center: 'Oben mittig',
     element_position_center: 'Mittig',
@@ -631,7 +635,11 @@ export const translations = {
     element_remove_bg: 'Remove white background',
     element_remove_bg_calculating: 'Removing background …',
     element_remove_bg_hint:
-      'Direct before/after comparison – switches instantly, no need to re-upload the file. Works best with a solid-color background.',
+      'Direct before/after comparison – switches instantly, no need to re-upload the file. Works with a solid or softly graded background (e.g. white); white areas inside large shapes are kept.',
+    element_remove_bg_inner: 'Also remove inner areas (O, A, B …)',
+    element_remove_bg_inner_hint:
+      'Also removes enclosed areas in the background colour, e.g. inside O, A or B. Note: white text inside a coloured shape disappears as well.',
+    element_remove_bg_not_plain: 'No solid background detected – cannot remove the background.',
     element_position: 'Position',
     element_position_top_center: 'Top center',
     element_position_center: 'Center',

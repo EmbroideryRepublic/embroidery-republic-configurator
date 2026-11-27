@@ -26,7 +26,7 @@ import {
 import { AlertTriangle, XCircle } from 'lucide-react';
 import { useTextilHex } from './useTextilHex';
 import { estimateTextStitches } from '@/lib/embroidery/estimateStitches';
-import { removeSimpleBackground } from '@/lib/upload/backgroundRemoval';
+import { removeSimpleBackground, HintergrundNichtEinfarbig } from '@/lib/upload/backgroundRemoval';
 import { useCurrencyStore, formatPriceWithCurrency } from '@/stores/currencyStore';
 import { InfoTooltip } from '@/components/ui/InfoTooltip';
 import { useLanguageStore, translate } from '@/stores/languageStore';
@@ -188,6 +188,8 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isRemovingBg, setIsRemovingBg] = useState(false);
   const [bgError, setBgError] = useState<string | null>(null);
+  // Zusatzoption der Freistellung je Logo („Auch Innenflächen entfernen“); nur für diese Sitzung, das Ergebnisbild selbst steht im Element.
+  const [innenAlle, setInnenAlle] = useState<Record<string, boolean>>({});
   const [isUpscaling, setIsUpscaling] = useState(false);
   const [upscaleError, setUpscaleError] = useState<string | null>(null);
   const textilHex = useTextilHex();
@@ -586,16 +588,17 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               disabled={isRemovingBg || isUpscaling}
               onClick={async () => {
                 const logo = selected as LogoElement;
+                setBgError(null);
                 if (logo.backgroundRemoved) {
                   updateElement(logo.id, { fileUrl: logo.originalFileUrl, backgroundRemoved: false });
                   return;
                 }
                 setIsRemovingBg(true);
                 try {
-                  const cleaned = await removeSimpleBackground(logo.originalFileUrl, logo.hochskaliertFaktor);
+                  const cleaned = await removeSimpleBackground(logo.originalFileUrl, logo.hochskaliertFaktor, innenAlle[logo.id] ? 'alle' : 'auto');
                   updateElement(logo.id, { fileUrl: cleaned, backgroundRemoved: true });
-                } catch {
-                  setBgError('Freistellung fehlgeschlagen.');
+                } catch (e) {
+                  setBgError(e instanceof HintergrundNichtEinfarbig ? t('element_remove_bg_not_plain') : 'Freistellung fehlgeschlagen.');
                 } finally {
                   setIsRemovingBg(false);
                 }
@@ -611,6 +614,33 @@ export function ElementToolbar({ printArea }: ElementToolbarProps) {
               />
             </button>
           </div>
+          {(selected as LogoElement).backgroundRemoved && (
+            <label className="flex items-center gap-1.5 text-[11px] text-gray-600">
+              <input
+                type="checkbox"
+                checked={Boolean(innenAlle[selected.id])}
+                disabled={isRemovingBg}
+                onChange={async (e) => {
+                  const logo = selected as LogoElement;
+                  const alle = e.target.checked;
+                  setInnenAlle((v) => ({ ...v, [logo.id]: alle }));
+                  setBgError(null);
+                  setIsRemovingBg(true);
+                  try {
+                    const cleaned = await removeSimpleBackground(logo.originalFileUrl, logo.hochskaliertFaktor, alle ? 'alle' : 'auto');
+                    updateElement(logo.id, { fileUrl: cleaned, backgroundRemoved: true });
+                  } catch (err) {
+                    setBgError(err instanceof HintergrundNichtEinfarbig ? t('element_remove_bg_not_plain') : 'Freistellung fehlgeschlagen.');
+                  } finally {
+                    setIsRemovingBg(false);
+                  }
+                }}
+                className="h-3 w-3 rounded border-gray-300"
+              />
+              {t('element_remove_bg_inner')}
+              <InfoTooltip text={t('element_remove_bg_inner_hint')} />
+            </label>
+          )}
           {isRemovingBg && <p className="text-xs text-gray-600">{t('element_remove_bg_calculating')}</p>}
           {bgError && <p className="text-xs text-red-600">{bgError}</p>}
           </>

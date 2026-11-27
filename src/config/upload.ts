@@ -73,12 +73,11 @@ export const MAX_ZWISCHENABLAGE_VERWEISE_JE_BESTELLUNG = 48;
 export const AUFLOESUNGSHINWEISE_IM_KONFIGURATOR = false;
 
 /**
- * „Weißen Hintergrund entfernen“ im Konfigurator (Betreiberwunsch 2026-11-27): AUS.
+ * „Weißen Hintergrund entfernen“ im Konfigurator (Betreiberwunsch 2026-11-27): AN.
  *
- * Die einfache, regelbasierte Freistellung im Browser liefert nur mäßige Ergebnisse; die DTF-Software des Betreibers kann das deutlich besser
- * und arbeitet mit dem Originalbild. Der Betreiber bereitet hochgeladene Bilder deshalb selbst auf. Deshalb gibt es für Kundinnen und Kunden weder den Schalter am ausgewählten
- * Logo („Weißen Hintergrund entfernen“) noch das Häkchen beim Hochladen („Weißen Hintergrund automatisch entfernen“); hochgeladene Bilder
- * werden unverändert übernommen. Die Freistellung selbst (lib/canvas/removeBackground) bleibt erhalten; auf `true` gestellt, erscheinen beide
- * Bedienelemente wieder. Nicht betroffen: der Schalter in der Admin-Stickdatei (components/admin/StickdateiKnoepfe.tsx).
+ * Schalter am ausgewählten Logo und Häkchen beim Hochladen. Die Freistellung wurde am selben Tag neu geschrieben (lib/upload/freistellen.ts:
+ * Abstand zum Hintergrund statt Nachbarvergleich, Kantenentmischung ohne weißen Saum, Innenflächen, sanfte Hintergrundverläufe); die frühere
+ * Fassung arbeitete „sehr schlecht“. Auf `false` gestellt, verschwinden beide Bedienelemente und hochgeladene Bilder werden unverändert übernommen.
+ * Nicht betroffen: der Schalter in der Admin-Stickdatei (components/admin/StickdateiKnoepfe.tsx).
  */
-export const HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR = false;
+export const HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR = true;

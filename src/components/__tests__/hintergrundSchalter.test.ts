@@ -1,7 +1,7 @@
 /**
- * Betreiberwunsch 2026-11-27: Kundschaft sieht im Konfigurator keine Hintergrund-Freistellung
- * (config/upload.ts, HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR = false). Der Test hält fest, dass beide Bedienelemente – der Schalter am
- * ausgewählten Logo und das Häkchen beim Hochladen – hinter dem Schalter stehen und die Funktion selbst erhalten bleibt.
+ * Betreiberschalter für die Hintergrund-Freistellung im Konfigurator (config/upload.ts, HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR, seit 2026-11-27 an).
+ * Der Test hält fest, dass beide Bedienelemente – der Schalter am ausgewählten Logo und das Häkchen beim Hochladen – hinter dem Schalter
+ * stehen, damit er sie jederzeit ausblenden kann.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -11,8 +11,8 @@ import { HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR } from '@/config/upload';
 
 const lies = (p: string) => readFileSync(p, 'utf8');
 
-test('Hintergrund-Freistellung ist für die Kundschaft aus', () => {
-  assert.equal(HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR, false);
+test('Hintergrund-Freistellung ist für die Kundschaft an (überarbeitet, Betreiberwunsch)', () => {
+  assert.equal(HINTERGRUND_ENTFERNEN_IM_KONFIGURATOR, true);
 });
 
 test('Schalter am Logo und Häkchen beim Hochladen stehen hinter dem Betreiberschalter', () => {
